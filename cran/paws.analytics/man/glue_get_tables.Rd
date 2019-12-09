@@ -9,7 +9,7 @@ glue_get_tables(CatalogId, DatabaseName, Expression, NextToken,
   MaxResults)
 }
 \arguments{
-\item{CatalogId}{The ID of the Data Catalog where the tables reside. If none is supplied,
+\item{CatalogId}{The ID of the Data Catalog where the tables reside. If none is provided,
 the AWS account ID is used by default.}
 
 \item{DatabaseName}{[required] The database in the catalog whose tables to list. For Hive

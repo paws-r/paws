@@ -11,7 +11,7 @@ iam_get_group(GroupName, Marker, MaxItems)
 
 This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \_+=,.@-}
+spaces. You can also include any of the following characters: \\_+=,.@-}
 
 \item{Marker}{Use this parameter only when paginating results and only after you
 receive a response indicating that the results are truncated. Set it to

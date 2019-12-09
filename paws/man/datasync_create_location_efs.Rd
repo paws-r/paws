@@ -11,7 +11,10 @@ datasync_create_location_efs(Subdirectory, EfsFilesystemArn, Ec2Config,
 \item{Subdirectory}{A subdirectory in the location's path. This subdirectory in the EFS file
 system is used to read data from the EFS source location or write data
 to the EFS destination. By default, AWS DataSync uses the root
-directory.}
+directory.
+
+\code{Subdirectory} must be specified with forward slashes. For example
+\verb{/path/to/folder}.}
 
 \item{EfsFilesystemArn}{[required] The Amazon Resource Name (ARN) for the Amazon EFS file system.}
 
@@ -33,9 +36,8 @@ file system's mount targets. You can enable outbound connections
 either by IP address (CIDR range) or security group.
 
 For information about security groups and mount targets, see
-"https://docs.aws.amazon.com/efs/latest/ug/security-considerations.html\#network-access"
-(Security Groups for Amazon EC2 Instances and Mount Targets) in the
-\emph{Amazon EFS User Guide}.
+Security Groups for Amazon EC2 Instances and Mount Targets in the
+\emph{Amazon EFS User Guide.}
 }}
 
 \item{Tags}{The key-value pair that represents a tag that you want to add to the

@@ -9,7 +9,7 @@ kms_list_aliases(KeyId, Limit, Marker)
 \arguments{
 \item{KeyId}{Lists only aliases that refer to the specified CMK. The value of this
 parameter can be the ID or Amazon Resource Name (ARN) of a CMK in the
-caller's account and region. You cannot use an alias name or alias ARN
+caller\'s account and region. You cannot use an alias name or alias ARN
 in this value.
 
 This parameter is optional. If you omit it, \code{ListAliases} returns all
@@ -27,7 +27,7 @@ with truncated results. Set it to the value of \code{NextMarker} from the
 truncated response you just received.}
 }
 \description{
-Gets a list of aliases in the caller's AWS account and region. You
+Gets a list of aliases in the caller\'s AWS account and region. You
 cannot list aliases in other accounts. For more information about
 aliases, see CreateAlias.
 }
@@ -40,7 +40,7 @@ The \code{ListAliases} response can include aliases that you created and
 associated with your customer managed CMKs, and aliases that AWS created
 and associated with AWS managed CMKs in your account. You can recognize
 AWS aliases because their names have the format
-\code{aws/&lt;service-name&gt;}, such as \code{aws/dynamodb}.
+\verb{aws/&lt;service-name&gt;}, such as \code{aws/dynamodb}.
 
 The response might also include aliases that have no \code{TargetKeyId}
 field. These are predefined aliases that AWS has created but has not yet

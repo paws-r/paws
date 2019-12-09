@@ -451,6 +451,9 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #'   endpointConfiguration = list(
 #'     types = list(
 #'       "REGIONAL"|"EDGE"|"PRIVATE"
+#'     ),
+#'     vpcEndpointIds = list(
+#'       "string"
 #'     )
 #'   ),
 #'   tags = list(
@@ -663,6 +666,9 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #'   endpointConfiguration = list(
 #'     types = list(
 #'       "REGIONAL"|"EDGE"|"PRIVATE"
+#'     ),
+#'     vpcEndpointIds = list(
+#'       "string"
 #'     )
 #'   ),
 #'   policy = "string",

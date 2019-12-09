@@ -2,24 +2,25 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_admin_set_user_settings}
 \alias{cognitoidentityprovider_admin_set_user_settings}
-\title{Sets all the user settings for a specified user name}
+\title{_This action is no longer supported}
 \usage{
 cognitoidentityprovider_admin_set_user_settings(UserPoolId, Username,
   MFAOptions)
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool where you want to set the user's
-settings, such as MFA options.}
+\item{UserPoolId}{[required] The ID of the user pool that contains the user that you are setting
+options for.}
 
-\item{Username}{[required] The user name of the user for whom you wish to set user settings.}
+\item{Username}{[required] The user name of the user that you are setting options for.}
 
-\item{MFAOptions}{[required] Specifies the options for MFA (e.g., email or phone number).}
+\item{MFAOptions}{[required] You can use this parameter only to set an SMS configuration that uses
+SMS for delivery.}
 }
 \description{
-Sets all the user settings for a specified user name. Works on any user.
-}
-\details{
-Requires developer credentials.
+\emph{This action is no longer supported.} You can use it to configure only
+SMS MFA. You can\'t use it to configure TOTP software token MFA. To
+configure either type of MFA, use the AdminSetUserMFAPreference action
+instead.
 }
 \section{Request syntax}{
 \preformatted{svc$admin_set_user_settings(

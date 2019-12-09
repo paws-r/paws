@@ -32,7 +32,7 @@ NULL
 #'       SourceAccountId = "string",
 #'       SourceRegion = "string",
 #'       ResourceId = "string",
-#'       ResourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::EventSubscription"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::S3::Bucket"|"AWS::SSM::ManagedInstanceInventory"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::DynamoDB::Table"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::WAF::RuleGroup"|"AWS::WAFRegional::RuleGroup"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::CodePipeline::Pipeline",
+#'       ResourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBParameterGroup"|"AWS::RDS::DBOptionGroup"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterParameterGroup"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Alias"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::MobileHub::Project"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::LicenseManager::LicenseConfiguration"|"AWS::ApiGateway::DomainName"|"AWS::ApiGateway::Method"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::DomainName"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio",
 #'       ResourceName = "string"
 #'     )
 #'   )
@@ -83,7 +83,7 @@ configservice_batch_get_aggregate_resource_config <- function(ConfigurationAggre
 #' svc$batch_get_resource_config(
 #'   resourceKeys = list(
 #'     list(
-#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::EventSubscription"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::S3::Bucket"|"AWS::SSM::ManagedInstanceInventory"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::DynamoDB::Table"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::WAF::RuleGroup"|"AWS::WAFRegional::RuleGroup"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::CodePipeline::Pipeline",
+#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBParameterGroup"|"AWS::RDS::DBOptionGroup"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterParameterGroup"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Alias"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::MobileHub::Project"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::LicenseManager::LicenseConfiguration"|"AWS::ApiGateway::DomainName"|"AWS::ApiGateway::Method"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::DomainName"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio",
 #'       resourceId = "string"
 #'     )
 #'   )
@@ -282,6 +282,50 @@ configservice_delete_configuration_recorder <- function(ConfigurationRecorderNam
 }
 .configservice$operations$delete_configuration_recorder <- configservice_delete_configuration_recorder
 
+#' Deletes the specified conformance pack and all the AWS Config rules,
+#' remediation actions, and all evaluation results within that conformance
+#' pack
+#'
+#' Deletes the specified conformance pack and all the AWS Config rules,
+#' remediation actions, and all evaluation results within that conformance
+#' pack.
+#' 
+#' AWS Config sets the conformance pack to `DELETE_IN_PROGRESS` until the
+#' deletion is complete. You cannot update a conformance pack while it is
+#' in this state.
+#'
+#' @usage
+#' configservice_delete_conformance_pack(ConformancePackName)
+#'
+#' @param ConformancePackName &#91;required&#93; Name of the conformance pack you want to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_conformance_pack(
+#'   ConformancePackName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_delete_conformance_pack
+configservice_delete_conformance_pack <- function(ConformancePackName) {
+  op <- new_operation(
+    name = "DeleteConformancePack",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$delete_conformance_pack_input(ConformancePackName = ConformancePackName)
+  output <- .configservice$delete_conformance_pack_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$delete_conformance_pack <- configservice_delete_conformance_pack
+
 #' Deletes the delivery channel
 #'
 #' Deletes the delivery channel.
@@ -361,15 +405,22 @@ configservice_delete_evaluation_results <- function(ConfigRuleName) {
 }
 .configservice$operations$delete_evaluation_results <- configservice_delete_evaluation_results
 
-#' Delete organization config rule
+#' Deletes the specified organization config rule and all of its evaluation
+#' results from all member accounts in that organization
 #'
+#' Deletes the specified organization config rule and all of its evaluation
+#' results from all member accounts in that organization. Only a master
+#' account can delete an organization config rule.
 #' 
+#' AWS Config sets the state of a rule to DELETE\\_IN\\_PROGRESS until the
+#' deletion is complete. You cannot update a rule while it is in this
+#' state.
 #'
 #' @usage
 #' configservice_delete_organization_config_rule(
 #'   OrganizationConfigRuleName)
 #'
-#' @param OrganizationConfigRuleName &#91;required&#93; 
+#' @param OrganizationConfigRuleName &#91;required&#93; The name of organization config rule that you want to delete.
 #'
 #' @section Request syntax:
 #' ```
@@ -397,6 +448,52 @@ configservice_delete_organization_config_rule <- function(OrganizationConfigRule
   return(response)
 }
 .configservice$operations$delete_organization_config_rule <- configservice_delete_organization_config_rule
+
+#' Deletes the specified organization conformance pack and all of the
+#' config rules and remediation actions from all member accounts in that
+#' organization
+#'
+#' Deletes the specified organization conformance pack and all of the
+#' config rules and remediation actions from all member accounts in that
+#' organization. Only a master account can delete an organization
+#' conformance pack.
+#' 
+#' AWS Config sets the state of a conformance pack to DELETE\\_IN\\_PROGRESS
+#' until the deletion is complete. You cannot update a conformance pack
+#' while it is in this state.
+#'
+#' @usage
+#' configservice_delete_organization_conformance_pack(
+#'   OrganizationConformancePackName)
+#'
+#' @param OrganizationConformancePackName &#91;required&#93; The name of organization conformance pack that you want to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_organization_conformance_pack(
+#'   OrganizationConformancePackName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_delete_organization_conformance_pack
+configservice_delete_organization_conformance_pack <- function(OrganizationConformancePackName) {
+  op <- new_operation(
+    name = "DeleteOrganizationConformancePack",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$delete_organization_conformance_pack_input(OrganizationConformancePackName = OrganizationConformancePackName)
+  output <- .configservice$delete_organization_conformance_pack_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$delete_organization_conformance_pack <- configservice_delete_organization_conformance_pack
 
 #' Deletes pending authorization requests for a specified aggregator
 #' account in a specified region
@@ -478,6 +575,97 @@ configservice_delete_remediation_configuration <- function(ConfigRuleName, Resou
   return(response)
 }
 .configservice$operations$delete_remediation_configuration <- configservice_delete_remediation_configuration
+
+#' Deletes one or more remediation exceptions mentioned in the resource
+#' keys
+#'
+#' Deletes one or more remediation exceptions mentioned in the resource
+#' keys.
+#'
+#' @usage
+#' configservice_delete_remediation_exceptions(ConfigRuleName,
+#'   ResourceKeys)
+#'
+#' @param ConfigRuleName &#91;required&#93; The name of the AWS Config rule for which you want to delete remediation
+#' exception configuration.
+#' @param ResourceKeys &#91;required&#93; An exception list of resource exception keys to be processed with the
+#' current request. AWS Config adds exception for each resource key. For
+#' example, AWS Config adds 3 exceptions for 3 resource keys.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_remediation_exceptions(
+#'   ConfigRuleName = "string",
+#'   ResourceKeys = list(
+#'     list(
+#'       ResourceType = "string",
+#'       ResourceId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_delete_remediation_exceptions
+configservice_delete_remediation_exceptions <- function(ConfigRuleName, ResourceKeys) {
+  op <- new_operation(
+    name = "DeleteRemediationExceptions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$delete_remediation_exceptions_input(ConfigRuleName = ConfigRuleName, ResourceKeys = ResourceKeys)
+  output <- .configservice$delete_remediation_exceptions_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$delete_remediation_exceptions <- configservice_delete_remediation_exceptions
+
+#' Records the configuration state for a custom resource that has been
+#' deleted
+#'
+#' Records the configuration state for a custom resource that has been
+#' deleted. This API records a new ConfigurationItem with a ResourceDeleted
+#' status. You can retrieve the ConfigurationItems recorded for this
+#' resource in your AWS Config History.
+#'
+#' @usage
+#' configservice_delete_resource_config(ResourceType, ResourceId)
+#'
+#' @param ResourceType &#91;required&#93; The type of the resource.
+#' @param ResourceId &#91;required&#93; Unique identifier of the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_resource_config(
+#'   ResourceType = "string",
+#'   ResourceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_delete_resource_config
+configservice_delete_resource_config <- function(ResourceType, ResourceId) {
+  op <- new_operation(
+    name = "DeleteResourceConfig",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$delete_resource_config_input(ResourceType = ResourceType, ResourceId = ResourceId)
+  output <- .configservice$delete_resource_config_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$delete_resource_config <- configservice_delete_resource_config
 
 #' Deletes the retention configuration
 #'
@@ -570,7 +758,7 @@ configservice_deliver_config_snapshot <- function(deliveryChannelName) {
 #' resources for compliant and noncompliant rules.
 #' 
 #' The results can return an empty result page, but if you have a
-#' nextToken, the results are displayed on the next page.
+#' `nextToken`, the results are displayed on the next page.
 #'
 #' @usage
 #' configservice_describe_aggregate_compliance_by_config_rules(
@@ -580,8 +768,8 @@ configservice_deliver_config_snapshot <- function(deliveryChannelName) {
 #' @param Filters Filters the results by ConfigRuleComplianceFilters object.
 #' @param Limit The maximum number of evaluation results returned on each page. The
 #' default is maximum. If you specify 0, AWS Config uses the default.
-#' @param NextToken The nextToken string returned on a previous page that you use to get the
-#' next page of results in a paginated response.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get
+#' the next page of results in a paginated response.
 #'
 #' @section Request syntax:
 #' ```
@@ -629,8 +817,8 @@ configservice_describe_aggregate_compliance_by_config_rules <- function(Configur
 #'
 #' @param Limit The maximum number of AggregationAuthorizations returned on each page.
 #' The default is maximum. If you specify 0, AWS Config uses the default.
-#' @param NextToken The nextToken string returned on a previous page that you use to get the
-#' next page of results in a paginated response.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get
+#' the next page of results in a paginated response.
 #'
 #' @section Request syntax:
 #' ```
@@ -932,8 +1120,8 @@ configservice_describe_config_rules <- function(ConfigRuleNames = NULL, NextToke
 #' -   Valid value SUCCEEDED indicates the data was successfully moved.
 #' 
 #' -   Valid value OUTDATED indicates the data is not the most recent.
-#' @param NextToken The nextToken string returned on a previous page that you use to get the
-#' next page of results in a paginated response.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get
+#' the next page of results in a paginated response.
 #' @param Limit The maximum number of AggregatorSourceStatus returned on each page. The
 #' default is maximum. If you specify 0, AWS Config uses the default.
 #'
@@ -981,8 +1169,8 @@ configservice_describe_configuration_aggregator_sources_status <- function(Confi
 #'   ConfigurationAggregatorNames, NextToken, Limit)
 #'
 #' @param ConfigurationAggregatorNames The name of the configuration aggregators.
-#' @param NextToken The nextToken string returned on a previous page that you use to get the
-#' next page of results in a paginated response.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get
+#' the next page of results in a paginated response.
 #' @param Limit The maximum number of configuration aggregators returned on each page.
 #' The default is maximum. If you specify 0, AWS Config uses the default.
 #'
@@ -1107,6 +1295,150 @@ configservice_describe_configuration_recorders <- function(ConfigurationRecorder
 }
 .configservice$operations$describe_configuration_recorders <- configservice_describe_configuration_recorders
 
+#' Returns compliance details for each rule in that conformance pack
+#'
+#' Returns compliance details for each rule in that conformance pack.
+#' 
+#' You must provide exact rule names.
+#'
+#' @usage
+#' configservice_describe_conformance_pack_compliance(ConformancePackName,
+#'   Filters, Limit, NextToken)
+#'
+#' @param ConformancePackName &#91;required&#93; Name of the conformance pack.
+#' @param Filters A `ConformancePackComplianceFilters` object.
+#' @param Limit The maximum number of AWS Config rules within a conformance pack are
+#' returned on each page.
+#' @param NextToken The `nextToken` string returned in a previous request that you use to
+#' request the next page of results in a paginated response.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_conformance_pack_compliance(
+#'   ConformancePackName = "string",
+#'   Filters = list(
+#'     ConfigRuleNames = list(
+#'       "string"
+#'     ),
+#'     ComplianceType = "COMPLIANT"|"NON_COMPLIANT"
+#'   ),
+#'   Limit = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_describe_conformance_pack_compliance
+configservice_describe_conformance_pack_compliance <- function(ConformancePackName, Filters = NULL, Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeConformancePackCompliance",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$describe_conformance_pack_compliance_input(ConformancePackName = ConformancePackName, Filters = Filters, Limit = Limit, NextToken = NextToken)
+  output <- .configservice$describe_conformance_pack_compliance_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$describe_conformance_pack_compliance <- configservice_describe_conformance_pack_compliance
+
+#' Provides one or more conformance packs deployment status
+#'
+#' Provides one or more conformance packs deployment status.
+#' 
+#' If there are no conformance packs then you will see an empty result.
+#'
+#' @usage
+#' configservice_describe_conformance_pack_status(ConformancePackNames,
+#'   Limit, NextToken)
+#'
+#' @param ConformancePackNames Comma-separated list of conformance pack names.
+#' @param Limit The maximum number of conformance packs status returned on each page.
+#' @param NextToken The `nextToken` string returned in a previous request that you use to
+#' request the next page of results in a paginated response.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_conformance_pack_status(
+#'   ConformancePackNames = list(
+#'     "string"
+#'   ),
+#'   Limit = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_describe_conformance_pack_status
+configservice_describe_conformance_pack_status <- function(ConformancePackNames = NULL, Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeConformancePackStatus",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$describe_conformance_pack_status_input(ConformancePackNames = ConformancePackNames, Limit = Limit, NextToken = NextToken)
+  output <- .configservice$describe_conformance_pack_status_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$describe_conformance_pack_status <- configservice_describe_conformance_pack_status
+
+#' Returns a list of one or more conformance packs
+#'
+#' Returns a list of one or more conformance packs.
+#'
+#' @usage
+#' configservice_describe_conformance_packs(ConformancePackNames, Limit,
+#'   NextToken)
+#'
+#' @param ConformancePackNames Comma-separated list of conformance pack names for which you want
+#' details. If you do not specify any names, AWS Config returns details for
+#' all your conformance packs.
+#' @param Limit The maximum number of conformance packs returned on each page.
+#' @param NextToken The `nextToken` string returned in a previous request that you use to
+#' request the next page of results in a paginated response.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_conformance_packs(
+#'   ConformancePackNames = list(
+#'     "string"
+#'   ),
+#'   Limit = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_describe_conformance_packs
+configservice_describe_conformance_packs <- function(ConformancePackNames = NULL, Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeConformancePacks",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$describe_conformance_packs_input(ConformancePackNames = ConformancePackNames, Limit = Limit, NextToken = NextToken)
+  output <- .configservice$describe_conformance_packs_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$describe_conformance_packs <- configservice_describe_conformance_packs
+
 #' Returns the current status of the specified delivery channel
 #'
 #' Returns the current status of the specified delivery channel. If a
@@ -1193,17 +1525,33 @@ configservice_describe_delivery_channels <- function(DeliveryChannelNames = NULL
 }
 .configservice$operations$describe_delivery_channels <- configservice_describe_delivery_channels
 
-#' Describe organization config rule statuses
+#' Provides organization config rule deployment status for an organization
 #'
+#' Provides organization config rule deployment status for an organization.
 #' 
+#' The status is not considered successful until organization config rule
+#' is successfully deployed in all the member accounts with an exception of
+#' excluded accounts.
+#' 
+#' When you specify the limit and the next token, you receive a paginated
+#' response. Limit and next token are not applicable if you specify
+#' organization config rule names. It is only applicable, when you request
+#' all the organization config rules.
+#' 
+#' Only a master account can call this API.
 #'
 #' @usage
 #' configservice_describe_organization_config_rule_statuses(
 #'   OrganizationConfigRuleNames, Limit, NextToken)
 #'
-#' @param OrganizationConfigRuleNames 
-#' @param Limit 
-#' @param NextToken 
+#' @param OrganizationConfigRuleNames The names of organization config rules for which you want status
+#' details. If you do not specify any names, AWS Config returns details for
+#' all your organization AWS Confg rules.
+#' @param Limit The maximum number of `OrganizationConfigRuleStatuses` returned on each
+#' page. If you do no specify a number, AWS Config uses the default. The
+#' default is 100.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get
+#' the next page of results in a paginated response.
 #'
 #' @section Request syntax:
 #' ```
@@ -1236,17 +1584,29 @@ configservice_describe_organization_config_rule_statuses <- function(Organizatio
 }
 .configservice$operations$describe_organization_config_rule_statuses <- configservice_describe_organization_config_rule_statuses
 
-#' Describe organization config rules
+#' Returns a list of organization config rules
 #'
+#' Returns a list of organization config rules.
 #' 
+#' When you specify the limit and the next token, you receive a paginated
+#' response. Limit and next token are not applicable if you specify
+#' organization config rule names. It is only applicable, when you request
+#' all the organization config rules.
+#' 
+#' Only a master account can call this API.
 #'
 #' @usage
 #' configservice_describe_organization_config_rules(
 #'   OrganizationConfigRuleNames, Limit, NextToken)
 #'
-#' @param OrganizationConfigRuleNames 
-#' @param Limit 
-#' @param NextToken 
+#' @param OrganizationConfigRuleNames The names of organization config rules for which you want details. If
+#' you do not specify any names, AWS Config returns details for all your
+#' organization config rules.
+#' @param Limit The maximum number of organization config rules returned on each page.
+#' If you do no specify a number, AWS Config uses the default. The default
+#' is 100.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get
+#' the next page of results in a paginated response.
 #'
 #' @section Request syntax:
 #' ```
@@ -1279,6 +1639,122 @@ configservice_describe_organization_config_rules <- function(OrganizationConfigR
 }
 .configservice$operations$describe_organization_config_rules <- configservice_describe_organization_config_rules
 
+#' Provides organization conformance pack deployment status for an
+#' organization
+#'
+#' Provides organization conformance pack deployment status for an
+#' organization.
+#' 
+#' The status is not considered successful until organization conformance
+#' pack is successfully deployed in all the member accounts with an
+#' exception of excluded accounts.
+#' 
+#' When you specify the limit and the next token, you receive a paginated
+#' response. Limit and next token are not applicable if you specify
+#' organization conformance pack names. They are only applicable, when you
+#' request all the organization conformance packs.
+#' 
+#' Only a master account can call this API.
+#'
+#' @usage
+#' configservice_describe_organization_conformance_pack_statuses(
+#'   OrganizationConformancePackNames, Limit, NextToken)
+#'
+#' @param OrganizationConformancePackNames The names of organization conformance packs for which you want status
+#' details. If you do not specify any names, AWS Config returns details for
+#' all your organization conformance packs.
+#' @param Limit The maximum number of OrganizationConformancePackStatuses returned on
+#' each page. If you do no specify a number, AWS Config uses the default.
+#' The default is 100.
+#' @param NextToken The nextToken string returned on a previous page that you use to get the
+#' next page of results in a paginated response.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_organization_conformance_pack_statuses(
+#'   OrganizationConformancePackNames = list(
+#'     "string"
+#'   ),
+#'   Limit = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_describe_organization_conformance_pack_statuses
+configservice_describe_organization_conformance_pack_statuses <- function(OrganizationConformancePackNames = NULL, Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeOrganizationConformancePackStatuses",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$describe_organization_conformance_pack_statuses_input(OrganizationConformancePackNames = OrganizationConformancePackNames, Limit = Limit, NextToken = NextToken)
+  output <- .configservice$describe_organization_conformance_pack_statuses_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$describe_organization_conformance_pack_statuses <- configservice_describe_organization_conformance_pack_statuses
+
+#' Returns a list of organization conformance packs
+#'
+#' Returns a list of organization conformance packs.
+#' 
+#' When you specify the limit and the next token, you receive a paginated
+#' response.
+#' 
+#' Limit and next token are not applicable if you specify organization
+#' conformance packs names. They are only applicable, when you request all
+#' the organization conformance packs.
+#' 
+#' Only a master account can call this API.
+#'
+#' @usage
+#' configservice_describe_organization_conformance_packs(
+#'   OrganizationConformancePackNames, Limit, NextToken)
+#'
+#' @param OrganizationConformancePackNames The name that you assign to an organization conformance pack.
+#' @param Limit The maximum number of organization config packs returned on each page.
+#' If you do no specify a number, AWS Config uses the default. The default
+#' is 100.
+#' @param NextToken The nextToken string returned on a previous page that you use to get the
+#' next page of results in a paginated response.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_organization_conformance_packs(
+#'   OrganizationConformancePackNames = list(
+#'     "string"
+#'   ),
+#'   Limit = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_describe_organization_conformance_packs
+configservice_describe_organization_conformance_packs <- function(OrganizationConformancePackNames = NULL, Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeOrganizationConformancePacks",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$describe_organization_conformance_packs_input(OrganizationConformancePackNames = OrganizationConformancePackNames, Limit = Limit, NextToken = NextToken)
+  output <- .configservice$describe_organization_conformance_packs_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$describe_organization_conformance_packs <- configservice_describe_organization_conformance_packs
+
 #' Returns a list of all pending aggregation requests
 #'
 #' Returns a list of all pending aggregation requests.
@@ -1288,8 +1764,8 @@ configservice_describe_organization_config_rules <- function(OrganizationConfigR
 #'
 #' @param Limit The maximum number of evaluation results returned on each page. The
 #' default is maximum. If you specify 0, AWS Config uses the default.
-#' @param NextToken The nextToken string returned on a previous page that you use to get the
-#' next page of results in a paginated response.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get
+#' the next page of results in a paginated response.
 #'
 #' @section Request syntax:
 #' ```
@@ -1358,6 +1834,68 @@ configservice_describe_remediation_configurations <- function(ConfigRuleNames) {
 }
 .configservice$operations$describe_remediation_configurations <- configservice_describe_remediation_configurations
 
+#' Returns the details of one or more remediation exceptions
+#'
+#' Returns the details of one or more remediation exceptions. A detailed
+#' view of a remediation exception for a set of resources that includes an
+#' explanation of an exception and the time when the exception will be
+#' deleted. When you specify the limit and the next token, you receive a
+#' paginated response.
+#' 
+#' When you specify the limit and the next token, you receive a paginated
+#' response.
+#' 
+#' Limit and next token are not applicable if you request resources in
+#' batch. It is only applicable, when you request all resources.
+#'
+#' @usage
+#' configservice_describe_remediation_exceptions(ConfigRuleName,
+#'   ResourceKeys, Limit, NextToken)
+#'
+#' @param ConfigRuleName &#91;required&#93; The name of the AWS Config rule.
+#' @param ResourceKeys An exception list of resource exception keys to be processed with the
+#' current request. AWS Config adds exception for each resource key. For
+#' example, AWS Config adds 3 exceptions for 3 resource keys.
+#' @param Limit The maximum number of RemediationExceptionResourceKey returned on each
+#' page. The default is 25. If you specify 0, AWS Config uses the default.
+#' @param NextToken The `nextToken` string returned in a previous request that you use to
+#' request the next page of results in a paginated response.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_remediation_exceptions(
+#'   ConfigRuleName = "string",
+#'   ResourceKeys = list(
+#'     list(
+#'       ResourceType = "string",
+#'       ResourceId = "string"
+#'     )
+#'   ),
+#'   Limit = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_describe_remediation_exceptions
+configservice_describe_remediation_exceptions <- function(ConfigRuleName, ResourceKeys = NULL, Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeRemediationExceptions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$describe_remediation_exceptions_input(ConfigRuleName = ConfigRuleName, ResourceKeys = ResourceKeys, Limit = Limit, NextToken = NextToken)
+  output <- .configservice$describe_remediation_exceptions_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$describe_remediation_exceptions <- configservice_describe_remediation_exceptions
+
 #' Provides a detailed view of a Remediation Execution for a set of
 #' resources including state, timestamps for when steps for the remediation
 #' execution occur, and any error messages for steps that have failed
@@ -1387,7 +1925,7 @@ configservice_describe_remediation_configurations <- function(ConfigRuleNames) {
 #'   ConfigRuleName = "string",
 #'   ResourceKeys = list(
 #'     list(
-#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::EventSubscription"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::S3::Bucket"|"AWS::SSM::ManagedInstanceInventory"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::DynamoDB::Table"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::WAF::RuleGroup"|"AWS::WAFRegional::RuleGroup"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::CodePipeline::Pipeline",
+#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBParameterGroup"|"AWS::RDS::DBOptionGroup"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterParameterGroup"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Alias"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::MobileHub::Project"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::LicenseManager::LicenseConfiguration"|"AWS::ApiGateway::DomainName"|"AWS::ApiGateway::Method"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::DomainName"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio",
 #'       resourceId = "string"
 #'     )
 #'   ),
@@ -1477,7 +2015,7 @@ configservice_describe_retention_configurations <- function(RetentionConfigurati
 #' whether each resource complies with the rule.
 #' 
 #' The results can return an empty result page. But if you have a
-#' nextToken, the results are displayed on the next page.
+#' `nextToken`, the results are displayed on the next page.
 #'
 #' @usage
 #' configservice_get_aggregate_compliance_details_by_config_rule(
@@ -1497,8 +2035,8 @@ configservice_describe_retention_configurations <- function(RetentionConfigurati
 #' @param Limit The maximum number of evaluation results returned on each page. The
 #' default is 50. You cannot specify a number greater than 100. If you
 #' specify 0, AWS Config uses the default.
-#' @param NextToken The nextToken string returned on a previous page that you use to get the
-#' next page of results in a paginated response.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get
+#' the next page of results in a paginated response.
 #'
 #' @section Request syntax:
 #' ```
@@ -1553,8 +2091,8 @@ configservice_get_aggregate_compliance_details_by_config_rule <- function(Config
 #' @param Limit The maximum number of evaluation results returned on each page. The
 #' default is 1000. You cannot specify a number greater than 1000. If you
 #' specify 0, AWS Config uses the default.
-#' @param NextToken The nextToken string returned on a previous page that you use to get the
-#' next page of results in a paginated response.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get
+#' the next page of results in a paginated response.
 #'
 #' @section Request syntax:
 #' ```
@@ -1621,7 +2159,7 @@ configservice_get_aggregate_config_rule_compliance_summary <- function(Configura
 #' svc$get_aggregate_discovered_resource_counts(
 #'   ConfigurationAggregatorName = "string",
 #'   Filters = list(
-#'     ResourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::EventSubscription"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::S3::Bucket"|"AWS::SSM::ManagedInstanceInventory"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::DynamoDB::Table"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::WAF::RuleGroup"|"AWS::WAFRegional::RuleGroup"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::CodePipeline::Pipeline",
+#'     ResourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBParameterGroup"|"AWS::RDS::DBOptionGroup"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterParameterGroup"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Alias"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::MobileHub::Project"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::LicenseManager::LicenseConfiguration"|"AWS::ApiGateway::DomainName"|"AWS::ApiGateway::Method"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::DomainName"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio",
 #'     AccountId = "string",
 #'     Region = "string"
 #'   ),
@@ -1672,7 +2210,7 @@ configservice_get_aggregate_discovered_resource_counts <- function(Configuration
 #'     SourceAccountId = "string",
 #'     SourceRegion = "string",
 #'     ResourceId = "string",
-#'     ResourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::EventSubscription"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::S3::Bucket"|"AWS::SSM::ManagedInstanceInventory"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::DynamoDB::Table"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::WAF::RuleGroup"|"AWS::WAFRegional::RuleGroup"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::CodePipeline::Pipeline",
+#'     ResourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBParameterGroup"|"AWS::RDS::DBOptionGroup"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterParameterGroup"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Alias"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::MobileHub::Project"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::LicenseManager::LicenseConfiguration"|"AWS::ApiGateway::DomainName"|"AWS::ApiGateway::Method"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::DomainName"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio",
 #'     ResourceName = "string"
 #'   )
 #' )
@@ -1886,6 +2424,108 @@ configservice_get_compliance_summary_by_resource_type <- function(ResourceTypes 
 }
 .configservice$operations$get_compliance_summary_by_resource_type <- configservice_get_compliance_summary_by_resource_type
 
+#' Returns compliance details of a conformance pack for all AWS resources
+#' that are monitered by conformance pack
+#'
+#' Returns compliance details of a conformance pack for all AWS resources
+#' that are monitered by conformance pack.
+#'
+#' @usage
+#' configservice_get_conformance_pack_compliance_details(
+#'   ConformancePackName, Filters, Limit, NextToken)
+#'
+#' @param ConformancePackName &#91;required&#93; Name of the conformance pack.
+#' @param Filters A `ConformancePackEvaluationFilters` object.
+#' @param Limit The maximum number of evaluation results returned on each page. If you
+#' do no specify a number, AWS Config uses the default. The default is 100.
+#' @param NextToken The `nextToken` string returned in a previous request that you use to
+#' request the next page of results in a paginated response.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_conformance_pack_compliance_details(
+#'   ConformancePackName = "string",
+#'   Filters = list(
+#'     ConfigRuleNames = list(
+#'       "string"
+#'     ),
+#'     ComplianceType = "COMPLIANT"|"NON_COMPLIANT",
+#'     ResourceType = "string",
+#'     ResourceIds = list(
+#'       "string"
+#'     )
+#'   ),
+#'   Limit = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_get_conformance_pack_compliance_details
+configservice_get_conformance_pack_compliance_details <- function(ConformancePackName, Filters = NULL, Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetConformancePackComplianceDetails",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$get_conformance_pack_compliance_details_input(ConformancePackName = ConformancePackName, Filters = Filters, Limit = Limit, NextToken = NextToken)
+  output <- .configservice$get_conformance_pack_compliance_details_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$get_conformance_pack_compliance_details <- configservice_get_conformance_pack_compliance_details
+
+#' Returns compliance details for the conformance pack based on the
+#' cumulative compliance results of all the rules in that conformance pack
+#'
+#' Returns compliance details for the conformance pack based on the
+#' cumulative compliance results of all the rules in that conformance pack.
+#'
+#' @usage
+#' configservice_get_conformance_pack_compliance_summary(
+#'   ConformancePackNames, Limit, NextToken)
+#'
+#' @param ConformancePackNames &#91;required&#93; Names of conformance packs.
+#' @param Limit The maximum number of conformance packs returned on each page.
+#' @param NextToken The nextToken string returned on a previous page that you use to get the
+#' next page of results in a paginated response.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_conformance_pack_compliance_summary(
+#'   ConformancePackNames = list(
+#'     "string"
+#'   ),
+#'   Limit = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_get_conformance_pack_compliance_summary
+configservice_get_conformance_pack_compliance_summary <- function(ConformancePackNames, Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetConformancePackComplianceSummary",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$get_conformance_pack_compliance_summary_input(ConformancePackNames = ConformancePackNames, Limit = Limit, NextToken = NextToken)
+  output <- .configservice$get_conformance_pack_compliance_summary_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$get_conformance_pack_compliance_summary <- configservice_get_conformance_pack_compliance_summary
+
 #' Returns the resource types, the number of each resource type, and the
 #' total number of resources that AWS Config is recording in this region
 #' for your AWS account
@@ -1981,18 +2621,26 @@ configservice_get_discovered_resource_counts <- function(resourceTypes = NULL, l
 }
 .configservice$operations$get_discovered_resource_counts <- configservice_get_discovered_resource_counts
 
-#' Get organization config rule detailed status
+#' Returns detailed status for each member account within an organization
+#' for a given organization config rule
 #'
+#' Returns detailed status for each member account within an organization
+#' for a given organization config rule.
 #' 
+#' Only a master account can call this API.
 #'
 #' @usage
 #' configservice_get_organization_config_rule_detailed_status(
 #'   OrganizationConfigRuleName, Filters, Limit, NextToken)
 #'
-#' @param OrganizationConfigRuleName &#91;required&#93; 
-#' @param Filters 
-#' @param Limit 
-#' @param NextToken 
+#' @param OrganizationConfigRuleName &#91;required&#93; The name of organization config rule for which you want status details
+#' for member accounts.
+#' @param Filters A `StatusDetailFilters` object.
+#' @param Limit The maximum number of `OrganizationConfigRuleDetailedStatus` returned on
+#' each page. If you do not specify a number, AWS Config uses the default.
+#' The default is 100.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get
+#' the next page of results in a paginated response.
 #'
 #' @section Request syntax:
 #' ```
@@ -2000,7 +2648,7 @@ configservice_get_discovered_resource_counts <- function(resourceTypes = NULL, l
 #'   OrganizationConfigRuleName = "string",
 #'   Filters = list(
 #'     AccountId = "string",
-#'     MemberAccountRuleStatus = "CREATE_SUCCESSFUL"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"UPDATE_IN_PROGRESS"|"DELETE_SUCCESSFUL"|"DELETE_FAILED"|"DELETE_IN_PROGRESS"
+#'     MemberAccountRuleStatus = "CREATE_SUCCESSFUL"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_SUCCESSFUL"|"DELETE_FAILED"|"DELETE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"
 #'   ),
 #'   Limit = 123,
 #'   NextToken = "string"
@@ -2026,6 +2674,60 @@ configservice_get_organization_config_rule_detailed_status <- function(Organizat
   return(response)
 }
 .configservice$operations$get_organization_config_rule_detailed_status <- configservice_get_organization_config_rule_detailed_status
+
+#' Returns detailed status for each member account within an organization
+#' for a given organization conformance pack
+#'
+#' Returns detailed status for each member account within an organization
+#' for a given organization conformance pack.
+#' 
+#' Only a master account can call this API.
+#'
+#' @usage
+#' configservice_get_organization_conformance_pack_detailed_status(
+#'   OrganizationConformancePackName, Filters, Limit, NextToken)
+#'
+#' @param OrganizationConformancePackName &#91;required&#93; The name of organization conformance pack for which you want status
+#' details for member accounts.
+#' @param Filters An `OrganizationResourceDetailedStatusFilters` object.
+#' @param Limit The maximum number of `OrganizationConformancePackDetailedStatuses`
+#' returned on each page. If you do not specify a number, AWS Config uses
+#' the default. The default is 100.
+#' @param NextToken The nextToken string returned on a previous page that you use to get the
+#' next page of results in a paginated response.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_organization_conformance_pack_detailed_status(
+#'   OrganizationConformancePackName = "string",
+#'   Filters = list(
+#'     AccountId = "string",
+#'     Status = "CREATE_SUCCESSFUL"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_SUCCESSFUL"|"DELETE_FAILED"|"DELETE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"
+#'   ),
+#'   Limit = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_get_organization_conformance_pack_detailed_status
+configservice_get_organization_conformance_pack_detailed_status <- function(OrganizationConformancePackName, Filters = NULL, Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetOrganizationConformancePackDetailedStatus",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$get_organization_conformance_pack_detailed_status_input(OrganizationConformancePackName = OrganizationConformancePackName, Filters = Filters, Limit = Limit, NextToken = NextToken)
+  output <- .configservice$get_organization_conformance_pack_detailed_status_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$get_organization_conformance_pack_detailed_status <- configservice_get_organization_conformance_pack_detailed_status
 
 #' Returns a list of configuration items for the specified resource
 #'
@@ -2069,7 +2771,7 @@ configservice_get_organization_config_rule_detailed_status <- function(Organizat
 #' @section Request syntax:
 #' ```
 #' svc$get_resource_config_history(
-#'   resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::EventSubscription"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::S3::Bucket"|"AWS::SSM::ManagedInstanceInventory"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::DynamoDB::Table"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::WAF::RuleGroup"|"AWS::WAFRegional::RuleGroup"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::CodePipeline::Pipeline",
+#'   resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBParameterGroup"|"AWS::RDS::DBOptionGroup"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterParameterGroup"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Alias"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::MobileHub::Project"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::LicenseManager::LicenseConfiguration"|"AWS::ApiGateway::DomainName"|"AWS::ApiGateway::Method"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::DomainName"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio",
 #'   resourceId = "string",
 #'   laterTime = as.POSIXct(
 #'     "2015-01-01"
@@ -2135,7 +2837,7 @@ configservice_get_resource_config_history <- function(resourceType, resourceId, 
 #' ```
 #' svc$list_aggregate_discovered_resources(
 #'   ConfigurationAggregatorName = "string",
-#'   ResourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::EventSubscription"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::S3::Bucket"|"AWS::SSM::ManagedInstanceInventory"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::DynamoDB::Table"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::WAF::RuleGroup"|"AWS::WAFRegional::RuleGroup"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::CodePipeline::Pipeline",
+#'   ResourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBParameterGroup"|"AWS::RDS::DBOptionGroup"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterParameterGroup"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Alias"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::MobileHub::Project"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::LicenseManager::LicenseConfiguration"|"AWS::ApiGateway::DomainName"|"AWS::ApiGateway::Method"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::DomainName"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio",
 #'   Filters = list(
 #'     AccountId = "string",
 #'     ResourceId = "string",
@@ -2209,7 +2911,7 @@ configservice_list_aggregate_discovered_resources <- function(ConfigurationAggre
 #' @section Request syntax:
 #' ```
 #' svc$list_discovered_resources(
-#'   resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::EventSubscription"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::S3::Bucket"|"AWS::SSM::ManagedInstanceInventory"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::DynamoDB::Table"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::WAF::RuleGroup"|"AWS::WAFRegional::RuleGroup"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::CodePipeline::Pipeline",
+#'   resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBParameterGroup"|"AWS::RDS::DBOptionGroup"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterParameterGroup"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Alias"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::MobileHub::Project"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::LicenseManager::LicenseConfiguration"|"AWS::ApiGateway::DomainName"|"AWS::ApiGateway::Method"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::DomainName"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio",
 #'   resourceIds = list(
 #'     "string"
 #'   ),
@@ -2253,8 +2955,8 @@ configservice_list_discovered_resources <- function(resourceType, resourceIds = 
 #' @param Limit The maximum number of tags returned on each page. The limit maximum is
 #' 50. You cannot specify a number greater than 50. If you specify 0, AWS
 #' Config uses the default.
-#' @param NextToken The nextToken string returned on a previous page that you use to get the
-#' next page of results in a paginated response.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get
+#' the next page of results in a paginated response.
 #'
 #' @section Request syntax:
 #' ```
@@ -2297,7 +2999,7 @@ configservice_list_tags_for_resource <- function(ResourceArn, Limit = NULL, Next
 #'
 #' @param AuthorizedAccountId &#91;required&#93; The 12-digit account ID of the account authorized to aggregate data.
 #' @param AuthorizedAwsRegion &#91;required&#93; The region authorized to collect aggregated data.
-#' @param Tags 
+#' @param Tags An array of tag object.
 #'
 #' @section Request syntax:
 #' ```
@@ -2380,7 +3082,7 @@ configservice_put_aggregation_authorization <- function(AuthorizedAccountId, Aut
 #' configservice_put_config_rule(ConfigRule, Tags)
 #'
 #' @param ConfigRule &#91;required&#93; The rule that you want to add to your account.
-#' @param Tags 
+#' @param Tags An array of tag object.
 #'
 #' @section Request syntax:
 #' ```
@@ -2465,7 +3167,7 @@ configservice_put_config_rule <- function(ConfigRule, Tags = NULL) {
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param AccountAggregationSources A list of AccountAggregationSource object.
 #' @param OrganizationAggregationSource An OrganizationAggregationSource object.
-#' @param Tags 
+#' @param Tags An array of tag object.
 #'
 #' @section Request syntax:
 #' ```
@@ -2551,7 +3253,7 @@ configservice_put_configuration_aggregator <- function(ConfigurationAggregatorNa
 #'       allSupported = TRUE|FALSE,
 #'       includeGlobalResourceTypes = TRUE|FALSE,
 #'       resourceTypes = list(
-#'         "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::EventSubscription"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::S3::Bucket"|"AWS::SSM::ManagedInstanceInventory"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::DynamoDB::Table"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::WAF::RuleGroup"|"AWS::WAFRegional::RuleGroup"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::CodePipeline::Pipeline"
+#'         "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBParameterGroup"|"AWS::RDS::DBOptionGroup"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterParameterGroup"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Alias"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::MobileHub::Project"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::LicenseManager::LicenseConfiguration"|"AWS::ApiGateway::DomainName"|"AWS::ApiGateway::Method"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::DomainName"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"
 #'       )
 #'     )
 #'   )
@@ -2577,6 +3279,81 @@ configservice_put_configuration_recorder <- function(ConfigurationRecorder) {
   return(response)
 }
 .configservice$operations$put_configuration_recorder <- configservice_put_configuration_recorder
+
+#' Creates or updates a conformance pack
+#'
+#' Creates or updates a conformance pack. A conformance pack is a
+#' collection of AWS Config rules that can be easily deployed in an account
+#' and a region and across AWS Organization.
+#' 
+#' This API creates a service linked role `AWSServiceRoleForConfigConforms`
+#' in your account. The service linked role is created only when the role
+#' does not exist in your account. AWS Config verifies the existence of
+#' role with `GetRole` action.
+#' 
+#' You must specify either the `TemplateS3Uri` or the `TemplateBody`
+#' parameter, but not both. If you provide both AWS Config uses the
+#' `TemplateS3Uri` parameter and ignores the `TemplateBody` parameter.
+#'
+#' @usage
+#' configservice_put_conformance_pack(ConformancePackName, TemplateS3Uri,
+#'   TemplateBody, DeliveryS3Bucket, DeliveryS3KeyPrefix,
+#'   ConformancePackInputParameters)
+#'
+#' @param ConformancePackName &#91;required&#93; Name of the conformance pack you want to create.
+#' @param TemplateS3Uri Location of file containing the template body
+#' (`s3://bucketname/prefix`). The uri must point to the conformance pack
+#' template (max size: 300 KB) that is located in an Amazon S3 bucket in
+#' the same region as the conformance pack.
+#' 
+#' You must have access to read Amazon S3 bucket.
+#' @param TemplateBody A string containing full conformance pack template body. Structure
+#' containing the template body with a minimum length of 1 byte and a
+#' maximum length of 51,200 bytes.
+#' 
+#' You can only use a YAML template with one resource type, that is, config
+#' rule and a remediation action.
+#' @param DeliveryS3Bucket &#91;required&#93; AWS Config stores intermediate files while processing conformance pack
+#' template.
+#' @param DeliveryS3KeyPrefix The prefix for the Amazon S3 bucket.
+#' @param ConformancePackInputParameters A list of `ConformancePackInputParameter` objects.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_conformance_pack(
+#'   ConformancePackName = "string",
+#'   TemplateS3Uri = "string",
+#'   TemplateBody = "string",
+#'   DeliveryS3Bucket = "string",
+#'   DeliveryS3KeyPrefix = "string",
+#'   ConformancePackInputParameters = list(
+#'     list(
+#'       ParameterName = "string",
+#'       ParameterValue = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_put_conformance_pack
+configservice_put_conformance_pack <- function(ConformancePackName, TemplateS3Uri = NULL, TemplateBody = NULL, DeliveryS3Bucket, DeliveryS3KeyPrefix = NULL, ConformancePackInputParameters = NULL) {
+  op <- new_operation(
+    name = "PutConformancePack",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$put_conformance_pack_input(ConformancePackName = ConformancePackName, TemplateS3Uri = TemplateS3Uri, TemplateBody = TemplateBody, DeliveryS3Bucket = DeliveryS3Bucket, DeliveryS3KeyPrefix = DeliveryS3KeyPrefix, ConformancePackInputParameters = ConformancePackInputParameters)
+  output <- .configservice$put_conformance_pack_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$put_conformance_pack <- configservice_put_conformance_pack
 
 #' Creates a delivery channel object to deliver configuration information
 #' to an Amazon S3 bucket and Amazon SNS topic
@@ -2700,19 +3477,47 @@ configservice_put_evaluations <- function(Evaluations = NULL, ResultToken, TestM
 }
 .configservice$operations$put_evaluations <- configservice_put_evaluations
 
-#' Put organization config rule
+#' Adds or updates organization config rule for your entire organization
+#' evaluating whether your AWS resources comply with your desired
+#' configurations
 #'
+#' Adds or updates organization config rule for your entire organization
+#' evaluating whether your AWS resources comply with your desired
+#' configurations. Only a master account can create or update an
+#' organization config rule.
 #' 
+#' This API enables organization service access through the
+#' `EnableAWSServiceAccess` action and creates a service linked role
+#' `AWSServiceRoleForConfigMultiAccountSetup` in the master account of your
+#' organization. The service linked role is created only when the role does
+#' not exist in the master account. AWS Config verifies the existence of
+#' role with `GetRole` action.
+#' 
+#' You can use this action to create both custom AWS Config rules and AWS
+#' managed Config rules. If you are adding a new custom AWS Config rule,
+#' you must first create AWS Lambda function in the master account that the
+#' rule invokes to evaluate your resources. When you use the
+#' `PutOrganizationConfigRule` action to add the rule to AWS Config, you
+#' must specify the Amazon Resource Name (ARN) that AWS Lambda assigns to
+#' the function. If you are adding an AWS managed Config rule, specify the
+#' rule\'s identifier for the `RuleIdentifier` key.
+#' 
+#' The maximum number of organization config rules that AWS Config supports
+#' is 150.
+#' 
+#' Specify either `OrganizationCustomRuleMetadata` or
+#' `OrganizationManagedRuleMetadata`.
 #'
 #' @usage
 #' configservice_put_organization_config_rule(OrganizationConfigRuleName,
 #'   OrganizationManagedRuleMetadata, OrganizationCustomRuleMetadata,
 #'   ExcludedAccounts)
 #'
-#' @param OrganizationConfigRuleName &#91;required&#93; 
-#' @param OrganizationManagedRuleMetadata 
-#' @param OrganizationCustomRuleMetadata 
-#' @param ExcludedAccounts 
+#' @param OrganizationConfigRuleName &#91;required&#93; The name that you assign to an organization config rule.
+#' @param OrganizationManagedRuleMetadata An `OrganizationManagedRuleMetadata` object.
+#' @param OrganizationCustomRuleMetadata An `OrganizationCustomRuleMetadata` object.
+#' @param ExcludedAccounts A comma-separated list of accounts that you want to exclude from an
+#' organization config rule.
 #'
 #' @section Request syntax:
 #' ```
@@ -2771,6 +3576,96 @@ configservice_put_organization_config_rule <- function(OrganizationConfigRuleNam
 }
 .configservice$operations$put_organization_config_rule <- configservice_put_organization_config_rule
 
+#' Deploys conformance packs across member accounts in an AWS Organization
+#'
+#' Deploys conformance packs across member accounts in an AWS Organization.
+#' 
+#' This API enables organization service access for
+#' `config-multiaccountsetup.amazonaws.com` through the
+#' `EnableAWSServiceAccess` action and creates a service linked role
+#' `AWSServiceRoleForConfigMultiAccountSetup` in the master account of your
+#' organization. The service linked role is created only when the role does
+#' not exist in the master account. AWS Config verifies the existence of
+#' role with GetRole action.
+#' 
+#' You must specify either the `TemplateS3Uri` or the `TemplateBody`
+#' parameter, but not both. If you provide both AWS Config uses the
+#' `TemplateS3Uri` parameter and ignores the `TemplateBody` parameter.
+#' 
+#' AWS Config sets the state of a conformance pack to CREATE\\_IN\\_PROGRESS
+#' and UPDATE\\_IN\\_PROGRESS until the confomance pack is created or
+#' updated. You cannot update a conformance pack while it is in this state.
+#' 
+#' You can create 6 conformance packs with 25 AWS Config rules in each
+#' pack.
+#'
+#' @usage
+#' configservice_put_organization_conformance_pack(
+#'   OrganizationConformancePackName, TemplateS3Uri, TemplateBody,
+#'   DeliveryS3Bucket, DeliveryS3KeyPrefix, ConformancePackInputParameters,
+#'   ExcludedAccounts)
+#'
+#' @param OrganizationConformancePackName &#91;required&#93; Name of the organization conformance pack you want to create.
+#' @param TemplateS3Uri Location of file containing the template body. The uri must point to the
+#' conformance pack template (max size: 300 KB).
+#' 
+#' You must have access to read Amazon S3 bucket.
+#' @param TemplateBody A string containing full conformance pack template body. Structure
+#' containing the template body with a minimum length of 1 byte and a
+#' maximum length of 51,200 bytes.
+#' @param DeliveryS3Bucket &#91;required&#93; Location of an Amazon S3 bucket where AWS Config can deliver evaluation
+#' results. AWS Config stores intermediate files while processing
+#' conformance pack template.
+#' 
+#' The delivery bucket name should start with awsconfigconforms. For
+#' example: \"Resource\": \"arn:aws:s3:::your\\_bucket\\_name/\*\". For more
+#' information, see [Permissions for cross account bucket
+#' access](https://docs.aws.amazon.com/config/latest/developerguide/conformance-pack-organization-apis.html).
+#' @param DeliveryS3KeyPrefix The prefix for the Amazon S3 bucket.
+#' @param ConformancePackInputParameters A list of `ConformancePackInputParameter` objects.
+#' @param ExcludedAccounts A list of AWS accounts to be excluded from an organization conformance
+#' pack while deploying a conformance pack.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_organization_conformance_pack(
+#'   OrganizationConformancePackName = "string",
+#'   TemplateS3Uri = "string",
+#'   TemplateBody = "string",
+#'   DeliveryS3Bucket = "string",
+#'   DeliveryS3KeyPrefix = "string",
+#'   ConformancePackInputParameters = list(
+#'     list(
+#'       ParameterName = "string",
+#'       ParameterValue = "string"
+#'     )
+#'   ),
+#'   ExcludedAccounts = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_put_organization_conformance_pack
+configservice_put_organization_conformance_pack <- function(OrganizationConformancePackName, TemplateS3Uri = NULL, TemplateBody = NULL, DeliveryS3Bucket, DeliveryS3KeyPrefix = NULL, ConformancePackInputParameters = NULL, ExcludedAccounts = NULL) {
+  op <- new_operation(
+    name = "PutOrganizationConformancePack",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$put_organization_conformance_pack_input(OrganizationConformancePackName = OrganizationConformancePackName, TemplateS3Uri = TemplateS3Uri, TemplateBody = TemplateBody, DeliveryS3Bucket = DeliveryS3Bucket, DeliveryS3KeyPrefix = DeliveryS3KeyPrefix, ConformancePackInputParameters = ConformancePackInputParameters, ExcludedAccounts = ExcludedAccounts)
+  output <- .configservice$put_organization_conformance_pack_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$put_organization_conformance_pack <- configservice_put_organization_conformance_pack
+
 #' Adds or updates the remediation configuration with a specific AWS Config
 #' rule with the selected target or action
 #'
@@ -2807,7 +3702,18 @@ configservice_put_organization_config_rule <- function(OrganizationConfigRuleNam
 #'           )
 #'         )
 #'       ),
-#'       ResourceType = "string"
+#'       ResourceType = "string",
+#'       Automatic = TRUE|FALSE,
+#'       ExecutionControls = list(
+#'         SsmControls = list(
+#'           ConcurrentExecutionRatePercentage = 123,
+#'           ErrorPercentage = 123
+#'         )
+#'       ),
+#'       MaximumAutomaticAttempts = 123,
+#'       RetryAttemptSeconds = 123,
+#'       Arn = "string",
+#'       CreatedByService = "string"
 #'     )
 #'   )
 #' )
@@ -2832,6 +3738,133 @@ configservice_put_remediation_configurations <- function(RemediationConfiguratio
   return(response)
 }
 .configservice$operations$put_remediation_configurations <- configservice_put_remediation_configurations
+
+#' A remediation exception is when a specific resource is no longer
+#' considered for auto-remediation
+#'
+#' A remediation exception is when a specific resource is no longer
+#' considered for auto-remediation. This API adds a new exception or
+#' updates an exisiting exception for a specific resource with a specific
+#' AWS Config rule.
+#'
+#' @usage
+#' configservice_put_remediation_exceptions(ConfigRuleName, ResourceKeys,
+#'   Message, ExpirationTime)
+#'
+#' @param ConfigRuleName &#91;required&#93; The name of the AWS Config rule for which you want to create remediation
+#' exception.
+#' @param ResourceKeys &#91;required&#93; An exception list of resource exception keys to be processed with the
+#' current request. AWS Config adds exception for each resource key. For
+#' example, AWS Config adds 3 exceptions for 3 resource keys.
+#' @param Message The message contains an explanation of the exception.
+#' @param ExpirationTime The exception is automatically deleted after the expiration date.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_remediation_exceptions(
+#'   ConfigRuleName = "string",
+#'   ResourceKeys = list(
+#'     list(
+#'       ResourceType = "string",
+#'       ResourceId = "string"
+#'     )
+#'   ),
+#'   Message = "string",
+#'   ExpirationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_put_remediation_exceptions
+configservice_put_remediation_exceptions <- function(ConfigRuleName, ResourceKeys, Message = NULL, ExpirationTime = NULL) {
+  op <- new_operation(
+    name = "PutRemediationExceptions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$put_remediation_exceptions_input(ConfigRuleName = ConfigRuleName, ResourceKeys = ResourceKeys, Message = Message, ExpirationTime = ExpirationTime)
+  output <- .configservice$put_remediation_exceptions_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$put_remediation_exceptions <- configservice_put_remediation_exceptions
+
+#' Records the configuration state for the resource provided in the request
+#'
+#' Records the configuration state for the resource provided in the
+#' request. The configuration state of a resource is represented in AWS
+#' Config as Configuration Items. Once this API records the configuration
+#' item, you can retrieve the list of configuration items for the custom
+#' resource type using existing AWS Config APIs.
+#' 
+#' The custom resource type must be registered with AWS CloudFormation.
+#' This API accepts the configuration item registered with AWS
+#' CloudFormation.
+#' 
+#' When you call this API, AWS Config only stores configuration state of
+#' the resource provided in the request. This API does not change or
+#' remediate the configuration of the resource.
+#'
+#' @usage
+#' configservice_put_resource_config(ResourceType, SchemaVersionId,
+#'   ResourceId, ResourceName, Configuration, Tags)
+#'
+#' @param ResourceType &#91;required&#93; The type of the resource. The custom resource type must be registered
+#' with AWS CloudFormation.
+#' 
+#' You cannot use the organization names "aws", "amzn", "amazon", "alexa",
+#' "custom" with custom resource types. It is the first part of the
+#' ResourceType up to the first ::.
+#' @param SchemaVersionId &#91;required&#93; Version of the schema registered for the ResourceType in AWS
+#' CloudFormation.
+#' @param ResourceId &#91;required&#93; Unique identifier of the resource.
+#' @param ResourceName Name of the resource.
+#' @param Configuration &#91;required&#93; The configuration object of the resource in valid JSON format. It must
+#' match the schema registered with AWS CloudFormation.
+#' 
+#' The configuration JSON must not exceed 64 KB.
+#' @param Tags Tags associated with the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_resource_config(
+#'   ResourceType = "string",
+#'   SchemaVersionId = "string",
+#'   ResourceId = "string",
+#'   ResourceName = "string",
+#'   Configuration = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_put_resource_config
+configservice_put_resource_config <- function(ResourceType, SchemaVersionId, ResourceId, ResourceName = NULL, Configuration, Tags = NULL) {
+  op <- new_operation(
+    name = "PutResourceConfig",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$put_resource_config_input(ResourceType = ResourceType, SchemaVersionId = SchemaVersionId, ResourceId = ResourceId, ResourceName = ResourceName, Configuration = Configuration, Tags = Tags)
+  output <- .configservice$put_resource_config_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$put_resource_config <- configservice_put_resource_config
 
 #' Creates and updates the retention configuration with details about
 #' retention period (number of days) that AWS Config stores your historical
@@ -3071,7 +4104,7 @@ configservice_start_configuration_recorder <- function(ConfigurationRecorderName
 #'   ConfigRuleName = "string",
 #'   ResourceKeys = list(
 #'     list(
-#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::EventSubscription"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::S3::Bucket"|"AWS::SSM::ManagedInstanceInventory"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::DynamoDB::Table"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::WAF::RuleGroup"|"AWS::WAFRegional::RuleGroup"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::CodePipeline::Pipeline",
+#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBParameterGroup"|"AWS::RDS::DBOptionGroup"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterParameterGroup"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Alias"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::MobileHub::Project"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::LicenseManager::LicenseConfiguration"|"AWS::ApiGateway::DomainName"|"AWS::ApiGateway::Method"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::DomainName"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio",
 #'       resourceId = "string"
 #'     )
 #'   )

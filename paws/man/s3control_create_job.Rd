@@ -21,20 +21,20 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{Report}{[required] Configuration parameters for the optional job-completion report.}
 
-\item{ClientRequestToken}{[required] An idempotency token to ensure that you don't accidentally submit the
+\item{ClientRequestToken}{[required] An idempotency token to ensure that you don\'t accidentally submit the
 same request twice. You can use any string up to the maximum length.}
 
 \item{Manifest}{[required] Configuration parameters for the manifest.}
 
 \item{Description}{A description for this job. You can use any string within the permitted
-length. Descriptions don't need to be unique and can be used for
+length. Descriptions don\'t need to be unique and can be used for
 multiple jobs.}
 
 \item{Priority}{[required] The numerical priority for this job. Higher numbers indicate higher
 priority.}
 
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) for the Identity and Access Management
-(IAM) Role that batch operations will use to execute this job's
+(IAM) Role that batch operations will use to execute this job\'s
 operation on each object in the manifest.}
 }
 \description{

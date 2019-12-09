@@ -2,7 +2,7 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_update_document}
 \alias{ssm_update_document}
-\title{The document you want to update}
+\title{Updates one or more values for an SSM document}
 \usage{
 ssm_update_document(Content, Attachments, Name, VersionName,
   DocumentVersion, DocumentFormat, TargetType)
@@ -16,11 +16,11 @@ a document.}
 \item{Name}{[required] The name of the document that you want to update.}
 
 \item{VersionName}{An optional field specifying the version of the artifact you are
-updating with the document. For example, "Release 12, Update 6". This
+updating with the document. For example, \"Release 12, Update 6\". This
 value is unique across all versions of a document, and cannot be
 changed.}
 
-\item{DocumentVersion}{The version of the document that you want to update.}
+\item{DocumentVersion}{(Required) The version of the document that you want to update.}
 
 \item{DocumentFormat}{Specify the document format for the new document version. Systems
 Manager supports JSON and YAML documents. JSON is the default format.}
@@ -28,17 +28,18 @@ Manager supports JSON and YAML documents. JSON is the default format.}
 \item{TargetType}{Specify a new target type for the document.}
 }
 \description{
-The document you want to update.
+Updates one or more values for an SSM document.
 }
 \section{Request syntax}{
 \preformatted{svc$update_document(
   Content = "string",
   Attachments = list(
     list(
-      Key = "SourceUrl",
+      Key = "SourceUrl"|"S3FileUrl",
       Values = list(
         "string"
-      )
+      ),
+      Name = "string"
     )
   ),
   Name = "string",

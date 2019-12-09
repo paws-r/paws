@@ -17,32 +17,32 @@ from the shard.
 
 The following are the valid Amazon Kinesis shard iterator types:
 \itemize{
-\item AT\_SEQUENCE\_NUMBER - Start reading from the position denoted by a
+\item AT\\_SEQUENCE\\_NUMBER - Start reading from the position denoted by a
 specific sequence number, provided in the value
 \code{StartingSequenceNumber}.
-\item AFTER\_SEQUENCE\_NUMBER - Start reading right after the position
+\item AFTER\\_SEQUENCE\\_NUMBER - Start reading right after the position
 denoted by a specific sequence number, provided in the value
 \code{StartingSequenceNumber}.
-\item AT\_TIMESTAMP - Start reading from the position denoted by a
+\item AT\\_TIMESTAMP - Start reading from the position denoted by a
 specific time stamp, provided in the value \code{Timestamp}.
-\item TRIM\_HORIZON - Start reading at the last untrimmed record in the
+\item TRIM\\_HORIZON - Start reading at the last untrimmed record in the
 shard in the system, which is the oldest data record in the shard.
 \item LATEST - Start reading just after the most recent record in the
 shard, so that you always read the most recent data in the shard.
 }}
 
 \item{StartingSequenceNumber}{The sequence number of the data record in the shard from which to start
-reading. Used with shard iterator type AT\_SEQUENCE\_NUMBER and
-AFTER\_SEQUENCE\_NUMBER.}
+reading. Used with shard iterator type AT\\_SEQUENCE\\_NUMBER and
+AFTER\\_SEQUENCE\\_NUMBER.}
 
 \item{Timestamp}{The time stamp of the data record from which to start reading. Used with
-shard iterator type AT\_TIMESTAMP. A time stamp is the Unix epoch date
+shard iterator type AT\\_TIMESTAMP. A time stamp is the Unix epoch date
 with precision in milliseconds. For example,
-\code{2016-04-04T19:58:46.480-00:00} or \code{1459799926.480}. If a record with
+\verb{2016-04-04T19:58:46.480-00:00} or \code{1459799926.480}. If a record with
 this exact time stamp does not exist, the iterator returned is for the
 next (later) record. If the time stamp is older than the current trim
 horizon, the iterator returned is for the oldest untrimmed data record
-(TRIM\_HORIZON).}
+(TRIM\\_HORIZON).}
 }
 \description{
 Gets an Amazon Kinesis shard iterator. A shard iterator expires 5

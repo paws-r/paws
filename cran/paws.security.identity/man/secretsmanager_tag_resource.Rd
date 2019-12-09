@@ -33,11 +33,11 @@ information on how to format a JSON parameter for the various command
 line tool environments, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json}{Using JSON for Parameters}
 in the \emph{AWS CLI User Guide}. For the AWS CLI, you can also use the
 syntax:
-\code{--Tags Key="Key1",Value="Value1",Key="Key2",Value="Value2"\\[,â€¦\\]}}
+\verb{--Tags Key="Key1",Value="Value1",Key="Key2",Value="Value2"\\\[,â€¦\\\]}}
 }
 \description{
 Attaches one or more tags, each consisting of a key name and a value, to
-the specified secret. Tags are part of the secret's overall metadata,
+the specified secret. Tags are part of the secret\'s overall metadata,
 and are not associated with any specific version of the secret. This
 operation only appends tags to the existing list of tags. To remove
 tags, you must use UntagResource.
@@ -49,15 +49,15 @@ The following basic restrictions apply to tags:
 \item Maximum key length---127 Unicode characters in UTF-8
 \item Maximum value length---255 Unicode characters in UTF-8
 \item Tag keys and values are case sensitive.
-\item Do not use the \code{aws:} prefix in your tag names or values because it
-is reserved for AWS use. You can't edit or delete tag names or
+\item Do not use the \verb{aws:} prefix in your tag names or values because it
+is reserved for AWS use. You can\'t edit or delete tag names or
 values with this prefix. Tags with this prefix do not count against
 your tags per secret limit.
 \item If your tagging schema will be used across multiple services and
 resources, remember that other services might have restrictions on
 allowed characters. Generally allowed characters are: letters,
 spaces, and numbers representable in UTF-8, plus the following
-special characters: + - = . \_ : / @.
+special characters: + - = . \\_ : / @.
 }
 
 If you use tags as part of your security strategy, then adding or

@@ -14,8 +14,8 @@ ListGeoMatchSets.}
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
-Permanently deletes a GeoMatchSet. You can't delete a \code{GeoMatchSet} if
-it's still used in any \code{Rules} or if it still includes any countries.
+Permanently deletes a GeoMatchSet. You can\'t delete a \code{GeoMatchSet} if
+it\'s still used in any \code{Rules} or if it still includes any countries.
 }
 \details{
 If you just want to remove a \code{GeoMatchSet} from a \code{Rule}, use

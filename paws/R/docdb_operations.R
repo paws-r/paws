@@ -373,7 +373,7 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' 
 #' Constraints:
 #' 
-#' -   Must be from 1 to 16 letters or numbers.
+#' -   Must be from 1 to 63 letters or numbers.
 #' 
 #' -   The first character must be a letter.
 #' 
@@ -382,7 +382,7 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' printable ASCII character except forward slash (/), double quote (\"),
 #' or the \"at\" symbol (@).
 #' 
-#' Constraints: Must contain from 8 to 41 characters.
+#' Constraints: Must contain from 8 to 100 characters.
 #' @param PreferredBackupWindow The daily time range during which automated backups are created if
 #' automated backups are enabled using the `BackupRetentionPeriod`
 #' parameter.
@@ -692,7 +692,8 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #' instance during the maintenance window.
 #' 
 #' Default: `true`
-#' @param Tags The tags to be assigned to the DB instance.
+#' @param Tags The tags to be assigned to the DB instance. You can assign up to 10 tags
+#' to an instance.
 #' @param DBClusterIdentifier &#91;required&#93; The identifier of the DB cluster that the instance will belong to.
 #' @param PromotionTier A value that specifies the order in which an Amazon DocumentDB replica
 #' is promoted to the primary instance after a failure of the existing
@@ -1042,6 +1043,79 @@ docdb_delete_db_subnet_group <- function(DBSubnetGroupName) {
   return(response)
 }
 .docdb$operations$delete_db_subnet_group <- docdb_delete_db_subnet_group
+
+#' Returns a list of certificate authority (CA) certificates provided by
+#' Amazon RDS for this AWS account
+#'
+#' Returns a list of certificate authority (CA) certificates provided by
+#' Amazon RDS for this AWS account.
+#'
+#' @usage
+#' docdb_describe_certificates(CertificateIdentifier, Filters, MaxRecords,
+#'   Marker)
+#'
+#' @param CertificateIdentifier The user-supplied certificate identifier. If this parameter is
+#' specified, information for only the specified certificate is returned.
+#' If this parameter is omitted, a list of up to `MaxRecords` certificates
+#' is returned. This parameter is not case sensitive.
+#' 
+#' Constraints
+#' 
+#' -   Must match an existing `CertificateIdentifier`.
+#' @param Filters This parameter is not currently supported.
+#' @param MaxRecords The maximum number of records to include in the response. If more
+#' records exist than the specified `MaxRecords` value, a pagination token
+#' called a marker is included in the response so that the remaining
+#' results can be retrieved.
+#' 
+#' Default: 100
+#' 
+#' Constraints:
+#' 
+#' -   Minimum: 20
+#' 
+#' -   Maximum: 100
+#' @param Marker An optional pagination token provided by a previous
+#' `DescribeCertificates` request. If this parameter is specified, the
+#' response includes only records beyond the marker, up to the value
+#' specified by `MaxRecords`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_certificates(
+#'   CertificateIdentifier = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxRecords = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_describe_certificates
+docdb_describe_certificates <- function(CertificateIdentifier = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "DescribeCertificates",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .docdb$describe_certificates_input(CertificateIdentifier = CertificateIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .docdb$describe_certificates_output()
+  config <- get_config()
+  svc <- .docdb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$describe_certificates <- docdb_describe_certificates
 
 #' Returns a list of DBClusterParameterGroup descriptions
 #'
@@ -2166,7 +2240,7 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' printable ASCII character except forward slash (/), double quote (\"),
 #' or the \"at\" symbol (@).
 #' 
-#' Constraints: Must contain from 8 to 41 characters.
+#' Constraints: Must contain from 8 to 100 characters.
 #' @param PreferredBackupWindow The daily time range during which automated backups are created if
 #' automated backups are enabled, using the `BackupRetentionPeriod`
 #' parameter.
@@ -2414,7 +2488,7 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' @usage
 #' docdb_modify_db_instance(DBInstanceIdentifier, DBInstanceClass,
 #'   ApplyImmediately, PreferredMaintenanceWindow, AutoMinorVersionUpgrade,
-#'   NewDBInstanceIdentifier, PromotionTier)
+#'   NewDBInstanceIdentifier, CACertificateIdentifier, PromotionTier)
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier. This value is stored as a lowercase string.
 #' 
@@ -2478,6 +2552,7 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `mydbinstance`
+#' @param CACertificateIdentifier Indicates the certificate that needs to be associated with the instance.
 #' @param PromotionTier A value that specifies the order in which an Amazon DocumentDB replica
 #' is promoted to the primary instance after a failure of the existing
 #' primary instance.
@@ -2495,6 +2570,7 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #'   PreferredMaintenanceWindow = "string",
 #'   AutoMinorVersionUpgrade = TRUE|FALSE,
 #'   NewDBInstanceIdentifier = "string",
+#'   CACertificateIdentifier = "string",
 #'   PromotionTier = 123
 #' )
 #' ```
@@ -2502,14 +2578,14 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' @keywords internal
 #'
 #' @rdname docdb_modify_db_instance
-docdb_modify_db_instance <- function(DBInstanceIdentifier, DBInstanceClass = NULL, ApplyImmediately = NULL, PreferredMaintenanceWindow = NULL, AutoMinorVersionUpgrade = NULL, NewDBInstanceIdentifier = NULL, PromotionTier = NULL) {
+docdb_modify_db_instance <- function(DBInstanceIdentifier, DBInstanceClass = NULL, ApplyImmediately = NULL, PreferredMaintenanceWindow = NULL, AutoMinorVersionUpgrade = NULL, NewDBInstanceIdentifier = NULL, CACertificateIdentifier = NULL, PromotionTier = NULL) {
   op <- new_operation(
     name = "ModifyDBInstance",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .docdb$modify_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBInstanceClass = DBInstanceClass, ApplyImmediately = ApplyImmediately, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, NewDBInstanceIdentifier = NewDBInstanceIdentifier, PromotionTier = PromotionTier)
+  input <- .docdb$modify_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBInstanceClass = DBInstanceClass, ApplyImmediately = ApplyImmediately, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, NewDBInstanceIdentifier = NewDBInstanceIdentifier, CACertificateIdentifier = CACertificateIdentifier, PromotionTier = PromotionTier)
   output <- .docdb$modify_db_instance_output()
   config <- get_config()
   svc <- .docdb$service(config)

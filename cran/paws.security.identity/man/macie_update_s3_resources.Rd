@@ -7,14 +7,14 @@
 macie_update_s3_resources(memberAccountId, s3ResourcesUpdate)
 }
 \arguments{
-\item{memberAccountId}{The AWS ID of the Amazon Macie member account whose S3 resources'
+\item{memberAccountId}{The AWS ID of the Amazon Macie member account whose S3 resources\'
 classification types you want to update.}
 
 \item{s3ResourcesUpdate}{[required] The S3 resources whose classification types you want to update.}
 }
 \description{
 Updates the classification types for the specified S3 resources. If
-memberAccountId isn't specified, the action updates the classification
+memberAccountId isn\'t specified, the action updates the classification
 types of the S3 resources associated with Amazon Macie for the current
 master account. If memberAccountId is specified, the action updates the
 classification types of the S3 resources associated with Amazon Macie

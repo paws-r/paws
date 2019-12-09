@@ -7,7 +7,7 @@
 devicefarm_get_project(arn)
 }
 \arguments{
-\item{arn}{[required] The project's ARN.}
+\item{arn}{[required] The project\'s ARN.}
 }
 \description{
 Gets information about a project.

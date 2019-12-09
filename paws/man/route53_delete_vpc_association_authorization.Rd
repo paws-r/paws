@@ -27,7 +27,7 @@ to submit a \code{DeleteVPCAssociationAuthorization} request.
 Sending this request only prevents the AWS account that created the VPC
 from associating the VPC with the Amazon Route 53 hosted zone in the
 future. If the VPC is already associated with the hosted zone,
-\code{DeleteVPCAssociationAuthorization} won't disassociate the VPC from the
+\code{DeleteVPCAssociationAuthorization} won\'t disassociate the VPC from the
 hosted zone. If you want to delete an existing association, use
 \code{DisassociateVPCFromHostedZone}.
 }
@@ -35,7 +35,7 @@ hosted zone. If you want to delete an existing association, use
 \preformatted{svc$delete_vpc_association_authorization(
   HostedZoneId = "string",
   VPC = list(
-    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
+    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
     VPCId = "string"
   )
 )

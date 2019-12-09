@@ -13,7 +13,7 @@ applicationdiscoveryservice_create_tags(configurationIds, tags)
 Specify the tags that you want to create in a \emph{key}-\emph{value} format. For
 example:
 
-\code{\{"key": "serverType", "value": "webServer"\}}}
+\verb{\\\{"key": "serverType", "value": "webServer"\\\}}}
 }
 \description{
 Creates one or more tags for configuration items. Tags are metadata that

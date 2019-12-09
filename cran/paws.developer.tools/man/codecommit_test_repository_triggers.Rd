@@ -15,8 +15,8 @@ codecommit_test_repository_triggers(repositoryName, triggers)
 \description{
 Tests the functionality of repository triggers by sending information to
 the trigger target. If real data is available in the repository, the
-test will send data from the last commit. If no data is available,
-sample data will be generated.
+test sends data from the last commit. If no data is available, sample
+data is generated.
 }
 \section{Request syntax}{
 \preformatted{svc$test_repository_triggers(

@@ -5,16 +5,22 @@
 \title{Deletes the Systems Manager document and all instance associations to
 the document}
 \usage{
-ssm_delete_document(Name, DocumentVersion, VersionName)
+ssm_delete_document(Name, DocumentVersion, VersionName, Force)
 }
 \arguments{
 \item{Name}{[required] The name of the document.}
 
-\item{DocumentVersion}{(Optional) The version of the document that you want to delete. If not
+\item{DocumentVersion}{The version of the document that you want to delete. If not provided,
+all versions of the document are deleted.}
+
+\item{VersionName}{The version name of the document that you want to delete. If not
 provided, all versions of the document are deleted.}
 
-\item{VersionName}{(Optional) The version name of the document that you want to delete. If
-not provided, all versions of the document are deleted.}
+\item{Force}{Some SSM document types require that you specify a \code{Force} flag before
+you can delete the document. For example, you must specify a \code{Force}
+flag to delete a document of type \code{ApplicationConfigurationSchema}. You
+can restrict access to the \code{Force} flag in an AWS Identity and Access
+Management (IAM) policy.}
 }
 \description{
 Deletes the Systems Manager document and all instance associations to
@@ -29,7 +35,8 @@ the document.
 \preformatted{svc$delete_document(
   Name = "string",
   DocumentVersion = "string",
-  VersionName = "string"
+  VersionName = "string",
+  Force = TRUE|FALSE
 )
 }
 }

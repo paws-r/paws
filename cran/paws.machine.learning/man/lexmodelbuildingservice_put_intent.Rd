@@ -12,9 +12,9 @@ lexmodelbuildingservice_put_intent(name, description, slots,
 \arguments{
 \item{name}{[required] The name of the intent. The name is \emph{not} case sensitive.
 
-The name can't match a built-in intent name, or a built-in intent name
-with "AMAZON." removed. For example, because there is a built-in
-intent called \code{AMAZON.HelpIntent}, you can't create a custom intent
+The name can\'t match a built-in intent name, or a built-in intent name
+with \"AMAZON.\" removed. For example, because there is a built-in
+intent called \code{AMAZON.HelpIntent}, you can\'t create a custom intent
 called \code{HelpIntent}.
 
 For a list of built-in intents, see \href{https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents}{Standard Built-in Intents}
@@ -27,8 +27,8 @@ values from the user using prompts defined in the slots. For more
 information, see how-it-works.}
 
 \item{sampleUtterances}{An array of utterances (strings) that a user might say to signal the
-intent. For example, "I want {PizzaSize} pizza", "Order {Quantity}
-{PizzaSize} pizzas".
+intent. For example, \"I want \{PizzaSize\} pizza\", \"Order \{Quantity\}
+\{PizzaSize\} pizzas\".
 
 In each utterance, a slot name is enclosed in curly braces.}
 
@@ -45,7 +45,7 @@ before providing the information.
 You you must provide both the \code{rejectionStatement} and the
 \code{confirmationPrompt}, or neither.}
 
-\item{rejectionStatement}{When the user answers "no" to the question defined in
+\item{rejectionStatement}{When the user answers \"no\" to the question defined in
 \code{confirmationPrompt}, Amazon Lex responds with this statement to
 acknowledge that the intent was canceled.
 
@@ -56,16 +56,16 @@ You must provide both the \code{rejectionStatement} and the
 fulfilling an intent. For example, after the \code{OrderPizza} intent is
 fulfilled, you might prompt the user to order a drink.
 
-The action that Amazon Lex takes depends on the user's response, as
+The action that Amazon Lex takes depends on the user\'s response, as
 follows:
 \itemize{
-\item If the user says "Yes" it responds with the clarification prompt
+\item If the user says \"Yes\" it responds with the clarification prompt
 that is configured for the bot.
-\item if the user says "Yes" and continues with an utterance that
+\item if the user says \"Yes\" and continues with an utterance that
 triggers an intent it starts a conversation for the intent.
-\item If the user says "No" it responds with the rejection statement
+\item If the user says \"No\" it responds with the rejection statement
 configured for the the follow-up prompt.
-\item If it doesn't recognize the utterance it repeats the follow-up
+\item If it doesn\'t recognize the utterance it repeats the follow-up
 prompt again.
 }
 
@@ -77,7 +77,7 @@ intent is successfully fulfilled by the Lambda function.
 
 This element is relevant only if you provide a Lambda function in the
 \code{fulfillmentActivity}. If you return the intent to the client
-application, you can't specify this element.
+application, you can\'t specify this element.
 
 The \code{followUpPrompt} and \code{conclusionStatement} are mutually exclusive.
 You can specify only one.}
@@ -86,10 +86,10 @@ You can specify only one.}
 invoke this Lambda function to personalize user interaction.
 
 For example, suppose your bot determines that the user is John. Your
-Lambda function might retrieve John's information from a backend
+Lambda function might retrieve John\'s information from a backend
 database and prepopulate some of the values. For example, if you find
 that John is gluten intolerant, you might set the corresponding intent
-slot, \code{GlutenIntolerant}, to true. You might find John's phone number
+slot, \code{GlutenIntolerant}, to true. You might find John\'s phone number
 and set the corresponding session attribute.}
 
 \item{fulfillmentActivity}{Required. Describes how the intent is fulfilled. For example, after a
@@ -105,18 +105,20 @@ can process the intent (for example, place an order with a pizzeria).}
 find the signature for an intent, see \href{https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents}{Standard Built-in Intents}
 in the \emph{Alexa Skills Kit}.}
 
-\item{checksum}{Identifies a specific revision of the \code{$LATEST} version.
+\item{checksum}{Identifies a specific revision of the \verb{$LATEST} version.
 
 When you create a new intent, leave the \code{checksum} field blank. If you
 specify a checksum you get a \code{BadRequestException} exception.
 
 When you want to update a intent, set the \code{checksum} field to the
-checksum of the most recent revision of the \code{$LATEST} version. If you
-don't specify the \code{ checksum} field, or if the checksum does not match
-the \code{$LATEST} version, you get a \code{PreconditionFailedException}
+checksum of the most recent revision of the \verb{$LATEST} version. If you
+don\'t specify the \code{ checksum} field, or if the checksum does not match
+the \verb{$LATEST} version, you get a \code{PreconditionFailedException}
 exception.}
 
-\item{createVersion}{}
+\item{createVersion}{When set to \code{true} a new numbered version of the intent is created. This
+is the same as calling the \code{CreateIntentVersion} operation. If you do
+not specify \code{createVersion}, the default is \code{false}.}
 }
 \description{
 Creates an intent or replaces an existing intent.
@@ -130,8 +132,8 @@ To create an intent or replace an existing intent, you must provide the
 following:
 \itemize{
 \item Intent name. For example, \code{OrderPizza}.
-\item Sample utterances. For example, "Can I order a pizza, please." and
-"I want to order a pizza."
+\item Sample utterances. For example, \"Can I order a pizza, please.\" and
+\"I want to order a pizza.\"
 \item Information to be gathered. You specify slot types for the
 information that your bot will request from the user. You can
 specify standard slot types, such as a date or a time, or custom
@@ -147,19 +149,19 @@ information to the client application.
 You can specify other optional information in the request, such as:
 \itemize{
 \item A confirmation prompt to ask the user to confirm an intent. For
-example, "Shall I order your pizza?"
+example, \"Shall I order your pizza?\"
 \item A conclusion statement to send to the user after the intent has been
-fulfilled. For example, "I placed your pizza order."
+fulfilled. For example, \"I placed your pizza order.\"
 \item A follow-up prompt that asks the user for additional activity. For
-example, asking "Do you want to order a drink with your pizza?"
+example, asking \"Do you want to order a drink with your pizza?\"
 }
 
 If you specify an existing intent name to update the intent, Amazon Lex
-replaces the values in the \code{$LATEST} version of the intent with the
-values in the request. Amazon Lex removes fields that you don't provide
-in the request. If you don't specify the required fields, Amazon Lex
-throws an exception. When you update the \code{$LATEST} version of an intent,
-the \code{status} field of any bot that uses the \code{$LATEST} version of the
+replaces the values in the \verb{$LATEST} version of the intent with the
+values in the request. Amazon Lex removes fields that you don\'t provide
+in the request. If you don\'t specify the required fields, Amazon Lex
+throws an exception. When you update the \verb{$LATEST} version of an intent,
+the \code{status} field of any bot that uses the \verb{$LATEST} version of the
 intent is set to \code{NOT_BUILT}.
 
 For more information, see how-it-works.

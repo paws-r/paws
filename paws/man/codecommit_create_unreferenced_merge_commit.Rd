@@ -15,27 +15,26 @@ codecommit_create_unreferenced_merge_commit(repositoryName,
 merge commit.}
 
 \item{sourceCommitSpecifier}{[required] The branch, tag, HEAD, or other fully qualified reference used to
-identify a commit. For example, a branch name or a full commit ID.}
+identify a commit (for example, a branch name or a full commit ID).}
 
 \item{destinationCommitSpecifier}{[required] The branch, tag, HEAD, or other fully qualified reference used to
-identify a commit. For example, a branch name or a full commit ID.}
+identify a commit (for example, a branch name or a full commit ID).}
 
 \item{mergeOption}{[required] The merge option or strategy you want to use to merge the code.}
 
 \item{conflictDetailLevel}{The level of conflict detail to use. If unspecified, the default
-FILE\_LEVEL is used, which will return a not mergeable result if the
-same file has differences in both branches. If LINE\_LEVEL is specified,
-a conflict will be considered not mergeable if the same file in both
-branches has differences on the same line.}
+FILE\\_LEVEL is used, which returns a not-mergeable result if the same
+file has differences in both branches. If LINE\\_LEVEL is specified, a
+conflict is considered not mergeable if the same file in both branches
+has differences on the same line.}
 
 \item{conflictResolutionStrategy}{Specifies which branch to use when resolving conflicts, or whether to
 attempt automatically merging two versions of a file. The default is
 NONE, which requires any conflicts to be resolved manually before the
-merge operation will be successful.}
+merge operation is successful.}
 
 \item{authorName}{The name of the author who created the unreferenced commit. This
-information will be used as both the author and committer for the
-commit.}
+information is used as both the author and committer for the commit.}
 
 \item{email}{The email address for the person who created the unreferenced commit.}
 
@@ -43,18 +42,18 @@ commit.}
 
 \item{keepEmptyFolders}{If the commit contains deletions, whether to keep a folder or folder
 structure if the changes leave the folders empty. If this is specified
-as true, a .gitkeep file will be created for empty folders. The default
-is false.}
+as true, a .gitkeep file is created for empty folders. The default is
+false.}
 
-\item{conflictResolution}{A list of inputs to use when resolving conflicts during a merge if
-AUTOMERGE is chosen as the conflict resolution strategy.}
+\item{conflictResolution}{If AUTOMERGE is the conflict resolution strategy, a list of inputs to
+use when resolving conflicts during a merge.}
 }
 \description{
 Creates an unreferenced commit that represents the result of merging two
 branches using a specified merge strategy. This can help you determine
 the outcome of a potential merge. This API cannot be used with the
-fast-forward merge strategy, as that strategy does not create a merge
-commit.
+fast-forward merge strategy because that strategy does not create a
+merge commit.
 }
 \details{
 This unreferenced merge commit can only be accessed using the GetCommit

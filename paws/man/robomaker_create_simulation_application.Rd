@@ -16,7 +16,7 @@ robomaker_create_simulation_application(name, sources,
 
 \item{robotSoftwareSuite}{[required] The robot software suite of the simulation application.}
 
-\item{renderingEngine}{[required] The rendering engine for the simulation application.}
+\item{renderingEngine}{The rendering engine for the simulation application.}
 
 \item{tags}{A map that contains tag keys and tag values that are attached to the
 simulation application.}
@@ -35,12 +35,12 @@ Creates a simulation application.
     )
   ),
   simulationSoftwareSuite = list(
-    name = "Gazebo",
+    name = "Gazebo"|"RosbagPlay",
     version = "string"
   ),
   robotSoftwareSuite = list(
-    name = "ROS",
-    version = "Kinetic"|"Melodic"
+    name = "ROS"|"ROS2",
+    version = "Kinetic"|"Melodic"|"Dashing"
   ),
   renderingEngine = list(
     name = "OGRE",

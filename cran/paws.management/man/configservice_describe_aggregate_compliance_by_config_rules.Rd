@@ -16,8 +16,8 @@ configservice_describe_aggregate_compliance_by_config_rules(
 \item{Limit}{The maximum number of evaluation results returned on each page. The
 default is maximum. If you specify 0, AWS Config uses the default.}
 
-\item{NextToken}{The nextToken string returned on a previous page that you use to get the
-next page of results in a paginated response.}
+\item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
+the next page of results in a paginated response.}
 }
 \description{
 Returns a list of compliant and noncompliant rules with the number of
@@ -25,7 +25,7 @@ resources for compliant and noncompliant rules.
 }
 \details{
 The results can return an empty result page, but if you have a
-nextToken, the results are displayed on the next page.
+\code{nextToken}, the results are displayed on the next page.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_aggregate_compliance_by_config_rules(

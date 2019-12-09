@@ -2,22 +2,35 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_admin_set_user_password}
 \alias{cognitoidentityprovider_admin_set_user_password}
-\title{Admin set user password}
+\title{Sets the specified user's password in a user pool as an administrator}
 \usage{
 cognitoidentityprovider_admin_set_user_password(UserPoolId, Username,
   Password, Permanent)
 }
 \arguments{
-\item{UserPoolId}{[required]}
+\item{UserPoolId}{[required] The user pool ID for the user pool where you want to set the user\'s
+password.}
 
-\item{Username}{[required]}
+\item{Username}{[required] The user name of the user whose password you wish to set.}
 
-\item{Password}{[required]}
+\item{Password}{[required] The password for the user.}
 
-\item{Permanent}{}
+\item{Permanent}{\code{True} if the password is permanent, \code{False} if it is temporary.}
 }
 \description{
-Admin set user password
+Sets the specified user\'s password in a user pool as an administrator.
+Works on any user.
+}
+\details{
+The password can be temporary or permanent. If it is temporary, the user
+status will be placed into the \code{FORCE_CHANGE_PASSWORD} state. When the
+user next tries to sign in, the InitiateAuth/AdminInitiateAuth response
+will contain the \code{NEW_PASSWORD_REQUIRED} challenge. If the user does not
+sign in before it expires, the user will not be able to sign in and
+their password will need to be reset by an administrator.
+
+Once the user has set a new password, or the password is permanent, the
+user status will be set to \code{Confirmed}.
 }
 \section{Request syntax}{
 \preformatted{svc$admin_set_user_password(

@@ -34,18 +34,22 @@ sources using GraphQL from your application.
 \section{Operations}{
 
 \tabular{ll}{
+\link[=appsync_create_api_cache]{create_api_cache} \tab Creates a cache for the GraphQL API \cr
 \link[=appsync_create_api_key]{create_api_key} \tab Creates a unique key that you can distribute to clients who are executing your API\cr
 \link[=appsync_create_data_source]{create_data_source} \tab Creates a DataSource object \cr
 \link[=appsync_create_function]{create_function} \tab Creates a Function object \cr
 \link[=appsync_create_graphql_api]{create_graphql_api} \tab Creates a GraphqlApi object \cr
 \link[=appsync_create_resolver]{create_resolver} \tab Creates a Resolver object \cr
 \link[=appsync_create_type]{create_type} \tab Creates a Type object \cr
+\link[=appsync_delete_api_cache]{delete_api_cache} \tab Deletes an ApiCache object \cr
 \link[=appsync_delete_api_key]{delete_api_key} \tab Deletes an API key \cr
 \link[=appsync_delete_data_source]{delete_data_source} \tab Deletes a DataSource object \cr
 \link[=appsync_delete_function]{delete_function} \tab Deletes a Function \cr
 \link[=appsync_delete_graphql_api]{delete_graphql_api} \tab Deletes a GraphqlApi object \cr
 \link[=appsync_delete_resolver]{delete_resolver} \tab Deletes a Resolver object \cr
 \link[=appsync_delete_type]{delete_type} \tab Deletes a Type object \cr
+\link[=appsync_flush_api_cache]{flush_api_cache} \tab Flushes an ApiCache object \cr
+\link[=appsync_get_api_cache]{get_api_cache} \tab Retrieves an ApiCache object \cr
 \link[=appsync_get_data_source]{get_data_source} \tab Retrieves a DataSource object \cr
 \link[=appsync_get_function]{get_function} \tab Get a Function \cr
 \link[=appsync_get_graphql_api]{get_graphql_api} \tab Retrieves a GraphqlApi object \cr
@@ -64,6 +68,7 @@ sources using GraphQL from your application.
 \link[=appsync_start_schema_creation]{start_schema_creation} \tab Adds a new schema to your GraphQL API \cr
 \link[=appsync_tag_resource]{tag_resource} \tab Tags a resource with user-supplied tags \cr
 \link[=appsync_untag_resource]{untag_resource} \tab Untags a resource \cr
+\link[=appsync_update_api_cache]{update_api_cache} \tab Updates the cache for the GraphQL API \cr
 \link[=appsync_update_api_key]{update_api_key} \tab Updates an API key \cr
 \link[=appsync_update_data_source]{update_data_source} \tab Updates a DataSource object \cr
 \link[=appsync_update_function]{update_function} \tab Updates a Function object \cr
@@ -75,7 +80,7 @@ sources using GraphQL from your application.
 
 \examples{
 \donttest{svc <- appsync()
-svc$create_api_key(
+svc$create_api_cache(
   Foo = 123
 )}
 

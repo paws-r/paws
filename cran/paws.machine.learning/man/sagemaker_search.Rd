@@ -43,12 +43,12 @@ Booleans, and timestamps.
 }
 \section{Request syntax}{
 \preformatted{svc$search(
-  Resource = "TrainingJob",
+  Resource = "TrainingJob"|"Experiment"|"ExperimentTrial"|"ExperimentTrialComponent",
   SearchExpression = list(
     Filters = list(
       list(
         Name = "string",
-        Operator = "Equals"|"NotEquals"|"GreaterThan"|"GreaterThanOrEqualTo"|"LessThan"|"LessThanOrEqualTo"|"Contains",
+        Operator = "Equals"|"NotEquals"|"GreaterThan"|"GreaterThanOrEqualTo"|"LessThan"|"LessThanOrEqualTo"|"Contains"|"Exists"|"NotExists",
         Value = "string"
       )
     ),
@@ -58,7 +58,7 @@ Booleans, and timestamps.
         Filters = list(
           list(
             Name = "string",
-            Operator = "Equals"|"NotEquals"|"GreaterThan"|"GreaterThanOrEqualTo"|"LessThan"|"LessThanOrEqualTo"|"Contains",
+            Operator = "Equals"|"NotEquals"|"GreaterThan"|"GreaterThanOrEqualTo"|"LessThan"|"LessThanOrEqualTo"|"Contains"|"Exists"|"NotExists",
             Value = "string"
           )
         )

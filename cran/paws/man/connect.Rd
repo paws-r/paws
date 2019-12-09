@@ -10,23 +10,18 @@ connect(config = list())
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
-The Amazon Connect API Reference provides descriptions, syntax, and
-usage examples for each of the Amazon Connect actions, data types,
-parameters, and errors. Amazon Connect is a cloud-based contact center
-solution that makes it easy to set up and manage a customer contact
-center and provide reliable customer engagement at any scale.
+Amazon Connect is a cloud-based contact center solution that makes it
+easy to set up and manage a customer contact center and provide reliable
+customer engagement at any scale.
 
-Throttling limits for the Amazon Connect API operations:
+Amazon Connect provides rich metrics and real-time reporting that allow
+you to optimize contact routing. You can also resolve customer issues
+more efficiently by putting customers in touch with the right agents.
 
-For the \code{GetMetricData} and \code{GetCurrentMetricData} operations, a
-RateLimit of 5 per second, and a BurstLimit of 8 per second.
-
-For all other operations, a RateLimit of 2 per second, and a BurstLimit
-of 5 per second.
-
-You can request an increase to the throttling limits by submitting a
-\href{https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase}{Amazon Connect service limits increase form}.
-You must be signed in to your AWS account to access the form.
+There are limits to the number of Amazon Connect resources that you can
+create and limits to the number of requests that you can make per
+second. For more information, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html}{Amazon Connect Service Limits}
+in the \emph{Amazon Connect Administrator Guide}.
 }
 \section{Service syntax}{
 \preformatted{svc <- connect(
@@ -49,27 +44,35 @@ You must be signed in to your AWS account to access the form.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=connect_create_user]{create_user} \tab Creates a new user account in your Amazon Connect instance \cr
-\link[=connect_delete_user]{delete_user} \tab Deletes a user account from Amazon Connect \cr
-\link[=connect_describe_user]{describe_user} \tab Returns a User object that contains information about the user account specified by the UserId \cr
-\link[=connect_describe_user_hierarchy_group]{describe_user_hierarchy_group} \tab Returns a HierarchyGroup object that includes information about a hierarchy group in your instance \cr
-\link[=connect_describe_user_hierarchy_structure]{describe_user_hierarchy_structure} \tab Returns a HiearchyGroupStructure object, which contains data about the levels in the agent hierarchy \cr
-\link[=connect_get_contact_attributes]{get_contact_attributes} \tab Retrieves the contact attributes associated with a contact \cr
-\link[=connect_get_current_metric_data]{get_current_metric_data} \tab The GetCurrentMetricData operation retrieves current metric data from your Amazon Connect instance \cr
+\link[=connect_create_user]{create_user} \tab Creates a user account for the specified Amazon Connect instance \cr
+\link[=connect_delete_user]{delete_user} \tab Deletes a user account from the specified Amazon Connect instance \cr
+\link[=connect_describe_user]{describe_user} \tab Describes the specified user account \cr
+\link[=connect_describe_user_hierarchy_group]{describe_user_hierarchy_group} \tab Describes the specified hierarchy group \cr
+\link[=connect_describe_user_hierarchy_structure]{describe_user_hierarchy_structure} \tab Describes the hierarchy structure of the specified Amazon Connect instance \cr
+\link[=connect_get_contact_attributes]{get_contact_attributes} \tab Retrieves the contact attributes for the specified contact \cr
+\link[=connect_get_current_metric_data]{get_current_metric_data} \tab Gets the real-time metric data from the specified Amazon Connect instance \cr
 \link[=connect_get_federation_token]{get_federation_token} \tab Retrieves a token for federation \cr
-\link[=connect_get_metric_data]{get_metric_data} \tab The GetMetricData operation retrieves historical metrics data from your Amazon Connect instance \cr
-\link[=connect_list_routing_profiles]{list_routing_profiles} \tab Returns an array of RoutingProfileSummary objects that includes information about the routing profiles in your instance \cr
-\link[=connect_list_security_profiles]{list_security_profiles} \tab Returns an array of SecurityProfileSummary objects that contain information about the security profiles in your instance, including the ARN, Id, and Name of the security profile\cr
-\link[=connect_list_user_hierarchy_groups]{list_user_hierarchy_groups} \tab Returns a UserHierarchyGroupSummaryList, which is an array of HierarchyGroupSummary objects that contain information about the hierarchy groups in your instance \cr
-\link[=connect_list_users]{list_users} \tab Returns a UserSummaryList, which is an array of UserSummary objects \cr
-\link[=connect_start_outbound_voice_contact]{start_outbound_voice_contact} \tab The StartOutboundVoiceContact operation initiates a contact flow to place an outbound call to a customer \cr
-\link[=connect_stop_contact]{stop_contact} \tab Ends the contact initiated by the StartOutboundVoiceContact operation \cr
-\link[=connect_update_contact_attributes]{update_contact_attributes} \tab The UpdateContactAttributes operation lets you programmatically create new, or update existing, contact attributes associated with a contact \cr
-\link[=connect_update_user_hierarchy]{update_user_hierarchy} \tab Assigns the specified hierarchy group to the user \cr
-\link[=connect_update_user_identity_info]{update_user_identity_info} \tab Updates the identity information for the specified user in a UserIdentityInfo object, including email, first name, and last name \cr
-\link[=connect_update_user_phone_config]{update_user_phone_config} \tab Updates the phone configuration settings in the UserPhoneConfig object for the specified user \cr
-\link[=connect_update_user_routing_profile]{update_user_routing_profile} \tab Assigns the specified routing profile to a user \cr
-\link[=connect_update_user_security_profiles]{update_user_security_profiles} \tab Updates the security profiles assigned to the user
+\link[=connect_get_metric_data]{get_metric_data} \tab Gets historical metric data from the specified Amazon Connect instance \cr
+\link[=connect_list_contact_flows]{list_contact_flows} \tab Provides information about the contact flows for the specified Amazon Connect instance \cr
+\link[=connect_list_hours_of_operations]{list_hours_of_operations} \tab Provides information about the hours of operation for the specified Amazon Connect instance \cr
+\link[=connect_list_phone_numbers]{list_phone_numbers} \tab Provides information about the phone numbers for the specified Amazon Connect instance \cr
+\link[=connect_list_queues]{list_queues} \tab Provides information about the queues for the specified Amazon Connect instance \cr
+\link[=connect_list_routing_profiles]{list_routing_profiles} \tab Provides summary information about the routing profiles for the specified Amazon Connect instance \cr
+\link[=connect_list_security_profiles]{list_security_profiles} \tab Provides summary information about the security profiles for the specified Amazon Connect instance\cr
+\link[=connect_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource \cr
+\link[=connect_list_user_hierarchy_groups]{list_user_hierarchy_groups} \tab Provides summary information about the hierarchy groups for the specified Amazon Connect instance \cr
+\link[=connect_list_users]{list_users} \tab Provides summary information about the users for the specified Amazon Connect instance \cr
+\link[=connect_start_chat_contact]{start_chat_contact} \tab Initiates a contact flow to start a new chat for the customer \cr
+\link[=connect_start_outbound_voice_contact]{start_outbound_voice_contact} \tab Initiates a contact flow to place an outbound call to a customer \cr
+\link[=connect_stop_contact]{stop_contact} \tab Ends the specified contact \cr
+\link[=connect_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource \cr
+\link[=connect_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource \cr
+\link[=connect_update_contact_attributes]{update_contact_attributes} \tab Creates or updates the contact attributes associated with the specified contact \cr
+\link[=connect_update_user_hierarchy]{update_user_hierarchy} \tab Assigns the specified hierarchy group to the specified user \cr
+\link[=connect_update_user_identity_info]{update_user_identity_info} \tab Updates the identity information for the specified user \cr
+\link[=connect_update_user_phone_config]{update_user_phone_config} \tab Updates the phone configuration settings for the specified user \cr
+\link[=connect_update_user_routing_profile]{update_user_routing_profile} \tab Assigns the specified routing profile to the specified user \cr
+\link[=connect_update_user_security_profiles]{update_user_security_profiles} \tab Assigns the specified security profiles to the specified user
 }
 }
 

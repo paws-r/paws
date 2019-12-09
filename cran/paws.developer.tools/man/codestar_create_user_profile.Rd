@@ -15,19 +15,19 @@ codestar_create_user_profile(userArn, displayName, emailAddress,
 \item{displayName}{[required] The name that will be displayed as the friendly name for the user in AWS
 CodeStar.}
 
-\item{emailAddress}{[required] The email address that will be displayed as part of the user's profile
+\item{emailAddress}{[required] The email address that will be displayed as part of the user\'s profile
 in AWS CodeStar.}
 
 \item{sshPublicKey}{The SSH public key associated with the user in AWS CodeStar. If a
 project owner allows the user remote access to project resources, this
-public key will be used along with the user's private key for SSH
+public key will be used along with the user\'s private key for SSH
 access.}
 }
 \description{
 Creates a profile for a user that includes user preferences, such as the
 display name and email address assocciated with the user, in AWS
 CodeStar. The user profile is not project-specific. Information in the
-user profile is displayed wherever the user's information appears to
+user profile is displayed wherever the user\'s information appears to
 other users in AWS CodeStar.
 }
 \section{Request syntax}{

@@ -5,13 +5,13 @@ NULL
 
 .applicationinsights$create_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), OpsCenterEnabled = structure(logical(0), tags = list(type = "boolean")), OpsItemSNSTopicArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationinsights$create_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApplicationInfo = structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), LifeCycle = structure(logical(0), tags = list(type = "string")), Remarks = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ApplicationInfo = structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), LifeCycle = structure(logical(0), tags = list(type = "string")), OpsItemSNSTopicArn = structure(logical(0), tags = list(type = "string")), OpsCenterEnabled = structure(logical(0), tags = list(type = "boolean")), Remarks = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -24,6 +24,18 @@ NULL
 .applicationinsights$create_component_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.applicationinsights$create_log_pattern_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), PatternSetName = structure(logical(0), tags = list(type = "string")), PatternName = structure(logical(0), tags = list(type = "string")), Pattern = structure(logical(0), tags = list(type = "string")), Rank = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.applicationinsights$create_log_pattern_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(LogPattern = structure(list(PatternSetName = structure(logical(0), tags = list(type = "string")), PatternName = structure(logical(0), tags = list(type = "string")), Pattern = structure(logical(0), tags = list(type = "string")), Rank = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ResourceGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -51,6 +63,18 @@ NULL
   return(populate(args, shape))
 }
 
+.applicationinsights$delete_log_pattern_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), PatternSetName = structure(logical(0), tags = list(type = "string")), PatternName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.applicationinsights$delete_log_pattern_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .applicationinsights$describe_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -59,7 +83,7 @@ NULL
 
 .applicationinsights$describe_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApplicationInfo = structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), LifeCycle = structure(logical(0), tags = list(type = "string")), Remarks = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ApplicationInfo = structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), LifeCycle = structure(logical(0), tags = list(type = "string")), OpsItemSNSTopicArn = structure(logical(0), tags = list(type = "string")), OpsCenterEnabled = structure(logical(0), tags = list(type = "boolean")), Remarks = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -96,6 +120,18 @@ NULL
 .applicationinsights$describe_component_configuration_recommendation_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ComponentConfiguration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.applicationinsights$describe_log_pattern_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), PatternSetName = structure(logical(0), tags = list(type = "string")), PatternName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.applicationinsights$describe_log_pattern_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), LogPattern = structure(list(PatternSetName = structure(logical(0), tags = list(type = "string")), PatternName = structure(logical(0), tags = list(type = "string")), Pattern = structure(logical(0), tags = list(type = "string")), Rank = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -143,7 +179,7 @@ NULL
 
 .applicationinsights$list_applications_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApplicationInfoList = structure(list(structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), LifeCycle = structure(logical(0), tags = list(type = "string")), Remarks = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ApplicationInfoList = structure(list(structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), LifeCycle = structure(logical(0), tags = list(type = "string")), OpsItemSNSTopicArn = structure(logical(0), tags = list(type = "string")), OpsCenterEnabled = structure(logical(0), tags = list(type = "boolean")), Remarks = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -159,6 +195,30 @@ NULL
   return(populate(args, shape))
 }
 
+.applicationinsights$list_log_pattern_sets_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.applicationinsights$list_log_pattern_sets_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), LogPatternSets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.applicationinsights$list_log_patterns_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), PatternSetName = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.applicationinsights$list_log_patterns_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), LogPatterns = structure(list(structure(list(PatternSetName = structure(logical(0), tags = list(type = "string")), PatternName = structure(logical(0), tags = list(type = "string")), Pattern = structure(logical(0), tags = list(type = "string")), Rank = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .applicationinsights$list_problems_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -168,6 +228,54 @@ NULL
 .applicationinsights$list_problems_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ProblemList = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string")), Insights = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AffectedResource = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), SeverityLevel = structure(logical(0), tags = list(type = "string")), ResourceGroupName = structure(logical(0), tags = list(type = "string")), Feedback = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.applicationinsights$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.applicationinsights$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.applicationinsights$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.applicationinsights$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.applicationinsights$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.applicationinsights$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.applicationinsights$update_application_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), OpsCenterEnabled = structure(logical(0), tags = list(type = "boolean")), OpsItemSNSTopicArn = structure(logical(0), tags = list(type = "string")), RemoveSNSTopic = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.applicationinsights$update_application_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ApplicationInfo = structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), LifeCycle = structure(logical(0), tags = list(type = "string")), OpsItemSNSTopicArn = structure(logical(0), tags = list(type = "string")), OpsCenterEnabled = structure(logical(0), tags = list(type = "boolean")), Remarks = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -192,5 +300,17 @@ NULL
 .applicationinsights$update_component_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.applicationinsights$update_log_pattern_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), PatternSetName = structure(logical(0), tags = list(type = "string")), PatternName = structure(logical(0), tags = list(type = "string")), Pattern = structure(logical(0), tags = list(type = "string")), Rank = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.applicationinsights$update_log_pattern_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), LogPattern = structure(list(PatternSetName = structure(logical(0), tags = list(type = "string")), PatternName = structure(logical(0), tags = list(type = "string")), Pattern = structure(logical(0), tags = list(type = "string")), Rank = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

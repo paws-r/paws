@@ -9,14 +9,14 @@ glue_update_user_defined_function(CatalogId, DatabaseName, FunctionName,
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the function to be updated is located.
-If none is supplied, the AWS account ID is used by default.}
+If none is provided, the AWS account ID is used by default.}
 
 \item{DatabaseName}{[required] The name of the catalog database where the function to be updated is
 located.}
 
 \item{FunctionName}{[required] The name of the function.}
 
-\item{FunctionInput}{[required] A \code{FunctionInput} object that re-defines the function in the Data
+\item{FunctionInput}{[required] A \code{FunctionInput} object that redefines the function in the Data
 Catalog.}
 }
 \description{

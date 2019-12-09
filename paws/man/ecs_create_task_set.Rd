@@ -6,7 +6,7 @@
 \usage{
 ecs_create_task_set(service, cluster, externalId, taskDefinition,
   networkConfiguration, loadBalancers, serviceRegistries, launchType,
-  platformVersion, scale, clientToken)
+  capacityProviderStrategy, platformVersion, scale, clientToken)
 }
 \arguments{
 \item{service}{[required] The short name or full Amazon Resource Name (ARN) of the service to
@@ -34,11 +34,41 @@ set. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/lates
 
 \item{launchType}{The launch type that new tasks in the task set will use. For more
 information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html}{Amazon ECS Launch Types}
-in the \emph{Amazon Elastic Container Service Developer Guide}.}
+in the \emph{Amazon Elastic Container Service Developer Guide}.
+
+If a \code{launchType} is specified, the \code{capacityProviderStrategy} parameter
+must be omitted.}
+
+\item{capacityProviderStrategy}{The capacity provider strategy to use for the task set.
+
+A capacity provider strategy consists of one or more capacity providers
+along with the \code{base} and \code{weight} to assign to them. A capacity
+provider must be associated with the cluster to be used in a capacity
+provider strategy. The PutClusterCapacityProviders API is used to
+associate a capacity provider with a cluster. Only capacity providers
+with an \code{ACTIVE} or \code{UPDATING} status can be used.
+
+If a \code{capacityProviderStrategy} is specified, the \code{launchType} parameter
+must be omitted. If no \code{capacityProviderStrategy} or \code{launchType} is
+specified, the \code{defaultCapacityProviderStrategy} for the cluster is
+used.
+
+If specifying a capacity provider that uses an Auto Scaling group, the
+capacity provider must already be created. New capacity providers can be
+created with the CreateCapacityProvider API operation.
+
+To use a AWS Fargate capacity provider, specify either the \code{FARGATE} or
+\code{FARGATE_SPOT} capacity providers. The AWS Fargate capacity providers
+are available to all accounts and only need to be associated with a
+cluster to be used.
+
+The PutClusterCapacityProviders API operation is used to update the list
+of available capacity providers for a cluster after the cluster is
+created.}
 
 \item{platformVersion}{The platform version that the tasks in the task set should use. A
 platform version is specified only for tasks using the Fargate launch
-type. If one isn't specified, the \code{LATEST} platform version is used by
+type. If one isn\'t specified, the \code{LATEST} platform version is used by
 default.}
 
 \item{scale}{}
@@ -86,6 +116,13 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
     )
   ),
   launchType = "EC2"|"FARGATE",
+  capacityProviderStrategy = list(
+    list(
+      capacityProvider = "string",
+      weight = 123,
+      base = 123
+    )
+  ),
   platformVersion = "string",
   scale = list(
     value = 123.0,

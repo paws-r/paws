@@ -7,7 +7,7 @@
 lambda_get_account_settings()
 }
 \description{
-Retrieves details about your account's
+Retrieves details about your account\'s
 \href{https://docs.aws.amazon.com/lambda/latest/dg/limits.html}{limits} and
 usage in an AWS Region.
 }

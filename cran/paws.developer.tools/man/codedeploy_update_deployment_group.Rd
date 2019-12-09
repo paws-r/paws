@@ -63,7 +63,7 @@ groups.}
 only to deployment groups that use the Amazon ECS compute platform. A
 target Amazon ECS service is specified as an Amazon ECS cluster and
 service name pair using the format
-\code{&lt;clustername&gt;:&lt;servicename&gt;}.}
+\verb{&lt;clustername&gt;:&lt;servicename&gt;}.}
 
 \item{onPremisesTagSet}{Information about an on-premises instance tag set. The deployment group
 includes only on-premises instances identified by all the tag groups.}

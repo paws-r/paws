@@ -78,7 +78,7 @@ NULL
 #'         Unit = "string"
 #'       )
 #'     ),
-#'     BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE",
+#'     BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE"|"SAVINGS_PLANS_UTILIZATION"|"SAVINGS_PLANS_COVERAGE",
 #'     LastUpdatedTime = as.POSIXct(
 #'       "2015-01-01"
 #'     )
@@ -705,7 +705,7 @@ budgets_describe_subscribers_for_notification <- function(AccountId, BudgetName,
 #'         Unit = "string"
 #'       )
 #'     ),
-#'     BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE",
+#'     BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE"|"SAVINGS_PLANS_UTILIZATION"|"SAVINGS_PLANS_COVERAGE",
 #'     LastUpdatedTime = as.POSIXct(
 #'       "2015-01-01"
 #'     )

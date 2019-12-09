@@ -15,13 +15,11 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Filters}{Filter tasks using the \code{task-state} filter and one of the following
-values: active, completed, deleting, deleted.}
+values: \code{active}, \code{completed}, \code{deleting}, or \code{deleted}.}
 
-\item{ImportTaskIds}{A list of import image task IDs.}
+\item{ImportTaskIds}{The IDs of the import image tasks.}
 
-\item{MaxResults}{The maximum number of results to return in a single call. To retrieve
-the remaining results, make another call with the returned \code{NextToken}
-value.}
+\item{MaxResults}{The maximum number of results to return in a single call.}
 
 \item{NextToken}{A token that indicates the next page of results.}
 }

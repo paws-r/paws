@@ -23,7 +23,12 @@ If the value is set to true, the accelerator cannot be deleted. If set
 to false, the accelerator can be deleted.}
 }
 \description{
-Update an accelerator.
+Update an accelerator. To see an AWS CLI example of updating an
+accelerator, scroll down to \strong{Example}.
+}
+\details{
+You must specify the US-West-2 (Oregon) Region to create or update
+accelerators.
 }
 \section{Request syntax}{
 \preformatted{svc$update_accelerator(

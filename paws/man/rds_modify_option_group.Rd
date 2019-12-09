@@ -11,8 +11,8 @@ rds_modify_option_group(OptionGroupName, OptionsToInclude,
 \item{OptionGroupName}{[required] The name of the option group to be modified.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
-TDE, can't be removed from an option group, and that option group
-can't be removed from a DB instance once it is associated with a DB
+TDE, can\'t be removed from an option group, and that option group
+can\'t be removed from a DB instance once it is associated with a DB
 instance}
 
 \item{OptionsToInclude}{Options in this list are added to the option group or, if already

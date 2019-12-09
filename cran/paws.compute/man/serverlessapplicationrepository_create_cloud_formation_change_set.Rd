@@ -19,23 +19,23 @@ Identity and Access Management (IAM) users. For those applications, you
 must explicitly acknowledge their capabilities by specifying this
 parameter.
 
-The only valid values are CAPABILITY\_IAM, CAPABILITY\_NAMED\_IAM,
-CAPABILITY\_RESOURCE\_POLICY, and CAPABILITY\_AUTO\_EXPAND.
+The only valid values are CAPABILITY\\_IAM, CAPABILITY\\_NAMED\\_IAM,
+CAPABILITY\\_RESOURCE\\_POLICY, and CAPABILITY\\_AUTO\\_EXPAND.
 
-The following resources require you to specify CAPABILITY\_IAM or
-CAPABILITY\_NAMED\_IAM:
+The following resources require you to specify CAPABILITY\\_IAM or
+CAPABILITY\\_NAMED\\_IAM:
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html}{AWS::IAM::Group},
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile},
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html}{AWS::IAM::Policy},
 and
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}.
 If the application contains IAM resources, you can specify either
-CAPABILITY\_IAM or CAPABILITY\_NAMED\_IAM. If the application contains
+CAPABILITY\\_IAM or CAPABILITY\\_NAMED\\_IAM. If the application contains
 IAM resources with custom names, you must specify
-CAPABILITY\_NAMED\_IAM.
+CAPABILITY\\_NAMED\\_IAM.
 
 The following resources require you to specify
-CAPABILITY\_RESOURCE\_POLICY:
+CAPABILITY\\_RESOURCE\\_POLICY:
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-permission.html}{AWS::Lambda::Permission},
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html}{AWS::IAM:Policy},
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html}{AWS::ApplicationAutoScaling::ScalingPolicy},
@@ -45,11 +45,11 @@ and
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html}{AWS::SNS:TopicPolicy}.
 
 Applications that contain one or more nested applications require you to
-specify CAPABILITY\_AUTO\_EXPAND.
+specify CAPABILITY\\_AUTO\\_EXPAND.
 
 If your application template contains any of the above resources, we
 recommend that you review all permissions associated with the
-application before deploying. If you don't specify this parameter for
+application before deploying. If you don\'t specify this parameter for
 an application that requires capabilities, the call will fail.}
 
 \item{ChangeSetName}{This property corresponds to the parameter of the same name for the \emph{AWS
@@ -101,7 +101,7 @@ API.}
 \item{TemplateId}{The UUID returned by CreateCloudFormationTemplate.
 
 Pattern:
-[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}}
+[0-9a-fA-F]\{8\}\\-[0-9a-fA-F]\{4\}\\-[0-9a-fA-F]\{4\}\\-[0-9a-fA-F]\{4\}\\-[0-9a-fA-F]\{12\}}
 }
 \description{
 Creates an AWS CloudFormation change set for the given application.

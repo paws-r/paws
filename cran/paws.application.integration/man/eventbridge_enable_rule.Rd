@@ -13,7 +13,7 @@ eventbridge_enable_rule(Name, EventBusName)
 event bus is used.}
 }
 \description{
-Enables the specified rule. If the rule doesn't exist, the operation
+Enables the specified rule. If the rule doesn\'t exist, the operation
 fails.
 }
 \details{

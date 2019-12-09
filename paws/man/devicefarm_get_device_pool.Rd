@@ -7,7 +7,7 @@
 devicefarm_get_device_pool(arn)
 }
 \arguments{
-\item{arn}{[required] The device pool's ARN.}
+\item{arn}{[required] The device pool\'s ARN.}
 }
 \description{
 Gets information about a device pool.

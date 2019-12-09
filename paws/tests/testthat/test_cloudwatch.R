@@ -18,6 +18,14 @@ test_that("describe_anomaly_detectors", {
   expect_error(svc$describe_anomaly_detectors(MaxResults = 20), NA)
 })
 
+test_that("describe_insight_rules", {
+  expect_error(svc$describe_insight_rules(), NA)
+})
+
+test_that("describe_insight_rules", {
+  expect_error(svc$describe_insight_rules(MaxResults = 20), NA)
+})
+
 test_that("list_dashboards", {
   expect_error(svc$list_dashboards(), NA)
 })

@@ -7,7 +7,7 @@
 devicefarm_get_job(arn)
 }
 \arguments{
-\item{arn}{[required] The job's ARN.}
+\item{arn}{[required] The job\'s ARN.}
 }
 \description{
 Gets information about a job.

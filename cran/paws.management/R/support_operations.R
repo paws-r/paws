@@ -129,18 +129,29 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #'     either \"customer-service\" or \"technical.\" If you do not indicate
 #'     a value, the default is \"technical.\"
 #' 
-#' -   **serviceCode.** The code for an AWS service. You obtain the
-#'     `serviceCode` by calling DescribeServices.
+#'     Service limit increases are not supported by the Support API; you
+#'     must submit service limit increase requests in [Support
+#'     Center](https://console.aws.amazon.com/support).
+#' 
+#'     The `caseId` is not the `displayId` that appears in [Support
+#'     Center](https://console.aws.amazon.com/support). You can use the
+#'     DescribeCases API to get the `displayId`.
+#' 
+#' -   **serviceCode.** The code for an AWS service. You can get the
+#'     possible `serviceCode` values by calling DescribeServices.
 #' 
 #' -   **categoryCode.** The category for the service defined for the
-#'     `serviceCode` value. You also obtain the category code for a service
-#'     by calling DescribeServices. Each AWS service defines its own set of
+#'     `serviceCode` value. You also get the category code for a service by
+#'     calling DescribeServices. Each AWS service defines its own set of
 #'     category codes.
 #' 
 #' -   **severityCode.** A value that indicates the urgency of the case,
 #'     which in turn determines the response time according to your service
-#'     level agreement with AWS Support. You obtain the SeverityCode by
-#'     calling DescribeSeverityLevels.
+#'     level agreement with AWS Support. You can get the possible
+#'     `severityCode` values by calling DescribeSeverityLevels. For more
+#'     information about the meaning of the codes, see SeverityLevel and
+#'     [Choosing a
+#'     Severity](https://docs.aws.amazon.com/awssupport/latest/user/getting-started.html#choosing-severity).
 #' 
 #' -   **subject.** The **Subject** field on the AWS Support Center [Create
 #'     Case](https://console.aws.amazon.com/support/home#/case/create)
@@ -183,9 +194,8 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #' @param severityCode The code for the severity level returned by the call to
 #' DescribeSeverityLevels.
 #' 
-#' The availability of severity levels depends on each customer\'s support
-#' subscription. In other words, your subscription may not necessarily
-#' require the urgent level of response time.
+#' The availability of severity levels depends on the support plan for the
+#' account.
 #' @param categoryCode The category of problem for the AWS Support case.
 #' @param communicationBody &#91;required&#93; The communication body text when you create an AWS Support case by
 #' calling CreateCase.
@@ -198,6 +208,10 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #' @param issueType The type of issue for the case. You can specify either
 #' \"customer-service\" or \"technical.\" If you do not indicate a value,
 #' the default is \"technical.\"
+#' 
+#' Service limit increases are not supported by the Support API; you must
+#' submit service limit increase requests in [Support
+#' Center](https://console.aws.amazon.com/support).
 #' @param attachmentSetId The ID of a set of one or more attachments for the case. Create the set
 #' by using AddAttachmentsToSet.
 #'
@@ -680,7 +694,8 @@ support_describe_trusted_advisor_check_summaries <- function(checkIds) {
 #' including name, ID, category, description, and metadata. You must
 #' specify a language code; English (\"en\") and Japanese (\"ja\") are
 #' currently supported. The response contains a
-#' TrustedAdvisorCheckDescription for each check.
+#' TrustedAdvisorCheckDescription for each check. The region must be set to
+#' us-east-1.
 #'
 #' @usage
 #' support_describe_trusted_advisor_checks(language)
@@ -731,8 +746,20 @@ support_describe_trusted_advisor_checks <- function(language) {
 #' The response contains a TrustedAdvisorCheckRefreshStatus object, which
 #' contains these fields:
 #' 
-#' -   **status.** The refresh status of the check: \"none\", \"enqueued\",
-#'     \"processing\", \"success\", or \"abandoned\".
+#' -   **status.** The refresh status of the check:
+#' 
+#'     -   `none:` The check is not refreshed or the non-success status
+#'         exceeds the timeout
+#' 
+#'     -   `enqueued:` The check refresh requests has entered the refresh
+#'         queue
+#' 
+#'     -   `processing:` The check refresh request is picked up by the rule
+#'         processing engine
+#' 
+#'     -   `success:` The check is successfully refreshed
+#' 
+#'     -   `abandoned:` The check refresh has failed
 #' 
 #' -   **millisUntilNextRefreshable.** The amount of time, in milliseconds,
 #'     until the check is eligible for refresh.

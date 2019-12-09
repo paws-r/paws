@@ -5,32 +5,32 @@
 \title{Creates a scheduled audit that is run at a specified time interval}
 \usage{
 iot_create_scheduled_audit(frequency, dayOfMonth, dayOfWeek,
-  targetCheckNames, tags, scheduledAuditName)
+  targetCheckNames, scheduledAuditName, tags)
 }
 \arguments{
-\item{frequency}{[required] How often the scheduled audit takes place. Can be one of "DAILY",
-"WEEKLY", "BIWEEKLY" or "MONTHLY". The actual start time of each
-audit is determined by the system.}
+\item{frequency}{[required] How often the scheduled audit takes place. Can be one of \"DAILY\",
+\"WEEKLY\", \"BIWEEKLY\" or \"MONTHLY\". The start time of each audit is
+determined by the system.}
 
 \item{dayOfMonth}{The day of the month on which the scheduled audit takes place. Can be
-"1" through "31" or "LAST". This field is required if the
-"frequency" parameter is set to "MONTHLY". If days 29-31 are
+\"1\" through \"31\" or \"LAST\". This field is required if the
+\"frequency\" parameter is set to \"MONTHLY\". If days 29-31 are
 specified, and the month does not have that many days, the audit takes
-place on the "LAST" day of the month.}
+place on the \"LAST\" day of the month.}
 
 \item{dayOfWeek}{The day of the week on which the scheduled audit takes place. Can be one
-of "SUN", "MON", "TUE", "WED", "THU", "FRI" or "SAT". This
-field is required if the "frequency" parameter is set to "WEEKLY" or
-"BIWEEKLY".}
+of \"SUN\", \"MON\", \"TUE\", \"WED\", \"THU\", \"FRI\", or \"SAT\".
+This field is required if the \"frequency\" parameter is set to
+\"WEEKLY\" or \"BIWEEKLY\".}
 
 \item{targetCheckNames}{[required] Which checks are performed during the scheduled audit. Checks must be
 enabled for your account. (Use \code{DescribeAccountAuditConfiguration} to
-see the list of all checks including those that are enabled or
+see the list of all checks, including those that are enabled or use
 \code{UpdateAccountAuditConfiguration} to select which checks are enabled.)}
 
-\item{tags}{Metadata which can be used to manage the scheduled audit.}
-
 \item{scheduledAuditName}{[required] The name you want to give to the scheduled audit. (Max. 128 chars)}
+
+\item{tags}{Metadata that can be used to manage the scheduled audit.}
 }
 \description{
 Creates a scheduled audit that is run at a specified time interval.
@@ -43,13 +43,13 @@ Creates a scheduled audit that is run at a specified time interval.
   targetCheckNames = list(
     "string"
   ),
+  scheduledAuditName = "string",
   tags = list(
     list(
       Key = "string",
       Value = "string"
     )
-  ),
-  scheduledAuditName = "string"
+  )
 )
 }
 }

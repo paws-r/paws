@@ -41,7 +41,7 @@ provided.
 \code{copy-on-write}.
 }
 
-Example: \code{2015-03-07T23:45:00Z}}
+Example: \verb{2015-03-07T23:45:00Z}}
 
 \item{UseLatestRestorableTime}{A value that is set to \code{true} to restore the DB cluster to the latest
 restorable backup time, and \code{false} otherwise.

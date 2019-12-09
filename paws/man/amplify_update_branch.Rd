@@ -6,7 +6,9 @@
 \usage{
 amplify_update_branch(appId, branchName, description, framework, stage,
   enableNotification, enableAutoBuild, environmentVariables,
-  basicAuthCredentials, enableBasicAuth, buildSpec, ttl, displayName)
+  basicAuthCredentials, enableBasicAuth, buildSpec, ttl, displayName,
+  enablePullRequestPreview, pullRequestEnvironmentName,
+  backendEnvironmentArn)
 }
 \arguments{
 \item{appId}{[required] Unique Id for an Amplify App.}
@@ -34,6 +36,12 @@ amplify_update_branch(appId, branchName, description, framework, stage,
 \item{ttl}{The content TTL for the website in seconds.}
 
 \item{displayName}{Display name for a branch, will use as the default domain prefix.}
+
+\item{enablePullRequestPreview}{Enables Pull Request Preview for this branch.}
+
+\item{pullRequestEnvironmentName}{The Amplify Environment name for the pull request.}
+
+\item{backendEnvironmentArn}{ARN for a Backend Environment, part of an Amplify App.}
 }
 \description{
 Updates a branch for an Amplify App.
@@ -44,7 +52,7 @@ Updates a branch for an Amplify App.
   branchName = "string",
   description = "string",
   framework = "string",
-  stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL",
+  stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL"|"PULL_REQUEST",
   enableNotification = TRUE|FALSE,
   enableAutoBuild = TRUE|FALSE,
   environmentVariables = list(
@@ -54,7 +62,10 @@ Updates a branch for an Amplify App.
   enableBasicAuth = TRUE|FALSE,
   buildSpec = "string",
   ttl = "string",
-  displayName = "string"
+  displayName = "string",
+  enablePullRequestPreview = TRUE|FALSE,
+  pullRequestEnvironmentName = "string",
+  backendEnvironmentArn = "string"
 )
 }
 }

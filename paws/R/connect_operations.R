@@ -3,53 +3,40 @@
 #' @include connect_service.R
 NULL
 
-#' Creates a new user account in your Amazon Connect instance
+#' Creates a user account for the specified Amazon Connect instance
 #'
-#' Creates a new user account in your Amazon Connect instance.
+#' Creates a user account for the specified Amazon Connect instance.
 #'
 #' @usage
 #' connect_create_user(Username, Password, IdentityInfo, PhoneConfig,
 #'   DirectoryUserId, SecurityProfileIds, RoutingProfileId, HierarchyGroupId,
-#'   InstanceId)
+#'   InstanceId, Tags)
 #'
-#' @param Username &#91;required&#93; The user name in Amazon Connect for the account to create. If you are
-#' using SAML for identity management in your Amazon Connect, the value for
-#' `Username` can include up to 64 characters from \[a-zA-Z0-9\\_-.\\@\]+.
-#' @param Password The password for the user account to create. This is required if you are
-#' using Amazon Connect for identity management. If you are using SAML for
-#' identity management and include this parameter, an
-#' `InvalidRequestException` is returned.
-#' @param IdentityInfo Information about the user, including email address, first name, and
-#' last name.
-#' @param PhoneConfig &#91;required&#93; Specifies the phone settings for the user, including
-#' `AfterContactWorkTimeLimit`, `AutoAccept`, `DeskPhoneNumber`, and
-#' `PhoneType`.
-#' @param DirectoryUserId The unique identifier for the user account in the directory service
-#' directory used for identity management. If Amazon Connect is unable to
-#' access the existing directory, you can use the `DirectoryUserId` to
-#' authenticate users. If you include the parameter, it is assumed that
-#' Amazon Connect cannot access the directory. If the parameter is not
-#' included, the `UserIdentityInfo` is used to authenticate users from your
-#' existing directory.
+#' @param Username &#91;required&#93; The user name for the account. For instances not using SAML for identity
+#' management, the user name can include up to 20 characters. If you are
+#' using SAML for identity management, the user name can include up to 64
+#' characters from \[a-zA-Z0-9\\_-.\\@\]+.
+#' @param Password The password for the user account. A password is required if you are
+#' using Amazon Connect for identity management. Otherwise, it is an error
+#' to include a password.
+#' @param IdentityInfo The information about the identity of the user.
+#' @param PhoneConfig &#91;required&#93; The phone settings for the user.
+#' @param DirectoryUserId The identifier of the user account in the directory used for identity
+#' management. If Amazon Connect cannot access the directory, you can
+#' specify this identifier to authenticate users. If you include the
+#' identifier, we assume that Amazon Connect cannot access the directory.
+#' Otherwise, the identity information is used to authenticate users from
+#' your directory.
 #' 
 #' This parameter is required if you are using an existing directory for
 #' identity management in Amazon Connect when Amazon Connect cannot access
 #' your directory to authenticate users. If you are using SAML for identity
-#' management and include this parameter, an `InvalidRequestException` is
-#' returned.
-#' @param SecurityProfileIds &#91;required&#93; The unique identifier of the security profile to assign to the user
-#' created.
-#' @param RoutingProfileId &#91;required&#93; The unique identifier for the routing profile to assign to the user
-#' created.
-#' @param HierarchyGroupId The unique identifier for the hierarchy group to assign to the user
-#' created.
-#' @param InstanceId &#91;required&#93; The identifier for your Amazon Connect instance. To find the ID of your
-#' instance, open the AWS console and select Amazon Connect. Select the
-#' alias of the instance in the Instance alias column. The instance ID is
-#' displayed in the Overview section of your instance settings. For
-#' example, the instance ID is the set of characters at the end of the
-#' instance ARN, after instance/, such as
-#' 10a4c4eb-f57e-4d4c-b602-bf39176ced07.
+#' management and include this parameter, an error is returned.
+#' @param SecurityProfileIds &#91;required&#93; The identifier of the security profile for the user.
+#' @param RoutingProfileId &#91;required&#93; The identifier of the routing profile for the user.
+#' @param HierarchyGroupId The identifier of the hierarchy group for the user.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
+#' @param Tags One or more tags.
 #'
 #' @section Request syntax:
 #' ```
@@ -73,21 +60,24 @@ NULL
 #'   ),
 #'   RoutingProfileId = "string",
 #'   HierarchyGroupId = "string",
-#'   InstanceId = "string"
+#'   InstanceId = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname connect_create_user
-connect_create_user <- function(Username, Password = NULL, IdentityInfo = NULL, PhoneConfig, DirectoryUserId = NULL, SecurityProfileIds, RoutingProfileId, HierarchyGroupId = NULL, InstanceId) {
+connect_create_user <- function(Username, Password = NULL, IdentityInfo = NULL, PhoneConfig, DirectoryUserId = NULL, SecurityProfileIds, RoutingProfileId, HierarchyGroupId = NULL, InstanceId, Tags = NULL) {
   op <- new_operation(
     name = "CreateUser",
     http_method = "PUT",
     http_path = "/users/{InstanceId}",
     paginator = list()
   )
-  input <- .connect$create_user_input(Username = Username, Password = Password, IdentityInfo = IdentityInfo, PhoneConfig = PhoneConfig, DirectoryUserId = DirectoryUserId, SecurityProfileIds = SecurityProfileIds, RoutingProfileId = RoutingProfileId, HierarchyGroupId = HierarchyGroupId, InstanceId = InstanceId)
+  input <- .connect$create_user_input(Username = Username, Password = Password, IdentityInfo = IdentityInfo, PhoneConfig = PhoneConfig, DirectoryUserId = DirectoryUserId, SecurityProfileIds = SecurityProfileIds, RoutingProfileId = RoutingProfileId, HierarchyGroupId = HierarchyGroupId, InstanceId = InstanceId, Tags = Tags)
   output <- .connect$create_user_output()
   config <- get_config()
   svc <- .connect$service(config)
@@ -97,21 +87,15 @@ connect_create_user <- function(Username, Password = NULL, IdentityInfo = NULL, 
 }
 .connect$operations$create_user <- connect_create_user
 
-#' Deletes a user account from Amazon Connect
+#' Deletes a user account from the specified Amazon Connect instance
 #'
-#' Deletes a user account from Amazon Connect.
+#' Deletes a user account from the specified Amazon Connect instance.
 #'
 #' @usage
 #' connect_delete_user(InstanceId, UserId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier for your Amazon Connect instance. To find the ID of your
-#' instance, open the AWS console and select Amazon Connect. Select the
-#' alias of the instance in the Instance alias column. The instance ID is
-#' displayed in the Overview section of your instance settings. For
-#' example, the instance ID is the set of characters at the end of the
-#' instance ARN, after instance/, such as
-#' 10a4c4eb-f57e-4d4c-b602-bf39176ced07.
-#' @param UserId &#91;required&#93; The unique identifier of the user to delete.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
+#' @param UserId &#91;required&#93; The identifier of the user.
 #'
 #' @section Request syntax:
 #' ```
@@ -141,23 +125,18 @@ connect_delete_user <- function(InstanceId, UserId) {
 }
 .connect$operations$delete_user <- connect_delete_user
 
-#' Returns a User object that contains information about the user account
-#' specified by the UserId
+#' Describes the specified user account
 #'
-#' Returns a `User` object that contains information about the user account
-#' specified by the `UserId`.
+#' Describes the specified user account. You can find the instance ID in
+#' the console (it's the final part of the ARN). The console does not
+#' display the user IDs. Instead, list the users and note the IDs provided
+#' in the output.
 #'
 #' @usage
 #' connect_describe_user(UserId, InstanceId)
 #'
-#' @param UserId &#91;required&#93; Unique identifier for the user account to return.
-#' @param InstanceId &#91;required&#93; The identifier for your Amazon Connect instance. To find the ID of your
-#' instance, open the AWS console and select Amazon Connect. Select the
-#' alias of the instance in the Instance alias column. The instance ID is
-#' displayed in the Overview section of your instance settings. For
-#' example, the instance ID is the set of characters at the end of the
-#' instance ARN, after instance/, such as
-#' 10a4c4eb-f57e-4d4c-b602-bf39176ced07.
+#' @param UserId &#91;required&#93; The identifier of the user account.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
 #'
 #' @section Request syntax:
 #' ```
@@ -187,23 +166,15 @@ connect_describe_user <- function(UserId, InstanceId) {
 }
 .connect$operations$describe_user <- connect_describe_user
 
-#' Returns a HierarchyGroup object that includes information about a
-#' hierarchy group in your instance
+#' Describes the specified hierarchy group
 #'
-#' Returns a `HierarchyGroup` object that includes information about a
-#' hierarchy group in your instance.
+#' Describes the specified hierarchy group.
 #'
 #' @usage
 #' connect_describe_user_hierarchy_group(HierarchyGroupId, InstanceId)
 #'
-#' @param HierarchyGroupId &#91;required&#93; The identifier for the hierarchy group to return.
-#' @param InstanceId &#91;required&#93; The identifier for your Amazon Connect instance. To find the ID of your
-#' instance, open the AWS console and select Amazon Connect. Select the
-#' alias of the instance in the Instance alias column. The instance ID is
-#' displayed in the Overview section of your instance settings. For
-#' example, the instance ID is the set of characters at the end of the
-#' instance ARN, after instance/, such as
-#' 10a4c4eb-f57e-4d4c-b602-bf39176ced07.
+#' @param HierarchyGroupId &#91;required&#93; The identifier of the hierarchy group.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
 #'
 #' @section Request syntax:
 #' ```
@@ -233,22 +204,16 @@ connect_describe_user_hierarchy_group <- function(HierarchyGroupId, InstanceId) 
 }
 .connect$operations$describe_user_hierarchy_group <- connect_describe_user_hierarchy_group
 
-#' Returns a HiearchyGroupStructure object, which contains data about the
-#' levels in the agent hierarchy
+#' Describes the hierarchy structure of the specified Amazon Connect
+#' instance
 #'
-#' Returns a `HiearchyGroupStructure` object, which contains data about the
-#' levels in the agent hierarchy.
+#' Describes the hierarchy structure of the specified Amazon Connect
+#' instance.
 #'
 #' @usage
 #' connect_describe_user_hierarchy_structure(InstanceId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier for your Amazon Connect instance. To find the ID of your
-#' instance, open the AWS console and select Amazon Connect. Select the
-#' alias of the instance in the Instance alias column. The instance ID is
-#' displayed in the Overview section of your instance settings. For
-#' example, the instance ID is the set of characters at the end of the
-#' instance ARN, after instance/, such as
-#' 10a4c4eb-f57e-4d4c-b602-bf39176ced07.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
 #'
 #' @section Request syntax:
 #' ```
@@ -277,17 +242,15 @@ connect_describe_user_hierarchy_structure <- function(InstanceId) {
 }
 .connect$operations$describe_user_hierarchy_structure <- connect_describe_user_hierarchy_structure
 
-#' Retrieves the contact attributes associated with a contact
+#' Retrieves the contact attributes for the specified contact
 #'
-#' Retrieves the contact attributes associated with a contact.
+#' Retrieves the contact attributes for the specified contact.
 #'
 #' @usage
 #' connect_get_contact_attributes(InstanceId, InitialContactId)
 #'
-#' @param InstanceId &#91;required&#93; The instance ID for the instance from which to retrieve contact
-#' attributes.
-#' @param InitialContactId &#91;required&#93; The ID for the initial contact in Amazon Connect associated with the
-#' attributes to update.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
+#' @param InitialContactId &#91;required&#93; The identifier of the initial contact.
 #'
 #' @section Request syntax:
 #' ```
@@ -317,76 +280,41 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 }
 .connect$operations$get_contact_attributes <- connect_get_contact_attributes
 
-#' The GetCurrentMetricData operation retrieves current metric data from
-#' your Amazon Connect instance
+#' Gets the real-time metric data from the specified Amazon Connect
+#' instance
 #'
-#' The `GetCurrentMetricData` operation retrieves current metric data from
-#' your Amazon Connect instance.
+#' Gets the real-time metric data from the specified Amazon Connect
+#' instance.
 #' 
-#' If you are using an IAM account, it must have permission to the
-#' `connect:GetCurrentMetricData` action.
+#' For more information, see [Real-time Metrics
+#' Reports](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-reports.html)
+#' in the *Amazon Connect Administrator Guide*.
 #'
 #' @usage
 #' connect_get_current_metric_data(InstanceId, Filters, Groupings,
 #'   CurrentMetrics, NextToken, MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier for your Amazon Connect instance. To find the ID of your
-#' instance, open the AWS console and select Amazon Connect. Select the
-#' alias of the instance in the Instance alias column. The instance ID is
-#' displayed in the Overview section of your instance settings. For
-#' example, the instance ID is the set of characters at the end of the
-#' instance ARN, after instance/, such as
-#' 10a4c4eb-f57e-4d4c-b602-bf39176ced07.
-#' @param Filters &#91;required&#93; A `Filters` object that contains a list of queue IDs or queue ARNs, up
-#' to 100, or list of Channels to use to filter the metrics returned in the
-#' response. Metric data is retrieved only for the resources associated
-#' with the queue IDs, ARNs, or Channels included in the filter. You can
-#' include both IDs and ARNs in the same request. To retrieve metrics for
-#' all queues, add the queue ID or ARN for each queue in your instance.
-#' Only VOICE is supported for Channels.
-#' 
-#' To find the ARN for a queue, open the queue you want to use in the
-#' Amazon Connect Queue editor. The ARN for the queue is displayed in the
-#' address bar as part of the URL. For example, the queue ARN is the set of
-#' characters at the end of the URL, after \'id=\' such as
-#' `arn:aws:connect:us-east-1:270923740243:instance/78fb859d-1b7d-44b1-8aa3-12f0835c5855/queue/1d1a4575-9618-40ab-bbeb-81e45795fe61`.
-#' The queue ID is also included in the URL, and is the string after
-#' \'queue/\'.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
+#' @param Filters &#91;required&#93; The queues, up to 100, or channels, to use to filter the metrics
+#' returned. Metric data is retrieved only for the resources associated
+#' with the queues or channels included in the filter. You can include both
+#' queue IDs and queue ARNs in the same request. The only supported channel
+#' is `VOICE`.
 #' @param Groupings The grouping applied to the metrics returned. For example, when grouped
-#' by QUEUE, the metrics returned apply to each queue rather than
-#' aggregated for all queues. If you group by CHANNEL, you should include a
-#' Channels filter. The only supported channel is VOICE.
+#' by `QUEUE`, the metrics returned apply to each queue rather than
+#' aggregated for all queues. If you group by `CHANNEL`, you should include
+#' a Channels filter. The only supported channel is `VOICE`.
 #' 
-#' If no `Grouping` is included in the request, a summary of
-#' `CurrentMetrics` is returned.
-#' @param CurrentMetrics &#91;required&#93; A list of `CurrentMetric` objects for the metrics to retrieve. Each
-#' `CurrentMetric` includes a name of a metric to retrieve and the unit to
-#' use for it. You must list each metric to retrieve data for in the
-#' request.
-#' 
-#' The following metrics are available:
-#' 
-#' AGENTS\\_AVAILABLE
-#' 
-#' :   Unit: COUNT
-#' 
-#' AGENTS\\_ONLINE
-#' 
-#' :   Unit: COUNT
-#' 
-#' AGENTS\\_ON\\_CALL
-#' 
-#' :   Unit: COUNT
-#' 
-#' AGENTS\\_STAFFED
-#' 
-#' :   Unit: COUNT
+#' If no `Grouping` is included in the request, a summary of metrics is
+#' returned.
+#' @param CurrentMetrics &#91;required&#93; The metrics to retrieve. Specify the name and unit for each metric. The
+#' following metrics are available:
 #' 
 #' AGENTS\\_AFTER\\_CONTACT\\_WORK
 #' 
 #' :   Unit: COUNT
 #' 
-#' AGENTS\\_NON\\_PRODUCTIVE
+#' AGENTS\\_AVAILABLE
 #' 
 #' :   Unit: COUNT
 #' 
@@ -394,7 +322,31 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 #' 
 #' :   Unit: COUNT
 #' 
+#' AGENTS\\_NON\\_PRODUCTIVE
+#' 
+#' :   Unit: COUNT
+#' 
+#' AGENTS\\_ON\\_CALL
+#' 
+#' :   Unit: COUNT
+#' 
+#' AGENTS\\_ON\\_CONTACT
+#' 
+#' :   Unit: COUNT
+#' 
+#' AGENTS\\_ONLINE
+#' 
+#' :   Unit: COUNT
+#' 
+#' AGENTS\\_STAFFED
+#' 
+#' :   Unit: COUNT
+#' 
 #' CONTACTS\\_IN\\_QUEUE
+#' 
+#' :   Unit: COUNT
+#' 
+#' CONTACTS\\_SCHEDULED
 #' 
 #' :   Unit: COUNT
 #' 
@@ -402,7 +354,11 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 #' 
 #' :   Unit: SECONDS
 #' 
-#' CONTACTS\\_SCHEDULED
+#' SLOTS\\_ACTIVE
+#' 
+#' :   Unit: COUNT
+#' 
+#' SLOTS\\_AVAILABLE
 #' 
 #' :   Unit: COUNT
 #' @param NextToken The token for the next set of results. Use the value returned in the
@@ -410,10 +366,9 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 #' results.
 #' 
 #' The token expires after 5 minutes from the time it is created.
-#' Subsequent requests that use the NextToken must use the same request
+#' Subsequent requests that use the token must use the same request
 #' parameters as the request that generated the token.
-#' @param MaxResults `MaxResults` indicates the maximum number of results to return per page
-#' in the response, between 1 and 100.
+#' @param MaxResults The maximimum number of results to return per page.
 #'
 #' @section Request syntax:
 #' ```
@@ -424,7 +379,7 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 #'       "string"
 #'     ),
 #'     Channels = list(
-#'       "VOICE"
+#'       "VOICE"|"CHAT"
 #'     )
 #'   ),
 #'   Groupings = list(
@@ -432,7 +387,7 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 #'   ),
 #'   CurrentMetrics = list(
 #'     list(
-#'       Name = "AGENTS_ONLINE"|"AGENTS_AVAILABLE"|"AGENTS_ON_CALL"|"AGENTS_NON_PRODUCTIVE"|"AGENTS_AFTER_CONTACT_WORK"|"AGENTS_ERROR"|"AGENTS_STAFFED"|"CONTACTS_IN_QUEUE"|"OLDEST_CONTACT_AGE"|"CONTACTS_SCHEDULED",
+#'       Name = "AGENTS_ONLINE"|"AGENTS_AVAILABLE"|"AGENTS_ON_CALL"|"AGENTS_NON_PRODUCTIVE"|"AGENTS_AFTER_CONTACT_WORK"|"AGENTS_ERROR"|"AGENTS_STAFFED"|"CONTACTS_IN_QUEUE"|"OLDEST_CONTACT_AGE"|"CONTACTS_SCHEDULED"|"AGENTS_ON_CONTACT"|"SLOTS_ACTIVE"|"SLOTS_AVAILABLE",
 #'       Unit = "SECONDS"|"COUNT"|"PERCENT"
 #'     )
 #'   ),
@@ -468,13 +423,7 @@ connect_get_current_metric_data <- function(InstanceId, Filters, Groupings = NUL
 #' @usage
 #' connect_get_federation_token(InstanceId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier for your Amazon Connect instance. To find the ID of your
-#' instance, open the AWS console and select Amazon Connect. Select the
-#' alias of the instance in the Instance alias column. The instance ID is
-#' displayed in the Overview section of your instance settings. For
-#' example, the instance ID is the set of characters at the end of the
-#' instance ARN, after instance/, such as
-#' 10a4c4eb-f57e-4d4c-b602-bf39176ced07.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
 #'
 #' @section Request syntax:
 #' ```
@@ -503,76 +452,87 @@ connect_get_federation_token <- function(InstanceId) {
 }
 .connect$operations$get_federation_token <- connect_get_federation_token
 
-#' The GetMetricData operation retrieves historical metrics data from your
-#' Amazon Connect instance
+#' Gets historical metric data from the specified Amazon Connect instance
 #'
-#' The `GetMetricData` operation retrieves historical metrics data from
-#' your Amazon Connect instance.
+#' Gets historical metric data from the specified Amazon Connect instance.
 #' 
-#' If you are using an IAM account, it must have permission to the
-#' `connect:GetMetricData` action.
+#' For more information, see [Historical Metrics
+#' Reports](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics.html)
+#' in the *Amazon Connect Administrator Guide*.
 #'
 #' @usage
 #' connect_get_metric_data(InstanceId, StartTime, EndTime, Filters,
 #'   Groupings, HistoricalMetrics, NextToken, MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier for your Amazon Connect instance. To find the ID of your
-#' instance, open the AWS console and select Amazon Connect. Select the
-#' alias of the instance in the Instance alias column. The instance ID is
-#' displayed in the Overview section of your instance settings. For
-#' example, the instance ID is the set of characters at the end of the
-#' instance ARN, after instance/, such as
-#' 10a4c4eb-f57e-4d4c-b602-bf39176ced07.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
 #' @param StartTime &#91;required&#93; The timestamp, in UNIX Epoch time format, at which to start the
 #' reporting interval for the retrieval of historical metrics data. The
 #' time must be specified using a multiple of 5 minutes, such as 10:05,
 #' 10:10, 10:15.
 #' 
-#' `StartTime` cannot be earlier than 24 hours before the time of the
-#' request. Historical metrics are available in Amazon Connect only for 24
-#' hours.
+#' The start time cannot be earlier than 24 hours before the time of the
+#' request. Historical metrics are available only for 24 hours.
 #' @param EndTime &#91;required&#93; The timestamp, in UNIX Epoch time format, at which to end the reporting
 #' interval for the retrieval of historical metrics data. The time must be
 #' specified using an interval of 5 minutes, such as 11:00, 11:05, 11:10,
-#' and must be later than the `StartTime` timestamp.
+#' and must be later than the start time timestamp.
 #' 
-#' The time range between `StartTime` and `EndTime` must be less than 24
+#' The time range between the start and end time must be less than 24
 #' hours.
-#' @param Filters &#91;required&#93; A `Filters` object that contains a list of queue IDs or queue ARNs, up
-#' to 100, or a list of Channels to use to filter the metrics returned in
-#' the response. Metric data is retrieved only for the resources associated
-#' with the IDs, ARNs, or Channels included in the filter. You can use both
-#' IDs and ARNs together in a request. Only VOICE is supported for Channel.
-#' 
-#' To find the ARN for a queue, open the queue you want to use in the
-#' Amazon Connect Queue editor. The ARN for the queue is displayed in the
-#' address bar as part of the URL. For example, the queue ARN is the set of
-#' characters at the end of the URL, after \'id=\' such as
-#' `arn:aws:connect:us-east-1:270923740243:instance/78fb859d-1b7d-44b1-8aa3-12f0835c5855/queue/1d1a4575-9618-40ab-bbeb-81e45795fe61`.
-#' The queue ID is also included in the URL, and is the string after
-#' \'queue/\'.
+#' @param Filters &#91;required&#93; The queues, up to 100, or channels, to use to filter the metrics
+#' returned. Metric data is retrieved only for the resources associated
+#' with the queues or channels included in the filter. You can include both
+#' queue IDs and queue ARNs in the same request. The only supported channel
+#' is `VOICE`.
 #' @param Groupings The grouping applied to the metrics returned. For example, when results
-#' are grouped by queueId, the metrics returned are grouped by queue. The
+#' are grouped by queue, the metrics returned are grouped by queue. The
 #' values returned apply to the metrics for each queue rather than
 #' aggregated for all queues.
 #' 
-#' The current version supports grouping by Queue
+#' The only supported grouping is `QUEUE`.
 #' 
-#' If no `Grouping` is included in the request, a summary of
-#' `HistoricalMetrics` for all queues is returned.
-#' @param HistoricalMetrics &#91;required&#93; A list of `HistoricalMetric` objects that contain the metrics to
-#' retrieve with the request.
+#' If no grouping is specified, a summary of metrics for all queues is
+#' returned.
+#' @param HistoricalMetrics &#91;required&#93; The metrics to retrieve. Specify the name, unit, and statistic for each
+#' metric. The following historical metrics are available:
 #' 
-#' A `HistoricalMetric` object contains: `HistoricalMetricName`,
-#' `Statistic`, `Threshold`, and `Unit`.
+#' ABANDON\\_TIME
 #' 
-#' You must list each metric to retrieve data for in the request. For each
-#' historical metric you include in the request, you must include a `Unit`
-#' and a `Statistic`.
+#' :   Unit: SECONDS
 #' 
-#' The following historical metrics are available:
+#'     Statistic: AVG
 #' 
-#' CONTACTS\\_QUEUED
+#' AFTER\\_CONTACT\\_WORK\\_TIME
+#' 
+#' :   Unit: SECONDS
+#' 
+#'     Statistic: AVG
+#' 
+#' API\\_CONTACTS\\_HANDLED
+#' 
+#' :   Unit: COUNT
+#' 
+#'     Statistic: SUM
+#' 
+#' CALLBACK\\_CONTACTS\\_HANDLED
+#' 
+#' :   Unit: COUNT
+#' 
+#'     Statistic: SUM
+#' 
+#' CONTACTS\\_ABANDONED
+#' 
+#' :   Unit: COUNT
+#' 
+#'     Statistic: SUM
+#' 
+#' CONTACTS\\_AGENT\\_HUNG\\_UP\\_FIRST
+#' 
+#' :   Unit: COUNT
+#' 
+#'     Statistic: SUM
+#' 
+#' CONTACTS\\_CONSULTED
 #' 
 #' :   Unit: COUNT
 #' 
@@ -582,151 +542,109 @@ connect_get_federation_token <- function(InstanceId) {
 #' 
 #' :   Unit: COUNT
 #' 
-#'     Statistics: SUM
-#' 
-#' CONTACTS\\_ABANDONED
-#' 
-#' :   Unit: COUNT
-#' 
-#'     Statistics: SUM
-#' 
-#' CONTACTS\\_CONSULTED
-#' 
-#' :   Unit: COUNT
-#' 
-#'     Statistics: SUM
-#' 
-#' CONTACTS\\_AGENT\\_HUNG\\_UP\\_FIRST
-#' 
-#' :   Unit: COUNT
-#' 
-#'     Statistics: SUM
+#'     Statistic: SUM
 #' 
 #' CONTACTS\\_HANDLED\\_INCOMING
 #' 
 #' :   Unit: COUNT
 #' 
-#'     Statistics: SUM
+#'     Statistic: SUM
 #' 
 #' CONTACTS\\_HANDLED\\_OUTBOUND
 #' 
 #' :   Unit: COUNT
 #' 
-#'     Statistics: SUM
+#'     Statistic: SUM
 #' 
 #' CONTACTS\\_HOLD\\_ABANDONS
 #' 
 #' :   Unit: COUNT
 #' 
-#'     Statistics: SUM
-#' 
-#' CONTACTS\\_TRANSFERRED\\_IN
-#' 
-#' :   Unit: COUNT
-#' 
-#'     Statistics: SUM
-#' 
-#' CONTACTS\\_TRANSFERRED\\_OUT
-#' 
-#' :   Unit: COUNT
-#' 
-#'     Statistics: SUM
-#' 
-#' CONTACTS\\_TRANSFERRED\\_IN\\_FROM\\_QUEUE
-#' 
-#' :   Unit: COUNT
-#' 
-#'     Statistics: SUM
-#' 
-#' CONTACTS\\_TRANSFERRED\\_OUT\\_FROM\\_QUEUE
-#' 
-#' :   Unit: COUNT
-#' 
-#'     Statistics: SUM
-#' 
-#' CALLBACK\\_CONTACTS\\_HANDLED
-#' 
-#' :   Unit: COUNT
-#' 
-#'     Statistics: SUM
-#' 
-#' CALLBACK\\_CONTACTS\\_HANDLED
-#' 
-#' :   Unit: COUNT
-#' 
-#'     Statistics: SUM
-#' 
-#' API\\_CONTACTS\\_HANDLED
-#' 
-#' :   Unit: COUNT
-#' 
-#'     Statistics: SUM
+#'     Statistic: SUM
 #' 
 #' CONTACTS\\_MISSED
 #' 
 #' :   Unit: COUNT
 #' 
-#'     Statistics: SUM
+#'     Statistic: SUM
 #' 
-#' OCCUPANCY
+#' CONTACTS\\_QUEUED
 #' 
-#' :   Unit: PERCENT
+#' :   Unit: COUNT
 #' 
-#'     Statistics: AVG
+#'     Statistic: SUM
+#' 
+#' CONTACTS\\_TRANSFERRED\\_IN
+#' 
+#' :   Unit: COUNT
+#' 
+#'     Statistic: SUM
+#' 
+#' CONTACTS\\_TRANSFERRED\\_IN\\_FROM\\_QUEUE
+#' 
+#' :   Unit: COUNT
+#' 
+#'     Statistic: SUM
+#' 
+#' CONTACTS\\_TRANSFERRED\\_OUT
+#' 
+#' :   Unit: COUNT
+#' 
+#'     Statistic: SUM
+#' 
+#' CONTACTS\\_TRANSFERRED\\_OUT\\_FROM\\_QUEUE
+#' 
+#' :   Unit: COUNT
+#' 
+#'     Statistic: SUM
 #' 
 #' HANDLE\\_TIME
 #' 
 #' :   Unit: SECONDS
 #' 
-#'     Statistics: AVG
-#' 
-#' AFTER\\_CONTACT\\_WORK\\_TIME
-#' 
-#' :   Unit: SECONDS
-#' 
-#'     Statistics: AVG
-#' 
-#' QUEUED\\_TIME
-#' 
-#' :   Unit: SECONDS
-#' 
-#'     Statistics: MAX
-#' 
-#' ABANDON\\_TIME
-#' 
-#' :   Unit: COUNT
-#' 
-#'     Statistics: SUM
-#' 
-#' QUEUE\\_ANSWER\\_TIME
-#' 
-#' :   Unit: SECONDS
-#' 
-#'     Statistics: AVG
+#'     Statistic: AVG
 #' 
 #' HOLD\\_TIME
 #' 
 #' :   Unit: SECONDS
 #' 
-#'     Statistics: AVG
-#' 
-#' INTERACTION\\_TIME
-#' 
-#' :   Unit: SECONDS
-#' 
-#'     Statistics: AVG
+#'     Statistic: AVG
 #' 
 #' INTERACTION\\_AND\\_HOLD\\_TIME
 #' 
 #' :   Unit: SECONDS
 #' 
-#'     Statistics: AVG
+#'     Statistic: AVG
+#' 
+#' INTERACTION\\_TIME
+#' 
+#' :   Unit: SECONDS
+#' 
+#'     Statistic: AVG
+#' 
+#' OCCUPANCY
+#' 
+#' :   Unit: PERCENT
+#' 
+#'     Statistic: AVG
+#' 
+#' QUEUE\\_ANSWER\\_TIME
+#' 
+#' :   Unit: SECONDS
+#' 
+#'     Statistic: AVG
+#' 
+#' QUEUED\\_TIME
+#' 
+#' :   Unit: SECONDS
+#' 
+#'     Statistic: MAX
 #' 
 #' SERVICE\\_LEVEL
 #' 
 #' :   Unit: PERCENT
 #' 
-#'     Statistics: AVG
+#'     Statistic: AVG
 #' 
 #'     Threshold: Only \"Less than\" comparisons are supported, with the
 #'     following service level thresholds: 15, 20, 25, 30, 45, 60, 90, 120,
@@ -734,8 +652,7 @@ connect_get_federation_token <- function(InstanceId) {
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
-#' @param MaxResults Indicates the maximum number of results to return per page in the
-#' response, between 1-100.
+#' @param MaxResults The maximimum number of results to return per page.
 #'
 #' @section Request syntax:
 #' ```
@@ -752,7 +669,7 @@ connect_get_federation_token <- function(InstanceId) {
 #'       "string"
 #'     ),
 #'     Channels = list(
-#'       "VOICE"
+#'       "VOICE"|"CHAT"
 #'     )
 #'   ),
 #'   Groupings = list(
@@ -794,26 +711,214 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 }
 .connect$operations$get_metric_data <- connect_get_metric_data
 
-#' Returns an array of RoutingProfileSummary objects that includes
-#' information about the routing profiles in your instance
+#' Provides information about the contact flows for the specified Amazon
+#' Connect instance
 #'
-#' Returns an array of `RoutingProfileSummary` objects that includes
-#' information about the routing profiles in your instance.
+#' Provides information about the contact flows for the specified Amazon
+#' Connect instance.
+#'
+#' @usage
+#' connect_list_contact_flows(InstanceId, ContactFlowTypes, NextToken,
+#'   MaxResults)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
+#' @param ContactFlowTypes The type of contact flow.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param MaxResults The maximimum number of results to return per page.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_contact_flows(
+#'   InstanceId = "string",
+#'   ContactFlowTypes = list(
+#'     "CONTACT_FLOW"|"CUSTOMER_QUEUE"|"CUSTOMER_HOLD"|"CUSTOMER_WHISPER"|"AGENT_HOLD"|"AGENT_WHISPER"|"OUTBOUND_WHISPER"|"AGENT_TRANSFER"|"QUEUE_TRANSFER"
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_list_contact_flows
+connect_list_contact_flows <- function(InstanceId, ContactFlowTypes = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListContactFlows",
+    http_method = "GET",
+    http_path = "/contact-flows-summary/{InstanceId}",
+    paginator = list()
+  )
+  input <- .connect$list_contact_flows_input(InstanceId = InstanceId, ContactFlowTypes = ContactFlowTypes, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .connect$list_contact_flows_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$list_contact_flows <- connect_list_contact_flows
+
+#' Provides information about the hours of operation for the specified
+#' Amazon Connect instance
+#'
+#' Provides information about the hours of operation for the specified
+#' Amazon Connect instance.
+#'
+#' @usage
+#' connect_list_hours_of_operations(InstanceId, NextToken, MaxResults)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param MaxResults The maximimum number of results to return per page.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_hours_of_operations(
+#'   InstanceId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_list_hours_of_operations
+connect_list_hours_of_operations <- function(InstanceId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListHoursOfOperations",
+    http_method = "GET",
+    http_path = "/hours-of-operations-summary/{InstanceId}",
+    paginator = list()
+  )
+  input <- .connect$list_hours_of_operations_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .connect$list_hours_of_operations_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$list_hours_of_operations <- connect_list_hours_of_operations
+
+#' Provides information about the phone numbers for the specified Amazon
+#' Connect instance
+#'
+#' Provides information about the phone numbers for the specified Amazon
+#' Connect instance.
+#'
+#' @usage
+#' connect_list_phone_numbers(InstanceId, PhoneNumberTypes,
+#'   PhoneNumberCountryCodes, NextToken, MaxResults)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
+#' @param PhoneNumberTypes The type of phone number.
+#' @param PhoneNumberCountryCodes The ISO country code.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param MaxResults The maximimum number of results to return per page.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_phone_numbers(
+#'   InstanceId = "string",
+#'   PhoneNumberTypes = list(
+#'     "TOLL_FREE"|"DID"
+#'   ),
+#'   PhoneNumberCountryCodes = list(
+#'     "AF"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BA"|"BW"|"BR"|"IO"|"VG"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CK"|"CR"|"HR"|"CU"|"CW"|"CY"|"CZ"|"CD"|"DK"|"DJ"|"DM"|"DO"|"TL"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"PF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"CI"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"AN"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"KP"|"MP"|"NO"|"OM"|"PK"|"PW"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"CG"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"KR"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"VI"|"UG"|"UA"|"AE"|"GB"|"US"|"UY"|"UZ"|"VU"|"VA"|"VE"|"VN"|"WF"|"EH"|"YE"|"ZM"|"ZW"
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_list_phone_numbers
+connect_list_phone_numbers <- function(InstanceId, PhoneNumberTypes = NULL, PhoneNumberCountryCodes = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListPhoneNumbers",
+    http_method = "GET",
+    http_path = "/phone-numbers-summary/{InstanceId}",
+    paginator = list()
+  )
+  input <- .connect$list_phone_numbers_input(InstanceId = InstanceId, PhoneNumberTypes = PhoneNumberTypes, PhoneNumberCountryCodes = PhoneNumberCountryCodes, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .connect$list_phone_numbers_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$list_phone_numbers <- connect_list_phone_numbers
+
+#' Provides information about the queues for the specified Amazon Connect
+#' instance
+#'
+#' Provides information about the queues for the specified Amazon Connect
+#' instance.
+#'
+#' @usage
+#' connect_list_queues(InstanceId, QueueTypes, NextToken, MaxResults)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
+#' @param QueueTypes The type of queue.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param MaxResults The maximimum number of results to return per page.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_queues(
+#'   InstanceId = "string",
+#'   QueueTypes = list(
+#'     "STANDARD"|"AGENT"
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_list_queues
+connect_list_queues <- function(InstanceId, QueueTypes = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListQueues",
+    http_method = "GET",
+    http_path = "/queues-summary/{InstanceId}",
+    paginator = list()
+  )
+  input <- .connect$list_queues_input(InstanceId = InstanceId, QueueTypes = QueueTypes, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .connect$list_queues_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$list_queues <- connect_list_queues
+
+#' Provides summary information about the routing profiles for the
+#' specified Amazon Connect instance
+#'
+#' Provides summary information about the routing profiles for the
+#' specified Amazon Connect instance.
 #'
 #' @usage
 #' connect_list_routing_profiles(InstanceId, NextToken, MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier for your Amazon Connect instance. To find the ID of your
-#' instance, open the AWS console and select Amazon Connect. Select the
-#' alias of the instance in the Instance alias column. The instance ID is
-#' displayed in the Overview section of your instance settings. For
-#' example, the instance ID is the set of characters at the end of the
-#' instance ARN, after instance/, such as
-#' 10a4c4eb-f57e-4d4c-b602-bf39176ced07.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
-#' @param MaxResults The maximum number of routing profiles to return in the response.
+#' @param MaxResults The maximimum number of results to return per page.
 #'
 #' @section Request syntax:
 #' ```
@@ -844,28 +949,20 @@ connect_list_routing_profiles <- function(InstanceId, NextToken = NULL, MaxResul
 }
 .connect$operations$list_routing_profiles <- connect_list_routing_profiles
 
-#' Returns an array of SecurityProfileSummary objects that contain
-#' information about the security profiles in your instance, including the
-#' ARN, Id, and Name of the security profile
+#' Provides summary information about the security profiles for the
+#' specified Amazon Connect instance
 #'
-#' Returns an array of SecurityProfileSummary objects that contain
-#' information about the security profiles in your instance, including the
-#' ARN, Id, and Name of the security profile.
+#' Provides summary information about the security profiles for the
+#' specified Amazon Connect instance.
 #'
 #' @usage
 #' connect_list_security_profiles(InstanceId, NextToken, MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier for your Amazon Connect instance. To find the ID of your
-#' instance, open the AWS console and select Amazon Connect. Select the
-#' alias of the instance in the Instance alias column. The instance ID is
-#' displayed in the Overview section of your instance settings. For
-#' example, the instance ID is the set of characters at the end of the
-#' instance ARN, after instance/, such as
-#' 10a4c4eb-f57e-4d4c-b602-bf39176ced07.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
-#' @param MaxResults The maximum number of security profiles to return.
+#' @param MaxResults The maximimum number of results to return per page.
 #'
 #' @section Request syntax:
 #' ```
@@ -896,28 +993,56 @@ connect_list_security_profiles <- function(InstanceId, NextToken = NULL, MaxResu
 }
 .connect$operations$list_security_profiles <- connect_list_security_profiles
 
-#' Returns a UserHierarchyGroupSummaryList, which is an array of
-#' HierarchyGroupSummary objects that contain information about the
-#' hierarchy groups in your instance
+#' Lists the tags for the specified resource
 #'
-#' Returns a `UserHierarchyGroupSummaryList`, which is an array of
-#' `HierarchyGroupSummary` objects that contain information about the
-#' hierarchy groups in your instance.
+#' Lists the tags for the specified resource.
+#'
+#' @usage
+#' connect_list_tags_for_resource(resourceArn)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   resourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_list_tags_for_resource
+connect_list_tags_for_resource <- function(resourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .connect$list_tags_for_resource_input(resourceArn = resourceArn)
+  output <- .connect$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$list_tags_for_resource <- connect_list_tags_for_resource
+
+#' Provides summary information about the hierarchy groups for the
+#' specified Amazon Connect instance
+#'
+#' Provides summary information about the hierarchy groups for the
+#' specified Amazon Connect instance.
 #'
 #' @usage
 #' connect_list_user_hierarchy_groups(InstanceId, NextToken, MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier for your Amazon Connect instance. To find the ID of your
-#' instance, open the AWS console and select Amazon Connect. Select the
-#' alias of the instance in the Instance alias column. The instance ID is
-#' displayed in the Overview section of your instance settings. For
-#' example, the instance ID is the set of characters at the end of the
-#' instance ARN, after instance/, such as
-#' 10a4c4eb-f57e-4d4c-b602-bf39176ced07.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
-#' @param MaxResults The maximum number of hierarchy groups to return.
+#' @param MaxResults The maximimum number of results to return per page.
 #'
 #' @section Request syntax:
 #' ```
@@ -948,24 +1073,20 @@ connect_list_user_hierarchy_groups <- function(InstanceId, NextToken = NULL, Max
 }
 .connect$operations$list_user_hierarchy_groups <- connect_list_user_hierarchy_groups
 
-#' Returns a UserSummaryList, which is an array of UserSummary objects
+#' Provides summary information about the users for the specified Amazon
+#' Connect instance
 #'
-#' Returns a `UserSummaryList`, which is an array of `UserSummary` objects.
+#' Provides summary information about the users for the specified Amazon
+#' Connect instance.
 #'
 #' @usage
 #' connect_list_users(InstanceId, NextToken, MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier for your Amazon Connect instance. To find the ID of your
-#' instance, open the AWS console and select Amazon Connect. Select the
-#' alias of the instance in the Instance alias column. The instance ID is
-#' displayed in the Overview section of your instance settings. For
-#' example, the instance ID is the set of characters at the end of the
-#' instance ARN, after instance/, such as
-#' 10a4c4eb-f57e-4d4c-b602-bf39176ced07.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
-#' @param MaxResults The maximum number of results to return in the response.
+#' @param MaxResults The maximimum number of results to return per page.
 #'
 #' @section Request syntax:
 #' ```
@@ -996,65 +1117,109 @@ connect_list_users <- function(InstanceId, NextToken = NULL, MaxResults = NULL) 
 }
 .connect$operations$list_users <- connect_list_users
 
-#' The StartOutboundVoiceContact operation initiates a contact flow to
-#' place an outbound call to a customer
+#' Initiates a contact flow to start a new chat for the customer
 #'
-#' The `StartOutboundVoiceContact` operation initiates a contact flow to
-#' place an outbound call to a customer.
+#' Initiates a contact flow to start a new chat for the customer. Response
+#' of this API provides a token required to obtain credentials from the
+#' [CreateParticipantConnection](https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html)
+#' API in the Amazon Connect Participant Service.
 #' 
-#' If you are using an IAM account, it must have permission to the
-#' `connect:StartOutboundVoiceContact` action.
+#' When a new chat contact is successfully created, clients need to
+#' subscribe to the participant's connection for the created chat within 5
+#' minutes. This is achieved by invoking
+#' [CreateParticipantConnection](https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html)
+#' with WEBSOCKET and CONNECTION\\_CREDENTIALS.
+#'
+#' @usage
+#' connect_start_chat_contact(InstanceId, ContactFlowId, Attributes,
+#'   ParticipantDetails, InitialMessage, ClientToken)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
+#' @param ContactFlowId &#91;required&#93; The identifier of the contact flow for the chat.
+#' @param Attributes A custom key-value pair using an attribute map. The attributes are
+#' standard Amazon Connect attributes, and can be accessed in contact flows
+#' just like any other contact attributes.
+#' 
+#' There can be up to 32,768 UTF-8 bytes across all key-value pairs per
+#' contact. Attribute keys can include only alphanumeric, dash, and
+#' underscore characters.
+#' @param ParticipantDetails &#91;required&#93; Information identifying the participant.
+#' @param InitialMessage The initial message to be sent to the newly created chat.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_chat_contact(
+#'   InstanceId = "string",
+#'   ContactFlowId = "string",
+#'   Attributes = list(
+#'     "string"
+#'   ),
+#'   ParticipantDetails = list(
+#'     DisplayName = "string"
+#'   ),
+#'   InitialMessage = list(
+#'     ContentType = "string",
+#'     Content = "string"
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_start_chat_contact
+connect_start_chat_contact <- function(InstanceId, ContactFlowId, Attributes = NULL, ParticipantDetails, InitialMessage = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "StartChatContact",
+    http_method = "PUT",
+    http_path = "/contact/chat",
+    paginator = list()
+  )
+  input <- .connect$start_chat_contact_input(InstanceId = InstanceId, ContactFlowId = ContactFlowId, Attributes = Attributes, ParticipantDetails = ParticipantDetails, InitialMessage = InitialMessage, ClientToken = ClientToken)
+  output <- .connect$start_chat_contact_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$start_chat_contact <- connect_start_chat_contact
+
+#' Initiates a contact flow to place an outbound call to a customer
+#'
+#' Initiates a contact flow to place an outbound call to a customer.
 #' 
 #' There is a 60 second dialing timeout for this operation. If the call is
-#' not connected after 60 seconds, the call fails.
+#' not connected after 60 seconds, it fails.
 #'
 #' @usage
 #' connect_start_outbound_voice_contact(DestinationPhoneNumber,
 #'   ContactFlowId, InstanceId, ClientToken, SourcePhoneNumber, QueueId,
 #'   Attributes)
 #'
-#' @param DestinationPhoneNumber &#91;required&#93; The phone number of the customer in E.164 format.
-#' @param ContactFlowId &#91;required&#93; The identifier for the contact flow to connect the outbound call to.
-#' 
-#' To find the `ContactFlowId`, open the contact flow you want to use in
-#' the Amazon Connect contact flow editor. The ID for the contact flow is
-#' displayed in the address bar as part of the URL. For example, the
-#' contact flow ID is the set of characters at the end of the URL, after
-#' \'contact-flow/\' such as `78ea8fd5-2659-4f2b-b528-699760ccfc1b`.
-#' @param InstanceId &#91;required&#93; The identifier for your Amazon Connect instance. To find the ID of your
-#' instance, open the AWS console and select Amazon Connect. Select the
-#' alias of the instance in the Instance alias column. The instance ID is
-#' displayed in the Overview section of your instance settings. For
-#' example, the instance ID is the set of characters at the end of the
-#' instance ARN, after instance/, such as
-#' 10a4c4eb-f57e-4d4c-b602-bf39176ced07.
+#' @param DestinationPhoneNumber &#91;required&#93; The phone number of the customer, in E.164 format.
+#' @param ContactFlowId &#91;required&#93; The identifier of the contact flow for the outbound call.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. The token is valid for 7 days after
 #' creation. If a contact is already started, the contact ID is returned.
 #' If the contact is disconnected, a new contact is started.
-#' @param SourcePhoneNumber The phone number, in E.164 format, associated with your Amazon Connect
-#' instance to use for the outbound call.
-#' @param QueueId The queue to add the call to. If you specify a queue, the phone
-#' displayed for caller ID is the phone number specified in the queue. If
-#' you do not specify a queue, the queue used will be the queue defined in
-#' the contact flow.
-#' 
-#' To find the `QueueId`, open the queue you want to use in the Amazon
-#' Connect Queue editor. The ID for the queue is displayed in the address
-#' bar as part of the URL. For example, the queue ID is the set of
-#' characters at the end of the URL, after \'queue/\' such as
-#' `queue/aeg40574-2d01-51c3-73d6-bf8624d2168c`.
-#' @param Attributes Specify a custom key-value pair using an attribute map. The attributes
-#' are standard Amazon Connect attributes, and can be accessed in contact
-#' flows just like any other contact attributes.
+#' @param SourcePhoneNumber The phone number associated with the Amazon Connect instance, in E.164
+#' format. If you do not specify a source phone number, you must specify a
+#' queue.
+#' @param QueueId The queue for the call. If you specify a queue, the phone displayed for
+#' caller ID is the phone number specified in the queue. If you do not
+#' specify a queue, the queue defined in the contact flow is used. If you
+#' do not specify a queue, you must specify a source phone number.
+#' @param Attributes A custom key-value pair using an attribute map. The attributes are
+#' standard Amazon Connect attributes, and can be accessed in contact flows
+#' just like any other contact attributes.
 #' 
 #' There can be up to 32,768 UTF-8 bytes across all key-value pairs per
 #' contact. Attribute keys can include only alphanumeric, dash, and
 #' underscore characters.
-#' 
-#' For example, if you want play a greeting when the customer answers the
-#' call, you can pass the customer name in attributes similar to the
-#' following:
 #'
 #' @section Request syntax:
 #' ```
@@ -1091,24 +1256,15 @@ connect_start_outbound_voice_contact <- function(DestinationPhoneNumber, Contact
 }
 .connect$operations$start_outbound_voice_contact <- connect_start_outbound_voice_contact
 
-#' Ends the contact initiated by the StartOutboundVoiceContact operation
+#' Ends the specified contact
 #'
-#' Ends the contact initiated by the `StartOutboundVoiceContact` operation.
-#' 
-#' If you are using an IAM account, it must have permission to the
-#' `connect:StopContact` action.
+#' Ends the specified contact.
 #'
 #' @usage
 #' connect_stop_contact(ContactId, InstanceId)
 #'
-#' @param ContactId &#91;required&#93; The unique identifier of the contact to end.
-#' @param InstanceId &#91;required&#93; The identifier for your Amazon Connect instance. To find the ID of your
-#' instance, open the AWS console and select Amazon Connect. Select the
-#' alias of the instance in the Instance alias column. The instance ID is
-#' displayed in the Overview section of your instance settings. For
-#' example, the instance ID is the set of characters at the end of the
-#' instance ARN, after instance/, such as
-#' 10a4c4eb-f57e-4d4c-b602-bf39176ced07.
+#' @param ContactId &#91;required&#93; The ID of the contact.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
 #'
 #' @section Request syntax:
 #' ```
@@ -1138,53 +1294,126 @@ connect_stop_contact <- function(ContactId, InstanceId) {
 }
 .connect$operations$stop_contact <- connect_stop_contact
 
-#' The UpdateContactAttributes operation lets you programmatically create
-#' new, or update existing, contact attributes associated with a contact
+#' Adds the specified tags to the specified resource
 #'
-#' The `UpdateContactAttributes` operation lets you programmatically create
-#' new, or update existing, contact attributes associated with a contact.
-#' You can use the operation to add or update attributes for both ongoing
-#' and completed contacts. For example, you can update the customer\'s name
-#' or the reason the customer called while the call is active, or add notes
-#' about steps that the agent took during the call that are displayed to
-#' the next agent that takes the call. You can also use the
-#' `UpdateContactAttributes` operation to update attributes for a contact
-#' using data from your CRM application and save the data with the contact
-#' in Amazon Connect. You could also flag calls for additional analysis,
-#' such as legal review or identifying abusive callers.
+#' Adds the specified tags to the specified resource.
+#' 
+#' The supported resource type is users.
+#'
+#' @usage
+#' connect_tag_resource(resourceArn, tags)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#' @param tags &#91;required&#93; One or more tags. For example, \{ \"tags\": \{\"key1\":\"value1\",
+#' \"key2\":\"value2\"\} \}.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   resourceArn = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_tag_resource
+connect_tag_resource <- function(resourceArn, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .connect$tag_resource_input(resourceArn = resourceArn, tags = tags)
+  output <- .connect$tag_resource_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$tag_resource <- connect_tag_resource
+
+#' Removes the specified tags from the specified resource
+#'
+#' Removes the specified tags from the specified resource.
+#'
+#' @usage
+#' connect_untag_resource(resourceArn, tagKeys)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#' @param tagKeys &#91;required&#93; The tag keys.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   resourceArn = "string",
+#'   tagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_untag_resource
+connect_untag_resource <- function(resourceArn, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .connect$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
+  output <- .connect$untag_resource_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$untag_resource <- connect_untag_resource
+
+#' Creates or updates the contact attributes associated with the specified
+#' contact
+#'
+#' Creates or updates the contact attributes associated with the specified
+#' contact.
+#' 
+#' You can add or update attributes for both ongoing and completed
+#' contacts. For example, you can update the customer\'s name or the reason
+#' the customer called while the call is active, or add notes about steps
+#' that the agent took during the call that are displayed to the next agent
+#' that takes the call. You can also update attributes for a contact using
+#' data from your CRM application and save the data with the contact in
+#' Amazon Connect. You could also flag calls for additional analysis, such
+#' as legal review or identifying abusive callers.
 #' 
 #' Contact attributes are available in Amazon Connect for 24 months, and
 #' are then deleted.
 #' 
-#' *Important:*
-#' 
-#' You cannot use the operation to update attributes for contacts that
-#' occurred prior to the release of the API, September 12, 2018. You can
-#' update attributes only for contacts that started after the release of
-#' the API. If you attempt to update attributes for a contact that occurred
-#' prior to the release of the API, a 400 error is returned. This applies
-#' also to queued callbacks that were initiated prior to the release of the
-#' API but are still active in your instance.
+#' **Important:** You cannot use the operation to update attributes for
+#' contacts that occurred prior to the release of the API, September 12,
+#' 2018. You can update attributes only for contacts that started after the
+#' release of the API. If you attempt to update attributes for a contact
+#' that occurred prior to the release of the API, a 400 error is returned.
+#' This applies also to queued callbacks that were initiated prior to the
+#' release of the API but are still active in your instance.
 #'
 #' @usage
 #' connect_update_contact_attributes(InitialContactId, InstanceId,
 #'   Attributes)
 #'
-#' @param InitialContactId &#91;required&#93; The unique identifier of the contact for which to update attributes.
-#' This is the identifier for the contact associated with the first
-#' interaction with the contact center.
-#' @param InstanceId &#91;required&#93; The identifier for your Amazon Connect instance. To find the ID of your
-#' instance, open the AWS console and select Amazon Connect. Select the
-#' alias of the instance in the Instance alias column. The instance ID is
-#' displayed in the Overview section of your instance settings. For
-#' example, the instance ID is the set of characters at the end of the
-#' instance ARN, after instance/, such as
-#' 10a4c4eb-f57e-4d4c-b602-bf39176ced07.
-#' @param Attributes &#91;required&#93; Specify a custom key-value pair using an attribute map. The attributes
-#' are standard Amazon Connect attributes, and can be accessed in contact
-#' flows just like any other contact attributes.
+#' @param InitialContactId &#91;required&#93; The identifier of the contact. This is the identifier of the contact
+#' associated with the first interaction with the contact center.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
+#' @param Attributes &#91;required&#93; The Amazon Connect attributes. These attributes can be accessed in
+#' contact flows just like any other contact attributes.
 #' 
-#' There can be up to 32,768 UTF-8 bytes across all key-value pairs per
+#' You can have up to 32,768 UTF-8 bytes across all attributes for a
 #' contact. Attribute keys can include only alphanumeric, dash, and
 #' underscore characters.
 #'
@@ -1219,22 +1448,16 @@ connect_update_contact_attributes <- function(InitialContactId, InstanceId, Attr
 }
 .connect$operations$update_contact_attributes <- connect_update_contact_attributes
 
-#' Assigns the specified hierarchy group to the user
+#' Assigns the specified hierarchy group to the specified user
 #'
-#' Assigns the specified hierarchy group to the user.
+#' Assigns the specified hierarchy group to the specified user.
 #'
 #' @usage
 #' connect_update_user_hierarchy(HierarchyGroupId, UserId, InstanceId)
 #'
-#' @param HierarchyGroupId The identifier for the hierarchy group to assign to the user.
-#' @param UserId &#91;required&#93; The identifier of the user account to assign the hierarchy group to.
-#' @param InstanceId &#91;required&#93; The identifier for your Amazon Connect instance. To find the ID of your
-#' instance, open the AWS console and select Amazon Connect. Select the
-#' alias of the instance in the Instance alias column. The instance ID is
-#' displayed in the Overview section of your instance settings. For
-#' example, the instance ID is the set of characters at the end of the
-#' instance ARN, after instance/, such as
-#' 10a4c4eb-f57e-4d4c-b602-bf39176ced07.
+#' @param HierarchyGroupId The identifier of the hierarchy group.
+#' @param UserId &#91;required&#93; The identifier of the user account.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
 #'
 #' @section Request syntax:
 #' ```
@@ -1265,24 +1488,16 @@ connect_update_user_hierarchy <- function(HierarchyGroupId = NULL, UserId, Insta
 }
 .connect$operations$update_user_hierarchy <- connect_update_user_hierarchy
 
-#' Updates the identity information for the specified user in a
-#' UserIdentityInfo object, including email, first name, and last name
+#' Updates the identity information for the specified user
 #'
-#' Updates the identity information for the specified user in a
-#' `UserIdentityInfo` object, including email, first name, and last name.
+#' Updates the identity information for the specified user.
 #'
 #' @usage
 #' connect_update_user_identity_info(IdentityInfo, UserId, InstanceId)
 #'
-#' @param IdentityInfo &#91;required&#93; A `UserIdentityInfo` object.
-#' @param UserId &#91;required&#93; The identifier for the user account to update identity information for.
-#' @param InstanceId &#91;required&#93; The identifier for your Amazon Connect instance. To find the ID of your
-#' instance, open the AWS console and select Amazon Connect. Select the
-#' alias of the instance in the Instance alias column. The instance ID is
-#' displayed in the Overview section of your instance settings. For
-#' example, the instance ID is the set of characters at the end of the
-#' instance ARN, after instance/, such as
-#' 10a4c4eb-f57e-4d4c-b602-bf39176ced07.
+#' @param IdentityInfo &#91;required&#93; The identity information for the user.
+#' @param UserId &#91;required&#93; The identifier of the user account.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
 #'
 #' @section Request syntax:
 #' ```
@@ -1317,26 +1532,16 @@ connect_update_user_identity_info <- function(IdentityInfo, UserId, InstanceId) 
 }
 .connect$operations$update_user_identity_info <- connect_update_user_identity_info
 
-#' Updates the phone configuration settings in the UserPhoneConfig object
-#' for the specified user
+#' Updates the phone configuration settings for the specified user
 #'
-#' Updates the phone configuration settings in the `UserPhoneConfig` object
-#' for the specified user.
+#' Updates the phone configuration settings for the specified user.
 #'
 #' @usage
 #' connect_update_user_phone_config(PhoneConfig, UserId, InstanceId)
 #'
-#' @param PhoneConfig &#91;required&#93; A `UserPhoneConfig` object that contains settings for
-#' `AfterContactWorkTimeLimit`, `AutoAccept`, `DeskPhoneNumber`, and
-#' `PhoneType` to assign to the user.
-#' @param UserId &#91;required&#93; The identifier for the user account to change phone settings for.
-#' @param InstanceId &#91;required&#93; The identifier for your Amazon Connect instance. To find the ID of your
-#' instance, open the AWS console and select Amazon Connect. Select the
-#' alias of the instance in the Instance alias column. The instance ID is
-#' displayed in the Overview section of your instance settings. For
-#' example, the instance ID is the set of characters at the end of the
-#' instance ARN, after instance/, such as
-#' 10a4c4eb-f57e-4d4c-b602-bf39176ced07.
+#' @param PhoneConfig &#91;required&#93; Information about phone configuration settings for the user.
+#' @param UserId &#91;required&#93; The identifier of the user account.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
 #'
 #' @section Request syntax:
 #' ```
@@ -1372,23 +1577,17 @@ connect_update_user_phone_config <- function(PhoneConfig, UserId, InstanceId) {
 }
 .connect$operations$update_user_phone_config <- connect_update_user_phone_config
 
-#' Assigns the specified routing profile to a user
+#' Assigns the specified routing profile to the specified user
 #'
-#' Assigns the specified routing profile to a user.
+#' Assigns the specified routing profile to the specified user.
 #'
 #' @usage
 #' connect_update_user_routing_profile(RoutingProfileId, UserId,
 #'   InstanceId)
 #'
-#' @param RoutingProfileId &#91;required&#93; The identifier of the routing profile to assign to the user.
-#' @param UserId &#91;required&#93; The identifier for the user account to assign the routing profile to.
-#' @param InstanceId &#91;required&#93; The identifier for your Amazon Connect instance. To find the ID of your
-#' instance, open the AWS console and select Amazon Connect. Select the
-#' alias of the instance in the Instance alias column. The instance ID is
-#' displayed in the Overview section of your instance settings. For
-#' example, the instance ID is the set of characters at the end of the
-#' instance ARN, after instance/, such as
-#' 10a4c4eb-f57e-4d4c-b602-bf39176ced07.
+#' @param RoutingProfileId &#91;required&#93; The identifier of the routing profile for the user.
+#' @param UserId &#91;required&#93; The identifier of the user account.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
 #'
 #' @section Request syntax:
 #' ```
@@ -1419,23 +1618,17 @@ connect_update_user_routing_profile <- function(RoutingProfileId, UserId, Instan
 }
 .connect$operations$update_user_routing_profile <- connect_update_user_routing_profile
 
-#' Updates the security profiles assigned to the user
+#' Assigns the specified security profiles to the specified user
 #'
-#' Updates the security profiles assigned to the user.
+#' Assigns the specified security profiles to the specified user.
 #'
 #' @usage
 #' connect_update_user_security_profiles(SecurityProfileIds, UserId,
 #'   InstanceId)
 #'
-#' @param SecurityProfileIds &#91;required&#93; The identifiers for the security profiles to assign to the user.
-#' @param UserId &#91;required&#93; The identifier of the user account to assign the security profiles.
-#' @param InstanceId &#91;required&#93; The identifier for your Amazon Connect instance. To find the ID of your
-#' instance, open the AWS console and select Amazon Connect. Select the
-#' alias of the instance in the Instance alias column. The instance ID is
-#' displayed in the Overview section of your instance settings. For
-#' example, the instance ID is the set of characters at the end of the
-#' instance ARN, after instance/, such as
-#' 10a4c4eb-f57e-4d4c-b602-bf39176ced07.
+#' @param SecurityProfileIds &#91;required&#93; The identifiers of the security profiles for the user.
+#' @param UserId &#91;required&#93; The identifier of the user account.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
 #'
 #' @section Request syntax:
 #' ```

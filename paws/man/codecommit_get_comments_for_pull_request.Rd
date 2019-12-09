@@ -19,12 +19,12 @@ tip of the branch at the time the pull request was created.}
 \item{afterCommitId}{The full commit ID of the commit in the source branch that was the tip
 of the branch at the time the comment was made.}
 
-\item{nextToken}{An enumeration token that when provided in a request, returns the next
+\item{nextToken}{An enumeration token that, when provided in a request, returns the next
 batch of the results.}
 
-\item{maxResults}{A non-negative integer used to limit the number of returned results. The
-default is 100 comments. You can return up to 500 comments with a single
-request.}
+\item{maxResults}{A non-zero, non-negative integer used to limit the number of returned
+results. The default is 100 comments. You can return up to 500 comments
+with a single request.}
 }
 \description{
 Returns comments made on a pull request.

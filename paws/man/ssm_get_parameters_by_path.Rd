@@ -2,7 +2,8 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_get_parameters_by_path}
 \alias{ssm_get_parameters_by_path}
-\title{Retrieve parameters in a specific hierarchy}
+\title{Retrieve information about one or more parameters in a specific
+hierarchy}
 \usage{
 ssm_get_parameters_by_path(Path, Recursive, ParameterFilters,
   WithDecryption, MaxResults, NextToken)
@@ -11,19 +12,17 @@ ssm_get_parameters_by_path(Path, Recursive, ParameterFilters,
 \item{Path}{[required] The hierarchy for the parameter. Hierarchies start with a forward slash
 (/) and end with the parameter name. A parameter name hierarchy can have
 a maximum of 15 levels. Here is an example of a hierarchy:
-\code{/Finance/Prod/IAD/WinServ2016/license33}}
+\verb{/Finance/Prod/IAD/WinServ2016/license33}}
 
 \item{Recursive}{Retrieve all parameters within a hierarchy.
 
 If a user has access to a path, then the user can access all levels of
-that path. For example, if a user has permission to access path \code{/a},
-then the user can also access \code{/a/b}. Even if a user has explicitly been
-denied access in IAM for parameter \code{/a/b}, they can still call the
-GetParametersByPath API action recursively for \code{/a} and view \code{/a/b}.}
+that path. For example, if a user has permission to access path \verb{/a},
+then the user can also access \verb{/a/b}. Even if a user has explicitly been
+denied access in IAM for parameter \verb{/a/b}, they can still call the
+GetParametersByPath API action recursively for \verb{/a} and view \verb{/a/b}.}
 
-\item{ParameterFilters}{Filters to limit the request results.
-
-You can't filter using the parameter name.}
+\item{ParameterFilters}{Filters to limit the request results.}
 
 \item{WithDecryption}{Retrieve all parameters in a hierarchy with their value decrypted.}
 
@@ -35,9 +34,8 @@ next set of results.}
 results.}
 }
 \description{
-Retrieve parameters in a specific hierarchy. For more information, see
-\href{http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working.html}{Working with Systems Manager Parameters}
-in the \emph{AWS Systems Manager User Guide}.
+Retrieve information about one or more parameters in a specific
+hierarchy.
 }
 \details{
 Request results are returned on a best-effort basis. If you specify
@@ -47,8 +45,6 @@ zero and the value of \code{MaxResults}. If the service reaches an internal
 limit while processing the results, it stops the operation and returns
 the matching values up to that point and a \code{NextToken}. You can specify
 the \code{NextToken} in a subsequent call to get the next set of results.
-
-This API action doesn't support filtering by tags.
 }
 \section{Request syntax}{
 \preformatted{svc$get_parameters_by_path(

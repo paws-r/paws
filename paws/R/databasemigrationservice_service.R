@@ -66,6 +66,7 @@ NULL
 #'  \link[=databasemigrationservice_create_replication_subnet_group]{create_replication_subnet_group} \tab Creates a replication subnet group given a list of the subnet IDs in a VPC \cr
 #'  \link[=databasemigrationservice_create_replication_task]{create_replication_task} \tab Creates a replication task using the specified parameters \cr
 #'  \link[=databasemigrationservice_delete_certificate]{delete_certificate} \tab Deletes the specified certificate \cr
+#'  \link[=databasemigrationservice_delete_connection]{delete_connection} \tab Deletes the connection between a replication instance and an endpoint \cr
 #'  \link[=databasemigrationservice_delete_endpoint]{delete_endpoint} \tab Deletes the specified endpoint \cr
 #'  \link[=databasemigrationservice_delete_event_subscription]{delete_event_subscription} \tab Deletes an AWS DMS event subscription \cr
 #'  \link[=databasemigrationservice_delete_replication_instance]{delete_replication_instance} \tab Deletes the specified replication instance \cr

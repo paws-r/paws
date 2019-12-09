@@ -8,7 +8,7 @@ belongs to}
 organizations_describe_organization()
 }
 \description{
-Retrieves information about the organization that the user's account
+Retrieves information about the organization that the user\'s account
 belongs to.
 }
 \details{

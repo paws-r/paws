@@ -14,21 +14,21 @@ initiated.
 \item \code{attachment.delete-on-termination} - Whether the volume is deleted
 on instance termination.
 \item \code{attachment.device} - The device name specified in the block device
-mapping (for example, \code{/dev/sda1}).
+mapping (for example, \verb{/dev/sda1}).
 \item \code{attachment.instance-id} - The ID of the instance the volume is
 attached to.
-\item \code{attachment.status} - The attachment state (\code{attaching} \|
-\code{attached} \| \code{detaching}).
+\item \code{attachment.status} - The attachment state (\code{attaching} \\|
+\code{attached} \\| \code{detaching}).
 \item \code{availability-zone} - The Availability Zone in which the volume was
 created.
 \item \code{create-time} - The time stamp when the volume was created.
-\item \code{encrypted} - Indicates whether the volume is encrypted (\code{true} \|
+\item \code{encrypted} - Indicates whether the volume is encrypted (\code{true} \\|
 \code{false})
 \item \code{size} - The size of the volume, in GiB.
 \item \code{snapshot-id} - The snapshot from which the volume was created.
-\item \code{status} - The status of the volume (\code{creating} \| \code{available} \|
-\code{in-use} \| \code{deleting} \| \code{deleted} \| \code{error}).
-\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+\item \code{status} - The status of the volume (\code{creating} \\| \code{available} \\|
+\verb{in-use} \\| \code{deleting} \\| \code{deleted} \\| \code{error}).
+\item \code{tag}:\\<key\\> - The key/value combination of a tag assigned to the
 resource. Use the tag key in the filter name and the tag value as
 the filter value. For example, to find all resources that have a tag
 with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for

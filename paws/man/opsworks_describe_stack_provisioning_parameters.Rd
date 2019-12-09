@@ -10,7 +10,7 @@ opsworks_describe_stack_provisioning_parameters(StackId)
 \item{StackId}{[required] The stack ID.}
 }
 \description{
-Requests a description of a stack's provisioning parameters.
+Requests a description of a stack\'s provisioning parameters.
 }
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a

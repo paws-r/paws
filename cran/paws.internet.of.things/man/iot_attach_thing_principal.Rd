@@ -9,7 +9,8 @@ iot_attach_thing_principal(thingName, principal)
 \arguments{
 \item{thingName}{[required] The name of the thing.}
 
-\item{principal}{[required] The principal, such as a certificate or other credential.}
+\item{principal}{[required] The principal, which can be a certificate ARN (as returned from the
+CreateCertificate operation) or an Amazon Cognito ID.}
 }
 \description{
 Attaches the specified principal to the specified thing. A principal can

@@ -35,7 +35,13 @@ longer be accessible.
 \preformatted{svc$create_deployment_job(
   deploymentConfig = list(
     concurrentDeploymentPercentage = 123,
-    failureThresholdPercentage = 123
+    failureThresholdPercentage = 123,
+    robotDeploymentTimeoutInSeconds = 123,
+    downloadConditionFile = list(
+      bucket = "string",
+      key = "string",
+      etag = "string"
+    )
   ),
   clientRequestToken = "string",
   fleet = "string",

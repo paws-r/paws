@@ -11,7 +11,7 @@ organizations_list_aws_service_access_for_organization(NextToken,
 \arguments{
 \item{NextToken}{Use this parameter if you receive a \code{NextToken} response in a previous
 request that indicates that there is more output available. Set it to
-the value of the previous call's \code{NextToken} response to indicate where
+the value of the previous call\'s \code{NextToken} response to indicate where
 the output should continue from.}
 
 \item{MaxResults}{(Optional) Use this to limit the number of results you want included per
@@ -37,7 +37,7 @@ Organizations, including the list of services that currently work with
 Organizations, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html}{Integrating AWS Organizations with Other AWS Services}
 in the \emph{AWS Organizations User Guide.}
 
-This operation can be called only from the organization's master
+This operation can be called only from the organization\'s master
 account.
 }
 \section{Request syntax}{

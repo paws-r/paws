@@ -9,7 +9,7 @@ greengrass_associate_role_to_group(GroupId, RoleArn)
 \arguments{
 \item{GroupId}{[required] The ID of the Greengrass group.}
 
-\item{RoleArn}{The ARN of the role you wish to associate with this group.}
+\item{RoleArn}{[required] The ARN of the role you wish to associate with this group. The existence of the role is not validated.}
 }
 \description{
 Associates a role with a group. Your Greengrass core will use the role to access AWS cloud services. The role's permissions should allow Greengrass core Lambda functions to perform actions against the cloud.

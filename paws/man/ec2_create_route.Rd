@@ -6,7 +6,7 @@
 \usage{
 ec2_create_route(DestinationCidrBlock, DestinationIpv6CidrBlock, DryRun,
   EgressOnlyInternetGatewayId, GatewayId, InstanceId, NatGatewayId,
-  TransitGatewayId, NetworkInterfaceId, RouteTableId,
+  TransitGatewayId, LocalGatewayId, NetworkInterfaceId, RouteTableId,
   VpcPeeringConnectionId)
 }
 \arguments{
@@ -33,6 +33,8 @@ an instance ID unless exactly one network interface is attached.}
 
 \item{TransitGatewayId}{The ID of a transit gateway.}
 
+\item{LocalGatewayId}{The ID of the local gateway.}
+
 \item{NetworkInterfaceId}{The ID of a network interface.}
 
 \item{RouteTableId}{[required] The ID of the route table for the route.}
@@ -45,17 +47,18 @@ Creates a route in a route table within a VPC.
 \details{
 You must specify one of the following targets: internet gateway or
 virtual private gateway, NAT instance, NAT gateway, VPC peering
-connection, network interface, or egress-only internet gateway.
+connection, network interface, egress-only internet gateway, or transit
+gateway.
 
 When determining how to route traffic, we use the route with the most
 specific match. For example, traffic is destined for the IPv4 address
-\code{192.0.2.3}, and the route table includes the following two IPv4 routes:
+\verb{192.0.2.3}, and the route table includes the following two IPv4 routes:
 \itemize{
-\item \code{192.0.2.0/24} (goes to some target A)
-\item \code{192.0.2.0/28} (goes to some target B)
+\item \verb{192.0.2.0/24} (goes to some target A)
+\item \verb{192.0.2.0/28} (goes to some target B)
 }
 
-Both routes apply to the traffic destined for \code{192.0.2.3}. However, the
+Both routes apply to the traffic destined for \verb{192.0.2.3}. However, the
 second route in the list covers a smaller number of IP addresses and is
 therefore more specific, so we use that route to determine where to
 target the traffic.
@@ -73,6 +76,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
   InstanceId = "string",
   NatGatewayId = "string",
   TransitGatewayId = "string",
+  LocalGatewayId = "string",
   NetworkInterfaceId = "string",
   RouteTableId = "string",
   VpcPeeringConnectionId = "string"

@@ -29,7 +29,7 @@ Creates an identity provider for a user pool.
 \preformatted{svc$create_identity_provider(
   UserPoolId = "string",
   ProviderName = "string",
-  ProviderType = "SAML"|"Facebook"|"Google"|"LoginWithAmazon"|"OIDC",
+  ProviderType = "SAML"|"Facebook"|"Google"|"LoginWithAmazon"|"SignInWithApple"|"OIDC",
   ProviderDetails = list(
     "string"
   ),

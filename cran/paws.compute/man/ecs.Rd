@@ -53,6 +53,7 @@ or worry about scaling your management infrastructure.
 \section{Operations}{
 
 \tabular{ll}{
+\link[=ecs_create_capacity_provider]{create_capacity_provider} \tab Creates a new capacity provider \cr
 \link[=ecs_create_cluster]{create_cluster} \tab Creates a new Amazon ECS cluster \cr
 \link[=ecs_create_service]{create_service} \tab Runs and maintains a desired number of tasks from a specified task definition \cr
 \link[=ecs_create_task_set]{create_task_set} \tab Create a task set in the specified cluster and service \cr
@@ -63,6 +64,7 @@ or worry about scaling your management infrastructure.
 \link[=ecs_delete_task_set]{delete_task_set} \tab Deletes a specified task set within a service \cr
 \link[=ecs_deregister_container_instance]{deregister_container_instance} \tab Deregisters an Amazon ECS container instance from the specified cluster \cr
 \link[=ecs_deregister_task_definition]{deregister_task_definition} \tab Deregisters the specified task definition by family and revision \cr
+\link[=ecs_describe_capacity_providers]{describe_capacity_providers} \tab Describes one or more of your capacity providers \cr
 \link[=ecs_describe_clusters]{describe_clusters} \tab Describes one or more of your clusters \cr
 \link[=ecs_describe_container_instances]{describe_container_instances} \tab Describes Amazon Elastic Container Service container instances \cr
 \link[=ecs_describe_services]{describe_services} \tab Describes the specified services running in your cluster \cr
@@ -82,6 +84,7 @@ or worry about scaling your management infrastructure.
 \link[=ecs_put_account_setting]{put_account_setting} \tab Modifies an account setting \cr
 \link[=ecs_put_account_setting_default]{put_account_setting_default} \tab Modifies an account setting for all IAM users on an account for whom no individual account setting has been specified \cr
 \link[=ecs_put_attributes]{put_attributes} \tab Create or update an attribute on an Amazon ECS resource \cr
+\link[=ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers} \tab Modifies the available capacity providers and the default capacity provider strategy for a cluster \cr
 \link[=ecs_register_container_instance]{register_container_instance} \tab This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent \cr
 \link[=ecs_register_task_definition]{register_task_definition} \tab Registers a new task definition from the supplied family and containerDefinitions \cr
 \link[=ecs_run_task]{run_task} \tab Starts a new task using the specified task definition \cr
@@ -92,6 +95,7 @@ or worry about scaling your management infrastructure.
 \link[=ecs_submit_task_state_change]{submit_task_state_change} \tab This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent \cr
 \link[=ecs_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn \cr
 \link[=ecs_untag_resource]{untag_resource} \tab Deletes specified tags from a resource \cr
+\link[=ecs_update_cluster_settings]{update_cluster_settings} \tab Modifies the settings to use for a cluster \cr
 \link[=ecs_update_container_agent]{update_container_agent} \tab Updates the Amazon ECS container agent on a specified container instance \cr
 \link[=ecs_update_container_instances_state]{update_container_instances_state} \tab Modifies the status of an Amazon ECS container instance \cr
 \link[=ecs_update_service]{update_service} \tab Modifies the parameters of a service \cr

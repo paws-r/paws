@@ -30,7 +30,7 @@ requests, \code{ActivatedRule|Action} is used instead of
 }}
 
 \item{DefaultAction}{A default action for the web ACL, either ALLOW or BLOCK. AWS WAF
-performs the default action if a request doesn't match the criteria in
+performs the default action if a request doesn\'t match the criteria in
 any of the rules in a web ACL.}
 }
 \description{
@@ -41,7 +41,7 @@ you update a \code{WebACL}, you specify the following values:
 \details{
 \itemize{
 \item A default action for the \code{WebACL}, either \code{ALLOW} or \code{BLOCK}. AWS
-WAF performs the default action if a request doesn't match the
+WAF performs the default action if a request doesn\'t match the
 criteria in any of the \code{Rules} in a \code{WebACL}.
 \item The \code{Rules} that you want to add or delete. If you want to replace
 one \code{Rule} with another, you delete the existing \code{Rule} and add the
@@ -55,7 +55,7 @@ value of \code{Priority}. (The \code{Rule} that has the lowest value for
 \code{Priority} is evaluated first.) When a web request matches all the
 predicates (such as \code{ByteMatchSets} and \code{IPSets}) in a \code{Rule}, AWS
 WAF immediately takes the corresponding action, allow or block, and
-doesn't evaluate the request against the remaining \code{Rules} in the
+doesn\'t evaluate the request against the remaining \code{Rules} in the
 \code{WebACL}, if any.
 }
 
@@ -73,7 +73,6 @@ CreateSqlInjectionMatchSet, and UpdateSqlInjectionMatchSet.
 \item Submit an \code{UpdateWebACL} request to specify the \code{Rules} that you
 want to include in the \code{WebACL}, to specify the default action, and
 to associate the \code{WebACL} with a CloudFront distribution.
-}
 
 The \code{ActivatedRule} can be a rule group. If you specify a rule group
 as your \code{ActivatedRule}, you can exclude specific rules from that
@@ -83,9 +82,10 @@ If you already have a rule group associated with a web ACL and want
 to submit an \code{UpdateWebACL} request to exclude certain rules from
 that rule group, you must first remove the rule group from the web
 ACL, the re-insert it again, specifying the excluded rules. For
-details, see ActivatedRule\$ExcludedRules.
+details, see ActivatedRule\\$ExcludedRules.
+}
 
-Be aware that if you try to add a RATE\_BASED rule to a web ACL without
+Be aware that if you try to add a RATE\\_BASED rule to a web ACL without
 setting the rule type when first creating the rule, the UpdateWebACL
 request will fail because the request tries to add a REGULAR rule (the
 default rule type) with the specified ID, which does not exist.

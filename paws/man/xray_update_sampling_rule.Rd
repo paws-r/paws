@@ -10,7 +10,7 @@ xray_update_sampling_rule(SamplingRuleUpdate)
 \item{SamplingRuleUpdate}{[required] The rule and fields to change.}
 }
 \description{
-Modifies a sampling rule's configuration.
+Modifies a sampling rule\'s configuration.
 }
 \section{Request syntax}{
 \preformatted{svc$update_sampling_rule(

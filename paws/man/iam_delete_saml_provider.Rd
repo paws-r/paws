@@ -14,7 +14,7 @@ Deletes a SAML provider resource in IAM.
 }
 \details{
 Deleting the provider resource from IAM does not update any roles that
-reference the SAML provider resource's ARN as a principal in their
+reference the SAML provider resource\'s ARN as a principal in their
 trust policies. Any attempt to assume a role that references a
 non-existent provider resource ARN fails.
 

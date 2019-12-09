@@ -17,7 +17,56 @@ s3_put_bucket_analytics_configuration(Bucket, Id,
 }
 \description{
 Sets an analytics configuration for the bucket (specified by the
-analytics configuration ID).
+analytics configuration ID). You can have up to 1,000 analytics
+configurations per bucket.
+}
+\details{
+You can choose to have storage class analysis export analysis reports
+sent to a comma-separated values (CSV) flat file. See the \code{DataExport}
+request element. Reports are updated daily and are based on the object
+filters that you configure. When selecting data export, you specify a
+destination bucket and an optional destination prefix where the file is
+written. You can export the data to a destination bucket in a different
+account. However, the destination bucket must be in the same Region as
+the bucket that you are making the PUT analytics configuration to. For
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html}{Amazon S3 Analytics -- Storage Class Analysis}.
+
+You must create a bucket policy on the destination bucket where the
+exported file is written to grant permissions to Amazon S3 to write
+objects to the bucket. For an example policy, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html#example-bucket-policies-use-case-9}{Granting Permissions for Amazon S3 Inventory and Storage Class Analysis}.
+
+To use this operation, you must have permissions to perform the
+\code{s3:PutAnalyticsConfiguration} action. The bucket owner has this
+permission by default. The bucket owner can grant this permission to
+others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
+
+\strong{Special Errors}
+\itemize{
+\item 
+\itemize{
+\item \emph{HTTP Error: HTTP 400 Bad Request}
+\item \emph{Code: InvalidArgument}
+\item \emph{Cause: Invalid argument.}
+}
+\item 
+\itemize{
+\item \emph{HTTP Error: HTTP 400 Bad Request}
+\item \emph{Code: TooManyConfigurations}
+\item \emph{Cause: You are attempting to create a new configuration but
+have already reached the 1,000-configuration limit.}
+}
+\item 
+\itemize{
+\item \emph{HTTP Error: HTTP 403 Forbidden}
+\item \emph{Code: AccessDenied}
+\item \emph{Cause: You are not the owner of the specified bucket, or you do
+not have the s3:PutAnalyticsConfiguration bucket permission to
+set the configuration on the bucket.}
+}
+}
+
+\strong{Related Resources}
 }
 \section{Request syntax}{
 \preformatted{svc$put_bucket_analytics_configuration(

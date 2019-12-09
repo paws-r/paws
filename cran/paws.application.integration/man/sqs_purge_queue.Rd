@@ -16,11 +16,11 @@ Queue URLs and names are case-sensitive.}
 Deletes the messages in a queue specified by the \code{QueueURL} parameter.
 }
 \details{
-When you use the \code{PurgeQueue} action, you can't retrieve any messages
+When you use the \code{PurgeQueue} action, you can\'t retrieve any messages
 deleted from a queue.
 
 The message deletion process takes up to 60 seconds. We recommend
-waiting for 60 seconds regardless of your queue's size.
+waiting for 60 seconds regardless of your queue\'s size.
 
 Messages sent to the queue \emph{before} you call \code{PurgeQueue} might be
 received but are deleted within the next minute.

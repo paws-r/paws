@@ -11,19 +11,19 @@ ec2_describe_instances(Filters, InstanceIds, DryRun, MaxResults,
 \item{Filters}{The filters.
 \itemize{
 \item \code{affinity} - The affinity setting for an instance running on a
-Dedicated Host (\code{default} \| \code{host}).
-\item \code{architecture} - The instance architecture (\code{i386} \| \code{x86_64} \|
+Dedicated Host (\code{default} \\| \code{host}).
+\item \code{architecture} - The instance architecture (\code{i386} \\| \code{x86_64} \\|
 \code{arm64}).
 \item \code{availability-zone} - The Availability Zone of the instance.
 \item \code{block-device-mapping.attach-time} - The attach time for an EBS
 volume mapped to the instance, for example,
-\code{2010-09-15T17:15:20.000Z}.
+\verb{2010-09-15T17:15:20.000Z}.
 \item \code{block-device-mapping.delete-on-termination} - A Boolean that
 indicates whether the EBS volume is deleted on instance termination.
 \item \code{block-device-mapping.device-name} - The device name specified in
-the block device mapping (for example, \code{/dev/sdh} or \code{xvdh}).
+the block device mapping (for example, \verb{/dev/sdh} or \code{xvdh}).
 \item \code{block-device-mapping.status} - The status for the EBS volume
-(\code{attaching} \| \code{attached} \| \code{detaching} \| \code{detached}).
+(\code{attaching} \\| \code{attached} \\| \code{detaching} \\| \code{detached}).
 \item \code{block-device-mapping.volume-id} - The volume ID of the EBS volume.
 \item \code{client-token} - The idempotency token you provided when you
 launched the instance.
@@ -37,20 +37,20 @@ the instance is enabled for hibernation. A value of \code{true} means
 that the instance is enabled for hibernation.
 \item \code{host-id} - The ID of the Dedicated Host on which the instance is
 running, if applicable.
-\item \code{hypervisor} - The hypervisor type of the instance (\code{ovm} \| \code{xen}).
+\item \code{hypervisor} - The hypervisor type of the instance (\code{ovm} \\| \code{xen}).
 \item \code{iam-instance-profile.arn} - The instance profile associated with
-the instance. Specified as an ARN.
-\item \code{image-id} - The ID of the image used to launch the instance.
+the instance. Specified as an ARN. \code{image-id} - The ID of the image
+used to launch the instance.
 \item \code{instance-id} - The ID of the instance.
 \item \code{instance-lifecycle} - Indicates whether this is a Spot Instance or
-a Scheduled Instance (\code{spot} \| \code{scheduled}).
+a Scheduled Instance (\code{spot} \\| \code{scheduled}).
 \item \code{instance-state-code} - The state of the instance, as a 16-bit
 unsigned integer. The high byte is used for internal purposes and
 should be ignored. The low byte is set based on the state
 represented. The valid values are: 0 (pending), 16 (running), 32
 (shutting-down), 48 (terminated), 64 (stopping), and 80 (stopped).
-\item \code{instance-state-name} - The state of the instance (\code{pending} \|
-\code{running} \| \code{shutting-down} \| \code{terminated} \| \code{stopping} \|
+\item \code{instance-state-name} - The state of the instance (\code{pending} \\|
+\code{running} \\| \code{shutting-down} \\| \code{terminated} \\| \code{stopping} \\|
 \code{stopped}).
 \item \code{instance-type} - The type of instance (for example, \code{t2.micro}).
 \item \code{instance.group-id} - The ID of the security group for the instance.
@@ -64,8 +64,15 @@ launched.
 index for the instance in the launch group (for example, 0, 1, 2,
 and so on).
 \item \code{launch-time} - The time when the instance was launched.
+\item \code{metadata-options.http-tokens} - The metadata request authorization
+state (\code{optional} \\| \code{required})
+\item \code{metadata-options.http-put-response-hop-limit} - The http metadata
+request put response hop limit (integer, possible values \code{1} to
+\code{64})
+\item \code{metadata-options.http-endpoint} - Enable or disable metadata access
+on http endpoint (\code{enabled} \\| \code{disabled})
 \item \code{monitoring-state} - Indicates whether detailed monitoring is
-enabled (\code{disabled} \| \code{enabled}).
+enabled (\code{disabled} \\| \code{enabled}).
 \item \code{network-interface.addresses.private-ip-address} - The private IPv4
 address associated with the network interface.
 \item \code{network-interface.addresses.primary} - Specifies whether the IPv4
@@ -95,7 +102,7 @@ the instance to which the network interface is attached.
 \item \code{network-interface.attachment.device-index} - The device index to
 which the network interface is attached.
 \item \code{network-interface.attachment.status} - The status of the attachment
-(\code{attaching} \| \code{attached} \| \code{detaching} \| \code{detached}).
+(\code{attaching} \\| \code{attached} \\| \code{detaching} \\| \code{detached}).
 \item \code{network-interface.attachment.attach-time} - The time that the
 network interface was attached to an instance.
 \item \code{network-interface.attachment.delete-on-termination} - Specifies
@@ -123,7 +130,7 @@ interface.
 \item \code{network-interface.requester-managed} - Indicates whether the
 network interface is being managed by AWS.
 \item \code{network-interface.status} - The status of the network interface
-(\code{available}) \| \code{in-use}).
+(\code{available}) \\| \verb{in-use}).
 \item \code{network-interface.source-dest-check} - Whether the network
 interface performs source/destination checking. A value of \code{true}
 means that checking is enabled, and \code{false} means that checking is
@@ -144,16 +151,16 @@ is located.
 \item \code{private-ip-address} - The private IPv4 address of the instance.
 \item \code{product-code} - The product code associated with the AMI used to
 launch the instance.
-\item \code{product-code.type} - The type of product code (\code{devpay} \|
+\item \code{product-code.type} - The type of product code (\code{devpay} \\|
 \code{marketplace}).
 \item \code{ramdisk-id} - The RAM disk ID.
 \item \code{reason} - The reason for the current state of the instance (for
-example, shows "User Initiated [date]" when you stop or
+example, shows \"User Initiated [date]\" when you stop or
 terminate the instance). Similar to the state-reason-code filter.
 \item \code{requester-id} - The ID of the entity that launched the instance on
 your behalf (for example, AWS Management Console, Auto Scaling, and
 so on).
-\item \code{reservation-id} - The ID of the instance's reservation. A
+\item \code{reservation-id} - The ID of the instance\'s reservation. A
 reservation ID is created any time you launch an instance. A
 reservation ID has a one-to-one relationship with an instance launch
 request, but can be associated with more than one instance if you
@@ -162,8 +169,8 @@ example, if you launch one instance, you get one reservation ID. If
 you launch ten instances using the same launch request, you also get
 one reservation ID.
 \item \code{root-device-name} - The device name of the root device volume (for
-example, \code{/dev/sda1}).
-\item \code{root-device-type} - The type of the root device volume (\code{ebs} \|
+example, \verb{/dev/sda1}).
+\item \code{root-device-type} - The type of the root device volume (\code{ebs} \\|
 \code{instance-store}).
 \item \code{source-dest-check} - Indicates whether the instance performs
 source/destination checking. A value of \code{true} means that checking
@@ -174,7 +181,7 @@ translation (NAT) in your VPC.
 \item \code{state-reason-code} - The reason code for the state change.
 \item \code{state-reason-message} - A message that describes the state change.
 \item \code{subnet-id} - The ID of the subnet for the instance.
-\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+\item \code{tag}:\\<key\\> - The key/value combination of a tag assigned to the
 resource. Use the tag key in the filter name and the tag value as
 the filter value. For example, to find all resources that have a tag
 with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
@@ -182,10 +189,10 @@ the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources that have a tag with a specific key,
 regardless of the tag value.
-\item \code{tenancy} - The tenancy of an instance (\code{dedicated} \| \code{default} \|
+\item \code{tenancy} - The tenancy of an instance (\code{dedicated} \\| \code{default} \\|
 \code{host}).
 \item \code{virtualization-type} - The virtualization type of the instance
-(\code{paravirtual} \| \code{hvm}).
+(\code{paravirtual} \\| \code{hvm}).
 \item \code{vpc-id} - The ID of the VPC that the instance is running in.
 }}
 
@@ -206,7 +213,7 @@ parameter and the instance IDs parameter in the same call.}
 \item{NextToken}{The token to request the next page of results.}
 }
 \description{
-Describes the specified instances or all of AWS account's instances.
+Describes the specified instances or all of AWS account\'s instances.
 }
 \details{
 If you specify one or more instance IDs, Amazon EC2 returns information

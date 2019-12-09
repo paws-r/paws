@@ -14,7 +14,8 @@ kafka_delete_cluster(ClusterArn, CurrentVersion)
 \item{CurrentVersion}{<p>The current version of the MSK cluster.</p>}
 }
 \description{
-<p>Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in the request.</p>
+\preformatted{        <p>Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in the request.</p>
+}
 }
 \section{Request syntax}{
 \preformatted{svc$delete_cluster(

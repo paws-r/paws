@@ -27,7 +27,7 @@ or \code{S3_ONEZONE_IA}. If this field is not populated, the default value
 
 \item{ObjectACL}{A value that sets the access control list permission for objects in the
 S3 bucket that a file gateway puts objects into. The default value is
-"private".}
+\"private\".}
 
 \item{ClientList}{The list of clients that are allowed to access the file gateway. The
 list must contain either valid IP addresses or valid CIDR blocks.}

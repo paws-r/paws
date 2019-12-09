@@ -22,7 +22,7 @@ ec2_modify_image_attribute(Attribute, Description, ImageId,
 parameter is \code{launchPermission}.}
 
 \item{ProductCodes}{The DevPay product codes. After you add a product code to an AMI, it
-can't be removed.}
+can\'t be removed.}
 
 \item{UserGroups}{The user groups. This parameter can be used only when the \code{Attribute}
 parameter is \code{launchPermission}.}

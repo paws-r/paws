@@ -52,7 +52,7 @@ Valid Values: \code{neptune}}
 \item{MasterUsername}{The name for the master user. Not used.}
 
 \item{MasterUserPassword}{The password for the master user. The password can include any printable
-ASCII character except "/", """, or "@".
+ASCII character except \"/\", \"\"\", or \"@\".
 
 Not used.}
 
@@ -65,17 +65,17 @@ Default: The default DB security group for the database engine.}
 Not applicable. The associated list of EC2 VPC security groups is
 managed by the DB cluster. For more information, see CreateDBCluster.
 
-Default: The default EC2 VPC security group for the DB subnet group's
+Default: The default EC2 VPC security group for the DB subnet group\'s
 VPC.}
 
 \item{AvailabilityZone}{The EC2 Availability Zone that the DB instance is created in
 
-Default: A random, system-chosen Availability Zone in the endpoint's
+Default: A random, system-chosen Availability Zone in the endpoint\'s
 AWS Region.
 
-Example: \code{us-east-1d}
+Example: \verb{us-east-1d}
 
-Constraint: The AvailabilityZone parameter can't be specified if the
+Constraint: The AvailabilityZone parameter can\'t be specified if the
 MultiAZ parameter is set to \code{true}. The specified Availability Zone must
 be in the same AWS Region as the current endpoint.}
 
@@ -134,7 +134,7 @@ Default: \code{8182}
 
 Type: Integer}
 
-\item{MultiAZ}{Specifies if the DB instance is a Multi-AZ deployment. You can't set
+\item{MultiAZ}{Specifies if the DB instance is a Multi-AZ deployment. You can\'t set
 the AvailabilityZone parameter if the MultiAZ parameter is set to true.}
 
 \item{EngineVersion}{The version number of the database engine to use.}
@@ -146,7 +146,7 @@ Default: \code{true}}
 
 \item{LicenseModel}{License model information for this DB instance.
 
-Valid values: \code{license-included} \| \code{bring-your-own-license} \|
+Valid values: \code{license-included} \\| \code{bring-your-own-license} \\|
 \code{general-public-license}}
 
 \item{Iops}{The amount of Provisioned IOPS (input/output operations per second) to
@@ -156,8 +156,8 @@ be initially allocated for the DB instance.}
 option group.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
-TDE, can't be removed from an option group, and that option group
-can't be removed from a DB instance once it is associated with a DB
+TDE, can\'t be removed from an option group, and that option group
+can\'t be removed from a DB instance once it is associated with a DB
 instance}
 
 \item{CharacterSetName}{Indicates that the DB instance should be associated with the specified
@@ -222,7 +222,7 @@ Enhanced Monitoring metrics, specify 0. The default is 0.
 If \code{MonitoringRoleArn} is specified, then you must also set
 \code{MonitoringInterval} to a value other than 0.
 
-Valid Values: \code{0, 1, 5, 10, 15, 30, 60}}
+Valid Values: \verb{0, 1, 5, 10, 15, 30, 60}}
 
 \item{MonitoringRoleArn}{The ARN for the IAM role that permits Neptune to send enhanced
 monitoring metrics to Amazon CloudWatch Logs. For example,

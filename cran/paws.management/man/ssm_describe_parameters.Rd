@@ -8,8 +8,7 @@ ssm_describe_parameters(Filters, ParameterFilters, MaxResults,
   NextToken)
 }
 \arguments{
-\item{Filters}{One or more filters. Use a filter to return a more specific list of
-results.}
+\item{Filters}{This data type is deprecated. Instead, use \code{ParameterFilters}.}
 
 \item{ParameterFilters}{Filters to limit the request results.}
 

@@ -46,13 +46,64 @@ mediapackage_create_channel <- function(Description = NULL, Id, Tags = NULL) {
 }
 .mediapackage$operations$create_channel <- mediapackage_create_channel
 
+#' Creates a new HarvestJob record
+#'
+#' Creates a new HarvestJob record.
+#'
+#' @usage
+#' mediapackage_create_harvest_job(EndTime, Id, OriginEndpointId,
+#'   S3Destination, StartTime)
+#'
+#' @param EndTime &#91;required&#93; The end of the time-window which will be harvested
+#' @param Id &#91;required&#93; The ID of the HarvestJob. The ID must be unique within the region
+#' and it cannot be changed after the HarvestJob is submitted
+#' @param OriginEndpointId &#91;required&#93; The ID of the OriginEndpoint that the HarvestJob will harvest from.
+#' This cannot be changed after the HarvestJob is submitted.
+#' @param S3Destination &#91;required&#93; 
+#' @param StartTime &#91;required&#93; The start of the time-window which will be harvested
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_harvest_job(
+#'   EndTime = "string",
+#'   Id = "string",
+#'   OriginEndpointId = "string",
+#'   S3Destination = list(
+#'     BucketName = "string",
+#'     ManifestKey = "string",
+#'     RoleArn = "string"
+#'   ),
+#'   StartTime = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediapackage_create_harvest_job
+mediapackage_create_harvest_job <- function(EndTime, Id, OriginEndpointId, S3Destination, StartTime) {
+  op <- new_operation(
+    name = "CreateHarvestJob",
+    http_method = "POST",
+    http_path = "/harvest_jobs",
+    paginator = list()
+  )
+  input <- .mediapackage$create_harvest_job_input(EndTime = EndTime, Id = Id, OriginEndpointId = OriginEndpointId, S3Destination = S3Destination, StartTime = StartTime)
+  output <- .mediapackage$create_harvest_job_output()
+  config <- get_config()
+  svc <- .mediapackage$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediapackage$operations$create_harvest_job <- mediapackage_create_harvest_job
+
 #' Creates a new OriginEndpoint record
 #'
 #' Creates a new OriginEndpoint record.
 #'
 #' @usage
 #' mediapackage_create_origin_endpoint(ChannelId, CmafPackage, DashPackage,
-#'   Description, HlsPackage, Id, ManifestName, MssPackage,
+#'   Description, HlsPackage, Id, ManifestName, MssPackage, Origination,
 #'   StartoverWindowSeconds, Tags, TimeDelaySeconds, Whitelist)
 #'
 #' @param ChannelId &#91;required&#93; The ID of the Channel that the OriginEndpoint will be associated with.
@@ -65,6 +116,9 @@ mediapackage_create_channel <- function(Description = NULL, Id, Tags = NULL) {
 #' and it cannot be changed after the OriginEndpoint is created.
 #' @param ManifestName A short string that will be used as the filename of the OriginEndpoint URL (defaults to "index").
 #' @param MssPackage 
+#' @param Origination Control whether origination of video is allowed for this OriginEndpoint. If set to ALLOW, the OriginEndpoint
+#' may by requested, pursuant to any other form of access control. If set to DENY, the OriginEndpoint may not be
+#' requested. This can be helpful for Live to VOD harvesting, or for temporarily disabling origination
 #' @param StartoverWindowSeconds Maximum duration (seconds) of content to retain for startover playback.
 #' If not specified, startover playback will be disabled for the OriginEndpoint.
 #' @param Tags 
@@ -202,6 +256,7 @@ mediapackage_create_channel <- function(Description = NULL, Id, Tags = NULL) {
 #'       StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
 #'     )
 #'   ),
+#'   Origination = "ALLOW"|"DENY",
 #'   StartoverWindowSeconds = 123,
 #'   Tags = list(
 #'     "string"
@@ -216,14 +271,14 @@ mediapackage_create_channel <- function(Description = NULL, Id, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname mediapackage_create_origin_endpoint
-mediapackage_create_origin_endpoint <- function(ChannelId, CmafPackage = NULL, DashPackage = NULL, Description = NULL, HlsPackage = NULL, Id, ManifestName = NULL, MssPackage = NULL, StartoverWindowSeconds = NULL, Tags = NULL, TimeDelaySeconds = NULL, Whitelist = NULL) {
+mediapackage_create_origin_endpoint <- function(ChannelId, CmafPackage = NULL, DashPackage = NULL, Description = NULL, HlsPackage = NULL, Id, ManifestName = NULL, MssPackage = NULL, Origination = NULL, StartoverWindowSeconds = NULL, Tags = NULL, TimeDelaySeconds = NULL, Whitelist = NULL) {
   op <- new_operation(
     name = "CreateOriginEndpoint",
     http_method = "POST",
     http_path = "/origin_endpoints",
     paginator = list()
   )
-  input <- .mediapackage$create_origin_endpoint_input(ChannelId = ChannelId, CmafPackage = CmafPackage, DashPackage = DashPackage, Description = Description, HlsPackage = HlsPackage, Id = Id, ManifestName = ManifestName, MssPackage = MssPackage, StartoverWindowSeconds = StartoverWindowSeconds, Tags = Tags, TimeDelaySeconds = TimeDelaySeconds, Whitelist = Whitelist)
+  input <- .mediapackage$create_origin_endpoint_input(ChannelId = ChannelId, CmafPackage = CmafPackage, DashPackage = DashPackage, Description = Description, HlsPackage = HlsPackage, Id = Id, ManifestName = ManifestName, MssPackage = MssPackage, Origination = Origination, StartoverWindowSeconds = StartoverWindowSeconds, Tags = Tags, TimeDelaySeconds = TimeDelaySeconds, Whitelist = Whitelist)
   output <- .mediapackage$create_origin_endpoint_output()
   config <- get_config()
   svc <- .mediapackage$service(config)
@@ -341,6 +396,42 @@ mediapackage_describe_channel <- function(Id) {
 }
 .mediapackage$operations$describe_channel <- mediapackage_describe_channel
 
+#' Gets details about an existing HarvestJob
+#'
+#' Gets details about an existing HarvestJob.
+#'
+#' @usage
+#' mediapackage_describe_harvest_job(Id)
+#'
+#' @param Id &#91;required&#93; The ID of the HarvestJob.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_harvest_job(
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediapackage_describe_harvest_job
+mediapackage_describe_harvest_job <- function(Id) {
+  op <- new_operation(
+    name = "DescribeHarvestJob",
+    http_method = "GET",
+    http_path = "/harvest_jobs/{id}",
+    paginator = list()
+  )
+  input <- .mediapackage$describe_harvest_job_input(Id = Id)
+  output <- .mediapackage$describe_harvest_job_output()
+  config <- get_config()
+  svc <- .mediapackage$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediapackage$operations$describe_harvest_job <- mediapackage_describe_harvest_job
+
 #' Gets details about an existing OriginEndpoint
 #'
 #' Gets details about an existing OriginEndpoint.
@@ -414,6 +505,49 @@ mediapackage_list_channels <- function(MaxResults = NULL, NextToken = NULL) {
   return(response)
 }
 .mediapackage$operations$list_channels <- mediapackage_list_channels
+
+#' Returns a collection of HarvestJob records
+#'
+#' Returns a collection of HarvestJob records.
+#'
+#' @usage
+#' mediapackage_list_harvest_jobs(IncludeChannelId, IncludeStatus,
+#'   MaxResults, NextToken)
+#'
+#' @param IncludeChannelId When specified, the request will return only HarvestJobs associated with the given Channel ID.
+#' @param IncludeStatus When specified, the request will return only HarvestJobs in the given status.
+#' @param MaxResults The upper bound on the number of records to return.
+#' @param NextToken A token used to resume pagination from the end of a previous request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_harvest_jobs(
+#'   IncludeChannelId = "string",
+#'   IncludeStatus = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediapackage_list_harvest_jobs
+mediapackage_list_harvest_jobs <- function(IncludeChannelId = NULL, IncludeStatus = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListHarvestJobs",
+    http_method = "GET",
+    http_path = "/harvest_jobs",
+    paginator = list()
+  )
+  input <- .mediapackage$list_harvest_jobs_input(IncludeChannelId = IncludeChannelId, IncludeStatus = IncludeStatus, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .mediapackage$list_harvest_jobs_output()
+  config <- get_config()
+  svc <- .mediapackage$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediapackage$operations$list_harvest_jobs <- mediapackage_list_harvest_jobs
 
 #' Returns a collection of OriginEndpoint records
 #'
@@ -690,7 +824,7 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 #'
 #' @usage
 #' mediapackage_update_origin_endpoint(CmafPackage, DashPackage,
-#'   Description, HlsPackage, Id, ManifestName, MssPackage,
+#'   Description, HlsPackage, Id, ManifestName, MssPackage, Origination,
 #'   StartoverWindowSeconds, TimeDelaySeconds, Whitelist)
 #'
 #' @param CmafPackage 
@@ -700,6 +834,9 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 #' @param Id &#91;required&#93; The ID of the OriginEndpoint to update.
 #' @param ManifestName A short string that will be appended to the end of the Endpoint URL.
 #' @param MssPackage 
+#' @param Origination Control whether origination of video is allowed for this OriginEndpoint. If set to ALLOW, the OriginEndpoint
+#' may by requested, pursuant to any other form of access control. If set to DENY, the OriginEndpoint may not be
+#' requested. This can be helpful for Live to VOD harvesting, or for temporarily disabling origination
 #' @param StartoverWindowSeconds Maximum duration (in seconds) of content to retain for startover playback.
 #' If not specified, startover playback will be disabled for the OriginEndpoint.
 #' @param TimeDelaySeconds Amount of delay (in seconds) to enforce on the playback of live content.
@@ -835,6 +972,7 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 #'       StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
 #'     )
 #'   ),
+#'   Origination = "ALLOW"|"DENY",
 #'   StartoverWindowSeconds = 123,
 #'   TimeDelaySeconds = 123,
 #'   Whitelist = list(
@@ -846,14 +984,14 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 #' @keywords internal
 #'
 #' @rdname mediapackage_update_origin_endpoint
-mediapackage_update_origin_endpoint <- function(CmafPackage = NULL, DashPackage = NULL, Description = NULL, HlsPackage = NULL, Id, ManifestName = NULL, MssPackage = NULL, StartoverWindowSeconds = NULL, TimeDelaySeconds = NULL, Whitelist = NULL) {
+mediapackage_update_origin_endpoint <- function(CmafPackage = NULL, DashPackage = NULL, Description = NULL, HlsPackage = NULL, Id, ManifestName = NULL, MssPackage = NULL, Origination = NULL, StartoverWindowSeconds = NULL, TimeDelaySeconds = NULL, Whitelist = NULL) {
   op <- new_operation(
     name = "UpdateOriginEndpoint",
     http_method = "PUT",
     http_path = "/origin_endpoints/{id}",
     paginator = list()
   )
-  input <- .mediapackage$update_origin_endpoint_input(CmafPackage = CmafPackage, DashPackage = DashPackage, Description = Description, HlsPackage = HlsPackage, Id = Id, ManifestName = ManifestName, MssPackage = MssPackage, StartoverWindowSeconds = StartoverWindowSeconds, TimeDelaySeconds = TimeDelaySeconds, Whitelist = Whitelist)
+  input <- .mediapackage$update_origin_endpoint_input(CmafPackage = CmafPackage, DashPackage = DashPackage, Description = Description, HlsPackage = HlsPackage, Id = Id, ManifestName = ManifestName, MssPackage = MssPackage, Origination = Origination, StartoverWindowSeconds = StartoverWindowSeconds, TimeDelaySeconds = TimeDelaySeconds, Whitelist = Whitelist)
   output <- .mediapackage$update_origin_endpoint_output()
   config <- get_config()
   svc <- .mediapackage$service(config)

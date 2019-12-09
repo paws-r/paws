@@ -16,7 +16,7 @@ a lowercase string.}
 
 \item{Filters}{A set of name-value pairs that define which endpoints to include in the
 output. The filters are specified as name-value pairs, in the format
-\code{Name=<i>endpoint_type</i>,Values=<i>endpoint_type1</i>,<i>endpoint_type2</i>,...}.
+\verb{Name=<i>endpoint_type</i>,Values=<i>endpoint_type1</i>,<i>endpoint_type2</i>,...}.
 \code{Name} can be one of: \code{db-cluster-endpoint-type},
 \code{db-cluster-endpoint-custom-type}, \code{db-cluster-endpoint-id},
 \code{db-cluster-endpoint-status}. \code{Values} for the
@@ -28,8 +28,8 @@ filter can be one or more of: \code{reader}, \code{any}. \code{Values} for the
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a pagination token
-called a marker is included in the response so that the remaining
-results can be retrieved.
+called a marker is included in the response so you can retrieve the
+remaining results.
 
 Default: 100
 

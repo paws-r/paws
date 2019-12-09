@@ -8,23 +8,61 @@ s3_list_object_versions(Bucket, Delimiter, EncodingType, KeyMarker,
   MaxKeys, Prefix, VersionIdMarker)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The bucket name that contains the objects.
 
-\item{Delimiter}{A delimiter is a character you use to group keys.}
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+\emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
+When using this operation using an access point through the AWS SDKs,
+you provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+in the \emph{Amazon Simple Storage Service Developer Guide}.}
+
+\item{Delimiter}{A delimiter is a character that you specify to group keys. All keys that
+contain the same string between the \code{prefix} and the first occurrence of
+the delimiter are grouped under a single result element in
+CommonPrefixes. These groups are counted as one result against the
+max-keys limitation. These keys are not returned elsewhere in the
+response.}
 
 \item{EncodingType}{}
 
 \item{KeyMarker}{Specifies the key to start with when listing objects in a bucket.}
 
 \item{MaxKeys}{Sets the maximum number of keys returned in the response. The response
-might contain fewer keys but will never contain more.}
+might contain fewer keys but will never contain more. If additional keys
+satisfy the search criteria, but were not returned because max-keys was
+exceeded, the response contains \\<isTruncated\\>true\\</isTruncated\\>. To
+return the additional keys, see key-marker and version-id-marker.}
 
-\item{Prefix}{Limits the response to keys that begin with the specified prefix.}
+\item{Prefix}{Use this parameter to select only those keys that begin with the
+specified prefix. You can use prefixes to separate a bucket into
+different groupings of keys. (You can think of using prefix to make
+groups in the same way you\'d use a folder in a file system.) You can
+use prefix with delimiter to roll up numerous objects into a single
+result under CommonPrefixes.}
 
 \item{VersionIdMarker}{Specifies the object version you want to start listing from.}
 }
 \description{
-Returns metadata about all of the versions of objects in a bucket.
+Returns metadata about all of the versions of objects in a bucket. You
+can also use request parameters as selection criteria to return metadata
+about a subset of all the object versions.
+}
+\details{
+A 200 OK response can contain valid or invalid XML. Make sure to design
+your application to parse the contents of the response and handle it
+appropriately.
+
+To use this operation, you must have READ access to the bucket.
+
+The following operations are related to \code{ListObjectVersions}:
+\itemize{
+\item ListObjectsV2
+\item GetObject
+\item PutObject
+\item DeleteObject
+}
 }
 \section{Request syntax}{
 \preformatted{svc$list_object_versions(

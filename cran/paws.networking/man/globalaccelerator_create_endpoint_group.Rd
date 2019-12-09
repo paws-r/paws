@@ -61,7 +61,8 @@ example of creating an endpoint group, scroll down to \strong{Example}.
   EndpointConfigurations = list(
     list(
       EndpointId = "string",
-      Weight = 123
+      Weight = 123,
+      ClientIPPreservationEnabled = TRUE|FALSE
     )
   ),
   TrafficDialPercentage = 123.0,

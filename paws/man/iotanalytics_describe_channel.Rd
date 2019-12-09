@@ -10,7 +10,8 @@ iotanalytics_describe_channel(channelName, includeStatistics)
 \item{channelName}{[required] The name of the channel whose information is retrieved.}
 
 \item{includeStatistics}{If true, additional statistical information about the channel is
-included in the response.}
+included in the response. This feature cannot be used with a channel
+whose S3 storage is customer-managed.}
 }
 \description{
 Retrieves information about a channel.

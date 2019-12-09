@@ -22,7 +22,7 @@ list.}
 Lists the groups that the user belongs to.
 }
 \details{
-Requires developer credentials.
+Calling this action requires developer credentials.
 }
 \section{Request syntax}{
 \preformatted{svc$admin_list_groups_for_user(

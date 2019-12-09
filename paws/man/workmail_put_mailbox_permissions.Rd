@@ -17,11 +17,11 @@ mailbox permissions.}
 \item{GranteeId}{[required] The identifier of the user, group, or resource to which to grant the
 permissions.}
 
-\item{PermissionValues}{[required] The permissions granted to the grantee. SEND\_AS allows the grantee to
+\item{PermissionValues}{[required] The permissions granted to the grantee. SEND\\_AS allows the grantee to
 send email as the owner of the mailbox (the grantee is not mentioned on
-these emails). SEND\_ON\_BEHALF allows the grantee to send email on
+these emails). SEND\\_ON\\_BEHALF allows the grantee to send email on
 behalf of the owner of the mailbox (the grantee is not mentioned as the
-physical sender of these emails). FULL\_ACCESS allows the grantee full
+physical sender of these emails). FULL\\_ACCESS allows the grantee full
 access to the mailbox, irrespective of other folder-level permissions
 set on the mailbox.}
 }

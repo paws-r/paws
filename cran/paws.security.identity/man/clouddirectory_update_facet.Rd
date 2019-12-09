@@ -18,7 +18,7 @@ attribute is followed by \code{AttributeAction}, which specifies the type of
 update operation to perform.}
 
 \item{ObjectType}{The object type that is associated with the facet. See
-CreateFacetRequest\$ObjectType for more details.}
+CreateFacetRequest\\$ObjectType for more details.}
 }
 \description{
 Does the following:

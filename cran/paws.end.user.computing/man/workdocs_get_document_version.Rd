@@ -16,7 +16,7 @@ credentials.}
 
 \item{VersionId}{[required] The version ID of the document.}
 
-\item{Fields}{A comma-separated list of values. Specify "SOURCE" to include a URL
+\item{Fields}{A comma-separated list of values. Specify \"SOURCE\" to include a URL
 for the source document.}
 
 \item{IncludeCustomMetadata}{Set this to TRUE to include custom metadata in the response.}

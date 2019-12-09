@@ -23,7 +23,7 @@ to healthy or unhealthy.
 \details{
 You can use \code{UpdateInstanceCustomHealthStatus} to change the status only
 for custom health checks, which you define using
-\code{HealthCheckCustomConfig} when you create a service. You can't use it
+\code{HealthCheckCustomConfig} when you create a service. You can\'t use it
 to change the status for Route 53 health checks, which you define using
 \code{HealthCheckConfig}.
 

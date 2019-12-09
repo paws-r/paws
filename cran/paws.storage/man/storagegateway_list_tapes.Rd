@@ -19,7 +19,7 @@ call.}
 \description{
 Lists virtual tapes in your virtual tape library (VTL) and your virtual
 tape shelf (VTS). You specify the tapes to list by specifying one or
-more tape Amazon Resource Names (ARNs). If you don't specify a tape
+more tape Amazon Resource Names (ARNs). If you don\'t specify a tape
 ARN, the operation lists all virtual tapes in both your VTL and VTS.
 }
 \details{

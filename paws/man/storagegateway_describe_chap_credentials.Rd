@@ -16,7 +16,8 @@ for specified VolumeARN.}
 \description{
 Returns an array of Challenge-Handshake Authentication Protocol (CHAP)
 credentials information for a specified iSCSI target, one for each
-target-initiator pair.
+target-initiator pair. This operation is supported in the volume and
+tape gateway types.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_chap_credentials(

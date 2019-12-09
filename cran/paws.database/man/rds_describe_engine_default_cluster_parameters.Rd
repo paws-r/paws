@@ -12,12 +12,12 @@ rds_describe_engine_default_cluster_parameters(DBParameterGroupFamily,
 \item{DBParameterGroupFamily}{[required] The name of the DB cluster parameter group family to return engine
 parameter information for.}
 
-\item{Filters}{This parameter is not currently supported.}
+\item{Filters}{This parameter isn\'t currently supported.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a pagination token
-called a marker is included in the response so that the remaining
-results can be retrieved.
+called a marker is included in the response so you can retrieve the
+remaining results.
 
 Default: 100
 

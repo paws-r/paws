@@ -12,9 +12,9 @@ apigateway_test_invoke_method(restApiId, resourceId, httpMethod,
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[required] [Required] Specifies a test invoke method request's resource ID.}
+\item{resourceId}{[required] [Required] Specifies a test invoke method request\'s resource ID.}
 
-\item{httpMethod}{[required] [Required] Specifies a test invoke method request's HTTP method.}
+\item{httpMethod}{[required] [Required] Specifies a test invoke method request\'s HTTP method.}
 
 \item{pathWithQueryString}{The URI path, including query string, of the simulated invocation
 request. Use this to specify path parameters and query string

@@ -2,15 +2,18 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_get_public_access_block}
 \alias{s3control_get_public_access_block}
-\title{Get public access block}
+\title{Retrieves the PublicAccessBlock configuration for an Amazon Web Services
+account}
 \usage{
 s3control_get_public_access_block(AccountId)
 }
 \arguments{
-\item{AccountId}{[required]}
+\item{AccountId}{[required] The account ID for the Amazon Web Services account whose
+\code{PublicAccessBlock} configuration you want to retrieve.}
 }
 \description{
-Get public access block
+Retrieves the \code{PublicAccessBlock} configuration for an Amazon Web
+Services account.
 }
 \section{Request syntax}{
 \preformatted{svc$get_public_access_block(

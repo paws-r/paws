@@ -44,9 +44,12 @@ guardduty_accept_invitation <- function(DetectorId, MasterId, InvitationId) {
 }
 .guardduty$operations$accept_invitation <- guardduty_accept_invitation
 
-#' Archives Amazon GuardDuty findings specified by the list of finding IDs
+#' Archives GuardDuty findings specified by the list of finding IDs
 #'
-#' Archives Amazon GuardDuty findings specified by the list of finding IDs.
+#' Archives GuardDuty findings specified by the list of finding IDs.
+#' 
+#' Only the master account can archive findings. Member accounts do not
+#' have permission to archive findings from their accounts.
 #'
 #' @usage
 #' guardduty_archive_findings(DetectorId, FindingIds)
@@ -87,9 +90,10 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
 
 #' Creates a single Amazon GuardDuty detector
 #'
-#' Creates a single Amazon GuardDuty detector. A detector is an object that
-#' represents the GuardDuty service. A detector must be created in order
-#' for GuardDuty to become operational.
+#' Creates a single Amazon GuardDuty detector. A detector is a resource
+#' that represents the GuardDuty service. To start using GuardDuty, you
+#' must create a detector in each region that you enable the service. You
+#' can have only one detector per account per region.
 #'
 #' @usage
 #' guardduty_create_detector(Enable, ClientToken,
@@ -215,13 +219,14 @@ guardduty_create_filter <- function(DetectorId, Name, Description = NULL, Action
 }
 .guardduty$operations$create_filter <- guardduty_create_filter
 
-#' Creates a new IPSet - a list of trusted IP addresses that have been
-#' whitelisted for secure communication with AWS infrastructure and
-#' applications
+#' Creates a new IPSet, called Trusted IP list in the consoler user
+#' interface
 #'
-#' Creates a new IPSet - a list of trusted IP addresses that have been
-#' whitelisted for secure communication with AWS infrastructure and
-#' applications.
+#' Creates a new IPSet, called Trusted IP list in the consoler user
+#' interface. An IPSet is a list IP addresses trusted for secure
+#' communication with AWS infrastructure and applications. GuardDuty does
+#' not generate findings for IP addresses included in IPSets. Only users
+#' from the master account can use this operation.
 #'
 #' @usage
 #' guardduty_create_ip_set(DetectorId, Name, Format, Location, Activate,
@@ -323,18 +328,68 @@ guardduty_create_members <- function(DetectorId, AccountDetails) {
 }
 .guardduty$operations$create_members <- guardduty_create_members
 
+#' Creates a publishing destination to send findings to
+#'
+#' Creates a publishing destination to send findings to. The resource to
+#' send findings to must exist before you use this operation.
+#'
+#' @usage
+#' guardduty_create_publishing_destination(DetectorId, DestinationType,
+#'   DestinationProperties, ClientToken)
+#'
+#' @param DetectorId &#91;required&#93; The ID of the GuardDuty detector associated with the publishing
+#' destination.
+#' @param DestinationType &#91;required&#93; The type of resource for the publishing destination. Currently only S3
+#' is supported.
+#' @param DestinationProperties &#91;required&#93; Properties of the publishing destination, including the ARNs for the
+#' destination and the KMS key used for encryption.
+#' @param ClientToken The idempotency token for the request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_publishing_destination(
+#'   DetectorId = "string",
+#'   DestinationType = "S3",
+#'   DestinationProperties = list(
+#'     DestinationArn = "string",
+#'     KmsKeyArn = "string"
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_create_publishing_destination
+guardduty_create_publishing_destination <- function(DetectorId, DestinationType, DestinationProperties, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreatePublishingDestination",
+    http_method = "POST",
+    http_path = "/detector/{detectorId}/publishingDestination",
+    paginator = list()
+  )
+  input <- .guardduty$create_publishing_destination_input(DetectorId = DetectorId, DestinationType = DestinationType, DestinationProperties = DestinationProperties, ClientToken = ClientToken)
+  output <- .guardduty$create_publishing_destination_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$create_publishing_destination <- guardduty_create_publishing_destination
+
 #' Generates example findings of types specified by the list of finding
 #' types
 #'
 #' Generates example findings of types specified by the list of finding
-#' types. If \'NULL\' is specified for findingTypes, the API generates
+#' types. If \'NULL\' is specified for `findingTypes`, the API generates
 #' example findings of all supported finding types.
 #'
 #' @usage
 #' guardduty_create_sample_findings(DetectorId, FindingTypes)
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector to create sample findings for.
-#' @param FindingTypes Types of sample findings that you want to generate.
+#' @param FindingTypes Types of sample findings to generate.
 #'
 #' @section Request syntax:
 #' ```
@@ -370,6 +425,7 @@ guardduty_create_sample_findings <- function(DetectorId, FindingTypes = NULL) {
 #'
 #' Create a new ThreatIntelSet. ThreatIntelSets consist of known malicious
 #' IP addresses. GuardDuty generates findings based on ThreatIntelSets.
+#' Only users of the master account can use this operation.
 #'
 #' @usage
 #' guardduty_create_threat_intel_set(DetectorId, Name, Format, Location,
@@ -538,15 +594,16 @@ guardduty_delete_filter <- function(DetectorId, FilterName) {
 }
 .guardduty$operations$delete_filter <- guardduty_delete_filter
 
-#' Deletes the IPSet specified by the IPSet ID
+#' Deletes the IPSet specified by the ipSetId
 #'
-#' Deletes the IPSet specified by the IPSet ID.
+#' Deletes the IPSet specified by the `ipSetId`. IPSets are called Trusted
+#' IP lists in the console user interface.
 #'
 #' @usage
 #' guardduty_delete_ip_set(DetectorId, IpSetId)
 #'
-#' @param DetectorId &#91;required&#93; The unique ID of the detector the ipSet is associated with.
-#' @param IpSetId &#91;required&#93; The unique ID of the ipSet you want to delete.
+#' @param DetectorId &#91;required&#93; The unique ID of the detector associated with the IPSet.
+#' @param IpSetId &#91;required&#93; The unique ID of the IPSet to delete.
 #'
 #' @section Request syntax:
 #' ```
@@ -661,6 +718,45 @@ guardduty_delete_members <- function(DetectorId, AccountIds) {
 }
 .guardduty$operations$delete_members <- guardduty_delete_members
 
+#' Deletes the publishing definition with the specified destinationId
+#'
+#' Deletes the publishing definition with the specified `destinationId`.
+#'
+#' @usage
+#' guardduty_delete_publishing_destination(DetectorId, DestinationId)
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the detector associated with the publishing destination
+#' to delete.
+#' @param DestinationId &#91;required&#93; The ID of the publishing destination to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_publishing_destination(
+#'   DetectorId = "string",
+#'   DestinationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_delete_publishing_destination
+guardduty_delete_publishing_destination <- function(DetectorId, DestinationId) {
+  op <- new_operation(
+    name = "DeletePublishingDestination",
+    http_method = "DELETE",
+    http_path = "/detector/{detectorId}/publishingDestination/{destinationId}",
+    paginator = list()
+  )
+  input <- .guardduty$delete_publishing_destination_input(DetectorId = DetectorId, DestinationId = DestinationId)
+  output <- .guardduty$delete_publishing_destination_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$delete_publishing_destination <- guardduty_delete_publishing_destination
+
 #' Deletes ThreatIntelSet specified by the ThreatIntelSet ID
 #'
 #' Deletes ThreatIntelSet specified by the ThreatIntelSet ID.
@@ -698,6 +794,47 @@ guardduty_delete_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
   return(response)
 }
 .guardduty$operations$delete_threat_intel_set <- guardduty_delete_threat_intel_set
+
+#' Returns information about the publishing destination specified by the
+#' provided destinationId
+#'
+#' Returns information about the publishing destination specified by the
+#' provided `destinationId`.
+#'
+#' @usage
+#' guardduty_describe_publishing_destination(DetectorId, DestinationId)
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the detector associated with the publishing destination
+#' to retrieve.
+#' @param DestinationId &#91;required&#93; The ID of the publishing destination to retrieve.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_publishing_destination(
+#'   DetectorId = "string",
+#'   DestinationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_describe_publishing_destination
+guardduty_describe_publishing_destination <- function(DetectorId, DestinationId) {
+  op <- new_operation(
+    name = "DescribePublishingDestination",
+    http_method = "GET",
+    http_path = "/detector/{detectorId}/publishingDestination/{destinationId}",
+    paginator = list()
+  )
+  input <- .guardduty$describe_publishing_destination_input(DetectorId = DetectorId, DestinationId = DestinationId)
+  output <- .guardduty$describe_publishing_destination_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$describe_publishing_destination <- guardduty_describe_publishing_destination
 
 #' Disassociates the current GuardDuty member account from its master
 #' account
@@ -972,15 +1109,15 @@ guardduty_get_findings_statistics <- function(DetectorId, FindingStatisticTypes,
 }
 .guardduty$operations$get_findings_statistics <- guardduty_get_findings_statistics
 
-#' Retrieves the IPSet specified by the IPSet ID
+#' Retrieves the IPSet specified by the ipSetId
 #'
-#' Retrieves the IPSet specified by the IPSet ID.
+#' Retrieves the IPSet specified by the `ipSetId`.
 #'
 #' @usage
 #' guardduty_get_ip_set(DetectorId, IpSetId)
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector the ipSet is associated with.
-#' @param IpSetId &#91;required&#93; The unique ID of the ipSet you want to get.
+#' @param IpSetId &#91;required&#93; The unique ID of the IPSet to retrieve.
 #'
 #' @section Request syntax:
 #' ```
@@ -1044,11 +1181,11 @@ guardduty_get_invitations_count <- function() {
 }
 .guardduty$operations$get_invitations_count <- guardduty_get_invitations_count
 
-#' Provides the details for the GuardDuty master account to the current
-#' GuardDuty member account
+#' Provides the details for the GuardDuty master account associated with
+#' the current GuardDuty member account
 #'
-#' Provides the details for the GuardDuty master account to the current
-#' GuardDuty member account.
+#' Provides the details for the GuardDuty master account associated with
+#' the current GuardDuty member account.
 #'
 #' @usage
 #' guardduty_get_master_account(DetectorId)
@@ -1318,7 +1455,113 @@ guardduty_list_filters <- function(DetectorId, MaxResults = NULL, NextToken = NU
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector that specifies the GuardDuty service whose
 #' findings you want to list.
-#' @param FindingCriteria Represents the criteria used for querying findings.
+#' @param FindingCriteria Represents the criteria used for querying findings. Valid values
+#' include:
+#' 
+#' -   JSON field name
+#' 
+#' -   accountId
+#' 
+#' -   region
+#' 
+#' -   confidence
+#' 
+#' -   id
+#' 
+#' -   resource.accessKeyDetails.accessKeyId
+#' 
+#' -   resource.accessKeyDetails.principalId
+#' 
+#' -   resource.accessKeyDetails.userName
+#' 
+#' -   resource.accessKeyDetails.userType
+#' 
+#' -   resource.instanceDetails.iamInstanceProfile.id
+#' 
+#' -   resource.instanceDetails.imageId
+#' 
+#' -   resource.instanceDetails.instanceId
+#' 
+#' -   resource.instanceDetails.networkInterfaces.ipv6Addresses
+#' 
+#' -   resource.instanceDetails.networkInterfaces.privateIpAddresses.privateIpAddress
+#' 
+#' -   resource.instanceDetails.networkInterfaces.publicDnsName
+#' 
+#' -   resource.instanceDetails.networkInterfaces.publicIp
+#' 
+#' -   resource.instanceDetails.networkInterfaces.securityGroups.groupId
+#' 
+#' -   resource.instanceDetails.networkInterfaces.securityGroups.groupName
+#' 
+#' -   resource.instanceDetails.networkInterfaces.subnetId
+#' 
+#' -   resource.instanceDetails.networkInterfaces.vpcId
+#' 
+#' -   resource.instanceDetails.tags.key
+#' 
+#' -   resource.instanceDetails.tags.value
+#' 
+#' -   resource.resourceType
+#' 
+#' -   service.action.actionType
+#' 
+#' -   service.action.awsApiCallAction.api
+#' 
+#' -   service.action.awsApiCallAction.callerType
+#' 
+#' -   service.action.awsApiCallAction.remoteIpDetails.city.cityName
+#' 
+#' -   service.action.awsApiCallAction.remoteIpDetails.country.countryName
+#' 
+#' -   service.action.awsApiCallAction.remoteIpDetails.ipAddressV4
+#' 
+#' -   service.action.awsApiCallAction.remoteIpDetails.organization.asn
+#' 
+#' -   service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg
+#' 
+#' -   service.action.awsApiCallAction.serviceName
+#' 
+#' -   service.action.dnsRequestAction.domain
+#' 
+#' -   service.action.networkConnectionAction.blocked
+#' 
+#' -   service.action.networkConnectionAction.connectionDirection
+#' 
+#' -   service.action.networkConnectionAction.localPortDetails.port
+#' 
+#' -   service.action.networkConnectionAction.protocol
+#' 
+#' -   service.action.networkConnectionAction.remoteIpDetails.city.cityName
+#' 
+#' -   service.action.networkConnectionAction.remoteIpDetails.country.countryName
+#' 
+#' -   service.action.networkConnectionAction.remoteIpDetails.ipAddressV4
+#' 
+#' -   service.action.networkConnectionAction.remoteIpDetails.organization.asn
+#' 
+#' -   service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg
+#' 
+#' -   service.action.networkConnectionAction.remotePortDetails.port
+#' 
+#' -   service.additionalInfo.threatListName
+#' 
+#' -   service.archived
+#' 
+#'     When this attribute is set to \'true\', only archived findings are
+#'     listed. When it\'s set to \'false\', only unarchived findings are
+#'     listed. When this attribute is not set, all existing findings are
+#'     listed.
+#' 
+#' -   service.resourceRole
+#' 
+#' -   severity
+#' 
+#' -   type
+#' 
+#' -   updatedAt
+#' 
+#'     Type: Timestamp in Unix Epoch millisecond format: 1486685375000
 #' @param SortCriteria Represents the criteria used for sorting findings.
 #' @param MaxResults You can use this parameter to indicate the maximum number of items you
 #' want in the response. The default value is 50. The maximum value is 50.
@@ -1389,6 +1632,8 @@ guardduty_list_findings <- function(DetectorId, FindingCriteria = NULL, SortCrit
 #' Lists the IPSets of the GuardDuty service specified by the detector ID
 #'
 #' Lists the IPSets of the GuardDuty service specified by the detector ID.
+#' If you use this operation from a member account, the IPSets returned are
+#' the IPSets from the associated master account.
 #'
 #' @usage
 #' guardduty_list_ip_sets(DetectorId, MaxResults, NextToken)
@@ -1525,6 +1770,52 @@ guardduty_list_members <- function(DetectorId, MaxResults = NULL, NextToken = NU
 }
 .guardduty$operations$list_members <- guardduty_list_members
 
+#' Returns a list of publishing destinations associated with the specified
+#' dectectorId
+#'
+#' Returns a list of publishing destinations associated with the specified
+#' `dectectorId`.
+#'
+#' @usage
+#' guardduty_list_publishing_destinations(DetectorId, MaxResults,
+#'   NextToken)
+#'
+#' @param DetectorId &#91;required&#93; The ID of the detector to retrieve publishing destinations for.
+#' @param MaxResults The maximum number of results to return in the response.
+#' @param NextToken A token to use for paginating results returned in the repsonse. Set the
+#' value of this parameter to null for the first request to a list action.
+#' For subsequent calls, use the `NextToken` value returned from the
+#' previous request to continue listing results after the first page.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_publishing_destinations(
+#'   DetectorId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_list_publishing_destinations
+guardduty_list_publishing_destinations <- function(DetectorId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListPublishingDestinations",
+    http_method = "GET",
+    http_path = "/detector/{detectorId}/publishingDestination",
+    paginator = list()
+  )
+  input <- .guardduty$list_publishing_destinations_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .guardduty$list_publishing_destinations_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$list_publishing_destinations <- guardduty_list_publishing_destinations
+
 #' Lists tags for a resource
 #'
 #' Lists tags for a resource. Tagging is currently supported for detectors,
@@ -1568,7 +1859,8 @@ guardduty_list_tags_for_resource <- function(ResourceArn) {
 #' detector ID
 #'
 #' Lists the ThreatIntelSets of the GuardDuty service specified by the
-#' detector ID.
+#' detector ID. If you use this operation from a member account, the
+#' ThreatIntelSets associated with the master account are returned.
 #'
 #' @usage
 #' guardduty_list_threat_intel_sets(DetectorId, MaxResults, NextToken)
@@ -1576,10 +1868,11 @@ guardduty_list_tags_for_resource <- function(ResourceArn) {
 #' @param DetectorId &#91;required&#93; The unique ID of the detector the threatIntelSet is associated with.
 #' @param MaxResults You can use this parameter to indicate the maximum number of items you
 #' want in the response. The default value is 50. The maximum value is 50.
-#' @param NextToken You can use this parameter when paginating results. Set the value of
-#' this parameter to null on your first call to the list action. For
-#' subsequent calls to the action fill nextToken in the request with the
-#' value of NextToken from the previous response to continue listing data.
+#' @param NextToken You can use this parameter to paginate results in the response. Set the
+#' value of this parameter to null on your first call to the list action.
+#' For subsequent calls to the action fill nextToken in the request with
+#' the value of NextToken from the previous response to continue listing
+#' data.
 #'
 #' @section Request syntax:
 #' ```
@@ -1610,21 +1903,19 @@ guardduty_list_threat_intel_sets <- function(DetectorId, MaxResults = NULL, Next
 }
 .guardduty$operations$list_threat_intel_sets <- guardduty_list_threat_intel_sets
 
-#' Re-enables GuardDuty to monitor findings of the member accounts
-#' specified by the account IDs
+#' Turns on GuardDuty monitoring of the specified member accounts
 #'
-#' Re-enables GuardDuty to monitor findings of the member accounts
-#' specified by the account IDs. A master GuardDuty account can run this
-#' command after disabling GuardDuty from monitoring these members\'
-#' findings by running StopMonitoringMembers.
+#' Turns on GuardDuty monitoring of the specified member accounts. Use this
+#' operation to restart monitoring of accounts that you stopped monitoring
+#' with the `StopMonitoringMembers` operation.
 #'
 #' @usage
 #' guardduty_start_monitoring_members(DetectorId, AccountIds)
 #'
-#' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty account whom you want to
-#' re-enable to monitor members\' findings.
-#' @param AccountIds &#91;required&#93; A list of account IDs of the GuardDuty member accounts whose findings
-#' you want the master account to monitor.
+#' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty master account associated
+#' with the member accounts to monitor.
+#' @param AccountIds &#91;required&#93; A list of account IDs of the GuardDuty member accounts to start
+#' monitoring.
 #'
 #' @section Request syntax:
 #' ```
@@ -1656,13 +1947,10 @@ guardduty_start_monitoring_members <- function(DetectorId, AccountIds) {
 }
 .guardduty$operations$start_monitoring_members <- guardduty_start_monitoring_members
 
-#' Disables GuardDuty from monitoring findings of the member accounts
-#' specified by the account IDs
+#' Stops GuardDuty monitoring for the specified member accounnts
 #'
-#' Disables GuardDuty from monitoring findings of the member accounts
-#' specified by the account IDs. After running this command, a master
-#' GuardDuty account can run StartMonitoringMembers to re-enable GuardDuty
-#' to monitor these members' findings.
+#' Stops GuardDuty monitoring for the specified member accounnts. Use the
+#' `StartMonitoringMembers` to restart monitoring for those accounts.
 #'
 #' @usage
 #' guardduty_stop_monitoring_members(DetectorId, AccountIds)
@@ -1709,7 +1997,8 @@ guardduty_stop_monitoring_members <- function(DetectorId, AccountIds) {
 #' @usage
 #' guardduty_tag_resource(ResourceArn, Tags)
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the given GuardDuty resource
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the GuardDuty resource to apply a tag
+#' to.
 #' @param Tags &#91;required&#93; The tags to be added to a resource.
 #'
 #' @section Request syntax:
@@ -1742,18 +2031,15 @@ guardduty_tag_resource <- function(ResourceArn, Tags) {
 }
 .guardduty$operations$tag_resource <- guardduty_tag_resource
 
-#' Unarchives Amazon GuardDuty findings specified by the list of finding
-#' IDs
+#' Unarchives GuardDuty findings specified by the findingIds
 #'
-#' Unarchives Amazon GuardDuty findings specified by the list of finding
-#' IDs.
+#' Unarchives GuardDuty findings specified by the `findingIds`.
 #'
 #' @usage
 #' guardduty_unarchive_findings(DetectorId, FindingIds)
 #'
-#' @param DetectorId &#91;required&#93; The ID of the detector that specifies the GuardDuty service whose
-#' findings you want to unarchive.
-#' @param FindingIds &#91;required&#93; IDs of the findings that you want to unarchive.
+#' @param DetectorId &#91;required&#93; The ID of the detector associated with the findings to unarchive.
+#' @param FindingIds &#91;required&#93; IDs of the findings to unarchive.
 #'
 #' @section Request syntax:
 #' ```
@@ -1792,8 +2078,8 @@ guardduty_unarchive_findings <- function(DetectorId, FindingIds) {
 #' @usage
 #' guardduty_untag_resource(ResourceArn, TagKeys)
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the given GuardDuty resource
-#' @param TagKeys &#91;required&#93; The tag keys to remove from a resource.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource to remove tags from.
+#' @param TagKeys &#91;required&#93; The tag keys to remove from the resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -1825,19 +2111,18 @@ guardduty_untag_resource <- function(ResourceArn, TagKeys) {
 }
 .guardduty$operations$untag_resource <- guardduty_untag_resource
 
-#' Updates an Amazon GuardDuty detector specified by the detectorId
+#' Updates the Amazon GuardDuty detector specified by the detectorId
 #'
-#' Updates an Amazon GuardDuty detector specified by the detectorId.
+#' Updates the Amazon GuardDuty detector specified by the detectorId.
 #'
 #' @usage
 #' guardduty_update_detector(DetectorId, Enable,
 #'   FindingPublishingFrequency)
 #'
-#' @param DetectorId &#91;required&#93; The unique ID of the detector that you want to update.
-#' @param Enable Updated boolean value for the detector that specifies whether the
-#' detector is enabled.
-#' @param FindingPublishingFrequency A enum value that specifies how frequently customer got Finding updates
-#' published.
+#' @param DetectorId &#91;required&#93; The unique ID of the detector to update.
+#' @param Enable Specifies whether the detector is enabled or not enabled.
+#' @param FindingPublishingFrequency A enum value that specifies how frequently findings are exported, such
+#' as to CloudWatch Events.
 #'
 #' @section Request syntax:
 #' ```
@@ -1944,18 +2229,18 @@ guardduty_update_filter <- function(DetectorId, FilterName, Description = NULL, 
 }
 .guardduty$operations$update_filter <- guardduty_update_filter
 
-#' Marks specified Amazon GuardDuty findings as useful or not useful
+#' Marks the specified GuardDuty findings as useful or not useful
 #'
-#' Marks specified Amazon GuardDuty findings as useful or not useful.
+#' Marks the specified GuardDuty findings as useful or not useful.
 #'
 #' @usage
 #' guardduty_update_findings_feedback(DetectorId, FindingIds, Feedback,
 #'   Comments)
 #'
-#' @param DetectorId &#91;required&#93; The ID of the detector that specifies the GuardDuty service whose
-#' findings you want to mark as useful or not useful.
+#' @param DetectorId &#91;required&#93; The ID of the detector associated with the findings to update feedback
+#' for.
 #' @param FindingIds &#91;required&#93; IDs of the findings that you want to mark as useful or not useful.
-#' @param Feedback &#91;required&#93; Valid values: USEFUL \\| NOT\\_USEFUL
+#' @param Feedback &#91;required&#93; The feedback for the finding.
 #' @param Comments Additional feedback about the GuardDuty findings.
 #'
 #' @section Request syntax:
@@ -2036,6 +2321,54 @@ guardduty_update_ip_set <- function(DetectorId, IpSetId, Name = NULL, Location =
   return(response)
 }
 .guardduty$operations$update_ip_set <- guardduty_update_ip_set
+
+#' Updates information about the publishing destination specified by the
+#' destinationId
+#'
+#' Updates information about the publishing destination specified by the
+#' `destinationId`.
+#'
+#' @usage
+#' guardduty_update_publishing_destination(DetectorId, DestinationId,
+#'   DestinationProperties)
+#'
+#' @param DetectorId &#91;required&#93; The ID of the
+#' @param DestinationId &#91;required&#93; The ID of the detector associated with the publishing destinations to
+#' update.
+#' @param DestinationProperties A `DestinationProperties` object that includes the `DestinationArn` and
+#' `KmsKeyArn` of the publishing destination.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_publishing_destination(
+#'   DetectorId = "string",
+#'   DestinationId = "string",
+#'   DestinationProperties = list(
+#'     DestinationArn = "string",
+#'     KmsKeyArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_update_publishing_destination
+guardduty_update_publishing_destination <- function(DetectorId, DestinationId, DestinationProperties = NULL) {
+  op <- new_operation(
+    name = "UpdatePublishingDestination",
+    http_method = "POST",
+    http_path = "/detector/{detectorId}/publishingDestination/{destinationId}",
+    paginator = list()
+  )
+  input <- .guardduty$update_publishing_destination_input(DetectorId = DetectorId, DestinationId = DestinationId, DestinationProperties = DestinationProperties)
+  output <- .guardduty$update_publishing_destination_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$update_publishing_destination <- guardduty_update_publishing_destination
 
 #' Updates the ThreatIntelSet specified by ThreatIntelSet ID
 #'

@@ -11,8 +11,8 @@ codecommit_update_pull_request_status(pullRequestId, pullRequestStatus)
 ListPullRequests.}
 
 \item{pullRequestStatus}{[required] The status of the pull request. The only valid operations are to update
-the status from \code{OPEN} to \code{OPEN}, \code{OPEN} to \code{CLOSED} or from from
-\code{CLOSED} to \code{CLOSED}.}
+the status from \code{OPEN} to \code{OPEN}, \code{OPEN} to \code{CLOSED} or from \code{CLOSED} to
+\code{CLOSED}.}
 }
 \description{
 Updates the status of a pull request.

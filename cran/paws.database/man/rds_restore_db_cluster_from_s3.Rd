@@ -35,13 +35,13 @@ with the specified CharacterSet.}
 \item{DatabaseName}{The database name for the restored DB cluster.}
 
 \item{DBClusterIdentifier}{[required] The name of the DB cluster to create from the source data in the Amazon
-S3 bucket. This parameter is isn't case-sensitive.
+S3 bucket. This parameter is isn\'t case-sensitive.
 
 Constraints:
 \itemize{
 \item Must contain from 1 to 63 letters, numbers, or hyphens.
 \item First character must be a letter.
-\item Can't end with a hyphen or contain two consecutive hyphens.
+\item Can\'t end with a hyphen or contain two consecutive hyphens.
 }
 
 Example: \code{my-cluster1}}
@@ -72,13 +72,29 @@ Valid Values: \code{aurora}, \code{aurora-postgresql}}
 
 \item{EngineVersion}{The version number of the database engine to use.
 
+To list all of the available engine versions for \code{aurora} (for MySQL
+5.6-compatible Aurora), use the following command:
+
+\verb{aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions\\\[\\\].EngineVersion"}
+
+To list all of the available engine versions for \code{aurora-mysql} (for
+MySQL 5.7-compatible Aurora), use the following command:
+
+\verb{aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions\\\[\\\].EngineVersion"}
+
+To list all of the available engine versions for \code{aurora-postgresql},
+use the following command:
+
+\verb{aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions\\\[\\\].EngineVersion"}
+
 \strong{Aurora MySQL}
 
-Example: \code{5.6.10a}
+Example: \verb{5.6.10a}, \verb{5.6.mysql_aurora.1.19.2}, \verb{5.7.12},
+\verb{5.7.mysql_aurora.2.04.5}
 
 \strong{Aurora PostgreSQL}
 
-Example: \code{9.6.3}}
+Example: \verb{9.6.3}, \code{10.7}}
 
 \item{Port}{The port number on which the instances in the restored DB cluster accept
 connections.
@@ -91,19 +107,19 @@ Constraints:
 \itemize{
 \item Must be 1 to 16 letters or numbers.
 \item First character must be a letter.
-\item Can't be a reserved word for the chosen database engine.
+\item Can\'t be a reserved word for the chosen database engine.
 }}
 
 \item{MasterUserPassword}{[required] The password for the master database user. This password can contain any
-printable ASCII character except "/", """, or "@".
+printable ASCII character except \"/\", \"\"\", or \"@\".
 
 Constraints: Must contain from 8 to 41 characters.}
 
 \item{OptionGroupName}{A value that indicates that the restored DB cluster should be associated
 with the specified option group.
 
-Permanent options can't be removed from an option group. An option
-group can't be removed from a DB cluster once it is associated with a
+Permanent options can\'t be removed from an option group. An option
+group can\'t be removed from a DB cluster once it is associated with a
 DB cluster.}
 
 \item{PreferredBackupWindow}{The daily time range during which automated backups are created if
@@ -157,7 +173,10 @@ key for each AWS Region.}
 
 \item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.}
+mapping is disabled.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication}
+in the \emph{Amazon Aurora User Guide.}}
 
 \item{SourceEngine}{[required] The identifier for the database engine that was backed up to create the
 files stored in the Amazon S3 bucket.
@@ -168,7 +187,7 @@ Valid values: \code{mysql}}
 
 MySQL version 5.5 and 5.6 are supported.
 
-Example: \code{5.6.22}}
+Example: \verb{5.6.22}}
 
 \item{S3BucketName}{[required] The name of the Amazon S3 bucket that contains the data used to create
 the Amazon Aurora DB cluster.}
@@ -199,7 +218,7 @@ more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraU
 in the \emph{Amazon Aurora User Guide}.}
 
 \item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
-enabled. The database can't be deleted when deletion protection is
+enabled. The database can\'t be deleted when deletion protection is
 enabled. By default, deletion protection is disabled.}
 
 \item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the restored DB

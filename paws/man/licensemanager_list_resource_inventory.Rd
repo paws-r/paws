@@ -2,21 +2,34 @@
 % Please edit documentation in R/licensemanager_operations.R
 \name{licensemanager_list_resource_inventory}
 \alias{licensemanager_list_resource_inventory}
-\title{Returns a detailed list of resources}
+\title{Lists resources managed using Systems Manager inventory}
 \usage{
 licensemanager_list_resource_inventory(MaxResults, NextToken, Filters)
 }
 \arguments{
-\item{MaxResults}{Maximum number of results to return in a single call. To retrieve the
-remaining results, make another call with the returned \code{NextToken}
-value.}
+\item{MaxResults}{Maximum number of results to return in a single call.}
 
 \item{NextToken}{Token for the next set of results.}
 
-\item{Filters}{One or more filters.}
+\item{Filters}{Filters to scope the results. The following filters and logical
+operators are supported:
+\itemize{
+\item \code{account_id} - The ID of the AWS account that owns the resource.
+Logical operators are \code{EQUALS} \\| \code{NOT_EQUALS}.
+\item \code{application_name} - The name of the application. Logical operators
+are \code{EQUALS} \\| \code{BEGINS_WITH}.
+\item \code{license_included} - The type of license included. Logical operators
+are \code{EQUALS} \\| \code{NOT_EQUALS}. Possible values are
+\code{sql-server-enterprise} \\| \code{sql-server-standard} \\| \code{sql-server-web}
+\\| \code{windows-server-datacenter}.
+\item \code{platform} - The platform of the resource. Logical operators are
+\code{EQUALS} \\| \code{BEGINS_WITH}.
+\item \code{resource_id} - The ID of the resource. Logical operators are
+\code{EQUALS} \\| \code{NOT_EQUALS}.
+}}
 }
 \description{
-Returns a detailed list of resources.
+Lists resources managed using Systems Manager inventory.
 }
 \section{Request syntax}{
 \preformatted{svc$list_resource_inventory(

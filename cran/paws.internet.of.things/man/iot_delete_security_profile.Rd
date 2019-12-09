@@ -11,7 +11,7 @@ iot_delete_security_profile(securityProfileName, expectedVersion)
 
 \item{expectedVersion}{The expected version of the security profile. A new version is generated
 whenever the security profile is updated. If you specify a value that is
-different than the actual version, a \code{VersionConflictException} is
+different from the actual version, a \code{VersionConflictException} is
 thrown.}
 }
 \description{

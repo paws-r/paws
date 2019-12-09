@@ -2,27 +2,41 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_availability_zones}
 \alias{ec2_describe_availability_zones}
-\title{Describes the Availability Zones that are available to you}
+\title{Describes the Availability Zones and Local Zones that are available to
+you}
 \usage{
-ec2_describe_availability_zones(Filters, ZoneNames, ZoneIds, DryRun)
+ec2_describe_availability_zones(Filters, ZoneNames, ZoneIds,
+  AllAvailabilityZones, DryRun)
 }
 \arguments{
 \item{Filters}{The filters.
 \itemize{
-\item \code{message} - Information about the Availability Zone.
-\item \code{region-name} - The name of the Region for the Availability Zone
-(for example, \code{us-east-1}).
-\item \code{state} - The state of the Availability Zone (\code{available} \|
-\code{information} \| \code{impaired} \| \code{unavailable}).
+\item \code{group-name} - For Availability Zones, use the Region name. For
+Local Zones, use the name of the group associated with the Local
+Zone (for example, \code{us-west-2-lax-1}).
+\item \code{message} - The Availability Zone or Local Zone message.
+\item \verb{opt-in-status} - The opt in status (\verb{opted-in}, and \verb{not-opted-in}
+\\| \verb{opt-in-not-required}).
+\item \code{region-name} - The name of the Region for the Availability Zone or
+Local Zone (for example, \code{us-east-1}).
+\item \code{state} - The state of the Availability Zone or Local Zone
+(\code{available} \\| \code{information} \\| \code{impaired} \\| \code{unavailable}).
 \item \code{zone-id} - The ID of the Availability Zone (for example,
-\code{use1-az1}).
+\code{use1-az1}) or the Local Zone (for example, use \code{usw2-lax1-az1}).
 \item \code{zone-name} - The name of the Availability Zone (for example,
-\code{us-east-1a}).
+\verb{us-east-1a}) or the Local Zone (for example, use
+\verb{us-west-2-lax-1a}).
 }}
 
-\item{ZoneNames}{The names of the Availability Zones.}
+\item{ZoneNames}{The names of the Availability Zones and Local Zones.}
 
-\item{ZoneIds}{The IDs of the Availability Zones.}
+\item{ZoneIds}{The IDs of the Availability Zones and Local Zones.}
+
+\item{AllAvailabilityZones}{Include all Availability Zones and Local Zones regardless of your opt in
+status.
+
+If you do not use this parameter, the results include only the zones for
+the Regions where you have chosen the option to opt in.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -30,13 +44,14 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Describes the Availability Zones that are available to you. The results
-include zones only for the Region you're currently using. If there is
-an event impacting an Availability Zone, you can use this request to
-view the state and any provided message for that Availability Zone.
+Describes the Availability Zones and Local Zones that are available to
+you. If there is an event impacting an Availability Zone or Local Zone,
+you can use this request to view the state and any provided messages for
+that Availability Zone or Local Zone.
 }
 \details{
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html}{Regions and Availability Zones}
+For more information about Availability Zones and Local Zones, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html}{Regions and Availability Zones}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
@@ -55,6 +70,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   ZoneIds = list(
     "string"
   ),
+  AllAvailabilityZones = TRUE|FALSE,
   DryRun = TRUE|FALSE
 )
 }

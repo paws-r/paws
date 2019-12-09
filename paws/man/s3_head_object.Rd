@@ -10,7 +10,7 @@ s3_head_object(Bucket, IfMatch, IfModifiedSince, IfNoneMatch,
   SSECustomerKey, SSECustomerKeyMD5, RequestPayer, PartNumber)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The name of the bucket containing the object.}
 
 \item{IfMatch}{Return the object only if its entity tag (ETag) is the same as the one
 specified, otherwise return a 412 (precondition failed).}
@@ -24,39 +24,105 @@ one specified, otherwise return a 304 (not modified).}
 \item{IfUnmodifiedSince}{Return the object only if it has not been modified since the specified
 time, otherwise return a 412 (precondition failed).}
 
-\item{Key}{[required]}
+\item{Key}{[required] The object key.}
 
 \item{Range}{Downloads the specified range bytes of an object. For more information
-about the HTTP Range header, go to
-http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html\#sec14.35.}
+about the HTTP Range header, see
+http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html\\#sec14.35.}
 
 \item{VersionId}{VersionId used to reference a specific version of the object.}
 
-\item{SSECustomerAlgorithm}{Specifies the algorithm to use to when encrypting the object (e.g.,
-AES256).}
+\item{SSECustomerAlgorithm}{Specifies the algorithm to use to when encrypting the object (for
+example, AES256).}
 
 \item{SSECustomerKey}{Specifies the customer-provided encryption key for Amazon S3 to use in
 encrypting data. This value is used to store the object and then it is
-discarded; Amazon does not store the encryption key. The key must be
+discarded; Amazon S3 does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
-x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm header.}
+\verb{x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm} header.}
 
 \item{SSECustomerKeyMD5}{Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to ensure
-the encryption key was transmitted without error.}
+that the encryption key was transmitted without error.}
 
 \item{RequestPayer}{}
 
 \item{PartNumber}{Part number of the object being read. This is a positive integer between
-1 and 10,000. Effectively performs a 'ranged' HEAD request for the
+1 and 10,000. Effectively performs a \'ranged\' HEAD request for the
 part specified. Useful querying about the size of the part and the
 number of parts in this object.}
 }
 \description{
 The HEAD operation retrieves metadata from an object without returning
-the object itself. This operation is useful if you're only interested
-in an object's metadata. To use HEAD, you must have READ access to the
+the object itself. This operation is useful if you\'re only interested
+in an object\'s metadata. To use HEAD, you must have READ access to the
 object.
+}
+\details{
+A \code{HEAD} request has the same options as a \code{GET} operation on an object.
+The response is identical to the \code{GET} response except that there is no
+response body.
+
+If you encrypt an object by using server-side encryption with
+customer-provided encryption keys (SSE-C) when you store the object in
+Amazon S3, then when you retrieve the metadata from the object, you must
+use the following headers:
+\itemize{
+\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
+\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
+\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
+}
+
+For more information about SSE-C, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys)}.
+
+Encryption request headers, like \code{x-amz-server-side-encryption}, should
+not be sent for GET requests if your object uses server-side encryption
+with CMKs stored in AWS KMS (SSE-KMS) or server-side encryption with
+Amazon S3--managed encryption keys (SSE-S3). If your object does use
+these types of keys, you'll get an HTTP 400 BadRequest error.
+
+Request headers are limited to 8 KB in size. For more information, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonRequestHeaders.html}{Common Request Headers}.
+
+Consider the following when using request headers:
+\itemize{
+\item Consideration 1 -- If both of the \code{If-Match} and
+\code{If-Unmodified-Since} headers are present in the request as follows:
+\itemize{
+\item \code{If-Match} condition evaluates to \code{true}, and;
+\item \code{If-Unmodified-Since} condition evaluates to \code{false};
+}
+
+Then Amazon S3 returns \verb{200 OK} and the data requested.
+\item Consideration 2 -- If both of the \code{If-None-Match} and
+\code{If-Modified-Since} headers are present in the request as follows:
+\itemize{
+\item \code{If-None-Match} condition evaluates to \code{false}, and;
+\item \code{If-Modified-Since} condition evaluates to \code{true};
+}
+
+Then Amazon S3 returns the \verb{304 Not Modified} response code.
+}
+
+For more information about conditional requests, see \href{https://tools.ietf.org/html/rfc7232}{RFC 7232}.
+
+\strong{Permissions}
+
+You need the \code{s3:GetObject} permission for this operation. For more
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html}{Specifying Permissions in a Policy}.
+If the object you request does not exist, the error Amazon S3 returns
+depends on whether you also have the s3:ListBucket permission.
+\itemize{
+\item If you have the \code{s3:ListBucket} permission on the bucket, Amazon S3
+returns an HTTP status code 404 (\"no such key\") error.
+\item If you don't have the \code{s3:ListBucket} permission, Amazon S3 returns
+an HTTP status code 403 (\"access denied\") error.
+}
+
+The following operation is related to \code{HeadObject}:
+\itemize{
+\item GetObject
+}
 }
 \section{Request syntax}{
 \preformatted{svc$head_object(

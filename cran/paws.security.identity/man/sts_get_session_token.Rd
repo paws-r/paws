@@ -19,8 +19,8 @@ IAM user who is making the \code{GetSessionToken} call. Specify this value if
 the IAM user has a policy that requires MFA authentication. The value is
 either the serial number for a hardware device (such as \code{GAHT12345678})
 or an Amazon Resource Name (ARN) for a virtual device (such as
-\code{arn:aws:iam::123456789012:mfa/user}). You can find the device for an
-IAM user by going to the AWS Management Console and viewing the user's
+\verb{arn:aws:iam::123456789012:mfa/user}). You can find the device for an
+IAM user by going to the AWS Management Console and viewing the user\'s
 security credentials.
 
 The regex used to validate this parameter is a string of characters
@@ -32,7 +32,7 @@ characters: =,.@:/-}
 requires the IAM user to submit an MFA code, specify this value. If MFA
 authentication is required, the user must provide a code when requesting
 a set of temporary security credentials. A user who fails to provide the
-code receives an "access denied" response when requesting resources
+code receives an \"access denied\" response when requesting resources
 that require MFA authentication.
 
 The format for this parameter, as described by its regex pattern, is a
@@ -55,6 +55,8 @@ and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_r
 in the \emph{IAM User Guide}.
 }
 \details{
+\strong{Session Duration}
+
 The \code{GetSessionToken} operation must be called by using the long-term
 AWS security credentials of the AWS account root user or an IAM user.
 Credentials that are created by IAM users are valid for the duration
@@ -63,6 +65,8 @@ up to a maximum of 129,600 seconds (36 hours), with a default of 43,200
 seconds (12 hours). Credentials based on account credentials can range
 from 900 seconds (15 minutes) up to 3,600 seconds (1 hour), with a
 default of 1 hour.
+
+\strong{Permissions}
 
 The temporary security credentials created by \code{GetSessionToken} can be
 used to make API calls to any AWS service with the following exceptions:

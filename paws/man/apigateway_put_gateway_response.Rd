@@ -15,26 +15,26 @@ apigateway_put_gateway_response(restApiId, responseType, statusCode,
 
 The response type of the associated GatewayResponse. Valid values are
 \itemize{
-\item ACCESS\_DENIED
-\item API\_CONFIGURATION\_ERROR
-\item AUTHORIZER\_FAILURE
-\item AUTHORIZER\_CONFIGURATION\_ERROR
-\item BAD\_REQUEST\_PARAMETERS
-\item BAD\_REQUEST\_BODY
-\item DEFAULT\_4XX
-\item DEFAULT\_5XX
-\item EXPIRED\_TOKEN
-\item INVALID\_SIGNATURE
-\item INTEGRATION\_FAILURE
-\item INTEGRATION\_TIMEOUT
-\item INVALID\_API\_KEY
-\item MISSING\_AUTHENTICATION\_TOKEN
-\item QUOTA\_EXCEEDED
-\item REQUEST\_TOO\_LARGE
-\item RESOURCE\_NOT\_FOUND
+\item ACCESS\\_DENIED
+\item API\\_CONFIGURATION\\_ERROR
+\item AUTHORIZER\\_FAILURE
+\item AUTHORIZER\\_CONFIGURATION\\_ERROR
+\item BAD\\_REQUEST\\_PARAMETERS
+\item BAD\\_REQUEST\\_BODY
+\item DEFAULT\\_4XX
+\item DEFAULT\\_5XX
+\item EXPIRED\\_TOKEN
+\item INVALID\\_SIGNATURE
+\item INTEGRATION\\_FAILURE
+\item INTEGRATION\\_TIMEOUT
+\item INVALID\\_API\\_KEY
+\item MISSING\\_AUTHENTICATION\\_TOKEN
+\item QUOTA\\_EXCEEDED
+\item REQUEST\\_TOO\\_LARGE
+\item RESOURCE\\_NOT\\_FOUND
 \item THROTTLED
 \item UNAUTHORIZED
-\item UNSUPPORTED\_MEDIA\_TYPE
+\item UNSUPPORTED\\_MEDIA\\_TYPE
 }}
 
 \item{statusCode}{The HTTP status code of the <a>GatewayResponse</a>.}

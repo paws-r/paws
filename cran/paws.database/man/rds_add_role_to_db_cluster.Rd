@@ -12,7 +12,7 @@ rds_add_role_to_db_cluster(DBClusterIdentifier, RoleArn, FeatureName)
 
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role to associate with the
 Aurora DB cluster, for example
-\code{arn:aws:iam::123456789012:role/AuroraAccessRole}.}
+\verb{arn:aws:iam::123456789012:role/AuroraAccessRole}.}
 
 \item{FeatureName}{The name of the feature for the DB cluster that the IAM role is to be
 associated with. For the list of supported feature names, see

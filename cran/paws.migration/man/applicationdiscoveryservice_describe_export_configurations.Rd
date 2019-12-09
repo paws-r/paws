@@ -8,7 +8,7 @@ applicationdiscoveryservice_describe_export_configurations(exportIds,
   maxResults, nextToken)
 }
 \arguments{
-\item{exportIds}{A list of continuous export ids to search for.}
+\item{exportIds}{A list of continuous export IDs to search for.}
 
 \item{maxResults}{A number between 1 and 100 specifying the maximum number of continuous
 export descriptions returned.}

@@ -27,7 +27,7 @@ must complete before you can call the API again. If you chose to have
 AWS Config stream to an Amazon SNS topic, you will receive a
 \code{ConfigRuleEvaluationStarted} notification when the evaluation starts.
 
-You don't need to call the \code{StartConfigRulesEvaluation} API to run an
+You don\'t need to call the \code{StartConfigRulesEvaluation} API to run an
 evaluation for a new rule. When you create a rule, AWS Config evaluates
 your resources against the rule automatically.
 

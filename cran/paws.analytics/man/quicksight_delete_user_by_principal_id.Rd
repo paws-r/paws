@@ -18,14 +18,6 @@ ID for the AWS account that contains your Amazon QuickSight account.}
 \description{
 Deletes a user identified by its principal ID.
 }
-\details{
-The permission resource is
-\code{arn:aws:quicksight:us-east-1:<i>&lt;aws-account-id&gt;</i>:user/default/<i>&lt;user-name&gt; </i> }.
-
-\strong{CLI Sample:}
-
-\code{aws quicksight delete-user-by-principal-id --aws-account-id=111122223333 --namespace=default --principal-id=ABCDEFJA26JLI7EUUOEHS }
-}
 \section{Request syntax}{
 \preformatted{svc$delete_user_by_principal_id(
   PrincipalId = "string",

@@ -34,7 +34,7 @@ Either a Question parameter or a HITLayoutId parameter must be provided.}
 \item{RequesterAnnotation}{An arbitrary data field. The RequesterAnnotation parameter lets your
 application attach arbitrary data to the HIT for tracking purposes. For
 example, this parameter could be an identifier internal to the
-Requester's application that corresponds with the HIT.
+Requester\'s application that corresponds with the HIT.
 
 The RequesterAnnotation parameter for a HIT is only visible to the
 Requester who created the HIT. It is not shown to the Worker, or any

@@ -46,7 +46,8 @@ Updates an existing job definition.
     SecurityConfiguration = "string",
     NotificationProperty = list(
       NotifyDelayAfter = 123
-    )
+    ),
+    GlueVersion = "string"
   )
 )
 }

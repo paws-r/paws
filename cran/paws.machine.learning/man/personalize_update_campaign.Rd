@@ -18,7 +18,7 @@ personalize_update_campaign(campaignArn, solutionVersionArn,
 }
 \description{
 Updates a campaign by either deploying a new solution or changing the
-value of the campaign's \code{minProvisionedTPS} parameter.
+value of the campaign\'s \code{minProvisionedTPS} parameter.
 }
 \details{
 To update a campaign, the campaign status must be ACTIVE or CREATE

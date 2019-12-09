@@ -3,7 +3,7 @@
 \name{emr_list_steps}
 \alias{emr_list_steps}
 \title{Provides a list of steps for the cluster in reverse order unless you
-specify stepIds with the request}
+specify stepIds with the request of filter by StepStates}
 \usage{
 emr_list_steps(ClusterId, StepStates, StepIds, Marker)
 }
@@ -12,13 +12,16 @@ emr_list_steps(ClusterId, StepStates, StepIds, Marker)
 
 \item{StepStates}{The filter to limit the step list based on certain states.}
 
-\item{StepIds}{The filter to limit the step list based on the identifier of the steps.}
+\item{StepIds}{The filter to limit the step list based on the identifier of the steps.
+You can specify a maximum of ten Step IDs. The character constraint
+applies to the overall length of the array.}
 
 \item{Marker}{The pagination token that indicates the next set of results to retrieve.}
 }
 \description{
 Provides a list of steps for the cluster in reverse order unless you
-specify stepIds with the request.
+specify \code{stepIds} with the request of filter by \code{StepStates}. You can
+specify a maximum of ten \code{stepIDs}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_steps(

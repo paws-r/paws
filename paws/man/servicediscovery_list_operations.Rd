@@ -14,13 +14,13 @@ request to get the next group of results. Specify the value of
 \code{NextToken} from the previous response in the next request.
 
 AWS Cloud Map gets \code{MaxResults} operations and then filters them based
-on the specified criteria. It's possible that no operations in the
+on the specified criteria. It\'s possible that no operations in the
 first \code{MaxResults} operations matched the specified criteria but that
 subsequent groups of \code{MaxResults} operations do contain operations that
 match the criteria.}
 
 \item{MaxResults}{The maximum number of items that you want AWS Cloud Map to return in the
-response to a \code{ListOperations} request. If you don't specify a value
+response to a \code{ListOperations} request. If you don\'t specify a value
 for \code{MaxResults}, AWS Cloud Map returns up to 100 operations.}
 
 \item{Filters}{A complex type that contains specifications for the operations that you

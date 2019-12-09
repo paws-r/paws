@@ -17,7 +17,7 @@ elasticbeanstalk_describe_environment_managed_action_history(
 \item{MaxItems}{The maximum number of items to return for a single request.}
 }
 \description{
-Lists an environment's completed and failed managed actions.
+Lists an environment\'s completed and failed managed actions.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_environment_managed_action_history(

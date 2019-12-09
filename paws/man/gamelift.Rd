@@ -35,11 +35,11 @@ See also \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gameli
 
 The Amazon GameLift service API includes two key sets of actions:
 \itemize{
-\item Manage game sessions and player access \-- Integrate this
+\item Manage game sessions and player access \\-- Integrate this
 functionality into game client services in order to create new game
 sessions, retrieve information on existing game sessions; reserve a
 player slot in a game session, request matchmaking, etc.
-\item Configure and manage game server resources \-- Manage your Amazon
+\item Configure and manage game server resources \\-- Manage your Amazon
 GameLift hosting resources, including builds, scripts, fleets,
 queues, and aliases. Set up matchmakers, configure auto-scaling,
 retrieve game logs, and get hosting and game metrics.

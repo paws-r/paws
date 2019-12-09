@@ -17,7 +17,7 @@ parameter name and parameter value; other name-value pairs of the
 parameter are optional.
 
 For the workload management (WLM) configuration, you must supply all the
-name-value pairs in the wlm\_json\_configuration parameter.}
+name-value pairs in the wlm\\_json\\_configuration parameter.}
 }
 \description{
 Modifies the parameters of a parameter group.

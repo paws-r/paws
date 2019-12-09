@@ -12,7 +12,7 @@ iam_get_login_profile(UserName)
 
 This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \_+=,.@-}
+spaces. You can also include any of the following characters: \\_+=,.@-}
 }
 \description{
 Retrieves the user name and password-creation date for the specified IAM

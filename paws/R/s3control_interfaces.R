@@ -3,6 +3,16 @@
 #' @include s3control_service.R
 NULL
 
+.s3control$create_access_point_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-account-id", type = "string")), Name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), Bucket = structure(logical(0), tags = list(type = "string")), VpcConfiguration = structure(list(VpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PublicAccessBlockConfiguration = structure(list(BlockPublicAcls = structure(logical(0), tags = list(locationName = "BlockPublicAcls", type = "boolean")), IgnorePublicAcls = structure(logical(0), tags = list(locationName = "IgnorePublicAcls", type = "boolean")), BlockPublicPolicy = structure(logical(0), tags = list(locationName = "BlockPublicPolicy", type = "boolean")), RestrictPublicBuckets = structure(logical(0), tags = list(locationName = "RestrictPublicBuckets", type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.s3control$create_access_point_output <- function(...) {
+  list()
+}
+
 .s3control$create_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-account-id", type = "string")), ConfirmationRequired = structure(logical(0), tags = list(box = TRUE, type = "boolean")), Operation = structure(list(LambdaInvoke = structure(list(FunctionArn = structure(logical(0), tags = list(type = "string"))), tags = list(box = TRUE, type = "structure")), S3PutObjectCopy = structure(list(TargetResource = structure(logical(0), tags = list(type = "string")), CannedAccessControlList = structure(logical(0), tags = list(box = TRUE, type = "string")), AccessControlGrants = structure(list(structure(list(Grantee = structure(list(TypeIdentifier = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(box = TRUE, type = "string")), DisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Permission = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(box = TRUE, type = "list")), MetadataDirective = structure(logical(0), tags = list(type = "string")), ModifiedSinceConstraint = structure(logical(0), tags = list(type = "timestamp")), NewObjectMetadata = structure(list(CacheControl = structure(logical(0), tags = list(type = "string")), ContentDisposition = structure(logical(0), tags = list(type = "string")), ContentEncoding = structure(logical(0), tags = list(type = "string")), ContentLanguage = structure(logical(0), tags = list(type = "string")), UserMetadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ContentLength = structure(logical(0), tags = list(box = TRUE, type = "long")), ContentMD5 = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string")), HttpExpiresDate = structure(logical(0), tags = list(type = "timestamp")), RequesterCharged = structure(logical(0), tags = list(type = "boolean")), SSEAlgorithm = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NewObjectTagging = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RedirectLocation = structure(logical(0), tags = list(type = "string")), RequesterPays = structure(logical(0), tags = list(type = "boolean")), StorageClass = structure(logical(0), tags = list(type = "string")), UnModifiedSinceConstraint = structure(logical(0), tags = list(type = "timestamp")), SSEAwsKmsKeyId = structure(logical(0), tags = list(type = "string")), TargetKeyPrefix = structure(logical(0), tags = list(type = "string")), ObjectLockLegalHoldStatus = structure(logical(0), tags = list(type = "string")), ObjectLockMode = structure(logical(0), tags = list(type = "string")), ObjectLockRetainUntilDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(box = TRUE, type = "structure")), S3PutObjectAcl = structure(list(AccessControlPolicy = structure(list(AccessControlList = structure(list(Owner = structure(list(ID = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Grants = structure(list(structure(list(Grantee = structure(list(TypeIdentifier = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(box = TRUE, type = "string")), DisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Permission = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(box = TRUE, type = "structure")), CannedAccessControlList = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))), tags = list(box = TRUE, type = "structure")), S3PutObjectTagging = structure(list(TagSet = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(box = TRUE, type = "structure")), S3InitiateRestoreObject = structure(list(ExpirationInDays = structure(logical(0), tags = list(type = "integer")), GlacierJobTier = structure(logical(0), tags = list(type = "string"))), tags = list(box = TRUE, type = "structure"))), tags = list(type = "structure")), Report = structure(list(Bucket = structure(logical(0), tags = list(box = TRUE, type = "string")), Format = structure(logical(0), tags = list(box = TRUE, type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean")), Prefix = structure(logical(0), tags = list(box = TRUE, type = "string")), ReportScope = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Manifest = structure(list(Spec = structure(list(Format = structure(logical(0), tags = list(type = "string")), Fields = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(box = TRUE, type = "list"))), tags = list(type = "structure")), Location = structure(list(ObjectArn = structure(logical(0), tags = list(type = "string")), ObjectVersionId = structure(logical(0), tags = list(box = TRUE, type = "string")), ETag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(box = TRUE, type = "integer")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -13,6 +23,26 @@ NULL
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
+}
+
+.s3control$delete_access_point_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-account-id", type = "string")), Name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.s3control$delete_access_point_output <- function(...) {
+  list()
+}
+
+.s3control$delete_access_point_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-account-id", type = "string")), Name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.s3control$delete_access_point_policy_output <- function(...) {
+  list()
 }
 
 .s3control$delete_public_access_block_input <- function(...) {
@@ -37,6 +67,42 @@ NULL
   return(populate(args, shape))
 }
 
+.s3control$get_access_point_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-account-id", type = "string")), Name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.s3control$get_access_point_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Bucket = structure(logical(0), tags = list(type = "string")), NetworkOrigin = structure(logical(0), tags = list(type = "string")), VpcConfiguration = structure(list(VpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PublicAccessBlockConfiguration = structure(list(BlockPublicAcls = structure(logical(0), tags = list(locationName = "BlockPublicAcls", type = "boolean")), IgnorePublicAcls = structure(logical(0), tags = list(locationName = "IgnorePublicAcls", type = "boolean")), BlockPublicPolicy = structure(logical(0), tags = list(locationName = "BlockPublicPolicy", type = "boolean")), RestrictPublicBuckets = structure(logical(0), tags = list(locationName = "RestrictPublicBuckets", type = "boolean"))), tags = list(type = "structure")), CreationDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.s3control$get_access_point_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-account-id", type = "string")), Name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.s3control$get_access_point_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.s3control$get_access_point_policy_status_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-account-id", type = "string")), Name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.s3control$get_access_point_policy_status_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(PolicyStatus = structure(list(IsPublic = structure(logical(0), tags = list(locationName = "IsPublic", type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .s3control$get_public_access_block_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-account-id", type = "string"))), tags = list(type = "structure"))
@@ -46,6 +112,18 @@ NULL
 .s3control$get_public_access_block_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PublicAccessBlockConfiguration = structure(list(BlockPublicAcls = structure(logical(0), tags = list(locationName = "BlockPublicAcls", type = "boolean")), IgnorePublicAcls = structure(logical(0), tags = list(locationName = "IgnorePublicAcls", type = "boolean")), BlockPublicPolicy = structure(logical(0), tags = list(locationName = "BlockPublicPolicy", type = "boolean")), RestrictPublicBuckets = structure(logical(0), tags = list(locationName = "RestrictPublicBuckets", type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "PublicAccessBlockConfiguration"))
+  return(populate(args, shape))
+}
+
+.s3control$list_access_points_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-account-id", type = "string")), Bucket = structure(logical(0), tags = list(location = "querystring", locationName = "bucket", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.s3control$list_access_points_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccessPointList = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), NetworkOrigin = structure(logical(0), tags = list(type = "string")), VpcConfiguration = structure(list(VpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Bucket = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "AccessPoint", type = "structure"))), tags = list(locationNameList = "AccessPoint", type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -59,6 +137,16 @@ NULL
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Jobs = structure(list(structure(list(JobId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Operation = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), TerminationDate = structure(logical(0), tags = list(type = "timestamp")), ProgressSummary = structure(list(TotalNumberOfTasks = structure(logical(0), tags = list(box = TRUE, type = "long")), NumberOfTasksSucceeded = structure(logical(0), tags = list(box = TRUE, type = "long")), NumberOfTasksFailed = structure(logical(0), tags = list(box = TRUE, type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
+}
+
+.s3control$put_access_point_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-account-id", type = "string")), Name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.s3control$put_access_point_policy_output <- function(...) {
+  list()
 }
 
 .s3control$put_public_access_block_input <- function(...) {

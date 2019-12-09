@@ -13,11 +13,11 @@ cloudformation_create_stack_set(StackSetName, Description, TemplateBody,
 region where you create your stack set.
 
 A stack name can contain only alphanumeric characters (case-sensitive)
-and hyphens. It must start with an alphabetic character and can't be
+and hyphens. It must start with an alphabetic character and can\'t be
 longer than 128 characters.}
 
 \item{Description}{A description of the stack set. You can use the description to identify
-the stack set's purpose or other important information.}
+the stack set\'s purpose or other important information.}
 
 \item{TemplateBody}{The structure that contains the template body, with a minimum length of
 1 byte and a maximum length of 51,200 bytes. For more information, see
@@ -28,7 +28,7 @@ Conditional: You must specify either the TemplateBody or the TemplateURL
 parameter, but not both.}
 
 \item{TemplateURL}{The location of the file that contains the template body. The URL must
-point to a template (maximum size: 460,800 bytes) that's located in an
+point to a template (maximum size: 460,800 bytes) that\'s located in an
 Amazon S3 bucket. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
 in the AWS CloudFormation User Guide.
 
@@ -37,7 +37,7 @@ parameter, but not both.}
 
 \item{Parameters}{The input parameters for the stack set template.}
 
-\item{Capabilities}{In some cases, you must explicity acknowledge that your stack set
+\item{Capabilities}{In some cases, you must explicitly acknowledge that your stack set
 template contains certain capabilities in order for AWS CloudFormation
 to create the stack set and related stack instances.
 \itemize{
@@ -55,7 +55,7 @@ The following IAM resources require you to specify either the
 \item If you have IAM resources, you can specify either capability.
 \item If you have IAM resources with custom names, you \emph{must} specify
 \code{CAPABILITY_NAMED_IAM}.
-\item If you don't specify either of these capabilities, AWS
+\item If you don\'t specify either of these capabilities, AWS
 CloudFormation returns an \code{InsufficientCapabilities} error.
 }
 
@@ -98,8 +98,8 @@ supported resources that are created in the stacks. A maximum number of
 
 If you specify tags as part of a \code{CreateStackSet} action, AWS
 CloudFormation checks to see if you have the required IAM permission to
-tag resources. If you don't, the entire \code{CreateStackSet} action fails
-with an \code{access denied} error, and the stack set is not created.}
+tag resources. If you don\'t, the entire \code{CreateStackSet} action fails
+with an \verb{access denied} error, and the stack set is not created.}
 
 \item{AdministrationRoleARN}{The Amazon Resource Number (ARN) of the IAM role to use to create this
 stack set.
@@ -121,11 +121,11 @@ stack sets.}
 
 \item{ClientRequestToken}{A unique identifier for this \code{CreateStackSet} request. Specify this
 token if you plan to retry requests so that AWS CloudFormation knows
-that you're not attempting to create another stack set with the same
+that you\'re not attempting to create another stack set with the same
 name. You might retry \code{CreateStackSet} requests to ensure that AWS
 CloudFormation successfully received them.
 
-If you don't specify an operation ID, the SDK generates one
+If you don\'t specify an operation ID, the SDK generates one
 automatically.}
 }
 \description{

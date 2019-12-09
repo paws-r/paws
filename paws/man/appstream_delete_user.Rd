@@ -9,7 +9,7 @@ appstream_delete_user(UserName, AuthenticationType)
 \arguments{
 \item{UserName}{[required] The email address of the user.
 
-Users' email addresses are case-sensitive.}
+Users\' email addresses are case-sensitive.}
 
 \item{AuthenticationType}{[required] The authentication type for the user. You must specify USERPOOL.}
 }

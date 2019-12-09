@@ -13,6 +13,10 @@ activity.}
 \description{
 List tags for a given resource.
 }
+\details{
+Tags may only contain Unicode letters, digits, white space, or these
+symbols: \verb{_ . : / = + - @}.
+}
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(
   resourceArn = "string"

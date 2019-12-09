@@ -8,27 +8,27 @@ an Amazon S3 bucket}
 cloudtrail_create_trail(Name, S3BucketName, S3KeyPrefix, SnsTopicName,
   IncludeGlobalServiceEvents, IsMultiRegionTrail, EnableLogFileValidation,
   CloudWatchLogsLogGroupArn, CloudWatchLogsRoleArn, KmsKeyId,
-  IsOrganizationTrail)
+  IsOrganizationTrail, TagsList)
 }
 \arguments{
 \item{Name}{[required] Specifies the name of the trail. The name must meet the following
 requirements:
 \itemize{
 \item Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-underscores (\_), or dashes (-)
+underscores (\\_), or dashes (-)
 \item Start with a letter or number, and end with a letter or number
 \item Be between 3 and 128 characters
 \item Have no adjacent periods, underscores or dashes. Names like
-\code{my-_namespace} and \code{my--namespace} are invalid.
+\verb{my-_namespace} and \code{my--namespace} are invalid.
 \item Not be in IP address format (for example, 192.168.5.4)
 }}
 
 \item{S3BucketName}{[required] Specifies the name of the Amazon S3 bucket designated for publishing log
-files. See \href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html}{Amazon S3 Bucket Naming Requirements}.}
+files. See \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html}{Amazon S3 Bucket Naming Requirements}.}
 
 \item{S3KeyPrefix}{Specifies the Amazon S3 key prefix that comes after the name of the
 bucket you have designated for log file delivery. For more information,
-see \href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html}{Finding Your CloudTrail Log Files}.
+see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html}{Finding Your CloudTrail Log Files}.
 The maximum length is 200 characters.}
 
 \item{SnsTopicName}{Specifies the name of the Amazon SNS topic defined for notification of
@@ -38,7 +38,9 @@ log file delivery. The maximum length is 256 characters.}
 such as IAM to the log files.}
 
 \item{IsMultiRegionTrail}{Specifies whether the trail is created in the current region or in all
-regions. The default is false.}
+regions. The default is false, which creates a trail only in the region
+where you are signed in. As a best practice, consider creating trails
+that log events in all regions.}
 
 \item{EnableLogFileValidation}{Specifies whether log file integrity validation is enabled. The default
 is false.
@@ -58,10 +60,10 @@ identifier that represents the log group to which CloudTrail logs will
 be delivered. Not required unless you specify CloudWatchLogsRoleArn.}
 
 \item{CloudWatchLogsRoleArn}{Specifies the role for the CloudWatch Logs endpoint to assume to write
-to a user's log group.}
+to a user\'s log group.}
 
 \item{KmsKeyId}{Specifies the KMS key ID to use to encrypt the logs delivered by
-CloudTrail. The value can be an alias name prefixed by "alias/", a
+CloudTrail. The value can be an alias name prefixed by \"alias/\", a
 fully specified ARN to an alias, a fully specified ARN to a key, or a
 globally unique identifier.
 
@@ -78,11 +80,12 @@ organization in AWS Organizations, or only for the current AWS account.
 The default is false, and cannot be true unless the call is made on
 behalf of an AWS account that is the master account for an organization
 in AWS Organizations.}
+
+\item{TagsList}{}
 }
 \description{
 Creates a trail that specifies the settings for delivery of log data to
-an Amazon S3 bucket. A maximum of five trails can exist in a region,
-irrespective of the region in which they were created.
+an Amazon S3 bucket.
 }
 \section{Request syntax}{
 \preformatted{svc$create_trail(
@@ -96,7 +99,13 @@ irrespective of the region in which they were created.
   CloudWatchLogsLogGroupArn = "string",
   CloudWatchLogsRoleArn = "string",
   KmsKeyId = "string",
-  IsOrganizationTrail = TRUE|FALSE
+  IsOrganizationTrail = TRUE|FALSE,
+  TagsList = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

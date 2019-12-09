@@ -9,21 +9,21 @@ organizations_list_parents(ChildId, NextToken, MaxResults)
 }
 \arguments{
 \item{ChildId}{[required] The unique identifier (ID) of the OU or account whose parent containers
-you want to list. Don't specify a root.
+you want to list. Don\'t specify a root.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a child ID
 string requires one of the following:
 \itemize{
-\item Account: a string that consists of exactly 12 digits.
-\item Organizational unit (OU): a string that begins with "ou-" followed
-by from 4 to 32 lower-case letters or digits (the ID of the root
-that contains the OU) followed by a second "-" dash and from 8 to
-32 additional lower-case letters or digits.
+\item \strong{Account} - A string that consists of exactly 12 digits.
+\item \strong{Organizational unit (OU)} - A string that begins with \"ou-\"
+followed by from 4 to 32 lowercase letters or digits (the ID of the
+root that contains the OU). This string is followed by a second
+\"-\" dash and from 8 to 32 additional lowercase letters or digits.
 }}
 
 \item{NextToken}{Use this parameter if you receive a \code{NextToken} response in a previous
 request that indicates that there is more output available. Set it to
-the value of the previous call's \code{NextToken} response to indicate where
+the value of the previous call\'s \code{NextToken} response to indicate where
 the output should continue from.}
 
 \item{MaxResults}{(Optional) Use this to limit the number of results you want included per
@@ -45,12 +45,12 @@ this root.
 }
 \details{
 Always check the \code{NextToken} response parameter for a \code{null} value when
-calling a \code{List*} operation. These operations can occasionally return an
+calling a \verb{List*} operation. These operations can occasionally return an
 empty set of results even when there are more results available. The
 \code{NextToken} response parameter value is \code{null} \emph{only} when there are no
 more results to display.
 
-This operation can be called only from the organization's master
+This operation can be called only from the organization\'s master
 account.
 
 In the current release, a child can have only a single parent.

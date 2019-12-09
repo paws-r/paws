@@ -3,6 +3,94 @@
 #' @include lexruntimeservice_service.R
 NULL
 
+#' Removes session information for a specified bot, alias, and user ID
+#'
+#' Removes session information for a specified bot, alias, and user ID.
+#'
+#' @usage
+#' lexruntimeservice_delete_session(botName, botAlias, userId)
+#'
+#' @param botName &#91;required&#93; The name of the bot that contains the session data.
+#' @param botAlias &#91;required&#93; The alias in use for the bot that contains the session data.
+#' @param userId &#91;required&#93; The identifier of the user associated with the session data.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_session(
+#'   botName = "string",
+#'   botAlias = "string",
+#'   userId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexruntimeservice_delete_session
+lexruntimeservice_delete_session <- function(botName, botAlias, userId) {
+  op <- new_operation(
+    name = "DeleteSession",
+    http_method = "DELETE",
+    http_path = "/bot/{botName}/alias/{botAlias}/user/{userId}/session",
+    paginator = list()
+  )
+  input <- .lexruntimeservice$delete_session_input(botName = botName, botAlias = botAlias, userId = userId)
+  output <- .lexruntimeservice$delete_session_output()
+  config <- get_config()
+  svc <- .lexruntimeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexruntimeservice$operations$delete_session <- lexruntimeservice_delete_session
+
+#' Returns session information for a specified bot, alias, and user ID
+#'
+#' Returns session information for a specified bot, alias, and user ID.
+#'
+#' @usage
+#' lexruntimeservice_get_session(botName, botAlias, userId,
+#'   checkpointLabelFilter)
+#'
+#' @param botName &#91;required&#93; The name of the bot that contains the session data.
+#' @param botAlias &#91;required&#93; The alias in use for the bot that contains the session data.
+#' @param userId &#91;required&#93; The ID of the client application user. Amazon Lex uses this to identify
+#' a user\'s conversation with your bot.
+#' @param checkpointLabelFilter A string used to filter the intents returned in the
+#' `recentIntentSummaryView` structure.
+#' 
+#' When you specify a filter, only intents with their `checkpointLabel`
+#' field set to that string are returned.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_session(
+#'   botName = "string",
+#'   botAlias = "string",
+#'   userId = "string",
+#'   checkpointLabelFilter = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexruntimeservice_get_session
+lexruntimeservice_get_session <- function(botName, botAlias, userId, checkpointLabelFilter = NULL) {
+  op <- new_operation(
+    name = "GetSession",
+    http_method = "GET",
+    http_path = "/bot/{botName}/alias/{botAlias}/user/{userId}/session/",
+    paginator = list()
+  )
+  input <- .lexruntimeservice$get_session_input(botName = botName, botAlias = botAlias, userId = userId, checkpointLabelFilter = checkpointLabelFilter)
+  output <- .lexruntimeservice$get_session_output()
+  config <- get_config()
+  svc <- .lexruntimeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexruntimeservice$operations$get_session <- lexruntimeservice_get_session
+
 #' Sends user input (text or speech) to Amazon Lex
 #'
 #' Sends user input (text or speech) to Amazon Lex. Clients use this API to
@@ -61,7 +149,7 @@ NULL
 #' 
 #' In addition, Amazon Lex also returns your application-specific
 #' `sessionAttributes`. For more information, see [Managing Conversation
-#' Context](http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html).
+#' Context](https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html).
 #'
 #' @usage
 #' lexruntimeservice_post_content(botName, botAlias, userId,
@@ -101,7 +189,7 @@ NULL
 #' and `requestAttributes` headers is limited to 12 KB.
 #' 
 #' For more information, see [Setting Session
-#' Attributes](http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs).
+#' Attributes](https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs).
 #' @param requestAttributes You pass this value as the `x-amz-lex-request-attributes` HTTP header.
 #' 
 #' Request-specific information passed between Amazon Lex and a client
@@ -113,7 +201,7 @@ NULL
 #' create any request attributes with the prefix `x-amz-lex:`.
 #' 
 #' For more information, see [Setting Request
-#' Attributes](http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs).
+#' Attributes](https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs).
 #' @param contentType &#91;required&#93; You pass this value as the `Content-Type` HTTP header.
 #' 
 #' Indicates the audio format or text. The header value must start with one
@@ -150,7 +238,10 @@ NULL
 #'     example, if you specify `audio/mpeg` as the value, Amazon Lex
 #'     returns speech in the MPEG format.
 #' 
-#'     The following are the accepted values:
+#' -   If the value is `audio/pcm`, the speech returned is `audio/pcm` in
+#'     16-bit, little endian format.
+#' 
+#' -   The following are the accepted values:
 #' 
 #'     -   audio/mpeg
 #' 
@@ -203,12 +294,11 @@ lexruntimeservice_post_content <- function(botName, botAlias, userId, sessionAtt
 }
 .lexruntimeservice$operations$post_content <- lexruntimeservice_post_content
 
-#' Sends user input (text-only) to Amazon Lex
+#' Sends user input to Amazon Lex
 #'
-#' Sends user input (text-only) to Amazon Lex. Client applications can use
-#' this API to send requests to Amazon Lex at runtime. Amazon Lex then
-#' interprets the user input using the machine learning model it built for
-#' the bot.
+#' Sends user input to Amazon Lex. Client applications can use this API to
+#' send requests to Amazon Lex at runtime. Amazon Lex then interprets the
+#' user input using the machine learning model it built for the bot.
 #' 
 #' In response, Amazon Lex returns the next `message` to convey to the user
 #' an optional `responseCard` to display. Consider the following example
@@ -257,7 +347,7 @@ lexruntimeservice_post_content <- function(botName, botAlias, userId, sessionAtt
 #' 
 #' In addition, Amazon Lex also returns your application-specific
 #' `sessionAttributes`. For more information, see [Managing Conversation
-#' Context](http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html).
+#' Context](https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html).
 #'
 #' @usage
 #' lexruntimeservice_post_text(botName, botAlias, userId,
@@ -293,7 +383,7 @@ lexruntimeservice_post_content <- function(botName, botAlias, userId, sessionAtt
 #' application.
 #' 
 #' For more information, see [Setting Session
-#' Attributes](http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs).
+#' Attributes](https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs).
 #' @param requestAttributes Request-specific information passed between Amazon Lex and a client
 #' application.
 #' 
@@ -301,7 +391,7 @@ lexruntimeservice_post_content <- function(botName, botAlias, userId, sessionAtt
 #' create any request attributes with the prefix `x-amz-lex:`.
 #' 
 #' For more information, see [Setting Request
-#' Attributes](http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs).
+#' Attributes](https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs).
 #' @param inputText &#91;required&#93; The text that the user entered (Amazon Lex interprets this text).
 #'
 #' @section Request syntax:
@@ -339,3 +429,130 @@ lexruntimeservice_post_text <- function(botName, botAlias, userId, sessionAttrib
   return(response)
 }
 .lexruntimeservice$operations$post_text <- lexruntimeservice_post_text
+
+#' Creates a new session or modifies an existing session with an Amazon Lex
+#' bot
+#'
+#' Creates a new session or modifies an existing session with an Amazon Lex
+#' bot. Use this operation to enable your application to set the state of
+#' the bot.
+#' 
+#' For more information, see [Managing
+#' Sessions](https://docs.aws.amazon.com/lex/latest/dg/how-session-api.html).
+#'
+#' @usage
+#' lexruntimeservice_put_session(botName, botAlias, userId,
+#'   sessionAttributes, dialogAction, recentIntentSummaryView, accept)
+#'
+#' @param botName &#91;required&#93; The name of the bot that contains the session data.
+#' @param botAlias &#91;required&#93; The alias in use for the bot that contains the session data.
+#' @param userId &#91;required&#93; The ID of the client application user. Amazon Lex uses this to identify
+#' a user\'s conversation with your bot.
+#' @param sessionAttributes Map of key/value pairs representing the session-specific context
+#' information. It contains application information passed between Amazon
+#' Lex and a client application.
+#' @param dialogAction Sets the next action that the bot should take to fulfill the
+#' conversation.
+#' @param recentIntentSummaryView A summary of the recent intents for the bot. You can use the intent
+#' summary view to set a checkpoint label on an intent and modify
+#' attributes of intents. You can also use it to remove or add intent
+#' summary objects to the list.
+#' 
+#' An intent that you modify or add to the list must make sense for the
+#' bot. For example, the intent name must be valid for the bot. You must
+#' provide valid values for:
+#' 
+#' -   `intentName`
+#' 
+#' -   slot names
+#' 
+#' -   `slotToElict`
+#' 
+#' If you send the `recentIntentSummaryView` parameter in a `PutSession`
+#' request, the contents of the new summary view replaces the old summary
+#' view. For example, if a `GetSession` request returns three intents in
+#' the summary view and you call `PutSession` with one intent in the
+#' summary view, the next call to `GetSession` will only return one intent.
+#' @param accept The message that Amazon Lex returns in the response can be either text
+#' or speech based depending on the value of this field.
+#' 
+#' -   If the value is `text/plain; charset=utf-8`, Amazon Lex returns text
+#'     in the response.
+#' 
+#' -   If the value begins with `audio/`, Amazon Lex returns speech in the
+#'     response. Amazon Lex uses Amazon Polly to generate the speech in the
+#'     configuration that you specify. For example, if you specify
+#'     `audio/mpeg` as the value, Amazon Lex returns speech in the MPEG
+#'     format.
+#' 
+#' -   If the value is `audio/pcm`, the speech is returned as `audio/pcm`
+#'     in 16-bit, little endian format.
+#' 
+#' -   The following are the accepted values:
+#' 
+#'     -   `audio/mpeg`
+#' 
+#'     -   `audio/ogg`
+#' 
+#'     -   `audio/pcm`
+#' 
+#'     -   `audio/*` (defaults to mpeg)
+#' 
+#'     -   `text/plain; charset=utf-8`
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_session(
+#'   botName = "string",
+#'   botAlias = "string",
+#'   userId = "string",
+#'   sessionAttributes = list(
+#'     "string"
+#'   ),
+#'   dialogAction = list(
+#'     type = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Close"|"Delegate",
+#'     intentName = "string",
+#'     slots = list(
+#'       "string"
+#'     ),
+#'     slotToElicit = "string",
+#'     fulfillmentState = "Fulfilled"|"Failed"|"ReadyForFulfillment",
+#'     message = "string",
+#'     messageFormat = "PlainText"|"CustomPayload"|"SSML"|"Composite"
+#'   ),
+#'   recentIntentSummaryView = list(
+#'     list(
+#'       intentName = "string",
+#'       checkpointLabel = "string",
+#'       slots = list(
+#'         "string"
+#'       ),
+#'       confirmationStatus = "None"|"Confirmed"|"Denied",
+#'       dialogActionType = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Close"|"Delegate",
+#'       fulfillmentState = "Fulfilled"|"Failed"|"ReadyForFulfillment",
+#'       slotToElicit = "string"
+#'     )
+#'   ),
+#'   accept = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexruntimeservice_put_session
+lexruntimeservice_put_session <- function(botName, botAlias, userId, sessionAttributes = NULL, dialogAction = NULL, recentIntentSummaryView = NULL, accept = NULL) {
+  op <- new_operation(
+    name = "PutSession",
+    http_method = "POST",
+    http_path = "/bot/{botName}/alias/{botAlias}/user/{userId}/session",
+    paginator = list()
+  )
+  input <- .lexruntimeservice$put_session_input(botName = botName, botAlias = botAlias, userId = userId, sessionAttributes = sessionAttributes, dialogAction = dialogAction, recentIntentSummaryView = recentIntentSummaryView, accept = accept)
+  output <- .lexruntimeservice$put_session_output()
+  config <- get_config()
+  svc <- .lexruntimeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexruntimeservice$operations$put_session <- lexruntimeservice_put_session

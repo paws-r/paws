@@ -23,9 +23,11 @@ is moved to \code{CANCELLED} status.
 \item UpdateGameSession
 \item GetGameSessionLogUrl
 \item Game session placements
+\itemize{
 \item StartGameSessionPlacement
 \item DescribeGameSessionPlacement
 \item StopGameSessionPlacement
+}
 }
 }
 \section{Request syntax}{

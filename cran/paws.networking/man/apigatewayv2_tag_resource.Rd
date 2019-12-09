@@ -2,19 +2,18 @@
 % Please edit documentation in R/apigatewayv2_operations.R
 \name{apigatewayv2_tag_resource}
 \alias{apigatewayv2_tag_resource}
-\title{Tag an APIGW resource}
+\title{Creates a new Tag resource to represent a tag}
 \usage{
 apigatewayv2_tag_resource(ResourceArn, Tags)
 }
 \arguments{
-\item{ResourceArn}{[required] AWS resource arn}
+\item{ResourceArn}{[required] The resource ARN for the tag.}
 
-\item{Tags}{The key-value map of strings. The valid character set is
-[a-zA-Z+-=.\_:/]. The tag key can be up to 128 characters and must not
-start with aws:. The tag value can be up to 256 characters..}
+\item{Tags}{The collection of tags. Each tag element is associated with a given
+resource.}
 }
 \description{
-Tag an APIGW resource
+Creates a new Tag resource to represent a tag.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

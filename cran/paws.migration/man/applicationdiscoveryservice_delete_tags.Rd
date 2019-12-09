@@ -13,7 +13,7 @@ applicationdiscoveryservice_delete_tags(configurationIds, tags)
 Specify the tags that you want to delete in a \emph{key}-\emph{value} format. For
 example:
 
-\code{\{"key": "serverType", "value": "webServer"\}}}
+\verb{\\\{"key": "serverType", "value": "webServer"\\\}}}
 }
 \description{
 Deletes the association between configuration items and one or more

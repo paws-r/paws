@@ -63,6 +63,18 @@ NULL
   return(populate(args, shape))
 }
 
+.comprehend$classify_document_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Text = structure(logical(0), tags = list(type = "string")), EndpointArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehend$classify_document_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Classes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .comprehend$create_document_classifier_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DocumentClassifierName = structure(logical(0), tags = list(type = "string")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), InputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string")), VolumeKmsKeyId = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
@@ -72,6 +84,18 @@ NULL
 .comprehend$create_document_classifier_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DocumentClassifierArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehend$create_endpoint_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EndpointName = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), DesiredInferenceUnits = structure(logical(0), tags = list(type = "integer")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehend$create_endpoint_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EndpointArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -94,6 +118,18 @@ NULL
 }
 
 .comprehend$delete_document_classifier_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehend$delete_endpoint_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EndpointArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehend$delete_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -144,6 +180,18 @@ NULL
 .comprehend$describe_dominant_language_detection_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DominantLanguageDetectionJobProperties = structure(list(JobId = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string")), JobStatus = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), SubmitTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), InputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string")), InputFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string")), VolumeKmsKeyId = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehend$describe_endpoint_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EndpointArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehend$describe_endpoint_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EndpointProperties = structure(list(EndpointArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), DesiredInferenceUnits = structure(logical(0), tags = list(type = "integer")), CurrentInferenceUnits = structure(logical(0), tags = list(type = "integer")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -300,6 +348,18 @@ NULL
 .comprehend$list_dominant_language_detection_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DominantLanguageDetectionJobPropertiesList = structure(list(structure(list(JobId = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string")), JobStatus = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), SubmitTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), InputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string")), InputFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string")), VolumeKmsKeyId = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehend$list_endpoints_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Filter = structure(list(ModelArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreationTimeBefore = structure(logical(0), tags = list(type = "timestamp")), CreationTimeAfter = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehend$list_endpoints_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EndpointPropertiesList = structure(list(structure(list(EndpointArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), DesiredInferenceUnits = structure(logical(0), tags = list(type = "integer")), CurrentInferenceUnits = structure(logical(0), tags = list(type = "integer")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -538,6 +598,18 @@ NULL
 }
 
 .comprehend$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehend$update_endpoint_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EndpointArn = structure(logical(0), tags = list(type = "string")), DesiredInferenceUnits = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehend$update_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

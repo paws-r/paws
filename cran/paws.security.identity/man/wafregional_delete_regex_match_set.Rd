@@ -14,8 +14,8 @@ ListRegexMatchSets.}
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
-Permanently deletes a RegexMatchSet. You can't delete a \code{RegexMatchSet}
-if it's still used in any \code{Rules} or if it still includes any
+Permanently deletes a RegexMatchSet. You can\'t delete a \code{RegexMatchSet}
+if it\'s still used in any \code{Rules} or if it still includes any
 \code{RegexMatchTuples} objects (any filters).
 }
 \details{

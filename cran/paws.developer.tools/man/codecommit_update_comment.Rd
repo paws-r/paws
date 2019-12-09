@@ -10,8 +10,7 @@ codecommit_update_comment(commentId, content)
 \item{commentId}{[required] The system-generated ID of the comment you want to update. To get this
 ID, use GetCommentsForComparedCommit or GetCommentsForPullRequest.}
 
-\item{content}{[required] The updated content with which you want to replace the existing content
-of the comment.}
+\item{content}{[required] The updated content to replace the existing content of the comment.}
 }
 \description{
 Replaces the contents of a comment.

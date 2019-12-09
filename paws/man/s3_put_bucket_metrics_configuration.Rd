@@ -16,7 +16,37 @@ s3_put_bucket_metrics_configuration(Bucket, Id, MetricsConfiguration)
 }
 \description{
 Sets a metrics configuration (specified by the metrics configuration ID)
-for the bucket.
+for the bucket. You can have up to 1,000 metrics configurations per
+bucket. If you\'re updating an existing metrics configuration, note that
+this is a full replacement of the existing metrics configuration. If you
+don\'t include the elements you want to keep, they are erased.
+}
+\details{
+To use this operation, you must have permissions to perform the
+\code{s3:PutMetricsConfiguration} action. The bucket owner has this
+permission by default. The bucket owner can grant this permission to
+others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
+
+For information about CloudWatch request metrics for Amazon S3, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html}{Monitoring Metrics with Amazon CloudWatch}.
+
+The following operations are related to \code{PutBucketMetricsConfiguration}:
+\itemize{
+\item DeleteBucketMetricsConfiguration
+\item PutBucketMetricsConfiguration
+\item ListBucketMetricsConfigurations
+}
+
+\code{GetBucketLifecycle} has the following special error:
+\itemize{
+\item Error code: \code{TooManyConfigurations}
+\itemize{
+\item Description: You are attempting to create a new configuration
+but have already reached the 1,000-configuration limit.
+\item HTTP Status Code: HTTP 400 Bad Request
+}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$put_bucket_metrics_configuration(

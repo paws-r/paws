@@ -451,7 +451,7 @@ applicationdiscoveryservice_describe_continuous_exports <- function(exportIds = 
 #' applicationdiscoveryservice_describe_export_configurations(exportIds,
 #'   maxResults, nextToken)
 #'
-#' @param exportIds A list of continuous export ids to search for.
+#' @param exportIds A list of continuous export IDs to search for.
 #' @param maxResults A number between 1 and 100 specifying the maximum number of continuous
 #' export descriptions returned.
 #' @param nextToken The token from the previous call to describe-export-tasks.

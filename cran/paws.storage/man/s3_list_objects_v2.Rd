@@ -2,13 +2,21 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_list_objects_v2}
 \alias{s3_list_objects_v2}
-\title{Returns some or all (up to 1000) of the objects in a bucket}
+\title{Returns some or all (up to 1,000) of the objects in a bucket}
 \usage{
 s3_list_objects_v2(Bucket, Delimiter, EncodingType, MaxKeys, Prefix,
   ContinuationToken, FetchOwner, StartAfter, RequestPayer)
 }
 \arguments{
-\item{Bucket}{[required] Name of the bucket to list.}
+\item{Bucket}{[required] Bucket name to list.
+
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+\emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
+When using this operation using an access point through the AWS SDKs,
+you provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{Delimiter}{A delimiter is a character you use to group keys.}
 
@@ -21,26 +29,50 @@ might contain fewer keys but will never contain more.}
 
 \item{ContinuationToken}{ContinuationToken indicates Amazon S3 that the list is being continued
 on this bucket with a token. ContinuationToken is obfuscated and is not
-a real key}
+a real key.}
 
 \item{FetchOwner}{The owner field is not present in listV2 by default, if you want to
 return owner field with each key in the result then set the fetch owner
-field to true}
+field to true.}
 
 \item{StartAfter}{StartAfter is where you want Amazon S3 to start listing from. Amazon S3
 starts listing after this specified key. StartAfter can be any key in
-the bucket}
+the bucket.}
 
 \item{RequestPayer}{Confirms that the requester knows that she or he will be charged for the
 list objects request in V2 style. Bucket owners need not specify this
 parameter in their requests.}
 }
 \description{
-Returns some or all (up to 1000) of the objects in a bucket. You can use
-the request parameters as selection criteria to return a subset of the
-objects in a bucket. Note: ListObjectsV2 is the revised List Objects API
-and we recommend you use this revised API for new application
-development.
+Returns some or all (up to 1,000) of the objects in a bucket. You can
+use the request parameters as selection criteria to return a subset of
+the objects in a bucket. A \verb{200 OK} response can contain valid or
+invalid XML. Make sure to design your application to parse the contents
+of the response and handle it appropriately.
+}
+\details{
+To use this operation, you must have READ access to the bucket.
+
+To use this operation in an AWS Identity and Access Management (IAM)
+policy, you must have permissions to perform the \code{s3:ListBucket} action.
+The bucket owner has this permission by default and can grant this
+permission to others. For more information about permissions, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
+
+This section describes the latest revision of the API. We recommend that
+you use this revised API for application development. For backward
+compatibility, Amazon S3 continues to support the prior version of this
+API, ListObjects.
+
+To get a list of your buckets, see ListBuckets.
+
+The following operations are related to \code{ListObjectsV2}:
+\itemize{
+\item GetObject
+\item PutObject
+\item CreateBucket
+}
 }
 \section{Request syntax}{
 \preformatted{svc$list_objects_v2(

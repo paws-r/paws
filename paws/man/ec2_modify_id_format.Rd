@@ -7,15 +7,15 @@
 ec2_modify_id_format(Resource, UseLongIds)
 }
 \arguments{
-\item{Resource}{[required] The type of resource: \code{bundle} \| \code{conversion-task} \|
-\code{customer-gateway} \| \code{dhcp-options} \| \code{elastic-ip-allocation} \|
-\code{elastic-ip-association} \| \code{export-task} \| \code{flow-log} \| \code{image} \|
-\code{import-task} \| \code{internet-gateway} \| \code{network-acl} \|
-\code{network-acl-association} \| \code{network-interface} \|
-\code{network-interface-attachment} \| \code{prefix-list} \| \code{route-table} \|
-\code{route-table-association} \| \code{security-group} \| \code{subnet} \|
-\code{subnet-cidr-block-association} \| \code{vpc} \| \code{vpc-cidr-block-association}
-\| \code{vpc-endpoint} \| \code{vpc-peering-connection} \| \code{vpn-connection} \|
+\item{Resource}{[required] The type of resource: \code{bundle} \\| \code{conversion-task} \\|
+\code{customer-gateway} \\| \code{dhcp-options} \\| \code{elastic-ip-allocation} \\|
+\code{elastic-ip-association} \\| \code{export-task} \\| \code{flow-log} \\| \code{image} \\|
+\code{import-task} \\| \code{internet-gateway} \\| \code{network-acl} \\|
+\code{network-acl-association} \\| \code{network-interface} \\|
+\code{network-interface-attachment} \\| \code{prefix-list} \\| \code{route-table} \\|
+\code{route-table-association} \\| \code{security-group} \\| \code{subnet} \\|
+\code{subnet-cidr-block-association} \\| \code{vpc} \\| \code{vpc-cidr-block-association}
+\\| \code{vpc-endpoint} \\| \code{vpc-peering-connection} \\| \code{vpn-connection} \\|
 \code{vpn-gateway}.
 
 Alternatively, use the \code{all-current} option to include all resource
@@ -31,20 +31,20 @@ IDs) when they are created.
 \details{
 This request can only be used to modify longer ID settings for resource
 types that are within the opt-in period. Resources currently in their
-opt-in period include: \code{bundle} \| \code{conversion-task} \|
-\code{customer-gateway} \| \code{dhcp-options} \| \code{elastic-ip-allocation} \|
-\code{elastic-ip-association} \| \code{export-task} \| \code{flow-log} \| \code{image} \|
-\code{import-task} \| \code{internet-gateway} \| \code{network-acl} \|
-\code{network-acl-association} \| \code{network-interface} \|
-\code{network-interface-attachment} \| \code{prefix-list} \| \code{route-table} \|
-\code{route-table-association} \| \code{security-group} \| \code{subnet} \|
-\code{subnet-cidr-block-association} \| \code{vpc} \| \code{vpc-cidr-block-association}
-\| \code{vpc-endpoint} \| \code{vpc-peering-connection} \| \code{vpn-connection} \|
+opt-in period include: \code{bundle} \\| \code{conversion-task} \\|
+\code{customer-gateway} \\| \code{dhcp-options} \\| \code{elastic-ip-allocation} \\|
+\code{elastic-ip-association} \\| \code{export-task} \\| \code{flow-log} \\| \code{image} \\|
+\code{import-task} \\| \code{internet-gateway} \\| \code{network-acl} \\|
+\code{network-acl-association} \\| \code{network-interface} \\|
+\code{network-interface-attachment} \\| \code{prefix-list} \\| \code{route-table} \\|
+\code{route-table-association} \\| \code{security-group} \\| \code{subnet} \\|
+\code{subnet-cidr-block-association} \\| \code{vpc} \\| \code{vpc-cidr-block-association}
+\\| \code{vpc-endpoint} \\| \code{vpc-peering-connection} \\| \code{vpn-connection} \\|
 \code{vpn-gateway}.
 
 This setting applies to the IAM user who makes the request; it does not
 apply to the entire AWS account. By default, an IAM user defaults to the
-same settings as the root user. If you're using this action as the root
+same settings as the root user. If you\'re using this action as the root
 user, then these settings apply to the entire account, unless an IAM
 user explicitly overrides these settings for themselves. For more
 information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html}{Resource IDs}

@@ -8,18 +8,18 @@ your API Gateway is set up successfully}
 transfer_test_identity_provider(ServerId, UserName, UserPassword)
 }
 \arguments{
-\item{ServerId}{[required] A system assigned identifier for a specific server. That server's user
+\item{ServerId}{[required] A system-assigned identifier for a specific server. That server\'s user
 authentication method is tested with a user name and password.}
 
-\item{UserName}{[required] This request parameter is name of the user account to be tested.}
+\item{UserName}{[required] This request parameter is the name of the user account to be tested.}
 
 \item{UserPassword}{The password of the user account to be tested.}
 }
 \description{
 If the \code{IdentityProviderType} of the server is \code{API_Gateway}, tests
 whether your API Gateway is set up successfully. We highly recommend
-that you call this method to test your authentication method as soon as
-you create your server. By doing so, you can troubleshoot issues with
+that you call this operation to test your authentication method as soon
+as you create your server. By doing so, you can troubleshoot issues with
 the API Gateway integration to ensure that your users can successfully
 use the service.
 }

@@ -27,7 +27,7 @@ expression.}
 
 \item{ScheduleTimezone}{The time zone that the scheduled maintenance window executions are based
 on, in Internet Assigned Numbers Authority (IANA) format. For example:
-"America/Los\_Angeles", "etc/UTC", or "Asia/Seoul". For more
+\"America/Los\\_Angeles\", \"etc/UTC\", or \"Asia/Seoul\". For more
 information, see the \href{https://www.iana.org/time-zones}{Time Zone Database} on the IANA website.}
 
 \item{Duration}{[required] The duration of the maintenance window in hours.}
@@ -40,7 +40,7 @@ you have not registered those instances as targets. If enabled, then you
 must specify the unregistered instances (by instance ID) when you
 register a task with the maintenance window.
 
-If you don't enable this option, then you must specify
+If you don\'t enable this option, then you must specify
 previously-registered targets when you register a task with the
 maintenance window.}
 
@@ -53,9 +53,9 @@ identify the type of tasks it will run, the types of targets, and the
 environment it will run in. In this case, you could specify the
 following key name/value pairs:
 \itemize{
-\item \code{Key=TaskType,Value=AgentUpdate}
-\item \code{Key=OS,Value=Windows}
-\item \code{Key=Environment,Value=Production}
+\item \verb{Key=TaskType,Value=AgentUpdate}
+\item \verb{Key=OS,Value=Windows}
+\item \verb{Key=Environment,Value=Production}
 }
 
 To add tags to an existing maintenance window, use the AddTagsToResource
@@ -63,6 +63,15 @@ action.}
 }
 \description{
 Creates a new maintenance window.
+}
+\details{
+The value you specify for \code{Duration} determines the specific end time
+for the maintenance window based on the time it begins. No maintenance
+window tasks are permitted to start after the resulting endtime minus
+the number of hours you specify for \code{Cutoff}. For example, if the
+maintenance window starts at 3 PM, the duration is three hours, and the
+value you specify for \code{Cutoff} is one hour, no maintenance window tasks
+can start after 5 PM.
 }
 \section{Request syntax}{
 \preformatted{svc$create_maintenance_window(

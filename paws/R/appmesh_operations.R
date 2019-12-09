@@ -101,6 +101,96 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'   meshName = "string",
 #'   routeName = "string",
 #'   spec = list(
+#'     grpcRoute = list(
+#'       action = list(
+#'         weightedTargets = list(
+#'           list(
+#'             virtualNode = "string",
+#'             weight = 123
+#'           )
+#'         )
+#'       ),
+#'       match = list(
+#'         metadata = list(
+#'           list(
+#'             invert = TRUE|FALSE,
+#'             match = list(
+#'               exact = "string",
+#'               prefix = "string",
+#'               range = list(
+#'                 end = 123,
+#'                 start = 123
+#'               ),
+#'               regex = "string",
+#'               suffix = "string"
+#'             ),
+#'             name = "string"
+#'           )
+#'         ),
+#'         methodName = "string",
+#'         serviceName = "string"
+#'       ),
+#'       retryPolicy = list(
+#'         grpcRetryEvents = list(
+#'           "cancelled"|"deadline-exceeded"|"internal"|"resource-exhausted"|"unavailable"
+#'         ),
+#'         httpRetryEvents = list(
+#'           "string"
+#'         ),
+#'         maxRetries = 123,
+#'         perRetryTimeout = list(
+#'           unit = "ms"|"s",
+#'           value = 123
+#'         ),
+#'         tcpRetryEvents = list(
+#'           "connection-error"
+#'         )
+#'       )
+#'     ),
+#'     http2Route = list(
+#'       action = list(
+#'         weightedTargets = list(
+#'           list(
+#'             virtualNode = "string",
+#'             weight = 123
+#'           )
+#'         )
+#'       ),
+#'       match = list(
+#'         headers = list(
+#'           list(
+#'             invert = TRUE|FALSE,
+#'             match = list(
+#'               exact = "string",
+#'               prefix = "string",
+#'               range = list(
+#'                 end = 123,
+#'                 start = 123
+#'               ),
+#'               regex = "string",
+#'               suffix = "string"
+#'             ),
+#'             name = "string"
+#'           )
+#'         ),
+#'         method = "CONNECT"|"DELETE"|"GET"|"HEAD"|"OPTIONS"|"PATCH"|"POST"|"PUT"|"TRACE",
+#'         prefix = "string",
+#'         scheme = "http"|"https"
+#'       ),
+#'       retryPolicy = list(
+#'         httpRetryEvents = list(
+#'           "string"
+#'         ),
+#'         maxRetries = 123,
+#'         perRetryTimeout = list(
+#'           unit = "ms"|"s",
+#'           value = 123
+#'         ),
+#'         tcpRetryEvents = list(
+#'           "connection-error"
+#'         )
+#'       )
+#'     ),
 #'     httpRoute = list(
 #'       action = list(
 #'         weightedTargets = list(
@@ -111,9 +201,41 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'         )
 #'       ),
 #'       match = list(
-#'         prefix = "string"
+#'         headers = list(
+#'           list(
+#'             invert = TRUE|FALSE,
+#'             match = list(
+#'               exact = "string",
+#'               prefix = "string",
+#'               range = list(
+#'                 end = 123,
+#'                 start = 123
+#'               ),
+#'               regex = "string",
+#'               suffix = "string"
+#'             ),
+#'             name = "string"
+#'           )
+#'         ),
+#'         method = "CONNECT"|"DELETE"|"GET"|"HEAD"|"OPTIONS"|"PATCH"|"POST"|"PUT"|"TRACE",
+#'         prefix = "string",
+#'         scheme = "http"|"https"
+#'       ),
+#'       retryPolicy = list(
+#'         httpRetryEvents = list(
+#'           "string"
+#'         ),
+#'         maxRetries = 123,
+#'         perRetryTimeout = list(
+#'           unit = "ms"|"s",
+#'           value = 123
+#'         ),
+#'         tcpRetryEvents = list(
+#'           "connection-error"
+#'         )
 #'       )
 #'     ),
+#'     priority = 123,
 #'     tcpRoute = list(
 #'       action = list(
 #'         weightedTargets = list(
@@ -217,13 +339,13 @@ appmesh_create_route <- function(clientToken = NULL, meshName, routeName, spec, 
 #'           intervalMillis = 123,
 #'           path = "string",
 #'           port = 123,
-#'           protocol = "http"|"tcp",
+#'           protocol = "grpc"|"http"|"http2"|"tcp",
 #'           timeoutMillis = 123,
 #'           unhealthyThreshold = 123
 #'         ),
 #'         portMapping = list(
 #'           port = 123,
-#'           protocol = "http"|"tcp"
+#'           protocol = "grpc"|"http"|"http2"|"tcp"
 #'         )
 #'       )
 #'     ),
@@ -318,7 +440,7 @@ appmesh_create_virtual_node <- function(clientToken = NULL, meshName, spec, tags
 #'       list(
 #'         portMapping = list(
 #'           port = 123,
-#'           protocol = "http"|"tcp"
+#'           protocol = "grpc"|"http"|"http2"|"tcp"
 #'         )
 #'       )
 #'     )
@@ -1278,6 +1400,96 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'   meshName = "string",
 #'   routeName = "string",
 #'   spec = list(
+#'     grpcRoute = list(
+#'       action = list(
+#'         weightedTargets = list(
+#'           list(
+#'             virtualNode = "string",
+#'             weight = 123
+#'           )
+#'         )
+#'       ),
+#'       match = list(
+#'         metadata = list(
+#'           list(
+#'             invert = TRUE|FALSE,
+#'             match = list(
+#'               exact = "string",
+#'               prefix = "string",
+#'               range = list(
+#'                 end = 123,
+#'                 start = 123
+#'               ),
+#'               regex = "string",
+#'               suffix = "string"
+#'             ),
+#'             name = "string"
+#'           )
+#'         ),
+#'         methodName = "string",
+#'         serviceName = "string"
+#'       ),
+#'       retryPolicy = list(
+#'         grpcRetryEvents = list(
+#'           "cancelled"|"deadline-exceeded"|"internal"|"resource-exhausted"|"unavailable"
+#'         ),
+#'         httpRetryEvents = list(
+#'           "string"
+#'         ),
+#'         maxRetries = 123,
+#'         perRetryTimeout = list(
+#'           unit = "ms"|"s",
+#'           value = 123
+#'         ),
+#'         tcpRetryEvents = list(
+#'           "connection-error"
+#'         )
+#'       )
+#'     ),
+#'     http2Route = list(
+#'       action = list(
+#'         weightedTargets = list(
+#'           list(
+#'             virtualNode = "string",
+#'             weight = 123
+#'           )
+#'         )
+#'       ),
+#'       match = list(
+#'         headers = list(
+#'           list(
+#'             invert = TRUE|FALSE,
+#'             match = list(
+#'               exact = "string",
+#'               prefix = "string",
+#'               range = list(
+#'                 end = 123,
+#'                 start = 123
+#'               ),
+#'               regex = "string",
+#'               suffix = "string"
+#'             ),
+#'             name = "string"
+#'           )
+#'         ),
+#'         method = "CONNECT"|"DELETE"|"GET"|"HEAD"|"OPTIONS"|"PATCH"|"POST"|"PUT"|"TRACE",
+#'         prefix = "string",
+#'         scheme = "http"|"https"
+#'       ),
+#'       retryPolicy = list(
+#'         httpRetryEvents = list(
+#'           "string"
+#'         ),
+#'         maxRetries = 123,
+#'         perRetryTimeout = list(
+#'           unit = "ms"|"s",
+#'           value = 123
+#'         ),
+#'         tcpRetryEvents = list(
+#'           "connection-error"
+#'         )
+#'       )
+#'     ),
 #'     httpRoute = list(
 #'       action = list(
 #'         weightedTargets = list(
@@ -1288,9 +1500,41 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'         )
 #'       ),
 #'       match = list(
-#'         prefix = "string"
+#'         headers = list(
+#'           list(
+#'             invert = TRUE|FALSE,
+#'             match = list(
+#'               exact = "string",
+#'               prefix = "string",
+#'               range = list(
+#'                 end = 123,
+#'                 start = 123
+#'               ),
+#'               regex = "string",
+#'               suffix = "string"
+#'             ),
+#'             name = "string"
+#'           )
+#'         ),
+#'         method = "CONNECT"|"DELETE"|"GET"|"HEAD"|"OPTIONS"|"PATCH"|"POST"|"PUT"|"TRACE",
+#'         prefix = "string",
+#'         scheme = "http"|"https"
+#'       ),
+#'       retryPolicy = list(
+#'         httpRetryEvents = list(
+#'           "string"
+#'         ),
+#'         maxRetries = 123,
+#'         perRetryTimeout = list(
+#'           unit = "ms"|"s",
+#'           value = 123
+#'         ),
+#'         tcpRetryEvents = list(
+#'           "connection-error"
+#'         )
 #'       )
 #'     ),
+#'     priority = 123,
 #'     tcpRoute = list(
 #'       action = list(
 #'         weightedTargets = list(
@@ -1362,13 +1606,13 @@ appmesh_update_route <- function(clientToken = NULL, meshName, routeName, spec, 
 #'           intervalMillis = 123,
 #'           path = "string",
 #'           port = 123,
-#'           protocol = "http"|"tcp",
+#'           protocol = "grpc"|"http"|"http2"|"tcp",
 #'           timeoutMillis = 123,
 #'           unhealthyThreshold = 123
 #'         ),
 #'         portMapping = list(
 #'           port = 123,
-#'           protocol = "http"|"tcp"
+#'           protocol = "grpc"|"http"|"http2"|"tcp"
 #'         )
 #'       )
 #'     ),
@@ -1445,7 +1689,7 @@ appmesh_update_virtual_node <- function(clientToken = NULL, meshName, spec, virt
 #'       list(
 #'         portMapping = list(
 #'           port = 123,
-#'           protocol = "http"|"tcp"
+#'           protocol = "grpc"|"http"|"http2"|"tcp"
 #'         )
 #'       )
 #'     )

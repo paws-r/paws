@@ -2,17 +2,18 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_delete_ip_set}
 \alias{guardduty_delete_ip_set}
-\title{Deletes the IPSet specified by the IPSet ID}
+\title{Deletes the IPSet specified by the ipSetId}
 \usage{
 guardduty_delete_ip_set(DetectorId, IpSetId)
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector the ipSet is associated with.}
+\item{DetectorId}{[required] The unique ID of the detector associated with the IPSet.}
 
-\item{IpSetId}{[required] The unique ID of the ipSet you want to delete.}
+\item{IpSetId}{[required] The unique ID of the IPSet to delete.}
 }
 \description{
-Deletes the IPSet specified by the IPSet ID.
+Deletes the IPSet specified by the \code{ipSetId}. IPSets are called Trusted
+IP lists in the console user interface.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_ip_set(

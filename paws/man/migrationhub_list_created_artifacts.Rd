@@ -11,7 +11,8 @@ migrationhub_list_created_artifacts(ProgressUpdateStream,
 \arguments{
 \item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream.}
 
-\item{MigrationTaskName}{[required] Unique identifier that references the migration task.}
+\item{MigrationTaskName}{[required] Unique identifier that references the migration task. \emph{Do not store
+personal data in this field.}}
 
 \item{NextToken}{If a \code{NextToken} was returned by a previous call, there are more results
 available. To retrieve the next page of results, make the call again

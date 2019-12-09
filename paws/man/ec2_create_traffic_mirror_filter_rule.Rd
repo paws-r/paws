@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_create_traffic_mirror_filter_rule}
 \alias{ec2_create_traffic_mirror_filter_rule}
-\title{Creates a Traffic Mirror rule}
+\title{Creates a Traffic Mirror filter rule}
 \usage{
 ec2_create_traffic_mirror_filter_rule(TrafficMirrorFilterId,
   TrafficDirection, RuleNumber, RuleAction, DestinationPortRange,
@@ -12,13 +12,13 @@ ec2_create_traffic_mirror_filter_rule(TrafficMirrorFilterId,
 \arguments{
 \item{TrafficMirrorFilterId}{[required] The ID of the filter that this rule is associated with.}
 
-\item{TrafficDirection}{[required] The type of traffic (\code{ingress} \| \code{egress}).}
+\item{TrafficDirection}{[required] The type of traffic (\code{ingress} \\| \code{egress}).}
 
 \item{RuleNumber}{[required] The number of the Traffic Mirror rule. This number must be unique for
 each Traffic Mirror rule in a given direction. The rules are processed
 in ascending order by rule number.}
 
-\item{RuleAction}{[required] The action to take (\code{accept} \| \code{reject}) on the filtered traffic.}
+\item{RuleAction}{[required] The action to take (\code{accept} \\| \code{reject}) on the filtered traffic.}
 
 \item{DestinationPortRange}{The destination port range.}
 
@@ -44,7 +44,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 }
 \description{
-Creates a Traffic Mirror rule.
+Creates a Traffic Mirror filter rule.
 }
 \details{
 A Traffic Mirror rule defines the Traffic Mirror source traffic to

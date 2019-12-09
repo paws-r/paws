@@ -15,20 +15,33 @@ ssm_register_target_with_maintenance_window(WindowId, ResourceType,
 \item{Targets}{[required] The targets to register with the maintenance window. In other words, the
 instances to run commands on when the maintenance window runs.
 
-You can specify targets using either instance IDs or tags that have been
-applied to instances.
+You can specify targets using instance IDs, resource group names, or
+tags that have been applied to instances.
 
 \strong{Example 1}: Specify instance IDs
 
-\code{Key=InstanceIds,Values=<i>instance-id-1</i>,<i>instance-id-2</i>,<i>instance-id-3</i> }
+\verb{Key=InstanceIds,Values=<i>instance-id-1</i>,<i>instance-id-2</i>,<i>instance-id-3</i> }
 
 \strong{Example 2}: Use tag key-pairs applied to instances
 
-\code{Key=tag:<i>my-tag-key</i>,Values=<i>my-tag-value-1</i>,<i>my-tag-value-2</i> }
+\verb{Key=tag:<i>my-tag-key</i>,Values=<i>my-tag-value-1</i>,<i>my-tag-value-2</i> }
 
 \strong{Example 3}: Use tag-keys applied to instances
 
-\code{Key=tag-key,Values=<i>my-tag-key-1</i>,<i>my-tag-key-2</i> }
+\verb{Key=tag-key,Values=<i>my-tag-key-1</i>,<i>my-tag-key-2</i> }
+
+\strong{Example 4}: Use resource group names
+
+\verb{Key=resource-groups:Name,Values=<i>resource-group-name</i> }
+
+\strong{Example 5}: Use filters for resource group types
+
+\verb{Key=resource-groups:ResourceTypeFilters,Values=<i>resource-type-1</i>,<i>resource-type-2</i> }
+
+For \code{Key=resource-groups:ResourceTypeFilters}, specify resource types in
+the following format
+
+\verb{Key=resource-groups:ResourceTypeFilters,Values=<i>AWS::EC2::INSTANCE</i>,<i>AWS::EC2::VPC</i> }
 
 For more information about these examples formats, including the best
 use case for each one, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/mw-cli-tutorial-targets-examples.html}{Examples: Register Targets with a Maintenance Window}
@@ -49,7 +62,7 @@ Registers a target with a maintenance window.
 \section{Request syntax}{
 \preformatted{svc$register_target_with_maintenance_window(
   WindowId = "string",
-  ResourceType = "INSTANCE",
+  ResourceType = "INSTANCE"|"RESOURCE_GROUP",
   Targets = list(
     list(
       Key = "string",

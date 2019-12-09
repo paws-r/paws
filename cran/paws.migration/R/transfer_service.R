@@ -15,7 +15,7 @@ NULL
 #' applications. With your data in S3, you can use it with AWS services for
 #' processing, analytics, machine learning, and archiving. Getting started
 #' with AWS Transfer for SFTP (AWS SFTP) is easy; there is no
-#' infrastructure to buy and setup.
+#' infrastructure to buy and set up.
 #'
 #' @param
 #' config
@@ -48,7 +48,7 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=transfer_create_server]{create_server} \tab Instantiates an autoscaling virtual server based on Secure File Transfer Protocol (SFTP) in AWS \cr
-#'  \link[=transfer_create_user]{create_user} \tab Adds a user and associate them with an existing Secure File Transfer Protocol (SFTP) server \cr
+#'  \link[=transfer_create_user]{create_user} \tab Creates a user and associates them with an existing Secure File Transfer Protocol (SFTP) server \cr
 #'  \link[=transfer_delete_server]{delete_server} \tab Deletes the Secure File Transfer Protocol (SFTP) server that you specify \cr
 #'  \link[=transfer_delete_ssh_public_key]{delete_ssh_public_key} \tab Deletes a user's Secure Shell (SSH) public key \cr
 #'  \link[=transfer_delete_user]{delete_user} \tab Deletes the user belonging to the server you specify \cr

@@ -165,8 +165,8 @@ mediatailor_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @usage
 #' mediatailor_put_playback_configuration(AdDecisionServerUrl,
-#'   CdnConfiguration, DashConfiguration, Name, SlateAdUrl, Tags,
-#'   TranscodeProfileName, VideoContentSourceUrl)
+#'   CdnConfiguration, DashConfiguration, LivePreRollConfiguration, Name,
+#'   SlateAdUrl, Tags, TranscodeProfileName, VideoContentSourceUrl)
 #'
 #' @param AdDecisionServerUrl The URL for the ad decision server (ADS). This includes the
 #' specification of static parameters and placeholders for dynamic
@@ -177,6 +177,7 @@ mediatailor_list_tags_for_resource <- function(ResourceArn) {
 #' @param CdnConfiguration The configuration for using a content delivery network (CDN), like
 #' Amazon CloudFront, for content and ad segment management.
 #' @param DashConfiguration The configuration for DASH content.
+#' @param LivePreRollConfiguration The configuration for pre-roll ad insertion.
 #' @param Name The identifier for the playback configuration.
 #' @param SlateAdUrl The URL for a high-quality video asset to transcode and use to fill in
 #' time that\'s not used by ads. AWS Elemental MediaTailor shows the slate
@@ -205,6 +206,10 @@ mediatailor_list_tags_for_resource <- function(ResourceArn) {
 #'     MpdLocation = "string",
 #'     OriginManifestType = "SINGLE_PERIOD"|"MULTI_PERIOD"
 #'   ),
+#'   LivePreRollConfiguration = list(
+#'     AdDecisionServerUrl = "string",
+#'     MaxDurationSeconds = 123
+#'   ),
 #'   Name = "string",
 #'   SlateAdUrl = "string",
 #'   Tags = list(
@@ -218,14 +223,14 @@ mediatailor_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname mediatailor_put_playback_configuration
-mediatailor_put_playback_configuration <- function(AdDecisionServerUrl = NULL, CdnConfiguration = NULL, DashConfiguration = NULL, Name = NULL, SlateAdUrl = NULL, Tags = NULL, TranscodeProfileName = NULL, VideoContentSourceUrl = NULL) {
+mediatailor_put_playback_configuration <- function(AdDecisionServerUrl = NULL, CdnConfiguration = NULL, DashConfiguration = NULL, LivePreRollConfiguration = NULL, Name = NULL, SlateAdUrl = NULL, Tags = NULL, TranscodeProfileName = NULL, VideoContentSourceUrl = NULL) {
   op <- new_operation(
     name = "PutPlaybackConfiguration",
     http_method = "PUT",
     http_path = "/playbackConfiguration",
     paginator = list()
   )
-  input <- .mediatailor$put_playback_configuration_input(AdDecisionServerUrl = AdDecisionServerUrl, CdnConfiguration = CdnConfiguration, DashConfiguration = DashConfiguration, Name = Name, SlateAdUrl = SlateAdUrl, Tags = Tags, TranscodeProfileName = TranscodeProfileName, VideoContentSourceUrl = VideoContentSourceUrl)
+  input <- .mediatailor$put_playback_configuration_input(AdDecisionServerUrl = AdDecisionServerUrl, CdnConfiguration = CdnConfiguration, DashConfiguration = DashConfiguration, LivePreRollConfiguration = LivePreRollConfiguration, Name = Name, SlateAdUrl = SlateAdUrl, Tags = Tags, TranscodeProfileName = TranscodeProfileName, VideoContentSourceUrl = VideoContentSourceUrl)
   output <- .mediatailor$put_playback_configuration_output()
   config <- get_config()
   svc <- .mediatailor$service(config)

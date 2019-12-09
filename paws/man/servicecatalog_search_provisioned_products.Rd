@@ -25,7 +25,7 @@ When the key is \code{SearchQuery}, the searchable fields are \code{arn},
 \code{physicalId}, \code{productId}, \code{provisioningArtifact}, \code{type}, \code{status},
 \code{tags}, \code{userArn}, and \code{userArnSession}.
 
-Example: \code{"SearchQuery":\\["status:AVAILABLE"\\]}}
+Example: \verb{"SearchQuery":\\\["status:AVAILABLE"\\\]}}
 
 \item{SortBy}{The sort field. If no value is specified, the results are not sorted.
 The valid values are \code{arn}, \code{id}, \code{name}, and \code{lastRecordId}.}

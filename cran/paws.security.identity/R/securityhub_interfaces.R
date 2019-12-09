@@ -161,7 +161,7 @@ NULL
 
 .securityhub$describe_hub_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HubArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(HubArn = structure(logical(0), tags = list(location = "querystring", locationName = "HubArn", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

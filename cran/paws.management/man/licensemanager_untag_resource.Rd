@@ -2,17 +2,17 @@
 % Please edit documentation in R/licensemanager_operations.R
 \name{licensemanager_untag_resource}
 \alias{licensemanager_untag_resource}
-\title{Remove tags from a resource}
+\title{Removes the specified tags from the specified license configuration}
 \usage{
 licensemanager_untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
-\item{ResourceArn}{[required] ARN of the resource.}
+\item{ResourceArn}{[required] Amazon Resource Name (ARN) of the license configuration.}
 
-\item{TagKeys}{[required] List keys identifying tags to remove.}
+\item{TagKeys}{[required] Keys identifying the tags to remove.}
 }
 \description{
-Remove tags from a resource.
+Removes the specified tags from the specified license configuration.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

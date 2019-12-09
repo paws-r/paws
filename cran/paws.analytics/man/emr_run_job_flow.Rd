@@ -9,7 +9,7 @@ emr_run_job_flow(Name, LogUri, AdditionalInfo, AmiVersion, ReleaseLabel,
   NewSupportedProducts, Applications, Configurations, VisibleToAllUsers,
   JobFlowRole, ServiceRole, Tags, SecurityConfiguration, AutoScalingRole,
   ScaleDownBehavior, CustomAmiId, EbsRootVolumeSize, RepoUpgradeOnBoot,
-  KerberosAttributes)
+  KerberosAttributes, StepConcurrencyLevel)
 }
 \arguments{
 \item{Name}{[required] The name of the job flow.}
@@ -26,11 +26,11 @@ use \code{CustomAmiID}.}
 \item{ReleaseLabel}{The Amazon EMR release label, which determines the version of
 open-source application packages installed on the cluster. Release
 labels are in the form \code{emr-x.x.x}, where x.x.x is an Amazon EMR release
-version, for example, \code{emr-5.14.0}. For more information about Amazon
-EMR release versions and included application versions and features, see
+version such as \verb{emr-5.14.0}. For more information about Amazon EMR
+release versions and included application versions and features, see
 \url{https://docs.aws.amazon.com/emr/latest/ReleaseGuide/}. The release
-label applies only to Amazon EMR releases versions 4.x and later.
-Earlier versions use \code{AmiVersion}.}
+label applies only to Amazon EMR releases version 4.0 and later. Earlier
+versions use \code{AmiVersion}.}
 
 \item{Instances}{[required] A specification of the number and type of Amazon EC2 instances.}
 
@@ -46,8 +46,8 @@ A list of strings that indicates third-party software to use. For more
 information, see the \href{https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf}{Amazon EMR Developer Guide}.
 Currently supported values are:
 \itemize{
-\item "mapr-m3" - launch the job flow using MapR M3 Edition.
-\item "mapr-m5" - launch the job flow using MapR M5 Edition.
+\item \"mapr-m3\" - launch the job flow using MapR M3 Edition.
+\item \"mapr-m5\" - launch the job flow using MapR M5 Edition.
 }}
 
 \item{NewSupportedProducts}{For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
@@ -56,21 +56,21 @@ later, use Applications.
 A list of strings that indicates third-party software to use with the
 job flow that accepts a user argument list. EMR accepts and forwards the
 argument list to the corresponding installation script as bootstrap
-action arguments. For more information, see "Launch a Job Flow on the
-MapR Distribution for Hadoop" in the \href{https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf}{Amazon EMR Developer Guide}.
+action arguments. For more information, see \"Launch a Job Flow on the
+MapR Distribution for Hadoop\" in the \href{https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf}{Amazon EMR Developer Guide}.
 Supported values are:
 \itemize{
-\item "mapr-m3" - launch the cluster using MapR M3 Edition.
-\item "mapr-m5" - launch the cluster using MapR M5 Edition.
-\item "mapr" with the user arguments specifying "\--edition,m3" or
-"\--edition,m5" - launch the job flow using MapR M3 or M5 Edition
+\item \"mapr-m3\" - launch the cluster using MapR M3 Edition.
+\item \"mapr-m5\" - launch the cluster using MapR M5 Edition.
+\item \"mapr\" with the user arguments specifying \"\\--edition,m3\" or
+\"\\--edition,m5\" - launch the job flow using MapR M3 or M5 Edition
 respectively.
-\item "mapr-m7" - launch the cluster using MapR M7 Edition.
-\item "hunk" - launch the cluster with the Hunk Big Data Analtics
+\item \"mapr-m7\" - launch the cluster using MapR M7 Edition.
+\item \"hunk\" - launch the cluster with the Hunk Big Data Analtics
 Platform.
-\item "hue"- launch the cluster with Hue installed.
-\item "spark" - launch the cluster with Apache Spark installed.
-\item "ganglia" - launch the cluster with the Ganglia Monitoring System
+\item \"hue\"- launch the cluster with Hue installed.
+\item \"spark\" - launch the cluster with Apache Spark installed.
+\item \"ganglia\" - launch the cluster with the Ganglia Monitoring System
 installed.
 }}
 
@@ -82,11 +82,10 @@ release version, see the \href{https://docs.aws.amazon.com/emr/latest/ReleaseGui
 \item{Configurations}{For Amazon EMR releases 4.0 and later. The list of configurations
 supplied for the EMR cluster you are creating.}
 
-\item{VisibleToAllUsers}{Whether the cluster is visible to all IAM users of the AWS account
-associated with the cluster. If this value is set to \code{true}, all IAM
-users of that AWS account can view and (if they have the proper policy
-permissions set) manage the cluster. If it is set to \code{false}, only the
-IAM user that created the cluster can view and manage it.}
+\item{VisibleToAllUsers}{A value of \code{true} indicates that all IAM users in the AWS account can
+perform cluster actions if they have the proper IAM policy permissions.
+This is the default. A value of \code{false} indicates that only the IAM user
+who created the cluster can perform actions.}
 
 \item{JobFlowRole}{Also called instance profile and EC2 role. An IAM role for an EMR
 cluster. The EC2 instances of the cluster assume this role. The default
@@ -147,6 +146,9 @@ manually.}
 \item{KerberosAttributes}{Attributes for Kerberos configuration when Kerberos authentication is
 enabled using a security configuration. For more information see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html}{Use Kerberos Authentication}
 in the \emph{EMR Management Guide}.}
+
+\item{StepConcurrencyLevel}{Specifies the number of steps that can be executed concurrently. The
+default value is \code{1}. The maximum value is \code{256}.}
 }
 \description{
 RunJobFlow creates and starts running a new cluster (job flow). The
@@ -414,7 +416,8 @@ parameters, but not both.
     CrossRealmTrustPrincipalPassword = "string",
     ADDomainJoinUser = "string",
     ADDomainJoinPassword = "string"
-  )
+  ),
+  StepConcurrencyLevel = 123
 )
 }
 }

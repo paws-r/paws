@@ -11,21 +11,21 @@ lexmodelbuildingservice_create_intent_version(name, checksum)
 \item{name}{[required] The name of the intent that you want to create a new version of. The
 name is case sensitive.}
 
-\item{checksum}{Checksum of the \code{$LATEST} version of the intent that should be used to
-create the new version. If you specify a checksum and the \code{$LATEST}
+\item{checksum}{Checksum of the \verb{$LATEST} version of the intent that should be used to
+create the new version. If you specify a checksum and the \verb{$LATEST}
 version of the intent has a different checksum, Amazon Lex returns a
-\code{PreconditionFailedException} exception and doesn't publish a new
-version. If you don't specify a checksum, Amazon Lex publishes the
-\code{$LATEST} version.}
+\code{PreconditionFailedException} exception and doesn\'t publish a new
+version. If you don\'t specify a checksum, Amazon Lex publishes the
+\verb{$LATEST} version.}
 }
 \description{
-Creates a new version of an intent based on the \code{$LATEST} version of the
-intent. If the \code{$LATEST} version of this intent hasn't changed since
-you last updated it, Amazon Lex doesn't create a new version. It
+Creates a new version of an intent based on the \verb{$LATEST} version of the
+intent. If the \verb{$LATEST} version of this intent hasn\'t changed since
+you last updated it, Amazon Lex doesn\'t create a new version. It
 returns the last version you created.
 }
 \details{
-You can update only the \code{$LATEST} version of the intent. You can't
+You can update only the \verb{$LATEST} version of the intent. You can\'t
 update the numbered versions that you create with the
 \code{CreateIntentVersion} operation.
 

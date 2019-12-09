@@ -14,6 +14,14 @@ test_that("list_backups", {
   expect_error(svc$list_backups(), NA)
 })
 
+test_that("list_contributor_insights", {
+  expect_error(svc$list_contributor_insights(), NA)
+})
+
+test_that("list_contributor_insights", {
+  expect_error(svc$list_contributor_insights(MaxResults = 20), NA)
+})
+
 test_that("list_global_tables", {
   expect_error(svc$list_global_tables(), NA)
 })

@@ -13,7 +13,7 @@ configservice_put_aggregation_authorization(AuthorizedAccountId,
 
 \item{AuthorizedAwsRegion}{[required] The region authorized to collect aggregated data.}
 
-\item{Tags}{}
+\item{Tags}{An array of tag object.}
 }
 \description{
 Authorizes the aggregator account and region to collect data from the

@@ -38,7 +38,7 @@ and it meets the \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hiber
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html}{Hibernate Your Instance}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
-We don't charge usage for a stopped instance, or data transfer fees;
+We don\'t charge usage for a stopped instance, or data transfer fees;
 however, your root partition Amazon EBS volume remains and continues to
 persist your data, and you are charged for Amazon EBS volume usage.
 Every time you start your Windows instance, Amazon EC2 charges you for a
@@ -49,7 +49,7 @@ when it was stopped. Every time you start your Linux instance, Amazon
 EC2 charges a one-minute minimum for instance usage, and thereafter
 charges per second for instance usage.
 
-You can't start, stop, or hibernate Spot Instances, and you can't stop
+You can\'t start, stop, or hibernate Spot Instances, and you can\'t stop
 or hibernate instance store-backed instances. For information about
 using hibernation for Spot Instances, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html#hibernate-spot-instances}{Hibernating Interrupted Spot Instances}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.

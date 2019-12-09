@@ -16,7 +16,7 @@ rds_modify_db_cluster(DBClusterIdentifier, NewDBClusterIdentifier,
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier for the cluster being modified. This parameter
-is not case-sensitive.
+isn\'t case-sensitive.
 
 Constraints: This identifier must match the identifier of an existing DB
 cluster.}
@@ -28,7 +28,7 @@ Constraints:
 \itemize{
 \item Must contain from 1 to 63 letters, numbers, or hyphens
 \item The first character must be a letter
-\item Can't end with a hyphen or contain two consecutive hyphens
+\item Can\'t end with a hyphen or contain two consecutive hyphens
 }
 
 Example: \code{my-cluster2}}
@@ -71,12 +71,12 @@ Constraints: Value must be \code{1150-65535}
 Default: The same port as the original DB cluster.}
 
 \item{MasterUserPassword}{The new password for the master database user. This password can contain
-any printable ASCII character except "/", """, or "@".
+any printable ASCII character except \"/\", \"\"\", or \"@\".
 
 Constraints: Must contain from 8 to 41 characters.}
 
 \item{OptionGroupName}{A value that indicates that the DB cluster should be associated with the
-specified option group. Changing this parameter doesn't result in an
+specified option group. Changing this parameter doesn\'t result in an
 outage except in the following case, and the change is applied during
 the next maintenance window unless the \code{ApplyImmediately} is enabled for
 this request. If the parameter change results in an option group that
@@ -84,8 +84,8 @@ enables OEM, this change can cause a brief (sub-second) period during
 which new connections are rejected but existing connections are not
 interrupted.
 
-Permanent options can't be removed from an option group. The option
-group can't be removed from a DB cluster once it is associated with a
+Permanent options can\'t be removed from an option group. The option
+group can\'t be removed from a DB cluster once it is associated with a
 DB cluster.}
 
 \item{PreferredBackupWindow}{The daily time range during which automated backups are created if
@@ -121,7 +121,10 @@ Constraints: Minimum 30-minute window.}
 
 \item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.}
+mapping is disabled.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication}
+in the \emph{Amazon Aurora User Guide.}}
 
 \item{BacktrackWindow}{The target backtrack window, in seconds. To disable backtracking, set
 this value to 0.
@@ -141,20 +144,33 @@ CloudWatch Logs for a specific DB cluster.}
 Changing this parameter results in an outage. The change is applied
 during the next maintenance window unless \code{ApplyImmediately} is enabled.
 
-For a list of valid engine versions, use DescribeDBEngineVersions.}
+To list all of the available engine versions for \code{aurora} (for MySQL
+5.6-compatible Aurora), use the following command:
+
+\verb{aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions\\\[\\\].EngineVersion"}
+
+To list all of the available engine versions for \code{aurora-mysql} (for
+MySQL 5.7-compatible Aurora), use the following command:
+
+\verb{aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions\\\[\\\].EngineVersion"}
+
+To list all of the available engine versions for \code{aurora-postgresql},
+use the following command:
+
+\verb{aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions\\\[\\\].EngineVersion"}}
 
 \item{AllowMajorVersionUpgrade}{A value that indicates whether major version upgrades are allowed.
 
 Constraints: You must allow major version upgrades when specifying a
 value for the \code{EngineVersion} parameter that is a different major
-version than the DB cluster's current version.}
+version than the DB cluster\'s current version.}
 
 \item{DBInstanceParameterGroupName}{The name of the DB parameter group to apply to all instances of the DB
 cluster.
 
 When you apply a parameter group using the
-\code{DBInstanceParameterGroupName} parameter, the DB cluster isn't rebooted
-automatically. Also, parameter changes aren't applied during the next
+\code{DBInstanceParameterGroupName} parameter, the DB cluster isn\'t rebooted
+automatically. Also, parameter changes aren\'t applied during the next
 maintenance window but instead are applied immediately.
 
 Default: The existing name setting
@@ -171,7 +187,7 @@ combination with the \code{AllowMajorVersionUpgrade} parameter.
 properties for DB clusters in \code{serverless} DB engine mode.}
 
 \item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
-enabled. The database can't be deleted when deletion protection is
+enabled. The database can\'t be deleted when deletion protection is
 enabled. By default, deletion protection is disabled.}
 
 \item{EnableHttpEndpoint}{A value that indicates whether to enable the HTTP endpoint for an Aurora

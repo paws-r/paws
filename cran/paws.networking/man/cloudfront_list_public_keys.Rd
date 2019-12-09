@@ -10,7 +10,7 @@ cloudfront_list_public_keys(Marker, MaxItems)
 \item{Marker}{Use this when paginating results to indicate where to begin in your list
 of public keys. The results include public keys in the list that occur
 after the marker. To get the next page of results, set the \code{Marker} to
-the value of the \code{NextMarker} from the current page's response (which
+the value of the \code{NextMarker} from the current page\'s response (which
 is also the ID of the last public key on that page).}
 
 \item{MaxItems}{The maximum number of public keys you want in the response body.}

@@ -21,7 +21,7 @@ return.}
 
 \item{OnlyAvailable}{[required] If \code{OnlyAvailable} is \code{true}, Amazon Route 53 returns only domain names
 that are available. If \code{OnlyAvailable} is \code{false}, Amazon Route 53
-returns domain names without checking whether they're available to be
+returns domain names without checking whether they\'re available to be
 registered. To determine whether the domain is available, you can call
 \code{checkDomainAvailability} for each suggestion.}
 }

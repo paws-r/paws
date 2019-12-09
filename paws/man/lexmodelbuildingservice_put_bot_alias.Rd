@@ -17,15 +17,15 @@ lexmodelbuildingservice_put_bot_alias(name, description, botVersion,
 
 \item{botName}{[required] The name of the bot.}
 
-\item{checksum}{Identifies a specific revision of the \code{$LATEST} version.
+\item{checksum}{Identifies a specific revision of the \verb{$LATEST} version.
 
 When you create a new bot alias, leave the \code{checksum} field blank. If
 you specify a checksum you get a \code{BadRequestException} exception.
 
 When you want to update a bot alias, set the \code{checksum} field to the
-checksum of the most recent revision of the \code{$LATEST} version. If you
-don't specify the \code{ checksum} field, or if the checksum does not match
-the \code{$LATEST} version, you get a \code{PreconditionFailedException}
+checksum of the most recent revision of the \verb{$LATEST} version. If you
+don\'t specify the \code{ checksum} field, or if the checksum does not match
+the \verb{$LATEST} version, you get a \code{PreconditionFailedException}
 exception.}
 }
 \description{

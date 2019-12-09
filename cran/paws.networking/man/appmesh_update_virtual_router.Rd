@@ -31,7 +31,7 @@ Updates an existing virtual router in a specified service mesh.
       list(
         portMapping = list(
           port = 123,
-          protocol = "http"|"tcp"
+          protocol = "grpc"|"http"|"http2"|"tcp"
         )
       )
     )

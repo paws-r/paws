@@ -8,8 +8,8 @@ specified folder}
 mediastoredata_list_items(Path, MaxResults, NextToken)
 }
 \arguments{
-\item{Path}{The path in the container from which to retrieve items. Format: \<folder
-name\>/\<folder name\>/\<file name\>}
+\item{Path}{The path in the container from which to retrieve items. Format: \\<folder
+name\\>/\\<folder name\\>/\\<file name\\>}
 
 \item{MaxResults}{The maximum number of results to return per API request. For example,
 you submit a \code{ListItems} request with \code{MaxResults} set at 500. Although

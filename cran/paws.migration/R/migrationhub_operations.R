@@ -27,7 +27,8 @@ NULL
 #'   MigrationTaskName, CreatedArtifact, DryRun)
 #'
 #' @param ProgressUpdateStream &#91;required&#93; The name of the ProgressUpdateStream.
-#' @param MigrationTaskName &#91;required&#93; Unique identifier that references the migration task.
+#' @param MigrationTaskName &#91;required&#93; Unique identifier that references the migration task. *Do not store
+#' personal data in this field.*
 #' @param CreatedArtifact &#91;required&#93; An ARN of the AWS resource related to the migration (e.g., AMI, EC2
 #' instance, RDS instance, etc.)
 #' @param DryRun Optional boolean flag to indicate whether any effect should take place.
@@ -67,17 +68,18 @@ migrationhub_associate_created_artifact <- function(ProgressUpdateStream, Migrat
 .migrationhub$operations$associate_created_artifact <- migrationhub_associate_created_artifact
 
 #' Associates a discovered resource ID from Application Discovery Service
-#' (ADS) with a migration task
+#' with a migration task
 #'
 #' Associates a discovered resource ID from Application Discovery Service
-#' (ADS) with a migration task.
+#' with a migration task.
 #'
 #' @usage
 #' migrationhub_associate_discovered_resource(ProgressUpdateStream,
 #'   MigrationTaskName, DiscoveredResource, DryRun)
 #'
 #' @param ProgressUpdateStream &#91;required&#93; The name of the ProgressUpdateStream.
-#' @param MigrationTaskName &#91;required&#93; The identifier given to the MigrationTask.
+#' @param MigrationTaskName &#91;required&#93; The identifier given to the MigrationTask. *Do not store personal data
+#' in this field.*
 #' @param DiscoveredResource &#91;required&#93; Object representing a Resource.
 #' @param DryRun Optional boolean flag to indicate whether any effect should take place.
 #' Used to test if the caller has permission to make the call.
@@ -130,7 +132,8 @@ migrationhub_associate_discovered_resource <- function(ProgressUpdateStream, Mig
 #' migrationhub_create_progress_update_stream(ProgressUpdateStreamName,
 #'   DryRun)
 #'
-#' @param ProgressUpdateStreamName &#91;required&#93; The name of the ProgressUpdateStream.
+#' @param ProgressUpdateStreamName &#91;required&#93; The name of the ProgressUpdateStream. *Do not store personal data in
+#' this field.*
 #' @param DryRun Optional boolean flag to indicate whether any effect should take place.
 #' Used to test if the caller has permission to make the call.
 #'
@@ -180,7 +183,7 @@ migrationhub_create_progress_update_stream <- function(ProgressUpdateStreamName,
 #'     `ListProgressUpdateStreams` call.
 #' 
 #' -   `CreateProgressUpdateStream`, `ImportMigrationTask`,
-#'     `NotifyMigrationTaskState`, and all Associate\[\*\] APIs realted to
+#'     `NotifyMigrationTaskState`, and all Associate\[\*\] APIs related to
 #'     the tasks belonging to the stream will throw
 #'     \"InvalidInputException\" if the stream of the same name is in the
 #'     process of being deleted.
@@ -194,7 +197,8 @@ migrationhub_create_progress_update_stream <- function(ProgressUpdateStreamName,
 #' migrationhub_delete_progress_update_stream(ProgressUpdateStreamName,
 #'   DryRun)
 #'
-#' @param ProgressUpdateStreamName &#91;required&#93; The name of the ProgressUpdateStream.
+#' @param ProgressUpdateStreamName &#91;required&#93; The name of the ProgressUpdateStream. *Do not store personal data in
+#' this field.*
 #' @param DryRun Optional boolean flag to indicate whether any effect should take place.
 #' Used to test if the caller has permission to make the call.
 #'
@@ -233,8 +237,8 @@ migrationhub_delete_progress_update_stream <- function(ProgressUpdateStreamName,
 #' @usage
 #' migrationhub_describe_application_state(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The configurationId in ADS that uniquely identifies the grouped
-#' application.
+#' @param ApplicationId &#91;required&#93; The configurationId in Application Discovery Service that uniquely
+#' identifies the grouped application.
 #'
 #' @section Request syntax:
 #' ```
@@ -274,7 +278,8 @@ migrationhub_describe_application_state <- function(ApplicationId) {
 #'   MigrationTaskName)
 #'
 #' @param ProgressUpdateStream &#91;required&#93; The name of the ProgressUpdateStream.
-#' @param MigrationTaskName &#91;required&#93; The identifier given to the MigrationTask.
+#' @param MigrationTaskName &#91;required&#93; The identifier given to the MigrationTask. *Do not store personal data
+#' in this field.*
 #'
 #' @section Request syntax:
 #' ```
@@ -329,7 +334,7 @@ migrationhub_describe_migration_task <- function(ProgressUpdateStream, Migration
 #'
 #' @param ProgressUpdateStream &#91;required&#93; The name of the ProgressUpdateStream.
 #' @param MigrationTaskName &#91;required&#93; Unique identifier that references the migration task to be disassociated
-#' with the artifact.
+#' with the artifact. *Do not store personal data in this field.*
 #' @param CreatedArtifactName &#91;required&#93; An ARN of the AWS resource related to the migration (e.g., AMI, EC2
 #' instance, RDS instance, etc.)
 #' @param DryRun Optional boolean flag to indicate whether any effect should take place.
@@ -365,19 +370,21 @@ migrationhub_disassociate_created_artifact <- function(ProgressUpdateStream, Mig
 }
 .migrationhub$operations$disassociate_created_artifact <- migrationhub_disassociate_created_artifact
 
-#' Disassociate an Application Discovery Service (ADS) discovered resource
-#' from a migration task
+#' Disassociate an Application Discovery Service discovered resource from a
+#' migration task
 #'
-#' Disassociate an Application Discovery Service (ADS) discovered resource
-#' from a migration task.
+#' Disassociate an Application Discovery Service discovered resource from a
+#' migration task.
 #'
 #' @usage
 #' migrationhub_disassociate_discovered_resource(ProgressUpdateStream,
 #'   MigrationTaskName, ConfigurationId, DryRun)
 #'
 #' @param ProgressUpdateStream &#91;required&#93; The name of the ProgressUpdateStream.
-#' @param MigrationTaskName &#91;required&#93; The identifier given to the MigrationTask.
-#' @param ConfigurationId &#91;required&#93; ConfigurationId of the ADS resource to be disassociated.
+#' @param MigrationTaskName &#91;required&#93; The identifier given to the MigrationTask. *Do not store personal data
+#' in this field.*
+#' @param ConfigurationId &#91;required&#93; ConfigurationId of the Application Discovery Service resource to be
+#' disassociated.
 #' @param DryRun Optional boolean flag to indicate whether any effect should take place.
 #' Used to test if the caller has permission to make the call.
 #'
@@ -424,8 +431,9 @@ migrationhub_disassociate_discovered_resource <- function(ProgressUpdateStream, 
 #' migrationhub_import_migration_task(ProgressUpdateStream,
 #'   MigrationTaskName, DryRun)
 #'
-#' @param ProgressUpdateStream &#91;required&#93; The name of the ProgressUpdateStream.
-#' @param MigrationTaskName &#91;required&#93; Unique identifier that references the migration task.
+#' @param ProgressUpdateStream &#91;required&#93; The name of the ProgressUpdateStream. \\>
+#' @param MigrationTaskName &#91;required&#93; Unique identifier that references the migration task. *Do not store
+#' personal data in this field.*
 #' @param DryRun Optional boolean flag to indicate whether any effect should take place.
 #' Used to test if the caller has permission to make the call.
 #'
@@ -477,7 +485,8 @@ migrationhub_import_migration_task <- function(ProgressUpdateStream, MigrationTa
 #'   MigrationTaskName, NextToken, MaxResults)
 #'
 #' @param ProgressUpdateStream &#91;required&#93; The name of the ProgressUpdateStream.
-#' @param MigrationTaskName &#91;required&#93; Unique identifier that references the migration task.
+#' @param MigrationTaskName &#91;required&#93; Unique identifier that references the migration task. *Do not store
+#' personal data in this field.*
 #' @param NextToken If a `NextToken` was returned by a previous call, there are more results
 #' available. To retrieve the next page of results, make the call again
 #' using the returned token in `NextToken`.
@@ -522,7 +531,8 @@ migrationhub_list_created_artifacts <- function(ProgressUpdateStream, MigrationT
 #'   MigrationTaskName, NextToken, MaxResults)
 #'
 #' @param ProgressUpdateStream &#91;required&#93; The name of the ProgressUpdateStream.
-#' @param MigrationTaskName &#91;required&#93; The name of the MigrationTask.
+#' @param MigrationTaskName &#91;required&#93; The name of the MigrationTask. *Do not store personal data in this
+#' field.*
 #' @param NextToken If a `NextToken` was returned by a previous call, there are more results
 #' available. To retrieve the next page of results, make the call again
 #' using the returned token in `NextToken`.
@@ -659,11 +669,13 @@ migrationhub_list_progress_update_streams <- function(NextToken = NULL, MaxResul
 #' `NOT_STARTED | IN_PROGRESS | COMPLETED`.
 #'
 #' @usage
-#' migrationhub_notify_application_state(ApplicationId, Status, DryRun)
+#' migrationhub_notify_application_state(ApplicationId, Status,
+#'   UpdateDateTime, DryRun)
 #'
-#' @param ApplicationId &#91;required&#93; The configurationId in ADS that uniquely identifies the grouped
-#' application.
+#' @param ApplicationId &#91;required&#93; The configurationId in Application Discovery Service that uniquely
+#' identifies the grouped application.
 #' @param Status &#91;required&#93; Status of the application - Not Started, In-Progress, Complete.
+#' @param UpdateDateTime The timestamp when the application state changed.
 #' @param DryRun Optional boolean flag to indicate whether any effect should take place.
 #' Used to test if the caller has permission to make the call.
 #'
@@ -672,6 +684,9 @@ migrationhub_list_progress_update_streams <- function(NextToken = NULL, MaxResul
 #' svc$notify_application_state(
 #'   ApplicationId = "string",
 #'   Status = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETED",
+#'   UpdateDateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
 #'   DryRun = TRUE|FALSE
 #' )
 #' ```
@@ -679,14 +694,14 @@ migrationhub_list_progress_update_streams <- function(NextToken = NULL, MaxResul
 #' @keywords internal
 #'
 #' @rdname migrationhub_notify_application_state
-migrationhub_notify_application_state <- function(ApplicationId, Status, DryRun = NULL) {
+migrationhub_notify_application_state <- function(ApplicationId, Status, UpdateDateTime = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "NotifyApplicationState",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .migrationhub$notify_application_state_input(ApplicationId = ApplicationId, Status = Status, DryRun = DryRun)
+  input <- .migrationhub$notify_application_state_input(ApplicationId = ApplicationId, Status = Status, UpdateDateTime = UpdateDateTime, DryRun = DryRun)
   output <- .migrationhub$notify_application_state_output()
   config <- get_config()
   svc <- .migrationhub$service(config)
@@ -716,7 +731,8 @@ migrationhub_notify_application_state <- function(ApplicationId, Status, DryRun 
 #'   MigrationTaskName, Task, UpdateDateTime, NextUpdateSeconds, DryRun)
 #'
 #' @param ProgressUpdateStream &#91;required&#93; The name of the ProgressUpdateStream.
-#' @param MigrationTaskName &#91;required&#93; Unique identifier that references the migration task.
+#' @param MigrationTaskName &#91;required&#93; Unique identifier that references the migration task. *Do not store
+#' personal data in this field.*
 #' @param Task &#91;required&#93; Information about the task\'s progress and status.
 #' @param UpdateDateTime &#91;required&#93; The timestamp when the task was gathered.
 #' @param NextUpdateSeconds &#91;required&#93; Number of seconds after the UpdateDateTime within which the Migration
@@ -765,19 +781,17 @@ migrationhub_notify_migration_task_state <- function(ProgressUpdateStream, Migra
 .migrationhub$operations$notify_migration_task_state <- migrationhub_notify_migration_task_state
 
 #' Provides identifying details of the resource being migrated so that it
-#' can be associated in the Application Discovery Service (ADS)'s
-#' repository
+#' can be associated in the Application Discovery Service repository
 #'
 #' Provides identifying details of the resource being migrated so that it
-#' can be associated in the Application Discovery Service (ADS)\'s
-#' repository. This association occurs asynchronously after
-#' `PutResourceAttributes` returns.
+#' can be associated in the Application Discovery Service repository. This
+#' association occurs asynchronously after `PutResourceAttributes` returns.
 #' 
 #' -   Keep in mind that subsequent calls to PutResourceAttributes will
 #'     override previously stored attributes. For example, if it is first
 #'     called with a MAC address, but later, it is desired to *add* an IP
 #'     address, it will then be required to call it with *both* the IP and
-#'     MAC addresses to prevent overiding the MAC address.
+#'     MAC addresses to prevent overriding the MAC address.
 #' 
 #' -   Note the instructions regarding the special use case of the
 #'     [`ResourceAttributeList`](https://docs.aws.amazon.com/migrationhub/latest/ug/API_PutResourceAttributes.html#migrationhub-PutResourceAttributes-request-ResourceAttributeList)
@@ -792,10 +806,11 @@ migrationhub_notify_migration_task_state <- function(ProgressUpdateStream, Migra
 #'   MigrationTaskName, ResourceAttributeList, DryRun)
 #'
 #' @param ProgressUpdateStream &#91;required&#93; The name of the ProgressUpdateStream.
-#' @param MigrationTaskName &#91;required&#93; Unique identifier that references the migration task.
+#' @param MigrationTaskName &#91;required&#93; Unique identifier that references the migration task. *Do not store
+#' personal data in this field.*
 #' @param ResourceAttributeList &#91;required&#93; Information about the resource that is being migrated. This data will be
 #' used to map the task to a resource in the Application Discovery Service
-#' (ADS)\'s repository.
+#' repository.
 #' 
 #' Takes the object array of `ResourceAttribute` where the `Type` field is
 #' reserved for the following values:
@@ -806,8 +821,7 @@ migrationhub_notify_migration_task_state <- function(ProgressUpdateStream, Migra
 #'     it is required that `VM_MANAGER_ID`, as a minimum, is always set. If
 #'     `VM_MANAGER_ID` is not set, then all \"VM\" fields will be discarded
 #'     and \"VM\" fields will not be used for matching the migration task
-#'     to a server in Application Discovery Service (ADS)\'s repository.
-#'     See the
+#'     to a server in Application Discovery Service repository. See the
 #'     [Example](https://docs.aws.amazon.com/migrationhub/latest/ug/API_PutResourceAttributes.html#API_PutResourceAttributes_Examples)
 #'     section below for a use case of specifying \"VM\" related values.
 #' 

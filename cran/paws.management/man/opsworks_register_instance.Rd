@@ -11,18 +11,18 @@ opsworks_register_instance(StackId, Hostname, PublicIp, PrivateIp,
 \arguments{
 \item{StackId}{[required] The ID of the stack that the instance is to be registered with.}
 
-\item{Hostname}{The instance's hostname.}
+\item{Hostname}{The instance\'s hostname.}
 
-\item{PublicIp}{The instance's public IP address.}
+\item{PublicIp}{The instance\'s public IP address.}
 
-\item{PrivateIp}{The instance's private IP address.}
+\item{PrivateIp}{The instance\'s private IP address.}
 
 \item{RsaPublicKey}{The instances public RSA key. This key is used to encrypt communication
 between the instance and the service.}
 
 \item{RsaPublicKeyFingerprint}{The instances public RSA key fingerprint.}
 
-\item{InstanceIdentity}{An InstanceIdentity object that contains the instance's identity.}
+\item{InstanceIdentity}{An InstanceIdentity object that contains the instance\'s identity.}
 }
 \description{
 Registers instances that were created outside of AWS OpsWorks Stacks

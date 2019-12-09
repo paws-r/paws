@@ -12,34 +12,34 @@ codecommit_put_file(repositoryName, branchName, fileContent, filePath,
 \item{repositoryName}{[required] The name of the repository where you want to add or update the file.}
 
 \item{branchName}{[required] The name of the branch where you want to add or update the file. If this
-is an empty repository, this branch will be created.}
+is an empty repository, this branch is created.}
 
 \item{fileContent}{[required] The content of the file, in binary object format.}
 
 \item{filePath}{[required] The name of the file you want to add or update, including the relative
 path to the file in the repository.
 
-If the path does not currently exist in the repository, the path will be
+If the path does not currently exist in the repository, the path is
 created as part of adding the file.}
 
 \item{fileMode}{The file mode permissions of the blob. Valid file mode permissions are
-listed below.}
+listed here.}
 
 \item{parentCommitId}{The full commit ID of the head commit in the branch where you want to
 add or update the file. If this is an empty repository, no commit ID is
 required. If this is not an empty repository, a commit ID is required.
 
 The commit ID must match the ID of the head commit at the time of the
-operation, or an error will occur, and the file will not be added or
+operation. Otherwise, an error occurs, and the file is not added or
 updated.}
 
-\item{commitMessage}{A message about why this file was added or updated. While optional,
-adding a message is strongly encouraged in order to provide a more
-useful commit history for your repository.}
+\item{commitMessage}{A message about why this file was added or updated. Although it is
+optional, a message makes the commit history for your repository more
+useful.}
 
-\item{name}{The name of the person adding or updating the file. While optional,
-adding a name is strongly encouraged in order to provide a more useful
-commit history for your repository.}
+\item{name}{The name of the person adding or updating the file. Although it is
+optional, a name makes the commit history for your repository more
+useful.}
 
 \item{email}{An email address for the person adding or updating the file.}
 }

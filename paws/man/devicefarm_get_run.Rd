@@ -7,7 +7,7 @@
 devicefarm_get_run(arn)
 }
 \arguments{
-\item{arn}{[required] The run's ARN.}
+\item{arn}{[required] The run\'s ARN.}
 }
 \description{
 Gets information about a run.

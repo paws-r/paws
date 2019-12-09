@@ -18,23 +18,23 @@ following:
 \item If the service that is specified by \code{ServiceId} includes settings
 for an SRV record, the value of \code{InstanceId} is automatically
 included as part of the value for the SRV record. For more
-information, see DnsRecord\$Type.
+information, see DnsRecord\\$Type.
 \item You can use this value to update an existing instance.
 \item To register a new instance, you must specify a value that is unique
 among instances that you register by using the same service.
 \item If you specify an existing \code{InstanceId} and \code{ServiceId}, AWS Cloud
-Map updates the existing DNS records, if any. If there's also an
+Map updates the existing DNS records, if any. If there\'s also an
 existing health check, AWS Cloud Map deletes the old health check
 and creates a new one.
 
-The health check isn't deleted immediately, so it will still appear
+The health check isn\'t deleted immediately, so it will still appear
 for a while if you submit a \code{ListHealthChecks} request, for example.
 }}
 
 \item{CreatorRequestId}{A unique string that identifies the request and that allows failed
 \code{RegisterInstance} requests to be retried without the risk of executing
 the operation twice. You must use a unique \code{CreatorRequestId} string
-every time you submit a \code{RegisterInstance} request if you're
+every time you submit a \code{RegisterInstance} request if you\'re
 registering additional instances for the same namespace and service.
 \code{CreatorRequestId} can be any unique string, for example, a date/time
 stamp.}
@@ -49,12 +49,12 @@ service.
 
 Supported attribute keys include the following:
 
-\strong{AWS\_ALIAS\_DNS\_NAME}
+\strong{AWS\\_ALIAS\\_DNS\\_NAME}
 
 If you want AWS Cloud Map to create an Amazon Route 53 alias record that
 routes traffic to an Elastic Load Balancing load balancer, specify the
 DNS name that is associated with the load balancer. For information
-about how to get the DNS name, see "DNSName" in the topic
+about how to get the DNS name, see \"DNSName\" in the topic
 \href{http://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html}{AliasTarget}
 in the \emph{Route 53 API Reference}.
 
@@ -66,22 +66,22 @@ must include settings for an A record, an AAAA record, or both.
 \code{RoutingPolicy} must be \code{WEIGHTED}.
 \item If the service that is specified by \code{ServiceId} includes
 \code{HealthCheckConfig} settings, AWS Cloud Map will create the Route 53
-health check, but it won't associate the health check with the
+health check, but it won\'t associate the health check with the
 alias record.
-\item Auto naming currently doesn't support creating alias records that
+\item Auto naming currently doesn\'t support creating alias records that
 route traffic to AWS resources other than ELB load balancers.
-\item If you specify a value for \code{AWS_ALIAS_DNS_NAME}, don't specify
+\item If you specify a value for \code{AWS_ALIAS_DNS_NAME}, don\'t specify
 values for any of the \code{AWS_INSTANCE} attributes.
 }
 
-\strong{AWS\_INIT\_HEALTH\_STATUS}
+\strong{AWS\\_INIT\\_HEALTH\\_STATUS}
 
 If the service configuration includes \code{HealthCheckCustomConfig}, you can
 optionally use \code{AWS_INIT_HEALTH_STATUS} to specify the initial status of
-the custom health check, \code{HEALTHY} or \code{UNHEALTHY}. If you don't specify
+the custom health check, \code{HEALTHY} or \code{UNHEALTHY}. If you don\'t specify
 a value for \code{AWS_INIT_HEALTH_STATUS}, the initial status is \code{HEALTHY}.
 
-\strong{AWS\_INSTANCE\_CNAME}
+\strong{AWS\\_INSTANCE\\_CNAME}
 
 If the service configuration includes a CNAME record, the domain name
 that you want Route 53 to return in response to DNS queries, for
@@ -90,29 +90,29 @@ example, \code{example.com}.
 This value is required if the service specified by \code{ServiceId} includes
 settings for an CNAME record.
 
-\strong{AWS\_INSTANCE\_IPV4}
+\strong{AWS\\_INSTANCE\\_IPV4}
 
 If the service configuration includes an A record, the IPv4 address that
 you want Route 53 to return in response to DNS queries, for example,
-\code{192.0.2.44}.
+\verb{192.0.2.44}.
 
 This value is required if the service specified by \code{ServiceId} includes
 settings for an A record. If the service includes settings for an SRV
 record, you must specify a value for \code{AWS_INSTANCE_IPV4},
 \code{AWS_INSTANCE_IPV6}, or both.
 
-\strong{AWS\_INSTANCE\_IPV6}
+\strong{AWS\\_INSTANCE\\_IPV6}
 
 If the service configuration includes an AAAA record, the IPv6 address
 that you want Route 53 to return in response to DNS queries, for
-example, \code{2001:0db8:85a3:0000:0000:abcd:0001:2345}.
+example, \verb{2001:0db8:85a3:0000:0000:abcd:0001:2345}.
 
 This value is required if the service specified by \code{ServiceId} includes
 settings for an AAAA record. If the service includes settings for an SRV
 record, you must specify a value for \code{AWS_INSTANCE_IPV4},
 \code{AWS_INSTANCE_IPV6}, or both.
 
-\strong{AWS\_INSTANCE\_PORT}
+\strong{AWS\\_INSTANCE\\_PORT}
 
 If the service includes an SRV record, the value that you want Route 53
 to return for the port.
@@ -156,7 +156,7 @@ returns the applicable value:
 \item \strong{If the health check is healthy}: returns all the records
 \item \strong{If the health check is unhealthy}: returns the applicable value
 for the last healthy instance
-\item \strong{If you didn't specify a health check configuration}: returns all
+\item \strong{If you didn\'t specify a health check configuration}: returns all
 the records
 }
 

@@ -8,7 +8,7 @@ alexaforbusiness_put_skill_authorization(AuthorizationResult, SkillId,
   RoomArn)
 }
 \arguments{
-\item{AuthorizationResult}{[required] The authorization result specific to OAUTH code grant output. "Code"
+\item{AuthorizationResult}{[required] The authorization result specific to OAUTH code grant output. \"Code"
 must be populated in the AuthorizationResult map to establish the
 authorization.}
 
@@ -17,7 +17,7 @@ authorization.}
 \item{RoomArn}{The room that the skill is authorized for.}
 }
 \description{
-Links a user's account to a third-party skill provider. If this API
+Links a user\'s account to a third-party skill provider. If this API
 operation is called by an assumed IAM role, the skill being linked must
 be a private skill. Also, the skill must be owned by the AWS account
 that assumed the IAM role.

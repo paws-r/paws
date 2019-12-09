@@ -14,7 +14,7 @@ for.}
 }
 \description{
 This operation is used by SaaS partners to delete a partner event
-source. AWS customers don't use this operation.
+source. AWS customers don\'t use this operation.
 }
 \details{
 When you delete an event source, the status of the corresponding partner

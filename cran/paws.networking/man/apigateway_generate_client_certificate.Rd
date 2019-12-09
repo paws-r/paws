@@ -10,8 +10,8 @@ apigateway_generate_client_certificate(description, tags)
 \item{description}{The description of the ClientCertificate.}
 
 \item{tags}{The key-value map of strings. The valid character set is
-[a-zA-Z+-=.\_:/]. The tag key can be up to 128 characters and must not
-start with \code{aws:}. The tag value can be up to 256 characters.}
+[a-zA-Z+-=.\\_:/]. The tag key can be up to 128 characters and must not
+start with \verb{aws:}. The tag value can be up to 256 characters.}
 }
 \description{
 Generates a ClientCertificate resource.

@@ -5,7 +5,9 @@
 \title{Updates an event source mapping}
 \usage{
 lambda_update_event_source_mapping(UUID, FunctionName, Enabled,
-  BatchSize)
+  BatchSize, MaximumBatchingWindowInSeconds, DestinationConfig,
+  MaximumRecordAgeInSeconds, BisectBatchOnFunctionError,
+  MaximumRetryAttempts, ParallelizationFactor)
 }
 \arguments{
 \item{UUID}{[required] The identifier of the event source mapping.}
@@ -16,14 +18,14 @@ lambda_update_event_source_mapping(UUID, FunctionName, Enabled,
 \itemize{
 \item \strong{Function name} - \code{MyFunction}.
 \item \strong{Function ARN} -
-\code{arn:aws:lambda:us-west-2:123456789012:function:MyFunction}.
+\verb{arn:aws:lambda:us-west-2:123456789012:function:MyFunction}.
 \item \strong{Version or Alias ARN} -
-\code{arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD}.
-\item \strong{Partial ARN} - \code{123456789012:function:MyFunction}.
+\verb{arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD}.
+\item \strong{Partial ARN} - \verb{123456789012:function:MyFunction}.
 }
 
 The length constraint applies only to the full ARN. If you specify only
-the function name, it's limited to 64 characters in length.}
+the function name, it\'s limited to 64 characters in length.}
 
 \item{Enabled}{Disables the event source mapping to pause polling and invocation.}
 
@@ -33,18 +35,62 @@ the function name, it's limited to 64 characters in length.}
 \item \strong{Amazon DynamoDB Streams} - Default 100. Max 1,000.
 \item \strong{Amazon Simple Queue Service} - Default 10. Max 10.
 }}
+
+\item{MaximumBatchingWindowInSeconds}{The maximum amount of time to gather records before invoking the
+function, in seconds.}
+
+\item{DestinationConfig}{(Streams) An Amazon SQS queue or Amazon SNS topic destination for
+discarded records.}
+
+\item{MaximumRecordAgeInSeconds}{(Streams) The maximum age of a record that Lambda sends to a function
+for processing.}
+
+\item{BisectBatchOnFunctionError}{(Streams) If the function returns an error, split the batch in two and
+retry.}
+
+\item{MaximumRetryAttempts}{(Streams) The maximum number of times to retry when the function returns
+an error.}
+
+\item{ParallelizationFactor}{(Streams) The number of batches to process from each shard concurrently.}
 }
 \description{
 Updates an event source mapping. You can change the function that AWS
 Lambda invokes, or pause invocation and resume later from the same
 location.
 }
+\details{
+The following error handling options are only available for stream
+sources (DynamoDB and Kinesis):
+\itemize{
+\item \code{BisectBatchOnFunctionError} - If the function returns an error,
+split the batch in two and retry.
+\item \code{DestinationConfig} - Send discarded records to an Amazon SQS queue
+or Amazon SNS topic.
+\item \code{MaximumRecordAgeInSeconds} - Discard records older than the
+specified age.
+\item \code{MaximumRetryAttempts} - Discard records after the specified number
+of retries.
+}
+}
 \section{Request syntax}{
 \preformatted{svc$update_event_source_mapping(
   UUID = "string",
   FunctionName = "string",
   Enabled = TRUE|FALSE,
-  BatchSize = 123
+  BatchSize = 123,
+  MaximumBatchingWindowInSeconds = 123,
+  DestinationConfig = list(
+    OnSuccess = list(
+      Destination = "string"
+    ),
+    OnFailure = list(
+      Destination = "string"
+    )
+  ),
+  MaximumRecordAgeInSeconds = 123,
+  BisectBatchOnFunctionError = TRUE|FALSE,
+  MaximumRetryAttempts = 123,
+  ParallelizationFactor = 123
 )
 }
 }

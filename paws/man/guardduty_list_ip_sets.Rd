@@ -19,6 +19,8 @@ value of NextToken from the previous response to continue listing data.}
 }
 \description{
 Lists the IPSets of the GuardDuty service specified by the detector ID.
+If you use this operation from a member account, the IPSets returned are
+the IPSets from the associated master account.
 }
 \section{Request syntax}{
 \preformatted{svc$list_ip_sets(

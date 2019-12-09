@@ -55,7 +55,7 @@ NULL
 #'
 #' @usage
 #' eks_create_cluster(name, version, roleArn, resourcesVpcConfig, logging,
-#'   clientRequestToken)
+#'   clientRequestToken, tags)
 #'
 #' @param name &#91;required&#93; The unique name to give to your cluster.
 #' @param version The desired Kubernetes version for your cluster. If you don\'t specify a
@@ -86,6 +86,9 @@ NULL
 #' CloudWatch Pricing](http://aws.amazon.com/cloudwatch/pricing/).
 #' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
+#' @param tags The metadata to apply to the cluster to assist with categorization and
+#' organization. Each tag consists of a key and an optional value, both of
+#' which you define.
 #'
 #' @section Request syntax:
 #' ```
@@ -113,7 +116,10 @@ NULL
 #'       )
 #'     )
 #'   ),
-#'   clientRequestToken = "string"
+#'   clientRequestToken = "string",
+#'   tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -138,14 +144,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname eks_create_cluster
-eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig, logging = NULL, clientRequestToken = NULL) {
+eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig, logging = NULL, clientRequestToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/clusters",
     paginator = list()
   )
-  input <- .eks$create_cluster_input(name = name, version = version, roleArn = roleArn, resourcesVpcConfig = resourcesVpcConfig, logging = logging, clientRequestToken = clientRequestToken)
+  input <- .eks$create_cluster_input(name = name, version = version, roleArn = roleArn, resourcesVpcConfig = resourcesVpcConfig, logging = logging, clientRequestToken = clientRequestToken, tags = tags)
   output <- .eks$create_cluster_output()
   config <- get_config()
   svc <- .eks$service(config)
@@ -154,6 +160,243 @@ eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig
   return(response)
 }
 .eks$operations$create_cluster <- eks_create_cluster
+
+#' Creates an AWS Fargate profile for your Amazon EKS cluster
+#'
+#' Creates an AWS Fargate profile for your Amazon EKS cluster. You must
+#' have at least one Fargate profile in a cluster to be able to schedule
+#' pods on Fargate infrastructure.
+#' 
+#' The Fargate profile allows an administrator to declare which pods run on
+#' Fargate infrastructure and specify which pods run on which Fargate
+#' profile. This declaration is done through the profile's selectors. Each
+#' profile can have up to five selectors that contain a namespace and
+#' labels. A namespace is required for every selector. The label field
+#' consists of multiple optional key-value pairs. Pods that match the
+#' selectors are scheduled on Fargate infrastructure. If a to-be-scheduled
+#' pod matches any of the selectors in the Fargate profile, then that pod
+#' is scheduled on Fargate infrastructure.
+#' 
+#' When you create a Fargate profile, you must specify a pod execution role
+#' to use with the pods that are scheduled with the profile. This role is
+#' added to the cluster\'s Kubernetes [Role Based Access
+#' Control](https://kubernetes.io/docs/admin/authorization/rbac/) (RBAC)
+#' for authorization so that the `kubelet` that is running on the Fargate
+#' infrastructure can register with your Amazon EKS cluster. This role is
+#' what allows Fargate infrastructure to appear in your cluster as nodes.
+#' The pod execution role also provides IAM permissions to the Fargate
+#' infrastructure to allow read access to Amazon ECR image repositories.
+#' For more information, see [Pod Execution
+#' Role](https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html)
+#' in the *Amazon EKS User Guide*.
+#' 
+#' Fargate profiles are immutable. However, you can create a new updated
+#' profile to replace an existing profile and then delete the original
+#' after the updated profile has finished creating.
+#' 
+#' If any Fargate profiles in a cluster are in the `DELETING` status, you
+#' must wait for that Fargate profile to finish deleting before you can
+#' create any other profiles in that cluster.
+#' 
+#' For more information, see [AWS Fargate
+#' Profile](https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html)
+#' in the *Amazon EKS User Guide*.
+#'
+#' @usage
+#' eks_create_fargate_profile(fargateProfileName, clusterName,
+#'   podExecutionRoleArn, subnets, selectors, clientRequestToken, tags)
+#'
+#' @param fargateProfileName &#91;required&#93; The name of the Fargate profile.
+#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster to apply the Fargate profile to.
+#' @param podExecutionRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the pod execution role to use for pods
+#' that match the selectors in the Fargate profile. The pod execution role
+#' allows Fargate infrastructure to register with your cluster as a node,
+#' and it provides read access to Amazon ECR image repositories. For more
+#' information, see [Pod Execution
+#' Role](https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html)
+#' in the *Amazon EKS User Guide*.
+#' @param subnets The IDs of subnets to launch Fargate pods into. At this time, Fargate
+#' pods are not assigned public IP addresses, so only private subnets (with
+#' no direct route to an Internet Gateway) are accepted for this parameter.
+#' @param selectors The selectors to match for pods to use this Fargate profile. Each
+#' selector must have an associated namespace. Optionally, you can also
+#' specify labels for a namespace. You may specify up to five selectors in
+#' a Fargate profile.
+#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#' @param tags The metadata to apply to the Fargate profile to assist with
+#' categorization and organization. Each tag consists of a key and an
+#' optional value, both of which you define. Fargate profile tags do not
+#' propagate to any other resources associated with the Fargate profile,
+#' such as the pods that are scheduled with it.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_fargate_profile(
+#'   fargateProfileName = "string",
+#'   clusterName = "string",
+#'   podExecutionRoleArn = "string",
+#'   subnets = list(
+#'     "string"
+#'   ),
+#'   selectors = list(
+#'     list(
+#'       namespace = "string",
+#'       labels = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   clientRequestToken = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_create_fargate_profile
+eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecutionRoleArn, subnets = NULL, selectors = NULL, clientRequestToken = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateFargateProfile",
+    http_method = "POST",
+    http_path = "/clusters/{name}/fargate-profiles",
+    paginator = list()
+  )
+  input <- .eks$create_fargate_profile_input(fargateProfileName = fargateProfileName, clusterName = clusterName, podExecutionRoleArn = podExecutionRoleArn, subnets = subnets, selectors = selectors, clientRequestToken = clientRequestToken, tags = tags)
+  output <- .eks$create_fargate_profile_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$create_fargate_profile <- eks_create_fargate_profile
+
+#' Creates a managed worker node group for an Amazon EKS cluster
+#'
+#' Creates a managed worker node group for an Amazon EKS cluster. You can
+#' only create a node group for your cluster that is equal to the current
+#' Kubernetes version for the cluster. All node groups are created with the
+#' latest AMI release version for the respective minor Kubernetes version
+#' of the cluster.
+#' 
+#' An Amazon EKS managed node group is an Amazon EC2 Auto Scaling group and
+#' associated Amazon EC2 instances that are managed by AWS for an Amazon
+#' EKS cluster. Each node group uses a version of the Amazon EKS-optimized
+#' Amazon Linux 2 AMI. For more information, see [Managed Node
+#' Groups](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html)
+#' in the *Amazon EKS User Guide*.
+#'
+#' @usage
+#' eks_create_nodegroup(clusterName, nodegroupName, scalingConfig,
+#'   diskSize, subnets, instanceTypes, amiType, remoteAccess, nodeRole,
+#'   labels, tags, clientRequestToken, version, releaseVersion)
+#'
+#' @param clusterName &#91;required&#93; The name of the cluster to create the node group in.
+#' @param nodegroupName &#91;required&#93; The unique name to give your node group.
+#' @param scalingConfig The scaling configuration details for the Auto Scaling group that is
+#' created for your node group.
+#' @param diskSize The root device disk size (in GiB) for your node group instances. The
+#' default disk size is 20 GiB.
+#' @param subnets &#91;required&#93; The subnets to use for the Auto Scaling group that is created for your
+#' node group. These subnets must have the tag key
+#' `kubernetes.io/cluster/CLUSTER_NAME` with a value of `shared`, where
+#' `CLUSTER_NAME` is replaced with the name of your cluster.
+#' @param instanceTypes The instance type to use for your node group. Currently, you can specify
+#' a single instance type for a node group. The default value for this
+#' parameter is `t3.medium`. If you choose a GPU instance type, be sure to
+#' specify the `AL2_x86_64_GPU` with the `amiType` parameter.
+#' @param amiType The AMI type for your node group. GPU instance types should use the
+#' `AL2_x86_64_GPU` AMI type, which uses the Amazon EKS-optimized Linux AMI
+#' with GPU support. Non-GPU instances should use the `AL2_x86_64` AMI
+#' type, which uses the Amazon EKS-optimized Linux AMI.
+#' @param remoteAccess The remote access (SSH) configuration to use with your node group.
+#' @param nodeRole &#91;required&#93; The IAM role associated with your node group. The Amazon EKS worker node
+#' `kubelet` daemon makes calls to AWS APIs on your behalf. Worker nodes
+#' receive permissions for these API calls through an IAM instance profile
+#' and associated policies. Before you can launch worker nodes and register
+#' them into a cluster, you must create an IAM role for those worker nodes
+#' to use when they are launched. For more information, see [Amazon EKS
+#' Worker Node IAM
+#' Role](https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html)
+#' in the **Amazon EKS User Guide** .
+#' @param labels The Kubernetes labels to be applied to the nodes in the node group when
+#' they are created.
+#' @param tags The metadata to apply to the node group to assist with categorization
+#' and organization. Each tag consists of a key and an optional value, both
+#' of which you define. Node group tags do not propagate to any other
+#' resources associated with the node group, such as the Amazon EC2
+#' instances or subnets.
+#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#' @param version The Kubernetes version to use for your managed nodes. By default, the
+#' Kubernetes version of the cluster is used, and this is the only accepted
+#' specified value.
+#' @param releaseVersion The AMI version of the Amazon EKS-optimized AMI to use with your node
+#' group. By default, the latest available AMI version for the node
+#' group\'s current Kubernetes version is used. For more information, see
+#' [Amazon EKS-Optimized Linux AMI
+#' Versions](https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html)
+#' in the *Amazon EKS User Guide*.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_nodegroup(
+#'   clusterName = "string",
+#'   nodegroupName = "string",
+#'   scalingConfig = list(
+#'     minSize = 123,
+#'     maxSize = 123,
+#'     desiredSize = 123
+#'   ),
+#'   diskSize = 123,
+#'   subnets = list(
+#'     "string"
+#'   ),
+#'   instanceTypes = list(
+#'     "string"
+#'   ),
+#'   amiType = "AL2_x86_64"|"AL2_x86_64_GPU",
+#'   remoteAccess = list(
+#'     ec2SshKey = "string",
+#'     sourceSecurityGroups = list(
+#'       "string"
+#'     )
+#'   ),
+#'   nodeRole = "string",
+#'   labels = list(
+#'     "string"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   clientRequestToken = "string",
+#'   version = "string",
+#'   releaseVersion = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_create_nodegroup
+eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NULL, diskSize = NULL, subnets, instanceTypes = NULL, amiType = NULL, remoteAccess = NULL, nodeRole, labels = NULL, tags = NULL, clientRequestToken = NULL, version = NULL, releaseVersion = NULL) {
+  op <- new_operation(
+    name = "CreateNodegroup",
+    http_method = "POST",
+    http_path = "/clusters/{name}/node-groups",
+    paginator = list()
+  )
+  input <- .eks$create_nodegroup_input(clusterName = clusterName, nodegroupName = nodegroupName, scalingConfig = scalingConfig, diskSize = diskSize, subnets = subnets, instanceTypes = instanceTypes, amiType = amiType, remoteAccess = remoteAccess, nodeRole = nodeRole, labels = labels, tags = tags, clientRequestToken = clientRequestToken, version = version, releaseVersion = releaseVersion)
+  output <- .eks$create_nodegroup_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$create_nodegroup <- eks_create_nodegroup
 
 #' Deletes the Amazon EKS cluster control plane
 #'
@@ -166,6 +409,10 @@ eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig
 #' to delete the VPC. For more information, see [Deleting a
 #' Cluster](https://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html)
 #' in the *Amazon EKS User Guide*.
+#' 
+#' If you have managed node groups or Fargate profiles attached to the
+#' cluster, you must delete them first. For more information, see
+#' DeleteNodegroup andDeleteFargateProfile.
 #'
 #' @usage
 #' eks_delete_cluster(name)
@@ -205,6 +452,94 @@ eks_delete_cluster <- function(name) {
   return(response)
 }
 .eks$operations$delete_cluster <- eks_delete_cluster
+
+#' Deletes an AWS Fargate profile
+#'
+#' Deletes an AWS Fargate profile.
+#' 
+#' When you delete a Fargate profile, any pods that were scheduled onto
+#' Fargate infrastructure with the profile are deleted. If those pods match
+#' another Fargate profile, then they are scheduled on Fargate
+#' infrastructure with that profile. If they no longer match any Fargate
+#' profiles, then they are not scheduled on Fargate infrastructure.
+#' 
+#' Only one Fargate profile in a cluster can be in the `DELETING` status at
+#' a time. You must wait for a Fargate profile to finish deleting before
+#' you can delete any other profiles in that cluster.
+#'
+#' @usage
+#' eks_delete_fargate_profile(clusterName, fargateProfileName)
+#'
+#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster associated with the Fargate profile
+#' to delete.
+#' @param fargateProfileName &#91;required&#93; The name of the Fargate profile to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_fargate_profile(
+#'   clusterName = "string",
+#'   fargateProfileName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_delete_fargate_profile
+eks_delete_fargate_profile <- function(clusterName, fargateProfileName) {
+  op <- new_operation(
+    name = "DeleteFargateProfile",
+    http_method = "DELETE",
+    http_path = "/clusters/{name}/fargate-profiles/{fargateProfileName}",
+    paginator = list()
+  )
+  input <- .eks$delete_fargate_profile_input(clusterName = clusterName, fargateProfileName = fargateProfileName)
+  output <- .eks$delete_fargate_profile_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$delete_fargate_profile <- eks_delete_fargate_profile
+
+#' Deletes an Amazon EKS node group for a cluster
+#'
+#' Deletes an Amazon EKS node group for a cluster.
+#'
+#' @usage
+#' eks_delete_nodegroup(clusterName, nodegroupName)
+#'
+#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that is associated with your node
+#' group.
+#' @param nodegroupName &#91;required&#93; The name of the node group to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_nodegroup(
+#'   clusterName = "string",
+#'   nodegroupName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_delete_nodegroup
+eks_delete_nodegroup <- function(clusterName, nodegroupName) {
+  op <- new_operation(
+    name = "DeleteNodegroup",
+    http_method = "DELETE",
+    http_path = "/clusters/{name}/node-groups/{nodegroupName}",
+    paginator = list()
+  )
+  input <- .eks$delete_nodegroup_input(clusterName = clusterName, nodegroupName = nodegroupName)
+  output <- .eks$delete_nodegroup_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$delete_nodegroup <- eks_delete_nodegroup
 
 #' Returns descriptive information about an Amazon EKS cluster
 #'
@@ -258,41 +593,119 @@ eks_describe_cluster <- function(name) {
 }
 .eks$operations$describe_cluster <- eks_describe_cluster
 
+#' Returns descriptive information about an AWS Fargate profile
+#'
+#' Returns descriptive information about an AWS Fargate profile.
+#'
+#' @usage
+#' eks_describe_fargate_profile(clusterName, fargateProfileName)
+#'
+#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster associated with the Fargate profile.
+#' @param fargateProfileName &#91;required&#93; The name of the Fargate profile to describe.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_fargate_profile(
+#'   clusterName = "string",
+#'   fargateProfileName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_describe_fargate_profile
+eks_describe_fargate_profile <- function(clusterName, fargateProfileName) {
+  op <- new_operation(
+    name = "DescribeFargateProfile",
+    http_method = "GET",
+    http_path = "/clusters/{name}/fargate-profiles/{fargateProfileName}",
+    paginator = list()
+  )
+  input <- .eks$describe_fargate_profile_input(clusterName = clusterName, fargateProfileName = fargateProfileName)
+  output <- .eks$describe_fargate_profile_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$describe_fargate_profile <- eks_describe_fargate_profile
+
+#' Returns descriptive information about an Amazon EKS node group
+#'
+#' Returns descriptive information about an Amazon EKS node group.
+#'
+#' @usage
+#' eks_describe_nodegroup(clusterName, nodegroupName)
+#'
+#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster associated with the node group.
+#' @param nodegroupName &#91;required&#93; The name of the node group to describe.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_nodegroup(
+#'   clusterName = "string",
+#'   nodegroupName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_describe_nodegroup
+eks_describe_nodegroup <- function(clusterName, nodegroupName) {
+  op <- new_operation(
+    name = "DescribeNodegroup",
+    http_method = "GET",
+    http_path = "/clusters/{name}/node-groups/{nodegroupName}",
+    paginator = list()
+  )
+  input <- .eks$describe_nodegroup_input(clusterName = clusterName, nodegroupName = nodegroupName)
+  output <- .eks$describe_nodegroup_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$describe_nodegroup <- eks_describe_nodegroup
+
 #' Returns descriptive information about an update against your Amazon EKS
-#' cluster
+#' cluster or associated managed node group
 #'
 #' Returns descriptive information about an update against your Amazon EKS
-#' cluster.
+#' cluster or associated managed node group.
 #' 
 #' When the status of the update is `Succeeded`, the update is complete. If
 #' an update fails, the status is `Failed`, and an error detail explains
 #' the reason for the failure.
 #'
 #' @usage
-#' eks_describe_update(name, updateId)
+#' eks_describe_update(name, updateId, nodegroupName)
 #'
-#' @param name &#91;required&#93; The name of the Amazon EKS cluster to update.
+#' @param name &#91;required&#93; The name of the Amazon EKS cluster associated with the update.
 #' @param updateId &#91;required&#93; The ID of the update to describe.
+#' @param nodegroupName The name of the Amazon EKS node group associated with the update.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$describe_update(
 #'   name = "string",
-#'   updateId = "string"
+#'   updateId = "string",
+#'   nodegroupName = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname eks_describe_update
-eks_describe_update <- function(name, updateId) {
+eks_describe_update <- function(name, updateId, nodegroupName = NULL) {
   op <- new_operation(
     name = "DescribeUpdate",
     http_method = "GET",
     http_path = "/clusters/{name}/updates/{updateId}",
     paginator = list()
   )
-  input <- .eks$describe_update_input(name = name, updateId = updateId)
+  input <- .eks$describe_update_input(name = name, updateId = updateId, nodegroupName = nodegroupName)
   output <- .eks$describe_update_output()
   config <- get_config()
   svc <- .eks$service(config)
@@ -361,16 +774,167 @@ eks_list_clusters <- function(maxResults = NULL, nextToken = NULL) {
 }
 .eks$operations$list_clusters <- eks_list_clusters
 
-#' Lists the updates associated with an Amazon EKS cluster in your AWS
-#' account, in the specified Region
+#' Lists the AWS Fargate profiles associated with the specified cluster in
+#' your AWS account in the specified Region
 #'
-#' Lists the updates associated with an Amazon EKS cluster in your AWS
-#' account, in the specified Region.
+#' Lists the AWS Fargate profiles associated with the specified cluster in
+#' your AWS account in the specified Region.
 #'
 #' @usage
-#' eks_list_updates(name, nextToken, maxResults)
+#' eks_list_fargate_profiles(clusterName, maxResults, nextToken)
+#'
+#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that you would like to listFargate
+#' profiles in.
+#' @param maxResults The maximum number of Fargate profile results returned by
+#' `ListFargateProfiles` in paginated output. When you use this parameter,
+#' `ListFargateProfiles` returns only `maxResults` results in a single page
+#' along with a `nextToken` response element. You can see the remaining
+#' results of the initial request by sending another `ListFargateProfiles`
+#' request with the returned `nextToken` value. This value can be between 1
+#' and 100. If you don\'t use this parameter, `ListFargateProfiles` returns
+#' up to 100 results and a `nextToken` value if applicable.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' `ListFargateProfiles` request where `maxResults` was used and the
+#' results exceeded the value of that parameter. Pagination continues from
+#' the end of the previous results that returned the `nextToken` value.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_fargate_profiles(
+#'   clusterName = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_list_fargate_profiles
+eks_list_fargate_profiles <- function(clusterName, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListFargateProfiles",
+    http_method = "GET",
+    http_path = "/clusters/{name}/fargate-profiles",
+    paginator = list()
+  )
+  input <- .eks$list_fargate_profiles_input(clusterName = clusterName, maxResults = maxResults, nextToken = nextToken)
+  output <- .eks$list_fargate_profiles_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$list_fargate_profiles <- eks_list_fargate_profiles
+
+#' Lists the Amazon EKS node groups associated with the specified cluster
+#' in your AWS account in the specified Region
+#'
+#' Lists the Amazon EKS node groups associated with the specified cluster
+#' in your AWS account in the specified Region.
+#'
+#' @usage
+#' eks_list_nodegroups(clusterName, maxResults, nextToken)
+#'
+#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that you would like to list node
+#' groups in.
+#' @param maxResults The maximum number of node group results returned by `ListNodegroups` in
+#' paginated output. When you use this parameter, `ListNodegroups` returns
+#' only `maxResults` results in a single page along with a `nextToken`
+#' response element. You can see the remaining results of the initial
+#' request by sending another `ListNodegroups` request with the returned
+#' `nextToken` value. This value can be between 1 and 100. If you don\'t
+#' use this parameter, `ListNodegroups` returns up to 100 results and a
+#' `nextToken` value if applicable.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' `ListNodegroups` request where `maxResults` was used and the results
+#' exceeded the value of that parameter. Pagination continues from the end
+#' of the previous results that returned the `nextToken` value.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_nodegroups(
+#'   clusterName = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_list_nodegroups
+eks_list_nodegroups <- function(clusterName, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListNodegroups",
+    http_method = "GET",
+    http_path = "/clusters/{name}/node-groups",
+    paginator = list()
+  )
+  input <- .eks$list_nodegroups_input(clusterName = clusterName, maxResults = maxResults, nextToken = nextToken)
+  output <- .eks$list_nodegroups_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$list_nodegroups <- eks_list_nodegroups
+
+#' List the tags for an Amazon EKS resource
+#'
+#' List the tags for an Amazon EKS resource.
+#'
+#' @usage
+#' eks_list_tags_for_resource(resourceArn)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
+#' list the tags. Currently, the supported resources are Amazon EKS
+#' clusters and managed node groups.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   resourceArn = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' # This example lists all of the tags for the `beta` cluster.
+#' \donttest{svc$list_tags_for_resource(
+#'   resourceArn = "arn:aws:eks:us-west-2:012345678910:cluster/beta"
+#' )}
+#'
+#' @keywords internal
+#'
+#' @rdname eks_list_tags_for_resource
+eks_list_tags_for_resource <- function(resourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .eks$list_tags_for_resource_input(resourceArn = resourceArn)
+  output <- .eks$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$list_tags_for_resource <- eks_list_tags_for_resource
+
+#' Lists the updates associated with an Amazon EKS cluster or managed node
+#' group in your AWS account, in the specified Region
+#'
+#' Lists the updates associated with an Amazon EKS cluster or managed node
+#' group in your AWS account, in the specified Region.
+#'
+#' @usage
+#' eks_list_updates(name, nodegroupName, nextToken, maxResults)
 #'
 #' @param name &#91;required&#93; The name of the Amazon EKS cluster to list updates for.
+#' @param nodegroupName The name of the Amazon EKS managed node group to list updates for.
 #' @param nextToken The `nextToken` value returned from a previous paginated `ListUpdates`
 #' request where `maxResults` was used and the results exceeded the value
 #' of that parameter. Pagination continues from the end of the previous
@@ -388,6 +952,7 @@ eks_list_clusters <- function(maxResults = NULL, nextToken = NULL) {
 #' ```
 #' svc$list_updates(
 #'   name = "string",
+#'   nodegroupName = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -396,14 +961,14 @@ eks_list_clusters <- function(maxResults = NULL, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname eks_list_updates
-eks_list_updates <- function(name, nextToken = NULL, maxResults = NULL) {
+eks_list_updates <- function(name, nodegroupName = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListUpdates",
     http_method = "GET",
     http_path = "/clusters/{name}/updates",
     paginator = list()
   )
-  input <- .eks$list_updates_input(name = name, nextToken = nextToken, maxResults = maxResults)
+  input <- .eks$list_updates_input(name = name, nodegroupName = nodegroupName, nextToken = nextToken, maxResults = maxResults)
   output <- .eks$list_updates_output()
   config <- get_config()
   svc <- .eks$service(config)
@@ -412,6 +977,98 @@ eks_list_updates <- function(name, nextToken = NULL, maxResults = NULL) {
   return(response)
 }
 .eks$operations$list_updates <- eks_list_updates
+
+#' Associates the specified tags to a resource with the specified
+#' resourceArn
+#'
+#' Associates the specified tags to a resource with the specified
+#' `resourceArn`. If existing tags on a resource are not specified in the
+#' request parameters, they are not changed. When a resource is deleted,
+#' the tags associated with that resource are deleted as well. Tags that
+#' you create for Amazon EKS resources do not propagate to any other
+#' resources associated with the cluster. For example, if you tag a cluster
+#' with this operation, that tag does not automatically propagate to the
+#' subnets and worker nodes associated with the cluster.
+#'
+#' @usage
+#' eks_tag_resource(resourceArn, tags)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to which to add tags.
+#' Currently, the supported resources are Amazon EKS clusters and managed
+#' node groups.
+#' @param tags &#91;required&#93; The tags to add to the resource. A tag is an array of key-value pairs.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   resourceArn = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_tag_resource
+eks_tag_resource <- function(resourceArn, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .eks$tag_resource_input(resourceArn = resourceArn, tags = tags)
+  output <- .eks$tag_resource_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$tag_resource <- eks_tag_resource
+
+#' Deletes specified tags from a resource
+#'
+#' Deletes specified tags from a resource.
+#'
+#' @usage
+#' eks_untag_resource(resourceArn, tagKeys)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource from which to delete
+#' tags. Currently, the supported resources are Amazon EKS clusters and
+#' managed node groups.
+#' @param tagKeys &#91;required&#93; The keys of the tags to be removed.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   resourceArn = "string",
+#'   tagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_untag_resource
+eks_untag_resource <- function(resourceArn, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .eks$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
+  output <- .eks$untag_resource_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$untag_resource <- eks_untag_resource
 
 #' Updates an Amazon EKS cluster configuration
 #'
@@ -524,6 +1181,10 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #' minutes. During an update, the cluster status moves to `UPDATING` (this
 #' status transition is eventually consistent). When the update is complete
 #' (either `Failed` or `Successful`), the cluster status moves to `Active`.
+#' 
+#' If your cluster has managed node groups attached to it, all of your node
+#' groups' Kubernetes versions must match the cluster's Kubernetes version
+#' in order to update the cluster to a new Kubernetes version.
 #'
 #' @usage
 #' eks_update_cluster_version(name, version, clientRequestToken)
@@ -561,3 +1222,147 @@ eks_update_cluster_version <- function(name, version, clientRequestToken = NULL)
   return(response)
 }
 .eks$operations$update_cluster_version <- eks_update_cluster_version
+
+#' Updates an Amazon EKS managed node group configuration
+#'
+#' Updates an Amazon EKS managed node group configuration. Your node group
+#' continues to function during the update. The response output includes an
+#' update ID that you can use to track the status of your node group update
+#' with the DescribeUpdate API operation. Currently you can update the
+#' Kubernetes labels for a node group or the scaling configuration.
+#'
+#' @usage
+#' eks_update_nodegroup_config(clusterName, nodegroupName, labels,
+#'   scalingConfig, clientRequestToken)
+#'
+#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that the managed node group resides
+#' in.
+#' @param nodegroupName &#91;required&#93; The name of the managed node group to update.
+#' @param labels The Kubernetes labels to be applied to the nodes in the node group after
+#' the update.
+#' @param scalingConfig The scaling configuration details for the Auto Scaling group after the
+#' update.
+#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_nodegroup_config(
+#'   clusterName = "string",
+#'   nodegroupName = "string",
+#'   labels = list(
+#'     addOrUpdateLabels = list(
+#'       "string"
+#'     ),
+#'     removeLabels = list(
+#'       "string"
+#'     )
+#'   ),
+#'   scalingConfig = list(
+#'     minSize = 123,
+#'     maxSize = 123,
+#'     desiredSize = 123
+#'   ),
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_update_nodegroup_config
+eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NULL, scalingConfig = NULL, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "UpdateNodegroupConfig",
+    http_method = "POST",
+    http_path = "/clusters/{name}/node-groups/{nodegroupName}/update-config",
+    paginator = list()
+  )
+  input <- .eks$update_nodegroup_config_input(clusterName = clusterName, nodegroupName = nodegroupName, labels = labels, scalingConfig = scalingConfig, clientRequestToken = clientRequestToken)
+  output <- .eks$update_nodegroup_config_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$update_nodegroup_config <- eks_update_nodegroup_config
+
+#' Updates the Kubernetes version or AMI version of an Amazon EKS managed
+#' node group
+#'
+#' Updates the Kubernetes version or AMI version of an Amazon EKS managed
+#' node group.
+#' 
+#' You can update to the latest available AMI version of a node group\'s
+#' current Kubernetes version by not specifying a Kubernetes version in the
+#' request. You can update to the latest AMI version of your cluster\'s
+#' current Kubernetes version by specifying your cluster\'s Kubernetes
+#' version in the request. For more information, see [Amazon EKS-Optimized
+#' Linux AMI
+#' Versions](https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html)
+#' in the *Amazon EKS User Guide*.
+#' 
+#' You cannot roll back a node group to an earlier Kubernetes version or
+#' AMI version.
+#' 
+#' When a node in a managed node group is terminated due to a scaling
+#' action or update, the pods in that node are drained first. Amazon EKS
+#' attempts to drain the nodes gracefully and will fail if it is unable to
+#' do so. You can `force` the update if Amazon EKS is unable to drain the
+#' nodes as a result of a pod disruption budget issue.
+#'
+#' @usage
+#' eks_update_nodegroup_version(clusterName, nodegroupName, version,
+#'   releaseVersion, force, clientRequestToken)
+#'
+#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that is associated with the managed
+#' node group to update.
+#' @param nodegroupName &#91;required&#93; The name of the managed node group to update.
+#' @param version The Kubernetes version to update to. If no version is specified, then
+#' the Kubernetes version of the node group does not change. You can
+#' specify the Kubernetes version of the cluster to update the node group
+#' to the latest AMI version of the cluster\'s Kubernetes version.
+#' @param releaseVersion The AMI version of the Amazon EKS-optimized AMI to use for the update.
+#' By default, the latest available AMI version for the node group\'s
+#' Kubernetes version is used. For more information, see [Amazon
+#' EKS-Optimized Linux AMI
+#' Versions](https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html)
+#' in the *Amazon EKS User Guide*.
+#' @param force Force the update if the existing node group\'s pods are unable to be
+#' drained due to a pod disruption budget issue. If an update fails because
+#' pods could not be drained, you can force the update after it fails to
+#' terminate the old node whether or not any pods are running on the node.
+#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_nodegroup_version(
+#'   clusterName = "string",
+#'   nodegroupName = "string",
+#'   version = "string",
+#'   releaseVersion = "string",
+#'   force = TRUE|FALSE,
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_update_nodegroup_version
+eks_update_nodegroup_version <- function(clusterName, nodegroupName, version = NULL, releaseVersion = NULL, force = NULL, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "UpdateNodegroupVersion",
+    http_method = "POST",
+    http_path = "/clusters/{name}/node-groups/{nodegroupName}/update-version",
+    paginator = list()
+  )
+  input <- .eks$update_nodegroup_version_input(clusterName = clusterName, nodegroupName = nodegroupName, version = version, releaseVersion = releaseVersion, force = force, clientRequestToken = clientRequestToken)
+  output <- .eks$update_nodegroup_version_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$update_nodegroup_version <- eks_update_nodegroup_version

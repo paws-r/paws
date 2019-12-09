@@ -25,11 +25,11 @@ information, see
 \item{certificateAlternativeNames}{An array of strings listing alternative domains and subdomains for your
 SSL/TLS certificate. Lightsail will de-dupe the names for you. You can
 have a maximum of 9 alternative names (in addition to the 1 primary
-domain). We do not support wildcards (e.g., \code{*.example.com}).}
+domain). We do not support wildcards (e.g., \verb{*.example.com}).}
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
-To tag a resource after it has been created, see the \code{tag resource}
+To tag a resource after it has been created, see the \verb{tag resource}
 operation.}
 }
 \description{
@@ -39,9 +39,9 @@ Creates a Lightsail load balancer TLS certificate.
 TLS is just an updated, more secure version of Secure Socket Layer
 (SSL).
 
-The \code{create load balancer tls certificate} operation supports tag-based
+The \verb{create load balancer tls certificate} operation supports tag-based
 access control via resource tags applied to the resource identified by
-loadBalancerName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\verb{load balancer name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_load_balancer_tls_certificate(

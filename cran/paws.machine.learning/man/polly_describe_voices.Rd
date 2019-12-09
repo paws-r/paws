@@ -5,13 +5,16 @@
 \title{Returns the list of voices that are available for use when requesting
 speech synthesis}
 \usage{
-polly_describe_voices(LanguageCode, IncludeAdditionalLanguageCodes,
-  NextToken)
+polly_describe_voices(Engine, LanguageCode,
+  IncludeAdditionalLanguageCodes, NextToken)
 }
 \arguments{
+\item{Engine}{Specifies the engine (\code{standard} or \code{neural}) used by Amazon Polly when
+processing input text for speech synthesis.}
+
 \item{LanguageCode}{The language identification tag (ISO 639 code for the language name-ISO
 3166 country code) for filtering the list of voices returned. If you
-don't specify this optional parameter, all available voices are
+don\'t specify this optional parameter, all available voices are
 returned.}
 
 \item{IncludeAdditionalLanguageCodes}{Boolean value indicating whether to return any bilingual voices that use
@@ -48,6 +51,7 @@ This operation requires permissions to perform the
 }
 \section{Request syntax}{
 \preformatted{svc$describe_voices(
+  Engine = "standard"|"neural",
   LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR",
   IncludeAdditionalLanguageCodes = TRUE|FALSE,
   NextToken = "string"

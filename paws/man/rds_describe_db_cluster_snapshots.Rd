@@ -10,8 +10,8 @@ rds_describe_db_cluster_snapshots(DBClusterIdentifier,
 }
 \arguments{
 \item{DBClusterIdentifier}{The ID of the DB cluster to retrieve the list of DB cluster snapshots
-for. This parameter can't be used in conjunction with the
-\code{DBClusterSnapshotIdentifier} parameter. This parameter is not
+for. This parameter can\'t be used in conjunction with the
+\code{DBClusterSnapshotIdentifier} parameter. This parameter isn\'t
 case-sensitive.
 
 Constraints:
@@ -20,7 +20,7 @@ Constraints:
 }}
 
 \item{DBClusterSnapshotIdentifier}{A specific DB cluster snapshot identifier to describe. This parameter
-can't be used in conjunction with the \code{DBClusterIdentifier} parameter.
+can\'t be used in conjunction with the \code{DBClusterIdentifier} parameter.
 This value is stored as a lowercase string.
 
 Constraints:
@@ -44,24 +44,33 @@ shared to my AWS account.
 public.
 }
 
-If you don't specify a \code{SnapshotType} value, then both automated and
+If you don\'t specify a \code{SnapshotType} value, then both automated and
 manual DB cluster snapshots are returned. You can include shared DB
 cluster snapshots with these results by enabling the \code{IncludeShared}
 parameter. You can include public DB cluster snapshots with these
 results by enabling the \code{IncludePublic} parameter.
 
-The \code{IncludeShared} and \code{IncludePublic} parameters don't apply for
+The \code{IncludeShared} and \code{IncludePublic} parameters don\'t apply for
 \code{SnapshotType} values of \code{manual} or \code{automated}. The \code{IncludePublic}
-parameter doesn't apply when \code{SnapshotType} is set to \code{shared}. The
-\code{IncludeShared} parameter doesn't apply when \code{SnapshotType} is set to
+parameter doesn\'t apply when \code{SnapshotType} is set to \code{shared}. The
+\code{IncludeShared} parameter doesn\'t apply when \code{SnapshotType} is set to
 \code{public}.}
 
-\item{Filters}{This parameter is not currently supported.}
+\item{Filters}{A filter that specifies one or more DB cluster snapshots to describe.
+
+Supported filters:
+\itemize{
+\item \code{db-cluster-id} - Accepts DB cluster identifiers and DB cluster
+Amazon Resource Names (ARNs).
+\item \code{db-cluster-snapshot-id} - Accepts DB cluster snapshot identifiers.
+\item \code{snapshot-type} - Accepts types of DB cluster snapshots.
+\item \code{engine} - Accepts names of database engines.
+}}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a pagination token
-called a marker is included in the response so that the remaining
-results can be retrieved.
+called a marker is included in the response so you can retrieve the
+remaining results.
 
 Default: 100
 

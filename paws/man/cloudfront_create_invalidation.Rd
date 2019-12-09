@@ -7,7 +7,7 @@
 cloudfront_create_invalidation(DistributionId, InvalidationBatch)
 }
 \arguments{
-\item{DistributionId}{[required] The distribution's id.}
+\item{DistributionId}{[required] The distribution\'s id.}
 
 \item{InvalidationBatch}{[required] The batch information for the invalidation.}
 }

@@ -45,7 +45,7 @@ NULL
 
 .signer$get_signing_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(profileName = structure(logical(0), tags = list(type = "string")), signingMaterial = structure(list(certificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), platformId = structure(logical(0), tags = list(type = "string")), overrides = structure(list(signingConfiguration = structure(list(encryptionAlgorithm = structure(logical(0), tags = list(type = "string")), hashAlgorithm = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), signingParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(profileName = structure(logical(0), tags = list(type = "string")), signingMaterial = structure(list(certificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), platformId = structure(logical(0), tags = list(type = "string")), overrides = structure(list(signingConfiguration = structure(list(encryptionAlgorithm = structure(logical(0), tags = list(type = "string")), hashAlgorithm = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), signingParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), status = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -81,13 +81,25 @@ NULL
 
 .signer$list_signing_profiles_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(profiles = structure(list(structure(list(profileName = structure(logical(0), tags = list(type = "string")), signingMaterial = structure(list(certificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), platformId = structure(logical(0), tags = list(type = "string")), signingParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(profiles = structure(list(structure(list(profileName = structure(logical(0), tags = list(type = "string")), signingMaterial = structure(list(certificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), platformId = structure(logical(0), tags = list(type = "string")), signingParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), status = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.signer$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.signer$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .signer$put_signing_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(profileName = structure(logical(0), tags = list(location = "uri", locationName = "profileName", type = "string")), signingMaterial = structure(list(certificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), platformId = structure(logical(0), tags = list(type = "string")), overrides = structure(list(signingConfiguration = structure(list(encryptionAlgorithm = structure(logical(0), tags = list(type = "string")), hashAlgorithm = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), signingParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(profileName = structure(logical(0), tags = list(location = "uri", locationName = "profileName", type = "string")), signingMaterial = structure(list(certificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), platformId = structure(logical(0), tags = list(type = "string")), overrides = structure(list(signingConfiguration = structure(list(encryptionAlgorithm = structure(logical(0), tags = list(type = "string")), hashAlgorithm = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), signingParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -106,5 +118,29 @@ NULL
 .signer$start_signing_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(jobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.signer$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.signer$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.signer$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.signer$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }

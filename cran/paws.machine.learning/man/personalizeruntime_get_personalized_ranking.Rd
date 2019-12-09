@@ -11,7 +11,7 @@ personalizeruntime_get_personalized_ranking(campaignArn, inputList,
 \item{campaignArn}{[required] The Amazon Resource Name (ARN) of the campaign to use for generating the
 personalized ranking.}
 
-\item{inputList}{[required] A list of items (itemId's) to rank. If an item was not included in the
+\item{inputList}{[required] A list of items (itemId\'s) to rank. If an item was not included in the
 training dataset, the item is appended to the end of the reranked list.}
 
 \item{userId}{[required] The user for which you want the campaign to provide a personalized
@@ -24,7 +24,7 @@ user.
 }
 \details{
 The solution backing the campaign must have been created using a recipe
-of type PERSONALIZED\_RANKING.
+of type PERSONALIZED\\_RANKING.
 }
 \section{Request syntax}{
 \preformatted{svc$get_personalized_ranking(

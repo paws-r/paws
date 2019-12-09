@@ -16,7 +16,8 @@ for specified VolumeARN.}
 }
 \description{
 Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials
-for a specified iSCSI target and initiator pair.
+for a specified iSCSI target and initiator pair. This operation is
+supported in volume and tape gateway types.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_chap_credentials(

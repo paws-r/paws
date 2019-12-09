@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_admin_disable_user}
 \alias{cognitoidentityprovider_admin_disable_user}
-\title{Disables the specified user as an administrator}
+\title{Disables the specified user}
 \usage{
 cognitoidentityprovider_admin_disable_user(UserPoolId, Username)
 }
@@ -12,10 +12,10 @@ cognitoidentityprovider_admin_disable_user(UserPoolId, Username)
 \item{Username}{[required] The user name of the user you wish to disable.}
 }
 \description{
-Disables the specified user as an administrator. Works on any user.
+Disables the specified user.
 }
 \details{
-Requires developer credentials.
+Calling this action requires developer credentials.
 }
 \section{Request syntax}{
 \preformatted{svc$admin_disable_user(

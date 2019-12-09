@@ -15,7 +15,7 @@ the next page of exported output values that you asked to retrieve.}
 Lists all exported output values in the account and region in which you
 call this action. Use this action to see the exported output values that
 you can import into other stacks. To import values, use the
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html}{Fn::ImportValue}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html}{\code{Fn::ImportValue}}
 function.
 }
 \details{

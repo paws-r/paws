@@ -54,7 +54,7 @@ specified with \code{LE}.}
 \item{Prefix}{A string that is found at the beginning of a variable, such as \code{Name} or
 \code{Id}.
 
-For example, a \code{Batch Prediction} operation could have the \code{Name}
+For example, a \verb{Batch Prediction} operation could have the \code{Name}
 \code{2014-09-09-HolidayGiftMailer}. To search for this \code{BatchPrediction},
 select \code{Name} for the \code{FilterVariable} and any of the following strings
 for the \code{Prefix}:

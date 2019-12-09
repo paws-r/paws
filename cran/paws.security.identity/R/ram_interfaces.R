@@ -11,7 +11,7 @@ NULL
 
 .ram$accept_resource_share_invitation_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareInvitation = structure(list(resourceShareInvitationArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), resourceShareArn = structure(logical(0), tags = list(type = "string")), senderAccountId = structure(logical(0), tags = list(type = "string")), receiverAccountId = structure(logical(0), tags = list(type = "string")), invitationTimestamp = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), resourceShareAssociations = structure(list(structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), associatedEntity = structure(logical(0), tags = list(type = "string")), associationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), external = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(resourceShareInvitation = structure(list(resourceShareInvitationArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), resourceShareArn = structure(logical(0), tags = list(type = "string")), senderAccountId = structure(logical(0), tags = list(type = "string")), receiverAccountId = structure(logical(0), tags = list(type = "string")), invitationTimestamp = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), resourceShareAssociations = structure(list(structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), associatedEntity = structure(logical(0), tags = list(type = "string")), associationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), external = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(deprecated = TRUE, deprecatedMessage = "This member has been deprecated. Use ListPendingInvitationResources.", type = "list"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -23,19 +23,31 @@ NULL
 
 .ram$associate_resource_share_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareAssociations = structure(list(structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), associatedEntity = structure(logical(0), tags = list(type = "string")), associationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), external = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(resourceShareAssociations = structure(list(structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), associatedEntity = structure(logical(0), tags = list(type = "string")), associationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), external = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ram$associate_resource_share_permission_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), permissionArn = structure(logical(0), tags = list(type = "string")), replace = structure(logical(0), tags = list(type = "boolean")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ram$associate_resource_share_permission_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(returnValue = structure(logical(0), tags = list(type = "boolean")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ram$create_resource_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), principals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), allowExternalPrincipals = structure(logical(0), tags = list(type = "boolean")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), principals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), allowExternalPrincipals = structure(logical(0), tags = list(type = "boolean")), clientToken = structure(logical(0), tags = list(type = "string")), permissionArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ram$create_resource_share_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShare = structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), owningAccountId = structure(logical(0), tags = list(type = "string")), allowExternalPrincipals = structure(logical(0), tags = list(type = "boolean")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(resourceShare = structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), owningAccountId = structure(logical(0), tags = list(type = "string")), allowExternalPrincipals = structure(logical(0), tags = list(type = "boolean")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), featureSet = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -59,7 +71,19 @@ NULL
 
 .ram$disassociate_resource_share_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareAssociations = structure(list(structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), associatedEntity = structure(logical(0), tags = list(type = "string")), associationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), external = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(resourceShareAssociations = structure(list(structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), associatedEntity = structure(logical(0), tags = list(type = "string")), associationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), external = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ram$disassociate_resource_share_permission_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), permissionArn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ram$disassociate_resource_share_permission_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(returnValue = structure(logical(0), tags = list(type = "boolean")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -72,6 +96,18 @@ NULL
 .ram$enable_sharing_with_aws_organization_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(returnValue = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ram$get_permission_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(permissionArn = structure(logical(0), tags = list(type = "string")), permissionVersion = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ram$get_permission_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(permission = structure(list(arn = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), defaultVersion = structure(logical(0), tags = list(type = "boolean")), name = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), permission = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -95,7 +131,7 @@ NULL
 
 .ram$get_resource_share_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareAssociations = structure(list(structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), associatedEntity = structure(logical(0), tags = list(type = "string")), associationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), external = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(resourceShareAssociations = structure(list(structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), associatedEntity = structure(logical(0), tags = list(type = "string")), associationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), external = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -107,7 +143,7 @@ NULL
 
 .ram$get_resource_share_invitations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareInvitations = structure(list(structure(list(resourceShareInvitationArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), resourceShareArn = structure(logical(0), tags = list(type = "string")), senderAccountId = structure(logical(0), tags = list(type = "string")), receiverAccountId = structure(logical(0), tags = list(type = "string")), invitationTimestamp = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), resourceShareAssociations = structure(list(structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), associatedEntity = structure(logical(0), tags = list(type = "string")), associationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), external = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(resourceShareInvitations = structure(list(structure(list(resourceShareInvitationArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), resourceShareArn = structure(logical(0), tags = list(type = "string")), senderAccountId = structure(logical(0), tags = list(type = "string")), receiverAccountId = structure(logical(0), tags = list(type = "string")), invitationTimestamp = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), resourceShareAssociations = structure(list(structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), associatedEntity = structure(logical(0), tags = list(type = "string")), associationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), external = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(deprecated = TRUE, deprecatedMessage = "This member has been deprecated. Use ListPendingInvitationResources.", type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -119,7 +155,31 @@ NULL
 
 .ram$get_resource_shares_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShares = structure(list(structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), owningAccountId = structure(logical(0), tags = list(type = "string")), allowExternalPrincipals = structure(logical(0), tags = list(type = "boolean")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(resourceShares = structure(list(structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), owningAccountId = structure(logical(0), tags = list(type = "string")), allowExternalPrincipals = structure(logical(0), tags = list(type = "boolean")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), featureSet = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ram$list_pending_invitation_resources_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceShareInvitationArn = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ram$list_pending_invitation_resources_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resources = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceGroupArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ram$list_permissions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceType = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ram$list_permissions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(permissions = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), defaultVersion = structure(logical(0), tags = list(type = "boolean")), name = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -135,6 +195,18 @@ NULL
   return(populate(args, shape))
 }
 
+.ram$list_resource_share_permissions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ram$list_resource_share_permissions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(permissions = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), defaultVersion = structure(logical(0), tags = list(type = "boolean")), name = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .ram$list_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(resourceOwner = structure(logical(0), tags = list(type = "string")), principal = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resourceShareArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
@@ -143,7 +215,19 @@ NULL
 
 .ram$list_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resources = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), resourceShareArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(resources = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceGroupArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ram$promote_resource_share_created_from_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceShareArn = structure(logical(0), tags = list(location = "querystring", locationName = "resourceShareArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ram$promote_resource_share_created_from_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(returnValue = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -155,7 +239,7 @@ NULL
 
 .ram$reject_resource_share_invitation_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareInvitation = structure(list(resourceShareInvitationArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), resourceShareArn = structure(logical(0), tags = list(type = "string")), senderAccountId = structure(logical(0), tags = list(type = "string")), receiverAccountId = structure(logical(0), tags = list(type = "string")), invitationTimestamp = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), resourceShareAssociations = structure(list(structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), associatedEntity = structure(logical(0), tags = list(type = "string")), associationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), external = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(resourceShareInvitation = structure(list(resourceShareInvitationArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), resourceShareArn = structure(logical(0), tags = list(type = "string")), senderAccountId = structure(logical(0), tags = list(type = "string")), receiverAccountId = structure(logical(0), tags = list(type = "string")), invitationTimestamp = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), resourceShareAssociations = structure(list(structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), associatedEntity = structure(logical(0), tags = list(type = "string")), associationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), external = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(deprecated = TRUE, deprecatedMessage = "This member has been deprecated. Use ListPendingInvitationResources.", type = "list"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -191,6 +275,6 @@ NULL
 
 .ram$update_resource_share_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShare = structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), owningAccountId = structure(logical(0), tags = list(type = "string")), allowExternalPrincipals = structure(logical(0), tags = list(type = "boolean")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(resourceShare = structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), owningAccountId = structure(logical(0), tags = list(type = "string")), allowExternalPrincipals = structure(logical(0), tags = list(type = "boolean")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), featureSet = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

@@ -5,12 +5,13 @@ NULL
 
 #' Adds one or more tags to a trail, up to a limit of 50
 #'
-#' Adds one or more tags to a trail, up to a limit of 50. Tags must be
-#' unique per trail. Overwrites an existing tag\'s value when a new value
-#' is specified for an existing tag key. If you specify a key without a
+#' Adds one or more tags to a trail, up to a limit of 50. Overwrites an
+#' existing tag\'s value when a new value is specified for an existing tag
+#' key. Tag key names must be unique for a trail; you cannot have two keys
+#' with the same name but different values. If you specify a key without a
 #' value, the tag will be created with the specified key and a value of
-#' null. You can tag a trail that applies to all regions only from the
-#' region in which the trail was created (that is, from its home region).
+#' null. You can tag a trail that applies to all AWS Regions only from the
+#' Region in which the trail was created (also known as its home region).
 #'
 #' @usage
 #' cloudtrail_add_tags(ResourceId, TagsList)
@@ -58,14 +59,13 @@ cloudtrail_add_tags <- function(ResourceId, TagsList = NULL) {
 #' an Amazon S3 bucket
 #'
 #' Creates a trail that specifies the settings for delivery of log data to
-#' an Amazon S3 bucket. A maximum of five trails can exist in a region,
-#' irrespective of the region in which they were created.
+#' an Amazon S3 bucket.
 #'
 #' @usage
 #' cloudtrail_create_trail(Name, S3BucketName, S3KeyPrefix, SnsTopicName,
 #'   IncludeGlobalServiceEvents, IsMultiRegionTrail, EnableLogFileValidation,
 #'   CloudWatchLogsLogGroupArn, CloudWatchLogsRoleArn, KmsKeyId,
-#'   IsOrganizationTrail)
+#'   IsOrganizationTrail, TagsList)
 #'
 #' @param Name &#91;required&#93; Specifies the name of the trail. The name must meet the following
 #' requirements:
@@ -83,18 +83,20 @@ cloudtrail_add_tags <- function(ResourceId, TagsList = NULL) {
 #' -   Not be in IP address format (for example, 192.168.5.4)
 #' @param S3BucketName &#91;required&#93; Specifies the name of the Amazon S3 bucket designated for publishing log
 #' files. See [Amazon S3 Bucket Naming
-#' Requirements](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html).
+#' Requirements](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html).
 #' @param S3KeyPrefix Specifies the Amazon S3 key prefix that comes after the name of the
 #' bucket you have designated for log file delivery. For more information,
 #' see [Finding Your CloudTrail Log
-#' Files](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html).
+#' Files](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html).
 #' The maximum length is 200 characters.
 #' @param SnsTopicName Specifies the name of the Amazon SNS topic defined for notification of
 #' log file delivery. The maximum length is 256 characters.
 #' @param IncludeGlobalServiceEvents Specifies whether the trail is publishing events from global services
 #' such as IAM to the log files.
 #' @param IsMultiRegionTrail Specifies whether the trail is created in the current region or in all
-#' regions. The default is false.
+#' regions. The default is false, which creates a trail only in the region
+#' where you are signed in. As a best practice, consider creating trails
+#' that log events in all regions.
 #' @param EnableLogFileValidation Specifies whether log file integrity validation is enabled. The default
 #' is false.
 #' 
@@ -131,6 +133,7 @@ cloudtrail_add_tags <- function(ResourceId, TagsList = NULL) {
 #' The default is false, and cannot be true unless the call is made on
 #' behalf of an AWS account that is the master account for an organization
 #' in AWS Organizations.
+#' @param TagsList 
 #'
 #' @section Request syntax:
 #' ```
@@ -145,21 +148,27 @@ cloudtrail_add_tags <- function(ResourceId, TagsList = NULL) {
 #'   CloudWatchLogsLogGroupArn = "string",
 #'   CloudWatchLogsRoleArn = "string",
 #'   KmsKeyId = "string",
-#'   IsOrganizationTrail = TRUE|FALSE
+#'   IsOrganizationTrail = TRUE|FALSE,
+#'   TagsList = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname cloudtrail_create_trail
-cloudtrail_create_trail <- function(Name, S3BucketName, S3KeyPrefix = NULL, SnsTopicName = NULL, IncludeGlobalServiceEvents = NULL, IsMultiRegionTrail = NULL, EnableLogFileValidation = NULL, CloudWatchLogsLogGroupArn = NULL, CloudWatchLogsRoleArn = NULL, KmsKeyId = NULL, IsOrganizationTrail = NULL) {
+cloudtrail_create_trail <- function(Name, S3BucketName, S3KeyPrefix = NULL, SnsTopicName = NULL, IncludeGlobalServiceEvents = NULL, IsMultiRegionTrail = NULL, EnableLogFileValidation = NULL, CloudWatchLogsLogGroupArn = NULL, CloudWatchLogsRoleArn = NULL, KmsKeyId = NULL, IsOrganizationTrail = NULL, TagsList = NULL) {
   op <- new_operation(
     name = "CreateTrail",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudtrail$create_trail_input(Name = Name, S3BucketName = S3BucketName, S3KeyPrefix = S3KeyPrefix, SnsTopicName = SnsTopicName, IncludeGlobalServiceEvents = IncludeGlobalServiceEvents, IsMultiRegionTrail = IsMultiRegionTrail, EnableLogFileValidation = EnableLogFileValidation, CloudWatchLogsLogGroupArn = CloudWatchLogsLogGroupArn, CloudWatchLogsRoleArn = CloudWatchLogsRoleArn, KmsKeyId = KmsKeyId, IsOrganizationTrail = IsOrganizationTrail)
+  input <- .cloudtrail$create_trail_input(Name = Name, S3BucketName = S3BucketName, S3KeyPrefix = S3KeyPrefix, SnsTopicName = SnsTopicName, IncludeGlobalServiceEvents = IncludeGlobalServiceEvents, IsMultiRegionTrail = IsMultiRegionTrail, EnableLogFileValidation = EnableLogFileValidation, CloudWatchLogsLogGroupArn = CloudWatchLogsLogGroupArn, CloudWatchLogsRoleArn = CloudWatchLogsRoleArn, KmsKeyId = KmsKeyId, IsOrganizationTrail = IsOrganizationTrail, TagsList = TagsList)
   output <- .cloudtrail$create_trail_output()
   config <- get_config()
   svc <- .cloudtrail$service(config)
@@ -210,11 +219,11 @@ cloudtrail_delete_trail <- function(Name) {
 }
 .cloudtrail$operations$delete_trail <- cloudtrail_delete_trail
 
-#' Retrieves settings for the trail associated with the current region for
-#' your account
+#' Retrieves settings for one or more trails associated with the current
+#' region for your account
 #'
-#' Retrieves settings for the trail associated with the current region for
-#' your account.
+#' Retrieves settings for one or more trails associated with the current
+#' region for your account.
 #'
 #' @usage
 #' cloudtrail_describe_trails(trailNameList, includeShadowTrails)
@@ -292,7 +301,7 @@ cloudtrail_describe_trails <- function(trailNameList = NULL, includeShadowTrails
 #'     or AWS Lambda functions that you are logging for data events.
 #' 
 #' For more information, see [Logging Data and Management Events for
-#' Trails](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html)
+#' Trails](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html)
 #' in the *AWS CloudTrail User Guide*.
 #'
 #' @usage
@@ -343,6 +352,106 @@ cloudtrail_get_event_selectors <- function(TrailName) {
   return(response)
 }
 .cloudtrail$operations$get_event_selectors <- cloudtrail_get_event_selectors
+
+#' Describes the settings for the Insights event selectors that you
+#' configured for your trail
+#'
+#' Describes the settings for the Insights event selectors that you
+#' configured for your trail. `GetInsightSelectors` shows if CloudTrail
+#' Insights event logging is enabled on the trail, and if it is, which
+#' insight types are enabled. If you run `GetInsightSelectors` on a trail
+#' that does not have Insights events enabled, the operation throws the
+#' exception `InsightNotEnabledException`
+#' 
+#' For more information, see [Logging CloudTrail Insights Events for
+#' Trails](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html)
+#' in the *AWS CloudTrail User Guide*.
+#'
+#' @usage
+#' cloudtrail_get_insight_selectors(TrailName)
+#'
+#' @param TrailName &#91;required&#93; Specifies the name of the trail or trail ARN. If you specify a trail
+#' name, the string must meet the following requirements:
+#' 
+#' -   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
+#'     underscores (\\_), or dashes (-)
+#' 
+#' -   Start with a letter or number, and end with a letter or number
+#' 
+#' -   Be between 3 and 128 characters
+#' 
+#' -   Have no adjacent periods, underscores or dashes. Names like
+#'     `my-_namespace` and `my--namespace` are not valid.
+#' 
+#' -   Not be in IP address format (for example, 192.168.5.4)
+#' 
+#' If you specify a trail ARN, it must be in the format:
+#' 
+#' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_insight_selectors(
+#'   TrailName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudtrail_get_insight_selectors
+cloudtrail_get_insight_selectors <- function(TrailName) {
+  op <- new_operation(
+    name = "GetInsightSelectors",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudtrail$get_insight_selectors_input(TrailName = TrailName)
+  output <- .cloudtrail$get_insight_selectors_output()
+  config <- get_config()
+  svc <- .cloudtrail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudtrail$operations$get_insight_selectors <- cloudtrail_get_insight_selectors
+
+#' Returns settings information for a specified trail
+#'
+#' Returns settings information for a specified trail.
+#'
+#' @usage
+#' cloudtrail_get_trail(Name)
+#'
+#' @param Name &#91;required&#93; The name or the Amazon Resource Name (ARN) of the trail for which you
+#' want to retrieve settings information.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_trail(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudtrail_get_trail
+cloudtrail_get_trail <- function(Name) {
+  op <- new_operation(
+    name = "GetTrail",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudtrail$get_trail_input(Name = Name)
+  output <- .cloudtrail$get_trail_output()
+  config <- get_config()
+  svc <- .cloudtrail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudtrail$operations$get_trail <- cloudtrail_get_trail
 
 #' Returns a JSON-formatted list of information about the specified trail
 #'
@@ -489,13 +598,56 @@ cloudtrail_list_tags <- function(ResourceIdList, NextToken = NULL) {
 }
 .cloudtrail$operations$list_tags <- cloudtrail_list_tags
 
-#' Looks up management events captured by CloudTrail
+#' Lists trails that are in the current account
+#'
+#' Lists trails that are in the current account.
+#'
+#' @usage
+#' cloudtrail_list_trails(NextToken)
+#'
+#' @param NextToken The token to use to get the next page of results after a previous API
+#' call. This token must be passed in with the same parameters that were
+#' specified in the the original call. For example, if the original call
+#' specified an AttributeKey of \'Username\' with a value of \'root\', the
+#' call with NextToken should include those same parameters.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_trails(
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudtrail_list_trails
+cloudtrail_list_trails <- function(NextToken = NULL) {
+  op <- new_operation(
+    name = "ListTrails",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudtrail$list_trails_input(NextToken = NextToken)
+  output <- .cloudtrail$list_trails_output()
+  config <- get_config()
+  svc <- .cloudtrail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudtrail$operations$list_trails <- cloudtrail_list_trails
+
+#' Looks up management events or CloudTrail Insights events that are
+#' captured by CloudTrail
 #'
 #' Looks up [management
 #' events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-management-events)
-#' captured by CloudTrail. Events for a region can be looked up in that
-#' region during the last 90 days. Lookup supports the following
-#' attributes:
+#' or [CloudTrail Insights
+#' events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-insights-events)
+#' that are captured by CloudTrail. You can look up events that occurred in
+#' a region within the last 90 days. Lookup supports the following
+#' attributes for management events:
 #' 
 #' -   AWS access key
 #' 
@@ -513,20 +665,24 @@ cloudtrail_list_tags <- function(ResourceIdList, NextToken = NULL) {
 #' 
 #' -   User name
 #' 
+#' Lookup supports the following attributes for Insights events:
+#' 
+#' -   Event ID
+#' 
+#' -   Event name
+#' 
+#' -   Event source
+#' 
 #' All attributes are optional. The default number of results returned is
 #' 50, with a maximum of 50 possible. The response includes a token that
 #' you can use to get the next page of results.
 #' 
-#' The rate of lookup requests is limited to one per second per account. If
+#' The rate of lookup requests is limited to two per second per account. If
 #' this limit is exceeded, a throttling error occurs.
-#' 
-#' Events that occurred during the selected time range will not be
-#' available for lookup if CloudTrail logging was not enabled when the
-#' events occurred.
 #'
 #' @usage
 #' cloudtrail_lookup_events(LookupAttributes, StartTime, EndTime,
-#'   MaxResults, NextToken)
+#'   EventCategory, MaxResults, NextToken)
 #'
 #' @param LookupAttributes Contains a list of lookup attributes. Currently the list can contain
 #' only one item.
@@ -536,6 +692,10 @@ cloudtrail_list_tags <- function(ResourceIdList, NextToken = NULL) {
 #' @param EndTime Specifies that only events that occur before or at the specified time
 #' are returned. If the specified end time is before the specified start
 #' time, an error is returned.
+#' @param EventCategory Specifies the event category. If you do not specify an event category,
+#' events of the category are not returned in the response. For example, if
+#' you do not specify `insight` as the value of `EventCategory`, no
+#' Insights events are returned.
 #' @param MaxResults The number of events to return. Possible values are 1 through 50. The
 #' default is 50.
 #' @param NextToken The token to use to get the next page of results after a previous API
@@ -559,6 +719,7 @@ cloudtrail_list_tags <- function(ResourceIdList, NextToken = NULL) {
 #'   EndTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
+#'   EventCategory = "insight",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -567,14 +728,14 @@ cloudtrail_list_tags <- function(ResourceIdList, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudtrail_lookup_events
-cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, EndTime = NULL, MaxResults = NULL, NextToken = NULL) {
+cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, EndTime = NULL, EventCategory = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "LookupEvents",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudtrail$lookup_events_input(LookupAttributes = LookupAttributes, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .cloudtrail$lookup_events_input(LookupAttributes = LookupAttributes, StartTime = StartTime, EndTime = EndTime, EventCategory = EventCategory, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudtrail$lookup_events_output()
   config <- get_config()
   svc <- .cloudtrail$service(config)
@@ -619,7 +780,7 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
 #' 
 #' You can configure up to five event selectors for each trail. For more
 #' information, see [Logging Data and Management Events for
-#' Trails](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html)
+#' Trails](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html)
 #' and [Limits in AWS
 #' CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html)
 #' in the *AWS CloudTrail User Guide*.
@@ -663,6 +824,9 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
 #'             "string"
 #'           )
 #'         )
+#'       ),
+#'       ExcludeManagementEventSources = list(
+#'         "string"
 #'       )
 #'     )
 #'   )
@@ -688,6 +852,56 @@ cloudtrail_put_event_selectors <- function(TrailName, EventSelectors) {
   return(response)
 }
 .cloudtrail$operations$put_event_selectors <- cloudtrail_put_event_selectors
+
+#' Lets you enable Insights event logging by specifying the Insights
+#' selectors that you want to enable on an existing trail
+#'
+#' Lets you enable Insights event logging by specifying the Insights
+#' selectors that you want to enable on an existing trail. You also use
+#' `PutInsightSelectors` to turn off Insights event logging, by passing an
+#' empty list of insight types. In this release, only `ApiCallRateInsight`
+#' is supported as an Insights selector.
+#'
+#' @usage
+#' cloudtrail_put_insight_selectors(TrailName, InsightSelectors)
+#'
+#' @param TrailName &#91;required&#93; The name of the CloudTrail trail for which you want to change or add
+#' Insights selectors.
+#' @param InsightSelectors &#91;required&#93; A JSON string that contains the insight types you want to log on a
+#' trail. In this release, only `ApiCallRateInsight` is supported as an
+#' insight type.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_insight_selectors(
+#'   TrailName = "string",
+#'   InsightSelectors = list(
+#'     list(
+#'       InsightType = "ApiCallRateInsight"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudtrail_put_insight_selectors
+cloudtrail_put_insight_selectors <- function(TrailName, InsightSelectors) {
+  op <- new_operation(
+    name = "PutInsightSelectors",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudtrail$put_insight_selectors_input(TrailName = TrailName, InsightSelectors = InsightSelectors)
+  output <- .cloudtrail$put_insight_selectors_output()
+  config <- get_config()
+  svc <- .cloudtrail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudtrail$operations$put_insight_selectors <- cloudtrail_put_insight_selectors
 
 #' Removes the specified tags from a trail
 #'
@@ -862,11 +1076,11 @@ cloudtrail_stop_logging <- function(Name) {
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
 #' @param S3BucketName Specifies the name of the Amazon S3 bucket designated for publishing log
 #' files. See [Amazon S3 Bucket Naming
-#' Requirements](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html).
+#' Requirements](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html).
 #' @param S3KeyPrefix Specifies the Amazon S3 key prefix that comes after the name of the
 #' bucket you have designated for log file delivery. For more information,
 #' see [Finding Your CloudTrail Log
-#' Files](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html).
+#' Files](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html).
 #' The maximum length is 200 characters.
 #' @param SnsTopicName Specifies the name of the Amazon SNS topic defined for notification of
 #' log file delivery. The maximum length is 256 characters.
@@ -878,7 +1092,8 @@ cloudtrail_stop_logging <- function(Name) {
 #' trail) will be created in the other regions. If the trail exists in all
 #' regions and this value is set to false, the trail will remain in the
 #' region where it was created, and its shadow trails in other regions will
-#' be deleted.
+#' be deleted. As a best practice, consider using trails that log events in
+#' all regions.
 #' @param EnableLogFileValidation Specifies whether log file validation is enabled. The default is false.
 #' 
 #' When you disable log file integrity validation, the chain of digest

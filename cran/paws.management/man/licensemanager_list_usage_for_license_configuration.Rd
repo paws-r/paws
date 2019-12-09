@@ -9,15 +9,23 @@ licensemanager_list_usage_for_license_configuration(
   LicenseConfigurationArn, MaxResults, NextToken, Filters)
 }
 \arguments{
-\item{LicenseConfigurationArn}{[required] ARN of the targeted \code{LicenseConfiguration} object.}
+\item{LicenseConfigurationArn}{[required] Amazon Resource Name (ARN) of the license configuration.}
 
-\item{MaxResults}{Maximum number of results to return in a single call. To retrieve the
-remaining results, make another call with the returned \code{NextToken}
-value.}
+\item{MaxResults}{Maximum number of results to return in a single call.}
 
 \item{NextToken}{Token for the next set of results.}
 
-\item{Filters}{List of filters to apply.}
+\item{Filters}{Filters to scope the results. The following filters and logical
+operators are supported:
+\itemize{
+\item \code{resourceArn} - The ARN of the license configuration resource.
+Logical operators are \code{EQUALS} \\| \code{NOT_EQUALS}.
+\item \code{resourceType} - The resource type (EC2\\_INSTANCE \\| EC2\\_HOST \\|
+EC2\\_AMI \\| SYSTEMS\\_MANAGER\\_MANAGED\\_INSTANCE). Logical operators
+are \code{EQUALS} \\| \code{NOT_EQUALS}.
+\item \code{resourceAccount} - The ID of the account that owns the resource.
+Logical operators are \code{EQUALS} \\| \code{NOT_EQUALS}.
+}}
 }
 \description{
 Lists all license usage records for a license configuration, displaying

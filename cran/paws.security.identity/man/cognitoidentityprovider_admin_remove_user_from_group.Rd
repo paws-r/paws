@@ -18,7 +18,7 @@ cognitoidentityprovider_admin_remove_user_from_group(UserPoolId,
 Removes the specified user from the specified group.
 }
 \details{
-Requires developer credentials.
+Calling this action requires developer credentials.
 }
 \section{Request syntax}{
 \preformatted{svc$admin_remove_user_from_group(

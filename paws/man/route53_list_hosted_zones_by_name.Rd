@@ -9,7 +9,7 @@ route53_list_hosted_zones_by_name(DNSName, HostedZoneId, MaxItems)
 \arguments{
 \item{DNSName}{(Optional) For your first request to \code{ListHostedZonesByName}, include
 the \code{dnsname} parameter only if you want to specify the name of the
-first hosted zone in the response. If you don't include the \code{dnsname}
+first hosted zone in the response. If you don\'t include the \code{dnsname}
 parameter, Amazon Route 53 returns all of the hosted zones that were
 created by the current AWS account, in ASCII order. For subsequent
 requests, include both \code{dnsname} and \code{hostedzoneid} parameters. For
@@ -50,10 +50,10 @@ If the domain name includes escape characters or Punycode,
 \code{ListHostedZonesByName} alphabetizes the domain name using the escaped
 or Punycoded value, which is the format that Amazon Route 53 saves in
 its database. For example, to create a hosted zone for exÃ¤mple.com, you
-specify ex\344mple.com for the domain name. \code{ListHostedZonesByName}
+specify ex\\344mple.com for the domain name. \code{ListHostedZonesByName}
 alphabetizes it as:
 
-\code{com.ex\\344mple.}
+\verb{com.ex\\\\344mple.}
 
 The labels are reversed and alphabetized using the escaped value. For
 more information about valid domain name formats, including
@@ -73,13 +73,11 @@ that you specified for the \code{maxitems} parameter in the request that
 produced the current response.
 \item If the value of \code{IsTruncated} in the response is true, there are
 more hosted zones associated with the current AWS account.
-}
 
 If \code{IsTruncated} is false, this response includes the last hosted
 zone that is associated with the current account. The \code{NextDNSName}
 element and \code{NextHostedZoneId} elements are omitted from the
 response.
-\itemize{
 \item The \code{NextDNSName} and \code{NextHostedZoneId} elements in the response
 contain the domain name and the hosted zone ID of the next hosted
 zone that is associated with the current AWS account. If you want to

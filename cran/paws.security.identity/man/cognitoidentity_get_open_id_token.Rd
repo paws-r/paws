@@ -11,7 +11,7 @@ cognitoidentity_get_open_id_token(IdentityId, Logins)
 
 \item{Logins}{A set of optional name-value pairs that map provider names to provider
 tokens. When using graph.facebook.com and www.amazon.com, supply the
-access\_token returned from the provider's authflow. For
+access\\_token returned from the provider\'s authflow. For
 accounts.google.com, an Amazon Cognito user pool provider, or any other
 OpenId Connect provider, always include the \code{id_token}.}
 }

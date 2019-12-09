@@ -26,22 +26,20 @@ RegisterTargetWithMaintenanceWindow action are also required for this
 API request. Optional fields that are not specified are set to null.}
 }
 \description{
-Modifies the target of an existing maintenance window. You can't change
-the target type, but you can change the following:
+Modifies the target of an existing maintenance window. You can change
+the following:
 }
 \details{
-The target from being an ID target to a Tag target, or a Tag target to
-an ID target.
-
-IDs for an ID target.
-
-Tags for a Tag target.
-
-Owner.
-
-Name.
-
-Description.
+\itemize{
+\item Name
+\item Description
+\item Owner
+\item IDs for an ID target
+\item Tags for a Tag target
+\item From any supported tag type to another. The three supported tag
+types are ID target, Tag target, and resource group. For more
+information, see Target.
+}
 
 If a parameter is null, then the corresponding field is not modified.
 }

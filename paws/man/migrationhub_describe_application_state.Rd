@@ -7,8 +7,8 @@
 migrationhub_describe_application_state(ApplicationId)
 }
 \arguments{
-\item{ApplicationId}{[required] The configurationId in ADS that uniquely identifies the grouped
-application.}
+\item{ApplicationId}{[required] The configurationId in Application Discovery Service that uniquely
+identifies the grouped application.}
 }
 \description{
 Gets the migration status of an application.

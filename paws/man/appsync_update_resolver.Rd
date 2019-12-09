@@ -5,7 +5,8 @@
 \title{Updates a Resolver object}
 \usage{
 appsync_update_resolver(apiId, typeName, fieldName, dataSourceName,
-  requestMappingTemplate, responseMappingTemplate, kind, pipelineConfig)
+  requestMappingTemplate, responseMappingTemplate, kind, pipelineConfig,
+  syncConfig, cachingConfig)
 }
 \arguments{
 \item{apiId}{[required] The API ID.}
@@ -32,6 +33,10 @@ data sources.
 }}
 
 \item{pipelineConfig}{The \code{PipelineConfig}.}
+
+\item{syncConfig}{The \code{SyncConfig} for a resolver attached to a versioned datasource.}
+
+\item{cachingConfig}{The caching configuration for the resolver.}
 }
 \description{
 Updates a \code{Resolver} object.
@@ -47,6 +52,19 @@ Updates a \code{Resolver} object.
   kind = "UNIT"|"PIPELINE",
   pipelineConfig = list(
     functions = list(
+      "string"
+    )
+  ),
+  syncConfig = list(
+    conflictHandler = "OPTIMISTIC_CONCURRENCY"|"LAMBDA"|"AUTOMERGE"|"NONE",
+    conflictDetection = "VERSION"|"NONE",
+    lambdaConflictHandlerConfig = list(
+      lambdaConflictHandlerArn = "string"
+    )
+  ),
+  cachingConfig = list(
+    ttl = 123,
+    cachingKeys = list(
       "string"
     )
   )

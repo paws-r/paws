@@ -10,13 +10,13 @@ apigateway_update_integration_response(restApiId, resourceId,
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[required] [Required] Specifies an update integration response request's
+\item{resourceId}{[required] [Required] Specifies an update integration response request\'s
 resource identifier.}
 
-\item{httpMethod}{[required] [Required] Specifies an update integration response request's HTTP
+\item{httpMethod}{[required] [Required] Specifies an update integration response request\'s HTTP
 method.}
 
-\item{statusCode}{[required] [Required] Specifies an update integration response request's status
+\item{statusCode}{[required] [Required] Specifies an update integration response request\'s status
 code.}
 
 \item{patchOperations}{A list of update operations to be applied to the specified resource and

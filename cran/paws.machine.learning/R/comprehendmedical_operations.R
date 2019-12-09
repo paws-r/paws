@@ -3,10 +3,90 @@
 #' @include comprehendmedical_service.R
 NULL
 
-#' Inspects the clinical text for a variety of medical entities and returns
-#' specific information about them such as entity category, location, and
-#' confidence score on that information
+#' Gets the properties associated with a medical entities detection job
 #'
+#' Gets the properties associated with a medical entities detection job.
+#' Use this operation to get the status of a detection job.
+#'
+#' @usage
+#' comprehendmedical_describe_entities_detection_v2_job(JobId)
+#'
+#' @param JobId &#91;required&#93; The identifier that Amazon Comprehend Medical generated for the job. The
+#' `StartEntitiesDetectionV2Job` operation returns this identifier in its
+#' response.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_entities_detection_v2_job(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_describe_entities_detection_v2_job
+comprehendmedical_describe_entities_detection_v2_job <- function(JobId) {
+  op <- new_operation(
+    name = "DescribeEntitiesDetectionV2Job",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$describe_entities_detection_v2_job_input(JobId = JobId)
+  output <- .comprehendmedical$describe_entities_detection_v2_job_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$describe_entities_detection_v2_job <- comprehendmedical_describe_entities_detection_v2_job
+
+#' Gets the properties associated with a protected health information (PHI)
+#' detection job
+#'
+#' Gets the properties associated with a protected health information (PHI)
+#' detection job. Use this operation to get the status of a detection job.
+#'
+#' @usage
+#' comprehendmedical_describe_phi_detection_job(JobId)
+#'
+#' @param JobId &#91;required&#93; The identifier that Amazon Comprehend Medical generated for the job. The
+#' `StartPHIDetectionJob` operation returns this identifier in its
+#' response.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_phi_detection_job(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_describe_phi_detection_job
+comprehendmedical_describe_phi_detection_job <- function(JobId) {
+  op <- new_operation(
+    name = "DescribePHIDetectionJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$describe_phi_detection_job_input(JobId = JobId)
+  output <- .comprehendmedical$describe_phi_detection_job_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$describe_phi_detection_job <- comprehendmedical_describe_phi_detection_job
+
+#' The DetectEntities operation is deprecated
+#'
+#' The `DetectEntities` operation is deprecated. You should use the
+#' DetectEntitiesV2 operation instead.
+#' 
 #' Inspects the clinical text for a variety of medical entities and returns
 #' specific information about them such as entity category, location, and
 #' confidence score on that information .
@@ -45,11 +125,63 @@ comprehendmedical_detect_entities <- function(Text) {
 }
 .comprehendmedical$operations$detect_entities <- comprehendmedical_detect_entities
 
-#' Inspects the clinical text for personal health information (PHI)
+#' Inspects the clinical text for a variety of medical entities and returns
+#' specific information about them such as entity category, location, and
+#' confidence score on that information
+#'
+#' Inspects the clinical text for a variety of medical entities and returns
+#' specific information about them such as entity category, location, and
+#' confidence score on that information.
+#' 
+#' The `DetectEntitiesV2` operation replaces the DetectEntities operation.
+#' This new action uses a different model for determining the entities in
+#' your medical text and changes the way that some entities are returned in
+#' the output. You should use the `DetectEntitiesV2` operation in all new
+#' applications.
+#' 
+#' The `DetectEntitiesV2` operation returns the `Acuity` and `Direction`
+#' entities as attributes instead of types. It does not return the
+#' `Quality` or `Quantity` entities.
+#'
+#' @usage
+#' comprehendmedical_detect_entities_v2(Text)
+#'
+#' @param Text &#91;required&#93; A UTF-8 string containing the clinical content being examined for
+#' entities. Each string must contain fewer than 20,000 bytes of
+#' characters.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$detect_entities_v2(
+#'   Text = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_detect_entities_v2
+comprehendmedical_detect_entities_v2 <- function(Text) {
+  op <- new_operation(
+    name = "DetectEntitiesV2",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$detect_entities_v2_input(Text = Text)
+  output <- .comprehendmedical$detect_entities_v2_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$detect_entities_v2 <- comprehendmedical_detect_entities_v2
+
+#' Inspects the clinical text for protected health information (PHI)
 #' entities and entity category, location, and confidence score on that
 #' information
 #'
-#' Inspects the clinical text for personal health information (PHI)
+#' Inspects the clinical text for protected health information (PHI)
 #' entities and entity category, location, and confidence score on that
 #' information.
 #'
@@ -86,3 +218,313 @@ comprehendmedical_detect_phi <- function(Text) {
   return(response)
 }
 .comprehendmedical$operations$detect_phi <- comprehendmedical_detect_phi
+
+#' Gets a list of medical entity detection jobs that you have submitted
+#'
+#' Gets a list of medical entity detection jobs that you have submitted.
+#'
+#' @usage
+#' comprehendmedical_list_entities_detection_v2_jobs(Filter, NextToken,
+#'   MaxResults)
+#'
+#' @param Filter Filters the jobs that are returned. You can filter jobs based on their
+#' names, status, or the date and time that they were submitted. You can
+#' only set one filter at a time.
+#' @param NextToken Identifies the next page of results to return.
+#' @param MaxResults The maximum number of results to return in each page. The default is
+#' 100.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_entities_detection_v2_jobs(
+#'   Filter = list(
+#'     JobName = "string",
+#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+#'     SubmitTimeBefore = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     SubmitTimeAfter = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_list_entities_detection_v2_jobs
+comprehendmedical_list_entities_detection_v2_jobs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListEntitiesDetectionV2Jobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$list_entities_detection_v2_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .comprehendmedical$list_entities_detection_v2_jobs_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$list_entities_detection_v2_jobs <- comprehendmedical_list_entities_detection_v2_jobs
+
+#' Gets a list of protected health information (PHI) detection jobs that
+#' you have submitted
+#'
+#' Gets a list of protected health information (PHI) detection jobs that
+#' you have submitted.
+#'
+#' @usage
+#' comprehendmedical_list_phi_detection_jobs(Filter, NextToken, MaxResults)
+#'
+#' @param Filter Filters the jobs that are returned. You can filter jobs based on their
+#' names, status, or the date and time that they were submitted. You can
+#' only set one filter at a time.
+#' @param NextToken Identifies the next page of results to return.
+#' @param MaxResults The maximum number of results to return in each page. The default is
+#' 100.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_phi_detection_jobs(
+#'   Filter = list(
+#'     JobName = "string",
+#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+#'     SubmitTimeBefore = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     SubmitTimeAfter = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_list_phi_detection_jobs
+comprehendmedical_list_phi_detection_jobs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListPHIDetectionJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$list_phi_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .comprehendmedical$list_phi_detection_jobs_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$list_phi_detection_jobs <- comprehendmedical_list_phi_detection_jobs
+
+#' Starts an asynchronous medical entity detection job for a collection of
+#' documents
+#'
+#' Starts an asynchronous medical entity detection job for a collection of
+#' documents. Use the `DescribeEntitiesDetectionV2Job` operation to track
+#' the status of a job.
+#'
+#' @usage
+#' comprehendmedical_start_entities_detection_v2_job(InputDataConfig,
+#'   OutputDataConfig, DataAccessRoleArn, JobName, ClientRequestToken,
+#'   KMSKey, LanguageCode)
+#'
+#' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
+#' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
+#' (IAM) role that grants Amazon Comprehend Medical read access to your
+#' input data. For more information, see [Role-Based Permissions Required
+#' for Asynchronous
+#' Operations](https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions-med.html#auth-role-permissions-med).
+#' @param JobName The identifier of the job.
+#' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client
+#' request token, Amazon Comprehend Medical generates one.
+#' @param KMSKey An AWS Key Management Service key to encrypt your output files. If you
+#' do not specify a key, the files are written in plain text.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same
+#' language.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_entities_detection_v2_job(
+#'   InputDataConfig = list(
+#'     S3Bucket = "string",
+#'     S3Key = "string"
+#'   ),
+#'   OutputDataConfig = list(
+#'     S3Bucket = "string",
+#'     S3Key = "string"
+#'   ),
+#'   DataAccessRoleArn = "string",
+#'   JobName = "string",
+#'   ClientRequestToken = "string",
+#'   KMSKey = "string",
+#'   LanguageCode = "en"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_start_entities_detection_v2_job
+comprehendmedical_start_entities_detection_v2_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, ClientRequestToken = NULL, KMSKey = NULL, LanguageCode) {
+  op <- new_operation(
+    name = "StartEntitiesDetectionV2Job",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$start_entities_detection_v2_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, ClientRequestToken = ClientRequestToken, KMSKey = KMSKey, LanguageCode = LanguageCode)
+  output <- .comprehendmedical$start_entities_detection_v2_job_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$start_entities_detection_v2_job <- comprehendmedical_start_entities_detection_v2_job
+
+#' Starts an asynchronous job to detect protected health information (PHI)
+#'
+#' Starts an asynchronous job to detect protected health information (PHI).
+#' Use the `DescribePHIDetectionJob` operation to track the status of a
+#' job.
+#'
+#' @usage
+#' comprehendmedical_start_phi_detection_job(InputDataConfig,
+#'   OutputDataConfig, DataAccessRoleArn, JobName, ClientRequestToken,
+#'   KMSKey, LanguageCode)
+#'
+#' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
+#' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
+#' (IAM) role that grants Amazon Comprehend Medical read access to your
+#' input data. For more information, see [Role-Based Permissions Required
+#' for Asynchronous
+#' Operations](https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions-med.html#auth-role-permissions-med).
+#' @param JobName The identifier of the job.
+#' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client
+#' request token, Amazon Comprehend Medical generates one.
+#' @param KMSKey An AWS Key Management Service key to encrypt your output files. If you
+#' do not specify a key, the files are written in plain text.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same
+#' language.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_phi_detection_job(
+#'   InputDataConfig = list(
+#'     S3Bucket = "string",
+#'     S3Key = "string"
+#'   ),
+#'   OutputDataConfig = list(
+#'     S3Bucket = "string",
+#'     S3Key = "string"
+#'   ),
+#'   DataAccessRoleArn = "string",
+#'   JobName = "string",
+#'   ClientRequestToken = "string",
+#'   KMSKey = "string",
+#'   LanguageCode = "en"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_start_phi_detection_job
+comprehendmedical_start_phi_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, ClientRequestToken = NULL, KMSKey = NULL, LanguageCode) {
+  op <- new_operation(
+    name = "StartPHIDetectionJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$start_phi_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, ClientRequestToken = ClientRequestToken, KMSKey = KMSKey, LanguageCode = LanguageCode)
+  output <- .comprehendmedical$start_phi_detection_job_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$start_phi_detection_job <- comprehendmedical_start_phi_detection_job
+
+#' Stops a medical entities detection job in progress
+#'
+#' Stops a medical entities detection job in progress.
+#'
+#' @usage
+#' comprehendmedical_stop_entities_detection_v2_job(JobId)
+#'
+#' @param JobId &#91;required&#93; The identifier of the medical entities job to stop.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_entities_detection_v2_job(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_stop_entities_detection_v2_job
+comprehendmedical_stop_entities_detection_v2_job <- function(JobId) {
+  op <- new_operation(
+    name = "StopEntitiesDetectionV2Job",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$stop_entities_detection_v2_job_input(JobId = JobId)
+  output <- .comprehendmedical$stop_entities_detection_v2_job_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$stop_entities_detection_v2_job <- comprehendmedical_stop_entities_detection_v2_job
+
+#' Stops a protected health information (PHI) detection job in progress
+#'
+#' Stops a protected health information (PHI) detection job in progress.
+#'
+#' @usage
+#' comprehendmedical_stop_phi_detection_job(JobId)
+#'
+#' @param JobId &#91;required&#93; The identifier of the PHI detection job to stop.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_phi_detection_job(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_stop_phi_detection_job
+comprehendmedical_stop_phi_detection_job <- function(JobId) {
+  op <- new_operation(
+    name = "StopPHIDetectionJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$stop_phi_detection_job_input(JobId = JobId)
+  output <- .comprehendmedical$stop_phi_detection_job_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$stop_phi_detection_job <- comprehendmedical_stop_phi_detection_job

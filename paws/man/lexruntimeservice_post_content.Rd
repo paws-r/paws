@@ -13,7 +13,7 @@ lexruntimeservice_post_content(botName, botAlias, userId,
 \item{botAlias}{[required] Alias of the Amazon Lex bot.}
 
 \item{userId}{[required] The ID of the client application user. Amazon Lex uses this to identify
-a user's conversation with your bot. At runtime, each request must
+a user\'s conversation with your bot. At runtime, each request must
 contain the \code{userID} field.
 
 To decide the user ID to use for your application, consider the
@@ -27,8 +27,8 @@ continue on another device, use a user-specific identifier.
 \item If you want the same user to be able to have two independent
 conversations on two different devices, choose a device-specific
 identifier.
-\item A user can't have two independent conversations with two different
-versions of the same bot. For example, a user can't have a
+\item A user can\'t have two independent conversations with two different
+versions of the same bot. For example, a user can\'t have a
 conversation with the PROD and BETA versions of the same bot. If you
 anticipate that a user will need to have conversation with two
 different versions, for example, while testing, include the bot
@@ -42,7 +42,7 @@ application. The value must be a JSON serialized and base64 encoded map
 with string keys and values. The total size of the \code{sessionAttributes}
 and \code{requestAttributes} headers is limited to 12 KB.
 
-For more information, see \href{http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs}{Setting Session Attributes}.}
+For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs}{Setting Session Attributes}.}
 
 \item{requestAttributes}{You pass this value as the \code{x-amz-lex-request-attributes} HTTP header.
 
@@ -51,10 +51,10 @@ application. The value must be a JSON serialized and base64 encoded map
 with string keys and values. The total size of the \code{requestAttributes}
 and \code{sessionAttributes} headers is limited to 12 KB.
 
-The namespace \code{x-amz-lex:} is reserved for special attributes. Don't
-create any request attributes with the prefix \code{x-amz-lex:}.
+The namespace \verb{x-amz-lex:} is reserved for special attributes. Don\'t
+create any request attributes with the prefix \verb{x-amz-lex:}.
 
-For more information, see \href{http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs}{Setting Request Attributes}.}
+For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs}{Setting Request Attributes}.}
 
 \item{contentType}{[required] You pass this value as the \code{Content-Type} HTTP header.
 
@@ -84,21 +84,22 @@ bit-rate=256000; frame-size-milliseconds=4
 The message Amazon Lex returns in the response can be either text or
 speech based on the \code{Accept} HTTP header value in the request.
 \itemize{
-\item If the value is \code{text/plain; charset=utf-8}, Amazon Lex returns text
+\item If the value is \verb{text/plain; charset=utf-8}, Amazon Lex returns text
 in the response.
-\item If the value begins with \code{audio/}, Amazon Lex returns speech in the
+\item If the value begins with \verb{audio/}, Amazon Lex returns speech in the
 response. Amazon Lex uses Amazon Polly to generate the speech (using
 the configuration you specified in the \code{Accept} header). For
 example, if you specify \code{audio/mpeg} as the value, Amazon Lex
 returns speech in the MPEG format.
-
-The following are the accepted values:
+\item If the value is \code{audio/pcm}, the speech returned is \code{audio/pcm} in
+16-bit, little endian format.
+\item The following are the accepted values:
 \itemize{
 \item audio/mpeg
 \item audio/ogg
 \item audio/pcm
 \item text/plain; charset=utf-8
-\item audio/* (defaults to mpeg)
+\item audio/\* (defaults to mpeg)
 }
 }}
 
@@ -124,15 +125,15 @@ telephone audio applications.
 In response, Amazon Lex returns the next message to convey to the user.
 Consider the following example messages:
 \itemize{
-\item For a user input "I would like a pizza," Amazon Lex might return a
+\item For a user input \"I would like a pizza,\" Amazon Lex might return a
 response with a message eliciting slot data (for example,
-\code{PizzaSize}): "What size pizza would you like?".
+\code{PizzaSize}): \"What size pizza would you like?\".
 \item After the user provides all of the pizza order information, Amazon
 Lex might return a response with a message to get user confirmation:
-"Order the pizza?".
-\item After the user replies "Yes" to the confirmation prompt, Amazon
-Lex might return a conclusion statement: "Thank you, your cheese
-pizza has been ordered.".
+\"Order the pizza?\".
+\item After the user replies \"Yes\" to the confirmation prompt, Amazon
+Lex might return a conclusion statement: \"Thank you, your cheese
+pizza has been ordered.\".
 }
 
 Not all Amazon Lex messages require a response from the user. For
@@ -144,6 +145,7 @@ appropriate client user interface. Consider the following examples:
 \itemize{
 \item If the message is to elicit slot data, Amazon Lex returns the
 following context information:
+\itemize{
 \item \code{x-amz-lex-dialog-state} header set to \code{ElicitSlot}
 \item \code{x-amz-lex-intent-name} header set to the intent name in the
 current context
@@ -151,6 +153,7 @@ current context
 the \code{message} is eliciting information
 \item \code{x-amz-lex-slots} header set to a map of slots configured for
 the intent with their current values
+}
 \item If the message is a confirmation prompt, the
 \code{x-amz-lex-dialog-state} header is set to \code{Confirmation} and the
 \code{x-amz-lex-slot-to-elicit} header is omitted.
@@ -161,7 +164,7 @@ indicating that the user intent is not understood, the
 }
 
 In addition, Amazon Lex also returns your application-specific
-\code{sessionAttributes}. For more information, see \href{http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html}{Managing Conversation Context}.
+\code{sessionAttributes}. For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html}{Managing Conversation Context}.
 }
 \section{Request syntax}{
 \preformatted{svc$post_content(

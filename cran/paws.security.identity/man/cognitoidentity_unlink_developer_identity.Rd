@@ -12,7 +12,7 @@ cognitoidentity_unlink_developer_identity(IdentityId, IdentityPoolId,
 
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
 
-\item{DeveloperProviderName}{[required] The "domain" by which Cognito will refer to your users.}
+\item{DeveloperProviderName}{[required] The \"domain\" by which Cognito will refer to your users.}
 
 \item{DeveloperUserIdentifier}{[required] A unique ID used by your backend authentication process to identify a
 user.}

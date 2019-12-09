@@ -9,12 +9,12 @@ pinpointemail_send_email(FromEmailAddress, Destination,
   ConfigurationSetName)
 }
 \arguments{
-\item{FromEmailAddress}{The email address that you want to use as the "From" address for the
+\item{FromEmailAddress}{The email address that you want to use as the \"From\" address for the
 email. The address that you specify has to be verified.}
 
 \item{Destination}{[required] An object that contains the recipients of the email message.}
 
-\item{ReplyToAddresses}{The "Reply-to" email addresses for the message. When the recipient
+\item{ReplyToAddresses}{The \"Reply-to\" email addresses for the message. When the recipient
 replies to the message, each Reply-to address receives the reply.}
 
 \item{FeedbackForwardingEmailAddress}{The address that Amazon Pinpoint should send bounce and complaint
@@ -84,6 +84,10 @@ to be a valid MIME message.
     ),
     Raw = list(
       Data = raw
+    ),
+    Template = list(
+      TemplateArn = "string",
+      TemplateData = "string"
     )
   ),
   EmailTags = list(

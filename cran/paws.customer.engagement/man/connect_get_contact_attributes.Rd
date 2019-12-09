@@ -2,19 +2,17 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_get_contact_attributes}
 \alias{connect_get_contact_attributes}
-\title{Retrieves the contact attributes associated with a contact}
+\title{Retrieves the contact attributes for the specified contact}
 \usage{
 connect_get_contact_attributes(InstanceId, InitialContactId)
 }
 \arguments{
-\item{InstanceId}{[required] The instance ID for the instance from which to retrieve contact
-attributes.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 
-\item{InitialContactId}{[required] The ID for the initial contact in Amazon Connect associated with the
-attributes to update.}
+\item{InitialContactId}{[required] The identifier of the initial contact.}
 }
 \description{
-Retrieves the contact attributes associated with a contact.
+Retrieves the contact attributes for the specified contact.
 }
 \section{Request syntax}{
 \preformatted{svc$get_contact_attributes(

@@ -14,6 +14,10 @@ Deletes an \href{https://docs.aws.amazon.com/lambda/latest/dg/intro-invocation-m
 You can get the identifier of a mapping from the output of
 ListEventSourceMappings.
 }
+\details{
+When you delete an event source mapping, it enters a \code{Deleting} state
+and might not be completely deleted for several seconds.
+}
 \section{Request syntax}{
 \preformatted{svc$delete_event_source_mapping(
   UUID = "string"

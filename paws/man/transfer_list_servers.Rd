@@ -11,7 +11,7 @@ transfer_list_servers(MaxResults, NextToken)
 \item{MaxResults}{Specifies the number of servers to return as a response to the
 \code{ListServers} query.}
 
-\item{NextToken}{When additional results are obtained from the ListServers command, a
+\item{NextToken}{When additional results are obtained from the \code{ListServers} command, a
 \code{NextToken} parameter is returned in the output. You can then pass the
 \code{NextToken} parameter in a subsequent command to continue listing
 additional servers.}

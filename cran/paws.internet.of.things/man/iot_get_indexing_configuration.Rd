@@ -2,12 +2,12 @@
 % Please edit documentation in R/iot_operations.R
 \name{iot_get_indexing_configuration}
 \alias{iot_get_indexing_configuration}
-\title{Gets the search configuration}
+\title{Gets the indexing configuration}
 \usage{
 iot_get_indexing_configuration()
 }
 \description{
-Gets the search configuration.
+Gets the indexing configuration.
 }
 \section{Request syntax}{
 \preformatted{svc$get_indexing_configuration()

@@ -8,12 +8,12 @@ ssm_describe_instance_information(InstanceInformationFilterList,
   Filters, MaxResults, NextToken)
 }
 \arguments{
-\item{InstanceInformationFilterList}{This is a legacy method. We recommend that you don't use this method.
+\item{InstanceInformationFilterList}{This is a legacy method. We recommend that you don\'t use this method.
 Instead, use the InstanceInformationFilter action. The
 \code{InstanceInformationFilter} action enables you to return instance
 information by using tags that are specified as a key-value mapping.
 
-If you do use this method, then you can't use the
+If you do use this method, then you can\'t use the
 \code{InstanceInformationFilter} action. Using this method and the
 \code{InstanceInformationFilter} action causes an exception error.}
 

@@ -2,7 +2,8 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_list_resources}
 \alias{ram_list_resources}
-\title{Lists the resources that the specified principal can access}
+\title{Lists the resources that you added to a resource shares or the resources
+that are shared with you}
 \usage{
 ram_list_resources(resourceOwner, principal, resourceType, resourceArns,
   resourceShareArns, nextToken, maxResults)
@@ -12,7 +13,12 @@ ram_list_resources(resourceOwner, principal, resourceType, resourceArns,
 
 \item{principal}{The principal.}
 
-\item{resourceType}{The resource type.}
+\item{resourceType}{The resource type.
+
+Valid values: \code{ec2:CapacityReservation} \\| \code{ec2:Subnet} \\|
+\code{ec2:TrafficMirrorTarget} \\| \code{ec2:TransitGateway} \\|
+\code{license-manager:LicenseConfiguration} \\| \code{rds:Cluster} \\|
+\code{route53resolver:ResolverRule} \\| \code{resource-groups:Group}}
 
 \item{resourceArns}{The Amazon Resource Names (ARN) of the resources.}
 
@@ -25,7 +31,8 @@ the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
 \description{
-Lists the resources that the specified principal can access.
+Lists the resources that you added to a resource shares or the resources
+that are shared with you.
 }
 \section{Request syntax}{
 \preformatted{svc$list_resources(

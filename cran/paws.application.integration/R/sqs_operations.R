@@ -323,7 +323,7 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @usage
-#' sqs_create_queue(QueueName, Attributes)
+#' sqs_create_queue(QueueName, Attributes, tags)
 #'
 #' @param QueueName &#91;required&#93; The name of the new queue. The following limits apply to this name:
 #' 
@@ -461,12 +461,43 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #'         the same as the one generated for the first
 #'         `MessageDeduplicationId`, the two messages are treated as
 #'         duplicates and only one copy of the message is delivered.
+#' @param tags Add cost allocation tags to the specified Amazon SQS queue. For an
+#' overview, see [Tagging Your Amazon SQS
+#' Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html)
+#' in the *Amazon Simple Queue Service Developer Guide*.
+#' 
+#' When you use queue tags, keep the following guidelines in mind:
+#' 
+#' -   Adding more than 50 tags to a queue isn\'t recommended.
+#' 
+#' -   Tags don\'t have any semantic meaning. Amazon SQS interprets tags as
+#'     character strings.
+#' 
+#' -   Tags are case-sensitive.
+#' 
+#' -   A new tag with a key identical to that of an existing tag overwrites
+#'     the existing tag.
+#' 
+#' For a full list of tag restrictions, see [Limits Related to
+#' Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-limits.html#limits-queues)
+#' in the *Amazon Simple Queue Service Developer Guide*.
+#' 
+#' To be able to tag a queue on creation, you must have the
+#' `sqs:CreateQueue` and `sqs:TagQueue` permissions.
+#' 
+#' Cross-account permissions don\'t apply to this action. For more
+#' information, see [Grant Cross-Account Permissions to a Role and a User
+#' Name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
+#' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_queue(
 #'   QueueName = "string",
 #'   Attributes = list(
+#'     "string"
+#'   ),
+#'   tags = list(
 #'     "string"
 #'   )
 #' )
@@ -475,14 +506,14 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' @keywords internal
 #'
 #' @rdname sqs_create_queue
-sqs_create_queue <- function(QueueName, Attributes = NULL) {
+sqs_create_queue <- function(QueueName, Attributes = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateQueue",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sqs$create_queue_input(QueueName = QueueName, Attributes = Attributes)
+  input <- .sqs$create_queue_input(QueueName = QueueName, Attributes = Attributes, tags = tags)
   output <- .sqs$create_queue_output()
   config <- get_config()
   svc <- .sqs$service(config)
@@ -1135,6 +1166,8 @@ sqs_purge_queue <- function(QueueUrl) {
 #' -   `ApproximateReceiveCount` - Returns the number of times a message
 #'     has been received from the queue but not deleted.
 #' 
+#' -   `AWSTraceHeader` - Returns the AWS X-Ray trace header string.
+#' 
 #' -   `SenderId`
 #' 
 #'     -   For an IAM user, returns the IAM user ID, for example
@@ -1354,7 +1387,7 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #'
 #' @usage
 #' sqs_send_message(QueueUrl, MessageBody, DelaySeconds, MessageAttributes,
-#'   MessageDeduplicationId, MessageGroupId)
+#'   MessageSystemAttributes, MessageDeduplicationId, MessageGroupId)
 #'
 #' @param QueueUrl &#91;required&#93; The URL of the Amazon SQS queue to which a message is sent.
 #' 
@@ -1382,6 +1415,15 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' more information, see [Amazon SQS Message
 #' Attributes](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html)
 #' in the *Amazon Simple Queue Service Developer Guide*.
+#' @param MessageSystemAttributes The message system attribute to send. Each message system attribute
+#' consists of a `Name`, `Type`, and `Value`.
+#' 
+#' -   Currently, the only supported message system attribute is
+#'     `AWSTraceHeader`. Its type must be `String` and its value must be a
+#'     correctly formatted AWS X-Ray trace string.
+#' 
+#' -   The size of a message system attribute doesn\'t count towards the
+#'     total size of a message.
 #' @param MessageDeduplicationId This parameter applies only to FIFO (first-in-first-out) queues.
 #' 
 #' The token used for deduplication of sent messages. If a message with a
@@ -1486,6 +1528,19 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #'       DataType = "string"
 #'     )
 #'   ),
+#'   MessageSystemAttributes = list(
+#'     list(
+#'       StringValue = "string",
+#'       BinaryValue = raw,
+#'       StringListValues = list(
+#'         "string"
+#'       ),
+#'       BinaryListValues = list(
+#'         raw
+#'       ),
+#'       DataType = "string"
+#'     )
+#'   ),
 #'   MessageDeduplicationId = "string",
 #'   MessageGroupId = "string"
 #' )
@@ -1494,14 +1549,14 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' @keywords internal
 #'
 #' @rdname sqs_send_message
-sqs_send_message <- function(QueueUrl, MessageBody, DelaySeconds = NULL, MessageAttributes = NULL, MessageDeduplicationId = NULL, MessageGroupId = NULL) {
+sqs_send_message <- function(QueueUrl, MessageBody, DelaySeconds = NULL, MessageAttributes = NULL, MessageSystemAttributes = NULL, MessageDeduplicationId = NULL, MessageGroupId = NULL) {
   op <- new_operation(
     name = "SendMessage",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sqs$send_message_input(QueueUrl = QueueUrl, MessageBody = MessageBody, DelaySeconds = DelaySeconds, MessageAttributes = MessageAttributes, MessageDeduplicationId = MessageDeduplicationId, MessageGroupId = MessageGroupId)
+  input <- .sqs$send_message_input(QueueUrl = QueueUrl, MessageBody = MessageBody, DelaySeconds = DelaySeconds, MessageAttributes = MessageAttributes, MessageSystemAttributes = MessageSystemAttributes, MessageDeduplicationId = MessageDeduplicationId, MessageGroupId = MessageGroupId)
   output <- .sqs$send_message_output()
   config <- get_config()
   svc <- .sqs$service(config)
@@ -1565,6 +1620,19 @@ sqs_send_message <- function(QueueUrl, MessageBody, DelaySeconds = NULL, Message
 #'       MessageBody = "string",
 #'       DelaySeconds = 123,
 #'       MessageAttributes = list(
+#'         list(
+#'           StringValue = "string",
+#'           BinaryValue = raw,
+#'           StringListValues = list(
+#'             "string"
+#'           ),
+#'           BinaryListValues = list(
+#'             raw
+#'           ),
+#'           DataType = "string"
+#'         )
+#'       ),
+#'       MessageSystemAttributes = list(
 #'         list(
 #'           StringValue = "string",
 #'           BinaryValue = raw,
@@ -1795,10 +1863,6 @@ sqs_set_queue_attributes <- function(QueueUrl, Attributes) {
 #' 
 #' -   A new tag with a key identical to that of an existing tag overwrites
 #'     the existing tag.
-#' 
-#' -   Tagging actions are limited to 5 TPS per AWS account. If your
-#'     application requires a higher throughput, file a [technical support
-#'     request](https://console.aws.amazon.com/support/home#/case/create?issueType=technical).
 #' 
 #' For a full list of tag restrictions, see [Limits Related to
 #' Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-limits.html#limits-queues)

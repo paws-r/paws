@@ -13,16 +13,16 @@ exist.
 
 This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \_+=,.@-}
+spaces. You can also include any of the following characters: \\_+=,.@-}
 
 \item{Password}{[required] The new password for the user.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} that is used to
 validate this parameter is a string of characters. That string can
 include almost any printable ASCII character from the space (\code{U+0020})
-through the end of the ASCII character range (\code{U+00FF}). You can also
-include the tab (\code{U+0009}), line feed (\code{U+000A}), and carriage return
-(\code{U+000D}) characters. Any of these characters are valid in a password.
+through the end of the ASCII character range (\verb{U+00FF}). You can also
+include the tab (\code{U+0009}), line feed (\verb{U+000A}), and carriage return
+(\verb{U+000D}) characters. Any of these characters are valid in a password.
 However, many tools, such as the AWS Management Console, might restrict
 the ability to type certain characters because they have special meaning
 within that tool.}

@@ -16,16 +16,16 @@ domain for.}
 The MAIL FROM domain must meet the following criteria:
 \itemize{
 \item It has to be a subdomain of the verified identity.
-\item It can't be used to receive email.
-\item It can't be used in a "From" address if the MAIL FROM domain is a
+\item It can\'t be used to receive email.
+\item It can\'t be used in a \"From\" address if the MAIL FROM domain is a
 destination for feedback forwarding emails.
 }}
 
-\item{BehaviorOnMxFailure}{The action that you want Amazon Pinpoint to take if it can't read the
+\item{BehaviorOnMxFailure}{The action that you want Amazon Pinpoint to take if it can\'t read the
 required MX record when you send an email. When you set this value to
 \code{UseDefaultValue}, Amazon Pinpoint uses \emph{amazonses.com} as the MAIL FROM
 domain. When you set this value to \code{RejectMessage}, Amazon Pinpoint
-returns a \code{MailFromDomainNotVerified} error, and doesn't attempt to
+returns a \code{MailFromDomainNotVerified} error, and doesn\'t attempt to
 deliver the email.
 
 These behaviors are taken when the custom MAIL FROM domain configuration

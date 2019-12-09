@@ -28,6 +28,10 @@ Changes the class of the channel.
           ChannelId = "string"
         )
       ),
+      MultiplexSettings = list(
+        MultiplexId = "string",
+        ProgramName = "string"
+      ),
       Settings = list(
         list(
           PasswordParam = "string",

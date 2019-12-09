@@ -11,7 +11,7 @@ iam_update_assume_role_policy(RoleName, PolicyDocument)
 
 This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \_+=,.@-}
+spaces. You can also include any of the following characters: \\_+=,.@-}
 
 \item{PolicyDocument}{[required] The policy that grants an entity permission to assume the role.
 
@@ -26,14 +26,14 @@ this parameter is a string of characters consisting of the following:
 \item Any printable ASCII character ranging from the space character
 (\code{U+0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \code{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\code{U+000A}), and
-carriage return (\code{U+000D})
+character set (through \verb{U+00FF})
+\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
+carriage return (\verb{U+000D})
 }}
 }
 \description{
 Updates the policy that grants an IAM entity permission to assume a
-role. This is typically referred to as the "role trust policy". For
+role. This is typically referred to as the \"role trust policy\". For
 more information about roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html}{Using Roles to Delegate Permissions and Federate Identities}.
 }
 \section{Request syntax}{
@@ -48,7 +48,7 @@ more information about roles, go to \href{https://docs.aws.amazon.com/IAM/latest
 # The following command updates the role trust policy for the role named
 # Test-Role:
 \donttest{svc$update_assume_role_policy(
-  PolicyDocument = "{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":[{\\"Effect\\":\\"Allow\\",...",
+  PolicyDocument = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",...",
   RoleName = "S3AccessForEC2Instances"
 )}
 

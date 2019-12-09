@@ -14,7 +14,7 @@ codepipeline_poll_for_third_party_jobs(actionTypeId, maxBatchSize)
 }
 \description{
 Determines whether there are any third party jobs for a job worker to
-act on. Only used for partner actions.
+act on. Used for partner actions only.
 }
 \details{
 When this API is called, AWS CodePipeline returns temporary credentials

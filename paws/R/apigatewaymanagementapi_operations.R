@@ -3,6 +3,78 @@
 #' @include apigatewaymanagementapi_service.R
 NULL
 
+#' Delete the connection with the provided id
+#'
+#' Delete the connection with the provided id.
+#'
+#' @usage
+#' apigatewaymanagementapi_delete_connection(ConnectionId)
+#'
+#' @param ConnectionId &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_connection(
+#'   ConnectionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewaymanagementapi_delete_connection
+apigatewaymanagementapi_delete_connection <- function(ConnectionId) {
+  op <- new_operation(
+    name = "DeleteConnection",
+    http_method = "DELETE",
+    http_path = "/@connections/{connectionId}",
+    paginator = list()
+  )
+  input <- .apigatewaymanagementapi$delete_connection_input(ConnectionId = ConnectionId)
+  output <- .apigatewaymanagementapi$delete_connection_output()
+  config <- get_config()
+  svc <- .apigatewaymanagementapi$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewaymanagementapi$operations$delete_connection <- apigatewaymanagementapi_delete_connection
+
+#' Get information about the connection with the provided id
+#'
+#' Get information about the connection with the provided id.
+#'
+#' @usage
+#' apigatewaymanagementapi_get_connection(ConnectionId)
+#'
+#' @param ConnectionId &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_connection(
+#'   ConnectionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewaymanagementapi_get_connection
+apigatewaymanagementapi_get_connection <- function(ConnectionId) {
+  op <- new_operation(
+    name = "GetConnection",
+    http_method = "GET",
+    http_path = "/@connections/{connectionId}",
+    paginator = list()
+  )
+  input <- .apigatewaymanagementapi$get_connection_input(ConnectionId = ConnectionId)
+  output <- .apigatewaymanagementapi$get_connection_output()
+  config <- get_config()
+  svc <- .apigatewaymanagementapi$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewaymanagementapi$operations$get_connection <- apigatewaymanagementapi_get_connection
+
 #' Sends the provided data to the specified connection
 #'
 #' Sends the provided data to the specified connection.

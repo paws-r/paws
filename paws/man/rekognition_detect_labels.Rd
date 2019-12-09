@@ -21,7 +21,7 @@ more information, see Images in the Amazon Rekognition developer guide.}
 The service returns the specified number of highest confidence labels.}
 
 \item{MinConfidence}{Specifies the minimum confidence level for the labels to return. Amazon
-Rekognition doesn't return any labels with confidence lower than this
+Rekognition doesn\'t return any labels with confidence lower than this
 specified value.
 
 If \code{MinConfidence} is not specified, the operation returns labels with a
@@ -53,11 +53,11 @@ the image contains the object. For example, suppose the input image has
 a lighthouse, the sea, and a rock. The response includes all three
 labels, one for each object.
 
-\code{\{Name: lighthouse, Confidence: 98.4629\}}
+\verb{\\\{Name: lighthouse, Confidence: 98.4629\\\}}
 
-\code{\{Name: rock,Confidence: 79.2097\}}
+\verb{\\\{Name: rock,Confidence: 79.2097\\\}}
 
-\code{ \{Name: sea,Confidence: 75.061\}}
+\verb{ \\\{Name: sea,Confidence: 75.061\\\}}
 
 In the preceding example, the operation returns one label for each of
 the three objects. The operation can also return multiple labels for the
@@ -65,11 +65,11 @@ same object in the image. For example, if the input image shows a flower
 (for example, a tulip), the operation might return the following three
 labels.
 
-\code{\{Name: flower,Confidence: 99.0562\}}
+\verb{\\\{Name: flower,Confidence: 99.0562\\\}}
 
-\code{\{Name: plant,Confidence: 99.0562\}}
+\verb{\\\{Name: plant,Confidence: 99.0562\\\}}
 
-\code{\{Name: tulip,Confidence: 99.0562\}}
+\verb{\\\{Name: tulip,Confidence: 99.0562\\\}}
 
 In this example, the detection algorithm more precisely identifies the
 flower as a tulip.
@@ -77,10 +77,10 @@ flower as a tulip.
 In response, the API returns an array of labels. In addition, the
 response also includes the orientation correction. Optionally, you can
 specify \code{MinConfidence} to control the confidence threshold for the
-labels returned. The default is 55\%. You can also add the \code{MaxLabels}
+labels returned. The default is 55\\%. You can also add the \code{MaxLabels}
 parameter to limit the number of labels returned.
 
-If the object detected is a person, the operation doesn't provide the
+If the object detected is a person, the operation doesn\'t provide the
 same facial details that the DetectFaces operation provides.
 
 \code{DetectLabels} returns bounding boxes for instances of common object

@@ -17,7 +17,7 @@ The CancelJob operation cancels an unfinished job.
 }
 \details{
 You can only cancel a job that has a status of \code{Submitted}. To prevent a
-pipeline from starting to process a job while you're getting the job
+pipeline from starting to process a job while you\'re getting the job
 identifier, use UpdatePipelineStatus to temporarily pause the pipeline.
 }
 \section{Request syntax}{

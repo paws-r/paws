@@ -14,7 +14,8 @@ kafka_describe_configuration_revision(Arn, Revision)
 <p>A string that uniquely identifies a revision of an MSK configuration.</p>}
 }
 \description{
-<p>Returns a description of this revision of the configuration.</p>
+\preformatted{        <p>Returns a description of this revision of the configuration.</p>
+}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_configuration_revision(

@@ -32,7 +32,8 @@ kafka_create_cluster(BrokerNodeGroupInfo, ClientAuthentication,
 \item{Tags}{<p>Create tags when creating the cluster.</p>}
 }
 \description{
-<p>Creates a new MSK cluster.</p>
+\preformatted{        <p>Creates a new MSK cluster.</p>
+}
 }
 \section{Request syntax}{
 \preformatted{svc$create_cluster(

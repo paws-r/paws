@@ -10,7 +10,7 @@ lexmodelbuildingservice_delete_slot_type(name)
 \item{name}{[required] The name of the slot type. The name is case sensitive.}
 }
 \description{
-Deletes all versions of the slot type, including the \code{$LATEST} version.
+Deletes all versions of the slot type, including the \verb{$LATEST} version.
 To delete a specific version of the slot type, use the
 DeleteSlotTypeVersion operation.
 }

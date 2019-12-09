@@ -9,68 +9,68 @@ devicefarm_create_upload(projectArn, name, type, contentType)
 \arguments{
 \item{projectArn}{[required] The ARN of the project for the upload.}
 
-\item{name}{[required] The upload's file name. The name should not contain the '/'
+\item{name}{[required] The upload\'s file name. The name should not contain the \'/\'
 character. If uploading an iOS app, the file name needs to end with the
 \code{.ipa} extension. If uploading an Android app, the file name needs to
 end with the \code{.apk} extension. For all others, the file name must end
 with the \code{.zip} file extension.}
 
-\item{type}{[required] The upload's upload type.
+\item{type}{[required] The upload\'s upload type.
 
 Must be one of the following values:
 \itemize{
-\item ANDROID\_APP: An Android upload.
-\item IOS\_APP: An iOS upload.
-\item WEB\_APP: A web application upload.
-\item EXTERNAL\_DATA: An external data upload.
-\item APPIUM\_JAVA\_JUNIT\_TEST\_PACKAGE: An Appium Java JUnit test
+\item ANDROID\\_APP: An Android upload.
+\item IOS\\_APP: An iOS upload.
+\item WEB\\_APP: A web application upload.
+\item EXTERNAL\\_DATA: An external data upload.
+\item APPIUM\\_JAVA\\_JUNIT\\_TEST\\_PACKAGE: An Appium Java JUnit test
 package upload.
-\item APPIUM\_JAVA\_TESTNG\_TEST\_PACKAGE: An Appium Java TestNG test
+\item APPIUM\\_JAVA\\_TESTNG\\_TEST\\_PACKAGE: An Appium Java TestNG test
 package upload.
-\item APPIUM\_PYTHON\_TEST\_PACKAGE: An Appium Python test package upload.
-\item APPIUM\_NODE\_TEST\_PACKAGE: An Appium Node.js test package upload.
-\item APPIUM\_RUBY\_TEST\_PACKAGE: An Appium Ruby test package upload.
-\item APPIUM\_WEB\_JAVA\_JUNIT\_TEST\_PACKAGE: An Appium Java JUnit test
+\item APPIUM\\_PYTHON\\_TEST\\_PACKAGE: An Appium Python test package upload.
+\item APPIUM\\_NODE\\_TEST\\_PACKAGE: An Appium Node.js test package upload.
+\item APPIUM\\_RUBY\\_TEST\\_PACKAGE: An Appium Ruby test package upload.
+\item APPIUM\\_WEB\\_JAVA\\_JUNIT\\_TEST\\_PACKAGE: An Appium Java JUnit test
 package upload for a web app.
-\item APPIUM\_WEB\_JAVA\_TESTNG\_TEST\_PACKAGE: An Appium Java TestNG test
+\item APPIUM\\_WEB\\_JAVA\\_TESTNG\\_TEST\\_PACKAGE: An Appium Java TestNG test
 package upload for a web app.
-\item APPIUM\_WEB\_PYTHON\_TEST\_PACKAGE: An Appium Python test package
+\item APPIUM\\_WEB\\_PYTHON\\_TEST\\_PACKAGE: An Appium Python test package
 upload for a web app.
-\item APPIUM\_WEB\_NODE\_TEST\_PACKAGE: An Appium Node.js test package
+\item APPIUM\\_WEB\\_NODE\\_TEST\\_PACKAGE: An Appium Node.js test package
 upload for a web app.
-\item APPIUM\_WEB\_RUBY\_TEST\_PACKAGE: An Appium Ruby test package upload
+\item APPIUM\\_WEB\\_RUBY\\_TEST\\_PACKAGE: An Appium Ruby test package upload
 for a web app.
-\item CALABASH\_TEST\_PACKAGE: A Calabash test package upload.
-\item INSTRUMENTATION\_TEST\_PACKAGE: An instrumentation upload.
-\item UIAUTOMATION\_TEST\_PACKAGE: A uiautomation test package upload.
-\item UIAUTOMATOR\_TEST\_PACKAGE: A uiautomator test package upload.
-\item XCTEST\_TEST\_PACKAGE: An Xcode test package upload.
-\item XCTEST\_UI\_TEST\_PACKAGE: An Xcode UI test package upload.
-\item APPIUM\_JAVA\_JUNIT\_TEST\_SPEC: An Appium Java JUnit test spec
+\item CALABASH\\_TEST\\_PACKAGE: A Calabash test package upload.
+\item INSTRUMENTATION\\_TEST\\_PACKAGE: An instrumentation upload.
+\item UIAUTOMATION\\_TEST\\_PACKAGE: A uiautomation test package upload.
+\item UIAUTOMATOR\\_TEST\\_PACKAGE: A uiautomator test package upload.
+\item XCTEST\\_TEST\\_PACKAGE: An Xcode test package upload.
+\item XCTEST\\_UI\\_TEST\\_PACKAGE: An Xcode UI test package upload.
+\item APPIUM\\_JAVA\\_JUNIT\\_TEST\\_SPEC: An Appium Java JUnit test spec
 upload.
-\item APPIUM\_JAVA\_TESTNG\_TEST\_SPEC: An Appium Java TestNG test spec
+\item APPIUM\\_JAVA\\_TESTNG\\_TEST\\_SPEC: An Appium Java TestNG test spec
 upload.
-\item APPIUM\_PYTHON\_TEST\_SPEC: An Appium Python test spec upload.
-\item APPIUM\_NODE\_TEST\_SPEC: An Appium Node.js test spec upload.
-\item APPIUM\_RUBY\_TEST\_SPEC: An Appium Ruby test spec upload.
-\item APPIUM\_WEB\_JAVA\_JUNIT\_TEST\_SPEC: An Appium Java JUnit test spec
+\item APPIUM\\_PYTHON\\_TEST\\_SPEC: An Appium Python test spec upload.
+\item APPIUM\\_NODE\\_TEST\\_SPEC: An Appium Node.js test spec upload.
+\item APPIUM\\_RUBY\\_TEST\\_SPEC: An Appium Ruby test spec upload.
+\item APPIUM\\_WEB\\_JAVA\\_JUNIT\\_TEST\\_SPEC: An Appium Java JUnit test spec
 upload for a web app.
-\item APPIUM\_WEB\_JAVA\_TESTNG\_TEST\_SPEC: An Appium Java TestNG test
+\item APPIUM\\_WEB\\_JAVA\\_TESTNG\\_TEST\\_SPEC: An Appium Java TestNG test
 spec upload for a web app.
-\item APPIUM\_WEB\_PYTHON\_TEST\_SPEC: An Appium Python test spec upload
+\item APPIUM\\_WEB\\_PYTHON\\_TEST\\_SPEC: An Appium Python test spec upload
 for a web app.
-\item APPIUM\_WEB\_NODE\_TEST\_SPEC: An Appium Node.js test spec upload
+\item APPIUM\\_WEB\\_NODE\\_TEST\\_SPEC: An Appium Node.js test spec upload
 for a web app.
-\item APPIUM\_WEB\_RUBY\_TEST\_SPEC: An Appium Ruby test spec upload for a
+\item APPIUM\\_WEB\\_RUBY\\_TEST\\_SPEC: An Appium Ruby test spec upload for a
 web app.
-\item INSTRUMENTATION\_TEST\_SPEC: An instrumentation test spec upload.
-\item XCTEST\_UI\_TEST\_SPEC: An Xcode UI test spec upload.
+\item INSTRUMENTATION\\_TEST\\_SPEC: An instrumentation test spec upload.
+\item XCTEST\\_UI\\_TEST\\_SPEC: An Xcode UI test spec upload.
 }
 
 \strong{Note} If you call \code{CreateUpload} with \code{WEB_APP} specified, AWS Device
 Farm throws an \code{ArgumentException} error.}
 
-\item{contentType}{The upload's content type (for example, "application/octet-stream").}
+\item{contentType}{The upload\'s content type (for example, \"application/octet-stream\").}
 }
 \description{
 Uploads an app or test scripts.

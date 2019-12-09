@@ -5,7 +5,7 @@
 \title{Purchases a Reserved Instance for use with your account}
 \usage{
 ec2_purchase_reserved_instances_offering(InstanceCount,
-  ReservedInstancesOfferingId, DryRun, LimitPrice)
+  ReservedInstancesOfferingId, DryRun, LimitPrice, PurchaseTime)
 }
 \arguments{
 \item{InstanceCount}{[required] The number of Reserved Instances to purchase.}
@@ -20,6 +20,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{LimitPrice}{Specified for Reserved Instance Marketplace offerings to limit the total
 order and ensure that the Reserved Instances are not purchased at
 unexpected prices.}
+
+\item{PurchaseTime}{The time at which to purchase the Reserved Instance, in UTC format (for
+example, \emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z).}
 }
 \description{
 Purchases a Reserved Instance for use with your account. With Reserved
@@ -28,9 +31,12 @@ pricing.
 }
 \details{
 Use DescribeReservedInstancesOfferings to get a list of Reserved
-Instance offerings that match your specifications. After you've
+Instance offerings that match your specifications. After you\'ve
 purchased a Reserved Instance, you can check for your new Reserved
 Instance with DescribeReservedInstances.
+
+To queue a purchase for a future date and time, specify a purchase time.
+If you do not specify a purchase time, the default is the current time.
 
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html}{Reserved Instances}
 and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html}{Reserved Instance Marketplace}
@@ -44,6 +50,9 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   LimitPrice = list(
     Amount = 123.0,
     CurrencyCode = "USD"
+  ),
+  PurchaseTime = as.POSIXct(
+    "2015-01-01"
   )
 )
 }

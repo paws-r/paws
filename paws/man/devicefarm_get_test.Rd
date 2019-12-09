@@ -7,7 +7,7 @@
 devicefarm_get_test(arn)
 }
 \arguments{
-\item{arn}{[required] The test's ARN.}
+\item{arn}{[required] The test\'s ARN.}
 }
 \description{
 Gets information about a test.

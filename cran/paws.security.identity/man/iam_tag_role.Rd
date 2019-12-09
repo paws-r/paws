@@ -11,7 +11,7 @@ iam_tag_role(RoleName, Tags)
 
 This parameter accepts (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that
 consist of upper and lowercase alphanumeric characters with no spaces.
-You can also include any of the following characters: \_+=,.@-}
+You can also include any of the following characters: \\_+=,.@-}
 
 \item{Tags}{[required] The list of tags that you want to attach to the role. Each tag consists
 of a key name and an associated value. You can specify this with a JSON

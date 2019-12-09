@@ -5,10 +5,12 @@
 \title{Apply the service update}
 \usage{
 elasticache_batch_apply_update_action(ReplicationGroupIds,
-  ServiceUpdateName)
+  CacheClusterIds, ServiceUpdateName)
 }
 \arguments{
-\item{ReplicationGroupIds}{[required] The replication group IDs}
+\item{ReplicationGroupIds}{The replication group IDs}
+
+\item{CacheClusterIds}{The cache cluster IDs}
 
 \item{ServiceUpdateName}{[required] The unique ID of the service update}
 }
@@ -19,6 +21,9 @@ applying them, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/re
 \section{Request syntax}{
 \preformatted{svc$batch_apply_update_action(
   ReplicationGroupIds = list(
+    "string"
+  ),
+  CacheClusterIds = list(
     "string"
   ),
   ServiceUpdateName = "string"

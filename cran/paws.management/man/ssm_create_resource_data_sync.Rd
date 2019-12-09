@@ -2,30 +2,54 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_create_resource_data_sync}
 \alias{ssm_create_resource_data_sync}
-\title{Creates a resource data sync configuration to a single bucket in Amazon
-S3}
+\title{A resource data sync helps you view data from multiple sources in a
+single location}
 \usage{
-ssm_create_resource_data_sync(SyncName, S3Destination)
+ssm_create_resource_data_sync(SyncName, S3Destination, SyncType,
+  SyncSource)
 }
 \arguments{
 \item{SyncName}{[required] A name for the configuration.}
 
-\item{S3Destination}{[required] Amazon S3 configuration details for the sync.}
+\item{S3Destination}{Amazon S3 configuration details for the sync.}
+
+\item{SyncType}{Specify \code{SyncToDestination} to create a resource data sync that
+synchronizes data from multiple AWS Regions to an Amazon S3 bucket.
+Specify \code{SyncFromSource} to synchronize data from multiple AWS accounts
+and Regions, as listed in AWS Organizations.}
+
+\item{SyncSource}{Specify information about the data sources to synchronize.}
 }
 \description{
-Creates a resource data sync configuration to a single bucket in Amazon
-S3. This is an asynchronous operation that returns immediately. After a
-successful initial sync is completed, the system continuously syncs data
-to the Amazon S3 bucket. To check the status of the sync, use the
-ListResourceDataSync.
+A resource data sync helps you view data from multiple sources in a
+single location. Systems Manager offers two types of resource data sync:
+\code{SyncToDestination} and \code{SyncFromSource}.
 }
 \details{
+You can configure Systems Manager Inventory to use the
+\code{SyncToDestination} type to synchronize Inventory data from multiple AWS
+Regions to a single Amazon S3 bucket. For more information, see
+\href{http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html}{Configuring Resource Data Sync for Inventory}
+in the \emph{AWS Systems Manager User Guide}.
+
+You can configure Systems Manager Explorer to use the
+\code{SyncToDestination} type to synchronize operational work items
+(OpsItems) and operational data (OpsData) from multiple AWS Regions to a
+single Amazon S3 bucket. You can also configure Explorer to use the
+\code{SyncFromSource} type. This type synchronizes OpsItems and OpsData from
+multiple AWS accounts and Regions by using AWS Organizations. For more
+information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/Explorer-resource-data-sync.html}{Setting Up Explorer to Display Data from Multiple Accounts and Regions}
+in the \emph{AWS Systems Manager User Guide}.
+
+A resource data sync is an asynchronous operation that returns
+immediately. After a successful initial sync is completed, the system
+continuously syncs data. To check the status of a sync, use the
+ListResourceDataSync.
+
 By default, data is not encrypted in Amazon S3. We strongly recommend
 that you enable encryption in Amazon S3 to ensure secure data storage.
 We also recommend that you secure access to the Amazon S3 bucket by
-creating a restrictive bucket policy. For more information, see
-\href{http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html}{Configuring Resource Data Sync for Inventory}
-in the \emph{AWS Systems Manager User Guide}.
+creating a restrictive bucket policy.
 }
 \section{Request syntax}{
 \preformatted{svc$create_resource_data_sync(
@@ -36,6 +60,22 @@ in the \emph{AWS Systems Manager User Guide}.
     SyncFormat = "JsonSerDe",
     Region = "string",
     AWSKMSKeyARN = "string"
+  ),
+  SyncType = "string",
+  SyncSource = list(
+    SourceType = "string",
+    AwsOrganizationsSource = list(
+      OrganizationSourceType = "string",
+      OrganizationalUnits = list(
+        list(
+          OrganizationalUnitId = "string"
+        )
+      )
+    ),
+    SourceRegions = list(
+      "string"
+    ),
+    IncludeFutureRegions = TRUE|FALSE
   )
 )
 }

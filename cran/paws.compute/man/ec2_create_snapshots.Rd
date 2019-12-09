@@ -16,19 +16,19 @@ snapshots.}
 
 \item{TagSpecifications}{Tags to apply to every snapshot specified by the instance.}
 
-\item{DryRun}{Checks whether you have the required permissions for the action without
-actually making the request. Provides an error response. If you have the
-required permissions, the error response is DryRunOperation. Otherwise,
-it is UnauthorizedOperation.}
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{CopyTagsFromSource}{Copies the tags from the specified instance to all snapshots.}
+\item{CopyTagsFromSource}{Copies the tags from the specified volume to corresponding snapshot.}
 }
 \description{
 Creates crash-consistent snapshots of multiple EBS volumes and stores
 the data in S3. Volumes are chosen by specifying an instance. Any
 attached volumes will produce one snapshot each that is crash-consistent
 across the instance. Boot volumes can be excluded by changing the
-paramaters.
+parameters.
 }
 \section{Request syntax}{
 \preformatted{svc$create_snapshots(
@@ -39,7 +39,7 @@ paramaters.
   ),
   TagSpecifications = list(
     list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"host-reservation"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"host-reservation"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
       Tags = list(
         list(
           Key = "string",

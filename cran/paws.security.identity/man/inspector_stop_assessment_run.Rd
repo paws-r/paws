@@ -10,10 +10,10 @@ inspector_stop_assessment_run(assessmentRunArn, stopAction)
 \arguments{
 \item{assessmentRunArn}{[required] The ARN of the assessment run that you want to stop.}
 
-\item{stopAction}{An input option that can be set to either START\_EVALUATION or
-SKIP\_EVALUATION. START\_EVALUATION (the default value), stops the AWS
+\item{stopAction}{An input option that can be set to either START\\_EVALUATION or
+SKIP\\_EVALUATION. START\\_EVALUATION (the default value), stops the AWS
 agent from collecting data and begins the results evaluation and the
-findings generation process. SKIP\_EVALUATION cancels the assessment run
+findings generation process. SKIP\\_EVALUATION cancels the assessment run
 immediately, after which no findings are generated.}
 }
 \description{

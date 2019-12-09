@@ -43,8 +43,8 @@ Only the \code{Interactions} dataset is required in order to train a model
 
 A dataset can be in one of the following states:
 \itemize{
-\item CREATE PENDING \> CREATE IN\_PROGRESS \> ACTIVE -or- CREATE FAILED
-\item DELETE PENDING \> DELETE IN\_PROGRESS
+\item CREATE PENDING \\> CREATE IN\\_PROGRESS \\> ACTIVE -or- CREATE FAILED
+\item DELETE PENDING \\> DELETE IN\\_PROGRESS
 }
 
 To get the status of the dataset, call DescribeDataset.

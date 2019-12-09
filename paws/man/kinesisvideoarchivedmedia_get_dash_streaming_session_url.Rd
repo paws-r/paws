@@ -29,7 +29,7 @@ continually updated with the latest fragments as they become
 available. We recommend that the media player retrieve a new
 manifest on a one-second interval. When this type of session is
 played in a media player, the user interface typically displays a
-"live" notification, with no scrubber control for choosing the
+\"live\" notification, with no scrubber control for choosing the
 position in the playback window to display.
 
 In \code{LIVE} mode, the newest available fragments are included in an
@@ -97,7 +97,7 @@ to leverage these this custom attribute.
 
 The default value is \code{NEVER}.}
 
-\item{DASHFragmentSelector}{The time range of the requested fragment, and the source of the
+\item{DASHFragmentSelector}{The time range of the requested fragment and the source of the
 timestamps.
 
 This parameter is required if \code{PlaybackMode} is \code{ON_DEMAND} or
@@ -151,16 +151,15 @@ An Amazon Kinesis video stream has the following requirements for
 providing data through MPEG-DASH:
 \itemize{
 \item The media must contain h.264 or h.265 encoded video and, optionally,
-AAC or G.711 encoded audio. Specifically, the codec id of track 1
-should be \code{V_MPEG/ISO/AVC} (for h.264) or V\_MPEGH/ISO/HEVC (for
-H.265). Optionally, the codec id of track 2 should be \code{A_AAC} (for
-AAC) or A\_MS/ACM (for G.711).
+AAC or G.711 encoded audio. Specifically, the codec ID of track 1
+should be \code{V_MPEG/ISO/AVC} (for h.264) or V\\_MPEGH/ISO/HEVC (for
+H.265). Optionally, the codec ID of track 2 should be \code{A_AAC} (for
+AAC) or A\\_MS/ACM (for G.711).
 \item Data retention must be greater than 0.
 \item The video track of each fragment must contain codec private data in
 the Advanced Video Coding (AVC) for H.264 format and HEVC for H.265
-format. For more information, see MPEG-4 specification ISO/IEC
-14496-15. For information about adapting stream data to a given
-format, see \href{http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html}{NAL Adaptation Flags}.
+format. For more information, see \href{https://www.iso.org/standard/55980.html}{MPEG-4 specification ISO/IEC 14496-15}. For information
+about adapting stream data to a given format, see \href{http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html}{NAL Adaptation Flags}.
 \item The audio track (if present) of each fragment must contain codec
 private data in the AAC format (\href{https://www.iso.org/standard/43345.html}{AAC specification ISO/IEC 13818-7}) or the \href{http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html}{MS Wave format}.
 }
@@ -176,11 +175,10 @@ parameter.
 Kinesis Video Streams creates an MPEG-DASH streaming session to be
 used for accessing content in a stream using the MPEG-DASH protocol.
 \code{GetDASHStreamingSessionURL} returns an authenticated URL (that
-includes an encrypted session token) for the session's MPEG-DASH
+includes an encrypted session token) for the session\'s MPEG-DASH
 \emph{manifest} (the root resource needed for streaming with MPEG-DASH).
-}
 
-Don't share or store this token where an unauthorized entity could
+Don\'t share or store this token where an unauthorized entity could
 access it. The token provides access to the content of the stream.
 Safeguard the token with the same measures that you would use with
 your AWS credentials.
@@ -189,10 +187,9 @@ The media that is made available through the manifest consists only
 of the requested stream, time range, and format. No other media data
 (such as frames outside the requested window or alternate bitrates)
 is made available.
-\enumerate{
 \item Provide the URL (containing the encrypted session token) for the
 MPEG-DASH manifest to a media player that supports the MPEG-DASH
-protocol. Kinesis Video Streams makes the initialization fragment,
+protocol. Kinesis Video Streams makes the initialization fragment
 and media fragments available through the manifest URL. The
 initialization fragment contains the codec private data for the
 stream, and other data needed to set up the video or audio decoder
@@ -201,30 +198,26 @@ encoded audio samples.
 \item The media player receives the authenticated URL and requests stream
 metadata and media data normally. When the media player requests
 data, it calls the following actions:
-}
 \itemize{
 \item \strong{GetDASHManifest:} Retrieves an MPEG DASH manifest, which
 contains the metadata for the media that you want to playback.
 \item \strong{GetMP4InitFragment:} Retrieves the MP4 initialization
 fragment. The media player typically loads the initialization
 fragment before loading any media fragments. This fragment
-contains the "\code{fytp}" and "\code{moov}" MP4 atoms, and the child
+contains the \"\code{fytp}\" and \"\code{moov}\" MP4 atoms, and the child
 atoms that are needed to initialize the media player decoder.
-}
 
 The initialization fragment does not correspond to a fragment in
 a Kinesis video stream. It contains only the codec private data
 for the stream and respective track, which the media player
 needs to decode the media frames.
-\itemize{
 \item \strong{GetMP4MediaFragment:} Retrieves MP4 media fragments. These
-fragments contain the "\code{moof}" and "\code{mdat}" MP4 atoms and
-their child atoms, containing the encoded fragment's media
+fragments contain the \"\code{moof}\" and \"\code{mdat}\" MP4 atoms and
+their child atoms, containing the encoded fragment\'s media
 frames and their timestamps.
-}
 
 After the first media fragment is made available in a streaming
-session, any fragments that don't contain the same codec
+session, any fragments that don\'t contain the same codec
 private data cause an error to be returned when those different
 media fragments are loaded. Therefore, the codec private data
 should not change between fragments in a session. This also
@@ -234,6 +227,8 @@ from having only video to having both audio and video.
 Data retrieved with this action is billable. See
 \href{https://aws.amazon.com/kinesis/video-streams/pricing/}{Pricing}
 for details.
+}
+}
 
 The following restrictions apply to MPEG-DASH sessions:
 \itemize{
@@ -247,10 +242,10 @@ session is closed. The number of active \code{GetMedia} connections on a
 Kinesis video stream does not count against this limit, and the
 number of active MPEG-DASH sessions does not count against the
 active \code{GetMedia} connection limit.
-}
 
 The maximum limits for active HLS and MPEG-DASH streaming sessions
 are independent of each other.
+}
 
 You can monitor the amount of data that the media player consumes by
 monitoring the \code{GetMP4MediaFragment.OutgoingBytes} Amazon CloudWatch

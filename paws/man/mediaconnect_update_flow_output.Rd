@@ -4,11 +4,13 @@
 \alias{mediaconnect_update_flow_output}
 \title{Updates an existing flow output}
 \usage{
-mediaconnect_update_flow_output(Description, Destination, Encryption,
-  FlowArn, MaxLatency, OutputArn, Port, Protocol, SmoothingLatency,
-  StreamId)
+mediaconnect_update_flow_output(CidrAllowList, Description, Destination,
+  Encryption, FlowArn, MaxLatency, OutputArn, Port, Protocol, RemoteId,
+  SmoothingLatency, StreamId)
 }
 \arguments{
+\item{CidrAllowList}{The range of IP addresses that should be allowed to initiate output requests to this flow. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.}
+
 \item{Description}{A description of the output. This description appears only on the AWS Elemental MediaConnect console and will not be seen by the end user.}
 
 \item{Destination}{The IP address where you want to send the output.}
@@ -25,7 +27,9 @@ mediaconnect_update_flow_output(Description, Destination, Encryption,
 
 \item{Protocol}{The protocol to use for the output.}
 
-\item{SmoothingLatency}{The smoothing latency in milliseconds for RTP and RTP-FEC streams.}
+\item{RemoteId}{The remote ID for the Zixi-pull stream.}
+
+\item{SmoothingLatency}{The smoothing latency in milliseconds for RIST, RTP, and RTP-FEC streams.}
 
 \item{StreamId}{The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams.}
 }
@@ -34,6 +38,9 @@ Updates an existing flow output.
 }
 \section{Request syntax}{
 \preformatted{svc$update_flow_output(
+  CidrAllowList = list(
+    "string"
+  ),
   Description = "string",
   Destination = "string",
   Encryption = list(
@@ -51,7 +58,8 @@ Updates an existing flow output.
   MaxLatency = 123,
   OutputArn = "string",
   Port = 123,
-  Protocol = "zixi-push"|"rtp-fec"|"rtp",
+  Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+  RemoteId = "string",
   SmoothingLatency = 123,
   StreamId = "string"
 )

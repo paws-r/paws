@@ -33,7 +33,7 @@ Creates a route that is associated with a virtual router.
 You can use the \code{prefix} parameter in your route specification for
 path-based routing of requests. For example, if your virtual service
 name is \code{my-service.local} and you want the route to match requests to
-\code{my-service.local/metrics}, your prefix should be \code{/metrics}.
+\code{my-service.local/metrics}, your prefix should be \verb{/metrics}.
 
 If your route matches a request, you can distribute traffic to one or
 more target virtual nodes with relative weighting.
@@ -44,6 +44,96 @@ more target virtual nodes with relative weighting.
   meshName = "string",
   routeName = "string",
   spec = list(
+    grpcRoute = list(
+      action = list(
+        weightedTargets = list(
+          list(
+            virtualNode = "string",
+            weight = 123
+          )
+        )
+      ),
+      match = list(
+        metadata = list(
+          list(
+            invert = TRUE|FALSE,
+            match = list(
+              exact = "string",
+              prefix = "string",
+              range = list(
+                end = 123,
+                start = 123
+              ),
+              regex = "string",
+              suffix = "string"
+            ),
+            name = "string"
+          )
+        ),
+        methodName = "string",
+        serviceName = "string"
+      ),
+      retryPolicy = list(
+        grpcRetryEvents = list(
+          "cancelled"|"deadline-exceeded"|"internal"|"resource-exhausted"|"unavailable"
+        ),
+        httpRetryEvents = list(
+          "string"
+        ),
+        maxRetries = 123,
+        perRetryTimeout = list(
+          unit = "ms"|"s",
+          value = 123
+        ),
+        tcpRetryEvents = list(
+          "connection-error"
+        )
+      )
+    ),
+    http2Route = list(
+      action = list(
+        weightedTargets = list(
+          list(
+            virtualNode = "string",
+            weight = 123
+          )
+        )
+      ),
+      match = list(
+        headers = list(
+          list(
+            invert = TRUE|FALSE,
+            match = list(
+              exact = "string",
+              prefix = "string",
+              range = list(
+                end = 123,
+                start = 123
+              ),
+              regex = "string",
+              suffix = "string"
+            ),
+            name = "string"
+          )
+        ),
+        method = "CONNECT"|"DELETE"|"GET"|"HEAD"|"OPTIONS"|"PATCH"|"POST"|"PUT"|"TRACE",
+        prefix = "string",
+        scheme = "http"|"https"
+      ),
+      retryPolicy = list(
+        httpRetryEvents = list(
+          "string"
+        ),
+        maxRetries = 123,
+        perRetryTimeout = list(
+          unit = "ms"|"s",
+          value = 123
+        ),
+        tcpRetryEvents = list(
+          "connection-error"
+        )
+      )
+    ),
     httpRoute = list(
       action = list(
         weightedTargets = list(
@@ -54,9 +144,41 @@ more target virtual nodes with relative weighting.
         )
       ),
       match = list(
-        prefix = "string"
+        headers = list(
+          list(
+            invert = TRUE|FALSE,
+            match = list(
+              exact = "string",
+              prefix = "string",
+              range = list(
+                end = 123,
+                start = 123
+              ),
+              regex = "string",
+              suffix = "string"
+            ),
+            name = "string"
+          )
+        ),
+        method = "CONNECT"|"DELETE"|"GET"|"HEAD"|"OPTIONS"|"PATCH"|"POST"|"PUT"|"TRACE",
+        prefix = "string",
+        scheme = "http"|"https"
+      ),
+      retryPolicy = list(
+        httpRetryEvents = list(
+          "string"
+        ),
+        maxRetries = 123,
+        perRetryTimeout = list(
+          unit = "ms"|"s",
+          value = 123
+        ),
+        tcpRetryEvents = list(
+          "connection-error"
+        )
       )
     ),
+    priority = 123,
     tcpRoute = list(
       action = list(
         weightedTargets = list(

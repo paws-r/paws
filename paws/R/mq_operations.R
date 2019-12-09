@@ -25,7 +25,7 @@ NULL
 #' @param Logs Enables Amazon CloudWatch logging for brokers.
 #' @param MaintenanceWindowStartTime The parameters that determine the WeeklyStartTime.
 #' @param PubliclyAccessible Required. Enables connections from applications outside of the VPC that hosts the broker's subnets.
-#' @param SecurityGroups The list of rules (1 minimum, 125 maximum) that authorize connections to brokers.
+#' @param SecurityGroups The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
 #' @param SubnetIds The list of groups (2 maximum) that define which subnets and IP ranges the broker can use from different Availability Zones. A SINGLE_INSTANCE deployment requires one subnet (for example, the default subnet). An ACTIVE_STANDBY_MULTI_AZ deployment requires two subnets.
 #' @param Tags Create tags when creating the broker.
 #' @param Users Required. The list of ActiveMQ users (persons or applications) who can access queues and topics. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.
@@ -811,13 +811,15 @@ mq_reboot_broker <- function(BrokerId) {
 #'
 #' @usage
 #' mq_update_broker(AutoMinorVersionUpgrade, BrokerId, Configuration,
-#'   EngineVersion, Logs)
+#'   EngineVersion, HostInstanceType, Logs, SecurityGroups)
 #'
 #' @param AutoMinorVersionUpgrade Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The automatic upgrades occur during the maintenance window of the broker or after a manual broker reboot.
 #' @param BrokerId &#91;required&#93; The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain whitespaces, brackets, wildcard characters, or special characters.
 #' @param Configuration A list of information about the configuration.
 #' @param EngineVersion The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
+#' @param HostInstanceType The host instance type of the broker to upgrade to. For a list of supported instance types, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
 #' @param Logs Enables Amazon CloudWatch logging for brokers.
+#' @param SecurityGroups The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
 #'
 #' @section Request syntax:
 #' ```
@@ -829,9 +831,13 @@ mq_reboot_broker <- function(BrokerId) {
 #'     Revision = 123
 #'   ),
 #'   EngineVersion = "string",
+#'   HostInstanceType = "string",
 #'   Logs = list(
 #'     Audit = TRUE|FALSE,
 #'     General = TRUE|FALSE
+#'   ),
+#'   SecurityGroups = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -839,14 +845,14 @@ mq_reboot_broker <- function(BrokerId) {
 #' @keywords internal
 #'
 #' @rdname mq_update_broker
-mq_update_broker <- function(AutoMinorVersionUpgrade = NULL, BrokerId, Configuration = NULL, EngineVersion = NULL, Logs = NULL) {
+mq_update_broker <- function(AutoMinorVersionUpgrade = NULL, BrokerId, Configuration = NULL, EngineVersion = NULL, HostInstanceType = NULL, Logs = NULL, SecurityGroups = NULL) {
   op <- new_operation(
     name = "UpdateBroker",
     http_method = "PUT",
     http_path = "/v1/brokers/{broker-id}",
     paginator = list()
   )
-  input <- .mq$update_broker_input(AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerId = BrokerId, Configuration = Configuration, EngineVersion = EngineVersion, Logs = Logs)
+  input <- .mq$update_broker_input(AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerId = BrokerId, Configuration = Configuration, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, Logs = Logs, SecurityGroups = SecurityGroups)
   output <- .mq$update_broker_output()
   config <- get_config()
   svc <- .mq$service(config)

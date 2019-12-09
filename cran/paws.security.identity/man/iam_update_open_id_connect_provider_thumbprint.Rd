@@ -31,12 +31,12 @@ The list that you pass with this operation completely replaces the
 existing list of thumbprints. (The lists are not merged.)
 
 Typically, you need to update a thumbprint only when the identity
-provider's certificate changes, which occurs rarely. However, if the
-provider's certificate \emph{does} change, any attempt to assume an IAM role
+provider\'s certificate changes, which occurs rarely. However, if the
+provider\'s certificate \emph{does} change, any attempt to assume an IAM role
 that specifies the OIDC provider as a principal fails until the
 certificate thumbprint is updated.
 
-Trust for the OIDC provider is derived from the provider's certificate
+Trust for the OIDC provider is derived from the provider\'s certificate
 and is validated by the thumbprint. Therefore, it is best to limit
 access to the \code{UpdateOpenIDConnectProviderThumbprint} operation to
 highly privileged users.

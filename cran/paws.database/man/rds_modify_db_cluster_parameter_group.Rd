@@ -38,6 +38,12 @@ the \emph{Parameter Groups} option of the \href{https://console.aws.amazon.com/r
 \code{DescribeDBClusterParameters} action to verify that your DB cluster
 parameter group has been created or modified.
 
+If the modified DB cluster parameter group is used by an Aurora
+Serverless cluster, Aurora applies the update immediately. The cluster
+restart might interrupt your workload. In that case, your application
+must reopen any connections and retry any transactions that were active
+when the parameter changes took effect.
+
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{

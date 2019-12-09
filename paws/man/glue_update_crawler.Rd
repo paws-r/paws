@@ -15,7 +15,7 @@ glue_update_crawler(Name, Role, DatabaseName, Description, Targets,
 by the new crawler to access customer resources.}
 
 \item{DatabaseName}{The AWS Glue database where results are stored, such as:
-\code{arn:aws:daylight:us-east-1::database/sometable/*}.}
+\verb{arn:aws:daylight:us-east-1::database/sometable/*}.}
 
 \item{Description}{A description of the new crawler.}
 
@@ -24,7 +24,7 @@ by the new crawler to access customer resources.}
 \item{Schedule}{A \code{cron} expression used to specify the schedule. For more information,
 see \href{http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html}{Time-Based Schedules for Jobs and Crawlers}.
 For example, to run something every day at 12:15 UTC, specify
-\code{cron(15 12 * * ? *)}.}
+\verb{cron(15 12 * * ? *)}.}
 
 \item{Classifiers}{A list of custom classifiers that the user has registered. By default,
 all built-in classifiers are included in a crawl, but these custom
@@ -33,10 +33,10 @@ classification.}
 
 \item{TablePrefix}{The table prefix used for catalog tables that are created.}
 
-\item{SchemaChangePolicy}{The policy for the crawler's update and deletion behavior.}
+\item{SchemaChangePolicy}{The policy for the crawler\'s update and deletion behavior.}
 
 \item{Configuration}{The crawler configuration information. This versioned JSON string allows
-users to specify aspects of a crawler's behavior. For more information,
+users to specify aspects of a crawler\'s behavior. For more information,
 see \href{http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html}{Configuring a Crawler}.}
 
 \item{CrawlerSecurityConfiguration}{The name of the \code{SecurityConfiguration} structure to be used by this

@@ -28,12 +28,12 @@ For more information, see RegexPatternSet.
 }
 
 For example, you can create a \code{RegexPatternString} such as
-\code{B\\[a@\\]dB\\[o0\\]t}. AWS WAF will match this \code{RegexPatternString} to:
+\verb{B\\\[a@\\\]dB\\\[o0\\\]t}. AWS WAF will match this \code{RegexPatternString} to:
 \itemize{
 \item BadBot
 \item BadB0t
-\item B\@dBot
-\item B\@dB0t
+\item B\\@dBot
+\item B\\@dB0t
 }
 
 To create and configure a \code{RegexPatternSet}, perform the following

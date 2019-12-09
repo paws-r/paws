@@ -13,8 +13,8 @@ lightsail_reboot_instance(instanceName)
 Restarts a specific instance.
 }
 \details{
-The \code{reboot instance} operation supports tag-based access control via
-resource tags applied to the resource identified by instanceName. For
+The \verb{reboot instance} operation supports tag-based access control via
+resource tags applied to the resource identified by \verb{instance name}. For
 more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{

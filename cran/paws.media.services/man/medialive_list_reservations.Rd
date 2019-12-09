@@ -21,9 +21,9 @@ medialive_list_reservations(ChannelClass, Codec, MaxResults,
 
 \item{NextToken}{}
 
-\item{Resolution}{Filter by resolution, 'SD', 'HD', or 'UHD'}
+\item{Resolution}{Filter by resolution, 'SD', 'HD', 'FHD', or 'UHD'}
 
-\item{ResourceType}{Filter by resource type, 'INPUT', 'OUTPUT', or 'CHANNEL'}
+\item{ResourceType}{Filter by resource type, 'INPUT', 'OUTPUT', 'MULTIPLEX', or 'CHANNEL'}
 
 \item{SpecialFeature}{Filter by special feature, 'ADVANCED_AUDIO' or 'AUDIO_NORMALIZATION'}
 

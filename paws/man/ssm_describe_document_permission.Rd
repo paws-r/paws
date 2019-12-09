@@ -15,7 +15,7 @@ ssm_describe_document_permission(Name, PermissionType)
 \description{
 Describes the permissions for a Systems Manager document. If you created
 the document, you are the owner. If a document is shared, it can either
-be shared privately (by specifying a user's AWS account ID) or publicly
+be shared privately (by specifying a user\'s AWS account ID) or publicly
 (\emph{All}).
 }
 \section{Request syntax}{

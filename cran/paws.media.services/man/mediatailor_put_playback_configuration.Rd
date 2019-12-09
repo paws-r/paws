@@ -5,8 +5,8 @@
 \title{Adds a new playback configuration to AWS Elemental MediaTailor}
 \usage{
 mediatailor_put_playback_configuration(AdDecisionServerUrl,
-  CdnConfiguration, DashConfiguration, Name, SlateAdUrl, Tags,
-  TranscodeProfileName, VideoContentSourceUrl)
+  CdnConfiguration, DashConfiguration, LivePreRollConfiguration, Name,
+  SlateAdUrl, Tags, TranscodeProfileName, VideoContentSourceUrl)
 }
 \arguments{
 \item{AdDecisionServerUrl}{The URL for the ad decision server (ADS). This includes the
@@ -21,10 +21,12 @@ Amazon CloudFront, for content and ad segment management.}
 
 \item{DashConfiguration}{The configuration for DASH content.}
 
+\item{LivePreRollConfiguration}{The configuration for pre-roll ad insertion.}
+
 \item{Name}{The identifier for the playback configuration.}
 
 \item{SlateAdUrl}{The URL for a high-quality video asset to transcode and use to fill in
-time that's not used by ads. AWS Elemental MediaTailor shows the slate
+time that\'s not used by ads. AWS Elemental MediaTailor shows the slate
 to fill in gaps in media content. Configuring the slate is optional for
 non-VPAID configurations. For VPAID, the slate is required because
 MediaTailor provides it in the slots that are designated for dynamic ad
@@ -54,6 +56,10 @@ Adds a new playback configuration to AWS Elemental MediaTailor.
   DashConfiguration = list(
     MpdLocation = "string",
     OriginManifestType = "SINGLE_PERIOD"|"MULTI_PERIOD"
+  ),
+  LivePreRollConfiguration = list(
+    AdDecisionServerUrl = "string",
+    MaxDurationSeconds = 123
   ),
   Name = "string",
   SlateAdUrl = "string",

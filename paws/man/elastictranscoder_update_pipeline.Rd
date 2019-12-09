@@ -25,7 +25,7 @@ Transcoder to use to transcode jobs for this pipeline.}
 this pipeline.
 
 If you use either \code{s3} or \code{s3-aws-kms} as your \code{Encryption:Mode}, you
-don't need to provide a key with your job because a default key, known
+don\'t need to provide a key with your job because a default key, known
 as an AWS-KMS key, is created for you automatically. You need to provide
 an AWS-KMS key only if you want to use a non-default AWS-KMS key, or if
 you are using an \code{Encryption:Mode} of \code{aes-cbc-pkcs7}, \code{aes-ctr}, or
@@ -124,7 +124,7 @@ access you want users to have, and the storage class that you want to
 assign to the files.
 
 If you specify values for \code{ContentConfig}, you must also specify values
-for \code{ThumbnailConfig} even if you don't want to create thumbnails.
+for \code{ThumbnailConfig} even if you don\'t want to create thumbnails.
 
 If you specify values for \code{ContentConfig} and \code{ThumbnailConfig}, omit
 the \code{OutputBucket} object.

@@ -16,7 +16,7 @@ be retrieved.}
 
 \item{Filters}{Optional filters used to scope down the returned task invocations. The
 supported filter key is STATUS with the corresponding values PENDING,
-IN\_PROGRESS, SUCCESS, FAILED, TIMED\_OUT, CANCELLING, and CANCELLED.}
+IN\\_PROGRESS, SUCCESS, FAILED, TIMED\\_OUT, CANCELLING, and CANCELLED.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the

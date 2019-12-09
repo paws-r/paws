@@ -2,15 +2,52 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_bucket_lifecycle_configuration}
 \alias{s3_get_bucket_lifecycle_configuration}
-\title{Returns the lifecycle configuration information set on the bucket}
+\title{Bucket lifecycle configuration now supports specifying a lifecycle rule
+using an object key name prefix, one or more object tags, or a
+combination of both}
 \usage{
 s3_get_bucket_lifecycle_configuration(Bucket)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The name of the bucket for which to get the lifecycle information.}
 }
 \description{
-Returns the lifecycle configuration information set on the bucket.
+Bucket lifecycle configuration now supports specifying a lifecycle rule
+using an object key name prefix, one or more object tags, or a
+combination of both. Accordingly, this section describes the latest API.
+The response describes the new filter element that you can use to
+specify a filter to select a subset of objects to which the rule
+applies. If you are still using previous version of the lifecycle
+configuration, it works. For the earlier API description, see
+GetBucketLifecycle.
+}
+\details{
+Returns the lifecycle configuration information set on the bucket. For
+information about lifecycle configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html}{Object Lifecycle Management}.
+
+To use this operation, you must have permission to perform the
+\code{s3:GetLifecycleConfiguration} action. The bucket owner has this
+permission, by default. The bucket owner can grant this permission to
+others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
+
+\code{GetBucketLifecycleConfiguration} has the following special error:
+\itemize{
+\item Error code: \code{NoSuchLifecycleConfiguration}
+\itemize{
+\item Description: The lifecycle configuration does not exist.
+\item HTTP Status Code: 404 Not Found
+\item SOAP Fault Code Prefix: Client
+}
+}
+
+The following operations are related to
+\code{DeleteBucketMetricsConfiguration}:
+\itemize{
+\item GetBucketLifecycle
+\item PutBucketLifecycle
+\item DeleteBucketLifecycle
+}
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_lifecycle_configuration(

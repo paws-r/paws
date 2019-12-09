@@ -16,7 +16,8 @@ kafka_list_configuration_revisions(Arn, MaxResults, NextToken)
 To get the next batch, provide this token in your next request.</p>}
 }
 \description{
-<p>Returns a list of all the MSK configurations in this Region.</p>
+\preformatted{        <p>Returns a list of all the MSK configurations in this Region.</p>
+}
 }
 \section{Request syntax}{
 \preformatted{svc$list_configuration_revisions(

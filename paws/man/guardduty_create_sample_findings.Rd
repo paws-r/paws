@@ -10,11 +10,11 @@ guardduty_create_sample_findings(DetectorId, FindingTypes)
 \arguments{
 \item{DetectorId}{[required] The ID of the detector to create sample findings for.}
 
-\item{FindingTypes}{Types of sample findings that you want to generate.}
+\item{FindingTypes}{Types of sample findings to generate.}
 }
 \description{
 Generates example findings of types specified by the list of finding
-types. If 'NULL' is specified for findingTypes, the API generates
+types. If \'NULL\' is specified for \code{findingTypes}, the API generates
 example findings of all supported finding types.
 }
 \section{Request syntax}{

@@ -17,9 +17,8 @@ operations specified by the lifecycle policy.}
 
 \item{Description}{A description of the lifecycle policy.}
 
-\item{PolicyDetails}{The configuration of the lifecycle policy.
-
-Target tags cannot be re-used across policies.}
+\item{PolicyDetails}{The configuration of the lifecycle policy. You cannot update the policy
+type or the resource type.}
 }
 \description{
 Updates the specified lifecycle policy.
@@ -65,7 +64,17 @@ Updates the specified lifecycle policy.
           )
         ),
         RetainRule = list(
-          Count = 123
+          Count = 123,
+          Interval = 123,
+          IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
+        ),
+        FastRestoreRule = list(
+          Count = 123,
+          Interval = 123,
+          IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS",
+          AvailabilityZones = list(
+            "string"
+          )
         )
       )
     ),

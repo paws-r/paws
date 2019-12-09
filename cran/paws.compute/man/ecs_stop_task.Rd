@@ -23,7 +23,7 @@ characters are allowed in this message.}
 Stops a running task. Any tags associated with the task will be deleted.
 }
 \details{
-When StopTask is called on a task, the equivalent of \code{docker stop} is
+When StopTask is called on a task, the equivalent of \verb{docker stop} is
 issued to the containers running in the task. This results in a
 \code{SIGTERM} value and a default 30-second timeout, after which the
 \code{SIGKILL} value is sent and the containers are forcibly stopped. If the

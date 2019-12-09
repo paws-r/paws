@@ -8,7 +8,7 @@ elasticbeanstalk_retrieve_environment_info(EnvironmentId,
   EnvironmentName, InfoType)
 }
 \arguments{
-\item{EnvironmentId}{The ID of the data's environment.
+\item{EnvironmentId}{The ID of the data\'s environment.
 
 If no such environment is found, returns an \code{InvalidParameterValue}
 error.
@@ -17,7 +17,7 @@ Condition: You must specify either this or an EnvironmentName, or both.
 If you do not specify either, AWS Elastic Beanstalk returns
 \code{MissingRequiredParameter} error.}
 
-\item{EnvironmentName}{The name of the data's environment.
+\item{EnvironmentName}{The name of the data\'s environment.
 
 If no such environment is found, returns an \code{InvalidParameterValue}
 error.

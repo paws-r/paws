@@ -2,14 +2,14 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_generate_data_key_without_plaintext}
 \alias{kms_generate_data_key_without_plaintext}
-\title{Generates a unique data key}
+\title{Generates a unique symmetric data key}
 \usage{
 kms_generate_data_key_without_plaintext(KeyId, EncryptionContext,
   KeySpec, NumberOfBytes, GrantTokens)
 }
 \arguments{
-\item{KeyId}{[required] The identifier of the customer master key (CMK) that encrypts the data
-key.
+\item{KeyId}{[required] The identifier of the symmetric customer master key (CMK) that encrypts
+the data key.
 
 To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
 name, or alias ARN. When using an alias name, prefix it with \code{"alias/"}.
@@ -18,9 +18,9 @@ alias ARN.
 
 For example:
 \itemize{
-\item Key ID: \code{1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
 \item Key ARN:
-\code{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 \item Alias name: \code{alias/ExampleAlias}
 \item Alias ARN: \code{arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias}
 }
@@ -28,7 +28,15 @@ For example:
 To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey. To
 get the alias name and alias ARN, use ListAliases.}
 
-\item{EncryptionContext}{A set of key-value pairs that represents additional authenticated data.
+\item{EncryptionContext}{Specifies the encryption context that will be used when encrypting the
+data key.
+
+An \emph{encryption context} is a collection of non-secret key-value pairs
+that represents additional authenticated data. When you use an
+encryption context to encrypt data, you must specify the same (an exact
+case-sensitive match) encryption context to decrypt the data. An
+encryption context is optional when encrypting with a symmetric CMK, but
+it is highly recommended.
 
 For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption Context}
 in the \emph{AWS Key Management Service Developer Guide}.}
@@ -47,21 +55,19 @@ For more information, see \href{https://docs.aws.amazon.com/kms/latest/developer
 in the \emph{AWS Key Management Service Developer Guide}.}
 }
 \description{
-Generates a unique data key. This operation returns a data key that is
-encrypted under a customer master key (CMK) that you specify.
-\code{GenerateDataKeyWithoutPlaintext} is identical to GenerateDataKey except
-that returns only the encrypted copy of the data key.
+Generates a unique symmetric data key. This operation returns a data key
+that is encrypted under a customer master key (CMK) that you specify. To
+request an asymmetric data key pair, use the GenerateDataKeyPair or
+GenerateDataKeyPairWithoutPlaintext operations.
 }
 \details{
-Like \code{GenerateDataKey}, \code{GenerateDataKeyWithoutPlaintext} returns a
-unique data key for each request. The bytes in the key are not related
-to the caller or CMK that is used to encrypt the data key.
-
+\code{GenerateDataKeyWithoutPlaintext} is identical to the GenerateDataKey
+operation except that returns only the encrypted copy of the data key.
 This operation is useful for systems that need to encrypt data at some
 point, but not immediately. When you need to encrypt the data, you call
 the Decrypt operation on the encrypted copy of the key.
 
-It's also useful in distributed systems with different levels of trust.
+It\'s also useful in distributed systems with different levels of trust.
 For example, you might store encrypted data in containers. One component
 of your system creates new containers and stores an encrypted data key
 with each container. Then, a different component puts the data into the
@@ -70,8 +76,32 @@ plaintext data key to encrypt data, puts the encrypted data into the
 container, and then destroys the plaintext data key. In this system, the
 component that creates the containers never sees the plaintext data key.
 
-The result of this operation varies with the key state of the CMK. For
-details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
+\code{GenerateDataKeyWithoutPlaintext} returns a unique data key for each
+request. The bytes in the keys are not related to the caller or CMK that
+is used to encrypt the private key.
+
+To generate a data key, you must specify the symmetric customer master
+key (CMK) that is used to encrypt the data key. You cannot use an
+asymmetric CMK to generate a data key. To get the type of your CMK, use
+the \code{KeySpec} field in the DescribeKey response. You must also specify
+the length of the data key using either the \code{KeySpec} or \code{NumberOfBytes}
+field (but not both). For common key lengths (128-bit and 256-bit
+symmetric keys), use the \code{KeySpec} parameter.
+
+If the operation succeeds, you will find the plaintext copy of the data
+key in the \code{Plaintext} field of the response, and the encrypted copy of
+the data key in the \code{CiphertextBlob} field.
+
+You can use the optional encryption context to add additional security
+to the encryption operation. If you specify an \code{EncryptionContext}, you
+must specify the same encryption context (a case-sensitive exact match)
+when decrypting the encrypted data key. Otherwise, the request to
+decrypt fails with an InvalidCiphertextException. For more information,
+see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption Context}
+in the \emph{AWS Key Management Service Developer Guide}.
+
+The CMK that you use for this operation must be in a compatible key
+state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{

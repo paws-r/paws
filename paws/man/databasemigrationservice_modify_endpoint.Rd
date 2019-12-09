@@ -37,7 +37,7 @@ mongodb, and sqlserver.}
 \item{DatabaseName}{The name of the endpoint database.}
 
 \item{ExtraConnectionAttributes}{Additional attributes associated with the connection. To reset this
-parameter, pass the empty string ("") as an argument.}
+parameter, pass the empty string (\"\") as an argument.}
 
 \item{CertificateArn}{The Amazon Resource Name (ARN) of the certificate used for SSL
 connection.}
@@ -76,8 +76,8 @@ Shorthand syntax: ServiceAccessRoleArn=string
 
 JSON syntax:
 
-{ "ServiceAccessRoleArn": "string", "BucketName": "string",
-"CompressionType": "none"\|"gzip" }}
+\{ \"ServiceAccessRoleArn\": \"string\", \"BucketName\": \"string\",
+\"CompressionType\": \"none\"\\|\"gzip\" \}}
 
 \item{MongoDbSettings}{Settings in JSON format for the source MongoDB endpoint. For more
 information about the available settings, see the configuration
@@ -135,7 +135,8 @@ Modifies the specified endpoint.
     EnableStatistics = TRUE|FALSE,
     IncludeOpForFullLoad = TRUE|FALSE,
     CdcInsertsOnly = TRUE|FALSE,
-    TimestampColumnName = "string"
+    TimestampColumnName = "string",
+    ParquetTimestampInMillisecond = TRUE|FALSE
   ),
   DmsTransferSettings = list(
     ServiceAccessRoleArn = "string",

@@ -12,7 +12,7 @@ sagemaker_list_workteams(SortBy, SortOrder, NameContains, NextToken,
 
 \item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
 
-\item{NameContains}{A string in the work team's name. This filter returns only work teams
+\item{NameContains}{A string in the work team\'s name. This filter returns only work teams
 whose name contains the specified string.}
 
 \item{NextToken}{If the result of the previous \code{ListWorkteams} request was truncated, the

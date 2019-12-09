@@ -30,19 +30,19 @@ for the second attribute for the first item by the parameters
 
 Attributes are uniquely identified within an item by their name/value
 combination. For example, a single item can have the attributes
-\code{\{ "first_name", "first_value" \}} and
-\code{\{ "first_name", "second_value" \}}. However, it cannot have two
+\verb{\\\{ "first_name", "first_value" \\\}} and
+\verb{\\\{ "first_name", "second_value" \\\}}. However, it cannot have two
 attribute instances where both the \code{Item.X.Attribute.Y.Name} and
 \code{Item.X.Attribute.Y.Value} are the same.
 
 Optionally, the requester can supply the \code{Replace} parameter for each
 individual value. Setting this value to \code{true} will cause the new
 attribute values to replace the existing attribute values. For example,
-if an item \code{I} has the attributes \code{\{ 'a', '1' \}, \{ 'b', '2'\}} and
-\code{\{ 'b', '3' \}} and the requester does a BatchPutAttributes of
-\code{\{'I', 'b', '4' \}} with the Replace parameter set to true, the final
-attributes of the item will be \code{\{ 'a', '1' \}} and \code{\{ 'b', '4' \}},
-replacing the previous values of the 'b' attribute with the new value.
+if an item \code{I} has the attributes \verb{\\\{ 'a', '1' \\\}, \\\{ 'b', '2'\\\}} and
+\verb{\\\{ 'b', '3' \\\}} and the requester does a BatchPutAttributes of
+\verb{\\\{'I', 'b', '4' \\\}} with the Replace parameter set to true, the final
+attributes of the item will be \verb{\\\{ 'a', '1' \\\}} and \verb{\\\{ 'b', '4' \\\}},
+replacing the previous values of the \'b\' attribute with the new value.
 
 You cannot specify an empty string as an item or as an attribute name.
 The \code{BatchPutAttributes} operation succeeds or fails in its entirety.

@@ -27,12 +27,12 @@ this parameter is a string of characters consisting of the following:
 \item Any printable ASCII character ranging from the space character
 (\code{U+0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \code{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\code{U+000A}), and
-carriage return (\code{U+000D})
+character set (through \verb{U+00FF})
+\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
+carriage return (\verb{U+000D})
 }}
 
-\item{SetAsDefault}{Specifies whether to set this version as the policy's default version.
+\item{SetAsDefault}{Specifies whether to set this version as the policy\'s default version.
 
 When this parameter is \code{true}, the new policy version becomes the
 operative version. That is, it becomes the version that is in effect for
@@ -49,7 +49,7 @@ delete an existing version using DeletePolicyVersion before you create a
 new version.
 }
 \details{
-Optionally, you can set the new version as the policy's default
+Optionally, you can set the new version as the policy\'s default
 version. The default version is the version that is in effect for the
 IAM users, groups, and roles to which the policy is attached.
 

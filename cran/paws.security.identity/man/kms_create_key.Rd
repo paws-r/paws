@@ -2,17 +2,18 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_create_key}
 \alias{kms_create_key}
-\title{Creates a customer managed customer master key (CMK) in your AWS account}
+\title{Creates a unique customer managed customer master key (CMK) in your AWS
+account and Region}
 \usage{
-kms_create_key(Policy, Description, KeyUsage, Origin, CustomKeyStoreId,
-  BypassPolicyLockoutSafetyCheck, Tags)
+kms_create_key(Policy, Description, KeyUsage, CustomerMasterKeySpec,
+  Origin, CustomKeyStoreId, BypassPolicyLockoutSafetyCheck, Tags)
 }
 \arguments{
 \item{Policy}{The key policy to attach to the CMK.
 
 If you provide a key policy, it must meet the following criteria:
 \itemize{
-\item If you don't set \code{BypassPolicyLockoutSafetyCheck} to true, the key
+\item If you don\'t set \code{BypassPolicyLockoutSafetyCheck} to true, the key
 policy must allow the principal that is making the \code{CreateKey}
 request to make a subsequent PutKeyPolicy request on the CMK. This
 reduces the risk that the CMK becomes unmanageable. For more
@@ -39,27 +40,73 @@ The key policy size limit is 32 kilobytes (32768 bytes).}
 Use a description that helps you decide whether the CMK is appropriate
 for a task.}
 
-\item{KeyUsage}{The cryptographic operations for which you can use the CMK. The only
-valid value is \code{ENCRYPT_DECRYPT}, which means you can use the CMK to
-encrypt and decrypt data.}
+\item{KeyUsage}{Determines the cryptographic operations for which you can use the CMK.
+The default value is \code{ENCRYPT_DECRYPT}. This parameter is required only
+for asymmetric CMKs. You can\'t change the \code{KeyUsage} value after the
+CMK is created.
+
+Select only one valid value.
+\itemize{
+\item For symmetric CMKs, omit the parameter or specify \code{ENCRYPT_DECRYPT}.
+\item For asymmetric CMKs with RSA key material, specify \code{ENCRYPT_DECRYPT}
+or \code{SIGN_VERIFY}.
+\item For asymmetric CMKs with ECC key material, specify \code{SIGN_VERIFY}.
+}}
+
+\item{CustomerMasterKeySpec}{Specifies the type of CMK to create. The \code{CustomerMasterKeySpec}
+determines whether the CMK contains a symmetric key or an asymmetric key
+pair. It also determines the encryption algorithms or signing algorithms
+that the CMK supports. You can\'t change the \code{CustomerMasterKeySpec}
+after the CMK is created. To further restrict the algorithms that can be
+used with the CMK, use its key policy or IAM policy.
+
+For help with choosing a key spec for your CMK, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html#cmk-key-spec}{Selecting a Customer Master Key Spec}
+in the \emph{AWS Key Management Service Developer Guide}.
+
+The default value, \code{SYMMETRIC_DEFAULT}, creates a CMK with a 256-bit
+symmetric key.
+
+AWS KMS supports the following key specs for CMKs:
+\itemize{
+\item Symmetric key (default)
+\itemize{
+\item \code{SYMMETRIC_DEFAULT} (AES-256-GCM)
+}
+\item Asymmetric RSA key pairs
+\itemize{
+\item \code{RSA_2048}
+\item \code{RSA_3072}
+\item \code{RSA_4096}
+}
+\item Asymmetric NIST-recommended elliptic curve key pairs
+\itemize{
+\item \code{ECC_NIST_P256} (secp256r1)
+\item \code{ECC_NIST_P384} (secp384r1)
+\item \code{ECC_NIST_P521} (secp521r1)
+}
+\item Other asymmetric elliptic curve key pairs
+\itemize{
+\item \code{ECC_SECG_P256K1} (secp256k1), commonly used for
+cryptocurrencies.
+}
+}}
 
 \item{Origin}{The source of the key material for the CMK. You cannot change the origin
-after you create the CMK.
-
-The default is \code{AWS_KMS}, which means AWS KMS creates the key material
-in its own key store.
+after you create the CMK. The default is \code{AWS_KMS}, which means AWS KMS
+creates the key material.
 
 When the parameter value is \code{EXTERNAL}, AWS KMS creates a CMK without
 key material so that you can import key material from your existing key
 management infrastructure. For more information about importing key
 material into AWS KMS, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{Importing Key Material}
-in the \emph{AWS Key Management Service Developer Guide}.
+in the \emph{AWS Key Management Service Developer Guide}. This value is valid
+only for symmetric CMKs.
 
 When the parameter value is \code{AWS_CLOUDHSM}, AWS KMS creates the CMK in
 an AWS KMS \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}
 and creates its key material in the associated AWS CloudHSM cluster. You
 must also use the \code{CustomKeyStoreId} parameter to identify the custom
-key store.}
+key store. This value is valid only for symmetric CMKs.}
 
 \item{CustomKeyStoreId}{Creates the CMK in the specified \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}
 and the key material in its associated AWS CloudHSM cluster. To create a
@@ -67,6 +114,9 @@ CMK in a custom key store, you must also specify the \code{Origin} parameter
 with a value of \code{AWS_CLOUDHSM}. The AWS CloudHSM cluster that is
 associated with the custom key store must have at least two active HSMs,
 each in a different Availability Zone in the Region.
+
+This parameter is valid only for symmetric CMKs. You cannot create an
+asymmetric CMK in a custom key store.
 
 To find the ID of a custom key store, use the DescribeCustomKeyStores
 operation.
@@ -94,41 +144,93 @@ subsequent PutKeyPolicy request on the CMK.
 
 The default value is false.}
 
-\item{Tags}{One or more tags. Each tag consists of a tag key and a tag value. Tag
-keys and tag values are both required, but tag values can be empty
-(null) strings.
+\item{Tags}{One or more tags. Each tag consists of a tag key and a tag value. Both
+the tag key and the tag value are required, but the tag value can be an
+empty (null) string.
 
-Use this parameter to tag the CMK when it is created. Alternately, you
-can omit this parameter and instead tag the CMK after it is created
-using TagResource.}
+When you add tags to an AWS resource, AWS generates a cost allocation
+report with usage and costs aggregated by tags. For information about
+adding, changing, deleting and listing tags for CMKs, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html}{Tagging Keys}.
+
+Use this parameter to tag the CMK when it is created. To add tags to an
+existing CMK, use the TagResource operation.}
 }
 \description{
-Creates a customer managed \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys}{customer master key}
-(CMK) in your AWS account.
+Creates a unique customer managed \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master-keys}{customer master key}
+(CMK) in your AWS account and Region. You cannot use this operation to
+create a CMK in a different AWS account.
 }
 \details{
-You can use a CMK to encrypt small amounts of data (up to 4096 bytes)
-directly. But CMKs are more commonly used to encrypt the \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys}{data keys}
-that are used to encrypt data.
+You can use the \code{CreateKey} operation to create symmetric or asymmetric
+CMKs.
+\itemize{
+\item \strong{Symmetric CMKs} contain a 256-bit symmetric key that never leaves
+AWS KMS unencrypted. To use the CMK, you must call AWS KMS. You can
+use a symmetric CMK to encrypt and decrypt small amounts of data,
+but they are typically used to generate \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys}{data keys}
+or data key pairs. For details, see GenerateDataKey and
+GenerateDataKeyPair.
+\item \strong{Asymmetric CMKs} can contain an RSA key pair or an Elliptic Curve
+(ECC) key pair. The private key in an asymmetric CMK never leaves
+AWS KMS unencrypted. However, you can use the GetPublicKey operation
+to download the public key so it can be used outside of AWS KMS.
+CMKs with RSA key pairs can be used to encrypt or decrypt data or
+sign and verify messages (but not both). CMKs with ECC key pairs can
+be used only to sign and verify messages.
+}
 
-To create a CMK for imported key material, use the \code{Origin} parameter
-with a value of \code{EXTERNAL}.
+For information about symmetric and asymmetric CMKs, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric CMKs}
+in the \emph{AWS Key Management Service Developer Guide}.
 
-To create a CMK in a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store},
-use the \code{CustomKeyStoreId} parameter to specify the custom key store.
-You must also use the \code{Origin} parameter with a value of \code{AWS_CLOUDHSM}.
-The AWS CloudHSM cluster that is associated with the custom key store
-must have at least two active HSMs in different Availability Zones in
-the AWS Region.
+To create different types of CMKs, use the following guidance:
 
-You cannot use this operation to create a CMK in a different AWS
-account.
+Asymmetric CMKs
+
+:   To create an asymmetric CMK, use the \code{CustomerMasterKeySpec}
+parameter to specify the type of key material in the CMK. Then, use
+the \code{KeyUsage} parameter to determine whether the CMK will be used
+to encrypt and decrypt or sign and verify. You can\'t change these
+properties after the CMK is created.
+
+Symmetric CMKs
+
+:   When creating a symmetric CMK, you don\'t need to specify the
+\code{CustomerMasterKeySpec} or \code{KeyUsage} parameters. The default value
+for \code{CustomerMasterKeySpec}, \code{SYMMETRIC_DEFAULT}, and the default
+value for \code{KeyUsage}, \code{ENCRYPT_DECRYPT}, are the only valid values
+for symmetric CMKs.
+
+Imported Key Material
+
+:   To import your own key material, begin by creating a symmetric CMK
+with no key material. To do this, use the \code{Origin} parameter of
+\code{CreateKey} with a value of \code{EXTERNAL}. Next, use
+GetParametersForImport operation to get a public key and import
+token, and use the public key to encrypt your key material. Then,
+use ImportKeyMaterial with your import token to import the key
+material. For step-by-step instructions, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{Importing Key Material}
+in the \strong{AWS Key Management Service Developer Guide} . You cannot
+import the key material into an asymmetric CMK.
+
+Custom Key Stores
+
+:   To create a symmetric CMK in a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store},
+use the \code{CustomKeyStoreId} parameter to specify the custom key
+store. You must also use the \code{Origin} parameter with a value of
+\code{AWS_CLOUDHSM}. The AWS CloudHSM cluster that is associated with the
+custom key store must have at least two active HSMs in different
+Availability Zones in the AWS Region.\preformatted{You cannot create an asymmetric CMK in a custom key store. For
+information about custom key stores in AWS KMS see [Using Custom Key
+Stores](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
+in the **AWS Key Management Service Developer Guide** .
+}
 }
 \section{Request syntax}{
 \preformatted{svc$create_key(
   Policy = "string",
   Description = "string",
-  KeyUsage = "ENCRYPT_DECRYPT",
+  KeyUsage = "SIGN_VERIFY"|"ENCRYPT_DECRYPT",
+  CustomerMasterKeySpec = "RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521"|"ECC_SECG_P256K1"|"SYMMETRIC_DEFAULT",
   Origin = "AWS_KMS"|"EXTERNAL"|"AWS_CLOUDHSM",
   CustomKeyStoreId = "string",
   BypassPolicyLockoutSafetyCheck = TRUE|FALSE,

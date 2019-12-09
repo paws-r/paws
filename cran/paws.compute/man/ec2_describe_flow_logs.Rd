@@ -15,7 +15,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Filter}{One or more filters.
 \itemize{
-\item \code{deliver-log-status} - The status of the logs delivery (\code{SUCCESS} \|
+\item \code{deliver-log-status} - The status of the logs delivery (\code{SUCCESS} \\|
 \code{FAILED}).
 \item \code{log-destination-type} - The type of destination to which the flow
 log publishes data. Possible destination types include
@@ -23,7 +23,7 @@ log publishes data. Possible destination types include
 \item \code{flow-log-id} - The ID of the flow log.
 \item \code{log-group-name} - The name of the log group.
 \item \code{resource-id} - The ID of the VPC, subnet, or network interface.
-\item \code{traffic-type} - The type of traffic (\code{ACCEPT} \| \code{REJECT} \|
+\item \code{traffic-type} - The type of traffic (\code{ACCEPT} \\| \code{REJECT} \\|
 \code{ALL}).
 }}
 

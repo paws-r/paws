@@ -13,7 +13,7 @@ fsx_list_tags_for_resource(ResourceARN, MaxResults, NextToken)
 \item{MaxResults}{(Optional) Maximum number of tags to return in the response (integer).
 This parameter value must be greater than 0. The number of items that
 Amazon FSx returns is the minimum of the \code{MaxResults} parameter
-specified in the request and the service's internal maximum number of
+specified in the request and the service\'s internal maximum number of
 items per page.}
 
 \item{NextToken}{(Optional) Opaque pagination token returned from a previous

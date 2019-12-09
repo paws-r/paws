@@ -9,7 +9,8 @@ migrationhub_delete_progress_update_stream(ProgressUpdateStreamName,
   DryRun)
 }
 \arguments{
-\item{ProgressUpdateStreamName}{[required] The name of the ProgressUpdateStream.}
+\item{ProgressUpdateStreamName}{[required] The name of the ProgressUpdateStream. \emph{Do not store personal data in
+this field.}}
 
 \item{DryRun}{Optional boolean flag to indicate whether any effect should take place.
 Used to test if the caller has permission to make the call.}
@@ -29,9 +30,9 @@ resources, resource attributes, created artifacts).
 \item If the stream takes time to be deleted, it might still show up on a
 \code{ListProgressUpdateStreams} call.
 \item \code{CreateProgressUpdateStream}, \code{ImportMigrationTask},
-\code{NotifyMigrationTaskState}, and all Associate[*] APIs realted to
+\code{NotifyMigrationTaskState}, and all Associate[\*] APIs related to
 the tasks belonging to the stream will throw
-"InvalidInputException" if the stream of the same name is in the
+\"InvalidInputException\" if the stream of the same name is in the
 process of being deleted.
 \item Once the stream and all of its resources are deleted,
 \code{CreateProgressUpdateStream} for a stream of the same name will

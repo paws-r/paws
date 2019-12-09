@@ -24,7 +24,7 @@ constraint type as follows:
 
 LAUNCH
 
-:   Specify the \code{RoleArn} property as follows:\preformatted{`\{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"\}`
+:   Specify the \code{RoleArn} property as follows:\preformatted{`\\\{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"\\\}`
 
 You cannot have both a `LAUNCH` and a `STACKSET` constraint.
 
@@ -34,12 +34,12 @@ and portfolio.
 
 NOTIFICATION
 
-:   Specify the \code{NotificationArns} property as follows:\preformatted{`\{"NotificationArns" : \\["arn:aws:sns:us-east-1:123456789012:Topic"\\]\}`
+:   Specify the \code{NotificationArns} property as follows:\preformatted{`\\\{"NotificationArns" : \\\["arn:aws:sns:us-east-1:123456789012:Topic"\\\]\\\}`
 }
 
-RESOURCE\_UPDATE
+RESOURCE\\_UPDATE
 
-:   Specify the \code{TagUpdatesOnProvisionedProduct} property as follows:\preformatted{`\{"Version":"2.0","Properties":\{"TagUpdateOnProvisionedProduct":"String"\}\}`
+:   Specify the \code{TagUpdatesOnProvisionedProduct} property as follows:\preformatted{`\\\{"Version":"2.0","Properties":\\\{"TagUpdateOnProvisionedProduct":"String"\\\}\\\}`
 
 The `TagUpdatesOnProvisionedProduct` property accepts a string value
 of `ALLOWED` or `NOT_ALLOWED`.
@@ -47,7 +47,7 @@ of `ALLOWED` or `NOT_ALLOWED`.
 
 STACKSET
 
-:   Specify the \code{Parameters} property as follows:\preformatted{`\{"Version": "String", "Properties": \{"AccountList": \\[ "String" \\], "RegionList": \\[ "String" \\], "AdminRole": "String", "ExecutionRole": "String"\}\}`
+:   Specify the \code{Parameters} property as follows:\preformatted{`\\\{"Version": "String", "Properties": \\\{"AccountList": \\\[ "String" \\\], "RegionList": \\\[ "String" \\\], "AdminRole": "String", "ExecutionRole": "String"\\\}\\\}`
 
 You cannot have both a `LAUNCH` and a `STACKSET` constraint.
 

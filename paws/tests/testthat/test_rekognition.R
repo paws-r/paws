@@ -2,6 +2,14 @@ context("rekognition")
 
 svc <- paws::rekognition()
 
+test_that("describe_projects", {
+  expect_error(svc$describe_projects(), NA)
+})
+
+test_that("describe_projects", {
+  expect_error(svc$describe_projects(MaxResults = 20), NA)
+})
+
 test_that("list_collections", {
   expect_error(svc$list_collections(), NA)
 })

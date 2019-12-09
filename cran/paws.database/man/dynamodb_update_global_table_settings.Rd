@@ -14,7 +14,14 @@ dynamodb_update_global_table_settings(GlobalTableName,
 
 \item{GlobalTableBillingMode}{The billing mode of the global table. If \code{GlobalTableBillingMode} is not
 specified, the global table defaults to \code{PROVISIONED} capacity billing
-mode.}
+mode.
+\itemize{
+\item \code{PROVISIONED} - We recommend using \code{PROVISIONED} for predictable
+workloads. \code{PROVISIONED} sets the billing mode to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual}{Provisioned Mode}.
+\item \code{PAY_PER_REQUEST} - We recommend using \code{PAY_PER_REQUEST} for
+unpredictable workloads. \code{PAY_PER_REQUEST} sets the billing mode to
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand}{On-Demand Mode}.
+}}
 
 \item{GlobalTableProvisionedWriteCapacityUnits}{The maximum number of writes consumed per second before DynamoDB returns
 a \code{ThrottlingException.}}

@@ -11,7 +11,7 @@ organizations_list_tags_for_resource(ResourceId, NextToken)
 
 \item{NextToken}{Use this parameter if you receive a \code{NextToken} response in a previous
 request that indicates that there is more output available. Set it to
-the value of the previous call's \code{NextToken} response to indicate where
+the value of the previous call\'s \code{NextToken} response to indicate where
 the output should continue from.}
 }
 \description{
@@ -19,6 +19,9 @@ Lists tags for the specified resource.
 }
 \details{
 Currently, you can list tags on an account in AWS Organizations.
+
+This operation can be called only from the organization\'s master
+account.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(

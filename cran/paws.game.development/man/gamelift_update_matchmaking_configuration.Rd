@@ -19,7 +19,7 @@ gamelift_update_matchmaking_configuration(Name, Description,
 (\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html}{ARN})
 that is assigned to a game session queue and uniquely identifies it.
 Format is
-\code{arn:aws:gamelift:&lt;region&gt;:&lt;aws account&gt;:gamesessionqueue/&lt;queue name&gt;}.
+\verb{arn:aws:gamelift:&lt;region&gt;:&lt;aws account&gt;:gamesessionqueue/&lt;queue name&gt;}.
 These queues are used when placing game sessions for matches that are
 created with this matchmaking configuration. Queues can be located in
 any region.}
@@ -45,7 +45,7 @@ are defined in the same region.}
 for more information.}
 
 \item{AdditionalPlayerCount}{Number of player slots in a match to keep open for future players. For
-example, if the configuration's rule set specifies a match for a single
+example, if the configuration\'s rule set specifies a match for a single
 12-person team, and the additional player count is set to 2, only 10
 players are selected for the match.}
 

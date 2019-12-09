@@ -26,10 +26,10 @@ The \code{GetSlotTypeVersions} operation returns a \code{SlotTypeMetadata} objec
 for each version of a slot type. For example, if a slot type has three
 numbered versions, the \code{GetSlotTypeVersions} operation returns four
 \code{SlotTypeMetadata} objects in the response, one for each numbered
-version and one for the \code{$LATEST} version.
+version and one for the \verb{$LATEST} version.
 
 The \code{GetSlotTypeVersions} operation always returns at least one version,
-the \code{$LATEST} version.
+the \verb{$LATEST} version.
 
 This operation requires permissions for the \code{lex:GetSlotTypeVersions}
 action.

@@ -12,10 +12,10 @@ lambda_update_function_code(FunctionName, ZipFile, S3Bucket, S3Key,
 
 \strong{Name formats}
 \itemize{
-\item \strong{Function name} - \code{my-function}.
+\item \strong{Function name} - \verb{my-function}.
 \item \strong{Function ARN} -
-\code{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
-\item \strong{Partial ARN} - \code{123456789012:function:my-function}.
+\verb{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
+\item \strong{Partial ARN} - \verb{123456789012:function:my-function}.
 }
 
 The length constraint applies only to the full ARN. If you specify only
@@ -38,15 +38,15 @@ code. This has the same effect as calling PublishVersion separately.}
 \item{DryRun}{Set to true to validate the request parameters and access permissions
 without modifying the function code.}
 
-\item{RevisionId}{Only update the function if the revision ID matches the ID that's
+\item{RevisionId}{Only update the function if the revision ID matches the ID that\'s
 specified. Use this option to avoid modifying a function that has
 changed since you last read it.}
 }
 \description{
-Updates a Lambda function's code.
+Updates a Lambda function\'s code.
 }
 \details{
-The function's code is locked when you publish a version. You can't
+The function\'s code is locked when you publish a version. You can\'t
 modify the code of a published version, only the unpublished version.
 }
 \section{Request syntax}{

@@ -12,14 +12,14 @@ lightsail_get_relational_database_log_events(relationalDatabaseName,
 
 \item{logStreamName}{[required] The name of the log stream.
 
-Use the \code{get relational database log streams} operation to get a list of
+Use the \verb{get relational database log streams} operation to get a list of
 available log streams.}
 
 \item{startTime}{The start of the time interval from which to get log events.
 
 Constraints:
 \itemize{
-\item Specified in Universal Coordinated Time (UTC).
+\item Specified in Coordinated Universal Time (UTC).
 \item Specified in the Unix time format.
 
 For example, if you wish to use a start time of October 1, 2018, at
@@ -30,7 +30,7 @@ For example, if you wish to use a start time of October 1, 2018, at
 
 Constraints:
 \itemize{
-\item Specified in Universal Coordinated Time (UTC).
+\item Specified in Coordinated Universal Time (UTC).
 \item Specified in the Unix time format.
 
 For example, if you wish to use an end time of October 1, 2018, at 8
@@ -41,10 +41,11 @@ PM UTC, then you input \code{1538424000} as the end time.
 \code{true} is specified, the log event starts from the head of the log. If
 \code{false} is specified, the log event starts from the tail of the log.
 
-Default: \code{false}}
+For PostgreSQL, the default value of \code{false} is the only option
+available.}
 
 \item{pageToken}{A token used for advancing to a specific page of results for your
-\code{get relational database log events} request.}
+\verb{get relational database log events} request.}
 }
 \description{
 Returns a list of log events for a database in Amazon Lightsail.

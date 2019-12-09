@@ -13,13 +13,13 @@ dynamodb(config = list())
 Amazon DynamoDB is a fully managed NoSQL database service that provides
 fast and predictable performance with seamless scalability. DynamoDB
 lets you offload the administrative burdens of operating and scaling a
-distributed database, so that you don't have to worry about hardware
+distributed database, so that you don\'t have to worry about hardware
 provisioning, setup and configuration, replication, software patching,
 or cluster scaling.
 
 With DynamoDB, you can create database tables that can store and
 retrieve any amount of data, and serve any level of request traffic. You
-can scale up or scale down your tables' throughput capacity without
+can scale up or scale down your tables\' throughput capacity without
 downtime or performance degradation, and use the AWS Management Console
 to monitor resource utilization and performance metrics.
 
@@ -61,14 +61,17 @@ providing built-in high availability and data durability.
 \link[=dynamodb_delete_table]{delete_table} \tab The DeleteTable operation deletes a table and all of its items \cr
 \link[=dynamodb_describe_backup]{describe_backup} \tab Describes an existing backup of a table \cr
 \link[=dynamodb_describe_continuous_backups]{describe_continuous_backups} \tab Checks the status of continuous backups and point in time recovery on the specified table \cr
+\link[=dynamodb_describe_contributor_insights]{describe_contributor_insights} \tab Returns information about contributor insights, for a given table or global secondary index \cr
 \link[=dynamodb_describe_endpoints]{describe_endpoints} \tab Returns the regional endpoint information \cr
 \link[=dynamodb_describe_global_table]{describe_global_table} \tab Returns information about the specified global table \cr
 \link[=dynamodb_describe_global_table_settings]{describe_global_table_settings} \tab Describes Region-specific settings for a global table \cr
 \link[=dynamodb_describe_limits]{describe_limits} \tab Returns the current provisioned-capacity limits for your AWS account in a Region, both for the Region as a whole and for any one DynamoDB table that you create there\cr
 \link[=dynamodb_describe_table]{describe_table} \tab Returns information about the table, including the current status of the table, when it was created, the primary key schema, and any indexes on the table \cr
+\link[=dynamodb_describe_table_replica_auto_scaling]{describe_table_replica_auto_scaling} \tab Describes auto scaling settings across replicas of the global table at once \cr
 \link[=dynamodb_describe_time_to_live]{describe_time_to_live} \tab Gives a description of the Time to Live (TTL) status on the specified table \cr
 \link[=dynamodb_get_item]{get_item} \tab The GetItem operation returns a set of attributes for the item with the given primary key \cr
 \link[=dynamodb_list_backups]{list_backups} \tab List backups associated with an AWS account \cr
+\link[=dynamodb_list_contributor_insights]{list_contributor_insights} \tab Returns a list of ContributorInsightsSummary for a table and all its global secondary indexes \cr
 \link[=dynamodb_list_global_tables]{list_global_tables} \tab Lists all global tables that have a replica in the specified Region \cr
 \link[=dynamodb_list_tables]{list_tables} \tab Returns an array of table names associated with the current account and endpoint \cr
 \link[=dynamodb_list_tags_of_resource]{list_tags_of_resource} \tab List all tags on an Amazon DynamoDB resource \cr
@@ -82,10 +85,12 @@ providing built-in high availability and data durability.
 \link[=dynamodb_transact_write_items]{transact_write_items} \tab TransactWriteItems is a synchronous write operation that groups up to 25 action requests \cr
 \link[=dynamodb_untag_resource]{untag_resource} \tab Removes the association of tags from an Amazon DynamoDB resource \cr
 \link[=dynamodb_update_continuous_backups]{update_continuous_backups} \tab UpdateContinuousBackups enables or disables point in time recovery for the specified table \cr
+\link[=dynamodb_update_contributor_insights]{update_contributor_insights} \tab Updates the status for contributor insights for a specific table or index \cr
 \link[=dynamodb_update_global_table]{update_global_table} \tab Adds or removes replicas in the specified global table \cr
 \link[=dynamodb_update_global_table_settings]{update_global_table_settings} \tab Updates settings for a global table \cr
 \link[=dynamodb_update_item]{update_item} \tab Edits an existing item's attributes, or adds a new item to the table if it does not already exist \cr
 \link[=dynamodb_update_table]{update_table} \tab Modifies the provisioned throughput settings, global secondary indexes, or DynamoDB Streams settings for a given table \cr
+\link[=dynamodb_update_table_replica_auto_scaling]{update_table_replica_auto_scaling} \tab Updates auto scaling settings on your global tables at once \cr
 \link[=dynamodb_update_time_to_live]{update_time_to_live} \tab The UpdateTimeToLive method enables or disables Time to Live (TTL) for the specified table
 }
 }

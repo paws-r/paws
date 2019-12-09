@@ -8,7 +8,7 @@ databasemigrationservice_describe_replication_task_assessment_results(
   ReplicationTaskArn, MaxRecords, Marker)
 }
 \arguments{
-\item{ReplicationTaskArn}{\- The Amazon Resource Name (ARN) string that uniquely identifies the
+\item{ReplicationTaskArn}{\\- The Amazon Resource Name (ARN) string that uniquely identifies the
 task. When this input parameter is specified the API will return only
 one result and ignore the values of the max-records and marker
 parameters.}

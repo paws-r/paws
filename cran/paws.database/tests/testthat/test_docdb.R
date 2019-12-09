@@ -2,6 +2,10 @@ context("docdb")
 
 svc <- paws::docdb()
 
+test_that("describe_certificates", {
+  expect_error(svc$describe_certificates(), NA)
+})
+
 test_that("describe_db_cluster_parameter_groups", {
   expect_error(svc$describe_db_cluster_parameter_groups(), NA)
 })

@@ -22,7 +22,7 @@ operation.}
 is the content of the \code{customerCA.crt} file that you created when you
 \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/initialize-cluster.html}{initialized the cluster}.}
 
-\item{KeyStorePassword}{[required] Enter the password of the \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser}{kmsuser crypto user (CU) account}
+\item{KeyStorePassword}{[required] Enter the password of the \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser}{\code{kmsuser} crypto user (CU) account}
 in the specified AWS CloudHSM cluster. AWS KMS logs into the cluster as
 this user to manage key material on your behalf.
 

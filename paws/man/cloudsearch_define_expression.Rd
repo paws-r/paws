@@ -12,7 +12,7 @@ cloudsearch_define_expression(DomainName, Expression)
 \item{Expression}{[required]}
 }
 \description{
-Configures an \code{<a>Expression</a>} for the search domain. Used to create
+Configures an \verb{<a>Expression</a>} for the search domain. Used to create
 new expressions and modify existing ones. If the expression exists, the
 new configuration replaces the old one. For more information, see
 \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html}{Configuring Expressions}

@@ -10,7 +10,7 @@ fms_disassociate_admin_account()
 \description{
 Disassociates the account that has been set as the AWS Firewall Manager
 administrator account. To set a different account as the administrator
-account, you must submit an \code{AssociateAdminAccount} request .
+account, you must submit an \code{AssociateAdminAccount} request.
 }
 \section{Request syntax}{
 \preformatted{svc$disassociate_admin_account()

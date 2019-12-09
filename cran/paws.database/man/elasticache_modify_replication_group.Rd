@@ -6,11 +6,11 @@
 \usage{
 elasticache_modify_replication_group(ReplicationGroupId,
   ReplicationGroupDescription, PrimaryClusterId, SnapshottingClusterId,
-  AutomaticFailoverEnabled, CacheSecurityGroupNames, SecurityGroupIds,
-  PreferredMaintenanceWindow, NotificationTopicArn,
+  AutomaticFailoverEnabled, NodeGroupId, CacheSecurityGroupNames,
+  SecurityGroupIds, PreferredMaintenanceWindow, NotificationTopicArn,
   CacheParameterGroupName, NotificationTopicStatus, ApplyImmediately,
   EngineVersion, AutoMinorVersionUpgrade, SnapshotRetentionLimit,
-  SnapshotWindow, CacheNodeType, NodeGroupId)
+  SnapshotWindow, CacheNodeType, AuthToken, AuthTokenUpdateStrategy)
 }
 \arguments{
 \item{ReplicationGroupId}{[required] The identifier of the replication group to modify.}
@@ -30,7 +30,7 @@ enabled) replication groups.}
 \item{AutomaticFailoverEnabled}{Determines whether a read replica is automatically promoted to
 read/write primary if the existing primary encounters a failure.
 
-Valid values: \code{true} \| \code{false}
+Valid values: \code{true} \\| \code{false}
 
 Amazon ElastiCache for Redis does not support Multi-AZ with automatic
 failover on:
@@ -39,6 +39,8 @@ failover on:
 \item Redis (cluster mode disabled): T1 node types.
 \item Redis (cluster mode enabled): T1 node types.
 }}
+
+\item{NodeGroupId}{Deprecated. This parameter is not used.}
 
 \item{CacheSecurityGroupNames}{A list of cache security group names to authorize for the clusters in
 this replication group. This change is asynchronously applied as soon as
@@ -88,7 +90,7 @@ specified as \code{true} for this request.}
 \item{NotificationTopicStatus}{The status of the Amazon SNS notification topic for the replication
 group. Notifications are sent only if the status is \code{active}.
 
-Valid values: \code{active} \| \code{inactive}}
+Valid values: \code{active} \\| \code{inactive}}
 
 \item{ApplyImmediately}{If \code{true}, this parameter causes the modifications in this request and
 any pending modifications to be applied, asynchronously and as soon as
@@ -99,7 +101,7 @@ If \code{false}, changes to the nodes in the replication group are applied on
 the next maintenance reboot, or the next failure reboot, whichever
 occurs first.
 
-Valid values: \code{true} \| \code{false}
+Valid values: \code{true} \\| \code{false}
 
 Default: \code{false}}
 
@@ -133,14 +135,34 @@ an appropriate time range.}
 \item{CacheNodeType}{A valid cache node type that you want to scale this replication group
 to.}
 
-\item{NodeGroupId}{Deprecated. This parameter is not used.}
+\item{AuthToken}{Reserved parameter. The password used to access a password protected
+server. This parameter must be specified with the
+\code{auth-token-update-strategy } parameter. Password constraints:
+\itemize{
+\item Must be only printable ASCII characters
+\item Must be at least 16 characters and no more than 128 characters in
+length
+\item Cannot contain any of the following characters: \'/\', \'\"\', or
+\'@\', \'\\%\'
+}
+
+For more information, see AUTH password at AUTH.}
+
+\item{AuthTokenUpdateStrategy}{Specifies the strategy to use to update the AUTH token. This parameter
+must be specified with the \code{auth-token} parameter. Possible values:
+\itemize{
+\item Rotate
+\item Set
+}
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html}{Authenticating Users with Redis AUTH}}
 }
 \description{
 Modifies the settings for a replication group.
 }
 \details{
 For Redis (cluster mode enabled) clusters, this operation cannot be used
-to change a cluster's node type or engine version. For more
+to change a cluster\'s node type or engine version. For more
 information, see:
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/scaling-redis-cluster-mode-enabled.html}{Scaling for Amazon ElastiCache for Redis (cluster mode enabled)}
@@ -158,6 +180,7 @@ This operation is valid for Redis only.
   PrimaryClusterId = "string",
   SnapshottingClusterId = "string",
   AutomaticFailoverEnabled = TRUE|FALSE,
+  NodeGroupId = "string",
   CacheSecurityGroupNames = list(
     "string"
   ),
@@ -174,7 +197,8 @@ This operation is valid for Redis only.
   SnapshotRetentionLimit = 123,
   SnapshotWindow = "string",
   CacheNodeType = "string",
-  NodeGroupId = "string"
+  AuthToken = "string",
+  AuthTokenUpdateStrategy = "SET"|"ROTATE"
 )
 }
 }

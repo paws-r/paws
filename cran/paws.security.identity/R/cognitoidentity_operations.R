@@ -6,9 +6,8 @@ NULL
 #' Creates a new identity pool
 #'
 #' Creates a new identity pool. The identity pool is a store of user
-#' identity information that is specific to your AWS account. The limit on
-#' identity pools is 60 per account. The keys for `SupportedLoginProviders`
-#' are as follows:
+#' identity information that is specific to your AWS account. The keys for
+#' `SupportedLoginProviders` are as follows:
 #' 
 #' -   Facebook: `graph.facebook.com`
 #' 
@@ -24,12 +23,17 @@ NULL
 #'
 #' @usage
 #' cognitoidentity_create_identity_pool(IdentityPoolName,
-#'   AllowUnauthenticatedIdentities, SupportedLoginProviders,
-#'   DeveloperProviderName, OpenIdConnectProviderARNs,
-#'   CognitoIdentityProviders, SamlProviderARNs, IdentityPoolTags)
+#'   AllowUnauthenticatedIdentities, AllowClassicFlow,
+#'   SupportedLoginProviders, DeveloperProviderName,
+#'   OpenIdConnectProviderARNs, CognitoIdentityProviders, SamlProviderARNs,
+#'   IdentityPoolTags)
 #'
 #' @param IdentityPoolName &#91;required&#93; A string that you provide.
 #' @param AllowUnauthenticatedIdentities &#91;required&#93; TRUE if the identity pool supports unauthenticated logins.
+#' @param AllowClassicFlow Enables or disables the Basic (Classic) authentication flow. For more
+#' information, see [Identity Pools (Federated Identities) Authentication
+#' Flow](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html)
+#' in the *Amazon Cognito Developer Guide*.
 #' @param SupportedLoginProviders Optional key:value pairs mapping provider names to provider app IDs.
 #' @param DeveloperProviderName The \"domain\" by which Cognito will refer to your users. This name acts
 #' as a placeholder that allows your backend and the Cognito service to
@@ -52,6 +56,7 @@ NULL
 #' svc$create_identity_pool(
 #'   IdentityPoolName = "string",
 #'   AllowUnauthenticatedIdentities = TRUE|FALSE,
+#'   AllowClassicFlow = TRUE|FALSE,
 #'   SupportedLoginProviders = list(
 #'     "string"
 #'   ),
@@ -78,14 +83,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_create_identity_pool
-cognitoidentity_create_identity_pool <- function(IdentityPoolName, AllowUnauthenticatedIdentities, SupportedLoginProviders = NULL, DeveloperProviderName = NULL, OpenIdConnectProviderARNs = NULL, CognitoIdentityProviders = NULL, SamlProviderARNs = NULL, IdentityPoolTags = NULL) {
+cognitoidentity_create_identity_pool <- function(IdentityPoolName, AllowUnauthenticatedIdentities, AllowClassicFlow = NULL, SupportedLoginProviders = NULL, DeveloperProviderName = NULL, OpenIdConnectProviderARNs = NULL, CognitoIdentityProviders = NULL, SamlProviderARNs = NULL, IdentityPoolTags = NULL) {
   op <- new_operation(
     name = "CreateIdentityPool",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cognitoidentity$create_identity_pool_input(IdentityPoolName = IdentityPoolName, AllowUnauthenticatedIdentities = AllowUnauthenticatedIdentities, SupportedLoginProviders = SupportedLoginProviders, DeveloperProviderName = DeveloperProviderName, OpenIdConnectProviderARNs = OpenIdConnectProviderARNs, CognitoIdentityProviders = CognitoIdentityProviders, SamlProviderARNs = SamlProviderARNs, IdentityPoolTags = IdentityPoolTags)
+  input <- .cognitoidentity$create_identity_pool_input(IdentityPoolName = IdentityPoolName, AllowUnauthenticatedIdentities = AllowUnauthenticatedIdentities, AllowClassicFlow = AllowClassicFlow, SupportedLoginProviders = SupportedLoginProviders, DeveloperProviderName = DeveloperProviderName, OpenIdConnectProviderARNs = OpenIdConnectProviderARNs, CognitoIdentityProviders = CognitoIdentityProviders, SamlProviderARNs = SamlProviderARNs, IdentityPoolTags = IdentityPoolTags)
   output <- .cognitoidentity$create_identity_pool_output()
   config <- get_config()
   svc <- .cognitoidentity$service(config)
@@ -512,6 +517,9 @@ cognitoidentity_get_open_id_token <- function(IdentityId, Logins = NULL) {
 #' a token, as there are significant security implications: an attacker
 #' could use a leaked token to access your AWS resources for the token\'s
 #' duration.
+#' 
+#' Please provide for a small grace period, usually no more than 5 minutes,
+#' to account for clock skew.
 #'
 #' @section Request syntax:
 #' ```
@@ -908,7 +916,7 @@ cognitoidentity_set_identity_pool_roles <- function(IdentityPoolId, Roles, RoleM
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the identity pool to assign the tags
 #' to.
-#' @param Tags The tags to assign to the identity pool.
+#' @param Tags &#91;required&#93; The tags to assign to the identity pool.
 #'
 #' @section Request syntax:
 #' ```
@@ -923,7 +931,7 @@ cognitoidentity_set_identity_pool_roles <- function(IdentityPoolId, Roles, RoleM
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_tag_resource
-cognitoidentity_tag_resource <- function(ResourceArn, Tags = NULL) {
+cognitoidentity_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
     http_method = "POST",
@@ -1049,7 +1057,7 @@ cognitoidentity_unlink_identity <- function(IdentityId, Logins, LoginsToRemove) 
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the identity pool that the tags are
 #' assigned to.
-#' @param TagKeys The keys of the tags to remove from the user pool.
+#' @param TagKeys &#91;required&#93; The keys of the tags to remove from the user pool.
 #'
 #' @section Request syntax:
 #' ```
@@ -1064,7 +1072,7 @@ cognitoidentity_unlink_identity <- function(IdentityId, Logins, LoginsToRemove) 
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_untag_resource
-cognitoidentity_untag_resource <- function(ResourceArn, TagKeys = NULL) {
+cognitoidentity_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
     http_method = "POST",
@@ -1089,13 +1097,18 @@ cognitoidentity_untag_resource <- function(ResourceArn, TagKeys = NULL) {
 #'
 #' @usage
 #' cognitoidentity_update_identity_pool(IdentityPoolId, IdentityPoolName,
-#'   AllowUnauthenticatedIdentities, SupportedLoginProviders,
-#'   DeveloperProviderName, OpenIdConnectProviderARNs,
-#'   CognitoIdentityProviders, SamlProviderARNs, IdentityPoolTags)
+#'   AllowUnauthenticatedIdentities, AllowClassicFlow,
+#'   SupportedLoginProviders, DeveloperProviderName,
+#'   OpenIdConnectProviderARNs, CognitoIdentityProviders, SamlProviderARNs,
+#'   IdentityPoolTags)
 #'
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
 #' @param IdentityPoolName &#91;required&#93; A string that you provide.
 #' @param AllowUnauthenticatedIdentities &#91;required&#93; TRUE if the identity pool supports unauthenticated logins.
+#' @param AllowClassicFlow Enables or disables the Basic (Classic) authentication flow. For more
+#' information, see [Identity Pools (Federated Identities) Authentication
+#' Flow](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html)
+#' in the *Amazon Cognito Developer Guide*.
 #' @param SupportedLoginProviders Optional key:value pairs mapping provider names to provider app IDs.
 #' @param DeveloperProviderName The \"domain\" by which Cognito will refer to your users.
 #' @param OpenIdConnectProviderARNs A list of OpendID Connect provider ARNs.
@@ -1113,6 +1126,7 @@ cognitoidentity_untag_resource <- function(ResourceArn, TagKeys = NULL) {
 #'   IdentityPoolId = "string",
 #'   IdentityPoolName = "string",
 #'   AllowUnauthenticatedIdentities = TRUE|FALSE,
+#'   AllowClassicFlow = TRUE|FALSE,
 #'   SupportedLoginProviders = list(
 #'     "string"
 #'   ),
@@ -1139,14 +1153,14 @@ cognitoidentity_untag_resource <- function(ResourceArn, TagKeys = NULL) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_update_identity_pool
-cognitoidentity_update_identity_pool <- function(IdentityPoolId, IdentityPoolName, AllowUnauthenticatedIdentities, SupportedLoginProviders = NULL, DeveloperProviderName = NULL, OpenIdConnectProviderARNs = NULL, CognitoIdentityProviders = NULL, SamlProviderARNs = NULL, IdentityPoolTags = NULL) {
+cognitoidentity_update_identity_pool <- function(IdentityPoolId, IdentityPoolName, AllowUnauthenticatedIdentities, AllowClassicFlow = NULL, SupportedLoginProviders = NULL, DeveloperProviderName = NULL, OpenIdConnectProviderARNs = NULL, CognitoIdentityProviders = NULL, SamlProviderARNs = NULL, IdentityPoolTags = NULL) {
   op <- new_operation(
     name = "UpdateIdentityPool",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cognitoidentity$update_identity_pool_input(IdentityPoolId = IdentityPoolId, IdentityPoolName = IdentityPoolName, AllowUnauthenticatedIdentities = AllowUnauthenticatedIdentities, SupportedLoginProviders = SupportedLoginProviders, DeveloperProviderName = DeveloperProviderName, OpenIdConnectProviderARNs = OpenIdConnectProviderARNs, CognitoIdentityProviders = CognitoIdentityProviders, SamlProviderARNs = SamlProviderARNs, IdentityPoolTags = IdentityPoolTags)
+  input <- .cognitoidentity$update_identity_pool_input(IdentityPoolId = IdentityPoolId, IdentityPoolName = IdentityPoolName, AllowUnauthenticatedIdentities = AllowUnauthenticatedIdentities, AllowClassicFlow = AllowClassicFlow, SupportedLoginProviders = SupportedLoginProviders, DeveloperProviderName = DeveloperProviderName, OpenIdConnectProviderARNs = OpenIdConnectProviderARNs, CognitoIdentityProviders = CognitoIdentityProviders, SamlProviderARNs = SamlProviderARNs, IdentityPoolTags = IdentityPoolTags)
   output <- .cognitoidentity$update_identity_pool_output()
   config <- get_config()
   svc <- .cognitoidentity$service(config)

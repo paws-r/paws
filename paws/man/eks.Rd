@@ -46,13 +46,26 @@ application to Amazon EKS without any code modification required.
 
 \tabular{ll}{
 \link[=eks_create_cluster]{create_cluster} \tab Creates an Amazon EKS control plane \cr
+\link[=eks_create_fargate_profile]{create_fargate_profile} \tab Creates an AWS Fargate profile for your Amazon EKS cluster \cr
+\link[=eks_create_nodegroup]{create_nodegroup} \tab Creates a managed worker node group for an Amazon EKS cluster \cr
 \link[=eks_delete_cluster]{delete_cluster} \tab Deletes the Amazon EKS cluster control plane \cr
+\link[=eks_delete_fargate_profile]{delete_fargate_profile} \tab Deletes an AWS Fargate profile \cr
+\link[=eks_delete_nodegroup]{delete_nodegroup} \tab Deletes an Amazon EKS node group for a cluster \cr
 \link[=eks_describe_cluster]{describe_cluster} \tab Returns descriptive information about an Amazon EKS cluster \cr
-\link[=eks_describe_update]{describe_update} \tab Returns descriptive information about an update against your Amazon EKS cluster \cr
+\link[=eks_describe_fargate_profile]{describe_fargate_profile} \tab Returns descriptive information about an AWS Fargate profile \cr
+\link[=eks_describe_nodegroup]{describe_nodegroup} \tab Returns descriptive information about an Amazon EKS node group \cr
+\link[=eks_describe_update]{describe_update} \tab Returns descriptive information about an update against your Amazon EKS cluster or associated managed node group \cr
 \link[=eks_list_clusters]{list_clusters} \tab Lists the Amazon EKS clusters in your AWS account in the specified Region \cr
-\link[=eks_list_updates]{list_updates} \tab Lists the updates associated with an Amazon EKS cluster in your AWS account, in the specified Region\cr
+\link[=eks_list_fargate_profiles]{list_fargate_profiles} \tab Lists the AWS Fargate profiles associated with the specified cluster in your AWS account in the specified Region \cr
+\link[=eks_list_nodegroups]{list_nodegroups} \tab Lists the Amazon EKS node groups associated with the specified cluster in your AWS account in the specified Region \cr
+\link[=eks_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for an Amazon EKS resource \cr
+\link[=eks_list_updates]{list_updates} \tab Lists the updates associated with an Amazon EKS cluster or managed node group in your AWS account, in the specified Region\cr
+\link[=eks_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn \cr
+\link[=eks_untag_resource]{untag_resource} \tab Deletes specified tags from a resource \cr
 \link[=eks_update_cluster_config]{update_cluster_config} \tab Updates an Amazon EKS cluster configuration \cr
-\link[=eks_update_cluster_version]{update_cluster_version} \tab Updates an Amazon EKS cluster to the specified Kubernetes version
+\link[=eks_update_cluster_version]{update_cluster_version} \tab Updates an Amazon EKS cluster to the specified Kubernetes version \cr
+\link[=eks_update_nodegroup_config]{update_nodegroup_config} \tab Updates an Amazon EKS managed node group configuration \cr
+\link[=eks_update_nodegroup_version]{update_nodegroup_version} \tab Updates the Kubernetes version or AMI version of an Amazon EKS managed node group
 }
 }
 

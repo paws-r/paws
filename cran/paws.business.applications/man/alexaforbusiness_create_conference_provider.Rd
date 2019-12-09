@@ -22,7 +22,7 @@ alexaforbusiness_create_conference_provider(ConferenceProviderName,
 \item{ClientRequestToken}{The request token of the client.}
 }
 \description{
-Adds a new conference provider under the user's AWS account.
+Adds a new conference provider under the user\'s AWS account.
 }
 \section{Request syntax}{
 \preformatted{svc$create_conference_provider(

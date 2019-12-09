@@ -2,26 +2,25 @@
 % Please edit documentation in R/licensemanager_operations.R
 \name{licensemanager_list_associations_for_license_configuration}
 \alias{licensemanager_list_associations_for_license_configuration}
-\title{Lists the resource associations for a license configuration}
+\title{Lists the resource associations for the specified license configuration}
 \usage{
 licensemanager_list_associations_for_license_configuration(
   LicenseConfigurationArn, MaxResults, NextToken)
 }
 \arguments{
-\item{LicenseConfigurationArn}{[required] ARN of a \code{LicenseConfiguration} object.}
+\item{LicenseConfigurationArn}{[required] Amazon Resource Name (ARN) of a license configuration.}
 
-\item{MaxResults}{Maximum number of results to return in a single call. To retrieve the
-remaining results, make another call with the returned \code{NextToken}
-value.}
+\item{MaxResults}{Maximum number of results to return in a single call.}
 
 \item{NextToken}{Token for the next set of results.}
 }
 \description{
-Lists the resource associations for a license configuration. Resource
-associations need not consume licenses from a license configuration. For
-example, an AMI or a stopped instance may not consume a license
-(depending on the license rules). Use this operation to find all
-resources associated with a license configuration.
+Lists the resource associations for the specified license configuration.
+}
+\details{
+Resource associations need not consume licenses from a license
+configuration. For example, an AMI or a stopped instance might not
+consume a license (depending on the license rules).
 }
 \section{Request syntax}{
 \preformatted{svc$list_associations_for_license_configuration(

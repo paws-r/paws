@@ -15,7 +15,7 @@ specified service.
 
 This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \_+=,.@-}
+spaces. You can also include any of the following characters: \\_+=,.@-}
 
 \item{ServiceName}{[required] The name of the AWS service that is to be associated with the
 credentials. The service you specify here is the only service that can

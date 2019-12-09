@@ -9,11 +9,11 @@ glue_delete_partition(CatalogId, DatabaseName, TableName,
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the partition to be deleted resides. If
-none is supplied, the AWS account ID is used by default.}
+none is provided, the AWS account ID is used by default.}
 
 \item{DatabaseName}{[required] The name of the catalog database in which the table in question resides.}
 
-\item{TableName}{[required] The name of the table where the partition to be deleted is located.}
+\item{TableName}{[required] The name of the table that contains the partition to be deleted.}
 
 \item{PartitionValues}{[required] The values that define the partition.}
 }

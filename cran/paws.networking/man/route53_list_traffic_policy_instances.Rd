@@ -55,7 +55,7 @@ Gets information about the traffic policy instances that you created by
 using the current AWS account.
 }
 \details{
-After you submit an \code{UpdateTrafficPolicyInstance} request, there's a
+After you submit an \code{UpdateTrafficPolicyInstance} request, there\'s a
 brief delay while Amazon Route 53 creates the resource record sets that
 are specified in the traffic policy definition. For more information,
 see the \code{State} response element.

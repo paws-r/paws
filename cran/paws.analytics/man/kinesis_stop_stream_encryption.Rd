@@ -14,7 +14,7 @@ kinesis_stop_stream_encryption(StreamName, EncryptionType, KeyId)
 \item{KeyId}{[required] The GUID for the customer-managed AWS KMS key to use for encryption.
 This value can be a globally unique identifier, a fully specified Amazon
 Resource Name (ARN) to either an alias or a key, or an alias name
-prefixed by "alias/".You can also use a master key owned by Kinesis
+prefixed by \"alias/\".You can also use a master key owned by Kinesis
 Data Streams by specifying the alias \code{aws/kinesis}.
 \itemize{
 \item Key ARN example:

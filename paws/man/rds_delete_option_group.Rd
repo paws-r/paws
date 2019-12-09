@@ -9,7 +9,7 @@ rds_delete_option_group(OptionGroupName)
 \arguments{
 \item{OptionGroupName}{[required] The name of the option group to be deleted.
 
-You can't delete default option groups.}
+You can\'t delete default option groups.}
 }
 \description{
 Deletes an existing option group.

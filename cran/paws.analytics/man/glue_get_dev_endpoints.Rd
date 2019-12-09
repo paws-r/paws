@@ -2,7 +2,7 @@
 % Please edit documentation in R/glue_operations.R
 \name{glue_get_dev_endpoints}
 \alias{glue_get_dev_endpoints}
-\title{Retrieves all the DevEndpoints in this AWS account}
+\title{Retrieves all the development endpoints in this AWS account}
 \usage{
 glue_get_dev_endpoints(MaxResults, NextToken)
 }
@@ -12,7 +12,7 @@ glue_get_dev_endpoints(MaxResults, NextToken)
 \item{NextToken}{A continuation token, if this is a continuation call.}
 }
 \description{
-Retrieves all the DevEndpoints in this AWS account.
+Retrieves all the development endpoints in this AWS account.
 }
 \details{
 When you create a development endpoint in a virtual private cloud (VPC),

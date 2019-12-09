@@ -17,7 +17,7 @@ ProfileArn. To send to all rooms, specify an empty RoomFilters list.}
 possible announcement types (text, SSML or audio).}
 
 \item{TimeToLiveInSeconds}{The time to live for an announcement. Default is 300. If delivery
-doesn't occur within this time, the announcement is not delivered.}
+doesn\'t occur within this time, the announcement is not delivered.}
 
 \item{ClientRequestToken}{[required] The unique, user-specified identifier for the request that ensures
 idempotency.}

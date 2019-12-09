@@ -12,17 +12,17 @@ greengrass_create_software_update_job(AmznClientToken, S3UrlSignerRole,
 \arguments{
 \item{AmznClientToken}{A client token used to correlate requests and responses.}
 
-\item{S3UrlSignerRole}{}
+\item{S3UrlSignerRole}{[required]}
 
-\item{SoftwareToUpdate}{}
+\item{SoftwareToUpdate}{[required]}
 
 \item{UpdateAgentLogLevel}{}
 
-\item{UpdateTargets}{}
+\item{UpdateTargets}{[required]}
 
-\item{UpdateTargetsArchitecture}{}
+\item{UpdateTargetsArchitecture}{[required]}
 
-\item{UpdateTargetsOperatingSystem}{}
+\item{UpdateTargetsOperatingSystem}{[required]}
 }
 \description{
 Creates a software update for a core or group of cores (specified as an IoT thing group.) Use this to update the OTA Agent as well as the Greengrass core software. It makes use of the IoT Jobs feature which provides additional commands to manage a Greengrass core software update job.
@@ -36,8 +36,8 @@ Creates a software update for a core or group of cores (specified as an IoT thin
   UpdateTargets = list(
     "string"
   ),
-  UpdateTargetsArchitecture = "armv7l"|"x86_64"|"aarch64",
-  UpdateTargetsOperatingSystem = "ubuntu"|"raspbian"|"amazon_linux"
+  UpdateTargetsArchitecture = "armv6l"|"armv7l"|"x86_64"|"aarch64",
+  UpdateTargetsOperatingSystem = "ubuntu"|"raspbian"|"amazon_linux"|"openwrt"
 )
 }
 }

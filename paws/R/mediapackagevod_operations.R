@@ -118,6 +118,7 @@ mediapackagevod_create_asset <- function(Id, PackagingGroupId, ResourceId = NULL
 #'   ),
 #'   HlsPackage = list(
 #'     Encryption = list(
+#'       ConstantInitializationVector = "string",
 #'       EncryptionMethod = "AES_128"|"SAMPLE_AES",
 #'       SpekeKeyProvider = list(
 #'         RoleArn = "string",

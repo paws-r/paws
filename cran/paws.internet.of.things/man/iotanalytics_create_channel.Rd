@@ -10,9 +10,13 @@ iotanalytics_create_channel(channelName, channelStorage,
 \arguments{
 \item{channelName}{[required] The name of the channel.}
 
-\item{channelStorage}{Where channel data is stored.}
+\item{channelStorage}{Where channel data is stored. You may choose one of \"serviceManagedS3\"
+or \"customerManagedS3\" storage. If not specified, the default is
+\"serviceManagedS3\". This cannot be changed after creation of the
+channel.}
 
-\item{retentionPeriod}{How long, in days, message data is kept for the channel.}
+\item{retentionPeriod}{How long, in days, message data is kept for the channel. When
+\"customerManagedS3\" storage is selected, this parameter is ignored.}
 
 \item{tags}{Metadata which can be used to manage the channel.}
 }

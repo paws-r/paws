@@ -20,27 +20,28 @@ by Amazon QuickSight.
 
 \item{Email}{[required] The email address of the user that you want to register.}
 
-\item{UserRole}{[required] The Amazon QuickSight role of the user. The user role can be one of the
+\item{UserRole}{[required] The Amazon QuickSight role for the user. The user role can be one of the
 following:
 \itemize{
 \item \code{READER}: A user who has read-only access to dashboards.
-\item \code{AUTHOR}: A user who can create data sources, data sets, analyses,
+\item \code{AUTHOR}: A user who can create data sources, datasets, analyses,
 and dashboards.
 \item \code{ADMIN}: A user who is an author, who can also manage Amazon
 QuickSight settings.
+\item \code{RESTRICTED_READER}: This role isn\'t currently available for use.
+\item \code{RESTRICTED_AUTHOR}: This role isn\'t currently available for use.
 }}
 
 \item{IamArn}{The ARN of the IAM user or role that you are registering with Amazon
 QuickSight.}
 
 \item{SessionName}{You need to use this parameter only when you register one or more users
-using an assumed IAM role. You don't need to provide the session name
+using an assumed IAM role. You don\'t need to provide the session name
 for other scenarios, for example when you are registering an IAM user or
 an Amazon QuickSight user. You can register multiple users using the
 same IAM role if each user has a different session name. For more
-information on assuming IAM roles, see
-\href{https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html}{assume-role}
-in the \emph{AWS CLI Reference.}}
+information on assuming IAM roles, see \code{assume-role} in the \emph{AWS CLI
+Reference.}}
 
 \item{AwsAccountId}{[required] The ID for the AWS account that the user is in. Currently, you use the
 ID for the AWS account that contains your Amazon QuickSight account.}
@@ -54,19 +55,6 @@ are registering.}
 Creates an Amazon QuickSight user, whose identity is associated with the
 AWS Identity and Access Management (IAM) identity or role specified in
 the request.
-}
-\details{
-The permission resource is
-\code{arn:aws:quicksight:us-east-1:<i>&lt;aws-account-id&gt;</i>:user/default/<i>&lt;user-name&gt;</i> }.
-
-The condition resource is the Amazon Resource Name (ARN) for the IAM
-user or role, and the session name.
-
-The condition keys are \code{quicksight:IamArn} and \code{quicksight:SessionName}.
-
-\strong{CLI Sample:}
-
-\code{aws quicksight register-user -\\-aws-account-id=111122223333 -\\-namespace=default -\\-email=pat@example.com -\\-identity-type=IAM -\\-user-role=AUTHOR -\\-iam-arn=arn:aws:iam::111122223333:user/Pat }
 }
 \section{Request syntax}{
 \preformatted{svc$register_user(

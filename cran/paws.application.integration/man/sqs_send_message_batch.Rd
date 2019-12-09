@@ -11,11 +11,11 @@ sqs_send_message_batch(QueueUrl, Entries)
 
 Queue URLs and names are case-sensitive.}
 
-\item{Entries}{[required] A list of \code{<a>SendMessageBatchRequestEntry</a>} items.}
+\item{Entries}{[required] A list of \verb{<a>SendMessageBatchRequestEntry</a>} items.}
 }
 \description{
 Delivers up to ten messages to the specified queue. This is a batch
-version of \code{ <a>SendMessage</a>.} For a FIFO queue, multiple messages
+version of \verb{ <a>SendMessage</a>.} For a FIFO queue, multiple messages
 within a single batch are enqueued in the order they are sent.
 }
 \details{
@@ -31,22 +31,22 @@ messages) are both 256 KB (262,144 bytes).
 A message can include only XML, JSON, and unformatted text. The
 following Unicode characters are allowed:
 
-\code{#x9} \| \code{#xA} \| \code{#xD} \| \code{#x20} to \code{#xD7FF} \| \code{#xE000} to \code{#xFFFD} \|
-\code{#x10000} to \code{#x10FFFF}
+\verb{#x9} \\| \verb{#xA} \\| \verb{#xD} \\| \verb{#x20} to \verb{#xD7FF} \\| \verb{#xE000} to \verb{#xFFFD} \\|
+\verb{#x10000} to \verb{#x10FFFF}
 
 Any characters not included in this list will be rejected. For more
 information, see the \href{http://www.w3.org/TR/REC-xml/#charsets}{W3C specification for characters}.
 
-If you don't specify the \code{DelaySeconds} parameter for an entry, Amazon
+If you don\'t specify the \code{DelaySeconds} parameter for an entry, Amazon
 SQS uses the default value for the queue.
 
 Some actions take lists of parameters. These lists are specified using
 the \code{param.n} notation. Values of \code{n} are integers starting from 1. For
 example, a parameter list with two elements looks like this:
 
-\code{&amp;Attribute.1=first}
+\verb{&amp;Attribute.1=first}
 
-\code{&amp;Attribute.2=second}
+\verb{&amp;Attribute.2=second}
 }
 \section{Request syntax}{
 \preformatted{svc$send_message_batch(
@@ -57,6 +57,19 @@ example, a parameter list with two elements looks like this:
       MessageBody = "string",
       DelaySeconds = 123,
       MessageAttributes = list(
+        list(
+          StringValue = "string",
+          BinaryValue = raw,
+          StringListValues = list(
+            "string"
+          ),
+          BinaryListValues = list(
+            raw
+          ),
+          DataType = "string"
+        )
+      ),
+      MessageSystemAttributes = list(
         list(
           StringValue = "string",
           BinaryValue = raw,

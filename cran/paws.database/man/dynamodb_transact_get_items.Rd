@@ -27,16 +27,6 @@ in more than one AWS account or Region. The aggregate size of the items
 in the transaction cannot exceed 4 MB.
 }
 \details{
-All AWS Regions and AWS GovCloud (US) support up to 25 items per
-transaction with up to 4 MB of data, except the following AWS Regions:
-\itemize{
-\item China (Beijing)
-\item China (Ningxia)
-}
-
-The China (Beijing) and China (Ningxia) Regions support up to 10 items
-per transaction with up to 4 MB of data.
-
 DynamoDB rejects the entire \code{TransactGetItems} request if any of the
 following is true:
 \itemize{

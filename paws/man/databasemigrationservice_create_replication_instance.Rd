@@ -39,7 +39,7 @@ replication instance.}
 
 \item{AvailabilityZone}{The AWS Availability Zone where the replication instance will be
 created. The default value is a random, system-chosen Availability Zone
-in the endpoint's AWS Region, for example: \code{us-east-1d}}
+in the endpoint\'s AWS Region, for example: \verb{us-east-1d}}
 
 \item{ReplicationSubnetGroupIdentifier}{A subnet group to associate with the replication instance.}
 
@@ -72,7 +72,7 @@ Default: \code{true}}
 \item{KmsKeyId}{An AWS KMS key identifier that is used to encrypt the data on the
 replication instance.
 
-If you don't specify a value for the \code{KmsKeyId} parameter, then AWS DMS
+If you don\'t specify a value for the \code{KmsKeyId} parameter, then AWS DMS
 uses your default encryption key.
 
 AWS KMS creates the default encryption key for your AWS account. Your
@@ -87,6 +87,12 @@ value is \code{true}.}
 }
 \description{
 Creates the replication instance using the specified parameters.
+}
+\details{
+AWS DMS requires that your account have certain roles with appropriate
+permissions before you can create a replication instance. For
+information on the required roles, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.APIRole.html}{Creating the IAM Roles to Use With the AWS CLI and AWS DMS API}.
+For information on the required permissions, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.IAMPermissions.html}{IAM Permissions Needed to Use AWS DMS}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_replication_instance(

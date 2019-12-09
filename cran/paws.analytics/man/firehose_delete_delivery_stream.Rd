@@ -4,30 +4,44 @@
 \alias{firehose_delete_delivery_stream}
 \title{Deletes a delivery stream and its data}
 \usage{
-firehose_delete_delivery_stream(DeliveryStreamName)
+firehose_delete_delivery_stream(DeliveryStreamName, AllowForceDelete)
 }
 \arguments{
 \item{DeliveryStreamName}{[required] The name of the delivery stream.}
+
+\item{AllowForceDelete}{Set this to true if you want to delete the delivery stream even if
+Kinesis Data Firehose is unable to retire the grant for the CMK. Kinesis
+Data Firehose might be unable to retire the grant due to a customer
+error, such as when the CMK or the grant are in an invalid state. If you
+force deletion, you can then use the
+\href{https://docs.aws.amazon.com/kms/latest/APIReference/API_RevokeGrant.html}{RevokeGrant}
+operation to revoke the grant you gave to Kinesis Data Firehose. If a
+failure to retire the grant happens due to an AWS KMS issue, Kinesis
+Data Firehose keeps retrying the delete operation.
+
+The default value is false.}
 }
 \description{
 Deletes a delivery stream and its data.
 }
 \details{
-You can delete a delivery stream only if it is in \code{ACTIVE} or \code{DELETING}
-state, and not in the \code{CREATING} state. While the deletion request is in
-process, the delivery stream is in the \code{DELETING} state.
+To check the state of a delivery stream, use DescribeDeliveryStream. You
+can delete a delivery stream only if it is in one of the following
+states: \code{ACTIVE}, \code{DELETING}, \code{CREATING_FAILED}, or \code{DELETING_FAILED}.
+You can\'t delete a delivery stream that is in the \code{CREATING} state.
+While the deletion request is in process, the delivery stream is in the
+\code{DELETING} state.
 
-To check the state of a delivery stream, use DescribeDeliveryStream.
-
-While the delivery stream is \code{DELETING} state, the service might
-continue to accept the records, but it doesn't make any guarantees with
-respect to delivering the data. Therefore, as a best practice, you
-should first stop any applications that are sending records before
-deleting a delivery stream.
+While the delivery stream is in the \code{DELETING} state, the service might
+continue to accept records, but it doesn\'t make any guarantees with
+respect to delivering the data. Therefore, as a best practice, first
+stop any applications that are sending records before you delete a
+delivery stream.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_delivery_stream(
-  DeliveryStreamName = "string"
+  DeliveryStreamName = "string",
+  AllowForceDelete = TRUE|FALSE
 )
 }
 }

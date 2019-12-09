@@ -2,8 +2,8 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_get_baidu_channel}
 \alias{pinpoint_get_baidu_channel}
-\title{Retrieves information about the status and settings of the Baidu Cloud
-Push channel for an application}
+\title{Retrieves information about the status and settings of the Baidu channel
+for an application}
 \usage{
 pinpoint_get_baidu_channel(ApplicationId)
 }
@@ -12,8 +12,8 @@ pinpoint_get_baidu_channel(ApplicationId)
 as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \description{
-Retrieves information about the status and settings of the Baidu Cloud
-Push channel for an application.
+Retrieves information about the status and settings of the Baidu channel
+for an application.
 }
 \section{Request syntax}{
 \preformatted{svc$get_baidu_channel(

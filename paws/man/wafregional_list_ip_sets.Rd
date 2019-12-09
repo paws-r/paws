@@ -7,12 +7,10 @@
 wafregional_list_ip_sets(NextMarker, Limit)
 }
 \arguments{
-\item{NextMarker}{If you specify a value for \code{Limit} and you have more \code{IPSets} than the
-value of \code{Limit}, AWS WAF returns a \code{NextMarker} value in the response
-that allows you to list another group of \code{IPSets}. For the second and
-subsequent \code{ListIPSets} requests, specify the value of \code{NextMarker} from
-the previous response to get information about another batch of
-\code{IPSets}.}
+\item{NextMarker}{AWS WAF returns a \code{NextMarker} value in the response that allows you to
+list another group of \code{IPSets}. For the second and subsequent
+\code{ListIPSets} requests, specify the value of \code{NextMarker} from the
+previous response to get information about another batch of \code{IPSets}.}
 
 \item{Limit}{Specifies the number of \code{IPSet} objects that you want AWS WAF to return
 for this request. If you have more \code{IPSet} objects than the number you

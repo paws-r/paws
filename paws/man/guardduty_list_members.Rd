@@ -20,7 +20,7 @@ subsequent calls to the action fill nextToken in the request with the
 value of NextToken from the previous response to continue listing data.}
 
 \item{OnlyAssociated}{Specifies whether to only return associated members or to return all
-members (including members which haven't been invited yet or have been
+members (including members which haven\'t been invited yet or have been
 disassociated).}
 }
 \description{

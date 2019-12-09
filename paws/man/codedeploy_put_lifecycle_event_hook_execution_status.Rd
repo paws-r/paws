@@ -11,7 +11,7 @@ codedeploy_put_lifecycle_event_hook_execution_status(deploymentId,
 \item{deploymentId}{The unique ID of a deployment. Pass this ID to a Lambda function that
 validates a deployment lifecycle event.}
 
-\item{lifecycleEventHookExecutionId}{The execution ID of a deployment's lifecycle hook. A deployment
+\item{lifecycleEventHookExecutionId}{The execution ID of a deployment\'s lifecycle hook. A deployment
 lifecycle hook is specified in the \code{hooks} section of the AppSpec file.}
 
 \item{status}{The result of a Lambda function that validates a deployment lifecycle

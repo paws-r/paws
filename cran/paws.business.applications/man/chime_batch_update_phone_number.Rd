@@ -2,24 +2,35 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_batch_update_phone_number}
 \alias{chime_batch_update_phone_number}
-\title{Updates phone number product types}
+\title{Updates phone number product types or calling names}
 \usage{
 chime_batch_update_phone_number(UpdatePhoneNumberRequestItems)
 }
 \arguments{
-\item{UpdatePhoneNumberRequestItems}{[required] The request containing the phone number IDs and product types to update.}
+\item{UpdatePhoneNumberRequestItems}{[required] The request containing the phone number IDs and product types or calling
+names to update.}
 }
 \description{
-Updates phone number product types. Choose from Amazon Chime Business
-Calling and Amazon Chime Voice Connector product types. For toll-free
-numbers, you can use only the Amazon Chime Voice Connector product type.
+Updates phone number product types or calling names. You can update one
+attribute at a time for each \code{UpdatePhoneNumberRequestItem}. For
+example, you can update either the product type or the calling name.
+}
+\details{
+For product types, choose from Amazon Chime Business Calling and Amazon
+Chime Voice Connector. For toll-free numbers, you must use the Amazon
+Chime Voice Connector product type.
+
+Updates to outbound calling names can take up to 72 hours to complete.
+Pending updates to outbound calling names must be complete before you
+can request another update.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_update_phone_number(
   UpdatePhoneNumberRequestItems = list(
     list(
       PhoneNumberId = "string",
-      ProductType = "BusinessCalling"|"VoiceConnector"
+      ProductType = "BusinessCalling"|"VoiceConnector",
+      CallingName = "string"
     )
   )
 )

@@ -44,11 +44,11 @@ buckets.
 \item You make a call to the \code{GetDiscoveredResourceCounts} action and
 specify that you want all resource types.
 \item AWS Config returns the following:
-}
 \itemize{
 \item The resource types (EC2 instances, IAM users, and S3 buckets).
 \item The number of each resource type (25, 20, and 15).
 \item The total number of all resources (60).
+}
 }
 
 The response is paginated. By default, AWS Config lists 100

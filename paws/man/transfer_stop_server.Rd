@@ -17,7 +17,7 @@ not affected by stopping your server. Stopping a server will not reduce
 or impact your Secure File Transfer Protocol (SFTP) endpoint billing.
 }
 \details{
-The states of \code{STOPPING} indicates that the server is in an intermediate
+The state of \code{STOPPING} indicates that the server is in an intermediate
 state, either not fully able to respond, or not fully offline. The
 values of \code{STOP_FAILED} can indicate an error condition.
 

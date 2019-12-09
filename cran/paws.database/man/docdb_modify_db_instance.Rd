@@ -6,7 +6,7 @@
 \usage{
 docdb_modify_db_instance(DBInstanceIdentifier, DBInstanceClass,
   ApplyImmediately, PreferredMaintenanceWindow, AutoMinorVersionUpgrade,
-  NewDBInstanceIdentifier, PromotionTier)
+  NewDBInstanceIdentifier, CACertificateIdentifier, PromotionTier)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The DB instance identifier. This value is stored as a lowercase string.
@@ -37,7 +37,7 @@ cause an outage and are applied on the next reboot.
 Default: \code{false}}
 
 \item{PreferredMaintenanceWindow}{The weekly time range (in UTC) during which system maintenance can
-occur, which might result in an outage. Changing this parameter doesn't
+occur, which might result in an outage. Changing this parameter doesn\'t
 result in an outage except in the following situation, and the change is
 asynchronously applied as soon as possible. If there are pending actions
 that cause a reboot, and the maintenance window is changed to include
@@ -56,7 +56,7 @@ Constraints: Must be at least 30 minutes.}
 
 \item{AutoMinorVersionUpgrade}{Indicates that minor version upgrades are applied automatically to the
 DB instance during the maintenance window. Changing this parameter
-doesn't result in an outage except in the following case, and the
+doesn\'t result in an outage except in the following case, and the
 change is asynchronously applied as soon as possible. An outage results
 if this parameter is set to \code{true} during the maintenance window, and a
 newer minor version is available, and Amazon DocumentDB has enabled
@@ -64,8 +64,8 @@ automatic patching for that engine version.}
 
 \item{NewDBInstanceIdentifier}{The new DB instance identifier for the DB instance when renaming a DB
 instance. When you change the DB instance identifier, an instance reboot
-occurs immediately if you set \code{Apply Immediately} to \code{true}. It occurs
-during the next maintenance window if you set \code{Apply Immediately} to
+occurs immediately if you set \verb{Apply Immediately} to \code{true}. It occurs
+during the next maintenance window if you set \verb{Apply Immediately} to
 \code{false}. This value is stored as a lowercase string.
 
 Constraints:
@@ -76,6 +76,8 @@ Constraints:
 }
 
 Example: \code{mydbinstance}}
+
+\item{CACertificateIdentifier}{Indicates the certificate that needs to be associated with the instance.}
 
 \item{PromotionTier}{A value that specifies the order in which an Amazon DocumentDB replica
 is promoted to the primary instance after a failure of the existing
@@ -98,6 +100,7 @@ values in the request.
   PreferredMaintenanceWindow = "string",
   AutoMinorVersionUpgrade = TRUE|FALSE,
   NewDBInstanceIdentifier = "string",
+  CACertificateIdentifier = "string",
   PromotionTier = 123
 )
 }

@@ -9,7 +9,7 @@ opsworks_stop_instance(InstanceId, Force)
 \arguments{
 \item{InstanceId}{[required] The instance ID.}
 
-\item{Force}{Specifies whether to force an instance to stop. If the instance's root
+\item{Force}{Specifies whether to force an instance to stop. If the instance\'s root
 device type is \code{ebs}, or EBS-backed, adding the \code{Force} parameter to the
 \code{StopInstances} API call disassociates the AWS OpsWorks Stacks instance
 from EC2, and forces deletion of \emph{only} the OpsWorks Stacks instance.

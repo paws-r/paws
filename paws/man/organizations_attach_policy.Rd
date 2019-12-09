@@ -13,7 +13,7 @@ target. You can get the ID for the policy by calling the ListPolicies
 operation.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a policy ID
-string requires "p-" followed by from 8 to 128 lower-case letters or
+string requires \"p-\" followed by from 8 to 128 lowercase letters or
 digits.}
 
 \item{TargetId}{[required] The unique identifier (ID) of the root, OU, or account that you want to
@@ -23,60 +23,29 @@ ListOrganizationalUnitsForParent, or ListAccounts operations.
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a target ID
 string requires one of the following:
 \itemize{
-\item Root: a string that begins with "r-" followed by from 4 to 32
-lower-case letters or digits.
-\item Account: a string that consists of exactly 12 digits.
-\item Organizational unit (OU): a string that begins with "ou-" followed
-by from 4 to 32 lower-case letters or digits (the ID of the root
-that the OU is in) followed by a second "-" dash and from 8 to 32
-additional lower-case letters or digits.
+\item \strong{Root} - A string that begins with \"r-\" followed by from 4 to 32
+lowercase letters or digits.
+\item \strong{Account} - A string that consists of exactly 12 digits.
+\item \strong{Organizational unit (OU)} - A string that begins with \"ou-\"
+followed by from 4 to 32 lowercase letters or digits (the ID of the
+root that the OU is in). This string is followed by a second \"-\"
+dash and from 8 to 32 additional lowercase letters or digits.
 }}
 }
 \description{
 Attaches a policy to a root, an organizational unit (OU), or an
-individual account. How the policy affects accounts depends on the type
-of policy:
+individual account.
 }
 \details{
+How the policy affects accounts depends on the type of policy:
 \itemize{
-\item \strong{Service control policy (SCP)} - An SCP specifies what permissions
-can be delegated to users in affected member accounts. The scope of
-influence for a policy depends on what you attach the policy to:
-\item If you attach an SCP to a root, it affects all accounts in the
-organization
-\item If you attach an SCP to an OU, it affects all accounts in that
-OU and in any child OUs
-\item If you attach the policy directly to an account, it affects only
-that account
+\item For more information about attaching SCPs, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html}{How SCPs Work}
+in the \emph{AWS Organizations User Guide.}
+\item For information about attaching tag policies, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies-inheritance.html}{How Policy Inheritance Works}
+in the \emph{AWS Organizations User Guide.}
 }
 
-SCPs are JSON policies that specify the maximum permissions for an
-organization or organizational unit (OU). When you attach one SCP to
-a higher level root or OU, and you also attach a different SCP to a
-child OU or to an account, the child policy can further restrict
-only the permissions that pass through the parent filter and are
-available to the child. An SCP that is attached to a child can't
-grant a permission that the paren't hasn't already granted. For
-example, imagine that the parent SCP allows permissions A, B, C, D,
-and E. The child SCP allows C, D, E, F, and G. The result is that
-the accounts affected by the child SCP are allowed to use only C, D,
-and E. They can't use A or B because the child OU filtered them
-out. They also can't use F and G because the parent OU filtered
-them out. They can't be granted back by the child SCP; child SCPs
-can only filter the permissions they receive from the parent SCP.
-
-AWS Organizations attaches a default SCP named \code{\"FullAWSAccess} to
-every root, OU, and account. This default SCP allows all services
-and actions, enabling any new child OU or account to inherit the
-permissions of the parent root or OU. If you detach the default
-policy, you must replace it with a policy that specifies the
-permissions that you want to allow in that OU or account.
-
-For more information about how AWS Organizations policies
-permissions work, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html}{Using Service Control Policies}
-in the \emph{AWS Organizations User Guide.}
-
-This operation can be called only from the organization's master
+This operation can be called only from the organization\'s master
 account.
 }
 \section{Request syntax}{

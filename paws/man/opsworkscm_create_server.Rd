@@ -4,16 +4,49 @@
 \alias{opsworkscm_create_server}
 \title{Creates and immedately starts a new server}
 \usage{
-opsworkscm_create_server(AssociatePublicIpAddress,
-  DisableAutomatedBackup, Engine, EngineModel, EngineVersion,
-  EngineAttributes, BackupRetentionCount, ServerName, InstanceProfileArn,
-  InstanceType, KeyPair, PreferredMaintenanceWindow,
-  PreferredBackupWindow, SecurityGroupIds, ServiceRoleArn, SubnetIds,
-  BackupId)
+opsworkscm_create_server(AssociatePublicIpAddress, CustomDomain,
+  CustomCertificate, CustomPrivateKey, DisableAutomatedBackup, Engine,
+  EngineModel, EngineVersion, EngineAttributes, BackupRetentionCount,
+  ServerName, InstanceProfileArn, InstanceType, KeyPair,
+  PreferredMaintenanceWindow, PreferredBackupWindow, SecurityGroupIds,
+  ServiceRoleArn, SubnetIds, BackupId)
 }
 \arguments{
 \item{AssociatePublicIpAddress}{Associate a public IP address with a server that you are launching.
 Valid values are \code{true} or \code{false}. The default value is \code{true}.}
+
+\item{CustomDomain}{An optional public endpoint of a server, such as
+\verb{https://aws.my-company.com}. To access the server, create a CNAME DNS
+record in your preferred DNS service that points the custom domain to
+the endpoint that is generated when the server is created (the value of
+the CreateServer Endpoint attribute). You cannot access the server by
+using the generated \code{Endpoint} value if the server is using a custom
+domain. If you specify a custom domain, you must also specify values for
+\code{CustomCertificate} and \code{CustomPrivateKey}.}
+
+\item{CustomCertificate}{A PEM-formatted HTTPS certificate. The value can be be a single,
+self-signed certificate, or a certificate chain. If you specify a custom
+certificate, you must also specify values for \code{CustomDomain} and
+\code{CustomPrivateKey}. The following are requirements for the
+\code{CustomCertificate} value:
+\itemize{
+\item You can provide either a self-signed, custom certificate, or the
+full certificate chain.
+\item The certificate must be a valid X509 certificate, or a certificate
+chain in PEM format.
+\item The certificate must be valid at the time of upload. A certificate
+can\'t be used before its validity period begins (the certificate\'s
+\code{NotBefore} date), or after it expires (the certificate\'s
+\code{NotAfter} date).
+\item The certificate's common name or subject alternative names (SANs),
+if present, must match the value of \code{CustomDomain}.
+\item The certificate must match the value of \code{CustomPrivateKey}.
+}}
+
+\item{CustomPrivateKey}{A private key in PEM format for connecting to the server by using HTTPS.
+The private key must not be encrypted; it cannot be protected by a
+password or passphrase. If you specify a custom private key, you must
+also specify values for \code{CustomDomain} and \code{CustomCertificate}.}
 
 \item{DisableAutomatedBackup}{Enable or disable scheduled backups. Valid values are \code{true} or \code{false}.
 The default value is \code{true}.}
@@ -34,15 +67,15 @@ Puppet server, the valid value is \code{2017}.}
 \itemize{
 \item \code{CHEF_AUTOMATE_PIVOTAL_KEY}: A base64-encoded RSA public key. The
 corresponding private key is required to access the Chef API. When
-no CHEF\_AUTOMATE\_PIVOTAL\_KEY is set, a private key is generated
+no CHEF\\_AUTOMATE\\_PIVOTAL\\_KEY is set, a private key is generated
 and returned in the response.
 \item \code{CHEF_AUTOMATE_ADMIN_PASSWORD}: The password for the administrative
 user in the Chef Automate web-based dashboard. The password length
 is a minimum of eight characters, and a maximum of 32. The password
 can contain letters, numbers, and special characters
-(!/@\#\$\%\^&+=\_). The password must contain at least one lower case
+(!/@\\#\\$\\%\\^&+=\\_). The password must contain at least one lower case
 letter, one upper case letter, one number, and one special
-character. When no CHEF\_AUTOMATE\_ADMIN\_PASSWORD is set, one is
+character. When no CHEF\\_AUTOMATE\\_ADMIN\\_PASSWORD is set, one is
 generated and returned in the response.
 }
 
@@ -52,10 +85,10 @@ generated and returned in the response.
 a password must use ASCII characters.
 \item \code{PUPPET_R10K_REMOTE}: The r10k remote is the URL of your control
 repository (for example,
-ssh://git\@your.git-repo.com:user/control-repo.git). Specifying an
+ssh://git\\@your.git-repo.com:user/control-repo.git). Specifying an
 r10k remote opens TCP port 8170.
 \item \code{PUPPET_R10K_PRIVATE_KEY}: If you are using a private Git
-repository, add PUPPET\_R10K\_PRIVATE\_KEY to specify a PEM-encoded
+repository, add PUPPET\\_R10K\\_PRIVATE\\_KEY to specify a PEM-encoded
 private SSH key.
 }}
 
@@ -128,12 +161,12 @@ role and instance profile that you need.}
 \item{SubnetIds}{The IDs of subnets in which to launch the server EC2 instance.
 
 Amazon EC2-Classic customers: This field is required. All servers must
-run within a VPC. The VPC must have "Auto Assign Public IP" enabled.
+run within a VPC. The VPC must have \"Auto Assign Public IP\" enabled.
 
 EC2-VPC customers: This field is optional. If you do not specify subnet
 IDs, your EC2 instances are created in a default subnet that is selected
-by Amazon EC2. If you specify subnet IDs, the VPC must have "Auto
-Assign Public IP" enabled.
+by Amazon EC2. If you specify subnet IDs, the VPC must have \"Auto
+Assign Public IP\" enabled.
 
 For more information about supported Amazon EC2 platforms, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html}{Supported Platforms}.}
@@ -172,10 +205,17 @@ By default, your server is accessible from any IP address. We recommend
 that you update your security group rules to allow access from known IP
 addresses and address ranges only. To edit security group rules, open
 Security Groups in the navigation pane of the EC2 management console.
+
+To specify your own domain for a server, and provide your own
+self-signed or CA-signed certificate and private key, specify values for
+\code{CustomDomain}, \code{CustomCertificate}, and \code{CustomPrivateKey}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_server(
   AssociatePublicIpAddress = TRUE|FALSE,
+  CustomDomain = "string",
+  CustomCertificate = "string",
+  CustomPrivateKey = "string",
   DisableAutomatedBackup = TRUE|FALSE,
   Engine = "string",
   EngineModel = "string",

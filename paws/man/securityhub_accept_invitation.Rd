@@ -8,10 +8,10 @@ Security Hub master account that the invitation was sent from}
 securityhub_accept_invitation(MasterId, InvitationId)
 }
 \arguments{
-\item{MasterId}{The account ID of the Security Hub master account that sent the
+\item{MasterId}{[required] The account ID of the Security Hub master account that sent the
 invitation.}
 
-\item{InvitationId}{The ID of the invitation sent from the Security Hub master account.}
+\item{InvitationId}{[required] The ID of the invitation sent from the Security Hub master account.}
 }
 \description{
 Accepts the invitation to be a member account and be monitored by the

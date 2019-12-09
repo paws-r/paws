@@ -11,11 +11,11 @@ cloudtrail_put_event_selectors(TrailName, EventSelectors)
 name, the string must meet the following requirements:
 \itemize{
 \item Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-underscores (\_), or dashes (-)
+underscores (\\_), or dashes (-)
 \item Start with a letter or number, and end with a letter or number
 \item Be between 3 and 128 characters
 \item Have no adjacent periods, underscores or dashes. Names like
-\code{my-_namespace} and \code{my--namespace} are invalid.
+\verb{my-_namespace} and \code{my--namespace} are invalid.
 \item Not be in IP address format (for example, 192.168.5.4)
 }
 
@@ -36,8 +36,8 @@ events.
 \details{
 When an event occurs in your account, CloudTrail evaluates the event
 selectors in all trails. For each trail, if the event matches any event
-selector, the trail processes and logs the event. If the event doesn't
-match any event selector, the trail doesn't log the event.
+selector, the trail processes and logs the event. If the event doesn\'t
+match any event selector, the trail doesn\'t log the event.
 
 Example
 \enumerate{
@@ -48,8 +48,8 @@ in your account.
 \item CloudTrail evaluates whether the events match your event selectors.
 \item The \code{RunInstances} is a write-only event and it matches your event
 selector. The trail logs the event.
-\item The \code{GetConsoleOutput} is a read-only event but it doesn't match
-your event selector. The trail doesn't log the event.
+\item The \code{GetConsoleOutput} is a read-only event but it doesn\'t match
+your event selector. The trail doesn\'t log the event.
 }
 
 The \code{PutEventSelectors} operation must be called from the region in
@@ -57,7 +57,7 @@ which the trail was created; otherwise, an \code{InvalidHomeRegionException}
 is thrown.
 
 You can configure up to five event selectors for each trail. For more
-information, see \href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html}{Logging Data and Management Events for Trails}
+information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html}{Logging Data and Management Events for Trails}
 and \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html}{Limits in AWS CloudTrail}
 in the \emph{AWS CloudTrail User Guide}.
 }
@@ -75,6 +75,9 @@ in the \emph{AWS CloudTrail User Guide}.
             "string"
           )
         )
+      ),
+      ExcludeManagementEventSources = list(
+        "string"
       )
     )
   )

@@ -28,7 +28,7 @@ example, a proposal with \code{Invitations} actions cannot also contain
 \code{Removals} actions.}
 
 \item{Description}{A description for the proposal that is visible to voting members, for
-example, "Proposal to add Example Corp. as member."}
+example, \"Proposal to add Example Corp. as member.\"}
 }
 \description{
 Creates a proposal for a change to the network that other members of the

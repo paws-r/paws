@@ -42,6 +42,7 @@ create real-time metrics.
 \link[=kinesisanalyticsv2_add_application_input_processing_configuration]{add_application_input_processing_configuration} \tab Adds an InputProcessingConfiguration to an SQL-based Kinesis Data Analytics application \cr
 \link[=kinesisanalyticsv2_add_application_output]{add_application_output} \tab Adds an external destination to your SQL-based Amazon Kinesis Data Analytics application \cr
 \link[=kinesisanalyticsv2_add_application_reference_data_source]{add_application_reference_data_source} \tab Adds a reference data source to an existing SQL-based Amazon Kinesis Data Analytics application \cr
+\link[=kinesisanalyticsv2_add_application_vpc_configuration]{add_application_vpc_configuration} \tab Adds a Virtual Private Cloud (VPC) configuration to the application \cr
 \link[=kinesisanalyticsv2_create_application]{create_application} \tab Creates an Amazon Kinesis Data Analytics application \cr
 \link[=kinesisanalyticsv2_create_application_snapshot]{create_application_snapshot} \tab Creates a snapshot of the application's state data \cr
 \link[=kinesisanalyticsv2_delete_application]{delete_application} \tab Deletes the specified application \cr
@@ -50,6 +51,7 @@ create real-time metrics.
 \link[=kinesisanalyticsv2_delete_application_output]{delete_application_output} \tab Deletes the output destination configuration from your SQL-based Amazon Kinesis Data Analytics application's configuration \cr
 \link[=kinesisanalyticsv2_delete_application_reference_data_source]{delete_application_reference_data_source} \tab Deletes a reference data source configuration from the specified SQL-based Amazon Kinesis Data Analytics application's configuration \cr
 \link[=kinesisanalyticsv2_delete_application_snapshot]{delete_application_snapshot} \tab Deletes a snapshot of application state \cr
+\link[=kinesisanalyticsv2_delete_application_vpc_configuration]{delete_application_vpc_configuration} \tab Removes a VPC configuration from a Kinesis Data Analytics application \cr
 \link[=kinesisanalyticsv2_describe_application]{describe_application} \tab Returns information about a specific Amazon Kinesis Data Analytics application \cr
 \link[=kinesisanalyticsv2_describe_application_snapshot]{describe_application_snapshot} \tab Returns information about a snapshot of application state data \cr
 \link[=kinesisanalyticsv2_discover_input_schema]{discover_input_schema} \tab Infers a schema for an SQL-based Amazon Kinesis Data Analytics application by evaluating sample records on the specified streaming source (Kinesis data stream or Kinesis Data Firehose delivery stream) or Amazon S3 object\cr

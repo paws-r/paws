@@ -8,15 +8,15 @@ iam_list_roles(PathPrefix, Marker, MaxItems)
 }
 \arguments{
 \item{PathPrefix}{The path prefix for filtering the results. For example, the prefix
-\code{/application_abc/component_xyz/} gets all roles whose path starts with
-\code{/application_abc/component_xyz/}.
+\verb{/application_abc/component_xyz/} gets all roles whose path starts with
+\verb{/application_abc/component_xyz/}.
 
 This parameter is optional. If it is not included, it defaults to a
 slash (/), listing all roles. This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
 ASCII character from the ! (\code{U+0021}) through the DEL character
-(\code{U+007F}), including most punctuation characters, digits, and upper and
+(\verb{U+007F}), including most punctuation characters, digits, and upper and
 lowercased letters.}
 
 \item{Marker}{Use this parameter only when paginating results and only after you

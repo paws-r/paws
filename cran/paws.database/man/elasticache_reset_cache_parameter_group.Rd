@@ -15,7 +15,7 @@ elasticache_reset_cache_parameter_group(CacheParameterGroupName,
 their default values. If \code{false}, only the parameters listed by
 \code{ParameterNameValues} are reset to their default values.
 
-Valid values: \code{true} \| \code{false}}
+Valid values: \code{true} \\| \code{false}}
 
 \item{ParameterNameValues}{An array of parameter names to reset to their default values. If
 \code{ResetAllParameters} is \code{true}, do not use \code{ParameterNameValues}. If

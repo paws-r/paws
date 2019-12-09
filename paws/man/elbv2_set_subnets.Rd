@@ -2,8 +2,8 @@
 % Please edit documentation in R/elbv2_operations.R
 \name{elbv2_set_subnets}
 \alias{elbv2_set_subnets}
-\title{Enables the Availability Zone for the specified public subnets for the
-specified Application Load Balancer}
+\title{Enables the Availability Zones for the specified public subnets for the
+specified load balancer}
 \usage{
 elbv2_set_subnets(LoadBalancerArn, Subnets, SubnetMappings)
 }
@@ -14,19 +14,28 @@ elbv2_set_subnets(LoadBalancerArn, Subnets, SubnetMappings)
 two Availability Zones. You can specify only one subnet per Availability
 Zone. You must specify either subnets or subnet mappings.}
 
-\item{SubnetMappings}{The IDs of the public subnets. You must specify subnets from at least
-two Availability Zones. You can specify only one subnet per Availability
-Zone. You must specify either subnets or subnet mappings.
+\item{SubnetMappings}{The IDs of the public subnets. You can specify only one subnet per
+Availability Zone. You must specify either subnets or subnet mappings.
 
-You cannot specify Elastic IP addresses for your subnets.}
+[Application Load Balancers] You must specify subnets from at least
+two Availability Zones. You cannot specify Elastic IP addresses for your
+subnets.
+
+[Network Load Balancers] You can specify subnets from one or more
+Availability Zones. If you need static IP addresses for your
+internet-facing load balancer, you can specify one Elastic IP address
+per subnet. For internal load balancers, you can specify one private IP
+address per subnet from the IPv4 range of the subnet.}
 }
 \description{
-Enables the Availability Zone for the specified public subnets for the
-specified Application Load Balancer. The specified subnets replace the
-previously enabled subnets.
+Enables the Availability Zones for the specified public subnets for the
+specified load balancer. The specified subnets replace the previously
+enabled subnets.
 }
 \details{
-You can't change the subnets for a Network Load Balancer.
+When you specify subnets for a Network Load Balancer, you must include
+all subnets that were enabled previously, with their existing
+configurations, plus any additional subnets.
 }
 \section{Request syntax}{
 \preformatted{svc$set_subnets(
@@ -37,7 +46,8 @@ You can't change the subnets for a Network Load Balancer.
   SubnetMappings = list(
     list(
       SubnetId = "string",
-      AllocationId = "string"
+      AllocationId = "string",
+      PrivateIPv4Address = "string"
     )
   )
 )

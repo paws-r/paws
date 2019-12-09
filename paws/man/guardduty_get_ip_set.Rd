@@ -2,17 +2,17 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_get_ip_set}
 \alias{guardduty_get_ip_set}
-\title{Retrieves the IPSet specified by the IPSet ID}
+\title{Retrieves the IPSet specified by the ipSetId}
 \usage{
 guardduty_get_ip_set(DetectorId, IpSetId)
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector the ipSet is associated with.}
 
-\item{IpSetId}{[required] The unique ID of the ipSet you want to get.}
+\item{IpSetId}{[required] The unique ID of the IPSet to retrieve.}
 }
 \description{
-Retrieves the IPSet specified by the IPSet ID.
+Retrieves the IPSet specified by the \code{ipSetId}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_ip_set(

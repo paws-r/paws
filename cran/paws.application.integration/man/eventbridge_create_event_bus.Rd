@@ -9,15 +9,15 @@ eventbridge_create_event_bus(Name, EventSourceName)
 \arguments{
 \item{Name}{[required] The name of the new event bus.
 
-The names of custom event buses can't contain the \code{/} character. You
-can't use the name \code{default} for a custom event bus because this name
-is already used for your account's default event bus.
+The names of custom event buses can\'t contain the \code{/} character. You
+can\'t use the name \code{default} for a custom event bus because this name
+is already used for your account\'s default event bus.
 
 If this is a partner event bus, the name must exactly match the name of
 the partner event source that this event bus is matched to. This name
 will include the \code{/} character.}
 
-\item{EventSourceName}{If you're creating a partner event bus, this specifies the partner
+\item{EventSourceName}{If you\'re creating a partner event bus, this specifies the partner
 event source that the new event bus will be matched with.}
 }
 \description{

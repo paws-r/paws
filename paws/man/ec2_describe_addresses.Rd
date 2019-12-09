@@ -22,7 +22,7 @@ that the address is associated with, if any.
 \item \code{private-ip-address} - [EC2-VPC] The private IP address associated
 with the Elastic IP address.
 \item \code{public-ip} - The Elastic IP address.
-\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+\item \code{tag}:\\<key\\> - The key/value combination of a tag assigned to the
 resource. Use the tag key in the filter name and the tag value as
 the filter value. For example, to find all resources that have a tag
 with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for

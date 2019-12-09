@@ -2,7 +2,8 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_update_sms_channel}
 \alias{pinpoint_update_sms_channel}
-\title{Updates the status and settings of the SMS channel for an application}
+\title{Enables the SMS channel for an application or updates the status and
+settings of the SMS channel for an application}
 \usage{
 pinpoint_update_sms_channel(ApplicationId, SMSChannelRequest)
 }
@@ -13,7 +14,8 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{SMSChannelRequest}{[required]}
 }
 \description{
-Updates the status and settings of the SMS channel for an application.
+Enables the SMS channel for an application or updates the status and
+settings of the SMS channel for an application.
 }
 \section{Request syntax}{
 \preformatted{svc$update_sms_channel(

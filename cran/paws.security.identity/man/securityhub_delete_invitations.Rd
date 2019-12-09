@@ -8,7 +8,7 @@ account}
 securityhub_delete_invitations(AccountIds)
 }
 \arguments{
-\item{AccountIds}{A list of the account IDs that sent the invitations to delete.}
+\item{AccountIds}{[required] A list of the account IDs that sent the invitations to delete.}
 }
 \description{
 Deletes invitations received by the AWS account to become a member

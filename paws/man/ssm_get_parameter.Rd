@@ -13,7 +13,7 @@ ssm_get_parameter(Name, WithDecryption)
 ignored for String and StringList parameter types.}
 }
 \description{
-Get information about a parameter by using the parameter name. Don't
+Get information about a parameter by using the parameter name. Don\'t
 confuse this API action with the GetParameters API action.
 }
 \section{Request syntax}{

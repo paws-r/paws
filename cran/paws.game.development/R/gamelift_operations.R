@@ -260,7 +260,7 @@ gamelift_create_alias <- function(Name, Description = NULL, RoutingStrategy) {
 #'     RoleArn = "string",
 #'     ObjectVersion = "string"
 #'   ),
-#'   OperatingSystem = "WINDOWS_2012"|"AMAZON_LINUX"
+#'   OperatingSystem = "WINDOWS_2012"|"AMAZON_LINUX"|"AMAZON_LINUX_2"
 #' )
 #' ```
 #'
@@ -382,7 +382,8 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #'   ServerLaunchPath, ServerLaunchParameters, LogPaths, EC2InstanceType,
 #'   EC2InboundPermissions, NewGameSessionProtectionPolicy,
 #'   RuntimeConfiguration, ResourceCreationLimitPolicy, MetricGroups,
-#'   PeerVpcAwsAccountId, PeerVpcId, FleetType, InstanceRoleArn)
+#'   PeerVpcAwsAccountId, PeerVpcId, FleetType, InstanceRoleArn,
+#'   CertificateConfiguration)
 #'
 #' @param Name &#91;required&#93; Descriptive label that is associated with a fleet. Fleet names do not
 #' need to be unique.
@@ -472,6 +473,7 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #' Console. Learn more about using on-box credentials for your game servers
 #' at [Access external resources from a game
 #' server](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-resources.html).
+#' @param CertificateConfiguration 
 #'
 #' @section Request syntax:
 #' ```
@@ -485,7 +487,7 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #'   LogPaths = list(
 #'     "string"
 #'   ),
-#'   EC2InstanceType = "t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge",
+#'   EC2InstanceType = "t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge",
 #'   EC2InboundPermissions = list(
 #'     list(
 #'       FromPort = 123,
@@ -516,21 +518,24 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #'   PeerVpcAwsAccountId = "string",
 #'   PeerVpcId = "string",
 #'   FleetType = "ON_DEMAND"|"SPOT",
-#'   InstanceRoleArn = "string"
+#'   InstanceRoleArn = "string",
+#'   CertificateConfiguration = list(
+#'     CertificateType = "DISABLED"|"GENERATED"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname gamelift_create_fleet
-gamelift_create_fleet <- function(Name, Description = NULL, BuildId = NULL, ScriptId = NULL, ServerLaunchPath = NULL, ServerLaunchParameters = NULL, LogPaths = NULL, EC2InstanceType, EC2InboundPermissions = NULL, NewGameSessionProtectionPolicy = NULL, RuntimeConfiguration = NULL, ResourceCreationLimitPolicy = NULL, MetricGroups = NULL, PeerVpcAwsAccountId = NULL, PeerVpcId = NULL, FleetType = NULL, InstanceRoleArn = NULL) {
+gamelift_create_fleet <- function(Name, Description = NULL, BuildId = NULL, ScriptId = NULL, ServerLaunchPath = NULL, ServerLaunchParameters = NULL, LogPaths = NULL, EC2InstanceType, EC2InboundPermissions = NULL, NewGameSessionProtectionPolicy = NULL, RuntimeConfiguration = NULL, ResourceCreationLimitPolicy = NULL, MetricGroups = NULL, PeerVpcAwsAccountId = NULL, PeerVpcId = NULL, FleetType = NULL, InstanceRoleArn = NULL, CertificateConfiguration = NULL) {
   op <- new_operation(
     name = "CreateFleet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .gamelift$create_fleet_input(Name = Name, Description = Description, BuildId = BuildId, ScriptId = ScriptId, ServerLaunchPath = ServerLaunchPath, ServerLaunchParameters = ServerLaunchParameters, LogPaths = LogPaths, EC2InstanceType = EC2InstanceType, EC2InboundPermissions = EC2InboundPermissions, NewGameSessionProtectionPolicy = NewGameSessionProtectionPolicy, RuntimeConfiguration = RuntimeConfiguration, ResourceCreationLimitPolicy = ResourceCreationLimitPolicy, MetricGroups = MetricGroups, PeerVpcAwsAccountId = PeerVpcAwsAccountId, PeerVpcId = PeerVpcId, FleetType = FleetType, InstanceRoleArn = InstanceRoleArn)
+  input <- .gamelift$create_fleet_input(Name = Name, Description = Description, BuildId = BuildId, ScriptId = ScriptId, ServerLaunchPath = ServerLaunchPath, ServerLaunchParameters = ServerLaunchParameters, LogPaths = LogPaths, EC2InstanceType = EC2InstanceType, EC2InboundPermissions = EC2InboundPermissions, NewGameSessionProtectionPolicy = NewGameSessionProtectionPolicy, RuntimeConfiguration = RuntimeConfiguration, ResourceCreationLimitPolicy = ResourceCreationLimitPolicy, MetricGroups = MetricGroups, PeerVpcAwsAccountId = PeerVpcAwsAccountId, PeerVpcId = PeerVpcId, FleetType = FleetType, InstanceRoleArn = InstanceRoleArn, CertificateConfiguration = CertificateConfiguration)
   output <- .gamelift$create_fleet_output()
   config <- get_config()
   svc <- .gamelift$service(config)
@@ -2251,7 +2256,7 @@ gamelift_describe_build <- function(BuildId) {
 #' @section Request syntax:
 #' ```
 #' svc$describe_ec2_instance_limits(
-#'   EC2InstanceType = "t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"
+#'   EC2InstanceType = "t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"
 #' )
 #' ```
 #'

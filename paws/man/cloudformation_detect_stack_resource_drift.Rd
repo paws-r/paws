@@ -14,8 +14,8 @@ cloudformation_detect_stack_resource_drift(StackName, LogicalResourceId)
 \item{LogicalResourceId}{[required] The logical name of the resource for which to return drift information.}
 }
 \description{
-Returns information about whether a resource's actual configuration
-differs, or has \emph{drifted}, from it's expected configuration, as defined
+Returns information about whether a resource\'s actual configuration
+differs, or has \emph{drifted}, from it\'s expected configuration, as defined
 in the stack template and any values specified as template parameters.
 This information includes actual and expected property values for
 resources in which AWS CloudFormation detects drift. Only resource

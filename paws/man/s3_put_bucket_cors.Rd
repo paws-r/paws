@@ -2,19 +2,66 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_bucket_cors}
 \alias{s3_put_bucket_cors}
-\title{Sets the CORS configuration for a bucket}
+\title{Sets the cors configuration for your bucket}
 \usage{
 s3_put_bucket_cors(Bucket, CORSConfiguration, ContentMD5)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] Specifies the bucket impacted by the \code{cors}configuration.}
 
-\item{CORSConfiguration}{[required]}
+\item{CORSConfiguration}{[required] Describes the cross-origin access configuration for objects in an Amazon
+S3 bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev//cors.html}{Enabling Cross-Origin Resource Sharing} in
+the \emph{Amazon Simple Storage Service Developer Guide}.}
 
-\item{ContentMD5}{}
+\item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the data. This header must be
+used as a message integrity check to verify that the request body was
+not corrupted in transit. For more information, go to \href{http://www.ietf.org/rfc/rfc1864.txt}{RFC 1864.}}
 }
 \description{
-Sets the CORS configuration for a bucket.
+Sets the \code{cors} configuration for your bucket. If the configuration
+exists, Amazon S3 replaces it.
+}
+\details{
+To use this operation, you must be allowed to perform the
+\code{s3:PutBucketCORS} action. By default, the bucket owner has this
+permission and can grant it to others.
+
+You set this configuration on a bucket so that the bucket can service
+cross-origin requests. For example, you might want to enable a request
+whose origin is \verb{http://www.example.com} to access your Amazon S3 bucket
+at \code{my.example.bucket.com} by using the browser\'s \code{XMLHttpRequest}
+capability.
+
+To enable cross-origin resource sharing (CORS) on a bucket, you add the
+\code{cors} subresource to the bucket. The \code{cors} subresource is an XML
+document in which you configure rules that identify origins and the HTTP
+methods that can be executed on your bucket. The document is limited to
+64 KB in size.
+
+When Amazon S3 receives a cross-origin request (or a pre-flight OPTIONS
+request) against a bucket, it evaluates the \code{cors} configuration on the
+bucket and uses the first \code{CORSRule} rule that matches the incoming
+browser request to enable a cross-origin request. For a rule to match,
+the following conditions must be met:
+\itemize{
+\item The request\'s \code{Origin} header must match \code{AllowedOrigin} elements.
+\item The request method (for example, GET, PUT, HEAD, and so on) or the
+\code{Access-Control-Request-Method} header in case of a pre-flight
+\code{OPTIONS} request must be one of the \code{AllowedMethod} elements.
+\item Every header specified in the \code{Access-Control-Request-Headers}
+request header of a pre-flight request must match an \code{AllowedHeader}
+element.
+}
+
+For more information about CORS, go to \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html}{Enabling Cross-Origin Resource Sharing} in
+the \emph{Amazon Simple Storage Service Developer Guide}.
+
+\strong{Related Resources}
+\itemize{
+\item GetBucketCors
+\item DeleteBucketCors
+\item RESTOPTIONSobject
+}
 }
 \section{Request syntax}{
 \preformatted{svc$put_bucket_cors(

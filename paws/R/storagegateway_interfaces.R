@@ -161,7 +161,7 @@ NULL
 
 .storagegateway$create_snapshot_from_volume_recovery_point_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VolumeARN = structure(logical(0), tags = list(type = "string")), SnapshotDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(VolumeARN = structure(logical(0), tags = list(type = "string")), SnapshotDescription = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -303,6 +303,18 @@ NULL
   return(populate(args, shape))
 }
 
+.storagegateway$describe_availability_monitor_test_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.storagegateway$describe_availability_monitor_test_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .storagegateway$describe_bandwidth_rate_limit_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -359,7 +371,7 @@ NULL
 
 .storagegateway$describe_gateway_information_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), GatewayId = structure(logical(0), tags = list(type = "string")), GatewayName = structure(logical(0), tags = list(type = "string")), GatewayTimezone = structure(logical(0), tags = list(type = "string")), GatewayState = structure(logical(0), tags = list(type = "string")), GatewayNetworkInterfaces = structure(list(structure(list(Ipv4Address = structure(logical(0), tags = list(type = "string")), MacAddress = structure(logical(0), tags = list(type = "string")), Ipv6Address = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), GatewayType = structure(logical(0), tags = list(type = "string")), NextUpdateAvailabilityDate = structure(logical(0), tags = list(type = "string")), LastSoftwareUpdate = structure(logical(0), tags = list(type = "string")), Ec2InstanceId = structure(logical(0), tags = list(type = "string")), Ec2InstanceRegion = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), VPCEndpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), GatewayId = structure(logical(0), tags = list(type = "string")), GatewayName = structure(logical(0), tags = list(type = "string")), GatewayTimezone = structure(logical(0), tags = list(type = "string")), GatewayState = structure(logical(0), tags = list(type = "string")), GatewayNetworkInterfaces = structure(list(structure(list(Ipv4Address = structure(logical(0), tags = list(type = "string")), MacAddress = structure(logical(0), tags = list(type = "string")), Ipv6Address = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), GatewayType = structure(logical(0), tags = list(type = "string")), NextUpdateAvailabilityDate = structure(logical(0), tags = list(type = "string")), LastSoftwareUpdate = structure(logical(0), tags = list(type = "string")), Ec2InstanceId = structure(logical(0), tags = list(type = "string")), Ec2InstanceRegion = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), VPCEndpoint = structure(logical(0), tags = list(type = "string")), CloudWatchLogGroupARN = structure(logical(0), tags = list(type = "string")), HostEnvironment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -407,7 +419,7 @@ NULL
 
 .storagegateway$describe_smb_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), SMBGuestPasswordSet = structure(logical(0), tags = list(type = "boolean")), SMBSecurityStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), ActiveDirectoryStatus = structure(logical(0), tags = list(type = "string")), SMBGuestPasswordSet = structure(logical(0), tags = list(type = "boolean")), SMBSecurityStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -419,7 +431,7 @@ NULL
 
 .storagegateway$describe_snapshot_schedule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VolumeARN = structure(logical(0), tags = list(type = "string")), StartAt = structure(logical(0), tags = list(type = "integer")), RecurrenceInHours = structure(logical(0), tags = list(type = "integer")), Description = structure(logical(0), tags = list(type = "string")), Timezone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(VolumeARN = structure(logical(0), tags = list(type = "string")), StartAt = structure(logical(0), tags = list(type = "integer")), RecurrenceInHours = structure(logical(0), tags = list(type = "integer")), Description = structure(logical(0), tags = list(type = "string")), Timezone = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -533,13 +545,13 @@ NULL
 
 .storagegateway$join_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), OrganizationalUnit = structure(logical(0), tags = list(type = "string")), DomainControllers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), UserName = structure(logical(0), tags = list(type = "string")), Password = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), OrganizationalUnit = structure(logical(0), tags = list(type = "string")), DomainControllers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TimeoutInSeconds = structure(logical(0), tags = list(type = "integer")), UserName = structure(logical(0), tags = list(type = "string")), Password = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .storagegateway$join_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), ActiveDirectoryStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -747,6 +759,18 @@ NULL
   return(populate(args, shape))
 }
 
+.storagegateway$start_availability_monitor_test_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.storagegateway$start_availability_monitor_test_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .storagegateway$start_gateway_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -785,7 +809,7 @@ NULL
 
 .storagegateway$update_gateway_information_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), GatewayName = structure(logical(0), tags = list(type = "string")), GatewayTimezone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), GatewayName = structure(logical(0), tags = list(type = "string")), GatewayTimezone = structure(logical(0), tags = list(type = "string")), CloudWatchLogGroupARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

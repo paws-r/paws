@@ -19,6 +19,9 @@ NULL
 #'   FlowArn = "string",
 #'   Outputs = list(
 #'     list(
+#'       CidrAllowList = list(
+#'         "string"
+#'       ),
 #'       Description = "string",
 #'       Destination = "string",
 #'       Encryption = list(
@@ -35,7 +38,8 @@ NULL
 #'       MaxLatency = 123,
 #'       Name = "string",
 #'       Port = 123,
-#'       Protocol = "zixi-push"|"rtp-fec"|"rtp",
+#'       Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'       RemoteId = "string",
 #'       SmoothingLatency = 123,
 #'       StreamId = "string"
 #'     )
@@ -83,6 +87,7 @@ mediaconnect_add_flow_outputs <- function(FlowArn, Outputs) {
 #'   AvailabilityZone = "string",
 #'   Entitlements = list(
 #'     list(
+#'       DataTransferSubscriberFeePercent = 123,
 #'       Description = "string",
 #'       Encryption = list(
 #'         Algorithm = "aes128"|"aes192"|"aes256",
@@ -104,6 +109,9 @@ mediaconnect_add_flow_outputs <- function(FlowArn, Outputs) {
 #'   Name = "string",
 #'   Outputs = list(
 #'     list(
+#'       CidrAllowList = list(
+#'         "string"
+#'       ),
 #'       Description = "string",
 #'       Destination = "string",
 #'       Encryption = list(
@@ -120,7 +128,8 @@ mediaconnect_add_flow_outputs <- function(FlowArn, Outputs) {
 #'       MaxLatency = 123,
 #'       Name = "string",
 #'       Port = 123,
-#'       Protocol = "zixi-push"|"rtp-fec"|"rtp",
+#'       Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'       RemoteId = "string",
 #'       SmoothingLatency = 123,
 #'       StreamId = "string"
 #'     )
@@ -143,7 +152,7 @@ mediaconnect_add_flow_outputs <- function(FlowArn, Outputs) {
 #'     MaxBitrate = 123,
 #'     MaxLatency = 123,
 #'     Name = "string",
-#'     Protocol = "zixi-push"|"rtp-fec"|"rtp",
+#'     Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
 #'     StreamId = "string",
 #'     WhitelistCidr = "string"
 #'   )
@@ -257,6 +266,7 @@ mediaconnect_describe_flow <- function(FlowArn) {
 #' svc$grant_flow_entitlements(
 #'   Entitlements = list(
 #'     list(
+#'       DataTransferSubscriberFeePercent = 123,
 #'       Description = "string",
 #'       Encryption = list(
 #'         Algorithm = "aes128"|"aes192"|"aes256",
@@ -703,10 +713,11 @@ mediaconnect_update_flow_entitlement <- function(Description = NULL, Encryption 
 #' Updates an existing flow output.
 #'
 #' @usage
-#' mediaconnect_update_flow_output(Description, Destination, Encryption,
-#'   FlowArn, MaxLatency, OutputArn, Port, Protocol, SmoothingLatency,
-#'   StreamId)
+#' mediaconnect_update_flow_output(CidrAllowList, Description, Destination,
+#'   Encryption, FlowArn, MaxLatency, OutputArn, Port, Protocol, RemoteId,
+#'   SmoothingLatency, StreamId)
 #'
+#' @param CidrAllowList The range of IP addresses that should be allowed to initiate output requests to this flow. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.
 #' @param Description A description of the output. This description appears only on the AWS Elemental MediaConnect console and will not be seen by the end user.
 #' @param Destination The IP address where you want to send the output.
 #' @param Encryption The type of key used for the encryption. If no keyType is provided, the service will use the default setting (static-key).
@@ -715,12 +726,16 @@ mediaconnect_update_flow_entitlement <- function(Description = NULL, Encryption 
 #' @param OutputArn &#91;required&#93; The ARN of the output that you want to update.
 #' @param Port The port to use when content is distributed to this output.
 #' @param Protocol The protocol to use for the output.
-#' @param SmoothingLatency The smoothing latency in milliseconds for RTP and RTP-FEC streams.
+#' @param RemoteId The remote ID for the Zixi-pull stream.
+#' @param SmoothingLatency The smoothing latency in milliseconds for RIST, RTP, and RTP-FEC streams.
 #' @param StreamId The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_flow_output(
+#'   CidrAllowList = list(
+#'     "string"
+#'   ),
 #'   Description = "string",
 #'   Destination = "string",
 #'   Encryption = list(
@@ -738,7 +753,8 @@ mediaconnect_update_flow_entitlement <- function(Description = NULL, Encryption 
 #'   MaxLatency = 123,
 #'   OutputArn = "string",
 #'   Port = 123,
-#'   Protocol = "zixi-push"|"rtp-fec"|"rtp",
+#'   Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'   RemoteId = "string",
 #'   SmoothingLatency = 123,
 #'   StreamId = "string"
 #' )
@@ -747,14 +763,14 @@ mediaconnect_update_flow_entitlement <- function(Description = NULL, Encryption 
 #' @keywords internal
 #'
 #' @rdname mediaconnect_update_flow_output
-mediaconnect_update_flow_output <- function(Description = NULL, Destination = NULL, Encryption = NULL, FlowArn, MaxLatency = NULL, OutputArn, Port = NULL, Protocol = NULL, SmoothingLatency = NULL, StreamId = NULL) {
+mediaconnect_update_flow_output <- function(CidrAllowList = NULL, Description = NULL, Destination = NULL, Encryption = NULL, FlowArn, MaxLatency = NULL, OutputArn, Port = NULL, Protocol = NULL, RemoteId = NULL, SmoothingLatency = NULL, StreamId = NULL) {
   op <- new_operation(
     name = "UpdateFlowOutput",
     http_method = "PUT",
     http_path = "/v1/flows/{flowArn}/outputs/{outputArn}",
     paginator = list()
   )
-  input <- .mediaconnect$update_flow_output_input(Description = Description, Destination = Destination, Encryption = Encryption, FlowArn = FlowArn, MaxLatency = MaxLatency, OutputArn = OutputArn, Port = Port, Protocol = Protocol, SmoothingLatency = SmoothingLatency, StreamId = StreamId)
+  input <- .mediaconnect$update_flow_output_input(CidrAllowList = CidrAllowList, Description = Description, Destination = Destination, Encryption = Encryption, FlowArn = FlowArn, MaxLatency = MaxLatency, OutputArn = OutputArn, Port = Port, Protocol = Protocol, RemoteId = RemoteId, SmoothingLatency = SmoothingLatency, StreamId = StreamId)
   output <- .mediaconnect$update_flow_output_output()
   config <- get_config()
   svc <- .mediaconnect$service(config)
@@ -778,12 +794,12 @@ mediaconnect_update_flow_output <- function(Description = NULL, Destination = NU
 #' @param EntitlementArn The ARN of the entitlement that allows you to subscribe to this flow. The entitlement is set by the flow originator, and the ARN is generated as part of the originator's flow.
 #' @param FlowArn &#91;required&#93; The flow that is associated with the source that you want to update.
 #' @param IngestPort The port that the flow will be listening on for incoming content.
-#' @param MaxBitrate The smoothing max bitrate for RTP and RTP-FEC streams.
-#' @param MaxLatency The maximum latency in milliseconds for Zixi-based streams.
+#' @param MaxBitrate The smoothing max bitrate for RIST, RTP, and RTP-FEC streams.
+#' @param MaxLatency The maximum latency in milliseconds. This parameter applies only to RIST-based and Zixi-based streams.
 #' @param Protocol The protocol that is used by the source.
 #' @param SourceArn &#91;required&#93; The ARN of the source that you want to update.
 #' @param StreamId The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams.
-#' @param WhitelistCidr The range of IP addresses that should be allowed to contribute content to your source. These IP addresses should in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.
+#' @param WhitelistCidr The range of IP addresses that should be allowed to contribute content to your source. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.
 #'
 #' @section Request syntax:
 #' ```
@@ -805,7 +821,7 @@ mediaconnect_update_flow_output <- function(Description = NULL, Destination = NU
 #'   IngestPort = 123,
 #'   MaxBitrate = 123,
 #'   MaxLatency = 123,
-#'   Protocol = "zixi-push"|"rtp-fec"|"rtp",
+#'   Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
 #'   SourceArn = "string",
 #'   StreamId = "string",
 #'   WhitelistCidr = "string"

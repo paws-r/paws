@@ -12,10 +12,11 @@ sagemaker_update_notebook_instance_lifecycle_config(
 \item{NotebookInstanceLifecycleConfigName}{[required] The name of the lifecycle configuration.}
 
 \item{OnCreate}{The shell script that runs only once, when you create a notebook
-instance}
+instance. The shell script must be a base64-encoded string.}
 
 \item{OnStart}{The shell script that runs every time you start a notebook instance,
-including when you create the notebook instance.}
+including when you create the notebook instance. The shell script must
+be a base64-encoded string.}
 }
 \description{
 Updates a notebook instance lifecycle configuration created with the

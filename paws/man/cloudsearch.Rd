@@ -57,6 +57,7 @@ regions and endpoints, see \href{http://docs.aws.amazon.com/general/latest/gr/ra
 \link[=cloudsearch_delete_suggester]{delete_suggester} \tab Deletes a suggester \cr
 \link[=cloudsearch_describe_analysis_schemes]{describe_analysis_schemes} \tab Gets the analysis schemes configured for a domain \cr
 \link[=cloudsearch_describe_availability_options]{describe_availability_options} \tab Gets the availability options configured for a domain \cr
+\link[=cloudsearch_describe_domain_endpoint_options]{describe_domain_endpoint_options} \tab Returns the domain's endpoint options, specifically whether all requests to the domain must arrive over HTTPS \cr
 \link[=cloudsearch_describe_domains]{describe_domains} \tab Gets information about the search domains owned by this account \cr
 \link[=cloudsearch_describe_expressions]{describe_expressions} \tab Gets the expressions configured for the search domain \cr
 \link[=cloudsearch_describe_index_fields]{describe_index_fields} \tab Gets information about the index fields configured for the search domain \cr
@@ -66,6 +67,7 @@ regions and endpoints, see \href{http://docs.aws.amazon.com/general/latest/gr/ra
 \link[=cloudsearch_index_documents]{index_documents} \tab Tells the search domain to start indexing its documents using the latest indexing options \cr
 \link[=cloudsearch_list_domain_names]{list_domain_names} \tab Lists all search domains owned by an account \cr
 \link[=cloudsearch_update_availability_options]{update_availability_options} \tab Configures the availability options for a domain \cr
+\link[=cloudsearch_update_domain_endpoint_options]{update_domain_endpoint_options} \tab Updates the domain's endpoint options, specifically whether all requests to the domain must arrive over HTTPS \cr
 \link[=cloudsearch_update_scaling_parameters]{update_scaling_parameters} \tab Configures scaling parameters for a domain \cr
 \link[=cloudsearch_update_service_access_policies]{update_service_access_policies} \tab Configures the access rules that control access to the domain's document and search endpoints
 }

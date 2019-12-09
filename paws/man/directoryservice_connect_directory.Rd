@@ -15,7 +15,7 @@ directoryservice_connect_directory(Name, ShortName, Password,
 
 \item{Password}{[required] The password for the on-premises user account.}
 
-\item{Description}{A textual description for the directory.}
+\item{Description}{A description for the directory.}
 
 \item{Size}{[required] The size of the directory.}
 

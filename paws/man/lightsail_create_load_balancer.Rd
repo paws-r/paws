@@ -11,10 +11,10 @@ lightsail_create_load_balancer(loadBalancerName, instancePort,
 \arguments{
 \item{loadBalancerName}{[required] The name of your load balancer.}
 
-\item{instancePort}{[required] The instance port where you're creating your load balancer.}
+\item{instancePort}{[required] The instance port where you\'re creating your load balancer.}
 
 \item{healthCheckPath}{The path you provided to perform the load balancer health check. If you
-didn't specify a health check path, Lightsail uses the root path of
+didn\'t specify a health check path, Lightsail uses the root path of
 your website (e.g., \code{"/"}).
 
 You may want to specify a custom health check path other than the root
@@ -38,7 +38,7 @@ certificate (e.g., \code{www.example.com}, \code{example.com}, \code{m.example.c
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
-To tag a resource after it has been created, see the \code{tag resource}
+To tag a resource after it has been created, see the \verb{tag resource}
 operation.}
 }
 \description{
@@ -51,7 +51,7 @@ When you create a load balancer, you can specify a unique name and port
 settings. To change additional load balancer settings, use the
 \code{UpdateLoadBalancerAttribute} operation.
 
-The \code{create load balancer} operation supports tag-based access control
+The \verb{create load balancer} operation supports tag-based access control
 via request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{

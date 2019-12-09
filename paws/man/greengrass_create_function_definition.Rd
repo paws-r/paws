@@ -15,7 +15,7 @@ greengrass_create_function_definition(AmznClientToken, InitialVersion,
 
 \item{Name}{The name of the function definition.}
 
-\item{tags}{Tag(s) to add to the new resource}
+\item{tags}{Tag(s) to add to the new resource.}
 }
 \description{
 Creates a Lambda function definition which contains a list of Lambda functions and their configurations to be used in a group. You can create an initial version of the definition by providing a list of Lambda functions and their configurations now, or use ''CreateFunctionDefinitionVersion'' later.

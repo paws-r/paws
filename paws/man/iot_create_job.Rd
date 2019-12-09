@@ -10,7 +10,7 @@ iot_create_job(jobId, targets, documentSource, document, description,
 }
 \arguments{
 \item{jobId}{[required] A job identifier which must be unique for your AWS account. We recommend
-using a UUID. Alpha-numeric characters, "-" and "\_" are valid for
+using a UUID. Alpha-numeric characters, \"-\" and \"\\_\" are valid for
 use here.}
 
 \item{targets}{[required] A list of things and thing groups to which the job should be sent.}
@@ -24,7 +24,7 @@ link when specifying the document.
 
 The placeholder link is of the following form:
 
-\code{$\{aws:iot:s3-presigned-url:https://s3.amazonaws.com/<i>bucket</i>/<i>key</i>\}}
+\verb{$\\\{aws:iot:s3-presigned-url:https://s3.amazonaws.com/<i>bucket</i>/<i>key</i>\\\}}
 
 where \emph{bucket} is your bucket name and \emph{key} is the object in the bucket
 to which you are linking.}

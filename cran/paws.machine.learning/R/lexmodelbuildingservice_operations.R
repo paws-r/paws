@@ -182,7 +182,13 @@ lexmodelbuildingservice_create_slot_type_version <- function(name, checksum = NU
 #'
 #' Deletes all versions of the bot, including the `$LATEST` version. To
 #' delete a specific version of the bot, use the DeleteBotVersion
-#' operation.
+#' operation. The `DeleteBot` operation doesn\'t immediately remove the bot
+#' schema. Instead, it is marked for deletion and removed later.
+#' 
+#' Amazon Lex stores utterances indefinitely for improving the ability of
+#' your bot to respond to user inputs. These utterances are not removed
+#' when the bot is deleted. To remove the utterances, use the
+#' DeleteUtterances operation.
 #' 
 #' If a bot has an alias, you can\'t delete it. Instead, the `DeleteBot`
 #' operation returns a `ResourceInUseException` exception that includes a
@@ -561,8 +567,11 @@ lexmodelbuildingservice_delete_slot_type_version <- function(name, version) {
 #' then stored indefinitely for use in improving the ability of your bot to
 #' respond to user input.
 #' 
-#' Use the `DeleteStoredUtterances` operation to manually delete stored
-#' utterances for a specific user.
+#' Use the `DeleteUtterances` operation to manually delete stored
+#' utterances for a specific user. When you use the `DeleteUtterances`
+#' operation, utterances stored for improving your bot\'s ability to
+#' respond to user input are deleted immediately. Utterances stored for use
+#' with the `GetUtterancesView` operation are deleted after 15 days.
 #' 
 #' This operation requires permissions for the `lex:DeleteUtterances`
 #' action.
@@ -1563,9 +1572,14 @@ lexmodelbuildingservice_get_slot_types <- function(nextToken = NULL, maxResults 
 #' across the two versions.
 #' 
 #' Utterance statistics are generated once a day. Data is available for the
-#' last 15 days. You can request information for up to 5 versions in each
-#' request. The response contains information about a maximum of 100
-#' utterances for each version.
+#' last 15 days. You can request information for up to 5 versions of your
+#' bot in each request. Amazon Lex returns the most frequent utterances
+#' received by the bot in the last 15 days. The response contains
+#' information about a maximum of 100 utterances for each version.
+#' 
+#' If you set `childDirected` field to true when you created your bot, or
+#' if you opted out of participating in improving Amazon Lex, utterances
+#' are not available.
 #' 
 #' This operation requires permissions for the `lex:GetUtterancesView`
 #' action.
@@ -1577,8 +1591,8 @@ lexmodelbuildingservice_get_slot_types <- function(nextToken = NULL, maxResults 
 #' @param botName &#91;required&#93; The name of the bot for which utterance information should be returned.
 #' @param botVersions &#91;required&#93; An array of bot versions for which utterance information should be
 #' returned. The limit is 5 versions per request.
-#' @param statusType &#91;required&#93; To return utterances that were recognized and handled, use`Detected`. To
-#' return utterances that were not recognized, use `Missed`.
+#' @param statusType &#91;required&#93; To return utterances that were recognized and handled, use `Detected`.
+#' To return utterances that were not recognized, use `Missed`.
 #'
 #' @section Request syntax:
 #' ```
@@ -1630,12 +1644,13 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
 #' required fields, Amazon Lex throws an exception.
 #' 
 #' This operation requires permissions for the `lex:PutBot` action. For
-#' more information, see auth-and-access-control.
+#' more information, see security-iam.
 #'
 #' @usage
 #' lexmodelbuildingservice_put_bot(name, description, intents,
 #'   clarificationPrompt, abortStatement, idleSessionTTLInSeconds, voiceId,
-#'   checksum, processBehavior, locale, childDirected, createVersion)
+#'   checksum, processBehavior, locale, childDirected, detectSentiment,
+#'   createVersion)
 #'
 #' @param name &#91;required&#93; The name of the bot. The name is *not* case sensitive.
 #' @param description A description of the bot.
@@ -1644,7 +1659,7 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
 #' OrderPizza intent. For more information, see how-it-works.
 #' @param clarificationPrompt When Amazon Lex doesn\'t understand the user\'s intent, it uses this
 #' message to get clarification. To specify how many times Amazon Lex
-#' should repeate the clarification prompt, use the `maxAttempts` field. If
+#' should repeat the clarification prompt, use the `maxAttempts` field. If
 #' Amazon Lex still doesn\'t understand, it sends the message in the
 #' `abortStatement` field.
 #' 
@@ -1652,6 +1667,31 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
 #' correct response from the user. for example, for a bot that orders pizza
 #' and drinks, you might create this clarification prompt: \"What would you
 #' like to do? You can say \'Order a pizza\' or \'Order a drink.\'\"
+#' 
+#' If you have defined a fallback intent, it will be invoked if the
+#' clarification prompt is repeated the number of times defined in the
+#' `maxAttempts` field. For more information, see
+#' [AMAZON.FallbackIntent](https://docs.aws.amazon.com/lex/latest/dg/built-in-intent-fallback.html).
+#' 
+#' If you don\'t define a clarification prompt, at runtime Amazon Lex will
+#' return a 400 Bad Request exception in three cases:
+#' 
+#' -   Follow-up prompt - When the user responds to a follow-up prompt but
+#'     does not provide an intent. For example, in response to a follow-up
+#'     prompt that says \"Would you like anything else today?\" the user
+#'     says \"Yes.\" Amazon Lex will return a 400 Bad Request exception
+#'     because it does not have a clarification prompt to send to the user
+#'     to get an intent.
+#' 
+#' -   Lambda function - When using a Lambda function, you return an
+#'     `ElicitIntent` dialog type. Since Amazon Lex does not have a
+#'     clarification prompt to get an intent from the user, it returns a
+#'     400 Bad Request exception.
+#' 
+#' -   PutSession operation - When using the `PutSession` operation, you
+#'     send an `ElicitIntent` dialog type. Since Amazon Lex does not have a
+#'     clarification prompt to get an intent from the user, it returns a
+#'     400 Bad Request exception.
 #' @param abortStatement When Amazon Lex can\'t understand the user\'s input in context, it tries
 #' to elicit the information a few times. After that, Amazon Lex sends the
 #' message defined in `abortStatement` to the user, and then aborts the
@@ -1667,6 +1707,11 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
 #' of the intents. This intent might require the `CrustType` slot. You
 #' specify the `valueElicitationPrompt` field when you create the
 #' `CrustType` slot.
+#' 
+#' If you have defined a fallback intent the abort statement will not be
+#' sent to the user, the fallback intent is used instead. For more
+#' information, see
+#' [AMAZON.FallbackIntent](https://docs.aws.amazon.com/lex/latest/dg/built-in-intent-fallback.html).
 #' @param idleSessionTTLInSeconds The maximum time in seconds that Amazon Lex retains the data gathered in
 #' a conversation.
 #' 
@@ -1686,8 +1731,8 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
 #' The default is 300 seconds (5 minutes).
 #' @param voiceId The Amazon Polly voice ID that you want Amazon Lex to use for voice
 #' interactions with the user. The locale configured for the voice must
-#' match the locale of the bot. For more information, see [Available
-#' Voices](http://docs.aws.amazon.com/polly/latest/dg/voicelist.html) in
+#' match the locale of the bot. For more information, see [Voices in Amazon
+#' Polly](https://docs.aws.amazon.com/polly/latest/dg/voicelist.html) in
 #' the *Amazon Polly Developer Guide*.
 #' @param checksum Identifies a specific revision of the `$LATEST` version.
 #' 
@@ -1732,7 +1777,12 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
 #' with websites, programs, or other applications that are directed or
 #' targeted, in whole or in part, to children under age 13, see the [Amazon
 #' Lex FAQ.](https://aws.amazon.com/lex/faqs#data-security)
-#' @param createVersion 
+#' @param detectSentiment When set to `true` user utterances are sent to Amazon Comprehend for
+#' sentiment analysis. If you don\'t specify `detectSentiment`, the default
+#' is `false`.
+#' @param createVersion When set to `true` a new numbered version of the bot is created. This is
+#' the same as calling the `CreateBotVersion` operation. If you don\'t
+#' specify `createVersion`, the default is `false`.
 #'
 #' @section Request syntax:
 #' ```
@@ -1772,6 +1822,7 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
 #'   processBehavior = "SAVE"|"BUILD",
 #'   locale = "en-US"|"en-GB"|"de-DE",
 #'   childDirected = TRUE|FALSE,
+#'   detectSentiment = TRUE|FALSE,
 #'   createVersion = TRUE|FALSE
 #' )
 #' ```
@@ -1821,14 +1872,14 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_put_bot
-lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = NULL, clarificationPrompt = NULL, abortStatement = NULL, idleSessionTTLInSeconds = NULL, voiceId = NULL, checksum = NULL, processBehavior = NULL, locale, childDirected, createVersion = NULL) {
+lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = NULL, clarificationPrompt = NULL, abortStatement = NULL, idleSessionTTLInSeconds = NULL, voiceId = NULL, checksum = NULL, processBehavior = NULL, locale, childDirected, detectSentiment = NULL, createVersion = NULL) {
   op <- new_operation(
     name = "PutBot",
     http_method = "PUT",
     http_path = "/bots/{name}/versions/$LATEST",
     paginator = list()
   )
-  input <- .lexmodelbuildingservice$put_bot_input(name = name, description = description, intents = intents, clarificationPrompt = clarificationPrompt, abortStatement = abortStatement, idleSessionTTLInSeconds = idleSessionTTLInSeconds, voiceId = voiceId, checksum = checksum, processBehavior = processBehavior, locale = locale, childDirected = childDirected, createVersion = createVersion)
+  input <- .lexmodelbuildingservice$put_bot_input(name = name, description = description, intents = intents, clarificationPrompt = clarificationPrompt, abortStatement = abortStatement, idleSessionTTLInSeconds = idleSessionTTLInSeconds, voiceId = voiceId, checksum = checksum, processBehavior = processBehavior, locale = locale, childDirected = childDirected, detectSentiment = detectSentiment, createVersion = createVersion)
   output <- .lexmodelbuildingservice$put_bot_output()
   config <- get_config()
   svc <- .lexmodelbuildingservice$service(config)
@@ -2053,7 +2104,9 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #' don\'t specify the ` checksum` field, or if the checksum does not match
 #' the `$LATEST` version, you get a `PreconditionFailedException`
 #' exception.
-#' @param createVersion 
+#' @param createVersion When set to `true` a new numbered version of the intent is created. This
+#' is the same as calling the `CreateIntentVersion` operation. If you do
+#' not specify `createVersion`, the default is `false`.
 #'
 #' @section Request syntax:
 #' ```
@@ -2378,7 +2431,9 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
 #' 
 #' If you don\'t specify the `valueSelectionStrategy`, the default is
 #' `ORIGINAL_VALUE`.
-#' @param createVersion 
+#' @param createVersion When set to `true` a new numbered version of the slot type is created.
+#' This is the same as calling the `CreateSlotTypeVersion` operation. If
+#' you do not specify `createVersion`, the default is `false`.
 #'
 #' @section Request syntax:
 #' ```

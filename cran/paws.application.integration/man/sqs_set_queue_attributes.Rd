@@ -27,11 +27,11 @@ contain before Amazon SQS rejects it. Valid values: An integer from
 Amazon SQS retains a message. Valid values: An integer representing
 seconds, from 60 (1 minute) to 1,209,600 (14 days). Default: 345,600
 (4 days).
-\item \code{Policy} - The queue's policy. A valid AWS policy. For more
+\item \code{Policy} - The queue\'s policy. A valid AWS policy. For more
 information about policy structure, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html}{Overview of AWS IAM Policies}
 in the \emph{Amazon IAM User Guide}.
 \item \code{ReceiveMessageWaitTimeSeconds} - The length of time, in seconds,
-for which a \code{<a>ReceiveMessage</a>} action waits for a message to
+for which a \verb{<a>ReceiveMessage</a>} action waits for a message to
 arrive. Valid values: an integer from 0 to 20 (seconds). Default: 0.
 \item \code{RedrivePolicy} - The string that includes the parameters for the
 dead-letter queue functionality of the source queue. For more
@@ -66,7 +66,7 @@ The following attributes apply only to
 (CMK) for Amazon SQS or a custom CMK. For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms}{Key Terms}.
 While the alias of the AWS-managed CMK for Amazon SQS is always
 \code{alias/aws/sqs}, the alias of a custom CMK can, for example, be
-\code{alias/<i>MyAlias</i> }. For more examples, see
+\verb{alias/<i>MyAlias</i> }. For more examples, see
 \href{https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters}{KeyId}
 in the \emph{AWS Key Management Service API Reference}.
 \item \code{KmsDataKeyReusePeriodSeconds} - The length of time, in seconds, for
@@ -88,13 +88,13 @@ in the \emph{Amazon Simple Queue Service Developer Guide}.
 \item Every message must have a unique \code{MessageDeduplicationId},
 \itemize{
 \item You may provide a \code{MessageDeduplicationId} explicitly.
-\item If you aren't able to provide a \code{MessageDeduplicationId}
+\item If you aren\'t able to provide a \code{MessageDeduplicationId}
 and you enable \code{ContentBasedDeduplication} for your queue,
 Amazon SQS uses a SHA-256 hash to generate the
 \code{MessageDeduplicationId} using the body of the message (but
 not the attributes of the message).
-\item If you don't provide a \code{MessageDeduplicationId} and the
-queue doesn't have \code{ContentBasedDeduplication} set, the
+\item If you don\'t provide a \code{MessageDeduplicationId} and the
+queue doesn\'t have \code{ContentBasedDeduplication} set, the
 action fails with an error.
 \item If the queue has \code{ContentBasedDeduplication} set, your
 \code{MessageDeduplicationId} overrides the generated one.
@@ -113,7 +113,7 @@ duplicates and only one copy of the message is delivered.
 }
 \description{
 Sets the value of one or more queue attributes. When you change a
-queue's attributes, the change can take up to 60 seconds for most of
+queue\'s attributes, the change can take up to 60 seconds for most of
 the attributes to propagate throughout the Amazon SQS system. Changes
 made to the \code{MessageRetentionPeriod} attribute can take up to 15
 minutes.
@@ -123,7 +123,7 @@ minutes.
 \item In the future, new attributes might be added. If you write code that
 calls this action, we recommend that you structure your code so that
 it can handle new attributes gracefully.
-\item Cross-account permissions don't apply to this action. For more
+\item Cross-account permissions don\'t apply to this action. For more
 information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 \item To remove the ability to change queue permissions, you must deny

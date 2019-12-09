@@ -22,16 +22,6 @@ ID for the AWS account that contains your Amazon QuickSight account.}
 \description{
 Lists member users in a group.
 }
-\details{
-The permissions resource is
-\code{arn:aws:quicksight:us-east-1:<i>&lt;aws-account-id&gt;</i>:group/default/<i>&lt;group-name&gt;</i> }.
-
-The response is a list of group member objects.
-
-\strong{CLI Sample:}
-
-\code{aws quicksight list-group-memberships -\\-aws-account-id=111122223333 -\\-namespace=default }
-}
 \section{Request syntax}{
 \preformatted{svc$list_group_memberships(
   GroupName = "string",

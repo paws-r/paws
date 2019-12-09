@@ -19,7 +19,7 @@ to return a sample of requests.}
 for which you want \code{GetSampledRequests} to return a sample of
 requests.
 \item \code{Default_Action}, which causes \code{GetSampledRequests} to return a
-sample of the requests that didn't match any of the rules in the
+sample of the requests that didn\'t match any of the rules in the
 specified \code{WebACL}.
 }}
 
@@ -34,8 +34,8 @@ range. If your resource received fewer requests than the value of
 \code{MaxItems}, \code{GetSampledRequests} returns information about all of them.}
 }
 \description{
-Gets detailed information about a specified number of requests\--a
-sample\--that AWS WAF randomly selects from among the first 5,000
+Gets detailed information about a specified number of requests\\--a
+sample\\--that AWS WAF randomly selects from among the first 5,000
 requests that your AWS resource received during a time range that you
 choose. You can specify a sample size of up to 500 requests, and you can
 specify any time range in the previous three hours.

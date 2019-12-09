@@ -7,7 +7,7 @@
 devicefarm_list_suites(arn, nextToken)
 }
 \arguments{
-\item{arn}{[required] The job's Amazon Resource Name (ARN).}
+\item{arn}{[required] The job\'s Amazon Resource Name (ARN).}
 
 \item{nextToken}{An identifier that was returned from the previous call to this
 operation, which can be used to return the next set of items in the
@@ -26,9 +26,9 @@ Gets information about test suites for a given job.
 
 \examples{
 # The following example returns information about suites, given a specific
-# Device Farm project.
+# Device Farm job.
 \donttest{svc$list_suites(
-  arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
+  arn = "arn:aws:devicefarm:us-west-2:123456789101:job:EXAMPLE-GUID-123-456",
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 )}
 

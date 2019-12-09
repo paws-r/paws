@@ -12,7 +12,7 @@ apigateway_flush_stage_cache(restApiId, stageName)
 \item{stageName}{[required] [Required] The name of the stage to flush its cache.}
 }
 \description{
-Flushes a stage's cache.
+Flushes a stage\'s cache.
 }
 \section{Request syntax}{
 \preformatted{svc$flush_stage_cache(

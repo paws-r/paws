@@ -15,7 +15,7 @@ machinelearning_predict(MLModelId, Record, PredictEndpoint)
 }
 \description{
 Generates a prediction for the observation using the specified
-\code{ML Model}.
+\verb{ML Model}.
 }
 \details{
 Note

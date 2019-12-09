@@ -15,13 +15,13 @@ rds_restore_db_instance_from_db_snapshot(DBInstanceIdentifier,
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] Name of the DB instance to create from the DB snapshot. This parameter
-isn't case-sensitive.
+isn\'t case-sensitive.
 
 Constraints:
 \itemize{
 \item Must contain from 1 to 63 numbers, letters, or hyphens
 \item First character must be a letter
-\item Can't end with a hyphen or contain two consecutive hyphens
+\item Can\'t end with a hyphen or contain two consecutive hyphens
 }
 
 Example: \code{my-snapshot-id}}
@@ -53,10 +53,10 @@ Constraints: Value must be \code{1150-65535}}
 
 Default: A random, system-chosen Availability Zone.
 
-Constraint: You can't specify the \code{AvailabilityZone} parameter if the
+Constraint: You can\'t specify the \code{AvailabilityZone} parameter if the
 DB instance is a Multi-AZ deployment.
 
-Example: \code{us-east-1a}}
+Example: \verb{us-east-1a}}
 
 \item{DBSubnetGroupName}{The DB subnet group name to use for the new instance.
 
@@ -67,13 +67,13 @@ Example: \code{mySubnetgroup}}
 
 \item{MultiAZ}{A value that indicates whether the DB instance is a Multi-AZ deployment.
 
-Constraint: You can't specify the \code{AvailabilityZone} parameter if the
+Constraint: You can\'t specify the \code{AvailabilityZone} parameter if the
 DB instance is a Multi-AZ deployment.}
 
 \item{PubliclyAccessible}{A value that indicates whether the DB instance is publicly accessible.
 When the DB instance is publicly accessible, it is an Internet-facing
 instance with a publicly resolvable DNS name, which resolves to a public
-IP address. When the DB instance is not publicly accessible, it is an
+IP address. When the DB instance isn\'t publicly accessible, it is an
 internal instance with a DNS name that resolves to a private IP address.
 For more information, see CreateDBInstance.}
 
@@ -84,12 +84,12 @@ automatically to the DB instance during the maintenance window.}
 
 Default: Same as source.
 
-Valid values: \code{license-included} \| \code{bring-your-own-license} \|
+Valid values: \code{license-included} \\| \code{bring-your-own-license} \\|
 \code{general-public-license}}
 
 \item{DBName}{The database name for the restored DB instance.
 
-This parameter doesn't apply to the MySQL, PostgreSQL, or MariaDB
+This parameter doesn\'t apply to the MySQL, PostgreSQL, or MariaDB
 engines.}
 
 \item{Engine}{The database engine to use for the new instance.
@@ -116,7 +116,7 @@ Valid Values:
 }}
 
 \item{Iops}{Specifies the amount of provisioned IOPS for the DB instance, expressed
-in I/O operations per second. If this parameter is not specified, the
+in I/O operations per second. If this parameter isn\'t specified, the
 IOPS value is taken from the backup. If this parameter is set to 0, the
 new instance is converted to a non-PIOPS instance. The conversion takes
 additional time, though your DB instance is available for connections
@@ -131,8 +131,8 @@ Constraints: Must be an integer greater than 1000.}
 \item{OptionGroupName}{The name of the option group to be used for the restored DB instance.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
-TDE, can't be removed from an option group, and that option group
-can't be removed from a DB instance once it is associated with a DB
+TDE, can\'t be removed from an option group, and that option group
+can\'t be removed from a DB instance once it is associated with a DB
 instance}
 
 \item{Tags}{}
@@ -154,10 +154,23 @@ device.}
 
 \item{VpcSecurityGroupIds}{A list of EC2 VPC security groups to associate with this DB instance.
 
-Default: The default EC2 VPC security group for the DB subnet group's
+Default: The default EC2 VPC security group for the DB subnet group\'s
 VPC.}
 
-\item{Domain}{Specify the Active Directory Domain to restore the instance in.}
+\item{Domain}{Specify the Active Directory directory ID to restore the DB instance in.
+The domain must be created prior to this operation. Currently, only
+Microsoft SQL Server and Oracle DB instances can be created in an Active
+Directory Domain.
+
+For Microsoft SQL Server DB instances, Amazon RDS can use Windows
+Authentication to authenticate users that connect to the DB instance.
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html}{Using Windows Authentication with an Amazon RDS DB Instance Running Microsoft SQL Server}
+in the \emph{Amazon RDS User Guide}.
+
+For Oracle DB instances, Amazon RDS can use Kerberos Authentication to
+authenticate users that connect to the DB instance. For more
+information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html}{Using Kerberos Authentication with Amazon RDS for Oracle}
+in the \emph{Amazon RDS User Guide}.}
 
 \item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the restored DB
 instance to snapshots of the DB instance. By default, tags are not
@@ -168,14 +181,11 @@ Directory Service.}
 
 \item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.
+mapping is disabled. For information about the supported DB engines, see
+CreateDBInstance.
 
-You can enable IAM database authentication for the following database
-engines
-\itemize{
-\item For MySQL 5.6, minor version 5.6.34 or higher
-\item For MySQL 5.7, minor version 5.7.16 or higher
-}}
+For more information about IAM database authentication, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication for MySQL and PostgreSQL}
+in the \emph{Amazon RDS User Guide.}}
 
 \item{EnableCloudwatchLogsExports}{The list of logs that the restored DB instance is to export to
 CloudWatch Logs. The values in the list depend on the DB engine being
@@ -189,19 +199,20 @@ instance class of the DB instance.}
 uses its default processor features.}
 
 \item{DBParameterGroupName}{The name of the DB parameter group to associate with this DB instance.
-If this argument is omitted, the default DBParameterGroup for the
-specified engine is used.
+
+If you do not specify a value for \code{DBParameterGroupName}, then the
+default \code{DBParameterGroup} for the specified DB engine is used.
 
 Constraints:
 \itemize{
 \item If supplied, must match the name of an existing DBParameterGroup.
 \item Must be 1 to 255 letters, numbers, or hyphens.
 \item First character must be a letter.
-\item Can't end with a hyphen or contain two consecutive hyphens.
+\item Can\'t end with a hyphen or contain two consecutive hyphens.
 }}
 
 \item{DeletionProtection}{A value that indicates whether the DB instance has deletion protection
-enabled. The database can't be deleted when deletion protection is
+enabled. The database can\'t be deleted when deletion protection is
 enabled. By default, deletion protection is disabled. For more
 information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 }
@@ -218,7 +229,7 @@ deployment.
 \details{
 If your intent is to replace your original DB instance with the new,
 restored DB instance, then rename your original DB instance before you
-call the RestoreDBInstanceFromDBSnapshot action. RDS doesn't allow two
+call the RestoreDBInstanceFromDBSnapshot action. RDS doesn\'t allow two
 DB instances with the same name. Once you have renamed your original DB
 instance with a different identifier, then you can pass the original
 name of the DB instance as the DBInstanceIdentifier in the call to the
@@ -229,7 +240,7 @@ snapshot.
 If you are restoring from a shared manual DB snapshot, the
 \code{DBSnapshotIdentifier} must be the ARN of the shared DB snapshot.
 
-This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
+This command doesn\'t apply to Aurora MySQL and Aurora PostgreSQL. For
 Aurora, use \code{RestoreDBClusterFromSnapshot}.
 }
 \section{Request syntax}{

@@ -9,24 +9,60 @@ s3_delete_object(Bucket, Key, MFA, VersionId, RequestPayer,
   BypassGovernanceRetention)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The bucket name of the bucket containing the object.
 
-\item{Key}{[required]}
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+\emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
+When using this operation using an access point through the AWS SDKs,
+you provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
-\item{MFA}{The concatenation of the authentication device's serial number, a
-space, and the value that is displayed on your authentication device.}
+\item{Key}{[required] Key name of the object to delete.}
+
+\item{MFA}{The concatenation of the authentication device\'s serial number, a
+space, and the value that is displayed on your authentication device.
+Required to permanently delete a versioned object if versioning is
+configured with MFA delete enabled.}
 
 \item{VersionId}{VersionId used to reference a specific version of the object.}
 
 \item{RequestPayer}{}
 
-\item{BypassGovernanceRetention}{Indicates whether Amazon S3 object lock should bypass governance-mode
+\item{BypassGovernanceRetention}{Indicates whether S3 Object Lock should bypass Governance-mode
 restrictions to process this operation.}
 }
 \description{
 Removes the null version (if there is one) of an object and inserts a
 delete marker, which becomes the latest version of the object. If there
-isn't a null version, Amazon S3 does not remove any objects.
+isn\'t a null version, Amazon S3 does not remove any objects.
+}
+\details{
+To remove a specific version, you must be the bucket owner and you must
+use the version Id subresource. Using this subresource permanently
+deletes the version. If the object deleted is a delete marker, Amazon S3
+sets the response header, \code{x-amz-delete-marker}, to true.
+
+If the object you want to delete is in a bucket where the bucket
+versioning configuration is MFA Delete enabled, you must include the
+\code{x-amz-mfa} request header in the DELETE \code{versionId} request. Requests
+that include \code{x-amz-mfa} must use HTTPS.
+
+For more information about MFA Delete, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMFADelete.html}{Using MFA Delete}.
+To see sample requests that use versioning, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectDELETE.html#ExampleVersionObjectDelete}{Sample Request}.
+
+You can delete objects by explicitly calling the DELETE Object API or
+configure its lifecycle (PutBucketLifecycle) to enable Amazon S3 to
+remove them for you. If you want to block users or accounts from
+removing or deleting objects from your bucket, you must deny them the
+\code{s3:DeleteObject}, \code{s3:DeleteObjectVersion}, and
+\code{s3:PutLifeCycleConfiguration} actions.
+
+The following operation is related to \code{DeleteObject}:
+\itemize{
+\item PutObject
+}
 }
 \section{Request syntax}{
 \preformatted{svc$delete_object(

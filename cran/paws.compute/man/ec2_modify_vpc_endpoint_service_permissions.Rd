@@ -17,7 +17,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{AddAllowedPrincipals}{The Amazon Resource Names (ARN) of one or more principals. Permissions
 are granted to the principals in this list. To grant permissions to all
-principals, specify an asterisk (*).}
+principals, specify an asterisk (\*).}
 
 \item{RemoveAllowedPrincipals}{The Amazon Resource Names (ARN) of one or more principals. Permissions
 are revoked for principals in this list.}

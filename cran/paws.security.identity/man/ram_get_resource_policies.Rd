@@ -2,7 +2,8 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_get_resource_policies}
 \alias{ram_get_resource_policies}
-\title{Gets the policies for the specifies resources}
+\title{Gets the policies for the specified resources that you own and have
+shared}
 \usage{
 ram_get_resource_policies(resourceArns, principal, nextToken,
   maxResults)
@@ -19,7 +20,8 @@ the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
 \description{
-Gets the policies for the specifies resources.
+Gets the policies for the specified resources that you own and have
+shared.
 }
 \section{Request syntax}{
 \preformatted{svc$get_resource_policies(

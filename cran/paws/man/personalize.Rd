@@ -34,6 +34,7 @@ add individualized recommendations to customers.
 \section{Operations}{
 
 \tabular{ll}{
+\link[=personalize_create_batch_inference_job]{create_batch_inference_job} \tab Creates a batch inference job \cr
 \link[=personalize_create_campaign]{create_campaign} \tab Creates a campaign by deploying a solution version \cr
 \link[=personalize_create_dataset]{create_dataset} \tab Creates an empty dataset and adds it to the specified dataset group \cr
 \link[=personalize_create_dataset_group]{create_dataset_group} \tab Creates an empty dataset group \cr
@@ -49,6 +50,7 @@ add individualized recommendations to customers.
 \link[=personalize_delete_schema]{delete_schema} \tab Deletes a schema \cr
 \link[=personalize_delete_solution]{delete_solution} \tab Deletes all versions of a solution and the Solution object itself \cr
 \link[=personalize_describe_algorithm]{describe_algorithm} \tab Describes the given algorithm \cr
+\link[=personalize_describe_batch_inference_job]{describe_batch_inference_job} \tab Gets the properties of a batch inference job including name, Amazon Resource Name (ARN), status, input and output configurations, and the ARN of the solution version used to generate the recommendations\cr
 \link[=personalize_describe_campaign]{describe_campaign} \tab Describes the given campaign, including its status \cr
 \link[=personalize_describe_dataset]{describe_dataset} \tab Describes the given dataset \cr
 \link[=personalize_describe_dataset_group]{describe_dataset_group} \tab Describes the given dataset group \cr
@@ -60,6 +62,7 @@ add individualized recommendations to customers.
 \link[=personalize_describe_solution]{describe_solution} \tab Describes a solution \cr
 \link[=personalize_describe_solution_version]{describe_solution_version} \tab Describes a specific version of a solution \cr
 \link[=personalize_get_solution_metrics]{get_solution_metrics} \tab Gets the metrics for the specified solution version \cr
+\link[=personalize_list_batch_inference_jobs]{list_batch_inference_jobs} \tab Gets a list of the batch inference jobs that have been performed off of a solution version \cr
 \link[=personalize_list_campaigns]{list_campaigns} \tab Returns a list of campaigns that use the given solution \cr
 \link[=personalize_list_dataset_groups]{list_dataset_groups} \tab Returns a list of dataset groups \cr
 \link[=personalize_list_dataset_import_jobs]{list_dataset_import_jobs} \tab Returns a list of dataset import jobs that use the given dataset \cr
@@ -75,7 +78,7 @@ add individualized recommendations to customers.
 
 \examples{
 \donttest{svc <- personalize()
-svc$create_campaign(
+svc$create_batch_inference_job(
   Foo = 123
 )}
 

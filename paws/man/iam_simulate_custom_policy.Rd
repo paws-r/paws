@@ -15,7 +15,7 @@ iam_simulate_custom_policy(PolicyInputList, ActionNames, ResourceArns,
 is specified as a string containing the complete, valid JSON text of an
 IAM policy. Do not include any resource-based policies in this
 parameter. Any resource-based policy must be submitted with the
-\code{ResourcePolicy} parameter. The policies cannot be "scope-down"
+\code{ResourcePolicy} parameter. The policies cannot be \"scope-down\"
 policies, such as you could include in a call to
 \href{https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetFederationToken.html}{GetFederationToken}
 or one of the
@@ -29,15 +29,15 @@ this parameter is a string of characters consisting of the following:
 \item Any printable ASCII character ranging from the space character
 (\code{U+0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \code{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\code{U+000A}), and
-carriage return (\code{U+000D})
+character set (through \verb{U+00FF})
+\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
+carriage return (\verb{U+000D})
 }}
 
 \item{ActionNames}{[required] A list of names of API operations to evaluate in the simulation. Each
 operation is evaluated against each resource. Each operation must
 include the service identifier, such as \code{iam:CreateUser}. This operation
-does not support using wildcards (*) in an action name.}
+does not support using wildcards (\*) in an action name.}
 
 \item{ResourceArns}{A list of ARNs of AWS resources to include in the simulation. If this
 parameter is not provided, then the value defaults to \code{*} (all
@@ -68,9 +68,9 @@ this parameter is a string of characters consisting of the following:
 \item Any printable ASCII character ranging from the space character
 (\code{U+0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \code{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\code{U+000A}), and
-carriage return (\code{U+000D})
+character set (through \verb{U+00FF})
+\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
+carriage return (\verb{U+000D})
 }}
 
 \item{ResourceOwner}{An ARN representing the AWS account ID that specifies the owner of any
@@ -85,13 +85,13 @@ resource-based policy and account that owns the resource is different
 from the account that owns the simulated calling user \code{CallerArn}.
 
 The ARN for an account uses the following syntax:
-\code{arn:aws:iam::<i>AWS-account-ID</i>:root}. For example, to represent the
+\verb{arn:aws:iam::<i>AWS-account-ID</i>:root}. For example, to represent the
 account with the 112233445566 ID, use the following ARN:
-\code{arn:aws:iam::112233445566-ID:root}.}
+\verb{arn:aws:iam::112233445566-ID:root}.}
 
 \item{CallerArn}{The ARN of the IAM user that you want to use as the simulated caller of
 the API operations. \code{CallerArn} is required if you include a
-\code{ResourcePolicy} so that the policy's \code{Principal} element has a value
+\code{ResourcePolicy} so that the policy\'s \code{Principal} element has a value
 to use in evaluating the policy.
 
 You can specify only the ARN of an IAM user. You cannot specify the ARN
@@ -156,7 +156,7 @@ indicate where the next call should start.}
 \description{
 Simulate how a set of IAM policies and optionally a resource-based
 policy works with a list of API operations and AWS resources to
-determine the policies' effective permissions. The policies are
+determine the policies\' effective permissions. The policies are
 provided as strings.
 }
 \details{

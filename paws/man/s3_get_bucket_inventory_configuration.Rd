@@ -2,8 +2,8 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_bucket_inventory_configuration}
 \alias{s3_get_bucket_inventory_configuration}
-\title{Returns an inventory configuration (identified by the inventory ID) from
-the bucket}
+\title{Returns an inventory configuration (identified by the inventory
+configuration ID) from the bucket}
 \usage{
 s3_get_bucket_inventory_configuration(Bucket, Id)
 }
@@ -14,8 +14,25 @@ retrieve.}
 \item{Id}{[required] The ID used to identify the inventory configuration.}
 }
 \description{
-Returns an inventory configuration (identified by the inventory ID) from
-the bucket.
+Returns an inventory configuration (identified by the inventory
+configuration ID) from the bucket.
+}
+\details{
+To use this operation, you must have permissions to perform the
+\code{s3:GetInventoryConfiguration} action. The bucket owner has this
+permission by default and can grant this permission to others. For more
+information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
+
+For information about the Amazon S3 inventory feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html}{Amazon S3 Inventory}.
+
+The following operations are related to
+\code{GetBucketInventoryConfiguration}:
+\itemize{
+\item DeleteBucketInventoryConfiguration
+\item ListBucketInventoryConfigurations
+\item PutBucketInventoryConfiguration
+}
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_inventory_configuration(

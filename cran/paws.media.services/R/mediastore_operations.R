@@ -22,7 +22,8 @@ NULL
 #' within that category (such as \"test,\" \"development,\" or
 #' \"production\"). You can add up to 50 tags to each container. For more
 #' information about tagging, including naming and usage conventions, see
-#' Tagging Resources in MediaStore.
+#' [Tagging Resources in
+#' MediaStore](https://docs.aws.amazon.com/mediastore/latest/ug/tagging.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -711,8 +712,9 @@ mediastore_stop_access_logging <- function(ContainerName) {
 #' the tag key might be \"customer\" and the tag value might be
 #' \"companyA.\" You can specify one or more tags to add to each container.
 #' You can add up to 50 tags to each container. For more information about
-#' tagging, including naming and usage conventions, see Tagging Resources
-#' in MediaStore.
+#' tagging, including naming and usage conventions, see [Tagging Resources
+#' in
+#' MediaStore](https://docs.aws.amazon.com/mediastore/latest/ug/tagging.html).
 #'
 #' @usage
 #' mediastore_tag_resource(Resource, Tags)

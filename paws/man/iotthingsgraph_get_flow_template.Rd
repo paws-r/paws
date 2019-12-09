@@ -12,7 +12,7 @@ iotthingsgraph_get_flow_template(id, revisionNumber)
 
 The ID should be in the following format.
 
-\code{urn:tdm:REGION/ACCOUNT ID/default:workflow:WORKFLOWNAME}}
+\verb{urn:tdm:REGION/ACCOUNT ID/default:workflow:WORKFLOWNAME}}
 
 \item{revisionNumber}{The number of the workflow revision to retrieve.}
 }

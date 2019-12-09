@@ -7,7 +7,7 @@
 opsworks_list_tags(ResourceArn, MaxResults, NextToken)
 }
 \arguments{
-\item{ResourceArn}{[required] The stack or layer's Amazon Resource Number (ARN).}
+\item{ResourceArn}{[required] The stack or layer\'s Amazon Resource Number (ARN).}
 
 \item{MaxResults}{Do not use. A validation exception occurs if you add a \code{MaxResults}
 parameter to a \code{ListTagsRequest} call.}

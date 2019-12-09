@@ -3,8 +3,8 @@
 \name{cloudwatch_get_metric_data}
 \alias{cloudwatch_get_metric_data}
 \title{You can use the GetMetricData API to retrieve as many as 100 different
-metrics in a single request, with a total of as many as 100,800
-datapoints}
+metrics in a single request, with a total of as many as 100,800 data
+points}
 \usage{
 cloudwatch_get_metric_data(MetricDataQueries, StartTime, EndTime,
   NextToken, ScanBy, MaxDatapoints)
@@ -17,16 +17,43 @@ to perform on retrieved data.}
 
 \item{StartTime}{[required] The time stamp indicating the earliest data to be returned.
 
+The value specified is inclusive; results include data points with the
+specified time stamp.
+
+CloudWatch rounds the specified time stamp as follows:
+\itemize{
+\item Start time less than 15 days ago - Round down to the nearest whole
+minute. For example, 12:32:34 is rounded down to 12:32:00.
+\item Start time between 15 and 63 days ago - Round down to the nearest
+5-minute clock interval. For example, 12:32:34 is rounded down to
+12:30:00.
+\item Start time greater than 63 days ago - Round down to the nearest
+1-hour clock interval. For example, 12:32:34 is rounded down to
+12:00:00.
+}
+
+If you set \code{Period} to 5, 10, or 30, the start time of your request is
+rounded down to the nearest time that corresponds to even 5-, 10-, or
+30-second divisions of a minute. For example, if you make a query at
+(HH:mm:ss) 01:05:23 for the previous 10-second period, the start time of
+your request is rounded down and you receive data from 01:05:10 to
+01:05:20. If you make a query at 15:07:17 for the previous 5 minutes of
+data, using a period of 5 seconds, you receive data timestamped between
+15:02:15 and 15:07:15.
+
 For better performance, specify \code{StartTime} and \code{EndTime} values that
-align with the value of the metric's \code{Period} and sync up with the
+align with the value of the metric\'s \code{Period} and sync up with the
 beginning and end of an hour. For example, if the \code{Period} of a metric
 is 5 minutes, specifying 12:05 or 12:30 as \code{StartTime} can get a faster
 response from CloudWatch than setting 12:07 or 12:29 as the \code{StartTime}.}
 
 \item{EndTime}{[required] The time stamp indicating the latest data to be returned.
 
+The value specified is exclusive; results include data points up to the
+specified time stamp.
+
 For better performance, specify \code{StartTime} and \code{EndTime} values that
-align with the value of the metric's \code{Period} and sync up with the
+align with the value of the metric\'s \code{Period} and sync up with the
 beginning and end of an hour. For example, if the \code{Period} of a metric
 is 5 minutes, specifying 12:05 or 12:30 as \code{EndTime} can get a faster
 response from CloudWatch than setting 12:07 or 12:29 as the \code{EndTime}.}
@@ -44,13 +71,13 @@ paginating. If you omit this, the default of 100,800 is used.}
 }
 \description{
 You can use the \code{GetMetricData} API to retrieve as many as 100 different
-metrics in a single request, with a total of as many as 100,800
-datapoints. You can also optionally perform math expressions on the
-values of the returned statistics, to create new time series that
-represent new insights into your data. For example, using Lambda
-metrics, you could divide the Errors metric by the Invocations metric to
-get an error rate time series. For more information about metric math
-expressions, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax}{Metric Math Syntax and Functions}
+metrics in a single request, with a total of as many as 100,800 data
+points. You can also optionally perform math expressions on the values
+of the returned statistics, to create new time series that represent new
+insights into your data. For example, using Lambda metrics, you could
+divide the Errors metric by the Invocations metric to get an error rate
+time series. For more information about metric math expressions, see
+\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax}{Metric Math Syntax and Functions}
 in the \emph{Amazon CloudWatch User Guide}.
 }
 \details{
@@ -79,6 +106,14 @@ with 1-minute resolution. After 15 days, this data is still available,
 but is aggregated and retrievable only with a resolution of 5 minutes.
 After 63 days, the data is further aggregated and is available with a
 resolution of 1 hour.
+
+If you omit \code{Unit} in your request, all data that was collected with any
+unit is returned, along with the corresponding units that were specified
+when the data was reported to CloudWatch. If you specify a unit, the
+operation returns only data data that was collected with that unit
+specified. If you specify a unit that does not match the data collected,
+the results of the operation are null. CloudWatch does not perform unit
+conversions.
 }
 \section{Request syntax}{
 \preformatted{svc$get_metric_data(
@@ -102,7 +137,8 @@ resolution of 1 hour.
       ),
       Expression = "string",
       Label = "string",
-      ReturnData = TRUE|FALSE
+      ReturnData = TRUE|FALSE,
+      Period = 123
     )
   ),
   StartTime = as.POSIXct(

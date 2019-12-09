@@ -14,9 +14,9 @@ NULL
 #' @usage
 #' securityhub_accept_invitation(MasterId, InvitationId)
 #'
-#' @param MasterId The account ID of the Security Hub master account that sent the
+#' @param MasterId &#91;required&#93; The account ID of the Security Hub master account that sent the
 #' invitation.
-#' @param InvitationId The ID of the invitation sent from the Security Hub master account.
+#' @param InvitationId &#91;required&#93; The ID of the invitation sent from the Security Hub master account.
 #'
 #' @section Request syntax:
 #' ```
@@ -29,7 +29,7 @@ NULL
 #' @keywords internal
 #'
 #' @rdname securityhub_accept_invitation
-securityhub_accept_invitation <- function(MasterId = NULL, InvitationId = NULL) {
+securityhub_accept_invitation <- function(MasterId, InvitationId) {
   op <- new_operation(
     name = "AcceptInvitation",
     http_method = "POST",
@@ -1026,7 +1026,7 @@ securityhub_create_members <- function(AccountDetails = NULL) {
 #' @usage
 #' securityhub_decline_invitations(AccountIds)
 #'
-#' @param AccountIds A list of account IDs that specify the accounts that invitations to
+#' @param AccountIds &#91;required&#93; A list of account IDs that specify the accounts that invitations to
 #' Security Hub are declined from.
 #'
 #' @section Request syntax:
@@ -1041,7 +1041,7 @@ securityhub_create_members <- function(AccountDetails = NULL) {
 #' @keywords internal
 #'
 #' @rdname securityhub_decline_invitations
-securityhub_decline_invitations <- function(AccountIds = NULL) {
+securityhub_decline_invitations <- function(AccountIds) {
   op <- new_operation(
     name = "DeclineInvitations",
     http_method = "POST",
@@ -1141,7 +1141,7 @@ securityhub_delete_insight <- function(InsightArn) {
 #' @usage
 #' securityhub_delete_invitations(AccountIds)
 #'
-#' @param AccountIds A list of the account IDs that sent the invitations to delete.
+#' @param AccountIds &#91;required&#93; A list of the account IDs that sent the invitations to delete.
 #'
 #' @section Request syntax:
 #' ```
@@ -1155,7 +1155,7 @@ securityhub_delete_insight <- function(InsightArn) {
 #' @keywords internal
 #'
 #' @rdname securityhub_delete_invitations
-securityhub_delete_invitations <- function(AccountIds = NULL) {
+securityhub_delete_invitations <- function(AccountIds) {
   op <- new_operation(
     name = "DeleteInvitations",
     http_method = "POST",

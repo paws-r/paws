@@ -23,7 +23,7 @@ Console. Learn more about VPC peering in \href{https://docs.aws.amazon.com/gamel
 Requests authorization to create or delete a peer connection between the
 VPC for your Amazon GameLift fleet and a virtual private cloud (VPC) in
 your AWS account. VPC peering enables the game servers on your fleet to
-communicate directly with other AWS resources. Once you've received
+communicate directly with other AWS resources. Once you\'ve received
 authorization, call CreateVpcPeeringConnection to establish the peering
 connection. For more information, see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html}{VPC Peering with Amazon GameLift Fleets}.
 }

@@ -24,12 +24,12 @@ For more information, see \href{http://aws.amazon.com/application-discovery/faqs
 Application Discovery Service offers two modes of operation:
 \itemize{
 \item \strong{Agentless discovery} mode is recommended for environments that
-use VMware vCenter Server. This mode doesn't require you to install
+use VMware vCenter Server. This mode doesn\'t require you to install
 an agent on each host. Agentless discovery gathers server
 information regardless of the operating systems, which minimizes the
 time required for initial on-premises infrastructure assessment.
-Agentless discovery doesn't collect information about software and
-software dependencies. It also doesn't work in non-VMware
+Agentless discovery doesn\'t collect information about software and
+software dependencies. It also doesn\'t work in non-VMware
 environments.
 \item \strong{Agent-based discovery} mode collects a richer set of data than
 agentless discovery by using the AWS Application Discovery Agent,
@@ -55,7 +55,7 @@ write to the Application Discovery Service database using a public API.
 You can then import the data into either a visualization tool or
 cloud-migration solution.
 
-Application Discovery Service doesn't gather sensitive information. All
+Application Discovery Service doesn\'t gather sensitive information. All
 data is handled according to the \href{http://aws.amazon.com/privacy/}{AWS Privacy Policy}. You can operate Application
 Discovery Service offline to inspect collected data before it is shared
 with the service.
@@ -65,10 +65,14 @@ each of the actions and data types for Application Discovery Service.
 The topic for each action shows the API request parameters and the
 response. Alternatively, you can use one of the AWS SDKs to access an
 API that is tailored to the programming language or platform that
-you're using. For more information, see \href{http://aws.amazon.com/tools/#SDKs}{AWS SDKs}.
+you\'re using. For more information, see \href{http://aws.amazon.com/tools/#SDKs}{AWS SDKs}.
 
-This guide is intended for use with the \href{http://docs.aws.amazon.com/application-discovery/latest/userguide/}{AWS Application DiscoveryService UserGuide}
+This guide is intended for use with the \href{http://docs.aws.amazon.com/application-discovery/latest/userguide/}{\emph{AWS Application Discovery Service User Guide}}
 .
+
+Remember that you must set your AWS Migration Hub home region before you
+call any of these APIs, or a \code{HomeRegionNotSetException} error will be
+returned. Also, you must make the API calls while in your home region.
 }
 \section{Service syntax}{
 \preformatted{svc <- applicationdiscoveryservice(

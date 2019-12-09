@@ -12,11 +12,11 @@ lambda_add_permission(FunctionName, StatementId, Action, Principal,
 
 \strong{Name formats}
 \itemize{
-\item \strong{Function name} - \code{my-function} (name-only), \code{my-function:v1}
+\item \strong{Function name} - \verb{my-function} (name-only), \verb{my-function:v1}
 (with alias).
 \item \strong{Function ARN} -
-\code{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
-\item \strong{Partial ARN} - \code{123456789012:function:my-function}.
+\verb{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
+\item \strong{Partial ARN} - \verb{123456789012:function:my-function}.
 }
 
 You can append a version number or alias to any of the formats. The
@@ -38,7 +38,7 @@ For example, an Amazon S3 bucket or Amazon SNS topic.}
 
 \item{SourceAccount}{For AWS services, the ID of the account that owns the resource. Use this
 instead of \code{SourceArn} to grant permission to resources that are owned
-by another account (for example, all of an account's Amazon S3
+by another account (for example, all of an account\'s Amazon S3
 buckets). Or use it together with \code{SourceArn} to ensure that the
 resource is owned by the specified account. For example, an Amazon S3
 bucket could be deleted by its owner and recreated by another account.}
@@ -49,7 +49,7 @@ invoker.}
 \item{Qualifier}{Specify a version or alias to add permissions to a published version of
 the function.}
 
-\item{RevisionId}{Only update the policy if the revision ID matches the ID that's
+\item{RevisionId}{Only update the policy if the revision ID matches the ID that\'s
 specified. Use this option to avoid modifying a policy that has changed
 since you last read it.}
 }
@@ -70,7 +70,7 @@ owning account of the associated resource as the \code{SourceArn} or
 specifying the source, other accounts could potentially configure
 resources in their account to invoke your Lambda function.
 
-This action adds a statement to a resource-based permission policy for
+This action adds a statement to a resource-based permissions policy for
 the function. For more information about function policies, see \href{https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html}{Lambda Function Policies}.
 }
 \section{Request syntax}{

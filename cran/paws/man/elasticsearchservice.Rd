@@ -12,8 +12,11 @@ elasticsearchservice(config = list())
 \description{
 Amazon Elasticsearch Configuration Service
 
-Use the Amazon Elasticsearch configuration API to create, configure, and
+Use the Amazon Elasticsearch Configuration API to create, configure, and
 manage Elasticsearch domains.
+
+For sample code that uses the Configuration API, see the \href{https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-configuration-samples.html}{Amazon Elasticsearch Service Developer Guide}.
+The guide also contains \href{https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-request-signing.html}{sample code for sending signed HTTP requests to the Elasticsearch APIs}.
 
 The endpoint for configuration service requests is region-specific:
 es.\emph{region}.amazonaws.com. For example, es.us-east-1.amazonaws.com. For

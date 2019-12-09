@@ -10,16 +10,20 @@ cloudwatchlogs_get_query_results(queryId)
 \item{queryId}{[required] The ID number of the query.}
 }
 \description{
-Returns the results from the specified query. If the query is in
-progress, partial results of that current execution are returned.
+Returns the results from the specified query.
 }
 \details{
-Only the fields requested in the query are returned, along with a \code{@ptr}
+Only the fields requested in the query are returned, along with a \verb{@ptr}
 field which is the identifier for the log record. You can use the value
-of \code{@ptr} in a operation to get the full log record.
+of \verb{@ptr} in a operation to get the full log record.
 
 \code{GetQueryResults} does not start a query execution. To run a query, use
 .
+
+If the value of the \code{Status} field in the output is \code{Running}, this
+operation returns only partial results. If you see a value of
+\code{Scheduled} or \code{Running} for the status, you can retry the operation
+later to see the final results.
 }
 \section{Request syntax}{
 \preformatted{svc$get_query_results(

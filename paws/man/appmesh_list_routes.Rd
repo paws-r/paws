@@ -12,7 +12,7 @@ output. When you use this parameter, \code{ListRoutes} returns only \code{limit}
 results in a single page along with a \code{nextToken} response element. You
 can see the remaining results of the initial request by sending another
 \code{ListRoutes} request with the returned \code{nextToken} value. This value can
-be between 1 and 100. If you don't use this parameter, \code{ListRoutes}
+be between 1 and 100. If you don\'t use this parameter, \code{ListRoutes}
 returns up to 100 results and a \code{nextToken} value if applicable.}
 
 \item{meshName}{[required] The name of the service mesh to list routes in.}

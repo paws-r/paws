@@ -38,7 +38,7 @@ string.
 
 For example, you can create a \code{RegexPatternSet} that matches any
 requests with \code{User-Agent} headers that contain the string
-\code{B\\[a@\\]dB\\[o0\\]t}. You can then configure AWS WAF to reject those
+\verb{B\\\[a@\\\]dB\\\[o0\\\]t}. You can then configure AWS WAF to reject those
 requests.
 
 To create and configure a \code{RegexMatchSet}, perform the following steps:

@@ -11,7 +11,7 @@ wafregional_get_change_token()
 \description{
 When you want to create, update, or delete AWS WAF objects, get a change
 token and include the change token in the create, update, or delete
-request. Change tokens ensure that your application doesn't submit
+request. Change tokens ensure that your application doesn\'t submit
 conflicting requests to AWS WAF.
 }
 \details{

@@ -10,15 +10,16 @@ iot_delete_certificate(certificateId, forceDelete)
 \item{certificateId}{[required] The ID of the certificate. (The last part of the certificate ARN
 contains the certificate ID.)}
 
-\item{forceDelete}{Forces a certificate request to be deleted.}
+\item{forceDelete}{Forces the deletion of a certificate if it is inactive and is not
+attached to an IoT thing.}
 }
 \description{
 Deletes the specified certificate.
 }
 \details{
-A certificate cannot be deleted if it has a policy attached to it or if
-its status is set to ACTIVE. To delete a certificate, first use the
-DetachPrincipalPolicy API to detach all policies. Next, use the
+A certificate cannot be deleted if it has a policy or IoT thing attached
+to it or if its status is set to ACTIVE. To delete a certificate, first
+use the DetachPrincipalPolicy API to detach all policies. Next, use the
 UpdateCertificate API to set the certificate to the INACTIVE status.
 }
 \section{Request syntax}{

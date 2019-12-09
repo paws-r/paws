@@ -29,7 +29,7 @@ Create a new preset. For information about job templates see the User Guide at h
     AudioDescriptions = list(
       list(
         AudioNormalizationSettings = list(
-          Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2",
+          Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
           AlgorithmControl = "CORRECT_AUDIO"|"MEASURE_ONLY",
           CorrectionGateLevel = 123,
           LoudnessLogging = "LOG"|"DONT_LOG",
@@ -66,7 +66,24 @@ Create a new preset. For information about job templates see the User Guide at h
             Channels = 123,
             SampleRate = 123
           ),
-          Codec = "AAC"|"MP2"|"WAV"|"AIFF"|"AC3"|"EAC3"|"PASSTHROUGH",
+          Codec = "AAC"|"MP2"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"PASSTHROUGH",
+          Eac3AtmosSettings = list(
+            Bitrate = 123,
+            BitstreamMode = "COMPLETE_MAIN",
+            CodingMode = "CODING_MODE_9_1_6",
+            DialogueIntelligence = "ENABLED"|"DISABLED",
+            DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+            DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+            LoRoCenterMixLevel = 123.0,
+            LoRoSurroundMixLevel = 123.0,
+            LtRtCenterMixLevel = 123.0,
+            LtRtSurroundMixLevel = 123.0,
+            MeteringMode = "LEQ_A"|"ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+            SampleRate = 123,
+            SpeechThreshold = 123,
+            StereoDownmix = "NOT_INDICATED"|"STEREO"|"SURROUND"|"DPL2",
+            SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+          ),
           Eac3Settings = list(
             AttenuationControl = "ATTENUATE_3_DB"|"NONE",
             Bitrate = 123,
@@ -144,7 +161,7 @@ Create a new preset. For information about job templates see the User Guide at h
             XPosition = 123,
             YPosition = 123
           ),
-          DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
+          DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"IMSC"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
           DvbSubDestinationSettings = list(
             Alignment = "CENTERED"|"LEFT",
             BackgroundColor = "NONE"|"BLACK"|"WHITE",
@@ -160,18 +177,26 @@ Create a new preset. For information about job templates see the User Guide at h
             ShadowOpacity = 123,
             ShadowXOffset = 123,
             ShadowYOffset = 123,
+            SubtitlingType = "HEARING_IMPAIRED"|"STANDARD",
             TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
             XPosition = 123,
             YPosition = 123
           ),
           EmbeddedDestinationSettings = list(
-            Destination608ChannelNumber = 123
+            Destination608ChannelNumber = 123,
+            Destination708ServiceNumber = 123
+          ),
+          ImscDestinationSettings = list(
+            StylePassthrough = "ENABLED"|"DISABLED"
           ),
           SccDestinationSettings = list(
-            Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
+            Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_25"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
           ),
           TeletextDestinationSettings = list(
-            PageNumber = "string"
+            PageNumber = "string",
+            PageTypes = list(
+              "PAGE_TYPE_INITIAL"|"PAGE_TYPE_SUBTITLE"|"PAGE_TYPE_ADDL_INFO"|"PAGE_TYPE_PROGRAM_SCHEDULE"|"PAGE_TYPE_HEARING_IMPAIRED_SUBTITLE"
+            )
           ),
           TtmlDestinationSettings = list(
             StylePassthrough = "ENABLED"|"DISABLED"
@@ -273,6 +298,11 @@ Create a new preset. For information about job templates see the User Guide at h
         FreeSpaceBox = "INCLUDE"|"EXCLUDE",
         MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
         Mp4MajorBrand = "string"
+      ),
+      MpdSettings = list(
+        CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
+        Scte35Esam = "INSERT"|"NONE",
+        Scte35Source = "PASSTHROUGH"|"NONE"
       )
     ),
     VideoDescription = list(
@@ -320,7 +350,7 @@ Create a new preset. For information about job templates see the User Guide at h
           ),
           RateControlMode = "VBR"|"CBR"|"QVBR",
           RepeatPps = "DISABLED"|"ENABLED",
-          SceneChangeDetect = "DISABLED"|"ENABLED",
+          SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
           Slices = 123,
           SlowPal = "DISABLED"|"ENABLED",
           Softness = 123,
@@ -363,7 +393,7 @@ Create a new preset. For information about job templates see the User Guide at h
           ),
           RateControlMode = "VBR"|"CBR"|"QVBR",
           SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
-          SceneChangeDetect = "DISABLED"|"ENABLED",
+          SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
           Slices = 123,
           SlowPal = "DISABLED"|"ENABLED",
           SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
@@ -468,6 +498,14 @@ Create a new preset. For information about job templates see the User Guide at h
           Control = "FORCE_ALL_FRAMES"|"NORMAL",
           Mode = "DEINTERLACE"|"INVERSE_TELECINE"|"ADAPTIVE"
         ),
+        DolbyVision = list(
+          L6Metadata = list(
+            MaxCll = 123,
+            MaxFall = 123
+          ),
+          L6Mode = "PASSTHROUGH"|"RECALCULATE"|"SPECIFY",
+          Profile = "PROFILE_5"
+        ),
         ImageInserter = list(
           InsertableImages = list(
             list(
@@ -486,12 +524,17 @@ Create a new preset. For information about job templates see the User Guide at h
           )
         ),
         NoiseReducer = list(
-          Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL",
+          Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL"|"TEMPORAL",
           FilterSettings = list(
             Strength = 123
           ),
           SpatialFilterSettings = list(
             PostFilterSharpenStrength = 123,
+            Speed = 123,
+            Strength = 123
+          ),
+          TemporalFilterSettings = list(
+            AggressiveMode = 123,
             Speed = 123,
             Strength = 123
           )

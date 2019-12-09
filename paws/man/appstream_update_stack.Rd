@@ -6,7 +6,8 @@
 \usage{
 appstream_update_stack(DisplayName, Description, Name,
   StorageConnectors, DeleteStorageConnectors, RedirectURL, FeedbackURL,
-  AttributesToDelete, UserSettings, ApplicationSettings)
+  AttributesToDelete, UserSettings, ApplicationSettings, AccessEndpoints,
+  EmbedHostDomains)
 }
 \arguments{
 \item{DisplayName}{The stack name to display.}
@@ -33,6 +34,14 @@ streaming sessions. By default, these actions are enabled.}
 settings are enabled, changes that users make to applications and
 Windows settings are automatically saved after each session and applied
 to the next session.}
+
+\item{AccessEndpoints}{The list of interface VPC endpoint (interface endpoint) objects. Users
+of the stack can connect to AppStream 2.0 only through the specified
+endpoints.}
+
+\item{EmbedHostDomains}{The domains where AppStream 2.0 streaming sessions can be embedded in an
+iframe. You must approve the domains that you want to host embedded
+AppStream 2.0 streaming sessions.}
 }
 \description{
 Updates the specified fields for the specified stack.
@@ -55,7 +64,7 @@ Updates the specified fields for the specified stack.
   RedirectURL = "string",
   FeedbackURL = "string",
   AttributesToDelete = list(
-    "STORAGE_CONNECTORS"|"STORAGE_CONNECTOR_HOMEFOLDERS"|"STORAGE_CONNECTOR_GOOGLE_DRIVE"|"STORAGE_CONNECTOR_ONE_DRIVE"|"REDIRECT_URL"|"FEEDBACK_URL"|"THEME_NAME"|"USER_SETTINGS"
+    "STORAGE_CONNECTORS"|"STORAGE_CONNECTOR_HOMEFOLDERS"|"STORAGE_CONNECTOR_GOOGLE_DRIVE"|"STORAGE_CONNECTOR_ONE_DRIVE"|"REDIRECT_URL"|"FEEDBACK_URL"|"THEME_NAME"|"USER_SETTINGS"|"EMBED_HOST_DOMAINS"|"IAM_ROLE_ARN"|"ACCESS_ENDPOINTS"
   ),
   UserSettings = list(
     list(
@@ -66,6 +75,15 @@ Updates the specified fields for the specified stack.
   ApplicationSettings = list(
     Enabled = TRUE|FALSE,
     SettingsGroup = "string"
+  ),
+  AccessEndpoints = list(
+    list(
+      EndpointType = "STREAMING",
+      VpceId = "string"
+    )
+  ),
+  EmbedHostDomains = list(
+    "string"
   )
 )
 }

@@ -143,7 +143,7 @@ directconnect_allocate_connection_on_interconnect <- function(bandwidth, connect
 #' 10Gbps hosted connection.
 #' @param connectionName &#91;required&#93; The name of the hosted connection.
 #' @param vlan &#91;required&#93; The dedicated VLAN provisioned to the hosted connection.
-#' @param tags The tags to assign to the hosted connection.
+#' @param tags The tags associated with the connection.
 #'
 #' @section Request syntax:
 #' ```
@@ -798,13 +798,15 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
 #'
 #' @usage
 #' directconnect_create_connection(location, bandwidth, connectionName,
-#'   lagId, tags)
+#'   lagId, tags, providerName)
 #'
 #' @param location &#91;required&#93; The location of the connection.
 #' @param bandwidth &#91;required&#93; The bandwidth of the connection.
 #' @param connectionName &#91;required&#93; The name of the connection.
 #' @param lagId The ID of the LAG.
-#' @param tags The tags to assign to the connection.
+#' @param tags The tags to associate with the lag.
+#' @param providerName The name of the service provider associated with the requested
+#' connection.
 #'
 #' @section Request syntax:
 #' ```
@@ -818,21 +820,22 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
 #'       key = "string",
 #'       value = "string"
 #'     )
-#'   )
+#'   ),
+#'   providerName = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname directconnect_create_connection
-directconnect_create_connection <- function(location, bandwidth, connectionName, lagId = NULL, tags = NULL) {
+directconnect_create_connection <- function(location, bandwidth, connectionName, lagId = NULL, tags = NULL, providerName = NULL) {
   op <- new_operation(
     name = "CreateConnection",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .directconnect$create_connection_input(location = location, bandwidth = bandwidth, connectionName = connectionName, lagId = lagId, tags = tags)
+  input <- .directconnect$create_connection_input(location = location, bandwidth = bandwidth, connectionName = connectionName, lagId = lagId, tags = tags, providerName = providerName)
   output <- .directconnect$create_connection_output()
   config <- get_config()
   svc <- .directconnect$service(config)
@@ -908,6 +911,9 @@ directconnect_create_direct_connect_gateway <- function(directConnectGatewayName
 #' @param directConnectGatewayId &#91;required&#93; The ID of the Direct Connect gateway.
 #' @param gatewayId The ID of the virtual private gateway or transit gateway.
 #' @param addAllowedPrefixesToDirectConnectGateway The Amazon VPC prefixes to advertise to the Direct Connect gateway
+#' 
+#' This parameter is required when you create an association to a transit
+#' gateway.
 #' 
 #' For information about how to set the prefixes, see [Allowed
 #' Prefixes](https://docs.aws.amazon.com/directconnect/latest/UserGuide/multi-account-associate-vgw.html#allowed-prefixes)
@@ -1041,13 +1047,14 @@ directconnect_create_direct_connect_gateway_association_proposal <- function(dir
 #'
 #' @usage
 #' directconnect_create_interconnect(interconnectName, bandwidth, location,
-#'   lagId, tags)
+#'   lagId, tags, providerName)
 #'
 #' @param interconnectName &#91;required&#93; The name of the interconnect.
 #' @param bandwidth &#91;required&#93; The port bandwidth, in Gbps. The possible values are 1 and 10.
 #' @param location &#91;required&#93; The location of the interconnect.
 #' @param lagId The ID of the LAG.
-#' @param tags The tags to assign to the interconnect,
+#' @param tags The tags to associate with the interconnect.
+#' @param providerName The name of the service provider associated with the interconnect.
 #'
 #' @section Request syntax:
 #' ```
@@ -1061,21 +1068,22 @@ directconnect_create_direct_connect_gateway_association_proposal <- function(dir
 #'       key = "string",
 #'       value = "string"
 #'     )
-#'   )
+#'   ),
+#'   providerName = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname directconnect_create_interconnect
-directconnect_create_interconnect <- function(interconnectName, bandwidth, location, lagId = NULL, tags = NULL) {
+directconnect_create_interconnect <- function(interconnectName, bandwidth, location, lagId = NULL, tags = NULL, providerName = NULL) {
   op <- new_operation(
     name = "CreateInterconnect",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .directconnect$create_interconnect_input(interconnectName = interconnectName, bandwidth = bandwidth, location = location, lagId = lagId, tags = tags)
+  input <- .directconnect$create_interconnect_input(interconnectName = interconnectName, bandwidth = bandwidth, location = location, lagId = lagId, tags = tags, providerName = providerName)
   output <- .directconnect$create_interconnect_output()
   config <- get_config()
   svc <- .directconnect$service(config)
@@ -1118,7 +1126,8 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #'
 #' @usage
 #' directconnect_create_lag(numberOfConnections, location,
-#'   connectionsBandwidth, lagName, connectionId, tags, childConnectionTags)
+#'   connectionsBandwidth, lagName, connectionId, tags, childConnectionTags,
+#'   providerName)
 #'
 #' @param numberOfConnections &#91;required&#93; The number of physical connections initially provisioned and bundled by
 #' the LAG.
@@ -1128,12 +1137,9 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #' 500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps.
 #' @param lagName &#91;required&#93; The name of the LAG.
 #' @param connectionId The ID of an existing connection to migrate to the LAG.
-#' @param tags The tags to assign to the link aggregation group (LAG).
-#' @param childConnectionTags The tags to assign to the child connections of the LAG. Only newly
-#' created child connections as the result of creating a LAG connection are
-#' assigned the provided tags. The tags are not assigned to an existing
-#' connection that is provided via the "connectionId" parameter that will
-#' be migrated to the LAG.
+#' @param tags The tags to associate with the LAG.
+#' @param childConnectionTags The tags to associate with the automtically created LAGs.
+#' @param providerName The name of the service provider associated with the LAG.
 #'
 #' @section Request syntax:
 #' ```
@@ -1154,21 +1160,22 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #'       key = "string",
 #'       value = "string"
 #'     )
-#'   )
+#'   ),
+#'   providerName = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname directconnect_create_lag
-directconnect_create_lag <- function(numberOfConnections, location, connectionsBandwidth, lagName, connectionId = NULL, tags = NULL, childConnectionTags = NULL) {
+directconnect_create_lag <- function(numberOfConnections, location, connectionsBandwidth, lagName, connectionId = NULL, tags = NULL, childConnectionTags = NULL, providerName = NULL) {
   op <- new_operation(
     name = "CreateLag",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .directconnect$create_lag_input(numberOfConnections = numberOfConnections, location = location, connectionsBandwidth = connectionsBandwidth, lagName = lagName, connectionId = connectionId, tags = tags, childConnectionTags = childConnectionTags)
+  input <- .directconnect$create_lag_input(numberOfConnections = numberOfConnections, location = location, connectionsBandwidth = connectionsBandwidth, lagName = lagName, connectionId = connectionId, tags = tags, childConnectionTags = childConnectionTags, providerName = providerName)
   output <- .directconnect$create_lag_output()
   config <- get_config()
   svc <- .directconnect$service(config)
@@ -1462,8 +1469,8 @@ directconnect_delete_connection <- function(connectionId) {
 #'
 #' Deletes the specified Direct Connect gateway. You must first delete all
 #' virtual interfaces that are attached to the Direct Connect gateway and
-#' disassociate all virtual private gateways that are associated with the
-#' Direct Connect gateway.
+#' disassociate all virtual private gateways associated with the Direct
+#' Connect gateway.
 #'
 #' @usage
 #' directconnect_delete_direct_connect_gateway(directConnectGatewayId)
@@ -1502,6 +1509,11 @@ directconnect_delete_direct_connect_gateway <- function(directConnectGatewayId) 
 #'
 #' Deletes the association between the specified Direct Connect gateway and
 #' virtual private gateway.
+#' 
+#' We recommend that you specify the `associationID` to delete the
+#' association. Alternatively, if you own virtual gateway and a Direct
+#' Connect gateway association, you can specify the `virtualGatewayId` and
+#' `directConnectGatewayId` to delete an association.
 #'
 #' @usage
 #' directconnect_delete_direct_connect_gateway_association(associationId,
@@ -2475,7 +2487,7 @@ directconnect_disassociate_connection_from_lag <- function(connectionId, lagId) 
 #' directconnect_tag_resource(resourceArn, tags)
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
-#' @param tags &#91;required&#93; The tags to assign.
+#' @param tags &#91;required&#93; The tags to add.
 #'
 #' @section Request syntax:
 #' ```

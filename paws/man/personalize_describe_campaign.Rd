@@ -15,11 +15,11 @@ Describes the given campaign, including its status.
 \details{
 A campaign can be in one of the following states:
 \itemize{
-\item CREATE PENDING \> CREATE IN\_PROGRESS \> ACTIVE -or- CREATE FAILED
-\item DELETE PENDING \> DELETE IN\_PROGRESS
+\item CREATE PENDING \\> CREATE IN\\_PROGRESS \\> ACTIVE -or- CREATE FAILED
+\item DELETE PENDING \\> DELETE IN\\_PROGRESS
 }
 
-When the \code{status} is \code{CREATE FAILED}, the response includes the
+When the \code{status} is \verb{CREATE FAILED}, the response includes the
 \code{failureReason} key, which describes why.
 
 For more information on campaigns, see CreateCampaign.

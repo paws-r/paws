@@ -6,9 +6,9 @@ NULL
 #' Sets the AWS Firewall Manager administrator account
 #'
 #' Sets the AWS Firewall Manager administrator account. AWS Firewall
-#' Manager must be associated with the master account your AWS organization
-#' or associated with a member account that has the appropriate
-#' permissions. If the account ID that you submit is not an AWS
+#' Manager must be associated with the master account of your AWS
+#' organization or associated with a member account that has the
+#' appropriate permissions. If the account ID that you submit is not an AWS
 #' Organizations master account, AWS Firewall Manager will set the
 #' appropriate permissions for the given member account.
 #' 
@@ -97,21 +97,34 @@ fms_delete_notification_channel <- function() {
 #'
 #' @param PolicyId &#91;required&#93; The ID of the policy that you want to delete. `PolicyId` is returned by
 #' `PutPolicy` and by `ListPolicies`.
-#' @param DeleteAllPolicyResources If `True`, the request will also perform a clean-up process that will:
+#' @param DeleteAllPolicyResources If `True`, the request performs cleanup according to the policy type.
 #' 
-#' -   Delete rule groups created by AWS Firewall Manager
+#' For AWS WAF and Shield Advanced policies, the cleanup does the
+#' following:
 #' 
-#' -   Remove web ACLs from in-scope resources
+#' -   Deletes rule groups created by AWS Firewall Manager
 #' 
-#' -   Delete web ACLs that contain no rules or rule groups
+#' -   Removes web ACLs from in-scope resources
 #' 
-#' After the cleanup, in-scope resources will no longer be protected by web
-#' ACLs in this policy. Protection of out-of-scope resources will remain
-#' unchanged. Scope is determined by tags and accounts associated with the
-#' policy. When creating the policy, if you specified that only resources
-#' in specific accounts or with specific tags be protected by the policy,
-#' those resources are in-scope. All others are out of scope. If you did
-#' not specify tags or accounts, all resources are in-scope.
+#' -   Deletes web ACLs that contain no rules or rule groups
+#' 
+#' For security group policies, the cleanup does the following for each
+#' security group in the policy:
+#' 
+#' -   Disassociates the security group from in-scope resources
+#' 
+#' -   Deletes the security group if it was created through Firewall
+#'     Manager and if it\'s no longer associated with any resources through
+#'     another policy
+#' 
+#' After the cleanup, in-scope resources are no longer protected by web
+#' ACLs in this policy. Protection of out-of-scope resources remains
+#' unchanged. Scope is determined by tags that you create and accounts that
+#' you associate with the policy. When creating the policy, if you specify
+#' that only resources in specific accounts or with specific tags are in
+#' scope of the policy, those accounts and resources are handled by the
+#' policy. All others are out of scope. If you don\'t specify tags or
+#' accounts, all resources are in scope.
 #'
 #' @section Request syntax:
 #' ```
@@ -146,7 +159,7 @@ fms_delete_policy <- function(PolicyId, DeleteAllPolicyResources = NULL) {
 #'
 #' Disassociates the account that has been set as the AWS Firewall Manager
 #' administrator account. To set a different account as the administrator
-#' account, you must submit an `AssociateAdminAccount` request .
+#' account, you must submit an `AssociateAdminAccount` request.
 #'
 #' @usage
 #' fms_disassociate_admin_account()
@@ -215,8 +228,11 @@ fms_get_admin_account <- function() {
 #'
 #' Returns detailed compliance information about the specified member
 #' account. Details include resources that are in and out of compliance
-#' with the specified policy. Resources are considered non-compliant if the
-#' specified policy has not been applied to them.
+#' with the specified policy. Resources are considered noncompliant for AWS
+#' WAF and Shield Advanced policies if the specified policy has not been
+#' applied to them. Resources are considered noncompliant for security
+#' group policies if they are in scope of the policy, they violate one or
+#' more of the policy rules, and remediation is disabled or not possible.
 #'
 #' @usage
 #' fms_get_compliance_detail(PolicyId, MemberAccount)
@@ -254,11 +270,11 @@ fms_get_compliance_detail <- function(PolicyId, MemberAccount) {
 }
 .fms$operations$get_compliance_detail <- fms_get_compliance_detail
 
-#' Returns information about the Amazon Simple Notification Service (SNS)
-#' topic that is used to record AWS Firewall Manager SNS logs
+#' Information about the Amazon Simple Notification Service (SNS) topic
+#' that is used to record AWS Firewall Manager SNS logs
 #'
-#' Returns information about the Amazon Simple Notification Service (SNS)
-#' topic that is used to record AWS Firewall Manager SNS logs.
+#' Information about the Amazon Simple Notification Service (SNS) topic
+#' that is used to record AWS Firewall Manager SNS logs.
 #'
 #' @usage
 #' fms_get_notification_channel()
@@ -328,7 +344,8 @@ fms_get_policy <- function(PolicyId) {
 #' summary information in the event of a potential DDoS attack
 #'
 #' If you created a Shield Advanced policy, returns policy-level attack
-#' summary information in the event of a potential DDoS attack.
+#' summary information in the event of a potential DDoS attack. Other
+#' policy types are currently unsupported.
 #'
 #' @usage
 #' fms_get_protection_status(PolicyId, MemberAccountId, StartTime, EndTime,
@@ -338,17 +355,17 @@ fms_get_policy <- function(PolicyId) {
 #' @param MemberAccountId The AWS account that is in scope of the policy that you want to get the
 #' details for.
 #' @param StartTime The start of the time period to query for the attacks. This is a
-#' `timestamp` type. The sample request above indicates a number type
+#' `timestamp` type. The request syntax listing indicates a `number` type
 #' because the default used by AWS Firewall Manager is Unix time in
 #' seconds. However, any valid `timestamp` format is allowed.
 #' @param EndTime The end of the time period to query for the attacks. This is a
-#' `timestamp` type. The sample request above indicates a number type
+#' `timestamp` type. The request syntax listing indicates a `number` type
 #' because the default used by AWS Firewall Manager is Unix time in
 #' seconds. However, any valid `timestamp` format is allowed.
 #' @param NextToken If you specify a value for `MaxResults` and you have more objects than
 #' the number that you specify for `MaxResults`, AWS Firewall Manager
-#' returns a `NextToken` value in the response that allows you to list
-#' another group of objects. For the second and subsequent
+#' returns a `NextToken` value in the response, which you can use to
+#' retrieve another group of objects. For the second and subsequent
 #' `GetProtectionStatus` requests, specify the value of `NextToken` from
 #' the previous response to get information about another batch of objects.
 #' @param MaxResults Specifies the number of objects that you want AWS Firewall Manager to
@@ -591,17 +608,23 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #'
 #' Creates an AWS Firewall Manager policy.
 #' 
-#' Firewall Manager provides two types of policies: A Shield Advanced
-#' policy, which applies Shield Advanced protection to specified accounts
-#' and resources, or a WAF policy, which contains a rule group and defines
-#' which resources are to be protected by that rule group. A policy is
-#' specific to either WAF or Shield Advanced. If you want to enforce both
-#' WAF rules and Shield Advanced protection across accounts, you can create
-#' multiple policies. You can create one or more policies for WAF rules,
-#' and one or more policies for Shield Advanced.
+#' Firewall Manager provides the following types of policies:
+#' 
+#' -   A Shield Advanced policy, which applies Shield Advanced protection
+#'     to specified accounts and resources
+#' 
+#' -   An AWS WAF policy, which contains a rule group and defines which
+#'     resources are to be protected by that rule group
+#' 
+#' -   A security group policy, which manages VPC security groups across
+#'     your AWS organization.
+#' 
+#' Each policy is specific to one of the three types. If you want to
+#' enforce more than one policy type across accounts, you can create
+#' multiple policies. You can create multiple policies for each type.
 #' 
 #' You must be subscribed to Shield Advanced to create a Shield Advanced
-#' policy. For more information on subscribing to Shield Advanced, see
+#' policy. For more information about subscribing to Shield Advanced, see
 #' [CreateSubscription](https://docs.aws.amazon.com/waf/latest/DDOSAPIReference/API_CreateSubscription.html).
 #'
 #' @usage
@@ -617,7 +640,7 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #'     PolicyName = "string",
 #'     PolicyUpdateToken = "string",
 #'     SecurityServicePolicyData = list(
-#'       Type = "WAF"|"SHIELD_ADVANCED",
+#'       Type = "WAF"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT",
 #'       ManagedServiceData = "string"
 #'     ),
 #'     ResourceType = "string",

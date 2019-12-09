@@ -83,7 +83,7 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 #' specifying the source, other accounts could potentially configure
 #' resources in their account to invoke your Lambda function.
 #' 
-#' This action adds a statement to a resource-based permission policy for
+#' This action adds a statement to a resource-based permissions policy for
 #' the function. For more information about function policies, see [Lambda
 #' Function
 #' Policies](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html).
@@ -255,17 +255,35 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 #' For details about each event source type, see the following topics.
 #' 
 #' -   [Using AWS Lambda with Amazon
+#'     DynamoDB](https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html)
+#' 
+#' -   [Using AWS Lambda with Amazon
 #'     Kinesis](https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html)
 #' 
 #' -   [Using AWS Lambda with Amazon
 #'     SQS](https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html)
 #' 
-#' -   [Using AWS Lambda with Amazon
-#'     DynamoDB](https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html)
+#' The following error handling options are only available for stream
+#' sources (DynamoDB and Kinesis):
+#' 
+#' -   `BisectBatchOnFunctionError` - If the function returns an error,
+#'     split the batch in two and retry.
+#' 
+#' -   `DestinationConfig` - Send discarded records to an Amazon SQS queue
+#'     or Amazon SNS topic.
+#' 
+#' -   `MaximumRecordAgeInSeconds` - Discard records older than the
+#'     specified age.
+#' 
+#' -   `MaximumRetryAttempts` - Discard records after the specified number
+#'     of retries.
 #'
 #' @usage
 #' lambda_create_event_source_mapping(EventSourceArn, FunctionName,
-#'   Enabled, BatchSize, StartingPosition, StartingPositionTimestamp)
+#'   Enabled, BatchSize, MaximumBatchingWindowInSeconds,
+#'   ParallelizationFactor, StartingPosition, StartingPositionTimestamp,
+#'   DestinationConfig, MaximumRecordAgeInSeconds,
+#'   BisectBatchOnFunctionError, MaximumRetryAttempts)
 #'
 #' @param EventSourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the event source.
 #' 
@@ -299,11 +317,22 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 #' -   **Amazon DynamoDB Streams** - Default 100. Max 1,000.
 #' 
 #' -   **Amazon Simple Queue Service** - Default 10. Max 10.
+#' @param MaximumBatchingWindowInSeconds The maximum amount of time to gather records before invoking the
+#' function, in seconds.
+#' @param ParallelizationFactor (Streams) The number of batches to process from each shard concurrently.
 #' @param StartingPosition The position in a stream from which to start reading. Required for
 #' Amazon Kinesis and Amazon DynamoDB Streams sources. `AT_TIMESTAMP` is
 #' only supported for Amazon Kinesis streams.
 #' @param StartingPositionTimestamp With `StartingPosition` set to `AT_TIMESTAMP`, the time from which to
 #' start reading.
+#' @param DestinationConfig (Streams) An Amazon SQS queue or Amazon SNS topic destination for
+#' discarded records.
+#' @param MaximumRecordAgeInSeconds (Streams) The maximum age of a record that Lambda sends to a function
+#' for processing.
+#' @param BisectBatchOnFunctionError (Streams) If the function returns an error, split the batch in two and
+#' retry.
+#' @param MaximumRetryAttempts (Streams) The maximum number of times to retry when the function returns
+#' an error.
 #'
 #' @section Request syntax:
 #' ```
@@ -312,24 +341,37 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 #'   FunctionName = "string",
 #'   Enabled = TRUE|FALSE,
 #'   BatchSize = 123,
+#'   MaximumBatchingWindowInSeconds = 123,
+#'   ParallelizationFactor = 123,
 #'   StartingPosition = "TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
 #'   StartingPositionTimestamp = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   DestinationConfig = list(
+#'     OnSuccess = list(
+#'       Destination = "string"
+#'     ),
+#'     OnFailure = list(
+#'       Destination = "string"
+#'     )
+#'   ),
+#'   MaximumRecordAgeInSeconds = 123,
+#'   BisectBatchOnFunctionError = TRUE|FALSE,
+#'   MaximumRetryAttempts = 123
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname lambda_create_event_source_mapping
-lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Enabled = NULL, BatchSize = NULL, StartingPosition = NULL, StartingPositionTimestamp = NULL) {
+lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Enabled = NULL, BatchSize = NULL, MaximumBatchingWindowInSeconds = NULL, ParallelizationFactor = NULL, StartingPosition = NULL, StartingPositionTimestamp = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL) {
   op <- new_operation(
     name = "CreateEventSourceMapping",
     http_method = "POST",
     http_path = "/2015-03-31/event-source-mappings/",
     paginator = list()
   )
-  input <- .lambda$create_event_source_mapping_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, StartingPosition = StartingPosition, StartingPositionTimestamp = StartingPositionTimestamp)
+  input <- .lambda$create_event_source_mapping_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, ParallelizationFactor = ParallelizationFactor, StartingPosition = StartingPosition, StartingPositionTimestamp = StartingPositionTimestamp, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts)
   output <- .lambda$create_event_source_mapping_output()
   config <- get_config()
   svc <- .lambda$service(config)
@@ -348,6 +390,15 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #' The deployment package contains your function code. The execution role
 #' grants the function permission to use AWS services, such as Amazon
 #' CloudWatch Logs for log streaming and AWS X-Ray for request tracing.
+#' 
+#' When you create a function, Lambda provisions an instance of the
+#' function and its supporting resources. If your function connects to a
+#' VPC, this process can take a minute or so. During this time, you can\'t
+#' invoke or modify the function. The `State`, `StateReason`, and
+#' `StateReasonCode` fields in the response from GetFunctionConfiguration
+#' indicate when the function is ready to invoke. For more information, see
+#' [Function
+#' States](https://docs.aws.amazon.com/lambda/latest/dg/functions-states.html).
 #' 
 #' A function has an unpublished version, and can have published versions
 #' and aliases. The unpublished version changes when you update your
@@ -373,7 +424,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #' response to events in other AWS services, create an event source mapping
 #' (CreateEventSourceMapping), or configure a function trigger in the other
 #' service. For more information, see [Invoking
-#' Functions](https://docs.aws.amazon.com/lambda/latest/dg/invoking-lambda-functions.html).
+#' Functions](https://docs.aws.amazon.com/lambda/latest/dg/lambda-invocation.html).
 #'
 #' @usage
 #' lambda_create_function(FunctionName, Runtime, Role, Handler, Code,
@@ -414,11 +465,11 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #' security groups and subnets in the VPC. When you connect a function to a
 #' VPC, it can only access resources and the internet through that VPC. For
 #' more information, see [VPC
-#' Settings](https://docs.aws.amazon.com/lambda/latest/dg/vpc.html).
+#' Settings](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html).
 #' @param DeadLetterConfig A dead letter queue configuration that specifies the queue or topic
 #' where Lambda sends asynchronous events when they fail processing. For
 #' more information, see [Dead Letter
-#' Queues](https://docs.aws.amazon.com/lambda/latest/dg/dlq.html).
+#' Queues](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq).
 #' @param Environment Environment variables that are accessible from function code during
 #' execution.
 #' @param KMSKeyArn The ARN of the AWS Key Management Service (AWS KMS) key that\'s used to
@@ -438,7 +489,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #' ```
 #' svc$create_function(
 #'   FunctionName = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
 #'   Role = "string",
 #'   Handler = "string",
 #'   Code = list(
@@ -589,6 +640,9 @@ lambda_delete_alias <- function(FunctionName, Name) {
 #' mapping](https://docs.aws.amazon.com/lambda/latest/dg/intro-invocation-modes.html).
 #' You can get the identifier of a mapping from the output of
 #' ListEventSourceMappings.
+#' 
+#' When you delete an event source mapping, it enters a `Deleting` state
+#' and might not be completely deleted for several seconds.
 #'
 #' @usage
 #' lambda_delete_event_source_mapping(UUID)
@@ -743,6 +797,63 @@ lambda_delete_function_concurrency <- function(FunctionName) {
 }
 .lambda$operations$delete_function_concurrency <- lambda_delete_function_concurrency
 
+#' Deletes the configuration for asynchronous invocation for a function,
+#' version, or alias
+#'
+#' Deletes the configuration for asynchronous invocation for a function,
+#' version, or alias.
+#' 
+#' To configure options for asynchronous invocation, use
+#' PutFunctionEventInvokeConfig.
+#'
+#' @usage
+#' lambda_delete_function_event_invoke_config(FunctionName, Qualifier)
+#'
+#' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `my-function` (name-only), `my-function:v1`
+#'     (with alias).
+#' 
+#' -   **Function ARN** -
+#'     `arn:aws:lambda:us-west-2:123456789012:function:my-function`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:my-function`.
+#' 
+#' You can append a version number or alias to any of the formats. The
+#' length constraint applies only to the full ARN. If you specify only the
+#' function name, it is limited to 64 characters in length.
+#' @param Qualifier A version number or alias name.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_function_event_invoke_config(
+#'   FunctionName = "string",
+#'   Qualifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_delete_function_event_invoke_config
+lambda_delete_function_event_invoke_config <- function(FunctionName, Qualifier = NULL) {
+  op <- new_operation(
+    name = "DeleteFunctionEventInvokeConfig",
+    http_method = "DELETE",
+    http_path = "/2019-09-25/functions/{FunctionName}/event-invoke-config",
+    paginator = list()
+  )
+  input <- .lambda$delete_function_event_invoke_config_input(FunctionName = FunctionName, Qualifier = Qualifier)
+  output <- .lambda$delete_function_event_invoke_config_output()
+  config <- get_config()
+  svc <- .lambda$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$delete_function_event_invoke_config <- lambda_delete_function_event_invoke_config
+
 #' Deletes a version of an AWS Lambda layer
 #'
 #' Deletes a version of an [AWS Lambda
@@ -784,6 +895,56 @@ lambda_delete_layer_version <- function(LayerName, VersionNumber) {
   return(response)
 }
 .lambda$operations$delete_layer_version <- lambda_delete_layer_version
+
+#' Deletes the provisioned concurrency configuration for a function
+#'
+#' Deletes the provisioned concurrency configuration for a function.
+#'
+#' @usage
+#' lambda_delete_provisioned_concurrency_config(FunctionName, Qualifier)
+#'
+#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `my-function`.
+#' 
+#' -   **Function ARN** -
+#'     `arn:aws:lambda:us-west-2:123456789012:function:my-function`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:my-function`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only
+#' the function name, it is limited to 64 characters in length.
+#' @param Qualifier &#91;required&#93; The version number or alias name.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_provisioned_concurrency_config(
+#'   FunctionName = "string",
+#'   Qualifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_delete_provisioned_concurrency_config
+lambda_delete_provisioned_concurrency_config <- function(FunctionName, Qualifier) {
+  op <- new_operation(
+    name = "DeleteProvisionedConcurrencyConfig",
+    http_method = "DELETE",
+    http_path = "/2019-09-30/functions/{FunctionName}/provisioned-concurrency",
+    paginator = list()
+  )
+  input <- .lambda$delete_provisioned_concurrency_config_input(FunctionName = FunctionName, Qualifier = Qualifier)
+  output <- .lambda$delete_provisioned_concurrency_config_output()
+  config <- get_config()
+  svc <- .lambda$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$delete_provisioned_concurrency_config <- lambda_delete_provisioned_concurrency_config
 
 #' Retrieves details about your account's limits and usage in an AWS Region
 #'
@@ -988,6 +1149,55 @@ lambda_get_function <- function(FunctionName, Qualifier = NULL) {
 }
 .lambda$operations$get_function <- lambda_get_function
 
+#' Returns details about the concurrency configuration for a function
+#'
+#' Returns details about the concurrency configuration for a function. To
+#' set a concurrency limit for a function, use PutFunctionConcurrency.
+#'
+#' @usage
+#' lambda_get_function_concurrency(FunctionName)
+#'
+#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `my-function`.
+#' 
+#' -   **Function ARN** -
+#'     `arn:aws:lambda:us-west-2:123456789012:function:my-function`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:my-function`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only
+#' the function name, it is limited to 64 characters in length.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_function_concurrency(
+#'   FunctionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_get_function_concurrency
+lambda_get_function_concurrency <- function(FunctionName) {
+  op <- new_operation(
+    name = "GetFunctionConcurrency",
+    http_method = "GET",
+    http_path = "/2019-09-30/functions/{FunctionName}/concurrency",
+    paginator = list()
+  )
+  input <- .lambda$get_function_concurrency_input(FunctionName = FunctionName)
+  output <- .lambda$get_function_concurrency_output()
+  config <- get_config()
+  svc <- .lambda$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$get_function_concurrency <- lambda_get_function_concurrency
+
 #' Returns the version-specific settings of a Lambda function or version
 #'
 #' Returns the version-specific settings of a Lambda function or version.
@@ -1052,6 +1262,63 @@ lambda_get_function_configuration <- function(FunctionName, Qualifier = NULL) {
   return(response)
 }
 .lambda$operations$get_function_configuration <- lambda_get_function_configuration
+
+#' Retrieves the configuration for asynchronous invocation for a function,
+#' version, or alias
+#'
+#' Retrieves the configuration for asynchronous invocation for a function,
+#' version, or alias.
+#' 
+#' To configure options for asynchronous invocation, use
+#' PutFunctionEventInvokeConfig.
+#'
+#' @usage
+#' lambda_get_function_event_invoke_config(FunctionName, Qualifier)
+#'
+#' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `my-function` (name-only), `my-function:v1`
+#'     (with alias).
+#' 
+#' -   **Function ARN** -
+#'     `arn:aws:lambda:us-west-2:123456789012:function:my-function`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:my-function`.
+#' 
+#' You can append a version number or alias to any of the formats. The
+#' length constraint applies only to the full ARN. If you specify only the
+#' function name, it is limited to 64 characters in length.
+#' @param Qualifier A version number or alias name.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_function_event_invoke_config(
+#'   FunctionName = "string",
+#'   Qualifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_get_function_event_invoke_config
+lambda_get_function_event_invoke_config <- function(FunctionName, Qualifier = NULL) {
+  op <- new_operation(
+    name = "GetFunctionEventInvokeConfig",
+    http_method = "GET",
+    http_path = "/2019-09-25/functions/{FunctionName}/event-invoke-config",
+    paginator = list()
+  )
+  input <- .lambda$get_function_event_invoke_config_input(FunctionName = FunctionName, Qualifier = Qualifier)
+  output <- .lambda$get_function_event_invoke_config_output()
+  config <- get_config()
+  svc <- .lambda$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$get_function_event_invoke_config <- lambda_get_function_event_invoke_config
 
 #' Returns information about a version of an AWS Lambda layer, with a link
 #' to download the layer archive that's valid for 10 minutes
@@ -1234,20 +1501,72 @@ lambda_get_policy <- function(FunctionName, Qualifier = NULL) {
 }
 .lambda$operations$get_policy <- lambda_get_policy
 
+#' Retrieves the provisioned concurrency configuration for a function's
+#' alias or version
+#'
+#' Retrieves the provisioned concurrency configuration for a function\'s
+#' alias or version.
+#'
+#' @usage
+#' lambda_get_provisioned_concurrency_config(FunctionName, Qualifier)
+#'
+#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `my-function`.
+#' 
+#' -   **Function ARN** -
+#'     `arn:aws:lambda:us-west-2:123456789012:function:my-function`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:my-function`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only
+#' the function name, it is limited to 64 characters in length.
+#' @param Qualifier &#91;required&#93; The version number or alias name.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_provisioned_concurrency_config(
+#'   FunctionName = "string",
+#'   Qualifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_get_provisioned_concurrency_config
+lambda_get_provisioned_concurrency_config <- function(FunctionName, Qualifier) {
+  op <- new_operation(
+    name = "GetProvisionedConcurrencyConfig",
+    http_method = "GET",
+    http_path = "/2019-09-30/functions/{FunctionName}/provisioned-concurrency",
+    paginator = list()
+  )
+  input <- .lambda$get_provisioned_concurrency_config_input(FunctionName = FunctionName, Qualifier = Qualifier)
+  output <- .lambda$get_provisioned_concurrency_config_output()
+  config <- get_config()
+  svc <- .lambda$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$get_provisioned_concurrency_config <- lambda_get_provisioned_concurrency_config
+
 #' Invokes a Lambda function
 #'
 #' Invokes a Lambda function. You can invoke a function synchronously (and
 #' wait for the response), or asynchronously. To invoke a function
 #' asynchronously, set `InvocationType` to `Event`.
 #' 
-#' For synchronous invocation, details about the function response,
-#' including errors, are included in the response body and headers. For
-#' either invocation type, you can find more information in the [execution
+#' For [synchronous
+#' invocation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-sync.html),
+#' details about the function response, including errors, are included in
+#' the response body and headers. For either invocation type, you can find
+#' more information in the [execution
 #' log](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions.html)
-#' and [trace](https://docs.aws.amazon.com/lambda/latest/dg/dlq.html). To
-#' record function errors for asynchronous invocations, configure your
-#' function with a [dead letter
-#' queue](https://docs.aws.amazon.com/lambda/latest/dg/dlq.html).
+#' and
+#' [trace](https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html).
 #' 
 #' When an error occurs, your function may be invoked multiple times. Retry
 #' behavior varies by error type, client, event source, and invocation
@@ -1255,6 +1574,15 @@ lambda_get_policy <- function(FunctionName, Qualifier = NULL) {
 #' returns an error, Lambda executes the function up to two more times. For
 #' more information, see [Retry
 #' Behavior](https://docs.aws.amazon.com/lambda/latest/dg/retries-on-errors.html).
+#' 
+#' For [asynchronous
+#' invocation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html),
+#' Lambda adds events to a queue before sending them to your function. If
+#' your function does not have enough capacity to keep up with the queue,
+#' events may be lost. Occasionally, your function may receive the same
+#' event multiple times, even if no error occurs. To retain events that
+#' were not processed, configure your function with a [dead-letter
+#' queue](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq).
 #' 
 #' The status code in the API response doesn\'t reflect function errors.
 #' Error codes are reserved for errors that prevent your function from
@@ -1548,6 +1876,65 @@ lambda_list_event_source_mappings <- function(EventSourceArn = NULL, FunctionNam
 }
 .lambda$operations$list_event_source_mappings <- lambda_list_event_source_mappings
 
+#' Retrieves a list of configurations for asynchronous invocation for a
+#' function
+#'
+#' Retrieves a list of configurations for asynchronous invocation for a
+#' function.
+#' 
+#' To configure options for asynchronous invocation, use
+#' PutFunctionEventInvokeConfig.
+#'
+#' @usage
+#' lambda_list_function_event_invoke_configs(FunctionName, Marker,
+#'   MaxItems)
+#'
+#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `my-function`.
+#' 
+#' -   **Function ARN** -
+#'     `arn:aws:lambda:us-west-2:123456789012:function:my-function`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:my-function`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only
+#' the function name, it is limited to 64 characters in length.
+#' @param Marker Specify the pagination token that\'s returned by a previous request to
+#' retrieve the next page of results.
+#' @param MaxItems The maximum number of configurations to return.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_function_event_invoke_configs(
+#'   FunctionName = "string",
+#'   Marker = "string",
+#'   MaxItems = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_list_function_event_invoke_configs
+lambda_list_function_event_invoke_configs <- function(FunctionName, Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListFunctionEventInvokeConfigs",
+    http_method = "GET",
+    http_path = "/2019-09-25/functions/{FunctionName}/event-invoke-config/list",
+    paginator = list()
+  )
+  input <- .lambda$list_function_event_invoke_configs_input(FunctionName = FunctionName, Marker = Marker, MaxItems = MaxItems)
+  output <- .lambda$list_function_event_invoke_configs_output()
+  config <- get_config()
+  svc <- .lambda$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$list_function_event_invoke_configs <- lambda_list_function_event_invoke_configs
+
 #' Returns a list of Lambda functions, with the version-specific
 #' configuration of each
 #'
@@ -1629,7 +2016,7 @@ lambda_list_functions <- function(MasterRegion = NULL, FunctionVersion = NULL, M
 #' @section Request syntax:
 #' ```
 #' svc$list_layer_versions(
-#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
+#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
 #'   LayerName = "string",
 #'   Marker = "string",
 #'   MaxItems = 123
@@ -1677,7 +2064,7 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #' @section Request syntax:
 #' ```
 #' svc$list_layers(
-#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
+#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
 #'   Marker = "string",
 #'   MaxItems = 123
 #' )
@@ -1702,6 +2089,62 @@ lambda_list_layers <- function(CompatibleRuntime = NULL, Marker = NULL, MaxItems
   return(response)
 }
 .lambda$operations$list_layers <- lambda_list_layers
+
+#' Retrieves a list of provisioned concurrency configurations for a
+#' function
+#'
+#' Retrieves a list of provisioned concurrency configurations for a
+#' function.
+#'
+#' @usage
+#' lambda_list_provisioned_concurrency_configs(FunctionName, Marker,
+#'   MaxItems)
+#'
+#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `my-function`.
+#' 
+#' -   **Function ARN** -
+#'     `arn:aws:lambda:us-west-2:123456789012:function:my-function`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:my-function`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only
+#' the function name, it is limited to 64 characters in length.
+#' @param Marker Specify the pagination token that\'s returned by a previous request to
+#' retrieve the next page of results.
+#' @param MaxItems Specify a number to limit the number of configurations returned.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_provisioned_concurrency_configs(
+#'   FunctionName = "string",
+#'   Marker = "string",
+#'   MaxItems = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_list_provisioned_concurrency_configs
+lambda_list_provisioned_concurrency_configs <- function(FunctionName, Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListProvisionedConcurrencyConfigs",
+    http_method = "GET",
+    http_path = "/2019-09-30/functions/{FunctionName}/provisioned-concurrency?List=ALL",
+    paginator = list()
+  )
+  input <- .lambda$list_provisioned_concurrency_configs_input(FunctionName = FunctionName, Marker = Marker, MaxItems = MaxItems)
+  output <- .lambda$list_provisioned_concurrency_configs_output()
+  config <- get_config()
+  svc <- .lambda$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$list_provisioned_concurrency_configs <- lambda_list_provisioned_concurrency_configs
 
 #' Returns a function's tags
 #'
@@ -1810,7 +2253,7 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #' Creates an [AWS Lambda
 #' layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
 #' from a ZIP archive. Each time you call `PublishLayerVersion` with the
-#' same version name, a new version is created.
+#' same layer name, a new version is created.
 #' 
 #' Add layers to your function with CreateFunction or
 #' UpdateFunctionConfiguration.
@@ -1847,7 +2290,7 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #'     ZipFile = raw
 #'   ),
 #'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided"
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided"
 #'   ),
 #'   LicenseInfo = "string"
 #' )
@@ -1966,7 +2409,7 @@ lambda_publish_version <- function(FunctionName, CodeSha256 = NULL, Description 
 #' number of events simultaneously, and prevents it from scaling beyond
 #' that level. Use GetFunction to see the current setting for a function.
 #' 
-#' Use GetAccountSettings to see your regional concurrency limit. You can
+#' Use GetAccountSettings to see your Regional concurrency limit. You can
 #' reserve concurrency for as many functions as you like, as long as you
 #' leave at least 100 simultaneous executions unreserved for functions that
 #' aren\'t configured with a per-function limit. For more information, see
@@ -2019,6 +2462,150 @@ lambda_put_function_concurrency <- function(FunctionName, ReservedConcurrentExec
   return(response)
 }
 .lambda$operations$put_function_concurrency <- lambda_put_function_concurrency
+
+#' Configures options for asynchronous invocation on a function, version,
+#' or alias
+#'
+#' Configures options for [asynchronous
+#' invocation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html)
+#' on a function, version, or alias.
+#' 
+#' By default, Lambda retries an asynchronous invocation twice if the
+#' function returns an error. It retains events in a queue for up to six
+#' hours. When an event fails all processing attempts or stays in the
+#' asynchronous invocation queue for too long, Lambda discards it. To
+#' retain discarded events, configure a dead-letter queue with
+#' UpdateFunctionConfiguration.
+#'
+#' @usage
+#' lambda_put_function_event_invoke_config(FunctionName, Qualifier,
+#'   MaximumRetryAttempts, MaximumEventAgeInSeconds, DestinationConfig)
+#'
+#' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `my-function` (name-only), `my-function:v1`
+#'     (with alias).
+#' 
+#' -   **Function ARN** -
+#'     `arn:aws:lambda:us-west-2:123456789012:function:my-function`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:my-function`.
+#' 
+#' You can append a version number or alias to any of the formats. The
+#' length constraint applies only to the full ARN. If you specify only the
+#' function name, it is limited to 64 characters in length.
+#' @param Qualifier A version number or alias name.
+#' @param MaximumRetryAttempts The maximum number of times to retry when the function returns an error.
+#' @param MaximumEventAgeInSeconds The maximum age of a request that Lambda sends to a function for
+#' processing.
+#' @param DestinationConfig A destination for events after they have been sent to a function for
+#' processing.
+#' 
+#' **Destinations**
+#' 
+#' -   **Function** - The Amazon Resource Name (ARN) of a Lambda function.
+#' 
+#' -   **Queue** - The ARN of an SQS queue.
+#' 
+#' -   **Topic** - The ARN of an SNS topic.
+#' 
+#' -   **Event Bus** - The ARN of an Amazon EventBridge event bus.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_function_event_invoke_config(
+#'   FunctionName = "string",
+#'   Qualifier = "string",
+#'   MaximumRetryAttempts = 123,
+#'   MaximumEventAgeInSeconds = 123,
+#'   DestinationConfig = list(
+#'     OnSuccess = list(
+#'       Destination = "string"
+#'     ),
+#'     OnFailure = list(
+#'       Destination = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_put_function_event_invoke_config
+lambda_put_function_event_invoke_config <- function(FunctionName, Qualifier = NULL, MaximumRetryAttempts = NULL, MaximumEventAgeInSeconds = NULL, DestinationConfig = NULL) {
+  op <- new_operation(
+    name = "PutFunctionEventInvokeConfig",
+    http_method = "PUT",
+    http_path = "/2019-09-25/functions/{FunctionName}/event-invoke-config",
+    paginator = list()
+  )
+  input <- .lambda$put_function_event_invoke_config_input(FunctionName = FunctionName, Qualifier = Qualifier, MaximumRetryAttempts = MaximumRetryAttempts, MaximumEventAgeInSeconds = MaximumEventAgeInSeconds, DestinationConfig = DestinationConfig)
+  output <- .lambda$put_function_event_invoke_config_output()
+  config <- get_config()
+  svc <- .lambda$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$put_function_event_invoke_config <- lambda_put_function_event_invoke_config
+
+#' Adds a provisioned concurrency configuration to a function's alias or
+#' version
+#'
+#' Adds a provisioned concurrency configuration to a function\'s alias or
+#' version.
+#'
+#' @usage
+#' lambda_put_provisioned_concurrency_config(FunctionName, Qualifier,
+#'   ProvisionedConcurrentExecutions)
+#'
+#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `my-function`.
+#' 
+#' -   **Function ARN** -
+#'     `arn:aws:lambda:us-west-2:123456789012:function:my-function`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:my-function`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only
+#' the function name, it is limited to 64 characters in length.
+#' @param Qualifier &#91;required&#93; The version number or alias name.
+#' @param ProvisionedConcurrentExecutions &#91;required&#93; The amount of provisioned concurrency to allocate for the version or
+#' alias.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_provisioned_concurrency_config(
+#'   FunctionName = "string",
+#'   Qualifier = "string",
+#'   ProvisionedConcurrentExecutions = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_put_provisioned_concurrency_config
+lambda_put_provisioned_concurrency_config <- function(FunctionName, Qualifier, ProvisionedConcurrentExecutions) {
+  op <- new_operation(
+    name = "PutProvisionedConcurrencyConfig",
+    http_method = "PUT",
+    http_path = "/2019-09-30/functions/{FunctionName}/provisioned-concurrency",
+    paginator = list()
+  )
+  input <- .lambda$put_provisioned_concurrency_config_input(FunctionName = FunctionName, Qualifier = Qualifier, ProvisionedConcurrentExecutions = ProvisionedConcurrentExecutions)
+  output <- .lambda$put_provisioned_concurrency_config_output()
+  config <- get_config()
+  svc <- .lambda$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$put_provisioned_concurrency_config <- lambda_put_provisioned_concurrency_config
 
 #' Removes a statement from the permissions policy for a version of an AWS
 #' Lambda layer
@@ -2303,10 +2890,27 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
 #' Updates an event source mapping. You can change the function that AWS
 #' Lambda invokes, or pause invocation and resume later from the same
 #' location.
+#' 
+#' The following error handling options are only available for stream
+#' sources (DynamoDB and Kinesis):
+#' 
+#' -   `BisectBatchOnFunctionError` - If the function returns an error,
+#'     split the batch in two and retry.
+#' 
+#' -   `DestinationConfig` - Send discarded records to an Amazon SQS queue
+#'     or Amazon SNS topic.
+#' 
+#' -   `MaximumRecordAgeInSeconds` - Discard records older than the
+#'     specified age.
+#' 
+#' -   `MaximumRetryAttempts` - Discard records after the specified number
+#'     of retries.
 #'
 #' @usage
 #' lambda_update_event_source_mapping(UUID, FunctionName, Enabled,
-#'   BatchSize)
+#'   BatchSize, MaximumBatchingWindowInSeconds, DestinationConfig,
+#'   MaximumRecordAgeInSeconds, BisectBatchOnFunctionError,
+#'   MaximumRetryAttempts, ParallelizationFactor)
 #'
 #' @param UUID &#91;required&#93; The identifier of the event source mapping.
 #' @param FunctionName The name of the Lambda function.
@@ -2333,6 +2937,17 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
 #' -   **Amazon DynamoDB Streams** - Default 100. Max 1,000.
 #' 
 #' -   **Amazon Simple Queue Service** - Default 10. Max 10.
+#' @param MaximumBatchingWindowInSeconds The maximum amount of time to gather records before invoking the
+#' function, in seconds.
+#' @param DestinationConfig (Streams) An Amazon SQS queue or Amazon SNS topic destination for
+#' discarded records.
+#' @param MaximumRecordAgeInSeconds (Streams) The maximum age of a record that Lambda sends to a function
+#' for processing.
+#' @param BisectBatchOnFunctionError (Streams) If the function returns an error, split the batch in two and
+#' retry.
+#' @param MaximumRetryAttempts (Streams) The maximum number of times to retry when the function returns
+#' an error.
+#' @param ParallelizationFactor (Streams) The number of batches to process from each shard concurrently.
 #'
 #' @section Request syntax:
 #' ```
@@ -2340,7 +2955,20 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
 #'   UUID = "string",
 #'   FunctionName = "string",
 #'   Enabled = TRUE|FALSE,
-#'   BatchSize = 123
+#'   BatchSize = 123,
+#'   MaximumBatchingWindowInSeconds = 123,
+#'   DestinationConfig = list(
+#'     OnSuccess = list(
+#'       Destination = "string"
+#'     ),
+#'     OnFailure = list(
+#'       Destination = "string"
+#'     )
+#'   ),
+#'   MaximumRecordAgeInSeconds = 123,
+#'   BisectBatchOnFunctionError = TRUE|FALSE,
+#'   MaximumRetryAttempts = 123,
+#'   ParallelizationFactor = 123
 #' )
 #' ```
 #'
@@ -2356,14 +2984,14 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
 #' @keywords internal
 #'
 #' @rdname lambda_update_event_source_mapping
-lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enabled = NULL, BatchSize = NULL) {
+lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enabled = NULL, BatchSize = NULL, MaximumBatchingWindowInSeconds = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, ParallelizationFactor = NULL) {
   op <- new_operation(
     name = "UpdateEventSourceMapping",
     http_method = "PUT",
     http_path = "/2015-03-31/event-source-mappings/{UUID}",
     paginator = list()
   )
-  input <- .lambda$update_event_source_mapping_input(UUID = UUID, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize)
+  input <- .lambda$update_event_source_mapping_input(UUID = UUID, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, ParallelizationFactor = ParallelizationFactor)
   output <- .lambda$update_event_source_mapping_output()
   config <- get_config()
   svc <- .lambda$service(config)
@@ -2461,6 +3089,16 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'
 #' Modify the version-specific settings of a Lambda function.
 #' 
+#' When you update a function, Lambda provisions an instance of the
+#' function and its supporting resources. If your function connects to a
+#' VPC, this process can take a minute. During this time, you can\'t modify
+#' the function, but you can still invoke it. The `LastUpdateStatus`,
+#' `LastUpdateStatusReason`, and `LastUpdateStatusReasonCode` fields in the
+#' response from GetFunctionConfiguration indicate when the update is
+#' complete and the function is processing events with the new
+#' configuration. For more information, see [Function
+#' States](https://docs.aws.amazon.com/lambda/latest/dg/functions-states.html).
+#' 
 #' These settings can vary between versions of a function and are locked
 #' when you publish a version. You can\'t modify the configuration of a
 #' published version, only the unpublished version.
@@ -2502,7 +3140,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' security groups and subnets in the VPC. When you connect a function to a
 #' VPC, it can only access resources and the internet through that VPC. For
 #' more information, see [VPC
-#' Settings](https://docs.aws.amazon.com/lambda/latest/dg/vpc.html).
+#' Settings](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html).
 #' @param Environment Environment variables that are accessible from function code during
 #' execution.
 #' @param Runtime The identifier of the function\'s
@@ -2510,7 +3148,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' @param DeadLetterConfig A dead letter queue configuration that specifies the queue or topic
 #' where Lambda sends asynchronous events when they fail processing. For
 #' more information, see [Dead Letter
-#' Queues](https://docs.aws.amazon.com/lambda/latest/dg/dlq.html).
+#' Queues](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq).
 #' @param KMSKeyArn The ARN of the AWS Key Management Service (AWS KMS) key that\'s used to
 #' encrypt your function\'s environment variables. If it\'s not provided,
 #' AWS Lambda uses a default service key.
@@ -2546,7 +3184,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'       "string"
 #'     )
 #'   ),
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
 #'   DeadLetterConfig = list(
 #'     TargetArn = "string"
 #'   ),
@@ -2598,3 +3236,86 @@ lambda_update_function_configuration <- function(FunctionName, Role = NULL, Hand
   return(response)
 }
 .lambda$operations$update_function_configuration <- lambda_update_function_configuration
+
+#' Updates the configuration for asynchronous invocation for a function,
+#' version, or alias
+#'
+#' Updates the configuration for asynchronous invocation for a function,
+#' version, or alias.
+#' 
+#' To configure options for asynchronous invocation, use
+#' PutFunctionEventInvokeConfig.
+#'
+#' @usage
+#' lambda_update_function_event_invoke_config(FunctionName, Qualifier,
+#'   MaximumRetryAttempts, MaximumEventAgeInSeconds, DestinationConfig)
+#'
+#' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `my-function` (name-only), `my-function:v1`
+#'     (with alias).
+#' 
+#' -   **Function ARN** -
+#'     `arn:aws:lambda:us-west-2:123456789012:function:my-function`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:my-function`.
+#' 
+#' You can append a version number or alias to any of the formats. The
+#' length constraint applies only to the full ARN. If you specify only the
+#' function name, it is limited to 64 characters in length.
+#' @param Qualifier A version number or alias name.
+#' @param MaximumRetryAttempts The maximum number of times to retry when the function returns an error.
+#' @param MaximumEventAgeInSeconds The maximum age of a request that Lambda sends to a function for
+#' processing.
+#' @param DestinationConfig A destination for events after they have been sent to a function for
+#' processing.
+#' 
+#' **Destinations**
+#' 
+#' -   **Function** - The Amazon Resource Name (ARN) of a Lambda function.
+#' 
+#' -   **Queue** - The ARN of an SQS queue.
+#' 
+#' -   **Topic** - The ARN of an SNS topic.
+#' 
+#' -   **Event Bus** - The ARN of an Amazon EventBridge event bus.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_function_event_invoke_config(
+#'   FunctionName = "string",
+#'   Qualifier = "string",
+#'   MaximumRetryAttempts = 123,
+#'   MaximumEventAgeInSeconds = 123,
+#'   DestinationConfig = list(
+#'     OnSuccess = list(
+#'       Destination = "string"
+#'     ),
+#'     OnFailure = list(
+#'       Destination = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_update_function_event_invoke_config
+lambda_update_function_event_invoke_config <- function(FunctionName, Qualifier = NULL, MaximumRetryAttempts = NULL, MaximumEventAgeInSeconds = NULL, DestinationConfig = NULL) {
+  op <- new_operation(
+    name = "UpdateFunctionEventInvokeConfig",
+    http_method = "POST",
+    http_path = "/2019-09-25/functions/{FunctionName}/event-invoke-config",
+    paginator = list()
+  )
+  input <- .lambda$update_function_event_invoke_config_input(FunctionName = FunctionName, Qualifier = Qualifier, MaximumRetryAttempts = MaximumRetryAttempts, MaximumEventAgeInSeconds = MaximumEventAgeInSeconds, DestinationConfig = DestinationConfig)
+  output <- .lambda$update_function_event_invoke_config_output()
+  config <- get_config()
+  svc <- .lambda$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$update_function_event_invoke_config <- lambda_update_function_event_invoke_config

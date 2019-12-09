@@ -42,7 +42,7 @@ the \code{DELETE} or the \code{CREATE} action fails, then both changes (plus any
 other changes in the batch) fail, and the original \code{CNAME} record
 continues to exist.
 
-Due to the nature of transactional changes, you can't delete the same
+Due to the nature of transactional changes, you can\'t delete the same
 resource record set more than once in a single change batch. If you
 attempt to delete the same change batch more than once, Route 53 returns
 an \code{InvalidChangeBatch} error.
@@ -55,7 +55,7 @@ actions for traffic policies and traffic policy instances. Save the
 configuration as a traffic policy, then associate the traffic policy
 with one or more domain names (such as example.com) or subdomain names
 (such as www.example.com), in the same hosted zone or in multiple hosted
-zones. You can roll back the updates if the new configuration isn't
+zones. You can roll back the updates if the new configuration isn\'t
 performing as expected. For more information, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/traffic-flow.html}{Using Traffic Flow to Route DNS Traffic}
 in the \emph{Amazon Route 53 Developer Guide}.
 
@@ -79,9 +79,9 @@ you want to create, delete, or update, such as weighted, alias, or
 failover. The XML elements in your request must appear in the order
 listed in the syntax.
 
-For an example for each type of resource record set, see "Examples."
+For an example for each type of resource record set, see \"Examples.\"
 
-Don't refer to the syntax in the "Parameter Syntax" section, which
+Don\'t refer to the syntax in the \"Parameter Syntax\" section, which
 includes all of the elements for every kind of resource record set that
 you can create, delete, or update by using \code{ChangeResourceRecordSets}.
 
@@ -115,7 +115,7 @@ in the \emph{Amazon Route 53 Developer Guide}.
           Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
           SetIdentifier = "string",
           Weight = 123,
-          Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-north-1"|"cn-northwest-1"|"ap-east-1"|"ap-south-1",
+          Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-north-1"|"cn-northwest-1"|"ap-east-1"|"me-south-1"|"ap-south-1",
           GeoLocation = list(
             ContinentCode = "string",
             CountryCode = "string",

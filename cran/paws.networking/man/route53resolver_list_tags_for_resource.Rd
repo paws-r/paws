@@ -12,7 +12,7 @@ route53resolver_list_tags_for_resource(ResourceArn, MaxResults,
 tags for.}
 
 \item{MaxResults}{The maximum number of tags that you want to return in the response to a
-\code{ListTagsForResource} request. If you don't specify a value for
+\code{ListTagsForResource} request. If you don\'t specify a value for
 \code{MaxResults}, Resolver returns up to 100 tags.}
 
 \item{NextToken}{For the first \code{ListTagsForResource} request, omit this value.

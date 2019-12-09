@@ -4,10 +4,13 @@
 \alias{lightsail_tag_resource}
 \title{Adds one or more tags to the specified Amazon Lightsail resource}
 \usage{
-lightsail_tag_resource(resourceName, tags)
+lightsail_tag_resource(resourceName, resourceArn, tags)
 }
 \arguments{
 \item{resourceName}{[required] The name of the resource to which you are adding tags.}
+
+\item{resourceArn}{The Amazon Resource Name (ARN) of the resource to which you want to add
+a tag.}
 
 \item{tags}{[required] The tag key and optional value.}
 }
@@ -18,13 +21,14 @@ an optional value. Tag keys must be unique per resource. For more
 information about tags, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags}{Lightsail Dev Guide}.
 }
 \details{
-The \code{tag resource} operation supports tag-based access control via
+The \verb{tag resource} operation supports tag-based access control via
 request tags and resource tags applied to the resource identified by
-resourceName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\verb{resource name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(
   resourceName = "string",
+  resourceArn = "string",
   tags = list(
     list(
       key = "string",

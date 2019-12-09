@@ -20,7 +20,7 @@ document that is shared with you from another account.
 For SSM documents that are shared with you from other AWS accounts, you
 must specify the complete SSM document ARN, in the following format:
 
-\code{arn:<i>partition</i>:ssm:<i>region</i>:<i>account-id</i>:document/<i>document-name</i> }
+\verb{arn:<i>partition</i>:ssm:<i>region</i>:<i>account-id</i>:document/<i>document-name</i> }
 
 For example:
 
@@ -33,11 +33,20 @@ account, you only need to specify the document name. For example,
 \item{DocumentVersion}{The document version you want to associate with the target(s). Can be a
 specific version or the default version.}
 
-\item{InstanceId}{The instance ID.}
+\item{InstanceId}{The instance ID.
+
+\code{InstanceId} has been deprecated. To specify an instance ID for an
+association, use the \code{Targets} parameter. If you use the parameter
+\code{InstanceId}, you cannot use the parameters \code{AssociationName},
+\code{DocumentVersion}, \code{MaxErrors}, \code{MaxConcurrency}, \code{OutputLocation}, or
+\code{ScheduleExpression}. To use these parameters, you must use the
+\code{Targets} parameter.}
 
 \item{Parameters}{The parameters for the runtime configuration of the document.}
 
-\item{Targets}{The targets (either instances or tags) for the association.}
+\item{Targets}{The targets (either instances or tags) for the association. You must
+specify a value for \code{Targets} if you don\'t specify a value for
+\code{InstanceId}.}
 
 \item{ScheduleExpression}{A cron expression when the association will be applied to the target(s).}
 
@@ -53,22 +62,22 @@ using rate controls.}
 \item{MaxErrors}{The number of errors that are allowed before the system stops sending
 requests to run the association on additional targets. You can specify
 either an absolute number of errors, for example 10, or a percentage of
-the target set, for example 10\%. If you specify 3, for example, the
+the target set, for example 10\\%. If you specify 3, for example, the
 system stops sending requests when the fourth error is received. If you
 specify 0, then the system stops sending requests after the first error
 is returned. If you run an association on 50 instances and set MaxError
-to 10\%, then the system stops sending the request when the sixth error
+to 10\\%, then the system stops sending the request when the sixth error
 is received.
 
 Executions that are already running an association when MaxErrors is
 reached are allowed to complete, but some of these executions may fail
-as well. If you need to ensure that there won't be more than max-errors
+as well. If you need to ensure that there won\'t be more than max-errors
 failed executions, set MaxConcurrency to 1 so that executions proceed
 one at a time.}
 
 \item{MaxConcurrency}{The maximum number of targets allowed to run the association at the same
 time. You can specify a number, for example 10, or a percentage of the
-target set, for example 10\%. The default value is 100\%, which means all
+target set, for example 10\\%. The default value is 100\\%, which means all
 targets run the association at the same time.
 
 If a new instance starts and attempts to run an association while

@@ -119,8 +119,12 @@ iotanalytics_cancel_pipeline_reprocessing <- function(pipelineName, reprocessing
 #'   retentionPeriod, tags)
 #'
 #' @param channelName &#91;required&#93; The name of the channel.
-#' @param channelStorage Where channel data is stored.
-#' @param retentionPeriod How long, in days, message data is kept for the channel.
+#' @param channelStorage Where channel data is stored. You may choose one of \"serviceManagedS3\"
+#' or \"customerManagedS3\" storage. If not specified, the default is
+#' \"serviceManagedS3\". This cannot be changed after creation of the
+#' channel.
+#' @param retentionPeriod How long, in days, message data is kept for the channel. When
+#' \"customerManagedS3\" storage is selected, this parameter is ignored.
 #' @param tags Metadata which can be used to manage the channel.
 #'
 #' @section Request syntax:
@@ -358,8 +362,12 @@ iotanalytics_create_dataset_content <- function(datasetName) {
 #'   retentionPeriod, tags)
 #'
 #' @param datastoreName &#91;required&#93; The name of the data store.
-#' @param datastoreStorage Where data store data is stored.
-#' @param retentionPeriod How long, in days, message data is kept for the data store.
+#' @param datastoreStorage Where data store data is stored. You may choose one of
+#' \"serviceManagedS3\" or \"customerManagedS3\" storage. If not specified,
+#' the default is \"serviceManagedS3\". This cannot be changed after the
+#' data store is created.
+#' @param retentionPeriod How long, in days, message data is kept for the data store. When
+#' \"customerManagedS3\" storage is selected, this parameter is ignored.
 #' @param tags Metadata which can be used to manage the data store.
 #'
 #' @section Request syntax:
@@ -409,10 +417,10 @@ iotanalytics_create_datastore <- function(datastoreName, datastoreStorage = NULL
 
 #' Creates a pipeline
 #'
-#' Creates a pipeline. A pipeline consumes messages from one or more
-#' channels and allows you to process the messages before storing them in a
-#' data store. You must specify both a `channel` and a `datastore` activity
-#' and, optionally, as many as 23 additional activities in the
+#' Creates a pipeline. A pipeline consumes messages from a channel and
+#' allows you to process the messages before storing them in a data store.
+#' You must specify both a `channel` and a `datastore` activity and,
+#' optionally, as many as 23 additional activities in the
 #' `pipelineActivities` array.
 #'
 #' @usage
@@ -727,7 +735,8 @@ iotanalytics_delete_pipeline <- function(pipelineName) {
 #'
 #' @param channelName &#91;required&#93; The name of the channel whose information is retrieved.
 #' @param includeStatistics If true, additional statistical information about the channel is
-#' included in the response.
+#' included in the response. This feature cannot be used with a channel
+#' whose S3 storage is customer-managed.
 #'
 #' @section Request syntax:
 #' ```
@@ -801,8 +810,9 @@ iotanalytics_describe_dataset <- function(datasetName) {
 #' iotanalytics_describe_datastore(datastoreName, includeStatistics)
 #'
 #' @param datastoreName &#91;required&#93; The name of the data store
-#' @param includeStatistics If true, additional statistical information about the datastore is
-#' included in the response.
+#' @param includeStatistics If true, additional statistical information about the data store is
+#' included in the response. This feature cannot be used with a data store
+#' whose S3 storage is customer-managed.
 #'
 #' @section Request syntax:
 #' ```
@@ -1533,8 +1543,13 @@ iotanalytics_untag_resource <- function(resourceArn, tagKeys) {
 #'   retentionPeriod)
 #'
 #' @param channelName &#91;required&#93; The name of the channel to be updated.
-#' @param channelStorage Where channel data is stored.
-#' @param retentionPeriod How long, in days, message data is kept for the channel.
+#' @param channelStorage Where channel data is stored. You may choose one of \"serviceManagedS3\"
+#' or \"customerManagedS3\" storage. If not specified, the default is
+#' \"serviceManagedS3\". This cannot be changed after creation of the
+#' channel.
+#' @param retentionPeriod How long, in days, message data is kept for the channel. The retention
+#' period cannot be updated if the channel\'s S3 storage is
+#' customer-managed.
 #'
 #' @section Request syntax:
 #' ```
@@ -1708,8 +1723,13 @@ iotanalytics_update_dataset <- function(datasetName, actions, triggers = NULL, c
 #'   datastoreStorage)
 #'
 #' @param datastoreName &#91;required&#93; The name of the data store to be updated.
-#' @param retentionPeriod How long, in days, message data is kept for the data store.
-#' @param datastoreStorage Where data store data is stored.
+#' @param retentionPeriod How long, in days, message data is kept for the data store. The
+#' retention period cannot be updated if the data store\'s S3 storage is
+#' customer-managed.
+#' @param datastoreStorage Where data store data is stored. You may choose one of
+#' \"serviceManagedS3\" or \"customerManagedS3\" storage. If not specified,
+#' the default is \"serviceManagedS3\". This cannot be changed after the
+#' data store is created.
 #'
 #' @section Request syntax:
 #' ```

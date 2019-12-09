@@ -2,15 +2,31 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_delete_bucket_cors}
 \alias{s3_delete_bucket_cors}
-\title{Deletes the CORS configuration information set for the bucket}
+\title{Deletes the cors configuration information set for the bucket}
 \usage{
 s3_delete_bucket_cors(Bucket)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] Specifies the bucket whose \code{cors} configuration is being deleted.}
 }
 \description{
-Deletes the CORS configuration information set for the bucket.
+Deletes the \code{cors} configuration information set for the bucket.
+}
+\details{
+To use this operation, you must have permission to perform the
+\code{s3:PutBucketCORS} action. The bucket owner has this permission by
+default and can grant this permission to others.
+
+For information about \code{cors}, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html}{Enabling Cross-Origin Resource Sharing} in
+the \emph{Amazon Simple Storage Service Developer Guide}.
+
+\strong{Related Resources:}
+\itemize{
+\item 
+\itemize{
+\item RESTOPTIONSobject
+}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$delete_bucket_cors(

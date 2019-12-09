@@ -11,7 +11,7 @@ acmpca_revoke_certificate(CertificateAuthorityArn, CertificateSerial,
 \item{CertificateAuthorityArn}{[required] Amazon Resource Name (ARN) of the private CA that issued the certificate
 to be revoked. This must be of the form:
 
-\code{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }}
+\verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }}
 
 \item{CertificateSerial}{[required] Serial number of the certificate to be revoked. This must be in
 hexadecimal format. You can retrieve the serial number by calling
@@ -21,7 +21,7 @@ retrieves the certificate in the PEM format. You can use the following
 OpenSSL command to list the certificate in text format and copy the
 hexadecimal serial number.
 
-\code{openssl x509 -in <i>file_path</i> -text -noout}
+\verb{openssl x509 -in <i>file_path</i> -text -noout}
 
 You can also copy the serial number from the console or use the
 \href{https://docs.aws.amazon.com/acm/latest/APIReference/API_DescribeCertificate.html}{DescribeCertificate}

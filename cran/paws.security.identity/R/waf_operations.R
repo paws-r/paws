@@ -2693,12 +2693,10 @@ waf_list_geo_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' @usage
 #' waf_list_ip_sets(NextMarker, Limit)
 #'
-#' @param NextMarker If you specify a value for `Limit` and you have more `IPSets` than the
-#' value of `Limit`, AWS WAF returns a `NextMarker` value in the response
-#' that allows you to list another group of `IPSets`. For the second and
-#' subsequent `ListIPSets` requests, specify the value of `NextMarker` from
-#' the previous response to get information about another batch of
-#' `IPSets`.
+#' @param NextMarker AWS WAF returns a `NextMarker` value in the response that allows you to
+#' list another group of `IPSets`. For the second and subsequent
+#' `ListIPSets` requests, specify the value of `NextMarker` from the
+#' previous response to get information about another batch of `IPSets`.
 #' @param Limit Specifies the number of `IPSet` objects that you want AWS WAF to return
 #' for this request. If you have more `IPSet` objects than the number you
 #' specify for `Limit`, the response includes a `NextMarker` value that you
@@ -3330,7 +3328,7 @@ waf_list_xss_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' You can access information about all traffic that AWS WAF inspects using
 #' the following steps:
 #' 
-#' 1.  Create an Amazon Kinesis Data Firehose .
+#' 1.  Create an Amazon Kinesis Data Firehose.
 #' 
 #'     Create the data firehose with a PUT source and in the region that
 #'     you are operating. However, if you are capturing logs for Amazon
@@ -3355,6 +3353,9 @@ waf_list_xss_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' @param LoggingConfiguration &#91;required&#93; The Amazon Kinesis Data Firehose that contains the inspected traffic
 #' information, the redacted fields details, and the Amazon Resource Name
 #' (ARN) of the web ACL to monitor.
+#' 
+#' When specifying `Type` in `RedactedFields`, you must use one of the
+#' following values: `URI`, `QUERY_STRING`, `HEADER`, or `METHOD`.
 #'
 #' @section Request syntax:
 #' ```

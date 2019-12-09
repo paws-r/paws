@@ -12,7 +12,8 @@ migrationhub_associate_created_artifact(ProgressUpdateStream,
 \arguments{
 \item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream.}
 
-\item{MigrationTaskName}{[required] Unique identifier that references the migration task.}
+\item{MigrationTaskName}{[required] Unique identifier that references the migration task. \emph{Do not store
+personal data in this field.}}
 
 \item{CreatedArtifact}{[required] An ARN of the AWS resource related to the migration (e.g., AMI, EC2
 instance, RDS instance, etc.)}
@@ -32,9 +33,9 @@ indicate which AWS artifact is associated with a migration task.
 \item The created artifact name must be provided in ARN (Amazon Resource
 Name) format which will contain information about type and region;
 for example:
-\code{arn:aws:ec2:us-east-1:488216288981:image/ami-6d0ba87b}.
+\verb{arn:aws:ec2:us-east-1:488216288981:image/ami-6d0ba87b}.
 \item Examples of the AWS resource behind the created artifact are,
-AMI's, EC2 instance, or DMS endpoint, etc.
+AMI\'s, EC2 instance, or DMS endpoint, etc.
 }
 }
 \section{Request syntax}{

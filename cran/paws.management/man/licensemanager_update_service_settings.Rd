@@ -2,23 +2,24 @@
 % Please edit documentation in R/licensemanager_operations.R
 \name{licensemanager_update_service_settings}
 \alias{licensemanager_update_service_settings}
-\title{Updates License Manager service settings}
+\title{Updates License Manager settings for the current Region}
 \usage{
 licensemanager_update_service_settings(S3BucketArn, SnsTopicArn,
   OrganizationConfiguration, EnableCrossAccountsDiscovery)
 }
 \arguments{
-\item{S3BucketArn}{ARN of the Amazon S3 bucket where License Manager information is stored.}
+\item{S3BucketArn}{Amazon Resource Name (ARN) of the Amazon S3 bucket where the License
+Manager information is stored.}
 
-\item{SnsTopicArn}{ARN of the Amazon SNS topic used for License Manager alerts.}
+\item{SnsTopicArn}{Amazon Resource Name (ARN) of the Amazon SNS topic used for License
+Manager alerts.}
 
-\item{OrganizationConfiguration}{Integrates AWS Organizations with License Manager for cross-account
-discovery.}
+\item{OrganizationConfiguration}{Enables integration with AWS Organizations for cross-account discovery.}
 
 \item{EnableCrossAccountsDiscovery}{Activates cross-account discovery.}
 }
 \description{
-Updates License Manager service settings.
+Updates License Manager settings for the current Region.
 }
 \section{Request syntax}{
 \preformatted{svc$update_service_settings(

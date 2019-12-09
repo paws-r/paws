@@ -20,17 +20,17 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Ipv6AddressCount}{The number of IPv6 addresses to assign to a network interface. Amazon
 EC2 automatically selects the IPv6 addresses from the subnet range. You
-can't use this option if specifying specific IPv6 addresses. If your
+can\'t use this option if specifying specific IPv6 addresses. If your
 subnet has the \code{AssignIpv6AddressOnCreation} attribute set to \code{true},
 you can specify \code{0} to override this setting.}
 
 \item{Ipv6Addresses}{One or more specific IPv6 addresses from the IPv6 CIDR block range of
-your subnet. You can't use this option if you're specifying a number
+your subnet. You can\'t use this option if you\'re specifying a number
 of IPv6 addresses.}
 
-\item{PrivateIpAddress}{The primary private IPv4 address of the network interface. If you don't
+\item{PrivateIpAddress}{The primary private IPv4 address of the network interface. If you don\'t
 specify an IPv4 address, Amazon EC2 selects one for you from the
-subnet's IPv4 CIDR range. If you specify an IP address, you cannot
+subnet\'s IPv4 CIDR range. If you specify an IP address, you cannot
 indicate any IP addresses specified in \code{privateIpAddresses} as primary
 (only one IP address can be designated as primary).}
 
@@ -38,8 +38,8 @@ indicate any IP addresses specified in \code{privateIpAddresses} as primary
 
 \item{SecondaryPrivateIpAddressCount}{The number of secondary private IPv4 addresses to assign to a network
 interface. When you specify a number of secondary IPv4 addresses, Amazon
-EC2 selects these IP addresses within the subnet's IPv4 CIDR range. You
-can't specify this option and specify more than one private IP address
+EC2 selects these IP addresses within the subnet\'s IPv4 CIDR range. You
+can\'t specify this option and specify more than one private IP address
 using \code{privateIpAddresses}.
 
 The number of IP addresses you can assign to a network interface varies

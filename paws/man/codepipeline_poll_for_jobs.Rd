@@ -2,7 +2,7 @@
 % Please edit documentation in R/codepipeline_operations.R
 \name{codepipeline_poll_for_jobs}
 \alias{codepipeline_poll_for_jobs}
-\title{Returns information about any jobs for AWS CodePipeline to act upon}
+\title{Returns information about any jobs for AWS CodePipeline to act on}
 \usage{
 codepipeline_poll_for_jobs(actionTypeId, maxBatchSize, queryParam)
 }
@@ -14,21 +14,21 @@ codepipeline_poll_for_jobs(actionTypeId, maxBatchSize, queryParam)
 \item{queryParam}{A map of property names and values. For an action type with no queryable
 properties, this value must be null or an empty map. For an action type
 with a queryable property, you must supply that property as a key in the
-map. Only jobs whose action configuration matches the mapped value will
-be returned.}
+map. Only jobs whose action configuration matches the mapped value are
+returned.}
 }
 \description{
-Returns information about any jobs for AWS CodePipeline to act upon.
-\code{PollForJobs} is only valid for action types with "Custom" in the
-owner field. If the action type contains "AWS" or "ThirdParty" in
+Returns information about any jobs for AWS CodePipeline to act on.
+\code{PollForJobs} is valid only for action types with \"Custom\" in the
+owner field. If the action type contains \"AWS\" or \"ThirdParty\" in
 the owner field, the \code{PollForJobs} action returns an error.
 }
 \details{
 When this API is called, AWS CodePipeline returns temporary credentials
 for the Amazon S3 bucket used to store artifacts for the pipeline, if
 the action requires access to that Amazon S3 bucket for input or output
-artifacts. Additionally, this API returns any secret values defined for
-the action.
+artifacts. This API also returns any secret values defined for the
+action.
 }
 \section{Request syntax}{
 \preformatted{svc$poll_for_jobs(

@@ -19,7 +19,7 @@ alexaforbusiness_update_conference_provider(ConferenceProviderArn,
 \item{MeetingSetting}{[required] The meeting settings for the conference provider.}
 }
 \description{
-Updates an existing conference provider's settings.
+Updates an existing conference provider\'s settings.
 }
 \section{Request syntax}{
 \preformatted{svc$update_conference_provider(

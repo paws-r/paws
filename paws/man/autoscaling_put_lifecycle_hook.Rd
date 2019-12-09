@@ -16,8 +16,8 @@ autoscaling_put_lifecycle_hook(LifecycleHookName, AutoScalingGroupName,
 \item{LifecycleTransition}{The instance state to which you want to attach the lifecycle hook. The
 valid values are:
 \itemize{
-\item autoscaling:EC2\_INSTANCE\_LAUNCHING
-\item autoscaling:EC2\_INSTANCE\_TERMINATING
+\item autoscaling:EC2\\_INSTANCE\\_LAUNCHING
+\item autoscaling:EC2\\_INSTANCE\\_TERMINATING
 }
 
 Conditional: This parameter is required for new lifecycle hooks, but
@@ -82,7 +82,7 @@ the target.
 \item \strong{Create the lifecycle hook. Specify whether the hook is used when
 the instances launch or terminate.}
 \item If you need more time, record the lifecycle action heartbeat to keep
-the instance in a pending state using using
+the instance in a pending state using
 RecordLifecycleActionHeartbeat.
 \item If you finish before the timeout period ends, complete the lifecycle
 action using CompleteLifecycleAction.

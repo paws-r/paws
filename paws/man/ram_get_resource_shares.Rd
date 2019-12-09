@@ -2,7 +2,8 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_get_resource_shares}
 \alias{ram_get_resource_shares}
-\title{Gets the specified resource shares or all of your resource shares}
+\title{Gets the resource shares that you own or the resource shares that are
+shared with you}
 \usage{
 ram_get_resource_shares(resourceShareArns, resourceShareStatus,
   resourceOwner, name, tagFilters, nextToken, maxResults)
@@ -25,7 +26,8 @@ the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
 \description{
-Gets the specified resource shares or all of your resource shares.
+Gets the resource shares that you own or the resource shares that are
+shared with you.
 }
 \section{Request syntax}{
 \preformatted{svc$get_resource_shares(

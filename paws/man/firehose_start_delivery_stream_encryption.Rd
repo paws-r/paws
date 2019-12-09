@@ -4,28 +4,52 @@
 \alias{firehose_start_delivery_stream_encryption}
 \title{Enables server-side encryption (SSE) for the delivery stream}
 \usage{
-firehose_start_delivery_stream_encryption(DeliveryStreamName)
+firehose_start_delivery_stream_encryption(DeliveryStreamName,
+  DeliveryStreamEncryptionConfigurationInput)
 }
 \arguments{
 \item{DeliveryStreamName}{[required] The name of the delivery stream for which you want to enable server-side
 encryption (SSE).}
+
+\item{DeliveryStreamEncryptionConfigurationInput}{Used to specify the type and Amazon Resource Name (ARN) of the KMS key
+needed for Server-Side Encryption (SSE).}
 }
 \description{
 Enables server-side encryption (SSE) for the delivery stream.
 }
 \details{
 This operation is asynchronous. It returns immediately. When you invoke
-it, Kinesis Data Firehose first sets the status of the stream to
-\code{ENABLING}, and then to \code{ENABLED}. You can continue to read and write
-data to your stream while its status is \code{ENABLING}, but the data is not
-encrypted. It can take up to 5 seconds after the encryption status
-changes to \code{ENABLED} before all records written to the delivery stream
-are encrypted. To find out whether a record or a batch of records was
-encrypted, check the response elements PutRecordOutput\$Encrypted and
-PutRecordBatchOutput\$Encrypted, respectively.
+it, Kinesis Data Firehose first sets the encryption status of the stream
+to \code{ENABLING}, and then to \code{ENABLED}. The encryption status of a
+delivery stream is the \code{Status} property in
+DeliveryStreamEncryptionConfiguration. If the operation fails, the
+encryption status changes to \code{ENABLING_FAILED}. You can continue to read
+and write data to your delivery stream while the encryption status is
+\code{ENABLING}, but the data is not encrypted. It can take up to 5 seconds
+after the encryption status changes to \code{ENABLED} before all records
+written to the delivery stream are encrypted. To find out whether a
+record or a batch of records was encrypted, check the response elements
+PutRecordOutput\\$Encrypted and PutRecordBatchOutput\\$Encrypted,
+respectively.
 
-To check the encryption state of a delivery stream, use
+To check the encryption status of a delivery stream, use
 DescribeDeliveryStream.
+
+Even if encryption is currently enabled for a delivery stream, you can
+still invoke this operation on it to change the ARN of the CMK or both
+its type and ARN. In this case, Kinesis Data Firehose schedules the
+grant it had on the old CMK for retirement and creates a grant that
+enables it to use the new CMK to encrypt and decrypt data and to manage
+the grant.
+
+If a delivery stream already has encryption enabled and then you invoke
+this operation to change the ARN of the CMK or both its type and ARN and
+you get \code{ENABLING_FAILED}, this only means that the attempt to change
+the CMK failed. In this case, encryption remains enabled with the old
+CMK.
+
+If the encryption status of your delivery stream is \code{ENABLING_FAILED},
+you can invoke this operation again.
 
 You can only enable SSE for a delivery stream that uses \code{DirectPut} as
 its source.
@@ -39,7 +63,11 @@ a 24-hour period.
 }
 \section{Request syntax}{
 \preformatted{svc$start_delivery_stream_encryption(
-  DeliveryStreamName = "string"
+  DeliveryStreamName = "string",
+  DeliveryStreamEncryptionConfigurationInput = list(
+    KeyARN = "string",
+    KeyType = "AWS_OWNED_CMK"|"CUSTOMER_MANAGED_CMK"
+  )
 )
 }
 }

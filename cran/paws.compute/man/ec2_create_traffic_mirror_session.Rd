@@ -20,7 +20,7 @@ ec2_create_traffic_mirror_session(NetworkInterfaceId,
 VXLAN header. Do not specify this parameter when you want to mirror the
 entire packet. To mirror a subset of the packet, set this to the length
 (in bytes) that you want to mirror. For example, if you set this value
-to 1network0, then the first 100 bytes that meet the filter criteria are
+to 100, then the first 100 bytes that meet the filter criteria are
 copied to the target.
 
 If you do not want to mirror the entire packet, use the \code{PacketLength}
@@ -33,8 +33,9 @@ matching filter is the one that mirrors the packets.
 Valid values are 1-32766.}
 
 \item{VirtualNetworkId}{The VXLAN ID for the Traffic Mirror session. For more information about
-the VXLAN protocol, see RFC 7348. If you do not specify a
-\code{VirtualNetworkId}, an account-wide unique id is chosen at random.}
+the VXLAN protocol, see \href{https://tools.ietf.org/html/rfc7348}{RFC 7348}.
+If you do not specify a \code{VirtualNetworkId}, an account-wide unique id is
+chosen at random.}
 
 \item{Description}{The description of the Traffic Mirror session.}
 
@@ -61,8 +62,9 @@ The Traffic Mirror source and the Traffic Mirror target (monitoring
 appliances) can be in the same VPC, or in a different VPC connected via
 VPC peering or a transit gateway.
 
-By default, no traffic is mirrored. Use CreateTrafficMirrorFilter to
-create filter rules that specify the traffic to mirror.
+By default, no traffic is mirrored. Use
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorFilter.htm}{CreateTrafficMirrorFilter}
+to create filter rules that specify the traffic to mirror.
 }
 \section{Request syntax}{
 \preformatted{svc$create_traffic_mirror_session(
@@ -75,7 +77,7 @@ create filter rules that specify the traffic to mirror.
   Description = "string",
   TagSpecifications = list(
     list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"host-reservation"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"host-reservation"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
       Tags = list(
         list(
           Key = "string",

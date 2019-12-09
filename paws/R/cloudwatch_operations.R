@@ -5,8 +5,8 @@ NULL
 
 #' Deletes the specified alarms
 #'
-#' Deletes the specified alarms. In the event of an error, no alarms are
-#' deleted.
+#' Deletes the specified alarms. You can delete up to 50 alarms in one
+#' operation. In the event of an error, no alarms are deleted.
 #'
 #' @usage
 #' cloudwatch_delete_alarms(AlarmNames)
@@ -130,6 +130,49 @@ cloudwatch_delete_dashboards <- function(DashboardNames) {
   return(response)
 }
 .cloudwatch$operations$delete_dashboards <- cloudwatch_delete_dashboards
+
+#' Permanently deletes the specified Contributor Insights rules
+#'
+#' Permanently deletes the specified Contributor Insights rules.
+#' 
+#' If you create a rule, delete it, and then re-create it with the same
+#' name, historical data from the first time the rule was created may or
+#' may not be available.
+#'
+#' @usage
+#' cloudwatch_delete_insight_rules(RuleNames)
+#'
+#' @param RuleNames &#91;required&#93; An array of the rule names to delete. If you need to find out the names
+#' of your rules, use DescribeInsightRules.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_insight_rules(
+#'   RuleNames = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_delete_insight_rules
+cloudwatch_delete_insight_rules <- function(RuleNames) {
+  op <- new_operation(
+    name = "DeleteInsightRules",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatch$delete_insight_rules_input(RuleNames = RuleNames)
+  output <- .cloudwatch$delete_insight_rules_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$delete_insight_rules <- cloudwatch_delete_insight_rules
 
 #' Retrieves the history for the specified alarm
 #'
@@ -364,6 +407,50 @@ cloudwatch_describe_anomaly_detectors <- function(NextToken = NULL, MaxResults =
 }
 .cloudwatch$operations$describe_anomaly_detectors <- cloudwatch_describe_anomaly_detectors
 
+#' Returns a list of all the Contributor Insights rules in your account
+#'
+#' Returns a list of all the Contributor Insights rules in your account.
+#' All rules in your account are returned with a single operation.
+#' 
+#' For more information about Contributor Insights, see [Using Contributor
+#' Insights to Analyze High-Cardinality
+#' Data](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights.html).
+#'
+#' @usage
+#' cloudwatch_describe_insight_rules(NextToken, MaxResults)
+#'
+#' @param NextToken Reserved for future use.
+#' @param MaxResults This parameter is not currently used. Reserved for future use. If it is
+#' used in the future, the maximum value may be different.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_insight_rules(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_describe_insight_rules
+cloudwatch_describe_insight_rules <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeInsightRules",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatch$describe_insight_rules_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .cloudwatch$describe_insight_rules_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$describe_insight_rules <- cloudwatch_describe_insight_rules
+
 #' Disables the actions for the specified alarms
 #'
 #' Disables the actions for the specified alarms. When an alarm\'s actions
@@ -404,6 +491,46 @@ cloudwatch_disable_alarm_actions <- function(AlarmNames) {
 }
 .cloudwatch$operations$disable_alarm_actions <- cloudwatch_disable_alarm_actions
 
+#' Disables the specified Contributor Insights rules
+#'
+#' Disables the specified Contributor Insights rules. When rules are
+#' disabled, they do not analyze log groups and do not incur costs.
+#'
+#' @usage
+#' cloudwatch_disable_insight_rules(RuleNames)
+#'
+#' @param RuleNames &#91;required&#93; An array of the rule names to disable. If you need to find out the names
+#' of your rules, use DescribeInsightRules.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disable_insight_rules(
+#'   RuleNames = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_disable_insight_rules
+cloudwatch_disable_insight_rules <- function(RuleNames) {
+  op <- new_operation(
+    name = "DisableInsightRules",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatch$disable_insight_rules_input(RuleNames = RuleNames)
+  output <- .cloudwatch$disable_insight_rules_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$disable_insight_rules <- cloudwatch_disable_insight_rules
+
 #' Enables the actions for the specified alarms
 #'
 #' Enables the actions for the specified alarms.
@@ -441,6 +568,46 @@ cloudwatch_enable_alarm_actions <- function(AlarmNames) {
   return(response)
 }
 .cloudwatch$operations$enable_alarm_actions <- cloudwatch_enable_alarm_actions
+
+#' Enables the specified Contributor Insights rules
+#'
+#' Enables the specified Contributor Insights rules. When rules are
+#' enabled, they immediately begin analyzing log data.
+#'
+#' @usage
+#' cloudwatch_enable_insight_rules(RuleNames)
+#'
+#' @param RuleNames &#91;required&#93; An array of the rule names to enable. If you need to find out the names
+#' of your rules, use DescribeInsightRules.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$enable_insight_rules(
+#'   RuleNames = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_enable_insight_rules
+cloudwatch_enable_insight_rules <- function(RuleNames) {
+  op <- new_operation(
+    name = "EnableInsightRules",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatch$enable_insight_rules_input(RuleNames = RuleNames)
+  output <- .cloudwatch$enable_insight_rules_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$enable_insight_rules <- cloudwatch_enable_insight_rules
 
 #' Displays the details of the dashboard that you specify
 #'
@@ -482,18 +649,141 @@ cloudwatch_get_dashboard <- function(DashboardName) {
 }
 .cloudwatch$operations$get_dashboard <- cloudwatch_get_dashboard
 
+#' This operation returns the time series data collected by a Contributor
+#' Insights rule
+#'
+#' This operation returns the time series data collected by a Contributor
+#' Insights rule. The data includes the identity and number of contributors
+#' to the log group.
+#' 
+#' You can also optionally return one or more statistics about each data
+#' point in the time series. These statistics can include the following:
+#' 
+#' -   `UniqueContributors` \\-- the number of unique contributors for each
+#'     data point.
+#' 
+#' -   `MaxContributorValue` \\-- the value of the top contributor for each
+#'     data point. The identity of the contributor may change for each data
+#'     point in the graph.
+#' 
+#'     If this rule aggregates by COUNT, the top contributor for each data
+#'     point is the contributor with the most occurrences in that period.
+#'     If the rule aggregates by SUM, the top contributor is the
+#'     contributor with the highest sum in the log field specified by the
+#'     rule\'s `Value`, during that period.
+#' 
+#' -   `SampleCount` \\-- the number of data points matched by the rule.
+#' 
+#' -   `Sum` \\-- the sum of the values from all contributors during the
+#'     time period represented by that data point.
+#' 
+#' -   `Minimum` \\-- the minimum value from a single observation during the
+#'     time period represented by that data point.
+#' 
+#' -   `Maximum` \\-- the maximum value from a single observation during the
+#'     time period represented by that data point.
+#' 
+#' -   `Average` \\-- the average value from all contributors during the
+#'     time period represented by that data point.
+#'
+#' @usage
+#' cloudwatch_get_insight_rule_report(RuleName, StartTime, EndTime, Period,
+#'   MaxContributorCount, Metrics, OrderBy)
+#'
+#' @param RuleName &#91;required&#93; The name of the rule that you want to see data from.
+#' @param StartTime &#91;required&#93; The start time of the data to use in the report. When used in a raw HTTP
+#' Query API, it is formatted as `yyyy-MM-dd'T'HH:mm:ss`. For example,
+#' `2019-07-01T23:59:59`.
+#' @param EndTime &#91;required&#93; The end time of the data to use in the report. When used in a raw HTTP
+#' Query API, it is formatted as `yyyy-MM-dd'T'HH:mm:ss`. For example,
+#' `2019-07-01T23:59:59`.
+#' @param Period &#91;required&#93; The period, in seconds, to use for the statistics in the
+#' `InsightRuleMetricDatapoint` results.
+#' @param MaxContributorCount The maximum number of contributors to include in the report. The range
+#' is 1 to 100. If you omit this, the default of 10 is used.
+#' @param Metrics Specifies which metrics to use for aggregation of contributor values for
+#' the report. You can specify one or more of the following metrics:
+#' 
+#' -   `UniqueContributors` \\-- the number of unique contributors for each
+#'     data point.
+#' 
+#' -   `MaxContributorValue` \\-- the value of the top contributor for each
+#'     data point. The identity of the contributor may change for each data
+#'     point in the graph.
+#' 
+#'     If this rule aggregates by COUNT, the top contributor for each data
+#'     point is the contributor with the most occurrences in that period.
+#'     If the rule aggregates by SUM, the top contributor is the
+#'     contributor with the highest sum in the log field specified by the
+#'     rule\'s `Value`, during that period.
+#' 
+#' -   `SampleCount` \\-- the number of data points matched by the rule.
+#' 
+#' -   `Sum` \\-- the sum of the values from all contributors during the
+#'     time period represented by that data point.
+#' 
+#' -   `Minimum` \\-- the minimum value from a single observation during the
+#'     time period represented by that data point.
+#' 
+#' -   `Maximum` \\-- the maximum value from a single observation during the
+#'     time period represented by that data point.
+#' 
+#' -   `Average` \\-- the average value from all contributors during the
+#'     time period represented by that data point.
+#' @param OrderBy Determines what statistic to use to rank the contributors. Valid values
+#' are SUM and MAXIMUM.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_insight_rule_report(
+#'   RuleName = "string",
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Period = 123,
+#'   MaxContributorCount = 123,
+#'   Metrics = list(
+#'     "string"
+#'   ),
+#'   OrderBy = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_get_insight_rule_report
+cloudwatch_get_insight_rule_report <- function(RuleName, StartTime, EndTime, Period, MaxContributorCount = NULL, Metrics = NULL, OrderBy = NULL) {
+  op <- new_operation(
+    name = "GetInsightRuleReport",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatch$get_insight_rule_report_input(RuleName = RuleName, StartTime = StartTime, EndTime = EndTime, Period = Period, MaxContributorCount = MaxContributorCount, Metrics = Metrics, OrderBy = OrderBy)
+  output <- .cloudwatch$get_insight_rule_report_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$get_insight_rule_report <- cloudwatch_get_insight_rule_report
+
 #' You can use the GetMetricData API to retrieve as many as 100 different
-#' metrics in a single request, with a total of as many as 100,800
-#' datapoints
+#' metrics in a single request, with a total of as many as 100,800 data
+#' points
 #'
 #' You can use the `GetMetricData` API to retrieve as many as 100 different
-#' metrics in a single request, with a total of as many as 100,800
-#' datapoints. You can also optionally perform math expressions on the
-#' values of the returned statistics, to create new time series that
-#' represent new insights into your data. For example, using Lambda
-#' metrics, you could divide the Errors metric by the Invocations metric to
-#' get an error rate time series. For more information about metric math
-#' expressions, see [Metric Math Syntax and
+#' metrics in a single request, with a total of as many as 100,800 data
+#' points. You can also optionally perform math expressions on the values
+#' of the returned statistics, to create new time series that represent new
+#' insights into your data. For example, using Lambda metrics, you could
+#' divide the Errors metric by the Invocations metric to get an error rate
+#' time series. For more information about metric math expressions, see
+#' [Metric Math Syntax and
 #' Functions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax)
 #' in the *Amazon CloudWatch User Guide*.
 #' 
@@ -524,6 +814,14 @@ cloudwatch_get_dashboard <- function(DashboardName) {
 #' but is aggregated and retrievable only with a resolution of 5 minutes.
 #' After 63 days, the data is further aggregated and is available with a
 #' resolution of 1 hour.
+#' 
+#' If you omit `Unit` in your request, all data that was collected with any
+#' unit is returned, along with the corresponding units that were specified
+#' when the data was reported to CloudWatch. If you specify a unit, the
+#' operation returns only data data that was collected with that unit
+#' specified. If you specify a unit that does not match the data collected,
+#' the results of the operation are null. CloudWatch does not perform unit
+#' conversions.
 #'
 #' @usage
 #' cloudwatch_get_metric_data(MetricDataQueries, StartTime, EndTime,
@@ -535,12 +833,40 @@ cloudwatch_get_dashboard <- function(DashboardName) {
 #' to perform on retrieved data.
 #' @param StartTime &#91;required&#93; The time stamp indicating the earliest data to be returned.
 #' 
+#' The value specified is inclusive; results include data points with the
+#' specified time stamp.
+#' 
+#' CloudWatch rounds the specified time stamp as follows:
+#' 
+#' -   Start time less than 15 days ago - Round down to the nearest whole
+#'     minute. For example, 12:32:34 is rounded down to 12:32:00.
+#' 
+#' -   Start time between 15 and 63 days ago - Round down to the nearest
+#'     5-minute clock interval. For example, 12:32:34 is rounded down to
+#'     12:30:00.
+#' 
+#' -   Start time greater than 63 days ago - Round down to the nearest
+#'     1-hour clock interval. For example, 12:32:34 is rounded down to
+#'     12:00:00.
+#' 
+#' If you set `Period` to 5, 10, or 30, the start time of your request is
+#' rounded down to the nearest time that corresponds to even 5-, 10-, or
+#' 30-second divisions of a minute. For example, if you make a query at
+#' (HH:mm:ss) 01:05:23 for the previous 10-second period, the start time of
+#' your request is rounded down and you receive data from 01:05:10 to
+#' 01:05:20. If you make a query at 15:07:17 for the previous 5 minutes of
+#' data, using a period of 5 seconds, you receive data timestamped between
+#' 15:02:15 and 15:07:15.
+#' 
 #' For better performance, specify `StartTime` and `EndTime` values that
 #' align with the value of the metric\'s `Period` and sync up with the
 #' beginning and end of an hour. For example, if the `Period` of a metric
 #' is 5 minutes, specifying 12:05 or 12:30 as `StartTime` can get a faster
 #' response from CloudWatch than setting 12:07 or 12:29 as the `StartTime`.
 #' @param EndTime &#91;required&#93; The time stamp indicating the latest data to be returned.
+#' 
+#' The value specified is exclusive; results include data points up to the
+#' specified time stamp.
 #' 
 #' For better performance, specify `StartTime` and `EndTime` values that
 #' align with the value of the metric\'s `Period` and sync up with the
@@ -579,7 +905,8 @@ cloudwatch_get_dashboard <- function(DashboardName) {
 #'       ),
 #'       Expression = "string",
 #'       Label = "string",
-#'       ReturnData = TRUE|FALSE
+#'       ReturnData = TRUE|FALSE,
+#'       Period = 123
 #'     )
 #'   ),
 #'   StartTime = as.POSIXct(
@@ -697,8 +1024,8 @@ cloudwatch_get_metric_data <- function(MetricDataQueries, StartTime, EndTime, Ne
 #' request.
 #' 
 #' The value specified is inclusive; results include data points with the
-#' specified time stamp. The time stamp must be in ISO 8601 UTC format (for
-#' example, 2016-10-03T23:00:00Z).
+#' specified time stamp. In a raw HTTP query, the time stamp must be in ISO
+#' 8601 UTC format (for example, 2016-10-03T23:00:00Z).
 #' 
 #' CloudWatch rounds the specified time stamp as follows:
 #' 
@@ -724,8 +1051,8 @@ cloudwatch_get_metric_data <- function(MetricDataQueries, StartTime, EndTime, Ne
 #' @param EndTime &#91;required&#93; The time stamp that determines the last data point to return.
 #' 
 #' The value specified is exclusive; results include data points up to the
-#' specified time stamp. The time stamp must be in ISO 8601 UTC format (for
-#' example, 2016-10-10T23:00:00Z).
+#' specified time stamp. In a raw HTTP query, the time stamp must be in ISO
+#' 8601 UTC format (for example, 2016-10-10T23:00:00Z).
 #' @param Period &#91;required&#93; The granularity, in seconds, of the returned data points. For metrics
 #' with regular resolution, a period can be as short as one minute (60
 #' seconds) and must be a multiple of 60. For high-resolution metrics that
@@ -754,10 +1081,13 @@ cloudwatch_get_metric_data <- function(MetricDataQueries, StartTime, EndTime, Ne
 #' `ExtendedStatistics`, but not both. Percentile statistics are not
 #' available for metrics when any of the metric values are negative
 #' numbers.
-#' @param Unit The unit for a given metric. Metrics may be reported in multiple units.
-#' Not supplying a unit results in all units being returned. If you specify
-#' only a unit that the metric does not report, the results of the call are
-#' null.
+#' @param Unit The unit for a given metric. If you omit `Unit`, all data that was
+#' collected with any unit is returned, along with the corresponding units
+#' that were specified when the data was reported to CloudWatch. If you
+#' specify a unit, the operation returns only data data that was collected
+#' with that unit specified. If you specify a unit that does not match the
+#' data collected, the results of the operation are null. CloudWatch does
+#' not perform unit conversions.
 #'
 #' @section Request syntax:
 #' ```
@@ -1184,6 +1514,56 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 }
 .cloudwatch$operations$put_dashboard <- cloudwatch_put_dashboard
 
+#' Creates a Contributor Insights rule
+#'
+#' Creates a Contributor Insights rule. Rules evaluate log events in a
+#' CloudWatch Logs log group, enabling you to find contributor data for the
+#' log events in that log group. For more information, see [Using
+#' Contributor Insights to Analyze High-Cardinality
+#' Data](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights.html).
+#' 
+#' If you create a rule, delete it, and then re-create it with the same
+#' name, historical data from the first time the rule was created may or
+#' may not be available.
+#'
+#' @usage
+#' cloudwatch_put_insight_rule(RuleName, RuleState, RuleDefinition)
+#'
+#' @param RuleName &#91;required&#93; A unique name for the rule.
+#' @param RuleState The state of the rule. Valid values are ENABLED and DISABLED.
+#' @param RuleDefinition &#91;required&#93; The definition of the rule, as a JSON object. For details on the valid
+#' syntax, see [Contributor Insights Rule
+#' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights-RuleSyntax.html).
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_insight_rule(
+#'   RuleName = "string",
+#'   RuleState = "string",
+#'   RuleDefinition = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_put_insight_rule
+cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefinition) {
+  op <- new_operation(
+    name = "PutInsightRule",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatch$put_insight_rule_input(RuleName = RuleName, RuleState = RuleState, RuleDefinition = RuleDefinition)
+  output <- .cloudwatch$put_insight_rule_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$put_insight_rule <- cloudwatch_put_insight_rule
+
 #' Creates or updates an alarm and associates it with the specified metric,
 #' metric math expression, or anomaly detection model
 #'
@@ -1248,7 +1628,7 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #' account.
 #' @param AlarmDescription The description for the alarm.
 #' @param ActionsEnabled Indicates whether actions should be executed during any changes to the
-#' alarm state. The default is TRUE.
+#' alarm state. The default is `TRUE`.
 #' @param OKActions The actions to execute when this alarm transitions to an `OK` state from
 #' any other state. Each action is specified as an Amazon Resource Name
 #' (ARN).
@@ -1300,7 +1680,9 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #' `arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Terminate/1.0`
 #' \\|
 #' `arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Reboot/1.0`
-#' @param MetricName The name for the metric associated with the alarm.
+#' @param MetricName The name for the metric associated with the alarm. For each
+#' `PutMetricAlarm` operation, you must specify either `MetricName` or a
+#' `Metrics` array.
 #' 
 #' If you are creating an alarm based on a math expression, you cannot
 #' specify this parameter, or any of the `Dimensions`, `Period`,
@@ -1319,6 +1701,10 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #' @param Period The length, in seconds, used each time the metric specified in
 #' `MetricName` is evaluated. Valid values are 10, 30, and any multiple of
 #' 60.
+#' 
+#' `Period` is required for alarms based on static thresholds. If you are
+#' creating an alarm based on a metric math expression, you specify the
+#' period for each metric within the objects in the `Metrics` array.
 #' 
 #' Be sure to specify 10 or 30 only for metrics that are stored by a
 #' `PutMetricData` call with a `StorageResolution` of 1. If you specify a
@@ -1341,9 +1727,18 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #' provide conceptual meaning to your data. Metric data points that specify
 #' a unit of measure, such as Percent, are aggregated separately.
 #' 
-#' If you specify a unit, you must use a unit that is appropriate for the
-#' metric. Otherwise, the CloudWatch alarm can get stuck in the
-#' `INSUFFICIENT DATA` state.
+#' If you don\'t specify `Unit`, CloudWatch retrieves all unit types that
+#' have been published for the metric and attempts to evaluate the alarm.
+#' Usually metrics are published with only one unit, so the alarm will work
+#' as intended.
+#' 
+#' However, if the metric is published with multiple types of units and you
+#' don\'t specify a unit, the alarm\'s behavior is not defined and will
+#' behave un-predictably.
+#' 
+#' We recommend omitting `Unit` so that you don\'t inadvertently specify an
+#' incorrect unit that is not published for this metric. Doing so causes
+#' the alarm to be stuck in the `INSUFFICIENT DATA` state.
 #' @param EvaluationPeriods &#91;required&#93; The number of periods over which data is compared to the specified
 #' threshold. If you are setting an alarm that requires that a number of
 #' consecutive data points be breaching to trigger the alarm, this value
@@ -1353,12 +1748,15 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #' An alarm\'s total current evaluation period can be no longer than one
 #' day, so this number multiplied by `Period` cannot be more than 86,400
 #' seconds.
-#' @param DatapointsToAlarm The number of datapoints that must be breaching to trigger the alarm.
+#' @param DatapointsToAlarm The number of data points that must be breaching to trigger the alarm.
 #' This is used only if you are setting an \"M out of N\" alarm. In that
 #' case, this value is the M. For more information, see [Evaluating an
 #' Alarm](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarm-evaluation)
 #' in the *Amazon CloudWatch User Guide*.
 #' @param Threshold The value against which the specified statistic is compared.
+#' 
+#' This parameter is required for alarms based on static thresholds, but
+#' should not be used for alarms based on anomaly detection models.
 #' @param ComparisonOperator &#91;required&#93; The arithmetic operation to use when comparing the specified statistic
 #' and threshold. The specified statistic value is used as the first
 #' operand.
@@ -1383,8 +1781,12 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #' 
 #' Valid Values: `evaluate | ignore`
 #' @param Metrics An array of `MetricDataQuery` structures that enable you to create an
-#' alarm based on the result of a metric math expression. Each item in the
-#' `Metrics` array either retrieves a metric or performs a math expression.
+#' alarm based on the result of a metric math expression. For each
+#' `PutMetricAlarm` operation, you must specify either `MetricName` or a
+#' `Metrics` array.
+#' 
+#' Each item in the `Metrics` array either retrieves a metric or performs a
+#' math expression.
 #' 
 #' One item in the `Metrics` array is the expression that the alarm
 #' watches. You designate this expression by setting `ReturnValue` to true
@@ -1462,7 +1864,8 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #'       ),
 #'       Expression = "string",
 #'       Label = "string",
-#'       ReturnData = TRUE|FALSE
+#'       ReturnData = TRUE|FALSE,
+#'       Period = 123
 #'     )
 #'   ),
 #'   Tags = list(
@@ -1516,9 +1919,8 @@ cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, Acti
 #' 
 #' Although the `Value` parameter accepts numbers of type `Double`,
 #' CloudWatch rejects values that are either too small or too large. Values
-#' must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or
-#' 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN,
-#' +Infinity, -Infinity) are not supported.
+#' must be in the range of -2\\^360 to 2\\^360. In addition, special values
+#' (for example, NaN, +Infinity, -Infinity) are not supported.
 #' 
 #' You can use up to 10 dimensions per metric to further clarify what data
 #' the metric collects. Each dimension consists of a Name and Value pair.
@@ -1546,9 +1948,8 @@ cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, Acti
 #'
 #' @param Namespace &#91;required&#93; The namespace for the metric data.
 #' 
-#' You cannot specify a namespace that begins with \"AWS/\". Namespaces
-#' that begin with \"AWS/\" are reserved for use by Amazon Web Services
-#' products.
+#' To avoid conflicts with AWS service namespaces, you should not specify a
+#' namespace that begins with `AWS/`
 #' @param MetricData &#91;required&#93; The data for the metric. The array can include no more than 20 metrics
 #' per call.
 #'
@@ -1666,30 +2067,31 @@ cloudwatch_set_alarm_state <- function(AlarmName, StateValue, StateReason, State
 #' resource
 #'
 #' Assigns one or more tags (key-value pairs) to the specified CloudWatch
-#' resource. Tags can help you organize and categorize your resources. You
-#' can also use them to scope user permissions, by granting a user
-#' permission to access or change only resources with certain tag values.
-#' In CloudWatch, alarms can be tagged.
+#' resource. Currently, the only CloudWatch resources that can be tagged
+#' are alarms.
+#' 
+#' Tags can help you organize and categorize your resources. You can also
+#' use them to scope user permissions, by granting a user permission to
+#' access or change only resources with certain tag values.
 #' 
 #' Tags don\'t have any semantic meaning to AWS and are interpreted
 #' strictly as strings of characters.
 #' 
-#' You can use the `TagResource` action with a resource that already has
-#' tags. If you specify a new tag key for the resource, this tag is
-#' appended to the list of tags associated with the resource. If you
-#' specify a tag key that is already associated with the resource, the new
-#' tag value that you specify replaces the previous value for that tag.
+#' You can use the `TagResource` action with an alarm that already has
+#' tags. If you specify a new tag key for the alarm, this tag is appended
+#' to the list of tags associated with the alarm. If you specify a tag key
+#' that is already associated with the alarm, the new tag value that you
+#' specify replaces the previous value for that tag.
 #' 
 #' You can associate as many as 50 tags with a resource.
 #'
 #' @usage
 #' cloudwatch_tag_resource(ResourceARN, Tags)
 #'
-#' @param ResourceARN &#91;required&#93; The ARN of the CloudWatch resource that you\'re adding tags to. For more
-#' information on ARN format, see [Example
-#' ARNs](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-cloudwatch)
-#' in the *Amazon Web Services General Reference*.
-#' @param Tags &#91;required&#93; The list of key-value pairs to associate with the resource.
+#' @param ResourceARN &#91;required&#93; The ARN of the CloudWatch alarm that you\'re adding tags to. The ARN
+#' format is
+#' `arn:aws:cloudwatch:<i>Region</i>:<i>account-id</i>:alarm:<i>alarm-name</i> `
+#' @param Tags &#91;required&#93; The list of key-value pairs to associate with the alarm.
 #'
 #' @section Request syntax:
 #' ```

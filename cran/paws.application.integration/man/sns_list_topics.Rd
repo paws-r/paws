@@ -10,7 +10,7 @@ sns_list_topics(NextToken)
 \item{NextToken}{Token returned by the previous \code{ListTopics} request.}
 }
 \description{
-Returns a list of the requester's topics. Each call returns a limited
+Returns a list of the requester\'s topics. Each call returns a limited
 list of topics, up to 100. If there are more topics, a \code{NextToken} is
 also returned. Use the \code{NextToken} parameter in a new \code{ListTopics} call
 to get further results.

@@ -6,7 +6,7 @@
 uses to deploy models}
 \usage{
 sagemaker_create_endpoint_config(EndpointConfigName, ProductionVariants,
-  Tags, KmsKeyId)
+  DataCaptureConfig, Tags, KmsKeyId)
 }
 \arguments{
 \item{EndpointConfigName}{[required] The name of the endpoint configuration. You specify this name in a
@@ -16,12 +16,28 @@ request.}
 \item{ProductionVariants}{[required] An list of \code{ProductionVariant} objects, one for each model that you want
 to host at this endpoint.}
 
+\item{DataCaptureConfig}{}
+
 \item{Tags}{A list of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
 in the \emph{AWS Billing and Cost Management User Guide}.}
 
 \item{KmsKeyId}{The Amazon Resource Name (ARN) of a AWS Key Management Service key that
 Amazon SageMaker uses to encrypt data on the storage volume attached to
-the ML compute instance that hosts the endpoint.}
+the ML compute instance that hosts the endpoint.
+
+Certain Nitro-based instances include local storage, dependent on the
+instance type. Local storage volumes are encrypted using a hardware
+module on the instance. You can\'t request a \code{KmsKeyId} when using an
+instance type with local storage. If any of the models that you specify
+in the \code{ProductionVariants} parameter use nitro-based instances with
+local storage, do not specify a value for the \code{KmsKeyId} parameter. If
+you specify a value for \code{KmsKeyId} when using any nitro-based instances
+with local storage, the call to \code{CreateEndpointConfig} fails.
+
+For a list of instance types that support local instance storage, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes}{Instance Store Volumes}.
+
+For more information about local instance storage encryption, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html}{SSD Instance Store Volumes}.}
 }
 \description{
 Creates an endpoint configuration that Amazon SageMaker hosting services
@@ -55,9 +71,28 @@ B.
       VariantName = "string",
       ModelName = "string",
       InitialInstanceCount = 123,
-      InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge",
+      InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge",
       InitialVariantWeight = 123.0,
-      AcceleratorType = "ml.eia1.medium"|"ml.eia1.large"|"ml.eia1.xlarge"
+      AcceleratorType = "ml.eia1.medium"|"ml.eia1.large"|"ml.eia1.xlarge"|"ml.eia2.medium"|"ml.eia2.large"|"ml.eia2.xlarge"
+    )
+  ),
+  DataCaptureConfig = list(
+    EnableCapture = TRUE|FALSE,
+    InitialSamplingPercentage = 123,
+    DestinationS3Uri = "string",
+    KmsKeyId = "string",
+    CaptureOptions = list(
+      list(
+        CaptureMode = "Input"|"Output"
+      )
+    ),
+    CaptureContentTypeHeader = list(
+      CsvContentTypes = list(
+        "string"
+      ),
+      JsonContentTypes = list(
+        "string"
+      )
     )
   ),
   Tags = list(

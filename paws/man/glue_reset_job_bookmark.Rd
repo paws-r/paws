@@ -4,17 +4,20 @@
 \alias{glue_reset_job_bookmark}
 \title{Resets a bookmark entry}
 \usage{
-glue_reset_job_bookmark(JobName)
+glue_reset_job_bookmark(JobName, RunId)
 }
 \arguments{
 \item{JobName}{[required] The name of the job in question.}
+
+\item{RunId}{The unique run identifier associated with this job run.}
 }
 \description{
 Resets a bookmark entry.
 }
 \section{Request syntax}{
 \preformatted{svc$reset_job_bookmark(
-  JobName = "string"
+  JobName = "string",
+  RunId = "string"
 )
 }
 }

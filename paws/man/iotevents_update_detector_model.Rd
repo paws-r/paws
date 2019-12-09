@@ -5,7 +5,8 @@
 \title{Updates a detector model}
 \usage{
 iotevents_update_detector_model(detectorModelName,
-  detectorModelDefinition, detectorModelDescription, roleArn)
+  detectorModelDefinition, detectorModelDescription, roleArn,
+  evaluationMethod)
 }
 \arguments{
 \item{detectorModelName}{[required] The name of the detector model that is updated.}
@@ -16,6 +17,11 @@ iotevents_update_detector_model(detectorModelName,
 
 \item{roleArn}{[required] The ARN of the role that grants permission to AWS IoT Events to perform
 its operations.}
+
+\item{evaluationMethod}{When set to \code{SERIAL}, variables are updated and event conditions
+evaluated in the order that the events are defined. When set to \code{BATCH},
+variables are updated and events performed only after all event
+conditions are evaluated.}
 }
 \description{
 Updates a detector model. Detectors (instances) spawned by the previous
@@ -216,7 +222,8 @@ version are deleted and then re-created as new inputs arrive.
     initialStateName = "string"
   ),
   detectorModelDescription = "string",
-  roleArn = "string"
+  roleArn = "string",
+  evaluationMethod = "BATCH"|"SERIAL"
 )
 }
 }

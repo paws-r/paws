@@ -6,7 +6,7 @@
 \usage{
 ssm_update_ops_item(Description, OperationalData,
   OperationalDataToDelete, Notifications, Priority, RelatedOpsItems,
-  Status, OpsItemId, Title)
+  Status, OpsItemId, Title, Category, Severity)
 }
 \arguments{
 \item{Description}{Update the information about the OpsItem. Provide enough information so
@@ -21,7 +21,7 @@ strings, license keys, troubleshooting tips, or other relevant data. You
 enter operational data as key-value pairs. The key has a maximum length
 of 128 characters. The value has a maximum size of 20 KB.
 
-Operational data keys \emph{can't} begin with the following: amazon, aws,
+Operational data keys \emph{can\'t} begin with the following: amazon, aws,
 amzn, ssm, /amazon, /aws, /amzn, /ssm.
 
 You can choose to make the data searchable by other users in the account
@@ -31,8 +31,8 @@ DescribeOpsItems API action) can view and search on the specified data.
 Operational data that is not searchable is only viewable by users who
 have access to the OpsItem (as provided by the GetOpsItem API action).
 
-Use the \code{/aws/resources} key in OperationalData to specify a related
-resource in the request. Use the \code{/aws/automations} key in
+Use the \verb{/aws/resources} key in OperationalData to specify a related
+resource in the request. Use the \verb{/aws/automations} key in
 OperationalData to associate an Automation runbook with the OpsItem. To
 view AWS CLI example commands that use these keys, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-creating-OpsItems.html#OpsCenter-manually-create-OpsItems}{Creating OpsItems Manually}
 in the \emph{AWS Systems Manager User Guide}.}
@@ -50,7 +50,7 @@ OpsItems. For example, related OpsItems can include OpsItems with
 similar error messages, impacted resources, or statuses for the impacted
 resource.}
 
-\item{Status}{The OpsItem status. Status can be \code{Open}, \code{In Progress}, or \code{Resolved}.
+\item{Status}{The OpsItem status. Status can be \code{Open}, \verb{In Progress}, or \code{Resolved}.
 For more information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-working-with-OpsItems-editing-details.html}{Editing OpsItem Details}
 in the \emph{AWS Systems Manager User Guide}.}
 
@@ -58,6 +58,10 @@ in the \emph{AWS Systems Manager User Guide}.}
 
 \item{Title}{A short heading that describes the nature of the OpsItem and the
 impacted resource.}
+
+\item{Category}{Specify a new category for an OpsItem.}
+
+\item{Severity}{Specify a new severity for an OpsItem.}
 }
 \description{
 Edit or change an OpsItem. You must have permission in AWS Identity and
@@ -96,7 +100,9 @@ in the \emph{AWS Systems Manager User Guide}.
   ),
   Status = "Open"|"InProgress"|"Resolved",
   OpsItemId = "string",
-  Title = "string"
+  Title = "string",
+  Category = "string",
+  Severity = "string"
 )
 }
 }

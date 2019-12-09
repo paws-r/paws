@@ -37,18 +37,18 @@ information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_p
 in the \emph{IAM User Guide}.
 
 You can generate a service last accessed data report for entities by
-specifying only the entity's path. This data includes a list of
+specifying only the entity\'s path. This data includes a list of
 services that are allowed by any service control policies (SCPs) that
 apply to the entity.
 
 You can generate a service last accessed data report for a policy by
-specifying an entity's path and an optional AWS Organizations policy
+specifying an entity\'s path and an optional AWS Organizations policy
 ID. This data includes a list of services that are allowed by the
 specified SCP.
 
 For each service in both report types, the data includes the most recent
 account activity that the policy allows to account principals in the
-entity or the entity's children. For important information about the
+entity or the entity\'s children. For important information about the
 data, reporting period, permissions required, troubleshooting, and
 supported Regions see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html}{Reducing Permissions Using Service Last Accessed Data}
 in the \emph{IAM User Guide}.
@@ -64,9 +64,9 @@ successful or denied access. For more information, seeÂ \href{https://docs.aws
 in the \emph{IAM User Guide}.
 
 This operation returns a \code{JobId}. Use this parameter in the
-\code{<a>GetOrganizationsAccessReport</a>} operation to check the status of
+\verb{<a>GetOrganizationsAccessReport</a>} operation to check the status of
 the report generation. To check the status of this request, use the
-\code{JobId} parameter in the \code{<a>GetOrganizationsAccessReport</a>}
+\code{JobId} parameter in the \verb{<a>GetOrganizationsAccessReport</a>}
 operation and test the \code{JobStatus} response parameter. When the job is
 complete, you can retrieve the report.
 

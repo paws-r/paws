@@ -18,8 +18,8 @@ matchmaker that was used with the original game session is listed in the
 GameSession object, \code{MatchmakerData} property. This property contains a
 matchmaking configuration ARN value, which includes the matchmaker name.
 (In the ARN value
-"arn:aws:gamelift:us-west-2:111122223333:matchmakingconfiguration/MM-4v4",
-the matchmaking configuration name is "MM-4v4".) Use only the name for
+\"arn:aws:gamelift:us-west-2:111122223333:matchmakingconfiguration/MM-4v4\",
+the matchmaking configuration name is \"MM-4v4\".) Use only the name for
 this parameter.}
 
 \item{GameSessionArn}{[required] Amazon Resource Name
@@ -30,12 +30,12 @@ that is assigned to a game session and uniquely identifies it.}
 session. This information is used by the matchmaker to find new players
 and add them to the existing game.
 \itemize{
-\item PlayerID, PlayerAttributes, Team -\\- This information is
+\item PlayerID, PlayerAttributes, Team -\\\\- This information is
 maintained in the GameSession object, \code{MatchmakerData} property, for
 all players who are currently assigned to the game session. The
 matchmaker data is in JSON syntax, formatted as a string. For more
 details, see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-server.html#match-server-data}{Match Data}.
-\item LatencyInMs -\\- If the matchmaker uses player latency, include a
+\item LatencyInMs -\\\\- If the matchmaker uses player latency, include a
 latency value, in milliseconds, for the region that the game session
 is currently in. Do not include latency values for any other region.
 }}
@@ -51,10 +51,10 @@ backfill a match anytime after a game session has been created.
 }
 \details{
 To request a match backfill, specify a unique ticket ID, the existing
-game session's ARN, a matchmaking configuration, and a set of data that
+game session\'s ARN, a matchmaking configuration, and a set of data that
 describes all current players in the game session. If successful, a
 match backfill ticket is created and returned with status set to QUEUED.
-The ticket is placed in the matchmaker's ticket pool and processed.
+The ticket is placed in the matchmaker\'s ticket pool and processed.
 Track the status of the ticket to respond as needed.
 
 The process of finding backfill matches is essentially identical to the
@@ -62,7 +62,7 @@ initial matchmaking process. The matchmaker searches the pool and groups
 tickets together to form potential matches, allowing only one backfill
 ticket per potential match. Once the a match is formed, the matchmaker
 creates player sessions for the new players. All tickets in the match
-are updated with the game session's connection information, and the
+are updated with the game session\'s connection information, and the
 GameSession object is updated to include matchmaker data on the new
 players. For more detail on how match backfill requests are processed,
 see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-match.html}{How Amazon GameLift FlexMatch Works}.

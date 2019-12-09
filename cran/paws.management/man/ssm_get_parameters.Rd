@@ -14,7 +14,7 @@ string parameters. This flag is ignored for String and StringList
 parameter types.}
 }
 \description{
-Get details of a parameter. Don't confuse this API action with the
+Get details of a parameter. Don\'t confuse this API action with the
 GetParameter API action.
 }
 \section{Request syntax}{

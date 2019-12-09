@@ -12,7 +12,7 @@ redshift_describe_table_restore_status(ClusterIdentifier,
 \item{ClusterIdentifier}{The Amazon Redshift cluster that the table is being restored to.}
 
 \item{TableRestoreRequestId}{The identifier of the table restore request to return status for. If you
-don't specify a \code{TableRestoreRequestId} value, then
+don\'t specify a \code{TableRestoreRequestId} value, then
 \code{DescribeTableRestoreStatus} returns the status of all in-progress table
 restore requests.}
 
@@ -28,7 +28,7 @@ specified by the \code{MaxRecords} parameter.}
 }
 \description{
 Lists the status of one or more table restore requests made using the
-RestoreTableFromClusterSnapshot API action. If you don't specify a
+RestoreTableFromClusterSnapshot API action. If you don\'t specify a
 value for the \code{TableRestoreRequestId} parameter, then
 \code{DescribeTableRestoreStatus} returns the status of all table restore
 requests ordered by the date and time of the request in ascending order.

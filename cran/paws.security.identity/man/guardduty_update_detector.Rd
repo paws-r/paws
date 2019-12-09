@@ -2,22 +2,21 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_update_detector}
 \alias{guardduty_update_detector}
-\title{Updates an Amazon GuardDuty detector specified by the detectorId}
+\title{Updates the Amazon GuardDuty detector specified by the detectorId}
 \usage{
 guardduty_update_detector(DetectorId, Enable,
   FindingPublishingFrequency)
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector that you want to update.}
+\item{DetectorId}{[required] The unique ID of the detector to update.}
 
-\item{Enable}{Updated boolean value for the detector that specifies whether the
-detector is enabled.}
+\item{Enable}{Specifies whether the detector is enabled or not enabled.}
 
-\item{FindingPublishingFrequency}{A enum value that specifies how frequently customer got Finding updates
-published.}
+\item{FindingPublishingFrequency}{A enum value that specifies how frequently findings are exported, such
+as to CloudWatch Events.}
 }
 \description{
-Updates an Amazon GuardDuty detector specified by the detectorId.
+Updates the Amazon GuardDuty detector specified by the detectorId.
 }
 \section{Request syntax}{
 \preformatted{svc$update_detector(

@@ -20,27 +20,27 @@ the CloudFront API, perform the following steps.
 \strong{To delete an RTMP distribution using the CloudFront API}:
 \enumerate{
 \item Disable the RTMP distribution.
-\item Submit a \code{GET Streaming Distribution Config} request to get the
+\item Submit a \verb{GET Streaming Distribution Config} request to get the
 current configuration and the \code{Etag} header for the distribution.
 \item Update the XML document that was returned in the response to your
-\code{GET Streaming Distribution Config} request to change the value of
+\verb{GET Streaming Distribution Config} request to change the value of
 \code{Enabled} to \code{false}.
-\item Submit a \code{PUT Streaming Distribution Config} request to update the
+\item Submit a \verb{PUT Streaming Distribution Config} request to update the
 configuration for your distribution. In the request body, include
 the XML document that you updated in Step 3. Then set the value of
 the HTTP \code{If-Match} header to the value of the \code{ETag} header that
 CloudFront returned when you submitted the
-\code{GET Streaming Distribution Config} request in Step 2.
-\item Review the response to the \code{PUT Streaming Distribution Config}
+\verb{GET Streaming Distribution Config} request in Step 2.
+\item Review the response to the \verb{PUT Streaming Distribution Config}
 request to confirm that the distribution was successfully disabled.
-\item Submit a \code{GET Streaming Distribution Config} request to confirm that
+\item Submit a \verb{GET Streaming Distribution Config} request to confirm that
 your changes have propagated. When propagation is complete, the
 value of \code{Status} is \code{Deployed}.
-\item Submit a \code{DELETE Streaming Distribution} request. Set the value of
+\item Submit a \verb{DELETE Streaming Distribution} request. Set the value of
 the HTTP \code{If-Match} header to the value of the \code{ETag} header that
 CloudFront returned when you submitted the
-\code{GET Streaming Distribution Config} request in Step 2.
-\item Review the response to your \code{DELETE Streaming Distribution} request
+\verb{GET Streaming Distribution Config} request in Step 2.
+\item Review the response to your \verb{DELETE Streaming Distribution} request
 to confirm that the distribution was successfully deleted.
 }
 

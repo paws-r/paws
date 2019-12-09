@@ -12,13 +12,13 @@ neptune_delete_db_cluster_parameter_group(DBClusterParameterGroupName)
 Constraints:
 \itemize{
 \item Must be the name of an existing DB cluster parameter group.
-\item You can't delete a default DB cluster parameter group.
+\item You can\'t delete a default DB cluster parameter group.
 \item Cannot be associated with any DB clusters.
 }}
 }
 \description{
 Deletes a specified DB cluster parameter group. The DB cluster parameter
-group to be deleted can't be associated with any DB clusters.
+group to be deleted can\'t be associated with any DB clusters.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_db_cluster_parameter_group(

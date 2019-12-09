@@ -2,7 +2,7 @@
 % Please edit documentation in R/comprehendmedical_operations.R
 \name{comprehendmedical_detect_phi}
 \alias{comprehendmedical_detect_phi}
-\title{Inspects the clinical text for personal health information (PHI)
+\title{Inspects the clinical text for protected health information (PHI)
 entities and entity category, location, and confidence score on that
 information}
 \usage{
@@ -14,7 +14,7 @@ PHI entities. Each string must contain fewer than 20,000 bytes of
 characters.}
 }
 \description{
-Inspects the clinical text for personal health information (PHI)
+Inspects the clinical text for protected health information (PHI)
 entities and entity category, location, and confidence score on that
 information.
 }

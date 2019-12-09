@@ -2,7 +2,7 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_register_default_patch_baseline}
 \alias{ssm_register_default_patch_baseline}
-\title{Defines the default patch baseline}
+\title{Defines the default patch baseline for the relevant operating system}
 \usage{
 ssm_register_default_patch_baseline(BaselineId)
 }
@@ -10,7 +10,14 @@ ssm_register_default_patch_baseline(BaselineId)
 \item{BaselineId}{[required] The ID of the patch baseline that should be the default patch baseline.}
 }
 \description{
-Defines the default patch baseline.
+Defines the default patch baseline for the relevant operating system.
+}
+\details{
+To reset the AWS predefined patch baseline as the default, specify the
+full patch baseline ARN as the baseline ID value. For example, for
+CentOS, specify
+\verb{arn:aws:ssm:us-east-2:733109147000:patchbaseline/pb-0574b43a65ea646ed}
+instead of \verb{pb-0574b43a65ea646ed}.
 }
 \section{Request syntax}{
 \preformatted{svc$register_default_patch_baseline(

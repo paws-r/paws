@@ -14,7 +14,7 @@ letters, numbers, underscores, hyphens, and periods, and must be between
 1 and 256 characters long.}
 
 \item{Platform}{[required] The following platforms are supported: ADM (Amazon Device Messaging),
-APNS (Apple Push Notification Service), APNS\_SANDBOX, and GCM (Google
+APNS (Apple Push Notification Service), APNS\\_SANDBOX, and FCM (Firebase
 Cloud Messaging).}
 
 \item{Attributes}{[required] For a list of attributes, see
@@ -26,30 +26,21 @@ notification services, such as APNS and FCM, to which devices and mobile
 apps may register. You must specify PlatformPrincipal and
 PlatformCredential attributes when using the \code{CreatePlatformApplication}
 action. The PlatformPrincipal is received from the notification service.
-For APNS/APNS\_SANDBOX, PlatformPrincipal is "SSL certificate". For
-GCM, PlatformPrincipal is not applicable. For ADM, PlatformPrincipal is
-"client id". The PlatformCredential is also received from the
-notification service. For WNS, PlatformPrincipal is "Package Security
-Identifier". For MPNS, PlatformPrincipal is "TLS certificate". For
-Baidu, PlatformPrincipal is "API key".
+For APNS/APNS\\_SANDBOX, PlatformPrincipal is \"SSL certificate\". For
+FCM, PlatformPrincipal is not applicable. For ADM, PlatformPrincipal is
+\"client id\". The PlatformCredential is also received from the
+notification service. For WNS, PlatformPrincipal is \"Package Security
+Identifier\". For MPNS, PlatformPrincipal is \"TLS certificate\". For
+Baidu, PlatformPrincipal is \"API key\".
 }
 \details{
-For APNS/APNS\_SANDBOX, PlatformCredential is "private key". For GCM,
-PlatformCredential is "API key". For ADM, PlatformCredential is
-"client secret". For WNS, PlatformCredential is "secret key". For
-MPNS, PlatformCredential is "private key". For Baidu,
-PlatformCredential is "secret key". The PlatformApplicationArn that is
+For APNS/APNS\\_SANDBOX, PlatformCredential is \"private key\". For FCM,
+PlatformCredential is \"API key\". For ADM, PlatformCredential is
+\"client secret\". For WNS, PlatformCredential is \"secret key\". For
+MPNS, PlatformCredential is \"private key\". For Baidu,
+PlatformCredential is \"secret key\". The PlatformApplicationArn that is
 returned when using \code{CreatePlatformApplication} is then used as an
-attribute for the \code{CreatePlatformEndpoint} action. For more information,
-see \href{https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.
-For more information about obtaining the PlatformPrincipal and
-PlatformCredential for each of the supported push notification services,
-see \href{https://docs.aws.amazon.com/sns/latest/dg/mobile-push-apns.html}{Getting Started with Apple Push Notification Service},
-\href{https://docs.aws.amazon.com/sns/latest/dg/mobile-push-adm.html}{Getting Started with Amazon Device Messaging},
-\href{https://docs.aws.amazon.com/sns/latest/dg/mobile-push-baidu.html}{Getting Started with Baidu Cloud Push},
-\href{https://docs.aws.amazon.com/sns/latest/dg/mobile-push-gcm.html}{Getting Started with Google Cloud Messaging for Android},
-\href{https://docs.aws.amazon.com/sns/latest/dg/mobile-push-mpns.html}{Getting Started with MPNS},
-or \href{https://docs.aws.amazon.com/sns/latest/dg/mobile-push-wns.html}{Getting Started with WNS}.
+attribute for the \code{CreatePlatformEndpoint} action.
 }
 \section{Request syntax}{
 \preformatted{svc$create_platform_application(

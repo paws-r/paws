@@ -18,7 +18,7 @@ lowercase letters, numbers, and hyphens.}
 format of the ARN depends on the resource type.}
 
 \item{IamRoleArn}{[required] Specifies the IAM role ARN used to create the target recovery point; for
-example, \code{arn:aws:iam::123456789012:role/S3Access}.}
+example, \verb{arn:aws:iam::123456789012:role/S3Access}.}
 
 \item{IdempotencyToken}{A customer chosen string that can be used to distinguish between calls
 to \code{StartBackupJob}. Idempotency tokens time out after one hour.

@@ -7,7 +7,7 @@
 glue_create_job(Name, Description, LogUri, Role, ExecutionProperty,
   Command, DefaultArguments, Connections, MaxRetries, AllocatedCapacity,
   Timeout, MaxCapacity, SecurityConfiguration, Tags, NotificationProperty,
-  NumberOfWorkers, WorkerType)
+  GlueVersion, NumberOfWorkers, WorkerType)
 }
 \arguments{
 \item{Name}{[required] The name you assign to this job definition. It must be unique in your
@@ -58,16 +58,16 @@ allocated when this job runs. A DPU is a relative measure of processing
 power that consists of 4 vCPUs of compute capacity and 16 GB of memory.
 For more information, see the \href{https://aws.amazon.com/glue/pricing/}{AWS Glue pricing page}.
 
-Do not set \code{Max Capacity} if using \code{WorkerType} and \code{NumberOfWorkers}.
+Do not set \verb{Max Capacity} if using \code{WorkerType} and \code{NumberOfWorkers}.
 
 The value that can be allocated for \code{MaxCapacity} depends on whether you
 are running a Python shell job or an Apache Spark ETL job:
 \itemize{
 \item When you specify a Python shell job
-(\code{JobCommand.Name}="pythonshell"), you can allocate either 0.0625
+(\code{JobCommand.Name}=\"pythonshell\"), you can allocate either 0.0625
 or 1 DPU. The default is 0.0625 DPU.
 \item When you specify an Apache Spark ETL job
-(\code{JobCommand.Name}="glueetl"), you can allocate from 2 to 100
+(\code{JobCommand.Name}=\"glueetl\"), you can allocate from 2 to 100
 DPUs. The default is 10 DPUs. This job type cannot have a fractional
 DPU allocation.
 }}
@@ -80,6 +80,17 @@ job. For more information about tags in AWS Glue, see \href{https://docs.aws.ama
 the developer guide.}
 
 \item{NotificationProperty}{Specifies configuration properties of a job notification.}
+
+\item{GlueVersion}{Glue version determines the versions of Apache Spark and Python that AWS
+Glue supports. The Python version indicates the version supported for
+jobs of type Spark.
+
+For more information about the available AWS Glue versions and
+corresponding Spark and Python versions, see \href{https://docs.aws.amazon.com/glue/latest/dg/add-job.html}{Glue version} in the
+developer guide.
+
+Jobs that are created without specifying a Glue version default to Glue
+0.9.}
 
 \item{NumberOfWorkers}{The number of workers of a defined \code{workerType} that are allocated when
 a job runs.
@@ -136,8 +147,9 @@ Creates a new job definition.
   NotificationProperty = list(
     NotifyDelayAfter = 123
   ),
+  GlueVersion = "string",
   NumberOfWorkers = 123,
-  WorkerType = "string"
+  WorkerType = "Standard"|"G.1X"|"G.2X"
 )
 }
 }

@@ -13,7 +13,7 @@ for which you want values.
 For all attribute names, see
 \href{https://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html}{SetSMSAttributes}.
 
-If you don't use this parameter, Amazon SNS returns all SMS attributes.}
+If you don\'t use this parameter, Amazon SNS returns all SMS attributes.}
 }
 \description{
 Returns the settings for sending SMS messages from your account.

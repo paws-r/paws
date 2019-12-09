@@ -32,7 +32,7 @@ subsequent call that tells the service where to continue from.}
 }
 \description{
 Lists information about the versions of the specified managed policy,
-including the version that is currently set as the policy's default
+including the version that is currently set as the policy\'s default
 version.
 }
 \details{

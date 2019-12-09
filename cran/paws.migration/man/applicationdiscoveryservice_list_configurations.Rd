@@ -14,7 +14,7 @@ applicationdiscoveryservice_list_configurations(configurationType,
 \item{filters}{You can filter the request using various logical operators and a
 \emph{key}-\emph{value} format. For example:
 
-\code{\{"key": "serverType", "value": "webServer"\}}
+\verb{\\\{"key": "serverType", "value": "webServer"\\\}}
 
 For a complete list of filter options and guidance about using them with
 this action, see \href{http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations}{Querying Discovered Configuration Items}.}

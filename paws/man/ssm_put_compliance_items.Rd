@@ -21,7 +21,7 @@ State Manager association), Patch, or Custom:\code{string}.}
 \item{ExecutionSummary}{[required] A summary of the call execution that includes an execution ID, the type
 of execution (for example, \code{Command}), and the date/time of the
 execution using a datetime object that is saved in the following format:
-yyyy-MM-dd'T'HH:mm:ss'Z'.}
+yyyy-MM-dd\'T\'HH:mm:ss\'Z\'.}
 
 \item{Items}{[required] Information about the compliance as defined by the resource type. For
 example, for a patch compliance type, \code{Items} includes information about
@@ -55,7 +55,7 @@ for patches, or \code{Failed} for associations.
 AWS-RunPatchBaseline.
 \item DocumentVersion: An SSM document version number. For example, 4.
 \item Classification: A patch classification. For example,
-\code{security updates}.
+\verb{security updates}.
 \item PatchBaselineId: A patch baseline ID.
 \item PatchSeverity: A patch severity. For example, \code{Critical}.
 \item PatchState: A patch state. For example,
@@ -63,7 +63,7 @@ AWS-RunPatchBaseline.
 \item PatchGroup: The name of a patch group.
 \item InstalledTime: The time the association, patch, or custom compliance
 item was applied to the resource. Specify the time by using the
-following format: yyyy-MM-dd'T'HH:mm:ss'Z'
+following format: yyyy-MM-dd\'T\'HH:mm:ss\'Z\'
 }
 }
 \section{Request syntax}{

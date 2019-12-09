@@ -7,7 +7,7 @@ previous user}
 \usage{
 cognitoidentityprovider_confirm_sign_up(ClientId, SecretHash, Username,
   ConfirmationCode, ForceAliasCreation, AnalyticsMetadata,
-  UserContextData)
+  UserContextData, ClientMetadata)
 }
 \arguments{
 \item{ClientId}{[required] The ID of the app client associated with the user pool.}
@@ -18,7 +18,7 @@ message.}
 
 \item{Username}{[required] The user name of the user whose registration you wish to confirm.}
 
-\item{ConfirmationCode}{[required] The confirmation code sent by a user's request to confirm registration.}
+\item{ConfirmationCode}{[required] The confirmation code sent by a user\'s request to confirm registration.}
 
 \item{ForceAliasCreation}{Boolean to be specified to force user confirmation irrespective of
 existing alias. By default set to \code{False}. If this parameter is set to
@@ -30,9 +30,38 @@ If set to \code{False}, the API will throw an \strong{AliasExistsException} erro
 \item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for
 \code{ConfirmSignUp} calls.}
 
-\item{UserContextData}{Contextual data such as the user's device fingerprint, IP address, or
+\item{UserContextData}{Contextual data such as the user\'s device fingerprint, IP address, or
 location used for evaluating the risk of an unexpected event by Amazon
 Cognito advanced security.}
+
+\item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any
+custom workflows that this action triggers.
+
+You create custom workflows by assigning AWS Lambda functions to user
+pool triggers. When you use the ConfirmSignUp API action, Amazon Cognito
+invokes the function that is assigned to the \emph{post confirmation}
+trigger. When Amazon Cognito invokes this function, it passes a JSON
+payload, which the function receives as input. This payload contains a
+\code{clientMetadata} attribute, which provides the data that you assigned to
+the ClientMetadata parameter in your ConfirmSignUp request. In your
+function code in AWS Lambda, you can process the \code{clientMetadata} value
+to enhance your workflow for your specific needs.
+
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html}{Customizing User Pool Workflows with Lambda Triggers}
+in the \emph{Amazon Cognito Developer Guide}.
+
+Take the following limitations into consideration when you use the
+ClientMetadata parameter:
+\itemize{
+\item Amazon Cognito does not store the ClientMetadata value. This data is
+available only to AWS Lambda triggers that are assigned to a user
+pool to support custom workflows. If your user pool configuration
+does not include triggers, the ClientMetadata parameter serves no
+purpose.
+\item Amazon Cognito does not validate the ClientMetadata value.
+\item Amazon Cognito does not encrypt the the ClientMetadata value, so
+don\'t use it to provide sensitive information.
+}}
 }
 \description{
 Confirms registration of a user and handles the existing alias from a
@@ -50,6 +79,9 @@ previous user.
   ),
   UserContextData = list(
     EncodedData = "string"
+  ),
+  ClientMetadata = list(
+    "string"
   )
 )
 }

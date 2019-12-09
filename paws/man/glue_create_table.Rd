@@ -39,7 +39,10 @@ Creates a new table definition in the Data Catalog.
         list(
           Name = "string",
           Type = "string",
-          Comment = "string"
+          Comment = "string",
+          Parameters = list(
+            "string"
+          )
         )
       ),
       Location = "string",
@@ -83,7 +86,10 @@ Creates a new table definition in the Data Catalog.
       list(
         Name = "string",
         Type = "string",
-        Comment = "string"
+        Comment = "string",
+        Parameters = list(
+          "string"
+        )
       )
     ),
     ViewOriginalText = "string",

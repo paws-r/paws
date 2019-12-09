@@ -16,7 +16,7 @@ If no value is specified, the latest version is used by default.}
 }
 \description{
 Creates a system. The system is validated against the entities in the
-latest version of the user's namespace unless another namespace version
+latest version of the user\'s namespace unless another namespace version
 is specified in the request.
 }
 \section{Request syntax}{

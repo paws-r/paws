@@ -41,13 +41,13 @@ Updates an existing virtual node in a specified service mesh.
           intervalMillis = 123,
           path = "string",
           port = 123,
-          protocol = "http"|"tcp",
+          protocol = "grpc"|"http"|"http2"|"tcp",
           timeoutMillis = 123,
           unhealthyThreshold = 123
         ),
         portMapping = list(
           port = 123,
-          protocol = "http"|"tcp"
+          protocol = "grpc"|"http"|"http2"|"tcp"
         )
       )
     ),

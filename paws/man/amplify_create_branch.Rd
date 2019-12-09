@@ -7,7 +7,8 @@
 amplify_create_branch(appId, branchName, description, stage, framework,
   enableNotification, enableAutoBuild, environmentVariables,
   basicAuthCredentials, enableBasicAuth, tags, buildSpec, ttl,
-  displayName)
+  displayName, enablePullRequestPreview, pullRequestEnvironmentName,
+  backendEnvironmentArn)
 }
 \arguments{
 \item{appId}{[required] Unique Id for an Amplify App.}
@@ -37,6 +38,12 @@ amplify_create_branch(appId, branchName, description, stage, framework,
 \item{ttl}{The content TTL for the website in seconds.}
 
 \item{displayName}{Display name for a branch, will use as the default domain prefix.}
+
+\item{enablePullRequestPreview}{Enables Pull Request Preview for this branch.}
+
+\item{pullRequestEnvironmentName}{The Amplify Environment name for the pull request.}
+
+\item{backendEnvironmentArn}{ARN for a Backend Environment, part of an Amplify App.}
 }
 \description{
 Creates a new Branch for an Amplify App.
@@ -46,7 +53,7 @@ Creates a new Branch for an Amplify App.
   appId = "string",
   branchName = "string",
   description = "string",
-  stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL",
+  stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL"|"PULL_REQUEST",
   framework = "string",
   enableNotification = TRUE|FALSE,
   enableAutoBuild = TRUE|FALSE,
@@ -60,7 +67,10 @@ Creates a new Branch for an Amplify App.
   ),
   buildSpec = "string",
   ttl = "string",
-  displayName = "string"
+  displayName = "string",
+  enablePullRequestPreview = TRUE|FALSE,
+  pullRequestEnvironmentName = "string",
+  backendEnvironmentArn = "string"
 )
 }
 }

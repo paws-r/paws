@@ -10,6 +10,9 @@ NULL
 #' endpoint groups, each of which includes endpoints, such as Network Load
 #' Balancers. To see an AWS CLI example of creating an accelerator, scroll
 #' down to **Example**.
+#' 
+#' You must specify the US-West-2 (Oregon) Region to create or update
+#' accelerators.
 #'
 #' @usage
 #' globalaccelerator_create_accelerator(Name, IpAddressType, Enabled,
@@ -107,7 +110,8 @@ globalaccelerator_create_accelerator <- function(Name, IpAddressType = NULL, Ena
 #'   EndpointConfigurations = list(
 #'     list(
 #'       EndpointId = "string",
-#'       Weight = 123
+#'       Weight = 123,
+#'       ClientIPPreservationEnabled = TRUE|FALSE
 #'     )
 #'   ),
 #'   TrafficDialPercentage = 123.0,
@@ -371,8 +375,8 @@ globalaccelerator_describe_accelerator <- function(AcceleratorArn) {
 #' @usage
 #' globalaccelerator_describe_accelerator_attributes(AcceleratorArn)
 #'
-#' @param AcceleratorArn The Amazon Resource Name (ARN) of the accelerator with the attributes
-#' that you want to describe. Value is required.
+#' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator with the attributes
+#' that you want to describe.
 #'
 #' @section Request syntax:
 #' ```
@@ -384,7 +388,7 @@ globalaccelerator_describe_accelerator <- function(AcceleratorArn) {
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_describe_accelerator_attributes
-globalaccelerator_describe_accelerator_attributes <- function(AcceleratorArn = NULL) {
+globalaccelerator_describe_accelerator_attributes <- function(AcceleratorArn) {
   op <- new_operation(
     name = "DescribeAcceleratorAttributes",
     http_method = "POST",
@@ -601,7 +605,11 @@ globalaccelerator_list_listeners <- function(AcceleratorArn, MaxResults = NULL, 
 
 #' Update an accelerator
 #'
-#' Update an accelerator.
+#' Update an accelerator. To see an AWS CLI example of updating an
+#' accelerator, scroll down to **Example**.
+#' 
+#' You must specify the US-West-2 (Oregon) Region to create or update
+#' accelerators.
 #'
 #' @usage
 #' globalaccelerator_update_accelerator(AcceleratorArn, Name,
@@ -657,8 +665,8 @@ globalaccelerator_update_accelerator <- function(AcceleratorArn, Name = NULL, Ip
 #' globalaccelerator_update_accelerator_attributes(AcceleratorArn,
 #'   FlowLogsEnabled, FlowLogsS3Bucket, FlowLogsS3Prefix)
 #'
-#' @param AcceleratorArn The Amazon Resource Name (ARN) of the accelerator that you want to
-#' update. Attribute is required.
+#' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator that you want to
+#' update.
 #' @param FlowLogsEnabled Update whether flow logs are enabled. The default value is false. If the
 #' value is true, `FlowLogsS3Bucket` and `FlowLogsS3Prefix` must be
 #' specified.
@@ -687,7 +695,7 @@ globalaccelerator_update_accelerator <- function(AcceleratorArn, Name = NULL, Ip
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_update_accelerator_attributes
-globalaccelerator_update_accelerator_attributes <- function(AcceleratorArn = NULL, FlowLogsEnabled = NULL, FlowLogsS3Bucket = NULL, FlowLogsS3Prefix = NULL) {
+globalaccelerator_update_accelerator_attributes <- function(AcceleratorArn, FlowLogsEnabled = NULL, FlowLogsS3Bucket = NULL, FlowLogsS3Prefix = NULL) {
   op <- new_operation(
     name = "UpdateAcceleratorAttributes",
     http_method = "POST",
@@ -748,7 +756,8 @@ globalaccelerator_update_accelerator_attributes <- function(AcceleratorArn = NUL
 #'   EndpointConfigurations = list(
 #'     list(
 #'       EndpointId = "string",
-#'       Weight = 123
+#'       Weight = 123,
+#'       ClientIPPreservationEnabled = TRUE|FALSE
 #'     )
 #'   ),
 #'   TrafficDialPercentage = 123.0,

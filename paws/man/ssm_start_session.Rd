@@ -27,6 +27,9 @@ AWS CLI usage: \code{start-session} is an interactive command that requires
 the Session Manager plugin to be installed on the client machine making
 the call. For information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html}{Install the Session Manager Plugin for the AWS CLI}
 in the \emph{AWS Systems Manager User Guide}.
+
+AWS Tools for PowerShell usage: Start-SSMSession is not currently
+supported by AWS Tools for PowerShell on Windows local machines.
 }
 \section{Request syntax}{
 \preformatted{svc$start_session(

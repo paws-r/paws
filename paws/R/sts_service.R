@@ -128,11 +128,28 @@ NULL
 #' # 
 #' \donttest{svc <- sts()
 #' svc$assume_role(
-#'   DurationSeconds = 3600L,
 #'   ExternalId = "123ABC",
 #'   Policy = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"Stmt1\",\"Effect\":...",
 #'   RoleArn = "arn:aws:iam::123456789012:role/demo",
-#'   RoleSessionName = "Bob"
+#'   RoleSessionName = "testAssumeRoleSession",
+#'   Tags = list(
+#'     list(
+#'       Key = "Project",
+#'       Value = "Unicorn"
+#'     ),
+#'     list(
+#'       Key = "Team",
+#'       Value = "Automation"
+#'     ),
+#'     list(
+#'       Key = "Cost-Center",
+#'       Value = "12345"
+#'     )
+#'   ),
+#'   TransitiveTagKeys = list(
+#'     "Project",
+#'     "Cost-Center"
+#'   )
 #' )}
 #'
 #' @section Operations:
@@ -141,7 +158,8 @@ NULL
 #'  \link[=sts_assume_role_with_saml]{assume_role_with_saml} \tab Returns a set of temporary security credentials for users who have been authenticated via a SAML authentication response \cr
 #'  \link[=sts_assume_role_with_web_identity]{assume_role_with_web_identity} \tab Returns a set of temporary security credentials for users who have been authenticated in a mobile or web application with a web identity provider\cr
 #'  \link[=sts_decode_authorization_message]{decode_authorization_message} \tab Decodes additional information about the authorization status of a request from an encoded message returned in response to an AWS request \cr
-#'  \link[=sts_get_caller_identity]{get_caller_identity} \tab Returns details about the IAM identity whose credentials are used to call the API \cr
+#'  \link[=sts_get_access_key_info]{get_access_key_info} \tab Returns the account identifier for the specified access key ID \cr
+#'  \link[=sts_get_caller_identity]{get_caller_identity} \tab Returns details about the IAM user or role whose credentials are used to call the operation \cr
 #'  \link[=sts_get_federation_token]{get_federation_token} \tab Returns a set of temporary security credentials (consisting of an access key ID, a secret access key, and a security token) for a federated user \cr
 #'  \link[=sts_get_session_token]{get_session_token} \tab Returns a set of temporary credentials for an AWS account or IAM user 
 #' }

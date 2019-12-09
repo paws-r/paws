@@ -17,7 +17,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Owners}{Filters the AFI by owner. Specify an AWS account ID, \code{self} (owner is
 the sender of the request), or an AWS owner alias (valid values are
-\code{amazon} \| \code{aws-marketplace}).}
+\code{amazon} \\| \code{aws-marketplace}).}
 
 \item{Filters}{The filters.
 \itemize{
@@ -29,9 +29,9 @@ the sender of the request), or an AWS owner alias (valid values are
 \item \code{product-code} - The product code.
 \item \code{shell-version} - The version of the AWS Shell that was used to
 create the bitstream.
-\item \code{state} - The state of the AFI (\code{pending} \| \code{failed} \| \code{available}
-\| \code{unavailable}).
-\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+\item \code{state} - The state of the AFI (\code{pending} \\| \code{failed} \\| \code{available}
+\\| \code{unavailable}).
+\item \code{tag}:\\<key\\> - The key/value combination of a tag assigned to the
 resource. Use the tag key in the filter name and the tag value as
 the filter value. For example, to find all resources that have a tag
 with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for

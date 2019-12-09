@@ -15,6 +15,13 @@ NULL
 #' 
 #' This operation is eventually consistent. The results are best effort and
 #' may not reflect very recent updates and changes.
+#' 
+#' `CreateActivity` is an idempotent API. Subsequent requests won't create
+#' a duplicate resource if it was already created. `CreateActivity`\'s
+#' idempotency check is based on the activity `name`. If a following
+#' request has different `tags` values, Step Functions will ignore these
+#' differences and treat it as an idempotent request of the previous. In
+#' this case, `tags` will not be updated, even if they are different.
 #'
 #' @usage
 #' sfn_create_activity(name, tags)
@@ -27,7 +34,7 @@ NULL
 #' 
 #' A name must *not* contain:
 #' 
-#' -   whitespace
+#' -   white space
 #' 
 #' -   brackets `&lt; &gt; \{ \} \\[ \\]`
 #' 
@@ -37,6 +44,16 @@ NULL
 #' 
 #' -   control characters (`U+0000-001F`, `U+007F-009F`)
 #' @param tags The list of tags to add to a resource.
+#' 
+#' An array of key-value pairs. For more information, see [Using Cost
+#' Allocation
+#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+#' in the *AWS Billing and Cost Management User Guide*, and [Controlling
+#' Access Using IAM
+#' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html).
+#' 
+#' Tags may only contain Unicode letters, digits, white space, or these
+#' symbols: `_ . : / = + - @`.
 #'
 #' @section Request syntax:
 #' ```
@@ -81,15 +98,24 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' 
 #' This operation is eventually consistent. The results are best effort and
 #' may not reflect very recent updates and changes.
+#' 
+#' `CreateStateMachine` is an idempotent API. Subsequent requests won't
+#' create a duplicate resource if it was already created.
+#' `CreateStateMachine`\'s idempotency check is based on the state machine
+#' `name` and `definition`. If a following request has a different
+#' `roleArn` or `tags`, Step Functions will ignore these differences and
+#' treat it as an idempotent request of the previous. In this case,
+#' `roleArn` and `tags` will not be updated, even if they are different.
 #'
 #' @usage
-#' sfn_create_state_machine(name, definition, roleArn, tags)
+#' sfn_create_state_machine(name, definition, roleArn, type,
+#'   loggingConfiguration, tags)
 #'
 #' @param name &#91;required&#93; The name of the state machine.
 #' 
 #' A name must *not* contain:
 #' 
-#' -   whitespace
+#' -   white space
 #' 
 #' -   brackets `&lt; &gt; \{ \} \\[ \\]`
 #' 
@@ -103,7 +129,21 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html).
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role to use for this state
 #' machine.
+#' @param type Determines whether a Standard or Express state machine is created. If
+#' not set, Standard is created.
+#' @param loggingConfiguration Defines what execution history events are logged and where they are
+#' logged.
 #' @param tags Tags to be added when creating a state machine.
+#' 
+#' An array of key-value pairs. For more information, see [Using Cost
+#' Allocation
+#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+#' in the *AWS Billing and Cost Management User Guide*, and [Controlling
+#' Access Using IAM
+#' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html).
+#' 
+#' Tags may only contain Unicode letters, digits, white space, or these
+#' symbols: `_ . : / = + - @`.
 #'
 #' @section Request syntax:
 #' ```
@@ -111,6 +151,18 @@ sfn_create_activity <- function(name, tags = NULL) {
 #'   name = "string",
 #'   definition = "string",
 #'   roleArn = "string",
+#'   type = "STANDARD"|"EXPRESS",
+#'   loggingConfiguration = list(
+#'     level = "ALL"|"ERROR"|"FATAL"|"OFF",
+#'     includeExecutionData = TRUE|FALSE,
+#'     destinations = list(
+#'       list(
+#'         cloudWatchLogsLogGroup = list(
+#'           logGroupArn = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
 #'   tags = list(
 #'     list(
 #'       key = "string",
@@ -123,14 +175,14 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname sfn_create_state_machine
-sfn_create_state_machine <- function(name, definition, roleArn, tags = NULL) {
+sfn_create_state_machine <- function(name, definition, roleArn, type = NULL, loggingConfiguration = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateStateMachine",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sfn$create_state_machine_input(name = name, definition = definition, roleArn = roleArn, tags = tags)
+  input <- .sfn$create_state_machine_input(name = name, definition = definition, roleArn = roleArn, type = type, loggingConfiguration = loggingConfiguration, tags = tags)
   output <- .sfn$create_state_machine_output()
   config <- get_config()
   svc <- .sfn$service(config)
@@ -681,6 +733,9 @@ sfn_list_state_machines <- function(maxResults = NULL, nextToken = NULL) {
 #' List tags for a given resource
 #'
 #' List tags for a given resource.
+#' 
+#' Tags may only contain Unicode letters, digits, white space, or these
+#' symbols: `_ . : / = + - @`.
 #'
 #' @usage
 #' sfn_list_tags_for_resource(resourceArn)
@@ -715,18 +770,21 @@ sfn_list_tags_for_resource <- function(resourceArn) {
 }
 .sfn$operations$list_tags_for_resource <- sfn_list_tags_for_resource
 
-#' Used by workers to report that the task identified by the taskToken
-#' failed
+#' Used by activity workers and task states using the callback pattern to
+#' report that the task identified by the taskToken failed
 #'
-#' Used by workers to report that the task identified by the `taskToken`
-#' failed.
+#' Used by activity workers and task states using the
+#' [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token)
+#' pattern to report that the task identified by the `taskToken` failed.
 #'
 #' @usage
 #' sfn_send_task_failure(taskToken, error, cause)
 #'
-#' @param taskToken &#91;required&#93; The token that represents this task. Task tokens are generated by the
-#' service when the tasks are assigned to a worker (see
-#' GetActivityTask::taskToken).
+#' @param taskToken &#91;required&#93; The token that represents this task. Task tokens are generated by Step
+#' Functions when tasks are assigned to a worker, or in the [context
+#' object](https://docs.aws.amazon.com/step-functions/latest/dg/input-output-contextobject.html)
+#' when a workflow enters a task state. See
+#' GetActivityTaskOutput\\$taskToken.
 #' @param error The error code of the failure.
 #' @param cause A more detailed explanation of the cause of the failure.
 #'
@@ -759,29 +817,38 @@ sfn_send_task_failure <- function(taskToken, error = NULL, cause = NULL) {
 }
 .sfn$operations$send_task_failure <- sfn_send_task_failure
 
-#' Used by workers to report to the service that the task represented by
-#' the specified taskToken is still making progress
+#' Used by activity workers and task states using the callback pattern to
+#' report to Step Functions that the task represented by the specified
+#' taskToken is still making progress
 #'
-#' Used by workers to report to the service that the task represented by
-#' the specified `taskToken` is still making progress. This action resets
-#' the `Heartbeat` clock. The `Heartbeat` threshold is specified in the
-#' state machine\'s Amazon States Language definition. This action does not
-#' in itself create an event in the execution history. However, if the task
-#' times out, the execution history contains an `ActivityTimedOut` event.
+#' Used by activity workers and task states using the
+#' [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token)
+#' pattern to report to Step Functions that the task represented by the
+#' specified `taskToken` is still making progress. This action resets the
+#' `Heartbeat` clock. The `Heartbeat` threshold is specified in the state
+#' machine\'s Amazon States Language definition (`HeartbeatSeconds`). This
+#' action does not in itself create an event in the execution history.
+#' However, if the task times out, the execution history contains an
+#' `ActivityTimedOut` entry for activities, or a `TaskTimedOut` entry for
+#' for tasks using the [job
+#' run](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync)
+#' or
+#' [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token)
+#' pattern.
 #' 
 #' The `Timeout` of a task, defined in the state machine\'s Amazon States
 #' Language definition, is its maximum allowed duration, regardless of the
-#' number of SendTaskHeartbeat requests received.
-#' 
-#' This operation is only useful for long-lived tasks to report the
-#' liveliness of the task.
+#' number of SendTaskHeartbeat requests received. Use `HeartbeatSeconds` to
+#' configure the timeout interval for heartbeats.
 #'
 #' @usage
 #' sfn_send_task_heartbeat(taskToken)
 #'
-#' @param taskToken &#91;required&#93; The token that represents this task. Task tokens are generated by the
-#' service when the tasks are assigned to a worker (see
-#' GetActivityTaskOutput\\$taskToken).
+#' @param taskToken &#91;required&#93; The token that represents this task. Task tokens are generated by Step
+#' Functions when tasks are assigned to a worker, or in the [context
+#' object](https://docs.aws.amazon.com/step-functions/latest/dg/input-output-contextobject.html)
+#' when a workflow enters a task state. See
+#' GetActivityTaskOutput\\$taskToken.
 #'
 #' @section Request syntax:
 #' ```
@@ -810,18 +877,22 @@ sfn_send_task_heartbeat <- function(taskToken) {
 }
 .sfn$operations$send_task_heartbeat <- sfn_send_task_heartbeat
 
-#' Used by workers to report that the task identified by the taskToken
-#' completed successfully
+#' Used by activity workers and task states using the callback pattern to
+#' report that the task identified by the taskToken completed successfully
 #'
-#' Used by workers to report that the task identified by the `taskToken`
-#' completed successfully.
+#' Used by activity workers and task states using the
+#' [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token)
+#' pattern to report that the task identified by the `taskToken` completed
+#' successfully.
 #'
 #' @usage
 #' sfn_send_task_success(taskToken, output)
 #'
-#' @param taskToken &#91;required&#93; The token that represents this task. Task tokens are generated by the
-#' service when the tasks are assigned to a worker (see
-#' GetActivityTaskOutput\\$taskToken).
+#' @param taskToken &#91;required&#93; The token that represents this task. Task tokens are generated by Step
+#' Functions when tasks are assigned to a worker, or in the [context
+#' object](https://docs.aws.amazon.com/step-functions/latest/dg/input-output-contextobject.html)
+#' when a workflow enters a task state. See
+#' GetActivityTaskOutput\\$taskToken.
 #' @param output &#91;required&#93; The JSON output of the task.
 #'
 #' @section Request syntax:
@@ -874,7 +945,7 @@ sfn_send_task_success <- function(taskToken, output) {
 #' 
 #' A name must *not* contain:
 #' 
-#' -   whitespace
+#' -   white space
 #' 
 #' -   brackets `&lt; &gt; \{ \} \\[ \\]`
 #' 
@@ -963,6 +1034,16 @@ sfn_stop_execution <- function(executionArn, error = NULL, cause = NULL) {
 #' Add a tag to a Step Functions resource
 #'
 #' Add a tag to a Step Functions resource.
+#' 
+#' An array of key-value pairs. For more information, see [Using Cost
+#' Allocation
+#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+#' in the *AWS Billing and Cost Management User Guide*, and [Controlling
+#' Access Using IAM
+#' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html).
+#' 
+#' Tags may only contain Unicode letters, digits, white space, or these
+#' symbols: `_ . : / = + - @`.
 #'
 #' @usage
 #' sfn_tag_resource(resourceArn, tags)
@@ -971,7 +1052,7 @@ sfn_stop_execution <- function(executionArn, error = NULL, cause = NULL) {
 #' activity.
 #' @param tags &#91;required&#93; The list of tags to add to a resource.
 #' 
-#' Tags may only contain unicode letters, digits, whitespace, or these
+#' Tags may only contain Unicode letters, digits, white space, or these
 #' symbols: `_ . : / = + - @`.
 #'
 #' @section Request syntax:
@@ -1063,34 +1144,47 @@ sfn_untag_resource <- function(resourceArn, tagKeys) {
 #' `roleArn`.
 #'
 #' @usage
-#' sfn_update_state_machine(stateMachineArn, definition, roleArn)
+#' sfn_update_state_machine(stateMachineArn, definition, roleArn,
+#'   loggingConfiguration)
 #'
 #' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine.
 #' @param definition The Amazon States Language definition of the state machine. See [Amazon
 #' States
 #' Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html).
 #' @param roleArn The Amazon Resource Name (ARN) of the IAM role of the state machine.
+#' @param loggingConfiguration 
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_state_machine(
 #'   stateMachineArn = "string",
 #'   definition = "string",
-#'   roleArn = "string"
+#'   roleArn = "string",
+#'   loggingConfiguration = list(
+#'     level = "ALL"|"ERROR"|"FATAL"|"OFF",
+#'     includeExecutionData = TRUE|FALSE,
+#'     destinations = list(
+#'       list(
+#'         cloudWatchLogsLogGroup = list(
+#'           logGroupArn = "string"
+#'         )
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname sfn_update_state_machine
-sfn_update_state_machine <- function(stateMachineArn, definition = NULL, roleArn = NULL) {
+sfn_update_state_machine <- function(stateMachineArn, definition = NULL, roleArn = NULL, loggingConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateStateMachine",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sfn$update_state_machine_input(stateMachineArn = stateMachineArn, definition = definition, roleArn = roleArn)
+  input <- .sfn$update_state_machine_input(stateMachineArn = stateMachineArn, definition = definition, roleArn = roleArn, loggingConfiguration = loggingConfiguration)
   output <- .sfn$update_state_machine_output()
   config <- get_config()
   svc <- .sfn$service(config)

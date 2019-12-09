@@ -12,11 +12,11 @@ codecommit_post_comment_reply(inReplyTo, clientRequestToken, content)
 get this ID, use GetCommentsForComparedCommit or
 GetCommentsForPullRequest.}
 
-\item{clientRequestToken}{A unique, client-generated idempotency token that when provided in a
+\item{clientRequestToken}{A unique, client-generated idempotency token that, when provided in a
 request, ensures the request cannot be repeated with a changed
 parameter. If a request is received with the same parameters and a token
-is included, the request will return information about the initial
-request that used that token.}
+is included, the request returns information about the initial request
+that used that token.}
 
 \item{content}{[required] The contents of your reply to a comment.}
 }

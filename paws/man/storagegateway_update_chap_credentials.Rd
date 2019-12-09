@@ -31,7 +31,8 @@ The secret key must be between 12 and 16 bytes when encoded in UTF-8.}
 \description{
 Updates the Challenge-Handshake Authentication Protocol (CHAP)
 credentials for a specified iSCSI target. By default, a gateway does not
-have CHAP enabled; however, for added security, you might use it.
+have CHAP enabled; however, for added security, you might use it. This
+operation is supported in the volume and tape gateway types.
 }
 \details{
 When you update CHAP credentials, all existing connections on the target

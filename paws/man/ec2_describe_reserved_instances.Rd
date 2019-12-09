@@ -13,7 +13,7 @@ ec2_describe_reserved_instances(Filters, OfferingClass,
 \item \code{availability-zone} - The Availability Zone where the Reserved
 Instance can be used.
 \item \code{duration} - The duration of the Reserved Instance (one year or
-three years), in seconds (\code{31536000} \| \code{94608000}).
+three years), in seconds (\code{31536000} \\| \code{94608000}).
 \item \code{end} - The time when the Reserved Instance expires (for example,
 2015-08-07T11:54:42.000Z).
 \item \code{fixed-price} - The purchase price of the Reserved Instance (for
@@ -21,26 +21,26 @@ example, 9800.0).
 \item \code{instance-type} - The instance type that is covered by the
 reservation.
 \item \code{scope} - The scope of the Reserved Instance (\code{Region} or
-\code{Availability Zone}).
+\verb{Availability Zone}).
 \item \code{product-description} - The Reserved Instance product platform
-description. Instances that include \code{(Amazon VPC)} in the product
+description. Instances that include \verb{(Amazon VPC)} in the product
 platform description will only be displayed to EC2-Classic account
-holders and are for use with Amazon VPC (\code{Linux/UNIX} \|
-\code{Linux/UNIX (Amazon VPC)} \| \code{SUSE Linux} \|
-\code{SUSE Linux (Amazon VPC)} \| \code{Red Hat Enterprise Linux} \|
-\code{Red Hat Enterprise Linux (Amazon VPC)} \| \code{Windows} \|
-\code{Windows (Amazon VPC)} \| \code{Windows with SQL Server Standard} \|
-\code{Windows with SQL Server Standard (Amazon VPC)} \|
-\code{Windows with SQL Server Web} \|
-\code{Windows with SQL Server Web (Amazon VPC)} \|
-\code{Windows with SQL Server Enterprise} \|
-\code{Windows with SQL Server Enterprise (Amazon VPC)}).
+holders and are for use with Amazon VPC (\code{Linux/UNIX} \\|
+\verb{Linux/UNIX (Amazon VPC)} \\| \verb{SUSE Linux} \\|
+\verb{SUSE Linux (Amazon VPC)} \\| \verb{Red Hat Enterprise Linux} \\|
+\verb{Red Hat Enterprise Linux (Amazon VPC)} \\| \code{Windows} \\|
+\verb{Windows (Amazon VPC)} \\| \verb{Windows with SQL Server Standard} \\|
+\verb{Windows with SQL Server Standard (Amazon VPC)} \\|
+\verb{Windows with SQL Server Web} \\|
+\verb{Windows with SQL Server Web (Amazon VPC)} \\|
+\verb{Windows with SQL Server Enterprise} \\|
+\verb{Windows with SQL Server Enterprise (Amazon VPC)}).
 \item \code{reserved-instances-id} - The ID of the Reserved Instance.
 \item \code{start} - The time at which the Reserved Instance purchase request
 was placed (for example, 2014-08-07T11:54:42.000Z).
-\item \code{state} - The state of the Reserved Instance (\code{payment-pending} \|
-\code{active} \| \code{payment-failed} \| \code{retired}).
-\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+\item \code{state} - The state of the Reserved Instance (\code{payment-pending} \\|
+\code{active} \\| \code{payment-failed} \\| \code{retired}).
+\item \code{tag}:\\<key\\> - The key/value combination of a tag assigned to the
 resource. Use the tag key in the filter name and the tag value as
 the filter value. For example, to find all resources that have a tag
 with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
@@ -66,7 +66,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{OfferingType}{The Reserved Instance offering type. If you are using tools that predate
 the 2011-11-01 API version, you only have access to the
-\code{Medium Utilization} Reserved Instance offering type.}
+\verb{Medium Utilization} Reserved Instance offering type.}
 }
 \description{
 Describes one or more of the Reserved Instances that you purchased.

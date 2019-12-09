@@ -17,7 +17,7 @@ the default event bus is used.}
 }
 \description{
 Adds the specified targets to the specified rule, or updates the targets
-if they're already associated with the rule.
+if they\'re already associated with the rule.
 }
 \details{
 Targets are the resources that are invoked when a rule is triggered.
@@ -43,8 +43,8 @@ You can configure the following as targets in EventBridge:
 
 Creating rules with built-in targets is supported only on the AWS
 Management Console. The built-in targets are
-\code{EC2 CreateSnapshot API call}, \code{EC2 RebootInstances API call},
-\code{EC2 StopInstances API call}, and \code{EC2 TerminateInstances API call}.
+\verb{EC2 CreateSnapshot API call}, \verb{EC2 RebootInstances API call},
+\verb{EC2 StopInstances API call}, and \verb{EC2 TerminateInstances API call}.
 
 For some target types, \code{PutTargets} provides target-specific parameters.
 If the target is a Kinesis data stream, you can optionally specify which
@@ -62,15 +62,15 @@ in the \emph{Amazon EventBridge User Guide}.
 
 If another AWS account is in the same Region and has granted you
 permission (using \code{PutPermission}), you can send events to that account.
-Set that account's event bus as a target of the rules in your account.
-To send the matched events to the other account, specify that account's
+Set that account\'s event bus as a target of the rules in your account.
+To send the matched events to the other account, specify that account\'s
 event bus as the \code{Arn} value when you run \code{PutTargets}. If your account
 sends events to another account, your account is charged for each sent
 event. Each event sent to another account is charged as a custom event.
-The account receiving the event isn't charged. For more information,
+The account receiving the event isn\'t charged. For more information,
 see \href{https://aws.amazon.com/eventbridge/pricing/}{Amazon EventBridge Pricing}.
 
-If you're setting an event bus in another account as the target and
+If you\'re setting an event bus in another account as the target and
 that account granted permission to your account through an organization
 instead of directly by the account ID, you must specify a \code{RoleArn} with
 proper permissions in the \code{Target} structure. For more information, see
@@ -91,7 +91,7 @@ nothing from the event is passed to the target).
 \item If \code{Input} is specified in the form of valid JSON, then the matched
 event is overridden with this constant.
 \item If \code{InputPath} is specified in the form of JSONPath (for example,
-\code{$.detail}), only the part of the event specified in the path is
+\verb{$.detail}), only the part of the event specified in the path is
 passed to the target (for example, only the detail part of the event
 is passed).
 \item If \code{InputTransformer} is specified, one or more specified JSONPaths

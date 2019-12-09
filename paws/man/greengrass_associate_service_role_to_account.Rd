@@ -7,7 +7,7 @@
 greengrass_associate_service_role_to_account(RoleArn)
 }
 \arguments{
-\item{RoleArn}{The ARN of the service role you wish to associate with your account.}
+\item{RoleArn}{[required] The ARN of the service role you wish to associate with your account.}
 }
 \description{
 Associates a role with your account. AWS IoT Greengrass will use the role to access your Lambda functions and AWS IoT resources. This is necessary for deployments to succeed. The role must have at least minimum permissions in the policy ''AWSGreengrassResourceAccessRolePolicy''.

@@ -5,7 +5,8 @@
 \title{Creates a Kinesis Data Firehose delivery stream}
 \usage{
 firehose_create_delivery_stream(DeliveryStreamName, DeliveryStreamType,
-  KinesisStreamSourceConfiguration, S3DestinationConfiguration,
+  KinesisStreamSourceConfiguration,
+  DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration,
   ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration,
   ElasticsearchDestinationConfiguration, SplunkDestinationConfiguration,
   Tags)
@@ -29,6 +30,9 @@ stream as a source.
 stream, a KinesisStreamSourceConfiguration containing the Kinesis data
 stream Amazon Resource Name (ARN) and the role ARN for the source
 stream.}
+
+\item{DeliveryStreamEncryptionConfigurationInput}{Used to specify the type and Amazon Resource Name (ARN) of the KMS key
+needed for Server-Side Encryption (SSE).}
 
 \item{S3DestinationConfiguration}{[Deprecated] The destination in Amazon S3. You can specify only one
 destination.}
@@ -59,10 +63,16 @@ By default, you can create up to 50 delivery streams per AWS Region.
 
 This is an asynchronous operation that immediately returns. The initial
 status of the delivery stream is \code{CREATING}. After the delivery stream
-is created, its status is \code{ACTIVE} and it now accepts data. Attempts to
-send data to a delivery stream that is not in the \code{ACTIVE} state cause
-an exception. To check the state of a delivery stream, use
-DescribeDeliveryStream.
+is created, its status is \code{ACTIVE} and it now accepts data. If the
+delivery stream creation fails, the status transitions to
+\code{CREATING_FAILED}. Attempts to send data to a delivery stream that is
+not in the \code{ACTIVE} state cause an exception. To check the state of a
+delivery stream, use DescribeDeliveryStream.
+
+If the status of a delivery stream is \code{CREATING_FAILED}, this status
+doesn\'t change, and you can\'t invoke \code{CreateDeliveryStream} again on
+it. However, you can invoke the DeleteDeliveryStream operation to delete
+it.
 
 A Kinesis Data Firehose delivery stream can be configured to receive
 records directly from providers using PutRecord or PutRecordBatch, or it
@@ -71,6 +81,11 @@ specify a Kinesis data stream as input, set the \code{DeliveryStreamType}
 parameter to \code{KinesisStreamAsSource}, and provide the Kinesis stream
 Amazon Resource Name (ARN) and role ARN in the
 \code{KinesisStreamSourceConfiguration} parameter.
+
+To create a delivery stream with server-side encryption (SSE) enabled,
+include DeliveryStreamEncryptionConfigurationInput in your request. This
+is optional. You can also invoke StartDeliveryStreamEncryption to turn
+on SSE for an existing delivery stream that doesn\'t have SSE enabled.
 
 A delivery stream is configured with a single destination: Amazon S3,
 Amazon ES, Amazon Redshift, or Splunk. You must specify only one of the
@@ -100,7 +115,7 @@ This is specified in the
 \item The compression formats \code{SNAPPY} or \code{ZIP} cannot be specified in
 \code{RedshiftDestinationConfiguration.S3Configuration} because the
 Amazon Redshift \code{COPY} operation that reads from the S3 bucket
-doesn't support these compression formats.
+doesn\'t support these compression formats.
 \item We strongly recommend that you use the user name and password you
 provide exclusively with Kinesis Data Firehose, and that the
 permissions for the account are restricted for Amazon Redshift
@@ -110,7 +125,7 @@ permissions for the account are restricted for Amazon Redshift
 Kinesis Data Firehose assumes the IAM role that is configured as part of
 the destination. The role should allow the Kinesis Data Firehose
 principal to assume the role, and the role should have permissions that
-allow the service to deliver the data. For more information, see \href{http://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3}{Grant Kinesis Data Firehose Access to an Amazon S3 Destination}
+allow the service to deliver the data. For more information, see \href{https://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3}{Grant Kinesis Data Firehose Access to an Amazon S3 Destination}
 in the \emph{Amazon Kinesis Data Firehose Developer Guide}.
 }
 \section{Request syntax}{
@@ -120,6 +135,10 @@ in the \emph{Amazon Kinesis Data Firehose Developer Guide}.
   KinesisStreamSourceConfiguration = list(
     KinesisStreamARN = "string",
     RoleARN = "string"
+  ),
+  DeliveryStreamEncryptionConfigurationInput = list(
+    KeyARN = "string",
+    KeyType = "AWS_OWNED_CMK"|"CUSTOMER_MANAGED_CMK"
   ),
   S3DestinationConfiguration = list(
     RoleARN = "string",
@@ -336,6 +355,7 @@ in the \emph{Amazon Kinesis Data Firehose Developer Guide}.
   ElasticsearchDestinationConfiguration = list(
     RoleARN = "string",
     DomainARN = "string",
+    ClusterEndpoint = "string",
     IndexName = "string",
     TypeName = "string",
     IndexRotationPeriod = "NoRotation"|"OneHour"|"OneDay"|"OneWeek"|"OneMonth",

@@ -23,7 +23,7 @@ deployment configuration that you create by calling the create
 deployment configuration operation.
 
 CodeDeployDefault.OneAtATime is the default deployment configuration. It
-is used if a configuration isn't specified for the deployment or
+is used if a configuration isn\'t specified for the deployment or
 deployment group.
 
 For more information about the predefined deployment configurations in
@@ -40,7 +40,7 @@ used in the same call as OnPremisesTagSet.}
 
 \item{autoScalingGroups}{A list of associated Amazon EC2 Auto Scaling groups.}
 
-\item{serviceRoleArn}{[required] A service role ARN that allows AWS CodeDeploy to act on the user's
+\item{serviceRoleArn}{[required] A service role ARN that allows AWS CodeDeploy to act on the user\'s
 behalf when interacting with AWS services.}
 
 \item{triggerConfigurations}{Information about triggers to create when the deployment group is
@@ -69,7 +69,7 @@ groups. Cannot be used in the same call as ec2TagFilters.}
 only to deployment groups that use the Amazon ECS compute platform. A
 target Amazon ECS service is specified as an Amazon ECS cluster and
 service name pair using the format
-\code{&lt;clustername&gt;:&lt;servicename&gt;}.}
+\verb{&lt;clustername&gt;:&lt;servicename&gt;}.}
 
 \item{onPremisesTagSet}{Information about groups of tags applied to on-premises instances. The
 deployment group includes only on-premises instances identified by all

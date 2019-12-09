@@ -10,7 +10,7 @@ opsworks_start_stack(StackId)
 \item{StackId}{[required] The stack ID.}
 }
 \description{
-Starts a stack's instances.
+Starts a stack\'s instances.
 }
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a

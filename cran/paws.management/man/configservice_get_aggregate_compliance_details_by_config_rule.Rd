@@ -29,8 +29,8 @@ does not support the \code{NOT_APPLICABLE} and \code{INSUFFICIENT_DATA} values.}
 default is 50. You cannot specify a number greater than 100. If you
 specify 0, AWS Config uses the default.}
 
-\item{NextToken}{The nextToken string returned on a previous page that you use to get the
-next page of results in a paginated response.}
+\item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
+the next page of results in a paginated response.}
 }
 \description{
 Returns the evaluation results for the specified AWS Config rule for a
@@ -40,7 +40,7 @@ whether each resource complies with the rule.
 }
 \details{
 The results can return an empty result page. But if you have a
-nextToken, the results are displayed on the next page.
+\code{nextToken}, the results are displayed on the next page.
 }
 \section{Request syntax}{
 \preformatted{svc$get_aggregate_compliance_details_by_config_rule(

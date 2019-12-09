@@ -30,12 +30,12 @@ Each \code{KeySchemaElement} in the array is composed of:
 }
 
 The partition key of an item is also known as its \emph{hash attribute}. The
-term "hash attribute" derives from the DynamoDB usage of an internal
+term \"hash attribute\" derives from the DynamoDB usage of an internal
 hash function to evenly distribute data items across partitions, based
 on their partition key values.
 
 The sort key of an item is also known as its \emph{range attribute}. The term
-"range attribute" derives from the way DynamoDB stores items with the
+\"range attribute\" derives from the way DynamoDB stores items with the
 same partition key physically close together, in sorted order by the
 sort key value.
 
@@ -124,10 +124,11 @@ units.
 \item{BillingMode}{Controls how you are charged for read and write throughput and how you
 manage capacity. This setting can be changed later.
 \itemize{
-\item \code{PROVISIONED} - Sets the billing mode to \code{PROVISIONED}. We recommend
-using \code{PROVISIONED} for predictable workloads.
-\item \code{PAY_PER_REQUEST} - Sets the billing mode to \code{PAY_PER_REQUEST}. We
-recommend using \code{PAY_PER_REQUEST} for unpredictable workloads.
+\item \code{PROVISIONED} - We recommend using \code{PROVISIONED} for predictable
+workloads. \code{PROVISIONED} sets the billing mode to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual}{Provisioned Mode}.
+\item \code{PAY_PER_REQUEST} - We recommend using \code{PAY_PER_REQUEST} for
+unpredictable workloads. \code{PAY_PER_REQUEST} sets the billing mode to
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand}{On-Demand Mode}.
 }}
 
 \item{ProvisionedThroughput}{Represents the provisioned throughput settings for a specified table or
@@ -148,7 +149,7 @@ of:
 enabled (true) or disabled (false).
 \item \code{StreamViewType} - When an item in the table is modified,
 \code{StreamViewType} determines what information is written to the
-table's stream. Valid values for \code{StreamViewType} are:
+table\'s stream. Valid values for \code{StreamViewType} are:
 \itemize{
 \item \code{KEYS_ONLY} - Only the key attributes of the modified item are
 written to the stream.

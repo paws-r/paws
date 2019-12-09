@@ -62,7 +62,7 @@ you retry the request multiple times. You might retry stack set
 operation requests to ensure that AWS CloudFormation successfully
 received them.
 
-If you don't specify an operation ID, the SDK generates one
+If you don\'t specify an operation ID, the SDK generates one
 automatically.
 
 Repeating this stack set operation with a new operation ID retries all

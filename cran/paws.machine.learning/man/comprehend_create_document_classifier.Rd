@@ -17,7 +17,7 @@ role that grants Amazon Comprehend read access to your input data.}
 
 \item{Tags}{Tags to be associated with the document classifier being created. A tag
 is a key-value pair that adds as a metadata to a resource used by Amazon
-Comprehend. For example, a tag with "Sales" as the key might be added
+Comprehend. For example, a tag with \"Sales\" as the key might be added
 to a resource to indicate its use by the sales department.}
 
 \item{InputDataConfig}{[required] Specifies the format and location of the input data for the job.}
@@ -25,13 +25,13 @@ to a resource to indicate its use by the sales department.}
 \item{OutputDataConfig}{Enables the addition of output results configuration parameters for
 custom classifier jobs.}
 
-\item{ClientRequestToken}{A unique identifier for the request. If you don't set the client
+\item{ClientRequestToken}{A unique identifier for the request. If you don\'t set the client
 request token, Amazon Comprehend generates one.}
 
-\item{LanguageCode}{[required] The language of the input documents. You can specify any of the primary
-languages supported by Amazon Comprehend: German ("de"), English
-("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
-Portuguese ("pt"). All documents must be in the same language.}
+\item{LanguageCode}{[required] The language of the input documents. You can specify any of the
+following languages supported by Amazon Comprehend: German (\"de\"),
+English (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"),
+or Portuguese (\"pt\"). All documents must be in the same language.}
 
 \item{VolumeKmsKeyId}{ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
 uses to encrypt data on the storage volume attached to the ML compute
@@ -73,7 +73,7 @@ how-document-classification.
     KmsKeyId = "string"
   ),
   ClientRequestToken = "string",
-  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
+  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
   VolumeKmsKeyId = "string",
   VpcConfig = list(
     SecurityGroupIds = list(

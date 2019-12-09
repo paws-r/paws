@@ -9,16 +9,16 @@ lightsail_get_export_snapshot_records(pageToken)
 }
 \arguments{
 \item{pageToken}{A token used for advancing to a specific page of results for your
-\code{get export snapshot records} request.}
+\verb{get export snapshot records} request.}
 }
 \description{
 Returns the export snapshot record created as a result of the
-\code{export snapshot} operation.
+\verb{export snapshot} operation.
 }
 \details{
 An export snapshot record can be used to create a new Amazon EC2
 instance and its related resources with the
-\code{create cloud formation stack} operation.
+\verb{create cloud formation stack} operation.
 }
 \section{Request syntax}{
 \preformatted{svc$get_export_snapshot_records(

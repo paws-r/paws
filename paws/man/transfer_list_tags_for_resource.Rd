@@ -15,10 +15,10 @@ server, user, or role.}
 \item{MaxResults}{Specifies the number of tags to return as a response to the
 \code{ListTagsForResource} request.}
 
-\item{NextToken}{When you request additional results from the \code{ListTagsForResource} call,
-a \code{NextToken} parameter is returned in the input. You can then pass in a
-subsequent command the \code{NextToken} parameter to continue listing
-additional tags.}
+\item{NextToken}{When you request additional results from the \code{ListTagsForResource}
+operation, a \code{NextToken} parameter is returned in the input. You can
+then pass in a subsequent command to the \code{NextToken} parameter to
+continue listing additional tags.}
 }
 \description{
 Lists all of the tags associated with the Amazon Resource Number (ARN)

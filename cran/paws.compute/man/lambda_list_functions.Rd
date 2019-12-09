@@ -8,14 +8,14 @@ configuration of each}
 lambda_list_functions(MasterRegion, FunctionVersion, Marker, MaxItems)
 }
 \arguments{
-\item{MasterRegion}{For Lambda\@Edge functions, the AWS Region of the master function. For
+\item{MasterRegion}{For Lambda\\@Edge functions, the AWS Region of the master function. For
 example, \code{us-east-2} or \code{ALL}. If specified, you must set
 \code{FunctionVersion} to \code{ALL}.}
 
 \item{FunctionVersion}{Set to \code{ALL} to include entries for all published versions of each
 function.}
 
-\item{Marker}{Specify the pagination token that's returned by a previous request to
+\item{Marker}{Specify the pagination token that\'s returned by a previous request to
 retrieve the next page of results.}
 
 \item{MaxItems}{Specify a value between 1 and 50 to limit the number of functions in the

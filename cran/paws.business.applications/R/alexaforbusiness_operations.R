@@ -350,7 +350,7 @@ alexaforbusiness_create_address_book <- function(Name, Description = NULL, Clien
 #'   S3KeyPrefix = "string",
 #'   Format = "CSV"|"CSV_ZIP",
 #'   ContentRange = list(
-#'     Interval = "ONE_DAY"|"ONE_WEEK"
+#'     Interval = "ONE_DAY"|"ONE_WEEK"|"THIRTY_DAYS"
 #'   ),
 #'   Recurrence = list(
 #'     StartDate = "string"
@@ -616,8 +616,9 @@ alexaforbusiness_create_network_profile <- function(NetworkProfileName, Descript
 #'
 #' @usage
 #' alexaforbusiness_create_profile(ProfileName, Timezone, Address,
-#'   DistanceUnit, TemperatureUnit, WakeWord, ClientRequestToken,
-#'   SetupModeDisabled, MaxVolumeLimit, PSTNEnabled)
+#'   DistanceUnit, TemperatureUnit, WakeWord, Locale, ClientRequestToken,
+#'   SetupModeDisabled, MaxVolumeLimit, PSTNEnabled,
+#'   MeetingRoomConfiguration)
 #'
 #' @param ProfileName &#91;required&#93; The name of a room profile.
 #' @param Timezone &#91;required&#93; The time zone used by a room profile.
@@ -625,10 +626,13 @@ alexaforbusiness_create_network_profile <- function(NetworkProfileName, Descript
 #' @param DistanceUnit &#91;required&#93; The distance unit to be used by devices in the profile.
 #' @param TemperatureUnit &#91;required&#93; The temperature unit to be used by devices in the profile.
 #' @param WakeWord &#91;required&#93; A wake word for Alexa, Echo, Amazon, or a computer.
+#' @param Locale The locale of the room profile. (This is currently only available to a
+#' limited preview audience.)
 #' @param ClientRequestToken The user-specified token that is used during the creation of a profile.
 #' @param SetupModeDisabled Whether room profile setup is enabled.
 #' @param MaxVolumeLimit The maximum volume limit for a room profile.
 #' @param PSTNEnabled Whether PSTN calling is enabled.
+#' @param MeetingRoomConfiguration The meeting room settings of a room profile.
 #'
 #' @section Request syntax:
 #' ```
@@ -639,24 +643,43 @@ alexaforbusiness_create_network_profile <- function(NetworkProfileName, Descript
 #'   DistanceUnit = "METRIC"|"IMPERIAL",
 #'   TemperatureUnit = "FAHRENHEIT"|"CELSIUS",
 #'   WakeWord = "ALEXA"|"AMAZON"|"ECHO"|"COMPUTER",
+#'   Locale = "string",
 #'   ClientRequestToken = "string",
 #'   SetupModeDisabled = TRUE|FALSE,
 #'   MaxVolumeLimit = 123,
-#'   PSTNEnabled = TRUE|FALSE
+#'   PSTNEnabled = TRUE|FALSE,
+#'   MeetingRoomConfiguration = list(
+#'     RoomUtilizationMetricsEnabled = TRUE|FALSE,
+#'     EndOfMeetingReminder = list(
+#'       ReminderAtMinutes = list(
+#'         123
+#'       ),
+#'       ReminderType = "ANNOUNCEMENT_TIME_CHECK"|"ANNOUNCEMENT_VARIABLE_TIME_LEFT"|"CHIME"|"KNOCK",
+#'       Enabled = TRUE|FALSE
+#'     ),
+#'     InstantBooking = list(
+#'       DurationInMinutes = 123,
+#'       Enabled = TRUE|FALSE
+#'     ),
+#'     RequireCheckIn = list(
+#'       ReleaseAfterMinutes = 123,
+#'       Enabled = TRUE|FALSE
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname alexaforbusiness_create_profile
-alexaforbusiness_create_profile <- function(ProfileName, Timezone, Address, DistanceUnit, TemperatureUnit, WakeWord, ClientRequestToken = NULL, SetupModeDisabled = NULL, MaxVolumeLimit = NULL, PSTNEnabled = NULL) {
+alexaforbusiness_create_profile <- function(ProfileName, Timezone, Address, DistanceUnit, TemperatureUnit, WakeWord, Locale = NULL, ClientRequestToken = NULL, SetupModeDisabled = NULL, MaxVolumeLimit = NULL, PSTNEnabled = NULL, MeetingRoomConfiguration = NULL) {
   op <- new_operation(
     name = "CreateProfile",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .alexaforbusiness$create_profile_input(ProfileName = ProfileName, Timezone = Timezone, Address = Address, DistanceUnit = DistanceUnit, TemperatureUnit = TemperatureUnit, WakeWord = WakeWord, ClientRequestToken = ClientRequestToken, SetupModeDisabled = SetupModeDisabled, MaxVolumeLimit = MaxVolumeLimit, PSTNEnabled = PSTNEnabled)
+  input <- .alexaforbusiness$create_profile_input(ProfileName = ProfileName, Timezone = Timezone, Address = Address, DistanceUnit = DistanceUnit, TemperatureUnit = TemperatureUnit, WakeWord = WakeWord, Locale = Locale, ClientRequestToken = ClientRequestToken, SetupModeDisabled = SetupModeDisabled, MaxVolumeLimit = MaxVolumeLimit, PSTNEnabled = PSTNEnabled, MeetingRoomConfiguration = MeetingRoomConfiguration)
   output <- .alexaforbusiness$create_profile_output()
   config <- get_config()
   svc <- .alexaforbusiness$service(config)
@@ -1004,11 +1027,6 @@ alexaforbusiness_delete_device <- function(DeviceArn) {
 #' authorized users to delete the device\'s entire previous history of
 #' voice input data and associated response data. This action can be called
 #' once every 24 hours for a specific shared device.
-#' 
-#' When this action is called for a specified shared device, it allows
-#' authorized users to delete the device\'s entire previous history of
-#' voice input data. This action can be called once every 24 hours for a
-#' specific shared device.
 #'
 #' @usage
 #' alexaforbusiness_delete_device_usage_data(DeviceArn, DeviceUsageType)
@@ -2046,7 +2064,10 @@ alexaforbusiness_get_skill_group <- function(SkillGroupArn = NULL) {
 
 #' Lists the details of the schedules that a user configured
 #'
-#' Lists the details of the schedules that a user configured.
+#' Lists the details of the schedules that a user configured. A download
+#' URL of the report associated with each schedule is returned every time
+#' this action is called. A new download URL is returned each time, and is
+#' valid for 24 hours.
 #'
 #' @usage
 #' alexaforbusiness_list_business_report_schedules(NextToken, MaxResults)
@@ -2269,18 +2290,16 @@ alexaforbusiness_list_gateways <- function(GatewayGroupArn = NULL, NextToken = N
 #' alexaforbusiness_list_skills(SkillGroupArn, EnablementType, SkillType,
 #'   NextToken, MaxResults)
 #'
-#' @param SkillGroupArn The ARN of the skill group for which to list enabled skills. Required.
-#' @param EnablementType Whether the skill is enabled under the user\'s account, or if it
-#' requires linking to be used.
+#' @param SkillGroupArn The ARN of the skill group for which to list enabled skills.
+#' @param EnablementType Whether the skill is enabled under the user\'s account.
 #' @param SkillType Whether the skill is publicly available or is a private skill.
 #' @param NextToken An optional token returned from a prior request. Use this token for
 #' pagination of results from this action. If this parameter is specified,
 #' the response includes only results beyond the token, up to the value
-#' specified by `MaxResults`. Required.
+#' specified by `MaxResults`.
 #' @param MaxResults The maximum number of results to include in the response. If more
 #' results exist than the specified `MaxResults` value, a token is included
 #' in the response so that the remaining results can be retrieved.
-#' Required.
 #'
 #' @section Request syntax:
 #' ```
@@ -4043,8 +4062,9 @@ alexaforbusiness_update_network_profile <- function(NetworkProfileArn, NetworkPr
 #'
 #' @usage
 #' alexaforbusiness_update_profile(ProfileArn, ProfileName, IsDefault,
-#'   Timezone, Address, DistanceUnit, TemperatureUnit, WakeWord,
-#'   SetupModeDisabled, MaxVolumeLimit, PSTNEnabled)
+#'   Timezone, Address, DistanceUnit, TemperatureUnit, WakeWord, Locale,
+#'   SetupModeDisabled, MaxVolumeLimit, PSTNEnabled,
+#'   MeetingRoomConfiguration)
 #'
 #' @param ProfileArn The ARN of the room profile to update. Required.
 #' @param ProfileName The updated name for the room profile.
@@ -4055,9 +4075,12 @@ alexaforbusiness_update_network_profile <- function(NetworkProfileArn, NetworkPr
 #' @param DistanceUnit The updated distance unit for the room profile.
 #' @param TemperatureUnit The updated temperature unit for the room profile.
 #' @param WakeWord The updated wake word for the room profile.
+#' @param Locale The updated locale for the room profile. (This is currently only
+#' available to a limited preview audience.)
 #' @param SetupModeDisabled Whether the setup mode of the profile is enabled.
 #' @param MaxVolumeLimit The updated maximum volume limit for the room profile.
 #' @param PSTNEnabled Whether the PSTN setting of the room profile is enabled.
+#' @param MeetingRoomConfiguration The updated meeting room settings of a room profile.
 #'
 #' @section Request syntax:
 #' ```
@@ -4070,23 +4093,42 @@ alexaforbusiness_update_network_profile <- function(NetworkProfileArn, NetworkPr
 #'   DistanceUnit = "METRIC"|"IMPERIAL",
 #'   TemperatureUnit = "FAHRENHEIT"|"CELSIUS",
 #'   WakeWord = "ALEXA"|"AMAZON"|"ECHO"|"COMPUTER",
+#'   Locale = "string",
 #'   SetupModeDisabled = TRUE|FALSE,
 #'   MaxVolumeLimit = 123,
-#'   PSTNEnabled = TRUE|FALSE
+#'   PSTNEnabled = TRUE|FALSE,
+#'   MeetingRoomConfiguration = list(
+#'     RoomUtilizationMetricsEnabled = TRUE|FALSE,
+#'     EndOfMeetingReminder = list(
+#'       ReminderAtMinutes = list(
+#'         123
+#'       ),
+#'       ReminderType = "ANNOUNCEMENT_TIME_CHECK"|"ANNOUNCEMENT_VARIABLE_TIME_LEFT"|"CHIME"|"KNOCK",
+#'       Enabled = TRUE|FALSE
+#'     ),
+#'     InstantBooking = list(
+#'       DurationInMinutes = 123,
+#'       Enabled = TRUE|FALSE
+#'     ),
+#'     RequireCheckIn = list(
+#'       ReleaseAfterMinutes = 123,
+#'       Enabled = TRUE|FALSE
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname alexaforbusiness_update_profile
-alexaforbusiness_update_profile <- function(ProfileArn = NULL, ProfileName = NULL, IsDefault = NULL, Timezone = NULL, Address = NULL, DistanceUnit = NULL, TemperatureUnit = NULL, WakeWord = NULL, SetupModeDisabled = NULL, MaxVolumeLimit = NULL, PSTNEnabled = NULL) {
+alexaforbusiness_update_profile <- function(ProfileArn = NULL, ProfileName = NULL, IsDefault = NULL, Timezone = NULL, Address = NULL, DistanceUnit = NULL, TemperatureUnit = NULL, WakeWord = NULL, Locale = NULL, SetupModeDisabled = NULL, MaxVolumeLimit = NULL, PSTNEnabled = NULL, MeetingRoomConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateProfile",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .alexaforbusiness$update_profile_input(ProfileArn = ProfileArn, ProfileName = ProfileName, IsDefault = IsDefault, Timezone = Timezone, Address = Address, DistanceUnit = DistanceUnit, TemperatureUnit = TemperatureUnit, WakeWord = WakeWord, SetupModeDisabled = SetupModeDisabled, MaxVolumeLimit = MaxVolumeLimit, PSTNEnabled = PSTNEnabled)
+  input <- .alexaforbusiness$update_profile_input(ProfileArn = ProfileArn, ProfileName = ProfileName, IsDefault = IsDefault, Timezone = Timezone, Address = Address, DistanceUnit = DistanceUnit, TemperatureUnit = TemperatureUnit, WakeWord = WakeWord, Locale = Locale, SetupModeDisabled = SetupModeDisabled, MaxVolumeLimit = MaxVolumeLimit, PSTNEnabled = PSTNEnabled, MeetingRoomConfiguration = MeetingRoomConfiguration)
   output <- .alexaforbusiness$update_profile_output()
   config <- get_config()
   svc <- .alexaforbusiness$service(config)

@@ -9,7 +9,7 @@ rds_delete_db_subnet_group(DBSubnetGroupName)
 \arguments{
 \item{DBSubnetGroupName}{[required] The name of the database subnet group to delete.
 
-You can't delete the default subnet group.
+You can\'t delete the default subnet group.
 
 Constraints:
 

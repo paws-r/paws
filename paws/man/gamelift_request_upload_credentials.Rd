@@ -12,7 +12,7 @@ gamelift_request_upload_credentials(BuildId)
 }
 \description{
 Retrieves a fresh set of credentials for use when uploading a new set of
-game build files to Amazon GameLift's Amazon S3. This is done as part
+game build files to Amazon GameLift\'s Amazon S3. This is done as part
 of the build creation process; see CreateBuild.
 }
 \details{

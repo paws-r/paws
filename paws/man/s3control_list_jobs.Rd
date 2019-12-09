@@ -10,15 +10,15 @@ s3control_list_jobs(AccountId, JobStatuses, NextToken, MaxResults)
 \arguments{
 \item{AccountId}{[required]}
 
-\item{JobStatuses}{The \code{List Jobs} request returns jobs that match the statuses listed in
+\item{JobStatuses}{The \verb{List Jobs} request returns jobs that match the statuses listed in
 this element.}
 
 \item{NextToken}{A pagination token to request the next page of results. Use the token
 that Amazon S3 returned in the \code{NextToken} element of the
-\code{ListJobsResult} from the previous \code{List Jobs} request.}
+\code{ListJobsResult} from the previous \verb{List Jobs} request.}
 
 \item{MaxResults}{The maximum number of jobs that Amazon S3 will include in the
-\code{List Jobs} response. If there are more jobs than this number, the
+\verb{List Jobs} response. If there are more jobs than this number, the
 response will include a pagination token in the \code{NextToken} field to
 enable you to retrieve the next page of results.}
 }

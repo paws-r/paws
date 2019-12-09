@@ -1131,8 +1131,8 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 #' -   The special characters tab (`U+0009`), line feed (`U+000A`), and
 #'     carriage return (`U+000D`)
 #' 
-#' Upon success, the response includes the same trust policy as a
-#' URL-encoded JSON string.
+#' Upon success, the response includes the same trust policy in JSON
+#' format.
 #' @param Description A description of the role.
 #' @param MaxSessionDuration The maximum session duration (in seconds) that you want to set for the
 #' specified role. If you do not specify a value for this setting, the
@@ -3512,12 +3512,11 @@ iam_get_access_key_last_used <- function(AccessKeyId) {
 #' this API to obtain a snapshot of the configuration of IAM permissions
 #' (users, groups, roles, and policies) in your account.
 #' 
-#' Policies returned by this API are URL-encoded compliant with [RFC
-#' 3986](https://tools.ietf.org/html/rfc3986). You can use a URL decoding
-#' method to convert the policy back to plain JSON text. For example, if
-#' you use Java, you can use the `decode` method of the
-#' `java.net.URLDecoder` utility class in the Java SDK. Other languages and
-#' SDKs provide similar functionality.
+#' Policies returned by this API are URL-encoded compliant with RFC 3986.
+#' You can use a URL decoding method to convert the policy back to plain
+#' JSON text. For example, if you use Java, you can use the `decode` method
+#' of the `java.net.URLDecoder` utility class in the Java SDK. Other
+#' languages and SDKs provide similar functionality.
 #' 
 #' You can optionally filter the results using the `Filter` parameter. You
 #' can paginate the results using the `MaxItems` and `Marker` parameters.
@@ -4266,11 +4265,12 @@ iam_get_policy <- function(PolicyArn) {
 #' Retrieves information about the specified version of the specified
 #' managed policy, including the policy document.
 #' 
-#' Policies returned by this API are URL-encoded compliant with RFC 3986.
-#' You can use a URL decoding method to convert the policy back to plain
-#' JSON text. For example, if you use Java, you can use the `decode` method
-#' of the `java.net.URLDecoder` utility class in the Java SDK. Other
-#' languages and SDKs provide similar functionality.
+#' Policies returned by this API are URL-encoded compliant with [RFC
+#' 3986](https://tools.ietf.org/html/rfc3986). You can use a URL decoding
+#' method to convert the policy back to plain JSON text. For example, if
+#' you use Java, you can use the `decode` method of the
+#' `java.net.URLDecoder` utility class in the Java SDK. Other languages and
+#' SDKs provide similar functionality.
 #' 
 #' To list the available versions for a policy, use ListPolicyVersions.
 #' 

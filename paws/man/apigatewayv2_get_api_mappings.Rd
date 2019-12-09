@@ -2,7 +2,7 @@
 % Please edit documentation in R/apigatewayv2_operations.R
 \name{apigatewayv2_get_api_mappings}
 \alias{apigatewayv2_get_api_mappings}
-\title{The API mappings}
+\title{Gets API mappings}
 \usage{
 apigatewayv2_get_api_mappings(DomainName, MaxResults, NextToken)
 }
@@ -15,7 +15,7 @@ apigatewayv2_get_api_mappings(DomainName, MaxResults, NextToken)
 element of the collection.}
 }
 \description{
-The API mappings.
+Gets API mappings.
 }
 \section{Request syntax}{
 \preformatted{svc$get_api_mappings(

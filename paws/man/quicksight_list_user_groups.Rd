@@ -25,16 +25,6 @@ the AWS account that contains your Amazon QuickSight account.}
 Lists the Amazon QuickSight groups that an Amazon QuickSight user is a
 member of.
 }
-\details{
-The permission resource is
-\code{arn:aws:quicksight:us-east-1:<i>&lt;aws-account-id&gt;</i>:user/default/<i>&lt;user-name&gt;</i> }.
-
-The response is a one or more group objects.
-
-\strong{CLI Sample:}
-
-\code{aws quicksight list-user-groups -\\-user-name=Pat -\\-aws-account-id=111122223333 -\\-namespace=default -\\-region=us-east-1 }
-}
 \section{Request syntax}{
 \preformatted{svc$list_user_groups(
   UserName = "string",

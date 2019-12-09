@@ -9,7 +9,7 @@ iotanalytics_update_pipeline(pipelineName, pipelineActivities)
 \arguments{
 \item{pipelineName}{[required] The name of the pipeline to update.}
 
-\item{pipelineActivities}{[required] A list of "PipelineActivity" objects. Activities perform
+\item{pipelineActivities}{[required] A list of \"PipelineActivity\" objects. Activities perform
 transformations on your messages, such as removing, renaming or adding
 message attributes; filtering messages based on attribute values;
 invoking your Lambda functions on messages for advanced processing; or
@@ -19,7 +19,7 @@ The list can be 2-25 \strong{PipelineActivity} objects and must contain both
 a \code{channel} and a \code{datastore} activity. Each entry in the list must
 contain only one activity, for example:
 
-\code{pipelineActivities = \\[ \{ "channel": \{ ... \} \}, \{ "lambda": \{ ... \} \}, ... \\]}}
+\verb{pipelineActivities = \\\[ \\\{ "channel": \\\{ ... \\\} \\\}, \\\{ "lambda": \\\{ ... \\\} \\\}, ... \\\]}}
 }
 \description{
 Updates the settings of a pipeline. You must specify both a \code{channel}

@@ -10,7 +10,8 @@ kinesisanalyticsv2_list_tags_for_resource(ResourceARN)
 \item{ResourceARN}{[required] The ARN of the application for which to retrieve tags.}
 }
 \description{
-Retrieves the list of key-value tags assigned to the application.
+Retrieves the list of key-value tags assigned to the application. For
+more information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html}{Using Tagging}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(

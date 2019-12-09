@@ -2,15 +2,28 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_bucket_cors}
 \alias{s3_get_bucket_cors}
-\title{Returns the CORS configuration for the bucket}
+\title{Returns the cors configuration information set for the bucket}
 \usage{
 s3_get_bucket_cors(Bucket)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The bucket name for which to get the cors configuration.}
 }
 \description{
-Returns the CORS configuration for the bucket.
+Returns the cors configuration information set for the bucket.
+}
+\details{
+To use this operation, you must have permission to perform the
+s3:GetBucketCORS action. By default, the bucket owner has this
+permission and can grant it to others.
+
+For more information about cors, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html}{Enabling Cross-Origin Resource Sharing}.
+
+The following operations are related to \code{GetBucketCors}:
+\itemize{
+\item PutBucketCors
+\item DeleteBucketCors
+}
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_cors(

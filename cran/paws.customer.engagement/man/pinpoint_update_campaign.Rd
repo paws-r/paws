@@ -2,7 +2,7 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_update_campaign}
 \alias{pinpoint_update_campaign}
-\title{Updates the settings for a campaign}
+\title{Updates the configuration and other settings for a campaign}
 \usage{
 pinpoint_update_campaign(ApplicationId, CampaignId,
   WriteCampaignRequest)
@@ -16,7 +16,7 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{WriteCampaignRequest}{[required]}
 }
 \description{
-Updates the settings for a campaign.
+Updates the configuration and other settings for a campaign.
 }
 \section{Request syntax}{
 \preformatted{svc$update_campaign(
@@ -145,6 +145,20 @@ Updates the settings for a campaign.
           Timezone = "string"
         ),
         SizePercent = 123,
+        TemplateConfiguration = list(
+          EmailTemplate = list(
+            Name = "string"
+          ),
+          PushTemplate = list(
+            Name = "string"
+          ),
+          SMSTemplate = list(
+            Name = "string"
+          ),
+          VoiceTemplate = list(
+            Name = "string"
+          )
+        ),
         TreatmentDescription = "string",
         TreatmentName = "string"
       )
@@ -287,6 +301,20 @@ Updates the settings for a campaign.
     SegmentVersion = 123,
     tags = list(
       "string"
+    ),
+    TemplateConfiguration = list(
+      EmailTemplate = list(
+        Name = "string"
+      ),
+      PushTemplate = list(
+        Name = "string"
+      ),
+      SMSTemplate = list(
+        Name = "string"
+      ),
+      VoiceTemplate = list(
+        Name = "string"
+      )
     ),
     TreatmentDescription = "string",
     TreatmentName = "string"

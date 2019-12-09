@@ -2,21 +2,21 @@
 % Please edit documentation in R/glue_operations.R
 \name{glue_batch_get_dev_endpoints}
 \alias{glue_batch_get_dev_endpoints}
-\title{Returns a list of resource metadata for a given list of DevEndpoint
-names}
+\title{Returns a list of resource metadata for a given list of development
+endpoint names}
 \usage{
 glue_batch_get_dev_endpoints(DevEndpointNames)
 }
 \arguments{
-\item{DevEndpointNames}{[required] The list of DevEndpoint names, which may be the names returned from the
-\code{ListDevEndpoint} operation.}
+\item{DevEndpointNames}{[required] The list of \code{DevEndpoint} names, which might be the names returned from
+the \code{ListDevEndpoint} operation.}
 }
 \description{
-Returns a list of resource metadata for a given list of DevEndpoint
-names. After calling the \code{ListDevEndpoints} operation, you can call this
-operation to access the data to which you have been granted permissions.
-This operation supports all IAM permissions, including permission
-conditions that uses tags.
+Returns a list of resource metadata for a given list of development
+endpoint names. After calling the \code{ListDevEndpoints} operation, you can
+call this operation to access the data to which you have been granted
+permissions. This operation supports all IAM permissions, including
+permission conditions that uses tags.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_get_dev_endpoints(

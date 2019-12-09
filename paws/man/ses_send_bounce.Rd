@@ -11,7 +11,7 @@ ses_send_bounce(OriginalMessageId, BounceSender, Explanation,
 \arguments{
 \item{OriginalMessageId}{[required] The message ID of the message to be bounced.}
 
-\item{BounceSender}{[required] The address to use in the "From" header of the bounce message. This
+\item{BounceSender}{[required] The address to use in the \"From\" header of the bounce message. This
 must be an identity that you have verified with Amazon SES.}
 
 \item{Explanation}{Human-readable text for the bounce message to explain the failure. If
@@ -28,7 +28,7 @@ list.}
 
 \item{BounceSenderArn}{This parameter is used only for sending authorization. It is the ARN of
 the identity that is associated with the sending authorization policy
-that permits you to use the address in the "From" header of the
+that permits you to use the address in the \"From\" header of the
 bounce. For more information about sending authorization, see the
 \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.}
 }

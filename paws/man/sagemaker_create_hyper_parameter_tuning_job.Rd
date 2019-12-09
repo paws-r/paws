@@ -5,14 +5,14 @@
 \title{Starts a hyperparameter tuning job}
 \usage{
 sagemaker_create_hyper_parameter_tuning_job(HyperParameterTuningJobName,
-  HyperParameterTuningJobConfig, TrainingJobDefinition, WarmStartConfig,
-  Tags)
+  HyperParameterTuningJobConfig, TrainingJobDefinition,
+  TrainingJobDefinitions, WarmStartConfig, Tags)
 }
 \arguments{
 \item{HyperParameterTuningJobName}{[required] The name of the tuning job. This name is the prefix for the names of all
 training jobs that this tuning job launches. The name must be unique
-within the same AWS account and AWS Region. The name must have { } to {
-} characters. Valid characters are a-z, A-Z, 0-9, and : + = @ \_ \% -
+within the same AWS account and AWS Region. The name must have \{ \} to \{
+\} characters. Valid characters are a-z, A-Z, 0-9, and : + = @ \\_ \\% -
 (hyphen). The name is not case sensitive.}
 
 \item{HyperParameterTuningJobConfig}{[required] The HyperParameterTuningJobConfig object that describes the tuning job,
@@ -24,6 +24,8 @@ the tuning job. For more information, see automatic-model-tuning}
 training jobs that this tuning job launches, including static
 hyperparameters, input data configuration, output data configuration,
 resource configuration, and stopping condition.}
+
+\item{TrainingJobDefinitions}{}
 
 \item{WarmStartConfig}{Specifies the configuration for starting the hyperparameter tuning job
 using one or more previous tuning jobs as a starting point. The results
@@ -96,9 +98,43 @@ objective metric that you choose.
         )
       )
     ),
-    TrainingJobEarlyStoppingType = "Off"|"Auto"
+    TrainingJobEarlyStoppingType = "Off"|"Auto",
+    TuningJobCompletionCriteria = list(
+      TargetObjectiveMetricValue = 123.0
+    )
   ),
   TrainingJobDefinition = list(
+    DefinitionName = "string",
+    TuningObjective = list(
+      Type = "Maximize"|"Minimize",
+      MetricName = "string"
+    ),
+    HyperParameterRanges = list(
+      IntegerParameterRanges = list(
+        list(
+          Name = "string",
+          MinValue = "string",
+          MaxValue = "string",
+          ScalingType = "Auto"|"Linear"|"Logarithmic"|"ReverseLogarithmic"
+        )
+      ),
+      ContinuousParameterRanges = list(
+        list(
+          Name = "string",
+          MinValue = "string",
+          MaxValue = "string",
+          ScalingType = "Auto"|"Linear"|"Logarithmic"|"ReverseLogarithmic"
+        )
+      ),
+      CategoricalParameterRanges = list(
+        list(
+          Name = "string",
+          Values = list(
+            "string"
+          )
+        )
+      )
+    ),
     StaticHyperParameters = list(
       "string"
     ),
@@ -125,6 +161,12 @@ objective metric that you choose.
             AttributeNames = list(
               "string"
             )
+          ),
+          FileSystemDataSource = list(
+            FileSystemId = "string",
+            FileSystemAccessMode = "rw"|"ro",
+            FileSystemType = "EFS"|"FSxLustre",
+            DirectoryPath = "string"
           )
         ),
         ContentType = "string",
@@ -149,16 +191,129 @@ objective metric that you choose.
       S3OutputPath = "string"
     ),
     ResourceConfig = list(
-      InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge",
+      InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge",
       InstanceCount = 123,
       VolumeSizeInGB = 123,
       VolumeKmsKeyId = "string"
     ),
     StoppingCondition = list(
-      MaxRuntimeInSeconds = 123
+      MaxRuntimeInSeconds = 123,
+      MaxWaitTimeInSeconds = 123
     ),
     EnableNetworkIsolation = TRUE|FALSE,
-    EnableInterContainerTrafficEncryption = TRUE|FALSE
+    EnableInterContainerTrafficEncryption = TRUE|FALSE,
+    EnableManagedSpotTraining = TRUE|FALSE,
+    CheckpointConfig = list(
+      S3Uri = "string",
+      LocalPath = "string"
+    )
+  ),
+  TrainingJobDefinitions = list(
+    list(
+      DefinitionName = "string",
+      TuningObjective = list(
+        Type = "Maximize"|"Minimize",
+        MetricName = "string"
+      ),
+      HyperParameterRanges = list(
+        IntegerParameterRanges = list(
+          list(
+            Name = "string",
+            MinValue = "string",
+            MaxValue = "string",
+            ScalingType = "Auto"|"Linear"|"Logarithmic"|"ReverseLogarithmic"
+          )
+        ),
+        ContinuousParameterRanges = list(
+          list(
+            Name = "string",
+            MinValue = "string",
+            MaxValue = "string",
+            ScalingType = "Auto"|"Linear"|"Logarithmic"|"ReverseLogarithmic"
+          )
+        ),
+        CategoricalParameterRanges = list(
+          list(
+            Name = "string",
+            Values = list(
+              "string"
+            )
+          )
+        )
+      ),
+      StaticHyperParameters = list(
+        "string"
+      ),
+      AlgorithmSpecification = list(
+        TrainingImage = "string",
+        TrainingInputMode = "Pipe"|"File",
+        AlgorithmName = "string",
+        MetricDefinitions = list(
+          list(
+            Name = "string",
+            Regex = "string"
+          )
+        )
+      ),
+      RoleArn = "string",
+      InputDataConfig = list(
+        list(
+          ChannelName = "string",
+          DataSource = list(
+            S3DataSource = list(
+              S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
+              S3Uri = "string",
+              S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+              AttributeNames = list(
+                "string"
+              )
+            ),
+            FileSystemDataSource = list(
+              FileSystemId = "string",
+              FileSystemAccessMode = "rw"|"ro",
+              FileSystemType = "EFS"|"FSxLustre",
+              DirectoryPath = "string"
+            )
+          ),
+          ContentType = "string",
+          CompressionType = "None"|"Gzip",
+          RecordWrapperType = "None"|"RecordIO",
+          InputMode = "Pipe"|"File",
+          ShuffleConfig = list(
+            Seed = 123
+          )
+        )
+      ),
+      VpcConfig = list(
+        SecurityGroupIds = list(
+          "string"
+        ),
+        Subnets = list(
+          "string"
+        )
+      ),
+      OutputDataConfig = list(
+        KmsKeyId = "string",
+        S3OutputPath = "string"
+      ),
+      ResourceConfig = list(
+        InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge",
+        InstanceCount = 123,
+        VolumeSizeInGB = 123,
+        VolumeKmsKeyId = "string"
+      ),
+      StoppingCondition = list(
+        MaxRuntimeInSeconds = 123,
+        MaxWaitTimeInSeconds = 123
+      ),
+      EnableNetworkIsolation = TRUE|FALSE,
+      EnableInterContainerTrafficEncryption = TRUE|FALSE,
+      EnableManagedSpotTraining = TRUE|FALSE,
+      CheckpointConfig = list(
+        S3Uri = "string",
+        LocalPath = "string"
+      )
+    )
   ),
   WarmStartConfig = list(
     ParentHyperParameterTuningJobs = list(

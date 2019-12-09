@@ -5,7 +5,7 @@
 \title{Creates a new OpsItem}
 \usage{
 ssm_create_ops_item(Description, OperationalData, Notifications,
-  Priority, RelatedOpsItems, Source, Title, Tags)
+  Priority, RelatedOpsItems, Source, Title, Tags, Category, Severity)
 }
 \arguments{
 \item{Description}{[required] Information about the OpsItem.}
@@ -16,7 +16,7 @@ strings, license keys, troubleshooting tips, or other relevant data. You
 enter operational data as key-value pairs. The key has a maximum length
 of 128 characters. The value has a maximum size of 20 KB.
 
-Operational data keys \emph{can't} begin with the following: amazon, aws,
+Operational data keys \emph{can\'t} begin with the following: amazon, aws,
 amzn, ssm, /amazon, /aws, /amzn, /ssm.
 
 You can choose to make the data searchable by other users in the account
@@ -26,8 +26,8 @@ DescribeOpsItems API action) can view and search on the specified data.
 Operational data that is not searchable is only viewable by users who
 have access to the OpsItem (as provided by the GetOpsItem API action).
 
-Use the \code{/aws/resources} key in OperationalData to specify a related
-resource in the request. Use the \code{/aws/automations} key in
+Use the \verb{/aws/resources} key in OperationalData to specify a related
+resource in the request. Use the \verb{/aws/automations} key in
 OperationalData to associate an Automation runbook with the OpsItem. To
 view AWS CLI example commands that use these keys, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-creating-OpsItems.html#OpsCenter-manually-create-OpsItems}{Creating OpsItems Manually}
 in the \emph{AWS Systems Manager User Guide}.}
@@ -55,9 +55,13 @@ in the \emph{AWS Systems Manager User Guide}.
 
 Tags use a key-value pair. For example:
 
-\code{Key=Department,Value=Finance}
+\verb{Key=Department,Value=Finance}
 
 To add tags to an existing OpsItem, use the AddTagsToResource action.}
+
+\item{Category}{Specify a category to assign to an OpsItem.}
+
+\item{Severity}{Specify a severity to assign to an OpsItem.}
 }
 \description{
 Creates a new OpsItem. You must have permission in AWS Identity and
@@ -98,7 +102,9 @@ in the \emph{AWS Systems Manager User Guide}.
       Key = "string",
       Value = "string"
     )
-  )
+  ),
+  Category = "string",
+  Severity = "string"
 )
 }
 }

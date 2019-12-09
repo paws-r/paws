@@ -34,7 +34,7 @@ mq_create_broker(AutoMinorVersionUpgrade, BrokerName, Configuration,
 
 \item{PubliclyAccessible}{Required. Enables connections from applications outside of the VPC that hosts the broker's subnets.}
 
-\item{SecurityGroups}{The list of rules (1 minimum, 125 maximum) that authorize connections to brokers.}
+\item{SecurityGroups}{The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.}
 
 \item{SubnetIds}{The list of groups (2 maximum) that define which subnets and IP ranges the broker can use from different Availability Zones. A SINGLE_INSTANCE deployment requires one subnet (for example, the default subnet). An ACTIVE_STANDBY_MULTI_AZ deployment requires two subnets.}
 

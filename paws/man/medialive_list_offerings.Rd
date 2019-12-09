@@ -5,8 +5,8 @@
 \title{List offerings available for purchase}
 \usage{
 medialive_list_offerings(ChannelClass, ChannelConfiguration, Codec,
-  MaxResults, MaximumBitrate, MaximumFramerate, NextToken, Resolution,
-  ResourceType, SpecialFeature, VideoQuality)
+  Duration, MaxResults, MaximumBitrate, MaximumFramerate, NextToken,
+  Resolution, ResourceType, SpecialFeature, VideoQuality)
 }
 \arguments{
 \item{ChannelClass}{Filter by channel class, 'STANDARD' or 'SINGLE_PIPELINE'}
@@ -14,6 +14,8 @@ medialive_list_offerings(ChannelClass, ChannelConfiguration, Codec,
 \item{ChannelConfiguration}{Filter to offerings that match the configuration of an existing channel, e.g. '2345678' (a channel ID)}
 
 \item{Codec}{Filter by codec, 'AVC', 'HEVC', 'MPEG2', or 'AUDIO'}
+
+\item{Duration}{Filter by offering duration, e.g. '12'}
 
 \item{MaxResults}{}
 
@@ -23,9 +25,9 @@ medialive_list_offerings(ChannelClass, ChannelConfiguration, Codec,
 
 \item{NextToken}{}
 
-\item{Resolution}{Filter by resolution, 'SD', 'HD', or 'UHD'}
+\item{Resolution}{Filter by resolution, 'SD', 'HD', 'FHD', or 'UHD'}
 
-\item{ResourceType}{Filter by resource type, 'INPUT', 'OUTPUT', or 'CHANNEL'}
+\item{ResourceType}{Filter by resource type, 'INPUT', 'OUTPUT', 'MULTIPLEX', or 'CHANNEL'}
 
 \item{SpecialFeature}{Filter by special feature, 'ADVANCED_AUDIO' or 'AUDIO_NORMALIZATION'}
 
@@ -39,6 +41,7 @@ List offerings available for purchase.
   ChannelClass = "string",
   ChannelConfiguration = "string",
   Codec = "string",
+  Duration = "string",
   MaxResults = 123,
   MaximumBitrate = "string",
   MaximumFramerate = "string",

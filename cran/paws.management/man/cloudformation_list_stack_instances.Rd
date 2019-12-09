@@ -12,11 +12,11 @@ cloudformation_list_stack_instances(StackSetName, NextToken, MaxResults,
 \item{StackSetName}{[required] The name or unique ID of the stack set that you want to list stack
 instances for.}
 
-\item{NextToken}{If the previous request didn't return all of the remaining results, the
-response's \code{NextToken} parameter value is set to a token. To retrieve
+\item{NextToken}{If the previous request didn\'t return all of the remaining results, the
+response\'s \code{NextToken} parameter value is set to a token. To retrieve
 the next set of results, call \code{ListStackInstances} again and assign that
-token to the request object's \code{NextToken} parameter. If there are no
-remaining results, the previous response object's \code{NextToken} parameter
+token to the request object\'s \code{NextToken} parameter. If there are no
+remaining results, the previous response object\'s \code{NextToken} parameter
 is set to \code{null}.}
 
 \item{MaxResults}{The maximum number of results to be returned with a single call. If the

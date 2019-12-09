@@ -4,18 +4,19 @@
 \alias{sfn_create_state_machine}
 \title{Creates a state machine}
 \usage{
-sfn_create_state_machine(name, definition, roleArn, tags)
+sfn_create_state_machine(name, definition, roleArn, type,
+  loggingConfiguration, tags)
 }
 \arguments{
 \item{name}{[required] The name of the state machine.
 
 A name must \emph{not} contain:
 \itemize{
-\item whitespace
-\item brackets \code{&lt; &gt; \{ \} \\[ \\]}
-\item wildcard characters \code{? *}
-\item special characters \code{\" # \\\% \\ ^ | ~ \` $ &amp; , ; : /}
-\item control characters (\code{U+0000-001F}, \code{U+007F-009F})
+\item white space
+\item brackets \verb{&lt; &gt; \\\{ \\\} \\\[ \\\]}
+\item wildcard characters \verb{? *}
+\item special characters \verb{\\" # \\\% \\\\ ^ | ~ \\` $ &amp; , ; : /}
+\item control characters (\verb{U+0000-001F}, \verb{U+007F-009F})
 }}
 
 \item{definition}{[required] The Amazon States Language definition of the state machine. See \href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html}{Amazon States Language}.}
@@ -23,7 +24,19 @@ A name must \emph{not} contain:
 \item{roleArn}{[required] The Amazon Resource Name (ARN) of the IAM role to use for this state
 machine.}
 
-\item{tags}{Tags to be added when creating a state machine.}
+\item{type}{Determines whether a Standard or Express state machine is created. If
+not set, Standard is created.}
+
+\item{loggingConfiguration}{Defines what execution history events are logged and where they are
+logged.}
+
+\item{tags}{Tags to be added when creating a state machine.
+
+An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags}
+in the \emph{AWS Billing and Cost Management User Guide}, and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html}{Controlling Access Using IAM Tags}.
+
+Tags may only contain Unicode letters, digits, white space, or these
+symbols: \verb{_ . : / = + - @}.}
 }
 \description{
 Creates a state machine. A state machine consists of a collection of
@@ -35,12 +48,32 @@ JSON-based, structured language.
 \details{
 This operation is eventually consistent. The results are best effort and
 may not reflect very recent updates and changes.
+
+\code{CreateStateMachine} is an idempotent API. Subsequent requests won't
+create a duplicate resource if it was already created.
+\code{CreateStateMachine}\'s idempotency check is based on the state machine
+\code{name} and \code{definition}. If a following request has a different
+\code{roleArn} or \code{tags}, Step Functions will ignore these differences and
+treat it as an idempotent request of the previous. In this case,
+\code{roleArn} and \code{tags} will not be updated, even if they are different.
 }
 \section{Request syntax}{
 \preformatted{svc$create_state_machine(
   name = "string",
   definition = "string",
   roleArn = "string",
+  type = "STANDARD"|"EXPRESS",
+  loggingConfiguration = list(
+    level = "ALL"|"ERROR"|"FATAL"|"OFF",
+    includeExecutionData = TRUE|FALSE,
+    destinations = list(
+      list(
+        cloudWatchLogsLogGroup = list(
+          logGroupArn = "string"
+        )
+      )
+    )
+  ),
   tags = list(
     list(
       key = "string",

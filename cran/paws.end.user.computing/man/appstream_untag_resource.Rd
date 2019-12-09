@@ -19,7 +19,7 @@ Disassociates one or more specified tags from the specified AppStream
 To list the current tags for your resources, use ListTagsForResource.
 
 For more information about tags, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources}
-in the \emph{Amazon AppStream 2.0 Developer Guide}.
+in the \emph{Amazon AppStream 2.0 Administration Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

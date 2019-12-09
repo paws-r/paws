@@ -3,7 +3,7 @@
 \name{sns_list_endpoints_by_platform_application}
 \alias{sns_list_endpoints_by_platform_application}
 \title{Lists the endpoints and endpoint attributes for devices in a supported
-push notification service, such as GCM and APNS}
+push notification service, such as FCM and APNS}
 \usage{
 sns_list_endpoints_by_platform_application(PlatformApplicationArn,
   NextToken)
@@ -18,7 +18,7 @@ page results.}
 }
 \description{
 Lists the endpoints and endpoint attributes for devices in a supported
-push notification service, such as GCM and APNS. The results for
+push notification service, such as FCM and APNS. The results for
 \code{ListEndpointsByPlatformApplication} are paginated and return a limited
 list of endpoints, up to 100. If additional records are available after
 the first page results, then a NextToken string will be returned. To

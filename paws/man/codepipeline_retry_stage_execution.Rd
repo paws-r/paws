@@ -18,11 +18,13 @@ the GetPipelineState action to retrieve the current pipelineExecutionId
 of the failed stage}
 
 \item{retryMode}{[required] The scope of the retry attempt. Currently, the only supported value is
-FAILED\_ACTIONS.}
+FAILED\\_ACTIONS.}
 }
 \description{
 Resumes the pipeline execution by retrying the last failed actions in a
-stage.
+stage. You can retry a stage immediately if any of the actions in the
+stage fail. When you retry, all actions that are still in progress
+continue working, and failed actions are triggered again.
 }
 \section{Request syntax}{
 \preformatted{svc$retry_stage_execution(

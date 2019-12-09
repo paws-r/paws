@@ -18,7 +18,7 @@ and the maximum value is 500.}
 Describe an existing Authorizers resource.
 }
 \details{
-::: {.seeAlso}
+::: \{.seeAlso\}
 \href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizers.html}{AWS CLI}
 :::
 }

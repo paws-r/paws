@@ -12,8 +12,8 @@ ec2_create_vpn_gateway(AvailabilityZone, Type, AmazonSideAsn, DryRun)
 \item{Type}{[required] The type of VPN connection this virtual private gateway supports.}
 
 \item{AmazonSideAsn}{A private Autonomous System Number (ASN) for the Amazon side of a BGP
-session. If you're using a 16-bit ASN, it must be in the 64512 to 65534
-range. If you're using a 32-bit ASN, it must be in the 4200000000 to
+session. If you\'re using a 16-bit ASN, it must be in the 64512 to 65534
+range. If you\'re using a 32-bit ASN, it must be in the 4200000000 to
 4294967294 range.
 
 Default: 64512}

@@ -12,11 +12,11 @@ amplify_start_job(appId, branchName, jobId, jobType, jobReason,
 
 \item{branchName}{[required] Name for the branch, for the Job.}
 
-\item{jobId}{Unique Id for an existing job. Required for "RETRY" JobType.}
+\item{jobId}{Unique Id for an existing job. Required for \"RETRY\" JobType.}
 
-\item{jobType}{[required] Type for the Job. Available JobTypes are: \code{\\n} "RELEASE": Start a new
+\item{jobType}{[required] Type for the Job. Available JobTypes are: \verb{\\\\n} \"RELEASE\": Start a new
 job with the latest change from the specified branch. Only available for
-apps that have connected to a repository. "RETRY": Retry an existing
+apps that have connected to a repository. \"RETRY\": Retry an existing
 job. JobId is required for this type of job.}
 
 \item{jobReason}{Descriptive reason for starting this job.}

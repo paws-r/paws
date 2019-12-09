@@ -2,7 +2,7 @@
 % Please edit documentation in R/elbv2_operations.R
 \name{elbv2_modify_listener}
 \alias{elbv2_modify_listener}
-\title{Modifies the specified properties of the specified listener}
+\title{Replaces the specified properties of the specified listener}
 \usage{
 elbv2_modify_listener(ListenerArn, Port, Protocol, SslPolicy,
   Certificates, DefaultActions)
@@ -14,7 +14,7 @@ elbv2_modify_listener(ListenerArn, Port, Protocol, SslPolicy,
 
 \item{Protocol}{The protocol for connections from clients to the load balancer.
 Application Load Balancers support the HTTP and HTTPS protocols. Network
-Load Balancers support the TCP, TLS, UDP, and TCP\_UDP protocols.}
+Load Balancers support the TCP, TLS, UDP, and TCP\\_UDP protocols.}
 
 \item{SslPolicy}{[HTTPS and TLS listeners] The security policy that defines which
 protocols and ciphers are supported. For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies}{Security Policies}
@@ -29,10 +29,10 @@ To create a certificate list, use AddListenerCertificates.}
 \item{DefaultActions}{The actions for the default rule. The rule must include one forward
 action or one or more fixed-response actions.
 
-If the action type is \code{forward}, you specify a target group. The
-protocol of the target group must be HTTP or HTTPS for an Application
-Load Balancer. The protocol of the target group must be TCP, TLS, UDP,
-or TCP\_UDP for a Network Load Balancer.
+If the action type is \code{forward}, you specify one or more target groups.
+The protocol of the target group must be HTTP or HTTPS for an
+Application Load Balancer. The protocol of the target group must be TCP,
+TLS, UDP, or TCP\\_UDP for a Network Load Balancer.
 
 [HTTPS listeners] If the action type is \code{authenticate-oidc}, you
 authenticate users through an identity provider that is OpenID Connect
@@ -48,14 +48,18 @@ redirect specified client requests from one URL to another.
 you drop specified client requests and return a custom HTTP response.}
 }
 \description{
-Modifies the specified properties of the specified listener.
+Replaces the specified properties of the specified listener. Any
+properties that you do not specify remain unchanged.
 }
 \details{
-Any properties that you do not specify retain their current values.
-However, changing the protocol from HTTPS to HTTP, or from TLS to TCP,
-removes the security policy and default certificate properties. If you
-change the protocol from HTTP to HTTPS, or from TCP to TLS, you must add
-the security policy and default certificate properties.
+Changing the protocol from HTTPS to HTTP, or from TLS to TCP, removes
+the security policy and default certificate properties. If you change
+the protocol from HTTP to HTTPS, or from TCP to TLS, you must add the
+security policy and default certificate properties.
+
+To add an item to a list, remove an item from a list, or update an item
+in a list, you must provide the entire list. For example, to add an
+action, specify a list with the current actions plus the new action.
 }
 \section{Request syntax}{
 \preformatted{svc$modify_listener(
@@ -114,6 +118,18 @@ the security policy and default certificate properties.
         MessageBody = "string",
         StatusCode = "string",
         ContentType = "string"
+      ),
+      ForwardConfig = list(
+        TargetGroups = list(
+          list(
+            TargetGroupArn = "string",
+            Weight = 123
+          )
+        ),
+        TargetGroupStickinessConfig = list(
+          Enabled = TRUE|FALSE,
+          DurationSeconds = 123
+        )
       )
     )
   )

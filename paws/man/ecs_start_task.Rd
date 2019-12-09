@@ -5,18 +5,30 @@
 \title{Starts a new task from the specified task definition on the specified
 container instance or instances}
 \usage{
-ecs_start_task(cluster, taskDefinition, overrides, containerInstances,
-  startedBy, group, networkConfiguration, tags, enableECSManagedTags,
-  propagateTags)
+ecs_start_task(cluster, containerInstances, enableECSManagedTags, group,
+  networkConfiguration, overrides, propagateTags, referenceId, startedBy,
+  tags, taskDefinition)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster on
 which to start your task. If you do not specify a cluster, the default
 cluster is assumed.}
 
-\item{taskDefinition}{[required] The \code{family} and \code{revision} (\code{family:revision}) or full ARN of the task
-definition to start. If a \code{revision} is not specified, the latest
-\code{ACTIVE} revision is used.}
+\item{containerInstances}{[required] The container instance IDs or full ARN entries for the container
+instances on which you would like to place your task. You can specify up
+to 10 container instances.}
+
+\item{enableECSManagedTags}{Specifies whether to enable Amazon ECS managed tags for the task. For
+more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html}{Tagging Your Amazon ECS Resources}
+in the \emph{Amazon Elastic Container Service Developer Guide}.}
+
+\item{group}{The name of the task group to associate with the task. The default value
+is the family name of the task definition (for example,
+family:my-family-name).}
+
+\item{networkConfiguration}{The VPC subnet and security group configuration for tasks that receive
+their own elastic network interface by using the \code{awsvpc} networking
+mode.}
 
 \item{overrides}{A list of container overrides in JSON format that specify the name of a
 container in the specified task definition and the overrides it should
@@ -29,9 +41,11 @@ new environment variables to it with an \code{environment} override.
 A total of 8192 characters are allowed for overrides. This limit
 includes the JSON formatting characters of the override structure.}
 
-\item{containerInstances}{[required] The container instance IDs or full ARN entries for the container
-instances on which you would like to place your task. You can specify up
-to 10 container instances.}
+\item{propagateTags}{Specifies whether to propagate the tags from the task definition or the
+service to the task. If no value is specified, the tags are not
+propagated.}
+
+\item{referenceId}{The reference ID to use for the task.}
 
 \item{startedBy}{An optional tag specified when a task is started. For example, if you
 automatically trigger a task to run a batch process job, you could apply
@@ -44,26 +58,33 @@ underscores are allowed.
 If a task is started by an Amazon ECS service, then the \code{startedBy}
 parameter contains the deployment ID of the service that starts it.}
 
-\item{group}{The name of the task group to associate with the task. The default value
-is the family name of the task definition (for example,
-family:my-family-name).}
-
-\item{networkConfiguration}{The VPC subnet and security group configuration for tasks that receive
-their own elastic network interface by using the \code{awsvpc} networking
-mode.}
-
 \item{tags}{The metadata that you apply to the task to help you categorize and
 organize them. Each tag consists of a key and an optional value, both of
-which you define. Tag keys can have a maximum character length of 128
-characters, and tag values can have a maximum length of 256 characters.}
+which you define.
 
-\item{enableECSManagedTags}{Specifies whether to enable Amazon ECS managed tags for the task. For
-more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html}{Tagging Your Amazon ECS Resources}
-in the \emph{Amazon Elastic Container Service Developer Guide}.}
+The following basic restrictions apply to tags:
+\itemize{
+\item Maximum number of tags per resource - 50
+\item For each resource, each tag key must be unique, and each tag key can
+have only one value.
+\item Maximum key length - 128 Unicode characters in UTF-8
+\item Maximum value length - 256 Unicode characters in UTF-8
+\item If your tagging schema is used across multiple services and
+resources, remember that other services may have restrictions on
+allowed characters. Generally allowed characters are: letters,
+numbers, and spaces representable in UTF-8, and the following
+characters: + - = . \\_ : / @.
+\item Tag keys and values are case-sensitive.
+\item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
+such as a prefix for either keys or values as it is reserved for AWS
+use. You cannot edit or delete tag keys or values with this prefix.
+Tags with this prefix do not count against your tags per resource
+limit.
+}}
 
-\item{propagateTags}{Specifies whether to propagate the tags from the task definition or the
-service to the task. If no value is specified, the tags are not
-propagated.}
+\item{taskDefinition}{[required] The \code{family} and \code{revision} (\code{family:revision}) or full ARN of the task
+definition to start. If a \code{revision} is not specified, the latest
+\code{ACTIVE} revision is used.}
 }
 \description{
 Starts a new task from the specified task definition on the specified
@@ -77,7 +98,22 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
 \section{Request syntax}{
 \preformatted{svc$start_task(
   cluster = "string",
-  taskDefinition = "string",
+  containerInstances = list(
+    "string"
+  ),
+  enableECSManagedTags = TRUE|FALSE,
+  group = "string",
+  networkConfiguration = list(
+    awsvpcConfiguration = list(
+      subnets = list(
+        "string"
+      ),
+      securityGroups = list(
+        "string"
+      ),
+      assignPublicIp = "ENABLED"|"DISABLED"
+    )
+  ),
   overrides = list(
     containerOverrides = list(
       list(
@@ -97,38 +133,32 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
         resourceRequirements = list(
           list(
             value = "string",
-            type = "GPU"
+            type = "GPU"|"InferenceAccelerator"
           )
         )
       )
     ),
-    taskRoleArn = "string",
-    executionRoleArn = "string"
+    cpu = "string",
+    inferenceAcceleratorOverrides = list(
+      list(
+        deviceName = "string",
+        deviceType = "string"
+      )
+    ),
+    executionRoleArn = "string",
+    memory = "string",
+    taskRoleArn = "string"
   ),
-  containerInstances = list(
-    "string"
-  ),
+  propagateTags = "TASK_DEFINITION"|"SERVICE",
+  referenceId = "string",
   startedBy = "string",
-  group = "string",
-  networkConfiguration = list(
-    awsvpcConfiguration = list(
-      subnets = list(
-        "string"
-      ),
-      securityGroups = list(
-        "string"
-      ),
-      assignPublicIp = "ENABLED"|"DISABLED"
-    )
-  ),
   tags = list(
     list(
       key = "string",
       value = "string"
     )
   ),
-  enableECSManagedTags = TRUE|FALSE,
-  propagateTags = "TASK_DEFINITION"|"SERVICE"
+  taskDefinition = "string"
 )
 }
 }

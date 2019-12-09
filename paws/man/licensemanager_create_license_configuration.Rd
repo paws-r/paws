@@ -2,40 +2,53 @@
 % Please edit documentation in R/licensemanager_operations.R
 \name{licensemanager_create_license_configuration}
 \alias{licensemanager_create_license_configuration}
-\title{Creates a new license configuration object}
+\title{Creates a license configuration}
 \usage{
 licensemanager_create_license_configuration(Name, Description,
   LicenseCountingType, LicenseCount, LicenseCountHardLimit, LicenseRules,
-  Tags)
+  Tags, ProductInformationList)
 }
 \arguments{
 \item{Name}{[required] Name of the license configuration.}
 
-\item{Description}{Human-friendly description of the license configuration.}
+\item{Description}{Description of the license configuration.}
 
-\item{LicenseCountingType}{[required] Dimension to use to track the license inventory.}
+\item{LicenseCountingType}{[required] Dimension used to track the license inventory.}
 
 \item{LicenseCount}{Number of licenses managed by the license configuration.}
 
-\item{LicenseCountHardLimit}{Flag indicating whether hard or soft license enforcement is used.
-Exceeding a hard limit results in the blocked deployment of new
-instances.}
+\item{LicenseCountHardLimit}{Indicates whether hard or soft license enforcement is used. Exceeding a
+hard limit blocks the launch of new instances.}
 
-\item{LicenseRules}{Array of configured License Manager rules.}
+\item{LicenseRules}{License rules. The syntax is \\#name=value (for example,
+\\#allowedTenancy=EC2-DedicatedHost). Available rules vary by dimension.
+\itemize{
+\item \code{Cores} dimension: \code{allowedTenancy} \\| \code{maximumCores} \\|
+\code{minimumCores}
+\item \code{Instances} dimension: \code{allowedTenancy} \\| \code{maximumCores} \\|
+\code{minimumCores} \\| \code{maximumSockets} \\| \code{minimumSockets} \\|
+\code{maximumVcpus} \\| \code{minimumVcpus}
+\item \code{Sockets} dimension: \code{allowedTenancy} \\| \code{maximumSockets} \\|
+\code{minimumSockets}
+\item \code{vCPUs} dimension: \code{allowedTenancy} \\| \code{honorVcpuOptimization} \\|
+\code{maximumVcpus} \\| \code{minimumVcpus}
+}}
 
-\item{Tags}{The tags to apply to the resources during launch. You can only tag
-instances and volumes on launch. The specified tags are applied to all
-instances or volumes that are created during launch. To tag a resource
-after it has been created, see CreateTags .}
+\item{Tags}{Tags to add to the license configuration.}
+
+\item{ProductInformationList}{Product information.}
 }
 \description{
-Creates a new license configuration object. A license configuration is
-an abstraction of a customer license agreement that can be consumed and
-enforced by License Manager. Components include specifications for the
-license type (licensing by instance, socket, CPU, or VCPU), tenancy
-(shared tenancy, Amazon EC2 Dedicated Instance, Amazon EC2 Dedicated
-Host, or any of these), host affinity (how long a VM must be associated
-with a host), the number of licenses purchased and used.
+Creates a license configuration.
+}
+\details{
+A license configuration is an abstraction of a customer license
+agreement that can be consumed and enforced by License Manager.
+Components include specifications for the license type (licensing by
+instance, socket, CPU, or vCPU), allowed tenancy (shared tenancy,
+Dedicated Instance, Dedicated Host, or all of these), host affinity (how
+long a VM must be associated with a host), and the number of licenses
+purchased and used.
 }
 \section{Request syntax}{
 \preformatted{svc$create_license_configuration(
@@ -51,6 +64,20 @@ with a host), the number of licenses purchased and used.
     list(
       Key = "string",
       Value = "string"
+    )
+  ),
+  ProductInformationList = list(
+    list(
+      ResourceType = "string",
+      ProductInformationFilterList = list(
+        list(
+          ProductInformationFilterName = "string",
+          ProductInformationFilterValue = list(
+            "string"
+          ),
+          ProductInformationFilterComparator = "string"
+        )
+      )
     )
   )
 )

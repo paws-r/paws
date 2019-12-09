@@ -2,26 +2,28 @@
 % Please edit documentation in R/lightsail_operations.R
 \name{lightsail_delete_instance}
 \alias{lightsail_delete_instance}
-\title{Deletes a specific Amazon Lightsail virtual private server, or
-\emph{instance}}
+\title{Deletes an Amazon Lightsail instance}
 \usage{
-lightsail_delete_instance(instanceName)
+lightsail_delete_instance(instanceName, forceDeleteAddOns)
 }
 \arguments{
 \item{instanceName}{[required] The name of the instance to delete.}
+
+\item{forceDeleteAddOns}{A Boolean value to indicate whether to delete the enabled add-ons for
+the disk.}
 }
 \description{
-Deletes a specific Amazon Lightsail virtual private server, or
-\emph{instance}.
+Deletes an Amazon Lightsail instance.
 }
 \details{
-The \code{delete instance} operation supports tag-based access control via
-resource tags applied to the resource identified by instanceName. For
+The \verb{delete instance} operation supports tag-based access control via
+resource tags applied to the resource identified by \verb{instance name}. For
 more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_instance(
-  instanceName = "string"
+  instanceName = "string",
+  forceDeleteAddOns = TRUE|FALSE
 )
 }
 }

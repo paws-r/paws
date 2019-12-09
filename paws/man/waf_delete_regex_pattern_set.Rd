@@ -14,8 +14,8 @@ ListRegexPatternSets.}
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
-Permanently deletes a RegexPatternSet. You can't delete a
-\code{RegexPatternSet} if it's still used in any \code{RegexMatchSet} or if the
+Permanently deletes a RegexPatternSet. You can\'t delete a
+\code{RegexPatternSet} if it\'s still used in any \code{RegexMatchSet} or if the
 \code{RegexPatternSet} is not empty.
 }
 \section{Request syntax}{

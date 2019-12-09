@@ -21,8 +21,8 @@ exclusive. For example, if \code{start} is \code{2017-01-01} and \code{end} is
 
 Valid values for a \code{GetUsageForecast} call are the following:
 \itemize{
-\item USAGE\_QUANTITY
-\item NORMALIZED\_USAGE\_AMOUNT
+\item USAGE\\_QUANTITY
+\item NORMALIZED\\_USAGE\\_AMOUNT
 }}
 
 \item{Granularity}{[required] How granular you want the forecast to be. You can get 3 months of
@@ -62,12 +62,18 @@ past usage.
     ),
     Not = list(),
     Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID",
+      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION",
       Values = list(
         "string"
       )
     ),
     Tags = list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    ),
+    CostCategories = list(
       Key = "string",
       Values = list(
         "string"

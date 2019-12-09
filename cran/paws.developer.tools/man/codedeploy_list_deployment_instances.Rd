@@ -28,8 +28,8 @@ state.
 }}
 
 \item{instanceTypeFilter}{The set of instances in a blue/green deployment, either those in the
-original environment ("BLUE") or those in the replacement environment
-("GREEN"), for which you want to view instance information.}
+original environment (\"BLUE\") or those in the replacement environment
+(\"GREEN\"), for which you want to view instance information.}
 }
 \description{
 The newer BatchGetDeploymentTargets should be used instead because it

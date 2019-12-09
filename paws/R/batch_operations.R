@@ -141,6 +141,7 @@ batch_cancel_job <- function(jobId, reason) {
 #'   state = "ENABLED"|"DISABLED",
 #'   computeResources = list(
 #'     type = "EC2"|"SPOT",
+#'     allocationStrategy = "BEST_FIT"|"BEST_FIT_PROGRESSIVE"|"SPOT_CAPACITY_OPTIMIZED",
 #'     minvCpus = 123,
 #'     maxvCpus = 123,
 #'     desiredvCpus = 123,
@@ -941,6 +942,17 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
 #'         value = "string",
 #'         type = "GPU"
 #'       )
+#'     ),
+#'     linuxParameters = list(
+#'       devices = list(
+#'         list(
+#'           hostPath = "string",
+#'           containerPath = "string",
+#'           permissions = list(
+#'             "READ"|"WRITE"|"MKNOD"
+#'           )
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   nodeProperties = list(
@@ -993,6 +1005,17 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
 #'             list(
 #'               value = "string",
 #'               type = "GPU"
+#'             )
+#'           ),
+#'           linuxParameters = list(
+#'             devices = list(
+#'               list(
+#'                 hostPath = "string",
+#'                 containerPath = "string",
+#'                 permissions = list(
+#'                   "READ"|"WRITE"|"MKNOD"
+#'                 )
+#'               )
 #'             )
 #'           )
 #'         )

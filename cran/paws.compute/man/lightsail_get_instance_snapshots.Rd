@@ -11,7 +11,7 @@ lightsail_get_instance_snapshots(pageToken)
 instance snapshots request.}
 }
 \description{
-Returns all instance snapshots for the user's account.
+Returns all instance snapshots for the user\'s account.
 }
 \section{Request syntax}{
 \preformatted{svc$get_instance_snapshots(

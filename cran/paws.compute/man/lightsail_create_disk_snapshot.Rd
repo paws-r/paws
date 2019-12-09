@@ -10,24 +10,24 @@ lightsail_create_disk_snapshot(diskName, diskSnapshotName, instanceName,
 \arguments{
 \item{diskName}{The unique name of the source disk (e.g., \code{Disk-Virginia-1}).
 
-This parameter cannot be defined together with the \code{instance name}
-parameter. The \code{disk name} and \code{instance name} parameters are mutually
+This parameter cannot be defined together with the \verb{instance name}
+parameter. The \verb{disk name} and \verb{instance name} parameters are mutually
 exclusive.}
 
 \item{diskSnapshotName}{[required] The name of the destination disk snapshot (e.g., \code{my-disk-snapshot})
 based on the source disk.}
 
 \item{instanceName}{The unique name of the source instance (e.g.,
-\code{Amazon_Linux-512MB-Virginia-1}). When this is defined, a snapshot of
-the instance's system volume is created.
+\verb{Amazon_Linux-512MB-Virginia-1}). When this is defined, a snapshot of
+the instance\'s system volume is created.
 
-This parameter cannot be defined together with the \code{disk name}
-parameter. The \code{instance name} and \code{disk name} parameters are mutually
+This parameter cannot be defined together with the \verb{disk name}
+parameter. The \verb{instance name} and \verb{disk name} parameters are mutually
 exclusive.}
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
-To tag a resource after it has been created, see the \code{tag resource}
+To tag a resource after it has been created, see the \verb{tag resource}
 operation.}
 }
 \description{
@@ -47,17 +47,17 @@ Lightsail instance, issue the create disk snapshot command, and then
 remount the disk to ensure a consistent and complete snapshot. You may
 remount and use your disk while the snapshot status is pending.
 
-You can also use this operation to create a snapshot of an instance's
+You can also use this operation to create a snapshot of an instance\'s
 system volume. You might want to do this, for example, to recover data
 from the system volume of a botched instance or to create a backup of
 the system volume like you would for a block storage disk. To create a
-snapshot of a system volume, just define the \code{instance name} parameter
+snapshot of a system volume, just define the \verb{instance name} parameter
 when issuing the snapshot command, and a snapshot of the defined
-instance's system volume will be created. After the snapshot is
+instance\'s system volume will be created. After the snapshot is
 available, you can create a block storage disk from the snapshot and
 attach it to a running instance to access the data on the disk.
 
-The \code{create disk snapshot} operation supports tag-based access control
+The \verb{create disk snapshot} operation supports tag-based access control
 via request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{

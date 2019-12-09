@@ -5,7 +5,7 @@
 \title{Updates an existing OriginEndpoint}
 \usage{
 mediapackage_update_origin_endpoint(CmafPackage, DashPackage,
-  Description, HlsPackage, Id, ManifestName, MssPackage,
+  Description, HlsPackage, Id, ManifestName, MssPackage, Origination,
   StartoverWindowSeconds, TimeDelaySeconds, Whitelist)
 }
 \arguments{
@@ -22,6 +22,10 @@ mediapackage_update_origin_endpoint(CmafPackage, DashPackage,
 \item{ManifestName}{A short string that will be appended to the end of the Endpoint URL.}
 
 \item{MssPackage}{}
+
+\item{Origination}{Control whether origination of video is allowed for this OriginEndpoint. If set to ALLOW, the OriginEndpoint
+may by requested, pursuant to any other form of access control. If set to DENY, the OriginEndpoint may not be
+requested. This can be helpful for Live to VOD harvesting, or for temporarily disabling origination}
 
 \item{StartoverWindowSeconds}{Maximum duration (in seconds) of content to retain for startover playback.
 If not specified, startover playback will be disabled for the OriginEndpoint.}
@@ -162,6 +166,7 @@ Updates an existing OriginEndpoint.
       StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
     )
   ),
+  Origination = "ALLOW"|"DENY",
   StartoverWindowSeconds = 123,
   TimeDelaySeconds = 123,
   Whitelist = list(

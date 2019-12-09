@@ -6,7 +6,7 @@
 moment in time}
 \usage{
 elasticache_create_snapshot(ReplicationGroupId, CacheClusterId,
-  SnapshotName)
+  SnapshotName, KmsKeyId)
 }
 \arguments{
 \item{ReplicationGroupId}{The identifier of an existing replication group. The snapshot is created
@@ -16,6 +16,8 @@ from this replication group.}
 cluster.}
 
 \item{SnapshotName}{[required] A name for the snapshot being created.}
+
+\item{KmsKeyId}{The ID of the KMS key used to encrypt the snapshot.}
 }
 \description{
 Creates a copy of an entire cluster or replication group at a specific
@@ -28,7 +30,8 @@ This operation is valid for Redis only.
 \preformatted{svc$create_snapshot(
   ReplicationGroupId = "string",
   CacheClusterId = "string",
-  SnapshotName = "string"
+  SnapshotName = "string",
+  KmsKeyId = "string"
 )
 }
 }

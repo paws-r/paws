@@ -9,12 +9,12 @@ rds_describe_db_instance_automated_backups(DbiResourceId,
 }
 \arguments{
 \item{DbiResourceId}{The resource ID of the DB instance that is the source of the automated
-backup. This parameter isn't case-sensitive.}
+backup. This parameter isn\'t case-sensitive.}
 
 \item{DBInstanceIdentifier}{(Optional) The user-supplied instance identifier. If this parameter is
 specified, it must match the identifier of an existing DB instance. It
-returns information from the specific DB instance' automated backup.
-This parameter isn't case-sensitive.}
+returns information from the specific DB instance\' automated backup.
+This parameter isn\'t case-sensitive.}
 
 \item{Filters}{A filter that specifies which resources to return based on status.
 
@@ -42,8 +42,8 @@ specified in the response.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a pagination token
-called a marker is included in the response so that the remaining
-results can be retrieved.}
+called a marker is included in the response so that you can retrieve the
+remaining results.}
 
 \item{Marker}{The pagination token provided in the previous request. If this parameter
 is specified the response includes only records beyond the marker, up to

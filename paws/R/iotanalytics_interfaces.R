@@ -229,7 +229,7 @@ NULL
 
 .iotanalytics$list_dataset_contents_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(datasetContentSummaries = structure(list(structure(list(version = structure(logical(0), tags = list(type = "string")), status = structure(list(state = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), creationTime = structure(logical(0), tags = list(type = "timestamp")), scheduleTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(datasetContentSummaries = structure(list(structure(list(version = structure(logical(0), tags = list(type = "string")), status = structure(list(state = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), creationTime = structure(logical(0), tags = list(type = "timestamp")), scheduleTime = structure(logical(0), tags = list(type = "timestamp")), completionTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -13,14 +13,16 @@ guardduty_list_threat_intel_sets(DetectorId, MaxResults, NextToken)
 \item{MaxResults}{You can use this parameter to indicate the maximum number of items you
 want in the response. The default value is 50. The maximum value is 50.}
 
-\item{NextToken}{You can use this parameter when paginating results. Set the value of
-this parameter to null on your first call to the list action. For
-subsequent calls to the action fill nextToken in the request with the
-value of NextToken from the previous response to continue listing data.}
+\item{NextToken}{You can use this parameter to paginate results in the response. Set the
+value of this parameter to null on your first call to the list action.
+For subsequent calls to the action fill nextToken in the request with
+the value of NextToken from the previous response to continue listing
+data.}
 }
 \description{
 Lists the ThreatIntelSets of the GuardDuty service specified by the
-detector ID.
+detector ID. If you use this operation from a member account, the
+ThreatIntelSets associated with the master account are returned.
 }
 \section{Request syntax}{
 \preformatted{svc$list_threat_intel_sets(

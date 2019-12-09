@@ -27,13 +27,13 @@ information about the options, see \href{http://www.ietf.org/rfc/rfc2132.txt}{RF
 servers, or AmazonProvidedDNS. The default DHCP option set specifies
 AmazonProvidedDNS. If specifying more than one domain name server,
 specify the IP addresses in a single parameter, separated by commas.
-ITo have your instance to receive a custom DNS hostname as specified
-in \code{domain-name}, you must set \code{domain-name-servers} to a custom DNS
+To have your instance receive a custom DNS hostname as specified in
+\code{domain-name}, you must set \code{domain-name-servers} to a custom DNS
 server.
-\item \code{domain-name} - If you're using AmazonProvidedDNS in \code{us-east-1},
-specify \code{ec2.internal}. If you're using AmazonProvidedDNS in
+\item \code{domain-name} - If you\'re using AmazonProvidedDNS in \code{us-east-1},
+specify \code{ec2.internal}. If you\'re using AmazonProvidedDNS in
 another Region, specify \code{region.compute.internal} (for example,
-\code{ap-northeast-1.compute.internal}). Otherwise, specify a domain name
+\verb{ap-northeast-1.compute.internal}). Otherwise, specify a domain name
 (for example, \code{MyCompany.com}). This value is used to complete
 unqualified DNS hostnames. \strong{Important}: Some Linux operating
 systems accept multiple domain names separated by spaces. However,

@@ -4,18 +4,25 @@
 \alias{ec2_create_customer_gateway}
 \title{Provides information to AWS about your VPN customer gateway device}
 \usage{
-ec2_create_customer_gateway(BgpAsn, PublicIp, Type, DryRun)
+ec2_create_customer_gateway(BgpAsn, PublicIp, CertificateArn, Type,
+  DeviceName, DryRun)
 }
 \arguments{
-\item{BgpAsn}{[required] For devices that support BGP, the customer gateway's BGP ASN.
+\item{BgpAsn}{[required] For devices that support BGP, the customer gateway\'s BGP ASN.
 
 Default: 65000}
 
-\item{PublicIp}{[required] The Internet-routable IP address for the customer gateway's outside
+\item{PublicIp}{The Internet-routable IP address for the customer gateway\'s outside
 interface. The address must be static.}
+
+\item{CertificateArn}{The Amazon Resource Name (ARN) for the customer gateway certificate.}
 
 \item{Type}{[required] The type of VPN connection that this customer gateway supports
 (\code{ipsec.1}).}
+
+\item{DeviceName}{A name for the customer gateway device.
+
+Length Constraints: Up to 255 characters.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -27,13 +34,13 @@ Provides information to AWS about your VPN customer gateway device. The
 customer gateway is the appliance at your end of the VPN connection.
 (The device on the AWS side of the VPN connection is the virtual private
 gateway.) You must provide the Internet-routable IP address of the
-customer gateway's external interface. The IP address must be static
-and may be behind a device performing network address translation (NAT).
+customer gateway\'s external interface. The IP address must be static
+and can be behind a device performing network address translation (NAT).
 }
 \details{
 For devices that use Border Gateway Protocol (BGP), you can also provide
-the device's BGP Autonomous System Number (ASN). You can use an
-existing ASN assigned to your network. If you don't have an ASN
+the device\'s BGP Autonomous System Number (ASN). You can use an
+existing ASN assigned to your network. If you don\'t have an ASN
 already, you can use a private ASN (in the 64512 - 65534 range).
 
 Amazon EC2 supports all 2-byte ASN numbers in the range of 1 - 65534,
@@ -43,18 +50,18 @@ and 9059, which is reserved in the \code{eu-west-1} Region.
 For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html}{AWS Site-to-Site VPN} in the
 \emph{AWS Site-to-Site VPN User Guide}.
 
-You cannot create more than one customer gateway with the same VPN type,
-IP address, and BGP ASN parameter values. If you run an identical
-request more than one time, the first request creates the customer
-gateway, and subsequent requests return information about the existing
-customer gateway. The subsequent requests do not create new customer
-gateway resources.
+To create more than one customer gateway with the same VPN type, IP
+address, and BGP ASN, specify a unique device name for each customer
+gateway. Identical requests return information about the existing
+customer gateway and do not create new customer gateways.
 }
 \section{Request syntax}{
 \preformatted{svc$create_customer_gateway(
   BgpAsn = 123,
   PublicIp = "string",
+  CertificateArn = "string",
   Type = "ipsec.1",
+  DeviceName = "string",
   DryRun = TRUE|FALSE
 )
 }

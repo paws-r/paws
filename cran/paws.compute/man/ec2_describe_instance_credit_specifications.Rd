@@ -2,8 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_instance_credit_specifications}
 \alias{ec2_describe_instance_credit_specifications}
-\title{Describes the credit option for CPU usage of the specified T2 or T3
-instances}
+\title{Describes the credit option for CPU usage of the specified burstable
+performance instances}
 \usage{
 ec2_describe_instance_credit_specifications(DryRun, Filters,
   InstanceIds, MaxResults, NextToken)
@@ -33,20 +33,22 @@ parameter and the instance IDs parameter in the same call.}
 \item{NextToken}{The token to retrieve the next page of results.}
 }
 \description{
-Describes the credit option for CPU usage of the specified T2 or T3
-instances. The credit options are \code{standard} and \code{unlimited}.
+Describes the credit option for CPU usage of the specified burstable
+performance instances. The credit options are \code{standard} and
+\code{unlimited}.
 }
 \details{
-If you do not specify an instance ID, Amazon EC2 returns T2 and T3
-instances with the \code{unlimited} credit option, as well as instances that
-were previously configured as T2 or T3 with the \code{unlimited} credit
-option. For example, if you resize a T2 instance, while it is configured
-as \code{unlimited}, to an M4 instance, Amazon EC2 returns the M4 instance.
+If you do not specify an instance ID, Amazon EC2 returns burstable
+performance instances with the \code{unlimited} credit option, as well as
+instances that were previously configured as T2, T3, and T3a with the
+\code{unlimited} credit option. For example, if you resize a T2 instance,
+while it is configured as \code{unlimited}, to an M4 instance, Amazon EC2
+returns the M4 instance.
 
 If you specify one or more instance IDs, Amazon EC2 returns the credit
 option (\code{standard} or \code{unlimited}) of those instances. If you specify an
-instance ID that is not valid, such as an instance that is not a T2 or
-T3 instance, an error is returned.
+instance ID that is not valid, such as an instance that is not a
+burstable performance instance, an error is returned.
 
 Recently terminated instances might appear in the returned results. This
 interval is usually less than one hour.

@@ -2,25 +2,30 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_update_alias}
 \alias{kms_update_alias}
-\title{Associates an existing alias with a different customer master key (CMK)}
+\title{Associates an existing AWS KMS alias with a different customer master
+key (CMK)}
 \usage{
 kms_update_alias(AliasName, TargetKeyId)
 }
 \arguments{
-\item{AliasName}{[required] Specifies the name of the alias to change. This value must begin with
-\code{alias/} followed by the alias name, such as \code{alias/ExampleAlias}.}
+\item{AliasName}{[required] Identifies the alias that is changing its CMK. This value must begin
+with \verb{alias/} followed by the alias name, such as \code{alias/ExampleAlias}.
+You cannot use UpdateAlias to change the alias name.}
 
-\item{TargetKeyId}{[required] Unique identifier of the customer master key (CMK) to be mapped to the
-alias. When the update operation completes, the alias will point to this
-CMK.
+\item{TargetKeyId}{[required] Identifies the CMK to associate with the alias. When the update
+operation completes, the alias will point to this CMK.
+
+The CMK must be in the same AWS account and Region as the alias. Also,
+the new target CMK must be the same type as the current target CMK (both
+symmetric or both asymmetric) and they must have the same key usage.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 
 For example:
 \itemize{
-\item Key ID: \code{1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
 \item Key ARN:
-\code{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
 To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
@@ -28,29 +33,31 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
 To verify that the alias is mapped to the correct CMK, use ListAliases.}
 }
 \description{
-Associates an existing alias with a different customer master key (CMK).
-Each CMK can have multiple aliases, but the aliases must be unique
-within the account and region. You cannot perform this operation on an
-alias in a different AWS account.
+Associates an existing AWS KMS alias with a different customer master
+key (CMK). Each alias is associated with only one CMK at a time,
+although a CMK can have multiple aliases. The alias and the CMK must be
+in the same AWS account and region. You cannot perform this operation on
+an alias in a different AWS account.
 }
 \details{
-This operation works only on existing aliases. To change the alias of a
-CMK to a new value, use CreateAlias to create a new alias and
-DeleteAlias to delete the old alias.
+The current and new CMK must be the same type (both symmetric or both
+asymmetric), and they must have the same key usage (\code{ENCRYPT_DECRYPT} or
+\code{SIGN_VERIFY}). This restriction prevents errors in code that uses
+aliases. If you must assign an alias to a different type of CMK, use
+DeleteAlias to delete the old alias and CreateAlias to create a new
+alias.
+
+You cannot use \code{UpdateAlias} to change an alias name. To change an alias
+name, use DeleteAlias to delete the old alias and CreateAlias to create
+a new alias.
 
 Because an alias is not a property of a CMK, you can create, update, and
 delete the aliases of a CMK without affecting the CMK. Also, aliases do
 not appear in the response from the DescribeKey operation. To get the
 aliases of all CMKs in the account, use the ListAliases operation.
 
-The alias name must begin with \code{alias/} followed by a name, such as
-\code{alias/ExampleAlias}. It can contain only alphanumeric characters,
-forward slashes (/), underscores (\_), and dashes (-). The alias name
-cannot begin with \code{alias/aws/}. The \code{alias/aws/} prefix is reserved for
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{AWS managed CMKs}.
-
-The result of this operation varies with the key state of the CMK. For
-details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
+The CMK that you use for this operation must be in a compatible key
+state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{

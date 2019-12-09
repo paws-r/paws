@@ -69,12 +69,12 @@ Constraints: Value must be \code{1150-65535}
 Default: The same port as the original DB cluster.}
 
 \item{MasterUserPassword}{The new password for the master database user. This password can contain
-any printable ASCII character except "/", """, or "@".
+any printable ASCII character except \"/\", \"\"\", or \"@\".
 
 Constraints: Must contain from 8 to 41 characters.}
 
 \item{OptionGroupName}{A value that indicates that the DB cluster should be associated with the
-specified option group. Changing this parameter doesn't result in an
+specified option group. Changing this parameter doesn\'t result in an
 outage except in the following case, and the change is applied during
 the next maintenance window unless the \code{ApplyImmediately} parameter is
 set to \code{true} for this request. If the parameter change results in an
@@ -82,8 +82,8 @@ option group that enables OEM, this change can cause a brief
 (sub-second) period during which new connections are rejected but
 existing connections are not interrupted.
 
-Permanent options can't be removed from an option group. The option
-group can't be removed from a DB cluster once it is associated with a
+Permanent options can\'t be removed from an option group. The option
+group can\'t be removed from a DB cluster once it is associated with a
 DB cluster.}
 
 \item{PreferredBackupWindow}{The daily time range during which automated backups are created if

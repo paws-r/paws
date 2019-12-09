@@ -189,15 +189,14 @@ snowball_create_address <- function(Address) {
 #' @param AddressId &#91;required&#93; The ID for the address that you want the cluster shipped to.
 #' @param KmsKeyARN The `KmsKeyARN` value that you want to associate with this cluster.
 #' `KmsKeyARN` values are created by using the
-#' [CreateKey](http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html)
+#' [CreateKey](https://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html)
 #' API action in AWS Key Management Service (AWS KMS).
 #' @param RoleARN &#91;required&#93; The `RoleARN` that you want to associate with this cluster. `RoleArn`
 #' values are created by using the
-#' [CreateRole](http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
+#' [CreateRole](https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
 #' API action in AWS Identity and Access Management (IAM).
-#' @param SnowballType The type of AWS Snowball device to use for this cluster. The only
-#' supported device types for cluster jobs are `EDGE`, `EDGE_C`, and
-#' `EDGE_CG`.
+#' @param SnowballType The type of AWS Snowball device to use for this cluster. Currently, the
+#' only supported device type for cluster jobs is `EDGE`.
 #' @param ShippingOption &#91;required&#93; The shipping speed for each node in this cluster. This speed doesn\'t
 #' dictate how soon you\'ll get each Snowball Edge device, rather it
 #' represents how quickly each device moves to its destination while in
@@ -211,7 +210,7 @@ snowball_create_address <- function(Address) {
 #'     day. In addition, most countries in the EU have access to standard
 #'     shipping, which typically takes less than a week, one way.
 #' 
-#' -   In India, devices are delivered in one to seven days.
+#' -   In India, Snowball Edges are delivered in one to seven days.
 #' 
 #' -   In the US, you have access to one-day shipping and two-day shipping.
 #' @param Notification The Amazon Simple Notification Service (Amazon SNS) notification
@@ -350,11 +349,11 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #' @param AddressId The ID for the address that you want the Snowball shipped to.
 #' @param KmsKeyARN The `KmsKeyARN` that you want to associate with this job. `KmsKeyARN`s
 #' are created using the
-#' [CreateKey](http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html)
+#' [CreateKey](https://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html)
 #' AWS Key Management Service (KMS) API action.
 #' @param RoleARN The `RoleARN` that you want to associate with this job. `RoleArn`s are
 #' created using the
-#' [CreateRole](http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
+#' [CreateRole](https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
 #' AWS Identity and Access Management (IAM) API action.
 #' @param SnowballCapacityPreference If your job is being created in one of the US regions, you have the
 #' option of specifying what size Snowball you\'d like for this job. In all
@@ -380,8 +379,8 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #' @param ClusterId The ID of a cluster. If you\'re creating a job for a node in a cluster,
 #' you need to provide only this `clusterId` value. The other job
 #' attributes are inherited from the cluster.
-#' @param SnowballType The type of AWS Snowball device to use for this job. The only supported
-#' device types for cluster jobs are `EDGE`, `EDGE_C`, and `EDGE_CG`.
+#' @param SnowballType The type of AWS Snowball device to use for this job. Currently, the only
+#' supported device type for cluster jobs is `EDGE`.
 #' @param ForwardingAddressId The forwarding address ID for a job. This field is not supported in most
 #' regions.
 #'
@@ -870,6 +869,45 @@ snowball_get_snowball_usage <- function() {
 }
 .snowball$operations$get_snowball_usage <- snowball_get_snowball_usage
 
+#' Returns an Amazon S3 presigned URL for an update file associated with a
+#' specified JobId
+#'
+#' Returns an Amazon S3 presigned URL for an update file associated with a
+#' specified `JobId`.
+#'
+#' @usage
+#' snowball_get_software_updates(JobId)
+#'
+#' @param JobId &#91;required&#93; The ID for a job that you want to get the software update file for, for
+#' example `JID123e4567-e89b-12d3-a456-426655440000`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_software_updates(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname snowball_get_software_updates
+snowball_get_software_updates <- function(JobId) {
+  op <- new_operation(
+    name = "GetSoftwareUpdates",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .snowball$get_software_updates_input(JobId = JobId)
+  output <- .snowball$get_software_updates_output()
+  config <- get_config()
+  svc <- .snowball$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.snowball$operations$get_software_updates <- snowball_get_software_updates
+
 #' Returns an array of JobListEntry objects of the specified length
 #'
 #' Returns an array of `JobListEntry` objects of the specified length. Each
@@ -973,20 +1011,20 @@ snowball_list_clusters <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' This action returns a list of the different Amazon EC2 Amazon Machine
 #' Images (AMIs) that are owned by your AWS account that would be supported
-#' for use on EDGE, EDGE_C, and EDGE_CG devices
+#' for use on a Snowball Edge device
 #'
 #' This action returns a list of the different Amazon EC2 Amazon Machine
 #' Images (AMIs) that are owned by your AWS account that would be supported
-#' for use on `EDGE`, `EDGE_C`, and `EDGE_CG` devices. For more information
-#' on compatible AMIs, see [Using Amazon EC2 Compute
-#' Instances](http://docs.aws.amazon.com/snowball/latest/developer-guide/using-ec2.html)
-#' in the *AWS Snowball Developer Guide*.
+#' for use on a Snowball Edge device. Currently, supported AMIs are based
+#' on the CentOS 7 (x86\\_64) - with Updates HVM, Ubuntu Server 14.04 LTS
+#' (HVM), and Ubuntu 16.04 LTS - Xenial (HVM) images, available on the AWS
+#' Marketplace.
 #'
 #' @usage
 #' snowball_list_compatible_images(MaxResults, NextToken)
 #'
 #' @param MaxResults The maximum number of results for the list of compatible images.
-#' Currently, each supported device can store 10 AMIs.
+#' Currently, a Snowball Edge device can store 10 AMIs.
 #' @param NextToken HTTP requests are stateless. To identify what object comes \"next\" in
 #' the list of compatible images, you can specify a value for `NextToken`
 #' as the starting point for your list of returned images.
@@ -1088,7 +1126,7 @@ snowball_list_jobs <- function(MaxResults = NULL, NextToken = NULL) {
 #' `CID123e4567-e89b-12d3-a456-426655440000`.
 #' @param RoleARN The new role Amazon Resource Name (ARN) that you want to associate with
 #' this cluster. To create a role ARN, use the
-#' [CreateRole](http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
+#' [CreateRole](https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
 #' API action in AWS Identity and Access Management (IAM).
 #' @param Description The updated description of this cluster.
 #' @param Resources The updated arrays of JobResource objects that can include updated
@@ -1193,7 +1231,7 @@ snowball_update_cluster <- function(ClusterId, RoleARN = NULL, Description = NUL
 #' `JID123e4567-e89b-12d3-a456-426655440000`.
 #' @param RoleARN The new role Amazon Resource Name (ARN) that you want to associate with
 #' this job. To create a role ARN, use the
-#' [CreateRole](http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)AWS
+#' [CreateRole](https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)AWS
 #' Identity and Access Management (IAM) API action.
 #' @param Notification The new or updated Notification object.
 #' @param Resources The updated `JobResource` object, or the updated JobResource object.

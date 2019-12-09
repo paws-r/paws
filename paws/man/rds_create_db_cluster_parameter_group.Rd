@@ -46,7 +46,7 @@ A DB cluster parameter group is initially created with the default
 parameters for the database engine used by instances in the DB cluster.
 To provide custom values for any of the parameters, you must modify the
 group after creating it using \code{ModifyDBClusterParameterGroup}. Once
-you've created a DB cluster parameter group, you need to associate it
+you\'ve created a DB cluster parameter group, you need to associate it
 with your DB cluster using \code{ModifyDBCluster}. When you associate a new
 DB cluster parameter group with a running DB cluster, you need to reboot
 the DB instances in the DB cluster without failover for the new DB

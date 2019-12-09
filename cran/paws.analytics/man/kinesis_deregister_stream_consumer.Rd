@@ -13,7 +13,7 @@ For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aw
 \item{ConsumerName}{The name that you gave to the consumer.}
 
 \item{ConsumerARN}{The ARN returned by Kinesis Data Streams when you registered the
-consumer. If you don't know the ARN of the consumer that you want to
+consumer. If you don\'t know the ARN of the consumer that you want to
 deregister, you can use the ListStreamConsumers operation to get a list
 of the descriptions of all the consumers that are currently registered
 with a given data stream. The description of a consumer contains its
@@ -23,7 +23,7 @@ ARN.}
 To deregister a consumer, provide its ARN. Alternatively, you can
 provide the ARN of the data stream and the name you gave the consumer
 when you registered it. You may also provide all three parameters, as
-long as they don't conflict with each other. If you don't know the
+long as they don\'t conflict with each other. If you don\'t know the
 name or ARN of the consumer that you want to deregister, you can use the
 ListStreamConsumers operation to get a list of the descriptions of all
 the consumers that are currently registered with a given data stream.

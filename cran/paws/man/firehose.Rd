@@ -40,7 +40,7 @@ Redshift, and Splunk.
 \tabular{ll}{
 \link[=firehose_create_delivery_stream]{create_delivery_stream} \tab Creates a Kinesis Data Firehose delivery stream \cr
 \link[=firehose_delete_delivery_stream]{delete_delivery_stream} \tab Deletes a delivery stream and its data \cr
-\link[=firehose_describe_delivery_stream]{describe_delivery_stream} \tab Describes the specified delivery stream and gets the status \cr
+\link[=firehose_describe_delivery_stream]{describe_delivery_stream} \tab Describes the specified delivery stream and its status \cr
 \link[=firehose_list_delivery_streams]{list_delivery_streams} \tab Lists your delivery streams in alphabetical order of their names \cr
 \link[=firehose_list_tags_for_delivery_stream]{list_tags_for_delivery_stream} \tab Lists the tags for the specified delivery stream \cr
 \link[=firehose_put_record]{put_record} \tab Writes a single data record into an Amazon Kinesis Data Firehose delivery stream \cr

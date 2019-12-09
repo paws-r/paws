@@ -161,6 +161,18 @@ NULL
   return(populate(args, shape))
 }
 
+.organizations$describe_effective_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(PolicyType = structure(logical(0), tags = list(type = "string")), TargetId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$describe_effective_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EffectivePolicy = structure(list(PolicyContent = structure(logical(0), tags = list(type = "string")), LastUpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), TargetId = structure(logical(0), tags = list(type = "string")), PolicyType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .organizations$describe_handshake_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(HandshakeId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))

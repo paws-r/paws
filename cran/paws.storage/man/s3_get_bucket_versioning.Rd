@@ -7,10 +7,25 @@
 s3_get_bucket_versioning(Bucket)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The name of the bucket for which to get the versioning information.}
 }
 \description{
 Returns the versioning state of a bucket.
+}
+\details{
+To retrieve the versioning state of a bucket, you must be the bucket
+owner.
+
+This implementation also returns the MFA Delete status of the versioning
+state. If the MFA Delete status is \code{enabled}, the bucket owner must use
+an authentication device to change the versioning state of the bucket.
+
+The following operations are related to \code{GetBucketVersioning}:
+\itemize{
+\item GetObject
+\item PutObject
+\item DeleteObject
+}
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_versioning(

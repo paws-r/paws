@@ -20,7 +20,7 @@ in the response. The default value is 250.}
 }
 \description{
 Lists all the S3 resources associated with Amazon Macie. If
-memberAccountId isn't specified, the action lists the S3 resources
+memberAccountId isn\'t specified, the action lists the S3 resources
 associated with Amazon Macie for the current master account. If
 memberAccountId is specified, the action lists the S3 resources
 associated with Amazon Macie for the specified member account.

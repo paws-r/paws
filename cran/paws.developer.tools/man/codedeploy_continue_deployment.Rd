@@ -13,8 +13,8 @@ codedeploy_continue_deployment(deploymentId, deploymentWaitType)
 \item{deploymentId}{The unique ID of a blue/green deployment for which you want to start
 rerouting traffic to the replacement environment.}
 
-\item{deploymentWaitType}{The status of the deployment's waiting period. READY\_WAIT indicates
-the deployment is ready to start shifting traffic. TERMINATION\_WAIT
+\item{deploymentWaitType}{The status of the deployment\'s waiting period. READY\\_WAIT indicates
+the deployment is ready to start shifting traffic. TERMINATION\\_WAIT
 indicates the traffic is shifted, but the original target is not
 terminated.}
 }

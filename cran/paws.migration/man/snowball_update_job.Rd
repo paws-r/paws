@@ -11,11 +11,11 @@ snowball_update_job(JobId, RoleARN, Notification, Resources, AddressId,
 }
 \arguments{
 \item{JobId}{[required] The job ID of the job that you want to update, for example
-\code{JID123e4567-e89b-12d3-a456-426655440000}.}
+\verb{JID123e4567-e89b-12d3-a456-426655440000}.}
 
 \item{RoleARN}{The new role Amazon Resource Name (ARN) that you want to associate with
 this job. To create a role ARN, use the
-\href{http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html}{CreateRole}AWS
+\href{https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html}{CreateRole}AWS
 Identity and Access Management (IAM) API action.}
 
 \item{Notification}{The new or updated Notification object.}
@@ -24,18 +24,18 @@ Identity and Access Management (IAM) API action.}
 
 \item{AddressId}{The ID of the updated Address object.}
 
-\item{ShippingOption}{The updated shipping option value of this job's ShippingDetails object.}
+\item{ShippingOption}{The updated shipping option value of this job\'s ShippingDetails object.}
 
-\item{Description}{The updated description of this job's JobMetadata object.}
+\item{Description}{The updated description of this job\'s JobMetadata object.}
 
-\item{SnowballCapacityPreference}{The updated \code{SnowballCapacityPreference} of this job's JobMetadata
+\item{SnowballCapacityPreference}{The updated \code{SnowballCapacityPreference} of this job\'s JobMetadata
 object. The 50 TB Snowballs are only available in the US regions.}
 
 \item{ForwardingAddressId}{The updated ID for the forwarding address for a job. This field is not
 supported in most regions.}
 }
 \description{
-While a job's \code{JobState} value is \code{New}, you can update some of the
+While a job\'s \code{JobState} value is \code{New}, you can update some of the
 information associated with a job. Once the job changes to a different
 job state, usually within 60 minutes of the job being created, this
 action is no longer available.

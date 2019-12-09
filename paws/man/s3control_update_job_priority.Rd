@@ -14,7 +14,7 @@ s3control_update_job_priority(AccountId, JobId, Priority)
 \item{Priority}{[required] The priority you want to assign to this job.}
 }
 \description{
-Updates an existing job's priority.
+Updates an existing job\'s priority.
 }
 \section{Request syntax}{
 \preformatted{svc$update_job_priority(

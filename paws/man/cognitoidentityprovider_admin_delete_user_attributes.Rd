@@ -17,7 +17,7 @@ attributes.}
 \item{UserAttributeNames}{[required] An array of strings representing the user attribute names you wish to
 delete.
 
-For custom attributes, you must prepend the \code{custom:} prefix to the
+For custom attributes, you must prepend the \verb{custom:} prefix to the
 attribute name.}
 }
 \description{
@@ -25,7 +25,7 @@ Deletes the user attributes in a user pool as an administrator. Works on
 any user.
 }
 \details{
-Requires developer credentials.
+Calling this action requires developer credentials.
 }
 \section{Request syntax}{
 \preformatted{svc$admin_delete_user_attributes(

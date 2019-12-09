@@ -4,7 +4,7 @@
 \alias{workspaces_list_available_management_cidr_ranges}
 \title{Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks,
 that you can use for the network management interface when you enable
-bring your own license (BYOL)}
+Bring Your Own License (BYOL)}
 \usage{
 workspaces_list_available_management_cidr_ranges(
   ManagementCidrRangeConstraint, MaxResults, NextToken)
@@ -22,7 +22,7 @@ provide this token to receive the next set of results.}
 \description{
 Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks,
 that you can use for the network management interface when you enable
-bring your own license (BYOL).
+Bring Your Own License (BYOL).
 }
 \details{
 The management network interface is connected to a secure Amazon

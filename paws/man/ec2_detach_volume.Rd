@@ -13,7 +13,7 @@ ec2_detach_volume(Device, Force, InstanceId, VolumeId, DryRun)
 cleanly (for example, logging into an instance, unmounting the volume,
 and detaching normally). This option can lead to data loss or a
 corrupted file system. Use this option only as a last resort to detach a
-volume from a failed instance. The instance won't have an opportunity
+volume from a failed instance. The instance won\'t have an opportunity
 to flush file system caches or file system metadata. If you use this
 option, you must perform file system check and repair procedures.}
 
@@ -33,7 +33,7 @@ volume. Failure to do so can result in the volume becoming stuck in the
 \code{busy} state while detaching. If this happens, detachment can be delayed
 indefinitely until you unmount the volume, force detachment, reboot the
 instance, or all three. If an EBS volume is the root device of an
-instance, it can't be detached while the instance is running. To detach
+instance, it can\'t be detached while the instance is running. To detach
 the root volume, stop the instance first.
 }
 \details{
@@ -55,7 +55,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 
 \examples{
-# This example detaches the volume (``vol-049df61146c4d7901``) from the
+# This example detaches the volume (`vol-049df61146c4d7901`) from the
 # instance it is attached to.
 \donttest{svc$detach_volume(
   VolumeId = "vol-1234567890abcdef0"

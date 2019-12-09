@@ -14,7 +14,7 @@ Queue URLs and names are case-sensitive.}
 }
 \description{
 Deletes the queue specified by the \code{QueueUrl}, regardless of the
-queue's contents. If the specified queue doesn't exist, Amazon SQS
+queue\'s contents. If the specified queue doesn\'t exist, Amazon SQS
 returns a successful response.
 }
 \details{
@@ -23,13 +23,13 @@ messages in the queue are no longer available.
 
 When you delete a queue, the deletion process takes up to 60 seconds.
 Requests you send involving that queue during the 60 seconds might
-succeed. For example, a \code{<a>SendMessage</a>} request might succeed,
+succeed. For example, a \verb{<a>SendMessage</a>} request might succeed,
 but after 60 seconds the queue and the message you sent no longer exist.
 
 When you delete a queue, you must wait at least 60 seconds before
 creating a queue with the same name.
 
-Cross-account permissions don't apply to this action. For more
+Cross-account permissions don\'t apply to this action. For more
 information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }

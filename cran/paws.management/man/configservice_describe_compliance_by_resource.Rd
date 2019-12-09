@@ -9,8 +9,8 @@ configservice_describe_compliance_by_resource(ResourceType, ResourceId,
 }
 \arguments{
 \item{ResourceType}{The types of AWS resources for which you want compliance information
-(for example, \code{AWS::EC2::Instance}). For this action, you can specify
-that the resource type is an AWS account by specifying \code{AWS::::Account}.}
+(for example, \verb{AWS::EC2::Instance}). For this action, you can specify
+that the resource type is an AWS account by specifying \verb{AWS::::Account}.}
 
 \item{ResourceId}{The ID of the AWS resource for which you want compliance information.
 You can specify only one resource ID. If you specify a resource ID, you
@@ -46,14 +46,14 @@ following conditions about the rules that evaluate the resource:
 whether it has, use the \code{DescribeConfigRuleEvaluationStatus} action
 to get the \code{LastSuccessfulInvocationTime} and
 \code{LastFailedInvocationTime}.
-\item The rule's AWS Lambda function is failing to send evaluation
+\item The rule\'s AWS Lambda function is failing to send evaluation
 results to AWS Config. Verify that the role that you assigned to
 your configuration recorder includes the \code{config:PutEvaluations}
 permission. If the rule is a custom rule, verify that the AWS Lambda
 execution role includes the \code{config:PutEvaluations} permission.
-\item The rule's AWS Lambda function has returned \code{NOT_APPLICABLE} for
+\item The rule\'s AWS Lambda function has returned \code{NOT_APPLICABLE} for
 all evaluation results. This can occur if the resources were deleted
-or removed from the rule's scope.
+or removed from the rule\'s scope.
 }
 }
 \section{Request syntax}{

@@ -8,12 +8,12 @@ value or the restorable instance's resource ID}
 rds_delete_db_instance_automated_backup(DbiResourceId)
 }
 \arguments{
-\item{DbiResourceId}{[required] The identifier for the source DB instance, which can't be changed and
+\item{DbiResourceId}{[required] The identifier for the source DB instance, which can\'t be changed and
 which is unique to an AWS Region.}
 }
 \description{
-Deletes automated backups based on the source instance's
-\code{DbiResourceId} value or the restorable instance's resource ID.
+Deletes automated backups based on the source instance\'s
+\code{DbiResourceId} value or the restorable instance\'s resource ID.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_db_instance_automated_backup(

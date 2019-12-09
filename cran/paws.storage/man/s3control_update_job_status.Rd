@@ -14,7 +14,7 @@ s3control_update_job_status(AccountId, JobId, RequestedJobStatus,
 
 \item{RequestedJobStatus}{[required] The status that you want to move the specified job to.}
 
-\item{StatusUpdateReason}{A description of the reason why you want to change the specified job's
+\item{StatusUpdateReason}{A description of the reason why you want to change the specified job\'s
 status. This field can be any string up to the maximum length.}
 }
 \description{

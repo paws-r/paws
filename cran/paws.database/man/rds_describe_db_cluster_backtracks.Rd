@@ -15,7 +15,7 @@ Constraints:
 \itemize{
 \item Must contain from 1 to 63 alphanumeric characters or hyphens.
 \item First character must be a letter.
-\item Can't end with a hyphen or contain two consecutive hyphens.
+\item Can\'t end with a hyphen or contain two consecutive hyphens.
 }
 
 Example: \code{my-cluster1}}
@@ -29,7 +29,7 @@ Constraints:
 information about UUIDs, see \href{http://www.ietf.org/rfc/rfc4122.txt}{A Universally Unique Identifier (UUID) URN Namespace}.
 }
 
-Example: \code{123e4567-e89b-12d3-a456-426655440000}}
+Example: \verb{123e4567-e89b-12d3-a456-426655440000}}
 
 \item{Filters}{A filter that specifies one or more DB clusters to describe. Supported
 filters include the following:
@@ -52,8 +52,8 @@ identified by these values.
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a pagination token
-called a marker is included in the response so that the remaining
-results can be retrieved.
+called a marker is included in the response so you can retrieve the
+remaining results.
 
 Default: 100
 

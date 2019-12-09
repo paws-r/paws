@@ -4,7 +4,8 @@
 \alias{datasync_create_location_s3}
 \title{Creates an endpoint for an Amazon S3 bucket}
 \usage{
-datasync_create_location_s3(Subdirectory, S3BucketArn, S3Config, Tags)
+datasync_create_location_s3(Subdirectory, S3BucketArn, S3StorageClass,
+  S3Config, Tags)
 }
 \arguments{
 \item{Subdirectory}{A subdirectory in the Amazon S3 bucket. This subdirectory in Amazon S3
@@ -12,6 +13,13 @@ is used to read data from the S3 source location or write data to the S3
 destination.}
 
 \item{S3BucketArn}{[required] The Amazon Resource Name (ARN) of the Amazon S3 bucket.}
+
+\item{S3StorageClass}{The Amazon S3 storage class that you want to store your files in when
+this location is used as a task destination. For more information about
+S3 storage classes, see \href{https://aws.amazon.com/s3/storage-classes/}{Amazon S3 Storage Classes} in the \emph{Amazon
+Simple Storage Service Developer Guide}. Some storage classes have
+behaviors that can affect your S3 storage cost. For detailed
+information, see using-storage-classes.}
 
 \item{S3Config}{[required]}
 
@@ -30,14 +38,14 @@ policy that grants the required permissions and attaching the policy to
 the role. An example of such a policy is shown in the examples section.
 
 For more information, see
-"https://docs.aws.amazon.com/datasync/latest/userguide/working-with-locations.html\#create-s3-location"
-(Configuring Amazon S3 Location Settings) in the \emph{AWS DataSync User
-Guide}.
+https://docs.aws.amazon.com/datasync/latest/userguide/working-with-locations.html\\#create-s3-location
+in the \emph{AWS DataSync User Guide.}
 }
 \section{Request syntax}{
 \preformatted{svc$create_location_s3(
   Subdirectory = "string",
   S3BucketArn = "string",
+  S3StorageClass = "STANDARD"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE",
   S3Config = list(
     BucketAccessRoleArn = "string"
   ),

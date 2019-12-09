@@ -2,10 +2,11 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_lookup_events}
 \alias{cloudtrail_lookup_events}
-\title{Looks up management events captured by CloudTrail}
+\title{Looks up management events or CloudTrail Insights events that are
+captured by CloudTrail}
 \usage{
 cloudtrail_lookup_events(LookupAttributes, StartTime, EndTime,
-  MaxResults, NextToken)
+  EventCategory, MaxResults, NextToken)
 }
 \arguments{
 \item{LookupAttributes}{Contains a list of lookup attributes. Currently the list can contain
@@ -19,20 +20,26 @@ an error is returned.}
 are returned. If the specified end time is before the specified start
 time, an error is returned.}
 
+\item{EventCategory}{Specifies the event category. If you do not specify an event category,
+events of the category are not returned in the response. For example, if
+you do not specify \code{insight} as the value of \code{EventCategory}, no
+Insights events are returned.}
+
 \item{MaxResults}{The number of events to return. Possible values are 1 through 50. The
 default is 50.}
 
 \item{NextToken}{The token to use to get the next page of results after a previous API
 call. This token must be passed in with the same parameters that were
 specified in the the original call. For example, if the original call
-specified an AttributeKey of 'Username' with a value of 'root', the
+specified an AttributeKey of \'Username\' with a value of \'root\', the
 call with NextToken should include those same parameters.}
 }
 \description{
 Looks up \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-management-events}{management events}
-captured by CloudTrail. Events for a region can be looked up in that
-region during the last 90 days. Lookup supports the following
-attributes:
+or \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-insights-events}{CloudTrail Insights events}
+that are captured by CloudTrail. You can look up events that occurred in
+a region within the last 90 days. Lookup supports the following
+attributes for management events:
 }
 \details{
 \itemize{
@@ -46,16 +53,19 @@ attributes:
 \item User name
 }
 
+Lookup supports the following attributes for Insights events:
+\itemize{
+\item Event ID
+\item Event name
+\item Event source
+}
+
 All attributes are optional. The default number of results returned is
 50, with a maximum of 50 possible. The response includes a token that
 you can use to get the next page of results.
 
-The rate of lookup requests is limited to one per second per account. If
+The rate of lookup requests is limited to two per second per account. If
 this limit is exceeded, a throttling error occurs.
-
-Events that occurred during the selected time range will not be
-available for lookup if CloudTrail logging was not enabled when the
-events occurred.
 }
 \section{Request syntax}{
 \preformatted{svc$lookup_events(
@@ -71,6 +81,7 @@ events occurred.
   EndTime = as.POSIXct(
     "2015-01-01"
   ),
+  EventCategory = "insight",
   MaxResults = 123,
   NextToken = "string"
 )

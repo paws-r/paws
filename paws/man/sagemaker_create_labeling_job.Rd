@@ -15,10 +15,10 @@ list of labeling jobs.}
 
 \item{LabelAttributeName}{[required] The attribute name to use for the label in the output manifest file.
 This is the key for the key/value pair formed with the label that a
-worker assigns to the object. The name can't end with "-metadata". If
+worker assigns to the object. The name can\'t end with \"-metadata\". If
 you are running a semantic segmentation labeling job, the attribute name
-must end with "-ref". If you are running any other kind of labeling
-job, the attribute name must not end with "-ref".}
+must end with \"-ref\". If you are running any other kind of labeling
+job, the attribute name must not end with \"-ref\".}
 
 \item{InputConfig}{[required] Input data for the labeling job, such as the Amazon S3 location of the
 data objects and the location of the manifest file that describes the
@@ -37,35 +37,35 @@ data objects.
 
 The file is a JSON structure in the following format:
 
-\code{\{}
+\verb{\\\{}
 
 \code{ "document-version": "2018-11-28"}
 
-\code{ "labels": \\[}
+\verb{ "labels": \\\[}
 
-\code{ \{}
+\verb{ \\\{}
 
 \code{ "label": "<i>label 1</i>"}
 
-\code{ \},}
+\verb{ \\\},}
 
-\code{ \{}
+\verb{ \\\{}
 
 \code{ "label": "<i>label 2</i>"}
 
-\code{ \},}
+\verb{ \\\},}
 
 \code{ ...}
 
-\code{ \{}
+\verb{ \\\{}
 
 \code{ "label": "<i>label n</i>"}
 
-\code{ \}}
+\verb{ \\\}}
 
-\code{ \\]}
+\verb{ \\\]}
 
-\code{\}}}
+\verb{\\\}}}
 
 \item{StoppingConditions}{A set of conditions for stopping the labeling job. If any of the
 conditions are met, the job is automatically stopped. You can use these
@@ -73,10 +73,11 @@ conditions to control the cost of data labeling.}
 
 \item{LabelingJobAlgorithmsConfig}{Configures the information required to perform automated data labeling.}
 
-\item{HumanTaskConfig}{[required] Configures the information required for human workers to complete a
-labeling task.}
+\item{HumanTaskConfig}{[required] Configures the labeling task and how it is presented to workers;
+including, but not limited to price, keywords, and batch size (task
+count).}
 
-\item{Tags}{An array of key/value pairs. For more information, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
+\item{Tags}{An array of key/value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
 in the \emph{AWS Billing and Cost Management User Guide}.}
 }
 \description{
@@ -101,11 +102,11 @@ You can also use \emph{automated data labeling} to reduce the number of data
 objects that need to be labeled by a human. Automated data labeling uses
 \emph{active learning} to determine if a data object can be labeled by
 machine or if it needs to be sent to a human worker. For more
-information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/sms-automated-labeling.html}{Using Automated Data Labeling}.
+information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-automated-labeling.html}{Using Automated Data Labeling}.
 
 The data objects to be labeled are contained in an Amazon S3 bucket. You
 create a \emph{manifest file} that describes the location of each object. For
-more information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/sms-data.html}{Using Input and Output Data}.
+more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-data.html}{Using Input and Output Data}.
 
 The output can be used as the manifest file for another labeling job or
 as training data for your machine learning models.

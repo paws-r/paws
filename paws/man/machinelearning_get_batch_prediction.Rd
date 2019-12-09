@@ -12,7 +12,7 @@ machinelearning_get_batch_prediction(BatchPredictionId)
 }
 \description{
 Returns a \code{BatchPrediction} that includes detailed metadata, status, and
-data file information for a \code{Batch Prediction} request.
+data file information for a \verb{Batch Prediction} request.
 }
 \section{Request syntax}{
 \preformatted{svc$get_batch_prediction(

@@ -12,11 +12,9 @@ ssm_describe_instance_patches(InstanceId, Filters, NextToken,
 \item{InstanceId}{[required] The ID of the instance whose patch state information should be
 retrieved.}
 
-\item{Filters}{Each entry in the array is a structure containing:
-
-Key (string, between 1 and 128 characters)
-
-Values (array of strings, each string between 1 and 256 characters)}
+\item{Filters}{An array of structures. Each entry in the array is a structure
+containing a Key, Value combination. Valid values for Key are
+\code{Classification} \\| \code{KBId} \\| \code{Severity} \\| \code{State}.}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}

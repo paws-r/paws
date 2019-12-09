@@ -9,8 +9,8 @@ lexmodelbuildingservice_delete_slot_type_version(name, version)
 \arguments{
 \item{name}{[required] The name of the slot type.}
 
-\item{version}{[required] The version of the slot type to delete. You cannot delete the \code{$LATEST}
-version of the slot type. To delete the \code{$LATEST} version, use the
+\item{version}{[required] The version of the slot type to delete. You cannot delete the \verb{$LATEST}
+version of the slot type. To delete the \verb{$LATEST} version, use the
 DeleteSlotType operation.}
 }
 \description{

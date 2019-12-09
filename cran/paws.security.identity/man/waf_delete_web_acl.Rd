@@ -13,7 +13,7 @@ returned by CreateWebACL and by ListWebACLs.}
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
-Permanently deletes a WebACL. You can't delete a \code{WebACL} if it still
+Permanently deletes a WebACL. You can\'t delete a \code{WebACL} if it still
 contains any \code{Rules}.
 }
 \details{

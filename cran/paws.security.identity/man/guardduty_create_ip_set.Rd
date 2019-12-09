@@ -2,9 +2,8 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_create_ip_set}
 \alias{guardduty_create_ip_set}
-\title{Creates a new IPSet - a list of trusted IP addresses that have been
-whitelisted for secure communication with AWS infrastructure and
-applications}
+\title{Creates a new IPSet, called Trusted IP list in the consoler user
+interface}
 \usage{
 guardduty_create_ip_set(DetectorId, Name, Format, Location, Activate,
   ClientToken, Tags)
@@ -30,9 +29,11 @@ uploaded IPSet.}
 \item{Tags}{The tags to be added to a new IP set resource.}
 }
 \description{
-Creates a new IPSet - a list of trusted IP addresses that have been
-whitelisted for secure communication with AWS infrastructure and
-applications.
+Creates a new IPSet, called Trusted IP list in the consoler user
+interface. An IPSet is a list IP addresses trusted for secure
+communication with AWS infrastructure and applications. GuardDuty does
+not generate findings for IP addresses included in IPSets. Only users
+from the master account can use this operation.
 }
 \section{Request syntax}{
 \preformatted{svc$create_ip_set(

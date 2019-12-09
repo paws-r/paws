@@ -7,7 +7,7 @@
 iot_list_indices(nextToken, maxResults)
 }
 \arguments{
-\item{nextToken}{The token used to get the next set of results, or null if there are no
+\item{nextToken}{The token used to get the next set of results, or \code{null} if there are no
 additional results.}
 
 \item{maxResults}{The maximum number of results to return at one time.}

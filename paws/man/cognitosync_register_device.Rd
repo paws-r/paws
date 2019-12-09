@@ -13,7 +13,7 @@ Cognito. Here, the ID of the pool that the identity belongs to.}
 
 \item{IdentityId}{[required] The unique ID for this identity.}
 
-\item{Platform}{[required] The SNS platform type (e.g. GCM, SDM, APNS, APNS\_SANDBOX).}
+\item{Platform}{[required] The SNS platform type (e.g. GCM, SDM, APNS, APNS\\_SANDBOX).}
 
 \item{Token}{[required] The push token.}
 }

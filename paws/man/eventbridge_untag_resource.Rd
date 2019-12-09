@@ -7,7 +7,7 @@
 eventbridge_untag_resource(ResourceARN, TagKeys)
 }
 \arguments{
-\item{ResourceARN}{[required] The ARN of the rule that you're removing tags from.}
+\item{ResourceARN}{[required] The ARN of the rule that you\'re removing tags from.}
 
 \item{TagKeys}{[required] The list of tag keys to remove from the resource.}
 }

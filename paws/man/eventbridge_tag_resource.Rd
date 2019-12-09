@@ -8,7 +8,7 @@ resource}
 eventbridge_tag_resource(ResourceARN, Tags)
 }
 \arguments{
-\item{ResourceARN}{[required] The ARN of the rule that you're adding tags to.}
+\item{ResourceARN}{[required] The ARN of the rule that you\'re adding tags to.}
 
 \item{Tags}{[required] The list of key-value pairs to associate with the rule.}
 }
@@ -20,7 +20,7 @@ permission to access or change only resources with certain tag values.
 In EventBridge, rules can be tagged.
 }
 \details{
-Tags don't have any semantic meaning to AWS and are interpreted
+Tags don\'t have any semantic meaning to AWS and are interpreted
 strictly as strings of characters.
 
 You can use the \code{TagResource} action with a rule that already has tags.

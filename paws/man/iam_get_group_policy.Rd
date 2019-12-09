@@ -12,13 +12,13 @@ iam_get_group_policy(GroupName, PolicyName)
 
 This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \_+=,.@-}
+spaces. You can also include any of the following characters: \\_+=,.@-}
 
 \item{PolicyName}{[required] The name of the policy document to get.
 
 This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \_+=,.@-}
+spaces. You can also include any of the following characters: \\_+=,.@-}
 }
 \description{
 Retrieves the specified inline policy document that is embedded in the
@@ -33,7 +33,7 @@ SDKs provide similar functionality.
 
 An IAM group can also have managed policies attached to it. To retrieve
 a managed policy document that is attached to a group, use GetPolicy to
-determine the policy's default version, then use GetPolicyVersion to
+determine the policy\'s default version, then use GetPolicyVersion to
 retrieve the policy document.
 
 For more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}

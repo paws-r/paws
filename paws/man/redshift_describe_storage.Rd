@@ -2,13 +2,13 @@
 % Please edit documentation in R/redshift_operations.R
 \name{redshift_describe_storage}
 \alias{redshift_describe_storage}
-\title{Returns the total amount of snapshot usage and provisioned storage for a
-user in megabytes}
+\title{Returns the total amount of snapshot usage and provisioned storage in
+megabytes}
 \usage{
 redshift_describe_storage()
 }
 \description{
-Returns the total amount of snapshot usage and provisioned storage for a
-user in megabytes.
+Returns the total amount of snapshot usage and provisioned storage in
+megabytes.
 }
 \keyword{internal}

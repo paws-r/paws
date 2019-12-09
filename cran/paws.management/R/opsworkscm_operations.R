@@ -166,17 +166,54 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL) {
 #' that you update your security group rules to allow access from known IP
 #' addresses and address ranges only. To edit security group rules, open
 #' Security Groups in the navigation pane of the EC2 management console.
+#' 
+#' To specify your own domain for a server, and provide your own
+#' self-signed or CA-signed certificate and private key, specify values for
+#' `CustomDomain`, `CustomCertificate`, and `CustomPrivateKey`.
 #'
 #' @usage
-#' opsworkscm_create_server(AssociatePublicIpAddress,
-#'   DisableAutomatedBackup, Engine, EngineModel, EngineVersion,
-#'   EngineAttributes, BackupRetentionCount, ServerName, InstanceProfileArn,
-#'   InstanceType, KeyPair, PreferredMaintenanceWindow,
-#'   PreferredBackupWindow, SecurityGroupIds, ServiceRoleArn, SubnetIds,
-#'   BackupId)
+#' opsworkscm_create_server(AssociatePublicIpAddress, CustomDomain,
+#'   CustomCertificate, CustomPrivateKey, DisableAutomatedBackup, Engine,
+#'   EngineModel, EngineVersion, EngineAttributes, BackupRetentionCount,
+#'   ServerName, InstanceProfileArn, InstanceType, KeyPair,
+#'   PreferredMaintenanceWindow, PreferredBackupWindow, SecurityGroupIds,
+#'   ServiceRoleArn, SubnetIds, BackupId)
 #'
 #' @param AssociatePublicIpAddress Associate a public IP address with a server that you are launching.
 #' Valid values are `true` or `false`. The default value is `true`.
+#' @param CustomDomain An optional public endpoint of a server, such as
+#' `https://aws.my-company.com`. To access the server, create a CNAME DNS
+#' record in your preferred DNS service that points the custom domain to
+#' the endpoint that is generated when the server is created (the value of
+#' the CreateServer Endpoint attribute). You cannot access the server by
+#' using the generated `Endpoint` value if the server is using a custom
+#' domain. If you specify a custom domain, you must also specify values for
+#' `CustomCertificate` and `CustomPrivateKey`.
+#' @param CustomCertificate A PEM-formatted HTTPS certificate. The value can be be a single,
+#' self-signed certificate, or a certificate chain. If you specify a custom
+#' certificate, you must also specify values for `CustomDomain` and
+#' `CustomPrivateKey`. The following are requirements for the
+#' `CustomCertificate` value:
+#' 
+#' -   You can provide either a self-signed, custom certificate, or the
+#'     full certificate chain.
+#' 
+#' -   The certificate must be a valid X509 certificate, or a certificate
+#'     chain in PEM format.
+#' 
+#' -   The certificate must be valid at the time of upload. A certificate
+#'     can\'t be used before its validity period begins (the certificate\'s
+#'     `NotBefore` date), or after it expires (the certificate\'s
+#'     `NotAfter` date).
+#' 
+#' -   The certificate's common name or subject alternative names (SANs),
+#'     if present, must match the value of `CustomDomain`.
+#' 
+#' -   The certificate must match the value of `CustomPrivateKey`.
+#' @param CustomPrivateKey A private key in PEM format for connecting to the server by using HTTPS.
+#' The private key must not be encrypted; it cannot be protected by a
+#' password or passphrase. If you specify a custom private key, you must
+#' also specify values for `CustomDomain` and `CustomCertificate`.
 #' @param DisableAutomatedBackup Enable or disable scheduled backups. Valid values are `true` or `false`.
 #' The default value is `true`.
 #' @param Engine The configuration management engine to use. Valid values include
@@ -294,6 +331,9 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL) {
 #' ```
 #' svc$create_server(
 #'   AssociatePublicIpAddress = TRUE|FALSE,
+#'   CustomDomain = "string",
+#'   CustomCertificate = "string",
+#'   CustomPrivateKey = "string",
 #'   DisableAutomatedBackup = TRUE|FALSE,
 #'   Engine = "string",
 #'   EngineModel = "string",
@@ -325,14 +365,14 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL) {
 #' @keywords internal
 #'
 #' @rdname opsworkscm_create_server
-opsworkscm_create_server <- function(AssociatePublicIpAddress = NULL, DisableAutomatedBackup = NULL, Engine = NULL, EngineModel = NULL, EngineVersion = NULL, EngineAttributes = NULL, BackupRetentionCount = NULL, ServerName, InstanceProfileArn, InstanceType, KeyPair = NULL, PreferredMaintenanceWindow = NULL, PreferredBackupWindow = NULL, SecurityGroupIds = NULL, ServiceRoleArn, SubnetIds = NULL, BackupId = NULL) {
+opsworkscm_create_server <- function(AssociatePublicIpAddress = NULL, CustomDomain = NULL, CustomCertificate = NULL, CustomPrivateKey = NULL, DisableAutomatedBackup = NULL, Engine = NULL, EngineModel = NULL, EngineVersion = NULL, EngineAttributes = NULL, BackupRetentionCount = NULL, ServerName, InstanceProfileArn, InstanceType, KeyPair = NULL, PreferredMaintenanceWindow = NULL, PreferredBackupWindow = NULL, SecurityGroupIds = NULL, ServiceRoleArn, SubnetIds = NULL, BackupId = NULL) {
   op <- new_operation(
     name = "CreateServer",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .opsworkscm$create_server_input(AssociatePublicIpAddress = AssociatePublicIpAddress, DisableAutomatedBackup = DisableAutomatedBackup, Engine = Engine, EngineModel = EngineModel, EngineVersion = EngineVersion, EngineAttributes = EngineAttributes, BackupRetentionCount = BackupRetentionCount, ServerName = ServerName, InstanceProfileArn = InstanceProfileArn, InstanceType = InstanceType, KeyPair = KeyPair, PreferredMaintenanceWindow = PreferredMaintenanceWindow, PreferredBackupWindow = PreferredBackupWindow, SecurityGroupIds = SecurityGroupIds, ServiceRoleArn = ServiceRoleArn, SubnetIds = SubnetIds, BackupId = BackupId)
+  input <- .opsworkscm$create_server_input(AssociatePublicIpAddress = AssociatePublicIpAddress, CustomDomain = CustomDomain, CustomCertificate = CustomCertificate, CustomPrivateKey = CustomPrivateKey, DisableAutomatedBackup = DisableAutomatedBackup, Engine = Engine, EngineModel = EngineModel, EngineVersion = EngineVersion, EngineAttributes = EngineAttributes, BackupRetentionCount = BackupRetentionCount, ServerName = ServerName, InstanceProfileArn = InstanceProfileArn, InstanceType = InstanceType, KeyPair = KeyPair, PreferredMaintenanceWindow = PreferredMaintenanceWindow, PreferredBackupWindow = PreferredBackupWindow, SecurityGroupIds = SecurityGroupIds, ServiceRoleArn = ServiceRoleArn, SubnetIds = SubnetIds, BackupId = BackupId)
   output <- .opsworkscm$create_server_output()
   config <- get_config()
   svc <- .opsworkscm$service(config)

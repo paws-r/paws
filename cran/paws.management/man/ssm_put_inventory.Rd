@@ -7,14 +7,13 @@
 ssm_put_inventory(InstanceId, Items)
 }
 \arguments{
-\item{InstanceId}{[required] One or more instance IDs where you want to add or update inventory
-items.}
+\item{InstanceId}{[required] An instance ID where you want to add or update inventory items.}
 
 \item{Items}{[required] The inventory items that you want to add or update on instances.}
 }
 \description{
 Bulk update custom inventory items on one more instance. The request
-adds an inventory item, if it doesn't already exist, or updates an
+adds an inventory item, if it doesn\'t already exist, or updates an
 inventory item, if it does exist.
 }
 \section{Request syntax}{

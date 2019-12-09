@@ -13,7 +13,7 @@ opsworks_create_instance(StackId, LayerIds, InstanceType,
 \arguments{
 \item{StackId}{[required] The stack ID.}
 
-\item{LayerIds}{[required] An array that contains the instance's layer IDs.}
+\item{LayerIds}{[required] An array that contains the instance\'s layer IDs.}
 
 \item{InstanceType}{[required] The instance type, such as \code{t2.micro}. For a list of supported instance
 types, open the stack in the console, choose \strong{Instances}, and choose
@@ -27,30 +27,30 @@ only time-based instances.}
 
 \item{Hostname}{The instance host name.}
 
-\item{Os}{The instance's operating system, which must be set to one of the
+\item{Os}{The instance\'s operating system, which must be set to one of the
 following.
 \itemize{
 \item A supported Linux operating system: An Amazon Linux version, such as
-\code{Amazon Linux 2018.03}, \code{Amazon Linux 2017.09},
-\code{Amazon Linux 2017.03}, \code{Amazon Linux 2016.09},
-\code{Amazon Linux 2016.03}, \code{Amazon Linux 2015.09}, or
-\code{Amazon Linux 2015.03}.
-\item A supported Ubuntu operating system, such as \code{Ubuntu 16.04 LTS},
-\code{Ubuntu 14.04 LTS}, or \code{Ubuntu 12.04 LTS}.
-\item \code{CentOS Linux 7}
-\item \code{Red Hat Enterprise Linux 7}
+\verb{Amazon Linux 2018.03}, \verb{Amazon Linux 2017.09},
+\verb{Amazon Linux 2017.03}, \verb{Amazon Linux 2016.09},
+\verb{Amazon Linux 2016.03}, \verb{Amazon Linux 2015.09}, or
+\verb{Amazon Linux 2015.03}.
+\item A supported Ubuntu operating system, such as \verb{Ubuntu 16.04 LTS},
+\verb{Ubuntu 14.04 LTS}, or \verb{Ubuntu 12.04 LTS}.
+\item \verb{CentOS Linux 7}
+\item \verb{Red Hat Enterprise Linux 7}
 \item A supported Windows operating system, such as
-\code{Microsoft Windows Server 2012 R2 Base},
-\code{Microsoft Windows Server 2012 R2 with SQL Server Express},
-\code{Microsoft Windows Server 2012 R2 with SQL Server Standard}, or
-\code{Microsoft Windows Server 2012 R2 with SQL Server Web}.
+\verb{Microsoft Windows Server 2012 R2 Base},
+\verb{Microsoft Windows Server 2012 R2 with SQL Server Express},
+\verb{Microsoft Windows Server 2012 R2 with SQL Server Standard}, or
+\verb{Microsoft Windows Server 2012 R2 with SQL Server Web}.
 \item A custom AMI: \code{Custom}.
 }
 
 For more information about the supported operating systems, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{AWS OpsWorks Stacks Operating Systems}.
 
 The default option is the current Amazon Linux version. If you set this
-parameter to \code{Custom}, you must use the CreateInstance action's AmiId
+parameter to \code{Custom}, you must use the CreateInstance action\'s AmiId
 parameter to specify the custom AMI that you want to use. Block device
 mappings are not supported if the value is \code{Custom}. For more
 information about supported operating systems, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{Operating Systems}For
@@ -63,14 +63,14 @@ see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances
 
 If you specify a custom AMI, you must set \code{Os} to \code{Custom}.}
 
-\item{SshKeyName}{The instance's Amazon EC2 key-pair name.}
+\item{SshKeyName}{The instance\'s Amazon EC2 key-pair name.}
 
 \item{AvailabilityZone}{The instance Availability Zone. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html}{Regions and Endpoints}.}
 
-\item{VirtualizationType}{The instance's virtualization type, \code{paravirtual} or \code{hvm}.}
+\item{VirtualizationType}{The instance\'s virtualization type, \code{paravirtual} or \code{hvm}.}
 
-\item{SubnetId}{The ID of the instance's subnet. If the stack is running in a VPC, you
-can use this parameter to override the stack's default subnet ID value
+\item{SubnetId}{The ID of the instance\'s subnet. If the stack is running in a VPC, you
+can use this parameter to override the stack\'s default subnet ID value
 and direct AWS OpsWorks Stacks to launch the instance in a different
 subnet.}
 
@@ -81,7 +81,7 @@ architectures that are supported by the different instance types, see
 
 \item{RootDeviceType}{The instance root device type. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device}{Storage for the Root Device}.}
 
-\item{BlockDeviceMappings}{An array of \code{BlockDeviceMapping} objects that specify the instance's
+\item{BlockDeviceMappings}{An array of \code{BlockDeviceMapping} objects that specify the instance\'s
 block devices. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html}{Block Device Mapping}.
 Note that block device mappings are not supported for custom AMIs.}
 
@@ -100,9 +100,9 @@ your instances have the latest security updates.}
 \item{AgentVersion}{The default AWS OpsWorks Stacks agent version. You have the following
 options:
 \itemize{
-\item \code{INHERIT} - Use the stack's default agent version setting.
-\item \emph{version\_number} - Use the specified agent version. This value
-overrides the stack's default setting. To update the agent version,
+\item \code{INHERIT} - Use the stack\'s default agent version setting.
+\item \emph{version\\_number} - Use the specified agent version. This value
+overrides the stack\'s default setting. To update the agent version,
 edit the instance configuration and specify a new version. AWS
 OpsWorks Stacks then automatically installs that version on the
 instance.
@@ -113,7 +113,7 @@ use the complete version number, not the abbreviated number shown on the
 console. For a list of available agent version numbers, call
 DescribeAgentVersions. AgentVersion cannot be set to Chef 12.2.}
 
-\item{Tenancy}{The instance's tenancy option. The default option is no tenancy, or if
+\item{Tenancy}{The instance\'s tenancy option. The default option is no tenancy, or if
 the instance is running in a VPC, inherit tenancy settings from the VPC.
 The following are valid values for this parameter: \code{dedicated},
 \code{default}, or \code{host}. Because there are costs associated with changes in

@@ -7,7 +7,9 @@
 sagemaker_create_training_job(TrainingJobName, HyperParameters,
   AlgorithmSpecification, RoleArn, InputDataConfig, OutputDataConfig,
   ResourceConfig, VpcConfig, StoppingCondition, Tags,
-  EnableNetworkIsolation, EnableInterContainerTrafficEncryption)
+  EnableNetworkIsolation, EnableInterContainerTrafficEncryption,
+  EnableManagedSpotTraining, CheckpointConfig, DebugHookConfig,
+  DebugRuleConfigurations, TensorBoardOutputConfig, ExperimentConfig)
 }
 \arguments{
 \item{TrainingJobName}{[required] The name of the training job. The name must be unique within an AWS
@@ -21,7 +23,7 @@ SageMaker, see
 
 You can specify a maximum of 100 hyperparameters. Each hyperparameter is
 a key-value pair. Each key and value is limited to 256 characters, as
-specified by the \code{Length Constraint}.}
+specified by the \verb{Length Constraint}.}
 
 \item{AlgorithmSpecification}{[required] The registry path of the Docker image that contains the training
 algorithm and algorithm-specific metadata, including the input mode. For
@@ -47,17 +49,19 @@ must have the \code{iam:PassRole} permission.}
 
 Algorithms can accept input data from one or more channels. For example,
 an algorithm might have two channels of input data, \code{training_data} and
-\code{validation_data}. The configuration for each channel provides the S3
-location where the input data is stored. It also provides information
-about the stored data: the MIME type, compression method, and whether
-the data is wrapped in RecordIO format.
+\code{validation_data}. The configuration for each channel provides the S3,
+EFS, or FSx location where the input data is stored. It also provides
+information about the stored data: the MIME type, compression method,
+and whether the data is wrapped in RecordIO format.
 
 Depending on the input mode that the algorithm supports, Amazon
 SageMaker either copies input data files from an S3 bucket to a local
 directory in the Docker container, or makes it available as input
-streams.}
+streams. For example, if you specify an EFS location, input data files
+will be made available as input streams. They do not need to be
+downloaded.}
 
-\item{OutputDataConfig}{[required] Specifies the path to the S3 bucket where you want to store model
+\item{OutputDataConfig}{[required] Specifies the path to the S3 location where you want to store model
 artifacts. Amazon SageMaker creates subfolders for the artifacts.}
 
 \item{ResourceConfig}{[required] The resources, including the ML compute instances and ML storage
@@ -102,6 +106,29 @@ security for distributed training, but training might take longer. How
 long it takes depends on the amount of communication between compute
 instances, especially if you use a deep learning algorithm in
 distributed training. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html}{Protect Communications Between ML Compute Instances in a Distributed Training Job}.}
+
+\item{EnableManagedSpotTraining}{To train models using managed spot training, choose \code{True}. Managed spot
+training provides a fully managed and scalable infrastructure for
+training machine learning models. this option is useful when training
+jobs can be interrupted and when there is flexibility when the training
+job is run.
+
+The complete and intermediate results of jobs are stored in an Amazon S3
+bucket, and can be used as a starting point to train models
+incrementally. Amazon SageMaker provides metrics and logs in CloudWatch.
+They can be used to see when managed spot training jobs are running,
+interrupted, resumed, or completed.}
+
+\item{CheckpointConfig}{Contains information about the output location for managed spot training
+checkpoint data.}
+
+\item{DebugHookConfig}{}
+
+\item{DebugRuleConfigurations}{Configuration information for debugging rules.}
+
+\item{TensorBoardOutputConfig}{}
+
+\item{ExperimentConfig}{}
 }
 \description{
 Starts a model training job. After training completes, Amazon SageMaker
@@ -124,19 +151,24 @@ Hyperparameters can be tuned to optimize this learning process. For
 a list of hyperparameters for each training algorithm provided by
 Amazon SageMaker, see
 \href{https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html}{Algorithms}.
-\item \code{InputDataConfig} - Describes the training dataset and the Amazon S3
-location where it is stored.
-\item \code{OutputDataConfig} - Identifies the Amazon S3 location where you
-want Amazon SageMaker to save the results of model training.
+\item \code{InputDataConfig} - Describes the training dataset and the Amazon
+S3, EFS, or FSx location where it is stored.
+\item \code{OutputDataConfig} - Identifies the Amazon S3 bucket where you want
+Amazon SageMaker to save the results of model training.
 \item \code{ResourceConfig} - Identifies the resources, ML compute instances,
 and ML storage volumes to deploy for model training. In distributed
 training, you specify more than one instance.
+\item \code{EnableManagedSpotTraining} - Optimize the cost of training machine
+learning models by up to 80\\% by using Amazon EC2 Spot instances. For
+more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html}{Managed Spot Training}.
 \item \code{RoleARN} - The Amazon Resource Number (ARN) that Amazon SageMaker
 assumes to perform tasks on your behalf during model training. You
 must grant this role the necessary permissions so that Amazon
 SageMaker can successfully complete model training.
-\item \code{StoppingCondition} - Sets a time limit for training. Use this
-parameter to cap model training costs.
+\item \code{StoppingCondition} - To help cap training costs, use
+\code{MaxRuntimeInSeconds} to set a time limit for training. Use
+\code{MaxWaitTimeInSeconds} to specify how long you are willing to wait
+for a managed spot training job to complete.
 }
 
 For more information about Amazon SageMaker, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html}{How It Works}.
@@ -156,7 +188,8 @@ For more information about Amazon SageMaker, see \href{https://docs.aws.amazon.c
         Name = "string",
         Regex = "string"
       )
-    )
+    ),
+    EnableSageMakerMetricsTimeSeries = TRUE|FALSE
   ),
   RoleArn = "string",
   InputDataConfig = list(
@@ -170,6 +203,12 @@ For more information about Amazon SageMaker, see \href{https://docs.aws.amazon.c
           AttributeNames = list(
             "string"
           )
+        ),
+        FileSystemDataSource = list(
+          FileSystemId = "string",
+          FileSystemAccessMode = "rw"|"ro",
+          FileSystemType = "EFS"|"FSxLustre",
+          DirectoryPath = "string"
         )
       ),
       ContentType = "string",
@@ -186,7 +225,7 @@ For more information about Amazon SageMaker, see \href{https://docs.aws.amazon.c
     S3OutputPath = "string"
   ),
   ResourceConfig = list(
-    InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge",
+    InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge",
     InstanceCount = 123,
     VolumeSizeInGB = 123,
     VolumeKmsKeyId = "string"
@@ -200,7 +239,8 @@ For more information about Amazon SageMaker, see \href{https://docs.aws.amazon.c
     )
   ),
   StoppingCondition = list(
-    MaxRuntimeInSeconds = 123
+    MaxRuntimeInSeconds = 123,
+    MaxWaitTimeInSeconds = 123
   ),
   Tags = list(
     list(
@@ -209,7 +249,49 @@ For more information about Amazon SageMaker, see \href{https://docs.aws.amazon.c
     )
   ),
   EnableNetworkIsolation = TRUE|FALSE,
-  EnableInterContainerTrafficEncryption = TRUE|FALSE
+  EnableInterContainerTrafficEncryption = TRUE|FALSE,
+  EnableManagedSpotTraining = TRUE|FALSE,
+  CheckpointConfig = list(
+    S3Uri = "string",
+    LocalPath = "string"
+  ),
+  DebugHookConfig = list(
+    LocalPath = "string",
+    S3OutputPath = "string",
+    HookParameters = list(
+      "string"
+    ),
+    CollectionConfigurations = list(
+      list(
+        CollectionName = "string",
+        CollectionParameters = list(
+          "string"
+        )
+      )
+    )
+  ),
+  DebugRuleConfigurations = list(
+    list(
+      RuleConfigurationName = "string",
+      LocalPath = "string",
+      S3OutputPath = "string",
+      RuleEvaluatorImage = "string",
+      InstanceType = "ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge",
+      VolumeSizeInGB = 123,
+      RuleParameters = list(
+        "string"
+      )
+    )
+  ),
+  TensorBoardOutputConfig = list(
+    LocalPath = "string",
+    S3OutputPath = "string"
+  ),
+  ExperimentConfig = list(
+    ExperimentName = "string",
+    TrialName = "string",
+    TrialComponentDisplayName = "string"
+  )
 )
 }
 }

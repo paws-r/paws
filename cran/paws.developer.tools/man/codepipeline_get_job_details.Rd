@@ -10,14 +10,14 @@ codepipeline_get_job_details(jobId)
 \item{jobId}{[required] The unique system-generated ID for the job.}
 }
 \description{
-Returns information about a job. Only used for custom actions.
+Returns information about a job. Used for custom actions only.
 }
 \details{
 When this API is called, AWS CodePipeline returns temporary credentials
 for the Amazon S3 bucket used to store artifacts for the pipeline, if
 the action requires access to that Amazon S3 bucket for input or output
-artifacts. Additionally, this API returns any secret values defined for
-the action.
+artifacts. This API also returns any secret values defined for the
+action.
 }
 \section{Request syntax}{
 \preformatted{svc$get_job_details(

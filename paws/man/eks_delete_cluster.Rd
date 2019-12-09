@@ -19,6 +19,10 @@ cluster so that the load balancers are deleted properly. Otherwise, you
 can have orphaned resources in your VPC that prevent you from being able
 to delete the VPC. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html}{Deleting a Cluster}
 in the \emph{Amazon EKS User Guide}.
+
+If you have managed node groups or Fargate profiles attached to the
+cluster, you must delete them first. For more information, see
+DeleteNodegroup andDeleteFargateProfile.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_cluster(

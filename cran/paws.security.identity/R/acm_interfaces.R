@@ -61,7 +61,7 @@ NULL
 
 .acm$import_certificate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), Certificate = structure(logical(0), tags = list(type = "blob")), PrivateKey = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), CertificateChain = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure"))
+  shape <- structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), Certificate = structure(logical(0), tags = list(type = "blob")), PrivateKey = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), CertificateChain = structure(logical(0), tags = list(type = "blob")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -117,7 +117,7 @@ NULL
 
 .acm$request_certificate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), ValidationMethod = structure(logical(0), tags = list(type = "string")), SubjectAlternativeNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), IdempotencyToken = structure(logical(0), tags = list(type = "string")), DomainValidationOptions = structure(list(structure(list(DomainName = structure(logical(0), tags = list(type = "string")), ValidationDomain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Options = structure(list(CertificateTransparencyLoggingPreference = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), ValidationMethod = structure(logical(0), tags = list(type = "string")), SubjectAlternativeNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), IdempotencyToken = structure(logical(0), tags = list(type = "string")), DomainValidationOptions = structure(list(structure(list(DomainName = structure(logical(0), tags = list(type = "string")), ValidationDomain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Options = structure(list(CertificateTransparencyLoggingPreference = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

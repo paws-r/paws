@@ -11,7 +11,7 @@ alexaforbusiness_list_device_events(DeviceArn, EventType, NextToken,
 \arguments{
 \item{DeviceArn}{[required] The ARN of a device.}
 
-\item{EventType}{The event type to filter device events. If EventType isn't specified,
+\item{EventType}{The event type to filter device events. If EventType isn\'t specified,
 this returns a list of all device events in reverse chronological order.
 If EventType is specified, this returns a list of device events for that
 EventType in reverse chronological order.}

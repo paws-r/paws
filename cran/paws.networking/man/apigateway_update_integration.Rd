@@ -10,10 +10,10 @@ apigateway_update_integration(restApiId, resourceId, httpMethod,
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[required] [Required] Represents an update integration request's resource
+\item{resourceId}{[required] [Required] Represents an update integration request\'s resource
 identifier.}
 
-\item{httpMethod}{[required] [Required] Represents an update integration request's HTTP method.}
+\item{httpMethod}{[required] [Required] Represents an update integration request\'s HTTP method.}
 
 \item{patchOperations}{A list of update operations to be applied to the specified resource and
 in the order specified in this list.}

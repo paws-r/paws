@@ -15,7 +15,7 @@ apigateway_delete_authorizer(restApiId, authorizerId)
 Deletes an existing Authorizer resource.
 }
 \details{
-::: {.seeAlso}
+::: \{.seeAlso\}
 \href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/delete-authorizer.html}{AWS CLI}
 :::
 }

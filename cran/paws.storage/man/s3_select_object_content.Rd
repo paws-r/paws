@@ -3,11 +3,11 @@
 \name{s3_select_object_content}
 \alias{s3_select_object_content}
 \title{This operation filters the contents of an Amazon S3 object based on a
-simple Structured Query Language (SQL) statement}
+simple structured query language (SQL) statement}
 \usage{
 s3_select_object_content(Bucket, Key, SSECustomerAlgorithm,
   SSECustomerKey, SSECustomerKeyMD5, Expression, ExpressionType,
-  RequestProgress, InputSerialization, OutputSerialization)
+  RequestProgress, InputSerialization, OutputSerialization, ScanRange)
 }
 \arguments{
 \item{Bucket}{[required] The S3 bucket.}
@@ -23,7 +23,7 @@ s3_select_object_content(Bucket, Key, SSECustomerAlgorithm,
 
 \item{Expression}{[required] The expression that is used to query the object.}
 
-\item{ExpressionType}{[required] The type of the provided expression (for example., SQL).}
+\item{ExpressionType}{[required] The type of the provided expression (for example, SQL).}
 
 \item{RequestProgress}{Specifies if periodic request progress information should be enabled.}
 
@@ -31,15 +31,114 @@ s3_select_object_content(Bucket, Key, SSECustomerAlgorithm,
 
 \item{OutputSerialization}{[required] Describes the format of the data that you want Amazon S3 to return in
 response.}
+
+\item{ScanRange}{Specifies the byte range of the object to get the records from. A record
+is processed when its first byte is contained by the range. This
+parameter is optional, but when specified, it must not be empty. See RFC
+2616, Section 14.35.1 about how to specify the start and end of the
+range.
+
+\code{ScanRange}may be used in the following ways:
+\itemize{
+\item \verb{&lt;scanrange&gt;&lt;start&gt;50&lt;/start&gt;&lt;end&gt;100&lt;/end&gt;&lt;/scanrange&gt;} -
+process only the records starting between the bytes 50 and 100
+(inclusive, counting from zero)
+\item \verb{&lt;scanrange&gt;&lt;start&gt;50&lt;/start&gt;&lt;/scanrange&gt;} -
+process only the records starting after the byte 50
+\item \verb{&lt;scanrange&gt;&lt;end&gt;50&lt;/end&gt;&lt;/scanrange&gt;} -
+process only the records within the last 50 bytes of the file.
+}}
 }
 \description{
 This operation filters the contents of an Amazon S3 object based on a
-simple Structured Query Language (SQL) statement. In the request, along
+simple structured query language (SQL) statement. In the request, along
 with the SQL expression, you must also specify a data serialization
-format (JSON or CSV) of the object. Amazon S3 uses this to parse object
-data into records, and returns only records that match the specified SQL
-expression. You must also specify the data serialization format for the
-response.
+format (JSON, CSV, or Apache Parquet) of the object. Amazon S3 uses this
+format to parse object data into records, and returns only records that
+match the specified SQL expression. You must also specify the data
+serialization format for the response.
+}
+\details{
+For more information about Amazon S3 Select, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/selecting-content-from-objects.html}{Selecting Content from Objects}
+in the \emph{Amazon Simple Storage Service Developer Guide}.
+
+For more information about using SQL with Amazon S3 Select, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-glacier-select-sql-reference.html}{SQL Reference for Amazon S3 Select and Glacier Select}
+in the \emph{Amazon Simple Storage Service Developer Guide}.
+
+\strong{Permissions}
+
+You must have \code{s3:GetObject} permission for this operation.Â Amazon S3
+Select does not support anonymous access. For more information about
+permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html}{Specifying Permissions in a Policy}
+in the \emph{Amazon Simple Storage Service Developer Guide}.
+
+\emph{Object Data Formats}
+
+You can use Amazon S3 Select to query objects that have the following
+format properties:
+\itemize{
+\item \emph{CSV, JSON, and Parquet} - Objects must be in CSV, JSON, or Parquet
+format.
+\item \emph{UTF-8} - UTF-8 is the only encoding type Amazon S3 Select supports.
+\item \emph{GZIP or BZIP2} - CSV and JSON files can be compressed using GZIP or
+BZIP2. GZIP and BZIP2 are the only compression formats that Amazon
+S3 Select supports for CSV and JSON files. Amazon S3 Select supports
+columnar compression for Parquet using GZIP or Snappy. Amazon S3
+Select does not support whole-object compression for Parquet
+objects.
+\item \emph{Server-side encryption} - Amazon S3 Select supports querying
+objects that are protected with server-side encryption.
+
+For objects that are encrypted with customer-provided encryption
+keys (SSE-C), you must use HTTPS, and you must use the headers that
+are documented in the GetObject. For more information about SSE-C,
+see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys)}
+in the \emph{Amazon Simple Storage Service Developer Guide}.
+
+For objects that are encrypted with Amazon S3 managed encryption
+keys (SSE-S3) and customer master keys (CMKs) stored in AWS Key
+Management Service (SSE-KMS), server-side encryption is handled
+transparently, so you don\'t need to specify anything. For more
+information about server-side encryption, including SSE-S3 and
+SSE-KMS, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html}{Protecting Data Using Server-Side Encryption}
+in the \emph{Amazon Simple Storage Service Developer Guide}.
+}
+
+\strong{Working with the Response Body}
+
+Given the response size is unknown, Amazon S3 Select streams the
+response as a series of messages and includes a \code{Transfer-Encoding}
+header with \code{chunked} as its value in the response. For more
+information, see RESTSelectObjectAppendix .
+
+\strong{GetObject Support}
+
+The \code{SelectObjectContent} operation does not support the following
+\code{GetObject} functionality. For more information, see GetObject.
+\itemize{
+\item \code{Range}: While you can specify a scan range for a Amazon S3 Select
+request, see SelectObjectContentRequest\\$ScanRange in the request
+parameters below, you cannot specify the range of bytes of an object
+to return.
+\item GLACIER, DEEP\\_ARCHIVE and REDUCED\\_REDUNDANCY storage classes: You
+cannot specify the GLACIER, DEEP\\_ARCHIVE, or \code{REDUCED_REDUNDANCY}
+storage classes. For more information, about storage classes see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#storage-class-intro}{Storage Classes}
+in the \emph{Amazon Simple Storage Service Developer Guide}.
+}
+
+\strong{Special Errors}
+
+For a list of special errors for this operation and for general
+information about Amazon S3 errors and a list of error codes, see
+ErrorResponses
+
+\strong{Related Resources}
+\itemize{
+\item GetObject
+\item GetBucketLifecycleConfiguration
+\item PutBucketLifecycleConfiguration
+}
 }
 \section{Request syntax}{
 \preformatted{svc$select_object_content(
@@ -80,6 +179,10 @@ response.
     JSON = list(
       RecordDelimiter = "string"
     )
+  ),
+  ScanRange = list(
+    Start = 123,
+    End = 123
   )
 )
 }

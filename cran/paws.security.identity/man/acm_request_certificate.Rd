@@ -6,16 +6,16 @@
 \usage{
 acm_request_certificate(DomainName, ValidationMethod,
   SubjectAlternativeNames, IdempotencyToken, DomainValidationOptions,
-  Options, CertificateAuthorityArn)
+  Options, CertificateAuthorityArn, Tags)
 }
 \arguments{
 \item{DomainName}{[required] Fully qualified domain name (FQDN), such as www.example.com, that you
-want to secure with an ACM certificate. Use an asterisk (*) to create a
+want to secure with an ACM certificate. Use an asterisk (\\emph{) to create a
 wildcard certificate that protects several sites in the same domain. For
-example, *.example.com protects www.example.com, site.example.com, and
+example, \}.example.com protects www.example.com, site.example.com, and
 images.example.com.
 
-The first domain name you enter cannot exceed 63 octets, including
+The first domain name you enter cannot exceed 64 octets, including
 periods. Each subsequent Subject Alternative Name (SAN), however, can be
 up to 253 octets in length.}
 
@@ -38,13 +38,13 @@ The maximum length of a SAN DNS name is 253 octets. The name is made up
 of multiple labels separated by periods. No label can be longer than 63
 octets. Consider the following examples:
 \itemize{
-\item \code{(63 octets).(63 octets).(63 octets).(61 octets)} is legal because
+\item \verb{(63 octets).(63 octets).(63 octets).(61 octets)} is legal because
 the total length is 253 octets (63+1+63+1+63+1+61) and no label
 exceeds 63 octets.
-\item \code{(64 octets).(63 octets).(63 octets).(61 octets)} is not legal
+\item \verb{(64 octets).(63 octets).(63 octets).(61 octets)} is not legal
 because the total length exceeds 253 octets (64+1+63+1+63+1+61) and
 the first label exceeds 63 octets.
-\item \code{(63 octets).(63 octets).(63 octets).(62 octets)} is not legal
+\item \verb{(63 octets).(63 octets).(63 octets).(62 octets)} is not legal
 because the total length of the DNS name (63+1+63+1+63+1+62) exceeds
 253 octets.
 }}
@@ -75,6 +75,8 @@ the \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaWelcome.html}{
 user guide. The ARN must have the following form:
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012}}
+
+\item{Tags}{One or more resource tags to associate with the certificate.}
 }
 \description{
 Requests an ACM certificate for use with other AWS services. To request
@@ -108,7 +110,13 @@ after receiving approval from the domain owner.
   Options = list(
     CertificateTransparencyLoggingPreference = "ENABLED"|"DISABLED"
   ),
-  CertificateAuthorityArn = "string"
+  CertificateAuthorityArn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

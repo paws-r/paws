@@ -13,8 +13,8 @@ wafregional_delete_rule_group(RuleGroupId, ChangeToken)
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
-Permanently deletes a RuleGroup. You can't delete a \code{RuleGroup} if
-it's still used in any \code{WebACL} objects or if it still includes any
+Permanently deletes a RuleGroup. You can\'t delete a \code{RuleGroup} if
+it\'s still used in any \code{WebACL} objects or if it still includes any
 rules.
 }
 \details{

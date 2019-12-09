@@ -11,7 +11,7 @@ cloudformation_get_stack_policy(StackName)
 policy you want to get.}
 }
 \description{
-Returns the stack policy for a specified stack. If a stack doesn't have
+Returns the stack policy for a specified stack. If a stack doesn\'t have
 a policy, a null value is returned.
 }
 \section{Request syntax}{

@@ -8,8 +8,8 @@ glue_create_partition(CatalogId, DatabaseName, TableName,
   PartitionInput)
 }
 \arguments{
-\item{CatalogId}{The ID of the catalog in which the partion is to be created. Currently,
-this should be the AWS account ID.}
+\item{CatalogId}{The AWS account ID of the catalog in which the partition is to be
+created.}
 
 \item{DatabaseName}{[required] The name of the metadata database in which the partition is to be
 created.}
@@ -38,7 +38,10 @@ Creates a new partition.
         list(
           Name = "string",
           Type = "string",
-          Comment = "string"
+          Comment = "string",
+          Parameters = list(
+            "string"
+          )
         )
       ),
       Location = "string",

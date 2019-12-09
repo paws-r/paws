@@ -33,7 +33,8 @@ white space, and the following special characters: _ . / = + -
 </ul>}
 }
 \description{
-<p>Removes the tags associated with the keys that are provided in the query.</p>
+\preformatted{        <p>Removes the tags associated with the keys that are provided in the query.</p>
+}
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

@@ -17,7 +17,7 @@ robomaker_update_simulation_application(application, sources,
 
 \item{robotSoftwareSuite}{[required] Information about the robot software suite.}
 
-\item{renderingEngine}{[required] The rendering engine for the simulation application.}
+\item{renderingEngine}{The rendering engine for the simulation application.}
 
 \item{currentRevisionId}{The revision id for the robot application.}
 }
@@ -35,12 +35,12 @@ Updates a simulation application.
     )
   ),
   simulationSoftwareSuite = list(
-    name = "Gazebo",
+    name = "Gazebo"|"RosbagPlay",
     version = "string"
   ),
   robotSoftwareSuite = list(
-    name = "ROS",
-    version = "Kinetic"|"Melodic"
+    name = "ROS"|"ROS2",
+    version = "Kinetic"|"Melodic"|"Dashing"
   ),
   renderingEngine = list(
     name = "OGRE",

@@ -13,13 +13,13 @@ iot_create_topic_rule(ruleName, topicRulePayload, tags)
 
 \item{tags}{Metadata which can be used to manage the topic rule.
 
-For URI Request parameters use format: \...key1=value1&key2=value2\...
+For URI Request parameters use format: \\...key1=value1&key2=value2\\...
 
-For the CLI command-line parameter use format: \--tags
-"key1=value1&key2=value2\..."
+For the CLI command-line parameter use format: \\--tags
+\"key1=value1&key2=value2\\...\"
 
-For the cli-input-json file use format: "tags":
-"key1=value1&key2=value2\..."}
+For the cli-input-json file use format: \"tags\":
+\"key1=value1&key2=value2\\...\"}
 }
 \description{
 Creates a rule. Creating rules is an administrator-level action. Any
@@ -72,7 +72,8 @@ processed by the rule.
         ),
         republish = list(
           roleArn = "string",
-          topic = "string"
+          topic = "string",
+          qos = 123
         ),
         s3 = list(
           roleArn = "string",
@@ -120,10 +121,53 @@ processed by the rule.
           messageId = "string",
           roleArn = "string"
         ),
+        iotSiteWise = list(
+          putAssetPropertyValueEntries = list(
+            list(
+              entryId = "string",
+              assetId = "string",
+              propertyId = "string",
+              propertyAlias = "string",
+              propertyValues = list(
+                list(
+                  value = list(
+                    stringValue = "string",
+                    integerValue = "string",
+                    doubleValue = "string",
+                    booleanValue = "string"
+                  ),
+                  timestamp = list(
+                    timeInSeconds = "string",
+                    offsetInNanos = "string"
+                  ),
+                  quality = "string"
+                )
+              )
+            )
+          ),
+          roleArn = "string"
+        ),
         stepFunctions = list(
           executionNamePrefix = "string",
           stateMachineName = "string",
           roleArn = "string"
+        ),
+        http = list(
+          url = "string",
+          confirmationUrl = "string",
+          headers = list(
+            list(
+              key = "string",
+              value = "string"
+            )
+          ),
+          auth = list(
+            sigv4 = list(
+              signingRegion = "string",
+              serviceName = "string",
+              roleArn = "string"
+            )
+          )
         )
       )
     ),
@@ -168,7 +212,8 @@ processed by the rule.
       ),
       republish = list(
         roleArn = "string",
-        topic = "string"
+        topic = "string",
+        qos = 123
       ),
       s3 = list(
         roleArn = "string",
@@ -216,10 +261,53 @@ processed by the rule.
         messageId = "string",
         roleArn = "string"
       ),
+      iotSiteWise = list(
+        putAssetPropertyValueEntries = list(
+          list(
+            entryId = "string",
+            assetId = "string",
+            propertyId = "string",
+            propertyAlias = "string",
+            propertyValues = list(
+              list(
+                value = list(
+                  stringValue = "string",
+                  integerValue = "string",
+                  doubleValue = "string",
+                  booleanValue = "string"
+                ),
+                timestamp = list(
+                  timeInSeconds = "string",
+                  offsetInNanos = "string"
+                ),
+                quality = "string"
+              )
+            )
+          )
+        ),
+        roleArn = "string"
+      ),
       stepFunctions = list(
         executionNamePrefix = "string",
         stateMachineName = "string",
         roleArn = "string"
+      ),
+      http = list(
+        url = "string",
+        confirmationUrl = "string",
+        headers = list(
+          list(
+            key = "string",
+            value = "string"
+          )
+        ),
+        auth = list(
+          sigv4 = list(
+            signingRegion = "string",
+            serviceName = "string",
+            roleArn = "string"
+          )
+        )
       )
     )
   ),

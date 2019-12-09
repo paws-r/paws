@@ -12,7 +12,7 @@ acmpca_create_certificate_authority_audit_report(
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) of the CA to be audited. This is of the
 form:
 
-\code{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }.}
+\verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }.}
 
 \item{S3BucketName}{[required] The name of the S3 bucket that will contain the audit report.}
 

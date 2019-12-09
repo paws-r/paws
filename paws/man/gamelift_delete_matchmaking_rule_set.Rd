@@ -8,7 +8,7 @@ gamelift_delete_matchmaking_rule_set(Name)
 }
 \arguments{
 \item{Name}{[required] Unique identifier for a matchmaking rule set to be deleted. (Note: The
-rule set name is different from the optional "name" field in the rule
+rule set name is different from the optional \"name\" field in the rule
 set body.)}
 }
 \description{

@@ -3,7 +3,7 @@
 \name{pinpoint_get_campaign_versions}
 \alias{pinpoint_get_campaign_versions}
 \title{Retrieves information about the status, configuration, and other
-settings for all versions of a specific campaign}
+settings for all versions of a campaign}
 \usage{
 pinpoint_get_campaign_versions(ApplicationId, CampaignId, PageSize,
   Token)
@@ -14,15 +14,16 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{CampaignId}{[required] The unique identifier for the campaign.}
 
-\item{PageSize}{The maximum number of items to include on each page in a paginated
-response.}
+\item{PageSize}{The maximum number of items to include in each page of a paginated
+response. This parameter is currently not supported for application,
+campaign, and journey metrics.}
 
 \item{Token}{The NextToken string that specifies which page of results to return in a
 paginated response.}
 }
 \description{
 Retrieves information about the status, configuration, and other
-settings for all versions of a specific campaign.
+settings for all versions of a campaign.
 }
 \section{Request syntax}{
 \preformatted{svc$get_campaign_versions(

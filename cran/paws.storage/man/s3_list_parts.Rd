@@ -8,9 +8,17 @@ s3_list_parts(Bucket, Key, MaxParts, PartNumberMarker, UploadId,
   RequestPayer)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] Name of the bucket to which the parts are being uploaded.
 
-\item{Key}{[required]}
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+\emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
+When using this operation using an access point through the AWS SDKs,
+you provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+in the \emph{Amazon Simple Storage Service Developer Guide}.}
+
+\item{Key}{[required] Object key for which the multipart upload was initiated.}
 
 \item{MaxParts}{Sets the maximum number of parts to return.}
 
@@ -23,6 +31,32 @@ higher part numbers will be listed.}
 }
 \description{
 Lists the parts that have been uploaded for a specific multipart upload.
+This operation must include the upload ID, which you obtain by sending
+the initiate multipart upload request (see CreateMultipartUpload). This
+request returns a maximum of 1,000 uploaded parts. The default number of
+parts returned is 1,000 parts. You can restrict the number of parts
+returned by specifying the \code{max-parts} request parameter. If your
+multipart upload consists of more than 1,000 parts, the response returns
+an \code{IsTruncated} field with the value of true, and a
+\code{NextPartNumberMarker} element. In subsequent \code{ListParts} requests you
+can include the part-number-marker query string parameter and set its
+value to the \code{NextPartNumberMarker} field value from the previous
+response.
+}
+\details{
+For more information on multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html}{Uploading Objects Using Multipart Upload}.
+
+For information on permissions required to use the multipart upload API,
+see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html}{Multipart Upload API and Permissions}.
+
+The following operations are related to \code{ListParts}:
+\itemize{
+\item CreateMultipartUpload
+\item UploadPart
+\item CompleteMultipartUpload
+\item AbortMultipartUpload
+\item ListMultipartUploads
+}
 }
 \section{Request syntax}{
 \preformatted{svc$list_parts(

@@ -30,6 +30,10 @@ endpoint groups, each of which includes endpoints, such as Network Load
 Balancers. To see an AWS CLI example of creating an accelerator, scroll
 down to \strong{Example}.
 }
+\details{
+You must specify the US-West-2 (Oregon) Region to create or update
+accelerators.
+}
 \section{Request syntax}{
 \preformatted{svc$create_accelerator(
   Name = "string",

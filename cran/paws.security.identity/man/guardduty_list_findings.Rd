@@ -11,7 +11,66 @@ guardduty_list_findings(DetectorId, FindingCriteria, SortCriteria,
 \item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose
 findings you want to list.}
 
-\item{FindingCriteria}{Represents the criteria used for querying findings.}
+\item{FindingCriteria}{Represents the criteria used for querying findings. Valid values
+include:
+\itemize{
+\item JSON field name
+\item accountId
+\item region
+\item confidence
+\item id
+\item resource.accessKeyDetails.accessKeyId
+\item resource.accessKeyDetails.principalId
+\item resource.accessKeyDetails.userName
+\item resource.accessKeyDetails.userType
+\item resource.instanceDetails.iamInstanceProfile.id
+\item resource.instanceDetails.imageId
+\item resource.instanceDetails.instanceId
+\item resource.instanceDetails.networkInterfaces.ipv6Addresses
+\item resource.instanceDetails.networkInterfaces.privateIpAddresses.privateIpAddress
+\item resource.instanceDetails.networkInterfaces.publicDnsName
+\item resource.instanceDetails.networkInterfaces.publicIp
+\item resource.instanceDetails.networkInterfaces.securityGroups.groupId
+\item resource.instanceDetails.networkInterfaces.securityGroups.groupName
+\item resource.instanceDetails.networkInterfaces.subnetId
+\item resource.instanceDetails.networkInterfaces.vpcId
+\item resource.instanceDetails.tags.key
+\item resource.instanceDetails.tags.value
+\item resource.resourceType
+\item service.action.actionType
+\item service.action.awsApiCallAction.api
+\item service.action.awsApiCallAction.callerType
+\item service.action.awsApiCallAction.remoteIpDetails.city.cityName
+\item service.action.awsApiCallAction.remoteIpDetails.country.countryName
+\item service.action.awsApiCallAction.remoteIpDetails.ipAddressV4
+\item service.action.awsApiCallAction.remoteIpDetails.organization.asn
+\item service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg
+\item service.action.awsApiCallAction.serviceName
+\item service.action.dnsRequestAction.domain
+\item service.action.networkConnectionAction.blocked
+\item service.action.networkConnectionAction.connectionDirection
+\item service.action.networkConnectionAction.localPortDetails.port
+\item service.action.networkConnectionAction.protocol
+\item service.action.networkConnectionAction.remoteIpDetails.city.cityName
+\item service.action.networkConnectionAction.remoteIpDetails.country.countryName
+\item service.action.networkConnectionAction.remoteIpDetails.ipAddressV4
+\item service.action.networkConnectionAction.remoteIpDetails.organization.asn
+\item service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg
+\item service.action.networkConnectionAction.remotePortDetails.port
+\item service.additionalInfo.threatListName
+\item service.archived
+
+When this attribute is set to \'true\', only archived findings are
+listed. When it\'s set to \'false\', only unarchived findings are
+listed. When this attribute is not set, all existing findings are
+listed.
+\item service.resourceRole
+\item severity
+\item type
+\item updatedAt
+
+Type: Timestamp in Unix Epoch millisecond format: 1486685375000
+}}
 
 \item{SortCriteria}{Represents the criteria used for sorting findings.}
 

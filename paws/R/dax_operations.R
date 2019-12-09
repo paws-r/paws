@@ -28,13 +28,17 @@ NULL
 #' @param ReplicationFactor &#91;required&#93; The number of nodes in the DAX cluster. A replication factor of 1 will
 #' create a single-node cluster, without any read replicas. For additional
 #' fault tolerance, you can create a multiple node cluster with one or more
-#' read replicas. To do this, set *ReplicationFactor* to 2 or more.
+#' read replicas. To do this, set `ReplicationFactor` to a number between 3
+#' (one primary and two read replicas) and 10 (one primary and nine read
+#' replicas). `If the AvailabilityZones` parameter is provided, its length
+#' must equal the `ReplicationFactor`.
 #' 
 #' AWS recommends that you have at least two read replicas per cluster.
-#' @param AvailabilityZones The Availability Zones (AZs) in which the cluster nodes will be created.
-#' All nodes belonging to the cluster are placed in these Availability
-#' Zones. Use this parameter if you want to distribute the nodes across
-#' multiple AZs.
+#' @param AvailabilityZones The Availability Zones (AZs) in which the cluster nodes will reside
+#' after the cluster has been created or updated. If provided, the length
+#' of this list must equal the `ReplicationFactor` parameter. If you omit
+#' this parameter, DAX will spread the nodes across Availability Zones for
+#' the highest availability.
 #' @param SubnetGroupName The name of the subnet group to be used for the replication group.
 #' 
 #' DAX clusters can only run in an Amazon VPC environment. All of the
@@ -497,8 +501,9 @@ dax_describe_default_parameters <- function(MaxResults = NULL, NextToken = NULL)
 #' obtain events specific to a particular DAX cluster or parameter group by
 #' providing the name as a parameter.
 #' 
-#' By default, only the events occurring within the last hour are returned;
-#' however, you can retrieve up to 14 days\' worth of events if necessary.
+#' By default, only the events occurring within the last 24 hours are
+#' returned; however, you can retrieve up to 14 days\' worth of events if
+#' necessary.
 #'
 #' @usage
 #' dax_describe_events(SourceName, SourceType, StartTime, EndTime,
@@ -805,6 +810,9 @@ dax_list_tags <- function(ResourceName, NextToken = NULL) {
 #' Reboots a single node of a DAX cluster. The reboot action takes place as
 #' soon as possible. During the reboot, the node status is set to
 #' REBOOTING.
+#' 
+#' `RebootNode` restarts the DAX engine process and does not remove the
+#' contents of the cache.
 #'
 #' @usage
 #' dax_reboot_node(ClusterName, NodeId)

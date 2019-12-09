@@ -25,7 +25,7 @@ of \code{IsTruncated} in the response is \code{true}, and the value of
 \code{NextMarker} is the hosted zone ID of the first hosted zone that Route
 53 will return if you submit another request.}
 
-\item{DelegationSetId}{If you're using reusable delegation sets and you want to list all of
+\item{DelegationSetId}{If you\'re using reusable delegation sets and you want to list all of
 the hosted zones that are associated with a reusable delegation set,
 specify the ID of that reusable delegation set.}
 }

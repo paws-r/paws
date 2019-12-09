@@ -28,7 +28,7 @@ in the \emph{AWS Systems Manager User Guide}.}
 
 \item{ApprovedPatchesEnableNonSecurity}{Indicates whether the list of approved patches includes non-security
 updates that should be applied to the instances. The default value is
-'false'. Applies to Linux instances only.}
+\'false\'. Applies to Linux instances only.}
 
 \item{RejectedPatches}{A list of explicitly rejected patches for the baseline.
 
@@ -39,7 +39,7 @@ in the \emph{AWS Systems Manager User Guide}.}
 \item{RejectedPatchesAction}{The action for Patch Manager to take on patches included in the
 RejectedPackages list.
 \itemize{
-\item \strong{ALLOW\_AS\_DEPENDENCY}: A package in the Rejected patches list is
+\item \strong{ALLOW\\_AS\\_DEPENDENCY}: A package in the Rejected patches list is
 installed only if it is a dependency of another package. It is
 considered compliant with the patch baseline, and its status is
 reported as \emph{InstalledOther}. This is the default action if no

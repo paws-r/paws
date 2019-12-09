@@ -16,7 +16,8 @@ kafka_list_nodes(ClusterArn, MaxResults, NextToken)
 To get the next batch, provide this token in your next request.</p>}
 }
 \description{
-<p>Returns a list of the broker nodes in the cluster.</p>
+\preformatted{        <p>Returns a list of the broker nodes in the cluster.</p>
+}
 }
 \section{Request syntax}{
 \preformatted{svc$list_nodes(

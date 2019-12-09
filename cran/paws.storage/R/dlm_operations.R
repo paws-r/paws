@@ -10,7 +10,7 @@ NULL
 #'
 #' @usage
 #' dlm_create_lifecycle_policy(ExecutionRoleArn, Description, State,
-#'   PolicyDetails)
+#'   PolicyDetails, Tags)
 #'
 #' @param ExecutionRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role used to run the
 #' operations specified by the lifecycle policy.
@@ -18,8 +18,7 @@ NULL
 #' \\_-\]+\\$ are supported.
 #' @param State &#91;required&#93; The desired activation state of the lifecycle policy after creation.
 #' @param PolicyDetails &#91;required&#93; The configuration details of the lifecycle policy.
-#' 
-#' Target tags cannot be re-used across lifecycle policies.
+#' @param Tags The tags to apply to the lifecycle policy during creation.
 #'
 #' @section Request syntax:
 #' ```
@@ -62,13 +61,26 @@ NULL
 #'           )
 #'         ),
 #'         RetainRule = list(
-#'           Count = 123
+#'           Count = 123,
+#'           Interval = 123,
+#'           IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
+#'         ),
+#'         FastRestoreRule = list(
+#'           Count = 123,
+#'           Interval = 123,
+#'           IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS",
+#'           AvailabilityZones = list(
+#'             "string"
+#'           )
 #'         )
 #'       )
 #'     ),
 #'     Parameters = list(
 #'       ExcludeBootVolume = TRUE|FALSE
 #'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -76,14 +88,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname dlm_create_lifecycle_policy
-dlm_create_lifecycle_policy <- function(ExecutionRoleArn, Description, State, PolicyDetails) {
+dlm_create_lifecycle_policy <- function(ExecutionRoleArn, Description, State, PolicyDetails, Tags = NULL) {
   op <- new_operation(
     name = "CreateLifecyclePolicy",
     http_method = "POST",
     http_path = "/policies",
     paginator = list()
   )
-  input <- .dlm$create_lifecycle_policy_input(ExecutionRoleArn = ExecutionRoleArn, Description = Description, State = State, PolicyDetails = PolicyDetails)
+  input <- .dlm$create_lifecycle_policy_input(ExecutionRoleArn = ExecutionRoleArn, Description = Description, State = State, PolicyDetails = PolicyDetails, Tags = Tags)
   output <- .dlm$create_lifecycle_policy_output()
   config <- get_config()
   svc <- .dlm$service(config)
@@ -231,6 +243,122 @@ dlm_get_lifecycle_policy <- function(PolicyId) {
 }
 .dlm$operations$get_lifecycle_policy <- dlm_get_lifecycle_policy
 
+#' Lists the tags for the specified resource
+#'
+#' Lists the tags for the specified resource.
+#'
+#' @usage
+#' dlm_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname dlm_list_tags_for_resource
+dlm_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .dlm$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .dlm$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .dlm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.dlm$operations$list_tags_for_resource <- dlm_list_tags_for_resource
+
+#' Adds the specified tags to the specified resource
+#'
+#' Adds the specified tags to the specified resource.
+#'
+#' @usage
+#' dlm_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#' @param Tags &#91;required&#93; One or more tags.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname dlm_tag_resource
+dlm_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .dlm$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .dlm$tag_resource_output()
+  config <- get_config()
+  svc <- .dlm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.dlm$operations$tag_resource <- dlm_tag_resource
+
+#' Removes the specified tags from the specified resource
+#'
+#' Removes the specified tags from the specified resource.
+#'
+#' @usage
+#' dlm_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#' @param TagKeys &#91;required&#93; The tag keys.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname dlm_untag_resource
+dlm_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .dlm$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .dlm$untag_resource_output()
+  config <- get_config()
+  svc <- .dlm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.dlm$operations$untag_resource <- dlm_untag_resource
+
 #' Updates the specified lifecycle policy
 #'
 #' Updates the specified lifecycle policy.
@@ -244,9 +372,8 @@ dlm_get_lifecycle_policy <- function(PolicyId) {
 #' operations specified by the lifecycle policy.
 #' @param State The desired activation state of the lifecycle policy after creation.
 #' @param Description A description of the lifecycle policy.
-#' @param PolicyDetails The configuration of the lifecycle policy.
-#' 
-#' Target tags cannot be re-used across policies.
+#' @param PolicyDetails The configuration of the lifecycle policy. You cannot update the policy
+#' type or the resource type.
 #'
 #' @section Request syntax:
 #' ```
@@ -290,7 +417,17 @@ dlm_get_lifecycle_policy <- function(PolicyId) {
 #'           )
 #'         ),
 #'         RetainRule = list(
-#'           Count = 123
+#'           Count = 123,
+#'           Interval = 123,
+#'           IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
+#'         ),
+#'         FastRestoreRule = list(
+#'           Count = 123,
+#'           Interval = 123,
+#'           IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS",
+#'           AvailabilityZones = list(
+#'             "string"
+#'           )
 #'         )
 #'       )
 #'     ),

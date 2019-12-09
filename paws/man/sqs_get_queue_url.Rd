@@ -9,7 +9,7 @@ sqs_get_queue_url(QueueName, QueueOwnerAWSAccountId)
 \arguments{
 \item{QueueName}{[required] The name of the queue whose URL must be fetched. Maximum 80 characters.
 Valid values: alphanumeric characters, hyphens (\code{-}), and underscores
-(\code{_}).
+(\verb{_}).
 
 Queue URLs and names are case-sensitive.}
 
@@ -21,9 +21,9 @@ Returns the URL of an existing Amazon SQS queue.
 \details{
 To access a queue that belongs to another AWS account, use the
 \code{QueueOwnerAWSAccountId} parameter to specify the account ID of the
-queue's owner. The queue's owner must grant you permission to access
+queue\'s owner. The queue\'s owner must grant you permission to access
 the queue. For more information about shared queue access, see
-\code{<a>AddPermission</a>} or see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-writing-an-sqs-policy.html#write-messages-to-shared-queue}{Allow Developers to Write Messages to a Shared Queue}
+\verb{<a>AddPermission</a>} or see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-writing-an-sqs-policy.html#write-messages-to-shared-queue}{Allow Developers to Write Messages to a Shared Queue}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{

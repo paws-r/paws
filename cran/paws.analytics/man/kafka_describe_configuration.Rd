@@ -11,7 +11,8 @@ kafka_describe_configuration(Arn)
 <p>The Amazon Resource Name (ARN) that uniquely identifies an MSK configuration and all of its revisions.</p>}
 }
 \description{
-<p>Returns a description of this MSK configuration.</p>
+\preformatted{        <p>Returns a description of this MSK configuration.</p>
+}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_configuration(

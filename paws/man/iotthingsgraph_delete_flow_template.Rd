@@ -11,7 +11,7 @@ iotthingsgraph_delete_flow_template(id)
 
 The ID should be in the following format.
 
-\code{urn:tdm:REGION/ACCOUNT ID/default:workflow:WORKFLOWNAME}}
+\verb{urn:tdm:REGION/ACCOUNT ID/default:workflow:WORKFLOWNAME}}
 }
 \description{
 Deletes a workflow. Any new system or deployment that contains this

@@ -5,8 +5,9 @@
 \title{Creates a new room profile with the specified details}
 \usage{
 alexaforbusiness_create_profile(ProfileName, Timezone, Address,
-  DistanceUnit, TemperatureUnit, WakeWord, ClientRequestToken,
-  SetupModeDisabled, MaxVolumeLimit, PSTNEnabled)
+  DistanceUnit, TemperatureUnit, WakeWord, Locale, ClientRequestToken,
+  SetupModeDisabled, MaxVolumeLimit, PSTNEnabled,
+  MeetingRoomConfiguration)
 }
 \arguments{
 \item{ProfileName}{[required] The name of a room profile.}
@@ -21,6 +22,9 @@ alexaforbusiness_create_profile(ProfileName, Timezone, Address,
 
 \item{WakeWord}{[required] A wake word for Alexa, Echo, Amazon, or a computer.}
 
+\item{Locale}{The locale of the room profile. (This is currently only available to a
+limited preview audience.)}
+
 \item{ClientRequestToken}{The user-specified token that is used during the creation of a profile.}
 
 \item{SetupModeDisabled}{Whether room profile setup is enabled.}
@@ -28,6 +32,8 @@ alexaforbusiness_create_profile(ProfileName, Timezone, Address,
 \item{MaxVolumeLimit}{The maximum volume limit for a room profile.}
 
 \item{PSTNEnabled}{Whether PSTN calling is enabled.}
+
+\item{MeetingRoomConfiguration}{The meeting room settings of a room profile.}
 }
 \description{
 Creates a new room profile with the specified details.
@@ -40,10 +46,29 @@ Creates a new room profile with the specified details.
   DistanceUnit = "METRIC"|"IMPERIAL",
   TemperatureUnit = "FAHRENHEIT"|"CELSIUS",
   WakeWord = "ALEXA"|"AMAZON"|"ECHO"|"COMPUTER",
+  Locale = "string",
   ClientRequestToken = "string",
   SetupModeDisabled = TRUE|FALSE,
   MaxVolumeLimit = 123,
-  PSTNEnabled = TRUE|FALSE
+  PSTNEnabled = TRUE|FALSE,
+  MeetingRoomConfiguration = list(
+    RoomUtilizationMetricsEnabled = TRUE|FALSE,
+    EndOfMeetingReminder = list(
+      ReminderAtMinutes = list(
+        123
+      ),
+      ReminderType = "ANNOUNCEMENT_TIME_CHECK"|"ANNOUNCEMENT_VARIABLE_TIME_LEFT"|"CHIME"|"KNOCK",
+      Enabled = TRUE|FALSE
+    ),
+    InstantBooking = list(
+      DurationInMinutes = 123,
+      Enabled = TRUE|FALSE
+    ),
+    RequireCheckIn = list(
+      ReleaseAfterMinutes = 123,
+      Enabled = TRUE|FALSE
+    )
+  )
 )
 }
 }

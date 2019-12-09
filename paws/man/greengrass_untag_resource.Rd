@@ -2,17 +2,17 @@
 % Please edit documentation in R/greengrass_operations.R
 \name{greengrass_untag_resource}
 \alias{greengrass_untag_resource}
-\title{Remove tags with specified keys from a resource}
+\title{Remove resource tags from a Greengrass Resource}
 \usage{
 greengrass_untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 
-\item{TagKeys}{[required] A list of the keys to remove from the resource tags.}
+\item{TagKeys}{[required] An array of tag keys to delete}
 }
 \description{
-Remove tags with specified keys from a resource.
+Remove resource tags from a Greengrass Resource.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

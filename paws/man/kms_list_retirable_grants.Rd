@@ -29,7 +29,7 @@ in the Example ARNs section of the \emph{Amazon Web Services General
 Reference}.}
 }
 \description{
-Returns a list of all grants for which the grant's \code{RetiringPrincipal}
+Returns a list of all grants for which the grant\'s \code{RetiringPrincipal}
 matches the one specified.
 }
 \details{

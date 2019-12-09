@@ -13,7 +13,7 @@ iotthingsgraph_deploy_system_instance(id)
 
 The ID should be in the following format.
 
-\code{urn:tdm:REGION/ACCOUNT ID/default:deployment:DEPLOYMENTNAME}}
+\verb{urn:tdm:REGION/ACCOUNT ID/default:deployment:DEPLOYMENTNAME}}
 }
 \description{
 \strong{Greengrass and Cloud Deployments}
@@ -28,7 +28,7 @@ If the system or any workflows and entities have been updated before
 this action is called, then the deployment will create a new Amazon
 Simple Storage Service resource file and then deploy it.
 
-Since this action creates a Greengrass deployment on the caller's
+Since this action creates a Greengrass deployment on the caller\'s
 behalf, the calling identity must have write permissions to the
 specified Greengrass group. Otherwise, the call will fail with an
 authorization error.

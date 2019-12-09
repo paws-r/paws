@@ -5,22 +5,27 @@
 \title{Creates a new identity pool}
 \usage{
 cognitoidentity_create_identity_pool(IdentityPoolName,
-  AllowUnauthenticatedIdentities, SupportedLoginProviders,
-  DeveloperProviderName, OpenIdConnectProviderARNs,
-  CognitoIdentityProviders, SamlProviderARNs, IdentityPoolTags)
+  AllowUnauthenticatedIdentities, AllowClassicFlow,
+  SupportedLoginProviders, DeveloperProviderName,
+  OpenIdConnectProviderARNs, CognitoIdentityProviders, SamlProviderARNs,
+  IdentityPoolTags)
 }
 \arguments{
 \item{IdentityPoolName}{[required] A string that you provide.}
 
 \item{AllowUnauthenticatedIdentities}{[required] TRUE if the identity pool supports unauthenticated logins.}
 
+\item{AllowClassicFlow}{Enables or disables the Basic (Classic) authentication flow. For more
+information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html}{Identity Pools (Federated Identities) Authentication Flow}
+in the \emph{Amazon Cognito Developer Guide}.}
+
 \item{SupportedLoginProviders}{Optional key:value pairs mapping provider names to provider app IDs.}
 
-\item{DeveloperProviderName}{The "domain" by which Cognito will refer to your users. This name acts
+\item{DeveloperProviderName}{The \"domain\" by which Cognito will refer to your users. This name acts
 as a placeholder that allows your backend and the Cognito service to
 communicate about the developer provider. For the
 \code{DeveloperProviderName}, you can use letters as well as period (\code{.}),
-underscore (\code{_}), and dash (\code{-}).
+underscore (\verb{_}), and dash (\code{-}).
 
 Once you have set a developer provider name, you cannot change it.
 Please take care in setting this parameter.}
@@ -38,9 +43,8 @@ as by purpose, owner, environment, or other criteria.}
 }
 \description{
 Creates a new identity pool. The identity pool is a store of user
-identity information that is specific to your AWS account. The limit on
-identity pools is 60 per account. The keys for \code{SupportedLoginProviders}
-are as follows:
+identity information that is specific to your AWS account. The keys for
+\code{SupportedLoginProviders} are as follows:
 }
 \details{
 \itemize{
@@ -57,6 +61,7 @@ You must use AWS Developer credentials to call this API.
 \preformatted{svc$create_identity_pool(
   IdentityPoolName = "string",
   AllowUnauthenticatedIdentities = TRUE|FALSE,
+  AllowClassicFlow = TRUE|FALSE,
   SupportedLoginProviders = list(
     "string"
   ),

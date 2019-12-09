@@ -5,7 +5,7 @@
 \title{Adds a pending configuration change to a broker}
 \usage{
 mq_update_broker(AutoMinorVersionUpgrade, BrokerId, Configuration,
-  EngineVersion, Logs)
+  EngineVersion, HostInstanceType, Logs, SecurityGroups)
 }
 \arguments{
 \item{AutoMinorVersionUpgrade}{Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The automatic upgrades occur during the maintenance window of the broker or after a manual broker reboot.}
@@ -16,7 +16,11 @@ mq_update_broker(AutoMinorVersionUpgrade, BrokerId, Configuration,
 
 \item{EngineVersion}{The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html}
 
+\item{HostInstanceType}{The host instance type of the broker to upgrade to. For a list of supported instance types, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types}
+
 \item{Logs}{Enables Amazon CloudWatch logging for brokers.}
+
+\item{SecurityGroups}{The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.}
 }
 \description{
 Adds a pending configuration change to a broker.
@@ -30,9 +34,13 @@ Adds a pending configuration change to a broker.
     Revision = 123
   ),
   EngineVersion = "string",
+  HostInstanceType = "string",
   Logs = list(
     Audit = TRUE|FALSE,
     General = TRUE|FALSE
+  ),
+  SecurityGroups = list(
+    "string"
   )
 )
 }

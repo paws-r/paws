@@ -13,7 +13,8 @@ applicationinsights_describe_component_configuration_recommendation(
 \item{ComponentName}{[required] The name of the component.}
 
 \item{Tier}{[required] The tier of the application component. Supported tiers include
-\code{DOT_NET_WORKER}, \code{DOT_NET_WEB_TIER}, \code{SQL_SERVER}, and \code{DEFAULT}.}
+\code{DOT_NET_CORE}, \code{DOT_NET_WORKER}, \code{DOT_NET_WEB}, \code{SQL_SERVER}, and
+\code{DEFAULT}.}
 }
 \description{
 Describes the recommended monitoring configuration of the component.
@@ -22,7 +23,7 @@ Describes the recommended monitoring configuration of the component.
 \preformatted{svc$describe_component_configuration_recommendation(
   ResourceGroupName = "string",
   ComponentName = "string",
-  Tier = "string"
+  Tier = "DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB"|"SQL_SERVER"
 )
 }
 }

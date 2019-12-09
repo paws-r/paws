@@ -16,9 +16,8 @@ support_create_case(subject, serviceCode, severityCode, categoryCode,
 \item{severityCode}{The code for the severity level returned by the call to
 DescribeSeverityLevels.
 
-The availability of severity levels depends on each customer's support
-subscription. In other words, your subscription may not necessarily
-require the urgent level of response time.}
+The availability of severity levels depends on the support plan for the
+account.}
 
 \item{categoryCode}{The category of problem for the AWS Support case.}
 
@@ -29,13 +28,16 @@ calling CreateCase.}
 correspondence.}
 
 \item{language}{The ISO 639-1 code for the language in which AWS provides support. AWS
-Support currently supports English ("en") and Japanese ("ja").
+Support currently supports English (\"en\") and Japanese (\"ja\").
 Language parameters must be passed explicitly for operations that take
 them.}
 
 \item{issueType}{The type of issue for the case. You can specify either
-"customer-service" or "technical." If you do not indicate a value,
-the default is "technical."}
+\"customer-service\" or \"technical.\" If you do not indicate a value,
+the default is \"technical.\"
+
+Service limit increases are not supported by the Support API; you must
+submit service limit increase requests in \href{https://console.aws.amazon.com/support}{Support Center}.}
 
 \item{attachmentSetId}{The ID of a set of one or more attachments for the case. Create the set
 by using AddAttachmentsToSet.}
@@ -48,18 +50,26 @@ Its parameters require you to specify the following information:
 \details{
 \itemize{
 \item \strong{issueType.} The type of issue for the case. You can specify
-either "customer-service" or "technical." If you do not indicate
-a value, the default is "technical."
-\item \strong{serviceCode.} The code for an AWS service. You obtain the
-\code{serviceCode} by calling DescribeServices.
+either \"customer-service\" or \"technical.\" If you do not indicate
+a value, the default is \"technical.\"
+
+Service limit increases are not supported by the Support API; you
+must submit service limit increase requests in \href{https://console.aws.amazon.com/support}{Support Center}.
+
+The \code{caseId} is not the \code{displayId} that appears in \href{https://console.aws.amazon.com/support}{Support Center}. You can use the
+DescribeCases API to get the \code{displayId}.
+\item \strong{serviceCode.} The code for an AWS service. You can get the
+possible \code{serviceCode} values by calling DescribeServices.
 \item \strong{categoryCode.} The category for the service defined for the
-\code{serviceCode} value. You also obtain the category code for a service
-by calling DescribeServices. Each AWS service defines its own set of
+\code{serviceCode} value. You also get the category code for a service by
+calling DescribeServices. Each AWS service defines its own set of
 category codes.
 \item \strong{severityCode.} A value that indicates the urgency of the case,
 which in turn determines the response time according to your service
-level agreement with AWS Support. You obtain the SeverityCode by
-calling DescribeSeverityLevels.
+level agreement with AWS Support. You can get the possible
+\code{severityCode} values by calling DescribeSeverityLevels. For more
+information about the meaning of the codes, see SeverityLevel and
+\href{https://docs.aws.amazon.com/awssupport/latest/user/getting-started.html#choosing-severity}{Choosing a Severity}.
 \item \strong{subject.} The \strong{Subject} field on the AWS Support Center \href{https://console.aws.amazon.com/support/home#/case/create}{Create Case}
 page.
 \item \strong{communicationBody.} The \strong{Description} field on the AWS Support

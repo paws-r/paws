@@ -2,17 +2,17 @@
 % Please edit documentation in R/licensemanager_operations.R
 \name{licensemanager_tag_resource}
 \alias{licensemanager_tag_resource}
-\title{Attach one of more tags to any resource}
+\title{Adds the specified tags to the specified license configuration}
 \usage{
 licensemanager_tag_resource(ResourceArn, Tags)
 }
 \arguments{
-\item{ResourceArn}{[required] Resource of the ARN to be tagged.}
+\item{ResourceArn}{[required] Amazon Resource Name (ARN) of the license configuration.}
 
-\item{Tags}{[required] Names of the tags to attach to the resource.}
+\item{Tags}{[required] One or more tags.}
 }
 \description{
-Attach one of more tags to any resource.
+Adds the specified tags to the specified license configuration.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

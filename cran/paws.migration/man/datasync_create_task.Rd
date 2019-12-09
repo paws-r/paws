@@ -5,24 +5,21 @@
 \title{Creates a task}
 \usage{
 datasync_create_task(SourceLocationArn, DestinationLocationArn,
-  CloudWatchLogGroupArn, Name, Options, Excludes, Tags)
+  CloudWatchLogGroupArn, Name, Options, Excludes, Schedule, Tags)
 }
 \arguments{
 \item{SourceLocationArn}{[required] The Amazon Resource Name (ARN) of the source location for the task.}
 
-\item{DestinationLocationArn}{[required] The Amazon Resource Name (ARN) of an AWS storage resource's location.}
+\item{DestinationLocationArn}{[required] The Amazon Resource Name (ARN) of an AWS storage resource\'s location.}
 
 \item{CloudWatchLogGroupArn}{The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that
 is used to monitor and log events in the task.
 
-For more information on these groups, see
-"https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html"
-(Working with Log Groups and Log Streams) in the \emph{Amazon CloudWatch User
-Guide}.
+For more information on these groups, see Working with Log Groups and
+Log Streams in the \emph{Amazon CloudWatch User Guide.}
 
-For more information about how to useCloudWatchLogs with DataSync, see
-"https://docs.aws.amazon.com/datasync/latest/userguide/monitor-datasync.html"
-(Monitoring Your Task)}
+For more information about how to use CloudWatch Logs with DataSync, see
+Monitoring Your Task in the \emph{AWS DataSync User Guide.}}
 
 \item{Name}{The name of a task. This value is a text reference that is used to
 identify the task in the console.}
@@ -37,9 +34,14 @@ For each individual task execution, you can override these options by
 specifying the \code{OverrideOptions} before starting a the task execution.
 For more information, see the operation.}
 
-\item{Excludes}{A filter that determines which files to exclude from a task based on the
-specified pattern. Transfers all files in the task's subdirectory,
-except files that match the filter that is set.}
+\item{Excludes}{A list of filter rules that determines which files to exclude from a
+task. The list should contain a single filter string that consists of
+the patterns to exclude. The patterns are delimited by \"\\|\" (that is,
+a pipe), for example, \code{"/folder1|/folder2"}}
+
+\item{Schedule}{Specifies a schedule used to periodically transfer files from a source
+to a destination location. The schedule should be specified in UTC time.
+For more information, see task-scheduling.}
 
 \item{Tags}{The key-value pair that represents the tag that you want to add to the
 resource. The value can be an empty string.}
@@ -47,7 +49,7 @@ resource. The value can be an empty string.}
 \description{
 Creates a task. A task is a set of two locations (source and
 destination) and a set of Options that you use to control the behavior
-of a task. If you don't specify Options when you create a task, AWS
+of a task. If you don\'t specify Options when you create a task, AWS
 DataSync populates them with service defaults.
 }
 \details{
@@ -61,7 +63,7 @@ If an agent that is associated with a source (NFS) location goes
 offline, the task transitions to the UNAVAILABLE status. If the status
 of the task remains in the CREATING status for more than a few minutes,
 it means that your agent might be having trouble mounting the source NFS
-file system. Check the task's ErrorCode and ErrorDetail. Mount issues
+file system. Check the task\'s ErrorCode and ErrorDetail. Mount issues
 are often caused by either a misconfigured firewall or a mistyped NFS
 server host name.
 }
@@ -72,21 +74,26 @@ server host name.
   CloudWatchLogGroupArn = "string",
   Name = "string",
   Options = list(
-    VerifyMode = "POINT_IN_TIME_CONSISTENT"|"NONE",
+    VerifyMode = "POINT_IN_TIME_CONSISTENT"|"ONLY_FILES_TRANSFERRED"|"NONE",
+    OverwriteMode = "ALWAYS"|"NEVER",
     Atime = "NONE"|"BEST_EFFORT",
     Mtime = "NONE"|"PRESERVE",
     Uid = "NONE"|"INT_VALUE"|"NAME"|"BOTH",
     Gid = "NONE"|"INT_VALUE"|"NAME"|"BOTH",
     PreserveDeletedFiles = "PRESERVE"|"REMOVE",
     PreserveDevices = "NONE"|"PRESERVE",
-    PosixPermissions = "NONE"|"BEST_EFFORT"|"PRESERVE",
-    BytesPerSecond = 123
+    PosixPermissions = "NONE"|"PRESERVE",
+    BytesPerSecond = 123,
+    TaskQueueing = "ENABLED"|"DISABLED"
   ),
   Excludes = list(
     list(
       FilterType = "SIMPLE_PATTERN",
       Value = "string"
     )
+  ),
+  Schedule = list(
+    ScheduleExpression = "string"
   ),
   Tags = list(
     list(

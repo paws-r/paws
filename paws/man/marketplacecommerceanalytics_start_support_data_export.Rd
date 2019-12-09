@@ -12,20 +12,20 @@ marketplacecommerceanalytics_start_support_data_export(dataSetType,
 }
 \arguments{
 \item{dataSetType}{[required] Specifies the data set type to be written to the output csv file. The
-data set types customer\_support\_contacts\_data and
-test\_customer\_support\_contacts\_data both result in a csv file
+data set types customer\\_support\\_contacts\\_data and
+test\\_customer\\_support\\_contacts\\_data both result in a csv file
 containing the following fields: Product Id, Product Code, Customer
 Guid, Subscription Guid, Subscription Start Date, Organization, AWS
 Account Id, Given Name, Surname, Telephone Number, Email, Title, Country
 Code, ZIP Code, Operation Type, and Operation Time.
 \itemize{
-\item \emph{customer\_support\_contacts\_data} Customer support contact data.
+\item \emph{customer\\_support\\_contacts\\_data} Customer support contact data.
 The data set will contain all changes (Creates, Updates, and
 Deletes) to customer support contact data from the date specified in
-the from\_date parameter.
-\item \emph{test\_customer\_support\_contacts\_data} An example data set
+the from\\_date parameter.
+\item \emph{test\\_customer\\_support\\_contacts\\_data} An example data set
 containing static test data in the same format as
-customer\_support\_contacts\_data
+customer\\_support\\_contacts\\_data
 }}
 
 \item{fromDate}{[required] The start date from which to retrieve the data set in UTC. This parameter only affects the customer_support_contacts_data data set type.}
@@ -41,7 +41,7 @@ customer\_support\_contacts\_data
 \item{customerDefinedValues}{(Optional) Key-value pairs which will be returned, unmodified, in the Amazon SNS notification message and the data set metadata file.}
 }
 \description{
-Given a data set type and a from date, asynchronously publishes the requested customer support data to the specified S3 bucket and notifies the specified SNS topic once the data is available. Returns a unique request identifier that can be used to correlate requests with notifications from the SNS topic. Data sets will be published in comma-separated values (CSV) format with the file name {data_set_type}_YYYY-MM-DD'T'HH-mm-ss'Z'.csv. If a file with the same name already exists (e.g. if the same data set is requested twice), the original file will be overwritten by the new file. Requires a Role with an attached permissions policy providing Allow permissions for the following actions: s3:PutObject, s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
+Given a data set type and a from date, asynchronously publishes the requested customer support data to the specified S3 bucket and notifies the specified SNS topic once the data is available. Returns a unique request identifier that can be used to correlate requests with notifications from the SNS topic. Data sets will be published in comma-separated values (CSV) format with the file name \{data_set_type\}_YYYY-MM-DD'T'HH-mm-ss'Z'.csv. If a file with the same name already exists (e.g. if the same data set is requested twice), the original file will be overwritten by the new file. Requires a Role with an attached permissions policy providing Allow permissions for the following actions: s3:PutObject, s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
 }
 \section{Request syntax}{
 \preformatted{svc$start_support_data_export(

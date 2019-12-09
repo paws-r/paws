@@ -21,18 +21,6 @@ ID for the AWS account that contains your Amazon QuickSight account.}
 Returns a list of all of the Amazon QuickSight users belonging to this
 account.
 }
-\details{
-The permission resource is
-\code{arn:aws:quicksight:us-east-1:<i>&lt;aws-account-id&gt;</i>:user/default/<i>*</i> }.
-
-The response is a list of user objects, containing each user's Amazon
-Resource Name (ARN), AWS Identity and Access Management (IAM) role, and
-email address.
-
-\strong{CLI Sample:}
-
-\code{aws quicksight list-users --aws-account-id=111122223333 --namespace=default }
-}
 \section{Request syntax}{
 \preformatted{svc$list_users(
   AwsAccountId = "string",

@@ -7,7 +7,7 @@
 cloudfront_get_streaming_distribution_config(Id)
 }
 \arguments{
-\item{Id}{[required] The streaming distribution's ID.}
+\item{Id}{[required] The streaming distribution\'s ID.}
 }
 \description{
 Get the configuration information about a streaming distribution.

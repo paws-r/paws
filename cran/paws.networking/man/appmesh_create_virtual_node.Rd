@@ -41,7 +41,7 @@ The response metadata for your new virtual node contains the \code{arn} that
 is associated with the virtual node. Set this value (either the full ARN
 or the truncated resource name: for example,
 \code{mesh/default/virtualNode/simpleapp}) as the \code{APPMESH_VIRTUAL_NODE_NAME}
-environment variable for your task group's Envoy proxy container in
+environment variable for your task group\'s Envoy proxy container in
 your task definition or pod spec. This is then mapped to the \code{node.id}
 and \code{node.cluster} Envoy parameters.
 
@@ -69,13 +69,13 @@ environment variable.
           intervalMillis = 123,
           path = "string",
           port = 123,
-          protocol = "http"|"tcp",
+          protocol = "grpc"|"http"|"http2"|"tcp",
           timeoutMillis = 123,
           unhealthyThreshold = 123
         ),
         portMapping = list(
           port = 123,
-          protocol = "http"|"tcp"
+          protocol = "grpc"|"http"|"http2"|"tcp"
         )
       )
     ),

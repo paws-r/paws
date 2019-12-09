@@ -11,7 +11,7 @@ acmpca_delete_certificate_authority(CertificateAuthorityArn,
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
 CreateCertificateAuthority. This must have the following form:
 
-\code{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }.}
+\verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }.}
 
 \item{PermanentDeletionTimeInDays}{The number of days to make a CA restorable after it has been deleted.
 This can be anywhere from 7 to 30 days, with 30 being the default.}
@@ -31,12 +31,12 @@ set the \strong{CertificateAuthorityStatus} parameter to \code{DISABLED}.
 
 Additionally, you can delete a CA if you are waiting for it to be
 created (that is, the status of the CA is \code{CREATING}). You can also
-delete it if the CA has been created but you haven't yet imported the
+delete it if the CA has been created but you haven\'t yet imported the
 signed certificate into ACM Private CA (that is, the status of the CA is
 \code{PENDING_CERTIFICATE}).
 
-When you successfully call DeleteCertificateAuthority, the CA's status
-changes to \code{DELETED}. However, the CA won't be permanently deleted
+When you successfully call DeleteCertificateAuthority, the CA\'s status
+changes to \code{DELETED}. However, the CA won\'t be permanently deleted
 until the restoration period has passed. By default, if you do not set
 the \code{PermanentDeletionTimeInDays} parameter, the CA remains restorable
 for 30 days. You can set the parameter from 7 to 30 days. The

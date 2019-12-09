@@ -12,7 +12,7 @@ route53_list_query_logging_configs(HostedZoneId, NextToken, MaxResults)
 \item{HostedZoneId}{(Optional) If you want to list the query logging configuration that is
 associated with a hosted zone, specify the ID in \code{HostedZoneId}.
 
-If you don't specify a hosted zone ID, \code{ListQueryLoggingConfigs}
+If you don\'t specify a hosted zone ID, \code{ListQueryLoggingConfigs}
 returns all of the configurations that are associated with the current
 AWS account.}
 
@@ -33,7 +33,7 @@ the value of
 \href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListQueryLoggingConfigs.html#API_ListQueryLoggingConfigs_RequestSyntax}{NextToken}
 in the response to get the next page of results.
 
-If you don't specify a value for \code{MaxResults}, Route 53 returns up to
+If you don\'t specify a value for \code{MaxResults}, Route 53 returns up to
 100 configurations.}
 }
 \description{

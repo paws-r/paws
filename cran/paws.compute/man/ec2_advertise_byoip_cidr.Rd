@@ -9,7 +9,7 @@ ec2_advertise_byoip_cidr(Cidr, DryRun)
 }
 \arguments{
 \item{Cidr}{[required] The IPv4 address range, in CIDR notation. This must be the exact range
-that you provisioned. You can't advertise only a portion of the
+that you provisioned. You can\'t advertise only a portion of the
 provisioned range.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without

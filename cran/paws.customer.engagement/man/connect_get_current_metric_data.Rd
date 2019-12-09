@@ -2,89 +2,81 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_get_current_metric_data}
 \alias{connect_get_current_metric_data}
-\title{The GetCurrentMetricData operation retrieves current metric data from
-your Amazon Connect instance}
+\title{Gets the real-time metric data from the specified Amazon Connect
+instance}
 \usage{
 connect_get_current_metric_data(InstanceId, Filters, Groupings,
   CurrentMetrics, NextToken, MaxResults)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier for your Amazon Connect instance. To find the ID of your
-instance, open the AWS console and select Amazon Connect. Select the
-alias of the instance in the Instance alias column. The instance ID is
-displayed in the Overview section of your instance settings. For
-example, the instance ID is the set of characters at the end of the
-instance ARN, after instance/, such as
-10a4c4eb-f57e-4d4c-b602-bf39176ced07.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 
-\item{Filters}{[required] A \code{Filters} object that contains a list of queue IDs or queue ARNs, up
-to 100, or list of Channels to use to filter the metrics returned in the
-response. Metric data is retrieved only for the resources associated
-with the queue IDs, ARNs, or Channels included in the filter. You can
-include both IDs and ARNs in the same request. To retrieve metrics for
-all queues, add the queue ID or ARN for each queue in your instance.
-Only VOICE is supported for Channels.
-
-To find the ARN for a queue, open the queue you want to use in the
-Amazon Connect Queue editor. The ARN for the queue is displayed in the
-address bar as part of the URL. For example, the queue ARN is the set of
-characters at the end of the URL, after 'id=' such as
-\code{arn:aws:connect:us-east-1:270923740243:instance/78fb859d-1b7d-44b1-8aa3-12f0835c5855/queue/1d1a4575-9618-40ab-bbeb-81e45795fe61}.
-The queue ID is also included in the URL, and is the string after
-'queue/'.}
+\item{Filters}{[required] The queues, up to 100, or channels, to use to filter the metrics
+returned. Metric data is retrieved only for the resources associated
+with the queues or channels included in the filter. You can include both
+queue IDs and queue ARNs in the same request. The only supported channel
+is \code{VOICE}.}
 
 \item{Groupings}{The grouping applied to the metrics returned. For example, when grouped
-by QUEUE, the metrics returned apply to each queue rather than
-aggregated for all queues. If you group by CHANNEL, you should include a
-Channels filter. The only supported channel is VOICE.
+by \code{QUEUE}, the metrics returned apply to each queue rather than
+aggregated for all queues. If you group by \code{CHANNEL}, you should include
+a Channels filter. The only supported channel is \code{VOICE}.
 
-If no \code{Grouping} is included in the request, a summary of
-\code{CurrentMetrics} is returned.}
+If no \code{Grouping} is included in the request, a summary of metrics is
+returned.}
 
-\item{CurrentMetrics}{[required] A list of \code{CurrentMetric} objects for the metrics to retrieve. Each
-\code{CurrentMetric} includes a name of a metric to retrieve and the unit to
-use for it. You must list each metric to retrieve data for in the
-request.
+\item{CurrentMetrics}{[required] The metrics to retrieve. Specify the name and unit for each metric. The
+following metrics are available:
 
-The following metrics are available:
-
-AGENTS\_AVAILABLE
+AGENTS\\_AFTER\\_CONTACT\\_WORK
 
 :   Unit: COUNT
 
-AGENTS\_ONLINE
+AGENTS\\_AVAILABLE
 
 :   Unit: COUNT
 
-AGENTS\_ON\_CALL
+AGENTS\\_ERROR
 
 :   Unit: COUNT
 
-AGENTS\_STAFFED
+AGENTS\\_NON\\_PRODUCTIVE
 
 :   Unit: COUNT
 
-AGENTS\_AFTER\_CONTACT\_WORK
+AGENTS\\_ON\\_CALL
 
 :   Unit: COUNT
 
-AGENTS\_NON\_PRODUCTIVE
+AGENTS\\_ON\\_CONTACT
 
 :   Unit: COUNT
 
-AGENTS\_ERROR
+AGENTS\\_ONLINE
 
 :   Unit: COUNT
 
-CONTACTS\_IN\_QUEUE
+AGENTS\\_STAFFED
 
 :   Unit: COUNT
 
-OLDEST\_CONTACT\_AGE
+CONTACTS\\_IN\\_QUEUE
+
+:   Unit: COUNT
+
+CONTACTS\\_SCHEDULED
+
+:   Unit: COUNT
+
+OLDEST\\_CONTACT\\_AGE
 
 :   Unit: SECONDS
 
-CONTACTS\_SCHEDULED
+SLOTS\\_ACTIVE
+
+:   Unit: COUNT
+
+SLOTS\\_AVAILABLE
 
 :   Unit: COUNT}
 
@@ -93,19 +85,18 @@ previous response in the next request to retrieve the next set of
 results.
 
 The token expires after 5 minutes from the time it is created.
-Subsequent requests that use the NextToken must use the same request
+Subsequent requests that use the token must use the same request
 parameters as the request that generated the token.}
 
-\item{MaxResults}{\code{MaxResults} indicates the maximum number of results to return per page
-in the response, between 1 and 100.}
+\item{MaxResults}{The maximimum number of results to return per page.}
 }
 \description{
-The \code{GetCurrentMetricData} operation retrieves current metric data from
-your Amazon Connect instance.
+Gets the real-time metric data from the specified Amazon Connect
+instance.
 }
 \details{
-If you are using an IAM account, it must have permission to the
-\code{connect:GetCurrentMetricData} action.
+For more information, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-reports.html}{Real-time Metrics Reports}
+in the \emph{Amazon Connect Administrator Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_current_metric_data(
@@ -115,7 +106,7 @@ If you are using an IAM account, it must have permission to the
       "string"
     ),
     Channels = list(
-      "VOICE"
+      "VOICE"|"CHAT"
     )
   ),
   Groupings = list(
@@ -123,7 +114,7 @@ If you are using an IAM account, it must have permission to the
   ),
   CurrentMetrics = list(
     list(
-      Name = "AGENTS_ONLINE"|"AGENTS_AVAILABLE"|"AGENTS_ON_CALL"|"AGENTS_NON_PRODUCTIVE"|"AGENTS_AFTER_CONTACT_WORK"|"AGENTS_ERROR"|"AGENTS_STAFFED"|"CONTACTS_IN_QUEUE"|"OLDEST_CONTACT_AGE"|"CONTACTS_SCHEDULED",
+      Name = "AGENTS_ONLINE"|"AGENTS_AVAILABLE"|"AGENTS_ON_CALL"|"AGENTS_NON_PRODUCTIVE"|"AGENTS_AFTER_CONTACT_WORK"|"AGENTS_ERROR"|"AGENTS_STAFFED"|"CONTACTS_IN_QUEUE"|"OLDEST_CONTACT_AGE"|"CONTACTS_SCHEDULED"|"AGENTS_ON_CONTACT"|"SLOTS_ACTIVE"|"SLOTS_AVAILABLE",
       Unit = "SECONDS"|"COUNT"|"PERCENT"
     )
   ),

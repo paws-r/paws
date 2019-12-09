@@ -2,7 +2,9 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_bucket_accelerate_configuration}
 \alias{s3_get_bucket_accelerate_configuration}
-\title{Returns the accelerate configuration of a bucket}
+\title{This implementation of the GET operation uses the accelerate subresource
+to return the Transfer Acceleration state of a bucket, which is either
+Enabled or Suspended}
 \usage{
 s3_get_bucket_accelerate_configuration(Bucket)
 }
@@ -10,7 +12,35 @@ s3_get_bucket_accelerate_configuration(Bucket)
 \item{Bucket}{[required] Name of the bucket for which the accelerate configuration is retrieved.}
 }
 \description{
-Returns the accelerate configuration of a bucket.
+This implementation of the GET operation uses the \code{accelerate}
+subresource to return the Transfer Acceleration state of a bucket, which
+is either \code{Enabled} or \code{Suspended}. Amazon S3 Transfer Acceleration is a
+bucket-level feature that enables you to perform faster data transfers
+to and from Amazon S3.
+}
+\details{
+To use this operation, you must have permission to perform the
+\code{s3:GetAccelerateConfiguration} action. The bucket owner has this
+permission by default. The bucket owner can grant this permission to
+others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev//using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev//s3-access-control.html}{Managing Access Permissions to your Amazon S3 Resources}
+in the \emph{Amazon Simple Storage Service Developer Guide}.
+
+You set the Transfer Acceleration state of an existing bucket to
+\code{Enabled} or \code{Suspended} by using the PutBucketAccelerateConfiguration
+operation.
+
+A GET \code{accelerate} request does not return a state value for a bucket
+that has no transfer acceleration state. A bucket has no Transfer
+Acceleration state if a state has never been set on the bucket.
+
+For more information about transfer acceleration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev//transfer-acceleration.html}{Transfer Acceleration}
+in the Amazon Simple Storage Service Developer Guide.
+
+\strong{Related Resources}
+\itemize{
+\item PutBucketAccelerateConfiguration
+}
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_accelerate_configuration(

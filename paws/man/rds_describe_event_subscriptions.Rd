@@ -11,12 +11,12 @@ rds_describe_event_subscriptions(SubscriptionName, Filters, MaxRecords,
 \item{SubscriptionName}{The name of the RDS event notification subscription you want to
 describe.}
 
-\item{Filters}{This parameter is not currently supported.}
+\item{Filters}{This parameter isn\'t currently supported.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a pagination token
-called a marker is included in the response so that the remaining
-results can be retrieved.
+called a marker is included in the response so that you can retrieve the
+remaining results.
 
 Default: 100
 

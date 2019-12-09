@@ -14,7 +14,7 @@ serverlessapplicationrepository_update_application(ApplicationId,
 
 Minimum length=1. Maximum length=127.
 
-Pattern "\^[a-z0-9](([a-z0-9]\|-(?!-))*[a-z0-9])?\$";}
+Pattern \"\\^[a-z0-9](([a-z0-9]\\|-(?!-))\*[a-z0-9])?\\$\";}
 
 \item{Description}{The description of the application.
 
@@ -27,7 +27,7 @@ location of your GitHub repository for the application.}
 
 Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
-Pattern: "\^[a-zA-Z0-9+\\-\_:\\/@]+\$";}
+Pattern: \"\\^[a-zA-Z0-9+\\\\-\\_:\\\\/@]+\\$\";}
 
 \item{ReadmeBody}{A text readme file in Markdown language that contains a more detailed
 description of the application and how it works.

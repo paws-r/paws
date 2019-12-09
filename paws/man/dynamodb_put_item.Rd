@@ -23,7 +23,7 @@ for both the partition key and the sort key.
 
 If you specify any attributes that are part of an index key, then the
 data types for those attributes must match those of the schema in the
-table's attribute definition.
+table\'s attribute definition.
 
 For more information about primary keys, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.CoreComponents.html#HowItWorks.CoreComponents.PrimaryKey}{Primary Key}
 in the \emph{Amazon DynamoDB Developer Guide}.
@@ -72,7 +72,7 @@ An expression can contain any of the following:
 
 These function names are case-sensitive.
 \item Comparison operators:
-\code{= | &lt;&gt; | &lt; | &gt; | &lt;= | &gt;= | BETWEEN | IN }
+\verb{= | &lt;&gt; | &lt; | &gt; | &lt;= | &gt;= | BETWEEN | IN }
 \item Logical operators: \code{AND | OR | NOT}
 }
 
@@ -90,7 +90,7 @@ name in an expression.
 misinterpreted in an expression.
 }
 
-Use the \strong{\#} character in an expression to dereference an attribute
+Use the \strong{\\#} character in an expression to dereference an attribute
 name. For example, consider the following attribute name:
 \itemize{
 \item \code{Percentile}
@@ -102,13 +102,13 @@ words, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguid
 in the \emph{Amazon DynamoDB Developer Guide}). To work around this, you
 could specify the following for \code{ExpressionAttributeNames}:
 \itemize{
-\item \code{\{"#P":"Percentile"\}}
+\item \verb{\\\{"#P":"Percentile"\\\}}
 }
 
 You could then use this substitution in an expression, as in this
 example:
 \itemize{
-\item \code{#P = :val}
+\item \verb{#P = :val}
 }
 
 Tokens that begin with the \strong{:} character are \emph{expression attribute
@@ -127,11 +127,11 @@ the value of the \emph{ProductStatus} attribute was one of the following:
 
 You would first need to specify \code{ExpressionAttributeValues} as follows:
 
-\code{\{ ":avail":\{"S":"Available"\}, ":back":\{"S":"Backordered"\}, ":disc":\{"S":"Discontinued"\} \}}
+\verb{\\\{ ":avail":\\\{"S":"Available"\\\}, ":back":\\\{"S":"Backordered"\\\}, ":disc":\\\{"S":"Discontinued"\\\} \\\}}
 
 You could then use these values in an expression, such as this:
 
-\code{ProductStatus IN (:avail, :back, :disc)}
+\verb{ProductStatus IN (:avail, :back, :disc)}
 
 For more information on expression attribute values, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html}{Condition Expressions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
@@ -141,8 +141,8 @@ Creates a new item, or replaces an old item with a new item. If an item
 that has the same primary key as the new item already exists in the
 specified table, the new item completely replaces the existing item. You
 can perform a conditional put operation (add a new item if one with the
-specified primary key doesn't exist), or replace an existing item if it
-has certain attribute values. You can return the item's attribute
+specified primary key doesn\'t exist), or replace an existing item if it
+has certain attribute values. You can return the item\'s attribute
 values in the same operation, using the \code{ReturnValues} parameter.
 }
 \details{

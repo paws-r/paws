@@ -17,8 +17,11 @@ for.}
 \description{
 Returns detailed compliance information about the specified member
 account. Details include resources that are in and out of compliance
-with the specified policy. Resources are considered non-compliant if the
-specified policy has not been applied to them.
+with the specified policy. Resources are considered noncompliant for AWS
+WAF and Shield Advanced policies if the specified policy has not been
+applied to them. Resources are considered noncompliant for security
+group policies if they are in scope of the policy, they violate one or
+more of the policy rules, and remediation is disabled or not possible.
 }
 \section{Request syntax}{
 \preformatted{svc$get_compliance_detail(

@@ -5,13 +5,37 @@ NULL
 
 .eks$create_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), resourcesVpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), endpointPublicAccess = structure(logical(0), tags = list(type = "boolean", box = TRUE)), endpointPrivateAccess = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), logging = structure(list(clusterLogging = structure(list(structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), resourcesVpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), endpointPublicAccess = structure(logical(0), tags = list(type = "boolean", box = TRUE)), endpointPrivateAccess = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), logging = structure(list(clusterLogging = structure(list(structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .eks$create_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(cluster = structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string")), endpoint = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), resourcesVpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcId = structure(logical(0), tags = list(type = "string")), endpointPublicAccess = structure(logical(0), tags = list(type = "boolean")), endpointPrivateAccess = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), logging = structure(list(clusterLogging = structure(list(structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), certificateAuthority = structure(list(data = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientRequestToken = structure(logical(0), tags = list(type = "string")), platformVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(cluster = structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string")), endpoint = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), resourcesVpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), clusterSecurityGroupId = structure(logical(0), tags = list(type = "string")), vpcId = structure(logical(0), tags = list(type = "string")), endpointPublicAccess = structure(logical(0), tags = list(type = "boolean")), endpointPrivateAccess = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), logging = structure(list(clusterLogging = structure(list(structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), identity = structure(list(oidc = structure(list(issuer = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), certificateAuthority = structure(list(data = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientRequestToken = structure(logical(0), tags = list(type = "string")), platformVersion = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$create_fargate_profile_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(fargateProfileName = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), podExecutionRoleArn = structure(logical(0), tags = list(type = "string")), subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), selectors = structure(list(structure(list(namespace = structure(logical(0), tags = list(type = "string")), labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$create_fargate_profile_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(fargateProfile = structure(list(fargateProfileName = structure(logical(0), tags = list(type = "string")), fargateProfileArn = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), podExecutionRoleArn = structure(logical(0), tags = list(type = "string")), subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), selectors = structure(list(structure(list(namespace = structure(logical(0), tags = list(type = "string")), labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$create_nodegroup_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), nodegroupName = structure(logical(0), tags = list(type = "string")), scalingConfig = structure(list(minSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), desiredSize = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), diskSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), instanceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), amiType = structure(logical(0), tags = list(type = "string")), remoteAccess = structure(list(ec2SshKey = structure(logical(0), tags = list(type = "string")), sourceSecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), nodeRole = structure(logical(0), tags = list(type = "string")), labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), version = structure(logical(0), tags = list(type = "string")), releaseVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$create_nodegroup_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nodegroup = structure(list(nodegroupName = structure(logical(0), tags = list(type = "string")), nodegroupArn = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), releaseVersion = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), scalingConfig = structure(list(minSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), desiredSize = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), instanceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), remoteAccess = structure(list(ec2SshKey = structure(logical(0), tags = list(type = "string")), sourceSecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), amiType = structure(logical(0), tags = list(type = "string")), nodeRole = structure(logical(0), tags = list(type = "string")), labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), resources = structure(list(autoScalingGroups = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), remoteAccessSecurityGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), diskSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), health = structure(list(issues = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -23,7 +47,31 @@ NULL
 
 .eks$delete_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(cluster = structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string")), endpoint = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), resourcesVpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcId = structure(logical(0), tags = list(type = "string")), endpointPublicAccess = structure(logical(0), tags = list(type = "boolean")), endpointPrivateAccess = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), logging = structure(list(clusterLogging = structure(list(structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), certificateAuthority = structure(list(data = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientRequestToken = structure(logical(0), tags = list(type = "string")), platformVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(cluster = structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string")), endpoint = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), resourcesVpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), clusterSecurityGroupId = structure(logical(0), tags = list(type = "string")), vpcId = structure(logical(0), tags = list(type = "string")), endpointPublicAccess = structure(logical(0), tags = list(type = "boolean")), endpointPrivateAccess = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), logging = structure(list(clusterLogging = structure(list(structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), identity = structure(list(oidc = structure(list(issuer = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), certificateAuthority = structure(list(data = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientRequestToken = structure(logical(0), tags = list(type = "string")), platformVersion = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$delete_fargate_profile_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), fargateProfileName = structure(logical(0), tags = list(location = "uri", locationName = "fargateProfileName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$delete_fargate_profile_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(fargateProfile = structure(list(fargateProfileName = structure(logical(0), tags = list(type = "string")), fargateProfileArn = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), podExecutionRoleArn = structure(logical(0), tags = list(type = "string")), subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), selectors = structure(list(structure(list(namespace = structure(logical(0), tags = list(type = "string")), labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$delete_nodegroup_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), nodegroupName = structure(logical(0), tags = list(location = "uri", locationName = "nodegroupName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$delete_nodegroup_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nodegroup = structure(list(nodegroupName = structure(logical(0), tags = list(type = "string")), nodegroupArn = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), releaseVersion = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), scalingConfig = structure(list(minSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), desiredSize = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), instanceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), remoteAccess = structure(list(ec2SshKey = structure(logical(0), tags = list(type = "string")), sourceSecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), amiType = structure(logical(0), tags = list(type = "string")), nodeRole = structure(logical(0), tags = list(type = "string")), labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), resources = structure(list(autoScalingGroups = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), remoteAccessSecurityGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), diskSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), health = structure(list(issues = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -35,13 +83,37 @@ NULL
 
 .eks$describe_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(cluster = structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string")), endpoint = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), resourcesVpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcId = structure(logical(0), tags = list(type = "string")), endpointPublicAccess = structure(logical(0), tags = list(type = "boolean")), endpointPrivateAccess = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), logging = structure(list(clusterLogging = structure(list(structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), certificateAuthority = structure(list(data = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientRequestToken = structure(logical(0), tags = list(type = "string")), platformVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(cluster = structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string")), endpoint = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), resourcesVpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), clusterSecurityGroupId = structure(logical(0), tags = list(type = "string")), vpcId = structure(logical(0), tags = list(type = "string")), endpointPublicAccess = structure(logical(0), tags = list(type = "boolean")), endpointPrivateAccess = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), logging = structure(list(clusterLogging = structure(list(structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), identity = structure(list(oidc = structure(list(issuer = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), certificateAuthority = structure(list(data = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientRequestToken = structure(logical(0), tags = list(type = "string")), platformVersion = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$describe_fargate_profile_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), fargateProfileName = structure(logical(0), tags = list(location = "uri", locationName = "fargateProfileName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$describe_fargate_profile_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(fargateProfile = structure(list(fargateProfileName = structure(logical(0), tags = list(type = "string")), fargateProfileArn = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), podExecutionRoleArn = structure(logical(0), tags = list(type = "string")), subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), selectors = structure(list(structure(list(namespace = structure(logical(0), tags = list(type = "string")), labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$describe_nodegroup_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), nodegroupName = structure(logical(0), tags = list(location = "uri", locationName = "nodegroupName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$describe_nodegroup_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nodegroup = structure(list(nodegroupName = structure(logical(0), tags = list(type = "string")), nodegroupArn = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), releaseVersion = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), scalingConfig = structure(list(minSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), desiredSize = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), instanceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), remoteAccess = structure(list(ec2SshKey = structure(logical(0), tags = list(type = "string")), sourceSecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), amiType = structure(logical(0), tags = list(type = "string")), nodeRole = structure(logical(0), tags = list(type = "string")), labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), resources = structure(list(autoScalingGroups = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), remoteAccessSecurityGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), diskSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), health = structure(list(issues = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .eks$describe_update_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), updateId = structure(logical(0), tags = list(location = "uri", locationName = "updateId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), updateId = structure(logical(0), tags = list(location = "uri", locationName = "updateId", type = "string")), nodegroupName = structure(logical(0), tags = list(location = "querystring", locationName = "nodegroupName", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -63,15 +135,75 @@ NULL
   return(populate(args, shape))
 }
 
+.eks$list_fargate_profiles_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$list_fargate_profiles_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(fargateProfileNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$list_nodegroups_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$list_nodegroups_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nodegroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .eks$list_updates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), nodegroupName = structure(logical(0), tags = list(location = "querystring", locationName = "nodegroupName", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .eks$list_updates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(updateIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -94,6 +226,30 @@ NULL
 }
 
 .eks$update_cluster_version_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(update = structure(list(id = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), params = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), errors = structure(list(structure(list(errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$update_nodegroup_config_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), nodegroupName = structure(logical(0), tags = list(location = "uri", locationName = "nodegroupName", type = "string")), labels = structure(list(addOrUpdateLabels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), removeLabels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), scalingConfig = structure(list(minSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), desiredSize = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$update_nodegroup_config_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(update = structure(list(id = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), params = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), errors = structure(list(structure(list(errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$update_nodegroup_version_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), nodegroupName = structure(logical(0), tags = list(location = "uri", locationName = "nodegroupName", type = "string")), version = structure(logical(0), tags = list(type = "string")), releaseVersion = structure(logical(0), tags = list(type = "string")), force = structure(logical(0), tags = list(type = "boolean")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$update_nodegroup_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(update = structure(list(id = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), params = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), errors = structure(list(structure(list(errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))

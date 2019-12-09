@@ -5,8 +5,8 @@
 \title{Create a new transcoding job}
 \usage{
 mediaconvert_create_job(AccelerationSettings, BillingTagsSource,
-  ClientRequestToken, JobTemplate, Queue, Role, Settings,
-  StatusUpdateInterval, UserMetadata)
+  ClientRequestToken, JobTemplate, Priority, Queue, Role, Settings,
+  SimulateReservedQueue, StatusUpdateInterval, Tags, UserMetadata)
 }
 \arguments{
 \item{AccelerationSettings}{Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental MediaConvert User Guide.}
@@ -17,13 +17,19 @@ mediaconvert_create_job(AccelerationSettings, BillingTagsSource,
 
 \item{JobTemplate}{When you create a job, you can either specify a job template or specify the transcoding settings individually}
 
+\item{Priority}{Specify the relative priority for this job. In any given queue, the service begins processing the job with the highest value first. When more than one job has the same priority, the service begins processing the job that you submitted first. If you don't specify a priority, the service uses the default value 0.}
+
 \item{Queue}{Optional. When you create a job, you can specify a queue to send it to. If you don't specify, the job will go to the default queue. For more about queues, see the User Guide topic at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html.}
 
 \item{Role}{[required] Required. The IAM role you use for creating this job. For details about permissions, see the User Guide topic at the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html.}
 
 \item{Settings}{[required] JobSettings contains all the transcode settings for a job.}
 
+\item{SimulateReservedQueue}{Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you need. When this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to what you will see with one RTS in a reserved queue. This setting is disabled by default.}
+
 \item{StatusUpdateInterval}{Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins processing your job to the time it completes the transcode or encounters an error.}
+
+\item{Tags}{The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.}
 
 \item{UserMetadata}{User-defined metadata that you want to associate with an MediaConvert job. You specify metadata in key/value pairs.}
 }
@@ -33,11 +39,12 @@ Create a new transcoding job. For information about jobs and job settings, see t
 \section{Request syntax}{
 \preformatted{svc$create_job(
   AccelerationSettings = list(
-    Mode = "DISABLED"|"ENABLED"
+    Mode = "DISABLED"|"ENABLED"|"PREFERRED"
   ),
-  BillingTagsSource = "QUEUE"|"PRESET"|"JOB_TEMPLATE",
+  BillingTagsSource = "QUEUE"|"PRESET"|"JOB_TEMPLATE"|"JOB",
   ClientRequestToken = "string",
   JobTemplate = "string",
+  Priority = 123,
   Queue = "string",
   Role = "string",
   Settings = list(
@@ -99,7 +106,9 @@ Create a new transcoding job. For information about jobs and job settings, see t
             LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
             SourceSettings = list(
               AncillarySourceSettings = list(
-                SourceAncillaryChannelNumber = 123
+                Convert608To708 = "UPCONVERT"|"DISABLED",
+                SourceAncillaryChannelNumber = 123,
+                TerminateCaptions = "END_OF_INPUT"|"DISABLED"
               ),
               DvbSubSourceSettings = list(
                 Pid = 123
@@ -107,7 +116,8 @@ Create a new transcoding job. For information about jobs and job settings, see t
               EmbeddedSourceSettings = list(
                 Convert608To708 = "UPCONVERT"|"DISABLED",
                 Source608ChannelNumber = 123,
-                Source608TrackNumber = 123
+                Source608TrackNumber = 123,
+                TerminateCaptions = "END_OF_INPUT"|"DISABLED"
               ),
               FileSourceSettings = list(
                 Convert608To708 = "UPCONVERT"|"DISABLED",
@@ -123,6 +133,12 @@ Create a new transcoding job. For information about jobs and job settings, see t
               )
             )
           )
+        ),
+        Crop = list(
+          Height = 123,
+          Width = 123,
+          X = 123,
+          Y = 123
         ),
         DeblockFilter = "ENABLED"|"DISABLED",
         DecryptionSettings = list(
@@ -158,13 +174,21 @@ Create a new transcoding job. For information about jobs and job settings, see t
             StartTimecode = "string"
           )
         ),
+        Position = list(
+          Height = 123,
+          Width = 123,
+          X = 123,
+          Y = 123
+        ),
         ProgramNumber = 123,
         PsiControl = "IGNORE_PSI"|"USE_PSI",
         SupplementalImps = list(
           "string"
         ),
         TimecodeSource = "EMBEDDED"|"ZEROBASED"|"SPECIFIEDSTART",
+        TimecodeStart = "string",
         VideoSelector = list(
+          AlphaBehavior = "DISCARD"|"REMAP_TO_LUMA",
           ColorSpace = "FOLLOW"|"REC_601"|"REC_709"|"HDR10"|"HLG_2020",
           ColorSpaceUsage = "FORCE"|"FALLBACK",
           Hdr10Metadata = list(
@@ -211,12 +235,23 @@ Create a new transcoding job. For information about jobs and job settings, see t
         Name = "string",
         OutputGroupSettings = list(
           CmafGroupSettings = list(
+            AdditionalManifests = list(
+              list(
+                ManifestNameModifier = "string",
+                SelectedOutputs = list(
+                  "string"
+                )
+              )
+            ),
             BaseUrl = "string",
             ClientCache = "DISABLED"|"ENABLED",
             CodecSpecification = "RFC_6381"|"RFC_4281",
             Destination = "string",
             DestinationSettings = list(
               S3Settings = list(
+                AccessControl = list(
+                  CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+                ),
                 Encryption = list(
                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
                   KmsKeyArn = "string"
@@ -225,21 +260,33 @@ Create a new transcoding job. For information about jobs and job settings, see t
             ),
             Encryption = list(
               ConstantInitializationVector = "string",
-              EncryptionMethod = "SAMPLE_AES",
+              EncryptionMethod = "SAMPLE_AES"|"AES_CTR",
               InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
+              SpekeKeyProvider = list(
+                CertificateArn = "string",
+                DashSignaledSystemIds = list(
+                  "string"
+                ),
+                HlsSignaledSystemIds = list(
+                  "string"
+                ),
+                ResourceId = "string",
+                Url = "string"
+              ),
               StaticKeyProvider = list(
                 KeyFormat = "string",
                 KeyFormatVersions = "string",
                 StaticKeyValue = "string",
                 Url = "string"
               ),
-              Type = "STATIC_KEY"
+              Type = "SPEKE"|"STATIC_KEY"
             ),
             FragmentLength = 123,
             ManifestCompression = "GZIP"|"NONE",
             ManifestDurationFormat = "FLOATING_POINT"|"INTEGER",
             MinBufferTime = 123,
             MinFinalSegmentLength = 123.0,
+            MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
             SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
             SegmentLength = 123,
             StreamInfResolution = "INCLUDE"|"EXCLUDE",
@@ -247,10 +294,21 @@ Create a new transcoding job. For information about jobs and job settings, see t
             WriteHlsManifest = "DISABLED"|"ENABLED"
           ),
           DashIsoGroupSettings = list(
+            AdditionalManifests = list(
+              list(
+                ManifestNameModifier = "string",
+                SelectedOutputs = list(
+                  "string"
+                )
+              )
+            ),
             BaseUrl = "string",
             Destination = "string",
             DestinationSettings = list(
               S3Settings = list(
+                AccessControl = list(
+                  CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+                ),
                 Encryption = list(
                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
                   KmsKeyArn = "string"
@@ -271,6 +329,7 @@ Create a new transcoding job. For information about jobs and job settings, see t
             FragmentLength = 123,
             HbbtvCompliance = "HBBTV_1_5"|"NONE",
             MinBufferTime = 123,
+            MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
             SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
             SegmentLength = 123,
             WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
@@ -279,6 +338,9 @@ Create a new transcoding job. For information about jobs and job settings, see t
             Destination = "string",
             DestinationSettings = list(
               S3Settings = list(
+                AccessControl = list(
+                  CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+                ),
                 Encryption = list(
                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
                   KmsKeyArn = "string"
@@ -289,6 +351,14 @@ Create a new transcoding job. For information about jobs and job settings, see t
           HlsGroupSettings = list(
             AdMarkers = list(
               "ELEMENTAL"|"ELEMENTAL_SCTE35"
+            ),
+            AdditionalManifests = list(
+              list(
+                ManifestNameModifier = "string",
+                SelectedOutputs = list(
+                  "string"
+                )
+              )
             ),
             BaseUrl = "string",
             CaptionLanguageMappings = list(
@@ -305,6 +375,9 @@ Create a new transcoding job. For information about jobs and job settings, see t
             Destination = "string",
             DestinationSettings = list(
               S3Settings = list(
+                AccessControl = list(
+                  CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+                ),
                 Encryption = list(
                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
                   KmsKeyArn = "string"
@@ -349,10 +422,21 @@ Create a new transcoding job. For information about jobs and job settings, see t
             TimestampDeltaMilliseconds = 123
           ),
           MsSmoothGroupSettings = list(
+            AdditionalManifests = list(
+              list(
+                ManifestNameModifier = "string",
+                SelectedOutputs = list(
+                  "string"
+                )
+              )
+            ),
             AudioDeduplication = "COMBINE_DUPLICATE_STREAMS"|"NONE",
             Destination = "string",
             DestinationSettings = list(
               S3Settings = list(
+                AccessControl = list(
+                  CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+                ),
                 Encryption = list(
                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
                   KmsKeyArn = "string"
@@ -379,7 +463,7 @@ Create a new transcoding job. For information about jobs and job settings, see t
             AudioDescriptions = list(
               list(
                 AudioNormalizationSettings = list(
-                  Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2",
+                  Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
                   AlgorithmControl = "CORRECT_AUDIO"|"MEASURE_ONLY",
                   CorrectionGateLevel = 123,
                   LoudnessLogging = "LOG"|"DONT_LOG",
@@ -416,7 +500,24 @@ Create a new transcoding job. For information about jobs and job settings, see t
                     Channels = 123,
                     SampleRate = 123
                   ),
-                  Codec = "AAC"|"MP2"|"WAV"|"AIFF"|"AC3"|"EAC3"|"PASSTHROUGH",
+                  Codec = "AAC"|"MP2"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"PASSTHROUGH",
+                  Eac3AtmosSettings = list(
+                    Bitrate = 123,
+                    BitstreamMode = "COMPLETE_MAIN",
+                    CodingMode = "CODING_MODE_9_1_6",
+                    DialogueIntelligence = "ENABLED"|"DISABLED",
+                    DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+                    DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+                    LoRoCenterMixLevel = 123.0,
+                    LoRoSurroundMixLevel = 123.0,
+                    LtRtCenterMixLevel = 123.0,
+                    LtRtSurroundMixLevel = 123.0,
+                    MeteringMode = "LEQ_A"|"ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+                    SampleRate = 123,
+                    SpeechThreshold = 123,
+                    StereoDownmix = "NOT_INDICATED"|"STEREO"|"SURROUND"|"DPL2",
+                    SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+                  ),
                   Eac3Settings = list(
                     AttenuationControl = "ATTENUATE_3_DB"|"NONE",
                     Bitrate = 123,
@@ -495,7 +596,7 @@ Create a new transcoding job. For information about jobs and job settings, see t
                     XPosition = 123,
                     YPosition = 123
                   ),
-                  DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
+                  DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"IMSC"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
                   DvbSubDestinationSettings = list(
                     Alignment = "CENTERED"|"LEFT",
                     BackgroundColor = "NONE"|"BLACK"|"WHITE",
@@ -511,18 +612,26 @@ Create a new transcoding job. For information about jobs and job settings, see t
                     ShadowOpacity = 123,
                     ShadowXOffset = 123,
                     ShadowYOffset = 123,
+                    SubtitlingType = "HEARING_IMPAIRED"|"STANDARD",
                     TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
                     XPosition = 123,
                     YPosition = 123
                   ),
                   EmbeddedDestinationSettings = list(
-                    Destination608ChannelNumber = 123
+                    Destination608ChannelNumber = 123,
+                    Destination708ServiceNumber = 123
+                  ),
+                  ImscDestinationSettings = list(
+                    StylePassthrough = "ENABLED"|"DISABLED"
                   ),
                   SccDestinationSettings = list(
-                    Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
+                    Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_25"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
                   ),
                   TeletextDestinationSettings = list(
-                    PageNumber = "string"
+                    PageNumber = "string",
+                    PageTypes = list(
+                      "PAGE_TYPE_INITIAL"|"PAGE_TYPE_SUBTITLE"|"PAGE_TYPE_ADDL_INFO"|"PAGE_TYPE_PROGRAM_SCHEDULE"|"PAGE_TYPE_HEARING_IMPAIRED_SUBTITLE"
+                    )
                   ),
                   TtmlDestinationSettings = list(
                     StylePassthrough = "ENABLED"|"DISABLED"
@@ -624,6 +733,11 @@ Create a new transcoding job. For information about jobs and job settings, see t
                 FreeSpaceBox = "INCLUDE"|"EXCLUDE",
                 MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
                 Mp4MajorBrand = "string"
+              ),
+              MpdSettings = list(
+                CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
+                Scte35Esam = "INSERT"|"NONE",
+                Scte35Source = "PASSTHROUGH"|"NONE"
               )
             ),
             Extension = "string",
@@ -631,6 +745,7 @@ Create a new transcoding job. For information about jobs and job settings, see t
             OutputSettings = list(
               HlsSettings = list(
                 AudioGroupId = "string",
+                AudioOnlyContainer = "AUTOMATIC"|"M2TS",
                 AudioRenditionSets = "string",
                 AudioTrackType = "ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"|"ALTERNATE_AUDIO_AUTO_SELECT"|"ALTERNATE_AUDIO_NOT_AUTO_SELECT"|"AUDIO_ONLY_VARIANT_STREAM",
                 IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
@@ -683,7 +798,7 @@ Create a new transcoding job. For information about jobs and job settings, see t
                   ),
                   RateControlMode = "VBR"|"CBR"|"QVBR",
                   RepeatPps = "DISABLED"|"ENABLED",
-                  SceneChangeDetect = "DISABLED"|"ENABLED",
+                  SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
                   Slices = 123,
                   SlowPal = "DISABLED"|"ENABLED",
                   Softness = 123,
@@ -726,7 +841,7 @@ Create a new transcoding job. For information about jobs and job settings, see t
                   ),
                   RateControlMode = "VBR"|"CBR"|"QVBR",
                   SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
-                  SceneChangeDetect = "DISABLED"|"ENABLED",
+                  SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
                   Slices = 123,
                   SlowPal = "DISABLED"|"ENABLED",
                   SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
@@ -831,6 +946,14 @@ Create a new transcoding job. For information about jobs and job settings, see t
                   Control = "FORCE_ALL_FRAMES"|"NORMAL",
                   Mode = "DEINTERLACE"|"INVERSE_TELECINE"|"ADAPTIVE"
                 ),
+                DolbyVision = list(
+                  L6Metadata = list(
+                    MaxCll = 123,
+                    MaxFall = 123
+                  ),
+                  L6Mode = "PASSTHROUGH"|"RECALCULATE"|"SPECIFY",
+                  Profile = "PROFILE_5"
+                ),
                 ImageInserter = list(
                   InsertableImages = list(
                     list(
@@ -849,12 +972,17 @@ Create a new transcoding job. For information about jobs and job settings, see t
                   )
                 ),
                 NoiseReducer = list(
-                  Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL",
+                  Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL"|"TEMPORAL",
                   FilterSettings = list(
                     Strength = 123
                   ),
                   SpatialFilterSettings = list(
                     PostFilterSharpenStrength = 123,
+                    Speed = 123,
+                    Strength = 123
+                  ),
+                  TemporalFilterSettings = list(
+                    AggressiveMode = 123,
                     Speed = 123,
                     Strength = 123
                   )
@@ -886,7 +1014,11 @@ Create a new transcoding job. For information about jobs and job settings, see t
       )
     )
   ),
+  SimulateReservedQueue = "DISABLED"|"ENABLED",
   StatusUpdateInterval = "SECONDS_10"|"SECONDS_12"|"SECONDS_15"|"SECONDS_20"|"SECONDS_30"|"SECONDS_60"|"SECONDS_120"|"SECONDS_180"|"SECONDS_240"|"SECONDS_300"|"SECONDS_360"|"SECONDS_420"|"SECONDS_480"|"SECONDS_540"|"SECONDS_600",
+  Tags = list(
+    "string"
+  ),
   UserMetadata = list(
     "string"
   )

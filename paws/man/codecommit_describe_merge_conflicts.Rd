@@ -16,10 +16,10 @@ codecommit_describe_merge_conflicts(repositoryName,
 merge conflict.}
 
 \item{destinationCommitSpecifier}{[required] The branch, tag, HEAD, or other fully qualified reference used to
-identify a commit. For example, a branch name or a full commit ID.}
+identify a commit (for example, a branch name or a full commit ID).}
 
 \item{sourceCommitSpecifier}{[required] The branch, tag, HEAD, or other fully qualified reference used to
-identify a commit. For example, a branch name or a full commit ID.}
+identify a commit (for example, a branch name or a full commit ID).}
 
 \item{mergeOption}{[required] The merge option or strategy you want to use to merge the code.}
 
@@ -28,24 +28,24 @@ identify a commit. For example, a branch name or a full commit ID.}
 \item{filePath}{[required] The path of the target files used to describe the conflicts.}
 
 \item{conflictDetailLevel}{The level of conflict detail to use. If unspecified, the default
-FILE\_LEVEL is used, which will return a not mergeable result if the
-same file has differences in both branches. If LINE\_LEVEL is specified,
-a conflict will be considered not mergeable if the same file in both
-branches has differences on the same line.}
+FILE\\_LEVEL is used, which returns a not-mergeable result if the same
+file has differences in both branches. If LINE\\_LEVEL is specified, a
+conflict is considered not mergeable if the same file in both branches
+has differences on the same line.}
 
 \item{conflictResolutionStrategy}{Specifies which branch to use when resolving conflicts, or whether to
 attempt automatically merging two versions of a file. The default is
 NONE, which requires any conflicts to be resolved manually before the
-merge operation will be successful.}
+merge operation is successful.}
 
-\item{nextToken}{An enumeration token that when provided in a request, returns the next
+\item{nextToken}{An enumeration token that, when provided in a request, returns the next
 batch of the results.}
 }
 \description{
 Returns information about one or more merge conflicts in the attempted
 merge of two commit specifiers using the squash or three-way merge
 strategy. If the merge option for the attempted merge is specified as
-FAST\_FORWARD\_MERGE, an exception will be thrown.
+FAST\\_FORWARD\\_MERGE, an exception is thrown.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_merge_conflicts(

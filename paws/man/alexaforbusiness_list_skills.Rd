@@ -8,22 +8,20 @@ alexaforbusiness_list_skills(SkillGroupArn, EnablementType, SkillType,
   NextToken, MaxResults)
 }
 \arguments{
-\item{SkillGroupArn}{The ARN of the skill group for which to list enabled skills. Required.}
+\item{SkillGroupArn}{The ARN of the skill group for which to list enabled skills.}
 
-\item{EnablementType}{Whether the skill is enabled under the user's account, or if it
-requires linking to be used.}
+\item{EnablementType}{Whether the skill is enabled under the user\'s account.}
 
 \item{SkillType}{Whether the skill is publicly available or is a private skill.}
 
 \item{NextToken}{An optional token returned from a prior request. Use this token for
 pagination of results from this action. If this parameter is specified,
 the response includes only results beyond the token, up to the value
-specified by \code{MaxResults}. Required.}
+specified by \code{MaxResults}.}
 
 \item{MaxResults}{The maximum number of results to include in the response. If more
 results exist than the specified \code{MaxResults} value, a token is included
-in the response so that the remaining results can be retrieved.
-Required.}
+in the response so that the remaining results can be retrieved.}
 }
 \description{
 Lists all enabled skills in a specific skill group.

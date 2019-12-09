@@ -5,7 +5,7 @@
 \title{Shares a Systems Manager document publicly or privately}
 \usage{
 ssm_modify_document_permission(Name, PermissionType, AccountIdsToAdd,
-  AccountIdsToRemove)
+  AccountIdsToRemove, SharedDocumentVersion)
 }
 \arguments{
 \item{Name}{[required] The name of the document that you want to share.}
@@ -21,6 +21,9 @@ The AWS user account can either be a group of account IDs or \emph{All}. This
 action has a higher priority than \emph{AccountIdsToAdd}. If you specify an
 account ID to add and the same ID to remove, the system removes access
 to the document.}
+
+\item{SharedDocumentVersion}{(Optional) The version of the document to share. If it\'s not specified,
+the system choose the \code{Default} version to share.}
 }
 \description{
 Shares a Systems Manager document publicly or privately. If you share a
@@ -37,7 +40,8 @@ must specify \emph{All} as the account ID.
   ),
   AccountIdsToRemove = list(
     "string"
-  )
+  ),
+  SharedDocumentVersion = "string"
 )
 }
 }

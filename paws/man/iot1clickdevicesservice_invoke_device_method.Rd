@@ -17,7 +17,7 @@ iot1clickdevicesservice_invoke_device_method(DeviceId, DeviceMethod,
 }
 \description{
 Given a device ID, issues a request to invoke a named device method
-(with possible parameters). See the "Example POST" code snippet below.
+(with possible parameters). See the \"Example POST\" code snippet below.
 }
 \section{Request syntax}{
 \preformatted{svc$invoke_device_method(

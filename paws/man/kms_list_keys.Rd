@@ -3,7 +3,7 @@
 \name{kms_list_keys}
 \alias{kms_list_keys}
 \title{Gets a list of all customer master keys (CMKs) in the caller's AWS
-account and region}
+account and Region}
 \usage{
 kms_list_keys(Limit, Marker)
 }
@@ -20,8 +20,8 @@ with truncated results. Set it to the value of \code{NextMarker} from the
 truncated response you just received.}
 }
 \description{
-Gets a list of all customer master keys (CMKs) in the caller's AWS
-account and region.
+Gets a list of all customer master keys (CMKs) in the caller\'s AWS
+account and Region.
 }
 \section{Request syntax}{
 \preformatted{svc$list_keys(

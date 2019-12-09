@@ -9,7 +9,10 @@ waf_put_logging_configuration(LoggingConfiguration)
 \arguments{
 \item{LoggingConfiguration}{[required] The Amazon Kinesis Data Firehose that contains the inspected traffic
 information, the redacted fields details, and the Amazon Resource Name
-(ARN) of the web ACL to monitor.}
+(ARN) of the web ACL to monitor.
+
+When specifying \code{Type} in \code{RedactedFields}, you must use one of the
+following values: \code{URI}, \code{QUERY_STRING}, \code{HEADER}, or \code{METHOD}.}
 }
 \description{
 Associates a LoggingConfiguration with a specified web ACL.
@@ -18,16 +21,14 @@ Associates a LoggingConfiguration with a specified web ACL.
 You can access information about all traffic that AWS WAF inspects using
 the following steps:
 \enumerate{
-\item Create an Amazon Kinesis Data Firehose .
-}
+\item Create an Amazon Kinesis Data Firehose.
 
 Create the data firehose with a PUT source and in the region that
 you are operating. However, if you are capturing logs for Amazon
 CloudFront, always create the firehose in US East (N. Virginia).
 
-Do not create the data firehose using a \code{Kinesis stream} as your
+Do not create the data firehose using a \verb{Kinesis stream} as your
 source.
-\enumerate{
 \item Associate that firehose to your web ACL using a
 \code{PutLoggingConfiguration} request.
 }

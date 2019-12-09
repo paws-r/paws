@@ -54,11 +54,13 @@ entities:
 \itemize{
 \item For public and private DNS namespaces, one of the following
 combinations of DNS records in Amazon Route 53:
+\itemize{
 \item A
 \item AAAA
 \item A and AAAA
 \item SRV
 \item CNAME
+}
 \item Optionally, a health check
 }
 

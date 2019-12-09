@@ -15,7 +15,7 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \description{
 Retrieves information about the configuration, dimension, and other
-settings for a specific segment that's associated with an application.
+settings for a specific segment that\'s associated with an application.
 }
 \section{Request syntax}{
 \preformatted{svc$get_segment(

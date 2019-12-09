@@ -12,14 +12,14 @@ You can get the ID from the ListPolicies or ListPoliciesForTarget
 operations.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a policy ID
-string requires "p-" followed by from 8 to 128 lower-case letters or
+string requires \"p-\" followed by from 8 to 128 lowercase letters or
 digits.}
 }
 \description{
 Retrieves information about a policy.
 }
 \details{
-This operation can be called only from the organization's master
+This operation can be called only from the organization\'s master
 account.
 }
 \section{Request syntax}{

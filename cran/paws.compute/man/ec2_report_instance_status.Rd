@@ -21,7 +21,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ReasonCodes}{[required] The reason codes that describe the health state of your instance.
 \itemize{
-\item \code{instance-stuck-in-state}: My instance is stuck in a state.
+\item \verb{instance-stuck-in-state}: My instance is stuck in a state.
 \item \code{unresponsive}: My instance is unresponsive.
 \item \code{not-accepting-credentials}: My instance is not accepting my
 credentials.

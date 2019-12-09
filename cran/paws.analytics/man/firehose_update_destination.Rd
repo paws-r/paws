@@ -290,6 +290,7 @@ DescribeDeliveryStream. Use the new version ID to set
   ElasticsearchDestinationUpdate = list(
     RoleARN = "string",
     DomainARN = "string",
+    ClusterEndpoint = "string",
     IndexName = "string",
     TypeName = "string",
     IndexRotationPeriod = "NoRotation"|"OneHour"|"OneDay"|"OneWeek"|"OneMonth",

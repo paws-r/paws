@@ -37,12 +37,12 @@ parameter, the name of the header or parameter.
 \item \code{TextTransformation}: Which text transformation, if any, to perform
 on the web request before inspecting the request for cross-site
 scripting attacks.
-}
 
 You can only specify a single type of TextTransformation.
+}
 
 You use \code{XssMatchSet} objects to specify which CloudFront requests that
-you want to allow, block, or count. For example, if you're receiving
+you want to allow, block, or count. For example, if you\'re receiving
 requests that contain cross-site scripting attacks in the request body
 and you want to block the requests, you can create an \code{XssMatchSet} with
 the applicable settings, and then configure AWS WAF to block the

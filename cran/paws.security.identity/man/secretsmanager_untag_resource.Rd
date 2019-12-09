@@ -24,7 +24,7 @@ specifying a complete ARN. This confusion can cause unexpected results.
 To avoid this situation, we recommend that you don't create secret names
 that end with a hyphen followed by six characters.}
 
-\item{TagKeys}{[required] A list of tag key names to remove from the secret. You don't specify
+\item{TagKeys}{[required] A list of tag key names to remove from the secret. You don\'t specify
 the value. Both the key and its associated value are removed.
 
 This parameter to the API requires a JSON text string argument. For

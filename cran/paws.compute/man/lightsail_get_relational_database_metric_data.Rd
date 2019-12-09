@@ -19,7 +19,7 @@ lightsail_get_relational_database_metric_data(relationalDatabaseName,
 
 Constraints:
 \itemize{
-\item Specified in Universal Coordinated Time (UTC).
+\item Specified in Coordinated Universal Time (UTC).
 \item Specified in the Unix time format.
 
 For example, if you wish to use a start time of October 1, 2018, at
@@ -30,7 +30,7 @@ For example, if you wish to use a start time of October 1, 2018, at
 
 Constraints:
 \itemize{
-\item Specified in Universal Coordinated Time (UTC).
+\item Specified in Coordinated Universal Time (UTC).
 \item Specified in the Unix time format.
 
 For example, if you wish to use an end time of October 1, 2018, at 8

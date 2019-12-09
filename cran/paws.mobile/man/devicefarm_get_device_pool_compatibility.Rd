@@ -8,7 +8,7 @@ devicefarm_get_device_pool_compatibility(devicePoolArn, appArn,
   testType, test, configuration)
 }
 \arguments{
-\item{devicePoolArn}{[required] The device pool's ARN.}
+\item{devicePoolArn}{[required] The device pool\'s ARN.}
 
 \item{appArn}{The ARN of the app that is associated with the specified device pool.}
 
@@ -16,26 +16,26 @@ devicefarm_get_device_pool_compatibility(devicePoolArn, appArn,
 
 Allowed values include the following:
 \itemize{
-\item BUILTIN\_FUZZ: The built-in fuzz type.
-\item BUILTIN\_EXPLORER: For Android, an app explorer that will traverse
+\item BUILTIN\\_FUZZ: The built-in fuzz type.
+\item BUILTIN\\_EXPLORER: For Android, an app explorer that will traverse
 an Android app, interacting with it and capturing screenshots at the
 same time.
-\item APPIUM\_JAVA\_JUNIT: The Appium Java JUnit type.
-\item APPIUM\_JAVA\_TESTNG: The Appium Java TestNG type.
-\item APPIUM\_PYTHON: The Appium Python type.
-\item APPIUM\_NODE: The Appium Node.js type.
-\item APPIUM\_RUBY: The Appium Ruby type.
-\item APPIUM\_WEB\_JAVA\_JUNIT: The Appium Java JUnit type for web apps.
-\item APPIUM\_WEB\_JAVA\_TESTNG: The Appium Java TestNG type for web apps.
-\item APPIUM\_WEB\_PYTHON: The Appium Python type for web apps.
-\item APPIUM\_WEB\_NODE: The Appium Node.js type for web apps.
-\item APPIUM\_WEB\_RUBY: The Appium Ruby type for web apps.
+\item APPIUM\\_JAVA\\_JUNIT: The Appium Java JUnit type.
+\item APPIUM\\_JAVA\\_TESTNG: The Appium Java TestNG type.
+\item APPIUM\\_PYTHON: The Appium Python type.
+\item APPIUM\\_NODE: The Appium Node.js type.
+\item APPIUM\\_RUBY: The Appium Ruby type.
+\item APPIUM\\_WEB\\_JAVA\\_JUNIT: The Appium Java JUnit type for web apps.
+\item APPIUM\\_WEB\\_JAVA\\_TESTNG: The Appium Java TestNG type for web apps.
+\item APPIUM\\_WEB\\_PYTHON: The Appium Python type for web apps.
+\item APPIUM\\_WEB\\_NODE: The Appium Node.js type for web apps.
+\item APPIUM\\_WEB\\_RUBY: The Appium Ruby type for web apps.
 \item CALABASH: The Calabash type.
 \item INSTRUMENTATION: The Instrumentation type.
 \item UIAUTOMATION: The uiautomation type.
 \item UIAUTOMATOR: The uiautomator type.
 \item XCTEST: The Xcode test type.
-\item XCTEST\_UI: The Xcode UI test type.
+\item XCTEST\\_UI: The Xcode UI test type.
 }}
 
 \item{test}{Information about the uploaded test to be run against the device pool.}

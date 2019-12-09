@@ -9,7 +9,7 @@ apigatewayv2_create_api_mapping(ApiId, ApiMappingKey, DomainName, Stage)
 \arguments{
 \item{ApiId}{[required] The API identifier.}
 
-\item{ApiMappingKey}{}
+\item{ApiMappingKey}{The API mapping key.}
 
 \item{DomainName}{[required] The domain name.}
 

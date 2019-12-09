@@ -9,13 +9,13 @@ opsworks_set_permission(StackId, IamUserArn, AllowSsh, AllowSudo, Level)
 \arguments{
 \item{StackId}{[required] The stack ID.}
 
-\item{IamUserArn}{[required] The user's IAM ARN. This can also be a federated user's ARN.}
+\item{IamUserArn}{[required] The user\'s IAM ARN. This can also be a federated user\'s ARN.}
 
 \item{AllowSsh}{The user is allowed to use SSH to communicate with the instance.}
 
 \item{AllowSudo}{The user is allowed to use \strong{sudo} to elevate privileges.}
 
-\item{Level}{The user's permission level, which must be set to one of the following
+\item{Level}{The user\'s permission level, which must be set to one of the following
 strings. You cannot set your own permissions level.
 \itemize{
 \item \code{deny}
@@ -29,7 +29,7 @@ For more information about the permissions associated with these levels,
 see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.}
 }
 \description{
-Specifies a user's permissions. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingsecurity.html}{Security and Permissions}.
+Specifies a user\'s permissions. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingsecurity.html}{Security and Permissions}.
 }
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a

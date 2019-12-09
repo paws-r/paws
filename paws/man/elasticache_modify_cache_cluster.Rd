@@ -9,7 +9,8 @@ elasticache_modify_cache_cluster(CacheClusterId, NumCacheNodes,
   CacheSecurityGroupNames, SecurityGroupIds, PreferredMaintenanceWindow,
   NotificationTopicArn, CacheParameterGroupName, NotificationTopicStatus,
   ApplyImmediately, EngineVersion, AutoMinorVersionUpgrade,
-  SnapshotRetentionLimit, SnapshotWindow, CacheNodeType)
+  SnapshotRetentionLimit, SnapshotWindow, CacheNodeType, AuthToken,
+  AuthTokenUpdateStrategy)
 }
 \arguments{
 \item{CacheClusterId}{[required] The cluster identifier. This value is stored as a lowercase string.}
@@ -34,7 +35,7 @@ as a pending operation (see \code{ApplyImmediately}).
 A pending operation to modify the number of cache nodes in a cluster
 during its maintenance window, whether by adding or removing nodes in
 accordance with the scale out architecture, is not queued. The
-customer's latest request to add or remove nodes to the cluster
+customer\'s latest request to add or remove nodes to the cluster
 overrides any previous pending operations to modify the number of cache
 nodes in the cluster. For example, a request to remove 2 nodes would
 override a previous pending operation to remove 3 nodes. Similarly, a
@@ -65,7 +66,7 @@ you must list 2 (7 - 5) cache node IDs to remove.}
 created in a single Availability Zone or created across multiple
 Availability Zones.
 
-Valid values: \code{single-az} \| \code{cross-az}.
+Valid values: \code{single-az} \\| \code{cross-az}.
 
 This option is only supported for Memcached clusters.
 
@@ -73,10 +74,7 @@ You cannot specify \code{single-az} if the Memcached cluster already has
 cache nodes in different Availability Zones. If \code{cross-az} is specified,
 existing Memcached nodes remain in their current Availability Zone.
 
-Only newly created nodes are located in different Availability Zones.
-For instructions on how to move existing Memcached nodes to different
-Availability Zones, see the \strong{Availability Zone Considerations} section
-of \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/CacheNodes.SupportedTypes.html}{Cache Node Considerations for Memcached}.}
+Only newly created nodes are located in different Availability Zones.}
 
 \item{NewAvailabilityZones}{The list of Availability Zones where the new Memcached cache nodes are
 created.
@@ -155,7 +153,7 @@ You can use this parameter only with clusters that are created outside
 of an Amazon Virtual Private Cloud (Amazon VPC).
 
 Constraints: Must contain no more than 255 alphanumeric characters. Must
-not be "Default".}
+not be \"Default\".}
 
 \item{SecurityGroupIds}{Specifies the VPC Security Groups associated with the cluster.
 
@@ -193,7 +191,7 @@ request.}
 \item{NotificationTopicStatus}{The status of the Amazon SNS notification topic. Notifications are sent
 only if the status is \code{active}.
 
-Valid values: \code{active} \| \code{inactive}}
+Valid values: \code{active} \\| \code{inactive}}
 
 \item{ApplyImmediately}{If \code{true}, this parameter causes the modifications in this request and
 any pending modifications to be applied, asynchronously and as soon as
@@ -206,7 +204,7 @@ reboot, or the next failure reboot, whichever occurs first.
 If you perform a \code{ModifyCacheCluster} before a pending modification is
 applied, the pending modification is replaced by the newer modification.
 
-Valid values: \code{true} \| \code{false}
+Valid values: \code{true} \\| \code{false}
 
 Default: \code{false}}
 
@@ -231,6 +229,28 @@ turned off.}
 daily snapshot of your cluster.}
 
 \item{CacheNodeType}{A valid cache node type that you want to scale this cluster up to.}
+
+\item{AuthToken}{Reserved parameter. The password used to access a password protected
+server. This parameter must be specified with the \code{auth-token-update}
+parameter. Password constraints:
+\itemize{
+\item Must be only printable ASCII characters
+\item Must be at least 16 characters and no more than 128 characters in
+length
+\item Cannot contain any of the following characters: \'/\', \'\"\', or
+\'@\', \'\\%\'
+}
+
+For more information, see AUTH password at AUTH.}
+
+\item{AuthTokenUpdateStrategy}{Specifies the strategy to use to update the AUTH token. This parameter
+must be specified with the \code{auth-token} parameter. Possible values:
+\itemize{
+\item Rotate
+\item Set
+}
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html}{Authenticating Users with Redis AUTH}}
 }
 \description{
 Modifies the settings for a cluster. You can use this operation to
@@ -263,7 +283,9 @@ parameters and the new values.
   AutoMinorVersionUpgrade = TRUE|FALSE,
   SnapshotRetentionLimit = 123,
   SnapshotWindow = "string",
-  CacheNodeType = "string"
+  CacheNodeType = "string",
+  AuthToken = "string",
+  AuthTokenUpdateStrategy = "SET"|"ROTATE"
 )
 }
 }

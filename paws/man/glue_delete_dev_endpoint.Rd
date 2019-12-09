@@ -2,15 +2,15 @@
 % Please edit documentation in R/glue_operations.R
 \name{glue_delete_dev_endpoint}
 \alias{glue_delete_dev_endpoint}
-\title{Deletes a specified DevEndpoint}
+\title{Deletes a specified development endpoint}
 \usage{
 glue_delete_dev_endpoint(EndpointName)
 }
 \arguments{
-\item{EndpointName}{[required] The name of the DevEndpoint.}
+\item{EndpointName}{[required] The name of the \code{DevEndpoint}.}
 }
 \description{
-Deletes a specified DevEndpoint.
+Deletes a specified development endpoint.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_dev_endpoint(

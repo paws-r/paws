@@ -44,7 +44,7 @@ Firewall Manager features, see the \href{https://docs.aws.amazon.com/waf/latest/
 \link[=fms_disassociate_admin_account]{disassociate_admin_account} \tab Disassociates the account that has been set as the AWS Firewall Manager administrator account \cr
 \link[=fms_get_admin_account]{get_admin_account} \tab Returns the AWS Organizations master account that is associated with AWS Firewall Manager as the AWS Firewall Manager administrator \cr
 \link[=fms_get_compliance_detail]{get_compliance_detail} \tab Returns detailed compliance information about the specified member account \cr
-\link[=fms_get_notification_channel]{get_notification_channel} \tab Returns information about the Amazon Simple Notification Service (SNS) topic that is used to record AWS Firewall Manager SNS logs \cr
+\link[=fms_get_notification_channel]{get_notification_channel} \tab Information about the Amazon Simple Notification Service (SNS) topic that is used to record AWS Firewall Manager SNS logs \cr
 \link[=fms_get_policy]{get_policy} \tab Returns information about the specified AWS Firewall Manager policy \cr
 \link[=fms_get_protection_status]{get_protection_status} \tab If you created a Shield Advanced policy, returns policy-level attack summary information in the event of a potential DDoS attack \cr
 \link[=fms_list_compliance_status]{list_compliance_status} \tab Returns an array of PolicyComplianceStatus objects in the response \cr

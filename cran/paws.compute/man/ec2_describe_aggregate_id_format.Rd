@@ -23,17 +23,17 @@ determine whether a specific Region is fully opted in for longer IDs
 This request only returns information about resource types that support
 longer IDs.
 
-The following resource types support longer IDs: \code{bundle} \|
-\code{conversion-task} \| \code{customer-gateway} \| \code{dhcp-options} \|
-\code{elastic-ip-allocation} \| \code{elastic-ip-association} \| \code{export-task} \|
-\code{flow-log} \| \code{image} \| \code{import-task} \| \code{instance} \|
-\code{internet-gateway} \| \code{network-acl} \| \code{network-acl-association} \|
-\code{network-interface} \| \code{network-interface-attachment} \| \code{prefix-list}
-\| \code{reservation} \| \code{route-table} \| \code{route-table-association} \|
-\code{security-group} \| \code{snapshot} \| \code{subnet} \|
-\code{subnet-cidr-block-association} \| \code{volume} \| \code{vpc} \|
-\code{vpc-cidr-block-association} \| \code{vpc-endpoint} \|
-\code{vpc-peering-connection} \| \code{vpn-connection} \| \code{vpn-gateway}.
+The following resource types support longer IDs: \code{bundle} \\|
+\code{conversion-task} \\| \code{customer-gateway} \\| \code{dhcp-options} \\|
+\code{elastic-ip-allocation} \\| \code{elastic-ip-association} \\| \code{export-task} \\|
+\code{flow-log} \\| \code{image} \\| \code{import-task} \\| \code{instance} \\|
+\code{internet-gateway} \\| \code{network-acl} \\| \code{network-acl-association} \\|
+\code{network-interface} \\| \code{network-interface-attachment} \\| \code{prefix-list}
+\\| \code{reservation} \\| \code{route-table} \\| \code{route-table-association} \\|
+\code{security-group} \\| \code{snapshot} \\| \code{subnet} \\|
+\code{subnet-cidr-block-association} \\| \code{volume} \\| \code{vpc} \\|
+\code{vpc-cidr-block-association} \\| \code{vpc-endpoint} \\|
+\code{vpc-peering-connection} \\| \code{vpn-connection} \\| \code{vpn-gateway}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_aggregate_id_format(

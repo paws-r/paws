@@ -28,12 +28,12 @@ follows:
 }
 \details{
 \itemize{
-\item RELATED\_ITEMS - \code{itemId} required, \code{userId} not used
-\item USER\_PERSONALIZATION - \code{itemId} optional, \code{userId} required
+\item RELATED\\_ITEMS - \code{itemId} required, \code{userId} not used
+\item USER\\_PERSONALIZATION - \code{itemId} optional, \code{userId} required
 }
 
 Campaigns that are backed by a solution created using a recipe of type
-PERSONALIZED\_RANKING use the API.
+PERSONALIZED\\_RANKING use the API.
 }
 \section{Request syntax}{
 \preformatted{svc$get_recommendations(

@@ -33,9 +33,9 @@ provisioned TPS (\code{minProvisionedTPS}) specifies the baseline throughput
 provisioned by Amazon Personalize, and thus, the minimum billing charge.
 If your TPS increases beyond \code{minProvisionedTPS}, Amazon Personalize
 auto-scales the provisioned capacity up and down, but never below
-\code{minProvisionedTPS}, to maintain a 70\% utilization. There's a short
+\code{minProvisionedTPS}, to maintain a 70\\% utilization. There\'s a short
 time delay while the capacity is increased that might cause loss of
-transactions. It's recommended to start with a low \code{minProvisionedTPS},
+transactions. It\'s recommended to start with a low \code{minProvisionedTPS},
 track your usage using Amazon CloudWatch metrics, and then increase the
 \code{minProvisionedTPS} as necessary.
 
@@ -43,8 +43,8 @@ track your usage using Amazon CloudWatch metrics, and then increase the
 
 A campaign can be in one of the following states:
 \itemize{
-\item CREATE PENDING \> CREATE IN\_PROGRESS \> ACTIVE -or- CREATE FAILED
-\item DELETE PENDING \> DELETE IN\_PROGRESS
+\item CREATE PENDING \\> CREATE IN\\_PROGRESS \\> ACTIVE -or- CREATE FAILED
+\item DELETE PENDING \\> DELETE IN\\_PROGRESS
 }
 
 To get the campaign status, call DescribeCampaign.

@@ -11,21 +11,21 @@ storagegateway_refresh_cache(FileShareARN, FolderList, Recursive)
 
 \item{FolderList}{A comma-separated list of the paths of folders to refresh in the cache.
 The default is [\code{"/"}]. The default refreshes objects and folders at
-the root of the Amazon S3 bucket. If \code{Recursive} is set to "true", the
+the root of the Amazon S3 bucket. If \code{Recursive} is set to \"true\", the
 entire S3 bucket that the file share has access to is refreshed.}
 
 \item{Recursive}{A value that specifies whether to recursively refresh folders in the
 cache. The refresh includes folders that were in the cache the last time
-the gateway listed the folder's contents. If this value set to
-"true", each folder that is listed in \code{FolderList} is recursively
+the gateway listed the folder\'s contents. If this value set to
+\"true\", each folder that is listed in \code{FolderList} is recursively
 updated. Otherwise, subfolders listed in \code{FolderList} are not refreshed.
 Only objects that are in folders listed directly under \code{FolderList} are
-found and used for the update. The default is "true".}
+found and used for the update. The default is \"true\".}
 }
 \description{
 Refreshes the cache for the specified file share. This operation finds
 objects in the Amazon S3 bucket that were added, removed or replaced
-since the gateway last listed the bucket's contents and cached the
+since the gateway last listed the bucket\'s contents and cached the
 results. This operation is only supported in the file gateway type. You
 can subscribe to be notified through an Amazon CloudWatch event when
 your RefreshCache operation completes. For more information, see
@@ -33,12 +33,25 @@ your RefreshCache operation completes. For more information, see
 }
 \details{
 When this API is called, it only initiates the refresh operation. When
-the API call completes and returns a success code, it doesn't
+the API call completes and returns a success code, it doesn\'t
 necessarily mean that the file refresh has completed. You should use the
 refresh-complete notification to determine that the operation has
 completed before you check for new files on the gateway file share. You
 can subscribe to be notified through an CloudWatch event when your
 \code{RefreshCache} operation completes.
+
+Throttle limit: This API is asynchronous so the gateway will accept no
+more than two refreshes at any time. We recommend using the
+refresh-complete CloudWatch event notification before issuing additional
+requests. For more information, see \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-notification}{Getting Notified About File Operations}.
+
+If you invoke the RefreshCache API when two requests are already being
+processed, any new request will cause an
+\code{InvalidGatewayRequestException} error because too many requests were
+sent to the server.
+
+For more information, see
+\"https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html\\#get-notification\".
 }
 \section{Request syntax}{
 \preformatted{svc$refresh_cache(

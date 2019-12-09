@@ -13,7 +13,7 @@ rds_describe_db_engine_versions(Engine, EngineVersion,
 
 \item{EngineVersion}{The database engine version to return.
 
-Example: \code{5.1.49}}
+Example: \verb{5.1.49}}
 
 \item{DBParameterGroupFamily}{The name of a specific DB parameter group family to return details for.
 
@@ -22,12 +22,11 @@ Constraints:
 \item If supplied, must match an existing DBParameterGroupFamily.
 }}
 
-\item{Filters}{This parameter is not currently supported.}
+\item{Filters}{This parameter isn\'t currently supported.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more than
 the \code{MaxRecords} value is available, a pagination token called a marker
-is included in the response so that the following results can be
-retrieved.
+is included in the response so you can retrieve the remaining results.
 
 Default: 100
 
@@ -54,7 +53,7 @@ If this parameter is enabled and the requested engine supports the
 \code{TimeZone} parameter for \code{CreateDBInstance}, the response includes a
 list of supported time zones for each engine version.}
 
-\item{IncludeAll}{A value that indicates whether to include engine versions that aren't
+\item{IncludeAll}{A value that indicates whether to include engine versions that aren\'t
 available in the list. The default is to list only available engine
 versions.}
 }

@@ -40,7 +40,7 @@ the rotation was in progress, you might need to remove the staging label
 \code{AWSPENDING} from the partially created version, specified by the
 \code{VersionId} response value. You should also evaluate the partially
 rotated new version to see if it should be deleted, which you can do by
-removing all staging labels from the new version's \code{VersionStage}
+removing all staging labels from the new version\'s \code{VersionStage}
 field.
 
 To successfully start a rotation, the staging label \code{AWSPENDING} must be

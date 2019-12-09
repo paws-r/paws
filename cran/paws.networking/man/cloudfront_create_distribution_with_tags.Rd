@@ -7,7 +7,7 @@
 cloudfront_create_distribution_with_tags(DistributionConfigWithTags)
 }
 \arguments{
-\item{DistributionConfigWithTags}{[required] The distribution's configuration information.}
+\item{DistributionConfigWithTags}{[required] The distribution\'s configuration information.}
 }
 \description{
 Create a new distribution with tags.

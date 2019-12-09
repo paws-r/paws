@@ -20,12 +20,12 @@ data stream, the response includes a pagination token named \code{NextToken}.
 You can specify this \code{NextToken} value in a subsequent call to
 \code{ListShards} to list the next set of shards.
 
-Don't specify \code{StreamName} or \code{StreamCreationTimestamp} if you specify
+Don\'t specify \code{StreamName} or \code{StreamCreationTimestamp} if you specify
 \code{NextToken} because the latter unambiguously identifies the stream.
 
 You can optionally specify a value for the \code{MaxResults} parameter when
 you specify \code{NextToken}. If you specify a \code{MaxResults} value that is
-less than the number of shards that the operation returns if you don't
+less than the number of shards that the operation returns if you don\'t
 specify \code{MaxResults}, the response will contain a new \code{NextToken} value.
 You can use the new \code{NextToken} value in a subsequent call to the
 \code{ListShards} operation.
@@ -39,7 +39,7 @@ you get \code{ExpiredNextTokenException}.}
 starting with the shard whose ID immediately follows
 \code{ExclusiveStartShardId}.
 
-If you don't specify this parameter, the default behavior is for
+If you don\'t specify this parameter, the default behavior is for
 \code{ListShards} to list the shards starting with the first one in the
 stream.
 

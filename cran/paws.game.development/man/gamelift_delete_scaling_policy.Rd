@@ -26,12 +26,16 @@ operation suspends all policies for the fleet.
 \item UpdateFleetCapacity
 \item DescribeEC2InstanceLimits
 \item Manage scaling policies:
+\itemize{
 \item PutScalingPolicy (auto-scaling)
 \item DescribeScalingPolicies (auto-scaling)
 \item DeleteScalingPolicy (auto-scaling)
+}
 \item Manage fleet actions:
+\itemize{
 \item StartFleetActions
 \item StopFleetActions
+}
 }
 }
 \section{Request syntax}{

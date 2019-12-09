@@ -13,20 +13,26 @@ in the \emph{AWS Step Functions Developer Guide}.
 
 A name must \emph{not} contain:
 \itemize{
-\item whitespace
-\item brackets \code{&lt; &gt; \{ \} \\[ \\]}
-\item wildcard characters \code{? *}
-\item special characters \code{\" # \\\% \\ ^ | ~ \` $ &amp; , ; : /}
-\item control characters (\code{U+0000-001F}, \code{U+007F-009F})
+\item white space
+\item brackets \verb{&lt; &gt; \\\{ \\\} \\\[ \\\]}
+\item wildcard characters \verb{? *}
+\item special characters \verb{\\" # \\\% \\\\ ^ | ~ \\` $ &amp; , ; : /}
+\item control characters (\verb{U+0000-001F}, \verb{U+007F-009F})
 }}
 
-\item{tags}{The list of tags to add to a resource.}
+\item{tags}{The list of tags to add to a resource.
+
+An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags}
+in the \emph{AWS Billing and Cost Management User Guide}, and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html}{Controlling Access Using IAM Tags}.
+
+Tags may only contain Unicode letters, digits, white space, or these
+symbols: \verb{_ . : / = + - @}.}
 }
 \description{
 Creates an activity. An activity is a task that you write in any
 programming language and host on any machine that has access to AWS Step
 Functions. Activities must poll Step Functions using the
-\code{GetActivityTask} API action and respond using \code{SendTask*} API actions.
+\code{GetActivityTask} API action and respond using \verb{SendTask*} API actions.
 This function lets Step Functions know the existence of your activity
 and returns an identifier for use in a state machine and when polling
 from the activity.
@@ -34,6 +40,13 @@ from the activity.
 \details{
 This operation is eventually consistent. The results are best effort and
 may not reflect very recent updates and changes.
+
+\code{CreateActivity} is an idempotent API. Subsequent requests won't create
+a duplicate resource if it was already created. \code{CreateActivity}\'s
+idempotency check is based on the activity \code{name}. If a following
+request has different \code{tags} values, Step Functions will ignore these
+differences and treat it as an idempotent request of the previous. In
+this case, \code{tags} will not be updated, even if they are different.
 }
 \section{Request syntax}{
 \preformatted{svc$create_activity(

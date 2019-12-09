@@ -11,7 +11,8 @@ apigatewayv2_update_route_response(ApiId, ModelSelectionExpression,
 \arguments{
 \item{ApiId}{[required] The API identifier.}
 
-\item{ModelSelectionExpression}{The model selection expression for the route response.}
+\item{ModelSelectionExpression}{The model selection expression for the route response. Supported only
+for WebSocket APIs.}
 
 \item{ResponseModels}{The response models for the route response.}
 

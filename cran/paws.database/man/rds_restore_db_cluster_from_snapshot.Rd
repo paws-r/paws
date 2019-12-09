@@ -16,13 +16,13 @@ rds_restore_db_cluster_from_snapshot(AvailabilityZones,
 restored DB cluster can be created.}
 
 \item{DBClusterIdentifier}{[required] The name of the DB cluster to create from the DB snapshot or DB cluster
-snapshot. This parameter isn't case-sensitive.
+snapshot. This parameter isn\'t case-sensitive.
 
 Constraints:
 \itemize{
 \item Must contain from 1 to 63 letters, numbers, or hyphens
 \item First character must be a letter
-\item Can't end with a hyphen or contain two consecutive hyphens
+\item Can\'t end with a hyphen or contain two consecutive hyphens
 }
 
 Example: \code{my-snapshot-id}}
@@ -45,7 +45,34 @@ Default: The same as source
 
 Constraint: Must be compatible with the engine of the source}
 
-\item{EngineVersion}{The version of the database engine to use for the new DB cluster.}
+\item{EngineVersion}{The version of the database engine to use for the new DB cluster.
+
+To list all of the available engine versions for \code{aurora} (for MySQL
+5.6-compatible Aurora), use the following command:
+
+\verb{aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions\\\[\\\].EngineVersion"}
+
+To list all of the available engine versions for \code{aurora-mysql} (for
+MySQL 5.7-compatible Aurora), use the following command:
+
+\verb{aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions\\\[\\\].EngineVersion"}
+
+To list all of the available engine versions for \code{aurora-postgresql},
+use the following command:
+
+\verb{aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions\\\[\\\].EngineVersion"}
+
+If you aren\'t using the default engine version, then you must specify
+the engine version.
+
+\strong{Aurora MySQL}
+
+Example: \verb{5.6.10a}, \verb{5.6.mysql_aurora.1.19.2}, \verb{5.7.12},
+\verb{5.7.mysql_aurora.2.04.5}
+
+\strong{Aurora PostgreSQL}
+
+Example: \verb{9.6.3}, \code{10.7}}
 
 \item{Port}{The port number on which the new DB cluster accepts connections.
 
@@ -77,19 +104,22 @@ account that owns the KMS encryption key used to encrypt the new DB
 cluster, then you can use the KMS key alias instead of the ARN for the
 KMS encryption key.
 
-If you don't specify a value for the \code{KmsKeyId} parameter, then the
+If you don\'t specify a value for the \code{KmsKeyId} parameter, then the
 following occurs:
 \itemize{
 \item If the DB snapshot or DB cluster snapshot in \code{SnapshotIdentifier} is
 encrypted, then the restored DB cluster is encrypted using the KMS
 key that was used to encrypt the DB snapshot or DB cluster snapshot.
-\item If the DB snapshot or DB cluster snapshot in \code{SnapshotIdentifier} is
-not encrypted, then the restored DB cluster is not encrypted.
+\item If the DB snapshot or DB cluster snapshot in \code{SnapshotIdentifier}
+isn\'t encrypted, then the restored DB cluster isn\'t encrypted.
 }}
 
 \item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.}
+mapping is disabled.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication}
+in the \emph{Amazon Aurora User Guide.}}
 
 \item{BacktrackWindow}{The target backtrack window, in seconds. To disable backtracking, set
 this value to 0.
@@ -108,7 +138,7 @@ used. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/late
 in the \emph{Amazon Aurora User Guide}.}
 
 \item{EngineMode}{The DB engine mode of the DB cluster, either \code{provisioned},
-\code{serverless}, or \code{parallelquery}.}
+\code{serverless}, \code{parallelquery}, \code{global}, or \code{multimaster}.}
 
 \item{ScalingConfiguration}{For DB clusters in \code{serverless} DB engine mode, the scaling properties
 of the DB cluster.}
@@ -123,11 +153,11 @@ Constraints:
 parameter group.
 \item Must be 1 to 255 letters, numbers, or hyphens.
 \item First character must be a letter.
-\item Can't end with a hyphen or contain two consecutive hyphens.
+\item Can\'t end with a hyphen or contain two consecutive hyphens.
 }}
 
 \item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
-enabled. The database can't be deleted when deletion protection is
+enabled. The database can\'t be deleted when deletion protection is
 enabled. By default, deletion protection is disabled.}
 
 \item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the restored DB
@@ -144,8 +174,8 @@ group.
 
 If a DB cluster snapshot is specified, the target DB cluster is created
 from the source DB cluster restore point with the same configuration as
-the original source DB cluster, except that the new DB cluster is
-created with the default security group.
+the original source DB cluster. If you don\'t specify a security group,
+the new DB cluster is associated with the default security group.
 
 For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
 in the \emph{Amazon Aurora User Guide.}

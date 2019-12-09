@@ -10,7 +10,8 @@ autoscaling_create_auto_scaling_group(AutoScalingGroupName,
   AvailabilityZones, LoadBalancerNames, TargetGroupARNs, HealthCheckType,
   HealthCheckGracePeriod, PlacementGroup, VPCZoneIdentifier,
   TerminationPolicies, NewInstancesProtectedFromScaleIn,
-  LifecycleHookSpecificationList, Tags, ServiceLinkedRoleARN)
+  LifecycleHookSpecificationList, Tags, ServiceLinkedRoleARN,
+  MaxInstanceLifetime)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group. This name must be unique per Region
@@ -18,17 +19,15 @@ per account.}
 
 \item{LaunchConfigurationName}{The name of the launch configuration.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg.html}{Creating an Auto Scaling Group Using a Launch Configuration}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.
-
 If you do not specify \code{LaunchConfigurationName}, you must specify one of
 the following parameters: \code{InstanceId}, \code{LaunchTemplate}, or
 \code{MixedInstancesPolicy}.}
 
 \item{LaunchTemplate}{The launch template to use to launch instances.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-launch-template.html}{Creating an Auto Scaling Group Using a Launch Template}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.
+For more information, see
+\href{https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_LaunchTemplateSpecification.html}{LaunchTemplateSpecification}
+in the \emph{Amazon EC2 Auto Scaling API Reference}.
 
 If you do not specify \code{LaunchTemplate}, you must specify one of the
 following parameters: \code{InstanceId}, \code{LaunchConfigurationName}, or
@@ -40,12 +39,14 @@ their default values are used.
 
 The policy includes parameters that not only define the distribution of
 On-Demand Instances and Spot Instances, the maximum price to pay for
-Spot instances, and how the Auto Scaling group allocates instance types
+Spot Instances, and how the Auto Scaling group allocates instance types
 to fulfill On-Demand and Spot capacity, but also the parameters that
 specify the instance configuration information---the launch template and
 instance types.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-purchase-options.html}{Auto Scaling Groups with Multiple Instance Types and Purchase Options}
+For more information, see
+\href{https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_MixedInstancesPolicy.html}{MixedInstancesPolicy}
+in the \emph{Amazon EC2 Auto Scaling API Reference} and \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-purchase-options.html}{Auto Scaling Groups with Multiple Instance Types and Purchase Options}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 You must specify one of the following parameters in your request:
@@ -118,7 +119,7 @@ before checking the health status of an EC2 instance that has come into
 service. During this time, any health check failures for the instance
 are ignored. The default value is \code{0}.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html}{Health Checks for Auto Scaling Instances}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html#health-check-grace-period}{Health Check Grace Period}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 Conditional: This parameter is required if you are adding an \code{ELB}
@@ -167,6 +168,11 @@ default, Amazon EC2 Auto Scaling uses a service-linked role named
 AWSServiceRoleForAutoScaling, which it creates if it does not exist. For
 more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-service-linked-role.html}{Service-Linked Roles}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
+
+\item{MaxInstanceLifetime}{The maximum amount of time, in seconds, that an instance can be in
+service.
+
+Valid Range: Minimum value of 604800.}
 }
 \description{
 Creates an Auto Scaling group with the specified name and attributes.
@@ -195,7 +201,8 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
       ),
       Overrides = list(
         list(
-          InstanceType = "string"
+          InstanceType = "string",
+          WeightedCapacity = "string"
         )
       )
     ),
@@ -250,7 +257,8 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
       PropagateAtLaunch = TRUE|FALSE
     )
   ),
-  ServiceLinkedRoleARN = "string"
+  ServiceLinkedRoleARN = "string",
+  MaxInstanceLifetime = 123
 )
 }
 }

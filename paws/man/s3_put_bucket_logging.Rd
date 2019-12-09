@@ -8,16 +8,64 @@ who can view and modify the logging parameters}
 s3_put_bucket_logging(Bucket, BucketLoggingStatus, ContentMD5)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The name of the bucket for which to set the logging parameters.}
 
-\item{BucketLoggingStatus}{[required]}
+\item{BucketLoggingStatus}{[required] Container for logging status information.}
 
-\item{ContentMD5}{}
+\item{ContentMD5}{The MD5 hash of the \code{PutBucketLogging} request body.}
 }
 \description{
 Set the logging parameters for a bucket and to specify permissions for
-who can view and modify the logging parameters. To set the logging
+who can view and modify the logging parameters. All logs are saved to
+buckets in the same AWS Region as the source bucket. To set the logging
 status of a bucket, you must be the bucket owner.
+}
+\details{
+The bucket owner is automatically granted FULL\\_CONTROL to all logs. You
+use the \code{Grantee} request element to grant access to other people. The
+\code{Permissions} request element specifies the kind of access the grantee
+has to the logs.
+
+\strong{Grantee Values}
+
+You can specify the person (grantee) to whom you\'re assigning access
+rights (using request elements) in the following ways:
+\itemize{
+\item By the person\'s ID:
+
+\verb{&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"&gt;&lt;ID&gt;&lt;&gt;ID&lt;&gt;&lt;/ID&gt;&lt;DisplayName&gt;&lt;&gt;GranteesEmail&lt;&gt;&lt;/DisplayName&gt; &lt;/Grantee&gt;}
+
+DisplayName is optional and ignored in the request.
+\item By Email address:
+
+\verb{ &lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AmazonCustomerByEmail"&gt;&lt;EmailAddress&gt;&lt;&gt;Grantees@email.com&lt;&gt;&lt;/EmailAddress&gt;&lt;/Grantee&gt;}
+
+The grantee is resolved to the CanonicalUser and, in a response to a
+GET Object acl request, appears as the CanonicalUser.
+\item By URI:
+
+\verb{&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Group"&gt;&lt;URI&gt;&lt;&gt;http://acs.amazonaws.com/groups/global/AuthenticatedUsers&lt;&gt;&lt;/URI&gt;&lt;/Grantee&gt;}
+}
+
+To enable logging, you use LoggingEnabled and its children request
+elements. To disable logging, you use an empty BucketLoggingStatus
+request element:
+
+\verb{&lt;BucketLoggingStatus xmlns="http://doc.s3.amazonaws.com/2006-03-01" /&gt;}
+
+For more information about server access logging, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html}{Server Access Logging}.
+
+For more information about creating a bucket, see CreateBucket. For more
+information about returning the logging status of a bucket, see
+GetBucketLogging.
+
+The following operations are related to \code{PutBucketLogging}:
+\itemize{
+\item PutObject
+\item DeleteBucket
+\item CreateBucket
+\item GetBucketLogging
+}
 }
 \section{Request syntax}{
 \preformatted{svc$put_bucket_logging(

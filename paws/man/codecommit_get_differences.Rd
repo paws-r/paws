@@ -3,7 +3,7 @@
 \name{codecommit_get_differences}
 \alias{codecommit_get_differences}
 \title{Returns information about the differences in a valid commit specifier
-(such as a branch, tag, HEAD, commit ID or other fully qualified
+(such as a branch, tag, HEAD, commit ID, or other fully qualified
 reference)}
 \usage{
 codecommit_get_differences(repositoryName, beforeCommitSpecifier,
@@ -13,8 +13,8 @@ codecommit_get_differences(repositoryName, beforeCommitSpecifier,
 \item{repositoryName}{[required] The name of the repository where you want to get differences.}
 
 \item{beforeCommitSpecifier}{The branch, tag, HEAD, or other fully qualified reference used to
-identify a commit. For example, the full commit ID. Optional. If not
-specified, all changes prior to the \code{afterCommitSpecifier} value will be
+identify a commit (for example, the full commit ID). Optional. If not
+specified, all changes before the \code{afterCommitSpecifier} value are
 shown. If you do not use \code{beforeCommitSpecifier} in your request,
 consider limiting the results with \code{maxResults}.}
 
@@ -24,21 +24,22 @@ identify a commit.}
 \item{beforePath}{The file path in which to check for differences. Limits the results to
 this path. Can also be used to specify the previous name of a directory
 or folder. If \code{beforePath} and \code{afterPath} are not specified,
-differences will be shown for all paths.}
+differences are shown for all paths.}
 
 \item{afterPath}{The file path in which to check differences. Limits the results to this
 path. Can also be used to specify the changed name of a directory or
-folder, if it has changed. If not specified, differences will be shown
-for all paths.}
+folder, if it has changed. If not specified, differences are shown for
+all paths.}
 
-\item{MaxResults}{A non-negative integer used to limit the number of returned results.}
+\item{MaxResults}{A non-zero, non-negative integer used to limit the number of returned
+results.}
 
-\item{NextToken}{An enumeration token that when provided in a request, returns the next
+\item{NextToken}{An enumeration token that, when provided in a request, returns the next
 batch of the results.}
 }
 \description{
 Returns information about the differences in a valid commit specifier
-(such as a branch, tag, HEAD, commit ID or other fully qualified
+(such as a branch, tag, HEAD, commit ID, or other fully qualified
 reference). Results can be limited to a specified path.
 }
 \section{Request syntax}{

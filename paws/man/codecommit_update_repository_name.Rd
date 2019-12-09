@@ -7,16 +7,16 @@
 codecommit_update_repository_name(oldName, newName)
 }
 \arguments{
-\item{oldName}{[required] The existing name of the repository.}
+\item{oldName}{[required] The current name of the repository.}
 
 \item{newName}{[required] The new name for the repository.}
 }
 \description{
 Renames a repository. The repository name must be unique across the
-calling AWS account. In addition, repository names are limited to 100
-alphanumeric, dash, and underscore characters, and cannot include
-certain characters. The suffix ".git" is prohibited. For a full
-description of the limits on repository names, see
+calling AWS account. Repository names are limited to 100 alphanumeric,
+dash, and underscore characters, and cannot include certain characters.
+The suffix .git is prohibited. For more information about the limits on
+repository names, see
 \href{https://docs.aws.amazon.com/codecommit/latest/userguide/limits.html}{Limits}
 in the AWS CodeCommit User Guide.
 }

@@ -15,6 +15,12 @@ pipeline.}
 \description{
 Creates a pipeline.
 }
+\details{
+In the pipeline structure, you must include either \code{artifactStore} or
+\code{artifactStores} in your pipeline, but you cannot use both. If you
+create a cross-region action in your pipeline, you must use
+\code{artifactStores}.
+}
 \section{Request syntax}{
 \preformatted{svc$create_pipeline(
   pipeline = list(
@@ -71,7 +77,8 @@ Creates a pipeline.
               )
             ),
             roleArn = "string",
-            region = "string"
+            region = "string",
+            namespace = "string"
           )
         )
       )

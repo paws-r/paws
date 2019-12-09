@@ -14,8 +14,8 @@ ListXssMatchSets.}
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
-Permanently deletes an XssMatchSet. You can't delete an \code{XssMatchSet}
-if it's still used in any \code{Rules} or if it still contains any
+Permanently deletes an XssMatchSet. You can\'t delete an \code{XssMatchSet}
+if it\'s still used in any \code{Rules} or if it still contains any
 XssMatchTuple objects.
 }
 \details{

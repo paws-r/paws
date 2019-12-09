@@ -2,26 +2,20 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_update_user_security_profiles}
 \alias{connect_update_user_security_profiles}
-\title{Updates the security profiles assigned to the user}
+\title{Assigns the specified security profiles to the specified user}
 \usage{
 connect_update_user_security_profiles(SecurityProfileIds, UserId,
   InstanceId)
 }
 \arguments{
-\item{SecurityProfileIds}{[required] The identifiers for the security profiles to assign to the user.}
+\item{SecurityProfileIds}{[required] The identifiers of the security profiles for the user.}
 
-\item{UserId}{[required] The identifier of the user account to assign the security profiles.}
+\item{UserId}{[required] The identifier of the user account.}
 
-\item{InstanceId}{[required] The identifier for your Amazon Connect instance. To find the ID of your
-instance, open the AWS console and select Amazon Connect. Select the
-alias of the instance in the Instance alias column. The instance ID is
-displayed in the Overview section of your instance settings. For
-example, the instance ID is the set of characters at the end of the
-instance ARN, after instance/, such as
-10a4c4eb-f57e-4d4c-b602-bf39176ced07.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 }
 \description{
-Updates the security profiles assigned to the user.
+Assigns the specified security profiles to the specified user.
 }
 \section{Request syntax}{
 \preformatted{svc$update_user_security_profiles(

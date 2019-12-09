@@ -15,8 +15,8 @@ Deletes a health check.
 \details{
 Amazon Route 53 does not prevent you from deleting a health check even
 if the health check is associated with one or more resource record sets.
-If you delete a health check and you don't update the associated
-resource record sets, the future status of the health check can't be
+If you delete a health check and you don\'t update the associated
+resource record sets, the future status of the health check can\'t be
 predicted and may change. This will affect the routing of DNS queries
 for your DNS failover configuration. For more information, see
 \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html#health-checks-deleting.html}{Replacing and Deleting Health Checks}

@@ -13,7 +13,7 @@ elasticache_describe_reserved_cache_nodes_offerings(
 the available offering that matches the specified reservation
 identifier.
 
-Example: \code{438012d3-4052-4cc7-b2e3-8d3372e0e706}}
+Example: \verb{438012d3-4052-4cc7-b2e3-8d3372e0e706}}
 
 \item{CacheNodeType}{The cache node type filter value. Use this parameter to show only the
 available offerings matching the specified cache node type.

@@ -25,7 +25,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Describes one or more of your Capacity Reservations. The results
-describe only the Capacity Reservations in the AWS Region that you're
+describe only the Capacity Reservations in the AWS Region that you\'re
 currently using.
 }
 \section{Request syntax}{

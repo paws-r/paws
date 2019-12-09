@@ -2,12 +2,15 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_enable_sharing_with_aws_organization}
 \alias{ram_enable_sharing_with_aws_organization}
-\title{Enables resource sharing within your organization}
+\title{Enables resource sharing within your AWS Organization}
 \usage{
 ram_enable_sharing_with_aws_organization()
 }
 \description{
-Enables resource sharing within your organization.
+Enables resource sharing within your AWS Organization.
+}
+\details{
+The caller must be the master account for the AWS Organization.
 }
 \section{Request syntax}{
 \preformatted{svc$enable_sharing_with_aws_organization()

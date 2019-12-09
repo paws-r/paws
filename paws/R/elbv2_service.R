@@ -18,42 +18,17 @@ NULL
 #' 
 #' Elastic Load Balancing supports the following types of load balancers:
 #' Application Load Balancers, Network Load Balancers, and Classic Load
-#' Balancers.
+#' Balancers. This reference covers Application Load Balancers and Network
+#' Load Balancers.
 #' 
 #' An Application Load Balancer makes routing and load balancing decisions
 #' at the application layer (HTTP/HTTPS). A Network Load Balancer makes
 #' routing and load balancing decisions at the transport layer (TCP/TLS).
 #' Both Application Load Balancers and Network Load Balancers can route
 #' requests to one or more ports on each EC2 instance or container instance
-#' in your virtual private cloud (VPC).
-#' 
-#' A Classic Load Balancer makes routing and load balancing decisions
-#' either at the transport layer (TCP/SSL) or the application layer
-#' (HTTP/HTTPS), and supports either EC2-Classic or a VPC. For more
-#' information, see the [Elastic Load Balancing User
+#' in your virtual private cloud (VPC). For more information, see the
+#' [Elastic Load Balancing User
 #' Guide](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/).
-#' 
-#' This reference covers the 2015-12-01 API, which supports Application
-#' Load Balancers and Network Load Balancers. The 2012-06-01 API supports
-#' Classic Load Balancers.
-#' 
-#' To get started, complete the following tasks:
-#' 
-#' 1.  Create a load balancer using CreateLoadBalancer.
-#' 
-#' 2.  Create a target group using CreateTargetGroup.
-#' 
-#' 3.  Register targets for the target group using RegisterTargets.
-#' 
-#' 4.  Create one or more listeners for your load balancer using
-#'     CreateListener.
-#' 
-#' To delete a load balancer and its related resources, complete the
-#' following tasks:
-#' 
-#' 1.  Delete the load balancer using DeleteLoadBalancer.
-#' 
-#' 2.  Delete the target group using DeleteTargetGroup.
 #' 
 #' All Elastic Load Balancing operations are idempotent, which means that
 #' they complete at most one time. If you repeat an operation, it succeeds.
@@ -101,7 +76,7 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=elbv2_add_listener_certificates]{add_listener_certificates} \tab Adds the specified SSL server certificate to the certificate list for the specified HTTPS listener \cr
+#'  \link[=elbv2_add_listener_certificates]{add_listener_certificates} \tab Adds the specified SSL server certificate to the certificate list for the specified HTTPS or TLS listener \cr
 #'  \link[=elbv2_add_tags]{add_tags} \tab Adds the specified tags to the specified Elastic Load Balancing resource \cr
 #'  \link[=elbv2_create_listener]{create_listener} \tab Creates a listener for the specified Application Load Balancer or Network Load Balancer \cr
 #'  \link[=elbv2_create_load_balancer]{create_load_balancer} \tab Creates an Application Load Balancer or a Network Load Balancer \cr
@@ -113,7 +88,7 @@ NULL
 #'  \link[=elbv2_delete_target_group]{delete_target_group} \tab Deletes the specified target group \cr
 #'  \link[=elbv2_deregister_targets]{deregister_targets} \tab Deregisters the specified targets from the specified target group \cr
 #'  \link[=elbv2_describe_account_limits]{describe_account_limits} \tab Describes the current Elastic Load Balancing resource limits for your AWS account \cr
-#'  \link[=elbv2_describe_listener_certificates]{describe_listener_certificates} \tab Describes the default certificate and the certificate list for the specified HTTPS listener \cr
+#'  \link[=elbv2_describe_listener_certificates]{describe_listener_certificates} \tab Describes the default certificate and the certificate list for the specified HTTPS or TLS listener \cr
 #'  \link[=elbv2_describe_listeners]{describe_listeners} \tab Describes the specified listeners or the listeners for the specified Application Load Balancer or Network Load Balancer\cr
 #'  \link[=elbv2_describe_load_balancer_attributes]{describe_load_balancer_attributes} \tab Describes the attributes for the specified Application Load Balancer or Network Load Balancer \cr
 #'  \link[=elbv2_describe_load_balancers]{describe_load_balancers} \tab Describes the specified load balancers or all of your load balancers \cr
@@ -123,18 +98,18 @@ NULL
 #'  \link[=elbv2_describe_target_group_attributes]{describe_target_group_attributes} \tab Describes the attributes for the specified target group \cr
 #'  \link[=elbv2_describe_target_groups]{describe_target_groups} \tab Describes the specified target groups or all of your target groups \cr
 #'  \link[=elbv2_describe_target_health]{describe_target_health} \tab Describes the health of the specified targets or all of your targets \cr
-#'  \link[=elbv2_modify_listener]{modify_listener} \tab Modifies the specified properties of the specified listener \cr
+#'  \link[=elbv2_modify_listener]{modify_listener} \tab Replaces the specified properties of the specified listener \cr
 #'  \link[=elbv2_modify_load_balancer_attributes]{modify_load_balancer_attributes} \tab Modifies the specified attributes of the specified Application Load Balancer or Network Load Balancer \cr
-#'  \link[=elbv2_modify_rule]{modify_rule} \tab Modifies the specified rule \cr
+#'  \link[=elbv2_modify_rule]{modify_rule} \tab Replaces the specified properties of the specified rule \cr
 #'  \link[=elbv2_modify_target_group]{modify_target_group} \tab Modifies the health checks used when evaluating the health state of the targets in the specified target group \cr
 #'  \link[=elbv2_modify_target_group_attributes]{modify_target_group_attributes} \tab Modifies the specified attributes of the specified target group \cr
 #'  \link[=elbv2_register_targets]{register_targets} \tab Registers the specified targets with the specified target group \cr
-#'  \link[=elbv2_remove_listener_certificates]{remove_listener_certificates} \tab Removes the specified certificate from the certificate list for the specified HTTPS listener \cr
+#'  \link[=elbv2_remove_listener_certificates]{remove_listener_certificates} \tab Removes the specified certificate from the certificate list for the specified HTTPS or TLS listener \cr
 #'  \link[=elbv2_remove_tags]{remove_tags} \tab Removes the specified tags from the specified Elastic Load Balancing resource \cr
 #'  \link[=elbv2_set_ip_address_type]{set_ip_address_type} \tab Sets the type of IP addresses used by the subnets of the specified Application Load Balancer or Network Load Balancer \cr
 #'  \link[=elbv2_set_rule_priorities]{set_rule_priorities} \tab Sets the priorities of the specified rules \cr
 #'  \link[=elbv2_set_security_groups]{set_security_groups} \tab Associates the specified security groups with the specified Application Load Balancer \cr
-#'  \link[=elbv2_set_subnets]{set_subnets} \tab Enables the Availability Zone for the specified public subnets for the specified Application Load Balancer 
+#'  \link[=elbv2_set_subnets]{set_subnets} \tab Enables the Availability Zones for the specified public subnets for the specified load balancer 
 #' }
 #'
 #' @rdname elbv2

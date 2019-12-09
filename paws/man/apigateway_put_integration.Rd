@@ -12,11 +12,11 @@ apigateway_put_integration(restApiId, resourceId, httpMethod, type,
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[required] [Required] Specifies a put integration request's resource ID.}
+\item{resourceId}{[required] [Required] Specifies a put integration request\'s resource ID.}
 
-\item{httpMethod}{[required] [Required] Specifies a put integration request's HTTP method.}
+\item{httpMethod}{[required] [Required] Specifies a put integration request\'s HTTP method.}
 
-\item{type}{[required] [Required] Specifies a put integration input's type.}
+\item{type}{[required] [Required] Specifies a put integration input\'s type.}
 
 \item{integrationHttpMethod}{Specifies a put integration HTTP method. When the integration type is
 HTTP or AWS, this field is required.}
@@ -30,23 +30,23 @@ for either standard integration, where \code{connectionType} is not
 \code{VPC_LINK}. For a private HTTP integration, the URI is not used for
 routing.
 \item For \code{AWS} or \code{AWS_PROXY} integrations, the URI is of the form
-\code{arn:aws:apigateway:\{region\}:\{subdomain.service|service\}:path|action/\{service_api\}}.
-Here, \code{\{Region\}} is the API Gateway region (e.g., \code{us-east-1});
-\code{\{service\}} is the name of the integrated AWS service (e.g., \code{s3});
-and \code{\{subdomain\}} is a designated subdomain supported by certain AWS
+\verb{arn:aws:apigateway:\\\{region\\\}:\\\{subdomain.service|service\\\}:path|action/\\\{service_api\\\}}.
+Here, \verb{\\\{Region\\\}} is the API Gateway region (e.g., \code{us-east-1});
+\verb{\\\{service\\\}} is the name of the integrated AWS service (e.g., \code{s3});
+and \verb{\\\{subdomain\\\}} is a designated subdomain supported by certain AWS
 service for fast host-name lookup. \code{action} can be used for an AWS
 service action-based API, using an
-\code{Action=\{name\}&amp;\{p1\}=\{v1\}&amp;p2=\{v2\}...} query string. The
-ensuing \code{\{service_api\}} refers to a supported action \code{\{name\}} plus
+\verb{Action=\\\{name\\\}&amp;\\\{p1\\\}=\\\{v1\\\}&amp;p2=\\\{v2\\\}...} query string. The
+ensuing \verb{\\\{service_api\\\}} refers to a supported action \verb{\\\{name\\\}} plus
 any required input parameters. Alternatively, \code{path} can be used for
 an AWS service path-based API. The ensuing \code{service_api} refers to
 the path to an AWS service resource, including the region of the
 integrated AWS service, if applicable. For example, for integration
 with the S3 API of
-\code{<a href="https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html">GetObject</a>},
+\verb{<a href="https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html">GetObject</a>},
 the \code{uri} can be either
-\code{arn:aws:apigateway:us-west-2:s3:action/GetObject&amp;Bucket=\{bucket\}&amp;Key=\{key\}}
-or \code{arn:aws:apigateway:us-west-2:s3:path/\{bucket\}/\{key\}}
+\verb{arn:aws:apigateway:us-west-2:s3:action/GetObject&amp;Bucket=\\\{bucket\\\}&amp;Key=\\\{key\\\}}
+or \verb{arn:aws:apigateway:us-west-2:s3:path/\\\{bucket\\\}/\\\{key\\\}}
 }}
 
 \item{connectionType}{The type of the network connection to the integration endpoint. The
@@ -55,7 +55,7 @@ internet or \code{VPC_LINK} for private connections between API Gateway and a
 network load balancer in a VPC. The default value is \code{INTERNET}.}
 
 \item{connectionId}{The
-(\href{https://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/#id}{id})
+(\href{https://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/#id}{\code{id}})
 of the VpcLink used for the integration when \code{connectionType=VPC_LINK}
 and undefined, otherwise.}
 
@@ -66,7 +66,7 @@ method request to the back end. The key is an integration request
 parameter name and the associated value is a method request parameter
 value or static value that must be enclosed within single quotes and
 pre-encoded as required by the back end. The method request parameter
-value must match the pattern of \code{method.request.\{location\}.\{name\}},
+value must match the pattern of \verb{method.request.\\\{location\\\}.\\\{name\\\}},
 where \code{location} is \code{querystring}, \code{path}, or \code{header} and \code{name} must
 be a valid and unique method request parameter name.}
 
@@ -84,7 +84,7 @@ resource. There are three valid values: \code{WHEN_NO_MATCH},
 \item \code{WHEN_NO_MATCH} passes the request body for unmapped content types
 through to the integration back end without transformation.
 \item \code{NEVER} rejects unmapped content types with an HTTP 415
-'Unsupported Media Type' response.
+\'Unsupported Media Type\' response.
 \item \code{WHEN_NO_TEMPLATES} allows pass-through when the integration has NO
 content types mapped to templates. However if there is at least one
 content type defined, unmapped content types will be rejected with
@@ -114,7 +114,7 @@ support payload pass-through.}
 29,000 milliseconds or 29 seconds.}
 }
 \description{
-Sets up a method's integration.
+Sets up a method\'s integration.
 }
 \section{Request syntax}{
 \preformatted{svc$put_integration(

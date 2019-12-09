@@ -11,9 +11,8 @@ comprehend_detect_key_phrases(Text, LanguageCode)
 UTF-8 encoded characters.}
 
 \item{LanguageCode}{[required] The language of the input documents. You can specify any of the primary
-languages supported by Amazon Comprehend: German ("de"), English
-("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
-Portuguese ("pt"). All documents must be in the same language.}
+languages supported by Amazon Comprehend. All documents must be in the
+same language.}
 }
 \description{
 Detects the key noun phrases found in the text.
@@ -21,7 +20,7 @@ Detects the key noun phrases found in the text.
 \section{Request syntax}{
 \preformatted{svc$detect_key_phrases(
   Text = "string",
-  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW"
 )
 }
 }

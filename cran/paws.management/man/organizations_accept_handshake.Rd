@@ -11,7 +11,7 @@ organizations_accept_handshake(HandshakeId)
 \item{HandshakeId}{[required] The unique identifier (ID) of the handshake that you want to accept.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for handshake ID
-string requires "h-" followed by from 8 to 32 lower-case letters or
+string requires \"h-\" followed by from 8 to 32 lowercase letters or
 digits.}
 }
 \description{
@@ -24,7 +24,6 @@ also have the relevant IAM permissions:
 \itemize{
 \item \strong{Invitation to join} or \strong{Approve all features request}
 handshakes: only a principal from the member account.
-}
 
 The user who calls the API for an invitation to join must have the
 \code{organizations:AcceptHandshake} permission. If you enabled all
@@ -33,18 +32,17 @@ features in the organization, the user must also have the
 can create the required service-linked role named
 \code{AWSServiceRoleForOrganizations}. For more information, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integration_services.html#orgs_integration_service-linked-roles}{AWS Organizations and Service-Linked Roles}
 in the \emph{AWS Organizations User Guide}.
-\itemize{
 \item \strong{Enable all features final confirmation} handshake: only a
 principal from the master account.
-}
 
 For more information about invitations, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_invites.html}{Inviting an AWS Account to Join Your Organization}
 in the \emph{AWS Organizations User Guide.} For more information about
 requests to enable all features in the organization, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html}{Enabling All Features in Your Organization}
 in the \emph{AWS Organizations User Guide.}
+}
 
 After you accept a handshake, it continues to appear in the results of
-relevant APIs for only 30 days. After that, it's deleted.
+relevant APIs for only 30 days. After that, it\'s deleted.
 }
 \section{Request syntax}{
 \preformatted{svc$accept_handshake(

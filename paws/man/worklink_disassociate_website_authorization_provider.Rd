@@ -14,7 +14,7 @@ worklink_disassociate_website_authorization_provider(FleetArn,
 }
 \description{
 Disassociates a website authorization provider from a specified fleet.
-After the disassociation, users can't load any associated websites that
+After the disassociation, users can\'t load any associated websites that
 require this authorization provider.
 }
 \section{Request syntax}{

@@ -15,7 +15,8 @@ kafka_list_clusters(ClusterNameFilter, MaxResults, NextToken)
 To get the next batch, provide this token in your next request.</p>}
 }
 \description{
-<p>Returns a list of all the MSK clusters in the current Region.</p>
+\preformatted{        <p>Returns a list of all the MSK clusters in the current Region.</p>
+}
 }
 \section{Request syntax}{
 \preformatted{svc$list_clusters(

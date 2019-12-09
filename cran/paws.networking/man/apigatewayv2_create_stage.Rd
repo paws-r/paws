@@ -4,16 +4,20 @@
 \alias{apigatewayv2_create_stage}
 \title{Creates a Stage for an API}
 \usage{
-apigatewayv2_create_stage(AccessLogSettings, ApiId, ClientCertificateId,
-  DefaultRouteSettings, DeploymentId, Description, RouteSettings,
-  StageName, StageVariables, Tags)
+apigatewayv2_create_stage(AccessLogSettings, ApiId, AutoDeploy,
+  ClientCertificateId, DefaultRouteSettings, DeploymentId, Description,
+  RouteSettings, StageName, StageVariables, Tags)
 }
 \arguments{
 \item{AccessLogSettings}{Settings for logging access in this stage.}
 
 \item{ApiId}{[required] The API identifier.}
 
-\item{ClientCertificateId}{The identifier of a client certificate for a Stage.}
+\item{AutoDeploy}{Specifies whether updates to an API automatically trigger a new
+deployment. The default value is false.}
+
+\item{ClientCertificateId}{The identifier of a client certificate for a Stage. Supported only for
+WebSocket APIs.}
 
 \item{DefaultRouteSettings}{The default route settings for the stage.}
 
@@ -21,17 +25,16 @@ apigatewayv2_create_stage(AccessLogSettings, ApiId, ClientCertificateId,
 
 \item{Description}{The description for the API stage.}
 
-\item{RouteSettings}{Route settings for the stage.}
+\item{RouteSettings}{Route settings for the stage, by routeKey.}
 
 \item{StageName}{[required] The name of the stage.}
 
 \item{StageVariables}{A map that defines the stage variables for a Stage. Variable names can
 have alphanumeric and underscore characters, and the values must match
-[A-Za-z0-9-.\_~:/?\#&=,]+.}
+[A-Za-z0-9-.\\_\~:/?\\#&=,]+. Supported only for WebSocket APIs.}
 
-\item{Tags}{The key-value map of strings. The valid character set is
-[a-zA-Z+-=.\_:/]. The tag key can be up to 128 characters and must not
-start with aws:. The tag value can be up to 256 characters..}
+\item{Tags}{The collection of tags. Each tag element is associated with a given
+resource.}
 }
 \description{
 Creates a Stage for an API.
@@ -43,6 +46,7 @@ Creates a Stage for an API.
     Format = "string"
   ),
   ApiId = "string",
+  AutoDeploy = TRUE|FALSE,
   ClientCertificateId = "string",
   DefaultRouteSettings = list(
     DataTraceEnabled = TRUE|FALSE,

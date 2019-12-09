@@ -24,7 +24,9 @@ This is only used for AD Connector directories. For more information,
 see the \emph{UserName} parameter.}
 }
 \description{
-Enables single sign-on for a directory.
+Enables single sign-on for a directory. Single sign-on allows users in
+your directory to access certain AWS services from a computer joined to
+the directory without having to enter their credentials separately.
 }
 \section{Request syntax}{
 \preformatted{svc$enable_sso(

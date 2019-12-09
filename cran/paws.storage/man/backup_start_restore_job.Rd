@@ -9,14 +9,14 @@ backup_start_restore_job(RecoveryPointArn, Metadata, IamRoleArn,
 }
 \arguments{
 \item{RecoveryPointArn}{[required] An ARN that uniquely identifies a recovery point; for example,
-\code{arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45}.}
+\verb{arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45}.}
 
 \item{Metadata}{[required] A set of metadata key-value pairs. Lists the metadata that the recovery
 point was created with.}
 
 \item{IamRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that AWS Backup uses to
 create the target recovery point; for example,
-\code{arn:aws:iam::123456789012:role/S3Access}.}
+\verb{arn:aws:iam::123456789012:role/S3Access}.}
 
 \item{IdempotencyToken}{A customer chosen string that can be used to distinguish between calls
 to \code{StartRestoreJob}. Idempotency tokens time out after one hour.

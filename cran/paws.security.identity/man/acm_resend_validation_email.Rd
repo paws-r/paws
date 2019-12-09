@@ -26,11 +26,11 @@ a \strong{ValidationDomain} of \code{subdomain.example.com}, ACM sends email to
 the domain registrant, technical contact, and administrative contact in
 WHOIS and the following five addresses:
 \itemize{
-\item admin\@subdomain.example.com
-\item administrator\@subdomain.example.com
-\item hostmaster\@subdomain.example.com
-\item postmaster\@subdomain.example.com
-\item webmaster\@subdomain.example.com
+\item admin\\@subdomain.example.com
+\item administrator\\@subdomain.example.com
+\item hostmaster\\@subdomain.example.com
+\item postmaster\\@subdomain.example.com
+\item webmaster\\@subdomain.example.com
 }}
 }
 \description{

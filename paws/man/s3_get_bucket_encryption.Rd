@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_bucket_encryption}
 \alias{s3_get_bucket_encryption}
-\title{Returns the server-side encryption configuration of a bucket}
+\title{Returns the default encryption configuration for an Amazon S3 bucket}
 \usage{
 s3_get_bucket_encryption(Bucket)
 }
@@ -11,7 +11,22 @@ s3_get_bucket_encryption(Bucket)
 configuration is retrieved.}
 }
 \description{
-Returns the server-side encryption configuration of a bucket.
+Returns the default encryption configuration for an Amazon S3 bucket.
+For information about the Amazon S3 default encryption feature, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html}{Amazon S3 Default Bucket Encryption}.
+}
+\details{
+To use this operation, you must have permission to perform the
+\code{s3:GetEncryptionConfiguration} action. The bucket owner has this
+permission by default. The bucket owner can grant this permission to
+others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
+
+The following operations are related to \code{GetBucketEncryption}:
+\itemize{
+\item PutBucketEncryption
+\item DeleteBucketEncryption
+}
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_encryption(

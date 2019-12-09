@@ -7,7 +7,7 @@
 ssm_list_document_versions(Name, MaxResults, NextToken)
 }
 \arguments{
-\item{Name}{[required] The name of the document about which you want version information.}
+\item{Name}{[required] The name of the document. You can specify an Amazon Resource Name (ARN).}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the

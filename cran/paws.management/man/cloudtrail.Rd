@@ -29,7 +29,7 @@ managing errors, and retrying requests automatically. For information
 about the AWS SDKs, including how to download and install them, see the
 \href{http://aws.amazon.com/tools/}{Tools for Amazon Web Services page}.
 
-See the \href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html}{AWS CloudTrail User Guide}
+See the \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html}{AWS CloudTrail User Guide}
 for information about the data that is included with each AWS API call
 listed in the log files.
 }
@@ -57,13 +57,17 @@ listed in the log files.
 \link[=cloudtrail_add_tags]{add_tags} \tab Adds one or more tags to a trail, up to a limit of 50 \cr
 \link[=cloudtrail_create_trail]{create_trail} \tab Creates a trail that specifies the settings for delivery of log data to an Amazon S3 bucket \cr
 \link[=cloudtrail_delete_trail]{delete_trail} \tab Deletes a trail \cr
-\link[=cloudtrail_describe_trails]{describe_trails} \tab Retrieves settings for the trail associated with the current region for your account \cr
+\link[=cloudtrail_describe_trails]{describe_trails} \tab Retrieves settings for one or more trails associated with the current region for your account \cr
 \link[=cloudtrail_get_event_selectors]{get_event_selectors} \tab Describes the settings for the event selectors that you configured for your trail \cr
+\link[=cloudtrail_get_insight_selectors]{get_insight_selectors} \tab Describes the settings for the Insights event selectors that you configured for your trail \cr
+\link[=cloudtrail_get_trail]{get_trail} \tab Returns settings information for a specified trail \cr
 \link[=cloudtrail_get_trail_status]{get_trail_status} \tab Returns a JSON-formatted list of information about the specified trail \cr
-\link[=cloudtrail_list_public_keys]{list_public_keys} \tab Returns all public keys whose private keys were used to sign the digest files within the specified time range\cr
+\link[=cloudtrail_list_public_keys]{list_public_keys} \tab Returns all public keys whose private keys were used to sign the digest files within the specified time range \cr
 \link[=cloudtrail_list_tags]{list_tags} \tab Lists the tags for the trail in the current region \cr
-\link[=cloudtrail_lookup_events]{lookup_events} \tab Looks up management events captured by CloudTrail \cr
+\link[=cloudtrail_list_trails]{list_trails} \tab Lists trails that are in the current account \cr
+\link[=cloudtrail_lookup_events]{lookup_events} \tab Looks up management events or CloudTrail Insights events that are captured by CloudTrail \cr
 \link[=cloudtrail_put_event_selectors]{put_event_selectors} \tab Configures an event selector for your trail \cr
+\link[=cloudtrail_put_insight_selectors]{put_insight_selectors} \tab Lets you enable Insights event logging by specifying the Insights selectors that you want to enable on an existing trail\cr
 \link[=cloudtrail_remove_tags]{remove_tags} \tab Removes the specified tags from a trail \cr
 \link[=cloudtrail_start_logging]{start_logging} \tab Starts the recording of AWS API calls and log file delivery for a trail \cr
 \link[=cloudtrail_stop_logging]{stop_logging} \tab Suspends the recording of AWS API calls and log file delivery for the specified trail \cr

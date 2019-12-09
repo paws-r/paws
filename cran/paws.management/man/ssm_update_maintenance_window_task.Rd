@@ -15,14 +15,14 @@ ssm_update_maintenance_window_task(WindowId, WindowTaskId, Targets,
 \item{WindowTaskId}{[required] The task ID to modify.}
 
 \item{Targets}{The targets (either instances or tags) to modify. Instances are
-specified using Key=instanceids,Values=instanceID\_1,instanceID\_2. Tags
-are specified using Key=tag\_name,Values=tag\_value.}
+specified using Key=instanceids,Values=instanceID\\_1,instanceID\\_2. Tags
+are specified using Key=tag\\_name,Values=tag\\_value.}
 
 \item{TaskArn}{The task ARN to modify.}
 
 \item{ServiceRoleArn}{The ARN of the IAM service role for Systems Manager to assume when
 running a maintenance window task. If you do not specify a service role
-ARN, Systems Manager uses your account's service-linked role. If no
+ARN, Systems Manager uses your account\'s service-linked role. If no
 service-linked role for Systems Manager exists in your account, it is
 created when you run \code{RegisterTaskWithMaintenanceWindow}.
 
@@ -77,12 +77,12 @@ RegisterTaskWithMaintenanceWndow action are also required for this API
 request. Optional fields that are not specified are set to null.}
 }
 \description{
-Modifies a task assigned to a maintenance window. You can't change the
+Modifies a task assigned to a maintenance window. You can\'t change the
 task type, but you can change the following values:
 }
 \details{
 \itemize{
-\item TaskARN. For example, you can change a RUN\_COMMAND task from
+\item TaskARN. For example, you can change a RUN\\_COMMAND task from
 AWS-RunPowerShellScript to AWS-RunShellScript.
 \item ServiceRoleArn
 \item TaskInvocationParameters
@@ -94,7 +94,7 @@ AWS-RunPowerShellScript to AWS-RunShellScript.
 If a parameter is null, then the corresponding field is not modified.
 Also, if you set Replace to true, then all fields required by the
 RegisterTaskWithMaintenanceWindow action are required for this request.
-Optional fields that aren't specified are set to null.
+Optional fields that aren\'t specified are set to null.
 }
 \section{Request syntax}{
 \preformatted{svc$update_maintenance_window_task(

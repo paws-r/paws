@@ -10,12 +10,13 @@ chime_list_bots(AccountId, MaxResults, NextToken)
 \arguments{
 \item{AccountId}{[required] The Amazon Chime account ID.}
 
-\item{MaxResults}{The maximum number of results to return in a single call. Default is 10.}
+\item{MaxResults}{The maximum number of results to return in a single call. The default is
+10.}
 
 \item{NextToken}{The token to use to retrieve the next page of results.}
 }
 \description{
-Lists the bots associated with the administrator's Amazon Chime
+Lists the bots associated with the administrator\'s Amazon Chime
 Enterprise account ID.
 }
 \section{Request syntax}{

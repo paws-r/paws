@@ -2,15 +2,45 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_bucket_lifecycle}
 \alias{s3_get_bucket_lifecycle}
-\title{No longer used, see the GetBucketLifecycleConfiguration operation}
+\title{For an updated version of this API, see GetBucketLifecycleConfiguration}
 \usage{
 s3_get_bucket_lifecycle(Bucket)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The name of the bucket for which to get the lifecycle information.}
 }
 \description{
-No longer used, see the GetBucketLifecycleConfiguration operation.
+For an updated version of this API, see GetBucketLifecycleConfiguration.
+If you configured a bucket lifecycle using the \code{filter} element, you
+should see the updated version of this topic. This topic is provided for
+backward compatibility.
+}
+\details{
+Returns the lifecycle configuration information set on the bucket. For
+information about lifecycle configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html}{Object Lifecycle Management}.
+
+To use this operation, you must have permission to perform the
+\code{s3:GetLifecycleConfiguration} action. The bucket owner has this
+permission by default. The bucket owner can grant this permission to
+others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
+
+\code{GetBucketLifecycle} has the following special error:
+\itemize{
+\item Error code: \code{NoSuchLifecycleConfiguration}
+\itemize{
+\item Description: The lifecycle configuration does not exist.
+\item HTTP Status Code: 404 Not Found
+\item SOAP Fault Code Prefix: Client
+}
+}
+
+The following operations are related to \code{GetBucketLifecycle}:
+\itemize{
+\item GetBucketLifecycleConfiguration
+\item PutBucketLifecycle
+\item DeleteBucketLifecycle
+}
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_lifecycle(

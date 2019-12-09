@@ -8,8 +8,9 @@ ecs_untag_resource(resourceArn, tagKeys)
 }
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource from which to delete
-tags. Currently, the supported resources are Amazon ECS tasks, services,
-task definitions, clusters, and container instances.}
+tags. Currently, the supported resources are Amazon ECS capacity
+providers, tasks, services, task definitions, clusters, and container
+instances.}
 
 \item{tagKeys}{[required] The keys of the tags to be removed.}
 }

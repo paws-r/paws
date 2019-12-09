@@ -21,7 +21,8 @@ kafka_create_configuration(Description, KafkaVersions, Name,
 When using the AWS Management Console, the SDK, or the AWS CLI, the contents of <filename>server.properties</filename> can be in plaintext.</p>}
 }
 \description{
-<p>Creates a new MSK configuration.</p>
+\preformatted{        <p>Creates a new MSK configuration.</p>
+}
 }
 \section{Request syntax}{
 \preformatted{svc$create_configuration(

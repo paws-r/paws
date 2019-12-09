@@ -7,7 +7,8 @@
 guardduty_tag_resource(ResourceArn, Tags)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) for the given GuardDuty resource}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) for the GuardDuty resource to apply a tag
+to.}
 
 \item{Tags}{[required] The tags to be added to a resource.}
 }

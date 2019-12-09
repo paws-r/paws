@@ -14,7 +14,7 @@ greengrass_create_core_definition(AmznClientToken, InitialVersion, Name,
 
 \item{Name}{The name of the core definition.}
 
-\item{tags}{Tag(s) to add to the new resource}
+\item{tags}{Tag(s) to add to the new resource.}
 }
 \description{
 Creates a core definition. You may provide the initial version of the core definition now or use ''CreateCoreDefinitionVersion'' at a later time. Greengrass groups must each contain exactly one Greengrass core.

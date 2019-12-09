@@ -7,7 +7,7 @@ for a specific network interface, subnet, or VPC}
 \usage{
 ec2_create_flow_logs(DryRun, ClientToken, DeliverLogsPermissionArn,
   LogGroupName, ResourceIds, ResourceType, TrafficType,
-  LogDestinationType, LogDestination)
+  LogDestinationType, LogDestination, LogFormat)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -57,16 +57,31 @@ Flow log data can be published to a CloudWatch Logs log group or an
 Amazon S3 bucket. The value specified for this parameter depends on the
 value specified for \code{LogDestinationType}.
 
-If LogDestinationType is not specified or \code{cloud-watch-logs}, specify
-the Amazon Resource Name (ARN) of the CloudWatch Logs log group.
+If \code{LogDestinationType} is not specified or \code{cloud-watch-logs}, specify
+the Amazon Resource Name (ARN) of the CloudWatch Logs log group. For
+example, to publish to a log group called \code{my-logs}, specify
+\code{arn:aws:logs:us-east-1:123456789012:log-group:my-logs}. Alternatively,
+use \code{LogGroupName} instead.
 
 If LogDestinationType is \code{s3}, specify the ARN of the Amazon S3 bucket.
 You can also specify a subfolder in the bucket. To specify a subfolder
 in the bucket, use the following ARN format:
-\code{bucket_ARN/subfolder_name/}. For example, to specify a subfolder named
+\verb{bucket_ARN/subfolder_name/}. For example, to specify a subfolder named
 \code{my-logs} in a bucket named \code{my-bucket}, use the following ARN:
-\code{arn:aws:s3:::my-bucket/my-logs/}. You cannot use \code{AWSLogs} as a
+\verb{arn:aws:s3:::my-bucket/my-logs/}. You cannot use \code{AWSLogs} as a
 subfolder name. This is a reserved term.}
+
+\item{LogFormat}{The fields to include in the flow log record, in the order in which they
+should appear. For a list of available fields, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html#flow-log-records}{Flow Log Records}.
+If you omit this parameter, the flow log is created using the default
+format. If you specify this parameter, you must specify at least one
+field.
+
+Specify the fields using the \verb{$\\\{field-id\\\}} format, separated by spaces.
+For the AWS CLI, use single quotation marks (\' \') to surround the
+parameter value.
+
+Only applicable to flow logs that are published to an Amazon S3 bucket.}
 }
 \description{
 Creates one or more flow logs to capture information about IP traffic
@@ -99,7 +114,8 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
   ResourceType = "VPC"|"Subnet"|"NetworkInterface",
   TrafficType = "ACCEPT"|"REJECT"|"ALL",
   LogDestinationType = "cloud-watch-logs"|"s3",
-  LogDestination = "string"
+  LogDestination = "string",
+  LogFormat = "string"
 )
 }
 }

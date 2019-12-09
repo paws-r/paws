@@ -13,7 +13,7 @@ returned by CreateIPSet and by ListIPSets.}
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
-Permanently deletes an IPSet. You can't delete an \code{IPSet} if it's
+Permanently deletes an IPSet. You can\'t delete an \code{IPSet} if it\'s
 still used in any \code{Rules} or if it still includes any IP addresses.
 }
 \details{

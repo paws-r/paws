@@ -19,7 +19,8 @@ kafka_update_cluster_configuration(ClusterArn, ConfigurationInfo,
 <p>The version of the cluster that needs to be updated.</p>}
 }
 \description{
-<p>Updates the cluster with the configuration that is specified in the request body.</p>
+\preformatted{        <p>Updates the cluster with the configuration that is specified in the request body.</p>
+}
 }
 \section{Request syntax}{
 \preformatted{svc$update_cluster_configuration(

@@ -8,7 +8,7 @@ lightsail_get_relational_database_blueprints(pageToken)
 }
 \arguments{
 \item{pageToken}{A token used for advancing to a specific page of results for your
-\code{get relational database blueprints} request.}
+\verb{get relational database blueprints} request.}
 }
 \description{
 Returns a list of available database blueprints in Amazon Lightsail. A

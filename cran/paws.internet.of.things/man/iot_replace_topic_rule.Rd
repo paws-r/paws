@@ -63,7 +63,8 @@ rule.
         ),
         republish = list(
           roleArn = "string",
-          topic = "string"
+          topic = "string",
+          qos = 123
         ),
         s3 = list(
           roleArn = "string",
@@ -111,10 +112,53 @@ rule.
           messageId = "string",
           roleArn = "string"
         ),
+        iotSiteWise = list(
+          putAssetPropertyValueEntries = list(
+            list(
+              entryId = "string",
+              assetId = "string",
+              propertyId = "string",
+              propertyAlias = "string",
+              propertyValues = list(
+                list(
+                  value = list(
+                    stringValue = "string",
+                    integerValue = "string",
+                    doubleValue = "string",
+                    booleanValue = "string"
+                  ),
+                  timestamp = list(
+                    timeInSeconds = "string",
+                    offsetInNanos = "string"
+                  ),
+                  quality = "string"
+                )
+              )
+            )
+          ),
+          roleArn = "string"
+        ),
         stepFunctions = list(
           executionNamePrefix = "string",
           stateMachineName = "string",
           roleArn = "string"
+        ),
+        http = list(
+          url = "string",
+          confirmationUrl = "string",
+          headers = list(
+            list(
+              key = "string",
+              value = "string"
+            )
+          ),
+          auth = list(
+            sigv4 = list(
+              signingRegion = "string",
+              serviceName = "string",
+              roleArn = "string"
+            )
+          )
         )
       )
     ),
@@ -159,7 +203,8 @@ rule.
       ),
       republish = list(
         roleArn = "string",
-        topic = "string"
+        topic = "string",
+        qos = 123
       ),
       s3 = list(
         roleArn = "string",
@@ -207,10 +252,53 @@ rule.
         messageId = "string",
         roleArn = "string"
       ),
+      iotSiteWise = list(
+        putAssetPropertyValueEntries = list(
+          list(
+            entryId = "string",
+            assetId = "string",
+            propertyId = "string",
+            propertyAlias = "string",
+            propertyValues = list(
+              list(
+                value = list(
+                  stringValue = "string",
+                  integerValue = "string",
+                  doubleValue = "string",
+                  booleanValue = "string"
+                ),
+                timestamp = list(
+                  timeInSeconds = "string",
+                  offsetInNanos = "string"
+                ),
+                quality = "string"
+              )
+            )
+          )
+        ),
+        roleArn = "string"
+      ),
       stepFunctions = list(
         executionNamePrefix = "string",
         stateMachineName = "string",
         roleArn = "string"
+      ),
+      http = list(
+        url = "string",
+        confirmationUrl = "string",
+        headers = list(
+          list(
+            key = "string",
+            value = "string"
+          )
+        ),
+        auth = list(
+          sigv4 = list(
+            signingRegion = "string",
+            serviceName = "string",
+            roleArn = "string"
+          )
+        )
       )
     )
   )

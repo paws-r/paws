@@ -20,7 +20,7 @@ Use the token that is returned with a previous call to this action. To
 start at the beginning of the result set, do not specify a value.}
 }
 \description{
-Retrieves information about a fleet's instances, including instance
+Retrieves information about a fleet\'s instances, including instance
 IDs. Use this action to get details on all instances in the fleet or get
 details on one specific instance.
 }

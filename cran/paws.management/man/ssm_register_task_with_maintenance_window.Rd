@@ -16,17 +16,17 @@ ssm_register_task_with_maintenance_window(WindowId, Targets, TaskArn,
 
 Specify instances using the following format:
 
-\code{Key=InstanceIds,Values=&lt;instance-id-1&gt;,&lt;instance-id-2&gt;}
+\verb{Key=InstanceIds,Values=&lt;instance-id-1&gt;,&lt;instance-id-2&gt;}
 
 Specify maintenance window targets using the following format:
 
-\code{Key=&lt;WindowTargetIds&gt;,Values=&lt;window-target-id-1&gt;,&lt;window-target-id-2&gt;}}
+\verb{Key=WindowTargetIds;,Values=&lt;window-target-id-1&gt;,&lt;window-target-id-2&gt;}}
 
 \item{TaskArn}{[required] The ARN of the task to run.}
 
 \item{ServiceRoleArn}{The ARN of the IAM service role for Systems Manager to assume when
 running a maintenance window task. If you do not specify a service role
-ARN, Systems Manager uses your account's service-linked role. If no
+ARN, Systems Manager uses your account\'s service-linked role. If no
 service-linked role for Systems Manager exists in your account, it is
 created when you run \code{RegisterTaskWithMaintenanceWindow}.
 

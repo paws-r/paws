@@ -7,7 +7,7 @@ cluster}
 \usage{
 rds_create_db_cluster_endpoint(DBClusterIdentifier,
   DBClusterEndpointIdentifier, EndpointType, StaticMembers,
-  ExcludedMembers)
+  ExcludedMembers, Tags)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier of the DB cluster associated with the
@@ -16,14 +16,16 @@ endpoint. This parameter is stored as a lowercase string.}
 \item{DBClusterEndpointIdentifier}{[required] The identifier to use for the new endpoint. This parameter is stored as
 a lowercase string.}
 
-\item{EndpointType}{[required] The type of the endpoint. One of: \code{READER}, \code{ANY}.}
+\item{EndpointType}{[required] The type of the endpoint. One of: \code{READER}, \code{WRITER}, \code{ANY}.}
 
 \item{StaticMembers}{List of DB instance identifiers that are part of the custom endpoint
 group.}
 
-\item{ExcludedMembers}{List of DB instance identifiers that aren't part of the custom endpoint
+\item{ExcludedMembers}{List of DB instance identifiers that aren\'t part of the custom endpoint
 group. All other eligible instances are reachable through the custom
 endpoint. Only relevant if the list of static members is empty.}
+
+\item{Tags}{The tags to be assigned to the Amazon RDS resource.}
 }
 \description{
 Creates a new custom endpoint and associates it with an Amazon Aurora DB
@@ -42,6 +44,12 @@ This action only applies to Aurora DB clusters.
   ),
   ExcludedMembers = list(
     "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   )
 )
 }

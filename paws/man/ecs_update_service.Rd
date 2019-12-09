@@ -5,8 +5,8 @@
 \title{Modifies the parameters of a service}
 \usage{
 ecs_update_service(cluster, service, desiredCount, taskDefinition,
-  deploymentConfiguration, networkConfiguration, platformVersion,
-  forceNewDeployment, healthCheckGracePeriodSeconds)
+  capacityProviderStrategy, deploymentConfiguration, networkConfiguration,
+  platformVersion, forceNewDeployment, healthCheckGracePeriodSeconds)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that
@@ -25,44 +25,42 @@ latest \code{ACTIVE} revision is used. If you modify the task definition with
 task definition and then stops an old task after the new version is
 running.}
 
+\item{capacityProviderStrategy}{The capacity provider strategy to update the service to use.
+
+If the service is using the default capacity provider strategy for the
+cluster, the service can be updated to use one or more capacity
+providers. However, when a service is using a non-default capacity
+provider strategy, the service cannot be updated to use the cluster\'s
+default capacity provider strategy.}
+
 \item{deploymentConfiguration}{Optional deployment parameters that control how many tasks run during
 the deployment and the ordering of stopping and starting tasks.}
 
-\item{networkConfiguration}{The network configuration for the service. This parameter is required
-for task definitions that use the \code{awsvpc} network mode to receive their
-own elastic network interface, and it is not supported for other network
-modes. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task Networking}
-in the \emph{Amazon Elastic Container Service Developer Guide}.
-
-Updating a service to add a subnet to a list of existing subnets does
-not trigger a service deployment. For example, if your network
-configuration change is to keep the existing subnets and simply add
-another subnet to the network configuration, this does not trigger a new
-service deployment.}
+\item{networkConfiguration}{}
 
 \item{platformVersion}{The platform version on which your tasks in the service are running. A
 platform version is only specified for tasks using the Fargate launch
-type. If one is not specified, the \code{LATEST} platform version is used by
-default. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html}{AWS Fargate Platform Versions}
+type. If a platform version is not specified, the \code{LATEST} platform
+version is used by default. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html}{AWS Fargate Platform Versions}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{forceNewDeployment}{Whether to force a new deployment of the service. Deployments are not
 forced by default. You can use this option to trigger a new deployment
 with no service definition changes. For example, you can update a
-service's tasks to use a newer Docker image with the same image/tag
+service\'s tasks to use a newer Docker image with the same image/tag
 combination (\code{my_image:latest}) or to roll Fargate tasks onto a newer
 platform version.}
 
 \item{healthCheckGracePeriodSeconds}{The period of time, in seconds, that the Amazon ECS service scheduler
 should ignore unhealthy Elastic Load Balancing target health checks
 after a task has first started. This is only valid if your service is
-configured to use a load balancer. If your service's tasks take a while
+configured to use a load balancer. If your service\'s tasks take a while
 to start and respond to Elastic Load Balancing health checks, you can
-specify a health check grace period of up to 1,800 seconds. During that
-time, the ECS service scheduler ignores the Elastic Load Balancing
-health check status. This grace period can prevent the ECS service
-scheduler from marking tasks as unhealthy and stopping them before they
-have time to come up.}
+specify a health check grace period of up to 2,147,483,647 seconds.
+During that time, the Amazon ECS service scheduler ignores the Elastic
+Load Balancing health check status. This grace period can prevent the
+ECS service scheduler from marking tasks as unhealthy and stopping them
+before they have time to come up.}
 }
 \description{
 Modifies the parameters of a service.
@@ -93,7 +91,7 @@ running in and a new \code{desiredCount} parameter.
 If you have updated the Docker image of your application, you can create
 a new task definition with that image and deploy it to your service. The
 service scheduler uses the minimum healthy percent and maximum percent
-parameters (in the service's deployment configuration) to determine the
+parameters (in the service\'s deployment configuration) to determine the
 deployment strategy.
 
 If your updated Docker image uses the same tag as what is in the
@@ -110,9 +108,9 @@ the service scheduler uses the deployment configuration parameters,
 \code{minimumHealthyPercent} and \code{maximumPercent}, to determine the
 deployment strategy.
 \itemize{
-\item If \code{minimumHealthyPercent} is below 100\%, the scheduler can ignore
+\item If \code{minimumHealthyPercent} is below 100\\%, the scheduler can ignore
 \code{desiredCount} temporarily during a deployment. For example, if
-\code{desiredCount} is four tasks, a minimum of 50\% allows the scheduler
+\code{desiredCount} is four tasks, a minimum of 50\\% allows the scheduler
 to stop two existing tasks before starting two new tasks. Tasks for
 services that do not use a load balancer are considered healthy if
 they are in the \code{RUNNING} state. Tasks for services that use a load
@@ -122,13 +120,13 @@ by the load balancer.
 \item The \code{maximumPercent} parameter represents an upper limit on the
 number of running tasks during a deployment, which enables you to
 define the deployment batch size. For example, if \code{desiredCount} is
-four tasks, a maximum of 200\% starts four new tasks before stopping
+four tasks, a maximum of 200\\% starts four new tasks before stopping
 the four older tasks (provided that the cluster resources required
 to do this are available).
 }
 
 When UpdateService stops a task during a deployment, the equivalent of
-\code{docker stop} is issued to the containers running in the task. This
+\verb{docker stop} is issued to the containers running in the task. This
 results in a \code{SIGTERM} and a 30-second timeout, after which \code{SIGKILL} is
 sent and the containers are forcibly stopped. If the container handles
 the \code{SIGTERM} gracefully and exits within 30 seconds from receiving it,
@@ -138,11 +136,12 @@ When the service scheduler launches new tasks, it determines task
 placement in your cluster with the following logic:
 \itemize{
 \item Determine which of the container instances in your cluster can
-support your service's task definition (for example, they have the
+support your service\'s task definition (for example, they have the
 required CPU, memory, ports, and container instance attributes).
 \item By default, the service scheduler attempts to balance tasks across
 Availability Zones in this manner (although you can choose a
 different placement strategy):
+\itemize{
 \item Sort the valid container instances by the fewest number of
 running tasks for this service in the same Availability Zone as
 the instance. For example, if zone A has one running service
@@ -152,6 +151,7 @@ in either zone B or C are considered optimal for placement.
 optimal Availability Zone (based on the previous steps),
 favoring container instances with the fewest number of running
 tasks for this service.
+}
 }
 
 When the service scheduler stops running tasks, it attempts to maintain
@@ -174,6 +174,13 @@ with the largest number of running tasks for this service.
   service = "string",
   desiredCount = 123,
   taskDefinition = "string",
+  capacityProviderStrategy = list(
+    list(
+      capacityProvider = "string",
+      weight = 123,
+      base = 123
+    )
+  ),
   deploymentConfiguration = list(
     maximumPercent = 123,
     minimumHealthyPercent = 123

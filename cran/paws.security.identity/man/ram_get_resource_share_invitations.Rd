@@ -2,7 +2,7 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_get_resource_share_invitations}
 \alias{ram_get_resource_share_invitations}
-\title{Gets the specified invitations for resource sharing}
+\title{Gets the invitations for resource sharing that you've received}
 \usage{
 ram_get_resource_share_invitations(resourceShareInvitationArns,
   resourceShareArns, nextToken, maxResults)
@@ -19,7 +19,7 @@ the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
 \description{
-Gets the specified invitations for resource sharing.
+Gets the invitations for resource sharing that you\'ve received.
 }
 \section{Request syntax}{
 \preformatted{svc$get_resource_share_invitations(

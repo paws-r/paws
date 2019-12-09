@@ -12,7 +12,7 @@ retrieve.}
 }
 \description{
 Retrieves properties for an alias. This operation returns all alias
-metadata and settings. To get an alias's target fleet ID only, use
+metadata and settings. To get an alias\'s target fleet ID only, use
 \code{ResolveAlias}.
 }
 \details{

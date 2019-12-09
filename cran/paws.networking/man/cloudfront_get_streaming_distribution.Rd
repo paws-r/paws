@@ -8,7 +8,7 @@ distribution configuration}
 cloudfront_get_streaming_distribution(Id)
 }
 \arguments{
-\item{Id}{[required] The streaming distribution's ID.}
+\item{Id}{[required] The streaming distribution\'s ID.}
 }
 \description{
 Gets information about a specified RTMP distribution, including the

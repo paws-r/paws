@@ -10,7 +10,7 @@ organizations_enable_aws_service_access(ServicePrincipal)
 \arguments{
 \item{ServicePrincipal}{[required] The service principal name of the AWS service for which you want to
 enable integration with your organization. This is typically in the form
-of a URL, such as \code{ <i>service-abbreviation</i>.amazonaws.com}.}
+of a URL, such as \verb{ <i>service-abbreviation</i>.amazonaws.com}.}
 }
 \description{
 Enables the integration of an AWS service (the service that is specified
@@ -25,14 +25,14 @@ the specified AWS service by using the console or commands that are
 provided by the specified service. Doing so ensures that the service is
 aware that it can create the resources that are required for the
 integration. How the service creates those resources in the
-organization's accounts depends on that service. For more information,
+organization\'s accounts depends on that service. For more information,
 see the documentation for the other AWS service.
 
 For more information about enabling services to integrate with AWS
 Organizations, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html}{Integrating AWS Organizations with Other AWS Services}
 in the \emph{AWS Organizations User Guide.}
 
-This operation can be called only from the organization's master
+This operation can be called only from the organization\'s master
 account and only if the organization has \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html}{enabled all features}.
 }
 \section{Request syntax}{

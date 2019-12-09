@@ -22,11 +22,10 @@ For more information, see
 \item{JobName}{The identifier of the job.}
 
 \item{LanguageCode}{[required] The language of the input documents. You can specify any of the primary
-languages supported by Amazon Comprehend: German ("de"), English
-("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
-Portuguese ("pt"). All documents must be in the same language.}
+languages supported by Amazon Comprehend. All documents must be in the
+same language.}
 
-\item{ClientRequestToken}{A unique identifier for the request. If you don't set the client
+\item{ClientRequestToken}{A unique identifier for the request. If you don\'t set the client
 request token, Amazon Comprehend generates one.}
 
 \item{VolumeKmsKeyId}{ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
@@ -59,7 +58,7 @@ documents. use the operation to track the status of a job.
   ),
   DataAccessRoleArn = "string",
   JobName = "string",
-  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
+  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
   ClientRequestToken = "string",
   VolumeKmsKeyId = "string",
   VpcConfig = list(

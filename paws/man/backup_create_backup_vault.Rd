@@ -18,7 +18,7 @@ create. Each tag is a key-value pair.}
 
 \item{EncryptionKeyArn}{The server-side encryption key that is used to protect your backups; for
 example,
-\code{arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}.}
+\verb{arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}.}
 
 \item{CreatorRequestId}{A unique string that identifies the request and allows failed requests
 to be retried without the risk of executing the operation twice.}

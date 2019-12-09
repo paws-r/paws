@@ -13,9 +13,9 @@ lightsail_delete_instance_snapshot(instanceSnapshotName)
 Deletes a specific snapshot of a virtual private server (or \emph{instance}).
 }
 \details{
-The \code{delete instance snapshot} operation supports tag-based access
+The \verb{delete instance snapshot} operation supports tag-based access
 control via resource tags applied to the resource identified by
-instanceSnapshotName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\verb{instance snapshot name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_instance_snapshot(

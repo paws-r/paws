@@ -15,7 +15,7 @@ Queue URLs and names are case-sensitive.}
 }
 \description{
 Deletes up to ten messages from the specified queue. This is a batch
-version of \code{ <a>DeleteMessage</a>.} The result of the action on each
+version of \verb{ <a>DeleteMessage</a>.} The result of the action on each
 message is reported individually in the response.
 }
 \details{
@@ -27,9 +27,9 @@ Some actions take lists of parameters. These lists are specified using
 the \code{param.n} notation. Values of \code{n} are integers starting from 1. For
 example, a parameter list with two elements looks like this:
 
-\code{&amp;Attribute.1=first}
+\verb{&amp;Attribute.1=first}
 
-\code{&amp;Attribute.2=second}
+\verb{&amp;Attribute.2=second}
 }
 \section{Request syntax}{
 \preformatted{svc$delete_message_batch(

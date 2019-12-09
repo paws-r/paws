@@ -2,7 +2,7 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_get_maintenance_window_execution_task_invocation}
 \alias{ssm_get_maintenance_window_execution_task_invocation}
-\title{Retrieves a task invocation}
+\title{Retrieves information about a specific task running on a specific target}
 \usage{
 ssm_get_maintenance_window_execution_task_invocation(WindowExecutionId,
   TaskId, InvocationId)
@@ -16,9 +16,8 @@ be retrieved.}
 \item{InvocationId}{[required] The invocation ID to retrieve.}
 }
 \description{
-Retrieves a task invocation. A task invocation is a specific task
-running on a specific target. maintenance windows report status for all
-invocations.
+Retrieves information about a specific task running on a specific
+target.
 }
 \section{Request syntax}{
 \preformatted{svc$get_maintenance_window_execution_task_invocation(

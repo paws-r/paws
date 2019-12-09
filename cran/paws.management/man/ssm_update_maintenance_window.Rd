@@ -17,7 +17,7 @@ ssm_update_maintenance_window(WindowId, Name, Description, StartDate,
 
 \item{StartDate}{The time zone that the scheduled maintenance window executions are based
 on, in Internet Assigned Numbers Authority (IANA) format. For example:
-"America/Los\_Angeles", "etc/UTC", or "Asia/Seoul". For more
+\"America/Los\\_Angeles\", \"etc/UTC\", or \"Asia/Seoul\". For more
 information, see the \href{https://www.iana.org/time-zones}{Time Zone Database} on the IANA website.}
 
 \item{EndDate}{The date and time, in ISO-8601 Extended format, for when you want the
@@ -29,7 +29,7 @@ expression.}
 
 \item{ScheduleTimezone}{The time zone that the scheduled maintenance window executions are based
 on, in Internet Assigned Numbers Authority (IANA) format. For example:
-"America/Los\_Angeles", "etc/UTC", or "Asia/Seoul". For more
+\"America/Los\\_Angeles\", \"etc/UTC\", or \"Asia/Seoul\". For more
 information, see the \href{https://www.iana.org/time-zones}{Time Zone Database} on the IANA website.}
 
 \item{Duration}{The duration of the maintenance window in hours.}
@@ -49,6 +49,15 @@ Optional fields that are not specified are set to null.}
 \description{
 Updates an existing maintenance window. Only specified parameters are
 modified.
+}
+\details{
+The value you specify for \code{Duration} determines the specific end time
+for the maintenance window based on the time it begins. No maintenance
+window tasks are permitted to start after the resulting endtime minus
+the number of hours you specify for \code{Cutoff}. For example, if the
+maintenance window starts at 3 PM, the duration is three hours, and the
+value you specify for \code{Cutoff} is one hour, no maintenance window tasks
+can start after 5 PM.
 }
 \section{Request syntax}{
 \preformatted{svc$update_maintenance_window(

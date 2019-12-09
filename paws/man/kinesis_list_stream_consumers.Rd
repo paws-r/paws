@@ -20,13 +20,13 @@ includes a pagination token named \code{NextToken}. You can specify this
 \code{NextToken} value in a subsequent call to \code{ListStreamConsumers} to list
 the next set of registered consumers.
 
-Don't specify \code{StreamName} or \code{StreamCreationTimestamp} if you specify
+Don\'t specify \code{StreamName} or \code{StreamCreationTimestamp} if you specify
 \code{NextToken} because the latter unambiguously identifies the stream.
 
 You can optionally specify a value for the \code{MaxResults} parameter when
 you specify \code{NextToken}. If you specify a \code{MaxResults} value that is
 less than the number of consumers that the operation returns if you
-don't specify \code{MaxResults}, the response will contain a new \code{NextToken}
+don\'t specify \code{MaxResults}, the response will contain a new \code{NextToken}
 value. You can use the new \code{NextToken} value in a subsequent call to the
 \code{ListStreamConsumers} operation to list the next set of consumers.
 
@@ -44,7 +44,7 @@ and you later create another data stream with the same name, you can use
 this input parameter to specify which of the two streams you want to
 list the consumers for.
 
-You can't specify this parameter if you specify the NextToken
+You can\'t specify this parameter if you specify the NextToken
 parameter.}
 }
 \description{

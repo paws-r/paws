@@ -11,7 +11,7 @@ eventbridge_put_partner_events(Entries)
 \item{Entries}{[required] The list of events to write to the event bus.}
 }
 \description{
-This is used by SaaS partners to write events to a customer's partner
+This is used by SaaS partners to write events to a customer\'s partner
 event bus.
 }
 \details{

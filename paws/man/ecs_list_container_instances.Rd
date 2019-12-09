@@ -16,10 +16,10 @@ the default cluster is assumed.}
 cluster query language statements. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html}{Cluster Query Language}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
-\item{nextToken}{The \code{nextToken} value returned from a previous paginated
-\code{ListContainerInstances} request where \code{maxResults} was used and the
-results exceeded the value of that parameter. Pagination continues from
-the end of the previous results that returned the \code{nextToken} value.
+\item{nextToken}{The \code{nextToken} value returned from a \code{ListContainerInstances} request
+indicating that more results are available to fulfill the request and
+further calls will be needed. If \code{maxResults} was provided, it is
+possible the number of results to be fewer than \code{maxResults}.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic

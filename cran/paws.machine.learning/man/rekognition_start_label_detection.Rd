@@ -20,17 +20,19 @@ accidently started more than once.}
 in order to return a detected label. Confidence represents how certain
 Amazon Rekognition is that a label is correctly identified.0 is the
 lowest confidence. 100 is the highest confidence. Amazon Rekognition
-Video doesn't return any labels with a confidence level lower than this
+Video doesn\'t return any labels with a confidence level lower than this
 specified value.
 
-If you don't specify \code{MinConfidence}, the operation returns labels with
+If you don\'t specify \code{MinConfidence}, the operation returns labels with
 confidence values greater than or equal to 50 percent.}
 
 \item{NotificationChannel}{The Amazon SNS topic ARN you want Amazon Rekognition Video to publish
 the completion status of the label detection operation to.}
 
-\item{JobTag}{Unique identifier you specify to identify the job in the completion
-status published to the Amazon Simple Notification Service topic.}
+\item{JobTag}{An identifier you specify that\'s returned in the completion
+notification that\'s published to your Amazon Simple Notification
+Service topic. For example, you can use \code{JobTag} to group related jobs
+and identify them in the completion notification.}
 }
 \description{
 Starts asynchronous detection of labels in a stored video.

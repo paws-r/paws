@@ -18,8 +18,8 @@ must not begin or end with a hyphen.}
 
 \item{Protocol}{The protocol to use for routing traffic to the targets. For Application
 Load Balancers, the supported protocols are HTTP and HTTPS. For Network
-Load Balancers, the supported protocols are TCP, TLS, UDP, or TCP\_UDP.
-A TCP\_UDP listener must be associated with a TCP\_UDP target group. If
+Load Balancers, the supported protocols are TCP, TLS, UDP, or TCP\\_UDP.
+A TCP\\_UDP listener must be associated with a TCP\\_UDP target group. If
 the target is a Lambda function, this parameter does not apply.}
 
 \item{Port}{The port on which the targets receive traffic. This port is used unless
@@ -27,13 +27,14 @@ you specify a port override when registering the target. If the target
 is a Lambda function, this parameter does not apply.}
 
 \item{VpcId}{The identifier of the virtual private cloud (VPC). If the target is a
-Lambda function, this parameter does not apply.}
+Lambda function, this parameter does not apply. Otherwise, this
+parameter is required.}
 
 \item{HealthCheckProtocol}{The protocol the load balancer uses when performing health checks on
 targets. For Application Load Balancers, the default is HTTP. For
 Network Load Balancers, the default is TCP. The TCP protocol is
 supported for health checks only if the protocol of the target group is
-TCP, TLS, UDP, or TCP\_UDP. The TLS, UDP, and TCP\_UDP protocols are not
+TCP, TLS, UDP, or TCP\\_UDP. The TLS, UDP, and TCP\\_UDP protocols are not
 supported for health checks.}
 
 \item{HealthCheckPort}{The port the load balancer uses when performing health checks on
@@ -77,16 +78,16 @@ If the target type is \code{lambda}, the default is 2.}
 successful response from a target.}
 
 \item{TargetType}{The type of target that you must specify when registering targets with
-this target group. You can't specify targets for a target group using
+this target group. You can\'t specify targets for a target group using
 more than one target type.
 \itemize{
 \item \code{instance} - Targets are specified by instance ID. This is the
-default value. If the target group protocol is UDP or TCP\_UDP, the
+default value. If the target group protocol is UDP or TCP\\_UDP, the
 target type must be \code{instance}.
 \item \code{ip} - Targets are specified by IP address. You can specify IP
 addresses from the subnets of the virtual private cloud (VPC) for
 the target group, the RFC 1918 range (10.0.0.0/8, 172.16.0.0/12, and
-192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10). You can't
+192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10). You can\'t
 specify publicly routable IP addresses.
 \item \code{lambda} - The target groups contains a single Lambda function.
 }}

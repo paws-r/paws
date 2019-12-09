@@ -16,7 +16,37 @@ truncated list response to continue the listing. The continuation token
 is an opaque value that Amazon S3 understands.}
 }
 \description{
-Lists the metrics configurations for the bucket.
+Lists the metrics configurations for the bucket. The metrics
+configurations are only for the request metrics of the bucket and do not
+provide information on daily storage metrics. You can have up to 1,000
+configurations per bucket.
+}
+\details{
+This operation supports list pagination and does not return more than
+100 configurations at a time. Always check the \code{IsTruncated} element in
+the response. If there are no more configurations to list, \code{IsTruncated}
+is set to false. If there are more configurations to list, \code{IsTruncated}
+is set to true, and there is a value in \code{NextContinuationToken}. You use
+the \code{NextContinuationToken} value to continue the pagination of the list
+by passing the value in \code{continuation-token} in the request to \code{GET} the
+next page.
+
+To use this operation, you must have permissions to perform the
+\code{s3:GetMetricsConfiguration} action. The bucket owner has this
+permission by default. The bucket owner can grant this permission to
+others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
+
+For more information about metrics configurations and CloudWatch request
+metrics, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html}{Monitoring Metrics with Amazon CloudWatch}.
+
+The following operations are related to
+\code{ListBucketMetricsConfigurations}:
+\itemize{
+\item PutBucketMetricsConfiguration
+\item GetBucketMetricsConfiguration
+\item DeleteBucketMetricsConfiguration
+}
 }
 \section{Request syntax}{
 \preformatted{svc$list_bucket_metrics_configurations(

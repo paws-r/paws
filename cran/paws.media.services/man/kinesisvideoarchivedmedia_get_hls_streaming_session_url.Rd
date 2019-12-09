@@ -29,7 +29,7 @@ continually updated with the latest fragments as they become
 available. We recommend that the media player retrieve a new
 playlist on a one-second interval. When this type of session is
 played in a media player, the user interface typically displays a
-"live" notification, with no scrubber control for choosing the
+\"live\" notification, with no scrubber control for choosing the
 position in the playback window to display.
 
 In \code{LIVE} mode, the newest available fragments are included in an
@@ -71,7 +71,7 @@ This can lead to unexpected behavior in the media player.
 
 The default is \code{LIVE}.}
 
-\item{HLSFragmentSelector}{The time range of the requested fragment, and the source of the
+\item{HLSFragmentSelector}{The time range of the requested fragment and the source of the
 timestamps.
 
 This parameter is required if \code{PlaybackMode} is \code{ON_DEMAND} or
@@ -92,23 +92,38 @@ typically requires 5-25 percent more bandwidth and cost than fMP4.
 
 The default is \code{FRAGMENTED_MP4}.}
 
-\item{DiscontinuityMode}{Specifies when flags marking discontinuities between fragments will be
-added to the media playlists. The default is \code{ALWAYS} when
-HLSFragmentSelector is \code{SERVER_TIMESTAMP}, and \code{NEVER} when it is
-\code{PRODUCER_TIMESTAMP}.
+\item{DiscontinuityMode}{Specifies when flags marking discontinuities between fragments are added
+to the media playlists.
 
 Media players typically build a timeline of media content to play, based
 on the timestamps of each fragment. This means that if there is any
-overlap between fragments (as is typical if HLSFragmentSelector is
-\code{SERVER_TIMESTAMP}), the media player timeline has small gaps between
-fragments in some places, and overwrites frames in other places. When
-there are discontinuity flags between fragments, the media player is
-expected to reset the timeline, resulting in the fragment being played
-immediately after the previous fragment. We recommend that you always
-have discontinuity flags between fragments if the fragment timestamps
-are not accurate or if fragments might be missing. You should not place
-discontinuity flags between fragments for the player timeline to
-accurately map to the producer timestamps.}
+overlap or gap between fragments (as is typical if HLSFragmentSelector
+is set to \code{SERVER_TIMESTAMP}), the media player timeline will also have
+small gaps between fragments in some places, and will overwrite frames
+in other places. Gaps in the media player timeline can cause playback to
+stall and overlaps can cause playback to be jittery. When there are
+discontinuity flags between fragments, the media player is expected to
+reset the timeline, resulting in the next fragment being played
+immediately after the previous fragment.
+
+The following modes are supported:
+\itemize{
+\item \code{ALWAYS}: a discontinuity marker is placed between every fragment in
+the HLS media playlist. It is recommended to use a value of \code{ALWAYS}
+if the fragment timestamps are not accurate.
+\item \code{NEVER}: no discontinuity markers are placed anywhere. It is
+recommended to use a value of \code{NEVER} to ensure the media player
+timeline most accurately maps to the producer timestamps.
+\item \code{ON_DISCONTIUNITY}: a discontinuity marker is placed between
+fragments that have a gap or overlap of more than 50 milliseconds.
+For most playback scenarios, it is recommended to use a value of
+\code{ON_DISCONTINUITY} so that the media player timeline is only reset
+when there is a significant issue with the media timeline (e.g. a
+missing fragment).
+}
+
+The default is \code{ALWAYS} when HLSFragmentSelector is set to
+\code{SERVER_TIMESTAMP}, and \code{NEVER} when it is set to \code{PRODUCER_TIMESTAMP}.}
 
 \item{DisplayFragmentTimestamp}{Specifies when the fragment start timestamps should be included in the
 HLS media playlist. Typically, media players report the playhead
@@ -167,9 +182,9 @@ An Amazon Kinesis video stream has the following requirements for
 providing data through HLS:
 \itemize{
 \item The media must contain h.264 or h.265 encoded video and, optionally,
-AAC encoded audio. Specifically, the codec id of track 1 should be
+AAC encoded audio. Specifically, the codec ID of track 1 should be
 \code{V_MPEG/ISO/AVC} (for h.264) or \code{V_MPEG/ISO/HEVC} (for h.265).
-Optionally, the codec id of track 2 should be \code{A_AAC}.
+Optionally, the codec ID of track 2 should be \code{A_AAC}.
 \item Data retention must be greater than 0.
 \item The video track of each fragment must contain codec private data in
 the Advanced Video Coding (AVC) for H.264 format or HEVC for H.265
@@ -182,7 +197,7 @@ private data in the AAC format (\href{https://www.iso.org/standard/43345.html}{A
 Kinesis Video Streams HLS sessions contain fragments in the fragmented
 MPEG-4 form (also called fMP4 or CMAF) or the MPEG-2 form (also called
 TS chunks, which the HLS specification also supports). For more
-information about HLS fragment types, see the HLS specification.
+information about HLS fragment types, see the \href{https://tools.ietf.org/html/draft-pantos-http-live-streaming-23}{HLS specification}.
 
 The following procedure shows how to use HLS with Kinesis Video Streams:
 \enumerate{
@@ -194,11 +209,10 @@ parameter.
 Video Streams creates an HLS streaming session to be used for
 accessing content in a stream using the HLS protocol.
 \code{GetHLSStreamingSessionURL} returns an authenticated URL (that
-includes an encrypted session token) for the session's HLS \emph{master
+includes an encrypted session token) for the session\'s HLS \emph{master
 playlist} (the root resource needed for streaming with HLS).
-}
 
-Don't share or store this token where an unauthorized entity could
+Don\'t share or store this token where an unauthorized entity could
 access it. The token provides access to the content of the stream.
 Safeguard the token with the same measures that you would use with
 your AWS credentials.
@@ -207,7 +221,6 @@ The media that is made available through the playlist consists only
 of the requested stream, time range, and format. No other media data
 (such as frames outside the requested window or alternate bitrates)
 is made available.
-\enumerate{
 \item Provide the URL (containing the encrypted session token) for the HLS
 master playlist to a media player that supports the HLS protocol.
 Kinesis Video Streams makes the HLS media playlist, initialization
@@ -219,7 +232,6 @@ video frames or AAC-encoded audio samples.
 \item The media player receives the authenticated URL and requests stream
 metadata and media data normally. When the media player requests
 data, it calls the following actions:
-}
 \itemize{
 \item \strong{GetHLSMasterPlaylist:} Retrieves an HLS master playlist,
 which contains a URL for the \code{GetHLSMediaPlaylist} action for
@@ -240,23 +252,20 @@ applicable) that contains MP4 media URLs for the specific track.
 \item \strong{GetMP4InitFragment:} Retrieves the MP4 initialization
 fragment. The media player typically loads the initialization
 fragment before loading any media fragments. This fragment
-contains the "\code{fytp}" and "\code{moov}" MP4 atoms, and the child
+contains the \"\code{fytp}\" and \"\code{moov}\" MP4 atoms, and the child
 atoms that are needed to initialize the media player decoder.
-}
 
 The initialization fragment does not correspond to a fragment in
 a Kinesis video stream. It contains only the codec private data
 for the stream and respective track, which the media player
 needs to decode the media frames.
-\itemize{
 \item \strong{GetMP4MediaFragment:} Retrieves MP4 media fragments. These
-fragments contain the "\code{moof}" and "\code{mdat}" MP4 atoms and
-their child atoms, containing the encoded fragment's media
+fragments contain the \"\code{moof}\" and \"\code{mdat}\" MP4 atoms and
+their child atoms, containing the encoded fragment\'s media
 frames and their timestamps.
-}
 
 After the first media fragment is made available in a streaming
-session, any fragments that don't contain the same codec
+session, any fragments that don\'t contain the same codec
 private data cause an error to be returned when those different
 media fragments are loaded. Therefore, the codec private data
 should not change between fragments in a session. This also
@@ -266,10 +275,8 @@ from having only video to having both audio and video.
 Data retrieved with this action is billable. See
 \href{https://aws.amazon.com/kinesis/video-streams/pricing/}{Pricing}
 for details.
-\itemize{
 \item \strong{GetTSFragment:} Retrieves MPEG TS fragments containing both
 initialization and media data for all tracks in the stream.
-}
 
 If the \code{ContainerFormat} is \code{MPEG_TS}, this API is used instead
 of \code{GetMP4InitFragment} and \code{GetMP4MediaFragment} to retrieve
@@ -277,6 +284,8 @@ stream media.
 
 Data retrieved with this action is billable. For more
 information, see \href{https://aws.amazon.com/kinesis/video-streams/pricing/}{Kinesis Video Streams pricing}.
+}
+}
 
 The following restrictions apply to HLS sessions:
 \itemize{
@@ -290,10 +299,10 @@ session is closed. The number of active \code{GetMedia} connections on a
 Kinesis video stream does not count against this limit, and the
 number of active HLS sessions does not count against the active
 \code{GetMedia} connection limit.
-}
 
 The maximum limits for active HLS and MPEG-DASH streaming sessions
 are independent of each other.
+}
 
 You can monitor the amount of data that the media player consumes by
 monitoring the \code{GetMP4MediaFragment.OutgoingBytes} Amazon CloudWatch
@@ -341,7 +350,7 @@ topic, as well as \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/d
     )
   ),
   ContainerFormat = "FRAGMENTED_MP4"|"MPEG_TS",
-  DiscontinuityMode = "ALWAYS"|"NEVER",
+  DiscontinuityMode = "ALWAYS"|"NEVER"|"ON_DISCONTINUITY",
   DisplayFragmentTimestamp = "ALWAYS"|"NEVER",
   Expires = 123,
   MaxMediaPlaylistFragmentResults = 123

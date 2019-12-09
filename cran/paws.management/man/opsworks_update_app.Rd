@@ -15,13 +15,13 @@ opsworks_update_app(AppId, Name, Description, DataSources, Type,
 
 \item{Description}{A description of the app.}
 
-\item{DataSources}{The app's data sources.}
+\item{DataSources}{The app\'s data sources.}
 
 \item{Type}{The app type.}
 
 \item{AppSource}{A \code{Source} object that specifies the app repository.}
 
-\item{Domains}{The app's virtual host settings, with multiple domains separated by
+\item{Domains}{The app\'s virtual host settings, with multiple domains separated by
 commas. For example: \code{'www.example.com, example.com'}}
 
 \item{EnableSsl}{Whether SSL is enabled for the app.}
@@ -38,13 +38,13 @@ information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/wor
 
 There is no specific limit on the number of environment variables.
 However, the size of the associated data structure - which includes the
-variables' names, values, and protected flag values - cannot exceed 20
+variables\' names, values, and protected flag values - cannot exceed 20
 KB. This limit should accommodate most if not all use cases. Exceeding
-it will cause an exception with the message, "Environment: is too large
-(maximum is 20 KB)."
+it will cause an exception with the message, \"Environment: is too large
+(maximum is 20 KB).\"
 
 If you have specified one or more environment variables, you cannot
-modify the stack's Chef version.}
+modify the stack\'s Chef version.}
 }
 \description{
 Updates a specified app.

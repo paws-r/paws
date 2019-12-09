@@ -18,7 +18,7 @@ credentials.}
 
 \item{Query}{A query to filter users by user name.}
 
-\item{Include}{The state of the users. Specify "ALL" to include inactive users.}
+\item{Include}{The state of the users. Specify \"ALL\" to include inactive users.}
 
 \item{Order}{The order for the results.}
 
@@ -29,7 +29,7 @@ previous call.)}
 
 \item{Limit}{The maximum number of items to return.}
 
-\item{Fields}{A comma-separated list of values. Specify "STORAGE\_METADATA" to
+\item{Fields}{A comma-separated list of values. Specify \"STORAGE\\_METADATA\" to
 include the user storage quota and utilization information.}
 }
 \description{

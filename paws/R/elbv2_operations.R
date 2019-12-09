@@ -4,10 +4,10 @@
 NULL
 
 #' Adds the specified SSL server certificate to the certificate list for
-#' the specified HTTPS listener
+#' the specified HTTPS or TLS listener
 #'
 #' Adds the specified SSL server certificate to the certificate list for
-#' the specified HTTPS listener.
+#' the specified HTTPS or TLS listener.
 #' 
 #' If the certificate in already in the certificate list, the call is
 #' successful but the certificate is not added again.
@@ -176,10 +176,10 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #' @param DefaultActions &#91;required&#93; The actions for the default rule. The rule must include one forward
 #' action or one or more fixed-response actions.
 #' 
-#' If the action type is `forward`, you specify a target group. The
-#' protocol of the target group must be HTTP or HTTPS for an Application
-#' Load Balancer. The protocol of the target group must be TCP, TLS, UDP,
-#' or TCP\\_UDP for a Network Load Balancer.
+#' If the action type is `forward`, you specify one or more target groups.
+#' The protocol of the target group must be HTTP or HTTPS for an
+#' Application Load Balancer. The protocol of the target group must be TCP,
+#' TLS, UDP, or TCP\\_UDP for a Network Load Balancer.
 #' 
 #' \[HTTPS listeners\] If the action type is `authenticate-oidc`, you
 #' authenticate users through an identity provider that is OpenID Connect
@@ -252,6 +252,18 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #'         MessageBody = "string",
 #'         StatusCode = "string",
 #'         ContentType = "string"
+#'       ),
+#'       ForwardConfig = list(
+#'         TargetGroups = list(
+#'           list(
+#'             TargetGroupArn = "string",
+#'             Weight = 123
+#'           )
+#'         ),
+#'         TargetGroupStickinessConfig = list(
+#'           Enabled = TRUE|FALSE,
+#'           DurationSeconds = 123
+#'         )
 #'       )
 #'     )
 #'   )
@@ -374,7 +386,10 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol, Port, SslPolicy = N
 #' subnets.
 #' 
 #' \[Network Load Balancers\] You can specify subnets from one or more
-#' Availability Zones. You can specify one Elastic IP address per subnet.
+#' Availability Zones. You can specify one Elastic IP address per subnet if
+#' you need static IP addresses for your internet-facing load balancer. For
+#' internal load balancers, you can specify one private IP address per
+#' subnet from the IPv4 range of the subnet.
 #' @param SecurityGroups \[Application Load Balancers\] The IDs of the security groups for the
 #' load balancer.
 #' @param Scheme The nodes of an Internet-facing load balancer have public IP addresses.
@@ -385,7 +400,7 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol, Port, SslPolicy = N
 #' The nodes of an internal load balancer have only private IP addresses.
 #' The DNS name of an internal load balancer is publicly resolvable to the
 #' private IP addresses of the nodes. Therefore, internal load balancers
-#' can only route requests from clients with access to the VPC for the load
+#' can route requests only from clients with access to the VPC for the load
 #' balancer.
 #' 
 #' The default is an Internet-facing load balancer.
@@ -406,7 +421,8 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol, Port, SslPolicy = N
 #'   SubnetMappings = list(
 #'     list(
 #'       SubnetId = "string",
-#'       AllocationId = "string"
+#'       AllocationId = "string",
+#'       PrivateIPv4Address = "string"
 #'     )
 #'   ),
 #'   SecurityGroups = list(
@@ -494,12 +510,13 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #' @param Priority &#91;required&#93; The rule priority. A listener can\'t have multiple rules with the same
 #' priority.
 #' @param Actions &#91;required&#93; The actions. Each rule must include exactly one of the following types
-#' of actions: `forward`, `fixed-response`, or `redirect`.
+#' of actions: `forward`, `fixed-response`, or `redirect`, and it must be
+#' the last action to be performed.
 #' 
-#' If the action type is `forward`, you specify a target group. The
-#' protocol of the target group must be HTTP or HTTPS for an Application
-#' Load Balancer. The protocol of the target group must be TCP, TLS, UDP,
-#' or TCP\\_UDP for a Network Load Balancer.
+#' If the action type is `forward`, you specify one or more target groups.
+#' The protocol of the target group must be HTTP or HTTPS for an
+#' Application Load Balancer. The protocol of the target group must be TCP,
+#' TLS, UDP, or TCP\\_UDP for a Network Load Balancer.
 #' 
 #' \[HTTPS listeners\] If the action type is `authenticate-oidc`, you
 #' authenticate users through an identity provider that is OpenID Connect
@@ -606,6 +623,18 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #'         MessageBody = "string",
 #'         StatusCode = "string",
 #'         ContentType = "string"
+#'       ),
+#'       ForwardConfig = list(
+#'         TargetGroups = list(
+#'           list(
+#'             TargetGroupArn = "string",
+#'             Weight = 123
+#'           )
+#'         ),
+#'         TargetGroupStickinessConfig = list(
+#'           Enabled = TRUE|FALSE,
+#'           DurationSeconds = 123
+#'         )
 #'       )
 #'     )
 #'   )
@@ -700,7 +729,8 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions) {
 #' you specify a port override when registering the target. If the target
 #' is a Lambda function, this parameter does not apply.
 #' @param VpcId The identifier of the virtual private cloud (VPC). If the target is a
-#' Lambda function, this parameter does not apply.
+#' Lambda function, this parameter does not apply. Otherwise, this
+#' parameter is required.
 #' @param HealthCheckProtocol The protocol the load balancer uses when performing health checks on
 #' targets. For Application Load Balancers, the default is HTTP. For
 #' Network Load Balancers, the default is TCP. The TCP protocol is
@@ -1102,10 +1132,10 @@ elbv2_describe_account_limits <- function(Marker = NULL, PageSize = NULL) {
 .elbv2$operations$describe_account_limits <- elbv2_describe_account_limits
 
 #' Describes the default certificate and the certificate list for the
-#' specified HTTPS listener
+#' specified HTTPS or TLS listener
 #'
 #' Describes the default certificate and the certificate list for the
-#' specified HTTPS listener.
+#' specified HTTPS or TLS listener.
 #' 
 #' If the default certificate is also in the certificate list, it appears
 #' twice in the results (once with `IsDefault` set to true and once with
@@ -1660,15 +1690,19 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 }
 .elbv2$operations$describe_target_health <- elbv2_describe_target_health
 
-#' Modifies the specified properties of the specified listener
+#' Replaces the specified properties of the specified listener
 #'
-#' Modifies the specified properties of the specified listener.
+#' Replaces the specified properties of the specified listener. Any
+#' properties that you do not specify remain unchanged.
 #' 
-#' Any properties that you do not specify retain their current values.
-#' However, changing the protocol from HTTPS to HTTP, or from TLS to TCP,
-#' removes the security policy and default certificate properties. If you
-#' change the protocol from HTTP to HTTPS, or from TCP to TLS, you must add
-#' the security policy and default certificate properties.
+#' Changing the protocol from HTTPS to HTTP, or from TLS to TCP, removes
+#' the security policy and default certificate properties. If you change
+#' the protocol from HTTP to HTTPS, or from TCP to TLS, you must add the
+#' security policy and default certificate properties.
+#' 
+#' To add an item to a list, remove an item from a list, or update an item
+#' in a list, you must provide the entire list. For example, to add an
+#' action, specify a list with the current actions plus the new action.
 #'
 #' @usage
 #' elbv2_modify_listener(ListenerArn, Port, Protocol, SslPolicy,
@@ -1691,10 +1725,10 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #' @param DefaultActions The actions for the default rule. The rule must include one forward
 #' action or one or more fixed-response actions.
 #' 
-#' If the action type is `forward`, you specify a target group. The
-#' protocol of the target group must be HTTP or HTTPS for an Application
-#' Load Balancer. The protocol of the target group must be TCP, TLS, UDP,
-#' or TCP\\_UDP for a Network Load Balancer.
+#' If the action type is `forward`, you specify one or more target groups.
+#' The protocol of the target group must be HTTP or HTTPS for an
+#' Application Load Balancer. The protocol of the target group must be TCP,
+#' TLS, UDP, or TCP\\_UDP for a Network Load Balancer.
 #' 
 #' \[HTTPS listeners\] If the action type is `authenticate-oidc`, you
 #' authenticate users through an identity provider that is OpenID Connect
@@ -1767,6 +1801,18 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #'         MessageBody = "string",
 #'         StatusCode = "string",
 #'         ContentType = "string"
+#'       ),
+#'       ForwardConfig = list(
+#'         TargetGroups = list(
+#'           list(
+#'             TargetGroupArn = "string",
+#'             Weight = 123
+#'           )
+#'         ),
+#'         TargetGroupStickinessConfig = list(
+#'           Enabled = TRUE|FALSE,
+#'           DurationSeconds = 123
+#'         )
 #'       )
 #'     )
 #'   )
@@ -1912,12 +1958,14 @@ elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
 }
 .elbv2$operations$modify_load_balancer_attributes <- elbv2_modify_load_balancer_attributes
 
-#' Modifies the specified rule
+#' Replaces the specified properties of the specified rule
 #'
-#' Modifies the specified rule.
+#' Replaces the specified properties of the specified rule. Any properties
+#' that you do not specify are unchanged.
 #' 
-#' Any existing properties that you do not modify retain their current
-#' values.
+#' To add an item to a list, remove an item from a list, or update an item
+#' in a list, you must provide the entire list. For example, to add an
+#' action, specify a list with the current actions plus the new action.
 #' 
 #' To modify the actions for the default rule, use ModifyListener.
 #'
@@ -1930,12 +1978,13 @@ elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
 #' `source-ip`, and zero or more of the following conditions: `http-header`
 #' and `query-string`.
 #' @param Actions The actions. Each rule must include exactly one of the following types
-#' of actions: `forward`, `fixed-response`, or `redirect`.
+#' of actions: `forward`, `fixed-response`, or `redirect`, and it must be
+#' the last action to be performed.
 #' 
-#' If the action type is `forward`, you specify a target group. The
-#' protocol of the target group must be HTTP or HTTPS for an Application
-#' Load Balancer. The protocol of the target group must be TCP, TLS, UDP,
-#' or TCP\\_UDP for a Network Load Balancer.
+#' If the action type is `forward`, you specify one or more target groups.
+#' The protocol of the target group must be HTTP or HTTPS for an
+#' Application Load Balancer. The protocol of the target group must be TCP,
+#' TLS, UDP, or TCP\\_UDP for a Network Load Balancer.
 #' 
 #' \[HTTPS listeners\] If the action type is `authenticate-oidc`, you
 #' authenticate users through an identity provider that is OpenID Connect
@@ -2041,6 +2090,18 @@ elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
 #'         MessageBody = "string",
 #'         StatusCode = "string",
 #'         ContentType = "string"
+#'       ),
+#'       ForwardConfig = list(
+#'         TargetGroups = list(
+#'           list(
+#'             TargetGroupArn = "string",
+#'             Weight = 123
+#'           )
+#'         ),
+#'         TargetGroupStickinessConfig = list(
+#'           Enabled = TRUE|FALSE,
+#'           DurationSeconds = 123
+#'         )
 #'       )
 #'     )
 #'   )
@@ -2101,8 +2162,7 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' protocol of the target group is TCP, TLS, UDP, or TCP\\_UDP. The TLS,
 #' UDP, and TCP\\_UDP protocols are not supported for health checks.
 #' 
-#' If the protocol of the target group is TCP, you can\'t modify this
-#' setting.
+#' With Network Load Balancers, you can\'t modify this setting.
 #' @param HealthCheckPort The port the load balancer uses when performing health checks on
 #' targets.
 #' @param HealthCheckPath \[HTTP/HTTPS health checks\] The ping path that is the destination for
@@ -2113,13 +2173,11 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' seconds. For Network Load Balancers, the supported values are 10 or 30
 #' seconds.
 #' 
-#' If the protocol of the target group is TCP, you can\'t modify this
-#' setting.
+#' With Network Load Balancers, you can\'t modify this setting.
 #' @param HealthCheckTimeoutSeconds \[HTTP/HTTPS health checks\] The amount of time, in seconds, during
 #' which no response means a failed health check.
 #' 
-#' If the protocol of the target group is TCP, you can\'t modify this
-#' setting.
+#' With Network Load Balancers, you can\'t modify this setting.
 #' @param HealthyThresholdCount The number of consecutive health checks successes required before
 #' considering an unhealthy target healthy.
 #' @param UnhealthyThresholdCount The number of consecutive health check failures required before
@@ -2128,8 +2186,7 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' @param Matcher \[HTTP/HTTPS health checks\] The HTTP codes to use when checking for a
 #' successful response from a target.
 #' 
-#' If the protocol of the target group is TCP, you can\'t modify this
-#' setting.
+#' With Network Load Balancers, you can\'t modify this setting.
 #'
 #' @section Request syntax:
 #' ```
@@ -2331,10 +2388,10 @@ elbv2_register_targets <- function(TargetGroupArn, Targets) {
 .elbv2$operations$register_targets <- elbv2_register_targets
 
 #' Removes the specified certificate from the certificate list for the
-#' specified HTTPS listener
+#' specified HTTPS or TLS listener
 #'
 #' Removes the specified certificate from the certificate list for the
-#' specified HTTPS listener.
+#' specified HTTPS or TLS listener.
 #' 
 #' You can\'t remove the default certificate for a listener. To replace the
 #' default certificate, call ModifyListener.
@@ -2594,14 +2651,16 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups) {
 }
 .elbv2$operations$set_security_groups <- elbv2_set_security_groups
 
-#' Enables the Availability Zone for the specified public subnets for the
-#' specified Application Load Balancer
+#' Enables the Availability Zones for the specified public subnets for the
+#' specified load balancer
 #'
-#' Enables the Availability Zone for the specified public subnets for the
-#' specified Application Load Balancer. The specified subnets replace the
-#' previously enabled subnets.
+#' Enables the Availability Zones for the specified public subnets for the
+#' specified load balancer. The specified subnets replace the previously
+#' enabled subnets.
 #' 
-#' You can\'t change the subnets for a Network Load Balancer.
+#' When you specify subnets for a Network Load Balancer, you must include
+#' all subnets that were enabled previously, with their existing
+#' configurations, plus any additional subnets.
 #'
 #' @usage
 #' elbv2_set_subnets(LoadBalancerArn, Subnets, SubnetMappings)
@@ -2610,11 +2669,18 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups) {
 #' @param Subnets The IDs of the public subnets. You must specify subnets from at least
 #' two Availability Zones. You can specify only one subnet per Availability
 #' Zone. You must specify either subnets or subnet mappings.
-#' @param SubnetMappings The IDs of the public subnets. You must specify subnets from at least
-#' two Availability Zones. You can specify only one subnet per Availability
-#' Zone. You must specify either subnets or subnet mappings.
+#' @param SubnetMappings The IDs of the public subnets. You can specify only one subnet per
+#' Availability Zone. You must specify either subnets or subnet mappings.
 #' 
-#' You cannot specify Elastic IP addresses for your subnets.
+#' \[Application Load Balancers\] You must specify subnets from at least
+#' two Availability Zones. You cannot specify Elastic IP addresses for your
+#' subnets.
+#' 
+#' \[Network Load Balancers\] You can specify subnets from one or more
+#' Availability Zones. If you need static IP addresses for your
+#' internet-facing load balancer, you can specify one Elastic IP address
+#' per subnet. For internal load balancers, you can specify one private IP
+#' address per subnet from the IPv4 range of the subnet.
 #'
 #' @section Request syntax:
 #' ```
@@ -2626,7 +2692,8 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups) {
 #'   SubnetMappings = list(
 #'     list(
 #'       SubnetId = "string",
-#'       AllocationId = "string"
+#'       AllocationId = "string",
+#'       PrivateIPv4Address = "string"
 #'     )
 #'   )
 #' )

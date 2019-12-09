@@ -2,7 +2,7 @@
 % Please edit documentation in R/codebuild_operations.R
 \name{codebuild_batch_get_projects}
 \alias{codebuild_batch_get_projects}
-\title{Gets information about build projects}
+\title{Gets information about one or more build projects}
 \usage{
 codebuild_batch_get_projects(names)
 }
@@ -10,7 +10,7 @@ codebuild_batch_get_projects(names)
 \item{names}{[required] The names of the build projects.}
 }
 \description{
-Gets information about build projects.
+Gets information about one or more build projects.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_get_projects(

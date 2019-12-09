@@ -11,17 +11,17 @@ iotthingsgraph_get_flow_template_revisions(id, nextToken, maxResults)
 
 The ID should be in the following format.
 
-\code{urn:tdm:REGION/ACCOUNT ID/default:workflow:WORKFLOWNAME}}
+\verb{urn:tdm:REGION/ACCOUNT ID/default:workflow:WORKFLOWNAME}}
 
 \item{nextToken}{The string that specifies the next page of results. Use this when
-you're paginating results.}
+you\'re paginating results.}
 
 \item{maxResults}{The maximum number of results to return in the response.}
 }
 \description{
 Gets revisions of the specified workflow. Only the last 100 revisions
 are stored. If the workflow has been deprecated, this action will return
-revisions that occurred before the deprecation. This action won't work
+revisions that occurred before the deprecation. This action won\'t work
 for workflows that have been deleted.
 }
 \section{Request syntax}{

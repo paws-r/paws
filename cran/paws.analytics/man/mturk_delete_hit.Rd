@@ -23,7 +23,7 @@ its submitted assignments already approved or rejected, the service will
 return an error.
 \itemize{
 \item HITs are automatically disposed of after 120 days.
-\item After you dispose of a HIT, you can no longer approve the HIT's
+\item After you dispose of a HIT, you can no longer approve the HIT\'s
 rejected assignments.
 \item Disposed HITs are not returned in results for the ListHITs
 operation.

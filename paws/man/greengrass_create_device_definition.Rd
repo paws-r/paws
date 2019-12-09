@@ -14,7 +14,7 @@ greengrass_create_device_definition(AmznClientToken, InitialVersion,
 
 \item{Name}{The name of the device definition.}
 
-\item{tags}{Tag(s) to add to the new resource}
+\item{tags}{Tag(s) to add to the new resource.}
 }
 \description{
 Creates a device definition. You may provide the initial version of the device definition now or use ''CreateDeviceDefinitionVersion'' at a later time.

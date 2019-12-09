@@ -32,7 +32,8 @@ Updates a \code{GraphqlApi} object.
   name = "string",
   logConfig = list(
     fieldLogLevel = "NONE"|"ERROR"|"ALL",
-    cloudWatchLogsRoleArn = "string"
+    cloudWatchLogsRoleArn = "string",
+    excludeVerboseContent = TRUE|FALSE
   ),
   authenticationType = "API_KEY"|"AWS_IAM"|"AMAZON_COGNITO_USER_POOLS"|"OPENID_CONNECT",
   userPoolConfig = list(

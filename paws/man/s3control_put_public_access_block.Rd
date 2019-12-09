@@ -2,18 +2,22 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_put_public_access_block}
 \alias{s3control_put_public_access_block}
-\title{Put public access block}
+\title{Creates or modifies the PublicAccessBlock configuration for an Amazon
+Web Services account}
 \usage{
 s3control_put_public_access_block(PublicAccessBlockConfiguration,
   AccountId)
 }
 \arguments{
-\item{PublicAccessBlockConfiguration}{[required]}
+\item{PublicAccessBlockConfiguration}{[required] The \code{PublicAccessBlock} configuration that you want to apply to the
+specified Amazon Web Services account.}
 
-\item{AccountId}{[required]}
+\item{AccountId}{[required] The account ID for the Amazon Web Services account whose
+\code{PublicAccessBlock} configuration you want to set.}
 }
 \description{
-Put public access block
+Creates or modifies the \code{PublicAccessBlock} configuration for an Amazon
+Web Services account.
 }
 \section{Request syntax}{
 \preformatted{svc$put_public_access_block(

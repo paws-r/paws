@@ -12,20 +12,21 @@ eventbridge_put_permission(EventBusName, Action, Principal, StatementId,
 \item{EventBusName}{The event bus associated with the rule. If you omit this, the default
 event bus is used.}
 
-\item{Action}{[required] The action that you're enabling the other account to perform.
+\item{Action}{[required] The action that you\'re enabling the other account to perform.
 Currently, this must be \code{events:PutEvents}.}
 
 \item{Principal}{[required] The 12-digit AWS account ID that you are permitting to put events to
-your default event bus. Specify "*" to permit any account to put
+your default event bus. Specify \"\*\" to permit any account to put
 events to your default event bus.
 
-If you specify "*" without specifying \code{Condition}, avoid creating
+If you specify \"\*\" without specifying \code{Condition}, avoid creating
 rules that might match undesirable events. To create more secure rules,
 make sure that the event pattern for each rule contains an \code{account}
-field with a specific account ID to receive events from. Rules with an
-account field don't match any events sent from other accounts.}
+field with a specific account ID to receive events from. Rules that have
+an account field match events sent only from accounts that are listed in
+the rule\'s \code{account} field.}
 
-\item{StatementId}{[required] An identifier string for the external account that you're granting
+\item{StatementId}{[required] An identifier string for the external account that you\'re granting
 permissions to. If you later want to revoke the permission for this
 external account, specify this \code{StatementId} when you run
 RemovePermission.}
@@ -36,7 +37,7 @@ organization. For more information about AWS Organizations, see \href{https://do
 in the \emph{AWS Organizations User Guide}.
 
 If you specify \code{Condition} with an AWS organization ID and specify
-"*" as the value for \code{Principal}, you grant permission to all the
+\"\*\" as the value for \code{Principal}, you grant permission to all the
 accounts in the named organization.
 
 The \code{Condition} is a JSON string that must contain \code{Type}, \code{Key}, and
@@ -50,22 +51,22 @@ account.
 }
 \details{
 For another account to send events to your account, that external
-account must have a rule with your account's event bus as a target.
+account must have a rule with your account\'s event bus as a target.
 
 To enable multiple AWS accounts to put events to an event bus, run
 \code{PutPermission} once for each of these accounts. Or, if all the accounts
 are members of the same AWS organization, you can run \code{PutPermission}
-once specifying \code{Principal} as "*" and specifying the AWS
+once specifying \code{Principal} as \"\*\" and specifying the AWS
 organization ID in \code{Condition}, to grant permissions to all accounts in
 that organization.
 
 If you grant permissions using an organization, then accounts in that
 organization must specify a \code{RoleArn} with proper permissions when they
-use \code{PutTarget} to add your account's event bus as a target. For more
+use \code{PutTarget} to add your account\'s event bus as a target. For more
 information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html}{Sending and Receiving Events Between AWS Accounts}
 in the \emph{Amazon EventBridge User Guide}.
 
-The permission policy on an event bus can't exceed 10 KB in size.
+The permission policy on an event bus can\'t exceed 10 KB in size.
 }
 \section{Request syntax}{
 \preformatted{svc$put_permission(

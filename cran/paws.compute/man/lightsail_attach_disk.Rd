@@ -13,16 +13,16 @@ lightsail_attach_disk(diskName, instanceName, diskPath)
 \item{instanceName}{[required] The name of the Lightsail instance where you want to utilize the storage
 disk.}
 
-\item{diskPath}{[required] The disk path to expose to the instance (e.g., \code{/dev/xvdf}).}
+\item{diskPath}{[required] The disk path to expose to the instance (e.g., \verb{/dev/xvdf}).}
 }
 \description{
 Attaches a block storage disk to a running or stopped Lightsail instance
 and exposes it to the instance with the specified disk name.
 }
 \details{
-The \code{attach disk} operation supports tag-based access control via
-resource tags applied to the resource identified by diskName. For more
-information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+The \verb{attach disk} operation supports tag-based access control via
+resource tags applied to the resource identified by \verb{disk name}. For
+more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$attach_disk(

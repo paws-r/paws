@@ -2,7 +2,8 @@
 % Please edit documentation in R/datasync_operations.R
 \name{datasync_create_location_nfs}
 \alias{datasync_create_location_nfs}
-\title{Creates an endpoint for a Network File System (NFS) file system}
+\title{Defines a file system on a Network File System (NFS) server that can be
+read from or written to}
 \usage{
 datasync_create_location_nfs(Subdirectory, ServerHostname, OnPremConfig,
   MountOptions, Tags)
@@ -10,26 +11,26 @@ datasync_create_location_nfs(Subdirectory, ServerHostname, OnPremConfig,
 \arguments{
 \item{Subdirectory}{[required] The subdirectory in the NFS file system that is used to read data from
 the NFS source location or write data to the NFS destination. The NFS
-path should be a path that's exported by the NFS server, or a
+path should be a path that\'s exported by the NFS server, or a
 subdirectory of that path. The path should be such that it can be
 mounted by other NFS clients in your network.
 
 To see all the paths exported by your NFS server. run
-"\code{showmount -e nfs-server-name}" from an NFS client that has access to
+\"\verb{showmount -e nfs-server-name}\" from an NFS client that has access to
 your server. You can specify any directory that appears in the results,
 and any subdirectory of that directory. Ensure that the NFS export is
 accessible without Kerberos authentication.
 
 To transfer all the data in the folder you specified, DataSync needs to
 have permissions to read all the data. To ensure this, either configure
-the NFS export with \code{no_root_squash,} or ensure that the permissions for
+the NFS export with \verb{no_root_squash,} or ensure that the permissions for
 all of the files that you want DataSync allow read access for all users.
 Doing either enables the agent to read the files. For the agent to
 access directories, you must additionally enable all execute access.
 
-For information about NFS export configuration, see
-"http://web.mit.edu/rhel-doc/5/RHEL-5-manual/Deployment\_Guide-en-US/s1-nfs-server-config-exports.html"
-(18.7. The /etc/exports Configuration File).}
+For information about NFS export configuration, see 18.7. The
+/etc/exports Configuration File in the Red Hat Enterprise Linux
+documentation.}
 
 \item{ServerHostname}{[required] The name of the NFS server. This value is the IP address or Domain Name
 Service (DNS) name of the NFS server. An agent that is installed
@@ -48,7 +49,8 @@ location. The value can be an empty string. We recommend using tags to
 name your resources.}
 }
 \description{
-Creates an endpoint for a Network File System (NFS) file system.
+Defines a file system on a Network File System (NFS) server that can be
+read from or written to
 }
 \section{Request syntax}{
 \preformatted{svc$create_location_nfs(

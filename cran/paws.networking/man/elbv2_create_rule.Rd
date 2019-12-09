@@ -14,16 +14,17 @@ conditions: \code{http-request-method}, \code{host-header}, \code{path-pattern},
 \code{source-ip}, and zero or more of the following conditions: \code{http-header}
 and \code{query-string}.}
 
-\item{Priority}{[required] The rule priority. A listener can't have multiple rules with the same
+\item{Priority}{[required] The rule priority. A listener can\'t have multiple rules with the same
 priority.}
 
 \item{Actions}{[required] The actions. Each rule must include exactly one of the following types
-of actions: \code{forward}, \code{fixed-response}, or \code{redirect}.
+of actions: \code{forward}, \code{fixed-response}, or \code{redirect}, and it must be
+the last action to be performed.
 
-If the action type is \code{forward}, you specify a target group. The
-protocol of the target group must be HTTP or HTTPS for an Application
-Load Balancer. The protocol of the target group must be TCP, TLS, UDP,
-or TCP\_UDP for a Network Load Balancer.
+If the action type is \code{forward}, you specify one or more target groups.
+The protocol of the target group must be HTTP or HTTPS for an
+Application Load Balancer. The protocol of the target group must be TCP,
+TLS, UDP, or TCP\\_UDP for a Network Load Balancer.
 
 [HTTPS listeners] If the action type is \code{authenticate-oidc}, you
 authenticate users through an identity provider that is OpenID Connect
@@ -144,6 +145,18 @@ To delete a rule, use DeleteRule.
         MessageBody = "string",
         StatusCode = "string",
         ContentType = "string"
+      ),
+      ForwardConfig = list(
+        TargetGroups = list(
+          list(
+            TargetGroupArn = "string",
+            Weight = 123
+          )
+        ),
+        TargetGroupStickinessConfig = list(
+          Enabled = TRUE|FALSE,
+          DurationSeconds = 123
+        )
       )
     )
   )

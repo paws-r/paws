@@ -27,7 +27,20 @@ NULL
 #'             Id3 = "string"
 #'           ),
 #'           InputSwitchSettings = list(
-#'             InputAttachmentNameReference = "string"
+#'             InputAttachmentNameReference = "string",
+#'             InputClippingSettings = list(
+#'               InputTimecodeSource = "ZEROBASED"|"EMBEDDED",
+#'               StartTimecode = list(
+#'                 Timecode = "string"
+#'               ),
+#'               StopTimecode = list(
+#'                 LastFrameClippingBehavior = "EXCLUDE_LAST_FRAME"|"INCLUDE_LAST_FRAME",
+#'                 Timecode = "string"
+#'               )
+#'             ),
+#'             UrlPath = list(
+#'               "string"
+#'             )
 #'           ),
 #'           PauseStateSettings = list(
 #'             Pipelines = list(
@@ -97,7 +110,8 @@ NULL
 #'           FollowModeScheduleActionStartSettings = list(
 #'             FollowPoint = "END"|"START",
 #'             ReferenceActionName = "string"
-#'           )
+#'           ),
+#'           ImmediateModeScheduleActionStartSettings = list()
 #'         )
 #'       )
 #'     )
@@ -163,6 +177,10 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'         list(
 #'           ChannelId = "string"
 #'         )
+#'       ),
+#'       MultiplexSettings = list(
+#'         MultiplexId = "string",
+#'         ProgramName = "string"
 #'       ),
 #'       Settings = list(
 #'         list(
@@ -379,6 +397,10 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'       OutputTimingSource = "INPUT_CLOCK"|"SYSTEM_CLOCK",
 #'       SupportLowFramerateInputs = "DISABLED"|"ENABLED"
 #'     ),
+#'     NielsenConfiguration = list(
+#'       DistributorId = "string",
+#'       NielsenPcmToId3Tagging = "DISABLED"|"ENABLED"
+#'     ),
 #'     OutputGroups = list(
 #'       list(
 #'         Name = "string",
@@ -510,6 +532,7 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'             TimestampOffset = "string",
 #'             TimestampOffsetMode = "USE_CONFIGURED_OFFSET"|"USE_EVENT_START_DATE"
 #'           ),
+#'           MultiplexGroupSettings = list(),
 #'           RtmpGroupSettings = list(
 #'             AuthenticationScheme = "AKAMAI"|"COMMON",
 #'             CacheFullBehavior = "DISCONNECT_IMMEDIATELY"|"WAIT_FOR_SERVER",
@@ -575,6 +598,7 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'                     FragmentTime = 123.0,
 #'                     Klv = "NONE"|"PASSTHROUGH",
 #'                     KlvDataPids = "string",
+#'                     NielsenId3Behavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
 #'                     NullPacketBitrate = 123.0,
 #'                     PatInterval = 123,
 #'                     PcrControl = "CONFIGURED_PCR_PERIOD"|"PCR_EVERY_PES_PACKET",
@@ -619,6 +643,7 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'                       AudioFramesPerPes = 123,
 #'                       AudioPids = "string",
 #'                       EcmPid = "string",
+#'                       NielsenId3Behavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
 #'                       PatInterval = 123,
 #'                       PcrControl = "CONFIGURED_PCR_PERIOD"|"PCR_EVERY_PES_PACKET",
 #'                       PcrPeriod = 123,
@@ -640,7 +665,13 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'               ),
 #'               MediaPackageOutputSettings = list(),
 #'               MsSmoothOutputSettings = list(
+#'                 H265PackagingType = "HEV1"|"HVC1",
 #'                 NameModifier = "string"
+#'               ),
+#'               MultiplexOutputSettings = list(
+#'                 Destination = list(
+#'                   DestinationRefId = "string"
+#'                 )
 #'               ),
 #'               RtmpOutputSettings = list(
 #'                 CertificateMode = "SELF_SIGNED"|"VERIFY_AUTHENTICITY",
@@ -692,6 +723,7 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'                     FragmentTime = 123.0,
 #'                     Klv = "NONE"|"PASSTHROUGH",
 #'                     KlvDataPids = "string",
+#'                     NielsenId3Behavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
 #'                     NullPacketBitrate = 123.0,
 #'                     PatInterval = 123,
 #'                     PcrControl = "CONFIGURED_PCR_PERIOD"|"PCR_EVERY_PES_PACKET",
@@ -745,6 +777,11 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'             BufFillPct = 123,
 #'             BufSize = 123,
 #'             ColorMetadata = "IGNORE"|"INSERT",
+#'             ColorSpaceSettings = list(
+#'               ColorSpacePassthroughSettings = list(),
+#'               Rec601Settings = list(),
+#'               Rec709Settings = list()
+#'             ),
 #'             EntropyEncoding = "CABAC"|"CAVLC",
 #'             FixedAfd = "AFD_0000"|"AFD_0010"|"AFD_0011"|"AFD_0100"|"AFD_1000"|"AFD_1001"|"AFD_1010"|"AFD_1011"|"AFD_1101"|"AFD_1110"|"AFD_1111",
 #'             FlickerAq = "DISABLED"|"ENABLED",
@@ -766,7 +803,7 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'             ParNumerator = 123,
 #'             Profile = "BASELINE"|"HIGH"|"HIGH_10BIT"|"HIGH_422"|"HIGH_422_10BIT"|"MAIN",
 #'             QvbrQualityLevel = 123,
-#'             RateControlMode = "CBR"|"QVBR"|"VBR",
+#'             RateControlMode = "CBR"|"MULTIPLEX"|"QVBR"|"VBR",
 #'             ScanType = "INTERLACED"|"PROGRESSIVE",
 #'             SceneChangeDetect = "DISABLED"|"ENABLED",
 #'             Slices = 123,
@@ -775,6 +812,44 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'             SubgopLength = "DYNAMIC"|"FIXED",
 #'             Syntax = "DEFAULT"|"RP2027",
 #'             TemporalAq = "DISABLED"|"ENABLED",
+#'             TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI"
+#'           ),
+#'           H265Settings = list(
+#'             AdaptiveQuantization = "HIGH"|"HIGHER"|"LOW"|"MAX"|"MEDIUM"|"OFF",
+#'             AfdSignaling = "AUTO"|"FIXED"|"NONE",
+#'             AlternativeTransferFunction = "INSERT"|"OMIT",
+#'             Bitrate = 123,
+#'             BufSize = 123,
+#'             ColorMetadata = "IGNORE"|"INSERT",
+#'             ColorSpaceSettings = list(
+#'               ColorSpacePassthroughSettings = list(),
+#'               Hdr10Settings = list(
+#'                 MaxCll = 123,
+#'                 MaxFall = 123
+#'               ),
+#'               Rec601Settings = list(),
+#'               Rec709Settings = list()
+#'             ),
+#'             FixedAfd = "AFD_0000"|"AFD_0010"|"AFD_0011"|"AFD_0100"|"AFD_1000"|"AFD_1001"|"AFD_1010"|"AFD_1011"|"AFD_1101"|"AFD_1110"|"AFD_1111",
+#'             FlickerAq = "DISABLED"|"ENABLED",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             GopClosedCadence = 123,
+#'             GopSize = 123.0,
+#'             GopSizeUnits = "FRAMES"|"SECONDS",
+#'             Level = "H265_LEVEL_1"|"H265_LEVEL_2"|"H265_LEVEL_2_1"|"H265_LEVEL_3"|"H265_LEVEL_3_1"|"H265_LEVEL_4"|"H265_LEVEL_4_1"|"H265_LEVEL_5"|"H265_LEVEL_5_1"|"H265_LEVEL_5_2"|"H265_LEVEL_6"|"H265_LEVEL_6_1"|"H265_LEVEL_6_2"|"H265_LEVEL_AUTO",
+#'             LookAheadRateControl = "HIGH"|"LOW"|"MEDIUM",
+#'             MaxBitrate = 123,
+#'             MinIInterval = 123,
+#'             ParDenominator = 123,
+#'             ParNumerator = 123,
+#'             Profile = "MAIN"|"MAIN_10BIT",
+#'             QvbrQualityLevel = 123,
+#'             RateControlMode = "CBR"|"MULTIPLEX"|"QVBR",
+#'             ScanType = "PROGRESSIVE",
+#'             SceneChangeDetect = "DISABLED"|"ENABLED",
+#'             Slices = 123,
+#'             Tier = "HIGH"|"MAIN",
 #'             TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI"
 #'           )
 #'         ),
@@ -1028,6 +1103,118 @@ medialive_create_input_security_group <- function(Tags = NULL, WhitelistRules = 
 }
 .medialive$operations$create_input_security_group <- medialive_create_input_security_group
 
+#' Create a new multiplex
+#'
+#' Create a new multiplex.
+#'
+#' @usage
+#' medialive_create_multiplex(AvailabilityZones, MultiplexSettings, Name,
+#'   RequestId, Tags)
+#'
+#' @param AvailabilityZones &#91;required&#93; A list of availability zones for the multiplex. You must specify exactly two.
+#' @param MultiplexSettings &#91;required&#93; Configuration for a multiplex event.
+#' @param Name &#91;required&#93; Name of multiplex.
+#' @param RequestId &#91;required&#93; Unique request ID. This prevents retries from creating multiple
+#' resources.
+#' @param Tags A collection of key-value pairs.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_multiplex(
+#'   AvailabilityZones = list(
+#'     "string"
+#'   ),
+#'   MultiplexSettings = list(
+#'     MaximumVideoBufferDelayMilliseconds = 123,
+#'     TransportStreamBitrate = 123,
+#'     TransportStreamId = 123,
+#'     TransportStreamReservedBitrate = 123
+#'   ),
+#'   Name = "string",
+#'   RequestId = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_create_multiplex
+medialive_create_multiplex <- function(AvailabilityZones, MultiplexSettings, Name, RequestId, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateMultiplex",
+    http_method = "POST",
+    http_path = "/prod/multiplexes",
+    paginator = list()
+  )
+  input <- .medialive$create_multiplex_input(AvailabilityZones = AvailabilityZones, MultiplexSettings = MultiplexSettings, Name = Name, RequestId = RequestId, Tags = Tags)
+  output <- .medialive$create_multiplex_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$create_multiplex <- medialive_create_multiplex
+
+#' Create a new program in the multiplex
+#'
+#' Create a new program in the multiplex.
+#'
+#' @usage
+#' medialive_create_multiplex_program(MultiplexId,
+#'   MultiplexProgramSettings, ProgramName, RequestId)
+#'
+#' @param MultiplexId &#91;required&#93; ID of the multiplex where the program is to be created.
+#' @param MultiplexProgramSettings &#91;required&#93; The settings for this multiplex program.
+#' @param ProgramName &#91;required&#93; Name of multiplex program.
+#' @param RequestId &#91;required&#93; Unique request ID. This prevents retries from creating multiple
+#' resources.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_multiplex_program(
+#'   MultiplexId = "string",
+#'   MultiplexProgramSettings = list(
+#'     ProgramNumber = 123,
+#'     ServiceDescriptor = list(
+#'       ProviderName = "string",
+#'       ServiceName = "string"
+#'     ),
+#'     VideoSettings = list(
+#'       ConstantBitrate = 123,
+#'       StatmuxSettings = list(
+#'         MaximumBitrate = 123,
+#'         MinimumBitrate = 123
+#'       )
+#'     )
+#'   ),
+#'   ProgramName = "string",
+#'   RequestId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_create_multiplex_program
+medialive_create_multiplex_program <- function(MultiplexId, MultiplexProgramSettings, ProgramName, RequestId) {
+  op <- new_operation(
+    name = "CreateMultiplexProgram",
+    http_method = "POST",
+    http_path = "/prod/multiplexes/{multiplexId}/programs",
+    paginator = list()
+  )
+  input <- .medialive$create_multiplex_program_input(MultiplexId = MultiplexId, MultiplexProgramSettings = MultiplexProgramSettings, ProgramName = ProgramName, RequestId = RequestId)
+  output <- .medialive$create_multiplex_program_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$create_multiplex_program <- medialive_create_multiplex_program
+
 #' Create tags for a resource
 #'
 #' Create tags for a resource
@@ -1175,6 +1362,80 @@ medialive_delete_input_security_group <- function(InputSecurityGroupId) {
   return(response)
 }
 .medialive$operations$delete_input_security_group <- medialive_delete_input_security_group
+
+#' Delete a multiplex
+#'
+#' Delete a multiplex. The multiplex must be idle.
+#'
+#' @usage
+#' medialive_delete_multiplex(MultiplexId)
+#'
+#' @param MultiplexId &#91;required&#93; The ID of the multiplex.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_multiplex(
+#'   MultiplexId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_delete_multiplex
+medialive_delete_multiplex <- function(MultiplexId) {
+  op <- new_operation(
+    name = "DeleteMultiplex",
+    http_method = "DELETE",
+    http_path = "/prod/multiplexes/{multiplexId}",
+    paginator = list()
+  )
+  input <- .medialive$delete_multiplex_input(MultiplexId = MultiplexId)
+  output <- .medialive$delete_multiplex_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$delete_multiplex <- medialive_delete_multiplex
+
+#' Delete a program from a multiplex
+#'
+#' Delete a program from a multiplex.
+#'
+#' @usage
+#' medialive_delete_multiplex_program(MultiplexId, ProgramName)
+#'
+#' @param MultiplexId &#91;required&#93; The ID of the multiplex that the program belongs to.
+#' @param ProgramName &#91;required&#93; The multiplex program name.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_multiplex_program(
+#'   MultiplexId = "string",
+#'   ProgramName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_delete_multiplex_program
+medialive_delete_multiplex_program <- function(MultiplexId, ProgramName) {
+  op <- new_operation(
+    name = "DeleteMultiplexProgram",
+    http_method = "DELETE",
+    http_path = "/prod/multiplexes/{multiplexId}/programs/{programName}",
+    paginator = list()
+  )
+  input <- .medialive$delete_multiplex_program_input(MultiplexId = MultiplexId, ProgramName = ProgramName)
+  output <- .medialive$delete_multiplex_program_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$delete_multiplex_program <- medialive_delete_multiplex_program
 
 #' Delete an expired reservation
 #'
@@ -1395,6 +1656,80 @@ medialive_describe_input_security_group <- function(InputSecurityGroupId) {
   return(response)
 }
 .medialive$operations$describe_input_security_group <- medialive_describe_input_security_group
+
+#' Gets details about a multiplex
+#'
+#' Gets details about a multiplex.
+#'
+#' @usage
+#' medialive_describe_multiplex(MultiplexId)
+#'
+#' @param MultiplexId &#91;required&#93; The ID of the multiplex.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_multiplex(
+#'   MultiplexId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_describe_multiplex
+medialive_describe_multiplex <- function(MultiplexId) {
+  op <- new_operation(
+    name = "DescribeMultiplex",
+    http_method = "GET",
+    http_path = "/prod/multiplexes/{multiplexId}",
+    paginator = list()
+  )
+  input <- .medialive$describe_multiplex_input(MultiplexId = MultiplexId)
+  output <- .medialive$describe_multiplex_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$describe_multiplex <- medialive_describe_multiplex
+
+#' Get the details for a program in a multiplex
+#'
+#' Get the details for a program in a multiplex.
+#'
+#' @usage
+#' medialive_describe_multiplex_program(MultiplexId, ProgramName)
+#'
+#' @param MultiplexId &#91;required&#93; The ID of the multiplex that the program belongs to.
+#' @param ProgramName &#91;required&#93; The name of the program.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_multiplex_program(
+#'   MultiplexId = "string",
+#'   ProgramName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_describe_multiplex_program
+medialive_describe_multiplex_program <- function(MultiplexId, ProgramName) {
+  op <- new_operation(
+    name = "DescribeMultiplexProgram",
+    http_method = "GET",
+    http_path = "/prod/multiplexes/{multiplexId}/programs/{programName}",
+    paginator = list()
+  )
+  input <- .medialive$describe_multiplex_program_input(MultiplexId = MultiplexId, ProgramName = ProgramName)
+  output <- .medialive$describe_multiplex_program_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$describe_multiplex_program <- medialive_describe_multiplex_program
 
 #' Get details for an offering
 #'
@@ -1622,24 +1957,103 @@ medialive_list_inputs <- function(MaxResults = NULL, NextToken = NULL) {
 }
 .medialive$operations$list_inputs <- medialive_list_inputs
 
+#' List the programs that currently exist for a specific multiplex
+#'
+#' List the programs that currently exist for a specific multiplex.
+#'
+#' @usage
+#' medialive_list_multiplex_programs(MaxResults, MultiplexId, NextToken)
+#'
+#' @param MaxResults The maximum number of items to return.
+#' @param MultiplexId &#91;required&#93; The ID of the multiplex that the programs belong to.
+#' @param NextToken The token to retrieve the next page of results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_multiplex_programs(
+#'   MaxResults = 123,
+#'   MultiplexId = "string",
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_list_multiplex_programs
+medialive_list_multiplex_programs <- function(MaxResults = NULL, MultiplexId, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListMultiplexPrograms",
+    http_method = "GET",
+    http_path = "/prod/multiplexes/{multiplexId}/programs",
+    paginator = list()
+  )
+  input <- .medialive$list_multiplex_programs_input(MaxResults = MaxResults, MultiplexId = MultiplexId, NextToken = NextToken)
+  output <- .medialive$list_multiplex_programs_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$list_multiplex_programs <- medialive_list_multiplex_programs
+
+#' Retrieve a list of the existing multiplexes
+#'
+#' Retrieve a list of the existing multiplexes.
+#'
+#' @usage
+#' medialive_list_multiplexes(MaxResults, NextToken)
+#'
+#' @param MaxResults The maximum number of items to return.
+#' @param NextToken The token to retrieve the next page of results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_multiplexes(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_list_multiplexes
+medialive_list_multiplexes <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListMultiplexes",
+    http_method = "GET",
+    http_path = "/prod/multiplexes",
+    paginator = list()
+  )
+  input <- .medialive$list_multiplexes_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .medialive$list_multiplexes_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$list_multiplexes <- medialive_list_multiplexes
+
 #' List offerings available for purchase
 #'
 #' List offerings available for purchase.
 #'
 #' @usage
 #' medialive_list_offerings(ChannelClass, ChannelConfiguration, Codec,
-#'   MaxResults, MaximumBitrate, MaximumFramerate, NextToken, Resolution,
-#'   ResourceType, SpecialFeature, VideoQuality)
+#'   Duration, MaxResults, MaximumBitrate, MaximumFramerate, NextToken,
+#'   Resolution, ResourceType, SpecialFeature, VideoQuality)
 #'
 #' @param ChannelClass Filter by channel class, 'STANDARD' or 'SINGLE_PIPELINE'
 #' @param ChannelConfiguration Filter to offerings that match the configuration of an existing channel, e.g. '2345678' (a channel ID)
 #' @param Codec Filter by codec, 'AVC', 'HEVC', 'MPEG2', or 'AUDIO'
+#' @param Duration Filter by offering duration, e.g. '12'
 #' @param MaxResults 
 #' @param MaximumBitrate Filter by bitrate, 'MAX_10_MBPS', 'MAX_20_MBPS', or 'MAX_50_MBPS'
 #' @param MaximumFramerate Filter by framerate, 'MAX_30_FPS' or 'MAX_60_FPS'
 #' @param NextToken 
-#' @param Resolution Filter by resolution, 'SD', 'HD', or 'UHD'
-#' @param ResourceType Filter by resource type, 'INPUT', 'OUTPUT', or 'CHANNEL'
+#' @param Resolution Filter by resolution, 'SD', 'HD', 'FHD', or 'UHD'
+#' @param ResourceType Filter by resource type, 'INPUT', 'OUTPUT', 'MULTIPLEX', or 'CHANNEL'
 #' @param SpecialFeature Filter by special feature, 'ADVANCED_AUDIO' or 'AUDIO_NORMALIZATION'
 #' @param VideoQuality Filter by video quality, 'STANDARD', 'ENHANCED', or 'PREMIUM'
 #'
@@ -1649,6 +2063,7 @@ medialive_list_inputs <- function(MaxResults = NULL, NextToken = NULL) {
 #'   ChannelClass = "string",
 #'   ChannelConfiguration = "string",
 #'   Codec = "string",
+#'   Duration = "string",
 #'   MaxResults = 123,
 #'   MaximumBitrate = "string",
 #'   MaximumFramerate = "string",
@@ -1663,14 +2078,14 @@ medialive_list_inputs <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname medialive_list_offerings
-medialive_list_offerings <- function(ChannelClass = NULL, ChannelConfiguration = NULL, Codec = NULL, MaxResults = NULL, MaximumBitrate = NULL, MaximumFramerate = NULL, NextToken = NULL, Resolution = NULL, ResourceType = NULL, SpecialFeature = NULL, VideoQuality = NULL) {
+medialive_list_offerings <- function(ChannelClass = NULL, ChannelConfiguration = NULL, Codec = NULL, Duration = NULL, MaxResults = NULL, MaximumBitrate = NULL, MaximumFramerate = NULL, NextToken = NULL, Resolution = NULL, ResourceType = NULL, SpecialFeature = NULL, VideoQuality = NULL) {
   op <- new_operation(
     name = "ListOfferings",
     http_method = "GET",
     http_path = "/prod/offerings",
     paginator = list()
   )
-  input <- .medialive$list_offerings_input(ChannelClass = ChannelClass, ChannelConfiguration = ChannelConfiguration, Codec = Codec, MaxResults = MaxResults, MaximumBitrate = MaximumBitrate, MaximumFramerate = MaximumFramerate, NextToken = NextToken, Resolution = Resolution, ResourceType = ResourceType, SpecialFeature = SpecialFeature, VideoQuality = VideoQuality)
+  input <- .medialive$list_offerings_input(ChannelClass = ChannelClass, ChannelConfiguration = ChannelConfiguration, Codec = Codec, Duration = Duration, MaxResults = MaxResults, MaximumBitrate = MaximumBitrate, MaximumFramerate = MaximumFramerate, NextToken = NextToken, Resolution = Resolution, ResourceType = ResourceType, SpecialFeature = SpecialFeature, VideoQuality = VideoQuality)
   output <- .medialive$list_offerings_output()
   config <- get_config()
   svc <- .medialive$service(config)
@@ -1695,8 +2110,8 @@ medialive_list_offerings <- function(ChannelClass = NULL, ChannelConfiguration =
 #' @param MaximumBitrate Filter by bitrate, 'MAX_10_MBPS', 'MAX_20_MBPS', or 'MAX_50_MBPS'
 #' @param MaximumFramerate Filter by framerate, 'MAX_30_FPS' or 'MAX_60_FPS'
 #' @param NextToken 
-#' @param Resolution Filter by resolution, 'SD', 'HD', or 'UHD'
-#' @param ResourceType Filter by resource type, 'INPUT', 'OUTPUT', or 'CHANNEL'
+#' @param Resolution Filter by resolution, 'SD', 'HD', 'FHD', or 'UHD'
+#' @param ResourceType Filter by resource type, 'INPUT', 'OUTPUT', 'MULTIPLEX', or 'CHANNEL'
 #' @param SpecialFeature Filter by special feature, 'ADVANCED_AUDIO' or 'AUDIO_NORMALIZATION'
 #' @param VideoQuality Filter by video quality, 'STANDARD', 'ENHANCED', or 'PREMIUM'
 #'
@@ -1857,6 +2272,42 @@ medialive_start_channel <- function(ChannelId) {
 }
 .medialive$operations$start_channel <- medialive_start_channel
 
+#' Start (run) the multiplex
+#'
+#' Start (run) the multiplex. Starting the multiplex does not start the channels. You must explicitly start each channel.
+#'
+#' @usage
+#' medialive_start_multiplex(MultiplexId)
+#'
+#' @param MultiplexId &#91;required&#93; The ID of the multiplex.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_multiplex(
+#'   MultiplexId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_start_multiplex
+medialive_start_multiplex <- function(MultiplexId) {
+  op <- new_operation(
+    name = "StartMultiplex",
+    http_method = "POST",
+    http_path = "/prod/multiplexes/{multiplexId}/start",
+    paginator = list()
+  )
+  input <- .medialive$start_multiplex_input(MultiplexId = MultiplexId)
+  output <- .medialive$start_multiplex_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$start_multiplex <- medialive_start_multiplex
+
 #' Stops a running channel
 #'
 #' Stops a running channel
@@ -1893,6 +2344,42 @@ medialive_stop_channel <- function(ChannelId) {
 }
 .medialive$operations$stop_channel <- medialive_stop_channel
 
+#' Stops a running multiplex
+#'
+#' Stops a running multiplex. If the multiplex isn't running, this action has no effect.
+#'
+#' @usage
+#' medialive_stop_multiplex(MultiplexId)
+#'
+#' @param MultiplexId &#91;required&#93; The ID of the multiplex.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_multiplex(
+#'   MultiplexId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_stop_multiplex
+medialive_stop_multiplex <- function(MultiplexId) {
+  op <- new_operation(
+    name = "StopMultiplex",
+    http_method = "POST",
+    http_path = "/prod/multiplexes/{multiplexId}/stop",
+    paginator = list()
+  )
+  input <- .medialive$stop_multiplex_input(MultiplexId = MultiplexId)
+  output <- .medialive$stop_multiplex_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$stop_multiplex <- medialive_stop_multiplex
+
 #' Updates a channel
 #'
 #' Updates a channel.
@@ -1921,6 +2408,10 @@ medialive_stop_channel <- function(ChannelId) {
 #'         list(
 #'           ChannelId = "string"
 #'         )
+#'       ),
+#'       MultiplexSettings = list(
+#'         MultiplexId = "string",
+#'         ProgramName = "string"
 #'       ),
 #'       Settings = list(
 #'         list(
@@ -2137,6 +2628,10 @@ medialive_stop_channel <- function(ChannelId) {
 #'       OutputTimingSource = "INPUT_CLOCK"|"SYSTEM_CLOCK",
 #'       SupportLowFramerateInputs = "DISABLED"|"ENABLED"
 #'     ),
+#'     NielsenConfiguration = list(
+#'       DistributorId = "string",
+#'       NielsenPcmToId3Tagging = "DISABLED"|"ENABLED"
+#'     ),
 #'     OutputGroups = list(
 #'       list(
 #'         Name = "string",
@@ -2268,6 +2763,7 @@ medialive_stop_channel <- function(ChannelId) {
 #'             TimestampOffset = "string",
 #'             TimestampOffsetMode = "USE_CONFIGURED_OFFSET"|"USE_EVENT_START_DATE"
 #'           ),
+#'           MultiplexGroupSettings = list(),
 #'           RtmpGroupSettings = list(
 #'             AuthenticationScheme = "AKAMAI"|"COMMON",
 #'             CacheFullBehavior = "DISCONNECT_IMMEDIATELY"|"WAIT_FOR_SERVER",
@@ -2333,6 +2829,7 @@ medialive_stop_channel <- function(ChannelId) {
 #'                     FragmentTime = 123.0,
 #'                     Klv = "NONE"|"PASSTHROUGH",
 #'                     KlvDataPids = "string",
+#'                     NielsenId3Behavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
 #'                     NullPacketBitrate = 123.0,
 #'                     PatInterval = 123,
 #'                     PcrControl = "CONFIGURED_PCR_PERIOD"|"PCR_EVERY_PES_PACKET",
@@ -2377,6 +2874,7 @@ medialive_stop_channel <- function(ChannelId) {
 #'                       AudioFramesPerPes = 123,
 #'                       AudioPids = "string",
 #'                       EcmPid = "string",
+#'                       NielsenId3Behavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
 #'                       PatInterval = 123,
 #'                       PcrControl = "CONFIGURED_PCR_PERIOD"|"PCR_EVERY_PES_PACKET",
 #'                       PcrPeriod = 123,
@@ -2398,7 +2896,13 @@ medialive_stop_channel <- function(ChannelId) {
 #'               ),
 #'               MediaPackageOutputSettings = list(),
 #'               MsSmoothOutputSettings = list(
+#'                 H265PackagingType = "HEV1"|"HVC1",
 #'                 NameModifier = "string"
+#'               ),
+#'               MultiplexOutputSettings = list(
+#'                 Destination = list(
+#'                   DestinationRefId = "string"
+#'                 )
 #'               ),
 #'               RtmpOutputSettings = list(
 #'                 CertificateMode = "SELF_SIGNED"|"VERIFY_AUTHENTICITY",
@@ -2450,6 +2954,7 @@ medialive_stop_channel <- function(ChannelId) {
 #'                     FragmentTime = 123.0,
 #'                     Klv = "NONE"|"PASSTHROUGH",
 #'                     KlvDataPids = "string",
+#'                     NielsenId3Behavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
 #'                     NullPacketBitrate = 123.0,
 #'                     PatInterval = 123,
 #'                     PcrControl = "CONFIGURED_PCR_PERIOD"|"PCR_EVERY_PES_PACKET",
@@ -2503,6 +3008,11 @@ medialive_stop_channel <- function(ChannelId) {
 #'             BufFillPct = 123,
 #'             BufSize = 123,
 #'             ColorMetadata = "IGNORE"|"INSERT",
+#'             ColorSpaceSettings = list(
+#'               ColorSpacePassthroughSettings = list(),
+#'               Rec601Settings = list(),
+#'               Rec709Settings = list()
+#'             ),
 #'             EntropyEncoding = "CABAC"|"CAVLC",
 #'             FixedAfd = "AFD_0000"|"AFD_0010"|"AFD_0011"|"AFD_0100"|"AFD_1000"|"AFD_1001"|"AFD_1010"|"AFD_1011"|"AFD_1101"|"AFD_1110"|"AFD_1111",
 #'             FlickerAq = "DISABLED"|"ENABLED",
@@ -2524,7 +3034,7 @@ medialive_stop_channel <- function(ChannelId) {
 #'             ParNumerator = 123,
 #'             Profile = "BASELINE"|"HIGH"|"HIGH_10BIT"|"HIGH_422"|"HIGH_422_10BIT"|"MAIN",
 #'             QvbrQualityLevel = 123,
-#'             RateControlMode = "CBR"|"QVBR"|"VBR",
+#'             RateControlMode = "CBR"|"MULTIPLEX"|"QVBR"|"VBR",
 #'             ScanType = "INTERLACED"|"PROGRESSIVE",
 #'             SceneChangeDetect = "DISABLED"|"ENABLED",
 #'             Slices = 123,
@@ -2533,6 +3043,44 @@ medialive_stop_channel <- function(ChannelId) {
 #'             SubgopLength = "DYNAMIC"|"FIXED",
 #'             Syntax = "DEFAULT"|"RP2027",
 #'             TemporalAq = "DISABLED"|"ENABLED",
+#'             TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI"
+#'           ),
+#'           H265Settings = list(
+#'             AdaptiveQuantization = "HIGH"|"HIGHER"|"LOW"|"MAX"|"MEDIUM"|"OFF",
+#'             AfdSignaling = "AUTO"|"FIXED"|"NONE",
+#'             AlternativeTransferFunction = "INSERT"|"OMIT",
+#'             Bitrate = 123,
+#'             BufSize = 123,
+#'             ColorMetadata = "IGNORE"|"INSERT",
+#'             ColorSpaceSettings = list(
+#'               ColorSpacePassthroughSettings = list(),
+#'               Hdr10Settings = list(
+#'                 MaxCll = 123,
+#'                 MaxFall = 123
+#'               ),
+#'               Rec601Settings = list(),
+#'               Rec709Settings = list()
+#'             ),
+#'             FixedAfd = "AFD_0000"|"AFD_0010"|"AFD_0011"|"AFD_0100"|"AFD_1000"|"AFD_1001"|"AFD_1010"|"AFD_1011"|"AFD_1101"|"AFD_1110"|"AFD_1111",
+#'             FlickerAq = "DISABLED"|"ENABLED",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             GopClosedCadence = 123,
+#'             GopSize = 123.0,
+#'             GopSizeUnits = "FRAMES"|"SECONDS",
+#'             Level = "H265_LEVEL_1"|"H265_LEVEL_2"|"H265_LEVEL_2_1"|"H265_LEVEL_3"|"H265_LEVEL_3_1"|"H265_LEVEL_4"|"H265_LEVEL_4_1"|"H265_LEVEL_5"|"H265_LEVEL_5_1"|"H265_LEVEL_5_2"|"H265_LEVEL_6"|"H265_LEVEL_6_1"|"H265_LEVEL_6_2"|"H265_LEVEL_AUTO",
+#'             LookAheadRateControl = "HIGH"|"LOW"|"MEDIUM",
+#'             MaxBitrate = 123,
+#'             MinIInterval = 123,
+#'             ParDenominator = 123,
+#'             ParNumerator = 123,
+#'             Profile = "MAIN"|"MAIN_10BIT",
+#'             QvbrQualityLevel = 123,
+#'             RateControlMode = "CBR"|"MULTIPLEX"|"QVBR",
+#'             ScanType = "PROGRESSIVE",
+#'             SceneChangeDetect = "DISABLED"|"ENABLED",
+#'             Slices = 123,
+#'             Tier = "HIGH"|"MAIN",
 #'             TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI"
 #'           )
 #'         ),
@@ -2675,6 +3223,10 @@ medialive_update_channel <- function(ChannelId, Destinations = NULL, EncoderSett
 #'         list(
 #'           ChannelId = "string"
 #'         )
+#'       ),
+#'       MultiplexSettings = list(
+#'         MultiplexId = "string",
+#'         ProgramName = "string"
 #'       ),
 #'       Settings = list(
 #'         list(
@@ -2824,6 +3376,105 @@ medialive_update_input_security_group <- function(InputSecurityGroupId, Tags = N
   return(response)
 }
 .medialive$operations$update_input_security_group <- medialive_update_input_security_group
+
+#' Updates a multiplex
+#'
+#' Updates a multiplex.
+#'
+#' @usage
+#' medialive_update_multiplex(MultiplexId, MultiplexSettings, Name)
+#'
+#' @param MultiplexId &#91;required&#93; ID of the multiplex to update.
+#' @param MultiplexSettings The new settings for a multiplex.
+#' @param Name Name of the multiplex.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_multiplex(
+#'   MultiplexId = "string",
+#'   MultiplexSettings = list(
+#'     MaximumVideoBufferDelayMilliseconds = 123,
+#'     TransportStreamBitrate = 123,
+#'     TransportStreamId = 123,
+#'     TransportStreamReservedBitrate = 123
+#'   ),
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_update_multiplex
+medialive_update_multiplex <- function(MultiplexId, MultiplexSettings = NULL, Name = NULL) {
+  op <- new_operation(
+    name = "UpdateMultiplex",
+    http_method = "PUT",
+    http_path = "/prod/multiplexes/{multiplexId}",
+    paginator = list()
+  )
+  input <- .medialive$update_multiplex_input(MultiplexId = MultiplexId, MultiplexSettings = MultiplexSettings, Name = Name)
+  output <- .medialive$update_multiplex_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$update_multiplex <- medialive_update_multiplex
+
+#' Update a program in a multiplex
+#'
+#' Update a program in a multiplex.
+#'
+#' @usage
+#' medialive_update_multiplex_program(MultiplexId,
+#'   MultiplexProgramSettings, ProgramName)
+#'
+#' @param MultiplexId &#91;required&#93; The ID of the multiplex of the program to update.
+#' @param MultiplexProgramSettings The new settings for a multiplex program.
+#' @param ProgramName &#91;required&#93; The name of the program to update.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_multiplex_program(
+#'   MultiplexId = "string",
+#'   MultiplexProgramSettings = list(
+#'     ProgramNumber = 123,
+#'     ServiceDescriptor = list(
+#'       ProviderName = "string",
+#'       ServiceName = "string"
+#'     ),
+#'     VideoSettings = list(
+#'       ConstantBitrate = 123,
+#'       StatmuxSettings = list(
+#'         MaximumBitrate = 123,
+#'         MinimumBitrate = 123
+#'       )
+#'     )
+#'   ),
+#'   ProgramName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_update_multiplex_program
+medialive_update_multiplex_program <- function(MultiplexId, MultiplexProgramSettings = NULL, ProgramName) {
+  op <- new_operation(
+    name = "UpdateMultiplexProgram",
+    http_method = "PUT",
+    http_path = "/prod/multiplexes/{multiplexId}/programs/{programName}",
+    paginator = list()
+  )
+  input <- .medialive$update_multiplex_program_input(MultiplexId = MultiplexId, MultiplexProgramSettings = MultiplexProgramSettings, ProgramName = ProgramName)
+  output <- .medialive$update_multiplex_program_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$update_multiplex_program <- medialive_update_multiplex_program
 
 #' Update reservation
 #'

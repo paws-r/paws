@@ -11,7 +11,7 @@ NULL
 #' greengrass_associate_role_to_group(GroupId, RoleArn)
 #'
 #' @param GroupId &#91;required&#93; The ID of the Greengrass group.
-#' @param RoleArn The ARN of the role you wish to associate with this group.
+#' @param RoleArn &#91;required&#93; The ARN of the role you wish to associate with this group. The existence of the role is not validated.
 #'
 #' @section Request syntax:
 #' ```
@@ -24,7 +24,7 @@ NULL
 #' @keywords internal
 #'
 #' @rdname greengrass_associate_role_to_group
-greengrass_associate_role_to_group <- function(GroupId, RoleArn = NULL) {
+greengrass_associate_role_to_group <- function(GroupId, RoleArn) {
   op <- new_operation(
     name = "AssociateRoleToGroup",
     http_method = "PUT",
@@ -48,7 +48,7 @@ greengrass_associate_role_to_group <- function(GroupId, RoleArn = NULL) {
 #' @usage
 #' greengrass_associate_service_role_to_account(RoleArn)
 #'
-#' @param RoleArn The ARN of the service role you wish to associate with your account.
+#' @param RoleArn &#91;required&#93; The ARN of the service role you wish to associate with your account.
 #'
 #' @section Request syntax:
 #' ```
@@ -60,7 +60,7 @@ greengrass_associate_role_to_group <- function(GroupId, RoleArn = NULL) {
 #' @keywords internal
 #'
 #' @rdname greengrass_associate_service_role_to_account
-greengrass_associate_service_role_to_account <- function(RoleArn = NULL) {
+greengrass_associate_service_role_to_account <- function(RoleArn) {
   op <- new_operation(
     name = "AssociateServiceRoleToAccount",
     http_method = "PUT",
@@ -88,7 +88,7 @@ greengrass_associate_service_role_to_account <- function(RoleArn = NULL) {
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param InitialVersion Information about the initial version of the connector definition.
 #' @param Name The name of the connector definition.
-#' @param tags Tag(s) to add to the new resource
+#' @param tags Tag(s) to add to the new resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -193,7 +193,7 @@ greengrass_create_connector_definition_version <- function(AmznClientToken = NUL
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param InitialVersion Information about the initial version of the core definition.
 #' @param Name The name of the core definition.
-#' @param tags Tag(s) to add to the new resource
+#' @param tags Tag(s) to add to the new resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -294,7 +294,7 @@ greengrass_create_core_definition_version <- function(AmznClientToken = NULL, Co
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param DeploymentId The ID of the deployment if you wish to redeploy a previous deployment.
-#' @param DeploymentType The type of deployment. When used for ''CreateDeployment'', only ''NewDeployment'' and ''Redeployment'' are valid.
+#' @param DeploymentType &#91;required&#93; The type of deployment. When used for ''CreateDeployment'', only ''NewDeployment'' and ''Redeployment'' are valid.
 #' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #' @param GroupVersionId The ID of the group version to be deployed.
 #'
@@ -312,7 +312,7 @@ greengrass_create_core_definition_version <- function(AmznClientToken = NULL, Co
 #' @keywords internal
 #'
 #' @rdname greengrass_create_deployment
-greengrass_create_deployment <- function(AmznClientToken = NULL, DeploymentId = NULL, DeploymentType = NULL, GroupId, GroupVersionId = NULL) {
+greengrass_create_deployment <- function(AmznClientToken = NULL, DeploymentId = NULL, DeploymentType, GroupId, GroupVersionId = NULL) {
   op <- new_operation(
     name = "CreateDeployment",
     http_method = "POST",
@@ -340,7 +340,7 @@ greengrass_create_deployment <- function(AmznClientToken = NULL, DeploymentId = 
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param InitialVersion Information about the initial version of the device definition.
 #' @param Name The name of the device definition.
-#' @param tags Tag(s) to add to the new resource
+#' @param tags Tag(s) to add to the new resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -443,7 +443,7 @@ greengrass_create_device_definition_version <- function(AmznClientToken = NULL, 
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param InitialVersion Information about the initial version of the function definition.
 #' @param Name The name of the function definition.
-#' @param tags Tag(s) to add to the new resource
+#' @param tags Tag(s) to add to the new resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -614,7 +614,7 @@ greengrass_create_function_definition_version <- function(AmznClientToken = NULL
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param InitialVersion Information about the initial version of the group.
 #' @param Name The name of the group.
-#' @param tags Tag(s) to add to the new resource
+#' @param tags Tag(s) to add to the new resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -761,7 +761,7 @@ greengrass_create_group_version <- function(AmznClientToken = NULL, ConnectorDef
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param InitialVersion Information about the initial version of the logger definition.
 #' @param Name The name of the logger definition.
-#' @param tags Tag(s) to add to the new resource
+#' @param tags Tag(s) to add to the new resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -866,7 +866,7 @@ greengrass_create_logger_definition_version <- function(AmznClientToken = NULL, 
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param InitialVersion Information about the initial version of the resource definition.
 #' @param Name The name of the resource definition.
-#' @param tags Tag(s) to add to the new resource
+#' @param tags Tag(s) to add to the new resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -895,10 +895,18 @@ greengrass_create_logger_definition_version <- function(AmznClientToken = NULL, 
 #'           ),
 #'           S3MachineLearningModelResourceData = list(
 #'             DestinationPath = "string",
+#'             OwnerSetting = list(
+#'               GroupOwner = "string",
+#'               GroupPermission = "ro"|"rw"
+#'             ),
 #'             S3Uri = "string"
 #'           ),
 #'           SageMakerMachineLearningModelResourceData = list(
 #'             DestinationPath = "string",
+#'             OwnerSetting = list(
+#'               GroupOwner = "string",
+#'               GroupPermission = "ro"|"rw"
+#'             ),
 #'             SageMakerJobArn = "string"
 #'           ),
 #'           SecretsManagerSecretResourceData = list(
@@ -977,10 +985,18 @@ greengrass_create_resource_definition <- function(AmznClientToken = NULL, Initia
 #'         ),
 #'         S3MachineLearningModelResourceData = list(
 #'           DestinationPath = "string",
+#'           OwnerSetting = list(
+#'             GroupOwner = "string",
+#'             GroupPermission = "ro"|"rw"
+#'           ),
 #'           S3Uri = "string"
 #'         ),
 #'         SageMakerMachineLearningModelResourceData = list(
 #'           DestinationPath = "string",
+#'           OwnerSetting = list(
+#'             GroupOwner = "string",
+#'             GroupPermission = "ro"|"rw"
+#'           ),
 #'           SageMakerJobArn = "string"
 #'         ),
 #'         SecretsManagerSecretResourceData = list(
@@ -1026,12 +1042,12 @@ greengrass_create_resource_definition_version <- function(AmznClientToken = NULL
 #'   UpdateTargetsArchitecture, UpdateTargetsOperatingSystem)
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
-#' @param S3UrlSignerRole 
-#' @param SoftwareToUpdate 
+#' @param S3UrlSignerRole &#91;required&#93; 
+#' @param SoftwareToUpdate &#91;required&#93; 
 #' @param UpdateAgentLogLevel 
-#' @param UpdateTargets 
-#' @param UpdateTargetsArchitecture 
-#' @param UpdateTargetsOperatingSystem 
+#' @param UpdateTargets &#91;required&#93; 
+#' @param UpdateTargetsArchitecture &#91;required&#93; 
+#' @param UpdateTargetsOperatingSystem &#91;required&#93; 
 #'
 #' @section Request syntax:
 #' ```
@@ -1043,15 +1059,15 @@ greengrass_create_resource_definition_version <- function(AmznClientToken = NULL
 #'   UpdateTargets = list(
 #'     "string"
 #'   ),
-#'   UpdateTargetsArchitecture = "armv7l"|"x86_64"|"aarch64",
-#'   UpdateTargetsOperatingSystem = "ubuntu"|"raspbian"|"amazon_linux"
+#'   UpdateTargetsArchitecture = "armv6l"|"armv7l"|"x86_64"|"aarch64",
+#'   UpdateTargetsOperatingSystem = "ubuntu"|"raspbian"|"amazon_linux"|"openwrt"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname greengrass_create_software_update_job
-greengrass_create_software_update_job <- function(AmznClientToken = NULL, S3UrlSignerRole = NULL, SoftwareToUpdate = NULL, UpdateAgentLogLevel = NULL, UpdateTargets = NULL, UpdateTargetsArchitecture = NULL, UpdateTargetsOperatingSystem = NULL) {
+greengrass_create_software_update_job <- function(AmznClientToken = NULL, S3UrlSignerRole, SoftwareToUpdate, UpdateAgentLogLevel = NULL, UpdateTargets, UpdateTargetsArchitecture, UpdateTargetsOperatingSystem) {
   op <- new_operation(
     name = "CreateSoftwareUpdateJob",
     http_method = "POST",
@@ -1079,7 +1095,7 @@ greengrass_create_software_update_job <- function(AmznClientToken = NULL, S3UrlS
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param InitialVersion Information about the initial version of the subscription definition.
 #' @param Name The name of the subscription definition.
-#' @param tags Tag(s) to add to the new resource
+#' @param tags Tag(s) to add to the new resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -1170,46 +1186,6 @@ greengrass_create_subscription_definition_version <- function(AmznClientToken = 
   return(response)
 }
 .greengrass$operations$create_subscription_definition_version <- greengrass_create_subscription_definition_version
-
-#' Add tags to a resource
-#'
-#' Add tags to a resource.
-#'
-#' @usage
-#' greengrass_tag_resource(ResourceArn, tags)
-#'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
-#' @param tags &#91;required&#93; A map of the key-value pairs for the resource tag.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceArn = "string",
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @keywords internal
-#'
-#' @rdname greengrass_tag_resource
-greengrass_tag_resource <- function(ResourceArn, tags) {
-  op <- new_operation(
-    name = "TagResource",
-    http_method = "POST",
-    http_path = "/tags/{resource-arn}",
-    paginator = list()
-  )
-  input <- .greengrass$tag_resource_input(ResourceArn = ResourceArn, tags = tags)
-  output <- .greengrass$tag_resource_output()
-  config <- get_config()
-  svc <- .greengrass$service(config)
-  request <- new_request(svc, op, input, output)
-  response <- send_request(request)
-  return(response)
-}
-.greengrass$operations$tag_resource <- greengrass_tag_resource
 
 #' Deletes a connector definition
 #'
@@ -1499,46 +1475,6 @@ greengrass_delete_subscription_definition <- function(SubscriptionDefinitionId) 
 }
 .greengrass$operations$delete_subscription_definition <- greengrass_delete_subscription_definition
 
-#' Remove tags with specified keys from a resource
-#'
-#' Remove tags with specified keys from a resource.
-#'
-#' @usage
-#' greengrass_untag_resource(ResourceArn, TagKeys)
-#'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
-#' @param TagKeys &#91;required&#93; A list of the keys to remove from the resource tags.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceArn = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @keywords internal
-#'
-#' @rdname greengrass_untag_resource
-greengrass_untag_resource <- function(ResourceArn, TagKeys) {
-  op <- new_operation(
-    name = "UntagResource",
-    http_method = "DELETE",
-    http_path = "/tags/{resource-arn}",
-    paginator = list()
-  )
-  input <- .greengrass$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
-  output <- .greengrass$untag_resource_output()
-  config <- get_config()
-  svc <- .greengrass$service(config)
-  request <- new_request(svc, op, input, output)
-  response <- send_request(request)
-  return(response)
-}
-.greengrass$operations$untag_resource <- greengrass_untag_resource
-
 #' Disassociates the role from a group
 #'
 #' Disassociates the role from a group.
@@ -1761,7 +1697,7 @@ greengrass_get_connector_definition <- function(ConnectorDefinitionId) {
 #'   ConnectorDefinitionVersionId, NextToken)
 #'
 #' @param ConnectorDefinitionId &#91;required&#93; The ID of the connector definition.
-#' @param ConnectorDefinitionVersionId &#91;required&#93; The ID of the connector definition version.
+#' @param ConnectorDefinitionVersionId &#91;required&#93; The ID of the connector definition version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListConnectorDefinitionVersions'' requests. If the version is the last one that was associated with a connector definition, the value also maps to the ''LatestVersion'' property of the corresponding ''DefinitionInformation'' object.
 #' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
 #'
 #' @section Request syntax:
@@ -1838,7 +1774,7 @@ greengrass_get_core_definition <- function(CoreDefinitionId) {
 #'   CoreDefinitionVersionId)
 #'
 #' @param CoreDefinitionId &#91;required&#93; The ID of the core definition.
-#' @param CoreDefinitionVersionId &#91;required&#93; The ID of the core definition version.
+#' @param CoreDefinitionVersionId &#91;required&#93; The ID of the core definition version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListCoreDefinitionVersions'' requests. If the version is the last one that was associated with a core definition, the value also maps to the ''LatestVersion'' property of the corresponding ''DefinitionInformation'' object.
 #'
 #' @section Request syntax:
 #' ```
@@ -1951,7 +1887,7 @@ greengrass_get_device_definition <- function(DeviceDefinitionId) {
 #'   DeviceDefinitionVersionId, NextToken)
 #'
 #' @param DeviceDefinitionId &#91;required&#93; The ID of the device definition.
-#' @param DeviceDefinitionVersionId &#91;required&#93; The ID of the device definition version.
+#' @param DeviceDefinitionVersionId &#91;required&#93; The ID of the device definition version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListDeviceDefinitionVersions'' requests. If the version is the last one that was associated with a device definition, the value also maps to the ''LatestVersion'' property of the corresponding ''DefinitionInformation'' object.
 #' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
 #'
 #' @section Request syntax:
@@ -2031,7 +1967,7 @@ greengrass_get_function_definition <- function(FunctionDefinitionId) {
 #'   FunctionDefinitionVersionId, NextToken)
 #'
 #' @param FunctionDefinitionId &#91;required&#93; The ID of the Lambda function definition.
-#' @param FunctionDefinitionVersionId &#91;required&#93; The ID of the function definition version.
+#' @param FunctionDefinitionVersionId &#91;required&#93; The ID of the function definition version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListFunctionDefinitionVersions'' requests. If the version is the last one that was associated with a function definition, the value also maps to the ''LatestVersion'' property of the corresponding ''DefinitionInformation'' object.
 #' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
 #'
 #' @section Request syntax:
@@ -2182,7 +2118,7 @@ greengrass_get_group_certificate_configuration <- function(GroupId) {
 #' greengrass_get_group_version(GroupId, GroupVersionId)
 #'
 #' @param GroupId &#91;required&#93; The ID of the Greengrass group.
-#' @param GroupVersionId &#91;required&#93; The ID of the group version.
+#' @param GroupVersionId &#91;required&#93; The ID of the group version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListGroupVersions'' requests. If the version is the last one that was associated with a group, the value also maps to the ''LatestVersion'' property of the corresponding ''GroupInformation'' object.
 #'
 #' @section Request syntax:
 #' ```
@@ -2257,7 +2193,7 @@ greengrass_get_logger_definition <- function(LoggerDefinitionId) {
 #'   LoggerDefinitionVersionId, NextToken)
 #'
 #' @param LoggerDefinitionId &#91;required&#93; The ID of the logger definition.
-#' @param LoggerDefinitionVersionId &#91;required&#93; The ID of the logger definition version.
+#' @param LoggerDefinitionVersionId &#91;required&#93; The ID of the logger definition version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListLoggerDefinitionVersions'' requests. If the version is the last one that was associated with a logger definition, the value also maps to the ''LatestVersion'' property of the corresponding ''DefinitionInformation'' object.
 #' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
 #'
 #' @section Request syntax:
@@ -2336,7 +2272,7 @@ greengrass_get_resource_definition <- function(ResourceDefinitionId) {
 #'   ResourceDefinitionVersionId)
 #'
 #' @param ResourceDefinitionId &#91;required&#93; The ID of the resource definition.
-#' @param ResourceDefinitionVersionId &#91;required&#93; The ID of the resource definition version.
+#' @param ResourceDefinitionVersionId &#91;required&#93; The ID of the resource definition version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListResourceDefinitionVersions'' requests. If the version is the last one that was associated with a resource definition, the value also maps to the ''LatestVersion'' property of the corresponding ''DefinitionInformation'' object.
 #'
 #' @section Request syntax:
 #' ```
@@ -2444,7 +2380,7 @@ greengrass_get_subscription_definition <- function(SubscriptionDefinitionId) {
 #'
 #' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
 #' @param SubscriptionDefinitionId &#91;required&#93; The ID of the subscription definition.
-#' @param SubscriptionDefinitionVersionId &#91;required&#93; The ID of the subscription definition version.
+#' @param SubscriptionDefinitionVersionId &#91;required&#93; The ID of the subscription definition version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListSubscriptionDefinitionVersions'' requests. If the version is the last one that was associated with a subscription definition, the value also maps to the ''LatestVersion'' property of the corresponding ''DefinitionInformation'' object.
 #'
 #' @section Request syntax:
 #' ```
@@ -3263,9 +3199,9 @@ greengrass_list_subscription_definitions <- function(MaxResults = NULL, NextToke
 }
 .greengrass$operations$list_subscription_definitions <- greengrass_list_subscription_definitions
 
-#' Retrieves the tags for a resource
+#' Retrieves a list of resource tags for a resource arn
 #'
-#' Retrieves the tags for a resource.
+#' Retrieves a list of resource tags for a resource arn.
 #'
 #' @usage
 #' greengrass_list_tags_for_resource(ResourceArn)
@@ -3348,9 +3284,9 @@ greengrass_reset_deployments <- function(AmznClientToken = NULL, Force = NULL, G
 #'   InputFileUri, tags)
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
-#' @param ExecutionRoleArn The ARN of the execution role to associate with the bulk deployment operation. This IAM role must allow the ''greengrass:CreateDeployment'' action for all group versions that are listed in the input file. This IAM role must have access to the S3 bucket containing the input file.
-#' @param InputFileUri The URI of the input file contained in the S3 bucket. The execution role must have ''getObject'' permissions on this bucket to access the input file. The input file is a JSON-serialized, line delimited file with UTF-8 encoding that provides a list of group and version IDs and the deployment type. This file must be less than 100 MB. Currently, AWS IoT Greengrass supports only ''NewDeployment'' deployment types.
-#' @param tags Tag(s) to add to the new resource
+#' @param ExecutionRoleArn &#91;required&#93; The ARN of the execution role to associate with the bulk deployment operation. This IAM role must allow the ''greengrass:CreateDeployment'' action for all group versions that are listed in the input file. This IAM role must have access to the S3 bucket containing the input file.
+#' @param InputFileUri &#91;required&#93; The URI of the input file contained in the S3 bucket. The execution role must have ''getObject'' permissions on this bucket to access the input file. The input file is a JSON-serialized, line delimited file with UTF-8 encoding that provides a list of group and version IDs and the deployment type. This file must be less than 100 MB. Currently, AWS IoT Greengrass supports only ''NewDeployment'' deployment types.
+#' @param tags Tag(s) to add to the new resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -3367,7 +3303,7 @@ greengrass_reset_deployments <- function(AmznClientToken = NULL, Force = NULL, G
 #' @keywords internal
 #'
 #' @rdname greengrass_start_bulk_deployment
-greengrass_start_bulk_deployment <- function(AmznClientToken = NULL, ExecutionRoleArn = NULL, InputFileUri = NULL, tags = NULL) {
+greengrass_start_bulk_deployment <- function(AmznClientToken = NULL, ExecutionRoleArn, InputFileUri, tags = NULL) {
   op <- new_operation(
     name = "StartBulkDeployment",
     http_method = "POST",
@@ -3419,6 +3355,86 @@ greengrass_stop_bulk_deployment <- function(BulkDeploymentId) {
   return(response)
 }
 .greengrass$operations$stop_bulk_deployment <- greengrass_stop_bulk_deployment
+
+#' Adds tags to a Greengrass resource
+#'
+#' Adds tags to a Greengrass resource. Valid resources are 'Group', 'ConnectorDefinition', 'CoreDefinition', 'DeviceDefinition', 'FunctionDefinition', 'LoggerDefinition', 'SubscriptionDefinition', 'ResourceDefinition', and 'BulkDeployment'.
+#'
+#' @usage
+#' greengrass_tag_resource(ResourceArn, tags)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#' @param tags 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname greengrass_tag_resource
+greengrass_tag_resource <- function(ResourceArn, tags = NULL) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{resource-arn}",
+    paginator = list()
+  )
+  input <- .greengrass$tag_resource_input(ResourceArn = ResourceArn, tags = tags)
+  output <- .greengrass$tag_resource_output()
+  config <- get_config()
+  svc <- .greengrass$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.greengrass$operations$tag_resource <- greengrass_tag_resource
+
+#' Remove resource tags from a Greengrass Resource
+#'
+#' Remove resource tags from a Greengrass Resource.
+#'
+#' @usage
+#' greengrass_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#' @param TagKeys &#91;required&#93; An array of tag keys to delete
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname greengrass_untag_resource
+greengrass_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{resource-arn}",
+    paginator = list()
+  )
+  input <- .greengrass$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .greengrass$untag_resource_output()
+  config <- get_config()
+  svc <- .greengrass$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.greengrass$operations$untag_resource <- greengrass_untag_resource
 
 #' Updates the connectivity information for the core
 #'

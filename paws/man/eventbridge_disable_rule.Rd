@@ -13,8 +13,8 @@ eventbridge_disable_rule(Name, EventBusName)
 event bus is used.}
 }
 \description{
-Disables the specified rule. A disabled rule won't match any events and
-won't self-trigger if it has a schedule expression.
+Disables the specified rule. A disabled rule won\'t match any events and
+won\'t self-trigger if it has a schedule expression.
 }
 \details{
 When you disable a rule, incoming events might continue to match to the

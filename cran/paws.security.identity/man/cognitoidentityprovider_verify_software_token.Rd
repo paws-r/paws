@@ -19,8 +19,8 @@ to the service.}
 \item{FriendlyDeviceName}{The friendly device name.}
 }
 \description{
-Use this API to register a user's entered TOTP code and mark the
-user's software token MFA status as "verified" if successful. The
+Use this API to register a user\'s entered TOTP code and mark the
+user\'s software token MFA status as \"verified\" if successful. The
 request takes an access token or a session string, but not both.
 }
 \section{Request syntax}{

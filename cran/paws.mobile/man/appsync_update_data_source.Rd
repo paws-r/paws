@@ -42,7 +42,13 @@ Updates a \code{DataSource} object.
   dynamodbConfig = list(
     tableName = "string",
     awsRegion = "string",
-    useCallerCredentials = TRUE|FALSE
+    useCallerCredentials = TRUE|FALSE,
+    deltaSyncConfig = list(
+      baseTableTTL = 123,
+      deltaSyncTableName = "string",
+      deltaSyncTableTTL = 123
+    ),
+    versioned = TRUE|FALSE
   ),
   lambdaConfig = list(
     lambdaFunctionArn = "string"

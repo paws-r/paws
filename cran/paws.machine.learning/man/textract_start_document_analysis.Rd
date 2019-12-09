@@ -2,9 +2,9 @@
 % Please edit documentation in R/textract_operations.R
 \name{textract_start_document_analysis}
 \alias{textract_start_document_analysis}
-\title{Starts asynchronous analysis of an input document for relationships
-between detected items such as key and value pairs, tables, and
-selection elements}
+\title{Starts the asynchronous analysis of an input document for relationships
+between detected items such as key-value pairs, tables, and selection
+elements}
 \usage{
 textract_start_document_analysis(DocumentLocation, FeatureTypes,
   ClientRequestToken, JobTag, NotificationChannel)
@@ -14,31 +14,32 @@ textract_start_document_analysis(DocumentLocation, FeatureTypes,
 
 \item{FeatureTypes}{[required] A list of the types of analysis to perform. Add TABLES to the list to
 return information about the tables that are detected in the input
-document. Add FORMS to return detected fields and the associated text.
-To perform both types of analysis, add TABLES and FORMS to
-\code{FeatureTypes}. All selectable elements (\code{SELECTION_ELEMENT}) that are
-detected are returned, whatever the value of \code{FeatureTypes}.}
+document. Add FORMS to return detected form data. To perform both types
+of analysis, add TABLES and FORMS to \code{FeatureTypes}. All lines and words
+detected in the document are included in the response (including text
+that isn\'t related to the value of \code{FeatureTypes}).}
 
 \item{ClientRequestToken}{The idempotent token that you use to identify the start request. If you
 use the same token with multiple \code{StartDocumentAnalysis} requests, the
 same \code{JobId} is returned. Use \code{ClientRequestToken} to prevent the same
-job from being accidentally started more than once.}
+job from being accidentally started more than once. For more
+information, see \href{https://docs.aws.amazon.com/textract/latest/dg/api-async.html}{Calling Amazon Textract Asynchronous Operations}.}
 
-\item{JobTag}{An identifier you specify that's included in the completion
-notification that's published to the Amazon SNS topic. For example, you
-can use \code{JobTag} to identify the type of document, such as a tax form or
-a receipt, that the completion notification corresponds to.}
+\item{JobTag}{An identifier that you specify that\'s included in the completion
+notification published to the Amazon SNS topic. For example, you can use
+\code{JobTag} to identify the type of document that the completion
+notification corresponds to (such as a tax form or a receipt).}
 
 \item{NotificationChannel}{The Amazon SNS topic ARN that you want Amazon Textract to publish the
 completion status of the operation to.}
 }
 \description{
-Starts asynchronous analysis of an input document for relationships
-between detected items such as key and value pairs, tables, and
-selection elements.
+Starts the asynchronous analysis of an input document for relationships
+between detected items such as key-value pairs, tables, and selection
+elements.
 }
 \details{
-\code{StartDocumentAnalysis} can analyze text in documents that are in JPG,
+\code{StartDocumentAnalysis} can analyze text in documents that are in JPEG,
 PNG, and PDF format. The documents are stored in an Amazon S3 bucket.
 Use DocumentLocation to specify the bucket name and file name of the
 document.

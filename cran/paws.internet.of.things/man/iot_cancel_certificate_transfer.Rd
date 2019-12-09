@@ -22,7 +22,7 @@ destination account has accepted the transfer, the transfer cannot be
 cancelled.
 
 After a certificate transfer is cancelled, the status of the certificate
-changes from PENDING\_TRANSFER to INACTIVE.
+changes from PENDING\\_TRANSFER to INACTIVE.
 }
 \section{Request syntax}{
 \preformatted{svc$cancel_certificate_transfer(

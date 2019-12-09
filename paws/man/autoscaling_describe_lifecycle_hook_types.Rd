@@ -12,8 +12,8 @@ Describes the available types of lifecycle hooks.
 \details{
 The following hook types are supported:
 \itemize{
-\item autoscaling:EC2\_INSTANCE\_LAUNCHING
-\item autoscaling:EC2\_INSTANCE\_TERMINATING
+\item autoscaling:EC2\\_INSTANCE\\_LAUNCHING
+\item autoscaling:EC2\\_INSTANCE\\_TERMINATING
 }
 }
 \examples{

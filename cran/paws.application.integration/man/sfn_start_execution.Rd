@@ -16,20 +16,20 @@ in the \emph{AWS Step Functions Developer Guide}.
 
 A name must \emph{not} contain:
 \itemize{
-\item whitespace
-\item brackets \code{&lt; &gt; \{ \} \\[ \\]}
-\item wildcard characters \code{? *}
-\item special characters \code{\" # \\\% \\ ^ | ~ \` $ &amp; , ; : /}
-\item control characters (\code{U+0000-001F}, \code{U+007F-009F})
+\item white space
+\item brackets \verb{&lt; &gt; \\\{ \\\} \\\[ \\\]}
+\item wildcard characters \verb{? *}
+\item special characters \verb{\\" # \\\% \\\\ ^ | ~ \\` $ &amp; , ; : /}
+\item control characters (\verb{U+0000-001F}, \verb{U+007F-009F})
 }}
 
 \item{input}{The string that contains the JSON input data for the execution, for
 example:
 
-\code{"input": "\{\"first_name\" : \"test\"\}"}
+\verb{"input": "\\\{\\"first_name\\" : \\"test\\"\\\}"}
 
-If you don't include any JSON input data, you still must include the
-two braces, for example: \code{"input": "\{\}"}}
+If you don\'t include any JSON input data, you still must include the
+two braces, for example: \code{"input": "\\{\\}"}}
 }
 \description{
 Starts a state machine execution.

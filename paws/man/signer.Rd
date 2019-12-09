@@ -10,14 +10,15 @@ signer(config = list())
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
-You can use Code Signing for Amazon FreeRTOS (AWS Signer) to sign code
-that you created for any of the IoT devices that Amazon Web Services
-supports. AWS Signer is integrated with Amazon FreeRTOS, AWS Certificate
-Manager, and AWS CloudTrail. Amazon FreeRTOS customers can use AWS
-Signer to sign code images before making them available for
-microcontrollers. You can use ACM to import third-party certificates to
-be used by AWS Signer. For general information about using AWS Signer,
-see the \href{http://docs.aws.amazon.com/signer/latest/developerguide/Welcome.html}{Code Signing for Amazon FreeRTOS Developer Guide}.
+With code signing for IoT, you can sign code that you create for any IoT
+device that is supported by Amazon Web Services (AWS). Code signing is
+available through \href{http://docs.aws.amazon.com/freertos/latest/userguide/}{Amazon FreeRTOS} and
+\href{http://docs.aws.amazon.com/iot/latest/developerguide/}{AWS IoT Device Management}, and
+integrated with \href{http://docs.aws.amazon.com/acm/latest/userguide/}{AWS Certificate Manager (ACM)}. In order to
+sign code, you import a third-party code signing certificate with ACM
+that is used to sign updates in Amazon FreeRTOS and AWS IoT Device
+Management. For general information about using code signing, see the
+\href{http://docs.aws.amazon.com/signer/latest/developerguide/Welcome.html}{Code Signing for IoT Developer Guide}.
 }
 \section{Service syntax}{
 \preformatted{svc <- signer(
@@ -45,10 +46,13 @@ see the \href{http://docs.aws.amazon.com/signer/latest/developerguide/Welcome.ht
 \link[=signer_get_signing_platform]{get_signing_platform} \tab Returns information on a specific signing platform \cr
 \link[=signer_get_signing_profile]{get_signing_profile} \tab Returns information on a specific signing profile \cr
 \link[=signer_list_signing_jobs]{list_signing_jobs} \tab Lists all your signing jobs \cr
-\link[=signer_list_signing_platforms]{list_signing_platforms} \tab Lists all signing platforms available in AWS Signer that match the request parameters\cr
+\link[=signer_list_signing_platforms]{list_signing_platforms} \tab Lists all signing platforms available in code signing that match the request parameters\cr
 \link[=signer_list_signing_profiles]{list_signing_profiles} \tab Lists all available signing profiles in your AWS account \cr
+\link[=signer_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags associated with a signing profile resource \cr
 \link[=signer_put_signing_profile]{put_signing_profile} \tab Creates a signing profile \cr
-\link[=signer_start_signing_job]{start_signing_job} \tab Initiates a signing job to be performed on the code provided
+\link[=signer_start_signing_job]{start_signing_job} \tab Initiates a signing job to be performed on the code provided \cr
+\link[=signer_tag_resource]{tag_resource} \tab Adds one or more tags to a signing profile \cr
+\link[=signer_untag_resource]{untag_resource} \tab Remove one or more tags from a signing profile
 }
 }
 

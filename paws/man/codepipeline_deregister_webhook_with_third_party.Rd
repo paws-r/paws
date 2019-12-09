@@ -13,7 +13,7 @@ codepipeline_deregister_webhook_with_third_party(webhookName)
 \description{
 Removes the connection between the webhook that was created by
 CodePipeline and the external tool with events to be detected. Currently
-only supported for webhooks that target an action type of GitHub.
+supported only for webhooks that target an action type of GitHub.
 }
 \section{Request syntax}{
 \preformatted{svc$deregister_webhook_with_third_party(

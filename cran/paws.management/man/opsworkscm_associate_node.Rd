@@ -33,16 +33,16 @@ Associates a new node with the server. For more information about how to
 disassociate a node, see DisassociateNode.
 }
 \details{
-On a Chef server: This command is an alternative to \code{knife bootstrap}.
+On a Chef server: This command is an alternative to \verb{knife bootstrap}.
 
 Example (Chef):
-\code{aws opsworks-cm associate-node --server-name <i>MyServer</i> --node-name <i>MyManagedNode</i> --engine-attributes "Name=<i>CHEF_ORGANIZATION</i>,Value=default" "Name=<i>CHEF_NODE_PUBLIC_KEY</i>,Value=<i>public-key-pem</i>"}
+\verb{aws opsworks-cm associate-node --server-name <i>MyServer</i> --node-name <i>MyManagedNode</i> --engine-attributes "Name=<i>CHEF_ORGANIZATION</i>,Value=default" "Name=<i>CHEF_NODE_PUBLIC_KEY</i>,Value=<i>public-key-pem</i>"}
 
 On a Puppet server, this command is an alternative to the
-\code{puppet cert sign} command that signs a Puppet node CSR.
+\verb{puppet cert sign} command that signs a Puppet node CSR.
 
 Example (Chef):
-\code{aws opsworks-cm associate-node --server-name <i>MyServer</i> --node-name <i>MyManagedNode</i> --engine-attributes "Name=<i>PUPPET_NODE_CSR</i>,Value=<i>csr-pem</i>"}
+\verb{aws opsworks-cm associate-node --server-name <i>MyServer</i> --node-name <i>MyManagedNode</i> --engine-attributes "Name=<i>PUPPET_NODE_CSR</i>,Value=<i>csr-pem</i>"}
 
 A node can can only be associated with servers that are in a \code{HEALTHY}
 state. Otherwise, an \code{InvalidStateException} is thrown. A
@@ -50,7 +50,7 @@ state. Otherwise, an \code{InvalidStateException} is thrown. A
 \code{ValidationException} is raised when parameters of the request are not
 valid. The AssociateNode API call can be integrated into Auto Scaling
 configurations, AWS Cloudformation templates, or the user data of a
-server's instance.
+server\'s instance.
 }
 \section{Request syntax}{
 \preformatted{svc$associate_node(

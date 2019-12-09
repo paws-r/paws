@@ -3,7 +3,7 @@
 \name{sns_list_platform_applications}
 \alias{sns_list_platform_applications}
 \title{Lists the platform application objects for the supported push
-notification services, such as APNS and GCM}
+notification services, such as APNS and FCM}
 \usage{
 sns_list_platform_applications(NextToken)
 }
@@ -14,7 +14,7 @@ results.}
 }
 \description{
 Lists the platform application objects for the supported push
-notification services, such as APNS and GCM. The results for
+notification services, such as APNS and FCM. The results for
 \code{ListPlatformApplications} are paginated and return a limited list of
 applications, up to 100. If additional records are available after the
 first page results, then a NextToken string will be returned. To receive

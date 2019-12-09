@@ -82,28 +82,32 @@ mediaconvert_cancel_job <- function(Id) {
 #'
 #' @usage
 #' mediaconvert_create_job(AccelerationSettings, BillingTagsSource,
-#'   ClientRequestToken, JobTemplate, Queue, Role, Settings,
-#'   StatusUpdateInterval, UserMetadata)
+#'   ClientRequestToken, JobTemplate, Priority, Queue, Role, Settings,
+#'   SimulateReservedQueue, StatusUpdateInterval, Tags, UserMetadata)
 #'
 #' @param AccelerationSettings Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental MediaConvert User Guide.
 #' @param BillingTagsSource Optional. Choose a tag type that AWS Billing and Cost Management will use to sort your AWS Elemental MediaConvert costs on any billing report that you set up. Any transcoding outputs that don't have an associated tag will appear in your billing report unsorted. If you don't choose a valid value for this field, your job outputs will appear on the billing report unsorted.
 #' @param ClientRequestToken Idempotency token for CreateJob operation.
 #' @param JobTemplate When you create a job, you can either specify a job template or specify the transcoding settings individually
+#' @param Priority Specify the relative priority for this job. In any given queue, the service begins processing the job with the highest value first. When more than one job has the same priority, the service begins processing the job that you submitted first. If you don't specify a priority, the service uses the default value 0.
 #' @param Queue Optional. When you create a job, you can specify a queue to send it to. If you don't specify, the job will go to the default queue. For more about queues, see the User Guide topic at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html.
 #' @param Role &#91;required&#93; Required. The IAM role you use for creating this job. For details about permissions, see the User Guide topic at the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html.
 #' @param Settings &#91;required&#93; JobSettings contains all the transcode settings for a job.
+#' @param SimulateReservedQueue Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you need. When this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to what you will see with one RTS in a reserved queue. This setting is disabled by default.
 #' @param StatusUpdateInterval Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins processing your job to the time it completes the transcode or encounters an error.
+#' @param Tags The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.
 #' @param UserMetadata User-defined metadata that you want to associate with an MediaConvert job. You specify metadata in key/value pairs.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_job(
 #'   AccelerationSettings = list(
-#'     Mode = "DISABLED"|"ENABLED"
+#'     Mode = "DISABLED"|"ENABLED"|"PREFERRED"
 #'   ),
-#'   BillingTagsSource = "QUEUE"|"PRESET"|"JOB_TEMPLATE",
+#'   BillingTagsSource = "QUEUE"|"PRESET"|"JOB_TEMPLATE"|"JOB",
 #'   ClientRequestToken = "string",
 #'   JobTemplate = "string",
+#'   Priority = 123,
 #'   Queue = "string",
 #'   Role = "string",
 #'   Settings = list(
@@ -165,7 +169,9 @@ mediaconvert_cancel_job <- function(Id) {
 #'             LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
 #'             SourceSettings = list(
 #'               AncillarySourceSettings = list(
-#'                 SourceAncillaryChannelNumber = 123
+#'                 Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                 SourceAncillaryChannelNumber = 123,
+#'                 TerminateCaptions = "END_OF_INPUT"|"DISABLED"
 #'               ),
 #'               DvbSubSourceSettings = list(
 #'                 Pid = 123
@@ -173,7 +179,8 @@ mediaconvert_cancel_job <- function(Id) {
 #'               EmbeddedSourceSettings = list(
 #'                 Convert608To708 = "UPCONVERT"|"DISABLED",
 #'                 Source608ChannelNumber = 123,
-#'                 Source608TrackNumber = 123
+#'                 Source608TrackNumber = 123,
+#'                 TerminateCaptions = "END_OF_INPUT"|"DISABLED"
 #'               ),
 #'               FileSourceSettings = list(
 #'                 Convert608To708 = "UPCONVERT"|"DISABLED",
@@ -189,6 +196,12 @@ mediaconvert_cancel_job <- function(Id) {
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         Crop = list(
+#'           Height = 123,
+#'           Width = 123,
+#'           X = 123,
+#'           Y = 123
 #'         ),
 #'         DeblockFilter = "ENABLED"|"DISABLED",
 #'         DecryptionSettings = list(
@@ -224,13 +237,21 @@ mediaconvert_cancel_job <- function(Id) {
 #'             StartTimecode = "string"
 #'           )
 #'         ),
+#'         Position = list(
+#'           Height = 123,
+#'           Width = 123,
+#'           X = 123,
+#'           Y = 123
+#'         ),
 #'         ProgramNumber = 123,
 #'         PsiControl = "IGNORE_PSI"|"USE_PSI",
 #'         SupplementalImps = list(
 #'           "string"
 #'         ),
 #'         TimecodeSource = "EMBEDDED"|"ZEROBASED"|"SPECIFIEDSTART",
+#'         TimecodeStart = "string",
 #'         VideoSelector = list(
+#'           AlphaBehavior = "DISCARD"|"REMAP_TO_LUMA",
 #'           ColorSpace = "FOLLOW"|"REC_601"|"REC_709"|"HDR10"|"HLG_2020",
 #'           ColorSpaceUsage = "FORCE"|"FALLBACK",
 #'           Hdr10Metadata = list(
@@ -277,12 +298,23 @@ mediaconvert_cancel_job <- function(Id) {
 #'         Name = "string",
 #'         OutputGroupSettings = list(
 #'           CmafGroupSettings = list(
+#'             AdditionalManifests = list(
+#'               list(
+#'                 ManifestNameModifier = "string",
+#'                 SelectedOutputs = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
 #'             BaseUrl = "string",
 #'             ClientCache = "DISABLED"|"ENABLED",
 #'             CodecSpecification = "RFC_6381"|"RFC_4281",
 #'             Destination = "string",
 #'             DestinationSettings = list(
 #'               S3Settings = list(
+#'                 AccessControl = list(
+#'                   CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                 ),
 #'                 Encryption = list(
 #'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
 #'                   KmsKeyArn = "string"
@@ -291,21 +323,33 @@ mediaconvert_cancel_job <- function(Id) {
 #'             ),
 #'             Encryption = list(
 #'               ConstantInitializationVector = "string",
-#'               EncryptionMethod = "SAMPLE_AES",
+#'               EncryptionMethod = "SAMPLE_AES"|"AES_CTR",
 #'               InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
+#'               SpekeKeyProvider = list(
+#'                 CertificateArn = "string",
+#'                 DashSignaledSystemIds = list(
+#'                   "string"
+#'                 ),
+#'                 HlsSignaledSystemIds = list(
+#'                   "string"
+#'                 ),
+#'                 ResourceId = "string",
+#'                 Url = "string"
+#'               ),
 #'               StaticKeyProvider = list(
 #'                 KeyFormat = "string",
 #'                 KeyFormatVersions = "string",
 #'                 StaticKeyValue = "string",
 #'                 Url = "string"
 #'               ),
-#'               Type = "STATIC_KEY"
+#'               Type = "SPEKE"|"STATIC_KEY"
 #'             ),
 #'             FragmentLength = 123,
 #'             ManifestCompression = "GZIP"|"NONE",
 #'             ManifestDurationFormat = "FLOATING_POINT"|"INTEGER",
 #'             MinBufferTime = 123,
 #'             MinFinalSegmentLength = 123.0,
+#'             MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
 #'             SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
 #'             SegmentLength = 123,
 #'             StreamInfResolution = "INCLUDE"|"EXCLUDE",
@@ -313,10 +357,21 @@ mediaconvert_cancel_job <- function(Id) {
 #'             WriteHlsManifest = "DISABLED"|"ENABLED"
 #'           ),
 #'           DashIsoGroupSettings = list(
+#'             AdditionalManifests = list(
+#'               list(
+#'                 ManifestNameModifier = "string",
+#'                 SelectedOutputs = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
 #'             BaseUrl = "string",
 #'             Destination = "string",
 #'             DestinationSettings = list(
 #'               S3Settings = list(
+#'                 AccessControl = list(
+#'                   CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                 ),
 #'                 Encryption = list(
 #'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
 #'                   KmsKeyArn = "string"
@@ -337,6 +392,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'             FragmentLength = 123,
 #'             HbbtvCompliance = "HBBTV_1_5"|"NONE",
 #'             MinBufferTime = 123,
+#'             MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
 #'             SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
 #'             SegmentLength = 123,
 #'             WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
@@ -345,6 +401,9 @@ mediaconvert_cancel_job <- function(Id) {
 #'             Destination = "string",
 #'             DestinationSettings = list(
 #'               S3Settings = list(
+#'                 AccessControl = list(
+#'                   CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                 ),
 #'                 Encryption = list(
 #'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
 #'                   KmsKeyArn = "string"
@@ -355,6 +414,14 @@ mediaconvert_cancel_job <- function(Id) {
 #'           HlsGroupSettings = list(
 #'             AdMarkers = list(
 #'               "ELEMENTAL"|"ELEMENTAL_SCTE35"
+#'             ),
+#'             AdditionalManifests = list(
+#'               list(
+#'                 ManifestNameModifier = "string",
+#'                 SelectedOutputs = list(
+#'                   "string"
+#'                 )
+#'               )
 #'             ),
 #'             BaseUrl = "string",
 #'             CaptionLanguageMappings = list(
@@ -371,6 +438,9 @@ mediaconvert_cancel_job <- function(Id) {
 #'             Destination = "string",
 #'             DestinationSettings = list(
 #'               S3Settings = list(
+#'                 AccessControl = list(
+#'                   CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                 ),
 #'                 Encryption = list(
 #'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
 #'                   KmsKeyArn = "string"
@@ -415,10 +485,21 @@ mediaconvert_cancel_job <- function(Id) {
 #'             TimestampDeltaMilliseconds = 123
 #'           ),
 #'           MsSmoothGroupSettings = list(
+#'             AdditionalManifests = list(
+#'               list(
+#'                 ManifestNameModifier = "string",
+#'                 SelectedOutputs = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
 #'             AudioDeduplication = "COMBINE_DUPLICATE_STREAMS"|"NONE",
 #'             Destination = "string",
 #'             DestinationSettings = list(
 #'               S3Settings = list(
+#'                 AccessControl = list(
+#'                   CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                 ),
 #'                 Encryption = list(
 #'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
 #'                   KmsKeyArn = "string"
@@ -445,7 +526,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'             AudioDescriptions = list(
 #'               list(
 #'                 AudioNormalizationSettings = list(
-#'                   Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2",
+#'                   Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
 #'                   AlgorithmControl = "CORRECT_AUDIO"|"MEASURE_ONLY",
 #'                   CorrectionGateLevel = 123,
 #'                   LoudnessLogging = "LOG"|"DONT_LOG",
@@ -482,7 +563,24 @@ mediaconvert_cancel_job <- function(Id) {
 #'                     Channels = 123,
 #'                     SampleRate = 123
 #'                   ),
-#'                   Codec = "AAC"|"MP2"|"WAV"|"AIFF"|"AC3"|"EAC3"|"PASSTHROUGH",
+#'                   Codec = "AAC"|"MP2"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"PASSTHROUGH",
+#'                   Eac3AtmosSettings = list(
+#'                     Bitrate = 123,
+#'                     BitstreamMode = "COMPLETE_MAIN",
+#'                     CodingMode = "CODING_MODE_9_1_6",
+#'                     DialogueIntelligence = "ENABLED"|"DISABLED",
+#'                     DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                     DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                     LoRoCenterMixLevel = 123.0,
+#'                     LoRoSurroundMixLevel = 123.0,
+#'                     LtRtCenterMixLevel = 123.0,
+#'                     LtRtSurroundMixLevel = 123.0,
+#'                     MeteringMode = "LEQ_A"|"ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'                     SampleRate = 123,
+#'                     SpeechThreshold = 123,
+#'                     StereoDownmix = "NOT_INDICATED"|"STEREO"|"SURROUND"|"DPL2",
+#'                     SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'                   ),
 #'                   Eac3Settings = list(
 #'                     AttenuationControl = "ATTENUATE_3_DB"|"NONE",
 #'                     Bitrate = 123,
@@ -561,7 +659,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'                     XPosition = 123,
 #'                     YPosition = 123
 #'                   ),
-#'                   DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
+#'                   DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"IMSC"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
 #'                   DvbSubDestinationSettings = list(
 #'                     Alignment = "CENTERED"|"LEFT",
 #'                     BackgroundColor = "NONE"|"BLACK"|"WHITE",
@@ -577,18 +675,26 @@ mediaconvert_cancel_job <- function(Id) {
 #'                     ShadowOpacity = 123,
 #'                     ShadowXOffset = 123,
 #'                     ShadowYOffset = 123,
+#'                     SubtitlingType = "HEARING_IMPAIRED"|"STANDARD",
 #'                     TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
 #'                     XPosition = 123,
 #'                     YPosition = 123
 #'                   ),
 #'                   EmbeddedDestinationSettings = list(
-#'                     Destination608ChannelNumber = 123
+#'                     Destination608ChannelNumber = 123,
+#'                     Destination708ServiceNumber = 123
+#'                   ),
+#'                   ImscDestinationSettings = list(
+#'                     StylePassthrough = "ENABLED"|"DISABLED"
 #'                   ),
 #'                   SccDestinationSettings = list(
-#'                     Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
+#'                     Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_25"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
 #'                   ),
 #'                   TeletextDestinationSettings = list(
-#'                     PageNumber = "string"
+#'                     PageNumber = "string",
+#'                     PageTypes = list(
+#'                       "PAGE_TYPE_INITIAL"|"PAGE_TYPE_SUBTITLE"|"PAGE_TYPE_ADDL_INFO"|"PAGE_TYPE_PROGRAM_SCHEDULE"|"PAGE_TYPE_HEARING_IMPAIRED_SUBTITLE"
+#'                     )
 #'                   ),
 #'                   TtmlDestinationSettings = list(
 #'                     StylePassthrough = "ENABLED"|"DISABLED"
@@ -690,6 +796,11 @@ mediaconvert_cancel_job <- function(Id) {
 #'                 FreeSpaceBox = "INCLUDE"|"EXCLUDE",
 #'                 MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
 #'                 Mp4MajorBrand = "string"
+#'               ),
+#'               MpdSettings = list(
+#'                 CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
+#'                 Scte35Esam = "INSERT"|"NONE",
+#'                 Scte35Source = "PASSTHROUGH"|"NONE"
 #'               )
 #'             ),
 #'             Extension = "string",
@@ -697,6 +808,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'             OutputSettings = list(
 #'               HlsSettings = list(
 #'                 AudioGroupId = "string",
+#'                 AudioOnlyContainer = "AUTOMATIC"|"M2TS",
 #'                 AudioRenditionSets = "string",
 #'                 AudioTrackType = "ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"|"ALTERNATE_AUDIO_AUTO_SELECT"|"ALTERNATE_AUDIO_NOT_AUTO_SELECT"|"AUDIO_ONLY_VARIANT_STREAM",
 #'                 IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
@@ -749,7 +861,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'                   ),
 #'                   RateControlMode = "VBR"|"CBR"|"QVBR",
 #'                   RepeatPps = "DISABLED"|"ENABLED",
-#'                   SceneChangeDetect = "DISABLED"|"ENABLED",
+#'                   SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
 #'                   Slices = 123,
 #'                   SlowPal = "DISABLED"|"ENABLED",
 #'                   Softness = 123,
@@ -792,7 +904,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'                   ),
 #'                   RateControlMode = "VBR"|"CBR"|"QVBR",
 #'                   SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
-#'                   SceneChangeDetect = "DISABLED"|"ENABLED",
+#'                   SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
 #'                   Slices = 123,
 #'                   SlowPal = "DISABLED"|"ENABLED",
 #'                   SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
@@ -897,6 +1009,14 @@ mediaconvert_cancel_job <- function(Id) {
 #'                   Control = "FORCE_ALL_FRAMES"|"NORMAL",
 #'                   Mode = "DEINTERLACE"|"INVERSE_TELECINE"|"ADAPTIVE"
 #'                 ),
+#'                 DolbyVision = list(
+#'                   L6Metadata = list(
+#'                     MaxCll = 123,
+#'                     MaxFall = 123
+#'                   ),
+#'                   L6Mode = "PASSTHROUGH"|"RECALCULATE"|"SPECIFY",
+#'                   Profile = "PROFILE_5"
+#'                 ),
 #'                 ImageInserter = list(
 #'                   InsertableImages = list(
 #'                     list(
@@ -915,12 +1035,17 @@ mediaconvert_cancel_job <- function(Id) {
 #'                   )
 #'                 ),
 #'                 NoiseReducer = list(
-#'                   Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL",
+#'                   Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL"|"TEMPORAL",
 #'                   FilterSettings = list(
 #'                     Strength = 123
 #'                   ),
 #'                   SpatialFilterSettings = list(
 #'                     PostFilterSharpenStrength = 123,
+#'                     Speed = 123,
+#'                     Strength = 123
+#'                   ),
+#'                   TemporalFilterSettings = list(
+#'                     AggressiveMode = 123,
 #'                     Speed = 123,
 #'                     Strength = 123
 #'                   )
@@ -952,7 +1077,11 @@ mediaconvert_cancel_job <- function(Id) {
 #'       )
 #'     )
 #'   ),
+#'   SimulateReservedQueue = "DISABLED"|"ENABLED",
 #'   StatusUpdateInterval = "SECONDS_10"|"SECONDS_12"|"SECONDS_15"|"SECONDS_20"|"SECONDS_30"|"SECONDS_60"|"SECONDS_120"|"SECONDS_180"|"SECONDS_240"|"SECONDS_300"|"SECONDS_360"|"SECONDS_420"|"SECONDS_480"|"SECONDS_540"|"SECONDS_600",
+#'   Tags = list(
+#'     "string"
+#'   ),
 #'   UserMetadata = list(
 #'     "string"
 #'   )
@@ -962,14 +1091,14 @@ mediaconvert_cancel_job <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname mediaconvert_create_job
-mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSource = NULL, ClientRequestToken = NULL, JobTemplate = NULL, Queue = NULL, Role, Settings, StatusUpdateInterval = NULL, UserMetadata = NULL) {
+mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSource = NULL, ClientRequestToken = NULL, JobTemplate = NULL, Priority = NULL, Queue = NULL, Role, Settings, SimulateReservedQueue = NULL, StatusUpdateInterval = NULL, Tags = NULL, UserMetadata = NULL) {
   op <- new_operation(
     name = "CreateJob",
     http_method = "POST",
     http_path = "/2017-08-29/jobs",
     paginator = list()
   )
-  input <- .mediaconvert$create_job_input(AccelerationSettings = AccelerationSettings, BillingTagsSource = BillingTagsSource, ClientRequestToken = ClientRequestToken, JobTemplate = JobTemplate, Queue = Queue, Role = Role, Settings = Settings, StatusUpdateInterval = StatusUpdateInterval, UserMetadata = UserMetadata)
+  input <- .mediaconvert$create_job_input(AccelerationSettings = AccelerationSettings, BillingTagsSource = BillingTagsSource, ClientRequestToken = ClientRequestToken, JobTemplate = JobTemplate, Priority = Priority, Queue = Queue, Role = Role, Settings = Settings, SimulateReservedQueue = SimulateReservedQueue, StatusUpdateInterval = StatusUpdateInterval, Tags = Tags, UserMetadata = UserMetadata)
   output <- .mediaconvert$create_job_output()
   config <- get_config()
   svc <- .mediaconvert$service(config)
@@ -985,12 +1114,14 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'
 #' @usage
 #' mediaconvert_create_job_template(AccelerationSettings, Category,
-#'   Description, Name, Queue, Settings, StatusUpdateInterval, Tags)
+#'   Description, Name, Priority, Queue, Settings, StatusUpdateInterval,
+#'   Tags)
 #'
 #' @param AccelerationSettings Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental MediaConvert User Guide.
 #' @param Category Optional. A category for the job template you are creating
 #' @param Description Optional. A description of the job template you are creating.
 #' @param Name &#91;required&#93; The name of the job template you are creating.
+#' @param Priority Specify the relative priority for this job. In any given queue, the service begins processing the job with the highest value first. When more than one job has the same priority, the service begins processing the job that you submitted first. If you don't specify a priority, the service uses the default value 0.
 #' @param Queue Optional. The queue that jobs created from this template are assigned to. If you don't specify this, jobs will go to the default queue.
 #' @param Settings &#91;required&#93; JobTemplateSettings contains all the transcode settings saved in the template that will be applied to jobs created from it.
 #' @param StatusUpdateInterval Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins processing your job to the time it completes the transcode or encounters an error.
@@ -1000,11 +1131,12 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #' ```
 #' svc$create_job_template(
 #'   AccelerationSettings = list(
-#'     Mode = "DISABLED"|"ENABLED"
+#'     Mode = "DISABLED"|"ENABLED"|"PREFERRED"
 #'   ),
 #'   Category = "string",
 #'   Description = "string",
 #'   Name = "string",
+#'   Priority = 123,
 #'   Queue = "string",
 #'   Settings = list(
 #'     AdAvailOffset = 123,
@@ -1065,7 +1197,9 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'             LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
 #'             SourceSettings = list(
 #'               AncillarySourceSettings = list(
-#'                 SourceAncillaryChannelNumber = 123
+#'                 Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                 SourceAncillaryChannelNumber = 123,
+#'                 TerminateCaptions = "END_OF_INPUT"|"DISABLED"
 #'               ),
 #'               DvbSubSourceSettings = list(
 #'                 Pid = 123
@@ -1073,7 +1207,8 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'               EmbeddedSourceSettings = list(
 #'                 Convert608To708 = "UPCONVERT"|"DISABLED",
 #'                 Source608ChannelNumber = 123,
-#'                 Source608TrackNumber = 123
+#'                 Source608TrackNumber = 123,
+#'                 TerminateCaptions = "END_OF_INPUT"|"DISABLED"
 #'               ),
 #'               FileSourceSettings = list(
 #'                 Convert608To708 = "UPCONVERT"|"DISABLED",
@@ -1089,6 +1224,12 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         Crop = list(
+#'           Height = 123,
+#'           Width = 123,
+#'           X = 123,
+#'           Y = 123
 #'         ),
 #'         DeblockFilter = "ENABLED"|"DISABLED",
 #'         DenoiseFilter = "ENABLED"|"DISABLED",
@@ -1117,10 +1258,18 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'             StartTimecode = "string"
 #'           )
 #'         ),
+#'         Position = list(
+#'           Height = 123,
+#'           Width = 123,
+#'           X = 123,
+#'           Y = 123
+#'         ),
 #'         ProgramNumber = 123,
 #'         PsiControl = "IGNORE_PSI"|"USE_PSI",
 #'         TimecodeSource = "EMBEDDED"|"ZEROBASED"|"SPECIFIEDSTART",
+#'         TimecodeStart = "string",
 #'         VideoSelector = list(
+#'           AlphaBehavior = "DISCARD"|"REMAP_TO_LUMA",
 #'           ColorSpace = "FOLLOW"|"REC_601"|"REC_709"|"HDR10"|"HLG_2020",
 #'           ColorSpaceUsage = "FORCE"|"FALLBACK",
 #'           Hdr10Metadata = list(
@@ -1167,12 +1316,23 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'         Name = "string",
 #'         OutputGroupSettings = list(
 #'           CmafGroupSettings = list(
+#'             AdditionalManifests = list(
+#'               list(
+#'                 ManifestNameModifier = "string",
+#'                 SelectedOutputs = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
 #'             BaseUrl = "string",
 #'             ClientCache = "DISABLED"|"ENABLED",
 #'             CodecSpecification = "RFC_6381"|"RFC_4281",
 #'             Destination = "string",
 #'             DestinationSettings = list(
 #'               S3Settings = list(
+#'                 AccessControl = list(
+#'                   CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                 ),
 #'                 Encryption = list(
 #'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
 #'                   KmsKeyArn = "string"
@@ -1181,21 +1341,33 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'             ),
 #'             Encryption = list(
 #'               ConstantInitializationVector = "string",
-#'               EncryptionMethod = "SAMPLE_AES",
+#'               EncryptionMethod = "SAMPLE_AES"|"AES_CTR",
 #'               InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
+#'               SpekeKeyProvider = list(
+#'                 CertificateArn = "string",
+#'                 DashSignaledSystemIds = list(
+#'                   "string"
+#'                 ),
+#'                 HlsSignaledSystemIds = list(
+#'                   "string"
+#'                 ),
+#'                 ResourceId = "string",
+#'                 Url = "string"
+#'               ),
 #'               StaticKeyProvider = list(
 #'                 KeyFormat = "string",
 #'                 KeyFormatVersions = "string",
 #'                 StaticKeyValue = "string",
 #'                 Url = "string"
 #'               ),
-#'               Type = "STATIC_KEY"
+#'               Type = "SPEKE"|"STATIC_KEY"
 #'             ),
 #'             FragmentLength = 123,
 #'             ManifestCompression = "GZIP"|"NONE",
 #'             ManifestDurationFormat = "FLOATING_POINT"|"INTEGER",
 #'             MinBufferTime = 123,
 #'             MinFinalSegmentLength = 123.0,
+#'             MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
 #'             SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
 #'             SegmentLength = 123,
 #'             StreamInfResolution = "INCLUDE"|"EXCLUDE",
@@ -1203,10 +1375,21 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'             WriteHlsManifest = "DISABLED"|"ENABLED"
 #'           ),
 #'           DashIsoGroupSettings = list(
+#'             AdditionalManifests = list(
+#'               list(
+#'                 ManifestNameModifier = "string",
+#'                 SelectedOutputs = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
 #'             BaseUrl = "string",
 #'             Destination = "string",
 #'             DestinationSettings = list(
 #'               S3Settings = list(
+#'                 AccessControl = list(
+#'                   CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                 ),
 #'                 Encryption = list(
 #'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
 #'                   KmsKeyArn = "string"
@@ -1227,6 +1410,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'             FragmentLength = 123,
 #'             HbbtvCompliance = "HBBTV_1_5"|"NONE",
 #'             MinBufferTime = 123,
+#'             MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
 #'             SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
 #'             SegmentLength = 123,
 #'             WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
@@ -1235,6 +1419,9 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'             Destination = "string",
 #'             DestinationSettings = list(
 #'               S3Settings = list(
+#'                 AccessControl = list(
+#'                   CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                 ),
 #'                 Encryption = list(
 #'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
 #'                   KmsKeyArn = "string"
@@ -1245,6 +1432,14 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'           HlsGroupSettings = list(
 #'             AdMarkers = list(
 #'               "ELEMENTAL"|"ELEMENTAL_SCTE35"
+#'             ),
+#'             AdditionalManifests = list(
+#'               list(
+#'                 ManifestNameModifier = "string",
+#'                 SelectedOutputs = list(
+#'                   "string"
+#'                 )
+#'               )
 #'             ),
 #'             BaseUrl = "string",
 #'             CaptionLanguageMappings = list(
@@ -1261,6 +1456,9 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'             Destination = "string",
 #'             DestinationSettings = list(
 #'               S3Settings = list(
+#'                 AccessControl = list(
+#'                   CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                 ),
 #'                 Encryption = list(
 #'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
 #'                   KmsKeyArn = "string"
@@ -1305,10 +1503,21 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'             TimestampDeltaMilliseconds = 123
 #'           ),
 #'           MsSmoothGroupSettings = list(
+#'             AdditionalManifests = list(
+#'               list(
+#'                 ManifestNameModifier = "string",
+#'                 SelectedOutputs = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
 #'             AudioDeduplication = "COMBINE_DUPLICATE_STREAMS"|"NONE",
 #'             Destination = "string",
 #'             DestinationSettings = list(
 #'               S3Settings = list(
+#'                 AccessControl = list(
+#'                   CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                 ),
 #'                 Encryption = list(
 #'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
 #'                   KmsKeyArn = "string"
@@ -1335,7 +1544,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'             AudioDescriptions = list(
 #'               list(
 #'                 AudioNormalizationSettings = list(
-#'                   Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2",
+#'                   Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
 #'                   AlgorithmControl = "CORRECT_AUDIO"|"MEASURE_ONLY",
 #'                   CorrectionGateLevel = 123,
 #'                   LoudnessLogging = "LOG"|"DONT_LOG",
@@ -1372,7 +1581,24 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                     Channels = 123,
 #'                     SampleRate = 123
 #'                   ),
-#'                   Codec = "AAC"|"MP2"|"WAV"|"AIFF"|"AC3"|"EAC3"|"PASSTHROUGH",
+#'                   Codec = "AAC"|"MP2"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"PASSTHROUGH",
+#'                   Eac3AtmosSettings = list(
+#'                     Bitrate = 123,
+#'                     BitstreamMode = "COMPLETE_MAIN",
+#'                     CodingMode = "CODING_MODE_9_1_6",
+#'                     DialogueIntelligence = "ENABLED"|"DISABLED",
+#'                     DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                     DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                     LoRoCenterMixLevel = 123.0,
+#'                     LoRoSurroundMixLevel = 123.0,
+#'                     LtRtCenterMixLevel = 123.0,
+#'                     LtRtSurroundMixLevel = 123.0,
+#'                     MeteringMode = "LEQ_A"|"ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'                     SampleRate = 123,
+#'                     SpeechThreshold = 123,
+#'                     StereoDownmix = "NOT_INDICATED"|"STEREO"|"SURROUND"|"DPL2",
+#'                     SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'                   ),
 #'                   Eac3Settings = list(
 #'                     AttenuationControl = "ATTENUATE_3_DB"|"NONE",
 #'                     Bitrate = 123,
@@ -1451,7 +1677,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                     XPosition = 123,
 #'                     YPosition = 123
 #'                   ),
-#'                   DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
+#'                   DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"IMSC"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
 #'                   DvbSubDestinationSettings = list(
 #'                     Alignment = "CENTERED"|"LEFT",
 #'                     BackgroundColor = "NONE"|"BLACK"|"WHITE",
@@ -1467,18 +1693,26 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                     ShadowOpacity = 123,
 #'                     ShadowXOffset = 123,
 #'                     ShadowYOffset = 123,
+#'                     SubtitlingType = "HEARING_IMPAIRED"|"STANDARD",
 #'                     TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
 #'                     XPosition = 123,
 #'                     YPosition = 123
 #'                   ),
 #'                   EmbeddedDestinationSettings = list(
-#'                     Destination608ChannelNumber = 123
+#'                     Destination608ChannelNumber = 123,
+#'                     Destination708ServiceNumber = 123
+#'                   ),
+#'                   ImscDestinationSettings = list(
+#'                     StylePassthrough = "ENABLED"|"DISABLED"
 #'                   ),
 #'                   SccDestinationSettings = list(
-#'                     Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
+#'                     Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_25"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
 #'                   ),
 #'                   TeletextDestinationSettings = list(
-#'                     PageNumber = "string"
+#'                     PageNumber = "string",
+#'                     PageTypes = list(
+#'                       "PAGE_TYPE_INITIAL"|"PAGE_TYPE_SUBTITLE"|"PAGE_TYPE_ADDL_INFO"|"PAGE_TYPE_PROGRAM_SCHEDULE"|"PAGE_TYPE_HEARING_IMPAIRED_SUBTITLE"
+#'                     )
 #'                   ),
 #'                   TtmlDestinationSettings = list(
 #'                     StylePassthrough = "ENABLED"|"DISABLED"
@@ -1580,6 +1814,11 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                 FreeSpaceBox = "INCLUDE"|"EXCLUDE",
 #'                 MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
 #'                 Mp4MajorBrand = "string"
+#'               ),
+#'               MpdSettings = list(
+#'                 CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
+#'                 Scte35Esam = "INSERT"|"NONE",
+#'                 Scte35Source = "PASSTHROUGH"|"NONE"
 #'               )
 #'             ),
 #'             Extension = "string",
@@ -1587,6 +1826,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'             OutputSettings = list(
 #'               HlsSettings = list(
 #'                 AudioGroupId = "string",
+#'                 AudioOnlyContainer = "AUTOMATIC"|"M2TS",
 #'                 AudioRenditionSets = "string",
 #'                 AudioTrackType = "ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"|"ALTERNATE_AUDIO_AUTO_SELECT"|"ALTERNATE_AUDIO_NOT_AUTO_SELECT"|"AUDIO_ONLY_VARIANT_STREAM",
 #'                 IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
@@ -1639,7 +1879,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                   ),
 #'                   RateControlMode = "VBR"|"CBR"|"QVBR",
 #'                   RepeatPps = "DISABLED"|"ENABLED",
-#'                   SceneChangeDetect = "DISABLED"|"ENABLED",
+#'                   SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
 #'                   Slices = 123,
 #'                   SlowPal = "DISABLED"|"ENABLED",
 #'                   Softness = 123,
@@ -1682,7 +1922,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                   ),
 #'                   RateControlMode = "VBR"|"CBR"|"QVBR",
 #'                   SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
-#'                   SceneChangeDetect = "DISABLED"|"ENABLED",
+#'                   SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
 #'                   Slices = 123,
 #'                   SlowPal = "DISABLED"|"ENABLED",
 #'                   SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
@@ -1787,6 +2027,14 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                   Control = "FORCE_ALL_FRAMES"|"NORMAL",
 #'                   Mode = "DEINTERLACE"|"INVERSE_TELECINE"|"ADAPTIVE"
 #'                 ),
+#'                 DolbyVision = list(
+#'                   L6Metadata = list(
+#'                     MaxCll = 123,
+#'                     MaxFall = 123
+#'                   ),
+#'                   L6Mode = "PASSTHROUGH"|"RECALCULATE"|"SPECIFY",
+#'                   Profile = "PROFILE_5"
+#'                 ),
 #'                 ImageInserter = list(
 #'                   InsertableImages = list(
 #'                     list(
@@ -1805,12 +2053,17 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                   )
 #'                 ),
 #'                 NoiseReducer = list(
-#'                   Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL",
+#'                   Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL"|"TEMPORAL",
 #'                   FilterSettings = list(
 #'                     Strength = 123
 #'                   ),
 #'                   SpatialFilterSettings = list(
 #'                     PostFilterSharpenStrength = 123,
+#'                     Speed = 123,
+#'                     Strength = 123
+#'                   ),
+#'                   TemporalFilterSettings = list(
+#'                     AggressiveMode = 123,
 #'                     Speed = 123,
 #'                     Strength = 123
 #'                   )
@@ -1852,14 +2105,14 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #' @keywords internal
 #'
 #' @rdname mediaconvert_create_job_template
-mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Category = NULL, Description = NULL, Name, Queue = NULL, Settings, StatusUpdateInterval = NULL, Tags = NULL) {
+mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Category = NULL, Description = NULL, Name, Priority = NULL, Queue = NULL, Settings, StatusUpdateInterval = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateJobTemplate",
     http_method = "POST",
     http_path = "/2017-08-29/jobTemplates",
     paginator = list()
   )
-  input <- .mediaconvert$create_job_template_input(AccelerationSettings = AccelerationSettings, Category = Category, Description = Description, Name = Name, Queue = Queue, Settings = Settings, StatusUpdateInterval = StatusUpdateInterval, Tags = Tags)
+  input <- .mediaconvert$create_job_template_input(AccelerationSettings = AccelerationSettings, Category = Category, Description = Description, Name = Name, Priority = Priority, Queue = Queue, Settings = Settings, StatusUpdateInterval = StatusUpdateInterval, Tags = Tags)
   output <- .mediaconvert$create_job_template_output()
   config <- get_config()
   svc <- .mediaconvert$service(config)
@@ -1892,7 +2145,7 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'     AudioDescriptions = list(
 #'       list(
 #'         AudioNormalizationSettings = list(
-#'           Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2",
+#'           Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
 #'           AlgorithmControl = "CORRECT_AUDIO"|"MEASURE_ONLY",
 #'           CorrectionGateLevel = 123,
 #'           LoudnessLogging = "LOG"|"DONT_LOG",
@@ -1929,7 +2182,24 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'             Channels = 123,
 #'             SampleRate = 123
 #'           ),
-#'           Codec = "AAC"|"MP2"|"WAV"|"AIFF"|"AC3"|"EAC3"|"PASSTHROUGH",
+#'           Codec = "AAC"|"MP2"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"PASSTHROUGH",
+#'           Eac3AtmosSettings = list(
+#'             Bitrate = 123,
+#'             BitstreamMode = "COMPLETE_MAIN",
+#'             CodingMode = "CODING_MODE_9_1_6",
+#'             DialogueIntelligence = "ENABLED"|"DISABLED",
+#'             DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'             DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'             LoRoCenterMixLevel = 123.0,
+#'             LoRoSurroundMixLevel = 123.0,
+#'             LtRtCenterMixLevel = 123.0,
+#'             LtRtSurroundMixLevel = 123.0,
+#'             MeteringMode = "LEQ_A"|"ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'             SampleRate = 123,
+#'             SpeechThreshold = 123,
+#'             StereoDownmix = "NOT_INDICATED"|"STEREO"|"SURROUND"|"DPL2",
+#'             SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'           ),
 #'           Eac3Settings = list(
 #'             AttenuationControl = "ATTENUATE_3_DB"|"NONE",
 #'             Bitrate = 123,
@@ -2007,7 +2277,7 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'             XPosition = 123,
 #'             YPosition = 123
 #'           ),
-#'           DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
+#'           DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"IMSC"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
 #'           DvbSubDestinationSettings = list(
 #'             Alignment = "CENTERED"|"LEFT",
 #'             BackgroundColor = "NONE"|"BLACK"|"WHITE",
@@ -2023,18 +2293,26 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'             ShadowOpacity = 123,
 #'             ShadowXOffset = 123,
 #'             ShadowYOffset = 123,
+#'             SubtitlingType = "HEARING_IMPAIRED"|"STANDARD",
 #'             TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
 #'             XPosition = 123,
 #'             YPosition = 123
 #'           ),
 #'           EmbeddedDestinationSettings = list(
-#'             Destination608ChannelNumber = 123
+#'             Destination608ChannelNumber = 123,
+#'             Destination708ServiceNumber = 123
+#'           ),
+#'           ImscDestinationSettings = list(
+#'             StylePassthrough = "ENABLED"|"DISABLED"
 #'           ),
 #'           SccDestinationSettings = list(
-#'             Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
+#'             Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_25"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
 #'           ),
 #'           TeletextDestinationSettings = list(
-#'             PageNumber = "string"
+#'             PageNumber = "string",
+#'             PageTypes = list(
+#'               "PAGE_TYPE_INITIAL"|"PAGE_TYPE_SUBTITLE"|"PAGE_TYPE_ADDL_INFO"|"PAGE_TYPE_PROGRAM_SCHEDULE"|"PAGE_TYPE_HEARING_IMPAIRED_SUBTITLE"
+#'             )
 #'           ),
 #'           TtmlDestinationSettings = list(
 #'             StylePassthrough = "ENABLED"|"DISABLED"
@@ -2136,6 +2414,11 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'         FreeSpaceBox = "INCLUDE"|"EXCLUDE",
 #'         MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
 #'         Mp4MajorBrand = "string"
+#'       ),
+#'       MpdSettings = list(
+#'         CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
+#'         Scte35Esam = "INSERT"|"NONE",
+#'         Scte35Source = "PASSTHROUGH"|"NONE"
 #'       )
 #'     ),
 #'     VideoDescription = list(
@@ -2183,7 +2466,7 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'           ),
 #'           RateControlMode = "VBR"|"CBR"|"QVBR",
 #'           RepeatPps = "DISABLED"|"ENABLED",
-#'           SceneChangeDetect = "DISABLED"|"ENABLED",
+#'           SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
 #'           Slices = 123,
 #'           SlowPal = "DISABLED"|"ENABLED",
 #'           Softness = 123,
@@ -2226,7 +2509,7 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'           ),
 #'           RateControlMode = "VBR"|"CBR"|"QVBR",
 #'           SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
-#'           SceneChangeDetect = "DISABLED"|"ENABLED",
+#'           SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
 #'           Slices = 123,
 #'           SlowPal = "DISABLED"|"ENABLED",
 #'           SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
@@ -2331,6 +2614,14 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'           Control = "FORCE_ALL_FRAMES"|"NORMAL",
 #'           Mode = "DEINTERLACE"|"INVERSE_TELECINE"|"ADAPTIVE"
 #'         ),
+#'         DolbyVision = list(
+#'           L6Metadata = list(
+#'             MaxCll = 123,
+#'             MaxFall = 123
+#'           ),
+#'           L6Mode = "PASSTHROUGH"|"RECALCULATE"|"SPECIFY",
+#'           Profile = "PROFILE_5"
+#'         ),
 #'         ImageInserter = list(
 #'           InsertableImages = list(
 #'             list(
@@ -2349,12 +2640,17 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'           )
 #'         ),
 #'         NoiseReducer = list(
-#'           Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL",
+#'           Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL"|"TEMPORAL",
 #'           FilterSettings = list(
 #'             Strength = 123
 #'           ),
 #'           SpatialFilterSettings = list(
 #'             PostFilterSharpenStrength = 123,
+#'             Speed = 123,
+#'             Strength = 123
+#'           ),
+#'           TemporalFilterSettings = list(
+#'             AggressiveMode = 123,
 #'             Speed = 123,
 #'             Strength = 123
 #'           )
@@ -2400,12 +2696,13 @@ mediaconvert_create_preset <- function(Category = NULL, Description = NULL, Name
 #'
 #' @usage
 #' mediaconvert_create_queue(Description, Name, PricingPlan,
-#'   ReservationPlanSettings, Tags)
+#'   ReservationPlanSettings, Status, Tags)
 #'
 #' @param Description Optional. A description of the queue that you are creating.
 #' @param Name &#91;required&#93; The name of the queue that you are creating.
 #' @param PricingPlan Specifies whether the pricing plan for the queue is on-demand or reserved. For on-demand, you pay per minute, billed in increments of .01 minute. For reserved, you pay for the transcoding capacity of the entire queue, regardless of how much or how little you use it. Reserved pricing requires a 12-month commitment. When you use the API to create a queue, the default is on-demand.
 #' @param ReservationPlanSettings Details about the pricing plan for your reserved queue. Required for reserved queues and not applicable to on-demand queues.
+#' @param Status Initial state of the queue. If you create a paused queue, then jobs in that queue won't begin.
 #' @param Tags The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.
 #'
 #' @section Request syntax:
@@ -2419,6 +2716,7 @@ mediaconvert_create_preset <- function(Category = NULL, Description = NULL, Name
 #'     RenewalType = "AUTO_RENEW"|"EXPIRE",
 #'     ReservedSlots = 123
 #'   ),
+#'   Status = "ACTIVE"|"PAUSED",
 #'   Tags = list(
 #'     "string"
 #'   )
@@ -2428,14 +2726,14 @@ mediaconvert_create_preset <- function(Category = NULL, Description = NULL, Name
 #' @keywords internal
 #'
 #' @rdname mediaconvert_create_queue
-mediaconvert_create_queue <- function(Description = NULL, Name, PricingPlan = NULL, ReservationPlanSettings = NULL, Tags = NULL) {
+mediaconvert_create_queue <- function(Description = NULL, Name, PricingPlan = NULL, ReservationPlanSettings = NULL, Status = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateQueue",
     http_method = "POST",
     http_path = "/2017-08-29/queues",
     paginator = list()
   )
-  input <- .mediaconvert$create_queue_input(Description = Description, Name = Name, PricingPlan = PricingPlan, ReservationPlanSettings = ReservationPlanSettings, Tags = Tags)
+  input <- .mediaconvert$create_queue_input(Description = Description, Name = Name, PricingPlan = PricingPlan, ReservationPlanSettings = ReservationPlanSettings, Status = Status, Tags = Tags)
   output <- .mediaconvert$create_queue_output()
   config <- get_config()
   svc <- .mediaconvert$service(config)
@@ -3074,12 +3372,13 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'
 #' @usage
 #' mediaconvert_update_job_template(AccelerationSettings, Category,
-#'   Description, Name, Queue, Settings, StatusUpdateInterval)
+#'   Description, Name, Priority, Queue, Settings, StatusUpdateInterval)
 #'
 #' @param AccelerationSettings Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental MediaConvert User Guide.
 #' @param Category The new category for the job template, if you are changing it.
 #' @param Description The new description for the job template, if you are changing it.
 #' @param Name &#91;required&#93; The name of the job template you are modifying
+#' @param Priority Specify the relative priority for this job. In any given queue, the service begins processing the job with the highest value first. When more than one job has the same priority, the service begins processing the job that you submitted first. If you don't specify a priority, the service uses the default value 0.
 #' @param Queue The new queue for the job template, if you are changing it.
 #' @param Settings JobTemplateSettings contains all the transcode settings saved in the template that will be applied to jobs created from it.
 #' @param StatusUpdateInterval Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins processing your job to the time it completes the transcode or encounters an error.
@@ -3088,11 +3387,12 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #' ```
 #' svc$update_job_template(
 #'   AccelerationSettings = list(
-#'     Mode = "DISABLED"|"ENABLED"
+#'     Mode = "DISABLED"|"ENABLED"|"PREFERRED"
 #'   ),
 #'   Category = "string",
 #'   Description = "string",
 #'   Name = "string",
+#'   Priority = 123,
 #'   Queue = "string",
 #'   Settings = list(
 #'     AdAvailOffset = 123,
@@ -3153,7 +3453,9 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'             LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
 #'             SourceSettings = list(
 #'               AncillarySourceSettings = list(
-#'                 SourceAncillaryChannelNumber = 123
+#'                 Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                 SourceAncillaryChannelNumber = 123,
+#'                 TerminateCaptions = "END_OF_INPUT"|"DISABLED"
 #'               ),
 #'               DvbSubSourceSettings = list(
 #'                 Pid = 123
@@ -3161,7 +3463,8 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'               EmbeddedSourceSettings = list(
 #'                 Convert608To708 = "UPCONVERT"|"DISABLED",
 #'                 Source608ChannelNumber = 123,
-#'                 Source608TrackNumber = 123
+#'                 Source608TrackNumber = 123,
+#'                 TerminateCaptions = "END_OF_INPUT"|"DISABLED"
 #'               ),
 #'               FileSourceSettings = list(
 #'                 Convert608To708 = "UPCONVERT"|"DISABLED",
@@ -3177,6 +3480,12 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         Crop = list(
+#'           Height = 123,
+#'           Width = 123,
+#'           X = 123,
+#'           Y = 123
 #'         ),
 #'         DeblockFilter = "ENABLED"|"DISABLED",
 #'         DenoiseFilter = "ENABLED"|"DISABLED",
@@ -3205,10 +3514,18 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'             StartTimecode = "string"
 #'           )
 #'         ),
+#'         Position = list(
+#'           Height = 123,
+#'           Width = 123,
+#'           X = 123,
+#'           Y = 123
+#'         ),
 #'         ProgramNumber = 123,
 #'         PsiControl = "IGNORE_PSI"|"USE_PSI",
 #'         TimecodeSource = "EMBEDDED"|"ZEROBASED"|"SPECIFIEDSTART",
+#'         TimecodeStart = "string",
 #'         VideoSelector = list(
+#'           AlphaBehavior = "DISCARD"|"REMAP_TO_LUMA",
 #'           ColorSpace = "FOLLOW"|"REC_601"|"REC_709"|"HDR10"|"HLG_2020",
 #'           ColorSpaceUsage = "FORCE"|"FALLBACK",
 #'           Hdr10Metadata = list(
@@ -3255,12 +3572,23 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'         Name = "string",
 #'         OutputGroupSettings = list(
 #'           CmafGroupSettings = list(
+#'             AdditionalManifests = list(
+#'               list(
+#'                 ManifestNameModifier = "string",
+#'                 SelectedOutputs = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
 #'             BaseUrl = "string",
 #'             ClientCache = "DISABLED"|"ENABLED",
 #'             CodecSpecification = "RFC_6381"|"RFC_4281",
 #'             Destination = "string",
 #'             DestinationSettings = list(
 #'               S3Settings = list(
+#'                 AccessControl = list(
+#'                   CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                 ),
 #'                 Encryption = list(
 #'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
 #'                   KmsKeyArn = "string"
@@ -3269,21 +3597,33 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'             ),
 #'             Encryption = list(
 #'               ConstantInitializationVector = "string",
-#'               EncryptionMethod = "SAMPLE_AES",
+#'               EncryptionMethod = "SAMPLE_AES"|"AES_CTR",
 #'               InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
+#'               SpekeKeyProvider = list(
+#'                 CertificateArn = "string",
+#'                 DashSignaledSystemIds = list(
+#'                   "string"
+#'                 ),
+#'                 HlsSignaledSystemIds = list(
+#'                   "string"
+#'                 ),
+#'                 ResourceId = "string",
+#'                 Url = "string"
+#'               ),
 #'               StaticKeyProvider = list(
 #'                 KeyFormat = "string",
 #'                 KeyFormatVersions = "string",
 #'                 StaticKeyValue = "string",
 #'                 Url = "string"
 #'               ),
-#'               Type = "STATIC_KEY"
+#'               Type = "SPEKE"|"STATIC_KEY"
 #'             ),
 #'             FragmentLength = 123,
 #'             ManifestCompression = "GZIP"|"NONE",
 #'             ManifestDurationFormat = "FLOATING_POINT"|"INTEGER",
 #'             MinBufferTime = 123,
 #'             MinFinalSegmentLength = 123.0,
+#'             MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
 #'             SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
 #'             SegmentLength = 123,
 #'             StreamInfResolution = "INCLUDE"|"EXCLUDE",
@@ -3291,10 +3631,21 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'             WriteHlsManifest = "DISABLED"|"ENABLED"
 #'           ),
 #'           DashIsoGroupSettings = list(
+#'             AdditionalManifests = list(
+#'               list(
+#'                 ManifestNameModifier = "string",
+#'                 SelectedOutputs = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
 #'             BaseUrl = "string",
 #'             Destination = "string",
 #'             DestinationSettings = list(
 #'               S3Settings = list(
+#'                 AccessControl = list(
+#'                   CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                 ),
 #'                 Encryption = list(
 #'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
 #'                   KmsKeyArn = "string"
@@ -3315,6 +3666,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'             FragmentLength = 123,
 #'             HbbtvCompliance = "HBBTV_1_5"|"NONE",
 #'             MinBufferTime = 123,
+#'             MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
 #'             SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
 #'             SegmentLength = 123,
 #'             WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
@@ -3323,6 +3675,9 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'             Destination = "string",
 #'             DestinationSettings = list(
 #'               S3Settings = list(
+#'                 AccessControl = list(
+#'                   CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                 ),
 #'                 Encryption = list(
 #'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
 #'                   KmsKeyArn = "string"
@@ -3333,6 +3688,14 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'           HlsGroupSettings = list(
 #'             AdMarkers = list(
 #'               "ELEMENTAL"|"ELEMENTAL_SCTE35"
+#'             ),
+#'             AdditionalManifests = list(
+#'               list(
+#'                 ManifestNameModifier = "string",
+#'                 SelectedOutputs = list(
+#'                   "string"
+#'                 )
+#'               )
 #'             ),
 #'             BaseUrl = "string",
 #'             CaptionLanguageMappings = list(
@@ -3349,6 +3712,9 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'             Destination = "string",
 #'             DestinationSettings = list(
 #'               S3Settings = list(
+#'                 AccessControl = list(
+#'                   CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                 ),
 #'                 Encryption = list(
 #'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
 #'                   KmsKeyArn = "string"
@@ -3393,10 +3759,21 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'             TimestampDeltaMilliseconds = 123
 #'           ),
 #'           MsSmoothGroupSettings = list(
+#'             AdditionalManifests = list(
+#'               list(
+#'                 ManifestNameModifier = "string",
+#'                 SelectedOutputs = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
 #'             AudioDeduplication = "COMBINE_DUPLICATE_STREAMS"|"NONE",
 #'             Destination = "string",
 #'             DestinationSettings = list(
 #'               S3Settings = list(
+#'                 AccessControl = list(
+#'                   CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                 ),
 #'                 Encryption = list(
 #'                   EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
 #'                   KmsKeyArn = "string"
@@ -3423,7 +3800,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'             AudioDescriptions = list(
 #'               list(
 #'                 AudioNormalizationSettings = list(
-#'                   Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2",
+#'                   Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
 #'                   AlgorithmControl = "CORRECT_AUDIO"|"MEASURE_ONLY",
 #'                   CorrectionGateLevel = 123,
 #'                   LoudnessLogging = "LOG"|"DONT_LOG",
@@ -3460,7 +3837,24 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                     Channels = 123,
 #'                     SampleRate = 123
 #'                   ),
-#'                   Codec = "AAC"|"MP2"|"WAV"|"AIFF"|"AC3"|"EAC3"|"PASSTHROUGH",
+#'                   Codec = "AAC"|"MP2"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"PASSTHROUGH",
+#'                   Eac3AtmosSettings = list(
+#'                     Bitrate = 123,
+#'                     BitstreamMode = "COMPLETE_MAIN",
+#'                     CodingMode = "CODING_MODE_9_1_6",
+#'                     DialogueIntelligence = "ENABLED"|"DISABLED",
+#'                     DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                     DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                     LoRoCenterMixLevel = 123.0,
+#'                     LoRoSurroundMixLevel = 123.0,
+#'                     LtRtCenterMixLevel = 123.0,
+#'                     LtRtSurroundMixLevel = 123.0,
+#'                     MeteringMode = "LEQ_A"|"ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'                     SampleRate = 123,
+#'                     SpeechThreshold = 123,
+#'                     StereoDownmix = "NOT_INDICATED"|"STEREO"|"SURROUND"|"DPL2",
+#'                     SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'                   ),
 #'                   Eac3Settings = list(
 #'                     AttenuationControl = "ATTENUATE_3_DB"|"NONE",
 #'                     Bitrate = 123,
@@ -3539,7 +3933,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                     XPosition = 123,
 #'                     YPosition = 123
 #'                   ),
-#'                   DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
+#'                   DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"IMSC"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
 #'                   DvbSubDestinationSettings = list(
 #'                     Alignment = "CENTERED"|"LEFT",
 #'                     BackgroundColor = "NONE"|"BLACK"|"WHITE",
@@ -3555,18 +3949,26 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                     ShadowOpacity = 123,
 #'                     ShadowXOffset = 123,
 #'                     ShadowYOffset = 123,
+#'                     SubtitlingType = "HEARING_IMPAIRED"|"STANDARD",
 #'                     TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
 #'                     XPosition = 123,
 #'                     YPosition = 123
 #'                   ),
 #'                   EmbeddedDestinationSettings = list(
-#'                     Destination608ChannelNumber = 123
+#'                     Destination608ChannelNumber = 123,
+#'                     Destination708ServiceNumber = 123
+#'                   ),
+#'                   ImscDestinationSettings = list(
+#'                     StylePassthrough = "ENABLED"|"DISABLED"
 #'                   ),
 #'                   SccDestinationSettings = list(
-#'                     Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
+#'                     Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_25"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
 #'                   ),
 #'                   TeletextDestinationSettings = list(
-#'                     PageNumber = "string"
+#'                     PageNumber = "string",
+#'                     PageTypes = list(
+#'                       "PAGE_TYPE_INITIAL"|"PAGE_TYPE_SUBTITLE"|"PAGE_TYPE_ADDL_INFO"|"PAGE_TYPE_PROGRAM_SCHEDULE"|"PAGE_TYPE_HEARING_IMPAIRED_SUBTITLE"
+#'                     )
 #'                   ),
 #'                   TtmlDestinationSettings = list(
 #'                     StylePassthrough = "ENABLED"|"DISABLED"
@@ -3668,6 +4070,11 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                 FreeSpaceBox = "INCLUDE"|"EXCLUDE",
 #'                 MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
 #'                 Mp4MajorBrand = "string"
+#'               ),
+#'               MpdSettings = list(
+#'                 CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
+#'                 Scte35Esam = "INSERT"|"NONE",
+#'                 Scte35Source = "PASSTHROUGH"|"NONE"
 #'               )
 #'             ),
 #'             Extension = "string",
@@ -3675,6 +4082,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'             OutputSettings = list(
 #'               HlsSettings = list(
 #'                 AudioGroupId = "string",
+#'                 AudioOnlyContainer = "AUTOMATIC"|"M2TS",
 #'                 AudioRenditionSets = "string",
 #'                 AudioTrackType = "ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"|"ALTERNATE_AUDIO_AUTO_SELECT"|"ALTERNATE_AUDIO_NOT_AUTO_SELECT"|"AUDIO_ONLY_VARIANT_STREAM",
 #'                 IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
@@ -3727,7 +4135,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                   ),
 #'                   RateControlMode = "VBR"|"CBR"|"QVBR",
 #'                   RepeatPps = "DISABLED"|"ENABLED",
-#'                   SceneChangeDetect = "DISABLED"|"ENABLED",
+#'                   SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
 #'                   Slices = 123,
 #'                   SlowPal = "DISABLED"|"ENABLED",
 #'                   Softness = 123,
@@ -3770,7 +4178,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                   ),
 #'                   RateControlMode = "VBR"|"CBR"|"QVBR",
 #'                   SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
-#'                   SceneChangeDetect = "DISABLED"|"ENABLED",
+#'                   SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
 #'                   Slices = 123,
 #'                   SlowPal = "DISABLED"|"ENABLED",
 #'                   SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
@@ -3875,6 +4283,14 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                   Control = "FORCE_ALL_FRAMES"|"NORMAL",
 #'                   Mode = "DEINTERLACE"|"INVERSE_TELECINE"|"ADAPTIVE"
 #'                 ),
+#'                 DolbyVision = list(
+#'                   L6Metadata = list(
+#'                     MaxCll = 123,
+#'                     MaxFall = 123
+#'                   ),
+#'                   L6Mode = "PASSTHROUGH"|"RECALCULATE"|"SPECIFY",
+#'                   Profile = "PROFILE_5"
+#'                 ),
 #'                 ImageInserter = list(
 #'                   InsertableImages = list(
 #'                     list(
@@ -3893,12 +4309,17 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                   )
 #'                 ),
 #'                 NoiseReducer = list(
-#'                   Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL",
+#'                   Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL"|"TEMPORAL",
 #'                   FilterSettings = list(
 #'                     Strength = 123
 #'                   ),
 #'                   SpatialFilterSettings = list(
 #'                     PostFilterSharpenStrength = 123,
+#'                     Speed = 123,
+#'                     Strength = 123
+#'                   ),
+#'                   TemporalFilterSettings = list(
+#'                     AggressiveMode = 123,
 #'                     Speed = 123,
 #'                     Strength = 123
 #'                   )
@@ -3937,14 +4358,14 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #' @keywords internal
 #'
 #' @rdname mediaconvert_update_job_template
-mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Category = NULL, Description = NULL, Name, Queue = NULL, Settings = NULL, StatusUpdateInterval = NULL) {
+mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Category = NULL, Description = NULL, Name, Priority = NULL, Queue = NULL, Settings = NULL, StatusUpdateInterval = NULL) {
   op <- new_operation(
     name = "UpdateJobTemplate",
     http_method = "PUT",
     http_path = "/2017-08-29/jobTemplates/{name}",
     paginator = list()
   )
-  input <- .mediaconvert$update_job_template_input(AccelerationSettings = AccelerationSettings, Category = Category, Description = Description, Name = Name, Queue = Queue, Settings = Settings, StatusUpdateInterval = StatusUpdateInterval)
+  input <- .mediaconvert$update_job_template_input(AccelerationSettings = AccelerationSettings, Category = Category, Description = Description, Name = Name, Priority = Priority, Queue = Queue, Settings = Settings, StatusUpdateInterval = StatusUpdateInterval)
   output <- .mediaconvert$update_job_template_output()
   config <- get_config()
   svc <- .mediaconvert$service(config)
@@ -3976,7 +4397,7 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'     AudioDescriptions = list(
 #'       list(
 #'         AudioNormalizationSettings = list(
-#'           Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2",
+#'           Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
 #'           AlgorithmControl = "CORRECT_AUDIO"|"MEASURE_ONLY",
 #'           CorrectionGateLevel = 123,
 #'           LoudnessLogging = "LOG"|"DONT_LOG",
@@ -4013,7 +4434,24 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'             Channels = 123,
 #'             SampleRate = 123
 #'           ),
-#'           Codec = "AAC"|"MP2"|"WAV"|"AIFF"|"AC3"|"EAC3"|"PASSTHROUGH",
+#'           Codec = "AAC"|"MP2"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"PASSTHROUGH",
+#'           Eac3AtmosSettings = list(
+#'             Bitrate = 123,
+#'             BitstreamMode = "COMPLETE_MAIN",
+#'             CodingMode = "CODING_MODE_9_1_6",
+#'             DialogueIntelligence = "ENABLED"|"DISABLED",
+#'             DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'             DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'             LoRoCenterMixLevel = 123.0,
+#'             LoRoSurroundMixLevel = 123.0,
+#'             LtRtCenterMixLevel = 123.0,
+#'             LtRtSurroundMixLevel = 123.0,
+#'             MeteringMode = "LEQ_A"|"ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'             SampleRate = 123,
+#'             SpeechThreshold = 123,
+#'             StereoDownmix = "NOT_INDICATED"|"STEREO"|"SURROUND"|"DPL2",
+#'             SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'           ),
 #'           Eac3Settings = list(
 #'             AttenuationControl = "ATTENUATE_3_DB"|"NONE",
 #'             Bitrate = 123,
@@ -4091,7 +4529,7 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'             XPosition = 123,
 #'             YPosition = 123
 #'           ),
-#'           DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
+#'           DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"IMSC"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
 #'           DvbSubDestinationSettings = list(
 #'             Alignment = "CENTERED"|"LEFT",
 #'             BackgroundColor = "NONE"|"BLACK"|"WHITE",
@@ -4107,18 +4545,26 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'             ShadowOpacity = 123,
 #'             ShadowXOffset = 123,
 #'             ShadowYOffset = 123,
+#'             SubtitlingType = "HEARING_IMPAIRED"|"STANDARD",
 #'             TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
 #'             XPosition = 123,
 #'             YPosition = 123
 #'           ),
 #'           EmbeddedDestinationSettings = list(
-#'             Destination608ChannelNumber = 123
+#'             Destination608ChannelNumber = 123,
+#'             Destination708ServiceNumber = 123
+#'           ),
+#'           ImscDestinationSettings = list(
+#'             StylePassthrough = "ENABLED"|"DISABLED"
 #'           ),
 #'           SccDestinationSettings = list(
-#'             Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
+#'             Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_25"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
 #'           ),
 #'           TeletextDestinationSettings = list(
-#'             PageNumber = "string"
+#'             PageNumber = "string",
+#'             PageTypes = list(
+#'               "PAGE_TYPE_INITIAL"|"PAGE_TYPE_SUBTITLE"|"PAGE_TYPE_ADDL_INFO"|"PAGE_TYPE_PROGRAM_SCHEDULE"|"PAGE_TYPE_HEARING_IMPAIRED_SUBTITLE"
+#'             )
 #'           ),
 #'           TtmlDestinationSettings = list(
 #'             StylePassthrough = "ENABLED"|"DISABLED"
@@ -4220,6 +4666,11 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'         FreeSpaceBox = "INCLUDE"|"EXCLUDE",
 #'         MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
 #'         Mp4MajorBrand = "string"
+#'       ),
+#'       MpdSettings = list(
+#'         CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
+#'         Scte35Esam = "INSERT"|"NONE",
+#'         Scte35Source = "PASSTHROUGH"|"NONE"
 #'       )
 #'     ),
 #'     VideoDescription = list(
@@ -4267,7 +4718,7 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'           ),
 #'           RateControlMode = "VBR"|"CBR"|"QVBR",
 #'           RepeatPps = "DISABLED"|"ENABLED",
-#'           SceneChangeDetect = "DISABLED"|"ENABLED",
+#'           SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
 #'           Slices = 123,
 #'           SlowPal = "DISABLED"|"ENABLED",
 #'           Softness = 123,
@@ -4310,7 +4761,7 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'           ),
 #'           RateControlMode = "VBR"|"CBR"|"QVBR",
 #'           SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
-#'           SceneChangeDetect = "DISABLED"|"ENABLED",
+#'           SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
 #'           Slices = 123,
 #'           SlowPal = "DISABLED"|"ENABLED",
 #'           SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
@@ -4415,6 +4866,14 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'           Control = "FORCE_ALL_FRAMES"|"NORMAL",
 #'           Mode = "DEINTERLACE"|"INVERSE_TELECINE"|"ADAPTIVE"
 #'         ),
+#'         DolbyVision = list(
+#'           L6Metadata = list(
+#'             MaxCll = 123,
+#'             MaxFall = 123
+#'           ),
+#'           L6Mode = "PASSTHROUGH"|"RECALCULATE"|"SPECIFY",
+#'           Profile = "PROFILE_5"
+#'         ),
 #'         ImageInserter = list(
 #'           InsertableImages = list(
 #'             list(
@@ -4433,12 +4892,17 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'           )
 #'         ),
 #'         NoiseReducer = list(
-#'           Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL",
+#'           Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL"|"TEMPORAL",
 #'           FilterSettings = list(
 #'             Strength = 123
 #'           ),
 #'           SpatialFilterSettings = list(
 #'             PostFilterSharpenStrength = 123,
+#'             Speed = 123,
+#'             Strength = 123
+#'           ),
+#'           TemporalFilterSettings = list(
+#'             AggressiveMode = 123,
 #'             Speed = 123,
 #'             Strength = 123
 #'           )

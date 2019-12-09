@@ -10,7 +10,7 @@ ssm_get_document(Name, VersionName, DocumentVersion, DocumentFormat)
 \item{Name}{[required] The name of the Systems Manager document.}
 
 \item{VersionName}{An optional field specifying the version of the artifact associated with
-the document. For example, "Release 12, Update 6". This value is
+the document. For example, \"Release 12, Update 6\". This value is
 unique across all versions of a document, and cannot be changed.}
 
 \item{DocumentVersion}{The document version for which you want information.}

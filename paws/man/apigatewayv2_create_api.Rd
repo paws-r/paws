@@ -4,28 +4,58 @@
 \alias{apigatewayv2_create_api}
 \title{Creates an Api resource}
 \usage{
-apigatewayv2_create_api(ApiKeySelectionExpression, Description,
-  DisableSchemaValidation, Name, ProtocolType, RouteSelectionExpression,
-  Version, Tags)
+apigatewayv2_create_api(ApiKeySelectionExpression, CorsConfiguration,
+  CredentialsArn, Description, DisableSchemaValidation, Name,
+  ProtocolType, RouteKey, RouteSelectionExpression, Tags, Target, Version)
 }
 \arguments{
-\item{ApiKeySelectionExpression}{An API key selection expression. See \href{https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions}{API Key Selection Expressions}.}
+\item{ApiKeySelectionExpression}{An API key selection expression. Supported only for WebSocket APIs. See
+\href{https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions}{API Key Selection Expressions}.}
+
+\item{CorsConfiguration}{A CORS configuration. Supported only for HTTP APIs. See \href{https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html}{Configuring CORS}
+for more information.}
+
+\item{CredentialsArn}{This property is part of quick create. It specifies the credentials
+required for the integration, if any. For a Lambda integration, three
+options are available. To specify an IAM Role for API Gateway to assume,
+use the role\'s Amazon Resource Name (ARN). To require that the
+caller\'s identity be passed through from the request, specify
+arn:aws:iam::\\emph{:user/\}. To use resource-based permissions on supported
+AWS services, specify null. Currently, this property is not used for
+HTTP integrations. Supported only for HTTP APIs.}
 
 \item{Description}{The description of the API.}
 
-\item{DisableSchemaValidation}{Avoid validating models when creating a deployment.}
+\item{DisableSchemaValidation}{Avoid validating models when creating a deployment. Supported only for
+WebSocket APIs.}
 
 \item{Name}{[required] The name of the API.}
 
-\item{ProtocolType}{[required] The API protocol: Currently only WEBSOCKET is supported.}
+\item{ProtocolType}{[required] The API protocol.}
 
-\item{RouteSelectionExpression}{[required] The route selection expression for the API.}
+\item{RouteKey}{This property is part of quick create. If you don\'t specify a routeKey,
+a default route of \\$default is created. The \\$default route acts as a
+catch-all for any request made to your API, for a particular stage. The
+\\$default route key can\'t be modified. You can add routes after
+creating the API, and you can update the route keys of additional
+routes. Supported only for HTTP APIs.}
+
+\item{RouteSelectionExpression}{The route selection expression for the API. For HTTP APIs, the
+routeSelectionExpression must be \\$\{request.method\} \\$\{request.path\}. If
+not provided, this will be the default for HTTP APIs. This property is
+required for WebSocket APIs.}
+
+\item{Tags}{The collection of tags. Each tag element is associated with a given
+resource.}
+
+\item{Target}{This property is part of quick create. Quick create produces an API with
+an integration, a default catch-all route, and a default stage which is
+configured to automatically deploy changes. For HTTP integrations,
+specify a fully qualified URL. For Lambda integrations, specify a
+function ARN. The type of the integration will be HTTP\\_PROXY or
+AWS\\_PROXY, respectively. Supported only for HTTP APIs.}
 
 \item{Version}{A version identifier for the API.}
-
-\item{Tags}{The key-value map of strings. The valid character set is
-[a-zA-Z+-=.\_:/]. The tag key can be up to 128 characters and must not
-start with aws:. The tag value can be up to 256 characters..}
 }
 \description{
 Creates an Api resource.
@@ -33,15 +63,34 @@ Creates an Api resource.
 \section{Request syntax}{
 \preformatted{svc$create_api(
   ApiKeySelectionExpression = "string",
+  CorsConfiguration = list(
+    AllowCredentials = TRUE|FALSE,
+    AllowHeaders = list(
+      "string"
+    ),
+    AllowMethods = list(
+      "string"
+    ),
+    AllowOrigins = list(
+      "string"
+    ),
+    ExposeHeaders = list(
+      "string"
+    ),
+    MaxAge = 123
+  ),
+  CredentialsArn = "string",
   Description = "string",
   DisableSchemaValidation = TRUE|FALSE,
   Name = "string",
-  ProtocolType = "WEBSOCKET",
+  ProtocolType = "WEBSOCKET"|"HTTP",
+  RouteKey = "string",
   RouteSelectionExpression = "string",
-  Version = "string",
   Tags = list(
     "string"
-  )
+  ),
+  Target = "string",
+  Version = "string"
 )
 }
 }

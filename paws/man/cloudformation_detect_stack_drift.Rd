@@ -14,8 +14,8 @@ cloudformation_detect_stack_drift(StackName, LogicalResourceIds)
 \item{LogicalResourceIds}{The logical names of any resources you want to use as filters.}
 }
 \description{
-Detects whether a stack's actual configuration differs, or has
-\emph{drifted}, from it's expected configuration, as defined in the stack
+Detects whether a stack\'s actual configuration differs, or has
+\emph{drifted}, from it\'s expected configuration, as defined in the stack
 template and any values specified as template parameters. For each
 resource in the stack that supports drift detection, AWS CloudFormation
 compares the actual configuration of the resource with its expected

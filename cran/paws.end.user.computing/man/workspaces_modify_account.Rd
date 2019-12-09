@@ -2,7 +2,7 @@
 % Please edit documentation in R/workspaces_operations.R
 \name{workspaces_modify_account}
 \alias{workspaces_modify_account}
-\title{Modifies the configuration of bring your own license (BYOL) for the
+\title{Modifies the configuration of Bring Your Own License (BYOL) for the
 specified account}
 \usage{
 workspaces_modify_account(DedicatedTenancySupport,
@@ -19,7 +19,7 @@ example, 203.0.113.25/16). It must also be specified as available by the
 \code{ListAvailableManagementCidrRanges} operation.}
 }
 \description{
-Modifies the configuration of bring your own license (BYOL) for the
+Modifies the configuration of Bring Your Own License (BYOL) for the
 specified account.
 }
 \section{Request syntax}{

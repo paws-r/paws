@@ -27,9 +27,9 @@ Attaches one or more Lightsail instances to a load balancer.
 After some time, the instances are attached to the load balancer and the
 health check status is available.
 
-The \code{attach instances to load balancer} operation supports tag-based
+The \verb{attach instances to load balancer} operation supports tag-based
 access control via resource tags applied to the resource identified by
-loadBalancerName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\verb{load balancer name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$attach_instances_to_load_balancer(

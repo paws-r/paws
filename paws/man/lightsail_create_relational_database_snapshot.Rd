@@ -20,7 +20,7 @@ Constraints:
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
-To tag a resource after it has been created, see the \code{tag resource}
+To tag a resource after it has been created, see the \verb{tag resource}
 operation.}
 }
 \description{
@@ -29,7 +29,7 @@ snapshots for backups, to make copies of a database, and to save data
 before deleting a database.
 }
 \details{
-The \code{create relational database snapshot} operation supports tag-based
+The \verb{create relational database snapshot} operation supports tag-based
 access control via request tags. For more information, see the
 \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }

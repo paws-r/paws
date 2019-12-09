@@ -8,11 +8,11 @@ snowball_cancel_cluster(ClusterId)
 }
 \arguments{
 \item{ClusterId}{[required] The 39-character ID for the cluster that you want to cancel, for example
-\code{CID123e4567-e89b-12d3-a456-426655440000}.}
+\verb{CID123e4567-e89b-12d3-a456-426655440000}.}
 }
 \description{
-Cancels a cluster job. You can only cancel a cluster job while it's in
-the \code{AwaitingQuorum} status. You'll have at least an hour after
+Cancels a cluster job. You can only cancel a cluster job while it\'s in
+the \code{AwaitingQuorum} status. You\'ll have at least an hour after
 creating a cluster job to cancel it.
 }
 \section{Request syntax}{

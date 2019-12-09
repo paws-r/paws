@@ -8,28 +8,89 @@ s3_list_multipart_uploads(Bucket, Delimiter, EncodingType, KeyMarker,
   MaxUploads, Prefix, UploadIdMarker)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] Name of the bucket to which the multipart upload was initiated.
 
-\item{Delimiter}{Character you use to group keys.}
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+\emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
+When using this operation using an access point through the AWS SDKs,
+you provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+in the \emph{Amazon Simple Storage Service Developer Guide}.}
+
+\item{Delimiter}{Character you use to group keys.
+
+All keys that contain the same string between the prefix, if specified,
+and the first occurrence of the delimiter after the prefix are grouped
+under a single result element, \code{CommonPrefixes}. If you don\'t specify
+the prefix parameter, then the substring starts at the beginning of the
+key. The keys that are grouped under \code{CommonPrefixes} result element are
+not returned elsewhere in the response.}
 
 \item{EncodingType}{}
 
 \item{KeyMarker}{Together with upload-id-marker, this parameter specifies the multipart
-upload after which listing should begin.}
+upload after which listing should begin.
+
+If \code{upload-id-marker} is not specified, only the keys lexicographically
+greater than the specified \code{key-marker} will be included in the list.
+
+If \code{upload-id-marker} is specified, any multipart uploads for a key
+equal to the \code{key-marker} might also be included, provided those
+multipart uploads have upload IDs lexicographically greater than the
+specified \code{upload-id-marker}.}
 
 \item{MaxUploads}{Sets the maximum number of multipart uploads, from 1 to 1,000, to return
 in the response body. 1,000 is the maximum number of uploads that can be
 returned in a response.}
 
 \item{Prefix}{Lists in-progress uploads only for those keys that begin with the
-specified prefix.}
+specified prefix. You can use prefixes to separate a bucket into
+different grouping of keys. (You can think of using prefix to make
+groups in the same way you\'d use a folder in a file system.)}
 
 \item{UploadIdMarker}{Together with key-marker, specifies the multipart upload after which
 listing should begin. If key-marker is not specified, the
-upload-id-marker parameter is ignored.}
+upload-id-marker parameter is ignored. Otherwise, any multipart uploads
+for a key equal to the key-marker might be included in the list only if
+they have an upload ID lexicographically greater than the specified
+\code{upload-id-marker}.}
 }
 \description{
-This operation lists in-progress multipart uploads.
+This operation lists in-progress multipart uploads. An in-progress
+multipart upload is a multipart upload that has been initiated using the
+Initiate Multipart Upload request, but has not yet been completed or
+aborted.
+}
+\details{
+This operation returns at most 1,000 multipart uploads in the response.
+1,000 multipart uploads is the maximum number of uploads a response can
+include, which is also the default value. You can further limit the
+number of uploads in a response by specifying the \code{max-uploads}
+parameter in the response. If additional multipart uploads satisfy the
+list criteria, the response will contain an \code{IsTruncated} element with
+the value true. To list the additional multipart uploads, use the
+\code{key-marker} and \code{upload-id-marker} request parameters.
+
+In the response, the uploads are sorted by key. If your application has
+initiated more than one multipart upload using the same object key, then
+uploads in the response are first sorted by key. Additionally, uploads
+are sorted in ascending order within each key by the upload initiation
+time.
+
+For more information on multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html}{Uploading Objects Using Multipart Upload}.
+
+For information on permissions required to use the multipart upload API,
+see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html}{Multipart Upload API and Permissions}.
+
+The following operations are related to \code{ListMultipartUploads}:
+\itemize{
+\item CreateMultipartUpload
+\item UploadPart
+\item CompleteMultipartUpload
+\item ListParts
+\item AbortMultipartUpload
+}
 }
 \section{Request syntax}{
 \preformatted{svc$list_multipart_uploads(

@@ -15,10 +15,10 @@ artifacts from one stage to another.}
 artifacts, either into the stage (inbound) or from that stage to the
 next stage (outbound).}
 
-\item{transitionType}{[required] Specifies whether artifacts will be allowed to enter the stage and be
-processed by the actions in that stage (inbound) or whether
-already-processed artifacts will be allowed to transition to the next
-stage (outbound).}
+\item{transitionType}{[required] Specifies whether artifacts are allowed to enter the stage and be
+processed by the actions in that stage (inbound) or whether already
+processed artifacts are allowed to transition to the next stage
+(outbound).}
 }
 \description{
 Enables artifacts in a pipeline to transition to a stage in a pipeline.

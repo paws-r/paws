@@ -2,10 +2,10 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_detect_moderation_labels}
 \alias{rekognition_detect_moderation_labels}
-\title{Detects explicit or suggestive adult content in a specified JPEG or PNG
-format image}
+\title{Detects unsafe content in a specified JPEG or PNG format image}
 \usage{
-rekognition_detect_moderation_labels(Image, MinConfidence)
+rekognition_detect_moderation_labels(Image, MinConfidence,
+  HumanLoopConfig)
 }
 \arguments{
 \item{Image}{[required] The input image as base64-encoded bytes or an S3 object. If you use the
@@ -17,17 +17,20 @@ need to base64-encode image bytes passed using the \code{Bytes} field. For
 more information, see Images in the Amazon Rekognition developer guide.}
 
 \item{MinConfidence}{Specifies the minimum confidence level for the labels to return. Amazon
-Rekognition doesn't return any labels with a confidence level lower
+Rekognition doesn\'t return any labels with a confidence level lower
 than this specified value.
 
-If you don't specify \code{MinConfidence}, the operation returns labels with
+If you don\'t specify \code{MinConfidence}, the operation returns labels with
 confidence values greater than or equal to 50 percent.}
+
+\item{HumanLoopConfig}{Sets up the configuration for human evaluation, including the
+FlowDefinition the image will be sent to.}
 }
 \description{
-Detects explicit or suggestive adult content in a specified JPEG or PNG
-format image. Use \code{DetectModerationLabels} to moderate images depending
-on your requirements. For example, you might want to filter images that
-contain nudity, but not images containing suggestive content.
+Detects unsafe content in a specified JPEG or PNG format image. Use
+\code{DetectModerationLabels} to moderate images depending on your
+requirements. For example, you might want to filter images that contain
+nudity, but not images containing suggestive content.
 }
 \details{
 To filter images, use the labels returned by \code{DetectModerationLabels} to
@@ -51,7 +54,16 @@ supported. The image must be either a PNG or JPEG formatted file.
       Version = "string"
     )
   ),
-  MinConfidence = 123.0
+  MinConfidence = 123.0,
+  HumanLoopConfig = list(
+    HumanLoopName = "string",
+    FlowDefinitionArn = "string",
+    DataAttributes = list(
+      ContentClassifiers = list(
+        "FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent"
+      )
+    )
+  )
 )
 }
 }

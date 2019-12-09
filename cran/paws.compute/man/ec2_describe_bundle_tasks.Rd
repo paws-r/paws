@@ -18,13 +18,13 @@ Default: Describes all your bundle tasks.}
 \item \code{error-message} - If the task failed, the error message returned.
 \item \code{instance-id} - The ID of the instance.
 \item \code{progress} - The level of task completion, as a percentage (for
-example, 20\%).
+example, 20\\%).
 \item \code{s3-bucket} - The Amazon S3 bucket to store the AMI.
 \item \code{s3-prefix} - The beginning of the AMI name.
 \item \code{start-time} - The time the task started (for example,
 2013-09-15T17:15:20.000Z).
-\item \code{state} - The state of the task (\code{pending} \| \code{waiting-for-shutdown}
-\| \code{bundling} \| \code{storing} \| \code{cancelling} \| \code{complete} \|
+\item \code{state} - The state of the task (\code{pending} \\| \verb{waiting-for-shutdown}
+\\| \code{bundling} \\| \code{storing} \\| \code{cancelling} \\| \code{complete} \\|
 \code{failed}).
 \item \code{update-time} - The time of the most recent update for the task.
 }}

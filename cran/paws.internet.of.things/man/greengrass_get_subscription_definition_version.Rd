@@ -12,7 +12,7 @@ greengrass_get_subscription_definition_version(NextToken,
 
 \item{SubscriptionDefinitionId}{[required] The ID of the subscription definition.}
 
-\item{SubscriptionDefinitionVersionId}{[required] The ID of the subscription definition version.}
+\item{SubscriptionDefinitionVersionId}{[required] The ID of the subscription definition version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListSubscriptionDefinitionVersions'' requests. If the version is the last one that was associated with a subscription definition, the value also maps to the ''LatestVersion'' property of the corresponding ''DefinitionInformation'' object.}
 }
 \description{
 Retrieves information about a subscription definition version.

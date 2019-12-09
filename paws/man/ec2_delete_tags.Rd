@@ -25,7 +25,7 @@ its value is an empty string.
 
 If you omit this parameter, we delete all user-defined tags for the
 specified resources. We do not delete AWS-generated tags (tags that have
-the \code{aws:} prefix).}
+the \verb{aws:} prefix).}
 }
 \description{
 Deletes the specified set of tags from the specified set of resources.

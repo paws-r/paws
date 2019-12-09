@@ -15,7 +15,7 @@ ssm_describe_association(Name, InstanceId, AssociationId,
 \item{AssociationId}{The association ID for which you want information.}
 
 \item{AssociationVersion}{Specify the association version to retrieve. To view the latest version,
-either specify \code{$LATEST} for this parameter, or omit this parameter. To
+either specify \verb{$LATEST} for this parameter, or omit this parameter. To
 view a list of all associations for an instance, use ListAssociations.
 To get a list of versions for a specific association, use
 ListAssociationVersions.}

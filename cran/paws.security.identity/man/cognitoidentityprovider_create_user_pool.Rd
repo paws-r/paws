@@ -11,7 +11,7 @@ cognitoidentityprovider_create_user_pool(PoolName, Policies,
   EmailVerificationSubject, VerificationMessageTemplate,
   SmsAuthenticationMessage, MfaConfiguration, DeviceConfiguration,
   EmailConfiguration, SmsConfiguration, UserPoolTags,
-  AdminCreateUserConfig, Schema, UserPoolAddOns)
+  AdminCreateUserConfig, Schema, UserPoolAddOns, AccountRecoverySetting)
 }
 \arguments{
 \item{PoolName}{[required] A string used to name the user pool.}
@@ -34,10 +34,10 @@ For adding permission using the AWS CLI, see
 .}
 
 \item{AutoVerifiedAttributes}{The attributes to be auto-verified. Possible values: \strong{email},
-\strong{phone\_number}.}
+\strong{phone\\_number}.}
 
 \item{AliasAttributes}{Attributes supported as an alias for this user pool. Possible values:
-\strong{phone\_number}, \strong{email}, or \strong{preferred\_username}.}
+\strong{phone\\_number}, \strong{email}, or \strong{preferred\\_username}.}
 
 \item{UsernameAttributes}{Specifies whether email addresses or phone numbers can be specified as
 usernames when a user signs up.}
@@ -49,7 +49,7 @@ usernames when a user signs up.}
 \item{EmailVerificationSubject}{A string representing the email verification subject.}
 
 \item{VerificationMessageTemplate}{The template for the verification message that the user sees when the
-app requests permission to access the user's information.}
+app requests permission to access the user\'s information.}
 
 \item{SmsAuthenticationMessage}{A string representing the SMS authentication message.}
 
@@ -71,7 +71,19 @@ such as by purpose, owner, environment, or other criteria.}
 can be standard or custom attributes.}
 
 \item{UserPoolAddOns}{Used to enable advanced security risk detection. Set the key
-\code{AdvancedSecurityMode} to the value "AUDIT".}
+\code{AdvancedSecurityMode} to the value \"AUDIT\".}
+
+\item{AccountRecoverySetting}{Use this setting to define which verified available method a user can
+use to recover their password when they call \code{ForgotPassword}. It allows
+you to define a preferred method when a user has more than one method
+available. With this setting, SMS does not qualify for a valid password
+recovery mechanism if the user also has SMS MFA enabled. In the absence
+of this setting, Cognito uses the legacy behavior to determine the
+recovery method where SMS is preferred over email.
+
+Starting February 1, 2020, the value of \code{AccountRecoverySetting} will
+default to \code{verified_email} first and \code{verified_phone_number} as the
+second option for newly created user pools if no value is provided.}
 }
 \description{
 Creates a new Amazon Cognito user pool and sets the password policy for
@@ -131,7 +143,9 @@ the pool.
   EmailConfiguration = list(
     SourceArn = "string",
     ReplyToEmailAddress = "string",
-    EmailSendingAccount = "COGNITO_DEFAULT"|"DEVELOPER"
+    EmailSendingAccount = "COGNITO_DEFAULT"|"DEVELOPER",
+    From = "string",
+    ConfigurationSet = "string"
   ),
   SmsConfiguration = list(
     SnsCallerArn = "string",
@@ -168,6 +182,14 @@ the pool.
   ),
   UserPoolAddOns = list(
     AdvancedSecurityMode = "OFF"|"AUDIT"|"ENFORCED"
+  ),
+  AccountRecoverySetting = list(
+    RecoveryMechanisms = list(
+      list(
+        Priority = 123,
+        Name = "verified_email"|"verified_phone_number"|"admin_only"
+      )
+    )
   )
 )
 }

@@ -8,15 +8,15 @@ mediastoredata_get_object(Path, Range)
 }
 \arguments{
 \item{Path}{[required] The path (including the file name) where the object is stored in the
-container. Format: \<folder name\>/\<folder name\>/\<file name\>
+container. Format: \\<folder name\\>/\\<folder name\\>/\\<file name\\>
 
 For example, to upload the file \code{mlaw.avi} to the folder path
-\code{premium\\canada} in the container \code{movies}, enter the path
+\verb{premium\\\\canada} in the container \code{movies}, enter the path
 \code{premium/canada/mlaw.avi}.
 
 Do not include the container name in this path.
 
-If the path includes any folders that don't exist yet, the service
+If the path includes any folders that don\'t exist yet, the service
 creates them. For example, suppose you have an existing \code{premium/usa}
 subfolder. If you specify \code{premium/canada}, the service creates a
 \code{canada} subfolder in the \code{premium} folder. You then have two

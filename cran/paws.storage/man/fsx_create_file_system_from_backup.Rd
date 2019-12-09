@@ -18,11 +18,11 @@ SDK.}
 
 \item{SubnetIds}{[required] A list of IDs for the subnets that the file system will be accessible
 from. Currently, you can specify only one subnet. The file server is
-also launched in that subnet's Availability Zone.}
+also launched in that subnet\'s Availability Zone.}
 
 \item{SecurityGroupIds}{A list of IDs for the security groups that apply to the specified
 network interfaces created for file system access. These security groups
-apply to all network interfaces. This value isn't returned in later
+apply to all network interfaces. This value isn\'t returned in later
 describe requests.}
 
 \item{Tags}{The tags to be applied to the file system at file system creation. The
@@ -39,9 +39,9 @@ Windows File Server backup.
 If a file system with the specified client request token exists and the
 parameters match, this operation returns the description of the file
 system. If a client request token specified by the file system exists
-and the parameters don't match, this call returns
+and the parameters don\'t match, this call returns
 \code{IncompatibleParameterError}. If a file system with the specified client
-request token doesn't exist, this operation does the following:
+request token doesn\'t exist, this operation does the following:
 \itemize{
 \item Creates a new Amazon FSx file system from backup with an assigned
 ID, and an initial lifecycle state of \code{CREATING}.
@@ -62,7 +62,7 @@ If you use the same client request token and the initial call created a
 file system, the client receives success as long as the parameters are
 the same.
 
-The \code{CreateFileSystemFromBackup} call returns while the file system's
+The \code{CreateFileSystemFromBackup} call returns while the file system\'s
 lifecycle state is still \code{CREATING}. You can check the file-system
 creation status by calling the DescribeFileSystems operation, which
 returns the file system state along with other information.
@@ -95,6 +95,8 @@ returns the file system state along with other information.
         "string"
       )
     ),
+    DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+    PreferredSubnetId = "string",
     ThroughputCapacity = 123,
     WeeklyMaintenanceStartTime = "string",
     DailyAutomaticBackupStartTime = "string",

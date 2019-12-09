@@ -84,7 +84,7 @@ Creates a new Amplify App.
     "string"
   ),
   autoBranchCreationConfig = list(
-    stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL",
+    stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL"|"PULL_REQUEST",
     framework = "string",
     enableAutoBuild = TRUE|FALSE,
     environmentVariables = list(
@@ -92,7 +92,9 @@ Creates a new Amplify App.
     ),
     basicAuthCredentials = "string",
     enableBasicAuth = TRUE|FALSE,
-    buildSpec = "string"
+    buildSpec = "string",
+    enablePullRequestPreview = TRUE|FALSE,
+    pullRequestEnvironmentName = "string"
   )
 )
 }

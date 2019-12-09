@@ -7,7 +7,7 @@
 rds_failover_db_cluster(DBClusterIdentifier, TargetDBInstanceIdentifier)
 }
 \arguments{
-\item{DBClusterIdentifier}{[required] A DB cluster identifier to force a failover for. This parameter is not
+\item{DBClusterIdentifier}{[required] A DB cluster identifier to force a failover for. This parameter isn\'t
 case-sensitive.
 
 Constraints:

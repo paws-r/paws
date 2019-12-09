@@ -17,7 +17,7 @@ Sets the cross-origin resource sharing (CORS) configuration on a
 container so that the container can service cross-origin requests. For
 example, you might want to enable a request whose origin is
 http://www.example.com to access your AWS Elemental MediaStore container
-at my.example.container.com by using the browser's XMLHttpRequest
+at my.example.container.com by using the browser\'s XMLHttpRequest
 capability.
 }
 \details{

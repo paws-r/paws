@@ -48,6 +48,7 @@ their cache and can receive alarms if a part of their cache runs hot.
 \link[=elasticache_authorize_cache_security_group_ingress]{authorize_cache_security_group_ingress} \tab Allows network ingress to a cache security group \cr
 \link[=elasticache_batch_apply_update_action]{batch_apply_update_action} \tab Apply the service update \cr
 \link[=elasticache_batch_stop_update_action]{batch_stop_update_action} \tab Stop the service update \cr
+\link[=elasticache_complete_migration]{complete_migration} \tab Complete the migration of data \cr
 \link[=elasticache_copy_snapshot]{copy_snapshot} \tab Makes a copy of an existing snapshot \cr
 \link[=elasticache_create_cache_cluster]{create_cache_cluster} \tab Creates a cluster \cr
 \link[=elasticache_create_cache_parameter_group]{create_cache_parameter_group} \tab Creates a new Amazon ElastiCache cache parameter group \cr
@@ -77,7 +78,7 @@ their cache and can receive alarms if a part of their cache runs hot.
 \link[=elasticache_describe_snapshots]{describe_snapshots} \tab Returns information about cluster or replication group snapshots \cr
 \link[=elasticache_describe_update_actions]{describe_update_actions} \tab Returns details of the update actions \cr
 \link[=elasticache_increase_replica_count]{increase_replica_count} \tab Dynamically increases the number of replics in a Redis (cluster mode disabled) replication group or the number of replica nodes in one or more node groups (shards) of a Redis (cluster mode enabled) replication group\cr
-\link[=elasticache_list_allowed_node_type_modifications]{list_allowed_node_type_modifications} \tab Lists all available node types that you can scale your Redis cluster's or replication group's current node type up to \cr
+\link[=elasticache_list_allowed_node_type_modifications]{list_allowed_node_type_modifications} \tab Lists all available node types that you can scale your Redis cluster's or replication group's current node type \cr
 \link[=elasticache_list_tags_for_resource]{list_tags_for_resource} \tab Lists all cost allocation tags currently on the named resource \cr
 \link[=elasticache_modify_cache_cluster]{modify_cache_cluster} \tab Modifies the settings for a cluster \cr
 \link[=elasticache_modify_cache_parameter_group]{modify_cache_parameter_group} \tab Modifies the parameters of a cache parameter group \cr
@@ -89,6 +90,7 @@ their cache and can receive alarms if a part of their cache runs hot.
 \link[=elasticache_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes the tags identified by the TagKeys list from the named resource \cr
 \link[=elasticache_reset_cache_parameter_group]{reset_cache_parameter_group} \tab Modifies the parameters of a cache parameter group to the engine or system default value \cr
 \link[=elasticache_revoke_cache_security_group_ingress]{revoke_cache_security_group_ingress} \tab Revokes ingress from a cache security group \cr
+\link[=elasticache_start_migration]{start_migration} \tab Start the migration of data \cr
 \link[=elasticache_test_failover]{test_failover} \tab Represents the input of a TestFailover operation which test automatic failover on a specified node group (called shard in the console) in a replication group (called cluster in the console)
 }
 }

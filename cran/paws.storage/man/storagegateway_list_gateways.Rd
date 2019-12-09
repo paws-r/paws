@@ -2,7 +2,7 @@
 % Please edit documentation in R/storagegateway_operations.R
 \name{storagegateway_list_gateways}
 \alias{storagegateway_list_gateways}
-\title{Lists gateways owned by an AWS account in a region specified in the
+\title{Lists gateways owned by an AWS account in an AWS Region specified in the
 request}
 \usage{
 storagegateway_list_gateways(Marker, Limit)
@@ -15,7 +15,7 @@ returned list of gateways.}
 number of items.}
 }
 \description{
-Lists gateways owned by an AWS account in a region specified in the
+Lists gateways owned by an AWS account in an AWS Region specified in the
 request. The returned list is ordered by gateway Amazon Resource Name
 (ARN).
 }

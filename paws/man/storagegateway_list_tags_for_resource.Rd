@@ -18,8 +18,7 @@ number of items.}
 }
 \description{
 Lists the tags that have been added to the specified resource. This
-operation is only supported in the cached volume, stored volume and tape
-gateway type.
+operation is supported in storage gateways of all types.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(

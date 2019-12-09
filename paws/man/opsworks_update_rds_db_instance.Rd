@@ -7,7 +7,7 @@
 opsworks_update_rds_db_instance(RdsDbInstanceArn, DbUser, DbPassword)
 }
 \arguments{
-\item{RdsDbInstanceArn}{[required] The Amazon RDS instance's ARN.}
+\item{RdsDbInstanceArn}{[required] The Amazon RDS instance\'s ARN.}
 
 \item{DbUser}{The master user name.}
 

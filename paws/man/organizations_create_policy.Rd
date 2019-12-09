@@ -8,11 +8,12 @@ organizational unit (OU), or an individual AWS account}
 organizations_create_policy(Content, Description, Name, Type)
 }
 \arguments{
-\item{Content}{[required] The policy content to add to the new policy. For example, if you create
-a \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html}{service control policy}
-(SCP), this string must be JSON text that specifies the permissions that
-admins in attached accounts can delegate to their users, groups, and
-roles. For more information about the SCP syntax, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html}{Service Control Policy Syntax}
+\item{Content}{[required] The policy content to add to the new policy. For example, you could
+create a \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html}{service control policy}
+(SCP) that specifies the permissions that administrators in attached
+accounts can delegate to their users, groups, and roles. The string for
+this SCP must be JSON text. For more information about the SCP syntax,
+see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html}{Service Control Policy Syntax}
 in the \emph{AWS Organizations User Guide.}}
 
 \item{Description}{[required] An optional description to assign to the policy.}
@@ -23,10 +24,7 @@ The \href{http://wikipedia.org/wiki/regex}{regex pattern} that is used to
 validate this parameter is a string of any of the characters in the
 ASCII character range.}
 
-\item{Type}{[required] The type of policy to create.
-
-In the current release, the only type of policy that you can create is a
-service control policy (SCP).}
+\item{Type}{[required] The type of policy to create.}
 }
 \description{
 Creates a policy of a specified type that you can attach to a root, an
@@ -35,7 +33,7 @@ organizational unit (OU), or an individual AWS account.
 \details{
 For more information about policies and their use, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html}{Managing Organization Policies}.
 
-This operation can be called only from the organization's master
+This operation can be called only from the organization\'s master
 account.
 }
 \section{Request syntax}{
@@ -43,7 +41,7 @@ account.
   Content = "string",
   Description = "string",
   Name = "string",
-  Type = "SERVICE_CONTROL_POLICY"
+  Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"
 )
 }
 }
@@ -58,7 +56,7 @@ account.
 # 
 # 
 \donttest{svc$create_policy(
-  Content = "{\\\\\\"Version\\\\\\":\\\\\\"2012-10-17\\\\\\",\\\\\\"Statement\\\\\\":{\\\\\\"Effect\\\\\\":...",
+  Content = "{\\\\\"Version\\\\\":\\\\\"2012-10-17\\\\\",\\\\\"Statement\\\\\":{\\\\\"Effect\\\\\":...",
   Description = "Enables admins of attached accounts to delegate all S3 permissions",
   Name = "AllowAllS3Actions",
   Type = "SERVICE_CONTROL_POLICY"

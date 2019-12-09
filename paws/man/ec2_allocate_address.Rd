@@ -4,7 +4,8 @@
 \alias{ec2_allocate_address}
 \title{Allocates an Elastic IP address to your AWS account}
 \usage{
-ec2_allocate_address(Domain, Address, PublicIpv4Pool, DryRun)
+ec2_allocate_address(Domain, Address, PublicIpv4Pool,
+  NetworkBorderGroup, CustomerOwnedIpv4Pool, DryRun)
 }
 \arguments{
 \item{Domain}{Set to \code{vpc} to allocate the address for use with instances in a VPC.
@@ -17,6 +18,21 @@ address pool.}
 \item{PublicIpv4Pool}{The ID of an address pool that you own. Use this parameter to let Amazon
 EC2 select an address from the address pool. To specify a specific
 address from the address pool, use the \code{Address} parameter instead.}
+
+\item{NetworkBorderGroup}{The location from which the IP address is advertised. Use this parameter
+to limit the address to this location.
+
+Use
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcs.html}{DescribeVpcs}
+to view the network border groups.
+
+You cannot use a network border group with EC2 Classic. If you attempt
+this operation on EC2 classic, you will receive an
+\code{InvalidParameterCombination} error. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/errors-overview.html}{Error Codes}.}
+
+\item{CustomerOwnedIpv4Pool}{The ID of a customer-owned address pool. Use this parameter to let
+Amazon EC2 select an address from the address pool. Alternatively,
+specify a specific address from the address pool.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -55,6 +71,8 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   Domain = "vpc"|"standard",
   Address = "string",
   PublicIpv4Pool = "string",
+  NetworkBorderGroup = "string",
+  CustomerOwnedIpv4Pool = "string",
   DryRun = TRUE|FALSE
 )
 }

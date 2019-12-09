@@ -13,7 +13,7 @@ neptune_describe_db_engine_versions(Engine, EngineVersion,
 
 \item{EngineVersion}{The database engine version to return.
 
-Example: \code{5.1.49}}
+Example: \verb{5.1.49}}
 
 \item{DBParameterGroupFamily}{The name of a specific DB parameter group family to return details for.
 

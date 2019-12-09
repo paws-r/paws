@@ -17,7 +17,7 @@ show parameters that are the same as the default parameter group.
 
 Default: All parameter types returned.
 
-Valid Values: \code{user} \| \code{engine-default}}
+Valid Values: \code{user} \\| \code{engine-default}}
 
 \item{MaxRecords}{The maximum number of response records to return in each call. If the
 number of remaining response records exceeds the specified \code{MaxRecords}

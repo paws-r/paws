@@ -18,6 +18,9 @@ Data Service API.
 
 For more information about the Data Service API, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html}{Using the Data API for Aurora Serverless}
 in the \emph{Amazon Aurora User Guide}.
+
+If you have questions or comments related to the Data API, send email to
+\href{mailto:Rds-data-api-feedback@amazon.com}{Rds-data-api-feedback@amazon.com}.
 }
 \section{Service syntax}{
 \preformatted{svc <- rdsdataservice(

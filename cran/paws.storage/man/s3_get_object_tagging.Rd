@@ -7,14 +7,42 @@
 s3_get_object_tagging(Bucket, Key, VersionId)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The bucket name containing the object for which to get the tagging
+information.
 
-\item{Key}{[required]}
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+\emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
+When using this operation using an access point through the AWS SDKs,
+you provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
-\item{VersionId}{}
+\item{Key}{[required] Object key for which to get the tagging information.}
+
+\item{VersionId}{The versionId of the object for which to get the tagging information.}
 }
 \description{
-Returns the tag-set of an object.
+Returns the tag-set of an object. You send the GET request against the
+tagging subresource associated with the object.
+}
+\details{
+To use this operation, you must have permission to perform the
+\code{s3:GetObjectTagging} action. By default, the GET operation returns
+information about current version of an object. For a versioned bucket,
+you can have multiple versions of an object in your bucket. To retrieve
+tags of any other version, use the versionId query parameter. You also
+need permission for the \code{s3:GetObjectVersionTagging} action.
+
+By default, the bucket owner has this permission and can grant this
+permission to others.
+
+For information about the Amazon S3 object tagging feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html}{Object Tagging}.
+
+The following operation is related to \code{GetObjectTagging}:
+\itemize{
+\item PutObjectTagging
+}
 }
 \section{Request syntax}{
 \preformatted{svc$get_object_tagging(
@@ -26,18 +54,18 @@ Returns the tag-set of an object.
 }
 
 \examples{
+# The following example retrieves tag set of an object.
+\donttest{svc$get_object_tagging(
+  Bucket = "examplebucket",
+  Key = "HappyFace.jpg"
+)}
+
 # The following example retrieves tag set of an object. The request
 # specifies object version.
 \donttest{svc$get_object_tagging(
   Bucket = "examplebucket",
   Key = "exampleobject",
   VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
-)}
-
-# The following example retrieves tag set of an object.
-\donttest{svc$get_object_tagging(
-  Bucket = "examplebucket",
-  Key = "HappyFace.jpg"
 )}
 
 }

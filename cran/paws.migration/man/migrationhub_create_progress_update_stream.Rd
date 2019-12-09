@@ -10,7 +10,8 @@ migrationhub_create_progress_update_stream(ProgressUpdateStreamName,
   DryRun)
 }
 \arguments{
-\item{ProgressUpdateStreamName}{[required] The name of the ProgressUpdateStream.}
+\item{ProgressUpdateStreamName}{[required] The name of the ProgressUpdateStream. \emph{Do not store personal data in
+this field.}}
 
 \item{DryRun}{Optional boolean flag to indicate whether any effect should take place.
 Used to test if the caller has permission to make the call.}

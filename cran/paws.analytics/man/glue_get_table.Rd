@@ -7,7 +7,7 @@
 glue_get_table(CatalogId, DatabaseName, Name)
 }
 \arguments{
-\item{CatalogId}{The ID of the Data Catalog where the table resides. If none is supplied,
+\item{CatalogId}{The ID of the Data Catalog where the table resides. If none is provided,
 the AWS account ID is used by default.}
 
 \item{DatabaseName}{[required] The name of the database in the catalog in which the table resides. For

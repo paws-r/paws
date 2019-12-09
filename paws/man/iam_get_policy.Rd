@@ -17,7 +17,7 @@ in the \emph{AWS General Reference}.}
 }
 \description{
 Retrieves information about the specified managed policy, including the
-policy's default version and the total number of IAM users, groups, and
+policy\'s default version and the total number of IAM users, groups, and
 roles to which the policy is attached. To retrieve the list of the
 specific users, groups, and roles that the policy is attached to, use
 the ListEntitiesForPolicy API. This API returns metadata about the

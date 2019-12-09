@@ -10,10 +10,10 @@ appstream_create_user(UserName, MessageAction, FirstName, LastName,
 \arguments{
 \item{UserName}{[required] The email address of the user.
 
-Users' email addresses are case-sensitive. During login, if they
-specify an email address that doesn't use the same capitalization as
+Users\' email addresses are case-sensitive. During login, if they
+specify an email address that doesn\'t use the same capitalization as
 the email address specified when their user pool account was created, a
-"user does not exist" error message displays.}
+\"user does not exist\" error message displays.}
 
 \item{MessageAction}{The action to take for the welcome email that is sent to a user after
 the user is created in the user pool. If you specify SUPPRESS, no email

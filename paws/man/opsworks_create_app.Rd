@@ -11,18 +11,18 @@ opsworks_create_app(StackId, Shortname, Name, Description, DataSources,
 \arguments{
 \item{StackId}{[required] The stack ID.}
 
-\item{Shortname}{The app's short name.}
+\item{Shortname}{The app\'s short name.}
 
 \item{Name}{[required] The app name.}
 
 \item{Description}{A description of the app.}
 
-\item{DataSources}{The app's data source.}
+\item{DataSources}{The app\'s data source.}
 
 \item{Type}{[required] The app type. Each supported type is associated with a particular layer.
 For example, PHP applications are associated with a PHP layer. AWS
 OpsWorks Stacks deploys an application to those instances that are
-members of the corresponding layer. If your app isn't one of the
+members of the corresponding layer. If your app isn\'t one of the
 standard types, or you prefer to implement your own Deploy recipes,
 specify \code{other}.}
 
@@ -45,13 +45,13 @@ information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/wor
 
 There is no specific limit on the number of environment variables.
 However, the size of the associated data structure - which includes the
-variables' names, values, and protected flag values - cannot exceed 20
+variables\' names, values, and protected flag values - cannot exceed 20
 KB. This limit should accommodate most if not all use cases. Exceeding
-it will cause an exception with the message, "Environment: is too large
-(maximum is 20KB)."
+it will cause an exception with the message, \"Environment: is too large
+(maximum is 20KB).\"
 
 If you have specified one or more environment variables, you cannot
-modify the stack's Chef version.}
+modify the stack\'s Chef version.}
 }
 \description{
 Creates an app for a specified stack. For more information, see

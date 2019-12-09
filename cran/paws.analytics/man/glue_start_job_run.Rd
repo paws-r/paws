@@ -45,16 +45,16 @@ allocated when this job runs. A DPU is a relative measure of processing
 power that consists of 4 vCPUs of compute capacity and 16 GB of memory.
 For more information, see the AWS Glue pricing page.
 
-Do not set \code{Max Capacity} if using \code{WorkerType} and \code{NumberOfWorkers}.
+Do not set \verb{Max Capacity} if using \code{WorkerType} and \code{NumberOfWorkers}.
 
 The value that can be allocated for \code{MaxCapacity} depends on whether you
 are running a Python shell job, or an Apache Spark ETL job:
 \itemize{
 \item When you specify a Python shell job
-(\code{JobCommand.Name}="pythonshell"), you can allocate either 0.0625
+(\code{JobCommand.Name}=\"pythonshell\"), you can allocate either 0.0625
 or 1 DPU. The default is 0.0625 DPU.
 \item When you specify an Apache Spark ETL job
-(\code{JobCommand.Name}="glueetl"), you can allocate from 2 to 100
+(\code{JobCommand.Name}=\"glueetl\"), you can allocate from 2 to 100
 DPUs. The default is 10 DPUs. This job type cannot have a fractional
 DPU allocation.
 }}
@@ -98,7 +98,7 @@ Starts a job run using a job definition.
   NotificationProperty = list(
     NotifyDelayAfter = 123
   ),
-  WorkerType = "string",
+  WorkerType = "Standard"|"G.1X"|"G.2X",
   NumberOfWorkers = 123
 )
 }

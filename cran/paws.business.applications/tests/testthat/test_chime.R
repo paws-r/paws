@@ -10,6 +10,14 @@ test_that("list_accounts", {
   expect_error(svc$list_accounts(MaxResults = 20), NA)
 })
 
+test_that("list_meetings", {
+  expect_error(svc$list_meetings(), NA)
+})
+
+test_that("list_meetings", {
+  expect_error(svc$list_meetings(MaxResults = 20), NA)
+})
+
 test_that("list_phone_number_orders", {
   expect_error(svc$list_phone_number_orders(), NA)
 })
@@ -24,6 +32,14 @@ test_that("list_phone_numbers", {
 
 test_that("list_phone_numbers", {
   expect_error(svc$list_phone_numbers(MaxResults = 20), NA)
+})
+
+test_that("list_voice_connector_groups", {
+  expect_error(svc$list_voice_connector_groups(), NA)
+})
+
+test_that("list_voice_connector_groups", {
+  expect_error(svc$list_voice_connector_groups(MaxResults = 20), NA)
 })
 
 test_that("list_voice_connectors", {

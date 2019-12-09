@@ -2,14 +2,14 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_get_content_moderation}
 \alias{rekognition_get_content_moderation}
-\title{Gets the content moderation analysis results for a Amazon Rekognition
-Video analysis started by StartContentModeration}
+\title{Gets the unsafe content analysis results for a Amazon Rekognition Video
+analysis started by StartContentModeration}
 \usage{
 rekognition_get_content_moderation(JobId, MaxResults, NextToken, SortBy)
 }
 \arguments{
-\item{JobId}{[required] The identifier for the content moderation job. Use \code{JobId} to identify
-the job in a subsequent call to \code{GetContentModeration}.}
+\item{JobId}{[required] The identifier for the unsafe content job. Use \code{JobId} to identify the
+job in a subsequent call to \code{GetContentModeration}.}
 
 \item{MaxResults}{Maximum number of results to return per paginated call. The largest
 value you can specify is 1000. If you specify a value greater than 1000,
@@ -18,7 +18,7 @@ a maximum of 1000 results is returned. The default value is 1000.}
 \item{NextToken}{If the previous response was incomplete (because there is more data to
 retrieve), Amazon Rekognition returns a pagination token in the
 response. You can use this pagination token to retrieve the next set of
-content moderation labels.}
+unsafe content labels.}
 
 \item{SortBy}{Sort to use for elements in the \code{ModerationLabelDetections} array. Use
 \code{TIMESTAMP} to sort array elements by the time labels are detected. Use
@@ -27,25 +27,25 @@ each label group, the array element are sorted by detection confidence.
 The default sort is by \code{TIMESTAMP}.}
 }
 \description{
-Gets the content moderation analysis results for a Amazon Rekognition
-Video analysis started by StartContentModeration.
+Gets the unsafe content analysis results for a Amazon Rekognition Video
+analysis started by StartContentModeration.
 }
 \details{
-Content moderation analysis of a video is an asynchronous operation. You
+Unsafe content analysis of a video is an asynchronous operation. You
 start analysis by calling StartContentModeration which returns a job
 identifier (\code{JobId}). When analysis finishes, Amazon Rekognition Video
 publishes a completion status to the Amazon Simple Notification Service
 topic registered in the initial call to \code{StartContentModeration}. To get
-the results of the content moderation analysis, first check that the
-status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so,
-call \code{GetContentModeration} and pass the job identifier (\code{JobId}) from
-the initial call to \code{StartContentModeration}.
+the results of the unsafe content analysis, first check that the status
+value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call
+\code{GetContentModeration} and pass the job identifier (\code{JobId}) from the
+initial call to \code{StartContentModeration}.
 
 For more information, see Working with Stored Videos in the Amazon
 Rekognition Devlopers Guide.
 
-\code{GetContentModeration} returns detected content moderation labels, and
-the time they are detected, in an array, \code{ModerationLabels}, of
+\code{GetContentModeration} returns detected unsafe content labels, and the
+time they are detected, in an array, \code{ModerationLabels}, of
 ContentModerationDetection objects.
 
 By default, the moderated labels are returned sorted by time, in

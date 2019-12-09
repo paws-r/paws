@@ -2,6 +2,10 @@ context("ecs")
 
 svc <- paws::ecs()
 
+test_that("describe_capacity_providers", {
+  expect_error(svc$describe_capacity_providers(), NA)
+})
+
 test_that("describe_clusters", {
   expect_error(svc$describe_clusters(), NA)
 })

@@ -13,15 +13,15 @@ gamelift_start_fleet_actions(FleetId, Actions)
 }
 \description{
 Resumes activity on a fleet that was suspended with StopFleetActions.
-Currently, this operation is used to restart a fleet's auto-scaling
+Currently, this operation is used to restart a fleet\'s auto-scaling
 activity.
 }
 \details{
 To start fleet actions, specify the fleet ID and the type of actions to
 restart. When auto-scaling fleet actions are restarted, Amazon GameLift
-once again initiates scaling events as triggered by the fleet's scaling
+once again initiates scaling events as triggered by the fleet\'s scaling
 policies. If actions on the fleet were never stopped, this operation
-will have no effect. You can view a fleet's stopped actions using
+will have no effect. You can view a fleet\'s stopped actions using
 DescribeFleetAttributes.
 
 \strong{Learn more}
@@ -34,6 +34,7 @@ DescribeFleetAttributes.
 \item ListFleets
 \item DeleteFleet
 \item Describe fleets:
+\itemize{
 \item DescribeFleetAttributes
 \item DescribeFleetCapacity
 \item DescribeFleetPortSettings
@@ -41,14 +42,19 @@ DescribeFleetAttributes.
 \item DescribeRuntimeConfiguration
 \item DescribeEC2InstanceLimits
 \item DescribeFleetEvents
+}
 \item Update fleets:
+\itemize{
 \item UpdateFleetAttributes
 \item UpdateFleetCapacity
 \item UpdateFleetPortSettings
 \item UpdateRuntimeConfiguration
+}
 \item Manage fleet actions:
+\itemize{
 \item StartFleetActions
 \item StopFleetActions
+}
 }
 }
 \section{Request syntax}{

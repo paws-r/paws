@@ -23,12 +23,12 @@ associated with the specified namespace.}
 \item{MetricName}{Limits the results to only the anomaly detection models that are
 associated with the specified metric name. If there are multiple metrics
 with this name in different namespaces that have anomaly detection
-models, they're all returned.}
+models, they\'re all returned.}
 
 \item{Dimensions}{Limits the results to only the anomaly detection models that are
 associated with the specified metric dimensions. If there are multiple
 metrics that have these dimensions and have anomaly detection models
-associated, they're all returned.}
+associated, they\'re all returned.}
 }
 \description{
 Lists the anomaly detection models that you have created in your

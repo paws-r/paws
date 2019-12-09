@@ -11,7 +11,7 @@ iotthingsgraph_search_flow_templates(filters, nextToken, maxResults)
 \code{DEVICE_MODEL_ID}.}
 
 \item{nextToken}{The string that specifies the next page of results. Use this when
-you're paginating results.}
+you\'re paginating results.}
 
 \item{maxResults}{The maximum number of results to return in the response.}
 }

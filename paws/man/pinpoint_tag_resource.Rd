@@ -2,19 +2,19 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_tag_resource}
 \alias{pinpoint_tag_resource}
-\title{Adds one or more tags (keys and values) to an application, campaign, or
-segment}
+\title{Adds one or more tags (keys and values) to an application, campaign,
+journey, message template, or segment}
 \usage{
 pinpoint_tag_resource(ResourceArn, TagsModel)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the application, campaign, or segment.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 
 \item{TagsModel}{[required]}
 }
 \description{
-Adds one or more tags (keys and values) to an application, campaign, or
-segment.
+Adds one or more tags (keys and values) to an application, campaign,
+journey, message template, or segment.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

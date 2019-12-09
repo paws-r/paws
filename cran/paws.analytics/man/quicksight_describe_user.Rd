@@ -17,18 +17,6 @@ ID for the AWS account that contains your Amazon QuickSight account.}
 \description{
 Returns information about a user, given the user name.
 }
-\details{
-The permission resource is
-\code{arn:aws:quicksight:us-east-1:<i>&lt;aws-account-id&gt;</i>:user/default/<i>&lt;user-name&gt;</i> }.
-
-The response is a user object that contains the user's Amazon Resource
-Name (ARN), AWS Identity and Access Management (IAM) role, and email
-address.
-
-\strong{CLI Sample:}
-
-\code{aws quicksight describe-user --aws-account-id=111122223333 --namespace=default --user-name=Pat }
-}
 \section{Request syntax}{
 \preformatted{svc$describe_user(
   UserName = "string",

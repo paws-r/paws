@@ -9,7 +9,7 @@ cognitoidentityprovider_update_user_pool(UserPoolId, Policies,
   EmailVerificationMessage, EmailVerificationSubject,
   VerificationMessageTemplate, SmsAuthenticationMessage, MfaConfiguration,
   DeviceConfiguration, EmailConfiguration, SmsConfiguration, UserPoolTags,
-  AdminCreateUserConfig, UserPoolAddOns)
+  AdminCreateUserConfig, UserPoolAddOns, AccountRecoverySetting)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool you want to update.}
@@ -55,12 +55,23 @@ such as by purpose, owner, environment, or other criteria.}
 \item{AdminCreateUserConfig}{The configuration for \code{AdminCreateUser} requests.}
 
 \item{UserPoolAddOns}{Used to enable advanced security risk detection. Set the key
-\code{AdvancedSecurityMode} to the value "AUDIT".}
+\code{AdvancedSecurityMode} to the value \"AUDIT\".}
+
+\item{AccountRecoverySetting}{Use this setting to define which verified available method a user can
+use to recover their password when they call \code{ForgotPassword}. It allows
+you to define a preferred method when a user has more than one method
+available. With this setting, SMS does not qualify for a valid password
+recovery mechanism if the user also has SMS MFA enabled. In the absence
+of this setting, Cognito uses the legacy behavior to determine the
+recovery method where SMS is preferred over email.}
 }
 \description{
-Updates the specified user pool with the specified attributes. If you
-don't provide a value for an attribute, it will be set to the default
-value. You can get a list of the current user pool settings with .
+Updates the specified user pool with the specified attributes. You can
+get a list of the current user pool settings with .
+}
+\details{
+If you don\'t provide a value for an attribute, it will be set to the
+default value.
 }
 \section{Request syntax}{
 \preformatted{svc$update_user_pool(
@@ -110,7 +121,9 @@ value. You can get a list of the current user pool settings with .
   EmailConfiguration = list(
     SourceArn = "string",
     ReplyToEmailAddress = "string",
-    EmailSendingAccount = "COGNITO_DEFAULT"|"DEVELOPER"
+    EmailSendingAccount = "COGNITO_DEFAULT"|"DEVELOPER",
+    From = "string",
+    ConfigurationSet = "string"
   ),
   SmsConfiguration = list(
     SnsCallerArn = "string",
@@ -130,6 +143,14 @@ value. You can get a list of the current user pool settings with .
   ),
   UserPoolAddOns = list(
     AdvancedSecurityMode = "OFF"|"AUDIT"|"ENFORCED"
+  ),
+  AccountRecoverySetting = list(
+    RecoveryMechanisms = list(
+      list(
+        Priority = 123,
+        Name = "verified_email"|"verified_phone_number"|"admin_only"
+      )
+    )
   )
 )
 }

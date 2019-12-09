@@ -14,7 +14,9 @@ assumed.}
 
 \item{repositoryName}{[required] The name of the repository to receive the policy.}
 
-\item{policyText}{[required] The JSON repository policy text to apply to the repository.}
+\item{policyText}{[required] The JSON repository policy text to apply to the repository. For more
+information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicyExamples.html}{Amazon ECR Repository Policy Examples}
+in the \emph{Amazon Elastic Container Registry User Guide}.}
 
 \item{force}{If the policy you are attempting to set on a repository policy would
 prevent you from setting another policy in the future, you must force
@@ -23,7 +25,8 @@ accidental repository lock outs.}
 }
 \description{
 Applies a repository policy on a specified repository to control access
-permissions.
+permissions. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicies.html}{Amazon ECR Repository Policies}
+in the \emph{Amazon Elastic Container Registry User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$set_repository_policy(

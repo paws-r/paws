@@ -14,8 +14,8 @@ ListByteMatchSets.}
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
-Permanently deletes a ByteMatchSet. You can't delete a \code{ByteMatchSet}
-if it's still used in any \code{Rules} or if it still includes any
+Permanently deletes a ByteMatchSet. You can\'t delete a \code{ByteMatchSet}
+if it\'s still used in any \code{Rules} or if it still includes any
 ByteMatchTuple objects (any filters).
 }
 \details{

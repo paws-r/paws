@@ -13,7 +13,8 @@ tags.}
 \item{TagKeys}{[required] A list of keys of tags to remove from the specified application.}
 }
 \description{
-Removes one or more tags from a Kinesis Analytics application.
+Removes one or more tags from a Kinesis Analytics application. For more
+information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html}{Using Tagging}.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

@@ -4,16 +4,46 @@
 \alias{cognitoidentityprovider_admin_reset_user_password}
 \title{Resets the specified user's password in a user pool as an administrator}
 \usage{
-cognitoidentityprovider_admin_reset_user_password(UserPoolId, Username)
+cognitoidentityprovider_admin_reset_user_password(UserPoolId, Username,
+  ClientMetadata)
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool where you want to reset the user's
+\item{UserPoolId}{[required] The user pool ID for the user pool where you want to reset the user\'s
 password.}
 
 \item{Username}{[required] The user name of the user whose password you wish to reset.}
+
+\item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any
+custom workflows that this action triggers.
+
+You create custom workflows by assigning AWS Lambda functions to user
+pool triggers. When you use the AdminResetUserPassword API action,
+Amazon Cognito invokes the function that is assigned to the \emph{custom
+message} trigger. When Amazon Cognito invokes this function, it passes a
+JSON payload, which the function receives as input. This payload
+contains a \code{clientMetadata} attribute, which provides the data that you
+assigned to the ClientMetadata parameter in your AdminResetUserPassword
+request. In your function code in AWS Lambda, you can process the
+\code{clientMetadata} value to enhance your workflow for your specific needs.
+
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html}{Customizing User Pool Workflows with Lambda Triggers}
+in the \emph{Amazon Cognito Developer Guide}.
+
+Take the following limitations into consideration when you use the
+ClientMetadata parameter:
+\itemize{
+\item Amazon Cognito does not store the ClientMetadata value. This data is
+available only to AWS Lambda triggers that are assigned to a user
+pool to support custom workflows. If your user pool configuration
+does not include triggers, the ClientMetadata parameter serves no
+purpose.
+\item Amazon Cognito does not validate the ClientMetadata value.
+\item Amazon Cognito does not encrypt the the ClientMetadata value, so
+don\'t use it to provide sensitive information.
+}}
 }
 \description{
-Resets the specified user's password in a user pool as an
+Resets the specified user\'s password in a user pool as an
 administrator. Works on any user.
 }
 \details{
@@ -27,12 +57,15 @@ user, or if email verification is selected and a verified email exists
 for the user, calling this API will also result in sending a message to
 the end user with the code to change their password.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
 }
 \section{Request syntax}{
 \preformatted{svc$admin_reset_user_password(
   UserPoolId = "string",
-  Username = "string"
+  Username = "string",
+  ClientMetadata = list(
+    "string"
+  )
 )
 }
 }

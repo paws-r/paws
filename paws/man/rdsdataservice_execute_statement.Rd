@@ -5,8 +5,8 @@
 \title{Runs a SQL statement against a database}
 \usage{
 rdsdataservice_execute_statement(continueAfterTimeout, database,
-  includeResultMetadata, parameters, resourceArn, schema, secretArn, sql,
-  transactionId)
+  includeResultMetadata, parameters, resourceArn, resultSetOptions,
+  schema, secretArn, sql, transactionId)
 }
 \arguments{
 \item{continueAfterTimeout}{A value that indicates whether to continue running the statement after
@@ -26,6 +26,8 @@ structures.}
 
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.}
 
+\item{resultSetOptions}{Options that control how the result set is returned.}
+
 \item{schema}{The name of the database schema.}
 
 \item{secretArn}{[required] The name or ARN of the secret that enables access to the DB cluster.}
@@ -36,14 +38,14 @@ structures.}
 \code{BeginTransaction} operation. Specify the transaction ID of the
 transaction that you want to include the SQL statement in.
 
-If the SQL statement is not part of a transaction, don't set this
+If the SQL statement is not part of a transaction, don\'t set this
 parameter.}
 }
 \description{
 Runs a SQL statement against a database.
 }
 \details{
-If a call isn't part of a transaction because it doesn't include the
+If a call isn\'t part of a transaction because it doesn\'t include the
 \code{transactionID} parameter, changes that result from the call are
 committed automatically.
 
@@ -59,7 +61,25 @@ terminated.
   parameters = list(
     list(
       name = "string",
+      typeHint = "DATE"|"DECIMAL"|"TIME"|"TIMESTAMP",
       value = list(
+        arrayValue = list(
+          arrayValues = list(
+            list()
+          ),
+          booleanValues = list(
+            TRUE|FALSE
+          ),
+          doubleValues = list(
+            123.0
+          ),
+          longValues = list(
+            123
+          ),
+          stringValues = list(
+            "string"
+          )
+        ),
         blobValue = raw,
         booleanValue = TRUE|FALSE,
         doubleValue = 123.0,
@@ -70,6 +90,9 @@ terminated.
     )
   ),
   resourceArn = "string",
+  resultSetOptions = list(
+    decimalReturnType = "DOUBLE_OR_LONG"|"STRING"
+  ),
   schema = "string",
   secretArn = "string",
   sql = "string",

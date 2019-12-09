@@ -12,7 +12,7 @@ polly_get_lexicon(Name)
 }
 \description{
 Returns the content of the specified pronunciation lexicon stored in an
-AWS Region. For more information, see \href{http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html}{Managing Lexicons}.
+AWS Region. For more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html}{Managing Lexicons}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_lexicon(

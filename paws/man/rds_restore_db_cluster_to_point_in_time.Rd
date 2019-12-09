@@ -18,7 +18,7 @@ Constraints:
 \itemize{
 \item Must contain from 1 to 63 letters, numbers, or hyphens
 \item First character must be a letter
-\item Can't end with a hyphen or contain two consecutive hyphens
+\item Can\'t end with a hyphen or contain two consecutive hyphens
 }}
 
 \item{RestoreType}{The type of restore to be performed. You can specify one of the
@@ -30,10 +30,10 @@ source DB cluster.
 source DB cluster.
 }
 
-Constraints: You can't specify \code{copy-on-write} if the engine version of
+Constraints: You can\'t specify \code{copy-on-write} if the engine version of
 the source DB cluster is earlier than 1.11.
 
-If you don't specify a \code{RestoreType} value, then the new DB cluster is
+If you don\'t specify a \code{RestoreType} value, then the new DB cluster is
 restored as a full copy of the source DB cluster.}
 
 \item{SourceDBClusterIdentifier}{[required] The identifier of the source DB cluster from which to restore.
@@ -51,21 +51,21 @@ format
 Constraints:
 \itemize{
 \item Must be before the latest restorable time for the DB instance
-\item Must be specified if \code{UseLatestRestorableTime} parameter is not
+\item Must be specified if \code{UseLatestRestorableTime} parameter isn\'t
 provided
-\item Can't be specified if the \code{UseLatestRestorableTime} parameter is
+\item Can\'t be specified if the \code{UseLatestRestorableTime} parameter is
 enabled
-\item Can't be specified if the \code{RestoreType} parameter is
+\item Can\'t be specified if the \code{RestoreType} parameter is
 \code{copy-on-write}
 }
 
-Example: \code{2015-03-07T23:45:00Z}}
+Example: \verb{2015-03-07T23:45:00Z}}
 
 \item{UseLatestRestorableTime}{A value that indicates whether to restore the DB cluster to the latest
-restorable backup time. By default, the DB cluster is not restored to
+restorable backup time. By default, the DB cluster isn\'t restored to
 the latest restorable backup time.
 
-Constraints: Can't be specified if \code{RestoreToTime} parameter is
+Constraints: Can\'t be specified if \code{RestoreToTime} parameter is
 provided.}
 
 \item{Port}{The port number on which the new DB cluster accepts connections.
@@ -101,22 +101,25 @@ a KMS key that is different than the KMS key used to encrypt the source
 DB cluster. The new DB cluster is encrypted with the KMS key identified
 by the \code{KmsKeyId} parameter.
 
-If you don't specify a value for the \code{KmsKeyId} parameter, then the
+If you don\'t specify a value for the \code{KmsKeyId} parameter, then the
 following occurs:
 \itemize{
 \item If the DB cluster is encrypted, then the restored DB cluster is
 encrypted using the KMS key that was used to encrypt the source DB
 cluster.
-\item If the DB cluster is not encrypted, then the restored DB cluster is
-not encrypted.
+\item If the DB cluster isn\'t encrypted, then the restored DB cluster
+isn\'t encrypted.
 }
 
-If \code{DBClusterIdentifier} refers to a DB cluster that is not encrypted,
+If \code{DBClusterIdentifier} refers to a DB cluster that isn\'t encrypted,
 then the restore request is rejected.}
 
 \item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.}
+mapping is disabled.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication}
+in the \emph{Amazon Aurora User Guide.}}
 
 \item{BacktrackWindow}{The target backtrack window, in seconds. To disable backtracking, set
 this value to 0.
@@ -144,11 +147,11 @@ Constraints:
 group.
 \item Must be 1 to 255 letters, numbers, or hyphens.
 \item First character must be a letter.
-\item Can't end with a hyphen or contain two consecutive hyphens.
+\item Can\'t end with a hyphen or contain two consecutive hyphens.
 }}
 
 \item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
-enabled. The database can't be deleted when deletion protection is
+enabled. The database can\'t be deleted when deletion protection is
 enabled. By default, deletion protection is disabled.}
 
 \item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the restored DB

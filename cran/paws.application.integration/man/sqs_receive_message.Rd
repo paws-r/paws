@@ -21,6 +21,7 @@ These attributes include:
 was first received from the queue (\href{http://en.wikipedia.org/wiki/Unix_time}{epoch time} in milliseconds).
 \item \code{ApproximateReceiveCount} - Returns the number of times a message
 has been received from the queue but not deleted.
+\item \code{AWSTraceHeader} - Returns the AWS X-Ray trace header string.
 \item \code{SenderId}
 \itemize{
 \item For an IAM user, returns the IAM user ID, for example
@@ -32,9 +33,9 @@ has been received from the queue but not deleted.
 (\href{http://en.wikipedia.org/wiki/Unix_time}{epoch time} in
 milliseconds).
 \item \code{MessageDeduplicationId} - Returns the value provided by the
-producer that calls the \code{<a>SendMessage</a>} action.
+producer that calls the \verb{<a>SendMessage</a>} action.
 \item \code{MessageGroupId} - Returns the value provided by the producer that
-calls the \code{<a>SendMessage</a>} action. Messages with the same
+calls the \verb{<a>SendMessage</a>} action. Messages with the same
 \code{MessageGroupId} are returned in sequence.
 \item \code{SequenceNumber} - Returns the value provided by Amazon SQS.
 }}
@@ -42,7 +43,7 @@ calls the \code{<a>SendMessage</a>} action. Messages with the same
 \item{MessageAttributeNames}{The name of the message attribute, where \emph{N} is the index.
 \itemize{
 \item The name can contain alphanumeric characters and the underscore
-(\code{_}), hyphen (\code{-}), and period (\code{.}).
+(\verb{_}), hyphen (\code{-}), and period (\code{.}).
 \item The name is case-sensitive and must be unique among all attribute
 names for the message.
 \item The name must not start with AWS-reserved prefixes such as \code{AWS.} or
@@ -54,8 +55,8 @@ not have periods in succession (\code{..}).
 
 When using \code{ReceiveMessage}, you can send a list of attribute names to
 receive, or you can return all of the attributes by specifying \code{All} or
-\code{.*} in your request. You can also use all message attributes starting
-with a prefix, for example \code{bar.*}.}
+\verb{.*} in your request. You can also use all message attributes starting
+with a prefix, for example \verb{bar.*}.}
 
 \item{MaxNumberOfMessages}{The maximum number of messages to return. Amazon SQS never returns more
 messages than this value (however, fewer messages might be returned).
@@ -83,7 +84,7 @@ messages, even if their visibility timeout has not yet expired.
 \code{ReceiveMessage} action.
 \item When you set \code{FifoQueue}, a caller of the \code{ReceiveMessage} action
 can provide a \code{ReceiveRequestAttemptId} explicitly.
-\item If a caller of the \code{ReceiveMessage} action doesn't provide a
+\item If a caller of the \code{ReceiveMessage} action doesn\'t provide a
 \code{ReceiveRequestAttemptId}, Amazon SQS generates a
 \code{ReceiveRequestAttemptId}.
 \item You can retry the \code{ReceiveMessage} action with the same
@@ -109,7 +110,7 @@ visibility timeout as necessary.
 more messages belonging to the same \code{MessageGroupId} are returned
 until the visibility timeout expires. You can still receive messages
 with another \code{MessageGroupId} as long as it is also visible.
-\item If a caller of \code{ReceiveMessage} can't track the
+\item If a caller of \code{ReceiveMessage} can\'t track the
 \code{ReceiveRequestAttemptId}, no retries work until the original
 visibility timeout expires. As a result, delays might occur but the
 messages in the queue remain in a strict order.
@@ -118,7 +119,7 @@ messages in the queue remain in a strict order.
 The length of \code{ReceiveRequestAttemptId} is 128 characters.
 \code{ReceiveRequestAttemptId} can contain alphanumeric characters (\code{a-z},
 \code{A-Z}, \code{0-9}) and punctuation
-(\code{!\"#$\\\%&amp;\'()*+,-./:;&lt;=&gt;?@\\[\\\]^_\`\{|\}~}).
+(\verb{!\\"#$\\\%&amp;\\'()*+,-./:;&lt;=&gt;?@\\\[\\\\\]^_\\`\\\{|\\\}~}).
 
 For best practices of using \code{ReceiveRequestAttemptId}, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-receiverequestattemptid-request-parameter.html}{Using the ReceiveRequestAttemptId Request Parameter}
 in the \emph{Amazon Simple Queue Service Developer Guide}.}
@@ -156,12 +157,12 @@ in the \emph{Amazon Simple Queue Service Developer Guide}.
 
 You can provide the \code{VisibilityTimeout} parameter in your request. The
 parameter is applied to the messages that Amazon SQS returns in the
-response. If you don't include the parameter, the overall visibility
+response. If you don\'t include the parameter, the overall visibility
 timeout for the queue is used for the returned messages. For more
 information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html}{Visibility Timeout}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 
-A message that isn't deleted or a message whose visibility isn't
+A message that isn\'t deleted or a message whose visibility isn\'t
 extended before the visibility timeout expires counts as a failed
 receive. Depending on the configuration of the queue, the message might
 be sent to the dead-letter queue.

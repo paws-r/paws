@@ -26,10 +26,10 @@ To avoid this situation, we recommend that you don't create secret names
 that end with a hyphen followed by six characters.}
 
 \item{MaxResults}{(Optional) Limits the number of results that you want to include in the
-response. If you don't include this parameter, it defaults to a value
-that's specific to the operation. If additional items exist beyond the
+response. If you don\'t include this parameter, it defaults to a value
+that\'s specific to the operation. If additional items exist beyond the
 maximum you specify, the \code{NextToken} response element is present and has
-a value (isn't null). Include that value as the \code{NextToken} request
+a value (isn\'t null). Include that value as the \code{NextToken} request
 parameter in the next call to the operation to get the next part of the
 results. Note that Secrets Manager might return fewer results than the
 maximum even when there are more results available. You should check
@@ -37,9 +37,9 @@ maximum even when there are more results available. You should check
 results.}
 
 \item{NextToken}{(Optional) Use this parameter in a request if you receive a \code{NextToken}
-response in a previous request that indicates that there's more output
+response in a previous request that indicates that there\'s more output
 available. In a subsequent call, set it to the value of the previous
-call's \code{NextToken} response to indicate where the output should
+call\'s \code{NextToken} response to indicate where the output should
 continue from.}
 
 \item{IncludeDeprecated}{(Optional) Specifies that you want the results to include versions that
@@ -55,7 +55,7 @@ label in \code{VersionStage} attached.
 }
 \details{
 Always check the \code{NextToken} response parameter when calling any of the
-\code{List*} operations. These operations can occasionally return an empty or
+\verb{List*} operations. These operations can occasionally return an empty or
 shorter than expected list of results even when there are more results
 available. When this happens, the \code{NextToken} response parameter
 contains a value to pass to the next call to the same API to request the

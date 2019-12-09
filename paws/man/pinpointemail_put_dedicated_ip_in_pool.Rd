@@ -8,7 +8,7 @@ pinpointemail_put_dedicated_ip_in_pool(Ip, DestinationPoolName)
 }
 \arguments{
 \item{Ip}{[required] The IP address that you want to move to the dedicated IP pool. The value
-you specify has to be a dedicated IP address that's associated with
+you specify has to be a dedicated IP address that\'s associated with
 your Amazon Pinpoint account.}
 
 \item{DestinationPoolName}{[required] The name of the IP pool that you want to add the dedicated IP address

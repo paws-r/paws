@@ -3,7 +3,7 @@
 \name{sns_set_platform_application_attributes}
 \alias{sns_set_platform_application_attributes}
 \title{Sets the attributes of the platform application object for the supported
-push notification services, such as APNS and GCM}
+push notification services, such as APNS and FCM}
 \usage{
 sns_set_platform_application_attributes(PlatformApplicationArn,
   Attributes)
@@ -15,13 +15,13 @@ sns_set_platform_application_attributes(PlatformApplicationArn,
 include the following:
 \itemize{
 \item \code{PlatformCredential} -- The credential received from the
-notification service. For APNS/APNS\_SANDBOX, PlatformCredential is
-private key. For GCM, PlatformCredential is "API key". For ADM,
-PlatformCredential is "client secret".
+notification service. For APNS/APNS\\_SANDBOX, PlatformCredential is
+private key. For FCM, PlatformCredential is \"API key\". For ADM,
+PlatformCredential is \"client secret\".
 \item \code{PlatformPrincipal} -- The principal received from the notification
-service. For APNS/APNS\_SANDBOX, PlatformPrincipal is SSL
-certificate. For GCM, PlatformPrincipal is not applicable. For ADM,
-PlatformPrincipal is "client id".
+service. For APNS/APNS\\_SANDBOX, PlatformPrincipal is SSL
+certificate. For FCM, PlatformPrincipal is not applicable. For ADM,
+PlatformPrincipal is \"client id\".
 \item \code{EventEndpointCreated} -- Topic ARN to which EndpointCreated event
 notifications should be sent.
 \item \code{EventEndpointDeleted} -- Topic ARN to which EndpointDeleted event
@@ -30,7 +30,7 @@ notifications should be sent.
 notifications should be sent.
 \item \code{EventDeliveryFailure} -- Topic ARN to which DeliveryFailure event
 notifications should be sent upon Direct Publish delivery failure
-(permanent) to one of the application's endpoints.
+(permanent) to one of the application\'s endpoints.
 \item \code{SuccessFeedbackRoleArn} -- IAM role ARN used to give Amazon SNS
 write access to use CloudWatch Logs on your behalf.
 \item \code{FailureFeedbackRoleArn} -- IAM role ARN used to give Amazon SNS
@@ -41,7 +41,7 @@ successfully delivered messages.
 }
 \description{
 Sets the attributes of the platform application object for the supported
-push notification services, such as APNS and GCM. For more information,
+push notification services, such as APNS and FCM. For more information,
 see \href{https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.
 For information on configuring attributes for message delivery status,
 see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html}{Using Amazon SNS Application Attributes for Message Delivery Status}.

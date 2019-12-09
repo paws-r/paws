@@ -25,11 +25,11 @@ Updates a domain name.
       CertificateUploadDate = as.POSIXct(
         "2015-01-01"
       ),
+      DomainNameStatus = "AVAILABLE"|"UPDATING",
+      DomainNameStatusMessage = "string",
       EndpointType = "REGIONAL"|"EDGE",
       HostedZoneId = "string",
-      SecurityPolicy = "TLS_1_0"|"TLS_1_2",
-      DomainNameStatus = "AVAILABLE"|"UPDATING",
-      DomainNameStatusMessage = "string"
+      SecurityPolicy = "TLS_1_0"|"TLS_1_2"
     )
   )
 )

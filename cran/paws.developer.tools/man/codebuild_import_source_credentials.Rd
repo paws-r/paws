@@ -7,10 +7,10 @@ that has its source code stored in a GitHub, GitHub Enterprise, or
 Bitbucket repository}
 \usage{
 codebuild_import_source_credentials(username, token, serverType,
-  authType)
+  authType, shouldOverwrite)
 }
 \arguments{
-\item{username}{The Bitbucket username when the \code{authType} is BASIC\_AUTH. This
+\item{username}{The Bitbucket username when the \code{authType} is BASIC\\_AUTH. This
 parameter is not valid for other types of source providers or
 connections.}
 
@@ -23,6 +23,10 @@ Bitbucket, this is the app password.}
 Enterprise, or Bitbucket repository. An OAUTH connection is not
 supported by the API and must be created using the AWS CodeBuild
 console.}
+
+\item{shouldOverwrite}{Set to \code{false} to prevent overwriting the repository source credentials.
+Set to \code{true} to overwrite the repository source credentials. The
+default value is \code{true}.}
 }
 \description{
 Imports the source repository credentials for an AWS CodeBuild project
@@ -34,7 +38,8 @@ Bitbucket repository.
   username = "string",
   token = "string",
   serverType = "GITHUB"|"BITBUCKET"|"GITHUB_ENTERPRISE",
-  authType = "OAUTH"|"BASIC_AUTH"|"PERSONAL_ACCESS_TOKEN"
+  authType = "OAUTH"|"BASIC_AUTH"|"PERSONAL_ACCESS_TOKEN",
+  shouldOverwrite = TRUE|FALSE
 )
 }
 }

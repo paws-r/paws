@@ -23,7 +23,7 @@ automatically converted to an interconnect.
 \details{
 If disassociating the connection would cause the LAG to fall below its
 setting for minimum number of operational connections, the request
-fails, except when it's the last member of the LAG. If all connections
+fails, except when it\'s the last member of the LAG. If all connections
 are disassociated, the LAG continues to exist as an empty LAG with no
 physical connections.
 }

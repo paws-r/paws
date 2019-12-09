@@ -2,34 +2,40 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_regions}
 \alias{ec2_describe_regions}
-\title{Describes the Regions that are currently available to you}
+\title{Describes the Regions that are enabled for your account, or all Regions}
 \usage{
-ec2_describe_regions(Filters, RegionNames, DryRun)
+ec2_describe_regions(Filters, RegionNames, DryRun, AllRegions)
 }
 \arguments{
 \item{Filters}{The filters.
 \itemize{
 \item \code{endpoint} - The endpoint of the Region (for example,
-\code{ec2.us-east-1.amazonaws.com}).
+\verb{ec2.us-east-1.amazonaws.com}).
+\item \verb{opt-in-status} - The opt-in status of the Region
+(\verb{opt-in-not-required} \\| \verb{opted-in} \\| \verb{not-opted-in}).
 \item \code{region-name} - The name of the Region (for example, \code{us-east-1}).
 }}
 
-\item{RegionNames}{The names of the Regions.}
+\item{RegionNames}{The names of the Regions. You can specify any Regions, whether they are
+enabled and disabled for your account.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{AllRegions}{Indicates whether to display all Regions, including Regions that are
+disabled for your account.}
 }
 \description{
-Describes the Regions that are currently available to you. The API
-returns a list of all the Regions, including Regions that are disabled
-for your account. For information about enabling Regions for your
-account, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/manage-account-payment.html#manage-account-payment-enable-disable-regions}{Enabling and Disabling Regions}
-in the \emph{AWS Billing and Cost Management User Guide}.
+Describes the Regions that are enabled for your account, or all Regions.
 }
 \details{
 For a list of the Regions supported by Amazon EC2, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region}{Regions and Endpoints}.
+
+For information about enabling and disabling Regions for your account,
+see \href{https://docs.aws.amazon.com/general/latest/gr/rande-manage.html}{Managing AWS Regions}
+in the \emph{AWS General Reference}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_regions(
@@ -44,7 +50,8 @@ For a list of the Regions supported by Amazon EC2, see \href{https://docs.aws.am
   RegionNames = list(
     "string"
   ),
-  DryRun = TRUE|FALSE
+  DryRun = TRUE|FALSE,
+  AllRegions = TRUE|FALSE
 )
 }
 }

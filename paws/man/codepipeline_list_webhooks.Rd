@@ -2,7 +2,7 @@
 % Please edit documentation in R/codepipeline_operations.R
 \name{codepipeline_list_webhooks}
 \alias{codepipeline_list_webhooks}
-\title{Gets a listing of all the webhooks in this region for this account}
+\title{Gets a listing of all the webhooks in this AWS Region for this account}
 \usage{
 codepipeline_list_webhooks(NextToken, MaxResults)
 }
@@ -15,8 +15,8 @@ the remaining results, make another call with the returned nextToken
 value.}
 }
 \description{
-Gets a listing of all the webhooks in this region for this account. The
-output lists all webhooks and includes the webhook URL and ARN, as well
+Gets a listing of all the webhooks in this AWS Region for this account.
+The output lists all webhooks and includes the webhook URL and ARN and
 the configuration for each webhook.
 }
 \section{Request syntax}{

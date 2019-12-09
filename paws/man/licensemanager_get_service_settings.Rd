@@ -2,13 +2,12 @@
 % Please edit documentation in R/licensemanager_operations.R
 \name{licensemanager_get_service_settings}
 \alias{licensemanager_get_service_settings}
-\title{Gets License Manager settings for a region}
+\title{Gets the License Manager settings for the current Region}
 \usage{
 licensemanager_get_service_settings()
 }
 \description{
-Gets License Manager settings for a region. Exposes the configured S3
-bucket, SNS topic, etc., for inspection.
+Gets the License Manager settings for the current Region.
 }
 \section{Request syntax}{
 \preformatted{svc$get_service_settings()

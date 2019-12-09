@@ -25,7 +25,7 @@ reused by multiple hosted zones. If a hosted zoned ID is specified,
 that zone as reusable.
 }
 \details{
-You can't associate a reusable delegation set with a private hosted
+You can\'t associate a reusable delegation set with a private hosted
 zone.
 
 For information about using a reusable delegation set to configure white
@@ -38,26 +38,26 @@ name servers. You need to perform the following steps:
 \item Create a reusable delegation set.
 \item Recreate hosted zones, and reduce the TTL to 60 seconds or less.
 \item Recreate resource record sets in the new hosted zones.
-\item Change the registrar's name servers to use the name servers for the
+\item Change the registrar\'s name servers to use the name servers for the
 new hosted zones.
 \item Monitor traffic for the website or application.
 \item Change TTLs back to their original values.
 }
 
 If you want to migrate existing hosted zones to use a reusable
-delegation set, the existing hosted zones can't use any of the name
+delegation set, the existing hosted zones can\'t use any of the name
 servers that are assigned to the reusable delegation set. If one or more
 hosted zones do use one or more name servers that are assigned to the
 reusable delegation set, you can do one of the following:
 \itemize{
-\item For small numbers of hosted zones---up to a few hundred---it's
+\item For small numbers of hosted zones---up to a few hundred---it\'s
 relatively easy to create reusable delegation sets until you get one
-that has four name servers that don't overlap with any of the name
+that has four name servers that don\'t overlap with any of the name
 servers in your hosted zones.
 \item For larger numbers of hosted zones, the easiest solution is to use
 more than one reusable delegation set.
 \item For larger numbers of hosted zones, you can also migrate hosted
-zones that have overlapping name servers to hosted zones that don't
+zones that have overlapping name servers to hosted zones that don\'t
 have overlapping name servers, then migrate the hosted zones again
 to use the reusable delegation set.
 }

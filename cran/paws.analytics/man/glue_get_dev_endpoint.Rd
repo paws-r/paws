@@ -2,15 +2,15 @@
 % Please edit documentation in R/glue_operations.R
 \name{glue_get_dev_endpoint}
 \alias{glue_get_dev_endpoint}
-\title{Retrieves information about a specified DevEndpoint}
+\title{Retrieves information about a specified development endpoint}
 \usage{
 glue_get_dev_endpoint(EndpointName)
 }
 \arguments{
-\item{EndpointName}{[required] Name of the DevEndpoint for which to retrieve information.}
+\item{EndpointName}{[required] Name of the \code{DevEndpoint} to retrieve information for.}
 }
 \description{
-Retrieves information about a specified DevEndpoint.
+Retrieves information about a specified development endpoint.
 }
 \details{
 When you create a development endpoint in a virtual private cloud (VPC),

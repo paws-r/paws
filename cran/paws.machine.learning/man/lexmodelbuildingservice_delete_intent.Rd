@@ -10,7 +10,7 @@ lexmodelbuildingservice_delete_intent(name)
 \item{name}{[required] The name of the intent. The name is case sensitive.}
 }
 \description{
-Deletes all versions of the intent, including the \code{$LATEST} version. To
+Deletes all versions of the intent, including the \verb{$LATEST} version. To
 delete a specific version of the intent, use the DeleteIntentVersion
 operation.
 }

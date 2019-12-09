@@ -34,7 +34,7 @@ must have the \code{iam:PassRole} permission.}
 \item{KmsKeyId}{The Amazon Resource Name (ARN) of a AWS Key Management Service key that
 Amazon SageMaker uses to encrypt data on the storage volume attached to
 your notebook instance. The KMS key you provide must be enabled. For
-information, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/enabling-keys.html}{Enabling and Disabling Keys}
+information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/enabling-keys.html}{Enabling and Disabling Keys}
 in the \emph{AWS Key Management Service Developer Guide}.}
 
 \item{Tags}{A list of tags to associate with the notebook instance. You can add tags
@@ -58,21 +58,21 @@ instance. The default value is 5 GB.}
 
 \item{AcceleratorTypes}{A list of Elastic Inference (EI) instance types to associate with this
 notebook instance. Currently, only one instance type can be associated
-with a notebook instance. For more information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/ei.html}{Using Elastic Inference in Amazon SageMaker}.}
+with a notebook instance. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/ei.html}{Using Elastic Inference in Amazon SageMaker}.}
 
 \item{DefaultCodeRepository}{A Git repository to associate with the notebook instance as its default
 code repository. This can be either the name of a Git repository stored
-as a resource in your account, or the URL of a Git repository in \href{http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html}{AWS CodeCommit}
+as a resource in your account, or the URL of a Git repository in \href{https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html}{AWS CodeCommit}
 or in any other Git repository. When you open a notebook instance, it
 opens in the directory that contains this repository. For more
-information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html}{Associating Git Repositories with Amazon SageMaker Notebook Instances}.}
+information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html}{Associating Git Repositories with Amazon SageMaker Notebook Instances}.}
 
 \item{AdditionalCodeRepositories}{An array of up to three Git repositories to associate with the notebook
 instance. These can be either the names of Git repositories stored as
-resources in your account, or the URL of Git repositories in \href{http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html}{AWS CodeCommit}
+resources in your account, or the URL of Git repositories in \href{https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html}{AWS CodeCommit}
 or in any other Git repository. These repositories are cloned at the
 same level as the default repository of your notebook instance. For more
-information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html}{Associating Git Repositories with Amazon SageMaker Notebook Instances}.}
+information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html}{Associating Git Repositories with Amazon SageMaker Notebook Instances}.}
 
 \item{RootAccess}{Whether root access is enabled or disabled for users of the notebook
 instance. The default value is \code{Enabled}.
@@ -113,7 +113,8 @@ notebook instance, assuming that the security groups allow it.
 }
 
 After creating the notebook instance, Amazon SageMaker returns its
-Amazon Resource Name (ARN).
+Amazon Resource Name (ARN). You can\'t change the name of a notebook
+instance after you create it.
 
 After Amazon SageMaker creates the notebook instance, you can connect to
 the Jupyter server and work in Jupyter notebooks. For example, you can
@@ -143,7 +144,7 @@ For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/
   DirectInternetAccess = "Enabled"|"Disabled",
   VolumeSizeInGB = 123,
   AcceleratorTypes = list(
-    "ml.eia1.medium"|"ml.eia1.large"|"ml.eia1.xlarge"
+    "ml.eia1.medium"|"ml.eia1.large"|"ml.eia1.xlarge"|"ml.eia2.medium"|"ml.eia2.large"|"ml.eia2.xlarge"
   ),
   DefaultCodeRepository = "string",
   AdditionalCodeRepositories = list(

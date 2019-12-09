@@ -15,8 +15,8 @@ list the tags. Currently, the supported resources are \code{ConfigRule},
 50. You cannot specify a number greater than 50. If you specify 0, AWS
 Config uses the default.}
 
-\item{NextToken}{The nextToken string returned on a previous page that you use to get the
-next page of results in a paginated response.}
+\item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
+the next page of results in a paginated response.}
 }
 \description{
 List the tags for AWS Config resource.

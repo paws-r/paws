@@ -253,18 +253,35 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 }
 .ecr$operations$complete_layer_upload <- ecr_complete_layer_upload
 
-#' Creates an image repository
+#' Creates an Amazon Elastic Container Registry (Amazon ECR) repository,
+#' where users can push and pull Docker images
 #'
-#' Creates an image repository.
+#' Creates an Amazon Elastic Container Registry (Amazon ECR) repository,
+#' where users can push and pull Docker images. For more information, see
+#' [Amazon ECR
+#' Repositories](https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html)
+#' in the *Amazon Elastic Container Registry User Guide*.
 #'
 #' @usage
-#' ecr_create_repository(repositoryName, tags)
+#' ecr_create_repository(repositoryName, tags, imageTagMutability,
+#'   imageScanningConfiguration)
 #'
 #' @param repositoryName &#91;required&#93; The name to use for the repository. The repository name may be specified
 #' on its own (such as `nginx-web-app`) or it can be prepended with a
 #' namespace to group the repository into a category (such as
 #' `project-a/nginx-web-app`).
-#' @param tags 
+#' @param tags The metadata that you apply to the repository to help you categorize and
+#' organize them. Each tag consists of a key and an optional value, both of
+#' which you define. Tag keys can have a maximum character length of 128
+#' characters, and tag values can have a maximum length of 256 characters.
+#' @param imageTagMutability The tag mutability setting for the repository. If this parameter is
+#' omitted, the default setting of `MUTABLE` will be used which will allow
+#' image tags to be overwritten. If `IMMUTABLE` is specified, all image
+#' tags within the repository will be immutable which will prevent them
+#' from being overwritten.
+#' @param imageScanningConfiguration The image scanning configuration for the repository. This setting
+#' determines whether images are scanned for known vulnerabilities after
+#' being pushed to the repository.
 #'
 #' @section Request syntax:
 #' ```
@@ -275,6 +292,10 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 #'       Key = "string",
 #'       Value = "string"
 #'     )
+#'   ),
+#'   imageTagMutability = "MUTABLE"|"IMMUTABLE",
+#'   imageScanningConfiguration = list(
+#'     scanOnPush = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -289,14 +310,14 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 #' @keywords internal
 #'
 #' @rdname ecr_create_repository
-ecr_create_repository <- function(repositoryName, tags = NULL) {
+ecr_create_repository <- function(repositoryName, tags = NULL, imageTagMutability = NULL, imageScanningConfiguration = NULL) {
   op <- new_operation(
     name = "CreateRepository",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecr$create_repository_input(repositoryName = repositoryName, tags = tags)
+  input <- .ecr$create_repository_input(repositoryName = repositoryName, tags = tags, imageTagMutability = imageTagMutability, imageScanningConfiguration = imageScanningConfiguration)
   output <- .ecr$create_repository_output()
   config <- get_config()
   svc <- .ecr$service(config)
@@ -446,6 +467,68 @@ ecr_delete_repository_policy <- function(registryId = NULL, repositoryName) {
 }
 .ecr$operations$delete_repository_policy <- ecr_delete_repository_policy
 
+#' Describes the image scan findings for the specified image
+#'
+#' Describes the image scan findings for the specified image.
+#'
+#' @usage
+#' ecr_describe_image_scan_findings(registryId, repositoryName, imageId,
+#'   nextToken, maxResults)
+#'
+#' @param registryId The AWS account ID associated with the registry that contains the
+#' repository in which to describe the image scan findings for. If you do
+#' not specify a registry, the default registry is assumed.
+#' @param repositoryName &#91;required&#93; The repository for the image for which to describe the scan findings.
+#' @param imageId &#91;required&#93; 
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' `DescribeImageScanFindings` request where `maxResults` was used and the
+#' results exceeded the value of that parameter. Pagination continues from
+#' the end of the previous results that returned the `nextToken` value.
+#' This value is null when there are no more results to return.
+#' @param maxResults The maximum number of image scan results returned by
+#' `DescribeImageScanFindings` in paginated output. When this parameter is
+#' used, `DescribeImageScanFindings` only returns `maxResults` results in a
+#' single page along with a `nextToken` response element. The remaining
+#' results of the initial request can be seen by sending another
+#' `DescribeImageScanFindings` request with the returned `nextToken` value.
+#' This value can be between 1 and 1000. If this parameter is not used,
+#' then `DescribeImageScanFindings` returns up to 100 results and a
+#' `nextToken` value, if applicable.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_image_scan_findings(
+#'   registryId = "string",
+#'   repositoryName = "string",
+#'   imageId = list(
+#'     imageDigest = "string",
+#'     imageTag = "string"
+#'   ),
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_describe_image_scan_findings
+ecr_describe_image_scan_findings <- function(registryId = NULL, repositoryName, imageId, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeImageScanFindings",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecr$describe_image_scan_findings_input(registryId = registryId, repositoryName = repositoryName, imageId = imageId, nextToken = nextToken, maxResults = maxResults)
+  output <- .ecr$describe_image_scan_findings_output()
+  config <- get_config()
+  svc <- .ecr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$describe_image_scan_findings <- ecr_describe_image_scan_findings
+
 #' Returns metadata about the images in a repository, including image size,
 #' image tags, and creation date
 #'
@@ -465,7 +548,7 @@ ecr_delete_repository_policy <- function(registryId = NULL, repositoryName) {
 #' @param registryId The AWS account ID associated with the registry that contains the
 #' repository in which to describe images. If you do not specify a
 #' registry, the default registry is assumed.
-#' @param repositoryName &#91;required&#93; A list of repositories to describe.
+#' @param repositoryName &#91;required&#93; The repository that contains the images to describe.
 #' @param imageIds The list of image IDs for the requested repository.
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' `DescribeImages` request where `maxResults` was used and the results
@@ -1066,11 +1149,111 @@ ecr_put_image <- function(registryId = NULL, repositoryName, imageManifest, imag
 }
 .ecr$operations$put_image <- ecr_put_image
 
+#' Updates the image scanning configuration for a repository
+#'
+#' Updates the image scanning configuration for a repository.
+#'
+#' @usage
+#' ecr_put_image_scanning_configuration(registryId, repositoryName,
+#'   imageScanningConfiguration)
+#'
+#' @param registryId The AWS account ID associated with the registry that contains the
+#' repository in which to update the image scanning configuration setting.
+#' If you do not specify a registry, the default registry is assumed.
+#' @param repositoryName &#91;required&#93; The name of the repository in which to update the image scanning
+#' configuration setting.
+#' @param imageScanningConfiguration &#91;required&#93; The image scanning configuration for the repository. This setting
+#' determines whether images are scanned for known vulnerabilities after
+#' being pushed to the repository.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_image_scanning_configuration(
+#'   registryId = "string",
+#'   repositoryName = "string",
+#'   imageScanningConfiguration = list(
+#'     scanOnPush = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_put_image_scanning_configuration
+ecr_put_image_scanning_configuration <- function(registryId = NULL, repositoryName, imageScanningConfiguration) {
+  op <- new_operation(
+    name = "PutImageScanningConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecr$put_image_scanning_configuration_input(registryId = registryId, repositoryName = repositoryName, imageScanningConfiguration = imageScanningConfiguration)
+  output <- .ecr$put_image_scanning_configuration_output()
+  config <- get_config()
+  svc <- .ecr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$put_image_scanning_configuration <- ecr_put_image_scanning_configuration
+
+#' Updates the image tag mutability settings for a repository
+#'
+#' Updates the image tag mutability settings for a repository. When a
+#' repository is configured with tag immutability, all image tags within
+#' the repository will be prevented them from being overwritten. For more
+#' information, see [Image Tag
+#' Mutability](https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-tag-mutability.html)
+#' in the *Amazon Elastic Container Registry User Guide*.
+#'
+#' @usage
+#' ecr_put_image_tag_mutability(registryId, repositoryName,
+#'   imageTagMutability)
+#'
+#' @param registryId The AWS account ID associated with the registry that contains the
+#' repository in which to update the image tag mutability settings. If you
+#' do not specify a registry, the default registry is assumed.
+#' @param repositoryName &#91;required&#93; The name of the repository in which to update the image tag mutability
+#' settings.
+#' @param imageTagMutability &#91;required&#93; The tag mutability setting for the repository. If `MUTABLE` is
+#' specified, image tags can be overwritten. If `IMMUTABLE` is specified,
+#' all image tags within the repository will be immutable which will
+#' prevent them from being overwritten.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_image_tag_mutability(
+#'   registryId = "string",
+#'   repositoryName = "string",
+#'   imageTagMutability = "MUTABLE"|"IMMUTABLE"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_put_image_tag_mutability
+ecr_put_image_tag_mutability <- function(registryId = NULL, repositoryName, imageTagMutability) {
+  op <- new_operation(
+    name = "PutImageTagMutability",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecr$put_image_tag_mutability_input(registryId = registryId, repositoryName = repositoryName, imageTagMutability = imageTagMutability)
+  output <- .ecr$put_image_tag_mutability_output()
+  config <- get_config()
+  svc <- .ecr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$put_image_tag_mutability <- ecr_put_image_tag_mutability
+
 #' Creates or updates a lifecycle policy
 #'
 #' Creates or updates a lifecycle policy. For information about lifecycle
 #' policy syntax, see [Lifecycle Policy
-#' Template](http://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html).
+#' Template](https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html).
 #'
 #' @usage
 #' ecr_put_lifecycle_policy(registryId, repositoryName,
@@ -1115,7 +1298,9 @@ ecr_put_lifecycle_policy <- function(registryId = NULL, repositoryName, lifecycl
 #' permissions
 #'
 #' Applies a repository policy on a specified repository to control access
-#' permissions.
+#' permissions. For more information, see [Amazon ECR Repository
+#' Policies](https://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicies.html)
+#' in the *Amazon Elastic Container Registry User Guide*.
 #'
 #' @usage
 #' ecr_set_repository_policy(registryId, repositoryName, policyText, force)
@@ -1124,7 +1309,10 @@ ecr_put_lifecycle_policy <- function(registryId = NULL, repositoryName, lifecycl
 #' repository. If you do not specify a registry, the default registry is
 #' assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository to receive the policy.
-#' @param policyText &#91;required&#93; The JSON repository policy text to apply to the repository.
+#' @param policyText &#91;required&#93; The JSON repository policy text to apply to the repository. For more
+#' information, see [Amazon ECR Repository Policy
+#' Examples](https://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicyExamples.html)
+#' in the *Amazon Elastic Container Registry User Guide*.
 #' @param force If the policy you are attempting to set on a repository policy would
 #' prevent you from setting another policy in the future, you must force
 #' the SetRepositoryPolicy operation. This is intended to prevent
@@ -1159,6 +1347,55 @@ ecr_set_repository_policy <- function(registryId = NULL, repositoryName, policyT
   return(response)
 }
 .ecr$operations$set_repository_policy <- ecr_set_repository_policy
+
+#' Starts an image vulnerability scan
+#'
+#' Starts an image vulnerability scan. An image scan can only be started
+#' once per day on an individual image. This limit includes if an image was
+#' scanned on initial push. For more information, see [Image
+#' Scanning](https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html)
+#' in the *Amazon Elastic Container Registry User Guide*.
+#'
+#' @usage
+#' ecr_start_image_scan(registryId, repositoryName, imageId)
+#'
+#' @param registryId The AWS account ID associated with the registry that contains the
+#' repository in which to start an image scan request. If you do not
+#' specify a registry, the default registry is assumed.
+#' @param repositoryName &#91;required&#93; The name of the repository that contains the images to scan.
+#' @param imageId &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_image_scan(
+#'   registryId = "string",
+#'   repositoryName = "string",
+#'   imageId = list(
+#'     imageDigest = "string",
+#'     imageTag = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_start_image_scan
+ecr_start_image_scan <- function(registryId = NULL, repositoryName, imageId) {
+  op <- new_operation(
+    name = "StartImageScan",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecr$start_image_scan_input(registryId = registryId, repositoryName = repositoryName, imageId = imageId)
+  output <- .ecr$start_image_scan_output()
+  config <- get_config()
+  svc <- .ecr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$start_image_scan <- ecr_start_image_scan
 
 #' Starts a preview of the specified lifecycle policy
 #'

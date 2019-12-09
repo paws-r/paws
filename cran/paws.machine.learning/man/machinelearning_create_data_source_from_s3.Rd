@@ -22,7 +22,7 @@ required if \code{DataSchemaUri} is specified.
 rearrangement requirements for the \code{Datasource}.
 
 Sample -
-\code{ "\{\"splitting\":\{\"percentBegin\":10,\"percentEnd\":60\}\}"}
+\verb{ "\\\{\\"splitting\\":\\\{\\"percentBegin\\":10,\\"percentEnd\\":60\\\}\\\}"}
 }}
 
 \item{ComputeStatistics}{The compute statistics for a \code{DataSource}. The statistics are generated
@@ -45,7 +45,7 @@ the \code{Status} parameter to \code{COMPLETED}. \code{DataSource} in the \code{
 or \code{PENDING} state can be used to perform only \code{CreateMLModel},
 \code{CreateEvaluation} or \code{CreateBatchPrediction} operations.
 
-If Amazon ML can't accept the input source, it sets the \code{Status}
+If Amazon ML can\'t accept the input source, it sets the \code{Status}
 parameter to \code{FAILED} and includes an error message in the \code{Message}
 attribute of the \code{GetDataSource} operation response.
 
@@ -57,7 +57,7 @@ location, along with a schema that describes the data items by name and
 type. The same schema must be used for all of the data files referenced
 by the \code{DataSource}.
 
-After the \code{DataSource} has been created, it's ready to use in
+After the \code{DataSource} has been created, it\'s ready to use in
 evaluations and batch predictions. If you plan to use the \code{DataSource}
 to train an \code{MLModel}, the \code{DataSource} also needs a recipe. A recipe
 describes how each input variable will be used in training an \code{MLModel}.

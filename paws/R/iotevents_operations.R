@@ -9,20 +9,25 @@ NULL
 #'
 #' @usage
 #' iotevents_create_detector_model(detectorModelName,
-#'   detectorModelDefinition, detectorModelDescription, key, roleArn, tags)
+#'   detectorModelDefinition, detectorModelDescription, key, roleArn, tags,
+#'   evaluationMethod)
 #'
 #' @param detectorModelName &#91;required&#93; The name of the detector model.
 #' @param detectorModelDefinition &#91;required&#93; Information that defines how the detectors operate.
 #' @param detectorModelDescription A brief description of the detector model.
-#' @param key The input attribute key used to identify a device or system in order to
-#' create a detector (an instance of the detector model) and then to route
-#' each input received to the appropriate detector (instance). This
-#' parameter uses a JSON-path expression to specify the attribute-value
-#' pair in the message payload of each input that is used to identify the
-#' device associated with the input.
+#' @param key The input attribute key used to identify a device or system to create a
+#' detector (an instance of the detector model) and then to route each
+#' input received to the appropriate detector (instance). This parameter
+#' uses a JSON-path expression to specify the attribute-value pair in the
+#' message payload of each input that is used to identify the device
+#' associated with the input.
 #' @param roleArn &#91;required&#93; The ARN of the role that grants permission to AWS IoT Events to perform
 #' its operations.
 #' @param tags Metadata that can be used to manage the detector model.
+#' @param evaluationMethod When set to `SERIAL`, variables are updated and event conditions
+#' evaluated in the order that the events are defined. When set to `BATCH`,
+#' variables are updated and events performed only after all event
+#' conditions are evaluated.
 #'
 #' @section Request syntax:
 #' ```
@@ -227,21 +232,22 @@ NULL
 #'       key = "string",
 #'       value = "string"
 #'     )
-#'   )
+#'   ),
+#'   evaluationMethod = "BATCH"|"SERIAL"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname iotevents_create_detector_model
-iotevents_create_detector_model <- function(detectorModelName, detectorModelDefinition, detectorModelDescription = NULL, key = NULL, roleArn, tags = NULL) {
+iotevents_create_detector_model <- function(detectorModelName, detectorModelDefinition, detectorModelDescription = NULL, key = NULL, roleArn, tags = NULL, evaluationMethod = NULL) {
   op <- new_operation(
     name = "CreateDetectorModel",
     http_method = "POST",
     http_path = "/detector-models",
     paginator = list()
   )
-  input <- .iotevents$create_detector_model_input(detectorModelName = detectorModelName, detectorModelDefinition = detectorModelDefinition, detectorModelDescription = detectorModelDescription, key = key, roleArn = roleArn, tags = tags)
+  input <- .iotevents$create_detector_model_input(detectorModelName = detectorModelName, detectorModelDefinition = detectorModelDefinition, detectorModelDescription = detectorModelDescription, key = key, roleArn = roleArn, tags = tags, evaluationMethod = evaluationMethod)
   output <- .iotevents$create_detector_model_output()
   config <- get_config()
   svc <- .iotevents$service(config)
@@ -784,13 +790,18 @@ iotevents_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @usage
 #' iotevents_update_detector_model(detectorModelName,
-#'   detectorModelDefinition, detectorModelDescription, roleArn)
+#'   detectorModelDefinition, detectorModelDescription, roleArn,
+#'   evaluationMethod)
 #'
 #' @param detectorModelName &#91;required&#93; The name of the detector model that is updated.
 #' @param detectorModelDefinition &#91;required&#93; Information that defines how a detector operates.
 #' @param detectorModelDescription A brief description of the detector model.
 #' @param roleArn &#91;required&#93; The ARN of the role that grants permission to AWS IoT Events to perform
 #' its operations.
+#' @param evaluationMethod When set to `SERIAL`, variables are updated and event conditions
+#' evaluated in the order that the events are defined. When set to `BATCH`,
+#' variables are updated and events performed only after all event
+#' conditions are evaluated.
 #'
 #' @section Request syntax:
 #' ```
@@ -988,21 +999,22 @@ iotevents_untag_resource <- function(resourceArn, tagKeys) {
 #'     initialStateName = "string"
 #'   ),
 #'   detectorModelDescription = "string",
-#'   roleArn = "string"
+#'   roleArn = "string",
+#'   evaluationMethod = "BATCH"|"SERIAL"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname iotevents_update_detector_model
-iotevents_update_detector_model <- function(detectorModelName, detectorModelDefinition, detectorModelDescription = NULL, roleArn) {
+iotevents_update_detector_model <- function(detectorModelName, detectorModelDefinition, detectorModelDescription = NULL, roleArn, evaluationMethod = NULL) {
   op <- new_operation(
     name = "UpdateDetectorModel",
     http_method = "POST",
     http_path = "/detector-models/{detectorModelName}",
     paginator = list()
   )
-  input <- .iotevents$update_detector_model_input(detectorModelName = detectorModelName, detectorModelDefinition = detectorModelDefinition, detectorModelDescription = detectorModelDescription, roleArn = roleArn)
+  input <- .iotevents$update_detector_model_input(detectorModelName = detectorModelName, detectorModelDefinition = detectorModelDefinition, detectorModelDescription = detectorModelDescription, roleArn = roleArn, evaluationMethod = evaluationMethod)
   output <- .iotevents$update_detector_model_output()
   config <- get_config()
   svc <- .iotevents$service(config)

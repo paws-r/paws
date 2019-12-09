@@ -24,12 +24,12 @@ the IP address for that resolver. If you omit this value,
 
 \item{EDNS0ClientSubnetIP}{If the resolver that you specified for resolverip supports EDNS0,
 specify the IPv4 or IPv6 address of a client in the applicable location,
-for example, \code{192.0.2.44} or \code{2001:db8:85a3::8a2e:370:7334}.}
+for example, \verb{192.0.2.44} or \verb{2001:db8:85a3::8a2e:370:7334}.}
 
 \item{EDNS0ClientSubnetMask}{If you specify an IP address for \code{edns0clientsubnetip}, you can
 optionally specify the number of bits of the IP address that you want
 the checking tool to include in the DNS query. For example, if you
-specify \code{192.0.2.44} for \code{edns0clientsubnetip} and \code{24} for
+specify \verb{192.0.2.44} for \code{edns0clientsubnetip} and \code{24} for
 \code{edns0clientsubnetmask}, the checking tool will simulate a request from
 192.0.2.0/24. The default value is 24 bits for IPv4 addresses and 64
 bits for IPv6 addresses.

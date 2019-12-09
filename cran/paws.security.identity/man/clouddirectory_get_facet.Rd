@@ -15,7 +15,7 @@ more information, see arns.}
 }
 \description{
 Gets details of the Facet, such as facet name, attributes, Rules, or
-\code{ObjectType}. You can call this on all kinds of schema facets \--
+\code{ObjectType}. You can call this on all kinds of schema facets \\--
 published, development, or applied.
 }
 \section{Request syntax}{

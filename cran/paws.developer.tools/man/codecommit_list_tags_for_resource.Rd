@@ -11,14 +11,14 @@ codecommit_list_tags_for_resource(resourceArn, nextToken)
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource for which you want to get
 information about tags, if any.}
 
-\item{nextToken}{An enumeration token that when provided in a request, returns the next
+\item{nextToken}{An enumeration token that, when provided in a request, returns the next
 batch of the results.}
 }
 \description{
 Gets information about AWS tags for a specified Amazon Resource Name
 (ARN) in AWS CodeCommit. For a list of valid resources in AWS
 CodeCommit, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats}{CodeCommit Resources and Operations}
-in the AWS CodeCommit User Guide.
+in the \emph{AWS CodeCommit User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(

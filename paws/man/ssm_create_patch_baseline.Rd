@@ -31,7 +31,7 @@ compliance violation. The default value is UNSPECIFIED.}
 
 \item{ApprovedPatchesEnableNonSecurity}{Indicates whether the list of approved patches includes non-security
 updates that should be applied to the instances. The default value is
-'false'. Applies to Linux instances only.}
+\'false\'. Applies to Linux instances only.}
 
 \item{RejectedPatches}{A list of explicitly rejected patches for the baseline.
 
@@ -42,7 +42,7 @@ in the \emph{AWS Systems Manager User Guide}.}
 \item{RejectedPatchesAction}{The action for Patch Manager to take on patches included in the
 RejectedPackages list.
 \itemize{
-\item \strong{ALLOW\_AS\_DEPENDENCY}: A package in the Rejected patches list is
+\item \strong{ALLOW\\_AS\\_DEPENDENCY}: A package in the Rejected patches list is
 installed only if it is a dependency of another package. It is
 considered compliant with the patch baseline, and its status is
 reported as \emph{InstalledOther}. This is the default action if no
@@ -69,8 +69,8 @@ identify the severity level of patches it specifies and the operating
 system family it applies to. In this case, you could specify the
 following key name/value pairs:
 \itemize{
-\item \code{Key=PatchSeverity,Value=Critical}
-\item \code{Key=OS,Value=Windows}
+\item \verb{Key=PatchSeverity,Value=Critical}
+\item \verb{Key=OS,Value=Windows}
 }
 
 To add tags to an existing patch baseline, use the AddTagsToResource

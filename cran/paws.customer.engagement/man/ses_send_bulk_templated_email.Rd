@@ -30,7 +30,7 @@ in \href{https://tools.ietf.org/html/rfc3492.html}{RFC3492}. The sender name
 These characters must be encoded using MIME encoded-word syntax, as
 described in \href{https://tools.ietf.org/html/rfc2047}{RFC 2047}. MIME
 encoded-word syntax uses the following form:
-\code{=?charset?encoding?encoded-text?=}.}
+\verb{=?charset?encoding?encoded-text?=}.}
 
 \item{SourceArn}{This parameter is used only for sending authorization. It is the ARN of
 the identity that is associated with the sending authorization policy
@@ -52,7 +52,7 @@ to the message, each reply-to address will receive the reply.}
 \item{ReturnPath}{The email address that bounces and complaints will be forwarded to when
 feedback forwarding is enabled. If the message cannot be delivered to
 the recipient, then an error message will be returned from the
-recipient's ISP; this message will then be forwarded to the email
+recipient\'s ISP; this message will then be forwarded to the email
 address specified by the \code{ReturnPath} parameter. The \code{ReturnPath}
 parameter is never overwritten. This email address must be either
 individually verified with Amazon SES, or from a domain that has been
@@ -124,7 +124,7 @@ larger audience, you can divide your recipient list into groups of
 50 or fewer, and then call the \code{SendBulkTemplatedEmail} operation
 several times to send the message to each group.
 \item The number of destinations you can contact in a single call to the
-API may be limited by your account's maximum sending rate.
+API may be limited by your account\'s maximum sending rate.
 }
 }
 \section{Request syntax}{

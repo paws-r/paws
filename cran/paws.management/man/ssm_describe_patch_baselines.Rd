@@ -9,7 +9,7 @@ ssm_describe_patch_baselines(Filters, MaxResults, NextToken)
 \arguments{
 \item{Filters}{Each element in the array is a structure containing:
 
-Key: (string, "NAME\_PREFIX" or "OWNER")
+Key: (string, \"NAME\\_PREFIX\" or \"OWNER\")
 
 Value: (array of strings, exactly 1 entry, between 1 and 255 characters)}
 

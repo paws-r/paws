@@ -13,7 +13,7 @@ lexruntimeservice(config = list())
 Amazon Lex provides both build and runtime endpoints. Each endpoint
 provides a set of operations (API). Your conversational bot uses the
 runtime API to understand user utterances (user input text or voice).
-For example, suppose a user says "I want pizza", your bot sends this
+For example, suppose a user says \"I want pizza\", your bot sends this
 input to Amazon Lex using the runtime API. Amazon Lex recognizes that
 the user request is for the OrderPizza intent (one of the intents
 defined in the bot). Then Amazon Lex engages in user conversation on
@@ -44,14 +44,17 @@ operations, see the build-time API, .
 \section{Operations}{
 
 \tabular{ll}{
-\link[=lexruntimeservice_post_content]{post_content} \tab Sends user input (text or speech) to Amazon Lex\cr
-\link[=lexruntimeservice_post_text]{post_text} \tab Sends user input (text-only) to Amazon Lex
+\link[=lexruntimeservice_delete_session]{delete_session} \tab Removes session information for a specified bot, alias, and user ID \cr
+\link[=lexruntimeservice_get_session]{get_session} \tab Returns session information for a specified bot, alias, and user ID \cr
+\link[=lexruntimeservice_post_content]{post_content} \tab Sends user input (text or speech) to Amazon Lex \cr
+\link[=lexruntimeservice_post_text]{post_text} \tab Sends user input to Amazon Lex \cr
+\link[=lexruntimeservice_put_session]{put_session} \tab Creates a new session or modifies an existing session with an Amazon Lex bot
 }
 }
 
 \examples{
 \donttest{svc <- lexruntimeservice()
-svc$post_content(
+svc$delete_session(
   Foo = 123
 )}
 

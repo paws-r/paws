@@ -13,7 +13,7 @@ in the response, in the \code{HealthCheckId} element.
 
 If you want to get the last failure reason for a calculated health
 check, you must use the Amazon Route 53 console or the CloudWatch
-console. You can't use \code{GetHealthCheckLastFailureReason} for a
+console. You can\'t use \code{GetHealthCheckLastFailureReason} for a
 calculated health check.}
 }
 \description{

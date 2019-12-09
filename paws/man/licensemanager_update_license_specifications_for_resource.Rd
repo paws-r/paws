@@ -2,25 +2,28 @@
 % Please edit documentation in R/licensemanager_operations.R
 \name{licensemanager_update_license_specifications_for_resource}
 \alias{licensemanager_update_license_specifications_for_resource}
-\title{Adds or removes license configurations for a specified AWS resource}
+\title{Adds or removes the specified license configurations for the specified
+AWS resource}
 \usage{
 licensemanager_update_license_specifications_for_resource(ResourceArn,
   AddLicenseSpecifications, RemoveLicenseSpecifications)
 }
 \arguments{
-\item{ResourceArn}{[required] ARN for an AWS server resource.}
+\item{ResourceArn}{[required] Amazon Resource Name (ARN) of the AWS resource.}
 
-\item{AddLicenseSpecifications}{License configuration ARNs to be added to a resource.}
+\item{AddLicenseSpecifications}{ARNs of the license configurations to add.}
 
-\item{RemoveLicenseSpecifications}{License configuration ARNs to be removed from a resource.}
+\item{RemoveLicenseSpecifications}{ARNs of the license configurations to remove.}
 }
 \description{
-Adds or removes license configurations for a specified AWS resource.
-This operation currently supports updating the license specifications of
-AMIs, instances, and hosts. Launch templates and AWS CloudFormation
-templates are not managed from this operation as those resources send
-the license configurations directly to a resource creation operation,
-such as \code{RunInstances}.
+Adds or removes the specified license configurations for the specified
+AWS resource.
+}
+\details{
+You can update the license specifications of AMIs, instances, and hosts.
+You cannot update the license specifications for launch templates and
+AWS CloudFormation templates, as they send license configurations to the
+operation that creates the resource.
 }
 \section{Request syntax}{
 \preformatted{svc$update_license_specifications_for_resource(
