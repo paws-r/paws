@@ -2,8 +2,8 @@
 % Please edit documentation in R/iot_operations.R
 \name{iot_attach_security_profile}
 \alias{iot_attach_security_profile}
-\title{Associates a Device Defender security profile with a thing group or with
-this account}
+\title{Associates a Device Defender security profile with a thing group or this
+account}
 \usage{
 iot_attach_security_profile(securityProfileName,
   securityProfileTargetArn)
@@ -15,8 +15,8 @@ iot_attach_security_profile(securityProfileName,
 attached.}
 }
 \description{
-Associates a Device Defender security profile with a thing group or with
-this account. Each thing group or account can have up to five security
+Associates a Device Defender security profile with a thing group or this
+account. Each thing group or account can have up to five security
 profiles associated with it.
 }
 \section{Request syntax}{

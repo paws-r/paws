@@ -12,7 +12,7 @@ acmpca_describe_certificate_authority_audit_report(
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) of the private CA. This must be of the
 form:
 
-\code{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }.}
+\verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }.}
 
 \item{AuditReportId}{[required] The report ID returned by calling the
 CreateCertificateAuthorityAuditReport action.}

@@ -14,9 +14,9 @@ Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 
 For example:
 \itemize{
-\item Key ID: \code{1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
 \item Key ARN:
-\code{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
 To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
@@ -27,7 +27,7 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 
 The key policy must meet the following criteria:
 \itemize{
-\item If you don't set \code{BypassPolicyLockoutSafetyCheck} to true, the key
+\item If you don\'t set \code{BypassPolicyLockoutSafetyCheck} to true, the key
 policy must allow the principal that is making the \code{PutKeyPolicy}
 request to make a subsequent \code{PutKeyPolicy} request on the CMK. This
 reduces the risk that the CMK becomes unmanageable. For more
@@ -82,7 +82,7 @@ in the \emph{AWS Key Management Service Developer Guide}.
 # The following example attaches a key policy to the specified CMK.
 \donttest{svc$put_key_policy(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
-  Policy = "{\\n    \\"Version\\": \\"2012-10-17\\",\\n    \\"Id\\": \\"custom-policy-2016-12-07\\",\\n...",
+  Policy = "{\n    \"Version\": \"2012-10-17\",\n    \"Id\": \"custom-policy-2016-12-07\",\n...",
   PolicyName = "default"
 )}
 

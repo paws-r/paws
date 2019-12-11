@@ -24,19 +24,19 @@ Developer Guide.
 \code{RecognizeCelebrities} returns the 100 largest faces in the image. It
 lists recognized celebrities in the \code{CelebrityFaces} array and
 unrecognized faces in the \code{UnrecognizedFaces} array.
-\code{RecognizeCelebrities} doesn't return celebrities whose faces aren't
+\code{RecognizeCelebrities} doesn\'t return celebrities whose faces aren\'t
 among the largest 100 faces in the image.
 
 For each celebrity recognized, \code{RecognizeCelebrities} returns a
 \code{Celebrity} object. The \code{Celebrity} object contains the celebrity name,
 ID, URL links to additional information, match confidence, and a
-\code{ComparedFace} object that you can use to locate the celebrity's face
+\code{ComparedFace} object that you can use to locate the celebrity\'s face
 on the image.
 
-Amazon Rekognition doesn't retain information about which images a
+Amazon Rekognition doesn\'t retain information about which images a
 celebrity has been recognized in. Your application must store this
 information and use the \code{Celebrity} ID property as a unique identifier
-for the celebrity. If you don't store the celebrity name or additional
+for the celebrity. If you don\'t store the celebrity name or additional
 information URLs returned by \code{RecognizeCelebrities}, you will need the
 ID to identify the celebrity in a call to the GetCelebrityInfo
 operation.

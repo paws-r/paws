@@ -10,7 +10,7 @@ sns_list_subscriptions(NextToken)
 \item{NextToken}{Token returned by the previous \code{ListSubscriptions} request.}
 }
 \description{
-Returns a list of the requester's subscriptions. Each call returns a
+Returns a list of the requester\'s subscriptions. Each call returns a
 limited list of subscriptions, up to 100. If there are more
 subscriptions, a \code{NextToken} is also returned. Use the \code{NextToken}
 parameter in a new \code{ListSubscriptions} call to get further results.

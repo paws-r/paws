@@ -2,36 +2,38 @@
 % Please edit documentation in R/lightsail_operations.R
 \name{lightsail_create_disk}
 \alias{lightsail_create_disk}
-\title{Creates a block storage disk that can be attached to a Lightsail
+\title{Creates a block storage disk that can be attached to an Amazon Lightsail
 instance in the same Availability Zone (e}
 \usage{
-lightsail_create_disk(diskName, availabilityZone, sizeInGb, tags)
+lightsail_create_disk(diskName, availabilityZone, sizeInGb, tags,
+  addOns)
 }
 \arguments{
 \item{diskName}{[required] The unique Lightsail disk name (e.g., \code{my-disk}).}
 
 \item{availabilityZone}{[required] The Availability Zone where you want to create the disk (e.g.,
-\code{us-east-2a}). Choose the same Availability Zone as the Lightsail
-instance where you want to create the disk.
+\verb{us-east-2a}). Use the same Availability Zone as the Lightsail instance
+to which you want to attach the disk.
 
-Use the GetRegions operation to list the Availability Zones where
+Use the \verb{get regions} operation to list the Availability Zones where
 Lightsail is currently available.}
 
 \item{sizeInGb}{[required] The size of the disk in GB (e.g., \code{32}).}
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
-To tag a resource after it has been created, see the \code{tag resource}
+To tag a resource after it has been created, see the \verb{tag resource}
 operation.}
+
+\item{addOns}{An array of objects that represent the add-ons to enable for the new
+disk.}
 }
 \description{
-Creates a block storage disk that can be attached to a Lightsail
-instance in the same Availability Zone (e.g., \code{us-east-2a}). The disk is
-created in the regional endpoint that you send the HTTP request to. For
-more information, see \href{https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail}{Regions and Availability Zones in Lightsail}.
+Creates a block storage disk that can be attached to an Amazon Lightsail
+instance in the same Availability Zone (e.g., \verb{us-east-2a}).
 }
 \details{
-The \code{create disk} operation supports tag-based access control via
+The \verb{create disk} operation supports tag-based access control via
 request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
@@ -43,6 +45,14 @@ request tags. For more information, see the \href{https://lightsail.aws.amazon.c
     list(
       key = "string",
       value = "string"
+    )
+  ),
+  addOns = list(
+    list(
+      addOnType = "AutoSnapshot",
+      autoSnapshotAddOnRequest = list(
+        snapshotTimeOfDay = "string"
+      )
     )
   )
 )

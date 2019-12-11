@@ -25,8 +25,17 @@ for these checks causes an \code{InvalidParameterValue} error.
 The response contains a TrustedAdvisorCheckRefreshStatus object, which
 contains these fields:
 \itemize{
-\item \strong{status.} The refresh status of the check: "none", "enqueued",
-"processing", "success", or "abandoned".
+\item \strong{status.} The refresh status of the check:
+\itemize{
+\item \verb{none:} The check is not refreshed or the non-success status
+exceeds the timeout
+\item \verb{enqueued:} The check refresh requests has entered the refresh
+queue
+\item \verb{processing:} The check refresh request is picked up by the rule
+processing engine
+\item \verb{success:} The check is successfully refreshed
+\item \verb{abandoned:} The check refresh has failed
+}
 \item \strong{millisUntilNextRefreshable.} The amount of time, in milliseconds,
 until the check is eligible for refresh.
 \item \strong{checkId.} The unique identifier for the check.

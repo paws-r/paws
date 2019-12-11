@@ -2,14 +2,14 @@
 % Please edit documentation in R/fms_operations.R
 \name{fms_get_notification_channel}
 \alias{fms_get_notification_channel}
-\title{Returns information about the Amazon Simple Notification Service (SNS)
-topic that is used to record AWS Firewall Manager SNS logs}
+\title{Information about the Amazon Simple Notification Service (SNS) topic
+that is used to record AWS Firewall Manager SNS logs}
 \usage{
 fms_get_notification_channel()
 }
 \description{
-Returns information about the Amazon Simple Notification Service (SNS)
-topic that is used to record AWS Firewall Manager SNS logs.
+Information about the Amazon Simple Notification Service (SNS) topic
+that is used to record AWS Firewall Manager SNS logs.
 }
 \section{Request syntax}{
 \preformatted{svc$get_notification_channel()

@@ -9,7 +9,7 @@ docdb_delete_db_cluster(DBClusterIdentifier, SkipFinalSnapshot,
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier for the DB cluster to be deleted. This
-parameter isn't case sensitive.
+parameter isn\'t case sensitive.
 
 Constraints:
 \itemize{
@@ -42,7 +42,7 @@ Constraints:
 \description{
 Deletes a previously provisioned DB cluster. When you delete a DB
 cluster, all automated backups for that DB cluster are deleted and
-can't be recovered. Manual DB cluster snapshots of the specified DB
+can\'t be recovered. Manual DB cluster snapshots of the specified DB
 cluster are not deleted.
 }
 \section{Request syntax}{

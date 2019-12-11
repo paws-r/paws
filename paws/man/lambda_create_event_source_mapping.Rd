@@ -5,7 +5,10 @@
 \title{Creates a mapping between an event source and an AWS Lambda function}
 \usage{
 lambda_create_event_source_mapping(EventSourceArn, FunctionName,
-  Enabled, BatchSize, StartingPosition, StartingPositionTimestamp)
+  Enabled, BatchSize, MaximumBatchingWindowInSeconds,
+  ParallelizationFactor, StartingPosition, StartingPositionTimestamp,
+  DestinationConfig, MaximumRecordAgeInSeconds,
+  BisectBatchOnFunctionError, MaximumRetryAttempts)
 }
 \arguments{
 \item{EventSourceArn}{[required] The Amazon Resource Name (ARN) of the event source.
@@ -22,14 +25,14 @@ consumer.
 \itemize{
 \item \strong{Function name} - \code{MyFunction}.
 \item \strong{Function ARN} -
-\code{arn:aws:lambda:us-west-2:123456789012:function:MyFunction}.
+\verb{arn:aws:lambda:us-west-2:123456789012:function:MyFunction}.
 \item \strong{Version or Alias ARN} -
-\code{arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD}.
-\item \strong{Partial ARN} - \code{123456789012:function:MyFunction}.
+\verb{arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD}.
+\item \strong{Partial ARN} - \verb{123456789012:function:MyFunction}.
 }
 
 The length constraint applies only to the full ARN. If you specify only
-the function name, it's limited to 64 characters in length.}
+the function name, it\'s limited to 64 characters in length.}
 
 \item{Enabled}{Disables the event source mapping to pause polling and invocation.}
 
@@ -40,12 +43,29 @@ the function name, it's limited to 64 characters in length.}
 \item \strong{Amazon Simple Queue Service} - Default 10. Max 10.
 }}
 
+\item{MaximumBatchingWindowInSeconds}{The maximum amount of time to gather records before invoking the
+function, in seconds.}
+
+\item{ParallelizationFactor}{(Streams) The number of batches to process from each shard concurrently.}
+
 \item{StartingPosition}{The position in a stream from which to start reading. Required for
 Amazon Kinesis and Amazon DynamoDB Streams sources. \code{AT_TIMESTAMP} is
 only supported for Amazon Kinesis streams.}
 
 \item{StartingPositionTimestamp}{With \code{StartingPosition} set to \code{AT_TIMESTAMP}, the time from which to
 start reading.}
+
+\item{DestinationConfig}{(Streams) An Amazon SQS queue or Amazon SNS topic destination for
+discarded records.}
+
+\item{MaximumRecordAgeInSeconds}{(Streams) The maximum age of a record that Lambda sends to a function
+for processing.}
+
+\item{BisectBatchOnFunctionError}{(Streams) If the function returns an error, split the batch in two and
+retry.}
+
+\item{MaximumRetryAttempts}{(Streams) The maximum number of times to retry when the function returns
+an error.}
 }
 \description{
 Creates a mapping between an event source and an AWS Lambda function.
@@ -54,9 +74,22 @@ Lambda reads items from the event source and triggers the function.
 \details{
 For details about each event source type, see the following topics.
 \itemize{
+\item \href{https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html}{Using AWS Lambda with Amazon DynamoDB}
 \item \href{https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html}{Using AWS Lambda with Amazon Kinesis}
 \item \href{https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html}{Using AWS Lambda with Amazon SQS}
-\item \href{https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html}{Using AWS Lambda with Amazon DynamoDB}
+}
+
+The following error handling options are only available for stream
+sources (DynamoDB and Kinesis):
+\itemize{
+\item \code{BisectBatchOnFunctionError} - If the function returns an error,
+split the batch in two and retry.
+\item \code{DestinationConfig} - Send discarded records to an Amazon SQS queue
+or Amazon SNS topic.
+\item \code{MaximumRecordAgeInSeconds} - Discard records older than the
+specified age.
+\item \code{MaximumRetryAttempts} - Discard records after the specified number
+of retries.
 }
 }
 \section{Request syntax}{
@@ -65,10 +98,23 @@ For details about each event source type, see the following topics.
   FunctionName = "string",
   Enabled = TRUE|FALSE,
   BatchSize = 123,
+  MaximumBatchingWindowInSeconds = 123,
+  ParallelizationFactor = 123,
   StartingPosition = "TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
   StartingPositionTimestamp = as.POSIXct(
     "2015-01-01"
-  )
+  ),
+  DestinationConfig = list(
+    OnSuccess = list(
+      Destination = "string"
+    ),
+    OnFailure = list(
+      Destination = "string"
+    )
+  ),
+  MaximumRecordAgeInSeconds = 123,
+  BisectBatchOnFunctionError = TRUE|FALSE,
+  MaximumRetryAttempts = 123
 )
 }
 }

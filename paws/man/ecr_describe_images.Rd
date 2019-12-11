@@ -13,7 +13,7 @@ ecr_describe_images(registryId, repositoryName, imageIds, nextToken,
 repository in which to describe images. If you do not specify a
 registry, the default registry is assumed.}
 
-\item{repositoryName}{[required] A list of repositories to describe.}
+\item{repositoryName}{[required] The repository that contains the images to describe.}
 
 \item{imageIds}{The list of image IDs for the requested repository.}
 
@@ -44,7 +44,7 @@ image tags, and creation date.
 \details{
 Beginning with Docker version 1.9, the Docker client compresses image
 layers before pushing them to a V2 Docker registry. The output of the
-\code{docker images} command shows the uncompressed image size, so it may
+\verb{docker images} command shows the uncompressed image size, so it may
 return a larger image size than the image sizes returned by
 DescribeImages.
 }

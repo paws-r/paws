@@ -7,7 +7,7 @@
 sqs_change_message_visibility_batch(QueueUrl, Entries)
 }
 \arguments{
-\item{QueueUrl}{[required] The URL of the Amazon SQS queue whose messages' visibility is changed.
+\item{QueueUrl}{[required] The URL of the Amazon SQS queue whose messages\' visibility is changed.
 
 Queue URLs and names are case-sensitive.}
 
@@ -16,9 +16,9 @@ timeout must be changed.}
 }
 \description{
 Changes the visibility timeout of multiple messages. This is a batch
-version of \code{ <a>ChangeMessageVisibility</a>.} The result of the action
+version of \verb{ <a>ChangeMessageVisibility</a>.} The result of the action
 on each message is reported individually in the response. You can send
-up to 10 \code{<a>ChangeMessageVisibility</a>} requests with each
+up to 10 \verb{<a>ChangeMessageVisibility</a>} requests with each
 \code{ChangeMessageVisibilityBatch} action.
 }
 \details{
@@ -30,9 +30,9 @@ Some actions take lists of parameters. These lists are specified using
 the \code{param.n} notation. Values of \code{n} are integers starting from 1. For
 example, a parameter list with two elements looks like this:
 
-\code{&amp;Attribute.1=first}
+\verb{&amp;Attribute.1=first}
 
-\code{&amp;Attribute.2=second}
+\verb{&amp;Attribute.2=second}
 }
 \section{Request syntax}{
 \preformatted{svc$change_message_visibility_batch(

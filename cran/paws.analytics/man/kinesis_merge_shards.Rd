@@ -18,13 +18,13 @@ merge.}
 }
 \description{
 Merges two adjacent shards in a Kinesis data stream and combines them
-into a single shard to reduce the stream's capacity to ingest and
+into a single shard to reduce the stream\'s capacity to ingest and
 transport data. Two shards are considered adjacent if the union of the
 hash key ranges for the two shards form a contiguous set with no gaps.
 For example, if you have two shards, one with a hash key range of
-276\...381 and the other with a hash key range of 382\...454, then you
+276\\...381 and the other with a hash key range of 382\\...454, then you
 could merge these two shards into a single shard that would have a hash
-key range of 276\...454. After the merge, the single child shard
+key range of 276\\...454. After the merge, the single child shard
 receives data for all hash key values covered by the two parent shards.
 }
 \details{

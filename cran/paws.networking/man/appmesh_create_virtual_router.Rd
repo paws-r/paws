@@ -45,7 +45,7 @@ different virtual nodes.
       list(
         portMapping = list(
           port = 123,
-          protocol = "http"|"tcp"
+          protocol = "grpc"|"http"|"http2"|"tcp"
         )
       )
     )

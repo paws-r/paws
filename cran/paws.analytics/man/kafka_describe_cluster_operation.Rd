@@ -11,7 +11,8 @@ kafka_describe_cluster_operation(ClusterOperationArn)
 <p>The Amazon Resource Name (ARN) that uniquely identifies the MSK cluster operation.</p>}
 }
 \description{
-<p>Returns a description of the cluster operation specified by the ARN.</p>
+\preformatted{        <p>Returns a description of the cluster operation specified by the ARN.</p>
+}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_cluster_operation(

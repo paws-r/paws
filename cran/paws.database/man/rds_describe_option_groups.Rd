@@ -8,10 +8,10 @@ rds_describe_option_groups(OptionGroupName, Filters, Marker, MaxRecords,
   EngineName, MajorEngineVersion)
 }
 \arguments{
-\item{OptionGroupName}{The name of the option group to describe. Can't be supplied together
+\item{OptionGroupName}{The name of the option group to describe. Can\'t be supplied together
 with EngineName or MajorEngineVersion.}
 
-\item{Filters}{This parameter is not currently supported.}
+\item{Filters}{This parameter isn\'t currently supported.}
 
 \item{Marker}{An optional pagination token provided by a previous DescribeOptionGroups
 request. If this parameter is specified, the response includes only
@@ -19,8 +19,8 @@ records beyond the marker, up to the value specified by \code{MaxRecords}.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a pagination token
-called a marker is included in the response so that the remaining
-results can be retrieved.
+called a marker is included in the response so that you can retrieve the
+remaining results.
 
 Default: 100
 

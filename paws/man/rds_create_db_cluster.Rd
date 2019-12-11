@@ -12,8 +12,8 @@ rds_create_db_cluster(AvailabilityZones, BackupRetentionPeriod,
   ReplicationSourceIdentifier, Tags, StorageEncrypted, KmsKeyId,
   PreSignedUrl, EnableIAMDatabaseAuthentication, BacktrackWindow,
   EnableCloudwatchLogsExports, EngineMode, ScalingConfiguration,
-  DeletionProtection, GlobalClusterIdentifier, CopyTagsToSnapshot,
-  SourceRegion)
+  DeletionProtection, GlobalClusterIdentifier, EnableHttpEndpoint,
+  CopyTagsToSnapshot, SourceRegion)
 }
 \arguments{
 \item{AvailabilityZones}{A list of Availability Zones (AZs) where instances in the DB cluster can
@@ -44,13 +44,14 @@ Constraints:
 \itemize{
 \item Must contain from 1 to 63 letters, numbers, or hyphens.
 \item First character must be a letter.
-\item Can't end with a hyphen or contain two consecutive hyphens.
+\item Can\'t end with a hyphen or contain two consecutive hyphens.
 }
 
 Example: \code{my-cluster1}}
 
 \item{DBClusterParameterGroupName}{The name of the DB cluster parameter group to associate with this DB
-cluster. If this argument is omitted, \code{default.aurora5.6} is used.
+cluster. If you do not specify a value, then the default DB cluster
+parameter group for the specified DB engine and version is used.
 
 Constraints:
 \itemize{
@@ -74,13 +75,29 @@ Valid Values: \code{aurora} (for MySQL 5.6-compatible Aurora), \code{aurora-mysq
 
 \item{EngineVersion}{The version number of the database engine to use.
 
+To list all of the available engine versions for \code{aurora} (for MySQL
+5.6-compatible Aurora), use the following command:
+
+\verb{aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions\\\[\\\].EngineVersion"}
+
+To list all of the available engine versions for \code{aurora-mysql} (for
+MySQL 5.7-compatible Aurora), use the following command:
+
+\verb{aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions\\\[\\\].EngineVersion"}
+
+To list all of the available engine versions for \code{aurora-postgresql},
+use the following command:
+
+\verb{aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions\\\[\\\].EngineVersion"}
+
 \strong{Aurora MySQL}
 
-Example: \code{5.6.10a}, \code{5.7.12}
+Example: \verb{5.6.10a}, \verb{5.6.mysql_aurora.1.19.2}, \verb{5.7.12},
+\verb{5.7.mysql_aurora.2.04.5}
 
 \strong{Aurora PostgreSQL}
 
-Example: \code{9.6.3}}
+Example: \verb{9.6.3}, \code{10.7}}
 
 \item{Port}{The port number on which the instances in the DB cluster accept
 connections.
@@ -94,19 +111,19 @@ Constraints:
 \itemize{
 \item Must be 1 to 16 letters or numbers.
 \item First character must be a letter.
-\item Can't be a reserved word for the chosen database engine.
+\item Can\'t be a reserved word for the chosen database engine.
 }}
 
 \item{MasterUserPassword}{The password for the master database user. This password can contain any
-printable ASCII character except "/", """, or "@".
+printable ASCII character except \"/\", \"\"\", or \"@\".
 
 Constraints: Must contain from 8 to 41 characters.}
 
 \item{OptionGroupName}{A value that indicates that the DB cluster should be associated with the
 specified option group.
 
-Permanent options can't be removed from an option group. The option
-group can't be removed from a DB cluster once it is associated with a
+Permanent options can\'t be removed from an option group. The option
+group can\'t be removed from a DB cluster once it is associated with a
 DB cluster.}
 
 \item{PreferredBackupWindow}{The daily time range during which automated backups are created if
@@ -155,13 +172,13 @@ account that owns the KMS encryption key used to encrypt the new DB
 cluster, then you can use the KMS key alias instead of the ARN for the
 KMS encryption key.
 
-If an encryption key is not specified in \code{KmsKeyId}:
+If an encryption key isn\'t specified in \code{KmsKeyId}:
 \itemize{
 \item If \code{ReplicationSourceIdentifier} identifies an encrypted source,
 then Amazon RDS will use the encryption key used to encrypt the
 source. Otherwise, Amazon RDS will use your default encryption key.
 \item If the \code{StorageEncrypted} parameter is enabled and
-\code{ReplicationSourceIdentifier} is not specified, then Amazon RDS will
+\code{ReplicationSourceIdentifier} isn\'t specified, then Amazon RDS will
 use your default encryption key.
 }
 
@@ -205,12 +222,21 @@ To learn how to generate a Signature Version 4 signed request, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (AWS Signature Version 4)}
 and \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4 Signing Process}.
 
-If you supply a value for this operation's \code{SourceRegion} parameter, a
+If you are using an AWS SDK tool or the AWS CLI, you can specify
+\code{SourceRegion} (or \code{--source-region} for the AWS CLI) instead of
+specifying \code{PreSignedUrl} manually. Specifying \code{SourceRegion}
+autogenerates a pre-signed URL that is a valid request for the operation
+that can be executed in the source AWS Region.
+
+If you supply a value for this operation\'s \code{SourceRegion} parameter, a
 pre-signed URL will be calculated on your behalf.}
 
 \item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.}
+mapping is disabled.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication}
+in the \emph{Amazon Aurora User Guide.}}
 
 \item{BacktrackWindow}{The target backtrack window, in seconds. To disable backtracking, set
 this value to 0.
@@ -229,17 +255,28 @@ used. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/late
 in the \emph{Amazon Aurora User Guide}.}
 
 \item{EngineMode}{The DB engine mode of the DB cluster, either \code{provisioned},
-\code{serverless}, \code{parallelquery}, or \code{global}.}
+\code{serverless}, \code{parallelquery}, \code{global}, or \code{multimaster}.}
 
 \item{ScalingConfiguration}{For DB clusters in \code{serverless} DB engine mode, the scaling properties
 of the DB cluster.}
 
 \item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
-enabled. The database can't be deleted when deletion protection is
+enabled. The database can\'t be deleted when deletion protection is
 enabled. By default, deletion protection is disabled.}
 
 \item{GlobalClusterIdentifier}{The global cluster ID of an Aurora cluster that becomes the primary
 cluster in the new global database cluster.}
+
+\item{EnableHttpEndpoint}{A value that indicates whether to enable the HTTP endpoint for an Aurora
+Serverless DB cluster. By default, the HTTP endpoint is disabled.
+
+When enabled, the HTTP endpoint provides a connectionless web service
+API for running SQL queries on the Aurora Serverless DB cluster. You can
+also query your database from inside the RDS console with the query
+editor.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html}{Using the Data API for Aurora Serverless}
+in the \emph{Amazon Aurora User Guide}.}
 
 \item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the DB cluster to
 snapshots of the DB cluster. The default is not to copy them.}
@@ -308,6 +345,7 @@ This action only applies to Aurora DB clusters.
   ),
   DeletionProtection = TRUE|FALSE,
   GlobalClusterIdentifier = "string",
+  EnableHttpEndpoint = TRUE|FALSE,
   CopyTagsToSnapshot = TRUE|FALSE,
   SourceRegion = "string"
 )

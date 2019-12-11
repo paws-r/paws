@@ -2,62 +2,50 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_create_user}
 \alias{connect_create_user}
-\title{Creates a new user account in your Amazon Connect instance}
+\title{Creates a user account for the specified Amazon Connect instance}
 \usage{
 connect_create_user(Username, Password, IdentityInfo, PhoneConfig,
   DirectoryUserId, SecurityProfileIds, RoutingProfileId, HierarchyGroupId,
-  InstanceId)
+  InstanceId, Tags)
 }
 \arguments{
-\item{Username}{[required] The user name in Amazon Connect for the account to create. If you are
-using SAML for identity management in your Amazon Connect, the value for
-\code{Username} can include up to 64 characters from [a-zA-Z0-9\_-.\@]+.}
+\item{Username}{[required] The user name for the account. For instances not using SAML for identity
+management, the user name can include up to 20 characters. If you are
+using SAML for identity management, the user name can include up to 64
+characters from [a-zA-Z0-9\\_-.\\@]+.}
 
-\item{Password}{The password for the user account to create. This is required if you are
-using Amazon Connect for identity management. If you are using SAML for
-identity management and include this parameter, an
-\code{InvalidRequestException} is returned.}
+\item{Password}{The password for the user account. A password is required if you are
+using Amazon Connect for identity management. Otherwise, it is an error
+to include a password.}
 
-\item{IdentityInfo}{Information about the user, including email address, first name, and
-last name.}
+\item{IdentityInfo}{The information about the identity of the user.}
 
-\item{PhoneConfig}{[required] Specifies the phone settings for the user, including
-\code{AfterContactWorkTimeLimit}, \code{AutoAccept}, \code{DeskPhoneNumber}, and
-\code{PhoneType}.}
+\item{PhoneConfig}{[required] The phone settings for the user.}
 
-\item{DirectoryUserId}{The unique identifier for the user account in the directory service
-directory used for identity management. If Amazon Connect is unable to
-access the existing directory, you can use the \code{DirectoryUserId} to
-authenticate users. If you include the parameter, it is assumed that
-Amazon Connect cannot access the directory. If the parameter is not
-included, the \code{UserIdentityInfo} is used to authenticate users from your
-existing directory.
+\item{DirectoryUserId}{The identifier of the user account in the directory used for identity
+management. If Amazon Connect cannot access the directory, you can
+specify this identifier to authenticate users. If you include the
+identifier, we assume that Amazon Connect cannot access the directory.
+Otherwise, the identity information is used to authenticate users from
+your directory.
 
 This parameter is required if you are using an existing directory for
 identity management in Amazon Connect when Amazon Connect cannot access
 your directory to authenticate users. If you are using SAML for identity
-management and include this parameter, an \code{InvalidRequestException} is
-returned.}
+management and include this parameter, an error is returned.}
 
-\item{SecurityProfileIds}{[required] The unique identifier of the security profile to assign to the user
-created.}
+\item{SecurityProfileIds}{[required] The identifier of the security profile for the user.}
 
-\item{RoutingProfileId}{[required] The unique identifier for the routing profile to assign to the user
-created.}
+\item{RoutingProfileId}{[required] The identifier of the routing profile for the user.}
 
-\item{HierarchyGroupId}{The unique identifier for the hierarchy group to assign to the user
-created.}
+\item{HierarchyGroupId}{The identifier of the hierarchy group for the user.}
 
-\item{InstanceId}{[required] The identifier for your Amazon Connect instance. To find the ID of your
-instance, open the AWS console and select Amazon Connect. Select the
-alias of the instance in the Instance alias column. The instance ID is
-displayed in the Overview section of your instance settings. For
-example, the instance ID is the set of characters at the end of the
-instance ARN, after instance/, such as
-10a4c4eb-f57e-4d4c-b602-bf39176ced07.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+
+\item{Tags}{One or more tags.}
 }
 \description{
-Creates a new user account in your Amazon Connect instance.
+Creates a user account for the specified Amazon Connect instance.
 }
 \section{Request syntax}{
 \preformatted{svc$create_user(
@@ -80,7 +68,10 @@ Creates a new user account in your Amazon Connect instance.
   ),
   RoutingProfileId = "string",
   HierarchyGroupId = "string",
-  InstanceId = "string"
+  InstanceId = "string",
+  Tags = list(
+    "string"
+  )
 )
 }
 }

@@ -238,7 +238,7 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #'   FleetType, ComputeCapacity, VpcConfig, MaxUserDurationInSeconds,
 #'   DisconnectTimeoutInSeconds, Description, DisplayName,
 #'   EnableDefaultInternetAccess, DomainJoinInfo, Tags,
-#'   IdleDisconnectTimeoutInSeconds)
+#'   IdleDisconnectTimeoutInSeconds, IamRoleArn)
 #'
 #' @param Name &#91;required&#93; A unique name for the fleet.
 #' @param ImageName The name of the image used to create the fleet.
@@ -333,7 +333,7 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' 
 #' For more information, see [Tagging Your
 #' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
-#' in the *Amazon AppStream 2.0 Developer Guide*.
+#' in the *Amazon AppStream 2.0 Administration Guide*.
 #' @param IdleDisconnectTimeoutInSeconds The amount of time that users can be idle (inactive) before they are
 #' disconnected from their streaming session and the
 #' `DisconnectTimeoutInSeconds` time interval begins. Users are notified
@@ -358,6 +358,17 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' is at the midpoint between two different minutes, the value is rounded
 #' up. For example, if you specify a value of 90, users are disconnected
 #' after 2 minutes of inactivity.
+#' @param IamRoleArn The Amazon Resource Name (ARN) of the IAM role to apply to the fleet. To
+#' assume a role, a fleet instance calls the AWS Security Token Service
+#' (STS) `AssumeRole` API operation and passes the ARN of the role to use.
+#' The operation creates a new session with temporary credentials.
+#' AppStream 2.0 retrieves the temporary credentials and creates the
+#' **AppStream\\_Machine\\_Role** credential profile on the instance.
+#' 
+#' For more information, see [Using an IAM Role to Grant Permissions to
+#' Applications and Scripts Running on AppStream 2.0 Streaming
+#' Instances](https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html)
+#' in the *Amazon AppStream 2.0 Administration Guide*.
 #'
 #' @section Request syntax:
 #' ```
@@ -390,21 +401,22 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #'   Tags = list(
 #'     "string"
 #'   ),
-#'   IdleDisconnectTimeoutInSeconds = 123
+#'   IdleDisconnectTimeoutInSeconds = 123,
+#'   IamRoleArn = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname appstream_create_fleet
-appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, InstanceType, FleetType = NULL, ComputeCapacity, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, Tags = NULL, IdleDisconnectTimeoutInSeconds = NULL) {
+appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, InstanceType, FleetType = NULL, ComputeCapacity, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, Tags = NULL, IdleDisconnectTimeoutInSeconds = NULL, IamRoleArn = NULL) {
   op <- new_operation(
     name = "CreateFleet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .appstream$create_fleet_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, FleetType = FleetType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, Tags = Tags, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds)
+  input <- .appstream$create_fleet_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, FleetType = FleetType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, Tags = Tags, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, IamRoleArn = IamRoleArn)
   output <- .appstream$create_fleet_output()
   config <- get_config()
   svc <- .appstream$service(config)
@@ -424,17 +436,71 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #'
 #' @usage
 #' appstream_create_image_builder(Name, ImageName, ImageArn, InstanceType,
-#'   Description, DisplayName, VpcConfig, EnableDefaultInternetAccess,
-#'   DomainJoinInfo, AppstreamAgentVersion, Tags)
+#'   Description, DisplayName, VpcConfig, IamRoleArn,
+#'   EnableDefaultInternetAccess, DomainJoinInfo, AppstreamAgentVersion,
+#'   Tags, AccessEndpoints)
 #'
 #' @param Name &#91;required&#93; A unique name for the image builder.
 #' @param ImageName The name of the image used to create the image builder.
 #' @param ImageArn The ARN of the public, private, or shared image to use.
-#' @param InstanceType &#91;required&#93; The instance type to use when launching the image builder.
+#' @param InstanceType &#91;required&#93; The instance type to use when launching the image builder. The following
+#' instance types are available:
+#' 
+#' -   stream.standard.medium
+#' 
+#' -   stream.standard.large
+#' 
+#' -   stream.compute.large
+#' 
+#' -   stream.compute.xlarge
+#' 
+#' -   stream.compute.2xlarge
+#' 
+#' -   stream.compute.4xlarge
+#' 
+#' -   stream.compute.8xlarge
+#' 
+#' -   stream.memory.large
+#' 
+#' -   stream.memory.xlarge
+#' 
+#' -   stream.memory.2xlarge
+#' 
+#' -   stream.memory.4xlarge
+#' 
+#' -   stream.memory.8xlarge
+#' 
+#' -   stream.graphics-design.large
+#' 
+#' -   stream.graphics-design.xlarge
+#' 
+#' -   stream.graphics-design.2xlarge
+#' 
+#' -   stream.graphics-design.4xlarge
+#' 
+#' -   stream.graphics-desktop.2xlarge
+#' 
+#' -   stream.graphics-pro.4xlarge
+#' 
+#' -   stream.graphics-pro.8xlarge
+#' 
+#' -   stream.graphics-pro.16xlarge
 #' @param Description The description to display.
 #' @param DisplayName The image builder name to display.
 #' @param VpcConfig The VPC configuration for the image builder. You can specify only one
 #' subnet.
+#' @param IamRoleArn The Amazon Resource Name (ARN) of the IAM role to apply to the image
+#' builder. To assume a role, the image builder calls the AWS Security
+#' Token Service (STS) `AssumeRole` API operation and passes the ARN of the
+#' role to use. The operation creates a new session with temporary
+#' credentials. AppStream 2.0 retrieves the temporary credentials and
+#' creates the **AppStream\\_Machine\\_Role** credential profile on the
+#' instance.
+#' 
+#' For more information, see [Using an IAM Role to Grant Permissions to
+#' Applications and Scripts Running on AppStream 2.0 Streaming
+#' Instances](https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html)
+#' in the *Amazon AppStream 2.0 Administration Guide*.
 #' @param EnableDefaultInternetAccess Enables or disables default internet access for the image builder.
 #' @param DomainJoinInfo The name of the directory and organizational unit (OU) to use to join
 #' the image builder to a Microsoft Active Directory domain.
@@ -453,7 +519,10 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #' 
 #' For more information about tags, see [Tagging Your
 #' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
-#' in the *Amazon AppStream 2.0 Developer Guide*.
+#' in the *Amazon AppStream 2.0 Administration Guide*.
+#' @param AccessEndpoints The list of interface VPC endpoint (interface endpoint) objects.
+#' Administrators can connect to the image builder only through the
+#' specified endpoints.
 #'
 #' @section Request syntax:
 #' ```
@@ -472,6 +541,7 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #'       "string"
 #'     )
 #'   ),
+#'   IamRoleArn = "string",
 #'   EnableDefaultInternetAccess = TRUE|FALSE,
 #'   DomainJoinInfo = list(
 #'     DirectoryName = "string",
@@ -480,6 +550,12 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #'   AppstreamAgentVersion = "string",
 #'   Tags = list(
 #'     "string"
+#'   ),
+#'   AccessEndpoints = list(
+#'     list(
+#'       EndpointType = "STREAMING",
+#'       VpceId = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -487,14 +563,14 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #' @keywords internal
 #'
 #' @rdname appstream_create_image_builder
-appstream_create_image_builder <- function(Name, ImageName = NULL, ImageArn = NULL, InstanceType, Description = NULL, DisplayName = NULL, VpcConfig = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, AppstreamAgentVersion = NULL, Tags = NULL) {
+appstream_create_image_builder <- function(Name, ImageName = NULL, ImageArn = NULL, InstanceType, Description = NULL, DisplayName = NULL, VpcConfig = NULL, IamRoleArn = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, AppstreamAgentVersion = NULL, Tags = NULL, AccessEndpoints = NULL) {
   op <- new_operation(
     name = "CreateImageBuilder",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .appstream$create_image_builder_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, Description = Description, DisplayName = DisplayName, VpcConfig = VpcConfig, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, AppstreamAgentVersion = AppstreamAgentVersion, Tags = Tags)
+  input <- .appstream$create_image_builder_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, Description = Description, DisplayName = DisplayName, VpcConfig = VpcConfig, IamRoleArn = IamRoleArn, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, AppstreamAgentVersion = AppstreamAgentVersion, Tags = Tags, AccessEndpoints = AccessEndpoints)
   output <- .appstream$create_image_builder_output()
   config <- get_config()
   svc <- .appstream$service(config)
@@ -552,7 +628,7 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 #' @usage
 #' appstream_create_stack(Name, Description, DisplayName,
 #'   StorageConnectors, RedirectURL, FeedbackURL, UserSettings,
-#'   ApplicationSettings, Tags)
+#'   ApplicationSettings, Tags, AccessEndpoints, EmbedHostDomains)
 #'
 #' @param Name &#91;required&#93; The name of the stack.
 #' @param Description The description to display.
@@ -580,7 +656,13 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 #' 
 #' For more information about tags, see [Tagging Your
 #' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
-#' in the *Amazon AppStream 2.0 Developer Guide*.
+#' in the *Amazon AppStream 2.0 Administration Guide*.
+#' @param AccessEndpoints The list of interface VPC endpoint (interface endpoint) objects. Users
+#' of the stack can connect to AppStream 2.0 only through the specified
+#' endpoints.
+#' @param EmbedHostDomains The domains where AppStream 2.0 streaming sessions can be embedded in an
+#' iframe. You must approve the domains that you want to host embedded
+#' AppStream 2.0 streaming sessions.
 #'
 #' @section Request syntax:
 #' ```
@@ -611,6 +693,15 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 #'   ),
 #'   Tags = list(
 #'     "string"
+#'   ),
+#'   AccessEndpoints = list(
+#'     list(
+#'       EndpointType = "STREAMING",
+#'       VpceId = "string"
+#'     )
+#'   ),
+#'   EmbedHostDomains = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -618,14 +709,14 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 #' @keywords internal
 #'
 #' @rdname appstream_create_stack
-appstream_create_stack <- function(Name, Description = NULL, DisplayName = NULL, StorageConnectors = NULL, RedirectURL = NULL, FeedbackURL = NULL, UserSettings = NULL, ApplicationSettings = NULL, Tags = NULL) {
+appstream_create_stack <- function(Name, Description = NULL, DisplayName = NULL, StorageConnectors = NULL, RedirectURL = NULL, FeedbackURL = NULL, UserSettings = NULL, ApplicationSettings = NULL, Tags = NULL, AccessEndpoints = NULL, EmbedHostDomains = NULL) {
   op <- new_operation(
     name = "CreateStack",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .appstream$create_stack_input(Name = Name, Description = Description, DisplayName = DisplayName, StorageConnectors = StorageConnectors, RedirectURL = RedirectURL, FeedbackURL = FeedbackURL, UserSettings = UserSettings, ApplicationSettings = ApplicationSettings, Tags = Tags)
+  input <- .appstream$create_stack_input(Name = Name, Description = Description, DisplayName = DisplayName, StorageConnectors = StorageConnectors, RedirectURL = RedirectURL, FeedbackURL = FeedbackURL, UserSettings = UserSettings, ApplicationSettings = ApplicationSettings, Tags = Tags, AccessEndpoints = AccessEndpoints, EmbedHostDomains = EmbedHostDomains)
   output <- .appstream$create_stack_output()
   config <- get_config()
   svc <- .appstream$service(config)
@@ -654,7 +745,7 @@ appstream_create_stack <- function(Name, Description = NULL, DisplayName = NULL,
 #' value between 1 and 604800 seconds. The default is 60 seconds.
 #' @param SessionContext The session context. For more information, see [Session
 #' Context](https://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters)
-#' in the *Amazon AppStream 2.0 Developer Guide*.
+#' in the *Amazon AppStream 2.0 Administration Guide*.
 #'
 #' @section Request syntax:
 #' ```
@@ -1809,7 +1900,7 @@ appstream_list_associated_stacks <- function(FleetName, NextToken = NULL) {
 #' 
 #' For more information about tags, see [Tagging Your
 #' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
-#' in the *Amazon AppStream 2.0 Developer Guide*.
+#' in the *Amazon AppStream 2.0 Administration Guide*.
 #'
 #' @usage
 #' appstream_list_tags_for_resource(ResourceArn)
@@ -2004,7 +2095,7 @@ appstream_stop_image_builder <- function(Name) {
 #' 
 #' For more information about tags, see [Tagging Your
 #' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
-#' in the *Amazon AppStream 2.0 Developer Guide*.
+#' in the *Amazon AppStream 2.0 Administration Guide*.
 #'
 #' @usage
 #' appstream_tag_resource(ResourceArn, Tags)
@@ -2060,7 +2151,7 @@ appstream_tag_resource <- function(ResourceArn, Tags) {
 #' 
 #' For more information about tags, see [Tagging Your
 #' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
-#' in the *Amazon AppStream 2.0 Developer Guide*.
+#' in the *Amazon AppStream 2.0 Administration Guide*.
 #'
 #' @usage
 #' appstream_untag_resource(ResourceArn, TagKeys)
@@ -2155,15 +2246,16 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' If the fleet is in the `STOPPED` state, you can update any attribute
 #' except the fleet name. If the fleet is in the `RUNNING` state, you can
 #' update the `DisplayName`, `ComputeCapacity`, `ImageARN`, `ImageName`,
-#' and `DisconnectTimeoutInSeconds` attributes. If the fleet is in the
-#' `STARTING` or `STOPPING` state, you can\'t update it.
+#' `IdleDisconnectTimeoutInSeconds`, and `DisconnectTimeoutInSeconds`
+#' attributes. If the fleet is in the `STARTING` or `STOPPING` state, you
+#' can\'t update it.
 #'
 #' @usage
 #' appstream_update_fleet(ImageName, ImageArn, Name, InstanceType,
 #'   ComputeCapacity, VpcConfig, MaxUserDurationInSeconds,
 #'   DisconnectTimeoutInSeconds, DeleteVpcConfig, Description, DisplayName,
 #'   EnableDefaultInternetAccess, DomainJoinInfo,
-#'   IdleDisconnectTimeoutInSeconds, AttributesToDelete)
+#'   IdleDisconnectTimeoutInSeconds, AttributesToDelete, IamRoleArn)
 #'
 #' @param ImageName The name of the image used to create the fleet.
 #' @param ImageArn The ARN of the public, private, or shared image to use.
@@ -2257,6 +2349,17 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' up. For example, if you specify a value of 90, users are disconnected
 #' after 2 minutes of inactivity.
 #' @param AttributesToDelete The fleet attributes to delete.
+#' @param IamRoleArn The Amazon Resource Name (ARN) of the IAM role to apply to the fleet. To
+#' assume a role, a fleet instance calls the AWS Security Token Service
+#' (STS) `AssumeRole` API operation and passes the ARN of the role to use.
+#' The operation creates a new session with temporary credentials.
+#' AppStream 2.0 retrieves the temporary credentials and creates the
+#' **AppStream\\_Machine\\_Role** credential profile on the instance.
+#' 
+#' For more information, see [Using an IAM Role to Grant Permissions to
+#' Applications and Scripts Running on AppStream 2.0 Streaming
+#' Instances](https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html)
+#' in the *Amazon AppStream 2.0 Administration Guide*.
 #'
 #' @section Request syntax:
 #' ```
@@ -2288,22 +2391,23 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
 #'   ),
 #'   IdleDisconnectTimeoutInSeconds = 123,
 #'   AttributesToDelete = list(
-#'     "VPC_CONFIGURATION"|"VPC_CONFIGURATION_SECURITY_GROUP_IDS"|"DOMAIN_JOIN_INFO"
-#'   )
+#'     "VPC_CONFIGURATION"|"VPC_CONFIGURATION_SECURITY_GROUP_IDS"|"DOMAIN_JOIN_INFO"|"IAM_ROLE_ARN"
+#'   ),
+#'   IamRoleArn = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname appstream_update_fleet
-appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NULL, InstanceType = NULL, ComputeCapacity = NULL, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, DeleteVpcConfig = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, IdleDisconnectTimeoutInSeconds = NULL, AttributesToDelete = NULL) {
+appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NULL, InstanceType = NULL, ComputeCapacity = NULL, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, DeleteVpcConfig = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, IdleDisconnectTimeoutInSeconds = NULL, AttributesToDelete = NULL, IamRoleArn = NULL) {
   op <- new_operation(
     name = "UpdateFleet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .appstream$update_fleet_input(ImageName = ImageName, ImageArn = ImageArn, Name = Name, InstanceType = InstanceType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, DeleteVpcConfig = DeleteVpcConfig, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, AttributesToDelete = AttributesToDelete)
+  input <- .appstream$update_fleet_input(ImageName = ImageName, ImageArn = ImageArn, Name = Name, InstanceType = InstanceType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, DeleteVpcConfig = DeleteVpcConfig, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, AttributesToDelete = AttributesToDelete, IamRoleArn = IamRoleArn)
   output <- .appstream$update_fleet_output()
   config <- get_config()
   svc <- .appstream$service(config)
@@ -2365,7 +2469,8 @@ appstream_update_image_permissions <- function(Name, SharedAccountId, ImagePermi
 #' @usage
 #' appstream_update_stack(DisplayName, Description, Name,
 #'   StorageConnectors, DeleteStorageConnectors, RedirectURL, FeedbackURL,
-#'   AttributesToDelete, UserSettings, ApplicationSettings)
+#'   AttributesToDelete, UserSettings, ApplicationSettings, AccessEndpoints,
+#'   EmbedHostDomains)
 #'
 #' @param DisplayName The stack name to display.
 #' @param Description The description to display.
@@ -2382,6 +2487,12 @@ appstream_update_image_permissions <- function(Name, SharedAccountId, ImagePermi
 #' settings are enabled, changes that users make to applications and
 #' Windows settings are automatically saved after each session and applied
 #' to the next session.
+#' @param AccessEndpoints The list of interface VPC endpoint (interface endpoint) objects. Users
+#' of the stack can connect to AppStream 2.0 only through the specified
+#' endpoints.
+#' @param EmbedHostDomains The domains where AppStream 2.0 streaming sessions can be embedded in an
+#' iframe. You must approve the domains that you want to host embedded
+#' AppStream 2.0 streaming sessions.
 #'
 #' @section Request syntax:
 #' ```
@@ -2402,7 +2513,7 @@ appstream_update_image_permissions <- function(Name, SharedAccountId, ImagePermi
 #'   RedirectURL = "string",
 #'   FeedbackURL = "string",
 #'   AttributesToDelete = list(
-#'     "STORAGE_CONNECTORS"|"STORAGE_CONNECTOR_HOMEFOLDERS"|"STORAGE_CONNECTOR_GOOGLE_DRIVE"|"STORAGE_CONNECTOR_ONE_DRIVE"|"REDIRECT_URL"|"FEEDBACK_URL"|"THEME_NAME"|"USER_SETTINGS"
+#'     "STORAGE_CONNECTORS"|"STORAGE_CONNECTOR_HOMEFOLDERS"|"STORAGE_CONNECTOR_GOOGLE_DRIVE"|"STORAGE_CONNECTOR_ONE_DRIVE"|"REDIRECT_URL"|"FEEDBACK_URL"|"THEME_NAME"|"USER_SETTINGS"|"EMBED_HOST_DOMAINS"|"IAM_ROLE_ARN"|"ACCESS_ENDPOINTS"
 #'   ),
 #'   UserSettings = list(
 #'     list(
@@ -2413,6 +2524,15 @@ appstream_update_image_permissions <- function(Name, SharedAccountId, ImagePermi
 #'   ApplicationSettings = list(
 #'     Enabled = TRUE|FALSE,
 #'     SettingsGroup = "string"
+#'   ),
+#'   AccessEndpoints = list(
+#'     list(
+#'       EndpointType = "STREAMING",
+#'       VpceId = "string"
+#'     )
+#'   ),
+#'   EmbedHostDomains = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -2420,14 +2540,14 @@ appstream_update_image_permissions <- function(Name, SharedAccountId, ImagePermi
 #' @keywords internal
 #'
 #' @rdname appstream_update_stack
-appstream_update_stack <- function(DisplayName = NULL, Description = NULL, Name, StorageConnectors = NULL, DeleteStorageConnectors = NULL, RedirectURL = NULL, FeedbackURL = NULL, AttributesToDelete = NULL, UserSettings = NULL, ApplicationSettings = NULL) {
+appstream_update_stack <- function(DisplayName = NULL, Description = NULL, Name, StorageConnectors = NULL, DeleteStorageConnectors = NULL, RedirectURL = NULL, FeedbackURL = NULL, AttributesToDelete = NULL, UserSettings = NULL, ApplicationSettings = NULL, AccessEndpoints = NULL, EmbedHostDomains = NULL) {
   op <- new_operation(
     name = "UpdateStack",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .appstream$update_stack_input(DisplayName = DisplayName, Description = Description, Name = Name, StorageConnectors = StorageConnectors, DeleteStorageConnectors = DeleteStorageConnectors, RedirectURL = RedirectURL, FeedbackURL = FeedbackURL, AttributesToDelete = AttributesToDelete, UserSettings = UserSettings, ApplicationSettings = ApplicationSettings)
+  input <- .appstream$update_stack_input(DisplayName = DisplayName, Description = Description, Name = Name, StorageConnectors = StorageConnectors, DeleteStorageConnectors = DeleteStorageConnectors, RedirectURL = RedirectURL, FeedbackURL = FeedbackURL, AttributesToDelete = AttributesToDelete, UserSettings = UserSettings, ApplicationSettings = ApplicationSettings, AccessEndpoints = AccessEndpoints, EmbedHostDomains = EmbedHostDomains)
   output <- .appstream$update_stack_output()
   config <- get_config()
   svc <- .appstream$service(config)

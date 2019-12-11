@@ -9,8 +9,8 @@ lexmodelbuildingservice_delete_bot_version(name, version)
 \arguments{
 \item{name}{[required] The name of the bot.}
 
-\item{version}{[required] The version of the bot to delete. You cannot delete the \code{$LATEST}
-version of the bot. To delete the \code{$LATEST} version, use the DeleteBot
+\item{version}{[required] The version of the bot to delete. You cannot delete the \verb{$LATEST}
+version of the bot. To delete the \verb{$LATEST} version, use the DeleteBot
 operation.}
 }
 \description{

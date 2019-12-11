@@ -14,7 +14,7 @@ AWS Price List Service API (AWS Price List Service) is a centralized and
 convenient way to programmatically query Amazon Web Services for
 services, products, and pricing information. The AWS Price List Service
 uses standardized product attributes such as \code{Location},
-\code{Storage Class}, and \code{Operating System}, and provides prices at the SKU
+\verb{Storage Class}, and \verb{Operating System}, and provides prices at the SKU
 level. You can use the AWS Price List Service to build cost control and
 scenario planning tools, reconcile billing data, forecast future spend
 for budgeting purposes, and provide cost benefit analysis that compare
@@ -26,8 +26,8 @@ the attribute names for that service. After you have the service code
 and attribute names, you can use \code{GetAttributeValues} to see what values
 are available for an attribute. With the service code and an attribute
 name and value, you can use \code{GetProducts} to find specific products that
-you're interested in, such as an \code{AmazonEC2} instance, with a
-\code{Provisioned IOPS} \code{volumeType}.
+you\'re interested in, such as an \code{AmazonEC2} instance, with a
+\verb{Provisioned IOPS} \code{volumeType}.
 
 Service Endpoint
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/paws.R
 \name{opsworkscm}
 \alias{opsworkscm}
-\title{AWS OpsWorks for Chef Automate}
+\title{AWS OpsWorks CM}
 \usage{
 opsworkscm(config = list())
 }
@@ -10,8 +10,6 @@ opsworkscm(config = list())
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
-AWS OpsWorks CM
-
 AWS OpsWorks for configuration management (CM) is a service that runs
 and manages configuration management servers. You can use AWS OpsWorks
 CM to create and manage AWS OpsWorks for Chef Automate and AWS OpsWorks
@@ -34,12 +32,12 @@ and \code{Puppet}.
 \item \strong{Backup}: This is an application-level backup of the data that the
 configuration manager stores. AWS OpsWorks CM creates an S3 bucket
 for backups when you launch the first server. A backup maintains a
-snapshot of a server's configuration-related attributes at the time
+snapshot of a server\'s configuration-related attributes at the time
 the backup starts.
 \item \strong{Events}: Events are always related to a server. Events are
 written during server creation, when health checks run, when backups
 are created, when system maintenance is performed, etc. When you
-delete a server, the server's events are also deleted.
+delete a server, the server\'s events are also deleted.
 \item \strong{Account attributes}: Every account has attributes that are
 assigned in the AWS OpsWorks CM database. These attributes store
 information about configuration limits (servers, backups, etc.) and

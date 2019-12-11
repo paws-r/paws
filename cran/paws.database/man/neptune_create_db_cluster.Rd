@@ -70,7 +70,7 @@ Valid Values: \code{neptune}}
 
 \item{EngineVersion}{The version number of the database engine to use.
 
-Example: \code{1.0.1}}
+Example: \verb{1.0.1}}
 
 \item{Port}{The port number on which the instances in the DB cluster accept
 connections.
@@ -87,15 +87,15 @@ Constraints:
 }}
 
 \item{MasterUserPassword}{The password for the master database user. This password can contain any
-printable ASCII character except "/", """, or "@".
+printable ASCII character except \"/\", \"\"\", or \"@\".
 
 Constraints: Must contain from 8 to 41 characters.}
 
 \item{OptionGroupName}{A value that indicates that the DB cluster should be associated with the
 specified option group.
 
-Permanent options can't be removed from an option group. The option
-group can't be removed from a DB cluster once it is associated with a
+Permanent options can\'t be removed from an option group. The option
+group can\'t be removed from a DB cluster once it is associated with a
 DB cluster.}
 
 \item{PreferredBackupWindow}{The daily time range during which automated backups are created if

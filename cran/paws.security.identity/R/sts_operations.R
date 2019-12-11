@@ -33,6 +33,8 @@ NULL
 #' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)
 #' in the *IAM User Guide*.
 #' 
+#' **Session Duration**
+#' 
 #' By default, the temporary security credentials created by `AssumeRole`
 #' last for one hour. However, you can use the optional `DurationSeconds`
 #' parameter to specify the duration of your session. You can provide a
@@ -48,6 +50,8 @@ NULL
 #' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html)
 #' in the *IAM User Guide*.
 #' 
+#' **Permissions**
+#' 
 #' The temporary security credentials created by `AssumeRole` can be used
 #' to make API calls to any AWS service with the following exception: You
 #' cannot call the AWS STS `GetFederationToken` or `GetSessionToken` API
@@ -58,7 +62,7 @@ NULL
 #' to this operation. You can pass a single JSON policy document to use as
 #' an inline session policy. You can also specify up to 10 managed policies
 #' to use as managed session policies. The plain text that you use for both
-#' inline and managed session policies shouldn\'t exceed 2048 characters.
+#' inline and managed session policies can\'t exceed 2,048 characters.
 #' Passing policies to this operation returns new temporary credentials.
 #' The resulting session\'s permissions are the intersection of the role\'s
 #' identity-based policy and the session policies. You can use the role\'s
@@ -93,6 +97,27 @@ NULL
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html)
 #' in the *IAM User Guide*.
 #' 
+#' **Tags**
+#' 
+#' (Optional) You can pass tag key-value pairs to your session. These tags
+#' are called session tags. For more information about session tags, see
+#' [Passing Session Tags in
+#' STS](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html)
+#' in the *IAM User Guide*.
+#' 
+#' An administrator must grant you the permissions necessary to pass
+#' session tags. The administrator can also create granular permissions to
+#' allow you to pass only specific session tags. For more information, see
+#' [Tutorial: Using Tags for Attribute-Based Access
+#' Control](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_attribute-based-access-control.html)
+#' in the *IAM User Guide*.
+#' 
+#' You can set the session tags as transitive. Transitive tags persist
+#' during role chaining. For more information, see [Chaining Roles with
+#' Session
+#' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html#id_session-tags_role-chaining)
+#' in the *IAM User Guide*.
+#' 
 #' **Using MFA with AssumeRole**
 #' 
 #' (Optional) You can include multi-factor authentication (MFA) information
@@ -117,7 +142,8 @@ NULL
 #'
 #' @usage
 #' sts_assume_role(RoleArn, RoleSessionName, PolicyArns, Policy,
-#'   DurationSeconds, ExternalId, SerialNumber, TokenCode)
+#'   DurationSeconds, Tags, TransitiveTagKeys, ExternalId, SerialNumber,
+#'   TokenCode)
 #'
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the role to assume.
 #' @param RoleSessionName &#91;required&#93; An identifier for the assumed role session.
@@ -141,16 +167,17 @@ NULL
 #' 
 #' This parameter is optional. You can provide up to 10 managed policy
 #' ARNs. However, the plain text that you use for both inline and managed
-#' session policies shouldn\'t exceed 2048 characters. For more information
+#' session policies can\'t exceed 2,048 characters. For more information
 #' about ARNs, see [Amazon Resource Names (ARNs) and AWS Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' in the AWS General Reference.
 #' 
-#' The characters in this parameter count towards the 2048 character
-#' session policy guideline. However, an AWS conversion compresses the
-#' session policies into a packed binary format that has a separate limit.
-#' This is the enforced limit. The `PackedPolicySize` response element
-#' indicates by percentage how close the policy is to the upper size limit.
+#' An AWS conversion compresses the passed session policies and session
+#' tags into a packed binary format that has a separate limit. Your request
+#' can fail for this limit even if your plain text meets the other
+#' requirements. The `PackedPolicySize` response element indicates by
+#' percentage how close the policies and tags for your request are to the
+#' upper size limit.
 #' 
 #' Passing policies to this operation returns new temporary credentials.
 #' The resulting session\'s permissions are the intersection of the role\'s
@@ -176,16 +203,17 @@ NULL
 #' in the *IAM User Guide*.
 #' 
 #' The plain text that you use for both inline and managed session policies
-#' shouldn\'t exceed 2048 characters. The JSON policy characters can be any
+#' can\'t exceed 2,048 characters. The JSON policy characters can be any
 #' ASCII character from the space character to the end of the valid
 #' character list (`U+0020` through `U+00FF`). It can also include the tab
 #' (`U+0009`), linefeed (`U+000A`), and carriage return (`U+000D`) characters.
 #' 
-#' The characters in this parameter count towards the 2048 character
-#' session policy guideline. However, an AWS conversion compresses the
-#' session policies into a packed binary format that has a separate limit.
-#' This is the enforced limit. The `PackedPolicySize` response element
-#' indicates by percentage how close the policy is to the upper size limit.
+#' An AWS conversion compresses the passed session policies and session
+#' tags into a packed binary format that has a separate limit. Your request
+#' can fail for this limit even if your plain text meets the other
+#' requirements. The `PackedPolicySize` response element indicates by
+#' percentage how close the policies and tags for your request are to the
+#' upper size limit.
 #' @param DurationSeconds The duration, in seconds, of the role session. The value can range from
 #' 900 seconds (15 minutes) up to the maximum session duration setting for
 #' the role. This setting can have a value from 1 hour to 12 hours. If you
@@ -207,6 +235,57 @@ NULL
 #' Federated Users to Access the AWS Management
 #' Console](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html)
 #' in the *IAM User Guide*.
+#' @param Tags A list of session tags that you want to pass. Each session tag consists
+#' of a key name and an associated value. For more information about
+#' session tags, see [Tagging AWS STS
+#' Sessions](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html)
+#' in the *IAM User Guide*.
+#' 
+#' This parameter is optional. You can pass up to 50 session tags. The
+#' plain text session tag keys can't exceed 128 characters, and the values
+#' can't exceed 256 characters. For these and additional limits, see [IAM
+#' and STS Character
+#' Limits](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html#reference_iam-limits-entity-length)
+#' in the *IAM User Guide*.
+#' 
+#' An AWS conversion compresses the passed session policies and session
+#' tags into a packed binary format that has a separate limit. Your request
+#' can fail for this limit even if your plain text meets the other
+#' requirements. The `PackedPolicySize` response element indicates by
+#' percentage how close the policies and tags for your request are to the
+#' upper size limit.
+#' 
+#' You can pass a session tag with the same key as a tag that is already
+#' attached to the role. When you do, session tags override a role tag with
+#' the same key.
+#' 
+#' Tag key--value pairs are not case sensitive, but case is preserved. This
+#' means that you cannot have separate `Department` and `department` tag
+#' keys. Assume that the role has the `Department`=`Marketing` tag and you
+#' pass the `department`=`engineering` session tag. `Department` and
+#' `department` are not saved as separate tags, and the session tag passed
+#' in the request takes precedence over the role tag.
+#' 
+#' Additionally, if you used temporary credentials to perform this
+#' operation, the new session inherits any transitive session tags from the
+#' calling session. If you pass a session tag with the same key as an
+#' inherited tag, the operation fails. To view the inherited tags for a
+#' session, see the AWS CloudTrail logs. For more information, see [Viewing
+#' Session Tags in
+#' CloudTrail](https://docs.aws.amazon.com/IAM/latest/UserGuide/session-tags.html#id_session-tags_ctlogs)
+#' in the *IAM User Guide*.
+#' @param TransitiveTagKeys A list of keys for session tags that you want to set as transitive. If
+#' you set a tag key as transitive, the corresponding key and value passes
+#' to subsequent sessions in a role chain. For more information, see
+#' [Chaining Roles with Session
+#' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html#id_session-tags_role-chaining)
+#' in the *IAM User Guide*.
+#' 
+#' This parameter is optional. When you set session tags as transitive, the
+#' session policy and session tags packed binary limit is not affected.
+#' 
+#' If you choose not to specify a transitive tag key, then no tags are
+#' passed from this session to any subsequent sessions.
 #' @param ExternalId A unique identifier that might be required when you assume a role in
 #' another account. If the administrator of the account to which the role
 #' belongs provided you with an external ID, then provide that value in the
@@ -258,6 +337,15 @@ NULL
 #'   ),
 #'   Policy = "string",
 #'   DurationSeconds = 123,
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   TransitiveTagKeys = list(
+#'     "string"
+#'   ),
 #'   ExternalId = "string",
 #'   SerialNumber = "string",
 #'   TokenCode = "string"
@@ -267,24 +355,41 @@ NULL
 #' @examples
 #' # 
 #' \donttest{svc$assume_role(
-#'   DurationSeconds = 3600L,
 #'   ExternalId = "123ABC",
 #'   Policy = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"Stmt1\",\"Effect\":...",
 #'   RoleArn = "arn:aws:iam::123456789012:role/demo",
-#'   RoleSessionName = "Bob"
+#'   RoleSessionName = "testAssumeRoleSession",
+#'   Tags = list(
+#'     list(
+#'       Key = "Project",
+#'       Value = "Unicorn"
+#'     ),
+#'     list(
+#'       Key = "Team",
+#'       Value = "Automation"
+#'     ),
+#'     list(
+#'       Key = "Cost-Center",
+#'       Value = "12345"
+#'     )
+#'   ),
+#'   TransitiveTagKeys = list(
+#'     "Project",
+#'     "Cost-Center"
+#'   )
 #' )}
 #'
 #' @keywords internal
 #'
 #' @rdname sts_assume_role
-sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy = NULL, DurationSeconds = NULL, ExternalId = NULL, SerialNumber = NULL, TokenCode = NULL) {
+sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy = NULL, DurationSeconds = NULL, Tags = NULL, TransitiveTagKeys = NULL, ExternalId = NULL, SerialNumber = NULL, TokenCode = NULL) {
   op <- new_operation(
     name = "AssumeRole",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sts$assume_role_input(RoleArn = RoleArn, RoleSessionName = RoleSessionName, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds, ExternalId = ExternalId, SerialNumber = SerialNumber, TokenCode = TokenCode)
+  input <- .sts$assume_role_input(RoleArn = RoleArn, RoleSessionName = RoleSessionName, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds, Tags = Tags, TransitiveTagKeys = TransitiveTagKeys, ExternalId = ExternalId, SerialNumber = SerialNumber, TokenCode = TokenCode)
   output <- .sts$assume_role_output()
   config <- get_config()
   svc <- .sts$service(config)
@@ -314,6 +419,8 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' Applications can use these temporary security credentials to sign calls
 #' to AWS services.
 #' 
+#' **Session Duration**
+#' 
 #' By default, the temporary security credentials created by
 #' `AssumeRoleWithSAML` last for one hour. However, you can use the
 #' optional `DurationSeconds` parameter to specify the duration of your
@@ -332,6 +439,8 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html)
 #' in the *IAM User Guide*.
 #' 
+#' **Permissions**
+#' 
 #' The temporary security credentials created by `AssumeRoleWithSAML` can
 #' be used to make API calls to any AWS service with the following
 #' exception: you cannot call the STS `GetFederationToken` or
@@ -342,7 +451,7 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' to this operation. You can pass a single JSON policy document to use as
 #' an inline session policy. You can also specify up to 10 managed policies
 #' to use as managed session policies. The plain text that you use for both
-#' inline and managed session policies shouldn\'t exceed 2048 characters.
+#' inline and managed session policies can\'t exceed 2,048 characters.
 #' Passing policies to this operation returns new temporary credentials.
 #' The resulting session\'s permissions are the intersection of the role\'s
 #' identity-based policy and the session policies. You can use the role\'s
@@ -353,13 +462,6 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session)
 #' in the *IAM User Guide*.
 #' 
-#' Before your application can call `AssumeRoleWithSAML`, you must
-#' configure your SAML identity provider (IdP) to issue the claims required
-#' by AWS. Additionally, you must use AWS Identity and Access Management
-#' (IAM) to create a SAML provider entity in your AWS account that
-#' represents your identity provider. You must also create an IAM role that
-#' specifies this SAML provider in its trust policy.
-#' 
 #' Calling `AssumeRoleWithSAML` does not require the use of AWS security
 #' credentials. The identity of the caller is validated by using keys in
 #' the metadata document that is uploaded for the SAML provider entity for
@@ -369,8 +471,56 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' CloudTrail logs. The entry includes the value in the `NameID` element of
 #' the SAML assertion. We recommend that you use a `NameIDType` that is not
 #' associated with any personally identifiable information (PII). For
-#' example, you could instead use the Persistent Identifier
+#' example, you could instead use the persistent identifier
 #' (`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`).
+#' 
+#' **Tags**
+#' 
+#' (Optional) You can configure your IdP to pass attributes into your SAML
+#' assertion as session tags. Each session tag consists of a key name and
+#' an associated value. For more information about session tags, see
+#' [Passing Session Tags in
+#' STS](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html)
+#' in the *IAM User Guide*.
+#' 
+#' You can pass up to 50 session tags. The plain text session tag keys
+#' can't exceed 128 characters and the values can't exceed 256 characters.
+#' For these and additional limits, see [IAM and STS Character
+#' Limits](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html#reference_iam-limits-entity-length)
+#' in the *IAM User Guide*.
+#' 
+#' An AWS conversion compresses the passed session policies and session
+#' tags into a packed binary format that has a separate limit. Your request
+#' can fail for this limit even if your plain text meets the other
+#' requirements. The `PackedPolicySize` response element indicates by
+#' percentage how close the policies and tags for your request are to the
+#' upper size limit.
+#' 
+#' You can pass a session tag with the same key as a tag that is attached
+#' to the role. When you do, session tags override the role\'s tags with
+#' the same key.
+#' 
+#' An administrator must grant you the permissions necessary to pass
+#' session tags. The administrator can also create granular permissions to
+#' allow you to pass only specific session tags. For more information, see
+#' [Tutorial: Using Tags for Attribute-Based Access
+#' Control](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_attribute-based-access-control.html)
+#' in the *IAM User Guide*.
+#' 
+#' You can set the session tags as transitive. Transitive tags persist
+#' during role chaining. For more information, see [Chaining Roles with
+#' Session
+#' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html#id_session-tags_role-chaining)
+#' in the *IAM User Guide*.
+#' 
+#' **SAML Configuration**
+#' 
+#' Before your application can call `AssumeRoleWithSAML`, you must
+#' configure your SAML identity provider (IdP) to issue the claims required
+#' by AWS. Additionally, you must use AWS Identity and Access Management
+#' (IAM) to create a SAML provider entity in your AWS account that
+#' represents your identity provider. You must also create an IAM role that
+#' specifies this SAML provider in its trust policy.
 #' 
 #' For more information, see the following resources:
 #' 
@@ -408,16 +558,17 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' 
 #' This parameter is optional. You can provide up to 10 managed policy
 #' ARNs. However, the plain text that you use for both inline and managed
-#' session policies shouldn\'t exceed 2048 characters. For more information
+#' session policies can\'t exceed 2,048 characters. For more information
 #' about ARNs, see [Amazon Resource Names (ARNs) and AWS Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' in the AWS General Reference.
 #' 
-#' The characters in this parameter count towards the 2048 character
-#' session policy guideline. However, an AWS conversion compresses the
-#' session policies into a packed binary format that has a separate limit.
-#' This is the enforced limit. The `PackedPolicySize` response element
-#' indicates by percentage how close the policy is to the upper size limit.
+#' An AWS conversion compresses the passed session policies and session
+#' tags into a packed binary format that has a separate limit. Your request
+#' can fail for this limit even if your plain text meets the other
+#' requirements. The `PackedPolicySize` response element indicates by
+#' percentage how close the policies and tags for your request are to the
+#' upper size limit.
 #' 
 #' Passing policies to this operation returns new temporary credentials.
 #' The resulting session\'s permissions are the intersection of the role\'s
@@ -443,16 +594,17 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' in the *IAM User Guide*.
 #' 
 #' The plain text that you use for both inline and managed session policies
-#' shouldn\'t exceed 2048 characters. The JSON policy characters can be any
+#' can\'t exceed 2,048 characters. The JSON policy characters can be any
 #' ASCII character from the space character to the end of the valid
 #' character list (`U+0020` through `U+00FF`). It can also include the tab
 #' (`U+0009`), linefeed (`U+000A`), and carriage return (`U+000D`) characters.
 #' 
-#' The characters in this parameter count towards the 2048 character
-#' session policy guideline. However, an AWS conversion compresses the
-#' session policies into a packed binary format that has a separate limit.
-#' This is the enforced limit. The `PackedPolicySize` response element
-#' indicates by percentage how close the policy is to the upper size limit.
+#' An AWS conversion compresses the passed session policies and session
+#' tags into a packed binary format that has a separate limit. Your request
+#' can fail for this limit even if your plain text meets the other
+#' requirements. The `PackedPolicySize` response element indicates by
+#' percentage how close the policies and tags for your request are to the
+#' upper size limit.
 #' @param DurationSeconds The duration, in seconds, of the role session. Your role session lasts
 #' for the duration that you specify for the `DurationSeconds` parameter,
 #' or until the time specified in the SAML authentication response\'s
@@ -556,6 +708,8 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' can use these temporary security credentials to sign calls to AWS
 #' service API operations.
 #' 
+#' **Session Duration**
+#' 
 #' By default, the temporary security credentials created by
 #' `AssumeRoleWithWebIdentity` last for one hour. However, you can use the
 #' optional `DurationSeconds` parameter to specify the duration of your
@@ -571,6 +725,8 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html)
 #' in the *IAM User Guide*.
 #' 
+#' **Permissions**
+#' 
 #' The temporary security credentials created by
 #' `AssumeRoleWithWebIdentity` can be used to make API calls to any AWS
 #' service with the following exception: you cannot call the STS
@@ -581,7 +737,7 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' to this operation. You can pass a single JSON policy document to use as
 #' an inline session policy. You can also specify up to 10 managed policies
 #' to use as managed session policies. The plain text that you use for both
-#' inline and managed session policies shouldn\'t exceed 2048 characters.
+#' inline and managed session policies can\'t exceed 2,048 characters.
 #' Passing policies to this operation returns new temporary credentials.
 #' The resulting session\'s permissions are the intersection of the role\'s
 #' identity-based policy and the session policies. You can use the role\'s
@@ -591,6 +747,47 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' role that is being assumed. For more information, see [Session
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session)
 #' in the *IAM User Guide*.
+#' 
+#' **Tags**
+#' 
+#' (Optional) You can configure your IdP to pass attributes into your web
+#' identity token as session tags. Each session tag consists of a key name
+#' and an associated value. For more information about session tags, see
+#' [Passing Session Tags in
+#' STS](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html)
+#' in the *IAM User Guide*.
+#' 
+#' You can pass up to 50 session tags. The plain text session tag keys
+#' can't exceed 128 characters and the values can't exceed 256 characters.
+#' For these and additional limits, see [IAM and STS Character
+#' Limits](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html#reference_iam-limits-entity-length)
+#' in the *IAM User Guide*.
+#' 
+#' An AWS conversion compresses the passed session policies and session
+#' tags into a packed binary format that has a separate limit. Your request
+#' can fail for this limit even if your plain text meets the other
+#' requirements. The `PackedPolicySize` response element indicates by
+#' percentage how close the policies and tags for your request are to the
+#' upper size limit.
+#' 
+#' You can pass a session tag with the same key as a tag that is attached
+#' to the role. When you do, the session tag overrides the role tag with
+#' the same key.
+#' 
+#' An administrator must grant you the permissions necessary to pass
+#' session tags. The administrator can also create granular permissions to
+#' allow you to pass only specific session tags. For more information, see
+#' [Tutorial: Using Tags for Attribute-Based Access
+#' Control](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_attribute-based-access-control.html)
+#' in the *IAM User Guide*.
+#' 
+#' You can set the session tags as transitive. Transitive tags persist
+#' during role chaining. For more information, see [Chaining Roles with
+#' Session
+#' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html#id_session-tags_role-chaining)
+#' in the *IAM User Guide*.
+#' 
+#' **Identities**
 #' 
 #' Before your application can call `AssumeRoleWithWebIdentity`, you must
 #' have an identity token from a supported identity provider and create a
@@ -625,9 +822,9 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' -   [AWS SDK for iOS Developer Guide](http://aws.amazon.com/sdkforios/)
 #'     and [AWS SDK for Android Developer
 #'     Guide](http://aws.amazon.com/sdkforandroid/). These toolkits contain
-#'     sample apps that show how to invoke the identity providers, and then
-#'     how to use the information from these providers to get and use
-#'     temporary security credentials.
+#'     sample apps that show how to invoke the identity providers. The
+#'     toolkits then show how to use the information from these providers
+#'     to get and use temporary security credentials.
 #' 
 #' -   [Web Identity Federation with Mobile
 #'     Applications](http://aws.amazon.com/articles/web-identity-federation-with-mobile-applications).
@@ -671,16 +868,17 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' 
 #' This parameter is optional. You can provide up to 10 managed policy
 #' ARNs. However, the plain text that you use for both inline and managed
-#' session policies shouldn\'t exceed 2048 characters. For more information
+#' session policies can\'t exceed 2,048 characters. For more information
 #' about ARNs, see [Amazon Resource Names (ARNs) and AWS Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' in the AWS General Reference.
 #' 
-#' The characters in this parameter count towards the 2048 character
-#' session policy guideline. However, an AWS conversion compresses the
-#' session policies into a packed binary format that has a separate limit.
-#' This is the enforced limit. The `PackedPolicySize` response element
-#' indicates by percentage how close the policy is to the upper size limit.
+#' An AWS conversion compresses the passed session policies and session
+#' tags into a packed binary format that has a separate limit. Your request
+#' can fail for this limit even if your plain text meets the other
+#' requirements. The `PackedPolicySize` response element indicates by
+#' percentage how close the policies and tags for your request are to the
+#' upper size limit.
 #' 
 #' Passing policies to this operation returns new temporary credentials.
 #' The resulting session\'s permissions are the intersection of the role\'s
@@ -706,16 +904,17 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' in the *IAM User Guide*.
 #' 
 #' The plain text that you use for both inline and managed session policies
-#' shouldn\'t exceed 2048 characters. The JSON policy characters can be any
+#' can\'t exceed 2,048 characters. The JSON policy characters can be any
 #' ASCII character from the space character to the end of the valid
 #' character list (`U+0020` through `U+00FF`). It can also include the tab
 #' (`U+0009`), linefeed (`U+000A`), and carriage return (`U+000D`) characters.
 #' 
-#' The characters in this parameter count towards the 2048 character
-#' session policy guideline. However, an AWS conversion compresses the
-#' session policies into a packed binary format that has a separate limit.
-#' This is the enforced limit. The `PackedPolicySize` response element
-#' indicates by percentage how close the policy is to the upper size limit.
+#' An AWS conversion compresses the passed session policies and session
+#' tags into a packed binary format that has a separate limit. Your request
+#' can fail for this limit even if your plain text meets the other
+#' requirements. The `PackedPolicySize` response element indicates by
+#' percentage how close the policies and tags for your request are to the
+#' upper size limit.
 #' @param DurationSeconds The duration, in seconds, of the role session. The value can range from
 #' 900 seconds (15 minutes) up to the maximum session duration setting for
 #' the role. This setting can have a value from 1 hour to 12 hours. If you
@@ -863,11 +1062,85 @@ sts_decode_authorization_message <- function(EncodedMessage) {
 }
 .sts$operations$decode_authorization_message <- sts_decode_authorization_message
 
-#' Returns details about the IAM identity whose credentials are used to
-#' call the API
+#' Returns the account identifier for the specified access key ID
 #'
-#' Returns details about the IAM identity whose credentials are used to
-#' call the API.
+#' Returns the account identifier for the specified access key ID.
+#' 
+#' Access keys consist of two parts: an access key ID (for example,
+#' `AKIAIOSFODNN7EXAMPLE`) and a secret access key (for example,
+#' `wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY`). For more information about
+#' access keys, see [Managing Access Keys for IAM
+#' Users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
+#' in the *IAM User Guide*.
+#' 
+#' When you pass an access key ID to this operation, it returns the ID of
+#' the AWS account to which the keys belong. Access key IDs beginning with
+#' `AKIA` are long-term credentials for an IAM user or the AWS account root
+#' user. Access key IDs beginning with `ASIA` are temporary credentials
+#' that are created using STS operations. If the account in the response
+#' belongs to you, you can sign in as the root user and review your root
+#' user access keys. Then, you can pull a [credentials
+#' report](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html)
+#' to learn which IAM user owns the keys. To learn who requested the
+#' temporary credentials for an `ASIA` access key, view the STS events in
+#' your [CloudTrail
+#' logs](https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html)
+#' in the *IAM User Guide*.
+#' 
+#' This operation does not indicate the state of the access key. The key
+#' might be active, inactive, or deleted. Active keys might not have
+#' permissions to perform an operation. Providing a deleted access key
+#' might return an error that the key doesn\'t exist.
+#'
+#' @usage
+#' sts_get_access_key_info(AccessKeyId)
+#'
+#' @param AccessKeyId &#91;required&#93; The identifier of an access key.
+#' 
+#' This parameter allows (through its regex pattern) a string of characters
+#' that can consist of any upper- or lowercase letter or digit.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_access_key_info(
+#'   AccessKeyId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sts_get_access_key_info
+sts_get_access_key_info <- function(AccessKeyId) {
+  op <- new_operation(
+    name = "GetAccessKeyInfo",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sts$get_access_key_info_input(AccessKeyId = AccessKeyId)
+  output <- .sts$get_access_key_info_output()
+  config <- get_config()
+  svc <- .sts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sts$operations$get_access_key_info <- sts_get_access_key_info
+
+#' Returns details about the IAM user or role whose credentials are used to
+#' call the operation
+#'
+#' Returns details about the IAM user or role whose credentials are used to
+#' call the operation.
+#' 
+#' No permissions are required to perform this operation. If an
+#' administrator adds a policy to your IAM user or role that explicitly
+#' denies access to the `sts:GetCallerIdentity` action, you can still
+#' perform this operation. Permissions are not required because the same
+#' information is returned when an IAM user or role is denied access. To
+#' view an example response, see [I Am Not Authorized to Perform:
+#' iam:DeleteVirtualMFADevice](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_access-denied-delete-mfa)
+#' in the *IAM User Guide*.
 #'
 #' @usage
 #' sts_get_caller_identity()
@@ -936,7 +1209,8 @@ sts_get_caller_identity <- function() {
 #' we recommend that you use [Amazon
 #' Cognito](http://aws.amazon.com/cognito/) or `AssumeRoleWithWebIdentity`.
 #' For more information, see [Federation Through a Web-based Identity
-#' Provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerolewithwebidentity).
+#' Provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerolewithwebidentity)
+#' in the *IAM User Guide*.
 #' 
 #' You can also call `GetFederationToken` using the security credentials of
 #' an AWS account root user, but we do not recommend it. Instead, we
@@ -947,48 +1221,76 @@ sts_get_caller_identity <- function() {
 #' Practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)
 #' in the *IAM User Guide*.
 #' 
+#' **Session duration**
+#' 
 #' The temporary credentials are valid for the specified duration, from 900
 #' seconds (15 minutes) up to a maximum of 129,600 seconds (36 hours). The
-#' default is 43,200 seconds (12 hours). Temporary credentials that are
-#' obtained by using AWS account root user credentials have a maximum
-#' duration of 3,600 seconds (1 hour).
-#' 
-#' The temporary security credentials created by `GetFederationToken` can
-#' be used to make API calls to any AWS service with the following
-#' exceptions:
-#' 
-#' -   You cannot use these credentials to call any IAM API operations.
-#' 
-#' -   You cannot call any STS API operations except `GetCallerIdentity`.
+#' default session duration is 43,200 seconds (12 hours). Temporary
+#' credentials that are obtained by using AWS account root user credentials
+#' have a maximum duration of 3,600 seconds (1 hour).
 #' 
 #' **Permissions**
+#' 
+#' You can use the temporary credentials created by `GetFederationToken` in
+#' any AWS service except the following:
+#' 
+#' -   You cannot call any IAM operations using the AWS CLI or the AWS API.
+#' 
+#' -   You cannot call any STS operations except `GetCallerIdentity`.
 #' 
 #' You must pass an inline or managed [session
 #' policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session)
 #' to this operation. You can pass a single JSON policy document to use as
 #' an inline session policy. You can also specify up to 10 managed policies
 #' to use as managed session policies. The plain text that you use for both
-#' inline and managed session policies shouldn\'t exceed 2048 characters.
+#' inline and managed session policies can\'t exceed 2,048 characters.
 #' 
 #' Though the session policy parameters are optional, if you do not pass a
 #' policy, then the resulting federated user session has no permissions.
-#' The only exception is when the credentials are used to access a resource
-#' that has a resource-based policy that specifically references the
-#' federated user session in the `Principal` element of the policy. When
-#' you pass session policies, the session permissions are the intersection
-#' of the IAM user policies and the session policies that you pass. This
-#' gives you a way to further restrict the permissions for a federated
-#' user. You cannot use session policies to grant more permissions than
-#' those that are defined in the permissions policy of the IAM user. For
-#' more information, see [Session
+#' When you pass session policies, the session permissions are the
+#' intersection of the IAM user policies and the session policies that you
+#' pass. This gives you a way to further restrict the permissions for a
+#' federated user. You cannot use session policies to grant more
+#' permissions than those that are defined in the permissions policy of the
+#' IAM user. For more information, see [Session
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session)
 #' in the *IAM User Guide*. For information about using
 #' `GetFederationToken` to create temporary security credentials, see
 #' [GetFederationToken---Federation Through a Custom Identity
 #' Broker](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getfederationtoken).
+#' 
+#' You can use the credentials to access a resource that has a
+#' resource-based policy. If that policy specifically references the
+#' federated user session in the `Principal` element of the policy, the
+#' session has the permissions allowed by the policy. These permissions are
+#' granted in addition to the permissions granted by the session policies.
+#' 
+#' **Tags**
+#' 
+#' (Optional) You can pass tag key-value pairs to your session. These are
+#' called session tags. For more information about session tags, see
+#' [Passing Session Tags in
+#' STS](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html)
+#' in the *IAM User Guide*.
+#' 
+#' An administrator must grant you the permissions necessary to pass
+#' session tags. The administrator can also create granular permissions to
+#' allow you to pass only specific session tags. For more information, see
+#' [Tutorial: Using Tags for Attribute-Based Access
+#' Control](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_attribute-based-access-control.html)
+#' in the *IAM User Guide*.
+#' 
+#' Tag key--value pairs are not case sensitive, but case is preserved. This
+#' means that you cannot have separate `Department` and `department` tag
+#' keys. Assume that the user that you are federating has the
+#' `Department`=`Marketing` tag and you pass the `department`=`engineering`
+#' session tag. `Department` and `department` are not saved as separate
+#' tags, and the session tag passed in the request takes precedence over
+#' the user tag.
 #'
 #' @usage
-#' sts_get_federation_token(Name, Policy, PolicyArns, DurationSeconds)
+#' sts_get_federation_token(Name, Policy, PolicyArns, DurationSeconds,
+#'   Tags)
 #'
 #' @param Name &#91;required&#93; The name of the federated user. The name is used as an identifier for
 #' the temporary security credentials (such as `Bob`). For example, you can
@@ -1010,9 +1312,6 @@ sts_get_caller_identity <- function() {
 #' 
 #' This parameter is optional. However, if you do not pass any session
 #' policies, then the resulting federated user session has no permissions.
-#' The only exception is when the credentials are used to access a resource
-#' that has a resource-based policy that specifically references the
-#' federated user session in the `Principal` element of the policy.
 #' 
 #' When you pass session policies, the session permissions are the
 #' intersection of the IAM user policies and the session policies that you
@@ -1023,17 +1322,25 @@ sts_get_caller_identity <- function() {
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session)
 #' in the *IAM User Guide*.
 #' 
+#' The resulting credentials can be used to access a resource that has a
+#' resource-based policy. If that policy specifically references the
+#' federated user session in the `Principal` element of the policy, the
+#' session has the permissions allowed by the policy. These permissions are
+#' granted in addition to the permissions that are granted by the session
+#' policies.
+#' 
 #' The plain text that you use for both inline and managed session policies
-#' shouldn\'t exceed 2048 characters. The JSON policy characters can be any
+#' can\'t exceed 2,048 characters. The JSON policy characters can be any
 #' ASCII character from the space character to the end of the valid
 #' character list (`U+0020` through `U+00FF`). It can also include the tab
 #' (`U+0009`), linefeed (`U+000A`), and carriage return (`U+000D`) characters.
 #' 
-#' The characters in this parameter count towards the 2048 character
-#' session policy guideline. However, an AWS conversion compresses the
-#' session policies into a packed binary format that has a separate limit.
-#' This is the enforced limit. The `PackedPolicySize` response element
-#' indicates by percentage how close the policy is to the upper size limit.
+#' An AWS conversion compresses the passed session policies and session
+#' tags into a packed binary format that has a separate limit. Your request
+#' can fail for this limit even if your plain text meets the other
+#' requirements. The `PackedPolicySize` response element indicates by
+#' percentage how close the policies and tags for your request are to the
+#' upper size limit.
 #' @param PolicyArns The Amazon Resource Names (ARNs) of the IAM managed policies that you
 #' want to use as a managed session policy. The policies must exist in the
 #' same account as the IAM user that is requesting federated access.
@@ -1043,17 +1350,14 @@ sts_get_caller_identity <- function() {
 #' to this operation. You can pass a single JSON policy document to use as
 #' an inline session policy. You can also specify up to 10 managed policies
 #' to use as managed session policies. The plain text that you use for both
-#' inline and managed session policies shouldn\'t exceed 2048 characters.
-#' You can provide up to 10 managed policy ARNs. For more information about
+#' inline and managed session policies can\'t exceed 2,048 characters. You
+#' can provide up to 10 managed policy ARNs. For more information about
 #' ARNs, see [Amazon Resource Names (ARNs) and AWS Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' in the AWS General Reference.
 #' 
 #' This parameter is optional. However, if you do not pass any session
 #' policies, then the resulting federated user session has no permissions.
-#' The only exception is when the credentials are used to access a resource
-#' that has a resource-based policy that specifically references the
-#' federated user session in the `Principal` element of the policy.
 #' 
 #' When you pass session policies, the session permissions are the
 #' intersection of the IAM user policies and the session policies that you
@@ -1064,11 +1368,19 @@ sts_get_caller_identity <- function() {
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session)
 #' in the *IAM User Guide*.
 #' 
-#' The characters in this parameter count towards the 2048 character
-#' session policy guideline. However, an AWS conversion compresses the
-#' session policies into a packed binary format that has a separate limit.
-#' This is the enforced limit. The `PackedPolicySize` response element
-#' indicates by percentage how close the policy is to the upper size limit.
+#' The resulting credentials can be used to access a resource that has a
+#' resource-based policy. If that policy specifically references the
+#' federated user session in the `Principal` element of the policy, the
+#' session has the permissions allowed by the policy. These permissions are
+#' granted in addition to the permissions that are granted by the session
+#' policies.
+#' 
+#' An AWS conversion compresses the passed session policies and session
+#' tags into a packed binary format that has a separate limit. Your request
+#' can fail for this limit even if your plain text meets the other
+#' requirements. The `PackedPolicySize` response element indicates by
+#' percentage how close the policies and tags for your request are to the
+#' upper size limit.
 #' @param DurationSeconds The duration, in seconds, that the session should last. Acceptable
 #' durations for federation sessions range from 900 seconds (15 minutes) to
 #' 129,600 seconds (36 hours), with 43,200 seconds (12 hours) as the
@@ -1076,6 +1388,36 @@ sts_get_caller_identity <- function() {
 #' restricted to a maximum of 3,600 seconds (one hour). If the specified
 #' duration is longer than one hour, the session obtained by using root
 #' user credentials defaults to one hour.
+#' @param Tags A list of session tags. Each session tag consists of a key name and an
+#' associated value. For more information about session tags, see [Passing
+#' Session Tags in
+#' STS](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html)
+#' in the *IAM User Guide*.
+#' 
+#' This parameter is optional. You can pass up to 50 session tags. The
+#' plain text session tag keys can't exceed 128 characters and the values
+#' can't exceed 256 characters. For these and additional limits, see [IAM
+#' and STS Character
+#' Limits](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html#reference_iam-limits-entity-length)
+#' in the *IAM User Guide*.
+#' 
+#' An AWS conversion compresses the passed session policies and session
+#' tags into a packed binary format that has a separate limit. Your request
+#' can fail for this limit even if your plain text meets the other
+#' requirements. The `PackedPolicySize` response element indicates by
+#' percentage how close the policies and tags for your request are to the
+#' upper size limit.
+#' 
+#' You can pass a session tag with the same key as a tag that is already
+#' attached to the user you are federating. When you do, session tags
+#' override a user tag with the same key.
+#' 
+#' Tag key--value pairs are not case sensitive, but case is preserved. This
+#' means that you cannot have separate `Department` and `department` tag
+#' keys. Assume that the role has the `Department`=`Marketing` tag and you
+#' pass the `department`=`engineering` session tag. `Department` and
+#' `department` are not saved as separate tags, and the session tag passed
+#' in the request takes precedence over the role tag.
 #'
 #' @section Request syntax:
 #' ```
@@ -1087,7 +1429,13 @@ sts_get_caller_identity <- function() {
 #'       arn = "string"
 #'     )
 #'   ),
-#'   DurationSeconds = 123
+#'   DurationSeconds = 123,
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1095,21 +1443,31 @@ sts_get_caller_identity <- function() {
 #' # 
 #' \donttest{svc$get_federation_token(
 #'   DurationSeconds = 3600L,
-#'   Name = "Bob",
-#'   Policy = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"Stmt1\",\"Effect\":..."
+#'   Name = "testFedUserSession",
+#'   Policy = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"Stmt1\",\"Effect\":...",
+#'   Tags = list(
+#'     list(
+#'       Key = "Project",
+#'       Value = "Pegasus"
+#'     ),
+#'     list(
+#'       Key = "Cost-Center",
+#'       Value = "98765"
+#'     )
+#'   )
 #' )}
 #'
 #' @keywords internal
 #'
 #' @rdname sts_get_federation_token
-sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, DurationSeconds = NULL) {
+sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, DurationSeconds = NULL, Tags = NULL) {
   op <- new_operation(
     name = "GetFederationToken",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sts$get_federation_token_input(Name = Name, Policy = Policy, PolicyArns = PolicyArns, DurationSeconds = DurationSeconds)
+  input <- .sts$get_federation_token_input(Name = Name, Policy = Policy, PolicyArns = PolicyArns, DurationSeconds = DurationSeconds, Tags = Tags)
   output <- .sts$get_federation_token_output()
   config <- get_config()
   svc <- .sts$service(config)
@@ -1138,6 +1496,8 @@ sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, Dur
 #' operations](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison)
 #' in the *IAM User Guide*.
 #' 
+#' **Session Duration**
+#' 
 #' The `GetSessionToken` operation must be called by using the long-term
 #' AWS security credentials of the AWS account root user or an IAM user.
 #' Credentials that are created by IAM users are valid for the duration
@@ -1146,6 +1506,8 @@ sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, Dur
 #' seconds (12 hours). Credentials based on account credentials can range
 #' from 900 seconds (15 minutes) up to 3,600 seconds (1 hour), with a
 #' default of 1 hour.
+#' 
+#' **Permissions**
 #' 
 #' The temporary security credentials created by `GetSessionToken` can be
 #' used to make API calls to any AWS service with the following exceptions:

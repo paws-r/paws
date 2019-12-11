@@ -13,8 +13,8 @@ ec2_describe_vpn_connections(Filters, VpnConnectionIds, DryRun)
 the customer gateway.
 \item \code{customer-gateway-id} - The ID of a customer gateway associated with
 the VPN connection.
-\item \code{state} - The state of the VPN connection (\code{pending} \| \code{available}
-\| \code{deleting} \| \code{deleted}).
+\item \code{state} - The state of the VPN connection (\code{pending} \\| \code{available}
+\\| \code{deleting} \\| \code{deleted}).
 \item \code{option.static-routes-only} - Indicates whether the connection has
 static routes only. Used for devices that do not support Border
 Gateway Protocol (BGP).
@@ -22,7 +22,7 @@ Gateway Protocol (BGP).
 corresponds to the subnet used in a customer data center.
 \item \code{bgp-asn} - The BGP Autonomous System Number (ASN) associated with a
 BGP device.
-\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+\item \code{tag}:\\<key\\> - The key/value combination of a tag assigned to the
 resource. Use the tag key in the filter name and the tag value as
 the filter value. For example, to find all resources that have a tag
 with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
@@ -35,6 +35,8 @@ type is \code{ipsec.1}.
 \item \code{vpn-connection-id} - The ID of the VPN connection.
 \item \code{vpn-gateway-id} - The ID of a virtual private gateway associated
 with the VPN connection.
+\item \code{transit-gateway-id} - The ID of a transit gateway associated with
+the VPN connection.
 }}
 
 \item{VpnConnectionIds}{One or more VPN connection IDs.

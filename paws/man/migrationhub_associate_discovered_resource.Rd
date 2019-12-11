@@ -3,7 +3,7 @@
 \name{migrationhub_associate_discovered_resource}
 \alias{migrationhub_associate_discovered_resource}
 \title{Associates a discovered resource ID from Application Discovery Service
-(ADS) with a migration task}
+with a migration task}
 \usage{
 migrationhub_associate_discovered_resource(ProgressUpdateStream,
   MigrationTaskName, DiscoveredResource, DryRun)
@@ -11,7 +11,8 @@ migrationhub_associate_discovered_resource(ProgressUpdateStream,
 \arguments{
 \item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream.}
 
-\item{MigrationTaskName}{[required] The identifier given to the MigrationTask.}
+\item{MigrationTaskName}{[required] The identifier given to the MigrationTask. \emph{Do not store personal data
+in this field.}}
 
 \item{DiscoveredResource}{[required] Object representing a Resource.}
 
@@ -20,7 +21,7 @@ Used to test if the caller has permission to make the call.}
 }
 \description{
 Associates a discovered resource ID from Application Discovery Service
-(ADS) with a migration task.
+with a migration task.
 }
 \section{Request syntax}{
 \preformatted{svc$associate_discovered_resource(

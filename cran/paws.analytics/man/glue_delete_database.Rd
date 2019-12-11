@@ -2,30 +2,30 @@
 % Please edit documentation in R/glue_operations.R
 \name{glue_delete_database}
 \alias{glue_delete_database}
-\title{Removes a specified Database from a Data Catalog}
+\title{Removes a specified database from a Data Catalog}
 \usage{
 glue_delete_database(CatalogId, Name)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog in which the database resides. If none is
-supplied, the AWS account ID is used by default.}
+provided, the AWS account ID is used by default.}
 
-\item{Name}{[required] The name of the Database to delete. For Hive compatibility, this must be
+\item{Name}{[required] The name of the database to delete. For Hive compatibility, this must be
 all lowercase.}
 }
 \description{
-Removes a specified Database from a Data Catalog.
+Removes a specified database from a Data Catalog.
 }
 \details{
-After completing this operation, you will no longer have access to the
-tables (and all table versions and partitions that might belong to the
-tables) and the user-defined functions in the deleted database. AWS Glue
-deletes these "orphaned" resources asynchronously in a timely manner,
-at the discretion of the service.
+After completing this operation, you no longer have access to the tables
+(and all table versions and partitions that might belong to the tables)
+and the user-defined functions in the deleted database. AWS Glue deletes
+these \"orphaned\" resources asynchronously in a timely manner, at the
+discretion of the service.
 
-To ensure immediate deletion of all related resources, before calling
-\code{DeleteDatabase}, use \code{DeleteTableVersion} or \code{BatchDeleteTableVersion},
-\code{DeletePartition} or \code{BatchDeletePartition},
+To ensure the immediate deletion of all related resources, before
+calling \code{DeleteDatabase}, use \code{DeleteTableVersion} or
+\code{BatchDeleteTableVersion}, \code{DeletePartition} or \code{BatchDeletePartition},
 \code{DeleteUserDefinedFunction}, and \code{DeleteTable} or \code{BatchDeleteTable}, to
 delete any resources that belong to the database.
 }

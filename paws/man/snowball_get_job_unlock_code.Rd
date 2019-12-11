@@ -8,7 +8,7 @@ snowball_get_job_unlock_code(JobId)
 }
 \arguments{
 \item{JobId}{[required] The ID for the job that you want to get the \code{UnlockCode} value for, for
-example \code{JID123e4567-e89b-12d3-a456-426655440000}.}
+example \verb{JID123e4567-e89b-12d3-a456-426655440000}.}
 }
 \description{
 Returns the \code{UnlockCode} code value for the specified job. A particular
@@ -21,7 +21,7 @@ characters and 4 hyphens. This code is used to decrypt the manifest file
 when it is passed along with the manifest to the Snowball through the
 Snowball client when the client is started for the first time.
 
-As a best practice, we recommend that you don't save a copy of the
+As a best practice, we recommend that you don\'t save a copy of the
 \code{UnlockCode} in the same location as the manifest file for that job.
 Saving these separately helps prevent unauthorized parties from gaining
 access to the Snowball associated with that job.

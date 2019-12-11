@@ -40,7 +40,7 @@ Default: Uses existing setting
 
 Format: ddd:hh24:mi-ddd:hh24:mi
 
-Valid Days: Mon \| Tue \| Wed \| Thu \| Fri \| Sat \| Sun
+Valid Days: Mon \\| Tue \\| Wed \\| Thu \\| Fri \\| Sat \\| Sun
 
 Constraints: Must be at least 30 minutes}
 
@@ -56,7 +56,7 @@ applied as soon as possible.
 
 This parameter must be set to \code{true} when specifying a value for the
 \code{EngineVersion} parameter that is a different major version than the
-replication instance's current version.}
+replication instance\'s current version.}
 
 \item{AutoMinorVersionUpgrade}{Indicates that minor version upgrades will be applied automatically to
 the replication instance during the maintenance window. Changing this

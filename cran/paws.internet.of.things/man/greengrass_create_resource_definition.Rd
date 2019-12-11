@@ -15,7 +15,7 @@ greengrass_create_resource_definition(AmznClientToken, InitialVersion,
 
 \item{Name}{The name of the resource definition.}
 
-\item{tags}{Tag(s) to add to the new resource}
+\item{tags}{Tag(s) to add to the new resource.}
 }
 \description{
 Creates a resource definition which contains a list of resources to be used in a group. You can create an initial version of the definition by providing a list of resources now, or use ''CreateResourceDefinitionVersion'' later.
@@ -46,10 +46,18 @@ Creates a resource definition which contains a list of resources to be used in a
           ),
           S3MachineLearningModelResourceData = list(
             DestinationPath = "string",
+            OwnerSetting = list(
+              GroupOwner = "string",
+              GroupPermission = "ro"|"rw"
+            ),
             S3Uri = "string"
           ),
           SageMakerMachineLearningModelResourceData = list(
             DestinationPath = "string",
+            OwnerSetting = list(
+              GroupOwner = "string",
+              GroupPermission = "ro"|"rw"
+            ),
             SageMakerJobArn = "string"
           ),
           SecretsManagerSecretResourceData = list(

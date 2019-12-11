@@ -2,25 +2,17 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_describe_user_hierarchy_group}
 \alias{connect_describe_user_hierarchy_group}
-\title{Returns a HierarchyGroup object that includes information about a
-hierarchy group in your instance}
+\title{Describes the specified hierarchy group}
 \usage{
 connect_describe_user_hierarchy_group(HierarchyGroupId, InstanceId)
 }
 \arguments{
-\item{HierarchyGroupId}{[required] The identifier for the hierarchy group to return.}
+\item{HierarchyGroupId}{[required] The identifier of the hierarchy group.}
 
-\item{InstanceId}{[required] The identifier for your Amazon Connect instance. To find the ID of your
-instance, open the AWS console and select Amazon Connect. Select the
-alias of the instance in the Instance alias column. The instance ID is
-displayed in the Overview section of your instance settings. For
-example, the instance ID is the set of characters at the end of the
-instance ARN, after instance/, such as
-10a4c4eb-f57e-4d4c-b602-bf39176ced07.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 }
 \description{
-Returns a \code{HierarchyGroup} object that includes information about a
-hierarchy group in your instance.
+Describes the specified hierarchy group.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_user_hierarchy_group(

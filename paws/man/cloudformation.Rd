@@ -28,7 +28,7 @@ For more information about AWS CloudFormation, see the \href{http://aws.amazon.c
 
 Amazon CloudFormation makes use of other AWS products. If you need
 additional technical information about a specific AWS product, you can
-find the product's technical documentation at
+find the product\'s technical documentation at
 \href{https://docs.aws.amazon.com/}{docs.aws.amazon.com}.
 }
 \section{Service syntax}{
@@ -62,6 +62,7 @@ find the product's technical documentation at
 \link[=cloudformation_delete_stack]{delete_stack} \tab Deletes a specified stack \cr
 \link[=cloudformation_delete_stack_instances]{delete_stack_instances} \tab Deletes stack instances for the specified accounts, in the specified regions \cr
 \link[=cloudformation_delete_stack_set]{delete_stack_set} \tab Deletes a stack set \cr
+\link[=cloudformation_deregister_type]{deregister_type} \tab Removes a type or type version from active use in the CloudFormation registry \cr
 \link[=cloudformation_describe_account_limits]{describe_account_limits} \tab Retrieves your account's AWS CloudFormation limits, such as the maximum number of stacks that you can create in your account \cr
 \link[=cloudformation_describe_change_set]{describe_change_set} \tab Returns the inputs for the change set and a list of changes that AWS CloudFormation will make if you execute the change set \cr
 \link[=cloudformation_describe_stack_drift_detection_status]{describe_stack_drift_detection_status} \tab Returns information about a stack drift detection operation \cr
@@ -73,8 +74,11 @@ find the product's technical documentation at
 \link[=cloudformation_describe_stack_set]{describe_stack_set} \tab Returns the description of the specified stack set \cr
 \link[=cloudformation_describe_stack_set_operation]{describe_stack_set_operation} \tab Returns the description of the specified stack set operation \cr
 \link[=cloudformation_describe_stacks]{describe_stacks} \tab Returns the description for the specified stack; if no stack name was specified, then it returns the description for all the stacks created \cr
+\link[=cloudformation_describe_type]{describe_type} \tab Returns detailed information about a type that has been registered \cr
+\link[=cloudformation_describe_type_registration]{describe_type_registration} \tab Returns information about a type's registration, including its current status and type and version identifiers \cr
 \link[=cloudformation_detect_stack_drift]{detect_stack_drift} \tab Detects whether a stack's actual configuration differs, or has \emph{drifted}, from it's expected configuration, as defined in the stack template and any values specified as template parameters \cr
 \link[=cloudformation_detect_stack_resource_drift]{detect_stack_resource_drift} \tab Returns information about whether a resource's actual configuration differs, or has \emph{drifted}, from it's expected configuration, as defined in the stack template and any values specified as template parameters\cr
+\link[=cloudformation_detect_stack_set_drift]{detect_stack_set_drift} \tab Detect drift on a stack set \cr
 \link[=cloudformation_estimate_template_cost]{estimate_template_cost} \tab Returns the estimated monthly cost of a template \cr
 \link[=cloudformation_execute_change_set]{execute_change_set} \tab Updates a stack using the input information that was provided when the specified change set was created \cr
 \link[=cloudformation_get_stack_policy]{get_stack_policy} \tab Returns the stack policy for a specified stack \cr
@@ -89,7 +93,13 @@ find the product's technical documentation at
 \link[=cloudformation_list_stack_set_operations]{list_stack_set_operations} \tab Returns summary information about operations performed on a stack set \cr
 \link[=cloudformation_list_stack_sets]{list_stack_sets} \tab Returns summary information about stack sets that are associated with the user \cr
 \link[=cloudformation_list_stacks]{list_stacks} \tab Returns the summary information for stacks whose status matches the specified StackStatusFilter \cr
+\link[=cloudformation_list_type_registrations]{list_type_registrations} \tab Returns a list of registration tokens for the specified type \cr
+\link[=cloudformation_list_type_versions]{list_type_versions} \tab Returns summary information about the versions of a type \cr
+\link[=cloudformation_list_types]{list_types} \tab Returns summary information about types that have been registered with CloudFormation \cr
+\link[=cloudformation_record_handler_progress]{record_handler_progress} \tab Reports progress of a resource handler to CloudFormation \cr
+\link[=cloudformation_register_type]{register_type} \tab Registers a type with the CloudFormation service \cr
 \link[=cloudformation_set_stack_policy]{set_stack_policy} \tab Sets a stack policy for a specified stack \cr
+\link[=cloudformation_set_type_default_version]{set_type_default_version} \tab Specify the default version of a type \cr
 \link[=cloudformation_signal_resource]{signal_resource} \tab Sends a signal to the specified resource with a success or failure status \cr
 \link[=cloudformation_stop_stack_set_operation]{stop_stack_set_operation} \tab Stops an in-progress operation on a stack set and its associated stack instances \cr
 \link[=cloudformation_update_stack]{update_stack} \tab Updates a stack as specified in the template \cr

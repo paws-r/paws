@@ -10,7 +10,7 @@ sagemaker_delete_workteam(WorkteamName)
 \item{WorkteamName}{[required] The name of the work team to delete.}
 }
 \description{
-Deletes an existing work team. This operation can't be undone.
+Deletes an existing work team. This operation can\'t be undone.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_workteam(

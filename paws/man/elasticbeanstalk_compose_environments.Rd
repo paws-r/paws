@@ -14,7 +14,7 @@ belong.}
 
 \item{GroupName}{The name of the group to which the target environments belong. Specify a
 group name only if the environment name defined in each target
-environment's manifest ends with a + (plus) character. See \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html}{Environment Manifest (env.yaml)}
+environment\'s manifest ends with a + (plus) character. See \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html}{Environment Manifest (env.yaml)}
 for details.}
 
 \item{VersionLabels}{A list of version labels, specifying one or more application source

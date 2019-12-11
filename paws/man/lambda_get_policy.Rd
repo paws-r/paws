@@ -11,11 +11,11 @@ lambda_get_policy(FunctionName, Qualifier)
 
 \strong{Name formats}
 \itemize{
-\item \strong{Function name} - \code{my-function} (name-only), \code{my-function:v1}
+\item \strong{Function name} - \verb{my-function} (name-only), \verb{my-function:v1}
 (with alias).
 \item \strong{Function ARN} -
-\code{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
-\item \strong{Partial ARN} - \code{123456789012:function:my-function}.
+\verb{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
+\item \strong{Partial ARN} - \verb{123456789012:function:my-function}.
 }
 
 You can append a version number or alias to any of the formats. The

@@ -22,13 +22,13 @@ resources that it depends on.
 \item{mergeStrategy}{[required] Specifies the action that the \code{StartImport} operation should take when
 there is an existing resource with the same name.
 \itemize{
-\item FAIL\_ON\_CONFLICT - The import operation is stopped on the first
+\item FAIL\\_ON\\_CONFLICT - The import operation is stopped on the first
 conflict between a resource in the import file and an existing
 resource. The name of the resource causing the conflict is in the
 \code{failureReason} field of the response to the \code{GetImport} operation.
 
-OVERWRITE\_LATEST - The import operation proceeds even if there is a
-conflict with an existing resource. The \$LASTEST version of the
+OVERWRITE\\_LATEST - The import operation proceeds even if there is a
+conflict with an existing resource. The \\$LASTEST version of the
 existing resource is overwritten with the data from the import file.
 }}
 }

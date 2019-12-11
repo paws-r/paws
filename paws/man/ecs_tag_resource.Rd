@@ -9,12 +9,30 @@ ecs_tag_resource(resourceArn, tags)
 }
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource to which to add tags.
-Currently, the supported resources are Amazon ECS tasks, services, task
-definitions, clusters, and container instances.}
+Currently, the supported resources are Amazon ECS capacity providers,
+tasks, services, task definitions, clusters, and container instances.}
 
 \item{tags}{[required] The tags to add to the resource. A tag is an array of key-value pairs.
-Tag keys can have a maximum character length of 128 characters, and tag
-values can have a maximum length of 256 characters.}
+
+The following basic restrictions apply to tags:
+\itemize{
+\item Maximum number of tags per resource - 50
+\item For each resource, each tag key must be unique, and each tag key can
+have only one value.
+\item Maximum key length - 128 Unicode characters in UTF-8
+\item Maximum value length - 256 Unicode characters in UTF-8
+\item If your tagging schema is used across multiple services and
+resources, remember that other services may have restrictions on
+allowed characters. Generally allowed characters are: letters,
+numbers, and spaces representable in UTF-8, and the following
+characters: + - = . \\_ : / @.
+\item Tag keys and values are case-sensitive.
+\item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
+such as a prefix for either keys or values as it is reserved for AWS
+use. You cannot edit or delete tag keys or values with this prefix.
+Tags with this prefix do not count against your tags per resource
+limit.
+}}
 }
 \description{
 Associates the specified tags to a resource with the specified

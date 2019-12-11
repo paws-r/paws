@@ -4,11 +4,20 @@
 \alias{cloudwatchlogs_start_query}
 \title{Schedules a query of a log group using CloudWatch Logs Insights}
 \usage{
-cloudwatchlogs_start_query(logGroupName, startTime, endTime,
-  queryString, limit)
+cloudwatchlogs_start_query(logGroupName, logGroupNames, startTime,
+  endTime, queryString, limit)
 }
 \arguments{
-\item{logGroupName}{[required] The log group on which to perform the query.}
+\item{logGroupName}{The log group on which to perform the query.
+
+A \code{StartQuery} operation must include a \code{logGroupNames} or a
+\code{logGroupName} parameter, but not both.}
+
+\item{logGroupNames}{The list of log groups to be queried. You can include up to 20 log
+groups.
+
+A \code{StartQuery} operation must include a \code{logGroupNames} or a
+\code{logGroupName} parameter, but not both.}
 
 \item{startTime}{[required] The beginning of the time range to query. The range is inclusive, so the
 specified start time is included in the query. Specified as epoch time,
@@ -22,7 +31,7 @@ the number of seconds since January 1, 1970, 00:00:00 UTC.}
 
 \item{limit}{The maximum number of log events to return in the query. If the query
 string uses the \code{fields} command, only the specified fields and their
-values are returned.}
+values are returned. The default is 1000.}
 }
 \description{
 Schedules a query of a log group using CloudWatch Logs Insights. You
@@ -39,6 +48,9 @@ query into a number of queries.
 \section{Request syntax}{
 \preformatted{svc$start_query(
   logGroupName = "string",
+  logGroupNames = list(
+    "string"
+  ),
   startTime = 123,
   endTime = 123,
   queryString = "string",

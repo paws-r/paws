@@ -14,7 +14,7 @@ indicates that not all entries have been returned, and that you must run
 at least one more request to get remaining items. To get remaining
 results, call \code{DescribeEvents} again, and assign the token from the
 previous results as the value of the \code{nextToken} parameter. If there are
-no more results, the response object's \code{nextToken} parameter value is
+no more results, the response object\'s \code{nextToken} parameter value is
 \code{null}. Setting a \code{nextToken} value that was not returned in your
 previous results causes an \code{InvalidNextTokenException} to occur.}
 

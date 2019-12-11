@@ -2,15 +2,15 @@
 % Please edit documentation in R/licensemanager_operations.R
 \name{licensemanager_get_license_configuration}
 \alias{licensemanager_get_license_configuration}
-\title{Returns a detailed description of a license configuration}
+\title{Gets detailed information about the specified license configuration}
 \usage{
 licensemanager_get_license_configuration(LicenseConfigurationArn)
 }
 \arguments{
-\item{LicenseConfigurationArn}{[required] ARN of the license configuration being requested.}
+\item{LicenseConfigurationArn}{[required] Amazon Resource Name (ARN) of the license configuration.}
 }
 \description{
-Returns a detailed description of a license configuration.
+Gets detailed information about the specified license configuration.
 }
 \section{Request syntax}{
 \preformatted{svc$get_license_configuration(

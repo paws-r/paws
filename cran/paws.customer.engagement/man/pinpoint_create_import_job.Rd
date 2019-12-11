@@ -2,7 +2,7 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_create_import_job}
 \alias{pinpoint_create_import_job}
-\title{Creates a new import job for an application}
+\title{Creates an import job for an application}
 \usage{
 pinpoint_create_import_job(ApplicationId, ImportJobRequest)
 }
@@ -13,7 +13,7 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{ImportJobRequest}{[required]}
 }
 \description{
-Creates a new import job for an application.
+Creates an import job for an application.
 }
 \section{Request syntax}{
 \preformatted{svc$create_import_job(

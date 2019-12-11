@@ -17,6 +17,10 @@ dynamodb_list_global_tables(ExclusiveStartGlobalTableName, Limit,
 \description{
 Lists all global tables that have a replica in the specified Region.
 }
+\details{
+This method only applies to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html}{Version 2017.11.29}
+of global tables.
+}
 \section{Request syntax}{
 \preformatted{svc$list_global_tables(
   ExclusiveStartGlobalTableName = "string",

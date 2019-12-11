@@ -2,13 +2,15 @@
 % Please edit documentation in R/eks_operations.R
 \name{eks_list_updates}
 \alias{eks_list_updates}
-\title{Lists the updates associated with an Amazon EKS cluster in your AWS
-account, in the specified Region}
+\title{Lists the updates associated with an Amazon EKS cluster or managed node
+group in your AWS account, in the specified Region}
 \usage{
-eks_list_updates(name, nextToken, maxResults)
+eks_list_updates(name, nodegroupName, nextToken, maxResults)
 }
 \arguments{
 \item{name}{[required] The name of the Amazon EKS cluster to list updates for.}
+
+\item{nodegroupName}{The name of the Amazon EKS managed node group to list updates for.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated \code{ListUpdates}
 request where \code{maxResults} was used and the results exceeded the value
@@ -20,17 +22,18 @@ paginated output. When you use this parameter, \code{ListUpdates} returns
 only \code{maxResults} results in a single page along with a \code{nextToken}
 response element. You can see the remaining results of the initial
 request by sending another \code{ListUpdates} request with the returned
-\code{nextToken} value. This value can be between 1 and 100. If you don't
+\code{nextToken} value. This value can be between 1 and 100. If you don\'t
 use this parameter, \code{ListUpdates} returns up to 100 results and a
 \code{nextToken} value if applicable.}
 }
 \description{
-Lists the updates associated with an Amazon EKS cluster in your AWS
-account, in the specified Region.
+Lists the updates associated with an Amazon EKS cluster or managed node
+group in your AWS account, in the specified Region.
 }
 \section{Request syntax}{
 \preformatted{svc$list_updates(
   name = "string",
+  nodegroupName = "string",
   nextToken = "string",
   maxResults = 123
 )

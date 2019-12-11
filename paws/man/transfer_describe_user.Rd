@@ -12,8 +12,8 @@ transfer_describe_user(ServerId, UserName)
 user assigned.}
 
 \item{UserName}{[required] The name of the user assigned to one or more servers. User names are
-part of the sign-in credentials to use the AWS Transfer service and
-perform file transfer tasks.}
+part of the sign-in credentials to use the AWS Transfer for SFTP service
+and perform file transfer tasks.}
 }
 \description{
 Describes the user assigned to a specific server, as identified by its

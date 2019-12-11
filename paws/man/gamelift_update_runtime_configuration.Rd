@@ -23,7 +23,7 @@ configuration with at least one server process configuration.}
 \description{
 Updates the current run-time configuration for the specified fleet,
 which tells Amazon GameLift how to launch server processes on instances
-in the fleet. You can update a fleet's run-time configuration at any
+in the fleet. You can update a fleet\'s run-time configuration at any
 time after the fleet is created; it does not need to be in an \code{ACTIVE}
 status.
 }
@@ -37,7 +37,7 @@ run-time configuration and changes how it launches server processes to
 comply with the latest version. Existing server processes are not
 affected by the update; run-time configuration changes are applied
 gradually as existing processes shut down and new processes are launched
-during Amazon GameLift's normal process recycling activity.
+during Amazon GameLift\'s normal process recycling activity.
 
 \strong{Learn more}
 
@@ -49,6 +49,7 @@ during Amazon GameLift's normal process recycling activity.
 \item ListFleets
 \item DeleteFleet
 \item Describe fleets:
+\itemize{
 \item DescribeFleetAttributes
 \item DescribeFleetCapacity
 \item DescribeFleetPortSettings
@@ -56,14 +57,19 @@ during Amazon GameLift's normal process recycling activity.
 \item DescribeRuntimeConfiguration
 \item DescribeEC2InstanceLimits
 \item DescribeFleetEvents
+}
 \item Update fleets:
+\itemize{
 \item UpdateFleetAttributes
 \item UpdateFleetCapacity
 \item UpdateFleetPortSettings
 \item UpdateRuntimeConfiguration
+}
 \item Manage fleet actions:
+\itemize{
 \item StartFleetActions
 \item StopFleetActions
+}
 }
 }
 \section{Request syntax}{

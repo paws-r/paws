@@ -18,7 +18,8 @@ kafka_update_broker_storage(ClusterArn, CurrentVersion,
 <p>Describes the target volume size and the ID of the broker to apply the update to.</p>}
 }
 \description{
-<p>Updates the EBS storage associated with MSK brokers.</p>
+\preformatted{        <p>Updates the EBS storage associated with MSK brokers.</p>
+}
 }
 \section{Request syntax}{
 \preformatted{svc$update_broker_storage(

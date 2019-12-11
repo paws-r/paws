@@ -33,18 +33,16 @@ For example, consider the following patterns:
 \itemize{
 \item \code{Resources: "arn:aws:ec2:region:account-id:volume/volume-id"}
 \item \code{ConditionKey:"department"}
-}
 
 \code{ConditionValue:"finance"}
 
 \code{ConditionType:"StringEquals"}
-\itemize{
 \item \code{ConditionKey:"importance"}
-}
 
 \code{ConditionValue:"critical"}
 
 \code{ConditionType:"StringEquals"}
+}
 
 Using these patterns would back up all Amazon Elastic Block Store
 (Amazon EBS) volumes that are tagged as \code{"department=finance"},
@@ -52,9 +50,9 @@ Using these patterns would back up all Amazon Elastic Block Store
 volume Id.
 
 Resources and conditions are additive in that all resources that match
-the pattern are selected. This shouldn't be confused with a logical
+the pattern are selected. This shouldn\'t be confused with a logical
 AND, where all conditions must match. The matching patterns are
-logically 'put together using the OR operator. In other words, all
+logically \'put together using the OR operator. In other words, all
 patterns that match are selected for backup.
 }
 \section{Request syntax}{

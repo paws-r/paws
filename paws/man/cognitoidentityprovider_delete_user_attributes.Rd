@@ -11,7 +11,7 @@ cognitoidentityprovider_delete_user_attributes(UserAttributeNames,
 \item{UserAttributeNames}{[required] An array of strings representing the user attribute names you wish to
 delete.
 
-For custom attributes, you must prepend the \code{custom:} prefix to the
+For custom attributes, you must prepend the \verb{custom:} prefix to the
 attribute name.}
 
 \item{AccessToken}{[required] The access token used in the request to delete user attributes.}

@@ -17,7 +17,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Starts an Amazon EBS-backed instance that you've previously stopped.
+Starts an Amazon EBS-backed instance that you\'ve previously stopped.
 }
 \details{
 Instances that use Amazon EBS volumes as their root devices can be

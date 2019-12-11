@@ -31,6 +31,10 @@ refresh token.
 PASSWORD are passed directly. If a user migration Lambda trigger is
 set, this flow will invoke the user migration Lambda if the USERNAME
 is not found in the user pool.
+\item \code{ADMIN_USER_PASSWORD_AUTH}: Admin-based user password
+authentication. This replaces the \code{ADMIN_NO_SRP_AUTH} authentication
+flow. In this flow, Cognito receives the password in the request
+instead of using the SRP process to verify passwords.
 }
 
 \code{ADMIN_NO_SRP_AUTH} is not a valid value.}
@@ -49,16 +53,61 @@ client secret), \code{DEVICE_KEY}
 client is configured with client secret), \code{DEVICE_KEY}
 }}
 
-\item{ClientMetadata}{This is a random key-value pair map which can contain any key and will
-be passed to your PreAuthentication Lambda trigger as-is. It can be used
-to implement additional validations around authentication.}
+\item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for
+certain custom workflows that this action triggers.
+
+You create custom workflows by assigning AWS Lambda functions to user
+pool triggers. When you use the InitiateAuth API action, Amazon Cognito
+invokes the AWS Lambda functions that are specified for various
+triggers. The ClientMetadata value is passed as input to the functions
+for only the following triggers:
+\itemize{
+\item Pre signup
+\item Pre authentication
+\item User migration
+}
+
+When Amazon Cognito invokes the functions for these triggers, it passes
+a JSON payload, which the function receives as input. This payload
+contains a \code{validationData} attribute, which provides the data that you
+assigned to the ClientMetadata parameter in your InitiateAuth request.
+In your function code in AWS Lambda, you can process the
+\code{validationData} value to enhance your workflow for your specific needs.
+
+When you use the InitiateAuth API action, Amazon Cognito also invokes
+the functions for the following triggers, but it does not provide the
+ClientMetadata value as input:
+\itemize{
+\item Post authentication
+\item Custom message
+\item Pre token generation
+\item Create auth challenge
+\item Define auth challenge
+\item Verify auth challenge
+}
+
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html}{Customizing User Pool Workflows with Lambda Triggers}
+in the \emph{Amazon Cognito Developer Guide}.
+
+Take the following limitations into consideration when you use the
+ClientMetadata parameter:
+\itemize{
+\item Amazon Cognito does not store the ClientMetadata value. This data is
+available only to AWS Lambda triggers that are assigned to a user
+pool to support custom workflows. If your user pool configuration
+does not include triggers, the ClientMetadata parameter serves no
+purpose.
+\item Amazon Cognito does not validate the ClientMetadata value.
+\item Amazon Cognito does not encrypt the the ClientMetadata value, so
+don\'t use it to provide sensitive information.
+}}
 
 \item{ClientId}{[required] The app client ID.}
 
 \item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for
 \code{InitiateAuth} calls.}
 
-\item{UserContextData}{Contextual data such as the user's device fingerprint, IP address, or
+\item{UserContextData}{Contextual data such as the user\'s device fingerprint, IP address, or
 location used for evaluating the risk of an unexpected event by Amazon
 Cognito advanced security.}
 }
@@ -67,7 +116,7 @@ Initiates the authentication flow.
 }
 \section{Request syntax}{
 \preformatted{svc$initiate_auth(
-  AuthFlow = "USER_SRP_AUTH"|"REFRESH_TOKEN_AUTH"|"REFRESH_TOKEN"|"CUSTOM_AUTH"|"ADMIN_NO_SRP_AUTH"|"USER_PASSWORD_AUTH",
+  AuthFlow = "USER_SRP_AUTH"|"REFRESH_TOKEN_AUTH"|"REFRESH_TOKEN"|"CUSTOM_AUTH"|"ADMIN_NO_SRP_AUTH"|"USER_PASSWORD_AUTH"|"ADMIN_USER_PASSWORD_AUTH",
   AuthParameters = list(
     "string"
   ),

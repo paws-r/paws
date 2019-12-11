@@ -23,7 +23,7 @@ value that you can use to get another batch of member account IDs.}
 }
 \description{
 Returns a \code{MemberAccounts} object that lists the member accounts in the
-administrator's AWS organization.
+administrator\'s AWS organization.
 }
 \details{
 The \code{ListMemberAccounts} must be submitted by the account that is set as

@@ -11,9 +11,9 @@ comprehend_detect_syntax(Text, LanguageCode)
 encoded characters.}
 
 \item{LanguageCode}{[required] The language code of the input documents. You can specify any of the
-primary languages supported by Amazon Comprehend: German ("de"),
-English ("en"), Spanish ("es"), French ("fr"), Italian ("it"),
-or Portuguese ("pt").}
+following languages supported by Amazon Comprehend: German (\"de\"),
+English (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"),
+or Portuguese (\"pt\").}
 }
 \description{
 Inspects text for syntax and the part of speech of words in the

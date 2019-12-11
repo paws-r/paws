@@ -9,11 +9,11 @@ lightsail_get_cloud_formation_stack_records(pageToken)
 }
 \arguments{
 \item{pageToken}{A token used for advancing to a specific page of results for your
-\code{get cloud formation stack records} request.}
+\verb{get cloud formation stack records} request.}
 }
 \description{
 Returns the CloudFormation stack record created as a result of the
-\code{create cloud formation stack} operation.
+\verb{create cloud formation stack} operation.
 }
 \details{
 An AWS CloudFormation stack is used to create a new Amazon EC2 instance

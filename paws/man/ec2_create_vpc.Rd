@@ -5,11 +5,11 @@
 \title{Creates a VPC with the specified IPv4 CIDR block}
 \usage{
 ec2_create_vpc(CidrBlock, AmazonProvidedIpv6CidrBlock, DryRun,
-  InstanceTenancy)
+  InstanceTenancy, Ipv6CidrBlockNetworkBorderGroup)
 }
 \arguments{
 \item{CidrBlock}{[required] The IPv4 network range for the VPC, in CIDR notation. For example,
-\code{10.0.0.0/16}.}
+\verb{10.0.0.0/16}.}
 
 \item{AmazonProvidedIpv6CidrBlock}{Requests an Amazon-provided IPv6 CIDR block with a /56 prefix length for
 the VPC. You cannot specify the range of IP addresses, or the size of
@@ -31,6 +31,12 @@ dedicated tenancy VPC.
 the \code{default} or \code{dedicated} values only.
 
 Default: \code{default}}
+
+\item{Ipv6CidrBlockNetworkBorderGroup}{The name of the location from which we advertise the IPV6 CIDR block.
+Use this parameter to limit the address to this location.
+
+You must set \code{AmazonProvidedIpv6CidrBlock} to \code{true} to use this
+parameter.}
 }
 \description{
 Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you
@@ -42,7 +48,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 \details{
 You can optionally request an Amazon-provided IPv6 CIDR block for the
 VPC. The IPv6 CIDR block uses a /56 prefix length, and is allocated from
-Amazon's pool of IPv6 addresses. You cannot choose the IPv6 range for
+Amazon\'s pool of IPv6 addresses. You cannot choose the IPv6 range for
 your VPC.
 
 By default, each instance you launch in the VPC has the default DHCP
@@ -51,7 +57,7 @@ options, which include only a default DNS server that we provide
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 
 You can specify the instance tenancy value for the VPC when you create
-it. You can't change this value for the VPC after you create it. For
+it. You can\'t change this value for the VPC after you create it. For
 more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html}{Dedicated Instances}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
@@ -60,7 +66,8 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   CidrBlock = "string",
   AmazonProvidedIpv6CidrBlock = TRUE|FALSE,
   DryRun = TRUE|FALSE,
-  InstanceTenancy = "default"|"dedicated"|"host"
+  InstanceTenancy = "default"|"dedicated"|"host",
+  Ipv6CidrBlockNetworkBorderGroup = "string"
 )
 }
 }

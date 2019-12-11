@@ -3,10 +3,11 @@
 \name{resourcegroupstaggingapi_get_resources}
 \alias{resourcegroupstaggingapi_get_resources}
 \title{Returns all the tagged or previously tagged resources that are located
-in the specified region for the AWS account}
+in the specified Region for the AWS account}
 \usage{
 resourcegroupstaggingapi_get_resources(PaginationToken, TagFilters,
-  ResourcesPerPage, TagsPerPage, ResourceTypeFilters)
+  ResourcesPerPage, TagsPerPage, ResourceTypeFilters,
+  IncludeComplianceDetails, ExcludeCompliantResources)
 }
 \arguments{
 \item{PaginationToken}{A string that indicates that additional data is available. Leave this
@@ -22,29 +23,29 @@ Note the following when deciding how to use TagFilters:
 \itemize{
 \item If you \emph{do} specify a TagFilter, the response returns only those
 resources that are currently associated with the specified tag.
-\item If you \emph{don't} specify a TagFilter, the response includes all
+\item If you \emph{don\'t} specify a TagFilter, the response includes all
 resources that were ever associated with tags. Resources that
-currently don't have associated tags are shown with an empty tag
-set, like this: \code{"Tags": \\[\\]}.
+currently don\'t have associated tags are shown with an empty tag
+set, like this: \verb{"Tags": \\\[\\\]}.
 \item If you specify more than one filter in a single request, the
 response returns only those resources that satisfy all specified
 filters.
 \item If you specify a filter that contains more than one value for a key,
 the response returns resources that match any of the specified
 values for that key.
-\item If you don't specify any values for a key, the response returns
+\item If you don\'t specify any values for a key, the response returns
 resources that are tagged with that key irrespective of the value.
 
-For example, for filters: filter1 = {key1, {value1}}, filter2 =
-{key2, {value2,value3,value4}} , filter3 = {key3}:
+For example, for filters: filter1 = \{key1, \{value1\}\}, filter2 =
+\{key2, \{value2,value3,value4\}\} , filter3 = \{key3\}:
 \itemize{
-\item GetResources( {filter1} ) returns resources tagged with
+\item GetResources( \{filter1\} ) returns resources tagged with
 key1=value1
-\item GetResources( {filter2} ) returns resources tagged with
+\item GetResources( \{filter2\} ) returns resources tagged with
 key2=value2 or key2=value3 or key2=value4
-\item GetResources( {filter3} ) returns resources tagged with any tag
+\item GetResources( \{filter3\} ) returns resources tagged with any tag
 containing key3 as its tag key, irrespective of its value
-\item GetResources( {filter1,filter2,filter3} ) returns resources
+\item GetResources( \{filter1,filter2,filter3\} ) returns resources
 tagged with ( key1=value1) and ( key2=value2 or key2=value3 or
 key2=value4) and (key3, irrespective of the value)
 }
@@ -54,7 +55,9 @@ key2=value4) and (key3, irrespective of the value)
 in paginated output. You can set ResourcesPerPage to a minimum of 1 item
 and the maximum of 100 items.}
 
-\item{TagsPerPage}{A limit that restricts the number of tags (key and value pairs) returned
+\item{TagsPerPage}{AWS recommends using \code{ResourcesPerPage} instead of this parameter.
+
+A limit that restricts the number of tags (key and value pairs) returned
 by GetResources in paginated output. A resource with no tags is counted
 as having one tag (one key and value pair).
 
@@ -64,22 +67,22 @@ pages. If the specified \code{TagsPerPage} would cause such a break, a
 tags. Use that token in another request to get the remaining data. For
 example, if you specify a \code{TagsPerPage} of \code{100} and the account has 22
 resources with 10 tags each (meaning that each resource has 10 key and
-value pairs), the output will consist of 3 pages, with the first page
-displaying the first 10 resources, each with its 10 tags, the second
-page displaying the next 10 resources each with its 10 tags, and the
-third page displaying the remaining 2 resources, each with its 10 tags.
+value pairs), the output will consist of three pages. The first page
+displays the first 10 resources, each with its 10 tags. The second page
+displays the next 10 resources, each with its 10 tags. The third page
+displays the remaining 2 resources, each with its 10 tags.
 
 You can set \code{TagsPerPage} to a minimum of 100 items and the maximum of
 500 items.}
 
 \item{ResourceTypeFilters}{The constraints on the resources that you want returned. The format of
-each resource type is \code{service\\[:resourceType\\]}. For example,
+each resource type is \verb{service\\\[:resourceType\\\]}. For example,
 specifying a resource type of \code{ec2} returns all Amazon EC2 resources
 (which includes EC2 instances). Specifying a resource type of
 \code{ec2:instance} returns only EC2 instances.
 
 The string for each service name and resource type is the same as that
-embedded in a resource's Amazon Resource Name (ARN). Consult the \emph{AWS
+embedded in a resource\'s Amazon Resource Name (ARN). Consult the \emph{AWS
 General Reference} for the following:
 \itemize{
 \item For a list of service name strings, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}.
@@ -90,17 +93,36 @@ General Reference} for the following:
 You can specify multiple resource types by using an array. The array can
 include up to 100 items. Note that the length constraint requirement
 applies to each resource type filter.}
+
+\item{IncludeComplianceDetails}{Specifies whether to include details regarding the compliance with the
+effective tag policy. Set this to \code{true} to determine whether resources
+are compliant with the tag policy and to get details.}
+
+\item{ExcludeCompliantResources}{Specifies whether to exclude resources that are compliant with the tag
+policy. Set this to \code{true} if you are interested in retrieving
+information on noncompliant resources only.
+
+You can use this parameter only if the \code{IncludeComplianceDetails}
+parameter is also set to \code{true}.}
 }
 \description{
 Returns all the tagged or previously tagged resources that are located
-in the specified region for the AWS account. You can optionally specify
-\emph{filters} (tags and resource types) in your request, depending on what
-information you want returned. The response includes all tags that are
-associated with the requested resources.
+in the specified Region for the AWS account.
 }
 \details{
+Depending on what information you want returned, you can also specify
+the following:
+\itemize{
+\item \emph{Filters} that specify what tags and resource types you want
+returned. The response includes all tags that are associated with
+the requested resources.
+\item Information about compliance with the account\'s effective tag
+policy. For more information on tag policies, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{Tag Policies}
+in the \emph{AWS Organizations User Guide.}
+}
+
 You can check the \code{PaginationToken} response parameter to determine if a
-query completed. Queries can occasionally return fewer results on a page
+query is complete. Queries occasionally return fewer results on a page
 than allowed. The \code{PaginationToken} response parameter value is \code{null}
 \emph{only} when there are no more results to display.
 }
@@ -119,7 +141,9 @@ than allowed. The \code{PaginationToken} response parameter value is \code{null}
   TagsPerPage = 123,
   ResourceTypeFilters = list(
     "string"
-  )
+  ),
+  IncludeComplianceDetails = TRUE|FALSE,
+  ExcludeCompliantResources = TRUE|FALSE
 )
 }
 }

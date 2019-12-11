@@ -10,7 +10,7 @@ codecommit_get_commit(repositoryName, commitId)
 \arguments{
 \item{repositoryName}{[required] The name of the repository to which the commit was made.}
 
-\item{commitId}{[required] The commit ID. Commit IDs are the full SHA of the commit.}
+\item{commitId}{[required] The commit ID. Commit IDs are the full SHA ID of the commit.}
 }
 \description{
 Returns information about a commit, including commit message and

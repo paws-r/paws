@@ -21,17 +21,15 @@ Applies one or more tags to the specified resources. Note the following:
 }
 \details{
 \itemize{
-\item Not all resources can have tags. For a list of resources that
-support tagging, see \href{http://docs.aws.amazon.com/ARG/latest/userguide/supported-resources.html}{Supported Resources}
-in the \emph{AWS Resource Groups User Guide}.
-\item Each resource can have up to 50 tags. For other limits, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-restrictions}{Tag Restrictions}
-in the \emph{Amazon EC2 User Guide for Linux Instances}.
-\item You can only tag resources that are located in the specified region
+\item Not all resources can have tags. For a list of services that support
+tagging, see \href{http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html}{this list}.
+\item Each resource can have up to 50 tags. For other limits, see \href{http://docs.aws.amazon.com/general/latest/gr/aws_tagging.html#tag-conventions}{Tag Naming and Usage Conventions}
+in the \emph{AWS General Reference.}
+\item You can only tag resources that are located in the specified Region
 for the AWS account.
 \item To add tags to a resource, you need the necessary permissions for
 the service that the resource belongs to as well as permissions for
-adding tags. For more information, see \href{http://docs.aws.amazon.com/ARG/latest/userguide/obtaining-permissions-for-tagging.html}{Obtaining Permissions for Tagging}
-in the \emph{AWS Resource Groups User Guide}.
+adding tags. For more information, see \href{http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html}{this list}.
 }
 }
 \section{Request syntax}{

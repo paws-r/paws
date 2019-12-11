@@ -17,7 +17,7 @@ nor is it possible to retrieve it using either the \code{GetLexicon} or
 \code{ListLexicon} APIs.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html}{Managing Lexicons}.
+For more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html}{Managing Lexicons}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_lexicon(

@@ -10,7 +10,7 @@ snowball_create_job(JobType, Resources, Description, AddressId,
   Notification, ClusterId, SnowballType, ForwardingAddressId)
 }
 \arguments{
-\item{JobType}{Defines the type of job that you're creating.}
+\item{JobType}{Defines the type of job that you\'re creating.}
 
 \item{Resources}{Defines the Amazon S3 buckets associated with this job.
 
@@ -25,26 +25,26 @@ value, an inclusive \code{EndMarker} value, or both. Ranges are UTF-8 binary
 sorted.}
 
 \item{Description}{Defines an optional description of this specific job, for example
-\code{Important Photos 2016-08-11}.}
+\verb{Important Photos 2016-08-11}.}
 
 \item{AddressId}{The ID for the address that you want the Snowball shipped to.}
 
 \item{KmsKeyARN}{The \code{KmsKeyARN} that you want to associate with this job. \code{KmsKeyARN}s
 are created using the
-\href{http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html}{CreateKey}
+\href{https://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html}{CreateKey}
 AWS Key Management Service (KMS) API action.}
 
 \item{RoleARN}{The \code{RoleARN} that you want to associate with this job. \code{RoleArn}s are
 created using the
-\href{http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html}{CreateRole}
+\href{https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html}{CreateRole}
 AWS Identity and Access Management (IAM) API action.}
 
 \item{SnowballCapacityPreference}{If your job is being created in one of the US regions, you have the
-option of specifying what size Snowball you'd like for this job. In all
+option of specifying what size Snowball you\'d like for this job. In all
 other regions, Snowballs come with 80 TB in storage capacity.}
 
-\item{ShippingOption}{The shipping speed for this job. This speed doesn't dictate how soon
-you'll get the Snowball, rather it represents how quickly the Snowball
+\item{ShippingOption}{The shipping speed for this job. This speed doesn\'t dictate how soon
+you\'ll get the Snowball, rather it represents how quickly the Snowball
 moves to its destination while in transit. Regional shipping speeds are
 as follows:
 \itemize{
@@ -61,12 +61,12 @@ shipping, which typically takes less than a week, one way.
 \item{Notification}{Defines the Amazon Simple Notification Service (Amazon SNS) notification
 settings for this job.}
 
-\item{ClusterId}{The ID of a cluster. If you're creating a job for a node in a cluster,
+\item{ClusterId}{The ID of a cluster. If you\'re creating a job for a node in a cluster,
 you need to provide only this \code{clusterId} value. The other job
 attributes are inherited from the cluster.}
 
-\item{SnowballType}{The type of AWS Snowball device to use for this job. The only supported
-device types for cluster jobs are \code{EDGE}, \code{EDGE_C}, and \code{EDGE_CG}.}
+\item{SnowballType}{The type of AWS Snowball device to use for this job. Currently, the only
+supported device type for cluster jobs is \code{EDGE}.}
 
 \item{ForwardingAddressId}{The forwarding address ID for a job. This field is not supported in most
 regions.}
@@ -75,7 +75,7 @@ regions.}
 Creates a job to import or export data between Amazon S3 and your
 on-premises data center. Your AWS account must have the right trust
 policies and permissions in place to create a job for Snowball. If
-you're creating a job for a node in a cluster, you only need to provide
+you\'re creating a job for a node in a cluster, you only need to provide
 the \code{clusterId} value; the other job attributes are inherited from the
 cluster.
 }

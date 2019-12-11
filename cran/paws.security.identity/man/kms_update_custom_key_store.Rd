@@ -52,7 +52,7 @@ settings.
 \item Use the \strong{NewCustomKeyStoreName} parameter to change the friendly
 name of the custom key store to the value that you specify.
 \item Use the \strong{KeyStorePassword} parameter tell AWS KMS the current
-password of the \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser}{kmsuser crypto user (CU)}
+password of the \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser}{\code{kmsuser} crypto user (CU)}
 in the associated AWS CloudHSM cluster. You can use this parameter
 to \href{https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html#fix-keystore-password}{fix connection failures}
 that occur when AWS KMS cannot log into the associated cluster

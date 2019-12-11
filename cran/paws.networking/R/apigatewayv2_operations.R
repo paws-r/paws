@@ -8,49 +8,95 @@ NULL
 #' Creates an Api resource.
 #'
 #' @usage
-#' apigatewayv2_create_api(ApiKeySelectionExpression, Description,
-#'   DisableSchemaValidation, Name, ProtocolType, RouteSelectionExpression,
-#'   Version, Tags)
+#' apigatewayv2_create_api(ApiKeySelectionExpression, CorsConfiguration,
+#'   CredentialsArn, Description, DisableSchemaValidation, Name,
+#'   ProtocolType, RouteKey, RouteSelectionExpression, Tags, Target, Version)
 #'
-#' @param ApiKeySelectionExpression An API key selection expression. See [API Key Selection
+#' @param ApiKeySelectionExpression An API key selection expression. Supported only for WebSocket APIs. See
+#' [API Key Selection
 #' Expressions](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions).
+#' @param CorsConfiguration A CORS configuration. Supported only for HTTP APIs. See [Configuring
+#' CORS](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html)
+#' for more information.
+#' @param CredentialsArn This property is part of quick create. It specifies the credentials
+#' required for the integration, if any. For a Lambda integration, three
+#' options are available. To specify an IAM Role for API Gateway to assume,
+#' use the role\'s Amazon Resource Name (ARN). To require that the
+#' caller\'s identity be passed through from the request, specify
+#' arn:aws:iam::\*:user/\*. To use resource-based permissions on supported
+#' AWS services, specify null. Currently, this property is not used for
+#' HTTP integrations. Supported only for HTTP APIs.
 #' @param Description The description of the API.
-#' @param DisableSchemaValidation Avoid validating models when creating a deployment.
+#' @param DisableSchemaValidation Avoid validating models when creating a deployment. Supported only for
+#' WebSocket APIs.
 #' @param Name &#91;required&#93; The name of the API.
-#' @param ProtocolType &#91;required&#93; The API protocol: Currently only WEBSOCKET is supported.
-#' @param RouteSelectionExpression &#91;required&#93; The route selection expression for the API.
+#' @param ProtocolType &#91;required&#93; The API protocol.
+#' @param RouteKey This property is part of quick create. If you don\'t specify a routeKey,
+#' a default route of \\$default is created. The \\$default route acts as a
+#' catch-all for any request made to your API, for a particular stage. The
+#' \\$default route key can\'t be modified. You can add routes after
+#' creating the API, and you can update the route keys of additional
+#' routes. Supported only for HTTP APIs.
+#' @param RouteSelectionExpression The route selection expression for the API. For HTTP APIs, the
+#' routeSelectionExpression must be \\$\{request.method\} \\$\{request.path\}. If
+#' not provided, this will be the default for HTTP APIs. This property is
+#' required for WebSocket APIs.
+#' @param Tags The collection of tags. Each tag element is associated with a given
+#' resource.
+#' @param Target This property is part of quick create. Quick create produces an API with
+#' an integration, a default catch-all route, and a default stage which is
+#' configured to automatically deploy changes. For HTTP integrations,
+#' specify a fully qualified URL. For Lambda integrations, specify a
+#' function ARN. The type of the integration will be HTTP\\_PROXY or
+#' AWS\\_PROXY, respectively. Supported only for HTTP APIs.
 #' @param Version A version identifier for the API.
-#' @param Tags The key-value map of strings. The valid character set is
-#' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
-#' start with aws:. The tag value can be up to 256 characters..
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_api(
 #'   ApiKeySelectionExpression = "string",
+#'   CorsConfiguration = list(
+#'     AllowCredentials = TRUE|FALSE,
+#'     AllowHeaders = list(
+#'       "string"
+#'     ),
+#'     AllowMethods = list(
+#'       "string"
+#'     ),
+#'     AllowOrigins = list(
+#'       "string"
+#'     ),
+#'     ExposeHeaders = list(
+#'       "string"
+#'     ),
+#'     MaxAge = 123
+#'   ),
+#'   CredentialsArn = "string",
 #'   Description = "string",
 #'   DisableSchemaValidation = TRUE|FALSE,
 #'   Name = "string",
-#'   ProtocolType = "WEBSOCKET",
+#'   ProtocolType = "WEBSOCKET"|"HTTP",
+#'   RouteKey = "string",
 #'   RouteSelectionExpression = "string",
-#'   Version = "string",
 #'   Tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   Target = "string",
+#'   Version = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_api
-apigatewayv2_create_api <- function(ApiKeySelectionExpression = NULL, Description = NULL, DisableSchemaValidation = NULL, Name, ProtocolType, RouteSelectionExpression, Version = NULL, Tags = NULL) {
+apigatewayv2_create_api <- function(ApiKeySelectionExpression = NULL, CorsConfiguration = NULL, CredentialsArn = NULL, Description = NULL, DisableSchemaValidation = NULL, Name, ProtocolType, RouteKey = NULL, RouteSelectionExpression = NULL, Tags = NULL, Target = NULL, Version = NULL) {
   op <- new_operation(
     name = "CreateApi",
     http_method = "POST",
     http_path = "/v2/apis",
     paginator = list()
   )
-  input <- .apigatewayv2$create_api_input(ApiKeySelectionExpression = ApiKeySelectionExpression, Description = Description, DisableSchemaValidation = DisableSchemaValidation, Name = Name, ProtocolType = ProtocolType, RouteSelectionExpression = RouteSelectionExpression, Version = Version, Tags = Tags)
+  input <- .apigatewayv2$create_api_input(ApiKeySelectionExpression = ApiKeySelectionExpression, CorsConfiguration = CorsConfiguration, CredentialsArn = CredentialsArn, Description = Description, DisableSchemaValidation = DisableSchemaValidation, Name = Name, ProtocolType = ProtocolType, RouteKey = RouteKey, RouteSelectionExpression = RouteSelectionExpression, Tags = Tags, Target = Target, Version = Version)
   output <- .apigatewayv2$create_api_output()
   config <- get_config()
   svc <- .apigatewayv2$service(config)
@@ -68,7 +114,7 @@ apigatewayv2_create_api <- function(ApiKeySelectionExpression = NULL, Descriptio
 #' apigatewayv2_create_api_mapping(ApiId, ApiMappingKey, DomainName, Stage)
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
-#' @param ApiMappingKey 
+#' @param ApiMappingKey The API mapping key.
 #' @param DomainName &#91;required&#93; The domain name.
 #' @param Stage &#91;required&#93; The API stage.
 #'
@@ -109,20 +155,20 @@ apigatewayv2_create_api_mapping <- function(ApiId, ApiMappingKey = NULL, DomainN
 #' @usage
 #' apigatewayv2_create_authorizer(ApiId, AuthorizerCredentialsArn,
 #'   AuthorizerResultTtlInSeconds, AuthorizerType, AuthorizerUri,
-#'   IdentitySource, IdentityValidationExpression, Name, ProviderArns)
+#'   IdentitySource, IdentityValidationExpression, JwtConfiguration, Name)
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param AuthorizerCredentialsArn Specifies the required credentials as an IAM role for API Gateway to
 #' invoke the authorizer. To specify an IAM role for API Gateway to assume,
 #' use the role\'s Amazon Resource Name (ARN). To use resource-based
-#' permissions on the Lambda function, specify null.
-#' @param AuthorizerResultTtlInSeconds The time to live (TTL), in seconds, of cached authorizer results. If it
-#' equals 0, authorization caching is disabled. If it is greater than 0,
-#' API Gateway will cache authorizer responses. If this field is not set,
-#' the default value is 300. The maximum value is 3600, or 1 hour.
-#' @param AuthorizerType &#91;required&#93; The authorizer type. Currently the only valid value is REQUEST, for a
-#' Lambda function using incoming request parameters.
-#' @param AuthorizerUri &#91;required&#93; The authorizer\'s Uniform Resource Identifier (URI). For REQUEST
+#' permissions on the Lambda function, specify null. Supported only for
+#' REQUEST authorizers.
+#' @param AuthorizerResultTtlInSeconds Authorizer caching is not currently supported. Don\'t specify this value
+#' for authorizers.
+#' @param AuthorizerType &#91;required&#93; The authorizer type. For WebSocket APIs, specify REQUEST for a Lambda
+#' function using incoming request parameters. For HTTP APIs, specify JWT
+#' to use JSON Web Tokens.
+#' @param AuthorizerUri The authorizer\'s Uniform Resource Identifier (URI). For REQUEST
 #' authorizers, this must be a well-formed Lambda function URI, for
 #' example,
 #' arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:\{account\\_id\}:function:\{lambda\\_function\\_name\}/invocations.
@@ -132,25 +178,30 @@ apigatewayv2_create_api_mapping <- function(ApiId, ApiMappingKey = NULL, DomainN
 #' that the remaining substring in the URI should be treated as the path to
 #' the resource, including the initial /. For Lambda functions, this is
 #' usually of the form /2015-03-31/functions/\[FunctionARN\]/invocations.
+#' Supported only for REQUEST authorizers.
 #' @param IdentitySource &#91;required&#93; The identity source for which authorization is requested.
 #' 
-#' For the REQUEST authorizer, this is required when authorization caching
-#' is enabled. The value is a comma-separated string of one or more mapping
-#' expressions of the specified request parameters. For example, if an Auth
-#' header and a Name query string parameters are defined as identity
-#' sources, this value is method.request.header.Auth,
-#' method.request.querystring.Name. These parameters will be used to derive
-#' the authorization caching key and to perform runtime validation of the
-#' REQUEST authorizer by verifying all of the identity-related request
-#' parameters are present, not null, and non-empty. Only when this is true
-#' does the authorizer invoke the authorizer Lambda function, otherwise, it
-#' returns a 401 Unauthorized response without calling the Lambda function.
-#' The valid value is a string of comma-separated mapping expressions of
-#' the specified request parameters. When the authorization caching is not
-#' enabled, this property is optional.
-#' @param IdentityValidationExpression The validation expression does not apply to the REQUEST authorizer.
+#' For a REQUEST authorizer, this is optional. The value is a set of one or
+#' more mapping expressions of the specified request parameters. Currently,
+#' the identity source can be headers, query string parameters, stage
+#' variables, and context parameters. For example, if an Auth header and a
+#' Name query string parameter are defined as identity sources, this value
+#' is route.request.header.Auth, route.request.querystring.Name. These
+#' parameters will be used to perform runtime validation for Lambda-based
+#' authorizers by verifying all of the identity-related request parameters
+#' are present in the request, not null, and non-empty. Only when this is
+#' true does the authorizer invoke the authorizer Lambda function.
+#' Otherwise, it returns a 401 Unauthorized response without calling the
+#' Lambda function.
+#' 
+#' For JWT, a single entry that specifies where to extract the JSON Web
+#' Token (JWT )from inbound requests. Currently only header-based and query
+#' parameter-based selections are supported, for example
+#' \"\\$request.header.Authorization\".
+#' @param IdentityValidationExpression This parameter is not used.
+#' @param JwtConfiguration Represents the configuration of a JWT authorizer. Required for the JWT
+#' authorizer type. Supported only for HTTP APIs.
 #' @param Name &#91;required&#93; The name of the authorizer.
-#' @param ProviderArns For REQUEST authorizer, this is not defined.
 #'
 #' @section Request syntax:
 #' ```
@@ -158,30 +209,33 @@ apigatewayv2_create_api_mapping <- function(ApiId, ApiMappingKey = NULL, DomainN
 #'   ApiId = "string",
 #'   AuthorizerCredentialsArn = "string",
 #'   AuthorizerResultTtlInSeconds = 123,
-#'   AuthorizerType = "REQUEST",
+#'   AuthorizerType = "REQUEST"|"JWT",
 #'   AuthorizerUri = "string",
 #'   IdentitySource = list(
 #'     "string"
 #'   ),
 #'   IdentityValidationExpression = "string",
-#'   Name = "string",
-#'   ProviderArns = list(
-#'     "string"
-#'   )
+#'   JwtConfiguration = list(
+#'     Audience = list(
+#'       "string"
+#'     ),
+#'     Issuer = "string"
+#'   ),
+#'   Name = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_authorizer
-apigatewayv2_create_authorizer <- function(ApiId, AuthorizerCredentialsArn = NULL, AuthorizerResultTtlInSeconds = NULL, AuthorizerType, AuthorizerUri, IdentitySource, IdentityValidationExpression = NULL, Name, ProviderArns = NULL) {
+apigatewayv2_create_authorizer <- function(ApiId, AuthorizerCredentialsArn = NULL, AuthorizerResultTtlInSeconds = NULL, AuthorizerType, AuthorizerUri = NULL, IdentitySource, IdentityValidationExpression = NULL, JwtConfiguration = NULL, Name) {
   op <- new_operation(
     name = "CreateAuthorizer",
     http_method = "POST",
     http_path = "/v2/apis/{apiId}/authorizers",
     paginator = list()
   )
-  input <- .apigatewayv2$create_authorizer_input(ApiId = ApiId, AuthorizerCredentialsArn = AuthorizerCredentialsArn, AuthorizerResultTtlInSeconds = AuthorizerResultTtlInSeconds, AuthorizerType = AuthorizerType, AuthorizerUri = AuthorizerUri, IdentitySource = IdentitySource, IdentityValidationExpression = IdentityValidationExpression, Name = Name, ProviderArns = ProviderArns)
+  input <- .apigatewayv2$create_authorizer_input(ApiId = ApiId, AuthorizerCredentialsArn = AuthorizerCredentialsArn, AuthorizerResultTtlInSeconds = AuthorizerResultTtlInSeconds, AuthorizerType = AuthorizerType, AuthorizerUri = AuthorizerUri, IdentitySource = IdentitySource, IdentityValidationExpression = IdentityValidationExpression, JwtConfiguration = JwtConfiguration, Name = Name)
   output <- .apigatewayv2$create_authorizer_output()
   config <- get_config()
   svc <- .apigatewayv2$service(config)
@@ -241,9 +295,7 @@ apigatewayv2_create_deployment <- function(ApiId, Description = NULL, StageName 
 #'
 #' @param DomainName &#91;required&#93; The domain name.
 #' @param DomainNameConfigurations The domain name configurations.
-#' @param Tags The key-value map of strings. The valid character set is
-#' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
-#' start with aws:. The tag value can be up to 256 characters..
+#' @param Tags The collection of tags associated with a domain name.
 #'
 #' @section Request syntax:
 #' ```
@@ -257,11 +309,11 @@ apigatewayv2_create_deployment <- function(ApiId, Description = NULL, StageName 
 #'       CertificateUploadDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
+#'       DomainNameStatus = "AVAILABLE"|"UPDATING",
+#'       DomainNameStatusMessage = "string",
 #'       EndpointType = "REGIONAL"|"EDGE",
 #'       HostedZoneId = "string",
-#'       SecurityPolicy = "TLS_1_0"|"TLS_1_2",
-#'       DomainNameStatus = "AVAILABLE"|"UPDATING",
-#'       DomainNameStatusMessage = "string"
+#'       SecurityPolicy = "TLS_1_0"|"TLS_1_2"
 #'     )
 #'   ),
 #'   Tags = list(
@@ -297,17 +349,18 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' @usage
 #' apigatewayv2_create_integration(ApiId, ConnectionId, ConnectionType,
 #'   ContentHandlingStrategy, CredentialsArn, Description, IntegrationMethod,
-#'   IntegrationType, IntegrationUri, PassthroughBehavior, RequestParameters,
-#'   RequestTemplates, TemplateSelectionExpression, TimeoutInMillis)
+#'   IntegrationType, IntegrationUri, PassthroughBehavior,
+#'   PayloadFormatVersion, RequestParameters, RequestTemplates,
+#'   TemplateSelectionExpression, TimeoutInMillis)
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ConnectionId The connection ID.
 #' @param ConnectionType The type of the network connection to the integration endpoint.
 #' Currently the only valid value is INTERNET, for connections through the
 #' public routable internet.
-#' @param ContentHandlingStrategy Specifies how to handle response payload content type conversions.
-#' Supported values are CONVERT\\_TO\\_BINARY and CONVERT\\_TO\\_TEXT, with the
-#' following behaviors:
+#' @param ContentHandlingStrategy Supported only for WebSocket APIs. Specifies how to handle response
+#' payload content type conversions. Supported values are
+#' CONVERT\\_TO\\_BINARY and CONVERT\\_TO\\_TEXT, with the following behaviors:
 #' 
 #' CONVERT\\_TO\\_BINARY: Converts a response payload from a Base64-encoded
 #' string to the corresponding binary blob.
@@ -332,27 +385,29 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' action, including the Lambda function-invoking action. With the Lambda
 #' function-invoking action, this is referred to as the Lambda custom
 #' integration. With any other AWS service action, this is known as AWS
-#' integration.
+#' integration. Supported only for WebSocket APIs.
 #' 
 #' AWS\\_PROXY: for integrating the route or method request with the Lambda
 #' function-invoking action with the client request passed through as-is.
 #' This integration is also referred to as Lambda proxy integration.
 #' 
 #' HTTP: for integrating the route or method request with an HTTP endpoint.
-#' This integration is also referred to as HTTP custom integration.
+#' This integration is also referred to as the HTTP custom integration.
+#' Supported only for WebSocket APIs.
 #' 
 #' HTTP\\_PROXY: for integrating route or method request with an HTTP
 #' endpoint, with the client request passed through as-is. This is also
 #' referred to as HTTP proxy integration.
 #' 
 #' MOCK: for integrating the route or method request with API Gateway as a
-#' \"loopback\" endpoint without invoking any backend.
+#' \"loopback\" endpoint without invoking any backend. Supported only for
+#' WebSocket APIs.
 #' @param IntegrationUri For a Lambda proxy integration, this is the URI of the Lambda function.
 #' @param PassthroughBehavior Specifies the pass-through behavior for incoming requests based on the
 #' Content-Type header in the request, and the available mapping templates
 #' specified as the requestTemplates property on the Integration resource.
 #' There are three valid values: WHEN\\_NO\\_MATCH, WHEN\\_NO\\_TEMPLATES, and
-#' NEVER.
+#' NEVER. Supported only for WebSocket APIs.
 #' 
 #' WHEN\\_NO\\_MATCH passes the request body for unmapped content types
 #' through to the integration backend without transformation.
@@ -364,6 +419,8 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' content types mapped to templates. However, if there is at least one
 #' content type defined, unmapped content types will be rejected with the
 #' same HTTP 415 Unsupported Media Type response.
+#' @param PayloadFormatVersion Specifies the format of the payload sent to an integration. Required for
+#' HTTP APIs. Currently, the only supported value is 1.0.
 #' @param RequestParameters A key-value map specifying request parameters that are passed from the
 #' method request to the backend. The key is an integration request
 #' parameter name and the associated value is a method request parameter
@@ -371,14 +428,16 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' pre-encoded as required by the backend. The method request parameter
 #' value must match the pattern of method.request.\{location\}.\{name\} , where
 #' \{location\} is querystring, path, or header; and \{name\} must be a valid
-#' and unique method request parameter name.
+#' and unique method request parameter name. Supported only for WebSocket
+#' APIs.
 #' @param RequestTemplates Represents a map of Velocity templates that are applied on the request
 #' payload based on the value of the Content-Type header sent by the
 #' client. The content type value is the key in this map, and the template
-#' (as a String) is the value.
+#' (as a String) is the value. Supported only for WebSocket APIs.
 #' @param TemplateSelectionExpression The template selection expression for the integration.
 #' @param TimeoutInMillis Custom timeout between 50 and 29,000 milliseconds. The default value is
-#' 29,000 milliseconds or 29 seconds.
+#' 29,000 milliseconds or 29 seconds for WebSocket APIs. The default value
+#' is 5,000 milliseconds, or 5 seconds for HTTP APIs.
 #'
 #' @section Request syntax:
 #' ```
@@ -393,6 +452,7 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #'   IntegrationType = "AWS"|"HTTP"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
 #'   IntegrationUri = "string",
 #'   PassthroughBehavior = "WHEN_NO_MATCH"|"NEVER"|"WHEN_NO_TEMPLATES",
+#'   PayloadFormatVersion = "string",
 #'   RequestParameters = list(
 #'     "string"
 #'   ),
@@ -407,14 +467,14 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_integration
-apigatewayv2_create_integration <- function(ApiId, ConnectionId = NULL, ConnectionType = NULL, ContentHandlingStrategy = NULL, CredentialsArn = NULL, Description = NULL, IntegrationMethod = NULL, IntegrationType, IntegrationUri = NULL, PassthroughBehavior = NULL, RequestParameters = NULL, RequestTemplates = NULL, TemplateSelectionExpression = NULL, TimeoutInMillis = NULL) {
+apigatewayv2_create_integration <- function(ApiId, ConnectionId = NULL, ConnectionType = NULL, ContentHandlingStrategy = NULL, CredentialsArn = NULL, Description = NULL, IntegrationMethod = NULL, IntegrationType, IntegrationUri = NULL, PassthroughBehavior = NULL, PayloadFormatVersion = NULL, RequestParameters = NULL, RequestTemplates = NULL, TemplateSelectionExpression = NULL, TimeoutInMillis = NULL) {
   op <- new_operation(
     name = "CreateIntegration",
     http_method = "POST",
     http_path = "/v2/apis/{apiId}/integrations",
     paginator = list()
   )
-  input <- .apigatewayv2$create_integration_input(ApiId = ApiId, ConnectionId = ConnectionId, ConnectionType = ConnectionType, ContentHandlingStrategy = ContentHandlingStrategy, CredentialsArn = CredentialsArn, Description = Description, IntegrationMethod = IntegrationMethod, IntegrationType = IntegrationType, IntegrationUri = IntegrationUri, PassthroughBehavior = PassthroughBehavior, RequestParameters = RequestParameters, RequestTemplates = RequestTemplates, TemplateSelectionExpression = TemplateSelectionExpression, TimeoutInMillis = TimeoutInMillis)
+  input <- .apigatewayv2$create_integration_input(ApiId = ApiId, ConnectionId = ConnectionId, ConnectionType = ConnectionType, ContentHandlingStrategy = ContentHandlingStrategy, CredentialsArn = CredentialsArn, Description = Description, IntegrationMethod = IntegrationMethod, IntegrationType = IntegrationType, IntegrationUri = IntegrationUri, PassthroughBehavior = PassthroughBehavior, PayloadFormatVersion = PayloadFormatVersion, RequestParameters = RequestParameters, RequestTemplates = RequestTemplates, TemplateSelectionExpression = TemplateSelectionExpression, TimeoutInMillis = TimeoutInMillis)
   output <- .apigatewayv2$create_integration_output()
   config <- get_config()
   svc <- .apigatewayv2$service(config)
@@ -465,6 +525,7 @@ apigatewayv2_create_integration <- function(ApiId, ConnectionId = NULL, Connecti
 #' represented as a key/value map, with a content-type as the key and a
 #' template as the value.
 #' @param TemplateSelectionExpression The template selection expression for the integration response.
+#' Supported only for WebSocket APIs.
 #'
 #' @section Request syntax:
 #' ```
@@ -559,20 +620,24 @@ apigatewayv2_create_model <- function(ApiId, ContentType = NULL, Description = N
 #'   RouteResponseSelectionExpression, Target)
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
-#' @param ApiKeyRequired Specifies whether an API key is required for the route.
+#' @param ApiKeyRequired Specifies whether an API key is required for the route. Supported only
+#' for WebSocket APIs.
 #' @param AuthorizationScopes The authorization scopes supported by this route.
-#' @param AuthorizationType The authorization type for the route. Valid values are NONE for open
-#' access, AWS\\_IAM for using AWS IAM permissions, and CUSTOM for using a
-#' Lambda authorizer.
+#' @param AuthorizationType The authorization type for the route. For WebSocket APIs, valid values
+#' are NONE for open access, AWS\\_IAM for using AWS IAM permissions, and
+#' CUSTOM for using a Lambda authorizer For HTTP APIs, valid values are
+#' NONE for open access, or JWT for using JSON Web Tokens.
 #' @param AuthorizerId The identifier of the Authorizer resource to be associated with this
-#' route, if the authorizationType is CUSTOM . The authorizer identifier is
-#' generated by API Gateway when you created the authorizer.
-#' @param ModelSelectionExpression The model selection expression for the route.
+#' route. The authorizer identifier is generated by API Gateway when you
+#' created the authorizer.
+#' @param ModelSelectionExpression The model selection expression for the route. Supported only for
+#' WebSocket APIs.
 #' @param OperationName The operation name for the route.
-#' @param RequestModels The request models for the route.
-#' @param RequestParameters The request parameters for the route.
+#' @param RequestModels The request models for the route. Supported only for WebSocket APIs.
+#' @param RequestParameters The request parameters for the route. Supported only for WebSocket APIs.
 #' @param RouteKey &#91;required&#93; The route key for the route.
-#' @param RouteResponseSelectionExpression The route response selection expression for the route.
+#' @param RouteResponseSelectionExpression The route response selection expression for the route. Supported only
+#' for WebSocket APIs.
 #' @param Target The target for the route.
 #'
 #' @section Request syntax:
@@ -583,7 +648,7 @@ apigatewayv2_create_model <- function(ApiId, ContentType = NULL, Description = N
 #'   AuthorizationScopes = list(
 #'     "string"
 #'   ),
-#'   AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM",
+#'   AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM"|"JWT",
 #'   AuthorizerId = "string",
 #'   ModelSelectionExpression = "string",
 #'   OperationName = "string",
@@ -630,7 +695,8 @@ apigatewayv2_create_route <- function(ApiId, ApiKeyRequired = NULL, Authorizatio
 #'   ResponseModels, ResponseParameters, RouteId, RouteResponseKey)
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
-#' @param ModelSelectionExpression The model selection expression for the route response.
+#' @param ModelSelectionExpression The model selection expression for the route response. Supported only
+#' for WebSocket APIs.
 #' @param ResponseModels The response models for the route response.
 #' @param ResponseParameters The route response parameters.
 #' @param RouteId &#91;required&#93; The route ID.
@@ -679,24 +745,26 @@ apigatewayv2_create_route_response <- function(ApiId, ModelSelectionExpression =
 #' Creates a Stage for an API.
 #'
 #' @usage
-#' apigatewayv2_create_stage(AccessLogSettings, ApiId, ClientCertificateId,
-#'   DefaultRouteSettings, DeploymentId, Description, RouteSettings,
-#'   StageName, StageVariables, Tags)
+#' apigatewayv2_create_stage(AccessLogSettings, ApiId, AutoDeploy,
+#'   ClientCertificateId, DefaultRouteSettings, DeploymentId, Description,
+#'   RouteSettings, StageName, StageVariables, Tags)
 #'
 #' @param AccessLogSettings Settings for logging access in this stage.
 #' @param ApiId &#91;required&#93; The API identifier.
-#' @param ClientCertificateId The identifier of a client certificate for a Stage.
+#' @param AutoDeploy Specifies whether updates to an API automatically trigger a new
+#' deployment. The default value is false.
+#' @param ClientCertificateId The identifier of a client certificate for a Stage. Supported only for
+#' WebSocket APIs.
 #' @param DefaultRouteSettings The default route settings for the stage.
 #' @param DeploymentId The deployment identifier of the API stage.
 #' @param Description The description for the API stage.
-#' @param RouteSettings Route settings for the stage.
+#' @param RouteSettings Route settings for the stage, by routeKey.
 #' @param StageName &#91;required&#93; The name of the stage.
 #' @param StageVariables A map that defines the stage variables for a Stage. Variable names can
 #' have alphanumeric and underscore characters, and the values must match
-#' \[A-Za-z0-9-.\\_\~:/?\\#&=,\]+.
-#' @param Tags The key-value map of strings. The valid character set is
-#' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
-#' start with aws:. The tag value can be up to 256 characters..
+#' \[A-Za-z0-9-.\\_\~:/?\\#&=,\]+. Supported only for WebSocket APIs.
+#' @param Tags The collection of tags. Each tag element is associated with a given
+#' resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -706,6 +774,7 @@ apigatewayv2_create_route_response <- function(ApiId, ModelSelectionExpression =
 #'     Format = "string"
 #'   ),
 #'   ApiId = "string",
+#'   AutoDeploy = TRUE|FALSE,
 #'   ClientCertificateId = "string",
 #'   DefaultRouteSettings = list(
 #'     DataTraceEnabled = TRUE|FALSE,
@@ -738,14 +807,14 @@ apigatewayv2_create_route_response <- function(ApiId, ModelSelectionExpression =
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_stage
-apigatewayv2_create_stage <- function(AccessLogSettings = NULL, ApiId, ClientCertificateId = NULL, DefaultRouteSettings = NULL, DeploymentId = NULL, Description = NULL, RouteSettings = NULL, StageName, StageVariables = NULL, Tags = NULL) {
+apigatewayv2_create_stage <- function(AccessLogSettings = NULL, ApiId, AutoDeploy = NULL, ClientCertificateId = NULL, DefaultRouteSettings = NULL, DeploymentId = NULL, Description = NULL, RouteSettings = NULL, StageName, StageVariables = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateStage",
     http_method = "POST",
     http_path = "/v2/apis/{apiId}/stages",
     paginator = list()
   )
-  input <- .apigatewayv2$create_stage_input(AccessLogSettings = AccessLogSettings, ApiId = ApiId, ClientCertificateId = ClientCertificateId, DefaultRouteSettings = DefaultRouteSettings, DeploymentId = DeploymentId, Description = Description, RouteSettings = RouteSettings, StageName = StageName, StageVariables = StageVariables, Tags = Tags)
+  input <- .apigatewayv2$create_stage_input(AccessLogSettings = AccessLogSettings, ApiId = ApiId, AutoDeploy = AutoDeploy, ClientCertificateId = ClientCertificateId, DefaultRouteSettings = DefaultRouteSettings, DeploymentId = DeploymentId, Description = Description, RouteSettings = RouteSettings, StageName = StageName, StageVariables = StageVariables, Tags = Tags)
   output <- .apigatewayv2$create_stage_output()
   config <- get_config()
   svc <- .apigatewayv2$service(config)
@@ -866,6 +935,42 @@ apigatewayv2_delete_authorizer <- function(ApiId, AuthorizerId) {
   return(response)
 }
 .apigatewayv2$operations$delete_authorizer <- apigatewayv2_delete_authorizer
+
+#' Deletes a CORS configuration
+#'
+#' Deletes a CORS configuration.
+#'
+#' @usage
+#' apigatewayv2_delete_cors_configuration(ApiId)
+#'
+#' @param ApiId &#91;required&#93; The API identifier.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_cors_configuration(
+#'   ApiId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_delete_cors_configuration
+apigatewayv2_delete_cors_configuration <- function(ApiId) {
+  op <- new_operation(
+    name = "DeleteCorsConfiguration",
+    http_method = "DELETE",
+    http_path = "/v2/apis/{apiId}/cors",
+    paginator = list()
+  )
+  input <- .apigatewayv2$delete_cors_configuration_input(ApiId = ApiId)
+  output <- .apigatewayv2$delete_cors_configuration_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$delete_cors_configuration <- apigatewayv2_delete_cors_configuration
 
 #' Deletes a Deployment
 #'
@@ -1136,6 +1241,47 @@ apigatewayv2_delete_route_response <- function(ApiId, RouteId, RouteResponseId) 
 }
 .apigatewayv2$operations$delete_route_response <- apigatewayv2_delete_route_response
 
+#' Deletes the RouteSettings for a stage
+#'
+#' Deletes the RouteSettings for a stage.
+#'
+#' @usage
+#' apigatewayv2_delete_route_settings(ApiId, RouteKey, StageName)
+#'
+#' @param ApiId &#91;required&#93; The API identifier.
+#' @param RouteKey &#91;required&#93; The route key.
+#' @param StageName &#91;required&#93; The stage name. Stage names can only contain alphanumeric characters,
+#' hyphens, and underscores. Maximum length is 128 characters.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_route_settings(
+#'   ApiId = "string",
+#'   RouteKey = "string",
+#'   StageName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_delete_route_settings
+apigatewayv2_delete_route_settings <- function(ApiId, RouteKey, StageName) {
+  op <- new_operation(
+    name = "DeleteRouteSettings",
+    http_method = "DELETE",
+    http_path = "/v2/apis/{apiId}/stages/{stageName}/routesettings/{routeKey}",
+    paginator = list()
+  )
+  input <- .apigatewayv2$delete_route_settings_input(ApiId = ApiId, RouteKey = RouteKey, StageName = StageName)
+  output <- .apigatewayv2$delete_route_settings_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$delete_route_settings <- apigatewayv2_delete_route_settings
+
 #' Deletes a Stage
 #'
 #' Deletes a Stage.
@@ -1144,7 +1290,8 @@ apigatewayv2_delete_route_response <- function(ApiId, RouteId, RouteResponseId) 
 #' apigatewayv2_delete_stage(ApiId, StageName)
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
-#' @param StageName &#91;required&#93; The stage name.
+#' @param StageName &#91;required&#93; The stage name. Stage names can only contain alphanumeric characters,
+#' hyphens, and underscores. Maximum length is 128 characters.
 #'
 #' @section Request syntax:
 #' ```
@@ -1210,9 +1357,9 @@ apigatewayv2_get_api <- function(ApiId) {
 }
 .apigatewayv2$operations$get_api <- apigatewayv2_get_api
 
-#' The API mapping
+#' Gets an API mapping
 #'
-#' The API mapping.
+#' Gets an API mapping.
 #'
 #' @usage
 #' apigatewayv2_get_api_mapping(ApiMappingId, DomainName)
@@ -1248,9 +1395,9 @@ apigatewayv2_get_api_mapping <- function(ApiMappingId, DomainName) {
 }
 .apigatewayv2$operations$get_api_mapping <- apigatewayv2_get_api_mapping
 
-#' The API mappings
+#' Gets API mappings
 #'
-#' The API mappings.
+#' Gets API mappings.
 #'
 #' @usage
 #' apigatewayv2_get_api_mappings(DomainName, MaxResults, NextToken)
@@ -2012,7 +2159,8 @@ apigatewayv2_get_routes <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
 #' apigatewayv2_get_stage(ApiId, StageName)
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
-#' @param StageName &#91;required&#93; The stage name.
+#' @param StageName &#91;required&#93; The stage name. Stage names can only contain alphanumeric characters,
+#' hyphens, and underscores. Maximum length is 128 characters.
 #'
 #' @section Request syntax:
 #' ```
@@ -2083,14 +2231,14 @@ apigatewayv2_get_stages <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
 }
 .apigatewayv2$operations$get_stages <- apigatewayv2_get_stages
 
-#' Gets the Tags for an API
+#' Gets a collection of Tag resources
 #'
-#' Gets the Tags for an API.
+#' Gets a collection of Tag resources.
 #'
 #' @usage
 #' apigatewayv2_get_tags(ResourceArn)
 #'
-#' @param ResourceArn &#91;required&#93; 
+#' @param ResourceArn &#91;required&#93; The resource ARN for the tag.
 #'
 #' @section Request syntax:
 #' ```
@@ -2119,17 +2267,102 @@ apigatewayv2_get_tags <- function(ResourceArn) {
 }
 .apigatewayv2$operations$get_tags <- apigatewayv2_get_tags
 
-#' Tag an APIGW resource
+#' Imports an API
 #'
-#' Tag an APIGW resource
+#' Imports an API.
+#'
+#' @usage
+#' apigatewayv2_import_api(Basepath, Body, FailOnWarnings)
+#'
+#' @param Basepath Represents the base path of the imported API. Supported only for HTTP
+#' APIs.
+#' @param Body &#91;required&#93; The OpenAPI definition. Supported only for HTTP APIs.
+#' @param FailOnWarnings Specifies whether to rollback the API creation (true) or not (false)
+#' when a warning is encountered. The default value is false.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$import_api(
+#'   Basepath = "string",
+#'   Body = "string",
+#'   FailOnWarnings = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_import_api
+apigatewayv2_import_api <- function(Basepath = NULL, Body, FailOnWarnings = NULL) {
+  op <- new_operation(
+    name = "ImportApi",
+    http_method = "PUT",
+    http_path = "/v2/apis",
+    paginator = list()
+  )
+  input <- .apigatewayv2$import_api_input(Basepath = Basepath, Body = Body, FailOnWarnings = FailOnWarnings)
+  output <- .apigatewayv2$import_api_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$import_api <- apigatewayv2_import_api
+
+#' Puts an Api resource
+#'
+#' Puts an Api resource.
+#'
+#' @usage
+#' apigatewayv2_reimport_api(ApiId, Basepath, Body, FailOnWarnings)
+#'
+#' @param ApiId &#91;required&#93; The API identifier.
+#' @param Basepath Represents the base path of the imported API. Supported only for HTTP
+#' APIs.
+#' @param Body &#91;required&#93; The OpenAPI definition. Supported only for HTTP APIs.
+#' @param FailOnWarnings Specifies whether to rollback the API creation (true) or not (false)
+#' when a warning is encountered. The default value is false.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$reimport_api(
+#'   ApiId = "string",
+#'   Basepath = "string",
+#'   Body = "string",
+#'   FailOnWarnings = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_reimport_api
+apigatewayv2_reimport_api <- function(ApiId, Basepath = NULL, Body, FailOnWarnings = NULL) {
+  op <- new_operation(
+    name = "ReimportApi",
+    http_method = "PUT",
+    http_path = "/v2/apis/{apiId}",
+    paginator = list()
+  )
+  input <- .apigatewayv2$reimport_api_input(ApiId = ApiId, Basepath = Basepath, Body = Body, FailOnWarnings = FailOnWarnings)
+  output <- .apigatewayv2$reimport_api_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$reimport_api <- apigatewayv2_reimport_api
+
+#' Creates a new Tag resource to represent a tag
+#'
+#' Creates a new Tag resource to represent a tag.
 #'
 #' @usage
 #' apigatewayv2_tag_resource(ResourceArn, Tags)
 #'
-#' @param ResourceArn &#91;required&#93; AWS resource arn
-#' @param Tags The key-value map of strings. The valid character set is
-#' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
-#' start with aws:. The tag value can be up to 256 characters..
+#' @param ResourceArn &#91;required&#93; The resource ARN for the tag.
+#' @param Tags The collection of tags. Each tag element is associated with a given
+#' resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -2161,15 +2394,17 @@ apigatewayv2_tag_resource <- function(ResourceArn, Tags = NULL) {
 }
 .apigatewayv2$operations$tag_resource <- apigatewayv2_tag_resource
 
-#' Untag an APIGW resource
+#' Deletes a Tag
 #'
-#' Untag an APIGW resource
+#' Deletes a Tag.
 #'
 #' @usage
 #' apigatewayv2_untag_resource(ResourceArn, TagKeys)
 #'
-#' @param ResourceArn &#91;required&#93; AWS resource arn
-#' @param TagKeys &#91;required&#93; The Tag keys to delete
+#' @param ResourceArn &#91;required&#93; The resource ARN for the tag.
+#' @param TagKeys &#91;required&#93; 
+#'             <p>The Tag keys to delete.</p>
+#'          
 #'
 #' @section Request syntax:
 #' ```
@@ -2206,16 +2441,43 @@ apigatewayv2_untag_resource <- function(ResourceArn, TagKeys) {
 #' Updates an Api resource.
 #'
 #' @usage
-#' apigatewayv2_update_api(ApiId, ApiKeySelectionExpression, Description,
-#'   DisableSchemaValidation, Name, RouteSelectionExpression, Version)
+#' apigatewayv2_update_api(ApiId, ApiKeySelectionExpression,
+#'   CorsConfiguration, CredentialsArn, Description, DisableSchemaValidation,
+#'   Name, RouteKey, RouteSelectionExpression, Target, Version)
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
-#' @param ApiKeySelectionExpression An API key selection expression. See [API Key Selection
+#' @param ApiKeySelectionExpression An API key selection expression. Supported only for WebSocket APIs. See
+#' [API Key Selection
 #' Expressions](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions).
+#' @param CorsConfiguration A CORS configuration. Supported only for HTTP APIs.
+#' @param CredentialsArn This property is part of quick create. It specifies the credentials
+#' required for the integration, if any. For a Lambda integration, three
+#' options are available. To specify an IAM Role for API Gateway to assume,
+#' use the role\'s Amazon Resource Name (ARN). To require that the
+#' caller\'s identity be passed through from the request, specify
+#' arn:aws:iam::\*:user/\*. To use resource-based permissions on supported
+#' AWS services, specify null. Currently, this property is not used for
+#' HTTP integrations. If provided, this value replaces the credentials
+#' associated with the quick create integration. Supported only for HTTP
+#' APIs.
 #' @param Description The description of the API.
-#' @param DisableSchemaValidation Avoid validating models when creating a deployment.
+#' @param DisableSchemaValidation Avoid validating models when creating a deployment. Supported only for
+#' WebSocket APIs.
 #' @param Name The name of the API.
-#' @param RouteSelectionExpression The route selection expression for the API.
+#' @param RouteKey This property is part of quick create. If not specified, the route
+#' created using quick create is kept. Otherwise, this value replaces the
+#' route key of the quick create route. Additional routes may still be
+#' added after the API is updated. Supported only for HTTP APIs.
+#' @param RouteSelectionExpression The route selection expression for the API. For HTTP APIs, the
+#' routeSelectionExpression must be \\$\{request.method\} \\$\{request.path\}. If
+#' not provided, this will be the default for HTTP APIs. This property is
+#' required for WebSocket APIs.
+#' @param Target This property is part of quick create. For HTTP integrations, specify a
+#' fully qualified URL. For Lambda integrations, specify a function ARN.
+#' The type of the integration will be HTTP\\_PROXY or AWS\\_PROXY,
+#' respectively. The value provided updates the integration URI and
+#' integration type. You can update a quick-created target, but you can\'t
+#' remove it from an API. Supported only for HTTP APIs.
 #' @param Version A version identifier for the API.
 #'
 #' @section Request syntax:
@@ -2223,10 +2485,29 @@ apigatewayv2_untag_resource <- function(ResourceArn, TagKeys) {
 #' svc$update_api(
 #'   ApiId = "string",
 #'   ApiKeySelectionExpression = "string",
+#'   CorsConfiguration = list(
+#'     AllowCredentials = TRUE|FALSE,
+#'     AllowHeaders = list(
+#'       "string"
+#'     ),
+#'     AllowMethods = list(
+#'       "string"
+#'     ),
+#'     AllowOrigins = list(
+#'       "string"
+#'     ),
+#'     ExposeHeaders = list(
+#'       "string"
+#'     ),
+#'     MaxAge = 123
+#'   ),
+#'   CredentialsArn = "string",
 #'   Description = "string",
 #'   DisableSchemaValidation = TRUE|FALSE,
 #'   Name = "string",
+#'   RouteKey = "string",
 #'   RouteSelectionExpression = "string",
+#'   Target = "string",
 #'   Version = "string"
 #' )
 #' ```
@@ -2234,14 +2515,14 @@ apigatewayv2_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_update_api
-apigatewayv2_update_api <- function(ApiId, ApiKeySelectionExpression = NULL, Description = NULL, DisableSchemaValidation = NULL, Name = NULL, RouteSelectionExpression = NULL, Version = NULL) {
+apigatewayv2_update_api <- function(ApiId, ApiKeySelectionExpression = NULL, CorsConfiguration = NULL, CredentialsArn = NULL, Description = NULL, DisableSchemaValidation = NULL, Name = NULL, RouteKey = NULL, RouteSelectionExpression = NULL, Target = NULL, Version = NULL) {
   op <- new_operation(
     name = "UpdateApi",
     http_method = "PATCH",
     http_path = "/v2/apis/{apiId}",
     paginator = list()
   )
-  input <- .apigatewayv2$update_api_input(ApiId = ApiId, ApiKeySelectionExpression = ApiKeySelectionExpression, Description = Description, DisableSchemaValidation = DisableSchemaValidation, Name = Name, RouteSelectionExpression = RouteSelectionExpression, Version = Version)
+  input <- .apigatewayv2$update_api_input(ApiId = ApiId, ApiKeySelectionExpression = ApiKeySelectionExpression, CorsConfiguration = CorsConfiguration, CredentialsArn = CredentialsArn, Description = Description, DisableSchemaValidation = DisableSchemaValidation, Name = Name, RouteKey = RouteKey, RouteSelectionExpression = RouteSelectionExpression, Target = Target, Version = Version)
   output <- .apigatewayv2$update_api_output()
   config <- get_config()
   svc <- .apigatewayv2$service(config)
@@ -2303,8 +2584,8 @@ apigatewayv2_update_api_mapping <- function(ApiId, ApiMappingId, ApiMappingKey =
 #' @usage
 #' apigatewayv2_update_authorizer(ApiId, AuthorizerCredentialsArn,
 #'   AuthorizerId, AuthorizerResultTtlInSeconds, AuthorizerType,
-#'   AuthorizerUri, IdentitySource, IdentityValidationExpression, Name,
-#'   ProviderArns)
+#'   AuthorizerUri, IdentitySource, IdentityValidationExpression,
+#'   JwtConfiguration, Name)
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param AuthorizerCredentialsArn Specifies the required credentials as an IAM role for API Gateway to
@@ -2312,12 +2593,11 @@ apigatewayv2_update_api_mapping <- function(ApiId, ApiMappingId, ApiMappingKey =
 #' use the role\'s Amazon Resource Name (ARN). To use resource-based
 #' permissions on the Lambda function, specify null.
 #' @param AuthorizerId &#91;required&#93; The authorizer identifier.
-#' @param AuthorizerResultTtlInSeconds The time to live (TTL), in seconds, of cached authorizer results. If it
-#' is zero, authorization caching is disabled. If it is greater than zero,
-#' API Gateway will cache authorizer responses. If this field is not set,
-#' the default value is 300. The maximum value is 3600, or 1 hour.
-#' @param AuthorizerType The authorizer type. Currently the only valid value is REQUEST, for a
-#' Lambda function using incoming request parameters.
+#' @param AuthorizerResultTtlInSeconds Authorizer caching is not currently supported. Don\'t specify this value
+#' for authorizers.
+#' @param AuthorizerType The authorizer type. For WebSocket APIs, specify REQUEST for a Lambda
+#' function using incoming request parameters. For HTTP APIs, specify JWT
+#' to use JSON Web Tokens.
 #' @param AuthorizerUri The authorizer\'s Uniform Resource Identifier (URI). For REQUEST
 #' authorizers, this must be a well-formed Lambda function URI, for
 #' example,
@@ -2328,25 +2608,30 @@ apigatewayv2_update_api_mapping <- function(ApiId, ApiMappingId, ApiMappingKey =
 #' that the remaining substring in the URI should be treated as the path to
 #' the resource, including the initial /. For Lambda functions, this is
 #' usually of the form /2015-03-31/functions/\[FunctionARN\]/invocations.
+#' Supported only for REQUEST authorizers.
 #' @param IdentitySource The identity source for which authorization is requested.
 #' 
-#' For the REQUEST authorizer, this is required when authorization caching
-#' is enabled. The value is a comma-separated string of one or more mapping
-#' expressions of the specified request parameters. For example, if an Auth
-#' header, a Name query string parameter are defined as identity sources,
-#' this value is \\$method.request.header.Auth,
-#' \\$method.request.querystring.Name. These parameters will be used to
-#' derive the authorization caching key and to perform runtime validation
-#' of the REQUEST authorizer by verifying all of the identity-related
-#' request parameters are present, not null and non-empty. Only when this
-#' is true does the authorizer invoke the authorizer Lambda function,
-#' otherwise, it returns a 401 Unauthorized response without calling the
-#' Lambda function. The valid value is a string of comma-separated mapping
-#' expressions of the specified request parameters. When the authorization
-#' caching is not enabled, this property is optional.
-#' @param IdentityValidationExpression The validation expression does not apply to the REQUEST authorizer.
+#' For a REQUEST authorizer, this is optional. The value is a set of one or
+#' more mapping expressions of the specified request parameters. Currently,
+#' the identity source can be headers, query string parameters, stage
+#' variables, and context parameters. For example, if an Auth header and a
+#' Name query string parameter are defined as identity sources, this value
+#' is route.request.header.Auth, route.request.querystring.Name. These
+#' parameters will be used to perform runtime validation for Lambda-based
+#' authorizers by verifying all of the identity-related request parameters
+#' are present in the request, not null, and non-empty. Only when this is
+#' true does the authorizer invoke the authorizer Lambda function.
+#' Otherwise, it returns a 401 Unauthorized response without calling the
+#' Lambda function.
+#' 
+#' For JWT, a single entry that specifies where to extract the JSON Web
+#' Token (JWT) from inbound requests. Currently only header-based and query
+#' parameter-based selections are supported, for example
+#' \"\\$request.header.Authorization\".
+#' @param IdentityValidationExpression This parameter is not used.
+#' @param JwtConfiguration Represents the configuration of a JWT authorizer. Required for the JWT
+#' authorizer type. Supported only for HTTP APIs.
 #' @param Name The name of the authorizer.
-#' @param ProviderArns For REQUEST authorizer, this is not defined.
 #'
 #' @section Request syntax:
 #' ```
@@ -2355,30 +2640,33 @@ apigatewayv2_update_api_mapping <- function(ApiId, ApiMappingId, ApiMappingKey =
 #'   AuthorizerCredentialsArn = "string",
 #'   AuthorizerId = "string",
 #'   AuthorizerResultTtlInSeconds = 123,
-#'   AuthorizerType = "REQUEST",
+#'   AuthorizerType = "REQUEST"|"JWT",
 #'   AuthorizerUri = "string",
 #'   IdentitySource = list(
 #'     "string"
 #'   ),
 #'   IdentityValidationExpression = "string",
-#'   Name = "string",
-#'   ProviderArns = list(
-#'     "string"
-#'   )
+#'   JwtConfiguration = list(
+#'     Audience = list(
+#'       "string"
+#'     ),
+#'     Issuer = "string"
+#'   ),
+#'   Name = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_update_authorizer
-apigatewayv2_update_authorizer <- function(ApiId, AuthorizerCredentialsArn = NULL, AuthorizerId, AuthorizerResultTtlInSeconds = NULL, AuthorizerType = NULL, AuthorizerUri = NULL, IdentitySource = NULL, IdentityValidationExpression = NULL, Name = NULL, ProviderArns = NULL) {
+apigatewayv2_update_authorizer <- function(ApiId, AuthorizerCredentialsArn = NULL, AuthorizerId, AuthorizerResultTtlInSeconds = NULL, AuthorizerType = NULL, AuthorizerUri = NULL, IdentitySource = NULL, IdentityValidationExpression = NULL, JwtConfiguration = NULL, Name = NULL) {
   op <- new_operation(
     name = "UpdateAuthorizer",
     http_method = "PATCH",
     http_path = "/v2/apis/{apiId}/authorizers/{authorizerId}",
     paginator = list()
   )
-  input <- .apigatewayv2$update_authorizer_input(ApiId = ApiId, AuthorizerCredentialsArn = AuthorizerCredentialsArn, AuthorizerId = AuthorizerId, AuthorizerResultTtlInSeconds = AuthorizerResultTtlInSeconds, AuthorizerType = AuthorizerType, AuthorizerUri = AuthorizerUri, IdentitySource = IdentitySource, IdentityValidationExpression = IdentityValidationExpression, Name = Name, ProviderArns = ProviderArns)
+  input <- .apigatewayv2$update_authorizer_input(ApiId = ApiId, AuthorizerCredentialsArn = AuthorizerCredentialsArn, AuthorizerId = AuthorizerId, AuthorizerResultTtlInSeconds = AuthorizerResultTtlInSeconds, AuthorizerType = AuthorizerType, AuthorizerUri = AuthorizerUri, IdentitySource = IdentitySource, IdentityValidationExpression = IdentityValidationExpression, JwtConfiguration = JwtConfiguration, Name = Name)
   output <- .apigatewayv2$update_authorizer_output()
   config <- get_config()
   svc <- .apigatewayv2$service(config)
@@ -2450,11 +2738,11 @@ apigatewayv2_update_deployment <- function(ApiId, DeploymentId, Description = NU
 #'       CertificateUploadDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
+#'       DomainNameStatus = "AVAILABLE"|"UPDATING",
+#'       DomainNameStatusMessage = "string",
 #'       EndpointType = "REGIONAL"|"EDGE",
 #'       HostedZoneId = "string",
-#'       SecurityPolicy = "TLS_1_0"|"TLS_1_2",
-#'       DomainNameStatus = "AVAILABLE"|"UPDATING",
-#'       DomainNameStatusMessage = "string"
+#'       SecurityPolicy = "TLS_1_0"|"TLS_1_2"
 #'     )
 #'   )
 #' )
@@ -2488,17 +2776,17 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' apigatewayv2_update_integration(ApiId, ConnectionId, ConnectionType,
 #'   ContentHandlingStrategy, CredentialsArn, Description, IntegrationId,
 #'   IntegrationMethod, IntegrationType, IntegrationUri, PassthroughBehavior,
-#'   RequestParameters, RequestTemplates, TemplateSelectionExpression,
-#'   TimeoutInMillis)
+#'   PayloadFormatVersion, RequestParameters, RequestTemplates,
+#'   TemplateSelectionExpression, TimeoutInMillis)
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ConnectionId The connection ID.
 #' @param ConnectionType The type of the network connection to the integration endpoint.
 #' Currently the only valid value is INTERNET, for connections through the
 #' public routable internet.
-#' @param ContentHandlingStrategy Specifies how to handle response payload content type conversions.
-#' Supported values are CONVERT\\_TO\\_BINARY and CONVERT\\_TO\\_TEXT, with the
-#' following behaviors:
+#' @param ContentHandlingStrategy Supported only for WebSocket APIs. Specifies how to handle response
+#' payload content type conversions. Supported values are
+#' CONVERT\\_TO\\_BINARY and CONVERT\\_TO\\_TEXT, with the following behaviors:
 #' 
 #' CONVERT\\_TO\\_BINARY: Converts a response payload from a Base64-encoded
 #' string to the corresponding binary blob.
@@ -2524,7 +2812,7 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' action, including the Lambda function-invoking action. With the Lambda
 #' function-invoking action, this is referred to as the Lambda custom
 #' integration. With any other AWS service action, this is known as AWS
-#' integration.
+#' integration. Supported only for WebSocket APIs.
 #' 
 #' AWS\\_PROXY: for integrating the route or method request with the Lambda
 #' function-invoking action with the client request passed through as-is.
@@ -2532,19 +2820,21 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' 
 #' HTTP: for integrating the route or method request with an HTTP endpoint.
 #' This integration is also referred to as the HTTP custom integration.
+#' Supported only for WebSocket APIs.
 #' 
 #' HTTP\\_PROXY: for integrating route or method request with an HTTP
 #' endpoint, with the client request passed through as-is. This is also
 #' referred to as HTTP proxy integration.
 #' 
 #' MOCK: for integrating the route or method request with API Gateway as a
-#' \"loopback\" endpoint without invoking any backend.
+#' \"loopback\" endpoint without invoking any backend. Supported only for
+#' WebSocket APIs.
 #' @param IntegrationUri For a Lambda proxy integration, this is the URI of the Lambda function.
 #' @param PassthroughBehavior Specifies the pass-through behavior for incoming requests based on the
 #' Content-Type header in the request, and the available mapping templates
 #' specified as the requestTemplates property on the Integration resource.
 #' There are three valid values: WHEN\\_NO\\_MATCH, WHEN\\_NO\\_TEMPLATES, and
-#' NEVER.
+#' NEVER. Supported only for WebSocket APIs.
 #' 
 #' WHEN\\_NO\\_MATCH passes the request body for unmapped content types
 #' through to the integration backend without transformation.
@@ -2556,6 +2846,8 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' content types mapped to templates. However, if there is at least one
 #' content type defined, unmapped content types will be rejected with the
 #' same HTTP 415 Unsupported Media Type response.
+#' @param PayloadFormatVersion Specifies the format of the payload sent to an integration. Required for
+#' HTTP APIs. Currently, the only supported value is 1.0.
 #' @param RequestParameters A key-value map specifying request parameters that are passed from the
 #' method request to the backend. The key is an integration request
 #' parameter name and the associated value is a method request parameter
@@ -2563,14 +2855,16 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' pre-encoded as required by the backend. The method request parameter
 #' value must match the pattern of method.request.\{location\}.\{name\} , where
 #' \{location\} is querystring, path, or header; and \{name\} must be a valid
-#' and unique method request parameter name.
+#' and unique method request parameter name. Supported only for WebSocket
+#' APIs.
 #' @param RequestTemplates Represents a map of Velocity templates that are applied on the request
 #' payload based on the value of the Content-Type header sent by the
 #' client. The content type value is the key in this map, and the template
-#' (as a String) is the value.
+#' (as a String) is the value. Supported only for WebSocket APIs.
 #' @param TemplateSelectionExpression The template selection expression for the integration.
 #' @param TimeoutInMillis Custom timeout between 50 and 29,000 milliseconds. The default value is
-#' 29,000 milliseconds or 29 seconds.
+#' 29,000 milliseconds or 29 seconds for WebSocket APIs. The default value
+#' is 5,000 milliseconds, or 5 seconds for HTTP APIs.
 #'
 #' @section Request syntax:
 #' ```
@@ -2586,6 +2880,7 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #'   IntegrationType = "AWS"|"HTTP"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
 #'   IntegrationUri = "string",
 #'   PassthroughBehavior = "WHEN_NO_MATCH"|"NEVER"|"WHEN_NO_TEMPLATES",
+#'   PayloadFormatVersion = "string",
 #'   RequestParameters = list(
 #'     "string"
 #'   ),
@@ -2600,14 +2895,14 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_update_integration
-apigatewayv2_update_integration <- function(ApiId, ConnectionId = NULL, ConnectionType = NULL, ContentHandlingStrategy = NULL, CredentialsArn = NULL, Description = NULL, IntegrationId, IntegrationMethod = NULL, IntegrationType = NULL, IntegrationUri = NULL, PassthroughBehavior = NULL, RequestParameters = NULL, RequestTemplates = NULL, TemplateSelectionExpression = NULL, TimeoutInMillis = NULL) {
+apigatewayv2_update_integration <- function(ApiId, ConnectionId = NULL, ConnectionType = NULL, ContentHandlingStrategy = NULL, CredentialsArn = NULL, Description = NULL, IntegrationId, IntegrationMethod = NULL, IntegrationType = NULL, IntegrationUri = NULL, PassthroughBehavior = NULL, PayloadFormatVersion = NULL, RequestParameters = NULL, RequestTemplates = NULL, TemplateSelectionExpression = NULL, TimeoutInMillis = NULL) {
   op <- new_operation(
     name = "UpdateIntegration",
     http_method = "PATCH",
     http_path = "/v2/apis/{apiId}/integrations/{integrationId}",
     paginator = list()
   )
-  input <- .apigatewayv2$update_integration_input(ApiId = ApiId, ConnectionId = ConnectionId, ConnectionType = ConnectionType, ContentHandlingStrategy = ContentHandlingStrategy, CredentialsArn = CredentialsArn, Description = Description, IntegrationId = IntegrationId, IntegrationMethod = IntegrationMethod, IntegrationType = IntegrationType, IntegrationUri = IntegrationUri, PassthroughBehavior = PassthroughBehavior, RequestParameters = RequestParameters, RequestTemplates = RequestTemplates, TemplateSelectionExpression = TemplateSelectionExpression, TimeoutInMillis = TimeoutInMillis)
+  input <- .apigatewayv2$update_integration_input(ApiId = ApiId, ConnectionId = ConnectionId, ConnectionType = ConnectionType, ContentHandlingStrategy = ContentHandlingStrategy, CredentialsArn = CredentialsArn, Description = Description, IntegrationId = IntegrationId, IntegrationMethod = IntegrationMethod, IntegrationType = IntegrationType, IntegrationUri = IntegrationUri, PassthroughBehavior = PassthroughBehavior, PayloadFormatVersion = PayloadFormatVersion, RequestParameters = RequestParameters, RequestTemplates = RequestTemplates, TemplateSelectionExpression = TemplateSelectionExpression, TimeoutInMillis = TimeoutInMillis)
   output <- .apigatewayv2$update_integration_output()
   config <- get_config()
   svc <- .apigatewayv2$service(config)
@@ -2627,9 +2922,9 @@ apigatewayv2_update_integration <- function(ApiId, ConnectionId = NULL, Connecti
 #'   ResponseParameters, ResponseTemplates, TemplateSelectionExpression)
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
-#' @param ContentHandlingStrategy Specifies how to handle response payload content type conversions.
-#' Supported values are CONVERT\\_TO\\_BINARY and CONVERT\\_TO\\_TEXT, with the
-#' following behaviors:
+#' @param ContentHandlingStrategy Supported only for WebSocket APIs. Specifies how to handle response
+#' payload content type conversions. Supported values are
+#' CONVERT\\_TO\\_BINARY and CONVERT\\_TO\\_TEXT, with the following behaviors:
 #' 
 #' CONVERT\\_TO\\_BINARY: Converts a response payload from a Base64-encoded
 #' string to the corresponding binary blob.
@@ -2659,6 +2954,7 @@ apigatewayv2_update_integration <- function(ApiId, ConnectionId = NULL, Connecti
 #' represented as a key/value map, with a content-type as the key and a
 #' template as the value.
 #' @param TemplateSelectionExpression The template selection expression for the integration response.
+#' Supported only for WebSocket APIs.
 #'
 #' @section Request syntax:
 #' ```
@@ -2757,21 +3053,25 @@ apigatewayv2_update_model <- function(ApiId, ContentType = NULL, Description = N
 #'   RouteResponseSelectionExpression, Target)
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
-#' @param ApiKeyRequired Specifies whether an API key is required for the route.
+#' @param ApiKeyRequired Specifies whether an API key is required for the route. Supported only
+#' for WebSocket APIs.
 #' @param AuthorizationScopes The authorization scopes supported by this route.
-#' @param AuthorizationType The authorization type for the route. Valid values are NONE for open
-#' access, AWS\\_IAM for using AWS IAM permissions, and CUSTOM for using a
-#' Lambda authorizer.
+#' @param AuthorizationType The authorization type for the route. For WebSocket APIs, valid values
+#' are NONE for open access, AWS\\_IAM for using AWS IAM permissions, and
+#' CUSTOM for using a Lambda authorizer For HTTP APIs, valid values are
+#' NONE for open access, or JWT for using JSON Web Tokens.
 #' @param AuthorizerId The identifier of the Authorizer resource to be associated with this
-#' route, if the authorizationType is CUSTOM . The authorizer identifier is
-#' generated by API Gateway when you created the authorizer.
-#' @param ModelSelectionExpression The model selection expression for the route.
+#' route. The authorizer identifier is generated by API Gateway when you
+#' created the authorizer.
+#' @param ModelSelectionExpression The model selection expression for the route. Supported only for
+#' WebSocket APIs.
 #' @param OperationName The operation name for the route.
-#' @param RequestModels The request models for the route.
-#' @param RequestParameters The request parameters for the route.
+#' @param RequestModels The request models for the route. Supported only for WebSocket APIs.
+#' @param RequestParameters The request parameters for the route. Supported only for WebSocket APIs.
 #' @param RouteId &#91;required&#93; The route ID.
 #' @param RouteKey The route key for the route.
-#' @param RouteResponseSelectionExpression The route response selection expression for the route.
+#' @param RouteResponseSelectionExpression The route response selection expression for the route. Supported only
+#' for WebSocket APIs.
 #' @param Target The target for the route.
 #'
 #' @section Request syntax:
@@ -2782,7 +3082,7 @@ apigatewayv2_update_model <- function(ApiId, ContentType = NULL, Description = N
 #'   AuthorizationScopes = list(
 #'     "string"
 #'   ),
-#'   AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM",
+#'   AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM"|"JWT",
 #'   AuthorizerId = "string",
 #'   ModelSelectionExpression = "string",
 #'   OperationName = "string",
@@ -2831,7 +3131,8 @@ apigatewayv2_update_route <- function(ApiId, ApiKeyRequired = NULL, Authorizatio
 #'   RouteResponseKey)
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
-#' @param ModelSelectionExpression The model selection expression for the route response.
+#' @param ModelSelectionExpression The model selection expression for the route response. Supported only
+#' for WebSocket APIs.
 #' @param ResponseModels The response models for the route response.
 #' @param ResponseParameters The route response parameters.
 #' @param RouteId &#91;required&#93; The route ID.
@@ -2882,21 +3183,25 @@ apigatewayv2_update_route_response <- function(ApiId, ModelSelectionExpression =
 #' Updates a Stage.
 #'
 #' @usage
-#' apigatewayv2_update_stage(AccessLogSettings, ApiId, ClientCertificateId,
-#'   DefaultRouteSettings, DeploymentId, Description, RouteSettings,
-#'   StageName, StageVariables)
+#' apigatewayv2_update_stage(AccessLogSettings, ApiId, AutoDeploy,
+#'   ClientCertificateId, DefaultRouteSettings, DeploymentId, Description,
+#'   RouteSettings, StageName, StageVariables)
 #'
 #' @param AccessLogSettings Settings for logging access in this stage.
 #' @param ApiId &#91;required&#93; The API identifier.
+#' @param AutoDeploy Specifies whether updates to an API automatically trigger a new
+#' deployment. The default value is false.
 #' @param ClientCertificateId The identifier of a client certificate for a Stage.
 #' @param DefaultRouteSettings The default route settings for the stage.
-#' @param DeploymentId The deployment identifier for the API stage.
+#' @param DeploymentId The deployment identifier for the API stage. Can\'t be updated if
+#' autoDeploy is enabled.
 #' @param Description The description for the API stage.
 #' @param RouteSettings Route settings for the stage.
-#' @param StageName &#91;required&#93; The stage name.
+#' @param StageName &#91;required&#93; The stage name. Stage names can only contain alphanumeric characters,
+#' hyphens, and underscores. Maximum length is 128 characters.
 #' @param StageVariables A map that defines the stage variables for a Stage. Variable names can
 #' have alphanumeric and underscore characters, and the values must match
-#' \[A-Za-z0-9-.\\_\~:/?\\#&=,\]+.
+#' \[A-Za-z0-9-.\\_\~:/?\\#&=,\]+. Supported only for WebSocket APIs.
 #'
 #' @section Request syntax:
 #' ```
@@ -2906,6 +3211,7 @@ apigatewayv2_update_route_response <- function(ApiId, ModelSelectionExpression =
 #'     Format = "string"
 #'   ),
 #'   ApiId = "string",
+#'   AutoDeploy = TRUE|FALSE,
 #'   ClientCertificateId = "string",
 #'   DefaultRouteSettings = list(
 #'     DataTraceEnabled = TRUE|FALSE,
@@ -2935,14 +3241,14 @@ apigatewayv2_update_route_response <- function(ApiId, ModelSelectionExpression =
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_update_stage
-apigatewayv2_update_stage <- function(AccessLogSettings = NULL, ApiId, ClientCertificateId = NULL, DefaultRouteSettings = NULL, DeploymentId = NULL, Description = NULL, RouteSettings = NULL, StageName, StageVariables = NULL) {
+apigatewayv2_update_stage <- function(AccessLogSettings = NULL, ApiId, AutoDeploy = NULL, ClientCertificateId = NULL, DefaultRouteSettings = NULL, DeploymentId = NULL, Description = NULL, RouteSettings = NULL, StageName, StageVariables = NULL) {
   op <- new_operation(
     name = "UpdateStage",
     http_method = "PATCH",
     http_path = "/v2/apis/{apiId}/stages/{stageName}",
     paginator = list()
   )
-  input <- .apigatewayv2$update_stage_input(AccessLogSettings = AccessLogSettings, ApiId = ApiId, ClientCertificateId = ClientCertificateId, DefaultRouteSettings = DefaultRouteSettings, DeploymentId = DeploymentId, Description = Description, RouteSettings = RouteSettings, StageName = StageName, StageVariables = StageVariables)
+  input <- .apigatewayv2$update_stage_input(AccessLogSettings = AccessLogSettings, ApiId = ApiId, AutoDeploy = AutoDeploy, ClientCertificateId = ClientCertificateId, DefaultRouteSettings = DefaultRouteSettings, DeploymentId = DeploymentId, Description = Description, RouteSettings = RouteSettings, StageName = StageName, StageVariables = StageVariables)
   output <- .apigatewayv2$update_stage_output()
   config <- get_config()
   svc <- .apigatewayv2$service(config)

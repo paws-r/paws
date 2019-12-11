@@ -9,7 +9,7 @@ gamelift_create_matchmaking_rule_set(Name, RuleSetBody)
 \arguments{
 \item{Name}{[required] Unique identifier for a matchmaking rule set. A matchmaking
 configuration identifies the rule set it uses by this name value. (Note:
-The rule set name is different from the optional "name" field in the
+The rule set name is different from the optional \"name\" field in the
 rule set body.)}
 
 \item{RuleSetBody}{[required] Collection of matchmaking rules, formatted as a JSON string. Comments

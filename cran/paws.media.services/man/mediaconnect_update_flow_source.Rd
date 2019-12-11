@@ -19,9 +19,9 @@ mediaconnect_update_flow_source(Decryption, Description, EntitlementArn,
 
 \item{IngestPort}{The port that the flow will be listening on for incoming content.}
 
-\item{MaxBitrate}{The smoothing max bitrate for RTP and RTP-FEC streams.}
+\item{MaxBitrate}{The smoothing max bitrate for RIST, RTP, and RTP-FEC streams.}
 
-\item{MaxLatency}{The maximum latency in milliseconds for Zixi-based streams.}
+\item{MaxLatency}{The maximum latency in milliseconds. This parameter applies only to RIST-based and Zixi-based streams.}
 
 \item{Protocol}{The protocol that is used by the source.}
 
@@ -29,7 +29,7 @@ mediaconnect_update_flow_source(Decryption, Description, EntitlementArn,
 
 \item{StreamId}{The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams.}
 
-\item{WhitelistCidr}{The range of IP addresses that should be allowed to contribute content to your source. These IP addresses should in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.}
+\item{WhitelistCidr}{The range of IP addresses that should be allowed to contribute content to your source. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.}
 }
 \description{
 Updates the source of a flow.
@@ -53,7 +53,7 @@ Updates the source of a flow.
   IngestPort = 123,
   MaxBitrate = 123,
   MaxLatency = 123,
-  Protocol = "zixi-push"|"rtp-fec"|"rtp",
+  Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
   SourceArn = "string",
   StreamId = "string",
   WhitelistCidr = "string"

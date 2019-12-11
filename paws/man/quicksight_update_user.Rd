@@ -20,7 +20,7 @@ ID for the AWS account that contains your Amazon QuickSight account.}
 following:
 \itemize{
 \item \code{READER}: A user who has read-only access to dashboards.
-\item \code{AUTHOR}: A user who can create data sources, data sets, analyses,
+\item \code{AUTHOR}: A user who can create data sources, datasets, analyses,
 and dashboards.
 \item \code{ADMIN}: A user who is an author, who can also manage Amazon
 QuickSight settings.
@@ -28,18 +28,6 @@ QuickSight settings.
 }
 \description{
 Updates an Amazon QuickSight user.
-}
-\details{
-The permission resource is
-\code{arn:aws:quicksight:us-east-1:<i>&lt;aws-account-id&gt;</i>:user/default/<i>&lt;user-name&gt;</i> }.
-
-The response is a user object that contains the user's Amazon
-QuickSight user name, email address, active or inactive status in Amazon
-QuickSight, Amazon QuickSight role, and Amazon Resource Name (ARN).
-
-\strong{CLI Sample:}
-
-\code{aws quicksight update-user --user-name=Pat --role=ADMIN --email=new_address@amazon.com --aws-account-id=111122223333 --namespace=default --region=us-east-1 }
 }
 \section{Request syntax}{
 \preformatted{svc$update_user(

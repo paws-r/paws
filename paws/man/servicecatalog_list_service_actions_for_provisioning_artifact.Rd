@@ -12,7 +12,7 @@ servicecatalog_list_service_actions_for_provisioning_artifact(ProductId,
 \item{ProductId}{[required] The product identifier. For example, \code{prod-abcdzk7xy33qa}.}
 
 \item{ProvisioningArtifactId}{[required] The identifier of the provisioning artifact. For example,
-\code{pa-4abcdjnxjj6ne}.}
+\verb{pa-4abcdjnxjj6ne}.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 

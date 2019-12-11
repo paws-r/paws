@@ -25,7 +25,7 @@ security profile.}
 \description{
 Lists the Device Defender security profile violations discovered during
 the given time period. You can use filters to limit the results to those
-alerts issued for a particular security profile, behavior or thing
+alerts issued for a particular security profile, behavior, or thing
 (device).
 }
 \section{Request syntax}{

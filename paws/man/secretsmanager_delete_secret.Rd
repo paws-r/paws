@@ -25,13 +25,13 @@ To avoid this situation, we recommend that you don't create secret names
 that end with a hyphen followed by six characters.}
 
 \item{RecoveryWindowInDays}{(Optional) Specifies the number of days that Secrets Manager waits
-before it can delete the secret. You can't use both this parameter and
+before it can delete the secret. You can\'t use both this parameter and
 the \code{ForceDeleteWithoutRecovery} parameter in the same API call.
 
 This value can range from 7 to 30 days. The default value is 30.}
 
 \item{ForceDeleteWithoutRecovery}{(Optional) Specifies that the secret is to be deleted without any
-recovery window. You can't use both this parameter and the
+recovery window. You can\'t use both this parameter and the
 \code{RecoveryWindowInDays} parameter in the same API call.
 
 An asynchronous background process performs the actual deletion, so
@@ -49,7 +49,7 @@ have no opportunity to recover the secret. It is permanently lost.}
 \description{
 Deletes an entire secret and all of its versions. You can optionally
 include a recovery window during which you can restore the secret. If
-you don't specify a recovery window value, the operation defaults to 30
+you don\'t specify a recovery window value, the operation defaults to 30
 days. Secrets Manager attaches a \code{DeletionDate} stamp to the secret that
 specifies the end of the recovery window. At the end of the recovery
 window, Secrets Manager deletes the secret permanently.

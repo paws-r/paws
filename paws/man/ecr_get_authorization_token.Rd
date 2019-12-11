@@ -19,9 +19,9 @@ is assumed.
 }
 \details{
 The \code{authorizationToken} returned for each registry specified is a
-base64 encoded string that can be decoded and used in a \code{docker login}
+base64 encoded string that can be decoded and used in a \verb{docker login}
 command to authenticate to a registry. The AWS CLI offers an
-\code{aws ecr get-login} command that simplifies the login process.
+\verb{aws ecr get-login} command that simplifies the login process.
 }
 \section{Request syntax}{
 \preformatted{svc$get_authorization_token(

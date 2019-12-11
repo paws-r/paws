@@ -9,15 +9,15 @@ glue_update_partition(CatalogId, DatabaseName, TableName,
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the partition to be updated resides. If
-none is supplied, the AWS account ID is used by default.}
+none is provided, the AWS account ID is used by default.}
 
 \item{DatabaseName}{[required] The name of the catalog database in which the table in question resides.}
 
-\item{TableName}{[required] The name of the table where the partition to be updated is located.}
+\item{TableName}{[required] The name of the table in which the partition to be updated is located.}
 
 \item{PartitionValueList}{[required] A list of the values defining the partition.}
 
-\item{PartitionInput}{[required] The new partition object to which to update the partition.}
+\item{PartitionInput}{[required] The new partition object to update the partition to.}
 }
 \description{
 Updates a partition.
@@ -42,7 +42,10 @@ Updates a partition.
         list(
           Name = "string",
           Type = "string",
-          Comment = "string"
+          Comment = "string",
+          Parameters = list(
+            "string"
+          )
         )
       ),
       Location = "string",

@@ -2,23 +2,23 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_update_findings_feedback}
 \alias{guardduty_update_findings_feedback}
-\title{Marks specified Amazon GuardDuty findings as useful or not useful}
+\title{Marks the specified GuardDuty findings as useful or not useful}
 \usage{
 guardduty_update_findings_feedback(DetectorId, FindingIds, Feedback,
   Comments)
 }
 \arguments{
-\item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose
-findings you want to mark as useful or not useful.}
+\item{DetectorId}{[required] The ID of the detector associated with the findings to update feedback
+for.}
 
 \item{FindingIds}{[required] IDs of the findings that you want to mark as useful or not useful.}
 
-\item{Feedback}{[required] Valid values: USEFUL \| NOT\_USEFUL}
+\item{Feedback}{[required] The feedback for the finding.}
 
 \item{Comments}{Additional feedback about the GuardDuty findings.}
 }
 \description{
-Marks specified Amazon GuardDuty findings as useful or not useful.
+Marks the specified GuardDuty findings as useful or not useful.
 }
 \section{Request syntax}{
 \preformatted{svc$update_findings_feedback(

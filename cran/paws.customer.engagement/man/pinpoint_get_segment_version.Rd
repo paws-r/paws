@@ -18,7 +18,7 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \description{
 Retrieves information about the configuration, dimension, and other
-settings for a specific version of a segment that's associated with an
+settings for a specific version of a segment that\'s associated with an
 application.
 }
 \section{Request syntax}{

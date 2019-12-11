@@ -10,9 +10,9 @@ lexmodelbuildingservice_put_slot_type(name, description,
 \arguments{
 \item{name}{[required] The name of the slot type. The name is \emph{not} case sensitive.
 
-The name can't match a built-in slot type name, or a built-in slot type
-name with "AMAZON." removed. For example, because there is a built-in
-slot type called \code{AMAZON.DATE}, you can't create a custom slot type
+The name can\'t match a built-in slot type name, or a built-in slot type
+name with \"AMAZON.\" removed. For example, because there is a built-in
+slot type called \code{AMAZON.DATE}, you can\'t create a custom slot type
 called \code{DATE}.
 
 For a list of built-in slot types, see \href{https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/slot-type-reference}{Slot Type Reference}
@@ -33,15 +33,15 @@ that the user entered or the first value in the resolution list as the
 slot value. The \code{valueSelectionStrategy} field indicates the option to
 use.}
 
-\item{checksum}{Identifies a specific revision of the \code{$LATEST} version.
+\item{checksum}{Identifies a specific revision of the \verb{$LATEST} version.
 
 When you create a new slot type, leave the \code{checksum} field blank. If
 you specify a checksum you get a \code{BadRequestException} exception.
 
 When you want to update a slot type, set the \code{checksum} field to the
-checksum of the most recent revision of the \code{$LATEST} version. If you
-don't specify the \code{ checksum} field, or if the checksum does not match
-the \code{$LATEST} version, you get a \code{PreconditionFailedException}
+checksum of the most recent revision of the \verb{$LATEST} version. If you
+don\'t specify the \code{ checksum} field, or if the checksum does not match
+the \verb{$LATEST} version, you get a \code{PreconditionFailedException}
 exception.}
 
 \item{valueSelectionStrategy}{Determines the slot resolution strategy that Amazon Lex uses to return
@@ -54,10 +54,12 @@ return the first value in the resolution list as the slot type
 value. If there is no resolution list, null is returned.
 }
 
-If you don't specify the \code{valueSelectionStrategy}, the default is
+If you don\'t specify the \code{valueSelectionStrategy}, the default is
 \code{ORIGINAL_VALUE}.}
 
-\item{createVersion}{}
+\item{createVersion}{When set to \code{true} a new numbered version of the slot type is created.
+This is the same as calling the \code{CreateSlotTypeVersion} operation. If
+you do not specify \code{createVersion}, the default is \code{false}.}
 }
 \description{
 Creates a custom slot type or replaces an existing custom slot type.
@@ -68,12 +70,12 @@ of enumeration values, which are the values that a slot of this type can
 assume. For more information, see how-it-works.
 
 If you specify the name of an existing slot type, the fields in the
-request replace the existing values in the \code{$LATEST} version of the slot
-type. Amazon Lex removes the fields that you don't provide in the
-request. If you don't specify required fields, Amazon Lex throws an
-exception. When you update the \code{$LATEST} version of a slot type, if a
-bot uses the \code{$LATEST} version of an intent that contains the slot type,
-the bot's \code{status} field is set to \code{NOT_BUILT}.
+request replace the existing values in the \verb{$LATEST} version of the slot
+type. Amazon Lex removes the fields that you don\'t provide in the
+request. If you don\'t specify required fields, Amazon Lex throws an
+exception. When you update the \verb{$LATEST} version of a slot type, if a
+bot uses the \verb{$LATEST} version of an intent that contains the slot type,
+the bot\'s \code{status} field is set to \code{NOT_BUILT}.
 
 This operation requires permissions for the \code{lex:PutSlotType} action.
 }

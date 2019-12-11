@@ -12,11 +12,18 @@ activity.}
 
 \item{tags}{[required] The list of tags to add to a resource.
 
-Tags may only contain unicode letters, digits, whitespace, or these
-symbols: \code{_ . : / = + - @}.}
+Tags may only contain Unicode letters, digits, white space, or these
+symbols: \verb{_ . : / = + - @}.}
 }
 \description{
 Add a tag to a Step Functions resource.
+}
+\details{
+An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags}
+in the \emph{AWS Billing and Cost Management User Guide}, and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html}{Controlling Access Using IAM Tags}.
+
+Tags may only contain Unicode letters, digits, white space, or these
+symbols: \verb{_ . : / = + - @}.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

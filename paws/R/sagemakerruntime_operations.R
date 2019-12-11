@@ -12,18 +12,24 @@ NULL
 #' the model hosted at the specified endpoint.
 #' 
 #' For an overview of Amazon SageMaker, see [How It
-#' Works](http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html).
+#' Works](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html).
 #' 
 #' Amazon SageMaker strips all POST headers except those supported by the
 #' API. Amazon SageMaker might add additional headers. You should not rely
 #' on the behavior of headers outside those enumerated in the request
 #' syntax.
 #' 
-#' Cals to `InvokeEndpoint` are authenticated by using AWS Signature
+#' Calls to `InvokeEndpoint` are authenticated by using AWS Signature
 #' Version 4. For information, see [Authenticating Requests (AWS Signature
 #' Version
 #' 4)](http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html)
 #' in the *Amazon S3 API Reference*.
+#' 
+#' A customer\'s model containers must respond to requests within 60
+#' seconds. The model itself can have a maximum processing time of 60
+#' seconds before responding to the /invocations. If your model is going to
+#' take 50-60 seconds of processing time, the SDK socket timeout should be
+#' set to be 70 seconds.
 #' 
 #' Endpoints are scoped to an individual account, and are not public. The
 #' URL does not contain the account ID, but Amazon SageMaker determines the
@@ -31,21 +37,32 @@ NULL
 #'
 #' @usage
 #' sagemakerruntime_invoke_endpoint(EndpointName, Body, ContentType,
-#'   Accept, CustomAttributes)
+#'   Accept, CustomAttributes, TargetModel)
 #'
 #' @param EndpointName &#91;required&#93; The name of the endpoint that you specified when you created the
 #' endpoint using the
-#' [CreateEndpoint](http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html)
+#' [CreateEndpoint](https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html)
 #' API.
 #' @param Body &#91;required&#93; Provides input data, in the format specified in the `ContentType`
 #' request header. Amazon SageMaker passes all of the data in the body to
 #' the model.
 #' 
 #' For information about the format of the request body, see [Common Data
-#' Formats---Inference](http://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html).
+#' Formats---Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html).
 #' @param ContentType The MIME type of the input data in the request body.
 #' @param Accept The desired MIME type of the inference in the response.
-#' @param CustomAttributes 
+#' @param CustomAttributes Provides additional information about a request for an inference
+#' submitted to a model hosted at an Amazon SageMaker endpoint. The
+#' information is an opaque value that is forwarded verbatim. You could use
+#' this value, for example, to provide an ID that you can use to track a
+#' request or to provide other metadata that a service endpoint was
+#' programmed to process. The value must consist of no more than 1024
+#' visible US-ASCII characters as specified in [Section 3.3.6. Field Value
+#' Components](https://tools.ietf.org/html/rfc7230#section-3.2.6) of the
+#' Hypertext Transfer Protocol (HTTP/1.1). This feature is currently
+#' supported in the AWS SDKs but not in the Amazon SageMaker Python SDK.
+#' @param TargetModel Specifies the model to be requested for an inference when invoking a
+#' multi-model endpoint.
 #'
 #' @section Request syntax:
 #' ```
@@ -54,21 +71,22 @@ NULL
 #'   Body = raw,
 #'   ContentType = "string",
 #'   Accept = "string",
-#'   CustomAttributes = "string"
+#'   CustomAttributes = "string",
+#'   TargetModel = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname sagemakerruntime_invoke_endpoint
-sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = NULL, Accept = NULL, CustomAttributes = NULL) {
+sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, TargetModel = NULL) {
   op <- new_operation(
     name = "InvokeEndpoint",
     http_method = "POST",
     http_path = "/endpoints/{EndpointName}/invocations",
     paginator = list()
   )
-  input <- .sagemakerruntime$invoke_endpoint_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes)
+  input <- .sagemakerruntime$invoke_endpoint_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetModel = TargetModel)
   output <- .sagemakerruntime$invoke_endpoint_output()
   config <- get_config()
   svc <- .sagemakerruntime$service(config)

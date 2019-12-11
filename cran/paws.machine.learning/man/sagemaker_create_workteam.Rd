@@ -12,7 +12,7 @@ sagemaker_create_workteam(WorkteamName, MemberDefinitions, Description,
 
 \item{MemberDefinitions}{[required] A list of \code{MemberDefinition} objects that contains objects that identify
 the Amazon Cognito user pool that makes up the work team. For more
-information, see \href{http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html}{Amazon Cognito User Pools}.
+information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html}{Amazon Cognito User Pools}.
 
 All of the \code{CognitoMemberDefinition} objects that make up the member
 definition must have the same \code{ClientId} and \code{UserPool} values.}
@@ -22,7 +22,11 @@ definition must have the same \code{ClientId} and \code{UserPool} values.}
 \item{NotificationConfiguration}{Configures notification of workers regarding available or expiring work
 items.}
 
-\item{Tags}{}
+\item{Tags}{An array of key-value pairs.
+
+For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html}{Resource Tag}
+and \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
+in the \emph{AWS Billing and Cost Management User Guide}.}
 }
 \description{
 Creates a new work team for labeling your data. A work team is defined

@@ -7,7 +7,7 @@
 cloudformation_delete_stack_set(StackSetName)
 }
 \arguments{
-\item{StackSetName}{[required] The name or unique ID of the stack set that you're deleting. You can
+\item{StackSetName}{[required] The name or unique ID of the stack set that you\'re deleting. You can
 obtain this value by running ListStackSets.}
 }
 \description{

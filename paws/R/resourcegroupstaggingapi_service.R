@@ -21,24 +21,37 @@ NULL
 #' You can use the resource groups tagging API operations to complete the
 #' following tasks:
 #' 
-#' -   Tag and untag supported resources located in the specified region
-#'     for the AWS account
+#' -   Tag and untag supported resources located in the specified Region
+#'     for the AWS account.
 #' 
 #' -   Use tag-based filters to search for resources located in the
-#'     specified region for the AWS account
+#'     specified Region for the AWS account.
 #' 
-#' -   List all existing tag keys in the specified region for the AWS
-#'     account
+#' -   List all existing tag keys in the specified Region for the AWS
+#'     account.
 #' 
 #' -   List all existing values for the specified key in the specified
-#'     region for the AWS account
+#'     Region for the AWS account.
 #' 
-#' To make full use of the resource groups tagging API operations, you
-#' might need additional IAM permissions, including permission to access
-#' the resources of individual services as well as permission to view and
-#' apply tags to those resources. For more information, see [Obtaining
-#' Permissions for Resource Groups and Tag
-#' Editor](http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-resource-groups.html).
+#' To use resource groups tagging API operations, you must add the
+#' following permissions to your IAM policy:
+#' 
+#' -   `tag:GetResources`
+#' 
+#' -   `tag:TagResources`
+#' 
+#' -   `tag:UntagResources`
+#' 
+#' -   `tag:GetTagKeys`
+#' 
+#' -   `tag:GetTagValues`
+#' 
+#' You\'ll also need permissions to access the resources of individual
+#' services so that you can tag and untag those resources.
+#' 
+#' For more information on IAM policies, see [Managing IAM
+#' Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage.html)
+#' in the *IAM User Guide*.
 #' 
 #' You can use the Resource Groups Tagging API to tag resources for the
 #' following AWS services.
@@ -47,13 +60,17 @@ NULL
 #' 
 #' -   API Gateway
 #' 
-#' -   AWS AppStream
+#' -   Amazon AppStream
 #' 
 #' -   AWS AppSync
+#' 
+#' -   AWS App Mesh
 #' 
 #' -   Amazon Athena
 #' 
 #' -   Amazon Aurora
+#' 
+#' -   AWS Backup
 #' 
 #' -   AWS Certificate Manager
 #' 
@@ -77,6 +94,10 @@ NULL
 #' 
 #' -   AWS CodeBuild
 #' 
+#' -   AWS CodeCommit
+#' 
+#' -   AWS CodePipeline
+#' 
 #' -   AWS CodeStar
 #' 
 #' -   Amazon Cognito Identity
@@ -91,7 +112,7 @@ NULL
 #' 
 #' -   AWS Database Migration Service
 #' 
-#' -   AWS Datasync
+#' -   AWS DataSync
 #' 
 #' -   AWS Direct Connect
 #' 
@@ -127,9 +148,11 @@ NULL
 #' 
 #' -   Amazon FSx
 #' 
-#' -   Amazon Glacier
+#' -   Amazon S3 Glacier
 #' 
 #' -   AWS Glue
+#' 
+#' -   Amazon GuardDuty
 #' 
 #' -   Amazon Inspector
 #' 
@@ -140,6 +163,8 @@ NULL
 #' -   AWS IoT Device Defender
 #' 
 #' -   AWS IoT Device Management
+#' 
+#' -   AWS IoT Events
 #' 
 #' -   AWS IoT Greengrass
 #' 
@@ -165,6 +190,10 @@ NULL
 #' 
 #' -   AWS OpsWorks
 #' 
+#' -   AWS Organizations
+#' 
+#' -   Amazon Quantum Ledger Database (QLDB)
+#' 
 #' -   Amazon RDS
 #' 
 #' -   Amazon Redshift
@@ -185,17 +214,19 @@ NULL
 #' 
 #' -   AWS Secrets Manager
 #' 
+#' -   AWS Security Hub
+#' 
 #' -   AWS Service Catalog
 #' 
 #' -   Amazon Simple Notification Service (SNS)
 #' 
 #' -   Amazon Simple Queue Service (SQS)
 #' 
-#' -   AWS Simple System Manager (SSM)
-#' 
 #' -   AWS Step Functions
 #' 
 #' -   AWS Storage Gateway
+#' 
+#' -   AWS Systems Manager
 #' 
 #' -   AWS Transfer for SFTP
 #' 
@@ -227,15 +258,18 @@ NULL
 #'
 #' @examples
 #' \donttest{svc <- resourcegroupstaggingapi()
-#' svc$get_resources(
+#' svc$describe_report_creation(
 #'   Foo = 123
 #' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=resourcegroupstaggingapi_get_resources]{get_resources} \tab Returns all the tagged or previously tagged resources that are located in the specified region for the AWS account\cr
-#'  \link[=resourcegroupstaggingapi_get_tag_keys]{get_tag_keys} \tab Returns all tag keys in the specified region for the AWS account \cr
-#'  \link[=resourcegroupstaggingapi_get_tag_values]{get_tag_values} \tab Returns all tag values for the specified key in the specified region for the AWS account \cr
+#'  \link[=resourcegroupstaggingapi_describe_report_creation]{describe_report_creation} \tab Describes the status of the StartReportCreation operation \cr
+#'  \link[=resourcegroupstaggingapi_get_compliance_summary]{get_compliance_summary} \tab Returns a table that shows counts of resources that are noncompliant with their tag policies \cr
+#'  \link[=resourcegroupstaggingapi_get_resources]{get_resources} \tab Returns all the tagged or previously tagged resources that are located in the specified Region for the AWS account \cr
+#'  \link[=resourcegroupstaggingapi_get_tag_keys]{get_tag_keys} \tab Returns all tag keys in the specified Region for the AWS account \cr
+#'  \link[=resourcegroupstaggingapi_get_tag_values]{get_tag_values} \tab Returns all tag values for the specified key in the specified Region for the AWS account \cr
+#'  \link[=resourcegroupstaggingapi_start_report_creation]{start_report_creation} \tab Generates a report that lists all tagged resources in accounts across your organization and tells whether each resource is compliant with the effective tag policy\cr
 #'  \link[=resourcegroupstaggingapi_tag_resources]{tag_resources} \tab Applies one or more tags to the specified resources \cr
 #'  \link[=resourcegroupstaggingapi_untag_resources]{untag_resources} \tab Removes the specified tags from the specified resources 
 #' }

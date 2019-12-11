@@ -2,63 +2,104 @@
 % Please edit documentation in R/glue_operations.R
 \name{glue_create_dev_endpoint}
 \alias{glue_create_dev_endpoint}
-\title{Creates a new DevEndpoint}
+\title{Creates a new development endpoint}
 \usage{
 glue_create_dev_endpoint(EndpointName, RoleArn, SecurityGroupIds,
-  SubnetId, PublicKey, PublicKeys, NumberOfNodes, ExtraPythonLibsS3Path,
-  ExtraJarsS3Path, SecurityConfiguration, Tags, Arguments)
+  SubnetId, PublicKey, PublicKeys, NumberOfNodes, WorkerType, GlueVersion,
+  NumberOfWorkers, ExtraPythonLibsS3Path, ExtraJarsS3Path,
+  SecurityConfiguration, Tags, Arguments)
 }
 \arguments{
-\item{EndpointName}{[required] The name to be assigned to the new DevEndpoint.}
+\item{EndpointName}{[required] The name to be assigned to the new \code{DevEndpoint}.}
 
-\item{RoleArn}{[required] The IAM role for the DevEndpoint.}
+\item{RoleArn}{[required] The IAM role for the \code{DevEndpoint}.}
 
 \item{SecurityGroupIds}{Security group IDs for the security groups to be used by the new
-DevEndpoint.}
+\code{DevEndpoint}.}
 
-\item{SubnetId}{The subnet ID for the new DevEndpoint to use.}
+\item{SubnetId}{The subnet ID for the new \code{DevEndpoint} to use.}
 
-\item{PublicKey}{The public key to be used by this DevEndpoint for authentication. This
-attribute is provided for backward compatibility, as the recommended
+\item{PublicKey}{The public key to be used by this \code{DevEndpoint} for authentication. This
+attribute is provided for backward compatibility because the recommended
 attribute to use is public keys.}
 
-\item{PublicKeys}{A list of public keys to be used by the DevEndpoints for authentication.
-The use of this attribute is preferred over a single public key because
-the public keys allow you to have a different private key per client.
+\item{PublicKeys}{A list of public keys to be used by the development endpoints for
+authentication. The use of this attribute is preferred over a single
+public key because the public keys allow you to have a different private
+key per client.
 
 If you previously created an endpoint with a public key, you must remove
-that key to be able to set a list of public keys: call the
+that key to be able to set a list of public keys. Call the
 \code{UpdateDevEndpoint} API with the public key content in the
 \code{deletePublicKeys} attribute, and the list of new keys in the
 \code{addPublicKeys} attribute.}
 
 \item{NumberOfNodes}{The number of AWS Glue Data Processing Units (DPUs) to allocate to this
-DevEndpoint.}
+\code{DevEndpoint}.}
 
-\item{ExtraPythonLibsS3Path}{Path(s) to one or more Python libraries in an S3 bucket that should be
-loaded in your DevEndpoint. Multiple values must be complete paths
-separated by a comma.
+\item{WorkerType}{The type of predefined worker that is allocated to the development
+endpoint. Accepts a value of Standard, G.1X, or G.2X.
+\itemize{
+\item For the \code{Standard} worker type, each worker provides 4 vCPU, 16 GB
+of memory and a 50GB disk, and 2 executors per worker.
+\item For the \code{G.1X} worker type, each worker maps to 1 DPU (4 vCPU, 16 GB
+of memory, 64 GB disk), and provides 1 executor per worker. We
+recommend this worker type for memory-intensive jobs.
+\item For the \code{G.2X} worker type, each worker maps to 2 DPU (8 vCPU, 32 GB
+of memory, 128 GB disk), and provides 1 executor per worker. We
+recommend this worker type for memory-intensive jobs.
+}
 
-Please note that only pure Python libraries can currently be used on a
-DevEndpoint. Libraries that rely on C extensions, such as the
+Known issue: when a development endpoint is created with the \code{G.2X}
+\code{WorkerType} configuration, the Spark drivers for the development
+endpoint will run on 4 vCPU, 16 GB of memory, and a 64 GB disk.}
+
+\item{GlueVersion}{Glue version determines the versions of Apache Spark and Python that AWS
+Glue supports. The Python version indicates the version supported for
+running your ETL scripts on development endpoints.
+
+For more information about the available AWS Glue versions and
+corresponding Spark and Python versions, see \href{https://docs.aws.amazon.com/glue/latest/dg/add-job.html}{Glue version} in the
+developer guide.
+
+Development endpoints that are created without specifying a Glue version
+default to Glue 0.9.
+
+You can specify a version of Python support for development endpoints by
+using the \code{Arguments} parameter in the \code{CreateDevEndpoint} or
+\code{UpdateDevEndpoint} APIs. If no arguments are provided, the version
+defaults to Python 2.}
+
+\item{NumberOfWorkers}{The number of workers of a defined \code{workerType} that are allocated to
+the development endpoint.
+
+The maximum number of workers you can define are 299 for \code{G.1X}, and 149
+for \code{G.2X}.}
+
+\item{ExtraPythonLibsS3Path}{The paths to one or more Python libraries in an Amazon S3 bucket that
+should be loaded in your \code{DevEndpoint}. Multiple values must be complete
+paths separated by a comma.
+
+You can only use pure Python libraries with a \code{DevEndpoint}. Libraries
+that rely on C extensions, such as the
 \href{http://pandas.pydata.org/}{pandas} Python data analysis library, are
 not yet supported.}
 
-\item{ExtraJarsS3Path}{Path to one or more Java Jars in an S3 bucket that should be loaded in
-your DevEndpoint.}
+\item{ExtraJarsS3Path}{The path to one or more Java \code{.jar} files in an S3 bucket that should be
+loaded in your \code{DevEndpoint}.}
 
-\item{SecurityConfiguration}{The name of the SecurityConfiguration structure to be used with this
-DevEndpoint.}
+\item{SecurityConfiguration}{The name of the \code{SecurityConfiguration} structure to be used with this
+\code{DevEndpoint}.}
 
 \item{Tags}{The tags to use with this DevEndpoint. You may use tags to limit access
 to the DevEndpoint. For more information about tags in AWS Glue, see
-\href{http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{AWS Tags in AWS Glue} in
+\href{https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{AWS Tags in AWS Glue} in
 the developer guide.}
 
-\item{Arguments}{A map of arguments used to configure the DevEndpoint.}
+\item{Arguments}{A map of arguments used to configure the \code{DevEndpoint}.}
 }
 \description{
-Creates a new DevEndpoint.
+Creates a new development endpoint.
 }
 \section{Request syntax}{
 \preformatted{svc$create_dev_endpoint(
@@ -73,6 +114,9 @@ Creates a new DevEndpoint.
     "string"
   ),
   NumberOfNodes = 123,
+  WorkerType = "Standard"|"G.1X"|"G.2X",
+  GlueVersion = "string",
+  NumberOfWorkers = 123,
   ExtraPythonLibsS3Path = "string",
   ExtraJarsS3Path = "string",
   SecurityConfiguration = "string",

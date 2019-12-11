@@ -14,15 +14,15 @@ verify that the calling entity is allowed access to the job and its
 details.}
 }
 \description{
-Requests the details of a job for a third party action. Only used for
-partner actions.
+Requests the details of a job for a third party action. Used for partner
+actions only.
 }
 \details{
 When this API is called, AWS CodePipeline returns temporary credentials
 for the Amazon S3 bucket used to store artifacts for the pipeline, if
 the action requires access to that Amazon S3 bucket for input or output
-artifacts. Additionally, this API returns any secret values defined for
-the action.
+artifacts. This API also returns any secret values defined for the
+action.
 }
 \section{Request syntax}{
 \preformatted{svc$get_third_party_job_details(

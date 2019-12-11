@@ -2,12 +2,13 @@
 % Please edit documentation in R/lightsail_operations.R
 \name{lightsail_create_instances_from_snapshot}
 \alias{lightsail_create_instances_from_snapshot}
-\title{Uses a specific snapshot as a blueprint for creating one or more new
-instances that are based on that identical configuration}
+\title{Creates one or more new instances from a manual or automatic snapshot of
+an instance}
 \usage{
 lightsail_create_instances_from_snapshot(instanceNames,
   attachedDiskMapping, availabilityZone, instanceSnapshotName, bundleId,
-  userData, keyPairName, tags)
+  userData, keyPairName, tags, addOns, sourceInstanceName, restoreDate,
+  useLatestRestorableAutoSnapshot)
 }
 \arguments{
 \item{instanceNames}{[required] The names for your new instances.}
@@ -15,20 +16,24 @@ lightsail_create_instances_from_snapshot(instanceNames,
 \item{attachedDiskMapping}{An object containing information about one or more disk mappings.}
 
 \item{availabilityZone}{[required] The Availability Zone where you want to create your instances. Use the
-following formatting: \code{us-east-2a} (case sensitive). You can get a list
+following formatting: \verb{us-east-2a} (case sensitive). You can get a list
 of Availability Zones by using the \href{http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html}{get regions}
-operation. Be sure to add the \code{include Availability Zones} parameter to
+operation. Be sure to add the \verb{include Availability Zones} parameter to
 your request.}
 
-\item{instanceSnapshotName}{[required] The name of the instance snapshot on which you are basing your new
+\item{instanceSnapshotName}{The name of the instance snapshot on which you are basing your new
 instances. Use the get instance snapshots operation to return
-information about your existing snapshots.}
+information about your existing snapshots.
+
+This parameter cannot be defined together with the
+\verb{source instance name} parameter. The \verb{instance snapshot name} and
+\verb{source instance name} parameters are mutually exclusive.}
 
 \item{bundleId}{[required] The bundle of specification information for your virtual private server
 (or \emph{instance}), including the pricing plan (e.g., \code{micro_1_0}).}
 
 \item{userData}{You can create a launch script that configures a server with additional
-user data. For example, \code{apt-get -y update}.
+user data. For example, \verb{apt-get -y update}.
 
 Depending on the machine image you choose, the command to get software
 on your instance varies. Amazon Linux and CentOS use \code{yum}, Debian and
@@ -39,17 +44,57 @@ the \href{https://lightsail.aws.amazon.com/ls/docs/getting-started/article/compa
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
-To tag a resource after it has been created, see the \code{tag resource}
+To tag a resource after it has been created, see the \verb{tag resource}
 operation.}
+
+\item{addOns}{An array of objects representing the add-ons to enable for the new
+instance.}
+
+\item{sourceInstanceName}{The name of the source instance from which the source automatic snapshot
+was created.
+
+This parameter cannot be defined together with the
+\verb{instance snapshot name} parameter. The \verb{source instance name} and
+\verb{instance snapshot name} parameters are mutually exclusive.
+
+Define this parameter only when creating a new instance from an
+automatic snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.}
+
+\item{restoreDate}{The date of the automatic snapshot to use for the new instance.
+
+Use the \verb{get auto snapshots} operation to identify the dates of the
+available automatic snapshots.
+
+Constraints:
+\itemize{
+\item Must be specified in \code{YYYY-MM-DD} format.
+\item This parameter cannot be defined together with the
+\verb{use latest restorable auto snapshot} parameter. The \verb{restore date}
+and \verb{use latest restorable auto snapshot} parameters are mutually
+exclusive.
+}
+
+Define this parameter only when creating a new instance from an
+automatic snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.}
+
+\item{useLatestRestorableAutoSnapshot}{A Boolean value to indicate whether to use the latest available
+automatic snapshot.
+
+This parameter cannot be defined together with the \verb{restore date}
+parameter. The \verb{use latest restorable auto snapshot} and \verb{restore date}
+parameters are mutually exclusive.
+
+Define this parameter only when creating a new instance from an
+automatic snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.}
 }
 \description{
-Uses a specific snapshot as a blueprint for creating one or more new
-instances that are based on that identical configuration.
+Creates one or more new instances from a manual or automatic snapshot of
+an instance.
 }
 \details{
-The \code{create instances from snapshot} operation supports tag-based access
+The \verb{create instances from snapshot} operation supports tag-based access
 control via request tags and resource tags applied to the resource
-identified by instanceSnapshotName. For more information, see the
+identified by \verb{instance snapshot name}. For more information, see the
 \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
@@ -75,7 +120,18 @@ identified by instanceSnapshotName. For more information, see the
       key = "string",
       value = "string"
     )
-  )
+  ),
+  addOns = list(
+    list(
+      addOnType = "AutoSnapshot",
+      autoSnapshotAddOnRequest = list(
+        snapshotTimeOfDay = "string"
+      )
+    )
+  ),
+  sourceInstanceName = "string",
+  restoreDate = "string",
+  useLatestRestorableAutoSnapshot = TRUE|FALSE
 )
 }
 }

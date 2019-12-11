@@ -14,18 +14,18 @@ CodeStar.}
 \item{displayName}{The name that is displayed as the friendly name for the user in AWS
 CodeStar.}
 
-\item{emailAddress}{The email address that is displayed as part of the user's profile in
+\item{emailAddress}{The email address that is displayed as part of the user\'s profile in
 AWS CodeStar.}
 
 \item{sshPublicKey}{The SSH public key associated with the user in AWS CodeStar. If a
 project owner allows the user remote access to project resources, this
-public key will be used along with the user's private key for SSH
+public key will be used along with the user\'s private key for SSH
 access.}
 }
 \description{
-Updates a user's profile in AWS CodeStar. The user profile is not
+Updates a user\'s profile in AWS CodeStar. The user profile is not
 project-specific. Information in the user profile is displayed wherever
-the user's information appears to other users in AWS CodeStar.
+the user\'s information appears to other users in AWS CodeStar.
 }
 \section{Request syntax}{
 \preformatted{svc$update_user_profile(

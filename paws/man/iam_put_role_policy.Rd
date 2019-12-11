@@ -12,13 +12,13 @@ iam_put_role_policy(RoleName, PolicyName, PolicyDocument)
 
 This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \_+=,.@-}
+spaces. You can also include any of the following characters: \\_+=,.@-}
 
 \item{PolicyName}{[required] The name of the policy document.
 
 This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \_+=,.@-}
+spaces. You can also include any of the following characters: \\_+=,.@-}
 
 \item{PolicyDocument}{[required] The policy document.
 
@@ -33,9 +33,9 @@ this parameter is a string of characters consisting of the following:
 \item Any printable ASCII character ranging from the space character
 (\code{U+0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \code{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\code{U+000A}), and
-carriage return (\code{U+000D})
+character set (through \verb{U+00FF})
+\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
+carriage return (\verb{U+000D})
 }}
 }
 \description{
@@ -44,9 +44,9 @@ specified IAM role.
 }
 \details{
 When you embed an inline policy in a role, the inline policy is used as
-part of the role's access (permissions) policy. The role's trust
+part of the role\'s access (permissions) policy. The role\'s trust
 policy is created at the same time as the role, using CreateRole. You
-can update a role's trust policy using UpdateAssumeRolePolicy. For more
+can update a role\'s trust policy using UpdateAssumeRolePolicy. For more
 information about IAM roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html}{Using Roles to Delegate Permissions and Federate Identities}.
 
 A role can also have a managed policy attached to it. To attach a
@@ -76,7 +76,7 @@ in the \emph{IAM User Guide}.
 # The following command adds a permissions policy to the role named
 # Test-Role.
 \donttest{svc$put_role_policy(
-  PolicyDocument = "{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":{\\"Effect\\":\\"Allow\\",...",
+  PolicyDocument = "{\"Version\":\"2012-10-17\",\"Statement\":{\"Effect\":\"Allow\",...",
   PolicyName = "S3AccessPolicy",
   RoleName = "S3Access"
 )}

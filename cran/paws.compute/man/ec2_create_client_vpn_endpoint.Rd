@@ -6,7 +6,8 @@
 \usage{
 ec2_create_client_vpn_endpoint(ClientCidrBlock, ServerCertificateArn,
   AuthenticationOptions, ConnectionLogOptions, DnsServers,
-  TransportProtocol, Description, DryRun, ClientToken, TagSpecifications)
+  TransportProtocol, Description, SplitTunnel, DryRun, ClientToken,
+  TagSpecifications)
 }
 \arguments{
 \item{ClientCidrBlock}{[required] The IPv4 address range, in CIDR notation, from which to assign client IP
@@ -34,14 +35,22 @@ logged:
 
 \item{DnsServers}{Information about the DNS servers to be used for DNS resolution. A
 Client VPN endpoint can have up to two DNS servers. If no DNS server is
-specified, the DNS address of the VPC that is to be associated with
-Client VPN endpoint is used as the DNS server.}
+specified, the DNS address configured on the device is used for the DNS
+server.}
 
 \item{TransportProtocol}{The transport protocol to be used by the VPN session.
 
 Default value: \code{udp}}
 
 \item{Description}{A brief description of the Client VPN endpoint.}
+
+\item{SplitTunnel}{Indicates whether split-tunnel is enabled on the AWS Client VPN
+endpoint.
+
+By default, split-tunnel on a VPN endpoint is disabled.
+
+For information about split-tunnel VPN endpoints, see \href{https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/split-tunnel-vpn.html}{Split-Tunnel AWS Client VPN Endpoint}
+in the \emph{AWS Client VPN Administrator Guide}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -83,11 +92,12 @@ destination endpoint at which all client VPN sessions are terminated.
   ),
   TransportProtocol = "tcp"|"udp",
   Description = "string",
+  SplitTunnel = TRUE|FALSE,
   DryRun = TRUE|FALSE,
   ClientToken = "string",
   TagSpecifications = list(
     list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"host-reservation"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"host-reservation"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
       Tags = list(
         list(
           Key = "string",

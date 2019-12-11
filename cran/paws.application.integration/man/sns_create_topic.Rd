@@ -36,14 +36,17 @@ For more examples, see
 in the \emph{AWS Key Management Service API Reference}.
 }}
 
-\item{Tags}{The list of tags to add to a new topic.}
+\item{Tags}{The list of tags to add to a new topic.
+
+To be able to tag a topic on creation, you must have the
+\code{sns:CreateTopic} and \code{sns:TagResource} permissions.}
 }
 \description{
 Creates a topic to which notifications can be published. Users can
 create at most 100,000 topics. For more information, see
 \href{http://aws.amazon.com/sns/}{https://aws.amazon.com/sns}. This action is
 idempotent, so if the requester already owns a topic with the specified
-name, that topic's ARN is returned without creating a new topic.
+name, that topic\'s ARN is returned without creating a new topic.
 }
 \section{Request syntax}{
 \preformatted{svc$create_topic(

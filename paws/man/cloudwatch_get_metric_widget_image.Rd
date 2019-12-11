@@ -26,25 +26,25 @@ The default is \code{png}. If you specify \code{png}, the API returns an HTTP
 response with the content-type set to \code{text/xml}. The image data is in a
 \code{MetricWidgetImage} field. For example:
 
-\code{ &lt;GetMetricWidgetImageResponse xmlns=&lt;URLstring&gt;&gt;}
+\verb{ &lt;GetMetricWidgetImageResponse xmlns=&lt;URLstring&gt;&gt;}
 
-\code{ &lt;GetMetricWidgetImageResult&gt;}
+\verb{ &lt;GetMetricWidgetImageResult&gt;}
 
-\code{ &lt;MetricWidgetImage&gt;}
+\verb{ &lt;MetricWidgetImage&gt;}
 
 \code{ iVBORw0KGgoAAAANSUhEUgAAAlgAAAGQEAYAAAAip...}
 
-\code{ &lt;/MetricWidgetImage&gt;}
+\verb{ &lt;/MetricWidgetImage&gt;}
 
-\code{ &lt;/GetMetricWidgetImageResult&gt;}
+\verb{ &lt;/GetMetricWidgetImageResult&gt;}
 
-\code{ &lt;ResponseMetadata&gt;}
+\verb{ &lt;ResponseMetadata&gt;}
 
-\code{ &lt;RequestId&gt;6f0d4192-4d42-11e8-82c1-f539a07e0e3b&lt;/RequestId&gt;}
+\verb{ &lt;RequestId&gt;6f0d4192-4d42-11e8-82c1-f539a07e0e3b&lt;/RequestId&gt;}
 
-\code{ &lt;/ResponseMetadata&gt;}
+\verb{ &lt;/ResponseMetadata&gt;}
 
-\code{&lt;/GetMetricWidgetImageResponse&gt;}
+\verb{&lt;/GetMetricWidgetImageResponse&gt;}
 
 The \code{image/png} setting is intended only for custom HTTP requests. For
 most use cases, and all actions using an AWS SDK, you should use \code{png}.

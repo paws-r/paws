@@ -15,7 +15,7 @@ iot_create_thing(thingName, thingTypeName, attributePayload,
 \item{attributePayload}{The attribute payload, which consists of up to three name/value pairs in
 a JSON document. For example:
 
-\code{\{\"attributes\":\{\"string1\":\"string2\"\}\}}}
+\verb{\\\{\\"attributes\\":\\\{\\"string1\\":\\"string2\\"\\\}\\\}}}
 
 \item{billingGroupName}{The name of the billing group the thing will be added to.}
 }

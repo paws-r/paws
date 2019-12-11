@@ -43,7 +43,7 @@ in the \emph{AWS Database Migration Service User Guide.}}
 \item{KmsKeyId}{An AWS KMS key identifier that is used to encrypt the connection
 parameters for the endpoint.
 
-If you don't specify a value for the \code{KmsKeyId} parameter, then AWS DMS
+If you don\'t specify a value for the \code{KmsKeyId} parameter, then AWS DMS
 uses your default encryption key.
 
 AWS KMS creates the default encryption key for your AWS account. Your
@@ -72,21 +72,21 @@ in the \emph{AWS Database Migration Service User Guide.}}
 \item{DmsTransferSettings}{The settings in JSON format for the DMS transfer type of source
 endpoint.
 
-Possible attributes include the following:
+Possible settings include the following:
 \itemize{
-\item \code{serviceAccessRoleArn} - The IAM role that has permission to access
+\item \code{ServiceAccessRoleArn} - The IAM role that has permission to access
 the Amazon S3 bucket.
-\item \code{bucketName} - The name of the S3 bucket to use.
-\item \code{compressionType} - An optional parameter to use GZIP to compress
+\item \code{BucketName} - The name of the S3 bucket to use.
+\item \code{CompressionType} - An optional parameter to use GZIP to compress
 the target files. To use GZIP, set this value to \code{NONE} (the
-default). To keep the files uncompressed, don't use this value.
+default). To keep the files uncompressed, don\'t use this value.
 }
 
-Shorthand syntax for these attributes is as follows:
-\code{ServiceAccessRoleArn=string,BucketName=string,CompressionType=string}
+Shorthand syntax for these settings is as follows:
+\verb{ServiceAccessRoleArn=string,BucketName=string,CompressionType=string}
 
-JSON syntax for these attributes is as follows:
-\code{\{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" \} }}
+JSON syntax for these settings is as follows:
+\verb{\\\{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" \\\} }}
 
 \item{MongoDbSettings}{Settings in JSON format for the source MongoDB endpoint. For more
 information about the available settings, see the configuration
@@ -150,7 +150,8 @@ Creates an endpoint using the provided settings.
     EnableStatistics = TRUE|FALSE,
     IncludeOpForFullLoad = TRUE|FALSE,
     CdcInsertsOnly = TRUE|FALSE,
-    TimestampColumnName = "string"
+    TimestampColumnName = "string",
+    ParquetTimestampInMillisecond = TRUE|FALSE
   ),
   DmsTransferSettings = list(
     ServiceAccessRoleArn = "string",

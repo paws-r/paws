@@ -77,6 +77,7 @@ Creates a new MediaPackage VOD PackagingConfiguration resource.
   ),
   HlsPackage = list(
     Encryption = list(
+      ConstantInitializationVector = "string",
       EncryptionMethod = "AES_128"|"SAMPLE_AES",
       SpekeKeyProvider = list(
         RoleArn = "string",

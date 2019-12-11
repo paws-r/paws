@@ -2,7 +2,7 @@
 % Please edit documentation in R/resourcegroupstaggingapi_operations.R
 \name{resourcegroupstaggingapi_get_tag_values}
 \alias{resourcegroupstaggingapi_get_tag_values}
-\title{Returns all tag values for the specified key in the specified region for
+\title{Returns all tag values for the specified key in the specified Region for
 the AWS account}
 \usage{
 resourcegroupstaggingapi_get_tag_values(PaginationToken, Key)
@@ -10,14 +10,14 @@ resourcegroupstaggingapi_get_tag_values(PaginationToken, Key)
 \arguments{
 \item{PaginationToken}{A string that indicates that additional data is available. Leave this
 value empty for your initial request. If the response includes a
-PaginationToken, use that string for this value to request an additional
-page of data.}
+\code{PaginationToken}, use that string for this value to request an
+additional page of data.}
 
 \item{Key}{[required] The key for which you want to list all existing values in the specified
-region for the AWS account.}
+Region for the AWS account.}
 }
 \description{
-Returns all tag values for the specified key in the specified region for
+Returns all tag values for the specified key in the specified Region for
 the AWS account.
 }
 \section{Request syntax}{

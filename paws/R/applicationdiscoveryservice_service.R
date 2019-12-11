@@ -69,6 +69,10 @@ NULL
 #' Service User
 #' Guide*](http://docs.aws.amazon.com/application-discovery/latest/userguide/)
 #' .
+#' 
+#' Remember that you must set your AWS Migration Hub home region before you
+#' call any of these APIs, or a `HomeRegionNotSetException` error will be
+#' returned. Also, you must make the API calls while in your home region.
 #'
 #' @param
 #' config

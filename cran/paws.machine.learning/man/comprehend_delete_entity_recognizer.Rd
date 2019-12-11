@@ -13,7 +13,7 @@ comprehend_delete_entity_recognizer(EntityRecognizerArn)
 Deletes an entity recognizer.
 }
 \details{
-Only those recognizers that are in terminated states (IN\_ERROR,
+Only those recognizers that are in terminated states (IN\\_ERROR,
 TRAINED) will be deleted. If an active inference job is using the model,
 a \code{ResourceInUseException} will be returned.
 

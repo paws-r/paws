@@ -21,7 +21,7 @@ IDs are the names of Lambda functions, and their target type is
 \code{instanceTarget}.
 \item For deployments that use the Amazon ECS compute platform, the target
 IDs are pairs of Amazon ECS clusters and services specified using
-the format \code{&lt;clustername&gt;:&lt;servicename&gt;}. Their target
+the format \verb{&lt;clustername&gt;:&lt;servicename&gt;}. Their target
 type is \code{ecsTarget}.
 }}
 }
@@ -32,7 +32,7 @@ the deprecated \code{BatchGetDeploymentInstances}. The maximum number of
 targets that can be returned is 25.
 }
 \details{
-The type of targets returned depends on the deployment's compute
+The type of targets returned depends on the deployment\'s compute
 platform:
 \itemize{
 \item \strong{EC2/On-premises}: Information about EC2 instance targets.

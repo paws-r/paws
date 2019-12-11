@@ -5,7 +5,8 @@
 \title{Compares a face in the \emph{source} input image with each of the 100 largest
 faces detected in the \emph{target} input image}
 \usage{
-rekognition_compare_faces(SourceImage, TargetImage, SimilarityThreshold)
+rekognition_compare_faces(SourceImage, TargetImage, SimilarityThreshold,
+  QualityFilter)
 }
 \arguments{
 \item{SourceImage}{[required] The input image as base64-encoded bytes or an S3 object. If you use the
@@ -26,6 +27,19 @@ more information, see Images in the Amazon Rekognition developer guide.}
 
 \item{SimilarityThreshold}{The minimum level of confidence in the face matches that a match must
 meet to be included in the \code{FaceMatches} array.}
+
+\item{QualityFilter}{A filter that specifies a quality bar for how much filtering is done to
+identify faces. Filtered faces aren\'t compared. If you specify \code{AUTO},
+Amazon Rekognition chooses the quality bar. If you specify \code{LOW},
+\code{MEDIUM}, or \code{HIGH}, filtering removes all faces that don't meet the
+chosen quality bar. The quality bar is based on a variety of common use
+cases. Low-quality detections can occur for a number of reasons. Some
+examples are an object that\'s misidentified as a face, a face that\'s
+too blurry, or a face with a pose that\'s too extreme to use. If you
+specify \code{NONE}, no filtering is performed. The default value is \code{NONE}.
+
+To use quality filtering, the collection you are using must be
+associated with version 3 of the face model or higher.}
 }
 \description{
 Compares a face in the \emph{source} input image with each of the 100 largest
@@ -39,7 +53,7 @@ image.
 You pass the input and target images either as base64-encoded image
 bytes or as references to images in an Amazon S3 bucket. If you use the
 AWS CLI to call Amazon Rekognition operations, passing image bytes
-isn't supported. The image must be formatted as a PNG or JPEG file.
+isn\'t supported. The image must be formatted as a PNG or JPEG file.
 
 In response, the operation returns an array of face matches ordered by
 similarity score in descending order. For each face match, the response
@@ -50,16 +64,26 @@ box contains a face). The response also provides a similarity score,
 which indicates how closely the faces match.
 
 By default, only faces with a similarity score of greater than or equal
-to 80\% are returned in the response. You can change this value by
+to 80\\% are returned in the response. You can change this value by
 specifying the \code{SimilarityThreshold} parameter.
 
-\code{CompareFaces} also returns an array of faces that don't match the
+\code{CompareFaces} also returns an array of faces that don\'t match the
 source image. For each face, it returns a bounding box, confidence
 value, landmarks, pose details, and quality. The response also returns
 information about the face in the source image, including the bounding
 box of the face and confidence value.
 
-If the image doesn't contain Exif metadata, \code{CompareFaces} returns
+The \code{QualityFilter} input parameter allows you to filter out detected
+faces that don't meet a required quality bar. The quality bar is based
+on a variety of common use cases. Use \code{QualityFilter} to set the quality
+bar by specifying \code{LOW}, \code{MEDIUM}, or \code{HIGH}. If you do not want to
+filter detected faces, specify \code{NONE}. The default value is \code{NONE}.
+
+To use quality filtering, you need a collection associated with version
+3 of the face model or higher. To get the version of the face model
+associated with a collection, call DescribeCollection.
+
+If the image doesn\'t contain Exif metadata, \code{CompareFaces} returns
 orientation information for the source and target images. Use these
 values to display the images with the correct image orientation.
 
@@ -67,7 +91,7 @@ If no faces are detected in the source or target images, \code{CompareFaces}
 returns an \code{InvalidParameterException} error.
 
 This is a stateless API operation. That is, data returned by this
-operation doesn't persist.
+operation doesn\'t persist.
 
 For an example, see Comparing Faces in Images in the Amazon Rekognition
 Developer Guide.
@@ -93,7 +117,8 @@ This operation requires permissions to perform the
       Version = "string"
     )
   ),
-  SimilarityThreshold = 123.0
+  SimilarityThreshold = 123.0,
+  QualityFilter = "NONE"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"
 )
 }
 }

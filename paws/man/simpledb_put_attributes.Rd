@@ -26,19 +26,19 @@ specifies the first attribute by the parameters \code{Attribute.0.Name} and
 \details{
 Attributes are uniquely identified in an item by their name/value
 combination. For example, a single item can have the attributes
-\code{\{ "first_name", "first_value" \}} and
-\code{\{ \"first_name\", second_value\" \}}. However, it cannot have two
+\verb{\\\{ "first_name", "first_value" \\\}} and
+\verb{\\\{ \\"first_name\\", second_value\\" \\\}}. However, it cannot have two
 attribute instances where both the \code{Attribute.X.Name} and
 \code{Attribute.X.Value} are the same.
 
 Optionally, the requestor can supply the \code{Replace} parameter for each
 individual attribute. Setting this value to \code{true} causes the new
 attribute value to replace the existing attribute value(s). For example,
-if an item has the attributes \code{\{ 'a', '1' \}}, \code{\{ 'b', '2'\}} and
-\code{\{ 'b', '3' \}} and the requestor calls \code{PutAttributes} using the
-attributes \code{\{ 'b', '4' \}} with the \code{Replace} parameter set to true, the
-final attributes of the item are changed to \code{\{ 'a', '1' \}} and
-\code{\{ 'b', '4' \}}, which replaces the previous values of the 'b'
+if an item has the attributes \verb{\\\{ 'a', '1' \\\}}, \verb{\\\{ 'b', '2'\\\}} and
+\verb{\\\{ 'b', '3' \\\}} and the requestor calls \code{PutAttributes} using the
+attributes \verb{\\\{ 'b', '4' \\\}} with the \code{Replace} parameter set to true, the
+final attributes of the item are changed to \verb{\\\{ 'a', '1' \\\}} and
+\verb{\\\{ 'b', '4' \\\}}, which replaces the previous values of the \'b\'
 attribute with the new value.
 
 Using \code{PutAttributes} to replace attribute values that do not exist will

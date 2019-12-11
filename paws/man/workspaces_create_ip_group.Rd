@@ -26,7 +26,7 @@ group and then associate the group with your directory. You can add
 rules when you create the group or at any time using AuthorizeIpRules.
 
 There is a default IP access control group associated with your
-directory. If you don't associate an IP access control group with your
+directory. If you don\'t associate an IP access control group with your
 directory, the default group is used. The default group includes a
 default rule that allows users to access their WorkSpaces from anywhere.
 You cannot modify the default IP access control group for your

@@ -13,7 +13,7 @@ by CreateRule and by ListRules.}
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
-Permanently deletes a Rule. You can't delete a \code{Rule} if it's still
+Permanently deletes a Rule. You can\'t delete a \code{Rule} if it\'s still
 used in any \code{WebACL} objects or if it still includes any predicates,
 such as \code{ByteMatchSet} objects.
 }

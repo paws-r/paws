@@ -10,10 +10,10 @@ inspector_create_resource_group(resourceGroupTags)
 }
 \arguments{
 \item{resourceGroupTags}{[required] A collection of keys and an array of possible values,
-'[{"key":"key1","values":["Value1","Value2"]},{"key":"Key2","values":["Value3"]}]'.
+\'[\{\"key\":\"key1\",\"values\":[\"Value1\",\"Value2\"]\},\{\"key\":\"Key2\",\"values\":[\"Value3\"]\}]\'.
 
 For
-example,'[{"key":"Name","values":["TestEC2Instance"]}]'.}
+example,\'[\{\"key\":\"Name\",\"values\":[\"TestEC2Instance\"]\}]\'.}
 }
 \description{
 Creates a resource group using the specified set of tags (key and value

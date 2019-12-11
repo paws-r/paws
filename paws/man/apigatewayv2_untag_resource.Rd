@@ -2,17 +2,18 @@
 % Please edit documentation in R/apigatewayv2_operations.R
 \name{apigatewayv2_untag_resource}
 \alias{apigatewayv2_untag_resource}
-\title{Untag an APIGW resource}
+\title{Deletes a Tag}
 \usage{
 apigatewayv2_untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
-\item{ResourceArn}{[required] AWS resource arn}
+\item{ResourceArn}{[required] The resource ARN for the tag.}
 
-\item{TagKeys}{[required] The Tag keys to delete}
+\item{TagKeys}{[required]
+<p>The Tag keys to delete.</p>}
 }
 \description{
-Untag an APIGW resource
+Deletes a Tag.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

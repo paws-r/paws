@@ -33,7 +33,7 @@ subscription filter, for same-account delivery.
 }}
 
 \item{roleArn}{The ARN of an IAM role that grants CloudWatch Logs permissions to
-deliver ingested log events to the destination stream. You don't need
+deliver ingested log events to the destination stream. You don\'t need
 to provide the ARN when you are working with a logical destination for
 cross-account delivery.}
 

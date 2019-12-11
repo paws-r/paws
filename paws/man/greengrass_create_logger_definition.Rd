@@ -14,7 +14,7 @@ greengrass_create_logger_definition(AmznClientToken, InitialVersion,
 
 \item{Name}{The name of the logger definition.}
 
-\item{tags}{Tag(s) to add to the new resource}
+\item{tags}{Tag(s) to add to the new resource.}
 }
 \description{
 Creates a logger definition. You may provide the initial version of the logger definition now or use ''CreateLoggerDefinitionVersion'' at a later time.

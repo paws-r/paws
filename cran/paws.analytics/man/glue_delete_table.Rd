@@ -7,7 +7,7 @@
 glue_delete_table(CatalogId, DatabaseName, Name)
 }
 \arguments{
-\item{CatalogId}{The ID of the Data Catalog where the table resides. If none is supplied,
+\item{CatalogId}{The ID of the Data Catalog where the table resides. If none is provided,
 the AWS account ID is used by default.}
 
 \item{DatabaseName}{[required] The name of the catalog database in which the table resides. For Hive
@@ -20,15 +20,16 @@ is entirely lowercase.}
 Removes a table definition from the Data Catalog.
 }
 \details{
-After completing this operation, you will no longer have access to the
-table versions and partitions that belong to the deleted table. AWS Glue
-deletes these "orphaned" resources asynchronously in a timely manner,
+After completing this operation, you no longer have access to the table
+versions and partitions that belong to the deleted table. AWS Glue
+deletes these \"orphaned\" resources asynchronously in a timely manner,
 at the discretion of the service.
 
-To ensure immediate deletion of all related resources, before calling
-\code{DeleteTable}, use \code{DeleteTableVersion} or \code{BatchDeleteTableVersion},
-and \code{DeletePartition} or \code{BatchDeletePartition}, to delete any resources
-that belong to the table.
+To ensure the immediate deletion of all related resources, before
+calling \code{DeleteTable}, use \code{DeleteTableVersion} or
+\code{BatchDeleteTableVersion}, and \code{DeletePartition} or
+\code{BatchDeletePartition}, to delete any resources that belong to the
+table.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_table(

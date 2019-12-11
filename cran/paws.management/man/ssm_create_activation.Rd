@@ -36,8 +36,8 @@ identify which servers or virtual machines (VMs) in your on-premises
 environment you intend to activate. In this case, you could specify the
 following key name/value pairs:
 \itemize{
-\item \code{Key=OS,Value=Windows}
-\item \code{Key=Environment,Value=Production}
+\item \verb{Key=OS,Value=Windows}
+\item \verb{Key=Environment,Value=Production}
 }
 
 When you install SSM Agent on your on-premises servers and VMs, you
@@ -45,11 +45,11 @@ specify an activation ID and code. When you specify the activation ID
 and code, tags assigned to the activation are automatically applied to
 the on-premises servers or VMs.
 
-You can't add tags to or delete tags from an existing activation. You
+You can\'t add tags to or delete tags from an existing activation. You
 can tag your on-premises servers and VMs after they connect to Systems
 Manager for the first time and are assigned a managed instance ID. This
 means they are listed in the AWS Systems Manager console with an ID that
-is prefixed with "mi-". For information about how to add tags to your
+is prefixed with \"mi-\". For information about how to add tags to your
 managed instances, see AddTagsToResource. For information about how to
 remove tags from your managed instances, see RemoveTagsFromResource.}
 }

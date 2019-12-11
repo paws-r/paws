@@ -7,11 +7,11 @@
 iotthingsgraph_get_system_template(id, revisionNumber)
 }
 \arguments{
-\item{id}{[required] The ID of the system to get. This ID must be in the user's namespace.
+\item{id}{[required] The ID of the system to get. This ID must be in the user\'s namespace.
 
 The ID should be in the following format.
 
-\code{urn:tdm:REGION/ACCOUNT ID/default:system:SYSTEMNAME}}
+\verb{urn:tdm:REGION/ACCOUNT ID/default:system:SYSTEMNAME}}
 
 \item{revisionNumber}{The number that specifies the revision of the system to get.}
 }

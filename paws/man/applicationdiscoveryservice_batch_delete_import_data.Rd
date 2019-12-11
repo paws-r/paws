@@ -16,7 +16,7 @@ applications.
 }
 \details{
 AWS Application Discovery Service has built-in matching logic that will
-identify when discovered servers match existing entries that you've
+identify when discovered servers match existing entries that you\'ve
 previously discovered, the information for the already-existing
 discovered server is updated. When you delete an import task that
 contains records that were used to match, the information in those

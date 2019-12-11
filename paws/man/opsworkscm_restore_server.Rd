@@ -13,7 +13,7 @@ opsworkscm_restore_server(BackupId, ServerName, InstanceType, KeyPair)
 \item{ServerName}{[required] The name of the server that you want to restore.}
 
 \item{InstanceType}{The type of the instance to create. Valid values must be specified in
-the following format: \code{^(\\[cm\\]\\[34\\]|t2).*} For example,
+the following format: \verb{^(\\\[cm\\\]\\\[34\\\]|t2).*} For example,
 \code{m5.large}. Valid values are \code{m5.large}, \code{r5.xlarge}, and \code{r5.2xlarge}.
 If you do not specify this parameter, RestoreServer uses the instance
 type from the specified backup.}
@@ -24,9 +24,9 @@ helpful if the administrator no longer has the SSH key.}
 \description{
 Restores a backup to a server that is in a \code{CONNECTION_LOST}, \code{HEALTHY},
 \code{RUNNING}, \code{UNHEALTHY}, or \code{TERMINATED} state. When you run
-RestoreServer, the server's EC2 instance is deleted, and a new EC2
+RestoreServer, the server\'s EC2 instance is deleted, and a new EC2
 instance is configured. RestoreServer maintains the existing server
-endpoint, so configuration management of the server's client devices
+endpoint, so configuration management of the server\'s client devices
 (nodes) should continue to work.
 }
 \details{

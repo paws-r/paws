@@ -22,15 +22,20 @@ Jan 1, 1970 00:00:00 UTC. Events with a timestamp equal to or later than
 this time are not included.}
 
 \item{nextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+from a previous call.)
 
-\item{limit}{The maximum number of log events returned. If you don't specify a
+Using this token works only when you specify \code{true} for \code{startFromHead}.}
+
+\item{limit}{The maximum number of log events returned. If you don\'t specify a
 value, the maximum is as many log events as can fit in a response size
 of 1 MB, up to 10,000 log events.}
 
 \item{startFromHead}{If the value is true, the earliest log events are returned first. If the
 value is false, the latest log events are returned first. The default
-value is false.}
+value is false.
+
+If you are using \code{nextToken} in this operation, you must specify \code{true}
+for \code{startFromHead}.}
 }
 \description{
 Lists log events from the specified log stream. You can list all the log

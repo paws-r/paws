@@ -15,13 +15,15 @@ applicationinsights_update_component_configuration(ResourceGroupName,
 \item{Monitor}{Indicates whether the application component is monitored.}
 
 \item{Tier}{The tier of the application component. Supported tiers include
-\code{DOT_NET_WORKER}, \code{DOT_NET_WEB_TIER}, \code{SQL_SERVER}, and \code{DEFAULT}.}
+\code{DOT_NET_WORKER}, \code{DOT_NET_WEB}, \code{DOT_NET_CORE}, \code{SQL_SERVER}, and
+\code{DEFAULT}.}
 
 \item{ComponentConfiguration}{The configuration settings of the component. The value is the escaped
 JSON of the configuration. For more information about the JSON format,
 see \href{https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/working-with-json.html}{Working with JSON}.
 You can send a request to \code{DescribeComponentConfigurationRecommendation}
-to see the recommended configuration for a component.}
+to see the recommended configuration for a component. For the complete
+format of the component configuration file, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/component-config.html}{Component Configuration}.}
 }
 \description{
 Updates the monitoring configurations for the component. The
@@ -34,7 +36,7 @@ and should match the schema of what is returned by
   ResourceGroupName = "string",
   ComponentName = "string",
   Monitor = TRUE|FALSE,
-  Tier = "string",
+  Tier = "DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB"|"SQL_SERVER",
   ComponentConfiguration = "string"
 )
 }

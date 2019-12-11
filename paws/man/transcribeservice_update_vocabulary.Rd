@@ -18,11 +18,11 @@ transcribeservice_update_vocabulary(VocabularyName, LanguageCode,
 custom vocabulary. The URI must be in the same region as the API
 endpoint that you are calling. The general form is
 
-\code{https://s3-&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt;}
+\verb{https://s3.&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt;}
 
 For example:
 
-\code{https://s3-us-east-1.amazonaws.com/examplebucket/vocab.txt}
+\verb{https://s3.us-east-1.amazonaws.com/examplebucket/vocab.txt}
 
 For more information about S3 object names, see \href{http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys}{Object Keys}
 in the \emph{Amazon S3 Developer Guide}.
@@ -37,7 +37,7 @@ that you provide in the request.
 \section{Request syntax}{
 \preformatted{svc$update_vocabulary(
   VocabularyName = "string",
-  LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR"|"es-ES"|"en-IN"|"hi-IN"|"ar-SA",
+  LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR"|"es-ES"|"en-IN"|"hi-IN"|"ar-SA"|"ru-RU"|"zh-CN"|"nl-NL"|"id-ID"|"ta-IN"|"fa-IR"|"en-IE"|"en-AB"|"en-WL"|"pt-PT"|"te-IN"|"tr-TR"|"de-CH"|"he-IL"|"ms-MY"|"ja-JP"|"ar-AE",
   Phrases = list(
     "string"
   ),

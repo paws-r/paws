@@ -10,7 +10,7 @@ route53_disassociate_vpc_from_hosted_zone(HostedZoneId, VPC, Comment)
 \item{HostedZoneId}{[required] The ID of the private hosted zone that you want to disassociate a VPC
 from.}
 
-\item{VPC}{[required] A complex type that contains information about the VPC that you're
+\item{VPC}{[required] A complex type that contains information about the VPC that you\'re
 disassociating from the specified hosted zone.}
 
 \item{Comment}{\emph{Optional:} A comment about the disassociation request.}
@@ -21,8 +21,8 @@ following:
 }
 \details{
 \itemize{
-\item You can't disassociate the last VPC from a private hosted zone.
-\item You can't convert a private hosted zone into a public hosted zone.
+\item You can\'t disassociate the last VPC from a private hosted zone.
+\item You can\'t convert a private hosted zone into a public hosted zone.
 \item You can submit a \code{DisassociateVPCFromHostedZone} request using
 either the account that created the hosted zone or the account that
 created the VPC.
@@ -32,7 +32,7 @@ created the VPC.
 \preformatted{svc$disassociate_vpc_from_hosted_zone(
   HostedZoneId = "string",
   VPC = list(
-    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
+    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
     VPCId = "string"
   ),
   Comment = "string"

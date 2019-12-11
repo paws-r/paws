@@ -8,21 +8,72 @@ s3_put_bucket_replication(Bucket, ContentMD5, ReplicationConfiguration,
   Token)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The name of the bucket}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the data. You must use this
 header as a message integrity check to verify that the request body was
-not corrupted in transit.}
+not corrupted in transit. For more information, see \href{http://www.ietf.org/rfc/rfc1864.txt}{RFC 1864}.}
 
 \item{ReplicationConfiguration}{[required]}
 
-\item{Token}{A token that allows Amazon S3 object lock to be enabled for an existing
-bucket.}
+\item{Token}{}
 }
 \description{
 Creates a replication configuration or replaces an existing one. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html}{Cross-Region Replication (CRR)} in the
-\emph{Amazon S3 Developer Guide}.
+more information, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html}{Replication}
+in the \emph{Amazon S3 Developer Guide}.
+}
+\details{
+To perform this operation, the user or role performing the operation
+must have the
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html}{iam:PassRole}
+permission.
+
+Specify the replication configuration in the request body. In the
+replication configuration, you provide the name of the destination
+bucket where you want Amazon S3 to replicate objects, the IAM role that
+Amazon S3 can assume to replicate objects on your behalf, and other
+relevant information.
+
+A replication configuration must include at least one rule, and can
+contain a maximum of 1,000. Each rule identifies a subset of objects to
+replicate by filtering the objects in the source bucket. To choose
+additional subsets of objects to replicate, add a rule for each subset.
+All rules must specify the same destination bucket.
+
+To specify a subset of the objects in the source bucket to apply a
+replication rule to, add the Filter element as a child of the Rule
+element. You can filter objects based on an object key prefix, one or
+more object tags, or both. When you add the Filter element in the
+configuration, you must also add the following elements:
+\code{DeleteMarkerReplication}, \code{Status}, and \code{Priority}.
+
+For information about enabling versioning on a bucket, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html}{Using Versioning}.
+
+By default, a resource owner, in this case the AWS account that created
+the bucket, can perform this operation. The resource owner can also
+grant others permissions to perform the operation. For more information
+about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html}{Specifying Permissions in a Policy}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
+
+\strong{Handling Replication of Encrypted Objects}
+
+By default, Amazon S3 doesn\'t replicate objects that are stored at rest
+using server-side encryption with CMKs stored in AWS KMS. To replicate
+AWS KMS-encrypted objects, add the following: \code{SourceSelectionCriteria},
+\code{SseKmsEncryptedObjects}, \code{Status}, \code{EncryptionConfiguration}, and
+\code{ReplicaKmsKeyID}. For information about replication configuration, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-config-for-kms-objects.html}{Replicating Objects Created with SSE Using CMKs stored in AWS KMS}.
+
+For information on \code{PutBucketReplication} errors, see
+ReplicationErrorCodeList
+
+The following operations are related to \code{PutBucketReplication}:
+\itemize{
+\item GetBucketReplication
+\item DeleteBucketReplication
+}
 }
 \section{Request syntax}{
 \preformatted{svc$put_bucket_replication(
@@ -57,6 +108,9 @@ more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.
             Status = "Enabled"|"Disabled"
           )
         ),
+        ExistingObjectReplication = list(
+          Status = "Enabled"|"Disabled"
+        ),
         Destination = list(
           Bucket = "string",
           Account = "string",
@@ -66,6 +120,18 @@ more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.
           ),
           EncryptionConfiguration = list(
             ReplicaKmsKeyID = "string"
+          ),
+          ReplicationTime = list(
+            Status = "Enabled"|"Disabled",
+            Time = list(
+              Minutes = 123
+            )
+          ),
+          Metrics = list(
+            Status = "Enabled"|"Disabled",
+            EventThreshold = list(
+              Minutes = 123
+            )
           )
         ),
         DeleteMarkerReplication = list(

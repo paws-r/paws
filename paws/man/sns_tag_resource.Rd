@@ -19,18 +19,16 @@ the \emph{Amazon SNS Developer Guide}.
 \details{
 When you use topic tags, keep the following guidelines in mind:
 \itemize{
-\item Adding more than 50 tags to a topic isn't recommended.
-\item Tags don't have any semantic meaning. Amazon SNS interprets tags as
+\item Adding more than 50 tags to a topic isn\'t recommended.
+\item Tags don\'t have any semantic meaning. Amazon SNS interprets tags as
 character strings.
 \item Tags are case-sensitive.
 \item A new tag with a key identical to that of an existing tag overwrites
 the existing tag.
-\item Tagging actions are limited to 10 TPS per AWS account. If your
-application requires a higher throughput, file a \href{https://console.aws.amazon.com/support/home#/case/create?issueType=technical}{technical support request}.
+\item Tagging actions are limited to 10 TPS per AWS account, per AWS
+region. If your application requires a higher throughput, file a
+\href{https://console.aws.amazon.com/support/home#/case/create?issueType=technical}{technical support request}.
 }
-
-For a full list of tag restrictions, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-limits.html#limits-topics}{Limits Related to Topics}
-in the \emph{Amazon SNS Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

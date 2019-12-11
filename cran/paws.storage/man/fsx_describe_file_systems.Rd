@@ -14,7 +14,7 @@ retrieve (String).}
 \item{MaxResults}{(Optional) Maximum number of file systems to return in the response
 (integer). This parameter value must be greater than 0. The number of
 items that Amazon FSx returns is the minimum of the \code{MaxResults}
-parameter specified in the request and the service's internal maximum
+parameter specified in the request and the service\'s internal maximum
 number of items per page.}
 
 \item{NextToken}{(Optional) Opaque pagination token returned from a previous
@@ -25,7 +25,7 @@ continues the list from where the returning call left off.}
 Returns the description of specific Amazon FSx file systems, if a
 \code{FileSystemIds} value is provided for that file system. Otherwise, it
 returns descriptions of all file systems owned by your AWS account in
-the AWS Region of the endpoint that you're calling.
+the AWS Region of the endpoint that you\'re calling.
 }
 \details{
 When retrieving all file system descriptions, you can optionally specify

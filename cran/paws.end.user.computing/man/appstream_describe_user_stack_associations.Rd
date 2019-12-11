@@ -12,7 +12,7 @@ appstream_describe_user_stack_associations(StackName, UserName,
 
 \item{UserName}{The email address of the user who is associated with the stack.
 
-Users' email addresses are case-sensitive.}
+Users\' email addresses are case-sensitive.}
 
 \item{AuthenticationType}{The authentication type for the user who is associated with the stack.
 You must specify USERPOOL.}

@@ -7,10 +7,19 @@
 s3_get_bucket_request_payment(Bucket)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The name of the bucket for which to get the payment request
+configuration}
 }
 \description{
-Returns the request payment configuration of a bucket.
+Returns the request payment configuration of a bucket. To use this
+version of the operation, you must be the bucket owner. For more
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html}{Requester Pays Buckets}.
+}
+\details{
+The following operations are related to \code{GetBucketRequestPayment}:
+\itemize{
+\item ListObjects
+}
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_request_payment(

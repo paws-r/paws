@@ -5,8 +5,8 @@
 \title{Creates an EBS volume that can be attached to an instance in the same
 Availability Zone}
 \usage{
-ec2_create_volume(AvailabilityZone, Encrypted, Iops, KmsKeyId, Size,
-  SnapshotId, VolumeType, DryRun, TagSpecifications)
+ec2_create_volume(AvailabilityZone, Encrypted, Iops, KmsKeyId,
+  OutpostArn, Size, SnapshotId, VolumeType, DryRun, TagSpecifications)
 }
 \arguments{
 \item{AvailabilityZone}{[required] The Availability Zone in which to create the volume.}
@@ -49,6 +49,8 @@ AWS authenticates the CMK asynchronously. Therefore, if you specify an
 ID, alias, or ARN that is not valid, the action can appear to complete,
 but eventually fails.}
 
+\item{OutpostArn}{The Amazon Resource Name (ARN) of the Outpost.}
+
 \item{Size}{The size of the volume, in GiBs.
 
 Constraints: 1-16,384 for \code{gp2}, 4-16,384 for \code{io1}, 500-16,384 for
@@ -56,7 +58,7 @@ Constraints: 1-16,384 for \code{gp2}, 4-16,384 for \code{io1}, 500-16,384 for
 a snapshot, the volume size must be equal to or larger than the snapshot
 size.
 
-Default: If you're creating the volume from a snapshot and don't
+Default: If you\'re creating the volume from a snapshot and don\'t
 specify a volume size, the default is the snapshot size.
 
 At least one of Size or SnapshotId is required.}
@@ -69,11 +71,7 @@ At least one of Size or SnapshotId are required.}
 Provisioned IOPS SSD, \code{st1} for Throughput Optimized HDD, \code{sc1} for Cold
 HDD, or \code{standard} for Magnetic volumes.
 
-Defaults: If no volume type is specified, the default is \code{standard} in
-us-east-1, eu-west-1, eu-central-1, us-west-2, us-west-1, sa-east-1,
-ap-northeast-1, ap-northeast-2, ap-southeast-1, ap-southeast-2,
-ap-south-1, us-gov-west-1, and cn-north-1. In all other Regions, EBS
-defaults to \code{gp2}.}
+Default: \code{gp2}}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -111,13 +109,14 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   Encrypted = TRUE|FALSE,
   Iops = 123,
   KmsKeyId = "string",
+  OutpostArn = "string",
   Size = 123,
   SnapshotId = "string",
   VolumeType = "standard"|"io1"|"gp2"|"sc1"|"st1",
   DryRun = TRUE|FALSE,
   TagSpecifications = list(
     list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"host-reservation"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"host-reservation"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
       Tags = list(
         list(
           Key = "string",
@@ -132,7 +131,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example creates an 80 GiB General Purpose (SSD) volume in the
-# Availability Zone ``us-east-1a``.
+# Availability Zone `us-east-1a`.
 \donttest{svc$create_volume(
   AvailabilityZone = "us-east-1a",
   Size = 80L,
@@ -141,7 +140,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 # This example creates a new Provisioned IOPS (SSD) volume with 1000
 # provisioned IOPS from a snapshot in the Availability Zone
-# ``us-east-1a``.
+# `us-east-1a`.
 \donttest{svc$create_volume(
   AvailabilityZone = "us-east-1a",
   Iops = 1000L,

@@ -7,10 +7,28 @@
 s3_get_bucket_notification_configuration(Bucket)
 }
 \arguments{
-\item{Bucket}{[required] Name of the bucket to get the notification configuration for.}
+\item{Bucket}{[required] Name of the bucket for which to get the notification configuration}
 }
 \description{
 Returns the notification configuration of a bucket.
+}
+\details{
+If notifications are not enabled on the bucket, the operation returns an
+empty \code{NotificationConfiguration} element.
+
+By default, you must be the bucket owner to read the notification
+configuration of a bucket. However, the bucket owner can use a bucket
+policy to grant permission to other users to read this configuration
+with the \code{s3:GetBucketNotification} permission.
+
+For more information about setting and reading the notification
+configuration on a bucket, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html}{Setting Up Notification of Bucket Events}.
+For more information about bucket policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html}{Using Bucket Policies}.
+
+The following operation is related to \code{GetBucketNotification}:
+\itemize{
+\item PutBucketNotification
+}
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_notification_configuration(

@@ -11,7 +11,7 @@ cloudfront_create_cloud_front_origin_access_identity(
 \item{CloudFrontOriginAccessIdentityConfig}{[required] The current configuration information for the identity.}
 }
 \description{
-Creates a new origin access identity. If you're using Amazon S3 for
+Creates a new origin access identity. If you\'re using Amazon S3 for
 your origin, you can use an origin access identity to require users to
 access your content using a CloudFront URL instead of the Amazon S3 URL.
 For more information about how to use origin access identities, see

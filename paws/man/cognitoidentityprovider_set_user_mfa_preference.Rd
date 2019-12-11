@@ -2,7 +2,8 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_set_user_mfa_preference}
 \alias{cognitoidentityprovider_set_user_mfa_preference}
-\title{Set the user's multi-factor authentication (MFA) method preference}
+\title{Set the user's multi-factor authentication (MFA) method preference,
+including which MFA factors are enabled and if any are preferred}
 \usage{
 cognitoidentityprovider_set_user_mfa_preference(SMSMfaSettings,
   SoftwareTokenMfaSettings, AccessToken)
@@ -12,10 +13,15 @@ cognitoidentityprovider_set_user_mfa_preference(SMSMfaSettings,
 
 \item{SoftwareTokenMfaSettings}{The time-based one-time password software token MFA settings.}
 
-\item{AccessToken}{[required] The access token.}
+\item{AccessToken}{[required] The access token for the user.}
 }
 \description{
-Set the user's multi-factor authentication (MFA) method preference.
+Set the user\'s multi-factor authentication (MFA) method preference,
+including which MFA factors are enabled and if any are preferred. Only
+one factor can be set as preferred. The preferred MFA factor will be
+used to authenticate a user if multiple factors are enabled. If multiple
+options are enabled and no preference is set, a challenge to choose an
+MFA option will be returned during sign in.
 }
 \section{Request syntax}{
 \preformatted{svc$set_user_mfa_preference(

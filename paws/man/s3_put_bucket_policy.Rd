@@ -8,9 +8,9 @@ s3_put_bucket_policy(Bucket, ContentMD5, ConfirmRemoveSelfBucketAccess,
   Policy)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The name of the bucket.}
 
-\item{ContentMD5}{}
+\item{ContentMD5}{The MD5 hash of the request body.}
 
 \item{ConfirmRemoveSelfBucketAccess}{Set this parameter to true to confirm that you want to remove your
 permissions to change this bucket policy in the future.}
@@ -18,7 +18,29 @@ permissions to change this bucket policy in the future.}
 \item{Policy}{[required] The bucket policy as a JSON document.}
 }
 \description{
-Applies an Amazon S3 bucket policy to an Amazon S3 bucket.
+Applies an Amazon S3 bucket policy to an Amazon S3 bucket. If you are
+using an identity other than the root user of the AWS account that owns
+the bucket, the calling identity must have the \code{PutBucketPolicy}
+permissions on the specified bucket and belong to the bucket owner\'s
+account in order to use this operation.
+}
+\details{
+If you don\'t have \code{PutBucketPolic}y permissions, Amazon S3 returns a
+\verb{403 Access Denied} error. If you have the correct permissions, but
+you\'re not using an identity that belongs to the bucket owner\'s
+account, Amazon S3 returns a \verb{405 Method Not Allowed} error.
+
+As a security precaution, the root user of the AWS account that owns a
+bucket can always use this operation, even if the policy explicitly
+denies the root user the ability to perform this action.
+
+For more information about bucket policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html}{Using Bucket Policies and User Policies}.
+
+The following operations are related to \code{PutBucketPolicy}:
+\itemize{
+\item CreateBucket
+\item DeleteBucket
+}
 }
 \section{Request syntax}{
 \preformatted{svc$put_bucket_policy(
@@ -34,7 +56,7 @@ Applies an Amazon S3 bucket policy to an Amazon S3 bucket.
 # The following example sets a permission policy on a bucket.
 \donttest{svc$put_bucket_policy(
   Bucket = "examplebucket",
-  Policy = "{\\"Version\\": \\"2012-10-17\\", \\"Statement\\": [{ \\"Sid\\": \\"id-1\\",\\"Effect\\": ..."
+  Policy = "{\"Version\": \"2012-10-17\", \"Statement\": [{ \"Sid\": \"id-1\",\"Effect\": ..."
 )}
 
 }

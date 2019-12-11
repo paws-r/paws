@@ -28,7 +28,7 @@ for available schedules and obtain a purchase token. After you purchase
 a Scheduled Instance, you must call RunScheduledInstances during each
 scheduled time period.
 
-After you purchase a Scheduled Instance, you can't cancel, modify, or
+After you purchase a Scheduled Instance, you can\'t cancel, modify, or
 resell your purchase.
 }
 \section{Request syntax}{

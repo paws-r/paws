@@ -4,7 +4,8 @@
 \alias{ecs_create_cluster}
 \title{Creates a new Amazon ECS cluster}
 \usage{
-ecs_create_cluster(clusterName, tags, settings)
+ecs_create_cluster(clusterName, tags, settings, capacityProviders,
+  defaultCapacityProviderStrategy)
 }
 \arguments{
 \item{clusterName}{The name of your cluster. If you do not specify a name for your cluster,
@@ -13,13 +14,75 @@ lowercase), numbers, and hyphens are allowed.}
 
 \item{tags}{The metadata that you apply to the cluster to help you categorize and
 organize them. Each tag consists of a key and an optional value, both of
-which you define. Tag keys can have a maximum character length of 128
-characters, and tag values can have a maximum length of 256 characters.}
+which you define.
+
+The following basic restrictions apply to tags:
+\itemize{
+\item Maximum number of tags per resource - 50
+\item For each resource, each tag key must be unique, and each tag key can
+have only one value.
+\item Maximum key length - 128 Unicode characters in UTF-8
+\item Maximum value length - 256 Unicode characters in UTF-8
+\item If your tagging schema is used across multiple services and
+resources, remember that other services may have restrictions on
+allowed characters. Generally allowed characters are: letters,
+numbers, and spaces representable in UTF-8, and the following
+characters: + - = . \\_ : / @.
+\item Tag keys and values are case-sensitive.
+\item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
+such as a prefix for either keys or values as it is reserved for AWS
+use. You cannot edit or delete tag keys or values with this prefix.
+Tags with this prefix do not count against your tags per resource
+limit.
+}}
 
 \item{settings}{The setting to use when creating a cluster. This parameter is used to
 enable CloudWatch Container Insights for a cluster. If this value is
 specified, it will override the \code{containerInsights} value set with
 PutAccountSetting or PutAccountSettingDefault.}
+
+\item{capacityProviders}{The short name or full Amazon Resource Name (ARN) of one or more
+capacity providers to associate with the cluster.
+
+If specifying a capacity provider that uses an Auto Scaling group, the
+capacity provider must already be created and not already associated
+with another cluster. New capacity providers can be created with the
+CreateCapacityProvider API operation.
+
+To use a AWS Fargate capacity provider, specify either the \code{FARGATE} or
+\code{FARGATE_SPOT} capacity providers. The AWS Fargate capacity providers
+are available to all accounts and only need to be associated with a
+cluster to be used.
+
+The PutClusterCapacityProviders API operation is used to update the list
+of available capacity providers for a cluster after the cluster is
+created.}
+
+\item{defaultCapacityProviderStrategy}{The capacity provider strategy to use by default for the cluster.
+
+When creating a service or running a task on a cluster, if no capacity
+provider or launch type is specified then the default capacity provider
+strategy for the cluster is used.
+
+A capacity provider strategy consists of one or more capacity providers
+along with the \code{base} and \code{weight} to assign to them. A capacity
+provider must be associated with the cluster to be used in a capacity
+provider strategy. The PutClusterCapacityProviders API is used to
+associate a capacity provider with a cluster. Only capacity providers
+with an \code{ACTIVE} or \code{UPDATING} status can be used.
+
+If specifying a capacity provider that uses an Auto Scaling group, the
+capacity provider must already be created. New capacity providers can be
+created with the CreateCapacityProvider API operation.
+
+To use a AWS Fargate capacity provider, specify either the \code{FARGATE} or
+\code{FARGATE_SPOT} capacity providers. The AWS Fargate capacity providers
+are available to all accounts and only need to be associated with a
+cluster to be used.
+
+If a default capacity provider strategy is not defined for a cluster
+during creation, it can be defined later with the
+PutClusterCapacityProviders API operation.}
 }
 \description{
 Creates a new Amazon ECS cluster. By default, your account receives a
@@ -29,11 +92,11 @@ However, you can create your own cluster with a unique name with the
 }
 \details{
 When you call the CreateCluster API operation, Amazon ECS attempts to
-create the service-linked role for your account so that required
-resources in other AWS services can be managed on your behalf. However,
-if the IAM user that makes the call does not have permissions to create
-the service-linked role, it is not created. For more information, see
-\href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html}{Using Service-Linked Roles for Amazon ECS}
+create the Amazon ECS service-linked role for your account so that
+required resources in other AWS services can be managed on your behalf.
+However, if the IAM user that makes the call does not have permissions
+to create the service-linked role, it is not created. For more
+information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html}{Using Service-Linked Roles for Amazon ECS}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
@@ -49,6 +112,16 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
     list(
       name = "containerInsights",
       value = "string"
+    )
+  ),
+  capacityProviders = list(
+    "string"
+  ),
+  defaultCapacityProviderStrategy = list(
+    list(
+      capacityProvider = "string",
+      weight = 123,
+      base = 123
     )
   )
 )

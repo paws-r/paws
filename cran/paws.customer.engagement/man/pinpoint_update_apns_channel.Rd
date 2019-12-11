@@ -2,7 +2,8 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_update_apns_channel}
 \alias{pinpoint_update_apns_channel}
-\title{Updates the APNs channel settings for an application}
+\title{Enables the APNs channel for an application or updates the status and
+settings of the APNs channel for an application}
 \usage{
 pinpoint_update_apns_channel(APNSChannelRequest, ApplicationId)
 }
@@ -13,7 +14,8 @@ pinpoint_update_apns_channel(APNSChannelRequest, ApplicationId)
 as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \description{
-Updates the APNs channel settings for an application.
+Enables the APNs channel for an application or updates the status and
+settings of the APNs channel for an application.
 }
 \section{Request syntax}{
 \preformatted{svc$update_apns_channel(

@@ -20,7 +20,7 @@ created.
 \item \code{launch.block-device-mapping.delete-on-termination} - Indicates
 whether the EBS volume is deleted on instance termination.
 \item \code{launch.block-device-mapping.device-name} - The device name for the
-volume in the block device mapping (for example, \code{/dev/sdh} or
+volume in the block device mapping (for example, \verb{/dev/sdh} or
 \code{xvdh}).
 \item \code{launch.block-device-mapping.snapshot-id} - The ID of the snapshot
 for the EBS volume.
@@ -61,12 +61,12 @@ address of the network interface.
 \item \code{network-interface.subnet-id} - The ID of the subnet for the
 instance.
 \item \code{product-description} - The product description associated with the
-instance (\code{Linux/UNIX} \| \code{Windows}).
+instance (\code{Linux/UNIX} \\| \code{Windows}).
 \item \code{spot-instance-request-id} - The Spot Instance request ID.
 \item \code{spot-price} - The maximum hourly price for any Spot Instance
 launched to fulfill the request.
-\item \code{state} - The state of the Spot Instance request (\code{open} \| \code{active}
-\| \code{closed} \| \code{cancelled} \| \code{failed}). Spot request status
+\item \code{state} - The state of the Spot Instance request (\code{open} \\| \code{active}
+\\| \code{closed} \\| \code{cancelled} \\| \code{failed}). Spot request status
 information can help you track your Amazon EC2 Spot Instance
 requests. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html}{Spot Request Status}
 in the \emph{Amazon EC2 User Guide for Linux Instances}.
@@ -74,7 +74,7 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
 of your Spot Instance request.
 \item \code{status-message} - The message explaining the status of the Spot
 Instance request.
-\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+\item \code{tag}:\\<key\\> - The key/value combination of a tag assigned to the
 resource. Use the tag key in the filter name and the tag value as
 the filter value. For example, to find all resources that have a tag
 with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
@@ -82,7 +82,7 @@ the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
-\item \code{type} - The type of Spot Instance request (\code{one-time} \|
+\item \code{type} - The type of Spot Instance request (\code{one-time} \\|
 \code{persistent}).
 \item \code{valid-from} - The start date of the request.
 \item \code{valid-until} - The end date of the request.

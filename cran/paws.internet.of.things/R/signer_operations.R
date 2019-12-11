@@ -156,12 +156,12 @@ signer_get_signing_profile <- function(profileName) {
 #'
 #' Lists all your signing jobs. You can use the `maxResults` parameter to
 #' limit the number of signing jobs that are returned in the response. If
-#' additional jobs remain to be listed, AWS Signer returns a `nextToken`
+#' additional jobs remain to be listed, code signing returns a `nextToken`
 #' value. Use this value in subsequent calls to `ListSigningJobs` to fetch
 #' the remaining values. You can continue calling `ListSigningJobs` with
-#' your `maxResults` parameter and with new values that AWS Signer returns
-#' in the `nextToken` parameter until all of your signing jobs have been
-#' returned.
+#' your `maxResults` parameter and with new values that code signing
+#' returns in the `nextToken` parameter until all of your signing jobs have
+#' been returned.
 #'
 #' @usage
 #' signer_list_signing_jobs(status, platformId, requestedBy, maxResults,
@@ -212,16 +212,16 @@ signer_list_signing_jobs <- function(status = NULL, platformId = NULL, requested
 }
 .signer$operations$list_signing_jobs <- signer_list_signing_jobs
 
-#' Lists all signing platforms available in AWS Signer that match the
+#' Lists all signing platforms available in code signing that match the
 #' request parameters
 #'
-#' Lists all signing platforms available in AWS Signer that match the
-#' request parameters. If additional jobs remain to be listed, AWS Signer
+#' Lists all signing platforms available in code signing that match the
+#' request parameters. If additional jobs remain to be listed, code signing
 #' returns a `nextToken` value. Use this value in subsequent calls to
 #' `ListSigningJobs` to fetch the remaining values. You can continue
 #' calling `ListSigningJobs` with your `maxResults` parameter and with new
-#' values that AWS Signer returns in the `nextToken` parameter until all of
-#' your signing jobs have been returned.
+#' values that code signing returns in the `nextToken` parameter until all
+#' of your signing jobs have been returned.
 #'
 #' @usage
 #' signer_list_signing_platforms(category, partner, target, maxResults,
@@ -271,12 +271,12 @@ signer_list_signing_platforms <- function(category = NULL, partner = NULL, targe
 #'
 #' Lists all available signing profiles in your AWS account. Returns only
 #' profiles with an `ACTIVE` status unless the `includeCanceled` request
-#' field is set to `true`. If additional jobs remain to be listed, AWS
-#' Signer returns a `nextToken` value. Use this value in subsequent calls
+#' field is set to `true`. If additional jobs remain to be listed, code
+#' signing returns a `nextToken` value. Use this value in subsequent calls
 #' to `ListSigningJobs` to fetch the remaining values. You can continue
 #' calling `ListSigningJobs` with your `maxResults` parameter and with new
-#' values that AWS Signer returns in the `nextToken` parameter until all of
-#' your signing jobs have been returned.
+#' values that code signing returns in the `nextToken` parameter until all
+#' of your signing jobs have been returned.
 #'
 #' @usage
 #' signer_list_signing_profiles(includeCanceled, maxResults, nextToken)
@@ -317,16 +317,52 @@ signer_list_signing_profiles <- function(includeCanceled = NULL, maxResults = NU
 }
 .signer$operations$list_signing_profiles <- signer_list_signing_profiles
 
+#' Returns a list of the tags associated with a signing profile resource
+#'
+#' Returns a list of the tags associated with a signing profile resource.
+#'
+#' @usage
+#' signer_list_tags_for_resource(resourceArn)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the signing profile.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   resourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname signer_list_tags_for_resource
+signer_list_tags_for_resource <- function(resourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .signer$list_tags_for_resource_input(resourceArn = resourceArn)
+  output <- .signer$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .signer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.signer$operations$list_tags_for_resource <- signer_list_tags_for_resource
+
 #' Creates a signing profile
 #'
-#' Creates a signing profile. A signing profile is an AWS Signer template
+#' Creates a signing profile. A signing profile is a code signing template
 #' that can be used to carry out a pre-defined signing job. For more
 #' information, see
 #' <http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html>
 #'
 #' @usage
 #' signer_put_signing_profile(profileName, signingMaterial, platformId,
-#'   overrides, signingParameters)
+#'   overrides, signingParameters, tags)
 #'
 #' @param profileName &#91;required&#93; The name of the signing profile to be created.
 #' @param signingMaterial &#91;required&#93; The AWS Certificate Manager certificate that will be used to sign code
@@ -337,6 +373,7 @@ signer_list_signing_profiles <- function(includeCanceled = NULL, maxResults = NU
 #' different `hash-algorithm` or `signing-algorithm`).
 #' @param signingParameters Map of key-value pairs for signing. These can include any information
 #' that you want to use during signing.
+#' @param tags Tags to be associated with the signing profile being created.
 #'
 #' @section Request syntax:
 #' ```
@@ -354,6 +391,9 @@ signer_list_signing_profiles <- function(includeCanceled = NULL, maxResults = NU
 #'   ),
 #'   signingParameters = list(
 #'     "string"
+#'   ),
+#'   tags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -361,14 +401,14 @@ signer_list_signing_profiles <- function(includeCanceled = NULL, maxResults = NU
 #' @keywords internal
 #'
 #' @rdname signer_put_signing_profile
-signer_put_signing_profile <- function(profileName, signingMaterial, platformId, overrides = NULL, signingParameters = NULL) {
+signer_put_signing_profile <- function(profileName, signingMaterial, platformId, overrides = NULL, signingParameters = NULL, tags = NULL) {
   op <- new_operation(
     name = "PutSigningProfile",
     http_method = "PUT",
     http_path = "/signing-profiles/{profileName}",
     paginator = list()
   )
-  input <- .signer$put_signing_profile_input(profileName = profileName, signingMaterial = signingMaterial, platformId = platformId, overrides = overrides, signingParameters = signingParameters)
+  input <- .signer$put_signing_profile_input(profileName = profileName, signingMaterial = signingMaterial, platformId = platformId, overrides = overrides, signingParameters = signingParameters, tags = tags)
   output <- .signer$put_signing_profile_output()
   config <- get_config()
   svc <- .signer$service(config)
@@ -391,14 +431,14 @@ signer_put_signing_profile <- function(profileName, signingMaterial, platformId,
 #' 
 #' -   Your S3 source bucket must be version enabled.
 #' 
-#' -   You must create an S3 destination bucket. AWS Signer uses your S3
+#' -   You must create an S3 destination bucket. Code signing uses your S3
 #'     destination bucket to write your signed code.
 #' 
 #' -   You specify the name of the source and destination buckets when
 #'     calling the `StartSigningJob` operation.
 #' 
 #' -   You must also specify a request token that identifies your request
-#'     to AWS Signer.
+#'     to code signing.
 #' 
 #' You can call the DescribeSigningJob and the ListSigningJobs actions
 #' after you call `StartSigningJob`.
@@ -458,3 +498,88 @@ signer_start_signing_job <- function(source, destination, profileName = NULL, cl
   return(response)
 }
 .signer$operations$start_signing_job <- signer_start_signing_job
+
+#' Adds one or more tags to a signing profile
+#'
+#' Adds one or more tags to a signing profile. Tags are labels that you can
+#' use to identify and organize your AWS resources. Each tag consists of a
+#' key and an optional value. You specify the signing profile using its
+#' Amazon Resource Name (ARN). You specify the tag by using a key-value
+#' pair.
+#'
+#' @usage
+#' signer_tag_resource(resourceArn, tags)
+#'
+#' @param resourceArn &#91;required&#93; Amazon Resource Name (ARN) for the signing profile.
+#' @param tags &#91;required&#93; One or more tags to be associated with the signing profile.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   resourceArn = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname signer_tag_resource
+signer_tag_resource <- function(resourceArn, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .signer$tag_resource_input(resourceArn = resourceArn, tags = tags)
+  output <- .signer$tag_resource_output()
+  config <- get_config()
+  svc <- .signer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.signer$operations$tag_resource <- signer_tag_resource
+
+#' Remove one or more tags from a signing profile
+#'
+#' Remove one or more tags from a signing profile. Specify a list of tag
+#' keys to remove the tags.
+#'
+#' @usage
+#' signer_untag_resource(resourceArn, tagKeys)
+#'
+#' @param resourceArn &#91;required&#93; Amazon Resource Name (ARN) for the signing profile .
+#' @param tagKeys &#91;required&#93; A list of tag keys to be removed from the signing profile .
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   resourceArn = "string",
+#'   tagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname signer_untag_resource
+signer_untag_resource <- function(resourceArn, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .signer$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
+  output <- .signer$untag_resource_output()
+  config <- get_config()
+  svc <- .signer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.signer$operations$untag_resource <- signer_untag_resource

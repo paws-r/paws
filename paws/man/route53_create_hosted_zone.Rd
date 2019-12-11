@@ -14,14 +14,14 @@ example, \emph{www.example.com}. The trailing dot is optional; Amazon Route
 Route 53 treats \emph{www.example.com} (without a trailing dot) and
 \emph{www.example.com.} (with a trailing dot) as identical.
 
-If you're creating a public hosted zone, this is the name you have
+If you\'re creating a public hosted zone, this is the name you have
 registered with your DNS registrar. If your domain name is registered
 with a registrar other than Route 53, change the name servers for your
 domain to the set of \code{NameServers} that \code{CreateHostedZone} returns in
 \code{DelegationSet}.}
 
 \item{VPC}{(Private hosted zones only) A complex type that contains information
-about the Amazon VPC that you're associating with this hosted zone.
+about the Amazon VPC that you\'re associating with this hosted zone.
 
 You can specify only one Amazon VPC when you create a private hosted
 zone. To associate additional Amazon VPCs with the hosted zone, use
@@ -40,7 +40,7 @@ can be any unique string, for example, a date/time stamp.}
 \item For private hosted zones, an optional \code{PrivateZone} element
 }
 
-If you don't specify a comment or the \code{PrivateZone} element, omit
+If you don\'t specify a comment or the \code{PrivateZone} element, omit
 \code{HostedZoneConfig} and the other elements.}
 
 \item{DelegationSetId}{If you want to associate a reusable delegation set with this hosted
@@ -59,7 +59,7 @@ subdomains within one or more Amazon Virtual Private Clouds (Amazon
 VPCs).
 }
 \details{
-You can't convert a public hosted zone to a private hosted zone or vice
+You can\'t convert a public hosted zone to a private hosted zone or vice
 versa. Instead, you must create a new hosted zone with the same name and
 create new resource record sets.
 
@@ -67,18 +67,16 @@ For more information about charges for hosted zones, see \href{http://aws.amazon
 
 Note the following:
 \itemize{
-\item You can't create a hosted zone for a top-level domain (TLD) such as
+\item You can\'t create a hosted zone for a top-level domain (TLD) such as
 .com.
 \item For public hosted zones, Amazon Route 53 automatically creates a
 default SOA record and four NS records for the zone. For more
 information about SOA and NS records, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/SOA-NSrecords.html}{NS and SOA Records that Route 53 Creates for a Hosted Zone}
 in the \emph{Amazon Route 53 Developer Guide}.
-}
 
 If you want to use the same name servers for multiple public hosted
 zones, you can optionally associate a reusable delegation set with
 the hosted zone. See the \code{DelegationSetId} element.
-\itemize{
 \item If your domain is registered with a registrar other than Route 53,
 you must update the name servers with your registrar to make Route
 53 the DNS service for the domain. For more information, see
@@ -96,7 +94,7 @@ changes to \code{INSYNC}.
 \preformatted{svc$create_hosted_zone(
   Name = "string",
   VPC = list(
-    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
+    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
     VPCId = "string"
   ),
   CallerReference = "string",

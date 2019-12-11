@@ -184,9 +184,11 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' To create a change set for a stack that doesn\'t exist, for the
 #' `ChangeSetType` parameter, specify `CREATE`. To create a change set for
 #' an existing stack, specify `UPDATE` for the `ChangeSetType` parameter.
-#' After the `CreateChangeSet` call successfully completes, AWS
-#' CloudFormation starts creating the change set. To check the status of
-#' the change set or to review it, use the DescribeChangeSet action.
+#' To create a change set for an import operation, specify `IMPORT` for the
+#' `ChangeSetType` parameter. After the `CreateChangeSet` call successfully
+#' completes, AWS CloudFormation starts creating the change set. To check
+#' the status of the change set or to review it, use the DescribeChangeSet
+#' action.
 #' 
 #' When you are satisfied with the changes the change set will make,
 #' execute the change set by using the ExecuteChangeSet action. AWS
@@ -196,7 +198,7 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' cloudformation_create_change_set(StackName, TemplateBody, TemplateURL,
 #'   UsePreviousTemplate, Parameters, Capabilities, ResourceTypes, RoleARN,
 #'   RollbackConfiguration, NotificationARNs, Tags, ChangeSetName,
-#'   ClientToken, Description, ChangeSetType)
+#'   ClientToken, Description, ChangeSetType, ResourcesToImport)
 #'
 #' @param StackName &#91;required&#93; The name or the unique ID of the stack for which you are creating a
 #' change set. AWS CloudFormation generates the change set by comparing
@@ -218,7 +220,7 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' create the change set.
 #' @param Parameters A list of `Parameter` structures that specify input parameters for the
 #' change set. For more information, see the Parameter data type.
-#' @param Capabilities In some cases, you must explicity acknowledge that your stack template
+#' @param Capabilities In some cases, you must explicitly acknowledge that your stack template
 #' contains certain capabilities in order for AWS CloudFormation to create
 #' the stack.
 #' 
@@ -339,7 +341,8 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' @param Description A description to help you identify this change set.
 #' @param ChangeSetType The type of change set operation. To create a change set for a new
 #' stack, specify `CREATE`. To create a change set for an existing stack,
-#' specify `UPDATE`.
+#' specify `UPDATE`. To create a change set for an import operation,
+#' specify `IMPORT`.
 #' 
 #' If you create a change set for a new stack, AWS Cloudformation creates a
 #' stack with a unique stack ID, but no template or resources. The stack
@@ -350,6 +353,7 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' By default, AWS CloudFormation specifies `UPDATE`. You can\'t use the
 #' `UPDATE` type to create a change set for a new stack or the `CREATE`
 #' type to create a change set for an existing stack.
+#' @param ResourcesToImport The resources to import into your stack.
 #'
 #' @section Request syntax:
 #' ```
@@ -394,21 +398,30 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #'   ChangeSetName = "string",
 #'   ClientToken = "string",
 #'   Description = "string",
-#'   ChangeSetType = "CREATE"|"UPDATE"
+#'   ChangeSetType = "CREATE"|"UPDATE"|"IMPORT",
+#'   ResourcesToImport = list(
+#'     list(
+#'       ResourceType = "string",
+#'       LogicalResourceId = "string",
+#'       ResourceIdentifier = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname cloudformation_create_change_set
-cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, UsePreviousTemplate = NULL, Parameters = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, RollbackConfiguration = NULL, NotificationARNs = NULL, Tags = NULL, ChangeSetName, ClientToken = NULL, Description = NULL, ChangeSetType = NULL) {
+cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, UsePreviousTemplate = NULL, Parameters = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, RollbackConfiguration = NULL, NotificationARNs = NULL, Tags = NULL, ChangeSetName, ClientToken = NULL, Description = NULL, ChangeSetType = NULL, ResourcesToImport = NULL) {
   op <- new_operation(
     name = "CreateChangeSet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$create_change_set_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, Parameters = Parameters, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, RollbackConfiguration = RollbackConfiguration, NotificationARNs = NotificationARNs, Tags = Tags, ChangeSetName = ChangeSetName, ClientToken = ClientToken, Description = Description, ChangeSetType = ChangeSetType)
+  input <- .cloudformation$create_change_set_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, Parameters = Parameters, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, RollbackConfiguration = RollbackConfiguration, NotificationARNs = NotificationARNs, Tags = Tags, ChangeSetName = ChangeSetName, ClientToken = ClientToken, Description = Description, ChangeSetType = ChangeSetType, ResourcesToImport = ResourcesToImport)
   output <- .cloudformation$create_change_set_output()
   config <- get_config()
   svc <- .cloudformation$service(config)
@@ -470,7 +483,7 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #' @param NotificationARNs The Simple Notification Service (SNS) topic ARNs to publish stack
 #' related events. You can find your SNS topic ARNs using the SNS console
 #' or your Command Line Interface (CLI).
-#' @param Capabilities In some cases, you must explicity acknowledge that your stack template
+#' @param Capabilities In some cases, you must explicitly acknowledge that your stack template
 #' contains certain capabilities in order for AWS CloudFormation to create
 #' the stack.
 #' 
@@ -848,7 +861,7 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts, Region
 #' Conditional: You must specify either the TemplateBody or the TemplateURL
 #' parameter, but not both.
 #' @param Parameters The input parameters for the stack set template.
-#' @param Capabilities In some cases, you must explicity acknowledge that your stack set
+#' @param Capabilities In some cases, you must explicitly acknowledge that your stack set
 #' template contains certain capabilities in order for AWS CloudFormation
 #' to create the stack set and related stack instances.
 #' 
@@ -1237,6 +1250,68 @@ cloudformation_delete_stack_set <- function(StackSetName) {
   return(response)
 }
 .cloudformation$operations$delete_stack_set <- cloudformation_delete_stack_set
+
+#' Removes a type or type version from active use in the CloudFormation
+#' registry
+#'
+#' Removes a type or type version from active use in the CloudFormation
+#' registry. If a type or type version is deregistered, it cannot be used
+#' in CloudFormation operations.
+#' 
+#' To deregister a type, you must individually deregister all registered
+#' versions of that type. If a type has only a single registered version,
+#' deregistering that version results in the type itself being
+#' deregistered.
+#' 
+#' You cannot deregister the default version of a type, unless it is the
+#' only registered version of that type, in which case the type itself is
+#' deregistered as well.
+#'
+#' @usage
+#' cloudformation_deregister_type(Arn, Type, TypeName, VersionId)
+#'
+#' @param Arn The Amazon Resource Name (ARN) of the type.
+#' 
+#' Conditional: You must specify `TypeName` or `Arn`.
+#' @param Type The kind of type.
+#' 
+#' Currently the only valid value is `RESOURCE`.
+#' @param TypeName The name of the type.
+#' 
+#' Conditional: You must specify `TypeName` or `Arn`.
+#' @param VersionId The ID of a specific version of the type. The version ID is the value at
+#' the end of the Amazon Resource Name (ARN) assigned to the type version
+#' when it is registered.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$deregister_type(
+#'   Arn = "string",
+#'   Type = "RESOURCE",
+#'   TypeName = "string",
+#'   VersionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_deregister_type
+cloudformation_deregister_type <- function(Arn = NULL, Type = NULL, TypeName = NULL, VersionId = NULL) {
+  op <- new_operation(
+    name = "DeregisterType",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$deregister_type_input(Arn = Arn, Type = Type, TypeName = TypeName, VersionId = VersionId)
+  output <- .cloudformation$deregister_type_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$deregister_type <- cloudformation_deregister_type
 
 #' Retrieves your account's AWS CloudFormation limits, such as the maximum
 #' number of stacks that you can create in your account
@@ -1827,6 +1902,112 @@ cloudformation_describe_stacks <- function(StackName = NULL, NextToken = NULL) {
 }
 .cloudformation$operations$describe_stacks <- cloudformation_describe_stacks
 
+#' Returns detailed information about a type that has been registered
+#'
+#' Returns detailed information about a type that has been registered.
+#' 
+#' If you specify a `VersionId`, `DescribeType` returns information about
+#' that specific type version. Otherwise, it returns information about the
+#' default type version.
+#'
+#' @usage
+#' cloudformation_describe_type(Type, TypeName, Arn, VersionId)
+#'
+#' @param Type The kind of type.
+#' 
+#' Currently the only valid value is `RESOURCE`.
+#' @param TypeName The name of the type.
+#' 
+#' Conditional: You must specify `TypeName` or `Arn`.
+#' @param Arn The Amazon Resource Name (ARN) of the type.
+#' 
+#' Conditional: You must specify `TypeName` or `Arn`.
+#' @param VersionId The ID of a specific version of the type. The version ID is the value at
+#' the end of the Amazon Resource Name (ARN) assigned to the type version
+#' when it is registered.
+#' 
+#' If you specify a `VersionId`, `DescribeType` returns information about
+#' that specific type version. Otherwise, it returns information about the
+#' default type version.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_type(
+#'   Type = "RESOURCE",
+#'   TypeName = "string",
+#'   Arn = "string",
+#'   VersionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_describe_type
+cloudformation_describe_type <- function(Type = NULL, TypeName = NULL, Arn = NULL, VersionId = NULL) {
+  op <- new_operation(
+    name = "DescribeType",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$describe_type_input(Type = Type, TypeName = TypeName, Arn = Arn, VersionId = VersionId)
+  output <- .cloudformation$describe_type_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$describe_type <- cloudformation_describe_type
+
+#' Returns information about a type's registration, including its current
+#' status and type and version identifiers
+#'
+#' Returns information about a type\'s registration, including its current
+#' status and type and version identifiers.
+#' 
+#' When you initiate a registration request using ` <a>RegisterType</a> `,
+#' you can then use ` <a>DescribeTypeRegistration</a> ` to monitor the
+#' progress of that registration request.
+#' 
+#' Once the registration request has completed, use ` <a>DescribeType</a> `
+#' to return detailed informaiton about a type.
+#'
+#' @usage
+#' cloudformation_describe_type_registration(RegistrationToken)
+#'
+#' @param RegistrationToken &#91;required&#93; The identifier for this registration request.
+#' 
+#' This registration token is generated by CloudFormation when you initiate
+#' a registration request using ` <a>RegisterType</a> `.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_type_registration(
+#'   RegistrationToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_describe_type_registration
+cloudformation_describe_type_registration <- function(RegistrationToken) {
+  op <- new_operation(
+    name = "DescribeTypeRegistration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$describe_type_registration_input(RegistrationToken = RegistrationToken)
+  output <- .cloudformation$describe_type_registration_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$describe_type_registration <- cloudformation_describe_type_registration
+
 #' Detects whether a stack's actual configuration differs, or has
 #' _drifted_, from it's expected configuration, as defined in the stack
 #' template and any values specified as template parameters
@@ -1954,6 +2135,93 @@ cloudformation_detect_stack_resource_drift <- function(StackName, LogicalResourc
   return(response)
 }
 .cloudformation$operations$detect_stack_resource_drift <- cloudformation_detect_stack_resource_drift
+
+#' Detect drift on a stack set
+#'
+#' Detect drift on a stack set. When CloudFormation performs drift
+#' detection on a stack set, it performs drift detection on the stack
+#' associated with each stack instance in the stack set. For more
+#' information, see [How CloudFormation Performs Drift Detection on a Stack
+#' Set](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html).
+#' 
+#' `DetectStackSetDrift` returns the `OperationId` of the stack set drift
+#' detection operation. Use this operation id with
+#' ` <a>DescribeStackSetOperation</a> ` to monitor the progress of the
+#' drift detection operation. The drift detection operation may take some
+#' time, depending on the number of stack instances included in the stack
+#' set, as well as the number of resources included in each stack.
+#' 
+#' Once the operation has completed, use the following actions to return
+#' drift information:
+#' 
+#' -   Use ` <a>DescribeStackSet</a> ` to return detailed informaiton about
+#'     the stack set, including detailed information about the last
+#'     *completed* drift operation performed on the stack set. (Information
+#'     about drift operations that are in progress is not included.)
+#' 
+#' -   Use ` <a>ListStackInstances</a> ` to return a list of stack
+#'     instances belonging to the stack set, including the drift status and
+#'     last drift time checked of each instance.
+#' 
+#' -   Use ` <a>DescribeStackInstance</a> ` to return detailed information
+#'     about a specific stack instance, including its drift status and last
+#'     drift time checked.
+#' 
+#' For more information on performing a drift detection operation on a
+#' stack set, see [Detecting Unmanaged Changes in Stack
+#' Sets](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html).
+#' 
+#' You can only run a single drift detection operation on a given stack set
+#' at one time.
+#' 
+#' To stop a drift detection stack set operation, use
+#' ` <a>StopStackSetOperation</a> `.
+#'
+#' @usage
+#' cloudformation_detect_stack_set_drift(StackSetName,
+#'   OperationPreferences, OperationId)
+#'
+#' @param StackSetName &#91;required&#93; The name of the stack set on which to perform the drift detection
+#' operation.
+#' @param OperationPreferences 
+#' @param OperationId *The ID of the stack set operation.*
+#'
+#' @section Request syntax:
+#' ```
+#' svc$detect_stack_set_drift(
+#'   StackSetName = "string",
+#'   OperationPreferences = list(
+#'     RegionOrder = list(
+#'       "string"
+#'     ),
+#'     FailureToleranceCount = 123,
+#'     FailureTolerancePercentage = 123,
+#'     MaxConcurrentCount = 123,
+#'     MaxConcurrentPercentage = 123
+#'   ),
+#'   OperationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_detect_stack_set_drift
+cloudformation_detect_stack_set_drift <- function(StackSetName, OperationPreferences = NULL, OperationId = NULL) {
+  op <- new_operation(
+    name = "DetectStackSetDrift",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$detect_stack_set_drift_input(StackSetName = StackSetName, OperationPreferences = OperationPreferences, OperationId = OperationId)
+  output <- .cloudformation$detect_stack_set_drift_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$detect_stack_set_drift <- cloudformation_detect_stack_set_drift
 
 #' Returns the estimated monthly cost of a template
 #'
@@ -2675,7 +2943,7 @@ cloudformation_list_stack_sets <- function(NextToken = NULL, MaxResults = NULL, 
 #' svc$list_stacks(
 #'   NextToken = "string",
 #'   StackStatusFilter = list(
-#'     "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_FAILED"|"ROLLBACK_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE_CLEANUP_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_ROLLBACK_IN_PROGRESS"|"UPDATE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS"|"UPDATE_ROLLBACK_COMPLETE"|"REVIEW_IN_PROGRESS"
+#'     "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_FAILED"|"ROLLBACK_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE_CLEANUP_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_ROLLBACK_IN_PROGRESS"|"UPDATE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS"|"UPDATE_ROLLBACK_COMPLETE"|"REVIEW_IN_PROGRESS"|"IMPORT_IN_PROGRESS"|"IMPORT_COMPLETE"|"IMPORT_ROLLBACK_IN_PROGRESS"|"IMPORT_ROLLBACK_FAILED"|"IMPORT_ROLLBACK_COMPLETE"
 #'   )
 #' )
 #' ```
@@ -2699,6 +2967,392 @@ cloudformation_list_stacks <- function(NextToken = NULL, StackStatusFilter = NUL
   return(response)
 }
 .cloudformation$operations$list_stacks <- cloudformation_list_stacks
+
+#' Returns a list of registration tokens for the specified type
+#'
+#' Returns a list of registration tokens for the specified type.
+#'
+#' @usage
+#' cloudformation_list_type_registrations(Type, TypeName, TypeArn,
+#'   RegistrationStatusFilter, MaxResults, NextToken)
+#'
+#' @param Type The kind of type.
+#' 
+#' Currently the only valid value is `RESOURCE`.
+#' @param TypeName The name of the type.
+#' 
+#' Conditional: You must specify `TypeName` or `Arn`.
+#' @param TypeArn The Amazon Resource Name (ARN) of the type.
+#' 
+#' Conditional: You must specify `TypeName` or `Arn`.
+#' @param RegistrationStatusFilter The current status of the type registration request.
+#' @param MaxResults The maximum number of results to be returned with a single call. If the
+#' number of available results exceeds this maximum, the response includes
+#' a `NextToken` value that you can assign to the `NextToken` request
+#' parameter to get the next set of results.
+#' @param NextToken If the previous paginated request didn\'t return all of the remaining
+#' results, the response object\'s `NextToken` parameter value is set to a
+#' token. To retrieve the next set of results, call this action again and
+#' assign that token to the request object\'s `NextToken` parameter. If
+#' there are no remaining results, the previous response object\'s
+#' `NextToken` parameter is set to `null`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_type_registrations(
+#'   Type = "RESOURCE",
+#'   TypeName = "string",
+#'   TypeArn = "string",
+#'   RegistrationStatusFilter = "COMPLETE"|"IN_PROGRESS"|"FAILED",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_list_type_registrations
+cloudformation_list_type_registrations <- function(Type = NULL, TypeName = NULL, TypeArn = NULL, RegistrationStatusFilter = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListTypeRegistrations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$list_type_registrations_input(Type = Type, TypeName = TypeName, TypeArn = TypeArn, RegistrationStatusFilter = RegistrationStatusFilter, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .cloudformation$list_type_registrations_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$list_type_registrations <- cloudformation_list_type_registrations
+
+#' Returns summary information about the versions of a type
+#'
+#' Returns summary information about the versions of a type.
+#'
+#' @usage
+#' cloudformation_list_type_versions(Type, TypeName, Arn, MaxResults,
+#'   NextToken, DeprecatedStatus)
+#'
+#' @param Type The kind of the type.
+#' 
+#' Currently the only valid value is `RESOURCE`.
+#' @param TypeName The name of the type for which you want version summary information.
+#' 
+#' Conditional: You must specify `TypeName` or `Arn`.
+#' @param Arn The Amazon Resource Name (ARN) of the type for which you want version
+#' summary information.
+#' 
+#' Conditional: You must specify `TypeName` or `Arn`.
+#' @param MaxResults The maximum number of results to be returned with a single call. If the
+#' number of available results exceeds this maximum, the response includes
+#' a `NextToken` value that you can assign to the `NextToken` request
+#' parameter to get the next set of results.
+#' @param NextToken If the previous paginated request didn\'t return all of the remaining
+#' results, the response object\'s `NextToken` parameter value is set to a
+#' token. To retrieve the next set of results, call this action again and
+#' assign that token to the request object\'s `NextToken` parameter. If
+#' there are no remaining results, the previous response object\'s
+#' `NextToken` parameter is set to `null`.
+#' @param DeprecatedStatus The deprecation status of the type versions that you want to get summary
+#' information about.
+#' 
+#' Valid values include:
+#' 
+#' -   `LIVE`: The type version is registered and can be used in
+#'     CloudFormation operations, dependent on its provisioning behavior
+#'     and visibility scope.
+#' 
+#' -   `DEPRECATED`: The type version has been deregistered and can no
+#'     longer be used in CloudFormation operations.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_type_versions(
+#'   Type = "RESOURCE",
+#'   TypeName = "string",
+#'   Arn = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   DeprecatedStatus = "LIVE"|"DEPRECATED"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_list_type_versions
+cloudformation_list_type_versions <- function(Type = NULL, TypeName = NULL, Arn = NULL, MaxResults = NULL, NextToken = NULL, DeprecatedStatus = NULL) {
+  op <- new_operation(
+    name = "ListTypeVersions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$list_type_versions_input(Type = Type, TypeName = TypeName, Arn = Arn, MaxResults = MaxResults, NextToken = NextToken, DeprecatedStatus = DeprecatedStatus)
+  output <- .cloudformation$list_type_versions_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$list_type_versions <- cloudformation_list_type_versions
+
+#' Returns summary information about types that have been registered with
+#' CloudFormation
+#'
+#' Returns summary information about types that have been registered with
+#' CloudFormation.
+#'
+#' @usage
+#' cloudformation_list_types(Visibility, ProvisioningType,
+#'   DeprecatedStatus, MaxResults, NextToken)
+#'
+#' @param Visibility The scope at which the type is visible and usable in CloudFormation
+#' operations.
+#' 
+#' Valid values include:
+#' 
+#' -   `PRIVATE`: The type is only visible and usable within the account in
+#'     which it is registered. Currently, AWS CloudFormation marks any
+#'     types you create as `PRIVATE`.
+#' 
+#' -   `PUBLIC`: The type is publically visible and usable within any
+#'     Amazon account.
+#' @param ProvisioningType The provisioning behavior of the type. AWS CloudFormation determines the
+#' provisioning type during registration, based on the types of handlers in
+#' the schema handler package submitted.
+#' 
+#' Valid values include:
+#' 
+#' -   `FULLY_MUTABLE`: The type includes an update handler to process
+#'     updates to the type during stack update operations.
+#' 
+#' -   `IMMUTABLE`: The type does not include an update handler, so the
+#'     type cannot be updated and must instead be replaced during stack
+#'     update operations.
+#' 
+#' -   `NON_PROVISIONABLE`: The type does not include create, read, and
+#'     delete handlers, and therefore cannot actually be provisioned.
+#' @param DeprecatedStatus The deprecation status of the types that you want to get summary
+#' information about.
+#' 
+#' Valid values include:
+#' 
+#' -   `LIVE`: The type is registered for use in CloudFormation operations.
+#' 
+#' -   `DEPRECATED`: The type has been deregistered and can no longer be
+#'     used in CloudFormation operations.
+#' @param MaxResults The maximum number of results to be returned with a single call. If the
+#' number of available results exceeds this maximum, the response includes
+#' a `NextToken` value that you can assign to the `NextToken` request
+#' parameter to get the next set of results.
+#' @param NextToken If the previous paginated request didn\'t return all of the remaining
+#' results, the response object\'s `NextToken` parameter value is set to a
+#' token. To retrieve the next set of results, call this action again and
+#' assign that token to the request object\'s `NextToken` parameter. If
+#' there are no remaining results, the previous response object\'s
+#' `NextToken` parameter is set to `null`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_types(
+#'   Visibility = "PUBLIC"|"PRIVATE",
+#'   ProvisioningType = "NON_PROVISIONABLE"|"IMMUTABLE"|"FULLY_MUTABLE",
+#'   DeprecatedStatus = "LIVE"|"DEPRECATED",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_list_types
+cloudformation_list_types <- function(Visibility = NULL, ProvisioningType = NULL, DeprecatedStatus = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListTypes",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$list_types_input(Visibility = Visibility, ProvisioningType = ProvisioningType, DeprecatedStatus = DeprecatedStatus, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .cloudformation$list_types_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$list_types <- cloudformation_list_types
+
+#' Reports progress of a resource handler to CloudFormation
+#'
+#' Reports progress of a resource handler to CloudFormation.
+#' 
+#' Reserved for use by the [CloudFormation
+#' CLI](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html).
+#' Do not use this API in your code.
+#'
+#' @usage
+#' cloudformation_record_handler_progress(BearerToken, OperationStatus,
+#'   CurrentOperationStatus, StatusMessage, ErrorCode, ResourceModel,
+#'   ClientRequestToken)
+#'
+#' @param BearerToken &#91;required&#93; Reserved for use by the [CloudFormation
+#' CLI](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html).
+#' @param OperationStatus &#91;required&#93; Reserved for use by the [CloudFormation
+#' CLI](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html).
+#' @param CurrentOperationStatus Reserved for use by the [CloudFormation
+#' CLI](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html).
+#' @param StatusMessage Reserved for use by the [CloudFormation
+#' CLI](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html).
+#' @param ErrorCode Reserved for use by the [CloudFormation
+#' CLI](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html).
+#' @param ResourceModel Reserved for use by the [CloudFormation
+#' CLI](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html).
+#' @param ClientRequestToken Reserved for use by the [CloudFormation
+#' CLI](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html).
+#'
+#' @section Request syntax:
+#' ```
+#' svc$record_handler_progress(
+#'   BearerToken = "string",
+#'   OperationStatus = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED",
+#'   CurrentOperationStatus = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED",
+#'   StatusMessage = "string",
+#'   ErrorCode = "NotUpdatable"|"InvalidRequest"|"AccessDenied"|"InvalidCredentials"|"AlreadyExists"|"NotFound"|"ResourceConflict"|"Throttling"|"ServiceLimitExceeded"|"NotStabilized"|"GeneralServiceException"|"ServiceInternalError"|"NetworkFailure"|"InternalFailure",
+#'   ResourceModel = "string",
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_record_handler_progress
+cloudformation_record_handler_progress <- function(BearerToken, OperationStatus, CurrentOperationStatus = NULL, StatusMessage = NULL, ErrorCode = NULL, ResourceModel = NULL, ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "RecordHandlerProgress",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$record_handler_progress_input(BearerToken = BearerToken, OperationStatus = OperationStatus, CurrentOperationStatus = CurrentOperationStatus, StatusMessage = StatusMessage, ErrorCode = ErrorCode, ResourceModel = ResourceModel, ClientRequestToken = ClientRequestToken)
+  output <- .cloudformation$record_handler_progress_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$record_handler_progress <- cloudformation_record_handler_progress
+
+#' Registers a type with the CloudFormation service
+#'
+#' Registers a type with the CloudFormation service. Registering a type
+#' makes it available for use in CloudFormation templates in your AWS
+#' account, and includes:
+#' 
+#' -   Validating the resource schema
+#' 
+#' -   Determining which handlers have been specified for the resource
+#' 
+#' -   Making the resource type available for use in your account
+#' 
+#' For more information on how to develop types and ready them for
+#' registeration, see [Creating Resource
+#' Providers](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-types.html)
+#' in the *CloudFormation CLI User Guide*.
+#' 
+#' Once you have initiated a registration request using
+#' ` <a>RegisterType</a> `, you can use ` <a>DescribeTypeRegistration</a> `
+#' to monitor the progress of the registration request.
+#'
+#' @usage
+#' cloudformation_register_type(Type, TypeName, SchemaHandlerPackage,
+#'   LoggingConfig, ExecutionRoleArn, ClientRequestToken)
+#'
+#' @param Type The kind of type.
+#' 
+#' Currently, the only valid value is `RESOURCE`.
+#' @param TypeName &#91;required&#93; The name of the type being registered.
+#' 
+#' We recommend that type names adhere to the following pattern:
+#' *company\\_or\\_organization*::*service*::*type*.
+#' 
+#' The following organization namespaces are reserved and cannot be used in
+#' your resource type names:
+#' 
+#' -   `Alexa`
+#' 
+#' -   `AMZN`
+#' 
+#' -   `Amazon`
+#' 
+#' -   `AWS`
+#' 
+#' -   `Custom`
+#' 
+#' -   `Dev`
+#' @param SchemaHandlerPackage &#91;required&#93; A url to the S3 bucket containing the schema handler package that
+#' contains the schema, event handlers, and associated files for the type
+#' you want to register.
+#' 
+#' For information on generating a schema handler package for the type you
+#' want to register, see
+#' [submit](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-cli-submit.html)
+#' in the *CloudFormation CLI User Guide*.
+#' @param LoggingConfig Specifies logging configuration information for a type.
+#' @param ExecutionRoleArn The Amazon Resource Name (ARN) of the IAM execution role to use to
+#' register the type. If your resource type calls AWS APIs in any of its
+#' handlers, you must create an *[IAM execution
+#' role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)*
+#' that includes the necessary permissions to call those AWS APIs, and
+#' provision that execution role in your account. CloudFormation then
+#' assumes that execution role to provide your resource type with the
+#' appropriate credentials.
+#' @param ClientRequestToken A unique identifier that acts as an idempotency key for this
+#' registration request. Specifying a client request token prevents
+#' CloudFormation from generating more than one version of a type from the
+#' same registeration request, even if the request is submitted multiple
+#' times.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$register_type(
+#'   Type = "RESOURCE",
+#'   TypeName = "string",
+#'   SchemaHandlerPackage = "string",
+#'   LoggingConfig = list(
+#'     LogRoleArn = "string",
+#'     LogGroupName = "string"
+#'   ),
+#'   ExecutionRoleArn = "string",
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_register_type
+cloudformation_register_type <- function(Type = NULL, TypeName, SchemaHandlerPackage, LoggingConfig = NULL, ExecutionRoleArn = NULL, ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "RegisterType",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$register_type_input(Type = Type, TypeName = TypeName, SchemaHandlerPackage = SchemaHandlerPackage, LoggingConfig = LoggingConfig, ExecutionRoleArn = ExecutionRoleArn, ClientRequestToken = ClientRequestToken)
+  output <- .cloudformation$register_type_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$register_type <- cloudformation_register_type
 
 #' Sets a stack policy for a specified stack
 #'
@@ -2747,6 +3401,56 @@ cloudformation_set_stack_policy <- function(StackName, StackPolicyBody = NULL, S
   return(response)
 }
 .cloudformation$operations$set_stack_policy <- cloudformation_set_stack_policy
+
+#' Specify the default version of a type
+#'
+#' Specify the default version of a type. The default version of a type
+#' will be used in CloudFormation operations.
+#'
+#' @usage
+#' cloudformation_set_type_default_version(Arn, Type, TypeName, VersionId)
+#'
+#' @param Arn The Amazon Resource Name (ARN) of the type for which you want version
+#' summary information.
+#' 
+#' Conditional: You must specify `TypeName` or `Arn`.
+#' @param Type The kind of type.
+#' @param TypeName The name of the type.
+#' 
+#' Conditional: You must specify `TypeName` or `Arn`.
+#' @param VersionId The ID of a specific version of the type. The version ID is the value at
+#' the end of the Amazon Resource Name (ARN) assigned to the type version
+#' when it is registered.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$set_type_default_version(
+#'   Arn = "string",
+#'   Type = "RESOURCE",
+#'   TypeName = "string",
+#'   VersionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_set_type_default_version
+cloudformation_set_type_default_version <- function(Arn = NULL, Type = NULL, TypeName = NULL, VersionId = NULL) {
+  op <- new_operation(
+    name = "SetTypeDefaultVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$set_type_default_version_input(Arn = Arn, Type = Type, TypeName = TypeName, VersionId = VersionId)
+  output <- .cloudformation$set_type_default_version_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$set_type_default_version <- cloudformation_set_type_default_version
 
 #' Sends a signal to the specified resource with a success or failure
 #' status
@@ -2913,7 +3617,7 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId) {
 #' stack. For more information, see the
 #' [Parameter](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html)
 #' data type.
-#' @param Capabilities In some cases, you must explicity acknowledge that your stack template
+#' @param Capabilities In some cases, you must explicitly acknowledge that your stack template
 #' contains certain capabilities in order for AWS CloudFormation to update
 #' the stack.
 #' 
@@ -3316,7 +4020,7 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts, Region
 #' Conditional: You must specify only one of the following parameters:
 #' `TemplateBody` or `TemplateURL`---or set `UsePreviousTemplate` to true.
 #' @param Parameters A list of input parameters for the stack set template.
-#' @param Capabilities In some cases, you must explicity acknowledge that your stack template
+#' @param Capabilities In some cases, you must explicitly acknowledge that your stack template
 #' contains certain capabilities in order for AWS CloudFormation to update
 #' the stack set and its associated stack instances.
 #' 

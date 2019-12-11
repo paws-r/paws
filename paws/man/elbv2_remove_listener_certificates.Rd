@@ -3,7 +3,7 @@
 \name{elbv2_remove_listener_certificates}
 \alias{elbv2_remove_listener_certificates}
 \title{Removes the specified certificate from the certificate list for the
-specified HTTPS listener}
+specified HTTPS or TLS listener}
 \usage{
 elbv2_remove_listener_certificates(ListenerArn, Certificates)
 }
@@ -15,10 +15,10 @@ elbv2_remove_listener_certificates(ListenerArn, Certificates)
 }
 \description{
 Removes the specified certificate from the certificate list for the
-specified HTTPS listener.
+specified HTTPS or TLS listener.
 }
 \details{
-You can't remove the default certificate for a listener. To replace the
+You can\'t remove the default certificate for a listener. To replace the
 default certificate, call ModifyListener.
 
 To list the certificates for your listener, use

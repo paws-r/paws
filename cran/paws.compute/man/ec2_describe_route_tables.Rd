@@ -17,7 +17,7 @@ the association.
 \item \code{association.subnet-id} - The ID of the subnet involved in the
 association.
 \item \code{association.main} - Indicates whether the route table is the main
-route table for the VPC (\code{true} \| \code{false}). Route tables that do
+route table for the VPC (\code{true} \\| \code{false}). Route tables that do
 not have an association ID are not returned in the response.
 \item \code{owner-id} - The ID of the AWS account that owns the route table.
 \item \code{route-table-id} - The ID of the route table.
@@ -41,14 +41,14 @@ created when the route table was created; \code{CreateRoute} indicates
 that the route was manually added to the route table;
 \code{EnableVgwRoutePropagation} indicates that the route was propagated
 by route propagation.
-\item \code{route.state} - The state of a route in the route table (\code{active} \|
-\code{blackhole}). The blackhole state indicates that the route's target
-isn't available (for example, the specified gateway isn't attached
+\item \code{route.state} - The state of a route in the route table (\code{active} \\|
+\code{blackhole}). The blackhole state indicates that the route\'s target
+isn\'t available (for example, the specified gateway isn\'t attached
 to the VPC, the specified NAT instance has been terminated, and so
 on).
 \item \code{route.vpc-peering-connection-id} - The ID of a VPC peering
 connection specified in a route in the table.
-\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+\item \code{tag}:\\<key\\> - The key/value combination of a tag assigned to the
 resource. Use the tag key in the filter name and the tag value as
 the filter value. For example, to find all resources that have a tag
 with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for

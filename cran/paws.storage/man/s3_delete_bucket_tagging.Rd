@@ -7,10 +7,21 @@
 s3_delete_bucket_tagging(Bucket)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The bucket that has the tag set to be removed.}
 }
 \description{
 Deletes the tags from the bucket.
+}
+\details{
+To use this operation, you must have permission to perform the
+\code{s3:PutBucketTagging} action. By default, the bucket owner has this
+permission and can grant this permission to others.
+
+The following operations are related to \code{DeleteBucketTagging}:
+\itemize{
+\item GetBucketTagging
+\item PutBucketTagging
+}
 }
 \section{Request syntax}{
 \preformatted{svc$delete_bucket_tagging(

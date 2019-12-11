@@ -63,7 +63,7 @@ stack. For more information, see the
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html}{Parameter}
 data type.}
 
-\item{Capabilities}{In some cases, you must explicity acknowledge that your stack template
+\item{Capabilities}{In some cases, you must explicitly acknowledge that your stack template
 contains certain capabilities in order for AWS CloudFormation to update
 the stack.
 \itemize{
@@ -81,7 +81,7 @@ The following IAM resources require you to specify either the
 \item If you have IAM resources, you can specify either capability.
 \item If you have IAM resources with custom names, you \emph{must} specify
 \code{CAPABILITY_NAMED_IAM}.
-\item If you don't specify either of these capabilities, AWS
+\item If you don\'t specify either of these capabilities, AWS
 CloudFormation returns an \code{InsufficientCapabilities} error.
 }
 
@@ -133,10 +133,10 @@ For more information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/lat
 }}
 
 \item{ResourceTypes}{The template resource types that you have permissions to work with for
-this update stack action, such as \code{AWS::EC2::Instance}, \code{AWS::EC2::*},
+this update stack action, such as \verb{AWS::EC2::Instance}, \verb{AWS::EC2::*},
 or \code{Custom::MyCustomInstance}.
 
-If the list of resource types doesn't include a resource that you're
+If the list of resource types doesn\'t include a resource that you\'re
 updating, the stack update fails. By default, AWS CloudFormation grants
 permissions to all resource types. AWS Identity and Access Management
 (IAM) uses this parameter for AWS CloudFormation-specific condition keys
@@ -144,13 +144,13 @@ in IAM policies. For more information, see \href{https://docs.aws.amazon.com/AWS
 
 \item{RoleARN}{The Amazon Resource Name (ARN) of an AWS Identity and Access Management
 (IAM) role that AWS CloudFormation assumes to update the stack. AWS
-CloudFormation uses the role's credentials to make calls on your
+CloudFormation uses the role\'s credentials to make calls on your
 behalf. AWS CloudFormation always uses this role for all future
 operations on the stack. As long as users have permission to operate on
-the stack, AWS CloudFormation uses this role even if the users don't
+the stack, AWS CloudFormation uses this role even if the users don\'t
 have permission to pass it. Ensure that the role grants least privilege.
 
-If you don't specify a value, AWS CloudFormation uses the role that was
+If you don\'t specify a value, AWS CloudFormation uses the role that was
 previously associated with the stack. If no role is available, AWS
 CloudFormation uses a temporary session that is generated from your user
 credentials.}
@@ -185,13 +185,13 @@ to remove all notification topics.}
 propagates these tags to supported resources in the stack. You can
 specify a maximum number of 50 tags.
 
-If you don't specify this parameter, AWS CloudFormation doesn't modify
-the stack's tags. If you specify an empty value, AWS CloudFormation
+If you don\'t specify this parameter, AWS CloudFormation doesn\'t modify
+the stack\'s tags. If you specify an empty value, AWS CloudFormation
 removes all associated tags.}
 
 \item{ClientRequestToken}{A unique identifier for this \code{UpdateStack} request. Specify this token
 if you plan to retry requests so that AWS CloudFormation knows that
-you're not attempting to update a stack with the same name. You might
+you\'re not attempting to update a stack with the same name. You might
 retry \code{UpdateStack} requests to ensure that AWS CloudFormation
 successfully received them.
 
@@ -207,7 +207,7 @@ token format \emph{Console-StackOperation-ID}, which helps you easily
 identify the stack operation . For example, if you create a stack using
 the console, each stack event would be assigned the same token in the
 following format:
-\code{Console-CreateStack-7f59c3cf-00d2-40c7-b2ff-e75db0987002}.}
+\verb{Console-CreateStack-7f59c3cf-00d2-40c7-b2ff-e75db0987002}.}
 }
 \description{
 Updates a stack as specified in the template. After the call completes

@@ -4,20 +4,25 @@
 \alias{textract_analyze_document}
 \title{Analyzes an input document for relationships between detected items}
 \usage{
-textract_analyze_document(Document, FeatureTypes)
+textract_analyze_document(Document, FeatureTypes, HumanLoopConfig)
 }
 \arguments{
 \item{Document}{[required] The input document as base64-encoded bytes or an Amazon S3 object. If
-you use the AWS CLI to call Amazon Textract operations, you can't pass
-image bytes. The document must be an image in JPG or PNG format.
+you use the AWS CLI to call Amazon Textract operations, you can\'t pass
+image bytes. The document must be an image in JPEG or PNG format.
 
-If you are using an AWS SDK to call Amazon Textract, you might not need
-to base64-encode image bytes passed using the \code{Bytes} field.}
+If you\'re using an AWS SDK to call Amazon Textract, you might not need
+to base64-encode image bytes that are passed using the \code{Bytes} field.}
 
 \item{FeatureTypes}{[required] A list of the types of analysis to perform. Add TABLES to the list to
-return information about the tables detected in the input document. Add
-FORMS to return detected fields and the associated text. To perform both
-types of analysis, add TABLES and FORMS to \code{FeatureTypes}.}
+return information about the tables that are detected in the input
+document. Add FORMS to return detected form data. To perform both types
+of analysis, add TABLES and FORMS to \code{FeatureTypes}. All lines and words
+detected in the document are included in the response (including text
+that isn\'t related to the value of \code{FeatureTypes}).}
+
+\item{HumanLoopConfig}{Sets the configuration for the human in the loop workflow for analyzing
+documents.}
 }
 \description{
 Analyzes an input document for relationships between detected items.
@@ -25,25 +30,29 @@ Analyzes an input document for relationships between detected items.
 \details{
 The types of information returned are as follows:
 \itemize{
-\item Words and lines that are related to nearby lines and words. The
-related information is returned in two Block objects each of type
-\code{KEY_VALUE_SET}: a KEY Block object and a VALUE Block object. For
-example, \emph{Name: Ana Silva Carolina} contains a key and value.
-\emph{Name:} is the key. \emph{Ana Silva Carolina} is the value.
-\item Table and table cell data. A TABLE Block object contains information
-about a detected table. A CELL Block object is returned for each
-cell in a table.
-\item Selectable elements such as checkboxes and radio buttons. A
-SELECTION\_ELEMENT Block object contains information about a
-selectable element.
-\item Lines and words of text. A LINE Block object contains one or more
-WORD Block objects.
+\item Form data (key-value pairs). The related information is returned in
+two Block objects, each of type \code{KEY_VALUE_SET}: a KEY \code{Block}
+object and a VALUE \code{Block} object. For example, \emph{Name: Ana Silva
+Carolina} contains a key and value. \emph{Name:} is the key. \emph{Ana Silva
+Carolina} is the value.
+\item Table and table cell data. A TABLE \code{Block} object contains
+information about a detected table. A CELL \code{Block} object is
+returned for each cell in a table.
+\item Lines and words of text. A LINE \code{Block} object contains one or more
+WORD \code{Block} objects. All lines and words that are detected in the
+document are returned (including text that doesn\'t have a
+relationship with the value of \code{FeatureTypes}).
 }
+
+Selection elements such as check boxes and option buttons (radio
+buttons) can be detected in form data and in tables. A
+SELECTION\\_ELEMENT \code{Block} object contains information about a selection
+element, including the selection status.
 
 You can choose which type of analysis to perform by specifying the
 \code{FeatureTypes} list.
 
-The output is returned in a list of \code{BLOCK} objects.
+The output is returned in a list of \code{Block} objects.
 
 \code{AnalyzeDocument} is a synchronous operation. To analyze documents
 asynchronously, use StartDocumentAnalysis.
@@ -62,6 +71,15 @@ For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/h
   ),
   FeatureTypes = list(
     "TABLES"|"FORMS"
+  ),
+  HumanLoopConfig = list(
+    HumanLoopName = "string",
+    FlowDefinitionArn = "string",
+    DataAttributes = list(
+      ContentClassifiers = list(
+        "FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent"
+      )
+    )
   )
 )
 }

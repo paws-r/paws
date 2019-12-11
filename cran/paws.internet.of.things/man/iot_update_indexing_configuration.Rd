@@ -19,10 +19,34 @@ Updates the search configuration.
 \preformatted{svc$update_indexing_configuration(
   thingIndexingConfiguration = list(
     thingIndexingMode = "OFF"|"REGISTRY"|"REGISTRY_AND_SHADOW",
-    thingConnectivityIndexingMode = "OFF"|"STATUS"
+    thingConnectivityIndexingMode = "OFF"|"STATUS",
+    managedFields = list(
+      list(
+        name = "string",
+        type = "Number"|"String"|"Boolean"
+      )
+    ),
+    customFields = list(
+      list(
+        name = "string",
+        type = "Number"|"String"|"Boolean"
+      )
+    )
   ),
   thingGroupIndexingConfiguration = list(
-    thingGroupIndexingMode = "OFF"|"ON"
+    thingGroupIndexingMode = "OFF"|"ON",
+    managedFields = list(
+      list(
+        name = "string",
+        type = "Number"|"String"|"Boolean"
+      )
+    ),
+    customFields = list(
+      list(
+        name = "string",
+        type = "Number"|"String"|"Boolean"
+      )
+    )
   )
 )
 }

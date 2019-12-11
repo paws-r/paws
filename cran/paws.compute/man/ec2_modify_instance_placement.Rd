@@ -5,7 +5,7 @@
 \title{Modifies the placement attributes for a specified instance}
 \usage{
 ec2_modify_instance_placement(Affinity, GroupName, HostId, InstanceId,
-  Tenancy, PartitionNumber)
+  Tenancy, PartitionNumber, HostResourceGroupArn)
 }
 \arguments{
 \item{Affinity}{The affinity setting for the instance.}
@@ -16,7 +16,7 @@ For cluster and partition placement groups, the instance must have a
 tenancy of \code{default} or \code{dedicated}.
 
 To remove an instance from a placement group, specify an empty string
-("").}
+(\"\").}
 
 \item{HostId}{The ID of the Dedicated Host with which to associate the instance.}
 
@@ -25,6 +25,8 @@ To remove an instance from a placement group, specify an empty string
 \item{Tenancy}{The tenancy for the instance.}
 
 \item{PartitionNumber}{Reserved for future use.}
+
+\item{HostResourceGroupArn}{The ARN of the host resource group in which to place the instance.}
 }
 \description{
 Modifies the placement attributes for a specified instance. You can do
@@ -58,7 +60,8 @@ instance, the instance must be in the \code{stopped} state.
   HostId = "string",
   InstanceId = "string",
   Tenancy = "dedicated"|"host",
-  PartitionNumber = 123
+  PartitionNumber = 123,
+  HostResourceGroupArn = "string"
 )
 }
 }

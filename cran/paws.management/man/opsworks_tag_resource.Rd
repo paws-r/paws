@@ -8,7 +8,7 @@ Stacks}
 opsworks_tag_resource(ResourceArn, Tags)
 }
 \arguments{
-\item{ResourceArn}{[required] The stack or layer's Amazon Resource Number (ARN).}
+\item{ResourceArn}{[required] The stack or layer\'s Amazon Resource Number (ARN).}
 
 \item{Tags}{[required] A map that contains tag keys and tag values that are attached to a stack
 or layer.
@@ -16,10 +16,10 @@ or layer.
 \item The key cannot be empty.
 \item The key can be a maximum of 127 characters, and can contain only
 Unicode letters, numbers, or separators, or the following special
-characters: \code{+ - = . _ : /}
+characters: \verb{+ - = . _ : /}
 \item The value can be a maximum 255 characters, and contain only Unicode
 letters, numbers, or separators, or the following special
-characters: \code{+ - = . _ : /}
+characters: \verb{+ - = . _ : /}
 \item Leading and trailing white spaces are trimmed from both the key and
 value.
 \item A maximum of 40 tags is allowed for any resource.

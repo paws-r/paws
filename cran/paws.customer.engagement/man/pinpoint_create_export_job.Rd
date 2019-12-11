@@ -2,7 +2,7 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_create_export_job}
 \alias{pinpoint_create_export_job}
-\title{Creates a new export job for an application}
+\title{Creates an export job for an application}
 \usage{
 pinpoint_create_export_job(ApplicationId, ExportJobRequest)
 }
@@ -13,7 +13,7 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{ExportJobRequest}{[required]}
 }
 \description{
-Creates a new export job for an application.
+Creates an export job for an application.
 }
 \section{Request syntax}{
 \preformatted{svc$create_export_job(

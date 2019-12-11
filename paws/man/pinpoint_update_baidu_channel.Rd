@@ -2,7 +2,8 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_update_baidu_channel}
 \alias{pinpoint_update_baidu_channel}
-\title{Updates the settings of the Baidu channel for an application}
+\title{Enables the Baidu channel for an application or updates the status and
+settings of the Baidu channel for an application}
 \usage{
 pinpoint_update_baidu_channel(ApplicationId, BaiduChannelRequest)
 }
@@ -13,7 +14,8 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{BaiduChannelRequest}{[required]}
 }
 \description{
-Updates the settings of the Baidu channel for an application.
+Enables the Baidu channel for an application or updates the status and
+settings of the Baidu channel for an application.
 }
 \section{Request syntax}{
 \preformatted{svc$update_baidu_channel(

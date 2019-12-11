@@ -2,9 +2,11 @@
 % Please edit documentation in R/ecr_operations.R
 \name{ecr_create_repository}
 \alias{ecr_create_repository}
-\title{Creates an image repository}
+\title{Creates an Amazon Elastic Container Registry (Amazon ECR) repository,
+where users can push and pull Docker images}
 \usage{
-ecr_create_repository(repositoryName, tags)
+ecr_create_repository(repositoryName, tags, imageTagMutability,
+  imageScanningConfiguration)
 }
 \arguments{
 \item{repositoryName}{[required] The name to use for the repository. The repository name may be specified
@@ -12,10 +14,26 @@ on its own (such as \code{nginx-web-app}) or it can be prepended with a
 namespace to group the repository into a category (such as
 \code{project-a/nginx-web-app}).}
 
-\item{tags}{}
+\item{tags}{The metadata that you apply to the repository to help you categorize and
+organize them. Each tag consists of a key and an optional value, both of
+which you define. Tag keys can have a maximum character length of 128
+characters, and tag values can have a maximum length of 256 characters.}
+
+\item{imageTagMutability}{The tag mutability setting for the repository. If this parameter is
+omitted, the default setting of \code{MUTABLE} will be used which will allow
+image tags to be overwritten. If \code{IMMUTABLE} is specified, all image
+tags within the repository will be immutable which will prevent them
+from being overwritten.}
+
+\item{imageScanningConfiguration}{The image scanning configuration for the repository. This setting
+determines whether images are scanned for known vulnerabilities after
+being pushed to the repository.}
 }
 \description{
-Creates an image repository.
+Creates an Amazon Elastic Container Registry (Amazon ECR) repository,
+where users can push and pull Docker images. For more information, see
+\href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html}{Amazon ECR Repositories}
+in the \emph{Amazon Elastic Container Registry User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_repository(
@@ -25,6 +43,10 @@ Creates an image repository.
       Key = "string",
       Value = "string"
     )
+  ),
+  imageTagMutability = "MUTABLE"|"IMMUTABLE",
+  imageScanningConfiguration = list(
+    scanOnPush = TRUE|FALSE
   )
 )
 }

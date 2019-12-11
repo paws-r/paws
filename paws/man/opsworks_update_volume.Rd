@@ -14,7 +14,7 @@ opsworks_update_volume(VolumeId, Name, MountPoint)
 \item{MountPoint}{The new mount point.}
 }
 \description{
-Updates an Amazon EBS volume's name or mount point. For more
+Updates an Amazon EBS volume\'s name or mount point. For more
 information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
 }
 \details{

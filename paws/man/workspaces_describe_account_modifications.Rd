@@ -3,7 +3,7 @@
 \name{workspaces_describe_account_modifications}
 \alias{workspaces_describe_account_modifications}
 \title{Retrieves a list that describes modifications to the configuration of
-bring your own license (BYOL) for the specified account}
+Bring Your Own License (BYOL) for the specified account}
 \usage{
 workspaces_describe_account_modifications(NextToken)
 }
@@ -13,7 +13,7 @@ provide this token to receive the next set of results.}
 }
 \description{
 Retrieves a list that describes modifications to the configuration of
-bring your own license (BYOL) for the specified account.
+Bring Your Own License (BYOL) for the specified account.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_account_modifications(

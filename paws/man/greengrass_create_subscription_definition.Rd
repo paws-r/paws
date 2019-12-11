@@ -14,7 +14,7 @@ greengrass_create_subscription_definition(AmznClientToken,
 
 \item{Name}{The name of the subscription definition.}
 
-\item{tags}{Tag(s) to add to the new resource}
+\item{tags}{Tag(s) to add to the new resource.}
 }
 \description{
 Creates a subscription definition. You may provide the initial version of the subscription definition now or use ''CreateSubscriptionDefinitionVersion'' at a later time.

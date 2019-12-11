@@ -21,13 +21,9 @@ Creates an Amazon QuickSight group.
 }
 \details{
 The permissions resource is
-\code{arn:aws:quicksight:us-east-1:<i>&lt;relevant-aws-account-id&gt;</i>:group/default/<i>&lt;group-name&gt;</i> }.
+\verb{arn:aws:quicksight:us-east-1:<i>&lt;relevant-aws-account-id&gt;</i>:group/default/<i>&lt;group-name&gt;</i> }.
 
 The response is a group object.
-
-\strong{CLI Sample:}
-
-\code{aws quicksight create-group --aws-account-id=111122223333 --namespace=default --group-name="Sales-Management" --description="Sales Management - Forecasting" }
 }
 \section{Request syntax}{
 \preformatted{svc$create_group(

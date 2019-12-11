@@ -15,7 +15,7 @@ servicecatalog_list_organization_portfolio_access(AcceptLanguage,
 \item \code{zh} - Chinese
 }}
 
-\item{PortfolioId}{[required] The portfolio identifier. For example, \code{port-2abcdext3y5fk}.}
+\item{PortfolioId}{[required] The portfolio identifier. For example, \verb{port-2abcdext3y5fk}.}
 
 \item{OrganizationNodeType}{[required] The organization node type that will be returned in the output.
 \itemize{

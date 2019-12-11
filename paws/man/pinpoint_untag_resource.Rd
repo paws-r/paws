@@ -3,20 +3,20 @@
 \name{pinpoint_untag_resource}
 \alias{pinpoint_untag_resource}
 \title{Removes one or more tags (keys and values) from an application,
-campaign, or segment}
+campaign, journey, message template, or segment}
 \usage{
 pinpoint_untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the application, campaign, or segment.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 
-\item{TagKeys}{[required] The key of the tag to remove from the application, campaign, or segment.
-To remove multiple tags, append the tagKeys parameter and argument for
-each additional tag to remove, separated by an ampersand (&).}
+\item{TagKeys}{[required] The key of the tag to remove from the resource. To remove multiple tags,
+append the tagKeys parameter and argument for each additional tag to
+remove, separated by an ampersand (&).}
 }
 \description{
 Removes one or more tags (keys and values) from an application,
-campaign, or segment.
+campaign, journey, message template, or segment.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

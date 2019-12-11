@@ -6,57 +6,62 @@
 \usage{
 apigatewayv2_create_authorizer(ApiId, AuthorizerCredentialsArn,
   AuthorizerResultTtlInSeconds, AuthorizerType, AuthorizerUri,
-  IdentitySource, IdentityValidationExpression, Name, ProviderArns)
+  IdentitySource, IdentityValidationExpression, JwtConfiguration, Name)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
 
 \item{AuthorizerCredentialsArn}{Specifies the required credentials as an IAM role for API Gateway to
 invoke the authorizer. To specify an IAM role for API Gateway to assume,
-use the role's Amazon Resource Name (ARN). To use resource-based
-permissions on the Lambda function, specify null.}
+use the role\'s Amazon Resource Name (ARN). To use resource-based
+permissions on the Lambda function, specify null. Supported only for
+REQUEST authorizers.}
 
-\item{AuthorizerResultTtlInSeconds}{The time to live (TTL), in seconds, of cached authorizer results. If it
-equals 0, authorization caching is disabled. If it is greater than 0,
-API Gateway will cache authorizer responses. If this field is not set,
-the default value is 300. The maximum value is 3600, or 1 hour.}
+\item{AuthorizerResultTtlInSeconds}{Authorizer caching is not currently supported. Don\'t specify this value
+for authorizers.}
 
-\item{AuthorizerType}{[required] The authorizer type. Currently the only valid value is REQUEST, for a
-Lambda function using incoming request parameters.}
+\item{AuthorizerType}{[required] The authorizer type. For WebSocket APIs, specify REQUEST for a Lambda
+function using incoming request parameters. For HTTP APIs, specify JWT
+to use JSON Web Tokens.}
 
-\item{AuthorizerUri}{[required] The authorizer's Uniform Resource Identifier (URI). For REQUEST
+\item{AuthorizerUri}{The authorizer\'s Uniform Resource Identifier (URI). For REQUEST
 authorizers, this must be a well-formed Lambda function URI, for
 example,
-arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:{account\_id}:function:{lambda\_function\_name}/invocations.
+arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:\{account\\_id\}:function:\{lambda\\_function\\_name\}/invocations.
 In general, the URI has this form:
-arn:aws:apigateway:{region}:lambda:path/{service\_api} , where {region}
+arn:aws:apigateway:\{region\}:lambda:path/\{service\\_api\} , where \{region\}
 is the same as the region hosting the Lambda function, path indicates
 that the remaining substring in the URI should be treated as the path to
 the resource, including the initial /. For Lambda functions, this is
-usually of the form /2015-03-31/functions/[FunctionARN]/invocations.}
+usually of the form /2015-03-31/functions/[FunctionARN]/invocations.
+Supported only for REQUEST authorizers.}
 
 \item{IdentitySource}{[required] The identity source for which authorization is requested.
 
-For the REQUEST authorizer, this is required when authorization caching
-is enabled. The value is a comma-separated string of one or more mapping
-expressions of the specified request parameters. For example, if an Auth
-header and a Name query string parameters are defined as identity
-sources, this value is method.request.header.Auth,
-method.request.querystring.Name. These parameters will be used to derive
-the authorization caching key and to perform runtime validation of the
-REQUEST authorizer by verifying all of the identity-related request
-parameters are present, not null, and non-empty. Only when this is true
-does the authorizer invoke the authorizer Lambda function, otherwise, it
-returns a 401 Unauthorized response without calling the Lambda function.
-The valid value is a string of comma-separated mapping expressions of
-the specified request parameters. When the authorization caching is not
-enabled, this property is optional.}
+For a REQUEST authorizer, this is optional. The value is a set of one or
+more mapping expressions of the specified request parameters. Currently,
+the identity source can be headers, query string parameters, stage
+variables, and context parameters. For example, if an Auth header and a
+Name query string parameter are defined as identity sources, this value
+is route.request.header.Auth, route.request.querystring.Name. These
+parameters will be used to perform runtime validation for Lambda-based
+authorizers by verifying all of the identity-related request parameters
+are present in the request, not null, and non-empty. Only when this is
+true does the authorizer invoke the authorizer Lambda function.
+Otherwise, it returns a 401 Unauthorized response without calling the
+Lambda function.
 
-\item{IdentityValidationExpression}{The validation expression does not apply to the REQUEST authorizer.}
+For JWT, a single entry that specifies where to extract the JSON Web
+Token (JWT )from inbound requests. Currently only header-based and query
+parameter-based selections are supported, for example
+\"\\$request.header.Authorization\".}
+
+\item{IdentityValidationExpression}{This parameter is not used.}
+
+\item{JwtConfiguration}{Represents the configuration of a JWT authorizer. Required for the JWT
+authorizer type. Supported only for HTTP APIs.}
 
 \item{Name}{[required] The name of the authorizer.}
-
-\item{ProviderArns}{For REQUEST authorizer, this is not defined.}
 }
 \description{
 Creates an Authorizer for an API.
@@ -66,16 +71,19 @@ Creates an Authorizer for an API.
   ApiId = "string",
   AuthorizerCredentialsArn = "string",
   AuthorizerResultTtlInSeconds = 123,
-  AuthorizerType = "REQUEST",
+  AuthorizerType = "REQUEST"|"JWT",
   AuthorizerUri = "string",
   IdentitySource = list(
     "string"
   ),
   IdentityValidationExpression = "string",
-  Name = "string",
-  ProviderArns = list(
-    "string"
-  )
+  JwtConfiguration = list(
+    Audience = list(
+      "string"
+    ),
+    Issuer = "string"
+  ),
+  Name = "string"
 )
 }
 }

@@ -19,7 +19,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Disassociates an Elastic IP address from the instance or network
-interface it's associated with.
+interface it\'s associated with.
 }
 \details{
 An Elastic IP address is for use in either the EC2-Classic platform or
@@ -27,7 +27,7 @@ in a VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/lat
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 This is an idempotent operation. If you perform the operation more than
-once, Amazon EC2 doesn't return an error.
+once, Amazon EC2 doesn\'t return an error.
 }
 \section{Request syntax}{
 \preformatted{svc$disassociate_address(

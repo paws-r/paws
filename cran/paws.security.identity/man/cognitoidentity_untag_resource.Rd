@@ -10,7 +10,7 @@ cognitoidentity_untag_resource(ResourceArn, TagKeys)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the identity pool that the tags are
 assigned to.}
 
-\item{TagKeys}{The keys of the tags to remove from the user pool.}
+\item{TagKeys}{[required] The keys of the tags to remove from the user pool.}
 }
 \description{
 Removes the specified tags from an Amazon Cognito identity pool. You can

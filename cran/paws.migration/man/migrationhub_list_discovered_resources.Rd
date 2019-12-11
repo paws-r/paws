@@ -10,7 +10,8 @@ migrationhub_list_discovered_resources(ProgressUpdateStream,
 \arguments{
 \item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream.}
 
-\item{MigrationTaskName}{[required] The name of the MigrationTask.}
+\item{MigrationTaskName}{[required] The name of the MigrationTask. \emph{Do not store personal data in this
+field.}}
 
 \item{NextToken}{If a \code{NextToken} was returned by a previous call, there are more results
 available. To retrieve the next page of results, make the call again

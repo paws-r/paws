@@ -666,6 +666,51 @@ cloudsearch_describe_availability_options <- function(DomainName, Deployed = NUL
 }
 .cloudsearch$operations$describe_availability_options <- cloudsearch_describe_availability_options
 
+#' Returns the domain's endpoint options, specifically whether all requests
+#' to the domain must arrive over HTTPS
+#'
+#' Returns the domain\'s endpoint options, specifically whether all
+#' requests to the domain must arrive over HTTPS. For more information, see
+#' [Configuring Domain Endpoint
+#' Options](http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html)
+#' in the *Amazon CloudSearch Developer Guide*.
+#'
+#' @usage
+#' cloudsearch_describe_domain_endpoint_options(DomainName, Deployed)
+#'
+#' @param DomainName &#91;required&#93; A string that represents the name of a domain.
+#' @param Deployed Whether to retrieve the latest configuration (which might be in a
+#' Processing state) or the current, active configuration. Defaults to
+#' `false`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_domain_endpoint_options(
+#'   DomainName = "string",
+#'   Deployed = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudsearch_describe_domain_endpoint_options
+cloudsearch_describe_domain_endpoint_options <- function(DomainName, Deployed = NULL) {
+  op <- new_operation(
+    name = "DescribeDomainEndpointOptions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudsearch$describe_domain_endpoint_options_input(DomainName = DomainName, Deployed = Deployed)
+  output <- .cloudsearch$describe_domain_endpoint_options_output()
+  config <- get_config()
+  svc <- .cloudsearch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudsearch$operations$describe_domain_endpoint_options <- cloudsearch_describe_domain_endpoint_options
+
 #' Gets information about the search domains owned by this account
 #'
 #' Gets information about the search domains owned by this account. Can be
@@ -1064,6 +1109,56 @@ cloudsearch_update_availability_options <- function(DomainName, MultiAZ) {
   return(response)
 }
 .cloudsearch$operations$update_availability_options <- cloudsearch_update_availability_options
+
+#' Updates the domain's endpoint options, specifically whether all requests
+#' to the domain must arrive over HTTPS
+#'
+#' Updates the domain\'s endpoint options, specifically whether all
+#' requests to the domain must arrive over HTTPS. For more information, see
+#' [Configuring Domain Endpoint
+#' Options](http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html)
+#' in the *Amazon CloudSearch Developer Guide*.
+#'
+#' @usage
+#' cloudsearch_update_domain_endpoint_options(DomainName,
+#'   DomainEndpointOptions)
+#'
+#' @param DomainName &#91;required&#93; A string that represents the name of a domain.
+#' @param DomainEndpointOptions &#91;required&#93; Whether to require that all requests to the domain arrive over HTTPS. We
+#' recommend Policy-Min-TLS-1-2-2019-07 for TLSSecurityPolicy. For
+#' compatibility with older clients, the default is
+#' Policy-Min-TLS-1-0-2019-07.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_domain_endpoint_options(
+#'   DomainName = "string",
+#'   DomainEndpointOptions = list(
+#'     EnforceHTTPS = TRUE|FALSE,
+#'     TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudsearch_update_domain_endpoint_options
+cloudsearch_update_domain_endpoint_options <- function(DomainName, DomainEndpointOptions) {
+  op <- new_operation(
+    name = "UpdateDomainEndpointOptions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudsearch$update_domain_endpoint_options_input(DomainName = DomainName, DomainEndpointOptions = DomainEndpointOptions)
+  output <- .cloudsearch$update_domain_endpoint_options_output()
+  config <- get_config()
+  svc <- .cloudsearch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudsearch$operations$update_domain_endpoint_options <- cloudsearch_update_domain_endpoint_options
 
 #' Configures scaling parameters for a domain
 #'

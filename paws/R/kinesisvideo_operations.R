@@ -3,6 +3,62 @@
 #' @include kinesisvideo_service.R
 NULL
 
+#' Creates a signaling channel
+#'
+#' Creates a signaling channel.
+#' 
+#' `CreateSignalingChannel` is an asynchronous operation.
+#'
+#' @usage
+#' kinesisvideo_create_signaling_channel(ChannelName, ChannelType,
+#'   SingleMasterConfiguration, Tags)
+#'
+#' @param ChannelName &#91;required&#93; A name for the signaling channel that you are creating. It must be
+#' unique for each account and region.
+#' @param ChannelType A type of the signaling channel that you are creating. Currently,
+#' `SINGLE_MASTER` is the only supported channel type.
+#' @param SingleMasterConfiguration A structure containing the configuration for the `SINGLE_MASTER` channel
+#' type.
+#' @param Tags A set of tags (key/value pairs) that you want to associate with this
+#' channel.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_signaling_channel(
+#'   ChannelName = "string",
+#'   ChannelType = "SINGLE_MASTER",
+#'   SingleMasterConfiguration = list(
+#'     MessageTtlSeconds = 123
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisvideo_create_signaling_channel
+kinesisvideo_create_signaling_channel <- function(ChannelName, ChannelType = NULL, SingleMasterConfiguration = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateSignalingChannel",
+    http_method = "POST",
+    http_path = "/createSignalingChannel",
+    paginator = list()
+  )
+  input <- .kinesisvideo$create_signaling_channel_input(ChannelName = ChannelName, ChannelType = ChannelType, SingleMasterConfiguration = SingleMasterConfiguration, Tags = Tags)
+  output <- .kinesisvideo$create_signaling_channel_output()
+  config <- get_config()
+  svc <- .kinesisvideo$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisvideo$operations$create_signaling_channel <- kinesisvideo_create_signaling_channel
+
 #' Creates a new Kinesis video stream
 #'
 #' Creates a new Kinesis video stream.
@@ -37,6 +93,9 @@ NULL
 #' If you choose to specify the `MediaType`, see [Naming
 #' Requirements](https://tools.ietf.org/html/rfc6838#section-4.2) for
 #' guidelines.
+#' 
+#' Example valid values include \"video/h264\" and
+#' \"video/h264,audio/aac\".
 #' 
 #' This parameter is optional; the default value is `null` (or empty in
 #' JSON).
@@ -96,6 +155,48 @@ kinesisvideo_create_stream <- function(DeviceName = NULL, StreamName, MediaType 
 }
 .kinesisvideo$operations$create_stream <- kinesisvideo_create_stream
 
+#' Deletes a specified signaling channel
+#'
+#' Deletes a specified signaling channel. `DeleteSignalingChannel` is an
+#' asynchronous operation. If you don\'t specify the channel\'s current
+#' version, the most recent version is deleted.
+#'
+#' @usage
+#' kinesisvideo_delete_signaling_channel(ChannelARN, CurrentVersion)
+#'
+#' @param ChannelARN &#91;required&#93; The ARN of the signaling channel that you want to delete.
+#' @param CurrentVersion The current version of the signaling channel that you want to delete.
+#' You can obtain the current version by invoking the
+#' `DescribeSignalingChannel` or `ListSignalingChannels` APIs.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_signaling_channel(
+#'   ChannelARN = "string",
+#'   CurrentVersion = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisvideo_delete_signaling_channel
+kinesisvideo_delete_signaling_channel <- function(ChannelARN, CurrentVersion = NULL) {
+  op <- new_operation(
+    name = "DeleteSignalingChannel",
+    http_method = "POST",
+    http_path = "/deleteSignalingChannel",
+    paginator = list()
+  )
+  input <- .kinesisvideo$delete_signaling_channel_input(ChannelARN = ChannelARN, CurrentVersion = CurrentVersion)
+  output <- .kinesisvideo$delete_signaling_channel_output()
+  config <- get_config()
+  svc <- .kinesisvideo$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisvideo$operations$delete_signaling_channel <- kinesisvideo_delete_signaling_channel
+
 #' Deletes a Kinesis video stream and the data contained in the stream
 #'
 #' Deletes a Kinesis video stream and the data contained in the stream.
@@ -151,6 +252,46 @@ kinesisvideo_delete_stream <- function(StreamARN, CurrentVersion = NULL) {
   return(response)
 }
 .kinesisvideo$operations$delete_stream <- kinesisvideo_delete_stream
+
+#' Returns the most current information about the signaling channel
+#'
+#' Returns the most current information about the signaling channel. You
+#' must specify either the name or the ARN of the channel that you want to
+#' describe.
+#'
+#' @usage
+#' kinesisvideo_describe_signaling_channel(ChannelName, ChannelARN)
+#'
+#' @param ChannelName The name of the signaling channel that you want to describe.
+#' @param ChannelARN The ARN of the signaling channel that you want to describe.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_signaling_channel(
+#'   ChannelName = "string",
+#'   ChannelARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisvideo_describe_signaling_channel
+kinesisvideo_describe_signaling_channel <- function(ChannelName = NULL, ChannelARN = NULL) {
+  op <- new_operation(
+    name = "DescribeSignalingChannel",
+    http_method = "POST",
+    http_path = "/describeSignalingChannel",
+    paginator = list()
+  )
+  input <- .kinesisvideo$describe_signaling_channel_input(ChannelName = ChannelName, ChannelARN = ChannelARN)
+  output <- .kinesisvideo$describe_signaling_channel_output()
+  config <- get_config()
+  svc <- .kinesisvideo$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisvideo$operations$describe_signaling_channel <- kinesisvideo_describe_signaling_channel
 
 #' Returns the most current information about the specified stream
 #'
@@ -243,6 +384,116 @@ kinesisvideo_get_data_endpoint <- function(StreamName = NULL, StreamARN = NULL, 
 }
 .kinesisvideo$operations$get_data_endpoint <- kinesisvideo_get_data_endpoint
 
+#' Provides an endpoint for the specified signaling channel to send and
+#' receive messages
+#'
+#' Provides an endpoint for the specified signaling channel to send and
+#' receive messages. This API uses the
+#' `SingleMasterChannelEndpointConfiguration` input parameter, which
+#' consists of the `Protocols` and `Role` properties.
+#' 
+#' `Protocols` is used to determine the communication mechanism. For
+#' example, specifying `WSS` as the protocol, results in this API producing
+#' a secure websocket endpoint, and specifying `HTTPS` as the protocol,
+#' results in this API generating an HTTPS endpoint.
+#' 
+#' `Role` determines the messaging permissions. A `MASTER` role results in
+#' this API generating an endpoint that a client can use to communicate
+#' with any of the viewers on the channel. A `VIEWER` role results in this
+#' API generating an endpoint that a client can use to communicate only
+#' with a `MASTER`.
+#'
+#' @usage
+#' kinesisvideo_get_signaling_channel_endpoint(ChannelARN,
+#'   SingleMasterChannelEndpointConfiguration)
+#'
+#' @param ChannelARN &#91;required&#93; The ARN of the signalling channel for which you want to get an endpoint.
+#' @param SingleMasterChannelEndpointConfiguration A structure containing the endpoint configuration for the
+#' `SINGLE_MASTER` channel type.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_signaling_channel_endpoint(
+#'   ChannelARN = "string",
+#'   SingleMasterChannelEndpointConfiguration = list(
+#'     Protocols = list(
+#'       "WSS"|"HTTPS"
+#'     ),
+#'     Role = "MASTER"|"VIEWER"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisvideo_get_signaling_channel_endpoint
+kinesisvideo_get_signaling_channel_endpoint <- function(ChannelARN, SingleMasterChannelEndpointConfiguration = NULL) {
+  op <- new_operation(
+    name = "GetSignalingChannelEndpoint",
+    http_method = "POST",
+    http_path = "/getSignalingChannelEndpoint",
+    paginator = list()
+  )
+  input <- .kinesisvideo$get_signaling_channel_endpoint_input(ChannelARN = ChannelARN, SingleMasterChannelEndpointConfiguration = SingleMasterChannelEndpointConfiguration)
+  output <- .kinesisvideo$get_signaling_channel_endpoint_output()
+  config <- get_config()
+  svc <- .kinesisvideo$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisvideo$operations$get_signaling_channel_endpoint <- kinesisvideo_get_signaling_channel_endpoint
+
+#' Returns an array of ChannelInfo objects
+#'
+#' Returns an array of `ChannelInfo` objects. Each object describes a
+#' signaling channel. To retrieve only those channels that satisfy a
+#' specific condition, you can specify a `ChannelNameCondition`.
+#'
+#' @usage
+#' kinesisvideo_list_signaling_channels(MaxResults, NextToken,
+#'   ChannelNameCondition)
+#'
+#' @param MaxResults The maximum number of channels to return in the response. The default is
+#' 500.
+#' @param NextToken If you specify this parameter, when the result of a
+#' `ListSignalingChannels` operation is truncated, the call returns the
+#' `NextToken` in the response. To get another batch of channels, provide
+#' this token in your next request.
+#' @param ChannelNameCondition Optional: Returns only the channels that satisfy a specific condition.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_signaling_channels(
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   ChannelNameCondition = list(
+#'     ComparisonOperator = "BEGINS_WITH",
+#'     ComparisonValue = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisvideo_list_signaling_channels
+kinesisvideo_list_signaling_channels <- function(MaxResults = NULL, NextToken = NULL, ChannelNameCondition = NULL) {
+  op <- new_operation(
+    name = "ListSignalingChannels",
+    http_method = "POST",
+    http_path = "/listSignalingChannels",
+    paginator = list()
+  )
+  input <- .kinesisvideo$list_signaling_channels_input(MaxResults = MaxResults, NextToken = NextToken, ChannelNameCondition = ChannelNameCondition)
+  output <- .kinesisvideo$list_signaling_channels_output()
+  config <- get_config()
+  svc <- .kinesisvideo$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisvideo$operations$list_signaling_channels <- kinesisvideo_list_signaling_channels
+
 #' Returns an array of StreamInfo objects
 #'
 #' Returns an array of `StreamInfo` objects. Each object describes a
@@ -294,6 +545,46 @@ kinesisvideo_list_streams <- function(MaxResults = NULL, NextToken = NULL, Strea
 }
 .kinesisvideo$operations$list_streams <- kinesisvideo_list_streams
 
+#' Returns a list of tags associated with the specified signaling channel
+#'
+#' Returns a list of tags associated with the specified signaling channel.
+#'
+#' @usage
+#' kinesisvideo_list_tags_for_resource(NextToken, ResourceARN)
+#'
+#' @param NextToken If you specify this parameter and the result of a ListTagsForResource
+#' call is truncated, the response includes a token that you can use in the
+#' next request to fetch the next batch of tags.
+#' @param ResourceARN &#91;required&#93; The ARN of the signaling channel for which you want to list tags.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   NextToken = "string",
+#'   ResourceARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisvideo_list_tags_for_resource
+kinesisvideo_list_tags_for_resource <- function(NextToken = NULL, ResourceARN) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/ListTagsForResource",
+    paginator = list()
+  )
+  input <- .kinesisvideo$list_tags_for_resource_input(NextToken = NextToken, ResourceARN = ResourceARN)
+  output <- .kinesisvideo$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .kinesisvideo$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisvideo$operations$list_tags_for_resource <- kinesisvideo_list_tags_for_resource
+
 #' Returns a list of tags associated with the specified stream
 #'
 #' Returns a list of tags associated with the specified stream.
@@ -339,6 +630,56 @@ kinesisvideo_list_tags_for_stream <- function(NextToken = NULL, StreamARN = NULL
   return(response)
 }
 .kinesisvideo$operations$list_tags_for_stream <- kinesisvideo_list_tags_for_stream
+
+#' Adds one or more tags to a signaling channel
+#'
+#' Adds one or more tags to a signaling channel. A *tag* is a key-value
+#' pair (the value is optional) that you can define and assign to AWS
+#' resources. If you specify a tag that already exists, the tag value is
+#' replaced with the value that you specify in the request. For more
+#' information, see [Using Cost Allocation
+#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+#' in the *AWS Billing and Cost Management User Guide*.
+#'
+#' @usage
+#' kinesisvideo_tag_resource(ResourceARN, Tags)
+#'
+#' @param ResourceARN &#91;required&#93; The ARN of the signaling channel to which you want to add tags.
+#' @param Tags &#91;required&#93; A list of tags to associate with the specified signaling channel. Each
+#' tag is a key-value pair.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceARN = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisvideo_tag_resource
+kinesisvideo_tag_resource <- function(ResourceARN, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/TagResource",
+    paginator = list()
+  )
+  input <- .kinesisvideo$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
+  output <- .kinesisvideo$tag_resource_output()
+  config <- get_config()
+  svc <- .kinesisvideo$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisvideo$operations$tag_resource <- kinesisvideo_tag_resource
 
 #' Adds one or more tags to a stream
 #'
@@ -396,6 +737,48 @@ kinesisvideo_tag_stream <- function(StreamARN = NULL, StreamName = NULL, Tags) {
   return(response)
 }
 .kinesisvideo$operations$tag_stream <- kinesisvideo_tag_stream
+
+#' Removes one or more tags from a signaling channel
+#'
+#' Removes one or more tags from a signaling channel. In the request,
+#' specify only a tag key or keys; don\'t specify the value. If you specify
+#' a tag key that does not exist, it\'s ignored.
+#'
+#' @usage
+#' kinesisvideo_untag_resource(ResourceARN, TagKeyList)
+#'
+#' @param ResourceARN &#91;required&#93; The ARN of the signaling channel from which you want to remove tags.
+#' @param TagKeyList &#91;required&#93; A list of the keys of the tags that you want to remove.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceARN = "string",
+#'   TagKeyList = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisvideo_untag_resource
+kinesisvideo_untag_resource <- function(ResourceARN, TagKeyList) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/UntagResource",
+    paginator = list()
+  )
+  input <- .kinesisvideo$untag_resource_input(ResourceARN = ResourceARN, TagKeyList = TagKeyList)
+  output <- .kinesisvideo$untag_resource_output()
+  config <- get_config()
+  svc <- .kinesisvideo$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisvideo$operations$untag_resource <- kinesisvideo_untag_resource
 
 #' Removes one or more tags from a stream
 #'
@@ -517,6 +900,56 @@ kinesisvideo_update_data_retention <- function(StreamName = NULL, StreamARN = NU
   return(response)
 }
 .kinesisvideo$operations$update_data_retention <- kinesisvideo_update_data_retention
+
+#' Updates the existing signaling channel
+#'
+#' Updates the existing signaling channel. This is an asynchronous
+#' operation and takes time to complete.
+#' 
+#' If the `MessageTtlSeconds` value is updated (either increased or
+#' reduced), then it only applies to new messages sent via this channel
+#' after it\'s been updated. Existing messages are still expire as per the
+#' previous `MessageTtlSeconds` value.
+#'
+#' @usage
+#' kinesisvideo_update_signaling_channel(ChannelARN, CurrentVersion,
+#'   SingleMasterConfiguration)
+#'
+#' @param ChannelARN &#91;required&#93; The ARN of the signaling channel that you want to update.
+#' @param CurrentVersion &#91;required&#93; The current version of the signaling channel that you want to update.
+#' @param SingleMasterConfiguration The structure containing the configuration for the `SINGLE_MASTER` type
+#' of the signaling channel that you want to update.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_signaling_channel(
+#'   ChannelARN = "string",
+#'   CurrentVersion = "string",
+#'   SingleMasterConfiguration = list(
+#'     MessageTtlSeconds = 123
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisvideo_update_signaling_channel
+kinesisvideo_update_signaling_channel <- function(ChannelARN, CurrentVersion, SingleMasterConfiguration = NULL) {
+  op <- new_operation(
+    name = "UpdateSignalingChannel",
+    http_method = "POST",
+    http_path = "/updateSignalingChannel",
+    paginator = list()
+  )
+  input <- .kinesisvideo$update_signaling_channel_input(ChannelARN = ChannelARN, CurrentVersion = CurrentVersion, SingleMasterConfiguration = SingleMasterConfiguration)
+  output <- .kinesisvideo$update_signaling_channel_output()
+  config <- get_config()
+  svc <- .kinesisvideo$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisvideo$operations$update_signaling_channel <- kinesisvideo_update_signaling_channel
 
 #' Updates stream metadata, such as the device name and media type
 #'

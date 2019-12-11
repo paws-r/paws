@@ -12,10 +12,10 @@ comprehend_batch_detect_syntax(TextList, LanguageCode)
 a maximum of 25 documents. Each document must contain fewer that 5,000
 bytes of UTF-8 encoded characters.}
 
-\item{LanguageCode}{[required] The language of the input documents. You can specify any of the primary
-languages supported by Amazon Comprehend: German ("de"), English
-("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
-Portuguese ("pt"). All documents must be in the same language.}
+\item{LanguageCode}{[required] The language of the input documents. You can specify any of the
+following languages supported by Amazon Comprehend: German (\"de\"),
+English (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"),
+or Portuguese (\"pt\"). All documents must be in the same language.}
 }
 \description{
 Inspects the text of a batch of documents for the syntax and part of

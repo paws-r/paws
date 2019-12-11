@@ -11,9 +11,9 @@ codepipeline_update_pipeline(pipeline)
 }
 \description{
 Updates a specified pipeline with edits or changes to its structure. Use
-a JSON file with the pipeline structure in conjunction with
-\code{UpdatePipeline} to provide the full structure of the pipeline. Updating
-the pipeline increases the version number of the pipeline by 1.
+a JSON file with the pipeline structure and \code{UpdatePipeline} to provide
+the full structure of the pipeline. Updating the pipeline increases the
+version number of the pipeline by 1.
 }
 \section{Request syntax}{
 \preformatted{svc$update_pipeline(
@@ -71,7 +71,8 @@ the pipeline increases the version number of the pipeline by 1.
               )
             ),
             roleArn = "string",
-            region = "string"
+            region = "string",
+            namespace = "string"
           )
         )
       )

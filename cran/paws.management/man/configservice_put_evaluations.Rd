@@ -20,7 +20,7 @@ verify whether your AWS Lambda function will deliver evaluation results
 to AWS Config. No updates occur to your existing evaluations, and
 evaluation results are not sent to AWS Config.
 
-When \code{TestMode} is \code{true}, \code{PutEvaluations} doesn't require a valid
+When \code{TestMode} is \code{true}, \code{PutEvaluations} doesn\'t require a valid
 value for the \code{ResultToken} parameter, but the value cannot be null.}
 }
 \description{

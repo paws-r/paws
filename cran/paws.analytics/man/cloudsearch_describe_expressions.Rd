@@ -9,7 +9,7 @@ cloudsearch_describe_expressions(DomainName, ExpressionNames, Deployed)
 \arguments{
 \item{DomainName}{[required] The name of the domain you want to describe.}
 
-\item{ExpressionNames}{Limits the \code{<a>DescribeExpressions</a>} response to the specified
+\item{ExpressionNames}{Limits the \verb{<a>DescribeExpressions</a>} response to the specified
 expressions. If not specified, all expressions are shown.}
 
 \item{Deployed}{Whether to display the deployed configuration (\code{true}) or include any

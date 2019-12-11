@@ -11,10 +11,10 @@ iotthingsgraph_get_system_template_revisions(id, nextToken, maxResults)
 
 The ID should be in the following format.
 
-\code{urn:tdm:REGION/ACCOUNT ID/default:system:SYSTEMNAME}}
+\verb{urn:tdm:REGION/ACCOUNT ID/default:system:SYSTEMNAME}}
 
 \item{nextToken}{The string that specifies the next page of results. Use this when
-you're paginating results.}
+you\'re paginating results.}
 
 \item{maxResults}{The maximum number of results to return in the response.}
 }
@@ -22,7 +22,7 @@ you're paginating results.}
 Gets revisions made to the specified system template. Only the previous
 100 revisions are stored. If the system has been deprecated, this action
 will return the revisions that occurred before its deprecation. This
-action won't work with systems that have been deleted.
+action won\'t work with systems that have been deleted.
 }
 \section{Request syntax}{
 \preformatted{svc$get_system_template_revisions(

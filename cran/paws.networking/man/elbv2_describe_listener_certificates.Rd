@@ -3,7 +3,7 @@
 \name{elbv2_describe_listener_certificates}
 \alias{elbv2_describe_listener_certificates}
 \title{Describes the default certificate and the certificate list for the
-specified HTTPS listener}
+specified HTTPS or TLS listener}
 \usage{
 elbv2_describe_listener_certificates(ListenerArn, Marker, PageSize)
 }
@@ -17,7 +17,7 @@ previous call.)}
 }
 \description{
 Describes the default certificate and the certificate list for the
-specified HTTPS listener.
+specified HTTPS or TLS listener.
 }
 \details{
 If the default certificate is also in the certificate list, it appears

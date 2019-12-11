@@ -43,10 +43,18 @@ Creates a version of a resource definition that has already been defined.
         ),
         S3MachineLearningModelResourceData = list(
           DestinationPath = "string",
+          OwnerSetting = list(
+            GroupOwner = "string",
+            GroupPermission = "ro"|"rw"
+          ),
           S3Uri = "string"
         ),
         SageMakerMachineLearningModelResourceData = list(
           DestinationPath = "string",
+          OwnerSetting = list(
+            GroupOwner = "string",
+            GroupPermission = "ro"|"rw"
+          ),
           SageMakerJobArn = "string"
         ),
         SecretsManagerSecretResourceData = list(

@@ -6,7 +6,7 @@
 services that are integrated with ACM}
 \usage{
 acm_import_certificate(CertificateArn, Certificate, PrivateKey,
-  CertificateChain)
+  CertificateChain, Tags)
 }
 \arguments{
 \item{CertificateArn}{The \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)}
@@ -18,6 +18,10 @@ this field.}
 \item{PrivateKey}{[required] The private key that matches the public key in the certificate.}
 
 \item{CertificateChain}{The PEM encoded certificate chain.}
+
+\item{Tags}{One or more resource tags to associate with the imported certificate.
+
+Note: You cannot apply tags when reimporting a certificate.}
 }
 \description{
 Imports a certificate into AWS Certificate Manager (ACM) to use with
@@ -45,22 +49,25 @@ enter its certificate chain.
 of one of the certificates in the chain.
 \item The certificate, private key, and certificate chain must be
 PEM-encoded.
-\item The current time must be between the \code{Not Before} and \code{Not After}
+\item The current time must be between the \verb{Not Before} and \verb{Not After}
 certificate fields.
 \item The \code{Issuer} field must not be empty.
 \item The OCSP authority URL, if present, must not exceed 1000 characters.
 \item To import a new certificate, omit the \code{CertificateArn} argument.
 Include this argument only when you want to replace a previously
-imported certificate.
+imported certifica
 \item When you import a certificate by using the CLI, you must specify the
 certificate, the certificate chain, and the private key by their
-file names preceded by \code{file://}. For example, you can specify a
-certificate saved in the \code{C:\\temp} folder as
-\code{file://C:\\temp\\certificate_to_import.pem}. If you are making an
+file names preceded by \verb{file://}. For example, you can specify a
+certificate saved in the \verb{C:\\\\temp} folder as
+\verb{file://C:\\\\temp\\\\certificate_to_import.pem}. If you are making an
 HTTP or HTTPS Query request, include these arguments as BLOBs.
 \item When you import a certificate by using an SDK, you must specify the
 certificate, the certificate chain, and the private key files in the
-manner required by the programming language you're using.
+manner required by the programming language you\'re using.
+\item The cryptographic algorithm of an imported certificate must match
+the algorithm of the signing CA. For example, if the signing CA key
+type is RSA, then the certificate key type must also be RSA.
 }
 
 This operation returns the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)}
@@ -71,7 +78,13 @@ of the imported certificate.
   CertificateArn = "string",
   Certificate = raw,
   PrivateKey = raw,
-  CertificateChain = raw
+  CertificateChain = raw,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

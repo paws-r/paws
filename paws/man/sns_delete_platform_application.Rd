@@ -3,7 +3,7 @@
 \name{sns_delete_platform_application}
 \alias{sns_delete_platform_application}
 \title{Deletes a platform application object for one of the supported push
-notification services, such as APNS and GCM}
+notification services, such as APNS and FCM}
 \usage{
 sns_delete_platform_application(PlatformApplicationArn)
 }
@@ -12,7 +12,7 @@ sns_delete_platform_application(PlatformApplicationArn)
 }
 \description{
 Deletes a platform application object for one of the supported push
-notification services, such as APNS and GCM. For more information, see
+notification services, such as APNS and FCM. For more information, see
 \href{https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.
 }
 \section{Request syntax}{

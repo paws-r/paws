@@ -16,7 +16,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Creates a default subnet with a size \code{/20} IPv4 CIDR block in the
+Creates a default subnet with a size \verb{/20} IPv4 CIDR block in the
 specified Availability Zone in your default VPC. You can have only one
 default subnet per Availability Zone. For more information, see
 \href{https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html#create-default-subnet}{Creating a Default Subnet}

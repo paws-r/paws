@@ -15,8 +15,7 @@ tag is composed of a key/value pair.}
 }
 \description{
 Removes one or more tags from the specified resource. This operation is
-only supported in the cached volume, stored volume and tape gateway
-types.
+supported in storage gateways of all types.
 }
 \section{Request syntax}{
 \preformatted{svc$remove_tags_from_resource(

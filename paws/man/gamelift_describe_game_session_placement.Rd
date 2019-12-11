@@ -24,9 +24,11 @@ ID. If successful, a GameSessionPlacement object is returned.
 \item UpdateGameSession
 \item GetGameSessionLogUrl
 \item Game session placements
+\itemize{
 \item StartGameSessionPlacement
 \item DescribeGameSessionPlacement
 \item StopGameSessionPlacement
+}
 }
 }
 \section{Request syntax}{

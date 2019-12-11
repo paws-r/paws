@@ -7,9 +7,9 @@
 guardduty_untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) for the given GuardDuty resource}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) for the resource to remove tags from.}
 
-\item{TagKeys}{[required] The tag keys to remove from a resource.}
+\item{TagKeys}{[required] The tag keys to remove from the resource.}
 }
 \description{
 Removes tags from a resource.

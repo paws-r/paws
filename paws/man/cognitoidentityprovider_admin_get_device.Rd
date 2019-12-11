@@ -18,7 +18,7 @@ cognitoidentityprovider_admin_get_device(DeviceKey, UserPoolId,
 Gets the device, as an administrator.
 }
 \details{
-Requires developer credentials.
+Calling this action requires developer credentials.
 }
 \section{Request syntax}{
 \preformatted{svc$admin_get_device(

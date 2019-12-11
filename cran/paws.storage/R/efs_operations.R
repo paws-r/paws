@@ -1002,7 +1002,7 @@ efs_modify_mount_target_security_groups <- function(MountTargetId, SecurityGroup
 #'   FileSystemId = "string",
 #'   LifecyclePolicies = list(
 #'     list(
-#'       TransitionToIA = "AFTER_14_DAYS"|"AFTER_30_DAYS"|"AFTER_60_DAYS"|"AFTER_90_DAYS"
+#'       TransitionToIA = "AFTER_7_DAYS"|"AFTER_14_DAYS"|"AFTER_30_DAYS"|"AFTER_60_DAYS"|"AFTER_90_DAYS"
 #'     )
 #'   )
 #' )

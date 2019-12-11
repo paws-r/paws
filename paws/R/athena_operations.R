@@ -192,7 +192,8 @@ athena_create_named_query <- function(Name, Description = NULL, Database, QueryS
 #'     ),
 #'     EnforceWorkGroupConfiguration = TRUE|FALSE,
 #'     PublishCloudWatchMetricsEnabled = TRUE|FALSE,
-#'     BytesScannedCutoffPerQuery = 123
+#'     BytesScannedCutoffPerQuery = 123,
+#'     RequesterPaysEnabled = TRUE|FALSE
 #'   ),
 #'   Description = "string",
 #'   Tags = list(
@@ -383,14 +384,25 @@ athena_get_query_execution <- function(QueryExecutionId) {
 }
 .athena$operations$get_query_execution <- athena_get_query_execution
 
-#' Returns the results of a single query execution specified by
-#' QueryExecutionId if you have access to the workgroup in which the query
-#' ran
+#' Streams the results of a single query execution specified by
+#' QueryExecutionId from the Athena query results location in Amazon S3
 #'
-#' Returns the results of a single query execution specified by
-#' `QueryExecutionId` if you have access to the workgroup in which the
-#' query ran. This request does not execute the query but returns results.
-#' Use StartQueryExecution to run a query.
+#' Streams the results of a single query execution specified by
+#' `QueryExecutionId` from the Athena query results location in Amazon S3.
+#' For more information, see [Query
+#' Results](https://docs.aws.amazon.com/athena/latest/ug/querying.html) in
+#' the *Amazon Athena User Guide*. This request does not execute the query
+#' but returns results. Use StartQueryExecution to run a query.
+#' 
+#' To stream query results successfully, the IAM principal with permission
+#' to call `GetQueryResults` also must have permissions to the Amazon S3
+#' `GetObject` action for the Athena query results location.
+#' 
+#' IAM principals with permission to the Amazon S3 `GetObject` action for
+#' the query results location are able to retrieve query results from
+#' Amazon S3 even if permission to the `GetQueryResults` action is denied.
+#' To restrict user or role access, ensure that Amazon S3 permissions to
+#' the Athena query location are denied.
 #'
 #' @usage
 #' athena_get_query_results(QueryExecutionId, NextToken, MaxResults)
@@ -891,7 +903,8 @@ athena_untag_resource <- function(ResourceARN, TagKeys) {
 #'     ),
 #'     PublishCloudWatchMetricsEnabled = TRUE|FALSE,
 #'     BytesScannedCutoffPerQuery = 123,
-#'     RemoveBytesScannedCutoffPerQuery = TRUE|FALSE
+#'     RemoveBytesScannedCutoffPerQuery = TRUE|FALSE,
+#'     RequesterPaysEnabled = TRUE|FALSE
 #'   ),
 #'   State = "ENABLED"|"DISABLED"
 #' )

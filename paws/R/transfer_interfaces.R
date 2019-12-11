@@ -5,7 +5,7 @@ NULL
 
 .transfer$create_server_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EndpointDetails = structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EndpointType = structure(logical(0), tags = list(type = "string")), HostKey = structure(logical(0), tags = list(type = "string")), IdentityProviderDetails = structure(list(Url = structure(logical(0), tags = list(type = "string")), InvocationRole = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IdentityProviderType = structure(logical(0), tags = list(type = "string")), LoggingRole = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(EndpointDetails = structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EndpointType = structure(logical(0), tags = list(type = "string")), HostKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), IdentityProviderDetails = structure(list(Url = structure(logical(0), tags = list(type = "string")), InvocationRole = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IdentityProviderType = structure(logical(0), tags = list(type = "string")), LoggingRole = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -17,7 +17,7 @@ NULL
 
 .transfer$create_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HomeDirectory = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string")), Role = structure(logical(0), tags = list(type = "string")), ServerId = structure(logical(0), tags = list(type = "string")), SshPublicKeyBody = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UserName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(HomeDirectory = structure(logical(0), tags = list(type = "string")), HomeDirectoryType = structure(logical(0), tags = list(type = "string")), HomeDirectoryMappings = structure(list(structure(list(Entry = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Policy = structure(logical(0), tags = list(type = "string")), Role = structure(logical(0), tags = list(type = "string")), ServerId = structure(logical(0), tags = list(type = "string")), SshPublicKeyBody = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UserName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -77,7 +77,7 @@ NULL
 
 .transfer$describe_user_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServerId = structure(logical(0), tags = list(type = "string")), User = structure(list(Arn = structure(logical(0), tags = list(type = "string")), HomeDirectory = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string")), Role = structure(logical(0), tags = list(type = "string")), SshPublicKeys = structure(list(structure(list(DateImported = structure(logical(0), tags = list(type = "timestamp")), SshPublicKeyBody = structure(logical(0), tags = list(type = "string")), SshPublicKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UserName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ServerId = structure(logical(0), tags = list(type = "string")), User = structure(list(Arn = structure(logical(0), tags = list(type = "string")), HomeDirectory = structure(logical(0), tags = list(type = "string")), HomeDirectoryMappings = structure(list(structure(list(Entry = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), HomeDirectoryType = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string")), Role = structure(logical(0), tags = list(type = "string")), SshPublicKeys = structure(list(structure(list(DateImported = structure(logical(0), tags = list(type = "timestamp")), SshPublicKeyBody = structure(logical(0), tags = list(type = "string")), SshPublicKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UserName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -125,7 +125,7 @@ NULL
 
 .transfer$list_users_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), ServerId = structure(logical(0), tags = list(type = "string")), Users = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), HomeDirectory = structure(logical(0), tags = list(type = "string")), Role = structure(logical(0), tags = list(type = "string")), SshPublicKeyCount = structure(logical(0), tags = list(type = "integer")), UserName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), ServerId = structure(logical(0), tags = list(type = "string")), Users = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), HomeDirectory = structure(logical(0), tags = list(type = "string")), HomeDirectoryType = structure(logical(0), tags = list(type = "string")), Role = structure(logical(0), tags = list(type = "string")), SshPublicKeyCount = structure(logical(0), tags = list(type = "integer")), UserName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -161,13 +161,13 @@ NULL
 
 .transfer$test_identity_provider_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServerId = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), UserPassword = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ServerId = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), UserPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .transfer$test_identity_provider_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Message = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "integer")), Url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Response = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "integer")), Message = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -183,7 +183,7 @@ NULL
 
 .transfer$update_server_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EndpointDetails = structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EndpointType = structure(logical(0), tags = list(type = "string")), HostKey = structure(logical(0), tags = list(type = "string")), IdentityProviderDetails = structure(list(Url = structure(logical(0), tags = list(type = "string")), InvocationRole = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LoggingRole = structure(logical(0), tags = list(type = "string")), ServerId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(EndpointDetails = structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EndpointType = structure(logical(0), tags = list(type = "string")), HostKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), IdentityProviderDetails = structure(list(Url = structure(logical(0), tags = list(type = "string")), InvocationRole = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LoggingRole = structure(logical(0), tags = list(type = "string")), ServerId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -195,7 +195,7 @@ NULL
 
 .transfer$update_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HomeDirectory = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string")), Role = structure(logical(0), tags = list(type = "string")), ServerId = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(HomeDirectory = structure(logical(0), tags = list(type = "string")), HomeDirectoryType = structure(logical(0), tags = list(type = "string")), HomeDirectoryMappings = structure(list(structure(list(Entry = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Policy = structure(logical(0), tags = list(type = "string")), Role = structure(logical(0), tags = list(type = "string")), ServerId = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

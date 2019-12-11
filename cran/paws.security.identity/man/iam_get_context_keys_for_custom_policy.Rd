@@ -17,9 +17,9 @@ this parameter is a string of characters consisting of the following:
 \item Any printable ASCII character ranging from the space character
 (\code{U+0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \code{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\code{U+000A}), and
-carriage return (\code{U+000D})
+character set (through \verb{U+00FF})
+\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
+carriage return (\verb{U+000D})
 }}
 }
 \description{

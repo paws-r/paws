@@ -34,7 +34,7 @@ time key, the results are sorted numerically by the date and time.}
 \description{
 Retrieves the service last accessed data report for AWS Organizations
 that was previously generated using the
-\code{<a>GenerateOrganizationsAccessReport</a>} operation. This operation
+\verb{<a>GenerateOrganizationsAccessReport</a>} operation. This operation
 retrieves the status of your report job and the report contents.
 }
 \details{

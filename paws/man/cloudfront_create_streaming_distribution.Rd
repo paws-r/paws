@@ -7,7 +7,7 @@
 cloudfront_create_streaming_distribution(StreamingDistributionConfig)
 }
 \arguments{
-\item{StreamingDistributionConfig}{[required] The streaming distribution's configuration information.}
+\item{StreamingDistributionConfig}{[required] The streaming distribution\'s configuration information.}
 }
 \description{
 Creates a new RTMP distribution. An RTMP distribution is similar to a
@@ -38,8 +38,8 @@ versions of the API, we discovered that it was too easy to accidentally
 delete one or more values for an element that accepts multiple values,
 for example, CNAMEs and trusted signers. Our changes for the 2012-05-05
 release are intended to prevent these accidental deletions and to notify
-you when there's a mismatch between the number of values you say
-you're specifying in the \code{Quantity} element and the number of values
+you when there\'s a mismatch between the number of values you say
+you\'re specifying in the \code{Quantity} element and the number of values
 specified.
 }
 \section{Request syntax}{

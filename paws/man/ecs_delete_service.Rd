@@ -28,12 +28,13 @@ information, see UpdateService.
 When you delete a service, if there are still running tasks that require
 cleanup, the service status moves from \code{ACTIVE} to \code{DRAINING}, and the
 service is no longer visible in the console or in the ListServices API
-operation. After the tasks have stopped, then the service status moves
-from \code{DRAINING} to \code{INACTIVE}. Services in the \code{DRAINING} or \code{INACTIVE}
-status can still be viewed with the DescribeServices API operation.
-However, in the future, \code{INACTIVE} services may be cleaned up and purged
-from Amazon ECS record keeping, and DescribeServices calls on those
-services return a \code{ServiceNotFoundException} error.
+operation. After all tasks have transitioned to either \code{STOPPING} or
+\code{STOPPED} status, the service status moves from \code{DRAINING} to
+\code{INACTIVE}. Services in the \code{DRAINING} or \code{INACTIVE} status can still be
+viewed with the DescribeServices API operation. However, in the future,
+\code{INACTIVE} services may be cleaned up and purged from Amazon ECS record
+keeping, and DescribeServices calls on those services return a
+\code{ServiceNotFoundException} error.
 
 If you attempt to create a new service with the same name as an existing
 service in either \code{ACTIVE} or \code{DRAINING} status, you receive an error.

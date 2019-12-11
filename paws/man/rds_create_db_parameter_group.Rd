@@ -14,7 +14,7 @@ Constraints:
 \itemize{
 \item Must be 1 to 255 letters, numbers, or hyphens.
 \item First character must be a letter
-\item Can't end with a hyphen or contain two consecutive hyphens
+\item Can\'t end with a hyphen or contain two consecutive hyphens
 }
 
 This value is stored as a lowercase string.}
@@ -27,7 +27,7 @@ version compatible with that DB parameter group family.
 To list all of the available parameter group families, use the following
 command:
 
-\code{aws rds describe-db-engine-versions --query "DBEngineVersions\\[\\].DBParameterGroupFamily"}
+\verb{aws rds describe-db-engine-versions --query "DBEngineVersions\\\[\\\].DBParameterGroupFamily"}
 
 The output contains duplicates.}
 
@@ -42,7 +42,7 @@ Creates a new DB parameter group.
 A DB parameter group is initially created with the default parameters
 for the database engine used by the DB instance. To provide custom
 values for any of the parameters, you must modify the group after
-creating it using \emph{ModifyDBParameterGroup}. Once you've created a DB
+creating it using \emph{ModifyDBParameterGroup}. Once you\'ve created a DB
 parameter group, you need to associate it with your DB instance using
 \emph{ModifyDBInstance}. When you associate a new DB parameter group with a
 running DB instance, you need to reboot the DB instance without failover

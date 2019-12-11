@@ -26,7 +26,7 @@ any associated arguments.}
 parameter to override some corresponding default stack configuration
 JSON values. The string should be in the following format:
 
-\code{"\{\"key1\": \"value1\", \"key2\": \"value2\",...\}"}
+\verb{"\\\{\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\",...\\\}"}
 
 For more information about custom JSON, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html}{Use Custom JSON to Modify the Stack Configuration Attributes}
 and \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html}{Overriding Attributes With Custom JSON}.}

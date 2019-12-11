@@ -18,7 +18,7 @@ workgroup.}
 \item{State}{The workgroup state that will be updated for the given workgroup.}
 }
 \description{
-Updates the workgroup with the specified name. The workgroup's name
+Updates the workgroup with the specified name. The workgroup\'s name
 cannot be changed.
 }
 \section{Request syntax}{
@@ -38,7 +38,8 @@ cannot be changed.
     ),
     PublishCloudWatchMetricsEnabled = TRUE|FALSE,
     BytesScannedCutoffPerQuery = 123,
-    RemoveBytesScannedCutoffPerQuery = TRUE|FALSE
+    RemoveBytesScannedCutoffPerQuery = TRUE|FALSE,
+    RequesterPaysEnabled = TRUE|FALSE
   ),
   State = "ENABLED"|"DISABLED"
 )

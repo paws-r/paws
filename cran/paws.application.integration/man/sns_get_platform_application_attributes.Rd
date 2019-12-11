@@ -3,7 +3,7 @@
 \name{sns_get_platform_application_attributes}
 \alias{sns_get_platform_application_attributes}
 \title{Retrieves the attributes of the platform application object for the
-supported push notification services, such as APNS and GCM}
+supported push notification services, such as APNS and FCM}
 \usage{
 sns_get_platform_application_attributes(PlatformApplicationArn)
 }
@@ -12,7 +12,7 @@ sns_get_platform_application_attributes(PlatformApplicationArn)
 }
 \description{
 Retrieves the attributes of the platform application object for the
-supported push notification services, such as APNS and GCM. For more
+supported push notification services, such as APNS and FCM. For more
 information, see \href{https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.
 }
 \section{Request syntax}{

@@ -43,10 +43,8 @@ converting it to lowercase, before checking its length. Note that
 transformations of the request body are not supported because the
 AWS resource forwards only the first \code{8192} bytes of your request to
 AWS WAF.
-}
 
 You can only specify a single type of TextTransformation.
-\itemize{
 \item A \code{ComparisonOperator} used for evaluating the selected part of the
 request against the specified \code{Size}, such as equals, greater than,
 less than, and so on.

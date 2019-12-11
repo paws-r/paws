@@ -8,7 +8,7 @@ appstream_update_fleet(ImageName, ImageArn, Name, InstanceType,
   ComputeCapacity, VpcConfig, MaxUserDurationInSeconds,
   DisconnectTimeoutInSeconds, DeleteVpcConfig, Description, DisplayName,
   EnableDefaultInternetAccess, DomainJoinInfo,
-  IdleDisconnectTimeoutInSeconds, AttributesToDelete)
+  IdleDisconnectTimeoutInSeconds, AttributesToDelete, IamRoleArn)
 }
 \arguments{
 \item{ImageName}{The name of the image used to create the fleet.}
@@ -91,7 +91,7 @@ value is 0.
 
 If you enable this feature, we recommend that you specify a value that
 corresponds exactly to a whole number of minutes (for example, 60, 120,
-and 180). If you don't do this, the value is rounded to the nearest
+and 180). If you don\'t do this, the value is rounded to the nearest
 minute. For example, if you specify a value of 70, users are
 disconnected after 1 minute of inactivity. If you specify a value that
 is at the midpoint between two different minutes, the value is rounded
@@ -99,6 +99,16 @@ up. For example, if you specify a value of 90, users are disconnected
 after 2 minutes of inactivity.}
 
 \item{AttributesToDelete}{The fleet attributes to delete.}
+
+\item{IamRoleArn}{The Amazon Resource Name (ARN) of the IAM role to apply to the fleet. To
+assume a role, a fleet instance calls the AWS Security Token Service
+(STS) \code{AssumeRole} API operation and passes the ARN of the role to use.
+The operation creates a new session with temporary credentials.
+AppStream 2.0 retrieves the temporary credentials and creates the
+\strong{AppStream\\_Machine\\_Role} credential profile on the instance.
+
+For more information, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html}{Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming Instances}
+in the \emph{Amazon AppStream 2.0 Administration Guide}.}
 }
 \description{
 Updates the specified fleet.
@@ -107,8 +117,9 @@ Updates the specified fleet.
 If the fleet is in the \code{STOPPED} state, you can update any attribute
 except the fleet name. If the fleet is in the \code{RUNNING} state, you can
 update the \code{DisplayName}, \code{ComputeCapacity}, \code{ImageARN}, \code{ImageName},
-and \code{DisconnectTimeoutInSeconds} attributes. If the fleet is in the
-\code{STARTING} or \code{STOPPING} state, you can't update it.
+\code{IdleDisconnectTimeoutInSeconds}, and \code{DisconnectTimeoutInSeconds}
+attributes. If the fleet is in the \code{STARTING} or \code{STOPPING} state, you
+can\'t update it.
 }
 \section{Request syntax}{
 \preformatted{svc$update_fleet(
@@ -139,8 +150,9 @@ and \code{DisconnectTimeoutInSeconds} attributes. If the fleet is in the
   ),
   IdleDisconnectTimeoutInSeconds = 123,
   AttributesToDelete = list(
-    "VPC_CONFIGURATION"|"VPC_CONFIGURATION_SECURITY_GROUP_IDS"|"DOMAIN_JOIN_INFO"
-  )
+    "VPC_CONFIGURATION"|"VPC_CONFIGURATION_SECURITY_GROUP_IDS"|"DOMAIN_JOIN_INFO"|"IAM_ROLE_ARN"
+  ),
+  IamRoleArn = "string"
 )
 }
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_describe_available_patches}
 \alias{ssm_describe_available_patches}
-\title{Lists all patches that could possibly be included in a patch baseline}
+\title{Lists all patches eligible to be included in a patch baseline}
 \usage{
 ssm_describe_available_patches(Filters, MaxResults, NextToken)
 }
@@ -15,7 +15,7 @@ ssm_describe_available_patches(Filters, MaxResults, NextToken)
 from a previous call.)}
 }
 \description{
-Lists all patches that could possibly be included in a patch baseline.
+Lists all patches eligible to be included in a patch baseline.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_available_patches(

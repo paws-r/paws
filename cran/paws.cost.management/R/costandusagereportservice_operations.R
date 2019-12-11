@@ -92,6 +92,61 @@ costandusagereportservice_describe_report_definitions <- function(MaxResults = N
 }
 .costandusagereportservice$operations$describe_report_definitions <- costandusagereportservice_describe_report_definitions
 
+#' Allows you to programatically update your report preferences
+#'
+#' Allows you to programatically update your report preferences.
+#'
+#' @usage
+#' costandusagereportservice_modify_report_definition(ReportName,
+#'   ReportDefinition)
+#'
+#' @param ReportName &#91;required&#93; 
+#' @param ReportDefinition &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_report_definition(
+#'   ReportName = "string",
+#'   ReportDefinition = list(
+#'     ReportName = "string",
+#'     TimeUnit = "HOURLY"|"DAILY",
+#'     Format = "textORcsv"|"Parquet",
+#'     Compression = "ZIP"|"GZIP"|"Parquet",
+#'     AdditionalSchemaElements = list(
+#'       "RESOURCES"
+#'     ),
+#'     S3Bucket = "string",
+#'     S3Prefix = "string",
+#'     S3Region = "us-east-1"|"us-west-1"|"us-west-2"|"eu-central-1"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"eu-north-1"|"ap-northeast-3"|"ap-east-1",
+#'     AdditionalArtifacts = list(
+#'       "REDSHIFT"|"QUICKSIGHT"|"ATHENA"
+#'     ),
+#'     RefreshClosedReports = TRUE|FALSE,
+#'     ReportVersioning = "CREATE_NEW_REPORT"|"OVERWRITE_REPORT"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname costandusagereportservice_modify_report_definition
+costandusagereportservice_modify_report_definition <- function(ReportName, ReportDefinition) {
+  op <- new_operation(
+    name = "ModifyReportDefinition",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .costandusagereportservice$modify_report_definition_input(ReportName = ReportName, ReportDefinition = ReportDefinition)
+  output <- .costandusagereportservice$modify_report_definition_output()
+  config <- get_config()
+  svc <- .costandusagereportservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.costandusagereportservice$operations$modify_report_definition <- costandusagereportservice_modify_report_definition
+
 #' Creates a new report using the description that you provide
 #'
 #' Creates a new report using the description that you provide.
@@ -115,7 +170,7 @@ costandusagereportservice_describe_report_definitions <- function(MaxResults = N
 #'     ),
 #'     S3Bucket = "string",
 #'     S3Prefix = "string",
-#'     S3Region = "us-east-1"|"us-west-1"|"us-west-2"|"eu-central-1"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"eu-north-1"|"ap-northeast-3",
+#'     S3Region = "us-east-1"|"us-west-1"|"us-west-2"|"eu-central-1"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"eu-north-1"|"ap-northeast-3"|"ap-east-1",
 #'     AdditionalArtifacts = list(
 #'       "REDSHIFT"|"QUICKSIGHT"|"ATHENA"
 #'     ),

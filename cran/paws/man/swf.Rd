@@ -11,7 +11,7 @@ swf(config = list())
 }
 \description{
 The Amazon Simple Workflow Service (Amazon SWF) makes it easy to build
-applications that use Amazon's cloud to coordinate work across
+applications that use Amazon\'s cloud to coordinate work across
 distributed components. In Amazon SWF, a \emph{task} represents a logical
 unit of work that is performed by a component of your workflow.
 Coordinating tasks in a workflow involves managing intertask

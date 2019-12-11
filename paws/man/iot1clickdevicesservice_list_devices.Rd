@@ -7,7 +7,7 @@
 iot1clickdevicesservice_list_devices(DeviceType, MaxResults, NextToken)
 }
 \arguments{
-\item{DeviceType}{The type of the device, such as "button".}
+\item{DeviceType}{The type of the device, such as \"button\".}
 
 \item{MaxResults}{The maximum number of results to return per request. If not set, a
 default value of 100 is used.}

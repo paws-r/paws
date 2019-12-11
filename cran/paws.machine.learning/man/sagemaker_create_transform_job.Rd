@@ -7,7 +7,7 @@
 sagemaker_create_transform_job(TransformJobName, ModelName,
   MaxConcurrentTransforms, MaxPayloadInMB, BatchStrategy, Environment,
   TransformInput, TransformOutput, TransformResources, DataProcessing,
-  Tags)
+  Tags, ExperimentConfig)
 }
 \arguments{
 \item{TransformJobName}{[required] The name of the transform job. The name must be unique within an AWS
@@ -20,10 +20,10 @@ within an AWS Region in an AWS account.}
 \item{MaxConcurrentTransforms}{The maximum number of parallel requests that can be sent to each
 instance in a transform job. If \code{MaxConcurrentTransforms} is set to \code{0}
 or left unset, Amazon SageMaker checks the optional execution-parameters
-to determine the optimal settings for your chosen algorithm. If the
+to determine the settings for your chosen algorithm. If the
 execution-parameters endpoint is not enabled, the default value is \code{1}.
-For more information on execution-parameters, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests}{How Containers Serve Requests}.
-For built-in algorithms, you don't need to set a value for
+For more information on execution-parameters, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests}{How Containers Serve Requests}.
+For built-in algorithms, you don\'t need to set a value for
 \code{MaxConcurrentTransforms}.}
 
 \item{MaxPayloadInMB}{The maximum allowed size of the payload, in MB. A \emph{payload} is the data
@@ -44,8 +44,8 @@ inference request. A \emph{record} is a single unit of input data that
 inference can be made on. For example, a single line in a CSV file is a
 record.
 
-To enable the batch strategy, you must set \code{SplitType} to \code{Line},
-\code{RecordIO}, or \code{TFRecord}.
+To enable the batch strategy, you must set the \code{SplitType} property of
+the DataProcessing object to \code{Line}, \code{RecordIO}, or \code{TFRecord}.
 
 To use only one record when making an HTTP invocation request to a
 container, set \code{BatchStrategy} to \code{SingleRecord} and \code{SplitType} to
@@ -65,11 +65,18 @@ to 16 key and values entries in the map.}
 \item{TransformResources}{[required] Describes the resources, including ML instance types and ML instance
 count, to use for the transform job.}
 
-\item{DataProcessing}{The data structure used for combining the input data and inference in
-the output file. For more information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-io-join.html}{Batch Transform I/O Join}.}
+\item{DataProcessing}{The data structure used to specify the data to be used for inference in
+a batch transform job and to associate the data that is relevant to the
+prediction results in the output. The input filter provided allows you
+to exclude input data that is not needed for inference in a batch
+transform job. The output filter provided allows you to include input
+data relevant to interpreting the predictions in the output from the
+job. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-data-processing.html}{Associate Prediction Results with their Corresponding Input Records}.}
 
 \item{Tags}{(Optional) An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
 in the \emph{AWS Billing and Cost Management User Guide}.}
+
+\item{ExperimentConfig}{}
 }
 \description{
 Starts a transform job. A transform job uses a trained model to get
@@ -96,8 +103,7 @@ Amazon SageMaker to save the results from the transform job.
 transform job.
 }
 
-For more information about how batch transformation works Amazon
-SageMaker, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html}{How It Works}.
+For more information about how batch transformation works, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html}{Batch Transform}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_transform_job(
@@ -141,6 +147,11 @@ SageMaker, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/batch-trans
       Key = "string",
       Value = "string"
     )
+  ),
+  ExperimentConfig = list(
+    ExperimentName = "string",
+    TrialName = "string",
+    TrialComponentDisplayName = "string"
   )
 )
 }

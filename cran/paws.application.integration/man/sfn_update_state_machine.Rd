@@ -5,7 +5,8 @@
 \title{Updates an existing state machine by modifying its definition and/or
 roleArn}
 \usage{
-sfn_update_state_machine(stateMachineArn, definition, roleArn)
+sfn_update_state_machine(stateMachineArn, definition, roleArn,
+  loggingConfiguration)
 }
 \arguments{
 \item{stateMachineArn}{[required] The Amazon Resource Name (ARN) of the state machine.}
@@ -13,6 +14,8 @@ sfn_update_state_machine(stateMachineArn, definition, roleArn)
 \item{definition}{The Amazon States Language definition of the state machine. See \href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html}{Amazon States Language}.}
 
 \item{roleArn}{The Amazon Resource Name (ARN) of the IAM role of the state machine.}
+
+\item{loggingConfiguration}{}
 }
 \description{
 Updates an existing state machine by modifying its \code{definition} and/or
@@ -31,7 +34,18 @@ All \code{StartExecution} calls within a few seconds will use the updated
 \preformatted{svc$update_state_machine(
   stateMachineArn = "string",
   definition = "string",
-  roleArn = "string"
+  roleArn = "string",
+  loggingConfiguration = list(
+    level = "ALL"|"ERROR"|"FATAL"|"OFF",
+    includeExecutionData = TRUE|FALSE,
+    destinations = list(
+      list(
+        cloudWatchLogsLogGroup = list(
+          logGroupArn = "string"
+        )
+      )
+    )
+  )
 )
 }
 }

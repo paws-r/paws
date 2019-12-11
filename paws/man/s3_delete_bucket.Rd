@@ -7,12 +7,21 @@
 s3_delete_bucket(Bucket)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] Specifies the bucket being deleted.}
 }
 \description{
 Deletes the bucket. All objects (including all object versions and
-Delete Markers) in the bucket must be deleted before the bucket itself
+delete markers) in the bucket must be deleted before the bucket itself
 can be deleted.
+}
+\details{
+\strong{Related Resources}
+\itemize{
+\item 
+\itemize{
+\item 
+}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$delete_bucket(

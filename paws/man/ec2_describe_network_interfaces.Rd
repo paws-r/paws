@@ -30,7 +30,7 @@ allocated the Elastic IP address (IPv4) for your network interface.
 \item \code{association.public-dns-name} - The public DNS name for the network
 interface (IPv4).
 \item \code{attachment.attachment-id} - The ID of the interface attachment.
-\item \code{attachment.attach.time} - The time that the network interface was
+\item \code{attachment.attach-time} - The time that the network interface was
 attached to an instance.
 \item \code{attachment.delete-on-termination} - Indicates whether the
 attachment is deleted when an instance is terminated.
@@ -42,8 +42,8 @@ network interface is attached.
 which the network interface is attached.
 \item \code{attachment.nat-gateway-id} - The ID of the NAT gateway to which the
 network interface is attached.
-\item \code{attachment.status} - The status of the attachment (\code{attaching} \|
-\code{attached} \| \code{detaching} \| \code{detached}).
+\item \code{attachment.status} - The status of the attachment (\code{attaching} \\|
+\code{attached} \\| \code{detaching} \\| \code{detached}).
 \item \code{availability-zone} - The Availability Zone of the network
 interface.
 \item \code{description} - The description of the network interface.
@@ -74,9 +74,9 @@ address translation (NAT) in your VPC.
 \item \code{status} - The status of the network interface. If the network
 interface is not attached to an instance, the status is \code{available};
 if a network interface is attached to an instance the status is
-\code{in-use}.
+\verb{in-use}.
 \item \code{subnet-id} - The ID of the subnet for the network interface.
-\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+\item \code{tag}:\\<key\\> - The key/value combination of a tag assigned to the
 resource. Use the tag key in the filter name and the tag value as
 the filter value. For example, to find all resources that have a tag
 with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for

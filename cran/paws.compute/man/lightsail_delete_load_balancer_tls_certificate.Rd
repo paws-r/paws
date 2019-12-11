@@ -24,9 +24,9 @@ Deletes an SSL/TLS certificate associated with a Lightsail load
 balancer.
 }
 \details{
-The \code{delete load balancer tls certificate} operation supports tag-based
+The \verb{delete load balancer tls certificate} operation supports tag-based
 access control via resource tags applied to the resource identified by
-loadBalancerName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\verb{load balancer name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_load_balancer_tls_certificate(

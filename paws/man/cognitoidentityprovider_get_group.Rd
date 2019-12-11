@@ -15,7 +15,7 @@ cognitoidentityprovider_get_group(GroupName, UserPoolId)
 Gets a group.
 }
 \details{
-Requires developer credentials.
+Calling this action requires developer credentials.
 }
 \section{Request syntax}{
 \preformatted{svc$get_group(

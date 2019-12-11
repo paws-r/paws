@@ -19,6 +19,22 @@ which the user resides.}
 Resets the password for any user in your AWS Managed Microsoft AD or
 Simple AD directory.
 }
+\details{
+You can reset the password for any user in your directory with the
+following exceptions:
+\itemize{
+\item For Simple AD, you cannot reset the password for any user that is a
+member of either the \strong{Domain Admins} or \strong{Enterprise Admins}
+group except for the administrator user.
+\item For AWS Managed Microsoft AD, you can only reset the password for a
+user that is in an OU based off of the NetBIOS name that you typed
+when you created your directory. For example, you cannot reset the
+password for a user in the \strong{AWS Reserved} OU. For more information
+about the OU structure for an AWS Managed Microsoft AD directory,
+see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/ms_ad_getting_started_what_gets_created.html}{What Gets Created}
+in the \emph{AWS Directory Service Administration Guide}.
+}
+}
 \section{Request syntax}{
 \preformatted{svc$reset_user_password(
   DirectoryId = "string",

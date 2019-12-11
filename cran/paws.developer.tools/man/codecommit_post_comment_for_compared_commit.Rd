@@ -12,23 +12,21 @@ codecommit_post_comment_for_compared_commit(repositoryName,
 comparison between commits.}
 
 \item{beforeCommitId}{To establish the directionality of the comparison, the full commit ID of
-the 'before' commit.
-
-This is required for commenting on any commit unless that commit is the
-initial commit.}
+the before commit. Required for commenting on any commit unless that
+commit is the initial commit.}
 
 \item{afterCommitId}{[required] To establish the directionality of the comparison, the full commit ID of
-the 'after' commit.}
+the after commit.}
 
 \item{location}{The location of the comparison where you want to comment.}
 
 \item{content}{[required] The content of the comment you want to make.}
 
-\item{clientRequestToken}{A unique, client-generated idempotency token that when provided in a
+\item{clientRequestToken}{A unique, client-generated idempotency token that, when provided in a
 request, ensures the request cannot be repeated with a changed
 parameter. If a request is received with the same parameters and a token
-is included, the request will return information about the initial
-request that used that token.}
+is included, the request returns information about the initial request
+that used that token.}
 }
 \description{
 Posts a comment on the comparison between two commits.

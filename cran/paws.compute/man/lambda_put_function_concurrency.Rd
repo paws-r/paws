@@ -13,10 +13,10 @@ lambda_put_function_concurrency(FunctionName,
 
 \strong{Name formats}
 \itemize{
-\item \strong{Function name} - \code{my-function}.
+\item \strong{Function name} - \verb{my-function}.
 \item \strong{Function ARN} -
-\code{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
-\item \strong{Partial ARN} - \code{123456789012:function:my-function}.
+\verb{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
+\item \strong{Partial ARN} - \verb{123456789012:function:my-function}.
 }
 
 The length constraint applies only to the full ARN. If you specify only
@@ -35,10 +35,10 @@ both ensures that your function has capacity to process the specified
 number of events simultaneously, and prevents it from scaling beyond
 that level. Use GetFunction to see the current setting for a function.
 
-Use GetAccountSettings to see your regional concurrency limit. You can
+Use GetAccountSettings to see your Regional concurrency limit. You can
 reserve concurrency for as many functions as you like, as long as you
 leave at least 100 simultaneous executions unreserved for functions that
-aren't configured with a per-function limit. For more information, see
+aren\'t configured with a per-function limit. For more information, see
 \href{https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html}{Managing Concurrency}.
 }
 \section{Request syntax}{

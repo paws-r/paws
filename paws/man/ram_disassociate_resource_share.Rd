@@ -11,7 +11,7 @@ ram_disassociate_resource_share(resourceShareArn, resourceArns,
 \arguments{
 \item{resourceShareArn}{[required] The Amazon Resource Name (ARN) of the resource share.}
 
-\item{resourceArns}{The Amazon Resource Names (ARN) of the resources.}
+\item{resourceArns}{The Amazon Resource Names (ARNs) of the resources.}
 
 \item{principals}{The principals.}
 

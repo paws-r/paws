@@ -7,7 +7,7 @@
 devicefarm_get_suite(arn)
 }
 \arguments{
-\item{arn}{[required] The suite's ARN.}
+\item{arn}{[required] The suite\'s ARN.}
 }
 \description{
 Gets information about a suite.

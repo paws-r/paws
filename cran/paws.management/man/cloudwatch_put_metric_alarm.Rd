@@ -19,63 +19,65 @@ account.}
 \item{AlarmDescription}{The description for the alarm.}
 
 \item{ActionsEnabled}{Indicates whether actions should be executed during any changes to the
-alarm state. The default is TRUE.}
+alarm state. The default is \code{TRUE}.}
 
 \item{OKActions}{The actions to execute when this alarm transitions to an \code{OK} state from
 any other state. Each action is specified as an Amazon Resource Name
 (ARN).
 
-Valid Values: \code{arn:aws:automate:<i>region</i>:ec2:stop} \|
-\code{arn:aws:automate:<i>region</i>:ec2:terminate} \|
-\code{arn:aws:automate:<i>region</i>:ec2:recover} \|
-\code{arn:aws:automate:<i>region</i>:ec2:reboot} \|
-\code{arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> } \|
-\code{arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> }
+Valid Values: \verb{arn:aws:automate:<i>region</i>:ec2:stop} \\|
+\verb{arn:aws:automate:<i>region</i>:ec2:terminate} \\|
+\verb{arn:aws:automate:<i>region</i>:ec2:recover} \\|
+\verb{arn:aws:automate:<i>region</i>:ec2:reboot} \\|
+\verb{arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> } \\|
+\verb{arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> }
 
 Valid Values (for use with IAM roles):
-\code{arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Stop/1.0}
-\|
-\code{arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Terminate/1.0}
-\|
-\code{arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Reboot/1.0}}
+\verb{arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Stop/1.0}
+\\|
+\verb{arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Terminate/1.0}
+\\|
+\verb{arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Reboot/1.0}}
 
 \item{AlarmActions}{The actions to execute when this alarm transitions to the \code{ALARM} state
 from any other state. Each action is specified as an Amazon Resource
 Name (ARN).
 
-Valid Values: \code{arn:aws:automate:<i>region</i>:ec2:stop} \|
-\code{arn:aws:automate:<i>region</i>:ec2:terminate} \|
-\code{arn:aws:automate:<i>region</i>:ec2:recover} \|
-\code{arn:aws:automate:<i>region</i>:ec2:reboot} \|
-\code{arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> } \|
-\code{arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> }
+Valid Values: \verb{arn:aws:automate:<i>region</i>:ec2:stop} \\|
+\verb{arn:aws:automate:<i>region</i>:ec2:terminate} \\|
+\verb{arn:aws:automate:<i>region</i>:ec2:recover} \\|
+\verb{arn:aws:automate:<i>region</i>:ec2:reboot} \\|
+\verb{arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> } \\|
+\verb{arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> }
 
 Valid Values (for use with IAM roles):
-\code{arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Stop/1.0}
-\|
-\code{arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Terminate/1.0}
-\|
-\code{arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Reboot/1.0}}
+\verb{arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Stop/1.0}
+\\|
+\verb{arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Terminate/1.0}
+\\|
+\verb{arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Reboot/1.0}}
 
 \item{InsufficientDataActions}{The actions to execute when this alarm transitions to the
 \code{INSUFFICIENT_DATA} state from any other state. Each action is specified
 as an Amazon Resource Name (ARN).
 
-Valid Values: \code{arn:aws:automate:<i>region</i>:ec2:stop} \|
-\code{arn:aws:automate:<i>region</i>:ec2:terminate} \|
-\code{arn:aws:automate:<i>region</i>:ec2:recover} \|
-\code{arn:aws:automate:<i>region</i>:ec2:reboot} \|
-\code{arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> } \|
-\code{arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> }
+Valid Values: \verb{arn:aws:automate:<i>region</i>:ec2:stop} \\|
+\verb{arn:aws:automate:<i>region</i>:ec2:terminate} \\|
+\verb{arn:aws:automate:<i>region</i>:ec2:recover} \\|
+\verb{arn:aws:automate:<i>region</i>:ec2:reboot} \\|
+\verb{arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> } \\|
+\verb{arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> }
 
 Valid Values (for use with IAM roles):
-\code{&gt;arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Stop/1.0}
-\|
-\code{arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Terminate/1.0}
-\|
-\code{arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Reboot/1.0}}
+\verb{&gt;arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Stop/1.0}
+\\|
+\verb{arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Terminate/1.0}
+\\|
+\verb{arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Reboot/1.0}}
 
-\item{MetricName}{The name for the metric associated with the alarm.
+\item{MetricName}{The name for the metric associated with the alarm. For each
+\code{PutMetricAlarm} operation, you must specify either \code{MetricName} or a
+\code{Metrics} array.
 
 If you are creating an alarm based on a math expression, you cannot
 specify this parameter, or any of the \code{Dimensions}, \code{Period},
@@ -87,12 +89,12 @@ you specify all this information in the \code{Metrics} array.}
 \item{Statistic}{The statistic for the metric specified in \code{MetricName}, other than
 percentile. For percentile statistics, use \code{ExtendedStatistic}. When you
 call \code{PutMetricAlarm} and specify a \code{MetricName}, you must specify
-either \code{Statistic} or \code{ExtendedStatistic,} but not both.}
+either \code{Statistic} or \verb{ExtendedStatistic,} but not both.}
 
 \item{ExtendedStatistic}{The percentile statistic for the metric specified in \code{MetricName}.
 Specify a value between p0.0 and p100. When you call \code{PutMetricAlarm}
 and specify a \code{MetricName}, you must specify either \code{Statistic} or
-\code{ExtendedStatistic,} but not both.}
+\verb{ExtendedStatistic,} but not both.}
 
 \item{Dimensions}{The dimensions for the metric specified in \code{MetricName}.}
 
@@ -100,18 +102,22 @@ and specify a \code{MetricName}, you must specify either \code{Statistic} or
 \code{MetricName} is evaluated. Valid values are 10, 30, and any multiple of
 60.
 
+\code{Period} is required for alarms based on static thresholds. If you are
+creating an alarm based on a metric math expression, you specify the
+period for each metric within the objects in the \code{Metrics} array.
+
 Be sure to specify 10 or 30 only for metrics that are stored by a
 \code{PutMetricData} call with a \code{StorageResolution} of 1. If you specify a
 period of 10 or 30 for a metric that does not have sub-minute
 resolution, the alarm still attempts to gather data at the period rate
 that you specify. In this case, it does not receive data for the
 attempts that do not correspond to a one-minute data resolution, and the
-alarm may often lapse into INSUFFICENT\_DATA status. Specifying 10 or 30
+alarm may often lapse into INSUFFICENT\\_DATA status. Specifying 10 or 30
 also sets this alarm as a high-resolution alarm, which has a higher
 charge than other alarms. For more information about pricing, see
 \href{https://aws.amazon.com/cloudwatch/pricing/}{Amazon CloudWatch Pricing}.
 
-An alarm's total current evaluation period can be no longer than one
+An alarm\'s total current evaluation period can be no longer than one
 day, so \code{Period} multiplied by \code{EvaluationPeriods} cannot be more than
 86,400 seconds.}
 
@@ -122,26 +128,38 @@ can also specify a unit when you create a custom metric. Units help
 provide conceptual meaning to your data. Metric data points that specify
 a unit of measure, such as Percent, are aggregated separately.
 
-If you specify a unit, you must use a unit that is appropriate for the
-metric. Otherwise, the CloudWatch alarm can get stuck in the
-\code{INSUFFICIENT DATA} state.}
+If you don\'t specify \code{Unit}, CloudWatch retrieves all unit types that
+have been published for the metric and attempts to evaluate the alarm.
+Usually metrics are published with only one unit, so the alarm will work
+as intended.
+
+However, if the metric is published with multiple types of units and you
+don\'t specify a unit, the alarm\'s behavior is not defined and will
+behave un-predictably.
+
+We recommend omitting \code{Unit} so that you don\'t inadvertently specify an
+incorrect unit that is not published for this metric. Doing so causes
+the alarm to be stuck in the \verb{INSUFFICIENT DATA} state.}
 
 \item{EvaluationPeriods}{[required] The number of periods over which data is compared to the specified
 threshold. If you are setting an alarm that requires that a number of
 consecutive data points be breaching to trigger the alarm, this value
-specifies that number. If you are setting an "M out of N" alarm, this
+specifies that number. If you are setting an \"M out of N\" alarm, this
 value is the N.
 
-An alarm's total current evaluation period can be no longer than one
+An alarm\'s total current evaluation period can be no longer than one
 day, so this number multiplied by \code{Period} cannot be more than 86,400
 seconds.}
 
-\item{DatapointsToAlarm}{The number of datapoints that must be breaching to trigger the alarm.
-This is used only if you are setting an "M out of N" alarm. In that
+\item{DatapointsToAlarm}{The number of data points that must be breaching to trigger the alarm.
+This is used only if you are setting an \"M out of N\" alarm. In that
 case, this value is the M. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarm-evaluation}{Evaluating an Alarm}
 in the \emph{Amazon CloudWatch User Guide}.}
 
-\item{Threshold}{The value against which the specified statistic is compared.}
+\item{Threshold}{The value against which the specified statistic is compared.
+
+This parameter is required for alarms based on static thresholds, but
+should not be used for alarms based on anomaly detection models.}
 
 \item{ComparisonOperator}{[required] The arithmetic operation to use when comparing the specified statistic
 and threshold. The specified statistic value is used as the first
@@ -167,8 +185,12 @@ matter how many data points are available. For more information, see
 Valid Values: \code{evaluate | ignore}}
 
 \item{Metrics}{An array of \code{MetricDataQuery} structures that enable you to create an
-alarm based on the result of a metric math expression. Each item in the
-\code{Metrics} array either retrieves a metric or performs a math expression.
+alarm based on the result of a metric math expression. For each
+\code{PutMetricAlarm} operation, you must specify either \code{MetricName} or a
+\code{Metrics} array.
+
+Each item in the \code{Metrics} array either retrieves a metric or performs a
+math expression.
 
 One item in the \code{Metrics} array is the expression that the alarm
 watches. You designate this expression by setting \code{ReturnValue} to true
@@ -293,7 +315,8 @@ necessary service-linked role for you. The service-linked role is called
       ),
       Expression = "string",
       Label = "string",
-      ReturnData = TRUE|FALSE
+      ReturnData = TRUE|FALSE,
+      Period = 123
     )
   ),
   Tags = list(

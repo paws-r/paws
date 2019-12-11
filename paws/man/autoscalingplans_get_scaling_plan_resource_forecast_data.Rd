@@ -26,7 +26,7 @@ identifier is the cluster name and service name. Example:
 \code{service/default/sample-webapp}.
 \item Spot Fleet request - The resource type is \code{spot-fleet-request} and
 the unique identifier is the Spot Fleet request ID. Example:
-\code{spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE}.
+\verb{spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE}.
 \item DynamoDB table - The resource type is \code{table} and the unique
 identifier is the resource ID. Example: \code{table/my-table}.
 \item DynamoDB global secondary index - The resource type is \code{index} and

@@ -27,7 +27,7 @@ instance.For example, you can restrict access to this API and to the URL
 that it returns to a list of IP addresses that you specify. Use the
 \code{NotIpAddress} condition operator and the \code{aws:SourceIP} condition
 context key to specify the list of IP addresses that you want to have
-access to the notebook instance. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-ip-filter.html}{Limit Access to a Notebook Instance by IP Address}.
+access to the notebook instance. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/security_iam_id-based-policy-examples.html#nbi-ip-filter}{Limit Access to a Notebook Instance by IP Address}.
 
 The URL that you get from a call to is valid only for 5 minutes. If you
 try to use the URL after the 5-minute limit expires, you are directed to

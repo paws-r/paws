@@ -11,10 +11,16 @@ NULL
 #' 
 #' This is an asynchronous operation that immediately returns. The initial
 #' status of the delivery stream is `CREATING`. After the delivery stream
-#' is created, its status is `ACTIVE` and it now accepts data. Attempts to
-#' send data to a delivery stream that is not in the `ACTIVE` state cause
-#' an exception. To check the state of a delivery stream, use
-#' DescribeDeliveryStream.
+#' is created, its status is `ACTIVE` and it now accepts data. If the
+#' delivery stream creation fails, the status transitions to
+#' `CREATING_FAILED`. Attempts to send data to a delivery stream that is
+#' not in the `ACTIVE` state cause an exception. To check the state of a
+#' delivery stream, use DescribeDeliveryStream.
+#' 
+#' If the status of a delivery stream is `CREATING_FAILED`, this status
+#' doesn\'t change, and you can\'t invoke `CreateDeliveryStream` again on
+#' it. However, you can invoke the DeleteDeliveryStream operation to delete
+#' it.
 #' 
 #' A Kinesis Data Firehose delivery stream can be configured to receive
 #' records directly from providers using PutRecord or PutRecordBatch, or it
@@ -23,6 +29,11 @@ NULL
 #' parameter to `KinesisStreamAsSource`, and provide the Kinesis stream
 #' Amazon Resource Name (ARN) and role ARN in the
 #' `KinesisStreamSourceConfiguration` parameter.
+#' 
+#' To create a delivery stream with server-side encryption (SSE) enabled,
+#' include DeliveryStreamEncryptionConfigurationInput in your request. This
+#' is optional. You can also invoke StartDeliveryStreamEncryption to turn
+#' on SSE for an existing delivery stream that doesn\'t have SSE enabled.
 #' 
 #' A delivery stream is configured with a single destination: Amazon S3,
 #' Amazon ES, Amazon Redshift, or Splunk. You must specify only one of the
@@ -65,12 +76,13 @@ NULL
 #' principal to assume the role, and the role should have permissions that
 #' allow the service to deliver the data. For more information, see [Grant
 #' Kinesis Data Firehose Access to an Amazon S3
-#' Destination](http://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3)
+#' Destination](https://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3)
 #' in the *Amazon Kinesis Data Firehose Developer Guide*.
 #'
 #' @usage
 #' firehose_create_delivery_stream(DeliveryStreamName, DeliveryStreamType,
-#'   KinesisStreamSourceConfiguration, S3DestinationConfiguration,
+#'   KinesisStreamSourceConfiguration,
+#'   DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration,
 #'   ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration,
 #'   ElasticsearchDestinationConfiguration, SplunkDestinationConfiguration,
 #'   Tags)
@@ -91,6 +103,8 @@ NULL
 #' stream, a KinesisStreamSourceConfiguration containing the Kinesis data
 #' stream Amazon Resource Name (ARN) and the role ARN for the source
 #' stream.
+#' @param DeliveryStreamEncryptionConfigurationInput Used to specify the type and Amazon Resource Name (ARN) of the KMS key
+#' needed for Server-Side Encryption (SSE).
 #' @param S3DestinationConfiguration \[Deprecated\] The destination in Amazon S3. You can specify only one
 #' destination.
 #' @param ExtendedS3DestinationConfiguration The destination in Amazon S3. You can specify only one destination.
@@ -116,6 +130,10 @@ NULL
 #'   KinesisStreamSourceConfiguration = list(
 #'     KinesisStreamARN = "string",
 #'     RoleARN = "string"
+#'   ),
+#'   DeliveryStreamEncryptionConfigurationInput = list(
+#'     KeyARN = "string",
+#'     KeyType = "AWS_OWNED_CMK"|"CUSTOMER_MANAGED_CMK"
 #'   ),
 #'   S3DestinationConfiguration = list(
 #'     RoleARN = "string",
@@ -332,6 +350,7 @@ NULL
 #'   ElasticsearchDestinationConfiguration = list(
 #'     RoleARN = "string",
 #'     DomainARN = "string",
+#'     ClusterEndpoint = "string",
 #'     IndexName = "string",
 #'     TypeName = "string",
 #'     IndexRotationPeriod = "NoRotation"|"OneHour"|"OneDay"|"OneWeek"|"OneMonth",
@@ -448,14 +467,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname firehose_create_delivery_stream
-firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamType = NULL, KinesisStreamSourceConfiguration = NULL, S3DestinationConfiguration = NULL, ExtendedS3DestinationConfiguration = NULL, RedshiftDestinationConfiguration = NULL, ElasticsearchDestinationConfiguration = NULL, SplunkDestinationConfiguration = NULL, Tags = NULL) {
+firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamType = NULL, KinesisStreamSourceConfiguration = NULL, DeliveryStreamEncryptionConfigurationInput = NULL, S3DestinationConfiguration = NULL, ExtendedS3DestinationConfiguration = NULL, RedshiftDestinationConfiguration = NULL, ElasticsearchDestinationConfiguration = NULL, SplunkDestinationConfiguration = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDeliveryStream",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .firehose$create_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamType = DeliveryStreamType, KinesisStreamSourceConfiguration = KinesisStreamSourceConfiguration, S3DestinationConfiguration = S3DestinationConfiguration, ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration = RedshiftDestinationConfiguration, ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfiguration, SplunkDestinationConfiguration = SplunkDestinationConfiguration, Tags = Tags)
+  input <- .firehose$create_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamType = DeliveryStreamType, KinesisStreamSourceConfiguration = KinesisStreamSourceConfiguration, DeliveryStreamEncryptionConfigurationInput = DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration = S3DestinationConfiguration, ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration = RedshiftDestinationConfiguration, ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfiguration, SplunkDestinationConfiguration = SplunkDestinationConfiguration, Tags = Tags)
   output <- .firehose$create_delivery_stream_output()
   config <- get_config()
   svc <- .firehose$service(config)
@@ -469,41 +488,54 @@ firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamTy
 #'
 #' Deletes a delivery stream and its data.
 #' 
-#' You can delete a delivery stream only if it is in `ACTIVE` or `DELETING`
-#' state, and not in the `CREATING` state. While the deletion request is in
-#' process, the delivery stream is in the `DELETING` state.
+#' To check the state of a delivery stream, use DescribeDeliveryStream. You
+#' can delete a delivery stream only if it is in one of the following
+#' states: `ACTIVE`, `DELETING`, `CREATING_FAILED`, or `DELETING_FAILED`.
+#' You can\'t delete a delivery stream that is in the `CREATING` state.
+#' While the deletion request is in process, the delivery stream is in the
+#' `DELETING` state.
 #' 
-#' To check the state of a delivery stream, use DescribeDeliveryStream.
-#' 
-#' While the delivery stream is `DELETING` state, the service might
-#' continue to accept the records, but it doesn\'t make any guarantees with
-#' respect to delivering the data. Therefore, as a best practice, you
-#' should first stop any applications that are sending records before
-#' deleting a delivery stream.
+#' While the delivery stream is in the `DELETING` state, the service might
+#' continue to accept records, but it doesn\'t make any guarantees with
+#' respect to delivering the data. Therefore, as a best practice, first
+#' stop any applications that are sending records before you delete a
+#' delivery stream.
 #'
 #' @usage
-#' firehose_delete_delivery_stream(DeliveryStreamName)
+#' firehose_delete_delivery_stream(DeliveryStreamName, AllowForceDelete)
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
+#' @param AllowForceDelete Set this to true if you want to delete the delivery stream even if
+#' Kinesis Data Firehose is unable to retire the grant for the CMK. Kinesis
+#' Data Firehose might be unable to retire the grant due to a customer
+#' error, such as when the CMK or the grant are in an invalid state. If you
+#' force deletion, you can then use the
+#' [RevokeGrant](https://docs.aws.amazon.com/kms/latest/APIReference/API_RevokeGrant.html)
+#' operation to revoke the grant you gave to Kinesis Data Firehose. If a
+#' failure to retire the grant happens due to an AWS KMS issue, Kinesis
+#' Data Firehose keeps retrying the delete operation.
+#' 
+#' The default value is false.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$delete_delivery_stream(
-#'   DeliveryStreamName = "string"
+#'   DeliveryStreamName = "string",
+#'   AllowForceDelete = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname firehose_delete_delivery_stream
-firehose_delete_delivery_stream <- function(DeliveryStreamName) {
+firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete = NULL) {
   op <- new_operation(
     name = "DeleteDeliveryStream",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .firehose$delete_delivery_stream_input(DeliveryStreamName = DeliveryStreamName)
+  input <- .firehose$delete_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, AllowForceDelete = AllowForceDelete)
   output <- .firehose$delete_delivery_stream_output()
   config <- get_config()
   svc <- .firehose$service(config)
@@ -513,12 +545,19 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName) {
 }
 .firehose$operations$delete_delivery_stream <- firehose_delete_delivery_stream
 
-#' Describes the specified delivery stream and gets the status
+#' Describes the specified delivery stream and its status
 #'
-#' Describes the specified delivery stream and gets the status. For
-#' example, after your delivery stream is created, call
-#' `DescribeDeliveryStream` to see whether the delivery stream is `ACTIVE`
-#' and therefore ready for data to be sent to it.
+#' Describes the specified delivery stream and its status. For example,
+#' after your delivery stream is created, call `DescribeDeliveryStream` to
+#' see whether the delivery stream is `ACTIVE` and therefore ready for data
+#' to be sent to it.
+#' 
+#' If the status of a delivery stream is `CREATING_FAILED`, this status
+#' doesn\'t change, and you can\'t invoke CreateDeliveryStream again on it.
+#' However, you can invoke the DeleteDeliveryStream operation to delete it.
+#' If the status is `DELETING_FAILED`, you can force deletion by invoking
+#' DeleteDeliveryStream again but with
+#' DeleteDeliveryStreamInput\\$AllowForceDelete set to true.
 #'
 #' @usage
 #' firehose_describe_delivery_stream(DeliveryStreamName, Limit,
@@ -682,7 +721,7 @@ firehose_list_tags_for_delivery_stream <- function(DeliveryStreamName, Exclusive
 #' PutRecord and PutRecordBatch, the limits are an aggregate across these
 #' two operations for each delivery stream. For more information about
 #' limits and how to request an increase, see [Amazon Kinesis Data Firehose
-#' Limits](http://docs.aws.amazon.com/firehose/latest/dev/limits.html).
+#' Limits](https://docs.aws.amazon.com/firehose/latest/dev/limits.html).
 #' 
 #' You must specify the name of the delivery stream and the data record
 #' when using PutRecord. The data record consists of a data blob that can
@@ -765,7 +804,7 @@ firehose_put_record <- function(DeliveryStreamName, Record) {
 #' PutRecord and PutRecordBatch, the limits are an aggregate across these
 #' two operations for each delivery stream. For more information about
 #' limits, see [Amazon Kinesis Data Firehose
-#' Limits](http://docs.aws.amazon.com/firehose/latest/dev/limits.html).
+#' Limits](https://docs.aws.amazon.com/firehose/latest/dev/limits.html).
 #' 
 #' Each PutRecordBatch request supports up to 500 records. Each record in
 #' the request can be as large as 1,000 KB (before 64-bit encoding), up to
@@ -867,17 +906,37 @@ firehose_put_record_batch <- function(DeliveryStreamName, Records) {
 #' Enables server-side encryption (SSE) for the delivery stream.
 #' 
 #' This operation is asynchronous. It returns immediately. When you invoke
-#' it, Kinesis Data Firehose first sets the status of the stream to
-#' `ENABLING`, and then to `ENABLED`. You can continue to read and write
-#' data to your stream while its status is `ENABLING`, but the data is not
-#' encrypted. It can take up to 5 seconds after the encryption status
-#' changes to `ENABLED` before all records written to the delivery stream
-#' are encrypted. To find out whether a record or a batch of records was
-#' encrypted, check the response elements PutRecordOutput\\$Encrypted and
-#' PutRecordBatchOutput\\$Encrypted, respectively.
+#' it, Kinesis Data Firehose first sets the encryption status of the stream
+#' to `ENABLING`, and then to `ENABLED`. The encryption status of a
+#' delivery stream is the `Status` property in
+#' DeliveryStreamEncryptionConfiguration. If the operation fails, the
+#' encryption status changes to `ENABLING_FAILED`. You can continue to read
+#' and write data to your delivery stream while the encryption status is
+#' `ENABLING`, but the data is not encrypted. It can take up to 5 seconds
+#' after the encryption status changes to `ENABLED` before all records
+#' written to the delivery stream are encrypted. To find out whether a
+#' record or a batch of records was encrypted, check the response elements
+#' PutRecordOutput\\$Encrypted and PutRecordBatchOutput\\$Encrypted,
+#' respectively.
 #' 
-#' To check the encryption state of a delivery stream, use
+#' To check the encryption status of a delivery stream, use
 #' DescribeDeliveryStream.
+#' 
+#' Even if encryption is currently enabled for a delivery stream, you can
+#' still invoke this operation on it to change the ARN of the CMK or both
+#' its type and ARN. In this case, Kinesis Data Firehose schedules the
+#' grant it had on the old CMK for retirement and creates a grant that
+#' enables it to use the new CMK to encrypt and decrypt data and to manage
+#' the grant.
+#' 
+#' If a delivery stream already has encryption enabled and then you invoke
+#' this operation to change the ARN of the CMK or both its type and ARN and
+#' you get `ENABLING_FAILED`, this only means that the attempt to change
+#' the CMK failed. In this case, encryption remains enabled with the old
+#' CMK.
+#' 
+#' If the encryption status of your delivery stream is `ENABLING_FAILED`,
+#' you can invoke this operation again.
 #' 
 #' You can only enable SSE for a delivery stream that uses `DirectPut` as
 #' its source.
@@ -890,29 +949,36 @@ firehose_put_record_batch <- function(DeliveryStreamName, Records) {
 #' a 24-hour period.
 #'
 #' @usage
-#' firehose_start_delivery_stream_encryption(DeliveryStreamName)
+#' firehose_start_delivery_stream_encryption(DeliveryStreamName,
+#'   DeliveryStreamEncryptionConfigurationInput)
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream for which you want to enable server-side
 #' encryption (SSE).
+#' @param DeliveryStreamEncryptionConfigurationInput Used to specify the type and Amazon Resource Name (ARN) of the KMS key
+#' needed for Server-Side Encryption (SSE).
 #'
 #' @section Request syntax:
 #' ```
 #' svc$start_delivery_stream_encryption(
-#'   DeliveryStreamName = "string"
+#'   DeliveryStreamName = "string",
+#'   DeliveryStreamEncryptionConfigurationInput = list(
+#'     KeyARN = "string",
+#'     KeyType = "AWS_OWNED_CMK"|"CUSTOMER_MANAGED_CMK"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname firehose_start_delivery_stream_encryption
-firehose_start_delivery_stream_encryption <- function(DeliveryStreamName) {
+firehose_start_delivery_stream_encryption <- function(DeliveryStreamName, DeliveryStreamEncryptionConfigurationInput = NULL) {
   op <- new_operation(
     name = "StartDeliveryStreamEncryption",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .firehose$start_delivery_stream_encryption_input(DeliveryStreamName = DeliveryStreamName)
+  input <- .firehose$start_delivery_stream_encryption_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamEncryptionConfigurationInput = DeliveryStreamEncryptionConfigurationInput)
   output <- .firehose$start_delivery_stream_encryption_output()
   config <- get_config()
   svc <- .firehose$service(config)
@@ -927,17 +993,22 @@ firehose_start_delivery_stream_encryption <- function(DeliveryStreamName) {
 #' Disables server-side encryption (SSE) for the delivery stream.
 #' 
 #' This operation is asynchronous. It returns immediately. When you invoke
-#' it, Kinesis Data Firehose first sets the status of the stream to
-#' `DISABLING`, and then to `DISABLED`. You can continue to read and write
-#' data to your stream while its status is `DISABLING`. It can take up to 5
-#' seconds after the encryption status changes to `DISABLED` before all
-#' records written to the delivery stream are no longer subject to
+#' it, Kinesis Data Firehose first sets the encryption status of the stream
+#' to `DISABLING`, and then to `DISABLED`. You can continue to read and
+#' write data to your stream while its status is `DISABLING`. It can take
+#' up to 5 seconds after the encryption status changes to `DISABLED` before
+#' all records written to the delivery stream are no longer subject to
 #' encryption. To find out whether a record or a batch of records was
 #' encrypted, check the response elements PutRecordOutput\\$Encrypted and
 #' PutRecordBatchOutput\\$Encrypted, respectively.
 #' 
 #' To check the encryption state of a delivery stream, use
 #' DescribeDeliveryStream.
+#' 
+#' If SSE is enabled using a customer managed CMK and then you invoke
+#' `StopDeliveryStreamEncryption`, Kinesis Data Firehose schedules the
+#' related KMS grant for retirement and then retires it after it ensures
+#' that it is finished delivering records to the destination.
 #' 
 #' The `StartDeliveryStreamEncryption` and `StopDeliveryStreamEncryption`
 #' operations have a combined limit of 25 calls per delivery stream per 24
@@ -1361,6 +1432,7 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'   ElasticsearchDestinationUpdate = list(
 #'     RoleARN = "string",
 #'     DomainARN = "string",
+#'     ClusterEndpoint = "string",
 #'     IndexName = "string",
 #'     TypeName = "string",
 #'     IndexRotationPeriod = "NoRotation"|"OneHour"|"OneDay"|"OneWeek"|"OneMonth",

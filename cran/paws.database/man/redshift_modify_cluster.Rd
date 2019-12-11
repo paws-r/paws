@@ -40,8 +40,8 @@ connection is switched to the new cluster. When the new connection is
 complete, the original access permissions for the cluster are restored.
 You can use DescribeResize to track the progress of the resize request.
 
-Valid Values: \code{ds2.xlarge} \| \code{ds2.8xlarge} \| \code{dc1.large} \|
-\code{dc1.8xlarge} \| \code{dc2.large} \| \code{dc2.8xlarge}}
+Valid Values: \code{ds2.xlarge} \\| \code{ds2.8xlarge} \\| \code{dc1.large} \\|
+\code{dc1.8xlarge} \\| \code{dc2.large} \\| \code{dc2.8xlarge}}
 
 \item{NumberOfNodes}{The new number of nodes of the cluster. If you specify a new number of
 nodes, you must also specify the node type parameter.
@@ -92,7 +92,7 @@ Constraints:
 \item Must contain at least one lowercase letter.
 \item Must contain one number.
 \item Can be any printable ASCII character (ASCII code 33 to 126) except
-' (single quote), " (double quote), \, /, @, or space.
+\' (single quote), \" (double quote), \\, /, @, or space.
 }}
 
 \item{ClusterParameterGroupName}{The name of the cluster parameter group to apply to this cluster. This
@@ -119,7 +119,7 @@ Constraints: Must be a value from 0 to 35.}
 
 \item{ManualSnapshotRetentionPeriod}{The default for number of days that a newly created manual snapshot is
 retained. If the value is -1, the manual snapshot is retained
-indefinitely. This value doesn't retroactively change the retention
+indefinitely. This value doesn\'t retroactively change the retention
 periods of existing manual snapshots.
 
 The value must be either -1 or an integer between 1 and 3,653.
@@ -139,7 +139,7 @@ Default: Uses existing setting.
 
 Format: ddd:hh24:mi-ddd:hh24:mi, for example \code{wed:07:30-wed:08:00}.
 
-Valid Days: Mon \| Tue \| Wed \| Thu \| Fri \| Sat \| Sun
+Valid Days: Mon \\| Tue \\| Wed \\| Thu \\| Fri \\| Sat \\| Sun
 
 Constraints: Must be at least 30 minutes.}
 
@@ -208,7 +208,7 @@ point, the maintenance track name is applied.}
 
 \item{Encrypted}{Indicates whether the cluster is encrypted. If the cluster is encrypted
 and you provide a value for the \code{KmsKeyId} parameter, we will encrypt
-the cluster with the provided \code{KmsKeyId}. If you don't provide a
+the cluster with the provided \code{KmsKeyId}. If you don\'t provide a
 \code{KmsKeyId}, we will encrypt with the default key. In the China region we
 will use legacy encryption if you specify that the cluster is encrypted.}
 

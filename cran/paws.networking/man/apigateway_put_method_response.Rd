@@ -14,23 +14,23 @@ apigateway_put_method_response(restApiId, resourceId, httpMethod,
 
 \item{httpMethod}{[required] [Required] The HTTP verb of the Method resource.}
 
-\item{statusCode}{[required] [Required] The method response's status code.}
+\item{statusCode}{[required] [Required] The method response\'s status code.}
 
 \item{responseParameters}{A key-value map specifying required or optional response parameters that
 API Gateway can send back to the caller. A key defines a method response
 header name and the associated value is a Boolean flag indicating
 whether the method response parameter is required or not. The method
 response header names must match the pattern of
-\code{method.response.header.\{name\}}, where \code{name} is a valid and unique
+\verb{method.response.header.\\\{name\\\}}, where \code{name} is a valid and unique
 header name. The response parameter names defined here are available in
 the integration response to be mapped from an integration response
-header expressed in \code{integration.response.header.\{name\}}, a static value
+header expressed in \verb{integration.response.header.\\\{name\\\}}, a static value
 enclosed within a pair of single quotes (e.g., \code{'application/json'}), or
 a JSON expression from the back-end response payload in the form of
-\code{integration.response.body.\{JSON-expression\}}, where \code{JSON-expression}
+\verb{integration.response.body.\\\{JSON-expression\\\}}, where \code{JSON-expression}
 is a valid JSON expression without the \code{$} prefix.)}
 
-\item{responseModels}{Specifies the Model resources used for the response's content type.
+\item{responseModels}{Specifies the Model resources used for the response\'s content type.
 Response models are represented as a key/value map, with a content type
 as the key and a Model name as the value.}
 }

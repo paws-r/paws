@@ -3,6 +3,76 @@
 #' @include appsync_service.R
 NULL
 
+#' Creates a cache for the GraphQL API
+#'
+#' Creates a cache for the GraphQL API.
+#'
+#' @usage
+#' appsync_create_api_cache(apiId, ttl, transitEncryptionEnabled,
+#'   atRestEncryptionEnabled, apiCachingBehavior, type)
+#'
+#' @param apiId &#91;required&#93; The GraphQL API Id.
+#' @param ttl &#91;required&#93; TTL in seconds for cache entries.
+#' 
+#' Valid values are between 1 and 3600 seconds.
+#' @param transitEncryptionEnabled Transit encryption flag when connecting to cache. This setting cannot be
+#' updated after creation.
+#' @param atRestEncryptionEnabled At rest encryption flag for cache. This setting cannot be updated after
+#' creation.
+#' @param apiCachingBehavior &#91;required&#93; Caching behavior.
+#' 
+#' -   **FULL\\_REQUEST\\_CACHING**: All requests are fully cached.
+#' 
+#' -   **PER\\_RESOLVER\\_CACHING**: Individual resovlers that you specify
+#'     are cached.
+#' @param type &#91;required&#93; The cache instance type.
+#' 
+#' -   **T2\\_SMALL**: A t2.small instance type.
+#' 
+#' -   **T2\\_MEDIUM**: A t2.medium instance type.
+#' 
+#' -   **R4\\_LARGE**: A r4.large instance type.
+#' 
+#' -   **R4\\_XLARGE**: A r4.xlarge instance type.
+#' 
+#' -   **R4\\_2XLARGE**: A r4.2xlarge instance type.
+#' 
+#' -   **R4\\_4XLARGE**: A r4.4xlarge instance type.
+#' 
+#' -   **R4\\_8XLARGE**: A r4.8xlarge instance type.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_api_cache(
+#'   apiId = "string",
+#'   ttl = 123,
+#'   transitEncryptionEnabled = TRUE|FALSE,
+#'   atRestEncryptionEnabled = TRUE|FALSE,
+#'   apiCachingBehavior = "FULL_REQUEST_CACHING"|"PER_RESOLVER_CACHING",
+#'   type = "T2_SMALL"|"T2_MEDIUM"|"R4_LARGE"|"R4_XLARGE"|"R4_2XLARGE"|"R4_4XLARGE"|"R4_8XLARGE"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appsync_create_api_cache
+appsync_create_api_cache <- function(apiId, ttl, transitEncryptionEnabled = NULL, atRestEncryptionEnabled = NULL, apiCachingBehavior, type) {
+  op <- new_operation(
+    name = "CreateApiCache",
+    http_method = "POST",
+    http_path = "/v1/apis/{apiId}/ApiCaches",
+    paginator = list()
+  )
+  input <- .appsync$create_api_cache_input(apiId = apiId, ttl = ttl, transitEncryptionEnabled = transitEncryptionEnabled, atRestEncryptionEnabled = atRestEncryptionEnabled, apiCachingBehavior = apiCachingBehavior, type = type)
+  output <- .appsync$create_api_cache_output()
+  config <- get_config()
+  svc <- .appsync$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appsync$operations$create_api_cache <- appsync_create_api_cache
+
 #' Creates a unique key that you can distribute to clients who are
 #' executing your API
 #'
@@ -80,7 +150,13 @@ appsync_create_api_key <- function(apiId, description = NULL, expires = NULL) {
 #'   dynamodbConfig = list(
 #'     tableName = "string",
 #'     awsRegion = "string",
-#'     useCallerCredentials = TRUE|FALSE
+#'     useCallerCredentials = TRUE|FALSE,
+#'     deltaSyncConfig = list(
+#'       baseTableTTL = 123,
+#'       deltaSyncTableName = "string",
+#'       deltaSyncTableTTL = 123
+#'     ),
+#'     versioned = TRUE|FALSE
 #'   ),
 #'   lambdaConfig = list(
 #'     lambdaFunctionArn = "string"
@@ -210,7 +286,8 @@ appsync_create_function <- function(apiId, name, description = NULL, dataSourceN
 #'   name = "string",
 #'   logConfig = list(
 #'     fieldLogLevel = "NONE"|"ERROR"|"ALL",
-#'     cloudWatchLogsRoleArn = "string"
+#'     cloudWatchLogsRoleArn = "string",
+#'     excludeVerboseContent = TRUE|FALSE
 #'   ),
 #'   authenticationType = "API_KEY"|"AWS_IAM"|"AMAZON_COGNITO_USER_POOLS"|"OPENID_CONNECT",
 #'   userPoolConfig = list(
@@ -276,7 +353,8 @@ appsync_create_graphql_api <- function(name, logConfig = NULL, authenticationTyp
 #'
 #' @usage
 #' appsync_create_resolver(apiId, typeName, fieldName, dataSourceName,
-#'   requestMappingTemplate, responseMappingTemplate, kind, pipelineConfig)
+#'   requestMappingTemplate, responseMappingTemplate, kind, pipelineConfig,
+#'   syncConfig, cachingConfig)
 #'
 #' @param apiId &#91;required&#93; The ID for the GraphQL API for which the resolver is being created.
 #' @param typeName &#91;required&#93; The name of the `Type`.
@@ -299,6 +377,8 @@ appsync_create_graphql_api <- function(name, logConfig = NULL, authenticationTyp
 #'     use a pipeline resolver to execute a GraphQL query against multiple
 #'     data sources.
 #' @param pipelineConfig The `PipelineConfig`.
+#' @param syncConfig The `SyncConfig` for a resolver attached to a versioned datasource.
+#' @param cachingConfig The caching configuration for the resolver.
 #'
 #' @section Request syntax:
 #' ```
@@ -314,6 +394,19 @@ appsync_create_graphql_api <- function(name, logConfig = NULL, authenticationTyp
 #'     functions = list(
 #'       "string"
 #'     )
+#'   ),
+#'   syncConfig = list(
+#'     conflictHandler = "OPTIMISTIC_CONCURRENCY"|"LAMBDA"|"AUTOMERGE"|"NONE",
+#'     conflictDetection = "VERSION"|"NONE",
+#'     lambdaConflictHandlerConfig = list(
+#'       lambdaConflictHandlerArn = "string"
+#'     )
+#'   ),
+#'   cachingConfig = list(
+#'     ttl = 123,
+#'     cachingKeys = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -321,14 +414,14 @@ appsync_create_graphql_api <- function(name, logConfig = NULL, authenticationTyp
 #' @keywords internal
 #'
 #' @rdname appsync_create_resolver
-appsync_create_resolver <- function(apiId, typeName, fieldName, dataSourceName = NULL, requestMappingTemplate, responseMappingTemplate = NULL, kind = NULL, pipelineConfig = NULL) {
+appsync_create_resolver <- function(apiId, typeName, fieldName, dataSourceName = NULL, requestMappingTemplate, responseMappingTemplate = NULL, kind = NULL, pipelineConfig = NULL, syncConfig = NULL, cachingConfig = NULL) {
   op <- new_operation(
     name = "CreateResolver",
     http_method = "POST",
     http_path = "/v1/apis/{apiId}/types/{typeName}/resolvers",
     paginator = list()
   )
-  input <- .appsync$create_resolver_input(apiId = apiId, typeName = typeName, fieldName = fieldName, dataSourceName = dataSourceName, requestMappingTemplate = requestMappingTemplate, responseMappingTemplate = responseMappingTemplate, kind = kind, pipelineConfig = pipelineConfig)
+  input <- .appsync$create_resolver_input(apiId = apiId, typeName = typeName, fieldName = fieldName, dataSourceName = dataSourceName, requestMappingTemplate = requestMappingTemplate, responseMappingTemplate = responseMappingTemplate, kind = kind, pipelineConfig = pipelineConfig, syncConfig = syncConfig, cachingConfig = cachingConfig)
   output <- .appsync$create_resolver_output()
   config <- get_config()
   svc <- .appsync$service(config)
@@ -380,6 +473,42 @@ appsync_create_type <- function(apiId, definition, format) {
   return(response)
 }
 .appsync$operations$create_type <- appsync_create_type
+
+#' Deletes an ApiCache object
+#'
+#' Deletes an `ApiCache` object.
+#'
+#' @usage
+#' appsync_delete_api_cache(apiId)
+#'
+#' @param apiId &#91;required&#93; The API ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_api_cache(
+#'   apiId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appsync_delete_api_cache
+appsync_delete_api_cache <- function(apiId) {
+  op <- new_operation(
+    name = "DeleteApiCache",
+    http_method = "DELETE",
+    http_path = "/v1/apis/{apiId}/ApiCaches",
+    paginator = list()
+  )
+  input <- .appsync$delete_api_cache_input(apiId = apiId)
+  output <- .appsync$delete_api_cache_output()
+  config <- get_config()
+  svc <- .appsync$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appsync$operations$delete_api_cache <- appsync_delete_api_cache
 
 #' Deletes an API key
 #'
@@ -608,6 +737,78 @@ appsync_delete_type <- function(apiId, typeName) {
   return(response)
 }
 .appsync$operations$delete_type <- appsync_delete_type
+
+#' Flushes an ApiCache object
+#'
+#' Flushes an `ApiCache` object.
+#'
+#' @usage
+#' appsync_flush_api_cache(apiId)
+#'
+#' @param apiId &#91;required&#93; The API ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$flush_api_cache(
+#'   apiId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appsync_flush_api_cache
+appsync_flush_api_cache <- function(apiId) {
+  op <- new_operation(
+    name = "FlushApiCache",
+    http_method = "DELETE",
+    http_path = "/v1/apis/{apiId}/FlushCache",
+    paginator = list()
+  )
+  input <- .appsync$flush_api_cache_input(apiId = apiId)
+  output <- .appsync$flush_api_cache_output()
+  config <- get_config()
+  svc <- .appsync$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appsync$operations$flush_api_cache <- appsync_flush_api_cache
+
+#' Retrieves an ApiCache object
+#'
+#' Retrieves an `ApiCache` object.
+#'
+#' @usage
+#' appsync_get_api_cache(apiId)
+#'
+#' @param apiId &#91;required&#93; The API ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_api_cache(
+#'   apiId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appsync_get_api_cache
+appsync_get_api_cache <- function(apiId) {
+  op <- new_operation(
+    name = "GetApiCache",
+    http_method = "GET",
+    http_path = "/v1/apis/{apiId}/ApiCaches",
+    paginator = list()
+  )
+  input <- .appsync$get_api_cache_input(apiId = apiId)
+  output <- .appsync$get_api_cache_output()
+  config <- get_config()
+  svc <- .appsync$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appsync$operations$get_api_cache <- appsync_get_api_cache
 
 #' Retrieves a DataSource object
 #'
@@ -1338,6 +1539,69 @@ appsync_untag_resource <- function(resourceArn, tagKeys) {
 }
 .appsync$operations$untag_resource <- appsync_untag_resource
 
+#' Updates the cache for the GraphQL API
+#'
+#' Updates the cache for the GraphQL API.
+#'
+#' @usage
+#' appsync_update_api_cache(apiId, ttl, apiCachingBehavior, type)
+#'
+#' @param apiId &#91;required&#93; The GraphQL API Id.
+#' @param ttl &#91;required&#93; TTL in seconds for cache entries.
+#' 
+#' Valid values are between 1 and 3600 seconds.
+#' @param apiCachingBehavior &#91;required&#93; Caching behavior.
+#' 
+#' -   **FULL\\_REQUEST\\_CACHING**: All requests are fully cached.
+#' 
+#' -   **PER\\_RESOLVER\\_CACHING**: Individual resovlers that you specify
+#'     are cached.
+#' @param type &#91;required&#93; The cache instance type.
+#' 
+#' -   **T2\\_SMALL**: A t2.small instance type.
+#' 
+#' -   **T2\\_MEDIUM**: A t2.medium instance type.
+#' 
+#' -   **R4\\_LARGE**: A r4.large instance type.
+#' 
+#' -   **R4\\_XLARGE**: A r4.xlarge instance type.
+#' 
+#' -   **R4\\_2XLARGE**: A r4.2xlarge instance type.
+#' 
+#' -   **R4\\_4XLARGE**: A r4.4xlarge instance type.
+#' 
+#' -   **R4\\_8XLARGE**: A r4.8xlarge instance type.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_api_cache(
+#'   apiId = "string",
+#'   ttl = 123,
+#'   apiCachingBehavior = "FULL_REQUEST_CACHING"|"PER_RESOLVER_CACHING",
+#'   type = "T2_SMALL"|"T2_MEDIUM"|"R4_LARGE"|"R4_XLARGE"|"R4_2XLARGE"|"R4_4XLARGE"|"R4_8XLARGE"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appsync_update_api_cache
+appsync_update_api_cache <- function(apiId, ttl, apiCachingBehavior, type) {
+  op <- new_operation(
+    name = "UpdateApiCache",
+    http_method = "POST",
+    http_path = "/v1/apis/{apiId}/ApiCaches/update",
+    paginator = list()
+  )
+  input <- .appsync$update_api_cache_input(apiId = apiId, ttl = ttl, apiCachingBehavior = apiCachingBehavior, type = type)
+  output <- .appsync$update_api_cache_output()
+  config <- get_config()
+  svc <- .appsync$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appsync$operations$update_api_cache <- appsync_update_api_cache
+
 #' Updates an API key
 #'
 #' Updates an API key.
@@ -1412,7 +1676,13 @@ appsync_update_api_key <- function(apiId, id, description = NULL, expires = NULL
 #'   dynamodbConfig = list(
 #'     tableName = "string",
 #'     awsRegion = "string",
-#'     useCallerCredentials = TRUE|FALSE
+#'     useCallerCredentials = TRUE|FALSE,
+#'     deltaSyncConfig = list(
+#'       baseTableTTL = 123,
+#'       deltaSyncTableName = "string",
+#'       deltaSyncTableTTL = 123
+#'     ),
+#'     versioned = TRUE|FALSE
 #'   ),
 #'   lambdaConfig = list(
 #'     lambdaFunctionArn = "string"
@@ -1542,7 +1812,8 @@ appsync_update_function <- function(apiId, name, description = NULL, functionId,
 #'   name = "string",
 #'   logConfig = list(
 #'     fieldLogLevel = "NONE"|"ERROR"|"ALL",
-#'     cloudWatchLogsRoleArn = "string"
+#'     cloudWatchLogsRoleArn = "string",
+#'     excludeVerboseContent = TRUE|FALSE
 #'   ),
 #'   authenticationType = "API_KEY"|"AWS_IAM"|"AMAZON_COGNITO_USER_POOLS"|"OPENID_CONNECT",
 #'   userPoolConfig = list(
@@ -1602,7 +1873,8 @@ appsync_update_graphql_api <- function(apiId, name, logConfig = NULL, authentica
 #'
 #' @usage
 #' appsync_update_resolver(apiId, typeName, fieldName, dataSourceName,
-#'   requestMappingTemplate, responseMappingTemplate, kind, pipelineConfig)
+#'   requestMappingTemplate, responseMappingTemplate, kind, pipelineConfig,
+#'   syncConfig, cachingConfig)
 #'
 #' @param apiId &#91;required&#93; The API ID.
 #' @param typeName &#91;required&#93; The new type name.
@@ -1621,6 +1893,8 @@ appsync_update_graphql_api <- function(apiId, name, logConfig = NULL, authentica
 #'     use a pipeline resolver to execute a GraphQL query against multiple
 #'     data sources.
 #' @param pipelineConfig The `PipelineConfig`.
+#' @param syncConfig The `SyncConfig` for a resolver attached to a versioned datasource.
+#' @param cachingConfig The caching configuration for the resolver.
 #'
 #' @section Request syntax:
 #' ```
@@ -1636,6 +1910,19 @@ appsync_update_graphql_api <- function(apiId, name, logConfig = NULL, authentica
 #'     functions = list(
 #'       "string"
 #'     )
+#'   ),
+#'   syncConfig = list(
+#'     conflictHandler = "OPTIMISTIC_CONCURRENCY"|"LAMBDA"|"AUTOMERGE"|"NONE",
+#'     conflictDetection = "VERSION"|"NONE",
+#'     lambdaConflictHandlerConfig = list(
+#'       lambdaConflictHandlerArn = "string"
+#'     )
+#'   ),
+#'   cachingConfig = list(
+#'     ttl = 123,
+#'     cachingKeys = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1643,14 +1930,14 @@ appsync_update_graphql_api <- function(apiId, name, logConfig = NULL, authentica
 #' @keywords internal
 #'
 #' @rdname appsync_update_resolver
-appsync_update_resolver <- function(apiId, typeName, fieldName, dataSourceName = NULL, requestMappingTemplate, responseMappingTemplate = NULL, kind = NULL, pipelineConfig = NULL) {
+appsync_update_resolver <- function(apiId, typeName, fieldName, dataSourceName = NULL, requestMappingTemplate, responseMappingTemplate = NULL, kind = NULL, pipelineConfig = NULL, syncConfig = NULL, cachingConfig = NULL) {
   op <- new_operation(
     name = "UpdateResolver",
     http_method = "POST",
     http_path = "/v1/apis/{apiId}/types/{typeName}/resolvers/{fieldName}",
     paginator = list()
   )
-  input <- .appsync$update_resolver_input(apiId = apiId, typeName = typeName, fieldName = fieldName, dataSourceName = dataSourceName, requestMappingTemplate = requestMappingTemplate, responseMappingTemplate = responseMappingTemplate, kind = kind, pipelineConfig = pipelineConfig)
+  input <- .appsync$update_resolver_input(apiId = apiId, typeName = typeName, fieldName = fieldName, dataSourceName = dataSourceName, requestMappingTemplate = requestMappingTemplate, responseMappingTemplate = responseMappingTemplate, kind = kind, pipelineConfig = pipelineConfig, syncConfig = syncConfig, cachingConfig = cachingConfig)
   output <- .appsync$update_resolver_output()
   config <- get_config()
   svc <- .appsync$service(config)

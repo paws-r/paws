@@ -9,7 +9,7 @@ originate from}
 wafregional_create_ip_set(Name, ChangeToken)
 }
 \arguments{
-\item{Name}{[required] A friendly name or description of the IPSet. You can't change \code{Name}
+\item{Name}{[required] A friendly name or description of the IPSet. You can\'t change \code{Name}
 after you create the \code{IPSet}.}
 
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
@@ -17,7 +17,7 @@ after you create the \code{IPSet}.}
 \description{
 Creates an IPSet, which you use to specify which web requests that you
 want to allow or block based on the IP addresses that the requests
-originate from. For example, if you're receiving a lot of requests from
+originate from. For example, if you\'re receiving a lot of requests from
 one or more individual IP addresses or one or more ranges of IP
 addresses and you want to block the requests, you can create an \code{IPSet}
 that contains those IP addresses and then configure AWS WAF to block the

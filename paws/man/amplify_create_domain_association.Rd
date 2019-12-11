@@ -12,7 +12,8 @@ amplify_create_domain_association(appId, domainName,
 
 \item{domainName}{[required] Domain name for the Domain Association.}
 
-\item{enableAutoSubDomain}{Enables automated creation of Subdomains for branches.}
+\item{enableAutoSubDomain}{Enables automated creation of Subdomains for branches. (Currently not
+supported)}
 
 \item{subDomainSettings}{[required] Setting structure for the Subdomain.}
 }

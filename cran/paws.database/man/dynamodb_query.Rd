@@ -165,38 +165,38 @@ the same partition key value but different sort key values.
 The partition key equality test is required, and must be specified in
 the following format:
 
-\code{partitionKeyName} \emph{=} \code{:partitionkeyval}
+\code{partitionKeyName} \emph{=} \verb{:partitionkeyval}
 
 If you also want to provide a condition for the sort key, it must be
 combined using \code{AND} with the condition for the sort key. Following is
 an example, using the \strong{=} comparison operator for the sort key:
 
-\code{partitionKeyName} \code{=} \code{:partitionkeyval} \code{AND} \code{sortKeyName} \code{=}
-\code{:sortkeyval}
+\code{partitionKeyName} \code{=} \verb{:partitionkeyval} \code{AND} \code{sortKeyName} \code{=}
+\verb{:sortkeyval}
 
 Valid comparisons for the sort key condition are as follows:
 \itemize{
-\item \code{sortKeyName} \code{=} \code{:sortkeyval} - true if the sort key value is
-equal to \code{:sortkeyval}.
-\item \code{sortKeyName} \code{&lt;} \code{:sortkeyval} - true if the sort key value is
-less than \code{:sortkeyval}.
-\item \code{sortKeyName} \code{&lt;=} \code{:sortkeyval} - true if the sort key value is
-less than or equal to \code{:sortkeyval}.
-\item \code{sortKeyName} \code{&gt;} \code{:sortkeyval} - true if the sort key value is
-greater than \code{:sortkeyval}.
-\item \code{sortKeyName} \code{&gt;= } \code{:sortkeyval} - true if the sort key value is
-greater than or equal to \code{:sortkeyval}.
-\item \code{sortKeyName} \code{BETWEEN} \code{:sortkeyval1} \code{AND} \code{:sortkeyval2} - true
-if the sort key value is greater than or equal to \code{:sortkeyval1},
-and less than or equal to \code{:sortkeyval2}.
-\item \code{begins_with (} \code{sortKeyName}, \code{:sortkeyval} \code{)} - true if the sort
+\item \code{sortKeyName} \code{=} \verb{:sortkeyval} - true if the sort key value is
+equal to \verb{:sortkeyval}.
+\item \code{sortKeyName} \verb{&lt;} \verb{:sortkeyval} - true if the sort key value is
+less than \verb{:sortkeyval}.
+\item \code{sortKeyName} \verb{&lt;=} \verb{:sortkeyval} - true if the sort key value is
+less than or equal to \verb{:sortkeyval}.
+\item \code{sortKeyName} \verb{&gt;} \verb{:sortkeyval} - true if the sort key value is
+greater than \verb{:sortkeyval}.
+\item \code{sortKeyName} \verb{&gt;= } \verb{:sortkeyval} - true if the sort key value is
+greater than or equal to \verb{:sortkeyval}.
+\item \code{sortKeyName} \code{BETWEEN} \verb{:sortkeyval1} \code{AND} \verb{:sortkeyval2} - true
+if the sort key value is greater than or equal to \verb{:sortkeyval1},
+and less than or equal to \verb{:sortkeyval2}.
+\item \verb{begins_with (} \code{sortKeyName}, \verb{:sortkeyval} \verb{)} - true if the sort
 key value begins with a particular operand. (You cannot use this
 function with a sort key that is of type Number.) Note that the
 function name \code{begins_with} is case-sensitive.
 }
 
 Use the \code{ExpressionAttributeValues} parameter to replace tokens such as
-\code{:partitionval} and \code{:sortval} with actual values at runtime.
+\verb{:partitionval} and \verb{:sortval} with actual values at runtime.
 
 You can optionally use the \code{ExpressionAttributeNames} parameter to
 replace the names of the partition key and sort key with placeholder
@@ -205,13 +205,13 @@ with a DynamoDB reserved word. For example, the following
 \code{KeyConditionExpression} parameter causes an error because \emph{Size} is a
 reserved word:
 \itemize{
-\item \code{Size = :myval}
+\item \verb{Size = :myval}
 }
 
-To work around this, define a placeholder (such a \code{#S}) to represent the
+To work around this, define a placeholder (such a \verb{#S}) to represent the
 attribute name \emph{Size}. \code{KeyConditionExpression} then is as follows:
 \itemize{
-\item \code{#S = :myval}
+\item \verb{#S = :myval}
 }
 
 For a list of reserved words, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html}{Reserved Words}
@@ -232,7 +232,7 @@ name in an expression.
 misinterpreted in an expression.
 }
 
-Use the \strong{\#} character in an expression to dereference an attribute
+Use the \strong{\\#} character in an expression to dereference an attribute
 name. For example, consider the following attribute name:
 \itemize{
 \item \code{Percentile}
@@ -244,13 +244,13 @@ words, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguid
 in the \emph{Amazon DynamoDB Developer Guide}). To work around this, you
 could specify the following for \code{ExpressionAttributeNames}:
 \itemize{
-\item \code{\{"#P":"Percentile"\}}
+\item \verb{\\\{"#P":"Percentile"\\\}}
 }
 
 You could then use this substitution in an expression, as in this
 example:
 \itemize{
-\item \code{#P = :val}
+\item \verb{#P = :val}
 }
 
 Tokens that begin with the \strong{:} character are \emph{expression attribute
@@ -269,11 +269,11 @@ the value of the \emph{ProductStatus} attribute was one of the following:
 
 You would first need to specify \code{ExpressionAttributeValues} as follows:
 
-\code{\{ ":avail":\{"S":"Available"\}, ":back":\{"S":"Backordered"\}, ":disc":\{"S":"Discontinued"\} \}}
+\verb{\\\{ ":avail":\\\{"S":"Available"\\\}, ":back":\\\{"S":"Backordered"\\\}, ":disc":\\\{"S":"Discontinued"\\\} \\\}}
 
 You could then use these values in an expression, such as this:
 
-\code{ProductStatus IN (:avail, :back, :disc)}
+\verb{ProductStatus IN (:avail, :back, :disc)}
 
 For more information on expression attribute values, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html}{Specifying Conditions}
 in the \emph{Amazon DynamoDB Developer Guide}.}

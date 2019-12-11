@@ -10,16 +10,16 @@ route53_get_account_limit(Type)
 \arguments{
 \item{Type}{[required] The limit that you want to get. Valid values include the following:
 \itemize{
-\item \strong{MAX\_HEALTH\_CHECKS\_BY\_OWNER}: The maximum number of health
+\item \strong{MAX\\_HEALTH\\_CHECKS\\_BY\\_OWNER}: The maximum number of health
 checks that you can create using the current account.
-\item \strong{MAX\_HOSTED\_ZONES\_BY\_OWNER}: The maximum number of hosted
+\item \strong{MAX\\_HOSTED\\_ZONES\\_BY\\_OWNER}: The maximum number of hosted
 zones that you can create using the current account.
-\item \strong{MAX\_REUSABLE\_DELEGATION\_SETS\_BY\_OWNER}: The maximum number
+\item \strong{MAX\\_REUSABLE\\_DELEGATION\\_SETS\\_BY\\_OWNER}: The maximum number
 of reusable delegation sets that you can create using the current
 account.
-\item \strong{MAX\_TRAFFIC\_POLICIES\_BY\_OWNER}: The maximum number of traffic
+\item \strong{MAX\\_TRAFFIC\\_POLICIES\\_BY\\_OWNER}: The maximum number of traffic
 policies that you can create using the current account.
-\item \strong{MAX\_TRAFFIC\_POLICY\_INSTANCES\_BY\_OWNER}: The maximum number
+\item \strong{MAX\\_TRAFFIC\\_POLICY\\_INSTANCES\\_BY\\_OWNER}: The maximum number
 of traffic policy instances that you can create using the current
 account. (Traffic policy instances are referred to as traffic flow
 policy records in the Amazon Route 53 console.)

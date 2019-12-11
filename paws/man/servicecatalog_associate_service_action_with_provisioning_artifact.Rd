@@ -11,7 +11,7 @@ servicecatalog_associate_service_action_with_provisioning_artifact(
 \item{ProductId}{[required] The product identifier. For example, \code{prod-abcdzk7xy33qa}.}
 
 \item{ProvisioningArtifactId}{[required] The identifier of the provisioning artifact. For example,
-\code{pa-4abcdjnxjj6ne}.}
+\verb{pa-4abcdjnxjj6ne}.}
 
 \item{ServiceActionId}{[required] The self-service action identifier. For example, \code{act-fs7abcd89wxyz}.}
 

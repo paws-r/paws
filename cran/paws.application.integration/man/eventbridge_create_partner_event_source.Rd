@@ -9,7 +9,7 @@ eventbridge_create_partner_event_source(Name, Account)
 \arguments{
 \item{Name}{[required] The name of the partner event source. This name must be unique and must
 be in the format
-\code{<i>partner_name</i>/<i>event_namespace</i>/<i>event_name</i>}. The
+\verb{<i>partner_name</i>/<i>event_namespace</i>/<i>event_name</i>}. The
 AWS account that wants to use this partner event source must create a
 partner event bus with a name that matches the name of the partner event
 source.}
@@ -29,7 +29,7 @@ create one partner event source for each AWS account that wants to
 receive those event types.
 
 A partner event source creates events based on resources in the SaaS
-partner's service or application.
+partner\'s service or application.
 
 An AWS account that creates a partner event bus that matches the partner
 event source can use that event bus to receive events from the partner,
@@ -37,14 +37,14 @@ and then process them using AWS Events rules and targets.
 
 Partner event source names follow this format:
 
-\code{aws.partner/<i>partner_name</i>/<i>event_namespace</i>/<i>event_name</i> }
+\verb{aws.partner/<i>partner_name</i>/<i>event_namespace</i>/<i>event_name</i> }
 \itemize{
-\item \emph{partner\_name} is determined during partner registration and
+\item \emph{partner\\_name} is determined during partner registration and
 identifies the partner to AWS customers.
-\item For \emph{event\_namespace}, we recommend that partners use a string that
-identifies the AWS customer within the partner's system. This
-should not be the customer's AWS account ID.
-\item \emph{event\_name} is determined by the partner, and should uniquely
+\item For \emph{event\\_namespace}, we recommend that partners use a string that
+identifies the AWS customer within the partner\'s system. This
+should not be the customer\'s AWS account ID.
+\item \emph{event\\_name} is determined by the partner, and should uniquely
 identify an event-generating resource within the partner system.
 This should help AWS customers decide whether to create an event bus
 to receive these events.

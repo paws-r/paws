@@ -22,6 +22,8 @@ NULL
 #'
 #' @param database The name of the database.
 #' @param parameterSets The parameter set for the batch operation.
+#' 
+#' The maximum number of parameters in a parameter set is 1,000.
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.
 #' @param schema The name of the database schema.
 #' @param secretArn &#91;required&#93; The name or ARN of the secret that enables access to the DB cluster.
@@ -41,7 +43,25 @@ NULL
 #'     list(
 #'       list(
 #'         name = "string",
+#'         typeHint = "DATE"|"DECIMAL"|"TIME"|"TIMESTAMP",
 #'         value = list(
+#'           arrayValue = list(
+#'             arrayValues = list(
+#'               list()
+#'             ),
+#'             booleanValues = list(
+#'               TRUE|FALSE
+#'             ),
+#'             doubleValues = list(
+#'               123.0
+#'             ),
+#'             longValues = list(
+#'               123
+#'             ),
+#'             stringValues = list(
+#'               "string"
+#'             )
+#'           ),
 #'           blobValue = raw,
 #'           booleanValue = TRUE|FALSE,
 #'           doubleValue = 123.0,
@@ -84,16 +104,7 @@ rdsdataservice_batch_execute_statement <- function(database = NULL, parameterSet
 #'
 #' Starts a SQL transaction.
 #' 
-#' A transaction can run for a maximum of 24 hours. A transaction is
-#' terminated and rolled back automatically after 24 hours.
-#' 
-#' A transaction times out if no calls use its transaction ID in three
-#' minutes. If a transaction times out before it\'s committed, it\'s rolled
-#' back automatically.
-#' 
-#' DDL statements inside a transaction cause an implicit commit. We
-#' recommend that you run each DDL statement in a separate
-#' `ExecuteStatement` call with `continueAfterTimeout` enabled.
+#'      &lt;important&gt; &lt;p&gt;A transaction can run for a maximum of 24 hours. A transaction is terminated and rolled back automatically after 24 hours.&lt;/p&gt; &lt;p&gt;A transaction times out if no calls use its transaction ID in three minutes. If a transaction times out before it's committed, it's rolled back automatically.&lt;/p&gt; &lt;p&gt;DDL statements inside a transaction cause an implicit commit. We recommend that you run each DDL statement in a separate &lt;code&gt;ExecuteStatement&lt;/code&gt; call with &lt;code&gt;continueAfterTimeout&lt;/code&gt; enabled.&lt;/p&gt; &lt;/important&gt; 
 #'
 #' @usage
 #' rdsdataservice_begin_transaction(database, resourceArn, schema,
@@ -243,8 +254,8 @@ rdsdataservice_execute_sql <- function(awsSecretStoreArn, database = NULL, dbClu
 #'
 #' @usage
 #' rdsdataservice_execute_statement(continueAfterTimeout, database,
-#'   includeResultMetadata, parameters, resourceArn, schema, secretArn, sql,
-#'   transactionId)
+#'   includeResultMetadata, parameters, resourceArn, resultSetOptions,
+#'   schema, secretArn, sql, transactionId)
 #'
 #' @param continueAfterTimeout A value that indicates whether to continue running the statement after
 #' the call times out. By default, the statement stops running when the
@@ -258,6 +269,7 @@ rdsdataservice_execute_sql <- function(awsSecretStoreArn, database = NULL, dbClu
 #' @param includeResultMetadata A value that indicates whether to include metadata in the results.
 #' @param parameters The parameters for the SQL statement.
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.
+#' @param resultSetOptions Options that control how the result set is returned.
 #' @param schema The name of the database schema.
 #' @param secretArn &#91;required&#93; The name or ARN of the secret that enables access to the DB cluster.
 #' @param sql &#91;required&#93; The SQL statement to run.
@@ -277,7 +289,25 @@ rdsdataservice_execute_sql <- function(awsSecretStoreArn, database = NULL, dbClu
 #'   parameters = list(
 #'     list(
 #'       name = "string",
+#'       typeHint = "DATE"|"DECIMAL"|"TIME"|"TIMESTAMP",
 #'       value = list(
+#'         arrayValue = list(
+#'           arrayValues = list(
+#'             list()
+#'           ),
+#'           booleanValues = list(
+#'             TRUE|FALSE
+#'           ),
+#'           doubleValues = list(
+#'             123.0
+#'           ),
+#'           longValues = list(
+#'             123
+#'           ),
+#'           stringValues = list(
+#'             "string"
+#'           )
+#'         ),
 #'         blobValue = raw,
 #'         booleanValue = TRUE|FALSE,
 #'         doubleValue = 123.0,
@@ -288,6 +318,9 @@ rdsdataservice_execute_sql <- function(awsSecretStoreArn, database = NULL, dbClu
 #'     )
 #'   ),
 #'   resourceArn = "string",
+#'   resultSetOptions = list(
+#'     decimalReturnType = "DOUBLE_OR_LONG"|"STRING"
+#'   ),
 #'   schema = "string",
 #'   secretArn = "string",
 #'   sql = "string",
@@ -298,14 +331,14 @@ rdsdataservice_execute_sql <- function(awsSecretStoreArn, database = NULL, dbClu
 #' @keywords internal
 #'
 #' @rdname rdsdataservice_execute_statement
-rdsdataservice_execute_statement <- function(continueAfterTimeout = NULL, database = NULL, includeResultMetadata = NULL, parameters = NULL, resourceArn, schema = NULL, secretArn, sql, transactionId = NULL) {
+rdsdataservice_execute_statement <- function(continueAfterTimeout = NULL, database = NULL, includeResultMetadata = NULL, parameters = NULL, resourceArn, resultSetOptions = NULL, schema = NULL, secretArn, sql, transactionId = NULL) {
   op <- new_operation(
     name = "ExecuteStatement",
     http_method = "POST",
     http_path = "/Execute",
     paginator = list()
   )
-  input <- .rdsdataservice$execute_statement_input(continueAfterTimeout = continueAfterTimeout, database = database, includeResultMetadata = includeResultMetadata, parameters = parameters, resourceArn = resourceArn, schema = schema, secretArn = secretArn, sql = sql, transactionId = transactionId)
+  input <- .rdsdataservice$execute_statement_input(continueAfterTimeout = continueAfterTimeout, database = database, includeResultMetadata = includeResultMetadata, parameters = parameters, resourceArn = resourceArn, resultSetOptions = resultSetOptions, schema = schema, secretArn = secretArn, sql = sql, transactionId = transactionId)
   output <- .rdsdataservice$execute_statement_output()
   config <- get_config()
   svc <- .rdsdataservice$service(config)

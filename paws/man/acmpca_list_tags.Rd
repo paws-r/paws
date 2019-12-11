@@ -10,7 +10,7 @@ acmpca_list_tags(CertificateAuthorityArn, NextToken, MaxResults)
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called the
 CreateCertificateAuthority action. This must be of the form:
 
-\code{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }}
+\verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }}
 
 \item{NextToken}{Use this parameter when paginating results in a subsequent request after
 you receive a response with truncated results. Set it to the value of

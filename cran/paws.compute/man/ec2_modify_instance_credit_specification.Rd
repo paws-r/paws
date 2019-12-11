@@ -2,8 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_modify_instance_credit_specification}
 \alias{ec2_modify_instance_credit_specification}
-\title{Modifies the credit option for CPU usage on a running or stopped T2 or
-T3 instance}
+\title{Modifies the credit option for CPU usage on a running or stopped
+burstable performance instance}
 \usage{
 ec2_modify_instance_credit_specification(DryRun, ClientToken,
   InstanceCreditSpecifications)
@@ -20,8 +20,9 @@ your modification request. For more information, see \href{https://docs.aws.amaz
 \item{InstanceCreditSpecifications}{[required] Information about the credit option for CPU usage.}
 }
 \description{
-Modifies the credit option for CPU usage on a running or stopped T2 or
-T3 instance. The credit options are \code{standard} and \code{unlimited}.
+Modifies the credit option for CPU usage on a running or stopped
+burstable performance instance. The credit options are \code{standard} and
+\code{unlimited}.
 }
 \details{
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html}{Burstable Performance Instances}

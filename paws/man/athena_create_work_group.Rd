@@ -13,10 +13,10 @@ athena_create_work_group(Name, Configuration, Description, Tags)
 Amazon S3 where query results are stored, the encryption configuration,
 if any, used for encrypting query results, whether the Amazon CloudWatch
 Metrics are enabled for the workgroup, the limit for the amount of bytes
-scanned (cutoff) per query, if it is specified, and whether workgroup's
+scanned (cutoff) per query, if it is specified, and whether workgroup\'s
 settings (specified with EnforceWorkGroupConfiguration) in the
 WorkGroupConfiguration override client-side settings. See
-WorkGroupConfiguration\$EnforceWorkGroupConfiguration.}
+WorkGroupConfiguration\\$EnforceWorkGroupConfiguration.}
 
 \item{Description}{The workgroup description.}
 
@@ -39,7 +39,8 @@ Creates a workgroup with the specified name.
     ),
     EnforceWorkGroupConfiguration = TRUE|FALSE,
     PublishCloudWatchMetricsEnabled = TRUE|FALSE,
-    BytesScannedCutoffPerQuery = 123
+    BytesScannedCutoffPerQuery = 123,
+    RequesterPaysEnabled = TRUE|FALSE
   ),
   Description = "string",
   Tags = list(

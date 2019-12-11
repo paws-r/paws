@@ -21,11 +21,11 @@ Constraints:
 }}
 
 \item{availabilityZone}{The Availability Zone in which to create your new database. Use the
-\code{us-east-2a} case-sensitive format.
+\verb{us-east-2a} case-sensitive format.
 
-You can get a list of Availability Zones by using the \code{get regions}
+You can get a list of Availability Zones by using the \verb{get regions}
 operation. Be sure to add the
-\code{include relational database Availability Zones} parameter to your
+\verb{include relational database Availability Zones} parameter to your
 request.}
 
 \item{publiclyAccessible}{Specifies the accessibility options for your new database. A value of
@@ -41,7 +41,7 @@ database.}
 specifications for your database.
 
 You can get a list of database bundle IDs by using the
-\code{get relational database bundles} operation.
+\verb{get relational database bundles} operation.
 
 When creating a new database from a snapshot, you cannot choose a bundle
 that is smaller than the bundle of the source database.}
@@ -53,9 +53,9 @@ that is smaller than the bundle of the source database.}
 Constraints:
 \itemize{
 \item Must be before the latest restorable time for the database.
-\item Cannot be specified if the \code{use latest restorable time} parameter is
+\item Cannot be specified if the \verb{use latest restorable time} parameter is
 \code{true}.
-\item Specified in Universal Coordinated Time (UTC).
+\item Specified in Coordinated Universal Time (UTC).
 \item Specified in the Unix time format.
 
 For example, if you wish to use a restore time of October 1, 2018,
@@ -67,12 +67,12 @@ A value of \code{true} restores from the latest backup time.
 
 Default: \code{false}
 
-Constraints: Cannot be specified if the \code{restore time} parameter is
+Constraints: Cannot be specified if the \verb{restore time} parameter is
 provided.}
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
-To tag a resource after it has been created, see the \code{tag resource}
+To tag a resource after it has been created, see the \verb{tag resource}
 operation.}
 }
 \description{
@@ -84,7 +84,7 @@ You can create a new database from a snapshot in if something goes wrong
 with your original database, or to change it to a different plan, such
 as a high availability or standard plan.
 
-The \code{create relational database from snapshot} operation supports
+The \verb{create relational database from snapshot} operation supports
 tag-based access control via request tags and resource tags applied to
 the resource identified by relationalDatabaseSnapshotName. For more
 information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.

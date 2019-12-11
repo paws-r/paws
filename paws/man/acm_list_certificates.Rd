@@ -26,7 +26,8 @@ items.}
 \description{
 Retrieves a list of certificate ARNs and domain names. You can request
 that only certificates that match a specific status be listed. You can
-also filter by specific attributes of the certificate.
+also filter by specific attributes of the certificate. Default filtering
+returns only \code{RSA_2048} certificates. For more information, see Filters.
 }
 \section{Request syntax}{
 \preformatted{svc$list_certificates(

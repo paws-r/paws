@@ -5,20 +5,23 @@
 \title{Creates an authorizer}
 \usage{
 iot_create_authorizer(authorizerName, authorizerFunctionArn,
-  tokenKeyName, tokenSigningPublicKeys, status)
+  tokenKeyName, tokenSigningPublicKeys, status, signingDisabled)
 }
 \arguments{
 \item{authorizerName}{[required] The authorizer name.}
 
-\item{authorizerFunctionArn}{[required] The ARN of the authorizer's Lambda function.}
+\item{authorizerFunctionArn}{[required] The ARN of the authorizer\'s Lambda function.}
 
-\item{tokenKeyName}{[required] The name of the token key used to extract the token from the HTTP
+\item{tokenKeyName}{The name of the token key used to extract the token from the HTTP
 headers.}
 
-\item{tokenSigningPublicKeys}{[required] The public keys used to verify the digital signature returned by your
+\item{tokenSigningPublicKeys}{The public keys used to verify the digital signature returned by your
 custom authentication service.}
 
 \item{status}{The status of the create authorizer request.}
+
+\item{signingDisabled}{Specifies whether AWS IoT validates the token signature in an
+authorization request.}
 }
 \description{
 Creates an authorizer.
@@ -31,7 +34,8 @@ Creates an authorizer.
   tokenSigningPublicKeys = list(
     "string"
   ),
-  status = "ACTIVE"|"INACTIVE"
+  status = "ACTIVE"|"INACTIVE",
+  signingDisabled = TRUE|FALSE
 )
 }
 }

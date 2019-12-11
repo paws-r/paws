@@ -2,19 +2,43 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_delete_object_tagging}
 \alias{s3_delete_object_tagging}
-\title{Removes the tag-set from an existing object}
+\title{Removes the entire tag set from the specified object}
 \usage{
 s3_delete_object_tagging(Bucket, Key, VersionId)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The bucket name containing the objects from which to remove the tags.
 
-\item{Key}{[required]}
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+\emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
+When using this operation using an access point through the AWS SDKs,
+you provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+in the \emph{Amazon Simple Storage Service Developer Guide}.}
+
+\item{Key}{[required] Name of the tag.}
 
 \item{VersionId}{The versionId of the object that the tag-set will be removed from.}
 }
 \description{
-Removes the tag-set from an existing object.
+Removes the entire tag set from the specified object. For more
+information about managing object tags, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html#MultiFactorAuthenticationDelete}{Object Tagging}.
+}
+\details{
+To use this operation, you must have permission to perform the
+\code{s3:DeleteObjectTagging} action.
+
+To delete tags of a specific object version, add the \code{versionId} query
+parameter in the request. You will need permission for the
+\code{s3:DeleteObjectVersionTagging} action.
+
+The following operations are related to
+\code{DeleteBucketMetricsConfiguration}:
+\itemize{
+\item PutObjectTagging
+\item GetObjectTagging
+}
 }
 \section{Request syntax}{
 \preformatted{svc$delete_object_tagging(
@@ -27,20 +51,20 @@ Removes the tag-set from an existing object.
 
 \examples{
 # The following example removes tag set associated with the specified
-# object. If the bucket is versioning enabled, the operation removes tag
-# set from the latest object version.
-\donttest{svc$delete_object_tagging(
-  Bucket = "examplebucket",
-  Key = "HappyFace.jpg"
-)}
-
-# The following example removes tag set associated with the specified
 # object version. The request specifies both the object key and object
 # version.
 \donttest{svc$delete_object_tagging(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg",
   VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
+)}
+
+# The following example removes tag set associated with the specified
+# object. If the bucket is versioning enabled, the operation removes tag
+# set from the latest object version.
+\donttest{svc$delete_object_tagging(
+  Bucket = "examplebucket",
+  Key = "HappyFace.jpg"
 )}
 
 }

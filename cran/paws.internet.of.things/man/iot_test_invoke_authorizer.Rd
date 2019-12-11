@@ -5,15 +5,22 @@
 \title{Tests a custom authorization behavior by invoking a specified custom
 authorizer}
 \usage{
-iot_test_invoke_authorizer(authorizerName, token, tokenSignature)
+iot_test_invoke_authorizer(authorizerName, token, tokenSignature,
+  httpContext, mqttContext, tlsContext)
 }
 \arguments{
 \item{authorizerName}{[required] The custom authorizer name.}
 
-\item{token}{[required] The token returned by your custom authentication service.}
+\item{token}{The token returned by your custom authentication service.}
 
-\item{tokenSignature}{[required] The signature made with the token and your custom authentication
-service's private key.}
+\item{tokenSignature}{The signature made with the token and your custom authentication
+service\'s private key.}
+
+\item{httpContext}{Specifies a test HTTP authorization request.}
+
+\item{mqttContext}{Specifies a test MQTT authorization request.\\>}
+
+\item{tlsContext}{Specifies a test TLS authorization request.}
 }
 \description{
 Tests a custom authorization behavior by invoking a specified custom
@@ -24,7 +31,21 @@ of devices that connect to the AWS IoT device gateway.
 \preformatted{svc$test_invoke_authorizer(
   authorizerName = "string",
   token = "string",
-  tokenSignature = "string"
+  tokenSignature = "string",
+  httpContext = list(
+    headers = list(
+      "string"
+    ),
+    queryString = "string"
+  ),
+  mqttContext = list(
+    username = "string",
+    password = raw,
+    clientId = "string"
+  ),
+  tlsContext = list(
+    serverName = "string"
+  )
 )
 }
 }

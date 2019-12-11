@@ -10,7 +10,7 @@ iot1clickdevicesservice_untag_resource(ResourceArn, TagKeys)
 \arguments{
 \item{ResourceArn}{[required] The ARN of the resource.}
 
-\item{TagKeys}{[required] A collections of tag keys. For example, {"key1","key2"}}
+\item{TagKeys}{[required] A collections of tag keys. For example, \{\"key1\",\"key2\"\}}
 }
 \description{
 Using tag keys, deletes the tags (key/value pairs) associated with the

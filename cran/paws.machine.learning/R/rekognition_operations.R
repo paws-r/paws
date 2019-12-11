@@ -36,6 +36,16 @@ NULL
 #' information about the face in the source image, including the bounding
 #' box of the face and confidence value.
 #' 
+#' The `QualityFilter` input parameter allows you to filter out detected
+#' faces that don't meet a required quality bar. The quality bar is based
+#' on a variety of common use cases. Use `QualityFilter` to set the quality
+#' bar by specifying `LOW`, `MEDIUM`, or `HIGH`. If you do not want to
+#' filter detected faces, specify `NONE`. The default value is `NONE`.
+#' 
+#' To use quality filtering, you need a collection associated with version
+#' 3 of the face model or higher. To get the version of the face model
+#' associated with a collection, call DescribeCollection.
+#' 
 #' If the image doesn\'t contain Exif metadata, `CompareFaces` returns
 #' orientation information for the source and target images. Use these
 #' values to display the images with the correct image orientation.
@@ -53,7 +63,8 @@ NULL
 #' `rekognition:CompareFaces` action.
 #'
 #' @usage
-#' rekognition_compare_faces(SourceImage, TargetImage, SimilarityThreshold)
+#' rekognition_compare_faces(SourceImage, TargetImage, SimilarityThreshold,
+#'   QualityFilter)
 #'
 #' @param SourceImage &#91;required&#93; The input image as base64-encoded bytes or an S3 object. If you use the
 #' AWS CLI to call Amazon Rekognition operations, passing base64-encoded
@@ -71,6 +82,18 @@ NULL
 #' more information, see Images in the Amazon Rekognition developer guide.
 #' @param SimilarityThreshold The minimum level of confidence in the face matches that a match must
 #' meet to be included in the `FaceMatches` array.
+#' @param QualityFilter A filter that specifies a quality bar for how much filtering is done to
+#' identify faces. Filtered faces aren\'t compared. If you specify `AUTO`,
+#' Amazon Rekognition chooses the quality bar. If you specify `LOW`,
+#' `MEDIUM`, or `HIGH`, filtering removes all faces that don't meet the
+#' chosen quality bar. The quality bar is based on a variety of common use
+#' cases. Low-quality detections can occur for a number of reasons. Some
+#' examples are an object that\'s misidentified as a face, a face that\'s
+#' too blurry, or a face with a pose that\'s too extreme to use. If you
+#' specify `NONE`, no filtering is performed. The default value is `NONE`.
+#' 
+#' To use quality filtering, the collection you are using must be
+#' associated with version 3 of the face model or higher.
 #'
 #' @section Request syntax:
 #' ```
@@ -91,7 +114,8 @@ NULL
 #'       Version = "string"
 #'     )
 #'   ),
-#'   SimilarityThreshold = 123.0
+#'   SimilarityThreshold = 123.0,
+#'   QualityFilter = "NONE"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"
 #' )
 #' ```
 #'
@@ -117,14 +141,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname rekognition_compare_faces
-rekognition_compare_faces <- function(SourceImage, TargetImage, SimilarityThreshold = NULL) {
+rekognition_compare_faces <- function(SourceImage, TargetImage, SimilarityThreshold = NULL, QualityFilter = NULL) {
   op <- new_operation(
     name = "CompareFaces",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rekognition$compare_faces_input(SourceImage = SourceImage, TargetImage = TargetImage, SimilarityThreshold = SimilarityThreshold)
+  input <- .rekognition$compare_faces_input(SourceImage = SourceImage, TargetImage = TargetImage, SimilarityThreshold = SimilarityThreshold, QualityFilter = QualityFilter)
   output <- .rekognition$compare_faces_output()
   config <- get_config()
   svc <- .rekognition$service(config)
@@ -189,6 +213,137 @@ rekognition_create_collection <- function(CollectionId) {
   return(response)
 }
 .rekognition$operations$create_collection <- rekognition_create_collection
+
+#' Creates a new Amazon Rekognition Custom Labels project
+#'
+#' Creates a new Amazon Rekognition Custom Labels project. A project is a
+#' logical grouping of resources (images, Labels, models) and operations
+#' (training, evaluation and detection).
+#' 
+#' This operation requires permissions to perform the
+#' `rekognition:CreateProject` action.
+#'
+#' @usage
+#' rekognition_create_project(ProjectName)
+#'
+#' @param ProjectName &#91;required&#93; The name of the project to create.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_project(
+#'   ProjectName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_create_project
+rekognition_create_project <- function(ProjectName) {
+  op <- new_operation(
+    name = "CreateProject",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$create_project_input(ProjectName = ProjectName)
+  output <- .rekognition$create_project_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$create_project <- rekognition_create_project
+
+#' Creates a new version of a model and begins training
+#'
+#' Creates a new version of a model and begins training. Models are managed
+#' as part of an Amazon Rekognition Custom Labels project. You can specify
+#' one training dataset and one testing dataset. The response from
+#' `CreateProjectVersion` is an Amazon Resource Name (ARN) for the version
+#' of the model.
+#' 
+#' Training takes a while to complete. You can get the current status by
+#' calling DescribeProjectVersions.
+#' 
+#' Once training has successfully completed, call DescribeProjectVersions
+#' to get the training results and evaluate the model.
+#' 
+#' After evaluating the model, you start the model by calling
+#' StartProjectVersion.
+#' 
+#' This operation requires permissions to perform the
+#' `rekognition:CreateProjectVersion` action.
+#'
+#' @usage
+#' rekognition_create_project_version(ProjectArn, VersionName,
+#'   OutputConfig, TrainingData, TestingData)
+#'
+#' @param ProjectArn &#91;required&#93; The ARN of the Amazon Rekognition Custom Labels project that manages the
+#' model that you want to train.
+#' @param VersionName &#91;required&#93; A name for the version of the model. This value must be unique.
+#' @param OutputConfig &#91;required&#93; The Amazon S3 location to store the results of training.
+#' @param TrainingData &#91;required&#93; The dataset to use for training.
+#' @param TestingData &#91;required&#93; The dataset to use for testing.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_project_version(
+#'   ProjectArn = "string",
+#'   VersionName = "string",
+#'   OutputConfig = list(
+#'     S3Bucket = "string",
+#'     S3KeyPrefix = "string"
+#'   ),
+#'   TrainingData = list(
+#'     Assets = list(
+#'       list(
+#'         GroundTruthManifest = list(
+#'           S3Object = list(
+#'             Bucket = "string",
+#'             Name = "string",
+#'             Version = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   TestingData = list(
+#'     Assets = list(
+#'       list(
+#'         GroundTruthManifest = list(
+#'           S3Object = list(
+#'             Bucket = "string",
+#'             Name = "string",
+#'             Version = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     AutoCreate = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_create_project_version
+rekognition_create_project_version <- function(ProjectArn, VersionName, OutputConfig, TrainingData, TestingData) {
+  op <- new_operation(
+    name = "CreateProjectVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$create_project_version_input(ProjectArn = ProjectArn, VersionName = VersionName, OutputConfig = OutputConfig, TrainingData = TrainingData, TestingData = TestingData)
+  output <- .rekognition$create_project_version_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$create_project_version <- rekognition_create_project_version
 
 #' Creates an Amazon Rekognition stream processor that you can use to
 #' detect and recognize faces in a streaming video
@@ -455,6 +610,114 @@ rekognition_describe_collection <- function(CollectionId) {
 }
 .rekognition$operations$describe_collection <- rekognition_describe_collection
 
+#' Lists and describes the models in an Amazon Rekognition Custom Labels
+#' project
+#'
+#' Lists and describes the models in an Amazon Rekognition Custom Labels
+#' project. You can specify up to 10 model versions in
+#' `ProjectVersionArns`. If you don\'t specify a value, descriptions for
+#' all models are returned.
+#' 
+#' This operation requires permissions to perform the
+#' `rekognition:DescribeProjectVersions` action.
+#'
+#' @usage
+#' rekognition_describe_project_versions(ProjectArn, VersionNames,
+#'   NextToken, MaxResults)
+#'
+#' @param ProjectArn &#91;required&#93; The Amazon Resource Name (ARN) of the project that contains the models
+#' you want to describe.
+#' @param VersionNames A list of model version names that you want to describe. You can add up
+#' to 10 model version names to the list. If you don\'t specify a value,
+#' all model descriptions are returned.
+#' @param NextToken If the previous response was incomplete (because there is more results
+#' to retrieve), Amazon Rekognition Custom Labels returns a pagination
+#' token in the response. You can use this pagination token to retrieve the
+#' next set of results.
+#' @param MaxResults The maximum number of results to return per paginated call. The largest
+#' value you can specify is 100. If you specify a value greater than 100, a
+#' ValidationException error occurs. The default value is 100.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_project_versions(
+#'   ProjectArn = "string",
+#'   VersionNames = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_describe_project_versions
+rekognition_describe_project_versions <- function(ProjectArn, VersionNames = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeProjectVersions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$describe_project_versions_input(ProjectArn = ProjectArn, VersionNames = VersionNames, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .rekognition$describe_project_versions_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$describe_project_versions <- rekognition_describe_project_versions
+
+#' Lists and gets information about your Amazon Rekognition Custom Labels
+#' projects
+#'
+#' Lists and gets information about your Amazon Rekognition Custom Labels
+#' projects.
+#' 
+#' This operation requires permissions to perform the
+#' `rekognition:DescribeProjects` action.
+#'
+#' @usage
+#' rekognition_describe_projects(NextToken, MaxResults)
+#'
+#' @param NextToken If the previous response was incomplete (because there is more results
+#' to retrieve), Amazon Rekognition Custom Labels returns a pagination
+#' token in the response. You can use this pagination token to retrieve the
+#' next set of results.
+#' @param MaxResults The maximum number of results to return per paginated call. The largest
+#' value you can specify is 100. If you specify a value greater than 100, a
+#' ValidationException error occurs. The default value is 100.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_projects(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_describe_projects
+rekognition_describe_projects <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeProjects",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$describe_projects_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .rekognition$describe_projects_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$describe_projects <- rekognition_describe_projects
+
 #' Provides information about a stream processor created by
 #' CreateStreamProcessor
 #'
@@ -495,6 +758,97 @@ rekognition_describe_stream_processor <- function(Name) {
 }
 .rekognition$operations$describe_stream_processor <- rekognition_describe_stream_processor
 
+#' Detects custom labels in a supplied image by using an Amazon Rekognition
+#' Custom Labels model
+#'
+#' Detects custom labels in a supplied image by using an Amazon Rekognition
+#' Custom Labels model.
+#' 
+#' You specify which version of a model version to use by using the
+#' `ProjectVersionArn` input parameter.
+#' 
+#' You pass the input image as base64-encoded image bytes or as a reference
+#' to an image in an Amazon S3 bucket. If you use the AWS CLI to call
+#' Amazon Rekognition operations, passing image bytes is not supported. The
+#' image must be either a PNG or JPEG formatted file.
+#' 
+#' For each object that the model version detects on an image, the API
+#' returns a (`CustomLabel`) object in an array (`CustomLabels`). Each
+#' `CustomLabel` object provides the label name (`Name`), the level of
+#' confidence that the image contains the object (`Confidence`), and object
+#' location information, if it exists, for the label on the image
+#' (`Geometry`).
+#' 
+#' During training model calculates a threshold value that determines if a
+#' prediction for a label is true. By default, `DetectCustomLabels`
+#' doesn\'t return labels whose confidence value is below the model\'s
+#' calculated threshold value. To filter labels that are returned, specify
+#' a value for `MinConfidence` that is higher than the model\'s calculated
+#' threshold. You can get the model\'s calculated threshold from the
+#' model\'s training results shown in the Amazon Rekognition Custom Labels
+#' console. To get all labels, regardless of confidence, specify a
+#' `MinConfidence` value of 0.
+#' 
+#' You can also add the `MaxResults` parameter to limit the number of
+#' labels returned.
+#' 
+#' This is a stateless API operation. That is, the operation does not
+#' persist any data.
+#' 
+#' This operation requires permissions to perform the
+#' `rekognition:DetectCustomLabels` action.
+#'
+#' @usage
+#' rekognition_detect_custom_labels(ProjectVersionArn, Image, MaxResults,
+#'   MinConfidence)
+#'
+#' @param ProjectVersionArn &#91;required&#93; The ARN of the model version that you want to use.
+#' @param Image &#91;required&#93; 
+#' @param MaxResults Maximum number of results you want the service to return in the
+#' response. The service returns the specified number of highest confidence
+#' labels ranked from highest confidence to lowest.
+#' @param MinConfidence Specifies the minimum confidence level for the labels to return. Amazon
+#' Rekognition doesn\'t return any labels with a confidence lower than this
+#' specified value. If you specify a value of 0, all labels are return,
+#' regardless of the default thresholds that the model version applies.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$detect_custom_labels(
+#'   ProjectVersionArn = "string",
+#'   Image = list(
+#'     Bytes = raw,
+#'     S3Object = list(
+#'       Bucket = "string",
+#'       Name = "string",
+#'       Version = "string"
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   MinConfidence = 123.0
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_detect_custom_labels
+rekognition_detect_custom_labels <- function(ProjectVersionArn, Image, MaxResults = NULL, MinConfidence = NULL) {
+  op <- new_operation(
+    name = "DetectCustomLabels",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$detect_custom_labels_input(ProjectVersionArn = ProjectVersionArn, Image = Image, MaxResults = MaxResults, MinConfidence = MinConfidence)
+  output <- .rekognition$detect_custom_labels_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$detect_custom_labels <- rekognition_detect_custom_labels
+
 #' Detects faces within an image that is provided as input
 #'
 #' Detects faces within an image that is provided as input.
@@ -503,7 +857,7 @@ rekognition_describe_stream_processor <- function(Name) {
 #' detected, the operation returns face details. These details include a
 #' bounding box of the face, a confidence value (that the bounding box
 #' contains a face), and a fixed set of attributes such as facial landmarks
-#' (for example, coordinates of eye and mouth), gender, presence of beard,
+#' (for example, coordinates of eye and mouth), presence of beard,
 #' sunglasses, and so on.
 #' 
 #' The face-detection algorithm is most effective on frontal faces. For
@@ -736,13 +1090,12 @@ rekognition_detect_labels <- function(Image, MaxLabels = NULL, MinConfidence = N
 }
 .rekognition$operations$detect_labels <- rekognition_detect_labels
 
-#' Detects explicit or suggestive adult content in a specified JPEG or PNG
-#' format image
+#' Detects unsafe content in a specified JPEG or PNG format image
 #'
-#' Detects explicit or suggestive adult content in a specified JPEG or PNG
-#' format image. Use `DetectModerationLabels` to moderate images depending
-#' on your requirements. For example, you might want to filter images that
-#' contain nudity, but not images containing suggestive content.
+#' Detects unsafe content in a specified JPEG or PNG format image. Use
+#' `DetectModerationLabels` to moderate images depending on your
+#' requirements. For example, you might want to filter images that contain
+#' nudity, but not images containing suggestive content.
 #' 
 #' To filter images, use the labels returned by `DetectModerationLabels` to
 #' determine which types of content are appropriate.
@@ -756,7 +1109,8 @@ rekognition_detect_labels <- function(Image, MaxLabels = NULL, MinConfidence = N
 #' supported. The image must be either a PNG or JPEG formatted file.
 #'
 #' @usage
-#' rekognition_detect_moderation_labels(Image, MinConfidence)
+#' rekognition_detect_moderation_labels(Image, MinConfidence,
+#'   HumanLoopConfig)
 #'
 #' @param Image &#91;required&#93; The input image as base64-encoded bytes or an S3 object. If you use the
 #' AWS CLI to call Amazon Rekognition operations, passing base64-encoded
@@ -771,6 +1125,8 @@ rekognition_detect_labels <- function(Image, MaxLabels = NULL, MinConfidence = N
 #' 
 #' If you don\'t specify `MinConfidence`, the operation returns labels with
 #' confidence values greater than or equal to 50 percent.
+#' @param HumanLoopConfig Sets up the configuration for human evaluation, including the
+#' FlowDefinition the image will be sent to.
 #'
 #' @section Request syntax:
 #' ```
@@ -783,21 +1139,30 @@ rekognition_detect_labels <- function(Image, MaxLabels = NULL, MinConfidence = N
 #'       Version = "string"
 #'     )
 #'   ),
-#'   MinConfidence = 123.0
+#'   MinConfidence = 123.0,
+#'   HumanLoopConfig = list(
+#'     HumanLoopName = "string",
+#'     FlowDefinitionArn = "string",
+#'     DataAttributes = list(
+#'       ContentClassifiers = list(
+#'         "FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname rekognition_detect_moderation_labels
-rekognition_detect_moderation_labels <- function(Image, MinConfidence = NULL) {
+rekognition_detect_moderation_labels <- function(Image, MinConfidence = NULL, HumanLoopConfig = NULL) {
   op <- new_operation(
     name = "DetectModerationLabels",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rekognition$detect_moderation_labels_input(Image = Image, MinConfidence = MinConfidence)
+  input <- .rekognition$detect_moderation_labels_input(Image = Image, MinConfidence = MinConfidence, HumanLoopConfig = HumanLoopConfig)
   output <- .rekognition$detect_moderation_labels_output()
   config <- get_config()
   svc <- .rekognition$service(config)
@@ -1036,27 +1401,27 @@ rekognition_get_celebrity_recognition <- function(JobId, MaxResults = NULL, Next
 }
 .rekognition$operations$get_celebrity_recognition <- rekognition_get_celebrity_recognition
 
-#' Gets the content moderation analysis results for a Amazon Rekognition
-#' Video analysis started by StartContentModeration
+#' Gets the unsafe content analysis results for a Amazon Rekognition Video
+#' analysis started by StartContentModeration
 #'
-#' Gets the content moderation analysis results for a Amazon Rekognition
-#' Video analysis started by StartContentModeration.
+#' Gets the unsafe content analysis results for a Amazon Rekognition Video
+#' analysis started by StartContentModeration.
 #' 
-#' Content moderation analysis of a video is an asynchronous operation. You
+#' Unsafe content analysis of a video is an asynchronous operation. You
 #' start analysis by calling StartContentModeration which returns a job
 #' identifier (`JobId`). When analysis finishes, Amazon Rekognition Video
 #' publishes a completion status to the Amazon Simple Notification Service
 #' topic registered in the initial call to `StartContentModeration`. To get
-#' the results of the content moderation analysis, first check that the
-#' status value published to the Amazon SNS topic is `SUCCEEDED`. If so,
-#' call `GetContentModeration` and pass the job identifier (`JobId`) from
-#' the initial call to `StartContentModeration`.
+#' the results of the unsafe content analysis, first check that the status
+#' value published to the Amazon SNS topic is `SUCCEEDED`. If so, call
+#' `GetContentModeration` and pass the job identifier (`JobId`) from the
+#' initial call to `StartContentModeration`.
 #' 
 #' For more information, see Working with Stored Videos in the Amazon
 #' Rekognition Devlopers Guide.
 #' 
-#' `GetContentModeration` returns detected content moderation labels, and
-#' the time they are detected, in an array, `ModerationLabels`, of
+#' `GetContentModeration` returns detected unsafe content labels, and the
+#' time they are detected, in an array, `ModerationLabels`, of
 #' ContentModerationDetection objects.
 #' 
 #' By default, the moderated labels are returned sorted by time, in
@@ -1078,15 +1443,15 @@ rekognition_get_celebrity_recognition <- function(JobId, MaxResults = NULL, Next
 #' @usage
 #' rekognition_get_content_moderation(JobId, MaxResults, NextToken, SortBy)
 #'
-#' @param JobId &#91;required&#93; The identifier for the content moderation job. Use `JobId` to identify
-#' the job in a subsequent call to `GetContentModeration`.
+#' @param JobId &#91;required&#93; The identifier for the unsafe content job. Use `JobId` to identify the
+#' job in a subsequent call to `GetContentModeration`.
 #' @param MaxResults Maximum number of results to return per paginated call. The largest
 #' value you can specify is 1000. If you specify a value greater than 1000,
 #' a maximum of 1000 results is returned. The default value is 1000.
 #' @param NextToken If the previous response was incomplete (because there is more data to
 #' retrieve), Amazon Rekognition returns a pagination token in the
 #' response. You can use this pagination token to retrieve the next set of
-#' content moderation labels.
+#' unsafe content labels.
 #' @param SortBy Sort to use for elements in the `ModerationLabelDetections` array. Use
 #' `TIMESTAMP` to sort array elements by the time labels are detected. Use
 #' `NAME` to alphabetically group elements for a label together. Within
@@ -1490,16 +1855,16 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
 #' belonging to people standing in the background.
 #' 
 #' The `QualityFilter` input parameter allows you to filter out detected
-#' faces that don't meet the required quality bar chosen by Amazon
-#' Rekognition. The quality bar is based on a variety of common use cases.
-#' By default, `IndexFaces` filters detected faces. You can also explicitly
-#' filter detected faces by specifying `AUTO` for the value of
-#' `QualityFilter`. If you do not want to filter detected faces, specify
-#' `NONE`.
+#' faces that don't meet a required quality bar. The quality bar is based
+#' on a variety of common use cases. By default, `IndexFaces` chooses the
+#' quality bar that\'s used to filter faces. You can also explicitly choose
+#' the quality bar. Use `QualityFilter`, to set the quality bar by
+#' specifying `LOW`, `MEDIUM`, or `HIGH`. If you do not want to filter
+#' detected faces, specify `NONE`.
 #' 
 #' To use quality filtering, you need a collection associated with version
-#' 3 of the face model. To get the version of the face model associated
-#' with a collection, call DescribeCollection.
+#' 3 of the face model or higher. To get the version of the face model
+#' associated with a collection, call DescribeCollection.
 #' 
 #' Information about faces detected in an image, but not indexed, is
 #' returned in an array of UnindexedFace objects, `UnindexedFaces`. Faces
@@ -1515,6 +1880,8 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
 #' -   The image is too dark.
 #' 
 #' -   The face has an extreme pose.
+#' 
+#' -   The face doesn't have enough detail to be suitable for face search.
 #' 
 #' In response, the `IndexFaces` operation returns an array of metadata for
 #' all detected faces, `FaceRecords`. This includes:
@@ -1532,9 +1899,9 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
 #' If you request all facial attributes (by using the `detectionAttributes`
 #' parameter), Amazon Rekognition returns detailed facial attributes, such
 #' as facial landmarks (for example, location of eye and mouth) and other
-#' facial attributes like gender. If you provide the same image, specify
-#' the same collection, and use the same external ID in the `IndexFaces`
-#' operation, Amazon Rekognition doesn\'t save duplicate face metadata.
+#' facial attributes. If you provide the same image, specify the same
+#' collection, and use the same external ID in the `IndexFaces` operation,
+#' Amazon Rekognition doesn\'t save duplicate face metadata.
 #' 
 #' The input image is passed either as base64-encoded image bytes, or as a
 #' reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
@@ -1586,18 +1953,19 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
 #' 
 #' `MaxFaces` can be used with a collection associated with any version of
 #' the face model.
-#' @param QualityFilter A filter that specifies how much filtering is done to identify faces
-#' that are detected with low quality. Filtered faces aren\'t indexed. If
-#' you specify `AUTO`, filtering prioritizes the identification of faces
-#' that don't meet the required quality bar chosen by Amazon Rekognition.
-#' The quality bar is based on a variety of common use cases. Low-quality
-#' detections can occur for a number of reasons. Some examples are an
-#' object that\'s misidentified as a face, a face that\'s too blurry, or a
-#' face with a pose that\'s too extreme to use. If you specify `NONE`, no
-#' filtering is performed. The default value is AUTO.
+#' @param QualityFilter A filter that specifies a quality bar for how much filtering is done to
+#' identify faces. Filtered faces aren\'t indexed. If you specify `AUTO`,
+#' Amazon Rekognition chooses the quality bar. If you specify `LOW`,
+#' `MEDIUM`, or `HIGH`, filtering removes all faces that don't meet the
+#' chosen quality bar. The default value is `AUTO`. The quality bar is
+#' based on a variety of common use cases. Low-quality detections can occur
+#' for a number of reasons. Some examples are an object that\'s
+#' misidentified as a face, a face that\'s too blurry, or a face with a
+#' pose that\'s too extreme to use. If you specify `NONE`, no filtering is
+#' performed.
 #' 
 #' To use quality filtering, the collection you are using must be
-#' associated with version 3 of the face model.
+#' associated with version 3 of the face model or higher.
 #'
 #' @section Request syntax:
 #' ```
@@ -1616,7 +1984,7 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
 #'     "DEFAULT"|"ALL"
 #'   ),
 #'   MaxFaces = 123,
-#'   QualityFilter = "NONE"|"AUTO"
+#'   QualityFilter = "NONE"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"
 #' )
 #' ```
 #'
@@ -1922,7 +2290,7 @@ rekognition_recognize_celebrities <- function(Image) {
 #' number of faces with the highest confidence in the match.
 #' @param FaceMatchThreshold Optional value specifying the minimum confidence in the face match to
 #' return. For example, don\'t return any matches where confidence in
-#' matches is less than 70\%.
+#' matches is less than 70\%. The default value is 80\%.
 #'
 #' @section Request syntax:
 #' ```
@@ -1996,12 +2364,23 @@ rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, Face
 #' For an example, Searching for a Face Using an Image in the Amazon
 #' Rekognition Developer Guide.
 #' 
+#' The `QualityFilter` input parameter allows you to filter out detected
+#' faces that don't meet a required quality bar. The quality bar is based
+#' on a variety of common use cases. Use `QualityFilter` to set the quality
+#' bar for filtering by specifying `LOW`, `MEDIUM`, or `HIGH`. If you do
+#' not want to filter detected faces, specify `NONE`. The default value is
+#' `NONE`.
+#' 
+#' To use quality filtering, you need a collection associated with version
+#' 3 of the face model or higher. To get the version of the face model
+#' associated with a collection, call DescribeCollection.
+#' 
 #' This operation requires permissions to perform the
 #' `rekognition:SearchFacesByImage` action.
 #'
 #' @usage
 #' rekognition_search_faces_by_image(CollectionId, Image, MaxFaces,
-#'   FaceMatchThreshold)
+#'   FaceMatchThreshold, QualityFilter)
 #'
 #' @param CollectionId &#91;required&#93; ID of the collection to search.
 #' @param Image &#91;required&#93; The input image as base64-encoded bytes or an S3 object. If you use the
@@ -2015,7 +2394,20 @@ rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, Face
 #' number of faces with the highest confidence in the match.
 #' @param FaceMatchThreshold (Optional) Specifies the minimum confidence in the face match to return.
 #' For example, don\'t return any matches where confidence in matches is
-#' less than 70\%.
+#' less than 70\%. The default value is 80\%.
+#' @param QualityFilter A filter that specifies a quality bar for how much filtering is done to
+#' identify faces. Filtered faces aren\'t searched for in the collection.
+#' If you specify `AUTO`, Amazon Rekognition chooses the quality bar. If
+#' you specify `LOW`, `MEDIUM`, or `HIGH`, filtering removes all faces that
+#' don't meet the chosen quality bar. The quality bar is based on a variety
+#' of common use cases. Low-quality detections can occur for a number of
+#' reasons. Some examples are an object that\'s misidentified as a face, a
+#' face that\'s too blurry, or a face with a pose that\'s too extreme to
+#' use. If you specify `NONE`, no filtering is performed. The default value
+#' is `NONE`.
+#' 
+#' To use quality filtering, the collection you are using must be
+#' associated with version 3 of the face model or higher.
 #'
 #' @section Request syntax:
 #' ```
@@ -2030,7 +2422,8 @@ rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, Face
 #'     )
 #'   ),
 #'   MaxFaces = 123,
-#'   FaceMatchThreshold = 123.0
+#'   FaceMatchThreshold = 123.0,
+#'   QualityFilter = "NONE"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"
 #' )
 #' ```
 #'
@@ -2052,14 +2445,14 @@ rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, Face
 #' @keywords internal
 #'
 #' @rdname rekognition_search_faces_by_image
-rekognition_search_faces_by_image <- function(CollectionId, Image, MaxFaces = NULL, FaceMatchThreshold = NULL) {
+rekognition_search_faces_by_image <- function(CollectionId, Image, MaxFaces = NULL, FaceMatchThreshold = NULL, QualityFilter = NULL) {
   op <- new_operation(
     name = "SearchFacesByImage",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rekognition$search_faces_by_image_input(CollectionId = CollectionId, Image = Image, MaxFaces = MaxFaces, FaceMatchThreshold = FaceMatchThreshold)
+  input <- .rekognition$search_faces_by_image_input(CollectionId = CollectionId, Image = Image, MaxFaces = MaxFaces, FaceMatchThreshold = FaceMatchThreshold, QualityFilter = QualityFilter)
   output <- .rekognition$search_faces_by_image_output()
   config <- get_config()
   svc <- .rekognition$service(config)
@@ -2100,8 +2493,10 @@ rekognition_search_faces_by_image <- function(CollectionId, Image, MaxFaces = NU
 #' from being accidently started more than once.
 #' @param NotificationChannel The Amazon SNS topic ARN that you want Amazon Rekognition Video to
 #' publish the completion status of the celebrity recognition analysis to.
-#' @param JobTag Unique identifier you specify to identify the job in the completion
-#' status published to the Amazon Simple Notification Service topic.
+#' @param JobTag An identifier you specify that\'s returned in the completion
+#' notification that\'s published to your Amazon Simple Notification
+#' Service topic. For example, you can use `JobTag` to group related jobs
+#' and identify them in the completion notification.
 #'
 #' @section Request syntax:
 #' ```
@@ -2142,24 +2537,22 @@ rekognition_start_celebrity_recognition <- function(Video, ClientRequestToken = 
 }
 .rekognition$operations$start_celebrity_recognition <- rekognition_start_celebrity_recognition
 
-#' Starts asynchronous detection of explicit or suggestive adult content in
-#' a stored video
+#' Starts asynchronous detection of unsafe content in a stored video
 #'
-#' Starts asynchronous detection of explicit or suggestive adult content in
-#' a stored video.
+#' Starts asynchronous detection of unsafe content in a stored video.
 #' 
 #' Amazon Rekognition Video can moderate content in a video stored in an
 #' Amazon S3 bucket. Use Video to specify the bucket name and the filename
 #' of the video. `StartContentModeration` returns a job identifier
-#' (`JobId`) which you use to get the results of the analysis. When content
-#' moderation analysis is finished, Amazon Rekognition Video publishes a
+#' (`JobId`) which you use to get the results of the analysis. When unsafe
+#' content analysis is finished, Amazon Rekognition Video publishes a
 #' completion status to the Amazon Simple Notification Service topic that
 #' you specify in `NotificationChannel`.
 #' 
-#' To get the results of the content moderation analysis, first check that
-#' the status value published to the Amazon SNS topic is `SUCCEEDED`. If
-#' so, call GetContentModeration and pass the job identifier (`JobId`) from
-#' the initial call to `StartContentModeration`.
+#' To get the results of the unsafe content analysis, first check that the
+#' status value published to the Amazon SNS topic is `SUCCEEDED`. If so,
+#' call GetContentModeration and pass the job identifier (`JobId`) from the
+#' initial call to `StartContentModeration`.
 #' 
 #' For more information, see Detecting Unsafe Content in the Amazon
 #' Rekognition Developer Guide.
@@ -2168,7 +2561,7 @@ rekognition_start_celebrity_recognition <- function(Video, ClientRequestToken = 
 #' rekognition_start_content_moderation(Video, MinConfidence,
 #'   ClientRequestToken, NotificationChannel, JobTag)
 #'
-#' @param Video &#91;required&#93; The video in which you want to moderate content. The video must be
+#' @param Video &#91;required&#93; The video in which you want to detect unsafe content. The video must be
 #' stored in an Amazon S3 bucket.
 #' @param MinConfidence Specifies the minimum confidence that Amazon Rekognition must have in
 #' order to return a moderated content label. Confidence represents how
@@ -2183,9 +2576,11 @@ rekognition_start_celebrity_recognition <- function(Video, ClientRequestToken = 
 #' is returned. Use `ClientRequestToken` to prevent the same job from being
 #' accidently started more than once.
 #' @param NotificationChannel The Amazon SNS topic ARN that you want Amazon Rekognition Video to
-#' publish the completion status of the content moderation analysis to.
-#' @param JobTag Unique identifier you specify to identify the job in the completion
-#' status published to the Amazon Simple Notification Service topic.
+#' publish the completion status of the unsafe content analysis to.
+#' @param JobTag An identifier you specify that\'s returned in the completion
+#' notification that\'s published to your Amazon Simple Notification
+#' Service topic. For example, you can use `JobTag` to group related jobs
+#' and identify them in the completion notification.
 #'
 #' @section Request syntax:
 #' ```
@@ -2263,8 +2658,10 @@ rekognition_start_content_moderation <- function(Video, MinConfidence = NULL, Cl
 #' BoundingBox, Confidence, Pose, Quality and Landmarks.
 #' 
 #' `ALL` - All facial attributes are returned.
-#' @param JobTag Unique identifier you specify to identify the job in the completion
-#' status published to the Amazon Simple Notification Service topic.
+#' @param JobTag An identifier you specify that\'s returned in the completion
+#' notification that\'s published to your Amazon Simple Notification
+#' Service topic. For example, you can use `JobTag` to group related jobs
+#' and identify them in the completion notification.
 #'
 #' @section Request syntax:
 #' ```
@@ -2335,11 +2732,14 @@ rekognition_start_face_detection <- function(Video, ClientRequestToken = NULL, N
 #' accidently started more than once.
 #' @param FaceMatchThreshold The minimum confidence in the person match to return. For example,
 #' don\'t return any matches where confidence in matches is less than 70\%.
+#' The default value is 80\%.
 #' @param CollectionId &#91;required&#93; ID of the collection that contains the faces you want to search for.
 #' @param NotificationChannel The ARN of the Amazon SNS topic to which you want Amazon Rekognition
 #' Video to publish the completion status of the search.
-#' @param JobTag Unique identifier you specify to identify the job in the completion
-#' status published to the Amazon Simple Notification Service topic.
+#' @param JobTag An identifier you specify that\'s returned in the completion
+#' notification that\'s published to your Amazon Simple Notification
+#' Service topic. For example, you can use `JobTag` to group related jobs
+#' and identify them in the completion notification.
 #'
 #' @section Request syntax:
 #' ```
@@ -2425,8 +2825,10 @@ rekognition_start_face_search <- function(Video, ClientRequestToken = NULL, Face
 #' confidence values greater than or equal to 50 percent.
 #' @param NotificationChannel The Amazon SNS topic ARN you want Amazon Rekognition Video to publish
 #' the completion status of the label detection operation to.
-#' @param JobTag Unique identifier you specify to identify the job in the completion
-#' status published to the Amazon Simple Notification Service topic.
+#' @param JobTag An identifier you specify that\'s returned in the completion
+#' notification that\'s published to your Amazon Simple Notification
+#' Service topic. For example, you can use `JobTag` to group related jobs
+#' and identify them in the completion notification.
 #'
 #' @section Request syntax:
 #' ```
@@ -2497,8 +2899,10 @@ rekognition_start_label_detection <- function(Video, ClientRequestToken = NULL, 
 #' accidently started more than once.
 #' @param NotificationChannel The Amazon SNS topic ARN you want Amazon Rekognition Video to publish
 #' the completion status of the people detection operation to.
-#' @param JobTag Unique identifier you specify to identify the job in the completion
-#' status published to the Amazon Simple Notification Service topic.
+#' @param JobTag An identifier you specify that\'s returned in the completion
+#' notification that\'s published to your Amazon Simple Notification
+#' Service topic. For example, you can use `JobTag` to group related jobs
+#' and identify them in the completion notification.
 #'
 #' @section Request syntax:
 #' ```
@@ -2539,6 +2943,59 @@ rekognition_start_person_tracking <- function(Video, ClientRequestToken = NULL, 
 }
 .rekognition$operations$start_person_tracking <- rekognition_start_person_tracking
 
+#' Starts the running of the version of a model
+#'
+#' Starts the running of the version of a model. Starting a model takes a
+#' while to complete. To check the current state of the model, use
+#' DescribeProjectVersions.
+#' 
+#' Once the model is running, you can detect custom labels in new images by
+#' calling DetectCustomLabels.
+#' 
+#' You are charged for the amount of time that the model is running. To
+#' stop a running model, call StopProjectVersion.
+#' 
+#' This operation requires permissions to perform the
+#' `rekognition:StartProjectVersion` action.
+#'
+#' @usage
+#' rekognition_start_project_version(ProjectVersionArn, MinInferenceUnits)
+#'
+#' @param ProjectVersionArn &#91;required&#93; The Amazon Resource Name(ARN) of the model version that you want to
+#' start.
+#' @param MinInferenceUnits &#91;required&#93; The minimum number of inference units to use. A single inference unit
+#' represents 1 hour of processing and can support up to 5 Transaction Pers
+#' Second (TPS). Use a higher number to increase the TPS throughput of your
+#' model. You are charged for the number of inference units that you use.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_project_version(
+#'   ProjectVersionArn = "string",
+#'   MinInferenceUnits = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_start_project_version
+rekognition_start_project_version <- function(ProjectVersionArn, MinInferenceUnits) {
+  op <- new_operation(
+    name = "StartProjectVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$start_project_version_input(ProjectVersionArn = ProjectVersionArn, MinInferenceUnits = MinInferenceUnits)
+  output <- .rekognition$start_project_version_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$start_project_version <- rekognition_start_project_version
+
 #' Starts processing a stream processor
 #'
 #' Starts processing a stream processor. You create a stream processor by
@@ -2577,6 +3034,47 @@ rekognition_start_stream_processor <- function(Name) {
   return(response)
 }
 .rekognition$operations$start_stream_processor <- rekognition_start_stream_processor
+
+#' Stops a running model
+#'
+#' Stops a running model. The operation might take a while to complete. To
+#' check the current status, call DescribeProjectVersions.
+#'
+#' @usage
+#' rekognition_stop_project_version(ProjectVersionArn)
+#'
+#' @param ProjectVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the model version that you want to
+#' delete.
+#' 
+#' This operation requires permissions to perform the
+#' `rekognition:StopProjectVersion` action.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_project_version(
+#'   ProjectVersionArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_stop_project_version
+rekognition_stop_project_version <- function(ProjectVersionArn) {
+  op <- new_operation(
+    name = "StopProjectVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$stop_project_version_input(ProjectVersionArn = ProjectVersionArn)
+  output <- .rekognition$stop_project_version_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$stop_project_version <- rekognition_stop_project_version
 
 #' Stops a running stream processor that was created by
 #' CreateStreamProcessor

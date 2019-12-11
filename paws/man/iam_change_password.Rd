@@ -7,17 +7,17 @@
 iam_change_password(OldPassword, NewPassword)
 }
 \arguments{
-\item{OldPassword}{[required] The IAM user's current password.}
+\item{OldPassword}{[required] The IAM user\'s current password.}
 
-\item{NewPassword}{[required] The new password. The new password must conform to the AWS account's
+\item{NewPassword}{[required] The new password. The new password must conform to the AWS account\'s
 password policy, if one exists.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} that is used to
 validate this parameter is a string of characters. That string can
 include almost any printable ASCII character from the space (\code{U+0020})
-through the end of the ASCII character range (\code{U+00FF}). You can also
-include the tab (\code{U+0009}), line feed (\code{U+000A}), and carriage return
-(\code{U+000D}) characters. Any of these characters are valid in a password.
+through the end of the ASCII character range (\verb{U+00FF}). You can also
+include the tab (\code{U+0009}), line feed (\verb{U+000A}), and carriage return
+(\verb{U+000D}) characters. Any of these characters are valid in a password.
 However, many tools, such as the AWS Management Console, might restrict
 the ability to type certain characters because they have special meaning
 within that tool.}

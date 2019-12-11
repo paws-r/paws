@@ -14,18 +14,18 @@ codepipeline(config = list())
 
 This is the AWS CodePipeline API Reference. This guide provides
 descriptions of the actions and data types for AWS CodePipeline. Some
-functionality for your pipeline is only configurable through the API.
-For additional information, see the \href{https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html}{AWS CodePipeline User Guide}.
+functionality for your pipeline can only be configured through the API.
+For more information, see the \href{https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html}{AWS CodePipeline User Guide}.
 
 You can use the AWS CodePipeline API to work with pipelines, stages,
-actions, and transitions, as described below.
+actions, and transitions.
 
 \emph{Pipelines} are models of automated release processes. Each pipeline is
 uniquely named, and consists of stages, actions, and transitions.
 
 You can work with pipelines by calling:
 \itemize{
-\item CreatePipeline, which creates a uniquely-named pipeline.
+\item CreatePipeline, which creates a uniquely named pipeline.
 \item DeletePipeline, which deletes the specified pipeline.
 \item GetPipeline, which returns information about the pipeline structure
 and pipeline metadata, including the pipeline Amazon Resource Name
@@ -36,36 +36,35 @@ execution of a pipeline.
 of the stages and actions of a pipeline.
 \item ListActionExecutions, which returns action-level details for past
 executions. The details include full stage and action-level details,
-including individual action duration, status, any errors which
+including individual action duration, status, any errors that
 occurred during the execution, and input and output artifact
 location details.
 \item ListPipelines, which gets a summary of all of the pipelines
 associated with your account.
 \item ListPipelineExecutions, which gets a summary of the most recent
 executions for a pipeline.
-\item StartPipelineExecution, which runs the the most recent revision of
-an artifact through the pipeline.
+\item StartPipelineExecution, which runs the most recent revision of an
+artifact through the pipeline.
 \item UpdatePipeline, which updates a pipeline with edits or changes to
 the structure of the pipeline.
 }
 
 Pipelines include \emph{stages}. Each stage contains one or more actions that
-must complete before the next stage begins. A stage will result in
-success or failure. If a stage fails, then the pipeline stops at that
-stage and will remain stopped until either a new version of an artifact
-appears in the source location, or a user takes action to re-run the
-most recent artifact through the pipeline. You can call
-GetPipelineState, which displays the status of a pipeline, including the
-status of stages in the pipeline, or GetPipeline, which returns the
-entire structure of the pipeline, including the stages of that pipeline.
-For more information about the structure of stages and actions, also
-refer to the \href{https://docs.aws.amazon.com/codepipeline/latest/userguide/pipeline-structure.html}{AWS CodePipeline Pipeline Structure Reference}.
+must complete before the next stage begins. A stage results in success
+or failure. If a stage fails, the pipeline stops at that stage and
+remains stopped until either a new version of an artifact appears in the
+source location, or a user takes action to rerun the most recent
+artifact through the pipeline. You can call GetPipelineState, which
+displays the status of a pipeline, including the status of stages in the
+pipeline, or GetPipeline, which returns the entire structure of the
+pipeline, including the stages of that pipeline. For more information
+about the structure of stages and actions, see \href{https://docs.aws.amazon.com/codepipeline/latest/userguide/pipeline-structure.html}{AWS CodePipeline Pipeline Structure Reference}.
 
-Pipeline stages include \emph{actions}, which are categorized into categories
-such as source or build actions performed within a stage of a pipeline.
-For example, you can use a source action to import artifacts into a
-pipeline from a source such as Amazon S3. Like stages, you do not work
-with actions directly in most cases, but you do define and interact with
+Pipeline stages include \emph{actions} that are categorized into categories
+such as source or build actions performed in a stage of a pipeline. For
+example, you can use a source action to import artifacts into a pipeline
+from a source such as Amazon S3. Like stages, you do not work with
+actions directly in most cases, but you do define and interact with
 actions when working with pipeline operations such as CreatePipeline and
 GetPipelineState. Valid action categories are:
 \itemize{
@@ -93,8 +92,8 @@ stages in a pipeline.
 
 For third-party integrators or developers who want to create their own
 integrations with AWS CodePipeline, the expected sequence varies from
-the standard API user. In order to integrate with AWS CodePipeline,
-developers will need to work with the following items:
+the standard API user. To integrate with AWS CodePipeline, developers
+need to work with the following items:
 
 \strong{Jobs}, which are instances of an action. For example, a job for a
 source action might import a revision of an artifact from a source.
@@ -102,11 +101,10 @@ source action might import a revision of an artifact from a source.
 You can work with jobs by calling:
 \itemize{
 \item AcknowledgeJob, which confirms whether a job worker has received the
-specified job,
-\item GetJobDetails, which returns the details of a job,
-\item PollForJobs, which determines whether there are any jobs to act
-upon,
-\item PutJobFailureResult, which provides details of a job failure, and
+specified job.
+\item GetJobDetails, which returns the details of a job.
+\item PollForJobs, which determines whether there are any jobs to act on.
+\item PutJobFailureResult, which provides details of a job failure.
 \item PutJobSuccessResult, which provides details of a job success.
 }
 
@@ -117,13 +115,13 @@ created by members of the AWS Partner Network.
 You can work with third party jobs by calling:
 \itemize{
 \item AcknowledgeThirdPartyJob, which confirms whether a job worker has
-received the specified job,
+received the specified job.
 \item GetThirdPartyJobDetails, which requests the details of a job for a
-partner action,
+partner action.
 \item PollForThirdPartyJobs, which determines whether there are any jobs
-to act upon,
+to act on.
 \item PutThirdPartyJobFailureResult, which provides details of a job
-failure, and
+failure.
 \item PutThirdPartyJobSuccessResult, which provides details of a job
 success.
 }
@@ -168,9 +166,9 @@ success.
 \link[=codepipeline_list_action_types]{list_action_types} \tab Gets a summary of all AWS CodePipeline action types associated with your account \cr
 \link[=codepipeline_list_pipeline_executions]{list_pipeline_executions} \tab Gets a summary of the most recent executions for a pipeline \cr
 \link[=codepipeline_list_pipelines]{list_pipelines} \tab Gets a summary of all of the pipelines associated with your account \cr
-\link[=codepipeline_list_tags_for_resource]{list_tags_for_resource} \tab Gets the set of key/value pairs (metadata) that are used to manage the resource \cr
-\link[=codepipeline_list_webhooks]{list_webhooks} \tab Gets a listing of all the webhooks in this region for this account \cr
-\link[=codepipeline_poll_for_jobs]{poll_for_jobs} \tab Returns information about any jobs for AWS CodePipeline to act upon \cr
+\link[=codepipeline_list_tags_for_resource]{list_tags_for_resource} \tab Gets the set of key-value pairs (metadata) that are used to manage the resource \cr
+\link[=codepipeline_list_webhooks]{list_webhooks} \tab Gets a listing of all the webhooks in this AWS Region for this account \cr
+\link[=codepipeline_poll_for_jobs]{poll_for_jobs} \tab Returns information about any jobs for AWS CodePipeline to act on \cr
 \link[=codepipeline_poll_for_third_party_jobs]{poll_for_third_party_jobs} \tab Determines whether there are any third party jobs for a job worker to act on \cr
 \link[=codepipeline_put_action_revision]{put_action_revision} \tab Provides information to AWS CodePipeline about new revisions to a source \cr
 \link[=codepipeline_put_approval_result]{put_approval_result} \tab Provides the response to a manual approval request to AWS CodePipeline \cr

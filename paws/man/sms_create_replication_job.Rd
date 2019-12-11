@@ -40,7 +40,7 @@ of the following:
 }
 
 If encrypted is \emph{true} but a KMS key id is not specified, the
-customer's default KMS key for EBS is used.}
+customer\'s default KMS key for EBS is used.}
 }
 \description{
 Creates a replication job. The replication job schedules periodic

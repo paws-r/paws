@@ -26,7 +26,7 @@ request.}
 \description{
 Sets one or more parameters of the specified parameter group to their
 default values and sets the source values of the parameters to
-"engine-default". To reset the entire parameter group specify the
+\"engine-default\". To reset the entire parameter group specify the
 \emph{ResetAllParameters} parameter. For parameter changes to take effect you
 must reboot any associated clusters.
 }

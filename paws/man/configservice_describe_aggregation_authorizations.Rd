@@ -11,8 +11,8 @@ configservice_describe_aggregation_authorizations(Limit, NextToken)
 \item{Limit}{The maximum number of AggregationAuthorizations returned on each page.
 The default is maximum. If you specify 0, AWS Config uses the default.}
 
-\item{NextToken}{The nextToken string returned on a previous page that you use to get the
-next page of results in a paginated response.}
+\item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
+the next page of results in a paginated response.}
 }
 \description{
 Returns a list of authorizations granted to various aggregator accounts

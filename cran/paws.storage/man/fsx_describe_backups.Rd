@@ -18,7 +18,7 @@ backup-type.}
 \item{MaxResults}{(Optional) Maximum number of backups to return in the response
 (integer). This parameter value must be greater than 0. The number of
 items that Amazon FSx returns is the minimum of the \code{MaxResults}
-parameter specified in the request and the service's internal maximum
+parameter specified in the request and the service\'s internal maximum
 number of items per page.}
 
 \item{NextToken}{(Optional) Opaque pagination token returned from a previous
@@ -29,7 +29,7 @@ continues the list from where the returning call left off.}
 Returns the description of specific Amazon FSx for Windows File Server
 backups, if a \code{BackupIds} value is provided for that backup. Otherwise,
 it returns all backups owned by your AWS account in the AWS Region of
-the endpoint that you're calling.
+the endpoint that you\'re calling.
 }
 \details{
 When retrieving all backups, you can optionally specify the \code{MaxResults}

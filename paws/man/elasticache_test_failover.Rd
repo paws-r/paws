@@ -38,17 +38,16 @@ replacement must complete before a subsequent call can be made.
 Events using the Amazon ElastiCache console, the AWS CLI, or the
 ElastiCache API. Look for the following automatic failover related
 events, listed here in order of occurrance:
-}
 \enumerate{
 \item Replication group message:
-\code{Test Failover API called for node group &lt;node-group-id&gt;}
+\verb{Test Failover API called for node group &lt;node-group-id&gt;}
 \item Cache cluster message:
-\code{Failover from master node &lt;primary-node-id&gt; to replica node &lt;node-id&gt; completed}
+\verb{Failover from master node &lt;primary-node-id&gt; to replica node &lt;node-id&gt; completed}
 \item Replication group message:
-\code{Failover from master node &lt;primary-node-id&gt; to replica node &lt;node-id&gt; completed}
-\item Cache cluster message: \code{Recovering cache nodes &lt;node-id&gt;}
+\verb{Failover from master node &lt;primary-node-id&gt; to replica node &lt;node-id&gt; completed}
+\item Cache cluster message: \verb{Recovering cache nodes &lt;node-id&gt;}
 \item Cache cluster message:
-\code{Finished recovery for cache nodes &lt;node-id&gt;}
+\verb{Finished recovery for cache nodes &lt;node-id&gt;}
 }
 
 For more information see:
@@ -57,6 +56,7 @@ For more information see:
 in the \emph{ElastiCache User Guide}
 \item \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_DescribeEvents.html}{DescribeEvents}
 in the ElastiCache API Reference
+}
 }
 
 Also see, \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html#auto-failover-test}{Testing Multi-AZ with Automatic Failover}

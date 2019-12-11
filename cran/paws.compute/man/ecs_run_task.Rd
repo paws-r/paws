@@ -4,19 +4,66 @@
 \alias{ecs_run_task}
 \title{Starts a new task using the specified task definition}
 \usage{
-ecs_run_task(cluster, taskDefinition, overrides, count, startedBy,
-  group, placementConstraints, placementStrategy, launchType,
-  platformVersion, networkConfiguration, tags, enableECSManagedTags,
-  propagateTags)
+ecs_run_task(capacityProviderStrategy, cluster, count,
+  enableECSManagedTags, group, launchType, networkConfiguration,
+  overrides, placementConstraints, placementStrategy, platformVersion,
+  propagateTags, referenceId, startedBy, tags, taskDefinition)
 }
 \arguments{
+\item{capacityProviderStrategy}{The capacity provider strategy to use for the task.
+
+A capacity provider strategy consists of one or more capacity providers
+along with the \code{base} and \code{weight} to assign to them. A capacity
+provider must be associated with the cluster to be used in a capacity
+provider strategy. The PutClusterCapacityProviders API is used to
+associate a capacity provider with a cluster. Only capacity providers
+with an \code{ACTIVE} or \code{UPDATING} status can be used.
+
+If a \code{capacityProviderStrategy} is specified, the \code{launchType} parameter
+must be omitted. If no \code{capacityProviderStrategy} or \code{launchType} is
+specified, the \code{defaultCapacityProviderStrategy} for the cluster is
+used.
+
+If specifying a capacity provider that uses an Auto Scaling group, the
+capacity provider must already be created. New capacity providers can be
+created with the CreateCapacityProvider API operation.
+
+To use a AWS Fargate capacity provider, specify either the \code{FARGATE} or
+\code{FARGATE_SPOT} capacity providers. The AWS Fargate capacity providers
+are available to all accounts and only need to be associated with a
+cluster to be used.
+
+The PutClusterCapacityProviders API operation is used to update the list
+of available capacity providers for a cluster after the cluster is
+created.}
+
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster on
 which to run your task. If you do not specify a cluster, the default
 cluster is assumed.}
 
-\item{taskDefinition}{[required] The \code{family} and \code{revision} (\code{family:revision}) or full ARN of the task
-definition to run. If a \code{revision} is not specified, the latest \code{ACTIVE}
-revision is used.}
+\item{count}{The number of instantiations of the specified task to place on your
+cluster. You can specify up to 10 tasks per call.}
+
+\item{enableECSManagedTags}{Specifies whether to enable Amazon ECS managed tags for the task. For
+more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html}{Tagging Your Amazon ECS Resources}
+in the \emph{Amazon Elastic Container Service Developer Guide}.}
+
+\item{group}{The name of the task group to associate with the task. The default value
+is the family name of the task definition (for example,
+family:my-family-name).}
+
+\item{launchType}{The launch type on which to run your task. For more information, see
+\href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html}{Amazon ECS Launch Types}
+in the \emph{Amazon Elastic Container Service Developer Guide}.
+
+If a \code{launchType} is specified, the \code{capacityProviderStrategy} parameter
+must be omitted.}
+
+\item{networkConfiguration}{The network configuration for the task. This parameter is required for
+task definitions that use the \code{awsvpc} network mode to receive their own
+elastic network interface, and it is not supported for other network
+modes. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task Networking}
+in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{overrides}{A list of container overrides in JSON format that specify the name of a
 container in the specified task definition and the overrides it should
@@ -29,8 +76,28 @@ new environment variables to it with an \code{environment} override.
 A total of 8192 characters are allowed for overrides. This limit
 includes the JSON formatting characters of the override structure.}
 
-\item{count}{The number of instantiations of the specified task to place on your
-cluster. You can specify up to 10 tasks per call.}
+\item{placementConstraints}{An array of placement constraint objects to use for the task. You can
+specify up to 10 constraints per task (including constraints in the task
+definition and those specified at runtime).}
+
+\item{placementStrategy}{The placement strategy objects to use for the task. You can specify a
+maximum of five strategy rules per task.}
+
+\item{platformVersion}{The platform version the task should run. A platform version is only
+specified for tasks using the Fargate launch type. If one is not
+specified, the \code{LATEST} platform version is used by default. For more
+information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html}{AWS Fargate Platform Versions}
+in the \emph{Amazon Elastic Container Service Developer Guide}.}
+
+\item{propagateTags}{Specifies whether to propagate the tags from the task definition to the
+task. If no value is specified, the tags are not propagated. Tags can
+only be propagated to the task during task creation. To add tags to a
+task after task creation, use the TagResource API action.
+
+An error will be received if you specify the \code{SERVICE} option when
+running a task.}
+
+\item{referenceId}{The reference ID to use for the task.}
 
 \item{startedBy}{An optional tag specified when a task is started. For example, if you
 automatically trigger a task to run a batch process job, you could apply
@@ -43,49 +110,33 @@ underscores are allowed.
 If a task is started by an Amazon ECS service, then the \code{startedBy}
 parameter contains the deployment ID of the service that starts it.}
 
-\item{group}{The name of the task group to associate with the task. The default value
-is the family name of the task definition (for example,
-family:my-family-name).}
-
-\item{placementConstraints}{An array of placement constraint objects to use for the task. You can
-specify up to 10 constraints per task (including constraints in the task
-definition and those specified at runtime).}
-
-\item{placementStrategy}{The placement strategy objects to use for the task. You can specify a
-maximum of five strategy rules per task.}
-
-\item{launchType}{The launch type on which to run your task. For more information, see
-\href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html}{Amazon ECS Launch Types}
-in the \emph{Amazon Elastic Container Service Developer Guide}.}
-
-\item{platformVersion}{The platform version the task should run. A platform version is only
-specified for tasks using the Fargate launch type. If one is not
-specified, the \code{LATEST} platform version is used by default. For more
-information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html}{AWS Fargate Platform Versions}
-in the \emph{Amazon Elastic Container Service Developer Guide}.}
-
-\item{networkConfiguration}{The network configuration for the task. This parameter is required for
-task definitions that use the \code{awsvpc} network mode to receive their own
-elastic network interface, and it is not supported for other network
-modes. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task Networking}
-in the \emph{Amazon Elastic Container Service Developer Guide}.}
-
 \item{tags}{The metadata that you apply to the task to help you categorize and
 organize them. Each tag consists of a key and an optional value, both of
-which you define. Tag keys can have a maximum character length of 128
-characters, and tag values can have a maximum length of 256 characters.}
+which you define.
 
-\item{enableECSManagedTags}{Specifies whether to enable Amazon ECS managed tags for the task. For
-more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html}{Tagging Your Amazon ECS Resources}
-in the \emph{Amazon Elastic Container Service Developer Guide}.}
+The following basic restrictions apply to tags:
+\itemize{
+\item Maximum number of tags per resource - 50
+\item For each resource, each tag key must be unique, and each tag key can
+have only one value.
+\item Maximum key length - 128 Unicode characters in UTF-8
+\item Maximum value length - 256 Unicode characters in UTF-8
+\item If your tagging schema is used across multiple services and
+resources, remember that other services may have restrictions on
+allowed characters. Generally allowed characters are: letters,
+numbers, and spaces representable in UTF-8, and the following
+characters: + - = . \\_ : / @.
+\item Tag keys and values are case-sensitive.
+\item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
+such as a prefix for either keys or values as it is reserved for AWS
+use. You cannot edit or delete tag keys or values with this prefix.
+Tags with this prefix do not count against your tags per resource
+limit.
+}}
 
-\item{propagateTags}{Specifies whether to propagate the tags from the task definition to the
-task. If no value is specified, the tags are not propagated. Tags can
-only be propagated to the task during task creation. To add tags to a
-task after task creation, use the TagResource API action.
-
-An error will be received if you specify the \code{SERVICE} option when
-running a task.}
+\item{taskDefinition}{[required] The \code{family} and \code{revision} (\code{family:revision}) or full ARN of the task
+definition to run. If a \code{revision} is not specified, the latest \code{ACTIVE}
+revision is used.}
 }
 \description{
 Starts a new task using the specified task definition.
@@ -123,8 +174,29 @@ increase gradually up to about five minutes of wait time.
 }
 \section{Request syntax}{
 \preformatted{svc$run_task(
+  capacityProviderStrategy = list(
+    list(
+      capacityProvider = "string",
+      weight = 123,
+      base = 123
+    )
+  ),
   cluster = "string",
-  taskDefinition = "string",
+  count = 123,
+  enableECSManagedTags = TRUE|FALSE,
+  group = "string",
+  launchType = "EC2"|"FARGATE",
+  networkConfiguration = list(
+    awsvpcConfiguration = list(
+      subnets = list(
+        "string"
+      ),
+      securityGroups = list(
+        "string"
+      ),
+      assignPublicIp = "ENABLED"|"DISABLED"
+    )
+  ),
   overrides = list(
     containerOverrides = list(
       list(
@@ -144,17 +216,22 @@ increase gradually up to about five minutes of wait time.
         resourceRequirements = list(
           list(
             value = "string",
-            type = "GPU"
+            type = "GPU"|"InferenceAccelerator"
           )
         )
       )
     ),
-    taskRoleArn = "string",
-    executionRoleArn = "string"
+    cpu = "string",
+    inferenceAcceleratorOverrides = list(
+      list(
+        deviceName = "string",
+        deviceType = "string"
+      )
+    ),
+    executionRoleArn = "string",
+    memory = "string",
+    taskRoleArn = "string"
   ),
-  count = 123,
-  startedBy = "string",
-  group = "string",
   placementConstraints = list(
     list(
       type = "distinctInstance"|"memberOf",
@@ -167,27 +244,17 @@ increase gradually up to about five minutes of wait time.
       field = "string"
     )
   ),
-  launchType = "EC2"|"FARGATE",
   platformVersion = "string",
-  networkConfiguration = list(
-    awsvpcConfiguration = list(
-      subnets = list(
-        "string"
-      ),
-      securityGroups = list(
-        "string"
-      ),
-      assignPublicIp = "ENABLED"|"DISABLED"
-    )
-  ),
+  propagateTags = "TASK_DEFINITION"|"SERVICE",
+  referenceId = "string",
+  startedBy = "string",
   tags = list(
     list(
       key = "string",
       value = "string"
     )
   ),
-  enableECSManagedTags = TRUE|FALSE,
-  propagateTags = "TASK_DEFINITION"|"SERVICE"
+  taskDefinition = "string"
 )
 }
 }

@@ -13,11 +13,11 @@ request.}
 
 \item{NextToken}{When you can get additional results from the \code{ListUsers} call, a
 \code{NextToken} parameter is returned in the output. You can then pass in a
-subsequent command the \code{NextToken} parameter to continue listing
+subsequent command to the \code{NextToken} parameter to continue listing
 additional users.}
 
 \item{ServerId}{[required] A system-assigned unique identifier for a Secure File Transfer Protocol
-(SFTP) server that has users are assigned to it.}
+(SFTP) server that has users assigned to it.}
 }
 \description{
 Lists the users for the server that you specify by passing the

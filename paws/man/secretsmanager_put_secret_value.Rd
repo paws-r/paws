@@ -30,24 +30,24 @@ secret.
 
 If you use the AWS CLI or one of the AWS SDK to call this operation,
 then you can leave this parameter empty. The CLI or SDK generates a
-random UUID for you and includes that in the request. If you don't use
+random UUID for you and includes that in the request. If you don\'t use
 the SDK and instead generate a raw HTTP request to the Secrets Manager
 service endpoint, then you must generate a \code{ClientRequestToken} yourself
 for new versions and include that value in the request.
 
 This value helps ensure idempotency. Secrets Manager uses this value to
 prevent the accidental creation of duplicate versions if there are
-failures and retries during the Lambda rotation function's processing.
+failures and retries during the Lambda rotation function\'s processing.
 We recommend that you generate a
 \href{https://wikipedia.org/wiki/Universally_unique_identifier}{UUID-type}
 value to ensure uniqueness within the specified secret.
 \itemize{
-\item If the \code{ClientRequestToken} value isn't already associated with a
+\item If the \code{ClientRequestToken} value isn\'t already associated with a
 version of the secret then a new version of the secret is created.
-\item If a version with this value already exists and that version's
+\item If a version with this value already exists and that version\'s
 \code{SecretString} or \code{SecretBinary} values are the same as those in the
 request then the request is ignored (the operation is idempotent).
-\item If a version with this value already exists and that version's
+\item If a version with this value already exists and that version\'s
 \code{SecretString} and \code{SecretBinary} values are different from those in
 the request then the request fails because you cannot modify an
 existing secret version. You can only create new versions to store
@@ -84,7 +84,7 @@ in the \emph{AWS CLI User Guide}.
 
 For example:
 
-\code{\\[\{"username":"bob"\},\{"password":"abc123xyz456"\}\\]}
+\verb{\\\[\\\{"username":"bob"\\\},\\\{"password":"abc123xyz456"\\\}\\\]}
 
 If your command-line tool or SDK requires quotation marks around the
 parameter, you should use single quotes to avoid confusion with the
@@ -95,7 +95,7 @@ version of the secret. These staging labels are used to track the
 versions through the rotation process by the Lambda rotation function.
 
 A staging label must be unique to a single version of the secret. If you
-specify a staging label that's already associated with a different
+specify a staging label that\'s already associated with a different
 version of the same secret then that staging label is automatically
 removed from the other version and attached to this version.
 
@@ -136,25 +136,25 @@ can only create new ones.
 \itemize{
 \item If you call an operation that needs to encrypt or decrypt the
 \code{SecretString} or \code{SecretBinary} for a secret in the same account as
-the calling user and that secret doesn't specify a AWS KMS
-encryption key, Secrets Manager uses the account's default AWS
+the calling user and that secret doesn\'t specify a AWS KMS
+encryption key, Secrets Manager uses the account\'s default AWS
 managed customer master key (CMK) with the alias
-\code{aws/secretsmanager}. If this key doesn't already exist in your
+\code{aws/secretsmanager}. If this key doesn\'t already exist in your
 account then Secrets Manager creates it for you automatically. All
 users and roles in the same AWS account automatically have access to
 use the default CMK. Note that if an Secrets Manager API call
-results in AWS having to create the account's AWS-managed CMK, it
+results in AWS having to create the account\'s AWS-managed CMK, it
 can result in a one-time significant delay in returning the result.
 \item If the secret is in a different AWS account from the credentials
 calling an API that requires encryption or decryption of the secret
 value then you must create and use a custom AWS KMS CMK because you
-can't access the default CMK for the account using credentials from
+can\'t access the default CMK for the account using credentials from
 a different AWS account. Store the ARN of the CMK in the secret when
 you create the secret or when you update it by including it in the
 \code{KMSKeyId}. If you call an API that must encrypt or decrypt
 \code{SecretString} or \code{SecretBinary} using credentials from a different
 account then the AWS KMS key policy must grant cross-account access
-to that other account's user or role for both the
+to that other account\'s user or role for both the
 kms:GenerateDataKey and kms:Decrypt operations.
 }
 
@@ -165,7 +165,7 @@ To run this command, you must have the following permissions:
 \item secretsmanager:PutSecretValue
 \item kms:GenerateDataKey - needed only if you use a customer-managed AWS
 KMS key to encrypt the secret. You do not need this permission to
-use the account's default AWS managed CMK for Secrets Manager.
+use the account\'s default AWS managed CMK for Secrets Manager.
 }
 
 \strong{Related operations}
@@ -196,7 +196,7 @@ secret, use GetSecretValue.
 \donttest{svc$put_secret_value(
   ClientRequestToken = "EXAMPLE2-90ab-cdef-fedc-ba987EXAMPLE",
   SecretId = "MyTestDatabaseSecret",
-  SecretString = "{\\"username\\":\\"david\\",\\"password\\":\\"BnQw!XDWgaEeT9XGTT29\\"}"
+  SecretString = "{\"username\":\"david\",\"password\":\"BnQw!XDWgaEeT9XGTT29\"}"
 )}
 
 }

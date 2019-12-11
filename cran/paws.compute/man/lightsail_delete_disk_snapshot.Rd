@@ -22,9 +22,9 @@ regardless of which prior snapshots have been deleted, all active
 snapshots will have access to all the information needed to restore the
 disk.
 
-The \code{delete disk snapshot} operation supports tag-based access control
+The \verb{delete disk snapshot} operation supports tag-based access control
 via resource tags applied to the resource identified by
-diskSnapshotName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\verb{disk snapshot name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_disk_snapshot(

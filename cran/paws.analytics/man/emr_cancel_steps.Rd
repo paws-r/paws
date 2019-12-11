@@ -4,14 +4,17 @@
 \alias{emr_cancel_steps}
 \title{Cancels a pending step or steps in a running cluster}
 \usage{
-emr_cancel_steps(ClusterId, StepIds)
+emr_cancel_steps(ClusterId, StepIds, StepCancellationOption)
 }
 \arguments{
-\item{ClusterId}{The \code{ClusterID} for which specified steps will be canceled. Use
+\item{ClusterId}{[required] The \code{ClusterID} for which specified steps will be canceled. Use
 RunJobFlow and ListClusters to get ClusterIDs.}
 
-\item{StepIds}{The list of \code{StepIDs} to cancel. Use ListSteps to get steps and their
+\item{StepIds}{[required] The list of \code{StepIDs} to cancel. Use ListSteps to get steps and their
 states for the specified cluster.}
+
+\item{StepCancellationOption}{The option to choose for cancelling \code{RUNNING} steps. By default, the
+value is \code{SEND_INTERRUPT}.}
 }
 \description{
 Cancels a pending step or steps in a running cluster. Available only in
@@ -26,7 +29,8 @@ cancel steps that are in a \code{PENDING} state.
   ClusterId = "string",
   StepIds = list(
     "string"
-  )
+  ),
+  StepCancellationOption = "SEND_INTERRUPT"|"TERMINATE_PROCESS"
 )
 }
 }

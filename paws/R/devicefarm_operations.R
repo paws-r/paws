@@ -259,11 +259,17 @@ devicefarm_create_project <- function(name, defaultJobTimeoutMinutes = NULL) {
 #' create a remote access session.
 #' @param instanceArn The Amazon Resource Name (ARN) of the device instance for which you want
 #' to create a remote access session.
-#' @param sshPublicKey The public key of the `ssh` key pair you want to use for connecting to
-#' remote devices in your remote debugging session. This is only required
-#' if `remoteDebugEnabled` is set to `true`.
+#' @param sshPublicKey *Ignored.* The public key of the `ssh` key pair you want to use for
+#' connecting to remote devices in your remote debugging session. This is
+#' only required if `remoteDebugEnabled` is set to `true`.
+#' 
+#' *Remote debugging is [no longer
+#' supported](https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).*
 #' @param remoteDebugEnabled Set to `true` if you want to access devices remotely for debugging in
 #' your remote access session.
+#' 
+#' *Remote debugging is [no longer
+#' supported](https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).*
 #' @param remoteRecordEnabled Set to `true` to enable remote recording for the remote access session.
 #' @param remoteRecordAppArn The Amazon Resource Name (ARN) for the app to be recorded in the remote
 #' access session.
@@ -272,6 +278,9 @@ devicefarm_create_project <- function(name, defaultJobTimeoutMinutes = NULL) {
 #' on the same client, you should pass the same `clientId` value in each
 #' call to `CreateRemoteAccessSession`. This is required only if
 #' `remoteDebugEnabled` is set to `true`.
+#' 
+#' *Remote debugging is [no longer
+#' supported](https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).*
 #' @param configuration The configuration information for the remote access session request.
 #' @param interactionMode The interaction mode of the remote access session. Valid values are:
 #' 
@@ -1876,7 +1885,9 @@ devicefarm_list_device_pools <- function(arn, type = NULL, nextToken = NULL) {
 #'         remote access. Valid values are \"TRUE\" or \"FALSE\".
 #' 
 #'     -   REMOTE\\_DEBUG\\_ENABLED: Whether the device is enabled for remote
-#'         debugging. Valid values are \"TRUE\" or \"FALSE\".
+#'         debugging. Valid values are \"TRUE\" or \"FALSE\". *This
+#'         attribute will be ignored, as remote debugging is [no longer
+#'         supported](https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).*
 #' 
 #'     -   INSTANCE\\_ARN: The Amazon Resource Name (ARN) of the device
 #'         instance.
@@ -2289,8 +2300,8 @@ devicefarm_list_projects <- function(arn = NULL, nextToken = NULL) {
 #' @usage
 #' devicefarm_list_remote_access_sessions(arn, nextToken)
 #'
-#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the remote access session about which
-#' you are requesting information.
+#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the project about which you are
+#' requesting information.
 #' @param nextToken An identifier that was returned from the previous call to this
 #' operation, which can be used to return the next set of items in the
 #' list.
@@ -2449,9 +2460,9 @@ devicefarm_list_samples <- function(arn, nextToken = NULL) {
 #'
 #' @examples
 #' # The following example returns information about suites, given a specific
-#' # Device Farm project.
+#' # Device Farm job.
 #' \donttest{svc$list_suites(
-#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:job:EXAMPLE-GUID-123-456",
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 #' )}
 #'

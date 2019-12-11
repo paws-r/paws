@@ -53,19 +53,24 @@ NULL
 #' \tabular{ll}{
 #'  \link[=rekognition_compare_faces]{compare_faces} \tab Compares a face in the _source_ input image with each of the 100 largest faces detected in the _target_ input image \cr
 #'  \link[=rekognition_create_collection]{create_collection} \tab Creates a collection in an AWS Region \cr
+#'  \link[=rekognition_create_project]{create_project} \tab Creates a new Amazon Rekognition Custom Labels project \cr
+#'  \link[=rekognition_create_project_version]{create_project_version} \tab Creates a new version of a model and begins training \cr
 #'  \link[=rekognition_create_stream_processor]{create_stream_processor} \tab Creates an Amazon Rekognition stream processor that you can use to detect and recognize faces in a streaming video \cr
 #'  \link[=rekognition_delete_collection]{delete_collection} \tab Deletes the specified collection \cr
 #'  \link[=rekognition_delete_faces]{delete_faces} \tab Deletes faces from a collection \cr
 #'  \link[=rekognition_delete_stream_processor]{delete_stream_processor} \tab Deletes the stream processor identified by Name \cr
 #'  \link[=rekognition_describe_collection]{describe_collection} \tab Describes the specified collection \cr
+#'  \link[=rekognition_describe_project_versions]{describe_project_versions} \tab Lists and describes the models in an Amazon Rekognition Custom Labels project \cr
+#'  \link[=rekognition_describe_projects]{describe_projects} \tab Lists and gets information about your Amazon Rekognition Custom Labels projects \cr
 #'  \link[=rekognition_describe_stream_processor]{describe_stream_processor} \tab Provides information about a stream processor created by CreateStreamProcessor \cr
+#'  \link[=rekognition_detect_custom_labels]{detect_custom_labels} \tab Detects custom labels in a supplied image by using an Amazon Rekognition Custom Labels model \cr
 #'  \link[=rekognition_detect_faces]{detect_faces} \tab Detects faces within an image that is provided as input \cr
 #'  \link[=rekognition_detect_labels]{detect_labels} \tab Detects instances of real-world entities within an image (JPEG or PNG) provided as input \cr
-#'  \link[=rekognition_detect_moderation_labels]{detect_moderation_labels} \tab Detects explicit or suggestive adult content in a specified JPEG or PNG format image \cr
+#'  \link[=rekognition_detect_moderation_labels]{detect_moderation_labels} \tab Detects unsafe content in a specified JPEG or PNG format image \cr
 #'  \link[=rekognition_detect_text]{detect_text} \tab Detects text in the input image and converts it into machine-readable text \cr
 #'  \link[=rekognition_get_celebrity_info]{get_celebrity_info} \tab Gets the name and additional information about a celebrity based on his or her Amazon Rekognition ID \cr
 #'  \link[=rekognition_get_celebrity_recognition]{get_celebrity_recognition} \tab Gets the celebrity recognition results for a Amazon Rekognition Video analysis started by StartCelebrityRecognition \cr
-#'  \link[=rekognition_get_content_moderation]{get_content_moderation} \tab Gets the content moderation analysis results for a Amazon Rekognition Video analysis started by StartContentModeration \cr
+#'  \link[=rekognition_get_content_moderation]{get_content_moderation} \tab Gets the unsafe content analysis results for a Amazon Rekognition Video analysis started by StartContentModeration \cr
 #'  \link[=rekognition_get_face_detection]{get_face_detection} \tab Gets face detection results for a Amazon Rekognition Video analysis started by StartFaceDetection \cr
 #'  \link[=rekognition_get_face_search]{get_face_search} \tab Gets the face search results for Amazon Rekognition Video face search started by StartFaceSearch \cr
 #'  \link[=rekognition_get_label_detection]{get_label_detection} \tab Gets the label detection results of a Amazon Rekognition Video analysis started by StartLabelDetection \cr
@@ -78,12 +83,14 @@ NULL
 #'  \link[=rekognition_search_faces]{search_faces} \tab For a given input face ID, searches for matching faces in the collection the face belongs to \cr
 #'  \link[=rekognition_search_faces_by_image]{search_faces_by_image} \tab For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces\cr
 #'  \link[=rekognition_start_celebrity_recognition]{start_celebrity_recognition} \tab Starts asynchronous recognition of celebrities in a stored video \cr
-#'  \link[=rekognition_start_content_moderation]{start_content_moderation} \tab Starts asynchronous detection of explicit or suggestive adult content in a stored video \cr
+#'  \link[=rekognition_start_content_moderation]{start_content_moderation} \tab Starts asynchronous detection of unsafe content in a stored video \cr
 #'  \link[=rekognition_start_face_detection]{start_face_detection} \tab Starts asynchronous detection of faces in a stored video \cr
 #'  \link[=rekognition_start_face_search]{start_face_search} \tab Starts the asynchronous search for faces in a collection that match the faces of persons detected in a stored video \cr
 #'  \link[=rekognition_start_label_detection]{start_label_detection} \tab Starts asynchronous detection of labels in a stored video \cr
 #'  \link[=rekognition_start_person_tracking]{start_person_tracking} \tab Starts the asynchronous tracking of a person's path in a stored video \cr
+#'  \link[=rekognition_start_project_version]{start_project_version} \tab Starts the running of the version of a model \cr
 #'  \link[=rekognition_start_stream_processor]{start_stream_processor} \tab Starts processing a stream processor \cr
+#'  \link[=rekognition_stop_project_version]{stop_project_version} \tab Stops a running model \cr
 #'  \link[=rekognition_stop_stream_processor]{stop_stream_processor} \tab Stops a running stream processor that was created by CreateStreamProcessor 
 #' }
 #'

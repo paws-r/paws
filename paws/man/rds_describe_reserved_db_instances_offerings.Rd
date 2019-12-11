@@ -13,7 +13,7 @@ rds_describe_reserved_db_instances_offerings(
 only the available offering that matches the specified reservation
 identifier.
 
-Example: \code{438012d3-4052-4cc7-b2e3-8d3372e0e706}}
+Example: \verb{438012d3-4052-4cc7-b2e3-8d3372e0e706}}
 
 \item{DBInstanceClass}{The DB instance class filter value. Specify this parameter to show only
 the available offerings matching the specified DB instance class.}
@@ -36,12 +36,11 @@ Valid Values: \code{"Partial Upfront" | "All Upfront" | "No Upfront" }}
 \item{MultiAZ}{A value that indicates whether to show only those reservations that
 support Multi-AZ.}
 
-\item{Filters}{This parameter is not currently supported.}
+\item{Filters}{This parameter isn\'t currently supported.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more than
 the \code{MaxRecords} value is available, a pagination token called a marker
-is included in the response so that the following results can be
-retrieved.
+is included in the response so you can retrieve the remaining results.
 
 Default: 100
 

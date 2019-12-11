@@ -2,8 +2,7 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_describe_key}
 \alias{kms_describe_key}
-\title{Provides detailed information about the specified customer master key
-(CMK)}
+\title{Provides detailed information about a customer master key (CMK)}
 \usage{
 kms_describe_key(KeyId, GrantTokens)
 }
@@ -21,9 +20,9 @@ alias ARN.
 
 For example:
 \itemize{
-\item Key ID: \code{1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
 \item Key ARN:
-\code{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 \item Alias name: \code{alias/ExampleAlias}
 \item Alias ARN: \code{arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias}
 }
@@ -37,14 +36,38 @@ For more information, see \href{https://docs.aws.amazon.com/kms/latest/developer
 in the \emph{AWS Key Management Service Developer Guide}.}
 }
 \description{
-Provides detailed information about the specified customer master key
-(CMK).
+Provides detailed information about a customer master key (CMK). You can
+run \code{DescribeKey} on a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed CMK}
+or an \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{AWS managed CMK}.
 }
 \details{
-You can use \code{DescribeKey} on a predefined AWS alias, that is, an AWS
-alias with no key ID. When you do, AWS KMS associates the alias with an
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys}{AWS managed CMK}
-and returns its \code{KeyId} and \code{Arn} in the response.
+This detailed information includes the key ARN, creation date (and
+deletion date, if applicable), the key state, and the origin and
+expiration date (if any) of the key material. For CMKs in custom key
+stores, it includes information about the custom key store, such as the
+key store ID and the AWS CloudHSM cluster ID. It includes fields, like
+\code{KeySpec}, that help you distinguish symmetric from asymmetric CMKs. It
+also provides information that is particularly important to asymmetric
+CMKs, such as the key usage (encryption or signing) and the encryption
+algorithms or signing algorithms that the CMK supports.
+
+\code{DescribeKey} does not return the following information:
+\itemize{
+\item Aliases associated with the CMK. To get this information, use
+ListAliases.
+\item Whether automatic key rotation is enabled on the CMK. To get this
+information, use GetKeyRotationStatus. Also, some key states prevent
+a CMK from being automatically rotated. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotate-keys-how-it-works}{How Automatic Key Rotation Works}
+in \emph{AWS Key Management Service Developer Guide}.
+\item Tags on the CMK. To get this information, use ListResourceTags.
+\item Key policies and grants on the CMK. To get this information, use
+GetKeyPolicy and ListGrants.
+}
+
+If you call the \code{DescribeKey} operation on a \emph{predefined AWS alias},
+that is, an AWS alias with no key ID, AWS KMS creates an \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys}{AWS managed CMK}.
+Then, it associates the alias with the new CMK, and returns the \code{KeyId}
+and \code{Arn} of the new CMK in the response.
 
 To perform this operation on a CMK in a different AWS account, specify
 the key ARN or alias ARN in the value of the KeyId parameter.

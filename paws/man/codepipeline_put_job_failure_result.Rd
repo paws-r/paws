@@ -15,7 +15,7 @@ ID returned from \code{PollForJobs}.}
 }
 \description{
 Represents the failure of a job as returned to the pipeline by a job
-worker. Only used for custom actions.
+worker. Used for custom actions only.
 }
 \section{Request syntax}{
 \preformatted{svc$put_job_failure_result(

@@ -14,7 +14,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Creates a default VPC with a size \code{/16} IPv4 CIDR block and a default
+Creates a default VPC with a size \verb{/16} IPv4 CIDR block and a default
 subnet in each Availability Zone. For more information about the
 components of a default VPC, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html}{Default VPC and Default Subnets}
 in the \emph{Amazon Virtual Private Cloud User Guide}. You cannot specify the
@@ -26,8 +26,8 @@ You cannot have more than one default VPC per Region.
 
 If your account supports EC2-Classic, you cannot use this action to
 create a default VPC in a Region that supports EC2-Classic. If you want
-a default VPC in a Region that supports EC2-Classic, see "I really want
-a default VPC for my existing EC2 account. Is that possible?" in the
+a default VPC in a Region that supports EC2-Classic, see \"I really want
+a default VPC for my existing EC2 account. Is that possible?\" in the
 \href{http://aws.amazon.com/vpc/faqs/#Default_VPCs}{Default VPCs FAQ}.
 }
 \section{Request syntax}{

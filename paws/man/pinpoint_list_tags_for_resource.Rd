@@ -3,16 +3,16 @@
 \name{pinpoint_list_tags_for_resource}
 \alias{pinpoint_list_tags_for_resource}
 \title{Retrieves all the tags (keys and values) that are associated with an
-application, campaign, or segment}
+application, campaign, journey, message template, or segment}
 \usage{
 pinpoint_list_tags_for_resource(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the application, campaign, or segment.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 }
 \description{
 Retrieves all the tags (keys and values) that are associated with an
-application, campaign, or segment.
+application, campaign, journey, message template, or segment.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(

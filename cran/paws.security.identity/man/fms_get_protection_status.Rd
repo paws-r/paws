@@ -15,19 +15,19 @@ fms_get_protection_status(PolicyId, MemberAccountId, StartTime, EndTime,
 details for.}
 
 \item{StartTime}{The start of the time period to query for the attacks. This is a
-\code{timestamp} type. The sample request above indicates a number type
+\code{timestamp} type. The request syntax listing indicates a \code{number} type
 because the default used by AWS Firewall Manager is Unix time in
 seconds. However, any valid \code{timestamp} format is allowed.}
 
 \item{EndTime}{The end of the time period to query for the attacks. This is a
-\code{timestamp} type. The sample request above indicates a number type
+\code{timestamp} type. The request syntax listing indicates a \code{number} type
 because the default used by AWS Firewall Manager is Unix time in
 seconds. However, any valid \code{timestamp} format is allowed.}
 
 \item{NextToken}{If you specify a value for \code{MaxResults} and you have more objects than
 the number that you specify for \code{MaxResults}, AWS Firewall Manager
-returns a \code{NextToken} value in the response that allows you to list
-another group of objects. For the second and subsequent
+returns a \code{NextToken} value in the response, which you can use to
+retrieve another group of objects. For the second and subsequent
 \code{GetProtectionStatus} requests, specify the value of \code{NextToken} from
 the previous response to get information about another batch of objects.}
 
@@ -38,7 +38,8 @@ that you can use to get another batch of objects.}
 }
 \description{
 If you created a Shield Advanced policy, returns policy-level attack
-summary information in the event of a potential DDoS attack.
+summary information in the event of a potential DDoS attack. Other
+policy types are currently unsupported.
 }
 \section{Request syntax}{
 \preformatted{svc$get_protection_status(

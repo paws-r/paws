@@ -18,13 +18,13 @@ gamelift_describe_player_sessions(GameSessionId, PlayerId,
 
 Possible player session statuses include the following:
 \itemize{
-\item \strong{RESERVED} \-- The player session request has been received, but
+\item \strong{RESERVED} \\-- The player session request has been received, but
 the player has not yet connected to the server process and/or been
 validated.
-\item \strong{ACTIVE} \-- The player has been validated by the server process
+\item \strong{ACTIVE} \\-- The player has been validated by the server process
 and is currently connected.
-\item \strong{COMPLETED} \-- The player connection has been dropped.
-\item \strong{TIMEDOUT} \-- A player session request was received, but the
+\item \strong{COMPLETED} \\-- The player connection has been dropped.
+\item \strong{TIMEDOUT} \\-- A player session request was received, but the
 player did not connect and/or was not validated within the timeout
 limit (60 seconds).
 }}
@@ -59,9 +59,11 @@ PlayerSession object is returned for each session matching the request.
 \item CreatePlayerSessions
 \item DescribePlayerSessions
 \item Game session placements
+\itemize{
 \item StartGameSessionPlacement
 \item DescribeGameSessionPlacement
 \item StopGameSessionPlacement
+}
 }
 }
 \section{Request syntax}{

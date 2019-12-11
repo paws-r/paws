@@ -4,30 +4,35 @@
 \alias{apigatewayv2_update_stage}
 \title{Updates a Stage}
 \usage{
-apigatewayv2_update_stage(AccessLogSettings, ApiId, ClientCertificateId,
-  DefaultRouteSettings, DeploymentId, Description, RouteSettings,
-  StageName, StageVariables)
+apigatewayv2_update_stage(AccessLogSettings, ApiId, AutoDeploy,
+  ClientCertificateId, DefaultRouteSettings, DeploymentId, Description,
+  RouteSettings, StageName, StageVariables)
 }
 \arguments{
 \item{AccessLogSettings}{Settings for logging access in this stage.}
 
 \item{ApiId}{[required] The API identifier.}
 
+\item{AutoDeploy}{Specifies whether updates to an API automatically trigger a new
+deployment. The default value is false.}
+
 \item{ClientCertificateId}{The identifier of a client certificate for a Stage.}
 
 \item{DefaultRouteSettings}{The default route settings for the stage.}
 
-\item{DeploymentId}{The deployment identifier for the API stage.}
+\item{DeploymentId}{The deployment identifier for the API stage. Can\'t be updated if
+autoDeploy is enabled.}
 
 \item{Description}{The description for the API stage.}
 
 \item{RouteSettings}{Route settings for the stage.}
 
-\item{StageName}{[required] The stage name.}
+\item{StageName}{[required] The stage name. Stage names can only contain alphanumeric characters,
+hyphens, and underscores. Maximum length is 128 characters.}
 
 \item{StageVariables}{A map that defines the stage variables for a Stage. Variable names can
 have alphanumeric and underscore characters, and the values must match
-[A-Za-z0-9-.\_~:/?\#&=,]+.}
+[A-Za-z0-9-.\\_\~:/?\\#&=,]+. Supported only for WebSocket APIs.}
 }
 \description{
 Updates a Stage.
@@ -39,6 +44,7 @@ Updates a Stage.
     Format = "string"
   ),
   ApiId = "string",
+  AutoDeploy = TRUE|FALSE,
   ClientCertificateId = "string",
   DefaultRouteSettings = list(
     DataTraceEnabled = TRUE|FALSE,

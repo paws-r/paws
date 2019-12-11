@@ -15,7 +15,7 @@ serverlessapplicationrepository_create_application(Author, Description,
 
 Minimum length=1. Maximum length=127.
 
-Pattern "\^[a-z0-9](([a-z0-9]\|-(?!-))*[a-z0-9])?\$";}
+Pattern \"\\^[a-z0-9](([a-z0-9]\\|-(?!-))\*[a-z0-9])?\\$\";}
 
 \item{Description}{[required] The description of the application.
 
@@ -28,11 +28,11 @@ location of your GitHub repository for the application.}
 
 Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
-Pattern: "\^[a-zA-Z0-9+\\-\_:\\/@]+\$";}
+Pattern: \"\\^[a-zA-Z0-9+\\\\-\\_:\\\\/@]+\\$\";}
 
 \item{LicenseBody}{A local text file that contains the license of the app that matches the
 spdxLicenseID value of your application. The file has the format
-file://\<path\>/\<filename\>.
+file://\\<path\\>/\\<filename\\>.
 
 Maximum size 5 MB
 
@@ -51,11 +51,11 @@ error results.}
 
 Minimum length=1. Maximum length=140
 
-Pattern: "[a-zA-Z0-9\\-]+";}
+Pattern: \"[a-zA-Z0-9\\\\-]+\";}
 
 \item{ReadmeBody}{A local text readme file in Markdown language that contains a more
 detailed description of the application and how it works. The file has
-the format file://\<path\>/\<filename\>.
+the format file://\\<path\\>/\\<filename\\>.
 
 Maximum size 5 MB
 
@@ -85,7 +85,7 @@ for example the URL of a specific GitHub commit.}
 \item{SpdxLicenseId}{A valid identifier from \url{https://spdx.org/licenses/}.}
 
 \item{TemplateBody}{The local raw packaged AWS SAM template file of your application. The
-file has the format file://\<path\>/\<filename\>.
+file has the format file://\\<path\\>/\\<filename\\>.
 
 You can specify only one of templateBody and templateUrl; otherwise an
 error results.}

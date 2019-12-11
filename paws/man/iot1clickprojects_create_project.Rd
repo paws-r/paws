@@ -19,7 +19,7 @@ However, you can update \code{callbackOverrides} for the device templates
 using the \code{UpdateProject} API.}
 
 \item{tags}{Optional tags (metadata key/value pairs) to be associated with the
-project. For example, \code{\{ \{"key1": "value1", "key2": "value2"\} \}}. For
+project. For example, \verb{\\\{ \\\{"key1": "value1", "key2": "value2"\\\} \\\}}. For
 more information, see \href{https://aws.amazon.com/answers/account-management/aws-tagging-strategies/}{AWS Tagging Strategies}.}
 }
 \description{

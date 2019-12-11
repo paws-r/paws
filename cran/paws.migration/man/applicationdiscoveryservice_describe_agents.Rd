@@ -15,7 +15,7 @@ agents/Connectors associated with your AWS user account.}
 \item{filters}{You can filter the request using various logical operators and a
 \emph{key}-\emph{value} format. For example:
 
-\code{\{"key": "collectionStatus", "value": "STARTED"\}}}
+\verb{\\\{"key": "collectionStatus", "value": "STARTED"\\\}}}
 
 \item{maxResults}{The total number of agents/Connectors to return in a single page of
 output. The maximum value is 100.}

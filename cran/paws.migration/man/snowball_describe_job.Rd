@@ -9,7 +9,7 @@ snowball_describe_job(JobId)
 }
 \arguments{
 \item{JobId}{[required] The automatically generated ID for a job, for example
-\code{JID123e4567-e89b-12d3-a456-426655440000}.}
+\verb{JID123e4567-e89b-12d3-a456-426655440000}.}
 }
 \description{
 Returns information about a specific job including shipping information,

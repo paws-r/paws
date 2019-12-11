@@ -10,19 +10,19 @@ route53resolver(config = list())
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
-Here's how you set up to query an Amazon Route 53 private hosted zone
+Here\'s how you set up to query an Amazon Route 53 private hosted zone
 from your network:
 \enumerate{
 \item Connect your network to a VPC using AWS Direct Connect or a VPN.
 \item Run the following AWS CLI command to create a Resolver endpoint:
 
-\code{create-resolver-endpoint --name \\[endpoint_name\\] --direction INBOUND --creator-request-id \\[unique_string\\] --security-group-ids \\[security_group_with_inbound_rules\\] --ip-addresses SubnetId=\\[subnet_id\\] SubnetId=\\[subnet_id_in_different_AZ\\]}
+\verb{create-resolver-endpoint --name \\\[endpoint_name\\\] --direction INBOUND --creator-request-id \\\[unique_string\\\] --security-group-ids \\\[security_group_with_inbound_rules\\\] --ip-addresses SubnetId=\\\[subnet_id\\\] SubnetId=\\\[subnet_id_in_different_AZ\\\]}
 
-Note the resolver endpoint ID that appears in the response. You'll
+Note the resolver endpoint ID that appears in the response. You\'ll
 use it in step 3.
 \item Get the IP addresses for the Resolver endpoints:
 
-\code{get-resolver-endpoint --resolver-endpoint-id \\[resolver_endpoint_id\\]}
+\verb{get-resolver-endpoint --resolver-endpoint-id \\\[resolver_endpoint_id\\\]}
 \item In your network configuration, define the IP addresses that you got
 in step 3 as DNS servers.
 
@@ -40,7 +40,7 @@ remove IP addresses from an endpoint.
 
 To delete an endpoint, use the following AWS CLI command:
 
-\code{delete-resolver-endpoint --resolver-endpoint-id \\[resolver_endpoint_id\\]}
+\verb{delete-resolver-endpoint --resolver-endpoint-id \\\[resolver_endpoint_id\\\]}
 }
 \section{Service syntax}{
 \preformatted{svc <- route53resolver(

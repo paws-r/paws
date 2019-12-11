@@ -26,14 +26,18 @@ dax_create_cluster(ClusterName, NodeType, Description,
 \item{ReplicationFactor}{[required] The number of nodes in the DAX cluster. A replication factor of 1 will
 create a single-node cluster, without any read replicas. For additional
 fault tolerance, you can create a multiple node cluster with one or more
-read replicas. To do this, set \emph{ReplicationFactor} to 2 or more.
+read replicas. To do this, set \code{ReplicationFactor} to a number between 3
+(one primary and two read replicas) and 10 (one primary and nine read
+replicas). \verb{If the AvailabilityZones} parameter is provided, its length
+must equal the \code{ReplicationFactor}.
 
 AWS recommends that you have at least two read replicas per cluster.}
 
-\item{AvailabilityZones}{The Availability Zones (AZs) in which the cluster nodes will be created.
-All nodes belonging to the cluster are placed in these Availability
-Zones. Use this parameter if you want to distribute the nodes across
-multiple AZs.}
+\item{AvailabilityZones}{The Availability Zones (AZs) in which the cluster nodes will reside
+after the cluster has been created or updated. If provided, the length
+of this list must equal the \code{ReplicationFactor} parameter. If you omit
+this parameter, DAX will spread the nodes across Availability Zones for
+the highest availability.}
 
 \item{SubnetGroupName}{The name of the subnet group to be used for the replication group.
 
@@ -62,7 +66,7 @@ is a 60 minute period. Valid values for \code{ddd} are:
 
 Example: \code{sun:05:00-sun:09:00}
 
-If you don't specify a preferred maintenance window when you create or
+If you don\'t specify a preferred maintenance window when you create or
 modify a cache cluster, DAX assigns a 60-minute maintenance window on a
 randomly selected day of the week.}
 
@@ -72,7 +76,7 @@ notifications will be sent.
 The Amazon SNS topic owner must be same as the DAX cluster owner.}
 
 \item{IamRoleArn}{[required] A valid Amazon Resource Name (ARN) that identifies an IAM role. At
-runtime, DAX will assume this role and use the role's permissions to
+runtime, DAX will assume this role and use the role\'s permissions to
 access DynamoDB on your behalf.}
 
 \item{ParameterGroupName}{The parameter group to be associated with the DAX cluster.}

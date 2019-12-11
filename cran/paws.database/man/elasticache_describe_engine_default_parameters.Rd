@@ -11,8 +11,8 @@ elasticache_describe_engine_default_parameters(
 \arguments{
 \item{CacheParameterGroupFamily}{[required] The name of the cache parameter group family.
 
-Valid values are: \code{memcached1.4} \| \code{memcached1.5} \| \code{redis2.6} \|
-\code{redis2.8} \| \code{redis3.2} \| \code{redis4.0} \| \code{redis5.0} \|}
+Valid values are: \code{memcached1.4} \\| \code{memcached1.5} \\| \code{redis2.6} \\|
+\code{redis2.8} \\| \code{redis3.2} \\| \code{redis4.0} \\| \code{redis5.0} \\|}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a marker is

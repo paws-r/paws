@@ -2,34 +2,40 @@
 % Please edit documentation in R/licensemanager_operations.R
 \name{licensemanager_update_license_configuration}
 \alias{licensemanager_update_license_configuration}
-\title{Modifies the attributes of an existing license configuration object}
+\title{Modifies the attributes of an existing license configuration}
 \usage{
 licensemanager_update_license_configuration(LicenseConfigurationArn,
   LicenseConfigurationStatus, LicenseRules, LicenseCount,
-  LicenseCountHardLimit, Name, Description)
+  LicenseCountHardLimit, Name, Description, ProductInformationList)
 }
 \arguments{
-\item{LicenseConfigurationArn}{[required] ARN for a license configuration.}
+\item{LicenseConfigurationArn}{[required] Amazon Resource Name (ARN) of the license configuration.}
 
-\item{LicenseConfigurationStatus}{New status of the license configuration (\code{ACTIVE} or \code{INACTIVE}).}
+\item{LicenseConfigurationStatus}{New status of the license configuration.}
 
-\item{LicenseRules}{List of flexible text strings designating license rules.}
+\item{LicenseRules}{New license rules.}
 
 \item{LicenseCount}{New number of licenses managed by the license configuration.}
 
-\item{LicenseCountHardLimit}{Sets the number of available licenses as a hard limit.}
+\item{LicenseCountHardLimit}{New hard limit of the number of available licenses.}
 
 \item{Name}{New name of the license configuration.}
 
-\item{Description}{New human-friendly description of the license configuration.}
+\item{Description}{New description of the license configuration.}
+
+\item{ProductInformationList}{New product information.}
 }
 \description{
-Modifies the attributes of an existing license configuration object. A
-license configuration is an abstraction of a customer license agreement
-that can be consumed and enforced by License Manager. Components include
-specifications for the license type (Instances, cores, sockets, VCPUs),
-tenancy (shared or Dedicated Host), host affinity (how long a VM is
-associated with a host), the number of licenses purchased and used.
+Modifies the attributes of an existing license configuration.
+}
+\details{
+A license configuration is an abstraction of a customer license
+agreement that can be consumed and enforced by License Manager.
+Components include specifications for the license type (licensing by
+instance, socket, CPU, or vCPU), allowed tenancy (shared tenancy,
+Dedicated Instance, Dedicated Host, or all of these), host affinity (how
+long a VM must be associated with a host), and the number of licenses
+purchased and used.
 }
 \section{Request syntax}{
 \preformatted{svc$update_license_configuration(
@@ -41,7 +47,21 @@ associated with a host), the number of licenses purchased and used.
   LicenseCount = 123,
   LicenseCountHardLimit = TRUE|FALSE,
   Name = "string",
-  Description = "string"
+  Description = "string",
+  ProductInformationList = list(
+    list(
+      ResourceType = "string",
+      ProductInformationFilterList = list(
+        list(
+          ProductInformationFilterName = "string",
+          ProductInformationFilterValue = list(
+            "string"
+          ),
+          ProductInformationFilterComparator = "string"
+        )
+      )
+    )
+  )
 )
 }
 }

@@ -8,7 +8,7 @@ is associated with the current AWS account}
 route53_list_traffic_policies(TrafficPolicyIdMarker, MaxItems)
 }
 \arguments{
-\item{TrafficPolicyIdMarker}{(Conditional) For your first request to \code{ListTrafficPolicies}, don't
+\item{TrafficPolicyIdMarker}{(Conditional) For your first request to \code{ListTrafficPolicies}, don\'t
 include the \code{TrafficPolicyIdMarker} parameter.
 
 If you have more traffic policies than the value of \code{MaxItems},

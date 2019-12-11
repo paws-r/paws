@@ -53,7 +53,7 @@ response syntax are not returned.
 For more information, see FaceDetail in the Amazon Rekognition Developer
 Guide.
 
-By default, the array is sorted by the time(s) a person's path is
+By default, the array is sorted by the time(s) a person\'s path is
 tracked in the video. You can sort by tracked persons by specifying
 \code{INDEX} for the \code{SortBy} input parameter.
 

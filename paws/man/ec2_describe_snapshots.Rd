@@ -12,20 +12,20 @@ ec2_describe_snapshots(Filters, MaxResults, NextToken, OwnerIds,
 \item{Filters}{The filters.
 \itemize{
 \item \code{description} - A description of the snapshot.
-\item \code{encrypted} - Indicates whether the snapshot is encrypted (\code{true} \|
+\item \code{encrypted} - Indicates whether the snapshot is encrypted (\code{true} \\|
 \code{false})
-\item \code{owner-alias} - Value from an Amazon-maintained list (\code{amazon} \|
-\code{self} \| \code{all} \| \code{aws-marketplace} \| \code{microsoft}) of snapshot
+\item \code{owner-alias} - Value from an Amazon-maintained list (\code{amazon} \\|
+\code{self} \\| \code{all} \\| \code{aws-marketplace} \\| \code{microsoft}) of snapshot
 owners. Not to be confused with the user-configured AWS account
 alias, which is set from the IAM console.
 \item \code{owner-id} - The ID of the AWS account that owns the snapshot.
 \item \code{progress} - The progress of the snapshot, as a percentage (for
-example, 80\%).
+example, 80\\%).
 \item \code{snapshot-id} - The snapshot ID.
 \item \code{start-time} - The time stamp when the snapshot was initiated.
-\item \code{status} - The status of the snapshot (\code{pending} \| \code{completed} \|
+\item \code{status} - The status of the snapshot (\code{pending} \\| \code{completed} \\|
 \code{error}).
-\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+\item \code{tag}:\\<key\\> - The key/value combination of a tag assigned to the
 resource. Use the tag key in the filter name and the tag value as
 the filter value. For example, to find all resources that have a tag
 with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
@@ -148,7 +148,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example describes a snapshot with the snapshot ID of
-# ``snap-1234567890abcdef0``.
+# `snap-1234567890abcdef0`.
 \donttest{svc$describe_snapshots(
   SnapshotIds = list(
     "snap-1234567890abcdef0"
@@ -156,7 +156,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 )}
 
 # This example describes all snapshots owned by the ID 012345678910 that
-# are in the ``pending`` status.
+# are in the `pending` status.
 \donttest{svc$describe_snapshots(
   Filters = list(
     list(

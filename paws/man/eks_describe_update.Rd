@@ -3,18 +3,20 @@
 \name{eks_describe_update}
 \alias{eks_describe_update}
 \title{Returns descriptive information about an update against your Amazon EKS
-cluster}
+cluster or associated managed node group}
 \usage{
-eks_describe_update(name, updateId)
+eks_describe_update(name, updateId, nodegroupName)
 }
 \arguments{
-\item{name}{[required] The name of the Amazon EKS cluster to update.}
+\item{name}{[required] The name of the Amazon EKS cluster associated with the update.}
 
 \item{updateId}{[required] The ID of the update to describe.}
+
+\item{nodegroupName}{The name of the Amazon EKS node group associated with the update.}
 }
 \description{
 Returns descriptive information about an update against your Amazon EKS
-cluster.
+cluster or associated managed node group.
 }
 \details{
 When the status of the update is \code{Succeeded}, the update is complete. If
@@ -24,7 +26,8 @@ the reason for the failure.
 \section{Request syntax}{
 \preformatted{svc$describe_update(
   name = "string",
-  updateId = "string"
+  updateId = "string",
+  nodegroupName = "string"
 )
 }
 }

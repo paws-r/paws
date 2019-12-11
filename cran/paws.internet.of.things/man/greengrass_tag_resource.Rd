@@ -2,17 +2,17 @@
 % Please edit documentation in R/greengrass_operations.R
 \name{greengrass_tag_resource}
 \alias{greengrass_tag_resource}
-\title{Add tags to a resource}
+\title{Adds tags to a Greengrass resource}
 \usage{
 greengrass_tag_resource(ResourceArn, tags)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 
-\item{tags}{[required] A map of the key-value pairs for the resource tag.}
+\item{tags}{}
 }
 \description{
-Add tags to a resource.
+Adds tags to a Greengrass resource. Valid resources are 'Group', 'ConnectorDefinition', 'CoreDefinition', 'DeviceDefinition', 'FunctionDefinition', 'LoggerDefinition', 'SubscriptionDefinition', 'ResourceDefinition', and 'BulkDeployment'.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

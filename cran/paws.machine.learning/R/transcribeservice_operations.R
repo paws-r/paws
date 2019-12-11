@@ -21,11 +21,11 @@ NULL
 #' custom vocabulary. The URI must be in the same region as the API
 #' endpoint that you are calling. The general form is
 #' 
-#' ` https://s3-&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt; `
+#' ` https://s3.&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt; `
 #' 
 #' For example:
 #' 
-#' `https://s3-us-east-1.amazonaws.com/examplebucket/vocab.txt`
+#' `https://s3.us-east-1.amazonaws.com/examplebucket/vocab.txt`
 #' 
 #' For more information about S3 object names, see [Object
 #' Keys](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)
@@ -38,7 +38,7 @@ NULL
 #' ```
 #' svc$create_vocabulary(
 #'   VocabularyName = "string",
-#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR"|"es-ES"|"en-IN"|"hi-IN"|"ar-SA",
+#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR"|"es-ES"|"en-IN"|"hi-IN"|"ar-SA"|"ru-RU"|"zh-CN"|"nl-NL"|"id-ID"|"ta-IN"|"fa-IR"|"en-IE"|"en-AB"|"en-WL"|"pt-PT"|"te-IN"|"tr-TR"|"de-CH"|"he-IL"|"ms-MY"|"ja-JP"|"ar-AE",
 #'   Phrases = list(
 #'     "string"
 #'   ),
@@ -323,14 +323,20 @@ transcribeservice_list_vocabularies <- function(NextToken = NULL, MaxResults = N
 #' @usage
 #' transcribeservice_start_transcription_job(TranscriptionJobName,
 #'   LanguageCode, MediaSampleRateHertz, MediaFormat, Media,
-#'   OutputBucketName, Settings)
+#'   OutputBucketName, OutputEncryptionKMSKeyId, Settings)
 #'
 #' @param TranscriptionJobName &#91;required&#93; The name of the job. Note that you can\'t use the strings \".\" or
 #' \"..\" by themselves as the job name. The name must also be unique
 #' within an AWS account.
 #' @param LanguageCode &#91;required&#93; The language code for the language used in the input media file.
 #' @param MediaSampleRateHertz The sample rate, in Hertz, of the audio track in the input media file.
-#' @param MediaFormat &#91;required&#93; The format of the input media file.
+#' 
+#' If you do not specify the media sample rate, Amazon Transcribe
+#' determines the sample rate. If you specify the sample rate, it must
+#' match the sample rate detected by Amazon Transcribe. In most cases, you
+#' should leave the `MediaSampleRateHertz` field blank and let Amazon
+#' Transcribe determine the sample rate.
+#' @param MediaFormat The format of the input media file.
 #' @param Media &#91;required&#93; An object that describes the input media for a transcription job.
 #' @param OutputBucketName The location where the transcription is stored.
 #' 
@@ -340,16 +346,45 @@ transcribeservice_list_vocabularies <- function(NextToken = NULL, MaxResults = N
 #' the `TranscriptFileUri` field. The S3 bucket must have permissions that
 #' allow Amazon Transcribe to put files in the bucket. For more
 #' information, see [Permissions Required for IAM User
-#' Roles](https://docs.aws.amazon.com/transcribe/latest/dg/access-control-managing-permissions.html#auth-role-iam-user).
+#' Roles](https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user).
 #' 
-#' Amazon Transcribe uses the default Amazon S3 key for server-side
-#' encryption of transcripts that are placed in your S3 bucket. You can\'t
-#' specify your own encryption key.
+#' You can specify an AWS Key Management Service (KMS) key to encrypt the
+#' output of your transcription using the `OutputEncryptionKMSKeyId`
+#' parameter. If you don\'t specify a KMS key, Amazon Transcribe uses the
+#' default Amazon S3 key for server-side encryption of transcripts that are
+#' placed in your S3 bucket.
 #' 
 #' If you don\'t set the `OutputBucketName`, Amazon Transcribe generates a
 #' pre-signed URL, a shareable URL that provides secure access to your
 #' transcription, and returns it in the `TranscriptFileUri` field. Use this
 #' URL to download the transcription.
+#' @param OutputEncryptionKMSKeyId The Amazon Resource Name (ARN) of the AWS Key Management Service (KMS)
+#' key used to encrypt the output of the transcription job. The user
+#' calling the `StartTranscriptionJob` operation must have permission to
+#' use the specified KMS key.
+#' 
+#' You can use either of the following to identify a KMS key in the current
+#' account:
+#' 
+#' -   KMS Key ID: \"1234abcd-12ab-34cd-56ef-1234567890ab\"
+#' 
+#' -   KMS Key Alias: \"alias/ExampleAlias\"
+#' 
+#' You can use either of the following to identify a KMS key in the current
+#' account or another account:
+#' 
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     \"arn:aws:kms:region:account
+#'     ID:key/1234abcd-12ab-34cd-56ef-1234567890ab\"
+#' 
+#' -   ARN of a KMS Key Alias: \"arn:aws:kms:region:account
+#'     ID:alias/ExampleAlias\"
+#' 
+#' If you don\'t specify an encryption key, the output of the transcription
+#' job is encrypted with the default Amazon S3 key (SSE-S3).
+#' 
+#' If you specify a KMS key to encrypt your output, you must also specify
+#' an output location in the `OutputBucketName` parameter.
 #' @param Settings A `Settings` object that provides optional settings for a transcription
 #' job.
 #'
@@ -357,18 +392,21 @@ transcribeservice_list_vocabularies <- function(NextToken = NULL, MaxResults = N
 #' ```
 #' svc$start_transcription_job(
 #'   TranscriptionJobName = "string",
-#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR"|"es-ES"|"en-IN"|"hi-IN"|"ar-SA",
+#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR"|"es-ES"|"en-IN"|"hi-IN"|"ar-SA"|"ru-RU"|"zh-CN"|"nl-NL"|"id-ID"|"ta-IN"|"fa-IR"|"en-IE"|"en-AB"|"en-WL"|"pt-PT"|"te-IN"|"tr-TR"|"de-CH"|"he-IL"|"ms-MY"|"ja-JP"|"ar-AE",
 #'   MediaSampleRateHertz = 123,
 #'   MediaFormat = "mp3"|"mp4"|"wav"|"flac",
 #'   Media = list(
 #'     MediaFileUri = "string"
 #'   ),
 #'   OutputBucketName = "string",
+#'   OutputEncryptionKMSKeyId = "string",
 #'   Settings = list(
 #'     VocabularyName = "string",
 #'     ShowSpeakerLabels = TRUE|FALSE,
 #'     MaxSpeakerLabels = 123,
-#'     ChannelIdentification = TRUE|FALSE
+#'     ChannelIdentification = TRUE|FALSE,
+#'     ShowAlternatives = TRUE|FALSE,
+#'     MaxAlternatives = 123
 #'   )
 #' )
 #' ```
@@ -376,14 +414,14 @@ transcribeservice_list_vocabularies <- function(NextToken = NULL, MaxResults = N
 #' @keywords internal
 #'
 #' @rdname transcribeservice_start_transcription_job
-transcribeservice_start_transcription_job <- function(TranscriptionJobName, LanguageCode, MediaSampleRateHertz = NULL, MediaFormat, Media, OutputBucketName = NULL, Settings = NULL) {
+transcribeservice_start_transcription_job <- function(TranscriptionJobName, LanguageCode, MediaSampleRateHertz = NULL, MediaFormat = NULL, Media, OutputBucketName = NULL, OutputEncryptionKMSKeyId = NULL, Settings = NULL) {
   op <- new_operation(
     name = "StartTranscriptionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transcribeservice$start_transcription_job_input(TranscriptionJobName = TranscriptionJobName, LanguageCode = LanguageCode, MediaSampleRateHertz = MediaSampleRateHertz, MediaFormat = MediaFormat, Media = Media, OutputBucketName = OutputBucketName, Settings = Settings)
+  input <- .transcribeservice$start_transcription_job_input(TranscriptionJobName = TranscriptionJobName, LanguageCode = LanguageCode, MediaSampleRateHertz = MediaSampleRateHertz, MediaFormat = MediaFormat, Media = Media, OutputBucketName = OutputBucketName, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, Settings = Settings)
   output <- .transcribeservice$start_transcription_job_output()
   config <- get_config()
   svc <- .transcribeservice$service(config)
@@ -410,11 +448,11 @@ transcribeservice_start_transcription_job <- function(TranscriptionJobName, Lang
 #' custom vocabulary. The URI must be in the same region as the API
 #' endpoint that you are calling. The general form is
 #' 
-#' ` https://s3-&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt; `
+#' ` https://s3.&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt; `
 #' 
 #' For example:
 #' 
-#' `https://s3-us-east-1.amazonaws.com/examplebucket/vocab.txt`
+#' `https://s3.us-east-1.amazonaws.com/examplebucket/vocab.txt`
 #' 
 #' For more information about S3 object names, see [Object
 #' Keys](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)
@@ -427,7 +465,7 @@ transcribeservice_start_transcription_job <- function(TranscriptionJobName, Lang
 #' ```
 #' svc$update_vocabulary(
 #'   VocabularyName = "string",
-#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR"|"es-ES"|"en-IN"|"hi-IN"|"ar-SA",
+#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR"|"es-ES"|"en-IN"|"hi-IN"|"ar-SA"|"ru-RU"|"zh-CN"|"nl-NL"|"id-ID"|"ta-IN"|"fa-IR"|"en-IE"|"en-AB"|"en-WL"|"pt-PT"|"te-IN"|"tr-TR"|"de-CH"|"he-IL"|"ms-MY"|"ja-JP"|"ar-AE",
 #'   Phrases = list(
 #'     "string"
 #'   ),

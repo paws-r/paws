@@ -14,26 +14,26 @@ codecommit_get_merge_options(repositoryName, sourceCommitSpecifier,
 want to get merge options.}
 
 \item{sourceCommitSpecifier}{[required] The branch, tag, HEAD, or other fully qualified reference used to
-identify a commit. For example, a branch name or a full commit ID.}
+identify a commit (for example, a branch name or a full commit ID).}
 
 \item{destinationCommitSpecifier}{[required] The branch, tag, HEAD, or other fully qualified reference used to
-identify a commit. For example, a branch name or a full commit ID.}
+identify a commit (for example, a branch name or a full commit ID).}
 
 \item{conflictDetailLevel}{The level of conflict detail to use. If unspecified, the default
-FILE\_LEVEL is used, which will return a not mergeable result if the
-same file has differences in both branches. If LINE\_LEVEL is specified,
-a conflict will be considered not mergeable if the same file in both
-branches has differences on the same line.}
+FILE\\_LEVEL is used, which returns a not-mergeable result if the same
+file has differences in both branches. If LINE\\_LEVEL is specified, a
+conflict is considered not mergeable if the same file in both branches
+has differences on the same line.}
 
 \item{conflictResolutionStrategy}{Specifies which branch to use when resolving conflicts, or whether to
 attempt automatically merging two versions of a file. The default is
 NONE, which requires any conflicts to be resolved manually before the
-merge operation will be successful.}
+merge operation is successful.}
 }
 \description{
 Returns information about the merge options available for merging two
-specified branches. For details about why a particular merge option is
-not available, use GetMergeConflicts or DescribeMergeConflicts.
+specified branches. For details about why a merge option is not
+available, use GetMergeConflicts or DescribeMergeConflicts.
 }
 \section{Request syntax}{
 \preformatted{svc$get_merge_options(

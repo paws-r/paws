@@ -10,10 +10,10 @@ ec2_describe_placement_groups(Filters, DryRun, GroupNames)
 \item{Filters}{The filters.
 \itemize{
 \item \code{group-name} - The name of the placement group.
-\item \code{state} - The state of the placement group (\code{pending} \| \code{available}
-\| \code{deleting} \| \code{deleted}).
-\item \code{strategy} - The strategy of the placement group (\code{cluster} \|
-\code{spread} \| \code{partition}).
+\item \code{state} - The state of the placement group (\code{pending} \\| \code{available}
+\\| \code{deleting} \\| \code{deleted}).
+\item \code{strategy} - The strategy of the placement group (\code{cluster} \\|
+\code{spread} \\| \code{partition}).
 }}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without

@@ -19,12 +19,16 @@ create a remote access session.}
 \item{instanceArn}{The Amazon Resource Name (ARN) of the device instance for which you want
 to create a remote access session.}
 
-\item{sshPublicKey}{The public key of the \code{ssh} key pair you want to use for connecting to
-remote devices in your remote debugging session. This is only required
-if \code{remoteDebugEnabled} is set to \code{true}.}
+\item{sshPublicKey}{\emph{Ignored.} The public key of the \code{ssh} key pair you want to use for
+connecting to remote devices in your remote debugging session. This is
+only required if \code{remoteDebugEnabled} is set to \code{true}.
+
+\emph{Remote debugging is \href{https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html}{no longer supported}.}}
 
 \item{remoteDebugEnabled}{Set to \code{true} if you want to access devices remotely for debugging in
-your remote access session.}
+your remote access session.
+
+\emph{Remote debugging is \href{https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html}{no longer supported}.}}
 
 \item{remoteRecordEnabled}{Set to \code{true} to enable remote recording for the remote access session.}
 
@@ -36,7 +40,9 @@ access session.}
 \item{clientId}{Unique identifier for the client. If you want access to multiple devices
 on the same client, you should pass the same \code{clientId} value in each
 call to \code{CreateRemoteAccessSession}. This is required only if
-\code{remoteDebugEnabled} is set to \code{true}.}
+\code{remoteDebugEnabled} is set to \code{true}.
+
+\emph{Remote debugging is \href{https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html}{no longer supported}.}}
 
 \item{configuration}{The configuration information for the remote access session request.}
 
@@ -45,10 +51,10 @@ call to \code{CreateRemoteAccessSession}. This is required only if
 \item INTERACTIVE: You can interact with the iOS device by viewing,
 touching, and rotating the screen. You \strong{cannot} run XCUITest
 framework-based tests in this mode.
-\item NO\_VIDEO: You are connected to the device but cannot interact with
+\item NO\\_VIDEO: You are connected to the device but cannot interact with
 it or view the screen. This mode has the fastest test execution
 speed. You \strong{can} run XCUITest framework-based tests in this mode.
-\item VIDEO\_ONLY: You can view the screen but cannot touch or rotate it.
+\item VIDEO\\_ONLY: You can view the screen but cannot touch or rotate it.
 You \strong{can} run XCUITest framework-based tests and watch the screen
 in this mode.
 }}

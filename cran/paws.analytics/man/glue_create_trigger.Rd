@@ -16,7 +16,7 @@ glue_create_trigger(Name, WorkflowName, Type, Schedule, Predicate,
 
 \item{Schedule}{A \code{cron} expression used to specify the schedule (see \href{https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html}{Time-Based Schedules for Jobs and Crawlers}.
 For example, to run something every day at 12:15 UTC, you would specify:
-\code{cron(15 12 * * ? *)}.
+\verb{cron(15 12 * * ? *)}.
 
 This field is required when the trigger type is SCHEDULED.}
 

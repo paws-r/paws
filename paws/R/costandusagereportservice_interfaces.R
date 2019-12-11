@@ -27,6 +27,18 @@ NULL
   return(populate(args, shape))
 }
 
+.costandusagereportservice$modify_report_definition_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ReportName = structure(logical(0), tags = list(type = "string")), ReportDefinition = structure(list(ReportName = structure(logical(0), tags = list(type = "string")), TimeUnit = structure(logical(0), tags = list(type = "string")), Format = structure(logical(0), tags = list(type = "string")), Compression = structure(logical(0), tags = list(type = "string")), AdditionalSchemaElements = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), S3Bucket = structure(logical(0), tags = list(type = "string")), S3Prefix = structure(logical(0), tags = list(type = "string")), S3Region = structure(logical(0), tags = list(type = "string")), AdditionalArtifacts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RefreshClosedReports = structure(logical(0), tags = list(type = "boolean", box = TRUE)), ReportVersioning = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.costandusagereportservice$modify_report_definition_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .costandusagereportservice$put_report_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ReportDefinition = structure(list(ReportName = structure(logical(0), tags = list(type = "string")), TimeUnit = structure(logical(0), tags = list(type = "string")), Format = structure(logical(0), tags = list(type = "string")), Compression = structure(logical(0), tags = list(type = "string")), AdditionalSchemaElements = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), S3Bucket = structure(logical(0), tags = list(type = "string")), S3Prefix = structure(logical(0), tags = list(type = "string")), S3Region = structure(logical(0), tags = list(type = "string")), AdditionalArtifacts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RefreshClosedReports = structure(logical(0), tags = list(type = "boolean", box = TRUE)), ReportVersioning = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))

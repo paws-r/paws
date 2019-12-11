@@ -16,14 +16,14 @@ network interface.}
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
 
 \item{PrivateIpAddresses}{One or more IP addresses to be assigned as a secondary private IP
-address to the network interface. You can't specify this parameter when
+address to the network interface. You can\'t specify this parameter when
 also specifying a number of secondary IP addresses.
 
-If you don't specify an IP address, Amazon EC2 automatically selects an
+If you don\'t specify an IP address, Amazon EC2 automatically selects an
 IP address within the subnet range.}
 
 \item{SecondaryPrivateIpAddressCount}{The number of secondary IP addresses to assign to the network interface.
-You can't specify this parameter when also specifying private IP
+You can\'t specify this parameter when also specifying private IP
 addresses.}
 }
 \description{
@@ -33,7 +33,7 @@ network interface.
 \details{
 You can specify one or more specific secondary IP addresses, or you can
 specify the number of secondary IP addresses to be automatically
-assigned within the subnet's CIDR block range. The number of secondary
+assigned within the subnet\'s CIDR block range. The number of secondary
 IP addresses that you can assign to an instance varies by instance type.
 For information about instance types, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance Types}
 in the \emph{Amazon Elastic Compute Cloud User Guide}. For more information

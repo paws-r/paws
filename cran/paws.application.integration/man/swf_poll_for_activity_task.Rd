@@ -14,7 +14,7 @@ swf_poll_for_activity_task(domain, taskList, identity)
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\code{U+0000`-`U+001f} \| \code{U+007f`-`U+009f}). Also, it must not \emph{be}
+characters (\verb{U+0000`-`U+001f} \\| \verb{U+007f`-`U+009f}). Also, it must not \emph{be}
 the literal string \code{arn}.}
 
 \item{identity}{Identity of the worker making the request, recorded in the
@@ -40,7 +40,7 @@ poll request).
 
 \strong{Access Control}
 
-You can use IAM policies to control this action's access to Amazon SWF
+You can use IAM policies to control this action\'s access to Amazon SWF
 resources as follows:
 \itemize{
 \item Use a \code{Resource} element with the domain name to limit the action to
@@ -52,9 +52,9 @@ element with the \code{swf:taskList.name} key to allow the action to
 access only certain task lists.
 }
 
-If the caller doesn't have sufficient permissions to invoke the action,
+If the caller doesn\'t have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
-action fails. The associated event attribute's \code{cause} parameter is set
+action fails. The associated event attribute\'s \code{cause} parameter is set
 to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 \href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
 in the \emph{Amazon SWF Developer Guide}.

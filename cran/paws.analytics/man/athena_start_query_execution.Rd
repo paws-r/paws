@@ -24,12 +24,12 @@ action will fail.}
 \item{QueryExecutionContext}{The database within which the query executes.}
 
 \item{ResultConfiguration}{Specifies information about where and how to save the results of the
-query execution. If the query runs in a workgroup, then workgroup's
+query execution. If the query runs in a workgroup, then workgroup\'s
 settings may override query settings. This affects the query results
 location. The workgroup settings override is specified in
 EnforceWorkGroupConfiguration (true/false) in the
 WorkGroupConfiguration. See
-WorkGroupConfiguration\$EnforceWorkGroupConfiguration.}
+WorkGroupConfiguration\\$EnforceWorkGroupConfiguration.}
 
 \item{WorkGroup}{The name of the workgroup in which the query is being started.}
 }

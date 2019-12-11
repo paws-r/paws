@@ -54,7 +54,6 @@ AWS IoT Greengrass seamlessly extends AWS onto physical devices so they can act 
 \link[=greengrass_create_software_update_job]{create_software_update_job} \tab Creates a software update for a core or group of cores (specified as an IoT thing group \cr
 \link[=greengrass_create_subscription_definition]{create_subscription_definition} \tab Creates a subscription definition \cr
 \link[=greengrass_create_subscription_definition_version]{create_subscription_definition_version} \tab Creates a version of a subscription definition which has already been defined \cr
-\link[=greengrass_tag_resource]{tag_resource} \tab Add tags to a resource \cr
 \link[=greengrass_delete_connector_definition]{delete_connector_definition} \tab Deletes a connector definition \cr
 \link[=greengrass_delete_core_definition]{delete_core_definition} \tab Deletes a core definition \cr
 \link[=greengrass_delete_device_definition]{delete_device_definition} \tab Deletes a device definition \cr
@@ -63,7 +62,6 @@ AWS IoT Greengrass seamlessly extends AWS onto physical devices so they can act 
 \link[=greengrass_delete_logger_definition]{delete_logger_definition} \tab Deletes a logger definition \cr
 \link[=greengrass_delete_resource_definition]{delete_resource_definition} \tab Deletes a resource definition \cr
 \link[=greengrass_delete_subscription_definition]{delete_subscription_definition} \tab Deletes a subscription definition \cr
-\link[=greengrass_untag_resource]{untag_resource} \tab Remove tags with specified keys from a resource \cr
 \link[=greengrass_disassociate_role_from_group]{disassociate_role_from_group} \tab Disassociates the role from a group \cr
 \link[=greengrass_disassociate_service_role_from_account]{disassociate_service_role_from_account} \tab Disassociates the service role from your account \cr
 \link[=greengrass_get_associated_role]{get_associated_role} \tab Retrieves the role associated with a particular group \cr
@@ -109,10 +107,12 @@ AWS IoT Greengrass seamlessly extends AWS onto physical devices so they can act 
 \link[=greengrass_list_resource_definitions]{list_resource_definitions} \tab Retrieves a list of resource definitions \cr
 \link[=greengrass_list_subscription_definition_versions]{list_subscription_definition_versions} \tab Lists the versions of a subscription definition \cr
 \link[=greengrass_list_subscription_definitions]{list_subscription_definitions} \tab Retrieves a list of subscription definitions \cr
-\link[=greengrass_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the tags for a resource \cr
+\link[=greengrass_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves a list of resource tags for a resource arn \cr
 \link[=greengrass_reset_deployments]{reset_deployments} \tab Resets a group's deployments \cr
 \link[=greengrass_start_bulk_deployment]{start_bulk_deployment} \tab Deploys multiple groups in one operation \cr
 \link[=greengrass_stop_bulk_deployment]{stop_bulk_deployment} \tab Stops the execution of a bulk deployment \cr
+\link[=greengrass_tag_resource]{tag_resource} \tab Adds tags to a Greengrass resource \cr
+\link[=greengrass_untag_resource]{untag_resource} \tab Remove resource tags from a Greengrass Resource \cr
 \link[=greengrass_update_connectivity_info]{update_connectivity_info} \tab Updates the connectivity information for the core \cr
 \link[=greengrass_update_connector_definition]{update_connector_definition} \tab Updates a connector definition \cr
 \link[=greengrass_update_core_definition]{update_core_definition} \tab Updates a core definition \cr

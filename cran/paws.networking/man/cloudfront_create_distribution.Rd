@@ -7,14 +7,14 @@
 cloudfront_create_distribution(DistributionConfig)
 }
 \arguments{
-\item{DistributionConfig}{[required] The distribution's configuration information.}
+\item{DistributionConfig}{[required] The distribution\'s configuration information.}
 }
 \description{
 Creates a new web distribution. You create a CloudFront distribution to
 tell CloudFront where you want content to be delivered from, and the
 details about how to track and manage content delivery. Send a \code{POST}
 request to the
-\code{/<i>CloudFront API version</i>/distribution}/\code{distribution ID}
+\verb{/<i>CloudFront API version</i>/distribution}/\verb{distribution ID}
 resource.
 }
 \details{

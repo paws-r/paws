@@ -14,8 +14,8 @@ by ListSizeConstraintSets.}
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
-Permanently deletes a SizeConstraintSet. You can't delete a
-\code{SizeConstraintSet} if it's still used in any \code{Rules} or if it still
+Permanently deletes a SizeConstraintSet. You can\'t delete a
+\code{SizeConstraintSet} if it\'s still used in any \code{Rules} or if it still
 includes any SizeConstraint objects (any filters).
 }
 \details{

@@ -11,34 +11,40 @@ applicationautoscaling(config = list())
 }
 \description{
 With Application Auto Scaling, you can configure automatic scaling for
-your scalable resources. You can use Application Auto Scaling to
-accomplish the following tasks:
+the following resources:
 \itemize{
-\item Define scaling policies to automatically scale your AWS or custom
-resources
-\item Scale your resources in response to CloudWatch alarms
-\item Schedule one-time or recurring scaling actions
-\item View the history of your scaling events
+\item Amazon ECS services
+\item Amazon EC2 Spot Fleet requests
+\item Amazon EMR clusters
+\item Amazon AppStream 2.0 fleets
+\item Amazon DynamoDB tables and global secondary indexes throughput
+capacity
+\item Amazon Aurora Replicas
+\item Amazon SageMaker endpoint variants
+\item Custom resources provided by your own applications or services
+\item Amazon Comprehend document classification endpoints
+\item AWS Lambda function provisioned concurrency
 }
 
-Application Auto Scaling can scale the following resources:
+\strong{API Summary}
+
+The Application Auto Scaling service API includes three key sets of
+actions:
 \itemize{
-\item Amazon ECS services. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html}{Service Auto Scaling}
-in the \emph{Amazon Elastic Container Service Developer Guide}.
-\item Amazon EC2 Spot fleets. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/fleet-auto-scaling.html}{Automatic Scaling for Spot Fleet}
-in the \emph{Amazon EC2 User Guide}.
-\item Amazon EMR clusters. For more information, see \href{https://docs.aws.amazon.com/ElasticMapReduce/latest/ManagementGuide/emr-automatic-scaling.html}{Using Automatic Scaling in Amazon EMR}
-in the \emph{Amazon EMR Management Guide}.
-\item AppStream 2.0 fleets. For more information, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/autoscaling.html}{Fleet Auto Scaling for Amazon AppStream 2.0}
-in the \emph{Amazon AppStream 2.0 Developer Guide}.
-\item Provisioned read and write capacity for Amazon DynamoDB tables and
-global secondary indexes. For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/AutoScaling.html}{Managing Throughput Capacity Automatically with DynamoDB Auto Scaling}
-in the \emph{Amazon DynamoDB Developer Guide}.
-\item Amazon Aurora Replicas. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Integrating.AutoScaling.html}{Using Amazon Aurora Auto Scaling with Aurora Replicas}.
-\item Amazon SageMaker endpoint variants. For more information, see
-\href{https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html}{Automatically Scaling Amazon SageMaker Models}.
-\item Custom resources provided by your own applications or services. More
-information is available in our \href{https://github.com/aws/aws-auto-scaling-custom-resource}{GitHub repository}.
+\item Register and manage scalable targets - Register AWS or custom
+resources as scalable targets (a resource that Application Auto
+Scaling can scale), set minimum and maximum capacity limits, and
+retrieve information on existing scalable targets.
+\item Configure and manage automatic scaling - Define scaling policies to
+dynamically scale your resources in response to CloudWatch alarms,
+schedule one-time or recurring scaling actions, and retrieve your
+recent scaling activity history.
+\item Suspend and resume scaling - Temporarily suspend and later resume
+automatic scaling by calling the RegisterScalableTarget action for
+any Application Auto Scaling scalable target. You can suspend and
+resume, individually or in combination, scale-out activities
+triggered by a scaling policy, scale-in activities triggered by a
+scaling policy, and scheduled scaling.
 }
 
 To learn more about Application Auto Scaling, including information
@@ -66,13 +72,13 @@ Scaling actions, see the \href{https://docs.aws.amazon.com/autoscaling/applicati
 \section{Operations}{
 
 \tabular{ll}{
-\link[=applicationautoscaling_delete_scaling_policy]{delete_scaling_policy} \tab Deletes the specified Application Auto Scaling scaling policy \cr
-\link[=applicationautoscaling_delete_scheduled_action]{delete_scheduled_action} \tab Deletes the specified Application Auto Scaling scheduled action \cr
-\link[=applicationautoscaling_deregister_scalable_target]{deregister_scalable_target} \tab Deregisters a scalable target \cr
+\link[=applicationautoscaling_delete_scaling_policy]{delete_scaling_policy} \tab Deletes the specified scaling policy for an Application Auto Scaling scalable target \cr
+\link[=applicationautoscaling_delete_scheduled_action]{delete_scheduled_action} \tab Deletes the specified scheduled action for an Application Auto Scaling scalable target \cr
+\link[=applicationautoscaling_deregister_scalable_target]{deregister_scalable_target} \tab Deregisters an Application Auto Scaling scalable target \cr
 \link[=applicationautoscaling_describe_scalable_targets]{describe_scalable_targets} \tab Gets information about the scalable targets in the specified namespace \cr
 \link[=applicationautoscaling_describe_scaling_activities]{describe_scaling_activities} \tab Provides descriptive information about the scaling activities in the specified namespace from the previous six weeks\cr
-\link[=applicationautoscaling_describe_scaling_policies]{describe_scaling_policies} \tab Describes the scaling policies for the specified service namespace \cr
-\link[=applicationautoscaling_describe_scheduled_actions]{describe_scheduled_actions} \tab Describes the scheduled actions for the specified service namespace \cr
+\link[=applicationautoscaling_describe_scaling_policies]{describe_scaling_policies} \tab Describes the Application Auto Scaling scaling policies for the specified service namespace \cr
+\link[=applicationautoscaling_describe_scheduled_actions]{describe_scheduled_actions} \tab Describes the Application Auto Scaling scheduled actions for the specified service namespace \cr
 \link[=applicationautoscaling_put_scaling_policy]{put_scaling_policy} \tab Creates or updates a policy for an Application Auto Scaling scalable target \cr
 \link[=applicationautoscaling_put_scheduled_action]{put_scheduled_action} \tab Creates or updates a scheduled action for an Application Auto Scaling scalable target \cr
 \link[=applicationautoscaling_register_scalable_target]{register_scalable_target} \tab Registers or updates a scalable target

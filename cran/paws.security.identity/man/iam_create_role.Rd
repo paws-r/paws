@@ -18,14 +18,14 @@ This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex 
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
 ASCII character from the ! (\code{U+0021}) through the DEL character
-(\code{U+007F}), including most punctuation characters, digits, and upper and
+(\verb{U+007F}), including most punctuation characters, digits, and upper and
 lowercased letters.}
 
 \item{RoleName}{[required] The name of the role to create.
 
 IAM user, group, role, and policy names must be unique within the
 account. Names are not distinguished by case. For example, you cannot
-create resources named both "MyResource" and "myresource".}
+create resources named both \"MyResource\" and \"myresource\".}
 
 \item{AssumeRolePolicyDocument}{[required] The trust relationship policy document that grants an entity permission
 to assume the role.
@@ -41,13 +41,13 @@ this parameter is a string of characters consisting of the following:
 \item Any printable ASCII character ranging from the space character
 (\code{U+0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \code{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\code{U+000A}), and
-carriage return (\code{U+000D})
+character set (through \verb{U+00FF})
+\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
+carriage return (\verb{U+000D})
 }
 
-Upon success, the response includes the same trust policy as a
-URL-encoded JSON string.}
+Upon success, the response includes the same trust policy in JSON
+format.}
 
 \item{Description}{A description of the role.}
 
@@ -60,10 +60,10 @@ Anyone who assumes the role from the AWS CLI or API can use the
 \code{DurationSeconds} API parameter or the \code{duration-seconds} CLI parameter
 to request a longer session. The \code{MaxSessionDuration} setting determines
 the maximum duration that can be requested using the \code{DurationSeconds}
-parameter. If users don't specify a value for the \code{DurationSeconds}
+parameter. If users don\'t specify a value for the \code{DurationSeconds}
 parameter, their security credentials are valid for one hour by default.
-This applies when you use the \code{AssumeRole*} API operations or the
-\code{assume-role*} CLI operations but does not apply when you use those
+This applies when you use the \verb{AssumeRole*} API operations or the
+\verb{assume-role*} CLI operations but does not apply when you use those
 operations to create a console URL. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html}{Using IAM Roles}
 in the \emph{IAM User Guide}.}
 

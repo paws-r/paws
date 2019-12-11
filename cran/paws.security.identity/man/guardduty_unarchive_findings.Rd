@@ -2,20 +2,17 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_unarchive_findings}
 \alias{guardduty_unarchive_findings}
-\title{Unarchives Amazon GuardDuty findings specified by the list of finding
-IDs}
+\title{Unarchives GuardDuty findings specified by the findingIds}
 \usage{
 guardduty_unarchive_findings(DetectorId, FindingIds)
 }
 \arguments{
-\item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose
-findings you want to unarchive.}
+\item{DetectorId}{[required] The ID of the detector associated with the findings to unarchive.}
 
-\item{FindingIds}{[required] IDs of the findings that you want to unarchive.}
+\item{FindingIds}{[required] IDs of the findings to unarchive.}
 }
 \description{
-Unarchives Amazon GuardDuty findings specified by the list of finding
-IDs.
+Unarchives GuardDuty findings specified by the \code{findingIds}.
 }
 \section{Request syntax}{
 \preformatted{svc$unarchive_findings(

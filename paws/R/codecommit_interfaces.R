@@ -3,6 +3,28 @@
 #' @include codecommit_service.R
 NULL
 
+.codecommit$associate_approval_rule_template_with_repository_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(approvalRuleTemplateName = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$associate_approval_rule_template_with_repository_output <- function(...) {
+  list()
+}
+
+.codecommit$batch_associate_approval_rule_template_with_repositories_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(approvalRuleTemplateName = structure(logical(0), tags = list(type = "string")), repositoryNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$batch_associate_approval_rule_template_with_repositories_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(associatedRepositoryNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), errors = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .codecommit$batch_describe_merge_conflicts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), destinationCommitSpecifier = structure(logical(0), tags = list(type = "string")), sourceCommitSpecifier = structure(logical(0), tags = list(type = "string")), mergeOption = structure(logical(0), tags = list(type = "string")), maxMergeHunks = structure(logical(0), tags = list(type = "integer")), maxConflictFiles = structure(logical(0), tags = list(type = "integer")), filePaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), conflictDetailLevel = structure(logical(0), tags = list(type = "string")), conflictResolutionStrategy = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -15,6 +37,30 @@ NULL
   return(populate(args, shape))
 }
 
+.codecommit$batch_disassociate_approval_rule_template_from_repositories_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(approvalRuleTemplateName = structure(logical(0), tags = list(type = "string")), repositoryNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$batch_disassociate_approval_rule_template_from_repositories_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(disassociatedRepositoryNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), errors = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$batch_get_commits_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(commitIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), repositoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$batch_get_commits_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(commits = structure(list(structure(list(commitId = structure(logical(0), tags = list(type = "string")), treeId = structure(logical(0), tags = list(type = "string")), parents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), message = structure(logical(0), tags = list(type = "string")), author = structure(list(name = structure(logical(0), tags = list(type = "string")), email = structure(logical(0), tags = list(type = "string")), date = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), committer = structure(list(name = structure(logical(0), tags = list(type = "string")), email = structure(logical(0), tags = list(type = "string")), date = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), additionalData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), errors = structure(list(structure(list(commitId = structure(logical(0), tags = list(type = "string")), errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .codecommit$batch_get_repositories_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(repositoryNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -24,6 +70,18 @@ NULL
 .codecommit$batch_get_repositories_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(repositories = structure(list(structure(list(accountId = structure(logical(0), tags = list(type = "string")), repositoryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryDescription = structure(logical(0), tags = list(type = "string")), defaultBranch = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), cloneUrlHttp = structure(logical(0), tags = list(type = "string")), cloneUrlSsh = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), repositoriesNotFound = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$create_approval_rule_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(approvalRuleTemplateName = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateContent = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$create_approval_rule_template_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(approvalRuleTemplate = structure(list(approvalRuleTemplateId = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateName = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateDescription = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateContent = structure(logical(0), tags = list(type = "string")), ruleContentSha256 = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedUser = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -57,7 +115,19 @@ NULL
 
 .codecommit$create_pull_request_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastActivityDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(type = "string")), authorArn = structure(logical(0), tags = list(type = "string")), pullRequestTargets = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), destinationCommit = structure(logical(0), tags = list(type = "string")), sourceCommit = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string")), mergeCommitId = structure(logical(0), tags = list(type = "string")), mergeOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastActivityDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(type = "string")), authorArn = structure(logical(0), tags = list(type = "string")), pullRequestTargets = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), destinationCommit = structure(logical(0), tags = list(type = "string")), sourceCommit = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string")), mergeCommitId = structure(logical(0), tags = list(type = "string")), mergeOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string")), approvalRules = structure(list(structure(list(approvalRuleId = structure(logical(0), tags = list(type = "string")), approvalRuleName = structure(logical(0), tags = list(type = "string")), approvalRuleContent = structure(logical(0), tags = list(type = "string")), ruleContentSha256 = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedUser = structure(logical(0), tags = list(type = "string")), originApprovalRuleTemplate = structure(list(approvalRuleTemplateId = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$create_pull_request_approval_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), approvalRuleName = structure(logical(0), tags = list(type = "string")), approvalRuleContent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$create_pull_request_approval_rule_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(approvalRule = structure(list(approvalRuleId = structure(logical(0), tags = list(type = "string")), approvalRuleName = structure(logical(0), tags = list(type = "string")), approvalRuleContent = structure(logical(0), tags = list(type = "string")), ruleContentSha256 = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedUser = structure(logical(0), tags = list(type = "string")), originApprovalRuleTemplate = structure(list(approvalRuleTemplateId = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -82,6 +152,18 @@ NULL
 .codecommit$create_unreferenced_merge_commit_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(commitId = structure(logical(0), tags = list(type = "string")), treeId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$delete_approval_rule_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(approvalRuleTemplateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$delete_approval_rule_template_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(approvalRuleTemplateId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -121,6 +203,18 @@ NULL
   return(populate(args, shape))
 }
 
+.codecommit$delete_pull_request_approval_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), approvalRuleName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$delete_pull_request_approval_rule_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(approvalRuleId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .codecommit$delete_repository_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -153,7 +247,41 @@ NULL
 
 .codecommit$describe_pull_request_events_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequestEvents = structure(list(structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), eventDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestEventType = structure(logical(0), tags = list(type = "string")), actorArn = structure(logical(0), tags = list(type = "string")), pullRequestCreatedEventMetadata = structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceCommitId = structure(logical(0), tags = list(type = "string")), destinationCommitId = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), pullRequestStatusChangedEventMetadata = structure(list(pullRequestStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), pullRequestSourceReferenceUpdatedEventMetadata = structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), beforeCommitId = structure(logical(0), tags = list(type = "string")), afterCommitId = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), pullRequestMergedStateChangedEventMetadata = structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string")), mergeCommitId = structure(logical(0), tags = list(type = "string")), mergeOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(pullRequestEvents = structure(list(structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), eventDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestEventType = structure(logical(0), tags = list(type = "string")), actorArn = structure(logical(0), tags = list(type = "string")), pullRequestCreatedEventMetadata = structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceCommitId = structure(logical(0), tags = list(type = "string")), destinationCommitId = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), pullRequestStatusChangedEventMetadata = structure(list(pullRequestStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), pullRequestSourceReferenceUpdatedEventMetadata = structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), beforeCommitId = structure(logical(0), tags = list(type = "string")), afterCommitId = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), pullRequestMergedStateChangedEventMetadata = structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string")), mergeCommitId = structure(logical(0), tags = list(type = "string")), mergeOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), approvalRuleEventMetadata = structure(list(approvalRuleName = structure(logical(0), tags = list(type = "string")), approvalRuleId = structure(logical(0), tags = list(type = "string")), approvalRuleContent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), approvalStateChangedEventMetadata = structure(list(revisionId = structure(logical(0), tags = list(type = "string")), approvalStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), approvalRuleOverriddenEventMetadata = structure(list(revisionId = structure(logical(0), tags = list(type = "string")), overrideStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$disassociate_approval_rule_template_from_repository_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(approvalRuleTemplateName = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$disassociate_approval_rule_template_from_repository_output <- function(...) {
+  list()
+}
+
+.codecommit$evaluate_pull_request_approval_rules_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$evaluate_pull_request_approval_rules_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(evaluation = structure(list(approved = structure(logical(0), tags = list(type = "boolean")), overridden = structure(logical(0), tags = list(type = "boolean")), approvalRulesSatisfied = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), approvalRulesNotSatisfied = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$get_approval_rule_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(approvalRuleTemplateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$get_approval_rule_template_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(approvalRuleTemplate = structure(list(approvalRuleTemplateId = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateName = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateDescription = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateContent = structure(logical(0), tags = list(type = "string")), ruleContentSha256 = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedUser = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -309,7 +437,31 @@ NULL
 
 .codecommit$get_pull_request_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastActivityDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(type = "string")), authorArn = structure(logical(0), tags = list(type = "string")), pullRequestTargets = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), destinationCommit = structure(logical(0), tags = list(type = "string")), sourceCommit = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string")), mergeCommitId = structure(logical(0), tags = list(type = "string")), mergeOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastActivityDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(type = "string")), authorArn = structure(logical(0), tags = list(type = "string")), pullRequestTargets = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), destinationCommit = structure(logical(0), tags = list(type = "string")), sourceCommit = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string")), mergeCommitId = structure(logical(0), tags = list(type = "string")), mergeOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string")), approvalRules = structure(list(structure(list(approvalRuleId = structure(logical(0), tags = list(type = "string")), approvalRuleName = structure(logical(0), tags = list(type = "string")), approvalRuleContent = structure(logical(0), tags = list(type = "string")), ruleContentSha256 = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedUser = structure(logical(0), tags = list(type = "string")), originApprovalRuleTemplate = structure(list(approvalRuleTemplateId = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$get_pull_request_approval_states_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$get_pull_request_approval_states_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(approvals = structure(list(structure(list(userArn = structure(logical(0), tags = list(type = "string")), approvalState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$get_pull_request_override_state_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$get_pull_request_override_state_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(overridden = structure(logical(0), tags = list(type = "boolean")), overrider = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -334,6 +486,30 @@ NULL
 .codecommit$get_repository_triggers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(configurationId = structure(logical(0), tags = list(type = "string")), triggers = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), destinationArn = structure(logical(0), tags = list(type = "string")), customData = structure(logical(0), tags = list(type = "string")), branches = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$list_approval_rule_templates_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$list_approval_rule_templates_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(approvalRuleTemplateNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$list_associated_approval_rule_templates_for_repository_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$list_associated_approval_rule_templates_for_repository_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(approvalRuleTemplateNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -370,6 +546,18 @@ NULL
 .codecommit$list_repositories_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(repositories = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), repositoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$list_repositories_for_approval_rule_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(approvalRuleTemplateName = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$list_repositories_for_approval_rule_template_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(repositoryNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -429,7 +617,7 @@ NULL
 
 .codecommit$merge_pull_request_by_fast_forward_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastActivityDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(type = "string")), authorArn = structure(logical(0), tags = list(type = "string")), pullRequestTargets = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), destinationCommit = structure(logical(0), tags = list(type = "string")), sourceCommit = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string")), mergeCommitId = structure(logical(0), tags = list(type = "string")), mergeOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastActivityDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(type = "string")), authorArn = structure(logical(0), tags = list(type = "string")), pullRequestTargets = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), destinationCommit = structure(logical(0), tags = list(type = "string")), sourceCommit = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string")), mergeCommitId = structure(logical(0), tags = list(type = "string")), mergeOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string")), approvalRules = structure(list(structure(list(approvalRuleId = structure(logical(0), tags = list(type = "string")), approvalRuleName = structure(logical(0), tags = list(type = "string")), approvalRuleContent = structure(logical(0), tags = list(type = "string")), ruleContentSha256 = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedUser = structure(logical(0), tags = list(type = "string")), originApprovalRuleTemplate = structure(list(approvalRuleTemplateId = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -441,7 +629,7 @@ NULL
 
 .codecommit$merge_pull_request_by_squash_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastActivityDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(type = "string")), authorArn = structure(logical(0), tags = list(type = "string")), pullRequestTargets = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), destinationCommit = structure(logical(0), tags = list(type = "string")), sourceCommit = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string")), mergeCommitId = structure(logical(0), tags = list(type = "string")), mergeOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastActivityDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(type = "string")), authorArn = structure(logical(0), tags = list(type = "string")), pullRequestTargets = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), destinationCommit = structure(logical(0), tags = list(type = "string")), sourceCommit = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string")), mergeCommitId = structure(logical(0), tags = list(type = "string")), mergeOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string")), approvalRules = structure(list(structure(list(approvalRuleId = structure(logical(0), tags = list(type = "string")), approvalRuleName = structure(logical(0), tags = list(type = "string")), approvalRuleContent = structure(logical(0), tags = list(type = "string")), ruleContentSha256 = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedUser = structure(logical(0), tags = list(type = "string")), originApprovalRuleTemplate = structure(list(approvalRuleTemplateId = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -453,8 +641,18 @@ NULL
 
 .codecommit$merge_pull_request_by_three_way_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastActivityDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(type = "string")), authorArn = structure(logical(0), tags = list(type = "string")), pullRequestTargets = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), destinationCommit = structure(logical(0), tags = list(type = "string")), sourceCommit = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string")), mergeCommitId = structure(logical(0), tags = list(type = "string")), mergeOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastActivityDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(type = "string")), authorArn = structure(logical(0), tags = list(type = "string")), pullRequestTargets = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), destinationCommit = structure(logical(0), tags = list(type = "string")), sourceCommit = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string")), mergeCommitId = structure(logical(0), tags = list(type = "string")), mergeOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string")), approvalRules = structure(list(structure(list(approvalRuleId = structure(logical(0), tags = list(type = "string")), approvalRuleName = structure(logical(0), tags = list(type = "string")), approvalRuleContent = structure(logical(0), tags = list(type = "string")), ruleContentSha256 = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedUser = structure(logical(0), tags = list(type = "string")), originApprovalRuleTemplate = structure(list(approvalRuleTemplateId = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
+}
+
+.codecommit$override_pull_request_approval_rules_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string")), overrideStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$override_pull_request_approval_rules_output <- function(...) {
+  list()
 }
 
 .codecommit$post_comment_for_compared_commit_input <- function(...) {
@@ -549,6 +747,42 @@ NULL
   list()
 }
 
+.codecommit$update_approval_rule_template_content_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(approvalRuleTemplateName = structure(logical(0), tags = list(type = "string")), newRuleContent = structure(logical(0), tags = list(type = "string")), existingRuleContentSha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$update_approval_rule_template_content_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(approvalRuleTemplate = structure(list(approvalRuleTemplateId = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateName = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateDescription = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateContent = structure(logical(0), tags = list(type = "string")), ruleContentSha256 = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedUser = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$update_approval_rule_template_description_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(approvalRuleTemplateName = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$update_approval_rule_template_description_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(approvalRuleTemplate = structure(list(approvalRuleTemplateId = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateName = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateDescription = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateContent = structure(logical(0), tags = list(type = "string")), ruleContentSha256 = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedUser = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$update_approval_rule_template_name_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(oldApprovalRuleTemplateName = structure(logical(0), tags = list(type = "string")), newApprovalRuleTemplateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$update_approval_rule_template_name_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(approvalRuleTemplate = structure(list(approvalRuleTemplateId = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateName = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateDescription = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateContent = structure(logical(0), tags = list(type = "string")), ruleContentSha256 = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedUser = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .codecommit$update_comment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(commentId = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -571,6 +805,28 @@ NULL
   list()
 }
 
+.codecommit$update_pull_request_approval_rule_content_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), approvalRuleName = structure(logical(0), tags = list(type = "string")), existingRuleContentSha256 = structure(logical(0), tags = list(type = "string")), newRuleContent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$update_pull_request_approval_rule_content_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(approvalRule = structure(list(approvalRuleId = structure(logical(0), tags = list(type = "string")), approvalRuleName = structure(logical(0), tags = list(type = "string")), approvalRuleContent = structure(logical(0), tags = list(type = "string")), ruleContentSha256 = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedUser = structure(logical(0), tags = list(type = "string")), originApprovalRuleTemplate = structure(list(approvalRuleTemplateId = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$update_pull_request_approval_state_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string")), approvalState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$update_pull_request_approval_state_output <- function(...) {
+  list()
+}
+
 .codecommit$update_pull_request_description_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -579,7 +835,7 @@ NULL
 
 .codecommit$update_pull_request_description_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastActivityDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(type = "string")), authorArn = structure(logical(0), tags = list(type = "string")), pullRequestTargets = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), destinationCommit = structure(logical(0), tags = list(type = "string")), sourceCommit = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string")), mergeCommitId = structure(logical(0), tags = list(type = "string")), mergeOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastActivityDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(type = "string")), authorArn = structure(logical(0), tags = list(type = "string")), pullRequestTargets = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), destinationCommit = structure(logical(0), tags = list(type = "string")), sourceCommit = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string")), mergeCommitId = structure(logical(0), tags = list(type = "string")), mergeOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string")), approvalRules = structure(list(structure(list(approvalRuleId = structure(logical(0), tags = list(type = "string")), approvalRuleName = structure(logical(0), tags = list(type = "string")), approvalRuleContent = structure(logical(0), tags = list(type = "string")), ruleContentSha256 = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedUser = structure(logical(0), tags = list(type = "string")), originApprovalRuleTemplate = structure(list(approvalRuleTemplateId = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -591,7 +847,7 @@ NULL
 
 .codecommit$update_pull_request_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastActivityDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(type = "string")), authorArn = structure(logical(0), tags = list(type = "string")), pullRequestTargets = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), destinationCommit = structure(logical(0), tags = list(type = "string")), sourceCommit = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string")), mergeCommitId = structure(logical(0), tags = list(type = "string")), mergeOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastActivityDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(type = "string")), authorArn = structure(logical(0), tags = list(type = "string")), pullRequestTargets = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), destinationCommit = structure(logical(0), tags = list(type = "string")), sourceCommit = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string")), mergeCommitId = structure(logical(0), tags = list(type = "string")), mergeOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string")), approvalRules = structure(list(structure(list(approvalRuleId = structure(logical(0), tags = list(type = "string")), approvalRuleName = structure(logical(0), tags = list(type = "string")), approvalRuleContent = structure(logical(0), tags = list(type = "string")), ruleContentSha256 = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedUser = structure(logical(0), tags = list(type = "string")), originApprovalRuleTemplate = structure(list(approvalRuleTemplateId = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -603,7 +859,7 @@ NULL
 
 .codecommit$update_pull_request_title_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastActivityDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(type = "string")), authorArn = structure(logical(0), tags = list(type = "string")), pullRequestTargets = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), destinationCommit = structure(logical(0), tags = list(type = "string")), sourceCommit = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string")), mergeCommitId = structure(logical(0), tags = list(type = "string")), mergeOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(pullRequest = structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastActivityDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), pullRequestStatus = structure(logical(0), tags = list(type = "string")), authorArn = structure(logical(0), tags = list(type = "string")), pullRequestTargets = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), sourceReference = structure(logical(0), tags = list(type = "string")), destinationReference = structure(logical(0), tags = list(type = "string")), destinationCommit = structure(logical(0), tags = list(type = "string")), sourceCommit = structure(logical(0), tags = list(type = "string")), mergeBase = structure(logical(0), tags = list(type = "string")), mergeMetadata = structure(list(isMerged = structure(logical(0), tags = list(type = "boolean")), mergedBy = structure(logical(0), tags = list(type = "string")), mergeCommitId = structure(logical(0), tags = list(type = "string")), mergeOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string")), approvalRules = structure(list(structure(list(approvalRuleId = structure(logical(0), tags = list(type = "string")), approvalRuleName = structure(logical(0), tags = list(type = "string")), approvalRuleContent = structure(logical(0), tags = list(type = "string")), ruleContentSha256 = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), lastModifiedUser = structure(logical(0), tags = list(type = "string")), originApprovalRuleTemplate = structure(list(approvalRuleTemplateId = structure(logical(0), tags = list(type = "string")), approvalRuleTemplateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -22,7 +22,7 @@ each account and region.}
 In the current implementation, Kinesis Video Streams does not use this
 name.}
 
-\item{MediaType}{The stream's media type. Use \code{MediaType} to specify the type of content
+\item{MediaType}{The stream\'s media type. Use \code{MediaType} to specify the type of content
 that the stream contains to the consumers of the stream. For more
 information about media types, see \href{http://www.iana.org/assignments/media-types/media-types.xhtml}{Media Types}.
 If you choose to specify the \code{MediaType}, see \href{https://tools.ietf.org/html/rfc6838#section-4.2}{Naming Requirements}.

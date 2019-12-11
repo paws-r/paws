@@ -7,7 +7,8 @@ about a specified reserved DB instance}
 \usage{
 rds_describe_reserved_db_instances(ReservedDBInstanceId,
   ReservedDBInstancesOfferingId, DBInstanceClass, Duration,
-  ProductDescription, OfferingType, MultiAZ, Filters, MaxRecords, Marker)
+  ProductDescription, OfferingType, MultiAZ, LeaseId, Filters, MaxRecords,
+  Marker)
 }
 \arguments{
 \item{ReservedDBInstanceId}{The reserved DB instance identifier filter value. Specify this parameter
@@ -35,12 +36,17 @@ Valid Values: \code{"Partial Upfront" | "All Upfront" | "No Upfront" }}
 \item{MultiAZ}{A value that indicates whether to show only those reservations that
 support Multi-AZ.}
 
-\item{Filters}{This parameter is not currently supported.}
+\item{LeaseId}{The lease identifier filter value. Specify this parameter to show only
+the reservation that matches the specified lease ID.
+
+AWS Support might request the lease ID for an issue related to a
+reserved DB instance.}
+
+\item{Filters}{This parameter isn\'t currently supported.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more than
 the \code{MaxRecords} value is available, a pagination token called a marker
-is included in the response so that the following results can be
-retrieved.
+is included in the response so you can retrieve the remaining results.
 
 Default: 100
 
@@ -63,6 +69,7 @@ about a specified reserved DB instance.
   ProductDescription = "string",
   OfferingType = "string",
   MultiAZ = TRUE|FALSE,
+  LeaseId = "string",
   Filters = list(
     list(
       Name = "string",

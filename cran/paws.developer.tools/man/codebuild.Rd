@@ -19,11 +19,12 @@ languages and build tools, such as Apache Maven, Gradle, and more. You
 can also fully customize build environments in AWS CodeBuild to use your
 own build tools. AWS CodeBuild scales automatically to meet peak build
 requests. You pay only for the build time you consume. For more
-information about AWS CodeBuild, see the \emph{AWS CodeBuild User Guide}.
+information about AWS CodeBuild, see the \emph{\href{https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html}{AWS CodeBuild User Guide}.}
 
 AWS CodeBuild supports these operations:
 \itemize{
 \item \code{BatchDeleteBuilds}: Deletes one or more builds.
+\item \code{BatchGetBuilds}: Gets information about one or more builds.
 \item \code{BatchGetProjects}: Gets information about one or more build
 projects. A \emph{build project} defines how AWS CodeBuild runs a build.
 This includes information such as where to get the source code to
@@ -32,38 +33,53 @@ where to store the build output. A \emph{build environment} is a
 representation of operating system, programming language runtime,
 and tools that AWS CodeBuild uses to run a build. You can add tags
 to build projects to help manage your resources and costs.
+\item \code{BatchGetReportGroups}: Returns an array of report groups.
+\item \code{BatchGetReports}: Returns an array of reports.
 \item \code{CreateProject}: Creates a build project.
+\item \code{CreateReportGroup}: Creates a report group. A report group contains
+a collection of reports.
 \item \code{CreateWebhook}: For an existing AWS CodeBuild build project that
 has its source code stored in a GitHub or Bitbucket repository,
 enables AWS CodeBuild to start rebuilding the source code every time
 a code change is pushed to the repository.
-\item \code{UpdateWebhook}: Changes the settings of an existing webhook.
 \item \code{DeleteProject}: Deletes a build project.
+\item \code{DeleteReport}: Deletes a report.
+\item \code{DeleteReportGroup}: Deletes a report group.
+\item \code{DeleteSourceCredentials}: Deletes a set of GitHub, GitHub
+Enterprise, or Bitbucket source credentials.
 \item \code{DeleteWebhook}: For an existing AWS CodeBuild build project that
 has its source code stored in a GitHub or Bitbucket repository,
 stops AWS CodeBuild from rebuilding the source code every time a
 code change is pushed to the repository.
-\item \code{ListProjects}: Gets a list of build project names, with each build
-project name representing a single build project.
-\item \code{UpdateProject}: Changes the settings of an existing build project.
-\item \code{BatchGetBuilds}: Gets information about one or more builds.
+\item \code{DescribeTestCases}: Returns a list of details about test cases for
+a report.
+\item \code{ImportSourceCredentials}: Imports the source repository credentials
+for an AWS CodeBuild project that has its source code stored in a
+GitHub, GitHub Enterprise, or Bitbucket repository.
+\item \code{InvalidateProjectCache}: Resets the cache for a project.
 \item \code{ListBuilds}: Gets a list of build IDs, with each build ID
 representing a single build.
 \item \code{ListBuildsForProject}: Gets a list of build IDs for the specified
 build project, with each build ID representing a single build.
-\item \code{StartBuild}: Starts running a build.
-\item \code{StopBuild}: Attempts to stop running a build.
 \item \code{ListCuratedEnvironmentImages}: Gets information about Docker images
 that are managed by AWS CodeBuild.
-\item \code{DeleteSourceCredentials}: Deletes a set of GitHub, GitHub
-Enterprise, or Bitbucket source credentials.
-\item \code{ImportSourceCredentials}: Imports the source repository credentials
-for an AWS CodeBuild project that has its source code stored in a
-GitHub, GitHub Enterprise, or Bitbucket repository.
+\item \code{ListProjects}: Gets a list of build project names, with each build
+project name representing a single build project.
+\item \code{ListReportGroups}: Gets a list ARNs for the report groups in the
+current AWS account.
+\item \code{ListReports}: Gets a list ARNs for the reports in the current AWS
+account.
+\item \code{ListReportsForReportGroup}: Returns a list of ARNs for the reports
+that belong to a \code{ReportGroup}.
 \item \code{ListSourceCredentials}: Returns a list of \code{SourceCredentialsInfo}
 objects. Each \code{SourceCredentialsInfo} object includes the
 authentication type, token ARN, and type of source provider for one
 set of credentials.
+\item \code{StartBuild}: Starts running a build.
+\item \code{StopBuild}: Attempts to stop running a build.
+\item \code{UpdateProject}: Changes the settings of an existing build project.
+\item \code{UpdateReportGroup}: Changes a report group.
+\item \code{UpdateWebhook}: Changes the settings of an existing webhook.
 }
 }
 \section{Service syntax}{
@@ -88,23 +104,33 @@ set of credentials.
 
 \tabular{ll}{
 \link[=codebuild_batch_delete_builds]{batch_delete_builds} \tab Deletes one or more builds \cr
-\link[=codebuild_batch_get_builds]{batch_get_builds} \tab Gets information about builds \cr
-\link[=codebuild_batch_get_projects]{batch_get_projects} \tab Gets information about build projects \cr
+\link[=codebuild_batch_get_builds]{batch_get_builds} \tab Gets information about one or more builds \cr
+\link[=codebuild_batch_get_projects]{batch_get_projects} \tab Gets information about one or more build projects \cr
+\link[=codebuild_batch_get_report_groups]{batch_get_report_groups} \tab Returns an array of report groups \cr
+\link[=codebuild_batch_get_reports]{batch_get_reports} \tab Returns an array of reports \cr
 \link[=codebuild_create_project]{create_project} \tab Creates a build project \cr
+\link[=codebuild_create_report_group]{create_report_group} \tab Creates a report group \cr
 \link[=codebuild_create_webhook]{create_webhook} \tab For an existing AWS CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, enables AWS CodeBuild to start rebuilding the source code every time a code change is pushed to the repository\cr
 \link[=codebuild_delete_project]{delete_project} \tab Deletes a build project \cr
+\link[=codebuild_delete_report]{delete_report} \tab Deletes a report \cr
+\link[=codebuild_delete_report_group]{delete_report_group} \tab DeleteReportGroup: Deletes a report group \cr
 \link[=codebuild_delete_source_credentials]{delete_source_credentials} \tab Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source credentials \cr
 \link[=codebuild_delete_webhook]{delete_webhook} \tab For an existing AWS CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, stops AWS CodeBuild from rebuilding the source code every time a code change is pushed to the repository \cr
+\link[=codebuild_describe_test_cases]{describe_test_cases} \tab Returns a list of details about test cases for a report \cr
 \link[=codebuild_import_source_credentials]{import_source_credentials} \tab Imports the source repository credentials for an AWS CodeBuild project that has its source code stored in a GitHub, GitHub Enterprise, or Bitbucket repository \cr
 \link[=codebuild_invalidate_project_cache]{invalidate_project_cache} \tab Resets the cache for a project \cr
 \link[=codebuild_list_builds]{list_builds} \tab Gets a list of build IDs, with each build ID representing a single build \cr
 \link[=codebuild_list_builds_for_project]{list_builds_for_project} \tab Gets a list of build IDs for the specified build project, with each build ID representing a single build \cr
 \link[=codebuild_list_curated_environment_images]{list_curated_environment_images} \tab Gets information about Docker images that are managed by AWS CodeBuild \cr
 \link[=codebuild_list_projects]{list_projects} \tab Gets a list of build project names, with each build project name representing a single build project \cr
+\link[=codebuild_list_report_groups]{list_report_groups} \tab Gets a list ARNs for the report groups in the current AWS account \cr
+\link[=codebuild_list_reports]{list_reports} \tab Returns a list of ARNs for the reports in the current AWS account \cr
+\link[=codebuild_list_reports_for_report_group]{list_reports_for_report_group} \tab Returns a list of ARNs for the reports that belong to a ReportGroup \cr
 \link[=codebuild_list_source_credentials]{list_source_credentials} \tab Returns a list of SourceCredentialsInfo objects \cr
 \link[=codebuild_start_build]{start_build} \tab Starts running a build \cr
 \link[=codebuild_stop_build]{stop_build} \tab Attempts to stop running a build \cr
 \link[=codebuild_update_project]{update_project} \tab Changes the settings of a build project \cr
+\link[=codebuild_update_report_group]{update_report_group} \tab Updates a report group \cr
 \link[=codebuild_update_webhook]{update_webhook} \tab Updates the webhook associated with an AWS CodeBuild build project
 }
 }

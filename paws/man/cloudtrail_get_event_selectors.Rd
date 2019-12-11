@@ -12,11 +12,11 @@ cloudtrail_get_event_selectors(TrailName)
 name, the string must meet the following requirements:
 \itemize{
 \item Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-underscores (\_), or dashes (-)
+underscores (\\_), or dashes (-)
 \item Start with a letter or number, and end with a letter or number
 \item Be between 3 and 128 characters
 \item Have no adjacent periods, underscores or dashes. Names like
-\code{my-_namespace} and \code{my--namespace} are not valid.
+\verb{my-_namespace} and \code{my--namespace} are not valid.
 \item Not be in IP address format (for example, 192.168.5.4)
 }
 
@@ -39,7 +39,7 @@ events.
 or AWS Lambda functions that you are logging for data events.
 }
 
-For more information, see \href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html}{Logging Data and Management Events for Trails}
+For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html}{Logging Data and Management Events for Trails}
 in the \emph{AWS CloudTrail User Guide}.
 }
 \section{Request syntax}{

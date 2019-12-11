@@ -47,14 +47,14 @@ Modifies the staging labels attached to a version of a secret. Staging
 labels are used to track a version as it progresses through the secret
 rotation process. You can attach a staging label to only one version of
 a secret at a time. If a staging label to be added is already attached
-to another version, then it is moved\--removed from the other version
+to another version, then it is moved\\--removed from the other version
 first and then attached to this one. For more information about staging
 labels, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/terms-concepts.html#term_staging-label}{Staging Labels}
 in the \emph{AWS Secrets Manager User Guide}.
 }
 \details{
 The staging labels that you specify in the \code{VersionStage} parameter are
-added to the existing list of staging labels\--they don't replace it.
+added to the existing list of staging labels\\--they don\'t replace it.
 
 You can move the \code{AWSCURRENT} staging label to this version by including
 it in this call.
@@ -63,7 +63,7 @@ Whenever you move \code{AWSCURRENT}, Secrets Manager automatically moves the
 label \code{AWSPREVIOUS} to the version that \code{AWSCURRENT} was removed from.
 
 If this action results in the last label being removed from a version,
-then the version is considered to be 'deprecated' and can be deleted
+then the version is considered to be \'deprecated\' and can be deleted
 by Secrets Manager.
 
 \strong{Minimum permissions}
@@ -76,7 +76,7 @@ To run this command, you must have the following permissions:
 \strong{Related operations}
 \itemize{
 \item To get the list of staging labels that are currently associated with
-a version of a secret, use \code{<a>DescribeSecret</a>} and examine the
+a version of a secret, use \verb{<a>DescribeSecret</a>} and examine the
 \code{SecretVersionsToStages} response value.
 }
 }

@@ -10,8 +10,7 @@ codecommit_update_pull_request_title(pullRequestId, title)
 \item{pullRequestId}{[required] The system-generated ID of the pull request. To get this ID, use
 ListPullRequests.}
 
-\item{title}{[required] The updated title of the pull request. This will replace the existing
-title.}
+\item{title}{[required] The updated title of the pull request. This replaces the existing title.}
 }
 \description{
 Replaces the title of a pull request.

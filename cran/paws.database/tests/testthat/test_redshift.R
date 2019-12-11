@@ -66,6 +66,10 @@ test_that("describe_reserved_nodes", {
   expect_error(svc$describe_reserved_nodes(), NA)
 })
 
+test_that("describe_scheduled_actions", {
+  expect_error(svc$describe_scheduled_actions(), NA)
+})
+
 test_that("describe_snapshot_copy_grants", {
   expect_error(svc$describe_snapshot_copy_grants(), NA)
 })

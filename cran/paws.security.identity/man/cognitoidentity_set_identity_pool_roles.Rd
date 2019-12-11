@@ -11,13 +11,13 @@ cognitoidentity_set_identity_pool_roles(IdentityPoolId, Roles,
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
 
 \item{Roles}{[required] The map of roles associated with this pool. For a given role, the key
-will be either "authenticated" or "unauthenticated" and the value
+will be either \"authenticated\" or \"unauthenticated\" and the value
 will be the Role ARN.}
 
 \item{RoleMappings}{How users for a specific identity provider are to mapped to roles. This
 is a string to RoleMapping object map. The string identifies the
-identity provider, for example, "graph.facebook.com" or
-"cognito-idp-east-1.amazonaws.com/us-east-1\_abcdefghi:app\_client\_id".
+identity provider, for example, \"graph.facebook.com\" or
+\"cognito-idp-east-1.amazonaws.com/us-east-1\\_abcdefghi:app\\_client\\_id\".
 
 Up to 25 rules can be specified per identity provider.}
 }

@@ -4,7 +4,7 @@
 \alias{datasync_update_task}
 \title{Updates the metadata associated with a task}
 \usage{
-datasync_update_task(TaskArn, Options, Excludes, Name,
+datasync_update_task(TaskArn, Options, Excludes, Schedule, Name,
   CloudWatchLogGroupArn)
 }
 \arguments{
@@ -13,9 +13,16 @@ update.}
 
 \item{Options}{}
 
-\item{Excludes}{A filter that determines which files to exclude from a task based on the
-specified pattern in the filter. Transfers all files in the task's
-subdirectory, except files that match the filter that is set.}
+\item{Excludes}{A list of filter rules that determines which files to exclude from a
+task. The list should contain a single filter string that consists of
+the patterns to exclude. The patterns are delimited by \"\\|\" (that is,
+a pipe), for example: \code{"/folder1|/folder2"}}
+
+\item{Schedule}{Specifies a schedule used to periodically transfer files from a source
+to a destination location. You can configure your task to execute
+hourly, daily, weekly or on specific days of the week. You control when
+in the day or hour you want the task to execute. The time you specify is
+UTC time. For more information, see task-scheduling.}
 
 \item{Name}{The name of the task to update.}
 
@@ -29,21 +36,26 @@ Updates the metadata associated with a task.
 \preformatted{svc$update_task(
   TaskArn = "string",
   Options = list(
-    VerifyMode = "POINT_IN_TIME_CONSISTENT"|"NONE",
+    VerifyMode = "POINT_IN_TIME_CONSISTENT"|"ONLY_FILES_TRANSFERRED"|"NONE",
+    OverwriteMode = "ALWAYS"|"NEVER",
     Atime = "NONE"|"BEST_EFFORT",
     Mtime = "NONE"|"PRESERVE",
     Uid = "NONE"|"INT_VALUE"|"NAME"|"BOTH",
     Gid = "NONE"|"INT_VALUE"|"NAME"|"BOTH",
     PreserveDeletedFiles = "PRESERVE"|"REMOVE",
     PreserveDevices = "NONE"|"PRESERVE",
-    PosixPermissions = "NONE"|"BEST_EFFORT"|"PRESERVE",
-    BytesPerSecond = 123
+    PosixPermissions = "NONE"|"PRESERVE",
+    BytesPerSecond = 123,
+    TaskQueueing = "ENABLED"|"DISABLED"
   ),
   Excludes = list(
     list(
       FilterType = "SIMPLE_PATTERN",
       Value = "string"
     )
+  ),
+  Schedule = list(
+    ScheduleExpression = "string"
   ),
   Name = "string",
   CloudWatchLogGroupArn = "string"

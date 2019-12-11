@@ -2,8 +2,8 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_describe_trails}
 \alias{cloudtrail_describe_trails}
-\title{Retrieves settings for the trail associated with the current region for
-your account}
+\title{Retrieves settings for one or more trails associated with the current
+region for your account}
 \usage{
 cloudtrail_describe_trails(trailNameList, includeShadowTrails)
 }
@@ -36,8 +36,8 @@ include shadow trails, organization trails in a member account and
 region replication trails will not be returned. The default is true.}
 }
 \description{
-Retrieves settings for the trail associated with the current region for
-your account.
+Retrieves settings for one or more trails associated with the current
+region for your account.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_trails(

@@ -47,6 +47,7 @@ Amazon DocumentDB API documentation
 \link[=docdb_delete_db_cluster_snapshot]{delete_db_cluster_snapshot} \tab Deletes a DB cluster snapshot \cr
 \link[=docdb_delete_db_instance]{delete_db_instance} \tab Deletes a previously provisioned DB instance \cr
 \link[=docdb_delete_db_subnet_group]{delete_db_subnet_group} \tab Deletes a DB subnet group \cr
+\link[=docdb_describe_certificates]{describe_certificates} \tab Returns a list of certificate authority (CA) certificates provided by Amazon RDS for this AWS account \cr
 \link[=docdb_describe_db_cluster_parameter_groups]{describe_db_cluster_parameter_groups} \tab Returns a list of DBClusterParameterGroup descriptions \cr
 \link[=docdb_describe_db_cluster_parameters]{describe_db_cluster_parameters} \tab Returns the detailed parameter list for a particular DB cluster parameter group \cr
 \link[=docdb_describe_db_cluster_snapshot_attributes]{describe_db_cluster_snapshot_attributes} \tab Returns a list of DB cluster snapshot attribute names and values for a manual DB cluster snapshot \cr

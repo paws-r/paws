@@ -2,8 +2,8 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_disassociate_phone_numbers_from_voice_connector}
 \alias{chime_disassociate_phone_numbers_from_voice_connector}
-\title{Disassociates the specified phone number from the specified Amazon Chime
-Voice Connector}
+\title{Disassociates the specified phone numbers from the specified Amazon
+Chime Voice Connector}
 \usage{
 chime_disassociate_phone_numbers_from_voice_connector(VoiceConnectorId,
   E164PhoneNumbers)
@@ -14,8 +14,8 @@ chime_disassociate_phone_numbers_from_voice_connector(VoiceConnectorId,
 \item{E164PhoneNumbers}{List of phone numbers, in E.164 format.}
 }
 \description{
-Disassociates the specified phone number from the specified Amazon Chime
-Voice Connector.
+Disassociates the specified phone numbers from the specified Amazon
+Chime Voice Connector.
 }
 \section{Request syntax}{
 \preformatted{svc$disassociate_phone_numbers_from_voice_connector(

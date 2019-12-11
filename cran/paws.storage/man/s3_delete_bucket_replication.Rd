@@ -7,15 +7,29 @@
 s3_delete_bucket_replication(Bucket)
 }
 \arguments{
-\item{Bucket}{[required] The bucket name.
-
-It can take a while to propagate the deletion of a replication
-configuration to all Amazon S3 systems.}
+\item{Bucket}{[required] The bucket name.}
 }
 \description{
-Deletes the replication configuration from the bucket. For information
-about replication configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html}{Cross-Region Replication (CRR)} in the
+Deletes the replication configuration from the bucket.
+}
+\details{
+To use this operation, you must have permissions to perform the
+\code{s3:PutReplicationConfiguration} action. The bucket owner has these
+permissions by default and can grant it to others. For more information
+about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
+
+It can take a while for the deletion of a replication configuration to
+fully propagate.
+
+For information about replication configuration, see Replication in the
 \emph{Amazon S3 Developer Guide}.
+
+The following operations are related to \code{DeleteBucketReplication}:
+\itemize{
+\item PutBucketReplication
+\item GetBucketReplication
+}
 }
 \section{Request syntax}{
 \preformatted{svc$delete_bucket_replication(

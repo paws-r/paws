@@ -18,18 +18,24 @@ SDK.}
 
 \item{StorageCapacity}{[required] The storage capacity of the file system being created.
 
-For Windows file systems, the storage capacity has a minimum of 300 GiB,
-and a maximum of 65,536 GiB.
+For Windows file systems, valid values are 32 GiB - 65,536 GiB.
 
-For Lustre file systems, the storage capacity has a minimum of 3,600
-GiB. Storage capacity is provisioned in increments of 3,600 GiB.}
+For Lustre file systems, valid values are 1,200, 2,400, 3,600, then
+continuing in increments of 3600 GiB.}
 
-\item{SubnetIds}{[required] The IDs of the subnets that the file system will be accessible from.
-File systems support only one subnet. The file server is also launched
-in that subnet's Availability Zone.}
+\item{SubnetIds}{[required] Specifies the IDs of the subnets that the file system will be accessible
+from. For Windows \code{MULTI_AZ_1} file system deployment types, provide
+exactly two subnet IDs, one for the preferred file server and one for
+the standy file server. You specify one of these subnets as the
+preferred subnet using the \verb{WindowsConfiguration &gt; PreferredSubnetID}
+property.
+
+For Windows \code{SINGLE_AZ_1} file system deployment types and Lustre file
+systems, provide exactly one subnet ID. The file server is launched in
+that subnet\'s Availability Zone.}
 
 \item{SecurityGroupIds}{A list of IDs specifying the security groups to apply to all network
-interfaces created for file system access. This list isn't returned in
+interfaces created for file system access. This list isn\'t returned in
 later requests to describe the file system.}
 
 \item{Tags}{The tags to apply to the file system being created. The key value of the
@@ -49,9 +55,9 @@ Creates a new, empty Amazon FSx file system.
 If a file system with the specified client request token exists and the
 parameters match, \code{CreateFileSystem} returns the description of the
 existing file system. If a file system specified client request token
-exists and the parameters don't match, this call returns
+exists and the parameters don\'t match, this call returns
 \code{IncompatibleParameterError}. If a file system with the specified client
-request token doesn't exist, \code{CreateFileSystem} does the following:
+request token doesn\'t exist, \code{CreateFileSystem} does the following:
 \itemize{
 \item Creates a new, empty Amazon FSx file system with an assigned ID, and
 an initial lifecycle state of \code{CREATING}.
@@ -70,7 +76,7 @@ use the same client request token and the initial call created a file
 system, the client receives success as long as the parameters are the
 same.
 
-The \code{CreateFileSystem} call returns while the file system's lifecycle
+The \code{CreateFileSystem} call returns while the file system\'s lifecycle
 state is still \code{CREATING}. You can check the file-system creation status
 by calling the DescribeFileSystems operation, which returns the file
 system state along with other information.
@@ -105,6 +111,8 @@ system state along with other information.
         "string"
       )
     ),
+    DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+    PreferredSubnetId = "string",
     ThroughputCapacity = 123,
     WeeklyMaintenanceStartTime = "string",
     DailyAutomaticBackupStartTime = "string",

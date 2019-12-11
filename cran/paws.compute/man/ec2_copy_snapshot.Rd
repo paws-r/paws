@@ -6,7 +6,7 @@
 S3}
 \usage{
 ec2_copy_snapshot(Description, DestinationRegion, Encrypted, KmsKeyId,
-  PresignedUrl, SourceRegion, SourceSnapshotId, DryRun)
+  PresignedUrl, SourceRegion, SourceSnapshotId, TagSpecifications, DryRun)
 }
 \arguments{
 \item{Description}{A description for the EBS snapshot.}
@@ -16,7 +16,7 @@ snapshot copy operation. This parameter is only valid for specifying the
 destination Region in a \code{PresignedUrl} parameter, where it is required.
 
 The snapshot copy is sent to the regional endpoint that you sent the
-HTTP request to (for example, \code{ec2.us-east-1.amazonaws.com}). With the
+HTTP request to (for example, \verb{ec2.us-east-1.amazonaws.com}). With the
 AWS CLI, this is specified using the \code{--region} parameter or the default
 Region in your AWS configuration file.}
 
@@ -64,6 +64,8 @@ asynchronously, and the snapshot will move to an \code{error} state.}
 
 \item{SourceSnapshotId}{[required] The ID of the EBS snapshot to copy.}
 
+\item{TagSpecifications}{The tags to apply to the new snapshot.}
+
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
@@ -100,6 +102,17 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   PresignedUrl = "string",
   SourceRegion = "string",
   SourceSnapshotId = "string",
+  TagSpecifications = list(
+    list(
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"host-reservation"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
   DryRun = TRUE|FALSE
 )
 }
@@ -107,8 +120,8 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example copies a snapshot with the snapshot ID of
-# ``snap-066877671789bd71b`` from the ``us-west-2`` region to the
-# ``us-east-1`` region and adds a short description to identify the
+# `snap-066877671789bd71b` from the `us-west-2` region to the
+# `us-east-1` region and adds a short description to identify the
 # snapshot.
 \donttest{svc$copy_snapshot(
   Description = "This is my copied snapshot.",

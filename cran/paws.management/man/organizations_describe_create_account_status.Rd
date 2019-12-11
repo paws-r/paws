@@ -12,16 +12,16 @@ organizations_describe_create_account_status(CreateAccountRequestId)
 can get the ID from the response to an earlier CreateAccount request, or
 from the ListCreateAccountStatus operation.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} for an create
-account request ID string requires "car-" followed by from 8 to 32
-lower-case letters or digits.}
+The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a create
+account request ID string requires \"car-\" followed by from 8 to 32
+lowercase letters or digits.}
 }
 \description{
 Retrieves the current status of an asynchronous request to create an
 account.
 }
 \details{
-This operation can be called only from the organization's master
+This operation can be called only from the organization\'s master
 account.
 }
 \section{Request syntax}{

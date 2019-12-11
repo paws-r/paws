@@ -3,7 +3,8 @@
 \name{chime_list_phone_numbers}
 \alias{chime_list_phone_numbers}
 \title{Lists the phone numbers for the specified Amazon Chime account, Amazon
-Chime user, or Amazon Chime Voice Connector}
+Chime user, Amazon Chime Voice Connector, or Amazon Chime Voice
+Connector group}
 \usage{
 chime_list_phone_numbers(Status, ProductType, FilterName, FilterValue,
   MaxResults, NextToken)
@@ -23,13 +24,14 @@ chime_list_phone_numbers(Status, ProductType, FilterName, FilterValue,
 }
 \description{
 Lists the phone numbers for the specified Amazon Chime account, Amazon
-Chime user, or Amazon Chime Voice Connector.
+Chime user, Amazon Chime Voice Connector, or Amazon Chime Voice
+Connector group.
 }
 \section{Request syntax}{
 \preformatted{svc$list_phone_numbers(
   Status = "AcquireInProgress"|"AcquireFailed"|"Unassigned"|"Assigned"|"ReleaseInProgress"|"DeleteInProgress"|"ReleaseFailed"|"DeleteFailed",
   ProductType = "BusinessCalling"|"VoiceConnector",
-  FilterName = "AccountId"|"UserId"|"VoiceConnectorId",
+  FilterName = "AccountId"|"UserId"|"VoiceConnectorId"|"VoiceConnectorGroupId",
   FilterValue = "string",
   MaxResults = 123,
   NextToken = "string"

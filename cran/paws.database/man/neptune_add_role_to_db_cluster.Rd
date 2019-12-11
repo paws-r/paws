@@ -12,7 +12,7 @@ neptune_add_role_to_db_cluster(DBClusterIdentifier, RoleArn)
 
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role to associate with the
 Neptune DB cluster, for example
-\code{arn:aws:iam::123456789012:role/NeptuneAccessRole}.}
+\verb{arn:aws:iam::123456789012:role/NeptuneAccessRole}.}
 }
 \description{
 Associates an Identity and Access Management (IAM) role from an Neptune

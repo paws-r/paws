@@ -5,20 +5,20 @@
 \title{Creates a policy to manage the lifecycle of the specified AWS resources}
 \usage{
 dlm_create_lifecycle_policy(ExecutionRoleArn, Description, State,
-  PolicyDetails)
+  PolicyDetails, Tags)
 }
 \arguments{
 \item{ExecutionRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role used to run the
 operations specified by the lifecycle policy.}
 
-\item{Description}{[required] A description of the lifecycle policy. The characters \^[0-9A-Za-z
-\_-]+\$ are supported.}
+\item{Description}{[required] A description of the lifecycle policy. The characters \\^[0-9A-Za-z
+\\_-]+\\$ are supported.}
 
 \item{State}{[required] The desired activation state of the lifecycle policy after creation.}
 
-\item{PolicyDetails}{[required] The configuration details of the lifecycle policy.
+\item{PolicyDetails}{[required] The configuration details of the lifecycle policy.}
 
-Target tags cannot be re-used across lifecycle policies.}
+\item{Tags}{The tags to apply to the lifecycle policy during creation.}
 }
 \description{
 Creates a policy to manage the lifecycle of the specified AWS resources.
@@ -64,13 +64,26 @@ You can create up to 100 lifecycle policies.
           )
         ),
         RetainRule = list(
-          Count = 123
+          Count = 123,
+          Interval = 123,
+          IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
+        ),
+        FastRestoreRule = list(
+          Count = 123,
+          Interval = 123,
+          IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS",
+          AvailabilityZones = list(
+            "string"
+          )
         )
       )
     ),
     Parameters = list(
       ExcludeBootVolume = TRUE|FALSE
     )
+  ),
+  Tags = list(
+    "string"
   )
 )
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/codecommit_operations.R
 \name{codecommit_get_blob}
 \alias{codecommit_get_blob}
-\title{Returns the base-64 encoded content of an individual blob within a
+\title{Returns the base-64 encoded content of an individual blob in a
 repository}
 \usage{
 codecommit_get_blob(repositoryName, blobId)
@@ -13,7 +13,7 @@ codecommit_get_blob(repositoryName, blobId)
 \item{blobId}{[required] The ID of the blob, which is its SHA-1 pointer.}
 }
 \description{
-Returns the base-64 encoded content of an individual blob within a
+Returns the base-64 encoded content of an individual blob in a
 repository.
 }
 \section{Request syntax}{

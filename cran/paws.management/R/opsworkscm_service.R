@@ -2,11 +2,9 @@
 #' @importFrom paws.common new_handlers new_service set_config
 NULL
 
-#' AWS OpsWorks for Chef Automate
+#' AWS OpsWorks CM
 #'
 #' @description
-#' AWS OpsWorks CM
-#' 
 #' AWS OpsWorks for configuration management (CM) is a service that runs
 #' and manages configuration management servers. You can use AWS OpsWorks
 #' CM to create and manage AWS OpsWorks for Chef Automate and AWS OpsWorks

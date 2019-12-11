@@ -7,7 +7,7 @@
 wafregional_create_size_constraint_set(Name, ChangeToken)
 }
 \arguments{
-\item{Name}{[required] A friendly name or description of the SizeConstraintSet. You can't
+\item{Name}{[required] A friendly name or description of the SizeConstraintSet. You can\'t
 change \code{Name} after you create a \code{SizeConstraintSet}.}
 
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}

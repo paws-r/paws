@@ -12,8 +12,8 @@ directconnect_delete_direct_connect_gateway(directConnectGatewayId)
 \description{
 Deletes the specified Direct Connect gateway. You must first delete all
 virtual interfaces that are attached to the Direct Connect gateway and
-disassociate all virtual private gateways that are associated with the
-Direct Connect gateway.
+disassociate all virtual private gateways associated with the Direct
+Connect gateway.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_direct_connect_gateway(

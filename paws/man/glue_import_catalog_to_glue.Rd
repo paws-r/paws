@@ -2,7 +2,7 @@
 % Please edit documentation in R/glue_operations.R
 \name{glue_import_catalog_to_glue}
 \alias{glue_import_catalog_to_glue}
-\title{Imports an existing Athena Data Catalog to AWS Glue}
+\title{Imports an existing Amazon Athena Data Catalog to AWS Glue}
 \usage{
 glue_import_catalog_to_glue(CatalogId)
 }
@@ -11,7 +11,7 @@ glue_import_catalog_to_glue(CatalogId)
 account ID.}
 }
 \description{
-Imports an existing Athena Data Catalog to AWS Glue
+Imports an existing Amazon Athena Data Catalog to AWS Glue
 }
 \section{Request syntax}{
 \preformatted{svc$import_catalog_to_glue(

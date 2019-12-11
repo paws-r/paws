@@ -8,13 +8,14 @@ source DB instance}
 rds_create_db_instance_read_replica(DBInstanceIdentifier,
   SourceDBInstanceIdentifier, DBInstanceClass, AvailabilityZone, Port,
   MultiAZ, AutoMinorVersionUpgrade, Iops, OptionGroupName,
-  PubliclyAccessible, Tags, DBSubnetGroupName, VpcSecurityGroupIds,
-  StorageType, CopyTagsToSnapshot, MonitoringInterval, MonitoringRoleArn,
-  KmsKeyId, PreSignedUrl, EnableIAMDatabaseAuthentication,
-  EnablePerformanceInsights, PerformanceInsightsKMSKeyId,
-  PerformanceInsightsRetentionPeriod, EnableCloudwatchLogsExports,
-  ProcessorFeatures, UseDefaultProcessorFeatures, DeletionProtection,
-  SourceRegion)
+  DBParameterGroupName, PubliclyAccessible, Tags, DBSubnetGroupName,
+  VpcSecurityGroupIds, StorageType, CopyTagsToSnapshot,
+  MonitoringInterval, MonitoringRoleArn, KmsKeyId, PreSignedUrl,
+  EnableIAMDatabaseAuthentication, EnablePerformanceInsights,
+  PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod,
+  EnableCloudwatchLogsExports, ProcessorFeatures,
+  UseDefaultProcessorFeatures, DeletionProtection, Domain,
+  DomainIAMRoleName, SourceRegion)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The DB instance identifier of the Read Replica. This identifier is the
@@ -55,10 +56,10 @@ Default: Inherits from the source DB instance.}
 
 \item{AvailabilityZone}{The Availability Zone (AZ) where the Read Replica will be created.
 
-Default: A random, system-chosen Availability Zone in the endpoint's
+Default: A random, system-chosen Availability Zone in the endpoint\'s
 AWS Region.
 
-Example: \code{us-east-1d}}
+Example: \verb{us-east-1d}}
 
 \item{Port}{The port number that the DB instance uses for connections.
 
@@ -86,10 +87,27 @@ be initially allocated for the DB instance.}
 \item{OptionGroupName}{The option group the DB instance is associated with. If omitted, the
 option group associated with the source instance is used.}
 
+\item{DBParameterGroupName}{The name of the DB parameter group to associate with this DB instance.
+
+If you do not specify a value for \code{DBParameterGroupName}, then Amazon
+RDS uses the \code{DBParameterGroup} of source DB instance for a same region
+Read Replica, or the default \code{DBParameterGroup} for the specified DB
+engine for a cross region Read Replica.
+
+Currently, specifying a parameter group for this operation is only
+supported for Oracle DB instances.
+
+Constraints:
+\itemize{
+\item Must be 1 to 255 letters, numbers, or hyphens.
+\item First character must be a letter
+\item Can\'t end with a hyphen or contain two consecutive hyphens
+}}
+
 \item{PubliclyAccessible}{A value that indicates whether the DB instance is publicly accessible.
 When the DB instance is publicly accessible, it is an Internet-facing
 instance with a publicly resolvable DNS name, which resolves to a public
-IP address. When the DB instance is not publicly accessible, it is an
+IP address. When the DB instance isn\'t publicly accessible, it is an
 internal instance with a DNS name that resolves to a private IP address.
 For more information, see CreateDBInstance.}
 
@@ -97,7 +115,7 @@ For more information, see CreateDBInstance.}
 
 \item{DBSubnetGroupName}{Specifies a DB subnet group for the DB instance. The new DB instance is
 created in the VPC associated with the DB subnet group. If no DB subnet
-group is specified, then the new DB instance is not created in a VPC.
+group is specified, then the new DB instance isn\'t created in a VPC.
 
 Constraints:
 \itemize{
@@ -107,7 +125,7 @@ a DB instance in another AWS Region.
 \item The specified DB subnet group must be in the same AWS Region in
 which the operation is running.
 \item All Read Replicas in one AWS Region that are created from the same
-source DB instance must either:\>
+source DB instance must either:\\>
 \itemize{
 \item Specify DB subnet groups from the same VPC. All these Read
 Replicas are created in the same VPC.
@@ -120,7 +138,7 @@ Example: \code{mySubnetgroup}}
 
 \item{VpcSecurityGroupIds}{A list of EC2 VPC security groups to associate with the Read Replica.
 
-Default: The default EC2 VPC security group for the DB subnet group's
+Default: The default EC2 VPC security group for the DB subnet group\'s
 VPC.}
 
 \item{StorageType}{Specifies the storage type to be associated with the Read Replica.
@@ -142,7 +160,7 @@ Enhanced Monitoring metrics, specify 0. The default is 0.
 If \code{MonitoringRoleArn} is specified, then you must also set
 \code{MonitoringInterval} to a value other than 0.
 
-Valid Values: \code{0, 1, 5, 10, 15, 30, 60}}
+Valid Values: \verb{0, 1, 5, 10, 15, 30, 60}}
 
 \item{MonitoringRoleArn}{The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to Amazon CloudWatch Logs. For example,
@@ -165,10 +183,10 @@ source DB instance.
 If you create an encrypted Read Replica in a different AWS Region, then
 you must specify a KMS key for the destination AWS Region. KMS
 encryption keys are specific to the AWS Region that they are created in,
-and you can't use encryption keys from one AWS Region in another AWS
+and you can\'t use encryption keys from one AWS Region in another AWS
 Region.
 
-You can't create an encrypted Read Replica from an unencrypted DB
+You can\'t create an encrypted Read Replica from an unencrypted DB
 instance.}
 
 \item{PreSignedUrl}{The URL that contains a Signature Version 4 signed request for the
@@ -176,10 +194,9 @@ instance.}
 contains the source DB instance.
 
 You must specify this parameter when you create an encrypted Read
-Replica from another AWS Region by using the Amazon RDS API. You can
-specify the \code{--source-region} option instead of this parameter when you
-create an encrypted Read Replica from another AWS Region by using the
-AWS CLI.
+Replica from another AWS Region by using the Amazon RDS API. Don\'t
+specify \code{PreSignedUrl} when you are creating an encrypted Read Replica
+in the same AWS Region.
 
 The presigned URL must be a valid request for the
 \code{CreateDBInstanceReadReplica} API action that can be executed in the
@@ -216,20 +233,22 @@ To learn how to generate a Signature Version 4 signed request, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (AWS Signature Version 4)}
 and \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4 Signing Process}.
 
-If you supply a value for this operation's \code{SourceRegion} parameter, a
+If you are using an AWS SDK tool or the AWS CLI, you can specify
+\code{SourceRegion} (or \code{--source-region} for the AWS CLI) instead of
+specifying \code{PreSignedUrl} manually. Specifying \code{SourceRegion}
+autogenerates a pre-signed URL that is a valid request for the operation
+that can be executed in the source AWS Region.
+
+If you supply a value for this operation\'s \code{SourceRegion} parameter, a
 pre-signed URL will be calculated on your behalf.}
 
 \item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.
+mapping is disabled. For information about the supported DB engines, see
+CreateDBInstance.
 
-You can enable IAM database authentication for the following database
-engines
-\itemize{
-\item For MySQL 5.6, minor version 5.6.34 or higher
-\item For MySQL 5.7, minor version 5.7.16 or higher
-\item Aurora MySQL 5.6 or higher
-}}
+For more information about IAM database authentication, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication for MySQL and PostgreSQL}
+in the \emph{Amazon RDS User Guide.}}
 
 \item{EnablePerformanceInsights}{A value that indicates whether to enable Performance Insights for the
 Read Replica.
@@ -261,9 +280,19 @@ instance class of the DB instance.}
 uses its default processor features.}
 
 \item{DeletionProtection}{A value that indicates whether the DB instance has deletion protection
-enabled. The database can't be deleted when deletion protection is
+enabled. The database can\'t be deleted when deletion protection is
 enabled. By default, deletion protection is disabled. For more
 information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
+
+\item{Domain}{The Active Directory directory ID to create the DB instance in.
+
+For Oracle DB instances, Amazon RDS can use Kerberos Authentication to
+authenticate users that connect to the DB instance. For more
+information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html}{Using Kerberos Authentication with Amazon RDS for Oracle}
+in the \emph{Amazon RDS User Guide}.}
+
+\item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
+Directory Service.}
 
 \item{SourceRegion}{The ID of the region that contains the source for the read replica.}
 }
@@ -275,7 +304,7 @@ running MySQL, MariaDB, Oracle, or PostgreSQL. For more information, see
 in the \emph{Amazon RDS User Guide}.
 }
 \details{
-Amazon Aurora doesn't support this action. You must call the
+Amazon Aurora doesn\'t support this action. You must call the
 \code{CreateDBInstance} action to create a DB instance for an Aurora DB
 cluster.
 
@@ -297,6 +326,7 @@ Your source DB instance must have backup retention enabled.
   AutoMinorVersionUpgrade = TRUE|FALSE,
   Iops = 123,
   OptionGroupName = "string",
+  DBParameterGroupName = "string",
   PubliclyAccessible = TRUE|FALSE,
   Tags = list(
     list(
@@ -329,6 +359,8 @@ Your source DB instance must have backup retention enabled.
   ),
   UseDefaultProcessorFeatures = TRUE|FALSE,
   DeletionProtection = TRUE|FALSE,
+  Domain = "string",
+  DomainIAMRoleName = "string",
   SourceRegion = "string"
 )
 }

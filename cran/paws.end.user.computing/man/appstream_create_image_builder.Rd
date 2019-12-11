@@ -5,8 +5,9 @@
 \title{Creates an image builder}
 \usage{
 appstream_create_image_builder(Name, ImageName, ImageArn, InstanceType,
-  Description, DisplayName, VpcConfig, EnableDefaultInternetAccess,
-  DomainJoinInfo, AppstreamAgentVersion, Tags)
+  Description, DisplayName, VpcConfig, IamRoleArn,
+  EnableDefaultInternetAccess, DomainJoinInfo, AppstreamAgentVersion,
+  Tags, AccessEndpoints)
 }
 \arguments{
 \item{Name}{[required] A unique name for the image builder.}
@@ -15,7 +16,30 @@ appstream_create_image_builder(Name, ImageName, ImageArn, InstanceType,
 
 \item{ImageArn}{The ARN of the public, private, or shared image to use.}
 
-\item{InstanceType}{[required] The instance type to use when launching the image builder.}
+\item{InstanceType}{[required] The instance type to use when launching the image builder. The following
+instance types are available:
+\itemize{
+\item stream.standard.medium
+\item stream.standard.large
+\item stream.compute.large
+\item stream.compute.xlarge
+\item stream.compute.2xlarge
+\item stream.compute.4xlarge
+\item stream.compute.8xlarge
+\item stream.memory.large
+\item stream.memory.xlarge
+\item stream.memory.2xlarge
+\item stream.memory.4xlarge
+\item stream.memory.8xlarge
+\item stream.graphics-design.large
+\item stream.graphics-design.xlarge
+\item stream.graphics-design.2xlarge
+\item stream.graphics-design.4xlarge
+\item stream.graphics-desktop.2xlarge
+\item stream.graphics-pro.4xlarge
+\item stream.graphics-pro.8xlarge
+\item stream.graphics-pro.16xlarge
+}}
 
 \item{Description}{The description to display.}
 
@@ -23,6 +47,17 @@ appstream_create_image_builder(Name, ImageName, ImageArn, InstanceType,
 
 \item{VpcConfig}{The VPC configuration for the image builder. You can specify only one
 subnet.}
+
+\item{IamRoleArn}{The Amazon Resource Name (ARN) of the IAM role to apply to the image
+builder. To assume a role, the image builder calls the AWS Security
+Token Service (STS) \code{AssumeRole} API operation and passes the ARN of the
+role to use. The operation creates a new session with temporary
+credentials. AppStream 2.0 retrieves the temporary credentials and
+creates the \strong{AppStream\\_Machine\\_Role} credential profile on the
+instance.
+
+For more information, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html}{Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming Instances}
+in the \emph{Amazon AppStream 2.0 Administration Guide}.}
 
 \item{EnableDefaultInternetAccess}{Enables or disables default internet access for the image builder.}
 
@@ -39,12 +74,16 @@ specify a value, Environment=.
 Generally allowed characters are: letters, numbers, and spaces
 representable in UTF-8, and the following special characters:
 
-\_ . : / = + \ - @
+\\_ . : / = + \\ - @
 
 If you do not specify a value, the value is set to an empty string.
 
 For more information about tags, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources}
-in the \emph{Amazon AppStream 2.0 Developer Guide}.}
+in the \emph{Amazon AppStream 2.0 Administration Guide}.}
+
+\item{AccessEndpoints}{The list of interface VPC endpoint (interface endpoint) objects.
+Administrators can connect to the image builder only through the
+specified endpoints.}
 }
 \description{
 Creates an image builder. An image builder is a virtual machine that is
@@ -70,6 +109,7 @@ state is \code{RUNNING}.
       "string"
     )
   ),
+  IamRoleArn = "string",
   EnableDefaultInternetAccess = TRUE|FALSE,
   DomainJoinInfo = list(
     DirectoryName = "string",
@@ -78,6 +118,12 @@ state is \code{RUNNING}.
   AppstreamAgentVersion = "string",
   Tags = list(
     "string"
+  ),
+  AccessEndpoints = list(
+    list(
+      EndpointType = "STREAMING",
+      VpceId = "string"
+    )
   )
 )
 }

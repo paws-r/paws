@@ -24,7 +24,7 @@ metrics are enabled.
 }}
 
 \item{Granularity}{[required] The granularity to associate with the metrics to collect. The only valid
-value is \code{1Minute}.}
+value is \verb{1Minute}.}
 }
 \description{
 Enables group metrics for the specified Auto Scaling group. For more

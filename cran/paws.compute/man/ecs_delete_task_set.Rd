@@ -16,7 +16,7 @@ hosts the task set to delete.}
 \item{taskSet}{[required] The task set ID or full Amazon Resource Name (ARN) of the task set to
 delete.}
 
-\item{force}{If \code{true}, this allows you to delete a task set even if it hasn't been
+\item{force}{If \code{true}, this allows you to delete a task set even if it hasn\'t been
 scaled down to zero.}
 }
 \description{

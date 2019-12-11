@@ -15,7 +15,7 @@ iot_update_thing(thingName, thingTypeName, attributePayload,
 \item{attributePayload}{A list of thing attributes, a JSON string containing name-value pairs.
 For example:
 
-\code{\{\"attributes\":\{\"name1\":\"value2\"\}\}}
+\verb{\\\{\\"attributes\\":\\\{\\"name1\\":\\"value2\\"\\\}\\\}}
 
 This data is used to add new attributes or update existing attributes.}
 

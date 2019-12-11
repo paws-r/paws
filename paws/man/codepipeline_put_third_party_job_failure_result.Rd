@@ -20,7 +20,7 @@ details.}
 }
 \description{
 Represents the failure of a third party job as returned to the pipeline
-by a job worker. Only used for partner actions.
+by a job worker. Used for partner actions only.
 }
 \section{Request syntax}{
 \preformatted{svc$put_third_party_job_failure_result(

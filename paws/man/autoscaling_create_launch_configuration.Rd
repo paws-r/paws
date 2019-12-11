@@ -15,34 +15,34 @@ autoscaling_create_launch_configuration(LaunchConfigurationName,
 \item{LaunchConfigurationName}{[required] The name of the launch configuration. This name must be unique per
 Region per account.}
 
-\item{ImageId}{The ID of the Amazon Machine Image (AMI) to use to launch your EC2
-instances.
+\item{ImageId}{The ID of the Amazon Machine Image (AMI) that was assigned during
+registration. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html}{Finding an AMI}
+in the \emph{Amazon EC2 User Guide for Linux Instances}.
 
-If you do not specify \code{InstanceId}, you must specify \code{ImageId}.
-
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html}{Finding an AMI}
-in the \emph{Amazon EC2 User Guide for Linux Instances}.}
+If you do not specify \code{InstanceId}, you must specify \code{ImageId}.}
 
 \item{KeyName}{The name of the key pair. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html}{Amazon EC2 Key Pairs}
 in the \emph{Amazon EC2 User Guide for Linux Instances}.}
 
-\item{SecurityGroups}{One or more security groups with which to associate the instances.
+\item{SecurityGroups}{A list that contains the security groups to assign to the instances in
+the Auto Scaling group.
 
-If your instances are launched in EC2-Classic, you can either specify
-security group names or the security group IDs. For more information,
-see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html}{Amazon EC2 Security Groups}
-in the \emph{Amazon EC2 User Guide for Linux Instances}.
+[EC2-VPC] Specify the security group IDs. For more information, see
+\href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html}{Security Groups for Your VPC}
+in the \emph{Amazon Virtual Private Cloud User Guide}.
 
-If your instances are launched into a VPC, specify security group IDs.
-For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html}{Security Groups for Your VPC}
-in the \emph{Amazon Virtual Private Cloud User Guide}.}
+[EC2-Classic] Specify either the security group names or the security
+group IDs. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html}{Amazon EC2 Security Groups}
+in the \emph{Amazon EC2 User Guide for Linux Instances}.}
 
 \item{ClassicLinkVPCId}{The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances
-to. This parameter is supported only if you are launching EC2-Classic
-instances. For more information, see
+to. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html}{ClassicLink}
 in the \emph{Amazon EC2 User Guide for Linux Instances} and \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-ClassicLink}{Linking EC2-Classic Instances to a VPC}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.
+
+This parameter can only be used if you are launching EC2-Classic
+instances.}
 
 \item{ClassicLinkVPCSecurityGroups}{The IDs of one or more security groups for the specified
 ClassicLink-enabled VPC. For more information, see
@@ -50,11 +50,11 @@ ClassicLink-enabled VPC. For more information, see
 in the \emph{Amazon EC2 User Guide for Linux Instances} and \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-ClassicLink}{Linking EC2-Classic Instances to a VPC}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
-Conditional: This parameter is required if you specify a
-ClassicLink-enabled VPC, and is not supported otherwise.}
+If you specify the \code{ClassicLinkVPCId} parameter, you must specify this
+parameter.}
 
-\item{UserData}{The user data to make available to the launched EC2 instances. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html}{Instance Metadata and User Data}
+\item{UserData}{The Base64-encoded user data to make available to the launched EC2
+instances. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html}{Instance Metadata and User Data}
 in the \emph{Amazon EC2 User Guide for Linux Instances}.}
 
 \item{InstanceId}{The ID of the instance to use to create the launch configuration. The
@@ -70,7 +70,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 If you do not specify \code{InstanceId}, you must specify both \code{ImageId} and
 \code{InstanceType}.}
 
-\item{InstanceType}{The instance type of the EC2 instance.
+\item{InstanceType}{Specifies the instance type of the EC2 instance.
 
 For information about available instance types, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes}{Available Instance Types}
 in the \emph{Amazon EC2 User Guide for Linux Instances.}
@@ -79,65 +79,84 @@ If you do not specify \code{InstanceId}, you must specify \code{InstanceType}.}
 
 \item{KernelId}{The ID of the kernel associated with the AMI.}
 
-\item{RamdiskId}{The ID of the RAM disk associated with the AMI.}
+\item{RamdiskId}{The ID of the RAM disk to select.}
 
-\item{BlockDeviceMappings}{One or more mappings that specify how block devices are exposed to the
-instance. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html}{Block Device Mapping}
+\item{BlockDeviceMappings}{A block device mapping, which specifies the block devices for the
+instance. You can specify virtual devices and EBS volumes. For more
+information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html}{Block Device Mapping}
 in the \emph{Amazon EC2 User Guide for Linux Instances}.}
 
-\item{InstanceMonitoring}{Enables detailed monitoring (\code{true}) or basic monitoring (\code{false}) for
-the Auto Scaling instances. The default value is \code{true}.}
+\item{InstanceMonitoring}{Controls whether instances in this group are launched with detailed
+(\code{true}) or basic (\code{false}) monitoring.
+
+The default value is \code{true} (enabled).
+
+When detailed monitoring is enabled, Amazon CloudWatch generates metrics
+every minute and your account is charged a fee. When you disable
+detailed monitoring, CloudWatch generates metrics every 5 minutes. For
+more information, see \href{https://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-monitoring.html#enable-as-instance-metrics}{Configure Monitoring for Auto Scaling Instances}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{SpotPrice}{The maximum hourly price to be paid for any Spot Instance launched to
 fulfill the request. Spot Instances are launched when the price you
-specify exceeds the current Spot market price. For more information, see
+specify exceeds the current Spot price. For more information, see
 \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-launch-spot-instances.html}{Launching Spot Instances in Your Auto Scaling Group}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.}
-
-\item{IamInstanceProfile}{The name or the Amazon Resource Name (ARN) of the instance profile
-associated with the IAM role for the instance.
-
-EC2 instances launched with an IAM role automatically have AWS security
-credentials available. You can use IAM roles with Amazon EC2 Auto
-Scaling to automatically enable applications running on your EC2
-instances to securely access other AWS resources. For more information,
-see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/us-iam-role.html}{IAM Role for Applications That Run on Amazon EC2 Instances}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.}
-
-\item{EbsOptimized}{Indicates whether the instance is optimized for Amazon EBS I/O. By
-default, the instance is not optimized for EBS I/O. The optimization
-provides dedicated throughput to Amazon EBS and an optimized
-configuration stack to provide optimal I/O performance. This
-optimization is not available with all instance types. Additional usage
-charges apply. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html}{Amazon EBS-Optimized Instances}
-in the \emph{Amazon EC2 User Guide for Linux Instances}.}
-
-\item{AssociatePublicIpAddress}{Used for groups that launch instances into a virtual private cloud
-(VPC). Specifies whether to assign a public IP address to each instance.
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html}{Launching Auto Scaling Instances in a VPC}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
-If you specify this parameter, be sure to specify at least one subnet
-when you create your group.
+When you change your maximum price by creating a new launch
+configuration, running instances will continue to run as long as the
+maximum price for those running instances is higher than the current
+Spot price.}
 
-Default: If the instance is launched into a default subnet, the default
-is to assign a public IP address. If the instance is launched into a
-nondefault subnet, the default is not to assign a public IP address.}
+\item{IamInstanceProfile}{The name or the Amazon Resource Name (ARN) of the instance profile
+associated with the IAM role for the instance. The instance profile
+contains the IAM role.
 
-\item{PlacementTenancy}{The tenancy of the instance. An instance with a tenancy of \code{dedicated}
-runs on single-tenant hardware and can only be launched into a VPC.
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/us-iam-role.html}{IAM Role for Applications That Run on Amazon EC2 Instances}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
-To launch Dedicated Instances into a shared tenancy VPC (a VPC with the
+\item{EbsOptimized}{Specifies whether the launch configuration is optimized for EBS I/O
+(\code{true}) or not (\code{false}). The optimization provides dedicated
+throughput to Amazon EBS and an optimized configuration stack to provide
+optimal I/O performance. This optimization is not available with all
+instance types. Additional fees are incurred when you enable EBS
+optimization for an instance type that is not EBS-optimized by default.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html}{Amazon EBS-Optimized Instances}
+in the \emph{Amazon EC2 User Guide for Linux Instances}.
+
+The default value is \code{false}.}
+
+\item{AssociatePublicIpAddress}{For Auto Scaling groups that are running in a virtual private cloud
+(VPC), specifies whether to assign a public IP address to the group\'s
+instances. If you specify \code{true}, each instance in the Auto Scaling
+group receives a unique public IP address. For more information, see
+\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html}{Launching Auto Scaling Instances in a VPC}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.
+
+If you specify this parameter, you must specify at least one subnet for
+\code{VPCZoneIdentifier} when you create your group.
+
+If the instance is launched into a default subnet, the default is to
+assign a public IP address, unless you disabled the option to assign a
+public IP address on the subnet. If the instance is launched into a
+nondefault subnet, the default is not to assign a public IP address,
+unless you enabled the option to assign a public IP address on the
+subnet.}
+
+\item{PlacementTenancy}{The tenancy of the instance. An instance with \code{dedicated} tenancy runs
+on isolated, single-tenant hardware and can only be launched into a VPC.
+
+To launch dedicated instances into a shared tenancy VPC (a VPC with the
 instance placement tenancy attribute set to \code{default}), you must set the
 value of this parameter to \code{dedicated}.
 
-If you specify \code{PlacementTenancy}, be sure to specify at least one
-subnet when you create your group.
+If you specify \code{PlacementTenancy}, you must specify at least one subnet
+for \code{VPCZoneIdentifier} when you create your group.
 
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-vpc-tenancy}{Instance Placement Tenancy}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
-Valid values: \code{default} \| \code{dedicated}}
+Valid Values: \code{default} \\| \code{dedicated}}
 }
 \description{
 Creates a launch configuration.

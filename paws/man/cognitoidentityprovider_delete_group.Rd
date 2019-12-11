@@ -15,7 +15,7 @@ cognitoidentityprovider_delete_group(GroupName, UserPoolId)
 Deletes a group. Currently only groups with no members can be deleted.
 }
 \details{
-Requires developer credentials.
+Calling this action requires developer credentials.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_group(

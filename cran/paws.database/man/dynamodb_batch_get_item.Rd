@@ -28,7 +28,7 @@ attribute name in an expression.
 misinterpreted in an expression.
 }
 
-Use the \strong{\#} character in an expression to dereference an
+Use the \strong{\\#} character in an expression to dereference an
 attribute name. For example, consider the following attribute name:
 \itemize{
 \item \code{Percentile}
@@ -40,13 +40,13 @@ reserved words, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/deve
 in the \emph{Amazon DynamoDB Developer Guide}). To work around this, you
 could specify the following for \code{ExpressionAttributeNames}:
 \itemize{
-\item \code{\{"#P":"Percentile"\}}
+\item \verb{\\\{"#P":"Percentile"\\\}}
 }
 
 You could then use this substitution in an expression, as in this
 example:
 \itemize{
-\item \code{#P = :val}
+\item \verb{#P = :val}
 }
 
 Tokens that begin with the \strong{:} character are \emph{expression attribute
@@ -87,15 +87,15 @@ from one or more tables. You identify requested items by primary key.
 \details{
 A single operation can retrieve up to 16 MB of data, which can contain
 as many as 100 items. \code{BatchGetItem} returns a partial result if the
-response size limit is exceeded, the table's provisioned throughput is
+response size limit is exceeded, the table\'s provisioned throughput is
 exceeded, or an internal processing failure occurs. If a partial result
 is returned, the operation returns a value for \code{UnprocessedKeys}. You
 can use this value to retry the operation starting with the next item to
 get.
 
 If you request more than 100 items, \code{BatchGetItem} returns a
-\code{ValidationException} with the message "Too many items requested for
-the BatchGetItem call."
+\code{ValidationException} with the message \"Too many items requested for
+the BatchGetItem call.\"
 
 For example, if you ask to retrieve 100 items, but each individual item
 is 300 KB in size, the system returns 52 items (so as not to exceed the

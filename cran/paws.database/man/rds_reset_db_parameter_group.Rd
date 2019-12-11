@@ -13,7 +13,7 @@ rds_reset_db_parameter_group(DBParameterGroupName, ResetAllParameters,
 
 Constraints:
 \itemize{
-\item Must match the name of an existing DBParameterGroup.
+\item Must match the name of an existing \code{DBParameterGroup}.
 }}
 
 \item{ResetAllParameters}{A value that indicates whether to reset all parameters in the DB
@@ -27,7 +27,7 @@ maximum of 20 parameters can be modified in a single request.
 
 \strong{MySQL}
 
-Valid Values (for Apply method): \code{immediate} \| \code{pending-reboot}
+Valid Values (for Apply method): \code{immediate} \\| \code{pending-reboot}
 
 You can use the immediate value with dynamic parameters only. You can
 use the \code{pending-reboot} value for both dynamic and static parameters,
@@ -35,7 +35,7 @@ and changes are applied when DB instance reboots.
 
 \strong{MariaDB}
 
-Valid Values (for Apply method): \code{immediate} \| \code{pending-reboot}
+Valid Values (for Apply method): \code{immediate} \\| \code{pending-reboot}
 
 You can use the immediate value with dynamic parameters only. You can
 use the \code{pending-reboot} value for both dynamic and static parameters,

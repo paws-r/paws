@@ -2,12 +2,20 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_abort_multipart_upload}
 \alias{s3_abort_multipart_upload}
-\title{Aborts a multipart upload}
+\title{This operation aborts a multipart upload}
 \usage{
 s3_abort_multipart_upload(Bucket, Key, UploadId, RequestPayer)
 }
 \arguments{
-\item{Bucket}{[required] Name of the bucket to which the multipart upload was initiated.}
+\item{Bucket}{[required] The bucket name to which the upload was taking place.
+
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+\emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
+When using this operation using an access point through the AWS SDKs,
+you provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{Key}{[required] Key of the object for which the multipart upload was initiated.}
 
@@ -16,12 +24,30 @@ s3_abort_multipart_upload(Bucket, Key, UploadId, RequestPayer)
 \item{RequestPayer}{}
 }
 \description{
-Aborts a multipart upload.
+This operation aborts a multipart upload. After a multipart upload is
+aborted, no additional parts can be uploaded using that upload ID. The
+storage consumed by any previously uploaded parts will be freed.
+However, if any part uploads are currently in progress, those part
+uploads might or might not succeed. As a result, it might be necessary
+to abort a given multipart upload multiple times in order to completely
+free all storage consumed by all parts.
 }
 \details{
-To verify that all parts have been removed, so you don't get charged
-for the part storage, you should call the List Parts operation and
-ensure the parts list is empty.
+To verify that all parts have been removed, so you don\'t get charged
+for the part storage, you should call the ListParts operation and ensure
+that the parts list is empty.
+
+For information about permissions required to use the multipart upload
+API, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html}{Multipart Upload API and Permissions}.
+
+The following operations are related to \code{AbortMultipartUpload}:
+\itemize{
+\item CreateMultipartUpload
+\item UploadPart
+\item CompleteMultipartUpload
+\item ListParts
+\item ListMultipartUploads
+}
 }
 \section{Request syntax}{
 \preformatted{svc$abort_multipart_upload(

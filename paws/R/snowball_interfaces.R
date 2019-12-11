@@ -147,6 +147,18 @@ NULL
   return(populate(args, shape))
 }
 
+.snowball$get_software_updates_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.snowball$get_software_updates_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(UpdatesURI = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .snowball$list_cluster_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))

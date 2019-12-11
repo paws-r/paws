@@ -10,13 +10,16 @@ directoryservice_create_directory(Name, ShortName, Password,
 \arguments{
 \item{Name}{[required] The fully qualified name for the directory, such as \code{corp.example.com}.}
 
-\item{ShortName}{The short name of the directory, such as \code{CORP}.}
+\item{ShortName}{The NetBIOS name of the directory, such as \code{CORP}.}
 
 \item{Password}{[required] The password for the directory administrator. The directory creation
 process creates a directory administrator account with the user name
-\code{Administrator} and this password.}
+\code{Administrator} and this password.
 
-\item{Description}{A textual description for the directory.}
+If you need to change the password for the administrator account, you
+can use the ResetUserPassword API call.}
+
+\item{Description}{A description for the directory.}
 
 \item{Size}{[required] The size of the directory.}
 
@@ -26,7 +29,8 @@ the operation.}
 \item{Tags}{The tags to be assigned to the Simple AD directory.}
 }
 \description{
-Creates a Simple AD directory.
+Creates a Simple AD directory. For more information, see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_simple_ad.html}{Simple Active Directory}
+in the \emph{AWS Directory Service Admin Guide}.
 }
 \details{
 Before you call \code{CreateDirectory}, ensure that all of the required

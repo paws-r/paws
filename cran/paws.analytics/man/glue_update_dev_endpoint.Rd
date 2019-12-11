@@ -2,34 +2,46 @@
 % Please edit documentation in R/glue_operations.R
 \name{glue_update_dev_endpoint}
 \alias{glue_update_dev_endpoint}
-\title{Updates a specified DevEndpoint}
+\title{Updates a specified development endpoint}
 \usage{
 glue_update_dev_endpoint(EndpointName, PublicKey, AddPublicKeys,
   DeletePublicKeys, CustomLibraries, UpdateEtlLibraries, DeleteArguments,
   AddArguments)
 }
 \arguments{
-\item{EndpointName}{[required] The name of the DevEndpoint to be updated.}
+\item{EndpointName}{[required] The name of the \code{DevEndpoint} to be updated.}
 
-\item{PublicKey}{The public key for the DevEndpoint to use.}
+\item{PublicKey}{The public key for the \code{DevEndpoint} to use.}
 
-\item{AddPublicKeys}{The list of public keys for the DevEndpoint to use.}
+\item{AddPublicKeys}{The list of public keys for the \code{DevEndpoint} to use.}
 
-\item{DeletePublicKeys}{The list of public keys to be deleted from the DevEndpoint.}
+\item{DeletePublicKeys}{The list of public keys to be deleted from the \code{DevEndpoint}.}
 
-\item{CustomLibraries}{Custom Python or Java libraries to be loaded in the DevEndpoint.}
+\item{CustomLibraries}{Custom Python or Java libraries to be loaded in the \code{DevEndpoint}.}
 
-\item{UpdateEtlLibraries}{True if the list of custom libraries to be loaded in the development
-endpoint needs to be updated, or False otherwise.}
+\item{UpdateEtlLibraries}{\code{True} if the list of custom libraries to be loaded in the development
+endpoint needs to be updated, or \code{False} if otherwise.}
 
 \item{DeleteArguments}{The list of argument keys to be deleted from the map of arguments used
-to configure the DevEndpoint.}
+to configure the \code{DevEndpoint}.}
 
 \item{AddArguments}{The map of arguments to add the map of arguments used to configure the
-DevEndpoint.}
+\code{DevEndpoint}.
+
+Valid arguments are:
+\itemize{
+\item \code{"--enable-glue-datacatalog": ""}
+\item \code{"GLUE_PYTHON_VERSION": "3"}
+\item \code{"GLUE_PYTHON_VERSION": "2"}
+}
+
+You can specify a version of Python support for development endpoints by
+using the \code{Arguments} parameter in the \code{CreateDevEndpoint} or
+\code{UpdateDevEndpoint} APIs. If no arguments are provided, the version
+defaults to Python 2.}
 }
 \description{
-Updates a specified DevEndpoint.
+Updates a specified development endpoint.
 }
 \section{Request syntax}{
 \preformatted{svc$update_dev_endpoint(

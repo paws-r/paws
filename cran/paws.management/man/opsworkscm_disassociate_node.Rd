@@ -24,9 +24,9 @@ exist.
 }
 \description{
 Disassociates a node from an AWS OpsWorks CM server, and removes the
-node from the server's managed nodes. After a node is disassociated,
+node from the server\'s managed nodes. After a node is disassociated,
 the node key pair is no longer valid for accessing the configuration
-manager's API. For more information about how to associate a node, see
+manager\'s API. For more information about how to associate a node, see
 AssociateNode.
 }
 \details{

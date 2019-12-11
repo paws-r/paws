@@ -8,7 +8,7 @@ amplify_update_app(appId, name, description, platform,
   iamServiceRoleArn, environmentVariables, enableBranchAutoBuild,
   enableBasicAuth, basicAuthCredentials, customRules, buildSpec,
   enableAutoBranchCreation, autoBranchCreationPatterns,
-  autoBranchCreationConfig)
+  autoBranchCreationConfig, repository, oauthToken, accessToken)
 }
 \arguments{
 \item{appId}{[required] Unique Id for an Amplify App.}
@@ -37,7 +37,16 @@ amplify_update_app(appId, name, description, platform,
 
 \item{autoBranchCreationPatterns}{Automated branch creation glob patterns for the Amplify App.}
 
-\item{autoBranchCreationConfig}{Automated branch creation config for the Amplify App.}
+\item{autoBranchCreationConfig}{Automated branch creation branchConfig for the Amplify App.}
+
+\item{repository}{Repository for an Amplify App}
+
+\item{oauthToken}{OAuth token for 3rd party source control system for an Amplify App, used
+to create webhook and read-only deploy key. OAuth token is not stored.}
+
+\item{accessToken}{Personal Access token for 3rd party source control system for an Amplify
+App, used to create webhook and read-only deploy key. Token is not
+stored.}
 }
 \description{
 Updates an existing Amplify App.
@@ -69,7 +78,7 @@ Updates an existing Amplify App.
     "string"
   ),
   autoBranchCreationConfig = list(
-    stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL",
+    stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL"|"PULL_REQUEST",
     framework = "string",
     enableAutoBuild = TRUE|FALSE,
     environmentVariables = list(
@@ -77,8 +86,13 @@ Updates an existing Amplify App.
     ),
     basicAuthCredentials = "string",
     enableBasicAuth = TRUE|FALSE,
-    buildSpec = "string"
-  )
+    buildSpec = "string",
+    enablePullRequestPreview = TRUE|FALSE,
+    pullRequestEnvironmentName = "string"
+  ),
+  repository = "string",
+  oauthToken = "string",
+  accessToken = "string"
 )
 }
 }

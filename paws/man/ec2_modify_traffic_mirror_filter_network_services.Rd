@@ -32,7 +32,7 @@ When you no longer want to mirror network services, use
 \code{RemoveNetworkServices} to remove the network services from the Traffic
 Mirror filter.
 
-FFor information about filter rule properties, see \href{https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html#traffic-mirroring-network-services}{Network Services}
+For information about filter rule properties, see \href{https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html}{Network Services}
 in the \emph{Traffic Mirroring User Guide} .
 }
 \section{Request syntax}{

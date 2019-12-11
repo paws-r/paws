@@ -12,12 +12,12 @@ cloudformation_describe_stack_instance(StackSetName,
 \item{StackSetName}{[required] The name or the unique stack ID of the stack set that you want to get
 stack instance information for.}
 
-\item{StackInstanceAccount}{[required] The ID of an AWS account that's associated with this stack instance.}
+\item{StackInstanceAccount}{[required] The ID of an AWS account that\'s associated with this stack instance.}
 
-\item{StackInstanceRegion}{[required] The name of a region that's associated with this stack instance.}
+\item{StackInstanceRegion}{[required] The name of a region that\'s associated with this stack instance.}
 }
 \description{
-Returns the stack instance that's associated with the specified stack
+Returns the stack instance that\'s associated with the specified stack
 set, AWS account, and region.
 }
 \details{

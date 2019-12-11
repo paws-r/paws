@@ -12,7 +12,7 @@ kms_retire_grant(GrantToken, KeyId, GrantId)
 \item{KeyId}{The Amazon Resource Name (ARN) of the CMK associated with the grant.
 
 For example:
-\code{arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab}}
+\verb{arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab}}
 
 \item{GrantId}{Unique identifier of the grant to retire. The grant ID is returned in
 the response to a \code{CreateGrant} operation.
@@ -22,7 +22,7 @@ the response to a \code{CreateGrant} operation.
 }}
 }
 \description{
-Retires a grant. To clean up, you can retire a grant when you're done
+Retires a grant. To clean up, you can retire a grant when you\'re done
 using it. You should revoke a grant when you intend to actively deny
 operations that depend on it. The following are permitted to call this
 API:

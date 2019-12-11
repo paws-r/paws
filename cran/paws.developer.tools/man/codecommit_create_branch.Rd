@@ -2,7 +2,7 @@
 % Please edit documentation in R/codecommit_operations.R
 \name{codecommit_create_branch}
 \alias{codecommit_create_branch}
-\title{Creates a new branch in a repository and points the branch to a commit}
+\title{Creates a branch in a repository and points the branch to a commit}
 \usage{
 codecommit_create_branch(repositoryName, branchName, commitId)
 }
@@ -14,10 +14,10 @@ codecommit_create_branch(repositoryName, branchName, commitId)
 \item{commitId}{[required] The ID of the commit to point the new branch to.}
 }
 \description{
-Creates a new branch in a repository and points the branch to a commit.
+Creates a branch in a repository and points the branch to a commit.
 }
 \details{
-Calling the create branch operation does not set a repository's default
+Calling the create branch operation does not set a repository\'s default
 branch. To do this, call the update default branch operation.
 }
 \section{Request syntax}{

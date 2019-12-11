@@ -12,7 +12,7 @@ cloudhsm_create_hsm(SubnetId, SshKey, EniIp, IamRoleArn, ExternalId,
 
 \item{SshKey}{[required] The SSH public key to install on the HSM.}
 
-\item{EniIp}{The IP address to assign to the HSM's ENI.
+\item{EniIp}{The IP address to assign to the HSM\'s ENI.
 
 If an IP address is not specified, an IP address will be randomly chosen
 from the CIDR range of the subnet.}

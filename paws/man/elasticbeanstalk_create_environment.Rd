@@ -30,7 +30,7 @@ becomes part of the CNAME, and therefore part of the visible URL for
 your application.}
 
 \item{GroupName}{The name of the group to which the target environment belongs. Specify a
-group name only if the environment's name is specified in an
+group name only if the environment\'s name is specified in an
 environment manifest and not with the environment name parameter. See
 \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html}{Environment Manifest (env.yaml)}
 for details.}

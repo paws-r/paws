@@ -16,7 +16,7 @@ extension.}
 
 \item{LdifContent}{[required] The LDIF file represented as a string. To construct the LdifContent
 string, precede each line as it would be formatted in an ldif file with
-\code{\\n}. See the example request below for more details. The file size can
+\verb{\\\\n}. See the example request below for more details. The file size can
 be no larger than 1MB.}
 
 \item{Description}{[required] A description of the schema extension.}

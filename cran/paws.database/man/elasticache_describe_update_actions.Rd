@@ -5,13 +5,19 @@
 \title{Returns details of the update actions}
 \usage{
 elasticache_describe_update_actions(ServiceUpdateName,
-  ReplicationGroupIds, ServiceUpdateStatus, ServiceUpdateTimeRange,
-  UpdateActionStatus, ShowNodeLevelUpdateStatus, MaxRecords, Marker)
+  ReplicationGroupIds, CacheClusterIds, Engine, ServiceUpdateStatus,
+  ServiceUpdateTimeRange, UpdateActionStatus, ShowNodeLevelUpdateStatus,
+  MaxRecords, Marker)
 }
 \arguments{
 \item{ServiceUpdateName}{The unique ID of the service update}
 
 \item{ReplicationGroupIds}{The replication group IDs}
+
+\item{CacheClusterIds}{The cache cluster IDs}
+
+\item{Engine}{The Elasticache engine to which the update applies. Either Redis or
+Memcached}
 
 \item{ServiceUpdateStatus}{The status of the service update}
 
@@ -38,6 +44,10 @@ Returns details of the update actions
   ReplicationGroupIds = list(
     "string"
   ),
+  CacheClusterIds = list(
+    "string"
+  ),
+  Engine = "string",
   ServiceUpdateStatus = list(
     "available"|"cancelled"|"expired"
   ),

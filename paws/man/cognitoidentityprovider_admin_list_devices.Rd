@@ -20,7 +20,7 @@ cognitoidentityprovider_admin_list_devices(UserPoolId, Username, Limit,
 Lists devices, as an administrator.
 }
 \details{
-Requires developer credentials.
+Calling this action requires developer credentials.
 }
 \section{Request syntax}{
 \preformatted{svc$admin_list_devices(

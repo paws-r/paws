@@ -25,10 +25,10 @@ The \code{GetIntentVersions} operation returns an \code{IntentMetadata} object f
 each version of an intent. For example, if an intent has three numbered
 versions, the \code{GetIntentVersions} operation returns four
 \code{IntentMetadata} objects in the response, one for each numbered version
-and one for the \code{$LATEST} version.
+and one for the \verb{$LATEST} version.
 
 The \code{GetIntentVersions} operation always returns at least one version,
-the \code{$LATEST} version.
+the \verb{$LATEST} version.
 
 This operation requires permissions for the \code{lex:GetIntentVersions}
 action.

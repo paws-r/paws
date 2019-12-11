@@ -54,10 +54,10 @@ In the request body, you provide the following:
 \item Information about the input model artifacts
 \item The output location for the compiled model and the device (target)
 that the model runs on
-\item \code{The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker assumes to perform the model compilation job}
+\item \verb{The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker assumes to perform the model compilation job}
 }
 
-You can also provide a \code{Tag} to track the model compilation job's
+You can also provide a \code{Tag} to track the model compilation job\'s
 resource use and costs. The response body contains the
 \code{CompilationJobArn} for the compiled job.
 
@@ -77,10 +77,11 @@ compilation jobs, use ListCompilationJobs.
   ),
   OutputConfig = list(
     S3OutputLocation = "string",
-    TargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"rasp3b"|"deeplens"|"rk3399"|"rk3288"|"sbe_c"
+    TargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"ml_inf1"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"rasp3b"|"deeplens"|"rk3399"|"rk3288"|"aisage"|"sbe_c"|"qcs605"|"qcs603"
   ),
   StoppingCondition = list(
-    MaxRuntimeInSeconds = 123
+    MaxRuntimeInSeconds = 123,
+    MaxWaitTimeInSeconds = 123
   )
 )
 }

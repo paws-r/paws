@@ -13,17 +13,22 @@ fms_put_policy(Policy)
 Creates an AWS Firewall Manager policy.
 }
 \details{
-Firewall Manager provides two types of policies: A Shield Advanced
-policy, which applies Shield Advanced protection to specified accounts
-and resources, or a WAF policy, which contains a rule group and defines
-which resources are to be protected by that rule group. A policy is
-specific to either WAF or Shield Advanced. If you want to enforce both
-WAF rules and Shield Advanced protection across accounts, you can create
-multiple policies. You can create one or more policies for WAF rules,
-and one or more policies for Shield Advanced.
+Firewall Manager provides the following types of policies:
+\itemize{
+\item A Shield Advanced policy, which applies Shield Advanced protection
+to specified accounts and resources
+\item An AWS WAF policy, which contains a rule group and defines which
+resources are to be protected by that rule group
+\item A security group policy, which manages VPC security groups across
+your AWS organization.
+}
+
+Each policy is specific to one of the three types. If you want to
+enforce more than one policy type across accounts, you can create
+multiple policies. You can create multiple policies for each type.
 
 You must be subscribed to Shield Advanced to create a Shield Advanced
-policy. For more information on subscribing to Shield Advanced, see
+policy. For more information about subscribing to Shield Advanced, see
 \href{https://docs.aws.amazon.com/waf/latest/DDOSAPIReference/API_CreateSubscription.html}{CreateSubscription}.
 }
 \section{Request syntax}{
@@ -33,7 +38,7 @@ policy. For more information on subscribing to Shield Advanced, see
     PolicyName = "string",
     PolicyUpdateToken = "string",
     SecurityServicePolicyData = list(
-      Type = "WAF"|"SHIELD_ADVANCED",
+      Type = "WAF"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT",
       ManagedServiceData = "string"
     ),
     ResourceType = "string",

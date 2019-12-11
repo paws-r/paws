@@ -3,32 +3,38 @@
 \name{kms_disable_key_rotation}
 \alias{kms_disable_key_rotation}
 \title{Disables automatic rotation of the key material for the specified
-customer master key (CMK)}
+symmetric customer master key (CMK)}
 \usage{
 kms_disable_key_rotation(KeyId)
 }
 \arguments{
-\item{KeyId}{[required] A unique identifier for the customer master key (CMK).
+\item{KeyId}{[required] Identifies a symmetric customer master key (CMK). You cannot enable
+automatic rotation of \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html#asymmetric-cmks}{asymmetric CMKs},
+CMKs with \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{imported key material},
+or CMKs in a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 
 For example:
 \itemize{
-\item Key ID: \code{1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
 \item Key ARN:
-\code{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
 To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 }
 \description{
 Disables \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html}{automatic rotation of the key material}
-for the specified customer master key (CMK). You cannot perform this
-operation on a CMK in a different AWS account.
+for the specified symmetric customer master key (CMK).
 }
 \details{
-The result of this operation varies with the key state of the CMK. For
-details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
+You cannot enable automatic rotation of asymmetric CMKs, CMKs with
+imported key material, or CMKs in a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}.
+You cannot perform this operation on a CMK in a different AWS account.
+
+The CMK that you use for this operation must be in a compatible key
+state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{

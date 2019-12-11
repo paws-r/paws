@@ -25,7 +25,7 @@ By default, each delivery stream can take in up to 2,000 transactions
 per second, 5,000 records per second, or 5 MB per second. If you use
 PutRecord and PutRecordBatch, the limits are an aggregate across these
 two operations for each delivery stream. For more information about
-limits, see \href{http://docs.aws.amazon.com/firehose/latest/dev/limits.html}{Amazon Kinesis Data Firehose Limits}.
+limits, see \href{https://docs.aws.amazon.com/firehose/latest/dev/limits.html}{Amazon Kinesis Data Firehose Limits}.
 
 Each PutRecordBatch request supports up to 500 records. Each record in
 the request can be as large as 1,000 KB (before 64-bit encoding), up to
@@ -39,7 +39,7 @@ clickstream data, and so on.
 
 Kinesis Data Firehose buffers records before delivering them to the
 destination. To disambiguate the data blobs at the destination, a common
-solution is to use delimiters in the data, such as a newline (\code{\\n}) or
+solution is to use delimiters in the data, such as a newline (\verb{\\\\n}) or
 some other character unique within the data. This allows the consumer
 application to parse individual data items when reading the data from
 the destination.
@@ -48,7 +48,7 @@ The PutRecordBatch response includes a count of failed records,
 \code{FailedPutCount}, and an array of responses, \code{RequestResponses}. Even if
 the PutRecordBatch call succeeds, the value of \code{FailedPutCount} may be
 greater than 0, indicating that there are records for which the
-operation didn't succeed. Each entry in the \code{RequestResponses} array
+operation didn\'t succeed. Each entry in the \code{RequestResponses} array
 provides additional information about the processed record. It directly
 correlates with a record in the request array using the same ordering,
 from the top to the bottom. The response array always includes the same
@@ -80,7 +80,7 @@ the time they are added to a delivery stream as it attempts to send the
 records to the destination. If the destination is unreachable for more
 than 24 hours, the data is no longer available.
 
-Don't concatenate two or more base64 strings to form the data fields of
+Don\'t concatenate two or more base64 strings to form the data fields of
 your records. Instead, concatenate the raw data, then perform base64
 encoding.
 }

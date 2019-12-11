@@ -2,7 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_replace_route_table_association}
 \alias{ec2_replace_route_table_association}
-\title{Changes the route table associated with a given subnet in a VPC}
+\title{Changes the route table associated with a given subnet, internet
+gateway, or virtual private gateway in a VPC}
 \usage{
 ec2_replace_route_table_association(AssociationId, DryRun, RouteTableId)
 }
@@ -17,17 +18,16 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{RouteTableId}{[required] The ID of the new route table to associate with the subnet.}
 }
 \description{
-Changes the route table associated with a given subnet in a VPC. After
-the operation completes, the subnet uses the routes in the new route
-table it's associated with. For more information about route tables,
-see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html}{Route Tables}
+Changes the route table associated with a given subnet, internet
+gateway, or virtual private gateway in a VPC. After the operation
+completes, the subnet or gateway uses the routes in the new route table.
+For more information about route tables, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html}{Route Tables}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \details{
-You can also use ReplaceRouteTableAssociation to change which table is
-the main route table in the VPC. You just specify the main route
-table's association ID and the route table to be the new main route
-table.
+You can also use this operation to change which table is the main route
+table in the VPC. Specify the main route table\'s association ID and the
+route table ID of the new main route table.
 }
 \section{Request syntax}{
 \preformatted{svc$replace_route_table_association(

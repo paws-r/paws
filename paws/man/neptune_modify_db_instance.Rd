@@ -53,7 +53,7 @@ DBSubnetGroup.
 Example: \code{mySubnetGroup}}
 
 \item{DBSecurityGroups}{A list of DB security groups to authorize on this DB instance. Changing
-this setting doesn't result in an outage and the change is
+this setting doesn\'t result in an outage and the change is
 asynchronously applied as soon as possible.
 
 Constraints:
@@ -86,7 +86,7 @@ Default: \code{false}}
 \item{MasterUserPassword}{Not applicable.}
 
 \item{DBParameterGroupName}{The name of the DB parameter group to apply to the DB instance. Changing
-this setting doesn't result in an outage. The parameter group name
+this setting doesn\'t result in an outage. The parameter group name
 itself is changed immediately, but the actual parameter changes are not
 applied until you reboot the instance without failover. The db instance
 will NOT be rebooted automatically and the parameter changes will NOT be
@@ -117,7 +117,7 @@ Constraints:
 }}
 
 \item{PreferredMaintenanceWindow}{The weekly time range (in UTC) during which system maintenance can
-occur, which might result in an outage. Changing this parameter doesn't
+occur, which might result in an outage. Changing this parameter doesn\'t
 result in an outage, except in the following situation, and the change
 is asynchronously applied as soon as possible. If there are pending
 actions that cause a reboot, and the maintenance window is changed to
@@ -130,12 +130,12 @@ Default: Uses existing setting
 
 Format: ddd:hh24:mi-ddd:hh24:mi
 
-Valid Days: Mon \| Tue \| Wed \| Thu \| Fri \| Sat \| Sun
+Valid Days: Mon \\| Tue \\| Wed \\| Thu \\| Fri \\| Sat \\| Sun
 
 Constraints: Must be at least 30 minutes}
 
 \item{MultiAZ}{Specifies if the DB instance is a Multi-AZ deployment. Changing this
-parameter doesn't result in an outage and the change is applied during
+parameter doesn\'t result in an outage and the change is applied during
 the next maintenance window unless the \code{ApplyImmediately} parameter is
 set to \code{true} for this request.}
 
@@ -150,16 +150,16 @@ family for the new engine version must be specified. The new DB
 parameter group can be the default for that DB parameter group family.}
 
 \item{AllowMajorVersionUpgrade}{Indicates that major version upgrades are allowed. Changing this
-parameter doesn't result in an outage and the change is asynchronously
+parameter doesn\'t result in an outage and the change is asynchronously
 applied as soon as possible.
 
 Constraints: This parameter must be set to true when specifying a value
 for the EngineVersion parameter that is a different major version than
-the DB instance's current version.}
+the DB instance\'s current version.}
 
 \item{AutoMinorVersionUpgrade}{Indicates that minor version upgrades are applied automatically to the
 DB instance during the maintenance window. Changing this parameter
-doesn't result in an outage except in the following case and the change
+doesn\'t result in an outage except in the following case and the change
 is asynchronously applied as soon as possible. An outage will result if
 this parameter is set to \code{true} during the maintenance window, and a
 newer minor version is available, and Neptune has enabled auto patching
@@ -170,14 +170,14 @@ for that engine version.}
 \item{Iops}{The new Provisioned IOPS (I/O operations per second) value for the
 instance.
 
-Changing this setting doesn't result in an outage and the change is
+Changing this setting doesn\'t result in an outage and the change is
 applied during the next maintenance window unless the \code{ApplyImmediately}
 parameter is set to \code{true} for this request.
 
 Default: Uses existing setting}
 
 \item{OptionGroupName}{Indicates that the DB instance should be associated with the specified
-option group. Changing this parameter doesn't result in an outage
+option group. Changing this parameter doesn\'t result in an outage
 except in the following case and the change is applied during the next
 maintenance window unless the \code{ApplyImmediately} parameter is set to
 \code{true} for this request. If the parameter change results in an option
@@ -186,14 +186,14 @@ period during which new connections are rejected but existing
 connections are not interrupted.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
-TDE, can't be removed from an option group, and that option group
-can't be removed from a DB instance once it is associated with a DB
+TDE, can\'t be removed from an option group, and that option group
+can\'t be removed from a DB instance once it is associated with a DB
 instance}
 
 \item{NewDBInstanceIdentifier}{The new DB instance identifier for the DB instance when renaming a DB
 instance. When you change the DB instance identifier, an instance reboot
-will occur immediately if you set \code{Apply Immediately} to true, or will
-occur during the next maintenance window if \code{Apply Immediately} to
+will occur immediately if you set \verb{Apply Immediately} to true, or will
+occur during the next maintenance window if \verb{Apply Immediately} to
 false. This value is stored as a lowercase string.
 
 Constraints:
@@ -227,7 +227,7 @@ Enhanced Monitoring metrics, specify 0. The default is 0.
 If \code{MonitoringRoleArn} is specified, then you must also set
 \code{MonitoringInterval} to a value other than 0.
 
-Valid Values: \code{0, 1, 5, 10, 15, 30, 60}}
+Valid Values: \verb{0, 1, 5, 10, 15, 30, 60}}
 
 \item{DBPortNumber}{The port number on which the database accepts connections.
 

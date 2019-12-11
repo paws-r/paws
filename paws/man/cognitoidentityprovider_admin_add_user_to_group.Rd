@@ -18,7 +18,7 @@ cognitoidentityprovider_admin_add_user_to_group(UserPoolId, Username,
 Adds the specified user to the specified group.
 }
 \details{
-Requires developer credentials.
+Calling this action requires developer credentials.
 }
 \section{Request syntax}{
 \preformatted{svc$admin_add_user_to_group(

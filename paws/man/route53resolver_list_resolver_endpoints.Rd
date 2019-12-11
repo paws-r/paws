@@ -9,7 +9,7 @@ route53resolver_list_resolver_endpoints(MaxResults, NextToken, Filters)
 }
 \arguments{
 \item{MaxResults}{The maximum number of resolver endpoints that you want to return in the
-response to a \code{ListResolverEndpoints} request. If you don't specify a
+response to a \code{ListResolverEndpoints} request. If you don\'t specify a
 value for \code{MaxResults}, Resolver returns up to 100 resolver endpoints.}
 
 \item{NextToken}{For the first \code{ListResolverEndpoints} request, omit this value.

@@ -26,6 +26,7 @@ Creates a new flow. The request must include one source. The request optionally 
   AvailabilityZone = "string",
   Entitlements = list(
     list(
+      DataTransferSubscriberFeePercent = 123,
       Description = "string",
       Encryption = list(
         Algorithm = "aes128"|"aes192"|"aes256",
@@ -47,6 +48,9 @@ Creates a new flow. The request must include one source. The request optionally 
   Name = "string",
   Outputs = list(
     list(
+      CidrAllowList = list(
+        "string"
+      ),
       Description = "string",
       Destination = "string",
       Encryption = list(
@@ -63,7 +67,8 @@ Creates a new flow. The request must include one source. The request optionally 
       MaxLatency = 123,
       Name = "string",
       Port = 123,
-      Protocol = "zixi-push"|"rtp-fec"|"rtp",
+      Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+      RemoteId = "string",
       SmoothingLatency = 123,
       StreamId = "string"
     )
@@ -86,7 +91,7 @@ Creates a new flow. The request must include one source. The request optionally 
     MaxBitrate = 123,
     MaxLatency = 123,
     Name = "string",
-    Protocol = "zixi-push"|"rtp-fec"|"rtp",
+    Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
     StreamId = "string",
     WhitelistCidr = "string"
   )

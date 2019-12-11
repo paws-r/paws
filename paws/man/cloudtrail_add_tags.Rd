@@ -15,12 +15,13 @@ The format of a trail ARN is:
 \item{TagsList}{Contains a list of CloudTrail tags, up to a limit of 50}
 }
 \description{
-Adds one or more tags to a trail, up to a limit of 50. Tags must be
-unique per trail. Overwrites an existing tag's value when a new value
-is specified for an existing tag key. If you specify a key without a
+Adds one or more tags to a trail, up to a limit of 50. Overwrites an
+existing tag\'s value when a new value is specified for an existing tag
+key. Tag key names must be unique for a trail; you cannot have two keys
+with the same name but different values. If you specify a key without a
 value, the tag will be created with the specified key and a value of
-null. You can tag a trail that applies to all regions only from the
-region in which the trail was created (that is, from its home region).
+null. You can tag a trail that applies to all AWS Regions only from the
+Region in which the trail was created (also known as its home region).
 }
 \section{Request syntax}{
 \preformatted{svc$add_tags(

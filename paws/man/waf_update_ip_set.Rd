@@ -31,9 +31,9 @@ Inserts or deletes IPSetDescriptor objects in an \code{IPSet}. For each
 to change an \code{IPSetDescriptor} object, you delete the existing
 object and add a new one.
 \item The IP address version, \code{IPv4} or \code{IPv6}.
-\item The IP address in CIDR notation, for example, \code{192.0.2.0/24} (for
-the range of IP addresses from \code{192.0.2.0} to \code{192.0.2.255}) or
-\code{192.0.2.44/32} (for the individual IP address \code{192.0.2.44}).
+\item The IP address in CIDR notation, for example, \verb{192.0.2.0/24} (for
+the range of IP addresses from \verb{192.0.2.0} to \verb{192.0.2.255}) or
+\verb{192.0.2.44/32} (for the individual IP address \verb{192.0.2.44}).
 }
 
 AWS WAF supports IPv4 address ranges: /8 and any range between /16
@@ -51,7 +51,7 @@ IPv6 addresses can be represented using any of the following formats:
 
 You use an \code{IPSet} to specify which web requests you want to allow or
 block based on the IP addresses that the requests originated from. For
-example, if you're receiving a lot of requests from one or a small
+example, if you\'re receiving a lot of requests from one or a small
 number of IP addresses and you want to block the requests, you can
 create an \code{IPSet} that specifies those IP addresses, and then configure
 AWS WAF to block the requests.

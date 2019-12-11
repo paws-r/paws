@@ -16,6 +16,9 @@ Removes a tag from the specified resource.
 }
 \details{
 Currently, you can tag and untag accounts in AWS Organizations.
+
+This operation can be called only from the organization\'s master
+account.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

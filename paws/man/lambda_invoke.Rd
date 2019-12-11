@@ -12,11 +12,11 @@ lambda_invoke(FunctionName, InvocationType, LogType, ClientContext,
 
 \strong{Name formats}
 \itemize{
-\item \strong{Function name} - \code{my-function} (name-only), \code{my-function:v1}
+\item \strong{Function name} - \verb{my-function} (name-only), \verb{my-function:v1}
 (with alias).
 \item \strong{Function ARN} -
-\code{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
-\item \strong{Partial ARN} - \code{123456789012:function:my-function}.
+\verb{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
+\item \strong{Partial ARN} - \verb{123456789012:function:my-function}.
 }
 
 You can append a version number or alias to any of the formats. The
@@ -30,7 +30,7 @@ Keep the connection open until the function returns a response or
 times out. The API response includes the function response and
 additional data.
 \item \code{Event} - Invoke the function asynchronously. Send events that fail
-multiple times to the function's dead-letter queue (if it's
+multiple times to the function\'s dead-letter queue (if it\'s
 configured). The API response only includes a status code.
 \item \code{DryRun} - Validate parameter values and verify that the user or
 role has permission to invoke the function.
@@ -52,12 +52,12 @@ wait for the response), or asynchronously. To invoke a function
 asynchronously, set \code{InvocationType} to \code{Event}.
 }
 \details{
-For synchronous invocation, details about the function response,
-including errors, are included in the response body and headers. For
-either invocation type, you can find more information in the \href{https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions.html}{execution log}
-and \href{https://docs.aws.amazon.com/lambda/latest/dg/dlq.html}{trace}. To
-record function errors for asynchronous invocations, configure your
-function with a \href{https://docs.aws.amazon.com/lambda/latest/dg/dlq.html}{dead letter queue}.
+For \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-sync.html}{synchronous invocation},
+details about the function response, including errors, are included in
+the response body and headers. For either invocation type, you can find
+more information in the \href{https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions.html}{execution log}
+and
+\href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html}{trace}.
 
 When an error occurs, your function may be invoked multiple times. Retry
 behavior varies by error type, client, event source, and invocation
@@ -65,10 +65,17 @@ type. For example, if you invoke a function asynchronously and it
 returns an error, Lambda executes the function up to two more times. For
 more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/retries-on-errors.html}{Retry Behavior}.
 
-The status code in the API response doesn't reflect function errors.
+For \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html}{asynchronous invocation},
+Lambda adds events to a queue before sending them to your function. If
+your function does not have enough capacity to keep up with the queue,
+events may be lost. Occasionally, your function may receive the same
+event multiple times, even if no error occurs. To retain events that
+were not processed, configure your function with a \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq}{dead-letter queue}.
+
+The status code in the API response doesn\'t reflect function errors.
 Error codes are reserved for errors that prevent your function from
 executing, such as permissions errors, \href{https://docs.aws.amazon.com/lambda/latest/dg/limits.html}{limit errors}, or
-issues with your function's code and configuration. For example, Lambda
+issues with your function\'s code and configuration. For example, Lambda
 returns \code{TooManyRequestsException} if executing the function would cause
 you to exceed a concurrency limit at either the account level
 (\code{ConcurrentInvocationLimitExceeded}) or function level

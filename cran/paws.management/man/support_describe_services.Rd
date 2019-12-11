@@ -11,7 +11,7 @@ support_describe_services(serviceCodeList, language)
 \item{serviceCodeList}{A JSON-formatted list of service codes available for AWS services.}
 
 \item{language}{The ISO 639-1 code for the language in which AWS provides support. AWS
-Support currently supports English ("en") and Japanese ("ja").
+Support currently supports English (\"en\") and Japanese (\"ja\").
 Language parameters must be passed explicitly for operations that take
 them.}
 }

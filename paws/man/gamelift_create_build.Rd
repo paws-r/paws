@@ -28,7 +28,7 @@ value determines the type of fleet resources that you can use for this
 build. If your game build contains multiple executables, they all must
 run on the same operating system. If an operating system is not
 specified when creating a build, Amazon GameLift uses the default value
-(WINDOWS\_2012). This value cannot be changed later.}
+(WINDOWS\\_2012). This value cannot be changed later.}
 }
 \description{
 Creates a new Amazon GameLift build record for your game server binary
@@ -53,7 +53,7 @@ access to that Amazon S3 bucket. To create a new build record using
 files in your Amazon S3 bucket, call \code{CreateBuild} and specify a
 build name, operating system, and the storage location of your game
 build.
-\item Upload a build file directly to Amazon GameLift's Amazon S3
+\item Upload a build file directly to Amazon GameLift\'s Amazon S3
 account. To use this option, you first call \code{CreateBuild} with a
 build name and operating system. This action creates a new build
 record and returns an Amazon S3 storage location (bucket and key
@@ -93,7 +93,7 @@ DescribeBuild to check the status of your build. A build must be in
     RoleArn = "string",
     ObjectVersion = "string"
   ),
-  OperatingSystem = "WINDOWS_2012"|"AMAZON_LINUX"
+  OperatingSystem = "WINDOWS_2012"|"AMAZON_LINUX"|"AMAZON_LINUX_2"
 )
 }
 }

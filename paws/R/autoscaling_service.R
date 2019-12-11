@@ -8,9 +8,9 @@ NULL
 #' Amazon EC2 Auto Scaling
 #' 
 #' Amazon EC2 Auto Scaling is designed to automatically launch or terminate
-#' EC2 instances based on user-defined policies, schedules, and health
-#' checks. Use this service with AWS Auto Scaling, Amazon CloudWatch, and
-#' Elastic Load Balancing.
+#' EC2 instances based on user-defined scaling policies, scheduled actions,
+#' and health checks. Use this service with AWS Auto Scaling, Amazon
+#' CloudWatch, and Elastic Load Balancing.
 #' 
 #' For more information, including information about granting IAM users
 #' required permissions for Amazon EC2 Auto Scaling actions, see the
@@ -96,7 +96,7 @@ NULL
 #'  \link[=autoscaling_exit_standby]{exit_standby} \tab Moves the specified instances out of the standby state \cr
 #'  \link[=autoscaling_put_lifecycle_hook]{put_lifecycle_hook} \tab Creates or updates a lifecycle hook for the specified Auto Scaling group \cr
 #'  \link[=autoscaling_put_notification_configuration]{put_notification_configuration} \tab Configures an Auto Scaling group to send notifications when specified events take place \cr
-#'  \link[=autoscaling_put_scaling_policy]{put_scaling_policy} \tab Creates or updates a policy for an Auto Scaling group \cr
+#'  \link[=autoscaling_put_scaling_policy]{put_scaling_policy} \tab Creates or updates a scaling policy for an Auto Scaling group \cr
 #'  \link[=autoscaling_put_scheduled_update_group_action]{put_scheduled_update_group_action} \tab Creates or updates a scheduled scaling action for an Auto Scaling group \cr
 #'  \link[=autoscaling_record_lifecycle_action_heartbeat]{record_lifecycle_action_heartbeat} \tab Records a heartbeat for the lifecycle action associated with the specified token or instance \cr
 #'  \link[=autoscaling_resume_processes]{resume_processes} \tab Resumes the specified suspended automatic scaling processes, or all suspended process, for the specified Auto Scaling group\cr

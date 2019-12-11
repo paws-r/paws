@@ -38,7 +38,7 @@ match all the predicates and exceed the \code{RateLimit} to be counted or
 blocked. For example, suppose you add the following to a
 \code{RateBasedRule}:
 \itemize{
-\item An \code{IPSet} that matches the IP address \code{192.0.2.44/32}
+\item An \code{IPSet} that matches the IP address \verb{192.0.2.44/32}
 \item A \code{ByteMatchSet} that matches \code{BadBot} in the \code{User-Agent} header
 }
 

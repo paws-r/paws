@@ -2,15 +2,26 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_bucket_acl}
 \alias{s3_get_bucket_acl}
-\title{Gets the access control policy for the bucket}
+\title{This implementation of the GET operation uses the acl subresource to
+return the access control list (ACL) of a bucket}
 \usage{
 s3_get_bucket_acl(Bucket)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] Specifies the S3 bucket whose ACL is being requested.}
 }
 \description{
-Gets the access control policy for the bucket.
+This implementation of the \code{GET} operation uses the \code{acl} subresource to
+return the access control list (ACL) of a bucket. To use \code{GET} to return
+the ACL of the bucket, you must have \code{READ_ACP} access to the bucket. If
+\code{READ_ACP} permission is granted to the anonymous user, you can return
+the ACL of the bucket without using an authorization header.
+}
+\details{
+\strong{Related Resources}
+\itemize{
+\item 
+}
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_acl(

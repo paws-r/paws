@@ -7,7 +7,10 @@
 codecommit_batch_get_repositories(repositoryNames)
 }
 \arguments{
-\item{repositoryNames}{[required] The names of the repositories to get information about.}
+\item{repositoryNames}{[required] The names of the repositories to get information about.
+
+The length constraint limit is for each string in the array. The array
+itself can be empty.}
 }
 \description{
 Returns information about one or more repositories.
@@ -15,10 +18,10 @@ Returns information about one or more repositories.
 \details{
 The description field for a repository accepts all HTML characters and
 all valid Unicode characters. Applications that do not HTML-encode the
-description and display it in a web page could expose users to
-potentially malicious code. Make sure that you HTML-encode the
-description field in any application that uses this API to display the
-repository description on a web page.
+description and display it in a webpage can expose users to potentially
+malicious code. Make sure that you HTML-encode the description field in
+any application that uses this API to display the repository description
+on a webpage.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_get_repositories(

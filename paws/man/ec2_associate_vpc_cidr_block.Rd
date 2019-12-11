@@ -5,7 +5,7 @@
 \title{Associates a CIDR block with your VPC}
 \usage{
 ec2_associate_vpc_cidr_block(AmazonProvidedIpv6CidrBlock, CidrBlock,
-  VpcId)
+  VpcId, Ipv6CidrBlockNetworkBorderGroup)
 }
 \arguments{
 \item{AmazonProvidedIpv6CidrBlock}{Requests an Amazon-provided IPv6 CIDR block with a /56 prefix length for
@@ -15,6 +15,14 @@ the CIDR block.}
 \item{CidrBlock}{An IPv4 CIDR block to associate with the VPC.}
 
 \item{VpcId}{[required] The ID of the VPC.}
+
+\item{Ipv6CidrBlockNetworkBorderGroup}{The name of the location from which we advertise the IPV6 CIDR block.
+Use this parameter to limit the CiDR block to this location.
+
+You must set \code{AmazonProvidedIpv6CidrBlock} to \code{true} to use this
+parameter.
+
+You can have one IPv6 CIDR block association per network border group.}
 }
 \description{
 Associates a CIDR block with your VPC. You can associate a secondary
@@ -30,7 +38,8 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 \preformatted{svc$associate_vpc_cidr_block(
   AmazonProvidedIpv6CidrBlock = TRUE|FALSE,
   CidrBlock = "string",
-  VpcId = "string"
+  VpcId = "string",
+  Ipv6CidrBlockNetworkBorderGroup = "string"
 )
 }
 }

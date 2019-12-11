@@ -5,36 +5,37 @@
 \title{Registers or updates a scalable target}
 \usage{
 applicationautoscaling_register_scalable_target(ServiceNamespace,
-  ResourceId, ScalableDimension, MinCapacity, MaxCapacity, RoleARN)
+  ResourceId, ScalableDimension, MinCapacity, MaxCapacity, RoleARN,
+  SuspendedState)
 }
 \arguments{
 \item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource or
 \code{custom-resource} for a resource provided by your own application or
-service. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}
+service. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}
 in the \emph{Amazon Web Services General Reference}.}
 
-\item{ResourceId}{[required] The identifier of the resource associated with the scalable target. This
-string consists of the resource type and unique identifier.
+\item{ResourceId}{[required] The identifier of the resource that is associated with the scalable
+target. This string consists of the resource type and unique identifier.
 \itemize{
 \item ECS service - The resource type is \code{service} and the unique
 identifier is the cluster name and service name. Example:
 \code{service/default/sample-webapp}.
-\item Spot fleet request - The resource type is \code{spot-fleet-request} and
-the unique identifier is the Spot fleet request ID. Example:
-\code{spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE}.
+\item Spot Fleet request - The resource type is \code{spot-fleet-request} and
+the unique identifier is the Spot Fleet request ID. Example:
+\verb{spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE}.
 \item EMR cluster - The resource type is \code{instancegroup} and the unique
 identifier is the cluster ID and instance group ID. Example:
-\code{instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0}.
+\verb{instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0}.
 \item AppStream 2.0 fleet - The resource type is \code{fleet} and the unique
 identifier is the fleet name. Example: \code{fleet/sample-fleet}.
 \item DynamoDB table - The resource type is \code{table} and the unique
-identifier is the resource ID. Example: \code{table/my-table}.
+identifier is the table name. Example: \code{table/my-table}.
 \item DynamoDB global secondary index - The resource type is \code{index} and
-the unique identifier is the resource ID. Example:
+the unique identifier is the index name. Example:
 \code{table/my-table/index/my-table-index}.
 \item Aurora DB cluster - The resource type is \code{cluster} and the unique
 identifier is the cluster name. Example: \code{cluster:my-db-cluster}.
-\item Amazon SageMaker endpoint variants - The resource type is \code{variant}
+\item Amazon SageMaker endpoint variant - The resource type is \code{variant}
 and the unique identifier is the resource ID. Example:
 \code{endpoint/my-end-point/variant/KMeansClustering}.
 \item Custom resources are not supported with a resource type. This
@@ -42,6 +43,14 @@ parameter must specify the \code{OutputValue} from the CloudFormation
 template stack used to access the resources. The unique identifier
 is defined by the service provider. More information is available in
 our \href{https://github.com/aws/aws-auto-scaling-custom-resource}{GitHub repository}.
+\item Amazon Comprehend document classification endpoint - The resource
+type and unique identifier are specified using the endpoint ARN.
+Example:
+\code{arn:aws:comprehend:us-west-2:123456789012:document-classifier-endpoint/EXAMPLE}.
+\item Lambda provisioned concurrency - The resource type is \code{function} and
+the unique identifier is the function name with a function version
+or alias name suffix that is not \verb{$LATEST}. Example:
+\verb{function:my-function:prod} or \verb{function:my-function:1}.
 }}
 
 \item{ScalableDimension}{[required] The scalable dimension associated with the scalable target. This string
@@ -50,7 +59,7 @@ consists of the service namespace, resource type, and scaling property.
 \item \code{ecs:service:DesiredCount} - The desired task count of an ECS
 service.
 \item \code{ec2:spot-fleet-request:TargetCapacity} - The target capacity of a
-Spot fleet request.
+Spot Fleet request.
 \item \code{elasticmapreduce:instancegroup:InstanceCount} - The instance count
 of an EMR Instance Group.
 \item \code{appstream:fleet:DesiredCapacity} - The desired capacity of an
@@ -70,47 +79,86 @@ Aurora PostgreSQL-compatible edition.
 instances for an Amazon SageMaker model endpoint variant.
 \item \code{custom-resource:ResourceType:Property} - The scalable dimension for
 a custom resource provided by your own application or service.
+\item \code{comprehend:document-classifier-endpoint:DesiredInferenceUnits} -
+The number of inference units for an Amazon Comprehend document
+classification endpoint.
+\item \verb{lambda:function:ProvisionedConcurrency} - The provisioned
+concurrency for a Lambda function.
 }}
 
-\item{MinCapacity}{The minimum value to scale to in response to a scale-in event. This
-parameter is required to register a scalable target.}
+\item{MinCapacity}{The minimum value to scale to in response to a scale-in event.
+\code{MinCapacity} is required to register a scalable target.}
 
-\item{MaxCapacity}{The maximum value to scale to in response to a scale-out event. This
-parameter is required to register a scalable target.}
+\item{MaxCapacity}{The maximum value to scale to in response to a scale-out event.
+\code{MaxCapacity} is required to register a scalable target.}
 
 \item{RoleARN}{Application Auto Scaling creates a service-linked role that grants it
 permissions to modify the scalable target on your behalf. For more
 information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-service-linked-roles.html}{Service-Linked Roles for Application Auto Scaling}.
 
-For resources that are not supported using a service-linked role, this
-parameter is required and must specify the ARN of an IAM role that
-allows Application Auto Scaling to modify the scalable target on your
-behalf.}
+For Amazon EMR, this parameter is required, and it must specify the ARN
+of an IAM role that allows Application Auto Scaling to modify the
+scalable target on your behalf.}
+
+\item{SuspendedState}{An embedded object that contains attributes and attribute values that
+are used to suspend and resume automatic scaling. Setting the value of
+an attribute to \code{true} suspends the specified scaling activities.
+Setting it to \code{false} (default) resumes the specified scaling
+activities.
+
+\strong{Suspension Outcomes}
+\itemize{
+\item For \code{DynamicScalingInSuspended}, while a suspension is in effect,
+all scale-in activities that are triggered by a scaling policy are
+suspended.
+\item For \code{DynamicScalingOutSuspended}, while a suspension is in effect,
+all scale-out activities that are triggered by a scaling policy are
+suspended.
+\item For \code{ScheduledScalingSuspended}, while a suspension is in effect,
+all scaling activities that involve scheduled actions are suspended.
+}
+
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html}{Suspending and Resuming Scaling}
+in the \emph{Application Auto Scaling User Guide}.}
 }
 \description{
 Registers or updates a scalable target. A scalable target is a resource
-that Application Auto Scaling can scale out and scale in. Each scalable
-target has a resource ID, scalable dimension, and namespace, as well as
-values for minimum and maximum capacity.
+that Application Auto Scaling can scale out and scale in. Scalable
+targets are uniquely identified by the combination of resource ID,
+scalable dimension, and namespace.
 }
 \details{
+When you register a new scalable target, you must specify values for
+minimum and maximum capacity. Application Auto Scaling will not scale
+capacity to values that are outside of this range.
+
+To update a scalable target, specify the parameter that you want to
+change as well as the following parameters that identify the scalable
+target: resource ID, scalable dimension, and namespace. Any parameters
+that you don\'t specify are not changed by this update request.
+
 After you register a scalable target, you do not need to register it
 again to use other Application Auto Scaling operations. To see which
 resources have been registered, use DescribeScalableTargets. You can
-also view the scaling policies for a service namespace using
+also view the scaling policies for a service namespace by using
 DescribeScalableTargets.
 
-If you no longer need a scalable target, you can deregister it using
+If you no longer need a scalable target, you can deregister it by using
 DeregisterScalableTarget.
 }
 \section{Request syntax}{
 \preformatted{svc$register_scalable_target(
-  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
+  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda",
   ResourceId = "string",
-  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property",
+  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency",
   MinCapacity = 123,
   MaxCapacity = 123,
-  RoleARN = "string"
+  RoleARN = "string",
+  SuspendedState = list(
+    DynamicScalingInSuspended = TRUE|FALSE,
+    DynamicScalingOutSuspended = TRUE|FALSE,
+    ScheduledScalingSuspended = TRUE|FALSE
+  )
 )
 }
 }
@@ -123,7 +171,6 @@ DeregisterScalableTarget.
   MaxCapacity = 10L,
   MinCapacity = 1L,
   ResourceId = "service/default/web-app",
-  RoleARN = "arn:aws:iam::012345678910:role/ApplicationAutoscalingECSRole",
   ScalableDimension = "ecs:service:DesiredCount",
   ServiceNamespace = "ecs"
 )}
@@ -134,7 +181,6 @@ DeregisterScalableTarget.
   MaxCapacity = 10L,
   MinCapacity = 1L,
   ResourceId = "spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3",
-  RoleARN = "arn:aws:iam::012345678910:role/ApplicationAutoscalingSpotRole",
   ScalableDimension = "ec2:spot-fleet-request:TargetCapacity",
   ServiceNamespace = "ec2"
 )}

@@ -49,14 +49,14 @@ creation and updating operations, and for the specified monitoring
 period afterwards.}
 
 \item{TimeoutInMinutes}{The amount of time that can pass before the stack status becomes
-CREATE\_FAILED; if \code{DisableRollback} is not set or is set to \code{false},
+CREATE\\_FAILED; if \code{DisableRollback} is not set or is set to \code{false},
 the stack will be rolled back.}
 
 \item{NotificationARNs}{The Simple Notification Service (SNS) topic ARNs to publish stack
 related events. You can find your SNS topic ARNs using the SNS console
 or your Command Line Interface (CLI).}
 
-\item{Capabilities}{In some cases, you must explicity acknowledge that your stack template
+\item{Capabilities}{In some cases, you must explicitly acknowledge that your stack template
 contains certain capabilities in order for AWS CloudFormation to create
 the stack.
 \itemize{
@@ -74,7 +74,7 @@ The following IAM resources require you to specify either the
 \item If you have IAM resources, you can specify either capability.
 \item If you have IAM resources with custom names, you \emph{must} specify
 \code{CAPABILITY_NAMED_IAM}.
-\item If you don't specify either of these capabilities, AWS
+\item If you don\'t specify either of these capabilities, AWS
 CloudFormation returns an \code{InsufficientCapabilities} error.
 }
 
@@ -126,16 +126,16 @@ For more information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/lat
 }}
 
 \item{ResourceTypes}{The template resource types that you have permissions to work with for
-this create stack action, such as \code{AWS::EC2::Instance}, \code{AWS::EC2::*},
+this create stack action, such as \verb{AWS::EC2::Instance}, \verb{AWS::EC2::*},
 or \code{Custom::MyCustomInstance}. Use the following syntax to describe
-template resource types: \code{AWS::*} (for all AWS resource), \code{Custom::*}
-(for all custom resources), \code{Custom::<i>logical_ID</i> } (for a specific
-custom resource), \code{AWS::<i>service_name</i>::*} (for all resources of a
+template resource types: \verb{AWS::*} (for all AWS resource), \verb{Custom::*}
+(for all custom resources), \verb{Custom::<i>logical_ID</i> } (for a specific
+custom resource), \verb{AWS::<i>service_name</i>::*} (for all resources of a
 particular AWS service), and
-\code{AWS::<i>service_name</i>::<i>resource_logical_ID</i> } (for a specific
+\verb{AWS::<i>service_name</i>::<i>resource_logical_ID</i> } (for a specific
 AWS resource).
 
-If the list of resource types doesn't include a resource that you're
+If the list of resource types doesn\'t include a resource that you\'re
 creating, the stack creation fails. By default, AWS CloudFormation
 grants permissions to all resource types. AWS Identity and Access
 Management (IAM) uses this parameter for AWS CloudFormation-specific
@@ -143,19 +143,19 @@ condition keys in IAM policies. For more information, see \href{https://docs.aws
 
 \item{RoleARN}{The Amazon Resource Name (ARN) of an AWS Identity and Access Management
 (IAM) role that AWS CloudFormation assumes to create the stack. AWS
-CloudFormation uses the role's credentials to make calls on your
+CloudFormation uses the role\'s credentials to make calls on your
 behalf. AWS CloudFormation always uses this role for all future
 operations on the stack. As long as users have permission to operate on
-the stack, AWS CloudFormation uses this role even if the users don't
+the stack, AWS CloudFormation uses this role even if the users don\'t
 have permission to pass it. Ensure that the role grants least privilege.
 
-If you don't specify a value, AWS CloudFormation uses the role that was
+If you don\'t specify a value, AWS CloudFormation uses the role that was
 previously associated with the stack. If no role is available, AWS
 CloudFormation uses a temporary session that is generated from your user
 credentials.}
 
 \item{OnFailure}{Determines what action will be taken if stack creation fails. This must
-be one of: DO\_NOTHING, ROLLBACK, or DELETE. You can specify either
+be one of: DO\\_NOTHING, ROLLBACK, or DELETE. You can specify either
 \code{OnFailure} or \code{DisableRollback}, but not both.
 
 Default: \code{ROLLBACK}}
@@ -176,7 +176,7 @@ number of 50 tags can be specified.}
 
 \item{ClientRequestToken}{A unique identifier for this \code{CreateStack} request. Specify this token
 if you plan to retry requests so that AWS CloudFormation knows that
-you're not attempting to create a stack with the same name. You might
+you\'re not attempting to create a stack with the same name. You might
 retry \code{CreateStack} requests to ensure that AWS CloudFormation
 successfully received them.
 
@@ -192,7 +192,7 @@ token format \emph{Console-StackOperation-ID}, which helps you easily
 identify the stack operation . For example, if you create a stack using
 the console, each stack event would be assigned the same token in the
 following format:
-\code{Console-CreateStack-7f59c3cf-00d2-40c7-b2ff-e75db0987002}.}
+\verb{Console-CreateStack-7f59c3cf-00d2-40c7-b2ff-e75db0987002}.}
 
 \item{EnableTerminationProtection}{Whether to enable termination protection on the specified stack. If a
 user attempts to delete a stack with termination protection enabled, the

@@ -34,7 +34,7 @@ For more information, see the \href{https://docs.aws.amazon.com/elasticbeanstalk
 
 Default: \code{true}
 
-Valid Values: \code{true} \| \code{false}}
+Valid Values: \code{true} \\| \code{false}}
 
 \item{ForceTerminate}{Terminates the target environment even if another environment in the
 same group is dependent on it.}

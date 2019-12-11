@@ -17,14 +17,14 @@ This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex 
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
 ASCII character from the ! (\code{U+0021}) through the DEL character
-(\code{U+007F}), including most punctuation characters, digits, and upper and
+(\verb{U+007F}), including most punctuation characters, digits, and upper and
 lowercased letters.}
 
 \item{GroupName}{[required] The name of the group to create. Do not include the path in this value.
 
 IAM user, group, role, and policy names must be unique within the
 account. Names are not distinguished by case. For example, you cannot
-create resources named both "MyResource" and "myresource".}
+create resources named both \"MyResource\" and \"myresource\".}
 }
 \description{
 Creates a new group.

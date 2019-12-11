@@ -13,11 +13,11 @@ ec2_create_client_vpn_route(ClientVpnEndpointId, DestinationCidrBlock,
 \item{DestinationCidrBlock}{[required] The IPv4 address range, in CIDR notation, of the route destination. For
 example:
 \itemize{
-\item To add a route for Internet access, enter \code{0.0.0.0/0}
-\item To add a route for a peered VPC, enter the peered VPC's IPv4 CIDR
+\item To add a route for Internet access, enter \verb{0.0.0.0/0}
+\item To add a route for a peered VPC, enter the peered VPC\'s IPv4 CIDR
 range
 \item To add a route for an on-premises network, enter the AWS
-Site-to-Site VPN connection's IPv4 CIDR range
+Site-to-Site VPN connection\'s IPv4 CIDR range
 }
 
 Route address ranges cannot overlap with the CIDR range specified for

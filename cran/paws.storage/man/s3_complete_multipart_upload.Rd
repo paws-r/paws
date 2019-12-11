@@ -8,18 +8,88 @@ s3_complete_multipart_upload(Bucket, Key, MultipartUpload, UploadId,
   RequestPayer)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] Name of the bucket to which the multipart upload was initiated.}
 
-\item{Key}{[required]}
+\item{Key}{[required] Object key for which the multipart upload was initiated.}
 
-\item{MultipartUpload}{}
+\item{MultipartUpload}{The container for the multipart upload request information.}
 
-\item{UploadId}{[required]}
+\item{UploadId}{[required] ID for the initiated multipart upload.}
 
 \item{RequestPayer}{}
 }
 \description{
 Completes a multipart upload by assembling previously uploaded parts.
+}
+\details{
+You first initiate the multipart upload and then upload all parts using
+the UploadPart operation. After successfully uploading all relevant
+parts of an upload, you call this operation to complete the upload. Upon
+receiving this request, Amazon S3 concatenates all the parts in
+ascending order by part number to create a new object. In the Complete
+Multipart Upload request, you must provide the parts list. You must
+ensure that the parts list is complete. This operation concatenates the
+parts that you provide in the list. For each part in the list, you must
+provide the part number and the \code{ETag} value, returned after that part
+was uploaded.
+
+Processing of a Complete Multipart Upload request could take several
+minutes to complete. After Amazon S3 begins processing the request, it
+sends an HTTP response header that specifies a 200 OK response. While
+processing is in progress, Amazon S3 periodically sends white space
+characters to keep the connection from timing out. Because a request
+could fail after the initial 200 OK response has been sent, it is
+important that you check the response body to determine whether the
+request succeeded.
+
+Note that if \code{CompleteMultipartUpload} fails, applications should be
+prepared to retry the failed requests. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ErrorBestPractices.html}{Amazon S3 Error Best Practices}.
+
+For more information about multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html}{Uploading Objects Using Multipart Upload}.
+
+For information about permissions required to use the multipart upload
+API, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html}{Multipart Upload API and Permissions}.
+
+\code{GetBucketLifecycle} has the following special errors:
+\itemize{
+\item Error code: \code{EntityTooSmall}
+\itemize{
+\item Description: Your proposed upload is smaller than the minimum
+allowed object size. Each part must be at least 5 MB in size,
+except the last part.
+\item 400 Bad Request
+}
+\item Error code: \code{InvalidPart}
+\itemize{
+\item Description: One or more of the specified parts could not be
+found. The part might not have been uploaded, or the specified
+entity tag might not have matched the part\'s entity tag.
+\item 400 Bad Request
+}
+\item Error code: \code{InvalidPartOrder}
+\itemize{
+\item Description: The list of parts was not in ascending order. The
+parts list must be specified in order by part number.
+\item 400 Bad Request
+}
+\item Error code: \code{NoSuchUpload}
+\itemize{
+\item Description: The specified multipart upload does not exist. The
+upload ID might be invalid, or the multipart upload might have
+been aborted or completed.
+\item 404 Not Found
+}
+}
+
+The following operations are related to
+\code{DeleteBucketMetricsConfiguration}:
+\itemize{
+\item CreateMultipartUpload
+\item UploadPart
+\item AbortMultipartUpload
+\item ListParts
+\item ListMultipartUploads
+}
 }
 \section{Request syntax}{
 \preformatted{svc$complete_multipart_upload(
@@ -47,11 +117,11 @@ Completes a multipart upload by assembling previously uploaded parts.
   MultipartUpload = list(
     Parts = list(
       list(
-        ETag = "\\"d8c2eafd90c266e19ab9dcacc479f8af\\"",
+        ETag = "\"d8c2eafd90c266e19ab9dcacc479f8af\"",
         PartNumber = "1"
       ),
       list(
-        ETag = "\\"d8c2eafd90c266e19ab9dcacc479f8af\\"",
+        ETag = "\"d8c2eafd90c266e19ab9dcacc479f8af\"",
         PartNumber = "2"
       )
     )

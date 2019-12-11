@@ -2,7 +2,7 @@
 % Please edit documentation in R/apigatewayv2_operations.R
 \name{apigatewayv2_get_api_mapping}
 \alias{apigatewayv2_get_api_mapping}
-\title{The API mapping}
+\title{Gets an API mapping}
 \usage{
 apigatewayv2_get_api_mapping(ApiMappingId, DomainName)
 }
@@ -12,7 +12,7 @@ apigatewayv2_get_api_mapping(ApiMappingId, DomainName)
 \item{DomainName}{[required] The domain name.}
 }
 \description{
-The API mapping.
+Gets an API mapping.
 }
 \section{Request syntax}{
 \preformatted{svc$get_api_mapping(

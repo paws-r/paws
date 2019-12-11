@@ -11,9 +11,10 @@ datasync_start_task_execution(TaskArn, OverrideOptions, Includes)
 
 \item{OverrideOptions}{}
 
-\item{Includes}{A filter that determines which files to include in the transfer during a
-task execution based on the specified pattern in the filter. When
-multiple include filters are set, they are interpreted as an OR.}
+\item{Includes}{A list of filter rules that determines which files to include when
+running a task. The pattern should contain a single filter string that
+consists of the patterns to include. The patterns are delimited by
+\"\\|\" (that is, a pipe). For example: \code{"/folder1|/folder2"}}
 }
 \description{
 Starts a specific invocation of a task. A \code{TaskExecution} value
@@ -21,26 +22,27 @@ represents an individual run of a task. Each task can have at most one
 \code{TaskExecution} at a time.
 }
 \details{
-\code{TaskExecution} has the following transition phases: INITIALIZING \|
-PREPARING \| TRANSFERRING \| VERIFYING \| SUCCESS/FAILURE.
+\code{TaskExecution} has the following transition phases: INITIALIZING \\|
+PREPARING \\| TRANSFERRING \\| VERIFYING \\| SUCCESS/FAILURE.
 
-For detailed information, see \emph{Task Execution} in
-"https://docs.aws.amazon.com/datasync/latest/userguide/how-datasync-works.html\#terminology"
-(Components and Terminology) in the \emph{AWS DataSync User Guide}.
+For detailed information, see the Task Execution section in the
+Components and Terminology topic in the \emph{AWS DataSync User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$start_task_execution(
   TaskArn = "string",
   OverrideOptions = list(
-    VerifyMode = "POINT_IN_TIME_CONSISTENT"|"NONE",
+    VerifyMode = "POINT_IN_TIME_CONSISTENT"|"ONLY_FILES_TRANSFERRED"|"NONE",
+    OverwriteMode = "ALWAYS"|"NEVER",
     Atime = "NONE"|"BEST_EFFORT",
     Mtime = "NONE"|"PRESERVE",
     Uid = "NONE"|"INT_VALUE"|"NAME"|"BOTH",
     Gid = "NONE"|"INT_VALUE"|"NAME"|"BOTH",
     PreserveDeletedFiles = "PRESERVE"|"REMOVE",
     PreserveDevices = "NONE"|"PRESERVE",
-    PosixPermissions = "NONE"|"BEST_EFFORT"|"PRESERVE",
-    BytesPerSecond = 123
+    PosixPermissions = "NONE"|"PRESERVE",
+    BytesPerSecond = 123,
+    TaskQueueing = "ENABLED"|"DISABLED"
   ),
   Includes = list(
     list(

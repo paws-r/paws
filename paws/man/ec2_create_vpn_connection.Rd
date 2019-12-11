@@ -28,7 +28,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Creates a VPN connection between an existing virtual private gateway and
-a VPN customer gateway. The supported connection types is \code{ipsec.1}.
+a VPN customer gateway. The supported connection type is \code{ipsec.1}.
 }
 \details{
 The response includes information that you need to give to your network
@@ -43,7 +43,7 @@ create a new VPN connection, you must reconfigure your customer gateway
 with the new information returned from this call.
 
 This is an idempotent operation. If you perform the operation more than
-once, Amazon EC2 doesn't return an error.
+once, Amazon EC2 doesn\'t return an error.
 
 For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html}{AWS Site-to-Site VPN} in the
 \emph{AWS Site-to-Site VPN User Guide}.
@@ -56,11 +56,53 @@ For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VP
   TransitGatewayId = "string",
   DryRun = TRUE|FALSE,
   Options = list(
+    EnableAcceleration = TRUE|FALSE,
     StaticRoutesOnly = TRUE|FALSE,
     TunnelOptions = list(
       list(
         TunnelInsideCidr = "string",
-        PreSharedKey = "string"
+        PreSharedKey = "string",
+        Phase1LifetimeSeconds = 123,
+        Phase2LifetimeSeconds = 123,
+        RekeyMarginTimeSeconds = 123,
+        RekeyFuzzPercentage = 123,
+        ReplayWindowSize = 123,
+        DPDTimeoutSeconds = 123,
+        Phase1EncryptionAlgorithms = list(
+          list(
+            Value = "string"
+          )
+        ),
+        Phase2EncryptionAlgorithms = list(
+          list(
+            Value = "string"
+          )
+        ),
+        Phase1IntegrityAlgorithms = list(
+          list(
+            Value = "string"
+          )
+        ),
+        Phase2IntegrityAlgorithms = list(
+          list(
+            Value = "string"
+          )
+        ),
+        Phase1DHGroupNumbers = list(
+          list(
+            Value = 123
+          )
+        ),
+        Phase2DHGroupNumbers = list(
+          list(
+            Value = 123
+          )
+        ),
+        IKEVersions = list(
+          list(
+            Value = "string"
+          )
+        )
       )
     )
   )

@@ -24,7 +24,7 @@ rds_authorize_db_security_group_ingress(DBSecurityGroupName, CIDRIP,
 \code{EC2SecurityGroupId} must be provided.}
 
 \item{EC2SecurityGroupOwnerId}{AWS account number of the owner of the EC2 security group specified in
-the \code{EC2SecurityGroupName} parameter. The AWS Access Key ID is not an
+the \code{EC2SecurityGroupName} parameter. The AWS access key ID isn\'t an
 acceptable value. For VPC DB security groups, \code{EC2SecurityGroupId} must
 be provided. Otherwise, \code{EC2SecurityGroupOwnerId} and either
 \code{EC2SecurityGroupName} or \code{EC2SecurityGroupId} must be provided.}
@@ -40,8 +40,8 @@ for this API are one of CIDR range, EC2SecurityGroupId for VPC, or
 EC2SecurityGroupId for non-VPC).
 }
 \details{
-You can't authorize ingress from an EC2 security group in one AWS
-Region to an Amazon RDS DB instance in another. You can't authorize
+You can\'t authorize ingress from an EC2 security group in one AWS
+Region to an Amazon RDS DB instance in another. You can\'t authorize
 ingress from a VPC security group in one VPC to an Amazon RDS DB
 instance in another.
 

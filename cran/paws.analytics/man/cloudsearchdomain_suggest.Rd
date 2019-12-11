@@ -28,9 +28,9 @@ suggestions, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developergu
 in the \emph{Amazon CloudSearch Developer Guide}.
 
 The endpoint for submitting \code{Suggest} requests is domain-specific. You
-submit suggest requests to a domain's search endpoint. To get the
+submit suggest requests to a domain\'s search endpoint. To get the
 search endpoint for your domain, use the Amazon CloudSearch
-configuration service \code{DescribeDomains} action. A domain's endpoints
+configuration service \code{DescribeDomains} action. A domain\'s endpoints
 are also displayed on the domain dashboard in the Amazon CloudSearch
 console.
 }

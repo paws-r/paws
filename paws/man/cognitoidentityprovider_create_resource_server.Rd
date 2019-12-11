@@ -12,7 +12,7 @@ cognitoidentityprovider_create_resource_server(UserPoolId, Identifier,
 
 \item{Identifier}{[required] A unique resource server identifier for the resource server. This could
 be an HTTPS endpoint where the resource server is located. For example,
-\code{https://my-weather-api.example.com}.}
+\verb{https://my-weather-api.example.com}.}
 
 \item{Name}{[required] A friendly name for the resource server.}
 

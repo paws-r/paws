@@ -11,24 +11,24 @@ iot_update_account_audit_configuration(roleArn,
 \arguments{
 \item{roleArn}{The ARN of the role that grants permission to AWS IoT to access
 information about your devices, policies, certificates and other items
-as necessary when performing an audit.}
+as required when performing an audit.}
 
 \item{auditNotificationTargetConfigurations}{Information about the targets to which audit notifications are sent.}
 
 \item{auditCheckConfigurations}{Specifies which audit checks are enabled and disabled for this account.
-Use \code{DescribeAccountAuditConfiguration} to see the list of all checks
+Use \code{DescribeAccountAuditConfiguration} to see the list of all checks,
 including those that are currently enabled.
 
-Note that some data collection may begin immediately when certain checks
-are enabled. When a check is disabled, any data collected so far in
-relation to the check is deleted.
+Some data collection might start immediately when certain checks are
+enabled. When a check is disabled, any data collected so far in relation
+to the check is deleted.
 
 You cannot disable a check if it is used by any scheduled audit. You
 must first delete the check from the scheduled audit or delete the
 scheduled audit itself.
 
-On the first call to \code{UpdateAccountAuditConfiguration} this parameter is
-required and must specify at least one enabled check.}
+On the first call to \code{UpdateAccountAuditConfiguration}, this parameter
+is required and must specify at least one enabled check.}
 }
 \description{
 Configures or reconfigures the Device Defender audit settings for this

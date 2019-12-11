@@ -10,7 +10,7 @@ acmpca_restore_certificate_authority(CertificateAuthorityArn)
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called the
 CreateCertificateAuthority action. This must be of the form:
 
-\code{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }}
+\verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }}
 }
 \description{
 Restores a certificate authority (CA) that is in the \code{DELETED} state.

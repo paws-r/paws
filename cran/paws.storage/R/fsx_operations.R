@@ -138,14 +138,20 @@ fsx_create_backup <- function(FileSystemId, ClientRequestToken = NULL, Tags = NU
 #' @param FileSystemType &#91;required&#93; The type of Amazon FSx file system to create.
 #' @param StorageCapacity &#91;required&#93; The storage capacity of the file system being created.
 #' 
-#' For Windows file systems, the storage capacity has a minimum of 300 GiB,
-#' and a maximum of 65,536 GiB.
+#' For Windows file systems, valid values are 32 GiB - 65,536 GiB.
 #' 
-#' For Lustre file systems, the storage capacity has a minimum of 3,600
-#' GiB. Storage capacity is provisioned in increments of 3,600 GiB.
-#' @param SubnetIds &#91;required&#93; The IDs of the subnets that the file system will be accessible from.
-#' File systems support only one subnet. The file server is also launched
-#' in that subnet\'s Availability Zone.
+#' For Lustre file systems, valid values are 1,200, 2,400, 3,600, then
+#' continuing in increments of 3600 GiB.
+#' @param SubnetIds &#91;required&#93; Specifies the IDs of the subnets that the file system will be accessible
+#' from. For Windows `MULTI_AZ_1` file system deployment types, provide
+#' exactly two subnet IDs, one for the preferred file server and one for
+#' the standy file server. You specify one of these subnets as the
+#' preferred subnet using the `WindowsConfiguration &gt; PreferredSubnetID`
+#' property.
+#' 
+#' For Windows `SINGLE_AZ_1` file system deployment types and Lustre file
+#' systems, provide exactly one subnet ID. The file server is launched in
+#' that subnet\'s Availability Zone.
 #' @param SecurityGroupIds A list of IDs specifying the security groups to apply to all network
 #' interfaces created for file system access. This list isn\'t returned in
 #' later requests to describe the file system.
@@ -187,6 +193,8 @@ fsx_create_backup <- function(FileSystemId, ClientRequestToken = NULL, Tags = NU
 #'         "string"
 #'       )
 #'     ),
+#'     DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'     PreferredSubnetId = "string",
 #'     ThroughputCapacity = 123,
 #'     WeeklyMaintenanceStartTime = "string",
 #'     DailyAutomaticBackupStartTime = "string",
@@ -337,6 +345,8 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'         "string"
 #'       )
 #'     ),
+#'     DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'     PreferredSubnetId = "string",
 #'     ThroughputCapacity = 123,
 #'     WeeklyMaintenanceStartTime = "string",
 #'     DailyAutomaticBackupStartTime = "string",

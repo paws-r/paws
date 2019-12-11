@@ -23,7 +23,8 @@ values are \code{enabled} and \code{disabled}.}
 }
 \description{
 Modifies an account setting for all IAM users on an account for whom no
-individual account setting has been specified.
+individual account setting has been specified. Account settings are set
+on a per-Region basis.
 }
 \section{Request syntax}{
 \preformatted{svc$put_account_setting_default(

@@ -2,7 +2,7 @@
 % Please edit documentation in R/workspaces_operations.R
 \name{workspaces_import_workspace_image}
 \alias{workspaces_import_workspace_image}
-\title{Imports the specified Windows 7 or Windows 10 bring your own license
+\title{Imports the specified Windows 7 or Windows 10 Bring Your Own License
 (BYOL) image into Amazon WorkSpaces}
 \usage{
 workspaces_import_workspace_image(Ec2ImageId, IngestionProcess,
@@ -20,7 +20,7 @@ workspaces_import_workspace_image(Ec2ImageId, IngestionProcess,
 \item{Tags}{The tags. Each WorkSpaces resource can have a maximum of 50 tags.}
 }
 \description{
-Imports the specified Windows 7 or Windows 10 bring your own license
+Imports the specified Windows 7 or Windows 10 Bring Your Own License
 (BYOL) image into Amazon WorkSpaces. The image must be an already
 licensed EC2 image that is in your AWS account, and you must own the
 image.

@@ -2,7 +2,8 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_bucket_acl}
 \alias{s3_put_bucket_acl}
-\title{Sets the permissions on a bucket using access control lists (ACL)}
+\title{Sets the permissions on an existing bucket using access control lists
+(ACL)}
 \usage{
 s3_put_bucket_acl(ACL, AccessControlPolicy, Bucket, ContentMD5,
   GrantFullControl, GrantRead, GrantReadACP, GrantWrite, GrantWriteACP)
@@ -13,9 +14,11 @@ s3_put_bucket_acl(ACL, AccessControlPolicy, Bucket, ContentMD5,
 \item{AccessControlPolicy}{Contains the elements that set the ACL permissions for an object per
 grantee.}
 
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The bucket to which to apply the ACL.}
 
-\item{ContentMD5}{}
+\item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the data. This header must be
+used as a message integrity check to verify that the request body was
+not corrupted in transit. For more information, go to \href{http://www.ietf.org/rfc/rfc1864.txt}{RFC 1864.}}
 
 \item{GrantFullControl}{Allows grantee the read, write, read ACP, and write ACP permissions on
 the bucket.}
@@ -30,7 +33,93 @@ bucket.}
 \item{GrantWriteACP}{Allows grantee to write the ACL for the applicable bucket.}
 }
 \description{
-Sets the permissions on a bucket using access control lists (ACL).
+Sets the permissions on an existing bucket using access control lists
+(ACL). For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html}{Using ACLs}.
+To set the ACL of a bucket, you must have \code{WRITE_ACP} permission.
+}
+\details{
+You can use one of the following two ways to set a bucket\'s
+permissions:
+\itemize{
+\item Specify the ACL in the request body
+\item Specify permissions using request headers
+}
+
+You cannot specify access permission using both the body and the request
+headers.
+
+Depending on your application needs, you may choose to set the ACL on a
+bucket using either the request body or the headers. For example, if you
+have an existing application that updates a bucket ACL using the request
+body, then you can continue to use that approach.
+
+\strong{Access Permissions}
+
+You can set access permissions using one of the following methods:
+\itemize{
+\item Specify a canned ACL with the \code{x-amz-acl} request header. Amazon S3
+supports a set of predefined ACLs, known as \emph{canned ACLs}. Each
+canned ACL has a predefined set of grantees and permissions. Specify
+the canned ACL name as the value of \code{x-amz-acl}. If you use this
+header, you cannot use other access control-specific headers in your
+request. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL}{Canned ACL}.
+\item Specify access permissions explicitly with the \code{x-amz-grant-read},
+\code{x-amz-grant-read-acp}, \code{x-amz-grant-write-acp}, and
+\code{x-amz-grant-full-control} headers. When using these headers, you
+specify explicit access permissions and grantees (AWS accounts or
+Amazon S3 groups) who will receive the permission. If you use these
+ACL-specific headers, you cannot use the \code{x-amz-acl} header to set a
+canned ACL. These parameters map to the set of permissions that
+Amazon S3 supports in an ACL. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html}{Access Control List (ACL) Overview}.
+
+You specify each grantee as a type=value pair, where the type is one
+of the following:
+\itemize{
+\item \code{emailAddress} -- if the value specified is the email address of
+an AWS account
+\item \code{id} -- if the value specified is the canonical user ID of an
+AWS account
+\item \code{uri} -- if you are granting permissions to a predefined group
+}
+
+For example, the following \code{x-amz-grant-write} header grants create,
+overwrite, and delete objects permission to LogDelivery group
+predefined by Amazon S3 and two AWS accounts identified by their
+email addresses.
+
+\verb{x-amz-grant-write: uri="http://acs.amazonaws.com/groups/s3/LogDelivery", emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com" }
+}
+
+You can use either a canned ACL or specify access permissions
+explicitly. You cannot do both.
+
+\strong{Grantee Values}
+
+You can specify the person (grantee) to whom you\'re assigning access
+rights (using request elements) in the following ways:
+\itemize{
+\item By Email address:
+
+\verb{&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AmazonCustomerByEmail"&gt;&lt;EmailAddress&gt;&lt;&gt;Grantees@email.com&lt;&gt;&lt;/EmailAddress&gt;lt;/Grantee&gt;}
+
+The grantee is resolved to the CanonicalUser and, in a response to a
+GET Object acl request, appears as the CanonicalUser.
+\item By the person\'s ID:
+
+\verb{&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"&gt;&lt;ID&gt;&lt;&gt;ID&lt;&gt;&lt;/ID&gt;&lt;DisplayName&gt;&lt;&gt;GranteesEmail&lt;&gt;&lt;/DisplayName&gt; &lt;/Grantee&gt;}
+
+DisplayName is optional and ignored in the request
+\item By URI:
+
+\verb{&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Group"&gt;&lt;URI&gt;&lt;&gt;http://acs.amazonaws.com/groups/global/AuthenticatedUsers&lt;&gt;&lt;/URI&gt;&lt;/Grantee&gt;}
+}
+
+\strong{Related Resources}
+\itemize{
+\item CreateBucket
+\item DeleteBucket
+\item GetObjectAcl
+}
 }
 \section{Request syntax}{
 \preformatted{svc$put_bucket_acl(

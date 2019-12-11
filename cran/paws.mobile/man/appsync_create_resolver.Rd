@@ -5,7 +5,8 @@
 \title{Creates a Resolver object}
 \usage{
 appsync_create_resolver(apiId, typeName, fieldName, dataSourceName,
-  requestMappingTemplate, responseMappingTemplate, kind, pipelineConfig)
+  requestMappingTemplate, responseMappingTemplate, kind, pipelineConfig,
+  syncConfig, cachingConfig)
 }
 \arguments{
 \item{apiId}{[required] The ID for the GraphQL API for which the resolver is being created.}
@@ -36,13 +37,17 @@ data sources.
 }}
 
 \item{pipelineConfig}{The \code{PipelineConfig}.}
+
+\item{syncConfig}{The \code{SyncConfig} for a resolver attached to a versioned datasource.}
+
+\item{cachingConfig}{The caching configuration for the resolver.}
 }
 \description{
 Creates a \code{Resolver} object.
 }
 \details{
 A resolver converts incoming requests into a format that a data source
-can understand and converts the data source's responses into GraphQL.
+can understand and converts the data source\'s responses into GraphQL.
 }
 \section{Request syntax}{
 \preformatted{svc$create_resolver(
@@ -55,6 +60,19 @@ can understand and converts the data source's responses into GraphQL.
   kind = "UNIT"|"PIPELINE",
   pipelineConfig = list(
     functions = list(
+      "string"
+    )
+  ),
+  syncConfig = list(
+    conflictHandler = "OPTIMISTIC_CONCURRENCY"|"LAMBDA"|"AUTOMERGE"|"NONE",
+    conflictDetection = "VERSION"|"NONE",
+    lambdaConflictHandlerConfig = list(
+      lambdaConflictHandlerArn = "string"
+    )
+  ),
+  cachingConfig = list(
+    ttl = 123,
+    cachingKeys = list(
       "string"
     )
   )

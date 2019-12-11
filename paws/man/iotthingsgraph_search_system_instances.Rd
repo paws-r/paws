@@ -14,12 +14,12 @@ Multiple filters function as OR criteria in the query. Multiple values
 passed inside the filter function as AND criteria.}
 
 \item{nextToken}{The string that specifies the next page of results. Use this when
-you're paginating results.}
+you\'re paginating results.}
 
 \item{maxResults}{The maximum number of results to return in the response.}
 }
 \description{
-Searches for system instances in the user's account.
+Searches for system instances in the user\'s account.
 }
 \section{Request syntax}{
 \preformatted{svc$search_system_instances(

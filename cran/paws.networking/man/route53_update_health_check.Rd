@@ -35,7 +35,7 @@ the health check was changed after you got the version number. Route
 }}
 
 \item{IPAddress}{The IPv4 or IPv6 IP address for the endpoint that you want Amazon Route
-53 to perform health checks on. If you don't specify a value for
+53 to perform health checks on. If you don\'t specify a value for
 \code{IPAddress}, Route 53 sends a DNS request to resolve the domain name
 that you specify in \code{FullyQualifiedDomainName} at the interval that you
 specify in \code{RequestInterval}. Using an IP address that is returned by
@@ -44,12 +44,12 @@ DNS, Route 53 then checks the health of the endpoint.
 Use one of the following formats for the value of \code{IPAddress}:
 \itemize{
 \item \strong{IPv4 address}: four values between 0 and 255, separated by
-periods (.), for example, \code{192.0.2.44}.
+periods (.), for example, \verb{192.0.2.44}.
 \item \strong{IPv6 address}: eight groups of four hexadecimal values, separated
 by colons (:), for example,
-\code{2001:0db8:85a3:0000:0000:abcd:0001:2345}. You can also shorten IPv6
+\verb{2001:0db8:85a3:0000:0000:abcd:0001:2345}. You can also shorten IPv6
 addresses as described in RFC 5952, for example,
-\code{2001:db8:85a3::abcd:1:2345}.
+\verb{2001:db8:85a3::abcd:1:2345}.
 }
 
 If the endpoint is an EC2 instance, we recommend that you create an
@@ -65,15 +65,15 @@ in the \emph{Amazon EC2 User Guide for Windows Instances}
 }
 
 If a health check already has a value for \code{IPAddress}, you can change
-the value. However, you can't update an existing health check to add or
+the value. However, you can\'t update an existing health check to add or
 remove the value of \code{IPAddress}.
 
 For more information, see
 \href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-FullyQualifiedDomainName}{FullyQualifiedDomainName}.
 
-Constraints: Route 53 can't check the health of endpoints for which the
+Constraints: Route 53 can\'t check the health of endpoints for which the
 IP address is in local, private, non-routable, or multicast ranges. For
-more information about IP addresses for which you can't create health
+more information about IP addresses for which you can\'t create health
 checks, see the following documents:
 \itemize{
 \item \href{https://tools.ietf.org/html/rfc5735}{RFC 5735, Special Use IPv4 Addresses}
@@ -88,7 +88,7 @@ health checks.}
 checks. The path can be any value for which your endpoint will return an
 HTTP status code of 2xx or 3xx when the endpoint is healthy, for example
 the file /docs/route53-health-check.html. You can also include query
-string parameters, for example, \code{/welcome.html?language=jp&amp;login=y}.
+string parameters, for example, \verb{/welcome.html?language=jp&amp;login=y}.
 
 Specify this value only if you want to change it.}
 
@@ -96,7 +96,7 @@ Specify this value only if you want to change it.}
 \code{IPAddress}.
 
 If a health check already has a value for \code{IPAddress}, you can change
-the value. However, you can't update an existing health check to add or
+the value. However, you can\'t update an existing health check to add or
 remove the value of \code{IPAddress}.
 
 \strong{If you specify a value for} \code{IPAddress}:
@@ -121,23 +121,23 @@ for \code{Type}, Route 53 passes \emph{\code{FullyQualifiedDomainName}:\code{Por
 the endpoint in the \code{Host} header.
 }
 
-If you don't specify a value for \code{FullyQualifiedDomainName}, Route 53
+If you don\'t specify a value for \code{FullyQualifiedDomainName}, Route 53
 substitutes the value of \code{IPAddress} in the \code{Host} header in each of the
 above cases.
 
-\strong{If you don't specify a value for} \code{IPAddress}:
+\strong{If you don\'t specify a value for} \code{IPAddress}:
 
-If you don't specify a value for \code{IPAddress}, Route 53 sends a DNS
+If you don\'t specify a value for \code{IPAddress}, Route 53 sends a DNS
 request to the domain that you specify in \code{FullyQualifiedDomainName} at
 the interval you specify in \code{RequestInterval}. Using an IPv4 address
 that is returned by DNS, Route 53 then checks the health of the
 endpoint.
 
-If you don't specify a value for \code{IPAddress}, Route 53 uses only IPv4
-to send health checks to the endpoint. If there's no resource record
+If you don\'t specify a value for \code{IPAddress}, Route 53 uses only IPv4
+to send health checks to the endpoint. If there\'s no resource record
 set with a type of A for the name that you specify for
-\code{FullyQualifiedDomainName}, the health check fails with a "DNS
-resolution failed" error.
+\code{FullyQualifiedDomainName}, the health check fails with a \"DNS
+resolution failed\" error.
 
 If you want to check the health of weighted, latency, or failover
 resource record sets and you choose to specify the endpoint only by
@@ -157,12 +157,12 @@ In addition, if the value of \code{Type} is \code{HTTP}, \code{HTTPS},
 \code{HTTP_STR_MATCH}, or \code{HTTPS_STR_MATCH}, Route 53 passes the value of
 \code{FullyQualifiedDomainName} in the \code{Host} header, as it does when you
 specify a value for \code{IPAddress}. If the value of \code{Type} is \code{TCP}, Route
-53 doesn't pass a \code{Host} header.}
+53 doesn\'t pass a \code{Host} header.}
 
 \item{SearchString}{If the value of \code{Type} is \code{HTTP_STR_MATCH} or \code{HTTP_STR_MATCH}, the
 string that you want Amazon Route 53 to search for in the response body
 from the specified resource. If the string appears in the response body,
-Route 53 considers the resource healthy. (You can't change the value of
+Route 53 considers the resource healthy. (You can\'t change the value of
 \code{Type} when you update a health check.)}
 
 \item{FailureThreshold}{The number of consecutive health checks that an endpoint must pass or
@@ -170,7 +170,7 @@ fail for Amazon Route 53 to change the current status of the endpoint
 from unhealthy to healthy or vice versa. For more information, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html}{How Amazon Route 53 Determines Whether an Endpoint Is Healthy}
 in the \emph{Amazon Route 53 Developer Guide}.
 
-If you don't specify a value for \code{FailureThreshold}, the default value
+If you don\'t specify a value for \code{FailureThreshold}, the default value
 is three health checks.}
 
 \item{Inverted}{Specify whether you want Amazon Route 53 to invert the status of a
@@ -178,7 +178,7 @@ health check, for example, to consider a health check unhealthy when it
 otherwise would be considered healthy.}
 
 \item{Disabled}{Stops Route 53 from performing health checks. When you disable a health
-check, here's what happens:
+check, here\'s what happens:
 \itemize{
 \item \strong{Health checks that check the health of endpoints:} Route 53 stops
 submitting requests to your application, server, or other resource.
@@ -221,15 +221,15 @@ during \code{TLS} negotiation. This allows the endpoint to respond to \code{HTTP
 health check requests with the applicable SSL/TLS certificate.
 
 Some endpoints require that HTTPS requests include the host name in the
-\code{client_hello} message. If you don't enable SNI, the status of the
+\code{client_hello} message. If you don\'t enable SNI, the status of the
 health check will be SSL alert \code{handshake_failure}. A health check can
-also have that status for other reasons. If SNI is enabled and you're
+also have that status for other reasons. If SNI is enabled and you\'re
 still getting the error, check the SSL/TLS configuration on your
 endpoint and confirm that your certificate is valid.
 
 The SSL/TLS certificate on your endpoint includes a domain name in the
-\code{Common Name} field and possibly several more in the
-\code{Subject Alternative Names} field. One of the domain names in the
+\verb{Common Name} field and possibly several more in the
+\verb{Subject Alternative Names} field. One of the domain names in the
 certificate should match the value that you specify for
 \code{FullyQualifiedDomainName}. If the endpoint responds to the
 \code{client_hello} message with a certificate that does not include the
@@ -277,7 +277,7 @@ to null.
 }}
 }
 \description{
-Updates an existing health check. Note that some values can't be
+Updates an existing health check. Note that some values can\'t be
 updated.
 }
 \details{
@@ -305,7 +305,7 @@ in the \emph{Amazon Route 53 Developer Guide}.
     "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
   ),
   AlarmIdentifier = list(
-    Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1",
+    Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1",
     Name = "string"
   ),
   InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus",

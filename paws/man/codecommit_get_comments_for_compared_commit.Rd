@@ -12,16 +12,16 @@ codecommit_get_comments_for_compared_commit(repositoryName,
 \item{repositoryName}{[required] The name of the repository where you want to compare commits.}
 
 \item{beforeCommitId}{To establish the directionality of the comparison, the full commit ID of
-the 'before' commit.}
+the before commit.}
 
 \item{afterCommitId}{[required] To establish the directionality of the comparison, the full commit ID of
-the 'after' commit.}
+the after commit.}
 
 \item{nextToken}{An enumeration token that when provided in a request, returns the next
 batch of the results.}
 
-\item{maxResults}{A non-negative integer used to limit the number of returned results. The
-default is 100 comments, and is configurable up to 500.}
+\item{maxResults}{A non-zero, non-negative integer used to limit the number of returned
+results. The default is 100 comments, but you can configure up to 500.}
 }
 \description{
 Returns information about comments made on the comparison between two

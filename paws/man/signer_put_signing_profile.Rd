@@ -5,7 +5,7 @@
 \title{Creates a signing profile}
 \usage{
 signer_put_signing_profile(profileName, signingMaterial, platformId,
-  overrides, signingParameters)
+  overrides, signingParameters, tags)
 }
 \arguments{
 \item{profileName}{[required] The name of the signing profile to be created.}
@@ -21,9 +21,11 @@ different \code{hash-algorithm} or \code{signing-algorithm}).}
 
 \item{signingParameters}{Map of key-value pairs for signing. These can include any information
 that you want to use during signing.}
+
+\item{tags}{Tags to be associated with the signing profile being created.}
 }
 \description{
-Creates a signing profile. A signing profile is an AWS Signer template
+Creates a signing profile. A signing profile is a code signing template
 that can be used to carry out a pre-defined signing job. For more
 information, see
 \url{http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html}
@@ -42,6 +44,9 @@ information, see
     )
   ),
   signingParameters = list(
+    "string"
+  ),
+  tags = list(
     "string"
   )
 )

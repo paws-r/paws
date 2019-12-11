@@ -4,13 +4,16 @@
 \alias{migrationhub_notify_application_state}
 \title{Sets the migration state of an application}
 \usage{
-migrationhub_notify_application_state(ApplicationId, Status, DryRun)
+migrationhub_notify_application_state(ApplicationId, Status,
+  UpdateDateTime, DryRun)
 }
 \arguments{
-\item{ApplicationId}{[required] The configurationId in ADS that uniquely identifies the grouped
-application.}
+\item{ApplicationId}{[required] The configurationId in Application Discovery Service that uniquely
+identifies the grouped application.}
 
 \item{Status}{[required] Status of the application - Not Started, In-Progress, Complete.}
+
+\item{UpdateDateTime}{The timestamp when the application state changed.}
 
 \item{DryRun}{Optional boolean flag to indicate whether any effect should take place.
 Used to test if the caller has permission to make the call.}
@@ -25,6 +28,9 @@ updated by passing one of three values to \code{Status}:
 \preformatted{svc$notify_application_state(
   ApplicationId = "string",
   Status = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETED",
+  UpdateDateTime = as.POSIXct(
+    "2015-01-01"
+  ),
   DryRun = TRUE|FALSE
 )
 }

@@ -7,7 +7,7 @@
 opsworks_untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
-\item{ResourceArn}{[required] The stack or layer's Amazon Resource Number (ARN).}
+\item{ResourceArn}{[required] The stack or layer\'s Amazon Resource Number (ARN).}
 
 \item{TagKeys}{[required] A list of the keys of tags to be removed from a stack or layer.}
 }

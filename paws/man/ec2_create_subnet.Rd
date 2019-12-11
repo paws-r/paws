@@ -5,22 +5,28 @@
 \title{Creates a subnet in an existing VPC}
 \usage{
 ec2_create_subnet(AvailabilityZone, AvailabilityZoneId, CidrBlock,
-  Ipv6CidrBlock, VpcId, DryRun)
+  Ipv6CidrBlock, OutpostArn, VpcId, DryRun)
 }
 \arguments{
-\item{AvailabilityZone}{The Availability Zone for the subnet.
+\item{AvailabilityZone}{The Availability Zone or Local Zone for the subnet.
 
 Default: AWS selects one for you. If you create more than one subnet in
-your VPC, we may not necessarily select a different zone for each
-subnet.}
+your VPC, we do not necessarily select a different zone for each subnet.
 
-\item{AvailabilityZoneId}{The AZ ID of the subnet.}
+To create a subnet in a Local Zone, set this value to the Local Zone ID,
+for example \verb{us-west-2-lax-1a}. For information about the Regions that
+support Local Zones, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions}{Available Regions}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+
+\item{AvailabilityZoneId}{The AZ ID or the Local Zone ID of the subnet.}
 
 \item{CidrBlock}{[required] The IPv4 network range for the subnet, in CIDR notation. For example,
-\code{10.0.0.0/24}.}
+\verb{10.0.0.0/24}.}
 
 \item{Ipv6CidrBlock}{The IPv6 network range for the subnet, in CIDR notation. The subnet size
 must use a /64 prefix length.}
+
+\item{OutpostArn}{The Amazon Resource Name (ARN) of the Outpost.}
 
 \item{VpcId}{[required] The ID of the VPC.}
 
@@ -34,28 +40,28 @@ Creates a subnet in an existing VPC.
 }
 \details{
 When you create each subnet, you provide the VPC ID and IPv4 CIDR block
-for the subnet. After you create a subnet, you can't change its CIDR
-block. The size of the subnet's IPv4 CIDR block can be the same as a
-VPC's IPv4 CIDR block, or a subset of a VPC's IPv4 CIDR block. If you
-create more than one subnet in a VPC, the subnets' CIDR blocks must not
+for the subnet. After you create a subnet, you can\'t change its CIDR
+block. The size of the subnet\'s IPv4 CIDR block can be the same as a
+VPC\'s IPv4 CIDR block, or a subset of a VPC\'s IPv4 CIDR block. If you
+create more than one subnet in a VPC, the subnets\' CIDR blocks must not
 overlap. The smallest IPv4 subnet (and VPC) you can create uses a /28
 netmask (16 IPv4 addresses), and the largest uses a /16 netmask (65,536
 IPv4 addresses).
 
-If you've associated an IPv6 CIDR block with your VPC, you can create a
+If you\'ve associated an IPv6 CIDR block with your VPC, you can create a
 subnet with an IPv6 CIDR block that uses a /64 prefix length.
 
 AWS reserves both the first four and the last IPv4 address in each
-subnet's CIDR block. They're not available for use.
+subnet\'s CIDR block. They\'re not available for use.
 
-If you add more than one subnet to a VPC, they're set up in a star
+If you add more than one subnet to a VPC, they\'re set up in a star
 topology with a logical router in the middle.
 
 If you launch an instance in a VPC using an Amazon EBS-backed AMI, the
-IP address doesn't change if you stop and restart the instance (unlike
+IP address doesn\'t change if you stop and restart the instance (unlike
 a similar instance launched outside a VPC, which gets a new IP address
-when restarted). It's therefore possible to have a subnet with no
-running instances (they're all stopped), but no remaining IP addresses
+when restarted). It\'s therefore possible to have a subnet with no
+running instances (they\'re all stopped), but no remaining IP addresses
 available.
 
 For more information about subnets, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html}{Your VPC and Subnets}
@@ -67,6 +73,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
   AvailabilityZoneId = "string",
   CidrBlock = "string",
   Ipv6CidrBlock = "string",
+  OutpostArn = "string",
   VpcId = "string",
   DryRun = TRUE|FALSE
 )

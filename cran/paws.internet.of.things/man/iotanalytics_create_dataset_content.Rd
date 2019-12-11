@@ -11,8 +11,8 @@ iotanalytics_create_dataset_content(datasetName)
 \item{datasetName}{[required] The name of the data set.}
 }
 \description{
-Creates the content of a data set by applying a "queryAction" (a SQL
-query) or a "containerAction" (executing a containerized application).
+Creates the content of a data set by applying a \"queryAction\" (a SQL
+query) or a \"containerAction\" (executing a containerized application).
 }
 \section{Request syntax}{
 \preformatted{svc$create_dataset_content(

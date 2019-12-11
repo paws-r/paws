@@ -8,18 +8,53 @@ s3_put_bucket_versioning(Bucket, ContentMD5, MFA,
   VersioningConfiguration)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The bucket name.}
 
-\item{ContentMD5}{}
+\item{ContentMD5}{\\>The base64-encoded 128-bit MD5 digest of the data. You must use this
+header as a message integrity check to verify that the request body was
+not corrupted in transit. For more information, see \href{http://www.ietf.org/rfc/rfc1864.txt}{RFC 1864}.}
 
-\item{MFA}{The concatenation of the authentication device's serial number, a
+\item{MFA}{The concatenation of the authentication device\'s serial number, a
 space, and the value that is displayed on your authentication device.}
 
-\item{VersioningConfiguration}{[required]}
+\item{VersioningConfiguration}{[required] Container for setting the versioning state.}
 }
 \description{
 Sets the versioning state of an existing bucket. To set the versioning
 state, you must be the bucket owner.
+}
+\details{
+You can set the versioning state with one of the following values:
+
+\strong{Enabled}---Enables versioning for the objects in the bucket. All
+objects added to the bucket receive a unique version ID.
+
+\strong{Suspended}---Disables versioning for the objects in the bucket. All
+objects added to the bucket receive the version ID null.
+
+If the versioning state has never been set on a bucket, it has no
+versioning state; a GetBucketVersioning request does not return a
+versioning state value.
+
+If the bucket owner enables MFA Delete in the bucket versioning
+configuration, the bucket owner must include the \verb{x-amz-mfa request}
+header and the \code{Status} and the \code{MfaDelete} request elements in a
+request to set the versioning state of the bucket.
+
+If you have an object expiration lifecycle policy in your non-versioned
+bucket and you want to maintain the same permanent delete behavior when
+you enable versioning, you must add a noncurrent expiration policy. The
+noncurrent expiration lifecycle policy will manage the deletes of the
+noncurrent object versions in the version-enabled bucket. (A
+version-enabled bucket maintains one current and zero or more noncurrent
+object versions.) For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html#lifecycle-and-other-bucket-config}{Lifecycle and Versioning}.
+
+\strong{Related Resources}
+\itemize{
+\item CreateBucket
+\item DeleteBucket
+\item GetBucketVersioning
+}
 }
 \section{Request syntax}{
 \preformatted{svc$put_bucket_versioning(

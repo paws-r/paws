@@ -15,7 +15,7 @@ cloudwatch_get_metric_statistics(Namespace, MetricName, Dimensions,
 \item{Dimensions}{The dimensions. If the metric contains multiple dimensions, you must
 include a value for each dimension. CloudWatch treats each unique
 combination of dimensions as a separate metric. If a specific
-combination of dimensions was not published, you can't retrieve
+combination of dimensions was not published, you can\'t retrieve
 statistics for it. You must specify the same dimensions that were used
 when the metrics were created. For an example, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations}{Dimension Combinations}
 in the \emph{Amazon CloudWatch User Guide}. For more information about
@@ -27,8 +27,8 @@ times are evaluated relative to the time that CloudWatch receives the
 request.
 
 The value specified is inclusive; results include data points with the
-specified time stamp. The time stamp must be in ISO 8601 UTC format (for
-example, 2016-10-03T23:00:00Z).
+specified time stamp. In a raw HTTP query, the time stamp must be in ISO
+8601 UTC format (for example, 2016-10-03T23:00:00Z).
 
 CloudWatch rounds the specified time stamp as follows:
 \itemize{
@@ -54,8 +54,8 @@ data, using a period of 5 seconds, you receive data timestamped between
 \item{EndTime}{[required] The time stamp that determines the last data point to return.
 
 The value specified is exclusive; results include data points up to the
-specified time stamp. The time stamp must be in ISO 8601 UTC format (for
-example, 2016-10-10T23:00:00Z).}
+specified time stamp. In a raw HTTP query, the time stamp must be in ISO
+8601 UTC format (for example, 2016-10-10T23:00:00Z).}
 
 \item{Period}{[required] The granularity, in seconds, of the returned data points. For metrics
 with regular resolution, a period can be as short as one minute (60
@@ -87,10 +87,13 @@ calling \code{GetMetricStatistics}, you must specify either \code{Statistics} or
 available for metrics when any of the metric values are negative
 numbers.}
 
-\item{Unit}{The unit for a given metric. Metrics may be reported in multiple units.
-Not supplying a unit results in all units being returned. If you specify
-only a unit that the metric does not report, the results of the call are
-null.}
+\item{Unit}{The unit for a given metric. If you omit \code{Unit}, all data that was
+collected with any unit is returned, along with the corresponding units
+that were specified when the data was reported to CloudWatch. If you
+specify a unit, the operation returns only data data that was collected
+with that unit specified. If you specify a unit that does not match the
+data collected, the results of the operation are null. CloudWatch does
+not perform unit conversions.}
 }
 \description{
 Gets statistics for the specified metric.

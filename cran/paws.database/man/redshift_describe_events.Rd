@@ -45,12 +45,12 @@ snapshot identifier.
 \item{StartTime}{The beginning of the time interval to retrieve events for, specified in
 ISO 8601 format. For more information about ISO 8601, go to the \href{http://en.wikipedia.org/wiki/ISO_8601}{ISO8601 Wikipedia page.}
 
-Example: \code{2009-07-08T18:00Z}}
+Example: \verb{2009-07-08T18:00Z}}
 
 \item{EndTime}{The end of the time interval for which to retrieve events, specified in
 ISO 8601 format. For more information about ISO 8601, go to the \href{http://en.wikipedia.org/wiki/ISO_8601}{ISO8601 Wikipedia page.}
 
-Example: \code{2009-07-08T18:00Z}}
+Example: \verb{2009-07-08T18:00Z}}
 
 \item{Duration}{The number of minutes prior to the time of the request for which to
 retrieve events. For example, if the request is sent at 18:00 and you
@@ -86,7 +86,7 @@ are returned.
 \section{Request syntax}{
 \preformatted{svc$describe_events(
   SourceIdentifier = "string",
-  SourceType = "cluster"|"cluster-parameter-group"|"cluster-security-group"|"cluster-snapshot",
+  SourceType = "cluster"|"cluster-parameter-group"|"cluster-security-group"|"cluster-snapshot"|"scheduled-action",
   StartTime = as.POSIXct(
     "2015-01-01"
   ),

@@ -8,8 +8,8 @@ glue_batch_create_partition(CatalogId, DatabaseName, TableName,
   PartitionInputList)
 }
 \arguments{
-\item{CatalogId}{The ID of the catalog in which the partion is to be created. Currently,
-this should be the AWS account ID.}
+\item{CatalogId}{The ID of the catalog in which the partition is to be created.
+Currently, this should be the AWS account ID.}
 
 \item{DatabaseName}{[required] The name of the metadata database in which the partition is to be
 created.}
@@ -40,7 +40,10 @@ Creates one or more partitions in a batch operation.
           list(
             Name = "string",
             Type = "string",
-            Comment = "string"
+            Comment = "string",
+            Parameters = list(
+              "string"
+            )
           )
         ),
         Location = "string",

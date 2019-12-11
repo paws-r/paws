@@ -8,7 +8,7 @@ appstream_create_fleet(Name, ImageName, ImageArn, InstanceType,
   FleetType, ComputeCapacity, VpcConfig, MaxUserDurationInSeconds,
   DisconnectTimeoutInSeconds, Description, DisplayName,
   EnableDefaultInternetAccess, DomainJoinInfo, Tags,
-  IdleDisconnectTimeoutInSeconds)
+  IdleDisconnectTimeoutInSeconds, IamRoleArn)
 }
 \arguments{
 \item{Name}{[required] A unique name for the fleet.}
@@ -44,13 +44,13 @@ instance types are available:
 
 \item{FleetType}{The fleet type.
 
-ALWAYS\_ON
+ALWAYS\\_ON
 
 :   Provides users with instant-on access to their apps. You are charged
 for all running instances in your fleet, even if no users are
 streaming apps.
 
-ON\_DEMAND
+ON\\_DEMAND
 
 :   Provide users with access to applications after they connect, which
 takes one to two minutes. You are charged for instance streaming
@@ -95,10 +95,10 @@ If you do not specify a value, the value is set to an empty string.
 Generally allowed characters are: letters, numbers, and spaces
 representable in UTF-8, and the following special characters:
 
-\_ . : / = + \ - @
+\\_ . : / = + \\ - @
 
 For more information, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources}
-in the \emph{Amazon AppStream 2.0 Developer Guide}.}
+in the \emph{Amazon AppStream 2.0 Administration Guide}.}
 
 \item{IdleDisconnectTimeoutInSeconds}{The amount of time that users can be idle (inactive) before they are
 disconnected from their streaming session and the
@@ -118,12 +118,22 @@ value is 0.
 
 If you enable this feature, we recommend that you specify a value that
 corresponds exactly to a whole number of minutes (for example, 60, 120,
-and 180). If you don't do this, the value is rounded to the nearest
+and 180). If you don\'t do this, the value is rounded to the nearest
 minute. For example, if you specify a value of 70, users are
 disconnected after 1 minute of inactivity. If you specify a value that
 is at the midpoint between two different minutes, the value is rounded
 up. For example, if you specify a value of 90, users are disconnected
 after 2 minutes of inactivity.}
+
+\item{IamRoleArn}{The Amazon Resource Name (ARN) of the IAM role to apply to the fleet. To
+assume a role, a fleet instance calls the AWS Security Token Service
+(STS) \code{AssumeRole} API operation and passes the ARN of the role to use.
+The operation creates a new session with temporary credentials.
+AppStream 2.0 retrieves the temporary credentials and creates the
+\strong{AppStream\\_Machine\\_Role} credential profile on the instance.
+
+For more information, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html}{Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming Instances}
+in the \emph{Amazon AppStream 2.0 Administration Guide}.}
 }
 \description{
 Creates a fleet. A fleet consists of streaming instances that run a
@@ -159,7 +169,8 @@ specified image.
   Tags = list(
     "string"
   ),
-  IdleDisconnectTimeoutInSeconds = 123
+  IdleDisconnectTimeoutInSeconds = 123,
+  IamRoleArn = "string"
 )
 }
 }

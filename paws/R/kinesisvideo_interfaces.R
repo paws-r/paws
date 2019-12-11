@@ -3,6 +3,18 @@
 #' @include kinesisvideo_service.R
 NULL
 
+.kinesisvideo$create_signaling_channel_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChannelName = structure(logical(0), tags = list(type = "string")), ChannelType = structure(logical(0), tags = list(type = "string")), SingleMasterConfiguration = structure(list(MessageTtlSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesisvideo$create_signaling_channel_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChannelARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .kinesisvideo$create_stream_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DeviceName = structure(logical(0), tags = list(type = "string")), StreamName = structure(logical(0), tags = list(type = "string")), MediaType = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), DataRetentionInHours = structure(logical(0), tags = list(type = "integer")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
@@ -15,6 +27,18 @@ NULL
   return(populate(args, shape))
 }
 
+.kinesisvideo$delete_signaling_channel_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChannelARN = structure(logical(0), tags = list(type = "string")), CurrentVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesisvideo$delete_signaling_channel_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .kinesisvideo$delete_stream_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(StreamARN = structure(logical(0), tags = list(type = "string")), CurrentVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -24,6 +48,18 @@ NULL
 .kinesisvideo$delete_stream_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesisvideo$describe_signaling_channel_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChannelName = structure(logical(0), tags = list(type = "string")), ChannelARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesisvideo$describe_signaling_channel_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChannelInfo = structure(list(ChannelName = structure(logical(0), tags = list(type = "string")), ChannelARN = structure(logical(0), tags = list(type = "string")), ChannelType = structure(logical(0), tags = list(type = "string")), ChannelStatus = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), SingleMasterConfiguration = structure(list(MessageTtlSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -51,6 +87,30 @@ NULL
   return(populate(args, shape))
 }
 
+.kinesisvideo$get_signaling_channel_endpoint_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChannelARN = structure(logical(0), tags = list(type = "string")), SingleMasterChannelEndpointConfiguration = structure(list(Protocols = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Role = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesisvideo$get_signaling_channel_endpoint_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceEndpointList = structure(list(structure(list(Protocol = structure(logical(0), tags = list(type = "string")), ResourceEndpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesisvideo$list_signaling_channels_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), ChannelNameCondition = structure(list(ComparisonOperator = structure(logical(0), tags = list(type = "string")), ComparisonValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesisvideo$list_signaling_channels_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChannelInfoList = structure(list(structure(list(ChannelName = structure(logical(0), tags = list(type = "string")), ChannelARN = structure(logical(0), tags = list(type = "string")), ChannelType = structure(logical(0), tags = list(type = "string")), ChannelStatus = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), SingleMasterConfiguration = structure(list(MessageTtlSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .kinesisvideo$list_streams_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), StreamNameCondition = structure(list(ComparisonOperator = structure(logical(0), tags = list(type = "string")), ComparisonValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
@@ -60,6 +120,18 @@ NULL
 .kinesisvideo$list_streams_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(StreamInfoList = structure(list(structure(list(DeviceName = structure(logical(0), tags = list(type = "string")), StreamName = structure(logical(0), tags = list(type = "string")), StreamARN = structure(logical(0), tags = list(type = "string")), MediaType = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), DataRetentionInHours = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesisvideo$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), ResourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesisvideo$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -75,6 +147,18 @@ NULL
   return(populate(args, shape))
 }
 
+.kinesisvideo$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesisvideo$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .kinesisvideo$tag_stream_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(StreamARN = structure(logical(0), tags = list(type = "string")), StreamName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
@@ -82,6 +166,18 @@ NULL
 }
 
 .kinesisvideo$tag_stream_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesisvideo$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), TagKeyList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesisvideo$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -106,6 +202,18 @@ NULL
 }
 
 .kinesisvideo$update_data_retention_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesisvideo$update_signaling_channel_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChannelARN = structure(logical(0), tags = list(type = "string")), CurrentVersion = structure(logical(0), tags = list(type = "string")), SingleMasterConfiguration = structure(list(MessageTtlSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesisvideo$update_signaling_channel_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

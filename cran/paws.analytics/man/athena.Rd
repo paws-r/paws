@@ -57,7 +57,7 @@ in the \emph{Amazon Athena User Guide}.
 \link[=athena_delete_work_group]{delete_work_group} \tab Deletes the workgroup with the specified name \cr
 \link[=athena_get_named_query]{get_named_query} \tab Returns information about a single query \cr
 \link[=athena_get_query_execution]{get_query_execution} \tab Returns information about a single execution of a query if you have access to the workgroup in which the query ran \cr
-\link[=athena_get_query_results]{get_query_results} \tab Returns the results of a single query execution specified by QueryExecutionId if you have access to the workgroup in which the query ran \cr
+\link[=athena_get_query_results]{get_query_results} \tab Streams the results of a single query execution specified by QueryExecutionId from the Athena query results location in Amazon S3 \cr
 \link[=athena_get_work_group]{get_work_group} \tab Returns information about the workgroup with the specified name \cr
 \link[=athena_list_named_queries]{list_named_queries} \tab Provides a list of available query IDs only for queries saved in the specified workgroup \cr
 \link[=athena_list_query_executions]{list_query_executions} \tab Provides a list of available query execution IDs for the queries in the specified workgroup \cr

@@ -13,15 +13,15 @@ costexplorer_get_cost_forecast(TimePeriod, Metric, Granularity, Filter,
 \item{TimePeriod}{[required] The period of time that you want the forecast to cover.}
 
 \item{Metric}{[required] Which metric Cost Explorer uses to create your forecast. For more
-information about blended and unblended rates, see \href{https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/}{Why does the "blended" annotation appear on some line items in my bill?}.
+information about blended and unblended rates, see \href{https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/}{Why does the \"blended\" annotation appear on some line items in my bill?}.
 
 Valid values for a \code{GetCostForecast} call are the following:
 \itemize{
-\item AMORTIZED\_COST
-\item BLENDED\_COST
-\item NET\_AMORTIZED\_COST
-\item NET\_UNBLENDED\_COST
-\item UNBLENDED\_COST
+\item AMORTIZED\\_COST
+\item BLENDED\\_COST
+\item NET\\_AMORTIZED\\_COST
+\item NET\\_UNBLENDED\\_COST
+\item UNBLENDED\\_COST
 }}
 
 \item{Granularity}{[required] How granular you want the forecast to be. You can get 3 months of
@@ -61,12 +61,18 @@ past costs.
     ),
     Not = list(),
     Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID",
+      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION",
       Values = list(
         "string"
       )
     ),
     Tags = list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    ),
+    CostCategories = list(
       Key = "string",
       Values = list(
         "string"

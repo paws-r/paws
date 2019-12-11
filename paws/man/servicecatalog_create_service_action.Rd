@@ -34,7 +34,7 @@ self-service actions on your behalf. For example,
 
 Parameters
 
-:   The list of parameters in JSON format.\preformatted{For example: `\\[\{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"\}\\]`.
+:   The list of parameters in JSON format.\preformatted{For example: `\\\[\\\{\\"Name\\":\\"InstanceId\\",\\"Type\\":\\"TARGET\\"\\\}\\\]`.
 }}
 
 \item{Description}{The self-service action description.}

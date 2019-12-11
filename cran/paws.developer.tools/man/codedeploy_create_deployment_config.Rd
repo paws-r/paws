@@ -16,19 +16,19 @@ input: type and value.
 
 The type parameter takes either of the following values:
 \itemize{
-\item HOST\_COUNT: The value parameter represents the minimum number of
+\item HOST\\_COUNT: The value parameter represents the minimum number of
 healthy instances as an absolute value.
-\item FLEET\_PERCENT: The value parameter represents the minimum number of
+\item FLEET\\_PERCENT: The value parameter represents the minimum number of
 healthy instances as a percentage of the total number of instances
-in the deployment. If you specify FLEET\_PERCENT, at the start of
+in the deployment. If you specify FLEET\\_PERCENT, at the start of
 the deployment, AWS CodeDeploy converts the percentage to the
 equivalent number of instance and rounds up fractional instances.
 }
 
 The value parameter takes an integer.
 
-For example, to set a minimum of 95\% healthy instance, specify a type of
-FLEET\_PERCENT and a value of 95.}
+For example, to set a minimum of 95\\% healthy instance, specify a type of
+FLEET\\_PERCENT and a value of 95.}
 
 \item{trafficRoutingConfig}{The configuration that specifies how the deployment traffic is routed.}
 

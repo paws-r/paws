@@ -18,7 +18,7 @@ assumed.}
 }
 \description{
 Creates or updates a lifecycle policy. For information about lifecycle
-policy syntax, see \href{http://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html}{Lifecycle Policy Template}.
+policy syntax, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html}{Lifecycle Policy Template}.
 }
 \section{Request syntax}{
 \preformatted{svc$put_lifecycle_policy(

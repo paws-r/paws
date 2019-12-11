@@ -17,8 +17,8 @@ in the \emph{AWS General Reference}.}
 \item{VersionId}{[required] Identifies the policy version to retrieve.
 
 This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that
-consists of the lowercase letter 'v' followed by one or two digits,
-and optionally followed by a period '.' and a string of letters and
+consists of the lowercase letter \'v\' followed by one or two digits,
+and optionally followed by a period \'.\' and a string of letters and
 digits.}
 }
 \description{
@@ -26,11 +26,11 @@ Retrieves information about the specified version of the specified
 managed policy, including the policy document.
 }
 \details{
-Policies returned by this API are URL-encoded compliant with RFC 3986.
-You can use a URL decoding method to convert the policy back to plain
-JSON text. For example, if you use Java, you can use the \code{decode} method
-of the \code{java.net.URLDecoder} utility class in the Java SDK. Other
-languages and SDKs provide similar functionality.
+Policies returned by this API are URL-encoded compliant with \href{https://tools.ietf.org/html/rfc3986}{RFC 3986}. You can use a URL decoding
+method to convert the policy back to plain JSON text. For example, if
+you use Java, you can use the \code{decode} method of the
+\code{java.net.URLDecoder} utility class in the Java SDK. Other languages and
+SDKs provide similar functionality.
 
 To list the available versions for a policy, use ListPolicyVersions.
 

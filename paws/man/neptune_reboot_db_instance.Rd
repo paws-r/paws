@@ -18,7 +18,7 @@ Constraints:
 
 \item{ForceFailover}{When \code{true}, the reboot is conducted through a MultiAZ failover.
 
-Constraint: You can't specify \code{true} if the instance is not configured
+Constraint: You can\'t specify \code{true} if the instance is not configured
 for MultiAZ.}
 }
 \description{

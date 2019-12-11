@@ -11,7 +11,8 @@ migrationhub_describe_migration_task(ProgressUpdateStream,
 \arguments{
 \item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream.}
 
-\item{MigrationTaskName}{[required] The identifier given to the MigrationTask.}
+\item{MigrationTaskName}{[required] The identifier given to the MigrationTask. \emph{Do not store personal data
+in this field.}}
 }
 \description{
 Retrieves a list of all attributes associated with a specific migration

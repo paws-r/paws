@@ -8,12 +8,68 @@ s3_put_bucket_notification_configuration(Bucket,
   NotificationConfiguration)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The name of the bucket.}
 
 \item{NotificationConfiguration}{[required]}
 }
 \description{
-Enables notifications of specified events for a bucket.
+Enables notifications of specified events for a bucket. For more
+information about event notifications, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html}{Configuring Event Notifications}.
+}
+\details{
+Using this API, you can replace an existing notification configuration.
+The configuration is an XML file that defines the event types that you
+want Amazon S3 to publish and the destination where you want Amazon S3
+to publish an event notification when it detects an event of the
+specified type.
+
+By default, your bucket has no event notifications configured. That is,
+the notification configuration will be an empty
+\code{NotificationConfiguration}.
+
+\verb{&lt;NotificationConfiguration&gt;}
+
+\verb{&lt;/NotificationConfiguration&gt;}
+
+This operation replaces the existing notification configuration with the
+configuration you include in the request body.
+
+After Amazon S3 receives this request, it first verifies that any Amazon
+Simple Notification Service (Amazon SNS) or Amazon Simple Queue Service
+(Amazon SQS) destination exists, and that the bucket owner has
+permission to publish to it by sending a test notification. In the case
+of AWS Lambda destinations, Amazon S3 verifies that the Lambda function
+permissions grant Amazon S3 permission to invoke the function from the
+Amazon S3 bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html}{Configuring Notifications for Amazon S3 Events}.
+
+You can disable notifications by adding the empty
+NotificationConfiguration element.
+
+By default, only the bucket owner can configure notifications on a
+bucket. However, bucket owners can use a bucket policy to grant
+permission to other users to set this configuration with
+\code{s3:PutBucketNotification} permission.
+
+The PUT notification is an atomic operation. For example, suppose your
+notification configuration includes SNS topic, SQS queue, and Lambda
+function configurations. When you send a PUT request with this
+configuration, Amazon S3 sends test messages to your SNS topic. If the
+message fails, the entire PUT operation will fail, and Amazon S3 will
+not add the configuration to your bucket.
+
+\strong{Responses}
+
+If the configuration in the request body includes only one
+\code{TopicConfiguration} specifying only the
+\code{s3:ReducedRedundancyLostObject} event type, the response will also
+include the \code{x-amz-sns-test-message-id} header containing the message ID
+of the test notification sent to the topic.
+
+The following operation is related to
+\code{PutBucketNotificationConfiguration}:
+\itemize{
+\item GetBucketNotificationConfiguration
+}
 }
 \section{Request syntax}{
 \preformatted{svc$put_bucket_notification_configuration(
@@ -24,7 +80,7 @@ Enables notifications of specified events for a bucket.
         Id = "string",
         TopicArn = "string",
         Events = list(
-          "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"
+          "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"
         ),
         Filter = list(
           Key = list(
@@ -43,7 +99,7 @@ Enables notifications of specified events for a bucket.
         Id = "string",
         QueueArn = "string",
         Events = list(
-          "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"
+          "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"
         ),
         Filter = list(
           Key = list(
@@ -62,7 +118,7 @@ Enables notifications of specified events for a bucket.
         Id = "string",
         LambdaFunctionArn = "string",
         Events = list(
-          "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"
+          "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"
         ),
         Filter = list(
           Key = list(

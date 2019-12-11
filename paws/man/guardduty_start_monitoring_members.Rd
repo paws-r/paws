@@ -2,23 +2,21 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_start_monitoring_members}
 \alias{guardduty_start_monitoring_members}
-\title{Re-enables GuardDuty to monitor findings of the member accounts
-specified by the account IDs}
+\title{Turns on GuardDuty monitoring of the specified member accounts}
 \usage{
 guardduty_start_monitoring_members(DetectorId, AccountIds)
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account whom you want to
-re-enable to monitor members' findings.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty master account associated
+with the member accounts to monitor.}
 
-\item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts whose findings
-you want the master account to monitor.}
+\item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts to start
+monitoring.}
 }
 \description{
-Re-enables GuardDuty to monitor findings of the member accounts
-specified by the account IDs. A master GuardDuty account can run this
-command after disabling GuardDuty from monitoring these members'
-findings by running StopMonitoringMembers.
+Turns on GuardDuty monitoring of the specified member accounts. Use this
+operation to restart monitoring of accounts that you stopped monitoring
+with the \code{StopMonitoringMembers} operation.
 }
 \section{Request syntax}{
 \preformatted{svc$start_monitoring_members(

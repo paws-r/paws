@@ -8,7 +8,7 @@ glue_get_user_defined_function(CatalogId, DatabaseName, FunctionName)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the function to be retrieved is
-located. If none is supplied, the AWS account ID is used by default.}
+located. If none is provided, the AWS account ID is used by default.}
 
 \item{DatabaseName}{[required] The name of the catalog database where the function is located.}
 

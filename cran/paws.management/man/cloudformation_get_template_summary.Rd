@@ -26,7 +26,7 @@ Conditional: You must specify only one of the following parameters:
 
 \item{StackName}{The name or the stack ID that is associated with the stack, which are
 not always interchangeable. For running stacks, you can specify either
-the stack's name or its unique stack ID. For deleted stack, you must
+the stack\'s name or its unique stack ID. For deleted stack, you must
 specify the unique stack ID.
 
 Conditional: You must specify only one of the following parameters:

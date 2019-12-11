@@ -59,7 +59,7 @@ The specified CMK must exist in the Region that the snapshot is being
 copied to.}
 
 \item{RoleName}{The name of the role to use when not using the default role,
-'vmimport'.}
+\'vmimport\'.}
 }
 \description{
 Imports a disk into an EBS snapshot.

@@ -11,9 +11,9 @@ sqs_add_permission(QueueUrl, Label, AWSAccountIds, Actions)
 
 Queue URLs and names are case-sensitive.}
 
-\item{Label}{[required] The unique identification of the permission you're setting (for
+\item{Label}{[required] The unique identification of the permission you\'re setting (for
 example, \code{AliceSendMessage}). Maximum 80 characters. Allowed characters
-include alphanumeric characters, hyphens (\code{-}), and underscores (\code{_}).}
+include alphanumeric characters, hyphens (\code{-}), and underscores (\verb{_}).}
 
 \item{AWSAccountIds}{[required] The AWS account number of the
 \href{https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P}{principal}
@@ -45,7 +45,7 @@ to the queue. For more information about these permissions, see \href{https://do
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 \itemize{
 \item \code{AddPermission} generates a policy for you. You can use
-\code{<a>SetQueueAttributes</a>} to upload your policy. For more
+\verb{<a>SetQueueAttributes</a>} to upload your policy. For more
 information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-creating-custom-policies.html}{Using Custom Policies with the Amazon SQS Access Policy Language}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 \item An Amazon SQS policy can have a maximum of 7 actions.
@@ -58,11 +58,11 @@ Some actions take lists of parameters. These lists are specified using
 the \code{param.n} notation. Values of \code{n} are integers starting from 1. For
 example, a parameter list with two elements looks like this:
 
-\code{&amp;Attribute.1=first}
+\verb{&amp;Attribute.1=first}
 
-\code{&amp;Attribute.2=second}
+\verb{&amp;Attribute.2=second}
 
-Cross-account permissions don't apply to this action. For more
+Cross-account permissions don\'t apply to this action. For more
 information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }

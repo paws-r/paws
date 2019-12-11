@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_bucket_lifecycle}
 \alias{s3_put_bucket_lifecycle}
-\title{No longer used, see the PutBucketLifecycleConfiguration operation}
+\title{For an updated version of this API, see PutBucketLifecycleConfiguration}
 \usage{
 s3_put_bucket_lifecycle(Bucket, ContentMD5, LifecycleConfiguration)
 }
@@ -14,7 +14,55 @@ s3_put_bucket_lifecycle(Bucket, ContentMD5, LifecycleConfiguration)
 \item{LifecycleConfiguration}{}
 }
 \description{
-No longer used, see the PutBucketLifecycleConfiguration operation.
+For an updated version of this API, see PutBucketLifecycleConfiguration.
+This version has been deprecated. Existing lifecycle configurations will
+work. For new lifecycle configurations, use the updated API.
+}
+\details{
+Creates a new lifecycle configuration for the bucket or replaces an
+existing lifecycle configuration. For information about lifecycle
+configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev//object-lifecycle-mgmt.html}{Object Lifecycle Management}
+in the \emph{Amazon Simple Storage Service Developer Guide}.
+
+By default, all Amazon S3 resources, including buckets, objects, and
+related subresources (for example, lifecycle configuration and website
+configuration) are private. Only the resource owner, the AWS account
+that created the resource, can access it. The resource owner can
+optionally grant access permissions to others by writing an access
+policy. For this operation, users must get the
+\code{s3:PutLifecycleConfiguration} permission.
+
+You can also explicitly deny permissions. Explicit denial also
+supersedes any other permissions. If you want to prevent users or
+accounts from removing or deleting objects from your bucket, you must
+deny them permissions for the following actions:
+\itemize{
+\item \code{s3:DeleteObject}
+\item \code{s3:DeleteObjectVersion}
+\item \code{s3:PutLifecycleConfiguration}
+}
+
+For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev//s3-access-control.html}{Managing Access Permissions to your Amazon S3 Resources}
+in the \emph{Amazon Simple Storage Service Developer Guide}.
+
+For more examples of transitioning objects to storage classes such as
+STANDARD\\_IA or ONEZONE\\_IA, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev//intro-lifecycle-rules.html#lifecycle-configuration-examples}{Examples of Lifecycle Configuration}.
+
+\strong{Related Resources}
+\itemize{
+\item GetBucketLifecycle(Deprecated)
+\item GetBucketLifecycleConfiguration
+\item 
+\itemize{
+\item By default, a resource owner---in this case, a bucket owner,
+which is the AWS account that created the bucket---can perform any
+of the operations. A resource owner can also grant others permission
+to perform the operation. For more information, see the following
+topics in the Amazon Simple Storage Service Developer Guide:
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev//using-with-s3-actions.html}{Specifying Permissions in a Policy}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev//s3-access-control.html}{Managing Access Permissions to your Amazon S3 Resources}
+}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$put_bucket_lifecycle(

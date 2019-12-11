@@ -24,7 +24,7 @@ specifying a complete ARN. This confusion can cause unexpected results.
 To avoid this situation, we recommend that you don't create secret names
 that end with a hyphen followed by six characters.}
 
-\item{ResourcePolicy}{[required] A JSON-formatted string that's constructed according to the grammar and
+\item{ResourcePolicy}{[required] A JSON-formatted string that\'s constructed according to the grammar and
 syntax for an AWS resource-based policy. The policy in the string
 identifies who can access or manage this secret and its versions. For
 information on how to format a JSON parameter for the various command
@@ -34,8 +34,8 @@ in the \emph{AWS CLI User Guide}.}
 \description{
 Attaches the contents of the specified resource-based permission policy
 to a secret. A resource-based policy is optional. Alternatively, you can
-use IAM identity-based policies that specify the secret's Amazon
-Resource Name (ARN) in the policy statement's \code{Resources} element. You
+use IAM identity-based policies that specify the secret\'s Amazon
+Resource Name (ARN) in the policy statement\'s \code{Resources} element. You
 can also use a combination of both identity-based and resource-based
 policies. The affected users and roles receive the permissions that are
 permitted by all of the relevant policies. For more information, see
@@ -54,9 +54,9 @@ To run this command, you must have the following permissions:
 
 \strong{Related operations}
 \itemize{
-\item To retrieve the resource policy that's attached to a secret, use
+\item To retrieve the resource policy that\'s attached to a secret, use
 GetResourcePolicy.
-\item To delete the resource-based policy that's attached to a secret,
+\item To delete the resource-based policy that\'s attached to a secret,
 use DeleteResourcePolicy.
 \item To list all of the currently available secrets, use ListSecrets.
 }
@@ -73,7 +73,7 @@ use DeleteResourcePolicy.
 # The following example shows how to add a resource-based policy to a
 # secret.
 \donttest{svc$put_resource_policy(
-  ResourcePolicy = "{\\n\\"Version\\":\\"2012-10-17\\",\\n\\"Statement\\":[{\\n\\"Effect\\":\\"Allow\\",...",
+  ResourcePolicy = "{\n\"Version\":\"2012-10-17\",\n\"Statement\":[{\n\"Effect\":\"Allow\",...",
   SecretId = "MyTestDatabaseSecret"
 )}
 

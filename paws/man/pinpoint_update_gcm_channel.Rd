@@ -2,7 +2,8 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_update_gcm_channel}
 \alias{pinpoint_update_gcm_channel}
-\title{Updates the status and settings of the GCM channel for an application}
+\title{Enables the GCM channel for an application or updates the status and
+settings of the GCM channel for an application}
 \usage{
 pinpoint_update_gcm_channel(ApplicationId, GCMChannelRequest)
 }
@@ -13,7 +14,8 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{GCMChannelRequest}{[required]}
 }
 \description{
-Updates the status and settings of the GCM channel for an application.
+Enables the GCM channel for an application or updates the status and
+settings of the GCM channel for an application.
 }
 \section{Request syntax}{
 \preformatted{svc$update_gcm_channel(

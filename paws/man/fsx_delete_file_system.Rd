@@ -24,7 +24,7 @@ backups will also be deleted.
 \details{
 By default, when you delete an Amazon FSx for Windows File Server file
 system, a final backup is created upon deletion. This final backup is
-not subject to the file system's retention policy, and must be manually
+not subject to the file system\'s retention policy, and must be manually
 deleted.
 
 The \code{DeleteFileSystem} action returns while the file system has the
@@ -34,7 +34,7 @@ systems in your account. If you pass the file system ID for a deleted
 file system, the DescribeFileSystems returns a \code{FileSystemNotFound}
 error.
 
-The data in a deleted file system is also deleted and can't be
+The data in a deleted file system is also deleted and can\'t be
 recovered by any means.
 }
 \section{Request syntax}{

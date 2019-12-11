@@ -13,7 +13,7 @@ kinesisanalyticsv2_create_application(ApplicationName,
 
 \item{ApplicationDescription}{A summary description of the application.}
 
-\item{RuntimeEnvironment}{[required] The runtime environment for the application (\code{SQL-1.0} or \code{FLINK-1_6}).}
+\item{RuntimeEnvironment}{[required] The runtime environment for the application (\code{SQL-1.0} or \verb{FLINK-1_6}).}
 
 \item{ServiceExecutionRole}{[required] The IAM role used by the application to access Kinesis data streams,
 Kinesis Data Firehose delivery streams, Amazon S3 objects, and other
@@ -27,8 +27,7 @@ monitor application configuration errors.}
 \item{Tags}{A list of one or more tags to assign to the application. A tag is a
 key-value pair that identifies an application. Note that the maximum
 number of application tags includes system tags. The maximum number of
-user-defined application tags is 50. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags}
-in the \emph{AWS Billing and Cost Management Guide}.}
+user-defined application tags is 50. For more information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html}{Using Tagging}.}
 }
 \description{
 Creates an Amazon Kinesis Data Analytics application. For information
@@ -175,6 +174,16 @@ about creating a Kinesis Data Analytics application, see \href{https://docs.aws.
     ),
     ApplicationSnapshotConfiguration = list(
       SnapshotsEnabled = TRUE|FALSE
+    ),
+    VpcConfigurations = list(
+      list(
+        SubnetIds = list(
+          "string"
+        ),
+        SecurityGroupIds = list(
+          "string"
+        )
+      )
     )
   ),
   CloudWatchLoggingOptions = list(

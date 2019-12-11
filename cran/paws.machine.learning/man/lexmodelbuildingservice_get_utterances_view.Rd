@@ -14,8 +14,8 @@ lexmodelbuildingservice_get_utterances_view(botName, botVersions,
 \item{botVersions}{[required] An array of bot versions for which utterance information should be
 returned. The limit is 5 versions per request.}
 
-\item{statusType}{[required] To return utterances that were recognized and handled, use\code{Detected}. To
-return utterances that were not recognized, use \code{Missed}.}
+\item{statusType}{[required] To return utterances that were recognized and handled, use \code{Detected}.
+To return utterances that were not recognized, use \code{Missed}.}
 }
 \description{
 Use the \code{GetUtterancesView} operation to get information about the
@@ -26,7 +26,7 @@ to tune the utterances that your bot responds to.
 For example, say that you have created a bot to order flowers. After
 your users have used your bot for a while, use the \code{GetUtterancesView}
 operation to see the requests that they have made and whether they have
-been successful. You might find that the utterance "I want flowers" is
+been successful. You might find that the utterance \"I want flowers\" is
 not being recognized. You could add this utterance to the \code{OrderFlowers}
 intent so that your bot recognizes that utterance.
 
@@ -35,9 +35,14 @@ the old version and the new so that you can compare the performance
 across the two versions.
 
 Utterance statistics are generated once a day. Data is available for the
-last 15 days. You can request information for up to 5 versions in each
-request. The response contains information about a maximum of 100
-utterances for each version.
+last 15 days. You can request information for up to 5 versions of your
+bot in each request. Amazon Lex returns the most frequent utterances
+received by the bot in the last 15 days. The response contains
+information about a maximum of 100 utterances for each version.
+
+If you set \code{childDirected} field to true when you created your bot, or
+if you opted out of participating in improving Amazon Lex, utterances
+are not available.
 
 This operation requires permissions for the \code{lex:GetUtterancesView}
 action.

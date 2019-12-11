@@ -26,6 +26,14 @@ test_that("list_inputs", {
   expect_error(svc$list_inputs(MaxResults = 20), NA)
 })
 
+test_that("list_multiplexes", {
+  expect_error(svc$list_multiplexes(), NA)
+})
+
+test_that("list_multiplexes", {
+  expect_error(svc$list_multiplexes(MaxResults = 20), NA)
+})
+
 test_that("list_offerings", {
   expect_error(svc$list_offerings(), NA)
 })

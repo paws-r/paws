@@ -14,7 +14,7 @@ lightsail_create_instance_snapshot(instanceSnapshotName, instanceName,
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
-To tag a resource after it has been created, see the \code{tag resource}
+To tag a resource after it has been created, see the \verb{tag resource}
 operation.}
 }
 \description{
@@ -23,7 +23,7 @@ You can use a snapshot to create a new instance that is based on that
 snapshot.
 }
 \details{
-The \code{create instance snapshot} operation supports tag-based access
+The \verb{create instance snapshot} operation supports tag-based access
 control via request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{

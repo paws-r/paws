@@ -10,8 +10,9 @@ comprehendmedical(config = list())
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
-Comprehend Medical extracts structured information from unstructured
-clinical text. Use these actions to gain insight in your documents.
+Amazon Comprehend Medical extracts structured information from
+unstructured clinical text. Use these actions to gain insight in your
+documents.
 }
 \section{Service syntax}{
 \preformatted{svc <- comprehendmedical(
@@ -34,14 +35,23 @@ clinical text. Use these actions to gain insight in your documents.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=comprehendmedical_detect_entities]{detect_entities} \tab Inspects the clinical text for a variety of medical entities and returns specific information about them such as entity category, location, and confidence score on that information \cr
-\link[=comprehendmedical_detect_phi]{detect_phi} \tab Inspects the clinical text for personal health information (PHI) entities and entity category, location, and confidence score on that information
+\link[=comprehendmedical_describe_entities_detection_v2_job]{describe_entities_detection_v2_job} \tab Gets the properties associated with a medical entities detection job \cr
+\link[=comprehendmedical_describe_phi_detection_job]{describe_phi_detection_job} \tab Gets the properties associated with a protected health information (PHI) detection job \cr
+\link[=comprehendmedical_detect_entities]{detect_entities} \tab The DetectEntities operation is deprecated \cr
+\link[=comprehendmedical_detect_entities_v2]{detect_entities_v2} \tab Inspects the clinical text for a variety of medical entities and returns specific information about them such as entity category, location, and confidence score on that information\cr
+\link[=comprehendmedical_detect_phi]{detect_phi} \tab Inspects the clinical text for protected health information (PHI) entities and entity category, location, and confidence score on that information \cr
+\link[=comprehendmedical_list_entities_detection_v2_jobs]{list_entities_detection_v2_jobs} \tab Gets a list of medical entity detection jobs that you have submitted \cr
+\link[=comprehendmedical_list_phi_detection_jobs]{list_phi_detection_jobs} \tab Gets a list of protected health information (PHI) detection jobs that you have submitted \cr
+\link[=comprehendmedical_start_entities_detection_v2_job]{start_entities_detection_v2_job} \tab Starts an asynchronous medical entity detection job for a collection of documents \cr
+\link[=comprehendmedical_start_phi_detection_job]{start_phi_detection_job} \tab Starts an asynchronous job to detect protected health information (PHI) \cr
+\link[=comprehendmedical_stop_entities_detection_v2_job]{stop_entities_detection_v2_job} \tab Stops a medical entities detection job in progress \cr
+\link[=comprehendmedical_stop_phi_detection_job]{stop_phi_detection_job} \tab Stops a protected health information (PHI) detection job in progress
 }
 }
 
 \examples{
 \donttest{svc <- comprehendmedical()
-svc$detect_entities(
+svc$describe_entities_detection_v2_job(
   Foo = 123
 )}
 

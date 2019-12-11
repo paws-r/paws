@@ -14,7 +14,7 @@ greengrass_create_connector_definition(AmznClientToken, InitialVersion,
 
 \item{Name}{The name of the connector definition.}
 
-\item{tags}{Tag(s) to add to the new resource}
+\item{tags}{Tag(s) to add to the new resource.}
 }
 \description{
 Creates a connector definition. You may provide the initial version of the connector definition now or use ''CreateConnectorDefinitionVersion'' at a later time.

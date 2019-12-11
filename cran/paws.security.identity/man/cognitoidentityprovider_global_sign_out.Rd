@@ -10,7 +10,10 @@ cognitoidentityprovider_global_sign_out(AccessToken)
 \item{AccessToken}{[required] The access token.}
 }
 \description{
-Signs out users from all devices.
+Signs out users from all devices. It also invalidates all refresh tokens
+issued to a user. The user\'s current access and Id tokens remain valid
+until their expiry. Access and Id tokens expire one hour after they are
+issued.
 }
 \section{Request syntax}{
 \preformatted{svc$global_sign_out(

@@ -10,7 +10,7 @@ elasticache_purchase_reserved_cache_nodes_offering(
 \arguments{
 \item{ReservedCacheNodesOfferingId}{[required] The ID of the reserved cache node offering to purchase.
 
-Example: \code{438012d3-4052-4cc7-b2e3-8d3372e0e706}}
+Example: \verb{438012d3-4052-4cc7-b2e3-8d3372e0e706}}
 
 \item{ReservedCacheNodeId}{A customer-specified identifier to track this reservation.
 

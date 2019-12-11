@@ -5,8 +5,9 @@
 \title{Updates an existing room profile by room profile ARN}
 \usage{
 alexaforbusiness_update_profile(ProfileArn, ProfileName, IsDefault,
-  Timezone, Address, DistanceUnit, TemperatureUnit, WakeWord,
-  SetupModeDisabled, MaxVolumeLimit, PSTNEnabled)
+  Timezone, Address, DistanceUnit, TemperatureUnit, WakeWord, Locale,
+  SetupModeDisabled, MaxVolumeLimit, PSTNEnabled,
+  MeetingRoomConfiguration)
 }
 \arguments{
 \item{ProfileArn}{The ARN of the room profile to update. Required.}
@@ -26,11 +27,16 @@ is done to the default status.}
 
 \item{WakeWord}{The updated wake word for the room profile.}
 
+\item{Locale}{The updated locale for the room profile. (This is currently only
+available to a limited preview audience.)}
+
 \item{SetupModeDisabled}{Whether the setup mode of the profile is enabled.}
 
 \item{MaxVolumeLimit}{The updated maximum volume limit for the room profile.}
 
 \item{PSTNEnabled}{Whether the PSTN setting of the room profile is enabled.}
+
+\item{MeetingRoomConfiguration}{The updated meeting room settings of a room profile.}
 }
 \description{
 Updates an existing room profile by room profile ARN.
@@ -45,9 +51,28 @@ Updates an existing room profile by room profile ARN.
   DistanceUnit = "METRIC"|"IMPERIAL",
   TemperatureUnit = "FAHRENHEIT"|"CELSIUS",
   WakeWord = "ALEXA"|"AMAZON"|"ECHO"|"COMPUTER",
+  Locale = "string",
   SetupModeDisabled = TRUE|FALSE,
   MaxVolumeLimit = 123,
-  PSTNEnabled = TRUE|FALSE
+  PSTNEnabled = TRUE|FALSE,
+  MeetingRoomConfiguration = list(
+    RoomUtilizationMetricsEnabled = TRUE|FALSE,
+    EndOfMeetingReminder = list(
+      ReminderAtMinutes = list(
+        123
+      ),
+      ReminderType = "ANNOUNCEMENT_TIME_CHECK"|"ANNOUNCEMENT_VARIABLE_TIME_LEFT"|"CHIME"|"KNOCK",
+      Enabled = TRUE|FALSE
+    ),
+    InstantBooking = list(
+      DurationInMinutes = 123,
+      Enabled = TRUE|FALSE
+    ),
+    RequireCheckIn = list(
+      ReleaseAfterMinutes = 123,
+      Enabled = TRUE|FALSE
+    )
+  )
 )
 }
 }

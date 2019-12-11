@@ -4,7 +4,8 @@
 \alias{ec2_modify_hosts}
 \title{Modify the auto-placement setting of a Dedicated Host}
 \usage{
-ec2_modify_hosts(AutoPlacement, HostIds, HostRecovery)
+ec2_modify_hosts(AutoPlacement, HostIds, HostRecovery, InstanceType,
+  InstanceFamily)
 }
 \arguments{
 \item{AutoPlacement}{Specify whether to enable or disable auto-placement.}
@@ -14,6 +15,24 @@ ec2_modify_hosts(AutoPlacement, HostIds, HostRecovery)
 \item{HostRecovery}{Indicates whether to enable or disable host recovery for the Dedicated
 Host. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html}{Host Recovery}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+
+\item{InstanceType}{Specifies the instance type to be supported by the Dedicated Host.
+Specify this parameter to modify a Dedicated Host to support only a
+specific instance type.
+
+If you want to modify a Dedicated Host to support multiple instance
+types in its current instance family, omit this parameter and specify
+\strong{InstanceFamily} instead. You cannot specify \strong{InstanceType} and
+\strong{InstanceFamily} in the same request.}
+
+\item{InstanceFamily}{Specifies the instance family to be supported by the Dedicated Host.
+Specify this parameter to modify a Dedicated Host to support multiple
+instance types within its current instance family.
+
+If you want to modify a Dedicated Host to support a specific instance
+type only, omit this parameter and specify \strong{InstanceType} instead. You
+cannot specify \strong{InstanceFamily} and \strong{InstanceType} in the same
+request.}
 }
 \description{
 Modify the auto-placement setting of a Dedicated Host. When
@@ -24,13 +43,20 @@ auto-placement is disabled, you need to provide a host ID to have the
 instance launch onto a specific host. If no host ID is provided, the
 instance is launched onto a suitable host with auto-placement enabled.
 }
+\details{
+You can also use this API action to modify a Dedicated Host to support
+either multiple instance types in an instance family, or to support a
+specific instance type only.
+}
 \section{Request syntax}{
 \preformatted{svc$modify_hosts(
   AutoPlacement = "on"|"off",
   HostIds = list(
     "string"
   ),
-  HostRecovery = "on"|"off"
+  HostRecovery = "on"|"off",
+  InstanceType = "string",
+  InstanceFamily = "string"
 )
 }
 }

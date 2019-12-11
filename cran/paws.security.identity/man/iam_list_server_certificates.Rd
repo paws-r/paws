@@ -9,8 +9,8 @@ iam_list_server_certificates(PathPrefix, Marker, MaxItems)
 }
 \arguments{
 \item{PathPrefix}{The path prefix for filtering the results. For example:
-\code{/company/servercerts} would get all server certificates for which the
-path starts with \code{/company/servercerts}.
+\verb{/company/servercerts} would get all server certificates for which the
+path starts with \verb{/company/servercerts}.
 
 This parameter is optional. If it is not included, it defaults to a
 slash (/), listing all server certificates. This parameter allows
@@ -18,7 +18,7 @@ slash (/), listing all server certificates. This parameter allows
 of characters consisting of either a forward slash (/) by itself or a
 string that must begin and end with forward slashes. In addition, it can
 contain any ASCII character from the ! (\code{U+0021}) through the DEL
-character (\code{U+007F}), including most punctuation characters, digits, and
+character (\verb{U+007F}), including most punctuation characters, digits, and
 upper and lowercased letters.}
 
 \item{Marker}{Use this parameter only when paginating results and only after you

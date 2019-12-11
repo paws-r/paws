@@ -48,14 +48,14 @@ required if \code{DataSchemaUri} is specified.
 \item DataRearrangement - A JSON string that represents the splitting and
 rearrangement requirements for the \code{Datasource}.
 
-\
+\\
 
 Sample -
-\code{ "\{\"splitting\":\{\"percentBegin\":10,\"percentEnd\":60\}\}"}
+\verb{ "\\\{\\"splitting\\":\\\{\\"percentBegin\\":10,\\"percentEnd\\":60\\\}\\\}"}
 }}
 
 \item{RoleARN}{[required] The role that Amazon ML assumes on behalf of the user to create and
-activate a data pipeline in the user's account and copy data using the
+activate a data pipeline in the user\'s account and copy data using the
 \code{SelectSqlQuery} query from Amazon RDS to Amazon S3.}
 
 \item{ComputeStatistics}{The compute statistics for a \code{DataSource}. The statistics are generated
@@ -75,7 +75,7 @@ references data that can be used to perform \code{CreateMLModel},
 immediately returns and sets the \code{DataSource} status to \code{PENDING}. After
 the \code{DataSource} is created and ready for use, Amazon ML sets the
 \code{Status} parameter to \code{COMPLETED}. \code{DataSource} in the \code{COMPLETED} or
-\code{PENDING} state can be used only to perform \code{&gt;CreateMLModel}\>,
+\code{PENDING} state can be used only to perform \verb{&gt;CreateMLModel}\\>,
 \code{CreateEvaluation}, or \code{CreateBatchPrediction} operations.
 
 If Amazon ML cannot accept the input source, it sets the \code{Status}

@@ -12,11 +12,11 @@ lambda_remove_permission(FunctionName, StatementId, Qualifier,
 
 \strong{Name formats}
 \itemize{
-\item \strong{Function name} - \code{my-function} (name-only), \code{my-function:v1}
+\item \strong{Function name} - \verb{my-function} (name-only), \verb{my-function:v1}
 (with alias).
 \item \strong{Function ARN} -
-\code{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
-\item \strong{Partial ARN} - \code{123456789012:function:my-function}.
+\verb{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
+\item \strong{Partial ARN} - \verb{123456789012:function:my-function}.
 }
 
 You can append a version number or alias to any of the formats. The
@@ -28,7 +28,7 @@ function name, it is limited to 64 characters in length.}
 \item{Qualifier}{Specify a version or alias to remove permissions from a published
 version of the function.}
 
-\item{RevisionId}{Only update the policy if the revision ID matches the ID that's
+\item{RevisionId}{Only update the policy if the revision ID matches the ID that\'s
 specified. Use this option to avoid modifying a policy that has changed
 since you last read it.}
 }

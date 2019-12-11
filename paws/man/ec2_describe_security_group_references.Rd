@@ -18,7 +18,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 [VPC only] Describes the VPCs on the other side of a VPC peering
-connection that are referencing the security groups you've specified in
+connection that are referencing the security groups you\'ve specified in
 this request.
 }
 \section{Request syntax}{

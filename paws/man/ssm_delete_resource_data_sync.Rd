@@ -4,20 +4,22 @@
 \alias{ssm_delete_resource_data_sync}
 \title{Deletes a Resource Data Sync configuration}
 \usage{
-ssm_delete_resource_data_sync(SyncName)
+ssm_delete_resource_data_sync(SyncName, SyncType)
 }
 \arguments{
 \item{SyncName}{[required] The name of the configuration to delete.}
+
+\item{SyncType}{Specify the type of resource data sync to delete.}
 }
 \description{
 Deletes a Resource Data Sync configuration. After the configuration is
-deleted, changes to inventory data on managed instances are no longer
-synced with the target Amazon S3 bucket. Deleting a sync configuration
-does not delete data in the target Amazon S3 bucket.
+deleted, changes to data on managed instances are no longer synced to or
+from the target. Deleting a sync configuration does not delete data.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_resource_data_sync(
-  SyncName = "string"
+  SyncName = "string",
+  SyncType = "string"
 )
 }
 }

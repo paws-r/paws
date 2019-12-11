@@ -19,7 +19,7 @@ Budgets provide you with a way to see the following information:
 \itemize{
 \item How close your plan is to your budgeted amount or to the free tier
 limits
-\item Your usage-to-date, including how much you've used of your Reserved
+\item Your usage-to-date, including how much you\'ve used of your Reserved
 Instances (RIs)
 \item Your current estimated charges from AWS, and how much your predicted
 usage will accrue in charges by the end of the month

@@ -9,11 +9,11 @@ cloudsearch_delete_index_field(DomainName, IndexFieldName)
 \arguments{
 \item{DomainName}{[required]}
 
-\item{IndexFieldName}{[required] The name of the index field your want to remove from the domain's
+\item{IndexFieldName}{[required] The name of the index field your want to remove from the domain\'s
 indexing options.}
 }
 \description{
-Removes an \code{<a>IndexField</a>} from the search domain. For more
+Removes an \verb{<a>IndexField</a>} from the search domain. For more
 information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html}{Configuring Index Fields}
 in the \emph{Amazon CloudSearch Developer Guide}.
 }

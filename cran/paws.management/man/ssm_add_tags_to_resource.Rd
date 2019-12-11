@@ -11,7 +11,7 @@ ssm_add_tags_to_resource(ResourceType, ResourceId, Tags)
 
 The ManagedInstance type for this API action is for on-premises managed
 instances. You must specify the name of the managed instance in the
-following format: mi-ID\_number. For example, mi-1a2b3c4d5e6f.}
+following format: mi-ID\\_number. For example, mi-1a2b3c4d5e6f.}
 
 \item{ResourceId}{[required] The resource ID you want to tag.
 
@@ -27,9 +27,9 @@ For the Document and Parameter values, use the name of the resource.
 
 The ManagedInstance type for this API action is only for on-premises
 managed instances. You must specify the name of the managed instance in
-the following format: mi-ID\_number. For example, mi-1a2b3c4d5e6f.}
+the following format: mi-ID\\_number. For example, mi-1a2b3c4d5e6f.}
 
-\item{Tags}{[required] One or more tags. The value parameter is required, but if you don't
+\item{Tags}{[required] One or more tags. The value parameter is required, but if you don\'t
 want the tag to have a value, specify the parameter with no value, and
 we set the value to an empty string.
 
@@ -42,8 +42,8 @@ maintenance windows, Parameter Store parameters, and patch baselines.
 Tags enable you to categorize your resources in different ways, for
 example, by purpose, owner, or environment. Each tag consists of a key
 and an optional value, both of which you define. For example, you could
-define a set of tags for your account's managed instances that helps
-you track each instance's owner and stack level. For example: Key=Owner
+define a set of tags for your account\'s managed instances that helps
+you track each instance\'s owner and stack level. For example: Key=Owner
 and Value=DbAdmin, SysAdmin, or Dev. Or Key=Stack and Value=Production,
 Pre-Production, or Test.
 }
@@ -53,7 +53,7 @@ Each resource can have a maximum of 50 tags.
 We recommend that you devise a set of tag keys that meets your needs for
 each resource type. Using a consistent set of tag keys makes it easier
 for you to manage your resources. You can search and filter the
-resources based on the tags you add. Tags don't have any semantic
+resources based on the tags you add. Tags don\'t have any semantic
 meaning to Amazon EC2 and are interpreted strictly as a string of
 characters.
 

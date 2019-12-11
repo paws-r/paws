@@ -40,7 +40,7 @@ want to retrieve.}
 \description{
 Gets recommendations for which reservations to purchase. These
 recommendations could help you reduce your costs. Reservations provide a
-discounted hourly rate (up to 75\%) compared to On-Demand pricing.
+discounted hourly rate (up to 75\\%) compared to On-Demand pricing.
 }
 \details{
 AWS generates your recommendations by identifying your On-Demand usage

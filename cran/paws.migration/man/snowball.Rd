@@ -13,11 +13,12 @@ snowball(config = list())
 AWS Snowball is a petabyte-scale data transport solution that uses
 secure devices to transfer large amounts of data between your
 on-premises data centers and Amazon Simple Storage Service (Amazon S3).
-The commands described here provide access to the same functionality
-that is available in the AWS Snowball Management Console, which enables
-you to create and manage jobs for Snowball and Snowball Edge devices. To
-transfer data locally with a device, you'll need to use the Snowball
-client or the Amazon S3 API adapter for Snowball.
+The Snowball commands described here provide access to the same
+functionality that is available in the AWS Snowball Management Console,
+which enables you to create and manage jobs for Snowball. To transfer
+data locally with a Snowball device, you\'ll need to use the Snowball
+client or the Amazon S3 API adapter for Snowball. For more information,
+see the \href{https://docs.aws.amazon.com/AWSImportExport/latest/ug/api-reference.html}{User Guide}.
 }
 \section{Service syntax}{
 \preformatted{svc <- snowball(
@@ -52,9 +53,10 @@ client or the Amazon S3 API adapter for Snowball.
 \link[=snowball_get_job_manifest]{get_job_manifest} \tab Returns a link to an Amazon S3 presigned URL for the manifest file associated with the specified JobId value \cr
 \link[=snowball_get_job_unlock_code]{get_job_unlock_code} \tab Returns the UnlockCode code value for the specified job \cr
 \link[=snowball_get_snowball_usage]{get_snowball_usage} \tab Returns information about the Snowball service limit for your account, and also the number of Snowballs your account has in use \cr
+\link[=snowball_get_software_updates]{get_software_updates} \tab Returns an Amazon S3 presigned URL for an update file associated with a specified JobId \cr
 \link[=snowball_list_cluster_jobs]{list_cluster_jobs} \tab Returns an array of JobListEntry objects of the specified length \cr
 \link[=snowball_list_clusters]{list_clusters} \tab Returns an array of ClusterListEntry objects of the specified length \cr
-\link[=snowball_list_compatible_images]{list_compatible_images} \tab This action returns a list of the different Amazon EC2 Amazon Machine Images (AMIs) that are owned by your AWS account that would be supported for use on EDGE, EDGE_C, and EDGE_CG devices\cr
+\link[=snowball_list_compatible_images]{list_compatible_images} \tab This action returns a list of the different Amazon EC2 Amazon Machine Images (AMIs) that are owned by your AWS account that would be supported for use on a Snowball Edge device\cr
 \link[=snowball_list_jobs]{list_jobs} \tab Returns an array of JobListEntry objects of the specified length \cr
 \link[=snowball_update_cluster]{update_cluster} \tab While a cluster's ClusterState value is in the AwaitingQuorum state, you can update some of the information associated with a cluster \cr
 \link[=snowball_update_job]{update_job} \tab While a job's JobState value is New, you can update some of the information associated with a job

@@ -30,21 +30,30 @@ NULL
 #'
 #' @examples
 #' \donttest{svc <- kinesisvideo()
-#' svc$create_stream(
+#' svc$create_signaling_channel(
 #'   Foo = 123
 #' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=kinesisvideo_create_signaling_channel]{create_signaling_channel} \tab Creates a signaling channel \cr
 #'  \link[=kinesisvideo_create_stream]{create_stream} \tab Creates a new Kinesis video stream \cr
+#'  \link[=kinesisvideo_delete_signaling_channel]{delete_signaling_channel} \tab Deletes a specified signaling channel \cr
 #'  \link[=kinesisvideo_delete_stream]{delete_stream} \tab Deletes a Kinesis video stream and the data contained in the stream \cr
+#'  \link[=kinesisvideo_describe_signaling_channel]{describe_signaling_channel} \tab Returns the most current information about the signaling channel \cr
 #'  \link[=kinesisvideo_describe_stream]{describe_stream} \tab Returns the most current information about the specified stream \cr
 #'  \link[=kinesisvideo_get_data_endpoint]{get_data_endpoint} \tab Gets an endpoint for a specified stream for either reading or writing \cr
+#'  \link[=kinesisvideo_get_signaling_channel_endpoint]{get_signaling_channel_endpoint} \tab Provides an endpoint for the specified signaling channel to send and receive messages \cr
+#'  \link[=kinesisvideo_list_signaling_channels]{list_signaling_channels} \tab Returns an array of ChannelInfo objects \cr
 #'  \link[=kinesisvideo_list_streams]{list_streams} \tab Returns an array of StreamInfo objects \cr
+#'  \link[=kinesisvideo_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags associated with the specified signaling channel \cr
 #'  \link[=kinesisvideo_list_tags_for_stream]{list_tags_for_stream} \tab Returns a list of tags associated with the specified stream \cr
+#'  \link[=kinesisvideo_tag_resource]{tag_resource} \tab Adds one or more tags to a signaling channel \cr
 #'  \link[=kinesisvideo_tag_stream]{tag_stream} \tab Adds one or more tags to a stream \cr
+#'  \link[=kinesisvideo_untag_resource]{untag_resource} \tab Removes one or more tags from a signaling channel \cr
 #'  \link[=kinesisvideo_untag_stream]{untag_stream} \tab Removes one or more tags from a stream \cr
 #'  \link[=kinesisvideo_update_data_retention]{update_data_retention} \tab Increases or decreases the stream's data retention period by the value that you specify\cr
+#'  \link[=kinesisvideo_update_signaling_channel]{update_signaling_channel} \tab Updates the existing signaling channel \cr
 #'  \link[=kinesisvideo_update_stream]{update_stream} \tab Updates stream metadata, such as the device name and media type 
 #' }
 #'

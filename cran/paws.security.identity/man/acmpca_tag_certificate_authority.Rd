@@ -10,7 +10,7 @@ acmpca_tag_certificate_authority(CertificateAuthorityArn, Tags)
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
 CreateCertificateAuthority. This must be of the form:
 
-\code{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }}
+\verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }}
 
 \item{Tags}{[required] List of tags to be associated with the CA.}
 }

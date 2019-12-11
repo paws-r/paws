@@ -11,8 +11,8 @@ chime_delete_voice_connector(VoiceConnectorId)
 }
 \description{
 Deletes the specified Amazon Chime Voice Connector. Any phone numbers
-assigned to the Amazon Chime Voice Connector must be unassigned from it
-before it can be deleted.
+associated with the Amazon Chime Voice Connector must be disassociated
+from it before it can be deleted.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_voice_connector(

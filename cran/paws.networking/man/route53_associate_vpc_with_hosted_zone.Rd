@@ -10,7 +10,7 @@ route53_associate_vpc_with_hosted_zone(HostedZoneId, VPC, Comment)
 \item{HostedZoneId}{[required] The ID of the private hosted zone that you want to associate an Amazon
 VPC with.
 
-Note that you can't associate a VPC with a hosted zone that doesn't
+Note that you can\'t associate a VPC with a hosted zone that doesn\'t
 have an existing VPC association.}
 
 \item{VPC}{[required] A complex type that contains information about the VPC that you want to
@@ -23,7 +23,7 @@ Associates an Amazon VPC with a private hosted zone.
 }
 \details{
 To perform the association, the VPC and the private hosted zone must
-already exist. You can't convert a public hosted zone into a private
+already exist. You can\'t convert a public hosted zone into a private
 hosted zone.
 
 If you want to associate a VPC that was created by using one AWS account
@@ -37,7 +37,7 @@ request.
 \preformatted{svc$associate_vpc_with_hosted_zone(
   HostedZoneId = "string",
   VPC = list(
-    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
+    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
     VPCId = "string"
   ),
   Comment = "string"

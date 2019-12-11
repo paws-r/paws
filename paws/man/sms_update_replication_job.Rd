@@ -38,7 +38,7 @@ of the following:
 }
 
 If encrypted is \emph{true} but a KMS key id is not specified, the
-customer's default KMS key for EBS is used.}
+customer\'s default KMS key for EBS is used.}
 }
 \description{
 Updates the specified settings for the specified replication job.

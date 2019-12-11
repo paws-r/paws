@@ -12,7 +12,7 @@ lexmodelbuildingservice_get_builtin_slot_types(locale,
 
 \item{signatureContains}{Substring to match in built-in slot type signatures. A slot type will be
 returned if any part of its signature matches the substring. For
-example, "xyz" matches both "xyzabc" and "abcxyz."}
+example, \"xyz\" matches both \"xyzabc\" and \"abcxyz.\"}
 
 \item{nextToken}{A pagination token that fetches the next page of slot types. If the
 response to this API call is truncated, Amazon Lex returns a pagination

@@ -21,7 +21,7 @@ sns_subscribe(TopicArn, Protocol, Endpoint, Attributes,
 \item \code{sqs} -- delivery of JSON-encoded message to an Amazon SQS queue
 \item \code{application} -- delivery of JSON-encoded message to an EndpointArn
 for a mobile app and device.
-\item \code{lambda} -- delivery of JSON-encoded message to an AWS Lambda
+\item \code{lambda} -- delivery of JSON-encoded message to an Amazon Lambda
 function.
 }}
 
@@ -29,9 +29,9 @@ function.
 protocol:
 \itemize{
 \item For the \code{http} protocol, the endpoint is an URL beginning with
-"https://"
+\verb{http://}
 \item For the \code{https} protocol, the endpoint is a URL beginning with
-"https://"
+\verb{https://}
 \item For the \code{email} protocol, the endpoint is an email address
 \item For the \code{email-json} protocol, the endpoint is an email address
 \item For the \code{sms} protocol, the endpoint is a phone number of an
@@ -40,8 +40,8 @@ SMS-enabled device
 queue
 \item For the \code{application} protocol, the endpoint is the EndpointArn of a
 mobile app and device.
-\item For the \code{lambda} protocol, the endpoint is the ARN of an AWS Lambda
-function.
+\item For the \code{lambda} protocol, the endpoint is the ARN of an Amazon
+Lambda function.
 }}
 
 \item{Attributes}{A map of attributes with their corresponding values.
@@ -58,19 +58,27 @@ message published to the topic.
 delivery to Amazon SQS or HTTP/S endpoints. This eliminates the need
 for the endpoints to process JSON formatting, which is otherwise
 created for Amazon SNS metadata.
+\item \code{RedrivePolicy} -- When specified, sends undeliverable messages to
+the specified Amazon SQS dead-letter queue. Messages that can\'t be
+delivered due to client errors (for example, when the subscribed
+endpoint is unreachable) or server errors (for example, when the
+service that powers the subscribed endpoint becomes unavailable) are
+held in the dead-letter queue for further analysis or reprocessing.
 }}
 
 \item{ReturnSubscriptionArn}{Sets whether the response from the \code{Subscribe} request includes the
 subscription ARN, even if the subscription is not yet confirmed.
+\itemize{
+\item If you have the subscription ARN returned, the response includes the
+ARN in all cases, even if the subscription is not yet confirmed.
+\item If you don\'t have the subscription ARN returned, in addition to the
+ARN for confirmed subscriptions, the response also includes the
+\verb{pending subscription} ARN value for subscriptions that aren\'t yet
+confirmed. A subscription becomes confirmed when the subscriber
+calls the \code{ConfirmSubscription} action with a confirmation token.
+}
 
-If you set this parameter to \code{false}, the response includes the ARN for
-confirmed subscriptions, but it includes an ARN value of "pending
-subscription" for subscriptions that are not yet confirmed. A
-subscription becomes confirmed when the subscriber calls the
-\code{ConfirmSubscription} action with a confirmation token.
-
-If you set this parameter to \code{true}, the response includes the ARN in
-all cases, even if the subscription is not yet confirmed.
+If you set this parameter to \code{true}, .
 
 The default value is \code{false}.}
 }

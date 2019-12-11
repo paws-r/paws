@@ -2,21 +2,26 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_get_resource_share_associations}
 \alias{ram_get_resource_share_associations}
-\title{Gets the associations for the specified resource share}
+\title{Gets the resources or principals for the resource shares that you own}
 \usage{
 ram_get_resource_share_associations(associationType, resourceShareArns,
   resourceArn, principal, associationStatus, nextToken, maxResults)
 }
 \arguments{
-\item{associationType}{[required] The association type.}
+\item{associationType}{[required] The association type. Specify \code{PRINCIPAL} to list the principals that
+are associated with the specified resource share. Specify \code{RESOURCE} to
+list the resources that are associated with the specified resource
+share.}
 
 \item{resourceShareArns}{The Amazon Resource Names (ARN) of the resource shares.}
 
-\item{resourceArn}{The Amazon Resource Name (ARN) of the resource.}
+\item{resourceArn}{The Amazon Resource Name (ARN) of the resource. You cannot specify this
+parameter if the association type is \code{PRINCIPAL}.}
 
-\item{principal}{The principal.}
+\item{principal}{The principal. You cannot specify this parameter if the association type
+is \code{RESOURCE}.}
 
-\item{associationStatus}{The status of the association.}
+\item{associationStatus}{The association status.}
 
 \item{nextToken}{The token for the next page of results.}
 
@@ -25,7 +30,7 @@ the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
 \description{
-Gets the associations for the specified resource share.
+Gets the resources or principals for the resource shares that you own.
 }
 \section{Request syntax}{
 \preformatted{svc$get_resource_share_associations(

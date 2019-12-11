@@ -21,10 +21,10 @@ container instance.}
 Specifying a \code{family} limits the results to tasks that belong to that
 family.}
 
-\item{nextToken}{The \code{nextToken} value returned from a previous paginated \code{ListTasks}
-request where \code{maxResults} was used and the results exceeded the value
-of that parameter. Pagination continues from the end of the previous
-results that returned the \code{nextToken} value.
+\item{nextToken}{The \code{nextToken} value returned from a \code{ListTasks} request indicating
+that more results are available to fulfill the request and further calls
+will be needed. If \code{maxResults} was provided, it is possible the number
+of results to be fewer than \code{maxResults}.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic
@@ -56,7 +56,7 @@ that Amazon ECS has set the desired status to \code{RUNNING}.
 
 Although you can filter results based on a desired status of \code{PENDING},
 this does not return any results. Amazon ECS never sets the desired
-status of a task to that value (only a task's \code{lastStatus} may have a
+status of a task to that value (only a task\'s \code{lastStatus} may have a
 value of \code{PENDING}).}
 
 \item{launchType}{The launch type for services to list.}
@@ -93,7 +93,7 @@ stopped tasks appear in the returned results for at least one hour.
 )}
 
 # This example lists the tasks of a specified container instance.
-# Specifying a ``containerInstance`` value limits  the  results  to  tasks
+# Specifying a `containerInstance` value limits  the  results  to  tasks
 #  that belong to that container instance.
 \donttest{svc$list_tasks(
   cluster = "default",

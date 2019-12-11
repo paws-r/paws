@@ -4,10 +4,13 @@
 \alias{lightsail_delete_disk}
 \title{Deletes the specified block storage disk}
 \usage{
-lightsail_delete_disk(diskName)
+lightsail_delete_disk(diskName, forceDeleteAddOns)
 }
 \arguments{
 \item{diskName}{[required] The unique name of the disk you want to delete (e.g., \code{my-disk}).}
+
+\item{forceDeleteAddOns}{A Boolean value to indicate whether to delete the enabled add-ons for
+the disk.}
 }
 \description{
 Deletes the specified block storage disk. The disk must be in the
@@ -16,13 +19,14 @@ Deletes the specified block storage disk. The disk must be in the
 \details{
 The disk may remain in the \code{deleting} state for several minutes.
 
-The \code{delete disk} operation supports tag-based access control via
-resource tags applied to the resource identified by diskName. For more
-information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+The \verb{delete disk} operation supports tag-based access control via
+resource tags applied to the resource identified by \verb{disk name}. For
+more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_disk(
-  diskName = "string"
+  diskName = "string",
+  forceDeleteAddOns = TRUE|FALSE
 )
 }
 }

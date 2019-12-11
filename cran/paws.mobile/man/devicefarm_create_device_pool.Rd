@@ -10,11 +10,11 @@ devicefarm_create_device_pool(projectArn, name, description, rules,
 \arguments{
 \item{projectArn}{[required] The ARN of the project for the device pool.}
 
-\item{name}{[required] The device pool's name.}
+\item{name}{[required] The device pool\'s name.}
 
-\item{description}{The device pool's description.}
+\item{description}{The device pool\'s description.}
 
-\item{rules}{[required] The device pool's rules.}
+\item{rules}{[required] The device pool\'s rules.}
 
 \item{maxDevices}{The number of devices that Device Farm can add to your device pool.
 Device Farm adds devices that are available and that meet the criteria

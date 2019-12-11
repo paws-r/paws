@@ -20,16 +20,16 @@ Multiple filters function as OR criteria in the query. Multiple values
 passed inside the filter function as AND criteria.}
 
 \item{nextToken}{The string that specifies the next page of results. Use this when
-you're paginating results.}
+you\'re paginating results.}
 
 \item{maxResults}{The maximum number of results to return in the response.}
 
-\item{namespaceVersion}{The version of the user's namespace. Defaults to the latest version of
-the user's namespace.}
+\item{namespaceVersion}{The version of the user\'s namespace. Defaults to the latest version of
+the user\'s namespace.}
 }
 \description{
 Searches for entities of the specified type. You can search for entities
-in your namespace and the public namespace that you're tracking.
+in your namespace and the public namespace that you\'re tracking.
 }
 \section{Request syntax}{
 \preformatted{svc$search_entities(

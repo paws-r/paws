@@ -11,7 +11,7 @@ codecommit_update_pull_request_description(pullRequestId, description)
 ListPullRequests.}
 
 \item{description}{[required] The updated content of the description for the pull request. This
-content will replace the existing description.}
+content replaces the existing description.}
 }
 \description{
 Replaces the contents of the description of a pull request.

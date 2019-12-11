@@ -15,17 +15,18 @@ see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.AR
 
 \item{ApplyAction}{[required] The pending maintenance action to apply to this resource.
 
-Valid values: \code{system-update}, \code{db-upgrade}, \code{hardware-maintenance}}
+Valid values: \code{system-update}, \code{db-upgrade}, \code{hardware-maintenance},
+\code{ca-certificate-rotation}}
 
 \item{OptInType}{[required] A value that specifies the type of opt-in request, or undoes an opt-in
-request. An opt-in request of type \code{immediate} can't be undone.
+request. An opt-in request of type \code{immediate} can\'t be undone.
 
 Valid values:
 \itemize{
 \item \code{immediate} - Apply the maintenance action immediately.
 \item \code{next-maintenance} - Apply the maintenance action during the next
 maintenance window for the resource.
-\item \code{undo-opt-in} - Cancel any existing \code{next-maintenance} opt-in
+\item \verb{undo-opt-in} - Cancel any existing \code{next-maintenance} opt-in
 requests.
 }}
 }

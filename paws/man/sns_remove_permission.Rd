@@ -12,7 +12,7 @@ sns_remove_permission(TopicArn, Label)
 \item{Label}{[required] The unique label of the statement you want to remove.}
 }
 \description{
-Removes a statement from a topic's access control policy.
+Removes a statement from a topic\'s access control policy.
 }
 \section{Request syntax}{
 \preformatted{svc$remove_permission(

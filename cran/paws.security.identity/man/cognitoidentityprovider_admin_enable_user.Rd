@@ -15,7 +15,7 @@ cognitoidentityprovider_admin_enable_user(UserPoolId, Username)
 Enables the specified user as an administrator. Works on any user.
 }
 \details{
-Requires developer credentials.
+Calling this action requires developer credentials.
 }
 \section{Request syntax}{
 \preformatted{svc$admin_enable_user(

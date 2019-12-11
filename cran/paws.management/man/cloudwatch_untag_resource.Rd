@@ -7,7 +7,7 @@
 cloudwatch_untag_resource(ResourceARN, TagKeys)
 }
 \arguments{
-\item{ResourceARN}{[required] The ARN of the CloudWatch resource that you're removing tags from. For
+\item{ResourceARN}{[required] The ARN of the CloudWatch resource that you\'re removing tags from. For
 more information on ARN format, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-cloudwatch}{Example ARNs}
 in the \emph{Amazon Web Services General Reference}.}
 

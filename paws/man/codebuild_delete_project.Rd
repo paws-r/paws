@@ -10,7 +10,8 @@ codebuild_delete_project(name)
 \item{name}{[required] The name of the build project.}
 }
 \description{
-Deletes a build project.
+Deletes a build project. When you delete a project, its builds are not
+deleted.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_project(

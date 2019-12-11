@@ -18,7 +18,7 @@ not need to be unique.}
 
 \item{StorageLocation}{Location of the Amazon S3 bucket where a zipped file containing your
 Realtime scripts is stored. The storage location must specify the Amazon
-S3 bucket name, the zip file name (the "key"), and a role ARN that
+S3 bucket name, the zip file name (the \"key\"), and a role ARN that
 allows Amazon GameLift to access the Amazon S3 storage location. The S3
 bucket must be in the same region where you want to create a new script.
 By default, Amazon GameLift uploads the latest version of the zip file;
@@ -30,9 +30,9 @@ file. The zip file can have one or multiple files. Maximum size of a zip
 file is 5 MB.
 
 When using the AWS CLI tool to create a script, this parameter is set to
-the zip file name. It must be prepended with the string "fileb://" to
+the zip file name. It must be prepended with the string \"fileb://\" to
 indicate that the file data is a binary object. For example:
-\code{--zip-file fileb://myRealtimeScript.zip}.}
+\verb{--zip-file fileb://myRealtimeScript.zip}.}
 }
 \description{
 Updates Realtime script metadata and content.

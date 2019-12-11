@@ -8,19 +8,27 @@ s3_put_bucket_request_payment(Bucket, ContentMD5,
   RequestPaymentConfiguration)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The bucket name.}
 
-\item{ContentMD5}{}
+\item{ContentMD5}{\\>The base64-encoded 128-bit MD5 digest of the data. You must use this
+header as a message integrity check to verify that the request body was
+not corrupted in transit. For more information, see \href{http://www.ietf.org/rfc/rfc1864.txt}{RFC 1864}.}
 
-\item{RequestPaymentConfiguration}{[required]}
+\item{RequestPaymentConfiguration}{[required] Container for Payer.}
 }
 \description{
 Sets the request payment configuration for a bucket. By default, the
 bucket owner pays for downloads from the bucket. This configuration
 parameter enables the bucket owner (only) to specify that the person
-requesting the download will be charged for the download. Documentation
-on requester pays buckets can be found at
-http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html
+requesting the download will be charged for the download. For more
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html}{Requester Pays Buckets}.
+}
+\details{
+The following operations are related to \code{PutBucketRequestPayment}:
+\itemize{
+\item CreateBucket
+\item GetBucketRequestPayment
+}
 }
 \section{Request syntax}{
 \preformatted{svc$put_bucket_request_payment(

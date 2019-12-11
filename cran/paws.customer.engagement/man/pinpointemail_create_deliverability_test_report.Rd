@@ -54,6 +54,10 @@ test.
     ),
     Raw = list(
       Data = raw
+    ),
+    Template = list(
+      TemplateArn = "string",
+      TemplateData = "string"
     )
   ),
   Tags = list(

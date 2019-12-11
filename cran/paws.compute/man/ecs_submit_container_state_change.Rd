@@ -5,8 +5,8 @@
 \title{This action is only used by the Amazon ECS agent, and it is not intended
 for use outside of the agent}
 \usage{
-ecs_submit_container_state_change(cluster, task, containerName, status,
-  exitCode, reason, networkBindings)
+ecs_submit_container_state_change(cluster, task, containerName,
+  runtimeId, status, exitCode, reason, networkBindings)
 }
 \arguments{
 \item{cluster}{The short name or full ARN of the cluster that hosts the container.}
@@ -15,6 +15,8 @@ ecs_submit_container_state_change(cluster, task, containerName, status,
 the container.}
 
 \item{containerName}{The name of the container.}
+
+\item{runtimeId}{The ID of the Docker container.}
 
 \item{status}{The status of the state change request.}
 
@@ -36,6 +38,7 @@ Sent to acknowledge that a container changed states.
   cluster = "string",
   task = "string",
   containerName = "string",
+  runtimeId = "string",
   status = "string",
   exitCode = 123,
   reason = "string",

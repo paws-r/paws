@@ -10,7 +10,7 @@ apigatewayv2_update_model(ApiId, ContentType, Description, ModelId,
 \arguments{
 \item{ApiId}{[required] The API identifier.}
 
-\item{ContentType}{The content-type for the model, for example, "application/json".}
+\item{ContentType}{The content-type for the model, for example, \"application/json\".}
 
 \item{Description}{The description of the model.}
 

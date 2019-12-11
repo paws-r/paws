@@ -30,12 +30,12 @@ they are performed. Note the following requirements:
 see \href{http://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html}{Create a Bucket}
 in the \emph{Amazon S3 Getting Started Guide}.
 \item Your S3 source bucket must be version enabled.
-\item You must create an S3 destination bucket. AWS Signer uses your S3
+\item You must create an S3 destination bucket. Code signing uses your S3
 destination bucket to write your signed code.
 \item You specify the name of the source and destination buckets when
 calling the \code{StartSigningJob} operation.
 \item You must also specify a request token that identifies your request
-to AWS Signer.
+to code signing.
 }
 
 You can call the DescribeSigningJob and the ListSigningJobs actions

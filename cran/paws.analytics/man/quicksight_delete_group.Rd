@@ -17,14 +17,6 @@ ID for the AWS account that contains your Amazon QuickSight account.}
 \description{
 Removes a user group from Amazon QuickSight.
 }
-\details{
-The permissions resource is
-\code{arn:aws:quicksight:us-east-1:<i>&lt;aws-account-id&gt;</i>:group/default/<i>&lt;group-name&gt;</i> }.
-
-\strong{CLI Sample:}
-
-\code{aws quicksight delete-group -\\-aws-account-id=111122223333 -\\-namespace=default -\\-group-name=Sales-Management }
-}
 \section{Request syntax}{
 \preformatted{svc$delete_group(
   GroupName = "string",

@@ -2,19 +2,21 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_set_user_settings}
 \alias{cognitoidentityprovider_set_user_settings}
-\title{Sets the user settings like multi-factor authentication (MFA)}
+\title{_This action is no longer supported}
 \usage{
 cognitoidentityprovider_set_user_settings(AccessToken, MFAOptions)
 }
 \arguments{
 \item{AccessToken}{[required] The access token for the set user settings request.}
 
-\item{MFAOptions}{[required] Specifies the options for MFA (e.g., email or phone number).}
+\item{MFAOptions}{[required] You can use this parameter only to set an SMS configuration that uses
+SMS for delivery.}
 }
 \description{
-Sets the user settings like multi-factor authentication (MFA). If MFA is
-to be removed for a particular attribute pass the attribute with code
-delivery as null. If null list is passed, all MFA options are removed.
+\emph{This action is no longer supported.} You can use it to configure only
+SMS MFA. You can\'t use it to configure TOTP software token MFA. To
+configure either type of MFA, use the SetUserMFAPreference action
+instead.
 }
 \section{Request syntax}{
 \preformatted{svc$set_user_settings(

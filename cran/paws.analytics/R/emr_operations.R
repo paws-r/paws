@@ -334,12 +334,14 @@ emr_add_tags <- function(ResourceId, Tags) {
 #' cancel steps that are in a `PENDING` state.
 #'
 #' @usage
-#' emr_cancel_steps(ClusterId, StepIds)
+#' emr_cancel_steps(ClusterId, StepIds, StepCancellationOption)
 #'
-#' @param ClusterId The `ClusterID` for which specified steps will be canceled. Use
+#' @param ClusterId &#91;required&#93; The `ClusterID` for which specified steps will be canceled. Use
 #' RunJobFlow and ListClusters to get ClusterIDs.
-#' @param StepIds The list of `StepIDs` to cancel. Use ListSteps to get steps and their
+#' @param StepIds &#91;required&#93; The list of `StepIDs` to cancel. Use ListSteps to get steps and their
 #' states for the specified cluster.
+#' @param StepCancellationOption The option to choose for cancelling `RUNNING` steps. By default, the
+#' value is `SEND_INTERRUPT`.
 #'
 #' @section Request syntax:
 #' ```
@@ -347,21 +349,22 @@ emr_add_tags <- function(ResourceId, Tags) {
 #'   ClusterId = "string",
 #'   StepIds = list(
 #'     "string"
-#'   )
+#'   ),
+#'   StepCancellationOption = "SEND_INTERRUPT"|"TERMINATE_PROCESS"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname emr_cancel_steps
-emr_cancel_steps <- function(ClusterId = NULL, StepIds = NULL) {
+emr_cancel_steps <- function(ClusterId, StepIds, StepCancellationOption = NULL) {
   op <- new_operation(
     name = "CancelSteps",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .emr$cancel_steps_input(ClusterId = ClusterId, StepIds = StepIds)
+  input <- .emr$cancel_steps_input(ClusterId = ClusterId, StepIds = StepIds, StepCancellationOption = StepCancellationOption)
   output <- .emr$cancel_steps_output()
   config <- get_config()
   svc <- .emr$service(config)
@@ -634,6 +637,43 @@ emr_describe_step <- function(ClusterId, StepId) {
 }
 .emr$operations$describe_step <- emr_describe_step
 
+#' Returns the Amazon EMR block public access configuration for your AWS
+#' account in the current Region
+#'
+#' Returns the Amazon EMR block public access configuration for your AWS
+#' account in the current Region. For more information see [Configure Block
+#' Public Access for Amazon
+#' EMR](https://docs.aws.amazon.com/emr/latest/ManagementGuide/configure-block-public-access.html)
+#' in the *Amazon EMR Management Guide*.
+#'
+#' @usage
+#' emr_get_block_public_access_configuration()
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_block_public_access_configuration()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emr_get_block_public_access_configuration
+emr_get_block_public_access_configuration <- function() {
+  op <- new_operation(
+    name = "GetBlockPublicAccessConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .emr$get_block_public_access_configuration_input()
+  output <- .emr$get_block_public_access_configuration_output()
+  config <- get_config()
+  svc <- .emr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$get_block_public_access_configuration <- emr_get_block_public_access_configuration
+
 #' Provides information about the bootstrap actions associated with a
 #' cluster
 #'
@@ -905,10 +945,11 @@ emr_list_security_configurations <- function(Marker = NULL) {
 .emr$operations$list_security_configurations <- emr_list_security_configurations
 
 #' Provides a list of steps for the cluster in reverse order unless you
-#' specify stepIds with the request
+#' specify stepIds with the request of filter by StepStates
 #'
 #' Provides a list of steps for the cluster in reverse order unless you
-#' specify stepIds with the request.
+#' specify `stepIds` with the request of filter by `StepStates`. You can
+#' specify a maximum of ten `stepIDs`.
 #'
 #' @usage
 #' emr_list_steps(ClusterId, StepStates, StepIds, Marker)
@@ -916,6 +957,8 @@ emr_list_security_configurations <- function(Marker = NULL) {
 #' @param ClusterId &#91;required&#93; The identifier of the cluster for which to list the steps.
 #' @param StepStates The filter to limit the step list based on certain states.
 #' @param StepIds The filter to limit the step list based on the identifier of the steps.
+#' You can specify a maximum of ten Step IDs. The character constraint
+#' applies to the overall length of the array.
 #' @param Marker The pagination token that indicates the next set of results to retrieve.
 #'
 #' @section Request syntax:
@@ -951,6 +994,47 @@ emr_list_steps <- function(ClusterId, StepStates = NULL, StepIds = NULL, Marker 
   return(response)
 }
 .emr$operations$list_steps <- emr_list_steps
+
+#' Modifies the number of steps that can be executed concurrently for the
+#' cluster specified using ClusterID
+#'
+#' Modifies the number of steps that can be executed concurrently for the
+#' cluster specified using ClusterID.
+#'
+#' @usage
+#' emr_modify_cluster(ClusterId, StepConcurrencyLevel)
+#'
+#' @param ClusterId &#91;required&#93; The unique identifier of the cluster.
+#' @param StepConcurrencyLevel The number of steps that can be executed concurrently. You can specify a
+#' maximum of 256 steps.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_cluster(
+#'   ClusterId = "string",
+#'   StepConcurrencyLevel = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emr_modify_cluster
+emr_modify_cluster <- function(ClusterId, StepConcurrencyLevel = NULL) {
+  op <- new_operation(
+    name = "ModifyCluster",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .emr$modify_cluster_input(ClusterId = ClusterId, StepConcurrencyLevel = StepConcurrencyLevel)
+  output <- .emr$modify_cluster_output()
+  config <- get_config()
+  svc <- .emr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$modify_cluster <- emr_modify_cluster
 
 #' Modifies the target On-Demand and target Spot capacities for the
 #' instance fleet with the specified InstanceFleetID within the cluster
@@ -1156,6 +1240,66 @@ emr_put_auto_scaling_policy <- function(ClusterId, InstanceGroupId, AutoScalingP
 }
 .emr$operations$put_auto_scaling_policy <- emr_put_auto_scaling_policy
 
+#' Creates or updates an Amazon EMR block public access configuration for
+#' your AWS account in the current Region
+#'
+#' Creates or updates an Amazon EMR block public access configuration for
+#' your AWS account in the current Region. For more information see
+#' [Configure Block Public Access for Amazon
+#' EMR](https://docs.aws.amazon.com/emr/latest/ManagementGuide/configure-block-public-access.html)
+#' in the *Amazon EMR Management Guide*.
+#'
+#' @usage
+#' emr_put_block_public_access_configuration(
+#'   BlockPublicAccessConfiguration)
+#'
+#' @param BlockPublicAccessConfiguration &#91;required&#93; A configuration for Amazon EMR block public access. The configuration
+#' applies to all clusters created in your account for the current Region.
+#' The configuration specifies whether block public access is enabled. If
+#' block public access is enabled, security groups associated with the
+#' cluster cannot have rules that allow inbound traffic from 0.0.0.0/0 or
+#' ::/0 on a port, unless the port is specified as an exception using
+#' `PermittedPublicSecurityGroupRuleRanges` in the
+#' `BlockPublicAccessConfiguration`. By default, Port 22 (SSH) is an
+#' exception, and public access is allowed on this port. You can change
+#' this by updating `BlockPublicSecurityGroupRules` to remove the
+#' exception.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_block_public_access_configuration(
+#'   BlockPublicAccessConfiguration = list(
+#'     BlockPublicSecurityGroupRules = TRUE|FALSE,
+#'     PermittedPublicSecurityGroupRuleRanges = list(
+#'       list(
+#'         MinRange = 123,
+#'         MaxRange = 123
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emr_put_block_public_access_configuration
+emr_put_block_public_access_configuration <- function(BlockPublicAccessConfiguration) {
+  op <- new_operation(
+    name = "PutBlockPublicAccessConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .emr$put_block_public_access_configuration_input(BlockPublicAccessConfiguration = BlockPublicAccessConfiguration)
+  output <- .emr$put_block_public_access_configuration_output()
+  config <- get_config()
+  svc <- .emr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$put_block_public_access_configuration <- emr_put_block_public_access_configuration
+
 #' Removes an automatic scaling policy from a specified instance group
 #' within an EMR cluster
 #'
@@ -1286,7 +1430,7 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'   NewSupportedProducts, Applications, Configurations, VisibleToAllUsers,
 #'   JobFlowRole, ServiceRole, Tags, SecurityConfiguration, AutoScalingRole,
 #'   ScaleDownBehavior, CustomAmiId, EbsRootVolumeSize, RepoUpgradeOnBoot,
-#'   KerberosAttributes)
+#'   KerberosAttributes, StepConcurrencyLevel)
 #'
 #' @param Name &#91;required&#93; The name of the job flow.
 #' @param LogUri The location in Amazon S3 to write the log files of the job flow. If a
@@ -1298,11 +1442,11 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' @param ReleaseLabel The Amazon EMR release label, which determines the version of
 #' open-source application packages installed on the cluster. Release
 #' labels are in the form `emr-x.x.x`, where x.x.x is an Amazon EMR release
-#' version, for example, `emr-5.14.0`. For more information about Amazon
-#' EMR release versions and included application versions and features, see
+#' version such as `emr-5.14.0`. For more information about Amazon EMR
+#' release versions and included application versions and features, see
 #' <https://docs.aws.amazon.com/emr/latest/ReleaseGuide/>. The release
-#' label applies only to Amazon EMR releases versions 4.x and later.
-#' Earlier versions use `AmiVersion`.
+#' label applies only to Amazon EMR releases version 4.0 and later. Earlier
+#' versions use `AmiVersion`.
 #' @param Instances &#91;required&#93; A specification of the number and type of Amazon EC2 instances.
 #' @param Steps A list of steps to run.
 #' @param BootstrapActions A list of bootstrap actions to run before Hadoop starts on the cluster
@@ -1355,11 +1499,10 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' Guide](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/).
 #' @param Configurations For Amazon EMR releases 4.0 and later. The list of configurations
 #' supplied for the EMR cluster you are creating.
-#' @param VisibleToAllUsers Whether the cluster is visible to all IAM users of the AWS account
-#' associated with the cluster. If this value is set to `true`, all IAM
-#' users of that AWS account can view and (if they have the proper policy
-#' permissions set) manage the cluster. If it is set to `false`, only the
-#' IAM user that created the cluster can view and manage it.
+#' @param VisibleToAllUsers A value of `true` indicates that all IAM users in the AWS account can
+#' perform cluster actions if they have the proper IAM policy permissions.
+#' This is the default. A value of `false` indicates that only the IAM user
+#' who created the cluster can perform actions.
 #' @param JobFlowRole Also called instance profile and EC2 role. An IAM role for an EMR
 #' cluster. The EC2 instances of the cluster assume this role. The default
 #' role is `EMR_EC2_DefaultRole`. In order to use the default role, you
@@ -1416,6 +1559,8 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' Kerberos
 #' Authentication](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html)
 #' in the *EMR Management Guide*.
+#' @param StepConcurrencyLevel Specifies the number of steps that can be executed concurrently. The
+#' default value is `1`. The maximum value is `256`.
 #'
 #' @section Request syntax:
 #' ```
@@ -1651,21 +1796,22 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'     CrossRealmTrustPrincipalPassword = "string",
 #'     ADDomainJoinUser = "string",
 #'     ADDomainJoinPassword = "string"
-#'   )
+#'   ),
+#'   StepConcurrencyLevel = 123
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname emr_run_job_flow
-emr_run_job_flow <- function(Name, LogUri = NULL, AdditionalInfo = NULL, AmiVersion = NULL, ReleaseLabel = NULL, Instances, Steps = NULL, BootstrapActions = NULL, SupportedProducts = NULL, NewSupportedProducts = NULL, Applications = NULL, Configurations = NULL, VisibleToAllUsers = NULL, JobFlowRole = NULL, ServiceRole = NULL, Tags = NULL, SecurityConfiguration = NULL, AutoScalingRole = NULL, ScaleDownBehavior = NULL, CustomAmiId = NULL, EbsRootVolumeSize = NULL, RepoUpgradeOnBoot = NULL, KerberosAttributes = NULL) {
+emr_run_job_flow <- function(Name, LogUri = NULL, AdditionalInfo = NULL, AmiVersion = NULL, ReleaseLabel = NULL, Instances, Steps = NULL, BootstrapActions = NULL, SupportedProducts = NULL, NewSupportedProducts = NULL, Applications = NULL, Configurations = NULL, VisibleToAllUsers = NULL, JobFlowRole = NULL, ServiceRole = NULL, Tags = NULL, SecurityConfiguration = NULL, AutoScalingRole = NULL, ScaleDownBehavior = NULL, CustomAmiId = NULL, EbsRootVolumeSize = NULL, RepoUpgradeOnBoot = NULL, KerberosAttributes = NULL, StepConcurrencyLevel = NULL) {
   op <- new_operation(
     name = "RunJobFlow",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .emr$run_job_flow_input(Name = Name, LogUri = LogUri, AdditionalInfo = AdditionalInfo, AmiVersion = AmiVersion, ReleaseLabel = ReleaseLabel, Instances = Instances, Steps = Steps, BootstrapActions = BootstrapActions, SupportedProducts = SupportedProducts, NewSupportedProducts = NewSupportedProducts, Applications = Applications, Configurations = Configurations, VisibleToAllUsers = VisibleToAllUsers, JobFlowRole = JobFlowRole, ServiceRole = ServiceRole, Tags = Tags, SecurityConfiguration = SecurityConfiguration, AutoScalingRole = AutoScalingRole, ScaleDownBehavior = ScaleDownBehavior, CustomAmiId = CustomAmiId, EbsRootVolumeSize = EbsRootVolumeSize, RepoUpgradeOnBoot = RepoUpgradeOnBoot, KerberosAttributes = KerberosAttributes)
+  input <- .emr$run_job_flow_input(Name = Name, LogUri = LogUri, AdditionalInfo = AdditionalInfo, AmiVersion = AmiVersion, ReleaseLabel = ReleaseLabel, Instances = Instances, Steps = Steps, BootstrapActions = BootstrapActions, SupportedProducts = SupportedProducts, NewSupportedProducts = NewSupportedProducts, Applications = Applications, Configurations = Configurations, VisibleToAllUsers = VisibleToAllUsers, JobFlowRole = JobFlowRole, ServiceRole = ServiceRole, Tags = Tags, SecurityConfiguration = SecurityConfiguration, AutoScalingRole = AutoScalingRole, ScaleDownBehavior = ScaleDownBehavior, CustomAmiId = CustomAmiId, EbsRootVolumeSize = EbsRootVolumeSize, RepoUpgradeOnBoot = RepoUpgradeOnBoot, KerberosAttributes = KerberosAttributes, StepConcurrencyLevel = StepConcurrencyLevel)
   output <- .emr$run_job_flow_output()
   config <- get_config()
   svc <- .emr$service(config)
@@ -1740,25 +1886,29 @@ emr_set_termination_protection <- function(JobFlowIds, TerminationProtected) {
 }
 .emr$operations$set_termination_protection <- emr_set_termination_protection
 
-#' Sets whether all AWS Identity and Access Management (IAM) users under
-#' your account can access the specified clusters (job flows)
+#' Sets the Cluster$VisibleToAllUsers value, which determines whether the
+#' cluster is visible to all IAM users of the AWS account associated with
+#' the cluster
 #'
-#' Sets whether all AWS Identity and Access Management (IAM) users under
-#' your account can access the specified clusters (job flows). This action
-#' works on running clusters. You can also set the visibility of a cluster
-#' when you launch it using the `VisibleToAllUsers` parameter of
-#' RunJobFlow. The SetVisibleToAllUsers action can be called only by an IAM
-#' user who created the cluster or the AWS account that owns the cluster.
+#' Sets the Cluster\\$VisibleToAllUsers value, which determines whether the
+#' cluster is visible to all IAM users of the AWS account associated with
+#' the cluster. Only the IAM user who created the cluster or the AWS
+#' account root user can call this action. The default value, `true`,
+#' indicates that all IAM users in the AWS account can perform cluster
+#' actions if they have the proper IAM policy permissions. If set to
+#' `false`, only the IAM user that created the cluster can perform actions.
+#' This action works on running clusters. You can override the default
+#' `true` setting when you create a cluster by using the
+#' `VisibleToAllUsers` parameter with `RunJobFlow`.
 #'
 #' @usage
 #' emr_set_visible_to_all_users(JobFlowIds, VisibleToAllUsers)
 #'
-#' @param JobFlowIds &#91;required&#93; Identifiers of the job flows to receive the new visibility setting.
-#' @param VisibleToAllUsers &#91;required&#93; Whether the specified clusters are visible to all IAM users of the AWS
-#' account associated with the cluster. If this value is set to True, all
-#' IAM users of that AWS account can view and, if they have the proper IAM
-#' policy permissions set, manage the clusters. If it is set to False, only
-#' the IAM user that created a cluster can view and manage it.
+#' @param JobFlowIds &#91;required&#93; The unique identifier of the job flow (cluster).
+#' @param VisibleToAllUsers &#91;required&#93; A value of `true` indicates that all IAM users in the AWS account can
+#' perform cluster actions if they have the proper IAM policy permissions.
+#' This is the default. A value of `false` indicates that only the IAM user
+#' who created the cluster can perform actions.
 #'
 #' @section Request syntax:
 #' ```

@@ -21,6 +21,9 @@ start your application.
 \preformatted{svc$start_application(
   ApplicationName = "string",
   RunConfiguration = list(
+    FlinkRunConfiguration = list(
+      AllowNonRestoredState = TRUE|FALSE
+    ),
     SqlRunConfigurations = list(
       list(
         InputId = "string",

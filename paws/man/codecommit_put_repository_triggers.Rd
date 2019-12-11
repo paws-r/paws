@@ -13,8 +13,8 @@ trigger.}
 \item{triggers}{[required] The JSON block of configuration information for each trigger.}
 }
 \description{
-Replaces all triggers for a repository. This can be used to create or
-delete triggers.
+Replaces all triggers for a repository. Used to create or delete
+triggers.
 }
 \section{Request syntax}{
 \preformatted{svc$put_repository_triggers(

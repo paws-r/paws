@@ -14,45 +14,45 @@ opsworks_update_stack(StackId, Name, Attributes, ServiceRoleArn,
 \arguments{
 \item{StackId}{[required] The stack ID.}
 
-\item{Name}{The stack's new name.}
+\item{Name}{The stack\'s new name.}
 
 \item{Attributes}{One or more user-defined key-value pairs to be added to the stack
 attributes.}
 
-\item{ServiceRoleArn}{Do not use this parameter. You cannot update a stack's service role.}
+\item{ServiceRoleArn}{Do not use this parameter. You cannot update a stack\'s service role.}
 
 \item{DefaultInstanceProfileArn}{The ARN of an IAM profile that is the default profile for all of the
-stack's EC2 instances. For more information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
+stack\'s EC2 instances. For more information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
 
-\item{DefaultOs}{The stack's operating system, which must be set to one of the
+\item{DefaultOs}{The stack\'s operating system, which must be set to one of the
 following:
 \itemize{
 \item A supported Linux operating system: An Amazon Linux version, such as
-\code{Amazon Linux 2018.03}, \code{Amazon Linux 2017.09},
-\code{Amazon Linux 2017.03}, \code{Amazon Linux 2016.09},
-\code{Amazon Linux 2016.03}, \code{Amazon Linux 2015.09}, or
-\code{Amazon Linux 2015.03}.
-\item A supported Ubuntu operating system, such as \code{Ubuntu 16.04 LTS},
-\code{Ubuntu 14.04 LTS}, or \code{Ubuntu 12.04 LTS}.
-\item \code{CentOS Linux 7}
-\item \code{Red Hat Enterprise Linux 7}
+\verb{Amazon Linux 2018.03}, \verb{Amazon Linux 2017.09},
+\verb{Amazon Linux 2017.03}, \verb{Amazon Linux 2016.09},
+\verb{Amazon Linux 2016.03}, \verb{Amazon Linux 2015.09}, or
+\verb{Amazon Linux 2015.03}.
+\item A supported Ubuntu operating system, such as \verb{Ubuntu 16.04 LTS},
+\verb{Ubuntu 14.04 LTS}, or \verb{Ubuntu 12.04 LTS}.
+\item \verb{CentOS Linux 7}
+\item \verb{Red Hat Enterprise Linux 7}
 \item A supported Windows operating system, such as
-\code{Microsoft Windows Server 2012 R2 Base},
-\code{Microsoft Windows Server 2012 R2 with SQL Server Express},
-\code{Microsoft Windows Server 2012 R2 with SQL Server Standard}, or
-\code{Microsoft Windows Server 2012 R2 with SQL Server Web}.
+\verb{Microsoft Windows Server 2012 R2 Base},
+\verb{Microsoft Windows Server 2012 R2 with SQL Server Express},
+\verb{Microsoft Windows Server 2012 R2 with SQL Server Standard}, or
+\verb{Microsoft Windows Server 2012 R2 with SQL Server Web}.
 \item A custom AMI: \code{Custom}. You specify the custom AMI you want to use
 when you create instances. For more information about how to use
 custom AMIs with OpsWorks, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html}{Using Custom AMIs}.
 }
 
-The default option is the stack's current operating system. For more
+The default option is the stack\'s current operating system. For more
 information about supported operating systems, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{AWS OpsWorks Stacks Operating Systems}.}
 
-\item{HostnameTheme}{The stack's new host name theme, with spaces replaced by underscores.
-The theme is used to generate host names for the stack's instances. By
+\item{HostnameTheme}{The stack\'s new host name theme, with spaces replaced by underscores.
+The theme is used to generate host names for the stack\'s instances. By
 default, \code{HostnameTheme} is set to \code{Layer_Dependent}, which creates host
-names by appending integers to the layer's short name. The other themes
+names by appending integers to the layer\'s short name. The other themes
 are:
 \itemize{
 \item \code{Baked_Goods}
@@ -71,12 +71,12 @@ are:
 To obtain a generated host name, call \code{GetHostNameSuggestion}, which
 returns a host name based on the current theme.}
 
-\item{DefaultAvailabilityZone}{The stack's default Availability Zone, which must be in the stack's
+\item{DefaultAvailabilityZone}{The stack\'s default Availability Zone, which must be in the stack\'s
 region. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html}{Regions and Endpoints}. If
 you also specify a value for \code{DefaultSubnetId}, the subnet must be in
 the same zone. For more information, see CreateStack.}
 
-\item{DefaultSubnetId}{The stack's default VPC subnet ID. This parameter is required if you
+\item{DefaultSubnetId}{The stack\'s default VPC subnet ID. This parameter is required if you
 specify a value for the \code{VpcId} parameter. All instances are launched
 into this subnet unless you specify otherwise when you create the
 instance. If you also specify a value for \code{DefaultAvailabilityZone}, the
@@ -87,7 +87,7 @@ this parameter is required, see the \code{VpcId} parameter description.}
 override the corresponding default stack configuration JSON values or to
 pass data to recipes. The string should be in the following format:
 
-\code{"\{\"key1\": \"value1\", \"key2\": \"value2\",...\}"}
+\verb{"\\\{\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\",...\\\}"}
 
 For more information about custom JSON, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html}{Use Custom JSON to Modify the Stack Configuration Attributes}.}
 
@@ -119,7 +119,7 @@ instances in the stack, but you can override it when you create an
 instance. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device}{Storage for the Root Device}.}
 
 \item{UseOpsworksSecurityGroups}{Whether to associate the AWS OpsWorks Stacks built-in security groups
-with the stack's layers.
+with the stack\'s layers.
 
 AWS OpsWorks Stacks provides a standard set of built-in security groups,
 one for each layer, which are associated with layers by default.
@@ -145,12 +145,12 @@ For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/user
 options:
 \itemize{
 \item Auto-update - Set this parameter to \code{LATEST}. AWS OpsWorks Stacks
-automatically installs new agent versions on the stack's instances
+automatically installs new agent versions on the stack\'s instances
 as soon as they are available.
 \item Fixed version - Set this parameter to your preferred agent version.
 To update the agent version, you must edit the stack configuration
 and specify a new version. AWS OpsWorks Stacks then automatically
-installs that version on the stack's instances.
+installs that version on the stack\'s instances.
 }
 
 The default setting is \code{LATEST}. To specify an agent version, you must
@@ -159,7 +159,7 @@ console. For a list of available agent version numbers, call
 DescribeAgentVersions. AgentVersion cannot be set to Chef 12.2.
 
 You can also specify an agent version when you create or update an
-instance, which overrides the stack's default setting.}
+instance, which overrides the stack\'s default setting.}
 }
 \description{
 Updates a specified stack.

@@ -364,6 +364,68 @@ kinesisanalyticsv2_add_application_reference_data_source <- function(Application
 }
 .kinesisanalyticsv2$operations$add_application_reference_data_source <- kinesisanalyticsv2_add_application_reference_data_source
 
+#' Adds a Virtual Private Cloud (VPC) configuration to the application
+#'
+#' Adds a Virtual Private Cloud (VPC) configuration to the application.
+#' Applications can use VPCs to store and access resources securely.
+#' 
+#' Note the following about VPC configurations for Kinesis Data Analytics
+#' applications:
+#' 
+#' -   VPC configurations are not supported for SQL applications.
+#' 
+#' -   When a VPC is added to a Kinesis Data Analytics application, the
+#'     application can no longer be accessed from the Internet directly. To
+#'     enable Internet access to the application, add an Internet gateway
+#'     to your VPC.
+#'
+#' @usage
+#' kinesisanalyticsv2_add_application_vpc_configuration(ApplicationName,
+#'   CurrentApplicationVersionId, VpcConfiguration)
+#'
+#' @param ApplicationName &#91;required&#93; The name of an existing application.
+#' @param CurrentApplicationVersionId &#91;required&#93; The version of the application to which you want to add the input
+#' processing configuration. You can use the DescribeApplication operation
+#' to get the current application version. If the version specified is not
+#' the current version, the `ConcurrentModificationException` is returned.
+#' @param VpcConfiguration &#91;required&#93; Description of the VPC to add to the application.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$add_application_vpc_configuration(
+#'   ApplicationName = "string",
+#'   CurrentApplicationVersionId = 123,
+#'   VpcConfiguration = list(
+#'     SubnetIds = list(
+#'       "string"
+#'     ),
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisanalyticsv2_add_application_vpc_configuration
+kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName, CurrentApplicationVersionId, VpcConfiguration) {
+  op <- new_operation(
+    name = "AddApplicationVpcConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kinesisanalyticsv2$add_application_vpc_configuration_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, VpcConfiguration = VpcConfiguration)
+  output <- .kinesisanalyticsv2$add_application_vpc_configuration_output()
+  config <- get_config()
+  svc <- .kinesisanalyticsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisanalyticsv2$operations$add_application_vpc_configuration <- kinesisanalyticsv2_add_application_vpc_configuration
+
 #' Creates an Amazon Kinesis Data Analytics application
 #'
 #' Creates an Amazon Kinesis Data Analytics application. For information
@@ -388,9 +450,7 @@ kinesisanalyticsv2_add_application_reference_data_source <- function(Application
 #' key-value pair that identifies an application. Note that the maximum
 #' number of application tags includes system tags. The maximum number of
 #' user-defined application tags is 50. For more information, see [Using
-#' Cost Allocation
-#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
-#' in the *AWS Billing and Cost Management Guide*.
+#' Tagging](https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -534,6 +594,16 @@ kinesisanalyticsv2_add_application_reference_data_source <- function(Application
 #'     ),
 #'     ApplicationSnapshotConfiguration = list(
 #'       SnapshotsEnabled = TRUE|FALSE
+#'     ),
+#'     VpcConfigurations = list(
+#'       list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   CloudWatchLoggingOptions = list(
@@ -890,6 +960,48 @@ kinesisanalyticsv2_delete_application_snapshot <- function(ApplicationName, Snap
 }
 .kinesisanalyticsv2$operations$delete_application_snapshot <- kinesisanalyticsv2_delete_application_snapshot
 
+#' Removes a VPC configuration from a Kinesis Data Analytics application
+#'
+#' Removes a VPC configuration from a Kinesis Data Analytics application.
+#'
+#' @usage
+#' kinesisanalyticsv2_delete_application_vpc_configuration(ApplicationName,
+#'   CurrentApplicationVersionId, VpcConfigurationId)
+#'
+#' @param ApplicationName &#91;required&#93; The name of an existing application.
+#' @param CurrentApplicationVersionId &#91;required&#93; The current application version ID. You can retrieve the application
+#' version ID using DescribeApplication.
+#' @param VpcConfigurationId &#91;required&#93; The ID of the VPC configuration to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_application_vpc_configuration(
+#'   ApplicationName = "string",
+#'   CurrentApplicationVersionId = 123,
+#'   VpcConfigurationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisanalyticsv2_delete_application_vpc_configuration
+kinesisanalyticsv2_delete_application_vpc_configuration <- function(ApplicationName, CurrentApplicationVersionId, VpcConfigurationId) {
+  op <- new_operation(
+    name = "DeleteApplicationVpcConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kinesisanalyticsv2$delete_application_vpc_configuration_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, VpcConfigurationId = VpcConfigurationId)
+  output <- .kinesisanalyticsv2$delete_application_vpc_configuration_output()
+  config <- get_config()
+  svc <- .kinesisanalyticsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisanalyticsv2$operations$delete_application_vpc_configuration <- kinesisanalyticsv2_delete_application_vpc_configuration
+
 #' Returns information about a specific Amazon Kinesis Data Analytics
 #' application
 #'
@@ -1139,7 +1251,9 @@ kinesisanalyticsv2_list_applications <- function(Limit = NULL, NextToken = NULL)
 
 #' Retrieves the list of key-value tags assigned to the application
 #'
-#' Retrieves the list of key-value tags assigned to the application.
+#' Retrieves the list of key-value tags assigned to the application. For
+#' more information, see [Using
+#' Tagging](https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
 #'
 #' @usage
 #' kinesisanalyticsv2_list_tags_for_resource(ResourceARN)
@@ -1191,6 +1305,9 @@ kinesisanalyticsv2_list_tags_for_resource <- function(ResourceARN) {
 #' svc$start_application(
 #'   ApplicationName = "string",
 #'   RunConfiguration = list(
+#'     FlinkRunConfiguration = list(
+#'       AllowNonRestoredState = TRUE|FALSE
+#'     ),
 #'     SqlRunConfigurations = list(
 #'       list(
 #'         InputId = "string",
@@ -1269,7 +1386,9 @@ kinesisanalyticsv2_stop_application <- function(ApplicationName) {
 #'
 #' Adds one or more key-value tags to a Kinesis Analytics application. Note
 #' that the maximum number of application tags includes system tags. The
-#' maximum number of user-defined application tags is 50.
+#' maximum number of user-defined application tags is 50. For more
+#' information, see [Using
+#' Tagging](https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
 #'
 #' @usage
 #' kinesisanalyticsv2_tag_resource(ResourceARN, Tags)
@@ -1312,7 +1431,9 @@ kinesisanalyticsv2_tag_resource <- function(ResourceARN, Tags) {
 
 #' Removes one or more tags from a Kinesis Analytics application
 #'
-#' Removes one or more tags from a Kinesis Analytics application.
+#' Removes one or more tags from a Kinesis Analytics application. For more
+#' information, see [Using
+#' Tagging](https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
 #'
 #' @usage
 #' kinesisanalyticsv2_untag_resource(ResourceARN, TagKeys)
@@ -1520,10 +1641,24 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
 #'     ),
 #'     ApplicationSnapshotConfigurationUpdate = list(
 #'       SnapshotsEnabledUpdate = TRUE|FALSE
+#'     ),
+#'     VpcConfigurationUpdates = list(
+#'       list(
+#'         VpcConfigurationId = "string",
+#'         SubnetIdUpdates = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIdUpdates = list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   ServiceExecutionRoleUpdate = "string",
 #'   RunConfigurationUpdate = list(
+#'     FlinkRunConfiguration = list(
+#'       AllowNonRestoredState = TRUE|FALSE
+#'     ),
 #'     ApplicationRestoreConfiguration = list(
 #'       ApplicationRestoreType = "SKIP_RESTORE_FROM_SNAPSHOT"|"RESTORE_FROM_LATEST_SNAPSHOT"|"RESTORE_FROM_CUSTOM_SNAPSHOT",
 #'       SnapshotName = "string"

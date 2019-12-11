@@ -17,12 +17,33 @@ you want to set.}
 \item{PublicAccessBlockConfiguration}{[required] The \code{PublicAccessBlock} configuration that you want to apply to this
 Amazon S3 bucket. You can enable the configuration options in any
 combination. For more information about when Amazon S3 considers a
-bucket or object public, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status}{The Meaning of "Public"}
+bucket or object public, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status}{The Meaning of \"Public\"}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 }
 \description{
 Creates or modifies the \code{PublicAccessBlock} configuration for an Amazon
-S3 bucket.
+S3 bucket. To use this operation, you must have the
+\code{s3:PutBucketPublicAccessBlock} permission. For more information about
+Amazon S3 permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html}{Specifying Permissions in a Policy}.
+}
+\details{
+When Amazon S3 evaluates the \code{PublicAccessBlock} configuration for a
+bucket or an object, it checks the \code{PublicAccessBlock} configuration for
+both the bucket (or the bucket that contains the object) and the bucket
+owner\'s account. If the \code{PublicAccessBlock} configurations are
+different between the bucket and the account, Amazon S3 uses the most
+restrictive combination of the bucket-level and account-level settings.
+
+For more information about when Amazon S3 considers a bucket or an
+object public, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status}{The Meaning of \"Public\"}.
+
+\strong{Related Resources}
+\itemize{
+\item GetPublicAccessBlock
+\item DeletePublicAccessBlock
+\item GetBucketPolicyStatus
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html}{Using Amazon S3 Block Public Access}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$put_public_access_block(

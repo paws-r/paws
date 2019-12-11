@@ -6,18 +6,24 @@
 \usage{
 transcribeservice_start_transcription_job(TranscriptionJobName,
   LanguageCode, MediaSampleRateHertz, MediaFormat, Media,
-  OutputBucketName, Settings)
+  OutputBucketName, OutputEncryptionKMSKeyId, Settings)
 }
 \arguments{
-\item{TranscriptionJobName}{[required] The name of the job. Note that you can't use the strings "." or
-".." by themselves as the job name. The name must also be unique
+\item{TranscriptionJobName}{[required] The name of the job. Note that you can\'t use the strings \".\" or
+\"..\" by themselves as the job name. The name must also be unique
 within an AWS account.}
 
 \item{LanguageCode}{[required] The language code for the language used in the input media file.}
 
-\item{MediaSampleRateHertz}{The sample rate, in Hertz, of the audio track in the input media file.}
+\item{MediaSampleRateHertz}{The sample rate, in Hertz, of the audio track in the input media file.
 
-\item{MediaFormat}{[required] The format of the input media file.}
+If you do not specify the media sample rate, Amazon Transcribe
+determines the sample rate. If you specify the sample rate, it must
+match the sample rate detected by Amazon Transcribe. In most cases, you
+should leave the \code{MediaSampleRateHertz} field blank and let Amazon
+Transcribe determine the sample rate.}
+
+\item{MediaFormat}{The format of the input media file.}
 
 \item{Media}{[required] An object that describes the input media for a transcription job.}
 
@@ -28,16 +34,46 @@ transcription in the specified S3 bucket. When you call the
 GetTranscriptionJob operation, the operation returns this location in
 the \code{TranscriptFileUri} field. The S3 bucket must have permissions that
 allow Amazon Transcribe to put files in the bucket. For more
-information, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/access-control-managing-permissions.html#auth-role-iam-user}{Permissions Required for IAM User Roles}.
+information, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user}{Permissions Required for IAM User Roles}.
 
-Amazon Transcribe uses the default Amazon S3 key for server-side
-encryption of transcripts that are placed in your S3 bucket. You can't
-specify your own encryption key.
+You can specify an AWS Key Management Service (KMS) key to encrypt the
+output of your transcription using the \code{OutputEncryptionKMSKeyId}
+parameter. If you don\'t specify a KMS key, Amazon Transcribe uses the
+default Amazon S3 key for server-side encryption of transcripts that are
+placed in your S3 bucket.
 
-If you don't set the \code{OutputBucketName}, Amazon Transcribe generates a
+If you don\'t set the \code{OutputBucketName}, Amazon Transcribe generates a
 pre-signed URL, a shareable URL that provides secure access to your
 transcription, and returns it in the \code{TranscriptFileUri} field. Use this
 URL to download the transcription.}
+
+\item{OutputEncryptionKMSKeyId}{The Amazon Resource Name (ARN) of the AWS Key Management Service (KMS)
+key used to encrypt the output of the transcription job. The user
+calling the \code{StartTranscriptionJob} operation must have permission to
+use the specified KMS key.
+
+You can use either of the following to identify a KMS key in the current
+account:
+\itemize{
+\item KMS Key ID: \"1234abcd-12ab-34cd-56ef-1234567890ab\"
+\item KMS Key Alias: \"alias/ExampleAlias\"
+}
+
+You can use either of the following to identify a KMS key in the current
+account or another account:
+\itemize{
+\item Amazon Resource Name (ARN) of a KMS Key:
+\"arn:aws:kms:region:account
+ID:key/1234abcd-12ab-34cd-56ef-1234567890ab\"
+\item ARN of a KMS Key Alias: \"arn:aws:kms:region:account
+ID:alias/ExampleAlias\"
+}
+
+If you don\'t specify an encryption key, the output of the transcription
+job is encrypted with the default Amazon S3 key (SSE-S3).
+
+If you specify a KMS key to encrypt your output, you must also specify
+an output location in the \code{OutputBucketName} parameter.}
 
 \item{Settings}{A \code{Settings} object that provides optional settings for a transcription
 job.}
@@ -48,18 +84,21 @@ Starts an asynchronous job to transcribe speech to text.
 \section{Request syntax}{
 \preformatted{svc$start_transcription_job(
   TranscriptionJobName = "string",
-  LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR"|"es-ES"|"en-IN"|"hi-IN"|"ar-SA",
+  LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR"|"es-ES"|"en-IN"|"hi-IN"|"ar-SA"|"ru-RU"|"zh-CN"|"nl-NL"|"id-ID"|"ta-IN"|"fa-IR"|"en-IE"|"en-AB"|"en-WL"|"pt-PT"|"te-IN"|"tr-TR"|"de-CH"|"he-IL"|"ms-MY"|"ja-JP"|"ar-AE",
   MediaSampleRateHertz = 123,
   MediaFormat = "mp3"|"mp4"|"wav"|"flac",
   Media = list(
     MediaFileUri = "string"
   ),
   OutputBucketName = "string",
+  OutputEncryptionKMSKeyId = "string",
   Settings = list(
     VocabularyName = "string",
     ShowSpeakerLabels = TRUE|FALSE,
     MaxSpeakerLabels = 123,
-    ChannelIdentification = TRUE|FALSE
+    ChannelIdentification = TRUE|FALSE,
+    ShowAlternatives = TRUE|FALSE,
+    MaxAlternatives = 123
   )
 )
 }

@@ -19,8 +19,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{Filters}{One or more filters.
 \itemize{
 \item \code{principal} - The ARN of the principal.
-\item \code{principal-type} - The principal type (\code{All} \| \code{Service} \|
-\code{OrganizationUnit} \| \code{Account} \| \code{User} \| \code{Role}).
+\item \code{principal-type} - The principal type (\code{All} \\| \code{Service} \\|
+\code{OrganizationUnit} \\| \code{Account} \\| \code{User} \\| \code{Role}).
 }}
 
 \item{MaxResults}{The maximum number of results to return for the request in a single

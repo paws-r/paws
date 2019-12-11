@@ -16,8 +16,8 @@ This guide describes the API operations for the resource groups tagging.
 
 A tag is a label that you assign to an AWS resource. A tag consists of a
 key and a value, both of which you define. For example, if you have two
-Amazon EC2 instances, you might assign both a tag key of "Stack." But
-the value of "Stack" might be "Testing" for one and "Production"
+Amazon EC2 instances, you might assign both a tag key of \"Stack.\" But
+the value of \"Stack\" might be \"Testing\" for one and \"Production\"
 for the other.
 
 Tagging can help you organize your resources and enables you to simplify
@@ -26,30 +26,43 @@ resource management, access management and cost allocation.
 You can use the resource groups tagging API operations to complete the
 following tasks:
 \itemize{
-\item Tag and untag supported resources located in the specified region
-for the AWS account
+\item Tag and untag supported resources located in the specified Region
+for the AWS account.
 \item Use tag-based filters to search for resources located in the
-specified region for the AWS account
-\item List all existing tag keys in the specified region for the AWS
-account
+specified Region for the AWS account.
+\item List all existing tag keys in the specified Region for the AWS
+account.
 \item List all existing values for the specified key in the specified
-region for the AWS account
+Region for the AWS account.
 }
 
-To make full use of the resource groups tagging API operations, you
-might need additional IAM permissions, including permission to access
-the resources of individual services as well as permission to view and
-apply tags to those resources. For more information, see \href{http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-resource-groups.html}{Obtaining Permissions for Resource Groups and Tag Editor}.
+To use resource groups tagging API operations, you must add the
+following permissions to your IAM policy:
+\itemize{
+\item \code{tag:GetResources}
+\item \code{tag:TagResources}
+\item \code{tag:UntagResources}
+\item \code{tag:GetTagKeys}
+\item \code{tag:GetTagValues}
+}
+
+You\'ll also need permissions to access the resources of individual
+services so that you can tag and untag those resources.
+
+For more information on IAM policies, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage.html}{Managing IAM Policies}
+in the \emph{IAM User Guide}.
 
 You can use the Resource Groups Tagging API to tag resources for the
 following AWS services.
 \itemize{
 \item Alexa for Business (a4b)
 \item API Gateway
-\item AWS AppStream
+\item Amazon AppStream
 \item AWS AppSync
+\item AWS App Mesh
 \item Amazon Athena
 \item Amazon Aurora
+\item AWS Backup
 \item AWS Certificate Manager
 \item AWS Certificate Manager Private CA
 \item Amazon Cloud Directory
@@ -61,6 +74,8 @@ following AWS services.
 \item Amazon CloudWatch Events
 \item Amazon CloudWatch Logs
 \item AWS CodeBuild
+\item AWS CodeCommit
+\item AWS CodePipeline
 \item AWS CodeStar
 \item Amazon Cognito Identity
 \item Amazon Cognito User Pools
@@ -68,7 +83,7 @@ following AWS services.
 \item AWS Config
 \item AWS Data Pipeline
 \item AWS Database Migration Service
-\item AWS Datasync
+\item AWS DataSync
 \item AWS Direct Connect
 \item AWS Directory Service
 \item Amazon DynamoDB
@@ -86,13 +101,15 @@ following AWS services.
 \item AWS Elemental MediaTailor
 \item Amazon EMR
 \item Amazon FSx
-\item Amazon Glacier
+\item Amazon S3 Glacier
 \item AWS Glue
+\item Amazon GuardDuty
 \item Amazon Inspector
 \item AWS IoT Analytics
 \item AWS IoT Core
 \item AWS IoT Device Defender
 \item AWS IoT Device Management
+\item AWS IoT Events
 \item AWS IoT Greengrass
 \item AWS Key Management Service
 \item Amazon Kinesis
@@ -105,6 +122,8 @@ following AWS services.
 \item Amazon MSK
 \item Amazon Neptune
 \item AWS OpsWorks
+\item AWS Organizations
+\item Amazon Quantum Ledger Database (QLDB)
 \item Amazon RDS
 \item Amazon Redshift
 \item AWS Resource Access Manager
@@ -115,12 +134,13 @@ following AWS services.
 \item Amazon S3 (buckets only)
 \item Amazon SageMaker
 \item AWS Secrets Manager
+\item AWS Security Hub
 \item AWS Service Catalog
 \item Amazon Simple Notification Service (SNS)
 \item Amazon Simple Queue Service (SQS)
-\item AWS Simple System Manager (SSM)
 \item AWS Step Functions
 \item AWS Storage Gateway
+\item AWS Systems Manager
 \item AWS Transfer for SFTP
 \item Amazon VPC
 \item Amazon WorkSpaces
@@ -147,9 +167,12 @@ following AWS services.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=resourcegroupstaggingapi_get_resources]{get_resources} \tab Returns all the tagged or previously tagged resources that are located in the specified region for the AWS account\cr
-\link[=resourcegroupstaggingapi_get_tag_keys]{get_tag_keys} \tab Returns all tag keys in the specified region for the AWS account \cr
-\link[=resourcegroupstaggingapi_get_tag_values]{get_tag_values} \tab Returns all tag values for the specified key in the specified region for the AWS account \cr
+\link[=resourcegroupstaggingapi_describe_report_creation]{describe_report_creation} \tab Describes the status of the StartReportCreation operation \cr
+\link[=resourcegroupstaggingapi_get_compliance_summary]{get_compliance_summary} \tab Returns a table that shows counts of resources that are noncompliant with their tag policies \cr
+\link[=resourcegroupstaggingapi_get_resources]{get_resources} \tab Returns all the tagged or previously tagged resources that are located in the specified Region for the AWS account \cr
+\link[=resourcegroupstaggingapi_get_tag_keys]{get_tag_keys} \tab Returns all tag keys in the specified Region for the AWS account \cr
+\link[=resourcegroupstaggingapi_get_tag_values]{get_tag_values} \tab Returns all tag values for the specified key in the specified Region for the AWS account \cr
+\link[=resourcegroupstaggingapi_start_report_creation]{start_report_creation} \tab Generates a report that lists all tagged resources in accounts across your organization and tells whether each resource is compliant with the effective tag policy\cr
 \link[=resourcegroupstaggingapi_tag_resources]{tag_resources} \tab Applies one or more tags to the specified resources \cr
 \link[=resourcegroupstaggingapi_untag_resources]{untag_resources} \tab Removes the specified tags from the specified resources
 }
@@ -157,7 +180,7 @@ following AWS services.
 
 \examples{
 \donttest{svc <- resourcegroupstaggingapi()
-svc$get_resources(
+svc$describe_report_creation(
   Foo = 123
 )}
 

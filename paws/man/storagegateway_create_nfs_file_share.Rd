@@ -38,7 +38,7 @@ or \code{S3_ONEZONE_IA}. If this field is not populated, the default value
 
 \item{ObjectACL}{A value that sets the access control list permission for objects in the
 S3 bucket that a file gateway puts objects into. The default value is
-"private".}
+\"private\".}
 
 \item{ClientList}{The list of clients that are allowed to access the file gateway. The
 list must contain either valid IP addresses or valid CIDR blocks.}
@@ -72,8 +72,8 @@ tag is a key-value pair.
 
 Valid characters for key and value are letters, spaces, and numbers
 representable in UTF-8 format, and the following special characters: + -
-= . \_ : / @. The maximum length of a tag's key is 128 characters, and
-the maximum length for a tag's value is 256.}
+= . \\_ : / @. The maximum length of a tag\'s key is 128 characters, and
+the maximum length for a tag\'s value is 256.}
 }
 \description{
 Creates a Network File System (NFS) file share on an existing file
@@ -85,10 +85,10 @@ gateways.
 \details{
 File gateway requires AWS Security Token Service (AWS STS) to be
 activated to enable you create a file share. Make sure AWS STS is
-activated in the region you are creating your file gateway in. If AWS
-STS is not activated in the region, activate it. For information about
-how to activate AWS STS, see Activating and Deactivating AWS STS in an
-AWS Region in the AWS Identity and Access Management User Guide.
+activated in the AWS Region you are creating your file gateway in. If
+AWS STS is not activated in the AWS Region, activate it. For information
+about how to activate AWS STS, see Activating and Deactivating AWS STS
+in an AWS Region in the AWS Identity and Access Management User Guide.
 
 File gateway does not support creating hard or symbolic links on a file
 share.

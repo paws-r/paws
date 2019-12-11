@@ -18,7 +18,7 @@ This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex 
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
 ASCII character from the ! (\code{U+0021}) through the DEL character
-(\code{U+007F}), including most punctuation characters, digits, and upper and
+(\verb{U+007F}), including most punctuation characters, digits, and upper and
 lowercased letters.}
 
 \item{VirtualMFADeviceName}{[required] The name of the virtual MFA device. Use with path to uniquely identify a
@@ -26,7 +26,7 @@ virtual MFA device.
 
 This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \_+=,.@-}
+spaces. You can also include any of the following characters: \\_+=,.@-}
 }
 \description{
 Creates a new virtual MFA device for the AWS account. After creating the

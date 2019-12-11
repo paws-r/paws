@@ -74,7 +74,7 @@ The following action values are available for \code{UpdateExpression}.
 \item \code{SET} - Adds one or more attributes and values to an item. If any of
 these attributes already exist, they are replaced by the new values.
 You can also use \code{SET} to add or subtract from an attribute that is
-of type Number. For example: \code{SET myNum = myNum + :val}
+of type Number. For example: \verb{SET myNum = myNum + :val}
 
 \code{SET} supports the following functions:
 \itemize{
@@ -101,13 +101,13 @@ attribute. If \code{Value} is a negative number, then it is
 subtracted from the existing attribute.
 
 If you use \code{ADD} to increment or decrement a number value for an
-item that doesn't exist before the update, DynamoDB uses \code{0} as
+item that doesn\'t exist before the update, DynamoDB uses \code{0} as
 the initial value.
 
 Similarly, if you use \code{ADD} for an existing item to increment or
-decrement an attribute value that doesn't exist before the
+decrement an attribute value that doesn\'t exist before the
 update, DynamoDB uses \code{0} as the initial value. For example,
-suppose that the item you want to update doesn't have an
+suppose that the item you want to update doesn\'t have an
 attribute named \code{itemcount}, but you decide to \code{ADD} the number
 \code{3} to this attribute anyway. DynamoDB will create the
 \code{itemcount} attribute, set its initial value to \code{0}, and finally
@@ -115,9 +115,9 @@ add \code{3} to it. The result will be a new \code{itemcount} attribute in
 the item, with a value of \code{3}.
 \item If the existing data type is a set and if \code{Value} is also a set,
 then \code{Value} is added to the existing set. For example, if the
-attribute value is the set \code{\\[1,2\\]}, and the \code{ADD} action
-specified \code{\\[3\\]}, then the final attribute value is
-\code{\\[1,2,3\\]}. An error occurs if an \code{ADD} action is specified
+attribute value is the set \verb{\\\[1,2\\\]}, and the \code{ADD} action
+specified \verb{\\\[3\\\]}, then the final attribute value is
+\verb{\\\[1,2,3\\\]}. An error occurs if an \code{ADD} action is specified
 for a set attribute and the attribute type specified does not
 match the existing set type.
 
@@ -133,8 +133,8 @@ attributes.
 
 If a set of values is specified, then those values are subtracted
 from the old set. For example, if the attribute value was the set
-\code{\\[a,b,c\\]} and the \code{DELETE} action specifies \code{\\[a,c\\]}, then
-the final attribute value is \code{\\[b\\]}. Specifying an empty set is
+\verb{\\\[a,b,c\\\]} and the \code{DELETE} action specifies \verb{\\\[a,c\\\]}, then
+the final attribute value is \verb{\\\[b\\\]}. Specifying an empty set is
 an error.
 
 The \code{DELETE} action only supports set data types. In addition,
@@ -143,7 +143,7 @@ attributes.
 }
 
 You can have many actions in a single expression, such as the following:
-\code{SET a=:value1, b=:value2 DELETE :value3, :value4, :value5}
+\verb{SET a=:value1, b=:value2 DELETE :value3, :value4, :value5}
 
 For more information on update expressions, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Modifying.html}{Modifying Items and Attributes}
 in the \emph{Amazon DynamoDB Developer Guide}.}
@@ -158,7 +158,7 @@ An expression can contain any of the following:
 
 These function names are case-sensitive.
 \item Comparison operators:
-\code{= | &lt;&gt; | &lt; | &gt; | &lt;= | &gt;= | BETWEEN | IN }
+\verb{= | &lt;&gt; | &lt; | &gt; | &lt;= | &gt;= | BETWEEN | IN }
 \item Logical operators: \code{AND | OR | NOT}
 }
 
@@ -176,7 +176,7 @@ name in an expression.
 misinterpreted in an expression.
 }
 
-Use the \strong{\#} character in an expression to dereference an attribute
+Use the \strong{\\#} character in an expression to dereference an attribute
 name. For example, consider the following attribute name:
 \itemize{
 \item \code{Percentile}
@@ -188,13 +188,13 @@ words, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguid
 in the \emph{Amazon DynamoDB Developer Guide}.) To work around this, you
 could specify the following for \code{ExpressionAttributeNames}:
 \itemize{
-\item \code{\{"#P":"Percentile"\}}
+\item \verb{\\\{"#P":"Percentile"\\\}}
 }
 
 You could then use this substitution in an expression, as in this
 example:
 \itemize{
-\item \code{#P = :val}
+\item \verb{#P = :val}
 }
 
 Tokens that begin with the \strong{:} character are \emph{expression attribute
@@ -213,24 +213,24 @@ the value of the \code{ProductStatus} attribute was one of the following:
 
 You would first need to specify \code{ExpressionAttributeValues} as follows:
 
-\code{\{ ":avail":\{"S":"Available"\}, ":back":\{"S":"Backordered"\}, ":disc":\{"S":"Discontinued"\} \}}
+\verb{\\\{ ":avail":\\\{"S":"Available"\\\}, ":back":\\\{"S":"Backordered"\\\}, ":disc":\\\{"S":"Discontinued"\\\} \\\}}
 
 You could then use these values in an expression, such as this:
 
-\code{ProductStatus IN (:avail, :back, :disc)}
+\verb{ProductStatus IN (:avail, :back, :disc)}
 
 For more information on expression attribute values, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html}{Condition Expressions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 }
 \description{
-Edits an existing item's attributes, or adds a new item to the table if
+Edits an existing item\'s attributes, or adds a new item to the table if
 it does not already exist. You can put, delete, or add attribute values.
 You can also perform a conditional update on an existing item (insert a
-new attribute name-value pair if it doesn't exist, or replace an
+new attribute name-value pair if it doesn\'t exist, or replace an
 existing name-value pair if it has certain expected attribute values).
 }
 \details{
-You can also return the item's attribute values in the same
+You can also return the item\'s attribute values in the same
 \code{UpdateItem} operation using the \code{ReturnValues} parameter.
 }
 \section{Request syntax}{

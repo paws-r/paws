@@ -10,8 +10,7 @@ ssm_delete_parameters(Names)
 \item{Names}{[required] The names of the parameters to delete.}
 }
 \description{
-Delete a list of parameters. This API is used to delete parameters by
-using the Amazon EC2 console.
+Delete a list of parameters.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_parameters(

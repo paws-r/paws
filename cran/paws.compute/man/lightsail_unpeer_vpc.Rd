@@ -7,7 +7,7 @@
 lightsail_unpeer_vpc()
 }
 \description{
-Attempts to unpeer the Lightsail VPC from the user's default VPC.
+Attempts to unpeer the Lightsail VPC from the user\'s default VPC.
 }
 \section{Request syntax}{
 \preformatted{svc$unpeer_vpc()

@@ -7,14 +7,29 @@
 s3_get_object_torrent(Bucket, Key, RequestPayer)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The name of the bucket containing the object for which to get the
+torrent files.}
 
-\item{Key}{[required]}
+\item{Key}{[required] The object key for which to get the information.}
 
 \item{RequestPayer}{}
 }
 \description{
-Return torrent files from a bucket.
+Return torrent files from a bucket. BitTorrent can save you bandwidth
+when you\'re distributing large files. For more information about
+BitTorrent, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3Torrent.html}{Amazon S3 Torrent}.
+}
+\details{
+You can get torrent only for objects that are less than 5 GB in size and
+that are not encrypted using server-side encryption with
+customer-provided encryption key.
+
+To use GET, you must have READ access to the object.
+
+The following operation is related to \code{GetObjectTorrent}:
+\itemize{
+\item GetObject
+}
 }
 \section{Request syntax}{
 \preformatted{svc$get_object_torrent(

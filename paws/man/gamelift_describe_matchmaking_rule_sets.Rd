@@ -8,7 +8,7 @@ gamelift_describe_matchmaking_rule_sets(Names, Limit, NextToken)
 }
 \arguments{
 \item{Names}{List of one or more matchmaking rule set names to retrieve details for.
-(Note: The rule set name is different from the optional "name" field
+(Note: The rule set name is different from the optional \"name\" field
 in the rule set body.)}
 
 \item{Limit}{Maximum number of results to return. Use this parameter with \code{NextToken}

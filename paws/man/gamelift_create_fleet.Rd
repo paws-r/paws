@@ -8,7 +8,8 @@ gamelift_create_fleet(Name, Description, BuildId, ScriptId,
   ServerLaunchPath, ServerLaunchParameters, LogPaths, EC2InstanceType,
   EC2InboundPermissions, NewGameSessionProtectionPolicy,
   RuntimeConfiguration, ResourceCreationLimitPolicy, MetricGroups,
-  PeerVpcAwsAccountId, PeerVpcId, FleetType, InstanceRoleArn)
+  PeerVpcAwsAccountId, PeerVpcId, FleetType, InstanceRoleArn,
+  CertificateConfiguration)
 }
 \arguments{
 \item{Name}{[required] Descriptive label that is associated with a fleet. Fleet names do not
@@ -57,14 +58,14 @@ add more by updating the fleet.}
 
 \item{NewGameSessionProtectionPolicy}{Game session protection policy to apply to all instances in this fleet.
 If this parameter is not set, instances in this fleet default to no
-protection. You can change a fleet's protection policy using
+protection. You can change a fleet\'s protection policy using
 UpdateFleetAttributes, but this change will only affect sessions created
 after the policy change. You can also set protection for individual
 instances using UpdateGameSession.
 \itemize{
-\item \strong{NoProtection} \-- The game session can be terminated during a
+\item \strong{NoProtection} \\-- The game session can be terminated during a
 scale-down event.
-\item \strong{FullProtection} \-- If the game session is in an \code{ACTIVE} status,
+\item \strong{FullProtection} \\-- If the game session is in an \code{ACTIVE} status,
 it cannot be terminated during a scale-down event.
 }}
 
@@ -95,7 +96,7 @@ deployed. Look up a VPC ID using the \href{https://console.aws.amazon.com/vpc/}{
 Console. Learn more about VPC peering in \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html}{VPC Peering with Amazon GameLift Fleets}.}
 
 \item{FleetType}{Indicates whether to use on-demand instances or spot instances for this
-fleet. If empty, the default is ON\_DEMAND. Both categories of instances
+fleet. If empty, the default is ON\\_DEMAND. Both categories of instances
 use identical hardware and configurations based on the instance type
 selected for this fleet. Learn more about \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-ec2-instances.html#gamelift-ec2-instances-spot}{On-Demand versus Spot Instances}.}
 
@@ -103,9 +104,11 @@ selected for this fleet. Learn more about \href{https://docs.aws.amazon.com/game
 services. With an instance role ARN set, any application that runs on an
 instance in this fleet can assume the role, including install scripts,
 server processes, daemons (background processes). Create a role or look
-up a role's ARN using the \href{https://console.aws.amazon.com/iam/}{IAM dashboard} in the AWS Management
+up a role\'s ARN using the \href{https://console.aws.amazon.com/iam/}{IAM dashboard} in the AWS Management
 Console. Learn more about using on-box credentials for your game servers
 at \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-resources.html}{Access external resources from a game server}.}
+
+\item{CertificateConfiguration}{}
 }
 \description{
 Creates a new fleet to run your game servers. whether they are custom
@@ -135,18 +138,16 @@ fleet status or by monitoring fleet creation events:
 \item Creates a fleet record. Status: \code{NEW}.
 \item Begins writing events to the fleet event log, which can be accessed
 in the Amazon GameLift console.
-}
 
-Sets the fleet's target capacity to 1 (desired instances), which
+Sets the fleet\'s target capacity to 1 (desired instances), which
 triggers Amazon GameLift to start one new EC2 instance.
-\itemize{
 \item Downloads the game build or Realtime script to the new instance and
 installs it. Statuses: \code{DOWNLOADING}, \code{VALIDATING}, \code{BUILDING}.
 \item Starts launching server processes on the instance. If the fleet is
 configured to run multiple server processes per instance, Amazon
 GameLift staggers each launch by a few seconds. Status:
 \code{ACTIVATING}.
-\item Sets the fleet's status to \code{ACTIVE} as soon as one server process
+\item Sets the fleet\'s status to \code{ACTIVE} as soon as one server process
 is ready to host a game session.
 }
 
@@ -162,6 +163,7 @@ is ready to host a game session.
 \item ListFleets
 \item DeleteFleet
 \item Describe fleets:
+\itemize{
 \item DescribeFleetAttributes
 \item DescribeFleetCapacity
 \item DescribeFleetPortSettings
@@ -169,14 +171,19 @@ is ready to host a game session.
 \item DescribeRuntimeConfiguration
 \item DescribeEC2InstanceLimits
 \item DescribeFleetEvents
+}
 \item Update fleets:
+\itemize{
 \item UpdateFleetAttributes
 \item UpdateFleetCapacity
 \item UpdateFleetPortSettings
 \item UpdateRuntimeConfiguration
+}
 \item Manage fleet actions:
+\itemize{
 \item StartFleetActions
 \item StopFleetActions
+}
 }
 }
 \section{Request syntax}{
@@ -190,7 +197,7 @@ is ready to host a game session.
   LogPaths = list(
     "string"
   ),
-  EC2InstanceType = "t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge",
+  EC2InstanceType = "t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge",
   EC2InboundPermissions = list(
     list(
       FromPort = 123,
@@ -221,7 +228,10 @@ is ready to host a game session.
   PeerVpcAwsAccountId = "string",
   PeerVpcId = "string",
   FleetType = "ON_DEMAND"|"SPOT",
-  InstanceRoleArn = "string"
+  InstanceRoleArn = "string",
+  CertificateConfiguration = list(
+    CertificateType = "DISABLED"|"GENERATED"
+  )
 )
 }
 }

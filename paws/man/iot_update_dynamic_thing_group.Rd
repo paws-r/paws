@@ -16,13 +16,13 @@ iot_update_dynamic_thing_group(thingGroupName, thingGroupProperties,
 
 \item{indexName}{The dynamic thing group index to update.
 
-Currently one index is supported: 'AWS\_Things'.}
+Currently one index is supported: \'AWS\\_Things\'.}
 
 \item{queryString}{The dynamic thing group search query string to update.}
 
 \item{queryVersion}{The dynamic thing group query version to update.
 
-Currently one query version is supported: "2017-09-30". If not
+Currently one query version is supported: \"2017-09-30\". If not
 specified, the query version defaults to this value.}
 }
 \description{

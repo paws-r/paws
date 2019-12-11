@@ -6,7 +6,7 @@
 \usage{
 cognitoidentityprovider_confirm_forgot_password(ClientId, SecretHash,
   Username, ConfirmationCode, Password, AnalyticsMetadata,
-  UserContextData)
+  UserContextData, ClientMetadata)
 }
 \arguments{
 \item{ClientId}{[required] The app client ID of the app associated with the user pool.}
@@ -18,17 +18,46 @@ message.}
 \item{Username}{[required] The user name of the user for whom you want to enter a code to retrieve
 a forgotten password.}
 
-\item{ConfirmationCode}{[required] The confirmation code sent by a user's request to retrieve a forgotten
+\item{ConfirmationCode}{[required] The confirmation code sent by a user\'s request to retrieve a forgotten
 password. For more information, see}
 
-\item{Password}{[required] The password sent by a user's request to retrieve a forgotten password.}
+\item{Password}{[required] The password sent by a user\'s request to retrieve a forgotten password.}
 
 \item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for
 \code{ConfirmForgotPassword} calls.}
 
-\item{UserContextData}{Contextual data such as the user's device fingerprint, IP address, or
+\item{UserContextData}{Contextual data such as the user\'s device fingerprint, IP address, or
 location used for evaluating the risk of an unexpected event by Amazon
 Cognito advanced security.}
+
+\item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any
+custom workflows that this action triggers.
+
+You create custom workflows by assigning AWS Lambda functions to user
+pool triggers. When you use the ConfirmForgotPassword API action, Amazon
+Cognito invokes the function that is assigned to the \emph{post confirmation}
+trigger. When Amazon Cognito invokes this function, it passes a JSON
+payload, which the function receives as input. This payload contains a
+\code{clientMetadata} attribute, which provides the data that you assigned to
+the ClientMetadata parameter in your ConfirmForgotPassword request. In
+your function code in AWS Lambda, you can process the \code{clientMetadata}
+value to enhance your workflow for your specific needs.
+
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html}{Customizing User Pool Workflows with Lambda Triggers}
+in the \emph{Amazon Cognito Developer Guide}.
+
+Take the following limitations into consideration when you use the
+ClientMetadata parameter:
+\itemize{
+\item Amazon Cognito does not store the ClientMetadata value. This data is
+available only to AWS Lambda triggers that are assigned to a user
+pool to support custom workflows. If your user pool configuration
+does not include triggers, the ClientMetadata parameter serves no
+purpose.
+\item Amazon Cognito does not validate the ClientMetadata value.
+\item Amazon Cognito does not encrypt the the ClientMetadata value, so
+don\'t use it to provide sensitive information.
+}}
 }
 \description{
 Allows a user to enter a confirmation code to reset a forgotten
@@ -46,6 +75,9 @@ password.
   ),
   UserContextData = list(
     EncodedData = "string"
+  ),
+  ClientMetadata = list(
+    "string"
   )
 )
 }

@@ -14,7 +14,7 @@ workmail_associate_member_to_group(OrganizationId, GroupId, MemberId)
 \item{MemberId}{[required] The member (user or group) to associate to the group.}
 }
 \description{
-Adds a member (user or group) to the group's set.
+Adds a member (user or group) to the group\'s set.
 }
 \section{Request syntax}{
 \preformatted{svc$associate_member_to_group(

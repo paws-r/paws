@@ -48,6 +48,7 @@ Creates and sends a message to a list of users.
         Url = "string"
       ),
       APNSMessage = list(
+        APNSPushType = "string",
         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
         Badge = 123,
         Body = "string",
@@ -194,6 +195,20 @@ Creates and sends a message to a list of users.
           )
         ),
         VoiceId = "string"
+      )
+    ),
+    TemplateConfiguration = list(
+      EmailTemplate = list(
+        Name = "string"
+      ),
+      PushTemplate = list(
+        Name = "string"
+      ),
+      SMSTemplate = list(
+        Name = "string"
+      ),
+      VoiceTemplate = list(
+        Name = "string"
       )
     ),
     TraceId = "string",

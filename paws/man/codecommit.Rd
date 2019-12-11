@@ -30,13 +30,13 @@ associated with your AWS account.
 of the repository.
 \item UpdateRepositoryName, which changes the name of the repository. If
 you change the name of a repository, no other users of that
-repository will be able to access it until you send them the new
-HTTPS or SSH URL to use.
+repository can access it until you send them the new HTTPS or SSH
+URL to use.
 }
 
 Branches, by calling the following:
 \itemize{
-\item CreateBranch, which creates a new branch in a specified repository.
+\item CreateBranch, which creates a branch in a specified repository.
 \item DeleteBranch, which deletes the specified branch in a repository
 unless it is the default branch.
 \item GetBranch, which returns information about a specified branch.
@@ -50,7 +50,7 @@ Files, by calling the following:
 \item DeleteFile, which deletes the content of a specified file from a
 specified branch.
 \item GetBlob, which returns the base-64 encoded content of an individual
-Git blob object within a repository.
+Git blob object in a repository.
 \item GetFile, which returns the base-64 encoded content of a specified
 file.
 \item GetFolder, which returns the contents of a specified folder or
@@ -61,11 +61,13 @@ repository and branch.
 
 Commits, by calling the following:
 \itemize{
+\item BatchGetCommits, which returns information about one or more commits
+in a repository.
 \item CreateCommit, which creates a commit for changes to a repository.
 \item GetCommit, which returns information about a commit, including
 commit messages and author and committer information.
 \item GetDifferences, which returns information about the differences in a
-valid commit specifier (such as a branch, tag, HEAD, commit ID or
+valid commit specifier (such as a branch, tag, HEAD, commit ID, or
 other fully qualified reference).
 }
 
@@ -97,12 +99,25 @@ Pull requests, by calling the following:
 \itemize{
 \item CreatePullRequest, which creates a pull request in a specified
 repository.
+\item CreatePullRequestApprovalRule, which creates an approval rule for a
+specified pull request.
+\item DeletePullRequestApprovalRule, which deletes an approval rule for a
+specified pull request.
 \item DescribePullRequestEvents, which returns information about one or
 more pull request events.
+\item EvaluatePullRequestApprovalRules, which evaluates whether a pull
+request has met all the conditions specified in its associated
+approval rules.
 \item GetCommentsForPullRequest, which returns information about comments
 on a specified pull request.
 \item GetPullRequest, which returns information about a specified pull
 request.
+\item GetPullRequestApprovalStates, which returns information about the
+approval states for a specified pull request.
+\item GetPullRequestOverrideState, which returns information about whether
+approval rules have been set aside (overriden) for a pull request,
+and if so, the Amazon Resource Name (ARN) of the user or identity
+that overrode the rules and their requirements for the pull request.
 \item ListPullRequests, which lists all pull requests for a repository.
 \item MergePullRequestByFastForward, which merges the source destination
 branch of a pull request into the specified destination branch for
@@ -113,12 +128,61 @@ pull request using the squash merge option.
 \item MergePullRequestByThreeWay. which merges the source destination
 branch of a pull request into the specified destination branch for
 that pull request using the three-way merge option.
+\item OverridePullRequestApprovalRules, which sets aside all approval rule
+requirements for a pull request.
 \item PostCommentForPullRequest, which posts a comment to a pull request
 at the specified line, file, or request.
+\item UpdatePullRequestApprovalRuleContent, which updates the structure of
+an approval rule for a pull request.
+\item UpdatePullRequestApprovalState, which updates the state of an
+approval on a pull request.
 \item UpdatePullRequestDescription, which updates the description of a
 pull request.
 \item UpdatePullRequestStatus, which updates the status of a pull request.
 \item UpdatePullRequestTitle, which updates the title of a pull request.
+}
+
+Approval rule templates, by calling the following:
+\itemize{
+\item AssociateApprovalRuleTemplateWithRepository, which associates a
+template with a specified repository. After the template is
+associated with a repository, AWS CodeCommit creates approval rules
+that match the template conditions on every pull request created in
+the specified repository.
+\item BatchAssociateApprovalRuleTemplateWithRepositories, which associates
+a template with one or more specified repositories. After the
+template is associated with a repository, AWS CodeCommit creates
+approval rules that match the template conditions on every pull
+request created in the specified repositories.
+\item BatchDisassociateApprovalRuleTemplateFromRepositories, which removes
+the association between a template and specified repositories so
+that approval rules based on the template are not automatically
+created when pull requests are created in those repositories.
+\item CreateApprovalRuleTemplate, which creates a template for approval
+rules that can then be associated with one or more repositories in
+your AWS account.
+\item DeleteApprovalRuleTemplate, which deletes the specified template. It
+does not remove approval rules on pull requests already created with
+the template.
+\item DisassociateApprovalRuleTemplateFromRepository, which removes the
+association between a template and a repository so that approval
+rules based on the template are not automatically created when pull
+requests are created in the specified repository.
+\item GetApprovalRuleTemplate, which returns information about an approval
+rule template.
+\item ListApprovalRuleTemplates, which lists all approval rule templates
+in the AWS Region in your AWS account.
+\item ListAssociatedApprovalRuleTemplatesForRepository, which lists all
+approval rule templates that are associated with a specified
+repository.
+\item ListRepositoriesForApprovalRuleTemplate, which lists all
+repositories associated with the specified approval rule template.
+\item UpdateApprovalRuleTemplateDescription, which updates the description
+of an approval rule template.
+\item UpdateApprovalRuleTemplateName, which updates the name of an
+approval rule template.
+\item UpdateApprovalRuleTemplateContent, which updates the content of an
+approval rule template.
 }
 
 Comments in a repository, by calling the following:
@@ -179,44 +243,61 @@ For information about how to use AWS CodeCommit, see the \href{https://docs.aws.
 \section{Operations}{
 
 \tabular{ll}{
+\link[=codecommit_associate_approval_rule_template_with_repository]{associate_approval_rule_template_with_repository} \tab Creates an association between an approval rule template and a specified repository \cr
+\link[=codecommit_batch_associate_approval_rule_template_with_repositories]{batch_associate_approval_rule_template_with_repositories} \tab Creates an association between an approval rule template and one or more specified repositories \cr
 \link[=codecommit_batch_describe_merge_conflicts]{batch_describe_merge_conflicts} \tab Returns information about one or more merge conflicts in the attempted merge of two commit specifiers using the squash or three-way merge strategy \cr
+\link[=codecommit_batch_disassociate_approval_rule_template_from_repositories]{batch_disassociate_approval_rule_template_from_repositories} \tab Removes the association between an approval rule template and one or more specified repositories \cr
+\link[=codecommit_batch_get_commits]{batch_get_commits} \tab Returns information about the contents of one or more commits in a repository \cr
 \link[=codecommit_batch_get_repositories]{batch_get_repositories} \tab Returns information about one or more repositories \cr
-\link[=codecommit_create_branch]{create_branch} \tab Creates a new branch in a repository and points the branch to a commit \cr
+\link[=codecommit_create_approval_rule_template]{create_approval_rule_template} \tab Creates a template for approval rules that can then be associated with one or more repositories in your AWS account \cr
+\link[=codecommit_create_branch]{create_branch} \tab Creates a branch in a repository and points the branch to a commit \cr
 \link[=codecommit_create_commit]{create_commit} \tab Creates a commit for a repository on the tip of a specified branch \cr
 \link[=codecommit_create_pull_request]{create_pull_request} \tab Creates a pull request in the specified repository \cr
+\link[=codecommit_create_pull_request_approval_rule]{create_pull_request_approval_rule} \tab Creates an approval rule for a pull request \cr
 \link[=codecommit_create_repository]{create_repository} \tab Creates a new, empty repository \cr
 \link[=codecommit_create_unreferenced_merge_commit]{create_unreferenced_merge_commit} \tab Creates an unreferenced commit that represents the result of merging two branches using a specified merge strategy \cr
+\link[=codecommit_delete_approval_rule_template]{delete_approval_rule_template} \tab Deletes a specified approval rule template \cr
 \link[=codecommit_delete_branch]{delete_branch} \tab Deletes a branch from a repository, unless that branch is the default branch for the repository \cr
 \link[=codecommit_delete_comment_content]{delete_comment_content} \tab Deletes the content of a comment made on a change, file, or commit in a repository \cr
 \link[=codecommit_delete_file]{delete_file} \tab Deletes a specified file from a specified branch \cr
+\link[=codecommit_delete_pull_request_approval_rule]{delete_pull_request_approval_rule} \tab Deletes an approval rule from a specified pull request \cr
 \link[=codecommit_delete_repository]{delete_repository} \tab Deletes a repository \cr
 \link[=codecommit_describe_merge_conflicts]{describe_merge_conflicts} \tab Returns information about one or more merge conflicts in the attempted merge of two commit specifiers using the squash or three-way merge strategy \cr
 \link[=codecommit_describe_pull_request_events]{describe_pull_request_events} \tab Returns information about one or more pull request events \cr
-\link[=codecommit_get_blob]{get_blob} \tab Returns the base-64 encoded content of an individual blob within a repository \cr
+\link[=codecommit_disassociate_approval_rule_template_from_repository]{disassociate_approval_rule_template_from_repository} \tab Removes the association between a template and a repository so that approval rules based on the template are not automatically created when pull requests are created in the specified repository \cr
+\link[=codecommit_evaluate_pull_request_approval_rules]{evaluate_pull_request_approval_rules} \tab Evaluates whether a pull request has met all the conditions specified in its associated approval rules \cr
+\link[=codecommit_get_approval_rule_template]{get_approval_rule_template} \tab Returns information about a specified approval rule template \cr
+\link[=codecommit_get_blob]{get_blob} \tab Returns the base-64 encoded content of an individual blob in a repository \cr
 \link[=codecommit_get_branch]{get_branch} \tab Returns information about a repository branch, including its name and the last commit ID \cr
 \link[=codecommit_get_comment]{get_comment} \tab Returns the content of a comment made on a change, file, or commit in a repository \cr
 \link[=codecommit_get_comments_for_compared_commit]{get_comments_for_compared_commit} \tab Returns information about comments made on the comparison between two commits \cr
 \link[=codecommit_get_comments_for_pull_request]{get_comments_for_pull_request} \tab Returns comments made on a pull request \cr
 \link[=codecommit_get_commit]{get_commit} \tab Returns information about a commit, including commit message and committer information \cr
-\link[=codecommit_get_differences]{get_differences} \tab Returns information about the differences in a valid commit specifier (such as a branch, tag, HEAD, commit ID or other fully qualified reference) \cr
+\link[=codecommit_get_differences]{get_differences} \tab Returns information about the differences in a valid commit specifier (such as a branch, tag, HEAD, commit ID, or other fully qualified reference) \cr
 \link[=codecommit_get_file]{get_file} \tab Returns the base-64 encoded contents of a specified file and its metadata \cr
 \link[=codecommit_get_folder]{get_folder} \tab Returns the contents of a specified folder in a repository \cr
 \link[=codecommit_get_merge_commit]{get_merge_commit} \tab Returns information about a specified merge commit \cr
 \link[=codecommit_get_merge_conflicts]{get_merge_conflicts} \tab Returns information about merge conflicts between the before and after commit IDs for a pull request in a repository \cr
 \link[=codecommit_get_merge_options]{get_merge_options} \tab Returns information about the merge options available for merging two specified branches \cr
 \link[=codecommit_get_pull_request]{get_pull_request} \tab Gets information about a pull request in a specified repository \cr
+\link[=codecommit_get_pull_request_approval_states]{get_pull_request_approval_states} \tab Gets information about the approval states for a specified pull request \cr
+\link[=codecommit_get_pull_request_override_state]{get_pull_request_override_state} \tab Returns information about whether approval rules have been set aside (overridden) for a pull request, and if so, the Amazon Resource Name (ARN) of the user or identity that overrode the rules and their requirements for the pull request\cr
 \link[=codecommit_get_repository]{get_repository} \tab Returns information about a repository \cr
 \link[=codecommit_get_repository_triggers]{get_repository_triggers} \tab Gets information about triggers configured for a repository \cr
+\link[=codecommit_list_approval_rule_templates]{list_approval_rule_templates} \tab Lists all approval rule templates in the specified AWS Region in your AWS account \cr
+\link[=codecommit_list_associated_approval_rule_templates_for_repository]{list_associated_approval_rule_templates_for_repository} \tab Lists all approval rule templates that are associated with a specified repository \cr
 \link[=codecommit_list_branches]{list_branches} \tab Gets information about one or more branches in a repository \cr
 \link[=codecommit_list_pull_requests]{list_pull_requests} \tab Returns a list of pull requests for a specified repository \cr
 \link[=codecommit_list_repositories]{list_repositories} \tab Gets information about one or more repositories \cr
+\link[=codecommit_list_repositories_for_approval_rule_template]{list_repositories_for_approval_rule_template} \tab Lists all repositories associated with the specified approval rule template \cr
 \link[=codecommit_list_tags_for_resource]{list_tags_for_resource} \tab Gets information about AWS tags for a specified Amazon Resource Name (ARN) in AWS CodeCommit \cr
 \link[=codecommit_merge_branches_by_fast_forward]{merge_branches_by_fast_forward} \tab Merges two branches using the fast-forward merge strategy \cr
 \link[=codecommit_merge_branches_by_squash]{merge_branches_by_squash} \tab Merges two branches using the squash merge strategy \cr
 \link[=codecommit_merge_branches_by_three_way]{merge_branches_by_three_way} \tab Merges two specified branches using the three-way merge strategy \cr
-\link[=codecommit_merge_pull_request_by_fast_forward]{merge_pull_request_by_fast_forward} \tab Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the fast-forward merge strategy\cr
+\link[=codecommit_merge_pull_request_by_fast_forward]{merge_pull_request_by_fast_forward} \tab Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the fast-forward merge strategy \cr
 \link[=codecommit_merge_pull_request_by_squash]{merge_pull_request_by_squash} \tab Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the squash merge strategy \cr
 \link[=codecommit_merge_pull_request_by_three_way]{merge_pull_request_by_three_way} \tab Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the three-way merge strategy \cr
+\link[=codecommit_override_pull_request_approval_rules]{override_pull_request_approval_rules} \tab Sets aside (overrides) all approval rule requirements for a specified pull request \cr
 \link[=codecommit_post_comment_for_compared_commit]{post_comment_for_compared_commit} \tab Posts a comment on the comparison between two commits \cr
 \link[=codecommit_post_comment_for_pull_request]{post_comment_for_pull_request} \tab Posts a comment on a pull request \cr
 \link[=codecommit_post_comment_reply]{post_comment_reply} \tab Posts a comment in reply to an existing comment on a comparison between commits or a pull request \cr
@@ -225,8 +306,13 @@ For information about how to use AWS CodeCommit, see the \href{https://docs.aws.
 \link[=codecommit_tag_resource]{tag_resource} \tab Adds or updates tags for a resource in AWS CodeCommit \cr
 \link[=codecommit_test_repository_triggers]{test_repository_triggers} \tab Tests the functionality of repository triggers by sending information to the trigger target \cr
 \link[=codecommit_untag_resource]{untag_resource} \tab Removes tags for a resource in AWS CodeCommit \cr
+\link[=codecommit_update_approval_rule_template_content]{update_approval_rule_template_content} \tab Updates the content of an approval rule template \cr
+\link[=codecommit_update_approval_rule_template_description]{update_approval_rule_template_description} \tab Updates the description for a specified approval rule template \cr
+\link[=codecommit_update_approval_rule_template_name]{update_approval_rule_template_name} \tab Updates the name of a specified approval rule template \cr
 \link[=codecommit_update_comment]{update_comment} \tab Replaces the contents of a comment \cr
 \link[=codecommit_update_default_branch]{update_default_branch} \tab Sets or changes the default branch name for the specified repository \cr
+\link[=codecommit_update_pull_request_approval_rule_content]{update_pull_request_approval_rule_content} \tab Updates the structure of an approval rule created specifically for a pull request \cr
+\link[=codecommit_update_pull_request_approval_state]{update_pull_request_approval_state} \tab Updates the state of a user's approval on a pull request \cr
 \link[=codecommit_update_pull_request_description]{update_pull_request_description} \tab Replaces the contents of the description of a pull request \cr
 \link[=codecommit_update_pull_request_status]{update_pull_request_status} \tab Updates the status of a pull request \cr
 \link[=codecommit_update_pull_request_title]{update_pull_request_title} \tab Replaces the title of a pull request \cr
@@ -237,7 +323,7 @@ For information about how to use AWS CodeCommit, see the \href{https://docs.aws.
 
 \examples{
 \donttest{svc <- codecommit()
-svc$batch_describe_merge_conflicts(
+svc$associate_approval_rule_template_with_repository(
   Foo = 123
 )}
 

@@ -13,7 +13,7 @@ kms(config = list())
 AWS Key Management Service (AWS KMS) is an encryption and key management
 web service. This guide describes the AWS KMS operations that you can
 call programmatically. For general information about AWS KMS, see the
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/}{AWS Key Management Service DeveloperGuide} .
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/}{\emph{AWS Key Management Service Developer Guide}} .
 
 AWS provides SDKs that consist of libraries and sample code for various
 programming languages and platforms (Java, Ruby, .Net, macOS, Android,
@@ -108,42 +108,47 @@ policies, by using the console.
 \link[=kms_create_alias]{create_alias} \tab Creates a display name for a customer managed customer master key (CMK) \cr
 \link[=kms_create_custom_key_store]{create_custom_key_store} \tab Creates a custom key store that is associated with an AWS CloudHSM cluster that you own and manage \cr
 \link[=kms_create_grant]{create_grant} \tab Adds a grant to a customer master key (CMK) \cr
-\link[=kms_create_key]{create_key} \tab Creates a customer managed customer master key (CMK) in your AWS account \cr
-\link[=kms_decrypt]{decrypt} \tab Decrypts ciphertext \cr
+\link[=kms_create_key]{create_key} \tab Creates a unique customer managed customer master key (CMK) in your AWS account and Region \cr
+\link[=kms_decrypt]{decrypt} \tab Decrypts ciphertext that was encrypted by a AWS KMS customer master key (CMK) using any of the following operations: - Encrypt - GenerateDataKey - GenerateDataKeyPair - GenerateDataKeyWithoutPlaintext - GenerateDataKeyPairWithoutPlaintext You can use this operation to decrypt ciphertext that was encrypted under a symmetric or asymmetric CMK\cr
 \link[=kms_delete_alias]{delete_alias} \tab Deletes the specified alias \cr
 \link[=kms_delete_custom_key_store]{delete_custom_key_store} \tab Deletes a custom key store \cr
 \link[=kms_delete_imported_key_material]{delete_imported_key_material} \tab Deletes key material that you previously imported \cr
 \link[=kms_describe_custom_key_stores]{describe_custom_key_stores} \tab Gets information about custom key stores in the account and region \cr
-\link[=kms_describe_key]{describe_key} \tab Provides detailed information about the specified customer master key (CMK) \cr
+\link[=kms_describe_key]{describe_key} \tab Provides detailed information about a customer master key (CMK) \cr
 \link[=kms_disable_key]{disable_key} \tab Sets the state of a customer master key (CMK) to disabled, thereby preventing its use for cryptographic operations \cr
-\link[=kms_disable_key_rotation]{disable_key_rotation} \tab Disables automatic rotation of the key material for the specified customer master key (CMK) \cr
+\link[=kms_disable_key_rotation]{disable_key_rotation} \tab Disables automatic rotation of the key material for the specified symmetric customer master key (CMK) \cr
 \link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store} \tab Disconnects the custom key store from its associated AWS CloudHSM cluster \cr
 \link[=kms_enable_key]{enable_key} \tab Sets the key state of a customer master key (CMK) to enabled \cr
-\link[=kms_enable_key_rotation]{enable_key_rotation} \tab Enables automatic rotation of the key material for the specified customer master key (CMK) \cr
+\link[=kms_enable_key_rotation]{enable_key_rotation} \tab Enables automatic rotation of the key material for the specified symmetric customer master key (CMK) \cr
 \link[=kms_encrypt]{encrypt} \tab Encrypts plaintext into ciphertext by using a customer master key (CMK) \cr
-\link[=kms_generate_data_key]{generate_data_key} \tab Generates a unique data key \cr
-\link[=kms_generate_data_key_without_plaintext]{generate_data_key_without_plaintext} \tab Generates a unique data key \cr
+\link[=kms_generate_data_key]{generate_data_key} \tab Generates a unique symmetric data key \cr
+\link[=kms_generate_data_key_pair]{generate_data_key_pair} \tab Generates a unique asymmetric data key pair \cr
+\link[=kms_generate_data_key_pair_without_plaintext]{generate_data_key_pair_without_plaintext} \tab Generates a unique asymmetric data key pair \cr
+\link[=kms_generate_data_key_without_plaintext]{generate_data_key_without_plaintext} \tab Generates a unique symmetric data key \cr
 \link[=kms_generate_random]{generate_random} \tab Returns a random byte string that is cryptographically secure \cr
 \link[=kms_get_key_policy]{get_key_policy} \tab Gets a key policy attached to the specified customer master key (CMK) \cr
-\link[=kms_get_key_rotation_status]{get_key_rotation_status} \tab Gets a Boolean value that indicates whether automatic rotation of the key material is enabled for the specified customer master key (CMK)\cr
-\link[=kms_get_parameters_for_import]{get_parameters_for_import} \tab Returns the items you need in order to import key material into AWS KMS from your existing key management infrastructure \cr
-\link[=kms_import_key_material]{import_key_material} \tab Imports key material into an existing AWS KMS customer master key (CMK) that was created without key material \cr
+\link[=kms_get_key_rotation_status]{get_key_rotation_status} \tab Gets a Boolean value that indicates whether automatic rotation of the key material is enabled for the specified customer master key (CMK) \cr
+\link[=kms_get_parameters_for_import]{get_parameters_for_import} \tab Returns the items you need to import key material into a symmetric, customer managed customer master key (CMK) \cr
+\link[=kms_get_public_key]{get_public_key} \tab Returns the public key of an asymmetric CMK \cr
+\link[=kms_import_key_material]{import_key_material} \tab Imports key material into an existing symmetric AWS KMS customer master key (CMK) that was created without key material \cr
 \link[=kms_list_aliases]{list_aliases} \tab Gets a list of aliases in the caller's AWS account and region \cr
 \link[=kms_list_grants]{list_grants} \tab Gets a list of all grants for the specified customer master key (CMK) \cr
 \link[=kms_list_key_policies]{list_key_policies} \tab Gets the names of the key policies that are attached to a customer master key (CMK) \cr
-\link[=kms_list_keys]{list_keys} \tab Gets a list of all customer master keys (CMKs) in the caller's AWS account and region \cr
+\link[=kms_list_keys]{list_keys} \tab Gets a list of all customer master keys (CMKs) in the caller's AWS account and Region \cr
 \link[=kms_list_resource_tags]{list_resource_tags} \tab Returns a list of all tags for the specified customer master key (CMK) \cr
 \link[=kms_list_retirable_grants]{list_retirable_grants} \tab Returns a list of all grants for which the grant's RetiringPrincipal matches the one specified \cr
 \link[=kms_put_key_policy]{put_key_policy} \tab Attaches a key policy to the specified customer master key (CMK) \cr
-\link[=kms_re_encrypt]{re_encrypt} \tab Encrypts data on the server side with a new customer master key (CMK) without exposing the plaintext of the data on the client side \cr
+\link[=kms_re_encrypt]{re_encrypt} \tab Decrypts ciphertext and then reencrypts it entirely within AWS KMS \cr
 \link[=kms_retire_grant]{retire_grant} \tab Retires a grant \cr
 \link[=kms_revoke_grant]{revoke_grant} \tab Revokes the specified grant for the specified customer master key (CMK) \cr
 \link[=kms_schedule_key_deletion]{schedule_key_deletion} \tab Schedules the deletion of a customer master key (CMK) \cr
+\link[=kms_sign]{sign} \tab Creates a digital signature for a message or message digest by using the private key in an asymmetric CMK \cr
 \link[=kms_tag_resource]{tag_resource} \tab Adds or edits tags for a customer master key (CMK) \cr
 \link[=kms_untag_resource]{untag_resource} \tab Removes the specified tags from the specified customer master key (CMK) \cr
-\link[=kms_update_alias]{update_alias} \tab Associates an existing alias with a different customer master key (CMK) \cr
+\link[=kms_update_alias]{update_alias} \tab Associates an existing AWS KMS alias with a different customer master key (CMK) \cr
 \link[=kms_update_custom_key_store]{update_custom_key_store} \tab Changes the properties of a custom key store \cr
-\link[=kms_update_key_description]{update_key_description} \tab Updates the description of a customer master key (CMK)
+\link[=kms_update_key_description]{update_key_description} \tab Updates the description of a customer master key (CMK) \cr
+\link[=kms_verify]{verify} \tab Verifies a digital signature that was generated by the Sign operation
 }
 }
 

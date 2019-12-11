@@ -12,19 +12,19 @@ acmpca_issue_certificate(CertificateAuthorityArn, Csr, SigningAlgorithm,
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
 CreateCertificateAuthority. This must be of the form:
 
-\code{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }}
+\verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }}
 
 \item{Csr}{[required] The certificate signing request (CSR) for the certificate you want to
 issue. You can use the following OpenSSL command to create the CSR and a
 2048 bit RSA private key.
 
-\code{openssl req -new -newkey rsa:2048 -days 365 -keyout private/test_cert_priv_key.pem -out csr/test_cert_.csr}
+\verb{openssl req -new -newkey rsa:2048 -days 365 -keyout private/test_cert_priv_key.pem -out csr/test_cert_.csr}
 
 If you have a configuration file, you can use the following OpenSSL
 command. The \code{usr_cert} block in the configuration file contains your
 X509 version 3 extensions.
 
-\code{openssl req -new -config openssl_rsa.cnf -extensions usr_cert -newkey rsa:2048 -days -365 -keyout private/test_cert_priv_key.pem -out csr/test_cert_.csr}}
+\verb{openssl req -new -config openssl_rsa.cnf -extensions usr_cert -newkey rsa:2048 -days -365 -keyout private/test_cert_priv_key.pem -out csr/test_cert_.csr}}
 
 \item{SigningAlgorithm}{[required] The name of the algorithm that will be used to sign the certificate to
 be issued.}
@@ -37,10 +37,10 @@ The following service-owned \code{TemplateArn} values are supported by ACM
 Private CA:
 \itemize{
 \item arn:aws:acm-pca:::template/EndEntityCertificate/V1
-\item arn:aws:acm-pca:::template/SubordinateCACertificate\_PathLen0/V1
-\item arn:aws:acm-pca:::template/SubordinateCACertificate\_PathLen1/V1
-\item arn:aws:acm-pca:::template/SubordinateCACertificate\_PathLen2/V1
-\item arn:aws:acm-pca:::template/SubordinateCACertificate\_PathLen3/V1
+\item arn:aws:acm-pca:::template/SubordinateCACertificate\\_PathLen0/V1
+\item arn:aws:acm-pca:::template/SubordinateCACertificate\\_PathLen1/V1
+\item arn:aws:acm-pca:::template/SubordinateCACertificate\\_PathLen2/V1
+\item arn:aws:acm-pca:::template/SubordinateCACertificate\\_PathLen3/V1
 \item arn:aws:acm-pca:::template/RootCACertificate/V1
 }
 

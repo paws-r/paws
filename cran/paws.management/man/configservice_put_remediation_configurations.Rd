@@ -38,7 +38,18 @@ to use the target.
           )
         )
       ),
-      ResourceType = "string"
+      ResourceType = "string",
+      Automatic = TRUE|FALSE,
+      ExecutionControls = list(
+        SsmControls = list(
+          ConcurrentExecutionRatePercentage = 123,
+          ErrorPercentage = 123
+        )
+      ),
+      MaximumAutomaticAttempts = 123,
+      RetryAttemptSeconds = 123,
+      Arn = "string",
+      CreatedByService = "string"
     )
   )
 )

@@ -2,17 +2,17 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_bucket_encryption}
 \alias{s3_put_bucket_encryption}
-\title{Creates a new server-side encryption configuration (or replaces an
-existing one, if present)}
+\title{This implementation of the PUT operation uses the encryption subresource
+to set the default encryption state of an existing bucket}
 \usage{
 s3_put_bucket_encryption(Bucket, ContentMD5,
   ServerSideEncryptionConfiguration)
 }
 \arguments{
 \item{Bucket}{[required] Specifies default encryption for a bucket using server-side encryption
-with Amazon S3-managed keys (SSE-S3) or AWS KMS-managed keys (SSE-KMS).
-For information about the Amazon S3 default encryption feature, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html}{Amazon S3 Default Bucket Encryption}
+with Amazon S3-managed keys (SSE-S3) or customer master keys stored in
+AWS KMS (SSE-KMS). For information about the Amazon S3 default
+encryption feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html}{Amazon S3 Default Bucket Encryption}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the server-side encryption
@@ -22,8 +22,29 @@ from the CLI.}
 \item{ServerSideEncryptionConfiguration}{[required]}
 }
 \description{
-Creates a new server-side encryption configuration (or replaces an
-existing one, if present).
+This implementation of the \code{PUT} operation uses the \code{encryption}
+subresource to set the default encryption state of an existing bucket.
+}
+\details{
+This implementation of the \code{PUT} operation sets default encryption for a
+buckets using server-side encryption with Amazon S3-managed keys SSE-S3
+or AWS KMS customer master keys (CMKs) (SSE-KMS) bucket.
+
+This operation requires AWS Signature Version 4. For more information,
+see Authenticating Requests (AWS Signature Version 4).
+
+To use this operation, you must have permissions to perform the
+\code{s3:PutEncryptionConfiguration} action. The bucket owner has this
+permission by default. The bucket owner can grant this permission to
+others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}
+in the Amazon Simple Storage Service Developer Guide.
+
+\strong{Related Resources}
+\itemize{
+\item GetBucketEncryption
+\item DeleteBucketEncryption
+}
 }
 \section{Request syntax}{
 \preformatted{svc$put_bucket_encryption(

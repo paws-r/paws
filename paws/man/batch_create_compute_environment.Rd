@@ -87,6 +87,7 @@ compute resources. To use a new AMI for your AWS Batch jobs:
   state = "ENABLED"|"DISABLED",
   computeResources = list(
     type = "EC2"|"SPOT",
+    allocationStrategy = "BEST_FIT"|"BEST_FIT_PROGRESSIVE"|"SPOT_CAPACITY_OPTIMIZED",
     minvCpus = 123,
     maxvCpus = 123,
     desiredvCpus = 123,

@@ -12,7 +12,7 @@ storagegateway_start_gateway(GatewayARN)
 \description{
 Starts a gateway that you previously shut down (see ShutdownGateway).
 After the gateway starts, you can then make other API calls, your
-applications can read from or write to the gateway's storage volumes
+applications can read from or write to the gateway\'s storage volumes
 and you will be able to take snapshot backups.
 }
 \details{

@@ -5,24 +5,30 @@
 \title{Adds a file gateway to an Active Directory domain}
 \usage{
 storagegateway_join_domain(GatewayARN, DomainName, OrganizationalUnit,
-  DomainControllers, UserName, Password)
+  DomainControllers, TimeoutInSeconds, UserName, Password)
 }
 \arguments{
 \item{GatewayARN}{[required] The Amazon Resource Name (ARN) of the gateway. Use the \code{ListGateways}
-operation to return a list of gateways for your account and region.}
+operation to return a list of gateways for your account and AWS Region.}
 
 \item{DomainName}{[required] The name of the domain that you want the gateway to join.}
 
-\item{OrganizationalUnit}{The organizational unit (OU) is a container with an Active Directory
-that can hold users, groups, computers, and other OUs and this parameter
+\item{OrganizationalUnit}{The organizational unit (OU) is a container in an Active Directory that
+can hold users, groups, computers, and other OUs and this parameter
 specifies the OU that the gateway will join within the AD domain.}
 
 \item{DomainControllers}{List of IPv4 addresses, NetBIOS names, or host names of your domain
 server. If you need to specify the port number include it after the
 colon (":"). For example, \code{mydc.mydomain.com:389}.}
 
+\item{TimeoutInSeconds}{Specifies the time in seconds, in which the \code{JoinDomain} operation must
+complete. The default is 20 seconds.}
+
 \item{UserName}{[required] Sets the user name of user who has permission to add the gateway to the
-Active Directory domain.}
+Active Directory domain. The domain user account should be enabled to
+join computers to the domain. For example, you can use the domain
+administrator account or an account with delegated permissions to join
+computers to the domain.}
 
 \item{Password}{[required] Sets the password of the user who has permission to add the gateway to
 the Active Directory domain.}
@@ -39,6 +45,7 @@ only supported for file gateways that support the SMB file protocol.
   DomainControllers = list(
     "string"
   ),
+  TimeoutInSeconds = 123,
   UserName = "string",
   Password = "string"
 )

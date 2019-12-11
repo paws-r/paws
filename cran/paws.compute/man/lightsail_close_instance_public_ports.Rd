@@ -9,16 +9,16 @@ lightsail_close_instance_public_ports(portInfo, instanceName)
 \arguments{
 \item{portInfo}{[required] Information about the public port you are trying to close.}
 
-\item{instanceName}{[required] The name of the instance on which you're attempting to close the public
+\item{instanceName}{[required] The name of the instance on which you\'re attempting to close the public
 ports.}
 }
 \description{
 Closes the public ports on a specific Amazon Lightsail instance.
 }
 \details{
-The \code{close instance public ports} operation supports tag-based access
+The \verb{close instance public ports} operation supports tag-based access
 control via resource tags applied to the resource identified by
-instanceName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\verb{instance name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$close_instance_public_ports(

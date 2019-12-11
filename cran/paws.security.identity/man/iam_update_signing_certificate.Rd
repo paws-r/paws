@@ -12,7 +12,7 @@ iam_update_signing_certificate(UserName, CertificateId, Status)
 
 This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \_+=,.@-}
+spaces. You can also include any of the following characters: \\_+=,.@-}
 
 \item{CertificateId}{[required] The ID of the signing certificate you want to update.
 
@@ -26,7 +26,7 @@ the certificate cannot be used.}
 \description{
 Changes the status of the specified user signing certificate from active
 to disabled, or vice versa. This operation can be used to disable an IAM
-user's signing certificate as part of a certificate rotation work flow.
+user\'s signing certificate as part of a certificate rotation work flow.
 }
 \details{
 If the \code{UserName} field is not specified, the user name is determined

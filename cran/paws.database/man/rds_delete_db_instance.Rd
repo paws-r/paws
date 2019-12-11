@@ -9,7 +9,7 @@ rds_delete_db_instance(DBInstanceIdentifier, SkipFinalSnapshot,
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The DB instance identifier for the DB instance to be deleted. This
-parameter isn't case-sensitive.
+parameter isn\'t case-sensitive.
 
 Constraints:
 \itemize{
@@ -18,17 +18,17 @@ Constraints:
 
 \item{SkipFinalSnapshot}{A value that indicates whether to skip the creation of a final DB
 snapshot before the DB instance is deleted. If skip is specified, no DB
-snapshot is created. If skip is not specified, a DB snapshot is created
-before the DB instance is deleted. By default, skip is not specified,
+snapshot is created. If skip isn\'t specified, a DB snapshot is created
+before the DB instance is deleted. By default, skip isn\'t specified,
 and the DB snapshot is created.
 
 Note that when a DB instance is in a failure state and has a status of
-'failed', 'incompatible-restore', or 'incompatible-network', it
+\'failed\', \'incompatible-restore\', or \'incompatible-network\', it
 can only be deleted when skip is specified.
 
 Specify skip when deleting a Read Replica.
 
-The FinalDBSnapshotIdentifier parameter must be specified if skip is not
+The FinalDBSnapshotIdentifier parameter must be specified if skip isn\'t
 specified.}
 
 \item{FinalDBSnapshotIdentifier}{The \code{DBSnapshotIdentifier} of the new \code{DBSnapshot} created when the
@@ -41,26 +41,26 @@ Constraints:
 \itemize{
 \item Must be 1 to 255 letters or numbers.
 \item First character must be a letter.
-\item Can't end with a hyphen or contain two consecutive hyphens.
-\item Can't be specified when deleting a Read Replica.
+\item Can\'t end with a hyphen or contain two consecutive hyphens.
+\item Can\'t be specified when deleting a Read Replica.
 }}
 
 \item{DeleteAutomatedBackups}{A value that indicates whether to remove automated backups immediately
-after the DB instance is deleted. This parameter isn't case-sensitive.
+after the DB instance is deleted. This parameter isn\'t case-sensitive.
 The default is to remove automated backups immediately after the DB
 instance is deleted.}
 }
 \description{
 The DeleteDBInstance action deletes a previously provisioned DB
 instance. When you delete a DB instance, all automated backups for that
-instance are deleted and can't be recovered. Manual DB snapshots of the
+instance are deleted and can\'t be recovered. Manual DB snapshots of the
 DB instance to be deleted by \code{DeleteDBInstance} are not deleted.
 }
 \details{
 If you request a final DB snapshot the status of the Amazon RDS DB
 instance is \code{deleting} until the DB snapshot is created. The API action
 \code{DescribeDBInstance} is used to monitor the status of this operation.
-The action can't be canceled or reverted once submitted.
+The action can\'t be canceled or reverted once submitted.
 
 Note that when a DB instance is in a failure state and has a status of
 \code{failed}, \code{incompatible-restore}, or \code{incompatible-network}, you can
@@ -68,7 +68,7 @@ only delete it when you skip creation of the final snapshot with the
 \code{SkipFinalSnapshot} parameter.
 
 If the specified DB instance is part of an Amazon Aurora DB cluster, you
-can't delete the DB instance if both of the following conditions are
+can\'t delete the DB instance if both of the following conditions are
 true:
 \itemize{
 \item The DB cluster is a Read Replica of another Amazon Aurora DB
@@ -78,7 +78,7 @@ cluster.
 
 To delete a DB instance in this case, first call the
 \code{PromoteReadReplicaDBCluster} API action to promote the DB cluster so
-it's no longer a Read Replica. After the promotion completes, then call
+it\'s no longer a Read Replica. After the promotion completes, then call
 the \code{DeleteDBInstance} API action to delete the final instance in the DB
 cluster.
 }

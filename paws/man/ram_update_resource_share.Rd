@@ -2,7 +2,7 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_update_resource_share}
 \alias{ram_update_resource_share}
-\title{Updates the specified resource share}
+\title{Updates the specified resource share that you own}
 \usage{
 ram_update_resource_share(resourceShareArn, name,
   allowExternalPrincipals, clientToken)
@@ -12,14 +12,14 @@ ram_update_resource_share(resourceShareArn, name,
 
 \item{name}{The name of the resource share.}
 
-\item{allowExternalPrincipals}{Indicates whether principals outside your organization can be associated
-with a resource share.}
+\item{allowExternalPrincipals}{Indicates whether principals outside your AWS organization can be
+associated with a resource share.}
 
 \item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 }
 \description{
-Updates the specified resource share.
+Updates the specified resource share that you own.
 }
 \section{Request syntax}{
 \preformatted{svc$update_resource_share(

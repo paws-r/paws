@@ -40,14 +40,18 @@ expressed in them, the predominant language used, and more.
 \link[=comprehend_batch_detect_entities]{batch_detect_entities} \tab Inspects the text of a batch of documents for named entities and returns information about them \cr
 \link[=comprehend_batch_detect_key_phrases]{batch_detect_key_phrases} \tab Detects the key noun phrases found in a batch of documents \cr
 \link[=comprehend_batch_detect_sentiment]{batch_detect_sentiment} \tab Inspects a batch of documents and returns an inference of the prevailing sentiment, POSITIVE, NEUTRAL, MIXED, or NEGATIVE, in each one \cr
-\link[=comprehend_batch_detect_syntax]{batch_detect_syntax} \tab Inspects the text of a batch of documents for the syntax and part of speech of the words in the document and returns information about them\cr
+\link[=comprehend_batch_detect_syntax]{batch_detect_syntax} \tab Inspects the text of a batch of documents for the syntax and part of speech of the words in the document and returns information about them \cr
+\link[=comprehend_classify_document]{classify_document} \tab Creates a new document classification request to analyze a single document in real-time, using a previously created and trained custom model and an endpoint\cr
 \link[=comprehend_create_document_classifier]{create_document_classifier} \tab Creates a new document classifier that you can use to categorize documents \cr
+\link[=comprehend_create_endpoint]{create_endpoint} \tab Creates a model-specific endpoint for synchronous inference for a previously trained custom model \cr
 \link[=comprehend_create_entity_recognizer]{create_entity_recognizer} \tab Creates an entity recognizer using submitted files \cr
 \link[=comprehend_delete_document_classifier]{delete_document_classifier} \tab Deletes a previously created document classifier Only those classifiers that are in terminated states (IN_ERROR, TRAINED) will be deleted \cr
+\link[=comprehend_delete_endpoint]{delete_endpoint} \tab Deletes a model-specific endpoint for a previously-trained custom model \cr
 \link[=comprehend_delete_entity_recognizer]{delete_entity_recognizer} \tab Deletes an entity recognizer \cr
 \link[=comprehend_describe_document_classification_job]{describe_document_classification_job} \tab Gets the properties associated with a document classification job \cr
 \link[=comprehend_describe_document_classifier]{describe_document_classifier} \tab Gets the properties associated with a document classifier \cr
 \link[=comprehend_describe_dominant_language_detection_job]{describe_dominant_language_detection_job} \tab Gets the properties associated with a dominant language detection job \cr
+\link[=comprehend_describe_endpoint]{describe_endpoint} \tab Gets the properties associated with a specific endpoint \cr
 \link[=comprehend_describe_entities_detection_job]{describe_entities_detection_job} \tab Gets the properties associated with an entities detection job \cr
 \link[=comprehend_describe_entity_recognizer]{describe_entity_recognizer} \tab Provides details about an entity recognizer including status, S3 buckets containing training data, recognizer metadata, metrics, and so on \cr
 \link[=comprehend_describe_key_phrases_detection_job]{describe_key_phrases_detection_job} \tab Gets the properties associated with a key phrases detection job \cr
@@ -61,6 +65,7 @@ expressed in them, the predominant language used, and more.
 \link[=comprehend_list_document_classification_jobs]{list_document_classification_jobs} \tab Gets a list of the documentation classification jobs that you have submitted \cr
 \link[=comprehend_list_document_classifiers]{list_document_classifiers} \tab Gets a list of the document classifiers that you have created \cr
 \link[=comprehend_list_dominant_language_detection_jobs]{list_dominant_language_detection_jobs} \tab Gets a list of the dominant language detection jobs that you have submitted \cr
+\link[=comprehend_list_endpoints]{list_endpoints} \tab Gets a list of all existing endpoints that you've created \cr
 \link[=comprehend_list_entities_detection_jobs]{list_entities_detection_jobs} \tab Gets a list of the entity detection jobs that you have submitted \cr
 \link[=comprehend_list_entity_recognizers]{list_entity_recognizers} \tab Gets a list of the properties of all entity recognizers that you created, including recognizers currently in training \cr
 \link[=comprehend_list_key_phrases_detection_jobs]{list_key_phrases_detection_jobs} \tab Get a list of key phrase detection jobs that you have submitted \cr
@@ -80,7 +85,8 @@ expressed in them, the predominant language used, and more.
 \link[=comprehend_stop_training_document_classifier]{stop_training_document_classifier} \tab Stops a document classifier training job while in progress \cr
 \link[=comprehend_stop_training_entity_recognizer]{stop_training_entity_recognizer} \tab Stops an entity recognizer training job while in progress \cr
 \link[=comprehend_tag_resource]{tag_resource} \tab Associates a specific tag with an Amazon Comprehend resource \cr
-\link[=comprehend_untag_resource]{untag_resource} \tab Removes a specific tag associated with an Amazon Comprehend resource
+\link[=comprehend_untag_resource]{untag_resource} \tab Removes a specific tag associated with an Amazon Comprehend resource \cr
+\link[=comprehend_update_endpoint]{update_endpoint} \tab Updates information about the specified endpoint
 }
 }
 

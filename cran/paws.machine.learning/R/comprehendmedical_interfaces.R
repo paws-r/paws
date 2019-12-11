@@ -3,6 +3,30 @@
 #' @include comprehendmedical_service.R
 NULL
 
+.comprehendmedical$describe_entities_detection_v2_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehendmedical$describe_entities_detection_v2_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ComprehendMedicalAsyncJobProperties = structure(list(JobId = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string")), JobStatus = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), SubmitTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), ExpirationTime = structure(logical(0), tags = list(type = "timestamp")), InputDataConfig = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutputDataConfig = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LanguageCode = structure(logical(0), tags = list(type = "string")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string")), ManifestFilePath = structure(logical(0), tags = list(type = "string")), KMSKey = structure(logical(0), tags = list(type = "string")), ModelVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehendmedical$describe_phi_detection_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehendmedical$describe_phi_detection_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ComprehendMedicalAsyncJobProperties = structure(list(JobId = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string")), JobStatus = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), SubmitTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), ExpirationTime = structure(logical(0), tags = list(type = "timestamp")), InputDataConfig = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutputDataConfig = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LanguageCode = structure(logical(0), tags = list(type = "string")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string")), ManifestFilePath = structure(logical(0), tags = list(type = "string")), KMSKey = structure(logical(0), tags = list(type = "string")), ModelVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .comprehendmedical$detect_entities_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Text = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -11,7 +35,19 @@ NULL
 
 .comprehendmedical$detect_entities_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Entities = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "integer")), BeginOffset = structure(logical(0), tags = list(type = "integer")), EndOffset = structure(logical(0), tags = list(type = "integer")), Score = structure(logical(0), tags = list(type = "float")), Text = structure(logical(0), tags = list(type = "string")), Category = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Traits = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list")), Attributes = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float")), RelationshipScore = structure(logical(0), tags = list(type = "float")), Id = structure(logical(0), tags = list(type = "integer")), BeginOffset = structure(logical(0), tags = list(type = "integer")), EndOffset = structure(logical(0), tags = list(type = "integer")), Text = structure(logical(0), tags = list(type = "string")), Traits = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), UnmappedAttributes = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Attribute = structure(list(Type = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float")), RelationshipScore = structure(logical(0), tags = list(type = "float")), Id = structure(logical(0), tags = list(type = "integer")), BeginOffset = structure(logical(0), tags = list(type = "integer")), EndOffset = structure(logical(0), tags = list(type = "integer")), Text = structure(logical(0), tags = list(type = "string")), Traits = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), PaginationToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Entities = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "integer")), BeginOffset = structure(logical(0), tags = list(type = "integer")), EndOffset = structure(logical(0), tags = list(type = "integer")), Score = structure(logical(0), tags = list(type = "float")), Text = structure(logical(0), tags = list(type = "string")), Category = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Traits = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list")), Attributes = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float")), RelationshipScore = structure(logical(0), tags = list(type = "float")), Id = structure(logical(0), tags = list(type = "integer")), BeginOffset = structure(logical(0), tags = list(type = "integer")), EndOffset = structure(logical(0), tags = list(type = "integer")), Text = structure(logical(0), tags = list(type = "string")), Traits = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), UnmappedAttributes = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Attribute = structure(list(Type = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float")), RelationshipScore = structure(logical(0), tags = list(type = "float")), Id = structure(logical(0), tags = list(type = "integer")), BeginOffset = structure(logical(0), tags = list(type = "integer")), EndOffset = structure(logical(0), tags = list(type = "integer")), Text = structure(logical(0), tags = list(type = "string")), Traits = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), PaginationToken = structure(logical(0), tags = list(type = "string")), ModelVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehendmedical$detect_entities_v2_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Text = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehendmedical$detect_entities_v2_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Entities = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "integer")), BeginOffset = structure(logical(0), tags = list(type = "integer")), EndOffset = structure(logical(0), tags = list(type = "integer")), Score = structure(logical(0), tags = list(type = "float")), Text = structure(logical(0), tags = list(type = "string")), Category = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Traits = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list")), Attributes = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float")), RelationshipScore = structure(logical(0), tags = list(type = "float")), Id = structure(logical(0), tags = list(type = "integer")), BeginOffset = structure(logical(0), tags = list(type = "integer")), EndOffset = structure(logical(0), tags = list(type = "integer")), Text = structure(logical(0), tags = list(type = "string")), Traits = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), UnmappedAttributes = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Attribute = structure(list(Type = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float")), RelationshipScore = structure(logical(0), tags = list(type = "float")), Id = structure(logical(0), tags = list(type = "integer")), BeginOffset = structure(logical(0), tags = list(type = "integer")), EndOffset = structure(logical(0), tags = list(type = "integer")), Text = structure(logical(0), tags = list(type = "string")), Traits = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), PaginationToken = structure(logical(0), tags = list(type = "string")), ModelVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -23,6 +59,78 @@ NULL
 
 .comprehendmedical$detect_phi_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Entities = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "integer")), BeginOffset = structure(logical(0), tags = list(type = "integer")), EndOffset = structure(logical(0), tags = list(type = "integer")), Score = structure(logical(0), tags = list(type = "float")), Text = structure(logical(0), tags = list(type = "string")), Category = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Traits = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list")), Attributes = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float")), RelationshipScore = structure(logical(0), tags = list(type = "float")), Id = structure(logical(0), tags = list(type = "integer")), BeginOffset = structure(logical(0), tags = list(type = "integer")), EndOffset = structure(logical(0), tags = list(type = "integer")), Text = structure(logical(0), tags = list(type = "string")), Traits = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), PaginationToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Entities = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "integer")), BeginOffset = structure(logical(0), tags = list(type = "integer")), EndOffset = structure(logical(0), tags = list(type = "integer")), Score = structure(logical(0), tags = list(type = "float")), Text = structure(logical(0), tags = list(type = "string")), Category = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Traits = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list")), Attributes = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float")), RelationshipScore = structure(logical(0), tags = list(type = "float")), Id = structure(logical(0), tags = list(type = "integer")), BeginOffset = structure(logical(0), tags = list(type = "integer")), EndOffset = structure(logical(0), tags = list(type = "integer")), Text = structure(logical(0), tags = list(type = "string")), Traits = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), PaginationToken = structure(logical(0), tags = list(type = "string")), ModelVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehendmedical$list_entities_detection_v2_jobs_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Filter = structure(list(JobName = structure(logical(0), tags = list(type = "string")), JobStatus = structure(logical(0), tags = list(type = "string")), SubmitTimeBefore = structure(logical(0), tags = list(type = "timestamp")), SubmitTimeAfter = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehendmedical$list_entities_detection_v2_jobs_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ComprehendMedicalAsyncJobPropertiesList = structure(list(structure(list(JobId = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string")), JobStatus = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), SubmitTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), ExpirationTime = structure(logical(0), tags = list(type = "timestamp")), InputDataConfig = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutputDataConfig = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LanguageCode = structure(logical(0), tags = list(type = "string")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string")), ManifestFilePath = structure(logical(0), tags = list(type = "string")), KMSKey = structure(logical(0), tags = list(type = "string")), ModelVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehendmedical$list_phi_detection_jobs_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Filter = structure(list(JobName = structure(logical(0), tags = list(type = "string")), JobStatus = structure(logical(0), tags = list(type = "string")), SubmitTimeBefore = structure(logical(0), tags = list(type = "timestamp")), SubmitTimeAfter = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehendmedical$list_phi_detection_jobs_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ComprehendMedicalAsyncJobPropertiesList = structure(list(structure(list(JobId = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string")), JobStatus = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), SubmitTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), ExpirationTime = structure(logical(0), tags = list(type = "timestamp")), InputDataConfig = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutputDataConfig = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LanguageCode = structure(logical(0), tags = list(type = "string")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string")), ManifestFilePath = structure(logical(0), tags = list(type = "string")), KMSKey = structure(logical(0), tags = list(type = "string")), ModelVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehendmedical$start_entities_detection_v2_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InputDataConfig = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutputDataConfig = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), KMSKey = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehendmedical$start_entities_detection_v2_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehendmedical$start_phi_detection_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InputDataConfig = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutputDataConfig = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), KMSKey = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehendmedical$start_phi_detection_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehendmedical$stop_entities_detection_v2_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehendmedical$stop_entities_detection_v2_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehendmedical$stop_phi_detection_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehendmedical$stop_phi_detection_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

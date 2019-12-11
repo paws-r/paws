@@ -18,7 +18,7 @@ GetChangeToken. \code{ChangeTokenStatus} is one of the following values:
 \details{
 \itemize{
 \item \code{PROVISIONED}: You requested the change token by calling
-\code{GetChangeToken}, but you haven't used it yet in a call to create,
+\code{GetChangeToken}, but you haven\'t used it yet in a call to create,
 update, or delete an AWS WAF object.
 \item \code{PENDING}: AWS WAF is propagating the create, update, or delete
 request to all AWS WAF servers.

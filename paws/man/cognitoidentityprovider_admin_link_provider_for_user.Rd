@@ -15,7 +15,7 @@ cognitoidentityprovider_admin_link_provider_for_user(UserPoolId,
 \item{DestinationUser}{[required] The existing user in the user pool to be linked to the external identity
 provider user account. Can be a native (Username + Password) Cognito
 User Pools user or a federated user (for example, a SAML or Facebook
-user). If the user doesn't exist, an exception is thrown. This is the
+user). If the user doesn\'t exist, an exception is thrown. This is the
 user that is returned when the new user (with the linked identity
 provider attribute) signs in.
 

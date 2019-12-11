@@ -17,7 +17,7 @@ ExecutionId (EQUAL)
 
 Status (EQUAL)
 
-CreatedTime (EQUAL, GREATER\_THAN, LESS\_THAN)}
+CreatedTime (EQUAL, GREATER\\_THAN, LESS\\_THAN)}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the

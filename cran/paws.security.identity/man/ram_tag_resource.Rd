@@ -2,7 +2,7 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_tag_resource}
 \alias{ram_tag_resource}
-\title{Adds the specified tags to the specified resource share}
+\title{Adds the specified tags to the specified resource share that you own}
 \usage{
 ram_tag_resource(resourceShareArn, tags)
 }
@@ -12,7 +12,7 @@ ram_tag_resource(resourceShareArn, tags)
 \item{tags}{[required] One or more tags.}
 }
 \description{
-Adds the specified tags to the specified resource share.
+Adds the specified tags to the specified resource share that you own.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

@@ -2,7 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_export_tasks}
 \alias{ec2_describe_export_tasks}
-\title{Describes the specified export tasks or all your export tasks}
+\title{Describes the specified export instance tasks or all your export
+instance tasks}
 \usage{
 ec2_describe_export_tasks(ExportTaskIds)
 }
@@ -10,7 +11,8 @@ ec2_describe_export_tasks(ExportTaskIds)
 \item{ExportTaskIds}{The export task IDs.}
 }
 \description{
-Describes the specified export tasks or all your export tasks.
+Describes the specified export instance tasks or all your export
+instance tasks.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_export_tasks(

@@ -10,14 +10,14 @@ guardduty_get_findings_statistics(DetectorId, FindingStatisticTypes,
 }
 \arguments{
 \item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose
-findings' statistics you want to retrieve.}
+findings\' statistics you want to retrieve.}
 
 \item{FindingStatisticTypes}{[required] Types of finding statistics to retrieve.}
 
 \item{FindingCriteria}{Represents the criteria used for querying findings.}
 }
 \description{
-Lists Amazon GuardDuty findings' statistics for the specified detector
+Lists Amazon GuardDuty findings\' statistics for the specified detector
 ID.
 }
 \section{Request syntax}{

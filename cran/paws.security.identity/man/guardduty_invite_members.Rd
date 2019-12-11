@@ -27,7 +27,7 @@ inviting to GuardDuty as members.}
 \description{
 Invites other AWS accounts (created as members of the current AWS
 account by CreateMembers) to enable GuardDuty and allow the current AWS
-account to view and manage these accounts' GuardDuty findings on their
+account to view and manage these accounts\' GuardDuty findings on their
 behalf as the master account.
 }
 \section{Request syntax}{

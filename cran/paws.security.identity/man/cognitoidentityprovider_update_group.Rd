@@ -24,7 +24,10 @@ parameter, see .}
 Updates the specified group with the specified attributes.
 }
 \details{
-Requires developer credentials.
+Calling this action requires developer credentials.
+
+If you don\'t provide a value for an attribute, it will be set to the
+default value.
 }
 \section{Request syntax}{
 \preformatted{svc$update_group(

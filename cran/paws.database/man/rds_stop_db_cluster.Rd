@@ -12,7 +12,7 @@ This parameter is stored as a lowercase string.}
 }
 \description{
 Stops an Amazon Aurora DB cluster. When you stop a DB cluster, Aurora
-retains the DB cluster's metadata, including its endpoints and DB
+retains the DB cluster\'s metadata, including its endpoints and DB
 parameter groups. Aurora also retains the transaction logs so you can do
 a point-in-time restore if necessary.
 }

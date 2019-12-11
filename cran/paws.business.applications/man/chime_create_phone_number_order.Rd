@@ -14,7 +14,7 @@ chime_create_phone_number_order(ProductType, E164PhoneNumbers)
 \description{
 Creates an order for phone numbers to be provisioned. Choose from Amazon
 Chime Business Calling and Amazon Chime Voice Connector product types.
-For toll-free numbers, you can use only the Amazon Chime Voice Connector
+For toll-free numbers, you must use the Amazon Chime Voice Connector
 product type.
 }
 \section{Request syntax}{

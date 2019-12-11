@@ -93,13 +93,60 @@ ram_associate_resource_share <- function(resourceShareArn, resourceArns = NULL, 
 }
 .ram$operations$associate_resource_share <- ram_associate_resource_share
 
+#' Associates a permission with a resource share
+#'
+#' Associates a permission with a resource share.
+#'
+#' @usage
+#' ram_associate_resource_share_permission(resourceShareArn, permissionArn,
+#'   replace, clientToken)
+#'
+#' @param resourceShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource share.
+#' @param permissionArn &#91;required&#93; The ARN of the AWS RAM permission to associate with the resource share.
+#' @param replace Indicates whether the permission should replace the permissions that are
+#' currently associated with the resource share. Use `true` to replace the
+#' current permissions. Use `false` to add the permission to the current
+#' permission.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_resource_share_permission(
+#'   resourceShareArn = "string",
+#'   permissionArn = "string",
+#'   replace = TRUE|FALSE,
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ram_associate_resource_share_permission
+ram_associate_resource_share_permission <- function(resourceShareArn, permissionArn, replace = NULL, clientToken = NULL) {
+  op <- new_operation(
+    name = "AssociateResourceSharePermission",
+    http_method = "POST",
+    http_path = "/associateresourcesharepermission",
+    paginator = list()
+  )
+  input <- .ram$associate_resource_share_permission_input(resourceShareArn = resourceShareArn, permissionArn = permissionArn, replace = replace, clientToken = clientToken)
+  output <- .ram$associate_resource_share_permission_output()
+  config <- get_config()
+  svc <- .ram$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ram$operations$associate_resource_share_permission <- ram_associate_resource_share_permission
+
 #' Creates a resource share
 #'
 #' Creates a resource share.
 #'
 #' @usage
 #' ram_create_resource_share(name, resourceArns, principals, tags,
-#'   allowExternalPrincipals, clientToken)
+#'   allowExternalPrincipals, clientToken, permissionArns)
 #'
 #' @param name &#91;required&#93; The name of the resource share.
 #' @param resourceArns The Amazon Resource Names (ARN) of the resources to associate with the
@@ -108,10 +155,13 @@ ram_associate_resource_share <- function(resourceShareArn, resourceArns = NULL, 
 #' are IDs of AWS accounts, the ARN of an OU or organization from AWS
 #' Organizations.
 #' @param tags One or more tags.
-#' @param allowExternalPrincipals Indicates whether principals outside your organization can be associated
-#' with a resource share.
+#' @param allowExternalPrincipals Indicates whether principals outside your AWS organization can be
+#' associated with a resource share.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
+#' @param permissionArns The ARNs of the permissions to associate with the resource share. If you
+#' do not specify an ARN for the permission, AWS RAM automatically attaches
+#' the default version of the permission for each resource type.
 #'
 #' @section Request syntax:
 #' ```
@@ -130,21 +180,24 @@ ram_associate_resource_share <- function(resourceShareArn, resourceArns = NULL, 
 #'     )
 #'   ),
 #'   allowExternalPrincipals = TRUE|FALSE,
-#'   clientToken = "string"
+#'   clientToken = "string",
+#'   permissionArns = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname ram_create_resource_share
-ram_create_resource_share <- function(name, resourceArns = NULL, principals = NULL, tags = NULL, allowExternalPrincipals = NULL, clientToken = NULL) {
+ram_create_resource_share <- function(name, resourceArns = NULL, principals = NULL, tags = NULL, allowExternalPrincipals = NULL, clientToken = NULL, permissionArns = NULL) {
   op <- new_operation(
     name = "CreateResourceShare",
     http_method = "POST",
     http_path = "/createresourceshare",
     paginator = list()
   )
-  input <- .ram$create_resource_share_input(name = name, resourceArns = resourceArns, principals = principals, tags = tags, allowExternalPrincipals = allowExternalPrincipals, clientToken = clientToken)
+  input <- .ram$create_resource_share_input(name = name, resourceArns = resourceArns, principals = principals, tags = tags, allowExternalPrincipals = allowExternalPrincipals, clientToken = clientToken, permissionArns = permissionArns)
   output <- .ram$create_resource_share_output()
   config <- get_config()
   svc <- .ram$service(config)
@@ -204,7 +257,7 @@ ram_delete_resource_share <- function(resourceShareArn, clientToken = NULL) {
 #'   principals, clientToken)
 #'
 #' @param resourceShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource share.
-#' @param resourceArns The Amazon Resource Names (ARN) of the resources.
+#' @param resourceArns The Amazon Resource Names (ARNs) of the resources.
 #' @param principals The principals.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
@@ -243,9 +296,53 @@ ram_disassociate_resource_share <- function(resourceShareArn, resourceArns = NUL
 }
 .ram$operations$disassociate_resource_share <- ram_disassociate_resource_share
 
-#' Enables resource sharing within your organization
+#' Disassociates an AWS RAM permission from a resource share
 #'
-#' Enables resource sharing within your organization.
+#' Disassociates an AWS RAM permission from a resource share.
+#'
+#' @usage
+#' ram_disassociate_resource_share_permission(resourceShareArn,
+#'   permissionArn, clientToken)
+#'
+#' @param resourceShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource share.
+#' @param permissionArn &#91;required&#93; The ARN of the permission to disassociate from the resource share.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_resource_share_permission(
+#'   resourceShareArn = "string",
+#'   permissionArn = "string",
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ram_disassociate_resource_share_permission
+ram_disassociate_resource_share_permission <- function(resourceShareArn, permissionArn, clientToken = NULL) {
+  op <- new_operation(
+    name = "DisassociateResourceSharePermission",
+    http_method = "POST",
+    http_path = "/disassociateresourcesharepermission",
+    paginator = list()
+  )
+  input <- .ram$disassociate_resource_share_permission_input(resourceShareArn = resourceShareArn, permissionArn = permissionArn, clientToken = clientToken)
+  output <- .ram$disassociate_resource_share_permission_output()
+  config <- get_config()
+  svc <- .ram$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ram$operations$disassociate_resource_share_permission <- ram_disassociate_resource_share_permission
+
+#' Enables resource sharing within your AWS Organization
+#'
+#' Enables resource sharing within your AWS Organization.
+#' 
+#' The caller must be the master account for the AWS Organization.
 #'
 #' @usage
 #' ram_enable_sharing_with_aws_organization()
@@ -275,9 +372,49 @@ ram_enable_sharing_with_aws_organization <- function() {
 }
 .ram$operations$enable_sharing_with_aws_organization <- ram_enable_sharing_with_aws_organization
 
-#' Gets the policies for the specifies resources
+#' Gets the contents of an AWS RAM permission in JSON format
 #'
-#' Gets the policies for the specifies resources.
+#' Gets the contents of an AWS RAM permission in JSON format.
+#'
+#' @usage
+#' ram_get_permission(permissionArn, permissionVersion)
+#'
+#' @param permissionArn &#91;required&#93; The ARN of the permission.
+#' @param permissionVersion The identifier for the version of the permission.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_permission(
+#'   permissionArn = "string",
+#'   permissionVersion = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ram_get_permission
+ram_get_permission <- function(permissionArn, permissionVersion = NULL) {
+  op <- new_operation(
+    name = "GetPermission",
+    http_method = "POST",
+    http_path = "/getpermission",
+    paginator = list()
+  )
+  input <- .ram$get_permission_input(permissionArn = permissionArn, permissionVersion = permissionVersion)
+  output <- .ram$get_permission_output()
+  config <- get_config()
+  svc <- .ram$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ram$operations$get_permission <- ram_get_permission
+
+#' Gets the policies for the specified resources that you own and have
+#' shared
+#'
+#' Gets the policies for the specified resources that you own and have
+#' shared.
 #'
 #' @usage
 #' ram_get_resource_policies(resourceArns, principal, nextToken,
@@ -322,19 +459,24 @@ ram_get_resource_policies <- function(resourceArns, principal = NULL, nextToken 
 }
 .ram$operations$get_resource_policies <- ram_get_resource_policies
 
-#' Gets the associations for the specified resource share
+#' Gets the resources or principals for the resource shares that you own
 #'
-#' Gets the associations for the specified resource share.
+#' Gets the resources or principals for the resource shares that you own.
 #'
 #' @usage
 #' ram_get_resource_share_associations(associationType, resourceShareArns,
 #'   resourceArn, principal, associationStatus, nextToken, maxResults)
 #'
-#' @param associationType &#91;required&#93; The association type.
+#' @param associationType &#91;required&#93; The association type. Specify `PRINCIPAL` to list the principals that
+#' are associated with the specified resource share. Specify `RESOURCE` to
+#' list the resources that are associated with the specified resource
+#' share.
 #' @param resourceShareArns The Amazon Resource Names (ARN) of the resource shares.
-#' @param resourceArn The Amazon Resource Name (ARN) of the resource.
-#' @param principal The principal.
-#' @param associationStatus The status of the association.
+#' @param resourceArn The Amazon Resource Name (ARN) of the resource. You cannot specify this
+#' parameter if the association type is `PRINCIPAL`.
+#' @param principal The principal. You cannot specify this parameter if the association type
+#' is `RESOURCE`.
+#' @param associationStatus The association status.
 #' @param nextToken The token for the next page of results.
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
@@ -375,9 +517,9 @@ ram_get_resource_share_associations <- function(associationType, resourceShareAr
 }
 .ram$operations$get_resource_share_associations <- ram_get_resource_share_associations
 
-#' Gets the specified invitations for resource sharing
+#' Gets the invitations for resource sharing that you've received
 #'
-#' Gets the specified invitations for resource sharing.
+#' Gets the invitations for resource sharing that you\'ve received.
 #'
 #' @usage
 #' ram_get_resource_share_invitations(resourceShareInvitationArns,
@@ -424,9 +566,11 @@ ram_get_resource_share_invitations <- function(resourceShareInvitationArns = NUL
 }
 .ram$operations$get_resource_share_invitations <- ram_get_resource_share_invitations
 
-#' Gets the specified resource shares or all of your resource shares
+#' Gets the resource shares that you own or the resource shares that are
+#' shared with you
 #'
-#' Gets the specified resource shares or all of your resource shares.
+#' Gets the resource shares that you own or the resource shares that are
+#' shared with you.
 #'
 #' @usage
 #' ram_get_resource_shares(resourceShareArns, resourceShareStatus,
@@ -484,9 +628,100 @@ ram_get_resource_shares <- function(resourceShareArns = NULL, resourceShareStatu
 }
 .ram$operations$get_resource_shares <- ram_get_resource_shares
 
-#' Lists the principals with access to the specified resource
+#' Lists the resources in a resource share that is shared with you but that
+#' the invitation is still pending for
 #'
-#' Lists the principals with access to the specified resource.
+#' Lists the resources in a resource share that is shared with you but that
+#' the invitation is still pending for.
+#'
+#' @usage
+#' ram_list_pending_invitation_resources(resourceShareInvitationArn,
+#'   nextToken, maxResults)
+#'
+#' @param resourceShareInvitationArn &#91;required&#93; The Amazon Resource Name (ARN) of the invitation.
+#' @param nextToken The token for the next page of results.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_pending_invitation_resources(
+#'   resourceShareInvitationArn = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ram_list_pending_invitation_resources
+ram_list_pending_invitation_resources <- function(resourceShareInvitationArn, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListPendingInvitationResources",
+    http_method = "POST",
+    http_path = "/listpendinginvitationresources",
+    paginator = list()
+  )
+  input <- .ram$list_pending_invitation_resources_input(resourceShareInvitationArn = resourceShareInvitationArn, nextToken = nextToken, maxResults = maxResults)
+  output <- .ram$list_pending_invitation_resources_output()
+  config <- get_config()
+  svc <- .ram$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ram$operations$list_pending_invitation_resources <- ram_list_pending_invitation_resources
+
+#' Lists the AWS RAM permissions
+#'
+#' Lists the AWS RAM permissions.
+#'
+#' @usage
+#' ram_list_permissions(resourceType, nextToken, maxResults)
+#'
+#' @param resourceType Specifies the resource type for which to list permissions. For example,
+#' to list only permissions that apply to EC2 subnets, specify
+#' `ec2:Subnet`.
+#' @param nextToken The token for the next page of results.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_permissions(
+#'   resourceType = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ram_list_permissions
+ram_list_permissions <- function(resourceType = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListPermissions",
+    http_method = "POST",
+    http_path = "/listpermissions",
+    paginator = list()
+  )
+  input <- .ram$list_permissions_input(resourceType = resourceType, nextToken = nextToken, maxResults = maxResults)
+  output <- .ram$list_permissions_output()
+  config <- get_config()
+  svc <- .ram$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ram$operations$list_permissions <- ram_list_permissions
+
+#' Lists the principals that you have shared resources with or that have
+#' shared resources with you
+#'
+#' Lists the principals that you have shared resources with or that have
+#' shared resources with you.
 #'
 #' @usage
 #' ram_list_principals(resourceOwner, resourceArn, principals,
@@ -496,6 +731,11 @@ ram_get_resource_shares <- function(resourceShareArns = NULL, resourceShareStatu
 #' @param resourceArn The Amazon Resource Name (ARN) of the resource.
 #' @param principals The principals.
 #' @param resourceType The resource type.
+#' 
+#' Valid values: `ec2:CapacityReservation` \\| `ec2:Subnet` \\|
+#' `ec2:TrafficMirrorTarget` \\| `ec2:TransitGateway` \\|
+#' `license-manager:LicenseConfiguration` \\| `rds:Cluster` \\|
+#' `route53resolver:ResolverRule` I `resource-groups:Group`
 #' @param resourceShareArns The Amazon Resource Names (ARN) of the resource shares.
 #' @param nextToken The token for the next page of results.
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
@@ -539,9 +779,54 @@ ram_list_principals <- function(resourceOwner, resourceArn = NULL, principals = 
 }
 .ram$operations$list_principals <- ram_list_principals
 
-#' Lists the resources that the specified principal can access
+#' Lists the AWS RAM permissions that are associated with a resource share
 #'
-#' Lists the resources that the specified principal can access.
+#' Lists the AWS RAM permissions that are associated with a resource share.
+#'
+#' @usage
+#' ram_list_resource_share_permissions(resourceShareArn, nextToken,
+#'   maxResults)
+#'
+#' @param resourceShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource share.
+#' @param nextToken The token for the next page of results.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_resource_share_permissions(
+#'   resourceShareArn = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ram_list_resource_share_permissions
+ram_list_resource_share_permissions <- function(resourceShareArn, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListResourceSharePermissions",
+    http_method = "POST",
+    http_path = "/listresourcesharepermissions",
+    paginator = list()
+  )
+  input <- .ram$list_resource_share_permissions_input(resourceShareArn = resourceShareArn, nextToken = nextToken, maxResults = maxResults)
+  output <- .ram$list_resource_share_permissions_output()
+  config <- get_config()
+  svc <- .ram$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ram$operations$list_resource_share_permissions <- ram_list_resource_share_permissions
+
+#' Lists the resources that you added to a resource shares or the resources
+#' that are shared with you
+#'
+#' Lists the resources that you added to a resource shares or the resources
+#' that are shared with you.
 #'
 #' @usage
 #' ram_list_resources(resourceOwner, principal, resourceType, resourceArns,
@@ -550,6 +835,11 @@ ram_list_principals <- function(resourceOwner, resourceArn = NULL, principals = 
 #' @param resourceOwner &#91;required&#93; The type of owner.
 #' @param principal The principal.
 #' @param resourceType The resource type.
+#' 
+#' Valid values: `ec2:CapacityReservation` \\| `ec2:Subnet` \\|
+#' `ec2:TrafficMirrorTarget` \\| `ec2:TransitGateway` \\|
+#' `license-manager:LicenseConfiguration` \\| `rds:Cluster` \\|
+#' `route53resolver:ResolverRule` \\| `resource-groups:Group`
 #' @param resourceArns The Amazon Resource Names (ARN) of the resources.
 #' @param resourceShareArns The Amazon Resource Names (ARN) of the resource shares.
 #' @param nextToken The token for the next page of results.
@@ -594,6 +884,53 @@ ram_list_resources <- function(resourceOwner, principal = NULL, resourceType = N
 }
 .ram$operations$list_resources <- ram_list_resources
 
+#' Resource shares that were created by attaching a policy to a resource
+#' are visible only to the resource share owner, and the resource share
+#' cannot be modified in AWS RAM
+#'
+#' Resource shares that were created by attaching a policy to a resource
+#' are visible only to the resource share owner, and the resource share
+#' cannot be modified in AWS RAM.
+#' 
+#' Use this API action to promote the resource share. When you promote the
+#' resource share, it becomes:
+#' 
+#' -   Visible to all principals that it is shared with.
+#' 
+#' -   Modifiable in AWS RAM.
+#'
+#' @usage
+#' ram_promote_resource_share_created_from_policy(resourceShareArn)
+#'
+#' @param resourceShareArn &#91;required&#93; The ARN of the resource share to promote.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$promote_resource_share_created_from_policy(
+#'   resourceShareArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ram_promote_resource_share_created_from_policy
+ram_promote_resource_share_created_from_policy <- function(resourceShareArn) {
+  op <- new_operation(
+    name = "PromoteResourceShareCreatedFromPolicy",
+    http_method = "POST",
+    http_path = "/promoteresourcesharecreatedfrompolicy",
+    paginator = list()
+  )
+  input <- .ram$promote_resource_share_created_from_policy_input(resourceShareArn = resourceShareArn)
+  output <- .ram$promote_resource_share_created_from_policy_output()
+  config <- get_config()
+  svc <- .ram$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ram$operations$promote_resource_share_created_from_policy <- ram_promote_resource_share_created_from_policy
+
 #' Rejects an invitation to a resource share from another AWS account
 #'
 #' Rejects an invitation to a resource share from another AWS account.
@@ -634,9 +971,9 @@ ram_reject_resource_share_invitation <- function(resourceShareInvitationArn, cli
 }
 .ram$operations$reject_resource_share_invitation <- ram_reject_resource_share_invitation
 
-#' Adds the specified tags to the specified resource share
+#' Adds the specified tags to the specified resource share that you own
 #'
-#' Adds the specified tags to the specified resource share.
+#' Adds the specified tags to the specified resource share that you own.
 #'
 #' @usage
 #' ram_tag_resource(resourceShareArn, tags)
@@ -677,9 +1014,11 @@ ram_tag_resource <- function(resourceShareArn, tags) {
 }
 .ram$operations$tag_resource <- ram_tag_resource
 
-#' Removes the specified tags from the specified resource share
+#' Removes the specified tags from the specified resource share that you
+#' own
 #'
-#' Removes the specified tags from the specified resource share.
+#' Removes the specified tags from the specified resource share that you
+#' own.
 #'
 #' @usage
 #' ram_untag_resource(resourceShareArn, tagKeys)
@@ -717,9 +1056,9 @@ ram_untag_resource <- function(resourceShareArn, tagKeys) {
 }
 .ram$operations$untag_resource <- ram_untag_resource
 
-#' Updates the specified resource share
+#' Updates the specified resource share that you own
 #'
-#' Updates the specified resource share.
+#' Updates the specified resource share that you own.
 #'
 #' @usage
 #' ram_update_resource_share(resourceShareArn, name,
@@ -727,8 +1066,8 @@ ram_untag_resource <- function(resourceShareArn, tagKeys) {
 #'
 #' @param resourceShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource share.
 #' @param name The name of the resource share.
-#' @param allowExternalPrincipals Indicates whether principals outside your organization can be associated
-#' with a resource share.
+#' @param allowExternalPrincipals Indicates whether principals outside your AWS organization can be
+#' associated with a resource share.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #'

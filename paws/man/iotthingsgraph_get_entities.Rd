@@ -11,14 +11,14 @@ iotthingsgraph_get_entities(ids, namespaceVersion)
 
 The IDs should be in the following format.
 
-\code{urn:tdm:REGION/ACCOUNT ID/default:device:DEVICENAME}}
+\verb{urn:tdm:REGION/ACCOUNT ID/default:device:DEVICENAME}}
 
-\item{namespaceVersion}{The version of the user's namespace. Defaults to the latest version of
-the user's namespace.}
+\item{namespaceVersion}{The version of the user\'s namespace. Defaults to the latest version of
+the user\'s namespace.}
 }
 \description{
 Gets definitions of the specified entities. Uses the latest version of
-the user's namespace by default. This API returns the following TDM
+the user\'s namespace by default. This API returns the following TDM
 entities.
 }
 \details{
@@ -34,7 +34,7 @@ entities.
 \item Services
 }
 
-This action doesn't return definitions for systems, flows, and
+This action doesn\'t return definitions for systems, flows, and
 deployments.
 }
 \section{Request syntax}{

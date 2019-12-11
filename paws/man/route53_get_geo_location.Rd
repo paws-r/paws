@@ -24,7 +24,7 @@ route53_get_geo_location(ContinentCode, CountryCode, SubdivisionCode)
 
 \item{SubdivisionCode}{Amazon Route 53 uses the one- to three-letter subdivision codes that are
 specified in \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO standard 3166-1 alpha-2}. Route 53
-doesn't support subdivision codes for all countries. If you specify
+doesn\'t support subdivision codes for all countries. If you specify
 \code{subdivisioncode}, you must also specify \code{countrycode}.}
 }
 \description{
@@ -35,17 +35,17 @@ supported for Amazon Route 53 geolocation resource record sets.
 Use the following syntax to determine whether a continent is supported
 for geolocation:
 
-\code{GET /2013-04-01/geolocation?continentcode=<i>two-letter abbreviation for a continent</i> }
+\verb{GET /2013-04-01/geolocation?continentcode=<i>two-letter abbreviation for a continent</i> }
 
 Use the following syntax to determine whether a country is supported for
 geolocation:
 
-\code{GET /2013-04-01/geolocation?countrycode=<i>two-character country code</i> }
+\verb{GET /2013-04-01/geolocation?countrycode=<i>two-character country code</i> }
 
 Use the following syntax to determine whether a subdivision of a country
 is supported for geolocation:
 
-\code{GET /2013-04-01/geolocation?countrycode=<i>two-character country code</i>&amp;subdivisioncode=<i>subdivision code</i> }
+\verb{GET /2013-04-01/geolocation?countrycode=<i>two-character country code</i>&amp;subdivisioncode=<i>subdivision code</i> }
 }
 \section{Request syntax}{
 \preformatted{svc$get_geo_location(

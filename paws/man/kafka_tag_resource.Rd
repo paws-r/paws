@@ -14,7 +14,8 @@ kafka_tag_resource(ResourceArn, Tags)
 <p>The key-value pair for the resource tag.</p>}
 }
 \description{
-<p>Adds tags to the specified MSK resource.</p>
+\preformatted{        <p>Adds tags to the specified MSK resource.</p>
+}
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

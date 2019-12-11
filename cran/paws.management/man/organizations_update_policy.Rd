@@ -10,7 +10,7 @@ organizations_update_policy(PolicyId, Name, Description, Content)
 \item{PolicyId}{[required] The unique identifier (ID) of the policy that you want to update.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a policy ID
-string requires "p-" followed by from 8 to 128 lower-case letters or
+string requires \"p-\" followed by from 8 to 128 lowercase letters or
 digits.}
 
 \item{Name}{If provided, the new name for the policy.
@@ -22,17 +22,17 @@ ASCII character range.}
 \item{Description}{If provided, the new description for the policy.}
 
 \item{Content}{If provided, the new content for the policy. The text must be correctly
-formatted JSON that complies with the syntax for the policy's type. For
+formatted JSON that complies with the syntax for the policy\'s type. For
 more information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html}{Service Control Policy Syntax}
 in the \emph{AWS Organizations User Guide.}}
 }
 \description{
 Updates an existing policy with a new name, description, or content. If
-you don't supply any parameter, that value remains unchanged. You
-can't change a policy's type.
+you don\'t supply any parameter, that value remains unchanged. You
+can\'t change a policy\'s type.
 }
 \details{
-This operation can be called only from the organization's master
+This operation can be called only from the organization\'s master
 account.
 }
 \section{Request syntax}{
@@ -59,7 +59,7 @@ account.
 # the preceding example with a new JSON policy text string that allows S3
 # actions instead of EC2 actions:/n/n
 \donttest{svc$update_policy(
-  Content = "{ \\\\\\"Version\\\\\\": \\\\\\"2012-10-17\\\\\\", \\\\\\"Statement\\\\\\": {\\\\\\"Effect\\\\\\": ...",
+  Content = "{ \\\\\"Version\\\\\": \\\\\"2012-10-17\\\\\", \\\\\"Statement\\\\\": {\\\\\"Effect\\\\\": ...",
   PolicyId = "p-examplepolicyid111"
 )}
 

@@ -2,9 +2,8 @@
 % Please edit documentation in R/athena_operations.R
 \name{athena_get_query_results}
 \alias{athena_get_query_results}
-\title{Returns the results of a single query execution specified by
-QueryExecutionId if you have access to the workgroup in which the query
-ran}
+\title{Streams the results of a single query execution specified by
+QueryExecutionId from the Athena query results location in Amazon S3}
 \usage{
 athena_get_query_results(QueryExecutionId, NextToken, MaxResults)
 }
@@ -17,10 +16,22 @@ was truncated.}
 \item{MaxResults}{The maximum number of results (rows) to return in this request.}
 }
 \description{
-Returns the results of a single query execution specified by
-\code{QueryExecutionId} if you have access to the workgroup in which the
-query ran. This request does not execute the query but returns results.
-Use StartQueryExecution to run a query.
+Streams the results of a single query execution specified by
+\code{QueryExecutionId} from the Athena query results location in Amazon S3.
+For more information, see \href{https://docs.aws.amazon.com/athena/latest/ug/querying.html}{Query Results} in
+the \emph{Amazon Athena User Guide}. This request does not execute the query
+but returns results. Use StartQueryExecution to run a query.
+}
+\details{
+To stream query results successfully, the IAM principal with permission
+to call \code{GetQueryResults} also must have permissions to the Amazon S3
+\code{GetObject} action for the Athena query results location.
+
+IAM principals with permission to the Amazon S3 \code{GetObject} action for
+the query results location are able to retrieve query results from
+Amazon S3 even if permission to the \code{GetQueryResults} action is denied.
+To restrict user or role access, ensure that Amazon S3 permissions to
+the Athena query location are denied.
 }
 \section{Request syntax}{
 \preformatted{svc$get_query_results(

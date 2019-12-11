@@ -23,7 +23,7 @@ whether to always route each client to the same specific endpoint.
 
 AWS Global Accelerator uses a consistent-flow hashing algorithm to
 choose the optimal endpoint for a connection. If client affinity is
-\code{NONE}, Global Accelerator uses the "five-tuple" (5-tuple)
+\code{NONE}, Global Accelerator uses the \"five-tuple\" (5-tuple)
 properties---source IP address, source port, destination IP address,
 destination port, and protocol---to select the hash value, and then
 chooses the best endpoint. However, with this setting, if someone uses
@@ -33,7 +33,7 @@ changes.
 
 If you want a given client to always be routed to the same endpoint, set
 client affinity to \code{SOURCE_IP} instead. When you use the \code{SOURCE_IP}
-setting, Global Accelerator uses the "two-tuple" (2-tuple)
+setting, Global Accelerator uses the \"two-tuple\" (2-tuple)
 properties--- source (client) IP address and destination IP address---to
 select the hash value.
 

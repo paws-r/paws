@@ -32,7 +32,7 @@ suppose that you add the following to a \code{Rule}:
 \itemize{
 \item A \code{ByteMatchSet} that matches the value \code{BadBot} in the \code{User-Agent}
 header
-\item An \code{IPSet} that matches the IP address \code{192.0.2.44}
+\item An \code{IPSet} that matches the IP address \verb{192.0.2.44}
 }
 
 You then add the \code{Rule} to a \code{WebACL} and specify that you want to block

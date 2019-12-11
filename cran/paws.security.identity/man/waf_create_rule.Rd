@@ -8,14 +8,14 @@ and other predicates that identify the requests that you want to block}
 waf_create_rule(Name, MetricName, ChangeToken, Tags)
 }
 \arguments{
-\item{Name}{[required] A friendly name or description of the Rule. You can't change the name
+\item{Name}{[required] A friendly name or description of the Rule. You can\'t change the name
 of a \code{Rule} after you create it.}
 
 \item{MetricName}{[required] A friendly name or description for the metrics for this \code{Rule}. The name
 can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum
-length 128 and minimum length one. It can't contain whitespace or
-metric names reserved for AWS WAF, including "All" and
-"Default\_Action." You can't change the name of the metric after you
+length 128 and minimum length one. It can\'t contain whitespace or
+metric names reserved for AWS WAF, including \"All\" and
+\"Default\\_Action.\" You can\'t change the name of the metric after you
 create the \code{Rule}.}
 
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
@@ -31,7 +31,7 @@ suppose that you add the following to a \code{Rule}:
 }
 \details{
 \itemize{
-\item An \code{IPSet} that matches the IP address \code{192.0.2.44/32}
+\item An \code{IPSet} that matches the IP address \verb{192.0.2.44/32}
 \item A \code{ByteMatchSet} that matches \code{BadBot} in the \code{User-Agent} header
 }
 

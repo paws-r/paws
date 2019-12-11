@@ -2,7 +2,7 @@
 % Please edit documentation in R/firehose_operations.R
 \name{firehose_describe_delivery_stream}
 \alias{firehose_describe_delivery_stream}
-\title{Describes the specified delivery stream and gets the status}
+\title{Describes the specified delivery stream and its status}
 \usage{
 firehose_describe_delivery_stream(DeliveryStreamName, Limit,
   ExclusiveStartDestinationId)
@@ -18,10 +18,18 @@ information. Kinesis Data Firehose supports one destination per delivery
 stream.}
 }
 \description{
-Describes the specified delivery stream and gets the status. For
-example, after your delivery stream is created, call
-\code{DescribeDeliveryStream} to see whether the delivery stream is \code{ACTIVE}
-and therefore ready for data to be sent to it.
+Describes the specified delivery stream and its status. For example,
+after your delivery stream is created, call \code{DescribeDeliveryStream} to
+see whether the delivery stream is \code{ACTIVE} and therefore ready for data
+to be sent to it.
+}
+\details{
+If the status of a delivery stream is \code{CREATING_FAILED}, this status
+doesn\'t change, and you can\'t invoke CreateDeliveryStream again on it.
+However, you can invoke the DeleteDeliveryStream operation to delete it.
+If the status is \code{DELETING_FAILED}, you can force deletion by invoking
+DeleteDeliveryStream again but with
+DeleteDeliveryStreamInput\\$AllowForceDelete set to true.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_delivery_stream(

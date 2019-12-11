@@ -21,7 +21,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item \code{availability-zone} - The Availability Zone in which the Elastic
 Graphics accelerator resides.
 \item \code{elastic-gpu-health} - The status of the Elastic Graphics
-accelerator (\code{OK} \| \code{IMPAIRED}).
+accelerator (\code{OK} \\| \code{IMPAIRED}).
 \item \code{elastic-gpu-state} - The state of the Elastic Graphics accelerator
 (\code{ATTACHED}).
 \item \code{elastic-gpu-type} - The type of Elastic Graphics accelerator; for

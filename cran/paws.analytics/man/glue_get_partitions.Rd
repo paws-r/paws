@@ -9,13 +9,13 @@ glue_get_partitions(CatalogId, DatabaseName, TableName, Expression,
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the partitions in question reside. If
-none is supplied, the AWS account ID is used by default.}
+none is provided, the AWS account ID is used by default.}
 
 \item{DatabaseName}{[required] The name of the catalog database where the partitions reside.}
 
-\item{TableName}{[required] The name of the partitions' table.}
+\item{TableName}{[required] The name of the partitions\' table.}
 
-\item{Expression}{An expression filtering the partitions to be returned.
+\item{Expression}{An expression that filters the partitions to be returned.
 
 The expression uses SQL syntax similar to the SQL \code{WHERE} filter clause.
 The SQL statement parser
@@ -27,48 +27,49 @@ expression.
 
 =
 
-:   Checks if the values of the two operands are equal or not; if yes,
-then the condition becomes true.\preformatted{Example: Assume \'variable a\' holds 10 and \'variable b\' holds 20.
+:   Checks whether the values of the two operands are equal; if yes,
+then the condition becomes true.\preformatted{Example: Assume \\'variable a\\' holds 10 and \\'variable b\\' holds 20.
 
 (a = b) is not true.
 }
 
-\< \>
+\\< \\>
 
-:   Checks if the values of two operands are equal or not; if the values
-are not equal, then the condition becomes true.\preformatted{Example: (a \\< \\> b) is true.
+:   Checks whether the values of two operands are equal; if the values
+are not equal, then the condition becomes true.\preformatted{Example: (a \\\\< \\\\> b) is true.
 }
 
-\>
+\\>
 
-:   Checks if the value of the left operand is greater than the value of
-the right operand; if yes, then the condition becomes true.\preformatted{Example: (a \\> b) is not true.
+:   Checks whether the value of the left operand is greater than the
+value of the right operand; if yes, then the condition becomes true.\preformatted{Example: (a \\\\> b) is not true.
 }
 
-\<
+\\<
 
-:   Checks if the value of the left operand is less than the value of
-the right operand; if yes, then the condition becomes true.\preformatted{Example: (a \\< b) is true.
+:   Checks whether the value of the left operand is less than the value
+of the right operand; if yes, then the condition becomes true.\preformatted{Example: (a \\\\< b) is true.
 }
 
-\>=
+\\>=
 
-:   Checks if the value of the left operand is greater than or equal to
-the value of the right operand; if yes, then the condition becomes
-true.\preformatted{Example: (a \\>= b) is not true.
+:   Checks whether the value of the left operand is greater than or
+equal to the value of the right operand; if yes, then the condition
+becomes true.\preformatted{Example: (a \\\\>= b) is not true.
 }
 
-\<=
+\\<=
 
-:   Checks if the value of the left operand is less than or equal to the
-value of the right operand; if yes, then the condition becomes true.\preformatted{Example: (a \\<= b) is true.
+:   Checks whether the value of the left operand is less than or equal
+to the value of the right operand; if yes, then the condition
+becomes true.\preformatted{Example: (a \\\\<= b) is true.
 }
 
 AND, OR, IN, BETWEEN, LIKE, NOT, IS NULL
 
 :   Logical operators.
 
-\emph{Supported Partition Key Types}: The following are the the supported
+\emph{Supported Partition Key Types}: The following are the supported
 partition keys.
 \itemize{
 \item \code{string}
@@ -93,7 +94,7 @@ be compatible with the catalog partitions.
 \item{NextToken}{A continuation token, if this is not the first call to retrieve these
 partitions.}
 
-\item{Segment}{The segment of the table's partitions to scan in this request.}
+\item{Segment}{The segment of the table\'s partitions to scan in this request.}
 
 \item{MaxResults}{The maximum number of partitions to return in a single response.}
 }

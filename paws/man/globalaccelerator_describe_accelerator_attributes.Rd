@@ -7,8 +7,8 @@
 globalaccelerator_describe_accelerator_attributes(AcceleratorArn)
 }
 \arguments{
-\item{AcceleratorArn}{The Amazon Resource Name (ARN) of the accelerator with the attributes
-that you want to describe. Value is required.}
+\item{AcceleratorArn}{[required] The Amazon Resource Name (ARN) of the accelerator with the attributes
+that you want to describe.}
 }
 \description{
 Describe the attributes of an accelerator.

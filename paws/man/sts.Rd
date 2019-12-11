@@ -24,15 +24,15 @@ in \emph{Using IAM}. For information about using security tokens with other
 AWS products, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html}{AWS Services That Work with IAM}
 in the \emph{IAM User Guide}.
 
-If you're new to AWS and need additional technical information about a
-specific AWS product, you can find the product's technical
+If you\'re new to AWS and need additional technical information about a
+specific AWS product, you can find the product\'s technical
 documentation at \url{http://aws.amazon.com/documentation/}.
 
 \strong{Endpoints}
 
 By default, AWS Security Token Service (STS) is available as a global
 service, and all AWS STS requests go to a single endpoint at
-\code{https://sts.amazonaws.com}. Global requests map to the US East (N.
+\verb{https://sts.amazonaws.com}. Global requests map to the US East (N.
 Virginia) region. AWS recommends using Regional AWS STS endpoints
 instead of the global endpoint to reduce latency, build in redundancy,
 and increase session token validity. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Managing AWS STS in an AWS Region}
@@ -59,7 +59,7 @@ provide the Region alone for manually enabled Regions, such as Asia
 Pacific (Hong Kong). In this case, the calls are directed to the STS
 Regional endpoint. However, if you provide the Region alone for Regions
 enabled by default, the calls are directed to the global endpoint of
-\code{https://sts.amazonaws.com}.
+\verb{https://sts.amazonaws.com}.
 
 To view the list of AWS STS endpoints and whether they are active by
 default, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html#id_credentials_temp_enable-regions_writing_code}{Writing Code to Use AWS STS Regions}
@@ -80,7 +80,7 @@ in those Regions. For more information, see \href{https://docs.aws.amazon.com/aw
 in the \emph{AWS CloudTrail User Guide}.
 
 AWS Security Token Service (STS) is a global service with a single
-endpoint at \code{https://sts.amazonaws.com}. Calls to this endpoint are
+endpoint at \verb{https://sts.amazonaws.com}. Calls to this endpoint are
 logged as calls to a global service. However, because this endpoint is
 physically located in the US East (N. Virginia) Region, your logs list
 \code{us-east-1} as the event Region. CloudTrail does not write these logs to
@@ -119,7 +119,8 @@ your log files, see the \href{https://docs.aws.amazon.com/awscloudtrail/latest/u
 \link[=sts_assume_role_with_saml]{assume_role_with_saml} \tab Returns a set of temporary security credentials for users who have been authenticated via a SAML authentication response \cr
 \link[=sts_assume_role_with_web_identity]{assume_role_with_web_identity} \tab Returns a set of temporary security credentials for users who have been authenticated in a mobile or web application with a web identity provider\cr
 \link[=sts_decode_authorization_message]{decode_authorization_message} \tab Decodes additional information about the authorization status of a request from an encoded message returned in response to an AWS request \cr
-\link[=sts_get_caller_identity]{get_caller_identity} \tab Returns details about the IAM identity whose credentials are used to call the API \cr
+\link[=sts_get_access_key_info]{get_access_key_info} \tab Returns the account identifier for the specified access key ID \cr
+\link[=sts_get_caller_identity]{get_caller_identity} \tab Returns details about the IAM user or role whose credentials are used to call the operation \cr
 \link[=sts_get_federation_token]{get_federation_token} \tab Returns a set of temporary security credentials (consisting of an access key ID, a secret access key, and a security token) for a federated user \cr
 \link[=sts_get_session_token]{get_session_token} \tab Returns a set of temporary credentials for an AWS account or IAM user
 }
@@ -129,11 +130,28 @@ your log files, see the \href{https://docs.aws.amazon.com/awscloudtrail/latest/u
 # 
 \donttest{svc <- sts()
 svc$assume_role(
-  DurationSeconds = 3600L,
   ExternalId = "123ABC",
-  Policy = "{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":[{\\"Sid\\":\\"Stmt1\\",\\"Effect\\":...",
+  Policy = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"Stmt1\",\"Effect\":...",
   RoleArn = "arn:aws:iam::123456789012:role/demo",
-  RoleSessionName = "Bob"
+  RoleSessionName = "testAssumeRoleSession",
+  Tags = list(
+    list(
+      Key = "Project",
+      Value = "Unicorn"
+    ),
+    list(
+      Key = "Team",
+      Value = "Automation"
+    ),
+    list(
+      Key = "Cost-Center",
+      Value = "12345"
+    )
+  ),
+  TransitiveTagKeys = list(
+    "Project",
+    "Cost-Center"
+  )
 )}
 
 }

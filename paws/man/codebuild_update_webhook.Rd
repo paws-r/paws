@@ -18,11 +18,11 @@ all branches are built.
 It is recommended that you use \code{filterGroups} instead of \code{branchFilter}.}
 
 \item{rotateSecret}{A boolean value that specifies whether the associated GitHub
-repository's secret token should be updated. If you use Bitbucket for
+repository\'s secret token should be updated. If you use Bitbucket for
 your repository, \code{rotateSecret} is ignored.}
 
 \item{filterGroups}{An array of arrays of \code{WebhookFilter} objects used to determine if a
-webhook event can trigger a build. A filter group must pcontain at least
+webhook event can trigger a build. A filter group must contain at least
 one \code{EVENT} \code{WebhookFilter}.}
 }
 \description{

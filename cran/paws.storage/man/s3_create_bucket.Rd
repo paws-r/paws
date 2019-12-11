@@ -11,9 +11,9 @@ s3_create_bucket(ACL, Bucket, CreateBucketConfiguration,
 \arguments{
 \item{ACL}{The canned ACL to apply to the bucket.}
 
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The name of the bucket to create.}
 
-\item{CreateBucketConfiguration}{}
+\item{CreateBucketConfiguration}{The configuration information for the bucket.}
 
 \item{GrantFullControl}{Allows grantee the read, write, read ACP, and write ACP permissions on
 the bucket.}
@@ -27,11 +27,74 @@ bucket.}
 
 \item{GrantWriteACP}{Allows grantee to write the ACL for the applicable bucket.}
 
-\item{ObjectLockEnabledForBucket}{Specifies whether you want Amazon S3 object lock to be enabled for the
-new bucket.}
+\item{ObjectLockEnabledForBucket}{Specifies whether you want S3 Object Lock to be enabled for the new
+bucket.}
 }
 \description{
-Creates a new bucket.
+Creates a new bucket. To create a bucket, you must register with Amazon
+S3 and have a valid AWS Access Key ID to authenticate requests.
+Anonymous requests are never allowed to create buckets. By creating the
+bucket, you become the bucket owner.
+}
+\details{
+Not every string is an acceptable bucket name. For information on bucket
+naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html}{Working with Amazon S3 Buckets}.
+
+By default, the bucket is created in the US East (N. Virginia) Region.
+You can optionally specify a Region in the request body. You might
+choose a Region to optimize latency, minimize costs, or address
+regulatory requirements. For example, if you reside in Europe, you will
+probably find it advantageous to create buckets in the EU (Ireland)
+Region. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html#access-bucket-intro}{How to Select a Region for Your Buckets}.
+
+If you send your create bucket request to the \code{s3.amazonaws.com}
+endpoint, the request goes to the us-east-1 Region. Accordingly, the
+signature calculations in Signature Version 4 must use us-east-1 as the
+Region, even if the location constraint in the request specifies another
+Region where the bucket is to be created. If you create a bucket in a
+Region other than US East (N. Virginia), your application must be able
+to handle 307 redirect. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html}{Virtual Hosting of Buckets}.
+
+When creating a bucket using this operation, you can optionally specify
+the accounts or groups that should be granted specific permissions on
+the bucket. There are two ways to grant the appropriate permissions
+using the request headers.
+\itemize{
+\item Specify a canned ACL using the \code{x-amz-acl} request header. Amazon S3
+supports a set of predefined ACLs, known as \emph{canned ACLs}. Each
+canned ACL has a predefined set of grantees and permissions. For
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL}{Canned ACL}.
+\item Specify access permissions explicitly using the \code{x-amz-grant-read},
+\code{x-amz-grant-write}, \code{x-amz-grant-read-acp},
+\code{x-amz-grant-write-acp}, and \code{x-amz-grant-full-control} headers.
+These headers map to the set of permissions Amazon S3 supports in an
+ACL. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html}{Access Control List (ACL) Overview}.
+
+You specify each grantee as a type=value pair, where the type is one
+of the following:
+\itemize{
+\item \code{emailAddress} -- if the value specified is the email address of
+an AWS account
+\item \code{id} -- if the value specified is the canonical user ID of an
+AWS account
+\item \code{uri} -- if you are granting permissions to a predefined group
+}
+
+For example, the following \code{x-amz-grant-read} header grants the AWS
+accounts identified by email addresses permissions to read object
+data and its metadata:
+
+\verb{x-amz-grant-read: emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com" }
+}
+
+You can use either a canned ACL or specify access permissions
+explicitly. You cannot do both.
+
+The following operations are related to \code{CreateBucket}:
+\itemize{
+\item PutObject
+\item DeleteBucket
+}
 }
 \section{Request syntax}{
 \preformatted{svc$create_bucket(
@@ -51,6 +114,11 @@ Creates a new bucket.
 }
 
 \examples{
+# The following example creates a bucket.
+\donttest{svc$create_bucket(
+  Bucket = "examplebucket"
+)}
+
 # The following example creates a bucket. The request specifies an AWS
 # region where to create the bucket.
 \donttest{svc$create_bucket(
@@ -58,11 +126,6 @@ Creates a new bucket.
   CreateBucketConfiguration = list(
     LocationConstraint = "eu-west-1"
   )
-)}
-
-# The following example creates a bucket.
-\donttest{svc$create_bucket(
-  Bucket = "examplebucket"
 )}
 
 }

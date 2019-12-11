@@ -9,12 +9,12 @@ appstream_disable_user(UserName, AuthenticationType)
 \arguments{
 \item{UserName}{[required] The email address of the user.
 
-Users' email addresses are case-sensitive.}
+Users\' email addresses are case-sensitive.}
 
 \item{AuthenticationType}{[required] The authentication type for the user. You must specify USERPOOL.}
 }
 \description{
-Disables the specified user in the user pool. Users can't sign in to
+Disables the specified user in the user pool. Users can\'t sign in to
 AppStream 2.0 until they are re-enabled. This action does not delete the
 user.
 }

@@ -35,7 +35,7 @@ tasks such as the following automatically:
 \item \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html}{Amazon SQS Message Attributes}
 \item \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html}{Amazon SQS Dead-Letter Queues}
 }
-\item \href{http://docs.aws.amazon.com/cli/latest/reference/sqs/index.html}{Amazon SQS in the AWS CLI CommandReference}
+\item \href{http://docs.aws.amazon.com/cli/latest/reference/sqs/index.html}{Amazon SQS in the \emph{AWS CLI Command Reference}}
 \item \emph{Amazon Web Services General Reference}
 \itemize{
 \item \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region}{Regions and Endpoints}

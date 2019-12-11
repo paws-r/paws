@@ -20,30 +20,30 @@ not available in Chef 12 stacks.}
 
 \item{Name}{[required] The layer name, which is used by the console.}
 
-\item{Shortname}{[required] For custom layers only, use this parameter to specify the layer's short
+\item{Shortname}{[required] For custom layers only, use this parameter to specify the layer\'s short
 name, which is used internally by AWS OpsWorks Stacks and by Chef
 recipes. The short name is also used as the name for the directory where
 your app files are installed. It can have a maximum of 200 characters,
-which are limited to the alphanumeric characters, '-', '\_', and
-'.'.
+which are limited to the alphanumeric characters, \'-\', \'\\_\', and
+\'.\'.
 
-The built-in layers' short names are defined by AWS OpsWorks Stacks.
+The built-in layers\' short names are defined by AWS OpsWorks Stacks.
 For more information, see the \href{https://docs.aws.amazon.com/opsworks/latest/userguide/layers.html}{Layer Reference}.}
 
 \item{Attributes}{One or more user-defined key-value pairs to be added to the stack
 attributes.
 
 To create a cluster layer, set the \code{EcsClusterArn} attribute to the
-cluster's ARN.}
+cluster\'s ARN.}
 
 \item{CloudWatchLogsConfiguration}{Specifies CloudWatch Logs configuration options for the layer. For more
 information, see CloudWatchLogsLogStream.}
 
-\item{CustomInstanceProfileArn}{The ARN of an IAM profile to be used for the layer's EC2 instances. For
+\item{CustomInstanceProfileArn}{The ARN of an IAM profile to be used for the layer\'s EC2 instances. For
 more information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
 
 \item{CustomJson}{A JSON-formatted string containing custom stack configuration and
-deployment attributes to be installed on the layer's instances. For
+deployment attributes to be installed on the layer\'s instances. For
 more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html}{Using Custom JSON}.
 This feature is supported as of version 1.7.42 of the AWS CLI.}
 
@@ -51,16 +51,16 @@ This feature is supported as of version 1.7.42 of the AWS CLI.}
 
 \item{Packages}{An array of \code{Package} objects that describes the layer packages.}
 
-\item{VolumeConfigurations}{A \code{VolumeConfigurations} object that describes the layer's Amazon EBS
+\item{VolumeConfigurations}{A \code{VolumeConfigurations} object that describes the layer\'s Amazon EBS
 volumes.}
 
 \item{EnableAutoHealing}{Whether to disable auto healing for the layer.}
 
 \item{AutoAssignElasticIps}{Whether to automatically assign an \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP address}
-to the layer's instances. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html}{How to Edit a Layer}.}
+to the layer\'s instances. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html}{How to Edit a Layer}.}
 
 \item{AutoAssignPublicIps}{For stacks that are running in a VPC, whether to automatically assign a
-public IP address to the layer's instances. For more information, see
+public IP address to the layer\'s instances. For more information, see
 \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html}{How to Edit a Layer}.}
 
 \item{CustomRecipes}{A \code{LayerCustomRecipes} object that specifies the layer custom recipes.}

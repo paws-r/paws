@@ -32,8 +32,8 @@ number of records specified by \code{MaxRecords}.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a pagination token
-called a marker is included in the response so that the remaining
-results can be retrieved.
+called a marker is included in the response so that you can retrieve the
+remaining results.
 
 Default: 100
 

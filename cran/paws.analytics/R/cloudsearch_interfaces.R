@@ -159,6 +159,18 @@ NULL
   return(populate(args, shape))
 }
 
+.cloudsearch$describe_domain_endpoint_options_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), Deployed = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudsearch$describe_domain_endpoint_options_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DomainEndpointOptions = structure(list(Options = structure(list(EnforceHTTPS = structure(logical(0), tags = list(type = "boolean")), TLSSecurityPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .cloudsearch$describe_domains_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DomainNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -262,6 +274,18 @@ NULL
 .cloudsearch$update_availability_options_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(AvailabilityOptions = structure(list(Options = structure(logical(0), tags = list(type = "boolean")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudsearch$update_domain_endpoint_options_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), DomainEndpointOptions = structure(list(EnforceHTTPS = structure(logical(0), tags = list(type = "boolean")), TLSSecurityPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudsearch$update_domain_endpoint_options_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DomainEndpointOptions = structure(list(Options = structure(list(EnforceHTTPS = structure(logical(0), tags = list(type = "boolean")), TLSSecurityPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

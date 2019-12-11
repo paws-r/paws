@@ -5,7 +5,7 @@
 \title{Creates a resource share}
 \usage{
 ram_create_resource_share(name, resourceArns, principals, tags,
-  allowExternalPrincipals, clientToken)
+  allowExternalPrincipals, clientToken, permissionArns)
 }
 \arguments{
 \item{name}{[required] The name of the resource share.}
@@ -19,11 +19,15 @@ Organizations.}
 
 \item{tags}{One or more tags.}
 
-\item{allowExternalPrincipals}{Indicates whether principals outside your organization can be associated
-with a resource share.}
+\item{allowExternalPrincipals}{Indicates whether principals outside your AWS organization can be
+associated with a resource share.}
 
 \item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
+
+\item{permissionArns}{The ARNs of the permissions to associate with the resource share. If you
+do not specify an ARN for the permission, AWS RAM automatically attaches
+the default version of the permission for each resource type.}
 }
 \description{
 Creates a resource share.
@@ -44,7 +48,10 @@ Creates a resource share.
     )
   ),
   allowExternalPrincipals = TRUE|FALSE,
-  clientToken = "string"
+  clientToken = "string",
+  permissionArns = list(
+    "string"
+  )
 )
 }
 }

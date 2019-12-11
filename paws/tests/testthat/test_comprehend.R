@@ -26,6 +26,14 @@ test_that("list_dominant_language_detection_jobs", {
   expect_error(svc$list_dominant_language_detection_jobs(MaxResults = 20), NA)
 })
 
+test_that("list_endpoints", {
+  expect_error(svc$list_endpoints(), NA)
+})
+
+test_that("list_endpoints", {
+  expect_error(svc$list_endpoints(MaxResults = 20), NA)
+})
+
 test_that("list_entities_detection_jobs", {
   expect_error(svc$list_entities_detection_jobs(), NA)
 })

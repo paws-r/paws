@@ -11,7 +11,7 @@ iotthingsgraph_deprecate_system_template(id)
 
 The ID should be in the following format.
 
-\code{urn:tdm:REGION/ACCOUNT ID/default:system:SYSTEMNAME}}
+\verb{urn:tdm:REGION/ACCOUNT ID/default:system:SYSTEMNAME}}
 }
 \description{
 Deprecates the specified system.

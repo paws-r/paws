@@ -9,7 +9,7 @@ ec2_revoke_security_group_ingress(CidrIp, FromPort, GroupId, GroupName,
   SourceSecurityGroupOwnerId, ToPort, DryRun)
 }
 \arguments{
-\item{CidrIp}{The CIDR IP address range. You can't specify this parameter when
+\item{CidrIp}{The CIDR IP address range. You can\'t specify this parameter when
 specifying a source security group.}
 
 \item{FromPort}{The start of port range for the TCP and UDP protocols, or an ICMP type
@@ -23,21 +23,21 @@ nondefault VPC, you must specify the security group ID.}
 specify either the security group ID or the security group name in the
 request.}
 
-\item{IpPermissions}{The sets of IP permissions. You can't specify a source security group
+\item{IpPermissions}{The sets of IP permissions. You can\'t specify a source security group
 and a CIDR IP address range in the same set of permissions.}
 
 \item{IpProtocol}{The IP protocol name (\code{tcp}, \code{udp}, \code{icmp}) or number (see \href{http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml}{Protocol Numbers}).
 Use \code{-1} to specify all.}
 
 \item{SourceSecurityGroupName}{[EC2-Classic, default VPC] The name of the source security group. You
-can't specify this parameter in combination with the following
+can\'t specify this parameter in combination with the following
 parameters: the CIDR IP address range, the start of the port range, the
 IP protocol, and the end of the port range. For EC2-VPC, the source
 security group must be in the same VPC. To revoke a specific rule for an
 IP protocol and port range, use a set of IP permissions instead.}
 
 \item{SourceSecurityGroupOwnerId}{[EC2-Classic] The AWS account ID of the source security group, if the
-source security group is in a different account. You can't specify this
+source security group is in a different account. You can\'t specify this
 parameter in combination with the following parameters: the CIDR IP
 address range, the IP protocol, the start of the port range, and the end
 of the port range. To revoke a specific rule for an IP protocol and port
@@ -55,11 +55,11 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Removes the specified ingress rules from a security group. To remove a
 rule, the values that you specify (for example, ports) must match the
-existing rule's values exactly.
+existing rule\'s values exactly.
 }
 \details{
 [EC2-Classic only] If the values you specify do not match the existing
-rule's values, no error is returned. Use DescribeSecurityGroups to
+rule\'s values, no error is returned. Use DescribeSecurityGroups to
 verify that the rule has been removed.
 
 Each rule consists of the protocol and the CIDR range or source security

@@ -2,7 +2,8 @@
 % Please edit documentation in R/applicationautoscaling_operations.R
 \name{applicationautoscaling_delete_scheduled_action}
 \alias{applicationautoscaling_delete_scheduled_action}
-\title{Deletes the specified Application Auto Scaling scheduled action}
+\title{Deletes the specified scheduled action for an Application Auto Scaling
+scalable target}
 \usage{
 applicationautoscaling_delete_scheduled_action(ServiceNamespace,
   ScheduledActionName, ResourceId, ScalableDimension)
@@ -10,7 +11,7 @@ applicationautoscaling_delete_scheduled_action(ServiceNamespace,
 \arguments{
 \item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource or
 \code{custom-resource} for a resource provided by your own application or
-service. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}
+service. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{ScheduledActionName}{[required] The name of the scheduled action.}
@@ -21,22 +22,22 @@ This string consists of the resource type and unique identifier.
 \item ECS service - The resource type is \code{service} and the unique
 identifier is the cluster name and service name. Example:
 \code{service/default/sample-webapp}.
-\item Spot fleet request - The resource type is \code{spot-fleet-request} and
-the unique identifier is the Spot fleet request ID. Example:
-\code{spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE}.
+\item Spot Fleet request - The resource type is \code{spot-fleet-request} and
+the unique identifier is the Spot Fleet request ID. Example:
+\verb{spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE}.
 \item EMR cluster - The resource type is \code{instancegroup} and the unique
 identifier is the cluster ID and instance group ID. Example:
-\code{instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0}.
+\verb{instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0}.
 \item AppStream 2.0 fleet - The resource type is \code{fleet} and the unique
 identifier is the fleet name. Example: \code{fleet/sample-fleet}.
 \item DynamoDB table - The resource type is \code{table} and the unique
-identifier is the resource ID. Example: \code{table/my-table}.
+identifier is the table name. Example: \code{table/my-table}.
 \item DynamoDB global secondary index - The resource type is \code{index} and
-the unique identifier is the resource ID. Example:
+the unique identifier is the index name. Example:
 \code{table/my-table/index/my-table-index}.
 \item Aurora DB cluster - The resource type is \code{cluster} and the unique
 identifier is the cluster name. Example: \code{cluster:my-db-cluster}.
-\item Amazon SageMaker endpoint variants - The resource type is \code{variant}
+\item Amazon SageMaker endpoint variant - The resource type is \code{variant}
 and the unique identifier is the resource ID. Example:
 \code{endpoint/my-end-point/variant/KMeansClustering}.
 \item Custom resources are not supported with a resource type. This
@@ -44,6 +45,14 @@ parameter must specify the \code{OutputValue} from the CloudFormation
 template stack used to access the resources. The unique identifier
 is defined by the service provider. More information is available in
 our \href{https://github.com/aws/aws-auto-scaling-custom-resource}{GitHub repository}.
+\item Amazon Comprehend document classification endpoint - The resource
+type and unique identifier are specified using the endpoint ARN.
+Example:
+\code{arn:aws:comprehend:us-west-2:123456789012:document-classifier-endpoint/EXAMPLE}.
+\item Lambda provisioned concurrency - The resource type is \code{function} and
+the unique identifier is the function name with a function version
+or alias name suffix that is not \verb{$LATEST}. Example:
+\verb{function:my-function:prod} or \verb{function:my-function:1}.
 }}
 
 \item{ScalableDimension}{[required] The scalable dimension. This string consists of the service namespace,
@@ -52,7 +61,7 @@ resource type, and scaling property.
 \item \code{ecs:service:DesiredCount} - The desired task count of an ECS
 service.
 \item \code{ec2:spot-fleet-request:TargetCapacity} - The target capacity of a
-Spot fleet request.
+Spot Fleet request.
 \item \code{elasticmapreduce:instancegroup:InstanceCount} - The instance count
 of an EMR Instance Group.
 \item \code{appstream:fleet:DesiredCapacity} - The desired capacity of an
@@ -72,17 +81,27 @@ Aurora PostgreSQL-compatible edition.
 instances for an Amazon SageMaker model endpoint variant.
 \item \code{custom-resource:ResourceType:Property} - The scalable dimension for
 a custom resource provided by your own application or service.
+\item \code{comprehend:document-classifier-endpoint:DesiredInferenceUnits} -
+The number of inference units for an Amazon Comprehend document
+classification endpoint.
+\item \verb{lambda:function:ProvisionedConcurrency} - The provisioned
+concurrency for a Lambda function.
 }}
 }
 \description{
-Deletes the specified Application Auto Scaling scheduled action.
+Deletes the specified scheduled action for an Application Auto Scaling
+scalable target.
+}
+\details{
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html#delete-scheduled-action}{Delete a Scheduled Action}
+in the \emph{Application Auto Scaling User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_scheduled_action(
-  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
+  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda",
   ScheduledActionName = "string",
   ResourceId = "string",
-  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"
+  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"
 )
 }
 }

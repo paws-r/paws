@@ -8,10 +8,10 @@ codepipeline_get_pipeline(name, version)
 }
 \arguments{
 \item{name}{[required] The name of the pipeline for which you want to get information. Pipeline
-names must be unique under an Amazon Web Services (AWS) user account.}
+names must be unique under an AWS user account.}
 
 \item{version}{The version number of the pipeline. If you do not specify a version,
-defaults to the most current version.}
+defaults to the current version.}
 }
 \description{
 Returns the metadata, structure, stages, and actions of a pipeline. Can

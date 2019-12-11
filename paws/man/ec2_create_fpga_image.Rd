@@ -6,7 +6,7 @@
 (DCP)}
 \usage{
 ec2_create_fpga_image(DryRun, InputStorageLocation, LogsStorageLocation,
-  Description, Name, ClientToken)
+  Description, Name, ClientToken, TagSpecifications)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -25,6 +25,8 @@ must be a tarball.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
+
+\item{TagSpecifications}{The tags to apply to the FPGA image during creation.}
 }
 \description{
 Creates an Amazon FPGA Image (AFI) from the specified design checkpoint
@@ -51,7 +53,18 @@ For more information, see the \href{https://github.com/aws/aws-fpga/}{AWS FPGA H
   ),
   Description = "string",
   Name = "string",
-  ClientToken = "string"
+  ClientToken = "string",
+  TagSpecifications = list(
+    list(
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"host-reservation"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
 )
 }
 }

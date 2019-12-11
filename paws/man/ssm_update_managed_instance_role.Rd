@@ -3,7 +3,7 @@
 \name{ssm_update_managed_instance_role}
 \alias{ssm_update_managed_instance_role}
 \title{Assigns or changes an Amazon Identity and Access Management (IAM) role
-to the managed instance}
+for the managed instance}
 \usage{
 ssm_update_managed_instance_role(InstanceId, IamRole)
 }
@@ -14,7 +14,7 @@ ssm_update_managed_instance_role(InstanceId, IamRole)
 }
 \description{
 Assigns or changes an Amazon Identity and Access Management (IAM) role
-to the managed instance.
+for the managed instance.
 }
 \section{Request syntax}{
 \preformatted{svc$update_managed_instance_role(

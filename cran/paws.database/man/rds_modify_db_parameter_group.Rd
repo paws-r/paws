@@ -11,7 +11,7 @@ rds_modify_db_parameter_group(DBParameterGroupName, Parameters)
 
 Constraints:
 \itemize{
-\item If supplied, must match the name of an existing DBParameterGroup.
+\item If supplied, must match the name of an existing \code{DBParameterGroup}.
 }}
 
 \item{Parameters}{[required] An array of parameter names, values, and the apply method for the

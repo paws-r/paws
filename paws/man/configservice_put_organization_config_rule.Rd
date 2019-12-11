@@ -2,23 +2,52 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_put_organization_config_rule}
 \alias{configservice_put_organization_config_rule}
-\title{Put organization config rule}
+\title{Adds or updates organization config rule for your entire organization
+evaluating whether your AWS resources comply with your desired
+configurations}
 \usage{
 configservice_put_organization_config_rule(OrganizationConfigRuleName,
   OrganizationManagedRuleMetadata, OrganizationCustomRuleMetadata,
   ExcludedAccounts)
 }
 \arguments{
-\item{OrganizationConfigRuleName}{[required]}
+\item{OrganizationConfigRuleName}{[required] The name that you assign to an organization config rule.}
 
-\item{OrganizationManagedRuleMetadata}{}
+\item{OrganizationManagedRuleMetadata}{An \code{OrganizationManagedRuleMetadata} object.}
 
-\item{OrganizationCustomRuleMetadata}{}
+\item{OrganizationCustomRuleMetadata}{An \code{OrganizationCustomRuleMetadata} object.}
 
-\item{ExcludedAccounts}{}
+\item{ExcludedAccounts}{A comma-separated list of accounts that you want to exclude from an
+organization config rule.}
 }
 \description{
-Put organization config rule
+Adds or updates organization config rule for your entire organization
+evaluating whether your AWS resources comply with your desired
+configurations. Only a master account can create or update an
+organization config rule.
+}
+\details{
+This API enables organization service access through the
+\code{EnableAWSServiceAccess} action and creates a service linked role
+\code{AWSServiceRoleForConfigMultiAccountSetup} in the master account of your
+organization. The service linked role is created only when the role does
+not exist in the master account. AWS Config verifies the existence of
+role with \code{GetRole} action.
+
+You can use this action to create both custom AWS Config rules and AWS
+managed Config rules. If you are adding a new custom AWS Config rule,
+you must first create AWS Lambda function in the master account that the
+rule invokes to evaluate your resources. When you use the
+\code{PutOrganizationConfigRule} action to add the rule to AWS Config, you
+must specify the Amazon Resource Name (ARN) that AWS Lambda assigns to
+the function. If you are adding an AWS managed Config rule, specify the
+rule\'s identifier for the \code{RuleIdentifier} key.
+
+The maximum number of organization config rules that AWS Config supports
+is 150.
+
+Specify either \code{OrganizationCustomRuleMetadata} or
+\code{OrganizationManagedRuleMetadata}.
 }
 \section{Request syntax}{
 \preformatted{svc$put_organization_config_rule(

@@ -5,7 +5,7 @@
 \title{Allocates a Dedicated Host to your account}
 \usage{
 ec2_allocate_hosts(AutoPlacement, AvailabilityZone, ClientToken,
-  InstanceType, Quantity, TagSpecifications, HostRecovery)
+  InstanceType, InstanceFamily, Quantity, TagSpecifications, HostRecovery)
 }
 \arguments{
 \item{AutoPlacement}{Indicates whether the host accepts any untargeted instance launches that
@@ -21,9 +21,23 @@ Default: \code{on}}
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 
-\item{InstanceType}{[required] Specifies the instance type for which to configure your Dedicated Hosts.
-When you specify the instance type, that is the only instance type that
-you can launch onto that host.}
+\item{InstanceType}{Specifies the instance type to be supported by the Dedicated Hosts. If
+you specify an instance type, the Dedicated Hosts support instances of
+the specified instance type only.
+
+If you want the Dedicated Hosts to support multiple instance types in a
+specific instance family, omit this parameter and specify
+\strong{InstanceFamily} instead. You cannot specify \strong{InstanceType} and
+\strong{InstanceFamily} in the same request.}
+
+\item{InstanceFamily}{Specifies the instance family to be supported by the Dedicated Hosts. If
+you specify an instance family, the Dedicated Hosts support multiple
+instance types within that instance family.
+
+If you want the Dedicated Hosts to support a specific instance type
+only, omit this parameter and specify \strong{InstanceType} instead. You
+cannot specify \strong{InstanceFamily} and \strong{InstanceType} in the same
+request.}
 
 \item{Quantity}{[required] The number of Dedicated Hosts to allocate to your account with these
 parameters.}
@@ -39,8 +53,8 @@ Default: \code{off}}
 }
 \description{
 Allocates a Dedicated Host to your account. At a minimum, specify the
-instance size type, Availability Zone, and quantity of hosts to
-allocate.
+supported instance type or instance family, the Availability Zone in
+which to allocate the host, and the number of hosts to allocate.
 }
 \section{Request syntax}{
 \preformatted{svc$allocate_hosts(
@@ -48,10 +62,11 @@ allocate.
   AvailabilityZone = "string",
   ClientToken = "string",
   InstanceType = "string",
+  InstanceFamily = "string",
   Quantity = 123,
   TagSpecifications = list(
     list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"host-reservation"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"host-reservation"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
       Tags = list(
         list(
           Key = "string",

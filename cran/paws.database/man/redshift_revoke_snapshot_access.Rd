@@ -13,7 +13,7 @@ redshift_revoke_snapshot_access(SnapshotIdentifier,
 
 \item{SnapshotClusterIdentifier}{The identifier of the cluster the snapshot was created from. This
 parameter is required if your IAM user has a policy containing a
-snapshot resource element that specifies anything other than * for the
+snapshot resource element that specifies anything other than \* for the
 cluster name.}
 
 \item{AccountWithRestoreAccess}{[required] The identifier of the AWS customer account that can no longer restore

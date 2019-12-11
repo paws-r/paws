@@ -36,7 +36,7 @@ or \code{S3_ONEZONE_IA}. If this field is not populated, the default value
 
 \item{ObjectACL}{A value that sets the access control list permission for objects in the
 S3 bucket that a file gateway puts objects into. The default value is
-"private".}
+\"private\".}
 
 \item{ReadOnly}{A value that sets the write status of a file share. This value is true
 if the write status is read-only, and otherwise false.}
@@ -54,27 +54,29 @@ pays. However, the S3 bucket owner always pays the cost of storing data.
 share, so make sure that the configuration on the file share is the same
 as the S3 bucket configuration.}
 
-\item{SMBACLEnabled}{Set this value to "true to enable ACL (access control list) on the SMB
-file share. Set it to "false" to map file and directory permissions to
+\item{SMBACLEnabled}{Set this value to \"true to enable ACL (access control list) on the SMB
+file share. Set it to \"false\" to map file and directory permissions to
 the POSIX permissions.
 
 For more information, see
 https://docs.aws.amazon.com/storagegateway/latest/userguide/smb-acl.html
 in the Storage Gateway User Guide.}
 
-\item{AdminUserList}{A list of users or groups in the Active Directory that have
-administrator rights to the file share. A group must be prefixed with
-the @ character. For example \code{@group1}. Can only be set if
-Authentication is set to \code{ActiveDirectory}.}
+\item{AdminUserList}{A list of users in the Active Directory that will be granted
+administrator privileges on the file share. These users can do all file
+operations as the super-user.
+
+Use this option very carefully, because any user in this list can do
+anything they like on the file share, regardless of file permissions.}
 
 \item{ValidUserList}{A list of users or groups in the Active Directory that are allowed to
 access the file share. A group must be prefixed with the @ character.
-For example \code{@group1}. Can only be set if Authentication is set to
+For example \verb{@group1}. Can only be set if Authentication is set to
 \code{ActiveDirectory}.}
 
 \item{InvalidUserList}{A list of users or groups in the Active Directory that are not allowed
 to access the file share. A group must be prefixed with the @ character.
-For example \code{@group1}. Can only be set if Authentication is set to
+For example \verb{@group1}. Can only be set if Authentication is set to
 \code{ActiveDirectory}.}
 
 \item{Authentication}{The authentication method that users use to access the file share.
@@ -87,8 +89,8 @@ tag is a key-value pair.
 
 Valid characters for key and value are letters, spaces, and numbers
 representable in UTF-8 format, and the following special characters: + -
-= . \_ : / @. The maximum length of a tag's key is 128 characters, and
-the maximum length for a tag's value is 256.}
+= . \\_ : / @. The maximum length of a tag\'s key is 128 characters, and
+the maximum length for a tag\'s value is 256.}
 }
 \description{
 Creates a Server Message Block (SMB) file share on an existing file
@@ -105,7 +107,7 @@ AWS STS is not activated in this AWS Region, activate it. For
 information about how to activate AWS STS, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and Deactivating AWS STS in an AWS Region}
 in the \emph{AWS Identity and Access Management User Guide.}
 
-File gateways don't support creating hard or symbolic links on a file
+File gateways don\'t support creating hard or symbolic links on a file
 share.
 }
 \section{Request syntax}{

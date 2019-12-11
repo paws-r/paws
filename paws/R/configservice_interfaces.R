@@ -67,6 +67,16 @@ NULL
   list()
 }
 
+.configservice$delete_conformance_pack_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConformancePackName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$delete_conformance_pack_output <- function(...) {
+  list()
+}
+
 .configservice$delete_delivery_channel_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DeliveryChannelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -99,6 +109,16 @@ NULL
   list()
 }
 
+.configservice$delete_organization_conformance_pack_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationConformancePackName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$delete_organization_conformance_pack_output <- function(...) {
+  list()
+}
+
 .configservice$delete_pending_aggregation_request_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(RequesterAccountId = structure(logical(0), tags = list(type = "string")), RequesterAwsRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -119,6 +139,28 @@ NULL
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
+}
+
+.configservice$delete_remediation_exceptions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConfigRuleName = structure(logical(0), tags = list(type = "string")), ResourceKeys = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$delete_remediation_exceptions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FailedBatches = structure(list(structure(list(FailureMessage = structure(logical(0), tags = list(type = "string")), FailedItems = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$delete_resource_config_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$delete_resource_config_output <- function(...) {
+  list()
 }
 
 .configservice$delete_retention_configuration_input <- function(...) {
@@ -263,6 +305,42 @@ NULL
   return(populate(args, shape))
 }
 
+.configservice$describe_conformance_pack_compliance_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConformancePackName = structure(logical(0), tags = list(type = "string")), Filters = structure(list(ConfigRuleNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ComplianceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Limit = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$describe_conformance_pack_compliance_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConformancePackName = structure(logical(0), tags = list(type = "string")), ConformancePackRuleComplianceList = structure(list(structure(list(ConfigRuleName = structure(logical(0), tags = list(type = "string")), ComplianceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$describe_conformance_pack_status_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConformancePackNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Limit = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$describe_conformance_pack_status_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConformancePackStatusDetails = structure(list(structure(list(ConformancePackName = structure(logical(0), tags = list(type = "string")), ConformancePackId = structure(logical(0), tags = list(type = "string")), ConformancePackArn = structure(logical(0), tags = list(type = "string")), ConformancePackState = structure(logical(0), tags = list(type = "string")), StackArn = structure(logical(0), tags = list(type = "string")), ConformancePackStatusReason = structure(logical(0), tags = list(type = "string")), LastUpdateRequestedTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdateCompletedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$describe_conformance_packs_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConformancePackNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Limit = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$describe_conformance_packs_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConformancePackDetails = structure(list(structure(list(ConformancePackName = structure(logical(0), tags = list(type = "string")), ConformancePackArn = structure(logical(0), tags = list(type = "string")), ConformancePackId = structure(logical(0), tags = list(type = "string")), DeliveryS3Bucket = structure(logical(0), tags = list(type = "string")), DeliveryS3KeyPrefix = structure(logical(0), tags = list(type = "string")), ConformancePackInputParameters = structure(list(structure(list(ParameterName = structure(logical(0), tags = list(type = "string")), ParameterValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LastUpdateRequestedTime = structure(logical(0), tags = list(type = "timestamp")), CreatedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .configservice$describe_delivery_channel_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DeliveryChannelNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -311,6 +389,30 @@ NULL
   return(populate(args, shape))
 }
 
+.configservice$describe_organization_conformance_pack_statuses_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationConformancePackNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Limit = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$describe_organization_conformance_pack_statuses_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationConformancePackStatuses = structure(list(structure(list(OrganizationConformancePackName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), LastUpdateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$describe_organization_conformance_packs_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationConformancePackNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Limit = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$describe_organization_conformance_packs_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationConformancePacks = structure(list(structure(list(OrganizationConformancePackName = structure(logical(0), tags = list(type = "string")), OrganizationConformancePackArn = structure(logical(0), tags = list(type = "string")), DeliveryS3Bucket = structure(logical(0), tags = list(type = "string")), DeliveryS3KeyPrefix = structure(logical(0), tags = list(type = "string")), ConformancePackInputParameters = structure(list(structure(list(ParameterName = structure(logical(0), tags = list(type = "string")), ParameterValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ExcludedAccounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LastUpdateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .configservice$describe_pending_aggregation_requests_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Limit = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -331,7 +433,19 @@ NULL
 
 .configservice$describe_remediation_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RemediationConfigurations = structure(list(structure(list(ConfigRuleName = structure(logical(0), tags = list(type = "string")), TargetType = structure(logical(0), tags = list(type = "string")), TargetId = structure(logical(0), tags = list(type = "string")), TargetVersion = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(ResourceValue = structure(list(Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), StaticValue = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map")), ResourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(RemediationConfigurations = structure(list(structure(list(ConfigRuleName = structure(logical(0), tags = list(type = "string")), TargetType = structure(logical(0), tags = list(type = "string")), TargetId = structure(logical(0), tags = list(type = "string")), TargetVersion = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(ResourceValue = structure(list(Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), StaticValue = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map")), ResourceType = structure(logical(0), tags = list(type = "string")), Automatic = structure(logical(0), tags = list(type = "boolean")), ExecutionControls = structure(list(SsmControls = structure(list(ConcurrentExecutionRatePercentage = structure(logical(0), tags = list(type = "integer", box = TRUE)), ErrorPercentage = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), MaximumAutomaticAttempts = structure(logical(0), tags = list(type = "integer", box = TRUE)), RetryAttemptSeconds = structure(logical(0), tags = list(type = "long", box = TRUE)), Arn = structure(logical(0), tags = list(type = "string")), CreatedByService = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$describe_remediation_exceptions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConfigRuleName = structure(logical(0), tags = list(type = "string")), ResourceKeys = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Limit = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$describe_remediation_exceptions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RemediationExceptions = structure(list(structure(list(ConfigRuleName = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ExpirationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -453,6 +567,30 @@ NULL
   return(populate(args, shape))
 }
 
+.configservice$get_conformance_pack_compliance_details_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConformancePackName = structure(logical(0), tags = list(type = "string")), Filters = structure(list(ConfigRuleNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ComplianceType = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Limit = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$get_conformance_pack_compliance_details_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConformancePackName = structure(logical(0), tags = list(type = "string")), ConformancePackRuleEvaluationResults = structure(list(structure(list(ComplianceType = structure(logical(0), tags = list(type = "string")), EvaluationResultIdentifier = structure(list(EvaluationResultQualifier = structure(list(ConfigRuleName = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OrderingTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), ConfigRuleInvokedTime = structure(logical(0), tags = list(type = "timestamp")), ResultRecordedTime = structure(logical(0), tags = list(type = "timestamp")), Annotation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$get_conformance_pack_compliance_summary_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConformancePackNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Limit = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$get_conformance_pack_compliance_summary_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConformancePackComplianceSummaryList = structure(list(structure(list(ConformancePackName = structure(logical(0), tags = list(type = "string")), ConformancePackComplianceStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .configservice$get_discovered_resource_counts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), limit = structure(logical(0), tags = list(type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -474,6 +612,18 @@ NULL
 .configservice$get_organization_config_rule_detailed_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(OrganizationConfigRuleDetailedStatus = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), ConfigRuleName = structure(logical(0), tags = list(type = "string")), MemberAccountRuleStatus = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), LastUpdateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$get_organization_conformance_pack_detailed_status_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationConformancePackName = structure(logical(0), tags = list(type = "string")), Filters = structure(list(AccountId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Limit = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$get_organization_conformance_pack_detailed_status_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationConformancePackDetailedStatuses = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), ConformancePackName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), LastUpdateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -569,6 +719,18 @@ NULL
   list()
 }
 
+.configservice$put_conformance_pack_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConformancePackName = structure(logical(0), tags = list(type = "string")), TemplateS3Uri = structure(logical(0), tags = list(type = "string")), TemplateBody = structure(logical(0), tags = list(type = "string")), DeliveryS3Bucket = structure(logical(0), tags = list(type = "string")), DeliveryS3KeyPrefix = structure(logical(0), tags = list(type = "string")), ConformancePackInputParameters = structure(list(structure(list(ParameterName = structure(logical(0), tags = list(type = "string")), ParameterValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$put_conformance_pack_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConformancePackArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .configservice$put_delivery_channel_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DeliveryChannel = structure(list(name = structure(logical(0), tags = list(type = "string")), s3BucketName = structure(logical(0), tags = list(type = "string")), s3KeyPrefix = structure(logical(0), tags = list(type = "string")), snsTopicARN = structure(logical(0), tags = list(type = "string")), configSnapshotDeliveryProperties = structure(list(deliveryFrequency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
@@ -603,16 +765,50 @@ NULL
   return(populate(args, shape))
 }
 
+.configservice$put_organization_conformance_pack_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationConformancePackName = structure(logical(0), tags = list(type = "string")), TemplateS3Uri = structure(logical(0), tags = list(type = "string")), TemplateBody = structure(logical(0), tags = list(type = "string")), DeliveryS3Bucket = structure(logical(0), tags = list(type = "string")), DeliveryS3KeyPrefix = structure(logical(0), tags = list(type = "string")), ConformancePackInputParameters = structure(list(structure(list(ParameterName = structure(logical(0), tags = list(type = "string")), ParameterValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ExcludedAccounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$put_organization_conformance_pack_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationConformancePackArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .configservice$put_remediation_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RemediationConfigurations = structure(list(structure(list(ConfigRuleName = structure(logical(0), tags = list(type = "string")), TargetType = structure(logical(0), tags = list(type = "string")), TargetId = structure(logical(0), tags = list(type = "string")), TargetVersion = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(ResourceValue = structure(list(Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), StaticValue = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map")), ResourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(RemediationConfigurations = structure(list(structure(list(ConfigRuleName = structure(logical(0), tags = list(type = "string")), TargetType = structure(logical(0), tags = list(type = "string")), TargetId = structure(logical(0), tags = list(type = "string")), TargetVersion = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(ResourceValue = structure(list(Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), StaticValue = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map")), ResourceType = structure(logical(0), tags = list(type = "string")), Automatic = structure(logical(0), tags = list(type = "boolean")), ExecutionControls = structure(list(SsmControls = structure(list(ConcurrentExecutionRatePercentage = structure(logical(0), tags = list(type = "integer", box = TRUE)), ErrorPercentage = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), MaximumAutomaticAttempts = structure(logical(0), tags = list(type = "integer", box = TRUE)), RetryAttemptSeconds = structure(logical(0), tags = list(type = "long", box = TRUE)), Arn = structure(logical(0), tags = list(type = "string")), CreatedByService = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .configservice$put_remediation_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FailedBatches = structure(list(structure(list(FailureMessage = structure(logical(0), tags = list(type = "string")), FailedItems = structure(list(structure(list(ConfigRuleName = structure(logical(0), tags = list(type = "string")), TargetType = structure(logical(0), tags = list(type = "string")), TargetId = structure(logical(0), tags = list(type = "string")), TargetVersion = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(ResourceValue = structure(list(Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), StaticValue = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map")), ResourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(FailedBatches = structure(list(structure(list(FailureMessage = structure(logical(0), tags = list(type = "string")), FailedItems = structure(list(structure(list(ConfigRuleName = structure(logical(0), tags = list(type = "string")), TargetType = structure(logical(0), tags = list(type = "string")), TargetId = structure(logical(0), tags = list(type = "string")), TargetVersion = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(ResourceValue = structure(list(Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), StaticValue = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map")), ResourceType = structure(logical(0), tags = list(type = "string")), Automatic = structure(logical(0), tags = list(type = "boolean")), ExecutionControls = structure(list(SsmControls = structure(list(ConcurrentExecutionRatePercentage = structure(logical(0), tags = list(type = "integer", box = TRUE)), ErrorPercentage = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), MaximumAutomaticAttempts = structure(logical(0), tags = list(type = "integer", box = TRUE)), RetryAttemptSeconds = structure(logical(0), tags = list(type = "long", box = TRUE)), Arn = structure(logical(0), tags = list(type = "string")), CreatedByService = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
+}
+
+.configservice$put_remediation_exceptions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConfigRuleName = structure(logical(0), tags = list(type = "string")), ResourceKeys = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Message = structure(logical(0), tags = list(type = "string")), ExpirationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$put_remediation_exceptions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FailedBatches = structure(list(structure(list(FailureMessage = structure(logical(0), tags = list(type = "string")), FailedItems = structure(list(structure(list(ConfigRuleName = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ExpirationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$put_resource_config_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), SchemaVersionId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ResourceName = structure(logical(0), tags = list(type = "string")), Configuration = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$put_resource_config_output <- function(...) {
+  list()
 }
 
 .configservice$put_retention_configuration_input <- function(...) {

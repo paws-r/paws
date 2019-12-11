@@ -30,12 +30,12 @@ Valid value: \code{docdb}}
 
 \item{AvailabilityZone}{The Amazon EC2 Availability Zone that the DB instance is created in.
 
-Default: A random, system-chosen Availability Zone in the endpoint's
+Default: A random, system-chosen Availability Zone in the endpoint\'s
 AWS Region.
 
-Example: \code{us-east-1d}
+Example: \verb{us-east-1d}
 
-Constraint: The \code{AvailabilityZone} parameter can't be specified if the
+Constraint: The \code{AvailabilityZone} parameter can\'t be specified if the
 \code{MultiAZ} parameter is set to \code{true}. The specified Availability Zone
 must be in the same AWS Region as the current endpoint.}
 
@@ -57,7 +57,8 @@ instance during the maintenance window.
 
 Default: \code{true}}
 
-\item{Tags}{The tags to be assigned to the DB instance.}
+\item{Tags}{The tags to be assigned to the DB instance. You can assign up to 10 tags
+to an instance.}
 
 \item{DBClusterIdentifier}{[required] The identifier of the DB cluster that the instance will belong to.}
 

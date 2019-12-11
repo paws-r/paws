@@ -5,8 +5,8 @@
 \title{Creates a new Capacity Reservation with the specified attributes}
 \usage{
 ec2_create_capacity_reservation(ClientToken, InstanceType,
-  InstancePlatform, AvailabilityZone, Tenancy, InstanceCount,
-  EbsOptimized, EphemeralStorage, EndDate, EndDateType,
+  InstancePlatform, AvailabilityZone, AvailabilityZoneId, Tenancy,
+  InstanceCount, EbsOptimized, EphemeralStorage, EndDate, EndDateType,
   InstanceMatchCriteria, TagSpecifications, DryRun)
 }
 \arguments{
@@ -21,7 +21,10 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{InstancePlatform}{[required] The type of operating system for which to reserve capacity.}
 
-\item{AvailabilityZone}{[required] The Availability Zone in which to create the Capacity Reservation.}
+\item{AvailabilityZone}{The Availability Zone in which to create the Capacity Reservation.}
+
+\item{AvailabilityZoneId}{The ID of the Availability Zone in which to create the Capacity
+Reservation.}
 
 \item{Tenancy}{Indicates the tenancy of the Capacity Reservation. A Capacity
 Reservation can have one of the following tenancy settings:
@@ -37,7 +40,7 @@ hardware that is dedicated to a single AWS account.
 \item{EbsOptimized}{Indicates whether the Capacity Reservation supports EBS-optimized
 instances. This optimization provides dedicated throughput to Amazon EBS
 and an optimized configuration stack to provide optimal I/O performance.
-This optimization isn't available with all instance types. Additional
+This optimization isn\'t available with all instance types. Additional
 usage charges apply when using an EBS- optimized instance.}
 
 \item{EphemeralStorage}{Indicates whether the Capacity Reservation supports instances with
@@ -45,7 +48,7 @@ temporary, block-level storage.}
 
 \item{EndDate}{The date and time at which the Capacity Reservation expires. When a
 Capacity Reservation expires, the reserved capacity is released and you
-can no longer launch instances into it. The Capacity Reservation's
+can no longer launch instances into it. The Capacity Reservation\'s
 state changes to \code{expired} when it reaches its end date and time.
 
 You must provide an \code{EndDate} value if \code{EndDateType} is \code{limited}. Omit
@@ -124,6 +127,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   InstanceType = "string",
   InstancePlatform = "Linux/UNIX"|"Red Hat Enterprise Linux"|"SUSE Linux"|"Windows"|"Windows with SQL Server"|"Windows with SQL Server Enterprise"|"Windows with SQL Server Standard"|"Windows with SQL Server Web"|"Linux with SQL Server Standard"|"Linux with SQL Server Web"|"Linux with SQL Server Enterprise",
   AvailabilityZone = "string",
+  AvailabilityZoneId = "string",
   Tenancy = "default"|"dedicated",
   InstanceCount = 123,
   EbsOptimized = TRUE|FALSE,
@@ -135,7 +139,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   InstanceMatchCriteria = "open"|"targeted",
   TagSpecifications = list(
     list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"host-reservation"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"host-reservation"|"image"|"instance"|"internet-gateway"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
       Tags = list(
         list(
           Key = "string",

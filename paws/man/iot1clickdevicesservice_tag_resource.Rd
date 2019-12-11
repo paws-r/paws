@@ -10,7 +10,7 @@ iot1clickdevicesservice_tag_resource(ResourceArn, Tags)
 \item{ResourceArn}{[required] The ARN of the resource.}
 
 \item{Tags}{[required] A collection of key/value pairs defining the resource tags. For example,
-{ "tags": {"key1": "value1", "key2": "value2"} }. For more
+\{ \"tags\": \{\"key1\": \"value1\", \"key2\": \"value2\"\} \}. For more
 information, see \href{https://aws.amazon.com/answers/account-management/aws-tagging-strategies/}{AWS Tagging Strategies}.}
 }
 \description{

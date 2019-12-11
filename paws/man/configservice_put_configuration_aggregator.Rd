@@ -15,7 +15,7 @@ configservice_put_configuration_aggregator(ConfigurationAggregatorName,
 
 \item{OrganizationAggregationSource}{An OrganizationAggregationSource object.}
 
-\item{Tags}{}
+\item{Tags}{An array of tag object.}
 }
 \description{
 Creates and updates the configuration aggregator with the selected

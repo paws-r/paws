@@ -2,15 +2,15 @@
 % Please edit documentation in R/licensemanager_operations.R
 \name{licensemanager_list_tags_for_resource}
 \alias{licensemanager_list_tags_for_resource}
-\title{Lists tags attached to a resource}
+\title{Lists the tags for the specified license configuration}
 \usage{
 licensemanager_list_tags_for_resource(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] ARN for the resource.}
+\item{ResourceArn}{[required] Amazon Resource Name (ARN) of the license configuration.}
 }
 \description{
-Lists tags attached to a resource.
+Lists the tags for the specified license configuration.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(

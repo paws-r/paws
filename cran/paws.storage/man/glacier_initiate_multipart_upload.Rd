@@ -10,9 +10,9 @@ glacier_initiate_multipart_upload(accountId, vaultName,
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the
 vault. You can either specify an AWS account ID or optionally a single
-'\code{-}' (hyphen), in which case Amazon S3 Glacier uses the AWS account
+\'\code{-}\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
 ID associated with the credentials used to sign the request. If you use
-an account ID, do not include any hyphens ('-') in the ID.}
+an account ID, do not include any hyphens (\'-\') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 
@@ -45,7 +45,7 @@ or smaller. For example, suppose you want to upload a 16.2 MB file. If
 you initiate the multipart upload with a part size of 4 MB, you will
 upload four parts of 4 MB each and one part of 0.2 MB.
 
-You don't need to know the size of the archive when you start a
+You don\'t need to know the size of the archive when you start a
 multipart upload because Amazon S3 Glacier does not require you to
 specify the overall archive size.
 
@@ -55,7 +55,7 @@ removes the multipart upload resource if you cancel the multipart upload
 or it may be removed if there is no activity for a period of 24 hours.
 
 An AWS account has full permission to perform all operations (actions).
-However, AWS Identity and Access Management (IAM) users don't have any
+However, AWS Identity and Access Management (IAM) users don\'t have any
 permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html}{Access Control Using AWS Identity and Access Management (IAM)}.
 

@@ -18,6 +18,7 @@ Grants entitlements to an existing flow.
 \preformatted{svc$grant_flow_entitlements(
   Entitlements = list(
     list(
+      DataTransferSubscriberFeePercent = 123,
       Description = "string",
       Encryption = list(
         Algorithm = "aes128"|"aes192"|"aes256",

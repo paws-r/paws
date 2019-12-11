@@ -90,7 +90,7 @@ in the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html}
 \link[=ses_send_raw_email]{send_raw_email} \tab Composes an email message and immediately queues it for sending \cr
 \link[=ses_send_templated_email]{send_templated_email} \tab Composes an email message using an email template and immediately queues it for sending \cr
 \link[=ses_set_active_receipt_rule_set]{set_active_receipt_rule_set} \tab Sets the specified receipt rule set as the active receipt rule set \cr
-\link[=ses_set_identity_dkim_enabled]{set_identity_dkim_enabled} \tab Enables or disables Easy DKIM signing of email sent from an identity: - If Easy DKIM signing is enabled for a domain name identity (such as example \cr
+\link[=ses_set_identity_dkim_enabled]{set_identity_dkim_enabled} \tab Enables or disables Easy DKIM signing of email sent from an identity \cr
 \link[=ses_set_identity_feedback_forwarding_enabled]{set_identity_feedback_forwarding_enabled} \tab Given an identity (an email address or a domain), enables or disables whether Amazon SES forwards bounce and complaint notifications as email \cr
 \link[=ses_set_identity_headers_in_notifications_enabled]{set_identity_headers_in_notifications_enabled} \tab Given an identity (an email address or a domain), sets whether Amazon SES includes the original email headers in the Amazon Simple Notification Service (Amazon SNS) notifications of a specified type\cr
 \link[=ses_set_identity_mail_from_domain]{set_identity_mail_from_domain} \tab Enables or disables the custom MAIL FROM domain setup for a verified identity (an email address or a domain) \cr

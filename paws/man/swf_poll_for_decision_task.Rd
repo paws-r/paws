@@ -15,7 +15,7 @@ swf_poll_for_decision_task(domain, taskList, identity, nextPageToken,
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\code{U+0000`-`U+001f} \| \code{U+007f`-`U+009f}). Also, it must not \emph{be}
+characters (\verb{U+0000`-`U+001f} \\| \verb{U+007f`-`U+009f}). Also, it must not \emph{be}
 the literal string \code{arn}.}
 
 \item{identity}{Identity of the decider making the request, which is recorded in the
@@ -28,7 +28,7 @@ value of \code{NextPageToken} is a unique pagination token for each page.
 Make the call again using the returned token to retrieve the next page.
 Keep all other arguments unchanged. Each pagination token expires after
 60 seconds. Using an expired pagination token will return a \code{400} error:
-"\code{Specified token has exceeded its maximum lifetime}".
+\"\verb{Specified token has exceeded its maximum lifetime}\".
 
 The configured \code{maximumPageSize} determines how many results can be
 returned in a single call.
@@ -37,7 +37,7 @@ The \code{nextPageToken} returned by this action cannot be used with
 GetWorkflowExecutionHistory to get the next page. You must call
 PollForDecisionTask again (with the \code{nextPageToken}) to retrieve the
 next page of history records. Calling PollForDecisionTask with a
-\code{nextPageToken} doesn't return a new decision task.}
+\code{nextPageToken} doesn\'t return a new decision task.}
 
 \item{maximumPageSize}{The maximum number of results that are returned per call. Use
 \code{nextPageToken} to obtain further pages of results.
@@ -77,7 +77,7 @@ with this \code{nextPageToken}. Instead, call \code{PollForDecisionTask} again.
 
 \strong{Access Control}
 
-You can use IAM policies to control this action's access to Amazon SWF
+You can use IAM policies to control this action\'s access to Amazon SWF
 resources as follows:
 \itemize{
 \item Use a \code{Resource} element with the domain name to limit the action to
@@ -89,9 +89,9 @@ element with the \code{swf:taskList.name} key to allow the action to
 access only certain task lists.
 }
 
-If the caller doesn't have sufficient permissions to invoke the action,
+If the caller doesn\'t have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
-action fails. The associated event attribute's \code{cause} parameter is set
+action fails. The associated event attribute\'s \code{cause} parameter is set
 to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 \href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
 in the \emph{Amazon SWF Developer Guide}.

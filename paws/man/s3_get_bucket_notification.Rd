@@ -2,15 +2,15 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_bucket_notification}
 \alias{s3_get_bucket_notification}
-\title{No longer used, see the GetBucketNotificationConfiguration operation}
+\title{No longer used, see GetBucketNotificationConfiguration}
 \usage{
 s3_get_bucket_notification(Bucket)
 }
 \arguments{
-\item{Bucket}{[required] Name of the bucket to get the notification configuration for.}
+\item{Bucket}{[required] Name of the bucket for which to get the notification configuration}
 }
 \description{
-No longer used, see the GetBucketNotificationConfiguration operation.
+No longer used, see GetBucketNotificationConfiguration.
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_notification(

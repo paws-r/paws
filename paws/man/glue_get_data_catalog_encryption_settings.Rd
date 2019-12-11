@@ -7,9 +7,8 @@
 glue_get_data_catalog_encryption_settings(CatalogId)
 }
 \arguments{
-\item{CatalogId}{The ID of the Data Catalog for which to retrieve the security
-configuration. If none is provided, the AWS account ID is used by
-default.}
+\item{CatalogId}{The ID of the Data Catalog to retrieve the security configuration for.
+If none is provided, the AWS account ID is used by default.}
 }
 \description{
 Retrieves the security configuration for a specified catalog.

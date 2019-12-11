@@ -809,6 +809,55 @@ kafka_untag_resource <- function(ResourceArn, TagKeys) {
 }
 .kafka$operations$untag_resource <- kafka_untag_resource
 
+#' Updates the number of broker nodes in the cluster
+#'
+#' 
+#'             <p>Updates the number of broker nodes in the cluster.</p>
+#'          
+#'
+#' @usage
+#' kafka_update_broker_count(ClusterArn, CurrentVersion,
+#'   TargetNumberOfBrokerNodes)
+#'
+#' @param ClusterArn &#91;required&#93; 
+#'             <p>The Amazon Resource Name (ARN) that uniquely identifies the cluster.</p>
+#'          
+#' @param CurrentVersion &#91;required&#93; 
+#'             <p>The version of cluster to update from. A successful operation will then generate a new version.</p>
+#'          
+#' @param TargetNumberOfBrokerNodes &#91;required&#93; 
+#'             <p>The number of broker nodes that you want the cluster to have after this operation completes successfully.</p>
+#'          
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_broker_count(
+#'   ClusterArn = "string",
+#'   CurrentVersion = "string",
+#'   TargetNumberOfBrokerNodes = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_update_broker_count
+kafka_update_broker_count <- function(ClusterArn, CurrentVersion, TargetNumberOfBrokerNodes) {
+  op <- new_operation(
+    name = "UpdateBrokerCount",
+    http_method = "PUT",
+    http_path = "/v1/clusters/{clusterArn}/nodes/count",
+    paginator = list()
+  )
+  input <- .kafka$update_broker_count_input(ClusterArn = ClusterArn, CurrentVersion = CurrentVersion, TargetNumberOfBrokerNodes = TargetNumberOfBrokerNodes)
+  output <- .kafka$update_broker_count_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$update_broker_count <- kafka_update_broker_count
+
 #' Updates the EBS storage associated with MSK brokers
 #'
 #' 

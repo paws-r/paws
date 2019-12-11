@@ -16,9 +16,9 @@ specify a CMK in a different AWS account, you must use the key ARN.
 
 For example:
 \itemize{
-\item Key ID: \code{1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
 \item Key ARN:
-\code{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
 To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
@@ -76,9 +76,35 @@ key policies.
 }
 \details{
 To create a grant that allows a cryptographic operation only when the
-encryption context in the operation request matches or includes a
-specified encryption context, use the \code{Constraints} parameter. For
-details, see GrantConstraints.
+request includes a particular \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{encryption context},
+use the \code{Constraints} parameter. For details, see GrantConstraints.
+
+You can create grants on symmetric and asymmetric CMKs. However, if the
+grant allows an operation that the CMK does not support, \code{CreateGrant}
+fails with a \code{ValidationException}.
+\itemize{
+\item Grants for symmetric CMKs cannot allow operations that are not
+supported for symmetric CMKs, including Sign, Verify, and
+GetPublicKey. (There are limited exceptions to this rule for legacy
+operations, but you should not create a grant for an operation that
+AWS KMS does not support.)
+\item Grants for asymmetric CMKs cannot allow operations that are not
+supported for asymmetric CMKs, including operations that \href{https://docs.aws.amazon.com/kms/latest/APIReference/API_GenerateDataKey}{generate data keys}
+or \href{https://docs.aws.amazon.com/kms/latest/APIReference/API_GenerateDataKeyPair}{data key pairs},
+or operations related to \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html}{automatic key rotation},
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{imported key material},
+or CMKs in \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key stores}.
+\item Grants for asymmetric CMKs with a \code{KeyUsage} of \code{ENCRYPT_DECRYPT}
+cannot allow the Sign or Verify operations. Grants for asymmetric
+CMKs with a \code{KeyUsage} of \code{SIGN_VERIFY} cannot allow the Encrypt or
+Decrypt operations.
+\item Grants for asymmetric CMKs cannot include an encryption context
+grant constraint. An encryption context is not supported on
+asymmetric CMKs.
+}
+
+For information about symmetric and asymmetric CMKs, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric CMKs}
+in the \emph{AWS Key Management Service Developer Guide}.
 
 To perform this operation on a CMK in a different AWS account, specify
 the key ARN in the value of the \code{KeyId} parameter. For more information
@@ -86,8 +112,8 @@ about grants, see
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html}{Grants}
 in the \strong{AWS Key Management Service Developer Guide} .
 
-The result of this operation varies with the key state of the CMK. For
-details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
+The CMK that you use for this operation must be in a compatible key
+state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{
@@ -96,7 +122,7 @@ in the \emph{AWS Key Management Service Developer Guide}.
   GranteePrincipal = "string",
   RetiringPrincipal = "string",
   Operations = list(
-    "Decrypt"|"Encrypt"|"GenerateDataKey"|"GenerateDataKeyWithoutPlaintext"|"ReEncryptFrom"|"ReEncryptTo"|"CreateGrant"|"RetireGrant"|"DescribeKey"
+    "Decrypt"|"Encrypt"|"GenerateDataKey"|"GenerateDataKeyWithoutPlaintext"|"ReEncryptFrom"|"ReEncryptTo"|"Sign"|"Verify"|"GetPublicKey"|"CreateGrant"|"RetireGrant"|"DescribeKey"|"GenerateDataKeyPair"|"GenerateDataKeyPairWithoutPlaintext"
   ),
   Constraints = list(
     EncryptionContextSubset = list(

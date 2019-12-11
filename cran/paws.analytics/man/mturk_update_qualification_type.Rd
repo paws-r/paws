@@ -15,7 +15,7 @@ mturk_update_qualification_type(QualificationTypeId, Description,
 
 \item{Description}{The new description of the Qualification type.}
 
-\item{QualificationTypeStatus}{The new status of the Qualification type - Active \| Inactive}
+\item{QualificationTypeStatus}{The new status of the Qualification type - Active \\| Inactive}
 
 \item{Test}{The questions for the Qualification test a Worker must answer correctly
 to obtain a Qualification of this type. If this parameter is specified,

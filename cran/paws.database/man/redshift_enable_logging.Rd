@@ -25,8 +25,8 @@ Constraints:
 Constraints:
 \itemize{
 \item Cannot exceed 512 characters
-\item Cannot contain spaces( ), double quotes ("), single quotes ('), a
-backslash (\), or control characters. The hexadecimal codes for
+\item Cannot contain spaces( ), double quotes (\"), single quotes (\'), a
+backslash (\\), or control characters. The hexadecimal codes for
 invalid characters are:
 \itemize{
 \item x00 to x20

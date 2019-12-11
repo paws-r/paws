@@ -26,15 +26,15 @@ the VPC.
 the entry.
 \item \code{entry.port-range.to} - The end of the port range specified in the
 entry.
-\item \code{entry.protocol} - The protocol specified in the entry (\code{tcp} \|
-\code{udp} \| \code{icmp} or a protocol number).
+\item \code{entry.protocol} - The protocol specified in the entry (\code{tcp} \\|
+\code{udp} \\| \code{icmp} or a protocol number).
 \item \code{entry.rule-action} - Allows or denies the matching traffic (\code{allow}
-\| \code{deny}).
+\\| \code{deny}).
 \item \code{entry.rule-number} - The number of an entry (in other words, rule)
 in the set of ACL entries.
 \item \code{network-acl-id} - The ID of the network ACL.
 \item \code{owner-id} - The ID of the AWS account that owns the network ACL.
-\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+\item \code{tag}:\\<key\\> - The key/value combination of a tag assigned to the
 resource. Use the tag key in the filter name and the tag value as
 the filter value. For example, to find all resources that have a tag
 with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for

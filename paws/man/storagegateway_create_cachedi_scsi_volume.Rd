@@ -13,7 +13,7 @@ storagegateway_create_cachedi_scsi_volume(GatewayARN, VolumeSizeInBytes,
 
 \item{VolumeSizeInBytes}{[required] The size of the volume in bytes.}
 
-\item{SnapshotId}{The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as
+\item{SnapshotId}{The snapshot ID (e.g. \"snap-1122aabb\") of the snapshot to restore as
 the new cached volume. Specify this field if you want to create the
 iSCSI storage volume from a snapshot otherwise do not include this
 field. To list snapshots for your account use
@@ -23,14 +23,14 @@ in the \emph{Amazon Elastic Compute Cloud API Reference}.}
 \item{TargetName}{[required] The name of the iSCSI target used by an initiator to connect to a volume
 and used as a suffix for the target ARN. For example, specifying
 \code{TargetName} as \emph{myvolume} results in the target ARN of
-\code{arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume}.
+\verb{arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume}.
 The target name must be unique across all volumes on a gateway.
 
-If you don't specify a value, Storage Gateway uses the value that was
+If you don\'t specify a value, Storage Gateway uses the value that was
 previously used for this volume as the new target name.}
 
 \item{SourceVolumeARN}{The ARN for an existing volume. Specifying this ARN makes the new volume
-into an exact copy of the specified existing volume's latest recovery
+into an exact copy of the specified existing volume\'s latest recovery
 point. The \code{VolumeSizeInBytes} value for this new volume must be equal
 to or larger than the size of the existing volume, in bytes.}
 
@@ -51,13 +51,18 @@ or false to use a key managed by Amazon S3. Optional.}
 server side encryption. This value can only be set when KMSEncrypted is
 true. Optional.}
 
-\item{Tags}{A list of up to 50 tags that can be assigned to a cached volume. Each
-tag is a key-value pair.
+\item{Tags}{A list of up to 50 tags that you can assign to a cached volume. Each tag
+is a key-value pair.
 
-Valid characters for key and value are letters, spaces, and numbers
-representable in UTF-8 format, and the following special characters: + -
-= . \_ : / @. The maximum length of a tag's key is 128 characters, and
-the maximum length for a tag's value is 256.}
+Valid characters for key and value are letters, spaces, and numbers that
+you can represent in UTF-8 format, and the following special characters:
+\itemize{
+\item 
+\itemize{
+\item = . \\_ : / @. The maximum length of a tag\'s key is 128 characters,
+and the maximum length for a tag\'s value is 256 characters.
+}
+}}
 }
 \description{
 Creates a cached volume on a specified cached volume gateway. This

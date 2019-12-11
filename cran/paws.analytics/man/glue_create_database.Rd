@@ -8,10 +8,9 @@ glue_create_database(CatalogId, DatabaseInput)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog in which to create the database. If none is
-supplied, the AWS account ID is used by default.}
+provided, the AWS account ID is used by default.}
 
-\item{DatabaseInput}{[required] A \code{DatabaseInput} object defining the metadata database to create in the
-catalog.}
+\item{DatabaseInput}{[required] The metadata for the database.}
 }
 \description{
 Creates a new database in a Data Catalog.
@@ -25,6 +24,16 @@ Creates a new database in a Data Catalog.
     LocationUri = "string",
     Parameters = list(
       "string"
+    ),
+    CreateTableDefaultPermissions = list(
+      list(
+        Principal = list(
+          DataLakePrincipalIdentifier = "string"
+        ),
+        Permissions = list(
+          "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+        )
+      )
     )
   )
 )

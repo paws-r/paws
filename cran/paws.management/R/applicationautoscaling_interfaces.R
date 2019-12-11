@@ -47,7 +47,7 @@ NULL
 
 .applicationautoscaling$describe_scalable_targets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScalableTargets = structure(list(structure(list(ServiceNamespace = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ScalableDimension = structure(logical(0), tags = list(type = "string")), MinCapacity = structure(logical(0), tags = list(type = "integer")), MaxCapacity = structure(logical(0), tags = list(type = "integer")), RoleARN = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ScalableTargets = structure(list(structure(list(ServiceNamespace = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ScalableDimension = structure(logical(0), tags = list(type = "string")), MinCapacity = structure(logical(0), tags = list(type = "integer")), MaxCapacity = structure(logical(0), tags = list(type = "integer")), RoleARN = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), SuspendedState = structure(list(DynamicScalingInSuspended = structure(logical(0), tags = list(type = "boolean")), DynamicScalingOutSuspended = structure(logical(0), tags = list(type = "boolean")), ScheduledScalingSuspended = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -113,7 +113,7 @@ NULL
 
 .applicationautoscaling$register_scalable_target_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceNamespace = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ScalableDimension = structure(logical(0), tags = list(type = "string")), MinCapacity = structure(logical(0), tags = list(type = "integer")), MaxCapacity = structure(logical(0), tags = list(type = "integer")), RoleARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ServiceNamespace = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ScalableDimension = structure(logical(0), tags = list(type = "string")), MinCapacity = structure(logical(0), tags = list(type = "integer")), MaxCapacity = structure(logical(0), tags = list(type = "integer")), RoleARN = structure(logical(0), tags = list(type = "string")), SuspendedState = structure(list(DynamicScalingInSuspended = structure(logical(0), tags = list(type = "boolean")), DynamicScalingOutSuspended = structure(logical(0), tags = list(type = "boolean")), ScheduledScalingSuspended = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

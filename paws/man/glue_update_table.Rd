@@ -7,7 +7,7 @@
 glue_update_table(CatalogId, DatabaseName, TableInput, SkipArchive)
 }
 \arguments{
-\item{CatalogId}{The ID of the Data Catalog where the table resides. If none is supplied,
+\item{CatalogId}{The ID of the Data Catalog where the table resides. If none is provided,
 the AWS account ID is used by default.}
 
 \item{DatabaseName}{[required] The name of the catalog database in which the table resides. For Hive
@@ -17,7 +17,7 @@ compatibility, this name is entirely lowercase.}
 catalog.}
 
 \item{SkipArchive}{By default, \code{UpdateTable} always creates an archived version of the
-table before updating it. If \code{skipArchive} is set to true, however,
+table before updating it. However, if \code{skipArchive} is set to true,
 \code{UpdateTable} does not create the archived version.}
 }
 \description{
@@ -43,7 +43,10 @@ Updates a metadata table in the Data Catalog.
         list(
           Name = "string",
           Type = "string",
-          Comment = "string"
+          Comment = "string",
+          Parameters = list(
+            "string"
+          )
         )
       ),
       Location = "string",
@@ -87,7 +90,10 @@ Updates a metadata table in the Data Catalog.
       list(
         Name = "string",
         Type = "string",
-        Comment = "string"
+        Comment = "string",
+        Parameters = list(
+          "string"
+        )
       )
     ),
     ViewOriginalText = "string",

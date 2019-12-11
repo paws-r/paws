@@ -34,6 +34,14 @@ test_that("describe_configuration_recorders", {
   expect_error(svc$describe_configuration_recorders(), NA)
 })
 
+test_that("describe_conformance_pack_status", {
+  expect_error(svc$describe_conformance_pack_status(), NA)
+})
+
+test_that("describe_conformance_packs", {
+  expect_error(svc$describe_conformance_packs(), NA)
+})
+
 test_that("describe_delivery_channel_status", {
   expect_error(svc$describe_delivery_channel_status(), NA)
 })
@@ -48,6 +56,14 @@ test_that("describe_organization_config_rule_statuses", {
 
 test_that("describe_organization_config_rules", {
   expect_error(svc$describe_organization_config_rules(), NA)
+})
+
+test_that("describe_organization_conformance_pack_statuses", {
+  expect_error(svc$describe_organization_conformance_pack_statuses(), NA)
+})
+
+test_that("describe_organization_conformance_packs", {
+  expect_error(svc$describe_organization_conformance_packs(), NA)
 })
 
 test_that("describe_pending_aggregation_requests", {

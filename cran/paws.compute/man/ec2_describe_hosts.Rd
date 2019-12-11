@@ -10,7 +10,7 @@ ec2_describe_hosts(Filter, HostIds, MaxResults, NextToken)
 \item{Filter}{The filters.
 \itemize{
 \item \code{auto-placement} - Whether auto-placement is enabled or disabled
-(\code{on} \| \code{off}).
+(\code{on} \\| \code{off}).
 \item \code{availability-zone} - The Availability Zone of the host.
 \item \code{client-token} - The idempotency token that you provided when you
 allocated the host.
@@ -18,8 +18,8 @@ allocated the host.
 host.
 \item \code{instance-type} - The instance type size that the Dedicated Host is
 configured to support.
-\item \code{state} - The allocation state of the Dedicated Host (\code{available} \|
-\code{under-assessment} \| \code{permanent-failure} \| \code{released} \|
+\item \code{state} - The allocation state of the Dedicated Host (\code{available} \\|
+\code{under-assessment} \\| \code{permanent-failure} \\| \code{released} \\|
 \code{released-permanent-failure}).
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
@@ -43,7 +43,7 @@ request.}
 Describes the specified Dedicated Hosts or all your Dedicated Hosts.
 }
 \details{
-The results describe only the Dedicated Hosts in the Region you're
+The results describe only the Dedicated Hosts in the Region you\'re
 currently using. All listed instances consume capacity on your Dedicated
 Host. Dedicated Hosts that have recently been released are listed with
 the state \code{released}.

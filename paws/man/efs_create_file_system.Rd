@@ -15,14 +15,14 @@ idempotent creation.}
 performance mode for most file systems. File systems using the \code{maxIO}
 performance mode can scale to higher levels of aggregate throughput and
 operations per second with a tradeoff of slightly higher latencies for
-most file operations. The performance mode can't be changed after the
+most file operations. The performance mode can\'t be changed after the
 file system has been created.}
 
 \item{Encrypted}{A Boolean value that, if true, creates an encrypted file system. When
 creating an encrypted file system, you have the option of specifying
-CreateFileSystemRequest\$KmsKeyId for an existing AWS Key Management
-Service (AWS KMS) customer master key (CMK). If you don't specify a
-CMK, then the default CMK for Amazon EFS, \code{/aws/elasticfilesystem}, is
+CreateFileSystemRequest\\$KmsKeyId for an existing AWS Key Management
+Service (AWS KMS) customer master key (CMK). If you don\'t specify a
+CMK, then the default CMK for Amazon EFS, \verb{/aws/elasticfilesystem}, is
 used to protect the encrypted file system.}
 
 \item{KmsKeyId}{The ID of the AWS KMS CMK to be used to protect the encrypted file
@@ -31,30 +31,30 @@ CMK. If this parameter is not specified, the default CMK for Amazon EFS
 is used. This ID can be in one of the following formats:
 \itemize{
 \item Key ID - A unique identifier of the key, for example
-\code{1234abcd-12ab-34cd-56ef-1234567890ab}.
+\verb{1234abcd-12ab-34cd-56ef-1234567890ab}.
 \item ARN - An Amazon Resource Name (ARN) for the key, for example
-\code{arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}.
+\verb{arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}.
 \item Key alias - A previously created display name for a key, for example
 \code{alias/projectKey1}.
 \item Key alias ARN - An ARN for a key alias, for example
 \code{arn:aws:kms:us-west-2:444455556666:alias/projectKey1}.
 }
 
-If \code{KmsKeyId} is specified, the CreateFileSystemRequest\$Encrypted
+If \code{KmsKeyId} is specified, the CreateFileSystemRequest\\$Encrypted
 parameter must be set to true.}
 
 \item{ThroughputMode}{The throughput mode for the file system to be created. There are two
 throughput modes to choose from for your file system: \code{bursting} and
 \code{provisioned}. If you set \code{ThroughputMode} to \code{provisioned}, you must
 also set a value for \code{ProvisionedThroughPutInMibps}. You can decrease
-your file system's throughput in Provisioned Throughput mode or change
+your file system\'s throughput in Provisioned Throughput mode or change
 between the throughput modes as long as it's been more than 24 hours
 since the last decrease or throughput mode change. For more, see
 \href{https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput}{Specifying Throughput with Provisioned Mode}
 in the \emph{Amazon EFS User Guide.}}
 
 \item{ProvisionedThroughputInMibps}{The throughput, measured in MiB/s, that you want to provision for a file
-system that you're creating. Valid values are 1-1024. Required if
+system that you\'re creating. Valid values are 1-1024. Required if
 \code{ThroughputMode} is set to \code{provisioned}. The upper limit for throughput
 is 1024 MiB/s. You can get this limit increased by contacting AWS
 Support. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits}{Amazon EFS Limits That You Can Increase}
@@ -62,14 +62,14 @@ in the \emph{Amazon EFS User Guide.}}
 
 \item{Tags}{A value that specifies to create one or more tags associated with the
 file system. Each tag is a user-defined key-value pair. Name your file
-system on creation by including a \code{"Key":"Name","Value":"\{value\}"}
+system on creation by including a \verb{"Key":"Name","Value":"\\\{value\\\}"}
 key-value pair.}
 }
 \description{
 Creates a new, empty file system. The operation requires a creation
 token in the request that Amazon EFS uses to ensure idempotent creation
 (calling the operation with same creation token has no effect). If a
-file system does not currently exist that is owned by the caller's AWS
+file system does not currently exist that is owned by the caller\'s AWS
 account with the specified creation token, this operation does the
 following:
 }
@@ -95,7 +95,7 @@ the same creation token, if the initial call had succeeded in creating a
 file system, the client can learn of its existence from the
 \code{FileSystemAlreadyExists} error.
 
-The \code{CreateFileSystem} call returns while the file system's lifecycle
+The \code{CreateFileSystem} call returns while the file system\'s lifecycle
 state is still \code{creating}. You can check the file system creation status
 by calling the DescribeFileSystems operation, which among other things
 returns the file system state.
@@ -105,7 +105,7 @@ you choose for your file system. We recommend \code{generalPurpose}
 performance mode for most file systems. File systems using the \code{maxIO}
 performance mode can scale to higher levels of aggregate throughput and
 operations per second with a tradeoff of slightly higher latencies for
-most file operations. The performance mode can't be changed after the
+most file operations. The performance mode can\'t be changed after the
 file system has been created. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/performance.html#performancemodes.html}{Amazon EFS: Performance Modes}.
 
 After the file system is fully created, Amazon EFS sets its lifecycle

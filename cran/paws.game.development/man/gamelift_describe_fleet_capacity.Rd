@@ -47,6 +47,7 @@ error message includes the maximum allowed.
 \item ListFleets
 \item DeleteFleet
 \item Describe fleets:
+\itemize{
 \item DescribeFleetAttributes
 \item DescribeFleetCapacity
 \item DescribeFleetPortSettings
@@ -54,14 +55,19 @@ error message includes the maximum allowed.
 \item DescribeRuntimeConfiguration
 \item DescribeEC2InstanceLimits
 \item DescribeFleetEvents
+}
 \item Update fleets:
+\itemize{
 \item UpdateFleetAttributes
 \item UpdateFleetCapacity
 \item UpdateFleetPortSettings
 \item UpdateRuntimeConfiguration
+}
 \item Manage fleet actions:
+\itemize{
 \item StartFleetActions
 \item StopFleetActions
+}
 }
 }
 \section{Request syntax}{

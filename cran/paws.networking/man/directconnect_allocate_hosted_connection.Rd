@@ -23,7 +23,7 @@ specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or
 
 \item{vlan}{[required] The dedicated VLAN provisioned to the hosted connection.}
 
-\item{tags}{The tags to assign to the hosted connection.}
+\item{tags}{The tags associated with the connection.}
 }
 \description{
 Creates a hosted connection on the specified interconnect or a link

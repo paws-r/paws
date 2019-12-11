@@ -27,12 +27,10 @@ optional and is only used for a custom entity recognition job.}
 
 \item{LanguageCode}{[required] The language of the input documents. All documents must be in the same
 language. You can specify any of the languages supported by Amazon
-Comprehend: English ("en"), Spanish ("es"), French ("fr"), German
-("de"), Italian ("it"), or Portuguese ("pt"). If custom entities
-recognition is used, this parameter is ignored and the language used for
-training the model is used instead.}
+Comprehend. If custom entities recognition is used, this parameter is
+ignored and the language used for training the model is used instead.}
 
-\item{ClientRequestToken}{A unique identifier for the request. If you don't set the client
+\item{ClientRequestToken}{A unique identifier for the request. If you don\'t set the client
 request token, Amazon Comprehend generates one.}
 
 \item{VolumeKmsKeyId}{ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
@@ -72,7 +70,7 @@ access to the recognizer being used to detect the custom entity.
   DataAccessRoleArn = "string",
   JobName = "string",
   EntityRecognizerArn = "string",
-  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
+  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
   ClientRequestToken = "string",
   VolumeKmsKeyId = "string",
   VpcConfig = list(

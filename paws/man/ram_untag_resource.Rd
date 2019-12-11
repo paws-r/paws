@@ -2,7 +2,8 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_untag_resource}
 \alias{ram_untag_resource}
-\title{Removes the specified tags from the specified resource share}
+\title{Removes the specified tags from the specified resource share that you
+own}
 \usage{
 ram_untag_resource(resourceShareArn, tagKeys)
 }
@@ -12,7 +13,8 @@ ram_untag_resource(resourceShareArn, tagKeys)
 \item{tagKeys}{[required] The tag keys of the tags to remove.}
 }
 \description{
-Removes the specified tags from the specified resource share.
+Removes the specified tags from the specified resource share that you
+own.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

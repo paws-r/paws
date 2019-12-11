@@ -16,7 +16,7 @@ For more information about ARNs, see \href{https://docs.aws.amazon.com/general/l
 }
 \description{
 Lists the tags that have been applied to the ACM certificate. Use the
-certificate's Amazon Resource Name (ARN) to specify the certificate. To
+certificate\'s Amazon Resource Name (ARN) to specify the certificate. To
 add a tag to an ACM certificate, use the AddTagsToCertificate action. To
 delete a tag, use the RemoveTagsFromCertificate action.
 }

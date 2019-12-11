@@ -14,22 +14,19 @@ inclusive, but the end date is exclusive. For example, if \code{start} is
 retrieved from \code{2017-01-01} up to and including \code{2017-04-30} but not
 including \code{2017-05-01}.}
 
-\item{Granularity}{Sets the AWS cost granularity to \code{MONTHLY} or \code{DAILY}. If \code{Granularity}
-isn't set, the response object doesn't include the \code{Granularity},
-either \code{MONTHLY} or \code{DAILY}.
-
-The \code{GetCostAndUsageRequest} operation supports only \code{DAILY} and
-\code{MONTHLY} granularities.}
+\item{Granularity}{Sets the AWS cost granularity to \code{MONTHLY} or \code{DAILY}, or \code{HOURLY}. If
+\code{Granularity} isn\'t set, the response object doesn\'t include the
+\code{Granularity}, either \code{MONTHLY} or \code{DAILY}, or \code{HOURLY}.}
 
 \item{Filter}{Filters AWS costs by different dimensions. For example, you can specify
 \code{SERVICE} and \code{LINKED_ACCOUNT} and get the costs that are associated
-with that account's usage of that service. You can nest \code{Expression}
+with that account\'s usage of that service. You can nest \code{Expression}
 objects to define any combination of dimension filters. For more
 information, see
 \href{http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression}.}
 
 \item{Metrics}{Which metrics are returned in the query. For more information about
-blended and unblended rates, see \href{https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/}{Why does the "blended" annotation appear on some line items in my bill?}.
+blended and unblended rates, see \href{https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/}{Why does the \"blended\" annotation appear on some line items in my bill?}.
 
 Valid values are \code{AmortizedCost}, \code{BlendedCost}, \code{NetAmortizedCost},
 \code{NetUnblendedCost}, \code{NormalizedUsageAmount}, \code{UnblendedCost}, and
@@ -37,7 +34,7 @@ Valid values are \code{AmortizedCost}, \code{BlendedCost}, \code{NetAmortizedCos
 
 If you return the \code{UsageQuantity} metric, the service aggregates all
 usage numbers without taking into account the units. For example, if you
-aggregate \code{usageQuantity} across all of Amazon EC2, the results aren't
+aggregate \code{usageQuantity} across all of Amazon EC2, the results aren\'t
 meaningful because Amazon EC2 compute hours and data transfer are
 measured in different units (for example, hours vs. GB). To get more
 meaningful \code{UsageQuantity} metrics, filter by \code{UsageType} or
@@ -53,7 +50,7 @@ strings.
 
 Valid values are \code{AZ}, \code{INSTANCE_TYPE}, \code{LEGAL_ENTITY_NAME},
 \code{LINKED_ACCOUNT}, \code{OPERATION}, \code{PLATFORM}, \code{PURCHASE_TYPE}, \code{SERVICE},
-\code{TAGS}, \code{TENANCY}, and \code{USAGE_TYPE}.}
+\code{TAGS}, \code{TENANCY}, \code{RECORD_TYPE}, and \code{USAGE_TYPE}.}
 
 \item{NextPageToken}{The token to retrieve the next set of results. AWS provides the token
 when the response from a previous call has more results than the maximum
@@ -86,12 +83,18 @@ access to all member accounts.
     ),
     Not = list(),
     Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID",
+      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION",
       Values = list(
         "string"
       )
     ),
     Tags = list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    ),
+    CostCategories = list(
       Key = "string",
       Values = list(
         "string"
@@ -103,7 +106,7 @@ access to all member accounts.
   ),
   GroupBy = list(
     list(
-      Type = "DIMENSION"|"TAG",
+      Type = "DIMENSION"|"TAG"|"COST_CATEGORY",
       Key = "string"
     )
   ),

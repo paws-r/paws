@@ -22,7 +22,7 @@ list.}
 Lists the users in the specified group.
 }
 \details{
-Requires developer credentials.
+Calling this action requires developer credentials.
 }
 \section{Request syntax}{
 \preformatted{svc$list_users_in_group(

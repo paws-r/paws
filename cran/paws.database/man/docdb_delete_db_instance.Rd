@@ -8,7 +8,7 @@ docdb_delete_db_instance(DBInstanceIdentifier)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The DB instance identifier for the DB instance to be deleted. This
-parameter isn't case sensitive.
+parameter isn\'t case sensitive.
 
 Constraints:
 \itemize{

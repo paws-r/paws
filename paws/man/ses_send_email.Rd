@@ -29,7 +29,7 @@ in \href{https://tools.ietf.org/html/rfc3492.html}{RFC3492}. The sender name
 These characters must be encoded using MIME encoded-word syntax, as
 described in \href{https://tools.ietf.org/html/rfc2047}{RFC 2047}. MIME
 encoded-word syntax uses the following form:
-\code{=?charset?encoding?encoded-text?=}.}
+\verb{=?charset?encoding?encoded-text?=}.}
 
 \item{Destination}{[required] The destination for this email, composed of To:, CC:, and BCC: fields.}
 
@@ -41,7 +41,7 @@ to the message, each reply-to address will receive the reply.}
 \item{ReturnPath}{The email address that bounces and complaints will be forwarded to when
 feedback forwarding is enabled. If the message cannot be delivered to
 the recipient, then an error message will be returned from the
-recipient's ISP; this message will then be forwarded to the email
+recipient\'s ISP; this message will then be forwarded to the email
 address specified by the \code{ReturnPath} parameter. The \code{ReturnPath}
 parameter is never overwritten. This email address must be either
 individually verified with Amazon SES, or from a domain that has been
@@ -91,7 +91,7 @@ meet the following requirements:
 \itemize{
 \item The message must be sent from a verified email address or domain. If
 you attempt to send email using a non-verified address or domain,
-the operation will result in an "Email address not verified"
+the operation will result in an \"Email address not verified\"
 error.
 \item If your account is still in the Amazon SES sandbox, you may only
 send to verified addresses or domains, or to email addresses

@@ -191,6 +191,18 @@ NULL
   list()
 }
 
+.kafka$update_broker_count_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ClusterArn = structure(logical(0), tags = list(location = "uri", locationName = "clusterArn", type = "string")), CurrentVersion = structure(logical(0), tags = list(locationName = "currentVersion", type = "string")), TargetNumberOfBrokerNodes = structure(logical(0), tags = list(locationName = "targetNumberOfBrokerNodes", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kafka$update_broker_count_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ClusterArn = structure(logical(0), tags = list(locationName = "clusterArn", type = "string")), ClusterOperationArn = structure(logical(0), tags = list(locationName = "clusterOperationArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .kafka$update_broker_storage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ClusterArn = structure(logical(0), tags = list(location = "uri", locationName = "clusterArn", type = "string")), CurrentVersion = structure(logical(0), tags = list(locationName = "currentVersion", type = "string")), TargetBrokerEBSVolumeInfo = structure(list(structure(list(KafkaBrokerNodeId = structure(logical(0), tags = list(locationName = "kafkaBrokerNodeId", type = "string")), VolumeSizeGB = structure(logical(0), tags = list(locationName = "volumeSizeGB", type = "integer"))), tags = list(type = "structure"))), tags = list(locationName = "targetBrokerEBSVolumeInfo", type = "list"))), tags = list(type = "structure"))

@@ -12,7 +12,7 @@ greengrass_create_deployment(AmznClientToken, DeploymentId,
 
 \item{DeploymentId}{The ID of the deployment if you wish to redeploy a previous deployment.}
 
-\item{DeploymentType}{The type of deployment. When used for ''CreateDeployment'', only ''NewDeployment'' and ''Redeployment'' are valid.}
+\item{DeploymentType}{[required] The type of deployment. When used for ''CreateDeployment'', only ''NewDeployment'' and ''Redeployment'' are valid.}
 
 \item{GroupId}{[required] The ID of the Greengrass group.}
 

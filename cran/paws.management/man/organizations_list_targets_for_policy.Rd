@@ -12,12 +12,12 @@ organizations_list_targets_for_policy(PolicyId, NextToken, MaxResults)
 know.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a policy ID
-string requires "p-" followed by from 8 to 128 lower-case letters or
+string requires \"p-\" followed by from 8 to 128 lowercase letters or
 digits.}
 
 \item{NextToken}{Use this parameter if you receive a \code{NextToken} response in a previous
 request that indicates that there is more output available. Set it to
-the value of the previous call's \code{NextToken} response to indicate where
+the value of the previous call\'s \code{NextToken} response to indicate where
 the output should continue from.}
 
 \item{MaxResults}{(Optional) Use this to limit the number of results you want included per
@@ -37,12 +37,12 @@ specified policy is attached to.
 }
 \details{
 Always check the \code{NextToken} response parameter for a \code{null} value when
-calling a \code{List*} operation. These operations can occasionally return an
+calling a \verb{List*} operation. These operations can occasionally return an
 empty set of results even when there are more results available. The
 \code{NextToken} response parameter value is \code{null} \emph{only} when there are no
 more results to display.
 
-This operation can be called only from the organization's master
+This operation can be called only from the organization\'s master
 account.
 }
 \section{Request syntax}{

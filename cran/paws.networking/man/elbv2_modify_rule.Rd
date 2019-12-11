@@ -2,7 +2,7 @@
 % Please edit documentation in R/elbv2_operations.R
 \name{elbv2_modify_rule}
 \alias{elbv2_modify_rule}
-\title{Modifies the specified rule}
+\title{Replaces the specified properties of the specified rule}
 \usage{
 elbv2_modify_rule(RuleArn, Conditions, Actions)
 }
@@ -15,12 +15,13 @@ conditions: \code{http-request-method}, \code{host-header}, \code{path-pattern},
 and \code{query-string}.}
 
 \item{Actions}{The actions. Each rule must include exactly one of the following types
-of actions: \code{forward}, \code{fixed-response}, or \code{redirect}.
+of actions: \code{forward}, \code{fixed-response}, or \code{redirect}, and it must be
+the last action to be performed.
 
-If the action type is \code{forward}, you specify a target group. The
-protocol of the target group must be HTTP or HTTPS for an Application
-Load Balancer. The protocol of the target group must be TCP, TLS, UDP,
-or TCP\_UDP for a Network Load Balancer.
+If the action type is \code{forward}, you specify one or more target groups.
+The protocol of the target group must be HTTP or HTTPS for an
+Application Load Balancer. The protocol of the target group must be TCP,
+TLS, UDP, or TCP\\_UDP for a Network Load Balancer.
 
 [HTTPS listeners] If the action type is \code{authenticate-oidc}, you
 authenticate users through an identity provider that is OpenID Connect
@@ -36,11 +37,13 @@ redirect specified client requests from one URL to another.
 you drop specified client requests and return a custom HTTP response.}
 }
 \description{
-Modifies the specified rule.
+Replaces the specified properties of the specified rule. Any properties
+that you do not specify are unchanged.
 }
 \details{
-Any existing properties that you do not modify retain their current
-values.
+To add an item to a list, remove an item from a list, or update an item
+in a list, you must provide the entire list. For example, to add an
+action, specify a list with the current actions plus the new action.
 
 To modify the actions for the default rule, use ModifyListener.
 }
@@ -134,6 +137,18 @@ To modify the actions for the default rule, use ModifyListener.
         MessageBody = "string",
         StatusCode = "string",
         ContentType = "string"
+      ),
+      ForwardConfig = list(
+        TargetGroups = list(
+          list(
+            TargetGroupArn = "string",
+            Weight = 123
+          )
+        ),
+        TargetGroupStickinessConfig = list(
+          Enabled = TRUE|FALSE,
+          DurationSeconds = 123
+        )
       )
     )
   )

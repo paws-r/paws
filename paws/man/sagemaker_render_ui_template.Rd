@@ -15,7 +15,7 @@ sagemaker_render_ui_template(UiTemplate, Task, RoleArn)
 are used by the template.}
 }
 \description{
-Renders the UI template so that you can preview the worker's
+Renders the UI template so that you can preview the worker\'s
 experience.
 }
 \section{Request syntax}{

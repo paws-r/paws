@@ -40,7 +40,7 @@ returned \code{VolumeModification} objects are null.
 You can also use CloudWatch Events to check the status of a modification
 to an EBS volume. For information about CloudWatch Events, see the
 \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/}{Amazon CloudWatch Events User Guide}. For
-more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods}{Monitoring Volume Modifications"}
+more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods}{Monitoring Volume Modifications\"}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{

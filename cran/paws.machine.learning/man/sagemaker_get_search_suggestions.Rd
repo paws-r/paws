@@ -21,7 +21,7 @@ property name to use in \code{Search} queries. Provides suggestions for
 }
 \section{Request syntax}{
 \preformatted{svc$get_search_suggestions(
-  Resource = "TrainingJob",
+  Resource = "TrainingJob"|"Experiment"|"ExperimentTrial"|"ExperimentTrialComponent",
   SuggestionQuery = list(
     PropertyNameQuery = list(
       PropertyNameHint = "string"

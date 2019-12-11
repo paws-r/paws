@@ -28,7 +28,7 @@ ResourceNotFoundException.)
 }
 
 For example,
-\code{aws servicecatalog accept-portfolio-share --portfolio-id "port-2qwzkwxt3y5fk" --portfolio-share-type AWS_ORGANIZATIONS}}
+\verb{aws servicecatalog accept-portfolio-share --portfolio-id "port-2qwzkwxt3y5fk" --portfolio-share-type AWS_ORGANIZATIONS}}
 }
 \description{
 Accepts an offer to share the specified portfolio.

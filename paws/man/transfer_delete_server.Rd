@@ -11,12 +11,10 @@ transfer_delete_server(ServerId)
 }
 \description{
 Deletes the Secure File Transfer Protocol (SFTP) server that you
-specify. If you used \code{SERVICE_MANAGED} as your \code{IdentityProviderType},
-you need to delete all users associated with this server before deleting
-the server itself
+specify.
 }
 \details{
-No response returns from this call.
+No response returns from this operation.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_server(

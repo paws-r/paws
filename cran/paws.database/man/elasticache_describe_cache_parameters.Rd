@@ -13,7 +13,7 @@ elasticache_describe_cache_parameters(CacheParameterGroupName, Source,
 
 \item{Source}{The parameter types to return.
 
-Valid values: \code{user} \| \code{system} \| \code{engine-default}}
+Valid values: \code{user} \\| \code{system} \\| \code{engine-default}}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a marker is

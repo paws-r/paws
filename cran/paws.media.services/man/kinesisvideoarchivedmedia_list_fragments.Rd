@@ -13,11 +13,11 @@ kinesisvideoarchivedmedia_list_fragments(StreamName, MaxResults,
 
 \item{MaxResults}{The total number of fragments to return. If the total number of
 fragments available is more than the value specified in \code{max-results},
-then a ListFragmentsOutput\$NextToken is provided in the output that you
+then a ListFragmentsOutput\\$NextToken is provided in the output that you
 can use to resume pagination.}
 
 \item{NextToken}{A token to specify where to start paginating. This is the
-ListFragmentsOutput\$NextToken from a previously truncated response.}
+ListFragmentsOutput\\$NextToken from a previously truncated response.}
 
 \item{FragmentSelector}{Describes the timestamp range and timestamp origin for the range of
 fragments to return.}
@@ -35,7 +35,7 @@ one second.
 
 You must first call the \code{GetDataEndpoint} API to get an endpoint. Then
 send the \code{ListFragments} requests to this endpoint using the
-\href{https://docs.aws.amazon.com/cli/latest/reference/}{\--endpoint-url parameter}.
+\href{https://docs.aws.amazon.com/cli/latest/reference/}{\\--endpoint-url parameter}.
 
 If an error is thrown after invoking a Kinesis Video Streams archived
 media API, in addition to the HTTP status code and the response body, it

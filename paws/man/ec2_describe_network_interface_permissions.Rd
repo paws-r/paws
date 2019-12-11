@@ -19,7 +19,7 @@ network interface.
 \item \code{network-interface-permission.aws-account-id} - The AWS account ID.
 \item \code{network-interface-permission.aws-service} - The AWS service.
 \item \code{network-interface-permission.permission} - The type of permission
-(\code{INSTANCE-ATTACH} \| \code{EIP-ASSOCIATE}).
+(\code{INSTANCE-ATTACH} \\| \code{EIP-ASSOCIATE}).
 }}
 
 \item{NextToken}{The token to request the next page of results.}

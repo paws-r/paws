@@ -6,7 +6,9 @@
 EarliestRestorableDateTime and LatestRestorableDateTime}
 \usage{
 dynamodb_restore_table_to_point_in_time(SourceTableName,
-  TargetTableName, UseLatestRestorableTime, RestoreDateTime)
+  TargetTableName, UseLatestRestorableTime, RestoreDateTime,
+  BillingModeOverride, GlobalSecondaryIndexOverride,
+  LocalSecondaryIndexOverride, ProvisionedThroughputOverride)
 }
 \arguments{
 \item{SourceTableName}{[required] Name of the source table that is being restored.}
@@ -18,6 +20,18 @@ dynamodb_restore_table_to_point_in_time(SourceTableName,
 time.}
 
 \item{RestoreDateTime}{Time in the past to restore the table to.}
+
+\item{BillingModeOverride}{The billing mode of the restored table.}
+
+\item{GlobalSecondaryIndexOverride}{List of global secondary indexes for the restored table. The indexes
+provided should match existing secondary indexes. You can choose to
+exclude some or all of the indexes at the time of restore.}
+
+\item{LocalSecondaryIndexOverride}{List of local secondary indexes for the restored table. The indexes
+provided should match existing secondary indexes. You can choose to
+exclude some or all of the indexes at the time of restore.}
+
+\item{ProvisionedThroughputOverride}{Provisioned throughput settings for the restored table.}
 }
 \description{
 Restores the specified table to the specified point in time within
@@ -38,10 +52,10 @@ table using point in time recovery:
 \item Local secondary indexes (LSIs)
 \item Provisioned read and write capacity
 \item Encryption settings
-}
 
 All these settings come from the current settings of the source
 table at the time of restore.
+}
 
 You must manually set up the following on the restored table:
 \itemize{
@@ -61,6 +75,49 @@ You must manually set up the following on the restored table:
   UseLatestRestorableTime = TRUE|FALSE,
   RestoreDateTime = as.POSIXct(
     "2015-01-01"
+  ),
+  BillingModeOverride = "PROVISIONED"|"PAY_PER_REQUEST",
+  GlobalSecondaryIndexOverride = list(
+    list(
+      IndexName = "string",
+      KeySchema = list(
+        list(
+          AttributeName = "string",
+          KeyType = "HASH"|"RANGE"
+        )
+      ),
+      Projection = list(
+        ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
+        NonKeyAttributes = list(
+          "string"
+        )
+      ),
+      ProvisionedThroughput = list(
+        ReadCapacityUnits = 123,
+        WriteCapacityUnits = 123
+      )
+    )
+  ),
+  LocalSecondaryIndexOverride = list(
+    list(
+      IndexName = "string",
+      KeySchema = list(
+        list(
+          AttributeName = "string",
+          KeyType = "HASH"|"RANGE"
+        )
+      ),
+      Projection = list(
+        ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
+        NonKeyAttributes = list(
+          "string"
+        )
+      )
+    )
+  ),
+  ProvisionedThroughputOverride = list(
+    ReadCapacityUnits = 123,
+    WriteCapacityUnits = 123
   )
 )
 }

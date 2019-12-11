@@ -14,7 +14,7 @@ lightsail_export_snapshot(sourceSnapshotName)
 Exports an Amazon Lightsail instance or block storage disk snapshot to
 Amazon Elastic Compute Cloud (Amazon EC2). This operation results in an
 export snapshot record that can be used with the
-\code{create cloud formation stack} operation to create new Amazon EC2
+\verb{create cloud formation stack} operation to create new Amazon EC2
 instances.
 }
 \details{
@@ -25,11 +25,11 @@ Amazon EC2 as Amazon EBS volumes. Snapshots are exported to the same
 Amazon Web Services Region in Amazon EC2 as the source Lightsail
 snapshot.
 
-The \code{export snapshot} operation supports tag-based access control via
-resource tags applied to the resource identified by sourceSnapshotName.
-For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+The \verb{export snapshot} operation supports tag-based access control via
+resource tags applied to the resource identified by
+\verb{source snapshot name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 
-Use the \code{get instance snapshots} or \code{get disk snapshots} operations to
+Use the \verb{get instance snapshots} or \verb{get disk snapshots} operations to
 get a list of snapshots that you can export to Amazon EC2.
 }
 \section{Request syntax}{

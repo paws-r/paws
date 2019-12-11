@@ -13,7 +13,7 @@ chime_list_phone_number_orders(NextToken, MaxResults)
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
 \description{
-Lists the phone number orders for the administrator's Amazon Chime
+Lists the phone number orders for the administrator\'s Amazon Chime
 account.
 }
 \section{Request syntax}{

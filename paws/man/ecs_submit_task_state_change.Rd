@@ -44,6 +44,8 @@ Sent to acknowledge that a task changed states.
   containers = list(
     list(
       containerName = "string",
+      imageDigest = "string",
+      runtimeId = "string",
       exitCode = 123,
       networkBindings = list(
         list(

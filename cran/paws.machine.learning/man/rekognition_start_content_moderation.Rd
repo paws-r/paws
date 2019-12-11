@@ -2,22 +2,21 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_start_content_moderation}
 \alias{rekognition_start_content_moderation}
-\title{Starts asynchronous detection of explicit or suggestive adult content in
-a stored video}
+\title{Starts asynchronous detection of unsafe content in a stored video}
 \usage{
 rekognition_start_content_moderation(Video, MinConfidence,
   ClientRequestToken, NotificationChannel, JobTag)
 }
 \arguments{
-\item{Video}{[required] The video in which you want to moderate content. The video must be
+\item{Video}{[required] The video in which you want to detect unsafe content. The video must be
 stored in an Amazon S3 bucket.}
 
 \item{MinConfidence}{Specifies the minimum confidence that Amazon Rekognition must have in
 order to return a moderated content label. Confidence represents how
 certain Amazon Rekognition is that the moderated content is correctly
 identified. 0 is the lowest confidence. 100 is the highest confidence.
-Amazon Rekognition doesn't return any moderated content labels with a
-confidence level lower than this specified value. If you don't specify
+Amazon Rekognition doesn\'t return any moderated content labels with a
+confidence level lower than this specified value. If you don\'t specify
 \code{MinConfidence}, \code{GetContentModeration} returns labels with confidence
 values greater than or equal to 50 percent.}
 
@@ -27,28 +26,29 @@ is returned. Use \code{ClientRequestToken} to prevent the same job from being
 accidently started more than once.}
 
 \item{NotificationChannel}{The Amazon SNS topic ARN that you want Amazon Rekognition Video to
-publish the completion status of the content moderation analysis to.}
+publish the completion status of the unsafe content analysis to.}
 
-\item{JobTag}{Unique identifier you specify to identify the job in the completion
-status published to the Amazon Simple Notification Service topic.}
+\item{JobTag}{An identifier you specify that\'s returned in the completion
+notification that\'s published to your Amazon Simple Notification
+Service topic. For example, you can use \code{JobTag} to group related jobs
+and identify them in the completion notification.}
 }
 \description{
-Starts asynchronous detection of explicit or suggestive adult content in
-a stored video.
+Starts asynchronous detection of unsafe content in a stored video.
 }
 \details{
 Amazon Rekognition Video can moderate content in a video stored in an
 Amazon S3 bucket. Use Video to specify the bucket name and the filename
 of the video. \code{StartContentModeration} returns a job identifier
-(\code{JobId}) which you use to get the results of the analysis. When content
-moderation analysis is finished, Amazon Rekognition Video publishes a
+(\code{JobId}) which you use to get the results of the analysis. When unsafe
+content analysis is finished, Amazon Rekognition Video publishes a
 completion status to the Amazon Simple Notification Service topic that
 you specify in \code{NotificationChannel}.
 
-To get the results of the content moderation analysis, first check that
-the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If
-so, call GetContentModeration and pass the job identifier (\code{JobId}) from
-the initial call to \code{StartContentModeration}.
+To get the results of the unsafe content analysis, first check that the
+status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so,
+call GetContentModeration and pass the job identifier (\code{JobId}) from the
+initial call to \code{StartContentModeration}.
 
 For more information, see Detecting Unsafe Content in the Amazon
 Rekognition Developer Guide.

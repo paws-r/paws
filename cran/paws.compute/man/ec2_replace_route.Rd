@@ -5,9 +5,9 @@
 \title{Replaces an existing route within a route table in a VPC}
 \usage{
 ec2_replace_route(DestinationCidrBlock, DestinationIpv6CidrBlock,
-  DryRun, EgressOnlyInternetGatewayId, GatewayId, InstanceId,
-  NatGatewayId, TransitGatewayId, NetworkInterfaceId, RouteTableId,
-  VpcPeeringConnectionId)
+  DryRun, EgressOnlyInternetGatewayId, GatewayId, InstanceId, LocalTarget,
+  NatGatewayId, TransitGatewayId, LocalGatewayId, NetworkInterfaceId,
+  RouteTableId, VpcPeeringConnectionId)
 }
 \arguments{
 \item{DestinationCidrBlock}{The IPv4 CIDR address block used for the destination match. The value
@@ -27,9 +27,14 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{InstanceId}{The ID of a NAT instance in your VPC.}
 
+\item{LocalTarget}{Specifies whether to reset the local route to its default target
+(\code{local}).}
+
 \item{NatGatewayId}{[IPv4 traffic only] The ID of a NAT gateway.}
 
 \item{TransitGatewayId}{The ID of a transit gateway.}
+
+\item{LocalGatewayId}{The ID of the local gateway.}
 
 \item{NetworkInterfaceId}{The ID of a network interface.}
 
@@ -39,9 +44,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Replaces an existing route within a route table in a VPC. You must
-provide only one of the following: internet gateway or virtual private
+provide only one of the following: internet gateway, virtual private
 gateway, NAT instance, NAT gateway, VPC peering connection, network
-interface, or egress-only internet gateway.
+interface, egress-only internet gateway, or transit gateway.
 }
 \details{
 For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html}{Route Tables}
@@ -55,8 +60,10 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
   EgressOnlyInternetGatewayId = "string",
   GatewayId = "string",
   InstanceId = "string",
+  LocalTarget = TRUE|FALSE,
   NatGatewayId = "string",
   TransitGatewayId = "string",
+  LocalGatewayId = "string",
   NetworkInterfaceId = "string",
   RouteTableId = "string",
   VpcPeeringConnectionId = "string"

@@ -36,7 +36,7 @@ If set to null, the results are sorted in an arbitrary order.}
 
 \item{s3Bucket}{An Amazon S3 bucket name to limit the search for revisions.
 
-If set to null, all of the user's buckets are searched.}
+If set to null, all of the user\'s buckets are searched.}
 
 \item{s3KeyPrefix}{A key prefix for the set of Amazon S3 objects to limit the search for
 revisions.}

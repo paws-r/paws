@@ -28,13 +28,16 @@ IAM user or role explicitly overrides these settings. If this field is
 omitted, the setting is changed only for the authenticated user.}
 }
 \description{
-Modifies an account setting. If you change the account setting for the
-root user, the default settings for all of the IAM users and roles for
-which no individual account setting has been specified are reset. For
-more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html}{Account Settings}
-in the \emph{Amazon Elastic Container Service Developer Guide}.
+Modifies an account setting. Account settings are set on a per-Region
+basis.
 }
 \details{
+If you change the account setting for the root user, the default
+settings for all of the IAM users and roles for which no individual
+account setting has been specified are reset. For more information, see
+\href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html}{Account Settings}
+in the \emph{Amazon Elastic Container Service Developer Guide}.
+
 When \code{serviceLongArnFormat}, \code{taskLongArnFormat}, or
 \code{containerInstanceLongArnFormat} are specified, the Amazon Resource Name
 (ARN) and resource ID format of the resource type for a specified IAM

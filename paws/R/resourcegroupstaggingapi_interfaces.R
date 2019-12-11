@@ -3,15 +3,39 @@
 #' @include resourcegroupstaggingapi_service.R
 NULL
 
+.resourcegroupstaggingapi$describe_report_creation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.resourcegroupstaggingapi$describe_report_creation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string")), S3Location = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.resourcegroupstaggingapi$get_compliance_summary_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TargetIdFilters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RegionFilters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceTypeFilters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TagKeyFilters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), GroupBy = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(type = "integer")), PaginationToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.resourcegroupstaggingapi$get_compliance_summary_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SummaryList = structure(list(structure(list(LastUpdated = structure(logical(0), tags = list(type = "string")), TargetId = structure(logical(0), tags = list(type = "string")), TargetIdType = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), NonCompliantResources = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), PaginationToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .resourcegroupstaggingapi$get_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PaginationToken = structure(logical(0), tags = list(type = "string")), TagFilters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ResourcesPerPage = structure(logical(0), tags = list(type = "integer")), TagsPerPage = structure(logical(0), tags = list(type = "integer")), ResourceTypeFilters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(PaginationToken = structure(logical(0), tags = list(type = "string")), TagFilters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ResourcesPerPage = structure(logical(0), tags = list(type = "integer")), TagsPerPage = structure(logical(0), tags = list(type = "integer")), ResourceTypeFilters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), IncludeComplianceDetails = structure(logical(0), tags = list(type = "boolean")), ExcludeCompliantResources = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .resourcegroupstaggingapi$get_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PaginationToken = structure(logical(0), tags = list(type = "string")), ResourceTagMappingList = structure(list(structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(PaginationToken = structure(logical(0), tags = list(type = "string")), ResourceTagMappingList = structure(list(structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ComplianceDetails = structure(list(NoncompliantKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), KeysWithNoncompliantValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ComplianceStatus = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -36,6 +60,18 @@ NULL
 .resourcegroupstaggingapi$get_tag_values_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PaginationToken = structure(logical(0), tags = list(type = "string")), TagValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.resourcegroupstaggingapi$start_report_creation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(S3Bucket = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.resourcegroupstaggingapi$start_report_creation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -13,7 +13,7 @@ In this release, Security Hub supports only the CIS AWS Foundations
 standard.
 
 The ARN for the standard is
-\code{arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0}.}
+\verb{arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0}.}
 }
 \description{
 Enables the standards specified by the provided \code{standardsArn}. In this

@@ -16,13 +16,13 @@ that you want to list.}
 
 \item{StartRecordType}{The type of resource record set to begin the record listing from.
 
-Valid values for basic resource record sets: \code{A} \| \code{AAAA} \| \code{CAA} \|
-\code{CNAME} \| \code{MX} \| \code{NAPTR} \| \code{NS} \| \code{PTR} \| \code{SOA} \| \code{SPF} \| \code{SRV}
-\| \code{TXT}
+Valid values for basic resource record sets: \code{A} \\| \code{AAAA} \\| \code{CAA} \\|
+\code{CNAME} \\| \code{MX} \\| \code{NAPTR} \\| \code{NS} \\| \code{PTR} \\| \code{SOA} \\| \code{SPF} \\| \code{SRV}
+\\| \code{TXT}
 
 Values for weighted, latency, geolocation, and failover resource record
-sets: \code{A} \| \code{AAAA} \| \code{CAA} \| \code{CNAME} \| \code{MX} \| \code{NAPTR} \| \code{PTR} \|
-\code{SPF} \| \code{SRV} \| \code{TXT}
+sets: \code{A} \\| \code{AAAA} \\| \code{CAA} \\| \code{CNAME} \\| \code{MX} \\| \code{NAPTR} \\| \code{PTR} \\|
+\code{SPF} \\| \code{SRV} \\| \code{TXT}
 
 Values for alias resource record sets:
 \itemize{
@@ -30,7 +30,7 @@ Values for alias resource record sets:
 \item \strong{CloudFront distribution}: A or AAAA
 \item \strong{Elastic Beanstalk environment that has a regionalized subdomain}:
 A
-\item \strong{Elastic Load Balancing load balancer}: A \| AAAA
+\item \strong{Elastic Load Balancing load balancer}: A \\| AAAA
 \item \strong{Amazon S3 bucket}: A
 \item \strong{Amazon VPC interface VPC endpoint}: A
 \item \strong{Another resource record set in this hosted zone:} The type of the
@@ -40,10 +40,10 @@ resource record set that the alias references.
 Constraint: Specifying \code{type} without specifying \code{name} returns an
 \code{InvalidInput} error.}
 
-\item{StartRecordIdentifier}{\emph{Weighted resource record sets only:} If results were truncated for a
-given DNS name and type, specify the value of \code{NextRecordIdentifier}
-from the previous response to get the next resource record set that has
-the current DNS name and type.}
+\item{StartRecordIdentifier}{\emph{Resource record sets that have a routing policy other than simple:} If
+results were truncated for a given DNS name and type, specify the value
+of \code{NextRecordIdentifier} from the previous response to get the next
+resource record set that has the current DNS name and type.}
 
 \item{MaxItems}{(Optional) The maximum number of resource records sets to include in the
 response body for this request. If the response includes more than
@@ -70,7 +70,7 @@ reversed, for example:
 Note the trailing dot, which can change the sort order when the record
 name contains characters that appear before \code{.} (decimal 46) in the
 ASCII table. These characters include the following:
-\code{! \" # $ \\\% &amp; \' ( ) * + , -}
+\verb{! \\" # $ \\\% &amp; \\' ( ) * + , -}
 
 When multiple records have the same DNS name, \code{ListResourceRecordSets}
 sorts results by the record type.
@@ -110,7 +110,7 @@ all Route 53 DNS servers.
 
 To ensure that you get an accurate listing of the resource record sets
 for a hosted zone at a point in time, do not submit a
-\code{ChangeResourceRecordSets} request while you're paging through the
+\code{ChangeResourceRecordSets} request while you\'re paging through the
 results of a \code{ListResourceRecordSets} request. If you do, some pages may
 display results without the latest changes while other pages display
 results with the latest changes.

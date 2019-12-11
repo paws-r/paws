@@ -25,7 +25,7 @@ specified when the job was created (\code{CreateJob} using field
 \code{timeoutConfig}).}
 }
 \description{
-Gets and starts the next pending (status IN\_PROGRESS or QUEUED) job
+Gets and starts the next pending (status IN\\_PROGRESS or QUEUED) job
 execution for a thing.
 }
 \section{Request syntax}{

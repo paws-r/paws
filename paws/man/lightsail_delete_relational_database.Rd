@@ -15,15 +15,15 @@ database is deleted. If \code{true} is specified, no database snapshot is
 created. If \code{false} is specified, a database snapshot is created before
 your database is deleted.
 
-You must specify the \code{final relational database snapshot name} parameter
-if the \code{skip final snapshot} parameter is \code{false}.
+You must specify the \verb{final relational database snapshot name} parameter
+if the \verb{skip final snapshot} parameter is \code{false}.
 
 Default: \code{false}}
 
-\item{finalRelationalDatabaseSnapshotName}{The name of the database snapshot created if \code{skip final snapshot} is
+\item{finalRelationalDatabaseSnapshotName}{The name of the database snapshot created if \verb{skip final snapshot} is
 \code{false}, which is the default value for that parameter.
 
-Specifying this parameter and also specifying the \code{skip final snapshot}
+Specifying this parameter and also specifying the \verb{skip final snapshot}
 parameter to \code{true} results in an error.
 
 Constraints:
@@ -36,7 +36,7 @@ Constraints:
 Deletes a database in Amazon Lightsail.
 }
 \details{
-The \code{delete relational database} operation supports tag-based access
+The \verb{delete relational database} operation supports tag-based access
 control via resource tags applied to the resource identified by
 relationalDatabaseName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }

@@ -2,20 +2,33 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_describe_organization_config_rules}
 \alias{configservice_describe_organization_config_rules}
-\title{Describe organization config rules}
+\title{Returns a list of organization config rules}
 \usage{
 configservice_describe_organization_config_rules(
   OrganizationConfigRuleNames, Limit, NextToken)
 }
 \arguments{
-\item{OrganizationConfigRuleNames}{}
+\item{OrganizationConfigRuleNames}{The names of organization config rules for which you want details. If
+you do not specify any names, AWS Config returns details for all your
+organization config rules.}
 
-\item{Limit}{}
+\item{Limit}{The maximum number of organization config rules returned on each page.
+If you do no specify a number, AWS Config uses the default. The default
+is 100.}
 
-\item{NextToken}{}
+\item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
+the next page of results in a paginated response.}
 }
 \description{
-Describe organization config rules
+Returns a list of organization config rules.
+}
+\details{
+When you specify the limit and the next token, you receive a paginated
+response. Limit and next token are not applicable if you specify
+organization config rule names. It is only applicable, when you request
+all the organization config rules.
+
+Only a master account can call this API.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_organization_config_rules(

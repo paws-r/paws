@@ -16,14 +16,14 @@ need to base64-encode image bytes passed using the \code{Bytes} field. For
 more information, see Images in the Amazon Rekognition developer guide.}
 
 \item{Attributes}{An array of facial attributes you want to be returned. This can be the
-default list of attributes or all attributes. If you don't specify a
-value for \code{Attributes} or if you specify \code{\\["DEFAULT"\\]}, the API
+default list of attributes or all attributes. If you don\'t specify a
+value for \code{Attributes} or if you specify \verb{\\\["DEFAULT"\\\]}, the API
 returns the following subset of facial attributes: \code{BoundingBox},
 \code{Confidence}, \code{Pose}, \code{Quality}, and \code{Landmarks}. If you provide
-\code{\\["ALL"\\]}, all facial attributes are returned, but the operation
+\verb{\\\["ALL"\\\]}, all facial attributes are returned, but the operation
 takes longer to complete.
 
-If you provide both, \code{\\["ALL", "DEFAULT"\\]}, the service uses a
+If you provide both, \verb{\\\["ALL", "DEFAULT"\\\]}, the service uses a
 logical AND operator to determine which attributes to return (in this
 case, all attributes).}
 }
@@ -35,7 +35,7 @@ Detects faces within an image that is provided as input.
 detected, the operation returns face details. These details include a
 bounding box of the face, a confidence value (that the bounding box
 contains a face), and a fixed set of attributes such as facial landmarks
-(for example, coordinates of eye and mouth), gender, presence of beard,
+(for example, coordinates of eye and mouth), presence of beard,
 sunglasses, and so on.
 
 The face-detection algorithm is most effective on frontal faces. For

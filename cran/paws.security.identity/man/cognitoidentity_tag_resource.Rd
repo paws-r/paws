@@ -10,7 +10,7 @@ cognitoidentity_tag_resource(ResourceArn, Tags)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the identity pool to assign the tags
 to.}
 
-\item{Tags}{The tags to assign to the identity pool.}
+\item{Tags}{[required] The tags to assign to the identity pool.}
 }
 \description{
 Assigns a set of tags to an Amazon Cognito identity pool. A tag is a

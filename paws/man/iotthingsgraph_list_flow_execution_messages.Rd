@@ -12,7 +12,7 @@ iotthingsgraph_list_flow_execution_messages(flowExecutionId, nextToken,
 \item{flowExecutionId}{[required] The ID of the flow execution.}
 
 \item{nextToken}{The string that specifies the next page of results. Use this when
-you're paginating results.}
+you\'re paginating results.}
 
 \item{maxResults}{The maximum number of results to return in the response.}
 }

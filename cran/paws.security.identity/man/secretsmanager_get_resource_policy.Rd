@@ -26,7 +26,7 @@ To avoid this situation, we recommend that you don't create secret names
 that end with a hyphen followed by six characters.}
 }
 \description{
-Retrieves the JSON text of the resource-based policy document that's
+Retrieves the JSON text of the resource-based policy document that\'s
 attached to the specified secret. The JSON request string input and
 response output are shown formatted with white space and line breaks for
 better readability. Submit your input as a single line JSON string.
@@ -42,7 +42,7 @@ To run this command, you must have the following permissions:
 \strong{Related operations}
 \itemize{
 \item To attach a resource policy to a secret, use PutResourcePolicy.
-\item To delete the resource-based policy that's attached to a secret,
+\item To delete the resource-based policy that\'s attached to a secret,
 use DeleteResourcePolicy.
 \item To list all of the currently available secrets, use ListSecrets.
 }

@@ -15,7 +15,7 @@ Each tag name is passed in with the parameter \code{Key} and the
 corresponding value is passed in with the parameter \code{Value}. The \code{Key}
 and \code{Value} parameters are separated by a comma (,). Separate multiple
 tags with a space. For example,
-\code{--tags "Key"="owner","Value"="admin" "Key"="environment","Value"="test" "Key"="version","Value"="1.0"}.}
+\verb{--tags "Key"="owner","Value"="admin" "Key"="environment","Value"="test" "Key"="version","Value"="1.0"}.}
 }
 \description{
 Adds one or more tags to a specified resource.

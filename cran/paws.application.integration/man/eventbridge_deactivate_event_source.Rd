@@ -12,13 +12,13 @@ eventbridge_deactivate_event_source(Name)
 }
 \description{
 An AWS customer uses this operation to temporarily stop receiving events
-from the specified partner event source. The matching event bus isn't
+from the specified partner event source. The matching event bus isn\'t
 deleted.
 }
 \details{
 When you deactivate a partner event source, the source goes into
 \code{PENDING} state. If it remains in \code{PENDING} state for more than two
-weeks, it's deleted.
+weeks, it\'s deleted.
 
 To activate a deactivated partner event source, use ActivateEventSource.
 }

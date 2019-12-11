@@ -2,14 +2,14 @@
 % Please edit documentation in R/glue_operations.R
 \name{glue_get_user_defined_functions}
 \alias{glue_get_user_defined_functions}
-\title{Retrieves a multiple function definitions from the Data Catalog}
+\title{Retrieves multiple function definitions from the Data Catalog}
 \usage{
 glue_get_user_defined_functions(CatalogId, DatabaseName, Pattern,
   NextToken, MaxResults)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the functions to be retrieved are
-located. If none is supplied, the AWS account ID is used by default.}
+located. If none is provided, the AWS account ID is used by default.}
 
 \item{DatabaseName}{[required] The name of the catalog database where the functions are located.}
 
@@ -21,7 +21,7 @@ definitions returned.}
 \item{MaxResults}{The maximum number of functions to return in one response.}
 }
 \description{
-Retrieves a multiple function definitions from the Data Catalog.
+Retrieves multiple function definitions from the Data Catalog.
 }
 \section{Request syntax}{
 \preformatted{svc$get_user_defined_functions(

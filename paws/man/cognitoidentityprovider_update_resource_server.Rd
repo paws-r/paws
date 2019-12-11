@@ -20,6 +20,10 @@ cognitoidentityprovider_update_resource_server(UserPoolId, Identifier,
 Updates the name and scopes of resource server. All other fields are
 read-only.
 }
+\details{
+If you don\'t provide a value for an attribute, it will be set to the
+default value.
+}
 \section{Request syntax}{
 \preformatted{svc$update_resource_server(
   UserPoolId = "string",

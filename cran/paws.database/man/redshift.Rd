@@ -71,6 +71,7 @@ make up your data warehouse.
 \link[=redshift_create_event_subscription]{create_event_subscription} \tab Creates an Amazon Redshift event notification subscription \cr
 \link[=redshift_create_hsm_client_certificate]{create_hsm_client_certificate} \tab Creates an HSM client certificate that an Amazon Redshift cluster will use to connect to the client's HSM in order to store and retrieve the keys used to encrypt the cluster databases \cr
 \link[=redshift_create_hsm_configuration]{create_hsm_configuration} \tab Creates an HSM configuration that contains the information required by an Amazon Redshift cluster to store and use database encryption keys in a Hardware Security Module (HSM) \cr
+\link[=redshift_create_scheduled_action]{create_scheduled_action} \tab Creates a scheduled action \cr
 \link[=redshift_create_snapshot_copy_grant]{create_snapshot_copy_grant} \tab Creates a snapshot copy grant that permits Amazon Redshift to use a customer master key (CMK) from AWS Key Management Service (AWS KMS) to encrypt copied snapshots in a destination region \cr
 \link[=redshift_create_snapshot_schedule]{create_snapshot_schedule} \tab Creates a new snapshot schedule \cr
 \link[=redshift_create_tags]{create_tags} \tab Adds one or more tags to a specified resource \cr
@@ -82,6 +83,7 @@ make up your data warehouse.
 \link[=redshift_delete_event_subscription]{delete_event_subscription} \tab Deletes an Amazon Redshift event notification subscription \cr
 \link[=redshift_delete_hsm_client_certificate]{delete_hsm_client_certificate} \tab Deletes the specified HSM client certificate \cr
 \link[=redshift_delete_hsm_configuration]{delete_hsm_configuration} \tab Deletes the specified Amazon Redshift HSM configuration \cr
+\link[=redshift_delete_scheduled_action]{delete_scheduled_action} \tab Deletes a scheduled action \cr
 \link[=redshift_delete_snapshot_copy_grant]{delete_snapshot_copy_grant} \tab Deletes the specified snapshot copy grant \cr
 \link[=redshift_delete_snapshot_schedule]{delete_snapshot_schedule} \tab Deletes a snapshot schedule \cr
 \link[=redshift_delete_tags]{delete_tags} \tab Deletes a tag or tags from a resource \cr
@@ -102,13 +104,15 @@ make up your data warehouse.
 \link[=redshift_describe_hsm_client_certificates]{describe_hsm_client_certificates} \tab Returns information about the specified HSM client certificate \cr
 \link[=redshift_describe_hsm_configurations]{describe_hsm_configurations} \tab Returns information about the specified Amazon Redshift HSM configuration \cr
 \link[=redshift_describe_logging_status]{describe_logging_status} \tab Describes whether information, such as queries and connection attempts, is being logged for the specified Amazon Redshift cluster \cr
+\link[=redshift_describe_node_configuration_options]{describe_node_configuration_options} \tab Returns properties of possible node configurations such as node type, number of nodes, and disk usage for the specified action type \cr
 \link[=redshift_describe_orderable_cluster_options]{describe_orderable_cluster_options} \tab Returns a list of orderable cluster options \cr
 \link[=redshift_describe_reserved_node_offerings]{describe_reserved_node_offerings} \tab Returns a list of the available reserved node offerings by Amazon Redshift with their descriptions including the node type, the fixed and recurring costs of reserving the node and duration the node will be reserved for you\cr
 \link[=redshift_describe_reserved_nodes]{describe_reserved_nodes} \tab Returns the descriptions of the reserved nodes \cr
 \link[=redshift_describe_resize]{describe_resize} \tab Returns information about the last resize operation for the specified cluster \cr
+\link[=redshift_describe_scheduled_actions]{describe_scheduled_actions} \tab Describes properties of scheduled actions \cr
 \link[=redshift_describe_snapshot_copy_grants]{describe_snapshot_copy_grants} \tab Returns a list of snapshot copy grants owned by the AWS account in the destination region \cr
 \link[=redshift_describe_snapshot_schedules]{describe_snapshot_schedules} \tab Returns a list of snapshot schedules \cr
-\link[=redshift_describe_storage]{describe_storage} \tab Returns the total amount of snapshot usage and provisioned storage for a user in megabytes \cr
+\link[=redshift_describe_storage]{describe_storage} \tab Returns the total amount of snapshot usage and provisioned storage in megabytes \cr
 \link[=redshift_describe_table_restore_status]{describe_table_restore_status} \tab Lists the status of one or more table restore requests made using the RestoreTableFromClusterSnapshot API action \cr
 \link[=redshift_describe_tags]{describe_tags} \tab Returns a list of tags \cr
 \link[=redshift_disable_logging]{disable_logging} \tab Stops logging information, such as queries and connection attempts, for the specified Amazon Redshift cluster \cr
@@ -126,6 +130,7 @@ make up your data warehouse.
 \link[=redshift_modify_cluster_snapshot_schedule]{modify_cluster_snapshot_schedule} \tab Modifies a snapshot schedule for a cluster \cr
 \link[=redshift_modify_cluster_subnet_group]{modify_cluster_subnet_group} \tab Modifies a cluster subnet group to include the specified list of VPC subnets \cr
 \link[=redshift_modify_event_subscription]{modify_event_subscription} \tab Modifies an existing Amazon Redshift event notification subscription \cr
+\link[=redshift_modify_scheduled_action]{modify_scheduled_action} \tab Modify a scheduled action \cr
 \link[=redshift_modify_snapshot_copy_retention_period]{modify_snapshot_copy_retention_period} \tab Modifies the number of days to retain snapshots in the destination AWS Region after they are copied from the source AWS Region \cr
 \link[=redshift_modify_snapshot_schedule]{modify_snapshot_schedule} \tab Modifies a snapshot schedule \cr
 \link[=redshift_purchase_reserved_node_offering]{purchase_reserved_node_offering} \tab Allows you to purchase reserved nodes \cr

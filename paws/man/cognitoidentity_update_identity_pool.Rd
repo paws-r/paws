@@ -5,9 +5,10 @@
 \title{Updates an identity pool}
 \usage{
 cognitoidentity_update_identity_pool(IdentityPoolId, IdentityPoolName,
-  AllowUnauthenticatedIdentities, SupportedLoginProviders,
-  DeveloperProviderName, OpenIdConnectProviderARNs,
-  CognitoIdentityProviders, SamlProviderARNs, IdentityPoolTags)
+  AllowUnauthenticatedIdentities, AllowClassicFlow,
+  SupportedLoginProviders, DeveloperProviderName,
+  OpenIdConnectProviderARNs, CognitoIdentityProviders, SamlProviderARNs,
+  IdentityPoolTags)
 }
 \arguments{
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
@@ -16,9 +17,13 @@ cognitoidentity_update_identity_pool(IdentityPoolId, IdentityPoolName,
 
 \item{AllowUnauthenticatedIdentities}{[required] TRUE if the identity pool supports unauthenticated logins.}
 
+\item{AllowClassicFlow}{Enables or disables the Basic (Classic) authentication flow. For more
+information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html}{Identity Pools (Federated Identities) Authentication Flow}
+in the \emph{Amazon Cognito Developer Guide}.}
+
 \item{SupportedLoginProviders}{Optional key:value pairs mapping provider names to provider app IDs.}
 
-\item{DeveloperProviderName}{The "domain" by which Cognito will refer to your users.}
+\item{DeveloperProviderName}{The \"domain\" by which Cognito will refer to your users.}
 
 \item{OpenIdConnectProviderARNs}{A list of OpendID Connect provider ARNs.}
 
@@ -43,6 +48,7 @@ You must use AWS Developer credentials to call this API.
   IdentityPoolId = "string",
   IdentityPoolName = "string",
   AllowUnauthenticatedIdentities = TRUE|FALSE,
+  AllowClassicFlow = TRUE|FALSE,
   SupportedLoginProviders = list(
     "string"
   ),

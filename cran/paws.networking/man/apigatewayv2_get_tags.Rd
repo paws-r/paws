@@ -2,15 +2,15 @@
 % Please edit documentation in R/apigatewayv2_operations.R
 \name{apigatewayv2_get_tags}
 \alias{apigatewayv2_get_tags}
-\title{Gets the Tags for an API}
+\title{Gets a collection of Tag resources}
 \usage{
 apigatewayv2_get_tags(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required]}
+\item{ResourceArn}{[required] The resource ARN for the tag.}
 }
 \description{
-Gets the Tags for an API.
+Gets a collection of Tag resources.
 }
 \section{Request syntax}{
 \preformatted{svc$get_tags(

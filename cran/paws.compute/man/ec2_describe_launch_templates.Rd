@@ -21,7 +21,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \itemize{
 \item \code{create-time} - The time the launch template was created.
 \item \code{launch-template-name} - The name of the launch template.
-\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+\item \code{tag}:\\<key\\> - The key/value combination of a tag assigned to the
 resource. Use the tag key in the filter name and the tag value as
 the filter value. For example, to find all resources that have a tag
 with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for

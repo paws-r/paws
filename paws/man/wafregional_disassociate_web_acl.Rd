@@ -15,9 +15,9 @@ stage.
 The ARN should be in one of the following formats:
 \itemize{
 \item For an Application Load Balancer:
-\code{arn:aws:elasticloadbalancing:<i>region</i>:<i>account-id</i>:loadbalancer/app/<i>load-balancer-name</i>/<i>load-balancer-id</i> }
+\verb{arn:aws:elasticloadbalancing:<i>region</i>:<i>account-id</i>:loadbalancer/app/<i>load-balancer-name</i>/<i>load-balancer-id</i> }
 \item For an Amazon API Gateway stage:
-\code{arn:aws:apigateway:<i>region</i>::/restapis/<i>api-id</i>/stages/<i>stage-name</i> }
+\verb{arn:aws:apigateway:<i>region</i>::/restapis/<i>api-id</i>/stages/<i>stage-name</i> }
 }}
 }
 \description{

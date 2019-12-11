@@ -11,14 +11,14 @@ lightsail_create_key_pair(keyPairName, tags)
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
-To tag a resource after it has been created, see the \code{tag resource}
+To tag a resource after it has been created, see the \verb{tag resource}
 operation.}
 }
 \description{
 Creates an SSH key pair.
 }
 \details{
-The \code{create key pair} operation supports tag-based access control via
+The \verb{create key pair} operation supports tag-based access control via
 request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{

@@ -30,7 +30,7 @@ secret that helps ensure idempotency.
 If you use the AWS CLI or one of the AWS SDK to call this operation,
 then you can leave this parameter empty. The CLI or SDK generates a
 random UUID for you and includes that in the request for this parameter.
-If you don't use the SDK and instead generate a raw HTTP request to the
+If you don\'t use the SDK and instead generate a raw HTTP request to the
 Secrets Manager service endpoint, then you must generate a
 \code{ClientRequestToken} yourself for new versions and include that value in
 the request.
@@ -43,7 +43,7 @@ value to ensure uniqueness within the specified secret.
 
 Secrets Manager uses this value to prevent the accidental creation of
 duplicate versions if there are failures and retries during the
-function's processing. This value becomes the \code{VersionId} of the new
+function\'s processing. This value becomes the \code{VersionId} of the new
 version.}
 
 \item{RotationLambdaARN}{(Optional) Specifies the ARN of the Lambda function that can rotate the
@@ -99,7 +99,7 @@ progress and returns an error.
 To run this command, you must have the following permissions:
 \itemize{
 \item secretsmanager:RotateSecret
-\item lambda:InvokeFunction (on the function specified in the secret's
+\item lambda:InvokeFunction (on the function specified in the secret\'s
 metadata)
 }
 

@@ -43,7 +43,7 @@ of the request. For more information, see \href{https://docs.aws.amazon.com/AWSE
 \item{PrivateDnsEnabled}{(Interface endpoint) Indicate whether to associate a private hosted zone
 with the specified VPC. The private hosted zone contains a record set
 for the default public DNS name for the service for the Region (for
-example, \code{kinesis.us-east-1.amazonaws.com}) which resolves to the
+example, \verb{kinesis.us-east-1.amazonaws.com}) which resolves to the
 private IP addresses of the endpoint network interfaces in the VPC. This
 enables you to make requests to the default public DNS name for the
 service instead of the public DNS names that are automatically generated

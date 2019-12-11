@@ -30,7 +30,7 @@ Operations: Equals
 \item Key: Title
 
 Operations: Contains
-\item Key: OperationalData*
+\item Key: OperationalData\*
 
 Operations: Equals
 \item Key: OperationalDataKey
@@ -50,9 +50,9 @@ Operations: Contains
 Operations: Equals
 }
 
-*If you filter the response by using the OperationalData operator,
+\*If you filter the response by using the OperationalData operator,
 specify a key-value pair by using the following JSON format:
-{"key":"key\_name","value":"a\_value"}}
+\{\"key\":\"key\\_name\",\"value\":\"a\\_value\"\}}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
@@ -77,7 +77,7 @@ in the \emph{AWS Systems Manager User Guide}.
 \preformatted{svc$describe_ops_items(
   OpsItemFilters = list(
     list(
-      Key = "Status"|"CreatedBy"|"Source"|"Priority"|"Title"|"OpsItemId"|"CreatedTime"|"LastModifiedTime"|"OperationalData"|"OperationalDataKey"|"OperationalDataValue"|"ResourceId"|"AutomationId",
+      Key = "Status"|"CreatedBy"|"Source"|"Priority"|"Title"|"OpsItemId"|"CreatedTime"|"LastModifiedTime"|"OperationalData"|"OperationalDataKey"|"OperationalDataValue"|"ResourceId"|"AutomationId"|"Category"|"Severity",
       Values = list(
         "string"
       ),

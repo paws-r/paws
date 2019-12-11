@@ -19,6 +19,9 @@ Adds outputs to an existing flow. You can create up to 20 outputs per flow.
   FlowArn = "string",
   Outputs = list(
     list(
+      CidrAllowList = list(
+        "string"
+      ),
       Description = "string",
       Destination = "string",
       Encryption = list(
@@ -35,7 +38,8 @@ Adds outputs to an existing flow. You can create up to 20 outputs per flow.
       MaxLatency = 123,
       Name = "string",
       Port = 123,
-      Protocol = "zixi-push"|"rtp-fec"|"rtp",
+      Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+      RemoteId = "string",
       SmoothingLatency = 123,
       StreamId = "string"
     )

@@ -9,7 +9,7 @@ glue_create_user_defined_function(CatalogId, DatabaseName,
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog in which to create the function. If none is
-supplied, the AWS account ID is used by default.}
+provided, the AWS account ID is used by default.}
 
 \item{DatabaseName}{[required] The name of the catalog database in which to create the function.}
 

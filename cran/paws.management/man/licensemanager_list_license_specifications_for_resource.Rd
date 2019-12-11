@@ -2,23 +2,21 @@
 % Please edit documentation in R/licensemanager_operations.R
 \name{licensemanager_list_license_specifications_for_resource}
 \alias{licensemanager_list_license_specifications_for_resource}
-\title{Returns the license configuration for a resource}
+\title{Describes the license configurations for the specified resource}
 \usage{
 licensemanager_list_license_specifications_for_resource(ResourceArn,
   MaxResults, NextToken)
 }
 \arguments{
-\item{ResourceArn}{[required] ARN of an AMI or Amazon EC2 instance that has an associated license
+\item{ResourceArn}{[required] Amazon Resource Name (ARN) of a resource that has an associated license
 configuration.}
 
-\item{MaxResults}{Maximum number of results to return in a single call. To retrieve the
-remaining results, make another call with the returned \code{NextToken}
-value.}
+\item{MaxResults}{Maximum number of results to return in a single call.}
 
 \item{NextToken}{Token for the next set of results.}
 }
 \description{
-Returns the license configuration for a resource.
+Describes the license configurations for the specified resource.
 }
 \section{Request syntax}{
 \preformatted{svc$list_license_specifications_for_resource(

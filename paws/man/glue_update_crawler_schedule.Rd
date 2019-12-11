@@ -12,7 +12,7 @@ glue_update_crawler_schedule(CrawlerName, Schedule)
 \item{Schedule}{The updated \code{cron} expression used to specify the schedule. For more
 information, see \href{http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html}{Time-Based Schedules for Jobs and Crawlers}.
 For example, to run something every day at 12:15 UTC, specify
-\code{cron(15 12 * * ? *)}.}
+\verb{cron(15 12 * * ? *)}.}
 }
 \description{
 Updates the schedule of a crawler using a \code{cron} expression.

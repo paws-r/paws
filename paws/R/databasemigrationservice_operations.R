@@ -186,21 +186,21 @@ databasemigrationservice_apply_pending_maintenance_action <- function(Replicatio
 #' @param DmsTransferSettings The settings in JSON format for the DMS transfer type of source
 #' endpoint.
 #' 
-#' Possible attributes include the following:
+#' Possible settings include the following:
 #' 
-#' -   `serviceAccessRoleArn` - The IAM role that has permission to access
+#' -   `ServiceAccessRoleArn` - The IAM role that has permission to access
 #'     the Amazon S3 bucket.
 #' 
-#' -   `bucketName` - The name of the S3 bucket to use.
+#' -   `BucketName` - The name of the S3 bucket to use.
 #' 
-#' -   `compressionType` - An optional parameter to use GZIP to compress
+#' -   `CompressionType` - An optional parameter to use GZIP to compress
 #'     the target files. To use GZIP, set this value to `NONE` (the
 #'     default). To keep the files uncompressed, don\'t use this value.
 #' 
-#' Shorthand syntax for these attributes is as follows:
+#' Shorthand syntax for these settings is as follows:
 #' `ServiceAccessRoleArn=string,BucketName=string,CompressionType=string`
 #' 
-#' JSON syntax for these attributes is as follows:
+#' JSON syntax for these settings is as follows:
 #' `\{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" \} `
 #' @param MongoDbSettings Settings in JSON format for the source MongoDB endpoint. For more
 #' information about the available settings, see the configuration
@@ -265,7 +265,8 @@ databasemigrationservice_apply_pending_maintenance_action <- function(Replicatio
 #'     EnableStatistics = TRUE|FALSE,
 #'     IncludeOpForFullLoad = TRUE|FALSE,
 #'     CdcInsertsOnly = TRUE|FALSE,
-#'     TimestampColumnName = "string"
+#'     TimestampColumnName = "string",
+#'     ParquetTimestampInMillisecond = TRUE|FALSE
 #'   ),
 #'   DmsTransferSettings = list(
 #'     ServiceAccessRoleArn = "string",
@@ -467,6 +468,15 @@ databasemigrationservice_create_event_subscription <- function(SubscriptionName,
 #' Creates the replication instance using the specified parameters
 #'
 #' Creates the replication instance using the specified parameters.
+#' 
+#' AWS DMS requires that your account have certain roles with appropriate
+#' permissions before you can create a replication instance. For
+#' information on the required roles, see [Creating the IAM Roles to Use
+#' With the AWS CLI and AWS DMS
+#' API](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.APIRole.html).
+#' For information on the required permissions, see [IAM Permissions Needed
+#' to Use AWS
+#' DMS](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.IAMPermissions.html).
 #'
 #' @usage
 #' databasemigrationservice_create_replication_instance(
@@ -736,6 +746,14 @@ databasemigrationservice_create_replication_subnet_group <- function(Replication
 #' \"checkpoint:V1\\#27\\#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876\\#0\\#0\\#\*\\#0\\#93\"
 #' 
 #' LSN Example: \\--cdc-start-position "mysql-bin-changelog.000024:373"
+#' 
+#' When you use this task setting with a source PostgreSQL database, a
+#' logical replication slot should already be created and associated with
+#' the source endpoint. You can verify this by setting the `slotName` extra
+#' connection attribute to the name of this logical replication slot. For
+#' more information, see [Extra Connection Attributes When Using PostgreSQL
+#' as a Source for AWS
+#' DMS](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.PostgreSQL.html#CHAP_Source.PostgreSQL.ConnectionAttrib).
 #' @param CdcStopPosition Indicates when you want a change data capture (CDC) operation to stop.
 #' The value can be either server time or commit time.
 #' 
@@ -850,6 +868,54 @@ databasemigrationservice_delete_certificate <- function(CertificateArn) {
   return(response)
 }
 .databasemigrationservice$operations$delete_certificate <- databasemigrationservice_delete_certificate
+
+#' Deletes the connection between a replication instance and an endpoint
+#'
+#' Deletes the connection between a replication instance and an endpoint.
+#'
+#' @usage
+#' databasemigrationservice_delete_connection(EndpointArn,
+#'   ReplicationInstanceArn)
+#'
+#' @param EndpointArn &#91;required&#93; The Amazon Resource Name (ARN) string that uniquely identifies the
+#' endpoint.
+#' @param ReplicationInstanceArn &#91;required&#93; The Amazon Resource Name (ARN) of the replication instance.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_connection(
+#'   EndpointArn = "string",
+#'   ReplicationInstanceArn = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' # Deletes the connection between the replication instance and the
+#' # endpoint.
+#' \donttest{svc$delete_connection(
+#'   EndpointArn = "arn:aws:dms:us-east-1:123456789012:endpoint:RAAR3R22XSH46S3PWLC3NJAWKM",
+#'   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJ..."
+#' )}
+#'
+#' @keywords internal
+#'
+#' @rdname databasemigrationservice_delete_connection
+databasemigrationservice_delete_connection <- function(EndpointArn, ReplicationInstanceArn) {
+  op <- new_operation(
+    name = "DeleteConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .databasemigrationservice$delete_connection_input(EndpointArn = EndpointArn, ReplicationInstanceArn = ReplicationInstanceArn)
+  output <- .databasemigrationservice$delete_connection_output()
+  config <- get_config()
+  svc <- .databasemigrationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.databasemigrationservice$operations$delete_connection <- databasemigrationservice_delete_connection
 
 #' Deletes the specified endpoint
 #'
@@ -2484,7 +2550,8 @@ databasemigrationservice_list_tags_for_resource <- function(ResourceArn) {
 #'     EnableStatistics = TRUE|FALSE,
 #'     IncludeOpForFullLoad = TRUE|FALSE,
 #'     CdcInsertsOnly = TRUE|FALSE,
-#'     TimestampColumnName = "string"
+#'     TimestampColumnName = "string",
+#'     ParquetTimestampInMillisecond = TRUE|FALSE
 #'   ),
 #'   DmsTransferSettings = list(
 #'     ServiceAccessRoleArn = "string",
@@ -2860,6 +2927,14 @@ databasemigrationservice_modify_replication_subnet_group <- function(Replication
 #' \"checkpoint:V1\\#27\\#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876\\#0\\#0\\#\*\\#0\\#93\"
 #' 
 #' LSN Example: \\--cdc-start-position "mysql-bin-changelog.000024:373"
+#' 
+#' When you use this task setting with a source PostgreSQL database, a
+#' logical replication slot should already be created and associated with
+#' the source endpoint. You can verify this by setting the `slotName` extra
+#' connection attribute to the name of this logical replication slot. For
+#' more information, see [Extra Connection Attributes When Using PostgreSQL
+#' as a Source for AWS
+#' DMS](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.PostgreSQL.html#CHAP_Source.PostgreSQL.ConnectionAttrib).
 #' @param CdcStopPosition Indicates when you want a change data capture (CDC) operation to stop.
 #' The value can be either server time or commit time.
 #' 
@@ -3131,6 +3206,14 @@ databasemigrationservice_remove_tags_from_resource <- function(ResourceArn, TagK
 #' \"checkpoint:V1\\#27\\#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876\\#0\\#0\\#\*\\#0\\#93\"
 #' 
 #' LSN Example: \\--cdc-start-position "mysql-bin-changelog.000024:373"
+#' 
+#' When you use this task setting with a source PostgreSQL database, a
+#' logical replication slot should already be created and associated with
+#' the source endpoint. You can verify this by setting the `slotName` extra
+#' connection attribute to the name of this logical replication slot. For
+#' more information, see [Extra Connection Attributes When Using PostgreSQL
+#' as a Source for AWS
+#' DMS](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.PostgreSQL.html#CHAP_Source.PostgreSQL.ConnectionAttrib).
 #' @param CdcStopPosition Indicates when you want a change data capture (CDC) operation to stop.
 #' The value can be either server time or commit time.
 #' 

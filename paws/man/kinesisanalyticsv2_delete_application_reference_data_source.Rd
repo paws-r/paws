@@ -23,7 +23,7 @@ DescribeApplication operation to get the reference ID.}
 }
 \description{
 Deletes a reference data source configuration from the specified
-SQL-based Amazon Kinesis Data Analytics application's configuration.
+SQL-based Amazon Kinesis Data Analytics application\'s configuration.
 }
 \details{
 If the application is running, Kinesis Data Analytics immediately

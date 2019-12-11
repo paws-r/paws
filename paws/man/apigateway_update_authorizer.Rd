@@ -18,7 +18,7 @@ in the order specified in this list.}
 Updates an existing Authorizer resource.
 }
 \details{
-::: {.seeAlso}
+::: \{.seeAlso\}
 \href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-authorizer.html}{AWS CLI}
 :::
 }

@@ -12,15 +12,15 @@ iot_update_ca_certificate(certificateId, newStatus,
 
 \item{newStatus}{The updated status of the CA certificate.
 
-\strong{Note:} The status value REGISTER\_INACTIVE is deprecated and should
+\strong{Note:} The status value REGISTER\\_INACTIVE is deprecated and should
 not be used.}
 
 \item{newAutoRegistrationStatus}{The new value for the auto registration status. Valid values are:
-"ENABLE" or "DISABLE".}
+\"ENABLE\" or \"DISABLE\".}
 
 \item{registrationConfig}{Information about the registration configuration.}
 
-\item{removeAutoRegistration}{If true, remove auto registration.}
+\item{removeAutoRegistration}{If true, removes auto registration.}
 }
 \description{
 Updates a registered CA certificate.

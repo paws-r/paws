@@ -39,7 +39,7 @@ Default: \code{true}}
 \item{TechContact}{[required] Provides detailed contact information.}
 
 \item{PrivacyProtectAdminContact}{Whether you want to conceal contact information from WHOIS queries. If
-you specify \code{true}, WHOIS ("who is") queries return contact
+you specify \code{true}, WHOIS (\"who is\") queries return contact
 information either for Amazon Registrar (for .com, .net, and .org
 domains) or for our registrar associate, Gandi (for all other TLDs). If
 you specify \code{false}, WHOIS queries return the information that you
@@ -48,7 +48,7 @@ entered for the admin contact.
 Default: \code{true}}
 
 \item{PrivacyProtectRegistrantContact}{Whether you want to conceal contact information from WHOIS queries. If
-you specify \code{true}, WHOIS ("who is") queries return contact
+you specify \code{true}, WHOIS (\"who is\") queries return contact
 information either for Amazon Registrar (for .com, .net, and .org
 domains) or for our registrar associate, Gandi (for all other TLDs). If
 you specify \code{false}, WHOIS queries return the information that you
@@ -57,7 +57,7 @@ entered for the registrant contact (the domain owner).
 Default: \code{true}}
 
 \item{PrivacyProtectTechContact}{Whether you want to conceal contact information from WHOIS queries. If
-you specify \code{true}, WHOIS ("who is") queries return contact
+you specify \code{true}, WHOIS (\"who is\") queries return contact
 information either for Amazon Registrar (for .com, .net, and .org
 domains) or for our registrar associate, Gandi (for all other TLDs). If
 you specify \code{false}, WHOIS queries return the information that you
@@ -79,12 +79,12 @@ domain. Amazon Route 53 assigns four name servers to your hosted
 zone and automatically updates your domain registration with the
 names of these name servers.
 \item Enables autorenew, so your domain registration will renew
-automatically each year. We'll notify you in advance of the renewal
+automatically each year. We\'ll notify you in advance of the renewal
 date so you can choose whether to renew the registration.
 \item Optionally enables privacy protection, so WHOIS queries return
 contact information either for Amazon Registrar (for .com, .net, and
 .org domains) or for our registrar associate, Gandi (for all other
-TLDs). If you don't enable privacy protection, WHOIS queries return
+TLDs). If you don\'t enable privacy protection, WHOIS queries return
 the information that you entered for the registrant, admin, and tech
 contacts.
 \item If registration is successful, returns an operation ID that you can

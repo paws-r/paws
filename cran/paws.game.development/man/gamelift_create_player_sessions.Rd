@@ -38,9 +38,11 @@ PlayerSession objects is returned. Player sessions cannot be updated.
 \item CreatePlayerSessions
 \item DescribePlayerSessions
 \item Game session placements
+\itemize{
 \item StartGameSessionPlacement
 \item DescribeGameSessionPlacement
 \item StopGameSessionPlacement
+}
 }
 }
 \section{Request syntax}{

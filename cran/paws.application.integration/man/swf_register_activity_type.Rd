@@ -17,7 +17,7 @@ swf_register_activity_type(domain, name, version, description,
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\code{U+0000`-`U+001f} \| \code{U+007f`-`U+009f}). Also, it must not \emph{be}
+characters (\verb{U+0000`-`U+001f} \\| \verb{U+007f`-`U+009f}). Also, it must not \emph{be}
 the literal string \code{arn}.}
 
 \item{version}{[required] The version of the activity type.
@@ -27,7 +27,7 @@ which must be unique within the domain.
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\code{U+0000`-`U+001f} \| \code{U+007f`-`U+009f}). Also, it must not \emph{be}
+characters (\verb{U+0000`-`U+001f} \\| \verb{U+007f`-`U+009f}). Also, it must not \emph{be}
 the literal string \code{arn}.}
 
 \item{description}{A textual description of the activity type.}
@@ -53,13 +53,13 @@ The duration is specified in seconds, an integer greater than or equal
 to \code{0}. You can use \code{NONE} to specify unlimited duration.}
 
 \item{defaultTaskList}{If set, specifies the default task list to use for scheduling tasks of
-this activity type. This default task list is used if a task list isn't
+this activity type. This default task list is used if a task list isn\'t
 provided when a task is scheduled through the \code{ScheduleActivityTask}
 Decision.}
 
 \item{defaultTaskPriority}{The default task priority to assign to the activity type. If not
 assigned, then \code{0} is used. Valid values are integers that range from
-Java's \code{Integer.MIN_VALUE} (-2147483648) to \code{Integer.MAX_VALUE}
+Java\'s \code{Integer.MIN_VALUE} (-2147483648) to \code{Integer.MAX_VALUE}
 (2147483647). Higher numbers indicate higher priority.
 
 For more information about setting task priority, see \href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html}{Setting Task Priority}
@@ -91,7 +91,7 @@ after its registration, and it must be registered as a new version.
 
 \strong{Access Control}
 
-You can use IAM policies to control this action's access to Amazon SWF
+You can use IAM policies to control this action\'s access to Amazon SWF
 resources as follows:
 \itemize{
 \item Use a \code{Resource} element with the domain name to limit the action to
@@ -100,15 +100,17 @@ only specified domains.
 action.
 \item Constrain the following parameters by using a \code{Condition} element
 with the appropriate keys.
+\itemize{
 \item \code{defaultTaskList.name}: String constraint. The key is
 \code{swf:defaultTaskList.name}.
 \item \code{name}: String constraint. The key is \code{swf:name}.
 \item \code{version}: String constraint. The key is \code{swf:version}.
 }
+}
 
-If the caller doesn't have sufficient permissions to invoke the action,
+If the caller doesn\'t have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
-action fails. The associated event attribute's \code{cause} parameter is set
+action fails. The associated event attribute\'s \code{cause} parameter is set
 to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 \href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
 in the \emph{Amazon SWF Developer Guide}.

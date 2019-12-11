@@ -9,7 +9,7 @@ storagegateway_delete_tape(GatewayARN, TapeARN)
 \arguments{
 \item{GatewayARN}{[required] The unique Amazon Resource Name (ARN) of the gateway that the virtual
 tape to delete is associated with. Use the ListGateways operation to
-return a list of gateways for your account and region.}
+return a list of gateways for your account and AWS Region.}
 
 \item{TapeARN}{[required] The Amazon Resource Name (ARN) of the virtual tape to delete.}
 }

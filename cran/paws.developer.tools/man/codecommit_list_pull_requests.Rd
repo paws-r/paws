@@ -17,10 +17,11 @@ by that user.}
 \item{pullRequestStatus}{Optional. The status of the pull request. If used, this refines the
 results to the pull requests that match the specified status.}
 
-\item{nextToken}{An enumeration token that when provided in a request, returns the next
+\item{nextToken}{An enumeration token that, when provided in a request, returns the next
 batch of the results.}
 
-\item{maxResults}{A non-negative integer used to limit the number of returned results.}
+\item{maxResults}{A non-zero, non-negative integer used to limit the number of returned
+results.}
 }
 \description{
 Returns a list of pull requests for a specified repository. The return

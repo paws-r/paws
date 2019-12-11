@@ -14,7 +14,7 @@ elbv2_create_listener(LoadBalancerArn, Protocol, Port, SslPolicy,
 \item{Protocol}{[required] The protocol for connections from clients to the load balancer. For
 Application Load Balancers, the supported protocols are HTTP and HTTPS.
 For Network Load Balancers, the supported protocols are TCP, TLS, UDP,
-and TCP\_UDP.}
+and TCP\\_UDP.}
 
 \item{Port}{[required] The port on which the load balancer is listening.}
 
@@ -32,10 +32,10 @@ AddListenerCertificates.}
 \item{DefaultActions}{[required] The actions for the default rule. The rule must include one forward
 action or one or more fixed-response actions.
 
-If the action type is \code{forward}, you specify a target group. The
-protocol of the target group must be HTTP or HTTPS for an Application
-Load Balancer. The protocol of the target group must be TCP, TLS, UDP,
-or TCP\_UDP for a Network Load Balancer.
+If the action type is \code{forward}, you specify one or more target groups.
+The protocol of the target group must be HTTP or HTTPS for an
+Application Load Balancer. The protocol of the target group must be TCP,
+TLS, UDP, or TCP\\_UDP for a Network Load Balancer.
 
 [HTTPS listeners] If the action type is \code{authenticate-oidc}, you
 authenticate users through an identity provider that is OpenID Connect
@@ -125,6 +125,18 @@ in the \emph{Network Load Balancers Guide}.
         MessageBody = "string",
         StatusCode = "string",
         ContentType = "string"
+      ),
+      ForwardConfig = list(
+        TargetGroups = list(
+          list(
+            TargetGroupArn = "string",
+            Weight = 123
+          )
+        ),
+        TargetGroupStickinessConfig = list(
+          Enabled = TRUE|FALSE,
+          DurationSeconds = 123
+        )
       )
     )
   )

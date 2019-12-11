@@ -20,7 +20,7 @@ not set it to \code{false}.}
 \code{false}. For this case, you must specify \code{recipeArn}.
 
 When set to \code{true}, Amazon Personalize analyzes your training data and
-selects the optimal USER\_PERSONALIZATION recipe and hyperparameters. In
+selects the optimal USER\\_PERSONALIZATION recipe and hyperparameters. In
 this case, you must omit \code{recipeArn}. Amazon Personalize determines the
 optimal recipe by running tests with different values for the
 hyperparameters. AutoML lengthens the training process as compared to
@@ -34,7 +34,7 @@ training data.}
 
 \item{eventType}{When your have multiple event types (using an \code{EVENT_TYPE} schema
 field), this parameter specifies which event type (for example,
-'click' or 'like') is used for training the model.}
+\'click\' or \'like\') is used for training the model.}
 
 \item{solutionConfig}{The configuration to use with the solution. When \code{performAutoML} is set
 to true, Amazon Personalize only evaluates the \code{autoMLConfig} section of
@@ -61,14 +61,14 @@ in the request. A recipe specifies the training algorithm and a feature
 transformation. You can specify one of the predefined recipes provided
 by Amazon Personalize. Alternatively, you can specify \code{performAutoML}
 and Amazon Personalize will analyze your data and select the optimum
-USER\_PERSONALIZATION recipe for you.
+USER\\_PERSONALIZATION recipe for you.
 
 \strong{Status}
 
 A solution can be in one of the following states:
 \itemize{
-\item CREATE PENDING \> CREATE IN\_PROGRESS \> ACTIVE -or- CREATE FAILED
-\item DELETE PENDING \> DELETE IN\_PROGRESS
+\item CREATE PENDING \\> CREATE IN\\_PROGRESS \\> ACTIVE -or- CREATE FAILED
+\item DELETE PENDING \\> DELETE IN\\_PROGRESS
 }
 
 To get the status of the solution, call DescribeSolution. Wait until the

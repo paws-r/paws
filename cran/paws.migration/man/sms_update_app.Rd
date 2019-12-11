@@ -13,7 +13,7 @@ sms_update_app(appId, name, description, roleName, serverGroups, tags)
 
 \item{description}{New description of the application.}
 
-\item{roleName}{Name of the service role in the customer's account used by AWS SMS.}
+\item{roleName}{Name of the service role in the customer\'s account used by AWS SMS.}
 
 \item{serverGroups}{List of server groups in the application to update.}
 

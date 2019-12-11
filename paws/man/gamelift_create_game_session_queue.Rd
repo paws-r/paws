@@ -34,8 +34,8 @@ fleet alias ARN. Destinations are listed in default preference order.}
 }
 \description{
 Establishes a new queue for processing requests to place new game
-sessions. A queue identifies where new game sessions can be hosted \--
-by specifying a list of destinations (fleets or aliases) \-- and how
+sessions. A queue identifies where new game sessions can be hosted \\--
+by specifying a list of destinations (fleets or aliases) \\-- and how
 long requests can wait in the queue before timing out. You can set up a
 queue to try to place game sessions on fleets in multiple regions. To
 add placement requests to a queue, call StartGameSessionPlacement and
@@ -44,7 +44,7 @@ reference the queue name.
 \details{
 \strong{Destination order.} When processing a request for a game session,
 Amazon GameLift tries each destination in order until it finds one with
-available resources to host the new game session. A queue's default
+available resources to host the new game session. A queue\'s default
 order is determined by how destinations are listed. The default order is
 overridden when a game session placement request provides player latency
 information. Player latency information enables Amazon GameLift to
@@ -57,7 +57,7 @@ latency information, use player latency policies to protect individual
 players from very high latencies. With a latency cap, even when a
 destination can deliver a low latency for most players, the game is not
 placed where any individual player is reporting latency higher than a
-policy's maximum. A queue can have multiple latency policies, which are
+policy\'s maximum. A queue can have multiple latency policies, which are
 enforced consecutively starting with the policy with the lowest latency
 cap. Use multiple policies to gradually relax latency controls; for
 example, you might set a policy with a low latency cap for the first 60

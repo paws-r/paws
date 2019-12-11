@@ -15,7 +15,7 @@ contains the credentials used to access the repository. The secret must
 have a staging label of \code{AWSCURRENT} and must be in the following
 format:
 
-\code{\{"username": <i>UserName</i>, "password": <i>Password</i>\}}}
+\verb{\\\{"username": <i>UserName</i>, "password": <i>Password</i>\\\}}}
 }
 \description{
 Updates the specified Git repository with the specified values.

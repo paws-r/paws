@@ -2,13 +2,13 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_generate_data_key}
 \alias{kms_generate_data_key}
-\title{Generates a unique data key}
+\title{Generates a unique symmetric data key}
 \usage{
 kms_generate_data_key(KeyId, EncryptionContext, NumberOfBytes, KeySpec,
   GrantTokens)
 }
 \arguments{
-\item{KeyId}{[required] An identifier for the CMK that encrypts the data key.
+\item{KeyId}{[required] Identifies the symmetric CMK that encrypts the data key.
 
 To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
 name, or alias ARN. When using an alias name, prefix it with \code{"alias/"}.
@@ -17,9 +17,9 @@ alias ARN.
 
 For example:
 \itemize{
-\item Key ID: \code{1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
 \item Key ARN:
-\code{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 \item Alias name: \code{alias/ExampleAlias}
 \item Alias ARN: \code{arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias}
 }
@@ -27,18 +27,32 @@ For example:
 To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey. To
 get the alias name and alias ARN, use ListAliases.}
 
-\item{EncryptionContext}{A set of key-value pairs that represents additional authenticated data.
+\item{EncryptionContext}{Specifies the encryption context that will be used when encrypting the
+data key.
+
+An \emph{encryption context} is a collection of non-secret key-value pairs
+that represents additional authenticated data. When you use an
+encryption context to encrypt data, you must specify the same (an exact
+case-sensitive match) encryption context to decrypt the data. An
+encryption context is optional when encrypting with a symmetric CMK, but
+it is highly recommended.
 
 For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption Context}
 in the \emph{AWS Key Management Service Developer Guide}.}
 
-\item{NumberOfBytes}{The length of the data key in bytes. For example, use the value 64 to
-generate a 512-bit data key (64 bytes is 512 bits). For common key
-lengths (128-bit and 256-bit symmetric keys), we recommend that you use
-the \code{KeySpec} field instead of this one.}
+\item{NumberOfBytes}{Specifies the length of the data key in bytes. For example, use the
+value 64 to generate a 512-bit data key (64 bytes is 512 bits). For
+128-bit (16-byte) and 256-bit (32-byte) data keys, use the \code{KeySpec}
+parameter.
 
-\item{KeySpec}{The length of the data key. Use \code{AES_128} to generate a 128-bit
-symmetric key, or \code{AES_256} to generate a 256-bit symmetric key.}
+You must specify either the \code{KeySpec} or the \code{NumberOfBytes} parameter
+(but not both) in every \code{GenerateDataKey} request.}
+
+\item{KeySpec}{Specifies the length of the data key. Use \code{AES_128} to generate a
+128-bit symmetric key, or \code{AES_256} to generate a 256-bit symmetric key.
+
+You must specify either the \code{KeySpec} or the \code{NumberOfBytes} parameter
+(but not both) in every \code{GenerateDataKey} request.}
 
 \item{GrantTokens}{A list of grant tokens.
 
@@ -46,28 +60,46 @@ For more information, see \href{https://docs.aws.amazon.com/kms/latest/developer
 in the \emph{AWS Key Management Service Developer Guide}.}
 }
 \description{
-Generates a unique data key. This operation returns a plaintext copy of
-the data key and a copy that is encrypted under a customer master key
-(CMK) that you specify. You can use the plaintext key to encrypt your
-data outside of KMS and store the encrypted data key with the encrypted
-data.
+Generates a unique symmetric data key. This operation returns a
+plaintext copy of the data key and a copy that is encrypted under a
+customer master key (CMK) that you specify. You can use the plaintext
+key to encrypt your data outside of AWS KMS and store the encrypted data
+key with the encrypted data.
 }
 \details{
 \code{GenerateDataKey} returns a unique data key for each request. The bytes
 in the key are not related to the caller or CMK that is used to encrypt
 the data key.
 
-To generate a data key, you need to specify the customer master key
-(CMK) that will be used to encrypt the data key. You must also specify
-the length of the data key using either the \code{KeySpec} or \code{NumberOfBytes}
-field (but not both). For common key lengths (128-bit and 256-bit
-symmetric keys), we recommend that you use \code{KeySpec}. To perform this
-operation on a CMK in a different AWS account, specify the key ARN or
-alias ARN in the value of the KeyId parameter.
+To generate a data key, specify the symmetric CMK that will be used to
+encrypt the data key. You cannot use an asymmetric CMK to generate data
+keys.
 
-You will find the plaintext copy of the data key in the \code{Plaintext}
-field of the response, and the encrypted copy of the data key in the
-\code{CiphertextBlob} field.
+You must also specify the length of the data key. Use either the
+\code{KeySpec} or \code{NumberOfBytes} parameters (but not both). For 128-bit and
+256-bit data keys, use the \code{KeySpec} parameter.
+
+If the operation succeeds, the plaintext copy of the data key is in the
+\code{Plaintext} field of the response, and the encrypted copy of the data
+key in the \code{CiphertextBlob} field.
+
+To get only an encrypted copy of the data key, use
+GenerateDataKeyWithoutPlaintext. To generate an asymmetric data key
+pair, use the GenerateDataKeyPair or GenerateDataKeyPairWithoutPlaintext
+operation. To get a cryptographically secure random byte string, use
+GenerateRandom.
+
+You can use the optional encryption context to add additional security
+to the encryption operation. If you specify an \code{EncryptionContext}, you
+must specify the same encryption context (a case-sensitive exact match)
+when decrypting the encrypted data key. Otherwise, the request to
+decrypt fails with an InvalidCiphertextException. For more information,
+see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption Context}
+in the \emph{AWS Key Management Service Developer Guide}.
+
+The CMK that you use for this operation must be in a compatible key
+state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
+in the \emph{AWS Key Management Service Developer Guide}.
 
 We recommend that you use the following pattern to encrypt data locally
 in your application:
@@ -87,22 +119,6 @@ operation returns a plaintext copy of the data key.
 \item Use the plaintext data key to decrypt data locally, then erase the
 plaintext data key from memory.
 }
-
-To get only an encrypted copy of the data key, use
-GenerateDataKeyWithoutPlaintext. To get a cryptographically secure
-random byte string, use GenerateRandom.
-
-You can use the optional encryption context to add additional security
-to your encryption operation. When you specify an \code{EncryptionContext} in
-the \code{GenerateDataKey} operation, you must specify the same encryption
-context (a case-sensitive exact match) in your request to Decrypt the
-data key. Otherwise, the request to decrypt fails with an
-\code{InvalidCiphertextException}. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption Context}
-in the \strong{AWS Key Management Service Developer Guide} .
-
-The result of this operation varies with the key state of the CMK. For
-details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
-in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$generate_data_key(

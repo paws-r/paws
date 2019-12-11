@@ -17,7 +17,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{Filters}{The filters.
 \itemize{
 \item \code{availability-zone} - The Availability Zone (for example,
-\code{us-west-2a}).
+\verb{us-west-2a}).
 \item \code{instance-type} - The instance type (for example, \code{c4.large}).
 \item \code{network-platform} - The network platform (\code{EC2-Classic} or
 \code{EC2-VPC}).

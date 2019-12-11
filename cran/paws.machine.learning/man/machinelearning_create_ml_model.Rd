@@ -40,7 +40,7 @@ The default value is \code{33554432}.
 traverses the observations to build the \code{MLModel}. The value is an
 integer that ranges from \code{1} to \code{10000}. The default value is \code{10}.
 \item \code{sgd.shuffleType} - Whether Amazon ML shuffles the training data.
-Shuffling the data improves a model's ability to find the optimal
+Shuffling the data improves a model\'s ability to find the optimal
 solution for a variety of data types. The valid values are \code{auto}
 and \code{none}. The default value is \code{none}. We strongly recommend that
 you shuffle your data.
@@ -51,7 +51,7 @@ a sparse feature set. If you use this parameter, start by specifying
 a small value, such as \code{1.0E-08}.
 
 The value is a double that ranges from \code{0} to \code{MAX_DOUBLE}. The
-default is to not use L1 normalization. This parameter can't be
+default is to not use L1 normalization. This parameter can\'t be
 used when \code{L2} is specified. Use this parameter sparingly.
 \item \code{sgd.l2RegularizationAmount} - The coefficient regularization L2
 norm. It controls overfitting the data by penalizing large
@@ -60,19 +60,19 @@ values. If you use this parameter, start by specifying a small
 value, such as \code{1.0E-08}.
 
 The value is a double that ranges from \code{0} to \code{MAX_DOUBLE}. The
-default is to not use L2 normalization. This parameter can't be
+default is to not use L2 normalization. This parameter can\'t be
 used when \code{L1} is specified. Use this parameter sparingly.
 }}
 
 \item{TrainingDataSourceId}{[required] The \code{DataSource} that points to the training data.}
 
 \item{Recipe}{The data recipe for creating the \code{MLModel}. You must specify either the
-recipe or its URI. If you don't specify a recipe or its URI, Amazon ML
+recipe or its URI. If you don\'t specify a recipe or its URI, Amazon ML
 creates a default.}
 
 \item{RecipeUri}{The Amazon Simple Storage Service (Amazon S3) location and file name
 that contains the \code{MLModel} recipe. You must specify either the recipe
-or its URI. If you don't specify a recipe or its URI, Amazon ML creates
+or its URI. If you don\'t specify a recipe or its URI, Amazon ML creates
 a default.}
 }
 \description{

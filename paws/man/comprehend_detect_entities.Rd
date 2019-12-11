@@ -11,9 +11,8 @@ comprehend_detect_entities(Text, LanguageCode)
 UTF-8 encoded characters.}
 
 \item{LanguageCode}{[required] The language of the input documents. You can specify any of the primary
-languages supported by Amazon Comprehend: German ("de"), English
-("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
-Portuguese ("pt"). All documents must be in the same language.}
+languages supported by Amazon Comprehend. All documents must be in the
+same language.}
 }
 \description{
 Inspects text for named entities, and returns information about them.
@@ -22,7 +21,7 @@ For more information, about named entities, see how-entities.
 \section{Request syntax}{
 \preformatted{svc$detect_entities(
   Text = "string",
-  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW"
 )
 }
 }

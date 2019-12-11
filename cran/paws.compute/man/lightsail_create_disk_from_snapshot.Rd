@@ -2,20 +2,25 @@
 % Please edit documentation in R/lightsail_operations.R
 \name{lightsail_create_disk_from_snapshot}
 \alias{lightsail_create_disk_from_snapshot}
-\title{Creates a block storage disk from a disk snapshot that can be attached
-to a Lightsail instance in the same Availability Zone (e}
+\title{Creates a block storage disk from a manual or automatic snapshot of a
+disk}
 \usage{
 lightsail_create_disk_from_snapshot(diskName, diskSnapshotName,
-  availabilityZone, sizeInGb, tags)
+  availabilityZone, sizeInGb, tags, addOns, sourceDiskName, restoreDate,
+  useLatestRestorableAutoSnapshot)
 }
 \arguments{
 \item{diskName}{[required] The unique Lightsail disk name (e.g., \code{my-disk}).}
 
-\item{diskSnapshotName}{[required] The name of the disk snapshot (e.g., \code{my-snapshot}) from which to create
-the new storage disk.}
+\item{diskSnapshotName}{The name of the disk snapshot (e.g., \code{my-snapshot}) from which to create
+the new storage disk.
+
+This parameter cannot be defined together with the \verb{source disk name}
+parameter. The \verb{disk snapshot name} and \verb{source disk name} parameters
+are mutually exclusive.}
 
 \item{availabilityZone}{[required] The Availability Zone where you want to create the disk (e.g.,
-\code{us-east-2a}). Choose the same Availability Zone as the Lightsail
+\verb{us-east-2a}). Choose the same Availability Zone as the Lightsail
 instance where you want to create the disk.
 
 Use the GetRegions operation to list the Availability Zones where
@@ -25,19 +30,59 @@ Lightsail is currently available.}
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
-To tag a resource after it has been created, see the \code{tag resource}
+To tag a resource after it has been created, see the \verb{tag resource}
 operation.}
+
+\item{addOns}{An array of objects that represent the add-ons to enable for the new
+disk.}
+
+\item{sourceDiskName}{The name of the source disk from which the source automatic snapshot was
+created.
+
+This parameter cannot be defined together with the \verb{disk snapshot name}
+parameter. The \verb{source disk name} and \verb{disk snapshot name} parameters
+are mutually exclusive.
+
+Define this parameter only when creating a new disk from an automatic
+snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.}
+
+\item{restoreDate}{The date of the automatic snapshot to use for the new disk.
+
+Use the \verb{get auto snapshots} operation to identify the dates of the
+available automatic snapshots.
+
+Constraints:
+\itemize{
+\item Must be specified in \code{YYYY-MM-DD} format.
+\item This parameter cannot be defined together with the
+\verb{use latest restorable auto snapshot} parameter. The \verb{restore date}
+and \verb{use latest restorable auto snapshot} parameters are mutually
+exclusive.
+}
+
+Define this parameter only when creating a new disk from an automatic
+snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.}
+
+\item{useLatestRestorableAutoSnapshot}{A Boolean value to indicate whether to use the latest available
+automatic snapshot.
+
+This parameter cannot be defined together with the \verb{restore date}
+parameter. The \verb{use latest restorable auto snapshot} and \verb{restore date}
+parameters are mutually exclusive.
+
+Define this parameter only when creating a new disk from an automatic
+snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.}
 }
 \description{
-Creates a block storage disk from a disk snapshot that can be attached
-to a Lightsail instance in the same Availability Zone (e.g.,
-\code{us-east-2a}). The disk is created in the regional endpoint that you
-send the HTTP request to. For more information, see \href{https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail}{Regions and Availability Zones in Lightsail}.
+Creates a block storage disk from a manual or automatic snapshot of a
+disk. The resulting disk can be attached to an Amazon Lightsail instance
+in the same Availability Zone (e.g., \verb{us-east-2a}).
 }
 \details{
-The \code{create disk from snapshot} operation supports tag-based access
+The \verb{create disk from snapshot} operation supports tag-based access
 control via request tags and resource tags applied to the resource
-identified by diskSnapshotName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+identified by \verb{disk snapshot name}. For more information, see the
+\href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_disk_from_snapshot(
@@ -50,7 +95,18 @@ identified by diskSnapshotName. For more information, see the \href{https://ligh
       key = "string",
       value = "string"
     )
-  )
+  ),
+  addOns = list(
+    list(
+      addOnType = "AutoSnapshot",
+      autoSnapshotAddOnRequest = list(
+        snapshotTimeOfDay = "string"
+      )
+    )
+  ),
+  sourceDiskName = "string",
+  restoreDate = "string",
+  useLatestRestorableAutoSnapshot = TRUE|FALSE
 )
 }
 }

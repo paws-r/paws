@@ -8,28 +8,45 @@ NULL
 #' Adds an application that is created from a resource group.
 #'
 #' @usage
-#' applicationinsights_create_application(ResourceGroupName)
+#' applicationinsights_create_application(ResourceGroupName,
+#'   OpsCenterEnabled, OpsItemSNSTopicArn, Tags)
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
+#' @param OpsCenterEnabled When set to `true`, creates opsItems for any problems detected on an
+#' application.
+#' @param OpsItemSNSTopicArn The SNS topic provided to Application Insights that is associated to the
+#' created opsItem. Allows you to receive notifications for updates to the
+#' opsItem.
+#' @param Tags List of tags to add to the application. tag key (`Key`) and an
+#' associated tag value (`Value`). The maximum length of a tag key is 128
+#' characters. The maximum length of a tag value is 256 characters.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_application(
-#'   ResourceGroupName = "string"
+#'   ResourceGroupName = "string",
+#'   OpsCenterEnabled = TRUE|FALSE,
+#'   OpsItemSNSTopicArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_create_application
-applicationinsights_create_application <- function(ResourceGroupName) {
+applicationinsights_create_application <- function(ResourceGroupName, OpsCenterEnabled = NULL, OpsItemSNSTopicArn = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateApplication",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$create_application_input(ResourceGroupName = ResourceGroupName)
+  input <- .applicationinsights$create_application_input(ResourceGroupName = ResourceGroupName, OpsCenterEnabled = OpsCenterEnabled, OpsItemSNSTopicArn = OpsItemSNSTopicArn, Tags = Tags)
   output <- .applicationinsights$create_application_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -83,6 +100,51 @@ applicationinsights_create_component <- function(ResourceGroupName, ComponentNam
   return(response)
 }
 .applicationinsights$operations$create_component <- applicationinsights_create_component
+
+#' Adds an log pattern to a LogPatternSet
+#'
+#' Adds an log pattern to a `LogPatternSet`.
+#'
+#' @usage
+#' applicationinsights_create_log_pattern(ResourceGroupName,
+#'   PatternSetName, PatternName, Pattern, Rank)
+#'
+#' @param ResourceGroupName &#91;required&#93; The name of the resource group.
+#' @param PatternSetName &#91;required&#93; The name of the log pattern set.
+#' @param PatternName &#91;required&#93; The name of the log pattern.
+#' @param Pattern &#91;required&#93; The log pattern.
+#' @param Rank &#91;required&#93; Rank of the log pattern.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_log_pattern(
+#'   ResourceGroupName = "string",
+#'   PatternSetName = "string",
+#'   PatternName = "string",
+#'   Pattern = "string",
+#'   Rank = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname applicationinsights_create_log_pattern
+applicationinsights_create_log_pattern <- function(ResourceGroupName, PatternSetName, PatternName, Pattern, Rank) {
+  op <- new_operation(
+    name = "CreateLogPattern",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationinsights$create_log_pattern_input(ResourceGroupName = ResourceGroupName, PatternSetName = PatternSetName, PatternName = PatternName, Pattern = Pattern, Rank = Rank)
+  output <- .applicationinsights$create_log_pattern_output()
+  config <- get_config()
+  svc <- .applicationinsights$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationinsights$operations$create_log_pattern <- applicationinsights_create_log_pattern
 
 #' Removes the specified application from monitoring
 #'
@@ -160,6 +222,47 @@ applicationinsights_delete_component <- function(ResourceGroupName, ComponentNam
   return(response)
 }
 .applicationinsights$operations$delete_component <- applicationinsights_delete_component
+
+#' Removes the specified log pattern from a LogPatternSet
+#'
+#' Removes the specified log pattern from a `LogPatternSet`.
+#'
+#' @usage
+#' applicationinsights_delete_log_pattern(ResourceGroupName,
+#'   PatternSetName, PatternName)
+#'
+#' @param ResourceGroupName &#91;required&#93; The name of the resource group.
+#' @param PatternSetName &#91;required&#93; The name of the log pattern set.
+#' @param PatternName &#91;required&#93; The name of the log pattern.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_log_pattern(
+#'   ResourceGroupName = "string",
+#'   PatternSetName = "string",
+#'   PatternName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname applicationinsights_delete_log_pattern
+applicationinsights_delete_log_pattern <- function(ResourceGroupName, PatternSetName, PatternName) {
+  op <- new_operation(
+    name = "DeleteLogPattern",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationinsights$delete_log_pattern_input(ResourceGroupName = ResourceGroupName, PatternSetName = PatternSetName, PatternName = PatternName)
+  output <- .applicationinsights$delete_log_pattern_output()
+  config <- get_config()
+  svc <- .applicationinsights$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationinsights$operations$delete_log_pattern <- applicationinsights_delete_log_pattern
 
 #' Describes the application
 #'
@@ -287,14 +390,15 @@ applicationinsights_describe_component_configuration <- function(ResourceGroupNa
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
 #' @param Tier &#91;required&#93; The tier of the application component. Supported tiers include
-#' `DOT_NET_WORKER`, `DOT_NET_WEB_TIER`, `SQL_SERVER`, and `DEFAULT`.
+#' `DOT_NET_CORE`, `DOT_NET_WORKER`, `DOT_NET_WEB`, `SQL_SERVER`, and
+#' `DEFAULT`.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$describe_component_configuration_recommendation(
 #'   ResourceGroupName = "string",
 #'   ComponentName = "string",
-#'   Tier = "string"
+#'   Tier = "DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB"|"SQL_SERVER"
 #' )
 #' ```
 #'
@@ -317,6 +421,47 @@ applicationinsights_describe_component_configuration_recommendation <- function(
   return(response)
 }
 .applicationinsights$operations$describe_component_configuration_recommendation <- applicationinsights_describe_component_configuration_recommendation
+
+#' Describe a specific log pattern from a LogPatternSet
+#'
+#' Describe a specific log pattern from a `LogPatternSet`.
+#'
+#' @usage
+#' applicationinsights_describe_log_pattern(ResourceGroupName,
+#'   PatternSetName, PatternName)
+#'
+#' @param ResourceGroupName &#91;required&#93; The name of the resource group.
+#' @param PatternSetName &#91;required&#93; The name of the log pattern set.
+#' @param PatternName &#91;required&#93; The name of the log pattern.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_log_pattern(
+#'   ResourceGroupName = "string",
+#'   PatternSetName = "string",
+#'   PatternName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname applicationinsights_describe_log_pattern
+applicationinsights_describe_log_pattern <- function(ResourceGroupName, PatternSetName, PatternName) {
+  op <- new_operation(
+    name = "DescribeLogPattern",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationinsights$describe_log_pattern_input(ResourceGroupName = ResourceGroupName, PatternSetName = PatternSetName, PatternName = PatternName)
+  output <- .applicationinsights$describe_log_pattern_output()
+  config <- get_config()
+  svc <- .applicationinsights$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationinsights$operations$describe_log_pattern <- applicationinsights_describe_log_pattern
 
 #' Describes an anomaly or error with the application
 #'
@@ -511,6 +656,94 @@ applicationinsights_list_components <- function(ResourceGroupName, MaxResults = 
 }
 .applicationinsights$operations$list_components <- applicationinsights_list_components
 
+#' Lists the log pattern sets in the specific application
+#'
+#' Lists the log pattern sets in the specific application.
+#'
+#' @usage
+#' applicationinsights_list_log_pattern_sets(ResourceGroupName, MaxResults,
+#'   NextToken)
+#'
+#' @param ResourceGroupName &#91;required&#93; The name of the resource group.
+#' @param MaxResults The maximum number of results to return in a single call. To retrieve
+#' the remaining results, make another call with the returned `NextToken`
+#' value.
+#' @param NextToken The token to request the next page of results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_log_pattern_sets(
+#'   ResourceGroupName = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname applicationinsights_list_log_pattern_sets
+applicationinsights_list_log_pattern_sets <- function(ResourceGroupName, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListLogPatternSets",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationinsights$list_log_pattern_sets_input(ResourceGroupName = ResourceGroupName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .applicationinsights$list_log_pattern_sets_output()
+  config <- get_config()
+  svc <- .applicationinsights$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationinsights$operations$list_log_pattern_sets <- applicationinsights_list_log_pattern_sets
+
+#' Lists the log patterns in the specific log LogPatternSet
+#'
+#' Lists the log patterns in the specific log `LogPatternSet`.
+#'
+#' @usage
+#' applicationinsights_list_log_patterns(ResourceGroupName, PatternSetName,
+#'   MaxResults, NextToken)
+#'
+#' @param ResourceGroupName &#91;required&#93; The name of the resource group.
+#' @param PatternSetName The name of the log pattern set.
+#' @param MaxResults The maximum number of results to return in a single call. To retrieve
+#' the remaining results, make another call with the returned `NextToken`
+#' value.
+#' @param NextToken The token to request the next page of results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_log_patterns(
+#'   ResourceGroupName = "string",
+#'   PatternSetName = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname applicationinsights_list_log_patterns
+applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetName = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListLogPatterns",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationinsights$list_log_patterns_input(ResourceGroupName = ResourceGroupName, PatternSetName = PatternSetName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .applicationinsights$list_log_patterns_output()
+  config <- get_config()
+  svc <- .applicationinsights$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationinsights$operations$list_log_patterns <- applicationinsights_list_log_patterns
+
 #' Lists the problems with your application
 #'
 #' Lists the problems with your application.
@@ -564,6 +797,199 @@ applicationinsights_list_problems <- function(ResourceGroupName = NULL, StartTim
   return(response)
 }
 .applicationinsights$operations$list_problems <- applicationinsights_list_problems
+
+#' Retrieve a list of the tags (keys and values) that are associated with a
+#' specified application
+#'
+#' Retrieve a list of the tags (keys and values) that are associated with a
+#' specified application. A *tag* is a label that you optionally define and
+#' associate with an application. Each tag consists of a required *tag key*
+#' and an optional associated *tag value*. A tag key is a general label
+#' that acts as a category for more specific tag values. A tag value acts
+#' as a descriptor within a tag key.
+#'
+#' @usage
+#' applicationinsights_list_tags_for_resource(ResourceARN)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the application that you want to
+#' retrieve tag information for.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname applicationinsights_list_tags_for_resource
+applicationinsights_list_tags_for_resource <- function(ResourceARN) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationinsights$list_tags_for_resource_input(ResourceARN = ResourceARN)
+  output <- .applicationinsights$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .applicationinsights$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationinsights$operations$list_tags_for_resource <- applicationinsights_list_tags_for_resource
+
+#' Add one or more tags (keys and values) to a specified application
+#'
+#' Add one or more tags (keys and values) to a specified application. A
+#' *tag* is a label that you optionally define and associate with an
+#' application. Tags can help you categorize and manage application in
+#' different ways, such as by purpose, owner, environment, or other
+#' criteria.
+#' 
+#' Each tag consists of a required *tag key* and an associated *tag value*,
+#' both of which you define. A tag key is a general label that acts as a
+#' category for more specific tag values. A tag value acts as a descriptor
+#' within a tag key.
+#'
+#' @usage
+#' applicationinsights_tag_resource(ResourceARN, Tags)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the application that you want to add
+#' one or more tags to.
+#' @param Tags &#91;required&#93; A list of tags that to add to the application. A tag consists of a
+#' required tag key (`Key`) and an associated tag value (`Value`). The
+#' maximum length of a tag key is 128 characters. The maximum length of a
+#' tag value is 256 characters.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceARN = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname applicationinsights_tag_resource
+applicationinsights_tag_resource <- function(ResourceARN, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationinsights$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
+  output <- .applicationinsights$tag_resource_output()
+  config <- get_config()
+  svc <- .applicationinsights$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationinsights$operations$tag_resource <- applicationinsights_tag_resource
+
+#' Remove one or more tags (keys and values) from a specified application
+#'
+#' Remove one or more tags (keys and values) from a specified application.
+#'
+#' @usage
+#' applicationinsights_untag_resource(ResourceARN, TagKeys)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the application that you want to
+#' remove one or more tags from.
+#' @param TagKeys &#91;required&#93; The tags (tag keys) that you want to remove from the resource. When you
+#' specify a tag key, the action removes both that key and its associated
+#' tag value.
+#' 
+#' To remove more than one tag from the application, append the `TagKeys`
+#' parameter and argument for each additional tag to remove, separated by
+#' an ampersand.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceARN = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname applicationinsights_untag_resource
+applicationinsights_untag_resource <- function(ResourceARN, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationinsights$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
+  output <- .applicationinsights$untag_resource_output()
+  config <- get_config()
+  svc <- .applicationinsights$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationinsights$operations$untag_resource <- applicationinsights_untag_resource
+
+#' Updates the application
+#'
+#' Updates the application.
+#'
+#' @usage
+#' applicationinsights_update_application(ResourceGroupName,
+#'   OpsCenterEnabled, OpsItemSNSTopicArn, RemoveSNSTopic)
+#'
+#' @param ResourceGroupName &#91;required&#93; The name of the resource group.
+#' @param OpsCenterEnabled When set to `true`, creates opsItems for any problems detected on an
+#' application.
+#' @param OpsItemSNSTopicArn The SNS topic provided to Application Insights that is associated to the
+#' created opsItem. Allows you to receive notifications for updates to the
+#' opsItem.
+#' @param RemoveSNSTopic Disassociates the SNS topic from the opsItem created for detected
+#' problems.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_application(
+#'   ResourceGroupName = "string",
+#'   OpsCenterEnabled = TRUE|FALSE,
+#'   OpsItemSNSTopicArn = "string",
+#'   RemoveSNSTopic = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname applicationinsights_update_application
+applicationinsights_update_application <- function(ResourceGroupName, OpsCenterEnabled = NULL, OpsItemSNSTopicArn = NULL, RemoveSNSTopic = NULL) {
+  op <- new_operation(
+    name = "UpdateApplication",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationinsights$update_application_input(ResourceGroupName = ResourceGroupName, OpsCenterEnabled = OpsCenterEnabled, OpsItemSNSTopicArn = OpsItemSNSTopicArn, RemoveSNSTopic = RemoveSNSTopic)
+  output <- .applicationinsights$update_application_output()
+  config <- get_config()
+  svc <- .applicationinsights$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationinsights$operations$update_application <- applicationinsights_update_application
 
 #' Updates the custom component name and/or the list of resources that make
 #' up the component
@@ -627,13 +1053,16 @@ applicationinsights_update_component <- function(ResourceGroupName, ComponentNam
 #' @param ComponentName &#91;required&#93; The name of the component.
 #' @param Monitor Indicates whether the application component is monitored.
 #' @param Tier The tier of the application component. Supported tiers include
-#' `DOT_NET_WORKER`, `DOT_NET_WEB_TIER`, `SQL_SERVER`, and `DEFAULT`.
+#' `DOT_NET_WORKER`, `DOT_NET_WEB`, `DOT_NET_CORE`, `SQL_SERVER`, and
+#' `DEFAULT`.
 #' @param ComponentConfiguration The configuration settings of the component. The value is the escaped
 #' JSON of the configuration. For more information about the JSON format,
 #' see [Working with
 #' JSON](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/working-with-json.html).
 #' You can send a request to `DescribeComponentConfigurationRecommendation`
-#' to see the recommended configuration for a component.
+#' to see the recommended configuration for a component. For the complete
+#' format of the component configuration file, see [Component
+#' Configuration](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/component-config.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -641,7 +1070,7 @@ applicationinsights_update_component <- function(ResourceGroupName, ComponentNam
 #'   ResourceGroupName = "string",
 #'   ComponentName = "string",
 #'   Monitor = TRUE|FALSE,
-#'   Tier = "string",
+#'   Tier = "DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB"|"SQL_SERVER",
 #'   ComponentConfiguration = "string"
 #' )
 #' ```
@@ -665,3 +1094,48 @@ applicationinsights_update_component_configuration <- function(ResourceGroupName
   return(response)
 }
 .applicationinsights$operations$update_component_configuration <- applicationinsights_update_component_configuration
+
+#' Adds a log pattern to a LogPatternSet
+#'
+#' Adds a log pattern to a `LogPatternSet`.
+#'
+#' @usage
+#' applicationinsights_update_log_pattern(ResourceGroupName,
+#'   PatternSetName, PatternName, Pattern, Rank)
+#'
+#' @param ResourceGroupName &#91;required&#93; The name of the resource group.
+#' @param PatternSetName &#91;required&#93; The name of the log pattern set.
+#' @param PatternName &#91;required&#93; The name of the log pattern.
+#' @param Pattern The log pattern.
+#' @param Rank Rank of the log pattern.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_log_pattern(
+#'   ResourceGroupName = "string",
+#'   PatternSetName = "string",
+#'   PatternName = "string",
+#'   Pattern = "string",
+#'   Rank = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname applicationinsights_update_log_pattern
+applicationinsights_update_log_pattern <- function(ResourceGroupName, PatternSetName, PatternName, Pattern = NULL, Rank = NULL) {
+  op <- new_operation(
+    name = "UpdateLogPattern",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationinsights$update_log_pattern_input(ResourceGroupName = ResourceGroupName, PatternSetName = PatternSetName, PatternName = PatternName, Pattern = Pattern, Rank = Rank)
+  output <- .applicationinsights$update_log_pattern_output()
+  config <- get_config()
+  svc <- .applicationinsights$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationinsights$operations$update_log_pattern <- applicationinsights_update_log_pattern

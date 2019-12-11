@@ -7,7 +7,7 @@
 cloudfront_get_invalidation(DistributionId, Id)
 }
 \arguments{
-\item{DistributionId}{[required] The distribution's ID.}
+\item{DistributionId}{[required] The distribution\'s ID.}
 
 \item{Id}{[required] The identifier for the invalidation request, for example,
 \code{IDFDVBD632BHDS5}.}

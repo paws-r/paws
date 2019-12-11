@@ -14,7 +14,7 @@ Describes the server that you specify by passing the \code{ServerId}
 parameter.
 }
 \details{
-The response contains a description of the server's properties.
+The response contains a description of the server\'s properties.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_server(

@@ -19,7 +19,7 @@ list.}
 Lists the groups associated with a user pool.
 }
 \details{
-Requires developer credentials.
+Calling this action requires developer credentials.
 }
 \section{Request syntax}{
 \preformatted{svc$list_groups(

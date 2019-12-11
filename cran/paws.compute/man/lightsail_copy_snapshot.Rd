@@ -2,26 +2,79 @@
 % Please edit documentation in R/lightsail_operations.R
 \name{lightsail_copy_snapshot}
 \alias{lightsail_copy_snapshot}
-\title{Copies an instance or disk snapshot from one AWS Region to another in
-Amazon Lightsail}
+\title{Copies a manual instance or disk snapshot as another manual snapshot, or
+copies an automatic instance or disk snapshot as a manual snapshot}
 \usage{
-lightsail_copy_snapshot(sourceSnapshotName, targetSnapshotName,
+lightsail_copy_snapshot(sourceSnapshotName, sourceResourceName,
+  restoreDate, useLatestRestorableAutoSnapshot, targetSnapshotName,
   sourceRegion)
 }
 \arguments{
-\item{sourceSnapshotName}{[required] The name of the source instance or disk snapshot to be copied.}
+\item{sourceSnapshotName}{The name of the source instance or disk snapshot to be copied.
+
+Define this parameter only when copying a manual snapshot as another
+manual snapshot.}
+
+\item{sourceResourceName}{The name of the source resource from which the automatic snapshot was
+created.
+
+Define this parameter only when copying an automatic snapshot as a
+manual snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.}
+
+\item{restoreDate}{The date of the automatic snapshot to copy for the new manual snapshot.
+
+Use the \verb{get auto snapshots} operation to identify the dates of the
+available automatic snapshots.
+
+Constraints:
+\itemize{
+\item Must be specified in \code{YYYY-MM-DD} format.
+\item This parameter cannot be defined together with the
+\verb{use latest restorable auto snapshot} parameter. The \verb{restore date}
+and \verb{use latest restorable auto snapshot} parameters are mutually
+exclusive.
+}
+
+Define this parameter only when copying an automatic snapshot as a
+manual snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.}
+
+\item{useLatestRestorableAutoSnapshot}{A Boolean value to indicate whether to use the latest available
+automatic snapshot.
+
+This parameter cannot be defined together with the \verb{restore date}
+parameter. The \verb{use latest restorable auto snapshot} and \verb{restore date}
+parameters are mutually exclusive.
+
+Define this parameter only when copying an automatic snapshot as a
+manual snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.}
 
 \item{targetSnapshotName}{[required] The name of the new instance or disk snapshot to be created as a copy.}
 
-\item{sourceRegion}{[required] The AWS Region where the source snapshot is located.}
+\item{sourceRegion}{[required] The AWS Region where the source manual or automatic snapshot is located.}
 }
 \description{
-Copies an instance or disk snapshot from one AWS Region to another in
-Amazon Lightsail.
+Copies a manual instance or disk snapshot as another manual snapshot, or
+copies an automatic instance or disk snapshot as a manual snapshot. This
+operation can also be used to copy a manual or automatic snapshot of an
+instance or a disk from one AWS Region to another in Amazon Lightsail.
+}
+\details{
+When copying a \emph{manual snapshot}, be sure to define the \verb{source region},
+\verb{source snapshot name}, and \verb{target snapshot name} parameters.
+
+When copying an \emph{automatic snapshot}, be sure to define the
+\verb{source region}, \verb{source resource name}, \verb{target snapshot name}, and
+either the \verb{restore date} or the \verb{use latest restorable auto snapshot}
+parameters.
+
+Database snapshots cannot be copied at this time.
 }
 \section{Request syntax}{
 \preformatted{svc$copy_snapshot(
   sourceSnapshotName = "string",
+  sourceResourceName = "string",
+  restoreDate = "string",
+  useLatestRestorableAutoSnapshot = TRUE|FALSE,
   targetSnapshotName = "string",
   sourceRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
 )

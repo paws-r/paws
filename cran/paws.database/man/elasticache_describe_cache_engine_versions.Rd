@@ -8,17 +8,17 @@ elasticache_describe_cache_engine_versions(Engine, EngineVersion,
   CacheParameterGroupFamily, MaxRecords, Marker, DefaultOnly)
 }
 \arguments{
-\item{Engine}{The cache engine to return. Valid values: \code{memcached} \| \code{redis}}
+\item{Engine}{The cache engine to return. Valid values: \code{memcached} \\| \code{redis}}
 
 \item{EngineVersion}{The cache engine version to return.
 
-Example: \code{1.4.14}}
+Example: \verb{1.4.14}}
 
 \item{CacheParameterGroupFamily}{The name of a specific cache parameter group family to return details
 for.
 
-Valid values are: \code{memcached1.4} \| \code{memcached1.5} \| \code{redis2.6} \|
-\code{redis2.8} \| \code{redis3.2} \| \code{redis4.0} \| \code{redis5.0} \|
+Valid values are: \code{memcached1.4} \\| \code{memcached1.5} \\| \code{redis2.6} \\|
+\code{redis2.8} \\| \code{redis3.2} \\| \code{redis4.0} \\| \code{redis5.0} \\|
 
 Constraints:
 \itemize{

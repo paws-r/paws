@@ -197,7 +197,7 @@ NULL
 
 .greengrass$create_resource_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AmznClientToken = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-Client-Token", type = "string")), InitialVersion = structure(list(Resources = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ResourceDataContainer = structure(list(LocalDeviceResourceData = structure(list(GroupOwnerSetting = structure(list(AutoAddGroupOwner = structure(logical(0), tags = list(type = "boolean")), GroupOwner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourcePath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LocalVolumeResourceData = structure(list(DestinationPath = structure(logical(0), tags = list(type = "string")), GroupOwnerSetting = structure(list(AutoAddGroupOwner = structure(logical(0), tags = list(type = "boolean")), GroupOwner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourcePath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3MachineLearningModelResourceData = structure(list(DestinationPath = structure(logical(0), tags = list(type = "string")), S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SageMakerMachineLearningModelResourceData = structure(list(DestinationPath = structure(logical(0), tags = list(type = "string")), SageMakerJobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SecretsManagerSecretResourceData = structure(list(ARN = structure(logical(0), tags = list(type = "string")), AdditionalStagingLabelsToDownload = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Name = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(AmznClientToken = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-Client-Token", type = "string")), InitialVersion = structure(list(Resources = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ResourceDataContainer = structure(list(LocalDeviceResourceData = structure(list(GroupOwnerSetting = structure(list(AutoAddGroupOwner = structure(logical(0), tags = list(type = "boolean")), GroupOwner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourcePath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LocalVolumeResourceData = structure(list(DestinationPath = structure(logical(0), tags = list(type = "string")), GroupOwnerSetting = structure(list(AutoAddGroupOwner = structure(logical(0), tags = list(type = "boolean")), GroupOwner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourcePath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3MachineLearningModelResourceData = structure(list(DestinationPath = structure(logical(0), tags = list(type = "string")), OwnerSetting = structure(list(GroupOwner = structure(logical(0), tags = list(type = "string")), GroupPermission = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SageMakerMachineLearningModelResourceData = structure(list(DestinationPath = structure(logical(0), tags = list(type = "string")), OwnerSetting = structure(list(GroupOwner = structure(logical(0), tags = list(type = "string")), GroupPermission = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SageMakerJobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SecretsManagerSecretResourceData = structure(list(ARN = structure(logical(0), tags = list(type = "string")), AdditionalStagingLabelsToDownload = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Name = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -209,7 +209,7 @@ NULL
 
 .greengrass$create_resource_definition_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AmznClientToken = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-Client-Token", type = "string")), ResourceDefinitionId = structure(logical(0), tags = list(location = "uri", locationName = "ResourceDefinitionId", type = "string")), Resources = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ResourceDataContainer = structure(list(LocalDeviceResourceData = structure(list(GroupOwnerSetting = structure(list(AutoAddGroupOwner = structure(logical(0), tags = list(type = "boolean")), GroupOwner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourcePath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LocalVolumeResourceData = structure(list(DestinationPath = structure(logical(0), tags = list(type = "string")), GroupOwnerSetting = structure(list(AutoAddGroupOwner = structure(logical(0), tags = list(type = "boolean")), GroupOwner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourcePath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3MachineLearningModelResourceData = structure(list(DestinationPath = structure(logical(0), tags = list(type = "string")), S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SageMakerMachineLearningModelResourceData = structure(list(DestinationPath = structure(logical(0), tags = list(type = "string")), SageMakerJobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SecretsManagerSecretResourceData = structure(list(ARN = structure(logical(0), tags = list(type = "string")), AdditionalStagingLabelsToDownload = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(AmznClientToken = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-Client-Token", type = "string")), ResourceDefinitionId = structure(logical(0), tags = list(location = "uri", locationName = "ResourceDefinitionId", type = "string")), Resources = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ResourceDataContainer = structure(list(LocalDeviceResourceData = structure(list(GroupOwnerSetting = structure(list(AutoAddGroupOwner = structure(logical(0), tags = list(type = "boolean")), GroupOwner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourcePath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LocalVolumeResourceData = structure(list(DestinationPath = structure(logical(0), tags = list(type = "string")), GroupOwnerSetting = structure(list(AutoAddGroupOwner = structure(logical(0), tags = list(type = "boolean")), GroupOwner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourcePath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3MachineLearningModelResourceData = structure(list(DestinationPath = structure(logical(0), tags = list(type = "string")), OwnerSetting = structure(list(GroupOwner = structure(logical(0), tags = list(type = "string")), GroupPermission = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SageMakerMachineLearningModelResourceData = structure(list(DestinationPath = structure(logical(0), tags = list(type = "string")), OwnerSetting = structure(list(GroupOwner = structure(logical(0), tags = list(type = "string")), GroupPermission = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SageMakerJobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SecretsManagerSecretResourceData = structure(list(ARN = structure(logical(0), tags = list(type = "string")), AdditionalStagingLabelsToDownload = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -227,7 +227,7 @@ NULL
 
 .greengrass$create_software_update_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IotJobArn = structure(logical(0), tags = list(type = "string")), IotJobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(IotJobArn = structure(logical(0), tags = list(type = "string")), IotJobId = structure(logical(0), tags = list(type = "string")), PlatformSoftwareVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -253,16 +253,6 @@ NULL
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreationTimestamp = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
-}
-
-.greengrass$tag_resource_input <- function(...) {
-  args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resource-arn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
-}
-
-.greengrass$tag_resource_output <- function(...) {
-  list()
 }
 
 .greengrass$delete_connector_definition_input <- function(...) {
@@ -359,16 +349,6 @@ NULL
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
-}
-
-.greengrass$untag_resource_input <- function(...) {
-  args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resource-arn", type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
-}
-
-.greengrass$untag_resource_output <- function(...) {
-  list()
 }
 
 .greengrass$disassociate_role_from_group_input <- function(...) {
@@ -631,7 +611,7 @@ NULL
 
 .greengrass$get_resource_definition_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreationTimestamp = structure(logical(0), tags = list(type = "string")), Definition = structure(list(Resources = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ResourceDataContainer = structure(list(LocalDeviceResourceData = structure(list(GroupOwnerSetting = structure(list(AutoAddGroupOwner = structure(logical(0), tags = list(type = "boolean")), GroupOwner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourcePath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LocalVolumeResourceData = structure(list(DestinationPath = structure(logical(0), tags = list(type = "string")), GroupOwnerSetting = structure(list(AutoAddGroupOwner = structure(logical(0), tags = list(type = "boolean")), GroupOwner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourcePath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3MachineLearningModelResourceData = structure(list(DestinationPath = structure(logical(0), tags = list(type = "string")), S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SageMakerMachineLearningModelResourceData = structure(list(DestinationPath = structure(logical(0), tags = list(type = "string")), SageMakerJobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SecretsManagerSecretResourceData = structure(list(ARN = structure(logical(0), tags = list(type = "string")), AdditionalStagingLabelsToDownload = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Id = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreationTimestamp = structure(logical(0), tags = list(type = "string")), Definition = structure(list(Resources = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ResourceDataContainer = structure(list(LocalDeviceResourceData = structure(list(GroupOwnerSetting = structure(list(AutoAddGroupOwner = structure(logical(0), tags = list(type = "boolean")), GroupOwner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourcePath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LocalVolumeResourceData = structure(list(DestinationPath = structure(logical(0), tags = list(type = "string")), GroupOwnerSetting = structure(list(AutoAddGroupOwner = structure(logical(0), tags = list(type = "boolean")), GroupOwner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourcePath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3MachineLearningModelResourceData = structure(list(DestinationPath = structure(logical(0), tags = list(type = "string")), OwnerSetting = structure(list(GroupOwner = structure(logical(0), tags = list(type = "string")), GroupPermission = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SageMakerMachineLearningModelResourceData = structure(list(DestinationPath = structure(logical(0), tags = list(type = "string")), OwnerSetting = structure(list(GroupOwner = structure(logical(0), tags = list(type = "string")), GroupPermission = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SageMakerJobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SecretsManagerSecretResourceData = structure(list(ARN = structure(logical(0), tags = list(type = "string")), AdditionalStagingLabelsToDownload = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Id = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -957,6 +937,26 @@ NULL
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
+}
+
+.greengrass$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resource-arn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.greengrass$tag_resource_output <- function(...) {
+  list()
+}
+
+.greengrass$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resource-arn", type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.greengrass$untag_resource_output <- function(...) {
+  list()
 }
 
 .greengrass$update_connectivity_info_input <- function(...) {

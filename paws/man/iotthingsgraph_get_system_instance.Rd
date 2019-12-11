@@ -12,7 +12,7 @@ iotthingsgraph_get_system_instance(id)
 
 The ID should be in the following format.
 
-\code{urn:tdm:REGION/ACCOUNT ID/default:deployment:DEPLOYMENTNAME}}
+\verb{urn:tdm:REGION/ACCOUNT ID/default:deployment:DEPLOYMENTNAME}}
 }
 \description{
 Gets a system instance.

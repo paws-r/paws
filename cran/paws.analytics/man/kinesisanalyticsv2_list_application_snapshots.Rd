@@ -14,7 +14,7 @@ kinesisanalyticsv2_list_application_snapshots(ApplicationName, Limit,
 
 \item{NextToken}{Use this parameter if you receive a \code{NextToken} response in a previous
 request that indicates that there is more output available. Set it to
-the value of the previous call's \code{NextToken} response to indicate where
+the value of the previous call\'s \code{NextToken} response to indicate where
 the output should continue from.}
 }
 \description{

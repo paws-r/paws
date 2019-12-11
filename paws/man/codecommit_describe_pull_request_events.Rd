@@ -15,15 +15,15 @@ ListPullRequests.}
 information.}
 
 \item{actorArn}{The Amazon Resource Name (ARN) of the user whose actions resulted in the
-event. Examples include updating the pull request with additional
-commits or changing the status of a pull request.}
+event. Examples include updating the pull request with more commits or
+changing the status of a pull request.}
 
-\item{nextToken}{An enumeration token that when provided in a request, returns the next
+\item{nextToken}{An enumeration token that, when provided in a request, returns the next
 batch of the results.}
 
-\item{maxResults}{A non-negative integer used to limit the number of returned results. The
-default is 100 events, which is also the maximum number of events that
-can be returned in a result.}
+\item{maxResults}{A non-zero, non-negative integer used to limit the number of returned
+results. The default is 100 events, which is also the maximum number of
+events that can be returned in a result.}
 }
 \description{
 Returns information about one or more pull request events.
@@ -31,7 +31,7 @@ Returns information about one or more pull request events.
 \section{Request syntax}{
 \preformatted{svc$describe_pull_request_events(
   pullRequestId = "string",
-  pullRequestEventType = "PULL_REQUEST_CREATED"|"PULL_REQUEST_STATUS_CHANGED"|"PULL_REQUEST_SOURCE_REFERENCE_UPDATED"|"PULL_REQUEST_MERGE_STATE_CHANGED",
+  pullRequestEventType = "PULL_REQUEST_CREATED"|"PULL_REQUEST_STATUS_CHANGED"|"PULL_REQUEST_SOURCE_REFERENCE_UPDATED"|"PULL_REQUEST_MERGE_STATE_CHANGED"|"PULL_REQUEST_APPROVAL_RULE_CREATED"|"PULL_REQUEST_APPROVAL_RULE_UPDATED"|"PULL_REQUEST_APPROVAL_RULE_DELETED"|"PULL_REQUEST_APPROVAL_RULE_OVERRIDDEN"|"PULL_REQUEST_APPROVAL_STATE_CHANGED",
   actorArn = "string",
   nextToken = "string",
   maxResults = 123

@@ -143,6 +143,20 @@ existing campaign for an application.
           Timezone = "string"
         ),
         SizePercent = 123,
+        TemplateConfiguration = list(
+          EmailTemplate = list(
+            Name = "string"
+          ),
+          PushTemplate = list(
+            Name = "string"
+          ),
+          SMSTemplate = list(
+            Name = "string"
+          ),
+          VoiceTemplate = list(
+            Name = "string"
+          )
+        ),
         TreatmentDescription = "string",
         TreatmentName = "string"
       )
@@ -285,6 +299,20 @@ existing campaign for an application.
     SegmentVersion = 123,
     tags = list(
       "string"
+    ),
+    TemplateConfiguration = list(
+      EmailTemplate = list(
+        Name = "string"
+      ),
+      PushTemplate = list(
+        Name = "string"
+      ),
+      SMSTemplate = list(
+        Name = "string"
+      ),
+      VoiceTemplate = list(
+        Name = "string"
+      )
     ),
     TreatmentDescription = "string",
     TreatmentName = "string"

@@ -24,10 +24,10 @@ or specify search or filter criteria. You can also specify expressions
 as return fields.
 
 You specify the expressions in JSON using the form
-\code{\{"EXPRESSIONNAME":"EXPRESSION"\}}. You can define and use multiple
+\verb{\\\{"EXPRESSIONNAME":"EXPRESSION"\\\}}. You can define and use multiple
 expressions in a search request. For example:
 
-\code{\{"expression1":"_score*rating", "expression2":"(1/rank)*year"\}}
+\verb{\\\{"expression1":"_score*rating", "expression2":"(1/rank)*year"\\\}}
 
 For information about the variables, operators, and functions you can
 use in expressions, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html#writing-expressions}{Writing Expressions}
@@ -37,7 +37,7 @@ in the \emph{Amazon CloudSearch Developer Guide}.}
 options that control how the facet information is returned. Each
 specified field must be facet-enabled in the domain configuration. The
 fields and options are specified in JSON using the form
-\code{\{\"FIELD\":\{\"OPTION\":VALUE,\"OPTION:\"STRING\"\},\"FIELD\":\{\"OPTION\":VALUE,\"OPTION\":\"STRING\"\}\}}.
+\verb{\\\{\\"FIELD\\":\\\{\\"OPTION\\":VALUE,\\"OPTION:\\"STRING\\"\\\},\\"FIELD\\":\\\{\\"OPTION\\":VALUE,\\"OPTION\\":\\"STRING\\"\\\}\\\}}.
 
 You can specify the following faceting options:
 \itemize{
@@ -67,7 +67,7 @@ To count particular buckets of values, use the \code{buckets} option. For
 example, the following request uses the \code{buckets} option to calculate
 and return facet counts by decade.
 
-\code{\{"year":\{"buckets":\\["\\[1970,1979\\]","\\[1980,1989\\]","\\[1990,1999\\]","\\[2000,2009\\]","\\[2010,\}"\\]\}\}}
+\verb{\\\{"year":\\\{"buckets":\\\["\\\[1970,1979\\\]","\\\[1980,1989\\\]","\\\[1990,1999\\\]","\\\[2000,2009\\\]","\\\[2010,\\\}"\\\]\\\}\\\}}
 
 To sort facets by facet count, use the \code{count} option. For example, the
 following request sets the \code{sort} option to \code{count} to sort the facet
@@ -75,13 +75,13 @@ values by facet count, with the facet values that have the most matching
 documents listed first. Setting the \code{size} option to 3 returns only the
 top three facet values.
 
-\code{\{"year":\{"sort":"count","size":3\}\}}
+\verb{\\\{"year":\\\{"sort":"count","size":3\\\}\\\}}
 
 To sort the facets by value, use the \code{bucket} option. For example, the
 following request sets the \code{sort} option to \code{bucket} to sort the facet
 values numerically by year, with earliest year listed first.
 
-\code{\{"year":\{"sort":"bucket"\}\}}
+\verb{\\\{"year":\\\{"sort":"bucket"\\\}\\\}}
 
 For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/faceting.html}{Getting and Using Facet Information}
 in the \emph{Amazon CloudSearch Developer Guide}.}
@@ -101,7 +101,7 @@ in the \emph{Amazon CloudSearch Developer Guide}.}
 fields. Each specified field must be highlight enabled in the domain
 configuration. The fields and options are specified in JSON using the
 form
-\code{\{\"FIELD\":\{\"OPTION\":VALUE,\"OPTION:\"STRING\"\},\"FIELD\":\{\"OPTION\":VALUE,\"OPTION\":\"STRING\"\}\}}.
+\verb{\\\{\\"FIELD\\":\\\{\\"OPTION\\":VALUE,\\"OPTION:\\"STRING\\"\\\},\\"FIELD\\":\\\{\\"OPTION\\":VALUE,\\"OPTION\\":\\"STRING\\"\\\}\\\}}.
 
 You can specify the following highlight options:
 \itemize{
@@ -113,20 +113,20 @@ search term(s) you want to highlight. By default, the first
 occurrence is highlighted.
 \item \code{pre_tag}: specifies the string to prepend to an occurrence of a
 search term. The default for HTML highlights is
-\code{&amp;lt;em&amp;gt;}. The default for text highlights is \code{*}.
+\verb{&amp;lt;em&amp;gt;}. The default for text highlights is \code{*}.
 \item \code{post_tag}: specifies the string to append to an occurrence of a
 search term. The default for HTML highlights is
-\code{&amp;lt;/em&amp;gt;}. The default for text highlights is \code{*}.
+\verb{&amp;lt;/em&amp;gt;}. The default for text highlights is \code{*}.
 }
 
 If no highlight options are specified for a field, the returned field
 text is treated as HTML and the first match is highlighted with emphasis
-tags: \code{&amp;lt;em&gt;search-term&amp;lt;/em&amp;gt;}.
+tags: \verb{&amp;lt;em&gt;search-term&amp;lt;/em&amp;gt;}.
 
 For example, the following request retrieves highlights for the \code{actors}
 and \code{title} fields.
 
-\code{\{ "actors": \{\}, "title": \{"format": "text","max_phrases": 2,"pre_tag": "<b>","post_tag": "</b>"\} \}}}
+\verb{\\\{ "actors": \\\{\\\}, "title": \\\{"format": "text","max_phrases": 2,"pre_tag": "<b>","post_tag": "</b>"\\\} \\\}}}
 
 \item{partial}{Enables partial results to be returned if one or more index partitions
 are unavailable. When your search index is partitioned across multiple
@@ -136,7 +136,7 @@ search instance can result in 5xx (internal server) errors. When you
 enable partial results, Amazon CloudSearch returns whatever results are
 available and includes the percentage of documents searched in the
 search results (percent-searched). This enables you to more gracefully
-degrade your users' search experience. For example, rather than
+degrade your users\' search experience. For example, rather than
 displaying no results, you could display the partial results and a
 message indicating that the results might be incomplete due to a
 temporary system outage.}
@@ -153,7 +153,7 @@ in the \emph{Amazon CloudSearch Developer Guide}.}
 
 \item{queryOptions}{Configures options for the query parser specified in the \code{queryParser}
 parameter. You specify the options in JSON using the following form
-\code{\{\"OPTION1\":\"VALUE1\",\"OPTION2\":VALUE2\"...\"OPTIONN\":\"VALUEN\"\}.}
+\verb{\\\{\\"OPTION1\\":\\"VALUE1\\",\\"OPTION2\\":VALUE2\\"...\\"OPTIONN\\":\\"VALUEN\\"\\\}.}
 
 The options you can configure vary according to which parser you use:
 \itemize{
@@ -161,11 +161,11 @@ The options you can configure vary according to which parser you use:
 terms in the search string. For example: \code{defaultOperator: 'or'}.
 For the \code{dismax} parser, you specify a percentage that represents
 the percentage of terms in the search string (rounded down) that
-must match, rather than a default operator. A value of \code{0\\\%} is the
-equivalent to OR, and a value of \code{100\\\%} is equivalent to AND. The
+must match, rather than a default operator. A value of \verb{0\\\%} is the
+equivalent to OR, and a value of \verb{100\\\%} is equivalent to AND. The
 percentage must be specified as a value in the range 0-100 followed
-by the percent (\%) symbol. For example, \code{defaultOperator: 50\\\%}.
-Valid values: \code{and}, \code{or}, a percentage in the range 0\%-100\%
+by the percent (\\%) symbol. For example, \verb{defaultOperator: 50\\\%}.
+Valid values: \code{and}, \code{or}, a percentage in the range 0\\%-100\\%
 (\code{dismax}). Default: \code{and} (\code{simple}, \code{structured}, \code{lucene}) or
 \code{100} (\code{dismax}). Valid for: \code{simple}, \code{structured}, \code{lucene}, and
 \code{dismax}.
@@ -177,7 +177,7 @@ relative importance of each field when Amazon CloudSearch calculates
 relevance scores. To specify a field weight, append a caret (\code{^})
 symbol and the weight to the field name. For example, to boost the
 importance of the \code{title} field over the \code{description} field you
-could specify: \code{"fields":\\["title^5","description"\\]}. Valid
+could specify: \verb{"fields":\\\["title^5","description"\\\]}. Valid
 values: The name of any configured field and an optional numeric
 value greater than zero. Default: All \code{text} and \code{text-array}
 fields. Valid for: \code{simple}, \code{structured}, \code{lucene}, and \code{dismax}.
@@ -189,17 +189,17 @@ string. Similarly, disabling \code{prefix} disables the wildcard operator
 (\code{*}) and disabling \code{phrase} disables the ability to search for
 phrases by enclosing phrases in double quotes. Disabling precedence
 disables the ability to control order of precedence using
-parentheses. Disabling \code{near} disables the ability to use the ~
+parentheses. Disabling \code{near} disables the ability to use the \~
 operator to perform a sloppy phrase search. Disabling the \code{fuzzy}
-operator disables the ability to use the ~ operator to perform a
-fuzzy search. \code{escape} disables the ability to use a backslash (\code{\\})
+operator disables the ability to use the \~ operator to perform a
+fuzzy search. \code{escape} disables the ability to use a backslash (\verb{\\\\})
 to escape special characters within the search string. Disabling
 whitespace is an advanced option that prevents the parser from
 tokenizing on whitespace, which can be useful for Vietnamese. (It
 prevents Vietnamese words from being split incorrectly.) For
 example, you could disable all operators other than the phrase
 operator to support just simple term and phrase queries:
-\code{"operators":\\["and","not","or", "prefix"\\]}. Valid values: \code{and},
+\verb{"operators":\\\["and","not","or", "prefix"\\\]}. Valid values: \code{and},
 \code{escape}, \code{fuzzy}, \code{near}, \code{not}, \code{or}, \code{phrase}, \code{precedence},
 \code{prefix}, \code{whitespace}. Default: All operators and special
 characters are enabled. Valid for: \code{simple}.
@@ -212,9 +212,9 @@ the search string and still be boosted. To specify a field weight,
 append a caret (\code{^}) symbol and the weight to the field name. For
 example, to boost phrase matches in the \code{title} field over the
 \code{abstract} field, you could specify:
-\code{"phraseFields":\\["title^3", "plot"\\]} Valid values: The name of
+\verb{"phraseFields":\\\["title^3", "plot"\\\]} Valid values: The name of
 any \code{text} or \code{text-array} field and an optional numeric value
-greater than zero. Default: No fields. If you don't specify any
+greater than zero. Default: No fields. If you don\'t specify any
 fields with \code{phraseFields}, proximity scoring is disabled even if
 \code{phraseSlop} is specified. Valid for: \code{dismax}.
 \item \code{phraseSlop}: An integer value that specifies how much matches can
@@ -231,17 +231,17 @@ specify a slop of three for dismax phrase queries, you would specify
 \code{"explicitPhraseSlop":3}. Valid values: positive integers.
 Default: 0. Valid for: \code{dismax}.
 \item \code{tieBreaker}: When a term in the search string is found in a
-document's field, a score is calculated for that field based on how
+document\'s field, a score is calculated for that field based on how
 common the word is in that field compared to other documents. If the
 term occurs in multiple fields within a document, by default only
-the highest scoring field contributes to the document's overall
+the highest scoring field contributes to the document\'s overall
 score. You can specify a \code{tieBreaker} value to enable the matches in
-lower-scoring fields to contribute to the document's score. That
+lower-scoring fields to contribute to the document\'s score. That
 way, if two documents have the same max field score for a particular
 term, the score for the document that has matches in more fields
 will be higher. The formula for calculating the score with a
 tieBreaker is
-\code{(max field score) + (tieBreaker) * (sum of the scores for the rest of the matching fields)}.
+\verb{(max field score) + (tieBreaker) * (sum of the scores for the rest of the matching fields)}.
 Set \code{tieBreaker} to 0 to disregard all but the highest scoring field
 (pure max): \code{"tieBreaker":0}. Set to 1 to sum the scores from all
 fields (pure sum): \code{"tieBreaker":1}. Valid values: 0.0 to 1.0.
@@ -283,21 +283,21 @@ information, see \href{http://wiki.apache.org/solr/DisMaxQParserPlugin#Query_Syn
 \item{return}{Specifies the field and expression values to include in the response.
 Multiple fields or expressions are specified as a comma-separated list.
 By default, a search response includes all return enabled fields
-(\code{_all_fields}). To return only the document IDs for the matching
-documents, specify \code{_no_fields}. To retrieve the relevance score
-calculated for each document, specify \code{_score}.}
+(\verb{_all_fields}). To return only the document IDs for the matching
+documents, specify \verb{_no_fields}. To retrieve the relevance score
+calculated for each document, specify \verb{_score}.}
 
 \item{size}{Specifies the maximum number of search hits to include in the response.}
 
 \item{sort}{Specifies the fields or custom expressions to use to sort the search
 results. Multiple fields or expressions are specified as a
 comma-separated list. You must specify the sort direction (\code{asc} or
-\code{desc}) for each field; for example, \code{year desc,title asc}. To use a
+\code{desc}) for each field; for example, \verb{year desc,title asc}. To use a
 field to sort results, the field must be sort-enabled in the domain
 configuration. Array type fields cannot be used for sorting. If no
 \code{sort} parameter is specified, results are sorted by their default
-relevance scores in descending order: \code{_score desc}. You can also sort
-by document ID (\code{_id asc}) and version (\code{_version desc}).
+relevance scores in descending order: \verb{_score desc}. You can also sort
+by document ID (\verb{_id asc}) and version (\verb{_version desc}).
 
 For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/sorting-results.html}{Sorting Results}
 in the \emph{Amazon CloudSearch Developer Guide}.}
@@ -314,7 +314,7 @@ in the \emph{Amazon CloudSearch Developer Guide}.}
 Each specified field must be facet-enabled in the domain configuration.
 The fields are specified in JSON using the form:
 
-\code{\{"FIELD-A":\{\},"FIELD-B":\{\}\}}
+\verb{\\\{"FIELD-A":\\\{\\\},"FIELD-B":\\\{\\\}\\\}}
 
 There are currently no options supported for statistics.}
 }
@@ -342,9 +342,9 @@ For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/de
 in the \emph{Amazon CloudSearch Developer Guide}.
 
 The endpoint for submitting \code{Search} requests is domain-specific. You
-submit search requests to a domain's search endpoint. To get the search
+submit search requests to a domain\'s search endpoint. To get the search
 endpoint for your domain, use the Amazon CloudSearch configuration
-service \code{DescribeDomains} action. A domain's endpoints are also
+service \code{DescribeDomains} action. A domain\'s endpoints are also
 displayed on the domain dashboard in the Amazon CloudSearch console.
 }
 \section{Request syntax}{

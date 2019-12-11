@@ -3,6 +3,69 @@
 #' @include personalize_service.R
 NULL
 
+#' Creates a batch inference job
+#'
+#' Creates a batch inference job. The operation can handle up to 50 million
+#' records and the input file must be in JSON format. For more information,
+#' see recommendations-batch.
+#'
+#' @usage
+#' personalize_create_batch_inference_job(jobName, solutionVersionArn,
+#'   numResults, jobInput, jobOutput, roleArn)
+#'
+#' @param jobName &#91;required&#93; The name of the batch inference job to create.
+#' @param solutionVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the solution version that will be used
+#' to generate the batch inference recommendations.
+#' @param numResults The number of recommendations to retreive.
+#' @param jobInput &#91;required&#93; The Amazon S3 path that leads to the input file to base your
+#' recommendations on. The input material must be in JSON format.
+#' @param jobOutput &#91;required&#93; The path to the Amazon S3 bucket where the job\'s output will be stored.
+#' @param roleArn &#91;required&#93; The ARN of the Amazon Identity and Access Management role that has
+#' permissions to read and write to your input and out Amazon S3 buckets
+#' respectively.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_batch_inference_job(
+#'   jobName = "string",
+#'   solutionVersionArn = "string",
+#'   numResults = 123,
+#'   jobInput = list(
+#'     s3DataSource = list(
+#'       path = "string",
+#'       kmsKeyArn = "string"
+#'     )
+#'   ),
+#'   jobOutput = list(
+#'     s3DataDestination = list(
+#'       path = "string",
+#'       kmsKeyArn = "string"
+#'     )
+#'   ),
+#'   roleArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_create_batch_inference_job
+personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, numResults = NULL, jobInput, jobOutput, roleArn) {
+  op <- new_operation(
+    name = "CreateBatchInferenceJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$create_batch_inference_job_input(jobName = jobName, solutionVersionArn = solutionVersionArn, numResults = numResults, jobInput = jobInput, jobOutput = jobOutput, roleArn = roleArn)
+  output <- .personalize$create_batch_inference_job_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$create_batch_inference_job <- personalize_create_batch_inference_job
+
 #' Creates a campaign by deploying a solution version
 #'
 #' Creates a campaign by deploying a solution version. When a client calls
@@ -658,29 +721,41 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
 #' -   DeleteSolution
 #'
 #' @usage
-#' personalize_create_solution_version(solutionArn)
+#' personalize_create_solution_version(solutionArn, trainingMode)
 #'
 #' @param solutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the solution containing the training
 #' configuration information.
+#' @param trainingMode The scope of training to be performed when creating the solution
+#' version. The `FULL` option trains the solution version based on the
+#' entirety of the input solution\'s training data, while the `UPDATE`
+#' option processes only the data that has changed in comparison to the
+#' input solution. Choose `UPDATE` when you want to incrementally update
+#' your solution version instead of creating an entirely new one.
+#' 
+#' The `UPDATE` option can only be used when you already have an active
+#' solution version created from the input solution using the `FULL` option
+#' and the input solution was trained with the native-recipe-hrnn-coldstart
+#' recipe.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_solution_version(
-#'   solutionArn = "string"
+#'   solutionArn = "string",
+#'   trainingMode = "FULL"|"UPDATE"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname personalize_create_solution_version
-personalize_create_solution_version <- function(solutionArn) {
+personalize_create_solution_version <- function(solutionArn, trainingMode = NULL) {
   op <- new_operation(
     name = "CreateSolutionVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .personalize$create_solution_version_input(solutionArn = solutionArn)
+  input <- .personalize$create_solution_version_input(solutionArn = solutionArn, trainingMode = trainingMode)
   output <- .personalize$create_solution_version_output()
   config <- get_config()
   svc <- .personalize$service(config)
@@ -964,6 +1039,46 @@ personalize_describe_algorithm <- function(algorithmArn) {
   return(response)
 }
 .personalize$operations$describe_algorithm <- personalize_describe_algorithm
+
+#' Gets the properties of a batch inference job including name, Amazon
+#' Resource Name (ARN), status, input and output configurations, and the
+#' ARN of the solution version used to generate the recommendations
+#'
+#' Gets the properties of a batch inference job including name, Amazon
+#' Resource Name (ARN), status, input and output configurations, and the
+#' ARN of the solution version used to generate the recommendations.
+#'
+#' @usage
+#' personalize_describe_batch_inference_job(batchInferenceJobArn)
+#'
+#' @param batchInferenceJobArn &#91;required&#93; The ARN of the batch inference job to describe.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_batch_inference_job(
+#'   batchInferenceJobArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_describe_batch_inference_job
+personalize_describe_batch_inference_job <- function(batchInferenceJobArn) {
+  op <- new_operation(
+    name = "DescribeBatchInferenceJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$describe_batch_inference_job_input(batchInferenceJobArn = batchInferenceJobArn)
+  output <- .personalize$describe_batch_inference_job_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$describe_batch_inference_job <- personalize_describe_batch_inference_job
 
 #' Describes the given campaign, including its status
 #'
@@ -1398,6 +1513,51 @@ personalize_get_solution_metrics <- function(solutionVersionArn) {
   return(response)
 }
 .personalize$operations$get_solution_metrics <- personalize_get_solution_metrics
+
+#' Gets a list of the batch inference jobs that have been performed off of
+#' a solution version
+#'
+#' Gets a list of the batch inference jobs that have been performed off of
+#' a solution version.
+#'
+#' @usage
+#' personalize_list_batch_inference_jobs(solutionVersionArn, nextToken,
+#'   maxResults)
+#'
+#' @param solutionVersionArn The Amazon Resource Name (ARN) of the solution version from which the
+#' batch inference jobs were created.
+#' @param nextToken The token to request the next page of results.
+#' @param maxResults The maximum number of batch inference job results to return in each
+#' page. The default value is 100.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_batch_inference_jobs(
+#'   solutionVersionArn = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_list_batch_inference_jobs
+personalize_list_batch_inference_jobs <- function(solutionVersionArn = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListBatchInferenceJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$list_batch_inference_jobs_input(solutionVersionArn = solutionVersionArn, nextToken = nextToken, maxResults = maxResults)
+  output <- .personalize$list_batch_inference_jobs_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$list_batch_inference_jobs <- personalize_list_batch_inference_jobs
 
 #' Returns a list of campaigns that use the given solution
 #'

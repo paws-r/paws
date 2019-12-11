@@ -4,21 +4,52 @@
 \alias{apigatewayv2_update_api}
 \title{Updates an Api resource}
 \usage{
-apigatewayv2_update_api(ApiId, ApiKeySelectionExpression, Description,
-  DisableSchemaValidation, Name, RouteSelectionExpression, Version)
+apigatewayv2_update_api(ApiId, ApiKeySelectionExpression,
+  CorsConfiguration, CredentialsArn, Description, DisableSchemaValidation,
+  Name, RouteKey, RouteSelectionExpression, Target, Version)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
 
-\item{ApiKeySelectionExpression}{An API key selection expression. See \href{https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions}{API Key Selection Expressions}.}
+\item{ApiKeySelectionExpression}{An API key selection expression. Supported only for WebSocket APIs. See
+\href{https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions}{API Key Selection Expressions}.}
+
+\item{CorsConfiguration}{A CORS configuration. Supported only for HTTP APIs.}
+
+\item{CredentialsArn}{This property is part of quick create. It specifies the credentials
+required for the integration, if any. For a Lambda integration, three
+options are available. To specify an IAM Role for API Gateway to assume,
+use the role\'s Amazon Resource Name (ARN). To require that the
+caller\'s identity be passed through from the request, specify
+arn:aws:iam::\\emph{:user/\}. To use resource-based permissions on supported
+AWS services, specify null. Currently, this property is not used for
+HTTP integrations. If provided, this value replaces the credentials
+associated with the quick create integration. Supported only for HTTP
+APIs.}
 
 \item{Description}{The description of the API.}
 
-\item{DisableSchemaValidation}{Avoid validating models when creating a deployment.}
+\item{DisableSchemaValidation}{Avoid validating models when creating a deployment. Supported only for
+WebSocket APIs.}
 
 \item{Name}{The name of the API.}
 
-\item{RouteSelectionExpression}{The route selection expression for the API.}
+\item{RouteKey}{This property is part of quick create. If not specified, the route
+created using quick create is kept. Otherwise, this value replaces the
+route key of the quick create route. Additional routes may still be
+added after the API is updated. Supported only for HTTP APIs.}
+
+\item{RouteSelectionExpression}{The route selection expression for the API. For HTTP APIs, the
+routeSelectionExpression must be \\$\{request.method\} \\$\{request.path\}. If
+not provided, this will be the default for HTTP APIs. This property is
+required for WebSocket APIs.}
+
+\item{Target}{This property is part of quick create. For HTTP integrations, specify a
+fully qualified URL. For Lambda integrations, specify a function ARN.
+The type of the integration will be HTTP\\_PROXY or AWS\\_PROXY,
+respectively. The value provided updates the integration URI and
+integration type. You can update a quick-created target, but you can\'t
+remove it from an API. Supported only for HTTP APIs.}
 
 \item{Version}{A version identifier for the API.}
 }
@@ -29,10 +60,29 @@ Updates an Api resource.
 \preformatted{svc$update_api(
   ApiId = "string",
   ApiKeySelectionExpression = "string",
+  CorsConfiguration = list(
+    AllowCredentials = TRUE|FALSE,
+    AllowHeaders = list(
+      "string"
+    ),
+    AllowMethods = list(
+      "string"
+    ),
+    AllowOrigins = list(
+      "string"
+    ),
+    ExposeHeaders = list(
+      "string"
+    ),
+    MaxAge = 123
+  ),
+  CredentialsArn = "string",
   Description = "string",
   DisableSchemaValidation = TRUE|FALSE,
   Name = "string",
+  RouteKey = "string",
   RouteSelectionExpression = "string",
+  Target = "string",
   Version = "string"
 )
 }

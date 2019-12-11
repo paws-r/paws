@@ -2,16 +2,24 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_delete_organization_config_rule}
 \alias{configservice_delete_organization_config_rule}
-\title{Delete organization config rule}
+\title{Deletes the specified organization config rule and all of its evaluation
+results from all member accounts in that organization}
 \usage{
 configservice_delete_organization_config_rule(
   OrganizationConfigRuleName)
 }
 \arguments{
-\item{OrganizationConfigRuleName}{[required]}
+\item{OrganizationConfigRuleName}{[required] The name of organization config rule that you want to delete.}
 }
 \description{
-Delete organization config rule
+Deletes the specified organization config rule and all of its evaluation
+results from all member accounts in that organization. Only a master
+account can delete an organization config rule.
+}
+\details{
+AWS Config sets the state of a rule to DELETE\\_IN\\_PROGRESS until the
+deletion is complete. You cannot update a rule while it is in this
+state.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_organization_config_rule(

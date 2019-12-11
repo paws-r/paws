@@ -2,6 +2,10 @@ context("personalize")
 
 svc <- paws::personalize()
 
+test_that("list_batch_inference_jobs", {
+  expect_error(svc$list_batch_inference_jobs(), NA)
+})
+
 test_that("list_campaigns", {
   expect_error(svc$list_campaigns(), NA)
 })

@@ -4,12 +4,26 @@
 \alias{dynamodb_restore_table_from_backup}
 \title{Creates a new table from an existing backup}
 \usage{
-dynamodb_restore_table_from_backup(TargetTableName, BackupArn)
+dynamodb_restore_table_from_backup(TargetTableName, BackupArn,
+  BillingModeOverride, GlobalSecondaryIndexOverride,
+  LocalSecondaryIndexOverride, ProvisionedThroughputOverride)
 }
 \arguments{
 \item{TargetTableName}{[required] The name of the new table to which the backup must be restored.}
 
 \item{BackupArn}{[required] The Amazon Resource Name (ARN) associated with the backup.}
+
+\item{BillingModeOverride}{The billing mode of the restored table.}
+
+\item{GlobalSecondaryIndexOverride}{List of global secondary indexes for the restored table. The indexes
+provided should match existing secondary indexes. You can choose to
+exclude some or all of the indexes at the time of restore.}
+
+\item{LocalSecondaryIndexOverride}{List of local secondary indexes for the restored table. The indexes
+provided should match existing secondary indexes. You can choose to
+exclude some or all of the indexes at the time of restore.}
+
+\item{ProvisionedThroughputOverride}{Provisioned throughput settings for the restored table.}
 }
 \description{
 Creates a new table from an existing backup. Any number of users can
@@ -33,7 +47,50 @@ You must manually set up the following on the restored table:
 \section{Request syntax}{
 \preformatted{svc$restore_table_from_backup(
   TargetTableName = "string",
-  BackupArn = "string"
+  BackupArn = "string",
+  BillingModeOverride = "PROVISIONED"|"PAY_PER_REQUEST",
+  GlobalSecondaryIndexOverride = list(
+    list(
+      IndexName = "string",
+      KeySchema = list(
+        list(
+          AttributeName = "string",
+          KeyType = "HASH"|"RANGE"
+        )
+      ),
+      Projection = list(
+        ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
+        NonKeyAttributes = list(
+          "string"
+        )
+      ),
+      ProvisionedThroughput = list(
+        ReadCapacityUnits = 123,
+        WriteCapacityUnits = 123
+      )
+    )
+  ),
+  LocalSecondaryIndexOverride = list(
+    list(
+      IndexName = "string",
+      KeySchema = list(
+        list(
+          AttributeName = "string",
+          KeyType = "HASH"|"RANGE"
+        )
+      ),
+      Projection = list(
+        ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
+        NonKeyAttributes = list(
+          "string"
+        )
+      )
+    )
+  ),
+  ProvisionedThroughputOverride = list(
+    ReadCapacityUnits = 123,
+    WriteCapacityUnits = 123
+  )
 )
 }
 }

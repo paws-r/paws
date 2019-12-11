@@ -14,7 +14,7 @@ information about.}
 }
 \description{
 Get information about an existing configuration set, including the
-dedicated IP pool that it's associated with, whether or not it's
+dedicated IP pool that it\'s associated with, whether or not it\'s
 enabled for sending email, and more.
 }
 \details{

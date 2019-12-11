@@ -13,7 +13,7 @@ identical health checks:
 \itemize{
 \item If you send a \code{CreateHealthCheck} request with the same
 \code{CallerReference} and settings as a previous request, and if the
-health check doesn't exist, Amazon Route 53 creates the health
+health check doesn\'t exist, Amazon Route 53 creates the health
 check. If the health check does exist, Route 53 returns the settings
 for the existing health check.
 \item If you send a \code{CreateHealthCheck} request with the same
@@ -40,7 +40,7 @@ in
 
 \strong{ELB Load Balancers}
 
-If you're registering EC2 instances with an Elastic Load Balancing
+If you\'re registering EC2 instances with an Elastic Load Balancing
 (ELB) load balancer, do not create Amazon Route 53 health checks for the
 EC2 instances. When you register an EC2 instance with a load balancer,
 you configure settings for an ELB health check, which performs a similar
@@ -90,7 +90,7 @@ metrics and alarms by using the CloudWatch console, see the \href{http://docs.aw
       "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
     ),
     AlarmIdentifier = list(
-      Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1",
+      Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1",
       Name = "string"
     ),
     InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus"

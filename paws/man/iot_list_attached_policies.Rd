@@ -7,7 +7,7 @@
 iot_list_attached_policies(target, recursive, marker, pageSize)
 }
 \arguments{
-\item{target}{[required] The group for which the policies will be listed.}
+\item{target}{[required] The group or principal for which the policies will be listed.}
 
 \item{recursive}{When true, recursively list attached policies.}
 

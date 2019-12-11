@@ -2,9 +2,7 @@
 % Please edit documentation in R/ses_operations.R
 \name{ses_set_identity_dkim_enabled}
 \alias{ses_set_identity_dkim_enabled}
-\title{Enables or disables Easy DKIM signing of email sent from an identity: -
-If Easy DKIM signing is enabled for a domain name identity (such as
-example}
+\title{Enables or disables Easy DKIM signing of email sent from an identity}
 \usage{
 ses_set_identity_dkim_enabled(Identity, DkimEnabled)
 }
@@ -15,21 +13,20 @@ ses_set_identity_dkim_enabled(Identity, DkimEnabled)
 enable DKIM signing for this identity; \code{false} to disable it.}
 }
 \description{
-Enables or disables Easy DKIM signing of email sent from an identity:
+Enables or disables Easy DKIM signing of email sent from an identity. If
+Easy DKIM signing is enabled for a domain, then Amazon SES uses DKIM to
+sign all email that it sends from addresses on that domain. If Easy DKIM
+signing is enabled for an email address, then Amazon SES uses DKIM to
+sign all email it sends from that address.
 }
 \details{
-\itemize{
-\item If Easy DKIM signing is enabled for a domain name identity (such as
-\code{example.com}), then Amazon SES will DKIM-sign all email sent by
-addresses under that domain name (for example, \code{user@example.com}).
-\item If Easy DKIM signing is enabled for an email address, then Amazon
-SES will DKIM-sign all email sent by that email address.
-}
-
 For email addresses (for example, \code{user@example.com}), you can only
-enable Easy DKIM signing if the corresponding domain (in this case,
-\code{example.com}) has been set up for Easy DKIM using the AWS Console or
-the \code{VerifyDomainDkim} operation.
+enable DKIM signing if the corresponding domain (in this case,
+\code{example.com}) has been set up to use Easy DKIM.
+
+You can enable DKIM signing for an identity at any time after you start
+the verification process for the identity, even if the verification
+process isn\'t complete.
 
 You can execute this operation no more than once per second.
 

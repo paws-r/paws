@@ -114,6 +114,9 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
 #' the same S3 bucket. To separate out log data for each export task, you
 #' can specify a prefix to be used as the Amazon S3 key prefix for all
 #' exported objects.
+#' 
+#' Exporting to S3 buckets that are encrypted with AES-256 is supported.
+#' Exporting to S3 buckets encrypted with SSE-KMS is not supported.
 #'
 #' @usage
 #' cloudwatchlogs_create_export_task(taskName, logGroupName,
@@ -171,7 +174,7 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
 #'
 #' Creates a log group with the specified name.
 #' 
-#' You can create up to 5000 log groups per account.
+#' You can create up to 20,000 log groups per account.
 #' 
 #' You must use the following guidelines when naming a log group:
 #' 
@@ -180,8 +183,8 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
 #' -   Log group names can be between 1 and 512 characters long.
 #' 
 #' -   Log group names consist of the following characters: a-z, A-Z, 0-9,
-#'     \'\\_\' (underscore), \'-\' (hyphen), \'/\' (forward slash), and
-#'     \'.\' (period).
+#'     \'\\_\' (underscore), \'-\' (hyphen), \'/\' (forward slash), \'.\'
+#'     (period), and \'\\#\' (number sign)
 #' 
 #' If you associate a AWS Key Management Service (AWS KMS) customer master
 #' key (CMK) with the log group, ingested data is encrypted using the CMK.
@@ -1111,12 +1114,17 @@ cloudwatchlogs_filter_log_events <- function(logGroupName, logStreamNames = NULL
 #' this time are not included.
 #' @param nextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
+#' 
+#' Using this token works only when you specify `true` for `startFromHead`.
 #' @param limit The maximum number of log events returned. If you don\'t specify a
 #' value, the maximum is as many log events as can fit in a response size
 #' of 1 MB, up to 10,000 log events.
 #' @param startFromHead If the value is true, the earliest log events are returned first. If the
 #' value is false, the latest log events are returned first. The default
 #' value is false.
+#' 
+#' If you are using `nextToken` in this operation, you must specify `true`
+#' for `startFromHead`.
 #'
 #' @section Request syntax:
 #' ```
@@ -1253,8 +1261,7 @@ cloudwatchlogs_get_log_record <- function(logRecordPointer) {
 
 #' Returns the results from the specified query
 #'
-#' Returns the results from the specified query. If the query is in
-#' progress, partial results of that current execution are returned.
+#' Returns the results from the specified query.
 #' 
 #' Only the fields requested in the query are returned, along with a `@ptr`
 #' field which is the identifier for the log record. You can use the value
@@ -1262,6 +1269,11 @@ cloudwatchlogs_get_log_record <- function(logRecordPointer) {
 #' 
 #' `GetQueryResults` does not start a query execution. To run a query, use
 #' .
+#' 
+#' If the value of the `Status` field in the output is `Running`, this
+#' operation returns only partial results. If you see a value of
+#' `Scheduled` or `Running` for the status, you can retry the operation
+#' later to see the final results.
 #'
 #' @usage
 #' cloudwatchlogs_get_query_results(queryId)
@@ -1333,16 +1345,17 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
 
 #' Creates or updates a destination
 #'
-#' Creates or updates a destination. A destination encapsulates a physical
-#' resource (such as an Amazon Kinesis stream) and enables you to subscribe
-#' to a real-time stream of log events for a different account, ingested
-#' using PutLogEvents. Currently, the only supported physical resource is a
-#' Kinesis stream belonging to the same account as the destination.
+#' Creates or updates a destination. This operation is used only to create
+#' destinations for cross-account subscriptions.
 #' 
-#' Through an access policy, a destination controls what is written to its
-#' Kinesis stream. By default, `PutDestination` does not set any access
-#' policy with the destination, which means a cross-account user cannot
-#' call PutSubscriptionFilter against this destination. To enable this, the
+#' A destination encapsulates a physical resource (such as an Amazon
+#' Kinesis stream) and enables you to subscribe to a real-time stream of
+#' log events for a different account, ingested using PutLogEvents.
+#' 
+#' Through an access policy, a destination controls what is written to it.
+#' By default, `PutDestination` does not set any access policy with the
+#' destination, which means a cross-account user cannot call
+#' PutSubscriptionFilter against this destination. To enable this, the
 #' destination owner must call PutDestinationPolicy after `PutDestination`.
 #'
 #' @usage
@@ -1766,10 +1779,18 @@ cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, fil
 #' query into a number of queries.
 #'
 #' @usage
-#' cloudwatchlogs_start_query(logGroupName, startTime, endTime,
-#'   queryString, limit)
+#' cloudwatchlogs_start_query(logGroupName, logGroupNames, startTime,
+#'   endTime, queryString, limit)
 #'
-#' @param logGroupName &#91;required&#93; The log group on which to perform the query.
+#' @param logGroupName The log group on which to perform the query.
+#' 
+#' A `StartQuery` operation must include a `logGroupNames` or a
+#' `logGroupName` parameter, but not both.
+#' @param logGroupNames The list of log groups to be queried. You can include up to 20 log
+#' groups.
+#' 
+#' A `StartQuery` operation must include a `logGroupNames` or a
+#' `logGroupName` parameter, but not both.
 #' @param startTime &#91;required&#93; The beginning of the time range to query. The range is inclusive, so the
 #' specified start time is included in the query. Specified as epoch time,
 #' the number of seconds since January 1, 1970, 00:00:00 UTC.
@@ -1781,12 +1802,15 @@ cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, fil
 #' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
 #' @param limit The maximum number of log events to return in the query. If the query
 #' string uses the `fields` command, only the specified fields and their
-#' values are returned.
+#' values are returned. The default is 1000.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$start_query(
 #'   logGroupName = "string",
+#'   logGroupNames = list(
+#'     "string"
+#'   ),
 #'   startTime = 123,
 #'   endTime = 123,
 #'   queryString = "string",
@@ -1797,14 +1821,14 @@ cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, fil
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_start_query
-cloudwatchlogs_start_query <- function(logGroupName, startTime, endTime, queryString, limit = NULL) {
+cloudwatchlogs_start_query <- function(logGroupName = NULL, logGroupNames = NULL, startTime, endTime, queryString, limit = NULL) {
   op <- new_operation(
     name = "StartQuery",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatchlogs$start_query_input(logGroupName = logGroupName, startTime = startTime, endTime = endTime, queryString = queryString, limit = limit)
+  input <- .cloudwatchlogs$start_query_input(logGroupName = logGroupName, logGroupNames = logGroupNames, startTime = startTime, endTime = endTime, queryString = queryString, limit = limit)
   output <- .cloudwatchlogs$start_query_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config)

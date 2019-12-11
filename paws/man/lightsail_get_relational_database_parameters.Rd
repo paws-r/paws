@@ -12,7 +12,7 @@ lightsail_get_relational_database_parameters(relationalDatabaseName,
 \item{relationalDatabaseName}{[required] The name of your database for which to get parameters.}
 
 \item{pageToken}{A token used for advancing to a specific page of results for your
-\code{get relational database parameters} request.}
+\verb{get relational database parameters} request.}
 }
 \description{
 Returns all of the runtime parameters offered by the underlying database

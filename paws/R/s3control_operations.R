@@ -3,6 +3,61 @@
 #' @include s3control_service.R
 NULL
 
+#' Creates an access point and associates it with the specified bucket
+#'
+#' Creates an access point and associates it with the specified bucket.
+#'
+#' @usage
+#' s3control_create_access_point(AccountId, Name, Bucket, VpcConfiguration,
+#'   PublicAccessBlockConfiguration)
+#'
+#' @param AccountId &#91;required&#93; The AWS account ID for the owner of the bucket for which you want to
+#' create an access point.
+#' @param Name &#91;required&#93; The name you want to assign to this access point.
+#' @param Bucket &#91;required&#93; The name of the bucket that you want to associate this access point
+#' with.
+#' @param VpcConfiguration If you include this field, Amazon S3 restricts access to this access
+#' point to requests from the specified Virtual Private Cloud (VPC).
+#' @param PublicAccessBlockConfiguration 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_access_point(
+#'   AccountId = "string",
+#'   Name = "string",
+#'   Bucket = "string",
+#'   VpcConfiguration = list(
+#'     VpcId = "string"
+#'   ),
+#'   PublicAccessBlockConfiguration = list(
+#'     BlockPublicAcls = TRUE|FALSE,
+#'     IgnorePublicAcls = TRUE|FALSE,
+#'     BlockPublicPolicy = TRUE|FALSE,
+#'     RestrictPublicBuckets = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_create_access_point
+s3control_create_access_point <- function(AccountId, Name, Bucket, VpcConfiguration = NULL, PublicAccessBlockConfiguration = NULL) {
+  op <- new_operation(
+    name = "CreateAccessPoint",
+    http_method = "PUT",
+    http_path = "/v20180820/accesspoint/{name}",
+    paginator = list()
+  )
+  input <- .s3control$create_access_point_input(AccountId = AccountId, Name = Name, Bucket = Bucket, VpcConfiguration = VpcConfiguration, PublicAccessBlockConfiguration = PublicAccessBlockConfiguration)
+  output <- .s3control$create_access_point_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$create_access_point <- s3control_create_access_point
+
 #' Creates an Amazon S3 batch operations job
 #'
 #' Creates an Amazon S3 batch operations job.
@@ -177,15 +232,93 @@ s3control_create_job <- function(AccountId, ConfirmationRequired = NULL, Operati
 }
 .s3control$operations$create_job <- s3control_create_job
 
-#' Deletes the block public access configuration for the specified account
+#' Deletes the specified access point
 #'
-#' Deletes the block public access configuration for the specified account.
+#' Deletes the specified access point.
+#'
+#' @usage
+#' s3control_delete_access_point(AccountId, Name)
+#'
+#' @param AccountId &#91;required&#93; The account ID for the account that owns the specified access point.
+#' @param Name &#91;required&#93; The name of the access point you want to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_access_point(
+#'   AccountId = "string",
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_delete_access_point
+s3control_delete_access_point <- function(AccountId, Name) {
+  op <- new_operation(
+    name = "DeleteAccessPoint",
+    http_method = "DELETE",
+    http_path = "/v20180820/accesspoint/{name}",
+    paginator = list()
+  )
+  input <- .s3control$delete_access_point_input(AccountId = AccountId, Name = Name)
+  output <- .s3control$delete_access_point_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$delete_access_point <- s3control_delete_access_point
+
+#' Deletes the access point policy for the specified access point
+#'
+#' Deletes the access point policy for the specified access point.
+#'
+#' @usage
+#' s3control_delete_access_point_policy(AccountId, Name)
+#'
+#' @param AccountId &#91;required&#93; The account ID for the account that owns the specified access point.
+#' @param Name &#91;required&#93; The name of the access point whose policy you want to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_access_point_policy(
+#'   AccountId = "string",
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_delete_access_point_policy
+s3control_delete_access_point_policy <- function(AccountId, Name) {
+  op <- new_operation(
+    name = "DeleteAccessPointPolicy",
+    http_method = "DELETE",
+    http_path = "/v20180820/accesspoint/{name}/policy",
+    paginator = list()
+  )
+  input <- .s3control$delete_access_point_policy_input(AccountId = AccountId, Name = Name)
+  output <- .s3control$delete_access_point_policy_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$delete_access_point_policy <- s3control_delete_access_point_policy
+
+#' Removes the PublicAccessBlock configuration for an Amazon Web Services
+#' account
+#'
+#' Removes the `PublicAccessBlock` configuration for an Amazon Web Services
+#' account.
 #'
 #' @usage
 #' s3control_delete_public_access_block(AccountId)
 #'
-#' @param AccountId &#91;required&#93; The account ID for the AWS account whose block public access
-#' configuration you want to delete.
+#' @param AccountId &#91;required&#93; The account ID for the Amazon Web Services account whose
+#' `PublicAccessBlock` configuration you want to remove.
 #'
 #' @section Request syntax:
 #' ```
@@ -254,14 +387,139 @@ s3control_describe_job <- function(AccountId, JobId) {
 }
 .s3control$operations$describe_job <- s3control_describe_job
 
-#' Get public access block
+#' Returns configuration information about the specified access point
 #'
-#' 
+#' Returns configuration information about the specified access point.
+#'
+#' @usage
+#' s3control_get_access_point(AccountId, Name)
+#'
+#' @param AccountId &#91;required&#93; The account ID for the account that owns the specified access point.
+#' @param Name &#91;required&#93; The name of the access point whose configuration information you want to
+#' retrieve.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_access_point(
+#'   AccountId = "string",
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_get_access_point
+s3control_get_access_point <- function(AccountId, Name) {
+  op <- new_operation(
+    name = "GetAccessPoint",
+    http_method = "GET",
+    http_path = "/v20180820/accesspoint/{name}",
+    paginator = list()
+  )
+  input <- .s3control$get_access_point_input(AccountId = AccountId, Name = Name)
+  output <- .s3control$get_access_point_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$get_access_point <- s3control_get_access_point
+
+#' Returns the access point policy associated with the specified access
+#' point
+#'
+#' Returns the access point policy associated with the specified access
+#' point.
+#'
+#' @usage
+#' s3control_get_access_point_policy(AccountId, Name)
+#'
+#' @param AccountId &#91;required&#93; The account ID for the account that owns the specified access point.
+#' @param Name &#91;required&#93; The name of the access point whose policy you want to retrieve.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_access_point_policy(
+#'   AccountId = "string",
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_get_access_point_policy
+s3control_get_access_point_policy <- function(AccountId, Name) {
+  op <- new_operation(
+    name = "GetAccessPointPolicy",
+    http_method = "GET",
+    http_path = "/v20180820/accesspoint/{name}/policy",
+    paginator = list()
+  )
+  input <- .s3control$get_access_point_policy_input(AccountId = AccountId, Name = Name)
+  output <- .s3control$get_access_point_policy_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$get_access_point_policy <- s3control_get_access_point_policy
+
+#' Indicates whether the specified access point currently has a policy that
+#' allows public access
+#'
+#' Indicates whether the specified access point currently has a policy that
+#' allows public access. For more information about public access through
+#' access points, see [Managing Data Access with Amazon S3 Access
+#' Points](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-points.html)
+#' in the *Amazon Simple Storage Service Developer Guide*.
+#'
+#' @usage
+#' s3control_get_access_point_policy_status(AccountId, Name)
+#'
+#' @param AccountId &#91;required&#93; The account ID for the account that owns the specified access point.
+#' @param Name &#91;required&#93; The name of the access point whose policy status you want to retrieve.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_access_point_policy_status(
+#'   AccountId = "string",
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_get_access_point_policy_status
+s3control_get_access_point_policy_status <- function(AccountId, Name) {
+  op <- new_operation(
+    name = "GetAccessPointPolicyStatus",
+    http_method = "GET",
+    http_path = "/v20180820/accesspoint/{name}/policyStatus",
+    paginator = list()
+  )
+  input <- .s3control$get_access_point_policy_status_input(AccountId = AccountId, Name = Name)
+  output <- .s3control$get_access_point_policy_status_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$get_access_point_policy_status <- s3control_get_access_point_policy_status
+
+#' Retrieves the PublicAccessBlock configuration for an Amazon Web Services
+#' account
+#'
+#' Retrieves the `PublicAccessBlock` configuration for an Amazon Web
+#' Services account.
 #'
 #' @usage
 #' s3control_get_public_access_block(AccountId)
 #'
-#' @param AccountId &#91;required&#93; 
+#' @param AccountId &#91;required&#93; The account ID for the Amazon Web Services account whose
+#' `PublicAccessBlock` configuration you want to retrieve.
 #'
 #' @section Request syntax:
 #' ```
@@ -289,6 +547,61 @@ s3control_get_public_access_block <- function(AccountId) {
   return(response)
 }
 .s3control$operations$get_public_access_block <- s3control_get_public_access_block
+
+#' Returns a list of the access points currently associated with the
+#' specified bucket
+#'
+#' Returns a list of the access points currently associated with the
+#' specified bucket. You can retrieve up to 1000 access points per call. If
+#' the specified bucket has more than 1000 access points (or the number
+#' specified in `maxResults`, whichever is less), then the response will
+#' include a continuation token that you can use to list the additional
+#' access points.
+#'
+#' @usage
+#' s3control_list_access_points(AccountId, Bucket, NextToken, MaxResults)
+#'
+#' @param AccountId &#91;required&#93; The AWS account ID for owner of the bucket whose access points you want
+#' to list.
+#' @param Bucket The name of the bucket whose associated access points you want to list.
+#' @param NextToken A continuation token. If a previous call to `ListAccessPoints` returned
+#' a continuation token in the `NextToken` field, then providing that value
+#' here causes Amazon S3 to retrieve the next page of results.
+#' @param MaxResults The maximum number of access points that you want to include in the
+#' list. If the specified bucket has more than this number of access
+#' points, then the response will include a continuation token in the
+#' `NextToken` field that you can use to retrieve the next page of access
+#' points.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_access_points(
+#'   AccountId = "string",
+#'   Bucket = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_list_access_points
+s3control_list_access_points <- function(AccountId, Bucket = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListAccessPoints",
+    http_method = "GET",
+    http_path = "/v20180820/accesspoint",
+    paginator = list()
+  )
+  input <- .s3control$list_access_points_input(AccountId = AccountId, Bucket = Bucket, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .s3control$list_access_points_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$list_access_points <- s3control_list_access_points
 
 #' Lists current jobs and jobs that have ended within the last 30 days for
 #' the AWS account making the request
@@ -342,16 +655,68 @@ s3control_list_jobs <- function(AccountId, JobStatuses = NULL, NextToken = NULL,
 }
 .s3control$operations$list_jobs <- s3control_list_jobs
 
-#' Put public access block
+#' Associates an access policy with the specified access point
 #'
-#' 
+#' Associates an access policy with the specified access point. Each access
+#' point can have only one policy, so a request made to this API replaces
+#' any existing policy associated with the specified access point.
+#'
+#' @usage
+#' s3control_put_access_point_policy(AccountId, Name, Policy)
+#'
+#' @param AccountId &#91;required&#93; The AWS account ID for owner of the bucket associated with the specified
+#' access point.
+#' @param Name &#91;required&#93; The name of the access point that you want to associate with the
+#' specified policy.
+#' @param Policy &#91;required&#93; The policy that you want to apply to the specified access point. For
+#' more information about access point policies, see [Managing Data Access
+#' with Amazon S3 Access
+#' Points](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-points.html)
+#' in the *Amazon Simple Storage Service Developer Guide*.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_access_point_policy(
+#'   AccountId = "string",
+#'   Name = "string",
+#'   Policy = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_put_access_point_policy
+s3control_put_access_point_policy <- function(AccountId, Name, Policy) {
+  op <- new_operation(
+    name = "PutAccessPointPolicy",
+    http_method = "PUT",
+    http_path = "/v20180820/accesspoint/{name}/policy",
+    paginator = list()
+  )
+  input <- .s3control$put_access_point_policy_input(AccountId = AccountId, Name = Name, Policy = Policy)
+  output <- .s3control$put_access_point_policy_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$put_access_point_policy <- s3control_put_access_point_policy
+
+#' Creates or modifies the PublicAccessBlock configuration for an Amazon
+#' Web Services account
+#'
+#' Creates or modifies the `PublicAccessBlock` configuration for an Amazon
+#' Web Services account.
 #'
 #' @usage
 #' s3control_put_public_access_block(PublicAccessBlockConfiguration,
 #'   AccountId)
 #'
-#' @param PublicAccessBlockConfiguration &#91;required&#93; 
-#' @param AccountId &#91;required&#93; 
+#' @param PublicAccessBlockConfiguration &#91;required&#93; The `PublicAccessBlock` configuration that you want to apply to the
+#' specified Amazon Web Services account.
+#' @param AccountId &#91;required&#93; The account ID for the Amazon Web Services account whose
+#' `PublicAccessBlock` configuration you want to set.
 #'
 #' @section Request syntax:
 #' ```

@@ -2,9 +2,7 @@
 % Please edit documentation in R/comprehendmedical_operations.R
 \name{comprehendmedical_detect_entities}
 \alias{comprehendmedical_detect_entities}
-\title{Inspects the clinical text for a variety of medical entities and returns
-specific information about them such as entity category, location, and
-confidence score on that information}
+\title{The DetectEntities operation is deprecated}
 \usage{
 comprehendmedical_detect_entities(Text)
 }
@@ -14,6 +12,10 @@ entities. Each string must contain fewer than 20,000 bytes of
 characters.}
 }
 \description{
+The \code{DetectEntities} operation is deprecated. You should use the
+DetectEntitiesV2 operation instead.
+}
+\details{
 Inspects the clinical text for a variety of medical entities and returns
 specific information about them such as entity category, location, and
 confidence score on that information .

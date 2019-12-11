@@ -8,7 +8,7 @@ lightsail_get_relational_databases(pageToken)
 }
 \arguments{
 \item{pageToken}{A token used for advancing to a specific page of results for your
-\code{get relational database} request.}
+\verb{get relational database} request.}
 }
 \description{
 Returns information about all of your databases in Amazon Lightsail.

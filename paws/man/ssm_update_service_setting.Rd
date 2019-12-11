@@ -16,13 +16,13 @@ ssm_update_service_setting(SettingId, SettingValue)
 setting defines how a user interacts with or uses a service or a feature
 of a service. For example, if an AWS service charges money to the
 account based on feature or service usage, then the AWS service team
-might create a default setting of "false". This means the user can't
-use this feature unless they change the setting to "true" and
+might create a default setting of \"false\". This means the user can\'t
+use this feature unless they change the setting to \"true\" and
 intentionally opt in for a paid feature.
 }
 \details{
 Services map a \code{SettingId} object to a setting value. AWS services teams
-define the default value for a \code{SettingId}. You can't create a new
+define the default value for a \code{SettingId}. You can\'t create a new
 \code{SettingId}, but you can overwrite the default value if you have the
 \code{ssm:UpdateServiceSetting} permission for the setting. Use the
 GetServiceSetting API action to view the current value. Or, use the

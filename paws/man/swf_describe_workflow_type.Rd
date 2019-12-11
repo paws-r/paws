@@ -19,7 +19,7 @@ information such as creation date, current status, etc.
 \details{
 \strong{Access Control}
 
-You can use IAM policies to control this action's access to Amazon SWF
+You can use IAM policies to control this action\'s access to Amazon SWF
 resources as follows:
 \itemize{
 \item Use a \code{Resource} element with the domain name to limit the action to
@@ -28,15 +28,17 @@ only specified domains.
 action.
 \item Constrain the following parameters by using a \code{Condition} element
 with the appropriate keys.
+\itemize{
 \item \code{workflowType.name}: String constraint. The key is
 \code{swf:workflowType.name}.
 \item \code{workflowType.version}: String constraint. The key is
 \code{swf:workflowType.version}.
 }
+}
 
-If the caller doesn't have sufficient permissions to invoke the action,
+If the caller doesn\'t have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
-action fails. The associated event attribute's \code{cause} parameter is set
+action fails. The associated event attribute\'s \code{cause} parameter is set
 to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 \href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
 in the \emph{Amazon SWF Developer Guide}.

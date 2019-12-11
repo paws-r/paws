@@ -9,10 +9,45 @@ s3_put_bucket_accelerate_configuration(Bucket, AccelerateConfiguration)
 \arguments{
 \item{Bucket}{[required] Name of the bucket for which the accelerate configuration is set.}
 
-\item{AccelerateConfiguration}{[required] Specifies the Accelerate Configuration you want to set for the bucket.}
+\item{AccelerateConfiguration}{[required] Container for setting the transfer acceleration state.}
 }
 \description{
-Sets the accelerate configuration of an existing bucket.
+Sets the accelerate configuration of an existing bucket. Amazon S3
+Transfer Acceleration is a bucket-level feature that enables you to
+perform faster data transfers to Amazon S3.
+}
+\details{
+To use this operation, you must have permission to perform the
+s3:PutAccelerateConfiguration action. The bucket owner has this
+permission by default. The bucket owner can grant this permission to
+others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
+
+The Transfer Acceleration state of a bucket can be set to one of the
+following two values:
+\itemize{
+\item Enabled -- Enables accelerated data transfers to the bucket.
+\item Suspended -- Disables accelerated data transfers to the bucket.
+}
+
+The GetBucketAccelerateConfiguration operation returns the transfer
+acceleration state of a bucket.
+
+After setting the Transfer Acceleration state of a bucket to Enabled, it
+might take up to thirty minutes before the data transfer rates to the
+bucket increase.
+
+The name of the bucket used for Transfer Acceleration must be
+DNS-compliant and must not contain periods (\".\").
+
+For more information about transfer acceleration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html}{Transfer Acceleration}.
+
+The following operations are related to
+\code{PutBucketAccelerateConfiguration}:
+\itemize{
+\item GetBucketAccelerateConfiguration
+\item CreateBucket
+}
 }
 \section{Request syntax}{
 \preformatted{svc$put_bucket_accelerate_configuration(

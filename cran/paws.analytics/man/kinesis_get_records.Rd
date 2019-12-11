@@ -16,7 +16,7 @@ sequence number of a data record in the shard.}
 throws \code{InvalidArgumentException}.}
 }
 \description{
-Gets data records from a Kinesis data stream's shard.
+Gets data records from a Kinesis data stream\'s shard.
 }
 \details{
 Specify a shard iterator using the \code{ShardIterator} parameter. The shard
@@ -35,14 +35,14 @@ Use GetShardIterator to get the shard iterator to specify in the first
 GetRecords call. GetRecords returns a new shard iterator in
 \code{NextShardIterator}. Specify the shard iterator returned in
 \code{NextShardIterator} in subsequent calls to GetRecords. If the shard has
-been closed, the shard iterator can't return more data and GetRecords
+been closed, the shard iterator can\'t return more data and GetRecords
 returns \code{null} in \code{NextShardIterator}. You can terminate the loop when
 the shard is closed, or when the shard iterator reaches the record with
 the sequence number or other attribute that marks it as the last record
 to process.
 
 Each data record can be up to 1 MiB in size, and each shard can read up
-to 2 MiB per second. You can ensure that your calls don't exceed the
+to 2 MiB per second. You can ensure that your calls don\'t exceed the
 maximum supported size or throughput by using the \code{Limit} parameter to
 specify the maximum number of records that GetRecords can return.
 Consider your average record size when determining this limit. The
@@ -55,9 +55,9 @@ calls made within the next 5 seconds throw
 \code{ProvisionedThroughputExceededException}. If there is insufficient
 provisioned throughput on the stream, subsequent calls made within the
 next 1 second throw \code{ProvisionedThroughputExceededException}. GetRecords
-doesn't return any data when it throws an exception. For this reason,
+doesn\'t return any data when it throws an exception. For this reason,
 we recommend that you wait 1 second between calls to GetRecords.
-However, it's possible that the application will get exceptions for
+However, it\'s possible that the application will get exceptions for
 longer than 1 second.
 
 To detect whether the application is falling behind in processing, you

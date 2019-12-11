@@ -7,10 +7,25 @@
 s3_get_bucket_website(Bucket)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The bucket name for which to get the website configuration.}
 }
 \description{
-Returns the website configuration for a bucket.
+Returns the website configuration for a bucket. To host website on
+Amazon S3, you can configure a bucket as website by adding a website
+configuration. For more information about hosting websites, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html}{Hosting Websites on Amazon S3}.
+}
+\details{
+This GET operation requires the \code{S3:GetBucketWebsite} permission. By
+default, only the bucket owner can read the bucket website
+configuration. However, bucket owners can allow other users to read the
+website configuration by writing a bucket policy granting them the
+\code{S3:GetBucketWebsite} permission.
+
+The following operations are related to \code{DeleteBucketWebsite}:
+\itemize{
+\item DeleteBucketWebsite
+\item PutBucketWebsite
+}
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_website(

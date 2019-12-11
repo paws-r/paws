@@ -2,27 +2,31 @@
 % Please edit documentation in R/workspaces_operations.R
 \name{workspaces_describe_workspace_directories}
 \alias{workspaces_describe_workspace_directories}
-\title{Describes the available AWS Directory Service directories that are
-registered with Amazon WorkSpaces}
+\title{Describes the available directories that are registered with Amazon
+WorkSpaces}
 \usage{
-workspaces_describe_workspace_directories(DirectoryIds, NextToken)
+workspaces_describe_workspace_directories(DirectoryIds, Limit,
+  NextToken)
 }
 \arguments{
 \item{DirectoryIds}{The identifiers of the directories. If the value is null, all
 directories are retrieved.}
 
+\item{Limit}{The maximum number of directories to return.}
+
 \item{NextToken}{If you received a \code{NextToken} from a previous call that was paginated,
 provide this token to receive the next set of results.}
 }
 \description{
-Describes the available AWS Directory Service directories that are
-registered with Amazon WorkSpaces.
+Describes the available directories that are registered with Amazon
+WorkSpaces.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_workspace_directories(
   DirectoryIds = list(
     "string"
   ),
+  Limit = 123,
   NextToken = "string"
 )
 }

@@ -2,7 +2,8 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_admin_set_user_mfa_preference}
 \alias{cognitoidentityprovider_admin_set_user_mfa_preference}
-\title{Sets the user's multi-factor authentication (MFA) preference}
+\title{Sets the user's multi-factor authentication (MFA) preference, including
+which MFA options are enabled and if any are preferred}
 \usage{
 cognitoidentityprovider_admin_set_user_mfa_preference(SMSMfaSettings,
   SoftwareTokenMfaSettings, Username, UserPoolId)
@@ -17,7 +18,12 @@ cognitoidentityprovider_admin_set_user_mfa_preference(SMSMfaSettings,
 \item{UserPoolId}{[required] The user pool ID.}
 }
 \description{
-Sets the user's multi-factor authentication (MFA) preference.
+Sets the user\'s multi-factor authentication (MFA) preference, including
+which MFA options are enabled and if any are preferred. Only one factor
+can be set as preferred. The preferred MFA factor will be used to
+authenticate a user if multiple factors are enabled. If multiple options
+are enabled and no preference is set, a challenge to choose an MFA
+option will be returned during sign in.
 }
 \section{Request syntax}{
 \preformatted{svc$admin_set_user_mfa_preference(

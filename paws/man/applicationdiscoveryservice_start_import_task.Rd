@@ -12,7 +12,7 @@ applicationdiscoveryservice_start_import_task(clientRequestToken, name,
 }
 \arguments{
 \item{clientRequestToken}{Optional. A unique token that you can provide to prevent the same import
-request from occurring more than once. If you don't provide a token, a
+request from occurring more than once. If you don\'t provide a token, a
 token is automatically generated.
 
 Sending more than one \code{StartImportTask} request with the same client
@@ -24,10 +24,10 @@ future requests related to this import task, such as identifying
 applications and servers that were included in this import task. We
 recommend that you use a meaningful name for each import task.}
 
-\item{importUrl}{[required] The URL for your import file that you've uploaded to Amazon S3.
+\item{importUrl}{[required] The URL for your import file that you\'ve uploaded to Amazon S3.
 
-If you're using the AWS CLI, this URL is structured as follows:
-\code{s3://BucketName/ImportFileName.CSV}}
+If you\'re using the AWS CLI, this URL is structured as follows:
+\verb{s3://BucketName/ImportFileName.CSV}}
 }
 \description{
 Starts an import task, which allows you to import details of your
@@ -46,7 +46,7 @@ template, which you can find here:
 \url{https://s3-us-west-2.amazonaws.com/templates-7cffcf56-bd96-4b1c-b45b-a5b42f282e46/import_template.csv}.
 \item Fill out the template with your server and application data.
 \item Upload your import file to an Amazon S3 bucket, and make a note of
-it's Object URL. Your import file must be in the CSV format.
+it\'s Object URL. Your import file must be in the CSV format.
 \item Use the console or the \code{StartImportTask} command with the AWS CLI or
 one of the AWS SDKs to import the records from your file.
 }

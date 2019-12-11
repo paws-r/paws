@@ -16,7 +16,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{InstanceId}{[required] The ID of the instance.}
 
 \item{WakeUp}{When set to \code{true}, acts as keystroke input and wakes up an instance
-that's in standby or "sleep" mode.}
+that\'s in standby or \"sleep\" mode.}
 }
 \description{
 Retrieve a JPG-format screenshot of a running instance to help with

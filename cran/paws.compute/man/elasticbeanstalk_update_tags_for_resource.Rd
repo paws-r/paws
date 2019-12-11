@@ -14,11 +14,11 @@ Must be the ARN of an Elastic Beanstalk environment.}
 
 \item{TagsToAdd}{A list of tags to add or update.
 
-If a key of an existing tag is added, the tag's value is updated.}
+If a key of an existing tag is added, the tag\'s value is updated.}
 
 \item{TagsToRemove}{A list of tag keys to remove.
 
-If a tag key doesn't exist, it is silently ignored.}
+If a tag key doesn\'t exist, it is silently ignored.}
 }
 \description{
 Update the list of tags applied to an AWS Elastic Beanstalk resource.

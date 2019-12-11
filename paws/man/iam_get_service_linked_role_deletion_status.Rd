@@ -9,7 +9,7 @@ iam_get_service_linked_role_deletion_status(DeletionTaskId)
 \arguments{
 \item{DeletionTaskId}{[required] The deletion task identifier. This identifier is returned by the
 DeleteServiceLinkedRole operation in the format
-\code{task/aws-service-role/&lt;service-principal-name&gt;/&lt;role-name&gt;/&lt;task-uuid&gt;}.}
+\verb{task/aws-service-role/&lt;service-principal-name&gt;/&lt;role-name&gt;/&lt;task-uuid&gt;}.}
 }
 \description{
 Retrieves the status of your service-linked role deletion. After you use

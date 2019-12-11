@@ -11,7 +11,7 @@ iam_create_policy(PolicyName, Path, PolicyDocument, Description)
 
 IAM user, group, role, and policy names must be unique within the
 account. Names are not distinguished by case. For example, you cannot
-create resources named both "MyResource" and "myresource".}
+create resources named both \"MyResource\" and \"myresource\".}
 
 \item{Path}{The path for the policy.
 
@@ -25,7 +25,7 @@ This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex 
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
 ASCII character from the ! (\code{U+0021}) through the DEL character
-(\code{U+007F}), including most punctuation characters, digits, and upper and
+(\verb{U+007F}), including most punctuation characters, digits, and upper and
 lowercased letters.}
 
 \item{PolicyDocument}{[required] The JSON policy document that you want to use as the content for the new
@@ -42,15 +42,15 @@ this parameter is a string of characters consisting of the following:
 \item Any printable ASCII character ranging from the space character
 (\code{U+0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \code{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\code{U+000A}), and
-carriage return (\code{U+000D})
+character set (through \verb{U+00FF})
+\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
+carriage return (\verb{U+000D})
 }}
 
 \item{Description}{A friendly description of the policy.
 
 Typically used to store information about the permissions defined in the
-policy. For example, "Grants access to production DynamoDB tables."
+policy. For example, \"Grants access to production DynamoDB tables.\"
 
 The policy description is immutable. After a value is assigned, it
 cannot be changed.}
@@ -60,7 +60,7 @@ Creates a new managed policy for your AWS account.
 }
 \details{
 This operation creates a policy version with a version identifier of
-\code{v1} and sets v1 as the policy's default version. For more information
+\code{v1} and sets v1 as the policy\'s default version. For more information
 about policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies}
 in the \emph{IAM User Guide}.
 

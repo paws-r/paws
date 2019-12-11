@@ -12,7 +12,7 @@ you created the health check, \code{CreateHealthCheck} returned the ID in the
 response, in the \code{HealthCheckId} element.
 
 If you want to check the status of a calculated health check, you must
-use the Amazon Route 53 console or the CloudWatch console. You can't
+use the Amazon Route 53 console or the CloudWatch console. You can\'t
 use \code{GetHealthCheckStatus} to get the status of a calculated health
 check.}
 }

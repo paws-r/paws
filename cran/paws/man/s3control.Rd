@@ -33,12 +33,20 @@ AWS S3 Control provides access to Amazon S3 control plane operations.
 \section{Operations}{
 
 \tabular{ll}{
+\link[=s3control_create_access_point]{create_access_point} \tab Creates an access point and associates it with the specified bucket \cr
 \link[=s3control_create_job]{create_job} \tab Creates an Amazon S3 batch operations job \cr
-\link[=s3control_delete_public_access_block]{delete_public_access_block} \tab Deletes the block public access configuration for the specified account \cr
+\link[=s3control_delete_access_point]{delete_access_point} \tab Deletes the specified access point \cr
+\link[=s3control_delete_access_point_policy]{delete_access_point_policy} \tab Deletes the access point policy for the specified access point \cr
+\link[=s3control_delete_public_access_block]{delete_public_access_block} \tab Removes the PublicAccessBlock configuration for an Amazon Web Services account \cr
 \link[=s3control_describe_job]{describe_job} \tab Retrieves the configuration parameters and status for a batch operations job \cr
-\link[=s3control_get_public_access_block]{get_public_access_block} \tab Get public access block \cr
+\link[=s3control_get_access_point]{get_access_point} \tab Returns configuration information about the specified access point \cr
+\link[=s3control_get_access_point_policy]{get_access_point_policy} \tab Returns the access point policy associated with the specified access point \cr
+\link[=s3control_get_access_point_policy_status]{get_access_point_policy_status} \tab Indicates whether the specified access point currently has a policy that allows public access \cr
+\link[=s3control_get_public_access_block]{get_public_access_block} \tab Retrieves the PublicAccessBlock configuration for an Amazon Web Services account \cr
+\link[=s3control_list_access_points]{list_access_points} \tab Returns a list of the access points currently associated with the specified bucket \cr
 \link[=s3control_list_jobs]{list_jobs} \tab Lists current jobs and jobs that have ended within the last 30 days for the AWS account making the request\cr
-\link[=s3control_put_public_access_block]{put_public_access_block} \tab Put public access block \cr
+\link[=s3control_put_access_point_policy]{put_access_point_policy} \tab Associates an access policy with the specified access point \cr
+\link[=s3control_put_public_access_block]{put_public_access_block} \tab Creates or modifies the PublicAccessBlock configuration for an Amazon Web Services account \cr
 \link[=s3control_update_job_priority]{update_job_priority} \tab Updates an existing job's priority \cr
 \link[=s3control_update_job_status]{update_job_status} \tab Updates the status for the specified job
 }
@@ -46,7 +54,7 @@ AWS S3 Control provides access to Amazon S3 control plane operations.
 
 \examples{
 \donttest{svc <- s3control()
-svc$create_job(
+svc$create_access_point(
   Foo = 123
 )}
 

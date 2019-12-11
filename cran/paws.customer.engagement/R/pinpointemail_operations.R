@@ -251,6 +251,10 @@ pinpointemail_create_dedicated_ip_pool <- function(PoolName, Tags = NULL) {
 #'     ),
 #'     Raw = list(
 #'       Data = raw
+#'     ),
+#'     Template = list(
+#'       TemplateArn = "string",
+#'       TemplateData = "string"
 #'     )
 #'   ),
 #'   Tags = list(
@@ -1369,8 +1373,11 @@ pinpointemail_put_account_sending_attributes <- function(SendingEnabled = NULL) 
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to associate with a
 #' dedicated IP pool.
-#' @param TlsPolicy Whether Amazon Pinpoint should require that incoming email is delivered
-#' over a connection encrypted with Transport Layer Security (TLS).
+#' @param TlsPolicy Specifies whether messages that use the configuration set are required
+#' to use Transport Layer Security (TLS). If the value is `Require`,
+#' messages are only delivered if a TLS connection can be established. If
+#' the value is `Optional`, messages can be delivered in plain text if a
+#' TLS connection can\'t be established.
 #' @param SendingPoolName The name of the dedicated IP pool that you want to associate with the
 #' configuration set.
 #'
@@ -1929,6 +1936,10 @@ pinpointemail_put_email_identity_mail_from_attributes <- function(EmailIdentity,
 #'     ),
 #'     Raw = list(
 #'       Data = raw
+#'     ),
+#'     Template = list(
+#'       TemplateArn = "string",
+#'       TemplateData = "string"
 #'     )
 #'   ),
 #'   EmailTags = list(

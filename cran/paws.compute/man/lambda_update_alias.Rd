@@ -14,8 +14,8 @@ lambda_update_alias(FunctionName, Name, FunctionVersion, Description,
 \itemize{
 \item \strong{Function name} - \code{MyFunction}.
 \item \strong{Function ARN} -
-\code{arn:aws:lambda:us-west-2:123456789012:function:MyFunction}.
-\item \strong{Partial ARN} - \code{123456789012:function:MyFunction}.
+\verb{arn:aws:lambda:us-west-2:123456789012:function:MyFunction}.
+\item \strong{Partial ARN} - \verb{123456789012:function:MyFunction}.
 }
 
 The length constraint applies only to the full ARN. If you specify only
@@ -30,7 +30,7 @@ the function name, it is limited to 64 characters in length.}
 \item{RoutingConfig}{The \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html}{routing configuration}
 of the alias.}
 
-\item{RevisionId}{Only update the alias if the revision ID matches the ID that's
+\item{RevisionId}{Only update the alias if the revision ID matches the ID that\'s
 specified. Use this option to avoid modifying an alias that has changed
 since you last read it.}
 }

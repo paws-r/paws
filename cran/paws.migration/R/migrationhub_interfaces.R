@@ -161,7 +161,7 @@ NULL
 
 .migrationhub$notify_application_state_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), UpdateDateTime = structure(logical(0), tags = list(type = "timestamp")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

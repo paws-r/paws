@@ -2,23 +2,88 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_object_tagging}
 \alias{s3_put_object_tagging}
-\title{Sets the supplied tag-set to an object that already exists in a bucket}
+\title{Sets the supplied tag-set to an object that already exists in a bucket A
+tag is a key-value pair}
 \usage{
 s3_put_object_tagging(Bucket, Key, VersionId, ContentMD5, Tagging)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The bucket name containing the object.
 
-\item{Key}{[required]}
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+\emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
+When using this operation using an access point through the AWS SDKs,
+you provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
-\item{VersionId}{}
+\item{Key}{[required] Name of the tag.}
 
-\item{ContentMD5}{}
+\item{VersionId}{The versionId of the object that the tag-set will be added to.}
 
-\item{Tagging}{[required]}
+\item{ContentMD5}{The MD5 hash for the request body.}
+
+\item{Tagging}{[required] Container for the \code{TagSet} and \code{Tag} elements}
 }
 \description{
 Sets the supplied tag-set to an object that already exists in a bucket
+}
+\details{
+A tag is a key-value pair. You can associate tags with an object by
+sending a PUT request against the tagging subresource that is associated
+with the object. You can retrieve tags by sending a GET request. For
+more information, see GetObjectTagging.
+
+For tagging-related restrictions related to characters and encodings,
+see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html}{Tag Restrictions}.
+Note that Amazon S3 limits the maximum number of tags to 10 tags per
+object.
+
+To use this operation, you must have permission to perform the
+\code{s3:PutObjectTagging} action. By default, the bucket owner has this
+permission and can grant this permission to others.
+
+To put tags of any other version, use the \code{versionId} query parameter.
+You also need permission for the \code{s3:PutObjectVersionTagging} action.
+
+For information about the Amazon S3 object tagging feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html}{Object Tagging}.
+
+\strong{Special Errors}
+\itemize{
+\item 
+}\preformatted{-   *Code: InvalidTagError*
+
+-   *Cause: The tag provided was not a valid tag. This error can
+    occur if the tag did not pass input validation. For more
+    information, see [Object
+    Tagging](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html).*
+}
+\itemize{
+\item 
+}\preformatted{-   *Code: MalformedXMLError*
+
+-   *Cause: The XML provided does not match the schema.*
+}
+\itemize{
+\item 
+\itemize{
+\item \emph{Code: OperationAbortedError}
+\item \emph{Cause: A conflicting conditional operation is currently in
+progress against this resource. Please try again.}
+}
+\item 
+\itemize{
+\item \emph{Code: InternalError}
+\item \emph{Cause: The service was unable to apply the provided tag to the
+object.}
+}
+}
+
+\strong{Related Resources}
+\itemize{
+\item GetObjectTagging
+}
 }
 \section{Request syntax}{
 \preformatted{svc$put_object_tagging(

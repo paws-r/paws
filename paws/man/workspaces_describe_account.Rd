@@ -2,14 +2,14 @@
 % Please edit documentation in R/workspaces_operations.R
 \name{workspaces_describe_account}
 \alias{workspaces_describe_account}
-\title{Retrieves a list that describes the configuration of bring your own
-license (BYOL) for the specified account}
+\title{Retrieves a list that describes the configuration of Bring Your Own
+License (BYOL) for the specified account}
 \usage{
 workspaces_describe_account()
 }
 \description{
-Retrieves a list that describes the configuration of bring your own
-license (BYOL) for the specified account.
+Retrieves a list that describes the configuration of Bring Your Own
+License (BYOL) for the specified account.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_account()

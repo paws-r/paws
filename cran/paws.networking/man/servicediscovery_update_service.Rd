@@ -28,7 +28,7 @@ Submits a request to perform the following operations:
 
 For public and private DNS namespaces, you must specify all \code{DnsRecords}
 configurations (and, optionally, \code{HealthCheckConfig}) that you want to
-appear in the updated service. Any current configurations that don't
+appear in the updated service. Any current configurations that don\'t
 appear in an \code{UpdateService} request are deleted.
 
 When you update the TTL setting for a service, AWS Cloud Map also

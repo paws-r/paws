@@ -3,23 +3,169 @@
 #' @include resourcegroupstaggingapi_service.R
 NULL
 
+#' Describes the status of the StartReportCreation operation
+#'
+#' Describes the status of the `StartReportCreation` operation.
+#' 
+#' You can call this operation only from the organization\'s master account
+#' and from the us-east-1 Region.
+#'
+#' @usage
+#' resourcegroupstaggingapi_describe_report_creation()
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_report_creation()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname resourcegroupstaggingapi_describe_report_creation
+resourcegroupstaggingapi_describe_report_creation <- function() {
+  op <- new_operation(
+    name = "DescribeReportCreation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .resourcegroupstaggingapi$describe_report_creation_input()
+  output <- .resourcegroupstaggingapi$describe_report_creation_output()
+  config <- get_config()
+  svc <- .resourcegroupstaggingapi$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourcegroupstaggingapi$operations$describe_report_creation <- resourcegroupstaggingapi_describe_report_creation
+
+#' Returns a table that shows counts of resources that are noncompliant
+#' with their tag policies
+#'
+#' Returns a table that shows counts of resources that are noncompliant
+#' with their tag policies.
+#' 
+#' For more information on tag policies, see [Tag
+#' Policies](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+#' in the *AWS Organizations User Guide.*
+#' 
+#' You can call this operation only from the organization\'s master account
+#' and from the us-east-1 Region.
+#'
+#' @usage
+#' resourcegroupstaggingapi_get_compliance_summary(TargetIdFilters,
+#'   RegionFilters, ResourceTypeFilters, TagKeyFilters, GroupBy, MaxResults,
+#'   PaginationToken)
+#'
+#' @param TargetIdFilters The target identifiers (usually, specific account IDs) to limit the
+#' output by. If you use this parameter, the count of returned noncompliant
+#' resources includes only resources with the specified target IDs.
+#' @param RegionFilters A list of Regions to limit the output by. If you use this parameter, the
+#' count of returned noncompliant resources includes only resources in the
+#' specified Regions.
+#' @param ResourceTypeFilters The constraints on the resources that you want returned. The format of
+#' each resource type is `service\\[:resourceType\\]`. For example,
+#' specifying a resource type of `ec2` returns all Amazon EC2 resources
+#' (which includes EC2 instances). Specifying a resource type of
+#' `ec2:instance` returns only EC2 instances.
+#' 
+#' The string for each service name and resource type is the same as that
+#' embedded in a resource\'s Amazon Resource Name (ARN). Consult the *AWS
+#' General Reference* for the following:
+#' 
+#' -   For a list of service name strings, see [AWS Service
+#'     Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces).
+#' 
+#' -   For resource type strings, see [Example
+#'     ARNs](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arns-syntax).
+#' 
+#' -   For more information about ARNs, see [Amazon Resource Names (ARNs)
+#'     and AWS Service
+#'     Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' 
+#' You can specify multiple resource types by using an array. The array can
+#' include up to 100 items. Note that the length constraint requirement
+#' applies to each resource type filter.
+#' @param TagKeyFilters A list of tag keys to limit the output by. If you use this parameter,
+#' the count of returned noncompliant resources includes only resources
+#' that have the specified tag keys.
+#' @param GroupBy A list of attributes to group the counts of noncompliant resources by.
+#' If supplied, the counts are sorted by those attributes.
+#' @param MaxResults A limit that restricts the number of results that are returned per page.
+#' @param PaginationToken A string that indicates that additional data is available. Leave this
+#' value empty for your initial request. If the response includes a
+#' `PaginationToken`, use that string for this value to request an
+#' additional page of data.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_compliance_summary(
+#'   TargetIdFilters = list(
+#'     "string"
+#'   ),
+#'   RegionFilters = list(
+#'     "string"
+#'   ),
+#'   ResourceTypeFilters = list(
+#'     "string"
+#'   ),
+#'   TagKeyFilters = list(
+#'     "string"
+#'   ),
+#'   GroupBy = list(
+#'     "TARGET_ID"|"REGION"|"RESOURCE_TYPE"
+#'   ),
+#'   MaxResults = 123,
+#'   PaginationToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname resourcegroupstaggingapi_get_compliance_summary
+resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NULL, RegionFilters = NULL, ResourceTypeFilters = NULL, TagKeyFilters = NULL, GroupBy = NULL, MaxResults = NULL, PaginationToken = NULL) {
+  op <- new_operation(
+    name = "GetComplianceSummary",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .resourcegroupstaggingapi$get_compliance_summary_input(TargetIdFilters = TargetIdFilters, RegionFilters = RegionFilters, ResourceTypeFilters = ResourceTypeFilters, TagKeyFilters = TagKeyFilters, GroupBy = GroupBy, MaxResults = MaxResults, PaginationToken = PaginationToken)
+  output <- .resourcegroupstaggingapi$get_compliance_summary_output()
+  config <- get_config()
+  svc <- .resourcegroupstaggingapi$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourcegroupstaggingapi$operations$get_compliance_summary <- resourcegroupstaggingapi_get_compliance_summary
+
 #' Returns all the tagged or previously tagged resources that are located
-#' in the specified region for the AWS account
+#' in the specified Region for the AWS account
 #'
 #' Returns all the tagged or previously tagged resources that are located
-#' in the specified region for the AWS account. You can optionally specify
-#' *filters* (tags and resource types) in your request, depending on what
-#' information you want returned. The response includes all tags that are
-#' associated with the requested resources.
+#' in the specified Region for the AWS account.
+#' 
+#' Depending on what information you want returned, you can also specify
+#' the following:
+#' 
+#' -   *Filters* that specify what tags and resource types you want
+#'     returned. The response includes all tags that are associated with
+#'     the requested resources.
+#' 
+#' -   Information about compliance with the account\'s effective tag
+#'     policy. For more information on tag policies, see [Tag
+#'     Policies](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+#'     in the *AWS Organizations User Guide.*
 #' 
 #' You can check the `PaginationToken` response parameter to determine if a
-#' query completed. Queries can occasionally return fewer results on a page
+#' query is complete. Queries occasionally return fewer results on a page
 #' than allowed. The `PaginationToken` response parameter value is `null`
 #' *only* when there are no more results to display.
 #'
 #' @usage
 #' resourcegroupstaggingapi_get_resources(PaginationToken, TagFilters,
-#'   ResourcesPerPage, TagsPerPage, ResourceTypeFilters)
+#'   ResourcesPerPage, TagsPerPage, ResourceTypeFilters,
+#'   IncludeComplianceDetails, ExcludeCompliantResources)
 #'
 #' @param PaginationToken A string that indicates that additional data is available. Leave this
 #' value empty for your initial request. If the response includes a
@@ -68,7 +214,9 @@ NULL
 #' @param ResourcesPerPage A limit that restricts the number of resources returned by GetResources
 #' in paginated output. You can set ResourcesPerPage to a minimum of 1 item
 #' and the maximum of 100 items.
-#' @param TagsPerPage A limit that restricts the number of tags (key and value pairs) returned
+#' @param TagsPerPage AWS recommends using `ResourcesPerPage` instead of this parameter.
+#' 
+#' A limit that restricts the number of tags (key and value pairs) returned
 #' by GetResources in paginated output. A resource with no tags is counted
 #' as having one tag (one key and value pair).
 #' 
@@ -78,10 +226,10 @@ NULL
 #' tags. Use that token in another request to get the remaining data. For
 #' example, if you specify a `TagsPerPage` of `100` and the account has 22
 #' resources with 10 tags each (meaning that each resource has 10 key and
-#' value pairs), the output will consist of 3 pages, with the first page
-#' displaying the first 10 resources, each with its 10 tags, the second
-#' page displaying the next 10 resources each with its 10 tags, and the
-#' third page displaying the remaining 2 resources, each with its 10 tags.
+#' value pairs), the output will consist of three pages. The first page
+#' displays the first 10 resources, each with its 10 tags. The second page
+#' displays the next 10 resources, each with its 10 tags. The third page
+#' displays the remaining 2 resources, each with its 10 tags.
 #' 
 #' You can set `TagsPerPage` to a minimum of 100 items and the maximum of
 #' 500 items.
@@ -108,6 +256,15 @@ NULL
 #' You can specify multiple resource types by using an array. The array can
 #' include up to 100 items. Note that the length constraint requirement
 #' applies to each resource type filter.
+#' @param IncludeComplianceDetails Specifies whether to include details regarding the compliance with the
+#' effective tag policy. Set this to `true` to determine whether resources
+#' are compliant with the tag policy and to get details.
+#' @param ExcludeCompliantResources Specifies whether to exclude resources that are compliant with the tag
+#' policy. Set this to `true` if you are interested in retrieving
+#' information on noncompliant resources only.
+#' 
+#' You can use this parameter only if the `IncludeComplianceDetails`
+#' parameter is also set to `true`.
 #'
 #' @section Request syntax:
 #' ```
@@ -125,21 +282,23 @@ NULL
 #'   TagsPerPage = 123,
 #'   ResourceTypeFilters = list(
 #'     "string"
-#'   )
+#'   ),
+#'   IncludeComplianceDetails = TRUE|FALSE,
+#'   ExcludeCompliantResources = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname resourcegroupstaggingapi_get_resources
-resourcegroupstaggingapi_get_resources <- function(PaginationToken = NULL, TagFilters = NULL, ResourcesPerPage = NULL, TagsPerPage = NULL, ResourceTypeFilters = NULL) {
+resourcegroupstaggingapi_get_resources <- function(PaginationToken = NULL, TagFilters = NULL, ResourcesPerPage = NULL, TagsPerPage = NULL, ResourceTypeFilters = NULL, IncludeComplianceDetails = NULL, ExcludeCompliantResources = NULL) {
   op <- new_operation(
     name = "GetResources",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .resourcegroupstaggingapi$get_resources_input(PaginationToken = PaginationToken, TagFilters = TagFilters, ResourcesPerPage = ResourcesPerPage, TagsPerPage = TagsPerPage, ResourceTypeFilters = ResourceTypeFilters)
+  input <- .resourcegroupstaggingapi$get_resources_input(PaginationToken = PaginationToken, TagFilters = TagFilters, ResourcesPerPage = ResourcesPerPage, TagsPerPage = TagsPerPage, ResourceTypeFilters = ResourceTypeFilters, IncludeComplianceDetails = IncludeComplianceDetails, ExcludeCompliantResources = ExcludeCompliantResources)
   output <- .resourcegroupstaggingapi$get_resources_output()
   config <- get_config()
   svc <- .resourcegroupstaggingapi$service(config)
@@ -149,17 +308,17 @@ resourcegroupstaggingapi_get_resources <- function(PaginationToken = NULL, TagFi
 }
 .resourcegroupstaggingapi$operations$get_resources <- resourcegroupstaggingapi_get_resources
 
-#' Returns all tag keys in the specified region for the AWS account
+#' Returns all tag keys in the specified Region for the AWS account
 #'
-#' Returns all tag keys in the specified region for the AWS account.
+#' Returns all tag keys in the specified Region for the AWS account.
 #'
 #' @usage
 #' resourcegroupstaggingapi_get_tag_keys(PaginationToken)
 #'
 #' @param PaginationToken A string that indicates that additional data is available. Leave this
 #' value empty for your initial request. If the response includes a
-#' PaginationToken, use that string for this value to request an additional
-#' page of data.
+#' `PaginationToken`, use that string for this value to request an
+#' additional page of data.
 #'
 #' @section Request syntax:
 #' ```
@@ -188,10 +347,10 @@ resourcegroupstaggingapi_get_tag_keys <- function(PaginationToken = NULL) {
 }
 .resourcegroupstaggingapi$operations$get_tag_keys <- resourcegroupstaggingapi_get_tag_keys
 
-#' Returns all tag values for the specified key in the specified region for
+#' Returns all tag values for the specified key in the specified Region for
 #' the AWS account
 #'
-#' Returns all tag values for the specified key in the specified region for
+#' Returns all tag values for the specified key in the specified Region for
 #' the AWS account.
 #'
 #' @usage
@@ -199,10 +358,10 @@ resourcegroupstaggingapi_get_tag_keys <- function(PaginationToken = NULL) {
 #'
 #' @param PaginationToken A string that indicates that additional data is available. Leave this
 #' value empty for your initial request. If the response includes a
-#' PaginationToken, use that string for this value to request an additional
-#' page of data.
+#' `PaginationToken`, use that string for this value to request an
+#' additional page of data.
 #' @param Key &#91;required&#93; The key for which you want to list all existing values in the specified
-#' region for the AWS account.
+#' Region for the AWS account.
 #'
 #' @section Request syntax:
 #' ```
@@ -232,27 +391,79 @@ resourcegroupstaggingapi_get_tag_values <- function(PaginationToken = NULL, Key)
 }
 .resourcegroupstaggingapi$operations$get_tag_values <- resourcegroupstaggingapi_get_tag_values
 
+#' Generates a report that lists all tagged resources in accounts across
+#' your organization and tells whether each resource is compliant with the
+#' effective tag policy
+#'
+#' Generates a report that lists all tagged resources in accounts across
+#' your organization and tells whether each resource is compliant with the
+#' effective tag policy. Compliance data is refreshed daily.
+#' 
+#' The generated report is saved to the following location:
+#' 
+#' `s3://example-bucket/AwsTagPolicies/o-exampleorgid/YYYY-MM-ddTHH:mm:ssZ/report.csv`
+#' 
+#' You can call this operation only from the organization\'s master account
+#' and from the us-east-1 Region.
+#'
+#' @usage
+#' resourcegroupstaggingapi_start_report_creation(S3Bucket)
+#'
+#' @param S3Bucket &#91;required&#93; The name of the Amazon S3 bucket where the report will be stored; for
+#' example:
+#' 
+#' `awsexamplebucket`
+#' 
+#' For more information on S3 bucket requirements, including an example
+#' bucket policy, see the example S3 bucket policy on this page.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_report_creation(
+#'   S3Bucket = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname resourcegroupstaggingapi_start_report_creation
+resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
+  op <- new_operation(
+    name = "StartReportCreation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .resourcegroupstaggingapi$start_report_creation_input(S3Bucket = S3Bucket)
+  output <- .resourcegroupstaggingapi$start_report_creation_output()
+  config <- get_config()
+  svc <- .resourcegroupstaggingapi$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourcegroupstaggingapi$operations$start_report_creation <- resourcegroupstaggingapi_start_report_creation
+
 #' Applies one or more tags to the specified resources
 #'
 #' Applies one or more tags to the specified resources. Note the following:
 #' 
-#' -   Not all resources can have tags. For a list of resources that
-#'     support tagging, see [Supported
-#'     Resources](http://docs.aws.amazon.com/ARG/latest/userguide/supported-resources.html)
-#'     in the *AWS Resource Groups User Guide*.
+#' -   Not all resources can have tags. For a list of services that support
+#'     tagging, see [this
+#'     list](http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html).
 #' 
 #' -   Each resource can have up to 50 tags. For other limits, see [Tag
-#'     Restrictions](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-restrictions)
-#'     in the *Amazon EC2 User Guide for Linux Instances*.
+#'     Naming and Usage
+#'     Conventions](http://docs.aws.amazon.com/general/latest/gr/aws_tagging.html#tag-conventions)
+#'     in the *AWS General Reference.*
 #' 
-#' -   You can only tag resources that are located in the specified region
+#' -   You can only tag resources that are located in the specified Region
 #'     for the AWS account.
 #' 
 #' -   To add tags to a resource, you need the necessary permissions for
 #'     the service that the resource belongs to as well as permissions for
-#'     adding tags. For more information, see [Obtaining Permissions for
-#'     Tagging](http://docs.aws.amazon.com/ARG/latest/userguide/obtaining-permissions-for-tagging.html)
-#'     in the *AWS Resource Groups User Guide*.
+#'     adding tags. For more information, see [this
+#'     list](http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html).
 #'
 #' @usage
 #' resourcegroupstaggingapi_tag_resources(ResourceARNList, Tags)
@@ -307,12 +518,10 @@ resourcegroupstaggingapi_tag_resources <- function(ResourceARNList, Tags) {
 #' 
 #' -   To remove tags from a resource, you need the necessary permissions
 #'     for the service that the resource belongs to as well as permissions
-#'     for removing tags. For more information, see [Obtaining Permissions
-#'     for
-#'     Tagging](http://docs.aws.amazon.com/ARG/latest/userguide/obtaining-permissions-for-tagging.html)
-#'     in the *AWS Resource Groups User Guide*.
+#'     for removing tags. For more information, see [this
+#'     list](http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html).
 #' 
-#' -   You can only tag resources that are located in the specified region
+#' -   You can only tag resources that are located in the specified Region
 #'     for the AWS account.
 #'
 #' @usage

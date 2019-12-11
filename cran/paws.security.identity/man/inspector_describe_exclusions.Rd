@@ -9,11 +9,11 @@ inspector_describe_exclusions(exclusionArns, locale)
 \arguments{
 \item{exclusionArns}{[required] The list of ARNs that specify the exclusions that you want to describe.}
 
-\item{locale}{The locale into which you want to translate the exclusion's title,
+\item{locale}{The locale into which you want to translate the exclusion\'s title,
 description, and recommendation.}
 }
 \description{
-Describes the exclusions that are specified by the exclusions' ARNs.
+Describes the exclusions that are specified by the exclusions\' ARNs.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_exclusions(

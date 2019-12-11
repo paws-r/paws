@@ -2,9 +2,10 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_associate_route_table}
 \alias{ec2_associate_route_table}
-\title{Associates a subnet with a route table}
+\title{Associates a subnet in your VPC or an internet gateway or virtual
+private gateway attached to your VPC with a route table in your VPC}
 \usage{
-ec2_associate_route_table(DryRun, RouteTableId, SubnetId)
+ec2_associate_route_table(DryRun, RouteTableId, SubnetId, GatewayId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -14,15 +15,17 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{RouteTableId}{[required] The ID of the route table.}
 
-\item{SubnetId}{[required] The ID of the subnet.}
+\item{SubnetId}{The ID of the subnet.}
+
+\item{GatewayId}{The ID of the internet gateway or virtual private gateway.}
 }
 \description{
-Associates a subnet with a route table. The subnet and route table must
-be in the same VPC. This association causes traffic originating from the
-subnet to be routed according to the routes in the route table. The
-action returns an association ID, which you need in order to
-disassociate the route table from the subnet later. A route table can be
-associated with multiple subnets.
+Associates a subnet in your VPC or an internet gateway or virtual
+private gateway attached to your VPC with a route table in your VPC.
+This association causes traffic from the subnet or gateway to be routed
+according to the routes in the route table. The action returns an
+association ID, which you need in order to disassociate the route table
+later. A route table can be associated with multiple subnets.
 }
 \details{
 For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html}{Route Tables}
@@ -32,7 +35,8 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 \preformatted{svc$associate_route_table(
   DryRun = TRUE|FALSE,
   RouteTableId = "string",
-  SubnetId = "string"
+  SubnetId = "string",
+  GatewayId = "string"
 )
 }
 }

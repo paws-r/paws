@@ -29,7 +29,7 @@ DescribeCases results. The default is \emph{false}.}
 \item{maxResults}{The maximum number of results to return before paginating.}
 
 \item{language}{The ISO 639-1 code for the language in which AWS provides support. AWS
-Support currently supports English ("en") and Japanese ("ja").
+Support currently supports English (\"en\") and Japanese (\"ja\").
 Language parameters must be passed explicitly for operations that take
 them.}
 

@@ -2,16 +2,18 @@
 % Please edit documentation in R/licensemanager_operations.R
 \name{licensemanager_delete_license_configuration}
 \alias{licensemanager_delete_license_configuration}
-\title{Deletes an existing license configuration}
+\title{Deletes the specified license configuration}
 \usage{
 licensemanager_delete_license_configuration(LicenseConfigurationArn)
 }
 \arguments{
-\item{LicenseConfigurationArn}{[required] Unique ID of the configuration object to delete.}
+\item{LicenseConfigurationArn}{[required] ID of the license configuration.}
 }
 \description{
-Deletes an existing license configuration. This action fails if the
-configuration is in use.
+Deletes the specified license configuration.
+}
+\details{
+You cannot delete a license configuration that is in use.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_license_configuration(

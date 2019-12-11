@@ -10,7 +10,7 @@ route53resolver_associate_resolver_rule(ResolverRuleId, Name, VPCId)
 \item{ResolverRuleId}{[required] The ID of the resolver rule that you want to associate with the VPC. To
 list the existing resolver rules, use ListResolverRules.}
 
-\item{Name}{A name for the association that you're creating between a resolver rule
+\item{Name}{A name for the association that you\'re creating between a resolver rule
 and a VPC.}
 
 \item{VPCId}{[required] The ID of the VPC that you want to associate the resolver rule with.}

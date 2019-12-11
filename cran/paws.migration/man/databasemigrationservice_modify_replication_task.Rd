@@ -21,13 +21,13 @@ Constraints:
 \item Cannot end with a hyphen or contain two consecutive hyphens.
 }}
 
-\item{MigrationType}{The migration type. Valid values: \code{full-load} \| \code{cdc} \|
+\item{MigrationType}{The migration type. Valid values: \code{full-load} \\| \code{cdc} \\|
 \code{full-load-and-cdc}}
 
 \item{TableMappings}{When using the AWS CLI or boto3, provide the path of the JSON file that
-contains the table mappings. Precede the path with \code{file://}. When
+contains the table mappings. Precede the path with \verb{file://}. When
 working with the DMS API, provide the JSON as the parameter value, for
-example: \code{--table-mappings file://mappingfile.json}}
+example: \verb{--table-mappings file://mappingfile.json}}
 
 \item{ReplicationTaskSettings}{JSON file that contains settings for the task, such as target metadata
 settings.}
@@ -36,7 +36,7 @@ settings.}
 either CdcStartTime or CdcStartPosition to specify when you want a CDC
 operation to start. Specifying both values results in an error.
 
-Timestamp Example: \--cdc-start-time "2018-03-08T12:12:12"}
+Timestamp Example: \\--cdc-start-time "2018-03-08T12:12:12"}
 
 \item{CdcStartPosition}{Indicates when you want a change data capture (CDC) operation to start.
 Use either CdcStartPosition or CdcStartTime to specify when you want a
@@ -44,27 +44,33 @@ CDC operation to start. Specifying both values results in an error.
 
 The value can be in date, checkpoint, or LSN/SCN format.
 
-Date Example: \--cdc-start-position "2018-03-08T12:12:12"
+Date Example: \\--cdc-start-position "2018-03-08T12:12:12"
 
-Checkpoint Example: \--cdc-start-position
-"checkpoint:V1\#27\#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876\#0\#0\#*\#0\#93"
+Checkpoint Example: \\--cdc-start-position
+\"checkpoint:V1\\#27\\#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876\\#0\\#0\\#\*\\#0\\#93\"
 
-LSN Example: \--cdc-start-position "mysql-bin-changelog.000024:373"}
+LSN Example: \\--cdc-start-position "mysql-bin-changelog.000024:373"
+
+When you use this task setting with a source PostgreSQL database, a
+logical replication slot should already be created and associated with
+the source endpoint. You can verify this by setting the \code{slotName} extra
+connection attribute to the name of this logical replication slot. For
+more information, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.PostgreSQL.html#CHAP_Source.PostgreSQL.ConnectionAttrib}{Extra Connection Attributes When Using PostgreSQL as a Source for AWS DMS}.}
 
 \item{CdcStopPosition}{Indicates when you want a change data capture (CDC) operation to stop.
 The value can be either server time or commit time.
 
-Server time example: \--cdc-stop-position
-"server\_time:3018-02-09T12:12:12"
+Server time example: \\--cdc-stop-position
+"server\\_time:3018-02-09T12:12:12"
 
-Commit time example: \--cdc-stop-position "commit\_time:
+Commit time example: \\--cdc-stop-position "commit\\_time:
 3018-02-09T12:12:12 "}
 }
 \description{
 Modifies the specified replication task.
 }
 \details{
-You can't modify the task endpoints. The task must be stopped before
+You can\'t modify the task endpoints. The task must be stopped before
 you can modify it.
 
 For more information about AWS DMS tasks, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html}{Working with Migration Tasks}

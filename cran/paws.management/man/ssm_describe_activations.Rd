@@ -2,10 +2,10 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_describe_activations}
 \alias{ssm_describe_activations}
-\title{Details about the activation, including: the date and time the
-activation was created, the expiration date, the IAM role assigned to
-the instances in the activation, and the number of instances activated
-by this registration}
+\title{Describes details about the activation, such as the date and time the
+activation was created, its expiration date, the IAM role assigned to
+the instances in the activation, and the number of instances registered
+by using this activation}
 \usage{
 ssm_describe_activations(Filters, MaxResults, NextToken)
 }
@@ -20,10 +20,10 @@ next set of results.}
 results.}
 }
 \description{
-Details about the activation, including: the date and time the
-activation was created, the expiration date, the IAM role assigned to
-the instances in the activation, and the number of instances activated
-by this registration.
+Describes details about the activation, such as the date and time the
+activation was created, its expiration date, the IAM role assigned to
+the instances in the activation, and the number of instances registered
+by using this activation.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_activations(

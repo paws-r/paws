@@ -4,13 +4,18 @@
 \alias{ssm_get_ops_summary}
 \title{View a summary of OpsItems based on specified filters and aggregators}
 \usage{
-ssm_get_ops_summary(Filters, Aggregators, NextToken, MaxResults)
+ssm_get_ops_summary(SyncName, Filters, Aggregators, ResultAttributes,
+  NextToken, MaxResults)
 }
 \arguments{
+\item{SyncName}{Specify the name of a resource data sync to get.}
+
 \item{Filters}{Optional filters used to scope down the returned OpsItems.}
 
-\item{Aggregators}{[required] Optional aggregators that return counts of OpsItems based on one or more
+\item{Aggregators}{Optional aggregators that return counts of OpsItems based on one or more
 expressions.}
+
+\item{ResultAttributes}{The OpsItem data type to return.}
 
 \item{NextToken}{A token to start the list. Use this token to get the next set of
 results.}
@@ -24,6 +29,7 @@ View a summary of OpsItems based on specified filters and aggregators.
 }
 \section{Request syntax}{
 \preformatted{svc$get_ops_summary(
+  SyncName = "string",
   Filters = list(
     list(
       Key = "string",
@@ -51,6 +57,11 @@ View a summary of OpsItems based on specified filters and aggregators.
         )
       ),
       Aggregators = list()
+    )
+  ),
+  ResultAttributes = list(
+    list(
+      TypeName = "string"
     )
   ),
   NextToken = "string",

@@ -9,24 +9,23 @@ autoscaling_update_auto_scaling_group(AutoScalingGroupName,
   MaxSize, DesiredCapacity, DefaultCooldown, AvailabilityZones,
   HealthCheckType, HealthCheckGracePeriod, PlacementGroup,
   VPCZoneIdentifier, TerminationPolicies,
-  NewInstancesProtectedFromScaleIn, ServiceLinkedRoleARN)
+  NewInstancesProtectedFromScaleIn, ServiceLinkedRoleARN,
+  MaxInstanceLifetime)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
 \item{LaunchConfigurationName}{The name of the launch configuration. If you specify
-\code{LaunchConfigurationName} in your update request, you can't specify
-\code{LaunchTemplate} or \code{MixedInstancesPolicy}.
-
-To update an Auto Scaling group with a launch configuration with
-\code{InstanceMonitoring} set to \code{false}, you must first disable the
-collection of group metrics. Otherwise, you get an error. If you have
-previously enabled the collection of group metrics, you can disable it
-using DisableMetricsCollection.}
+\code{LaunchConfigurationName} in your update request, you can\'t specify
+\code{LaunchTemplate} or \code{MixedInstancesPolicy}.}
 
 \item{LaunchTemplate}{The launch template and version to use to specify the updates. If you
-specify \code{LaunchTemplate} in your update request, you can't specify
-\code{LaunchConfigurationName} or \code{MixedInstancesPolicy}.}
+specify \code{LaunchTemplate} in your update request, you can\'t specify
+\code{LaunchConfigurationName} or \code{MixedInstancesPolicy}.
+
+For more information, see
+\href{https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_LaunchTemplateSpecification.html}{LaunchTemplateSpecification}
+in the \emph{Amazon EC2 Auto Scaling API Reference}.}
 
 \item{MixedInstancesPolicy}{An embedded object that specifies a mixed instances policy.
 
@@ -34,7 +33,9 @@ In your call to \code{UpdateAutoScalingGroup}, you can make changes to the
 policy that is specified. All optional parameters are left unchanged if
 not specified.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-purchase-options.html}{Auto Scaling Groups with Multiple Instance Types and Purchase Options}
+For more information, see
+\href{https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_MixedInstancesPolicy.html}{MixedInstancesPolicy}
+in the \emph{Amazon EC2 Auto Scaling API Reference} and \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-purchase-options.html}{Auto Scaling Groups with Multiple Instance Types and Purchase Options}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{MinSize}{The minimum size of the Auto Scaling group.}
@@ -66,7 +67,7 @@ checks or the load balancer health checks.}
 before checking the health status of an EC2 instance that has come into
 service. The default value is \code{0}.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html}{Health Checks for Auto Scaling Instances}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html#health-check-grace-period}{Health Check Grace Period}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 Conditional: This parameter is required if you are adding an \code{ELB}
@@ -102,25 +103,29 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 Scaling group uses to call other AWS services on your behalf. For more
 information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-service-linked-role.html}{Service-Linked Roles}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
+
+\item{MaxInstanceLifetime}{The maximum amount of time, in seconds, that an instance can be in
+service.
+
+Valid Range: Minimum value of 604800.}
 }
 \description{
 Updates the configuration for the specified Auto Scaling group.
 }
 \details{
 To update an Auto Scaling group, specify the name of the group and the
-parameter that you want to change. Any parameters that you don't
+parameter that you want to change. Any parameters that you don\'t
 specify are not changed by this update request. The new settings take
-effect on any scaling activities after this call returns. Scaling
-activities that are currently in progress aren't affected.
+effect on any scaling activities after this call returns.
 
 If you associate a new launch configuration or template with an Auto
-Scaling group, all new instances will get the updated configuration, but
-existing instances continue to run with the configuration that they were
+Scaling group, all new instances will get the updated configuration.
+Existing instances continue to run with the configuration that they were
 originally launched with. When you update a group to specify a mixed
 instances policy instead of a launch configuration or template, existing
 instances may be replaced to match the new purchasing options that you
-specified in the policy. For example, if the group currently has 100\%
-On-Demand capacity and the policy specifies 50\% Spot capacity, this
+specified in the policy. For example, if the group currently has 100\\%
+On-Demand capacity and the policy specifies 50\\% Spot capacity, this
 means that half of your instances will be gradually terminated and
 relaunched as Spot Instances. When replacing instances, Amazon EC2 Auto
 Scaling launches new instances before terminating the old ones, so that
@@ -136,11 +141,11 @@ Scaling group uses its termination policy to determine which
 instances to terminate.
 \item If you specify a new value for \code{MinSize} without specifying a value
 for \code{DesiredCapacity}, and the new \code{MinSize} is larger than the
-current size of the group, this sets the group's \code{DesiredCapacity}
+current size of the group, this sets the group\'s \code{DesiredCapacity}
 to the new \code{MinSize} value.
 \item If you specify a new value for \code{MaxSize} without specifying a value
 for \code{DesiredCapacity}, and the new \code{MaxSize} is smaller than the
-current size of the group, this sets the group's \code{DesiredCapacity}
+current size of the group, this sets the group\'s \code{DesiredCapacity}
 to the new \code{MaxSize} value.
 }
 
@@ -167,7 +172,8 @@ using PutScalingPolicy.
       ),
       Overrides = list(
         list(
-          InstanceType = "string"
+          InstanceType = "string",
+          WeightedCapacity = "string"
         )
       )
     ),
@@ -195,7 +201,8 @@ using PutScalingPolicy.
     "string"
   ),
   NewInstancesProtectedFromScaleIn = TRUE|FALSE,
-  ServiceLinkedRoleARN = "string"
+  ServiceLinkedRoleARN = "string",
+  MaxInstanceLifetime = 123
 )
 }
 }

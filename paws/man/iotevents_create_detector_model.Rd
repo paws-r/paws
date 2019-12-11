@@ -5,7 +5,8 @@
 \title{Creates a detector model}
 \usage{
 iotevents_create_detector_model(detectorModelName,
-  detectorModelDefinition, detectorModelDescription, key, roleArn, tags)
+  detectorModelDefinition, detectorModelDescription, key, roleArn, tags,
+  evaluationMethod)
 }
 \arguments{
 \item{detectorModelName}{[required] The name of the detector model.}
@@ -14,17 +15,22 @@ iotevents_create_detector_model(detectorModelName,
 
 \item{detectorModelDescription}{A brief description of the detector model.}
 
-\item{key}{The input attribute key used to identify a device or system in order to
-create a detector (an instance of the detector model) and then to route
-each input received to the appropriate detector (instance). This
-parameter uses a JSON-path expression to specify the attribute-value
-pair in the message payload of each input that is used to identify the
-device associated with the input.}
+\item{key}{The input attribute key used to identify a device or system to create a
+detector (an instance of the detector model) and then to route each
+input received to the appropriate detector (instance). This parameter
+uses a JSON-path expression to specify the attribute-value pair in the
+message payload of each input that is used to identify the device
+associated with the input.}
 
 \item{roleArn}{[required] The ARN of the role that grants permission to AWS IoT Events to perform
 its operations.}
 
 \item{tags}{Metadata that can be used to manage the detector model.}
+
+\item{evaluationMethod}{When set to \code{SERIAL}, variables are updated and event conditions
+evaluated in the order that the events are defined. When set to \code{BATCH},
+variables are updated and events performed only after all event
+conditions are evaluated.}
 }
 \description{
 Creates a detector model.
@@ -231,7 +237,8 @@ Creates a detector model.
       key = "string",
       value = "string"
     )
-  )
+  ),
+  evaluationMethod = "BATCH"|"SERIAL"
 )
 }
 }

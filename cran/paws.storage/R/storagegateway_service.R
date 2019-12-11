@@ -39,8 +39,8 @@ NULL
 #' 
 #' -   [AWS Storage Gateway Regions and
 #'     Endpoints:](http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region)
-#'     Provides a list of each AWS region and endpoints available for use
-#'     with AWS Storage Gateway.
+#'     Provides a list of each AWS Region and the endpoints available for
+#'     use with AWS Storage Gateway.
 #' 
 #' AWS Storage Gateway resource IDs are in uppercase. When you use these
 #' resource IDs with the Amazon EC2 API, EC2 expects resource IDs in
@@ -132,6 +132,7 @@ NULL
 #'  \link[=storagegateway_delete_tape]{delete_tape} \tab Deletes the specified virtual tape \cr
 #'  \link[=storagegateway_delete_tape_archive]{delete_tape_archive} \tab Deletes the specified virtual tape from the virtual tape shelf (VTS) \cr
 #'  \link[=storagegateway_delete_volume]{delete_volume} \tab Deletes the specified storage volume that you previously created using the CreateCachediSCSIVolume or CreateStorediSCSIVolume API \cr
+#'  \link[=storagegateway_describe_availability_monitor_test]{describe_availability_monitor_test} \tab Returns information about the most recent High Availability monitoring test that was performed on the host in a cluster \cr
 #'  \link[=storagegateway_describe_bandwidth_rate_limit]{describe_bandwidth_rate_limit} \tab Returns the bandwidth rate limits of a gateway \cr
 #'  \link[=storagegateway_describe_cache]{describe_cache} \tab Returns information about the cache of a gateway \cr
 #'  \link[=storagegateway_describe_cachedi_scsi_volumes]{describe_cachedi_scsi_volumes} \tab Returns a description of the gateway volumes specified in the request \cr
@@ -153,14 +154,14 @@ NULL
 #'  \link[=storagegateway_disable_gateway]{disable_gateway} \tab Disables a tape gateway when the gateway is no longer functioning \cr
 #'  \link[=storagegateway_join_domain]{join_domain} \tab Adds a file gateway to an Active Directory domain \cr
 #'  \link[=storagegateway_list_file_shares]{list_file_shares} \tab Gets a list of the file shares for a specific file gateway, or the list of file shares that belong to the calling user account \cr
-#'  \link[=storagegateway_list_gateways]{list_gateways} \tab Lists gateways owned by an AWS account in a region specified in the request \cr
+#'  \link[=storagegateway_list_gateways]{list_gateways} \tab Lists gateways owned by an AWS account in an AWS Region specified in the request \cr
 #'  \link[=storagegateway_list_local_disks]{list_local_disks} \tab Returns a list of the gateway's local disks \cr
 #'  \link[=storagegateway_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags that have been added to the specified resource \cr
 #'  \link[=storagegateway_list_tapes]{list_tapes} \tab Lists virtual tapes in your virtual tape library (VTL) and your virtual tape shelf (VTS) \cr
 #'  \link[=storagegateway_list_volume_initiators]{list_volume_initiators} \tab Lists iSCSI initiators that are connected to a volume \cr
 #'  \link[=storagegateway_list_volume_recovery_points]{list_volume_recovery_points} \tab Lists the recovery points for a specified gateway \cr
 #'  \link[=storagegateway_list_volumes]{list_volumes} \tab Lists the iSCSI stored volumes of a gateway \cr
-#'  \link[=storagegateway_notify_when_uploaded]{notify_when_uploaded} \tab Sends you notification through CloudWatch Events when all files written to your NFS file share have been uploaded to Amazon S3 \cr
+#'  \link[=storagegateway_notify_when_uploaded]{notify_when_uploaded} \tab Sends you notification through CloudWatch Events when all files written to your file share have been uploaded to Amazon S3 \cr
 #'  \link[=storagegateway_refresh_cache]{refresh_cache} \tab Refreshes the cache for the specified file share \cr
 #'  \link[=storagegateway_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes one or more tags from the specified resource \cr
 #'  \link[=storagegateway_reset_cache]{reset_cache} \tab Resets all cache disks that have encountered a error and makes the disks available for reconfiguration as cache storage \cr
@@ -169,6 +170,7 @@ NULL
 #'  \link[=storagegateway_set_local_console_password]{set_local_console_password} \tab Sets the password for your VM local console \cr
 #'  \link[=storagegateway_set_smb_guest_password]{set_smb_guest_password} \tab Sets the password for the guest user smbguest \cr
 #'  \link[=storagegateway_shutdown_gateway]{shutdown_gateway} \tab Shuts down a gateway \cr
+#'  \link[=storagegateway_start_availability_monitor_test]{start_availability_monitor_test} \tab Start a test that verifies that the specified gateway is configured for High Availability monitoring in your host environment \cr
 #'  \link[=storagegateway_start_gateway]{start_gateway} \tab Starts a gateway that you previously shut down (see ShutdownGateway) \cr
 #'  \link[=storagegateway_update_bandwidth_rate_limit]{update_bandwidth_rate_limit} \tab Updates the bandwidth rate limits of a gateway \cr
 #'  \link[=storagegateway_update_chap_credentials]{update_chap_credentials} \tab Updates the Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target \cr

@@ -46,6 +46,14 @@ test_that("describe_client_vpn_endpoints", {
   expect_error(svc$describe_client_vpn_endpoints(MaxResults = 20), NA)
 })
 
+test_that("describe_coip_pools", {
+  expect_error(svc$describe_coip_pools(), NA)
+})
+
+test_that("describe_coip_pools", {
+  expect_error(svc$describe_coip_pools(MaxResults = 20), NA)
+})
+
 test_that("describe_conversion_tasks", {
   expect_error(svc$describe_conversion_tasks(), NA)
 })
@@ -78,8 +86,24 @@ test_that("describe_elastic_gpus", {
   expect_error(svc$describe_elastic_gpus(MaxResults = 20), NA)
 })
 
+test_that("describe_export_image_tasks", {
+  expect_error(svc$describe_export_image_tasks(), NA)
+})
+
+test_that("describe_export_image_tasks", {
+  expect_error(svc$describe_export_image_tasks(MaxResults = 20), NA)
+})
+
 test_that("describe_export_tasks", {
   expect_error(svc$describe_export_tasks(), NA)
+})
+
+test_that("describe_fast_snapshot_restores", {
+  expect_error(svc$describe_fast_snapshot_restores(), NA)
+})
+
+test_that("describe_fast_snapshot_restores", {
+  expect_error(svc$describe_fast_snapshot_restores(MaxResults = 20), NA)
 })
 
 test_that("describe_fleets", {
@@ -174,6 +198,22 @@ test_that("describe_instance_status", {
   expect_error(svc$describe_instance_status(MaxResults = 20), NA)
 })
 
+test_that("describe_instance_type_offerings", {
+  expect_error(svc$describe_instance_type_offerings(), NA)
+})
+
+test_that("describe_instance_type_offerings", {
+  expect_error(svc$describe_instance_type_offerings(MaxResults = 20), NA)
+})
+
+test_that("describe_instance_types", {
+  expect_error(svc$describe_instance_types(), NA)
+})
+
+test_that("describe_instance_types", {
+  expect_error(svc$describe_instance_types(MaxResults = 20), NA)
+})
+
 test_that("describe_instances", {
   expect_error(svc$describe_instances(), NA)
 })
@@ -200,6 +240,54 @@ test_that("describe_launch_templates", {
 
 test_that("describe_launch_templates", {
   expect_error(svc$describe_launch_templates(MaxResults = 20), NA)
+})
+
+test_that("describe_local_gateway_route_table_virtual_interface_group_associations", {
+  expect_error(svc$describe_local_gateway_route_table_virtual_interface_group_associations(), NA)
+})
+
+test_that("describe_local_gateway_route_table_virtual_interface_group_associations", {
+  expect_error(svc$describe_local_gateway_route_table_virtual_interface_group_associations(MaxResults = 20), NA)
+})
+
+test_that("describe_local_gateway_route_table_vpc_associations", {
+  expect_error(svc$describe_local_gateway_route_table_vpc_associations(), NA)
+})
+
+test_that("describe_local_gateway_route_table_vpc_associations", {
+  expect_error(svc$describe_local_gateway_route_table_vpc_associations(MaxResults = 20), NA)
+})
+
+test_that("describe_local_gateway_route_tables", {
+  expect_error(svc$describe_local_gateway_route_tables(), NA)
+})
+
+test_that("describe_local_gateway_route_tables", {
+  expect_error(svc$describe_local_gateway_route_tables(MaxResults = 20), NA)
+})
+
+test_that("describe_local_gateway_virtual_interface_groups", {
+  expect_error(svc$describe_local_gateway_virtual_interface_groups(), NA)
+})
+
+test_that("describe_local_gateway_virtual_interface_groups", {
+  expect_error(svc$describe_local_gateway_virtual_interface_groups(MaxResults = 20), NA)
+})
+
+test_that("describe_local_gateway_virtual_interfaces", {
+  expect_error(svc$describe_local_gateway_virtual_interfaces(), NA)
+})
+
+test_that("describe_local_gateway_virtual_interfaces", {
+  expect_error(svc$describe_local_gateway_virtual_interfaces(MaxResults = 20), NA)
+})
+
+test_that("describe_local_gateways", {
+  expect_error(svc$describe_local_gateways(), NA)
+})
+
+test_that("describe_local_gateways", {
+  expect_error(svc$describe_local_gateways(MaxResults = 20), NA)
 })
 
 test_that("describe_moving_addresses", {
@@ -384,6 +472,22 @@ test_that("describe_transit_gateway_attachments", {
 
 test_that("describe_transit_gateway_attachments", {
   expect_error(svc$describe_transit_gateway_attachments(MaxResults = 20), NA)
+})
+
+test_that("describe_transit_gateway_multicast_domains", {
+  expect_error(svc$describe_transit_gateway_multicast_domains(), NA)
+})
+
+test_that("describe_transit_gateway_multicast_domains", {
+  expect_error(svc$describe_transit_gateway_multicast_domains(MaxResults = 20), NA)
+})
+
+test_that("describe_transit_gateway_peering_attachments", {
+  expect_error(svc$describe_transit_gateway_peering_attachments(), NA)
+})
+
+test_that("describe_transit_gateway_peering_attachments", {
+  expect_error(svc$describe_transit_gateway_peering_attachments(MaxResults = 20), NA)
 })
 
 test_that("describe_transit_gateway_route_tables", {

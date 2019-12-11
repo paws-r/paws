@@ -20,24 +20,24 @@ Constraints:
 }}
 
 \item{availabilityZone}{The Availability Zone in which to create your new database. Use the
-\code{us-east-2a} case-sensitive format.
+\verb{us-east-2a} case-sensitive format.
 
-You can get a list of Availability Zones by using the \code{get regions}
+You can get a list of Availability Zones by using the \verb{get regions}
 operation. Be sure to add the
-\code{include relational database Availability Zones} parameter to your
+\verb{include relational database Availability Zones} parameter to your
 request.}
 
 \item{relationalDatabaseBlueprintId}{[required] The blueprint ID for your new database. A blueprint describes the major
 engine version of a database.
 
 You can get a list of database blueprints IDs by using the
-\code{get relational database blueprints} operation.}
+\verb{get relational database blueprints} operation.}
 
 \item{relationalDatabaseBundleId}{[required] The bundle ID for your new database. A bundle describes the performance
 specifications for your database.
 
 You can get a list of database bundle IDs by using the
-\code{get relational database bundles} operation.}
+\verb{get relational database bundles} operation.}
 
 \item{masterDatabaseName}{[required] The name of the master database created when the Lightsail database
 resource is created.
@@ -64,7 +64,7 @@ respectively.
 }}
 
 \item{masterUserPassword}{The password for the master user of your new database. The password can
-include any printable ASCII character except "/", """, or "@".
+include any printable ASCII character except \"/\", \"\"\", or \"@\".
 
 Constraints: Must contain 8 to 41 characters.}
 
@@ -82,7 +82,7 @@ Constraints:
 \item Must be in the \code{hh24:mi-hh24:mi} format.
 
 Example: \code{16:00-16:30}
-\item Specified in Universal Coordinated Time (UTC).
+\item Specified in Coordinated Universal Time (UTC).
 \item Must not conflict with the preferred maintenance window.
 \item Must be at least 30 minutes.
 }}
@@ -99,7 +99,7 @@ Constraints:
 \item Must be in the \code{ddd:hh24:mi-ddd:hh24:mi} format.
 \item Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 \item Must be at least 30 minutes.
-\item Specified in Universal Coordinated Time (UTC).
+\item Specified in Coordinated Universal Time (UTC).
 \item Example: \code{Tue:17:00-Tue:17:30}
 }}
 
@@ -111,14 +111,14 @@ database.}
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
-To tag a resource after it has been created, see the \code{tag resource}
+To tag a resource after it has been created, see the \verb{tag resource}
 operation.}
 }
 \description{
 Creates a new database in Amazon Lightsail.
 }
 \details{
-The \code{create relational database} operation supports tag-based access
+The \verb{create relational database} operation supports tag-based access
 control via request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{

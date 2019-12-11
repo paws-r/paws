@@ -19,12 +19,12 @@ including \code{2017-05-01}.}
 \item{GroupBy}{You can group the data by the following attributes:
 \itemize{
 \item AZ
-\item CACHE\_ENGINE
-\item DATABASE\_ENGINE
-\item DEPLOYMENT\_OPTION
-\item INSTANCE\_TYPE
-\item LINKED\_ACCOUNT
-\item OPERATING\_SYSTEM
+\item CACHE\\_ENGINE
+\item DATABASE\\_ENGINE
+\item DEPLOYMENT\\_OPTION
+\item INSTANCE\\_TYPE
+\item LINKED\\_ACCOUNT
+\item OPERATING\\_SYSTEM
 \item PLATFORM
 \item REGION
 \item TENANCY
@@ -33,8 +33,8 @@ including \code{2017-05-01}.}
 \item{Granularity}{The granularity of the AWS cost data for the reservation. Valid values
 are \code{MONTHLY} and \code{DAILY}.
 
-If \code{GroupBy} is set, \code{Granularity} can't be set. If \code{Granularity}
-isn't set, the response object doesn't include \code{Granularity}, either
+If \code{GroupBy} is set, \code{Granularity} can\'t be set. If \code{Granularity}
+isn\'t set, the response object doesn\'t include \code{Granularity}, either
 \code{MONTHLY} or \code{DAILY}.
 
 The \code{GetReservationCoverage} operation supports only \code{DAILY} and
@@ -44,12 +44,12 @@ The \code{GetReservationCoverage} operation supports only \code{DAILY} and
 dimensions:
 \itemize{
 \item AZ
-\item CACHE\_ENGINE
-\item DATABASE\_ENGINE
-\item DEPLOYMENT\_OPTION
-\item INSTANCE\_TYPE
-\item LINKED\_ACCOUNT
-\item OPERATING\_SYSTEM
+\item CACHE\\_ENGINE
+\item DATABASE\\_ENGINE
+\item DEPLOYMENT\\_OPTION
+\item INSTANCE\\_TYPE
+\item LINKED\\_ACCOUNT
+\item OPERATING\\_SYSTEM
 \item PLATFORM
 \item REGION
 \item SERVICE
@@ -61,9 +61,9 @@ dimensions:
 \href{http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression}
 object as the other operations, but only \code{AND} is supported among each
 dimension. You can nest only one level deep. If there are multiple
-values for a dimension, they are OR'd together.
+values for a dimension, they are OR\'d together.
 
-If you don't provide a \code{SERVICE} filter, Cost Explorer defaults to EC2.}
+If you don\'t provide a \code{SERVICE} filter, Cost Explorer defaults to EC2.}
 
 \item{Metrics}{The measurement that you want your reservation coverage reported in.
 
@@ -78,19 +78,19 @@ page size.}
 Retrieves the reservation coverage for your account. This enables you to
 see how much of your Amazon Elastic Compute Cloud, Amazon ElastiCache,
 Amazon Relational Database Service, or Amazon Redshift usage is covered
-by a reservation. An organization's master account can see the coverage
+by a reservation. An organization\'s master account can see the coverage
 of the associated member accounts. For any time period, you can filter
 data about reservation usage by the following dimensions:
 }
 \details{
 \itemize{
 \item AZ
-\item CACHE\_ENGINE
-\item DATABASE\_ENGINE
-\item DEPLOYMENT\_OPTION
-\item INSTANCE\_TYPE
-\item LINKED\_ACCOUNT
-\item OPERATING\_SYSTEM
+\item CACHE\\_ENGINE
+\item DATABASE\\_ENGINE
+\item DEPLOYMENT\\_OPTION
+\item INSTANCE\\_TYPE
+\item LINKED\\_ACCOUNT
+\item OPERATING\\_SYSTEM
 \item PLATFORM
 \item REGION
 \item SERVICE
@@ -109,7 +109,7 @@ operation.
   ),
   GroupBy = list(
     list(
-      Type = "DIMENSION"|"TAG",
+      Type = "DIMENSION"|"TAG"|"COST_CATEGORY",
       Key = "string"
     )
   ),
@@ -123,12 +123,18 @@ operation.
     ),
     Not = list(),
     Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID",
+      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION",
       Values = list(
         "string"
       )
     ),
     Tags = list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    ),
+    CostCategories = list(
       Key = "string",
       Values = list(
         "string"

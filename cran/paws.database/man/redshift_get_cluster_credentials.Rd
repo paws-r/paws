@@ -11,12 +11,12 @@ redshift_get_cluster_credentials(DbUser, DbName, ClusterIdentifier,
 \arguments{
 \item{DbUser}{[required] The name of a database user. If a user name matching \code{DbUser} exists in
 the database, the temporary user credentials have the same permissions
-as the existing user. If \code{DbUser} doesn't exist in the database and
+as the existing user. If \code{DbUser} doesn\'t exist in the database and
 \code{Autocreate} is \code{True}, a new user is created using the value for
 \code{DbUser} with PUBLIC permissions. If a database user matching the value
-for \code{DbUser} doesn't exist and \code{Autocreate} is \code{False}, then the
+for \code{DbUser} doesn\'t exist and \code{Autocreate} is \code{False}, then the
 command succeeds but the connection attempt will fail because the user
-doesn't exist in the database.
+doesn\'t exist in the database.
 
 For more information, see \href{https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html}{CREATE USER}
 in the Amazon Redshift Database Developer Guide.
@@ -24,7 +24,7 @@ in the Amazon Redshift Database Developer Guide.
 Constraints:
 \itemize{
 \item Must be 1 to 64 alphanumeric characters or hyphens. The user name
-can't be \code{PUBLIC}.
+can\'t be \code{PUBLIC}.
 \item Must contain only lowercase letters, numbers, underscore, plus sign,
 period (dot), at symbol (@), or hyphen.
 \item First character must be a letter.
@@ -81,8 +81,8 @@ in the Amazon Redshift Database Developer Guide.
 \description{
 Returns a database user name and temporary password with temporary
 authorization to log on to an Amazon Redshift database. The action
-returns the database user name prefixed with \code{IAM:} if \code{AutoCreate} is
-\code{False} or \code{IAMA:} if \code{AutoCreate} is \code{True}. You can optionally specify
+returns the database user name prefixed with \verb{IAM:} if \code{AutoCreate} is
+\code{False} or \verb{IAMA:} if \code{AutoCreate} is \code{True}. You can optionally specify
 one or more database user groups that the user will join at log on. By
 default, the temporary credentials expire in 900 seconds. You can
 optionally specify a duration between 900 seconds (15 minutes) and 3600

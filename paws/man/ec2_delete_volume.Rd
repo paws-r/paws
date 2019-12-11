@@ -34,7 +34,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example deletes an available volume with the volume ID of
-# ``vol-049df61146c4d7901``. If the command succeeds, no output is
+# `vol-049df61146c4d7901`. If the command succeeds, no output is
 # returned.
 \donttest{svc$delete_volume(
   VolumeId = "vol-049df61146c4d7901"

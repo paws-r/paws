@@ -21,7 +21,7 @@ ticket.}
 (\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html}{ARN})
 that is assigned to a game session queue and uniquely identifies it.
 Format is
-\code{arn:aws:gamelift:&lt;region&gt;:&lt;aws account&gt;:gamesessionqueue/&lt;queue name&gt;}.
+\verb{arn:aws:gamelift:&lt;region&gt;:&lt;aws account&gt;:gamesessionqueue/&lt;queue name&gt;}.
 These queues are used when placing game sessions for matches that are
 created with this matchmaking configuration. Queues can be located in
 any region.}
@@ -45,7 +45,7 @@ are defined in the same region.}
 \item{NotificationTarget}{SNS topic ARN that is set up to receive matchmaking notifications.}
 
 \item{AdditionalPlayerCount}{Number of player slots in a match to keep open for future players. For
-example, if the configuration's rule set specifies a match for a single
+example, if the configuration\'s rule set specifies a match for a single
 12-person team, and the additional player count is set to 2, only 10
 players are selected for the match.}
 
@@ -93,7 +93,7 @@ polling ticket status with DescribeMatchmaking; or (2) receiving
 notifications with Amazon Simple Notification Service (SNS). To use
 notifications, you first need to set up an SNS topic to receive the
 notifications, and provide the topic ARN in the matchmaking
-configuration. Since notifications promise only "best effort"
+configuration. Since notifications promise only \"best effort\"
 delivery, we recommend calling \code{DescribeMatchmaking} if no notifications
 are received within 30 seconds.
 

@@ -11,9 +11,10 @@ migrationhub_notify_migration_task_state(ProgressUpdateStream,
 \arguments{
 \item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream.}
 
-\item{MigrationTaskName}{[required] Unique identifier that references the migration task.}
+\item{MigrationTaskName}{[required] Unique identifier that references the migration task. \emph{Do not store
+personal data in this field.}}
 
-\item{Task}{[required] Information about the task's progress and status.}
+\item{Task}{[required] Information about the task\'s progress and status.}
 
 \item{UpdateDateTime}{[required] The timestamp when the task was gathered.}
 

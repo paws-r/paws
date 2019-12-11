@@ -69,7 +69,7 @@ specific application and are used to deploy different versions of the
 application with the same configuration settings.
 }
 \details{
-Templates aren't associated with any environment. The \code{EnvironmentName}
+Templates aren\'t associated with any environment. The \code{EnvironmentName}
 response element is always \code{null}.
 
 Related Topics

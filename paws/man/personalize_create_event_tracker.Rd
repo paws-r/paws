@@ -35,8 +35,8 @@ identifies the customer and authorizes the customer to send the data.
 
 The event tracker can be in one of the following states:
 \itemize{
-\item CREATE PENDING \> CREATE IN\_PROGRESS \> ACTIVE -or- CREATE FAILED
-\item DELETE PENDING \> DELETE IN\_PROGRESS
+\item CREATE PENDING \\> CREATE IN\\_PROGRESS \\> ACTIVE -or- CREATE FAILED
+\item DELETE PENDING \\> DELETE IN\\_PROGRESS
 }
 
 To get the status of the event tracker, call DescribeEventTracker.

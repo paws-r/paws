@@ -8,7 +8,8 @@ cognitoidentityprovider_update_user_pool_client(UserPoolId, ClientId,
   ClientName, RefreshTokenValidity, ReadAttributes, WriteAttributes,
   ExplicitAuthFlows, SupportedIdentityProviders, CallbackURLs, LogoutURLs,
   DefaultRedirectURI, AllowedOAuthFlows, AllowedOAuthScopes,
-  AllowedOAuthFlowsUserPoolClient, AnalyticsConfiguration)
+  AllowedOAuthFlowsUserPoolClient, AnalyticsConfiguration,
+  PreventUserExistenceErrors)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool where you want to update the user
@@ -25,7 +26,26 @@ valid and cannot be used.}
 
 \item{WriteAttributes}{The writeable attributes of the user pool.}
 
-\item{ExplicitAuthFlows}{Explicit authentication flows.}
+\item{ExplicitAuthFlows}{The authentication flows that are supported by the user pool clients.
+Flow names without the \code{ALLOW_} prefix are deprecated in favor of new
+names with the \code{ALLOW_} prefix. Note that values with \code{ALLOW_} prefix
+cannot be used along with values without \code{ALLOW_} prefix.
+
+Valid values include:
+\itemize{
+\item \code{ALLOW_ADMIN_USER_PASSWORD_AUTH}: Enable admin based user password
+authentication flow \code{ADMIN_USER_PASSWORD_AUTH}. This setting
+replaces the \code{ADMIN_NO_SRP_AUTH} setting. With this authentication
+flow, Cognito receives the password in the request instead of using
+the SRP (Secure Remote Password protocol) protocol to verify
+passwords.
+\item \code{ALLOW_CUSTOM_AUTH}: Enable Lambda trigger based authentication.
+\item \code{ALLOW_USER_PASSWORD_AUTH}: Enable user password-based
+authentication. In this flow, Cognito receives the password in the
+request instead of using the SRP protocol to verify passwords.
+\item \code{ALLOW_USER_SRP_AUTH}: Enable SRP based authentication.
+\item \code{ALLOW_REFRESH_TOKEN_AUTH}: Enable authflow to refresh tokens.
+}}
 
 \item{SupportedIdentityProviders}{A list of provider names for the identity providers that are supported
 on this client.}
@@ -69,19 +89,56 @@ authorization code as the response. This code can be exchanged for
 access tokens with the token endpoint.}
 
 \item{AllowedOAuthScopes}{A list of allowed \code{OAuth} scopes. Currently supported values are
-\code{"phone"}, \code{"email"}, \code{"openid"}, and \code{"Cognito"}.}
+\code{"phone"}, \code{"email"}, \code{"openid"}, and \code{"Cognito"}. In addition to these
+values, custom scopes created in Resource Servers are also supported.}
 
 \item{AllowedOAuthFlowsUserPoolClient}{Set to TRUE if the client is allowed to follow the OAuth protocol when
 interacting with Cognito user pools.}
 
 \item{AnalyticsConfiguration}{The Amazon Pinpoint analytics configuration for collecting metrics for
 this user pool.}
+
+\item{PreventUserExistenceErrors}{Use this setting to choose which errors and responses are returned by
+Cognito APIs during authentication, account confirmation, and password
+recovery when the user does not exist in the user pool. When set to
+\code{ENABLED} and the user does not exist, authentication returns an error
+indicating either the username or password was incorrect, and account
+confirmation and password recovery return a response indicating a code
+was sent to a simulated destination. When set to \code{LEGACY}, those APIs
+will return a \code{UserNotFoundException} exception if the user does not
+exist in the user pool.
+
+Valid values include:
+\itemize{
+\item \code{ENABLED} - This prevents user existence-related errors.
+\item \code{LEGACY} - This represents the old behavior of Cognito where user
+existence related errors are not prevented.
+}
+
+This setting affects the behavior of following APIs:
+\itemize{
+\item AdminInitiateAuth
+\item AdminRespondToAuthChallenge
+\item InitiateAuth
+\item RespondToAuthChallenge
+\item ForgotPassword
+\item ConfirmForgotPassword
+\item ConfirmSignUp
+\item ResendConfirmationCode
+}
+
+After January 1st 2020, the value of \code{PreventUserExistenceErrors} will
+default to \code{ENABLED} for newly created user pool clients if no value is
+provided.}
 }
 \description{
 Updates the specified user pool app client with the specified
-attributes. If you don't provide a value for an attribute, it will be
-set to the default value. You can get a list of the current user pool
-app client settings with .
+attributes. You can get a list of the current user pool app client
+settings with .
+}
+\details{
+If you don\'t provide a value for an attribute, it will be set to the
+default value.
 }
 \section{Request syntax}{
 \preformatted{svc$update_user_pool_client(
@@ -96,7 +153,7 @@ app client settings with .
     "string"
   ),
   ExplicitAuthFlows = list(
-    "ADMIN_NO_SRP_AUTH"|"CUSTOM_AUTH_FLOW_ONLY"|"USER_PASSWORD_AUTH"
+    "ADMIN_NO_SRP_AUTH"|"CUSTOM_AUTH_FLOW_ONLY"|"USER_PASSWORD_AUTH"|"ALLOW_ADMIN_USER_PASSWORD_AUTH"|"ALLOW_CUSTOM_AUTH"|"ALLOW_USER_PASSWORD_AUTH"|"ALLOW_USER_SRP_AUTH"|"ALLOW_REFRESH_TOKEN_AUTH"
   ),
   SupportedIdentityProviders = list(
     "string"
@@ -120,7 +177,8 @@ app client settings with .
     RoleArn = "string",
     ExternalId = "string",
     UserDataShared = TRUE|FALSE
-  )
+  ),
+  PreventUserExistenceErrors = "LEGACY"|"ENABLED"
 )
 }
 }

@@ -47,7 +47,7 @@ For more information, see the Amazon Cognito Documentation.
 \link[=cognitoidentityprovider_admin_delete_user]{admin_delete_user} \tab Deletes a user as an administrator \cr
 \link[=cognitoidentityprovider_admin_delete_user_attributes]{admin_delete_user_attributes} \tab Deletes the user attributes in a user pool as an administrator \cr
 \link[=cognitoidentityprovider_admin_disable_provider_for_user]{admin_disable_provider_for_user} \tab Disables the user from signing in with the specified external (SAML or social) identity provider \cr
-\link[=cognitoidentityprovider_admin_disable_user]{admin_disable_user} \tab Disables the specified user as an administrator \cr
+\link[=cognitoidentityprovider_admin_disable_user]{admin_disable_user} \tab Disables the specified user \cr
 \link[=cognitoidentityprovider_admin_enable_user]{admin_enable_user} \tab Enables the specified user as an administrator \cr
 \link[=cognitoidentityprovider_admin_forget_device]{admin_forget_device} \tab Forgets the device, as an administrator \cr
 \link[=cognitoidentityprovider_admin_get_device]{admin_get_device} \tab Gets the device, as an administrator \cr
@@ -60,9 +60,9 @@ For more information, see the Amazon Cognito Documentation.
 \link[=cognitoidentityprovider_admin_remove_user_from_group]{admin_remove_user_from_group} \tab Removes the specified user from the specified group \cr
 \link[=cognitoidentityprovider_admin_reset_user_password]{admin_reset_user_password} \tab Resets the specified user's password in a user pool as an administrator \cr
 \link[=cognitoidentityprovider_admin_respond_to_auth_challenge]{admin_respond_to_auth_challenge} \tab Responds to an authentication challenge, as an administrator \cr
-\link[=cognitoidentityprovider_admin_set_user_mfa_preference]{admin_set_user_mfa_preference} \tab Sets the user's multi-factor authentication (MFA) preference \cr
-\link[=cognitoidentityprovider_admin_set_user_password]{admin_set_user_password} \tab Admin set user password \cr
-\link[=cognitoidentityprovider_admin_set_user_settings]{admin_set_user_settings} \tab Sets all the user settings for a specified user name \cr
+\link[=cognitoidentityprovider_admin_set_user_mfa_preference]{admin_set_user_mfa_preference} \tab Sets the user's multi-factor authentication (MFA) preference, including which MFA options are enabled and if any are preferred \cr
+\link[=cognitoidentityprovider_admin_set_user_password]{admin_set_user_password} \tab Sets the specified user's password in a user pool as an administrator \cr
+\link[=cognitoidentityprovider_admin_set_user_settings]{admin_set_user_settings} \tab _This action is no longer supported \cr
 \link[=cognitoidentityprovider_admin_update_auth_event_feedback]{admin_update_auth_event_feedback} \tab Provides feedback for an authentication event as to whether it was from a valid user \cr
 \link[=cognitoidentityprovider_admin_update_device_status]{admin_update_device_status} \tab Updates the device status as an administrator \cr
 \link[=cognitoidentityprovider_admin_update_user_attributes]{admin_update_user_attributes} \tab Updates the specified user's attributes, including developer attributes, as an administrator \cr
@@ -121,9 +121,9 @@ For more information, see the Amazon Cognito Documentation.
 \link[=cognitoidentityprovider_respond_to_auth_challenge]{respond_to_auth_challenge} \tab Responds to the authentication challenge \cr
 \link[=cognitoidentityprovider_set_risk_configuration]{set_risk_configuration} \tab Configures actions on detected risks \cr
 \link[=cognitoidentityprovider_set_ui_customization]{set_ui_customization} \tab Sets the UI customization information for a user pool's built-in app UI \cr
-\link[=cognitoidentityprovider_set_user_mfa_preference]{set_user_mfa_preference} \tab Set the user's multi-factor authentication (MFA) method preference \cr
-\link[=cognitoidentityprovider_set_user_pool_mfa_config]{set_user_pool_mfa_config} \tab Set the user pool MFA configuration \cr
-\link[=cognitoidentityprovider_set_user_settings]{set_user_settings} \tab Sets the user settings like multi-factor authentication (MFA) \cr
+\link[=cognitoidentityprovider_set_user_mfa_preference]{set_user_mfa_preference} \tab Set the user's multi-factor authentication (MFA) method preference, including which MFA factors are enabled and if any are preferred \cr
+\link[=cognitoidentityprovider_set_user_pool_mfa_config]{set_user_pool_mfa_config} \tab Set the user pool multi-factor authentication (MFA) configuration \cr
+\link[=cognitoidentityprovider_set_user_settings]{set_user_settings} \tab _This action is no longer supported \cr
 \link[=cognitoidentityprovider_sign_up]{sign_up} \tab Registers the user in the specified user pool and creates a user name, password, and user attributes \cr
 \link[=cognitoidentityprovider_start_user_import_job]{start_user_import_job} \tab Starts the user import \cr
 \link[=cognitoidentityprovider_stop_user_import_job]{stop_user_import_job} \tab Stops the user import job \cr

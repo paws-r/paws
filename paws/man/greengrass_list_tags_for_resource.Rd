@@ -2,7 +2,7 @@
 % Please edit documentation in R/greengrass_operations.R
 \name{greengrass_list_tags_for_resource}
 \alias{greengrass_list_tags_for_resource}
-\title{Retrieves the tags for a resource}
+\title{Retrieves a list of resource tags for a resource arn}
 \usage{
 greengrass_list_tags_for_resource(ResourceArn)
 }
@@ -10,7 +10,7 @@ greengrass_list_tags_for_resource(ResourceArn)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 }
 \description{
-Retrieves the tags for a resource.
+Retrieves a list of resource tags for a resource arn.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(

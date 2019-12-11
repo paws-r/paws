@@ -2,20 +2,20 @@
 % Please edit documentation in R/glue_operations.R
 \name{glue_get_databases}
 \alias{glue_get_databases}
-\title{Retrieves all Databases defined in a given Data Catalog}
+\title{Retrieves all databases defined in a given Data Catalog}
 \usage{
 glue_get_databases(CatalogId, NextToken, MaxResults)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog from which to retrieve \code{Databases}. If none
-is supplied, the AWS account ID is used by default.}
+is provided, the AWS account ID is used by default.}
 
 \item{NextToken}{A continuation token, if this is a continuation call.}
 
 \item{MaxResults}{The maximum number of databases to return in one response.}
 }
 \description{
-Retrieves all Databases defined in a given Data Catalog.
+Retrieves all databases defined in a given Data Catalog.
 }
 \section{Request syntax}{
 \preformatted{svc$get_databases(

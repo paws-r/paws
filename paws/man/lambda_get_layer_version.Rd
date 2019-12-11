@@ -14,7 +14,7 @@ lambda_get_layer_version(LayerName, VersionNumber)
 }
 \description{
 Returns information about a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer},
-with a link to download the layer archive that's valid for 10 minutes.
+with a link to download the layer archive that\'s valid for 10 minutes.
 }
 \section{Request syntax}{
 \preformatted{svc$get_layer_version(

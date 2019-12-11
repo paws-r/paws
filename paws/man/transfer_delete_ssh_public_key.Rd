@@ -10,16 +10,16 @@ transfer_delete_ssh_public_key(ServerId, SshPublicKeyId, UserName)
 \item{ServerId}{[required] A system-assigned unique identifier for a Secure File Transfer Protocol
 (SFTP) server instance that has the user assigned to it.}
 
-\item{SshPublicKeyId}{[required] A unique identifier used to reference your user's specific SSH key.}
+\item{SshPublicKeyId}{[required] A unique identifier used to reference your user\'s specific SSH key.}
 
 \item{UserName}{[required] A unique string that identifies a user whose public key is being
 deleted.}
 }
 \description{
-Deletes a user's Secure Shell (SSH) public key.
+Deletes a user\'s Secure Shell (SSH) public key.
 }
 \details{
-No response is returned from this call.
+No response is returned from this operation.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_ssh_public_key(

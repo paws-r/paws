@@ -8,8 +8,8 @@ iam_list_users(PathPrefix, Marker, MaxItems)
 }
 \arguments{
 \item{PathPrefix}{The path prefix for filtering the results. For example:
-\code{/division_abc/subdivision_xyz/}, which would get all user names whose
-path starts with \code{/division_abc/subdivision_xyz/}.
+\verb{/division_abc/subdivision_xyz/}, which would get all user names whose
+path starts with \verb{/division_abc/subdivision_xyz/}.
 
 This parameter is optional. If it is not included, it defaults to a
 slash (/), listing all user names. This parameter allows (through its
@@ -17,7 +17,7 @@ slash (/), listing all user names. This parameter allows (through its
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
 ASCII character from the ! (\code{U+0021}) through the DEL character
-(\code{U+007F}), including most punctuation characters, digits, and upper and
+(\verb{U+007F}), including most punctuation characters, digits, and upper and
 lowercased letters.}
 
 \item{Marker}{Use this parameter only when paginating results and only after you

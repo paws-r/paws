@@ -11,7 +11,7 @@ route53resolver_delete_resolver_endpoint(ResolverEndpointId)
 }
 \description{
 Deletes a resolver endpoint. The effect of deleting a resolver endpoint
-depends on whether it's an inbound or an outbound resolver endpoint:
+depends on whether it\'s an inbound or an outbound resolver endpoint:
 }
 \details{
 \itemize{

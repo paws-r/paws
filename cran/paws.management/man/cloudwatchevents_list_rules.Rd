@@ -22,7 +22,7 @@ Lists your EventBridge rules. You can either list all the rules or
 provide a prefix to match to the rule names.
 }
 \details{
-\code{ListRules} doesn't list the targets of a rule. To see the targets
+\code{ListRules} doesn\'t list the targets of a rule. To see the targets
 associated with a rule, use ListTargetsByRule.
 }
 \section{Request syntax}{

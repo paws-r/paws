@@ -9,7 +9,7 @@ apigateway_get_stages(restApiId, deploymentId)
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{deploymentId}{The stages' deployment identifiers.}
+\item{deploymentId}{The stages\' deployment identifiers.}
 }
 \description{
 Gets information about one or more Stage resources.

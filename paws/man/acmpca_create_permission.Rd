@@ -12,7 +12,7 @@ acmpca_create_permission(CertificateAuthorityArn, Principal,
 You can find the ARN by calling the ListCertificateAuthorities action.
 This must have the following form:
 
-\code{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }.}
+\verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }.}
 
 \item{Principal}{[required] The AWS service or identity that receives the permission. At this time,
 the only valid principal is \code{acm.amazonaws.com}.}
@@ -28,7 +28,7 @@ Services are specified by their service principals and can be given
 permission to create and retrieve certificates on a private CA. Services
 can also be given permission to list the active permissions that the
 private CA has granted. For ACM to automatically renew your private
-CA's certificates, you must assign all possible permissions from the CA
+CA\'s certificates, you must assign all possible permissions from the CA
 to the ACM service principal.
 }
 \details{

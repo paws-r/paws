@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_create_multipart_upload}
 \alias{s3_create_multipart_upload}
-\title{Initiates a multipart upload and returns an upload ID}
+\title{This operation initiates a multipart upload and returns an upload ID}
 \usage{
 s3_create_multipart_upload(ACL, Bucket, CacheControl,
   ContentDisposition, ContentEncoding, ContentLanguage, ContentType,
@@ -15,7 +15,7 @@ s3_create_multipart_upload(ACL, Bucket, CacheControl,
 \arguments{
 \item{ACL}{The canned ACL to apply to the object.}
 
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The name of the bucket to which to initiate the upload}
 
 \item{CacheControl}{Specifies caching behavior along the request/reply chain.}
 
@@ -31,7 +31,7 @@ referenced by the Content-Type header field.}
 
 \item{Expires}{The date and time at which the object is no longer cacheable.}
 
-\item{GrantFullControl}{Gives the grantee READ, READ\_ACP, and WRITE\_ACP permissions on the
+\item{GrantFullControl}{Gives the grantee READ, READ\\_ACP, and WRITE\\_ACP permissions on the
 object.}
 
 \item{GrantRead}{Allows grantee to read the object data and its metadata.}
@@ -40,37 +40,38 @@ object.}
 
 \item{GrantWriteACP}{Allows grantee to write the ACL for the applicable object.}
 
-\item{Key}{[required]}
+\item{Key}{[required] Object key for which the multipart upload is to be initiated.}
 
 \item{Metadata}{A map of metadata to store with the object in S3.}
 
-\item{ServerSideEncryption}{The Server-side encryption algorithm used when storing this object in S3
-(e.g., AES256, aws:kms).}
+\item{ServerSideEncryption}{The server-side encryption algorithm used when storing this object in
+Amazon S3 (for example, AES256, aws:kms).}
 
-\item{StorageClass}{The type of storage to use for the object. Defaults to 'STANDARD'.}
+\item{StorageClass}{The type of storage to use for the object. Defaults to \'STANDARD\'.}
 
 \item{WebsiteRedirectLocation}{If the bucket is configured as a website, redirects requests for this
 object to another object in the same bucket or to an external URL.
 Amazon S3 stores the value of this header in the object metadata.}
 
-\item{SSECustomerAlgorithm}{Specifies the algorithm to use to when encrypting the object (e.g.,
-AES256).}
+\item{SSECustomerAlgorithm}{Specifies the algorithm to use to when encrypting the object (for
+example, AES256).}
 
 \item{SSECustomerKey}{Specifies the customer-provided encryption key for Amazon S3 to use in
 encrypting data. This value is used to store the object and then it is
-discarded; Amazon does not store the encryption key. The key must be
+discarded; Amazon S3 does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
-x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm header.}
+\verb{x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm} header.}
 
 \item{SSECustomerKeyMD5}{Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to ensure
-the encryption key was transmitted without error.}
+that the encryption key was transmitted without error.}
 
 \item{SSEKMSKeyId}{Specifies the AWS KMS key ID to use for object encryption. All GET and
 PUT requests for an object protected by AWS KMS will fail if not made
-via SSL or using SigV4. Documentation on configuring any of the
-officially supported AWS SDKs and CLI can be found at
-http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html\#specify-signature-version}
+via SSL or using SigV4. For information about configuring using any of
+the officially supported AWS SDKs and AWS CLI, see Specifying the
+Signature Version in Request Authentication in the \emph{Amazon S3 Developer
+Guide}.}
 
 \item{SSEKMSEncryptionContext}{Specifies the AWS KMS Encryption Context to use for object encryption.
 The value of this header is a base64-encoded UTF-8 string holding JSON
@@ -79,24 +80,201 @@ with the encryption context key-value pairs.}
 \item{RequestPayer}{}
 
 \item{Tagging}{The tag-set for the object. The tag-set must be encoded as URL Query
-parameters}
+parameters.}
 
-\item{ObjectLockMode}{Specifies the object lock mode that you want to apply to the uploaded
+\item{ObjectLockMode}{Specifies the Object Lock mode that you want to apply to the uploaded
 object.}
 
-\item{ObjectLockRetainUntilDate}{Specifies the date and time when you want the object lock to expire.}
+\item{ObjectLockRetainUntilDate}{Specifies the date and time when you want the Object Lock to expire.}
 
 \item{ObjectLockLegalHoldStatus}{Specifies whether you want to apply a Legal Hold to the uploaded object.}
 }
 \description{
-Initiates a multipart upload and returns an upload ID.
+This operation initiates a multipart upload and returns an upload ID.
+This upload ID is used to associate all of the parts in the specific
+multipart upload. You specify this upload ID in each of your subsequent
+upload part requests (see UploadPart). You also include this upload ID
+in the final request to either complete or abort the multipart upload
+request.
 }
 \details{
-\strong{Note:} After you initiate multipart upload and upload one or more
-parts, you must either complete or abort multipart upload in order to
-stop getting charged for storage of the uploaded parts. Only after you
-either complete or abort multipart upload, Amazon S3 frees up the parts
-storage and stops charging you for the parts storage.
+For more information about multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html}{Multipart Upload Overview}.
+
+If you have configured a lifecycle rule to abort incomplete multipart
+uploads, the upload must complete within the number of days specified in
+the bucket lifecycle configuration. Otherwise, the incomplete multipart
+upload becomes eligible for an abort operation and Amazon S3 aborts the
+multipart upload. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config}{Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy}.
+
+For information about the permissions required to use the multipart
+upload API, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html}{Multipart Upload API and Permissions}.
+
+For request signing, multipart upload is just a series of regular
+requests. You initiate a multipart upload, send one or more requests to
+upload parts, and then complete the multipart upload process. You sign
+each request individually. There is nothing special about signing
+multipart upload requests. For more information about signing, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html}{Authenticating Requests (AWS Signature Version 4)}.
+
+After you initiate a multipart upload and upload one or more parts, to
+stop being charged for storing the uploaded parts, you must either
+complete or abort the multipart upload. Amazon S3 frees up the space
+used to store the parts and stop charging you for storing them only
+after you either complete or abort a multipart upload.
+
+You can optionally request server-side encryption. For server-side
+encryption, Amazon S3 encrypts your data as it writes it to disks in its
+data centers and decrypts it when you access it. You can provide your
+own encryption key, or use AWS Key Management Service (AWS KMS) customer
+master keys (CMKs) or Amazon S3-managed encryption keys. If you choose
+to provide your own encryption key, the request headers you provide in
+UploadPart) and UploadPartCopy) requests must match the headers you used
+in the request to initiate the upload by using \code{CreateMultipartUpload}.
+
+To perform a multipart upload with encryption using an AWS KMS CMK, the
+requester must have permission to the \code{kms:Encrypt}, \code{kms:Decrypt},
+\verb{kms:ReEncrypt*}, \verb{kms:GenerateDataKey*}, and \code{kms:DescribeKey} actions
+on the key. These permissions are required because Amazon S3 must
+decrypt and read data from the encrypted file parts before it completes
+the multipart upload.
+
+If your AWS Identity and Access Management (IAM) user or role is in the
+same AWS account as the AWS KMS CMK, then you must have these
+permissions on the key policy. If your IAM user or role belongs to a
+different account than the key, then you must have the permissions on
+both the key policy and your IAM user or role.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html}{Protecting Data Using Server-Side Encryption}.
+
+Access Permissions
+
+:   When copying an object, you can optionally specify the accounts or
+groups that should be granted specific permissions on the new
+object. There are two ways to grant the permissions using the
+request headers:\preformatted{-   Specify a canned ACL with the `x-amz-acl` request header. For
+    more information, see [Canned
+    ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
+
+-   Specify access permissions explicitly with the
+    `x-amz-grant-read`, `x-amz-grant-read-acp`,
+    `x-amz-grant-write-acp`, and `x-amz-grant-full-control` headers.
+    These parameters map to the set of permissions that Amazon S3
+    supports in an ACL. For more information, see [Access Control
+    List (ACL)
+    Overview](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html).
+
+You can use either a canned ACL or specify access permissions
+explicitly. You cannot do both.
+}
+
+Server-Side- Encryption-Specific Request Headers
+
+:   You can optionally tell Amazon S3 to encrypt data at rest using
+server-side encryption. Server-side encryption is for data
+encryption at rest. Amazon S3 encrypts your data as it writes it to
+disks in its data centers and decrypts it when you access it. The
+option you use depends on whether you want to use AWS managed
+encryption keys or provide your own encryption key.\preformatted{-   Use encryption keys managed by Amazon S3 or customer master keys
+    (CMKs) stored in AWS Key Management Service (AWS KMS) -- If you
+    want AWS to manage the keys used to encrypt data, specify the
+    following headers in the request.
+
+    -   x-amz-server-sideâ€‹-encryption
+
+    -   x-amz-server-side-encryption-aws-kms-key-id
+
+    -   x-amz-server-side-encryption-context
+
+    If you specify `x-amz-server-side-encryption:aws:kms`, but
+    don\\'t provide `x-amz-server-side- encryption-aws-kms-key-id`,
+    Amazon S3 uses the AWS managed CMK in AWS KMS to protect the
+    data.
+
+    All GET and PUT requests for an object protected by AWS KMS fail
+    if you don\\'t make them with SSL or by using SigV4.
+
+    For more information about server-side encryption with CMKs
+    stored in AWS KMS (SSE-KMS), see [Protecting Data Using
+    Server-Side Encryption with CMKs stored in AWS
+    KMS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
+
+-   Use customer-provided encryption keys -- If you want to manage
+    your own encryption keys, provide all the following headers in
+    the request.
+
+    -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
+
+    -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
+
+    -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
+
+    For more information about server-side encryption with CMKs
+    stored in AWS KMS (SSE-KMS), see [Protecting Data Using
+    Server-Side Encryption with CMKs stored in AWS
+    KMS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
+}
+
+Access-Control-List (ACL)-Specific Request Headers
+
+:   You also can use the following access control--related headers with
+this operation. By default, all objects are private. Only the owner
+has full access control. When adding a new object, you can grant
+permissions to individual AWS accounts or to predefined groups
+defined by Amazon S3. These permissions are then added to the access
+control list (ACL) on the object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html}{Using ACLs}.
+With this operation, you can grant access permissions using one of
+the following two methods:\preformatted{-   Specify a canned ACL (`x-amz-acl`) --- Amazon S3 supports a set
+    of predefined ACLs, known as *canned ACLs*. Each canned ACL has
+    a predefined set of grantees and permissions. For more
+    information, see [Canned
+    ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
+
+-   Specify access permissions explicitly --- To explicitly grant
+    access permissions to specific AWS accounts or groups, use the
+    following headers. Each header maps to specific permissions that
+    Amazon S3 supports in an ACL. For more information, see [Access
+    Control List (ACL)
+    Overview](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html).
+    In the header, you specify a list of grantees who get the
+    specific permission. To grant permissions explicitly, use:
+
+    -   x-amz-grant-read
+
+    -   x-amz-grant-write
+
+    -   x-amz-grant-read-acp
+
+    -   x-amz-grant-write-acp
+
+    -   x-amz-grant-full-control
+
+    You specify each grantee as a type=value pair, where the type is
+    one of the following:
+
+    -   `emailAddress` -- if the value specified is the email
+        address of an AWS account
+
+    -   `id` -- if the value specified is the canonical user ID of
+        an AWS account
+
+    -   `uri` -- if you are granting permissions to a predefined
+        group
+
+    For example, the following `x-amz-grant-read` header grants the
+    AWS accounts identified by email addresses permissions to read
+    object data and its metadata:
+
+    `x-amz-grant-read: emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com" `
+}
+
+The following operations are related to \code{CreateMultipartUpload}:
+\itemize{
+\item UploadPart
+\item CompleteMultipartUpload
+\item AbortMultipartUpload
+\item ListParts
+\item ListMultipartUploads
+}
 }
 \section{Request syntax}{
 \preformatted{svc$create_multipart_upload(

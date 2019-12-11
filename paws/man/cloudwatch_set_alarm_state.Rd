@@ -27,7 +27,7 @@ configured to send an Amazon SNS message when an alarm is triggered,
 temporarily changing the alarm state to \code{ALARM} sends an SNS message.
 The alarm returns to its actual state (often within seconds). Because
 the alarm state change happens quickly, it is typically only visible in
-the alarm's \strong{History} tab in the Amazon CloudWatch console or through
+the alarm\'s \strong{History} tab in the Amazon CloudWatch console or through
 DescribeAlarmHistory.
 }
 \section{Request syntax}{

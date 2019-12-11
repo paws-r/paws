@@ -433,11 +433,52 @@ workspaces_delete_workspace_image <- function(ImageId) {
 }
 .workspaces$operations$delete_workspace_image <- workspaces_delete_workspace_image
 
-#' Retrieves a list that describes the configuration of bring your own
-#' license (BYOL) for the specified account
+#' Deregisters the specified directory
 #'
-#' Retrieves a list that describes the configuration of bring your own
-#' license (BYOL) for the specified account.
+#' Deregisters the specified directory. This operation is asynchronous and
+#' returns before the WorkSpace directory is deregistered. If any
+#' WorkSpaces are registered to this directory, you must remove them before
+#' you can deregister the directory.
+#'
+#' @usage
+#' workspaces_deregister_workspace_directory(DirectoryId)
+#'
+#' @param DirectoryId &#91;required&#93; The identifier of the directory. If any WorkSpaces are registered to
+#' this directory, you must remove them before you deregister the
+#' directory, or you will receive an OperationNotSupportedException error.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$deregister_workspace_directory(
+#'   DirectoryId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_deregister_workspace_directory
+workspaces_deregister_workspace_directory <- function(DirectoryId) {
+  op <- new_operation(
+    name = "DeregisterWorkspaceDirectory",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$deregister_workspace_directory_input(DirectoryId = DirectoryId)
+  output <- .workspaces$deregister_workspace_directory_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$deregister_workspace_directory <- workspaces_deregister_workspace_directory
+
+#' Retrieves a list that describes the configuration of Bring Your Own
+#' License (BYOL) for the specified account
+#'
+#' Retrieves a list that describes the configuration of Bring Your Own
+#' License (BYOL) for the specified account.
 #'
 #' @usage
 #' workspaces_describe_account()
@@ -468,10 +509,10 @@ workspaces_describe_account <- function() {
 .workspaces$operations$describe_account <- workspaces_describe_account
 
 #' Retrieves a list that describes modifications to the configuration of
-#' bring your own license (BYOL) for the specified account
+#' Bring Your Own License (BYOL) for the specified account
 #'
 #' Retrieves a list that describes modifications to the configuration of
-#' bring your own license (BYOL) for the specified account.
+#' Bring Your Own License (BYOL) for the specified account.
 #'
 #' @usage
 #' workspaces_describe_account_modifications(NextToken)
@@ -678,17 +719,19 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 }
 .workspaces$operations$describe_workspace_bundles <- workspaces_describe_workspace_bundles
 
-#' Describes the available AWS Directory Service directories that are
-#' registered with Amazon WorkSpaces
+#' Describes the available directories that are registered with Amazon
+#' WorkSpaces
 #'
-#' Describes the available AWS Directory Service directories that are
-#' registered with Amazon WorkSpaces.
+#' Describes the available directories that are registered with Amazon
+#' WorkSpaces.
 #'
 #' @usage
-#' workspaces_describe_workspace_directories(DirectoryIds, NextToken)
+#' workspaces_describe_workspace_directories(DirectoryIds, Limit,
+#'   NextToken)
 #'
 #' @param DirectoryIds The identifiers of the directories. If the value is null, all
 #' directories are retrieved.
+#' @param Limit The maximum number of directories to return.
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
 #'
@@ -698,6 +741,7 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #'   DirectoryIds = list(
 #'     "string"
 #'   ),
+#'   Limit = 123,
 #'   NextToken = "string"
 #' )
 #' ```
@@ -705,14 +749,14 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #' @keywords internal
 #'
 #' @rdname workspaces_describe_workspace_directories
-workspaces_describe_workspace_directories <- function(DirectoryIds = NULL, NextToken = NULL) {
+workspaces_describe_workspace_directories <- function(DirectoryIds = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeWorkspaceDirectories",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .workspaces$describe_workspace_directories_input(DirectoryIds = DirectoryIds, NextToken = NextToken)
+  input <- .workspaces$describe_workspace_directories_input(DirectoryIds = DirectoryIds, Limit = Limit, NextToken = NextToken)
   output <- .workspaces$describe_workspace_directories_output()
   config <- get_config()
   svc <- .workspaces$service(config)
@@ -767,6 +811,42 @@ workspaces_describe_workspace_images <- function(ImageIds = NULL, NextToken = NU
   return(response)
 }
 .workspaces$operations$describe_workspace_images <- workspaces_describe_workspace_images
+
+#' Describes the snapshots for the specified WorkSpace
+#'
+#' Describes the snapshots for the specified WorkSpace.
+#'
+#' @usage
+#' workspaces_describe_workspace_snapshots(WorkspaceId)
+#'
+#' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_workspace_snapshots(
+#'   WorkspaceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_describe_workspace_snapshots
+workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
+  op <- new_operation(
+    name = "DescribeWorkspaceSnapshots",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$describe_workspace_snapshots_input(WorkspaceId = WorkspaceId)
+  output <- .workspaces$describe_workspace_snapshots_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$describe_workspace_snapshots <- workspaces_describe_workspace_snapshots
 
 #' Describes the specified WorkSpaces
 #'
@@ -915,10 +995,10 @@ workspaces_disassociate_ip_groups <- function(DirectoryId, GroupIds) {
 }
 .workspaces$operations$disassociate_ip_groups <- workspaces_disassociate_ip_groups
 
-#' Imports the specified Windows 7 or Windows 10 bring your own license
+#' Imports the specified Windows 7 or Windows 10 Bring Your Own License
 #' (BYOL) image into Amazon WorkSpaces
 #'
-#' Imports the specified Windows 7 or Windows 10 bring your own license
+#' Imports the specified Windows 7 or Windows 10 Bring Your Own License
 #' (BYOL) image into Amazon WorkSpaces. The image must be an already
 #' licensed EC2 image that is in your AWS account, and you must own the
 #' image.
@@ -971,11 +1051,11 @@ workspaces_import_workspace_image <- function(Ec2ImageId, IngestionProcess, Imag
 
 #' Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks,
 #' that you can use for the network management interface when you enable
-#' bring your own license (BYOL)
+#' Bring Your Own License (BYOL)
 #'
 #' Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks,
 #' that you can use for the network management interface when you enable
-#' bring your own license (BYOL).
+#' Bring Your Own License (BYOL).
 #' 
 #' The management network interface is connected to a secure Amazon
 #' WorkSpaces management network. It is used for interactive streaming of
@@ -1022,10 +1102,10 @@ workspaces_list_available_management_cidr_ranges <- function(ManagementCidrRange
 }
 .workspaces$operations$list_available_management_cidr_ranges <- workspaces_list_available_management_cidr_ranges
 
-#' Modifies the configuration of bring your own license (BYOL) for the
+#' Modifies the configuration of Bring Your Own License (BYOL) for the
 #' specified account
 #'
-#' Modifies the configuration of bring your own license (BYOL) for the
+#' Modifies the configuration of Bring Your Own License (BYOL) for the
 #' specified account.
 #'
 #' @usage
@@ -1107,6 +1187,150 @@ workspaces_modify_client_properties <- function(ResourceId, ClientProperties) {
   return(response)
 }
 .workspaces$operations$modify_client_properties <- workspaces_modify_client_properties
+
+#' Modifies the self-service WorkSpace management capabilities for your
+#' users
+#'
+#' Modifies the self-service WorkSpace management capabilities for your
+#' users. For more information, see [Enable Self-Service WorkSpace
+#' Management Capabilities for Your
+#' Users](https://docs.aws.amazon.com/workspaces/latest/adminguide/enable-user-self-service-workspace-management.html).
+#'
+#' @usage
+#' workspaces_modify_selfservice_permissions(ResourceId,
+#'   SelfservicePermissions)
+#'
+#' @param ResourceId &#91;required&#93; The identifier of the directory.
+#' @param SelfservicePermissions &#91;required&#93; The permissions to enable or disable self-service capabilities.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_selfservice_permissions(
+#'   ResourceId = "string",
+#'   SelfservicePermissions = list(
+#'     RestartWorkspace = "ENABLED"|"DISABLED",
+#'     IncreaseVolumeSize = "ENABLED"|"DISABLED",
+#'     ChangeComputeType = "ENABLED"|"DISABLED",
+#'     SwitchRunningMode = "ENABLED"|"DISABLED",
+#'     RebuildWorkspace = "ENABLED"|"DISABLED"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_modify_selfservice_permissions
+workspaces_modify_selfservice_permissions <- function(ResourceId, SelfservicePermissions) {
+  op <- new_operation(
+    name = "ModifySelfservicePermissions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$modify_selfservice_permissions_input(ResourceId = ResourceId, SelfservicePermissions = SelfservicePermissions)
+  output <- .workspaces$modify_selfservice_permissions_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$modify_selfservice_permissions <- workspaces_modify_selfservice_permissions
+
+#' Specifies which devices and operating systems users can use to access
+#' their Workspaces
+#'
+#' Specifies which devices and operating systems users can use to access
+#' their Workspaces. For more information, see [Control Device
+#' Access](https://docs.aws.amazon.com/workspaces/latest/adminguide/update-directory-details.html#control-device-access).
+#'
+#' @usage
+#' workspaces_modify_workspace_access_properties(ResourceId,
+#'   WorkspaceAccessProperties)
+#'
+#' @param ResourceId &#91;required&#93; The identifier of the directory.
+#' @param WorkspaceAccessProperties &#91;required&#93; The device types and operating systems to enable or disable for access.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_workspace_access_properties(
+#'   ResourceId = "string",
+#'   WorkspaceAccessProperties = list(
+#'     DeviceTypeWindows = "ALLOW"|"DENY",
+#'     DeviceTypeOsx = "ALLOW"|"DENY",
+#'     DeviceTypeWeb = "ALLOW"|"DENY",
+#'     DeviceTypeIos = "ALLOW"|"DENY",
+#'     DeviceTypeAndroid = "ALLOW"|"DENY",
+#'     DeviceTypeChromeOs = "ALLOW"|"DENY",
+#'     DeviceTypeZeroClient = "ALLOW"|"DENY"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_modify_workspace_access_properties
+workspaces_modify_workspace_access_properties <- function(ResourceId, WorkspaceAccessProperties) {
+  op <- new_operation(
+    name = "ModifyWorkspaceAccessProperties",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$modify_workspace_access_properties_input(ResourceId = ResourceId, WorkspaceAccessProperties = WorkspaceAccessProperties)
+  output <- .workspaces$modify_workspace_access_properties_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$modify_workspace_access_properties <- workspaces_modify_workspace_access_properties
+
+#' Modify the default properties used to create WorkSpaces
+#'
+#' Modify the default properties used to create WorkSpaces.
+#'
+#' @usage
+#' workspaces_modify_workspace_creation_properties(ResourceId,
+#'   WorkspaceCreationProperties)
+#'
+#' @param ResourceId &#91;required&#93; The identifier of the directory.
+#' @param WorkspaceCreationProperties &#91;required&#93; The default properties for creating WorkSpaces.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_workspace_creation_properties(
+#'   ResourceId = "string",
+#'   WorkspaceCreationProperties = list(
+#'     EnableInternetAccess = TRUE|FALSE,
+#'     DefaultOu = "string",
+#'     CustomSecurityGroupId = "string",
+#'     UserEnabledAsLocalAdministrator = TRUE|FALSE,
+#'     EnableMaintenanceMode = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_modify_workspace_creation_properties
+workspaces_modify_workspace_creation_properties <- function(ResourceId, WorkspaceCreationProperties) {
+  op <- new_operation(
+    name = "ModifyWorkspaceCreationProperties",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$modify_workspace_creation_properties_input(ResourceId = ResourceId, WorkspaceCreationProperties = WorkspaceCreationProperties)
+  output <- .workspaces$modify_workspace_creation_properties_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$modify_workspace_creation_properties <- workspaces_modify_workspace_creation_properties
 
 #' Modifies the specified WorkSpace properties
 #'
@@ -1291,6 +1515,129 @@ workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
   return(response)
 }
 .workspaces$operations$rebuild_workspaces <- workspaces_rebuild_workspaces
+
+#' Registers the specified directory
+#'
+#' Registers the specified directory. This operation is asynchronous and
+#' returns before the WorkSpace directory is registered. If this is the
+#' first time you are registering a directory, you will need to create the
+#' workspaces\\_DefaultRole role before you can register a directory. For
+#' more information, see [Creating the workspaces\\_DefaultRole
+#' Role](https://docs.aws.amazon.com/workspaces/latest/adminguide/workspaces-access-control.html#create-default-role).
+#'
+#' @usage
+#' workspaces_register_workspace_directory(DirectoryId, SubnetIds,
+#'   EnableWorkDocs, EnableSelfService, Tenancy, Tags)
+#'
+#' @param DirectoryId &#91;required&#93; The identifier of the directory. You cannot register a directory if it
+#' does not have a status of Active. If the directory does not have a
+#' status of Active, you will receive an InvalidResourceStateException
+#' error. If you have already registered the maximum number of directories
+#' that you can register with Amazon WorkSpaces, you will receive a
+#' ResourceLimitExceededException error. Deregister directories that you
+#' are not using for WorkSpaces, and try again.
+#' @param SubnetIds The identifiers of the subnets for your virtual private cloud (VPC).
+#' Make sure that the subnets are in supported Availability Zones. The
+#' subnets must also be in separate Availability Zones. If these conditions
+#' are not met, you will receive an OperationNotSupportedException error.
+#' @param EnableWorkDocs &#91;required&#93; Indicates whether Amazon WorkDocs is enabled or disabled. If you have
+#' enabled this parameter and WorkDocs is not available in the Region, you
+#' will receive an OperationNotSupportedException error. Set
+#' `EnableWorkDocs` to disabled, and try again.
+#' @param EnableSelfService Indicates whether self-service capabilities are enabled or disabled.
+#' @param Tenancy Indicates whether your WorkSpace directory is dedicated or shared. To
+#' use Bring Your Own License (BYOL) images, this value must be set to
+#' `DEDICATED` and your AWS account must be enabled for BYOL. If your
+#' account has not been enabled for BYOL, you will receive an
+#' InvalidParameterValuesException error. For more information about BYOL
+#' images, see [Bring Your Own Windows Desktop
+#' Images](https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html).
+#' @param Tags The tags associated with the directory.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$register_workspace_directory(
+#'   DirectoryId = "string",
+#'   SubnetIds = list(
+#'     "string"
+#'   ),
+#'   EnableWorkDocs = TRUE|FALSE,
+#'   EnableSelfService = TRUE|FALSE,
+#'   Tenancy = "DEDICATED"|"SHARED",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_register_workspace_directory
+workspaces_register_workspace_directory <- function(DirectoryId, SubnetIds = NULL, EnableWorkDocs, EnableSelfService = NULL, Tenancy = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "RegisterWorkspaceDirectory",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$register_workspace_directory_input(DirectoryId = DirectoryId, SubnetIds = SubnetIds, EnableWorkDocs = EnableWorkDocs, EnableSelfService = EnableSelfService, Tenancy = Tenancy, Tags = Tags)
+  output <- .workspaces$register_workspace_directory_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$register_workspace_directory <- workspaces_register_workspace_directory
+
+#' Restores the specified WorkSpace to its last known healthy state
+#'
+#' Restores the specified WorkSpace to its last known healthy state.
+#' 
+#' You cannot restore a WorkSpace unless its state is ` AVAILABLE`,
+#' `ERROR`, or `UNHEALTHY`.
+#' 
+#' Restoring a WorkSpace is a potentially destructive action that can
+#' result in the loss of data. For more information, see [Restore a
+#' WorkSpace](https://docs.aws.amazon.com/workspaces/latest/adminguide/restore-workspace.html).
+#' 
+#' This operation is asynchronous and returns before the WorkSpace is
+#' completely restored.
+#'
+#' @usage
+#' workspaces_restore_workspace(WorkspaceId)
+#'
+#' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$restore_workspace(
+#'   WorkspaceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_restore_workspace
+workspaces_restore_workspace <- function(WorkspaceId) {
+  op <- new_operation(
+    name = "RestoreWorkspace",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$restore_workspace_input(WorkspaceId = WorkspaceId)
+  output <- .workspaces$restore_workspace_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$restore_workspace <- workspaces_restore_workspace
 
 #' Removes one or more rules from the specified IP access control group
 #'

@@ -3,6 +3,54 @@
 #' @include quicksight_service.R
 NULL
 
+.quicksight$cancel_ingestion_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), DataSetId = structure(logical(0), tags = list(location = "uri", locationName = "DataSetId", type = "string")), IngestionId = structure(logical(0), tags = list(location = "uri", locationName = "IngestionId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$cancel_ingestion_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), IngestionId = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$create_dashboard_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), DashboardId = structure(logical(0), tags = list(location = "uri", locationName = "DashboardId", type = "string")), Name = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(StringParameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), IntegerParameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "long"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), DecimalParameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "double"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), DateTimeParameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Permissions = structure(list(structure(list(Principal = structure(logical(0), tags = list(type = "string")), Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), SourceEntity = structure(list(SourceTemplate = structure(list(DataSetReferences = structure(list(structure(list(DataSetPlaceholder = structure(logical(0), tags = list(type = "string")), DataSetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), VersionDescription = structure(logical(0), tags = list(type = "string")), DashboardPublishOptions = structure(list(AdHocFilteringOption = structure(list(AvailabilityStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExportToCSVOption = structure(list(AvailabilityStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SheetControlsOption = structure(list(VisibilityState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$create_dashboard_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), VersionArn = structure(logical(0), tags = list(type = "string")), DashboardId = structure(logical(0), tags = list(type = "string")), CreationStatus = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$create_data_set_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), DataSetId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), PhysicalTableMap = structure(list(structure(list(RelationalTable = structure(list(DataSourceArn = structure(logical(0), tags = list(type = "string")), Schema = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), InputColumns = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), CustomSql = structure(list(DataSourceArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), SqlQuery = structure(logical(0), tags = list(type = "string")), Columns = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), S3Source = structure(list(DataSourceArn = structure(logical(0), tags = list(type = "string")), UploadSettings = structure(list(Format = structure(logical(0), tags = list(type = "string")), StartFromRow = structure(logical(0), tags = list(box = TRUE, type = "integer")), ContainsHeader = structure(logical(0), tags = list(box = TRUE, type = "boolean")), TextQualifier = structure(logical(0), tags = list(type = "string")), Delimiter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), InputColumns = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map")), LogicalTableMap = structure(list(structure(list(Alias = structure(logical(0), tags = list(type = "string")), DataTransforms = structure(list(structure(list(ProjectOperation = structure(list(ProjectedColumns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), FilterOperation = structure(list(ConditionExpression = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreateColumnsOperation = structure(list(Columns = structure(list(structure(list(ColumnName = structure(logical(0), tags = list(type = "string")), ColumnId = structure(logical(0), tags = list(type = "string")), Expression = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), RenameColumnOperation = structure(list(ColumnName = structure(logical(0), tags = list(type = "string")), NewColumnName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CastColumnTypeOperation = structure(list(ColumnName = structure(logical(0), tags = list(type = "string")), NewColumnType = structure(logical(0), tags = list(type = "string")), Format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TagColumnOperation = structure(list(ColumnName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(ColumnGeographicRole = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Source = structure(list(JoinInstruction = structure(list(LeftOperand = structure(logical(0), tags = list(type = "string")), RightOperand = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), OnClause = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PhysicalTableId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map")), ImportMode = structure(logical(0), tags = list(type = "string")), ColumnGroups = structure(list(structure(list(GeoSpatialColumnGroup = structure(list(Name = structure(logical(0), tags = list(type = "string")), CountryCode = structure(logical(0), tags = list(type = "string")), Columns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Permissions = structure(list(structure(list(Principal = structure(logical(0), tags = list(type = "string")), Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), RowLevelPermissionDataSet = structure(list(Arn = structure(logical(0), tags = list(type = "string")), PermissionPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$create_data_set_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), DataSetId = structure(logical(0), tags = list(type = "string")), IngestionArn = structure(logical(0), tags = list(type = "string")), IngestionId = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$create_data_source_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), DataSourceId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), DataSourceParameters = structure(list(AmazonElasticsearchParameters = structure(list(Domain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AthenaParameters = structure(list(WorkGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AuroraParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AuroraPostgreSqlParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AwsIotAnalyticsParameters = structure(list(DataSetName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), JiraParameters = structure(list(SiteBaseUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MariaDbParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MySqlParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PostgreSqlParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PrestoParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Catalog = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RdsParameters = structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RedshiftParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string")), ClusterId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3Parameters = structure(list(ManifestFileLocation = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ServiceNowParameters = structure(list(SiteBaseUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SnowflakeParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Database = structure(logical(0), tags = list(type = "string")), Warehouse = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SparkParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), SqlServerParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TeradataParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TwitterParameters = structure(list(Query = structure(logical(0), tags = list(type = "string")), MaxRows = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), Credentials = structure(list(CredentialPair = structure(list(Username = structure(logical(0), tags = list(type = "string")), Password = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", sensitive = TRUE)), Permissions = structure(list(structure(list(Principal = structure(logical(0), tags = list(type = "string")), Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), VpcConnectionProperties = structure(list(VpcConnectionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SslProperties = structure(list(DisableSsl = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$create_data_source_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), DataSourceId = structure(logical(0), tags = list(type = "string")), CreationStatus = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .quicksight$create_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), Namespace = structure(logical(0), tags = list(location = "uri", locationName = "Namespace", type = "string"))), tags = list(type = "structure"))
@@ -24,6 +72,90 @@ NULL
 .quicksight$create_group_membership_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GroupMember = structure(list(Arn = structure(logical(0), tags = list(type = "string")), MemberName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$create_iam_policy_assignment_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), AssignmentName = structure(logical(0), tags = list(type = "string")), AssignmentStatus = structure(logical(0), tags = list(type = "string")), PolicyArn = structure(logical(0), tags = list(type = "string")), Identities = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), Namespace = structure(logical(0), tags = list(location = "uri", locationName = "Namespace", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$create_iam_policy_assignment_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AssignmentName = structure(logical(0), tags = list(type = "string")), AssignmentId = structure(logical(0), tags = list(type = "string")), AssignmentStatus = structure(logical(0), tags = list(type = "string")), PolicyArn = structure(logical(0), tags = list(type = "string")), Identities = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$create_ingestion_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DataSetId = structure(logical(0), tags = list(location = "uri", locationName = "DataSetId", type = "string")), IngestionId = structure(logical(0), tags = list(location = "uri", locationName = "IngestionId", type = "string")), AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$create_ingestion_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), IngestionId = structure(logical(0), tags = list(type = "string")), IngestionStatus = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$create_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), TemplateId = structure(logical(0), tags = list(location = "uri", locationName = "TemplateId", type = "string")), Name = structure(logical(0), tags = list(type = "string")), Permissions = structure(list(structure(list(Principal = structure(logical(0), tags = list(type = "string")), Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), SourceEntity = structure(list(SourceAnalysis = structure(list(Arn = structure(logical(0), tags = list(type = "string")), DataSetReferences = structure(list(structure(list(DataSetPlaceholder = structure(logical(0), tags = list(type = "string")), DataSetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), SourceTemplate = structure(list(Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), VersionDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$create_template_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), VersionArn = structure(logical(0), tags = list(type = "string")), TemplateId = structure(logical(0), tags = list(type = "string")), CreationStatus = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$create_template_alias_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), TemplateId = structure(logical(0), tags = list(location = "uri", locationName = "TemplateId", type = "string")), AliasName = structure(logical(0), tags = list(location = "uri", locationName = "AliasName", type = "string")), TemplateVersionNumber = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$create_template_alias_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TemplateAlias = structure(list(AliasName = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), TemplateVersionNumber = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$delete_dashboard_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), DashboardId = structure(logical(0), tags = list(location = "uri", locationName = "DashboardId", type = "string")), VersionNumber = structure(logical(0), tags = list(location = "querystring", locationName = "version-number", type = "long"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$delete_dashboard_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Status = structure(logical(0), tags = list(location = "statusCode", type = "integer")), Arn = structure(logical(0), tags = list(type = "string")), DashboardId = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$delete_data_set_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), DataSetId = structure(logical(0), tags = list(location = "uri", locationName = "DataSetId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$delete_data_set_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), DataSetId = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$delete_data_source_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), DataSourceId = structure(logical(0), tags = list(location = "uri", locationName = "DataSourceId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$delete_data_source_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), DataSourceId = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -51,6 +183,42 @@ NULL
   return(populate(args, shape))
 }
 
+.quicksight$delete_iam_policy_assignment_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), AssignmentName = structure(logical(0), tags = list(location = "uri", locationName = "AssignmentName", type = "string")), Namespace = structure(logical(0), tags = list(location = "uri", locationName = "Namespace", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$delete_iam_policy_assignment_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AssignmentName = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$delete_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), TemplateId = structure(logical(0), tags = list(location = "uri", locationName = "TemplateId", type = "string")), VersionNumber = structure(logical(0), tags = list(location = "querystring", locationName = "version-number", type = "long"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$delete_template_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), TemplateId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$delete_template_alias_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), TemplateId = structure(logical(0), tags = list(location = "uri", locationName = "TemplateId", type = "string")), AliasName = structure(logical(0), tags = list(location = "uri", locationName = "AliasName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$delete_template_alias_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Status = structure(logical(0), tags = list(location = "statusCode", type = "integer")), TemplateId = structure(logical(0), tags = list(type = "string")), AliasName = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .quicksight$delete_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(UserName = structure(logical(0), tags = list(location = "uri", locationName = "UserName", type = "string")), AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), Namespace = structure(logical(0), tags = list(location = "uri", locationName = "Namespace", type = "string"))), tags = list(type = "structure"))
@@ -75,6 +243,78 @@ NULL
   return(populate(args, shape))
 }
 
+.quicksight$describe_dashboard_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), DashboardId = structure(logical(0), tags = list(location = "uri", locationName = "DashboardId", type = "string")), VersionNumber = structure(logical(0), tags = list(location = "querystring", locationName = "version-number", type = "long")), AliasName = structure(logical(0), tags = list(location = "querystring", locationName = "alias-name", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$describe_dashboard_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Dashboard = structure(list(DashboardId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(list(CreatedTime = structure(logical(0), tags = list(type = "timestamp")), Errors = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), VersionNumber = structure(logical(0), tags = list(type = "long")), Status = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), SourceEntityArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastPublishedTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$describe_dashboard_permissions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), DashboardId = structure(logical(0), tags = list(location = "uri", locationName = "DashboardId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$describe_dashboard_permissions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DashboardId = structure(logical(0), tags = list(type = "string")), DashboardArn = structure(logical(0), tags = list(type = "string")), Permissions = structure(list(structure(list(Principal = structure(logical(0), tags = list(type = "string")), Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$describe_data_set_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), DataSetId = structure(logical(0), tags = list(location = "uri", locationName = "DataSetId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$describe_data_set_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DataSet = structure(list(Arn = structure(logical(0), tags = list(type = "string")), DataSetId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), PhysicalTableMap = structure(list(structure(list(RelationalTable = structure(list(DataSourceArn = structure(logical(0), tags = list(type = "string")), Schema = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), InputColumns = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), CustomSql = structure(list(DataSourceArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), SqlQuery = structure(logical(0), tags = list(type = "string")), Columns = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), S3Source = structure(list(DataSourceArn = structure(logical(0), tags = list(type = "string")), UploadSettings = structure(list(Format = structure(logical(0), tags = list(type = "string")), StartFromRow = structure(logical(0), tags = list(box = TRUE, type = "integer")), ContainsHeader = structure(logical(0), tags = list(box = TRUE, type = "boolean")), TextQualifier = structure(logical(0), tags = list(type = "string")), Delimiter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), InputColumns = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map")), LogicalTableMap = structure(list(structure(list(Alias = structure(logical(0), tags = list(type = "string")), DataTransforms = structure(list(structure(list(ProjectOperation = structure(list(ProjectedColumns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), FilterOperation = structure(list(ConditionExpression = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreateColumnsOperation = structure(list(Columns = structure(list(structure(list(ColumnName = structure(logical(0), tags = list(type = "string")), ColumnId = structure(logical(0), tags = list(type = "string")), Expression = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), RenameColumnOperation = structure(list(ColumnName = structure(logical(0), tags = list(type = "string")), NewColumnName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CastColumnTypeOperation = structure(list(ColumnName = structure(logical(0), tags = list(type = "string")), NewColumnType = structure(logical(0), tags = list(type = "string")), Format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TagColumnOperation = structure(list(ColumnName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(ColumnGeographicRole = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Source = structure(list(JoinInstruction = structure(list(LeftOperand = structure(logical(0), tags = list(type = "string")), RightOperand = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), OnClause = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PhysicalTableId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map")), OutputColumns = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ImportMode = structure(logical(0), tags = list(type = "string")), ConsumedSpiceCapacityInBytes = structure(logical(0), tags = list(type = "long")), ColumnGroups = structure(list(structure(list(GeoSpatialColumnGroup = structure(list(Name = structure(logical(0), tags = list(type = "string")), CountryCode = structure(logical(0), tags = list(type = "string")), Columns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), RowLevelPermissionDataSet = structure(list(Arn = structure(logical(0), tags = list(type = "string")), PermissionPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$describe_data_set_permissions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), DataSetId = structure(logical(0), tags = list(location = "uri", locationName = "DataSetId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$describe_data_set_permissions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DataSetArn = structure(logical(0), tags = list(type = "string")), DataSetId = structure(logical(0), tags = list(type = "string")), Permissions = structure(list(structure(list(Principal = structure(logical(0), tags = list(type = "string")), Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$describe_data_source_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), DataSourceId = structure(logical(0), tags = list(location = "uri", locationName = "DataSourceId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$describe_data_source_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DataSource = structure(list(Arn = structure(logical(0), tags = list(type = "string")), DataSourceId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), DataSourceParameters = structure(list(AmazonElasticsearchParameters = structure(list(Domain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AthenaParameters = structure(list(WorkGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AuroraParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AuroraPostgreSqlParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AwsIotAnalyticsParameters = structure(list(DataSetName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), JiraParameters = structure(list(SiteBaseUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MariaDbParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MySqlParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PostgreSqlParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PrestoParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Catalog = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RdsParameters = structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RedshiftParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string")), ClusterId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3Parameters = structure(list(ManifestFileLocation = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ServiceNowParameters = structure(list(SiteBaseUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SnowflakeParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Database = structure(logical(0), tags = list(type = "string")), Warehouse = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SparkParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), SqlServerParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TeradataParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TwitterParameters = structure(list(Query = structure(logical(0), tags = list(type = "string")), MaxRows = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), VpcConnectionProperties = structure(list(VpcConnectionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SslProperties = structure(list(DisableSsl = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ErrorInfo = structure(list(Type = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$describe_data_source_permissions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), DataSourceId = structure(logical(0), tags = list(location = "uri", locationName = "DataSourceId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$describe_data_source_permissions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DataSourceArn = structure(logical(0), tags = list(type = "string")), DataSourceId = structure(logical(0), tags = list(type = "string")), Permissions = structure(list(structure(list(Principal = structure(logical(0), tags = list(type = "string")), Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .quicksight$describe_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GroupName = structure(logical(0), tags = list(location = "uri", locationName = "GroupName", type = "string")), AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), Namespace = structure(logical(0), tags = list(location = "uri", locationName = "Namespace", type = "string"))), tags = list(type = "structure"))
@@ -84,6 +324,66 @@ NULL
 .quicksight$describe_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Group = structure(list(Arn = structure(logical(0), tags = list(type = "string")), GroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), PrincipalId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$describe_iam_policy_assignment_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), AssignmentName = structure(logical(0), tags = list(location = "uri", locationName = "AssignmentName", type = "string")), Namespace = structure(logical(0), tags = list(location = "uri", locationName = "Namespace", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$describe_iam_policy_assignment_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IAMPolicyAssignment = structure(list(AwsAccountId = structure(logical(0), tags = list(type = "string")), AssignmentId = structure(logical(0), tags = list(type = "string")), AssignmentName = structure(logical(0), tags = list(type = "string")), PolicyArn = structure(logical(0), tags = list(type = "string")), Identities = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), AssignmentStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$describe_ingestion_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), DataSetId = structure(logical(0), tags = list(location = "uri", locationName = "DataSetId", type = "string")), IngestionId = structure(logical(0), tags = list(location = "uri", locationName = "IngestionId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$describe_ingestion_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Ingestion = structure(list(Arn = structure(logical(0), tags = list(type = "string")), IngestionId = structure(logical(0), tags = list(type = "string")), IngestionStatus = structure(logical(0), tags = list(type = "string")), ErrorInfo = structure(list(Type = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RowInfo = structure(list(RowsIngested = structure(logical(0), tags = list(box = TRUE, type = "long")), RowsDropped = structure(logical(0), tags = list(box = TRUE, type = "long"))), tags = list(type = "structure")), QueueInfo = structure(list(WaitingOnIngestion = structure(logical(0), tags = list(type = "string")), QueuedIngestion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), IngestionTimeInSeconds = structure(logical(0), tags = list(box = TRUE, type = "long")), IngestionSizeInBytes = structure(logical(0), tags = list(box = TRUE, type = "long")), RequestSource = structure(logical(0), tags = list(type = "string")), RequestType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$describe_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), TemplateId = structure(logical(0), tags = list(location = "uri", locationName = "TemplateId", type = "string")), VersionNumber = structure(logical(0), tags = list(location = "querystring", locationName = "version-number", type = "long")), AliasName = structure(logical(0), tags = list(location = "querystring", locationName = "alias-name", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$describe_template_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Template = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(list(CreatedTime = structure(logical(0), tags = list(type = "timestamp")), Errors = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), VersionNumber = structure(logical(0), tags = list(type = "long")), Status = structure(logical(0), tags = list(type = "string")), DataSetConfigurations = structure(list(structure(list(Placeholder = structure(logical(0), tags = list(type = "string")), DataSetSchema = structure(list(ColumnSchemaList = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), DataType = structure(logical(0), tags = list(type = "string")), GeographicRole = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), ColumnGroupSchemaList = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), ColumnGroupColumnSchemaList = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Description = structure(logical(0), tags = list(type = "string")), SourceEntityArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TemplateId = structure(logical(0), tags = list(type = "string")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), CreatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$describe_template_alias_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), TemplateId = structure(logical(0), tags = list(location = "uri", locationName = "TemplateId", type = "string")), AliasName = structure(logical(0), tags = list(location = "uri", locationName = "AliasName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$describe_template_alias_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TemplateAlias = structure(list(AliasName = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), TemplateVersionNumber = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$describe_template_permissions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), TemplateId = structure(logical(0), tags = list(location = "uri", locationName = "TemplateId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$describe_template_permissions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TemplateId = structure(logical(0), tags = list(type = "string")), TemplateArn = structure(logical(0), tags = list(type = "string")), Permissions = structure(list(structure(list(Principal = structure(logical(0), tags = list(type = "string")), Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -111,6 +411,54 @@ NULL
   return(populate(args, shape))
 }
 
+.quicksight$list_dashboard_versions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), DashboardId = structure(logical(0), tags = list(location = "uri", locationName = "DashboardId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "max-results", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$list_dashboard_versions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DashboardVersionSummaryList = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), VersionNumber = structure(logical(0), tags = list(type = "long")), Status = structure(logical(0), tags = list(type = "string")), SourceEntityArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$list_dashboards_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "max-results", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$list_dashboards_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DashboardSummaryList = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), DashboardId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), PublishedVersionNumber = structure(logical(0), tags = list(type = "long")), LastPublishedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$list_data_sets_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "max-results", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$list_data_sets_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DataSetSummaries = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), DataSetId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), ImportMode = structure(logical(0), tags = list(type = "string")), RowLevelPermissionDataSet = structure(list(Arn = structure(logical(0), tags = list(type = "string")), PermissionPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$list_data_sources_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "max-results", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$list_data_sources_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DataSources = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), DataSourceId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), DataSourceParameters = structure(list(AmazonElasticsearchParameters = structure(list(Domain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AthenaParameters = structure(list(WorkGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AuroraParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AuroraPostgreSqlParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AwsIotAnalyticsParameters = structure(list(DataSetName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), JiraParameters = structure(list(SiteBaseUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MariaDbParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MySqlParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PostgreSqlParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PrestoParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Catalog = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RdsParameters = structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RedshiftParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string")), ClusterId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3Parameters = structure(list(ManifestFileLocation = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ServiceNowParameters = structure(list(SiteBaseUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SnowflakeParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Database = structure(logical(0), tags = list(type = "string")), Warehouse = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SparkParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), SqlServerParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TeradataParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TwitterParameters = structure(list(Query = structure(logical(0), tags = list(type = "string")), MaxRows = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), VpcConnectionProperties = structure(list(VpcConnectionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SslProperties = structure(list(DisableSsl = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ErrorInfo = structure(list(Type = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .quicksight$list_group_memberships_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GroupName = structure(logical(0), tags = list(location = "uri", locationName = "GroupName", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "max-results", type = "integer")), AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), Namespace = structure(logical(0), tags = list(location = "uri", locationName = "Namespace", type = "string"))), tags = list(type = "structure"))
@@ -132,6 +480,90 @@ NULL
 .quicksight$list_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GroupList = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), GroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), PrincipalId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$list_iam_policy_assignments_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), AssignmentStatus = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(location = "uri", locationName = "Namespace", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "max-results", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$list_iam_policy_assignments_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IAMPolicyAssignments = structure(list(structure(list(AssignmentName = structure(logical(0), tags = list(type = "string")), AssignmentStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$list_iam_policy_assignments_for_user_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), UserName = structure(logical(0), tags = list(location = "uri", locationName = "UserName", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "max-results", type = "integer")), Namespace = structure(logical(0), tags = list(location = "uri", locationName = "Namespace", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$list_iam_policy_assignments_for_user_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ActiveAssignments = structure(list(structure(list(AssignmentName = structure(logical(0), tags = list(type = "string")), PolicyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RequestId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$list_ingestions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DataSetId = structure(logical(0), tags = list(location = "uri", locationName = "DataSetId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "max-results", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$list_ingestions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Ingestions = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), IngestionId = structure(logical(0), tags = list(type = "string")), IngestionStatus = structure(logical(0), tags = list(type = "string")), ErrorInfo = structure(list(Type = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RowInfo = structure(list(RowsIngested = structure(logical(0), tags = list(box = TRUE, type = "long")), RowsDropped = structure(logical(0), tags = list(box = TRUE, type = "long"))), tags = list(type = "structure")), QueueInfo = structure(list(WaitingOnIngestion = structure(logical(0), tags = list(type = "string")), QueuedIngestion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), IngestionTimeInSeconds = structure(logical(0), tags = list(box = TRUE, type = "long")), IngestionSizeInBytes = structure(logical(0), tags = list(box = TRUE, type = "long")), RequestSource = structure(logical(0), tags = list(type = "string")), RequestType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$list_template_aliases_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), TemplateId = structure(logical(0), tags = list(location = "uri", locationName = "TemplateId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "max-result", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$list_template_aliases_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TemplateAliasList = structure(list(structure(list(AliasName = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), TemplateVersionNumber = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer")), RequestId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$list_template_versions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), TemplateId = structure(logical(0), tags = list(location = "uri", locationName = "TemplateId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "max-results", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$list_template_versions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TemplateVersionSummaryList = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), VersionNumber = structure(logical(0), tags = list(type = "long")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$list_templates_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "max-result", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$list_templates_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TemplateSummaryList = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), TemplateId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), LatestVersionNumber = structure(logical(0), tags = list(type = "long")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -171,6 +603,114 @@ NULL
   return(populate(args, shape))
 }
 
+.quicksight$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "keys", type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$update_dashboard_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), DashboardId = structure(logical(0), tags = list(location = "uri", locationName = "DashboardId", type = "string")), Name = structure(logical(0), tags = list(type = "string")), SourceEntity = structure(list(SourceTemplate = structure(list(DataSetReferences = structure(list(structure(list(DataSetPlaceholder = structure(logical(0), tags = list(type = "string")), DataSetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Parameters = structure(list(StringParameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), IntegerParameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "long"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), DecimalParameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "double"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), DateTimeParameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), VersionDescription = structure(logical(0), tags = list(type = "string")), DashboardPublishOptions = structure(list(AdHocFilteringOption = structure(list(AvailabilityStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExportToCSVOption = structure(list(AvailabilityStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SheetControlsOption = structure(list(VisibilityState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$update_dashboard_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), VersionArn = structure(logical(0), tags = list(type = "string")), DashboardId = structure(logical(0), tags = list(type = "string")), CreationStatus = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "integer")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$update_dashboard_permissions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), DashboardId = structure(logical(0), tags = list(location = "uri", locationName = "DashboardId", type = "string")), GrantPermissions = structure(list(structure(list(Principal = structure(logical(0), tags = list(type = "string")), Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), RevokePermissions = structure(list(structure(list(Principal = structure(logical(0), tags = list(type = "string")), Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$update_dashboard_permissions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DashboardArn = structure(logical(0), tags = list(type = "string")), DashboardId = structure(logical(0), tags = list(type = "string")), Permissions = structure(list(structure(list(Principal = structure(logical(0), tags = list(type = "string")), Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$update_dashboard_published_version_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), DashboardId = structure(logical(0), tags = list(location = "uri", locationName = "DashboardId", type = "string")), VersionNumber = structure(logical(0), tags = list(location = "uri", locationName = "VersionNumber", type = "long"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$update_dashboard_published_version_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DashboardId = structure(logical(0), tags = list(type = "string")), DashboardArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$update_data_set_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), DataSetId = structure(logical(0), tags = list(location = "uri", locationName = "DataSetId", type = "string")), Name = structure(logical(0), tags = list(type = "string")), PhysicalTableMap = structure(list(structure(list(RelationalTable = structure(list(DataSourceArn = structure(logical(0), tags = list(type = "string")), Schema = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), InputColumns = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), CustomSql = structure(list(DataSourceArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), SqlQuery = structure(logical(0), tags = list(type = "string")), Columns = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), S3Source = structure(list(DataSourceArn = structure(logical(0), tags = list(type = "string")), UploadSettings = structure(list(Format = structure(logical(0), tags = list(type = "string")), StartFromRow = structure(logical(0), tags = list(box = TRUE, type = "integer")), ContainsHeader = structure(logical(0), tags = list(box = TRUE, type = "boolean")), TextQualifier = structure(logical(0), tags = list(type = "string")), Delimiter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), InputColumns = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map")), LogicalTableMap = structure(list(structure(list(Alias = structure(logical(0), tags = list(type = "string")), DataTransforms = structure(list(structure(list(ProjectOperation = structure(list(ProjectedColumns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), FilterOperation = structure(list(ConditionExpression = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreateColumnsOperation = structure(list(Columns = structure(list(structure(list(ColumnName = structure(logical(0), tags = list(type = "string")), ColumnId = structure(logical(0), tags = list(type = "string")), Expression = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), RenameColumnOperation = structure(list(ColumnName = structure(logical(0), tags = list(type = "string")), NewColumnName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CastColumnTypeOperation = structure(list(ColumnName = structure(logical(0), tags = list(type = "string")), NewColumnType = structure(logical(0), tags = list(type = "string")), Format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TagColumnOperation = structure(list(ColumnName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(ColumnGeographicRole = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Source = structure(list(JoinInstruction = structure(list(LeftOperand = structure(logical(0), tags = list(type = "string")), RightOperand = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), OnClause = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PhysicalTableId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map")), ImportMode = structure(logical(0), tags = list(type = "string")), ColumnGroups = structure(list(structure(list(GeoSpatialColumnGroup = structure(list(Name = structure(logical(0), tags = list(type = "string")), CountryCode = structure(logical(0), tags = list(type = "string")), Columns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), RowLevelPermissionDataSet = structure(list(Arn = structure(logical(0), tags = list(type = "string")), PermissionPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$update_data_set_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), DataSetId = structure(logical(0), tags = list(type = "string")), IngestionArn = structure(logical(0), tags = list(type = "string")), IngestionId = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$update_data_set_permissions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), DataSetId = structure(logical(0), tags = list(location = "uri", locationName = "DataSetId", type = "string")), GrantPermissions = structure(list(structure(list(Principal = structure(logical(0), tags = list(type = "string")), Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), RevokePermissions = structure(list(structure(list(Principal = structure(logical(0), tags = list(type = "string")), Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$update_data_set_permissions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DataSetArn = structure(logical(0), tags = list(type = "string")), DataSetId = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$update_data_source_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), DataSourceId = structure(logical(0), tags = list(location = "uri", locationName = "DataSourceId", type = "string")), Name = structure(logical(0), tags = list(type = "string")), DataSourceParameters = structure(list(AmazonElasticsearchParameters = structure(list(Domain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AthenaParameters = structure(list(WorkGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AuroraParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AuroraPostgreSqlParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AwsIotAnalyticsParameters = structure(list(DataSetName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), JiraParameters = structure(list(SiteBaseUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MariaDbParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MySqlParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PostgreSqlParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PrestoParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Catalog = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RdsParameters = structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RedshiftParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string")), ClusterId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3Parameters = structure(list(ManifestFileLocation = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ServiceNowParameters = structure(list(SiteBaseUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SnowflakeParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Database = structure(logical(0), tags = list(type = "string")), Warehouse = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SparkParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), SqlServerParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TeradataParameters = structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Database = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TwitterParameters = structure(list(Query = structure(logical(0), tags = list(type = "string")), MaxRows = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), Credentials = structure(list(CredentialPair = structure(list(Username = structure(logical(0), tags = list(type = "string")), Password = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", sensitive = TRUE)), VpcConnectionProperties = structure(list(VpcConnectionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SslProperties = structure(list(DisableSsl = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$update_data_source_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), DataSourceId = structure(logical(0), tags = list(type = "string")), UpdateStatus = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$update_data_source_permissions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), DataSourceId = structure(logical(0), tags = list(location = "uri", locationName = "DataSourceId", type = "string")), GrantPermissions = structure(list(structure(list(Principal = structure(logical(0), tags = list(type = "string")), Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), RevokePermissions = structure(list(structure(list(Principal = structure(logical(0), tags = list(type = "string")), Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$update_data_source_permissions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DataSourceArn = structure(logical(0), tags = list(type = "string")), DataSourceId = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .quicksight$update_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GroupName = structure(logical(0), tags = list(location = "uri", locationName = "GroupName", type = "string")), Description = structure(logical(0), tags = list(type = "string")), AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), Namespace = structure(logical(0), tags = list(location = "uri", locationName = "Namespace", type = "string"))), tags = list(type = "structure"))
@@ -180,6 +720,54 @@ NULL
 .quicksight$update_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Group = structure(list(Arn = structure(logical(0), tags = list(type = "string")), GroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), PrincipalId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$update_iam_policy_assignment_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), AssignmentName = structure(logical(0), tags = list(location = "uri", locationName = "AssignmentName", type = "string")), Namespace = structure(logical(0), tags = list(location = "uri", locationName = "Namespace", type = "string")), AssignmentStatus = structure(logical(0), tags = list(type = "string")), PolicyArn = structure(logical(0), tags = list(type = "string")), Identities = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$update_iam_policy_assignment_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AssignmentName = structure(logical(0), tags = list(type = "string")), AssignmentId = structure(logical(0), tags = list(type = "string")), PolicyArn = structure(logical(0), tags = list(type = "string")), Identities = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), AssignmentStatus = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$update_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), TemplateId = structure(logical(0), tags = list(location = "uri", locationName = "TemplateId", type = "string")), SourceEntity = structure(list(SourceAnalysis = structure(list(Arn = structure(logical(0), tags = list(type = "string")), DataSetReferences = structure(list(structure(list(DataSetPlaceholder = structure(logical(0), tags = list(type = "string")), DataSetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), SourceTemplate = structure(list(Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), VersionDescription = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$update_template_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TemplateId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), VersionArn = structure(logical(0), tags = list(type = "string")), CreationStatus = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$update_template_alias_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), TemplateId = structure(logical(0), tags = list(location = "uri", locationName = "TemplateId", type = "string")), AliasName = structure(logical(0), tags = list(location = "uri", locationName = "AliasName", type = "string")), TemplateVersionNumber = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$update_template_alias_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TemplateAlias = structure(list(AliasName = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), TemplateVersionNumber = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$update_template_permissions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AwsAccountId = structure(logical(0), tags = list(location = "uri", locationName = "AwsAccountId", type = "string")), TemplateId = structure(logical(0), tags = list(location = "uri", locationName = "TemplateId", type = "string")), GrantPermissions = structure(list(structure(list(Principal = structure(logical(0), tags = list(type = "string")), Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), RevokePermissions = structure(list(structure(list(Principal = structure(logical(0), tags = list(type = "string")), Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.quicksight$update_template_permissions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TemplateId = structure(logical(0), tags = list(type = "string")), TemplateArn = structure(logical(0), tags = list(type = "string")), Permissions = structure(list(structure(list(Principal = structure(logical(0), tags = list(type = "string")), Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), RequestId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

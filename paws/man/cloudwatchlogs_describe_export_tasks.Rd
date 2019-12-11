@@ -17,7 +17,7 @@ results to zero or more export tasks.}
 \item{nextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 
-\item{limit}{The maximum number of items returned. If you don't specify a value, the
+\item{limit}{The maximum number of items returned. If you don\'t specify a value, the
 default is up to 50 items.}
 }
 \description{

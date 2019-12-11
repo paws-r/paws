@@ -17,7 +17,7 @@ swf_register_workflow_type(domain, name, version, description,
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\code{U+0000`-`U+001f} \| \code{U+007f`-`U+009f}). Also, it must not \emph{be}
+characters (\verb{U+0000`-`U+001f} \\| \verb{U+007f`-`U+009f}). Also, it must not \emph{be}
 the literal string \code{arn}.}
 
 \item{version}{[required] The version of the workflow type.
@@ -28,7 +28,7 @@ registered workflow types, use the ListWorkflowTypes action.
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\code{U+0000`-`U+001f} \| \code{U+007f`-`U+009f}). Also, it must not \emph{be}
+characters (\verb{U+0000`-`U+001f} \\| \verb{U+007f`-`U+009f}). Also, it must not \emph{be}
 the literal string \code{arn}.}
 
 \item{description}{Textual description of the workflow type.}
@@ -48,19 +48,19 @@ through the StartWorkflowExecution Action or
 
 The duration is specified in seconds; an integer greater than or equal
 to 0. Unlike some of the other timeout parameters in Amazon SWF, you
-cannot specify a value of "NONE" for
+cannot specify a value of \"NONE\" for
 \code{defaultExecutionStartToCloseTimeout}; there is a one-year max limit on
 the time that a workflow execution can run. Exceeding this limit always
 causes the workflow execution to time out.}
 
 \item{defaultTaskList}{If set, specifies the default task list to use for scheduling decision
 tasks for executions of this workflow type. This default is used only if
-a task list isn't provided when starting the execution through the
+a task list isn\'t provided when starting the execution through the
 StartWorkflowExecution Action or \code{StartChildWorkflowExecution} Decision.}
 
 \item{defaultTaskPriority}{The default task priority to assign to the workflow type. If not
 assigned, then \code{0} is used. Valid values are integers that range from
-Java's \code{Integer.MIN_VALUE} (-2147483648) to \code{Integer.MAX_VALUE}
+Java\'s \code{Integer.MIN_VALUE} (-2147483648) to \code{Integer.MAX_VALUE}
 (2147483647). Higher numbers indicate higher priority.
 
 For more information about setting task priority, see \href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html}{Setting Task Priority}
@@ -87,7 +87,7 @@ run.
 \item{defaultLambdaRole}{The default IAM role attached to this workflow type.
 
 Executions of this workflow type need IAM roles to invoke Lambda
-functions. If you don't specify an IAM role when you start this
+functions. If you don\'t specify an IAM role when you start this
 workflow type, the default Lambda role is attached to the execution. For
 more information, see
 \url{https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html}
@@ -107,7 +107,7 @@ type once it is registered and it must be registered as a new version.
 
 \strong{Access Control}
 
-You can use IAM policies to control this action's access to Amazon SWF
+You can use IAM policies to control this action\'s access to Amazon SWF
 resources as follows:
 \itemize{
 \item Use a \code{Resource} element with the domain name to limit the action to
@@ -116,15 +116,17 @@ only specified domains.
 action.
 \item Constrain the following parameters by using a \code{Condition} element
 with the appropriate keys.
+\itemize{
 \item \code{defaultTaskList.name}: String constraint. The key is
 \code{swf:defaultTaskList.name}.
 \item \code{name}: String constraint. The key is \code{swf:name}.
 \item \code{version}: String constraint. The key is \code{swf:version}.
 }
+}
 
-If the caller doesn't have sufficient permissions to invoke the action,
+If the caller doesn\'t have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
-action fails. The associated event attribute's \code{cause} parameter is set
+action fails. The associated event attribute\'s \code{cause} parameter is set
 to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 \href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
 in the \emph{Amazon SWF Developer Guide}.

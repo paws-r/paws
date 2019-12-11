@@ -11,7 +11,7 @@ kinesis_enable_enhanced_monitoring(StreamName, ShardLevelMetrics)
 
 \item{ShardLevelMetrics}{[required] List of shard-level metrics to enable.
 
-The following are the valid shard-level metrics. The value "\code{ALL}"
+The following are the valid shard-level metrics. The value \"\code{ALL}\"
 enables every metric.
 \itemize{
 \item \code{IncomingBytes}

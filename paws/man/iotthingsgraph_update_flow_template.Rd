@@ -12,11 +12,11 @@ iotthingsgraph_update_flow_template(id, definition,
 
 The ID should be in the following format.
 
-\code{urn:tdm:REGION/ACCOUNT ID/default:workflow:WORKFLOWNAME}}
+\verb{urn:tdm:REGION/ACCOUNT ID/default:workflow:WORKFLOWNAME}}
 
 \item{definition}{[required] The \code{DefinitionDocument} that contains the updated workflow definition.}
 
-\item{compatibleNamespaceVersion}{The version of the user's namespace.
+\item{compatibleNamespaceVersion}{The version of the user\'s namespace.
 
 If no value is specified, the latest version is used by default. Use the
 \code{GetFlowTemplateRevisions} if you want to find earlier revisions of the
@@ -25,7 +25,7 @@ flow to update.}
 \description{
 Updates the specified workflow. All deployed systems and system
 instances that use the workflow will see the changes in the flow when it
-is redeployed. If you don't want this behavior, copy the workflow
+is redeployed. If you don\'t want this behavior, copy the workflow
 (creating a new workflow with a different ID), and update the copy. The
 workflow can contain only entities in the specified namespace.
 }

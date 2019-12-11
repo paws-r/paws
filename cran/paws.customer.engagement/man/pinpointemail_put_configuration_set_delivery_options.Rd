@@ -11,8 +11,11 @@ pinpointemail_put_configuration_set_delivery_options(
 \item{ConfigurationSetName}{[required] The name of the configuration set that you want to associate with a
 dedicated IP pool.}
 
-\item{TlsPolicy}{Whether Amazon Pinpoint should require that incoming email is delivered
-over a connection encrypted with Transport Layer Security (TLS).}
+\item{TlsPolicy}{Specifies whether messages that use the configuration set are required
+to use Transport Layer Security (TLS). If the value is \code{Require},
+messages are only delivered if a TLS connection can be established. If
+the value is \code{Optional}, messages can be delivered in plain text if a
+TLS connection can\'t be established.}
 
 \item{SendingPoolName}{The name of the dedicated IP pool that you want to associate with the
 configuration set.}

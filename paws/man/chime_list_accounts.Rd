@@ -17,9 +17,9 @@ chime_list_accounts(Name, UserEmail, NextToken, MaxResults)
 100.}
 }
 \description{
-Lists the Amazon Chime accounts under the administrator's AWS account.
+Lists the Amazon Chime accounts under the administrator\'s AWS account.
 You can filter accounts by account name prefix. To find out which Amazon
-Chime account a user belongs to, you can filter by the user's email
+Chime account a user belongs to, you can filter by the user\'s email
 address, which returns one account result.
 }
 \section{Request syntax}{

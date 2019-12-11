@@ -10,10 +10,10 @@ rds_describe_account_attributes()
 Lists all of the attributes for a customer account. The attributes
 include Amazon RDS quotas for the account, such as the number of DB
 instances allowed. The description for a quota includes the quota name,
-current usage toward that quota, and the quota's maximum value.
+current usage toward that quota, and the quota\'s maximum value.
 }
 \details{
-This command doesn't take any parameters.
+This command doesn\'t take any parameters.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_account_attributes()

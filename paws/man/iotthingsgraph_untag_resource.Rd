@@ -10,7 +10,7 @@ iotthingsgraph_untag_resource(resourceArn, tagKeys)
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource whose tags are to be
 removed.}
 
-\item{tagKeys}{[required] A list of tag key names to remove from the resource. You don't specify
+\item{tagKeys}{[required] A list of tag key names to remove from the resource. You don\'t specify
 the value. Both the key and its associated value are removed.
 
 This parameter to the API requires a JSON text string argument. For

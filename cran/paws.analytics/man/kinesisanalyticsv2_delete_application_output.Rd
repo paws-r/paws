@@ -24,7 +24,7 @@ the DescribeApplication operation to get the specific \code{OutputId}.}
 }
 \description{
 Deletes the output destination configuration from your SQL-based Amazon
-Kinesis Data Analytics application's configuration. Kinesis Data
+Kinesis Data Analytics application\'s configuration. Kinesis Data
 Analytics will no longer write data from the corresponding
 in-application stream to the external output destination.
 }

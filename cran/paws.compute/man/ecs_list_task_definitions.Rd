@@ -27,10 +27,10 @@ last. Setting this parameter to \code{DESC} reverses the sort order on family
 name and revision so that the newest task definitions in a family are
 listed first.}
 
-\item{nextToken}{The \code{nextToken} value returned from a previous paginated
-\code{ListTaskDefinitions} request where \code{maxResults} was used and the
-results exceeded the value of that parameter. Pagination continues from
-the end of the previous results that returned the \code{nextToken} value.
+\item{nextToken}{The \code{nextToken} value returned from a \code{ListTaskDefinitions} request
+indicating that more results are available to fulfill the request and
+further calls will be needed. If \code{maxResults} was provided, it is
+possible the number of results to be fewer than \code{maxResults}.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic

@@ -15,7 +15,7 @@ administrative API actions, as in accessing the API using AWS
 credentials.}
 }
 \description{
-Deactivates the specified user, which revokes the user's access to
+Deactivates the specified user, which revokes the user\'s access to
 Amazon WorkDocs.
 }
 \section{Request syntax}{

@@ -86,7 +86,7 @@ batch <- function(config = list()) {
 #' 
 #' To learn more, see the following resources:
 #' 
-#' -   Amazon EC2: [Amazon EC2 product page](http://aws.amazon.com/ec2),
+#' -   Amazon EC2: [AmazonEC2 product page](http://aws.amazon.com/ec2),
 #'     [Amazon EC2 documentation](http://aws.amazon.com/documentation/ec2)
 #' 
 #' -   Amazon EBS: [Amazon EBS product page](http://aws.amazon.com/ebs),
@@ -132,6 +132,7 @@ batch <- function(config = list()) {
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=ec2_accept_reserved_instances_exchange_quote]{accept_reserved_instances_exchange_quote} \tab Accepts the Convertible Reserved Instance exchange quote described in the GetReservedInstancesExchangeQuote call \cr
+#'  \link[=ec2_accept_transit_gateway_peering_attachment]{accept_transit_gateway_peering_attachment} \tab Accepts a transit gateway peering attachment request \cr
 #'  \link[=ec2_accept_transit_gateway_vpc_attachment]{accept_transit_gateway_vpc_attachment} \tab Accepts a request to attach a VPC to a transit gateway \cr
 #'  \link[=ec2_accept_vpc_endpoint_connections]{accept_vpc_endpoint_connections} \tab Accepts one or more interface VPC endpoint connection requests to your VPC endpoint service \cr
 #'  \link[=ec2_accept_vpc_peering_connection]{accept_vpc_peering_connection} \tab Accept a VPC peering connection request \cr
@@ -145,12 +146,13 @@ batch <- function(config = list()) {
 #'  \link[=ec2_associate_client_vpn_target_network]{associate_client_vpn_target_network} \tab Associates a target network with a Client VPN endpoint \cr
 #'  \link[=ec2_associate_dhcp_options]{associate_dhcp_options} \tab Associates a set of DHCP options (that you've previously created) with the specified VPC, or associates no DHCP options with the VPC \cr
 #'  \link[=ec2_associate_iam_instance_profile]{associate_iam_instance_profile} \tab Associates an IAM instance profile with a running or stopped instance \cr
-#'  \link[=ec2_associate_route_table]{associate_route_table} \tab Associates a subnet with a route table \cr
+#'  \link[=ec2_associate_route_table]{associate_route_table} \tab Associates a subnet in your VPC or an internet gateway or virtual private gateway attached to your VPC with a route table in your VPC \cr
 #'  \link[=ec2_associate_subnet_cidr_block]{associate_subnet_cidr_block} \tab Associates a CIDR block with your subnet \cr
+#'  \link[=ec2_associate_transit_gateway_multicast_domain]{associate_transit_gateway_multicast_domain} \tab Associates the specified subnets and transit gateway attachments with the specified transit gateway multicast domain \cr
 #'  \link[=ec2_associate_transit_gateway_route_table]{associate_transit_gateway_route_table} \tab Associates the specified attachment with the specified transit gateway route table \cr
 #'  \link[=ec2_associate_vpc_cidr_block]{associate_vpc_cidr_block} \tab Associates a CIDR block with your VPC \cr
 #'  \link[=ec2_attach_classic_link_vpc]{attach_classic_link_vpc} \tab Links an EC2-Classic instance to a ClassicLink-enabled VPC through one or more of the VPC's security groups \cr
-#'  \link[=ec2_attach_internet_gateway]{attach_internet_gateway} \tab Attaches an internet gateway to a VPC, enabling connectivity between the internet and the VPC \cr
+#'  \link[=ec2_attach_internet_gateway]{attach_internet_gateway} \tab Attaches an internet gateway or a virtual private gateway to a VPC, enabling connectivity between the internet and the VPC \cr
 #'  \link[=ec2_attach_network_interface]{attach_network_interface} \tab Attaches a network interface to an instance \cr
 #'  \link[=ec2_attach_volume]{attach_volume} \tab Attaches an EBS volume to a running or stopped instance and exposes it to the instance with the specified device name \cr
 #'  \link[=ec2_attach_vpn_gateway]{attach_vpn_gateway} \tab Attaches a virtual private gateway to a VPC \cr
@@ -187,6 +189,8 @@ batch <- function(config = list()) {
 #'  \link[=ec2_create_key_pair]{create_key_pair} \tab Creates a 2048-bit RSA key pair with the specified name \cr
 #'  \link[=ec2_create_launch_template]{create_launch_template} \tab Creates a launch template \cr
 #'  \link[=ec2_create_launch_template_version]{create_launch_template_version} \tab Creates a new version for a launch template \cr
+#'  \link[=ec2_create_local_gateway_route]{create_local_gateway_route} \tab Creates a static route for the specified local gateway route table \cr
+#'  \link[=ec2_create_local_gateway_route_table_vpc_association]{create_local_gateway_route_table_vpc_association} \tab Associates the specified VPC with the specified local gateway route table \cr
 #'  \link[=ec2_create_nat_gateway]{create_nat_gateway} \tab Creates a NAT gateway in the specified public subnet \cr
 #'  \link[=ec2_create_network_acl]{create_network_acl} \tab Creates a network ACL in a VPC \cr
 #'  \link[=ec2_create_network_acl_entry]{create_network_acl_entry} \tab Creates an entry (a rule) in a network ACL with the specified rule number \cr
@@ -203,10 +207,12 @@ batch <- function(config = list()) {
 #'  \link[=ec2_create_subnet]{create_subnet} \tab Creates a subnet in an existing VPC \cr
 #'  \link[=ec2_create_tags]{create_tags} \tab Adds or overwrites the specified tags for the specified Amazon EC2 resource or resources \cr
 #'  \link[=ec2_create_traffic_mirror_filter]{create_traffic_mirror_filter} \tab Creates a Traffic Mirror filter \cr
-#'  \link[=ec2_create_traffic_mirror_filter_rule]{create_traffic_mirror_filter_rule} \tab Creates a Traffic Mirror rule \cr
+#'  \link[=ec2_create_traffic_mirror_filter_rule]{create_traffic_mirror_filter_rule} \tab Creates a Traffic Mirror filter rule \cr
 #'  \link[=ec2_create_traffic_mirror_session]{create_traffic_mirror_session} \tab Creates a Traffic Mirror session \cr
 #'  \link[=ec2_create_traffic_mirror_target]{create_traffic_mirror_target} \tab Creates a target for your Traffic Mirror session \cr
 #'  \link[=ec2_create_transit_gateway]{create_transit_gateway} \tab Creates a transit gateway \cr
+#'  \link[=ec2_create_transit_gateway_multicast_domain]{create_transit_gateway_multicast_domain} \tab Creates a multicast domain using the specified transit gateway \cr
+#'  \link[=ec2_create_transit_gateway_peering_attachment]{create_transit_gateway_peering_attachment} \tab Requests a transit gateway peering attachment between the specified transit gateway (requester) and a peer transit gateway (accepter) \cr
 #'  \link[=ec2_create_transit_gateway_route]{create_transit_gateway_route} \tab Creates a static route for the specified transit gateway route table \cr
 #'  \link[=ec2_create_transit_gateway_route_table]{create_transit_gateway_route_table} \tab Creates a route table for the specified transit gateway \cr
 #'  \link[=ec2_create_transit_gateway_vpc_attachment]{create_transit_gateway_vpc_attachment} \tab Attaches the specified VPC to the specified transit gateway \cr
@@ -231,12 +237,15 @@ batch <- function(config = list()) {
 #'  \link[=ec2_delete_key_pair]{delete_key_pair} \tab Deletes the specified key pair, by removing the public key from Amazon EC2 \cr
 #'  \link[=ec2_delete_launch_template]{delete_launch_template} \tab Deletes a launch template \cr
 #'  \link[=ec2_delete_launch_template_versions]{delete_launch_template_versions} \tab Deletes one or more versions of a launch template \cr
+#'  \link[=ec2_delete_local_gateway_route]{delete_local_gateway_route} \tab Deletes the specified route from the specified local gateway route table \cr
+#'  \link[=ec2_delete_local_gateway_route_table_vpc_association]{delete_local_gateway_route_table_vpc_association} \tab Deletes the specified association between a VPC and local gateway route table \cr
 #'  \link[=ec2_delete_nat_gateway]{delete_nat_gateway} \tab Deletes the specified NAT gateway \cr
 #'  \link[=ec2_delete_network_acl]{delete_network_acl} \tab Deletes the specified network ACL \cr
 #'  \link[=ec2_delete_network_acl_entry]{delete_network_acl_entry} \tab Deletes the specified ingress or egress entry (rule) from the specified network ACL \cr
 #'  \link[=ec2_delete_network_interface]{delete_network_interface} \tab Deletes the specified network interface \cr
 #'  \link[=ec2_delete_network_interface_permission]{delete_network_interface_permission} \tab Deletes a permission for a network interface \cr
 #'  \link[=ec2_delete_placement_group]{delete_placement_group} \tab Deletes the specified placement group \cr
+#'  \link[=ec2_delete_queued_reserved_instances]{delete_queued_reserved_instances} \tab Deletes the queued purchases for the specified Reserved Instances \cr
 #'  \link[=ec2_delete_route]{delete_route} \tab Deletes the specified route from the specified route table \cr
 #'  \link[=ec2_delete_route_table]{delete_route_table} \tab Deletes the specified route table \cr
 #'  \link[=ec2_delete_security_group]{delete_security_group} \tab Deletes a security group \cr
@@ -249,6 +258,8 @@ batch <- function(config = list()) {
 #'  \link[=ec2_delete_traffic_mirror_session]{delete_traffic_mirror_session} \tab Deletes the specified Traffic Mirror session \cr
 #'  \link[=ec2_delete_traffic_mirror_target]{delete_traffic_mirror_target} \tab Deletes the specified Traffic Mirror target \cr
 #'  \link[=ec2_delete_transit_gateway]{delete_transit_gateway} \tab Deletes the specified transit gateway \cr
+#'  \link[=ec2_delete_transit_gateway_multicast_domain]{delete_transit_gateway_multicast_domain} \tab Deletes the specified transit gateway multicast domain \cr
+#'  \link[=ec2_delete_transit_gateway_peering_attachment]{delete_transit_gateway_peering_attachment} \tab Deletes a transit gateway peering attachment \cr
 #'  \link[=ec2_delete_transit_gateway_route]{delete_transit_gateway_route} \tab Deletes the specified route from the specified transit gateway route table \cr
 #'  \link[=ec2_delete_transit_gateway_route_table]{delete_transit_gateway_route_table} \tab Deletes the specified transit gateway route table \cr
 #'  \link[=ec2_delete_transit_gateway_vpc_attachment]{delete_transit_gateway_vpc_attachment} \tab Deletes the specified VPC attachment \cr
@@ -263,10 +274,12 @@ batch <- function(config = list()) {
 #'  \link[=ec2_delete_vpn_gateway]{delete_vpn_gateway} \tab Deletes the specified virtual private gateway \cr
 #'  \link[=ec2_deprovision_byoip_cidr]{deprovision_byoip_cidr} \tab Releases the specified address range that you provisioned for use with your AWS resources through bring your own IP addresses (BYOIP) and deletes the corresponding address pool\cr
 #'  \link[=ec2_deregister_image]{deregister_image} \tab Deregisters the specified AMI \cr
+#'  \link[=ec2_deregister_transit_gateway_multicast_group_members]{deregister_transit_gateway_multicast_group_members} \tab Deregisters the specified members (network interfaces) from the transit gateway multicast group \cr
+#'  \link[=ec2_deregister_transit_gateway_multicast_group_sources]{deregister_transit_gateway_multicast_group_sources} \tab Deregisters the specified sources (network interfaces) from the transit gateway multicast group \cr
 #'  \link[=ec2_describe_account_attributes]{describe_account_attributes} \tab Describes attributes of your AWS account \cr
 #'  \link[=ec2_describe_addresses]{describe_addresses} \tab Describes the specified Elastic IP addresses or all of your Elastic IP addresses \cr
 #'  \link[=ec2_describe_aggregate_id_format]{describe_aggregate_id_format} \tab Describes the longer ID format settings for all resource types in a specific Region \cr
-#'  \link[=ec2_describe_availability_zones]{describe_availability_zones} \tab Describes the Availability Zones that are available to you \cr
+#'  \link[=ec2_describe_availability_zones]{describe_availability_zones} \tab Describes the Availability Zones and Local Zones that are available to you \cr
 #'  \link[=ec2_describe_bundle_tasks]{describe_bundle_tasks} \tab Describes the specified bundle tasks or all of your bundle tasks \cr
 #'  \link[=ec2_describe_byoip_cidrs]{describe_byoip_cidrs} \tab Describes the IP address ranges that were specified in calls to ProvisionByoipCidr \cr
 #'  \link[=ec2_describe_capacity_reservations]{describe_capacity_reservations} \tab Describes one or more of your Capacity Reservations \cr
@@ -276,12 +289,15 @@ batch <- function(config = list()) {
 #'  \link[=ec2_describe_client_vpn_endpoints]{describe_client_vpn_endpoints} \tab Describes one or more Client VPN endpoints in the account \cr
 #'  \link[=ec2_describe_client_vpn_routes]{describe_client_vpn_routes} \tab Describes the routes for the specified Client VPN endpoint \cr
 #'  \link[=ec2_describe_client_vpn_target_networks]{describe_client_vpn_target_networks} \tab Describes the target networks associated with the specified Client VPN endpoint \cr
+#'  \link[=ec2_describe_coip_pools]{describe_coip_pools} \tab Describes the specified customer-owned address pools or all of your customer-owned address pools \cr
 #'  \link[=ec2_describe_conversion_tasks]{describe_conversion_tasks} \tab Describes the specified conversion tasks or all your conversion tasks \cr
 #'  \link[=ec2_describe_customer_gateways]{describe_customer_gateways} \tab Describes one or more of your VPN customer gateways \cr
 #'  \link[=ec2_describe_dhcp_options]{describe_dhcp_options} \tab Describes one or more of your DHCP options sets \cr
 #'  \link[=ec2_describe_egress_only_internet_gateways]{describe_egress_only_internet_gateways} \tab Describes one or more of your egress-only internet gateways \cr
 #'  \link[=ec2_describe_elastic_gpus]{describe_elastic_gpus} \tab Describes the Elastic Graphics accelerator associated with your instances \cr
-#'  \link[=ec2_describe_export_tasks]{describe_export_tasks} \tab Describes the specified export tasks or all your export tasks \cr
+#'  \link[=ec2_describe_export_image_tasks]{describe_export_image_tasks} \tab Describes the specified export image tasks or all your export image tasks \cr
+#'  \link[=ec2_describe_export_tasks]{describe_export_tasks} \tab Describes the specified export instance tasks or all your export instance tasks \cr
+#'  \link[=ec2_describe_fast_snapshot_restores]{describe_fast_snapshot_restores} \tab Describes the state of fast snapshot restores for your snapshots \cr
 #'  \link[=ec2_describe_fleet_history]{describe_fleet_history} \tab Describes the events for the specified EC2 Fleet during the specified time \cr
 #'  \link[=ec2_describe_fleet_instances]{describe_fleet_instances} \tab Describes the running instances for the specified EC2 Fleet \cr
 #'  \link[=ec2_describe_fleets]{describe_fleets} \tab Describes the specified EC2 Fleets or all your EC2 Fleets \cr
@@ -299,13 +315,21 @@ batch <- function(config = list()) {
 #'  \link[=ec2_describe_import_image_tasks]{describe_import_image_tasks} \tab Displays details about an import virtual machine or import snapshot tasks that are already created \cr
 #'  \link[=ec2_describe_import_snapshot_tasks]{describe_import_snapshot_tasks} \tab Describes your import snapshot tasks \cr
 #'  \link[=ec2_describe_instance_attribute]{describe_instance_attribute} \tab Describes the specified attribute of the specified instance \cr
-#'  \link[=ec2_describe_instance_credit_specifications]{describe_instance_credit_specifications} \tab Describes the credit option for CPU usage of the specified T2 or T3 instances \cr
+#'  \link[=ec2_describe_instance_credit_specifications]{describe_instance_credit_specifications} \tab Describes the credit option for CPU usage of the specified burstable performance instances \cr
 #'  \link[=ec2_describe_instance_status]{describe_instance_status} \tab Describes the status of the specified instances or all of your instances \cr
+#'  \link[=ec2_describe_instance_type_offerings]{describe_instance_type_offerings} \tab Returns a list of all instance types offered \cr
+#'  \link[=ec2_describe_instance_types]{describe_instance_types} \tab Returns a list of all instance types offered in your current AWS Region \cr
 #'  \link[=ec2_describe_instances]{describe_instances} \tab Describes the specified instances or all of AWS account's instances \cr
 #'  \link[=ec2_describe_internet_gateways]{describe_internet_gateways} \tab Describes one or more of your internet gateways \cr
 #'  \link[=ec2_describe_key_pairs]{describe_key_pairs} \tab Describes the specified key pairs or all of your key pairs \cr
 #'  \link[=ec2_describe_launch_template_versions]{describe_launch_template_versions} \tab Describes one or more versions of a specified launch template \cr
 #'  \link[=ec2_describe_launch_templates]{describe_launch_templates} \tab Describes one or more launch templates \cr
+#'  \link[=ec2_describe_local_gateway_route_table_virtual_interface_group_associations]{describe_local_gateway_route_table_virtual_interface_group_associations} \tab Describes the associations between virtual interface groups and local gateway route tables \cr
+#'  \link[=ec2_describe_local_gateway_route_table_vpc_associations]{describe_local_gateway_route_table_vpc_associations} \tab Describes the specified associations between VPCs and local gateway route tables \cr
+#'  \link[=ec2_describe_local_gateway_route_tables]{describe_local_gateway_route_tables} \tab Describes one or more local gateway route tables \cr
+#'  \link[=ec2_describe_local_gateway_virtual_interface_groups]{describe_local_gateway_virtual_interface_groups} \tab Describes the specified local gateway virtual interface groups \cr
+#'  \link[=ec2_describe_local_gateway_virtual_interfaces]{describe_local_gateway_virtual_interfaces} \tab Describes the specified local gateway virtual interfaces \cr
+#'  \link[=ec2_describe_local_gateways]{describe_local_gateways} \tab Describes one or more local gateways \cr
 #'  \link[=ec2_describe_moving_addresses]{describe_moving_addresses} \tab Describes your Elastic IP addresses that are being moved to the EC2-VPC platform, or that are being restored to the EC2-Classic platform \cr
 #'  \link[=ec2_describe_nat_gateways]{describe_nat_gateways} \tab Describes one or more of your NAT gateways \cr
 #'  \link[=ec2_describe_network_acls]{describe_network_acls} \tab Describes one or more of your network ACLs \cr
@@ -316,7 +340,7 @@ batch <- function(config = list()) {
 #'  \link[=ec2_describe_prefix_lists]{describe_prefix_lists} \tab Describes available AWS services in a prefix list format, which includes the prefix list name and prefix list ID of the service and the IP address range for the service \cr
 #'  \link[=ec2_describe_principal_id_format]{describe_principal_id_format} \tab Describes the ID format settings for the root user and all IAM roles and IAM users that have explicitly specified a longer ID (17-character ID) preference \cr
 #'  \link[=ec2_describe_public_ipv_4_pools]{describe_public_ipv_4_pools} \tab Describes the specified IPv4 address pools \cr
-#'  \link[=ec2_describe_regions]{describe_regions} \tab Describes the Regions that are currently available to you \cr
+#'  \link[=ec2_describe_regions]{describe_regions} \tab Describes the Regions that are enabled for your account, or all Regions \cr
 #'  \link[=ec2_describe_reserved_instances]{describe_reserved_instances} \tab Describes one or more of the Reserved Instances that you purchased \cr
 #'  \link[=ec2_describe_reserved_instances_listings]{describe_reserved_instances_listings} \tab Describes your account's Reserved Instance listings in the Reserved Instance Marketplace \cr
 #'  \link[=ec2_describe_reserved_instances_modifications]{describe_reserved_instances_modifications} \tab Describes the modifications made to your Reserved Instances \cr
@@ -341,6 +365,8 @@ batch <- function(config = list()) {
 #'  \link[=ec2_describe_traffic_mirror_sessions]{describe_traffic_mirror_sessions} \tab Describes one or more Traffic Mirror sessions \cr
 #'  \link[=ec2_describe_traffic_mirror_targets]{describe_traffic_mirror_targets} \tab Information about one or more Traffic Mirror targets \cr
 #'  \link[=ec2_describe_transit_gateway_attachments]{describe_transit_gateway_attachments} \tab Describes one or more attachments between resources and transit gateways \cr
+#'  \link[=ec2_describe_transit_gateway_multicast_domains]{describe_transit_gateway_multicast_domains} \tab Describes one or more transit gateway multicast domains \cr
+#'  \link[=ec2_describe_transit_gateway_peering_attachments]{describe_transit_gateway_peering_attachments} \tab Describes your transit gateway peering attachments \cr
 #'  \link[=ec2_describe_transit_gateway_route_tables]{describe_transit_gateway_route_tables} \tab Describes one or more transit gateway route tables \cr
 #'  \link[=ec2_describe_transit_gateway_vpc_attachments]{describe_transit_gateway_vpc_attachments} \tab Describes one or more VPC attachments \cr
 #'  \link[=ec2_describe_transit_gateways]{describe_transit_gateways} \tab Describes one or more transit gateways \cr
@@ -367,6 +393,7 @@ batch <- function(config = list()) {
 #'  \link[=ec2_detach_volume]{detach_volume} \tab Detaches an EBS volume from an instance \cr
 #'  \link[=ec2_detach_vpn_gateway]{detach_vpn_gateway} \tab Detaches a virtual private gateway from a VPC \cr
 #'  \link[=ec2_disable_ebs_encryption_by_default]{disable_ebs_encryption_by_default} \tab Disables EBS encryption by default for your account in the current Region \cr
+#'  \link[=ec2_disable_fast_snapshot_restores]{disable_fast_snapshot_restores} \tab Disables fast snapshot restores for the specified snapshots in the specified Availability Zones \cr
 #'  \link[=ec2_disable_transit_gateway_route_table_propagation]{disable_transit_gateway_route_table_propagation} \tab Disables the specified resource attachment from propagating routes to the specified propagation route table \cr
 #'  \link[=ec2_disable_vgw_route_propagation]{disable_vgw_route_propagation} \tab Disables a virtual private gateway (VGW) from propagating routes to a specified route table of a VPC \cr
 #'  \link[=ec2_disable_vpc_classic_link]{disable_vpc_classic_link} \tab Disables ClassicLink for a VPC \cr
@@ -376,9 +403,11 @@ batch <- function(config = list()) {
 #'  \link[=ec2_disassociate_iam_instance_profile]{disassociate_iam_instance_profile} \tab Disassociates an IAM instance profile from a running or stopped instance \cr
 #'  \link[=ec2_disassociate_route_table]{disassociate_route_table} \tab Disassociates a subnet from a route table \cr
 #'  \link[=ec2_disassociate_subnet_cidr_block]{disassociate_subnet_cidr_block} \tab Disassociates a CIDR block from a subnet \cr
+#'  \link[=ec2_disassociate_transit_gateway_multicast_domain]{disassociate_transit_gateway_multicast_domain} \tab Disassociates the specified subnets from the transit gateway multicast domain \cr
 #'  \link[=ec2_disassociate_transit_gateway_route_table]{disassociate_transit_gateway_route_table} \tab Disassociates a resource attachment from a transit gateway route table \cr
 #'  \link[=ec2_disassociate_vpc_cidr_block]{disassociate_vpc_cidr_block} \tab Disassociates a CIDR block from a VPC \cr
 #'  \link[=ec2_enable_ebs_encryption_by_default]{enable_ebs_encryption_by_default} \tab Enables EBS encryption by default for your account in the current Region \cr
+#'  \link[=ec2_enable_fast_snapshot_restores]{enable_fast_snapshot_restores} \tab Enables fast snapshot restores for the specified snapshots in the specified Availability Zones \cr
 #'  \link[=ec2_enable_transit_gateway_route_table_propagation]{enable_transit_gateway_route_table_propagation} \tab Enables the specified attachment to propagate routes to the specified propagation route table \cr
 #'  \link[=ec2_enable_vgw_route_propagation]{enable_vgw_route_propagation} \tab Enables a virtual private gateway (VGW) to propagate routes to the specified route table of a VPC \cr
 #'  \link[=ec2_enable_volume_io]{enable_volume_io} \tab Enables I/O operations for a volume that had I/O operations disabled because the data on the volume was potentially inconsistent \cr
@@ -386,9 +415,13 @@ batch <- function(config = list()) {
 #'  \link[=ec2_enable_vpc_classic_link_dns_support]{enable_vpc_classic_link_dns_support} \tab Enables a VPC to support DNS hostname resolution for ClassicLink \cr
 #'  \link[=ec2_export_client_vpn_client_certificate_revocation_list]{export_client_vpn_client_certificate_revocation_list} \tab Downloads the client certificate revocation list for the specified Client VPN endpoint \cr
 #'  \link[=ec2_export_client_vpn_client_configuration]{export_client_vpn_client_configuration} \tab Downloads the contents of the Client VPN endpoint configuration file for the specified Client VPN endpoint \cr
+#'  \link[=ec2_export_image]{export_image} \tab Exports an Amazon Machine Image (AMI) to a VM file \cr
 #'  \link[=ec2_export_transit_gateway_routes]{export_transit_gateway_routes} \tab Exports routes from the specified transit gateway route table to the specified S3 bucket \cr
+#'  \link[=ec2_get_capacity_reservation_usage]{get_capacity_reservation_usage} \tab Gets usage information about a Capacity Reservation \cr
+#'  \link[=ec2_get_coip_pool_usage]{get_coip_pool_usage} \tab Describes the allocations from the specified customer-owned address pool \cr
 #'  \link[=ec2_get_console_output]{get_console_output} \tab Gets the console output for the specified instance \cr
 #'  \link[=ec2_get_console_screenshot]{get_console_screenshot} \tab Retrieve a JPG-format screenshot of a running instance to help with troubleshooting \cr
+#'  \link[=ec2_get_default_credit_specification]{get_default_credit_specification} \tab Describes the default credit option for CPU usage of a burstable performance instance family \cr
 #'  \link[=ec2_get_ebs_default_kms_key_id]{get_ebs_default_kms_key_id} \tab Describes the default customer master key (CMK) for EBS encryption by default for your account in this Region \cr
 #'  \link[=ec2_get_ebs_encryption_by_default]{get_ebs_encryption_by_default} \tab Describes whether EBS encryption by default is enabled for your account in the current Region \cr
 #'  \link[=ec2_get_host_reservation_purchase_preview]{get_host_reservation_purchase_preview} \tab Preview a reservation purchase with configurations that match those of your Dedicated Host \cr
@@ -396,6 +429,7 @@ batch <- function(config = list()) {
 #'  \link[=ec2_get_password_data]{get_password_data} \tab Retrieves the encrypted administrator password for a running Windows instance \cr
 #'  \link[=ec2_get_reserved_instances_exchange_quote]{get_reserved_instances_exchange_quote} \tab Returns a quote and exchange information for exchanging one or more specified Convertible Reserved Instances for a new Convertible Reserved Instance \cr
 #'  \link[=ec2_get_transit_gateway_attachment_propagations]{get_transit_gateway_attachment_propagations} \tab Lists the route tables to which the specified resource attachment propagates routes \cr
+#'  \link[=ec2_get_transit_gateway_multicast_domain_associations]{get_transit_gateway_multicast_domain_associations} \tab Gets information about the associations for the transit gateway multicast domain \cr
 #'  \link[=ec2_get_transit_gateway_route_table_associations]{get_transit_gateway_route_table_associations} \tab Gets information about the associations for the specified transit gateway route table \cr
 #'  \link[=ec2_get_transit_gateway_route_table_propagations]{get_transit_gateway_route_table_propagations} \tab Gets information about the route table propagations for the specified transit gateway route table \cr
 #'  \link[=ec2_import_client_vpn_client_certificate_revocation_list]{import_client_vpn_client_certificate_revocation_list} \tab Uploads a client certificate revocation list to the specified Client VPN endpoint \cr
@@ -406,6 +440,7 @@ batch <- function(config = list()) {
 #'  \link[=ec2_import_volume]{import_volume} \tab Creates an import volume task using metadata from the specified disk image \cr
 #'  \link[=ec2_modify_capacity_reservation]{modify_capacity_reservation} \tab Modifies a Capacity Reservation's capacity and the conditions under which it is to be released \cr
 #'  \link[=ec2_modify_client_vpn_endpoint]{modify_client_vpn_endpoint} \tab Modifies the specified Client VPN endpoint \cr
+#'  \link[=ec2_modify_default_credit_specification]{modify_default_credit_specification} \tab Modifies the default credit option for CPU usage of burstable performance instances \cr
 #'  \link[=ec2_modify_ebs_default_kms_key_id]{modify_ebs_default_kms_key_id} \tab Changes the default customer master key (CMK) for EBS encryption by default for your account in this Region \cr
 #'  \link[=ec2_modify_fleet]{modify_fleet} \tab Modifies the specified EC2 Fleet \cr
 #'  \link[=ec2_modify_fpga_image_attribute]{modify_fpga_image_attribute} \tab Modifies the specified attribute of the specified Amazon FPGA Image (AFI) \cr
@@ -415,8 +450,9 @@ batch <- function(config = list()) {
 #'  \link[=ec2_modify_image_attribute]{modify_image_attribute} \tab Modifies the specified attribute of the specified AMI \cr
 #'  \link[=ec2_modify_instance_attribute]{modify_instance_attribute} \tab Modifies the specified attribute of the specified instance \cr
 #'  \link[=ec2_modify_instance_capacity_reservation_attributes]{modify_instance_capacity_reservation_attributes} \tab Modifies the Capacity Reservation settings for a stopped instance \cr
-#'  \link[=ec2_modify_instance_credit_specification]{modify_instance_credit_specification} \tab Modifies the credit option for CPU usage on a running or stopped T2 or T3 instance \cr
+#'  \link[=ec2_modify_instance_credit_specification]{modify_instance_credit_specification} \tab Modifies the credit option for CPU usage on a running or stopped burstable performance instance \cr
 #'  \link[=ec2_modify_instance_event_start_time]{modify_instance_event_start_time} \tab Modifies the start time for a scheduled Amazon EC2 instance event \cr
+#'  \link[=ec2_modify_instance_metadata_options]{modify_instance_metadata_options} \tab Modify the instance metadata parameters on a running or stopped instance \cr
 #'  \link[=ec2_modify_instance_placement]{modify_instance_placement} \tab Modifies the placement attributes for a specified instance \cr
 #'  \link[=ec2_modify_launch_template]{modify_launch_template} \tab Modifies a launch template \cr
 #'  \link[=ec2_modify_network_interface_attribute]{modify_network_interface_attribute} \tab Modifies the specified network interface attribute \cr
@@ -437,7 +473,9 @@ batch <- function(config = list()) {
 #'  \link[=ec2_modify_vpc_endpoint_service_permissions]{modify_vpc_endpoint_service_permissions} \tab Modifies the permissions for your VPC endpoint service \cr
 #'  \link[=ec2_modify_vpc_peering_connection_options]{modify_vpc_peering_connection_options} \tab Modifies the VPC peering connection options on one side of a VPC peering connection \cr
 #'  \link[=ec2_modify_vpc_tenancy]{modify_vpc_tenancy} \tab Modifies the instance tenancy attribute of the specified VPC \cr
-#'  \link[=ec2_modify_vpn_connection]{modify_vpn_connection} \tab Modifies the target gateway of a AWS Site-to-Site VPN connection \cr
+#'  \link[=ec2_modify_vpn_connection]{modify_vpn_connection} \tab Modifies the target gateway of an AWS Site-to-Site VPN connection \cr
+#'  \link[=ec2_modify_vpn_tunnel_certificate]{modify_vpn_tunnel_certificate} \tab Modifies the VPN tunnel endpoint certificate \cr
+#'  \link[=ec2_modify_vpn_tunnel_options]{modify_vpn_tunnel_options} \tab Modifies the options for a VPN tunnel in an AWS Site-to-Site VPN connection \cr
 #'  \link[=ec2_monitor_instances]{monitor_instances} \tab Enables detailed monitoring for a running instance \cr
 #'  \link[=ec2_move_address_to_vpc]{move_address_to_vpc} \tab Moves an Elastic IP address from the EC2-Classic platform to the EC2-VPC platform \cr
 #'  \link[=ec2_provision_byoip_cidr]{provision_byoip_cidr} \tab Provisions an address range for use with your AWS resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool \cr
@@ -446,6 +484,9 @@ batch <- function(config = list()) {
 #'  \link[=ec2_purchase_scheduled_instances]{purchase_scheduled_instances} \tab Purchases the Scheduled Instances with the specified schedule \cr
 #'  \link[=ec2_reboot_instances]{reboot_instances} \tab Requests a reboot of the specified instances \cr
 #'  \link[=ec2_register_image]{register_image} \tab Registers an AMI \cr
+#'  \link[=ec2_register_transit_gateway_multicast_group_members]{register_transit_gateway_multicast_group_members} \tab Registers members (network interfaces) with the transit gateway multicast group \cr
+#'  \link[=ec2_register_transit_gateway_multicast_group_sources]{register_transit_gateway_multicast_group_sources} \tab Registers sources (network interfaces) with the specified transit gateway multicast group \cr
+#'  \link[=ec2_reject_transit_gateway_peering_attachment]{reject_transit_gateway_peering_attachment} \tab Rejects a transit gateway peering attachment request \cr
 #'  \link[=ec2_reject_transit_gateway_vpc_attachment]{reject_transit_gateway_vpc_attachment} \tab Rejects a request to attach a VPC to a transit gateway \cr
 #'  \link[=ec2_reject_vpc_endpoint_connections]{reject_vpc_endpoint_connections} \tab Rejects one or more VPC endpoint connection requests to your VPC endpoint service \cr
 #'  \link[=ec2_reject_vpc_peering_connection]{reject_vpc_peering_connection} \tab Rejects a VPC peering connection request \cr
@@ -455,7 +496,7 @@ batch <- function(config = list()) {
 #'  \link[=ec2_replace_network_acl_association]{replace_network_acl_association} \tab Changes which network ACL a subnet is associated with \cr
 #'  \link[=ec2_replace_network_acl_entry]{replace_network_acl_entry} \tab Replaces an entry (rule) in a network ACL \cr
 #'  \link[=ec2_replace_route]{replace_route} \tab Replaces an existing route within a route table in a VPC \cr
-#'  \link[=ec2_replace_route_table_association]{replace_route_table_association} \tab Changes the route table associated with a given subnet in a VPC \cr
+#'  \link[=ec2_replace_route_table_association]{replace_route_table_association} \tab Changes the route table associated with a given subnet, internet gateway, or virtual private gateway in a VPC \cr
 #'  \link[=ec2_replace_transit_gateway_route]{replace_transit_gateway_route} \tab Replaces the specified route in the specified transit gateway route table \cr
 #'  \link[=ec2_report_instance_status]{report_instance_status} \tab Submits feedback about the status of an instance \cr
 #'  \link[=ec2_request_spot_fleet]{request_spot_fleet} \tab Creates a Spot Fleet request \cr
@@ -472,7 +513,10 @@ batch <- function(config = list()) {
 #'  \link[=ec2_revoke_security_group_ingress]{revoke_security_group_ingress} \tab Removes the specified ingress rules from a security group \cr
 #'  \link[=ec2_run_instances]{run_instances} \tab Launches the specified number of instances using an AMI for which you have permissions \cr
 #'  \link[=ec2_run_scheduled_instances]{run_scheduled_instances} \tab Launches the specified Scheduled Instances \cr
+#'  \link[=ec2_search_local_gateway_routes]{search_local_gateway_routes} \tab Searches for routes in the specified local gateway route table \cr
+#'  \link[=ec2_search_transit_gateway_multicast_groups]{search_transit_gateway_multicast_groups} \tab Searches one or more transit gateway multicast groups and returns the group membership information \cr
 #'  \link[=ec2_search_transit_gateway_routes]{search_transit_gateway_routes} \tab Searches for routes in the specified transit gateway route table \cr
+#'  \link[=ec2_send_diagnostic_interrupt]{send_diagnostic_interrupt} \tab Sends a diagnostic interrupt to the specified Amazon EC2 instance to trigger a _kernel panic_ (on Linux instances), or a _blue screen_/_stop error_ (on Windows instances) \cr
 #'  \link[=ec2_start_instances]{start_instances} \tab Starts an Amazon EBS-backed instance that you've previously stopped \cr
 #'  \link[=ec2_stop_instances]{stop_instances} \tab Stops an Amazon EBS-backed instance \cr
 #'  \link[=ec2_terminate_client_vpn_connections]{terminate_client_vpn_connections} \tab Terminates active Client VPN endpoint connections \cr
@@ -546,6 +590,8 @@ ec2instanceconnect <- function(config = list()) {
 #' Amazon EC2 Container Registry
 #'
 #' @description
+#' Amazon Elastic Container Registry
+#' 
 #' Amazon Elastic Container Registry (Amazon ECR) is a managed Docker
 #' registry service. Customers can use the familiar Docker CLI to push,
 #' pull, and manage images. Amazon ECR provides a secure, scalable, and
@@ -595,10 +641,11 @@ ec2instanceconnect <- function(config = list()) {
 #'  \link[=ecr_batch_delete_image]{batch_delete_image} \tab Deletes a list of specified images within a specified repository \cr
 #'  \link[=ecr_batch_get_image]{batch_get_image} \tab Gets detailed information for specified images within a specified repository \cr
 #'  \link[=ecr_complete_layer_upload]{complete_layer_upload} \tab Informs Amazon ECR that the image layer upload has completed for a specified registry, repository name, and upload ID\cr
-#'  \link[=ecr_create_repository]{create_repository} \tab Creates an image repository \cr
+#'  \link[=ecr_create_repository]{create_repository} \tab Creates an Amazon Elastic Container Registry (Amazon ECR) repository, where users can push and pull Docker images \cr
 #'  \link[=ecr_delete_lifecycle_policy]{delete_lifecycle_policy} \tab Deletes the specified lifecycle policy \cr
 #'  \link[=ecr_delete_repository]{delete_repository} \tab Deletes an existing image repository \cr
 #'  \link[=ecr_delete_repository_policy]{delete_repository_policy} \tab Deletes the repository policy from a specified repository \cr
+#'  \link[=ecr_describe_image_scan_findings]{describe_image_scan_findings} \tab Describes the image scan findings for the specified image \cr
 #'  \link[=ecr_describe_images]{describe_images} \tab Returns metadata about the images in a repository, including image size, image tags, and creation date \cr
 #'  \link[=ecr_describe_repositories]{describe_repositories} \tab Describes image repositories in a registry \cr
 #'  \link[=ecr_get_authorization_token]{get_authorization_token} \tab Retrieves a token that is valid for a specified registry for 12 hours \cr
@@ -610,8 +657,11 @@ ec2instanceconnect <- function(config = list()) {
 #'  \link[=ecr_list_images]{list_images} \tab Lists all the image IDs for a given repository \cr
 #'  \link[=ecr_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for an Amazon ECR resource \cr
 #'  \link[=ecr_put_image]{put_image} \tab Creates or updates the image manifest and tags associated with an image \cr
+#'  \link[=ecr_put_image_scanning_configuration]{put_image_scanning_configuration} \tab Updates the image scanning configuration for a repository \cr
+#'  \link[=ecr_put_image_tag_mutability]{put_image_tag_mutability} \tab Updates the image tag mutability settings for a repository \cr
 #'  \link[=ecr_put_lifecycle_policy]{put_lifecycle_policy} \tab Creates or updates a lifecycle policy \cr
 #'  \link[=ecr_set_repository_policy]{set_repository_policy} \tab Applies a repository policy on a specified repository to control access permissions \cr
+#'  \link[=ecr_start_image_scan]{start_image_scan} \tab Starts an image vulnerability scan \cr
 #'  \link[=ecr_start_lifecycle_policy_preview]{start_lifecycle_policy_preview} \tab Starts a preview of the specified lifecycle policy \cr
 #'  \link[=ecr_tag_resource]{tag_resource} \tab Adds specified tags to a resource with the specified ARN \cr
 #'  \link[=ecr_untag_resource]{untag_resource} \tab Deletes specified tags from a resource \cr
@@ -681,6 +731,7 @@ ecr <- function(config = list()) {
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=ecs_create_capacity_provider]{create_capacity_provider} \tab Creates a new capacity provider \cr
 #'  \link[=ecs_create_cluster]{create_cluster} \tab Creates a new Amazon ECS cluster \cr
 #'  \link[=ecs_create_service]{create_service} \tab Runs and maintains a desired number of tasks from a specified task definition \cr
 #'  \link[=ecs_create_task_set]{create_task_set} \tab Create a task set in the specified cluster and service \cr
@@ -691,6 +742,7 @@ ecr <- function(config = list()) {
 #'  \link[=ecs_delete_task_set]{delete_task_set} \tab Deletes a specified task set within a service \cr
 #'  \link[=ecs_deregister_container_instance]{deregister_container_instance} \tab Deregisters an Amazon ECS container instance from the specified cluster \cr
 #'  \link[=ecs_deregister_task_definition]{deregister_task_definition} \tab Deregisters the specified task definition by family and revision \cr
+#'  \link[=ecs_describe_capacity_providers]{describe_capacity_providers} \tab Describes one or more of your capacity providers \cr
 #'  \link[=ecs_describe_clusters]{describe_clusters} \tab Describes one or more of your clusters \cr
 #'  \link[=ecs_describe_container_instances]{describe_container_instances} \tab Describes Amazon Elastic Container Service container instances \cr
 #'  \link[=ecs_describe_services]{describe_services} \tab Describes the specified services running in your cluster \cr
@@ -710,6 +762,7 @@ ecr <- function(config = list()) {
 #'  \link[=ecs_put_account_setting]{put_account_setting} \tab Modifies an account setting \cr
 #'  \link[=ecs_put_account_setting_default]{put_account_setting_default} \tab Modifies an account setting for all IAM users on an account for whom no individual account setting has been specified \cr
 #'  \link[=ecs_put_attributes]{put_attributes} \tab Create or update an attribute on an Amazon ECS resource \cr
+#'  \link[=ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers} \tab Modifies the available capacity providers and the default capacity provider strategy for a cluster \cr
 #'  \link[=ecs_register_container_instance]{register_container_instance} \tab This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent \cr
 #'  \link[=ecs_register_task_definition]{register_task_definition} \tab Registers a new task definition from the supplied family and containerDefinitions \cr
 #'  \link[=ecs_run_task]{run_task} \tab Starts a new task using the specified task definition \cr
@@ -720,6 +773,7 @@ ecr <- function(config = list()) {
 #'  \link[=ecs_submit_task_state_change]{submit_task_state_change} \tab This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent \cr
 #'  \link[=ecs_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn \cr
 #'  \link[=ecs_untag_resource]{untag_resource} \tab Deletes specified tags from a resource \cr
+#'  \link[=ecs_update_cluster_settings]{update_cluster_settings} \tab Modifies the settings to use for a cluster \cr
 #'  \link[=ecs_update_container_agent]{update_container_agent} \tab Updates the Amazon ECS container agent on a specified container instance \cr
 #'  \link[=ecs_update_container_instances_state]{update_container_instances_state} \tab Modifies the status of an Amazon ECS container instance \cr
 #'  \link[=ecs_update_service]{update_service} \tab Modifies the parameters of a service \cr
@@ -794,13 +848,26 @@ ecs <- function(config = list()) {
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=eks_create_cluster]{create_cluster} \tab Creates an Amazon EKS control plane \cr
+#'  \link[=eks_create_fargate_profile]{create_fargate_profile} \tab Creates an AWS Fargate profile for your Amazon EKS cluster \cr
+#'  \link[=eks_create_nodegroup]{create_nodegroup} \tab Creates a managed worker node group for an Amazon EKS cluster \cr
 #'  \link[=eks_delete_cluster]{delete_cluster} \tab Deletes the Amazon EKS cluster control plane \cr
+#'  \link[=eks_delete_fargate_profile]{delete_fargate_profile} \tab Deletes an AWS Fargate profile \cr
+#'  \link[=eks_delete_nodegroup]{delete_nodegroup} \tab Deletes an Amazon EKS node group for a cluster \cr
 #'  \link[=eks_describe_cluster]{describe_cluster} \tab Returns descriptive information about an Amazon EKS cluster \cr
-#'  \link[=eks_describe_update]{describe_update} \tab Returns descriptive information about an update against your Amazon EKS cluster \cr
+#'  \link[=eks_describe_fargate_profile]{describe_fargate_profile} \tab Returns descriptive information about an AWS Fargate profile \cr
+#'  \link[=eks_describe_nodegroup]{describe_nodegroup} \tab Returns descriptive information about an Amazon EKS node group \cr
+#'  \link[=eks_describe_update]{describe_update} \tab Returns descriptive information about an update against your Amazon EKS cluster or associated managed node group \cr
 #'  \link[=eks_list_clusters]{list_clusters} \tab Lists the Amazon EKS clusters in your AWS account in the specified Region \cr
-#'  \link[=eks_list_updates]{list_updates} \tab Lists the updates associated with an Amazon EKS cluster in your AWS account, in the specified Region\cr
+#'  \link[=eks_list_fargate_profiles]{list_fargate_profiles} \tab Lists the AWS Fargate profiles associated with the specified cluster in your AWS account in the specified Region \cr
+#'  \link[=eks_list_nodegroups]{list_nodegroups} \tab Lists the Amazon EKS node groups associated with the specified cluster in your AWS account in the specified Region \cr
+#'  \link[=eks_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for an Amazon EKS resource \cr
+#'  \link[=eks_list_updates]{list_updates} \tab Lists the updates associated with an Amazon EKS cluster or managed node group in your AWS account, in the specified Region\cr
+#'  \link[=eks_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn \cr
+#'  \link[=eks_untag_resource]{untag_resource} \tab Deletes specified tags from a resource \cr
 #'  \link[=eks_update_cluster_config]{update_cluster_config} \tab Updates an Amazon EKS cluster configuration \cr
-#'  \link[=eks_update_cluster_version]{update_cluster_version} \tab Updates an Amazon EKS cluster to the specified Kubernetes version 
+#'  \link[=eks_update_cluster_version]{update_cluster_version} \tab Updates an Amazon EKS cluster to the specified Kubernetes version \cr
+#'  \link[=eks_update_nodegroup_config]{update_nodegroup_config} \tab Updates an Amazon EKS managed node group configuration \cr
+#'  \link[=eks_update_nodegroup_version]{update_nodegroup_version} \tab Updates the Kubernetes version or AMI version of an Amazon EKS managed node group 
 #' }
 #'
 #' @rdname eks
@@ -974,28 +1041,37 @@ elasticbeanstalk <- function(config = list()) {
 #'  \link[=lambda_delete_event_source_mapping]{delete_event_source_mapping} \tab Deletes an event source mapping \cr
 #'  \link[=lambda_delete_function]{delete_function} \tab Deletes a Lambda function \cr
 #'  \link[=lambda_delete_function_concurrency]{delete_function_concurrency} \tab Removes a concurrent execution limit from a function \cr
+#'  \link[=lambda_delete_function_event_invoke_config]{delete_function_event_invoke_config} \tab Deletes the configuration for asynchronous invocation for a function, version, or alias \cr
 #'  \link[=lambda_delete_layer_version]{delete_layer_version} \tab Deletes a version of an AWS Lambda layer \cr
+#'  \link[=lambda_delete_provisioned_concurrency_config]{delete_provisioned_concurrency_config} \tab Deletes the provisioned concurrency configuration for a function \cr
 #'  \link[=lambda_get_account_settings]{get_account_settings} \tab Retrieves details about your account's limits and usage in an AWS Region \cr
 #'  \link[=lambda_get_alias]{get_alias} \tab Returns details about a Lambda function alias \cr
 #'  \link[=lambda_get_event_source_mapping]{get_event_source_mapping} \tab Returns details about an event source mapping \cr
 #'  \link[=lambda_get_function]{get_function} \tab Returns information about the function or function version, with a link to download the deployment package that's valid for 10 minutes\cr
+#'  \link[=lambda_get_function_concurrency]{get_function_concurrency} \tab Returns details about the concurrency configuration for a function \cr
 #'  \link[=lambda_get_function_configuration]{get_function_configuration} \tab Returns the version-specific settings of a Lambda function or version \cr
+#'  \link[=lambda_get_function_event_invoke_config]{get_function_event_invoke_config} \tab Retrieves the configuration for asynchronous invocation for a function, version, or alias \cr
 #'  \link[=lambda_get_layer_version]{get_layer_version} \tab Returns information about a version of an AWS Lambda layer, with a link to download the layer archive that's valid for 10 minutes \cr
 #'  \link[=lambda_get_layer_version_by_arn]{get_layer_version_by_arn} \tab Returns information about a version of an AWS Lambda layer, with a link to download the layer archive that's valid for 10 minutes \cr
 #'  \link[=lambda_get_layer_version_policy]{get_layer_version_policy} \tab Returns the permission policy for a version of an AWS Lambda layer \cr
 #'  \link[=lambda_get_policy]{get_policy} \tab Returns the resource-based IAM policy for a function, version, or alias \cr
+#'  \link[=lambda_get_provisioned_concurrency_config]{get_provisioned_concurrency_config} \tab Retrieves the provisioned concurrency configuration for a function's alias or version \cr
 #'  \link[=lambda_invoke]{invoke} \tab Invokes a Lambda function \cr
 #'  \link[=lambda_invoke_async]{invoke_async} \tab For asynchronous function invocation, use Invoke \cr
 #'  \link[=lambda_list_aliases]{list_aliases} \tab Returns a list of aliases for a Lambda function \cr
 #'  \link[=lambda_list_event_source_mappings]{list_event_source_mappings} \tab Lists event source mappings \cr
+#'  \link[=lambda_list_function_event_invoke_configs]{list_function_event_invoke_configs} \tab Retrieves a list of configurations for asynchronous invocation for a function \cr
 #'  \link[=lambda_list_functions]{list_functions} \tab Returns a list of Lambda functions, with the version-specific configuration of each \cr
 #'  \link[=lambda_list_layer_versions]{list_layer_versions} \tab Lists the versions of an AWS Lambda layer \cr
 #'  \link[=lambda_list_layers]{list_layers} \tab Lists AWS Lambda layers and shows information about the latest version of each \cr
+#'  \link[=lambda_list_provisioned_concurrency_configs]{list_provisioned_concurrency_configs} \tab Retrieves a list of provisioned concurrency configurations for a function \cr
 #'  \link[=lambda_list_tags]{list_tags} \tab Returns a function's tags \cr
 #'  \link[=lambda_list_versions_by_function]{list_versions_by_function} \tab Returns a list of versions, with the version-specific configuration of each \cr
 #'  \link[=lambda_publish_layer_version]{publish_layer_version} \tab Creates an AWS Lambda layer from a ZIP archive \cr
 #'  \link[=lambda_publish_version]{publish_version} \tab Creates a version from the current code and configuration of a function \cr
 #'  \link[=lambda_put_function_concurrency]{put_function_concurrency} \tab Sets the maximum number of simultaneous executions for a function, and reserves capacity for that concurrency level \cr
+#'  \link[=lambda_put_function_event_invoke_config]{put_function_event_invoke_config} \tab Configures options for asynchronous invocation on a function, version, or alias \cr
+#'  \link[=lambda_put_provisioned_concurrency_config]{put_provisioned_concurrency_config} \tab Adds a provisioned concurrency configuration to a function's alias or version \cr
 #'  \link[=lambda_remove_layer_version_permission]{remove_layer_version_permission} \tab Removes a statement from the permissions policy for a version of an AWS Lambda layer \cr
 #'  \link[=lambda_remove_permission]{remove_permission} \tab Revokes function-use permission from an AWS service or another account \cr
 #'  \link[=lambda_tag_resource]{tag_resource} \tab Adds tags to a function \cr
@@ -1003,7 +1079,8 @@ elasticbeanstalk <- function(config = list()) {
 #'  \link[=lambda_update_alias]{update_alias} \tab Updates the configuration of a Lambda function alias \cr
 #'  \link[=lambda_update_event_source_mapping]{update_event_source_mapping} \tab Updates an event source mapping \cr
 #'  \link[=lambda_update_function_code]{update_function_code} \tab Updates a Lambda function's code \cr
-#'  \link[=lambda_update_function_configuration]{update_function_configuration} \tab Modify the version-specific settings of a Lambda function 
+#'  \link[=lambda_update_function_configuration]{update_function_configuration} \tab Modify the version-specific settings of a Lambda function \cr
+#'  \link[=lambda_update_function_event_invoke_config]{update_function_event_invoke_config} \tab Updates the configuration for asynchronous invocation for a function, version, or alias 
 #' }
 #'
 #' @rdname lambda
@@ -1067,27 +1144,28 @@ lambda <- function(config = list()) {
 #'  \link[=lightsail_attach_load_balancer_tls_certificate]{attach_load_balancer_tls_certificate} \tab Attaches a Transport Layer Security (TLS) certificate to your load balancer \cr
 #'  \link[=lightsail_attach_static_ip]{attach_static_ip} \tab Attaches a static IP address to a specific Amazon Lightsail instance \cr
 #'  \link[=lightsail_close_instance_public_ports]{close_instance_public_ports} \tab Closes the public ports on a specific Amazon Lightsail instance \cr
-#'  \link[=lightsail_copy_snapshot]{copy_snapshot} \tab Copies an instance or disk snapshot from one AWS Region to another in Amazon Lightsail \cr
+#'  \link[=lightsail_copy_snapshot]{copy_snapshot} \tab Copies a manual instance or disk snapshot as another manual snapshot, or copies an automatic instance or disk snapshot as a manual snapshot \cr
 #'  \link[=lightsail_create_cloud_formation_stack]{create_cloud_formation_stack} \tab Creates an AWS CloudFormation stack, which creates a new Amazon EC2 instance from an exported Amazon Lightsail snapshot \cr
-#'  \link[=lightsail_create_disk]{create_disk} \tab Creates a block storage disk that can be attached to a Lightsail instance in the same Availability Zone (e \cr
-#'  \link[=lightsail_create_disk_from_snapshot]{create_disk_from_snapshot} \tab Creates a block storage disk from a disk snapshot that can be attached to a Lightsail instance in the same Availability Zone (e \cr
+#'  \link[=lightsail_create_disk]{create_disk} \tab Creates a block storage disk that can be attached to an Amazon Lightsail instance in the same Availability Zone (e \cr
+#'  \link[=lightsail_create_disk_from_snapshot]{create_disk_from_snapshot} \tab Creates a block storage disk from a manual or automatic snapshot of a disk \cr
 #'  \link[=lightsail_create_disk_snapshot]{create_disk_snapshot} \tab Creates a snapshot of a block storage disk \cr
 #'  \link[=lightsail_create_domain]{create_domain} \tab Creates a domain resource for the specified domain (e \cr
 #'  \link[=lightsail_create_domain_entry]{create_domain_entry} \tab Creates one of the following entry records associated with the domain: Address (A), canonical name (CNAME), mail exchanger (MX), name server (NS), start of authority (SOA), service locator (SRV), or text (TXT)\cr
 #'  \link[=lightsail_create_instance_snapshot]{create_instance_snapshot} \tab Creates a snapshot of a specific virtual private server, or _instance_ \cr
-#'  \link[=lightsail_create_instances]{create_instances} \tab Creates one or more Amazon Lightsail virtual private servers, or _instances_ \cr
-#'  \link[=lightsail_create_instances_from_snapshot]{create_instances_from_snapshot} \tab Uses a specific snapshot as a blueprint for creating one or more new instances that are based on that identical configuration \cr
+#'  \link[=lightsail_create_instances]{create_instances} \tab Creates one or more Amazon Lightsail instances \cr
+#'  \link[=lightsail_create_instances_from_snapshot]{create_instances_from_snapshot} \tab Creates one or more new instances from a manual or automatic snapshot of an instance \cr
 #'  \link[=lightsail_create_key_pair]{create_key_pair} \tab Creates an SSH key pair \cr
 #'  \link[=lightsail_create_load_balancer]{create_load_balancer} \tab Creates a Lightsail load balancer \cr
 #'  \link[=lightsail_create_load_balancer_tls_certificate]{create_load_balancer_tls_certificate} \tab Creates a Lightsail load balancer TLS certificate \cr
 #'  \link[=lightsail_create_relational_database]{create_relational_database} \tab Creates a new database in Amazon Lightsail \cr
 #'  \link[=lightsail_create_relational_database_from_snapshot]{create_relational_database_from_snapshot} \tab Creates a new database from an existing database snapshot in Amazon Lightsail \cr
 #'  \link[=lightsail_create_relational_database_snapshot]{create_relational_database_snapshot} \tab Creates a snapshot of your database in Amazon Lightsail \cr
+#'  \link[=lightsail_delete_auto_snapshot]{delete_auto_snapshot} \tab Deletes an automatic snapshot for an instance or disk \cr
 #'  \link[=lightsail_delete_disk]{delete_disk} \tab Deletes the specified block storage disk \cr
 #'  \link[=lightsail_delete_disk_snapshot]{delete_disk_snapshot} \tab Deletes the specified disk snapshot \cr
 #'  \link[=lightsail_delete_domain]{delete_domain} \tab Deletes the specified domain recordset and all of its domain records \cr
 #'  \link[=lightsail_delete_domain_entry]{delete_domain_entry} \tab Deletes a specific domain entry \cr
-#'  \link[=lightsail_delete_instance]{delete_instance} \tab Deletes a specific Amazon Lightsail virtual private server, or _instance_ \cr
+#'  \link[=lightsail_delete_instance]{delete_instance} \tab Deletes an Amazon Lightsail instance \cr
 #'  \link[=lightsail_delete_instance_snapshot]{delete_instance_snapshot} \tab Deletes a specific snapshot of a virtual private server (or _instance_) \cr
 #'  \link[=lightsail_delete_key_pair]{delete_key_pair} \tab Deletes a specific SSH key pair \cr
 #'  \link[=lightsail_delete_known_host_keys]{delete_known_host_keys} \tab Deletes the known host key or certificate used by the Amazon Lightsail browser-based SSH or RDP clients to authenticate an instance \cr
@@ -1098,9 +1176,12 @@ lambda <- function(config = list()) {
 #'  \link[=lightsail_detach_disk]{detach_disk} \tab Detaches a stopped block storage disk from a Lightsail instance \cr
 #'  \link[=lightsail_detach_instances_from_load_balancer]{detach_instances_from_load_balancer} \tab Detaches the specified instances from a Lightsail load balancer \cr
 #'  \link[=lightsail_detach_static_ip]{detach_static_ip} \tab Detaches a static IP from the Amazon Lightsail instance to which it is attached \cr
+#'  \link[=lightsail_disable_add_on]{disable_add_on} \tab Disables an add-on for an Amazon Lightsail resource \cr
 #'  \link[=lightsail_download_default_key_pair]{download_default_key_pair} \tab Downloads the default SSH key pair from the user's account \cr
+#'  \link[=lightsail_enable_add_on]{enable_add_on} \tab Enables or modifies an add-on for an Amazon Lightsail resource \cr
 #'  \link[=lightsail_export_snapshot]{export_snapshot} \tab Exports an Amazon Lightsail instance or block storage disk snapshot to Amazon Elastic Compute Cloud (Amazon EC2) \cr
 #'  \link[=lightsail_get_active_names]{get_active_names} \tab Returns the names of all active (not deleted) resources \cr
+#'  \link[=lightsail_get_auto_snapshots]{get_auto_snapshots} \tab Returns the available automatic snapshots for the specified resource name \cr
 #'  \link[=lightsail_get_blueprints]{get_blueprints} \tab Returns the list of available instance images, or _blueprints_ \cr
 #'  \link[=lightsail_get_bundles]{get_bundles} \tab Returns the list of bundles that are available for purchase \cr
 #'  \link[=lightsail_get_cloud_formation_stack_records]{get_cloud_formation_stack_records} \tab Returns the CloudFormation stack record created as a result of the create cloud formation stack operation \cr
@@ -1394,6 +1475,9 @@ backup <- function(config = list()) {
 #'  \link[=dlm_delete_lifecycle_policy]{delete_lifecycle_policy} \tab Deletes the specified lifecycle policy and halts the automated operations that the policy specified\cr
 #'  \link[=dlm_get_lifecycle_policies]{get_lifecycle_policies} \tab Gets summary information about all or the specified data lifecycle policies \cr
 #'  \link[=dlm_get_lifecycle_policy]{get_lifecycle_policy} \tab Gets detailed information about the specified lifecycle policy \cr
+#'  \link[=dlm_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource \cr
+#'  \link[=dlm_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource \cr
+#'  \link[=dlm_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource \cr
 #'  \link[=dlm_update_lifecycle_policy]{update_lifecycle_policy} \tab Updates the specified lifecycle policy 
 #' }
 #'
@@ -1687,38 +1771,38 @@ glacier <- function(config = list()) {
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=s3_abort_multipart_upload]{abort_multipart_upload} \tab Aborts a multipart upload \cr
+#'  \link[=s3_abort_multipart_upload]{abort_multipart_upload} \tab This operation aborts a multipart upload \cr
 #'  \link[=s3_complete_multipart_upload]{complete_multipart_upload} \tab Completes a multipart upload by assembling previously uploaded parts \cr
 #'  \link[=s3_copy_object]{copy_object} \tab Creates a copy of an object that is already stored in Amazon S3 \cr
 #'  \link[=s3_create_bucket]{create_bucket} \tab Creates a new bucket \cr
-#'  \link[=s3_create_multipart_upload]{create_multipart_upload} \tab Initiates a multipart upload and returns an upload ID \cr
+#'  \link[=s3_create_multipart_upload]{create_multipart_upload} \tab This operation initiates a multipart upload and returns an upload ID \cr
 #'  \link[=s3_delete_bucket]{delete_bucket} \tab Deletes the bucket \cr
 #'  \link[=s3_delete_bucket_analytics_configuration]{delete_bucket_analytics_configuration} \tab Deletes an analytics configuration for the bucket (specified by the analytics configuration ID) \cr
-#'  \link[=s3_delete_bucket_cors]{delete_bucket_cors} \tab Deletes the CORS configuration information set for the bucket \cr
-#'  \link[=s3_delete_bucket_encryption]{delete_bucket_encryption} \tab Deletes the server-side encryption configuration from the bucket \cr
+#'  \link[=s3_delete_bucket_cors]{delete_bucket_cors} \tab Deletes the cors configuration information set for the bucket \cr
+#'  \link[=s3_delete_bucket_encryption]{delete_bucket_encryption} \tab This implementation of the DELETE operation removes default encryption from the bucket \cr
 #'  \link[=s3_delete_bucket_inventory_configuration]{delete_bucket_inventory_configuration} \tab Deletes an inventory configuration (identified by the inventory ID) from the bucket \cr
-#'  \link[=s3_delete_bucket_lifecycle]{delete_bucket_lifecycle} \tab Deletes the lifecycle configuration from the bucket \cr
-#'  \link[=s3_delete_bucket_metrics_configuration]{delete_bucket_metrics_configuration} \tab Deletes a metrics configuration (specified by the metrics configuration ID) from the bucket \cr
-#'  \link[=s3_delete_bucket_policy]{delete_bucket_policy} \tab Deletes the policy from the bucket \cr
+#'  \link[=s3_delete_bucket_lifecycle]{delete_bucket_lifecycle} \tab Deletes the lifecycle configuration from the specified bucket \cr
+#'  \link[=s3_delete_bucket_metrics_configuration]{delete_bucket_metrics_configuration} \tab Deletes a metrics configuration for the Amazon CloudWatch request metrics (specified by the metrics configuration ID) from the bucket \cr
+#'  \link[=s3_delete_bucket_policy]{delete_bucket_policy} \tab This implementation of the DELETE operation uses the policy subresource to delete the policy of a specified bucket \cr
 #'  \link[=s3_delete_bucket_replication]{delete_bucket_replication} \tab Deletes the replication configuration from the bucket \cr
 #'  \link[=s3_delete_bucket_tagging]{delete_bucket_tagging} \tab Deletes the tags from the bucket \cr
-#'  \link[=s3_delete_bucket_website]{delete_bucket_website} \tab This operation removes the website configuration from the bucket \cr
-#'  \link[=s3_delete_object]{delete_object} \tab Removes the null version (if there is one) of an object and inserts a delete marker, which becomes the latest version of the object\cr
-#'  \link[=s3_delete_object_tagging]{delete_object_tagging} \tab Removes the tag-set from an existing object \cr
+#'  \link[=s3_delete_bucket_website]{delete_bucket_website} \tab This operation removes the website configuration for a bucket \cr
+#'  \link[=s3_delete_object]{delete_object} \tab Removes the null version (if there is one) of an object and inserts a delete marker, which becomes the latest version of the object \cr
+#'  \link[=s3_delete_object_tagging]{delete_object_tagging} \tab Removes the entire tag set from the specified object \cr
 #'  \link[=s3_delete_objects]{delete_objects} \tab This operation enables you to delete multiple objects from a bucket using a single HTTP request \cr
-#'  \link[=s3_delete_public_access_block]{delete_public_access_block} \tab Removes the PublicAccessBlock configuration from an Amazon S3 bucket \cr
-#'  \link[=s3_get_bucket_accelerate_configuration]{get_bucket_accelerate_configuration} \tab Returns the accelerate configuration of a bucket \cr
-#'  \link[=s3_get_bucket_acl]{get_bucket_acl} \tab Gets the access control policy for the bucket \cr
-#'  \link[=s3_get_bucket_analytics_configuration]{get_bucket_analytics_configuration} \tab Gets an analytics configuration for the bucket (specified by the analytics configuration ID) \cr
-#'  \link[=s3_get_bucket_cors]{get_bucket_cors} \tab Returns the CORS configuration for the bucket \cr
-#'  \link[=s3_get_bucket_encryption]{get_bucket_encryption} \tab Returns the server-side encryption configuration of a bucket \cr
-#'  \link[=s3_get_bucket_inventory_configuration]{get_bucket_inventory_configuration} \tab Returns an inventory configuration (identified by the inventory ID) from the bucket \cr
-#'  \link[=s3_get_bucket_lifecycle]{get_bucket_lifecycle} \tab No longer used, see the GetBucketLifecycleConfiguration operation \cr
-#'  \link[=s3_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration} \tab Returns the lifecycle configuration information set on the bucket \cr
-#'  \link[=s3_get_bucket_location]{get_bucket_location} \tab Returns the region the bucket resides in \cr
+#'  \link[=s3_delete_public_access_block]{delete_public_access_block} \tab Removes the PublicAccessBlock configuration for an Amazon S3 bucket \cr
+#'  \link[=s3_get_bucket_accelerate_configuration]{get_bucket_accelerate_configuration} \tab This implementation of the GET operation uses the accelerate subresource to return the Transfer Acceleration state of a bucket, which is either Enabled or Suspended \cr
+#'  \link[=s3_get_bucket_acl]{get_bucket_acl} \tab This implementation of the GET operation uses the acl subresource to return the access control list (ACL) of a bucket \cr
+#'  \link[=s3_get_bucket_analytics_configuration]{get_bucket_analytics_configuration} \tab This implementation of the GET operation returns an analytics configuration (identified by the analytics configuration ID) from the bucket \cr
+#'  \link[=s3_get_bucket_cors]{get_bucket_cors} \tab Returns the cors configuration information set for the bucket \cr
+#'  \link[=s3_get_bucket_encryption]{get_bucket_encryption} \tab Returns the default encryption configuration for an Amazon S3 bucket \cr
+#'  \link[=s3_get_bucket_inventory_configuration]{get_bucket_inventory_configuration} \tab Returns an inventory configuration (identified by the inventory configuration ID) from the bucket \cr
+#'  \link[=s3_get_bucket_lifecycle]{get_bucket_lifecycle} \tab For an updated version of this API, see GetBucketLifecycleConfiguration \cr
+#'  \link[=s3_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration} \tab Bucket lifecycle configuration now supports specifying a lifecycle rule using an object key name prefix, one or more object tags, or a combination of both \cr
+#'  \link[=s3_get_bucket_location]{get_bucket_location} \tab Returns the Region the bucket resides in \cr
 #'  \link[=s3_get_bucket_logging]{get_bucket_logging} \tab Returns the logging status of a bucket and the permissions users have to view and modify that status \cr
 #'  \link[=s3_get_bucket_metrics_configuration]{get_bucket_metrics_configuration} \tab Gets a metrics configuration (specified by the metrics configuration ID) from the bucket \cr
-#'  \link[=s3_get_bucket_notification]{get_bucket_notification} \tab No longer used, see the GetBucketNotificationConfiguration operation \cr
+#'  \link[=s3_get_bucket_notification]{get_bucket_notification} \tab No longer used, see GetBucketNotificationConfiguration \cr
 #'  \link[=s3_get_bucket_notification_configuration]{get_bucket_notification_configuration} \tab Returns the notification configuration of a bucket \cr
 #'  \link[=s3_get_bucket_policy]{get_bucket_policy} \tab Returns the policy of a specified bucket \cr
 #'  \link[=s3_get_bucket_policy_status]{get_bucket_policy_status} \tab Retrieves the policy status for an Amazon S3 bucket, indicating whether the bucket is public \cr
@@ -1730,7 +1814,7 @@ glacier <- function(config = list()) {
 #'  \link[=s3_get_object]{get_object} \tab Retrieves objects from Amazon S3 \cr
 #'  \link[=s3_get_object_acl]{get_object_acl} \tab Returns the access control list (ACL) of an object \cr
 #'  \link[=s3_get_object_legal_hold]{get_object_legal_hold} \tab Gets an object's current Legal Hold status \cr
-#'  \link[=s3_get_object_lock_configuration]{get_object_lock_configuration} \tab Gets the object lock configuration for a bucket \cr
+#'  \link[=s3_get_object_lock_configuration]{get_object_lock_configuration} \tab Gets the Object Lock configuration for a bucket \cr
 #'  \link[=s3_get_object_retention]{get_object_retention} \tab Retrieves an object's retention settings \cr
 #'  \link[=s3_get_object_tagging]{get_object_tagging} \tab Returns the tag-set of an object \cr
 #'  \link[=s3_get_object_torrent]{get_object_torrent} \tab Return torrent files from a bucket \cr
@@ -1743,17 +1827,17 @@ glacier <- function(config = list()) {
 #'  \link[=s3_list_buckets]{list_buckets} \tab Returns a list of all buckets owned by the authenticated sender of the request \cr
 #'  \link[=s3_list_multipart_uploads]{list_multipart_uploads} \tab This operation lists in-progress multipart uploads \cr
 #'  \link[=s3_list_object_versions]{list_object_versions} \tab Returns metadata about all of the versions of objects in a bucket \cr
-#'  \link[=s3_list_objects]{list_objects} \tab Returns some or all (up to 1000) of the objects in a bucket \cr
-#'  \link[=s3_list_objects_v2]{list_objects_v2} \tab Returns some or all (up to 1000) of the objects in a bucket \cr
+#'  \link[=s3_list_objects]{list_objects} \tab Returns some or all (up to 1,000) of the objects in a bucket \cr
+#'  \link[=s3_list_objects_v2]{list_objects_v2} \tab Returns some or all (up to 1,000) of the objects in a bucket \cr
 #'  \link[=s3_list_parts]{list_parts} \tab Lists the parts that have been uploaded for a specific multipart upload \cr
 #'  \link[=s3_put_bucket_accelerate_configuration]{put_bucket_accelerate_configuration} \tab Sets the accelerate configuration of an existing bucket \cr
-#'  \link[=s3_put_bucket_acl]{put_bucket_acl} \tab Sets the permissions on a bucket using access control lists (ACL) \cr
+#'  \link[=s3_put_bucket_acl]{put_bucket_acl} \tab Sets the permissions on an existing bucket using access control lists (ACL) \cr
 #'  \link[=s3_put_bucket_analytics_configuration]{put_bucket_analytics_configuration} \tab Sets an analytics configuration for the bucket (specified by the analytics configuration ID) \cr
-#'  \link[=s3_put_bucket_cors]{put_bucket_cors} \tab Sets the CORS configuration for a bucket \cr
-#'  \link[=s3_put_bucket_encryption]{put_bucket_encryption} \tab Creates a new server-side encryption configuration (or replaces an existing one, if present) \cr
-#'  \link[=s3_put_bucket_inventory_configuration]{put_bucket_inventory_configuration} \tab Adds an inventory configuration (identified by the inventory ID) from the bucket \cr
-#'  \link[=s3_put_bucket_lifecycle]{put_bucket_lifecycle} \tab No longer used, see the PutBucketLifecycleConfiguration operation \cr
-#'  \link[=s3_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration} \tab Sets lifecycle configuration for your bucket \cr
+#'  \link[=s3_put_bucket_cors]{put_bucket_cors} \tab Sets the cors configuration for your bucket \cr
+#'  \link[=s3_put_bucket_encryption]{put_bucket_encryption} \tab This implementation of the PUT operation uses the encryption subresource to set the default encryption state of an existing bucket \cr
+#'  \link[=s3_put_bucket_inventory_configuration]{put_bucket_inventory_configuration} \tab This implementation of the PUT operation adds an inventory configuration (identified by the inventory ID) to the bucket \cr
+#'  \link[=s3_put_bucket_lifecycle]{put_bucket_lifecycle} \tab For an updated version of this API, see PutBucketLifecycleConfiguration \cr
+#'  \link[=s3_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration} \tab Creates a new lifecycle configuration for the bucket or replaces an existing lifecycle configuration \cr
 #'  \link[=s3_put_bucket_logging]{put_bucket_logging} \tab Set the logging parameters for a bucket and to specify permissions for who can view and modify the logging parameters \cr
 #'  \link[=s3_put_bucket_metrics_configuration]{put_bucket_metrics_configuration} \tab Sets a metrics configuration (specified by the metrics configuration ID) for the bucket \cr
 #'  \link[=s3_put_bucket_notification]{put_bucket_notification} \tab No longer used, see the PutBucketNotificationConfiguration operation \cr
@@ -1763,16 +1847,16 @@ glacier <- function(config = list()) {
 #'  \link[=s3_put_bucket_request_payment]{put_bucket_request_payment} \tab Sets the request payment configuration for a bucket \cr
 #'  \link[=s3_put_bucket_tagging]{put_bucket_tagging} \tab Sets the tags for a bucket \cr
 #'  \link[=s3_put_bucket_versioning]{put_bucket_versioning} \tab Sets the versioning state of an existing bucket \cr
-#'  \link[=s3_put_bucket_website]{put_bucket_website} \tab Set the website configuration for a bucket \cr
+#'  \link[=s3_put_bucket_website]{put_bucket_website} \tab Sets the configuration of the website that is specified in the website subresource \cr
 #'  \link[=s3_put_object]{put_object} \tab Adds an object to a bucket \cr
-#'  \link[=s3_put_object_acl]{put_object_acl} \tab uses the acl subresource to set the access control list (ACL) permissions for an object that already exists in a bucket \cr
+#'  \link[=s3_put_object_acl]{put_object_acl} \tab Uses the acl subresource to set the access control list (ACL) permissions for an object that already exists in a bucket \cr
 #'  \link[=s3_put_object_legal_hold]{put_object_legal_hold} \tab Applies a Legal Hold configuration to the specified object \cr
-#'  \link[=s3_put_object_lock_configuration]{put_object_lock_configuration} \tab Places an object lock configuration on the specified bucket \cr
+#'  \link[=s3_put_object_lock_configuration]{put_object_lock_configuration} \tab Places an Object Lock configuration on the specified bucket \cr
 #'  \link[=s3_put_object_retention]{put_object_retention} \tab Places an Object Retention configuration on an object \cr
-#'  \link[=s3_put_object_tagging]{put_object_tagging} \tab Sets the supplied tag-set to an object that already exists in a bucket \cr
+#'  \link[=s3_put_object_tagging]{put_object_tagging} \tab Sets the supplied tag-set to an object that already exists in a bucket A tag is a key-value pair \cr
 #'  \link[=s3_put_public_access_block]{put_public_access_block} \tab Creates or modifies the PublicAccessBlock configuration for an Amazon S3 bucket \cr
-#'  \link[=s3_restore_object]{restore_object} \tab Restores an archived copy of an object back into Amazon S3 \cr
-#'  \link[=s3_select_object_content]{select_object_content} \tab This operation filters the contents of an Amazon S3 object based on a simple Structured Query Language (SQL) statement \cr
+#'  \link[=s3_restore_object]{restore_object} \tab Restores an archived copy of an object back into Amazon S3 This operation performs the following types of requests: - select - Perform a select query on an archived object - restore an archive - Restore an archived object To use this operation, you must have permissions to perform the s3:RestoreObject and s3:GetObject actions\cr
+#'  \link[=s3_select_object_content]{select_object_content} \tab This operation filters the contents of an Amazon S3 object based on a simple structured query language (SQL) statement \cr
 #'  \link[=s3_upload_part]{upload_part} \tab Uploads a part in a multipart upload \cr
 #'  \link[=s3_upload_part_copy]{upload_part_copy} \tab Uploads a part by copying data from an existing object as data source 
 #' }
@@ -1812,18 +1896,26 @@ s3 <- function(config = list()) {
 #'
 #' @examples
 #' \donttest{svc <- s3control()
-#' svc$create_job(
+#' svc$create_access_point(
 #'   Foo = 123
 #' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=s3control_create_access_point]{create_access_point} \tab Creates an access point and associates it with the specified bucket \cr
 #'  \link[=s3control_create_job]{create_job} \tab Creates an Amazon S3 batch operations job \cr
-#'  \link[=s3control_delete_public_access_block]{delete_public_access_block} \tab Deletes the block public access configuration for the specified account \cr
+#'  \link[=s3control_delete_access_point]{delete_access_point} \tab Deletes the specified access point \cr
+#'  \link[=s3control_delete_access_point_policy]{delete_access_point_policy} \tab Deletes the access point policy for the specified access point \cr
+#'  \link[=s3control_delete_public_access_block]{delete_public_access_block} \tab Removes the PublicAccessBlock configuration for an Amazon Web Services account \cr
 #'  \link[=s3control_describe_job]{describe_job} \tab Retrieves the configuration parameters and status for a batch operations job \cr
-#'  \link[=s3control_get_public_access_block]{get_public_access_block} \tab Get public access block \cr
+#'  \link[=s3control_get_access_point]{get_access_point} \tab Returns configuration information about the specified access point \cr
+#'  \link[=s3control_get_access_point_policy]{get_access_point_policy} \tab Returns the access point policy associated with the specified access point \cr
+#'  \link[=s3control_get_access_point_policy_status]{get_access_point_policy_status} \tab Indicates whether the specified access point currently has a policy that allows public access \cr
+#'  \link[=s3control_get_public_access_block]{get_public_access_block} \tab Retrieves the PublicAccessBlock configuration for an Amazon Web Services account \cr
+#'  \link[=s3control_list_access_points]{list_access_points} \tab Returns a list of the access points currently associated with the specified bucket \cr
 #'  \link[=s3control_list_jobs]{list_jobs} \tab Lists current jobs and jobs that have ended within the last 30 days for the AWS account making the request\cr
-#'  \link[=s3control_put_public_access_block]{put_public_access_block} \tab Put public access block \cr
+#'  \link[=s3control_put_access_point_policy]{put_access_point_policy} \tab Associates an access policy with the specified access point \cr
+#'  \link[=s3control_put_public_access_block]{put_public_access_block} \tab Creates or modifies the PublicAccessBlock configuration for an Amazon Web Services account \cr
 #'  \link[=s3control_update_job_priority]{update_job_priority} \tab Updates an existing job's priority \cr
 #'  \link[=s3control_update_job_status]{update_job_status} \tab Updates the status for the specified job 
 #' }
@@ -1871,8 +1963,8 @@ s3control <- function(config = list()) {
 #' 
 #' -   [AWS Storage Gateway Regions and
 #'     Endpoints:](http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region)
-#'     Provides a list of each AWS region and endpoints available for use
-#'     with AWS Storage Gateway.
+#'     Provides a list of each AWS Region and the endpoints available for
+#'     use with AWS Storage Gateway.
 #' 
 #' AWS Storage Gateway resource IDs are in uppercase. When you use these
 #' resource IDs with the Amazon EC2 API, EC2 expects resource IDs in
@@ -1964,6 +2056,7 @@ s3control <- function(config = list()) {
 #'  \link[=storagegateway_delete_tape]{delete_tape} \tab Deletes the specified virtual tape \cr
 #'  \link[=storagegateway_delete_tape_archive]{delete_tape_archive} \tab Deletes the specified virtual tape from the virtual tape shelf (VTS) \cr
 #'  \link[=storagegateway_delete_volume]{delete_volume} \tab Deletes the specified storage volume that you previously created using the CreateCachediSCSIVolume or CreateStorediSCSIVolume API \cr
+#'  \link[=storagegateway_describe_availability_monitor_test]{describe_availability_monitor_test} \tab Returns information about the most recent High Availability monitoring test that was performed on the host in a cluster \cr
 #'  \link[=storagegateway_describe_bandwidth_rate_limit]{describe_bandwidth_rate_limit} \tab Returns the bandwidth rate limits of a gateway \cr
 #'  \link[=storagegateway_describe_cache]{describe_cache} \tab Returns information about the cache of a gateway \cr
 #'  \link[=storagegateway_describe_cachedi_scsi_volumes]{describe_cachedi_scsi_volumes} \tab Returns a description of the gateway volumes specified in the request \cr
@@ -1985,14 +2078,14 @@ s3control <- function(config = list()) {
 #'  \link[=storagegateway_disable_gateway]{disable_gateway} \tab Disables a tape gateway when the gateway is no longer functioning \cr
 #'  \link[=storagegateway_join_domain]{join_domain} \tab Adds a file gateway to an Active Directory domain \cr
 #'  \link[=storagegateway_list_file_shares]{list_file_shares} \tab Gets a list of the file shares for a specific file gateway, or the list of file shares that belong to the calling user account \cr
-#'  \link[=storagegateway_list_gateways]{list_gateways} \tab Lists gateways owned by an AWS account in a region specified in the request \cr
+#'  \link[=storagegateway_list_gateways]{list_gateways} \tab Lists gateways owned by an AWS account in an AWS Region specified in the request \cr
 #'  \link[=storagegateway_list_local_disks]{list_local_disks} \tab Returns a list of the gateway's local disks \cr
 #'  \link[=storagegateway_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags that have been added to the specified resource \cr
 #'  \link[=storagegateway_list_tapes]{list_tapes} \tab Lists virtual tapes in your virtual tape library (VTL) and your virtual tape shelf (VTS) \cr
 #'  \link[=storagegateway_list_volume_initiators]{list_volume_initiators} \tab Lists iSCSI initiators that are connected to a volume \cr
 #'  \link[=storagegateway_list_volume_recovery_points]{list_volume_recovery_points} \tab Lists the recovery points for a specified gateway \cr
 #'  \link[=storagegateway_list_volumes]{list_volumes} \tab Lists the iSCSI stored volumes of a gateway \cr
-#'  \link[=storagegateway_notify_when_uploaded]{notify_when_uploaded} \tab Sends you notification through CloudWatch Events when all files written to your NFS file share have been uploaded to Amazon S3 \cr
+#'  \link[=storagegateway_notify_when_uploaded]{notify_when_uploaded} \tab Sends you notification through CloudWatch Events when all files written to your file share have been uploaded to Amazon S3 \cr
 #'  \link[=storagegateway_refresh_cache]{refresh_cache} \tab Refreshes the cache for the specified file share \cr
 #'  \link[=storagegateway_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes one or more tags from the specified resource \cr
 #'  \link[=storagegateway_reset_cache]{reset_cache} \tab Resets all cache disks that have encountered a error and makes the disks available for reconfiguration as cache storage \cr
@@ -2001,6 +2094,7 @@ s3control <- function(config = list()) {
 #'  \link[=storagegateway_set_local_console_password]{set_local_console_password} \tab Sets the password for your VM local console \cr
 #'  \link[=storagegateway_set_smb_guest_password]{set_smb_guest_password} \tab Sets the password for the guest user smbguest \cr
 #'  \link[=storagegateway_shutdown_gateway]{shutdown_gateway} \tab Shuts down a gateway \cr
+#'  \link[=storagegateway_start_availability_monitor_test]{start_availability_monitor_test} \tab Start a test that verifies that the specified gateway is configured for High Availability monitoring in your host environment \cr
 #'  \link[=storagegateway_start_gateway]{start_gateway} \tab Starts a gateway that you previously shut down (see ShutdownGateway) \cr
 #'  \link[=storagegateway_update_bandwidth_rate_limit]{update_bandwidth_rate_limit} \tab Updates the bandwidth rate limits of a gateway \cr
 #'  \link[=storagegateway_update_chap_credentials]{update_chap_credentials} \tab Updates the Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target \cr
@@ -2139,6 +2233,7 @@ dax <- function(config = list()) {
 #'  \link[=docdb_delete_db_cluster_snapshot]{delete_db_cluster_snapshot} \tab Deletes a DB cluster snapshot \cr
 #'  \link[=docdb_delete_db_instance]{delete_db_instance} \tab Deletes a previously provisioned DB instance \cr
 #'  \link[=docdb_delete_db_subnet_group]{delete_db_subnet_group} \tab Deletes a DB subnet group \cr
+#'  \link[=docdb_describe_certificates]{describe_certificates} \tab Returns a list of certificate authority (CA) certificates provided by Amazon RDS for this AWS account \cr
 #'  \link[=docdb_describe_db_cluster_parameter_groups]{describe_db_cluster_parameter_groups} \tab Returns a list of DBClusterParameterGroup descriptions \cr
 #'  \link[=docdb_describe_db_cluster_parameters]{describe_db_cluster_parameters} \tab Returns the detailed parameter list for a particular DB cluster parameter group \cr
 #'  \link[=docdb_describe_db_cluster_snapshot_attributes]{describe_db_cluster_snapshot_attributes} \tab Returns a list of DB cluster snapshot attribute names and values for a manual DB cluster snapshot \cr
@@ -2269,14 +2364,17 @@ docdb <- function(config = list()) {
 #'  \link[=dynamodb_delete_table]{delete_table} \tab The DeleteTable operation deletes a table and all of its items \cr
 #'  \link[=dynamodb_describe_backup]{describe_backup} \tab Describes an existing backup of a table \cr
 #'  \link[=dynamodb_describe_continuous_backups]{describe_continuous_backups} \tab Checks the status of continuous backups and point in time recovery on the specified table \cr
+#'  \link[=dynamodb_describe_contributor_insights]{describe_contributor_insights} \tab Returns information about contributor insights, for a given table or global secondary index \cr
 #'  \link[=dynamodb_describe_endpoints]{describe_endpoints} \tab Returns the regional endpoint information \cr
 #'  \link[=dynamodb_describe_global_table]{describe_global_table} \tab Returns information about the specified global table \cr
 #'  \link[=dynamodb_describe_global_table_settings]{describe_global_table_settings} \tab Describes Region-specific settings for a global table \cr
 #'  \link[=dynamodb_describe_limits]{describe_limits} \tab Returns the current provisioned-capacity limits for your AWS account in a Region, both for the Region as a whole and for any one DynamoDB table that you create there\cr
 #'  \link[=dynamodb_describe_table]{describe_table} \tab Returns information about the table, including the current status of the table, when it was created, the primary key schema, and any indexes on the table \cr
+#'  \link[=dynamodb_describe_table_replica_auto_scaling]{describe_table_replica_auto_scaling} \tab Describes auto scaling settings across replicas of the global table at once \cr
 #'  \link[=dynamodb_describe_time_to_live]{describe_time_to_live} \tab Gives a description of the Time to Live (TTL) status on the specified table \cr
 #'  \link[=dynamodb_get_item]{get_item} \tab The GetItem operation returns a set of attributes for the item with the given primary key \cr
 #'  \link[=dynamodb_list_backups]{list_backups} \tab List backups associated with an AWS account \cr
+#'  \link[=dynamodb_list_contributor_insights]{list_contributor_insights} \tab Returns a list of ContributorInsightsSummary for a table and all its global secondary indexes \cr
 #'  \link[=dynamodb_list_global_tables]{list_global_tables} \tab Lists all global tables that have a replica in the specified Region \cr
 #'  \link[=dynamodb_list_tables]{list_tables} \tab Returns an array of table names associated with the current account and endpoint \cr
 #'  \link[=dynamodb_list_tags_of_resource]{list_tags_of_resource} \tab List all tags on an Amazon DynamoDB resource \cr
@@ -2290,10 +2388,12 @@ docdb <- function(config = list()) {
 #'  \link[=dynamodb_transact_write_items]{transact_write_items} \tab TransactWriteItems is a synchronous write operation that groups up to 25 action requests \cr
 #'  \link[=dynamodb_untag_resource]{untag_resource} \tab Removes the association of tags from an Amazon DynamoDB resource \cr
 #'  \link[=dynamodb_update_continuous_backups]{update_continuous_backups} \tab UpdateContinuousBackups enables or disables point in time recovery for the specified table \cr
+#'  \link[=dynamodb_update_contributor_insights]{update_contributor_insights} \tab Updates the status for contributor insights for a specific table or index \cr
 #'  \link[=dynamodb_update_global_table]{update_global_table} \tab Adds or removes replicas in the specified global table \cr
 #'  \link[=dynamodb_update_global_table_settings]{update_global_table_settings} \tab Updates settings for a global table \cr
 #'  \link[=dynamodb_update_item]{update_item} \tab Edits an existing item's attributes, or adds a new item to the table if it does not already exist \cr
 #'  \link[=dynamodb_update_table]{update_table} \tab Modifies the provisioned throughput settings, global secondary indexes, or DynamoDB Streams settings for a given table \cr
+#'  \link[=dynamodb_update_table_replica_auto_scaling]{update_table_replica_auto_scaling} \tab Updates auto scaling settings on your global tables at once \cr
 #'  \link[=dynamodb_update_time_to_live]{update_time_to_live} \tab The UpdateTimeToLive method enables or disables Time to Live (TTL) for the specified table 
 #' }
 #'
@@ -2407,6 +2507,7 @@ dynamodbstreams <- function(config = list()) {
 #'  \link[=elasticache_authorize_cache_security_group_ingress]{authorize_cache_security_group_ingress} \tab Allows network ingress to a cache security group \cr
 #'  \link[=elasticache_batch_apply_update_action]{batch_apply_update_action} \tab Apply the service update \cr
 #'  \link[=elasticache_batch_stop_update_action]{batch_stop_update_action} \tab Stop the service update \cr
+#'  \link[=elasticache_complete_migration]{complete_migration} \tab Complete the migration of data \cr
 #'  \link[=elasticache_copy_snapshot]{copy_snapshot} \tab Makes a copy of an existing snapshot \cr
 #'  \link[=elasticache_create_cache_cluster]{create_cache_cluster} \tab Creates a cluster \cr
 #'  \link[=elasticache_create_cache_parameter_group]{create_cache_parameter_group} \tab Creates a new Amazon ElastiCache cache parameter group \cr
@@ -2436,7 +2537,7 @@ dynamodbstreams <- function(config = list()) {
 #'  \link[=elasticache_describe_snapshots]{describe_snapshots} \tab Returns information about cluster or replication group snapshots \cr
 #'  \link[=elasticache_describe_update_actions]{describe_update_actions} \tab Returns details of the update actions \cr
 #'  \link[=elasticache_increase_replica_count]{increase_replica_count} \tab Dynamically increases the number of replics in a Redis (cluster mode disabled) replication group or the number of replica nodes in one or more node groups (shards) of a Redis (cluster mode enabled) replication group\cr
-#'  \link[=elasticache_list_allowed_node_type_modifications]{list_allowed_node_type_modifications} \tab Lists all available node types that you can scale your Redis cluster's or replication group's current node type up to \cr
+#'  \link[=elasticache_list_allowed_node_type_modifications]{list_allowed_node_type_modifications} \tab Lists all available node types that you can scale your Redis cluster's or replication group's current node type \cr
 #'  \link[=elasticache_list_tags_for_resource]{list_tags_for_resource} \tab Lists all cost allocation tags currently on the named resource \cr
 #'  \link[=elasticache_modify_cache_cluster]{modify_cache_cluster} \tab Modifies the settings for a cluster \cr
 #'  \link[=elasticache_modify_cache_parameter_group]{modify_cache_parameter_group} \tab Modifies the parameters of a cache parameter group \cr
@@ -2448,6 +2549,7 @@ dynamodbstreams <- function(config = list()) {
 #'  \link[=elasticache_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes the tags identified by the TagKeys list from the named resource \cr
 #'  \link[=elasticache_reset_cache_parameter_group]{reset_cache_parameter_group} \tab Modifies the parameters of a cache parameter group to the engine or system default value \cr
 #'  \link[=elasticache_revoke_cache_security_group_ingress]{revoke_cache_security_group_ingress} \tab Revokes ingress from a cache security group \cr
+#'  \link[=elasticache_start_migration]{start_migration} \tab Start the migration of data \cr
 #'  \link[=elasticache_test_failover]{test_failover} \tab Represents the input of a TestFailover operation which test automatic failover on a specified node group (called shard in the console) in a replication group (called cluster in the console) 
 #' }
 #'
@@ -2582,7 +2684,7 @@ neptune <- function(config = list()) {
 #' @description
 #' Amazon Relational Database Service (Amazon RDS) is a web service that
 #' makes it easier to set up, operate, and scale a relational database in
-#' the cloud. It provides cost-efficient, resizable capacity for an
+#' the cloud. It provides cost-efficient, resizeable capacity for an
 #' industry-standard relational database and manages common database
 #' administration tasks, freeing up developers to focus on what makes their
 #' applications and businesses unique.
@@ -2673,6 +2775,7 @@ neptune <- function(config = list()) {
 #'  \link[=rds_copy_db_parameter_group]{copy_db_parameter_group} \tab Copies the specified DB parameter group \cr
 #'  \link[=rds_copy_db_snapshot]{copy_db_snapshot} \tab Copies the specified DB snapshot \cr
 #'  \link[=rds_copy_option_group]{copy_option_group} \tab Copies the specified option group \cr
+#'  \link[=rds_create_custom_availability_zone]{create_custom_availability_zone} \tab Creates a custom Availability Zone (AZ) \cr
 #'  \link[=rds_create_db_cluster]{create_db_cluster} \tab Creates a new Amazon Aurora DB cluster \cr
 #'  \link[=rds_create_db_cluster_endpoint]{create_db_cluster_endpoint} \tab Creates a new custom endpoint and associates it with an Amazon Aurora DB cluster \cr
 #'  \link[=rds_create_db_cluster_parameter_group]{create_db_cluster_parameter_group} \tab Creates a new DB cluster parameter group \cr
@@ -2680,12 +2783,14 @@ neptune <- function(config = list()) {
 #'  \link[=rds_create_db_instance]{create_db_instance} \tab Creates a new DB instance \cr
 #'  \link[=rds_create_db_instance_read_replica]{create_db_instance_read_replica} \tab Creates a new DB instance that acts as a Read Replica for an existing source DB instance \cr
 #'  \link[=rds_create_db_parameter_group]{create_db_parameter_group} \tab Creates a new DB parameter group \cr
+#'  \link[=rds_create_db_proxy]{create_db_proxy} \tab This is prerelease documentation for the RDS Database Proxy feature in preview release \cr
 #'  \link[=rds_create_db_security_group]{create_db_security_group} \tab Creates a new DB security group \cr
 #'  \link[=rds_create_db_snapshot]{create_db_snapshot} \tab Creates a DBSnapshot \cr
 #'  \link[=rds_create_db_subnet_group]{create_db_subnet_group} \tab Creates a new DB subnet group \cr
 #'  \link[=rds_create_event_subscription]{create_event_subscription} \tab Creates an RDS event notification subscription \cr
 #'  \link[=rds_create_global_cluster]{create_global_cluster} \tab Creates an Aurora global database spread across multiple regions \cr
 #'  \link[=rds_create_option_group]{create_option_group} \tab Creates a new option group \cr
+#'  \link[=rds_delete_custom_availability_zone]{delete_custom_availability_zone} \tab Deletes a custom Availability Zone (AZ) \cr
 #'  \link[=rds_delete_db_cluster]{delete_db_cluster} \tab The DeleteDBCluster action deletes a previously provisioned DB cluster \cr
 #'  \link[=rds_delete_db_cluster_endpoint]{delete_db_cluster_endpoint} \tab Deletes a custom endpoint and removes it from an Amazon Aurora DB cluster \cr
 #'  \link[=rds_delete_db_cluster_parameter_group]{delete_db_cluster_parameter_group} \tab Deletes a specified DB cluster parameter group \cr
@@ -2693,14 +2798,18 @@ neptune <- function(config = list()) {
 #'  \link[=rds_delete_db_instance]{delete_db_instance} \tab The DeleteDBInstance action deletes a previously provisioned DB instance \cr
 #'  \link[=rds_delete_db_instance_automated_backup]{delete_db_instance_automated_backup} \tab Deletes automated backups based on the source instance's DbiResourceId value or the restorable instance's resource ID \cr
 #'  \link[=rds_delete_db_parameter_group]{delete_db_parameter_group} \tab Deletes a specified DB parameter group \cr
+#'  \link[=rds_delete_db_proxy]{delete_db_proxy} \tab This is prerelease documentation for the RDS Database Proxy feature in preview release \cr
 #'  \link[=rds_delete_db_security_group]{delete_db_security_group} \tab Deletes a DB security group \cr
 #'  \link[=rds_delete_db_snapshot]{delete_db_snapshot} \tab Deletes a DB snapshot \cr
 #'  \link[=rds_delete_db_subnet_group]{delete_db_subnet_group} \tab Deletes a DB subnet group \cr
 #'  \link[=rds_delete_event_subscription]{delete_event_subscription} \tab Deletes an RDS event notification subscription \cr
 #'  \link[=rds_delete_global_cluster]{delete_global_cluster} \tab Deletes a global database cluster \cr
+#'  \link[=rds_delete_installation_media]{delete_installation_media} \tab Deletes the installation medium for a DB engine that requires an on-premises customer provided license, such as Microsoft SQL Server \cr
 #'  \link[=rds_delete_option_group]{delete_option_group} \tab Deletes an existing option group \cr
+#'  \link[=rds_deregister_db_proxy_targets]{deregister_db_proxy_targets} \tab This is prerelease documentation for the RDS Database Proxy feature in preview release \cr
 #'  \link[=rds_describe_account_attributes]{describe_account_attributes} \tab Lists all of the attributes for a customer account \cr
 #'  \link[=rds_describe_certificates]{describe_certificates} \tab Lists the set of CA certificates provided by Amazon RDS for this AWS account \cr
+#'  \link[=rds_describe_custom_availability_zones]{describe_custom_availability_zones} \tab Returns information about custom Availability Zones (AZs) \cr
 #'  \link[=rds_describe_db_cluster_backtracks]{describe_db_cluster_backtracks} \tab Returns information about backtracks for a DB cluster \cr
 #'  \link[=rds_describe_db_cluster_endpoints]{describe_db_cluster_endpoints} \tab Returns information about endpoints for an Amazon Aurora DB cluster \cr
 #'  \link[=rds_describe_db_cluster_parameter_groups]{describe_db_cluster_parameter_groups} \tab Returns a list of DBClusterParameterGroup descriptions \cr
@@ -2714,6 +2823,9 @@ neptune <- function(config = list()) {
 #'  \link[=rds_describe_db_log_files]{describe_db_log_files} \tab Returns a list of DB log files for the DB instance \cr
 #'  \link[=rds_describe_db_parameter_groups]{describe_db_parameter_groups} \tab Returns a list of DBParameterGroup descriptions \cr
 #'  \link[=rds_describe_db_parameters]{describe_db_parameters} \tab Returns the detailed parameter list for a particular DB parameter group \cr
+#'  \link[=rds_describe_db_proxies]{describe_db_proxies} \tab This is prerelease documentation for the RDS Database Proxy feature in preview release \cr
+#'  \link[=rds_describe_db_proxy_target_groups]{describe_db_proxy_target_groups} \tab This is prerelease documentation for the RDS Database Proxy feature in preview release \cr
+#'  \link[=rds_describe_db_proxy_targets]{describe_db_proxy_targets} \tab This is prerelease documentation for the RDS Database Proxy feature in preview release \cr
 #'  \link[=rds_describe_db_security_groups]{describe_db_security_groups} \tab Returns a list of DBSecurityGroup descriptions \cr
 #'  \link[=rds_describe_db_snapshot_attributes]{describe_db_snapshot_attributes} \tab Returns a list of DB snapshot attribute names and values for a manual DB snapshot \cr
 #'  \link[=rds_describe_db_snapshots]{describe_db_snapshots} \tab Returns information about DB snapshots \cr
@@ -2724,6 +2836,7 @@ neptune <- function(config = list()) {
 #'  \link[=rds_describe_event_subscriptions]{describe_event_subscriptions} \tab Lists all the subscription descriptions for a customer account \cr
 #'  \link[=rds_describe_events]{describe_events} \tab Returns events related to DB instances, DB security groups, DB snapshots, and DB parameter groups for the past 14 days \cr
 #'  \link[=rds_describe_global_clusters]{describe_global_clusters} \tab Returns information about Aurora global database clusters \cr
+#'  \link[=rds_describe_installation_media]{describe_installation_media} \tab Describes the available installation media for a DB engine that requires an on-premises customer provided license, such as Microsoft SQL Server \cr
 #'  \link[=rds_describe_option_group_options]{describe_option_group_options} \tab Describes all available options \cr
 #'  \link[=rds_describe_option_groups]{describe_option_groups} \tab Describes the available option groups \cr
 #'  \link[=rds_describe_orderable_db_instance_options]{describe_orderable_db_instance_options} \tab Returns a list of orderable DB instance options for the specified engine \cr
@@ -2734,6 +2847,7 @@ neptune <- function(config = list()) {
 #'  \link[=rds_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications} \tab You can call DescribeValidDBInstanceModifications to learn what modifications you can make to your DB instance \cr
 #'  \link[=rds_download_db_log_file_portion]{download_db_log_file_portion} \tab Downloads all or a portion of the specified log file, up to 1 MB in size \cr
 #'  \link[=rds_failover_db_cluster]{failover_db_cluster} \tab Forces a failover for a DB cluster \cr
+#'  \link[=rds_import_installation_media]{import_installation_media} \tab Imports the installation media for a DB engine that requires an on-premises customer provided license, such as SQL Server \cr
 #'  \link[=rds_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on an Amazon RDS resource \cr
 #'  \link[=rds_modify_current_db_cluster_capacity]{modify_current_db_cluster_capacity} \tab Set the capacity of an Aurora Serverless DB cluster to a specific value \cr
 #'  \link[=rds_modify_db_cluster]{modify_db_cluster} \tab Modify a setting for an Amazon Aurora DB cluster \cr
@@ -2742,6 +2856,8 @@ neptune <- function(config = list()) {
 #'  \link[=rds_modify_db_cluster_snapshot_attribute]{modify_db_cluster_snapshot_attribute} \tab Adds an attribute and values to, or removes an attribute and values from, a manual DB cluster snapshot \cr
 #'  \link[=rds_modify_db_instance]{modify_db_instance} \tab Modifies settings for a DB instance \cr
 #'  \link[=rds_modify_db_parameter_group]{modify_db_parameter_group} \tab Modifies the parameters of a DB parameter group \cr
+#'  \link[=rds_modify_db_proxy]{modify_db_proxy} \tab This is prerelease documentation for the RDS Database Proxy feature in preview release \cr
+#'  \link[=rds_modify_db_proxy_target_group]{modify_db_proxy_target_group} \tab This is prerelease documentation for the RDS Database Proxy feature in preview release \cr
 #'  \link[=rds_modify_db_snapshot]{modify_db_snapshot} \tab Updates a manual DB snapshot, which can be encrypted or not encrypted, with a new engine version \cr
 #'  \link[=rds_modify_db_snapshot_attribute]{modify_db_snapshot_attribute} \tab Adds an attribute and values to, or removes an attribute and values from, a manual DB snapshot \cr
 #'  \link[=rds_modify_db_subnet_group]{modify_db_subnet_group} \tab Modifies an existing DB subnet group \cr
@@ -2752,6 +2868,7 @@ neptune <- function(config = list()) {
 #'  \link[=rds_promote_read_replica_db_cluster]{promote_read_replica_db_cluster} \tab Promotes a Read Replica DB cluster to a standalone DB cluster \cr
 #'  \link[=rds_purchase_reserved_db_instances_offering]{purchase_reserved_db_instances_offering} \tab Purchases a reserved DB instance offering \cr
 #'  \link[=rds_reboot_db_instance]{reboot_db_instance} \tab You might need to reboot your DB instance, usually for maintenance reasons \cr
+#'  \link[=rds_register_db_proxy_targets]{register_db_proxy_targets} \tab This is prerelease documentation for the RDS Database Proxy feature in preview release \cr
 #'  \link[=rds_remove_from_global_cluster]{remove_from_global_cluster} \tab Detaches an Aurora secondary cluster from an Aurora global database cluster \cr
 #'  \link[=rds_remove_role_from_db_cluster]{remove_role_from_db_cluster} \tab Disassociates an AWS Identity and Access Management (IAM) role from an Amazon Aurora DB cluster \cr
 #'  \link[=rds_remove_role_from_db_instance]{remove_role_from_db_instance} \tab Disassociates an AWS Identity and Access Management (IAM) role from a DB instance \cr
@@ -2793,6 +2910,9 @@ rds <- function(config = list()) {
 #' for Aurora
 #' Serverless](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
 #' in the *Amazon Aurora User Guide*.
+#' 
+#' If you have questions or comments related to the Data API, send email to
+#' <Rds-data-api-feedback@amazon.com>.
 #'
 #' @param
 #' config
@@ -2915,6 +3035,7 @@ rdsdataservice <- function(config = list()) {
 #'  \link[=redshift_create_event_subscription]{create_event_subscription} \tab Creates an Amazon Redshift event notification subscription \cr
 #'  \link[=redshift_create_hsm_client_certificate]{create_hsm_client_certificate} \tab Creates an HSM client certificate that an Amazon Redshift cluster will use to connect to the client's HSM in order to store and retrieve the keys used to encrypt the cluster databases \cr
 #'  \link[=redshift_create_hsm_configuration]{create_hsm_configuration} \tab Creates an HSM configuration that contains the information required by an Amazon Redshift cluster to store and use database encryption keys in a Hardware Security Module (HSM) \cr
+#'  \link[=redshift_create_scheduled_action]{create_scheduled_action} \tab Creates a scheduled action \cr
 #'  \link[=redshift_create_snapshot_copy_grant]{create_snapshot_copy_grant} \tab Creates a snapshot copy grant that permits Amazon Redshift to use a customer master key (CMK) from AWS Key Management Service (AWS KMS) to encrypt copied snapshots in a destination region \cr
 #'  \link[=redshift_create_snapshot_schedule]{create_snapshot_schedule} \tab Creates a new snapshot schedule \cr
 #'  \link[=redshift_create_tags]{create_tags} \tab Adds one or more tags to a specified resource \cr
@@ -2926,6 +3047,7 @@ rdsdataservice <- function(config = list()) {
 #'  \link[=redshift_delete_event_subscription]{delete_event_subscription} \tab Deletes an Amazon Redshift event notification subscription \cr
 #'  \link[=redshift_delete_hsm_client_certificate]{delete_hsm_client_certificate} \tab Deletes the specified HSM client certificate \cr
 #'  \link[=redshift_delete_hsm_configuration]{delete_hsm_configuration} \tab Deletes the specified Amazon Redshift HSM configuration \cr
+#'  \link[=redshift_delete_scheduled_action]{delete_scheduled_action} \tab Deletes a scheduled action \cr
 #'  \link[=redshift_delete_snapshot_copy_grant]{delete_snapshot_copy_grant} \tab Deletes the specified snapshot copy grant \cr
 #'  \link[=redshift_delete_snapshot_schedule]{delete_snapshot_schedule} \tab Deletes a snapshot schedule \cr
 #'  \link[=redshift_delete_tags]{delete_tags} \tab Deletes a tag or tags from a resource \cr
@@ -2946,13 +3068,15 @@ rdsdataservice <- function(config = list()) {
 #'  \link[=redshift_describe_hsm_client_certificates]{describe_hsm_client_certificates} \tab Returns information about the specified HSM client certificate \cr
 #'  \link[=redshift_describe_hsm_configurations]{describe_hsm_configurations} \tab Returns information about the specified Amazon Redshift HSM configuration \cr
 #'  \link[=redshift_describe_logging_status]{describe_logging_status} \tab Describes whether information, such as queries and connection attempts, is being logged for the specified Amazon Redshift cluster \cr
+#'  \link[=redshift_describe_node_configuration_options]{describe_node_configuration_options} \tab Returns properties of possible node configurations such as node type, number of nodes, and disk usage for the specified action type \cr
 #'  \link[=redshift_describe_orderable_cluster_options]{describe_orderable_cluster_options} \tab Returns a list of orderable cluster options \cr
 #'  \link[=redshift_describe_reserved_node_offerings]{describe_reserved_node_offerings} \tab Returns a list of the available reserved node offerings by Amazon Redshift with their descriptions including the node type, the fixed and recurring costs of reserving the node and duration the node will be reserved for you\cr
 #'  \link[=redshift_describe_reserved_nodes]{describe_reserved_nodes} \tab Returns the descriptions of the reserved nodes \cr
 #'  \link[=redshift_describe_resize]{describe_resize} \tab Returns information about the last resize operation for the specified cluster \cr
+#'  \link[=redshift_describe_scheduled_actions]{describe_scheduled_actions} \tab Describes properties of scheduled actions \cr
 #'  \link[=redshift_describe_snapshot_copy_grants]{describe_snapshot_copy_grants} \tab Returns a list of snapshot copy grants owned by the AWS account in the destination region \cr
 #'  \link[=redshift_describe_snapshot_schedules]{describe_snapshot_schedules} \tab Returns a list of snapshot schedules \cr
-#'  \link[=redshift_describe_storage]{describe_storage} \tab Returns the total amount of snapshot usage and provisioned storage for a user in megabytes \cr
+#'  \link[=redshift_describe_storage]{describe_storage} \tab Returns the total amount of snapshot usage and provisioned storage in megabytes \cr
 #'  \link[=redshift_describe_table_restore_status]{describe_table_restore_status} \tab Lists the status of one or more table restore requests made using the RestoreTableFromClusterSnapshot API action \cr
 #'  \link[=redshift_describe_tags]{describe_tags} \tab Returns a list of tags \cr
 #'  \link[=redshift_disable_logging]{disable_logging} \tab Stops logging information, such as queries and connection attempts, for the specified Amazon Redshift cluster \cr
@@ -2970,6 +3094,7 @@ rdsdataservice <- function(config = list()) {
 #'  \link[=redshift_modify_cluster_snapshot_schedule]{modify_cluster_snapshot_schedule} \tab Modifies a snapshot schedule for a cluster \cr
 #'  \link[=redshift_modify_cluster_subnet_group]{modify_cluster_subnet_group} \tab Modifies a cluster subnet group to include the specified list of VPC subnets \cr
 #'  \link[=redshift_modify_event_subscription]{modify_event_subscription} \tab Modifies an existing Amazon Redshift event notification subscription \cr
+#'  \link[=redshift_modify_scheduled_action]{modify_scheduled_action} \tab Modify a scheduled action \cr
 #'  \link[=redshift_modify_snapshot_copy_retention_period]{modify_snapshot_copy_retention_period} \tab Modifies the number of days to retain snapshots in the destination AWS Region after they are copied from the source AWS Region \cr
 #'  \link[=redshift_modify_snapshot_schedule]{modify_snapshot_schedule} \tab Modifies a snapshot schedule \cr
 #'  \link[=redshift_purchase_reserved_node_offering]{purchase_reserved_node_offering} \tab Allows you to purchase reserved nodes \cr
@@ -3244,13 +3369,15 @@ apigateway <- function(config = list()) {
 #'
 #' @examples
 #' \donttest{svc <- apigatewaymanagementapi()
-#' svc$post_to_connection(
+#' svc$delete_connection(
 #'   Foo = 123
 #' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=apigatewaymanagementapi_post_to_connection]{post_to_connection} \tab Sends the provided data to the specified connection
+#'  \link[=apigatewaymanagementapi_delete_connection]{delete_connection} \tab Delete the connection with the provided id \cr
+#'  \link[=apigatewaymanagementapi_get_connection]{get_connection} \tab Get information about the connection with the provided id\cr
+#'  \link[=apigatewaymanagementapi_post_to_connection]{post_to_connection} \tab Sends the provided data to the specified connection 
 #' }
 #'
 #' @rdname apigatewaymanagementapi
@@ -3308,6 +3435,7 @@ apigatewaymanagementapi <- function(config = list()) {
 #'  \link[=apigatewayv2_delete_api]{delete_api} \tab Deletes an Api resource \cr
 #'  \link[=apigatewayv2_delete_api_mapping]{delete_api_mapping} \tab Deletes an API mapping \cr
 #'  \link[=apigatewayv2_delete_authorizer]{delete_authorizer} \tab Deletes an Authorizer \cr
+#'  \link[=apigatewayv2_delete_cors_configuration]{delete_cors_configuration} \tab Deletes a CORS configuration \cr
 #'  \link[=apigatewayv2_delete_deployment]{delete_deployment} \tab Deletes a Deployment \cr
 #'  \link[=apigatewayv2_delete_domain_name]{delete_domain_name} \tab Deletes a domain name \cr
 #'  \link[=apigatewayv2_delete_integration]{delete_integration} \tab Deletes an Integration \cr
@@ -3315,10 +3443,11 @@ apigatewaymanagementapi <- function(config = list()) {
 #'  \link[=apigatewayv2_delete_model]{delete_model} \tab Deletes a Model \cr
 #'  \link[=apigatewayv2_delete_route]{delete_route} \tab Deletes a Route \cr
 #'  \link[=apigatewayv2_delete_route_response]{delete_route_response} \tab Deletes a RouteResponse \cr
+#'  \link[=apigatewayv2_delete_route_settings]{delete_route_settings} \tab Deletes the RouteSettings for a stage \cr
 #'  \link[=apigatewayv2_delete_stage]{delete_stage} \tab Deletes a Stage \cr
 #'  \link[=apigatewayv2_get_api]{get_api} \tab Gets an Api resource \cr
-#'  \link[=apigatewayv2_get_api_mapping]{get_api_mapping} \tab The API mapping \cr
-#'  \link[=apigatewayv2_get_api_mappings]{get_api_mappings} \tab The API mappings \cr
+#'  \link[=apigatewayv2_get_api_mapping]{get_api_mapping} \tab Gets an API mapping \cr
+#'  \link[=apigatewayv2_get_api_mappings]{get_api_mappings} \tab Gets API mappings \cr
 #'  \link[=apigatewayv2_get_apis]{get_apis} \tab Gets a collection of Api resources \cr
 #'  \link[=apigatewayv2_get_authorizer]{get_authorizer} \tab Gets an Authorizer \cr
 #'  \link[=apigatewayv2_get_authorizers]{get_authorizers} \tab Gets the Authorizers for an API \cr
@@ -3339,9 +3468,11 @@ apigatewaymanagementapi <- function(config = list()) {
 #'  \link[=apigatewayv2_get_routes]{get_routes} \tab Gets the Routes for an API \cr
 #'  \link[=apigatewayv2_get_stage]{get_stage} \tab Gets a Stage \cr
 #'  \link[=apigatewayv2_get_stages]{get_stages} \tab Gets the Stages for an API \cr
-#'  \link[=apigatewayv2_get_tags]{get_tags} \tab Gets the Tags for an API \cr
-#'  \link[=apigatewayv2_tag_resource]{tag_resource} \tab Tag an APIGW resource \cr
-#'  \link[=apigatewayv2_untag_resource]{untag_resource} \tab Untag an APIGW resource \cr
+#'  \link[=apigatewayv2_get_tags]{get_tags} \tab Gets a collection of Tag resources \cr
+#'  \link[=apigatewayv2_import_api]{import_api} \tab Imports an API \cr
+#'  \link[=apigatewayv2_reimport_api]{reimport_api} \tab Puts an Api resource \cr
+#'  \link[=apigatewayv2_tag_resource]{tag_resource} \tab Creates a new Tag resource to represent a tag \cr
+#'  \link[=apigatewayv2_untag_resource]{untag_resource} \tab Deletes a Tag \cr
 #'  \link[=apigatewayv2_update_api]{update_api} \tab Updates an Api resource \cr
 #'  \link[=apigatewayv2_update_api_mapping]{update_api_mapping} \tab The API mapping \cr
 #'  \link[=apigatewayv2_update_authorizer]{update_authorizer} \tab Updates an Authorizer \cr
@@ -3772,42 +3903,17 @@ elb <- function(config = list()) {
 #' 
 #' Elastic Load Balancing supports the following types of load balancers:
 #' Application Load Balancers, Network Load Balancers, and Classic Load
-#' Balancers.
+#' Balancers. This reference covers Application Load Balancers and Network
+#' Load Balancers.
 #' 
 #' An Application Load Balancer makes routing and load balancing decisions
 #' at the application layer (HTTP/HTTPS). A Network Load Balancer makes
 #' routing and load balancing decisions at the transport layer (TCP/TLS).
 #' Both Application Load Balancers and Network Load Balancers can route
 #' requests to one or more ports on each EC2 instance or container instance
-#' in your virtual private cloud (VPC).
-#' 
-#' A Classic Load Balancer makes routing and load balancing decisions
-#' either at the transport layer (TCP/SSL) or the application layer
-#' (HTTP/HTTPS), and supports either EC2-Classic or a VPC. For more
-#' information, see the [Elastic Load Balancing User
+#' in your virtual private cloud (VPC). For more information, see the
+#' [Elastic Load Balancing User
 #' Guide](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/).
-#' 
-#' This reference covers the 2015-12-01 API, which supports Application
-#' Load Balancers and Network Load Balancers. The 2012-06-01 API supports
-#' Classic Load Balancers.
-#' 
-#' To get started, complete the following tasks:
-#' 
-#' 1.  Create a load balancer using CreateLoadBalancer.
-#' 
-#' 2.  Create a target group using CreateTargetGroup.
-#' 
-#' 3.  Register targets for the target group using RegisterTargets.
-#' 
-#' 4.  Create one or more listeners for your load balancer using
-#'     CreateListener.
-#' 
-#' To delete a load balancer and its related resources, complete the
-#' following tasks:
-#' 
-#' 1.  Delete the load balancer using DeleteLoadBalancer.
-#' 
-#' 2.  Delete the target group using DeleteTargetGroup.
 #' 
 #' All Elastic Load Balancing operations are idempotent, which means that
 #' they complete at most one time. If you repeat an operation, it succeeds.
@@ -3855,7 +3961,7 @@ elb <- function(config = list()) {
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=elbv2_add_listener_certificates]{add_listener_certificates} \tab Adds the specified SSL server certificate to the certificate list for the specified HTTPS listener \cr
+#'  \link[=elbv2_add_listener_certificates]{add_listener_certificates} \tab Adds the specified SSL server certificate to the certificate list for the specified HTTPS or TLS listener \cr
 #'  \link[=elbv2_add_tags]{add_tags} \tab Adds the specified tags to the specified Elastic Load Balancing resource \cr
 #'  \link[=elbv2_create_listener]{create_listener} \tab Creates a listener for the specified Application Load Balancer or Network Load Balancer \cr
 #'  \link[=elbv2_create_load_balancer]{create_load_balancer} \tab Creates an Application Load Balancer or a Network Load Balancer \cr
@@ -3867,7 +3973,7 @@ elb <- function(config = list()) {
 #'  \link[=elbv2_delete_target_group]{delete_target_group} \tab Deletes the specified target group \cr
 #'  \link[=elbv2_deregister_targets]{deregister_targets} \tab Deregisters the specified targets from the specified target group \cr
 #'  \link[=elbv2_describe_account_limits]{describe_account_limits} \tab Describes the current Elastic Load Balancing resource limits for your AWS account \cr
-#'  \link[=elbv2_describe_listener_certificates]{describe_listener_certificates} \tab Describes the default certificate and the certificate list for the specified HTTPS listener \cr
+#'  \link[=elbv2_describe_listener_certificates]{describe_listener_certificates} \tab Describes the default certificate and the certificate list for the specified HTTPS or TLS listener \cr
 #'  \link[=elbv2_describe_listeners]{describe_listeners} \tab Describes the specified listeners or the listeners for the specified Application Load Balancer or Network Load Balancer\cr
 #'  \link[=elbv2_describe_load_balancer_attributes]{describe_load_balancer_attributes} \tab Describes the attributes for the specified Application Load Balancer or Network Load Balancer \cr
 #'  \link[=elbv2_describe_load_balancers]{describe_load_balancers} \tab Describes the specified load balancers or all of your load balancers \cr
@@ -3877,18 +3983,18 @@ elb <- function(config = list()) {
 #'  \link[=elbv2_describe_target_group_attributes]{describe_target_group_attributes} \tab Describes the attributes for the specified target group \cr
 #'  \link[=elbv2_describe_target_groups]{describe_target_groups} \tab Describes the specified target groups or all of your target groups \cr
 #'  \link[=elbv2_describe_target_health]{describe_target_health} \tab Describes the health of the specified targets or all of your targets \cr
-#'  \link[=elbv2_modify_listener]{modify_listener} \tab Modifies the specified properties of the specified listener \cr
+#'  \link[=elbv2_modify_listener]{modify_listener} \tab Replaces the specified properties of the specified listener \cr
 #'  \link[=elbv2_modify_load_balancer_attributes]{modify_load_balancer_attributes} \tab Modifies the specified attributes of the specified Application Load Balancer or Network Load Balancer \cr
-#'  \link[=elbv2_modify_rule]{modify_rule} \tab Modifies the specified rule \cr
+#'  \link[=elbv2_modify_rule]{modify_rule} \tab Replaces the specified properties of the specified rule \cr
 #'  \link[=elbv2_modify_target_group]{modify_target_group} \tab Modifies the health checks used when evaluating the health state of the targets in the specified target group \cr
 #'  \link[=elbv2_modify_target_group_attributes]{modify_target_group_attributes} \tab Modifies the specified attributes of the specified target group \cr
 #'  \link[=elbv2_register_targets]{register_targets} \tab Registers the specified targets with the specified target group \cr
-#'  \link[=elbv2_remove_listener_certificates]{remove_listener_certificates} \tab Removes the specified certificate from the certificate list for the specified HTTPS listener \cr
+#'  \link[=elbv2_remove_listener_certificates]{remove_listener_certificates} \tab Removes the specified certificate from the certificate list for the specified HTTPS or TLS listener \cr
 #'  \link[=elbv2_remove_tags]{remove_tags} \tab Removes the specified tags from the specified Elastic Load Balancing resource \cr
 #'  \link[=elbv2_set_ip_address_type]{set_ip_address_type} \tab Sets the type of IP addresses used by the subnets of the specified Application Load Balancer or Network Load Balancer \cr
 #'  \link[=elbv2_set_rule_priorities]{set_rule_priorities} \tab Sets the priorities of the specified rules \cr
 #'  \link[=elbv2_set_security_groups]{set_security_groups} \tab Associates the specified security groups with the specified Application Load Balancer \cr
-#'  \link[=elbv2_set_subnets]{set_subnets} \tab Enables the Availability Zone for the specified public subnets for the specified Application Load Balancer 
+#'  \link[=elbv2_set_subnets]{set_subnets} \tab Enables the Availability Zones for the specified public subnets for the specified load balancer 
 #' }
 #'
 #' @rdname elbv2
@@ -3909,6 +4015,9 @@ elbv2 <- function(config = list()) {
 #' AWS Global Accelerator is a network layer service in which you create
 #' accelerators to improve availability and performance for internet
 #' applications used by a global audience.
+#' 
+#' You must specify the US-West-2 (Oregon) Region to create or update
+#' accelerators.
 #' 
 #' Global Accelerator provides you with static IP addresses that you
 #' associate with your accelerator. These IP addresses are anycast from the
@@ -4389,56 +4498,50 @@ servicediscovery <- function(config = list()) {
 #'
 #' @description
 #' With Application Auto Scaling, you can configure automatic scaling for
-#' your scalable resources. You can use Application Auto Scaling to
-#' accomplish the following tasks:
+#' the following resources:
 #' 
-#' -   Define scaling policies to automatically scale your AWS or custom
-#'     resources
+#' -   Amazon ECS services
 #' 
-#' -   Scale your resources in response to CloudWatch alarms
+#' -   Amazon EC2 Spot Fleet requests
 #' 
-#' -   Schedule one-time or recurring scaling actions
+#' -   Amazon EMR clusters
 #' 
-#' -   View the history of your scaling events
+#' -   Amazon AppStream 2.0 fleets
 #' 
-#' Application Auto Scaling can scale the following resources:
+#' -   Amazon DynamoDB tables and global secondary indexes throughput
+#'     capacity
 #' 
-#' -   Amazon ECS services. For more information, see [Service Auto
-#'     Scaling](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html)
-#'     in the *Amazon Elastic Container Service Developer Guide*.
+#' -   Amazon Aurora Replicas
 #' 
-#' -   Amazon EC2 Spot fleets. For more information, see [Automatic Scaling
-#'     for Spot
-#'     Fleet](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/fleet-auto-scaling.html)
-#'     in the *Amazon EC2 User Guide*.
+#' -   Amazon SageMaker endpoint variants
 #' 
-#' -   Amazon EMR clusters. For more information, see [Using Automatic
-#'     Scaling in Amazon
-#'     EMR](https://docs.aws.amazon.com/ElasticMapReduce/latest/ManagementGuide/emr-automatic-scaling.html)
-#'     in the *Amazon EMR Management Guide*.
+#' -   Custom resources provided by your own applications or services
 #' 
-#' -   AppStream 2.0 fleets. For more information, see [Fleet Auto Scaling
-#'     for Amazon AppStream
-#'     2.0](https://docs.aws.amazon.com/appstream2/latest/developerguide/autoscaling.html)
-#'     in the *Amazon AppStream 2.0 Developer Guide*.
+#' -   Amazon Comprehend document classification endpoints
 #' 
-#' -   Provisioned read and write capacity for Amazon DynamoDB tables and
-#'     global secondary indexes. For more information, see [Managing
-#'     Throughput Capacity Automatically with DynamoDB Auto
-#'     Scaling](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/AutoScaling.html)
-#'     in the *Amazon DynamoDB Developer Guide*.
+#' -   AWS Lambda function provisioned concurrency
 #' 
-#' -   Amazon Aurora Replicas. For more information, see [Using Amazon
-#'     Aurora Auto Scaling with Aurora
-#'     Replicas](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Integrating.AutoScaling.html).
+#' **API Summary**
 #' 
-#' -   Amazon SageMaker endpoint variants. For more information, see
-#'     [Automatically Scaling Amazon SageMaker
-#'     Models](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html).
+#' The Application Auto Scaling service API includes three key sets of
+#' actions:
 #' 
-#' -   Custom resources provided by your own applications or services. More
-#'     information is available in our [GitHub
-#'     repository](https://github.com/aws/aws-auto-scaling-custom-resource).
+#' -   Register and manage scalable targets - Register AWS or custom
+#'     resources as scalable targets (a resource that Application Auto
+#'     Scaling can scale), set minimum and maximum capacity limits, and
+#'     retrieve information on existing scalable targets.
+#' 
+#' -   Configure and manage automatic scaling - Define scaling policies to
+#'     dynamically scale your resources in response to CloudWatch alarms,
+#'     schedule one-time or recurring scaling actions, and retrieve your
+#'     recent scaling activity history.
+#' 
+#' -   Suspend and resume scaling - Temporarily suspend and later resume
+#'     automatic scaling by calling the RegisterScalableTarget action for
+#'     any Application Auto Scaling scalable target. You can suspend and
+#'     resume, individually or in combination, scale-out activities
+#'     triggered by a scaling policy, scale-in activities triggered by a
+#'     scaling policy, and scheduled scaling.
 #' 
 #' To learn more about Application Auto Scaling, including information
 #' about granting IAM users required permissions for Application Auto
@@ -4480,13 +4583,13 @@ servicediscovery <- function(config = list()) {
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=applicationautoscaling_delete_scaling_policy]{delete_scaling_policy} \tab Deletes the specified Application Auto Scaling scaling policy \cr
-#'  \link[=applicationautoscaling_delete_scheduled_action]{delete_scheduled_action} \tab Deletes the specified Application Auto Scaling scheduled action \cr
-#'  \link[=applicationautoscaling_deregister_scalable_target]{deregister_scalable_target} \tab Deregisters a scalable target \cr
+#'  \link[=applicationautoscaling_delete_scaling_policy]{delete_scaling_policy} \tab Deletes the specified scaling policy for an Application Auto Scaling scalable target \cr
+#'  \link[=applicationautoscaling_delete_scheduled_action]{delete_scheduled_action} \tab Deletes the specified scheduled action for an Application Auto Scaling scalable target \cr
+#'  \link[=applicationautoscaling_deregister_scalable_target]{deregister_scalable_target} \tab Deregisters an Application Auto Scaling scalable target \cr
 #'  \link[=applicationautoscaling_describe_scalable_targets]{describe_scalable_targets} \tab Gets information about the scalable targets in the specified namespace \cr
 #'  \link[=applicationautoscaling_describe_scaling_activities]{describe_scaling_activities} \tab Provides descriptive information about the scaling activities in the specified namespace from the previous six weeks\cr
-#'  \link[=applicationautoscaling_describe_scaling_policies]{describe_scaling_policies} \tab Describes the scaling policies for the specified service namespace \cr
-#'  \link[=applicationautoscaling_describe_scheduled_actions]{describe_scheduled_actions} \tab Describes the scheduled actions for the specified service namespace \cr
+#'  \link[=applicationautoscaling_describe_scaling_policies]{describe_scaling_policies} \tab Describes the Application Auto Scaling scaling policies for the specified service namespace \cr
+#'  \link[=applicationautoscaling_describe_scheduled_actions]{describe_scheduled_actions} \tab Describes the Application Auto Scaling scheduled actions for the specified service namespace \cr
 #'  \link[=applicationautoscaling_put_scaling_policy]{put_scaling_policy} \tab Creates or updates a policy for an Application Auto Scaling scalable target \cr
 #'  \link[=applicationautoscaling_put_scheduled_action]{put_scheduled_action} \tab Creates or updates a scheduled action for an Application Auto Scaling scalable target \cr
 #'  \link[=applicationautoscaling_register_scalable_target]{register_scalable_target} \tab Registers or updates a scalable target 
@@ -4552,20 +4655,30 @@ applicationautoscaling <- function(config = list()) {
 #' \tabular{ll}{
 #'  \link[=applicationinsights_create_application]{create_application} \tab Adds an application that is created from a resource group \cr
 #'  \link[=applicationinsights_create_component]{create_component} \tab Creates a custom component by grouping similar standalone instances to monitor \cr
+#'  \link[=applicationinsights_create_log_pattern]{create_log_pattern} \tab Adds an log pattern to a LogPatternSet \cr
 #'  \link[=applicationinsights_delete_application]{delete_application} \tab Removes the specified application from monitoring \cr
 #'  \link[=applicationinsights_delete_component]{delete_component} \tab Ungroups a custom component \cr
+#'  \link[=applicationinsights_delete_log_pattern]{delete_log_pattern} \tab Removes the specified log pattern from a LogPatternSet \cr
 #'  \link[=applicationinsights_describe_application]{describe_application} \tab Describes the application \cr
 #'  \link[=applicationinsights_describe_component]{describe_component} \tab Describes a component and lists the resources that are grouped together in a component \cr
 #'  \link[=applicationinsights_describe_component_configuration]{describe_component_configuration} \tab Describes the monitoring configuration of the component \cr
 #'  \link[=applicationinsights_describe_component_configuration_recommendation]{describe_component_configuration_recommendation} \tab Describes the recommended monitoring configuration of the component \cr
+#'  \link[=applicationinsights_describe_log_pattern]{describe_log_pattern} \tab Describe a specific log pattern from a LogPatternSet \cr
 #'  \link[=applicationinsights_describe_observation]{describe_observation} \tab Describes an anomaly or error with the application \cr
 #'  \link[=applicationinsights_describe_problem]{describe_problem} \tab Describes an application problem \cr
 #'  \link[=applicationinsights_describe_problem_observations]{describe_problem_observations} \tab Describes the anomalies or errors associated with the problem \cr
 #'  \link[=applicationinsights_list_applications]{list_applications} \tab Lists the IDs of the applications that you are monitoring \cr
 #'  \link[=applicationinsights_list_components]{list_components} \tab Lists the auto-grouped, standalone, and custom components of the application \cr
+#'  \link[=applicationinsights_list_log_pattern_sets]{list_log_pattern_sets} \tab Lists the log pattern sets in the specific application \cr
+#'  \link[=applicationinsights_list_log_patterns]{list_log_patterns} \tab Lists the log patterns in the specific log LogPatternSet \cr
 #'  \link[=applicationinsights_list_problems]{list_problems} \tab Lists the problems with your application \cr
-#'  \link[=applicationinsights_update_component]{update_component} \tab Updates the custom component name and/or the list of resources that make up the component\cr
-#'  \link[=applicationinsights_update_component_configuration]{update_component_configuration} \tab Updates the monitoring configurations for the component 
+#'  \link[=applicationinsights_list_tags_for_resource]{list_tags_for_resource} \tab Retrieve a list of the tags (keys and values) that are associated with a specified application\cr
+#'  \link[=applicationinsights_tag_resource]{tag_resource} \tab Add one or more tags (keys and values) to a specified application \cr
+#'  \link[=applicationinsights_untag_resource]{untag_resource} \tab Remove one or more tags (keys and values) from a specified application \cr
+#'  \link[=applicationinsights_update_application]{update_application} \tab Updates the application \cr
+#'  \link[=applicationinsights_update_component]{update_component} \tab Updates the custom component name and/or the list of resources that make up the component \cr
+#'  \link[=applicationinsights_update_component_configuration]{update_component_configuration} \tab Updates the monitoring configurations for the component \cr
+#'  \link[=applicationinsights_update_log_pattern]{update_log_pattern} \tab Adds a log pattern to a LogPatternSet 
 #' }
 #'
 #' @rdname applicationinsights
@@ -4580,9 +4693,9 @@ applicationinsights <- function(config = list()) {
 #' Amazon EC2 Auto Scaling
 #' 
 #' Amazon EC2 Auto Scaling is designed to automatically launch or terminate
-#' EC2 instances based on user-defined policies, schedules, and health
-#' checks. Use this service with AWS Auto Scaling, Amazon CloudWatch, and
-#' Elastic Load Balancing.
+#' EC2 instances based on user-defined scaling policies, scheduled actions,
+#' and health checks. Use this service with AWS Auto Scaling, Amazon
+#' CloudWatch, and Elastic Load Balancing.
 #' 
 #' For more information, including information about granting IAM users
 #' required permissions for Amazon EC2 Auto Scaling actions, see the
@@ -4668,7 +4781,7 @@ applicationinsights <- function(config = list()) {
 #'  \link[=autoscaling_exit_standby]{exit_standby} \tab Moves the specified instances out of the standby state \cr
 #'  \link[=autoscaling_put_lifecycle_hook]{put_lifecycle_hook} \tab Creates or updates a lifecycle hook for the specified Auto Scaling group \cr
 #'  \link[=autoscaling_put_notification_configuration]{put_notification_configuration} \tab Configures an Auto Scaling group to send notifications when specified events take place \cr
-#'  \link[=autoscaling_put_scaling_policy]{put_scaling_policy} \tab Creates or updates a policy for an Auto Scaling group \cr
+#'  \link[=autoscaling_put_scaling_policy]{put_scaling_policy} \tab Creates or updates a scaling policy for an Auto Scaling group \cr
 #'  \link[=autoscaling_put_scheduled_update_group_action]{put_scheduled_update_group_action} \tab Creates or updates a scheduled scaling action for an Auto Scaling group \cr
 #'  \link[=autoscaling_record_lifecycle_action_heartbeat]{record_lifecycle_action_heartbeat} \tab Records a heartbeat for the lifecycle action associated with the specified token or instance \cr
 #'  \link[=autoscaling_resume_processes]{resume_processes} \tab Resumes the specified suspended automatic scaling processes, or all suspended process, for the specified Auto Scaling group\cr
@@ -4814,6 +4927,7 @@ autoscalingplans <- function(config = list()) {
 #'  \link[=cloudformation_delete_stack]{delete_stack} \tab Deletes a specified stack \cr
 #'  \link[=cloudformation_delete_stack_instances]{delete_stack_instances} \tab Deletes stack instances for the specified accounts, in the specified regions \cr
 #'  \link[=cloudformation_delete_stack_set]{delete_stack_set} \tab Deletes a stack set \cr
+#'  \link[=cloudformation_deregister_type]{deregister_type} \tab Removes a type or type version from active use in the CloudFormation registry \cr
 #'  \link[=cloudformation_describe_account_limits]{describe_account_limits} \tab Retrieves your account's AWS CloudFormation limits, such as the maximum number of stacks that you can create in your account \cr
 #'  \link[=cloudformation_describe_change_set]{describe_change_set} \tab Returns the inputs for the change set and a list of changes that AWS CloudFormation will make if you execute the change set \cr
 #'  \link[=cloudformation_describe_stack_drift_detection_status]{describe_stack_drift_detection_status} \tab Returns information about a stack drift detection operation \cr
@@ -4825,8 +4939,11 @@ autoscalingplans <- function(config = list()) {
 #'  \link[=cloudformation_describe_stack_set]{describe_stack_set} \tab Returns the description of the specified stack set \cr
 #'  \link[=cloudformation_describe_stack_set_operation]{describe_stack_set_operation} \tab Returns the description of the specified stack set operation \cr
 #'  \link[=cloudformation_describe_stacks]{describe_stacks} \tab Returns the description for the specified stack; if no stack name was specified, then it returns the description for all the stacks created \cr
+#'  \link[=cloudformation_describe_type]{describe_type} \tab Returns detailed information about a type that has been registered \cr
+#'  \link[=cloudformation_describe_type_registration]{describe_type_registration} \tab Returns information about a type's registration, including its current status and type and version identifiers \cr
 #'  \link[=cloudformation_detect_stack_drift]{detect_stack_drift} \tab Detects whether a stack's actual configuration differs, or has _drifted_, from it's expected configuration, as defined in the stack template and any values specified as template parameters \cr
 #'  \link[=cloudformation_detect_stack_resource_drift]{detect_stack_resource_drift} \tab Returns information about whether a resource's actual configuration differs, or has _drifted_, from it's expected configuration, as defined in the stack template and any values specified as template parameters\cr
+#'  \link[=cloudformation_detect_stack_set_drift]{detect_stack_set_drift} \tab Detect drift on a stack set \cr
 #'  \link[=cloudformation_estimate_template_cost]{estimate_template_cost} \tab Returns the estimated monthly cost of a template \cr
 #'  \link[=cloudformation_execute_change_set]{execute_change_set} \tab Updates a stack using the input information that was provided when the specified change set was created \cr
 #'  \link[=cloudformation_get_stack_policy]{get_stack_policy} \tab Returns the stack policy for a specified stack \cr
@@ -4841,7 +4958,13 @@ autoscalingplans <- function(config = list()) {
 #'  \link[=cloudformation_list_stack_set_operations]{list_stack_set_operations} \tab Returns summary information about operations performed on a stack set \cr
 #'  \link[=cloudformation_list_stack_sets]{list_stack_sets} \tab Returns summary information about stack sets that are associated with the user \cr
 #'  \link[=cloudformation_list_stacks]{list_stacks} \tab Returns the summary information for stacks whose status matches the specified StackStatusFilter \cr
+#'  \link[=cloudformation_list_type_registrations]{list_type_registrations} \tab Returns a list of registration tokens for the specified type \cr
+#'  \link[=cloudformation_list_type_versions]{list_type_versions} \tab Returns summary information about the versions of a type \cr
+#'  \link[=cloudformation_list_types]{list_types} \tab Returns summary information about types that have been registered with CloudFormation \cr
+#'  \link[=cloudformation_record_handler_progress]{record_handler_progress} \tab Reports progress of a resource handler to CloudFormation \cr
+#'  \link[=cloudformation_register_type]{register_type} \tab Registers a type with the CloudFormation service \cr
 #'  \link[=cloudformation_set_stack_policy]{set_stack_policy} \tab Sets a stack policy for a specified stack \cr
+#'  \link[=cloudformation_set_type_default_version]{set_type_default_version} \tab Specify the default version of a type \cr
 #'  \link[=cloudformation_signal_resource]{signal_resource} \tab Sends a signal to the specified resource with a success or failure status \cr
 #'  \link[=cloudformation_stop_stack_set_operation]{stop_stack_set_operation} \tab Stops an in-progress operation on a stack set and its associated stack instances \cr
 #'  \link[=cloudformation_update_stack]{update_stack} \tab Updates a stack as specified in the template \cr
@@ -4880,7 +5003,7 @@ cloudformation <- function(config = list()) {
 #' [Tools for Amazon Web Services page](http://aws.amazon.com/tools/).
 #' 
 #' See the [AWS CloudTrail User
-#' Guide](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)
+#' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)
 #' for information about the data that is included with each AWS API call
 #' listed in the log files.
 #'
@@ -4917,13 +5040,17 @@ cloudformation <- function(config = list()) {
 #'  \link[=cloudtrail_add_tags]{add_tags} \tab Adds one or more tags to a trail, up to a limit of 50 \cr
 #'  \link[=cloudtrail_create_trail]{create_trail} \tab Creates a trail that specifies the settings for delivery of log data to an Amazon S3 bucket \cr
 #'  \link[=cloudtrail_delete_trail]{delete_trail} \tab Deletes a trail \cr
-#'  \link[=cloudtrail_describe_trails]{describe_trails} \tab Retrieves settings for the trail associated with the current region for your account \cr
+#'  \link[=cloudtrail_describe_trails]{describe_trails} \tab Retrieves settings for one or more trails associated with the current region for your account \cr
 #'  \link[=cloudtrail_get_event_selectors]{get_event_selectors} \tab Describes the settings for the event selectors that you configured for your trail \cr
+#'  \link[=cloudtrail_get_insight_selectors]{get_insight_selectors} \tab Describes the settings for the Insights event selectors that you configured for your trail \cr
+#'  \link[=cloudtrail_get_trail]{get_trail} \tab Returns settings information for a specified trail \cr
 #'  \link[=cloudtrail_get_trail_status]{get_trail_status} \tab Returns a JSON-formatted list of information about the specified trail \cr
-#'  \link[=cloudtrail_list_public_keys]{list_public_keys} \tab Returns all public keys whose private keys were used to sign the digest files within the specified time range\cr
+#'  \link[=cloudtrail_list_public_keys]{list_public_keys} \tab Returns all public keys whose private keys were used to sign the digest files within the specified time range \cr
 #'  \link[=cloudtrail_list_tags]{list_tags} \tab Lists the tags for the trail in the current region \cr
-#'  \link[=cloudtrail_lookup_events]{lookup_events} \tab Looks up management events captured by CloudTrail \cr
+#'  \link[=cloudtrail_list_trails]{list_trails} \tab Lists trails that are in the current account \cr
+#'  \link[=cloudtrail_lookup_events]{lookup_events} \tab Looks up management events or CloudTrail Insights events that are captured by CloudTrail \cr
 #'  \link[=cloudtrail_put_event_selectors]{put_event_selectors} \tab Configures an event selector for your trail \cr
+#'  \link[=cloudtrail_put_insight_selectors]{put_insight_selectors} \tab Lets you enable Insights event logging by specifying the Insights selectors that you want to enable on an existing trail\cr
 #'  \link[=cloudtrail_remove_tags]{remove_tags} \tab Removes the specified tags from a trail \cr
 #'  \link[=cloudtrail_start_logging]{start_logging} \tab Starts the recording of AWS API calls and log file delivery for a trail \cr
 #'  \link[=cloudtrail_stop_logging]{stop_logging} \tab Suspends the recording of AWS API calls and log file delivery for the specified trail \cr
@@ -4989,14 +5116,19 @@ cloudtrail <- function(config = list()) {
 #'  \link[=cloudwatch_delete_alarms]{delete_alarms} \tab Deletes the specified alarms \cr
 #'  \link[=cloudwatch_delete_anomaly_detector]{delete_anomaly_detector} \tab Deletes the specified anomaly detection model from your account \cr
 #'  \link[=cloudwatch_delete_dashboards]{delete_dashboards} \tab Deletes all dashboards that you specify \cr
+#'  \link[=cloudwatch_delete_insight_rules]{delete_insight_rules} \tab Permanently deletes the specified Contributor Insights rules \cr
 #'  \link[=cloudwatch_describe_alarm_history]{describe_alarm_history} \tab Retrieves the history for the specified alarm \cr
 #'  \link[=cloudwatch_describe_alarms]{describe_alarms} \tab Retrieves the specified alarms \cr
 #'  \link[=cloudwatch_describe_alarms_for_metric]{describe_alarms_for_metric} \tab Retrieves the alarms for the specified metric \cr
 #'  \link[=cloudwatch_describe_anomaly_detectors]{describe_anomaly_detectors} \tab Lists the anomaly detection models that you have created in your account \cr
+#'  \link[=cloudwatch_describe_insight_rules]{describe_insight_rules} \tab Returns a list of all the Contributor Insights rules in your account \cr
 #'  \link[=cloudwatch_disable_alarm_actions]{disable_alarm_actions} \tab Disables the actions for the specified alarms \cr
+#'  \link[=cloudwatch_disable_insight_rules]{disable_insight_rules} \tab Disables the specified Contributor Insights rules \cr
 #'  \link[=cloudwatch_enable_alarm_actions]{enable_alarm_actions} \tab Enables the actions for the specified alarms \cr
+#'  \link[=cloudwatch_enable_insight_rules]{enable_insight_rules} \tab Enables the specified Contributor Insights rules \cr
 #'  \link[=cloudwatch_get_dashboard]{get_dashboard} \tab Displays the details of the dashboard that you specify \cr
-#'  \link[=cloudwatch_get_metric_data]{get_metric_data} \tab You can use the GetMetricData API to retrieve as many as 100 different metrics in a single request, with a total of as many as 100,800 datapoints\cr
+#'  \link[=cloudwatch_get_insight_rule_report]{get_insight_rule_report} \tab This operation returns the time series data collected by a Contributor Insights rule \cr
+#'  \link[=cloudwatch_get_metric_data]{get_metric_data} \tab You can use the GetMetricData API to retrieve as many as 100 different metrics in a single request, with a total of as many as 100,800 data points\cr
 #'  \link[=cloudwatch_get_metric_statistics]{get_metric_statistics} \tab Gets statistics for the specified metric \cr
 #'  \link[=cloudwatch_get_metric_widget_image]{get_metric_widget_image} \tab You can use the GetMetricWidgetImage API to retrieve a snapshot graph of one or more Amazon CloudWatch metrics as a bitmap image \cr
 #'  \link[=cloudwatch_list_dashboards]{list_dashboards} \tab Returns a list of the dashboards for your account \cr
@@ -5004,6 +5136,7 @@ cloudtrail <- function(config = list()) {
 #'  \link[=cloudwatch_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a CloudWatch resource \cr
 #'  \link[=cloudwatch_put_anomaly_detector]{put_anomaly_detector} \tab Creates an anomaly detection model for a CloudWatch metric \cr
 #'  \link[=cloudwatch_put_dashboard]{put_dashboard} \tab Creates a dashboard if it does not already exist, or updates an existing dashboard \cr
+#'  \link[=cloudwatch_put_insight_rule]{put_insight_rule} \tab Creates a Contributor Insights rule \cr
 #'  \link[=cloudwatch_put_metric_alarm]{put_metric_alarm} \tab Creates or updates an alarm and associates it with the specified metric, metric math expression, or anomaly detection model \cr
 #'  \link[=cloudwatch_put_metric_data]{put_metric_data} \tab Publishes metric data points to Amazon CloudWatch \cr
 #'  \link[=cloudwatch_set_alarm_state]{set_alarm_state} \tab Temporarily sets the state of an alarm for testing purposes \cr
@@ -5288,11 +5421,15 @@ cloudwatchlogs <- function(config = list()) {
 #'  \link[=configservice_delete_config_rule]{delete_config_rule} \tab Deletes the specified AWS Config rule and all of its evaluation results \cr
 #'  \link[=configservice_delete_configuration_aggregator]{delete_configuration_aggregator} \tab Deletes the specified configuration aggregator and the aggregated data associated with the aggregator \cr
 #'  \link[=configservice_delete_configuration_recorder]{delete_configuration_recorder} \tab Deletes the configuration recorder \cr
+#'  \link[=configservice_delete_conformance_pack]{delete_conformance_pack} \tab Deletes the specified conformance pack and all the AWS Config rules, remediation actions, and all evaluation results within that conformance pack \cr
 #'  \link[=configservice_delete_delivery_channel]{delete_delivery_channel} \tab Deletes the delivery channel \cr
 #'  \link[=configservice_delete_evaluation_results]{delete_evaluation_results} \tab Deletes the evaluation results for the specified AWS Config rule \cr
-#'  \link[=configservice_delete_organization_config_rule]{delete_organization_config_rule} \tab Delete organization config rule \cr
+#'  \link[=configservice_delete_organization_config_rule]{delete_organization_config_rule} \tab Deletes the specified organization config rule and all of its evaluation results from all member accounts in that organization \cr
+#'  \link[=configservice_delete_organization_conformance_pack]{delete_organization_conformance_pack} \tab Deletes the specified organization conformance pack and all of the config rules and remediation actions from all member accounts in that organization \cr
 #'  \link[=configservice_delete_pending_aggregation_request]{delete_pending_aggregation_request} \tab Deletes pending authorization requests for a specified aggregator account in a specified region \cr
 #'  \link[=configservice_delete_remediation_configuration]{delete_remediation_configuration} \tab Deletes the remediation configuration \cr
+#'  \link[=configservice_delete_remediation_exceptions]{delete_remediation_exceptions} \tab Deletes one or more remediation exceptions mentioned in the resource keys \cr
+#'  \link[=configservice_delete_resource_config]{delete_resource_config} \tab Records the configuration state for a custom resource that has been deleted \cr
 #'  \link[=configservice_delete_retention_configuration]{delete_retention_configuration} \tab Deletes the retention configuration \cr
 #'  \link[=configservice_deliver_config_snapshot]{deliver_config_snapshot} \tab Schedules delivery of a configuration snapshot to the Amazon S3 bucket in the specified delivery channel \cr
 #'  \link[=configservice_describe_aggregate_compliance_by_config_rules]{describe_aggregate_compliance_by_config_rules} \tab Returns a list of compliant and noncompliant rules with the number of resources for compliant and noncompliant rules \cr
@@ -5305,12 +5442,18 @@ cloudwatchlogs <- function(config = list()) {
 #'  \link[=configservice_describe_configuration_aggregators]{describe_configuration_aggregators} \tab Returns the details of one or more configuration aggregators \cr
 #'  \link[=configservice_describe_configuration_recorder_status]{describe_configuration_recorder_status} \tab Returns the current status of the specified configuration recorder \cr
 #'  \link[=configservice_describe_configuration_recorders]{describe_configuration_recorders} \tab Returns the details for the specified configuration recorders \cr
+#'  \link[=configservice_describe_conformance_pack_compliance]{describe_conformance_pack_compliance} \tab Returns compliance details for each rule in that conformance pack \cr
+#'  \link[=configservice_describe_conformance_pack_status]{describe_conformance_pack_status} \tab Provides one or more conformance packs deployment status \cr
+#'  \link[=configservice_describe_conformance_packs]{describe_conformance_packs} \tab Returns a list of one or more conformance packs \cr
 #'  \link[=configservice_describe_delivery_channel_status]{describe_delivery_channel_status} \tab Returns the current status of the specified delivery channel \cr
 #'  \link[=configservice_describe_delivery_channels]{describe_delivery_channels} \tab Returns details about the specified delivery channel \cr
-#'  \link[=configservice_describe_organization_config_rule_statuses]{describe_organization_config_rule_statuses} \tab Describe organization config rule statuses \cr
-#'  \link[=configservice_describe_organization_config_rules]{describe_organization_config_rules} \tab Describe organization config rules \cr
+#'  \link[=configservice_describe_organization_config_rule_statuses]{describe_organization_config_rule_statuses} \tab Provides organization config rule deployment status for an organization \cr
+#'  \link[=configservice_describe_organization_config_rules]{describe_organization_config_rules} \tab Returns a list of organization config rules \cr
+#'  \link[=configservice_describe_organization_conformance_pack_statuses]{describe_organization_conformance_pack_statuses} \tab Provides organization conformance pack deployment status for an organization \cr
+#'  \link[=configservice_describe_organization_conformance_packs]{describe_organization_conformance_packs} \tab Returns a list of organization conformance packs \cr
 #'  \link[=configservice_describe_pending_aggregation_requests]{describe_pending_aggregation_requests} \tab Returns a list of all pending aggregation requests \cr
 #'  \link[=configservice_describe_remediation_configurations]{describe_remediation_configurations} \tab Returns the details of one or more remediation configurations \cr
+#'  \link[=configservice_describe_remediation_exceptions]{describe_remediation_exceptions} \tab Returns the details of one or more remediation exceptions \cr
 #'  \link[=configservice_describe_remediation_execution_status]{describe_remediation_execution_status} \tab Provides a detailed view of a Remediation Execution for a set of resources including state, timestamps for when steps for the remediation execution occur, and any error messages for steps that have failed\cr
 #'  \link[=configservice_describe_retention_configurations]{describe_retention_configurations} \tab Returns the details of one or more retention configurations \cr
 #'  \link[=configservice_get_aggregate_compliance_details_by_config_rule]{get_aggregate_compliance_details_by_config_rule} \tab Returns the evaluation results for the specified AWS Config rule for a specific resource in a rule \cr
@@ -5321,8 +5464,11 @@ cloudwatchlogs <- function(config = list()) {
 #'  \link[=configservice_get_compliance_details_by_resource]{get_compliance_details_by_resource} \tab Returns the evaluation results for the specified AWS resource \cr
 #'  \link[=configservice_get_compliance_summary_by_config_rule]{get_compliance_summary_by_config_rule} \tab Returns the number of AWS Config rules that are compliant and noncompliant, up to a maximum of 25 for each \cr
 #'  \link[=configservice_get_compliance_summary_by_resource_type]{get_compliance_summary_by_resource_type} \tab Returns the number of resources that are compliant and the number that are noncompliant \cr
+#'  \link[=configservice_get_conformance_pack_compliance_details]{get_conformance_pack_compliance_details} \tab Returns compliance details of a conformance pack for all AWS resources that are monitered by conformance pack \cr
+#'  \link[=configservice_get_conformance_pack_compliance_summary]{get_conformance_pack_compliance_summary} \tab Returns compliance details for the conformance pack based on the cumulative compliance results of all the rules in that conformance pack \cr
 #'  \link[=configservice_get_discovered_resource_counts]{get_discovered_resource_counts} \tab Returns the resource types, the number of each resource type, and the total number of resources that AWS Config is recording in this region for your AWS account \cr
-#'  \link[=configservice_get_organization_config_rule_detailed_status]{get_organization_config_rule_detailed_status} \tab Get organization config rule detailed status \cr
+#'  \link[=configservice_get_organization_config_rule_detailed_status]{get_organization_config_rule_detailed_status} \tab Returns detailed status for each member account within an organization for a given organization config rule \cr
+#'  \link[=configservice_get_organization_conformance_pack_detailed_status]{get_organization_conformance_pack_detailed_status} \tab Returns detailed status for each member account within an organization for a given organization conformance pack \cr
 #'  \link[=configservice_get_resource_config_history]{get_resource_config_history} \tab Returns a list of configuration items for the specified resource \cr
 #'  \link[=configservice_list_aggregate_discovered_resources]{list_aggregate_discovered_resources} \tab Accepts a resource type and returns a list of resource identifiers that are aggregated for a specific resource type across accounts and regions \cr
 #'  \link[=configservice_list_discovered_resources]{list_discovered_resources} \tab Accepts a resource type and returns a list of resource identifiers for the resources of that type \cr
@@ -5331,10 +5477,14 @@ cloudwatchlogs <- function(config = list()) {
 #'  \link[=configservice_put_config_rule]{put_config_rule} \tab Adds or updates an AWS Config rule for evaluating whether your AWS resources comply with your desired configurations \cr
 #'  \link[=configservice_put_configuration_aggregator]{put_configuration_aggregator} \tab Creates and updates the configuration aggregator with the selected source accounts and regions \cr
 #'  \link[=configservice_put_configuration_recorder]{put_configuration_recorder} \tab Creates a new configuration recorder to record the selected resource configurations \cr
+#'  \link[=configservice_put_conformance_pack]{put_conformance_pack} \tab Creates or updates a conformance pack \cr
 #'  \link[=configservice_put_delivery_channel]{put_delivery_channel} \tab Creates a delivery channel object to deliver configuration information to an Amazon S3 bucket and Amazon SNS topic \cr
 #'  \link[=configservice_put_evaluations]{put_evaluations} \tab Used by an AWS Lambda function to deliver evaluation results to AWS Config \cr
-#'  \link[=configservice_put_organization_config_rule]{put_organization_config_rule} \tab Put organization config rule \cr
+#'  \link[=configservice_put_organization_config_rule]{put_organization_config_rule} \tab Adds or updates organization config rule for your entire organization evaluating whether your AWS resources comply with your desired configurations \cr
+#'  \link[=configservice_put_organization_conformance_pack]{put_organization_conformance_pack} \tab Deploys conformance packs across member accounts in an AWS Organization \cr
 #'  \link[=configservice_put_remediation_configurations]{put_remediation_configurations} \tab Adds or updates the remediation configuration with a specific AWS Config rule with the selected target or action \cr
+#'  \link[=configservice_put_remediation_exceptions]{put_remediation_exceptions} \tab A remediation exception is when a specific resource is no longer considered for auto-remediation \cr
+#'  \link[=configservice_put_resource_config]{put_resource_config} \tab Records the configuration state for the resource provided in the request \cr
 #'  \link[=configservice_put_retention_configuration]{put_retention_configuration} \tab Creates and updates the retention configuration with details about retention period (number of days) that AWS Config stores your historical information \cr
 #'  \link[=configservice_select_resource_config]{select_resource_config} \tab Accepts a structured query language (SQL) SELECT command, performs the corresponding search, and returns resource configurations matching the properties \cr
 #'  \link[=configservice_start_config_rules_evaluation]{start_config_rules_evaluation} \tab Runs an on-demand evaluation for the specified AWS Config rules against the last known configuration state of the resources \cr
@@ -5446,15 +5596,8 @@ health <- function(config = list()) {
 #' AWS License Manager
 #'
 #' @description
-#' *This is the AWS License Manager API Reference.* It provides
-#' descriptions, syntax, and usage examples for each of the actions and
-#' data types for License Manager. The topic for each action shows the
-#' Query API request parameters and the XML response. You can also view the
-#' XML request elements in the WSDL.
-#' 
-#' Alternatively, you can use one of the AWS SDKs to access an API that\'s
-#' tailored to the programming language or platform that you\'re using. For
-#' more information, see [AWS SDKs](http://aws.amazon.com/tools/#SDKs).
+#' AWS License Manager makes it easier to manage licenses from software
+#' vendors across multiple AWS accounts and on-premises servers.
 #'
 #' @param
 #' config
@@ -5486,21 +5629,22 @@ health <- function(config = list()) {
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=licensemanager_create_license_configuration]{create_license_configuration} \tab Creates a new license configuration object \cr
-#'  \link[=licensemanager_delete_license_configuration]{delete_license_configuration} \tab Deletes an existing license configuration \cr
-#'  \link[=licensemanager_get_license_configuration]{get_license_configuration} \tab Returns a detailed description of a license configuration \cr
-#'  \link[=licensemanager_get_service_settings]{get_service_settings} \tab Gets License Manager settings for a region \cr
-#'  \link[=licensemanager_list_associations_for_license_configuration]{list_associations_for_license_configuration} \tab Lists the resource associations for a license configuration \cr
-#'  \link[=licensemanager_list_license_configurations]{list_license_configurations} \tab Lists license configuration objects for an account, each containing the name, description, license type, and other license terms modeled from a license agreement\cr
-#'  \link[=licensemanager_list_license_specifications_for_resource]{list_license_specifications_for_resource} \tab Returns the license configuration for a resource \cr
-#'  \link[=licensemanager_list_resource_inventory]{list_resource_inventory} \tab Returns a detailed list of resources \cr
-#'  \link[=licensemanager_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags attached to a resource \cr
-#'  \link[=licensemanager_list_usage_for_license_configuration]{list_usage_for_license_configuration} \tab Lists all license usage records for a license configuration, displaying license consumption details by resource at a selected point in time \cr
-#'  \link[=licensemanager_tag_resource]{tag_resource} \tab Attach one of more tags to any resource \cr
-#'  \link[=licensemanager_untag_resource]{untag_resource} \tab Remove tags from a resource \cr
-#'  \link[=licensemanager_update_license_configuration]{update_license_configuration} \tab Modifies the attributes of an existing license configuration object \cr
-#'  \link[=licensemanager_update_license_specifications_for_resource]{update_license_specifications_for_resource} \tab Adds or removes license configurations for a specified AWS resource \cr
-#'  \link[=licensemanager_update_service_settings]{update_service_settings} \tab Updates License Manager service settings 
+#'  \link[=licensemanager_create_license_configuration]{create_license_configuration} \tab Creates a license configuration \cr
+#'  \link[=licensemanager_delete_license_configuration]{delete_license_configuration} \tab Deletes the specified license configuration \cr
+#'  \link[=licensemanager_get_license_configuration]{get_license_configuration} \tab Gets detailed information about the specified license configuration \cr
+#'  \link[=licensemanager_get_service_settings]{get_service_settings} \tab Gets the License Manager settings for the current Region \cr
+#'  \link[=licensemanager_list_associations_for_license_configuration]{list_associations_for_license_configuration} \tab Lists the resource associations for the specified license configuration \cr
+#'  \link[=licensemanager_list_failures_for_license_configuration_operations]{list_failures_for_license_configuration_operations} \tab Lists the license configuration operations that failed \cr
+#'  \link[=licensemanager_list_license_configurations]{list_license_configurations} \tab Lists the license configurations for your account \cr
+#'  \link[=licensemanager_list_license_specifications_for_resource]{list_license_specifications_for_resource} \tab Describes the license configurations for the specified resource \cr
+#'  \link[=licensemanager_list_resource_inventory]{list_resource_inventory} \tab Lists resources managed using Systems Manager inventory \cr
+#'  \link[=licensemanager_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified license configuration \cr
+#'  \link[=licensemanager_list_usage_for_license_configuration]{list_usage_for_license_configuration} \tab Lists all license usage records for a license configuration, displaying license consumption details by resource at a selected point in time\cr
+#'  \link[=licensemanager_tag_resource]{tag_resource} \tab Adds the specified tags to the specified license configuration \cr
+#'  \link[=licensemanager_untag_resource]{untag_resource} \tab Removes the specified tags from the specified license configuration \cr
+#'  \link[=licensemanager_update_license_configuration]{update_license_configuration} \tab Modifies the attributes of an existing license configuration \cr
+#'  \link[=licensemanager_update_license_specifications_for_resource]{update_license_specifications_for_resource} \tab Adds or removes the specified license configurations for the specified AWS resource \cr
+#'  \link[=licensemanager_update_service_settings]{update_service_settings} \tab Updates License Manager settings for the current Region 
 #' }
 #'
 #' @rdname licensemanager
@@ -5709,11 +5853,9 @@ opsworks <- function(config = list()) {
   paws.management::opsworks(config)
 }
 
-#' AWS OpsWorks for Chef Automate
+#' AWS OpsWorks CM
 #'
 #' @description
-#' AWS OpsWorks CM
-#' 
 #' AWS OpsWorks for configuration management (CM) is a service that runs
 #' and manages configuration management servers. You can use AWS OpsWorks
 #' CM to create and manage AWS OpsWorks for Chef Automate and AWS OpsWorks
@@ -5837,130 +5979,7 @@ opsworkscm <- function(config = list()) {
 #' AWS Organizations
 #'
 #' @description
-#' AWS Organizations API Reference
-#' 
-#' AWS Organizations is a web service that enables you to consolidate your
-#' multiple AWS accounts into an *organization* and centrally manage your
-#' accounts and their resources.
-#' 
-#' This guide provides descriptions of the Organizations API. For more
-#' information about using this service, see the [AWS Organizations User
-#' Guide](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html).
-#' 
-#' **API Version**
-#' 
-#' This version of the Organizations API Reference documents the
-#' Organizations API version 2016-11-28.
-#' 
-#' As an alternative to using the API directly, you can use one of the AWS
-#' SDKs, which consist of libraries and sample code for various programming
-#' languages and platforms (Java, Ruby, .NET, iOS, Android, and more). The
-#' SDKs provide a convenient way to create programmatic access to AWS
-#' Organizations. For example, the SDKs take care of cryptographically
-#' signing requests, managing errors, and retrying requests automatically.
-#' For more information about the AWS SDKs, including how to download and
-#' install them, see [Tools for Amazon Web
-#' Services](http://aws.amazon.com/tools/).
-#' 
-#' We recommend that you use the AWS SDKs to make programmatic API calls to
-#' Organizations. However, you also can use the Organizations Query API to
-#' make direct calls to the Organizations web service. To learn more about
-#' the Organizations Query API, see [Making Query
-#' Requests](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_query-requests.html)
-#' in the *AWS Organizations User Guide*. Organizations supports GET and
-#' POST requests for all actions. That is, the API does not require you to
-#' use GET for some actions and POST for others. However, GET requests are
-#' subject to the limitation size of a URL. Therefore, for operations that
-#' require larger sizes, use a POST request.
-#' 
-#' **Signing Requests**
-#' 
-#' When you send HTTP requests to AWS, you must sign the requests so that
-#' AWS can identify who sent them. You sign requests with your AWS access
-#' key, which consists of an access key ID and a secret access key. We
-#' strongly recommend that you do not create an access key for your root
-#' account. Anyone who has the access key for your root account has
-#' unrestricted access to all the resources in your account. Instead,
-#' create an access key for an IAM user account that has administrative
-#' privileges. As another option, use AWS Security Token Service to
-#' generate temporary security credentials, and use those credentials to
-#' sign requests.
-#' 
-#' To sign requests, we recommend that you use [Signature Version
-#' 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
-#' If you have an existing application that uses Signature Version 2, you
-#' do not have to update it to use Signature Version 4. However, some
-#' operations now require Signature Version 4. The documentation for
-#' operations that require version 4 indicate this requirement.
-#' 
-#' When you use the AWS Command Line Interface (AWS CLI) or one of the AWS
-#' SDKs to make requests to AWS, these tools automatically sign the
-#' requests for you with the access key that you specify when you configure
-#' the tools.
-#' 
-#' In this release, each organization can have only one root. In a future
-#' release, a single organization will support multiple roots.
-#' 
-#' **Support and Feedback for AWS Organizations**
-#' 
-#' We welcome your feedback. Send your comments to
-#' <feedback-awsorganizations@amazon.com> or post your feedback and
-#' questions in the [AWS Organizations support
-#' forum](http://forums.aws.amazon.com/forum.jspa?forumID=219). For more
-#' information about the AWS support forums, see [Forums
-#' Help](http://forums.aws.amazon.com/help.jspa).
-#' 
-#' **Endpoint to Call When Using the CLI or the AWS API**
-#' 
-#' For the current release of Organizations, you must specify the
-#' `us-east-1` region for all AWS API and CLI calls. You can do this in the
-#' CLI by using these parameters and commands:
-#' 
-#' -   Use the following parameter with each command to specify both the
-#'     endpoint and its region:
-#' 
-#'     `--endpoint-url https://organizations.us-east-1.amazonaws.com`
-#' 
-#' -   Use the default endpoint, but configure your default region with
-#'     this command:
-#' 
-#'     `aws configure set default.region us-east-1`
-#' 
-#' -   Use the following parameter with each command to specify the
-#'     endpoint:
-#' 
-#'     `--region us-east-1`
-#' 
-#' For the various SDKs used to call the APIs, see the documentation for
-#' the SDK of interest to learn how to direct the requests to a specific
-#' endpoint. For more information, see [Regions and
-#' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#sts_region)
-#' in the *AWS General Reference*.
-#' 
-#' **How examples are presented**
-#' 
-#' The JSON returned by the AWS Organizations service as response to your
-#' requests is returned as a single long string without line breaks or
-#' formatting whitespace. Both line breaks and whitespace are included in
-#' the examples in this guide to improve readability. When example input
-#' parameters also would result in long strings that would extend beyond
-#' the screen, we insert line breaks to enhance readability. You should
-#' always submit the input as a single JSON text string.
-#' 
-#' **Recording API Requests**
-#' 
-#' AWS Organizations supports AWS CloudTrail, a service that records AWS
-#' API calls for your AWS account and delivers log files to an Amazon S3
-#' bucket. By using information collected by AWS CloudTrail, you can
-#' determine which requests were successfully made to Organizations, who
-#' made the request, when it was made, and so on. For more about AWS
-#' Organizations and its support for AWS CloudTrail, see [Logging AWS
-#' Organizations Events with AWS
-#' CloudTrail](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html#orgs_cloudtrail-integration)
-#' in the *AWS Organizations User Guide*. To learn more about CloudTrail,
-#' including how to turn it on and find your log files, see the [AWS
-#' CloudTrail User
-#' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
+#' AWS Organizations
 #'
 #' @param
 #' config
@@ -6000,7 +6019,7 @@ opsworkscm <- function(config = list()) {
 #'  \link[=organizations_attach_policy]{attach_policy} \tab Attaches a policy to a root, an organizational unit (OU), or an individual account \cr
 #'  \link[=organizations_cancel_handshake]{cancel_handshake} \tab Cancels a handshake \cr
 #'  \link[=organizations_create_account]{create_account} \tab Creates an AWS account that is automatically a member of the organization whose credentials made the request \cr
-#'  \link[=organizations_create_gov_cloud_account]{create_gov_cloud_account} \tab This action is available if all of the following are true: - You're authorized to create accounts in the AWS GovCloud (US) Region\cr
+#'  \link[=organizations_create_gov_cloud_account]{create_gov_cloud_account} \tab This action is available if all of the following are true: - You're authorized to create accounts in the AWS GovCloud (US) Region \cr
 #'  \link[=organizations_create_organization]{create_organization} \tab Creates an AWS organization \cr
 #'  \link[=organizations_create_organizational_unit]{create_organizational_unit} \tab Creates an organizational unit (OU) within a root or parent OU \cr
 #'  \link[=organizations_create_policy]{create_policy} \tab Creates a policy of a specified type that you can attach to a root, an organizational unit (OU), or an individual AWS account \cr
@@ -6008,15 +6027,16 @@ opsworkscm <- function(config = list()) {
 #'  \link[=organizations_delete_organization]{delete_organization} \tab Deletes the organization \cr
 #'  \link[=organizations_delete_organizational_unit]{delete_organizational_unit} \tab Deletes an organizational unit (OU) from a root or another OU \cr
 #'  \link[=organizations_delete_policy]{delete_policy} \tab Deletes the specified policy from your organization \cr
-#'  \link[=organizations_describe_account]{describe_account} \tab Retrieves AWS Organizations-related information about the specified account \cr
+#'  \link[=organizations_describe_account]{describe_account} \tab Retrieves AWS Organizations related information about the specified account \cr
 #'  \link[=organizations_describe_create_account_status]{describe_create_account_status} \tab Retrieves the current status of an asynchronous request to create an account \cr
+#'  \link[=organizations_describe_effective_policy]{describe_effective_policy} \tab Returns the contents of the effective tag policy for the account \cr
 #'  \link[=organizations_describe_handshake]{describe_handshake} \tab Retrieves information about a previously requested handshake \cr
 #'  \link[=organizations_describe_organization]{describe_organization} \tab Retrieves information about the organization that the user's account belongs to \cr
 #'  \link[=organizations_describe_organizational_unit]{describe_organizational_unit} \tab Retrieves information about an organizational unit (OU) \cr
 #'  \link[=organizations_describe_policy]{describe_policy} \tab Retrieves information about a policy \cr
 #'  \link[=organizations_detach_policy]{detach_policy} \tab Detaches a policy from a target root, organizational unit (OU), or account \cr
 #'  \link[=organizations_disable_aws_service_access]{disable_aws_service_access} \tab Disables the integration of an AWS service (the service that is specified by ServicePrincipal) with AWS Organizations \cr
-#'  \link[=organizations_disable_policy_type]{disable_policy_type} \tab Disables an organizational control policy type in a root \cr
+#'  \link[=organizations_disable_policy_type]{disable_policy_type} \tab Disables an organizational control policy type in a root and detaches all policies of that type from the organization root, OUs, and accounts\cr
 #'  \link[=organizations_enable_aws_service_access]{enable_aws_service_access} \tab Enables the integration of an AWS service (the service that is specified by ServicePrincipal) with AWS Organizations \cr
 #'  \link[=organizations_enable_all_features]{enable_all_features} \tab Enables all features in an organization \cr
 #'  \link[=organizations_enable_policy_type]{enable_policy_type} \tab Enables a policy type in a root \cr
@@ -6222,24 +6242,37 @@ resourcegroups <- function(config = list()) {
 #' You can use the resource groups tagging API operations to complete the
 #' following tasks:
 #' 
-#' -   Tag and untag supported resources located in the specified region
-#'     for the AWS account
+#' -   Tag and untag supported resources located in the specified Region
+#'     for the AWS account.
 #' 
 #' -   Use tag-based filters to search for resources located in the
-#'     specified region for the AWS account
+#'     specified Region for the AWS account.
 #' 
-#' -   List all existing tag keys in the specified region for the AWS
-#'     account
+#' -   List all existing tag keys in the specified Region for the AWS
+#'     account.
 #' 
 #' -   List all existing values for the specified key in the specified
-#'     region for the AWS account
+#'     Region for the AWS account.
 #' 
-#' To make full use of the resource groups tagging API operations, you
-#' might need additional IAM permissions, including permission to access
-#' the resources of individual services as well as permission to view and
-#' apply tags to those resources. For more information, see [Obtaining
-#' Permissions for Resource Groups and Tag
-#' Editor](http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-resource-groups.html).
+#' To use resource groups tagging API operations, you must add the
+#' following permissions to your IAM policy:
+#' 
+#' -   `tag:GetResources`
+#' 
+#' -   `tag:TagResources`
+#' 
+#' -   `tag:UntagResources`
+#' 
+#' -   `tag:GetTagKeys`
+#' 
+#' -   `tag:GetTagValues`
+#' 
+#' You\'ll also need permissions to access the resources of individual
+#' services so that you can tag and untag those resources.
+#' 
+#' For more information on IAM policies, see [Managing IAM
+#' Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage.html)
+#' in the *IAM User Guide*.
 #' 
 #' You can use the Resource Groups Tagging API to tag resources for the
 #' following AWS services.
@@ -6248,13 +6281,17 @@ resourcegroups <- function(config = list()) {
 #' 
 #' -   API Gateway
 #' 
-#' -   AWS AppStream
+#' -   Amazon AppStream
 #' 
 #' -   AWS AppSync
+#' 
+#' -   AWS App Mesh
 #' 
 #' -   Amazon Athena
 #' 
 #' -   Amazon Aurora
+#' 
+#' -   AWS Backup
 #' 
 #' -   AWS Certificate Manager
 #' 
@@ -6278,6 +6315,10 @@ resourcegroups <- function(config = list()) {
 #' 
 #' -   AWS CodeBuild
 #' 
+#' -   AWS CodeCommit
+#' 
+#' -   AWS CodePipeline
+#' 
 #' -   AWS CodeStar
 #' 
 #' -   Amazon Cognito Identity
@@ -6292,7 +6333,7 @@ resourcegroups <- function(config = list()) {
 #' 
 #' -   AWS Database Migration Service
 #' 
-#' -   AWS Datasync
+#' -   AWS DataSync
 #' 
 #' -   AWS Direct Connect
 #' 
@@ -6328,9 +6369,11 @@ resourcegroups <- function(config = list()) {
 #' 
 #' -   Amazon FSx
 #' 
-#' -   Amazon Glacier
+#' -   Amazon S3 Glacier
 #' 
 #' -   AWS Glue
+#' 
+#' -   Amazon GuardDuty
 #' 
 #' -   Amazon Inspector
 #' 
@@ -6341,6 +6384,8 @@ resourcegroups <- function(config = list()) {
 #' -   AWS IoT Device Defender
 #' 
 #' -   AWS IoT Device Management
+#' 
+#' -   AWS IoT Events
 #' 
 #' -   AWS IoT Greengrass
 #' 
@@ -6366,6 +6411,10 @@ resourcegroups <- function(config = list()) {
 #' 
 #' -   AWS OpsWorks
 #' 
+#' -   AWS Organizations
+#' 
+#' -   Amazon Quantum Ledger Database (QLDB)
+#' 
 #' -   Amazon RDS
 #' 
 #' -   Amazon Redshift
@@ -6386,17 +6435,19 @@ resourcegroups <- function(config = list()) {
 #' 
 #' -   AWS Secrets Manager
 #' 
+#' -   AWS Security Hub
+#' 
 #' -   AWS Service Catalog
 #' 
 #' -   Amazon Simple Notification Service (SNS)
 #' 
 #' -   Amazon Simple Queue Service (SQS)
 #' 
-#' -   AWS Simple System Manager (SSM)
-#' 
 #' -   AWS Step Functions
 #' 
 #' -   AWS Storage Gateway
+#' 
+#' -   AWS Systems Manager
 #' 
 #' -   AWS Transfer for SFTP
 #' 
@@ -6428,15 +6479,18 @@ resourcegroups <- function(config = list()) {
 #'
 #' @examples
 #' \donttest{svc <- resourcegroupstaggingapi()
-#' svc$get_resources(
+#' svc$describe_report_creation(
 #'   Foo = 123
 #' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=resourcegroupstaggingapi_get_resources]{get_resources} \tab Returns all the tagged or previously tagged resources that are located in the specified region for the AWS account\cr
-#'  \link[=resourcegroupstaggingapi_get_tag_keys]{get_tag_keys} \tab Returns all tag keys in the specified region for the AWS account \cr
-#'  \link[=resourcegroupstaggingapi_get_tag_values]{get_tag_values} \tab Returns all tag values for the specified key in the specified region for the AWS account \cr
+#'  \link[=resourcegroupstaggingapi_describe_report_creation]{describe_report_creation} \tab Describes the status of the StartReportCreation operation \cr
+#'  \link[=resourcegroupstaggingapi_get_compliance_summary]{get_compliance_summary} \tab Returns a table that shows counts of resources that are noncompliant with their tag policies \cr
+#'  \link[=resourcegroupstaggingapi_get_resources]{get_resources} \tab Returns all the tagged or previously tagged resources that are located in the specified Region for the AWS account \cr
+#'  \link[=resourcegroupstaggingapi_get_tag_keys]{get_tag_keys} \tab Returns all tag keys in the specified Region for the AWS account \cr
+#'  \link[=resourcegroupstaggingapi_get_tag_values]{get_tag_values} \tab Returns all tag values for the specified key in the specified Region for the AWS account \cr
+#'  \link[=resourcegroupstaggingapi_start_report_creation]{start_report_creation} \tab Generates a report that lists all tagged resources in accounts across your organization and tells whether each resource is compliant with the effective tag policy\cr
 #'  \link[=resourcegroupstaggingapi_tag_resources]{tag_resources} \tab Applies one or more tags to the specified resources \cr
 #'  \link[=resourcegroupstaggingapi_untag_resources]{untag_resources} \tab Removes the specified tags from the specified resources 
 #' }
@@ -6718,7 +6772,7 @@ servicequotas <- function(config = list()) {
 #'  \link[=ssm_create_maintenance_window]{create_maintenance_window} \tab Creates a new maintenance window \cr
 #'  \link[=ssm_create_ops_item]{create_ops_item} \tab Creates a new OpsItem \cr
 #'  \link[=ssm_create_patch_baseline]{create_patch_baseline} \tab Creates a patch baseline \cr
-#'  \link[=ssm_create_resource_data_sync]{create_resource_data_sync} \tab Creates a resource data sync configuration to a single bucket in Amazon S3 \cr
+#'  \link[=ssm_create_resource_data_sync]{create_resource_data_sync} \tab A resource data sync helps you view data from multiple sources in a single location \cr
 #'  \link[=ssm_delete_activation]{delete_activation} \tab Deletes an activation \cr
 #'  \link[=ssm_delete_association]{delete_association} \tab Disassociates the specified Systems Manager document from the specified instance \cr
 #'  \link[=ssm_delete_document]{delete_document} \tab Deletes the Systems Manager document and all instance associations to the document \cr
@@ -6732,13 +6786,13 @@ servicequotas <- function(config = list()) {
 #'  \link[=ssm_deregister_patch_baseline_for_patch_group]{deregister_patch_baseline_for_patch_group} \tab Removes a patch group from a patch baseline \cr
 #'  \link[=ssm_deregister_target_from_maintenance_window]{deregister_target_from_maintenance_window} \tab Removes a target from a maintenance window \cr
 #'  \link[=ssm_deregister_task_from_maintenance_window]{deregister_task_from_maintenance_window} \tab Removes a task from a maintenance window \cr
-#'  \link[=ssm_describe_activations]{describe_activations} \tab Details about the activation, including: the date and time the activation was created, the expiration date, the IAM role assigned to the instances in the activation, and the number of instances activated by this registration\cr
+#'  \link[=ssm_describe_activations]{describe_activations} \tab Describes details about the activation, such as the date and time the activation was created, its expiration date, the IAM role assigned to the instances in the activation, and the number of instances registered by using this activation\cr
 #'  \link[=ssm_describe_association]{describe_association} \tab Describes the association for the specified target or instance \cr
 #'  \link[=ssm_describe_association_execution_targets]{describe_association_execution_targets} \tab Use this API action to view information about a specific execution of a specific association \cr
 #'  \link[=ssm_describe_association_executions]{describe_association_executions} \tab Use this API action to view all executions for a specific association ID \cr
 #'  \link[=ssm_describe_automation_executions]{describe_automation_executions} \tab Provides details about all active and terminated Automation executions \cr
 #'  \link[=ssm_describe_automation_step_executions]{describe_automation_step_executions} \tab Information about all active and terminated step executions in an Automation workflow \cr
-#'  \link[=ssm_describe_available_patches]{describe_available_patches} \tab Lists all patches that could possibly be included in a patch baseline \cr
+#'  \link[=ssm_describe_available_patches]{describe_available_patches} \tab Lists all patches eligible to be included in a patch baseline \cr
 #'  \link[=ssm_describe_document]{describe_document} \tab Describes the specified Systems Manager document \cr
 #'  \link[=ssm_describe_document_permission]{describe_document_permission} \tab Describes the permissions for a Systems Manager document \cr
 #'  \link[=ssm_describe_effective_instance_associations]{describe_effective_instance_associations} \tab All associations for the instance(s) \cr
@@ -6773,16 +6827,16 @@ servicequotas <- function(config = list()) {
 #'  \link[=ssm_get_inventory]{get_inventory} \tab Query inventory information \cr
 #'  \link[=ssm_get_inventory_schema]{get_inventory_schema} \tab Return a list of inventory type names for the account, or return a list of attribute names for a specific Inventory item type \cr
 #'  \link[=ssm_get_maintenance_window]{get_maintenance_window} \tab Retrieves a maintenance window \cr
-#'  \link[=ssm_get_maintenance_window_execution]{get_maintenance_window_execution} \tab Retrieves details about a specific task run as part of a maintenance window execution \cr
+#'  \link[=ssm_get_maintenance_window_execution]{get_maintenance_window_execution} \tab Retrieves details about a specific a maintenance window execution \cr
 #'  \link[=ssm_get_maintenance_window_execution_task]{get_maintenance_window_execution_task} \tab Retrieves the details about a specific task run as part of a maintenance window execution \cr
-#'  \link[=ssm_get_maintenance_window_execution_task_invocation]{get_maintenance_window_execution_task_invocation} \tab Retrieves a task invocation \cr
+#'  \link[=ssm_get_maintenance_window_execution_task_invocation]{get_maintenance_window_execution_task_invocation} \tab Retrieves information about a specific task running on a specific target \cr
 #'  \link[=ssm_get_maintenance_window_task]{get_maintenance_window_task} \tab Lists the tasks in a maintenance window \cr
 #'  \link[=ssm_get_ops_item]{get_ops_item} \tab Get information about an OpsItem by using the ID \cr
 #'  \link[=ssm_get_ops_summary]{get_ops_summary} \tab View a summary of OpsItems based on specified filters and aggregators \cr
 #'  \link[=ssm_get_parameter]{get_parameter} \tab Get information about a parameter by using the parameter name \cr
 #'  \link[=ssm_get_parameter_history]{get_parameter_history} \tab Query a list of all parameters used by the AWS account \cr
 #'  \link[=ssm_get_parameters]{get_parameters} \tab Get details of a parameter \cr
-#'  \link[=ssm_get_parameters_by_path]{get_parameters_by_path} \tab Retrieve parameters in a specific hierarchy \cr
+#'  \link[=ssm_get_parameters_by_path]{get_parameters_by_path} \tab Retrieve information about one or more parameters in a specific hierarchy \cr
 #'  \link[=ssm_get_patch_baseline]{get_patch_baseline} \tab Retrieves information about a patch baseline \cr
 #'  \link[=ssm_get_patch_baseline_for_patch_group]{get_patch_baseline_for_patch_group} \tab Retrieves the patch baseline that should be used for the specified patch group \cr
 #'  \link[=ssm_get_service_setting]{get_service_setting} \tab ServiceSetting is an account-level setting for an AWS service \cr
@@ -6803,11 +6857,11 @@ servicequotas <- function(config = list()) {
 #'  \link[=ssm_put_compliance_items]{put_compliance_items} \tab Registers a compliance type and other compliance details on a designated resource \cr
 #'  \link[=ssm_put_inventory]{put_inventory} \tab Bulk update custom inventory items on one more instance \cr
 #'  \link[=ssm_put_parameter]{put_parameter} \tab Add a parameter to the system \cr
-#'  \link[=ssm_register_default_patch_baseline]{register_default_patch_baseline} \tab Defines the default patch baseline \cr
+#'  \link[=ssm_register_default_patch_baseline]{register_default_patch_baseline} \tab Defines the default patch baseline for the relevant operating system \cr
 #'  \link[=ssm_register_patch_baseline_for_patch_group]{register_patch_baseline_for_patch_group} \tab Registers a patch baseline for a patch group \cr
 #'  \link[=ssm_register_target_with_maintenance_window]{register_target_with_maintenance_window} \tab Registers a target with a maintenance window \cr
 #'  \link[=ssm_register_task_with_maintenance_window]{register_task_with_maintenance_window} \tab Adds a new task to a maintenance window \cr
-#'  \link[=ssm_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes all tags from the specified resource \cr
+#'  \link[=ssm_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes tag keys from the specified resource \cr
 #'  \link[=ssm_reset_service_setting]{reset_service_setting} \tab ServiceSetting is an account-level setting for an AWS service \cr
 #'  \link[=ssm_resume_session]{resume_session} \tab Reconnects a session to an instance after it has been disconnected \cr
 #'  \link[=ssm_send_automation_signal]{send_automation_signal} \tab Sends a signal to an Automation execution to change the current behavior or status of the execution \cr
@@ -6819,14 +6873,15 @@ servicequotas <- function(config = list()) {
 #'  \link[=ssm_terminate_session]{terminate_session} \tab Permanently ends a session and closes the data connection between the Session Manager client and SSM Agent on the instance \cr
 #'  \link[=ssm_update_association]{update_association} \tab Updates an association \cr
 #'  \link[=ssm_update_association_status]{update_association_status} \tab Updates the status of the Systems Manager document associated with the specified instance \cr
-#'  \link[=ssm_update_document]{update_document} \tab The document you want to update \cr
+#'  \link[=ssm_update_document]{update_document} \tab Updates one or more values for an SSM document \cr
 #'  \link[=ssm_update_document_default_version]{update_document_default_version} \tab Set the default version of a document \cr
 #'  \link[=ssm_update_maintenance_window]{update_maintenance_window} \tab Updates an existing maintenance window \cr
 #'  \link[=ssm_update_maintenance_window_target]{update_maintenance_window_target} \tab Modifies the target of an existing maintenance window \cr
 #'  \link[=ssm_update_maintenance_window_task]{update_maintenance_window_task} \tab Modifies a task assigned to a maintenance window \cr
-#'  \link[=ssm_update_managed_instance_role]{update_managed_instance_role} \tab Assigns or changes an Amazon Identity and Access Management (IAM) role to the managed instance \cr
+#'  \link[=ssm_update_managed_instance_role]{update_managed_instance_role} \tab Assigns or changes an Amazon Identity and Access Management (IAM) role for the managed instance \cr
 #'  \link[=ssm_update_ops_item]{update_ops_item} \tab Edit or change an OpsItem \cr
 #'  \link[=ssm_update_patch_baseline]{update_patch_baseline} \tab Modifies an existing patch baseline \cr
+#'  \link[=ssm_update_resource_data_sync]{update_resource_data_sync} \tab Update a resource data sync \cr
 #'  \link[=ssm_update_service_setting]{update_service_setting} \tab ServiceSetting is an account-level setting for an AWS service 
 #' }
 #'
@@ -6890,10 +6945,10 @@ ssm <- function(config = list()) {
 #' 
 #' For authentication of requests, AWS Support uses [Signature Version 4
 #' Signing
-#' Process](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 #' 
 #' See [About the AWS Support
-#' API](http://docs.aws.amazon.com/awssupport/latest/user/Welcome.html) in
+#' API](https://docs.aws.amazon.com/awssupport/latest/user/Welcome.html) in
 #' the *AWS Support User Guide* for information about how to use this
 #' service to create and manage your support cases, and how to call Trusted
 #' Advisor for results of checks on your resources.
@@ -6992,14 +7047,18 @@ support <- function(config = list()) {
 #'  \link[=comprehend_batch_detect_entities]{batch_detect_entities} \tab Inspects the text of a batch of documents for named entities and returns information about them \cr
 #'  \link[=comprehend_batch_detect_key_phrases]{batch_detect_key_phrases} \tab Detects the key noun phrases found in a batch of documents \cr
 #'  \link[=comprehend_batch_detect_sentiment]{batch_detect_sentiment} \tab Inspects a batch of documents and returns an inference of the prevailing sentiment, POSITIVE, NEUTRAL, MIXED, or NEGATIVE, in each one \cr
-#'  \link[=comprehend_batch_detect_syntax]{batch_detect_syntax} \tab Inspects the text of a batch of documents for the syntax and part of speech of the words in the document and returns information about them\cr
+#'  \link[=comprehend_batch_detect_syntax]{batch_detect_syntax} \tab Inspects the text of a batch of documents for the syntax and part of speech of the words in the document and returns information about them \cr
+#'  \link[=comprehend_classify_document]{classify_document} \tab Creates a new document classification request to analyze a single document in real-time, using a previously created and trained custom model and an endpoint\cr
 #'  \link[=comprehend_create_document_classifier]{create_document_classifier} \tab Creates a new document classifier that you can use to categorize documents \cr
+#'  \link[=comprehend_create_endpoint]{create_endpoint} \tab Creates a model-specific endpoint for synchronous inference for a previously trained custom model \cr
 #'  \link[=comprehend_create_entity_recognizer]{create_entity_recognizer} \tab Creates an entity recognizer using submitted files \cr
 #'  \link[=comprehend_delete_document_classifier]{delete_document_classifier} \tab Deletes a previously created document classifier Only those classifiers that are in terminated states (IN_ERROR, TRAINED) will be deleted \cr
+#'  \link[=comprehend_delete_endpoint]{delete_endpoint} \tab Deletes a model-specific endpoint for a previously-trained custom model \cr
 #'  \link[=comprehend_delete_entity_recognizer]{delete_entity_recognizer} \tab Deletes an entity recognizer \cr
 #'  \link[=comprehend_describe_document_classification_job]{describe_document_classification_job} \tab Gets the properties associated with a document classification job \cr
 #'  \link[=comprehend_describe_document_classifier]{describe_document_classifier} \tab Gets the properties associated with a document classifier \cr
 #'  \link[=comprehend_describe_dominant_language_detection_job]{describe_dominant_language_detection_job} \tab Gets the properties associated with a dominant language detection job \cr
+#'  \link[=comprehend_describe_endpoint]{describe_endpoint} \tab Gets the properties associated with a specific endpoint \cr
 #'  \link[=comprehend_describe_entities_detection_job]{describe_entities_detection_job} \tab Gets the properties associated with an entities detection job \cr
 #'  \link[=comprehend_describe_entity_recognizer]{describe_entity_recognizer} \tab Provides details about an entity recognizer including status, S3 buckets containing training data, recognizer metadata, metrics, and so on \cr
 #'  \link[=comprehend_describe_key_phrases_detection_job]{describe_key_phrases_detection_job} \tab Gets the properties associated with a key phrases detection job \cr
@@ -7013,6 +7072,7 @@ support <- function(config = list()) {
 #'  \link[=comprehend_list_document_classification_jobs]{list_document_classification_jobs} \tab Gets a list of the documentation classification jobs that you have submitted \cr
 #'  \link[=comprehend_list_document_classifiers]{list_document_classifiers} \tab Gets a list of the document classifiers that you have created \cr
 #'  \link[=comprehend_list_dominant_language_detection_jobs]{list_dominant_language_detection_jobs} \tab Gets a list of the dominant language detection jobs that you have submitted \cr
+#'  \link[=comprehend_list_endpoints]{list_endpoints} \tab Gets a list of all existing endpoints that you've created \cr
 #'  \link[=comprehend_list_entities_detection_jobs]{list_entities_detection_jobs} \tab Gets a list of the entity detection jobs that you have submitted \cr
 #'  \link[=comprehend_list_entity_recognizers]{list_entity_recognizers} \tab Gets a list of the properties of all entity recognizers that you created, including recognizers currently in training \cr
 #'  \link[=comprehend_list_key_phrases_detection_jobs]{list_key_phrases_detection_jobs} \tab Get a list of key phrase detection jobs that you have submitted \cr
@@ -7032,7 +7092,8 @@ support <- function(config = list()) {
 #'  \link[=comprehend_stop_training_document_classifier]{stop_training_document_classifier} \tab Stops a document classifier training job while in progress \cr
 #'  \link[=comprehend_stop_training_entity_recognizer]{stop_training_entity_recognizer} \tab Stops an entity recognizer training job while in progress \cr
 #'  \link[=comprehend_tag_resource]{tag_resource} \tab Associates a specific tag with an Amazon Comprehend resource \cr
-#'  \link[=comprehend_untag_resource]{untag_resource} \tab Removes a specific tag associated with an Amazon Comprehend resource 
+#'  \link[=comprehend_untag_resource]{untag_resource} \tab Removes a specific tag associated with an Amazon Comprehend resource \cr
+#'  \link[=comprehend_update_endpoint]{update_endpoint} \tab Updates information about the specified endpoint 
 #' }
 #'
 #' @rdname comprehend
@@ -7044,8 +7105,9 @@ comprehend <- function(config = list()) {
 #' AWS Comprehend Medical
 #'
 #' @description
-#' Comprehend Medical extracts structured information from unstructured
-#' clinical text. Use these actions to gain insight in your documents.
+#' Amazon Comprehend Medical extracts structured information from
+#' unstructured clinical text. Use these actions to gain insight in your
+#' documents.
 #'
 #' @param
 #' config
@@ -7071,14 +7133,23 @@ comprehend <- function(config = list()) {
 #'
 #' @examples
 #' \donttest{svc <- comprehendmedical()
-#' svc$detect_entities(
+#' svc$describe_entities_detection_v2_job(
 #'   Foo = 123
 #' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=comprehendmedical_detect_entities]{detect_entities} \tab Inspects the clinical text for a variety of medical entities and returns specific information about them such as entity category, location, and confidence score on that information \cr
-#'  \link[=comprehendmedical_detect_phi]{detect_phi} \tab Inspects the clinical text for personal health information (PHI) entities and entity category, location, and confidence score on that information 
+#'  \link[=comprehendmedical_describe_entities_detection_v2_job]{describe_entities_detection_v2_job} \tab Gets the properties associated with a medical entities detection job \cr
+#'  \link[=comprehendmedical_describe_phi_detection_job]{describe_phi_detection_job} \tab Gets the properties associated with a protected health information (PHI) detection job \cr
+#'  \link[=comprehendmedical_detect_entities]{detect_entities} \tab The DetectEntities operation is deprecated \cr
+#'  \link[=comprehendmedical_detect_entities_v2]{detect_entities_v2} \tab Inspects the clinical text for a variety of medical entities and returns specific information about them such as entity category, location, and confidence score on that information\cr
+#'  \link[=comprehendmedical_detect_phi]{detect_phi} \tab Inspects the clinical text for protected health information (PHI) entities and entity category, location, and confidence score on that information \cr
+#'  \link[=comprehendmedical_list_entities_detection_v2_jobs]{list_entities_detection_v2_jobs} \tab Gets a list of medical entity detection jobs that you have submitted \cr
+#'  \link[=comprehendmedical_list_phi_detection_jobs]{list_phi_detection_jobs} \tab Gets a list of protected health information (PHI) detection jobs that you have submitted \cr
+#'  \link[=comprehendmedical_start_entities_detection_v2_job]{start_entities_detection_v2_job} \tab Starts an asynchronous medical entity detection job for a collection of documents \cr
+#'  \link[=comprehendmedical_start_phi_detection_job]{start_phi_detection_job} \tab Starts an asynchronous job to detect protected health information (PHI) \cr
+#'  \link[=comprehendmedical_stop_entities_detection_v2_job]{stop_entities_detection_v2_job} \tab Stops a medical entities detection job in progress \cr
+#'  \link[=comprehendmedical_stop_phi_detection_job]{stop_phi_detection_job} \tab Stops a protected health information (PHI) detection job in progress 
 #' }
 #'
 #' @rdname comprehendmedical
@@ -7212,14 +7283,17 @@ lexmodelbuildingservice <- function(config = list()) {
 #'
 #' @examples
 #' \donttest{svc <- lexruntimeservice()
-#' svc$post_content(
+#' svc$delete_session(
 #'   Foo = 123
 #' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=lexruntimeservice_post_content]{post_content} \tab Sends user input (text or speech) to Amazon Lex\cr
-#'  \link[=lexruntimeservice_post_text]{post_text} \tab Sends user input (text-only) to Amazon Lex 
+#'  \link[=lexruntimeservice_delete_session]{delete_session} \tab Removes session information for a specified bot, alias, and user ID \cr
+#'  \link[=lexruntimeservice_get_session]{get_session} \tab Returns session information for a specified bot, alias, and user ID \cr
+#'  \link[=lexruntimeservice_post_content]{post_content} \tab Sends user input (text or speech) to Amazon Lex \cr
+#'  \link[=lexruntimeservice_post_text]{post_text} \tab Sends user input to Amazon Lex \cr
+#'  \link[=lexruntimeservice_put_session]{put_session} \tab Creates a new session or modifies an existing session with an Amazon Lex bot
 #' }
 #'
 #' @rdname lexruntimeservice
@@ -7329,12 +7403,13 @@ machinelearning <- function(config = list()) {
 #'
 #' @examples
 #' \donttest{svc <- personalize()
-#' svc$create_campaign(
+#' svc$create_batch_inference_job(
 #'   Foo = 123
 #' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=personalize_create_batch_inference_job]{create_batch_inference_job} \tab Creates a batch inference job \cr
 #'  \link[=personalize_create_campaign]{create_campaign} \tab Creates a campaign by deploying a solution version \cr
 #'  \link[=personalize_create_dataset]{create_dataset} \tab Creates an empty dataset and adds it to the specified dataset group \cr
 #'  \link[=personalize_create_dataset_group]{create_dataset_group} \tab Creates an empty dataset group \cr
@@ -7350,6 +7425,7 @@ machinelearning <- function(config = list()) {
 #'  \link[=personalize_delete_schema]{delete_schema} \tab Deletes a schema \cr
 #'  \link[=personalize_delete_solution]{delete_solution} \tab Deletes all versions of a solution and the Solution object itself \cr
 #'  \link[=personalize_describe_algorithm]{describe_algorithm} \tab Describes the given algorithm \cr
+#'  \link[=personalize_describe_batch_inference_job]{describe_batch_inference_job} \tab Gets the properties of a batch inference job including name, Amazon Resource Name (ARN), status, input and output configurations, and the ARN of the solution version used to generate the recommendations\cr
 #'  \link[=personalize_describe_campaign]{describe_campaign} \tab Describes the given campaign, including its status \cr
 #'  \link[=personalize_describe_dataset]{describe_dataset} \tab Describes the given dataset \cr
 #'  \link[=personalize_describe_dataset_group]{describe_dataset_group} \tab Describes the given dataset group \cr
@@ -7361,6 +7437,7 @@ machinelearning <- function(config = list()) {
 #'  \link[=personalize_describe_solution]{describe_solution} \tab Describes a solution \cr
 #'  \link[=personalize_describe_solution_version]{describe_solution_version} \tab Describes a specific version of a solution \cr
 #'  \link[=personalize_get_solution_metrics]{get_solution_metrics} \tab Gets the metrics for the specified solution version \cr
+#'  \link[=personalize_list_batch_inference_jobs]{list_batch_inference_jobs} \tab Gets a list of the batch inference jobs that have been performed off of a solution version \cr
 #'  \link[=personalize_list_campaigns]{list_campaigns} \tab Returns a list of campaigns that use the given solution \cr
 #'  \link[=personalize_list_dataset_groups]{list_dataset_groups} \tab Returns a list of dataset groups \cr
 #'  \link[=personalize_list_dataset_import_jobs]{list_dataset_import_jobs} \tab Returns a list of dataset import jobs that use the given dataset \cr
@@ -7370,7 +7447,7 @@ machinelearning <- function(config = list()) {
 #'  \link[=personalize_list_schemas]{list_schemas} \tab Returns the list of schemas associated with the account \cr
 #'  \link[=personalize_list_solution_versions]{list_solution_versions} \tab Returns a list of solution versions for the given solution \cr
 #'  \link[=personalize_list_solutions]{list_solutions} \tab Returns a list of solutions that use the given dataset group \cr
-#'  \link[=personalize_update_campaign]{update_campaign} \tab Updates a campaign by either deploying a new solution or changing the value of the campaign's minProvisionedTPS parameter
+#'  \link[=personalize_update_campaign]{update_campaign} \tab Updates a campaign by either deploying a new solution or changing the value of the campaign's minProvisionedTPS parameter 
 #' }
 #'
 #' @rdname personalize
@@ -7576,19 +7653,24 @@ polly <- function(config = list()) {
 #' \tabular{ll}{
 #'  \link[=rekognition_compare_faces]{compare_faces} \tab Compares a face in the _source_ input image with each of the 100 largest faces detected in the _target_ input image \cr
 #'  \link[=rekognition_create_collection]{create_collection} \tab Creates a collection in an AWS Region \cr
+#'  \link[=rekognition_create_project]{create_project} \tab Creates a new Amazon Rekognition Custom Labels project \cr
+#'  \link[=rekognition_create_project_version]{create_project_version} \tab Creates a new version of a model and begins training \cr
 #'  \link[=rekognition_create_stream_processor]{create_stream_processor} \tab Creates an Amazon Rekognition stream processor that you can use to detect and recognize faces in a streaming video \cr
 #'  \link[=rekognition_delete_collection]{delete_collection} \tab Deletes the specified collection \cr
 #'  \link[=rekognition_delete_faces]{delete_faces} \tab Deletes faces from a collection \cr
 #'  \link[=rekognition_delete_stream_processor]{delete_stream_processor} \tab Deletes the stream processor identified by Name \cr
 #'  \link[=rekognition_describe_collection]{describe_collection} \tab Describes the specified collection \cr
+#'  \link[=rekognition_describe_project_versions]{describe_project_versions} \tab Lists and describes the models in an Amazon Rekognition Custom Labels project \cr
+#'  \link[=rekognition_describe_projects]{describe_projects} \tab Lists and gets information about your Amazon Rekognition Custom Labels projects \cr
 #'  \link[=rekognition_describe_stream_processor]{describe_stream_processor} \tab Provides information about a stream processor created by CreateStreamProcessor \cr
+#'  \link[=rekognition_detect_custom_labels]{detect_custom_labels} \tab Detects custom labels in a supplied image by using an Amazon Rekognition Custom Labels model \cr
 #'  \link[=rekognition_detect_faces]{detect_faces} \tab Detects faces within an image that is provided as input \cr
 #'  \link[=rekognition_detect_labels]{detect_labels} \tab Detects instances of real-world entities within an image (JPEG or PNG) provided as input \cr
-#'  \link[=rekognition_detect_moderation_labels]{detect_moderation_labels} \tab Detects explicit or suggestive adult content in a specified JPEG or PNG format image \cr
+#'  \link[=rekognition_detect_moderation_labels]{detect_moderation_labels} \tab Detects unsafe content in a specified JPEG or PNG format image \cr
 #'  \link[=rekognition_detect_text]{detect_text} \tab Detects text in the input image and converts it into machine-readable text \cr
 #'  \link[=rekognition_get_celebrity_info]{get_celebrity_info} \tab Gets the name and additional information about a celebrity based on his or her Amazon Rekognition ID \cr
 #'  \link[=rekognition_get_celebrity_recognition]{get_celebrity_recognition} \tab Gets the celebrity recognition results for a Amazon Rekognition Video analysis started by StartCelebrityRecognition \cr
-#'  \link[=rekognition_get_content_moderation]{get_content_moderation} \tab Gets the content moderation analysis results for a Amazon Rekognition Video analysis started by StartContentModeration \cr
+#'  \link[=rekognition_get_content_moderation]{get_content_moderation} \tab Gets the unsafe content analysis results for a Amazon Rekognition Video analysis started by StartContentModeration \cr
 #'  \link[=rekognition_get_face_detection]{get_face_detection} \tab Gets face detection results for a Amazon Rekognition Video analysis started by StartFaceDetection \cr
 #'  \link[=rekognition_get_face_search]{get_face_search} \tab Gets the face search results for Amazon Rekognition Video face search started by StartFaceSearch \cr
 #'  \link[=rekognition_get_label_detection]{get_label_detection} \tab Gets the label detection results of a Amazon Rekognition Video analysis started by StartLabelDetection \cr
@@ -7601,12 +7683,14 @@ polly <- function(config = list()) {
 #'  \link[=rekognition_search_faces]{search_faces} \tab For a given input face ID, searches for matching faces in the collection the face belongs to \cr
 #'  \link[=rekognition_search_faces_by_image]{search_faces_by_image} \tab For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces\cr
 #'  \link[=rekognition_start_celebrity_recognition]{start_celebrity_recognition} \tab Starts asynchronous recognition of celebrities in a stored video \cr
-#'  \link[=rekognition_start_content_moderation]{start_content_moderation} \tab Starts asynchronous detection of explicit or suggestive adult content in a stored video \cr
+#'  \link[=rekognition_start_content_moderation]{start_content_moderation} \tab Starts asynchronous detection of unsafe content in a stored video \cr
 #'  \link[=rekognition_start_face_detection]{start_face_detection} \tab Starts asynchronous detection of faces in a stored video \cr
 #'  \link[=rekognition_start_face_search]{start_face_search} \tab Starts the asynchronous search for faces in a collection that match the faces of persons detected in a stored video \cr
 #'  \link[=rekognition_start_label_detection]{start_label_detection} \tab Starts asynchronous detection of labels in a stored video \cr
 #'  \link[=rekognition_start_person_tracking]{start_person_tracking} \tab Starts the asynchronous tracking of a person's path in a stored video \cr
+#'  \link[=rekognition_start_project_version]{start_project_version} \tab Starts the running of the version of a model \cr
 #'  \link[=rekognition_start_stream_processor]{start_stream_processor} \tab Starts processing a stream processor \cr
+#'  \link[=rekognition_stop_project_version]{stop_project_version} \tab Stops a running model \cr
 #'  \link[=rekognition_stop_stream_processor]{stop_stream_processor} \tab Stops a running stream processor that was created by CreateStreamProcessor 
 #' }
 #'
@@ -7652,79 +7736,135 @@ rekognition <- function(config = list()) {
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=sagemaker_add_tags]{add_tags} \tab Adds or overwrites one or more tags for the specified Amazon SageMaker resource \cr
+#'  \link[=sagemaker_associate_trial_component]{associate_trial_component} \tab Associates a trial component with a trial \cr
 #'  \link[=sagemaker_create_algorithm]{create_algorithm} \tab Create a machine learning algorithm that you can use in Amazon SageMaker and list in the AWS Marketplace \cr
+#'  \link[=sagemaker_create_app]{create_app} \tab Creates a running App for the specified UserProfile \cr
+#'  \link[=sagemaker_create_auto_ml_job]{create_auto_ml_job} \tab Creates an AutoPilot job \cr
 #'  \link[=sagemaker_create_code_repository]{create_code_repository} \tab Creates a Git repository as a resource in your Amazon SageMaker account \cr
 #'  \link[=sagemaker_create_compilation_job]{create_compilation_job} \tab Starts a model compilation job \cr
+#'  \link[=sagemaker_create_domain]{create_domain} \tab Creates a Domain for Amazon SageMaker Amazon SageMaker Studio (Studio), which can be accessed by end-users in a web browser \cr
 #'  \link[=sagemaker_create_endpoint]{create_endpoint} \tab Creates an endpoint using the endpoint configuration specified in the request \cr
 #'  \link[=sagemaker_create_endpoint_config]{create_endpoint_config} \tab Creates an endpoint configuration that Amazon SageMaker hosting services uses to deploy models \cr
+#'  \link[=sagemaker_create_experiment]{create_experiment} \tab Creates an Amazon SageMaker _experiment_ \cr
+#'  \link[=sagemaker_create_flow_definition]{create_flow_definition} \tab Creates a flow definition \cr
+#'  \link[=sagemaker_create_human_task_ui]{create_human_task_ui} \tab Defines the settings you will use for the human review workflow user interface \cr
 #'  \link[=sagemaker_create_hyper_parameter_tuning_job]{create_hyper_parameter_tuning_job} \tab Starts a hyperparameter tuning job \cr
 #'  \link[=sagemaker_create_labeling_job]{create_labeling_job} \tab Creates a job that uses workers to label the data objects in your input dataset \cr
 #'  \link[=sagemaker_create_model]{create_model} \tab Creates a model in Amazon SageMaker \cr
 #'  \link[=sagemaker_create_model_package]{create_model_package} \tab Creates a model package that you can use to create Amazon SageMaker models or list on AWS Marketplace \cr
+#'  \link[=sagemaker_create_monitoring_schedule]{create_monitoring_schedule} \tab Creates a schedule that regularly starts Amazon SageMaker Processing Jobs to monitor the data captured for an Amazon SageMaker Endoint \cr
 #'  \link[=sagemaker_create_notebook_instance]{create_notebook_instance} \tab Creates an Amazon SageMaker notebook instance \cr
 #'  \link[=sagemaker_create_notebook_instance_lifecycle_config]{create_notebook_instance_lifecycle_config} \tab Creates a lifecycle configuration that you can associate with a notebook instance \cr
+#'  \link[=sagemaker_create_presigned_domain_url]{create_presigned_domain_url} \tab Creates a URL for a specified UserProfile in a Domain \cr
 #'  \link[=sagemaker_create_presigned_notebook_instance_url]{create_presigned_notebook_instance_url} \tab Returns a URL that you can use to connect to the Jupyter server from a notebook instance \cr
+#'  \link[=sagemaker_create_processing_job]{create_processing_job} \tab Creates a processing job \cr
 #'  \link[=sagemaker_create_training_job]{create_training_job} \tab Starts a model training job \cr
 #'  \link[=sagemaker_create_transform_job]{create_transform_job} \tab Starts a transform job \cr
+#'  \link[=sagemaker_create_trial]{create_trial} \tab Creates an Amazon SageMaker _trial_ \cr
+#'  \link[=sagemaker_create_trial_component]{create_trial_component} \tab Creates a _trial component_, which is a stage of a machine learning _trial_ \cr
+#'  \link[=sagemaker_create_user_profile]{create_user_profile} \tab Creates a new user profile \cr
 #'  \link[=sagemaker_create_workteam]{create_workteam} \tab Creates a new work team for labeling your data \cr
 #'  \link[=sagemaker_delete_algorithm]{delete_algorithm} \tab Removes the specified algorithm from your account \cr
+#'  \link[=sagemaker_delete_app]{delete_app} \tab Used to stop and delete an app \cr
 #'  \link[=sagemaker_delete_code_repository]{delete_code_repository} \tab Deletes the specified Git repository from your account \cr
+#'  \link[=sagemaker_delete_domain]{delete_domain} \tab Used to delete a domain \cr
 #'  \link[=sagemaker_delete_endpoint]{delete_endpoint} \tab Deletes an endpoint \cr
 #'  \link[=sagemaker_delete_endpoint_config]{delete_endpoint_config} \tab Deletes an endpoint configuration \cr
+#'  \link[=sagemaker_delete_experiment]{delete_experiment} \tab Deletes an Amazon SageMaker experiment \cr
+#'  \link[=sagemaker_delete_flow_definition]{delete_flow_definition} \tab Deletes the specified flow definition \cr
 #'  \link[=sagemaker_delete_model]{delete_model} \tab Deletes a model \cr
 #'  \link[=sagemaker_delete_model_package]{delete_model_package} \tab Deletes a model package \cr
+#'  \link[=sagemaker_delete_monitoring_schedule]{delete_monitoring_schedule} \tab Deletes a monitoring schedule \cr
 #'  \link[=sagemaker_delete_notebook_instance]{delete_notebook_instance} \tab Deletes an Amazon SageMaker notebook instance \cr
 #'  \link[=sagemaker_delete_notebook_instance_lifecycle_config]{delete_notebook_instance_lifecycle_config} \tab Deletes a notebook instance lifecycle configuration \cr
 #'  \link[=sagemaker_delete_tags]{delete_tags} \tab Deletes the specified tags from an Amazon SageMaker resource \cr
+#'  \link[=sagemaker_delete_trial]{delete_trial} \tab Deletes the specified trial \cr
+#'  \link[=sagemaker_delete_trial_component]{delete_trial_component} \tab Deletes the specified trial component \cr
+#'  \link[=sagemaker_delete_user_profile]{delete_user_profile} \tab Deletes a user profile \cr
 #'  \link[=sagemaker_delete_workteam]{delete_workteam} \tab Deletes an existing work team \cr
 #'  \link[=sagemaker_describe_algorithm]{describe_algorithm} \tab Returns a description of the specified algorithm that is in your account \cr
+#'  \link[=sagemaker_describe_app]{describe_app} \tab Describes the app \cr
+#'  \link[=sagemaker_describe_auto_ml_job]{describe_auto_ml_job} \tab Returns information about an Amazon SageMaker job \cr
 #'  \link[=sagemaker_describe_code_repository]{describe_code_repository} \tab Gets details about the specified Git repository \cr
 #'  \link[=sagemaker_describe_compilation_job]{describe_compilation_job} \tab Returns information about a model compilation job \cr
+#'  \link[=sagemaker_describe_domain]{describe_domain} \tab The desciption of the domain \cr
 #'  \link[=sagemaker_describe_endpoint]{describe_endpoint} \tab Returns the description of an endpoint \cr
 #'  \link[=sagemaker_describe_endpoint_config]{describe_endpoint_config} \tab Returns the description of an endpoint configuration created using the CreateEndpointConfig API \cr
+#'  \link[=sagemaker_describe_experiment]{describe_experiment} \tab Provides a list of an experiment's properties \cr
+#'  \link[=sagemaker_describe_flow_definition]{describe_flow_definition} \tab Returns information about the specified flow definition \cr
+#'  \link[=sagemaker_describe_human_task_ui]{describe_human_task_ui} \tab Returns information about the requested human task user interface \cr
 #'  \link[=sagemaker_describe_hyper_parameter_tuning_job]{describe_hyper_parameter_tuning_job} \tab Gets a description of a hyperparameter tuning job \cr
 #'  \link[=sagemaker_describe_labeling_job]{describe_labeling_job} \tab Gets information about a labeling job \cr
 #'  \link[=sagemaker_describe_model]{describe_model} \tab Describes a model that you created using the CreateModel API \cr
 #'  \link[=sagemaker_describe_model_package]{describe_model_package} \tab Returns a description of the specified model package, which is used to create Amazon SageMaker models or list them on AWS Marketplace \cr
+#'  \link[=sagemaker_describe_monitoring_schedule]{describe_monitoring_schedule} \tab Describes the schedule for a monitoring job \cr
 #'  \link[=sagemaker_describe_notebook_instance]{describe_notebook_instance} \tab Returns information about a notebook instance \cr
 #'  \link[=sagemaker_describe_notebook_instance_lifecycle_config]{describe_notebook_instance_lifecycle_config} \tab Returns a description of a notebook instance lifecycle configuration \cr
+#'  \link[=sagemaker_describe_processing_job]{describe_processing_job} \tab Returns a description of a processing job \cr
 #'  \link[=sagemaker_describe_subscribed_workteam]{describe_subscribed_workteam} \tab Gets information about a work team provided by a vendor \cr
 #'  \link[=sagemaker_describe_training_job]{describe_training_job} \tab Returns information about a training job \cr
 #'  \link[=sagemaker_describe_transform_job]{describe_transform_job} \tab Returns information about a transform job \cr
+#'  \link[=sagemaker_describe_trial]{describe_trial} \tab Provides a list of a trial's properties \cr
+#'  \link[=sagemaker_describe_trial_component]{describe_trial_component} \tab Provides a list of a trials component's properties \cr
+#'  \link[=sagemaker_describe_user_profile]{describe_user_profile} \tab Describes the user profile \cr
 #'  \link[=sagemaker_describe_workteam]{describe_workteam} \tab Gets information about a specific work team \cr
+#'  \link[=sagemaker_disassociate_trial_component]{disassociate_trial_component} \tab Disassociates a trial component from a trial \cr
 #'  \link[=sagemaker_get_search_suggestions]{get_search_suggestions} \tab An auto-complete API for the search functionality in the Amazon SageMaker console \cr
 #'  \link[=sagemaker_list_algorithms]{list_algorithms} \tab Lists the machine learning algorithms that have been created \cr
+#'  \link[=sagemaker_list_apps]{list_apps} \tab Lists apps \cr
+#'  \link[=sagemaker_list_auto_ml_jobs]{list_auto_ml_jobs} \tab Request a list of jobs \cr
+#'  \link[=sagemaker_list_candidates_for_auto_ml_job]{list_candidates_for_auto_ml_job} \tab List the Candidates created for the job \cr
 #'  \link[=sagemaker_list_code_repositories]{list_code_repositories} \tab Gets a list of the Git repositories in your account \cr
 #'  \link[=sagemaker_list_compilation_jobs]{list_compilation_jobs} \tab Lists model compilation jobs that satisfy various filters \cr
+#'  \link[=sagemaker_list_domains]{list_domains} \tab Lists the domains \cr
 #'  \link[=sagemaker_list_endpoint_configs]{list_endpoint_configs} \tab Lists endpoint configurations \cr
 #'  \link[=sagemaker_list_endpoints]{list_endpoints} \tab Lists endpoints \cr
+#'  \link[=sagemaker_list_experiments]{list_experiments} \tab Lists all the experiments in your account \cr
+#'  \link[=sagemaker_list_flow_definitions]{list_flow_definitions} \tab Returns information about the flow definitions in your account \cr
+#'  \link[=sagemaker_list_human_task_uis]{list_human_task_uis} \tab Returns information about the human task user interfaces in your account \cr
 #'  \link[=sagemaker_list_hyper_parameter_tuning_jobs]{list_hyper_parameter_tuning_jobs} \tab Gets a list of HyperParameterTuningJobSummary objects that describe the hyperparameter tuning jobs launched in your account \cr
 #'  \link[=sagemaker_list_labeling_jobs]{list_labeling_jobs} \tab Gets a list of labeling jobs \cr
 #'  \link[=sagemaker_list_labeling_jobs_for_workteam]{list_labeling_jobs_for_workteam} \tab Gets a list of labeling jobs assigned to a specified work team \cr
 #'  \link[=sagemaker_list_model_packages]{list_model_packages} \tab Lists the model packages that have been created \cr
 #'  \link[=sagemaker_list_models]{list_models} \tab Lists models created with the CreateModel API \cr
+#'  \link[=sagemaker_list_monitoring_executions]{list_monitoring_executions} \tab Returns list of all monitoring job executions \cr
+#'  \link[=sagemaker_list_monitoring_schedules]{list_monitoring_schedules} \tab Returns list of all monitoring schedules \cr
 #'  \link[=sagemaker_list_notebook_instance_lifecycle_configs]{list_notebook_instance_lifecycle_configs} \tab Lists notebook instance lifestyle configurations created with the CreateNotebookInstanceLifecycleConfig API \cr
 #'  \link[=sagemaker_list_notebook_instances]{list_notebook_instances} \tab Returns a list of the Amazon SageMaker notebook instances in the requester's account in an AWS Region \cr
+#'  \link[=sagemaker_list_processing_jobs]{list_processing_jobs} \tab Lists processing jobs that satisfy various filters \cr
 #'  \link[=sagemaker_list_subscribed_workteams]{list_subscribed_workteams} \tab Gets a list of the work teams that you are subscribed to in the AWS Marketplace \cr
 #'  \link[=sagemaker_list_tags]{list_tags} \tab Returns the tags for the specified Amazon SageMaker resource \cr
 #'  \link[=sagemaker_list_training_jobs]{list_training_jobs} \tab Lists training jobs \cr
 #'  \link[=sagemaker_list_training_jobs_for_hyper_parameter_tuning_job]{list_training_jobs_for_hyper_parameter_tuning_job} \tab Gets a list of TrainingJobSummary objects that describe the training jobs that a hyperparameter tuning job launched \cr
 #'  \link[=sagemaker_list_transform_jobs]{list_transform_jobs} \tab Lists transform jobs \cr
+#'  \link[=sagemaker_list_trial_components]{list_trial_components} \tab Lists the trial components in your account \cr
+#'  \link[=sagemaker_list_trials]{list_trials} \tab Lists the trials in your account \cr
+#'  \link[=sagemaker_list_user_profiles]{list_user_profiles} \tab Lists user profiles \cr
 #'  \link[=sagemaker_list_workteams]{list_workteams} \tab Gets a list of work teams that you have defined in a region \cr
 #'  \link[=sagemaker_render_ui_template]{render_ui_template} \tab Renders the UI template so that you can preview the worker's experience \cr
 #'  \link[=sagemaker_search]{search} \tab Finds Amazon SageMaker resources that match a search query \cr
+#'  \link[=sagemaker_start_monitoring_schedule]{start_monitoring_schedule} \tab Starts a previously stopped monitoring schedule \cr
 #'  \link[=sagemaker_start_notebook_instance]{start_notebook_instance} \tab Launches an ML compute instance with the latest version of the libraries and attaches your ML storage volume \cr
+#'  \link[=sagemaker_stop_auto_ml_job]{stop_auto_ml_job} \tab A method for forcing the termination of a running job \cr
 #'  \link[=sagemaker_stop_compilation_job]{stop_compilation_job} \tab Stops a model compilation job \cr
 #'  \link[=sagemaker_stop_hyper_parameter_tuning_job]{stop_hyper_parameter_tuning_job} \tab Stops a running hyperparameter tuning job and all running training jobs that the tuning job launched \cr
 #'  \link[=sagemaker_stop_labeling_job]{stop_labeling_job} \tab Stops a running labeling job \cr
+#'  \link[=sagemaker_stop_monitoring_schedule]{stop_monitoring_schedule} \tab Stops a previously started monitoring schedule \cr
 #'  \link[=sagemaker_stop_notebook_instance]{stop_notebook_instance} \tab Terminates the ML compute instance \cr
+#'  \link[=sagemaker_stop_processing_job]{stop_processing_job} \tab Stops a processing job \cr
 #'  \link[=sagemaker_stop_training_job]{stop_training_job} \tab Stops a training job \cr
 #'  \link[=sagemaker_stop_transform_job]{stop_transform_job} \tab Stops a transform job \cr
 #'  \link[=sagemaker_update_code_repository]{update_code_repository} \tab Updates the specified Git repository with the specified values \cr
+#'  \link[=sagemaker_update_domain]{update_domain} \tab Updates a domain \cr
 #'  \link[=sagemaker_update_endpoint]{update_endpoint} \tab Deploys the new EndpointConfig specified in the request, switches to using newly created endpoint, and then deletes resources provisioned for the endpoint using the previous EndpointConfig (there is no availability loss)\cr
 #'  \link[=sagemaker_update_endpoint_weights_and_capacities]{update_endpoint_weights_and_capacities} \tab Updates variant weight of one or more variants associated with an existing endpoint, or capacity of one variant associated with an existing endpoint \cr
+#'  \link[=sagemaker_update_experiment]{update_experiment} \tab Adds, updates, or removes the description of an experiment \cr
+#'  \link[=sagemaker_update_monitoring_schedule]{update_monitoring_schedule} \tab Updates a previously created schedule \cr
 #'  \link[=sagemaker_update_notebook_instance]{update_notebook_instance} \tab Updates a notebook instance \cr
 #'  \link[=sagemaker_update_notebook_instance_lifecycle_config]{update_notebook_instance_lifecycle_config} \tab Updates a notebook instance lifecycle configuration created with the CreateNotebookInstanceLifecycleConfig API \cr
+#'  \link[=sagemaker_update_trial]{update_trial} \tab Updates the display name of a trial \cr
+#'  \link[=sagemaker_update_trial_component]{update_trial_component} \tab Updates one or more properties of a trial component \cr
+#'  \link[=sagemaker_update_user_profile]{update_user_profile} \tab Updates a user profile \cr
 #'  \link[=sagemaker_update_workteam]{update_workteam} \tab Updates an existing work team with new member definitions or description 
 #' }
 #'
@@ -7819,7 +7959,7 @@ sagemakerruntime <- function(config = list()) {
 #'  \link[=textract_detect_document_text]{detect_document_text} \tab Detects text in the input document \cr
 #'  \link[=textract_get_document_analysis]{get_document_analysis} \tab Gets the results for an Amazon Textract asynchronous operation that analyzes text in a document \cr
 #'  \link[=textract_get_document_text_detection]{get_document_text_detection} \tab Gets the results for an Amazon Textract asynchronous operation that detects text in a document \cr
-#'  \link[=textract_start_document_analysis]{start_document_analysis} \tab Starts asynchronous analysis of an input document for relationships between detected items such as key and value pairs, tables, and selection elements\cr
+#'  \link[=textract_start_document_analysis]{start_document_analysis} \tab Starts the asynchronous analysis of an input document for relationships between detected items such as key-value pairs, tables, and selection elements\cr
 #'  \link[=textract_start_document_text_detection]{start_document_text_detection} \tab Starts the asynchronous detection of text in a document 
 #' }
 #'
@@ -7992,7 +8132,7 @@ translate <- function(config = list()) {
 #'  \link[=athena_delete_work_group]{delete_work_group} \tab Deletes the workgroup with the specified name \cr
 #'  \link[=athena_get_named_query]{get_named_query} \tab Returns information about a single query \cr
 #'  \link[=athena_get_query_execution]{get_query_execution} \tab Returns information about a single execution of a query if you have access to the workgroup in which the query ran \cr
-#'  \link[=athena_get_query_results]{get_query_results} \tab Returns the results of a single query execution specified by QueryExecutionId if you have access to the workgroup in which the query ran \cr
+#'  \link[=athena_get_query_results]{get_query_results} \tab Streams the results of a single query execution specified by QueryExecutionId from the Athena query results location in Amazon S3 \cr
 #'  \link[=athena_get_work_group]{get_work_group} \tab Returns information about the workgroup with the specified name \cr
 #'  \link[=athena_list_named_queries]{list_named_queries} \tab Provides a list of available query IDs only for queries saved in the specified workgroup \cr
 #'  \link[=athena_list_query_executions]{list_query_executions} \tab Provides a list of available query execution IDs for the queries in the specified workgroup \cr
@@ -8071,6 +8211,7 @@ athena <- function(config = list()) {
 #'  \link[=cloudsearch_delete_suggester]{delete_suggester} \tab Deletes a suggester \cr
 #'  \link[=cloudsearch_describe_analysis_schemes]{describe_analysis_schemes} \tab Gets the analysis schemes configured for a domain \cr
 #'  \link[=cloudsearch_describe_availability_options]{describe_availability_options} \tab Gets the availability options configured for a domain \cr
+#'  \link[=cloudsearch_describe_domain_endpoint_options]{describe_domain_endpoint_options} \tab Returns the domain's endpoint options, specifically whether all requests to the domain must arrive over HTTPS \cr
 #'  \link[=cloudsearch_describe_domains]{describe_domains} \tab Gets information about the search domains owned by this account \cr
 #'  \link[=cloudsearch_describe_expressions]{describe_expressions} \tab Gets the expressions configured for the search domain \cr
 #'  \link[=cloudsearch_describe_index_fields]{describe_index_fields} \tab Gets information about the index fields configured for the search domain \cr
@@ -8080,6 +8221,7 @@ athena <- function(config = list()) {
 #'  \link[=cloudsearch_index_documents]{index_documents} \tab Tells the search domain to start indexing its documents using the latest indexing options \cr
 #'  \link[=cloudsearch_list_domain_names]{list_domain_names} \tab Lists all search domains owned by an account \cr
 #'  \link[=cloudsearch_update_availability_options]{update_availability_options} \tab Configures the availability options for a domain \cr
+#'  \link[=cloudsearch_update_domain_endpoint_options]{update_domain_endpoint_options} \tab Updates the domain's endpoint options, specifically whether all requests to the domain must arrive over HTTPS \cr
 #'  \link[=cloudsearch_update_scaling_parameters]{update_scaling_parameters} \tab Configures scaling parameters for a domain \cr
 #'  \link[=cloudsearch_update_service_access_policies]{update_service_access_policies} \tab Configures the access rules that control access to the domain's document and search endpoints 
 #' }
@@ -8236,8 +8378,15 @@ datapipeline <- function(config = list()) {
 #' @description
 #' Amazon Elasticsearch Configuration Service
 #' 
-#' Use the Amazon Elasticsearch configuration API to create, configure, and
+#' Use the Amazon Elasticsearch Configuration API to create, configure, and
 #' manage Elasticsearch domains.
+#' 
+#' For sample code that uses the Configuration API, see the [Amazon
+#' Elasticsearch Service Developer
+#' Guide](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-configuration-samples.html).
+#' The guide also contains [sample code for sending signed HTTP requests to
+#' the Elasticsearch
+#' APIs](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-request-signing.html).
 #' 
 #' The endpoint for configuration service requests is region-specific:
 #' es.*region*.amazonaws.com. For example, es.us-east-1.amazonaws.com. For
@@ -8355,21 +8504,24 @@ elasticsearchservice <- function(config = list()) {
 #'  \link[=emr_describe_job_flows]{describe_job_flows} \tab This API is deprecated and will eventually be removed \cr
 #'  \link[=emr_describe_security_configuration]{describe_security_configuration} \tab Provides the details of a security configuration by returning the configuration JSON \cr
 #'  \link[=emr_describe_step]{describe_step} \tab Provides more detail about the cluster step \cr
+#'  \link[=emr_get_block_public_access_configuration]{get_block_public_access_configuration} \tab Returns the Amazon EMR block public access configuration for your AWS account in the current Region \cr
 #'  \link[=emr_list_bootstrap_actions]{list_bootstrap_actions} \tab Provides information about the bootstrap actions associated with a cluster \cr
 #'  \link[=emr_list_clusters]{list_clusters} \tab Provides the status of all clusters visible to this AWS account \cr
 #'  \link[=emr_list_instance_fleets]{list_instance_fleets} \tab Lists all available details about the instance fleets in a cluster \cr
 #'  \link[=emr_list_instance_groups]{list_instance_groups} \tab Provides all available details about the instance groups in a cluster \cr
 #'  \link[=emr_list_instances]{list_instances} \tab Provides information for all active EC2 instances and EC2 instances terminated in the last 30 days, up to a maximum of 2,000 \cr
 #'  \link[=emr_list_security_configurations]{list_security_configurations} \tab Lists all the security configurations visible to this account, providing their creation dates and times, and their names \cr
-#'  \link[=emr_list_steps]{list_steps} \tab Provides a list of steps for the cluster in reverse order unless you specify stepIds with the request \cr
+#'  \link[=emr_list_steps]{list_steps} \tab Provides a list of steps for the cluster in reverse order unless you specify stepIds with the request of filter by StepStates \cr
+#'  \link[=emr_modify_cluster]{modify_cluster} \tab Modifies the number of steps that can be executed concurrently for the cluster specified using ClusterID \cr
 #'  \link[=emr_modify_instance_fleet]{modify_instance_fleet} \tab Modifies the target On-Demand and target Spot capacities for the instance fleet with the specified InstanceFleetID within the cluster specified using ClusterID \cr
 #'  \link[=emr_modify_instance_groups]{modify_instance_groups} \tab ModifyInstanceGroups modifies the number of nodes and configuration settings of an instance group \cr
 #'  \link[=emr_put_auto_scaling_policy]{put_auto_scaling_policy} \tab Creates or updates an automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster \cr
+#'  \link[=emr_put_block_public_access_configuration]{put_block_public_access_configuration} \tab Creates or updates an Amazon EMR block public access configuration for your AWS account in the current Region \cr
 #'  \link[=emr_remove_auto_scaling_policy]{remove_auto_scaling_policy} \tab Removes an automatic scaling policy from a specified instance group within an EMR cluster \cr
 #'  \link[=emr_remove_tags]{remove_tags} \tab Removes tags from an Amazon EMR resource \cr
 #'  \link[=emr_run_job_flow]{run_job_flow} \tab RunJobFlow creates and starts running a new cluster (job flow) \cr
 #'  \link[=emr_set_termination_protection]{set_termination_protection} \tab SetTerminationProtection locks a cluster (job flow) so the EC2 instances in the cluster cannot be terminated by user intervention, an API call, or in the event of a job-flow error\cr
-#'  \link[=emr_set_visible_to_all_users]{set_visible_to_all_users} \tab Sets whether all AWS Identity and Access Management (IAM) users under your account can access the specified clusters (job flows) \cr
+#'  \link[=emr_set_visible_to_all_users]{set_visible_to_all_users} \tab Sets the Cluster$VisibleToAllUsers value, which determines whether the cluster is visible to all IAM users of the AWS account associated with the cluster \cr
 #'  \link[=emr_terminate_job_flows]{terminate_job_flows} \tab TerminateJobFlows shuts a list of clusters (job flows) down 
 #' }
 #'
@@ -8421,7 +8573,7 @@ emr <- function(config = list()) {
 #' \tabular{ll}{
 #'  \link[=firehose_create_delivery_stream]{create_delivery_stream} \tab Creates a Kinesis Data Firehose delivery stream \cr
 #'  \link[=firehose_delete_delivery_stream]{delete_delivery_stream} \tab Deletes a delivery stream and its data \cr
-#'  \link[=firehose_describe_delivery_stream]{describe_delivery_stream} \tab Describes the specified delivery stream and gets the status \cr
+#'  \link[=firehose_describe_delivery_stream]{describe_delivery_stream} \tab Describes the specified delivery stream and its status \cr
 #'  \link[=firehose_list_delivery_streams]{list_delivery_streams} \tab Lists your delivery streams in alphabetical order of their names \cr
 #'  \link[=firehose_list_tags_for_delivery_stream]{list_tags_for_delivery_stream} \tab Lists the tags for the specified delivery stream \cr
 #'  \link[=firehose_put_record]{put_record} \tab Writes a single data record into an Amazon Kinesis Data Firehose delivery stream \cr
@@ -8480,18 +8632,20 @@ firehose <- function(config = list()) {
 #'  \link[=glue_batch_delete_table]{batch_delete_table} \tab Deletes multiple tables at once \cr
 #'  \link[=glue_batch_delete_table_version]{batch_delete_table_version} \tab Deletes a specified batch of versions of a table \cr
 #'  \link[=glue_batch_get_crawlers]{batch_get_crawlers} \tab Returns a list of resource metadata for a given list of crawler names \cr
-#'  \link[=glue_batch_get_dev_endpoints]{batch_get_dev_endpoints} \tab Returns a list of resource metadata for a given list of DevEndpoint names \cr
+#'  \link[=glue_batch_get_dev_endpoints]{batch_get_dev_endpoints} \tab Returns a list of resource metadata for a given list of development endpoint names \cr
 #'  \link[=glue_batch_get_jobs]{batch_get_jobs} \tab Returns a list of resource metadata for a given list of job names \cr
 #'  \link[=glue_batch_get_partition]{batch_get_partition} \tab Retrieves partitions in a batch request \cr
 #'  \link[=glue_batch_get_triggers]{batch_get_triggers} \tab Returns a list of resource metadata for a given list of trigger names \cr
 #'  \link[=glue_batch_get_workflows]{batch_get_workflows} \tab Returns a list of resource metadata for a given list of workflow names \cr
 #'  \link[=glue_batch_stop_job_run]{batch_stop_job_run} \tab Stops one or more job runs for a specified job definition \cr
+#'  \link[=glue_cancel_ml_task_run]{cancel_ml_task_run} \tab Cancels (stops) a task run \cr
 #'  \link[=glue_create_classifier]{create_classifier} \tab Creates a classifier in the user's account \cr
 #'  \link[=glue_create_connection]{create_connection} \tab Creates a connection definition in the Data Catalog \cr
 #'  \link[=glue_create_crawler]{create_crawler} \tab Creates a new crawler with specified targets, role, configuration, and optional schedule \cr
 #'  \link[=glue_create_database]{create_database} \tab Creates a new database in a Data Catalog \cr
-#'  \link[=glue_create_dev_endpoint]{create_dev_endpoint} \tab Creates a new DevEndpoint \cr
+#'  \link[=glue_create_dev_endpoint]{create_dev_endpoint} \tab Creates a new development endpoint \cr
 #'  \link[=glue_create_job]{create_job} \tab Creates a new job definition \cr
+#'  \link[=glue_create_ml_transform]{create_ml_transform} \tab Creates an AWS Glue machine learning transform \cr
 #'  \link[=glue_create_partition]{create_partition} \tab Creates a new partition \cr
 #'  \link[=glue_create_script]{create_script} \tab Transforms a directed acyclic graph (DAG) into code \cr
 #'  \link[=glue_create_security_configuration]{create_security_configuration} \tab Creates a new security configuration \cr
@@ -8502,9 +8656,10 @@ firehose <- function(config = list()) {
 #'  \link[=glue_delete_classifier]{delete_classifier} \tab Removes a classifier from the Data Catalog \cr
 #'  \link[=glue_delete_connection]{delete_connection} \tab Deletes a connection from the Data Catalog \cr
 #'  \link[=glue_delete_crawler]{delete_crawler} \tab Removes a specified crawler from the AWS Glue Data Catalog, unless the crawler state is RUNNING \cr
-#'  \link[=glue_delete_database]{delete_database} \tab Removes a specified Database from a Data Catalog \cr
-#'  \link[=glue_delete_dev_endpoint]{delete_dev_endpoint} \tab Deletes a specified DevEndpoint \cr
+#'  \link[=glue_delete_database]{delete_database} \tab Removes a specified database from a Data Catalog \cr
+#'  \link[=glue_delete_dev_endpoint]{delete_dev_endpoint} \tab Deletes a specified development endpoint \cr
 #'  \link[=glue_delete_job]{delete_job} \tab Deletes a specified job definition \cr
+#'  \link[=glue_delete_ml_transform]{delete_ml_transform} \tab Deletes an AWS Glue machine learning transform \cr
 #'  \link[=glue_delete_partition]{delete_partition} \tab Deletes a specified partition \cr
 #'  \link[=glue_delete_resource_policy]{delete_resource_policy} \tab Deletes a specified policy \cr
 #'  \link[=glue_delete_security_configuration]{delete_security_configuration} \tab Deletes a specified security configuration \cr
@@ -8523,14 +8678,19 @@ firehose <- function(config = list()) {
 #'  \link[=glue_get_crawlers]{get_crawlers} \tab Retrieves metadata for all crawlers defined in the customer account \cr
 #'  \link[=glue_get_data_catalog_encryption_settings]{get_data_catalog_encryption_settings} \tab Retrieves the security configuration for a specified catalog \cr
 #'  \link[=glue_get_database]{get_database} \tab Retrieves the definition of a specified database \cr
-#'  \link[=glue_get_databases]{get_databases} \tab Retrieves all Databases defined in a given Data Catalog \cr
+#'  \link[=glue_get_databases]{get_databases} \tab Retrieves all databases defined in a given Data Catalog \cr
 #'  \link[=glue_get_dataflow_graph]{get_dataflow_graph} \tab Transforms a Python script into a directed acyclic graph (DAG) \cr
-#'  \link[=glue_get_dev_endpoint]{get_dev_endpoint} \tab Retrieves information about a specified DevEndpoint \cr
-#'  \link[=glue_get_dev_endpoints]{get_dev_endpoints} \tab Retrieves all the DevEndpoints in this AWS account \cr
+#'  \link[=glue_get_dev_endpoint]{get_dev_endpoint} \tab Retrieves information about a specified development endpoint \cr
+#'  \link[=glue_get_dev_endpoints]{get_dev_endpoints} \tab Retrieves all the development endpoints in this AWS account \cr
 #'  \link[=glue_get_job]{get_job} \tab Retrieves an existing job definition \cr
+#'  \link[=glue_get_job_bookmark]{get_job_bookmark} \tab Returns information on a job bookmark entry \cr
 #'  \link[=glue_get_job_run]{get_job_run} \tab Retrieves the metadata for a given job run \cr
 #'  \link[=glue_get_job_runs]{get_job_runs} \tab Retrieves metadata for all runs of a given job definition \cr
 #'  \link[=glue_get_jobs]{get_jobs} \tab Retrieves all current job definitions \cr
+#'  \link[=glue_get_ml_task_run]{get_ml_task_run} \tab Gets details for a specific task run on a machine learning transform \cr
+#'  \link[=glue_get_ml_task_runs]{get_ml_task_runs} \tab Gets a list of runs for a machine learning transform \cr
+#'  \link[=glue_get_ml_transform]{get_ml_transform} \tab Gets an AWS Glue machine learning transform artifact and all its corresponding metadata \cr
+#'  \link[=glue_get_ml_transforms]{get_ml_transforms} \tab Gets a sortable, filterable list of existing AWS Glue machine learning transforms \cr
 #'  \link[=glue_get_mapping]{get_mapping} \tab Creates mappings \cr
 #'  \link[=glue_get_partition]{get_partition} \tab Retrieves information about a specified partition \cr
 #'  \link[=glue_get_partitions]{get_partitions} \tab Retrieves information about the partitions in a table \cr
@@ -8546,12 +8706,12 @@ firehose <- function(config = list()) {
 #'  \link[=glue_get_trigger]{get_trigger} \tab Retrieves the definition of a trigger \cr
 #'  \link[=glue_get_triggers]{get_triggers} \tab Gets all the triggers associated with a job \cr
 #'  \link[=glue_get_user_defined_function]{get_user_defined_function} \tab Retrieves a specified function definition from the Data Catalog \cr
-#'  \link[=glue_get_user_defined_functions]{get_user_defined_functions} \tab Retrieves a multiple function definitions from the Data Catalog \cr
+#'  \link[=glue_get_user_defined_functions]{get_user_defined_functions} \tab Retrieves multiple function definitions from the Data Catalog \cr
 #'  \link[=glue_get_workflow]{get_workflow} \tab Retrieves resource metadata for a workflow \cr
 #'  \link[=glue_get_workflow_run]{get_workflow_run} \tab Retrieves the metadata for a given workflow run \cr
 #'  \link[=glue_get_workflow_run_properties]{get_workflow_run_properties} \tab Retrieves the workflow run properties which were set during the run \cr
 #'  \link[=glue_get_workflow_runs]{get_workflow_runs} \tab Retrieves metadata for all runs of a given workflow \cr
-#'  \link[=glue_import_catalog_to_glue]{import_catalog_to_glue} \tab Imports an existing Athena Data Catalog to AWS Glue \cr
+#'  \link[=glue_import_catalog_to_glue]{import_catalog_to_glue} \tab Imports an existing Amazon Athena Data Catalog to AWS Glue \cr
 #'  \link[=glue_list_crawlers]{list_crawlers} \tab Retrieves the names of all crawler resources in this AWS account, or the resources with the specified tag \cr
 #'  \link[=glue_list_dev_endpoints]{list_dev_endpoints} \tab Retrieves the names of all DevEndpoint resources in this AWS account, or the resources with the specified tag \cr
 #'  \link[=glue_list_jobs]{list_jobs} \tab Retrieves the names of all job resources in this AWS account, or the resources with the specified tag \cr
@@ -8561,9 +8721,14 @@ firehose <- function(config = list()) {
 #'  \link[=glue_put_resource_policy]{put_resource_policy} \tab Sets the Data Catalog resource policy for access control \cr
 #'  \link[=glue_put_workflow_run_properties]{put_workflow_run_properties} \tab Puts the specified workflow run properties for the given workflow run \cr
 #'  \link[=glue_reset_job_bookmark]{reset_job_bookmark} \tab Resets a bookmark entry \cr
+#'  \link[=glue_search_tables]{search_tables} \tab Searches a set of tables based on properties in the table metadata as well as on the parent database \cr
 #'  \link[=glue_start_crawler]{start_crawler} \tab Starts a crawl using the specified crawler, regardless of what is scheduled \cr
-#'  \link[=glue_start_crawler_schedule]{start_crawler_schedule} \tab Changes the schedule state of the specified crawler to SCHEDULED, unless the crawler is already running or the schedule state is already SCHEDULED\cr
+#'  \link[=glue_start_crawler_schedule]{start_crawler_schedule} \tab Changes the schedule state of the specified crawler to SCHEDULED, unless the crawler is already running or the schedule state is already SCHEDULED \cr
+#'  \link[=glue_start_export_labels_task_run]{start_export_labels_task_run} \tab Begins an asynchronous task to export all labeled data for a particular transform \cr
+#'  \link[=glue_start_import_labels_task_run]{start_import_labels_task_run} \tab Enables you to provide additional labels (examples of truth) to be used to teach the machine learning transform and improve its quality \cr
 #'  \link[=glue_start_job_run]{start_job_run} \tab Starts a job run using a job definition \cr
+#'  \link[=glue_start_ml_evaluation_task_run]{start_ml_evaluation_task_run} \tab Starts a task to estimate the quality of the transform \cr
+#'  \link[=glue_start_ml_labeling_set_generation_task_run]{start_ml_labeling_set_generation_task_run} \tab Starts the active learning workflow for your machine learning transform to improve the transform's quality by generating label sets and adding labels\cr
 #'  \link[=glue_start_trigger]{start_trigger} \tab Starts an existing trigger \cr
 #'  \link[=glue_start_workflow_run]{start_workflow_run} \tab Starts a new run of the specified workflow \cr
 #'  \link[=glue_stop_crawler]{stop_crawler} \tab If the specified crawler is running, stops the crawl \cr
@@ -8576,8 +8741,9 @@ firehose <- function(config = list()) {
 #'  \link[=glue_update_crawler]{update_crawler} \tab Updates a crawler \cr
 #'  \link[=glue_update_crawler_schedule]{update_crawler_schedule} \tab Updates the schedule of a crawler using a cron expression \cr
 #'  \link[=glue_update_database]{update_database} \tab Updates an existing database definition in a Data Catalog \cr
-#'  \link[=glue_update_dev_endpoint]{update_dev_endpoint} \tab Updates a specified DevEndpoint \cr
+#'  \link[=glue_update_dev_endpoint]{update_dev_endpoint} \tab Updates a specified development endpoint \cr
 #'  \link[=glue_update_job]{update_job} \tab Updates an existing job definition \cr
+#'  \link[=glue_update_ml_transform]{update_ml_transform} \tab Updates an existing machine learning transform \cr
 #'  \link[=glue_update_partition]{update_partition} \tab Updates a partition \cr
 #'  \link[=glue_update_table]{update_table} \tab Updates a metadata table in the Data Catalog \cr
 #'  \link[=glue_update_trigger]{update_trigger} \tab Updates a trigger definition \cr
@@ -8641,6 +8807,7 @@ glue <- function(config = list()) {
 #'  \link[=kafka_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags associated with the specified resource \cr
 #'  \link[=kafka_tag_resource]{tag_resource} \tab Adds tags to the specified MSK resource \cr
 #'  \link[=kafka_untag_resource]{untag_resource} \tab Removes the tags associated with the keys that are provided in the query \cr
+#'  \link[=kafka_update_broker_count]{update_broker_count} \tab Updates the number of broker nodes in the cluster \cr
 #'  \link[=kafka_update_broker_storage]{update_broker_storage} \tab Updates the EBS storage associated with MSK brokers \cr
 #'  \link[=kafka_update_cluster_configuration]{update_cluster_configuration} \tab Updates the cluster with the configuration that is specified in the request body 
 #' }
@@ -8839,6 +9006,7 @@ kinesisanalytics <- function(config = list()) {
 #'  \link[=kinesisanalyticsv2_add_application_input_processing_configuration]{add_application_input_processing_configuration} \tab Adds an InputProcessingConfiguration to an SQL-based Kinesis Data Analytics application \cr
 #'  \link[=kinesisanalyticsv2_add_application_output]{add_application_output} \tab Adds an external destination to your SQL-based Amazon Kinesis Data Analytics application \cr
 #'  \link[=kinesisanalyticsv2_add_application_reference_data_source]{add_application_reference_data_source} \tab Adds a reference data source to an existing SQL-based Amazon Kinesis Data Analytics application \cr
+#'  \link[=kinesisanalyticsv2_add_application_vpc_configuration]{add_application_vpc_configuration} \tab Adds a Virtual Private Cloud (VPC) configuration to the application \cr
 #'  \link[=kinesisanalyticsv2_create_application]{create_application} \tab Creates an Amazon Kinesis Data Analytics application \cr
 #'  \link[=kinesisanalyticsv2_create_application_snapshot]{create_application_snapshot} \tab Creates a snapshot of the application's state data \cr
 #'  \link[=kinesisanalyticsv2_delete_application]{delete_application} \tab Deletes the specified application \cr
@@ -8847,6 +9015,7 @@ kinesisanalytics <- function(config = list()) {
 #'  \link[=kinesisanalyticsv2_delete_application_output]{delete_application_output} \tab Deletes the output destination configuration from your SQL-based Amazon Kinesis Data Analytics application's configuration \cr
 #'  \link[=kinesisanalyticsv2_delete_application_reference_data_source]{delete_application_reference_data_source} \tab Deletes a reference data source configuration from the specified SQL-based Amazon Kinesis Data Analytics application's configuration \cr
 #'  \link[=kinesisanalyticsv2_delete_application_snapshot]{delete_application_snapshot} \tab Deletes a snapshot of application state \cr
+#'  \link[=kinesisanalyticsv2_delete_application_vpc_configuration]{delete_application_vpc_configuration} \tab Removes a VPC configuration from a Kinesis Data Analytics application \cr
 #'  \link[=kinesisanalyticsv2_describe_application]{describe_application} \tab Returns information about a specific Amazon Kinesis Data Analytics application \cr
 #'  \link[=kinesisanalyticsv2_describe_application_snapshot]{describe_application_snapshot} \tab Returns information about a snapshot of application state data \cr
 #'  \link[=kinesisanalyticsv2_discover_input_schema]{discover_input_schema} \tab Infers a schema for an SQL-based Amazon Kinesis Data Analytics application by evaluating sample records on the specified streaming source (Kinesis data stream or Kinesis Data Firehose delivery stream) or Amazon S3 object\cr
@@ -8953,9 +9122,9 @@ mturk <- function(config = list()) {
 #' @description
 #' Amazon QuickSight API Reference
 #' 
-#' Amazon QuickSight is a fully managed, serverless, cloud business
-#' intelligence service that makes it easy to extend data and insights to
-#' every user in your organization. This API interface reference contains
+#' Amazon QuickSight is a fully managed, serverless business intelligence
+#' service for the AWS Cloud that makes it easy to extend data and insights
+#' to every user in your organization. This API reference contains
 #' documentation for a programming interface that you can use to manage
 #' Amazon QuickSight.
 #'
@@ -8983,27 +9152,76 @@ mturk <- function(config = list()) {
 #'
 #' @examples
 #' \donttest{svc <- quicksight()
-#' svc$create_group(
+#' svc$cancel_ingestion(
 #'   Foo = 123
 #' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=quicksight_cancel_ingestion]{cancel_ingestion} \tab Cancels an ongoing ingestion of data into SPICE \cr
+#'  \link[=quicksight_create_dashboard]{create_dashboard} \tab Creates a dashboard from a template \cr
+#'  \link[=quicksight_create_data_set]{create_data_set} \tab Creates a dataset \cr
+#'  \link[=quicksight_create_data_source]{create_data_source} \tab Creates a data source \cr
 #'  \link[=quicksight_create_group]{create_group} \tab Creates an Amazon QuickSight group \cr
 #'  \link[=quicksight_create_group_membership]{create_group_membership} \tab Adds an Amazon QuickSight user to an Amazon QuickSight group \cr
+#'  \link[=quicksight_create_iam_policy_assignment]{create_iam_policy_assignment} \tab Creates an assignment with one specified IAM policy Amazon Resource Name (ARN) and will assigned to specified groups or users of QuickSight \cr
+#'  \link[=quicksight_create_ingestion]{create_ingestion} \tab Creates and starts a new SPICE ingestion on a dataset Any ingestions operating on tagged datasets inherit the same tags automatically for use in access control \cr
+#'  \link[=quicksight_create_template]{create_template} \tab Creates a template from an existing QuickSight analysis or template \cr
+#'  \link[=quicksight_create_template_alias]{create_template_alias} \tab Creates a template alias for a template \cr
+#'  \link[=quicksight_delete_dashboard]{delete_dashboard} \tab Deletes a dashboard \cr
+#'  \link[=quicksight_delete_data_set]{delete_data_set} \tab Deletes a dataset \cr
+#'  \link[=quicksight_delete_data_source]{delete_data_source} \tab Deletes the data source permanently \cr
 #'  \link[=quicksight_delete_group]{delete_group} \tab Removes a user group from Amazon QuickSight \cr
 #'  \link[=quicksight_delete_group_membership]{delete_group_membership} \tab Removes a user from a group so that the user is no longer a member of the group \cr
-#'  \link[=quicksight_delete_user]{delete_user} \tab Deletes the Amazon QuickSight user that is associated with the identity of the AWS Identity and Access Management (IAM) user or role that's making the call\cr
+#'  \link[=quicksight_delete_iam_policy_assignment]{delete_iam_policy_assignment} \tab Deletes an existing assignment \cr
+#'  \link[=quicksight_delete_template]{delete_template} \tab Deletes a template \cr
+#'  \link[=quicksight_delete_template_alias]{delete_template_alias} \tab Update template alias of given template \cr
+#'  \link[=quicksight_delete_user]{delete_user} \tab Deletes the Amazon QuickSight user that is associated with the identity of the AWS Identity and Access Management (IAM) user or role that's making the call \cr
 #'  \link[=quicksight_delete_user_by_principal_id]{delete_user_by_principal_id} \tab Deletes a user identified by its principal ID \cr
+#'  \link[=quicksight_describe_dashboard]{describe_dashboard} \tab Provides a summary for a dashboard \cr
+#'  \link[=quicksight_describe_dashboard_permissions]{describe_dashboard_permissions} \tab Describes read and write permissions on a dashboard \cr
+#'  \link[=quicksight_describe_data_set]{describe_data_set} \tab Describes a dataset \cr
+#'  \link[=quicksight_describe_data_set_permissions]{describe_data_set_permissions} \tab Describes the permissions on a dataset \cr
+#'  \link[=quicksight_describe_data_source]{describe_data_source} \tab Describes a data source \cr
+#'  \link[=quicksight_describe_data_source_permissions]{describe_data_source_permissions} \tab Describes the resource permissions for a data source \cr
 #'  \link[=quicksight_describe_group]{describe_group} \tab Returns an Amazon QuickSight group's description and Amazon Resource Name (ARN) \cr
+#'  \link[=quicksight_describe_iam_policy_assignment]{describe_iam_policy_assignment} \tab Describes an existing IAMPolicy Assignment by specified assignment name \cr
+#'  \link[=quicksight_describe_ingestion]{describe_ingestion} \tab Describes a SPICE ingestion \cr
+#'  \link[=quicksight_describe_template]{describe_template} \tab Describes a template's metadata \cr
+#'  \link[=quicksight_describe_template_alias]{describe_template_alias} \tab Describes the template aliases of a template \cr
+#'  \link[=quicksight_describe_template_permissions]{describe_template_permissions} \tab Describes read and write permissions on a template \cr
 #'  \link[=quicksight_describe_user]{describe_user} \tab Returns information about a user, given the user name \cr
 #'  \link[=quicksight_get_dashboard_embed_url]{get_dashboard_embed_url} \tab Generates a server-side embeddable URL and authorization code \cr
+#'  \link[=quicksight_list_dashboard_versions]{list_dashboard_versions} \tab Lists all the versions of the dashboards in the Quicksight subscription \cr
+#'  \link[=quicksight_list_dashboards]{list_dashboards} \tab Lists dashboards in the AWS account \cr
+#'  \link[=quicksight_list_data_sets]{list_data_sets} \tab Lists all of the datasets belonging to this account in an AWS region \cr
+#'  \link[=quicksight_list_data_sources]{list_data_sources} \tab Lists data sources in current AWS Region that belong to this AWS account \cr
 #'  \link[=quicksight_list_group_memberships]{list_group_memberships} \tab Lists member users in a group \cr
 #'  \link[=quicksight_list_groups]{list_groups} \tab Lists all user groups in Amazon QuickSight \cr
+#'  \link[=quicksight_list_iam_policy_assignments]{list_iam_policy_assignments} \tab Lists assignments in current QuickSight account \cr
+#'  \link[=quicksight_list_iam_policy_assignments_for_user]{list_iam_policy_assignments_for_user} \tab Lists all the assignments and the Amazon Resource Names (ARNs) for the associated IAM policies assigned to the specified user and the group or groups that the user belongs to\cr
+#'  \link[=quicksight_list_ingestions]{list_ingestions} \tab Lists the history of SPICE ingestions for a dataset \cr
+#'  \link[=quicksight_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags assigned to a resource \cr
+#'  \link[=quicksight_list_template_aliases]{list_template_aliases} \tab Lists all the aliases of a template \cr
+#'  \link[=quicksight_list_template_versions]{list_template_versions} \tab Lists all the versions of the templates in the Quicksight account \cr
+#'  \link[=quicksight_list_templates]{list_templates} \tab Lists all the templates in the QuickSight account \cr
 #'  \link[=quicksight_list_user_groups]{list_user_groups} \tab Lists the Amazon QuickSight groups that an Amazon QuickSight user is a member of \cr
 #'  \link[=quicksight_list_users]{list_users} \tab Returns a list of all of the Amazon QuickSight users belonging to this account \cr
-#'  \link[=quicksight_register_user]{register_user} \tab Creates an Amazon QuickSight user, whose identity is associated with the AWS Identity and Access Management (IAM) identity or role specified in the request\cr
+#'  \link[=quicksight_register_user]{register_user} \tab Creates an Amazon QuickSight user, whose identity is associated with the AWS Identity and Access Management (IAM) identity or role specified in the request \cr
+#'  \link[=quicksight_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified QuickSight resource \cr
+#'  \link[=quicksight_untag_resource]{untag_resource} \tab Removes a tag or tags from a resource \cr
+#'  \link[=quicksight_update_dashboard]{update_dashboard} \tab Updates a dashboard in the AWS account \cr
+#'  \link[=quicksight_update_dashboard_permissions]{update_dashboard_permissions} \tab Updates read and write permissions on a dashboard \cr
+#'  \link[=quicksight_update_dashboard_published_version]{update_dashboard_published_version} \tab Updates the published version of a dashboard \cr
+#'  \link[=quicksight_update_data_set]{update_data_set} \tab Updates a dataset \cr
+#'  \link[=quicksight_update_data_set_permissions]{update_data_set_permissions} \tab Updates the permissions on a dataset \cr
+#'  \link[=quicksight_update_data_source]{update_data_source} \tab Updates a data source \cr
+#'  \link[=quicksight_update_data_source_permissions]{update_data_source_permissions} \tab Updates the permissions to a data source \cr
 #'  \link[=quicksight_update_group]{update_group} \tab Changes a group description \cr
+#'  \link[=quicksight_update_iam_policy_assignment]{update_iam_policy_assignment} \tab Updates an existing assignment \cr
+#'  \link[=quicksight_update_template]{update_template} \tab Updates a template from an existing QuickSight analysis \cr
+#'  \link[=quicksight_update_template_alias]{update_template_alias} \tab Updates the template alias of a template \cr
+#'  \link[=quicksight_update_template_permissions]{update_template_permissions} \tab Updates the permissions on a template \cr
 #'  \link[=quicksight_update_user]{update_user} \tab Updates an Amazon QuickSight user 
 #' }
 #'
@@ -9539,7 +9757,7 @@ cognitoidentity <- function(config = list()) {
 #'  \link[=cognitoidentityprovider_admin_delete_user]{admin_delete_user} \tab Deletes a user as an administrator \cr
 #'  \link[=cognitoidentityprovider_admin_delete_user_attributes]{admin_delete_user_attributes} \tab Deletes the user attributes in a user pool as an administrator \cr
 #'  \link[=cognitoidentityprovider_admin_disable_provider_for_user]{admin_disable_provider_for_user} \tab Disables the user from signing in with the specified external (SAML or social) identity provider \cr
-#'  \link[=cognitoidentityprovider_admin_disable_user]{admin_disable_user} \tab Disables the specified user as an administrator \cr
+#'  \link[=cognitoidentityprovider_admin_disable_user]{admin_disable_user} \tab Disables the specified user \cr
 #'  \link[=cognitoidentityprovider_admin_enable_user]{admin_enable_user} \tab Enables the specified user as an administrator \cr
 #'  \link[=cognitoidentityprovider_admin_forget_device]{admin_forget_device} \tab Forgets the device, as an administrator \cr
 #'  \link[=cognitoidentityprovider_admin_get_device]{admin_get_device} \tab Gets the device, as an administrator \cr
@@ -9552,9 +9770,9 @@ cognitoidentity <- function(config = list()) {
 #'  \link[=cognitoidentityprovider_admin_remove_user_from_group]{admin_remove_user_from_group} \tab Removes the specified user from the specified group \cr
 #'  \link[=cognitoidentityprovider_admin_reset_user_password]{admin_reset_user_password} \tab Resets the specified user's password in a user pool as an administrator \cr
 #'  \link[=cognitoidentityprovider_admin_respond_to_auth_challenge]{admin_respond_to_auth_challenge} \tab Responds to an authentication challenge, as an administrator \cr
-#'  \link[=cognitoidentityprovider_admin_set_user_mfa_preference]{admin_set_user_mfa_preference} \tab Sets the user's multi-factor authentication (MFA) preference \cr
-#'  \link[=cognitoidentityprovider_admin_set_user_password]{admin_set_user_password} \tab Admin set user password \cr
-#'  \link[=cognitoidentityprovider_admin_set_user_settings]{admin_set_user_settings} \tab Sets all the user settings for a specified user name \cr
+#'  \link[=cognitoidentityprovider_admin_set_user_mfa_preference]{admin_set_user_mfa_preference} \tab Sets the user's multi-factor authentication (MFA) preference, including which MFA options are enabled and if any are preferred \cr
+#'  \link[=cognitoidentityprovider_admin_set_user_password]{admin_set_user_password} \tab Sets the specified user's password in a user pool as an administrator \cr
+#'  \link[=cognitoidentityprovider_admin_set_user_settings]{admin_set_user_settings} \tab _This action is no longer supported \cr
 #'  \link[=cognitoidentityprovider_admin_update_auth_event_feedback]{admin_update_auth_event_feedback} \tab Provides feedback for an authentication event as to whether it was from a valid user \cr
 #'  \link[=cognitoidentityprovider_admin_update_device_status]{admin_update_device_status} \tab Updates the device status as an administrator \cr
 #'  \link[=cognitoidentityprovider_admin_update_user_attributes]{admin_update_user_attributes} \tab Updates the specified user's attributes, including developer attributes, as an administrator \cr
@@ -9613,9 +9831,9 @@ cognitoidentity <- function(config = list()) {
 #'  \link[=cognitoidentityprovider_respond_to_auth_challenge]{respond_to_auth_challenge} \tab Responds to the authentication challenge \cr
 #'  \link[=cognitoidentityprovider_set_risk_configuration]{set_risk_configuration} \tab Configures actions on detected risks \cr
 #'  \link[=cognitoidentityprovider_set_ui_customization]{set_ui_customization} \tab Sets the UI customization information for a user pool's built-in app UI \cr
-#'  \link[=cognitoidentityprovider_set_user_mfa_preference]{set_user_mfa_preference} \tab Set the user's multi-factor authentication (MFA) method preference \cr
-#'  \link[=cognitoidentityprovider_set_user_pool_mfa_config]{set_user_pool_mfa_config} \tab Set the user pool MFA configuration \cr
-#'  \link[=cognitoidentityprovider_set_user_settings]{set_user_settings} \tab Sets the user settings like multi-factor authentication (MFA) \cr
+#'  \link[=cognitoidentityprovider_set_user_mfa_preference]{set_user_mfa_preference} \tab Set the user's multi-factor authentication (MFA) method preference, including which MFA factors are enabled and if any are preferred \cr
+#'  \link[=cognitoidentityprovider_set_user_pool_mfa_config]{set_user_pool_mfa_config} \tab Set the user pool multi-factor authentication (MFA) configuration \cr
+#'  \link[=cognitoidentityprovider_set_user_settings]{set_user_settings} \tab _This action is no longer supported \cr
 #'  \link[=cognitoidentityprovider_sign_up]{sign_up} \tab Registers the user in the specified user pool and creates a user name, password, and user attributes \cr
 #'  \link[=cognitoidentityprovider_start_user_import_job]{start_user_import_job} \tab Starts the user import \cr
 #'  \link[=cognitoidentityprovider_stop_user_import_job]{stop_user_import_job} \tab Stops the user import job \cr
@@ -9780,8 +9998,8 @@ cognitosync <- function(config = list()) {
 #'  \link[=directoryservice_create_computer]{create_computer} \tab Creates a computer account in the specified directory, and joins the computer to the directory \cr
 #'  \link[=directoryservice_create_conditional_forwarder]{create_conditional_forwarder} \tab Creates a conditional forwarder associated with your AWS directory \cr
 #'  \link[=directoryservice_create_directory]{create_directory} \tab Creates a Simple AD directory \cr
-#'  \link[=directoryservice_create_log_subscription]{create_log_subscription} \tab Creates a subscription to forward real time Directory Service domain controller security logs to the specified CloudWatch log group in your AWS account \cr
-#'  \link[=directoryservice_create_microsoft_ad]{create_microsoft_ad} \tab Creates an AWS Managed Microsoft AD directory \cr
+#'  \link[=directoryservice_create_log_subscription]{create_log_subscription} \tab Creates a subscription to forward real-time Directory Service domain controller security logs to the specified Amazon CloudWatch log group in your AWS account \cr
+#'  \link[=directoryservice_create_microsoft_ad]{create_microsoft_ad} \tab Creates a Microsoft AD directory in the AWS Cloud \cr
 #'  \link[=directoryservice_create_snapshot]{create_snapshot} \tab Creates a snapshot of a Simple AD or Microsoft AD directory in the AWS cloud \cr
 #'  \link[=directoryservice_create_trust]{create_trust} \tab AWS Directory Service for Microsoft Active Directory allows you to configure trust relationships \cr
 #'  \link[=directoryservice_delete_conditional_forwarder]{delete_conditional_forwarder} \tab Deletes a conditional forwarder that has been set up for your AWS directory \cr
@@ -9789,24 +10007,31 @@ cognitosync <- function(config = list()) {
 #'  \link[=directoryservice_delete_log_subscription]{delete_log_subscription} \tab Deletes the specified log subscription \cr
 #'  \link[=directoryservice_delete_snapshot]{delete_snapshot} \tab Deletes a directory snapshot \cr
 #'  \link[=directoryservice_delete_trust]{delete_trust} \tab Deletes an existing trust relationship between your AWS Managed Microsoft AD directory and an external domain \cr
+#'  \link[=directoryservice_deregister_certificate]{deregister_certificate} \tab Deletes from the system the certificate that was registered for a secured LDAP connection \cr
 #'  \link[=directoryservice_deregister_event_topic]{deregister_event_topic} \tab Removes the specified directory as a publisher to the specified SNS topic \cr
+#'  \link[=directoryservice_describe_certificate]{describe_certificate} \tab Displays information about the certificate registered for a secured LDAP connection \cr
 #'  \link[=directoryservice_describe_conditional_forwarders]{describe_conditional_forwarders} \tab Obtains information about the conditional forwarders for this account \cr
 #'  \link[=directoryservice_describe_directories]{describe_directories} \tab Obtains information about the directories that belong to this account \cr
 #'  \link[=directoryservice_describe_domain_controllers]{describe_domain_controllers} \tab Provides information about any domain controllers in your directory \cr
 #'  \link[=directoryservice_describe_event_topics]{describe_event_topics} \tab Obtains information about which SNS topics receive status messages from the specified directory \cr
+#'  \link[=directoryservice_describe_ldaps_settings]{describe_ldaps_settings} \tab Describes the status of LDAP security for the specified directory \cr
 #'  \link[=directoryservice_describe_shared_directories]{describe_shared_directories} \tab Returns the shared directories in your account \cr
 #'  \link[=directoryservice_describe_snapshots]{describe_snapshots} \tab Obtains information about the directory snapshots that belong to this account \cr
 #'  \link[=directoryservice_describe_trusts]{describe_trusts} \tab Obtains information about the trust relationships for this account \cr
+#'  \link[=directoryservice_disable_ldaps]{disable_ldaps} \tab Deactivates LDAP secure calls for the specified directory \cr
 #'  \link[=directoryservice_disable_radius]{disable_radius} \tab Disables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service (RADIUS) server for an AD Connector or Microsoft AD directory \cr
 #'  \link[=directoryservice_disable_sso]{disable_sso} \tab Disables single-sign on for a directory \cr
+#'  \link[=directoryservice_enable_ldaps]{enable_ldaps} \tab Activates the switch for the specific directory to always use LDAP secure calls \cr
 #'  \link[=directoryservice_enable_radius]{enable_radius} \tab Enables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service (RADIUS) server for an AD Connector or Microsoft AD directory \cr
 #'  \link[=directoryservice_enable_sso]{enable_sso} \tab Enables single sign-on for a directory \cr
-#'  \link[=directoryservice_get_directory_limits]{get_directory_limits} \tab Obtains directory limit information for the current region \cr
+#'  \link[=directoryservice_get_directory_limits]{get_directory_limits} \tab Obtains directory limit information for the current Region \cr
 #'  \link[=directoryservice_get_snapshot_limits]{get_snapshot_limits} \tab Obtains the manual snapshot limits for a directory \cr
+#'  \link[=directoryservice_list_certificates]{list_certificates} \tab For the specified directory, lists all the certificates registered for a secured LDAP connection \cr
 #'  \link[=directoryservice_list_ip_routes]{list_ip_routes} \tab Lists the address blocks that you have added to a directory \cr
 #'  \link[=directoryservice_list_log_subscriptions]{list_log_subscriptions} \tab Lists the active log subscriptions for the AWS account \cr
 #'  \link[=directoryservice_list_schema_extensions]{list_schema_extensions} \tab Lists all schema extensions applied to a Microsoft AD Directory \cr
 #'  \link[=directoryservice_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on a directory \cr
+#'  \link[=directoryservice_register_certificate]{register_certificate} \tab Registers a certificate for secured LDAP connection \cr
 #'  \link[=directoryservice_register_event_topic]{register_event_topic} \tab Associates a directory with an SNS topic \cr
 #'  \link[=directoryservice_reject_shared_directory]{reject_shared_directory} \tab Rejects a directory sharing request that was sent from the directory owner account \cr
 #'  \link[=directoryservice_remove_ip_routes]{remove_ip_routes} \tab Removes IP address blocks from a directory \cr
@@ -9876,7 +10101,7 @@ directoryservice <- function(config = list()) {
 #'  \link[=fms_disassociate_admin_account]{disassociate_admin_account} \tab Disassociates the account that has been set as the AWS Firewall Manager administrator account \cr
 #'  \link[=fms_get_admin_account]{get_admin_account} \tab Returns the AWS Organizations master account that is associated with AWS Firewall Manager as the AWS Firewall Manager administrator \cr
 #'  \link[=fms_get_compliance_detail]{get_compliance_detail} \tab Returns detailed compliance information about the specified member account \cr
-#'  \link[=fms_get_notification_channel]{get_notification_channel} \tab Returns information about the Amazon Simple Notification Service (SNS) topic that is used to record AWS Firewall Manager SNS logs \cr
+#'  \link[=fms_get_notification_channel]{get_notification_channel} \tab Information about the Amazon Simple Notification Service (SNS) topic that is used to record AWS Firewall Manager SNS logs \cr
 #'  \link[=fms_get_policy]{get_policy} \tab Returns information about the specified AWS Firewall Manager policy \cr
 #'  \link[=fms_get_protection_status]{get_protection_status} \tab If you created a Shield Advanced policy, returns policy-level attack summary information in the event of a potential DDoS attack \cr
 #'  \link[=fms_list_compliance_status]{list_compliance_status} \tab Returns an array of PolicyComplianceStatus objects in the response \cr
@@ -9944,29 +10169,32 @@ fms <- function(config = list()) {
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=guardduty_accept_invitation]{accept_invitation} \tab Accepts the invitation to be monitored by a master GuardDuty account \cr
-#'  \link[=guardduty_archive_findings]{archive_findings} \tab Archives Amazon GuardDuty findings specified by the list of finding IDs \cr
+#'  \link[=guardduty_archive_findings]{archive_findings} \tab Archives GuardDuty findings specified by the list of finding IDs \cr
 #'  \link[=guardduty_create_detector]{create_detector} \tab Creates a single Amazon GuardDuty detector \cr
 #'  \link[=guardduty_create_filter]{create_filter} \tab Creates a filter using the specified finding criteria \cr
-#'  \link[=guardduty_create_ip_set]{create_ip_set} \tab Creates a new IPSet - a list of trusted IP addresses that have been whitelisted for secure communication with AWS infrastructure and applications \cr
+#'  \link[=guardduty_create_ip_set]{create_ip_set} \tab Creates a new IPSet, called Trusted IP list in the consoler user interface \cr
 #'  \link[=guardduty_create_members]{create_members} \tab Creates member accounts of the current AWS account by specifying a list of AWS account IDs \cr
+#'  \link[=guardduty_create_publishing_destination]{create_publishing_destination} \tab Creates a publishing destination to send findings to \cr
 #'  \link[=guardduty_create_sample_findings]{create_sample_findings} \tab Generates example findings of types specified by the list of finding types \cr
 #'  \link[=guardduty_create_threat_intel_set]{create_threat_intel_set} \tab Create a new ThreatIntelSet \cr
 #'  \link[=guardduty_decline_invitations]{decline_invitations} \tab Declines invitations sent to the current member account by AWS account specified by their account IDs \cr
 #'  \link[=guardduty_delete_detector]{delete_detector} \tab Deletes a Amazon GuardDuty detector specified by the detector ID \cr
 #'  \link[=guardduty_delete_filter]{delete_filter} \tab Deletes the filter specified by the filter name \cr
-#'  \link[=guardduty_delete_ip_set]{delete_ip_set} \tab Deletes the IPSet specified by the IPSet ID \cr
+#'  \link[=guardduty_delete_ip_set]{delete_ip_set} \tab Deletes the IPSet specified by the ipSetId \cr
 #'  \link[=guardduty_delete_invitations]{delete_invitations} \tab Deletes invitations sent to the current member account by AWS accounts specified by their account IDs \cr
 #'  \link[=guardduty_delete_members]{delete_members} \tab Deletes GuardDuty member accounts (to the current GuardDuty master account) specified by the account IDs \cr
+#'  \link[=guardduty_delete_publishing_destination]{delete_publishing_destination} \tab Deletes the publishing definition with the specified destinationId \cr
 #'  \link[=guardduty_delete_threat_intel_set]{delete_threat_intel_set} \tab Deletes ThreatIntelSet specified by the ThreatIntelSet ID \cr
+#'  \link[=guardduty_describe_publishing_destination]{describe_publishing_destination} \tab Returns information about the publishing destination specified by the provided destinationId \cr
 #'  \link[=guardduty_disassociate_from_master_account]{disassociate_from_master_account} \tab Disassociates the current GuardDuty member account from its master account \cr
 #'  \link[=guardduty_disassociate_members]{disassociate_members} \tab Disassociates GuardDuty member accounts (to the current GuardDuty master account) specified by the account IDs \cr
 #'  \link[=guardduty_get_detector]{get_detector} \tab Retrieves an Amazon GuardDuty detector specified by the detectorId \cr
 #'  \link[=guardduty_get_filter]{get_filter} \tab Returns the details of the filter specified by the filter name \cr
 #'  \link[=guardduty_get_findings]{get_findings} \tab Describes Amazon GuardDuty findings specified by finding IDs \cr
 #'  \link[=guardduty_get_findings_statistics]{get_findings_statistics} \tab Lists Amazon GuardDuty findings' statistics for the specified detector ID \cr
-#'  \link[=guardduty_get_ip_set]{get_ip_set} \tab Retrieves the IPSet specified by the IPSet ID \cr
+#'  \link[=guardduty_get_ip_set]{get_ip_set} \tab Retrieves the IPSet specified by the ipSetId \cr
 #'  \link[=guardduty_get_invitations_count]{get_invitations_count} \tab Returns the count of all GuardDuty membership invitations that were sent to the current member account except the currently accepted invitation \cr
-#'  \link[=guardduty_get_master_account]{get_master_account} \tab Provides the details for the GuardDuty master account to the current GuardDuty member account \cr
+#'  \link[=guardduty_get_master_account]{get_master_account} \tab Provides the details for the GuardDuty master account associated with the current GuardDuty member account \cr
 #'  \link[=guardduty_get_members]{get_members} \tab Retrieves GuardDuty member accounts (to the current GuardDuty master account) specified by the account IDs \cr
 #'  \link[=guardduty_get_threat_intel_set]{get_threat_intel_set} \tab Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID \cr
 #'  \link[=guardduty_invite_members]{invite_members} \tab Invites other AWS accounts (created as members of the current AWS account by CreateMembers) to enable GuardDuty and allow the current AWS account to view and manage these accounts' GuardDuty findings on their behalf as the master account\cr
@@ -9976,17 +10204,19 @@ fms <- function(config = list()) {
 #'  \link[=guardduty_list_ip_sets]{list_ip_sets} \tab Lists the IPSets of the GuardDuty service specified by the detector ID \cr
 #'  \link[=guardduty_list_invitations]{list_invitations} \tab Lists all GuardDuty membership invitations that were sent to the current AWS account \cr
 #'  \link[=guardduty_list_members]{list_members} \tab Lists details about all member accounts for the current GuardDuty master account \cr
+#'  \link[=guardduty_list_publishing_destinations]{list_publishing_destinations} \tab Returns a list of publishing destinations associated with the specified dectectorId \cr
 #'  \link[=guardduty_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for a resource \cr
 #'  \link[=guardduty_list_threat_intel_sets]{list_threat_intel_sets} \tab Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID \cr
-#'  \link[=guardduty_start_monitoring_members]{start_monitoring_members} \tab Re-enables GuardDuty to monitor findings of the member accounts specified by the account IDs \cr
-#'  \link[=guardduty_stop_monitoring_members]{stop_monitoring_members} \tab Disables GuardDuty from monitoring findings of the member accounts specified by the account IDs \cr
+#'  \link[=guardduty_start_monitoring_members]{start_monitoring_members} \tab Turns on GuardDuty monitoring of the specified member accounts \cr
+#'  \link[=guardduty_stop_monitoring_members]{stop_monitoring_members} \tab Stops GuardDuty monitoring for the specified member accounnts \cr
 #'  \link[=guardduty_tag_resource]{tag_resource} \tab Adds tags to a resource \cr
-#'  \link[=guardduty_unarchive_findings]{unarchive_findings} \tab Unarchives Amazon GuardDuty findings specified by the list of finding IDs \cr
+#'  \link[=guardduty_unarchive_findings]{unarchive_findings} \tab Unarchives GuardDuty findings specified by the findingIds \cr
 #'  \link[=guardduty_untag_resource]{untag_resource} \tab Removes tags from a resource \cr
-#'  \link[=guardduty_update_detector]{update_detector} \tab Updates an Amazon GuardDuty detector specified by the detectorId \cr
+#'  \link[=guardduty_update_detector]{update_detector} \tab Updates the Amazon GuardDuty detector specified by the detectorId \cr
 #'  \link[=guardduty_update_filter]{update_filter} \tab Updates the filter specified by the filter name \cr
-#'  \link[=guardduty_update_findings_feedback]{update_findings_feedback} \tab Marks specified Amazon GuardDuty findings as useful or not useful \cr
+#'  \link[=guardduty_update_findings_feedback]{update_findings_feedback} \tab Marks the specified GuardDuty findings as useful or not useful \cr
 #'  \link[=guardduty_update_ip_set]{update_ip_set} \tab Updates the IPSet specified by the IPSet ID \cr
+#'  \link[=guardduty_update_publishing_destination]{update_publishing_destination} \tab Updates information about the publishing destination specified by the destinationId \cr
 #'  \link[=guardduty_update_threat_intel_set]{update_threat_intel_set} \tab Updates the ThreatIntelSet specified by ThreatIntelSet ID 
 #' }
 #'
@@ -10458,42 +10688,47 @@ inspector <- function(config = list()) {
 #'  \link[=kms_create_alias]{create_alias} \tab Creates a display name for a customer managed customer master key (CMK) \cr
 #'  \link[=kms_create_custom_key_store]{create_custom_key_store} \tab Creates a custom key store that is associated with an AWS CloudHSM cluster that you own and manage \cr
 #'  \link[=kms_create_grant]{create_grant} \tab Adds a grant to a customer master key (CMK) \cr
-#'  \link[=kms_create_key]{create_key} \tab Creates a customer managed customer master key (CMK) in your AWS account \cr
-#'  \link[=kms_decrypt]{decrypt} \tab Decrypts ciphertext \cr
+#'  \link[=kms_create_key]{create_key} \tab Creates a unique customer managed customer master key (CMK) in your AWS account and Region \cr
+#'  \link[=kms_decrypt]{decrypt} \tab Decrypts ciphertext that was encrypted by a AWS KMS customer master key (CMK) using any of the following operations: - Encrypt - GenerateDataKey - GenerateDataKeyPair - GenerateDataKeyWithoutPlaintext - GenerateDataKeyPairWithoutPlaintext You can use this operation to decrypt ciphertext that was encrypted under a symmetric or asymmetric CMK\cr
 #'  \link[=kms_delete_alias]{delete_alias} \tab Deletes the specified alias \cr
 #'  \link[=kms_delete_custom_key_store]{delete_custom_key_store} \tab Deletes a custom key store \cr
 #'  \link[=kms_delete_imported_key_material]{delete_imported_key_material} \tab Deletes key material that you previously imported \cr
 #'  \link[=kms_describe_custom_key_stores]{describe_custom_key_stores} \tab Gets information about custom key stores in the account and region \cr
-#'  \link[=kms_describe_key]{describe_key} \tab Provides detailed information about the specified customer master key (CMK) \cr
+#'  \link[=kms_describe_key]{describe_key} \tab Provides detailed information about a customer master key (CMK) \cr
 #'  \link[=kms_disable_key]{disable_key} \tab Sets the state of a customer master key (CMK) to disabled, thereby preventing its use for cryptographic operations \cr
-#'  \link[=kms_disable_key_rotation]{disable_key_rotation} \tab Disables automatic rotation of the key material for the specified customer master key (CMK) \cr
+#'  \link[=kms_disable_key_rotation]{disable_key_rotation} \tab Disables automatic rotation of the key material for the specified symmetric customer master key (CMK) \cr
 #'  \link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store} \tab Disconnects the custom key store from its associated AWS CloudHSM cluster \cr
 #'  \link[=kms_enable_key]{enable_key} \tab Sets the key state of a customer master key (CMK) to enabled \cr
-#'  \link[=kms_enable_key_rotation]{enable_key_rotation} \tab Enables automatic rotation of the key material for the specified customer master key (CMK) \cr
+#'  \link[=kms_enable_key_rotation]{enable_key_rotation} \tab Enables automatic rotation of the key material for the specified symmetric customer master key (CMK) \cr
 #'  \link[=kms_encrypt]{encrypt} \tab Encrypts plaintext into ciphertext by using a customer master key (CMK) \cr
-#'  \link[=kms_generate_data_key]{generate_data_key} \tab Generates a unique data key \cr
-#'  \link[=kms_generate_data_key_without_plaintext]{generate_data_key_without_plaintext} \tab Generates a unique data key \cr
+#'  \link[=kms_generate_data_key]{generate_data_key} \tab Generates a unique symmetric data key \cr
+#'  \link[=kms_generate_data_key_pair]{generate_data_key_pair} \tab Generates a unique asymmetric data key pair \cr
+#'  \link[=kms_generate_data_key_pair_without_plaintext]{generate_data_key_pair_without_plaintext} \tab Generates a unique asymmetric data key pair \cr
+#'  \link[=kms_generate_data_key_without_plaintext]{generate_data_key_without_plaintext} \tab Generates a unique symmetric data key \cr
 #'  \link[=kms_generate_random]{generate_random} \tab Returns a random byte string that is cryptographically secure \cr
 #'  \link[=kms_get_key_policy]{get_key_policy} \tab Gets a key policy attached to the specified customer master key (CMK) \cr
-#'  \link[=kms_get_key_rotation_status]{get_key_rotation_status} \tab Gets a Boolean value that indicates whether automatic rotation of the key material is enabled for the specified customer master key (CMK)\cr
-#'  \link[=kms_get_parameters_for_import]{get_parameters_for_import} \tab Returns the items you need in order to import key material into AWS KMS from your existing key management infrastructure \cr
-#'  \link[=kms_import_key_material]{import_key_material} \tab Imports key material into an existing AWS KMS customer master key (CMK) that was created without key material \cr
+#'  \link[=kms_get_key_rotation_status]{get_key_rotation_status} \tab Gets a Boolean value that indicates whether automatic rotation of the key material is enabled for the specified customer master key (CMK) \cr
+#'  \link[=kms_get_parameters_for_import]{get_parameters_for_import} \tab Returns the items you need to import key material into a symmetric, customer managed customer master key (CMK) \cr
+#'  \link[=kms_get_public_key]{get_public_key} \tab Returns the public key of an asymmetric CMK \cr
+#'  \link[=kms_import_key_material]{import_key_material} \tab Imports key material into an existing symmetric AWS KMS customer master key (CMK) that was created without key material \cr
 #'  \link[=kms_list_aliases]{list_aliases} \tab Gets a list of aliases in the caller's AWS account and region \cr
 #'  \link[=kms_list_grants]{list_grants} \tab Gets a list of all grants for the specified customer master key (CMK) \cr
 #'  \link[=kms_list_key_policies]{list_key_policies} \tab Gets the names of the key policies that are attached to a customer master key (CMK) \cr
-#'  \link[=kms_list_keys]{list_keys} \tab Gets a list of all customer master keys (CMKs) in the caller's AWS account and region \cr
+#'  \link[=kms_list_keys]{list_keys} \tab Gets a list of all customer master keys (CMKs) in the caller's AWS account and Region \cr
 #'  \link[=kms_list_resource_tags]{list_resource_tags} \tab Returns a list of all tags for the specified customer master key (CMK) \cr
 #'  \link[=kms_list_retirable_grants]{list_retirable_grants} \tab Returns a list of all grants for which the grant's RetiringPrincipal matches the one specified \cr
 #'  \link[=kms_put_key_policy]{put_key_policy} \tab Attaches a key policy to the specified customer master key (CMK) \cr
-#'  \link[=kms_re_encrypt]{re_encrypt} \tab Encrypts data on the server side with a new customer master key (CMK) without exposing the plaintext of the data on the client side \cr
+#'  \link[=kms_re_encrypt]{re_encrypt} \tab Decrypts ciphertext and then reencrypts it entirely within AWS KMS \cr
 #'  \link[=kms_retire_grant]{retire_grant} \tab Retires a grant \cr
 #'  \link[=kms_revoke_grant]{revoke_grant} \tab Revokes the specified grant for the specified customer master key (CMK) \cr
 #'  \link[=kms_schedule_key_deletion]{schedule_key_deletion} \tab Schedules the deletion of a customer master key (CMK) \cr
+#'  \link[=kms_sign]{sign} \tab Creates a digital signature for a message or message digest by using the private key in an asymmetric CMK \cr
 #'  \link[=kms_tag_resource]{tag_resource} \tab Adds or edits tags for a customer master key (CMK) \cr
 #'  \link[=kms_untag_resource]{untag_resource} \tab Removes the specified tags from the specified customer master key (CMK) \cr
-#'  \link[=kms_update_alias]{update_alias} \tab Associates an existing alias with a different customer master key (CMK) \cr
+#'  \link[=kms_update_alias]{update_alias} \tab Associates an existing AWS KMS alias with a different customer master key (CMK) \cr
 #'  \link[=kms_update_custom_key_store]{update_custom_key_store} \tab Changes the properties of a custom key store \cr
-#'  \link[=kms_update_key_description]{update_key_description} \tab Updates the description of a customer master key (CMK) 
+#'  \link[=kms_update_key_description]{update_key_description} \tab Updates the description of a customer master key (CMK) \cr
+#'  \link[=kms_verify]{verify} \tab Verifies a digital signature that was generated by the Sign operation 
 #' }
 #'
 #' @rdname kms
@@ -10564,22 +10799,12 @@ macie <- function(config = list()) {
 #' Use AWS Resource Access Manager to share AWS resources between AWS
 #' accounts. To share a resource, you create a resource share, associate
 #' the resource with the resource share, and specify the principals that
-#' can access the resource. The following principals are supported:
+#' can access the resources associated with the resource share. The
+#' following principals are supported: AWS accounts, organizational units
+#' (OU) from AWS Organizations, and organizations from AWS Organizations.
 #' 
-#' -   The ID of an AWS account
-#' 
-#' -   The Amazon Resource Name (ARN) of an OU from AWS Organizations
-#' 
-#' -   The Amazon Resource Name (ARN) of an organization from AWS
-#'     Organizations
-#' 
-#' If you specify an AWS account that doesn\'t exist in the same
-#' organization as the account that owns the resource share, the owner of
-#' the specified account receives an invitation to accept the resource
-#' share. After the owner accepts the invitation, they can access the
-#' resources in the resource share. An administrator of the specified
-#' account can use IAM policies to restrict access resources in the
-#' resource share.
+#' For more information, see the [AWS Resource Access Manager User
+#' Guide](https://docs.aws.amazon.com/ram/latest/userguide/).
 #'
 #' @param
 #' config
@@ -10613,20 +10838,27 @@ macie <- function(config = list()) {
 #' \tabular{ll}{
 #'  \link[=ram_accept_resource_share_invitation]{accept_resource_share_invitation} \tab Accepts an invitation to a resource share from another AWS account \cr
 #'  \link[=ram_associate_resource_share]{associate_resource_share} \tab Associates the specified resource share with the specified principals and resources \cr
+#'  \link[=ram_associate_resource_share_permission]{associate_resource_share_permission} \tab Associates a permission with a resource share \cr
 #'  \link[=ram_create_resource_share]{create_resource_share} \tab Creates a resource share \cr
 #'  \link[=ram_delete_resource_share]{delete_resource_share} \tab Deletes the specified resource share \cr
-#'  \link[=ram_disassociate_resource_share]{disassociate_resource_share} \tab Disassociates the specified principals or resources from the specified resource share\cr
-#'  \link[=ram_enable_sharing_with_aws_organization]{enable_sharing_with_aws_organization} \tab Enables resource sharing within your organization \cr
-#'  \link[=ram_get_resource_policies]{get_resource_policies} \tab Gets the policies for the specifies resources \cr
-#'  \link[=ram_get_resource_share_associations]{get_resource_share_associations} \tab Gets the associations for the specified resource share \cr
-#'  \link[=ram_get_resource_share_invitations]{get_resource_share_invitations} \tab Gets the specified invitations for resource sharing \cr
-#'  \link[=ram_get_resource_shares]{get_resource_shares} \tab Gets the specified resource shares or all of your resource shares \cr
-#'  \link[=ram_list_principals]{list_principals} \tab Lists the principals with access to the specified resource \cr
-#'  \link[=ram_list_resources]{list_resources} \tab Lists the resources that the specified principal can access \cr
+#'  \link[=ram_disassociate_resource_share]{disassociate_resource_share} \tab Disassociates the specified principals or resources from the specified resource share \cr
+#'  \link[=ram_disassociate_resource_share_permission]{disassociate_resource_share_permission} \tab Disassociates an AWS RAM permission from a resource share \cr
+#'  \link[=ram_enable_sharing_with_aws_organization]{enable_sharing_with_aws_organization} \tab Enables resource sharing within your AWS Organization \cr
+#'  \link[=ram_get_permission]{get_permission} \tab Gets the contents of an AWS RAM permission in JSON format \cr
+#'  \link[=ram_get_resource_policies]{get_resource_policies} \tab Gets the policies for the specified resources that you own and have shared \cr
+#'  \link[=ram_get_resource_share_associations]{get_resource_share_associations} \tab Gets the resources or principals for the resource shares that you own \cr
+#'  \link[=ram_get_resource_share_invitations]{get_resource_share_invitations} \tab Gets the invitations for resource sharing that you've received \cr
+#'  \link[=ram_get_resource_shares]{get_resource_shares} \tab Gets the resource shares that you own or the resource shares that are shared with you \cr
+#'  \link[=ram_list_pending_invitation_resources]{list_pending_invitation_resources} \tab Lists the resources in a resource share that is shared with you but that the invitation is still pending for \cr
+#'  \link[=ram_list_permissions]{list_permissions} \tab Lists the AWS RAM permissions \cr
+#'  \link[=ram_list_principals]{list_principals} \tab Lists the principals that you have shared resources with or that have shared resources with you \cr
+#'  \link[=ram_list_resource_share_permissions]{list_resource_share_permissions} \tab Lists the AWS RAM permissions that are associated with a resource share \cr
+#'  \link[=ram_list_resources]{list_resources} \tab Lists the resources that you added to a resource shares or the resources that are shared with you \cr
+#'  \link[=ram_promote_resource_share_created_from_policy]{promote_resource_share_created_from_policy} \tab Resource shares that were created by attaching a policy to a resource are visible only to the resource share owner, and the resource share cannot be modified in AWS RAM\cr
 #'  \link[=ram_reject_resource_share_invitation]{reject_resource_share_invitation} \tab Rejects an invitation to a resource share from another AWS account \cr
-#'  \link[=ram_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource share \cr
-#'  \link[=ram_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource share \cr
-#'  \link[=ram_update_resource_share]{update_resource_share} \tab Updates the specified resource share 
+#'  \link[=ram_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource share that you own \cr
+#'  \link[=ram_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource share that you own \cr
+#'  \link[=ram_update_resource_share]{update_resource_share} \tab Updates the specified resource share that you own 
 #' }
 #'
 #' @rdname ram
@@ -11067,11 +11299,28 @@ shield <- function(config = list()) {
 #' # 
 #' \donttest{svc <- sts()
 #' svc$assume_role(
-#'   DurationSeconds = 3600L,
 #'   ExternalId = "123ABC",
 #'   Policy = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"Stmt1\",\"Effect\":...",
 #'   RoleArn = "arn:aws:iam::123456789012:role/demo",
-#'   RoleSessionName = "Bob"
+#'   RoleSessionName = "testAssumeRoleSession",
+#'   Tags = list(
+#'     list(
+#'       Key = "Project",
+#'       Value = "Unicorn"
+#'     ),
+#'     list(
+#'       Key = "Team",
+#'       Value = "Automation"
+#'     ),
+#'     list(
+#'       Key = "Cost-Center",
+#'       Value = "12345"
+#'     )
+#'   ),
+#'   TransitiveTagKeys = list(
+#'     "Project",
+#'     "Cost-Center"
+#'   )
 #' )}
 #'
 #' @section Operations:
@@ -11080,7 +11329,8 @@ shield <- function(config = list()) {
 #'  \link[=sts_assume_role_with_saml]{assume_role_with_saml} \tab Returns a set of temporary security credentials for users who have been authenticated via a SAML authentication response \cr
 #'  \link[=sts_assume_role_with_web_identity]{assume_role_with_web_identity} \tab Returns a set of temporary security credentials for users who have been authenticated in a mobile or web application with a web identity provider\cr
 #'  \link[=sts_decode_authorization_message]{decode_authorization_message} \tab Decodes additional information about the authorization status of a request from an encoded message returned in response to an AWS request \cr
-#'  \link[=sts_get_caller_identity]{get_caller_identity} \tab Returns details about the IAM identity whose credentials are used to call the API \cr
+#'  \link[=sts_get_access_key_info]{get_access_key_info} \tab Returns the account identifier for the specified access key ID \cr
+#'  \link[=sts_get_caller_identity]{get_caller_identity} \tab Returns details about the IAM user or role whose credentials are used to call the operation \cr
 #'  \link[=sts_get_federation_token]{get_federation_token} \tab Returns a set of temporary security credentials (consisting of an access key ID, a secret access key, and a security token) for a federated user \cr
 #'  \link[=sts_get_session_token]{get_session_token} \tab Returns a set of temporary credentials for an AWS account or IAM user 
 #' }
@@ -11577,15 +11827,15 @@ mq <- function(config = list()) {
 #'  \link[=sfn_describe_execution]{describe_execution} \tab Describes an execution \cr
 #'  \link[=sfn_describe_state_machine]{describe_state_machine} \tab Describes a state machine \cr
 #'  \link[=sfn_describe_state_machine_for_execution]{describe_state_machine_for_execution} \tab Describes the state machine associated with a specific execution \cr
-#'  \link[=sfn_get_activity_task]{get_activity_task} \tab Used by workers to retrieve a task (with the specified activity ARN) which has been scheduled for execution by a running state machine\cr
+#'  \link[=sfn_get_activity_task]{get_activity_task} \tab Used by workers to retrieve a task (with the specified activity ARN) which has been scheduled for execution by a running state machine \cr
 #'  \link[=sfn_get_execution_history]{get_execution_history} \tab Returns the history of the specified execution as a list of events \cr
 #'  \link[=sfn_list_activities]{list_activities} \tab Lists the existing activities \cr
 #'  \link[=sfn_list_executions]{list_executions} \tab Lists the executions of a state machine that meet the filtering criteria \cr
 #'  \link[=sfn_list_state_machines]{list_state_machines} \tab Lists the existing state machines \cr
 #'  \link[=sfn_list_tags_for_resource]{list_tags_for_resource} \tab List tags for a given resource \cr
-#'  \link[=sfn_send_task_failure]{send_task_failure} \tab Used by workers to report that the task identified by the taskToken failed \cr
-#'  \link[=sfn_send_task_heartbeat]{send_task_heartbeat} \tab Used by workers to report to the service that the task represented by the specified taskToken is still making progress \cr
-#'  \link[=sfn_send_task_success]{send_task_success} \tab Used by workers to report that the task identified by the taskToken completed successfully \cr
+#'  \link[=sfn_send_task_failure]{send_task_failure} \tab Used by activity workers and task states using the callback pattern to report that the task identified by the taskToken failed \cr
+#'  \link[=sfn_send_task_heartbeat]{send_task_heartbeat} \tab Used by activity workers and task states using the callback pattern to report to Step Functions that the task represented by the specified taskToken is still making progress\cr
+#'  \link[=sfn_send_task_success]{send_task_success} \tab Used by activity workers and task states using the callback pattern to report that the task identified by the taskToken completed successfully \cr
 #'  \link[=sfn_start_execution]{start_execution} \tab Starts a state machine execution \cr
 #'  \link[=sfn_stop_execution]{stop_execution} \tab Stops an execution \cr
 #'  \link[=sfn_tag_resource]{tag_resource} \tab Add a tag to a Step Functions resource \cr
@@ -11653,19 +11903,19 @@ sfn <- function(config = list()) {
 #'  \link[=sns_check_if_phone_number_is_opted_out]{check_if_phone_number_is_opted_out} \tab Accepts a phone number and indicates whether the phone holder has opted out of receiving SMS messages from your account \cr
 #'  \link[=sns_confirm_subscription]{confirm_subscription} \tab Verifies an endpoint owner's intent to receive messages by validating the token sent to the endpoint by an earlier Subscribe action \cr
 #'  \link[=sns_create_platform_application]{create_platform_application} \tab Creates a platform application object for one of the supported push notification services, such as APNS and FCM, to which devices and mobile apps may register\cr
-#'  \link[=sns_create_platform_endpoint]{create_platform_endpoint} \tab Creates an endpoint for a device and mobile app on one of the supported push notification services, such as GCM and APNS \cr
+#'  \link[=sns_create_platform_endpoint]{create_platform_endpoint} \tab Creates an endpoint for a device and mobile app on one of the supported push notification services, such as FCM and APNS \cr
 #'  \link[=sns_create_topic]{create_topic} \tab Creates a topic to which notifications can be published \cr
 #'  \link[=sns_delete_endpoint]{delete_endpoint} \tab Deletes the endpoint for a device and mobile app from Amazon SNS \cr
-#'  \link[=sns_delete_platform_application]{delete_platform_application} \tab Deletes a platform application object for one of the supported push notification services, such as APNS and GCM \cr
+#'  \link[=sns_delete_platform_application]{delete_platform_application} \tab Deletes a platform application object for one of the supported push notification services, such as APNS and FCM \cr
 #'  \link[=sns_delete_topic]{delete_topic} \tab Deletes a topic and all its subscriptions \cr
-#'  \link[=sns_get_endpoint_attributes]{get_endpoint_attributes} \tab Retrieves the endpoint attributes for a device on one of the supported push notification services, such as GCM and APNS \cr
-#'  \link[=sns_get_platform_application_attributes]{get_platform_application_attributes} \tab Retrieves the attributes of the platform application object for the supported push notification services, such as APNS and GCM \cr
+#'  \link[=sns_get_endpoint_attributes]{get_endpoint_attributes} \tab Retrieves the endpoint attributes for a device on one of the supported push notification services, such as FCM and APNS \cr
+#'  \link[=sns_get_platform_application_attributes]{get_platform_application_attributes} \tab Retrieves the attributes of the platform application object for the supported push notification services, such as APNS and FCM \cr
 #'  \link[=sns_get_sms_attributes]{get_sms_attributes} \tab Returns the settings for sending SMS messages from your account \cr
 #'  \link[=sns_get_subscription_attributes]{get_subscription_attributes} \tab Returns all of the properties of a subscription \cr
 #'  \link[=sns_get_topic_attributes]{get_topic_attributes} \tab Returns all of the properties of a topic \cr
-#'  \link[=sns_list_endpoints_by_platform_application]{list_endpoints_by_platform_application} \tab Lists the endpoints and endpoint attributes for devices in a supported push notification service, such as GCM and APNS \cr
+#'  \link[=sns_list_endpoints_by_platform_application]{list_endpoints_by_platform_application} \tab Lists the endpoints and endpoint attributes for devices in a supported push notification service, such as FCM and APNS \cr
 #'  \link[=sns_list_phone_numbers_opted_out]{list_phone_numbers_opted_out} \tab Returns a list of phone numbers that are opted out, meaning you cannot send SMS messages to them \cr
-#'  \link[=sns_list_platform_applications]{list_platform_applications} \tab Lists the platform application objects for the supported push notification services, such as APNS and GCM \cr
+#'  \link[=sns_list_platform_applications]{list_platform_applications} \tab Lists the platform application objects for the supported push notification services, such as APNS and FCM \cr
 #'  \link[=sns_list_subscriptions]{list_subscriptions} \tab Returns a list of the requester's subscriptions \cr
 #'  \link[=sns_list_subscriptions_by_topic]{list_subscriptions_by_topic} \tab Returns a list of the subscriptions to a specific topic \cr
 #'  \link[=sns_list_tags_for_resource]{list_tags_for_resource} \tab List all tags added to the specified Amazon SNS topic \cr
@@ -11673,8 +11923,8 @@ sfn <- function(config = list()) {
 #'  \link[=sns_opt_in_phone_number]{opt_in_phone_number} \tab Use this request to opt in a phone number that is opted out, which enables you to resume sending SMS messages to the number \cr
 #'  \link[=sns_publish]{publish} \tab Sends a message to an Amazon SNS topic or sends a text message (SMS message) directly to a phone number \cr
 #'  \link[=sns_remove_permission]{remove_permission} \tab Removes a statement from a topic's access control policy \cr
-#'  \link[=sns_set_endpoint_attributes]{set_endpoint_attributes} \tab Sets the attributes for an endpoint for a device on one of the supported push notification services, such as GCM and APNS \cr
-#'  \link[=sns_set_platform_application_attributes]{set_platform_application_attributes} \tab Sets the attributes of the platform application object for the supported push notification services, such as APNS and GCM \cr
+#'  \link[=sns_set_endpoint_attributes]{set_endpoint_attributes} \tab Sets the attributes for an endpoint for a device on one of the supported push notification services, such as FCM and APNS \cr
+#'  \link[=sns_set_platform_application_attributes]{set_platform_application_attributes} \tab Sets the attributes of the platform application object for the supported push notification services, such as APNS and FCM \cr
 #'  \link[=sns_set_sms_attributes]{set_sms_attributes} \tab Use this request to set the default settings for sending SMS messages and receiving daily SMS usage reports \cr
 #'  \link[=sns_set_subscription_attributes]{set_subscription_attributes} \tab Allows a subscription owner to set an attribute of the subscription to a new value \cr
 #'  \link[=sns_set_topic_attributes]{set_topic_attributes} \tab Allows a topic owner to set an attribute of the topic to a new value \cr
@@ -12038,6 +12288,7 @@ budgets <- function(config = list()) {
 #' \tabular{ll}{
 #'  \link[=costandusagereportservice_delete_report_definition]{delete_report_definition} \tab Deletes the specified report \cr
 #'  \link[=costandusagereportservice_describe_report_definitions]{describe_report_definitions} \tab Lists the AWS Cost and Usage reports available to this account\cr
+#'  \link[=costandusagereportservice_modify_report_definition]{modify_report_definition} \tab Allows you to programatically update your report preferences \cr
 #'  \link[=costandusagereportservice_put_report_definition]{put_report_definition} \tab Creates a new report using the description that you provide 
 #' }
 #'
@@ -12090,20 +12341,31 @@ costandusagereportservice <- function(config = list()) {
 #'
 #' @examples
 #' \donttest{svc <- costexplorer()
-#' svc$get_cost_and_usage(
+#' svc$create_cost_category_definition(
 #'   Foo = 123
 #' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=costexplorer_create_cost_category_definition]{create_cost_category_definition} \tab _COST CATEGORY IS IN PREVIEW RELEASE FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE \cr
+#'  \link[=costexplorer_delete_cost_category_definition]{delete_cost_category_definition} \tab _COST CATEGORY IS IN PREVIEW RELEASE FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE \cr
+#'  \link[=costexplorer_describe_cost_category_definition]{describe_cost_category_definition} \tab _COST CATEGORY IS IN PREVIEW RELEASE FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE \cr
 #'  \link[=costexplorer_get_cost_and_usage]{get_cost_and_usage} \tab Retrieves cost and usage metrics for your account \cr
+#'  \link[=costexplorer_get_cost_and_usage_with_resources]{get_cost_and_usage_with_resources} \tab Retrieves cost and usage metrics with resources for your account \cr
 #'  \link[=costexplorer_get_cost_forecast]{get_cost_forecast} \tab Retrieves a forecast for how much Amazon Web Services predicts that you will spend over the forecast time period that you select, based on your past costs\cr
 #'  \link[=costexplorer_get_dimension_values]{get_dimension_values} \tab Retrieves all available filter values for a specified filter over a period of time \cr
 #'  \link[=costexplorer_get_reservation_coverage]{get_reservation_coverage} \tab Retrieves the reservation coverage for your account \cr
 #'  \link[=costexplorer_get_reservation_purchase_recommendation]{get_reservation_purchase_recommendation} \tab Gets recommendations for which reservations to purchase \cr
 #'  \link[=costexplorer_get_reservation_utilization]{get_reservation_utilization} \tab Retrieves the reservation utilization for your account \cr
+#'  \link[=costexplorer_get_rightsizing_recommendation]{get_rightsizing_recommendation} \tab Creates recommendations that helps you save cost by identifying idle and underutilized Amazon EC2 instances \cr
+#'  \link[=costexplorer_get_savings_plans_coverage]{get_savings_plans_coverage} \tab Retrieves the Savings Plans covered for your account \cr
+#'  \link[=costexplorer_get_savings_plans_purchase_recommendation]{get_savings_plans_purchase_recommendation} \tab Retrieves your request parameters, Savings Plan Recommendations Summary and Details \cr
+#'  \link[=costexplorer_get_savings_plans_utilization]{get_savings_plans_utilization} \tab Retrieves the Savings Plans utilization for your account across date ranges with daily or monthly granularity \cr
+#'  \link[=costexplorer_get_savings_plans_utilization_details]{get_savings_plans_utilization_details} \tab Retrieves attribute data along with aggregate utilization and savings data for a given time period \cr
 #'  \link[=costexplorer_get_tags]{get_tags} \tab Queries for available tag keys and tag values for a specified period \cr
-#'  \link[=costexplorer_get_usage_forecast]{get_usage_forecast} \tab Retrieves a forecast for how much Amazon Web Services predicts that you will use over the forecast time period that you select, based on your past usage 
+#'  \link[=costexplorer_get_usage_forecast]{get_usage_forecast} \tab Retrieves a forecast for how much Amazon Web Services predicts that you will use over the forecast time period that you select, based on your past usage \cr
+#'  \link[=costexplorer_list_cost_category_definitions]{list_cost_category_definitions} \tab _COST CATEGORY IS IN PREVIEW RELEASE FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE \cr
+#'  \link[=costexplorer_update_cost_category_definition]{update_cost_category_definition} \tab _COST CATEGORY IS IN PREVIEW RELEASE FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE 
 #' }
 #'
 #' @rdname costexplorer
@@ -12226,7 +12488,8 @@ marketplaceentitlementservice <- function(config = list()) {
 #' **Submitting Metering Records**
 #' 
 #' -   *MeterUsage*- Submits the metering record for a Marketplace product.
-#'     MeterUsage is called from an EC2 instance.
+#'     MeterUsage is called from an EC2 instance or a container running on
+#'     EKS or ECS.
 #' 
 #' -   *BatchMeterUsage*- Submits the metering record for a set of
 #'     customers. BatchMeterUsage is called from a software-as-a-service
@@ -12244,13 +12507,11 @@ marketplaceentitlementservice <- function(config = list()) {
 #' 
 #' -   Paid container software products sold through AWS Marketplace must
 #'     integrate with the AWS Marketplace Metering Service and call the
-#'     RegisterUsage operation for software entitlement and metering.
-#'     Calling RegisterUsage from containers running outside of Amazon
-#'     Elastic Container Service (Amazon ECR) isn\'t supported. Free and
-#'     BYOL products for ECS aren\'t required to call RegisterUsage, but
-#'     you can do so if you want to receive usage data in your seller
-#'     reports. For more information on using the RegisterUsage operation,
-#'     see [Container-Based
+#'     RegisterUsage operation for software entitlement and metering. Free
+#'     and BYOL products for Amazon ECS or Amazon EKS aren\'t required to
+#'     call RegisterUsage, but you can do so if you want to receive usage
+#'     data in your seller reports. For more information on using the
+#'     RegisterUsage operation, see [Container-Based
 #'     Products](https://docs.aws.amazon.com/marketplace/latest/userguide/container-based-products.html).
 #' 
 #' BatchMeterUsage API calls are captured by AWS CloudTrail. You can use
@@ -12379,24 +12640,19 @@ pricing <- function(config = list()) {
 #' Amazon Connect Service
 #'
 #' @description
-#' The Amazon Connect API Reference provides descriptions, syntax, and
-#' usage examples for each of the Amazon Connect actions, data types,
-#' parameters, and errors. Amazon Connect is a cloud-based contact center
-#' solution that makes it easy to set up and manage a customer contact
-#' center and provide reliable customer engagement at any scale.
+#' Amazon Connect is a cloud-based contact center solution that makes it
+#' easy to set up and manage a customer contact center and provide reliable
+#' customer engagement at any scale.
 #' 
-#' Throttling limits for the Amazon Connect API operations:
+#' Amazon Connect provides rich metrics and real-time reporting that allow
+#' you to optimize contact routing. You can also resolve customer issues
+#' more efficiently by putting customers in touch with the right agents.
 #' 
-#' For the `GetMetricData` and `GetCurrentMetricData` operations, a
-#' RateLimit of 5 per second, and a BurstLimit of 8 per second.
-#' 
-#' For all other operations, a RateLimit of 2 per second, and a BurstLimit
-#' of 5 per second.
-#' 
-#' You can request an increase to the throttling limits by submitting a
-#' [Amazon Connect service limits increase
-#' form](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase).
-#' You must be signed in to your AWS account to access the form.
+#' There are limits to the number of Amazon Connect resources that you can
+#' create and limits to the number of requests that you can make per
+#' second. For more information, see [Amazon Connect Service
+#' Limits](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html)
+#' in the *Amazon Connect Administrator Guide*.
 #'
 #' @param
 #' config
@@ -12428,27 +12684,35 @@ pricing <- function(config = list()) {
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=connect_create_user]{create_user} \tab Creates a new user account in your Amazon Connect instance \cr
-#'  \link[=connect_delete_user]{delete_user} \tab Deletes a user account from Amazon Connect \cr
-#'  \link[=connect_describe_user]{describe_user} \tab Returns a User object that contains information about the user account specified by the UserId \cr
-#'  \link[=connect_describe_user_hierarchy_group]{describe_user_hierarchy_group} \tab Returns a HierarchyGroup object that includes information about a hierarchy group in your instance \cr
-#'  \link[=connect_describe_user_hierarchy_structure]{describe_user_hierarchy_structure} \tab Returns a HiearchyGroupStructure object, which contains data about the levels in the agent hierarchy \cr
-#'  \link[=connect_get_contact_attributes]{get_contact_attributes} \tab Retrieves the contact attributes associated with a contact \cr
-#'  \link[=connect_get_current_metric_data]{get_current_metric_data} \tab The GetCurrentMetricData operation retrieves current metric data from your Amazon Connect instance \cr
+#'  \link[=connect_create_user]{create_user} \tab Creates a user account for the specified Amazon Connect instance \cr
+#'  \link[=connect_delete_user]{delete_user} \tab Deletes a user account from the specified Amazon Connect instance \cr
+#'  \link[=connect_describe_user]{describe_user} \tab Describes the specified user account \cr
+#'  \link[=connect_describe_user_hierarchy_group]{describe_user_hierarchy_group} \tab Describes the specified hierarchy group \cr
+#'  \link[=connect_describe_user_hierarchy_structure]{describe_user_hierarchy_structure} \tab Describes the hierarchy structure of the specified Amazon Connect instance \cr
+#'  \link[=connect_get_contact_attributes]{get_contact_attributes} \tab Retrieves the contact attributes for the specified contact \cr
+#'  \link[=connect_get_current_metric_data]{get_current_metric_data} \tab Gets the real-time metric data from the specified Amazon Connect instance \cr
 #'  \link[=connect_get_federation_token]{get_federation_token} \tab Retrieves a token for federation \cr
-#'  \link[=connect_get_metric_data]{get_metric_data} \tab The GetMetricData operation retrieves historical metrics data from your Amazon Connect instance \cr
-#'  \link[=connect_list_routing_profiles]{list_routing_profiles} \tab Returns an array of RoutingProfileSummary objects that includes information about the routing profiles in your instance \cr
-#'  \link[=connect_list_security_profiles]{list_security_profiles} \tab Returns an array of SecurityProfileSummary objects that contain information about the security profiles in your instance, including the ARN, Id, and Name of the security profile\cr
-#'  \link[=connect_list_user_hierarchy_groups]{list_user_hierarchy_groups} \tab Returns a UserHierarchyGroupSummaryList, which is an array of HierarchyGroupSummary objects that contain information about the hierarchy groups in your instance \cr
-#'  \link[=connect_list_users]{list_users} \tab Returns a UserSummaryList, which is an array of UserSummary objects \cr
-#'  \link[=connect_start_outbound_voice_contact]{start_outbound_voice_contact} \tab The StartOutboundVoiceContact operation initiates a contact flow to place an outbound call to a customer \cr
-#'  \link[=connect_stop_contact]{stop_contact} \tab Ends the contact initiated by the StartOutboundVoiceContact operation \cr
-#'  \link[=connect_update_contact_attributes]{update_contact_attributes} \tab The UpdateContactAttributes operation lets you programmatically create new, or update existing, contact attributes associated with a contact \cr
-#'  \link[=connect_update_user_hierarchy]{update_user_hierarchy} \tab Assigns the specified hierarchy group to the user \cr
-#'  \link[=connect_update_user_identity_info]{update_user_identity_info} \tab Updates the identity information for the specified user in a UserIdentityInfo object, including email, first name, and last name \cr
-#'  \link[=connect_update_user_phone_config]{update_user_phone_config} \tab Updates the phone configuration settings in the UserPhoneConfig object for the specified user \cr
-#'  \link[=connect_update_user_routing_profile]{update_user_routing_profile} \tab Assigns the specified routing profile to a user \cr
-#'  \link[=connect_update_user_security_profiles]{update_user_security_profiles} \tab Updates the security profiles assigned to the user 
+#'  \link[=connect_get_metric_data]{get_metric_data} \tab Gets historical metric data from the specified Amazon Connect instance \cr
+#'  \link[=connect_list_contact_flows]{list_contact_flows} \tab Provides information about the contact flows for the specified Amazon Connect instance \cr
+#'  \link[=connect_list_hours_of_operations]{list_hours_of_operations} \tab Provides information about the hours of operation for the specified Amazon Connect instance \cr
+#'  \link[=connect_list_phone_numbers]{list_phone_numbers} \tab Provides information about the phone numbers for the specified Amazon Connect instance \cr
+#'  \link[=connect_list_queues]{list_queues} \tab Provides information about the queues for the specified Amazon Connect instance \cr
+#'  \link[=connect_list_routing_profiles]{list_routing_profiles} \tab Provides summary information about the routing profiles for the specified Amazon Connect instance \cr
+#'  \link[=connect_list_security_profiles]{list_security_profiles} \tab Provides summary information about the security profiles for the specified Amazon Connect instance\cr
+#'  \link[=connect_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource \cr
+#'  \link[=connect_list_user_hierarchy_groups]{list_user_hierarchy_groups} \tab Provides summary information about the hierarchy groups for the specified Amazon Connect instance \cr
+#'  \link[=connect_list_users]{list_users} \tab Provides summary information about the users for the specified Amazon Connect instance \cr
+#'  \link[=connect_start_chat_contact]{start_chat_contact} \tab Initiates a contact flow to start a new chat for the customer \cr
+#'  \link[=connect_start_outbound_voice_contact]{start_outbound_voice_contact} \tab Initiates a contact flow to place an outbound call to a customer \cr
+#'  \link[=connect_stop_contact]{stop_contact} \tab Ends the specified contact \cr
+#'  \link[=connect_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource \cr
+#'  \link[=connect_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource \cr
+#'  \link[=connect_update_contact_attributes]{update_contact_attributes} \tab Creates or updates the contact attributes associated with the specified contact \cr
+#'  \link[=connect_update_user_hierarchy]{update_user_hierarchy} \tab Assigns the specified hierarchy group to the specified user \cr
+#'  \link[=connect_update_user_identity_info]{update_user_identity_info} \tab Updates the identity information for the specified user \cr
+#'  \link[=connect_update_user_phone_config]{update_user_phone_config} \tab Updates the phone configuration settings for the specified user \cr
+#'  \link[=connect_update_user_routing_profile]{update_user_routing_profile} \tab Assigns the specified routing profile to the specified user \cr
+#'  \link[=connect_update_user_security_profiles]{update_user_security_profiles} \tab Assigns the specified security profiles to the specified user 
 #' }
 #'
 #' @rdname connect
@@ -12494,9 +12758,14 @@ connect <- function(config = list()) {
 #' \tabular{ll}{
 #'  \link[=pinpoint_create_app]{create_app} \tab Creates an application \cr
 #'  \link[=pinpoint_create_campaign]{create_campaign} \tab Creates a new campaign for an application or updates the settings of an existing campaign for an application \cr
-#'  \link[=pinpoint_create_export_job]{create_export_job} \tab Creates a new export job for an application \cr
-#'  \link[=pinpoint_create_import_job]{create_import_job} \tab Creates a new import job for an application \cr
+#'  \link[=pinpoint_create_email_template]{create_email_template} \tab Creates a message template that you can use in messages that are sent through the email channel \cr
+#'  \link[=pinpoint_create_export_job]{create_export_job} \tab Creates an export job for an application \cr
+#'  \link[=pinpoint_create_import_job]{create_import_job} \tab Creates an import job for an application \cr
+#'  \link[=pinpoint_create_journey]{create_journey} \tab Creates a journey for an application \cr
+#'  \link[=pinpoint_create_push_template]{create_push_template} \tab Creates a message template that you can use in messages that are sent through a push notification channel \cr
 #'  \link[=pinpoint_create_segment]{create_segment} \tab Creates a new segment for an application or updates the configuration, dimension, and other settings for an existing segment that's associated with an application\cr
+#'  \link[=pinpoint_create_sms_template]{create_sms_template} \tab Creates a message template that you can use in messages that are sent through the SMS channel \cr
+#'  \link[=pinpoint_create_voice_template]{create_voice_template} \tab Creates a message template that you can use in messages that are sent through the voice channel \cr
 #'  \link[=pinpoint_delete_adm_channel]{delete_adm_channel} \tab Disables the ADM channel for an application and deletes any existing settings for the channel \cr
 #'  \link[=pinpoint_delete_apns_channel]{delete_apns_channel} \tab Disables the APNs channel for an application and deletes any existing settings for the channel \cr
 #'  \link[=pinpoint_delete_apns_sandbox_channel]{delete_apns_sandbox_channel} \tab Disables the APNs sandbox channel for an application and deletes any existing settings for the channel \cr
@@ -12506,29 +12775,37 @@ connect <- function(config = list()) {
 #'  \link[=pinpoint_delete_baidu_channel]{delete_baidu_channel} \tab Disables the Baidu channel for an application and deletes any existing settings for the channel \cr
 #'  \link[=pinpoint_delete_campaign]{delete_campaign} \tab Deletes a campaign from an application \cr
 #'  \link[=pinpoint_delete_email_channel]{delete_email_channel} \tab Disables the email channel for an application and deletes any existing settings for the channel \cr
+#'  \link[=pinpoint_delete_email_template]{delete_email_template} \tab Deletes a message template that was designed for use in messages that were sent through the email channel \cr
 #'  \link[=pinpoint_delete_endpoint]{delete_endpoint} \tab Deletes an endpoint from an application \cr
 #'  \link[=pinpoint_delete_event_stream]{delete_event_stream} \tab Deletes the event stream for an application \cr
 #'  \link[=pinpoint_delete_gcm_channel]{delete_gcm_channel} \tab Disables the GCM channel for an application and deletes any existing settings for the channel \cr
+#'  \link[=pinpoint_delete_journey]{delete_journey} \tab Deletes a journey from an application \cr
+#'  \link[=pinpoint_delete_push_template]{delete_push_template} \tab Deletes a message template that was designed for use in messages that were sent through a push notification channel \cr
 #'  \link[=pinpoint_delete_segment]{delete_segment} \tab Deletes a segment from an application \cr
 #'  \link[=pinpoint_delete_sms_channel]{delete_sms_channel} \tab Disables the SMS channel for an application and deletes any existing settings for the channel \cr
+#'  \link[=pinpoint_delete_sms_template]{delete_sms_template} \tab Deletes a message template that was designed for use in messages that were sent through the SMS channel \cr
 #'  \link[=pinpoint_delete_user_endpoints]{delete_user_endpoints} \tab Deletes all the endpoints that are associated with a specific user ID \cr
 #'  \link[=pinpoint_delete_voice_channel]{delete_voice_channel} \tab Disables the voice channel for an application and deletes any existing settings for the channel \cr
+#'  \link[=pinpoint_delete_voice_template]{delete_voice_template} \tab Deletes a message template that was designed for use in messages that were sent through the voice channel \cr
 #'  \link[=pinpoint_get_adm_channel]{get_adm_channel} \tab Retrieves information about the status and settings of the ADM channel for an application \cr
 #'  \link[=pinpoint_get_apns_channel]{get_apns_channel} \tab Retrieves information about the status and settings of the APNs channel for an application \cr
 #'  \link[=pinpoint_get_apns_sandbox_channel]{get_apns_sandbox_channel} \tab Retrieves information about the status and settings of the APNs sandbox channel for an application \cr
 #'  \link[=pinpoint_get_apns_voip_channel]{get_apns_voip_channel} \tab Retrieves information about the status and settings of the APNs VoIP channel for an application \cr
 #'  \link[=pinpoint_get_apns_voip_sandbox_channel]{get_apns_voip_sandbox_channel} \tab Retrieves information about the status and settings of the APNs VoIP sandbox channel for an application \cr
 #'  \link[=pinpoint_get_app]{get_app} \tab Retrieves information about an application \cr
+#'  \link[=pinpoint_get_application_date_range_kpi]{get_application_date_range_kpi} \tab Retrieves (queries) pre-aggregated data for a standard metric that applies to an application \cr
 #'  \link[=pinpoint_get_application_settings]{get_application_settings} \tab Retrieves information about the settings for an application \cr
 #'  \link[=pinpoint_get_apps]{get_apps} \tab Retrieves information about all of your applications \cr
-#'  \link[=pinpoint_get_baidu_channel]{get_baidu_channel} \tab Retrieves information about the status and settings of the Baidu Cloud Push channel for an application \cr
+#'  \link[=pinpoint_get_baidu_channel]{get_baidu_channel} \tab Retrieves information about the status and settings of the Baidu channel for an application \cr
 #'  \link[=pinpoint_get_campaign]{get_campaign} \tab Retrieves information about the status, configuration, and other settings for a campaign \cr
-#'  \link[=pinpoint_get_campaign_activities]{get_campaign_activities} \tab Retrieves information about the activity performed by a campaign \cr
+#'  \link[=pinpoint_get_campaign_activities]{get_campaign_activities} \tab Retrieves information about all the activities for a campaign \cr
+#'  \link[=pinpoint_get_campaign_date_range_kpi]{get_campaign_date_range_kpi} \tab Retrieves (queries) pre-aggregated data for a standard metric that applies to a campaign \cr
 #'  \link[=pinpoint_get_campaign_version]{get_campaign_version} \tab Retrieves information about the status, configuration, and other settings for a specific version of a campaign \cr
-#'  \link[=pinpoint_get_campaign_versions]{get_campaign_versions} \tab Retrieves information about the status, configuration, and other settings for all versions of a specific campaign \cr
+#'  \link[=pinpoint_get_campaign_versions]{get_campaign_versions} \tab Retrieves information about the status, configuration, and other settings for all versions of a campaign \cr
 #'  \link[=pinpoint_get_campaigns]{get_campaigns} \tab Retrieves information about the status, configuration, and other settings for all the campaigns that are associated with an application \cr
 #'  \link[=pinpoint_get_channels]{get_channels} \tab Retrieves information about the history and status of each channel for an application \cr
 #'  \link[=pinpoint_get_email_channel]{get_email_channel} \tab Retrieves information about the status and settings of the email channel for an application \cr
+#'  \link[=pinpoint_get_email_template]{get_email_template} \tab Retrieves the content and settings for a message template that you can use in messages that are sent through the email channel \cr
 #'  \link[=pinpoint_get_endpoint]{get_endpoint} \tab Retrieves information about the settings and attributes of a specific endpoint for an application \cr
 #'  \link[=pinpoint_get_event_stream]{get_event_stream} \tab Retrieves information about the event stream settings for an application \cr
 #'  \link[=pinpoint_get_export_job]{get_export_job} \tab Retrieves information about the status and settings of a specific export job for an application \cr
@@ -12536,6 +12813,11 @@ connect <- function(config = list()) {
 #'  \link[=pinpoint_get_gcm_channel]{get_gcm_channel} \tab Retrieves information about the status and settings of the GCM channel for an application \cr
 #'  \link[=pinpoint_get_import_job]{get_import_job} \tab Retrieves information about the status and settings of a specific import job for an application \cr
 #'  \link[=pinpoint_get_import_jobs]{get_import_jobs} \tab Retrieves information about the status and settings of all the import jobs for an application \cr
+#'  \link[=pinpoint_get_journey]{get_journey} \tab Retrieves information about the status, configuration, and other settings for a journey \cr
+#'  \link[=pinpoint_get_journey_date_range_kpi]{get_journey_date_range_kpi} \tab Retrieves (queries) pre-aggregated data for a standard engagement metric that applies to a journey \cr
+#'  \link[=pinpoint_get_journey_execution_activity_metrics]{get_journey_execution_activity_metrics} \tab Retrieves (queries) pre-aggregated data for a standard execution metric that applies to a journey activity \cr
+#'  \link[=pinpoint_get_journey_execution_metrics]{get_journey_execution_metrics} \tab Retrieves (queries) pre-aggregated data for a standard execution metric that applies to a journey \cr
+#'  \link[=pinpoint_get_push_template]{get_push_template} \tab Retrieves the content and settings for a message template that you can use in messages that are sent through a push notification channel \cr
 #'  \link[=pinpoint_get_segment]{get_segment} \tab Retrieves information about the configuration, dimension, and other settings for a specific segment that's associated with an application \cr
 #'  \link[=pinpoint_get_segment_export_jobs]{get_segment_export_jobs} \tab Retrieves information about the status and settings of the export jobs for a segment \cr
 #'  \link[=pinpoint_get_segment_import_jobs]{get_segment_import_jobs} \tab Retrieves information about the status and settings of the import jobs for a segment \cr
@@ -12543,32 +12825,42 @@ connect <- function(config = list()) {
 #'  \link[=pinpoint_get_segment_versions]{get_segment_versions} \tab Retrieves information about the configuration, dimension, and other settings for all versions of a specific segment that's associated with an application \cr
 #'  \link[=pinpoint_get_segments]{get_segments} \tab Retrieves information about the configuration, dimension, and other settings for all the segments that are associated with an application \cr
 #'  \link[=pinpoint_get_sms_channel]{get_sms_channel} \tab Retrieves information about the status and settings of the SMS channel for an application \cr
+#'  \link[=pinpoint_get_sms_template]{get_sms_template} \tab Retrieves the content and settings for a message template that you can use in messages that are sent through the SMS channel \cr
 #'  \link[=pinpoint_get_user_endpoints]{get_user_endpoints} \tab Retrieves information about all the endpoints that are associated with a specific user ID \cr
 #'  \link[=pinpoint_get_voice_channel]{get_voice_channel} \tab Retrieves information about the status and settings of the voice channel for an application \cr
-#'  \link[=pinpoint_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves all the tags (keys and values) that are associated with an application, campaign, or segment \cr
+#'  \link[=pinpoint_get_voice_template]{get_voice_template} \tab Retrieves the content and settings for a message template that you can use in messages that are sent through the voice channel \cr
+#'  \link[=pinpoint_list_journeys]{list_journeys} \tab Retrieves information about the status, configuration, and other settings for all the journeys that are associated with an application \cr
+#'  \link[=pinpoint_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves all the tags (keys and values) that are associated with an application, campaign, journey, message template, or segment \cr
+#'  \link[=pinpoint_list_templates]{list_templates} \tab Retrieves information about all the message templates that are associated with your Amazon Pinpoint account \cr
 #'  \link[=pinpoint_phone_number_validate]{phone_number_validate} \tab Retrieves information about a phone number \cr
 #'  \link[=pinpoint_put_event_stream]{put_event_stream} \tab Creates a new event stream for an application or updates the settings of an existing event stream for an application \cr
 #'  \link[=pinpoint_put_events]{put_events} \tab Creates a new event to record for endpoints, or creates or updates endpoint data that existing events are associated with \cr
 #'  \link[=pinpoint_remove_attributes]{remove_attributes} \tab Removes one or more attributes, of the same attribute type, from all the endpoints that are associated with an application \cr
 #'  \link[=pinpoint_send_messages]{send_messages} \tab Creates and sends a direct message \cr
 #'  \link[=pinpoint_send_users_messages]{send_users_messages} \tab Creates and sends a message to a list of users \cr
-#'  \link[=pinpoint_tag_resource]{tag_resource} \tab Adds one or more tags (keys and values) to an application, campaign, or segment \cr
-#'  \link[=pinpoint_untag_resource]{untag_resource} \tab Removes one or more tags (keys and values) from an application, campaign, or segment \cr
-#'  \link[=pinpoint_update_adm_channel]{update_adm_channel} \tab Updates the ADM channel settings for an application \cr
-#'  \link[=pinpoint_update_apns_channel]{update_apns_channel} \tab Updates the APNs channel settings for an application \cr
-#'  \link[=pinpoint_update_apns_sandbox_channel]{update_apns_sandbox_channel} \tab Updates the APNs sandbox channel settings for an application \cr
-#'  \link[=pinpoint_update_apns_voip_channel]{update_apns_voip_channel} \tab Updates the APNs VoIP channel settings for an application \cr
-#'  \link[=pinpoint_update_apns_voip_sandbox_channel]{update_apns_voip_sandbox_channel} \tab Updates the settings for the APNs VoIP sandbox channel for an application \cr
+#'  \link[=pinpoint_tag_resource]{tag_resource} \tab Adds one or more tags (keys and values) to an application, campaign, journey, message template, or segment \cr
+#'  \link[=pinpoint_untag_resource]{untag_resource} \tab Removes one or more tags (keys and values) from an application, campaign, journey, message template, or segment \cr
+#'  \link[=pinpoint_update_adm_channel]{update_adm_channel} \tab Enables the ADM channel for an application or updates the status and settings of the ADM channel for an application \cr
+#'  \link[=pinpoint_update_apns_channel]{update_apns_channel} \tab Enables the APNs channel for an application or updates the status and settings of the APNs channel for an application \cr
+#'  \link[=pinpoint_update_apns_sandbox_channel]{update_apns_sandbox_channel} \tab Enables the APNs sandbox channel for an application or updates the status and settings of the APNs sandbox channel for an application \cr
+#'  \link[=pinpoint_update_apns_voip_channel]{update_apns_voip_channel} \tab Enables the APNs VoIP channel for an application or updates the status and settings of the APNs VoIP channel for an application \cr
+#'  \link[=pinpoint_update_apns_voip_sandbox_channel]{update_apns_voip_sandbox_channel} \tab Enables the APNs VoIP sandbox channel for an application or updates the status and settings of the APNs VoIP sandbox channel for an application \cr
 #'  \link[=pinpoint_update_application_settings]{update_application_settings} \tab Updates the settings for an application \cr
-#'  \link[=pinpoint_update_baidu_channel]{update_baidu_channel} \tab Updates the settings of the Baidu channel for an application \cr
-#'  \link[=pinpoint_update_campaign]{update_campaign} \tab Updates the settings for a campaign \cr
-#'  \link[=pinpoint_update_email_channel]{update_email_channel} \tab Updates the status and settings of the email channel for an application \cr
+#'  \link[=pinpoint_update_baidu_channel]{update_baidu_channel} \tab Enables the Baidu channel for an application or updates the status and settings of the Baidu channel for an application \cr
+#'  \link[=pinpoint_update_campaign]{update_campaign} \tab Updates the configuration and other settings for a campaign \cr
+#'  \link[=pinpoint_update_email_channel]{update_email_channel} \tab Enables the email channel for an application or updates the status and settings of the email channel for an application \cr
+#'  \link[=pinpoint_update_email_template]{update_email_template} \tab Updates an existing message template that you can use in messages that are sent through the email channel \cr
 #'  \link[=pinpoint_update_endpoint]{update_endpoint} \tab Creates a new endpoint for an application or updates the settings and attributes of an existing endpoint for an application \cr
 #'  \link[=pinpoint_update_endpoints_batch]{update_endpoints_batch} \tab Creates a new batch of endpoints for an application or updates the settings and attributes of a batch of existing endpoints for an application \cr
-#'  \link[=pinpoint_update_gcm_channel]{update_gcm_channel} \tab Updates the status and settings of the GCM channel for an application \cr
+#'  \link[=pinpoint_update_gcm_channel]{update_gcm_channel} \tab Enables the GCM channel for an application or updates the status and settings of the GCM channel for an application \cr
+#'  \link[=pinpoint_update_journey]{update_journey} \tab Updates the configuration and other settings for a journey \cr
+#'  \link[=pinpoint_update_journey_state]{update_journey_state} \tab Cancels an active journey \cr
+#'  \link[=pinpoint_update_push_template]{update_push_template} \tab Updates an existing message template that you can use in messages that are sent through a push notification channel \cr
 #'  \link[=pinpoint_update_segment]{update_segment} \tab Creates a new segment for an application or updates the configuration, dimension, and other settings for an existing segment that's associated with an application\cr
-#'  \link[=pinpoint_update_sms_channel]{update_sms_channel} \tab Updates the status and settings of the SMS channel for an application \cr
-#'  \link[=pinpoint_update_voice_channel]{update_voice_channel} \tab Updates the status and settings of the voice channel for an application 
+#'  \link[=pinpoint_update_sms_channel]{update_sms_channel} \tab Enables the SMS channel for an application or updates the status and settings of the SMS channel for an application \cr
+#'  \link[=pinpoint_update_sms_template]{update_sms_template} \tab Updates an existing message template that you can use in messages that are sent through the SMS channel \cr
+#'  \link[=pinpoint_update_voice_channel]{update_voice_channel} \tab Enables the voice channel for an application or updates the status and settings of the voice channel for an application \cr
+#'  \link[=pinpoint_update_voice_template]{update_voice_template} \tab Updates an existing message template that you can use in messages that are sent through the voice channel 
 #' }
 #'
 #' @rdname pinpoint
@@ -12580,16 +12872,35 @@ pinpoint <- function(config = list()) {
 #' Amazon Pinpoint Email Service
 #'
 #' @description
-#' This document contains reference information for the [Amazon
-#' Pinpoint](https://aws.amazon.com/pinpoint) Email API, version 1.0. This
-#' document is best used in conjunction with the [Amazon Pinpoint Developer
+#' Welcome to the *Amazon Pinpoint Email API Reference*. This guide
+#' provides information about the Amazon Pinpoint Email API (version 1.0),
+#' including supported operations, data types, parameters, and schemas.
+#' 
+#' [Amazon Pinpoint](https://aws.amazon.com/pinpoint) is an AWS service
+#' that you can use to engage with your customers across multiple messaging
+#' channels. You can use Amazon Pinpoint to send email, SMS text messages,
+#' voice messages, and push notifications. The Amazon Pinpoint Email API
+#' provides programmatic access to options that are unique to the email
+#' channel and supplement the options provided by the Amazon Pinpoint API.
+#' 
+#' If you\'re new to Amazon Pinpoint, you might find it helpful to also
+#' review the [Amazon Pinpoint Developer
 #' Guide](https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html).
+#' The *Amazon Pinpoint Developer Guide* provides tutorials, code samples,
+#' and procedures that demonstrate how to use Amazon Pinpoint features
+#' programmatically and how to integrate Amazon Pinpoint functionality into
+#' mobile apps and other types of applications. The guide also provides
+#' information about key topics such as Amazon Pinpoint integration with
+#' other AWS services and the limits that apply to using the service.
 #' 
 #' The Amazon Pinpoint Email API is available in several AWS Regions and it
 #' provides an endpoint for each of these Regions. For a list of all the
 #' Regions and endpoints where the API is currently available, see [AWS
-#' Regions and
+#' Service
 #' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#pinpoint_region)
+#' in the *Amazon Web Services General Reference*. To learn more about AWS
+#' Regions, see [Managing AWS
+#' Regions](https://docs.aws.amazon.com/general/latest/gr/rande-manage.html)
 #' in the *Amazon Web Services General Reference*.
 #' 
 #' In each Region, AWS maintains multiple Availability Zones. These
@@ -12832,7 +13143,7 @@ pinpointsmsvoice <- function(config = list()) {
 #'  \link[=ses_send_raw_email]{send_raw_email} \tab Composes an email message and immediately queues it for sending \cr
 #'  \link[=ses_send_templated_email]{send_templated_email} \tab Composes an email message using an email template and immediately queues it for sending \cr
 #'  \link[=ses_set_active_receipt_rule_set]{set_active_receipt_rule_set} \tab Sets the specified receipt rule set as the active receipt rule set \cr
-#'  \link[=ses_set_identity_dkim_enabled]{set_identity_dkim_enabled} \tab Enables or disables Easy DKIM signing of email sent from an identity: - If Easy DKIM signing is enabled for a domain name identity (such as example \cr
+#'  \link[=ses_set_identity_dkim_enabled]{set_identity_dkim_enabled} \tab Enables or disables Easy DKIM signing of email sent from an identity \cr
 #'  \link[=ses_set_identity_feedback_forwarding_enabled]{set_identity_feedback_forwarding_enabled} \tab Given an identity (an email address or a domain), enables or disables whether Amazon SES forwards bounce and complaint notifications as email \cr
 #'  \link[=ses_set_identity_headers_in_notifications_enabled]{set_identity_headers_in_notifications_enabled} \tab Given an identity (an email address or a domain), sets whether Amazon SES includes the original email headers in the Amazon Simple Notification Service (Amazon SNS) notifications of a specified type\cr
 #'  \link[=ses_set_identity_mail_from_domain]{set_identity_mail_from_domain} \tab Enables or disables the custom MAIL FROM domain setup for a verified identity (an email address or a domain) \cr

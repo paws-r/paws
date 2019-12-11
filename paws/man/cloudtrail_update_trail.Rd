@@ -14,11 +14,11 @@ cloudtrail_update_trail(Name, S3BucketName, S3KeyPrefix, SnsTopicName,
 the string must meet the following requirements:
 \itemize{
 \item Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-underscores (\_), or dashes (-)
+underscores (\\_), or dashes (-)
 \item Start with a letter or number, and end with a letter or number
 \item Be between 3 and 128 characters
 \item Have no adjacent periods, underscores or dashes. Names like
-\code{my-_namespace} and \code{my--namespace} are invalid.
+\verb{my-_namespace} and \code{my--namespace} are invalid.
 \item Not be in IP address format (for example, 192.168.5.4)
 }
 
@@ -27,11 +27,11 @@ If \code{Name} is a trail ARN, it must be in the format:
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 
 \item{S3BucketName}{Specifies the name of the Amazon S3 bucket designated for publishing log
-files. See \href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html}{Amazon S3 Bucket Naming Requirements}.}
+files. See \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html}{Amazon S3 Bucket Naming Requirements}.}
 
 \item{S3KeyPrefix}{Specifies the Amazon S3 key prefix that comes after the name of the
 bucket you have designated for log file delivery. For more information,
-see \href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html}{Finding Your CloudTrail Log Files}.
+see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html}{Finding Your CloudTrail Log Files}.
 The maximum length is 200 characters.}
 
 \item{SnsTopicName}{Specifies the name of the Amazon SNS topic defined for notification of
@@ -46,7 +46,8 @@ region and this value is set to true, shadow trails (replications of the
 trail) will be created in the other regions. If the trail exists in all
 regions and this value is set to false, the trail will remain in the
 region where it was created, and its shadow trails in other regions will
-be deleted.}
+be deleted. As a best practice, consider using trails that log events in
+all regions.}
 
 \item{EnableLogFileValidation}{Specifies whether log file validation is enabled. The default is false.
 
@@ -65,10 +66,10 @@ identifier that represents the log group to which CloudTrail logs will
 be delivered. Not required unless you specify CloudWatchLogsRoleArn.}
 
 \item{CloudWatchLogsRoleArn}{Specifies the role for the CloudWatch Logs endpoint to assume to write
-to a user's log group.}
+to a user\'s log group.}
 
 \item{KmsKeyId}{Specifies the KMS key ID to use to encrypt the logs delivered by
-CloudTrail. The value can be an alias name prefixed by "alias/", a
+CloudTrail. The value can be an alias name prefixed by \"alias/\", a
 fully specified ARN to an alias, a fully specified ARN to a key, or a
 globally unique identifier.
 

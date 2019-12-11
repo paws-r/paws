@@ -8,11 +8,18 @@ view and modify that status}
 s3_get_bucket_logging(Bucket)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The bucket name for which to get the logging information.}
 }
 \description{
 Returns the logging status of a bucket and the permissions users have to
 view and modify that status. To use GET, you must be the bucket owner.
+}
+\details{
+The following operations are related to \code{GetBucketLogging}:
+\itemize{
+\item CreateBucket
+\item PutBucketLogging
+}
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_logging(

@@ -7,7 +7,7 @@
 devicefarm_create_project(name, defaultJobTimeoutMinutes)
 }
 \arguments{
-\item{name}{[required] The project's name.}
+\item{name}{[required] The project\'s name.}
 
 \item{defaultJobTimeoutMinutes}{Sets the execution timeout value (in minutes) for a project. All test
 runs in this project will use the specified execution timeout value

@@ -17,7 +17,7 @@ cognitoidentityprovider_set_ui_customization(UserPoolId, ClientId, CSS,
 \item{ImageFile}{The uploaded logo image for the UI customization.}
 }
 \description{
-Sets the UI customization information for a user pool's built-in app
+Sets the UI customization information for a user pool\'s built-in app
 UI.
 }
 \details{
@@ -29,7 +29,7 @@ UI customization settings for a particular client, it will no longer
 fall back to the \code{ALL} configuration.
 
 To use this API, your user pool must have a domain associated with it.
-Otherwise, there is no place to host the app's pages, and the service
+Otherwise, there is no place to host the app\'s pages, and the service
 will throw an error.
 }
 \section{Request syntax}{

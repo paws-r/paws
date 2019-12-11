@@ -8,18 +8,18 @@ snowball_list_cluster_jobs(ClusterId, MaxResults, NextToken)
 }
 \arguments{
 \item{ClusterId}{[required] The 39-character ID for the cluster that you want to list, for example
-\code{CID123e4567-e89b-12d3-a456-426655440000}.}
+\verb{CID123e4567-e89b-12d3-a456-426655440000}.}
 
 \item{MaxResults}{The number of \code{JobListEntry} objects to return.}
 
-\item{NextToken}{HTTP requests are stateless. To identify what object comes "next" in
+\item{NextToken}{HTTP requests are stateless. To identify what object comes \"next\" in
 the list of \code{JobListEntry} objects, you have the option of specifying
 \code{NextToken} as the starting point for your returned list.}
 }
 \description{
 Returns an array of \code{JobListEntry} objects of the specified length. Each
 \code{JobListEntry} object is for a job in the specified cluster and contains
-a job's state, a job's ID, and other information.
+a job\'s state, a job\'s ID, and other information.
 }
 \section{Request syntax}{
 \preformatted{svc$list_cluster_jobs(

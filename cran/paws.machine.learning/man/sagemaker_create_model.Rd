@@ -78,6 +78,7 @@ grant necessary permissions via this role.
   PrimaryContainer = list(
     ContainerHostname = "string",
     Image = "string",
+    Mode = "SingleModel"|"MultiModel",
     ModelDataUrl = "string",
     Environment = list(
       "string"
@@ -88,6 +89,7 @@ grant necessary permissions via this role.
     list(
       ContainerHostname = "string",
       Image = "string",
+      Mode = "SingleModel"|"MultiModel",
       ModelDataUrl = "string",
       Environment = list(
         "string"

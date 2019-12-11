@@ -2,15 +2,36 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_delete_bucket_lifecycle}
 \alias{s3_delete_bucket_lifecycle}
-\title{Deletes the lifecycle configuration from the bucket}
+\title{Deletes the lifecycle configuration from the specified bucket}
 \usage{
 s3_delete_bucket_lifecycle(Bucket)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] The bucket name of the lifecycle to delete.}
 }
 \description{
-Deletes the lifecycle configuration from the bucket.
+Deletes the lifecycle configuration from the specified bucket. Amazon S3
+removes all the lifecycle configuration rules in the lifecycle
+subresource associated with the bucket. Your objects never expire, and
+Amazon S3 no longer automatically deletes any objects on the basis of
+rules contained in the deleted lifecycle configuration.
+}
+\details{
+To use this operation, you must have permission to perform the
+\code{s3:PutLifecycleConfiguration} action. By default, the bucket owner has
+this permission and the bucket owner can grant this permission to
+others.
+
+There is usually some time lag before lifecycle configuration deletion
+is fully propagated to all the Amazon S3 systems.
+
+For more information about the object expiration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#intro-lifecycle-rules-actions}{Elements to Describe Lifecycle Actions}.
+
+Related actions include:
+\itemize{
+\item PutBucketLifecycleConfiguration
+\item GetBucketLifecycleConfiguration
+}
 }
 \section{Request syntax}{
 \preformatted{svc$delete_bucket_lifecycle(

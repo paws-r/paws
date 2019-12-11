@@ -19,7 +19,7 @@ Creates an AWS IoT policy.
 \details{
 The created policy is the default version for the policy. This operation
 creates a policy version with a version identifier of \strong{1} and sets
-\strong{1} as the policy's default version.
+\strong{1} as the policy\'s default version.
 }
 \section{Request syntax}{
 \preformatted{svc$create_policy(

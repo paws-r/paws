@@ -7,7 +7,7 @@ NULL
 #' received by the job worker
 #'
 #' Returns information about a specified job and whether that job has been
-#' received by the job worker. Only used for custom actions.
+#' received by the job worker. Used for custom actions only.
 #'
 #' @usage
 #' codepipeline_acknowledge_job(jobId, nonce)
@@ -48,8 +48,8 @@ codepipeline_acknowledge_job <- function(jobId, nonce) {
 
 #' Confirms a job worker has received the specified job
 #'
-#' Confirms a job worker has received the specified job. Only used for
-#' partner actions.
+#' Confirms a job worker has received the specified job. Used for partner
+#' actions only.
 #'
 #' @usage
 #' codepipeline_acknowledge_third_party_job(jobId, nonce, clientToken)
@@ -185,6 +185,11 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #' Creates a pipeline
 #'
 #' Creates a pipeline.
+#' 
+#' In the pipeline structure, you must include either `artifactStore` or
+#' `artifactStores` in your pipeline, but you cannot use both. If you
+#' create a cross-region action in your pipeline, you must use
+#' `artifactStores`.
 #'
 #' @usage
 #' codepipeline_create_pipeline(pipeline, tags)
@@ -250,7 +255,8 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'               )
 #'             ),
 #'             roleArn = "string",
-#'             region = "string"
+#'             region = "string",
+#'             namespace = "string"
 #'           )
 #'         )
 #'       )
@@ -289,8 +295,8 @@ codepipeline_create_pipeline <- function(pipeline, tags = NULL) {
 #' Marks a custom action as deleted
 #'
 #' Marks a custom action as deleted. `PollForJobs` for the custom action
-#' will fail after the action is marked for deletion. Only used for custom
-#' actions.
+#' fails after the action is marked for deletion. Used for custom actions
+#' only.
 #' 
 #' To re-create a custom action after it has been deleted you must use a
 #' string in the version field that has never been used before. This string
@@ -376,7 +382,7 @@ codepipeline_delete_pipeline <- function(name) {
 #'
 #' Deletes a previously created webhook by name. Deleting the webhook stops
 #' AWS CodePipeline from starting a pipeline every time an external event
-#' occurs. The API will return successfully when trying to delete a webhook
+#' occurs. The API returns successfully when trying to delete a webhook
 #' that is already deleted. If a deleted webhook is re-created by calling
 #' PutWebhook with the same name, it will have a different URL.
 #'
@@ -417,7 +423,7 @@ codepipeline_delete_webhook <- function(name) {
 #'
 #' Removes the connection between the webhook that was created by
 #' CodePipeline and the external tool with events to be detected. Currently
-#' only supported for webhooks that target an action type of GitHub.
+#' supported only for webhooks that target an action type of GitHub.
 #'
 #' @usage
 #' codepipeline_deregister_webhook_with_third_party(webhookName)
@@ -465,11 +471,11 @@ codepipeline_deregister_webhook_with_third_party <- function(webhookName = NULL)
 #' artifacts from one stage to another.
 #' @param stageName &#91;required&#93; The name of the stage where you want to disable the inbound or outbound
 #' transition of artifacts.
-#' @param transitionType &#91;required&#93; Specifies whether artifacts will be prevented from transitioning into
-#' the stage and being processed by the actions in that stage (inbound), or
+#' @param transitionType &#91;required&#93; Specifies whether artifacts are prevented from transitioning into the
+#' stage and being processed by the actions in that stage (inbound), or
 #' prevented from transitioning from the stage after they have been
 #' processed by the actions in that stage (outbound).
-#' @param reason &#91;required&#93; The reason given to the user why a stage is disabled, such as waiting
+#' @param reason &#91;required&#93; The reason given to the user that a stage is disabled, such as waiting
 #' for manual approval or manual tests. This message is displayed in the
 #' pipeline console UI.
 #'
@@ -516,10 +522,10 @@ codepipeline_disable_stage_transition <- function(pipelineName, stageName, trans
 #' @param stageName &#91;required&#93; The name of the stage where you want to enable the transition of
 #' artifacts, either into the stage (inbound) or from that stage to the
 #' next stage (outbound).
-#' @param transitionType &#91;required&#93; Specifies whether artifacts will be allowed to enter the stage and be
-#' processed by the actions in that stage (inbound) or whether
-#' already-processed artifacts will be allowed to transition to the next
-#' stage (outbound).
+#' @param transitionType &#91;required&#93; Specifies whether artifacts are allowed to enter the stage and be
+#' processed by the actions in that stage (inbound) or whether already
+#' processed artifacts are allowed to transition to the next stage
+#' (outbound).
 #'
 #' @section Request syntax:
 #' ```
@@ -552,13 +558,13 @@ codepipeline_enable_stage_transition <- function(pipelineName, stageName, transi
 
 #' Returns information about a job
 #'
-#' Returns information about a job. Only used for custom actions.
+#' Returns information about a job. Used for custom actions only.
 #' 
 #' When this API is called, AWS CodePipeline returns temporary credentials
 #' for the Amazon S3 bucket used to store artifacts for the pipeline, if
 #' the action requires access to that Amazon S3 bucket for input or output
-#' artifacts. Additionally, this API returns any secret values defined for
-#' the action.
+#' artifacts. This API also returns any secret values defined for the
+#' action.
 #'
 #' @usage
 #' codepipeline_get_job_details(jobId)
@@ -603,9 +609,9 @@ codepipeline_get_job_details <- function(jobId) {
 #' codepipeline_get_pipeline(name, version)
 #'
 #' @param name &#91;required&#93; The name of the pipeline for which you want to get information. Pipeline
-#' names must be unique under an Amazon Web Services (AWS) user account.
+#' names must be unique under an AWS user account.
 #' @param version The version number of the pipeline. If you do not specify a version,
-#' defaults to the most current version.
+#' defaults to the current version.
 #'
 #' @section Request syntax:
 #' ```
@@ -722,14 +728,14 @@ codepipeline_get_pipeline_state <- function(name) {
 
 #' Requests the details of a job for a third party action
 #'
-#' Requests the details of a job for a third party action. Only used for
-#' partner actions.
+#' Requests the details of a job for a third party action. Used for partner
+#' actions only.
 #' 
 #' When this API is called, AWS CodePipeline returns temporary credentials
 #' for the Amazon S3 bucket used to store artifacts for the pipeline, if
 #' the action requires access to that Amazon S3 bucket for input or output
-#' artifacts. Additionally, this API returns any secret values defined for
-#' the action.
+#' artifacts. This API also returns any secret values defined for the
+#' action.
 #'
 #' @usage
 #' codepipeline_get_third_party_job_details(jobId, clientToken)
@@ -917,8 +923,8 @@ codepipeline_list_pipeline_executions <- function(pipelineName, maxResults = NUL
 #' @usage
 #' codepipeline_list_pipelines(nextToken)
 #'
-#' @param nextToken An identifier that was returned from the previous list pipelines call,
-#' which can be used to return the next set of pipelines in the list.
+#' @param nextToken An identifier that was returned from the previous list pipelines call.
+#' It can be used to return the next set of pipelines in the list.
 #'
 #' @section Request syntax:
 #' ```
@@ -947,10 +953,10 @@ codepipeline_list_pipelines <- function(nextToken = NULL) {
 }
 .codepipeline$operations$list_pipelines <- codepipeline_list_pipelines
 
-#' Gets the set of key/value pairs (metadata) that are used to manage the
+#' Gets the set of key-value pairs (metadata) that are used to manage the
 #' resource
 #'
-#' Gets the set of key/value pairs (metadata) that are used to manage the
+#' Gets the set of key-value pairs (metadata) that are used to manage the
 #' resource.
 #'
 #' @usage
@@ -958,9 +964,8 @@ codepipeline_list_pipelines <- function(nextToken = NULL) {
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to get tags for.
 #' @param nextToken The token that was returned from the previous API call, which would be
-#' used to return the next page of the list. However, the
-#' ListTagsforResource call lists all available tags in one call and does
-#' not use pagination.
+#' used to return the next page of the list. The ListTagsforResource call
+#' lists all available tags in one call and does not use pagination.
 #' @param maxResults The maximum number of results to return in a single call.
 #'
 #' @section Request syntax:
@@ -992,10 +997,10 @@ codepipeline_list_tags_for_resource <- function(resourceArn, nextToken = NULL, m
 }
 .codepipeline$operations$list_tags_for_resource <- codepipeline_list_tags_for_resource
 
-#' Gets a listing of all the webhooks in this region for this account
+#' Gets a listing of all the webhooks in this AWS Region for this account
 #'
-#' Gets a listing of all the webhooks in this region for this account. The
-#' output lists all webhooks and includes the webhook URL and ARN, as well
+#' Gets a listing of all the webhooks in this AWS Region for this account.
+#' The output lists all webhooks and includes the webhook URL and ARN and
 #' the configuration for each webhook.
 #'
 #' @usage
@@ -1035,18 +1040,18 @@ codepipeline_list_webhooks <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .codepipeline$operations$list_webhooks <- codepipeline_list_webhooks
 
-#' Returns information about any jobs for AWS CodePipeline to act upon
+#' Returns information about any jobs for AWS CodePipeline to act on
 #'
-#' Returns information about any jobs for AWS CodePipeline to act upon.
-#' `PollForJobs` is only valid for action types with \"Custom\" in the
+#' Returns information about any jobs for AWS CodePipeline to act on.
+#' `PollForJobs` is valid only for action types with \"Custom\" in the
 #' owner field. If the action type contains \"AWS\" or \"ThirdParty\" in
 #' the owner field, the `PollForJobs` action returns an error.
 #' 
 #' When this API is called, AWS CodePipeline returns temporary credentials
 #' for the Amazon S3 bucket used to store artifacts for the pipeline, if
 #' the action requires access to that Amazon S3 bucket for input or output
-#' artifacts. Additionally, this API returns any secret values defined for
-#' the action.
+#' artifacts. This API also returns any secret values defined for the
+#' action.
 #'
 #' @usage
 #' codepipeline_poll_for_jobs(actionTypeId, maxBatchSize, queryParam)
@@ -1056,8 +1061,8 @@ codepipeline_list_webhooks <- function(NextToken = NULL, MaxResults = NULL) {
 #' @param queryParam A map of property names and values. For an action type with no queryable
 #' properties, this value must be null or an empty map. For an action type
 #' with a queryable property, you must supply that property as a key in the
-#' map. Only jobs whose action configuration matches the mapped value will
-#' be returned.
+#' map. Only jobs whose action configuration matches the mapped value are
+#' returned.
 #'
 #' @section Request syntax:
 #' ```
@@ -1099,7 +1104,7 @@ codepipeline_poll_for_jobs <- function(actionTypeId, maxBatchSize = NULL, queryP
 #' act on
 #'
 #' Determines whether there are any third party jobs for a job worker to
-#' act on. Only used for partner actions.
+#' act on. Used for partner actions only.
 #' 
 #' When this API is called, AWS CodePipeline returns temporary credentials
 #' for the Amazon S3 bucket used to store artifacts for the pipeline, if
@@ -1154,11 +1159,11 @@ codepipeline_poll_for_third_party_jobs <- function(actionTypeId, maxBatchSize = 
 #' codepipeline_put_action_revision(pipelineName, stageName, actionName,
 #'   actionRevision)
 #'
-#' @param pipelineName &#91;required&#93; The name of the pipeline that will start processing the revision to the
+#' @param pipelineName &#91;required&#93; The name of the pipeline that starts processing the revision to the
 #' source.
-#' @param stageName &#91;required&#93; The name of the stage that contains the action that will act upon the
+#' @param stageName &#91;required&#93; The name of the stage that contains the action that acts on the
 #' revision.
-#' @param actionName &#91;required&#93; The name of the action that will process the revision.
+#' @param actionName &#91;required&#93; The name of the action that processes the revision.
 #' @param actionRevision &#91;required&#93; Represents information about the version (or revision) of an action.
 #'
 #' @section Request syntax:
@@ -1212,7 +1217,7 @@ codepipeline_put_action_revision <- function(pipelineName, stageName, actionName
 #' @param result &#91;required&#93; Represents information about the result of the approval request.
 #' @param token &#91;required&#93; The system-generated token used to identify a unique approval request.
 #' The token for each open approval request can be obtained using the
-#' GetPipelineState action and is used to validate that the approval
+#' GetPipelineState action. It is used to validate that the approval
 #' request corresponding to this token is still valid.
 #'
 #' @section Request syntax:
@@ -1253,7 +1258,7 @@ codepipeline_put_approval_result <- function(pipelineName, stageName, actionName
 #' worker
 #'
 #' Represents the failure of a job as returned to the pipeline by a job
-#' worker. Only used for custom actions.
+#' worker. Used for custom actions only.
 #'
 #' @usage
 #' codepipeline_put_job_failure_result(jobId, failureDetails)
@@ -1298,24 +1303,27 @@ codepipeline_put_job_failure_result <- function(jobId, failureDetails) {
 #' worker
 #'
 #' Represents the success of a job as returned to the pipeline by a job
-#' worker. Only used for custom actions.
+#' worker. Used for custom actions only.
 #'
 #' @usage
 #' codepipeline_put_job_success_result(jobId, currentRevision,
-#'   continuationToken, executionDetails)
+#'   continuationToken, executionDetails, outputVariables)
 #'
 #' @param jobId &#91;required&#93; The unique system-generated ID of the job that succeeded. This is the
 #' same ID returned from `PollForJobs`.
-#' @param currentRevision The ID of the current revision of the artifact successfully worked upon
-#' by the job.
+#' @param currentRevision The ID of the current revision of the artifact successfully worked on by
+#' the job.
 #' @param continuationToken A token generated by a job worker, such as an AWS CodeDeploy deployment
 #' ID, that a successful job provides to identify a custom action in
-#' progress. Future jobs will use this token in order to identify the
-#' running instance of the action. It can be reused to return additional
-#' information about the progress of the custom action. When the action is
-#' complete, no continuation token should be supplied.
+#' progress. Future jobs use this token to identify the running instance of
+#' the action. It can be reused to return more information about the
+#' progress of the custom action. When the action is complete, no
+#' continuation token should be supplied.
 #' @param executionDetails The execution details of the successful job, such as the actions taken
 #' by the job worker.
+#' @param outputVariables Key-value pairs produced as output by a job worker that can be made
+#' available to a downstream action configuration. `outputVariables` can be
+#' included only when there is no continuation token on the request.
 #'
 #' @section Request syntax:
 #' ```
@@ -1334,6 +1342,9 @@ codepipeline_put_job_failure_result <- function(jobId, failureDetails) {
 #'     summary = "string",
 #'     externalExecutionId = "string",
 #'     percentComplete = 123
+#'   ),
+#'   outputVariables = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -1341,14 +1352,14 @@ codepipeline_put_job_failure_result <- function(jobId, failureDetails) {
 #' @keywords internal
 #'
 #' @rdname codepipeline_put_job_success_result
-codepipeline_put_job_success_result <- function(jobId, currentRevision = NULL, continuationToken = NULL, executionDetails = NULL) {
+codepipeline_put_job_success_result <- function(jobId, currentRevision = NULL, continuationToken = NULL, executionDetails = NULL, outputVariables = NULL) {
   op <- new_operation(
     name = "PutJobSuccessResult",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codepipeline$put_job_success_result_input(jobId = jobId, currentRevision = currentRevision, continuationToken = continuationToken, executionDetails = executionDetails)
+  input <- .codepipeline$put_job_success_result_input(jobId = jobId, currentRevision = currentRevision, continuationToken = continuationToken, executionDetails = executionDetails, outputVariables = outputVariables)
   output <- .codepipeline$put_job_success_result_output()
   config <- get_config()
   svc <- .codepipeline$service(config)
@@ -1362,7 +1373,7 @@ codepipeline_put_job_success_result <- function(jobId, currentRevision = NULL, c
 #' by a job worker
 #'
 #' Represents the failure of a third party job as returned to the pipeline
-#' by a job worker. Only used for partner actions.
+#' by a job worker. Used for partner actions only.
 #'
 #' @usage
 #' codepipeline_put_third_party_job_failure_result(jobId, clientToken,
@@ -1412,7 +1423,7 @@ codepipeline_put_third_party_job_failure_result <- function(jobId, clientToken, 
 #' by a job worker
 #'
 #' Represents the success of a third party job as returned to the pipeline
-#' by a job worker. Only used for partner actions.
+#' by a job worker. Used for partner actions only.
 #'
 #' @usage
 #' codepipeline_put_third_party_job_success_result(jobId, clientToken,
@@ -1426,10 +1437,10 @@ codepipeline_put_third_party_job_failure_result <- function(jobId, clientToken, 
 #' @param currentRevision Represents information about a current revision.
 #' @param continuationToken A token generated by a job worker, such as an AWS CodeDeploy deployment
 #' ID, that a successful job provides to identify a partner action in
-#' progress. Future jobs will use this token in order to identify the
-#' running instance of the action. It can be reused to return additional
-#' information about the progress of the partner action. When the action is
-#' complete, no continuation token should be supplied.
+#' progress. Future jobs use this token to identify the running instance of
+#' the action. It can be reused to return more information about the
+#' progress of the partner action. When the action is complete, no
+#' continuation token should be supplied.
 #' @param executionDetails The details of the actions taken and results produced on an artifact as
 #' it passes through stages in the pipeline.
 #'
@@ -1493,9 +1504,9 @@ codepipeline_put_third_party_job_success_result <- function(jobId, clientToken, 
 #'
 #' @param webhook &#91;required&#93; The detail provided in an input file to create the webhook, such as the
 #' webhook name, the pipeline name, and the action name. Give the webhook a
-#' unique name which identifies the webhook being defined. You may choose
-#' to name the webhook after the pipeline and action it targets so that you
-#' can easily recognize what it\'s used for later.
+#' unique name that helps you identify it. You might name the webhook after
+#' the pipeline and action it targets so that you can easily recognize what
+#' it\'s used for later.
 #' @param tags The tags for the webhook.
 #'
 #' @section Request syntax:
@@ -1589,7 +1600,9 @@ codepipeline_register_webhook_with_third_party <- function(webhookName = NULL) {
 #' stage
 #'
 #' Resumes the pipeline execution by retrying the last failed actions in a
-#' stage.
+#' stage. You can retry a stage immediately if any of the actions in the
+#' stage fail. When you retry, all actions that are still in progress
+#' continue working, and failed actions are triggered again.
 #'
 #' @usage
 #' codepipeline_retry_stage_execution(pipelineName, stageName,
@@ -1760,9 +1773,9 @@ codepipeline_untag_resource <- function(resourceArn, tagKeys) {
 #' Updates a specified pipeline with edits or changes to its structure
 #'
 #' Updates a specified pipeline with edits or changes to its structure. Use
-#' a JSON file with the pipeline structure in conjunction with
-#' `UpdatePipeline` to provide the full structure of the pipeline. Updating
-#' the pipeline increases the version number of the pipeline by 1.
+#' a JSON file with the pipeline structure and `UpdatePipeline` to provide
+#' the full structure of the pipeline. Updating the pipeline increases the
+#' version number of the pipeline by 1.
 #'
 #' @usage
 #' codepipeline_update_pipeline(pipeline)
@@ -1826,7 +1839,8 @@ codepipeline_untag_resource <- function(resourceArn, tagKeys) {
 #'               )
 #'             ),
 #'             roleArn = "string",
-#'             region = "string"
+#'             region = "string",
+#'             namespace = "string"
 #'           )
 #'         )
 #'       )

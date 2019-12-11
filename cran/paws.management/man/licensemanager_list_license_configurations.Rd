@@ -2,28 +2,33 @@
 % Please edit documentation in R/licensemanager_operations.R
 \name{licensemanager_list_license_configurations}
 \alias{licensemanager_list_license_configurations}
-\title{Lists license configuration objects for an account, each containing the
-name, description, license type, and other license terms modeled from a
-license agreement}
+\title{Lists the license configurations for your account}
 \usage{
 licensemanager_list_license_configurations(LicenseConfigurationArns,
   MaxResults, NextToken, Filters)
 }
 \arguments{
-\item{LicenseConfigurationArns}{An array of ARNs for the calling account's license configurations.}
+\item{LicenseConfigurationArns}{Amazon Resource Names (ARN) of the license configurations.}
 
-\item{MaxResults}{Maximum number of results to return in a single call. To retrieve the
-remaining results, make another call with the returned \code{NextToken}
-value.}
+\item{MaxResults}{Maximum number of results to return in a single call.}
 
 \item{NextToken}{Token for the next set of results.}
 
-\item{Filters}{One or more filters.}
+\item{Filters}{Filters to scope the results. The following filters and logical
+operators are supported:
+\itemize{
+\item \code{licenseCountingType} - The dimension on which licenses are counted
+(vCPU). Logical operators are \code{EQUALS} \\| \code{NOT_EQUALS}.
+\item \code{enforceLicenseCount} - A Boolean value that indicates whether hard
+license enforcement is used. Logical operators are \code{EQUALS} \\|
+\code{NOT_EQUALS}.
+\item \code{usagelimitExceeded} - A Boolean value that indicates whether the
+available licenses have been exceeded. Logical operators are
+\code{EQUALS} \\| \code{NOT_EQUALS}.
+}}
 }
 \description{
-Lists license configuration objects for an account, each containing the
-name, description, license type, and other license terms modeled from a
-license agreement.
+Lists the license configurations for your account.
 }
 \section{Request syntax}{
 \preformatted{svc$list_license_configurations(

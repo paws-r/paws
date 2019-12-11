@@ -7,7 +7,7 @@ or DynamoDB Streams settings for a given table}
 \usage{
 dynamodb_update_table(AttributeDefinitions, TableName, BillingMode,
   ProvisionedThroughput, GlobalSecondaryIndexUpdates, StreamSpecification,
-  SSESpecification)
+  SSESpecification, ReplicaUpdates)
 }
 \arguments{
 \item{AttributeDefinitions}{An array of attributes that describe the key schema for the table and
@@ -23,10 +23,11 @@ provisioned capacity values are estimated based on the consumed read and
 write capacity of your table and global secondary indexes over the past
 30 minutes.
 \itemize{
-\item \code{PROVISIONED} - Sets the billing mode to \code{PROVISIONED}. We recommend
-using \code{PROVISIONED} for predictable workloads.
-\item \code{PAY_PER_REQUEST} - Sets the billing mode to \code{PAY_PER_REQUEST}. We
-recommend using \code{PAY_PER_REQUEST} for unpredictable workloads.
+\item \code{PROVISIONED} - We recommend using \code{PROVISIONED} for predictable
+workloads. \code{PROVISIONED} sets the billing mode to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual}{Provisioned Mode}.
+\item \code{PAY_PER_REQUEST} - We recommend using \code{PAY_PER_REQUEST} for
+unpredictable workloads. \code{PAY_PER_REQUEST} sets the billing mode to
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand}{On-Demand Mode}.
 }}
 
 \item{ProvisionedThroughput}{The new provisioned throughput settings for the specified table or
@@ -41,6 +42,9 @@ global secondary index.
 \item \code{Delete} - remove a global secondary index from the table.
 }
 
+You can create or delete only one global secondary index per
+\code{UpdateTable} operation.
+
 For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html}{Managing Global Secondary Indexes}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
@@ -48,9 +52,15 @@ in the \emph{Amazon DynamoDB Developer Guide}.}
 
 You receive a \code{ResourceInUseException} if you try to enable a stream on
 a table that already has a stream, or if you try to disable a stream on
-a table that doesn't have a stream.}
+a table that doesn\'t have a stream.}
 
 \item{SSESpecification}{The new server-side encryption settings for the specified table.}
+
+\item{ReplicaUpdates}{A list of replica update actions (create, delete, or update) for the
+table.
+
+This property only applies to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html}{Version 2019.11.21}
+of global tables.}
 }
 \description{
 Modifies the provisioned throughput settings, global secondary indexes,
@@ -128,6 +138,43 @@ complete.
     Enabled = TRUE|FALSE,
     SSEType = "AES256"|"KMS",
     KMSMasterKeyId = "string"
+  ),
+  ReplicaUpdates = list(
+    list(
+      Create = list(
+        RegionName = "string",
+        KMSMasterKeyId = "string",
+        ProvisionedThroughputOverride = list(
+          ReadCapacityUnits = 123
+        ),
+        GlobalSecondaryIndexes = list(
+          list(
+            IndexName = "string",
+            ProvisionedThroughputOverride = list(
+              ReadCapacityUnits = 123
+            )
+          )
+        )
+      ),
+      Update = list(
+        RegionName = "string",
+        KMSMasterKeyId = "string",
+        ProvisionedThroughputOverride = list(
+          ReadCapacityUnits = 123
+        ),
+        GlobalSecondaryIndexes = list(
+          list(
+            IndexName = "string",
+            ProvisionedThroughputOverride = list(
+              ReadCapacityUnits = 123
+            )
+          )
+        )
+      ),
+      Delete = list(
+        RegionName = "string"
+      )
+    )
   )
 )
 }

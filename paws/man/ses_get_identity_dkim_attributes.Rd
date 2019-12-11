@@ -24,7 +24,7 @@ following information for each:
 \item A set of DKIM tokens that represent the identity. If the identity is
 an email address, the tokens represent the domain of that address.
 \item Whether Amazon SES has successfully verified the DKIM tokens
-published in the domain's DNS. This information is only returned
+published in the domain\'s DNS. This information is only returned
 for domain name identities, not for email addresses.
 }
 

@@ -5,7 +5,7 @@
 \title{Creates a new OriginEndpoint record}
 \usage{
 mediapackage_create_origin_endpoint(ChannelId, CmafPackage, DashPackage,
-  Description, HlsPackage, Id, ManifestName, MssPackage,
+  Description, HlsPackage, Id, ManifestName, MssPackage, Origination,
   StartoverWindowSeconds, Tags, TimeDelaySeconds, Whitelist)
 }
 \arguments{
@@ -26,6 +26,10 @@ and it cannot be changed after the OriginEndpoint is created.}
 \item{ManifestName}{A short string that will be used as the filename of the OriginEndpoint URL (defaults to "index").}
 
 \item{MssPackage}{}
+
+\item{Origination}{Control whether origination of video is allowed for this OriginEndpoint. If set to ALLOW, the OriginEndpoint
+may by requested, pursuant to any other form of access control. If set to DENY, the OriginEndpoint may not be
+requested. This can be helpful for Live to VOD harvesting, or for temporarily disabling origination}
 
 \item{StartoverWindowSeconds}{Maximum duration (seconds) of content to retain for startover playback.
 If not specified, startover playback will be disabled for the OriginEndpoint.}
@@ -169,6 +173,7 @@ Creates a new OriginEndpoint record.
       StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
     )
   ),
+  Origination = "ALLOW"|"DENY",
   StartoverWindowSeconds = 123,
   Tags = list(
     "string"

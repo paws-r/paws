@@ -20,7 +20,7 @@ cognitoidentityprovider_admin_update_device_status(UserPoolId, Username,
 Updates the device status as an administrator.
 }
 \details{
-Requires developer credentials.
+Calling this action requires developer credentials.
 }
 \section{Request syntax}{
 \preformatted{svc$admin_update_device_status(

@@ -62,9 +62,8 @@ comprehend_batch_detect_dominant_language <- function(TextList) {
 #' a maximum of 25 documents. Each document must contain fewer than 5,000
 #' bytes of UTF-8 encoded characters.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
-#' languages supported by Amazon Comprehend: German (\"de\"), English
-#' (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"), or
-#' Portuguese (\"pt\"). All documents must be in the same language.
+#' languages supported by Amazon Comprehend. All documents must be in the
+#' same language.
 #'
 #' @section Request syntax:
 #' ```
@@ -72,7 +71,7 @@ comprehend_batch_detect_dominant_language <- function(TextList) {
 #'   TextList = list(
 #'     "string"
 #'   ),
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW"
 #' )
 #' ```
 #'
@@ -107,9 +106,8 @@ comprehend_batch_detect_entities <- function(TextList, LanguageCode) {
 #' a maximum of 25 documents. Each document must contain fewer that 5,000
 #' bytes of UTF-8 encoded characters.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
-#' languages supported by Amazon Comprehend: German (\"de\"), English
-#' (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"), or
-#' Portuguese (\"pt\"). All documents must be in the same language.
+#' languages supported by Amazon Comprehend. All documents must be in the
+#' same language.
 #'
 #' @section Request syntax:
 #' ```
@@ -117,7 +115,7 @@ comprehend_batch_detect_entities <- function(TextList, LanguageCode) {
 #'   TextList = list(
 #'     "string"
 #'   ),
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW"
 #' )
 #' ```
 #'
@@ -154,9 +152,8 @@ comprehend_batch_detect_key_phrases <- function(TextList, LanguageCode) {
 #' a maximum of 25 documents. Each document must contain fewer that 5,000
 #' bytes of UTF-8 encoded characters.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
-#' languages supported by Amazon Comprehend: German (\"de\"), English
-#' (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"), or
-#' Portuguese (\"pt\"). All documents must be in the same language.
+#' languages supported by Amazon Comprehend. All documents must be in the
+#' same language.
 #'
 #' @section Request syntax:
 #' ```
@@ -164,7 +161,7 @@ comprehend_batch_detect_key_phrases <- function(TextList, LanguageCode) {
 #'   TextList = list(
 #'     "string"
 #'   ),
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW"
 #' )
 #' ```
 #'
@@ -201,10 +198,10 @@ comprehend_batch_detect_sentiment <- function(TextList, LanguageCode) {
 #' @param TextList &#91;required&#93; A list containing the text of the input documents. The list can contain
 #' a maximum of 25 documents. Each document must contain fewer that 5,000
 #' bytes of UTF-8 encoded characters.
-#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
-#' languages supported by Amazon Comprehend: German (\"de\"), English
-#' (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"), or
-#' Portuguese (\"pt\"). All documents must be in the same language.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the
+#' following languages supported by Amazon Comprehend: German (\"de\"),
+#' English (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"),
+#' or Portuguese (\"pt\"). All documents must be in the same language.
 #'
 #' @section Request syntax:
 #' ```
@@ -236,6 +233,48 @@ comprehend_batch_detect_syntax <- function(TextList, LanguageCode) {
 }
 .comprehend$operations$batch_detect_syntax <- comprehend_batch_detect_syntax
 
+#' Creates a new document classification request to analyze a single
+#' document in real-time, using a previously created and trained custom
+#' model and an endpoint
+#'
+#' Creates a new document classification request to analyze a single
+#' document in real-time, using a previously created and trained custom
+#' model and an endpoint.
+#'
+#' @usage
+#' comprehend_classify_document(Text, EndpointArn)
+#'
+#' @param Text &#91;required&#93; The document text to be analyzed.
+#' @param EndpointArn &#91;required&#93; The Amazon Resource Number (ARN) of the endpoint.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$classify_document(
+#'   Text = "string",
+#'   EndpointArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_classify_document
+comprehend_classify_document <- function(Text, EndpointArn) {
+  op <- new_operation(
+    name = "ClassifyDocument",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$classify_document_input(Text = Text, EndpointArn = EndpointArn)
+  output <- .comprehend$classify_document_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$classify_document <- comprehend_classify_document
+
 #' Creates a new document classifier that you can use to categorize
 #' documents
 #'
@@ -263,10 +302,10 @@ comprehend_batch_detect_syntax <- function(TextList, LanguageCode) {
 #' custom classifier jobs.
 #' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client
 #' request token, Amazon Comprehend generates one.
-#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
-#' languages supported by Amazon Comprehend: German (\"de\"), English
-#' (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"), or
-#' Portuguese (\"pt\"). All documents must be in the same language.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the
+#' following languages supported by Amazon Comprehend: German (\"de\"),
+#' English (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"),
+#' or Portuguese (\"pt\"). All documents must be in the same language.
 #' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
 #' uses to encrypt data on the storage volume attached to the ML compute
 #' instance(s) that process the analysis job. The VolumeKmsKeyId can be
@@ -300,7 +339,7 @@ comprehend_batch_detect_syntax <- function(TextList, LanguageCode) {
 #'     KmsKeyId = "string"
 #'   ),
 #'   ClientRequestToken = "string",
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
+#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
 #'   VolumeKmsKeyId = "string",
 #'   VpcConfig = list(
 #'     SecurityGroupIds = list(
@@ -332,6 +371,67 @@ comprehend_create_document_classifier <- function(DocumentClassifierName, DataAc
   return(response)
 }
 .comprehend$operations$create_document_classifier <- comprehend_create_document_classifier
+
+#' Creates a model-specific endpoint for synchronous inference for a
+#' previously trained custom model
+#'
+#' Creates a model-specific endpoint for synchronous inference for a
+#' previously trained custom model
+#'
+#' @usage
+#' comprehend_create_endpoint(EndpointName, ModelArn,
+#'   DesiredInferenceUnits, ClientRequestToken, Tags)
+#'
+#' @param EndpointName &#91;required&#93; This is the descriptive suffix that becomes part of the `EndpointArn`
+#' used for all subsequent requests to this resource.
+#' @param ModelArn &#91;required&#93; The Amazon Resource Number (ARN) of the model to which the endpoint will
+#' be attached.
+#' @param DesiredInferenceUnits &#91;required&#93; The desired number of inference units to be used by the model using this
+#' endpoint. Each inference unit represents of a throughput of 100
+#' characters per second.
+#' @param ClientRequestToken An idempotency token provided by the customer. If this token matches a
+#' previous endpoint creation request, Amazon Comprehend will not return a
+#' `ResourceInUseException`.
+#' @param Tags Tags associated with the endpoint being created. A tag is a key-value
+#' pair that adds metadata to the endpoint. For example, a tag with
+#' \"Sales\" as the key might be added to an endpoint to indicate its use
+#' by the sales department.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_endpoint(
+#'   EndpointName = "string",
+#'   ModelArn = "string",
+#'   DesiredInferenceUnits = 123,
+#'   ClientRequestToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_create_endpoint
+comprehend_create_endpoint <- function(EndpointName, ModelArn, DesiredInferenceUnits, ClientRequestToken = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$create_endpoint_input(EndpointName = EndpointName, ModelArn = ModelArn, DesiredInferenceUnits = DesiredInferenceUnits, ClientRequestToken = ClientRequestToken, Tags = Tags)
+  output <- .comprehend$create_endpoint_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$create_endpoint <- comprehend_create_endpoint
 
 #' Creates an entity recognizer using submitted files
 #'
@@ -403,7 +503,7 @@ comprehend_create_document_classifier <- function(DocumentClassifierName, DataAc
 #'     )
 #'   ),
 #'   ClientRequestToken = "string",
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
+#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
 #'   VolumeKmsKeyId = "string",
 #'   VpcConfig = list(
 #'     SecurityGroupIds = list(
@@ -481,6 +581,43 @@ comprehend_delete_document_classifier <- function(DocumentClassifierArn) {
   return(response)
 }
 .comprehend$operations$delete_document_classifier <- comprehend_delete_document_classifier
+
+#' Deletes a model-specific endpoint for a previously-trained custom model
+#'
+#' Deletes a model-specific endpoint for a previously-trained custom model.
+#' All endpoints must be deleted in order for the model to be deleted.
+#'
+#' @usage
+#' comprehend_delete_endpoint(EndpointArn)
+#'
+#' @param EndpointArn &#91;required&#93; The Amazon Resource Number (ARN) of the endpoint being deleted.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_endpoint(
+#'   EndpointArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_delete_endpoint
+comprehend_delete_endpoint <- function(EndpointArn) {
+  op <- new_operation(
+    name = "DeleteEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$delete_endpoint_input(EndpointArn = EndpointArn)
+  output <- .comprehend$delete_endpoint_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$delete_endpoint <- comprehend_delete_endpoint
 
 #' Deletes an entity recognizer
 #'
@@ -639,6 +776,43 @@ comprehend_describe_dominant_language_detection_job <- function(JobId) {
   return(response)
 }
 .comprehend$operations$describe_dominant_language_detection_job <- comprehend_describe_dominant_language_detection_job
+
+#' Gets the properties associated with a specific endpoint
+#'
+#' Gets the properties associated with a specific endpoint. Use this
+#' operation to get the status of an endpoint.
+#'
+#' @usage
+#' comprehend_describe_endpoint(EndpointArn)
+#'
+#' @param EndpointArn &#91;required&#93; The Amazon Resource Number (ARN) of the endpoint being described.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_endpoint(
+#'   EndpointArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_describe_endpoint
+comprehend_describe_endpoint <- function(EndpointArn) {
+  op <- new_operation(
+    name = "DescribeEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$describe_endpoint_input(EndpointArn = EndpointArn)
+  output <- .comprehend$describe_endpoint_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$describe_endpoint <- comprehend_describe_endpoint
 
 #' Gets the properties associated with an entities detection job
 #'
@@ -880,15 +1054,14 @@ comprehend_detect_dominant_language <- function(Text) {
 #' @param Text &#91;required&#93; A UTF-8 text string. Each string must contain fewer that 5,000 bytes of
 #' UTF-8 encoded characters.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
-#' languages supported by Amazon Comprehend: German (\"de\"), English
-#' (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"), or
-#' Portuguese (\"pt\"). All documents must be in the same language.
+#' languages supported by Amazon Comprehend. All documents must be in the
+#' same language.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$detect_entities(
 #'   Text = "string",
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW"
 #' )
 #' ```
 #'
@@ -922,15 +1095,14 @@ comprehend_detect_entities <- function(Text, LanguageCode) {
 #' @param Text &#91;required&#93; A UTF-8 text string. Each string must contain fewer that 5,000 bytes of
 #' UTF-8 encoded characters.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
-#' languages supported by Amazon Comprehend: German (\"de\"), English
-#' (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"), or
-#' Portuguese (\"pt\"). All documents must be in the same language.
+#' languages supported by Amazon Comprehend. All documents must be in the
+#' same language.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$detect_key_phrases(
 #'   Text = "string",
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW"
 #' )
 #' ```
 #'
@@ -966,15 +1138,14 @@ comprehend_detect_key_phrases <- function(Text, LanguageCode) {
 #' @param Text &#91;required&#93; A UTF-8 text string. Each string must contain fewer that 5,000 bytes of
 #' UTF-8 encoded characters.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
-#' languages supported by Amazon Comprehend: German (\"de\"), English
-#' (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"), or
-#' Portuguese (\"pt\"). All documents must be in the same language.
+#' languages supported by Amazon Comprehend. All documents must be in the
+#' same language.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$detect_sentiment(
 #'   Text = "string",
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
+#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW"
 #' )
 #' ```
 #'
@@ -1009,7 +1180,7 @@ comprehend_detect_sentiment <- function(Text, LanguageCode) {
 #' @param Text &#91;required&#93; A UTF-8 string. Each string must contain fewer that 5,000 bytes of UTF
 #' encoded characters.
 #' @param LanguageCode &#91;required&#93; The language code of the input documents. You can specify any of the
-#' primary languages supported by Amazon Comprehend: German (\"de\"),
+#' following languages supported by Amazon Comprehend: German (\"de\"),
 #' English (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"),
 #' or Portuguese (\"pt\").
 #'
@@ -1201,6 +1372,58 @@ comprehend_list_dominant_language_detection_jobs <- function(Filter = NULL, Next
   return(response)
 }
 .comprehend$operations$list_dominant_language_detection_jobs <- comprehend_list_dominant_language_detection_jobs
+
+#' Gets a list of all existing endpoints that you've created
+#'
+#' Gets a list of all existing endpoints that you\'ve created.
+#'
+#' @usage
+#' comprehend_list_endpoints(Filter, NextToken, MaxResults)
+#'
+#' @param Filter Filters the endpoints that are returned. You can filter endpoints on
+#' their name, model, status, or the date and time that they were created.
+#' You can only set one filter at a time.
+#' @param NextToken Identifies the next page of results to return.
+#' @param MaxResults The maximum number of results to return in each page. The default is
+#' 100.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_endpoints(
+#'   Filter = list(
+#'     ModelArn = "string",
+#'     Status = "CREATING"|"DELETING"|"FAILED"|"IN_SERVICE"|"UPDATING",
+#'     CreationTimeBefore = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreationTimeAfter = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_list_endpoints
+comprehend_list_endpoints <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListEndpoints",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$list_endpoints_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .comprehend$list_endpoints_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$list_endpoints <- comprehend_list_endpoints
 
 #' Gets a list of the entity detection jobs that you have submitted
 #'
@@ -1695,10 +1918,8 @@ comprehend_start_dominant_language_detection_job <- function(InputDataConfig, Ou
 #' optional and is only used for a custom entity recognition job.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same
 #' language. You can specify any of the languages supported by Amazon
-#' Comprehend: English (\"en\"), Spanish (\"es\"), French (\"fr\"), German
-#' (\"de\"), Italian (\"it\"), or Portuguese (\"pt\"). If custom entities
-#' recognition is used, this parameter is ignored and the language used for
-#' training the model is used instead.
+#' Comprehend. If custom entities recognition is used, this parameter is
+#' ignored and the language used for training the model is used instead.
 #' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client
 #' request token, Amazon Comprehend generates one.
 #' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
@@ -1729,7 +1950,7 @@ comprehend_start_dominant_language_detection_job <- function(InputDataConfig, Ou
 #'   DataAccessRoleArn = "string",
 #'   JobName = "string",
 #'   EntityRecognizerArn = "string",
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
+#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
 #'   ClientRequestToken = "string",
 #'   VolumeKmsKeyId = "string",
 #'   VpcConfig = list(
@@ -1782,9 +2003,8 @@ comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataC
 #' <https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions>.
 #' @param JobName The identifier of the job.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
-#' languages supported by Amazon Comprehend: German (\"de\"), English
-#' (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"), or
-#' Portuguese (\"pt\"). All documents must be in the same language.
+#' languages supported by Amazon Comprehend. All documents must be in the
+#' same language.
 #' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client
 #' request token, Amazon Comprehend generates one.
 #' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
@@ -1814,7 +2034,7 @@ comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataC
 #'   ),
 #'   DataAccessRoleArn = "string",
 #'   JobName = "string",
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
+#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
 #'   ClientRequestToken = "string",
 #'   VolumeKmsKeyId = "string",
 #'   VpcConfig = list(
@@ -1867,9 +2087,8 @@ comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDa
 #' <https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions>.
 #' @param JobName The identifier of the job.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
-#' languages supported by Amazon Comprehend: German (\"de\"), English
-#' (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"), or
-#' Portuguese (\"pt\"). All documents must be in the same language.
+#' languages supported by Amazon Comprehend. All documents must be in the
+#' same language.
 #' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client
 #' request token, Amazon Comprehend generates one.
 #' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
@@ -1899,7 +2118,7 @@ comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDa
 #'   ),
 #'   DataAccessRoleArn = "string",
 #'   JobName = "string",
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
+#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
 #'   ClientRequestToken = "string",
 #'   VolumeKmsKeyId = "string",
 #'   VpcConfig = list(
@@ -2388,3 +2607,43 @@ comprehend_untag_resource <- function(ResourceArn, TagKeys) {
   return(response)
 }
 .comprehend$operations$untag_resource <- comprehend_untag_resource
+
+#' Updates information about the specified endpoint
+#'
+#' Updates information about the specified endpoint.
+#'
+#' @usage
+#' comprehend_update_endpoint(EndpointArn, DesiredInferenceUnits)
+#'
+#' @param EndpointArn &#91;required&#93; The Amazon Resource Number (ARN) of the endpoint being updated.
+#' @param DesiredInferenceUnits &#91;required&#93; The desired number of inference units to be used by the model using this
+#' endpoint. Each inference unit represents of a throughput of 100
+#' characters per second.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_endpoint(
+#'   EndpointArn = "string",
+#'   DesiredInferenceUnits = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_update_endpoint
+comprehend_update_endpoint <- function(EndpointArn, DesiredInferenceUnits) {
+  op <- new_operation(
+    name = "UpdateEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$update_endpoint_input(EndpointArn = EndpointArn, DesiredInferenceUnits = DesiredInferenceUnits)
+  output <- .comprehend$update_endpoint_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$update_endpoint <- comprehend_update_endpoint

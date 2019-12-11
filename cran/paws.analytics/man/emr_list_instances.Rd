@@ -28,7 +28,7 @@ this request.}
 Provides information for all active EC2 instances and EC2 instances
 terminated in the last 30 days, up to a maximum of 2,000. EC2 instances
 in any of the following states are considered active:
-AWAITING\_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.
+AWAITING\\_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.
 }
 \section{Request syntax}{
 \preformatted{svc$list_instances(

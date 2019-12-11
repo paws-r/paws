@@ -29,7 +29,7 @@ source DB cluster.
 source DB cluster.
 }
 
-If you don't specify a \code{RestoreType} value, then the new DB cluster is
+If you don\'t specify a \code{RestoreType} value, then the new DB cluster is
 restored as a full copy of the source DB cluster.}
 
 \item{SourceDBClusterIdentifier}{[required] The identifier of the source DB cluster from which to restore.
@@ -53,7 +53,7 @@ provided
 \item Cannot be specified if \code{RestoreType} parameter is \code{copy-on-write}
 }
 
-Example: \code{2015-03-07T23:45:00Z}}
+Example: \verb{2015-03-07T23:45:00Z}}
 
 \item{UseLatestRestorableTime}{A value that is set to \code{true} to restore the DB cluster to the latest
 restorable backup time, and \code{false} otherwise.

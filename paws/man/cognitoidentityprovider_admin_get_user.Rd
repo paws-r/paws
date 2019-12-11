@@ -17,7 +17,7 @@ Gets the specified user by user name in a user pool as an administrator.
 Works on any user.
 }
 \details{
-Requires developer credentials.
+Calling this action requires developer credentials.
 }
 \section{Request syntax}{
 \preformatted{svc$admin_get_user(

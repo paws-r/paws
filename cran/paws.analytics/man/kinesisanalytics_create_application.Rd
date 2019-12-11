@@ -74,8 +74,7 @@ then your application code must create these streams.}
 \item{Tags}{A list of one or more tags to assign to the application. A tag is a
 key-value pair that identifies an application. Note that the maximum
 number of application tags includes system tags. The maximum number of
-user-defined application tags is 50. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags}
-in the \emph{AWS Billing and Cost Management Guide}.}
+user-defined application tags is 50. For more information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html}{Using Tagging}.}
 }
 \description{
 This documentation is for version 1 of the Amazon Kinesis Data Analytics

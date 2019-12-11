@@ -10,7 +10,9 @@ rdsdataservice_batch_execute_statement(database, parameterSets,
 \arguments{
 \item{database}{The name of the database.}
 
-\item{parameterSets}{The parameter set for the batch operation.}
+\item{parameterSets}{The parameter set for the batch operation.
+
+The maximum number of parameters in a parameter set is 1,000.}
 
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.}
 
@@ -24,7 +26,7 @@ rdsdataservice_batch_execute_statement(database, parameterSets,
 \code{BeginTransaction} operation. Specify the transaction ID of the
 transaction that you want to include the SQL statement in.
 
-If the SQL statement is not part of a transaction, don't set this
+If the SQL statement is not part of a transaction, don\'t set this
 parameter.}
 }
 \description{
@@ -36,7 +38,7 @@ a DML statement with different parameter sets. Bulk operations can
 provide a significant performance improvement over individual insert and
 update operations.
 
-If a call isn't part of a transaction because it doesn't include the
+If a call isn\'t part of a transaction because it doesn\'t include the
 \code{transactionID} parameter, changes that result from the call are
 committed automatically.
 }
@@ -47,7 +49,25 @@ committed automatically.
     list(
       list(
         name = "string",
+        typeHint = "DATE"|"DECIMAL"|"TIME"|"TIMESTAMP",
         value = list(
+          arrayValue = list(
+            arrayValues = list(
+              list()
+            ),
+            booleanValues = list(
+              TRUE|FALSE
+            ),
+            doubleValues = list(
+              123.0
+            ),
+            longValues = list(
+              123
+            ),
+            stringValues = list(
+              "string"
+            )
+          ),
           blobValue = raw,
           booleanValue = TRUE|FALSE,
           doubleValue = 123.0,

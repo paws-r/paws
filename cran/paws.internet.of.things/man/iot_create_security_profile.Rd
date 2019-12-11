@@ -21,10 +21,10 @@ sent to the console.) Alerts are generated when a device (thing)
 violates a behavior.}
 
 \item{additionalMetricsToRetain}{A list of metrics whose data is retained (stored). By default, data is
-retained for any metric used in the profile's \code{behaviors} but it is
+retained for any metric used in the profile\'s \code{behaviors}, but it is
 also retained for any metric specified here.}
 
-\item{tags}{Metadata which can be used to manage the security profile.}
+\item{tags}{Metadata that can be used to manage the security profile.}
 }
 \description{
 Creates a Device Defender security profile.

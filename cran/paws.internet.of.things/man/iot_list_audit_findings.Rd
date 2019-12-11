@@ -14,7 +14,7 @@ specify either the taskId or the startTime and endTime, but not both.}
 
 \item{checkName}{A filter to limit results to the findings for the specified audit check.}
 
-\item{resourceIdentifier}{Information identifying the non-compliant resource.}
+\item{resourceIdentifier}{Information identifying the noncompliant resource.}
 
 \item{maxResults}{The maximum number of results to return at one time. The default is 25.}
 
@@ -46,7 +46,9 @@ days.)
       policyName = "string",
       policyVersionId = "string"
     ),
-    account = "string"
+    account = "string",
+    iamRoleArn = "string",
+    roleAliasArn = "string"
   ),
   maxResults = 123,
   nextToken = "string",

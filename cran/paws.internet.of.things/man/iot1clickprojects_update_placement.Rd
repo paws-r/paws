@@ -17,7 +17,7 @@ maximum number of key/value pairs is 50.}
 }
 \description{
 Updates a placement with the given attributes. To clear an attribute,
-pass an empty value (i.e., "").
+pass an empty value (i.e., \"\").
 }
 \section{Request syntax}{
 \preformatted{svc$update_placement(

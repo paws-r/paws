@@ -8,8 +8,8 @@ globalaccelerator_update_accelerator_attributes(AcceleratorArn,
   FlowLogsEnabled, FlowLogsS3Bucket, FlowLogsS3Prefix)
 }
 \arguments{
-\item{AcceleratorArn}{The Amazon Resource Name (ARN) of the accelerator that you want to
-update. Attribute is required.}
+\item{AcceleratorArn}{[required] The Amazon Resource Name (ARN) of the accelerator that you want to
+update.}
 
 \item{FlowLogsEnabled}{Update whether flow logs are enabled. The default value is false. If the
 value is true, \code{FlowLogsS3Bucket} and \code{FlowLogsS3Prefix} must be

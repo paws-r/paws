@@ -52,7 +52,7 @@ example, 2017-09-15T13:45:30.)
 hours. Otherwise, the operation fails.
 }
 
-If a call to PutLogEvents returns "UnrecognizedClientException" the
+If a call to PutLogEvents returns \"UnrecognizedClientException\" the
 most likely cause is an invalid AWS access key ID or secret key.
 }
 \section{Request syntax}{

@@ -8,14 +8,14 @@ wafregional_create_rate_based_rule(Name, MetricName, RateKey, RateLimit,
   ChangeToken, Tags)
 }
 \arguments{
-\item{Name}{[required] A friendly name or description of the RateBasedRule. You can't change
+\item{Name}{[required] A friendly name or description of the RateBasedRule. You can\'t change
 the name of a \code{RateBasedRule} after you create it.}
 
 \item{MetricName}{[required] A friendly name or description for the metrics for this \code{RateBasedRule}.
 The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
-maximum length 128 and minimum length one. It can't contain whitespace
-or metric names reserved for AWS WAF, including "All" and
-"Default\_Action." You can't change the name of the metric after you
+maximum length 128 and minimum length one. It can\'t contain whitespace
+or metric names reserved for AWS WAF, including \"All\" and
+\"Default\\_Action.\" You can\'t change the name of the metric after you
 create the \code{RateBasedRule}.}
 
 \item{RateKey}{[required] The field that AWS WAF uses to determine if requests are likely arriving
@@ -50,7 +50,7 @@ only must exceed the \code{RateLimit}, but it also must match all the
 specifications to be counted or blocked. For example, suppose you add
 the following to a \code{RateBasedRule}:
 \itemize{
-\item An \code{IPSet} that matches the IP address \code{192.0.2.44/32}
+\item An \code{IPSet} that matches the IP address \verb{192.0.2.44/32}
 \item A \code{ByteMatchSet} that matches \code{BadBot} in the \code{User-Agent} header
 }
 

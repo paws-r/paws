@@ -2,19 +2,18 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_remove_tags_from_resource}
 \alias{ssm_remove_tags_from_resource}
-\title{Removes all tags from the specified resource}
+\title{Removes tag keys from the specified resource}
 \usage{
 ssm_remove_tags_from_resource(ResourceType, ResourceId, TagKeys)
 }
 \arguments{
-\item{ResourceType}{[required] The type of resource of which you want to remove a tag.
+\item{ResourceType}{[required] The type of resource from which you want to remove a tag.
 
 The ManagedInstance type for this API action is only for on-premises
-managed instances. You must specify the name of the managed instance in
-the following format: mi-ID\_number. For example, mi-1a2b3c4d5e6f.}
+managed instances. Specify the name of the managed instance in the
+following format: mi-ID\\_number. For example, mi-1a2b3c4d5e6f.}
 
-\item{ResourceId}{[required] The resource ID for which you want to remove tags. Use the ID of the
-resource. Here are some examples:
+\item{ResourceId}{[required] The ID of the resource from which you want to remove tags. For example:
 
 ManagedInstance: mi-012345abcde
 
@@ -25,13 +24,13 @@ PatchBaseline: pb-012345abcde
 For the Document and Parameter values, use the name of the resource.
 
 The ManagedInstance type for this API action is only for on-premises
-managed instances. You must specify the name of the managed instance in
-the following format: mi-ID\_number. For example, mi-1a2b3c4d5e6f.}
+managed instances. Specify the name of the managed instance in the
+following format: mi-ID\\_number. For example, mi-1a2b3c4d5e6f.}
 
 \item{TagKeys}{[required] Tag keys that you want to remove from the specified resource.}
 }
 \description{
-Removes all tags from the specified resource.
+Removes tag keys from the specified resource.
 }
 \section{Request syntax}{
 \preformatted{svc$remove_tags_from_resource(

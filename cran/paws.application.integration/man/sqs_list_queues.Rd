@@ -19,7 +19,7 @@ returned is 1,000. If you specify a value for the optional
 the specified value are returned.
 }
 \details{
-Cross-account permissions don't apply to this action. For more
+Cross-account permissions don\'t apply to this action. For more
 information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }

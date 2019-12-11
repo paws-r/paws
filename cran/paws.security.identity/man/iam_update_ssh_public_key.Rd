@@ -11,7 +11,7 @@ iam_update_ssh_public_key(UserName, SSHPublicKeyId, Status)
 
 This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \_+=,.@-}
+spaces. You can also include any of the following characters: \\_+=,.@-}
 
 \item{SSHPublicKeyId}{[required] The unique identifier for the SSH public key.
 
@@ -23,9 +23,9 @@ can be used for authentication with an AWS CodeCommit repository.
 \code{Inactive} means that the key cannot be used.}
 }
 \description{
-Sets the status of an IAM user's SSH public key to active or inactive.
+Sets the status of an IAM user\'s SSH public key to active or inactive.
 SSH public keys that are inactive cannot be used for authentication.
-This operation can be used to disable a user's SSH public key as part
+This operation can be used to disable a user\'s SSH public key as part
 of a key rotation work flow.
 }
 \details{

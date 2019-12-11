@@ -19,10 +19,10 @@ previous call.)}
 
 \item{Limit}{The maximum number of versions to return with this call.}
 
-\item{Include}{A comma-separated list of values. Specify "INITIALIZED" to include
+\item{Include}{A comma-separated list of values. Specify \"INITIALIZED\" to include
 incomplete versions.}
 
-\item{Fields}{Specify "SOURCE" to include initialized versions and a URL for the
+\item{Fields}{Specify \"SOURCE\" to include initialized versions and a URL for the
 source document.}
 }
 \description{

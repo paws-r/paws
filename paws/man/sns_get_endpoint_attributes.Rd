@@ -3,7 +3,7 @@
 \name{sns_get_endpoint_attributes}
 \alias{sns_get_endpoint_attributes}
 \title{Retrieves the endpoint attributes for a device on one of the supported
-push notification services, such as GCM and APNS}
+push notification services, such as FCM and APNS}
 \usage{
 sns_get_endpoint_attributes(EndpointArn)
 }
@@ -12,7 +12,7 @@ sns_get_endpoint_attributes(EndpointArn)
 }
 \description{
 Retrieves the endpoint attributes for a device on one of the supported
-push notification services, such as GCM and APNS. For more information,
+push notification services, such as FCM and APNS. For more information,
 see \href{https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.
 }
 \section{Request syntax}{

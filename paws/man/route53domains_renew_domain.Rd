@@ -27,7 +27,7 @@ cost of renewing your domain is billed to your AWS account.
 \details{
 We recommend that you renew your domain several weeks before the
 expiration date. Some TLD registries delete domains before the
-expiration date if you haven't renewed far enough in advance. For more
+expiration date if you haven\'t renewed far enough in advance. For more
 information about renewing domain registration, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-renew.html}{Renewing Registration for a Domain}
 in the Amazon Route 53 Developer Guide.
 }

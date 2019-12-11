@@ -26,7 +26,7 @@ values for a filter. A tag must match at least one of the specified
 values for it to be included in the results.
 
 You can also specify multiple filters. The result includes information
-for a particular tag only if it matches all the filters. If there's no
+for a particular tag only if it matches all the filters. If there\'s no
 match, no special message is returned.
 }
 \section{Request syntax}{

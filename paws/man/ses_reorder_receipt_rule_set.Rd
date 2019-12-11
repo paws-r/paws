@@ -9,7 +9,7 @@ ses_reorder_receipt_rule_set(RuleSetName, RuleNames)
 \arguments{
 \item{RuleSetName}{[required] The name of the receipt rule set to reorder.}
 
-\item{RuleNames}{[required] A list of the specified receipt rule set's receipt rules in the order
+\item{RuleNames}{[required] A list of the specified receipt rule set\'s receipt rules in the order
 that you want to put them.}
 }
 \description{
@@ -17,7 +17,7 @@ Reorders the receipt rules within a receipt rule set.
 }
 \details{
 All of the rules in the rule set must be represented in this request.
-That is, this API will return an error if the reorder request doesn't
+That is, this API will return an error if the reorder request doesn\'t
 explicitly position all of the rules.
 
 For information about managing receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html}{Amazon SES Developer Guide}.

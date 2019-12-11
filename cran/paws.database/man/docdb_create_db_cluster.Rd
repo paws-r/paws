@@ -62,16 +62,16 @@ connections.}
 
 Constraints:
 \itemize{
-\item Must be from 1 to 16 letters or numbers.
+\item Must be from 1 to 63 letters or numbers.
 \item The first character must be a letter.
 \item Cannot be a reserved word for the chosen database engine.
 }}
 
 \item{MasterUserPassword}{[required] The password for the master database user. This password can contain any
-printable ASCII character except forward slash (/), double quote ("),
-or the "at" symbol (@).
+printable ASCII character except forward slash (/), double quote (\"),
+or the \"at\" symbol (@).
 
-Constraints: Must contain from 8 to 41 characters.}
+Constraints: Must contain from 8 to 100 characters.}
 
 \item{PreferredBackupWindow}{The daily time range during which automated backups are created if
 automated backups are enabled using the \code{BackupRetentionPeriod}

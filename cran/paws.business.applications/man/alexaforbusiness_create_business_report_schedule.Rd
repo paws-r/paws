@@ -12,7 +12,7 @@ alexaforbusiness_create_business_report_schedule(ScheduleName,
 \arguments{
 \item{ScheduleName}{The name identifier of the schedule.}
 
-\item{S3BucketName}{The S3 bucket name of the output reports. If this isn't specified, the
+\item{S3BucketName}{The S3 bucket name of the output reports. If this isn\'t specified, the
 report can be retrieved from a download link by calling
 ListBusinessReportSchedule.}
 
@@ -23,7 +23,7 @@ of individual files).}
 
 \item{ContentRange}{[required] The content range of the reports.}
 
-\item{Recurrence}{The recurrence of the reports. If this isn't specified, the report will
+\item{Recurrence}{The recurrence of the reports. If this isn\'t specified, the report will
 only be delivered one time when the API is called.}
 
 \item{ClientRequestToken}{The client request token.}
@@ -39,7 +39,7 @@ specified S3 location with a specified daily or weekly interval.
   S3KeyPrefix = "string",
   Format = "CSV"|"CSV_ZIP",
   ContentRange = list(
-    Interval = "ONE_DAY"|"ONE_WEEK"
+    Interval = "ONE_DAY"|"ONE_WEEK"|"THIRTY_DAYS"
   ),
   Recurrence = list(
     StartDate = "string"

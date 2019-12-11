@@ -11,7 +11,7 @@ storagegateway_update_vtl_device_type(VTLDeviceARN, DeviceType)
 
 \item{DeviceType}{[required] The type of medium changer you want to select.
 
-Valid Values: "STK-L700", "AWS-Gateway-VTL"}
+Valid Values: \"STK-L700\", \"AWS-Gateway-VTL\"}
 }
 \description{
 Updates the type of medium changer in a tape gateway. When you activate

@@ -17,7 +17,7 @@ from the response of the PollForJobs request that returned this job.}
 }
 \description{
 Returns information about a specified job and whether that job has been
-received by the job worker. Only used for custom actions.
+received by the job worker. Used for custom actions only.
 }
 \section{Request syntax}{
 \preformatted{svc$acknowledge_job(

@@ -35,7 +35,7 @@ message failed), the message dwell time, and other information.
 \code{DeliveryStatusSuccessSamplingRate} -- The percentage of successful SMS
 deliveries for which Amazon SNS will write logs in CloudWatch Logs. The
 value can be an integer from 0 - 100. For example, to write logs only
-for failed deliveries, set this value to \code{0}. To write logs for 10\% of
+for failed deliveries, set this value to \code{0}. To write logs for 10\\% of
 your successful deliveries, set it to \code{10}.
 
 \code{DefaultSenderID} -- A string, such as your business brand, that is

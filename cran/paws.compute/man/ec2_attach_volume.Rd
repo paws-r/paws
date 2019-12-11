@@ -8,7 +8,7 @@ to the instance with the specified device name}
 ec2_attach_volume(Device, InstanceId, VolumeId, DryRun)
 }
 \arguments{
-\item{Device}{[required] The device name (for example, \code{/dev/sdh} or \code{xvdh}).}
+\item{Device}{[required] The device name (for example, \verb{/dev/sdh} or \code{xvdh}).}
 
 \item{InstanceId}{[required] The ID of the instance.}
 
@@ -39,7 +39,7 @@ If a volume has an AWS Marketplace product code:
 instance.
 \item You must be subscribed to the product.
 \item The instance type and operating system of the instance must support
-the product. For example, you can't detach a volume from a Windows
+the product. For example, you can\'t detach a volume from a Windows
 instance and attach it to a Linux instance.
 }
 
@@ -57,8 +57,8 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 
 \examples{
-# This example attaches a volume (``vol-1234567890abcdef0``) to an
-# instance (``i-01474ef662b89480``) as ``/dev/sdf``.
+# This example attaches a volume (`vol-1234567890abcdef0`) to an
+# instance (`i-01474ef662b89480`) as `/dev/sdf`.
 \donttest{svc$attach_volume(
   Device = "/dev/sdf",
   InstanceId = "i-01474ef662b89480",

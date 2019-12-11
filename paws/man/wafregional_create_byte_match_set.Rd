@@ -7,7 +7,7 @@
 wafregional_create_byte_match_set(Name, ChangeToken)
 }
 \arguments{
-\item{Name}{[required] A friendly name or description of the ByteMatchSet. You can't change
+\item{Name}{[required] A friendly name or description of the ByteMatchSet. You can\'t change
 \code{Name} after you create a \code{ByteMatchSet}.}
 
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}

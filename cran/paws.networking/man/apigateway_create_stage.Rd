@@ -23,11 +23,11 @@ resource.}
 
 \item{cacheClusterEnabled}{Whether cache clustering is enabled for the stage.}
 
-\item{cacheClusterSize}{The stage's cache cluster size.}
+\item{cacheClusterSize}{The stage\'s cache cluster size.}
 
 \item{variables}{A map that defines the stage variables for the new Stage resource.
 Variable names can have alphanumeric and underscore characters, and the
-values must match \code{\\[A-Za-z0-9-._~:/?#&amp;=,\\]+}.}
+values must match \verb{\\\[A-Za-z0-9-._~:/?#&amp;=,\\\]+}.}
 
 \item{documentationVersion}{The version of the associated API documentation.}
 
@@ -36,8 +36,8 @@ values must match \code{\\[A-Za-z0-9-._~:/?#&amp;=,\\]+}.}
 \item{tracingEnabled}{Specifies whether active tracing with X-ray is enabled for the Stage.}
 
 \item{tags}{The key-value map of strings. The valid character set is
-[a-zA-Z+-=.\_:/]. The tag key can be up to 128 characters and must not
-start with \code{aws:}. The tag value can be up to 256 characters.}
+[a-zA-Z+-=.\\_:/]. The tag key can be up to 128 characters and must not
+start with \verb{aws:}. The tag value can be up to 256 characters.}
 }
 \description{
 Creates a new Stage resource that references a pre-existing Deployment

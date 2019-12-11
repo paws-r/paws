@@ -7,7 +7,7 @@
 devicefarm_get_upload(arn)
 }
 \arguments{
-\item{arn}{[required] The upload's ARN.}
+\item{arn}{[required] The upload\'s ARN.}
 }
 \description{
 Gets information about an upload.

@@ -10,7 +10,7 @@ applicationinsights_list_problems(ResourceGroupName, StartTime, EndTime,
 \arguments{
 \item{ResourceGroupName}{The name of the resource group.}
 
-\item{StartTime}{The time when the problem was detected, in epoch seconds. If you don't
+\item{StartTime}{The time when the problem was detected, in epoch seconds. If you don\'t
 specify a time frame for the request, problems within the past seven
 days are returned.}
 

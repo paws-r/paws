@@ -2,23 +2,17 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_delete_user}
 \alias{connect_delete_user}
-\title{Deletes a user account from Amazon Connect}
+\title{Deletes a user account from the specified Amazon Connect instance}
 \usage{
 connect_delete_user(InstanceId, UserId)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier for your Amazon Connect instance. To find the ID of your
-instance, open the AWS console and select Amazon Connect. Select the
-alias of the instance in the Instance alias column. The instance ID is
-displayed in the Overview section of your instance settings. For
-example, the instance ID is the set of characters at the end of the
-instance ARN, after instance/, such as
-10a4c4eb-f57e-4d4c-b602-bf39176ced07.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 
-\item{UserId}{[required] The unique identifier of the user to delete.}
+\item{UserId}{[required] The identifier of the user.}
 }
 \description{
-Deletes a user account from Amazon Connect.
+Deletes a user account from the specified Amazon Connect instance.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_user(

@@ -13,7 +13,7 @@ iot_list_security_profiles_for_target(nextToken, maxResults, recursive,
 
 \item{maxResults}{The maximum number of results to return at one time.}
 
-\item{recursive}{If true, return child groups as well.}
+\item{recursive}{If true, return child groups too.}
 
 \item{securityProfileTargetArn}{[required] The ARN of the target (thing group) whose attached security profiles you
 want to get.}

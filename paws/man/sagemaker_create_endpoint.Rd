@@ -54,7 +54,7 @@ Amazon S3 location, Amazon SageMaker uses AWS Security Token Service to
 download model artifacts from the S3 path you provided. AWS STS is
 activated in your IAM user account by default. If you previously
 deactivated AWS STS for a region, you need to reactivate AWS STS for
-that region. For more information, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and Deactivating AWS STS i an AWS Region}
+that region. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and Deactivating AWS STS in an AWS Region}
 in the \emph{AWS Identity and Access Management User Guide}.
 }
 \section{Request syntax}{

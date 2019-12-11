@@ -20,20 +20,6 @@ ID for the AWS account that contains your Amazon QuickSight account.}
 \description{
 Adds an Amazon QuickSight user to an Amazon QuickSight group.
 }
-\details{
-The permissions resource is
-\code{arn:aws:quicksight:us-east-1:<i>&lt;aws-account-id&gt;</i>:group/default/<i>&lt;group-name&gt;</i> }.
-
-The condition resource is the user name.
-
-The condition key is \code{quicksight:UserName}.
-
-The response is the group member object.
-
-\strong{CLI Sample:}
-
-\code{aws quicksight create-group-membership --aws-account-id=111122223333 --namespace=default --group-name=Sales --member-name=Pat }
-}
 \section{Request syntax}{
 \preformatted{svc$create_group_membership(
   MemberName = "string",

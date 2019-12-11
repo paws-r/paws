@@ -4,43 +4,13 @@
 \alias{polly_synthesize_speech}
 \title{Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes}
 \usage{
-polly_synthesize_speech(LexiconNames, OutputFormat, SampleRate,
-  SpeechMarkTypes, Text, TextType, VoiceId, LanguageCode)
+polly_synthesize_speech(Engine, LanguageCode, LexiconNames,
+  OutputFormat, SampleRate, SpeechMarkTypes, Text, TextType, VoiceId)
 }
 \arguments{
-\item{LexiconNames}{List of one or more pronunciation lexicon names you want the service to
-apply during synthesis. Lexicons are applied only if the language of the
-lexicon is the same as the language of the voice. For information about
-storing lexicons, see
-\href{http://docs.aws.amazon.com/polly/latest/dg/API_PutLexicon.html}{PutLexicon}.}
-
-\item{OutputFormat}{[required] The format in which the returned output will be encoded. For audio
-stream, this will be mp3, ogg\_vorbis, or pcm. For speech marks, this
-will be json.
-
-When pcm is used, the content returned is audio/pcm in a signed 16-bit,
-1 channel (mono), little-endian format.}
-
-\item{SampleRate}{The audio frequency specified in Hz.
-
-The valid values for \code{mp3} and \code{ogg_vorbis} are "8000", "16000", and
-"22050". The default value is "22050".
-
-Valid values for \code{pcm} are "8000" and "16000" The default value is
-"16000".}
-
-\item{SpeechMarkTypes}{The type of speech marks returned for the input text.}
-
-\item{Text}{[required] Input text to synthesize. If you specify \code{ssml} as the \code{TextType},
-follow the SSML format for the input text.}
-
-\item{TextType}{Specifies whether the input text is plain text or SSML. The default
-value is plain text. For more information, see \href{http://docs.aws.amazon.com/polly/latest/dg/ssml.html}{Using SSML}.}
-
-\item{VoiceId}{[required] Voice ID to use for the synthesis. You can get a list of available voice
-IDs by calling the
-\href{http://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html}{DescribeVoices}
-operation.}
+\item{Engine}{Specifies the engine (\code{standard} or \code{neural}) for Amazon Polly to use
+when processing input text for speech synthesis. Using a voice that is
+not supported for the engine selected will result in an error.}
 
 \item{LanguageCode}{Optional language code for the Synthesize Speech request. This is only
 necessary if using a bilingual voice, such as Aditi, which can be used
@@ -52,16 +22,53 @@ language for any voice is the one returned by the
 \href{https://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html}{DescribeVoices}
 operation for the \code{LanguageCode} parameter. For example, if no language
 code is specified, Aditi will use Indian English rather than Hindi.}
+
+\item{LexiconNames}{List of one or more pronunciation lexicon names you want the service to
+apply during synthesis. Lexicons are applied only if the language of the
+lexicon is the same as the language of the voice. For information about
+storing lexicons, see
+\href{https://docs.aws.amazon.com/polly/latest/dg/API_PutLexicon.html}{PutLexicon}.}
+
+\item{OutputFormat}{[required] The format in which the returned output will be encoded. For audio
+stream, this will be mp3, ogg\\_vorbis, or pcm. For speech marks, this
+will be json.
+
+When pcm is used, the content returned is audio/pcm in a signed 16-bit,
+1 channel (mono), little-endian format.}
+
+\item{SampleRate}{The audio frequency specified in Hz.
+
+The valid values for mp3 and ogg\\_vorbis are \"8000\", \"16000\",
+\"22050\", and \"24000\". The default value for standard voices is
+\"22050\". The default value for neural voices is \"24000\".
+
+Valid values for pcm are \"8000\" and \"16000\" The default value is
+\"16000\".}
+
+\item{SpeechMarkTypes}{The type of speech marks returned for the input text.}
+
+\item{Text}{[required] Input text to synthesize. If you specify \code{ssml} as the \code{TextType},
+follow the SSML format for the input text.}
+
+\item{TextType}{Specifies whether the input text is plain text or SSML. The default
+value is plain text. For more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/ssml.html}{Using SSML}.}
+
+\item{VoiceId}{[required] Voice ID to use for the synthesis. You can get a list of available voice
+IDs by calling the
+\href{https://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html}{DescribeVoices}
+operation.}
 }
 \description{
 Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes. SSML
 input must be valid, well-formed SSML. Some alphabets might not be
 available with all the voices (for example, Cyrillic might not be read
 at all by English voices) unless phoneme mapping is used. For more
-information, see \href{http://docs.aws.amazon.com/polly/latest/dg/how-text-to-speech-works.html}{How it Works}.
+information, see \href{https://docs.aws.amazon.com/polly/latest/dg/how-text-to-speech-works.html}{How it Works}.
 }
 \section{Request syntax}{
 \preformatted{svc$synthesize_speech(
+  Engine = "standard"|"neural",
+  LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR",
   LexiconNames = list(
     "string"
   ),
@@ -72,8 +79,7 @@ information, see \href{http://docs.aws.amazon.com/polly/latest/dg/how-text-to-sp
   ),
   Text = "string",
   TextType = "ssml"|"text",
-  VoiceId = "Aditi"|"Amy"|"Astrid"|"Bianca"|"Brian"|"Carla"|"Carmen"|"Celine"|"Chantal"|"Conchita"|"Cristiano"|"Dora"|"Emma"|"Enrique"|"Ewa"|"Filiz"|"Geraint"|"Giorgio"|"Gwyneth"|"Hans"|"Ines"|"Ivy"|"Jacek"|"Jan"|"Joanna"|"Joey"|"Justin"|"Karl"|"Kendra"|"Kimberly"|"Lea"|"Liv"|"Lotte"|"Lucia"|"Mads"|"Maja"|"Marlene"|"Mathieu"|"Matthew"|"Maxim"|"Mia"|"Miguel"|"Mizuki"|"Naja"|"Nicole"|"Penelope"|"Raveena"|"Ricardo"|"Ruben"|"Russell"|"Salli"|"Seoyeon"|"Takumi"|"Tatyana"|"Vicki"|"Vitoria"|"Zeina"|"Zhiyu",
-  LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"
+  VoiceId = "Aditi"|"Amy"|"Astrid"|"Bianca"|"Brian"|"Camila"|"Carla"|"Carmen"|"Celine"|"Chantal"|"Conchita"|"Cristiano"|"Dora"|"Emma"|"Enrique"|"Ewa"|"Filiz"|"Geraint"|"Giorgio"|"Gwyneth"|"Hans"|"Ines"|"Ivy"|"Jacek"|"Jan"|"Joanna"|"Joey"|"Justin"|"Karl"|"Kendra"|"Kimberly"|"Lea"|"Liv"|"Lotte"|"Lucia"|"Lupe"|"Mads"|"Maja"|"Marlene"|"Mathieu"|"Matthew"|"Maxim"|"Mia"|"Miguel"|"Mizuki"|"Naja"|"Nicole"|"Penelope"|"Raveena"|"Ricardo"|"Ruben"|"Russell"|"Salli"|"Seoyeon"|"Takumi"|"Tatyana"|"Vicki"|"Vitoria"|"Zeina"|"Zhiyu"
 )
 }
 }

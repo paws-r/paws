@@ -170,14 +170,14 @@ acm_describe_certificate <- function(CertificateArn) {
 #' (CA) for use anywhere
 #'
 #' Exports a private certificate issued by a private certificate authority
-#' (CA) for use anywhere. You can export the certificate, the certificate
-#' chain, and the encrypted private key associated with the public key
-#' embedded in the certificate. You must store the private key securely.
-#' The private key is a 2048 bit RSA key. You must provide a passphrase for
-#' the private key when exporting it. You can use the following OpenSSL
-#' command to decrypt it later. Provide the passphrase when prompted.
+#' (CA) for use anywhere. The exported file contains the certificate, the
+#' certificate chain, and the encrypted private 2048-bit RSA key associated
+#' with the public key that is embedded in the certificate. For security,
+#' you must assign a passphrase for the private key when exporting it.
 #' 
-#' `openssl rsa -in encrypted_key.pem -out decrypted_key.pem`
+#' For information about exporting and formatting a certificate using the
+#' ACM console or CLI, see [Export a Private
+#' Certificate](https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-export-private.html).
 #'
 #' @usage
 #' acm_export_certificate(CertificateArn, Passphrase)
@@ -311,7 +311,7 @@ acm_get_certificate <- function(CertificateArn) {
 #' 
 #' -   To import a new certificate, omit the `CertificateArn` argument.
 #'     Include this argument only when you want to replace a previously
-#'     imported certificate.
+#'     imported certifica
 #' 
 #' -   When you import a certificate by using the CLI, you must specify the
 #'     certificate, the certificate chain, and the private key by their
@@ -324,13 +324,17 @@ acm_get_certificate <- function(CertificateArn) {
 #'     certificate, the certificate chain, and the private key files in the
 #'     manner required by the programming language you\'re using.
 #' 
+#' -   The cryptographic algorithm of an imported certificate must match
+#'     the algorithm of the signing CA. For example, if the signing CA key
+#'     type is RSA, then the certificate key type must also be RSA.
+#' 
 #' This operation returns the [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' of the imported certificate.
 #'
 #' @usage
 #' acm_import_certificate(CertificateArn, Certificate, PrivateKey,
-#'   CertificateChain)
+#'   CertificateChain, Tags)
 #'
 #' @param CertificateArn The [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
@@ -339,6 +343,9 @@ acm_get_certificate <- function(CertificateArn) {
 #' @param Certificate &#91;required&#93; The certificate to import.
 #' @param PrivateKey &#91;required&#93; The private key that matches the public key in the certificate.
 #' @param CertificateChain The PEM encoded certificate chain.
+#' @param Tags One or more resource tags to associate with the imported certificate.
+#' 
+#' Note: You cannot apply tags when reimporting a certificate.
 #'
 #' @section Request syntax:
 #' ```
@@ -346,21 +353,27 @@ acm_get_certificate <- function(CertificateArn) {
 #'   CertificateArn = "string",
 #'   Certificate = raw,
 #'   PrivateKey = raw,
-#'   CertificateChain = raw
+#'   CertificateChain = raw,
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname acm_import_certificate
-acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKey, CertificateChain = NULL) {
+acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKey, CertificateChain = NULL, Tags = NULL) {
   op <- new_operation(
     name = "ImportCertificate",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .acm$import_certificate_input(CertificateArn = CertificateArn, Certificate = Certificate, PrivateKey = PrivateKey, CertificateChain = CertificateChain)
+  input <- .acm$import_certificate_input(CertificateArn = CertificateArn, Certificate = Certificate, PrivateKey = PrivateKey, CertificateChain = CertificateChain, Tags = Tags)
   output <- .acm$import_certificate_output()
   config <- get_config()
   svc <- .acm$service(config)
@@ -374,7 +387,8 @@ acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKe
 #'
 #' Retrieves a list of certificate ARNs and domain names. You can request
 #' that only certificates that match a specific status be listed. You can
-#' also filter by specific attributes of the certificate.
+#' also filter by specific attributes of the certificate. Default filtering
+#' returns only `RSA_2048` certificates. For more information, see Filters.
 #'
 #' @usage
 #' acm_list_certificates(CertificateStatuses, Includes, NextToken,
@@ -608,7 +622,7 @@ acm_renew_certificate <- function(CertificateArn) {
 #' @usage
 #' acm_request_certificate(DomainName, ValidationMethod,
 #'   SubjectAlternativeNames, IdempotencyToken, DomainValidationOptions,
-#'   Options, CertificateAuthorityArn)
+#'   Options, CertificateAuthorityArn, Tags)
 #'
 #' @param DomainName &#91;required&#93; Fully qualified domain name (FQDN), such as www.example.com, that you
 #' want to secure with an ACM certificate. Use an asterisk (\*) to create a
@@ -616,7 +630,7 @@ acm_renew_certificate <- function(CertificateArn) {
 #' example, \*.example.com protects www.example.com, site.example.com, and
 #' images.example.com.
 #' 
-#' The first domain name you enter cannot exceed 63 octets, including
+#' The first domain name you enter cannot exceed 64 octets, including
 #' periods. Each subsequent Subject Alternative Name (SAN), however, can be
 #' up to 253 octets in length.
 #' @param ValidationMethod The method you want to use if you are requesting a public certificate to
@@ -675,6 +689,7 @@ acm_renew_certificate <- function(CertificateArn) {
 #' user guide. The ARN must have the following form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012`
+#' @param Tags One or more resource tags to associate with the certificate.
 #'
 #' @section Request syntax:
 #' ```
@@ -694,21 +709,27 @@ acm_renew_certificate <- function(CertificateArn) {
 #'   Options = list(
 #'     CertificateTransparencyLoggingPreference = "ENABLED"|"DISABLED"
 #'   ),
-#'   CertificateAuthorityArn = "string"
+#'   CertificateAuthorityArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname acm_request_certificate
-acm_request_certificate <- function(DomainName, ValidationMethod = NULL, SubjectAlternativeNames = NULL, IdempotencyToken = NULL, DomainValidationOptions = NULL, Options = NULL, CertificateAuthorityArn = NULL) {
+acm_request_certificate <- function(DomainName, ValidationMethod = NULL, SubjectAlternativeNames = NULL, IdempotencyToken = NULL, DomainValidationOptions = NULL, Options = NULL, CertificateAuthorityArn = NULL, Tags = NULL) {
   op <- new_operation(
     name = "RequestCertificate",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .acm$request_certificate_input(DomainName = DomainName, ValidationMethod = ValidationMethod, SubjectAlternativeNames = SubjectAlternativeNames, IdempotencyToken = IdempotencyToken, DomainValidationOptions = DomainValidationOptions, Options = Options, CertificateAuthorityArn = CertificateAuthorityArn)
+  input <- .acm$request_certificate_input(DomainName = DomainName, ValidationMethod = ValidationMethod, SubjectAlternativeNames = SubjectAlternativeNames, IdempotencyToken = IdempotencyToken, DomainValidationOptions = DomainValidationOptions, Options = Options, CertificateAuthorityArn = CertificateAuthorityArn, Tags = Tags)
   output <- .acm$request_certificate_output()
   config <- get_config()
   svc <- .acm$service(config)

@@ -12,7 +12,7 @@ neptune_remove_role_from_db_cluster(DBClusterIdentifier, RoleArn)
 
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role to disassociate from the
 DB cluster, for example
-\code{arn:aws:iam::123456789012:role/NeptuneAccessRole}.}
+\verb{arn:aws:iam::123456789012:role/NeptuneAccessRole}.}
 }
 \description{
 Disassociates an Identity and Access Management (IAM) role from a DB

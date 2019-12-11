@@ -13,8 +13,8 @@ lambda_list_aliases(FunctionName, FunctionVersion, Marker, MaxItems)
 \itemize{
 \item \strong{Function name} - \code{MyFunction}.
 \item \strong{Function ARN} -
-\code{arn:aws:lambda:us-west-2:123456789012:function:MyFunction}.
-\item \strong{Partial ARN} - \code{123456789012:function:MyFunction}.
+\verb{arn:aws:lambda:us-west-2:123456789012:function:MyFunction}.
+\item \strong{Partial ARN} - \verb{123456789012:function:MyFunction}.
 }
 
 The length constraint applies only to the full ARN. If you specify only
@@ -23,7 +23,7 @@ the function name, it is limited to 64 characters in length.}
 \item{FunctionVersion}{Specify a function version to only list aliases that invoke that
 version.}
 
-\item{Marker}{Specify the pagination token that's returned by a previous request to
+\item{Marker}{Specify the pagination token that\'s returned by a previous request to
 retrieve the next page of results.}
 
 \item{MaxItems}{Limit the number of aliases returned.}

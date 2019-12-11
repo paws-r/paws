@@ -13,7 +13,7 @@ storagegateway_delete_file_share(FileShareARN, ForceDelete)
 immediately and aborts all data uploads to AWS. Otherwise, the file
 share is not deleted until all data is uploaded to AWS. This process
 aborts the data upload process, and the file share enters the
-FORCE\_DELETING status.}
+FORCE\\_DELETING status.}
 }
 \description{
 Deletes a file share from a file gateway. This operation is only

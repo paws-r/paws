@@ -9,27 +9,30 @@ NULL
 #' 
 #' The types of information returned are as follows:
 #' 
-#' -   Words and lines that are related to nearby lines and words. The
-#'     related information is returned in two Block objects each of type
-#'     `KEY_VALUE_SET`: a KEY Block object and a VALUE Block object. For
-#'     example, *Name: Ana Silva Carolina* contains a key and value.
-#'     *Name:* is the key. *Ana Silva Carolina* is the value.
+#' -   Form data (key-value pairs). The related information is returned in
+#'     two Block objects, each of type `KEY_VALUE_SET`: a KEY `Block`
+#'     object and a VALUE `Block` object. For example, *Name: Ana Silva
+#'     Carolina* contains a key and value. *Name:* is the key. *Ana Silva
+#'     Carolina* is the value.
 #' 
-#' -   Table and table cell data. A TABLE Block object contains information
-#'     about a detected table. A CELL Block object is returned for each
-#'     cell in a table.
+#' -   Table and table cell data. A TABLE `Block` object contains
+#'     information about a detected table. A CELL `Block` object is
+#'     returned for each cell in a table.
 #' 
-#' -   Selectable elements such as checkboxes and radio buttons. A
-#'     SELECTION\\_ELEMENT Block object contains information about a
-#'     selectable element.
+#' -   Lines and words of text. A LINE `Block` object contains one or more
+#'     WORD `Block` objects. All lines and words that are detected in the
+#'     document are returned (including text that doesn\'t have a
+#'     relationship with the value of `FeatureTypes`).
 #' 
-#' -   Lines and words of text. A LINE Block object contains one or more
-#'     WORD Block objects.
+#' Selection elements such as check boxes and option buttons (radio
+#' buttons) can be detected in form data and in tables. A
+#' SELECTION\\_ELEMENT `Block` object contains information about a selection
+#' element, including the selection status.
 #' 
 #' You can choose which type of analysis to perform by specifying the
 #' `FeatureTypes` list.
 #' 
-#' The output is returned in a list of `BLOCK` objects.
+#' The output is returned in a list of `Block` objects.
 #' 
 #' `AnalyzeDocument` is a synchronous operation. To analyze documents
 #' asynchronously, use StartDocumentAnalysis.
@@ -38,18 +41,22 @@ NULL
 #' Analysis](https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html).
 #'
 #' @usage
-#' textract_analyze_document(Document, FeatureTypes)
+#' textract_analyze_document(Document, FeatureTypes, HumanLoopConfig)
 #'
 #' @param Document &#91;required&#93; The input document as base64-encoded bytes or an Amazon S3 object. If
 #' you use the AWS CLI to call Amazon Textract operations, you can\'t pass
-#' image bytes. The document must be an image in JPG or PNG format.
+#' image bytes. The document must be an image in JPEG or PNG format.
 #' 
-#' If you are using an AWS SDK to call Amazon Textract, you might not need
-#' to base64-encode image bytes passed using the `Bytes` field.
+#' If you\'re using an AWS SDK to call Amazon Textract, you might not need
+#' to base64-encode image bytes that are passed using the `Bytes` field.
 #' @param FeatureTypes &#91;required&#93; A list of the types of analysis to perform. Add TABLES to the list to
-#' return information about the tables detected in the input document. Add
-#' FORMS to return detected fields and the associated text. To perform both
-#' types of analysis, add TABLES and FORMS to `FeatureTypes`.
+#' return information about the tables that are detected in the input
+#' document. Add FORMS to return detected form data. To perform both types
+#' of analysis, add TABLES and FORMS to `FeatureTypes`. All lines and words
+#' detected in the document are included in the response (including text
+#' that isn\'t related to the value of `FeatureTypes`).
+#' @param HumanLoopConfig Sets the configuration for the human in the loop workflow for analyzing
+#' documents.
 #'
 #' @section Request syntax:
 #' ```
@@ -64,6 +71,15 @@ NULL
 #'   ),
 #'   FeatureTypes = list(
 #'     "TABLES"|"FORMS"
+#'   ),
+#'   HumanLoopConfig = list(
+#'     HumanLoopName = "string",
+#'     FlowDefinitionArn = "string",
+#'     DataAttributes = list(
+#'       ContentClassifiers = list(
+#'         "FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -71,14 +87,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname textract_analyze_document
-textract_analyze_document <- function(Document, FeatureTypes) {
+textract_analyze_document <- function(Document, FeatureTypes, HumanLoopConfig = NULL) {
   op <- new_operation(
     name = "AnalyzeDocument",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .textract$analyze_document_input(Document = Document, FeatureTypes = FeatureTypes)
+  input <- .textract$analyze_document_input(Document = Document, FeatureTypes = FeatureTypes, HumanLoopConfig = HumanLoopConfig)
   output <- .textract$analyze_document_output()
   config <- get_config()
   svc <- .textract$service(config)
@@ -92,7 +108,7 @@ textract_analyze_document <- function(Document, FeatureTypes) {
 #'
 #' Detects text in the input document. Amazon Textract can detect lines of
 #' text and the words that make up a line of text. The input document must
-#' be an image in JPG or PNG format. `DetectDocumentText` returns the
+#' be an image in JPEG or PNG format. `DetectDocumentText` returns the
 #' detected text in an array of Block objects.
 #' 
 #' Each document page has as an associated `Block` of type PAGE. Each PAGE
@@ -112,10 +128,10 @@ textract_analyze_document <- function(Document, FeatureTypes) {
 #'
 #' @param Document &#91;required&#93; The input document as base64-encoded bytes or an Amazon S3 object. If
 #' you use the AWS CLI to call Amazon Textract operations, you can\'t pass
-#' image bytes. The document must be an image in JPG or PNG format.
+#' image bytes. The document must be an image in JPEG or PNG format.
 #' 
-#' If you are using an AWS SDK to call Amazon Textract, you might not need
-#' to base64-encode image bytes passed using the `Bytes` field.
+#' If you\'re using an AWS SDK to call Amazon Textract, you might not need
+#' to base64-encode image bytes that are passed using the `Bytes` field.
 #'
 #' @section Request syntax:
 #' ```
@@ -170,30 +186,34 @@ textract_detect_document_text <- function(Document) {
 #' `GetDocumentAnalysis` returns an array of Block objects. The following
 #' types of information are returned:
 #' 
-#' -   Words and lines that are related to nearby lines and words. The
-#'     related information is returned in two Block objects each of type
-#'     `KEY_VALUE_SET`: a KEY Block object and a VALUE Block object. For
-#'     example, *Name: Ana Silva Carolina* contains a key and value.
-#'     *Name:* is the key. *Ana Silva Carolina* is the value.
+#' -   Form data (key-value pairs). The related information is returned in
+#'     two Block objects, each of type `KEY_VALUE_SET`: a KEY `Block`
+#'     object and a VALUE `Block` object. For example, *Name: Ana Silva
+#'     Carolina* contains a key and value. *Name:* is the key. *Ana Silva
+#'     Carolina* is the value.
 #' 
-#' -   Table and table cell data. A TABLE Block object contains information
-#'     about a detected table. A CELL Block object is returned for each
-#'     cell in a table.
+#' -   Table and table cell data. A TABLE `Block` object contains
+#'     information about a detected table. A CELL `Block` object is
+#'     returned for each cell in a table.
 #' 
-#' -   Selectable elements such as checkboxes and radio buttons. A
-#'     SELECTION\\_ELEMENT Block object contains information about a
-#'     selectable element.
+#' -   Lines and words of text. A LINE `Block` object contains one or more
+#'     WORD `Block` objects. All lines and words that are detected in the
+#'     document are returned (including text that doesn\'t have a
+#'     relationship with the value of the `StartDocumentAnalysis`
+#'     `FeatureTypes` input parameter).
 #' 
-#' -   Lines and words of text. A LINE Block object contains one or more
-#'     WORD Block objects.
+#' Selection elements such as check boxes and option buttons (radio
+#' buttons) can be detected in form data and in tables. A
+#' SELECTION\\_ELEMENT `Block` object contains information about a selection
+#' element, including the selection status.
 #' 
-#' Use the `MaxResults` parameter to limit the number of blocks returned.
-#' If there are more results than specified in `MaxResults`, the value of
-#' `NextToken` in the operation response contains a pagination token for
-#' getting the next set of results. To get the next page of results, call
-#' `GetDocumentAnalysis`, and populate the `NextToken` request parameter
-#' with the token value that\'s returned from the previous call to
-#' `GetDocumentAnalysis`.
+#' Use the `MaxResults` parameter to limit the number of blocks that are
+#' returned. If there are more results than specified in `MaxResults`, the
+#' value of `NextToken` in the operation response contains a pagination
+#' token for getting the next set of results. To get the next page of
+#' results, call `GetDocumentAnalysis`, and populate the `NextToken`
+#' request parameter with the token value that\'s returned from the
+#' previous call to `GetDocumentAnalysis`.
 #' 
 #' For more information, see [Document Text
 #' Analysis](https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html).
@@ -202,7 +222,7 @@ textract_detect_document_text <- function(Document) {
 #' textract_get_document_analysis(JobId, MaxResults, NextToken)
 #'
 #' @param JobId &#91;required&#93; A unique identifier for the text-detection job. The `JobId` is returned
-#' from `StartDocumentAnalysis`.
+#' from `StartDocumentAnalysis`. A `JobId` value is only valid for 7 days.
 #' @param MaxResults The maximum number of results to return per paginated call. The largest
 #' value that you can specify is 1,000. If you specify a value greater than
 #' 1,000, a maximum of 1,000 results is returned. The default value is
@@ -282,7 +302,8 @@ textract_get_document_analysis <- function(JobId, MaxResults = NULL, NextToken =
 #' textract_get_document_text_detection(JobId, MaxResults, NextToken)
 #'
 #' @param JobId &#91;required&#93; A unique identifier for the text detection job. The `JobId` is returned
-#' from `StartDocumentTextDetection`.
+#' from `StartDocumentTextDetection`. A `JobId` value is only valid for 7
+#' days.
 #' @param MaxResults The maximum number of results to return per paginated call. The largest
 #' value you can specify is 1,000. If you specify a value greater than
 #' 1,000, a maximum of 1,000 results is returned. The default value is
@@ -321,15 +342,15 @@ textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextT
 }
 .textract$operations$get_document_text_detection <- textract_get_document_text_detection
 
-#' Starts asynchronous analysis of an input document for relationships
-#' between detected items such as key and value pairs, tables, and
-#' selection elements
+#' Starts the asynchronous analysis of an input document for relationships
+#' between detected items such as key-value pairs, tables, and selection
+#' elements
 #'
-#' Starts asynchronous analysis of an input document for relationships
-#' between detected items such as key and value pairs, tables, and
-#' selection elements.
+#' Starts the asynchronous analysis of an input document for relationships
+#' between detected items such as key-value pairs, tables, and selection
+#' elements.
 #' 
-#' `StartDocumentAnalysis` can analyze text in documents that are in JPG,
+#' `StartDocumentAnalysis` can analyze text in documents that are in JPEG,
 #' PNG, and PDF format. The documents are stored in an Amazon S3 bucket.
 #' Use DocumentLocation to specify the bucket name and file name of the
 #' document.
@@ -353,18 +374,20 @@ textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextT
 #' @param DocumentLocation &#91;required&#93; The location of the document to be processed.
 #' @param FeatureTypes &#91;required&#93; A list of the types of analysis to perform. Add TABLES to the list to
 #' return information about the tables that are detected in the input
-#' document. Add FORMS to return detected fields and the associated text.
-#' To perform both types of analysis, add TABLES and FORMS to
-#' `FeatureTypes`. All selectable elements (`SELECTION_ELEMENT`) that are
-#' detected are returned, whatever the value of `FeatureTypes`.
+#' document. Add FORMS to return detected form data. To perform both types
+#' of analysis, add TABLES and FORMS to `FeatureTypes`. All lines and words
+#' detected in the document are included in the response (including text
+#' that isn\'t related to the value of `FeatureTypes`).
 #' @param ClientRequestToken The idempotent token that you use to identify the start request. If you
 #' use the same token with multiple `StartDocumentAnalysis` requests, the
 #' same `JobId` is returned. Use `ClientRequestToken` to prevent the same
-#' job from being accidentally started more than once.
-#' @param JobTag An identifier you specify that\'s included in the completion
-#' notification that\'s published to the Amazon SNS topic. For example, you
-#' can use `JobTag` to identify the type of document, such as a tax form or
-#' a receipt, that the completion notification corresponds to.
+#' job from being accidentally started more than once. For more
+#' information, see [Calling Amazon Textract Asynchronous
+#' Operations](https://docs.aws.amazon.com/textract/latest/dg/api-async.html).
+#' @param JobTag An identifier that you specify that\'s included in the completion
+#' notification published to the Amazon SNS topic. For example, you can use
+#' `JobTag` to identify the type of document that the completion
+#' notification corresponds to (such as a tax form or a receipt).
 #' @param NotificationChannel The Amazon SNS topic ARN that you want Amazon Textract to publish the
 #' completion status of the operation to.
 #'
@@ -416,7 +439,7 @@ textract_start_document_analysis <- function(DocumentLocation, FeatureTypes, Cli
 #' can detect lines of text and the words that make up a line of text.
 #' 
 #' `StartDocumentTextDetection` can analyze text in documents that are in
-#' JPG, PNG, and PDF format. The documents are stored in an Amazon S3
+#' JPEG, PNG, and PDF format. The documents are stored in an Amazon S3
 #' bucket. Use DocumentLocation to specify the bucket name and file name of
 #' the document.
 #' 
@@ -441,11 +464,13 @@ textract_start_document_analysis <- function(DocumentLocation, FeatureTypes, Cli
 #' @param ClientRequestToken The idempotent token that\'s used to identify the start request. If you
 #' use the same token with multiple `StartDocumentTextDetection` requests,
 #' the same `JobId` is returned. Use `ClientRequestToken` to prevent the
-#' same job from being accidentally started more than once.
-#' @param JobTag An identifier you specify that\'s included in the completion
-#' notification that\'s published to the Amazon SNS topic. For example, you
-#' can use `JobTag` to identify the type of document, such as a tax form or
-#' a receipt, that the completion notification corresponds to.
+#' same job from being accidentally started more than once. For more
+#' information, see [Calling Amazon Textract Asynchronous
+#' Operations](https://docs.aws.amazon.com/textract/latest/dg/api-async.html).
+#' @param JobTag An identifier that you specify that\'s included in the completion
+#' notification published to the Amazon SNS topic. For example, you can use
+#' `JobTag` to identify the type of document that the completion
+#' notification corresponds to (such as a tax form or a receipt).
 #' @param NotificationChannel The Amazon SNS topic ARN that you want Amazon Textract to publish the
 #' completion status of the operation to.
 #'

@@ -10,7 +10,7 @@ configservice_put_config_rule(ConfigRule, Tags)
 \arguments{
 \item{ConfigRule}{[required] The rule that you want to add to your account.}
 
-\item{Tags}{}
+\item{Tags}{An array of tag object.}
 }
 \description{
 Adds or updates an AWS Config rule for evaluating whether your AWS
@@ -30,7 +30,7 @@ Lambda assigns to the function. Specify the ARN for the
 \code{SourceIdentifier} key. This key is part of the \code{Source} object, which
 is part of the \code{ConfigRule} object.
 
-If you are adding an AWS managed Config rule, specify the rule's
+If you are adding an AWS managed Config rule, specify the rule\'s
 identifier for the \code{SourceIdentifier} key. To reference AWS managed
 Config rule identifiers, see \href{https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html}{About AWS Managed Config Rules}.
 

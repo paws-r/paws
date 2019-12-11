@@ -9,9 +9,9 @@ glacier_delete_vault(accountId, vaultName)
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the
 vault. You can either specify an AWS account ID or optionally a single
-'\code{-}' (hyphen), in which case Amazon S3 Glacier uses the AWS account
+\'\code{-}\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
 ID associated with the credentials used to sign the request. If you use
-an account ID, do not include any hyphens ('-') in the ID.}
+an account ID, do not include any hyphens (\'-\') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 }
@@ -30,7 +30,7 @@ contains the archive IDs you use to delete archives using \href{https://docs.aws
 This operation is idempotent.
 
 An AWS account has full permission to perform all operations (actions).
-However, AWS Identity and Access Management (IAM) users don't have any
+However, AWS Identity and Access Management (IAM) users don\'t have any
 permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html}{Access Control Using AWS Identity and Access Management (IAM)}.
 

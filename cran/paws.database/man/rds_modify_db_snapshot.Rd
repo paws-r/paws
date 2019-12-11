@@ -18,15 +18,20 @@ available when you upgrade a DB snapshot.
 
 \strong{MySQL}
 \itemize{
-\item \code{5.5.46} (supported for 5.1 DB snapshots)
+\item \verb{5.5.46} (supported for 5.1 DB snapshots)
 }
 
 \strong{Oracle}
 \itemize{
-\item \code{12.1.0.2.v8} (supported for 12.1.0.1 DB snapshots)
-\item \code{11.2.0.4.v12} (supported for 11.2.0.2 DB snapshots)
-\item \code{11.2.0.4.v11} (supported for 11.2.0.3 DB snapshots)
-}}
+\item \verb{12.1.0.2.v8} (supported for 12.1.0.1 DB snapshots)
+\item \verb{11.2.0.4.v12} (supported for 11.2.0.2 DB snapshots)
+\item \verb{11.2.0.4.v11} (supported for 11.2.0.3 DB snapshots)
+}
+
+\strong{PostgreSQL}
+
+For the list of engine versions that are available for upgrading a DB
+snapshot, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.PostgreSQL.html#USER_UpgradeDBInstance.PostgreSQL.MajorVersion}{Upgrading the PostgreSQL DB Engine for Amazon RDS}.}
 
 \item{OptionGroupName}{The option group to identify with the upgraded DB snapshot.
 
@@ -40,7 +45,8 @@ Updates a manual DB snapshot, which can be encrypted or not encrypted,
 with a new engine version.
 }
 \details{
-Amazon RDS supports upgrading DB snapshots for MySQL and Oracle.
+Amazon RDS supports upgrading DB snapshots for MySQL, Oracle, and
+PostgreSQL.
 }
 \section{Request syntax}{
 \preformatted{svc$modify_db_snapshot(

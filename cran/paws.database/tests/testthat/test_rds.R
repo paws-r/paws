@@ -10,6 +10,10 @@ test_that("describe_certificates", {
   expect_error(svc$describe_certificates(), NA)
 })
 
+test_that("describe_custom_availability_zones", {
+  expect_error(svc$describe_custom_availability_zones(), NA)
+})
+
 test_that("describe_db_cluster_endpoints", {
   expect_error(svc$describe_db_cluster_endpoints(), NA)
 })
@@ -42,6 +46,10 @@ test_that("describe_db_parameter_groups", {
   expect_error(svc$describe_db_parameter_groups(), NA)
 })
 
+test_that("describe_db_proxies", {
+  expect_error(svc$describe_db_proxies(), NA)
+})
+
 test_that("describe_db_security_groups", {
   expect_error(svc$describe_db_security_groups(), NA)
 })
@@ -68,6 +76,10 @@ test_that("describe_events", {
 
 test_that("describe_global_clusters", {
   expect_error(svc$describe_global_clusters(), NA)
+})
+
+test_that("describe_installation_media", {
+  expect_error(svc$describe_installation_media(), NA)
 })
 
 test_that("describe_option_groups", {
