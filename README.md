@@ -117,6 +117,13 @@ There are also examples for [EC2](examples/ec2.R), [S3](examples/s3.R),
 [DynamoDB](examples/dynamodb.R), [Lambda](examples/lambda.R),
 [Batch](examples/batch.R), and [Comprehend](examples/comprehend.R).
 
+## Related packages
+
+* [`noctua`](https://dyfanjones.github.io/noctua/) is an interface to the
+[AWS Athena](https://aws.amazon.com/athena/) serverless interactive query
+service, which allows you to query files stored in S3 using SQL or
+[`dplyr`](https://dplyr.tidyverse.org/).
+
 ## Credits
 
 API specifications from [AWS SDK for JavaScript](https://github.com/aws/aws-sdk-js);
