@@ -30,7 +30,7 @@ install: build
 	@echo "install the AWS SDK package"
 	@Rscript -e "devtools::install('${OUT_DIR}', upgrade = FALSE, quiet = TRUE)"
 
-build-full: deps codegen
+build-full: codegen
 	@echo "build the AWS SDK package"
 	@Rscript -e "library(make.paws); make_sdk('${IN_DIR}', '${OUT_DIR}')"
 
@@ -68,6 +68,6 @@ deps:
 	@if [ ! -x "$(command -v pandoc)" ]; then echo "Please install Pandoc. See https://pandoc.org."; fi
 	@if [ ! -d ${IN_DIR} ]; then git submodule init && git submodule update; fi
 
-update-deps: deps
+update-deps:
 	@echo "update project dependencies"
 	@git submodule update --remote

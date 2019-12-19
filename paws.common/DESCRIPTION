@@ -42,6 +42,7 @@ Collate:
     'convert.R'
     'service.R'
     'custom_dynamodb.R'
+    'custom_rds.R'
     'custom_s3.R'
     'dateutil.R'
     'error.R'
