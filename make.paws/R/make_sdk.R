@@ -7,7 +7,7 @@
 make_sdk <- function(in_dir, out_dir) {
   clear_dir(out_dir)
   write_skeleton(out_dir)
-  for (api in "rds") {
+  for (api in list_apis(file.path(in_dir, "apis"))) {
     cat(paste0(api, "\n"))
     write_sdk_for_api(api, in_dir, out_dir)
   }
