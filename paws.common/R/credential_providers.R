@@ -70,16 +70,23 @@ credentials_file_provider <- function() {
   return(creds)
 }
 
-# Retrieve credentials for EC2 IAM Role
+# Retrieve credentials for ECS and EC2 IAM Role
 iam_credentials_provider <- function() {
 
-  iam_role <- get_iam_role()
-  if(is.null(iam_role)) return(NULL)
+  # Look for job role credentials first
+  credentials_response <- get_job_role_credentials()
 
-  credentials_url <- file.path("iam/security-credentials", iam_role)
+  # Look for instance credentials if no job role credentials
+  if (is.null(credentials_response)) {
 
-  credentials_response <- get_instance_metadata(credentials_url)
+    iam_role <- get_iam_role()
+    if(is.null(iam_role)) return(NULL)
 
+    credentials_url <- file.path("iam/security-credentials", iam_role)
+
+    credentials_response <- get_instance_metadata(credentials_url)
+  }
+  
   if (is.null(credentials_response)) return(NULL)
 
   credentials_response_body <- jsonlite::fromJSON(rawToChar(credentials_response$body))
