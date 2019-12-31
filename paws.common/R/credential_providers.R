@@ -73,8 +73,16 @@ credentials_file_provider <- function() {
 # Retrieve credentials for ECS and EC2 IAM Role
 iam_credentials_provider <- function() {
 
+  # Initialize to NULL
+  credentials_response <- NULL
+
+  container_credentials_uri <-
+    Sys.getenv("AWS_CONTAINER_CREDENTIALS_RELATIVE_URI")
+
   # Look for job role credentials first
-  credentials_response <- get_job_role_credentials()
+  if (container_credentials_uri != "") {
+    credentials_response <- get_job_role_credentials()
+  }
 
   # Look for instance credentials if no job role credentials
   if (is.null(credentials_response)) {
