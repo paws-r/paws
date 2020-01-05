@@ -161,7 +161,11 @@ get_example <- function(api) {
 
 # Returns a list of the API's operations with links to their docs.
 service_operations <- function(api) {
-  rows <- lapply(api$operations, function(op) {
+  api_operations <- api$operations
+  custom_operations <- get_custom_operations(api)
+  operations <- c(api_operations, custom_operations)
+  operations <- operations[sort(names(operations))]
+  rows <- lapply(operations, function(op) {
     op_name <- get_operation_name(op)
     doc_name <- paste0(package_name(api), "_", op_name)
     data.frame(
@@ -172,6 +176,55 @@ service_operations <- function(api) {
   table <- gsub(" +", " ", tabular(do.call(rbind, rows)))
   table <- comment(table, "#'")
   paste("@section Operations:", table, sep = "\n")
+}
+
+# Returns a list of a package's custom operations and their documentation.
+get_custom_operations <- function(api) {
+  package <- package_name(api)
+  from <- system_file(sprintf("src/custom/%s.R", package), package = methods::getPackageName())
+  text <- readLines(from)
+  operations <- parse_operations(text)
+  return(operations)
+}
+
+# Return a list of operations and documentation found in the given text
+# representing code read from an R code file.
+parse_operations <- function(text) {
+  ids <- rep(NA, length(text))
+  id <- 1
+  for (i in seq_along(text)) {
+    if (i > 1 && startsWith(text[i], "#'") && !startsWith(text[i-1], "#'")) {
+      id <- id + 1
+    }
+    ids[i] <- id
+  }
+  operations <- list()
+  for (op_text in split(text, ids)) {
+    operation <- parse_operation(op_text)
+    if (is.null(operation$name) || operation$name == "NULL") {
+      next
+    }
+    operations[[operation$name]] <- operation
+  }
+  return(operations)
+}
+
+# Parse a Roxygen-commented function and return something resembling an AWS API
+# specification.
+parse_operation <- function(text) {
+  comment_lines <- startsWith(text, "#'")
+  comment <- text[comment_lines]
+  code <- text[!comment_lines]
+  func <- strsplit(code[1], " ")[[1]][1]
+  name <- substring(func, regexpr("_", func)+1)
+  operation <- list(
+    name = name,
+    http = list(),
+    input = list(),
+    output = list(),
+    documentation = sprintf("<p>%s</p>", gsub("^#' ", "", comment[1]))
+  )
+  return(operation)
 }
 
 # Returns the standardized protocol name used by an API.
