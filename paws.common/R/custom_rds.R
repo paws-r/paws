@@ -11,6 +11,9 @@ rds_build_auth_token <- function(endpoint, region, user, creds = NULL) {
   if (is.null(region)) {
     region <- get_region(config$region)
   }
+  if (is.null(creds)) {
+    creds <- config$credentials$creds
+  }
   v4 <- Signer(credentials = Credentials(creds = creds))
   req <- sign_with_body(v4, req, NULL, "rds-db", region, 15 * 60, TRUE, Sys.time())
 
