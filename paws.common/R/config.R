@@ -111,6 +111,27 @@ get_profile_name <- function(profile = "") {
   return(profile)
 }
 
+# Gets the job role credentials by making an http request
+get_container_credentials <- function() {
+
+  credentials_uri <- Sys.getenv("AWS_CONTAINER_CREDENTIALS_RELATIVE_URI")
+  metadata_url <- file.path("http://169.254.170.2", credentials_uri)
+  metadata_request <-
+    new_http_request("GET", metadata_url)
+
+  metadata_response <- tryCatch({
+    issue(metadata_request)
+  }, error = function (e){
+    NULL
+  })
+
+  if (is.null(metadata_response) || metadata_response$status_code != 200) {
+    return(NULL)
+  }
+
+  return(metadata_response)
+}
+
 # Gets the instance metadata by making an http request
 get_instance_metadata <- function(query_path = "") {
 
