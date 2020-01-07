@@ -70,8 +70,8 @@ credentials_file_provider <- function() {
   return(creds)
 }
 
-# Retrieve credentials for ECS and EC2 IAM Role
-iam_credentials_provider <- function() {
+# Retrieve container job role credentials
+container_credentials_provider <- function() {
 
   # Initialize to NULL
   credentials_response <- NULL
@@ -81,19 +81,45 @@ iam_credentials_provider <- function() {
 
   # Look for job role credentials first
   if (container_credentials_uri != "") {
-    credentials_response <- get_job_role_credentials()
+    credentials_response <- get_container_credentials()
   }
 
-  # Look for instance credentials if no job role credentials
-  if (is.null(credentials_response)) {
+  if (is.null(credentials_response)) return(NULL)
 
-    iam_role <- get_iam_role()
-    if(is.null(iam_role)) return(NULL)
+  credentials_response_body <-
+    jsonlite::fromJSON(rawToChar(credentials_response$body))
 
-    credentials_url <- file.path("iam/security-credentials", iam_role)
+  access_key_id <- credentials_response_body$AccessKeyId
+  secret_access_key <- credentials_response_body$SecretAccessKey
+  session_token <- credentials_response_body$Token
 
-    credentials_response <- get_instance_metadata(credentials_url)
+  if (is.null(access_key_id) || is.null(secret_access_key) ||
+      is.null(session_token)) return(NULL)
+
+  if (access_key_id != "" && secret_access_key != "" &&
+      session_token != "") {
+    creds <- list(
+      access_key_id = access_key_id,
+      secret_access_key = secret_access_key,
+      session_token = session_token,
+      provider_name = ""
+    )
+  } else {
+    creds <- NULL
   }
+  return(creds)
+}
+
+
+# Retrieve credentials for EC2 IAM Role
+iam_credentials_provider <- function() {
+
+  iam_role <- get_iam_role()
+  if(is.null(iam_role)) return(NULL)
+
+  credentials_url <- file.path("iam/security-credentials", iam_role)
+
+  credentials_response <- get_instance_metadata(credentials_url)
   
   if (is.null(credentials_response)) return(NULL)
 
@@ -118,7 +144,6 @@ iam_credentials_provider <- function() {
     creds <- NULL
   }
   return(creds)
-
 }
 
 no_credentials <- function() {
