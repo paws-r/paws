@@ -4,8 +4,13 @@
 \alias{new_operation}
 \title{Return an API operation object}
 \usage{
-new_operation(name, http_method, http_path, paginator,
-  before_presign_fn = NULL)
+new_operation(
+  name,
+  http_method,
+  http_path,
+  paginator,
+  before_presign_fn = NULL
+)
 }
 \arguments{
 \item{name}{The API operation name.}
@@ -34,8 +39,10 @@ op <- new_operation(
 
 }
 \seealso{
-Other API request functions: \code{\link{new_handlers}},
-  \code{\link{new_request}}, \code{\link{new_service}},
-  \code{\link{send_request}}
+Other API request functions: 
+\code{\link{new_handlers}()},
+\code{\link{new_request}()},
+\code{\link{new_service}()},
+\code{\link{send_request}()}
 }
 \concept{API request functions}

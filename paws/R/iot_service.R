@@ -185,8 +185,8 @@ NULL
 #'  \link[=iot_list_policy_versions]{list_policy_versions} \tab Lists the versions of the specified policy and identifies the default version \cr
 #'  \link[=iot_list_principal_policies]{list_principal_policies} \tab Lists the policies attached to the specified principal \cr
 #'  \link[=iot_list_principal_things]{list_principal_things} \tab Lists the things associated with the specified principal \cr
-#'  \link[=iot_list_provisioning_template_versions]{list_provisioning_template_versions} \tab A list of fleet provisioning template versions \cr
 #'  \link[=iot_list_provisioning_templates]{list_provisioning_templates} \tab Lists the fleet provisioning templates in your AWS account \cr
+#'  \link[=iot_list_provisioning_template_versions]{list_provisioning_template_versions} \tab A list of fleet provisioning template versions \cr
 #'  \link[=iot_list_role_aliases]{list_role_aliases} \tab Lists the role aliases registered in your account \cr
 #'  \link[=iot_list_scheduled_audits]{list_scheduled_audits} \tab Lists all of your scheduled audits \cr
 #'  \link[=iot_list_security_profiles]{list_security_profiles} \tab Lists the Device Defender security profiles you have created \cr
@@ -200,10 +200,10 @@ NULL
 #'  \link[=iot_list_thing_principals]{list_thing_principals} \tab Lists the principals associated with the specified thing \cr
 #'  \link[=iot_list_thing_registration_task_reports]{list_thing_registration_task_reports} \tab Information about the thing registration tasks \cr
 #'  \link[=iot_list_thing_registration_tasks]{list_thing_registration_tasks} \tab List bulk thing provisioning tasks \cr
-#'  \link[=iot_list_thing_types]{list_thing_types} \tab Lists the existing thing types \cr
 #'  \link[=iot_list_things]{list_things} \tab Lists your things \cr
 #'  \link[=iot_list_things_in_billing_group]{list_things_in_billing_group} \tab Lists the things you have added to the given billing group \cr
 #'  \link[=iot_list_things_in_thing_group]{list_things_in_thing_group} \tab Lists the things in the specified group \cr
+#'  \link[=iot_list_thing_types]{list_thing_types} \tab Lists the existing thing types \cr
 #'  \link[=iot_list_topic_rule_destinations]{list_topic_rule_destinations} \tab Lists all the topic rule destinations in your AWS account \cr
 #'  \link[=iot_list_topic_rules]{list_topic_rules} \tab Lists the rules for the specific topic \cr
 #'  \link[=iot_list_v2_logging_levels]{list_v2_logging_levels} \tab Lists logging levels \cr

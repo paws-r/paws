@@ -84,8 +84,8 @@ NULL
 #'  \link[=health_describe_entity_aggregates]{describe_entity_aggregates} \tab Returns the number of entities that are affected by each of the specified events \cr
 #'  \link[=health_describe_event_aggregates]{describe_event_aggregates} \tab Returns the number of events of each event type (issue, scheduled change, and account notification) \cr
 #'  \link[=health_describe_event_details]{describe_event_details} \tab Returns detailed information about one or more specified events \cr
-#'  \link[=health_describe_event_types]{describe_event_types} \tab Returns the event types that meet the specified filter criteria \cr
-#'  \link[=health_describe_events]{describe_events} \tab Returns information about events that meet the specified filter criteria 
+#'  \link[=health_describe_events]{describe_events} \tab Returns information about events that meet the specified filter criteria \cr
+#'  \link[=health_describe_event_types]{describe_event_types} \tab Returns the event types that meet the specified filter criteria 
 #' }
 #'
 #' @rdname health

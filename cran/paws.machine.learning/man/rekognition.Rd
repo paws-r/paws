@@ -42,8 +42,8 @@ This is the Amazon Rekognition API reference.
 \link[=rekognition_delete_faces]{delete_faces} \tab Deletes faces from a collection \cr
 \link[=rekognition_delete_stream_processor]{delete_stream_processor} \tab Deletes the stream processor identified by Name \cr
 \link[=rekognition_describe_collection]{describe_collection} \tab Describes the specified collection \cr
-\link[=rekognition_describe_project_versions]{describe_project_versions} \tab Lists and describes the models in an Amazon Rekognition Custom Labels project \cr
 \link[=rekognition_describe_projects]{describe_projects} \tab Lists and gets information about your Amazon Rekognition Custom Labels projects \cr
+\link[=rekognition_describe_project_versions]{describe_project_versions} \tab Lists and describes the models in an Amazon Rekognition Custom Labels project \cr
 \link[=rekognition_describe_stream_processor]{describe_stream_processor} \tab Provides information about a stream processor created by CreateStreamProcessor \cr
 \link[=rekognition_detect_custom_labels]{detect_custom_labels} \tab Detects custom labels in a supplied image by using an Amazon Rekognition Custom Labels model \cr
 \link[=rekognition_detect_faces]{detect_faces} \tab Detects faces within an image that is provided as input \cr

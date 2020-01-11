@@ -84,8 +84,8 @@ NULL
 #'  \link[=devicefarm_list_jobs]{list_jobs} \tab Gets information about jobs for a given test run \cr
 #'  \link[=devicefarm_list_network_profiles]{list_network_profiles} \tab Returns the list of available network profiles \cr
 #'  \link[=devicefarm_list_offering_promotions]{list_offering_promotions} \tab Returns a list of offering promotions \cr
-#'  \link[=devicefarm_list_offering_transactions]{list_offering_transactions} \tab Returns a list of all historical purchases, renewals, and system renewal transactions for an AWS account \cr
 #'  \link[=devicefarm_list_offerings]{list_offerings} \tab Returns a list of products or offerings that the user can manage through the API \cr
+#'  \link[=devicefarm_list_offering_transactions]{list_offering_transactions} \tab Returns a list of all historical purchases, renewals, and system renewal transactions for an AWS account \cr
 #'  \link[=devicefarm_list_projects]{list_projects} \tab Gets information about projects \cr
 #'  \link[=devicefarm_list_remote_access_sessions]{list_remote_access_sessions} \tab Returns a list of all currently running remote access sessions \cr
 #'  \link[=devicefarm_list_runs]{list_runs} \tab Gets information about runs, given an AWS Device Farm project ARN \cr

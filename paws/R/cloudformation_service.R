@@ -76,9 +76,9 @@ NULL
 #'  \link[=cloudformation_describe_stack_resource]{describe_stack_resource} \tab Returns a description of the specified resource in the specified stack \cr
 #'  \link[=cloudformation_describe_stack_resource_drifts]{describe_stack_resource_drifts} \tab Returns drift information for the resources that have been checked for drift in the specified stack \cr
 #'  \link[=cloudformation_describe_stack_resources]{describe_stack_resources} \tab Returns AWS resource descriptions for running and deleted stacks \cr
+#'  \link[=cloudformation_describe_stacks]{describe_stacks} \tab Returns the description for the specified stack; if no stack name was specified, then it returns the description for all the stacks created \cr
 #'  \link[=cloudformation_describe_stack_set]{describe_stack_set} \tab Returns the description of the specified stack set \cr
 #'  \link[=cloudformation_describe_stack_set_operation]{describe_stack_set_operation} \tab Returns the description of the specified stack set operation \cr
-#'  \link[=cloudformation_describe_stacks]{describe_stacks} \tab Returns the description for the specified stack; if no stack name was specified, then it returns the description for all the stacks created \cr
 #'  \link[=cloudformation_describe_type]{describe_type} \tab Returns detailed information about a type that has been registered \cr
 #'  \link[=cloudformation_describe_type_registration]{describe_type_registration} \tab Returns information about a type's registration, including its current status and type and version identifiers \cr
 #'  \link[=cloudformation_detect_stack_drift]{detect_stack_drift} \tab Detects whether a stack's actual configuration differs, or has _drifted_, from it's expected configuration, as defined in the stack template and any values specified as template parameters \cr
@@ -94,13 +94,13 @@ NULL
 #'  \link[=cloudformation_list_imports]{list_imports} \tab Lists all stacks that are importing an exported output value \cr
 #'  \link[=cloudformation_list_stack_instances]{list_stack_instances} \tab Returns summary information about stack instances that are associated with the specified stack set \cr
 #'  \link[=cloudformation_list_stack_resources]{list_stack_resources} \tab Returns descriptions of all resources of the specified stack \cr
+#'  \link[=cloudformation_list_stacks]{list_stacks} \tab Returns the summary information for stacks whose status matches the specified StackStatusFilter \cr
 #'  \link[=cloudformation_list_stack_set_operation_results]{list_stack_set_operation_results} \tab Returns summary information about the results of a stack set operation \cr
 #'  \link[=cloudformation_list_stack_set_operations]{list_stack_set_operations} \tab Returns summary information about operations performed on a stack set \cr
 #'  \link[=cloudformation_list_stack_sets]{list_stack_sets} \tab Returns summary information about stack sets that are associated with the user \cr
-#'  \link[=cloudformation_list_stacks]{list_stacks} \tab Returns the summary information for stacks whose status matches the specified StackStatusFilter \cr
 #'  \link[=cloudformation_list_type_registrations]{list_type_registrations} \tab Returns a list of registration tokens for the specified type \cr
-#'  \link[=cloudformation_list_type_versions]{list_type_versions} \tab Returns summary information about the versions of a type \cr
 #'  \link[=cloudformation_list_types]{list_types} \tab Returns summary information about types that have been registered with CloudFormation \cr
+#'  \link[=cloudformation_list_type_versions]{list_type_versions} \tab Returns summary information about the versions of a type \cr
 #'  \link[=cloudformation_record_handler_progress]{record_handler_progress} \tab Reports progress of a resource handler to CloudFormation \cr
 #'  \link[=cloudformation_register_type]{register_type} \tab Registers a type with the CloudFormation service \cr
 #'  \link[=cloudformation_set_stack_policy]{set_stack_policy} \tab Sets a stack policy for a specified stack \cr

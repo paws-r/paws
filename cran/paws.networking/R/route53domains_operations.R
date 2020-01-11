@@ -223,11 +223,13 @@ route53domains_disable_domain_transfer_lock <- function(DomainName) {
 #' renewing your domain registration is billed to your AWS account.
 #' 
 #' The period during which you can renew a domain name varies by TLD. For a
-#' list of TLDs and their renewal policies, see \"Renewal, restoration, and
-#' deletion times\" on the website for our registrar associate, Gandi.
-#' Amazon Route 53 requires that you renew before the end of the renewal
-#' period that is listed on the Gandi website so we can complete processing
-#' before the deadline.
+#' list of TLDs and their renewal policies, see [\"Renewal, restoration,
+#' and deletion
+#' times\"](http://wiki.gandi.net/en/domains/renew#renewal_restoration_and_deletion_times)
+#' on the website for our registrar associate, Gandi. Amazon Route 53
+#' requires that you renew before the end of the renewal period that is
+#' listed on the Gandi website so we can complete processing before the
+#' deadline.
 #'
 #' @usage
 #' route53domains_enable_domain_auto_renew(DomainName)

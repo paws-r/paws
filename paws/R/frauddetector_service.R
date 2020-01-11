@@ -51,11 +51,11 @@ NULL
 #'  \link[=frauddetector_delete_event]{delete_event} \tab Deletes the specified event \cr
 #'  \link[=frauddetector_describe_detector]{describe_detector} \tab Gets all versions for a specified detector \cr
 #'  \link[=frauddetector_describe_model_versions]{describe_model_versions} \tab Gets all of the model versions for the specified model type or for the specified model type and model ID \cr
-#'  \link[=frauddetector_get_detector_version]{get_detector_version} \tab Gets a particular detector version \cr
 #'  \link[=frauddetector_get_detectors]{get_detectors} \tab Gets all of detectors \cr
+#'  \link[=frauddetector_get_detector_version]{get_detector_version} \tab Gets a particular detector version \cr
 #'  \link[=frauddetector_get_external_models]{get_external_models} \tab Gets the details for one or more Amazon SageMaker models that have been imported into the service \cr
-#'  \link[=frauddetector_get_model_version]{get_model_version} \tab Gets a model version \cr
 #'  \link[=frauddetector_get_models]{get_models} \tab Gets all of the models for the AWS account, or the specified model type, or gets a single model for the specified model type, model ID combination\cr
+#'  \link[=frauddetector_get_model_version]{get_model_version} \tab Gets a model version \cr
 #'  \link[=frauddetector_get_outcomes]{get_outcomes} \tab Gets one or more outcomes \cr
 #'  \link[=frauddetector_get_prediction]{get_prediction} \tab Evaluates an event against a detector version \cr
 #'  \link[=frauddetector_get_rules]{get_rules} \tab Gets all rules available for the specified detector \cr

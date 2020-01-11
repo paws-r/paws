@@ -58,9 +58,9 @@ NULL
 #'  \link[=workspaces_describe_workspace_bundles]{describe_workspace_bundles} \tab Retrieves a list that describes the available WorkSpace bundles \cr
 #'  \link[=workspaces_describe_workspace_directories]{describe_workspace_directories} \tab Describes the available directories that are registered with Amazon WorkSpaces \cr
 #'  \link[=workspaces_describe_workspace_images]{describe_workspace_images} \tab Retrieves a list that describes one or more specified images, if the image identifiers are provided \cr
-#'  \link[=workspaces_describe_workspace_snapshots]{describe_workspace_snapshots} \tab Describes the snapshots for the specified WorkSpace \cr
 #'  \link[=workspaces_describe_workspaces]{describe_workspaces} \tab Describes the specified WorkSpaces \cr
 #'  \link[=workspaces_describe_workspaces_connection_status]{describe_workspaces_connection_status} \tab Describes the connection status of the specified WorkSpaces \cr
+#'  \link[=workspaces_describe_workspace_snapshots]{describe_workspace_snapshots} \tab Describes the snapshots for the specified WorkSpace \cr
 #'  \link[=workspaces_disassociate_ip_groups]{disassociate_ip_groups} \tab Disassociates the specified IP access control group from the specified directory \cr
 #'  \link[=workspaces_import_workspace_image]{import_workspace_image} \tab Imports the specified Windows 7 or Windows 10 Bring Your Own License (BYOL) image into Amazon WorkSpaces \cr
 #'  \link[=workspaces_list_available_management_cidr_ranges]{list_available_management_cidr_ranges} \tab Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks, that you can use for the network management interface when you enable Bring Your Own License (BYOL)\cr

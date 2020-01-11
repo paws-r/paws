@@ -77,9 +77,9 @@ Doc Engage API - Amazon Pinpoint API
 \link[=pinpoint_get_campaign]{get_campaign} \tab Retrieves information about the status, configuration, and other settings for a campaign \cr
 \link[=pinpoint_get_campaign_activities]{get_campaign_activities} \tab Retrieves information about all the activities for a campaign \cr
 \link[=pinpoint_get_campaign_date_range_kpi]{get_campaign_date_range_kpi} \tab Retrieves (queries) pre-aggregated data for a standard metric that applies to a campaign \cr
+\link[=pinpoint_get_campaigns]{get_campaigns} \tab Retrieves information about the status, configuration, and other settings for all the campaigns that are associated with an application \cr
 \link[=pinpoint_get_campaign_version]{get_campaign_version} \tab Retrieves information about the status, configuration, and other settings for a specific version of a campaign \cr
 \link[=pinpoint_get_campaign_versions]{get_campaign_versions} \tab Retrieves information about the status, configuration, and other settings for all versions of a campaign \cr
-\link[=pinpoint_get_campaigns]{get_campaigns} \tab Retrieves information about the status, configuration, and other settings for all the campaigns that are associated with an application \cr
 \link[=pinpoint_get_channels]{get_channels} \tab Retrieves information about the history and status of each channel for an application \cr
 \link[=pinpoint_get_email_channel]{get_email_channel} \tab Retrieves information about the status and settings of the email channel for an application \cr
 \link[=pinpoint_get_email_template]{get_email_template} \tab Retrieves the content and settings for a message template that you can use in messages that are sent through the email channel \cr
@@ -98,9 +98,9 @@ Doc Engage API - Amazon Pinpoint API
 \link[=pinpoint_get_segment]{get_segment} \tab Retrieves information about the configuration, dimension, and other settings for a specific segment that's associated with an application \cr
 \link[=pinpoint_get_segment_export_jobs]{get_segment_export_jobs} \tab Retrieves information about the status and settings of the export jobs for a segment \cr
 \link[=pinpoint_get_segment_import_jobs]{get_segment_import_jobs} \tab Retrieves information about the status and settings of the import jobs for a segment \cr
+\link[=pinpoint_get_segments]{get_segments} \tab Retrieves information about the configuration, dimension, and other settings for all the segments that are associated with an application \cr
 \link[=pinpoint_get_segment_version]{get_segment_version} \tab Retrieves information about the configuration, dimension, and other settings for a specific version of a segment that's associated with an application \cr
 \link[=pinpoint_get_segment_versions]{get_segment_versions} \tab Retrieves information about the configuration, dimension, and other settings for all versions of a specific segment that's associated with an application \cr
-\link[=pinpoint_get_segments]{get_segments} \tab Retrieves information about the configuration, dimension, and other settings for all the segments that are associated with an application \cr
 \link[=pinpoint_get_sms_channel]{get_sms_channel} \tab Retrieves information about the status and settings of the SMS channel for an application \cr
 \link[=pinpoint_get_sms_template]{get_sms_template} \tab Retrieves the content and settings for a message template that you can use in messages that are sent through the SMS channel \cr
 \link[=pinpoint_get_user_endpoints]{get_user_endpoints} \tab Retrieves information about all the endpoints that are associated with a specific user ID \cr
@@ -110,8 +110,8 @@ Doc Engage API - Amazon Pinpoint API
 \link[=pinpoint_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves all the tags (keys and values) that are associated with an application, campaign, journey, message template, or segment \cr
 \link[=pinpoint_list_templates]{list_templates} \tab Retrieves information about all the message templates that are associated with your Amazon Pinpoint account \cr
 \link[=pinpoint_phone_number_validate]{phone_number_validate} \tab Retrieves information about a phone number \cr
-\link[=pinpoint_put_event_stream]{put_event_stream} \tab Creates a new event stream for an application or updates the settings of an existing event stream for an application \cr
 \link[=pinpoint_put_events]{put_events} \tab Creates a new event to record for endpoints, or creates or updates endpoint data that existing events are associated with \cr
+\link[=pinpoint_put_event_stream]{put_event_stream} \tab Creates a new event stream for an application or updates the settings of an existing event stream for an application \cr
 \link[=pinpoint_remove_attributes]{remove_attributes} \tab Removes one or more attributes, of the same attribute type, from all the endpoints that are associated with an application \cr
 \link[=pinpoint_send_messages]{send_messages} \tab Creates and sends a direct message \cr
 \link[=pinpoint_send_users_messages]{send_users_messages} \tab Creates and sends a message to a list of users \cr

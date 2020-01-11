@@ -104,8 +104,8 @@ NULL
 #'  \link[=support_describe_severity_levels]{describe_severity_levels} \tab Returns the list of severity levels that you can assign to an AWS Support case \cr
 #'  \link[=support_describe_trusted_advisor_check_refresh_statuses]{describe_trusted_advisor_check_refresh_statuses} \tab Returns the refresh status of the Trusted Advisor checks that have the specified check IDs \cr
 #'  \link[=support_describe_trusted_advisor_check_result]{describe_trusted_advisor_check_result} \tab Returns the results of the Trusted Advisor check that has the specified check ID \cr
-#'  \link[=support_describe_trusted_advisor_check_summaries]{describe_trusted_advisor_check_summaries} \tab Returns the summaries of the results of the Trusted Advisor checks that have the specified check IDs \cr
 #'  \link[=support_describe_trusted_advisor_checks]{describe_trusted_advisor_checks} \tab Returns information about all available Trusted Advisor checks, including name, ID, category, description, and metadata \cr
+#'  \link[=support_describe_trusted_advisor_check_summaries]{describe_trusted_advisor_check_summaries} \tab Returns the summaries of the results of the Trusted Advisor checks that have the specified check IDs \cr
 #'  \link[=support_refresh_trusted_advisor_check]{refresh_trusted_advisor_check} \tab Requests a refresh of the Trusted Advisor check that has the specified check ID \cr
 #'  \link[=support_resolve_case]{resolve_case} \tab Takes a caseId and returns the initial state of the case along with the state of the case after the call to ResolveCase completed
 #' }

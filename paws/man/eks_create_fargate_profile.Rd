@@ -55,8 +55,8 @@ is scheduled on Fargate infrastructure.
 
 When you create a Fargate profile, you must specify a pod execution role
 to use with the pods that are scheduled with the profile. This role is
-added to the cluster\'s Kubernetes \href{https://kubernetes.io/docs/admin/authorization/rbac/}{Role Based Access Control} (RBAC)
-for authorization so that the \code{kubelet} that is running on the Fargate
+added to the cluster\'s Kubernetes Role Based Access Control (RBAC) for
+authorization so that the \code{kubelet} that is running on the Fargate
 infrastructure can register with your Amazon EKS cluster. This role is
 what allows Fargate infrastructure to appear in your cluster as nodes.
 The pod execution role also provides IAM permissions to the Fargate

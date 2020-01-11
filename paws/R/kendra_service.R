@@ -47,8 +47,8 @@ NULL
 #'  \link[=kendra_describe_data_source]{describe_data_source} \tab Gets information about a Amazon Kendra data source \cr
 #'  \link[=kendra_describe_faq]{describe_faq} \tab Gets information about an FAQ list \cr
 #'  \link[=kendra_describe_index]{describe_index} \tab Describes an existing Amazon Kendra index \cr
-#'  \link[=kendra_list_data_source_sync_jobs]{list_data_source_sync_jobs} \tab Gets statistics about synchronizing Amazon Kendra with a data source \cr
 #'  \link[=kendra_list_data_sources]{list_data_sources} \tab Lists the data sources that you have created \cr
+#'  \link[=kendra_list_data_source_sync_jobs]{list_data_source_sync_jobs} \tab Gets statistics about synchronizing Amazon Kendra with a data source \cr
 #'  \link[=kendra_list_faqs]{list_faqs} \tab Gets a list of FAQ lists associated with an index \cr
 #'  \link[=kendra_list_indices]{list_indices} \tab Lists the Amazon Kendra indexes that you have created \cr
 #'  \link[=kendra_query]{query} \tab Searches an active index \cr

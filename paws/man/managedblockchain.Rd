@@ -52,8 +52,8 @@ Hyperledger Fabric open source framework.
 \link[=managedblockchain_list_members]{list_members} \tab Returns a listing of the members in a network and properties of their configurations \cr
 \link[=managedblockchain_list_networks]{list_networks} \tab Returns information about the networks in which the current AWS account has members \cr
 \link[=managedblockchain_list_nodes]{list_nodes} \tab Returns information about the nodes within a network \cr
-\link[=managedblockchain_list_proposal_votes]{list_proposal_votes} \tab Returns the listing of votes for a specified proposal, including the value of each vote and the unique identifier of the member that cast the vote \cr
 \link[=managedblockchain_list_proposals]{list_proposals} \tab Returns a listing of proposals for the network \cr
+\link[=managedblockchain_list_proposal_votes]{list_proposal_votes} \tab Returns the listing of votes for a specified proposal, including the value of each vote and the unique identifier of the member that cast the vote \cr
 \link[=managedblockchain_reject_invitation]{reject_invitation} \tab Rejects an invitation to join a network \cr
 \link[=managedblockchain_vote_on_proposal]{vote_on_proposal} \tab Casts a vote for a specified ProposalId on behalf of a member
 }

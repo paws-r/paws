@@ -80,6 +80,7 @@ some related topics from the user guide.
 \link[=rds_apply_pending_maintenance_action]{apply_pending_maintenance_action} \tab Applies a pending maintenance action to a resource (for example, to a DB instance) \cr
 \link[=rds_authorize_db_security_group_ingress]{authorize_db_security_group_ingress} \tab Enables ingress to a DBSecurityGroup using one of two forms of authorization \cr
 \link[=rds_backtrack_db_cluster]{backtrack_db_cluster} \tab Backtracks a DB cluster to a specific time, without creating a new DB cluster \cr
+\link[=rds_build_auth_token]{build_auth_token} \tab Return an authentication token for a database connection \cr
 \link[=rds_copy_db_cluster_parameter_group]{copy_db_cluster_parameter_group} \tab Copies the specified DB cluster parameter group \cr
 \link[=rds_copy_db_cluster_snapshot]{copy_db_cluster_snapshot} \tab Copies a snapshot of a DB cluster \cr
 \link[=rds_copy_db_parameter_group]{copy_db_parameter_group} \tab Copies the specified DB parameter group \cr
@@ -124,9 +125,9 @@ some related topics from the user guide.
 \link[=rds_describe_db_cluster_endpoints]{describe_db_cluster_endpoints} \tab Returns information about endpoints for an Amazon Aurora DB cluster \cr
 \link[=rds_describe_db_cluster_parameter_groups]{describe_db_cluster_parameter_groups} \tab Returns a list of DBClusterParameterGroup descriptions \cr
 \link[=rds_describe_db_cluster_parameters]{describe_db_cluster_parameters} \tab Returns the detailed parameter list for a particular DB cluster parameter group \cr
+\link[=rds_describe_db_clusters]{describe_db_clusters} \tab Returns information about provisioned Aurora DB clusters \cr
 \link[=rds_describe_db_cluster_snapshot_attributes]{describe_db_cluster_snapshot_attributes} \tab Returns a list of DB cluster snapshot attribute names and values for a manual DB cluster snapshot \cr
 \link[=rds_describe_db_cluster_snapshots]{describe_db_cluster_snapshots} \tab Returns information about DB cluster snapshots \cr
-\link[=rds_describe_db_clusters]{describe_db_clusters} \tab Returns information about provisioned Aurora DB clusters \cr
 \link[=rds_describe_db_engine_versions]{describe_db_engine_versions} \tab Returns a list of the available DB engines \cr
 \link[=rds_describe_db_instance_automated_backups]{describe_db_instance_automated_backups} \tab Displays backups for both current and deleted instances \cr
 \link[=rds_describe_db_instances]{describe_db_instances} \tab Returns information about provisioned RDS instances \cr
@@ -143,8 +144,8 @@ some related topics from the user guide.
 \link[=rds_describe_engine_default_cluster_parameters]{describe_engine_default_cluster_parameters} \tab Returns the default engine and system parameter information for the cluster database engine \cr
 \link[=rds_describe_engine_default_parameters]{describe_engine_default_parameters} \tab Returns the default engine and system parameter information for the specified database engine \cr
 \link[=rds_describe_event_categories]{describe_event_categories} \tab Displays a list of categories for all event source types, or, if specified, for a specified source type \cr
-\link[=rds_describe_event_subscriptions]{describe_event_subscriptions} \tab Lists all the subscription descriptions for a customer account \cr
 \link[=rds_describe_events]{describe_events} \tab Returns events related to DB instances, DB security groups, DB snapshots, and DB parameter groups for the past 14 days \cr
+\link[=rds_describe_event_subscriptions]{describe_event_subscriptions} \tab Lists all the subscription descriptions for a customer account \cr
 \link[=rds_describe_global_clusters]{describe_global_clusters} \tab Returns information about Aurora global database clusters \cr
 \link[=rds_describe_installation_media]{describe_installation_media} \tab Describes the available installation media for a DB engine that requires an on-premises customer provided license, such as Microsoft SQL Server \cr
 \link[=rds_describe_option_group_options]{describe_option_group_options} \tab Describes all available options \cr

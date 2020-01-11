@@ -58,8 +58,8 @@ Amazon Mechanical Turk API Reference
 \link[=mturk_list_hi_ts_for_qualification_type]{list_hi_ts_for_qualification_type} \tab The ListHITsForQualificationType operation returns the HITs that use the given Qualification type for a Qualification requirement \cr
 \link[=mturk_list_qualification_requests]{list_qualification_requests} \tab The ListQualificationRequests operation retrieves requests for Qualifications of a particular Qualification type \cr
 \link[=mturk_list_qualification_types]{list_qualification_types} \tab The ListQualificationTypes operation returns a list of Qualification types, filtered by an optional search term \cr
-\link[=mturk_list_review_policy_results_for_hit]{list_review_policy_results_for_hit} \tab The ListReviewPolicyResultsForHIT operation retrieves the computed results and the actions taken in the course of executing your Review Policies for a given HIT \cr
 \link[=mturk_list_reviewable_hi_ts]{list_reviewable_hi_ts} \tab The ListReviewableHITs operation retrieves the HITs with Status equal to Reviewable or Status equal to Reviewing that belong to the Requester calling the operation \cr
+\link[=mturk_list_review_policy_results_for_hit]{list_review_policy_results_for_hit} \tab The ListReviewPolicyResultsForHIT operation retrieves the computed results and the actions taken in the course of executing your Review Policies for a given HIT \cr
 \link[=mturk_list_worker_blocks]{list_worker_blocks} \tab The ListWorkersBlocks operation retrieves a list of Workers who are blocked from working on your HITs \cr
 \link[=mturk_list_workers_with_qualification_type]{list_workers_with_qualification_type} \tab The ListWorkersWithQualificationType operation returns all of the Workers that have been associated with a given Qualification type \cr
 \link[=mturk_notify_workers]{notify_workers} \tab The NotifyWorkers operation sends an email to one or more Workers that you specify with the Worker ID \cr

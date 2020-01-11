@@ -38,11 +38,11 @@ this API to obtain a snapshot of the configuration of IAM permissions
 (users, groups, roles, and policies) in your account.
 }
 \details{
-Policies returned by this API are URL-encoded compliant with RFC 3986.
-You can use a URL decoding method to convert the policy back to plain
-JSON text. For example, if you use Java, you can use the \code{decode} method
-of the \code{java.net.URLDecoder} utility class in the Java SDK. Other
-languages and SDKs provide similar functionality.
+Policies returned by this API are URL-encoded compliant with \href{https://tools.ietf.org/html/rfc3986}{RFC 3986}. You can use a URL decoding
+method to convert the policy back to plain JSON text. For example, if
+you use Java, you can use the \code{decode} method of the
+\code{java.net.URLDecoder} utility class in the Java SDK. Other languages and
+SDKs provide similar functionality.
 
 You can optionally filter the results using the \code{Filter} parameter. You
 can paginate the results using the \code{MaxItems} and \code{Marker} parameters.

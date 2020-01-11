@@ -47,8 +47,8 @@ NULL
 #'  \link[=iotevents_describe_detector_model]{describe_detector_model} \tab Describes a detector model \cr
 #'  \link[=iotevents_describe_input]{describe_input} \tab Describes an input \cr
 #'  \link[=iotevents_describe_logging_options]{describe_logging_options} \tab Retrieves the current settings of the AWS IoT Events logging options\cr
-#'  \link[=iotevents_list_detector_model_versions]{list_detector_model_versions} \tab Lists all the versions of a detector model \cr
 #'  \link[=iotevents_list_detector_models]{list_detector_models} \tab Lists the detector models you have created \cr
+#'  \link[=iotevents_list_detector_model_versions]{list_detector_model_versions} \tab Lists all the versions of a detector model \cr
 #'  \link[=iotevents_list_inputs]{list_inputs} \tab Lists the inputs you have created \cr
 #'  \link[=iotevents_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags (metadata) you have assigned to the resource \cr
 #'  \link[=iotevents_put_logging_options]{put_logging_options} \tab Sets or updates the AWS IoT Events logging options \cr

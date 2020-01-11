@@ -3512,11 +3512,12 @@ iam_get_access_key_last_used <- function(AccessKeyId) {
 #' this API to obtain a snapshot of the configuration of IAM permissions
 #' (users, groups, roles, and policies) in your account.
 #' 
-#' Policies returned by this API are URL-encoded compliant with RFC 3986.
-#' You can use a URL decoding method to convert the policy back to plain
-#' JSON text. For example, if you use Java, you can use the `decode` method
-#' of the `java.net.URLDecoder` utility class in the Java SDK. Other
-#' languages and SDKs provide similar functionality.
+#' Policies returned by this API are URL-encoded compliant with [RFC
+#' 3986](https://tools.ietf.org/html/rfc3986). You can use a URL decoding
+#' method to convert the policy back to plain JSON text. For example, if
+#' you use Java, you can use the `decode` method of the
+#' `java.net.URLDecoder` utility class in the Java SDK. Other languages and
+#' SDKs provide similar functionality.
 #' 
 #' You can optionally filter the results using the `Filter` parameter. You
 #' can paginate the results using the `MaxItems` and `Marker` parameters.
@@ -8866,8 +8867,7 @@ iam_update_assume_role_policy <- function(RoleName, PolicyDocument) {
 #' @param GroupName &#91;required&#93; Name of the IAM group to update. If you\'re changing the name of the
 #' group, this is the original name.
 #' 
-#' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' This parameter allows (through its regex pattern) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@-
 #' @param NewPath New path for the IAM group. Only include this if changing the group\'s

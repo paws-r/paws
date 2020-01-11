@@ -60,8 +60,8 @@ NULL
 #'  \link[=ecr_delete_lifecycle_policy]{delete_lifecycle_policy} \tab Deletes the specified lifecycle policy \cr
 #'  \link[=ecr_delete_repository]{delete_repository} \tab Deletes an existing image repository \cr
 #'  \link[=ecr_delete_repository_policy]{delete_repository_policy} \tab Deletes the repository policy from a specified repository \cr
-#'  \link[=ecr_describe_image_scan_findings]{describe_image_scan_findings} \tab Describes the image scan findings for the specified image \cr
 #'  \link[=ecr_describe_images]{describe_images} \tab Returns metadata about the images in a repository, including image size, image tags, and creation date \cr
+#'  \link[=ecr_describe_image_scan_findings]{describe_image_scan_findings} \tab Describes the image scan findings for the specified image \cr
 #'  \link[=ecr_describe_repositories]{describe_repositories} \tab Describes image repositories in a registry \cr
 #'  \link[=ecr_get_authorization_token]{get_authorization_token} \tab Retrieves a token that is valid for a specified registry for 12 hours \cr
 #'  \link[=ecr_get_download_url_for_layer]{get_download_url_for_layer} \tab Retrieves the pre-signed Amazon S3 download URL corresponding to an image layer \cr

@@ -50,8 +50,8 @@ Amazon Simple Storage Service
 \link[=s3_delete_bucket_tagging]{delete_bucket_tagging} \tab Deletes the tags from the bucket \cr
 \link[=s3_delete_bucket_website]{delete_bucket_website} \tab This operation removes the website configuration for a bucket \cr
 \link[=s3_delete_object]{delete_object} \tab Removes the null version (if there is one) of an object and inserts a delete marker, which becomes the latest version of the object \cr
-\link[=s3_delete_object_tagging]{delete_object_tagging} \tab Removes the entire tag set from the specified object \cr
 \link[=s3_delete_objects]{delete_objects} \tab This operation enables you to delete multiple objects from a bucket using a single HTTP request \cr
+\link[=s3_delete_object_tagging]{delete_object_tagging} \tab Removes the entire tag set from the specified object \cr
 \link[=s3_delete_public_access_block]{delete_public_access_block} \tab Removes the PublicAccessBlock configuration for an Amazon S3 bucket \cr
 \link[=s3_get_bucket_accelerate_configuration]{get_bucket_accelerate_configuration} \tab This implementation of the GET operation uses the accelerate subresource to return the Transfer Acceleration state of a bucket, which is either Enabled or Suspended \cr
 \link[=s3_get_bucket_acl]{get_bucket_acl} \tab This implementation of the GET operation uses the acl subresource to return the access control list (ACL) of a bucket \cr
@@ -88,9 +88,9 @@ Amazon Simple Storage Service
 \link[=s3_list_bucket_metrics_configurations]{list_bucket_metrics_configurations} \tab Lists the metrics configurations for the bucket \cr
 \link[=s3_list_buckets]{list_buckets} \tab Returns a list of all buckets owned by the authenticated sender of the request \cr
 \link[=s3_list_multipart_uploads]{list_multipart_uploads} \tab This operation lists in-progress multipart uploads \cr
-\link[=s3_list_object_versions]{list_object_versions} \tab Returns metadata about all of the versions of objects in a bucket \cr
 \link[=s3_list_objects]{list_objects} \tab Returns some or all (up to 1,000) of the objects in a bucket \cr
 \link[=s3_list_objects_v2]{list_objects_v2} \tab Returns some or all (up to 1,000) of the objects in a bucket \cr
+\link[=s3_list_object_versions]{list_object_versions} \tab Returns metadata about all of the versions of objects in a bucket \cr
 \link[=s3_list_parts]{list_parts} \tab Lists the parts that have been uploaded for a specific multipart upload \cr
 \link[=s3_put_bucket_accelerate_configuration]{put_bucket_accelerate_configuration} \tab Sets the accelerate configuration of an existing bucket \cr
 \link[=s3_put_bucket_acl]{put_bucket_acl} \tab Sets the permissions on an existing bucket using access control lists (ACL) \cr

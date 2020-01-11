@@ -2922,10 +2922,11 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' 
 #' You can specify a Docker networking mode for the containers in your task
 #' definition with the `networkMode` parameter. The available network modes
-#' correspond to those described in Network settings in the Docker run
-#' reference. If you specify the `awsvpc` network mode, the task is
-#' allocated an elastic network interface, and you must specify a
-#' NetworkConfiguration when you create a service or run a task with the
+#' correspond to those described in [Network
+#' settings](https://docs.docker.com/engine/reference/run/#/network-settings)
+#' in the Docker run reference. If you specify the `awsvpc` network mode,
+#' the task is allocated an elastic network interface, and you must specify
+#' a NetworkConfiguration when you create a service or run a task with the
 #' task definition. For more information, see [Task
 #' Networking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
@@ -2986,8 +2987,9 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' definition with Windows containers, you must choose the
 #' `&lt;default&gt;` network mode object.
 #' 
-#' For more information, see Network settings in the *Docker run
-#' reference*.
+#' For more information, see [Network
+#' settings](https://docs.docker.com/engine/reference/run/#network-settings)
+#' in the *Docker run reference*.
 #' @param containerDefinitions &#91;required&#93; A list of container definitions in JSON format that describe the
 #' different containers that make up your task.
 #' @param volumes A list of volume definitions in JSON format that containers in your task
@@ -3094,11 +3096,13 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' EC2 instance. If `task` is specified, all containers within the
 #' specified task share the same process namespace. If no value is
 #' specified, the default is a private namespace. For more information, see
-#' PID settings in the *Docker run reference*.
+#' [PID
+#' settings](https://docs.docker.com/engine/reference/run/#pid-settings---pid)
+#' in the *Docker run reference*.
 #' 
 #' If the `host` PID mode is used, be aware that there is a heightened risk
-#' of undesired process namespace expose. For more information, see Docker
-#' security.
+#' of undesired process namespace expose. For more information, see [Docker
+#' security](https://docs.docker.com/engine/security/security/).
 #' 
 #' This parameter is not supported for Windows containers or tasks using
 #' the Fargate launch type.
@@ -3112,11 +3116,13 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' shared with other containers in a task or on the container instance. If
 #' no value is specified, then the IPC resource namespace sharing depends
 #' on the Docker daemon setting on the container instance. For more
-#' information, see IPC settings in the *Docker run reference*.
+#' information, see [IPC
+#' settings](https://docs.docker.com/engine/reference/run/#ipc-settings---ipc)
+#' in the *Docker run reference*.
 #' 
 #' If the `host` IPC mode is used, be aware that there is a heightened risk
-#' of undesired IPC namespace expose. For more information, see Docker
-#' security.
+#' of undesired IPC namespace expose. For more information, see [Docker
+#' security](https://docs.docker.com/engine/security/security/).
 #' 
 #' If you are setting namespaced kernel parameters using `systemControls`
 #' for the containers in the task, the following will apply to your IPC

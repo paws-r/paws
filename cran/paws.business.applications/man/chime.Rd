@@ -73,9 +73,9 @@ the \emph{Amazon Chime Administration Guide}.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=chime_associate_phone_number_with_user]{associate_phone_number_with_user} \tab Associates a phone number with the specified Amazon Chime user \cr
 \link[=chime_associate_phone_numbers_with_voice_connector]{associate_phone_numbers_with_voice_connector} \tab Associates phone numbers with the specified Amazon Chime Voice Connector \cr
 \link[=chime_associate_phone_numbers_with_voice_connector_group]{associate_phone_numbers_with_voice_connector_group} \tab Associates phone numbers with the specified Amazon Chime Voice Connector group \cr
+\link[=chime_associate_phone_number_with_user]{associate_phone_number_with_user} \tab Associates a phone number with the specified Amazon Chime user \cr
 \link[=chime_batch_create_attendee]{batch_create_attendee} \tab Creates up to 100 new attendees for an active Amazon Chime SDK meeting \cr
 \link[=chime_batch_create_room_membership]{batch_create_room_membership} \tab Adds up to 50 members to a chat room \cr
 \link[=chime_batch_delete_phone_number]{batch_delete_phone_number} \tab Moves phone numbers into the DELETION QUEUE \cr
@@ -139,8 +139,8 @@ the \emph{Amazon Chime Administration Guide}.
 \link[=chime_list_rooms]{list_rooms} \tab Lists the room details for the specified Amazon Chime account \cr
 \link[=chime_list_users]{list_users} \tab Lists the users that belong to the specified Amazon Chime account \cr
 \link[=chime_list_voice_connector_groups]{list_voice_connector_groups} \tab Lists the Amazon Chime Voice Connector groups for the administrator's AWS account \cr
-\link[=chime_list_voice_connector_termination_credentials]{list_voice_connector_termination_credentials} \tab Lists the SIP credentials for the specified Amazon Chime Voice Connector \cr
 \link[=chime_list_voice_connectors]{list_voice_connectors} \tab Lists the Amazon Chime Voice Connectors for the administrator's AWS account \cr
+\link[=chime_list_voice_connector_termination_credentials]{list_voice_connector_termination_credentials} \tab Lists the SIP credentials for the specified Amazon Chime Voice Connector \cr
 \link[=chime_logout_user]{logout_user} \tab Logs out the specified user from all of the devices they are currently logged into \cr
 \link[=chime_put_events_configuration]{put_events_configuration} \tab Creates an events configuration that allows a bot to receive outgoing events sent by Amazon Chime \cr
 \link[=chime_put_voice_connector_logging_configuration]{put_voice_connector_logging_configuration} \tab Adds a logging configuration for the specified Amazon Chime Voice Connector \cr

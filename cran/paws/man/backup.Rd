@@ -60,9 +60,9 @@ reporting and auditing.
 \link[=backup_get_recovery_point_restore_metadata]{get_recovery_point_restore_metadata} \tab Returns two sets of metadata key-value pairs \cr
 \link[=backup_get_supported_resource_types]{get_supported_resource_types} \tab Returns the AWS resource types supported by AWS Backup \cr
 \link[=backup_list_backup_jobs]{list_backup_jobs} \tab Returns metadata about your backup jobs \cr
+\link[=backup_list_backup_plans]{list_backup_plans} \tab Returns metadata of your saved backup plans, including Amazon Resource Names (ARNs), plan IDs, creation and deletion dates, version IDs, plan names, and creator request IDs \cr
 \link[=backup_list_backup_plan_templates]{list_backup_plan_templates} \tab Returns metadata of your saved backup plan templates, including the template ID, name, and the creation and deletion dates \cr
 \link[=backup_list_backup_plan_versions]{list_backup_plan_versions} \tab Returns version metadata of your backup plans, including Amazon Resource Names (ARNs), backup plan IDs, creation and deletion dates, plan names, and version IDs \cr
-\link[=backup_list_backup_plans]{list_backup_plans} \tab Returns metadata of your saved backup plans, including Amazon Resource Names (ARNs), plan IDs, creation and deletion dates, version IDs, plan names, and creator request IDs \cr
 \link[=backup_list_backup_selections]{list_backup_selections} \tab Returns an array containing metadata of the resources associated with the target backup plan \cr
 \link[=backup_list_backup_vaults]{list_backup_vaults} \tab Returns a list of recovery point storage containers along with information about them \cr
 \link[=backup_list_protected_resources]{list_protected_resources} \tab Returns an array of resources successfully backed up by AWS Backup, including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource type\cr

@@ -52,8 +52,8 @@ NULL
 #'  \link[=schemas_get_discovered_schema]{get_discovered_schema} \tab Get the discovered schema that was generated based on sampled events\cr
 #'  \link[=schemas_list_discoverers]{list_discoverers} \tab List the discoverers \cr
 #'  \link[=schemas_list_registries]{list_registries} \tab List the registries \cr
-#'  \link[=schemas_list_schema_versions]{list_schema_versions} \tab Provides a list of the schema versions and related information \cr
 #'  \link[=schemas_list_schemas]{list_schemas} \tab List the schemas \cr
+#'  \link[=schemas_list_schema_versions]{list_schema_versions} \tab Provides a list of the schema versions and related information \cr
 #'  \link[=schemas_list_tags_for_resource]{list_tags_for_resource} \tab Get tags for resource \cr
 #'  \link[=schemas_lock_service_linked_role]{lock_service_linked_role} \tab Lock service linked role \cr
 #'  \link[=schemas_put_code_binding]{put_code_binding} \tab Put code binding URI \cr

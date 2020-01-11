@@ -73,8 +73,8 @@ Amazon QuickSight.
 \link[=quicksight_describe_template_permissions]{describe_template_permissions} \tab Describes read and write permissions on a template \cr
 \link[=quicksight_describe_user]{describe_user} \tab Returns information about a user, given the user name \cr
 \link[=quicksight_get_dashboard_embed_url]{get_dashboard_embed_url} \tab Generates a server-side embeddable URL and authorization code \cr
-\link[=quicksight_list_dashboard_versions]{list_dashboard_versions} \tab Lists all the versions of the dashboards in the Quicksight subscription \cr
 \link[=quicksight_list_dashboards]{list_dashboards} \tab Lists dashboards in the AWS account \cr
+\link[=quicksight_list_dashboard_versions]{list_dashboard_versions} \tab Lists all the versions of the dashboards in the Quicksight subscription \cr
 \link[=quicksight_list_data_sets]{list_data_sets} \tab Lists all of the datasets belonging to this account in an AWS region \cr
 \link[=quicksight_list_data_sources]{list_data_sources} \tab Lists data sources in current AWS Region that belong to this AWS account \cr
 \link[=quicksight_list_group_memberships]{list_group_memberships} \tab Lists member users in a group \cr
@@ -84,8 +84,8 @@ Amazon QuickSight.
 \link[=quicksight_list_ingestions]{list_ingestions} \tab Lists the history of SPICE ingestions for a dataset \cr
 \link[=quicksight_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags assigned to a resource \cr
 \link[=quicksight_list_template_aliases]{list_template_aliases} \tab Lists all the aliases of a template \cr
-\link[=quicksight_list_template_versions]{list_template_versions} \tab Lists all the versions of the templates in the Quicksight account \cr
 \link[=quicksight_list_templates]{list_templates} \tab Lists all the templates in the QuickSight account \cr
+\link[=quicksight_list_template_versions]{list_template_versions} \tab Lists all the versions of the templates in the Quicksight account \cr
 \link[=quicksight_list_user_groups]{list_user_groups} \tab Lists the Amazon QuickSight groups that an Amazon QuickSight user is a member of \cr
 \link[=quicksight_list_users]{list_users} \tab Returns a list of all of the Amazon QuickSight users belonging to this account \cr
 \link[=quicksight_register_user]{register_user} \tab Creates an Amazon QuickSight user, whose identity is associated with the AWS Identity and Access Management (IAM) identity or role specified in the request \cr

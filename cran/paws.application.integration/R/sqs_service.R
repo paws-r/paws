@@ -85,8 +85,8 @@ NULL
 #'  \link[=sqs_get_queue_attributes]{get_queue_attributes} \tab Gets attributes for the specified queue \cr
 #'  \link[=sqs_get_queue_url]{get_queue_url} \tab Returns the URL of an existing Amazon SQS queue \cr
 #'  \link[=sqs_list_dead_letter_source_queues]{list_dead_letter_source_queues} \tab Returns a list of your queues that have the RedrivePolicy queue attribute configured with a dead-letter queue\cr
-#'  \link[=sqs_list_queue_tags]{list_queue_tags} \tab List all cost allocation tags added to the specified Amazon SQS queue \cr
 #'  \link[=sqs_list_queues]{list_queues} \tab Returns a list of your queues \cr
+#'  \link[=sqs_list_queue_tags]{list_queue_tags} \tab List all cost allocation tags added to the specified Amazon SQS queue \cr
 #'  \link[=sqs_purge_queue]{purge_queue} \tab Deletes the messages in a queue specified by the QueueURL parameter \cr
 #'  \link[=sqs_receive_message]{receive_message} \tab Retrieves one or more messages (up to 10), from the specified queue \cr
 #'  \link[=sqs_remove_permission]{remove_permission} \tab Revokes any permissions in the queue policy that matches the specified Label parameter \cr

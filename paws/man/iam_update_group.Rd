@@ -10,7 +10,7 @@ iam_update_group(GroupName, NewPath, NewGroupName)
 \item{GroupName}{[required] Name of the IAM group to update. If you\'re changing the name of the
 group, this is the original name.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its regex pattern) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 

@@ -60,8 +60,8 @@ information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-g
 \link[=guardduty_decline_invitations]{decline_invitations} \tab Declines invitations sent to the current member account by AWS account specified by their account IDs \cr
 \link[=guardduty_delete_detector]{delete_detector} \tab Deletes a Amazon GuardDuty detector specified by the detector ID \cr
 \link[=guardduty_delete_filter]{delete_filter} \tab Deletes the filter specified by the filter name \cr
-\link[=guardduty_delete_ip_set]{delete_ip_set} \tab Deletes the IPSet specified by the ipSetId \cr
 \link[=guardduty_delete_invitations]{delete_invitations} \tab Deletes invitations sent to the current member account by AWS accounts specified by their account IDs \cr
+\link[=guardduty_delete_ip_set]{delete_ip_set} \tab Deletes the IPSet specified by the ipSetId \cr
 \link[=guardduty_delete_members]{delete_members} \tab Deletes GuardDuty member accounts (to the current GuardDuty master account) specified by the account IDs \cr
 \link[=guardduty_delete_publishing_destination]{delete_publishing_destination} \tab Deletes the publishing definition with the specified destinationId \cr
 \link[=guardduty_delete_threat_intel_set]{delete_threat_intel_set} \tab Deletes ThreatIntelSet specified by the ThreatIntelSet ID \cr
@@ -72,8 +72,8 @@ information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-g
 \link[=guardduty_get_filter]{get_filter} \tab Returns the details of the filter specified by the filter name \cr
 \link[=guardduty_get_findings]{get_findings} \tab Describes Amazon GuardDuty findings specified by finding IDs \cr
 \link[=guardduty_get_findings_statistics]{get_findings_statistics} \tab Lists Amazon GuardDuty findings' statistics for the specified detector ID \cr
-\link[=guardduty_get_ip_set]{get_ip_set} \tab Retrieves the IPSet specified by the ipSetId \cr
 \link[=guardduty_get_invitations_count]{get_invitations_count} \tab Returns the count of all GuardDuty membership invitations that were sent to the current member account except the currently accepted invitation \cr
+\link[=guardduty_get_ip_set]{get_ip_set} \tab Retrieves the IPSet specified by the ipSetId \cr
 \link[=guardduty_get_master_account]{get_master_account} \tab Provides the details for the GuardDuty master account associated with the current GuardDuty member account \cr
 \link[=guardduty_get_members]{get_members} \tab Retrieves GuardDuty member accounts (to the current GuardDuty master account) specified by the account IDs \cr
 \link[=guardduty_get_threat_intel_set]{get_threat_intel_set} \tab Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID \cr
@@ -81,8 +81,8 @@ information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-g
 \link[=guardduty_list_detectors]{list_detectors} \tab Lists detectorIds of all the existing Amazon GuardDuty detector resources \cr
 \link[=guardduty_list_filters]{list_filters} \tab Returns a paginated list of the current filters \cr
 \link[=guardduty_list_findings]{list_findings} \tab Lists Amazon GuardDuty findings for the specified detector ID \cr
-\link[=guardduty_list_ip_sets]{list_ip_sets} \tab Lists the IPSets of the GuardDuty service specified by the detector ID \cr
 \link[=guardduty_list_invitations]{list_invitations} \tab Lists all GuardDuty membership invitations that were sent to the current AWS account \cr
+\link[=guardduty_list_ip_sets]{list_ip_sets} \tab Lists the IPSets of the GuardDuty service specified by the detector ID \cr
 \link[=guardduty_list_members]{list_members} \tab Lists details about all member accounts for the current GuardDuty master account \cr
 \link[=guardduty_list_publishing_destinations]{list_publishing_destinations} \tab Returns a list of publishing destinations associated with the specified dectectorId \cr
 \link[=guardduty_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for a resource \cr
