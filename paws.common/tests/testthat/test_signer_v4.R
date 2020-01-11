@@ -87,9 +87,7 @@ test_that("standalone sign with port", {
   }
 })
 
-# TODO: Finish presign code.
 test_that("standalone presign with port", {
-  skip("skip")
   cases <- list(
     list(
       description = "default HTTPS port",
@@ -116,7 +114,28 @@ test_that("standalone presign with port", {
     signer <- Signer(test_creds)
     req <- new_http_request("GET", case$url, NULL)
     req <- sign_with_body(signer, req, NULL, "es", "us-east-1", 5 * 60, TRUE, unix_time(0, 0))
-    actual <- req$query["X-Amz-Signature"]
+    query_params <- parse_query_string(req$url$raw_query)
+    actual <- query_params[["X-Amz-Signature"]]
     expect_equal(actual, case$expected)
   }
+})
+
+test_that("presign", {
+  signer <- Signer(test_creds)
+  req <- new_http_request("POST", "https://dynamodb.us-east-1.amazonaws.com", "{}")
+  req$url$opaque <- "//example.org/bucket/key-._~,!@#$%^&*()"
+  req$header["X-Amz-Target"] <- "prefix.Operation"
+  req$header["Content-Type"] <- "application/x-amz-json-1.0"
+  req$header["Content-Length"] <- length(charToRaw(req$body))
+  req$header["X-Amz-Meta-Other-Header"] <- "some-value=!@#$%^&* (+)"
+  req$header[["X-Amz-Meta-Other-Header_With_Underscore"]] <- c("some-value=!@#$%^&* (+)", "some-value=!@#$%^&* (+)")
+  req <- sign_with_body(signer, req, "{}", "dynamodb", "us-east-1", 300, TRUE, unix_time(0, 0))
+
+  q <- parse_query_string(req$url$raw_query)
+
+  expect_equal(q[["X-Amz-Signature"]], "122f0b9e091e4ba84286097e2b3404a1f1f4c4aad479adda95b7dff0ccbe5581")
+  expect_equal(q[["X-Amz-Credential"]], "AKID/19700101/us-east-1/dynamodb/aws4_request")
+  expect_equal(q[["X-Amz-SignedHeaders"]], "content-length;content-type;host;x-amz-meta-other-header;x-amz-meta-other-header_with_underscore")
+  expect_equal(q[["X-Amz-Date"]], "19700101T000000Z")
+  expect_equal(q[["X-Amz-Target"]], "prefix.Operation")
 })

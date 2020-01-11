@@ -16,6 +16,48 @@ IGNORED_HEADERS <- c(
   "X-Amzn-Trace-Id"
 )
 
+REQUIRED_SIGNED_HEADERS <- c(
+  "Cache-Control",
+  "Content-Disposition",
+  "Content-Encoding",
+  "Content-Language",
+  "Content-Md5",
+  "Content-Type",
+  "Expires",
+  "If-Match",
+  "If-Modified-Since",
+  "If-None-Match",
+  "If-Unmodified-Since",
+  "Range",
+  "X-Amz-Acl",
+  "X-Amz-Copy-Source",
+  "X-Amz-Copy-Source-If-Match",
+  "X-Amz-Copy-Source-If-Modified-Since",
+  "X-Amz-Copy-Source-If-None-Match",
+  "X-Amz-Copy-Source-If-Unmodified-Since",
+  "X-Amz-Copy-Source-Range",
+  "X-Amz-Copy-Source-Server-Side-Encryption-Customer-Algorithm",
+  "X-Amz-Copy-Source-Server-Side-Encryption-Customer-Key",
+  "X-Amz-Copy-Source-Server-Side-Encryption-Customer-Key-Md5",
+  "X-Amz-Grant-Full-control",
+  "X-Amz-Grant-Read",
+  "X-Amz-Grant-Read-Acp",
+  "X-Amz-Grant-Write",
+  "X-Amz-Grant-Write-Acp",
+  "X-Amz-Metadata-Directive",
+  "X-Amz-Mfa",
+  "X-Amz-Request-Payer",
+  "X-Amz-Server-Side-Encryption",
+  "X-Amz-Server-Side-Encryption-Aws-Kms-Key-Id",
+  "X-Amz-Server-Side-Encryption-Customer-Algorithm",
+  "X-Amz-Server-Side-Encryption-Customer-Key",
+  "X-Amz-Server-Side-Encryption-Customer-Key-Md5",
+  "X-Amz-Storage-Class",
+  "X-Amz-Tagging",
+  "X-Amz-Website-Redirect-Location",
+  "X-Amz-Content-Sha256"
+)
+
 # A Signer object stores credentials and signing settings.
 Signer <- struct(
   credentials = Credentials(),
@@ -119,7 +161,7 @@ sign_with_body <- function(signer, request, body, service, region,
   ctx <- SigningContext(
     request = request,
     body = body,
-    query = parse_query(request$url$raw_query),
+    query = parse_query_string(request$url$raw_query),
     time = signing_time,
     expire_time = expire_time,
     is_presigned = is_presigned,
@@ -187,7 +229,7 @@ handle_presign_removal <- function(ctx) {
     return(ctx)
   } else {
     ctx <- remove_presign(ctx)
-    ctx$request$url$raw_query <- encode(ctx$query)
+    ctx$request$url$raw_query <- build_query_string(ctx$query)
     return(ctx)
   }
 }
@@ -228,7 +270,13 @@ build_context <- function(ctx, disable_header_hoisting) {
   unsigned_headers <- ctx$request$header
   if (ctx$is_presigned) {
     if (!disable_header_hoisting) {
-      TRUE # TODO: Fix
+      for (header in names(unsigned_headers)) {
+        if (grepl("X-Amz-", header) & !grepl("X-Amz-Meta-", header) &
+            !(header %in% REQUIRED_SIGNED_HEADERS)) {
+          ctx$query[[header]] <- unsigned_headers[[header]]
+          unsigned_headers[[header]] <- NULL
+        }
+      }
     }
   }
 
@@ -239,7 +287,7 @@ build_context <- function(ctx, disable_header_hoisting) {
 
   if (ctx$is_presigned) {
     query <- ctx$request$url$raw_query
-    ctx$request$url$raw_query <- paste0(query, "&X-Amz-Signature=", ctx$signature)
+    ctx$request$url$raw_query <- update_query_string(query, list("X-Amz-Signature" = ctx$signature))
   } else {
     authorization <- paste(
       paste0(AUTH_HEADER_PREFIX, " Credential=", ctx$cred_values$access_key_id, "/", ctx$credential_string),
@@ -257,7 +305,8 @@ build_time <- function(ctx) {
   ctx$formatted_time <- format(ctx$time, tz = "UTC", format = TIME_FORMAT)
   ctx$formatted_short_time <- format(ctx$time, tz = "UTC", format = SHORT_TIME_FORMAT)
   if (ctx$is_presigned) {
-    # TODO: Implement.
+    ctx$query[["X-Amz-Date"]] <- ctx$formatted_time
+    ctx$query[["X-Amz-Expires"]] <- as.character(as.integer(ctx$expire_time))
   } else {
     ctx$request$header["X-Amz-Date"] <- ctx$formatted_time
   }
@@ -314,7 +363,7 @@ build_canonical_headers <- function(ctx, header, ignored_headers) {
       next
     } else {
       lower_case_key <- tolower(key)
-      ctx$signed_header_vals[lower_case_key] <- header[key]
+      ctx$signed_header_vals[[lower_case_key]] <- header[[key]]
       headers <- c(headers, lower_case_key)
     }
   }
@@ -334,8 +383,8 @@ build_canonical_headers <- function(ctx, header, ignored_headers) {
         header_value <- paste0("host:", ctx$request$url$host)
       }
     } else {
-      value <- ctx$signed_header_vals[key]
-      header_value <- paste0(key, ":", paste(value, sep =","))
+      value <- ctx$signed_header_vals[[key]]
+      header_value <- paste0(key, ":", paste(value, collapse =","))
     }
     header_values <- c(header_values, header_value)
   }
@@ -345,7 +394,7 @@ build_canonical_headers <- function(ctx, header, ignored_headers) {
 
 build_canonical_string <- function(ctx) {
   if (!is.null(ctx$query)) {
-    ctx$request$url$raw_query <- gsub("\\+", "%20", encode(ctx$query))
+    ctx$request$url$raw_query <- gsub("\\+", "%20", build_query_string(ctx$query))
   }
 
   uri <- get_uri_path(ctx$request$url)

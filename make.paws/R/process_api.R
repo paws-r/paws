@@ -20,6 +20,7 @@ write_code <- function(api, path) {
   write_operations(api, r_dir)
   write_interfaces(api, r_dir)
   write_service(api, r_dir)
+  copy_custom_operations(api, r_dir)
   return(TRUE)
 }
 
@@ -63,4 +64,13 @@ write_list <- function(list, file) {
   path <- dirname(file)
   dir.create(path, showWarnings = FALSE, recursive = TRUE)
   write_utf8(contents, file)
+}
+
+copy_custom_operations <- function(api, path) {
+  package <- package_name(api)
+  from <- system_file(sprintf("src/custom/%s.R", package), package = methods::getPackageName())
+  to <- file.path(path, paste0(package, "_custom.R"))
+  if (file.exists(from)) {
+    file.copy(from, to)
+  }
 }

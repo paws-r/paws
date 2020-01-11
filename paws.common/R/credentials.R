@@ -2,13 +2,15 @@
 #' @include credential_providers.R
 NULL
 
+Creds <- struct(
+  access_key_id = "",
+  secret_access_key = "",
+  session_token = "",
+  provider_name = ""
+)
+
 Credentials <- struct(
-  creds = list(
-    access_key_id = "",
-    secret_access_key = "",
-    session_token = "",
-    provider_name = ""
-  ),
+  creds = Creds(),
   profile = "",
   force_refresh = TRUE,
   provider = list(

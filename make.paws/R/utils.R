@@ -7,6 +7,46 @@ get_structure <- function(x) {
   result
 }
 
+# Return a list of operations and documentation found in the given text
+# representing code read from an R code file.
+parse_operations <- function(text) {
+  ids <- rep(NA, length(text))
+  id <- 1
+  for (i in seq_along(text)) {
+    if (i > 1 && startsWith(text[i], "#'") && !startsWith(text[i-1], "#'")) {
+      id <- id + 1
+    }
+    ids[i] <- id
+  }
+  operations <- list()
+  for (op_text in split(text, ids)) {
+    operation <- parse_operation(op_text)
+    if (is.null(operation$name) || operation$name == "NULL") {
+      next
+    }
+    operations[[operation$name]] <- operation
+  }
+  return(operations)
+}
+
+# Parse a Roxygen-commented function and return something resembling an AWS API
+# specification.
+parse_operation <- function(text) {
+  comment_lines <- startsWith(text, "#'")
+  comment <- text[comment_lines]
+  code <- text[!comment_lines]
+  func <- strsplit(code[1], " ")[[1]][1]
+  name <- substring(func, regexpr("_", func)+1)
+  operation <- list(
+    name = name,
+    http = list(),
+    input = list(),
+    output = list(),
+    documentation = sprintf("<p>%s</p>", gsub("^#' ", "", comment[1]))
+  )
+  return(operation)
+}
+
 # Returns a quoted string, e.g. "foo" -> '"foo"'.
 quoted <- function(string) {
   return(shQuote(string))
