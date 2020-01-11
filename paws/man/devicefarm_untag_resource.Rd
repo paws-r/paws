@@ -7,9 +7,9 @@
 devicefarm_untag_resource(ResourceARN, TagKeys)
 }
 \arguments{
-\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the resource(s) from which to delete
-tags. You can associate tags with the following Device Farm resources:
-\code{PROJECT}, \code{RUN}, \code{NETWORK_PROFILE}, \code{INSTANCE_PROFILE},
+\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the resource or resources from which
+to delete tags. You can associate tags with the following Device Farm
+resources: \code{PROJECT}, \code{RUN}, \code{NETWORK_PROFILE}, \code{INSTANCE_PROFILE},
 \code{DEVICE_INSTANCE}, \code{SESSION}, \code{DEVICE_POOL}, \code{DEVICE}, and
 \code{VPCE_CONFIGURATION}.}
 

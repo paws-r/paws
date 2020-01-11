@@ -2,16 +2,16 @@
 % Please edit documentation in R/sesv2_operations.R
 \name{sesv2_delete_suppressed_destination}
 \alias{sesv2_delete_suppressed_destination}
-\title{Used to delete a suppressed email destination from your suppression list}
+\title{Removes an email address from the suppression list for your account}
 \usage{
 sesv2_delete_suppressed_destination(EmailAddress)
 }
 \arguments{
-\item{EmailAddress}{[required] The suppressed email destination to delete.}
+\item{EmailAddress}{[required] The suppressed email destination to remove from the account suppression
+list.}
 }
 \description{
-Used to delete a suppressed email destination from your suppression
-list.
+Removes an email address from the suppression list for your account.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_suppressed_destination(

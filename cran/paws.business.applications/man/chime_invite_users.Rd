@@ -5,12 +5,14 @@
 \title{Sends email to a maximum of 50 users, inviting them to the specified
 Amazon Chime Team account}
 \usage{
-chime_invite_users(AccountId, UserEmailList)
+chime_invite_users(AccountId, UserEmailList, UserType)
 }
 \arguments{
 \item{AccountId}{[required] The Amazon Chime account ID.}
 
 \item{UserEmailList}{[required] The user email addresses to which to send the email invitation.}
+
+\item{UserType}{The user type.}
 }
 \description{
 Sends email to a maximum of 50 users, inviting them to the specified
@@ -22,7 +24,8 @@ supported for this action.
   AccountId = "string",
   UserEmailList = list(
     "string"
-  )
+  ),
+  UserType = "PrivateUser"|"SharedDevice"
 )
 }
 }

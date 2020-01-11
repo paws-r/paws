@@ -17,8 +17,8 @@ devicefarm_update_instance_profile(arn, name, description,
 \item{packageCleanup}{The updated choice for whether you want to specify package cleanup. The
 default value is \code{false} for private devices.}
 
-\item{excludeAppPackagesFromCleanup}{An array of strings specifying the list of app packages that should not
-be cleaned up from the device after a test run is over.
+\item{excludeAppPackagesFromCleanup}{An array of strings that specifies the list of app packages that should
+not be cleaned up from the device after a test run is over.
 
 The list of packages is only considered if you set \code{packageCleanup} to
 \code{true}.}

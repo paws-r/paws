@@ -7,7 +7,7 @@
 xray_get_groups(NextToken)
 }
 \arguments{
-\item{NextToken}{Pagination token. Not used.}
+\item{NextToken}{Pagination token.}
 }
 \description{
 Retrieves all active group details.

@@ -13,17 +13,17 @@ devicefarm_create_instance_profile(name, description, packageCleanup,
 
 \item{description}{The description of your instance profile.}
 
-\item{packageCleanup}{When set to \code{true}, Device Farm will remove app packages after a test
-run. The default value is \code{false} for private devices.}
+\item{packageCleanup}{When set to \code{true}, Device Farm removes app packages after a test run.
+The default value is \code{false} for private devices.}
 
-\item{excludeAppPackagesFromCleanup}{An array of strings specifying the list of app packages that should not
-be cleaned up from the device after a test run is over.
+\item{excludeAppPackagesFromCleanup}{An array of strings that specifies the list of app packages that should
+not be cleaned up from the device after a test run.
 
-The list of packages is only considered if you set \code{packageCleanup} to
+The list of packages is considered only if you set \code{packageCleanup} to
 \code{true}.}
 
-\item{rebootAfterUse}{When set to \code{true}, Device Farm will reboot the instance after a test
-run. The default value is \code{true}.}
+\item{rebootAfterUse}{When set to \code{true}, Device Farm reboots the instance after a test run.
+The default value is \code{true}.}
 }
 \description{
 Creates a profile that can be applied to one or more private fleet

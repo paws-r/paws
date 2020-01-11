@@ -8,10 +8,10 @@ with the AWS account in use}
 gamelift_list_scripts(Limit, NextToken)
 }
 \arguments{
-\item{Limit}{Maximum number of results to return. Use this parameter with \code{NextToken}
-to get results as a set of sequential pages.}
+\item{Limit}{The maximum number of results to return. Use this parameter with
+\code{NextToken} to get results as a set of sequential pages.}
 
-\item{NextToken}{Token that indicates the start of the next sequential page of results.
+\item{NextToken}{A token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this action. To
 start at the beginning of the result set, do not specify a value.}
 }

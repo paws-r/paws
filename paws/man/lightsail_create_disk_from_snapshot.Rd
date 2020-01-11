@@ -15,9 +15,12 @@ lightsail_create_disk_from_snapshot(diskName, diskSnapshotName,
 \item{diskSnapshotName}{The name of the disk snapshot (e.g., \code{my-snapshot}) from which to create
 the new storage disk.
 
-This parameter cannot be defined together with the \verb{source disk name}
-parameter. The \verb{disk snapshot name} and \verb{source disk name} parameters
-are mutually exclusive.}
+Constraint:
+\itemize{
+\item This parameter cannot be defined together with the
+\verb{source disk name} parameter. The \verb{disk snapshot name} and
+\verb{source disk name} parameters are mutually exclusive.
+}}
 
 \item{availabilityZone}{[required] The Availability Zone where you want to create the disk (e.g.,
 \verb{us-east-2a}). Choose the same Availability Zone as the Lightsail
@@ -39,17 +42,18 @@ disk.}
 \item{sourceDiskName}{The name of the source disk from which the source automatic snapshot was
 created.
 
-This parameter cannot be defined together with the \verb{disk snapshot name}
-parameter. The \verb{source disk name} and \verb{disk snapshot name} parameters
-are mutually exclusive.
+Constraints:
+\itemize{
+\item This parameter cannot be defined together with the
+\verb{disk snapshot name} parameter. The \verb{source disk name} and
+\verb{disk snapshot name} parameters are mutually exclusive.
+\item Define this parameter only when creating a new disk from an
+automatic snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.
+}}
 
-Define this parameter only when creating a new disk from an automatic
-snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.}
-
-\item{restoreDate}{The date of the automatic snapshot to use for the new disk.
-
-Use the \verb{get auto snapshots} operation to identify the dates of the
-available automatic snapshots.
+\item{restoreDate}{The date of the automatic snapshot to use for the new disk. Use the
+\verb{get auto snapshots} operation to identify the dates of the available
+automatic snapshots.
 
 Constraints:
 \itemize{
@@ -58,20 +62,21 @@ Constraints:
 \verb{use latest restorable auto snapshot} parameter. The \verb{restore date}
 and \verb{use latest restorable auto snapshot} parameters are mutually
 exclusive.
-}
-
-Define this parameter only when creating a new disk from an automatic
-snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.}
+\item Define this parameter only when creating a new disk from an
+automatic snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.
+}}
 
 \item{useLatestRestorableAutoSnapshot}{A Boolean value to indicate whether to use the latest available
 automatic snapshot.
 
-This parameter cannot be defined together with the \verb{restore date}
-parameter. The \verb{use latest restorable auto snapshot} and \verb{restore date}
-parameters are mutually exclusive.
-
-Define this parameter only when creating a new disk from an automatic
-snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.}
+Constraints:
+\itemize{
+\item This parameter cannot be defined together with the \verb{restore date}
+parameter. The \verb{use latest restorable auto snapshot} and
+\verb{restore date} parameters are mutually exclusive.
+\item Define this parameter only when creating a new disk from an
+automatic snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.
+}}
 }
 \description{
 Creates a block storage disk from a manual or automatic snapshot of a

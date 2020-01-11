@@ -12,13 +12,13 @@ devicefarm_create_vpce_configuration(vpceConfigurationName,
 \item{vpceConfigurationName}{[required] The friendly name you give to your VPC endpoint configuration, to manage
 your configurations more easily.}
 
-\item{vpceServiceName}{[required] The name of the VPC endpoint service running inside your AWS account
-that you want Device Farm to test.}
+\item{vpceServiceName}{[required] The name of the VPC endpoint service running in your AWS account that
+you want Device Farm to test.}
 
 \item{serviceDnsName}{[required] The DNS name of the service running in your VPC that you want Device
 Farm to test.}
 
-\item{vpceConfigurationDescription}{An optional description, providing more details about your VPC endpoint
+\item{vpceConfigurationDescription}{An optional description that provides details about your VPC endpoint
 configuration.}
 }
 \description{

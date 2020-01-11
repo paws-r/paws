@@ -14,14 +14,19 @@ NULL
 #'
 #' @usage
 #' personalizeruntime_get_personalized_ranking(campaignArn, inputList,
-#'   userId)
+#'   userId, context)
 #'
 #' @param campaignArn &#91;required&#93; The Amazon Resource Name (ARN) of the campaign to use for generating the
 #' personalized ranking.
 #' @param inputList &#91;required&#93; A list of items (itemId\'s) to rank. If an item was not included in the
 #' training dataset, the item is appended to the end of the reranked list.
+#' The maximum is 500.
 #' @param userId &#91;required&#93; The user for which you want the campaign to provide a personalized
 #' ranking.
+#' @param context The contextual metadata to use when getting recommendations. Contextual
+#' metadata includes any interaction information that might be relevant
+#' when getting a user\'s recommendations, such as the user\'s current
+#' location or device type. For more information, see Contextual Metadata.
 #'
 #' @section Request syntax:
 #' ```
@@ -30,21 +35,24 @@ NULL
 #'   inputList = list(
 #'     "string"
 #'   ),
-#'   userId = "string"
+#'   userId = "string",
+#'   context = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname personalizeruntime_get_personalized_ranking
-personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, userId) {
+personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, userId, context = NULL) {
   op <- new_operation(
     name = "GetPersonalizedRanking",
     http_method = "POST",
     http_path = "/personalize-ranking",
     paginator = list()
   )
-  input <- .personalizeruntime$get_personalized_ranking_input(campaignArn = campaignArn, inputList = inputList, userId = userId)
+  input <- .personalizeruntime$get_personalized_ranking_input(campaignArn = campaignArn, inputList = inputList, userId = userId, context = context)
   output <- .personalizeruntime$get_personalized_ranking_output()
   config <- get_config()
   svc <- .personalizeruntime$service(config)
@@ -69,7 +77,7 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 #'
 #' @usage
 #' personalizeruntime_get_recommendations(campaignArn, itemId, userId,
-#'   numResults)
+#'   numResults, context)
 #'
 #' @param campaignArn &#91;required&#93; The Amazon Resource Name (ARN) of the campaign to use for getting
 #' recommendations.
@@ -79,7 +87,11 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 #' @param userId The user ID to provide recommendations for.
 #' 
 #' Required for `USER_PERSONALIZATION` recipe type.
-#' @param numResults The number of results to return. The default is 25. The maximum is 100.
+#' @param numResults The number of results to return. The default is 25. The maximum is 500.
+#' @param context The contextual metadata to use when getting recommendations. Contextual
+#' metadata includes any interaction information that might be relevant
+#' when getting a user\'s recommendations, such as the user\'s current
+#' location or device type. For more information, see Contextual Metadata.
 #'
 #' @section Request syntax:
 #' ```
@@ -87,21 +99,24 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 #'   campaignArn = "string",
 #'   itemId = "string",
 #'   userId = "string",
-#'   numResults = 123
+#'   numResults = 123,
+#'   context = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname personalizeruntime_get_recommendations
-personalizeruntime_get_recommendations <- function(campaignArn, itemId = NULL, userId = NULL, numResults = NULL) {
+personalizeruntime_get_recommendations <- function(campaignArn, itemId = NULL, userId = NULL, numResults = NULL, context = NULL) {
   op <- new_operation(
     name = "GetRecommendations",
     http_method = "POST",
     http_path = "/recommendations",
     paginator = list()
   )
-  input <- .personalizeruntime$get_recommendations_input(campaignArn = campaignArn, itemId = itemId, userId = userId, numResults = numResults)
+  input <- .personalizeruntime$get_recommendations_input(campaignArn = campaignArn, itemId = itemId, userId = userId, numResults = numResults, context = context)
   output <- .personalizeruntime$get_recommendations_output()
   config <- get_config()
   svc <- .personalizeruntime$service(config)

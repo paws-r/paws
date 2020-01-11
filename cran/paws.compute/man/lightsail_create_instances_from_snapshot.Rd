@@ -25,9 +25,12 @@ your request.}
 instances. Use the get instance snapshots operation to return
 information about your existing snapshots.
 
-This parameter cannot be defined together with the
+Constraint:
+\itemize{
+\item This parameter cannot be defined together with the
 \verb{source instance name} parameter. The \verb{instance snapshot name} and
-\verb{source instance name} parameters are mutually exclusive.}
+\verb{source instance name} parameters are mutually exclusive.
+}}
 
 \item{bundleId}{[required] The bundle of specification information for your virtual private server
 (or \emph{instance}), including the pricing plan (e.g., \code{micro_1_0}).}
@@ -53,17 +56,18 @@ instance.}
 \item{sourceInstanceName}{The name of the source instance from which the source automatic snapshot
 was created.
 
-This parameter cannot be defined together with the
+Constraints:
+\itemize{
+\item This parameter cannot be defined together with the
 \verb{instance snapshot name} parameter. The \verb{source instance name} and
 \verb{instance snapshot name} parameters are mutually exclusive.
+\item Define this parameter only when creating a new instance from an
+automatic snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.
+}}
 
-Define this parameter only when creating a new instance from an
-automatic snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.}
-
-\item{restoreDate}{The date of the automatic snapshot to use for the new instance.
-
-Use the \verb{get auto snapshots} operation to identify the dates of the
-available automatic snapshots.
+\item{restoreDate}{The date of the automatic snapshot to use for the new instance. Use the
+\verb{get auto snapshots} operation to identify the dates of the available
+automatic snapshots.
 
 Constraints:
 \itemize{
@@ -72,20 +76,21 @@ Constraints:
 \verb{use latest restorable auto snapshot} parameter. The \verb{restore date}
 and \verb{use latest restorable auto snapshot} parameters are mutually
 exclusive.
-}
-
-Define this parameter only when creating a new instance from an
-automatic snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.}
+\item Define this parameter only when creating a new instance from an
+automatic snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.
+}}
 
 \item{useLatestRestorableAutoSnapshot}{A Boolean value to indicate whether to use the latest available
 automatic snapshot.
 
-This parameter cannot be defined together with the \verb{restore date}
-parameter. The \verb{use latest restorable auto snapshot} and \verb{restore date}
-parameters are mutually exclusive.
-
-Define this parameter only when creating a new instance from an
-automatic snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.}
+Constraints:
+\itemize{
+\item This parameter cannot be defined together with the \verb{restore date}
+parameter. The \verb{use latest restorable auto snapshot} and
+\verb{restore date} parameters are mutually exclusive.
+\item Define this parameter only when creating a new instance from an
+automatic snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.
+}}
 }
 \description{
 Creates one or more new instances from a manual or automatic snapshot of

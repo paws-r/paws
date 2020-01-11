@@ -2,7 +2,7 @@
 % Please edit documentation in R/accessanalyzer_operations.R
 \name{accessanalyzer_get_analyzed_resource}
 \alias{accessanalyzer_get_analyzed_resource}
-\title{Retrieves information about an analyzed resource}
+\title{Retrieves information about a resource that was analyzed}
 \usage{
 accessanalyzer_get_analyzed_resource(analyzerArn, resourceArn)
 }
@@ -12,7 +12,7 @@ accessanalyzer_get_analyzed_resource(analyzerArn, resourceArn)
 \item{resourceArn}{[required] The ARN of the resource to retrieve information about.}
 }
 \description{
-Retrieves information about an analyzed resource.
+Retrieves information about a resource that was analyzed.
 }
 \section{Request syntax}{
 \preformatted{svc$get_analyzed_resource(

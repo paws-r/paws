@@ -8,14 +8,14 @@ custom matchmaking rules, and starts a new game for the matched players}
 gamelift_start_matchmaking(TicketId, ConfigurationName, Players)
 }
 \arguments{
-\item{TicketId}{Unique identifier for a matchmaking ticket. If no ticket ID is specified
-here, Amazon GameLift will generate one in the form of a UUID. Use this
-identifier to track the matchmaking ticket status and retrieve match
-results.}
+\item{TicketId}{A unique identifier for a matchmaking ticket. If no ticket ID is
+specified here, Amazon GameLift will generate one in the form of a UUID.
+Use this identifier to track the matchmaking ticket status and retrieve
+match results.}
 
 \item{ConfigurationName}{[required] Name of the matchmaking configuration to use for this request.
-Matchmaking configurations must exist in the same region as this
-request.}
+Matchmaking configurations must exist in the same Region as this
+request. You can use either the configuration name or ARN value.}
 
 \item{Players}{[required] Information on each player to be matched. This information must include
 a player ID, and may contain player attributes and latency data to be

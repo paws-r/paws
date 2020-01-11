@@ -7,7 +7,8 @@
 gamelift_delete_fleet(FleetId)
 }
 \arguments{
-\item{FleetId}{[required] Unique identifier for a fleet to be deleted.}
+\item{FleetId}{[required] A unique identifier for a fleet to be deleted. You can use either the
+fleet ID or ARN value.}
 }
 \description{
 Deletes everything related to a fleet. Before deleting a fleet, you must
@@ -32,23 +33,8 @@ fleet is deleted, you can no longer use that fleet.
 \item CreateFleet
 \item ListFleets
 \item DeleteFleet
-\item Describe fleets:
-\itemize{
 \item DescribeFleetAttributes
-\item DescribeFleetCapacity
-\item DescribeFleetPortSettings
-\item DescribeFleetUtilization
-\item DescribeRuntimeConfiguration
-\item DescribeEC2InstanceLimits
-\item DescribeFleetEvents
-}
-\item Update fleets:
-\itemize{
 \item UpdateFleetAttributes
-\item UpdateFleetCapacity
-\item UpdateFleetPortSettings
-\item UpdateRuntimeConfiguration
-}
 \item Manage fleet actions:
 \itemize{
 \item StartFleetActions

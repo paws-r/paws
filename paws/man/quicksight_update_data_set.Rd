@@ -9,9 +9,9 @@ quicksight_update_data_set(AwsAccountId, DataSetId, Name,
   RowLevelPermissionDataSet)
 }
 \arguments{
-\item{AwsAccountId}{[required] The AWS Account ID.}
+\item{AwsAccountId}{[required] The AWS account ID.}
 
-\item{DataSetId}{[required] The ID for the dataset that you want to create. This ID is unique per
+\item{DataSetId}{[required] The ID for the dataset that you want to update. This ID is unique per
 AWS Region for each AWS account.}
 
 \item{Name}{[required] The display name for the dataset.}
@@ -22,12 +22,12 @@ sources.}
 \item{LogicalTableMap}{Configures the combination and transformation of the data from the
 physical tables.}
 
-\item{ImportMode}{[required] Indicates whether or not you want to import the data into SPICE.}
+\item{ImportMode}{[required] Indicates whether you want to import the data into SPICE.}
 
 \item{ColumnGroups}{Groupings of columns that work together in certain QuickSight features.
 Currently, only geospatial hierarchy is supported.}
 
-\item{RowLevelPermissionDataSet}{Row-level security configuration on the data you want to create.}
+\item{RowLevelPermissionDataSet}{The row-level security configuration for the data you want to create.}
 }
 \description{
 Updates a dataset.

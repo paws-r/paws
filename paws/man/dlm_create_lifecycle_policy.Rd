@@ -75,6 +75,18 @@ You can create up to 100 lifecycle policies.
           AvailabilityZones = list(
             "string"
           )
+        ),
+        CrossRegionCopyRules = list(
+          list(
+            TargetRegion = "string",
+            Encrypted = TRUE|FALSE,
+            CmkArn = "string",
+            CopyTags = TRUE|FALSE,
+            RetainRule = list(
+              Interval = 123,
+              IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
+            )
+          )
         )
       )
     ),

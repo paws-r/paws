@@ -8,7 +8,7 @@ session}
 gamelift_get_game_session_log_url(GameSessionId)
 }
 \arguments{
-\item{GameSessionId}{[required] Unique identifier for the game session to get logs for.}
+\item{GameSessionId}{[required] A unique identifier for the game session to get logs for.}
 }
 \description{
 Retrieves the location of stored game session logs for a specified game

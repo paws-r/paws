@@ -56,6 +56,10 @@ specified by \code{MaxRecords}.}
 Returns information about provisioned RDS instances. This API supports
 pagination.
 }
+\details{
+This operation can also return information for Amazon Neptune DB
+instances and Amazon DocumentDB instances.
+}
 \section{Request syntax}{
 \preformatted{svc$describe_db_instances(
   DBInstanceIdentifier = "string",

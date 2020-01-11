@@ -2,22 +2,24 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_delete_template_alias}
 \alias{quicksight_delete_template_alias}
-\title{Update template alias of given template}
+\title{Deletes the item that the specified template alias points to}
 \usage{
 quicksight_delete_template_alias(AwsAccountId, TemplateId, AliasName)
 }
 \arguments{
-\item{AwsAccountId}{[required] AWS account ID that contains the template alias you are deleting.}
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the item to delete.}
 
-\item{TemplateId}{[required] An ID for the template.}
+\item{TemplateId}{[required] The ID for the template that the specified alias is for.}
 
-\item{AliasName}{[required] The alias of the template that you want to delete. If you provide a
-specific alias, you delete the version that the alias points to. You can
-specify the latest version of the template by providing the keyword
-\verb{$LATEST} in the \code{AliasName} parameter.}
+\item{AliasName}{[required] The name for the template alias. If you name a specific alias, you
+delete the version that the alias points to. You can specify the latest
+version of the template by providing the keyword \verb{$LATEST} in the
+\code{AliasName} parameter.}
 }
 \description{
-Update template alias of given template.
+Deletes the item that the specified template alias points to. If you
+provide a specific alias, you delete the version of the template that
+the alias points to.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_template_alias(

@@ -7,7 +7,7 @@
 mq_create_broker(AutoMinorVersionUpgrade, BrokerName, Configuration,
   CreatorRequestId, DeploymentMode, EncryptionOptions, EngineType,
   EngineVersion, HostInstanceType, Logs, MaintenanceWindowStartTime,
-  PubliclyAccessible, SecurityGroups, SubnetIds, Tags, Users)
+  PubliclyAccessible, SecurityGroups, StorageType, SubnetIds, Tags, Users)
 }
 \arguments{
 \item{AutoMinorVersionUpgrade}{Required. Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The automatic upgrades occur during the maintenance window of the broker or after a manual broker reboot.}
@@ -34,7 +34,9 @@ mq_create_broker(AutoMinorVersionUpgrade, BrokerName, Configuration,
 
 \item{PubliclyAccessible}{Required. Enables connections from applications outside of the VPC that hosts the broker's subnets.}
 
-\item{SecurityGroups}{The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.}
+\item{SecurityGroups}{The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.}
+
+\item{StorageType}{The broker's storage type.}
 
 \item{SubnetIds}{The list of groups (2 maximum) that define which subnets and IP ranges the broker can use from different Availability Zones. A SINGLE_INSTANCE deployment requires one subnet (for example, the default subnet). An ACTIVE_STANDBY_MULTI_AZ deployment requires two subnets.}
 
@@ -75,6 +77,7 @@ Creates a broker. Note: This API is asynchronous.
   SecurityGroups = list(
     "string"
   ),
+  StorageType = "EBS"|"EFS",
   SubnetIds = list(
     "string"
   ),

@@ -17,8 +17,8 @@ Returns a list of all historical purchases, renewals, and system renewal
 transactions for an AWS account. The list is paginated and ordered by a
 descending timestamp (most recent transactions are first). The API
 returns a \code{NotEligible} error if the user is not permitted to invoke the
-operation. Please contact \href{mailto:aws-devicefarm-support@amazon.com}{aws-devicefarm-support@amazon.com} if you
-believe that you should be able to invoke this operation.
+operation. If you must be able to invoke this operation, contact
+\href{mailto:aws-devicefarm-support@amazon.com}{aws-devicefarm-support@amazon.com}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_offering_transactions(

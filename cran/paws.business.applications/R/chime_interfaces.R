@@ -39,6 +39,18 @@ NULL
   return(populate(args, shape))
 }
 
+.chime$associate_signin_delegate_groups_with_account_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), SigninDelegateGroups = structure(list(structure(list(GroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$associate_signin_delegate_groups_with_account_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .chime$batch_create_attendee_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(MeetingId = structure(logical(0), tags = list(location = "uri", locationName = "meetingId", type = "string")), Attendees = structure(list(structure(list(ExternalUserId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -113,7 +125,7 @@ NULL
 
 .chime$batch_update_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), UpdateUserRequestItems = structure(list(structure(list(UserId = structure(logical(0), tags = list(type = "string")), LicenseType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), UpdateUserRequestItems = structure(list(structure(list(UserId = structure(logical(0), tags = list(type = "string")), LicenseType = structure(logical(0), tags = list(type = "string")), UserType = structure(logical(0), tags = list(type = "string")), AlexaForBusinessMetadata = structure(list(IsAlexaForBusinessEnabled = structure(logical(0), tags = list(type = "boolean")), AlexaForBusinessRoomArn = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -131,7 +143,7 @@ NULL
 
 .chime$create_account_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Account = structure(list(AwsAccountId = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), AccountType = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DefaultLicense = structure(logical(0), tags = list(type = "string")), SupportedLicenses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Account = structure(list(AwsAccountId = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), AccountType = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DefaultLicense = structure(logical(0), tags = list(type = "string")), SupportedLicenses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigninDelegateGroups = structure(list(structure(list(GroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -204,6 +216,18 @@ NULL
 .chime$create_room_membership_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(RoomMembership = structure(list(RoomId = structure(logical(0), tags = list(type = "string")), Member = structure(list(MemberId = structure(logical(0), tags = list(type = "string")), MemberType = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), FullName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Role = structure(logical(0), tags = list(type = "string")), InvitedBy = structure(logical(0), tags = list(type = "string")), UpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$create_user_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), Username = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), UserType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$create_user_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(User = structure(list(UserId = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), PrimaryEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PrimaryProvisionedNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DisplayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LicenseType = structure(logical(0), tags = list(type = "string")), UserType = structure(logical(0), tags = list(type = "string")), UserRegistrationStatus = structure(logical(0), tags = list(type = "string")), UserInvitationStatus = structure(logical(0), tags = list(type = "string")), RegisteredOn = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), InvitedOn = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), AlexaForBusinessMetadata = structure(list(IsAlexaForBusinessEnabled = structure(logical(0), tags = list(type = "boolean")), AlexaForBusinessRoomArn = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), PersonalPIN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -399,6 +423,18 @@ NULL
   return(populate(args, shape))
 }
 
+.chime$disassociate_signin_delegate_groups_from_account_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), GroupNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$disassociate_signin_delegate_groups_from_account_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .chime$get_account_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string"))), tags = list(type = "structure"))
@@ -407,7 +443,7 @@ NULL
 
 .chime$get_account_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Account = structure(list(AwsAccountId = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), AccountType = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DefaultLicense = structure(logical(0), tags = list(type = "string")), SupportedLicenses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Account = structure(list(AwsAccountId = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), AccountType = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DefaultLicense = structure(logical(0), tags = list(type = "string")), SupportedLicenses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigninDelegateGroups = structure(list(structure(list(GroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -535,7 +571,7 @@ NULL
 
 .chime$get_user_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(User = structure(list(UserId = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), PrimaryEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PrimaryProvisionedNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DisplayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LicenseType = structure(logical(0), tags = list(type = "string")), UserRegistrationStatus = structure(logical(0), tags = list(type = "string")), UserInvitationStatus = structure(logical(0), tags = list(type = "string")), RegisteredOn = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), InvitedOn = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), PersonalPIN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(User = structure(list(UserId = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), PrimaryEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PrimaryProvisionedNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DisplayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LicenseType = structure(logical(0), tags = list(type = "string")), UserType = structure(logical(0), tags = list(type = "string")), UserRegistrationStatus = structure(logical(0), tags = list(type = "string")), UserInvitationStatus = structure(logical(0), tags = list(type = "string")), RegisteredOn = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), InvitedOn = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), AlexaForBusinessMetadata = structure(list(IsAlexaForBusinessEnabled = structure(logical(0), tags = list(type = "boolean")), AlexaForBusinessRoomArn = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), PersonalPIN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -637,7 +673,7 @@ NULL
 
 .chime$invite_users_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), UserEmailList = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), UserEmailList = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), UserType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -655,7 +691,7 @@ NULL
 
 .chime$list_accounts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Accounts = structure(list(structure(list(AwsAccountId = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), AccountType = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DefaultLicense = structure(logical(0), tags = list(type = "string")), SupportedLicenses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Accounts = structure(list(structure(list(AwsAccountId = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), AccountType = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DefaultLicense = structure(logical(0), tags = list(type = "string")), SupportedLicenses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigninDelegateGroups = structure(list(structure(list(GroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -745,13 +781,13 @@ NULL
 
 .chime$list_users_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), UserEmail = structure(logical(0), tags = list(location = "querystring", locationName = "user-email", type = "string", sensitive = TRUE)), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), UserEmail = structure(logical(0), tags = list(location = "querystring", locationName = "user-email", type = "string", sensitive = TRUE)), UserType = structure(logical(0), tags = list(location = "querystring", locationName = "user-type", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .chime$list_users_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Users = structure(list(structure(list(UserId = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), PrimaryEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PrimaryProvisionedNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DisplayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LicenseType = structure(logical(0), tags = list(type = "string")), UserRegistrationStatus = structure(logical(0), tags = list(type = "string")), UserInvitationStatus = structure(logical(0), tags = list(type = "string")), RegisteredOn = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), InvitedOn = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), PersonalPIN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Users = structure(list(structure(list(UserId = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), PrimaryEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PrimaryProvisionedNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DisplayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LicenseType = structure(logical(0), tags = list(type = "string")), UserType = structure(logical(0), tags = list(type = "string")), UserRegistrationStatus = structure(logical(0), tags = list(type = "string")), UserInvitationStatus = structure(logical(0), tags = list(type = "string")), RegisteredOn = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), InvitedOn = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), AlexaForBusinessMetadata = structure(list(IsAlexaForBusinessEnabled = structure(logical(0), tags = list(type = "boolean")), AlexaForBusinessRoomArn = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), PersonalPIN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -893,7 +929,7 @@ NULL
 
 .chime$reset_personal_pin_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(User = structure(list(UserId = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), PrimaryEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PrimaryProvisionedNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DisplayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LicenseType = structure(logical(0), tags = list(type = "string")), UserRegistrationStatus = structure(logical(0), tags = list(type = "string")), UserInvitationStatus = structure(logical(0), tags = list(type = "string")), RegisteredOn = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), InvitedOn = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), PersonalPIN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(User = structure(list(UserId = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), PrimaryEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PrimaryProvisionedNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DisplayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LicenseType = structure(logical(0), tags = list(type = "string")), UserType = structure(logical(0), tags = list(type = "string")), UserRegistrationStatus = structure(logical(0), tags = list(type = "string")), UserInvitationStatus = structure(logical(0), tags = list(type = "string")), RegisteredOn = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), InvitedOn = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), AlexaForBusinessMetadata = structure(list(IsAlexaForBusinessEnabled = structure(logical(0), tags = list(type = "boolean")), AlexaForBusinessRoomArn = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), PersonalPIN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -929,7 +965,7 @@ NULL
 
 .chime$update_account_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Account = structure(list(AwsAccountId = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), AccountType = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DefaultLicense = structure(logical(0), tags = list(type = "string")), SupportedLicenses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Account = structure(list(AwsAccountId = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), AccountType = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DefaultLicense = structure(logical(0), tags = list(type = "string")), SupportedLicenses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigninDelegateGroups = structure(list(structure(list(GroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1015,13 +1051,13 @@ NULL
 
 .chime$update_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), UserId = structure(logical(0), tags = list(location = "uri", locationName = "userId", type = "string")), LicenseType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), UserId = structure(logical(0), tags = list(location = "uri", locationName = "userId", type = "string")), LicenseType = structure(logical(0), tags = list(type = "string")), UserType = structure(logical(0), tags = list(type = "string")), AlexaForBusinessMetadata = structure(list(IsAlexaForBusinessEnabled = structure(logical(0), tags = list(type = "boolean")), AlexaForBusinessRoomArn = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .chime$update_user_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(User = structure(list(UserId = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), PrimaryEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PrimaryProvisionedNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DisplayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LicenseType = structure(logical(0), tags = list(type = "string")), UserRegistrationStatus = structure(logical(0), tags = list(type = "string")), UserInvitationStatus = structure(logical(0), tags = list(type = "string")), RegisteredOn = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), InvitedOn = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), PersonalPIN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(User = structure(list(UserId = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), PrimaryEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PrimaryProvisionedNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DisplayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LicenseType = structure(logical(0), tags = list(type = "string")), UserType = structure(logical(0), tags = list(type = "string")), UserRegistrationStatus = structure(logical(0), tags = list(type = "string")), UserInvitationStatus = structure(logical(0), tags = list(type = "string")), RegisteredOn = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), InvitedOn = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), AlexaForBusinessMetadata = structure(list(IsAlexaForBusinessEnabled = structure(logical(0), tags = list(type = "boolean")), AlexaForBusinessRoomArn = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), PersonalPIN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

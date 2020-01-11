@@ -2,37 +2,38 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_update_iam_policy_assignment}
 \alias{quicksight_update_iam_policy_assignment}
-\title{Updates an existing assignment}
+\title{Updates an existing IAM policy assignment}
 \usage{
 quicksight_update_iam_policy_assignment(AwsAccountId, AssignmentName,
   Namespace, AssignmentStatus, PolicyArn, Identities)
 }
 \arguments{
-\item{AwsAccountId}{[required] The AWS account ID that contains the IAM policy assignment.}
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the IAM policy assignment.}
 
-\item{AssignmentName}{[required] The name of the assignment. It must be unique within an AWS account.}
+\item{AssignmentName}{[required] The name of the assignment. This name must be unique within an AWS
+account.}
 
 \item{Namespace}{[required] The namespace of the assignment.}
 
-\item{AssignmentStatus}{The status of an assignment:
+\item{AssignmentStatus}{The status of the assignment. Possible values are as follows:
 \itemize{
-\item ENABLED - Anything specified in this assignment is used while
+\item \code{ENABLED} - Anything specified in this assignment is used when
 creating the data source.
-\item DISABLED - This assignment isn\'t used while creating the data
+\item \code{DISABLED} - This assignment isn\'t used when creating the data
 source.
-\item DRAFT - Assignment is an unfinished draft and isn\'t used while
-creating the data source.
+\item \code{DRAFT} - This assignment is an unfinished draft and isn\'t used
+when creating the data source.
 }}
 
-\item{PolicyArn}{An IAM policy Amazon Resource Name (ARN) that will be applied to
-specified QuickSight users and groups in this assignment.}
+\item{PolicyArn}{The ARN for the IAM policy to apply to the QuickSight users and groups
+specified in this assignment.}
 
-\item{Identities}{QuickSight users and/or groups that you want to assign to the specified
-IAM policy.}
+\item{Identities}{The QuickSight users, groups, or both that you want to assign the policy
+to.}
 }
 \description{
-Updates an existing assignment. This operation updates only the optional
-parameter or parameters that are specified in the request.
+Updates an existing IAM policy assignment. This operation updates only
+the optional parameter or parameters that are specified in the request.
 }
 \section{Request syntax}{
 \preformatted{svc$update_iam_policy_assignment(

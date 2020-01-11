@@ -52,6 +52,9 @@ NULL
 #' 
 #' -   `DeleteReportGroup`: Deletes a report group.
 #' 
+#' -   `DeleteResourcePolicy`: Deletes a resource policy that is identified
+#'     by its resource ARN.
+#' 
 #' -   `DeleteSourceCredentials`: Deletes a set of GitHub, GitHub
 #'     Enterprise, or Bitbucket source credentials.
 #' 
@@ -62,6 +65,9 @@ NULL
 #' 
 #' -   `DescribeTestCases`: Returns a list of details about test cases for
 #'     a report.
+#' 
+#' -   `GetResourcePolicy`: Gets a resource policy that is identified by
+#'     its resource ARN.
 #' 
 #' -   `ImportSourceCredentials`: Imports the source repository credentials
 #'     for an AWS CodeBuild project that has its source code stored in a
@@ -90,10 +96,19 @@ NULL
 #' -   `ListReportsForReportGroup`: Returns a list of ARNs for the reports
 #'     that belong to a `ReportGroup`.
 #' 
+#' -   `ListSharedProjects`: Gets a list of ARNs associated with projects
+#'     shared with the current AWS account or user.
+#' 
+#' -   `ListSharedReportGroups`: Gets a list of ARNs associated with report
+#'     groups shared with the current AWS account or user
+#' 
 #' -   `ListSourceCredentials`: Returns a list of `SourceCredentialsInfo`
 #'     objects. Each `SourceCredentialsInfo` object includes the
 #'     authentication type, token ARN, and type of source provider for one
 #'     set of credentials.
+#' 
+#' -   `PutResourcePolicy`: Stores a resource policy for the ARN of a
+#'     `Project` or `ReportGroup` object.
 #' 
 #' -   `StartBuild`: Starts running a build.
 #' 
@@ -151,9 +166,11 @@ NULL
 #'  \link[=codebuild_delete_project]{delete_project} \tab Deletes a build project \cr
 #'  \link[=codebuild_delete_report]{delete_report} \tab Deletes a report \cr
 #'  \link[=codebuild_delete_report_group]{delete_report_group} \tab DeleteReportGroup: Deletes a report group \cr
+#'  \link[=codebuild_delete_resource_policy]{delete_resource_policy} \tab Deletes a resource policy that is identified by its resource ARN \cr
 #'  \link[=codebuild_delete_source_credentials]{delete_source_credentials} \tab Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source credentials \cr
 #'  \link[=codebuild_delete_webhook]{delete_webhook} \tab For an existing AWS CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, stops AWS CodeBuild from rebuilding the source code every time a code change is pushed to the repository \cr
 #'  \link[=codebuild_describe_test_cases]{describe_test_cases} \tab Returns a list of details about test cases for a report \cr
+#'  \link[=codebuild_get_resource_policy]{get_resource_policy} \tab Gets a resource policy that is identified by its resource ARN \cr
 #'  \link[=codebuild_import_source_credentials]{import_source_credentials} \tab Imports the source repository credentials for an AWS CodeBuild project that has its source code stored in a GitHub, GitHub Enterprise, or Bitbucket repository \cr
 #'  \link[=codebuild_invalidate_project_cache]{invalidate_project_cache} \tab Resets the cache for a project \cr
 #'  \link[=codebuild_list_builds]{list_builds} \tab Gets a list of build IDs, with each build ID representing a single build \cr
@@ -163,7 +180,10 @@ NULL
 #'  \link[=codebuild_list_report_groups]{list_report_groups} \tab Gets a list ARNs for the report groups in the current AWS account \cr
 #'  \link[=codebuild_list_reports]{list_reports} \tab Returns a list of ARNs for the reports in the current AWS account \cr
 #'  \link[=codebuild_list_reports_for_report_group]{list_reports_for_report_group} \tab Returns a list of ARNs for the reports that belong to a ReportGroup \cr
+#'  \link[=codebuild_list_shared_projects]{list_shared_projects} \tab Gets a list of projects that are shared with other AWS accounts or users \cr
+#'  \link[=codebuild_list_shared_report_groups]{list_shared_report_groups} \tab Gets a list of report groups that are shared with other AWS accounts or users \cr
 #'  \link[=codebuild_list_source_credentials]{list_source_credentials} \tab Returns a list of SourceCredentialsInfo objects \cr
+#'  \link[=codebuild_put_resource_policy]{put_resource_policy} \tab Stores a resource policy for the ARN of a Project or ReportGroup object \cr
 #'  \link[=codebuild_start_build]{start_build} \tab Starts running a build \cr
 #'  \link[=codebuild_stop_build]{stop_build} \tab Attempts to stop running a build \cr
 #'  \link[=codebuild_update_project]{update_project} \tab Changes the settings of a build project \cr

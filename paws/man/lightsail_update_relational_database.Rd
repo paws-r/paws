@@ -8,7 +8,8 @@ Lightsail}
 lightsail_update_relational_database(relationalDatabaseName,
   masterUserPassword, rotateMasterUserPassword, preferredBackupWindow,
   preferredMaintenanceWindow, enableBackupRetention,
-  disableBackupRetention, publiclyAccessible, applyImmediately)
+  disableBackupRetention, publiclyAccessible, applyImmediately,
+  caCertificateIdentifier)
 }
 \arguments{
 \item{relationalDatabaseName}{[required] The name of your database to update.}
@@ -78,6 +79,8 @@ during the preferred maintenance window. Some changes may cause an
 outage.
 
 Default: \code{false}}
+
+\item{caCertificateIdentifier}{Indicates the certificate that needs to be associated with the database.}
 }
 \description{
 Allows the update of one or more attributes of a database in Amazon
@@ -102,7 +105,8 @@ relationalDatabaseName. For more information, see the \href{https://lightsail.aw
   enableBackupRetention = TRUE|FALSE,
   disableBackupRetention = TRUE|FALSE,
   publiclyAccessible = TRUE|FALSE,
-  applyImmediately = TRUE|FALSE
+  applyImmediately = TRUE|FALSE,
+  caCertificateIdentifier = "string"
 )
 }
 }

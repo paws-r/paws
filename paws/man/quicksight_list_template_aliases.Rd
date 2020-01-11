@@ -8,7 +8,8 @@ quicksight_list_template_aliases(AwsAccountId, TemplateId, NextToken,
   MaxResults)
 }
 \arguments{
-\item{AwsAccountId}{[required] AWS account ID that contains the template aliases you are listing.}
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the template aliases that
+you\'re listing.}
 
 \item{TemplateId}{[required] The ID for the template.}
 

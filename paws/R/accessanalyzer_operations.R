@@ -3,20 +3,22 @@
 #' @include accessanalyzer_service.R
 NULL
 
-#' Creates an analyzer with a zone of trust set to your account
+#' Creates an analyzer for your account
 #'
-#' Creates an analyzer with a zone of trust set to your account.
+#' Creates an analyzer for your account.
 #'
 #' @usage
 #' accessanalyzer_create_analyzer(analyzerName, archiveRules, clientToken,
 #'   tags, type)
 #'
 #' @param analyzerName &#91;required&#93; The name of the analyzer to create.
-#' @param archiveRules Specifies the archive rules to add for the analyzer.
+#' @param archiveRules Specifies the archive rules to add for the analyzer. Archive rules
+#' automatically archive findings that meet the criteria you define for the
+#' rule.
 #' @param clientToken A client token.
 #' @param tags The tags to apply to the analyzer.
-#' @param type &#91;required&#93; The zone of trust for the analyzer. You can create only one analyzer per
-#' account per Region.
+#' @param type &#91;required&#93; The type of analyzer to create. Only ACCOUNT analyzers are supported.
+#' You can create only one analyzer per account per Region.
 #'
 #' @section Request syntax:
 #' ```
@@ -71,7 +73,9 @@ accessanalyzer_create_analyzer <- function(analyzerName, archiveRules = NULL, cl
 
 #' Creates an archive rule for the specified analyzer
 #'
-#' Creates an archive rule for the specified analyzer.
+#' Creates an archive rule for the specified analyzer. Archive rules
+#' automatically archive findings that meet the criteria you define when
+#' you create the rule.
 #'
 #' @usage
 #' accessanalyzer_create_archive_rule(analyzerName, clientToken, filter,
@@ -173,7 +177,8 @@ accessanalyzer_delete_analyzer <- function(analyzerName, clientToken = NULL) {
 #' @usage
 #' accessanalyzer_delete_archive_rule(analyzerName, clientToken, ruleName)
 #'
-#' @param analyzerName &#91;required&#93; The name of the analyzer that was deleted.
+#' @param analyzerName &#91;required&#93; The name of the analyzer that associated with the archive rule to
+#' delete.
 #' @param clientToken A client token.
 #' @param ruleName &#91;required&#93; The name of the rule to delete.
 #'
@@ -206,9 +211,9 @@ accessanalyzer_delete_archive_rule <- function(analyzerName, clientToken = NULL,
 }
 .accessanalyzer$operations$delete_archive_rule <- accessanalyzer_delete_archive_rule
 
-#' Retrieves information about an analyzed resource
+#' Retrieves information about a resource that was analyzed
 #'
-#' Retrieves information about an analyzed resource.
+#' Retrieves information about a resource that was analyzed.
 #'
 #' @usage
 #' accessanalyzer_get_analyzed_resource(analyzerArn, resourceArn)
@@ -356,9 +361,11 @@ accessanalyzer_get_finding <- function(analyzerArn, id) {
 }
 .accessanalyzer$operations$get_finding <- accessanalyzer_get_finding
 
-#' Retrieves a list of resources that have been analyzed
+#' Retrieves a list of resources of the specified type that have been
+#' analyzed by the specified analyzer
 #'
-#' Retrieves a list of resources that have been analyzed.
+#' Retrieves a list of resources of the specified type that have been
+#' analyzed by the specified analyzer..
 #'
 #' @usage
 #' accessanalyzer_list_analyzed_resources(analyzerArn, maxResults,
@@ -408,8 +415,7 @@ accessanalyzer_list_analyzed_resources <- function(analyzerArn, maxResults = NUL
 #'
 #' @param maxResults The maximum number of results to return in the response.
 #' @param nextToken A token used for pagination of results returned.
-#' @param type The type of analyzer, which corresponds to the zone of trust selected
-#' when the analyzer was created.
+#' @param type The type of analyzer.
 #'
 #' @section Request syntax:
 #' ```
@@ -577,9 +583,11 @@ accessanalyzer_list_tags_for_resource <- function(resourceArn) {
 }
 .accessanalyzer$operations$list_tags_for_resource <- accessanalyzer_list_tags_for_resource
 
-#' Starts a scan of the policies applied to the specified resource
+#' Immediately starts a scan of the policies applied to the specified
+#' resource
 #'
-#' Starts a scan of the policies applied to the specified resource.
+#' Immediately starts a scan of the policies applied to the specified
+#' resource.
 #'
 #' @usage
 #' accessanalyzer_start_resource_scan(analyzerArn, resourceArn)
@@ -696,9 +704,9 @@ accessanalyzer_untag_resource <- function(resourceArn, tagKeys) {
 }
 .accessanalyzer$operations$untag_resource <- accessanalyzer_untag_resource
 
-#' Updates the specified archive rule
+#' Updates the criteria and values for the specified archive rule
 #'
-#' Updates the specified archive rule.
+#' Updates the criteria and values for the specified archive rule.
 #'
 #' @usage
 #' accessanalyzer_update_archive_rule(analyzerName, clientToken, filter,
@@ -753,9 +761,9 @@ accessanalyzer_update_archive_rule <- function(analyzerName, clientToken = NULL,
 }
 .accessanalyzer$operations$update_archive_rule <- accessanalyzer_update_archive_rule
 
-#' Updates findings with the new values provided in the request
+#' Updates the status for the specified findings
 #'
-#' Updates findings with the new values provided in the request.
+#' Updates the status for the specified findings.
 #'
 #' @usage
 #' accessanalyzer_update_findings(analyzerArn, clientToken, ids,

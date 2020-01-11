@@ -15,8 +15,9 @@ CloudWatch logs and metrics. This is also the role used when you use the
 \code{BatchPutDocument} operation to index documents from an Amazon S3
 bucket.}
 
-\item{ServerSideEncryptionConfiguration}{The identifier of the KMS key to use to encrypt data indexed by Amazon
-Kendra.}
+\item{ServerSideEncryptionConfiguration}{The identifier of the AWS KMS customer managed key (CMK) to use to
+encrypt data indexed by Amazon Kendra. Amazon Kendra doesn\'t support
+asymmetric CMKs.}
 
 \item{Description}{A description for the index.}
 }

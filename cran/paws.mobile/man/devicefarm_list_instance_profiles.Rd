@@ -7,8 +7,8 @@
 devicefarm_list_instance_profiles(maxResults, nextToken)
 }
 \arguments{
-\item{maxResults}{An integer specifying the maximum number of items you want to return in
-the API response.}
+\item{maxResults}{An integer that specifies the maximum number of items you want to return
+in the API response.}
 
 \item{nextToken}{An identifier that was returned from the previous call to this
 operation, which can be used to return the next set of items in the

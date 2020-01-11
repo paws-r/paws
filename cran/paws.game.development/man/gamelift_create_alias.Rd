@@ -4,23 +4,31 @@
 \alias{gamelift_create_alias}
 \title{Creates an alias for a fleet}
 \usage{
-gamelift_create_alias(Name, Description, RoutingStrategy)
+gamelift_create_alias(Name, Description, RoutingStrategy, Tags)
 }
 \arguments{
-\item{Name}{[required] Descriptive label that is associated with an alias. Alias names do not
+\item{Name}{[required] A descriptive label that is associated with an alias. Alias names do not
 need to be unique.}
 
-\item{Description}{Human-readable description of an alias.}
+\item{Description}{A human-readable description of the alias.}
 
-\item{RoutingStrategy}{[required] Object that specifies the fleet and routing type to use for the alias.}
+\item{RoutingStrategy}{[required] The routing configuration, including routing type and fleet target, for
+the alias.}
+
+\item{Tags}{A list of labels to assign to the new alias resource. Tags are
+developer-defined key-value pairs. Tagging AWS resources are useful for
+resource management, access management and cost allocation. For more
+information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}
+in the \emph{AWS General Reference}. Once the resource is created, you can
+use TagResource, UntagResource, and ListTagsForResource to add, remove,
+and view tags. The maximum tag limit may be lower than stated. See the
+AWS General Reference for actual tagging limits.}
 }
 \description{
 Creates an alias for a fleet. In most situations, you can use an alias
-ID in place of a fleet ID. By using a fleet alias instead of a specific
-fleet ID, you can switch gameplay and players to a new fleet without
-changing your game client or other game components. For example, for
-games in production, using an alias allows you to seamlessly redirect
-your player base to a new game server update.
+ID in place of a fleet ID. An alias provides a level of abstraction for
+a fleet that is useful when redirecting player traffic from one fleet to
+another, such as when updating your game build.
 }
 \details{
 Amazon GameLift supports two types of routing strategies for aliases:
@@ -33,9 +41,8 @@ to direct players to an upgrade site.
 To create a fleet alias, specify an alias name, routing strategy, and
 optional description. Each simple alias can point to only one fleet, but
 a fleet can have multiple aliases. If successful, a new alias record is
-returned, including an alias ID, which you can reference when creating a
-game session. You can reassign an alias to another fleet by calling
-\code{UpdateAlias}.
+returned, including an alias ID and an ARN. You can reassign an alias to
+another fleet by calling \code{UpdateAlias}.
 \itemize{
 \item CreateAlias
 \item ListAliases
@@ -53,6 +60,12 @@ game session. You can reassign an alias to another fleet by calling
     Type = "SIMPLE"|"TERMINAL",
     FleetId = "string",
     Message = "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   )
 )
 }

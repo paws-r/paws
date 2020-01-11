@@ -114,12 +114,13 @@ that the encryption key was transmitted without error.}
 
 \item{SSEKMSKeyId}{If \code{x-amz-server-side-encryption} is present and has the value of
 \code{aws:kms}, this header specifies the ID of the AWS Key Management
-Service (AWS KMS) customer master key (CMK) that was used for the
-object.
+Service (AWS KMS) symmetrical customer managed customer master key (CMK)
+that was used for the object.
 
 If the value of \code{x-amz-server-side-encryption} is \code{aws:kms}, this header
-specifies the ID of the AWS KMS CMK that will be used for the object. If
-you specify \code{x-amz-server-side-encryption:aws:kms}, but do not
+specifies the ID of the symmetric customer managed AWS KMS CMK that will
+be used for the object. If you specify
+\code{x-amz-server-side-encryption:aws:kms}, but do not
 provide\code{ x-amz-server-side-encryption-aws-kms-key-id}, Amazon S3 uses
 the AWS managed CMK in AWS to protect the data.}
 
@@ -213,9 +214,15 @@ encryption keys or provide your own encryption key.\preformatted{-   Use encrypt
     -   x-amz-server-side-encryption-context
 
     If you specify `x-amz-server-side-encryption:aws:kms`, but
-    don\\'t provide `x-amz-server-side- encryption-aws-kms-key-id`,
+    don\\'t provide `x-amz-server-side-encryption-aws-kms-key-id`,
     Amazon S3 uses the AWS managed CMK in AWS KMS to protect the
-    data.
+    data. If you want to use a customer managed AWS KMS CMK, you
+    must provide the `x-amz-server-side-encryption-aws-kms-key-id`
+    of the symmetric customer managed CMK. Amazon S3 only supports
+    symmetric CMKs and not asymmetric CMKs. For more information,
+    see [Using Symmetric and Asymmetric
+    Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
+    in the *AWS Key Management Service Developer Guide*.
 
     All GET and PUT requests for an object protected by AWS KMS fail
     if you don\\'t make them with SSL or by using SigV4.
@@ -237,8 +244,8 @@ encryption keys or provide your own encryption key.\preformatted{-   Use encrypt
 
     For more information about server-side encryption with CMKs
     stored in KMS (SSE-KMS), see [Protecting Data Using Server-Side
-    Encryption with CMKs stored in AWS
-    KMS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
+    Encryption with CMKs stored in
+    AWS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
 }
 
 Access-Control-List (ACL)-Specific Request Headers
@@ -337,8 +344,15 @@ encryption keys or provide your own encryption key.\preformatted{-   Use encrypt
     -   x-amz-server-side-encryption-context
 
     If you specify `x-amz-server-side-encryption:aws:kms`, but
-    don\\'t provide `x-amz-server-side- encryption-aws-kms-key-id`,
-    Amazon S3 uses the default AWS KMS CMK to protect the data.
+    don\\'t provide `x-amz-server-side-encryption-aws-kms-key-id`,
+    Amazon S3 uses the AWS managed CMK in AWS KMS to protect the
+    data. If you want to use a customer managed AWS KMS CMK, you
+    must provide the `x-amz-server-side-encryption-aws-kms-key-id`
+    of the symmetric customer managed CMK. Amazon S3 only supports
+    symmetric CMKs and not asymmetric CMKs. For more information,
+    see [Using Symmetric and Asymmetric
+    Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
+    in the *AWS Key Management Service Developer Guide*.
 
     All GET and PUT requests for an object protected by AWS KMS fail
     if you don\\'t make them with SSL or by using SigV4.

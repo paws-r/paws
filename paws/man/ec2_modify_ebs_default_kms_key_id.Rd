@@ -25,7 +25,9 @@ arn:aws:kms:\emph{us-east-1}:\emph{012345678910}:alias/\emph{ExampleAlias}.
 
 AWS authenticates the CMK asynchronously. Therefore, if you specify an
 ID, alias, or ARN that is not valid, the action can appear to complete,
-but eventually fails.}
+but eventually fails.
+
+Amazon EBS does not support asymmetric CMKs.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -38,9 +40,10 @@ default for your account in this Region.
 }
 \details{
 AWS creates a unique AWS managed CMK in each Region for use with
-encryption by default. If you change the default CMK to a customer
-managed CMK, it is used instead of the AWS managed CMK. To reset the
-default CMK to the AWS managed CMK for EBS, use ResetEbsDefaultKmsKeyId.
+encryption by default. If you change the default CMK to a symmetric
+customer managed CMK, it is used instead of the AWS managed CMK. To
+reset the default CMK to the AWS managed CMK for EBS, use
+ResetEbsDefaultKmsKeyId. Amazon EBS does not support asymmetric CMKs.
 
 If you delete or disable the customer managed CMK that you specified for
 use with encryption by default, your instances will fail to launch.

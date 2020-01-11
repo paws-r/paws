@@ -7,12 +7,13 @@
 gamelift_get_instance_access(FleetId, InstanceId)
 }
 \arguments{
-\item{FleetId}{[required] Unique identifier for a fleet that contains the instance you want access
-to. The fleet can be in any of the following statuses: \code{ACTIVATING},
-\code{ACTIVE}, or \code{ERROR}. Fleets with an \code{ERROR} status may be accessible
-for a short time before they are deleted.}
+\item{FleetId}{[required] A unique identifier for a fleet that contains the instance you want
+access to. You can use either the fleet ID or ARN value. The fleet can
+be in any of the following statuses: \code{ACTIVATING}, \code{ACTIVE}, or \code{ERROR}.
+Fleets with an \code{ERROR} status may be accessible for a short time before
+they are deleted.}
 
-\item{InstanceId}{[required] Unique identifier for an instance you want to get access to. You can
+\item{InstanceId}{[required] A unique identifier for an instance you want to get access to. You can
 access an instance in any status.}
 }
 \description{

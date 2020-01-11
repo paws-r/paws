@@ -2,24 +2,47 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_get_push_template}
 \alias{pinpoint_get_push_template}
-\title{Retrieves the content and settings for a message template that you can
-use in messages that are sent through a push notification channel}
+\title{Retrieves the content and settings of a message template for messages
+that are sent through a push notification channel}
 \usage{
-pinpoint_get_push_template(TemplateName)
+pinpoint_get_push_template(TemplateName, Version)
 }
 \arguments{
 \item{TemplateName}{[required] The name of the message template. A template name must start with an
 alphanumeric character and can contain a maximum of 128 characters. The
 characters can be alphanumeric characters, underscores (\\_), or hyphens
 (-). Template names are case sensitive.}
+
+\item{Version}{The unique identifier for the version of the message template to update,
+retrieve information about, or delete. To retrieve identifiers and other
+information for all the versions of a template, use the Template
+Versions resource.
+
+If specified, this value must match the identifier of an existing
+template version. If specified for an update operation, this value must
+match the identifier of the latest existing version of the template.
+This restriction helps ensure that race conditions don\'t occur.
+
+If you don\'t specify a value for this parameter, Amazon Pinpoint does
+the following:
+\itemize{
+\item For a get operation, retrieves information about the active version
+of the template.
+\item For an update operation, saves the updates to the latest existing
+version of the template, if the create-new-version parameter isn\'t
+used or is set to false.
+\item For a delete operation, deletes the template, including all versions
+of the template.
+}}
 }
 \description{
-Retrieves the content and settings for a message template that you can
-use in messages that are sent through a push notification channel.
+Retrieves the content and settings of a message template for messages
+that are sent through a push notification channel.
 }
 \section{Request syntax}{
 \preformatted{svc$get_push_template(
-  TemplateName = "string"
+  TemplateName = "string",
+  Version = "string"
 )
 }
 }

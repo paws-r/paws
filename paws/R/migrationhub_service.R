@@ -52,6 +52,7 @@ NULL
 #'  \link[=migrationhub_disassociate_created_artifact]{disassociate_created_artifact} \tab Disassociates a created artifact of an AWS resource with a migration task performed by a migration tool that was previously associated \cr
 #'  \link[=migrationhub_disassociate_discovered_resource]{disassociate_discovered_resource} \tab Disassociate an Application Discovery Service discovered resource from a migration task \cr
 #'  \link[=migrationhub_import_migration_task]{import_migration_task} \tab Registers a new migration task which represents a server, database, etc \cr
+#'  \link[=migrationhub_list_application_states]{list_application_states} \tab Lists all the migration statuses for your applications \cr
 #'  \link[=migrationhub_list_created_artifacts]{list_created_artifacts} \tab Lists the created artifacts attached to a given migration task in an update stream \cr
 #'  \link[=migrationhub_list_discovered_resources]{list_discovered_resources} \tab Lists discovered resources associated with the given MigrationTask \cr
 #'  \link[=migrationhub_list_migration_tasks]{list_migration_tasks} \tab Lists all, or filtered by resource name, migration tasks associated with the user account making this call \cr

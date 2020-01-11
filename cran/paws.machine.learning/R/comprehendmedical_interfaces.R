@@ -63,6 +63,30 @@ NULL
   return(populate(args, shape))
 }
 
+.comprehendmedical$infer_icd10cm_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Text = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehendmedical$infer_icd10cm_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Entities = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "integer")), Text = structure(logical(0), tags = list(type = "string")), Category = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float")), BeginOffset = structure(logical(0), tags = list(type = "integer")), EndOffset = structure(logical(0), tags = list(type = "integer")), Attributes = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float")), RelationshipScore = structure(logical(0), tags = list(type = "float")), Id = structure(logical(0), tags = list(type = "integer")), BeginOffset = structure(logical(0), tags = list(type = "integer")), EndOffset = structure(logical(0), tags = list(type = "integer")), Text = structure(logical(0), tags = list(type = "string")), Traits = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Traits = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list")), ICD10CMConcepts = structure(list(structure(list(Description = structure(logical(0), tags = list(type = "string")), Code = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), PaginationToken = structure(logical(0), tags = list(type = "string")), ModelVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehendmedical$infer_rx_norm_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Text = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehendmedical$infer_rx_norm_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Entities = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "integer")), Text = structure(logical(0), tags = list(type = "string")), Category = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float")), BeginOffset = structure(logical(0), tags = list(type = "integer")), EndOffset = structure(logical(0), tags = list(type = "integer")), Attributes = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float")), RelationshipScore = structure(logical(0), tags = list(type = "float")), Id = structure(logical(0), tags = list(type = "integer")), BeginOffset = structure(logical(0), tags = list(type = "integer")), EndOffset = structure(logical(0), tags = list(type = "integer")), Text = structure(logical(0), tags = list(type = "string")), Traits = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Traits = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list")), RxNormConcepts = structure(list(structure(list(Description = structure(logical(0), tags = list(type = "string")), Code = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), PaginationToken = structure(logical(0), tags = list(type = "string")), ModelVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .comprehendmedical$list_entities_detection_v2_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Filter = structure(list(JobName = structure(logical(0), tags = list(type = "string")), JobStatus = structure(logical(0), tags = list(type = "string")), SubmitTimeBefore = structure(logical(0), tags = list(type = "timestamp")), SubmitTimeAfter = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))

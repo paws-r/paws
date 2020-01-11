@@ -99,7 +99,7 @@ NULL
 #'  \link[=gamelift_delete_vpc_peering_connection]{delete_vpc_peering_connection} \tab Removes a VPC peering connection \cr
 #'  \link[=gamelift_describe_alias]{describe_alias} \tab Retrieves properties for an alias \cr
 #'  \link[=gamelift_describe_build]{describe_build} \tab Retrieves properties for a build \cr
-#'  \link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits} \tab Retrieves the following information for the specified EC2 instance type: - maximum number of instances allowed per AWS account (service limit) - current usage level for the AWS account Service limits vary depending on region\cr
+#'  \link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits} \tab Retrieves the following information for the specified EC2 instance type: - maximum number of instances allowed per AWS account (service limit) - current usage level for the AWS account Service limits vary depending on Region\cr
 #'  \link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes} \tab Retrieves fleet properties, including metadata, status, and configuration, for one or more fleets \cr
 #'  \link[=gamelift_describe_fleet_capacity]{describe_fleet_capacity} \tab Retrieves the current status of fleet capacity for one or more fleets \cr
 #'  \link[=gamelift_describe_fleet_events]{describe_fleet_events} \tab Retrieves entries from the specified fleet's event log \cr
@@ -114,7 +114,7 @@ NULL
 #'  \link[=gamelift_describe_matchmaking_configurations]{describe_matchmaking_configurations} \tab Retrieves the details of FlexMatch matchmaking configurations \cr
 #'  \link[=gamelift_describe_matchmaking_rule_sets]{describe_matchmaking_rule_sets} \tab Retrieves the details for FlexMatch matchmaking rule sets \cr
 #'  \link[=gamelift_describe_player_sessions]{describe_player_sessions} \tab Retrieves properties for one or more player sessions \cr
-#'  \link[=gamelift_describe_runtime_configuration]{describe_runtime_configuration} \tab Retrieves the current run-time configuration for the specified fleet \cr
+#'  \link[=gamelift_describe_runtime_configuration]{describe_runtime_configuration} \tab Retrieves the current runtime configuration for the specified fleet \cr
 #'  \link[=gamelift_describe_scaling_policies]{describe_scaling_policies} \tab Retrieves all scaling policies applied to a fleet \cr
 #'  \link[=gamelift_describe_script]{describe_script} \tab Retrieves properties for a Realtime script \cr
 #'  \link[=gamelift_describe_vpc_peering_authorizations]{describe_vpc_peering_authorizations} \tab Retrieves valid VPC peering authorizations that are pending for the AWS account \cr
@@ -125,9 +125,10 @@ NULL
 #'  \link[=gamelift_list_builds]{list_builds} \tab Retrieves build records for all builds associated with the AWS account in use \cr
 #'  \link[=gamelift_list_fleets]{list_fleets} \tab Retrieves a collection of fleet records for this AWS account \cr
 #'  \link[=gamelift_list_scripts]{list_scripts} \tab Retrieves script records for all Realtime scripts that are associated with the AWS account in use \cr
+#'  \link[=gamelift_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves all tags that are assigned to a GameLift resource \cr
 #'  \link[=gamelift_put_scaling_policy]{put_scaling_policy} \tab Creates or updates a scaling policy for a fleet \cr
 #'  \link[=gamelift_request_upload_credentials]{request_upload_credentials} \tab Retrieves a fresh set of credentials for use when uploading a new set of game build files to Amazon GameLift's Amazon S3 \cr
-#'  \link[=gamelift_resolve_alias]{resolve_alias} \tab Retrieves the fleet ID that a specified alias is currently pointing to \cr
+#'  \link[=gamelift_resolve_alias]{resolve_alias} \tab Retrieves the fleet ID that an alias is currently pointing to \cr
 #'  \link[=gamelift_search_game_sessions]{search_game_sessions} \tab Retrieves all active game sessions that match a set of search criteria and sorts them in a specified order \cr
 #'  \link[=gamelift_start_fleet_actions]{start_fleet_actions} \tab Resumes activity on a fleet that was suspended with StopFleetActions \cr
 #'  \link[=gamelift_start_game_session_placement]{start_game_session_placement} \tab Places a request for a new game session in a queue (see CreateGameSessionQueue) \cr
@@ -136,6 +137,8 @@ NULL
 #'  \link[=gamelift_stop_fleet_actions]{stop_fleet_actions} \tab Suspends activity on a fleet \cr
 #'  \link[=gamelift_stop_game_session_placement]{stop_game_session_placement} \tab Cancels a game session placement that is in PENDING status \cr
 #'  \link[=gamelift_stop_matchmaking]{stop_matchmaking} \tab Cancels a matchmaking ticket or match backfill ticket that is currently being processed \cr
+#'  \link[=gamelift_tag_resource]{tag_resource} \tab Assigns a tag to a GameLift resource \cr
+#'  \link[=gamelift_untag_resource]{untag_resource} \tab Removes a tag that is assigned to a GameLift resource \cr
 #'  \link[=gamelift_update_alias]{update_alias} \tab Updates properties for an alias \cr
 #'  \link[=gamelift_update_build]{update_build} \tab Updates metadata in a build record, including the build name and version \cr
 #'  \link[=gamelift_update_fleet_attributes]{update_fleet_attributes} \tab Updates fleet properties, including name and description, for a fleet \cr
@@ -144,7 +147,7 @@ NULL
 #'  \link[=gamelift_update_game_session]{update_game_session} \tab Updates game session properties \cr
 #'  \link[=gamelift_update_game_session_queue]{update_game_session_queue} \tab Updates settings for a game session queue, which determines how new game session requests in the queue are processed \cr
 #'  \link[=gamelift_update_matchmaking_configuration]{update_matchmaking_configuration} \tab Updates settings for a FlexMatch matchmaking configuration \cr
-#'  \link[=gamelift_update_runtime_configuration]{update_runtime_configuration} \tab Updates the current run-time configuration for the specified fleet, which tells Amazon GameLift how to launch server processes on instances in the fleet \cr
+#'  \link[=gamelift_update_runtime_configuration]{update_runtime_configuration} \tab Updates the current runtime configuration for the specified fleet, which tells Amazon GameLift how to launch server processes on instances in the fleet \cr
 #'  \link[=gamelift_update_script]{update_script} \tab Updates Realtime script metadata and content \cr
 #'  \link[=gamelift_validate_matchmaking_rule_set]{validate_matchmaking_rule_set} \tab Validates the syntax of a matchmaking rule or rule set 
 #' }

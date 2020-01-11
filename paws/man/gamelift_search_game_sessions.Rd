@@ -9,12 +9,13 @@ gamelift_search_game_sessions(FleetId, AliasId, FilterExpression,
   SortExpression, Limit, NextToken)
 }
 \arguments{
-\item{FleetId}{Unique identifier for a fleet to search for active game sessions. Each
-request must reference either a fleet ID or alias ID, but not both.}
+\item{FleetId}{A unique identifier for a fleet to search for active game sessions. You
+can use either the fleet ID or ARN value. Each request must reference
+either a fleet ID or alias ID, but not both.}
 
-\item{AliasId}{Unique identifier for an alias associated with the fleet to search for
-active game sessions. Each request must reference either a fleet ID or
-alias ID, but not both.}
+\item{AliasId}{A unique identifier for an alias associated with the fleet to search for
+active game sessions. You can use either the alias ID or ARN value. Each
+request must reference either a fleet ID or alias ID, but not both.}
 
 \item{FilterExpression}{String containing the search criteria for the session search. If no
 filter expression is included, the request returns results for all game
@@ -73,10 +74,10 @@ For example, this sort expression returns the oldest active sessions
 first: \code{"SortExpression": "creationTimeMillis ASC"}. Results with a null
 value for the sort operand are returned at the end of the list.}
 
-\item{Limit}{Maximum number of results to return. Use this parameter with \code{NextToken}
-to get results as a set of sequential pages. The maximum number of
-results returned is 20, even if this value is not set or is set higher
-than 20.}
+\item{Limit}{The maximum number of results to return. Use this parameter with
+\code{NextToken} to get results as a set of sequential pages. The maximum
+number of results returned is 20, even if this value is not set or is
+set higher than 20.}
 
 \item{NextToken}{Token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this action. To
@@ -89,7 +90,7 @@ following game session attributes:
 }
 \details{
 \itemize{
-\item \strong{gameSessionId} \\-- Unique identifier for the game session. You
+\item \strong{gameSessionId} \\-- A unique identifier for the game session. You
 can use either a \code{GameSessionId} or \code{GameSessionArn} value.
 \item \strong{gameSessionName} \\-- Name assigned to a game session. This value
 is set when requesting a new game session with CreateGameSession or

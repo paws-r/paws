@@ -2,7 +2,7 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_update_journey_state}
 \alias{pinpoint_update_journey_state}
-\title{Cancels an active journey}
+\title{Cancels (stops) an active journey}
 \usage{
 pinpoint_update_journey_state(ApplicationId, JourneyId,
   JourneyStateRequest)
@@ -16,7 +16,7 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{JourneyStateRequest}{[required]}
 }
 \description{
-Cancels an active journey.
+Cancels (stops) an active journey.
 }
 \section{Request syntax}{
 \preformatted{svc$update_journey_state(

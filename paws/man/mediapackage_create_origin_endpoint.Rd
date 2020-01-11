@@ -4,11 +4,14 @@
 \alias{mediapackage_create_origin_endpoint}
 \title{Creates a new OriginEndpoint record}
 \usage{
-mediapackage_create_origin_endpoint(ChannelId, CmafPackage, DashPackage,
-  Description, HlsPackage, Id, ManifestName, MssPackage, Origination,
-  StartoverWindowSeconds, Tags, TimeDelaySeconds, Whitelist)
+mediapackage_create_origin_endpoint(Authorization, ChannelId,
+  CmafPackage, DashPackage, Description, HlsPackage, Id, ManifestName,
+  MssPackage, Origination, StartoverWindowSeconds, Tags, TimeDelaySeconds,
+  Whitelist)
 }
 \arguments{
+\item{Authorization}{}
+
 \item{ChannelId}{[required] The ID of the Channel that the OriginEndpoint will be associated with.
 This cannot be changed after the OriginEndpoint is created.}
 
@@ -46,6 +49,10 @@ Creates a new OriginEndpoint record.
 }
 \section{Request syntax}{
 \preformatted{svc$create_origin_endpoint(
+  Authorization = list(
+    CdnIdentifierSecret = "string",
+    SecretsRoleArn = "string"
+  ),
   ChannelId = "string",
   CmafPackage = list(
     Encryption = list(

@@ -3,12 +3,12 @@
 #' @include costexplorer_service.R
 NULL
 
-#' _COST CATEGORY IS IN PREVIEW RELEASE FOR AWS BILLING AND COST MANAGEMENT
-#' AND IS SUBJECT TO CHANGE
+#' _COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND
+#' IS SUBJECT TO CHANGE
 #'
-#' ***Cost Category is in preview release for AWS Billing and Cost
-#' Management and is subject to change. Your use of Cost Categories is
-#' subject to the Beta Service Participation terms of the [AWS Service
+#' ***Cost Category is in public beta for AWS Billing and Cost Management
+#' and is subject to change. Your use of Cost Categories is subject to the
+#' Beta Service Participation terms of the [AWS Service
 #' Terms](https://aws.amazon.com/service-terms/) (Section 1.10).***
 #' 
 #' Creates a new Cost Category with the requested name and rules.
@@ -18,7 +18,14 @@ NULL
 #'
 #' @param Name &#91;required&#93; 
 #' @param RuleVersion &#91;required&#93; 
-#' @param Rules &#91;required&#93; Rules are processed in order. If there are multiple rules that match the
+#' @param Rules &#91;required&#93; `CreateCostCategoryDefinition` supports dimensions, Tags, and nested
+#' expressions. Currently the only dimensions supported is
+#' `LINKED_ACCOUNT`.
+#' 
+#' Root level `OR` is not supported. We recommend you create a separate
+#' rule instead.
+#' 
+#' Rules are processed in order. If there are multiple rules that match the
 #' line item, then the first rule to match is used to determine that Cost
 #' Category value.
 #'
@@ -82,12 +89,12 @@ costexplorer_create_cost_category_definition <- function(Name, RuleVersion, Rule
 }
 .costexplorer$operations$create_cost_category_definition <- costexplorer_create_cost_category_definition
 
-#' _COST CATEGORY IS IN PREVIEW RELEASE FOR AWS BILLING AND COST MANAGEMENT
-#' AND IS SUBJECT TO CHANGE
+#' _COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND
+#' IS SUBJECT TO CHANGE
 #'
-#' ***Cost Category is in preview release for AWS Billing and Cost
-#' Management and is subject to change. Your use of Cost Categories is
-#' subject to the Beta Service Participation terms of the [AWS Service
+#' ***Cost Category is in public beta for AWS Billing and Cost Management
+#' and is subject to change. Your use of Cost Categories is subject to the
+#' Beta Service Participation terms of the [AWS Service
 #' Terms](https://aws.amazon.com/service-terms/) (Section 1.10).***
 #' 
 #' Deletes a Cost Category. Expenses from this month going forward will no
@@ -125,12 +132,12 @@ costexplorer_delete_cost_category_definition <- function(CostCategoryArn) {
 }
 .costexplorer$operations$delete_cost_category_definition <- costexplorer_delete_cost_category_definition
 
-#' _COST CATEGORY IS IN PREVIEW RELEASE FOR AWS BILLING AND COST MANAGEMENT
-#' AND IS SUBJECT TO CHANGE
+#' _COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND
+#' IS SUBJECT TO CHANGE
 #'
-#' ***Cost Category is in preview release for AWS Billing and Cost
-#' Management and is subject to change. Your use of Cost Categories is
-#' subject to the Beta Service Participation terms of the [AWS Service
+#' ***Cost Category is in public beta for AWS Billing and Cost Management
+#' and is subject to change. Your use of Cost Categories is subject to the
+#' Beta Service Participation terms of the [AWS Service
 #' Terms](https://aws.amazon.com/service-terms/) (Section 1.10).***
 #' 
 #' Returns the name, ARN, rules, definition, and effective dates of a Cost
@@ -1010,8 +1017,6 @@ costexplorer_get_reservation_purchase_recommendation <- function(AccountId = NUL
 #' 
 #' -   CACHE\\_ENGINE
 #' 
-#' -   DATABASE\\_ENGINE
-#' 
 #' -   DEPLOYMENT\\_OPTION
 #' 
 #' -   INSTANCE\\_TYPE
@@ -1721,12 +1726,12 @@ costexplorer_get_usage_forecast <- function(TimePeriod, Metric, Granularity, Fil
 }
 .costexplorer$operations$get_usage_forecast <- costexplorer_get_usage_forecast
 
-#' _COST CATEGORY IS IN PREVIEW RELEASE FOR AWS BILLING AND COST MANAGEMENT
-#' AND IS SUBJECT TO CHANGE
+#' _COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND
+#' IS SUBJECT TO CHANGE
 #'
-#' ***Cost Category is in preview release for AWS Billing and Cost
-#' Management and is subject to change. Your use of Cost Categories is
-#' subject to the Beta Service Participation terms of the [AWS Service
+#' ***Cost Category is in public beta for AWS Billing and Cost Management
+#' and is subject to change. Your use of Cost Categories is subject to the
+#' Beta Service Participation terms of the [AWS Service
 #' Terms](https://aws.amazon.com/service-terms/) (Section 1.10).***
 #' 
 #' Returns the name, ARN and effective dates of all Cost Categories defined
@@ -1775,12 +1780,12 @@ costexplorer_list_cost_category_definitions <- function(EffectiveOn = NULL, Next
 }
 .costexplorer$operations$list_cost_category_definitions <- costexplorer_list_cost_category_definitions
 
-#' _COST CATEGORY IS IN PREVIEW RELEASE FOR AWS BILLING AND COST MANAGEMENT
-#' AND IS SUBJECT TO CHANGE
+#' _COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND
+#' IS SUBJECT TO CHANGE
 #'
-#' ***Cost Category is in preview release for AWS Billing and Cost
-#' Management and is subject to change. Your use of Cost Categories is
-#' subject to the Beta Service Participation terms of the [AWS Service
+#' ***Cost Category is in public beta for AWS Billing and Cost Management
+#' and is subject to change. Your use of Cost Categories is subject to the
+#' Beta Service Participation terms of the [AWS Service
 #' Terms](https://aws.amazon.com/service-terms/) (Section 1.10).***
 #' 
 #' Updates an existing Cost Category. Changes made to the Cost Category
@@ -1793,7 +1798,14 @@ costexplorer_list_cost_category_definitions <- function(EffectiveOn = NULL, Next
 #'
 #' @param CostCategoryArn &#91;required&#93; The unique identifier for your Cost Category.
 #' @param RuleVersion &#91;required&#93; 
-#' @param Rules &#91;required&#93; Rules are processed in order. If there are multiple rules that match the
+#' @param Rules &#91;required&#93; `UpdateCostCategoryDefinition` supports dimensions, Tags, and nested
+#' expressions. Currently the only dimensions supported is
+#' `LINKED_ACCOUNT`.
+#' 
+#' Root level `OR` is not supported. We recommend you create a separate
+#' rule instead.
+#' 
+#' Rules are processed in order. If there are multiple rules that match the
 #' line item, then the first rule to match is used to determine that Cost
 #' Category value.
 #'

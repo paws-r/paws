@@ -10,8 +10,8 @@ devicefarm_list_network_profiles(arn, type, nextToken)
 \item{arn}{[required] The Amazon Resource Name (ARN) of the project for which you want to list
 network profiles.}
 
-\item{type}{The type of network profile you wish to return information about. Valid
-values are listed below.}
+\item{type}{The type of network profile to return information about. Valid values
+are listed here.}
 
 \item{nextToken}{An identifier that was returned from the previous call to this
 operation, which can be used to return the next set of items in the

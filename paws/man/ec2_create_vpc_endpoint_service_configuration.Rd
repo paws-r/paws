@@ -6,7 +6,8 @@
 (AWS accounts, IAM users, and IAM roles) can connect}
 \usage{
 ec2_create_vpc_endpoint_service_configuration(DryRun,
-  AcceptanceRequired, NetworkLoadBalancerArns, ClientToken)
+  AcceptanceRequired, PrivateDnsName, NetworkLoadBalancerArns,
+  ClientToken)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -14,15 +15,17 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{AcceptanceRequired}{Indicate whether requests from service consumers to create an endpoint
+\item{AcceptanceRequired}{Indicates whether requests from service consumers to create an endpoint
 to your service must be accepted. To accept a request, use
 AcceptVpcEndpointConnections.}
+
+\item{PrivateDnsName}{The private DNS name to assign to the VPC endpoint service.}
 
 \item{NetworkLoadBalancerArns}{[required] The Amazon Resource Names (ARNs) of one or more Network Load Balancers
 for your service.}
 
-\item{ClientToken}{Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
+\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 }
 \description{
 Creates a VPC endpoint service configuration to which service consumers
@@ -33,11 +36,16 @@ can create an interface VPC endpoint to connect to your service.
 To create an endpoint service configuration, you must first create a
 Network Load Balancer for your service. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html}{VPC Endpoint Services}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
+
+If you set the private DNS name, you must prove that you own the private
+DNS domain name. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-services-dns-validation.html}{VPC Endpoint Service Private DNS Name Verification}
+in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_vpc_endpoint_service_configuration(
   DryRun = TRUE|FALSE,
   AcceptanceRequired = TRUE|FALSE,
+  PrivateDnsName = "string",
   NetworkLoadBalancerArns = list(
     "string"
   ),

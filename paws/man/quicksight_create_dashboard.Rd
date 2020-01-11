@@ -9,22 +9,23 @@ quicksight_create_dashboard(AwsAccountId, DashboardId, Name, Parameters,
   DashboardPublishOptions)
 }
 \arguments{
-\item{AwsAccountId}{[required] AWS account ID where you want to create the dashboard.}
+\item{AwsAccountId}{[required] The ID of the AWS account where you want to create the dashboard.}
 
-\item{DashboardId}{[required] The ID for the dashboard, also added to IAM policy.}
+\item{DashboardId}{[required] The ID for the dashboard, also added to the IAM policy.}
 
 \item{Name}{[required] The display name of the dashboard.}
 
 \item{Parameters}{A structure that contains the parameters of the dashboard. These are
 parameter overrides for a dashboard. A dashboard can have any type of
-parameters and some parameters might accept multiple values. You could
-use the following structure to override two string parameters that
-accept multiple values:}
+parameters, and some parameters might accept multiple values. You can
+use the dashboard permissions structure described following to override
+two string parameters that accept multiple values.}
 
 \item{Permissions}{A structure that contains the permissions of the dashboard. You can use
-this for granting permissions with principal and action information.}
+this structure for granting permissions with principal and action
+information.}
 
-\item{SourceEntity}{[required] Source entity from which the dashboard is created. The souce entity
+\item{SourceEntity}{[required] The source entity from which the dashboard is created. The source entity
 accepts the Amazon Resource Name (ARN) of the source template or
 analysis and also references the replacement datasets for the
 placeholders set when creating the template. The replacement datasets
@@ -39,32 +40,35 @@ assigned to the dashboard.}
 
 \item{VersionDescription}{A description for the first version of the dashboard being created.}
 
-\item{DashboardPublishOptions}{Publishing options when creating dashboard.
+\item{DashboardPublishOptions}{Options for publishing the dashboard when you create it:
 \itemize{
-\item AvailabilityStatus for AdHocFilteringOption - This can be either
-\code{ENABLED} or \code{DISABLED}. When This is set to set to \code{DISABLED},
+\item \code{AvailabilityStatus} for \code{AdHocFilteringOption} - This status can be
+either \code{ENABLED} or \code{DISABLED}. When this is set to \code{DISABLED},
 QuickSight disables the left filter pane on the published dashboard,
-which can be used for AdHoc filtering. Enabled by default.
-\item AvailabilityStatus for ExportToCSVOption - This can be either
-\code{ENABLED} or \code{DISABLED}. The visual option to export data to CSV is
-disabled when this is set to \code{DISABLED}. Enabled by default.
-\item VisibilityState for SheetControlsOption - This can be either
-\code{COLLAPSED} or \code{EXPANDED}. The sheet controls pane is collapsed by
-default when set to true. Collapsed by default.
+which can be used for ad hoc (one-time) filtering. This option is
+\code{ENABLED} by default.
+\item \code{AvailabilityStatus} for \code{ExportToCSVOption} - This status can be
+either \code{ENABLED} or \code{DISABLED}. The visual option to export data to
+.csv format isn\'t enabled when this is set to \code{DISABLED}. This
+option is \code{ENABLED} by default.
+\item \code{VisibilityState} for \code{SheetControlsOption} - This visibility state
+can be either \code{COLLAPSED} or \code{EXPANDED}. The sheet controls pane is
+collapsed by default when set to true. This option is \code{COLLAPSED} by
+default.
 }}
 }
 \description{
 Creates a dashboard from a template. To first create a template, see the
-CreateTemplate API.
+CreateTemplate API operation.
 }
 \details{
-A dashboard is an entity in QuickSight which identifies Quicksight
-reports, created from analyses. QuickSight dashboards are sharable. With
-the right permissions, you can create scheduled email reports from them.
-The \code{CreateDashboard}, \code{DescribeDashboard} and \code{ListDashboardsByUser}
-APIs act on the dashboard entity. If you have the correct permissions,
-you can create a dashboard from a template that exists in a different
-AWS account.
+A dashboard is an entity in QuickSight that identifies QuickSight
+reports, created from analyses. You can share QuickSight dashboards.
+With the right permissions, you can create scheduled email reports from
+them. The \code{CreateDashboard}, \code{DescribeDashboard}, and
+\code{ListDashboardsByUser} API operations act on the dashboard entity. If
+you have the correct permissions, you can create a dashboard from a
+template that exists in a different AWS account.
 }
 \section{Request syntax}{
 \preformatted{svc$create_dashboard(

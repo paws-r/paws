@@ -41,7 +41,7 @@ complete, the original access permissions for the cluster are restored.
 You can use DescribeResize to track the progress of the resize request.
 
 Valid Values: \code{ds2.xlarge} \\| \code{ds2.8xlarge} \\| \code{dc1.large} \\|
-\code{dc1.8xlarge} \\| \code{dc2.large} \\| \code{dc2.8xlarge}}
+\code{dc1.8xlarge} \\| \code{dc2.large} \\| \code{dc2.8xlarge} \\| \code{ra3.16xlarge}}
 
 \item{NumberOfNodes}{The new number of nodes of the cluster. If you specify a new number of
 nodes, you must also specify the node type parameter.

@@ -288,7 +288,7 @@ comprehend_classify_document <- function(Text, EndpointArn) {
 #' @usage
 #' comprehend_create_document_classifier(DocumentClassifierName,
 #'   DataAccessRoleArn, Tags, InputDataConfig, OutputDataConfig,
-#'   ClientRequestToken, LanguageCode, VolumeKmsKeyId, VpcConfig)
+#'   ClientRequestToken, LanguageCode, VolumeKmsKeyId, VpcConfig, Mode)
 #'
 #' @param DocumentClassifierName &#91;required&#93; The name of the document classifier.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM)
@@ -319,6 +319,12 @@ comprehend_classify_document <- function(Text, EndpointArn) {
 #' (VPC) containing the resources you are using for your custom classifier.
 #' For more information, see [Amazon
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
+#' @param Mode Indicates the mode in which the classifier will be trained. The
+#' classifier can be trained in multi-class mode, which identifies one and
+#' only one class for each document, or multi-label mode, which identifies
+#' one or more labels for each document. In multi-label mode, multiple
+#' labels for an individual document are separated by a delimiter. The
+#' default delimiter between labels is a pipe (\\|).
 #'
 #' @section Request syntax:
 #' ```
@@ -332,7 +338,8 @@ comprehend_classify_document <- function(Text, EndpointArn) {
 #'     )
 #'   ),
 #'   InputDataConfig = list(
-#'     S3Uri = "string"
+#'     S3Uri = "string",
+#'     LabelDelimiter = "string"
 #'   ),
 #'   OutputDataConfig = list(
 #'     S3Uri = "string",
@@ -348,21 +355,22 @@ comprehend_classify_document <- function(Text, EndpointArn) {
 #'     Subnets = list(
 #'       "string"
 #'     )
-#'   )
+#'   ),
+#'   Mode = "MULTI_CLASS"|"MULTI_LABEL"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_create_document_classifier
-comprehend_create_document_classifier <- function(DocumentClassifierName, DataAccessRoleArn, Tags = NULL, InputDataConfig, OutputDataConfig = NULL, ClientRequestToken = NULL, LanguageCode, VolumeKmsKeyId = NULL, VpcConfig = NULL) {
+comprehend_create_document_classifier <- function(DocumentClassifierName, DataAccessRoleArn, Tags = NULL, InputDataConfig, OutputDataConfig = NULL, ClientRequestToken = NULL, LanguageCode, VolumeKmsKeyId = NULL, VpcConfig = NULL, Mode = NULL) {
   op <- new_operation(
     name = "CreateDocumentClassifier",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$create_document_classifier_input(DocumentClassifierName = DocumentClassifierName, DataAccessRoleArn = DataAccessRoleArn, Tags = Tags, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, ClientRequestToken = ClientRequestToken, LanguageCode = LanguageCode, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig)
+  input <- .comprehend$create_document_classifier_input(DocumentClassifierName = DocumentClassifierName, DataAccessRoleArn = DataAccessRoleArn, Tags = Tags, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, ClientRequestToken = ClientRequestToken, LanguageCode = LanguageCode, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Mode = Mode)
   output <- .comprehend$create_document_classifier_output()
   config <- get_config()
   svc <- .comprehend$service(config)

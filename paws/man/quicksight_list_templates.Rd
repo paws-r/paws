@@ -2,12 +2,13 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_list_templates}
 \alias{quicksight_list_templates}
-\title{Lists all the templates in the QuickSight account}
+\title{Lists all the templates in the current Amazon QuickSight account}
 \usage{
 quicksight_list_templates(AwsAccountId, NextToken, MaxResults)
 }
 \arguments{
-\item{AwsAccountId}{[required] AWS account ID that contains the templates you are listing.}
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the templates that you\'re
+listing.}
 
 \item{NextToken}{The token for the next set of results, or null if there are no more
 results.}
@@ -15,7 +16,7 @@ results.}
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
 \description{
-Lists all the templates in the QuickSight account.
+Lists all the templates in the current Amazon QuickSight account.
 }
 \section{Request syntax}{
 \preformatted{svc$list_templates(

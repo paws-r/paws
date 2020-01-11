@@ -2704,8 +2704,8 @@ ecs_put_attributes <- function(cluster = NULL, attributes) {
 #' @param cluster &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the cluster to
 #' modify the capacity provider settings for. If you do not specify a
 #' cluster, the default cluster is assumed.
-#' @param capacityProviders &#91;required&#93; The short name or full Amazon Resource Name (ARN) of one or more
-#' capacity providers to associate with the cluster.
+#' @param capacityProviders &#91;required&#93; The name of one or more capacity providers to associate with the
+#' cluster.
 #' 
 #' If specifying a capacity provider that uses an Auto Scaling group, the
 #' capacity provider must already be created. New capacity providers can be

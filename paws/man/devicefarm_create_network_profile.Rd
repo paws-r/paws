@@ -13,12 +13,11 @@ devicefarm_create_network_profile(projectArn, name, description, type,
 \item{projectArn}{[required] The Amazon Resource Name (ARN) of the project for which you want to
 create a network profile.}
 
-\item{name}{[required] The name you wish to specify for the new network profile.}
+\item{name}{[required] The name for the new network profile.}
 
 \item{description}{The description of the network profile.}
 
-\item{type}{The type of network profile you wish to create. Valid values are listed
-below.}
+\item{type}{The type of network profile to create. Valid values are listed here.}
 
 \item{uplinkBandwidthBits}{The data throughput rate in bits per second, as an integer from 0 to
 104857600.}

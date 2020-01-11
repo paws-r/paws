@@ -7,7 +7,7 @@
 quicksight_describe_data_set_permissions(AwsAccountId, DataSetId)
 }
 \arguments{
-\item{AwsAccountId}{[required] The AWS Account ID.}
+\item{AwsAccountId}{[required] The AWS account ID.}
 
 \item{DataSetId}{[required] The ID for the dataset that you want to create. This ID is unique per
 AWS Region for each AWS account.}

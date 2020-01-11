@@ -8,7 +8,8 @@ game build files to Amazon GameLift's Amazon S3}
 gamelift_request_upload_credentials(BuildId)
 }
 \arguments{
-\item{BuildId}{[required] Unique identifier for a build to get credentials for.}
+\item{BuildId}{[required] A unique identifier for a build to get credentials for. You can use
+either the build ID or ARN value.}
 }
 \description{
 Retrieves a fresh set of credentials for use when uploading a new set of

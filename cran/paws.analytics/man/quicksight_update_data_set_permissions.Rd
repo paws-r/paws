@@ -8,10 +8,10 @@ quicksight_update_data_set_permissions(AwsAccountId, DataSetId,
   GrantPermissions, RevokePermissions)
 }
 \arguments{
-\item{AwsAccountId}{[required] The AWS Account ID.}
+\item{AwsAccountId}{[required] The AWS account ID.}
 
-\item{DataSetId}{[required] The ID for the dataset that you want to create. This ID is unique per
-AWS Region for each AWS account.}
+\item{DataSetId}{[required] The ID for the dataset whose permissions you want to update. This ID is
+unique per AWS Region for each AWS account.}
 
 \item{GrantPermissions}{The resource permissions that you want to grant to the dataset.}
 

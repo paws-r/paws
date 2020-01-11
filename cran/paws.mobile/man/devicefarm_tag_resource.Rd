@@ -8,21 +8,21 @@ resourceArn}
 devicefarm_tag_resource(ResourceARN, Tags)
 }
 \arguments{
-\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the resource(s) to which to add tags.
-You can associate tags with the following Device Farm resources:
-\code{PROJECT}, \code{RUN}, \code{NETWORK_PROFILE}, \code{INSTANCE_PROFILE},
+\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the resource or resources to which to
+add tags. You can associate tags with the following Device Farm
+resources: \code{PROJECT}, \code{RUN}, \code{NETWORK_PROFILE}, \code{INSTANCE_PROFILE},
 \code{DEVICE_INSTANCE}, \code{SESSION}, \code{DEVICE_POOL}, \code{DEVICE}, and
 \code{VPCE_CONFIGURATION}.}
 
 \item{Tags}{[required] The tags to add to the resource. A tag is an array of key-value pairs.
-Tag keys can have a maximum character length of 128 characters, and tag
+Tag keys can have a maximum character length of 128 characters. Tag
 values can have a maximum length of 256 characters.}
 }
 \description{
 Associates the specified tags to a resource with the specified
 \code{resourceArn}. If existing tags on a resource are not specified in the
 request parameters, they are not changed. When a resource is deleted,
-the tags associated with that resource are deleted as well.
+the tags associated with that resource are also deleted.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

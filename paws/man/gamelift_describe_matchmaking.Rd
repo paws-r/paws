@@ -7,8 +7,8 @@
 gamelift_describe_matchmaking(TicketIds)
 }
 \arguments{
-\item{TicketIds}{[required] Unique identifier for a matchmaking ticket. You can include up to 10 ID
-values.}
+\item{TicketIds}{[required] A unique identifier for a matchmaking ticket. You can include up to 10
+ID values.}
 }
 \description{
 Retrieves one or more matchmaking tickets. Use this operation to
@@ -30,7 +30,7 @@ requested ID that currently exists.
 
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html}{Add FlexMatch to a Game Client}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguidematch-notification.html}{Set Up FlexMatch Event Notification}
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html}{Set Up FlexMatch Event Notification}
 
 \strong{Related operations}
 \itemize{

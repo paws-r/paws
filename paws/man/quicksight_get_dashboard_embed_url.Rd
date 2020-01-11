@@ -9,20 +9,21 @@ quicksight_get_dashboard_embed_url(AwsAccountId, DashboardId,
   UserArn)
 }
 \arguments{
-\item{AwsAccountId}{[required] AWS account ID that contains the dashboard you are embedding.}
+\item{AwsAccountId}{[required] The ID for the AWS account that contains the dashboard that you\'re
+embedding.}
 
-\item{DashboardId}{[required] The ID for the dashboard, also added to IAM policy}
+\item{DashboardId}{[required] The ID for the dashboard, also added to the IAM policy.}
 
-\item{IdentityType}{[required] The authentication method the user uses to sign in.}
+\item{IdentityType}{[required] The authentication method that the user uses to sign in.}
 
 \item{SessionLifetimeInMinutes}{How many minutes the session is valid. The session lifetime must be
-between 15 and 600 minutes.}
+15-600 minutes.}
 
-\item{UndoRedoDisabled}{Remove the undo/redo button on embedded dashboard. The default is FALSE,
-which enables the undo/redo button.}
+\item{UndoRedoDisabled}{Remove the undo/redo button on the embedded dashboard. The default is
+FALSE, which enables the undo/redo button.}
 
-\item{ResetDisabled}{Remove the reset button on embedded dashboard. The default is FALSE,
-which allows the reset button.}
+\item{ResetDisabled}{Remove the reset button on the embedded dashboard. The default is FALSE,
+which enables the reset button.}
 
 \item{UserArn}{The Amazon QuickSight user\'s Amazon Resource Name (ARN), for use with
 \code{QUICKSIGHT} identity type. You can use this for any Amazon QuickSight
@@ -30,19 +31,18 @@ users in your account (readers, authors, or admins) authenticated as one
 of the following:
 \itemize{
 \item Active Directory (AD) users or group members
-\item Invited non-federated users
+\item Invited nonfederated users
 \item IAM users and IAM role-based sessions authenticated through
 Federated Single Sign-On using SAML, OpenID Connect, or IAM
-Federation
+federation.
 }}
 }
 \description{
-Generates a server-side embeddable URL and authorization code. Before
-this can work properly, first you need to configure the dashboards and
-user permissions. For more information, see the Amazon QuickSight User
-Guide section on \href{https://docs.aws.amazon.com/quicksight/latest/user/embedding-dashboards.html}{Embedding Amazon QuickSight Dashboards}
-or see the Amazon QuickSight API Reference section on \href{https://docs.aws.amazon.com/quicksight/latest/APIReference/qs-dev-embedded-dashboards.html}{Embedding Amazon QuickSight Dashboards}
-.
+Generates a server-side embeddable URL and authorization code. For this
+process to work properly, first configure the dashboards and user
+permissions. For more information, see \href{https://docs.aws.amazon.com/quicksight/latest/user/embedding-dashboards.html}{Embedding Amazon QuickSight Dashboards}
+in the \emph{Amazon QuickSight User Guide} or \href{https://docs.aws.amazon.com/quicksight/latest/APIReference/qs-dev-embedded-dashboards.html}{Embedding Amazon QuickSight Dashboards}
+in the \emph{Amazon QuickSight API Reference}.
 }
 \details{
 Currently, you can use \code{GetDashboardEmbedURL} only from the server, not

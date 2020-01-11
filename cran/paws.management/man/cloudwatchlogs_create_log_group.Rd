@@ -38,6 +38,10 @@ to decrypt this data whenever it is requested.
 If you attempt to associate a CMK with the log group but the CMK does
 not exist or the CMK is disabled, you will receive an
 \code{InvalidParameterException} error.
+
+\strong{Important:} CloudWatch Logs supports only symmetric CMKs. Do not
+associate an asymmetric CMK with your log group. For more information,
+see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric Keys}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_log_group(

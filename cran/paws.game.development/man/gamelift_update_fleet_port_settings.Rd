@@ -8,11 +8,12 @@ gamelift_update_fleet_port_settings(FleetId,
   InboundPermissionAuthorizations, InboundPermissionRevocations)
 }
 \arguments{
-\item{FleetId}{[required] Unique identifier for a fleet to update port settings for.}
+\item{FleetId}{[required] A unique identifier for a fleet to update port settings for. You can use
+either the fleet ID or ARN value.}
 
-\item{InboundPermissionAuthorizations}{Collection of port settings to be added to the fleet record.}
+\item{InboundPermissionAuthorizations}{A collection of port settings to be added to the fleet record.}
 
-\item{InboundPermissionRevocations}{Collection of port settings to be removed from the fleet record.}
+\item{InboundPermissionRevocations}{A collection of port settings to be removed from the fleet record.}
 }
 \description{
 Updates port settings for a fleet. To update settings, specify the fleet
@@ -32,16 +33,7 @@ successful, the fleet ID for the updated fleet is returned.
 \item CreateFleet
 \item ListFleets
 \item DeleteFleet
-\item Describe fleets:
-\itemize{
 \item DescribeFleetAttributes
-\item DescribeFleetCapacity
-\item DescribeFleetPortSettings
-\item DescribeFleetUtilization
-\item DescribeRuntimeConfiguration
-\item DescribeEC2InstanceLimits
-\item DescribeFleetEvents
-}
 \item Update fleets:
 \itemize{
 \item UpdateFleetAttributes

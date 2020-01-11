@@ -37,11 +37,11 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 Valid values: \code{xen}}
 
-\item{KmsKeyId}{An identifier for the AWS Key Management Service (AWS KMS) customer
-master key (CMK) to use when creating the encrypted AMI. This parameter
-is only required if you want to use a non-default CMK; if this parameter
-is not specified, the default CMK for EBS is used. If a \code{KmsKeyId} is
-specified, the \code{Encrypted} flag must also be set.
+\item{KmsKeyId}{An identifier for the symmetric AWS Key Management Service (AWS KMS)
+customer master key (CMK) to use when creating the encrypted AMI. This
+parameter is only required if you want to use a non-default CMK; if this
+parameter is not specified, the default CMK for EBS is used. If a
+\code{KmsKeyId} is specified, the \code{Encrypted} flag must also be set.
 
 The CMK identifier may be provided in any of the following formats:
 \itemize{
@@ -66,7 +66,9 @@ may appear to complete even though you provided an invalid identifier.
 This action will eventually report failure.
 
 The specified CMK must exist in the Region that the AMI is being copied
-to.}
+to.
+
+Amazon EBS does not support asymmetric CMKs.}
 
 \item{LicenseType}{The license type to be used for the Amazon Machine Image (AMI) after
 importing.

@@ -9,16 +9,15 @@ devicefarm_update_device_pool(arn, name, description, rules, maxDevices,
   clearMaxDevices)
 }
 \arguments{
-\item{arn}{[required] The Amazon Resource Name (ARN) of the Device Farm device pool you wish
-to update.}
+\item{arn}{[required] The Amazon Resource Name (ARN) of the Device Farm device pool to update.}
 
-\item{name}{A string representing the name of the device pool you wish to update.}
+\item{name}{A string that represents the name of the device pool to update.}
 
-\item{description}{A description of the device pool you wish to update.}
+\item{description}{A description of the device pool to update.}
 
-\item{rules}{Represents the rules you wish to modify for the device pool. Updating
-rules is optional; however, if you choose to update rules for your
-request, the update will replace the existing rules.}
+\item{rules}{Represents the rules to modify for the device pool. Updating rules is
+optional. If you update rules for your request, the update replaces the
+existing rules.}
 
 \item{maxDevices}{The number of devices that Device Farm can add to your device pool.
 Device Farm adds devices that are available and that meet the criteria
@@ -36,8 +35,7 @@ If you use this parameter in your request, you cannot use the
 you set this parameter to \code{true}, the \code{maxDevices} parameter does not
 apply, and Device Farm does not limit the number of devices that it adds
 to your device pool. In this case, Device Farm adds all available
-devices that meet the criteria that are specified for the \code{rules}
-parameter.
+devices that meet the criteria specified in the \code{rules} parameter.
 
 If you use this parameter in your request, you cannot use the
 \code{maxDevices} parameter in the same request.}

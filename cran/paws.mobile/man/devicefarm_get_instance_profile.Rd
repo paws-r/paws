@@ -7,7 +7,7 @@
 devicefarm_get_instance_profile(arn)
 }
 \arguments{
-\item{arn}{[required] The Amazon Resource Name (ARN) of your instance profile.}
+\item{arn}{[required] The Amazon Resource Name (ARN) of an instance profile.}
 }
 \description{
 Returns information about the specified instance profile.

@@ -2,14 +2,13 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_create_email_template}
 \alias{pinpoint_create_email_template}
-\title{Creates a message template that you can use in messages that are sent
-through the email channel}
+\title{Creates a message template for messages that are sent through the email
+channel}
 \usage{
 pinpoint_create_email_template(EmailTemplateRequest, TemplateName)
 }
 \arguments{
-\item{EmailTemplateRequest}{[required] Creates a new message template that you can use in messages that are
-sent through the email channel.}
+\item{EmailTemplateRequest}{[required]}
 
 \item{TemplateName}{[required] The name of the message template. A template name must start with an
 alphanumeric character and can contain a maximum of 128 characters. The
@@ -17,8 +16,8 @@ characters can be alphanumeric characters, underscores (\\_), or hyphens
 (-). Template names are case sensitive.}
 }
 \description{
-Creates a message template that you can use in messages that are sent
-through the email channel.
+Creates a message template for messages that are sent through the email
+channel.
 }
 \section{Request syntax}{
 \preformatted{svc$create_email_template(

@@ -8,7 +8,7 @@ rules}
 xray_get_sampling_statistic_summaries(NextToken)
 }
 \arguments{
-\item{NextToken}{Pagination token. Not used.}
+\item{NextToken}{Pagination token.}
 }
 \description{
 Retrieves information about recent sampling results for all sampling

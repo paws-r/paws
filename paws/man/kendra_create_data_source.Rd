@@ -86,7 +86,8 @@ raised.
           DateFieldFormat = "string",
           IndexFieldName = "string"
         )
-      )
+      ),
+      DocumentTitleFieldName = "string"
     ),
     DatabaseConfiguration = list(
       DatabaseEngineType = "RDS_AURORA_MYSQL"|"RDS_AURORA_POSTGRESQL"|"RDS_MYSQL"|"RDS_POSTGRESQL",

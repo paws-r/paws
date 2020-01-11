@@ -17,7 +17,9 @@ accessanalyzer_create_archive_rule(analyzerName, clientToken, filter,
 \item{ruleName}{[required] The name of the rule to create.}
 }
 \description{
-Creates an archive rule for the specified analyzer.
+Creates an archive rule for the specified analyzer. Archive rules
+automatically archive findings that meet the criteria you define when
+you create the rule.
 }
 \section{Request syntax}{
 \preformatted{svc$create_archive_rule(

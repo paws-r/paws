@@ -6,7 +6,7 @@
 \itemize{
 \item maximum number of instances allowed per AWS account (service limit) -
 current usage level for the AWS account Service limits vary depending on
-region
+Region
 }}
 \usage{
 gamelift_describe_ec2_instance_limits(EC2InstanceType)
@@ -28,7 +28,7 @@ Retrieves the following information for the specified EC2 instance type:
 \item current usage level for the AWS account
 }
 
-Service limits vary depending on region. Available regions for Amazon
+Service limits vary depending on Region. Available Regions for Amazon
 GameLift can be found in the AWS Management Console for Amazon GameLift
 (see the drop-down list in the upper right corner).
 

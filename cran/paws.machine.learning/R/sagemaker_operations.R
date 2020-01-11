@@ -648,7 +648,7 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig) {
 #'   InputConfig = list(
 #'     S3Uri = "string",
 #'     DataInputConfig = "string",
-#'     Framework = "TENSORFLOW"|"MXNET"|"ONNX"|"PYTORCH"|"XGBOOST"
+#'     Framework = "TENSORFLOW"|"KERAS"|"MXNET"|"ONNX"|"PYTORCH"|"XGBOOST"
 #'   ),
 #'   OutputConfig = list(
 #'     S3OutputLocation = "string",
@@ -910,6 +910,30 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Tags = N
 #' @param KmsKeyId The Amazon Resource Name (ARN) of a AWS Key Management Service key that
 #' Amazon SageMaker uses to encrypt data on the storage volume attached to
 #' the ML compute instance that hosts the endpoint.
+#' 
+#' The KmsKeyId can be any of the following formats:
+#' 
+#' -   // KMS Key ID
+#' 
+#'     `"1234abcd-12ab-34cd-56ef-1234567890ab" `
+#' 
+#' -   // Amazon Resource Name (ARN) (ARN) of a KMS Key
+#' 
+#'     \"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab\"
+#' 
+#' -   // KMS Key Alias
+#' 
+#'     \"alias/ExampleAlias\"
+#' 
+#' -   // Amazon Resource Name (ARN) of a KMS Key Alias
+#' 
+#'     `"arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias" `
+#' 
+#' The KMS key policy must grant permission to the IAM role that you
+#' specify in your `CreateEndpoint`, `UpdateEndpoint` requests. For more
+#' information, refer to the AWS Key Management Service section [Using Key
+#' Policies in AWS
+#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html)
 #' 
 #' Certain Nitro-based instances include local storage, dependent on the
 #' instance type. Local storage volumes are encrypted using a hardware
@@ -1810,9 +1834,6 @@ sagemaker_create_labeling_job <- function(LabelingJobName, LabelAttributeName, I
 #' Cloud](https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html).
 #' @param EnableNetworkIsolation Isolates the model container. No inbound or outbound network calls can
 #' be made to or from the model container.
-#' 
-#' The Semantic Segmentation built-in algorithm does not support network
-#' isolation.
 #'
 #' @section Request syntax:
 #' ```
@@ -2757,9 +2778,6 @@ sagemaker_create_processing_job <- function(ProcessingInputs = NULL, ProcessingO
 #' jobs that are configured to use a VPC, Amazon SageMaker downloads and
 #' uploads customer data and model artifacts through the specified VPC, but
 #' the training container does not have network access.
-#' 
-#' The Semantic Segmentation built-in algorithm does not support network
-#' isolation.
 #' @param EnableInterContainerTrafficEncryption To encrypt all communications between ML compute instances in
 #' distributed training, choose `True`. Encryption provides greater
 #' security for distributed training, but training might take longer. How
@@ -3182,12 +3200,11 @@ sagemaker_create_trial <- function(TrialName, DisplayName = NULL, ExperimentName
 #' You can add tags to a trial component and then use the Search API to
 #' search for the tags.
 #' 
-#' You can create a trial component through a direct call to the
-#' `CreateTrialComponent` API. However, you can\'t specify the `Source`
-#' property of the component in the request, therefore, the component
-#' isn\'t associated with an Amazon SageMaker job. You must use Amazon
-#' SageMaker Studio, the Amazon SageMaker Python SDK, or the AWS SDK for
-#' Python (Boto) to create the component with a valid `Source` property.
+#' `CreateTrialComponent` can only be invoked from within an Amazon
+#' SageMaker managed environment. This includes Amazon SageMaker training
+#' jobs, processing jobs, transform jobs, and Amazon SageMaker notebooks. A
+#' call to `CreateTrialComponent` from outside one of these environments
+#' results in an error.
 #'
 #' @usage
 #' sagemaker_create_trial_component(TrialComponentName, DisplayName,
@@ -5176,8 +5193,7 @@ sagemaker_disassociate_trial_component <- function(TrialComponentName, TrialName
 #' @usage
 #' sagemaker_get_search_suggestions(Resource, SuggestionQuery)
 #'
-#' @param Resource &#91;required&#93; The name of the Amazon SageMaker resource to Search for. The only valid
-#' `Resource` value is `TrainingJob`.
+#' @param Resource &#91;required&#93; The name of the Amazon SageMaker resource to Search for.
 #' @param SuggestionQuery Limits the property names that are included in the response.
 #'
 #' @section Request syntax:
@@ -5766,7 +5782,8 @@ sagemaker_list_endpoints <- function(SortBy = NULL, SortOrder = NULL, NextToken 
 #' @param NextToken If the previous call to `ListExperiments` didn\'t return the full set of
 #' experiments, the call returns a token for getting the next set of
 #' experiments.
-#' @param MaxResults The maximum number of experiments to return in the response.
+#' @param MaxResults The maximum number of experiments to return in the response. The default
+#' value is 10.
 #'
 #' @section Request syntax:
 #' ```
@@ -6929,16 +6946,22 @@ sagemaker_list_transform_jobs <- function(CreationTimeAfter = NULL, CreationTime
 #' sort the list by trial component name or creation time.
 #'
 #' @usage
-#' sagemaker_list_trial_components(SourceArn, CreatedAfter, CreatedBefore,
-#'   SortBy, SortOrder, MaxResults, NextToken)
+#' sagemaker_list_trial_components(ExperimentName, TrialName, SourceArn,
+#'   CreatedAfter, CreatedBefore, SortBy, SortOrder, MaxResults, NextToken)
 #'
+#' @param ExperimentName A filter that returns only components that are part of the specified
+#' experiment. If you specify `ExperimentName`, you can\'t specify
+#' `TrialName`.
+#' @param TrialName A filter that returns only components that are part of the specified
+#' trial. If you specify `TrialName`, you can\'t specify `ExperimentName`.
 #' @param SourceArn A filter that returns only components that have the specified source
 #' Amazon Resource Name (ARN).
 #' @param CreatedAfter A filter that returns only components created after the specified time.
 #' @param CreatedBefore A filter that returns only components created before the specified time.
 #' @param SortBy The property used to sort results. The default value is `CreationTime`.
 #' @param SortOrder The sort order. The default value is `Descending`.
-#' @param MaxResults The maximum number of components to return in the response.
+#' @param MaxResults The maximum number of components to return in the response. The default
+#' value is 10.
 #' @param NextToken If the previous call to `ListTrialComponents` didn\'t return the full
 #' set of components, the call returns a token for getting the next set of
 #' components.
@@ -6946,6 +6969,8 @@ sagemaker_list_transform_jobs <- function(CreationTimeAfter = NULL, CreationTime
 #' @section Request syntax:
 #' ```
 #' svc$list_trial_components(
+#'   ExperimentName = "string",
+#'   TrialName = "string",
 #'   SourceArn = "string",
 #'   CreatedAfter = as.POSIXct(
 #'     "2015-01-01"
@@ -6963,14 +6988,14 @@ sagemaker_list_transform_jobs <- function(CreationTimeAfter = NULL, CreationTime
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_trial_components
-sagemaker_list_trial_components <- function(SourceArn = NULL, CreatedAfter = NULL, CreatedBefore = NULL, SortBy = NULL, SortOrder = NULL, MaxResults = NULL, NextToken = NULL) {
+sagemaker_list_trial_components <- function(ExperimentName = NULL, TrialName = NULL, SourceArn = NULL, CreatedAfter = NULL, CreatedBefore = NULL, SortBy = NULL, SortOrder = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListTrialComponents",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$list_trial_components_input(SourceArn = SourceArn, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .sagemaker$list_trial_components_input(ExperimentName = ExperimentName, TrialName = TrialName, SourceArn = SourceArn, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, MaxResults = MaxResults, NextToken = NextToken)
   output <- .sagemaker$list_trial_components_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -6997,7 +7022,8 @@ sagemaker_list_trial_components <- function(SourceArn = NULL, CreatedAfter = NUL
 #' @param CreatedBefore A filter that returns only trials created before the specified time.
 #' @param SortBy The property used to sort results. The default value is `CreationTime`.
 #' @param SortOrder The sort order. The default value is `Descending`.
-#' @param MaxResults The maximum number of trials to return in the response.
+#' @param MaxResults The maximum number of trials to return in the response. The default
+#' value is 10.
 #' @param NextToken If the previous call to `ListTrials` didn\'t return the full set of
 #' trials, the call returns a token for getting the next set of trials.
 #'
@@ -7189,15 +7215,14 @@ sagemaker_render_ui_template <- function(UiTemplate, Task, RoleArn) {
 #' response. You can sort the search results by any resource property in a
 #' ascending or descending order.
 #' 
-#' You can query against the following value types: numerical, text,
-#' Booleans, and timestamps.
+#' You can query against the following value types: numeric, text, Boolean,
+#' and timestamp.
 #'
 #' @usage
 #' sagemaker_search(Resource, SearchExpression, SortBy, SortOrder,
 #'   NextToken, MaxResults)
 #'
-#' @param Resource &#91;required&#93; The name of the Amazon SageMaker resource to search for. Currently, the
-#' only valid `Resource` value is `TrainingJob`.
+#' @param Resource &#91;required&#93; The name of the Amazon SageMaker resource to search for.
 #' @param SearchExpression A Boolean conditional statement. Resource objects must satisfy this
 #' condition to be included in search results. You must provide at least
 #' one subexpression, filter, or nested filter. The maximum number of

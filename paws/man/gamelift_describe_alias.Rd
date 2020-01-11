@@ -7,8 +7,8 @@
 gamelift_describe_alias(AliasId)
 }
 \arguments{
-\item{AliasId}{[required] Unique identifier for a fleet alias. Specify the alias you want to
-retrieve.}
+\item{AliasId}{[required] The unique identifier for the fleet alias that you want to retrieve. You
+can use either the alias ID or ARN value.}
 }
 \description{
 Retrieves properties for an alias. This operation returns all alias

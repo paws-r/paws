@@ -230,16 +230,20 @@ Creates and sends a direct message.
     ),
     TemplateConfiguration = list(
       EmailTemplate = list(
-        Name = "string"
+        Name = "string",
+        Version = "string"
       ),
       PushTemplate = list(
-        Name = "string"
+        Name = "string",
+        Version = "string"
       ),
       SMSTemplate = list(
-        Name = "string"
+        Name = "string",
+        Version = "string"
       ),
       VoiceTemplate = list(
-        Name = "string"
+        Name = "string",
+        Version = "string"
       )
     ),
     TraceId = "string"

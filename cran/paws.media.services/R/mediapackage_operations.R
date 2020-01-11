@@ -102,10 +102,12 @@ mediapackage_create_harvest_job <- function(EndTime, Id, OriginEndpointId, S3Des
 #' Creates a new OriginEndpoint record.
 #'
 #' @usage
-#' mediapackage_create_origin_endpoint(ChannelId, CmafPackage, DashPackage,
-#'   Description, HlsPackage, Id, ManifestName, MssPackage, Origination,
-#'   StartoverWindowSeconds, Tags, TimeDelaySeconds, Whitelist)
+#' mediapackage_create_origin_endpoint(Authorization, ChannelId,
+#'   CmafPackage, DashPackage, Description, HlsPackage, Id, ManifestName,
+#'   MssPackage, Origination, StartoverWindowSeconds, Tags, TimeDelaySeconds,
+#'   Whitelist)
 #'
+#' @param Authorization 
 #' @param ChannelId &#91;required&#93; The ID of the Channel that the OriginEndpoint will be associated with.
 #' This cannot be changed after the OriginEndpoint is created.
 #' @param CmafPackage 
@@ -129,6 +131,10 @@ mediapackage_create_harvest_job <- function(EndTime, Id, OriginEndpointId, S3Des
 #' @section Request syntax:
 #' ```
 #' svc$create_origin_endpoint(
+#'   Authorization = list(
+#'     CdnIdentifierSecret = "string",
+#'     SecretsRoleArn = "string"
+#'   ),
 #'   ChannelId = "string",
 #'   CmafPackage = list(
 #'     Encryption = list(
@@ -271,14 +277,14 @@ mediapackage_create_harvest_job <- function(EndTime, Id, OriginEndpointId, S3Des
 #' @keywords internal
 #'
 #' @rdname mediapackage_create_origin_endpoint
-mediapackage_create_origin_endpoint <- function(ChannelId, CmafPackage = NULL, DashPackage = NULL, Description = NULL, HlsPackage = NULL, Id, ManifestName = NULL, MssPackage = NULL, Origination = NULL, StartoverWindowSeconds = NULL, Tags = NULL, TimeDelaySeconds = NULL, Whitelist = NULL) {
+mediapackage_create_origin_endpoint <- function(Authorization = NULL, ChannelId, CmafPackage = NULL, DashPackage = NULL, Description = NULL, HlsPackage = NULL, Id, ManifestName = NULL, MssPackage = NULL, Origination = NULL, StartoverWindowSeconds = NULL, Tags = NULL, TimeDelaySeconds = NULL, Whitelist = NULL) {
   op <- new_operation(
     name = "CreateOriginEndpoint",
     http_method = "POST",
     http_path = "/origin_endpoints",
     paginator = list()
   )
-  input <- .mediapackage$create_origin_endpoint_input(ChannelId = ChannelId, CmafPackage = CmafPackage, DashPackage = DashPackage, Description = Description, HlsPackage = HlsPackage, Id = Id, ManifestName = ManifestName, MssPackage = MssPackage, Origination = Origination, StartoverWindowSeconds = StartoverWindowSeconds, Tags = Tags, TimeDelaySeconds = TimeDelaySeconds, Whitelist = Whitelist)
+  input <- .mediapackage$create_origin_endpoint_input(Authorization = Authorization, ChannelId = ChannelId, CmafPackage = CmafPackage, DashPackage = DashPackage, Description = Description, HlsPackage = HlsPackage, Id = Id, ManifestName = ManifestName, MssPackage = MssPackage, Origination = Origination, StartoverWindowSeconds = StartoverWindowSeconds, Tags = Tags, TimeDelaySeconds = TimeDelaySeconds, Whitelist = Whitelist)
   output <- .mediapackage$create_origin_endpoint_output()
   config <- get_config()
   svc <- .mediapackage$service(config)
@@ -823,10 +829,11 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 #' Updates an existing OriginEndpoint.
 #'
 #' @usage
-#' mediapackage_update_origin_endpoint(CmafPackage, DashPackage,
-#'   Description, HlsPackage, Id, ManifestName, MssPackage, Origination,
-#'   StartoverWindowSeconds, TimeDelaySeconds, Whitelist)
+#' mediapackage_update_origin_endpoint(Authorization, CmafPackage,
+#'   DashPackage, Description, HlsPackage, Id, ManifestName, MssPackage,
+#'   Origination, StartoverWindowSeconds, TimeDelaySeconds, Whitelist)
 #'
+#' @param Authorization 
 #' @param CmafPackage 
 #' @param DashPackage 
 #' @param Description A short text description of the OriginEndpoint.
@@ -846,6 +853,10 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 #' @section Request syntax:
 #' ```
 #' svc$update_origin_endpoint(
+#'   Authorization = list(
+#'     CdnIdentifierSecret = "string",
+#'     SecretsRoleArn = "string"
+#'   ),
 #'   CmafPackage = list(
 #'     Encryption = list(
 #'       KeyRotationIntervalSeconds = 123,
@@ -984,14 +995,14 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 #' @keywords internal
 #'
 #' @rdname mediapackage_update_origin_endpoint
-mediapackage_update_origin_endpoint <- function(CmafPackage = NULL, DashPackage = NULL, Description = NULL, HlsPackage = NULL, Id, ManifestName = NULL, MssPackage = NULL, Origination = NULL, StartoverWindowSeconds = NULL, TimeDelaySeconds = NULL, Whitelist = NULL) {
+mediapackage_update_origin_endpoint <- function(Authorization = NULL, CmafPackage = NULL, DashPackage = NULL, Description = NULL, HlsPackage = NULL, Id, ManifestName = NULL, MssPackage = NULL, Origination = NULL, StartoverWindowSeconds = NULL, TimeDelaySeconds = NULL, Whitelist = NULL) {
   op <- new_operation(
     name = "UpdateOriginEndpoint",
     http_method = "PUT",
     http_path = "/origin_endpoints/{id}",
     paginator = list()
   )
-  input <- .mediapackage$update_origin_endpoint_input(CmafPackage = CmafPackage, DashPackage = DashPackage, Description = Description, HlsPackage = HlsPackage, Id = Id, ManifestName = ManifestName, MssPackage = MssPackage, Origination = Origination, StartoverWindowSeconds = StartoverWindowSeconds, TimeDelaySeconds = TimeDelaySeconds, Whitelist = Whitelist)
+  input <- .mediapackage$update_origin_endpoint_input(Authorization = Authorization, CmafPackage = CmafPackage, DashPackage = DashPackage, Description = Description, HlsPackage = HlsPackage, Id = Id, ManifestName = ManifestName, MssPackage = MssPackage, Origination = Origination, StartoverWindowSeconds = StartoverWindowSeconds, TimeDelaySeconds = TimeDelaySeconds, Whitelist = Whitelist)
   output <- .mediapackage$update_origin_endpoint_output()
   config <- get_config()
   svc <- .mediapackage$service(config)

@@ -7,7 +7,7 @@
 xray_get_sampling_rules(NextToken)
 }
 \arguments{
-\item{NextToken}{Pagination token. Not used.}
+\item{NextToken}{Pagination token.}
 }
 \description{
 Retrieves all sampling rules.

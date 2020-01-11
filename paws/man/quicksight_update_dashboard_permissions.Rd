@@ -8,7 +8,8 @@ quicksight_update_dashboard_permissions(AwsAccountId, DashboardId,
   GrantPermissions, RevokePermissions)
 }
 \arguments{
-\item{AwsAccountId}{[required] AWS account ID that contains the dashboard you are updating.}
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the dashboard whose permissions
+you\'re updating.}
 
 \item{DashboardId}{[required] The ID for the dashboard.}
 

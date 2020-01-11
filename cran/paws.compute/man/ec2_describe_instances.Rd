@@ -39,8 +39,8 @@ that the instance is enabled for hibernation.
 running, if applicable.
 \item \code{hypervisor} - The hypervisor type of the instance (\code{ovm} \\| \code{xen}).
 \item \code{iam-instance-profile.arn} - The instance profile associated with
-the instance. Specified as an ARN. \code{image-id} - The ID of the image
-used to launch the instance.
+the instance. Specified as an ARN.
+\item \code{image-id} - The ID of the image used to launch the instance.
 \item \code{instance-id} - The ID of the instance.
 \item \code{instance-lifecycle} - Indicates whether this is a Spot Instance or
 a Scheduled Instance (\code{spot} \\| \code{scheduled}).

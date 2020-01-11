@@ -647,6 +647,15 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' )
 #' ```
 #'
+#' @examples
+#' # 
+#' \donttest{svc$assume_role_with_saml(
+#'   DurationSeconds = 3600L,
+#'   PrincipalArn = "arn:aws:iam::123456789012:saml-provider/SAML-test",
+#'   RoleArn = "arn:aws:iam::123456789012:role/TestSaml",
+#'   SAMLAssertion = "VERYLONGENCODEDASSERTIONEXAMPLExzYW1sOkF1ZGllbmNlPmJsYW5rPC9zYW1sOkF1ZGll..."
+#' )}
+#'
 #' @keywords internal
 #'
 #' @rdname sts_assume_role_with_saml

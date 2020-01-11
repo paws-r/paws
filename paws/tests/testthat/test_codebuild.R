@@ -22,6 +22,14 @@ test_that("list_reports", {
   expect_error(svc$list_reports(), NA)
 })
 
+test_that("list_shared_projects", {
+  expect_error(svc$list_shared_projects(), NA)
+})
+
+test_that("list_shared_report_groups", {
+  expect_error(svc$list_shared_report_groups(), NA)
+})
+
 test_that("list_source_credentials", {
   expect_error(svc$list_source_credentials(), NA)
 })

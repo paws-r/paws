@@ -2,15 +2,14 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_create_push_template}
 \alias{pinpoint_create_push_template}
-\title{Creates a message template that you can use in messages that are sent
-through a push notification channel}
+\title{Creates a message template for messages that are sent through a push
+notification channel}
 \usage{
 pinpoint_create_push_template(PushNotificationTemplateRequest,
   TemplateName)
 }
 \arguments{
-\item{PushNotificationTemplateRequest}{[required] Creates a message template that you can use in messages that are sent
-through a push notification channel.}
+\item{PushNotificationTemplateRequest}{[required]}
 
 \item{TemplateName}{[required] The name of the message template. A template name must start with an
 alphanumeric character and can contain a maximum of 128 characters. The
@@ -18,8 +17,8 @@ characters can be alphanumeric characters, underscores (\\_), or hyphens
 (-). Template names are case sensitive.}
 }
 \description{
-Creates a message template that you can use in messages that are sent
-through a push notification channel.
+Creates a message template for messages that are sent through a push
+notification channel.
 }
 \section{Request syntax}{
 \preformatted{svc$create_push_template(

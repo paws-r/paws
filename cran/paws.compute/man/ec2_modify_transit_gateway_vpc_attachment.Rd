@@ -15,7 +15,9 @@ subnet per Availability Zone.}
 
 \item{RemoveSubnetIds}{The IDs of one or more subnets to remove.}
 
-\item{Options}{The new VPC attachment options.}
+\item{Options}{The new VPC attachment options.
+
+You cannot modify the IPv6 options.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

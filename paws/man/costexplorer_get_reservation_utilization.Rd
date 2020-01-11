@@ -29,7 +29,6 @@ dimensions:
 \itemize{
 \item AZ
 \item CACHE\\_ENGINE
-\item DATABASE\\_ENGINE
 \item DEPLOYMENT\\_OPTION
 \item INSTANCE\\_TYPE
 \item LINKED\\_ACCOUNT

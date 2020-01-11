@@ -2,23 +2,24 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_describe_template_alias}
 \alias{quicksight_describe_template_alias}
-\title{Describes the template aliases of a template}
+\title{Describes the template alias for a template}
 \usage{
 quicksight_describe_template_alias(AwsAccountId, TemplateId, AliasName)
 }
 \arguments{
-\item{AwsAccountId}{[required] AWS account ID that contains the template alias you are describing.}
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the template alias that you\'re
+describing.}
 
-\item{TemplateId}{[required] An ID for the template.}
+\item{TemplateId}{[required] The ID for the template.}
 
-\item{AliasName}{[required] The alias of the template that you want to describe. If you provide a
+\item{AliasName}{[required] The name of the template alias that you want to describe. If you name a
 specific alias, you describe the version that the alias points to. You
 can specify the latest version of the template by providing the keyword
 \verb{$LATEST} in the \code{AliasName} parameter. The keyword \verb{$PUBLISHED}
 doesn\'t apply to templates.}
 }
 \description{
-Describes the template aliases of a template.
+Describes the template alias for a template.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_template_alias(

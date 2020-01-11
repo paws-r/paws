@@ -300,7 +300,7 @@ batch <- function(config = list()) {
 #'  \link[=ec2_describe_fast_snapshot_restores]{describe_fast_snapshot_restores} \tab Describes the state of fast snapshot restores for your snapshots \cr
 #'  \link[=ec2_describe_fleet_history]{describe_fleet_history} \tab Describes the events for the specified EC2 Fleet during the specified time \cr
 #'  \link[=ec2_describe_fleet_instances]{describe_fleet_instances} \tab Describes the running instances for the specified EC2 Fleet \cr
-#'  \link[=ec2_describe_fleets]{describe_fleets} \tab Describes the specified EC2 Fleets or all your EC2 Fleets \cr
+#'  \link[=ec2_describe_fleets]{describe_fleets} \tab Describes the specified EC2 Fleets or all of your EC2 Fleets \cr
 #'  \link[=ec2_describe_flow_logs]{describe_flow_logs} \tab Describes one or more flow logs \cr
 #'  \link[=ec2_describe_fpga_image_attribute]{describe_fpga_image_attribute} \tab Describes the specified attribute of the specified Amazon FPGA Image (AFI) \cr
 #'  \link[=ec2_describe_fpga_images]{describe_fpga_images} \tab Describes the Amazon FPGA Images (AFIs) available to you \cr
@@ -518,6 +518,7 @@ batch <- function(config = list()) {
 #'  \link[=ec2_search_transit_gateway_routes]{search_transit_gateway_routes} \tab Searches for routes in the specified transit gateway route table \cr
 #'  \link[=ec2_send_diagnostic_interrupt]{send_diagnostic_interrupt} \tab Sends a diagnostic interrupt to the specified Amazon EC2 instance to trigger a _kernel panic_ (on Linux instances), or a _blue screen_/_stop error_ (on Windows instances) \cr
 #'  \link[=ec2_start_instances]{start_instances} \tab Starts an Amazon EBS-backed instance that you've previously stopped \cr
+#'  \link[=ec2_start_vpc_endpoint_service_private_dns_verification]{start_vpc_endpoint_service_private_dns_verification} \tab Initiates the verification process to prove that the service provider owns the private DNS name domain for the endpoint service \cr
 #'  \link[=ec2_stop_instances]{stop_instances} \tab Stops an Amazon EBS-backed instance \cr
 #'  \link[=ec2_terminate_client_vpn_connections]{terminate_client_vpn_connections} \tab Terminates active Client VPN endpoint connections \cr
 #'  \link[=ec2_terminate_instances]{terminate_instances} \tab Shuts down the specified instances \cr
@@ -1144,7 +1145,7 @@ lambda <- function(config = list()) {
 #'  \link[=lightsail_attach_load_balancer_tls_certificate]{attach_load_balancer_tls_certificate} \tab Attaches a Transport Layer Security (TLS) certificate to your load balancer \cr
 #'  \link[=lightsail_attach_static_ip]{attach_static_ip} \tab Attaches a static IP address to a specific Amazon Lightsail instance \cr
 #'  \link[=lightsail_close_instance_public_ports]{close_instance_public_ports} \tab Closes the public ports on a specific Amazon Lightsail instance \cr
-#'  \link[=lightsail_copy_snapshot]{copy_snapshot} \tab Copies a manual instance or disk snapshot as another manual snapshot, or copies an automatic instance or disk snapshot as a manual snapshot \cr
+#'  \link[=lightsail_copy_snapshot]{copy_snapshot} \tab Copies a manual snapshot of an instance or disk as another manual snapshot, or copies an automatic snapshot of an instance or disk as a manual snapshot \cr
 #'  \link[=lightsail_create_cloud_formation_stack]{create_cloud_formation_stack} \tab Creates an AWS CloudFormation stack, which creates a new Amazon EC2 instance from an exported Amazon Lightsail snapshot \cr
 #'  \link[=lightsail_create_disk]{create_disk} \tab Creates a block storage disk that can be attached to an Amazon Lightsail instance in the same Availability Zone (e \cr
 #'  \link[=lightsail_create_disk_from_snapshot]{create_disk_from_snapshot} \tab Creates a block storage disk from a manual or automatic snapshot of a disk \cr
@@ -1160,7 +1161,7 @@ lambda <- function(config = list()) {
 #'  \link[=lightsail_create_relational_database]{create_relational_database} \tab Creates a new database in Amazon Lightsail \cr
 #'  \link[=lightsail_create_relational_database_from_snapshot]{create_relational_database_from_snapshot} \tab Creates a new database from an existing database snapshot in Amazon Lightsail \cr
 #'  \link[=lightsail_create_relational_database_snapshot]{create_relational_database_snapshot} \tab Creates a snapshot of your database in Amazon Lightsail \cr
-#'  \link[=lightsail_delete_auto_snapshot]{delete_auto_snapshot} \tab Deletes an automatic snapshot for an instance or disk \cr
+#'  \link[=lightsail_delete_auto_snapshot]{delete_auto_snapshot} \tab Deletes an automatic snapshot of an instance or disk \cr
 #'  \link[=lightsail_delete_disk]{delete_disk} \tab Deletes the specified block storage disk \cr
 #'  \link[=lightsail_delete_disk_snapshot]{delete_disk_snapshot} \tab Deletes the specified disk snapshot \cr
 #'  \link[=lightsail_delete_domain]{delete_domain} \tab Deletes the specified domain recordset and all of its domain records \cr
@@ -1181,7 +1182,7 @@ lambda <- function(config = list()) {
 #'  \link[=lightsail_enable_add_on]{enable_add_on} \tab Enables or modifies an add-on for an Amazon Lightsail resource \cr
 #'  \link[=lightsail_export_snapshot]{export_snapshot} \tab Exports an Amazon Lightsail instance or block storage disk snapshot to Amazon Elastic Compute Cloud (Amazon EC2) \cr
 #'  \link[=lightsail_get_active_names]{get_active_names} \tab Returns the names of all active (not deleted) resources \cr
-#'  \link[=lightsail_get_auto_snapshots]{get_auto_snapshots} \tab Returns the available automatic snapshots for the specified resource name \cr
+#'  \link[=lightsail_get_auto_snapshots]{get_auto_snapshots} \tab Returns the available automatic snapshots for an instance or disk \cr
 #'  \link[=lightsail_get_blueprints]{get_blueprints} \tab Returns the list of available instance images, or _blueprints_ \cr
 #'  \link[=lightsail_get_bundles]{get_bundles} \tab Returns the list of bundles that are available for purchase \cr
 #'  \link[=lightsail_get_cloud_formation_stack_records]{get_cloud_formation_stack_records} \tab Returns the CloudFormation stack record created as a result of the create cloud formation stack operation \cr
@@ -1601,12 +1602,15 @@ efs <- function(config = list()) {
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=fsx_cancel_data_repository_task]{cancel_data_repository_task} \tab Cancels an existing Amazon FSx for Lustre data repository task if that task is in either the PENDING or EXECUTING state \cr
 #'  \link[=fsx_create_backup]{create_backup} \tab Creates a backup of an existing Amazon FSx for Windows File Server file system \cr
+#'  \link[=fsx_create_data_repository_task]{create_data_repository_task} \tab Creates an Amazon FSx for Lustre data repository task \cr
 #'  \link[=fsx_create_file_system]{create_file_system} \tab Creates a new, empty Amazon FSx file system \cr
 #'  \link[=fsx_create_file_system_from_backup]{create_file_system_from_backup} \tab Creates a new Amazon FSx file system from an existing Amazon FSx for Windows File Server backup \cr
 #'  \link[=fsx_delete_backup]{delete_backup} \tab Deletes an Amazon FSx for Windows File Server backup, deleting its contents \cr
 #'  \link[=fsx_delete_file_system]{delete_file_system} \tab Deletes a file system, deleting its contents \cr
-#'  \link[=fsx_describe_backups]{describe_backups} \tab Returns the description of specific Amazon FSx for Windows File Server backups, if a BackupIds value is provided for that backup\cr
+#'  \link[=fsx_describe_backups]{describe_backups} \tab Returns the description of specific Amazon FSx for Windows File Server backups, if a BackupIds value is provided for that backup \cr
+#'  \link[=fsx_describe_data_repository_tasks]{describe_data_repository_tasks} \tab Returns the description of specific Amazon FSx for Lustre data repository tasks, if one or more TaskIds values are provided in the request, or if filters are used in the request\cr
 #'  \link[=fsx_describe_file_systems]{describe_file_systems} \tab Returns the description of specific Amazon FSx file systems, if a FileSystemIds value is provided for that file system \cr
 #'  \link[=fsx_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for an Amazon FSx file systems and backups in the case of Amazon FSx for Windows File Server \cr
 #'  \link[=fsx_tag_resource]{tag_resource} \tab Tags an Amazon FSx resource \cr
@@ -2850,6 +2854,7 @@ neptune <- function(config = list()) {
 #'  \link[=rds_failover_db_cluster]{failover_db_cluster} \tab Forces a failover for a DB cluster \cr
 #'  \link[=rds_import_installation_media]{import_installation_media} \tab Imports the installation media for a DB engine that requires an on-premises customer provided license, such as SQL Server \cr
 #'  \link[=rds_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on an Amazon RDS resource \cr
+#'  \link[=rds_modify_certificates]{modify_certificates} \tab Override the system-default Secure Sockets Layer/Transport Layer Security (SSL/TLS) certificate for Amazon RDS for new DB instances, or remove the override\cr
 #'  \link[=rds_modify_current_db_cluster_capacity]{modify_current_db_cluster_capacity} \tab Set the capacity of an Aurora Serverless DB cluster to a specific value \cr
 #'  \link[=rds_modify_db_cluster]{modify_db_cluster} \tab Modify a setting for an Amazon Aurora DB cluster \cr
 #'  \link[=rds_modify_db_cluster_endpoint]{modify_db_cluster_endpoint} \tab Modifies the properties of an endpoint in an Amazon Aurora DB cluster \cr
@@ -2887,7 +2892,7 @@ neptune <- function(config = list()) {
 #'  \link[=rds_start_activity_stream]{start_activity_stream} \tab Starts a database activity stream to monitor activity on the database \cr
 #'  \link[=rds_start_db_cluster]{start_db_cluster} \tab Starts an Amazon Aurora DB cluster that was stopped using the AWS console, the stop-db-cluster AWS CLI command, or the StopDBCluster action \cr
 #'  \link[=rds_start_db_instance]{start_db_instance} \tab Starts an Amazon RDS DB instance that was stopped using the AWS console, the stop-db-instance AWS CLI command, or the StopDBInstance action \cr
-#'  \link[=rds_stop_activity_stream]{stop_activity_stream} \tab Stops a database activity stream that was started using the AWS console, the start-activity-stream AWS CLI command, or the StartActivityStream action\cr
+#'  \link[=rds_stop_activity_stream]{stop_activity_stream} \tab Stops a database activity stream that was started using the AWS console, the start-activity-stream AWS CLI command, or the StartActivityStream action \cr
 #'  \link[=rds_stop_db_cluster]{stop_db_cluster} \tab Stops an Amazon Aurora DB cluster \cr
 #'  \link[=rds_stop_db_instance]{stop_db_instance} \tab Stops an Amazon RDS DB instance 
 #' }
@@ -5531,6 +5536,34 @@ configservice <- function(config = list()) {
 #' -   DescribeEntityAggregates: A count of the number of affected entities
 #'     that meet specified criteria.
 #' 
+#' AWS Health integrates with AWS Organizations to provide a centralized
+#' view of AWS Health events across all accounts in your organization.
+#' 
+#' -   DescribeEventsForOrganization: Summary information about events
+#'     across the organization.
+#' 
+#' -   DescribeAffectedAccountsForOrganization: List of accounts in your
+#'     organization impacted by an event.
+#' 
+#' -   DescribeEventDetailsForOrganization: Detailed information about
+#'     events in your organization.
+#' 
+#' -   DescribeAffectedEntitiesForOrganization: Information about AWS
+#'     resources in your organization that are affected by events.
+#' 
+#' You can use the following operations to enable or disable AWS Health
+#' from working with AWS Organizations.
+#' 
+#' -   EnableHealthServiceAccessForOrganization: Enables AWS Health to work
+#'     with AWS Organizations.
+#' 
+#' -   DisableHealthServiceAccessForOrganization: Disables AWS Health from
+#'     working with AWS Organizations.
+#' 
+#' -   DescribeHealthServiceStatusForOrganization: Status information about
+#'     enabling or disabling AWS Health from working with AWS
+#'     Organizations.
+#' 
 #' The Health API requires a Business or Enterprise support plan from [AWS
 #' Support](http://aws.amazon.com/premiumsupport/). Calling the Health API
 #' from an account that does not have a Business or Enterprise support plan
@@ -5574,18 +5607,25 @@ configservice <- function(config = list()) {
 #'
 #' @examples
 #' \donttest{svc <- health()
-#' svc$describe_affected_entities(
+#' svc$describe_affected_accounts_for_organization(
 #'   Foo = 123
 #' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=health_describe_affected_entities]{describe_affected_entities} \tab Returns a list of entities that have been affected by the specified events, based on the specified filter criteria\cr
+#'  \link[=health_describe_affected_accounts_for_organization]{describe_affected_accounts_for_organization} \tab Returns a list of accounts in the organization from AWS Organizations that are affected by the provided event \cr
+#'  \link[=health_describe_affected_entities]{describe_affected_entities} \tab Returns a list of entities that have been affected by the specified events, based on the specified filter criteria \cr
+#'  \link[=health_describe_affected_entities_for_organization]{describe_affected_entities_for_organization} \tab Returns a list of entities that have been affected by one or more events for one or more accounts in your organization in AWS Organizations, based on the filter criteria\cr
 #'  \link[=health_describe_entity_aggregates]{describe_entity_aggregates} \tab Returns the number of entities that are affected by each of the specified events \cr
 #'  \link[=health_describe_event_aggregates]{describe_event_aggregates} \tab Returns the number of events of each event type (issue, scheduled change, and account notification) \cr
 #'  \link[=health_describe_event_details]{describe_event_details} \tab Returns detailed information about one or more specified events \cr
+#'  \link[=health_describe_event_details_for_organization]{describe_event_details_for_organization} \tab Returns detailed information about one or more specified events for one or more accounts in your organization \cr
 #'  \link[=health_describe_events]{describe_events} \tab Returns information about events that meet the specified filter criteria \cr
-#'  \link[=health_describe_event_types]{describe_event_types} \tab Returns the event types that meet the specified filter criteria 
+#'  \link[=health_describe_events_for_organization]{describe_events_for_organization} \tab Returns information about events across your organization in AWS Organizations, meeting the specified filter criteria \cr
+#'  \link[=health_describe_event_types]{describe_event_types} \tab Returns the event types that meet the specified filter criteria \cr
+#'  \link[=health_describe_health_service_status_for_organization]{describe_health_service_status_for_organization} \tab This operation provides status information on enabling or disabling AWS Health to work with your organization \cr
+#'  \link[=health_disable_health_service_access_for_organization]{disable_health_service_access_for_organization} \tab Calling this operation disables Health from working with AWS Organizations \cr
+#'  \link[=health_enable_health_service_access_for_organization]{enable_health_service_access_for_organization} \tab Calling this operation enables AWS Health to work with AWS Organizations 
 #' }
 #'
 #' @rdname health
@@ -5965,8 +6005,11 @@ opsworks <- function(config = list()) {
 #'  \link[=opsworkscm_describe_servers]{describe_servers} \tab Lists all configuration management servers that are identified with your account \cr
 #'  \link[=opsworkscm_disassociate_node]{disassociate_node} \tab Disassociates a node from an AWS OpsWorks CM server, and removes the node from the server's managed nodes \cr
 #'  \link[=opsworkscm_export_server_engine_attribute]{export_server_engine_attribute} \tab Exports a specified server engine attribute as a base64-encoded string \cr
-#'  \link[=opsworkscm_restore_server]{restore_server} \tab Restores a backup to a server that is in a CONNECTION_LOST, HEALTHY, RUNNING, UNHEALTHY, or TERMINATED state\cr
+#'  \link[=opsworkscm_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags that are applied to the specified AWS OpsWorks for Chef Automate or AWS OpsWorks for Puppet Enterprise servers or backups\cr
+#'  \link[=opsworkscm_restore_server]{restore_server} \tab Restores a backup to a server that is in a CONNECTION_LOST, HEALTHY, RUNNING, UNHEALTHY, or TERMINATED state \cr
 #'  \link[=opsworkscm_start_maintenance]{start_maintenance} \tab Manually starts server maintenance \cr
+#'  \link[=opsworkscm_tag_resource]{tag_resource} \tab Applies tags to an AWS OpsWorks for Chef Automate or AWS OpsWorks for Puppet Enterprise server, or to server backups \cr
+#'  \link[=opsworkscm_untag_resource]{untag_resource} \tab Removes specified tags from an AWS OpsWorks-CM server or backup \cr
 #'  \link[=opsworkscm_update_server]{update_server} \tab Updates settings for a server \cr
 #'  \link[=opsworkscm_update_server_engine_attributes]{update_server_engine_attributes} \tab Updates engine-specific attributes on a specified server 
 #' }
@@ -6820,6 +6863,7 @@ servicequotas <- function(config = list()) {
 #'  \link[=ssm_describe_patch_properties]{describe_patch_properties} \tab Lists the properties of available patches organized by product, product family, classification, severity, and other properties of available patches \cr
 #'  \link[=ssm_describe_sessions]{describe_sessions} \tab Retrieves a list of all active sessions (both connected and disconnected) or terminated sessions from the past 30 days \cr
 #'  \link[=ssm_get_automation_execution]{get_automation_execution} \tab Get detailed information about a particular Automation execution \cr
+#'  \link[=ssm_get_calendar_state]{get_calendar_state} \tab Gets the state of the AWS Systems Manager Change Calendar at an optional, specified time \cr
 #'  \link[=ssm_get_command_invocation]{get_command_invocation} \tab Returns detailed information about command execution for an invocation or plugin \cr
 #'  \link[=ssm_get_connection_status]{get_connection_status} \tab Retrieves the Session Manager connection status for an instance to determine whether it is connected and ready to receive Session Manager connections \cr
 #'  \link[=ssm_get_default_patch_baseline]{get_default_patch_baseline} \tab Retrieves the default patch baseline \cr
@@ -7143,8 +7187,10 @@ comprehend <- function(config = list()) {
 #'  \link[=comprehendmedical_describe_entities_detection_v2_job]{describe_entities_detection_v2_job} \tab Gets the properties associated with a medical entities detection job \cr
 #'  \link[=comprehendmedical_describe_phi_detection_job]{describe_phi_detection_job} \tab Gets the properties associated with a protected health information (PHI) detection job \cr
 #'  \link[=comprehendmedical_detect_entities]{detect_entities} \tab The DetectEntities operation is deprecated \cr
-#'  \link[=comprehendmedical_detect_entities_v2]{detect_entities_v2} \tab Inspects the clinical text for a variety of medical entities and returns specific information about them such as entity category, location, and confidence score on that information\cr
+#'  \link[=comprehendmedical_detect_entities_v2]{detect_entities_v2} \tab Inspects the clinical text for a variety of medical entities and returns specific information about them such as entity category, location, and confidence score on that information \cr
 #'  \link[=comprehendmedical_detect_phi]{detect_phi} \tab Inspects the clinical text for protected health information (PHI) entities and entity category, location, and confidence score on that information \cr
+#'  \link[=comprehendmedical_infer_icd10cm]{infer_icd10cm} \tab InferICD10CM detects medical conditions as entities listed in a patient record and links those entities to normalized concept identifiers in the ICD-10-CM knowledge base from the Centers for Disease Control\cr
+#'  \link[=comprehendmedical_infer_rx_norm]{infer_rx_norm} \tab InferRxNorm detects medications as entities listed in a patient record and links to the normalized concept identifiers in the RxNorm database from the National Library of Medicine \cr
 #'  \link[=comprehendmedical_list_entities_detection_v2_jobs]{list_entities_detection_v2_jobs} \tab Gets a list of medical entity detection jobs that you have submitted \cr
 #'  \link[=comprehendmedical_list_phi_detection_jobs]{list_phi_detection_jobs} \tab Gets a list of protected health information (PHI) detection jobs that you have submitted \cr
 #'  \link[=comprehendmedical_start_entities_detection_v2_job]{start_entities_detection_v2_job} \tab Starts an asynchronous medical entity detection job for a collection of documents \cr
@@ -8006,14 +8052,19 @@ textract <- function(config = list()) {
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=transcribeservice_create_vocabulary]{create_vocabulary} \tab Creates a new custom vocabulary that you can use to change the way Amazon Transcribe handles transcription of an audio file \cr
+#'  \link[=transcribeservice_create_vocabulary_filter]{create_vocabulary_filter} \tab Creates a new vocabulary filter that you can use to filter words, such as profane words, from the output of a transcription job \cr
 #'  \link[=transcribeservice_delete_transcription_job]{delete_transcription_job} \tab Deletes a previously submitted transcription job along with any other generated results such as the transcription, models, and so on\cr
 #'  \link[=transcribeservice_delete_vocabulary]{delete_vocabulary} \tab Deletes a vocabulary from Amazon Transcribe \cr
+#'  \link[=transcribeservice_delete_vocabulary_filter]{delete_vocabulary_filter} \tab Removes a vocabulary filter \cr
 #'  \link[=transcribeservice_get_transcription_job]{get_transcription_job} \tab Returns information about a transcription job \cr
 #'  \link[=transcribeservice_get_vocabulary]{get_vocabulary} \tab Gets information about a vocabulary \cr
+#'  \link[=transcribeservice_get_vocabulary_filter]{get_vocabulary_filter} \tab Returns information about a vocabulary filter \cr
 #'  \link[=transcribeservice_list_transcription_jobs]{list_transcription_jobs} \tab Lists transcription jobs with the specified status \cr
 #'  \link[=transcribeservice_list_vocabularies]{list_vocabularies} \tab Returns a list of vocabularies that match the specified criteria \cr
+#'  \link[=transcribeservice_list_vocabulary_filters]{list_vocabulary_filters} \tab Gets information about vocabulary filters \cr
 #'  \link[=transcribeservice_start_transcription_job]{start_transcription_job} \tab Starts an asynchronous job to transcribe speech to text \cr
-#'  \link[=transcribeservice_update_vocabulary]{update_vocabulary} \tab Updates an existing vocabulary with new values 
+#'  \link[=transcribeservice_update_vocabulary]{update_vocabulary} \tab Updates an existing vocabulary with new values \cr
+#'  \link[=transcribeservice_update_vocabulary_filter]{update_vocabulary_filter} \tab Updates a vocabulary filter with a new list of filtered words 
 #' }
 #'
 #' @rdname transcribeservice
@@ -8059,9 +8110,13 @@ transcribeservice <- function(config = list()) {
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=translate_delete_terminology]{delete_terminology} \tab A synchronous action that deletes a custom terminology \cr
+#'  \link[=translate_describe_text_translation_job]{describe_text_translation_job} \tab Gets the properties associated with an asycnhronous batch translation job including name, ID, status, source and target languages, input/output S3 buckets, and so on\cr
 #'  \link[=translate_get_terminology]{get_terminology} \tab Retrieves a custom terminology \cr
-#'  \link[=translate_import_terminology]{import_terminology} \tab Creates or updates a custom terminology, depending on whether or not one already exists for the given terminology name\cr
+#'  \link[=translate_import_terminology]{import_terminology} \tab Creates or updates a custom terminology, depending on whether or not one already exists for the given terminology name \cr
 #'  \link[=translate_list_terminologies]{list_terminologies} \tab Provides a list of custom terminologies associated with your account \cr
+#'  \link[=translate_list_text_translation_jobs]{list_text_translation_jobs} \tab Gets a list of the batch translation jobs that you have submitted \cr
+#'  \link[=translate_start_text_translation_job]{start_text_translation_job} \tab Starts an asynchronous batch translation job \cr
+#'  \link[=translate_stop_text_translation_job]{stop_text_translation_job} \tab Stops an asynchronous batch translation job that is in progress \cr
 #'  \link[=translate_translate_text]{translate_text} \tab Translates input text from the source language to the target language 
 #' }
 #'
@@ -8810,7 +8865,8 @@ glue <- function(config = list()) {
 #'  \link[=kafka_untag_resource]{untag_resource} \tab Removes the tags associated with the keys that are provided in the query \cr
 #'  \link[=kafka_update_broker_count]{update_broker_count} \tab Updates the number of broker nodes in the cluster \cr
 #'  \link[=kafka_update_broker_storage]{update_broker_storage} \tab Updates the EBS storage associated with MSK brokers \cr
-#'  \link[=kafka_update_cluster_configuration]{update_cluster_configuration} \tab Updates the cluster with the configuration that is specified in the request body 
+#'  \link[=kafka_update_cluster_configuration]{update_cluster_configuration} \tab Updates the cluster with the configuration that is specified in the request body \cr
+#'  \link[=kafka_update_monitoring]{update_monitoring} \tab Updates the monitoring settings for the cluster 
 #' }
 #'
 #' @rdname kafka
@@ -9165,7 +9221,7 @@ mturk <- function(config = list()) {
 #'  \link[=quicksight_create_data_source]{create_data_source} \tab Creates a data source \cr
 #'  \link[=quicksight_create_group]{create_group} \tab Creates an Amazon QuickSight group \cr
 #'  \link[=quicksight_create_group_membership]{create_group_membership} \tab Adds an Amazon QuickSight user to an Amazon QuickSight group \cr
-#'  \link[=quicksight_create_iam_policy_assignment]{create_iam_policy_assignment} \tab Creates an assignment with one specified IAM policy Amazon Resource Name (ARN) and will assigned to specified groups or users of QuickSight \cr
+#'  \link[=quicksight_create_iam_policy_assignment]{create_iam_policy_assignment} \tab Creates an assignment with one specified IAM policy, identified by its Amazon Resource Name (ARN) \cr
 #'  \link[=quicksight_create_ingestion]{create_ingestion} \tab Creates and starts a new SPICE ingestion on a dataset Any ingestions operating on tagged datasets inherit the same tags automatically for use in access control \cr
 #'  \link[=quicksight_create_template]{create_template} \tab Creates a template from an existing QuickSight analysis or template \cr
 #'  \link[=quicksight_create_template_alias]{create_template_alias} \tab Creates a template alias for a template \cr
@@ -9174,44 +9230,44 @@ mturk <- function(config = list()) {
 #'  \link[=quicksight_delete_data_source]{delete_data_source} \tab Deletes the data source permanently \cr
 #'  \link[=quicksight_delete_group]{delete_group} \tab Removes a user group from Amazon QuickSight \cr
 #'  \link[=quicksight_delete_group_membership]{delete_group_membership} \tab Removes a user from a group so that the user is no longer a member of the group \cr
-#'  \link[=quicksight_delete_iam_policy_assignment]{delete_iam_policy_assignment} \tab Deletes an existing assignment \cr
+#'  \link[=quicksight_delete_iam_policy_assignment]{delete_iam_policy_assignment} \tab Deletes an existing IAM policy assignment \cr
 #'  \link[=quicksight_delete_template]{delete_template} \tab Deletes a template \cr
-#'  \link[=quicksight_delete_template_alias]{delete_template_alias} \tab Update template alias of given template \cr
+#'  \link[=quicksight_delete_template_alias]{delete_template_alias} \tab Deletes the item that the specified template alias points to \cr
 #'  \link[=quicksight_delete_user]{delete_user} \tab Deletes the Amazon QuickSight user that is associated with the identity of the AWS Identity and Access Management (IAM) user or role that's making the call \cr
 #'  \link[=quicksight_delete_user_by_principal_id]{delete_user_by_principal_id} \tab Deletes a user identified by its principal ID \cr
 #'  \link[=quicksight_describe_dashboard]{describe_dashboard} \tab Provides a summary for a dashboard \cr
-#'  \link[=quicksight_describe_dashboard_permissions]{describe_dashboard_permissions} \tab Describes read and write permissions on a dashboard \cr
+#'  \link[=quicksight_describe_dashboard_permissions]{describe_dashboard_permissions} \tab Describes read and write permissions for a dashboard \cr
 #'  \link[=quicksight_describe_data_set]{describe_data_set} \tab Describes a dataset \cr
 #'  \link[=quicksight_describe_data_set_permissions]{describe_data_set_permissions} \tab Describes the permissions on a dataset \cr
 #'  \link[=quicksight_describe_data_source]{describe_data_source} \tab Describes a data source \cr
 #'  \link[=quicksight_describe_data_source_permissions]{describe_data_source_permissions} \tab Describes the resource permissions for a data source \cr
 #'  \link[=quicksight_describe_group]{describe_group} \tab Returns an Amazon QuickSight group's description and Amazon Resource Name (ARN) \cr
-#'  \link[=quicksight_describe_iam_policy_assignment]{describe_iam_policy_assignment} \tab Describes an existing IAMPolicy Assignment by specified assignment name \cr
+#'  \link[=quicksight_describe_iam_policy_assignment]{describe_iam_policy_assignment} \tab Describes an existing IAM policy assignment, as specified by the assignment name \cr
 #'  \link[=quicksight_describe_ingestion]{describe_ingestion} \tab Describes a SPICE ingestion \cr
 #'  \link[=quicksight_describe_template]{describe_template} \tab Describes a template's metadata \cr
-#'  \link[=quicksight_describe_template_alias]{describe_template_alias} \tab Describes the template aliases of a template \cr
+#'  \link[=quicksight_describe_template_alias]{describe_template_alias} \tab Describes the template alias for a template \cr
 #'  \link[=quicksight_describe_template_permissions]{describe_template_permissions} \tab Describes read and write permissions on a template \cr
 #'  \link[=quicksight_describe_user]{describe_user} \tab Returns information about a user, given the user name \cr
 #'  \link[=quicksight_get_dashboard_embed_url]{get_dashboard_embed_url} \tab Generates a server-side embeddable URL and authorization code \cr
-#'  \link[=quicksight_list_dashboards]{list_dashboards} \tab Lists dashboards in the AWS account \cr
-#'  \link[=quicksight_list_dashboard_versions]{list_dashboard_versions} \tab Lists all the versions of the dashboards in the Quicksight subscription \cr
-#'  \link[=quicksight_list_data_sets]{list_data_sets} \tab Lists all of the datasets belonging to this account in an AWS region \cr
+#'  \link[=quicksight_list_dashboards]{list_dashboards} \tab Lists dashboards in an AWS account \cr
+#'  \link[=quicksight_list_dashboard_versions]{list_dashboard_versions} \tab Lists all the versions of the dashboards in the QuickSight subscription \cr
+#'  \link[=quicksight_list_data_sets]{list_data_sets} \tab Lists all of the datasets belonging to the current AWS account in an AWS Region \cr
 #'  \link[=quicksight_list_data_sources]{list_data_sources} \tab Lists data sources in current AWS Region that belong to this AWS account \cr
 #'  \link[=quicksight_list_group_memberships]{list_group_memberships} \tab Lists member users in a group \cr
 #'  \link[=quicksight_list_groups]{list_groups} \tab Lists all user groups in Amazon QuickSight \cr
-#'  \link[=quicksight_list_iam_policy_assignments]{list_iam_policy_assignments} \tab Lists assignments in current QuickSight account \cr
-#'  \link[=quicksight_list_iam_policy_assignments_for_user]{list_iam_policy_assignments_for_user} \tab Lists all the assignments and the Amazon Resource Names (ARNs) for the associated IAM policies assigned to the specified user and the group or groups that the user belongs to\cr
+#'  \link[=quicksight_list_iam_policy_assignments]{list_iam_policy_assignments} \tab Lists IAM policy assignments in the current Amazon QuickSight account \cr
+#'  \link[=quicksight_list_iam_policy_assignments_for_user]{list_iam_policy_assignments_for_user} \tab Lists all the IAM policy assignments, including the Amazon Resource Names (ARNs) for the IAM policies assigned to the specified user and group or groups that the user belongs to\cr
 #'  \link[=quicksight_list_ingestions]{list_ingestions} \tab Lists the history of SPICE ingestions for a dataset \cr
 #'  \link[=quicksight_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags assigned to a resource \cr
 #'  \link[=quicksight_list_template_aliases]{list_template_aliases} \tab Lists all the aliases of a template \cr
-#'  \link[=quicksight_list_templates]{list_templates} \tab Lists all the templates in the QuickSight account \cr
-#'  \link[=quicksight_list_template_versions]{list_template_versions} \tab Lists all the versions of the templates in the Quicksight account \cr
+#'  \link[=quicksight_list_templates]{list_templates} \tab Lists all the templates in the current Amazon QuickSight account \cr
+#'  \link[=quicksight_list_template_versions]{list_template_versions} \tab Lists all the versions of the templates in the current Amazon QuickSight account \cr
 #'  \link[=quicksight_list_user_groups]{list_user_groups} \tab Lists the Amazon QuickSight groups that an Amazon QuickSight user is a member of \cr
 #'  \link[=quicksight_list_users]{list_users} \tab Returns a list of all of the Amazon QuickSight users belonging to this account \cr
 #'  \link[=quicksight_register_user]{register_user} \tab Creates an Amazon QuickSight user, whose identity is associated with the AWS Identity and Access Management (IAM) identity or role specified in the request \cr
 #'  \link[=quicksight_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified QuickSight resource \cr
 #'  \link[=quicksight_untag_resource]{untag_resource} \tab Removes a tag or tags from a resource \cr
-#'  \link[=quicksight_update_dashboard]{update_dashboard} \tab Updates a dashboard in the AWS account \cr
+#'  \link[=quicksight_update_dashboard]{update_dashboard} \tab Updates a dashboard in an AWS account \cr
 #'  \link[=quicksight_update_dashboard_permissions]{update_dashboard_permissions} \tab Updates read and write permissions on a dashboard \cr
 #'  \link[=quicksight_update_dashboard_published_version]{update_dashboard_published_version} \tab Updates the published version of a dashboard \cr
 #'  \link[=quicksight_update_data_set]{update_data_set} \tab Updates a dataset \cr
@@ -9219,10 +9275,10 @@ mturk <- function(config = list()) {
 #'  \link[=quicksight_update_data_source]{update_data_source} \tab Updates a data source \cr
 #'  \link[=quicksight_update_data_source_permissions]{update_data_source_permissions} \tab Updates the permissions to a data source \cr
 #'  \link[=quicksight_update_group]{update_group} \tab Changes a group description \cr
-#'  \link[=quicksight_update_iam_policy_assignment]{update_iam_policy_assignment} \tab Updates an existing assignment \cr
-#'  \link[=quicksight_update_template]{update_template} \tab Updates a template from an existing QuickSight analysis \cr
+#'  \link[=quicksight_update_iam_policy_assignment]{update_iam_policy_assignment} \tab Updates an existing IAM policy assignment \cr
+#'  \link[=quicksight_update_template]{update_template} \tab Updates a template from an existing Amazon QuickSight analysis or another template \cr
 #'  \link[=quicksight_update_template_alias]{update_template_alias} \tab Updates the template alias of a template \cr
-#'  \link[=quicksight_update_template_permissions]{update_template_permissions} \tab Updates the permissions on a template \cr
+#'  \link[=quicksight_update_template_permissions]{update_template_permissions} \tab Updates the resource permissions for a template \cr
 #'  \link[=quicksight_update_user]{update_user} \tab Updates an Amazon QuickSight user 
 #' }
 #'
@@ -10108,8 +10164,11 @@ directoryservice <- function(config = list()) {
 #'  \link[=fms_list_compliance_status]{list_compliance_status} \tab Returns an array of PolicyComplianceStatus objects in the response \cr
 #'  \link[=fms_list_member_accounts]{list_member_accounts} \tab Returns a MemberAccounts object that lists the member accounts in the administrator's AWS organization \cr
 #'  \link[=fms_list_policies]{list_policies} \tab Returns an array of PolicySummary objects in the response \cr
+#'  \link[=fms_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the list of tags for the specified AWS resource \cr
 #'  \link[=fms_put_notification_channel]{put_notification_channel} \tab Designates the IAM role and Amazon Simple Notification Service (SNS) topic that AWS Firewall Manager uses to record SNS logs \cr
-#'  \link[=fms_put_policy]{put_policy} \tab Creates an AWS Firewall Manager policy 
+#'  \link[=fms_put_policy]{put_policy} \tab Creates an AWS Firewall Manager policy \cr
+#'  \link[=fms_tag_resource]{tag_resource} \tab Adds one or more tags to an AWS resource \cr
+#'  \link[=fms_untag_resource]{untag_resource} \tab Removes one or more tags from an AWS resource 
 #' }
 #'
 #' @rdname fms
@@ -11028,6 +11087,18 @@ secretsmanager <- function(config = list()) {
 #' with the master account is created only in the us-west-2 Region.
 #' Security Hub must be enabled for the member account in the same Region
 #' that the invite was sent from.
+#' 
+#' The following throttling limits apply to using Security Hub API
+#' operations:
+#' 
+#' -   `GetFindings` - RateLimit of 3 requests per second, and a BurstLimit
+#'     of 6 requests per second.
+#' 
+#' -   `UpdateFindings` - RateLimit of 1 request per second, and a
+#'     BurstLimit of 5 requests per second.
+#' 
+#' -   All other operations - RateLimit of 10 request per second, and a
+#'     BurstLimit of 30 requests per second.
 #'
 #' @param
 #' config
@@ -12348,9 +12419,9 @@ costandusagereportservice <- function(config = list()) {
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=costexplorer_create_cost_category_definition]{create_cost_category_definition} \tab _COST CATEGORY IS IN PREVIEW RELEASE FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE \cr
-#'  \link[=costexplorer_delete_cost_category_definition]{delete_cost_category_definition} \tab _COST CATEGORY IS IN PREVIEW RELEASE FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE \cr
-#'  \link[=costexplorer_describe_cost_category_definition]{describe_cost_category_definition} \tab _COST CATEGORY IS IN PREVIEW RELEASE FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE \cr
+#'  \link[=costexplorer_create_cost_category_definition]{create_cost_category_definition} \tab _COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE \cr
+#'  \link[=costexplorer_delete_cost_category_definition]{delete_cost_category_definition} \tab _COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE \cr
+#'  \link[=costexplorer_describe_cost_category_definition]{describe_cost_category_definition} \tab _COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE \cr
 #'  \link[=costexplorer_get_cost_and_usage]{get_cost_and_usage} \tab Retrieves cost and usage metrics for your account \cr
 #'  \link[=costexplorer_get_cost_and_usage_with_resources]{get_cost_and_usage_with_resources} \tab Retrieves cost and usage metrics with resources for your account \cr
 #'  \link[=costexplorer_get_cost_forecast]{get_cost_forecast} \tab Retrieves a forecast for how much Amazon Web Services predicts that you will spend over the forecast time period that you select, based on your past costs\cr
@@ -12365,8 +12436,8 @@ costandusagereportservice <- function(config = list()) {
 #'  \link[=costexplorer_get_savings_plans_utilization_details]{get_savings_plans_utilization_details} \tab Retrieves attribute data along with aggregate utilization and savings data for a given time period \cr
 #'  \link[=costexplorer_get_tags]{get_tags} \tab Queries for available tag keys and tag values for a specified period \cr
 #'  \link[=costexplorer_get_usage_forecast]{get_usage_forecast} \tab Retrieves a forecast for how much Amazon Web Services predicts that you will use over the forecast time period that you select, based on your past usage \cr
-#'  \link[=costexplorer_list_cost_category_definitions]{list_cost_category_definitions} \tab _COST CATEGORY IS IN PREVIEW RELEASE FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE \cr
-#'  \link[=costexplorer_update_cost_category_definition]{update_cost_category_definition} \tab _COST CATEGORY IS IN PREVIEW RELEASE FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE 
+#'  \link[=costexplorer_list_cost_category_definitions]{list_cost_category_definitions} \tab _COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE \cr
+#'  \link[=costexplorer_update_cost_category_definition]{update_cost_category_definition} \tab _COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE 
 #' }
 #'
 #' @rdname costexplorer
@@ -12759,14 +12830,14 @@ connect <- function(config = list()) {
 #' \tabular{ll}{
 #'  \link[=pinpoint_create_app]{create_app} \tab Creates an application \cr
 #'  \link[=pinpoint_create_campaign]{create_campaign} \tab Creates a new campaign for an application or updates the settings of an existing campaign for an application \cr
-#'  \link[=pinpoint_create_email_template]{create_email_template} \tab Creates a message template that you can use in messages that are sent through the email channel \cr
+#'  \link[=pinpoint_create_email_template]{create_email_template} \tab Creates a message template for messages that are sent through the email channel \cr
 #'  \link[=pinpoint_create_export_job]{create_export_job} \tab Creates an export job for an application \cr
 #'  \link[=pinpoint_create_import_job]{create_import_job} \tab Creates an import job for an application \cr
 #'  \link[=pinpoint_create_journey]{create_journey} \tab Creates a journey for an application \cr
-#'  \link[=pinpoint_create_push_template]{create_push_template} \tab Creates a message template that you can use in messages that are sent through a push notification channel \cr
+#'  \link[=pinpoint_create_push_template]{create_push_template} \tab Creates a message template for messages that are sent through a push notification channel \cr
 #'  \link[=pinpoint_create_segment]{create_segment} \tab Creates a new segment for an application or updates the configuration, dimension, and other settings for an existing segment that's associated with an application\cr
-#'  \link[=pinpoint_create_sms_template]{create_sms_template} \tab Creates a message template that you can use in messages that are sent through the SMS channel \cr
-#'  \link[=pinpoint_create_voice_template]{create_voice_template} \tab Creates a message template that you can use in messages that are sent through the voice channel \cr
+#'  \link[=pinpoint_create_sms_template]{create_sms_template} \tab Creates a message template for messages that are sent through the SMS channel \cr
+#'  \link[=pinpoint_create_voice_template]{create_voice_template} \tab Creates a message template for messages that are sent through the voice channel \cr
 #'  \link[=pinpoint_delete_adm_channel]{delete_adm_channel} \tab Disables the ADM channel for an application and deletes any existing settings for the channel \cr
 #'  \link[=pinpoint_delete_apns_channel]{delete_apns_channel} \tab Disables the APNs channel for an application and deletes any existing settings for the channel \cr
 #'  \link[=pinpoint_delete_apns_sandbox_channel]{delete_apns_sandbox_channel} \tab Disables the APNs sandbox channel for an application and deletes any existing settings for the channel \cr
@@ -12776,18 +12847,18 @@ connect <- function(config = list()) {
 #'  \link[=pinpoint_delete_baidu_channel]{delete_baidu_channel} \tab Disables the Baidu channel for an application and deletes any existing settings for the channel \cr
 #'  \link[=pinpoint_delete_campaign]{delete_campaign} \tab Deletes a campaign from an application \cr
 #'  \link[=pinpoint_delete_email_channel]{delete_email_channel} \tab Disables the email channel for an application and deletes any existing settings for the channel \cr
-#'  \link[=pinpoint_delete_email_template]{delete_email_template} \tab Deletes a message template that was designed for use in messages that were sent through the email channel \cr
+#'  \link[=pinpoint_delete_email_template]{delete_email_template} \tab Deletes a message template for messages that were sent through the email channel \cr
 #'  \link[=pinpoint_delete_endpoint]{delete_endpoint} \tab Deletes an endpoint from an application \cr
 #'  \link[=pinpoint_delete_event_stream]{delete_event_stream} \tab Deletes the event stream for an application \cr
 #'  \link[=pinpoint_delete_gcm_channel]{delete_gcm_channel} \tab Disables the GCM channel for an application and deletes any existing settings for the channel \cr
 #'  \link[=pinpoint_delete_journey]{delete_journey} \tab Deletes a journey from an application \cr
-#'  \link[=pinpoint_delete_push_template]{delete_push_template} \tab Deletes a message template that was designed for use in messages that were sent through a push notification channel \cr
+#'  \link[=pinpoint_delete_push_template]{delete_push_template} \tab Deletes a message template for messages that were sent through a push notification channel \cr
 #'  \link[=pinpoint_delete_segment]{delete_segment} \tab Deletes a segment from an application \cr
 #'  \link[=pinpoint_delete_sms_channel]{delete_sms_channel} \tab Disables the SMS channel for an application and deletes any existing settings for the channel \cr
-#'  \link[=pinpoint_delete_sms_template]{delete_sms_template} \tab Deletes a message template that was designed for use in messages that were sent through the SMS channel \cr
+#'  \link[=pinpoint_delete_sms_template]{delete_sms_template} \tab Deletes a message template for messages that were sent through the SMS channel \cr
 #'  \link[=pinpoint_delete_user_endpoints]{delete_user_endpoints} \tab Deletes all the endpoints that are associated with a specific user ID \cr
 #'  \link[=pinpoint_delete_voice_channel]{delete_voice_channel} \tab Disables the voice channel for an application and deletes any existing settings for the channel \cr
-#'  \link[=pinpoint_delete_voice_template]{delete_voice_template} \tab Deletes a message template that was designed for use in messages that were sent through the voice channel \cr
+#'  \link[=pinpoint_delete_voice_template]{delete_voice_template} \tab Deletes a message template for messages that were sent through the voice channel \cr
 #'  \link[=pinpoint_get_adm_channel]{get_adm_channel} \tab Retrieves information about the status and settings of the ADM channel for an application \cr
 #'  \link[=pinpoint_get_apns_channel]{get_apns_channel} \tab Retrieves information about the status and settings of the APNs channel for an application \cr
 #'  \link[=pinpoint_get_apns_sandbox_channel]{get_apns_sandbox_channel} \tab Retrieves information about the status and settings of the APNs sandbox channel for an application \cr
@@ -12796,7 +12867,7 @@ connect <- function(config = list()) {
 #'  \link[=pinpoint_get_app]{get_app} \tab Retrieves information about an application \cr
 #'  \link[=pinpoint_get_application_date_range_kpi]{get_application_date_range_kpi} \tab Retrieves (queries) pre-aggregated data for a standard metric that applies to an application \cr
 #'  \link[=pinpoint_get_application_settings]{get_application_settings} \tab Retrieves information about the settings for an application \cr
-#'  \link[=pinpoint_get_apps]{get_apps} \tab Retrieves information about all of your applications \cr
+#'  \link[=pinpoint_get_apps]{get_apps} \tab Retrieves information about all the applications that are associated with your Amazon Pinpoint account \cr
 #'  \link[=pinpoint_get_baidu_channel]{get_baidu_channel} \tab Retrieves information about the status and settings of the Baidu channel for an application \cr
 #'  \link[=pinpoint_get_campaign]{get_campaign} \tab Retrieves information about the status, configuration, and other settings for a campaign \cr
 #'  \link[=pinpoint_get_campaign_activities]{get_campaign_activities} \tab Retrieves information about all the activities for a campaign \cr
@@ -12806,7 +12877,7 @@ connect <- function(config = list()) {
 #'  \link[=pinpoint_get_campaign_versions]{get_campaign_versions} \tab Retrieves information about the status, configuration, and other settings for all versions of a campaign \cr
 #'  \link[=pinpoint_get_channels]{get_channels} \tab Retrieves information about the history and status of each channel for an application \cr
 #'  \link[=pinpoint_get_email_channel]{get_email_channel} \tab Retrieves information about the status and settings of the email channel for an application \cr
-#'  \link[=pinpoint_get_email_template]{get_email_template} \tab Retrieves the content and settings for a message template that you can use in messages that are sent through the email channel \cr
+#'  \link[=pinpoint_get_email_template]{get_email_template} \tab Retrieves the content and settings of a message template for messages that are sent through the email channel \cr
 #'  \link[=pinpoint_get_endpoint]{get_endpoint} \tab Retrieves information about the settings and attributes of a specific endpoint for an application \cr
 #'  \link[=pinpoint_get_event_stream]{get_event_stream} \tab Retrieves information about the event stream settings for an application \cr
 #'  \link[=pinpoint_get_export_job]{get_export_job} \tab Retrieves information about the status and settings of a specific export job for an application \cr
@@ -12818,21 +12889,22 @@ connect <- function(config = list()) {
 #'  \link[=pinpoint_get_journey_date_range_kpi]{get_journey_date_range_kpi} \tab Retrieves (queries) pre-aggregated data for a standard engagement metric that applies to a journey \cr
 #'  \link[=pinpoint_get_journey_execution_activity_metrics]{get_journey_execution_activity_metrics} \tab Retrieves (queries) pre-aggregated data for a standard execution metric that applies to a journey activity \cr
 #'  \link[=pinpoint_get_journey_execution_metrics]{get_journey_execution_metrics} \tab Retrieves (queries) pre-aggregated data for a standard execution metric that applies to a journey \cr
-#'  \link[=pinpoint_get_push_template]{get_push_template} \tab Retrieves the content and settings for a message template that you can use in messages that are sent through a push notification channel \cr
+#'  \link[=pinpoint_get_push_template]{get_push_template} \tab Retrieves the content and settings of a message template for messages that are sent through a push notification channel \cr
 #'  \link[=pinpoint_get_segment]{get_segment} \tab Retrieves information about the configuration, dimension, and other settings for a specific segment that's associated with an application \cr
 #'  \link[=pinpoint_get_segment_export_jobs]{get_segment_export_jobs} \tab Retrieves information about the status and settings of the export jobs for a segment \cr
 #'  \link[=pinpoint_get_segment_import_jobs]{get_segment_import_jobs} \tab Retrieves information about the status and settings of the import jobs for a segment \cr
 #'  \link[=pinpoint_get_segments]{get_segments} \tab Retrieves information about the configuration, dimension, and other settings for all the segments that are associated with an application \cr
 #'  \link[=pinpoint_get_segment_version]{get_segment_version} \tab Retrieves information about the configuration, dimension, and other settings for a specific version of a segment that's associated with an application \cr
-#'  \link[=pinpoint_get_segment_versions]{get_segment_versions} \tab Retrieves information about the configuration, dimension, and other settings for all versions of a specific segment that's associated with an application \cr
+#'  \link[=pinpoint_get_segment_versions]{get_segment_versions} \tab Retrieves information about the configuration, dimension, and other settings for all the versions of a specific segment that's associated with an application \cr
 #'  \link[=pinpoint_get_sms_channel]{get_sms_channel} \tab Retrieves information about the status and settings of the SMS channel for an application \cr
-#'  \link[=pinpoint_get_sms_template]{get_sms_template} \tab Retrieves the content and settings for a message template that you can use in messages that are sent through the SMS channel \cr
+#'  \link[=pinpoint_get_sms_template]{get_sms_template} \tab Retrieves the content and settings of a message template for messages that are sent through the SMS channel \cr
 #'  \link[=pinpoint_get_user_endpoints]{get_user_endpoints} \tab Retrieves information about all the endpoints that are associated with a specific user ID \cr
 #'  \link[=pinpoint_get_voice_channel]{get_voice_channel} \tab Retrieves information about the status and settings of the voice channel for an application \cr
-#'  \link[=pinpoint_get_voice_template]{get_voice_template} \tab Retrieves the content and settings for a message template that you can use in messages that are sent through the voice channel \cr
+#'  \link[=pinpoint_get_voice_template]{get_voice_template} \tab Retrieves the content and settings of a message template for messages that are sent through the voice channel \cr
 #'  \link[=pinpoint_list_journeys]{list_journeys} \tab Retrieves information about the status, configuration, and other settings for all the journeys that are associated with an application \cr
 #'  \link[=pinpoint_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves all the tags (keys and values) that are associated with an application, campaign, journey, message template, or segment \cr
 #'  \link[=pinpoint_list_templates]{list_templates} \tab Retrieves information about all the message templates that are associated with your Amazon Pinpoint account \cr
+#'  \link[=pinpoint_list_template_versions]{list_template_versions} \tab Retrieves information about all the versions of a specific message template \cr
 #'  \link[=pinpoint_phone_number_validate]{phone_number_validate} \tab Retrieves information about a phone number \cr
 #'  \link[=pinpoint_put_events]{put_events} \tab Creates a new event to record for endpoints, or creates or updates endpoint data that existing events are associated with \cr
 #'  \link[=pinpoint_put_event_stream]{put_event_stream} \tab Creates a new event stream for an application or updates the settings of an existing event stream for an application \cr
@@ -12850,18 +12922,19 @@ connect <- function(config = list()) {
 #'  \link[=pinpoint_update_baidu_channel]{update_baidu_channel} \tab Enables the Baidu channel for an application or updates the status and settings of the Baidu channel for an application \cr
 #'  \link[=pinpoint_update_campaign]{update_campaign} \tab Updates the configuration and other settings for a campaign \cr
 #'  \link[=pinpoint_update_email_channel]{update_email_channel} \tab Enables the email channel for an application or updates the status and settings of the email channel for an application \cr
-#'  \link[=pinpoint_update_email_template]{update_email_template} \tab Updates an existing message template that you can use in messages that are sent through the email channel \cr
+#'  \link[=pinpoint_update_email_template]{update_email_template} \tab Updates an existing message template for messages that are sent through the email channel \cr
 #'  \link[=pinpoint_update_endpoint]{update_endpoint} \tab Creates a new endpoint for an application or updates the settings and attributes of an existing endpoint for an application \cr
 #'  \link[=pinpoint_update_endpoints_batch]{update_endpoints_batch} \tab Creates a new batch of endpoints for an application or updates the settings and attributes of a batch of existing endpoints for an application \cr
 #'  \link[=pinpoint_update_gcm_channel]{update_gcm_channel} \tab Enables the GCM channel for an application or updates the status and settings of the GCM channel for an application \cr
 #'  \link[=pinpoint_update_journey]{update_journey} \tab Updates the configuration and other settings for a journey \cr
-#'  \link[=pinpoint_update_journey_state]{update_journey_state} \tab Cancels an active journey \cr
-#'  \link[=pinpoint_update_push_template]{update_push_template} \tab Updates an existing message template that you can use in messages that are sent through a push notification channel \cr
+#'  \link[=pinpoint_update_journey_state]{update_journey_state} \tab Cancels (stops) an active journey \cr
+#'  \link[=pinpoint_update_push_template]{update_push_template} \tab Updates an existing message template for messages that are sent through a push notification channel \cr
 #'  \link[=pinpoint_update_segment]{update_segment} \tab Creates a new segment for an application or updates the configuration, dimension, and other settings for an existing segment that's associated with an application\cr
 #'  \link[=pinpoint_update_sms_channel]{update_sms_channel} \tab Enables the SMS channel for an application or updates the status and settings of the SMS channel for an application \cr
-#'  \link[=pinpoint_update_sms_template]{update_sms_template} \tab Updates an existing message template that you can use in messages that are sent through the SMS channel \cr
+#'  \link[=pinpoint_update_sms_template]{update_sms_template} \tab Updates an existing message template for messages that are sent through the SMS channel \cr
+#'  \link[=pinpoint_update_template_active_version]{update_template_active_version} \tab Changes the status of a specific version of a message template to _active_ \cr
 #'  \link[=pinpoint_update_voice_channel]{update_voice_channel} \tab Enables the voice channel for an application or updates the status and settings of the voice channel for an application \cr
-#'  \link[=pinpoint_update_voice_template]{update_voice_template} \tab Updates an existing message template that you can use in messages that are sent through the voice channel 
+#'  \link[=pinpoint_update_voice_template]{update_voice_template} \tab Updates an existing message template for messages that are sent through the voice channel 
 #' }
 #'
 #' @rdname pinpoint

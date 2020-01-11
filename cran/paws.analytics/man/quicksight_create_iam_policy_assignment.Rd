@@ -2,39 +2,41 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_create_iam_policy_assignment}
 \alias{quicksight_create_iam_policy_assignment}
-\title{Creates an assignment with one specified IAM policy Amazon Resource Name
-(ARN) and will assigned to specified groups or users of QuickSight}
+\title{Creates an assignment with one specified IAM policy, identified by its
+Amazon Resource Name (ARN)}
 \usage{
 quicksight_create_iam_policy_assignment(AwsAccountId, AssignmentName,
   AssignmentStatus, PolicyArn, Identities, Namespace)
 }
 \arguments{
-\item{AwsAccountId}{[required] The AWS Account ID where you want to assign QuickSight users or groups
-to an IAM policy.}
+\item{AwsAccountId}{[required] The ID of the AWS account where you want to assign an IAM policy to
+QuickSight users or groups.}
 
 \item{AssignmentName}{[required] The name of the assignment. It must be unique within an AWS account.}
 
-\item{AssignmentStatus}{[required] The status of an assignment:
+\item{AssignmentStatus}{[required] The status of the assignment. Possible values are as follows:
 \itemize{
-\item ENABLED - Anything specified in this assignment is used while
+\item \code{ENABLED} - Anything specified in this assignment is used when
 creating the data source.
-\item DISABLED - This assignment isn\'t used while creating the data
+\item \code{DISABLED} - This assignment isn\'t used when creating the data
 source.
-\item DRAFT - Assignment is an unfinished draft and isn\'t used while
-creating the data source.
+\item \code{DRAFT} - This assignment is an unfinished draft and isn\'t used
+when creating the data source.
 }}
 
-\item{PolicyArn}{An IAM policy Amazon Resource Name (ARN) that you want to apply to the
-QuickSight users and groups specified in this assignment.}
+\item{PolicyArn}{The ARN for the IAM policy to apply to the QuickSight users and groups
+specified in this assignment.}
 
-\item{Identities}{QuickSight users and/or groups that you want to assign the policy to.}
+\item{Identities}{The QuickSight users, groups, or both that you want to assign the policy
+to.}
 
 \item{Namespace}{[required] The namespace that contains the assignment.}
 }
 \description{
-Creates an assignment with one specified IAM policy Amazon Resource Name
-(ARN) and will assigned to specified groups or users of QuickSight.
-Users and groups need to be in the same namespace.
+Creates an assignment with one specified IAM policy, identified by its
+Amazon Resource Name (ARN). This policy will be assigned to specified
+groups or users of Amazon QuickSight. The users and groups need to be in
+the same namespace.
 }
 \section{Request syntax}{
 \preformatted{svc$create_iam_policy_assignment(

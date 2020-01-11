@@ -102,30 +102,54 @@ opsworkscm_associate_node <- function(ServerName, NodeName, EngineAttributes) {
 #' valid.
 #'
 #' @usage
-#' opsworkscm_create_backup(ServerName, Description)
+#' opsworkscm_create_backup(ServerName, Description, Tags)
 #'
 #' @param ServerName &#91;required&#93; The name of the server that you want to back up.
 #' @param Description A user-defined description of the backup.
+#' @param Tags A map that contains tag keys and tag values to attach to an AWS
+#' OpsWorks-CM server backup.
+#' 
+#' -   The key cannot be empty.
+#' 
+#' -   The key can be a maximum of 127 characters, and can contain only
+#'     Unicode letters, numbers, or separators, or the following special
+#'     characters: `+ - = . _ : /`
+#' 
+#' -   The value can be a maximum 255 characters, and contain only Unicode
+#'     letters, numbers, or separators, or the following special
+#'     characters: `+ - = . _ : /`
+#' 
+#' -   Leading and trailing white spaces are trimmed from both the key and
+#'     value.
+#' 
+#' -   A maximum of 50 user-applied tags is allowed for tag-supported AWS
+#'     OpsWorks-CM resources.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_backup(
 #'   ServerName = "string",
-#'   Description = "string"
+#'   Description = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname opsworkscm_create_backup
-opsworkscm_create_backup <- function(ServerName, Description = NULL) {
+opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateBackup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .opsworkscm$create_backup_input(ServerName = ServerName, Description = Description)
+  input <- .opsworkscm$create_backup_input(ServerName = ServerName, Description = Description, Tags = Tags)
   output <- .opsworkscm$create_backup_output()
   config <- get_config()
   svc <- .opsworkscm$service(config)
@@ -177,23 +201,23 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL) {
 #'   EngineModel, EngineVersion, EngineAttributes, BackupRetentionCount,
 #'   ServerName, InstanceProfileArn, InstanceType, KeyPair,
 #'   PreferredMaintenanceWindow, PreferredBackupWindow, SecurityGroupIds,
-#'   ServiceRoleArn, SubnetIds, BackupId)
+#'   ServiceRoleArn, SubnetIds, Tags, BackupId)
 #'
 #' @param AssociatePublicIpAddress Associate a public IP address with a server that you are launching.
 #' Valid values are `true` or `false`. The default value is `true`.
-#' @param CustomDomain An optional public endpoint of a server, such as
-#' `https://aws.my-company.com`. To access the server, create a CNAME DNS
-#' record in your preferred DNS service that points the custom domain to
-#' the endpoint that is generated when the server is created (the value of
-#' the CreateServer Endpoint attribute). You cannot access the server by
-#' using the generated `Endpoint` value if the server is using a custom
-#' domain. If you specify a custom domain, you must also specify values for
-#' `CustomCertificate` and `CustomPrivateKey`.
-#' @param CustomCertificate A PEM-formatted HTTPS certificate. The value can be be a single,
-#' self-signed certificate, or a certificate chain. If you specify a custom
-#' certificate, you must also specify values for `CustomDomain` and
-#' `CustomPrivateKey`. The following are requirements for the
-#' `CustomCertificate` value:
+#' @param CustomDomain Supported on servers running Chef Automate 2. An optional public
+#' endpoint of a server, such as `https://aws.my-company.com`. To access
+#' the server, create a CNAME DNS record in your preferred DNS service that
+#' points the custom domain to the endpoint that is generated when the
+#' server is created (the value of the CreateServer Endpoint attribute).
+#' You cannot access the server by using the generated `Endpoint` value if
+#' the server is using a custom domain. If you specify a custom domain, you
+#' must also specify values for `CustomCertificate` and `CustomPrivateKey`.
+#' @param CustomCertificate Supported on servers running Chef Automate 2. A PEM-formatted HTTPS
+#' certificate. The value can be be a single, self-signed certificate, or a
+#' certificate chain. If you specify a custom certificate, you must also
+#' specify values for `CustomDomain` and `CustomPrivateKey`. The following
+#' are requirements for the `CustomCertificate` value:
 #' 
 #' -   You can provide either a self-signed, custom certificate, or the
 #'     full certificate chain.
@@ -210,10 +234,11 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL) {
 #'     if present, must match the value of `CustomDomain`.
 #' 
 #' -   The certificate must match the value of `CustomPrivateKey`.
-#' @param CustomPrivateKey A private key in PEM format for connecting to the server by using HTTPS.
-#' The private key must not be encrypted; it cannot be protected by a
-#' password or passphrase. If you specify a custom private key, you must
-#' also specify values for `CustomDomain` and `CustomCertificate`.
+#' @param CustomPrivateKey Supported on servers running Chef Automate 2. A private key in PEM
+#' format for connecting to the server by using HTTPS. The private key must
+#' not be encrypted; it cannot be protected by a password or passphrase. If
+#' you specify a custom private key, you must also specify values for
+#' `CustomDomain` and `CustomCertificate`.
 #' @param DisableAutomatedBackup Enable or disable scheduled backups. Valid values are `true` or `false`.
 #' The default value is `true`.
 #' @param Engine The configuration management engine to use. Valid values include
@@ -324,6 +349,24 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL) {
 #' For more information about supported Amazon EC2 platforms, see
 #' [Supported
 #' Platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
+#' @param Tags A map that contains tag keys and tag values to attach to an AWS OpsWorks
+#' for Chef Automate or AWS OpsWorks for Puppet Enterprise server.
+#' 
+#' -   The key cannot be empty.
+#' 
+#' -   The key can be a maximum of 127 characters, and can contain only
+#'     Unicode letters, numbers, or separators, or the following special
+#'     characters: `+ - = . _ : /`
+#' 
+#' -   The value can be a maximum 255 characters, and contain only Unicode
+#'     letters, numbers, or separators, or the following special
+#'     characters: `+ - = . _ : /`
+#' 
+#' -   Leading and trailing white spaces are trimmed from both the key and
+#'     value.
+#' 
+#' -   A maximum of 50 user-applied tags is allowed for any AWS OpsWorks-CM
+#'     server.
 #' @param BackupId If you specify this field, AWS OpsWorks CM creates the server by using
 #' the backup represented by BackupId.
 #'
@@ -358,6 +401,12 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL) {
 #'   SubnetIds = list(
 #'     "string"
 #'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
 #'   BackupId = "string"
 #' )
 #' ```
@@ -365,14 +414,14 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL) {
 #' @keywords internal
 #'
 #' @rdname opsworkscm_create_server
-opsworkscm_create_server <- function(AssociatePublicIpAddress = NULL, CustomDomain = NULL, CustomCertificate = NULL, CustomPrivateKey = NULL, DisableAutomatedBackup = NULL, Engine = NULL, EngineModel = NULL, EngineVersion = NULL, EngineAttributes = NULL, BackupRetentionCount = NULL, ServerName, InstanceProfileArn, InstanceType, KeyPair = NULL, PreferredMaintenanceWindow = NULL, PreferredBackupWindow = NULL, SecurityGroupIds = NULL, ServiceRoleArn, SubnetIds = NULL, BackupId = NULL) {
+opsworkscm_create_server <- function(AssociatePublicIpAddress = NULL, CustomDomain = NULL, CustomCertificate = NULL, CustomPrivateKey = NULL, DisableAutomatedBackup = NULL, Engine = NULL, EngineModel = NULL, EngineVersion = NULL, EngineAttributes = NULL, BackupRetentionCount = NULL, ServerName, InstanceProfileArn, InstanceType, KeyPair = NULL, PreferredMaintenanceWindow = NULL, PreferredBackupWindow = NULL, SecurityGroupIds = NULL, ServiceRoleArn, SubnetIds = NULL, Tags = NULL, BackupId = NULL) {
   op <- new_operation(
     name = "CreateServer",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .opsworkscm$create_server_input(AssociatePublicIpAddress = AssociatePublicIpAddress, CustomDomain = CustomDomain, CustomCertificate = CustomCertificate, CustomPrivateKey = CustomPrivateKey, DisableAutomatedBackup = DisableAutomatedBackup, Engine = Engine, EngineModel = EngineModel, EngineVersion = EngineVersion, EngineAttributes = EngineAttributes, BackupRetentionCount = BackupRetentionCount, ServerName = ServerName, InstanceProfileArn = InstanceProfileArn, InstanceType = InstanceType, KeyPair = KeyPair, PreferredMaintenanceWindow = PreferredMaintenanceWindow, PreferredBackupWindow = PreferredBackupWindow, SecurityGroupIds = SecurityGroupIds, ServiceRoleArn = ServiceRoleArn, SubnetIds = SubnetIds, BackupId = BackupId)
+  input <- .opsworkscm$create_server_input(AssociatePublicIpAddress = AssociatePublicIpAddress, CustomDomain = CustomDomain, CustomCertificate = CustomCertificate, CustomPrivateKey = CustomPrivateKey, DisableAutomatedBackup = DisableAutomatedBackup, Engine = Engine, EngineModel = EngineModel, EngineVersion = EngineVersion, EngineAttributes = EngineAttributes, BackupRetentionCount = BackupRetentionCount, ServerName = ServerName, InstanceProfileArn = InstanceProfileArn, InstanceType = InstanceType, KeyPair = KeyPair, PreferredMaintenanceWindow = PreferredMaintenanceWindow, PreferredBackupWindow = PreferredBackupWindow, SecurityGroupIds = SecurityGroupIds, ServiceRoleArn = ServiceRoleArn, SubnetIds = SubnetIds, Tags = Tags, BackupId = BackupId)
   output <- .opsworkscm$create_server_output()
   config <- get_config()
   svc <- .opsworkscm$service(config)
@@ -851,6 +900,64 @@ opsworkscm_export_server_engine_attribute <- function(ExportAttributeName, Serve
 }
 .opsworkscm$operations$export_server_engine_attribute <- opsworkscm_export_server_engine_attribute
 
+#' Returns a list of tags that are applied to the specified AWS OpsWorks
+#' for Chef Automate or AWS OpsWorks for Puppet Enterprise servers or
+#' backups
+#'
+#' Returns a list of tags that are applied to the specified AWS OpsWorks
+#' for Chef Automate or AWS OpsWorks for Puppet Enterprise servers or
+#' backups.
+#'
+#' @usage
+#' opsworkscm_list_tags_for_resource(ResourceArn, NextToken, MaxResults)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Number (ARN) of an AWS OpsWorks for Chef Automate or
+#' AWS OpsWorks for Puppet Enterprise server for which you want to show
+#' applied tags. For example,
+#' `arn:aws:opsworks-cm:us-west-2:123456789012:server/test-owcm-server/EXAMPLE-66b0-4196-8274-d1a2bEXAMPLE`.
+#' @param NextToken NextToken is a string that is returned in some command responses. It
+#' indicates that not all entries have been returned, and that you must run
+#' at least one more request to get remaining items. To get remaining
+#' results, call `ListTagsForResource` again, and assign the token from the
+#' previous results as the value of the `nextToken` parameter. If there are
+#' no more results, the response object\'s `nextToken` parameter value is
+#' `null`. Setting a `nextToken` value that was not returned in your
+#' previous results causes an `InvalidNextTokenException` to occur.
+#' @param MaxResults To receive a paginated response, use this parameter to specify the
+#' maximum number of results to be returned with a single call. If the
+#' number of available results exceeds this maximum, the response includes
+#' a `NextToken` value that you can assign to the `NextToken` request
+#' parameter to get the next set of results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opsworkscm_list_tags_for_resource
+opsworkscm_list_tags_for_resource <- function(ResourceArn, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .opsworkscm$list_tags_for_resource_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .opsworkscm$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .opsworkscm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opsworkscm$operations$list_tags_for_resource <- opsworkscm_list_tags_for_resource
+
 #' Restores a backup to a server that is in a CONNECTION_LOST, HEALTHY,
 #' RUNNING, UNHEALTHY, or TERMINATED state
 #'
@@ -860,6 +967,12 @@ opsworkscm_export_server_engine_attribute <- function(ExportAttributeName, Serve
 #' instance is configured. RestoreServer maintains the existing server
 #' endpoint, so configuration management of the server\'s client devices
 #' (nodes) should continue to work.
+#' 
+#' Restoring from a backup is performed by creating a new EC2 instance. If
+#' restoration is successful, and the server is in a `HEALTHY` state, AWS
+#' OpsWorks CM switches traffic over to the new instance. After restoration
+#' is finished, the old EC2 instance is maintained in a `Running` or
+#' `Stopped` state, but is eventually terminated.
 #' 
 #' This operation is asynchronous.
 #' 
@@ -963,6 +1076,112 @@ opsworkscm_start_maintenance <- function(ServerName, EngineAttributes = NULL) {
   return(response)
 }
 .opsworkscm$operations$start_maintenance <- opsworkscm_start_maintenance
+
+#' Applies tags to an AWS OpsWorks for Chef Automate or AWS OpsWorks for
+#' Puppet Enterprise server, or to server backups
+#'
+#' Applies tags to an AWS OpsWorks for Chef Automate or AWS OpsWorks for
+#' Puppet Enterprise server, or to server backups.
+#'
+#' @usage
+#' opsworkscm_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Number (ARN) of a resource to which you want to
+#' apply tags. For example,
+#' `arn:aws:opsworks-cm:us-west-2:123456789012:server/test-owcm-server/EXAMPLE-66b0-4196-8274-d1a2bEXAMPLE`.
+#' @param Tags &#91;required&#93; A map that contains tag keys and tag values to attach to AWS OpsWorks-CM
+#' servers or backups.
+#' 
+#' -   The key cannot be empty.
+#' 
+#' -   The key can be a maximum of 127 characters, and can contain only
+#'     Unicode letters, numbers, or separators, or the following special
+#'     characters: `+ - = . _ : /`
+#' 
+#' -   The value can be a maximum 255 characters, and contain only Unicode
+#'     letters, numbers, or separators, or the following special
+#'     characters: `+ - = . _ : /`
+#' 
+#' -   Leading and trailing white spaces are trimmed from both the key and
+#'     value.
+#' 
+#' -   A maximum of 50 user-applied tags is allowed for any AWS OpsWorks-CM
+#'     server or backup.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opsworkscm_tag_resource
+opsworkscm_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .opsworkscm$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .opsworkscm$tag_resource_output()
+  config <- get_config()
+  svc <- .opsworkscm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opsworkscm$operations$tag_resource <- opsworkscm_tag_resource
+
+#' Removes specified tags from an AWS OpsWorks-CM server or backup
+#'
+#' Removes specified tags from an AWS OpsWorks-CM server or backup.
+#'
+#' @usage
+#' opsworkscm_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Number (ARN) of a resource from which you want to
+#' remove tags. For example,
+#' `arn:aws:opsworks-cm:us-west-2:123456789012:server/test-owcm-server/EXAMPLE-66b0-4196-8274-d1a2bEXAMPLE`.
+#' @param TagKeys &#91;required&#93; The keys of tags that you want to remove.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opsworkscm_untag_resource
+opsworkscm_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .opsworkscm$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .opsworkscm$untag_resource_output()
+  config <- get_config()
+  svc <- .opsworkscm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opsworkscm$operations$untag_resource <- opsworkscm_untag_resource
 
 #' Updates settings for a server
 #'

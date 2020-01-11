@@ -2,7 +2,7 @@
 % Please edit documentation in R/devicefarm_operations.R
 \name{devicefarm_list_unique_problems}
 \alias{devicefarm_list_unique_problems}
-\title{Gets information about unique problems}
+\title{Gets information about unique problems, such as exceptions or crashes}
 \usage{
 devicefarm_list_unique_problems(arn, nextToken)
 }
@@ -14,7 +14,15 @@ operation, which can be used to return the next set of items in the
 list.}
 }
 \description{
-Gets information about unique problems.
+Gets information about unique problems, such as exceptions or crashes.
+}
+\details{
+Unique problems are defined as a single instance of an error across a
+run, job, or suite. For example, if a call in your application
+consistently raises an exception
+(\verb{OutOfBoundsException in MyActivity.java:386}), \code{ListUniqueProblems}
+returns a single entry instead of many individual entries for that
+exception.
 }
 \section{Request syntax}{
 \preformatted{svc$list_unique_problems(

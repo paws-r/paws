@@ -7,9 +7,9 @@
 gamelift_list_aliases(RoutingStrategyType, Name, Limit, NextToken)
 }
 \arguments{
-\item{RoutingStrategyType}{Type of routing to filter results on. Use this parameter to retrieve
-only aliases of a certain type. To retrieve all aliases, leave this
-parameter empty.
+\item{RoutingStrategyType}{The routing type to filter results on. Use this parameter to retrieve
+only aliases with a certain routing type. To retrieve all aliases, leave
+this parameter empty.
 
 Possible routing types include the following:
 \itemize{
@@ -21,13 +21,13 @@ throws a TerminalRoutingStrategyException with the RoutingStrategy
 message embedded.
 }}
 
-\item{Name}{Descriptive label that is associated with an alias. Alias names do not
+\item{Name}{A descriptive label that is associated with an alias. Alias names do not
 need to be unique.}
 
-\item{Limit}{Maximum number of results to return. Use this parameter with \code{NextToken}
-to get results as a set of sequential pages.}
+\item{Limit}{The maximum number of results to return. Use this parameter with
+\code{NextToken} to get results as a set of sequential pages.}
 
-\item{NextToken}{Token that indicates the start of the next sequential page of results.
+\item{NextToken}{A token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this action. To
 start at the beginning of the result set, do not specify a value.}
 }

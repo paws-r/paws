@@ -2,7 +2,7 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_update_room_membership}
 \alias{chime_update_room_membership}
-\title{Updates room membership details, such as member role}
+\title{Updates room membership details, such as the member role}
 \usage{
 chime_update_room_membership(AccountId, RoomId, MemberId, Role)
 }
@@ -16,9 +16,10 @@ chime_update_room_membership(AccountId, RoomId, MemberId, Role)
 \item{Role}{The role of the member.}
 }
 \description{
-Updates room membership details, such as member role. The member role
-designates whether the member is a chat room administrator or a general
-chat room member. Member role can only be updated for user IDs.
+Updates room membership details, such as the member role. The member
+role designates whether the member is a chat room administrator or a
+general chat room member. The member role can be updated only for user
+IDs.
 }
 \section{Request syntax}{
 \preformatted{svc$update_room_membership(

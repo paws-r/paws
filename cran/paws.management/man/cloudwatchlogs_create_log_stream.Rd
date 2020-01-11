@@ -16,7 +16,8 @@ Creates a log stream for the specified log group.
 }
 \details{
 There is no limit on the number of log streams that you can create for a
-log group.
+log group. There is a limit of 50 TPS on \code{CreateLogStream} operations,
+after which transactions are throttled.
 
 You must use the following guidelines when naming a log stream:
 \itemize{

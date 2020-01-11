@@ -7,15 +7,16 @@
 gamelift_update_alias(AliasId, Name, Description, RoutingStrategy)
 }
 \arguments{
-\item{AliasId}{[required] Unique identifier for a fleet alias. Specify the alias you want to
-update.}
+\item{AliasId}{[required] A unique identifier for the alias that you want to update. You can use
+either the alias ID or ARN value.}
 
-\item{Name}{Descriptive label that is associated with an alias. Alias names do not
+\item{Name}{A descriptive label that is associated with an alias. Alias names do not
 need to be unique.}
 
-\item{Description}{Human-readable description of an alias.}
+\item{Description}{A human-readable description of the alias.}
 
-\item{RoutingStrategy}{Object that specifies the fleet and routing type to use for the alias.}
+\item{RoutingStrategy}{The routing configuration, including routing type and fleet target, for
+the alias.}
 }
 \description{
 Updates properties for an alias. To update properties, specify the alias

@@ -7,7 +7,7 @@ documents}
 \usage{
 comprehend_create_document_classifier(DocumentClassifierName,
   DataAccessRoleArn, Tags, InputDataConfig, OutputDataConfig,
-  ClientRequestToken, LanguageCode, VolumeKmsKeyId, VpcConfig)
+  ClientRequestToken, LanguageCode, VolumeKmsKeyId, VpcConfig, Mode)
 }
 \arguments{
 \item{DocumentClassifierName}{[required] The name of the document classifier.}
@@ -46,6 +46,13 @@ either of the following formats:
 \item{VpcConfig}{Configuration parameters for an optional private Virtual Private Cloud
 (VPC) containing the resources you are using for your custom classifier.
 For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html}{Amazon VPC}.}
+
+\item{Mode}{Indicates the mode in which the classifier will be trained. The
+classifier can be trained in multi-class mode, which identifies one and
+only one class for each document, or multi-label mode, which identifies
+one or more labels for each document. In multi-label mode, multiple
+labels for an individual document are separated by a delimiter. The
+default delimiter between labels is a pipe (\\|).}
 }
 \description{
 Creates a new document classifier that you can use to categorize
@@ -66,7 +73,8 @@ how-document-classification.
     )
   ),
   InputDataConfig = list(
-    S3Uri = "string"
+    S3Uri = "string",
+    LabelDelimiter = "string"
   ),
   OutputDataConfig = list(
     S3Uri = "string",
@@ -82,7 +90,8 @@ how-document-classification.
     Subnets = list(
       "string"
     )
-  )
+  ),
+  Mode = "MULTI_CLASS"|"MULTI_LABEL"
 )
 }
 }

@@ -156,7 +156,8 @@ Updates the configuration and other settings for a journey.
             FromAddress = "string"
           ),
           NextActivity = "string",
-          TemplateName = "string"
+          TemplateName = "string",
+          TemplateVersion = "string"
         ),
         Holdout = list(
           NextActivity = "string",

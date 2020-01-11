@@ -21,7 +21,8 @@ time.}
 experiments, the call returns a token for getting the next set of
 experiments.}
 
-\item{MaxResults}{The maximum number of experiments to return in the response.}
+\item{MaxResults}{The maximum number of experiments to return in the response. The default
+value is 10.}
 }
 \description{
 Lists all the experiments in your account. The list can be filtered to

@@ -2,12 +2,13 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_list_data_sets}
 \alias{quicksight_list_data_sets}
-\title{Lists all of the datasets belonging to this account in an AWS region}
+\title{Lists all of the datasets belonging to the current AWS account in an AWS
+Region}
 \usage{
 quicksight_list_data_sets(AwsAccountId, NextToken, MaxResults)
 }
 \arguments{
-\item{AwsAccountId}{[required] The AWS Account ID.}
+\item{AwsAccountId}{[required] The AWS account ID.}
 
 \item{NextToken}{The token for the next set of results, or null if there are no more
 results.}
@@ -15,7 +16,8 @@ results.}
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
 \description{
-Lists all of the datasets belonging to this account in an AWS region.
+Lists all of the datasets belonging to the current AWS account in an AWS
+Region.
 }
 \details{
 The permissions resource is

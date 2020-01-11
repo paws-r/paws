@@ -294,7 +294,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' this regardless of the form of server-side encryption that was used to
 #' encrypt the source, or even if the source object was not encrypted. For
 #' more information about server-side encryption, see [Using Server-Side
-#' Encryption](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html).
+#' Encryption](https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html).
 #' 
 #' A copy request might return an error when Amazon S3 receives the copy
 #' request or while Amazon S3 is copying the files. If the error occurs
@@ -399,10 +399,16 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' 
 #'         -   `x-amz-server-side-encryption-context`
 #' 
-#'         If you specify `x-amz-server-side-encryption:aws:kms` but don\'t
-#'         provide `x-amz-server-side- encryption-aws-kms-key-id`, Amazon
-#'         S3 uses the AWS managed customer master key (CMK) in AWS KMS to
-#'         protect the data.
+#'         If you specify `x-amz-server-side-encryption:aws:kms`, but
+#'         don\'t provide `x-amz-server-side-encryption-aws-kms-key-id`,
+#'         Amazon S3 uses the AWS managed CMK in AWS KMS to protect the
+#'         data. If you want to use a customer managed AWS KMS CMK, you
+#'         must provide the `x-amz-server-side-encryption-aws-kms-key-id`
+#'         of the symmetric customer managed CMK. Amazon S3 only supports
+#'         symmetric CMKs and not asymmetric CMKs. For more information,
+#'         see [Using Symmetric and Asymmetric
+#'         Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
+#'         in the *AWS Key Management Service Developer Guide*.
 #' 
 #'         All GET and PUT requests for an object protected by AWS KMS fail
 #'         if you don\'t make them with SSL or by using SigV4.
@@ -560,9 +566,10 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' @param SSEKMSKeyId Specifies the AWS KMS key ID to use for object encryption. All GET and
 #' PUT requests for an object protected by AWS KMS will fail if not made
 #' via SSL or using SigV4. For information about configuring using any of
-#' the officially supported AWS SDKs and AWS CLI, see Specifying the
-#' Signature Version in Request Authentication in the *Amazon S3 Developer
-#' Guide*.
+#' the officially supported AWS SDKs and AWS CLI, see [Specifying the
+#' Signature Version in Request
+#' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version)
+#' in the *Amazon S3 Developer Guide*.
 #' @param SSEKMSEncryptionContext Specifies the AWS KMS Encryption Context to use for object encryption.
 #' The value of this header is a base64-encoded UTF-8 string holding JSON
 #' with the encryption context key-value pairs.
@@ -912,7 +919,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #'         -   x-amz-server-side-encryption-context
 #' 
 #'         If you specify `x-amz-server-side-encryption:aws:kms`, but
-#'         don\'t provide `x-amz-server-side- encryption-aws-kms-key-id`,
+#'         don\'t provide `x-amz-server-side-encryption-aws-kms-key-id`,
 #'         Amazon S3 uses the AWS managed CMK in AWS KMS to protect the
 #'         data.
 #' 
@@ -1048,12 +1055,12 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
-#' @param SSEKMSKeyId Specifies the AWS KMS key ID to use for object encryption. All GET and
-#' PUT requests for an object protected by AWS KMS will fail if not made
-#' via SSL or using SigV4. For information about configuring using any of
-#' the officially supported AWS SDKs and AWS CLI, see Specifying the
-#' Signature Version in Request Authentication in the *Amazon S3 Developer
-#' Guide*.
+#' @param SSEKMSKeyId Specifies the ID of the symmetric customer managed AWS KMS CMK to use
+#' for object encryption. All GET and PUT requests for an object protected
+#' by AWS KMS will fail if not made via SSL or using SigV4. For information
+#' about configuring using any of the officially supported AWS SDKs and AWS
+#' CLI, see Specifying the Signature Version in Request Authentication in
+#' the *Amazon S3 Developer Guide*.
 #' @param SSEKMSEncryptionContext Specifies the AWS KMS Encryption Context to use for object encryption.
 #' The value of this header is a base64-encoded UTF-8 string holding JSON
 #' with the encryption context key-value pairs.
@@ -1888,7 +1895,7 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 #'
 #' Removes the entire tag set from the specified object. For more
 #' information about managing object tags, see [Object
-#' Tagging](https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html#MultiFactorAuthenticationDelete).
+#' Tagging](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html).
 #' 
 #' To use this operation, you must have permission to perform the
 #' `s3:DeleteObjectTagging` action.
@@ -5237,8 +5244,7 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #' @param Bucket &#91;required&#93; The bucket to which to apply the ACL.
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. This header must be
 #' used as a message integrity check to verify that the request body was
-#' not corrupted in transit. For more information, go to [RFC
-#' 1864.](http://www.ietf.org/rfc/rfc1864.txt)
+#' not corrupted in transit. For more information, go to RFC 1864.
 #' @param GrantFullControl Allows grantee the read, write, read ACP, and write ACP permissions on
 #' the bucket.
 #' @param GrantRead Allows grantee to list the objects in the bucket.
@@ -5596,8 +5602,8 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL) {
 #' subresource to set the default encryption state of an existing bucket.
 #' 
 #' This implementation of the `PUT` operation sets default encryption for a
-#' buckets using server-side encryption with Amazon S3-managed keys SSE-S3
-#' or AWS KMS customer master keys (CMKs) (SSE-KMS) bucket.
+#' bucket using server-side encryption with Amazon S3-managed keys SSE-S3
+#' or AWS KMS customer master keys (CMKs) (SSE-KMS).
 #' 
 #' This operation requires AWS Signature Version 4. For more information,
 #' see Authenticating Requests (AWS Signature Version 4).
@@ -7350,9 +7356,15 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #'         -   x-amz-server-side-encryption-context
 #' 
 #'         If you specify `x-amz-server-side-encryption:aws:kms`, but
-#'         don\'t provide `x-amz-server-side- encryption-aws-kms-key-id`,
+#'         don\'t provide `x-amz-server-side-encryption-aws-kms-key-id`,
 #'         Amazon S3 uses the AWS managed CMK in AWS KMS to protect the
-#'         data.
+#'         data. If you want to use a customer managed AWS KMS CMK, you
+#'         must provide the `x-amz-server-side-encryption-aws-kms-key-id`
+#'         of the symmetric customer managed CMK. Amazon S3 only supports
+#'         symmetric CMKs and not asymmetric CMKs. For more information,
+#'         see [Using Symmetric and Asymmetric
+#'         Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
+#'         in the *AWS Key Management Service Developer Guide*.
 #' 
 #'         All GET and PUT requests for an object protected by AWS KMS fail
 #'         if you don\'t make them with SSL or by using SigV4.
@@ -7374,8 +7386,8 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #' 
 #'         For more information about server-side encryption with CMKs
 #'         stored in KMS (SSE-KMS), see [Protecting Data Using Server-Side
-#'         Encryption with CMKs stored in AWS
-#'         KMS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
+#'         Encryption with CMKs stored in
+#'         AWS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
 #' 
 #' Access-Control-List (ACL)-Specific Request Headers
 #' 
@@ -7477,8 +7489,15 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #'         -   x-amz-server-side-encryption-context
 #' 
 #'         If you specify `x-amz-server-side-encryption:aws:kms`, but
-#'         don\'t provide `x-amz-server-side- encryption-aws-kms-key-id`,
-#'         Amazon S3 uses the default AWS KMS CMK to protect the data.
+#'         don\'t provide `x-amz-server-side-encryption-aws-kms-key-id`,
+#'         Amazon S3 uses the AWS managed CMK in AWS KMS to protect the
+#'         data. If you want to use a customer managed AWS KMS CMK, you
+#'         must provide the `x-amz-server-side-encryption-aws-kms-key-id`
+#'         of the symmetric customer managed CMK. Amazon S3 only supports
+#'         symmetric CMKs and not asymmetric CMKs. For more information,
+#'         see [Using Symmetric and Asymmetric
+#'         Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
+#'         in the *AWS Key Management Service Developer Guide*.
 #' 
 #'         All GET and PUT requests for an object protected by AWS KMS fail
 #'         if you don\'t make them with SSL or by using SigV4.
@@ -7626,12 +7645,13 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #' that the encryption key was transmitted without error.
 #' @param SSEKMSKeyId If `x-amz-server-side-encryption` is present and has the value of
 #' `aws:kms`, this header specifies the ID of the AWS Key Management
-#' Service (AWS KMS) customer master key (CMK) that was used for the
-#' object.
+#' Service (AWS KMS) symmetrical customer managed customer master key (CMK)
+#' that was used for the object.
 #' 
 #' If the value of `x-amz-server-side-encryption` is `aws:kms`, this header
-#' specifies the ID of the AWS KMS CMK that will be used for the object. If
-#' you specify `x-amz-server-side-encryption:aws:kms`, but do not
+#' specifies the ID of the symmetric customer managed AWS KMS CMK that will
+#' be used for the object. If you specify
+#' `x-amz-server-side-encryption:aws:kms`, but do not
 #' provide` x-amz-server-side-encryption-aws-kms-key-id`, Amazon S3 uses
 #' the AWS managed CMK in AWS to protect the data.
 #' @param SSEKMSEncryptionContext Specifies the AWS KMS Encryption Context to use for object encryption.

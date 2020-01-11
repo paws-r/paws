@@ -291,6 +291,18 @@ NULL
   return(populate(args, shape))
 }
 
+.workspaces$migrate_workspace_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SourceWorkspaceId = structure(logical(0), tags = list(type = "string")), BundleId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$migrate_workspace_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SourceWorkspaceId = structure(logical(0), tags = list(type = "string")), TargetWorkspaceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workspaces$modify_account_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DedicatedTenancySupport = structure(logical(0), tags = list(type = "string")), DedicatedTenancyManagementCidrRange = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))

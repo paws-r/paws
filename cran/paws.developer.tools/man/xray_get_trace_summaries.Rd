@@ -2,7 +2,7 @@
 % Please edit documentation in R/xray_operations.R
 \name{xray_get_trace_summaries}
 \alias{xray_get_trace_summaries}
-\title{Retrieves IDs and metadata for traces available for a specified time
+\title{Retrieves IDs and annotations for traces available for a specified time
 frame using an optional filter}
 \usage{
 xray_get_trace_summaries(StartTime, EndTime, TimeRangeType, Sampling,
@@ -28,7 +28,7 @@ requests that meet certain requirements.}
 the next page of results.}
 }
 \description{
-Retrieves IDs and metadata for traces available for a specified time
+Retrieves IDs and annotations for traces available for a specified time
 frame using an optional filter. To get the full traces, pass the trace
 IDs to \code{BatchGetTraces}.
 }

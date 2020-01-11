@@ -8867,7 +8867,8 @@ iam_update_assume_role_policy <- function(RoleName, PolicyDocument) {
 #' @param GroupName &#91;required&#93; Name of the IAM group to update. If you\'re changing the name of the
 #' group, this is the original name.
 #' 
-#' This parameter allows (through its regex pattern) a string of characters
+#' This parameter allows (through its [regex
+#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@-
 #' @param NewPath New path for the IAM group. Only include this if changing the group\'s

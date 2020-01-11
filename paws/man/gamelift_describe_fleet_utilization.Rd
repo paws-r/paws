@@ -7,12 +7,12 @@
 gamelift_describe_fleet_utilization(FleetIds, Limit, NextToken)
 }
 \arguments{
-\item{FleetIds}{Unique identifier for a fleet(s) to retrieve utilization data for. To
-request utilization data for all fleets, leave this parameter empty.}
+\item{FleetIds}{A unique identifier for a fleet(s) to retrieve utilization data for. You
+can use either the fleet ID or ARN value.}
 
-\item{Limit}{Maximum number of results to return. Use this parameter with \code{NextToken}
-to get results as a set of sequential pages. This parameter is ignored
-when the request specifies one or a list of fleet IDs.}
+\item{Limit}{The maximum number of results to return. Use this parameter with
+\code{NextToken} to get results as a set of sequential pages. This parameter
+is ignored when the request specifies one or a list of fleet IDs.}
 
 \item{NextToken}{Token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this action. To
@@ -53,13 +53,7 @@ error message includes the maximum allowed.
 \item DescribeEC2InstanceLimits
 \item DescribeFleetEvents
 }
-\item Update fleets:
-\itemize{
 \item UpdateFleetAttributes
-\item UpdateFleetCapacity
-\item UpdateFleetPortSettings
-\item UpdateRuntimeConfiguration
-}
 \item Manage fleet actions:
 \itemize{
 \item StartFleetActions

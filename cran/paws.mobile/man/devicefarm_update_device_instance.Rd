@@ -2,20 +2,20 @@
 % Please edit documentation in R/devicefarm_operations.R
 \name{devicefarm_update_device_instance}
 \alias{devicefarm_update_device_instance}
-\title{Updates information about an existing private device instance}
+\title{Updates information about a private device instance}
 \usage{
 devicefarm_update_device_instance(arn, profileArn, labels)
 }
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) of the device instance.}
 
-\item{profileArn}{The Amazon Resource Name (ARN) of the profile that you want to associate
-with the device instance.}
+\item{profileArn}{The ARN of the profile that you want to associate with the device
+instance.}
 
 \item{labels}{An array of strings that you want to associate with the device instance.}
 }
 \description{
-Updates information about an existing private device instance.
+Updates information about a private device instance.
 }
 \section{Request syntax}{
 \preformatted{svc$update_device_instance(

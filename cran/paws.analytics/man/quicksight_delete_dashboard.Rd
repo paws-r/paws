@@ -7,11 +7,12 @@
 quicksight_delete_dashboard(AwsAccountId, DashboardId, VersionNumber)
 }
 \arguments{
-\item{AwsAccountId}{[required] AWS account ID that contains the dashboard you are deleting.}
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the dashboard that you\'re
+deleting.}
 
 \item{DashboardId}{[required] The ID for the dashboard.}
 
-\item{VersionNumber}{The version number of the dashboard. If version number property is
+\item{VersionNumber}{The version number of the dashboard. If the version number property is
 provided, only the specified version of the dashboard is deleted.}
 }
 \description{

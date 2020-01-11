@@ -7,8 +7,8 @@
 gamelift_delete_alias(AliasId)
 }
 \arguments{
-\item{AliasId}{[required] Unique identifier for a fleet alias. Specify the alias you want to
-delete.}
+\item{AliasId}{[required] A unique identifier of the alias that you want to delete. You can use
+either the alias ID or ARN value.}
 }
 \description{
 Deletes an alias. This action removes all record of the alias. Game

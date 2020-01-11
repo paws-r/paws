@@ -4,7 +4,7 @@
 \alias{ec2_describe_placement_groups}
 \title{Describes the specified placement groups or all of your placement groups}
 \usage{
-ec2_describe_placement_groups(Filters, DryRun, GroupNames)
+ec2_describe_placement_groups(Filters, DryRun, GroupNames, GroupIds)
 }
 \arguments{
 \item{Filters}{The filters.
@@ -25,6 +25,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 Default: Describes all your placement groups, or only those otherwise
 specified.}
+
+\item{GroupIds}{The IDs of the placement groups.}
 }
 \description{
 Describes the specified placement groups or all of your placement
@@ -43,6 +45,9 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   ),
   DryRun = TRUE|FALSE,
   GroupNames = list(
+    "string"
+  ),
+  GroupIds = list(
     "string"
   )
 )

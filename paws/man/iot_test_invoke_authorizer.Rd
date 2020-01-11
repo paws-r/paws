@@ -18,7 +18,7 @@ service\'s private key.}
 
 \item{httpContext}{Specifies a test HTTP authorization request.}
 
-\item{mqttContext}{Specifies a test MQTT authorization request.\\>}
+\item{mqttContext}{Specifies a test MQTT authorization request.}
 
 \item{tlsContext}{Specifies a test TLS authorization request.}
 }

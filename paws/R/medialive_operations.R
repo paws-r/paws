@@ -23,6 +23,9 @@ NULL
 #'       list(
 #'         ActionName = "string",
 #'         ScheduleActionSettings = list(
+#'           HlsId3SegmentTaggingSettings = list(
+#'             Tag = "string"
+#'           ),
 #'           HlsTimedMetadataSettings = list(
 #'             Id3 = "string"
 #'           ),
@@ -421,7 +424,9 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'               "ADOBE"|"ELEMENTAL"|"ELEMENTAL_SCTE35"
 #'             ),
 #'             BaseUrlContent = "string",
+#'             BaseUrlContent1 = "string",
 #'             BaseUrlManifest = "string",
+#'             BaseUrlManifest1 = "string",
 #'             CaptionLanguageMappings = list(
 #'               list(
 #'                 CaptionChannel = 123,
@@ -469,6 +474,7 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'                 RestartDelay = 123
 #'               )
 #'             ),
+#'             HlsId3SegmentTagging = "DISABLED"|"ENABLED",
 #'             IFrameOnlyPlaylists = "DISABLED"|"STANDARD",
 #'             IndexNSegments = 123,
 #'             InputLossAction = "EMIT_OUTPUT"|"PAUSE_OUTPUT",
@@ -627,6 +633,7 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'                 NameModifier = "string"
 #'               ),
 #'               HlsOutputSettings = list(
+#'                 H265PackagingType = "HEV1"|"HVC1",
 #'                 HlsSettings = list(
 #'                   AudioOnlyHlsSettings = list(
 #'                     AudioGroupId = "string",
@@ -635,7 +642,11 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'                       Uri = "string",
 #'                       Username = "string"
 #'                     ),
-#'                     AudioTrackType = "ALTERNATE_AUDIO_AUTO_SELECT"|"ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"|"ALTERNATE_AUDIO_NOT_AUTO_SELECT"|"AUDIO_ONLY_VARIANT_STREAM"
+#'                     AudioTrackType = "ALTERNATE_AUDIO_AUTO_SELECT"|"ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"|"ALTERNATE_AUDIO_NOT_AUTO_SELECT"|"AUDIO_ONLY_VARIANT_STREAM",
+#'                     SegmentType = "AAC"|"FMP4"
+#'                   ),
+#'                   Fmp4HlsSettings = list(
+#'                     AudioRenditionSets = "string"
 #'                   ),
 #'                   StandardHlsSettings = list(
 #'                     AudioRenditionSets = "string",
@@ -768,7 +779,8 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'       list(
 #'         CodecSettings = list(
 #'           FrameCaptureSettings = list(
-#'             CaptureInterval = 123
+#'             CaptureInterval = 123,
+#'             CaptureIntervalUnits = "MILLISECONDS"|"SECONDS"
 #'           ),
 #'           H264Settings = list(
 #'             AdaptiveQuantization = "HIGH"|"HIGHER"|"LOW"|"MAX"|"MEDIUM"|"OFF",
@@ -2652,7 +2664,9 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'               "ADOBE"|"ELEMENTAL"|"ELEMENTAL_SCTE35"
 #'             ),
 #'             BaseUrlContent = "string",
+#'             BaseUrlContent1 = "string",
 #'             BaseUrlManifest = "string",
+#'             BaseUrlManifest1 = "string",
 #'             CaptionLanguageMappings = list(
 #'               list(
 #'                 CaptionChannel = 123,
@@ -2700,6 +2714,7 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'                 RestartDelay = 123
 #'               )
 #'             ),
+#'             HlsId3SegmentTagging = "DISABLED"|"ENABLED",
 #'             IFrameOnlyPlaylists = "DISABLED"|"STANDARD",
 #'             IndexNSegments = 123,
 #'             InputLossAction = "EMIT_OUTPUT"|"PAUSE_OUTPUT",
@@ -2858,6 +2873,7 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'                 NameModifier = "string"
 #'               ),
 #'               HlsOutputSettings = list(
+#'                 H265PackagingType = "HEV1"|"HVC1",
 #'                 HlsSettings = list(
 #'                   AudioOnlyHlsSettings = list(
 #'                     AudioGroupId = "string",
@@ -2866,7 +2882,11 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'                       Uri = "string",
 #'                       Username = "string"
 #'                     ),
-#'                     AudioTrackType = "ALTERNATE_AUDIO_AUTO_SELECT"|"ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"|"ALTERNATE_AUDIO_NOT_AUTO_SELECT"|"AUDIO_ONLY_VARIANT_STREAM"
+#'                     AudioTrackType = "ALTERNATE_AUDIO_AUTO_SELECT"|"ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"|"ALTERNATE_AUDIO_NOT_AUTO_SELECT"|"AUDIO_ONLY_VARIANT_STREAM",
+#'                     SegmentType = "AAC"|"FMP4"
+#'                   ),
+#'                   Fmp4HlsSettings = list(
+#'                     AudioRenditionSets = "string"
 #'                   ),
 #'                   StandardHlsSettings = list(
 #'                     AudioRenditionSets = "string",
@@ -2999,7 +3019,8 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'       list(
 #'         CodecSettings = list(
 #'           FrameCaptureSettings = list(
-#'             CaptureInterval = 123
+#'             CaptureInterval = 123,
+#'             CaptureIntervalUnits = "MILLISECONDS"|"SECONDS"
 #'           ),
 #'           H264Settings = list(
 #'             AdaptiveQuantization = "HIGH"|"HIGHER"|"LOW"|"MAX"|"MEDIUM"|"OFF",

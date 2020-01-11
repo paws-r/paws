@@ -23,7 +23,7 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.}
 }
 \description{
 Removes the entire tag set from the specified object. For more
-information about managing object tags, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html#MultiFactorAuthenticationDelete}{Object Tagging}.
+information about managing object tags, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html}{Object Tagging}.
 }
 \details{
 To use this operation, you must have permission to perform the

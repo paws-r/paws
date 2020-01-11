@@ -7,16 +7,17 @@
 gamelift_list_fleets(BuildId, ScriptId, Limit, NextToken)
 }
 \arguments{
-\item{BuildId}{Unique identifier for a build to return fleets for. Use this parameter
-to return only fleets using the specified build. To retrieve all fleets,
-leave this parameter empty.}
+\item{BuildId}{A unique identifier for a build to return fleets for. Use this parameter
+to return only fleets using the specified build. Use either the build ID
+or ARN value.To retrieve all fleets, leave this parameter empty.}
 
-\item{ScriptId}{Unique identifier for a Realtime script to return fleets for. Use this
-parameter to return only fleets using the specified script. To retrieve
-all fleets, leave this parameter empty.}
+\item{ScriptId}{A unique identifier for a Realtime script to return fleets for. Use this
+parameter to return only fleets using the specified script. Use either
+the script ID or ARN value.To retrieve all fleets, leave this parameter
+empty.}
 
-\item{Limit}{Maximum number of results to return. Use this parameter with \code{NextToken}
-to get results as a set of sequential pages.}
+\item{Limit}{The maximum number of results to return. Use this parameter with
+\code{NextToken} to get results as a set of sequential pages.}
 
 \item{NextToken}{Token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this action. To
@@ -40,23 +41,8 @@ Fleet records are not listed in a particular order.
 \item CreateFleet
 \item ListFleets
 \item DeleteFleet
-\item Describe fleets:
-\itemize{
 \item DescribeFleetAttributes
-\item DescribeFleetCapacity
-\item DescribeFleetPortSettings
-\item DescribeFleetUtilization
-\item DescribeRuntimeConfiguration
-\item DescribeEC2InstanceLimits
-\item DescribeFleetEvents
-}
-\item Update fleets:
-\itemize{
 \item UpdateFleetAttributes
-\item UpdateFleetCapacity
-\item UpdateFleetPortSettings
-\item UpdateRuntimeConfiguration
-}
 \item Manage fleet actions:
 \itemize{
 \item StartFleetActions

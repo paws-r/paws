@@ -7,7 +7,7 @@
 gamelift_stop_game_session_placement(PlacementId)
 }
 \arguments{
-\item{PlacementId}{[required] Unique identifier for a game session placement to cancel.}
+\item{PlacementId}{[required] A unique identifier for a game session placement to cancel.}
 }
 \description{
 Cancels a game session placement that is in \code{PENDING} status. To stop a

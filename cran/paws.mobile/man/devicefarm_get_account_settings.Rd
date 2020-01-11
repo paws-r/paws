@@ -2,14 +2,14 @@
 % Please edit documentation in R/devicefarm_operations.R
 \name{devicefarm_get_account_settings}
 \alias{devicefarm_get_account_settings}
-\title{Returns the number of unmetered iOS and/or unmetered Android devices
-that have been purchased by the account}
+\title{Returns the number of unmetered iOS or unmetered Android devices that
+have been purchased by the account}
 \usage{
 devicefarm_get_account_settings()
 }
 \description{
-Returns the number of unmetered iOS and/or unmetered Android devices
-that have been purchased by the account.
+Returns the number of unmetered iOS or unmetered Android devices that
+have been purchased by the account.
 }
 \section{Request syntax}{
 \preformatted{svc$get_account_settings()

@@ -816,7 +816,7 @@ rds_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Target
 #' destination AWS Region for the DB snapshot copy.
 #' 
 #' For more information about copying snapshots, see [Copying a DB
-#' Snapshot](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopyDBSnapshot.html)
+#' Snapshot](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopyDBSnapshot)
 #' in the *Amazon RDS User Guide.*
 #'
 #' @usage
@@ -1374,6 +1374,22 @@ rds_create_custom_availability_zone <- function(CustomAvailabilityZoneName, Exis
 #' in the *Amazon Aurora User Guide*.
 #' @param EngineMode The DB engine mode of the DB cluster, either `provisioned`,
 #' `serverless`, `parallelquery`, `global`, or `multimaster`.
+#' 
+#' Limitations and requirements apply to some DB engine modes. For more
+#' information, see the following sections in the *Amazon Aurora User
+#' Guide*:
+#' 
+#' -   [Limitations of Aurora
+#'     Serverless](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html#aurora-serverless.limitations)
+#' 
+#' -   [Limitations of Parallel
+#'     Query](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-mysql-parallel-query.html#aurora-mysql-parallel-query-limitations)
+#' 
+#' -   [Requirements for Aurora Global
+#'     Databases](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database.limitations)
+#' 
+#' -   [Limitations of Multi-Master
+#'     Clusters](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-limitations)
 #' @param ScalingConfiguration For DB clusters in `serverless` DB engine mode, the scaling properties
 #' of the DB cluster.
 #' @param DeletionProtection A value that indicates whether the DB cluster has deletion protection
@@ -5057,7 +5073,8 @@ rds_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBClus
 #' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
 #' in the *Amazon Aurora User Guide.*
 #' 
-#' This action only applies to Aurora DB clusters.
+#' This operation can also return information for Amazon Neptune DB
+#' instances and Amazon DocumentDB instances.
 #'
 #' @usage
 #' rds_describe_db_clusters(DBClusterIdentifier, Filters, MaxRecords,
@@ -5315,6 +5332,9 @@ rds_describe_db_instance_automated_backups <- function(DbiResourceId = NULL, DBI
 #'
 #' Returns information about provisioned RDS instances. This API supports
 #' pagination.
+#' 
+#' This operation can also return information for Amazon Neptune DB
+#' instances and Amazon DocumentDB instances.
 #'
 #' @usage
 #' rds_describe_db_instances(DBInstanceIdentifier, Filters, MaxRecords,
@@ -7454,6 +7474,82 @@ rds_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 }
 .rds$operations$list_tags_for_resource <- rds_list_tags_for_resource
 
+#' Override the system-default Secure Sockets Layer/Transport Layer
+#' Security (SSL/TLS) certificate for Amazon RDS for new DB instances, or
+#' remove the override
+#'
+#' Override the system-default Secure Sockets Layer/Transport Layer
+#' Security (SSL/TLS) certificate for Amazon RDS for new DB instances, or
+#' remove the override.
+#' 
+#' By using this operation, you can specify an RDS-approved SSL/TLS
+#' certificate for new DB instances that is different from the default
+#' certificate provided by RDS. You can also use this operation to remove
+#' the override, so that new DB instances use the default certificate
+#' provided by RDS.
+#' 
+#' You might need to override the default certificate in the following
+#' situations:
+#' 
+#' -   You already migrated your applications to support the latest
+#'     certificate authority (CA) certificate, but the new CA certificate
+#'     is not yet the RDS default CA certificate for the specified AWS
+#'     Region.
+#' 
+#' -   RDS has already moved to a new default CA certificate for the
+#'     specified AWS Region, but you are still in the process of supporting
+#'     the new CA certificate. In this case, you temporarily need
+#'     additional time to finish your application changes.
+#' 
+#' For more information about rotating your SSL/TLS certificate for RDS DB
+#' engines, see [Rotating Your SSL/TLS
+#' Certificate](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL-certificate-rotation.html)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' For more information about rotating your SSL/TLS certificate for Aurora
+#' DB engines, see [Rotating Your SSL/TLS
+#' Certificate](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html)
+#' in the *Amazon Aurora User Guide*.
+#'
+#' @usage
+#' rds_modify_certificates(CertificateIdentifier, RemoveCustomerOverride)
+#'
+#' @param CertificateIdentifier The new default certificate identifier to override the current one with.
+#' 
+#' To determine the valid values, use the `describe-certificates` AWS CLI
+#' command or the `DescribeCertificates` API operation.
+#' @param RemoveCustomerOverride A value that indicates whether to remove the override for the default
+#' certificate. If the override is removed, the default certificate is the
+#' system default.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_certificates(
+#'   CertificateIdentifier = "string",
+#'   RemoveCustomerOverride = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rds_modify_certificates
+rds_modify_certificates <- function(CertificateIdentifier = NULL, RemoveCustomerOverride = NULL) {
+  op <- new_operation(
+    name = "ModifyCertificates",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rds$modify_certificates_input(CertificateIdentifier = CertificateIdentifier, RemoveCustomerOverride = RemoveCustomerOverride)
+  output <- .rds$modify_certificates_output()
+  config <- get_config()
+  svc <- .rds$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rds$operations$modify_certificates <- rds_modify_certificates
+
 #' Set the capacity of an Aurora Serverless DB cluster to a specific value
 #'
 #' Set the capacity of an Aurora Serverless DB cluster to a specific value.
@@ -8053,7 +8149,8 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #'   EnableIAMDatabaseAuthentication, EnablePerformanceInsights,
 #'   PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod,
 #'   CloudwatchLogsExportConfiguration, ProcessorFeatures,
-#'   UseDefaultProcessorFeatures, DeletionProtection, MaxAllocatedStorage)
+#'   UseDefaultProcessorFeatures, DeletionProtection, MaxAllocatedStorage,
+#'   CertificateRotationRestart)
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier. This value is stored as a lowercase string.
 #' 
@@ -8519,6 +8616,29 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 #' @param MaxAllocatedStorage The upper limit to which Amazon RDS can automatically scale the storage
 #' of the DB instance.
+#' @param CertificateRotationRestart A value that indicates whether the DB instance is restarted when you
+#' rotate your SSL/TLS certificate.
+#' 
+#' By default, the DB instance is restarted when you rotate your SSL/TLS
+#' certificate. The certificate is not updated until the DB instance is
+#' restarted.
+#' 
+#' Set this parameter only if you are *not* using SSL/TLS to connect to the
+#' DB instance.
+#' 
+#' If you are using SSL/TLS to connect to the DB instance, follow the
+#' appropriate instructions for your DB engine to rotate your SSL/TLS
+#' certificate:
+#' 
+#' -   For more information about rotating your SSL/TLS certificate for RDS
+#'     DB engines, see [Rotating Your SSL/TLS
+#'     Certificate.](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL-certificate-rotation.html)
+#'     in the *Amazon RDS User Guide.*
+#' 
+#' -   For more information about rotating your SSL/TLS certificate for
+#'     Aurora DB engines, see [Rotating Your SSL/TLS
+#'     Certificate](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html)
+#'     in the *Amazon Aurora User Guide.*
 #'
 #' @section Request syntax:
 #' ```
@@ -8579,21 +8699,22 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #'   ),
 #'   UseDefaultProcessorFeatures = TRUE|FALSE,
 #'   DeletionProtection = TRUE|FALSE,
-#'   MaxAllocatedStorage = 123
+#'   MaxAllocatedStorage = 123,
+#'   CertificateRotationRestart = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname rds_modify_db_instance
-rds_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = NULL, DBInstanceClass = NULL, DBSubnetGroupName = NULL, DBSecurityGroups = NULL, VpcSecurityGroupIds = NULL, ApplyImmediately = NULL, MasterUserPassword = NULL, DBParameterGroupName = NULL, BackupRetentionPeriod = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, MultiAZ = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, Iops = NULL, OptionGroupName = NULL, NewDBInstanceIdentifier = NULL, StorageType = NULL, TdeCredentialArn = NULL, TdeCredentialPassword = NULL, CACertificateIdentifier = NULL, Domain = NULL, CopyTagsToSnapshot = NULL, MonitoringInterval = NULL, DBPortNumber = NULL, PubliclyAccessible = NULL, MonitoringRoleArn = NULL, DomainIAMRoleName = NULL, PromotionTier = NULL, EnableIAMDatabaseAuthentication = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, CloudwatchLogsExportConfiguration = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DeletionProtection = NULL, MaxAllocatedStorage = NULL) {
+rds_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = NULL, DBInstanceClass = NULL, DBSubnetGroupName = NULL, DBSecurityGroups = NULL, VpcSecurityGroupIds = NULL, ApplyImmediately = NULL, MasterUserPassword = NULL, DBParameterGroupName = NULL, BackupRetentionPeriod = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, MultiAZ = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, Iops = NULL, OptionGroupName = NULL, NewDBInstanceIdentifier = NULL, StorageType = NULL, TdeCredentialArn = NULL, TdeCredentialPassword = NULL, CACertificateIdentifier = NULL, Domain = NULL, CopyTagsToSnapshot = NULL, MonitoringInterval = NULL, DBPortNumber = NULL, PubliclyAccessible = NULL, MonitoringRoleArn = NULL, DomainIAMRoleName = NULL, PromotionTier = NULL, EnableIAMDatabaseAuthentication = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, CloudwatchLogsExportConfiguration = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DeletionProtection = NULL, MaxAllocatedStorage = NULL, CertificateRotationRestart = NULL) {
   op <- new_operation(
     name = "ModifyDBInstance",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$modify_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, AllocatedStorage = AllocatedStorage, DBInstanceClass = DBInstanceClass, DBSubnetGroupName = DBSubnetGroupName, DBSecurityGroups = DBSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, ApplyImmediately = ApplyImmediately, MasterUserPassword = MasterUserPassword, DBParameterGroupName = DBParameterGroupName, BackupRetentionPeriod = BackupRetentionPeriod, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, MultiAZ = MultiAZ, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, Iops = Iops, OptionGroupName = OptionGroupName, NewDBInstanceIdentifier = NewDBInstanceIdentifier, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, CACertificateIdentifier = CACertificateIdentifier, Domain = Domain, CopyTagsToSnapshot = CopyTagsToSnapshot, MonitoringInterval = MonitoringInterval, DBPortNumber = DBPortNumber, PubliclyAccessible = PubliclyAccessible, MonitoringRoleArn = MonitoringRoleArn, DomainIAMRoleName = DomainIAMRoleName, PromotionTier = PromotionTier, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DeletionProtection = DeletionProtection, MaxAllocatedStorage = MaxAllocatedStorage)
+  input <- .rds$modify_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, AllocatedStorage = AllocatedStorage, DBInstanceClass = DBInstanceClass, DBSubnetGroupName = DBSubnetGroupName, DBSecurityGroups = DBSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, ApplyImmediately = ApplyImmediately, MasterUserPassword = MasterUserPassword, DBParameterGroupName = DBParameterGroupName, BackupRetentionPeriod = BackupRetentionPeriod, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, MultiAZ = MultiAZ, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, Iops = Iops, OptionGroupName = OptionGroupName, NewDBInstanceIdentifier = NewDBInstanceIdentifier, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, CACertificateIdentifier = CACertificateIdentifier, Domain = Domain, CopyTagsToSnapshot = CopyTagsToSnapshot, MonitoringInterval = MonitoringInterval, DBPortNumber = DBPortNumber, PubliclyAccessible = PubliclyAccessible, MonitoringRoleArn = MonitoringRoleArn, DomainIAMRoleName = DomainIAMRoleName, PromotionTier = PromotionTier, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DeletionProtection = DeletionProtection, MaxAllocatedStorage = MaxAllocatedStorage, CertificateRotationRestart = CertificateRotationRestart)
   output <- .rds$modify_db_instance_output()
   config <- get_config()
   svc <- .rds$service(config)

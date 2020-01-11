@@ -212,11 +212,11 @@ sesv2_create_dedicated_ip_pool <- function(PoolName, Tags = NULL) {
 #' tests can help you predict how your messages will be handled by various
 #' email providers around the world. When you perform a predictive inbox
 #' placement test, you provide a sample message that contains the content
-#' that you plan to send to your customers. Amazon SES API v2 then sends
-#' that message to special email addresses spread across several major
-#' email providers. After about 24 hours, the test is complete, and you can
-#' use the `GetDeliverabilityTestReport` operation to view the results of
-#' the test.
+#' that you plan to send to your customers. Amazon SES then sends that
+#' message to special email addresses spread across several major email
+#' providers. After about 24 hours, the test is complete, and you can use
+#' the `GetDeliverabilityTestReport` operation to view the results of the
+#' test.
 #'
 #' @usage
 #' sesv2_create_deliverability_test_report(ReportName, FromEmailAddress,
@@ -303,19 +303,36 @@ sesv2_create_deliverability_test_report <- function(ReportName = NULL, FromEmail
 #' address. Your email address is verified as soon as you follow the link
 #' in the verification email.
 #' 
-#' When you verify a domain, this operation provides a set of DKIM tokens,
-#' which you can convert into CNAME tokens. You add these CNAME tokens to
-#' the DNS configuration for your domain. Your domain is verified when
-#' Amazon SES detects these records in the DNS configuration for your
-#' domain. For some DNS providers, it can take 72 hours or more to complete
-#' the domain verification process.
+#' When you verify a domain without specifying the `DkimSigningAttributes`
+#' object, this operation provides a set of DKIM tokens. You can convert
+#' these tokens into CNAME records, which you then add to the DNS
+#' configuration for your domain. Your domain is verified when Amazon SES
+#' detects these records in the DNS configuration for your domain. This
+#' verification method is known as [Easy
+#' DKIM](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html).
+#' 
+#' Alternatively, you can perform the verification process by providing
+#' your own public-private key pair. This verification method is known as
+#' Bring Your Own DKIM (BYODKIM). To use BYODKIM, your call to the
+#' `CreateEmailIdentity` operation has to include the
+#' `DkimSigningAttributes` object. When you specify this object, you
+#' provide a selector (a component of the DNS record name that identifies
+#' the public key that you want to use for DKIM authentication) and a
+#' private key.
 #'
 #' @usage
-#' sesv2_create_email_identity(EmailIdentity, Tags)
+#' sesv2_create_email_identity(EmailIdentity, Tags, DkimSigningAttributes)
 #'
 #' @param EmailIdentity &#91;required&#93; The email address or domain that you want to verify.
 #' @param Tags An array of objects that define the tags (keys and values) that you want
 #' to associate with the email identity.
+#' @param DkimSigningAttributes If your request includes this object, Amazon SES configures the identity
+#' to use Bring Your Own DKIM (BYODKIM) for DKIM authentication purposes,
+#' as opposed to the default method, [Easy
+#' DKIM](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html).
+#' 
+#' You can only specify this object if the email identity is a domain, as
+#' opposed to an address.
 #'
 #' @section Request syntax:
 #' ```
@@ -326,6 +343,10 @@ sesv2_create_deliverability_test_report <- function(ReportName = NULL, FromEmail
 #'       Key = "string",
 #'       Value = "string"
 #'     )
+#'   ),
+#'   DkimSigningAttributes = list(
+#'     DomainSigningSelector = "string",
+#'     DomainSigningPrivateKey = "string"
 #'   )
 #' )
 #' ```
@@ -333,14 +354,14 @@ sesv2_create_deliverability_test_report <- function(ReportName = NULL, FromEmail
 #' @keywords internal
 #'
 #' @rdname sesv2_create_email_identity
-sesv2_create_email_identity <- function(EmailIdentity, Tags = NULL) {
+sesv2_create_email_identity <- function(EmailIdentity, Tags = NULL, DkimSigningAttributes = NULL) {
   op <- new_operation(
     name = "CreateEmailIdentity",
     http_method = "POST",
     http_path = "/v2/email/identities",
     paginator = list()
   )
-  input <- .sesv2$create_email_identity_input(EmailIdentity = EmailIdentity, Tags = Tags)
+  input <- .sesv2$create_email_identity_input(EmailIdentity = EmailIdentity, Tags = Tags, DkimSigningAttributes = DkimSigningAttributes)
   output <- .sesv2$create_email_identity_output()
   config <- get_config()
   svc <- .sesv2$service(config)
@@ -513,15 +534,15 @@ sesv2_delete_email_identity <- function(EmailIdentity) {
 }
 .sesv2$operations$delete_email_identity <- sesv2_delete_email_identity
 
-#' Used to delete a suppressed email destination from your suppression list
+#' Removes an email address from the suppression list for your account
 #'
-#' Used to delete a suppressed email destination from your suppression
-#' list.
+#' Removes an email address from the suppression list for your account.
 #'
 #' @usage
 #' sesv2_delete_suppressed_destination(EmailAddress)
 #'
-#' @param EmailAddress &#91;required&#93; The suppressed email destination to delete.
+#' @param EmailAddress &#91;required&#93; The suppressed email destination to remove from the account suppression
+#' list.
 #'
 #' @section Request syntax:
 #' ```
@@ -820,7 +841,7 @@ sesv2_get_dedicated_ips <- function(PoolName = NULL, NextToken = NULL, PageSize 
 #' subscription charge, in addition to any other fees that you accrue by
 #' using Amazon SES and other AWS services. For more information about the
 #' features and cost of a Deliverability dashboard subscription, see
-#' [Amazon Pinpoint Pricing](http://aws.amazon.com/pinpoint/pricing/).
+#' [Amazon SES Pricing](http://aws.amazon.com/ses/pricing/).
 #'
 #' @usage
 #' sesv2_get_deliverability_dashboard_options()
@@ -1014,16 +1035,16 @@ sesv2_get_email_identity <- function(EmailIdentity) {
 }
 .sesv2$operations$get_email_identity <- sesv2_get_email_identity
 
-#' Used to fetch a single suppressed email destination from your
-#' suppression list
+#' Retrieves information about a specific email address that's on the
+#' suppression list for your account
 #'
-#' Used to fetch a single suppressed email destination from your
-#' suppression list.
+#' Retrieves information about a specific email address that\'s on the
+#' suppression list for your account.
 #'
 #' @usage
 #' sesv2_get_suppressed_destination(EmailAddress)
 #'
-#' @param EmailAddress &#91;required&#93; Email destination to fetch from the suppression list.
+#' @param EmailAddress &#91;required&#93; The email address that\'s on the account suppression list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1308,21 +1329,25 @@ sesv2_list_email_identities <- function(NextToken = NULL, PageSize = NULL) {
 }
 .sesv2$operations$list_email_identities <- sesv2_list_email_identities
 
-#' Used to fetch a list suppressed email destinations from your suppression
-#' list
+#' Retrieves a list of email addresses that are on the suppression list for
+#' your account
 #'
-#' Used to fetch a list suppressed email destinations from your suppression
-#' list.
+#' Retrieves a list of email addresses that are on the suppression list for
+#' your account.
 #'
 #' @usage
 #' sesv2_list_suppressed_destinations(Reasons, StartDate, EndDate,
 #'   NextToken, PageSize)
 #'
-#' @param Reasons Filters email destinations suppressed by the given reasons.
-#' @param StartDate Filters email destinations suppressed before the given time.
-#' @param EndDate Filters email destinations suppressed after the given time.
+#' @param Reasons The factors that caused the email address to be added to .
+#' @param StartDate Used to filter the list of suppressed email destinations so that it only
+#' includes addresses that were added to the list after a specific date.
+#' The date that you specify should be in Unix time format.
+#' @param EndDate Used to filter the list of suppressed email destinations so that it only
+#' includes addresses that were added to the list before a specific date.
+#' The date that you specify should be in Unix time format.
 #' @param NextToken A token returned from a previous call to `ListSuppressedDestinations` to
-#' indicate the position in the list of suppressed email destinations.
+#' indicate the position in the list of suppressed email addresses.
 #' @param PageSize The number of results to show in a single call to
 #' `ListSuppressedDestinations`. If the number of results is larger than
 #' the number you specified in this parameter, then the response includes a
@@ -1489,21 +1514,24 @@ sesv2_put_account_sending_attributes <- function(SendingEnabled = NULL) {
 }
 .sesv2$operations$put_account_sending_attributes <- sesv2_put_account_sending_attributes
 
-#' Change your account's suppression preferences for your account
+#' Change the settings for the account-level suppression list
 #'
-#' Change your account\'s suppression preferences for your account.
+#' Change the settings for the account-level suppression list.
 #'
 #' @usage
 #' sesv2_put_account_suppression_attributes(SuppressedReasons)
 #'
-#' @param SuppressedReasons A list of reasons to suppress email addresses. The only valid reasons
-#' are:
+#' @param SuppressedReasons A list that contains the reasons that email addresses will be
+#' automatically added to the suppression list for your account. This list
+#' can contain any or all of the following:
 #' 
-#' -   `COMPLAINT` -- Amazon SES will suppress an email address that
-#'     receives a complaint.
+#' -   `COMPLAINT` -- Amazon SES adds an email address to the suppression
+#'     list for your account when a message sent to that address results in
+#'     a complaint.
 #' 
-#' -   `BOUNCE` -- Amazon SES will suppress an email address that hard
-#'     bounces.
+#' -   `BOUNCE` -- Amazon SES adds an email address to the suppression list
+#'     for your account when a message sent to that address results in a
+#'     hard bounce.
 #'
 #' @section Request syntax:
 #' ```
@@ -1670,24 +1698,28 @@ sesv2_put_configuration_set_sending_options <- function(ConfigurationSetName, Se
 }
 .sesv2$operations$put_configuration_set_sending_options <- sesv2_put_configuration_set_sending_options
 
-#' Specify your account's suppression preferences for a configuration set
+#' Specify the account suppression list preferences for a configuration set
 #'
-#' Specify your account\'s suppression preferences for a configuration set.
+#' Specify the account suppression list preferences for a configuration
+#' set.
 #'
 #' @usage
 #' sesv2_put_configuration_set_suppression_options(ConfigurationSetName,
 #'   SuppressedReasons)
 #'
-#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to enable or disable
-#' email sending for.
-#' @param SuppressedReasons A list of reasons to suppress email addresses. The only valid reasons
-#' are:
+#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to change the
+#' suppression list preferences for.
+#' @param SuppressedReasons A list that contains the reasons that email addresses are automatically
+#' added to the suppression list for your account. This list can contain
+#' any or all of the following:
 #' 
-#' -   `COMPLAINT` -- Amazon SES will suppress an email address that
-#'     receives a complaint.
+#' -   `COMPLAINT` -- Amazon SES adds an email address to the suppression
+#'     list for your account when a message sent to that address results in
+#'     a complaint.
 #' 
-#' -   `BOUNCE` -- Amazon SES will suppress an email address that hard
-#'     bounces.
+#' -   `BOUNCE` -- Amazon SES adds an email address to the suppression list
+#'     for your account when a message sent to that address results in a
+#'     hard bounce.
 #'
 #' @section Request syntax:
 #' ```
@@ -1859,7 +1891,7 @@ sesv2_put_dedicated_ip_warmup_attributes <- function(Ip, WarmupPercentage) {
 #' subscription charge, in addition to any other fees that you accrue by
 #' using Amazon SES and other AWS services. For more information about the
 #' features and cost of a Deliverability dashboard subscription, see
-#' [Amazon Pinpoint Pricing](http://aws.amazon.com/pinpoint/pricing/).
+#' [Amazon SES Pricing](http://aws.amazon.com/ses/pricing/).
 #'
 #' @usage
 #' sesv2_put_deliverability_dashboard_option(DashboardEnabled,
@@ -1952,6 +1984,74 @@ sesv2_put_email_identity_dkim_attributes <- function(EmailIdentity, SigningEnabl
   return(response)
 }
 .sesv2$operations$put_email_identity_dkim_attributes <- sesv2_put_email_identity_dkim_attributes
+
+#' Used to configure or change the DKIM authentication settings for an
+#' email domain identity
+#'
+#' Used to configure or change the DKIM authentication settings for an
+#' email domain identity. You can use this operation to do any of the
+#' following:
+#' 
+#' -   Update the signing attributes for an identity that uses Bring Your
+#'     Own DKIM (BYODKIM).
+#' 
+#' -   Change from using no DKIM authentication to using Easy DKIM.
+#' 
+#' -   Change from using no DKIM authentication to using BYODKIM.
+#' 
+#' -   Change from using Easy DKIM to using BYODKIM.
+#' 
+#' -   Change from using BYODKIM to using Easy DKIM.
+#'
+#' @usage
+#' sesv2_put_email_identity_dkim_signing_attributes(EmailIdentity,
+#'   SigningAttributesOrigin, SigningAttributes)
+#'
+#' @param EmailIdentity &#91;required&#93; The email identity that you want to configure DKIM for.
+#' @param SigningAttributesOrigin &#91;required&#93; The method that you want to use to configure DKIM for the identity.
+#' There are two possible values:
+#' 
+#' -   `AWS_SES` -- Configure DKIM for the identity by using [Easy
+#'     DKIM](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html).
+#' 
+#' -   `EXTERNAL` -- Configure DKIM for the identity by using Bring Your
+#'     Own DKIM (BYODKIM).
+#' @param SigningAttributes An object that contains information about the private key and selector
+#' that you want to use to configure DKIM for the identity. This object is
+#' only required if you want to configure Bring Your Own DKIM (BYODKIM) for
+#' the identity.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_email_identity_dkim_signing_attributes(
+#'   EmailIdentity = "string",
+#'   SigningAttributesOrigin = "AWS_SES"|"EXTERNAL",
+#'   SigningAttributes = list(
+#'     DomainSigningSelector = "string",
+#'     DomainSigningPrivateKey = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_put_email_identity_dkim_signing_attributes
+sesv2_put_email_identity_dkim_signing_attributes <- function(EmailIdentity, SigningAttributesOrigin, SigningAttributes = NULL) {
+  op <- new_operation(
+    name = "PutEmailIdentityDkimSigningAttributes",
+    http_method = "PUT",
+    http_path = "/v1/email/identities/{EmailIdentity}/dkim/signing",
+    paginator = list()
+  )
+  input <- .sesv2$put_email_identity_dkim_signing_attributes_input(EmailIdentity = EmailIdentity, SigningAttributesOrigin = SigningAttributesOrigin, SigningAttributes = SigningAttributes)
+  output <- .sesv2$put_email_identity_dkim_signing_attributes_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$put_email_identity_dkim_signing_attributes <- sesv2_put_email_identity_dkim_signing_attributes
 
 #' Used to enable or disable feedback forwarding for an identity
 #'
@@ -2075,15 +2175,17 @@ sesv2_put_email_identity_mail_from_attributes <- function(EmailIdentity, MailFro
 }
 .sesv2$operations$put_email_identity_mail_from_attributes <- sesv2_put_email_identity_mail_from_attributes
 
-#' Puts (overwrites) an email destination in your suppression list
+#' Adds an email address to the suppression list for your account
 #'
-#' Puts (overwrites) an email destination in your suppression list.
+#' Adds an email address to the suppression list for your account.
 #'
 #' @usage
 #' sesv2_put_suppressed_destination(EmailAddress, Reason)
 #'
-#' @param EmailAddress &#91;required&#93; Email destination to be suppressed.
-#' @param Reason &#91;required&#93; Reason for which the email destination is suppressed.
+#' @param EmailAddress &#91;required&#93; The email address that should be added to the suppression list for your
+#' account.
+#' @param Reason &#91;required&#93; The factors that should cause the email address to be added to the
+#' suppression list for your account.
 #'
 #' @section Request syntax:
 #' ```
@@ -2120,7 +2222,7 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 #' 
 #' -   **Simple** -- A standard email message. When you create this type of
 #'     message, you specify the sender, the recipient, and the message
-#'     body, and the Amazon SES API v2 assembles the message for you.
+#'     body, and Amazon SES assembles the message for you.
 #' 
 #' -   **Raw** -- A raw, MIME-formatted email message. When you send this
 #'     type of email, you have to specify all of the message headers, as

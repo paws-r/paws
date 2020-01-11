@@ -21,29 +21,27 @@ the selection criteria in a device filter.
 
 Allowed values include:
 \itemize{
-\item ARN: The Amazon Resource Name (ARN) of the device. For example,
-\"arn:aws:devicefarm:us-west-2::device:12345Example\".
-\item PLATFORM: The device platform. Valid values are \"ANDROID\" or
-\"IOS\".
-\item OS\\_VERSION: The operating system version. For example,
-\"10.3.2\".
-\item MODEL: The device model. For example, \"iPad 5th Gen\".
+\item ARN: The Amazon Resource Name (ARN) of the device (for example,
+\verb{arn:aws:devicefarm:us-west-2::device:12345Example}).
+\item PLATFORM: The device platform. Valid values are ANDROID or IOS.
+\item OS\\_VERSION: The operating system version (for example, 10.3.2).
+\item MODEL: The device model (for example, iPad 5th Gen).
 \item AVAILABILITY: The current availability of the device. Valid
-values are \"AVAILABLE\", \"HIGHLY\\_AVAILABLE\", \"BUSY\", or
-\"TEMPORARY\\_NOT\\_AVAILABLE\".
-\item FORM\\_FACTOR: The device form factor. Valid values are \"PHONE\"
-or \"TABLET\".
-\item MANUFACTURER: The device manufacturer. For example, \"Apple\".
+values are AVAILABLE, HIGHLY\\_AVAILABLE, BUSY, or
+TEMPORARY\\_NOT\\_AVAILABLE.
+\item FORM\\_FACTOR: The device form factor. Valid values are PHONE or
+TABLET.
+\item MANUFACTURER: The device manufacturer (for example, Apple).
 \item REMOTE\\_ACCESS\\_ENABLED: Whether the device is enabled for
-remote access. Valid values are \"TRUE\" or \"FALSE\".
+remote access. Valid values are TRUE or FALSE.
 \item REMOTE\\_DEBUG\\_ENABLED: Whether the device is enabled for remote
-debugging. Valid values are \"TRUE\" or \"FALSE\". \emph{This
-attribute will be ignored, as remote debugging is \href{https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html}{no longer supported}.}
+debugging. Valid values are TRUE or FALSE. Because remote
+debugging is \href{https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html}{no longer supported},
+this attribute is ignored.
 \item INSTANCE\\_ARN: The Amazon Resource Name (ARN) of the device
 instance.
 \item INSTANCE\\_LABELS: The label of the device instance.
-\item FLEET\\_TYPE: The fleet type. Valid values are \"PUBLIC\" or
-\"PRIVATE\".
+\item FLEET\\_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.
 }
 \item Operator: The filter operator.
 \itemize{
@@ -62,9 +60,9 @@ OS\\_VERSION attribute.
 \item The IN and NOT\\_IN operators take a values array that has one or
 more elements.
 \item The other operators require an array with a single element.
-\item In a request, the AVAILABILITY attribute takes \"AVAILABLE\",
-\"HIGHLY\\_AVAILABLE\", \"BUSY\", or
-\"TEMPORARY\\_NOT\\_AVAILABLE\" as values.
+\item In a request, the AVAILABILITY attribute takes the following
+values: AVAILABLE, HIGHLY\\_AVAILABLE, BUSY, or
+TEMPORARY\\_NOT\\_AVAILABLE.
 }
 }}
 }

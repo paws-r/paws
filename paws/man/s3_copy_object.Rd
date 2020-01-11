@@ -91,9 +91,8 @@ that the encryption key was transmitted without error.}
 \item{SSEKMSKeyId}{Specifies the AWS KMS key ID to use for object encryption. All GET and
 PUT requests for an object protected by AWS KMS will fail if not made
 via SSL or using SigV4. For information about configuring using any of
-the officially supported AWS SDKs and AWS CLI, see Specifying the
-Signature Version in Request Authentication in the \emph{Amazon S3 Developer
-Guide}.}
+the officially supported AWS SDKs and AWS CLI, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version}{Specifying the Signature Version in Request Authentication}
+in the \emph{Amazon S3 Developer Guide}.}
 
 \item{SSEKMSEncryptionContext}{Specifies the AWS KMS Encryption Context to use for object encryption.
 The value of this header is a base64-encoded UTF-8 string holding JSON
@@ -172,7 +171,7 @@ request that Amazon S3 encrypt the target object by using either the AWS
 managed encryption keys or by using your own encryption key. You can do
 this regardless of the form of server-side encryption that was used to
 encrypt the source, or even if the source object was not encrypted. For
-more information about server-side encryption, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html}{Using Server-Side Encryption}.
+more information about server-side encryption, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html}{Using Server-Side Encryption}.
 
 A copy request might return an error when Amazon S3 receives the copy
 request or while Amazon S3 is copying the files. If the error occurs
@@ -272,10 +271,16 @@ own encryption key.\preformatted{-   To encrypt the target object using server-s
 
     -   `x-amz-server-side-encryption-context`
 
-    If you specify `x-amz-server-side-encryption:aws:kms` but don\\'t
-    provide `x-amz-server-side- encryption-aws-kms-key-id`, Amazon
-    S3 uses the AWS managed customer master key (CMK) in AWS KMS to
-    protect the data.
+    If you specify `x-amz-server-side-encryption:aws:kms`, but
+    don\\'t provide `x-amz-server-side-encryption-aws-kms-key-id`,
+    Amazon S3 uses the AWS managed CMK in AWS KMS to protect the
+    data. If you want to use a customer managed AWS KMS CMK, you
+    must provide the `x-amz-server-side-encryption-aws-kms-key-id`
+    of the symmetric customer managed CMK. Amazon S3 only supports
+    symmetric CMKs and not asymmetric CMKs. For more information,
+    see [Using Symmetric and Asymmetric
+    Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
+    in the *AWS Key Management Service Developer Guide*.
 
     All GET and PUT requests for an object protected by AWS KMS fail
     if you don\\'t make them with SSL or by using SigV4.

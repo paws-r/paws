@@ -37,7 +37,7 @@ about creating a Kinesis Data Analytics application, see \href{https://docs.aws.
 \preformatted{svc$create_application(
   ApplicationName = "string",
   ApplicationDescription = "string",
-  RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6",
+  RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8",
   ServiceExecutionRole = "string",
   ApplicationConfiguration = list(
     SqlApplicationConfiguration = list(

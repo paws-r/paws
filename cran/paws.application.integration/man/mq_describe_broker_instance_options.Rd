@@ -5,7 +5,7 @@
 \title{Describe available broker instance options}
 \usage{
 mq_describe_broker_instance_options(EngineType, HostInstanceType,
-  MaxResults, NextToken)
+  MaxResults, NextToken, StorageType)
 }
 \arguments{
 \item{EngineType}{Filter response by engine type.}
@@ -15,6 +15,8 @@ mq_describe_broker_instance_options(EngineType, HostInstanceType,
 \item{MaxResults}{The maximum number of instance options that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.}
 
 \item{NextToken}{The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.}
+
+\item{StorageType}{Filter response by storage type.}
 }
 \description{
 Describe available broker instance options.
@@ -24,7 +26,8 @@ Describe available broker instance options.
   EngineType = "string",
   HostInstanceType = "string",
   MaxResults = 123,
-  NextToken = "string"
+  NextToken = "string",
+  StorageType = "string"
 )
 }
 }

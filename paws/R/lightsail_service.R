@@ -57,7 +57,7 @@ NULL
 #'  \link[=lightsail_attach_load_balancer_tls_certificate]{attach_load_balancer_tls_certificate} \tab Attaches a Transport Layer Security (TLS) certificate to your load balancer \cr
 #'  \link[=lightsail_attach_static_ip]{attach_static_ip} \tab Attaches a static IP address to a specific Amazon Lightsail instance \cr
 #'  \link[=lightsail_close_instance_public_ports]{close_instance_public_ports} \tab Closes the public ports on a specific Amazon Lightsail instance \cr
-#'  \link[=lightsail_copy_snapshot]{copy_snapshot} \tab Copies a manual instance or disk snapshot as another manual snapshot, or copies an automatic instance or disk snapshot as a manual snapshot \cr
+#'  \link[=lightsail_copy_snapshot]{copy_snapshot} \tab Copies a manual snapshot of an instance or disk as another manual snapshot, or copies an automatic snapshot of an instance or disk as a manual snapshot \cr
 #'  \link[=lightsail_create_cloud_formation_stack]{create_cloud_formation_stack} \tab Creates an AWS CloudFormation stack, which creates a new Amazon EC2 instance from an exported Amazon Lightsail snapshot \cr
 #'  \link[=lightsail_create_disk]{create_disk} \tab Creates a block storage disk that can be attached to an Amazon Lightsail instance in the same Availability Zone (e \cr
 #'  \link[=lightsail_create_disk_from_snapshot]{create_disk_from_snapshot} \tab Creates a block storage disk from a manual or automatic snapshot of a disk \cr
@@ -73,7 +73,7 @@ NULL
 #'  \link[=lightsail_create_relational_database]{create_relational_database} \tab Creates a new database in Amazon Lightsail \cr
 #'  \link[=lightsail_create_relational_database_from_snapshot]{create_relational_database_from_snapshot} \tab Creates a new database from an existing database snapshot in Amazon Lightsail \cr
 #'  \link[=lightsail_create_relational_database_snapshot]{create_relational_database_snapshot} \tab Creates a snapshot of your database in Amazon Lightsail \cr
-#'  \link[=lightsail_delete_auto_snapshot]{delete_auto_snapshot} \tab Deletes an automatic snapshot for an instance or disk \cr
+#'  \link[=lightsail_delete_auto_snapshot]{delete_auto_snapshot} \tab Deletes an automatic snapshot of an instance or disk \cr
 #'  \link[=lightsail_delete_disk]{delete_disk} \tab Deletes the specified block storage disk \cr
 #'  \link[=lightsail_delete_disk_snapshot]{delete_disk_snapshot} \tab Deletes the specified disk snapshot \cr
 #'  \link[=lightsail_delete_domain]{delete_domain} \tab Deletes the specified domain recordset and all of its domain records \cr
@@ -94,7 +94,7 @@ NULL
 #'  \link[=lightsail_enable_add_on]{enable_add_on} \tab Enables or modifies an add-on for an Amazon Lightsail resource \cr
 #'  \link[=lightsail_export_snapshot]{export_snapshot} \tab Exports an Amazon Lightsail instance or block storage disk snapshot to Amazon Elastic Compute Cloud (Amazon EC2) \cr
 #'  \link[=lightsail_get_active_names]{get_active_names} \tab Returns the names of all active (not deleted) resources \cr
-#'  \link[=lightsail_get_auto_snapshots]{get_auto_snapshots} \tab Returns the available automatic snapshots for the specified resource name \cr
+#'  \link[=lightsail_get_auto_snapshots]{get_auto_snapshots} \tab Returns the available automatic snapshots for an instance or disk \cr
 #'  \link[=lightsail_get_blueprints]{get_blueprints} \tab Returns the list of available instance images, or _blueprints_ \cr
 #'  \link[=lightsail_get_bundles]{get_bundles} \tab Returns the list of bundles that are available for purchase \cr
 #'  \link[=lightsail_get_cloud_formation_stack_records]{get_cloud_formation_stack_records} \tab Returns the CloudFormation stack record created as a result of the create cloud formation stack operation \cr

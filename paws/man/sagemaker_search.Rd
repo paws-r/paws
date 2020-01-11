@@ -8,8 +8,7 @@ sagemaker_search(Resource, SearchExpression, SortBy, SortOrder,
   NextToken, MaxResults)
 }
 \arguments{
-\item{Resource}{[required] The name of the Amazon SageMaker resource to search for. Currently, the
-only valid \code{Resource} value is \code{TrainingJob}.}
+\item{Resource}{[required] The name of the Amazon SageMaker resource to search for.}
 
 \item{SearchExpression}{A Boolean conditional statement. Resource objects must satisfy this
 condition to be included in search results. You must provide at least
@@ -38,8 +37,8 @@ response. You can sort the search results by any resource property in a
 ascending or descending order.
 }
 \details{
-You can query against the following value types: numerical, text,
-Booleans, and timestamps.
+You can query against the following value types: numeric, text, Boolean,
+and timestamp.
 }
 \section{Request syntax}{
 \preformatted{svc$search(

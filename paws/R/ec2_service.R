@@ -226,7 +226,7 @@ NULL
 #'  \link[=ec2_describe_fast_snapshot_restores]{describe_fast_snapshot_restores} \tab Describes the state of fast snapshot restores for your snapshots \cr
 #'  \link[=ec2_describe_fleet_history]{describe_fleet_history} \tab Describes the events for the specified EC2 Fleet during the specified time \cr
 #'  \link[=ec2_describe_fleet_instances]{describe_fleet_instances} \tab Describes the running instances for the specified EC2 Fleet \cr
-#'  \link[=ec2_describe_fleets]{describe_fleets} \tab Describes the specified EC2 Fleets or all your EC2 Fleets \cr
+#'  \link[=ec2_describe_fleets]{describe_fleets} \tab Describes the specified EC2 Fleets or all of your EC2 Fleets \cr
 #'  \link[=ec2_describe_flow_logs]{describe_flow_logs} \tab Describes one or more flow logs \cr
 #'  \link[=ec2_describe_fpga_image_attribute]{describe_fpga_image_attribute} \tab Describes the specified attribute of the specified Amazon FPGA Image (AFI) \cr
 #'  \link[=ec2_describe_fpga_images]{describe_fpga_images} \tab Describes the Amazon FPGA Images (AFIs) available to you \cr
@@ -444,6 +444,7 @@ NULL
 #'  \link[=ec2_search_transit_gateway_routes]{search_transit_gateway_routes} \tab Searches for routes in the specified transit gateway route table \cr
 #'  \link[=ec2_send_diagnostic_interrupt]{send_diagnostic_interrupt} \tab Sends a diagnostic interrupt to the specified Amazon EC2 instance to trigger a _kernel panic_ (on Linux instances), or a _blue screen_/_stop error_ (on Windows instances) \cr
 #'  \link[=ec2_start_instances]{start_instances} \tab Starts an Amazon EBS-backed instance that you've previously stopped \cr
+#'  \link[=ec2_start_vpc_endpoint_service_private_dns_verification]{start_vpc_endpoint_service_private_dns_verification} \tab Initiates the verification process to prove that the service provider owns the private DNS name domain for the endpoint service \cr
 #'  \link[=ec2_stop_instances]{stop_instances} \tab Stops an Amazon EBS-backed instance \cr
 #'  \link[=ec2_terminate_client_vpn_connections]{terminate_client_vpn_connections} \tab Terminates active Client VPN endpoint connections \cr
 #'  \link[=ec2_terminate_instances]{terminate_instances} \tab Shuts down the specified instances \cr

@@ -145,7 +145,7 @@ You can copy a snapshot from one AWS Region to another. In that case,
 the AWS Region where you call the \code{CopyDBSnapshot} action is the
 destination AWS Region for the DB snapshot copy.
 
-For more information about copying snapshots, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopyDBSnapshot.html}{Copying a DB Snapshot}
+For more information about copying snapshots, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopyDBSnapshot}{Copying a DB Snapshot}
 in the \emph{Amazon RDS User Guide.}
 }
 \section{Request syntax}{

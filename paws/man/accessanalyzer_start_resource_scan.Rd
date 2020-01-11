@@ -2,7 +2,8 @@
 % Please edit documentation in R/accessanalyzer_operations.R
 \name{accessanalyzer_start_resource_scan}
 \alias{accessanalyzer_start_resource_scan}
-\title{Starts a scan of the policies applied to the specified resource}
+\title{Immediately starts a scan of the policies applied to the specified
+resource}
 \usage{
 accessanalyzer_start_resource_scan(analyzerArn, resourceArn)
 }
@@ -13,7 +14,8 @@ specified resource.}
 \item{resourceArn}{[required] The ARN of the resource to scan.}
 }
 \description{
-Starts a scan of the policies applied to the specified resource.
+Immediately starts a scan of the policies applied to the specified
+resource.
 }
 \section{Request syntax}{
 \preformatted{svc$start_resource_scan(

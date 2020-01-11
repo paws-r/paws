@@ -4,10 +4,12 @@
 \alias{fms_put_policy}
 \title{Creates an AWS Firewall Manager policy}
 \usage{
-fms_put_policy(Policy)
+fms_put_policy(Policy, TagList)
 }
 \arguments{
 \item{Policy}{[required] The details of the AWS Firewall Manager policy to be created.}
+
+\item{TagList}{The tags to add to the AWS resource.}
 }
 \description{
 Creates an AWS Firewall Manager policy.
@@ -62,6 +64,12 @@ policy. For more information about subscribing to Shield Advanced, see
       list(
         "string"
       )
+    )
+  ),
+  TagList = list(
+    list(
+      Key = "string",
+      Value = "string"
     )
   )
 )

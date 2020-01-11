@@ -2,44 +2,49 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_update_dashboard}
 \alias{quicksight_update_dashboard}
-\title{Updates a dashboard in the AWS account}
+\title{Updates a dashboard in an AWS account}
 \usage{
 quicksight_update_dashboard(AwsAccountId, DashboardId, Name,
   SourceEntity, Parameters, VersionDescription, DashboardPublishOptions)
 }
 \arguments{
-\item{AwsAccountId}{[required] AWS account ID that contains the dashboard you are updating.}
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the dashboard that you\'re
+updating.}
 
 \item{DashboardId}{[required] The ID for the dashboard.}
 
 \item{Name}{[required] The display name of the dashboard.}
 
 \item{SourceEntity}{[required] The template or analysis from which the dashboard is created. The
-SouceTemplate entity accepts the Arn of the template and also references
-to replacement datasets for the placeholders set when creating the
-template. The replacement datasets need to follow the same schema as the
-datasets for which placeholders were created when creating the template.}
+\code{SouceTemplate} entity accepts the Amazon Resource Name (ARN) of the
+template and also references to replacement datasets for the
+placeholders set when creating the template. The replacement datasets
+need to follow the same schema as the datasets for which placeholders
+were created when creating the template.}
 
 \item{Parameters}{A structure that contains the parameters of the dashboard.}
 
 \item{VersionDescription}{A description for the first version of the dashboard being created.}
 
-\item{DashboardPublishOptions}{Publishing options when creating a dashboard.
+\item{DashboardPublishOptions}{Options for publishing the dashboard when you create it:
 \itemize{
-\item AvailabilityStatus for AdHocFilteringOption - This can be either
-\code{ENABLED} or \code{DISABLED}. When This is set to set to \code{DISABLED},
+\item \code{AvailabilityStatus} for \code{AdHocFilteringOption} - This status can be
+either \code{ENABLED} or \code{DISABLED}. When this is set to \code{DISABLED},
 QuickSight disables the left filter pane on the published dashboard,
-which can be used for AdHoc filtering. Enabled by default.
-\item AvailabilityStatus for ExportToCSVOption - This can be either
-\code{ENABLED} or \code{DISABLED}. The visual option to export data to CSV is
-disabled when this is set to \code{DISABLED}. Enabled by default.
-\item VisibilityState for SheetControlsOption - This can be either
-\code{COLLAPSED} or \code{EXPANDED}. The sheet controls pane is collapsed by
-default when set to true. Collapsed by default.
+which can be used for ad hoc (one-time) filtering. This option is
+\code{ENABLED} by default.
+\item \code{AvailabilityStatus} for \code{ExportToCSVOption} - This status can be
+either \code{ENABLED} or \code{DISABLED}. The visual option to export data to
+.csv format isn\'t enabled when this is set to \code{DISABLED}. This
+option is \code{ENABLED} by default.
+\item \code{VisibilityState} for \code{SheetControlsOption} - This visibility state
+can be either \code{COLLAPSED} or \code{EXPANDED}. The sheet controls pane is
+collapsed by default when set to true. This option is \code{COLLAPSED} by
+default.
 }}
 }
 \description{
-Updates a dashboard in the AWS account.
+Updates a dashboard in an AWS account.
 }
 \section{Request syntax}{
 \preformatted{svc$update_dashboard(

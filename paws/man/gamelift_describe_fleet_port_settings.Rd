@@ -7,7 +7,8 @@
 gamelift_describe_fleet_port_settings(FleetId)
 }
 \arguments{
-\item{FleetId}{[required] Unique identifier for a fleet to retrieve port settings for.}
+\item{FleetId}{[required] A unique identifier for a fleet to retrieve port settings for. You can
+use either the fleet ID or ARN value.}
 }
 \description{
 Retrieves the inbound connection permissions for a fleet. Connection
@@ -38,13 +39,7 @@ set is empty.
 \item DescribeEC2InstanceLimits
 \item DescribeFleetEvents
 }
-\item Update fleets:
-\itemize{
 \item UpdateFleetAttributes
-\item UpdateFleetCapacity
-\item UpdateFleetPortSettings
-\item UpdateRuntimeConfiguration
-}
 \item Manage fleet actions:
 \itemize{
 \item StartFleetActions

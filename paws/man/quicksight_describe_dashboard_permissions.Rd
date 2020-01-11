@@ -2,18 +2,18 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_describe_dashboard_permissions}
 \alias{quicksight_describe_dashboard_permissions}
-\title{Describes read and write permissions on a dashboard}
+\title{Describes read and write permissions for a dashboard}
 \usage{
 quicksight_describe_dashboard_permissions(AwsAccountId, DashboardId)
 }
 \arguments{
-\item{AwsAccountId}{[required] AWS account ID that contains the dashboard you are describing
-permissions of.}
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the dashboard that you\'re
+describing permissions for.}
 
-\item{DashboardId}{[required] The ID for the dashboard, also added to IAM policy.}
+\item{DashboardId}{[required] The ID for the dashboard, also added to the IAM policy.}
 }
 \description{
-Describes read and write permissions on a dashboard.
+Describes read and write permissions for a dashboard.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_dashboard_permissions(

@@ -100,7 +100,8 @@ Default: Describes all your network interfaces.}
 
 \item{MaxResults}{The maximum number of items to return for this request. The request
 returns a token that you can specify in a subsequent call to get the
-next set of results.}
+next set of results. You cannot specify this parameter and the network
+interface IDs parameter in the same request.}
 }
 \description{
 Describes one or more of your network interfaces.

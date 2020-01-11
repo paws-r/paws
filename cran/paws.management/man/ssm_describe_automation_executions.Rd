@@ -23,7 +23,7 @@ Provides details about all active and terminated Automation executions.
 \preformatted{svc$describe_automation_executions(
   Filters = list(
     list(
-      Key = "DocumentNamePrefix"|"ExecutionStatus"|"ExecutionId"|"ParentExecutionId"|"CurrentAction"|"StartTimeBefore"|"StartTimeAfter"|"AutomationType",
+      Key = "DocumentNamePrefix"|"ExecutionStatus"|"ExecutionId"|"ParentExecutionId"|"CurrentAction"|"StartTimeBefore"|"StartTimeAfter"|"AutomationType"|"TagKey",
       Values = list(
         "string"
       )

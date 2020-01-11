@@ -8,12 +8,13 @@ quicksight_describe_dashboard(AwsAccountId, DashboardId, VersionNumber,
   AliasName)
 }
 \arguments{
-\item{AwsAccountId}{[required] AWS account ID that contains the dashboard you are describing.}
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the dashboard that you\'re
+describing.}
 
 \item{DashboardId}{[required] The ID for the dashboard.}
 
-\item{VersionNumber}{The version number for the dashboard. If version number isn't passed the
-latest published dashboard version is described.}
+\item{VersionNumber}{The version number for the dashboard. If a version number isn\'t passed,
+the latest published dashboard version is described.}
 
 \item{AliasName}{The alias name.}
 }

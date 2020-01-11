@@ -8,8 +8,7 @@ SageMaker console}
 sagemaker_get_search_suggestions(Resource, SuggestionQuery)
 }
 \arguments{
-\item{Resource}{[required] The name of the Amazon SageMaker resource to Search for. The only valid
-\code{Resource} value is \code{TrainingJob}.}
+\item{Resource}{[required] The name of the Amazon SageMaker resource to Search for.}
 
 \item{SuggestionQuery}{Limits the property names that are included in the response.}
 }

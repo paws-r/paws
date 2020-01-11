@@ -35,7 +35,7 @@ Updates one or more values for an SSM document.
   Content = "string",
   Attachments = list(
     list(
-      Key = "SourceUrl"|"S3FileUrl",
+      Key = "SourceUrl"|"S3FileUrl"|"AttachmentReference",
       Values = list(
         "string"
       ),
@@ -45,7 +45,7 @@ Updates one or more values for an SSM document.
   Name = "string",
   VersionName = "string",
   DocumentVersion = "string",
-  DocumentFormat = "YAML"|"JSON",
+  DocumentFormat = "YAML"|"JSON"|"TEXT",
   TargetType = "string"
 )
 }

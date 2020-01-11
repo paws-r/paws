@@ -2,16 +2,17 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_describe_runtime_configuration}
 \alias{gamelift_describe_runtime_configuration}
-\title{Retrieves the current run-time configuration for the specified fleet}
+\title{Retrieves the current runtime configuration for the specified fleet}
 \usage{
 gamelift_describe_runtime_configuration(FleetId)
 }
 \arguments{
-\item{FleetId}{[required] Unique identifier for a fleet to get the run-time configuration for.}
+\item{FleetId}{[required] A unique identifier for a fleet to get the runtime configuration for.
+You can use either the fleet ID or ARN value.}
 }
 \description{
-Retrieves the current run-time configuration for the specified fleet.
-The run-time configuration tells Amazon GameLift how to launch server
+Retrieves the current runtime configuration for the specified fleet. The
+runtime configuration tells Amazon GameLift how to launch server
 processes on instances in the fleet.
 }
 \details{
@@ -34,13 +35,7 @@ processes on instances in the fleet.
 \item DescribeEC2InstanceLimits
 \item DescribeFleetEvents
 }
-\item Update fleets:
-\itemize{
 \item UpdateFleetAttributes
-\item UpdateFleetCapacity
-\item UpdateFleetPortSettings
-\item UpdateRuntimeConfiguration
-}
 \item Manage fleet actions:
 \itemize{
 \item StartFleetActions

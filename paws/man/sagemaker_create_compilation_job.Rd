@@ -73,7 +73,7 @@ compilation jobs, use ListCompilationJobs.
   InputConfig = list(
     S3Uri = "string",
     DataInputConfig = "string",
-    Framework = "TENSORFLOW"|"MXNET"|"ONNX"|"PYTORCH"|"XGBOOST"
+    Framework = "TENSORFLOW"|"KERAS"|"MXNET"|"ONNX"|"PYTORCH"|"XGBOOST"
   ),
   OutputConfig = list(
     S3OutputLocation = "string",

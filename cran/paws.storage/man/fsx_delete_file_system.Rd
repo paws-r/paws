@@ -34,6 +34,10 @@ systems in your account. If you pass the file system ID for a deleted
 file system, the DescribeFileSystems returns a \code{FileSystemNotFound}
 error.
 
+Deleting an Amazon FSx for Lustre file system will fail with a 400
+BadRequest if a data repository task is in a \code{PENDING} or \code{EXECUTING}
+state.
+
 The data in a deleted file system is also deleted and can\'t be
 recovered by any means.
 }

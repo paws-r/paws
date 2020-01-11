@@ -216,7 +216,8 @@ kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents) {
 #'           DateFieldFormat = "string",
 #'           IndexFieldName = "string"
 #'         )
-#'       )
+#'       ),
+#'       DocumentTitleFieldName = "string"
 #'     ),
 #'     DatabaseConfiguration = list(
 #'       DatabaseEngineType = "RDS_AURORA_MYSQL"|"RDS_AURORA_POSTGRESQL"|"RDS_MYSQL"|"RDS_POSTGRESQL",
@@ -352,8 +353,9 @@ kendra_create_faq <- function(IndexId, Name, Description = NULL, S3Path, RoleArn
 #' CloudWatch logs and metrics. This is also the role used when you use the
 #' `BatchPutDocument` operation to index documents from an Amazon S3
 #' bucket.
-#' @param ServerSideEncryptionConfiguration The identifier of the KMS key to use to encrypt data indexed by Amazon
-#' Kendra.
+#' @param ServerSideEncryptionConfiguration The identifier of the AWS KMS customer managed key (CMK) to use to
+#' encrypt data indexed by Amazon Kendra. Amazon Kendra doesn\'t support
+#' asymmetric CMKs.
 #' @param Description A description for the index.
 #'
 #' @section Request syntax:
@@ -1153,7 +1155,8 @@ kendra_submit_feedback <- function(IndexId, QueryId, ClickFeedbackItems = NULL, 
 #'           DateFieldFormat = "string",
 #'           IndexFieldName = "string"
 #'         )
-#'       )
+#'       ),
+#'       DocumentTitleFieldName = "string"
 #'     ),
 #'     DatabaseConfiguration = list(
 #'       DatabaseEngineType = "RDS_AURORA_MYSQL"|"RDS_AURORA_POSTGRESQL"|"RDS_MYSQL"|"RDS_POSTGRESQL",

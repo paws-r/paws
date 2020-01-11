@@ -30,6 +30,12 @@ endpoint, so configuration management of the server\'s client devices
 (nodes) should continue to work.
 }
 \details{
+Restoring from a backup is performed by creating a new EC2 instance. If
+restoration is successful, and the server is in a \code{HEALTHY} state, AWS
+OpsWorks CM switches traffic over to the new instance. After restoration
+is finished, the old EC2 instance is maintained in a \code{Running} or
+\code{Stopped} state, but is eventually terminated.
+
 This operation is asynchronous.
 
 An \code{InvalidStateException} is thrown when the server is not in a valid

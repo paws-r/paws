@@ -54,9 +54,9 @@ NULL
 #' @usage
 #' gamelift_accept_match(TicketId, PlayerIds, AcceptanceType)
 #'
-#' @param TicketId &#91;required&#93; Unique identifier for a matchmaking ticket. The ticket must be in status
-#' `REQUIRES_ACCEPTANCE`; otherwise this request will fail.
-#' @param PlayerIds &#91;required&#93; Unique identifier for a player delivering the response. This parameter
+#' @param TicketId &#91;required&#93; A unique identifier for a matchmaking ticket. The ticket must be in
+#' status `REQUIRES_ACCEPTANCE`; otherwise this request will fail.
+#' @param PlayerIds &#91;required&#93; A unique identifier for a player delivering the response. This parameter
 #' can include one or multiple player IDs.
 #' @param AcceptanceType &#91;required&#93; Player response to the proposed match.
 #'
@@ -94,11 +94,9 @@ gamelift_accept_match <- function(TicketId, PlayerIds, AcceptanceType) {
 #' Creates an alias for a fleet
 #'
 #' Creates an alias for a fleet. In most situations, you can use an alias
-#' ID in place of a fleet ID. By using a fleet alias instead of a specific
-#' fleet ID, you can switch gameplay and players to a new fleet without
-#' changing your game client or other game components. For example, for
-#' games in production, using an alias allows you to seamlessly redirect
-#' your player base to a new game server update.
+#' ID in place of a fleet ID. An alias provides a level of abstraction for
+#' a fleet that is useful when redirecting player traffic from one fleet to
+#' another, such as when updating your game build.
 #' 
 #' Amazon GameLift supports two types of routing strategies for aliases:
 #' simple and terminal. A simple alias points to an active fleet. A
@@ -110,9 +108,8 @@ gamelift_accept_match <- function(TicketId, PlayerIds, AcceptanceType) {
 #' To create a fleet alias, specify an alias name, routing strategy, and
 #' optional description. Each simple alias can point to only one fleet, but
 #' a fleet can have multiple aliases. If successful, a new alias record is
-#' returned, including an alias ID, which you can reference when creating a
-#' game session. You can reassign an alias to another fleet by calling
-#' `UpdateAlias`.
+#' returned, including an alias ID and an ARN. You can reassign an alias to
+#' another fleet by calling `UpdateAlias`.
 #' 
 #' -   CreateAlias
 #' 
@@ -127,12 +124,22 @@ gamelift_accept_match <- function(TicketId, PlayerIds, AcceptanceType) {
 #' -   ResolveAlias
 #'
 #' @usage
-#' gamelift_create_alias(Name, Description, RoutingStrategy)
+#' gamelift_create_alias(Name, Description, RoutingStrategy, Tags)
 #'
-#' @param Name &#91;required&#93; Descriptive label that is associated with an alias. Alias names do not
+#' @param Name &#91;required&#93; A descriptive label that is associated with an alias. Alias names do not
 #' need to be unique.
-#' @param Description Human-readable description of an alias.
-#' @param RoutingStrategy &#91;required&#93; Object that specifies the fleet and routing type to use for the alias.
+#' @param Description A human-readable description of the alias.
+#' @param RoutingStrategy &#91;required&#93; The routing configuration, including routing type and fleet target, for
+#' the alias.
+#' @param Tags A list of labels to assign to the new alias resource. Tags are
+#' developer-defined key-value pairs. Tagging AWS resources are useful for
+#' resource management, access management and cost allocation. For more
+#' information, see [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in the *AWS General Reference*. Once the resource is created, you can
+#' use TagResource, UntagResource, and ListTagsForResource to add, remove,
+#' and view tags. The maximum tag limit may be lower than stated. See the
+#' AWS General Reference for actual tagging limits.
 #'
 #' @section Request syntax:
 #' ```
@@ -143,6 +150,12 @@ gamelift_accept_match <- function(TicketId, PlayerIds, AcceptanceType) {
 #'     Type = "SIMPLE"|"TERMINAL",
 #'     FleetId = "string",
 #'     Message = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -150,14 +163,14 @@ gamelift_accept_match <- function(TicketId, PlayerIds, AcceptanceType) {
 #' @keywords internal
 #'
 #' @rdname gamelift_create_alias
-gamelift_create_alias <- function(Name, Description = NULL, RoutingStrategy) {
+gamelift_create_alias <- function(Name, Description = NULL, RoutingStrategy, Tags = NULL) {
   op <- new_operation(
     name = "CreateAlias",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .gamelift$create_alias_input(Name = Name, Description = Description, RoutingStrategy = RoutingStrategy)
+  input <- .gamelift$create_alias_input(Name = Name, Description = Description, RoutingStrategy = RoutingStrategy, Tags = Tags)
   output <- .gamelift$create_alias_output()
   config <- get_config()
   svc <- .gamelift$service(config)
@@ -175,33 +188,34 @@ gamelift_create_alias <- function(Name, Description = NULL, RoutingStrategy) {
 #' files and points to the location of your game server build files in an
 #' Amazon Simple Storage Service (Amazon S3) location.
 #' 
-#' Game server binaries must be combined into a `.zip` file for use with
+#' Game server binaries must be combined into a zip file for use with
 #' Amazon GameLift.
 #' 
-#' To create new builds quickly and easily, use the AWS CLI command
+#' To create new builds directly from a file directory, use the AWS CLI
+#' command
 #' **[upload-build](https://docs.aws.amazon.com/cli/latest/reference/gamelift/upload-build.html)**
-#' . This helper command uploads your build and creates a new build record
+#' . This helper command uploads build files and creates a new build record
 #' in one step, and automatically handles the necessary permissions.
 #' 
-#' The `CreateBuild` operation should be used only when you need to
-#' manually upload your build files, as in the following scenarios:
+#' The `CreateBuild` operation should be used only in the following
+#' scenarios:
 #' 
-#' -   Store a build file in an Amazon S3 bucket under your own AWS
-#'     account. To use this option, you must first give Amazon GameLift
-#'     access to that Amazon S3 bucket. To create a new build record using
-#'     files in your Amazon S3 bucket, call `CreateBuild` and specify a
-#'     build name, operating system, and the storage location of your game
-#'     build.
+#' -   To create a new game build with build files that are in an Amazon S3
+#'     bucket under your own AWS account. To use this option, you must
+#'     first give Amazon GameLift access to that Amazon S3 bucket. Then
+#'     call `CreateBuild` and specify a build name, operating system, and
+#'     the Amazon S3 storage location of your game build.
 #' 
-#' -   Upload a build file directly to Amazon GameLift\'s Amazon S3
-#'     account. To use this option, you first call `CreateBuild` with a
+#' -   To upload build files directly to Amazon GameLift\'s Amazon S3
+#'     account. To use this option, first call `CreateBuild` and specify a
 #'     build name and operating system. This action creates a new build
 #'     record and returns an Amazon S3 storage location (bucket and key
 #'     only) and temporary access credentials. Use the credentials to
-#'     manually upload your build file to the storage location (see the
-#'     Amazon S3 topic [Uploading
+#'     manually upload your build file to the provided storage location
+#'     (see the Amazon S3 topic [Uploading
 #'     Objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/UploadingObjects.html)).
-#'     You can upload files to a location only once.
+#'     You can upload build files to the GameLift Amazon S3 location only
+#'     once.
 #' 
 #' If successful, this operation creates a new build record with a unique
 #' build ID and places it in `INITIALIZED` status. You can use
@@ -212,6 +226,7 @@ gamelift_create_alias <- function(Name, Description = NULL, RoutingStrategy) {
 #' 
 #' [Uploading Your
 #' Game](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html)
+#' <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html>
 #' 
 #' [Create a Build with Files in Amazon
 #' S3](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build)
@@ -229,25 +244,35 @@ gamelift_create_alias <- function(Name, Description = NULL, RoutingStrategy) {
 #' -   DeleteBuild
 #'
 #' @usage
-#' gamelift_create_build(Name, Version, StorageLocation, OperatingSystem)
+#' gamelift_create_build(Name, Version, StorageLocation, OperatingSystem,
+#'   Tags)
 #'
-#' @param Name Descriptive label that is associated with a build. Build names do not
+#' @param Name A descriptive label that is associated with a build. Build names do not
 #' need to be unique. You can use UpdateBuild to change this value later.
-#' @param Version Version that is associated with a build or script. Version strings do
-#' not need to be unique. You can use UpdateBuild to change this value
-#' later.
+#' @param Version Version information that is associated with a build or script. Version
+#' strings do not need to be unique. You can use UpdateBuild to change this
+#' value later.
 #' @param StorageLocation Information indicating where your game build files are stored. Use this
 #' parameter only when creating a build with files stored in an Amazon S3
 #' bucket that you own. The storage location must specify an Amazon S3
-#' bucket name and key, as well as a the ARN for a role that you set up to
-#' allow Amazon GameLift to access your Amazon S3 bucket. The S3 bucket
-#' must be in the same region that you want to create a new build in.
-#' @param OperatingSystem Operating system that the game server binaries are built to run on. This
-#' value determines the type of fleet resources that you can use for this
-#' build. If your game build contains multiple executables, they all must
-#' run on the same operating system. If an operating system is not
+#' bucket name and key. The location must also specify a role ARN that you
+#' set up to allow Amazon GameLift to access your Amazon S3 bucket. The S3
+#' bucket and your new build must be in the same Region.
+#' @param OperatingSystem The operating system that the game server binaries are built to run on.
+#' This value determines the type of fleet resources that you can use for
+#' this build. If your game build contains multiple executables, they all
+#' must run on the same operating system. If an operating system is not
 #' specified when creating a build, Amazon GameLift uses the default value
 #' (WINDOWS\\_2012). This value cannot be changed later.
+#' @param Tags A list of labels to assign to the new build resource. Tags are
+#' developer-defined key-value pairs. Tagging AWS resources are useful for
+#' resource management, access management and cost allocation. For more
+#' information, see [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in the *AWS General Reference*. Once the resource is created, you can
+#' use TagResource, UntagResource, and ListTagsForResource to add, remove,
+#' and view tags. The maximum tag limit may be lower than stated. See the
+#' AWS General Reference for actual tagging limits.
 #'
 #' @section Request syntax:
 #' ```
@@ -260,21 +285,27 @@ gamelift_create_alias <- function(Name, Description = NULL, RoutingStrategy) {
 #'     RoleArn = "string",
 #'     ObjectVersion = "string"
 #'   ),
-#'   OperatingSystem = "WINDOWS_2012"|"AMAZON_LINUX"|"AMAZON_LINUX_2"
+#'   OperatingSystem = "WINDOWS_2012"|"AMAZON_LINUX"|"AMAZON_LINUX_2",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname gamelift_create_build
-gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation = NULL, OperatingSystem = NULL) {
+gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation = NULL, OperatingSystem = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateBuild",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .gamelift$create_build_input(Name = Name, Version = Version, StorageLocation = StorageLocation, OperatingSystem = OperatingSystem)
+  input <- .gamelift$create_build_input(Name = Name, Version = Version, StorageLocation = StorageLocation, OperatingSystem = OperatingSystem, Tags = Tags)
   output <- .gamelift$create_build_output()
   config <- get_config()
   svc <- .gamelift$service(config)
@@ -296,15 +327,8 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #' To create a new fleet, you must provide the following: (1) a fleet name,
 #' (2) an EC2 instance type and fleet type (spot or on-demand), (3) the
 #' build ID for your game build or script ID if using Realtime Servers, and
-#' (4) a run-time configuration, which determines how game servers will run
+#' (4) a runtime configuration, which determines how game servers will run
 #' on each instance in the fleet.
-#' 
-#' When creating a Realtime Servers fleet, we recommend using a minimal
-#' version of the Realtime script (see this [working code
-#' example](https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-script.html#realtime-script-examples)
-#' ). This will make it much easier to troubleshoot any fleet creation
-#' issues. Once the fleet is active, you can update your Realtime script as
-#' needed.
 #' 
 #' If the `CreateFleet` call is successful, Amazon GameLift performs the
 #' following tasks. You can track the process of a fleet by checking the
@@ -315,7 +339,7 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #' -   Begins writing events to the fleet event log, which can be accessed
 #'     in the Amazon GameLift console.
 #' 
-#'     Sets the fleet\'s target capacity to 1 (desired instances), which
+#' -   Sets the fleet\'s target capacity to 1 (desired instances), which
 #'     triggers Amazon GameLift to start one new EC2 instance.
 #' 
 #' -   Downloads the game build or Realtime script to the new instance and
@@ -323,7 +347,7 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #' 
 #' -   Starts launching server processes on the instance. If the fleet is
 #'     configured to run multiple server processes per instance, Amazon
-#'     GameLift staggers each launch by a few seconds. Status:
+#'     GameLift staggers each process launch by a few seconds. Status:
 #'     `ACTIVATING`.
 #' 
 #' -   Sets the fleet\'s status to `ACTIVE` as soon as one server process
@@ -331,11 +355,11 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #' 
 #' **Learn more**
 #' 
-#' [Working with
+#' [Setting Up
 #' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html)
 #' 
 #' [Debug Fleet Creation
-#' Issues](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-debug.html)
+#' Issues](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-debug.html#fleets-creating-debug-creation)
 #' 
 #' **Related operations**
 #' 
@@ -345,31 +369,9 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #' 
 #' -   DeleteFleet
 #' 
-#' -   Describe fleets:
+#' -   DescribeFleetAttributes
 #' 
-#'     -   DescribeFleetAttributes
-#' 
-#'     -   DescribeFleetCapacity
-#' 
-#'     -   DescribeFleetPortSettings
-#' 
-#'     -   DescribeFleetUtilization
-#' 
-#'     -   DescribeRuntimeConfiguration
-#' 
-#'     -   DescribeEC2InstanceLimits
-#' 
-#'     -   DescribeFleetEvents
-#' 
-#' -   Update fleets:
-#' 
-#'     -   UpdateFleetAttributes
-#' 
-#'     -   UpdateFleetCapacity
-#' 
-#'     -   UpdateFleetPortSettings
-#' 
-#'     -   UpdateRuntimeConfiguration
+#' -   UpdateFleetAttributes
 #' 
 #' -   Manage fleet actions:
 #' 
@@ -383,26 +385,26 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #'   EC2InboundPermissions, NewGameSessionProtectionPolicy,
 #'   RuntimeConfiguration, ResourceCreationLimitPolicy, MetricGroups,
 #'   PeerVpcAwsAccountId, PeerVpcId, FleetType, InstanceRoleArn,
-#'   CertificateConfiguration)
+#'   CertificateConfiguration, Tags)
 #'
-#' @param Name &#91;required&#93; Descriptive label that is associated with a fleet. Fleet names do not
+#' @param Name &#91;required&#93; A descriptive label that is associated with a fleet. Fleet names do not
 #' need to be unique.
-#' @param Description Human-readable description of a fleet.
-#' @param BuildId Unique identifier for a build to be deployed on the new fleet. The
-#' custom game server build must have been successfully uploaded to Amazon
-#' GameLift and be in a `READY` status. This fleet setting cannot be
-#' changed once the fleet is created.
-#' @param ScriptId Unique identifier for a Realtime script to be deployed on the new fleet.
-#' The Realtime script must have been successfully uploaded to Amazon
-#' GameLift. This fleet setting cannot be changed once the fleet is
-#' created.
+#' @param Description A human-readable description of a fleet.
+#' @param BuildId A unique identifier for a build to be deployed on the new fleet. You can
+#' use either the build ID or ARN value. The custom game server build must
+#' have been successfully uploaded to Amazon GameLift and be in a `READY`
+#' status. This fleet setting cannot be changed once the fleet is created.
+#' @param ScriptId A unique identifier for a Realtime script to be deployed on the new
+#' fleet. You can use either the script ID or ARN value. The Realtime
+#' script must have been successfully uploaded to Amazon GameLift. This
+#' fleet setting cannot be changed once the fleet is created.
 #' @param ServerLaunchPath This parameter is no longer used. Instead, specify a server launch path
-#' using the `RuntimeConfiguration` parameter. (Requests that specify a
-#' server launch path and launch parameters instead of a run-time
-#' configuration will continue to work.)
+#' using the `RuntimeConfiguration` parameter. Requests that specify a
+#' server launch path and launch parameters instead of a runtime
+#' configuration will continue to work.
 #' @param ServerLaunchParameters This parameter is no longer used. Instead, specify server launch
 #' parameters in the `RuntimeConfiguration` parameter. (Requests that
-#' specify a server launch path and launch parameters instead of a run-time
+#' specify a server launch path and launch parameters instead of a runtime
 #' configuration will continue to work.)
 #' @param LogPaths This parameter is no longer used. Instead, to specify where Amazon
 #' GameLift should store log files once a server process shuts down, use
@@ -410,70 +412,106 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #' directory paths in `logParameters`. See more information in the [Server
 #' API
 #' Reference](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process).
-#' @param EC2InstanceType &#91;required&#93; Name of an EC2 instance type that is supported in Amazon GameLift. A
+#' @param EC2InstanceType &#91;required&#93; The name of an EC2 instance type that is supported in Amazon GameLift. A
 #' fleet instance type determines the computing resources of each instance
 #' in the fleet, including CPU, memory, storage, and networking capacity.
 #' Amazon GameLift supports the following EC2 instance types. See [Amazon
 #' EC2 Instance Types](http://aws.amazon.com/ec2/instance-types/) for
 #' detailed descriptions.
 #' @param EC2InboundPermissions Range of IP addresses and port settings that permit inbound traffic to
-#' access game sessions that running on the fleet. For fleets using a
+#' access game sessions that are running on the fleet. For fleets using a
 #' custom game build, this parameter is required before game sessions
 #' running on the fleet can accept connections. For Realtime Servers
 #' fleets, Amazon GameLift automatically sets TCP and UDP ranges for use by
 #' the Realtime servers. You can specify multiple permission settings or
 #' add more by updating the fleet.
-#' @param NewGameSessionProtectionPolicy Game session protection policy to apply to all instances in this fleet.
-#' If this parameter is not set, instances in this fleet default to no
-#' protection. You can change a fleet\'s protection policy using
+#' @param NewGameSessionProtectionPolicy A game session protection policy to apply to all instances in this
+#' fleet. If this parameter is not set, instances in this fleet default to
+#' no protection. You can change a fleet\'s protection policy using
 #' UpdateFleetAttributes, but this change will only affect sessions created
 #' after the policy change. You can also set protection for individual
 #' instances using UpdateGameSession.
 #' 
-#' -   **NoProtection** \\-- The game session can be terminated during a
+#' -   **NoProtection** - The game session can be terminated during a
 #'     scale-down event.
 #' 
-#' -   **FullProtection** \\-- If the game session is in an `ACTIVE` status,
+#' -   **FullProtection** - If the game session is in an `ACTIVE` status,
 #'     it cannot be terminated during a scale-down event.
 #' @param RuntimeConfiguration Instructions for launching server processes on each instance in the
 #' fleet. Server processes run either a custom game build executable or a
-#' Realtime Servers script. The run-time configuration lists the types of
-#' server processes to run on an instance and includes the following
-#' configuration settings: the server executable or launch script file,
-#' launch parameters, and the number of processes to run concurrently on
-#' each instance. A CreateFleet request must include a run-time
-#' configuration with at least one server process configuration.
-#' @param ResourceCreationLimitPolicy Policy that limits the number of game sessions an individual player can
-#' create over a span of time for this fleet.
-#' @param MetricGroups Name of an Amazon CloudWatch metric group to add this fleet to. A metric
-#' group aggregates the metrics for all fleets in the group. Specify an
-#' existing metric group name, or provide a new name to create a new metric
-#' group. A fleet can only be included in one metric group at a time.
-#' @param PeerVpcAwsAccountId Unique identifier for the AWS account with the VPC that you want to peer
-#' your Amazon GameLift fleet with. You can find your Account ID in the AWS
-#' Management Console under account settings.
-#' @param PeerVpcId Unique identifier for a VPC with resources to be accessed by your Amazon
-#' GameLift fleet. The VPC must be in the same region where your fleet is
-#' deployed. Look up a VPC ID using the [VPC
+#' Realtime script. The runtime configuration defines the server
+#' executables or launch script file, launch parameters, and the number of
+#' processes to run concurrently on each instance. When creating a fleet,
+#' the runtime configuration must have at least one server process
+#' configuration; otherwise the request fails with an invalid request
+#' exception. (This parameter replaces the parameters `ServerLaunchPath`
+#' and `ServerLaunchParameters`, although requests that contain values for
+#' these parameters instead of a runtime configuration will continue to
+#' work.) This parameter is required unless the parameters
+#' `ServerLaunchPath` and `ServerLaunchParameters` are defined. Runtime
+#' configuration replaced these parameters, but fleets that use them will
+#' continue to work.
+#' @param ResourceCreationLimitPolicy A policy that limits the number of game sessions an individual player
+#' can create over a span of time for this fleet.
+#' @param MetricGroups The name of an Amazon CloudWatch metric group to add this fleet to. A
+#' metric group aggregates the metrics for all fleets in the group. Specify
+#' an existing metric group name, or provide a new name to create a new
+#' metric group. A fleet can only be included in one metric group at a
+#' time.
+#' @param PeerVpcAwsAccountId A unique identifier for the AWS account with the VPC that you want to
+#' peer your Amazon GameLift fleet with. You can find your account ID in
+#' the AWS Management Console under account settings.
+#' @param PeerVpcId A unique identifier for a VPC with resources to be accessed by your
+#' Amazon GameLift fleet. The VPC must be in the same Region as your fleet.
+#' To look up a VPC ID, use the [VPC
 #' Dashboard](https://console.aws.amazon.com/vpc/) in the AWS Management
 #' Console. Learn more about VPC peering in [VPC Peering with Amazon
 #' GameLift
 #' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
-#' @param FleetType Indicates whether to use on-demand instances or spot instances for this
-#' fleet. If empty, the default is ON\\_DEMAND. Both categories of instances
-#' use identical hardware and configurations based on the instance type
-#' selected for this fleet. Learn more about [On-Demand versus Spot
+#' @param FleetType Indicates whether to use On-Demand instances or Spot instances for this
+#' fleet. If empty, the default is `ON_DEMAND`. Both categories of
+#' instances use identical hardware and configurations based on the
+#' instance type selected for this fleet. Learn more about [On-Demand
+#' versus Spot
 #' Instances](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-ec2-instances.html#gamelift-ec2-instances-spot).
-#' @param InstanceRoleArn Unique identifier for an AWS IAM role that manages access to your AWS
+#' @param InstanceRoleArn A unique identifier for an AWS IAM role that manages access to your AWS
 #' services. With an instance role ARN set, any application that runs on an
 #' instance in this fleet can assume the role, including install scripts,
-#' server processes, daemons (background processes). Create a role or look
-#' up a role\'s ARN using the [IAM
+#' server processes, and daemons (background processes). Create a role or
+#' look up a role\'s ARN from the [IAM
 #' dashboard](https://console.aws.amazon.com/iam/) in the AWS Management
 #' Console. Learn more about using on-box credentials for your game servers
 #' at [Access external resources from a game
 #' server](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-resources.html).
-#' @param CertificateConfiguration 
+#' @param CertificateConfiguration Indicates whether to generate a TLS/SSL certificate for the new fleet.
+#' TLS certificates are used for encrypting traffic between game clients
+#' and game servers running on GameLift. If this parameter is not
+#' specified, the default value, DISABLED, is used. This fleet setting
+#' cannot be changed once the fleet is created. Learn more at [Securing
+#' Client/Server
+#' Communication](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-howitworks.html#gamelift-howitworks-security).
+#' 
+#' Note: This feature requires the AWS Certificate Manager (ACM) service,
+#' which is available in the AWS global partition but not in all other
+#' partitions. When working in a partition that does not support this
+#' feature, a request for a new fleet with certificate generation results
+#' fails with a 4xx unsupported Region error.
+#' 
+#' Valid values include:
+#' 
+#' -   **GENERATED** - Generate a TLS/SSL certificate for this fleet.
+#' 
+#' -   **DISABLED** - (default) Do not generate a TLS/SSL certificate for
+#'     this fleet.
+#' @param Tags A list of labels to assign to the new fleet resource. Tags are
+#' developer-defined key-value pairs. Tagging AWS resources are useful for
+#' resource management, access management and cost allocation. For more
+#' information, see [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in the *AWS General Reference*. Once the resource is created, you can
+#' use TagResource, UntagResource, and ListTagsForResource to add, remove,
+#' and view tags. The maximum tag limit may be lower than stated. See the
+#' AWS General Reference for actual tagging limits.
 #'
 #' @section Request syntax:
 #' ```
@@ -521,6 +559,12 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #'   InstanceRoleArn = "string",
 #'   CertificateConfiguration = list(
 #'     CertificateType = "DISABLED"|"GENERATED"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -528,14 +572,14 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #' @keywords internal
 #'
 #' @rdname gamelift_create_fleet
-gamelift_create_fleet <- function(Name, Description = NULL, BuildId = NULL, ScriptId = NULL, ServerLaunchPath = NULL, ServerLaunchParameters = NULL, LogPaths = NULL, EC2InstanceType, EC2InboundPermissions = NULL, NewGameSessionProtectionPolicy = NULL, RuntimeConfiguration = NULL, ResourceCreationLimitPolicy = NULL, MetricGroups = NULL, PeerVpcAwsAccountId = NULL, PeerVpcId = NULL, FleetType = NULL, InstanceRoleArn = NULL, CertificateConfiguration = NULL) {
+gamelift_create_fleet <- function(Name, Description = NULL, BuildId = NULL, ScriptId = NULL, ServerLaunchPath = NULL, ServerLaunchParameters = NULL, LogPaths = NULL, EC2InstanceType, EC2InboundPermissions = NULL, NewGameSessionProtectionPolicy = NULL, RuntimeConfiguration = NULL, ResourceCreationLimitPolicy = NULL, MetricGroups = NULL, PeerVpcAwsAccountId = NULL, PeerVpcId = NULL, FleetType = NULL, InstanceRoleArn = NULL, CertificateConfiguration = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateFleet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .gamelift$create_fleet_input(Name = Name, Description = Description, BuildId = BuildId, ScriptId = ScriptId, ServerLaunchPath = ServerLaunchPath, ServerLaunchParameters = ServerLaunchParameters, LogPaths = LogPaths, EC2InstanceType = EC2InstanceType, EC2InboundPermissions = EC2InboundPermissions, NewGameSessionProtectionPolicy = NewGameSessionProtectionPolicy, RuntimeConfiguration = RuntimeConfiguration, ResourceCreationLimitPolicy = ResourceCreationLimitPolicy, MetricGroups = MetricGroups, PeerVpcAwsAccountId = PeerVpcAwsAccountId, PeerVpcId = PeerVpcId, FleetType = FleetType, InstanceRoleArn = InstanceRoleArn, CertificateConfiguration = CertificateConfiguration)
+  input <- .gamelift$create_fleet_input(Name = Name, Description = Description, BuildId = BuildId, ScriptId = ScriptId, ServerLaunchPath = ServerLaunchPath, ServerLaunchParameters = ServerLaunchParameters, LogPaths = LogPaths, EC2InstanceType = EC2InstanceType, EC2InboundPermissions = EC2InboundPermissions, NewGameSessionProtectionPolicy = NewGameSessionProtectionPolicy, RuntimeConfiguration = RuntimeConfiguration, ResourceCreationLimitPolicy = ResourceCreationLimitPolicy, MetricGroups = MetricGroups, PeerVpcAwsAccountId = PeerVpcAwsAccountId, PeerVpcId = PeerVpcId, FleetType = FleetType, InstanceRoleArn = InstanceRoleArn, CertificateConfiguration = CertificateConfiguration, Tags = Tags)
   output <- .gamelift$create_fleet_output()
   config <- get_config()
   svc <- .gamelift$service(config)
@@ -606,23 +650,24 @@ gamelift_create_fleet <- function(Name, Description = NULL, BuildId = NULL, Scri
 #'   MaximumPlayerSessionCount, Name, GameProperties, CreatorId,
 #'   GameSessionId, IdempotencyToken, GameSessionData)
 #'
-#' @param FleetId Unique identifier for a fleet to create a game session in. Each request
-#' must reference either a fleet ID or alias ID, but not both.
-#' @param AliasId Unique identifier for an alias associated with the fleet to create a
-#' game session in. Each request must reference either a fleet ID or alias
-#' ID, but not both.
-#' @param MaximumPlayerSessionCount &#91;required&#93; Maximum number of players that can be connected simultaneously to the
-#' game session.
-#' @param Name Descriptive label that is associated with a game session. Session names
-#' do not need to be unique.
+#' @param FleetId A unique identifier for a fleet to create a game session in. You can use
+#' either the fleet ID or ARN value. Each request must reference either a
+#' fleet ID or alias ID, but not both.
+#' @param AliasId A unique identifier for an alias associated with the fleet to create a
+#' game session in. You can use either the alias ID or ARN value. Each
+#' request must reference either a fleet ID or alias ID, but not both.
+#' @param MaximumPlayerSessionCount &#91;required&#93; The maximum number of players that can be connected simultaneously to
+#' the game session.
+#' @param Name A descriptive label that is associated with a game session. Session
+#' names do not need to be unique.
 #' @param GameProperties Set of custom properties for a game session, formatted as key:value
 #' pairs. These properties are passed to a game server process in the
 #' GameSession object with a request to start a new game session (see
 #' [Start a Game
 #' Session](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
-#' @param CreatorId Unique identifier for a player or entity creating the game session. This
-#' ID is used to enforce a resource protection policy (if one exists) that
-#' limits the number of concurrent active game sessions one player can
+#' @param CreatorId A unique identifier for a player or entity creating the game session.
+#' This ID is used to enforce a resource protection policy (if one exists)
+#' that limits the number of concurrent active game sessions one player can
 #' have.
 #' @param GameSessionId *This parameter is no longer preferred. Please use `IdempotencyToken`
 #' instead.* Custom string that uniquely identifies a request for a new
@@ -690,7 +735,7 @@ gamelift_create_game_session <- function(FleetId = NULL, AliasId = NULL, Maximum
 #' sessions. A queue identifies where new game sessions can be hosted \\--
 #' by specifying a list of destinations (fleets or aliases) \\-- and how
 #' long requests can wait in the queue before timing out. You can set up a
-#' queue to try to place game sessions on fleets in multiple regions. To
+#' queue to try to place game sessions on fleets in multiple Regions. To
 #' add placement requests to a queue, call StartGameSessionPlacement and
 #' reference the queue name.
 #' 
@@ -729,27 +774,36 @@ gamelift_create_game_session <- function(FleetId = NULL, AliasId = NULL, Maximum
 #'
 #' @usage
 #' gamelift_create_game_session_queue(Name, TimeoutInSeconds,
-#'   PlayerLatencyPolicies, Destinations)
+#'   PlayerLatencyPolicies, Destinations, Tags)
 #'
-#' @param Name &#91;required&#93; Descriptive label that is associated with game session queue. Queue
-#' names must be unique within each region.
-#' @param TimeoutInSeconds Maximum time, in seconds, that a new game session placement request
+#' @param Name &#91;required&#93; A descriptive label that is associated with game session queue. Queue
+#' names must be unique within each Region.
+#' @param TimeoutInSeconds The maximum time, in seconds, that a new game session placement request
 #' remains in the queue. When a request exceeds this time, the game session
 #' placement changes to a `TIMED_OUT` status.
-#' @param PlayerLatencyPolicies Collection of latency policies to apply when processing game sessions
+#' @param PlayerLatencyPolicies A collection of latency policies to apply when processing game sessions
 #' placement requests with player latency information. Multiple policies
 #' are evaluated in order of the maximum latency value, starting with the
-#' lowest latency values. With just one policy, it is enforced at the start
-#' of the game session placement for the duration period. With multiple
-#' policies, each policy is enforced consecutively for its duration period.
-#' For example, a queue might enforce a 60-second policy followed by a
-#' 120-second policy, and then no policy for the remainder of the
-#' placement. A player latency policy must set a value for
-#' MaximumIndividualPlayerLatencyMilliseconds; if none is set, this API
-#' requests will fail.
-#' @param Destinations List of fleets that can be used to fulfill game session placement
+#' lowest latency values. With just one policy, the policy is enforced at
+#' the start of the game session placement for the duration period. With
+#' multiple policies, each policy is enforced consecutively for its
+#' duration period. For example, a queue might enforce a 60-second policy
+#' followed by a 120-second policy, and then no policy for the remainder of
+#' the placement. A player latency policy must set a value for
+#' `MaximumIndividualPlayerLatencyMilliseconds`. If none is set, this API
+#' request fails.
+#' @param Destinations A list of fleets that can be used to fulfill game session placement
 #' requests in the queue. Fleets are identified by either a fleet ARN or a
 #' fleet alias ARN. Destinations are listed in default preference order.
+#' @param Tags A list of labels to assign to the new game session queue resource. Tags
+#' are developer-defined key-value pairs. Tagging AWS resources are useful
+#' for resource management, access management and cost allocation. For more
+#' information, see [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in the *AWS General Reference*. Once the resource is created, you can
+#' use TagResource, UntagResource, and ListTagsForResource to add, remove,
+#' and view tags. The maximum tag limit may be lower than stated. See the
+#' AWS General Reference for actual tagging limits.
 #'
 #' @section Request syntax:
 #' ```
@@ -766,6 +820,12 @@ gamelift_create_game_session <- function(FleetId = NULL, AliasId = NULL, Maximum
 #'     list(
 #'       DestinationArn = "string"
 #'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -773,14 +833,14 @@ gamelift_create_game_session <- function(FleetId = NULL, AliasId = NULL, Maximum
 #' @keywords internal
 #'
 #' @rdname gamelift_create_game_session_queue
-gamelift_create_game_session_queue <- function(Name, TimeoutInSeconds = NULL, PlayerLatencyPolicies = NULL, Destinations = NULL) {
+gamelift_create_game_session_queue <- function(Name, TimeoutInSeconds = NULL, PlayerLatencyPolicies = NULL, Destinations = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateGameSessionQueue",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .gamelift$create_game_session_queue_input(Name = Name, TimeoutInSeconds = TimeoutInSeconds, PlayerLatencyPolicies = PlayerLatencyPolicies, Destinations = Destinations)
+  input <- .gamelift$create_game_session_queue_input(Name = Name, TimeoutInSeconds = TimeoutInSeconds, PlayerLatencyPolicies = PlayerLatencyPolicies, Destinations = Destinations, Tags = Tags)
   output <- .gamelift$create_game_session_queue_output()
   config <- get_config()
   svc <- .gamelift$service(config)
@@ -846,59 +906,67 @@ gamelift_create_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #'   GameSessionQueueArns, RequestTimeoutSeconds, AcceptanceTimeoutSeconds,
 #'   AcceptanceRequired, RuleSetName, NotificationTarget,
 #'   AdditionalPlayerCount, CustomEventData, GameProperties, GameSessionData,
-#'   BackfillMode)
+#'   BackfillMode, Tags)
 #'
-#' @param Name &#91;required&#93; Unique identifier for a matchmaking configuration. This name is used to
-#' identify the configuration associated with a matchmaking request or
+#' @param Name &#91;required&#93; A unique identifier for a matchmaking configuration. This name is used
+#' to identify the configuration associated with a matchmaking request or
 #' ticket.
-#' @param Description Meaningful description of the matchmaking configuration.
+#' @param Description A human-readable description of the matchmaking configuration.
 #' @param GameSessionQueueArns &#91;required&#93; Amazon Resource Name
-#' ([ARN](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
-#' that is assigned to a game session queue and uniquely identifies it.
-#' Format is
-#' `arn:aws:gamelift:&lt;region&gt;:&lt;aws account&gt;:gamesessionqueue/&lt;queue name&gt;`.
-#' These queues are used when placing game sessions for matches that are
-#' created with this matchmaking configuration. Queues can be located in
-#' any region.
-#' @param RequestTimeoutSeconds &#91;required&#93; Maximum duration, in seconds, that a matchmaking ticket can remain in
-#' process before timing out. Requests that fail due to timing out can be
-#' resubmitted as needed.
-#' @param AcceptanceTimeoutSeconds Length of time (in seconds) to wait for players to accept a proposed
+#' ([ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+#' that is assigned to a GameLift game session queue resource and uniquely
+#' identifies it. ARNs are unique across all Regions. These queues are used
+#' when placing game sessions for matches that are created with this
+#' matchmaking configuration. Queues can be located in any Region.
+#' @param RequestTimeoutSeconds &#91;required&#93; The maximum duration, in seconds, that a matchmaking ticket can remain
+#' in process before timing out. Requests that fail due to timing out can
+#' be resubmitted as needed.
+#' @param AcceptanceTimeoutSeconds The length of time (in seconds) to wait for players to accept a proposed
 #' match. If any player rejects the match or fails to accept before the
 #' timeout, the ticket continues to look for an acceptable match.
-#' @param AcceptanceRequired &#91;required&#93; Flag that determines whether a match that was created with this
+#' @param AcceptanceRequired &#91;required&#93; A flag that determines whether a match that was created with this
 #' configuration must be accepted by the matched players. To require
-#' acceptance, set to TRUE.
-#' @param RuleSetName &#91;required&#93; Unique identifier for a matchmaking rule set to use with this
-#' configuration. A matchmaking configuration can only use rule sets that
-#' are defined in the same region.
-#' @param NotificationTarget SNS topic ARN that is set up to receive matchmaking notifications.
-#' @param AdditionalPlayerCount Number of player slots in a match to keep open for future players. For
-#' example, if the configuration\'s rule set specifies a match for a single
-#' 12-person team, and the additional player count is set to 2, only 10
-#' players are selected for the match.
+#' acceptance, set to `TRUE`.
+#' @param RuleSetName &#91;required&#93; A unique identifier for a matchmaking rule set to use with this
+#' configuration. You can use either the rule set name or ARN value. A
+#' matchmaking configuration can only use rule sets that are defined in the
+#' same Region.
+#' @param NotificationTarget An SNS topic ARN that is set up to receive matchmaking notifications.
+#' @param AdditionalPlayerCount The number of player slots in a match to keep open for future players.
+#' For example, assume that the configuration\'s rule set specifies a match
+#' for a single 12-person team. If the additional player count is set to 2,
+#' only 10 players are initially selected for the match.
 #' @param CustomEventData Information to be added to all events related to this matchmaking
 #' configuration.
-#' @param GameProperties Set of custom properties for a game session, formatted as key:value
+#' @param GameProperties A set of custom properties for a game session, formatted as key-value
 #' pairs. These properties are passed to a game server process in the
 #' GameSession object with a request to start a new game session (see
 #' [Start a Game
 #' Session](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 #' This information is added to the new GameSession object that is created
 #' for a successful match.
-#' @param GameSessionData Set of custom game session properties, formatted as a single string
+#' @param GameSessionData A set of custom game session properties, formatted as a single string
 #' value. This data is passed to a game server process in the GameSession
 #' object with a request to start a new game session (see [Start a Game
 #' Session](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 #' This information is added to the new GameSession object that is created
 #' for a successful match.
-#' @param BackfillMode Method used to backfill game sessions created with this matchmaking
-#' configuration. Specify MANUAL when your game manages backfill requests
-#' manually or does not use the match backfill feature. Specify AUTOMATIC
-#' to have GameLift create a StartMatchBackfill request whenever a game
-#' session has one or more open slots. Learn more about manual and
-#' automatic backfill in [Backfill Existing Games with
+#' @param BackfillMode The method used to backfill game sessions that are created with this
+#' matchmaking configuration. Specify `MANUAL` when your game manages
+#' backfill requests manually or does not use the match backfill feature.
+#' Specify `AUTOMATIC` to have GameLift create a StartMatchBackfill request
+#' whenever a game session has one or more open slots. Learn more about
+#' manual and automatic backfill in [Backfill Existing Games with
 #' FlexMatch](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html).
+#' @param Tags A list of labels to assign to the new matchmaking configuration
+#' resource. Tags are developer-defined key-value pairs. Tagging AWS
+#' resources are useful for resource management, access management and cost
+#' allocation. For more information, see [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in the *AWS General Reference*. Once the resource is created, you can
+#' use TagResource, UntagResource, and ListTagsForResource to add, remove,
+#' and view tags. The maximum tag limit may be lower than stated. See the
+#' AWS General Reference for actual tagging limits.
 #'
 #' @section Request syntax:
 #' ```
@@ -922,21 +990,27 @@ gamelift_create_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #'     )
 #'   ),
 #'   GameSessionData = "string",
-#'   BackfillMode = "AUTOMATIC"|"MANUAL"
+#'   BackfillMode = "AUTOMATIC"|"MANUAL",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname gamelift_create_matchmaking_configuration
-gamelift_create_matchmaking_configuration <- function(Name, Description = NULL, GameSessionQueueArns, RequestTimeoutSeconds, AcceptanceTimeoutSeconds = NULL, AcceptanceRequired, RuleSetName, NotificationTarget = NULL, AdditionalPlayerCount = NULL, CustomEventData = NULL, GameProperties = NULL, GameSessionData = NULL, BackfillMode = NULL) {
+gamelift_create_matchmaking_configuration <- function(Name, Description = NULL, GameSessionQueueArns, RequestTimeoutSeconds, AcceptanceTimeoutSeconds = NULL, AcceptanceRequired, RuleSetName, NotificationTarget = NULL, AdditionalPlayerCount = NULL, CustomEventData = NULL, GameProperties = NULL, GameSessionData = NULL, BackfillMode = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateMatchmakingConfiguration",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .gamelift$create_matchmaking_configuration_input(Name = Name, Description = Description, GameSessionQueueArns = GameSessionQueueArns, RequestTimeoutSeconds = RequestTimeoutSeconds, AcceptanceTimeoutSeconds = AcceptanceTimeoutSeconds, AcceptanceRequired = AcceptanceRequired, RuleSetName = RuleSetName, NotificationTarget = NotificationTarget, AdditionalPlayerCount = AdditionalPlayerCount, CustomEventData = CustomEventData, GameProperties = GameProperties, GameSessionData = GameSessionData, BackfillMode = BackfillMode)
+  input <- .gamelift$create_matchmaking_configuration_input(Name = Name, Description = Description, GameSessionQueueArns = GameSessionQueueArns, RequestTimeoutSeconds = RequestTimeoutSeconds, AcceptanceTimeoutSeconds = AcceptanceTimeoutSeconds, AcceptanceRequired = AcceptanceRequired, RuleSetName = RuleSetName, NotificationTarget = NotificationTarget, AdditionalPlayerCount = AdditionalPlayerCount, CustomEventData = CustomEventData, GameProperties = GameProperties, GameSessionData = GameSessionData, BackfillMode = BackfillMode, Tags = Tags)
   output <- .gamelift$create_matchmaking_configuration_output()
   config <- get_config()
   svc <- .gamelift$service(config)
@@ -949,14 +1023,14 @@ gamelift_create_matchmaking_configuration <- function(Name, Description = NULL, 
 #' Creates a new rule set for FlexMatch matchmaking
 #'
 #' Creates a new rule set for FlexMatch matchmaking. A rule set describes
-#' the type of match to create, such as the number and size of teams, and
-#' sets the parameters for acceptable player matches, such as minimum skill
-#' level or character type. A rule set is used by a
+#' the type of match to create, such as the number and size of teams. It
+#' also sets the parameters for acceptable player matches, such as minimum
+#' skill level or character type. A rule set is used by a
 #' MatchmakingConfiguration.
 #' 
 #' To create a matchmaking rule set, provide unique rule set name and the
 #' rule set body in JSON format. Rule sets must be defined in the same
-#' region as the matchmaking configuration they are used with.
+#' Region as the matchmaking configuration they are used with.
 #' 
 #' Since matchmaking rule sets cannot be edited, it is a good idea to check
 #' the rule set syntax using ValidateMatchmakingRuleSet before creating a
@@ -992,34 +1066,49 @@ gamelift_create_matchmaking_configuration <- function(Name, Description = NULL, 
 #' -   DeleteMatchmakingRuleSet
 #'
 #' @usage
-#' gamelift_create_matchmaking_rule_set(Name, RuleSetBody)
+#' gamelift_create_matchmaking_rule_set(Name, RuleSetBody, Tags)
 #'
-#' @param Name &#91;required&#93; Unique identifier for a matchmaking rule set. A matchmaking
-#' configuration identifies the rule set it uses by this name value. (Note:
-#' The rule set name is different from the optional \"name\" field in the
-#' rule set body.)
-#' @param RuleSetBody &#91;required&#93; Collection of matchmaking rules, formatted as a JSON string. Comments
+#' @param Name &#91;required&#93; A unique identifier for a matchmaking rule set. A matchmaking
+#' configuration identifies the rule set it uses by this name value. Note
+#' that the rule set name is different from the optional `name` field in
+#' the rule set body.
+#' @param RuleSetBody &#91;required&#93; A collection of matchmaking rules, formatted as a JSON string. Comments
 #' are not allowed in JSON, but most elements support a description field.
+#' @param Tags A list of labels to assign to the new matchmaking rule set resource.
+#' Tags are developer-defined key-value pairs. Tagging AWS resources are
+#' useful for resource management, access management and cost allocation.
+#' For more information, see [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in the *AWS General Reference*. Once the resource is created, you can
+#' use TagResource, UntagResource, and ListTagsForResource to add, remove,
+#' and view tags. The maximum tag limit may be lower than stated. See the
+#' AWS General Reference for actual tagging limits.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_matchmaking_rule_set(
 #'   Name = "string",
-#'   RuleSetBody = "string"
+#'   RuleSetBody = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname gamelift_create_matchmaking_rule_set
-gamelift_create_matchmaking_rule_set <- function(Name, RuleSetBody) {
+gamelift_create_matchmaking_rule_set <- function(Name, RuleSetBody, Tags = NULL) {
   op <- new_operation(
     name = "CreateMatchmakingRuleSet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .gamelift$create_matchmaking_rule_set_input(Name = Name, RuleSetBody = RuleSetBody)
+  input <- .gamelift$create_matchmaking_rule_set_input(Name = Name, RuleSetBody = RuleSetBody, Tags = Tags)
   output <- .gamelift$create_matchmaking_rule_set_output()
   config <- get_config()
   svc <- .gamelift$service(config)
@@ -1063,8 +1152,8 @@ gamelift_create_matchmaking_rule_set <- function(Name, RuleSetBody) {
 #' @usage
 #' gamelift_create_player_session(GameSessionId, PlayerId, PlayerData)
 #'
-#' @param GameSessionId &#91;required&#93; Unique identifier for the game session to add a player to.
-#' @param PlayerId &#91;required&#93; Unique identifier for a player. Player IDs are developer-defined.
+#' @param GameSessionId &#91;required&#93; A unique identifier for the game session to add a player to.
+#' @param PlayerId &#91;required&#93; A unique identifier for a player. Player IDs are developer-defined.
 #' @param PlayerData Developer-defined information related to a player. Amazon GameLift does
 #' not use this data, so it can be formatted as needed for use in the game.
 #'
@@ -1131,7 +1220,7 @@ gamelift_create_player_session <- function(GameSessionId, PlayerId, PlayerData =
 #' @usage
 #' gamelift_create_player_sessions(GameSessionId, PlayerIds, PlayerDataMap)
 #'
-#' @param GameSessionId &#91;required&#93; Unique identifier for the game session to add players to.
+#' @param GameSessionId &#91;required&#93; A unique identifier for the game session to add players to.
 #' @param PlayerIds &#91;required&#93; List of unique identifiers for the players to be added.
 #' @param PlayerDataMap Map of string pairs, each specifying a player ID and a set of
 #' developer-defined information related to the player. Amazon GameLift
@@ -1221,22 +1310,23 @@ gamelift_create_player_sessions <- function(GameSessionId, PlayerIds, PlayerData
 #' -   DeleteScript
 #'
 #' @usage
-#' gamelift_create_script(Name, Version, StorageLocation, ZipFile)
+#' gamelift_create_script(Name, Version, StorageLocation, ZipFile, Tags)
 #'
-#' @param Name Descriptive label that is associated with a script. Script names do not
-#' need to be unique. You can use UpdateScript to change this value later.
-#' @param Version Version that is associated with a build or script. Version strings do
+#' @param Name A descriptive label that is associated with a script. Script names do
 #' not need to be unique. You can use UpdateScript to change this value
 #' later.
-#' @param StorageLocation Location of the Amazon S3 bucket where a zipped file containing your
+#' @param Version The version that is associated with a build or script. Version strings
+#' do not need to be unique. You can use UpdateScript to change this value
+#' later.
+#' @param StorageLocation The location of the Amazon S3 bucket where a zipped file containing your
 #' Realtime scripts is stored. The storage location must specify the Amazon
 #' S3 bucket name, the zip file name (the \"key\"), and a role ARN that
 #' allows Amazon GameLift to access the Amazon S3 storage location. The S3
-#' bucket must be in the same region where you want to create a new script.
+#' bucket must be in the same Region where you want to create a new script.
 #' By default, Amazon GameLift uploads the latest version of the zip file;
 #' if you have S3 object versioning turned on, you can use the
 #' `ObjectVersion` parameter to specify an earlier version.
-#' @param ZipFile Data object containing your Realtime scripts and dependencies as a zip
+#' @param ZipFile A data object containing your Realtime scripts and dependencies as a zip
 #' file. The zip file can have one or multiple files. Maximum size of a zip
 #' file is 5 MB.
 #' 
@@ -1244,6 +1334,15 @@ gamelift_create_player_sessions <- function(GameSessionId, PlayerIds, PlayerData
 #' the zip file name. It must be prepended with the string \"fileb://\" to
 #' indicate that the file data is a binary object. For example:
 #' `--zip-file fileb://myRealtimeScript.zip`.
+#' @param Tags A list of labels to assign to the new script resource. Tags are
+#' developer-defined key-value pairs. Tagging AWS resources are useful for
+#' resource management, access management and cost allocation. For more
+#' information, see [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in the *AWS General Reference*. Once the resource is created, you can
+#' use TagResource, UntagResource, and ListTagsForResource to add, remove,
+#' and view tags. The maximum tag limit may be lower than stated. See the
+#' AWS General Reference for actual tagging limits.
 #'
 #' @section Request syntax:
 #' ```
@@ -1256,21 +1355,27 @@ gamelift_create_player_sessions <- function(GameSessionId, PlayerIds, PlayerData
 #'     RoleArn = "string",
 #'     ObjectVersion = "string"
 #'   ),
-#'   ZipFile = raw
+#'   ZipFile = raw,
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname gamelift_create_script
-gamelift_create_script <- function(Name = NULL, Version = NULL, StorageLocation = NULL, ZipFile = NULL) {
+gamelift_create_script <- function(Name = NULL, Version = NULL, StorageLocation = NULL, ZipFile = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateScript",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .gamelift$create_script_input(Name = Name, Version = Version, StorageLocation = StorageLocation, ZipFile = ZipFile)
+  input <- .gamelift$create_script_input(Name = Name, Version = Version, StorageLocation = StorageLocation, ZipFile = ZipFile, Tags = Tags)
   output <- .gamelift$create_script_output()
   config <- get_config()
   svc <- .gamelift$service(config)
@@ -1294,7 +1399,7 @@ gamelift_create_script <- function(Name = NULL, Version = NULL, StorageLocation 
 #' 
 #' You can peer with VPCs that are owned by any AWS account you have access
 #' to, including the account that you use to manage your Amazon GameLift
-#' fleets. You cannot peer with VPCs that are in different regions.
+#' fleets. You cannot peer with VPCs that are in different Regions.
 #' 
 #' To request authorization to create a connection, call this operation
 #' from the AWS account with the VPC that you want to peer to your Amazon
@@ -1331,12 +1436,12 @@ gamelift_create_script <- function(Name = NULL, Version = NULL, StorageLocation 
 #' gamelift_create_vpc_peering_authorization(GameLiftAwsAccountId,
 #'   PeerVpcId)
 #'
-#' @param GameLiftAwsAccountId &#91;required&#93; Unique identifier for the AWS account that you use to manage your Amazon
-#' GameLift fleet. You can find your Account ID in the AWS Management
-#' Console under account settings.
-#' @param PeerVpcId &#91;required&#93; Unique identifier for a VPC with resources to be accessed by your Amazon
-#' GameLift fleet. The VPC must be in the same region where your fleet is
-#' deployed. Look up a VPC ID using the [VPC
+#' @param GameLiftAwsAccountId &#91;required&#93; A unique identifier for the AWS account that you use to manage your
+#' Amazon GameLift fleet. You can find your Account ID in the AWS
+#' Management Console under account settings.
+#' @param PeerVpcId &#91;required&#93; A unique identifier for a VPC with resources to be accessed by your
+#' Amazon GameLift fleet. The VPC must be in the same Region where your
+#' fleet is deployed. Look up a VPC ID using the [VPC
 #' Dashboard](https://console.aws.amazon.com/vpc/) in the AWS Management
 #' Console. Learn more about VPC peering in [VPC Peering with Amazon
 #' GameLift
@@ -1379,7 +1484,7 @@ gamelift_create_vpc_peering_authorization <- function(GameLiftAwsAccountId, Peer
 #' with other AWS resources. You can peer with VPCs in any AWS account that
 #' you have access to, including the account that you use to manage your
 #' Amazon GameLift fleets. You cannot peer with VPCs that are in different
-#' regions. For more information, see [VPC Peering with Amazon GameLift
+#' Regions. For more information, see [VPC Peering with Amazon GameLift
 #' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 #' 
 #' Before calling this operation to establish the peering connection, you
@@ -1415,14 +1520,14 @@ gamelift_create_vpc_peering_authorization <- function(GameLiftAwsAccountId, Peer
 #' gamelift_create_vpc_peering_connection(FleetId, PeerVpcAwsAccountId,
 #'   PeerVpcId)
 #'
-#' @param FleetId &#91;required&#93; Unique identifier for a fleet. This tells Amazon GameLift which GameLift
-#' VPC to peer with.
-#' @param PeerVpcAwsAccountId &#91;required&#93; Unique identifier for the AWS account with the VPC that you want to peer
-#' your Amazon GameLift fleet with. You can find your Account ID in the AWS
-#' Management Console under account settings.
-#' @param PeerVpcId &#91;required&#93; Unique identifier for a VPC with resources to be accessed by your Amazon
-#' GameLift fleet. The VPC must be in the same region where your fleet is
-#' deployed. Look up a VPC ID using the [VPC
+#' @param FleetId &#91;required&#93; A unique identifier for a fleet. You can use either the fleet ID or ARN
+#' value. This tells Amazon GameLift which GameLift VPC to peer with.
+#' @param PeerVpcAwsAccountId &#91;required&#93; A unique identifier for the AWS account with the VPC that you want to
+#' peer your Amazon GameLift fleet with. You can find your Account ID in
+#' the AWS Management Console under account settings.
+#' @param PeerVpcId &#91;required&#93; A unique identifier for a VPC with resources to be accessed by your
+#' Amazon GameLift fleet. The VPC must be in the same Region where your
+#' fleet is deployed. Look up a VPC ID using the [VPC
 #' Dashboard](https://console.aws.amazon.com/vpc/) in the AWS Management
 #' Console. Learn more about VPC peering in [VPC Peering with Amazon
 #' GameLift
@@ -1479,8 +1584,8 @@ gamelift_create_vpc_peering_connection <- function(FleetId, PeerVpcAwsAccountId,
 #' @usage
 #' gamelift_delete_alias(AliasId)
 #'
-#' @param AliasId &#91;required&#93; Unique identifier for a fleet alias. Specify the alias you want to
-#' delete.
+#' @param AliasId &#91;required&#93; A unique identifier of the alias that you want to delete. You can use
+#' either the alias ID or ARN value.
 #'
 #' @section Request syntax:
 #' ```
@@ -1538,7 +1643,8 @@ gamelift_delete_alias <- function(AliasId) {
 #' @usage
 #' gamelift_delete_build(BuildId)
 #'
-#' @param BuildId &#91;required&#93; Unique identifier for a build to delete.
+#' @param BuildId &#91;required&#93; A unique identifier for a build to delete. You can use either the build
+#' ID or ARN value.
 #'
 #' @section Request syntax:
 #' ```
@@ -1594,31 +1700,9 @@ gamelift_delete_build <- function(BuildId) {
 #' 
 #' -   DeleteFleet
 #' 
-#' -   Describe fleets:
+#' -   DescribeFleetAttributes
 #' 
-#'     -   DescribeFleetAttributes
-#' 
-#'     -   DescribeFleetCapacity
-#' 
-#'     -   DescribeFleetPortSettings
-#' 
-#'     -   DescribeFleetUtilization
-#' 
-#'     -   DescribeRuntimeConfiguration
-#' 
-#'     -   DescribeEC2InstanceLimits
-#' 
-#'     -   DescribeFleetEvents
-#' 
-#' -   Update fleets:
-#' 
-#'     -   UpdateFleetAttributes
-#' 
-#'     -   UpdateFleetCapacity
-#' 
-#'     -   UpdateFleetPortSettings
-#' 
-#'     -   UpdateRuntimeConfiguration
+#' -   UpdateFleetAttributes
 #' 
 #' -   Manage fleet actions:
 #' 
@@ -1629,7 +1713,8 @@ gamelift_delete_build <- function(BuildId) {
 #' @usage
 #' gamelift_delete_fleet(FleetId)
 #'
-#' @param FleetId &#91;required&#93; Unique identifier for a fleet to be deleted.
+#' @param FleetId &#91;required&#93; A unique identifier for a fleet to be deleted. You can use either the
+#' fleet ID or ARN value.
 #'
 #' @section Request syntax:
 #' ```
@@ -1675,8 +1760,9 @@ gamelift_delete_fleet <- function(FleetId) {
 #' @usage
 #' gamelift_delete_game_session_queue(Name)
 #'
-#' @param Name &#91;required&#93; Descriptive label that is associated with game session queue. Queue
-#' names must be unique within each region.
+#' @param Name &#91;required&#93; A descriptive label that is associated with game session queue. Queue
+#' names must be unique within each Region. You can use either the queue ID
+#' or ARN value.
 #'
 #' @section Request syntax:
 #' ```
@@ -1732,7 +1818,8 @@ gamelift_delete_game_session_queue <- function(Name) {
 #' @usage
 #' gamelift_delete_matchmaking_configuration(Name)
 #'
-#' @param Name &#91;required&#93; Unique identifier for a matchmaking configuration
+#' @param Name &#91;required&#93; A unique identifier for a matchmaking configuration. You can use either
+#' the configuration name or ARN value.
 #'
 #' @section Request syntax:
 #' ```
@@ -1793,9 +1880,9 @@ gamelift_delete_matchmaking_configuration <- function(Name) {
 #' @usage
 #' gamelift_delete_matchmaking_rule_set(Name)
 #'
-#' @param Name &#91;required&#93; Unique identifier for a matchmaking rule set to be deleted. (Note: The
+#' @param Name &#91;required&#93; A unique identifier for a matchmaking rule set to be deleted. (Note: The
 #' rule set name is different from the optional \"name\" field in the rule
-#' set body.)
+#' set body.) You can use either the rule set name or ARN value.
 #'
 #' @section Request syntax:
 #' ```
@@ -1857,9 +1944,10 @@ gamelift_delete_matchmaking_rule_set <- function(Name) {
 #' @usage
 #' gamelift_delete_scaling_policy(Name, FleetId)
 #'
-#' @param Name &#91;required&#93; Descriptive label that is associated with a scaling policy. Policy names
-#' do not need to be unique.
-#' @param FleetId &#91;required&#93; Unique identifier for a fleet to be deleted.
+#' @param Name &#91;required&#93; A descriptive label that is associated with a scaling policy. Policy
+#' names do not need to be unique.
+#' @param FleetId &#91;required&#93; A unique identifier for a fleet to be deleted. You can use either the
+#' fleet ID or ARN value.
 #'
 #' @section Request syntax:
 #' ```
@@ -1921,7 +2009,8 @@ gamelift_delete_scaling_policy <- function(Name, FleetId) {
 #' @usage
 #' gamelift_delete_script(ScriptId)
 #'
-#' @param ScriptId &#91;required&#93; Unique identifier for a Realtime script to delete.
+#' @param ScriptId &#91;required&#93; A unique identifier for a Realtime script to delete. You can use either
+#' the script ID or ARN value.
 #'
 #' @section Request syntax:
 #' ```
@@ -1972,12 +2061,12 @@ gamelift_delete_script <- function(ScriptId) {
 #' gamelift_delete_vpc_peering_authorization(GameLiftAwsAccountId,
 #'   PeerVpcId)
 #'
-#' @param GameLiftAwsAccountId &#91;required&#93; Unique identifier for the AWS account that you use to manage your Amazon
-#' GameLift fleet. You can find your Account ID in the AWS Management
-#' Console under account settings.
-#' @param PeerVpcId &#91;required&#93; Unique identifier for a VPC with resources to be accessed by your Amazon
-#' GameLift fleet. The VPC must be in the same region where your fleet is
-#' deployed. Look up a VPC ID using the [VPC
+#' @param GameLiftAwsAccountId &#91;required&#93; A unique identifier for the AWS account that you use to manage your
+#' Amazon GameLift fleet. You can find your Account ID in the AWS
+#' Management Console under account settings.
+#' @param PeerVpcId &#91;required&#93; A unique identifier for a VPC with resources to be accessed by your
+#' Amazon GameLift fleet. The VPC must be in the same Region where your
+#' fleet is deployed. Look up a VPC ID using the [VPC
 #' Dashboard](https://console.aws.amazon.com/vpc/) in the AWS Management
 #' Console. Learn more about VPC peering in [VPC Peering with Amazon
 #' GameLift
@@ -2039,9 +2128,10 @@ gamelift_delete_vpc_peering_authorization <- function(GameLiftAwsAccountId, Peer
 #' @usage
 #' gamelift_delete_vpc_peering_connection(FleetId, VpcPeeringConnectionId)
 #'
-#' @param FleetId &#91;required&#93; Unique identifier for a fleet. This value must match the fleet ID
-#' referenced in the VPC peering connection record.
-#' @param VpcPeeringConnectionId &#91;required&#93; Unique identifier for a VPC peering connection. This value is included
+#' @param FleetId &#91;required&#93; A unique identifier for a fleet. This fleet specified must match the
+#' fleet referenced in the VPC peering connection record. You can use
+#' either the fleet ID or ARN value.
+#' @param VpcPeeringConnectionId &#91;required&#93; A unique identifier for a VPC peering connection. This value is included
 #' in the VpcPeeringConnection object, which can be retrieved by calling
 #' DescribeVpcPeeringConnections.
 #'
@@ -2097,8 +2187,8 @@ gamelift_delete_vpc_peering_connection <- function(FleetId, VpcPeeringConnection
 #' @usage
 #' gamelift_describe_alias(AliasId)
 #'
-#' @param AliasId &#91;required&#93; Unique identifier for a fleet alias. Specify the alias you want to
-#' retrieve.
+#' @param AliasId &#91;required&#93; The unique identifier for the fleet alias that you want to retrieve. You
+#' can use either the alias ID or ARN value.
 #'
 #' @section Request syntax:
 #' ```
@@ -2153,7 +2243,8 @@ gamelift_describe_alias <- function(AliasId) {
 #' @usage
 #' gamelift_describe_build(BuildId)
 #'
-#' @param BuildId &#91;required&#93; Unique identifier for a build to retrieve properties for.
+#' @param BuildId &#91;required&#93; A unique identifier for a build to retrieve properties for. You can use
+#' either the build ID or ARN value.
 #'
 #' @section Request syntax:
 #' ```
@@ -2185,7 +2276,7 @@ gamelift_describe_build <- function(BuildId) {
 #' Retrieves the following information for the specified EC2 instance type:
 #' - maximum number of instances allowed per AWS account (service limit) -
 #' current usage level for the AWS account Service limits vary depending on
-#' region
+#' Region
 #'
 #' Retrieves the following information for the specified EC2 instance type:
 #' 
@@ -2193,7 +2284,7 @@ gamelift_describe_build <- function(BuildId) {
 #' 
 #' -   current usage level for the AWS account
 #' 
-#' Service limits vary depending on region. Available regions for Amazon
+#' Service limits vary depending on Region. Available Regions for Amazon
 #' GameLift can be found in the AWS Management Console for Amazon GameLift
 #' (see the drop-down list in the upper right corner).
 #' 
@@ -2325,15 +2416,7 @@ gamelift_describe_ec2_instance_limits <- function(EC2InstanceType = NULL) {
 #' 
 #'     -   DescribeFleetEvents
 #' 
-#' -   Update fleets:
-#' 
-#'     -   UpdateFleetAttributes
-#' 
-#'     -   UpdateFleetCapacity
-#' 
-#'     -   UpdateFleetPortSettings
-#' 
-#'     -   UpdateRuntimeConfiguration
+#' -   UpdateFleetAttributes
 #' 
 #' -   Manage fleet actions:
 #' 
@@ -2344,11 +2427,11 @@ gamelift_describe_ec2_instance_limits <- function(EC2InstanceType = NULL) {
 #' @usage
 #' gamelift_describe_fleet_attributes(FleetIds, Limit, NextToken)
 #'
-#' @param FleetIds Unique identifier for a fleet(s) to retrieve attributes for. To request
-#' attributes for all fleets, leave this parameter empty.
-#' @param Limit Maximum number of results to return. Use this parameter with `NextToken`
-#' to get results as a set of sequential pages. This parameter is ignored
-#' when the request specifies one or a list of fleet IDs.
+#' @param FleetIds A unique identifier for a fleet(s) to retrieve attributes for. You can
+#' use either the fleet ID or ARN value.
+#' @param Limit The maximum number of results to return. Use this parameter with
+#' `NextToken` to get results as a set of sequential pages. This parameter
+#' is ignored when the request specifies one or a list of fleet IDs.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
 #' Use the token that is returned with a previous call to this action. To
 #' start at the beginning of the result set, do not specify a value. This
@@ -2431,15 +2514,7 @@ gamelift_describe_fleet_attributes <- function(FleetIds = NULL, Limit = NULL, Ne
 #' 
 #'     -   DescribeFleetEvents
 #' 
-#' -   Update fleets:
-#' 
-#'     -   UpdateFleetAttributes
-#' 
-#'     -   UpdateFleetCapacity
-#' 
-#'     -   UpdateFleetPortSettings
-#' 
-#'     -   UpdateRuntimeConfiguration
+#' -   UpdateFleetAttributes
 #' 
 #' -   Manage fleet actions:
 #' 
@@ -2450,12 +2525,11 @@ gamelift_describe_fleet_attributes <- function(FleetIds = NULL, Limit = NULL, Ne
 #' @usage
 #' gamelift_describe_fleet_capacity(FleetIds, Limit, NextToken)
 #'
-#' @param FleetIds Unique identifier for a fleet(s) to retrieve capacity information for.
-#' To request capacity information for all fleets, leave this parameter
-#' empty.
-#' @param Limit Maximum number of results to return. Use this parameter with `NextToken`
-#' to get results as a set of sequential pages. This parameter is ignored
-#' when the request specifies one or a list of fleet IDs.
+#' @param FleetIds A unique identifier for a fleet(s) to retrieve capacity information for.
+#' You can use either the fleet ID or ARN value.
+#' @param Limit The maximum number of results to return. Use this parameter with
+#' `NextToken` to get results as a set of sequential pages. This parameter
+#' is ignored when the request specifies one or a list of fleet IDs.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
 #' Use the token that is returned with a previous call to this action. To
 #' start at the beginning of the result set, do not specify a value. This
@@ -2529,15 +2603,7 @@ gamelift_describe_fleet_capacity <- function(FleetIds = NULL, Limit = NULL, Next
 #' 
 #'     -   DescribeFleetEvents
 #' 
-#' -   Update fleets:
-#' 
-#'     -   UpdateFleetAttributes
-#' 
-#'     -   UpdateFleetCapacity
-#' 
-#'     -   UpdateFleetPortSettings
-#' 
-#'     -   UpdateRuntimeConfiguration
+#' -   UpdateFleetAttributes
 #' 
 #' -   Manage fleet actions:
 #' 
@@ -2549,7 +2615,8 @@ gamelift_describe_fleet_capacity <- function(FleetIds = NULL, Limit = NULL, Next
 #' gamelift_describe_fleet_events(FleetId, StartTime, EndTime, Limit,
 #'   NextToken)
 #'
-#' @param FleetId &#91;required&#93; Unique identifier for a fleet to get event logs for.
+#' @param FleetId &#91;required&#93; A unique identifier for a fleet to get event logs for. You can use
+#' either the fleet ID or ARN value.
 #' @param StartTime Earliest date to retrieve event logs for. If no start time is specified,
 #' this call returns entries starting from when the fleet was created to
 #' the specified end time. Format is a number expressed in Unix time as
@@ -2558,8 +2625,8 @@ gamelift_describe_fleet_capacity <- function(FleetIds = NULL, Limit = NULL, Next
 #' specified, this call returns entries from the specified start time up to
 #' the present. Format is a number expressed in Unix time as milliseconds
 #' (ex: \"1469498468.057\").
-#' @param Limit Maximum number of results to return. Use this parameter with `NextToken`
-#' to get results as a set of sequential pages.
+#' @param Limit The maximum number of results to return. Use this parameter with
+#' `NextToken` to get results as a set of sequential pages.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
 #' Use the token that is returned with a previous call to this action. To
 #' start at the beginning of the result set, do not specify a value.
@@ -2638,15 +2705,7 @@ gamelift_describe_fleet_events <- function(FleetId, StartTime = NULL, EndTime = 
 #' 
 #'     -   DescribeFleetEvents
 #' 
-#' -   Update fleets:
-#' 
-#'     -   UpdateFleetAttributes
-#' 
-#'     -   UpdateFleetCapacity
-#' 
-#'     -   UpdateFleetPortSettings
-#' 
-#'     -   UpdateRuntimeConfiguration
+#' -   UpdateFleetAttributes
 #' 
 #' -   Manage fleet actions:
 #' 
@@ -2657,7 +2716,8 @@ gamelift_describe_fleet_events <- function(FleetId, StartTime = NULL, EndTime = 
 #' @usage
 #' gamelift_describe_fleet_port_settings(FleetId)
 #'
-#' @param FleetId &#91;required&#93; Unique identifier for a fleet to retrieve port settings for.
+#' @param FleetId &#91;required&#93; A unique identifier for a fleet to retrieve port settings for. You can
+#' use either the fleet ID or ARN value.
 #'
 #' @section Request syntax:
 #' ```
@@ -2729,15 +2789,7 @@ gamelift_describe_fleet_port_settings <- function(FleetId) {
 #' 
 #'     -   DescribeFleetEvents
 #' 
-#' -   Update fleets:
-#' 
-#'     -   UpdateFleetAttributes
-#' 
-#'     -   UpdateFleetCapacity
-#' 
-#'     -   UpdateFleetPortSettings
-#' 
-#'     -   UpdateRuntimeConfiguration
+#' -   UpdateFleetAttributes
 #' 
 #' -   Manage fleet actions:
 #' 
@@ -2748,11 +2800,11 @@ gamelift_describe_fleet_port_settings <- function(FleetId) {
 #' @usage
 #' gamelift_describe_fleet_utilization(FleetIds, Limit, NextToken)
 #'
-#' @param FleetIds Unique identifier for a fleet(s) to retrieve utilization data for. To
-#' request utilization data for all fleets, leave this parameter empty.
-#' @param Limit Maximum number of results to return. Use this parameter with `NextToken`
-#' to get results as a set of sequential pages. This parameter is ignored
-#' when the request specifies one or a list of fleet IDs.
+#' @param FleetIds A unique identifier for a fleet(s) to retrieve utilization data for. You
+#' can use either the fleet ID or ARN value.
+#' @param Limit The maximum number of results to return. Use this parameter with
+#' `NextToken` to get results as a set of sequential pages. This parameter
+#' is ignored when the request specifies one or a list of fleet IDs.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
 #' Use the token that is returned with a previous call to this action. To
 #' start at the beginning of the result set, do not specify a value. This
@@ -2829,16 +2881,16 @@ gamelift_describe_fleet_utilization <- function(FleetIds = NULL, Limit = NULL, N
 #' gamelift_describe_game_session_details(FleetId, GameSessionId, AliasId,
 #'   StatusFilter, Limit, NextToken)
 #'
-#' @param FleetId Unique identifier for a fleet to retrieve all game sessions active on
-#' the fleet.
-#' @param GameSessionId Unique identifier for the game session to retrieve.
-#' @param AliasId Unique identifier for an alias associated with the fleet to retrieve all
-#' game sessions for.
+#' @param FleetId A unique identifier for a fleet to retrieve all game sessions active on
+#' the fleet. You can use either the fleet ID or ARN value.
+#' @param GameSessionId A unique identifier for the game session to retrieve.
+#' @param AliasId A unique identifier for an alias associated with the fleet to retrieve
+#' all game sessions for. You can use either the alias ID or ARN value.
 #' @param StatusFilter Game session status to filter results on. Possible game session statuses
 #' include `ACTIVE`, `TERMINATED`, `ACTIVATING` and `TERMINATING` (the last
 #' two are transitory).
-#' @param Limit Maximum number of results to return. Use this parameter with `NextToken`
-#' to get results as a set of sequential pages.
+#' @param Limit The maximum number of results to return. Use this parameter with
+#' `NextToken` to get results as a set of sequential pages.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
 #' Use the token that is returned with a previous call to this action. To
 #' start at the beginning of the result set, do not specify a value.
@@ -2905,7 +2957,7 @@ gamelift_describe_game_session_details <- function(FleetId = NULL, GameSessionId
 #' @usage
 #' gamelift_describe_game_session_placement(PlacementId)
 #'
-#' @param PlacementId &#91;required&#93; Unique identifier for a game session placement to retrieve.
+#' @param PlacementId &#91;required&#93; A unique identifier for a game session placement to retrieve.
 #'
 #' @section Request syntax:
 #' ```
@@ -2941,7 +2993,7 @@ gamelift_describe_game_session_placement <- function(PlacementId) {
 #' results as a set of sequential pages. If successful, a GameSessionQueue
 #' object is returned for each requested queue. When specifying a list of
 #' queues, objects are returned only for queues that currently exist in the
-#' region.
+#' Region.
 #' 
 #' -   CreateGameSessionQueue
 #' 
@@ -2954,11 +3006,12 @@ gamelift_describe_game_session_placement <- function(PlacementId) {
 #' @usage
 #' gamelift_describe_game_session_queues(Names, Limit, NextToken)
 #'
-#' @param Names List of queue names to retrieve information for. To request settings for
-#' all queues, leave this parameter empty.
-#' @param Limit Maximum number of results to return. Use this parameter with `NextToken`
-#' to get results as a set of sequential pages.
-#' @param NextToken Token that indicates the start of the next sequential page of results.
+#' @param Names A list of queue names to retrieve information for. You can use either
+#' the queue ID or ARN value. To request settings for all queues, leave
+#' this parameter empty.
+#' @param Limit The maximum number of results to return. Use this parameter with
+#' `NextToken` to get results as a set of sequential pages.
+#' @param NextToken A token that indicates the start of the next sequential page of results.
 #' Use the token that is returned with a previous call to this action. To
 #' start at the beginning of the result set, do not specify a value.
 #'
@@ -3033,16 +3086,16 @@ gamelift_describe_game_session_queues <- function(Names = NULL, Limit = NULL, Ne
 #' gamelift_describe_game_sessions(FleetId, GameSessionId, AliasId,
 #'   StatusFilter, Limit, NextToken)
 #'
-#' @param FleetId Unique identifier for a fleet to retrieve all game sessions for.
-#' @param GameSessionId Unique identifier for the game session to retrieve. You can use either a
-#' `GameSessionId` or `GameSessionArn` value.
-#' @param AliasId Unique identifier for an alias associated with the fleet to retrieve all
-#' game sessions for.
+#' @param FleetId A unique identifier for a fleet to retrieve all game sessions for. You
+#' can use either the fleet ID or ARN value.
+#' @param GameSessionId A unique identifier for the game session to retrieve.
+#' @param AliasId A unique identifier for an alias associated with the fleet to retrieve
+#' all game sessions for. You can use either the alias ID or ARN value.
 #' @param StatusFilter Game session status to filter results on. Possible game session statuses
 #' include `ACTIVE`, `TERMINATED`, `ACTIVATING`, and `TERMINATING` (the
 #' last two are transitory).
-#' @param Limit Maximum number of results to return. Use this parameter with `NextToken`
-#' to get results as a set of sequential pages.
+#' @param Limit The maximum number of results to return. Use this parameter with
+#' `NextToken` to get results as a set of sequential pages.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
 #' Use the token that is returned with a previous call to this action. To
 #' start at the beginning of the result set, do not specify a value.
@@ -3093,11 +3146,12 @@ gamelift_describe_game_sessions <- function(FleetId = NULL, GameSessionId = NULL
 #' @usage
 #' gamelift_describe_instances(FleetId, InstanceId, Limit, NextToken)
 #'
-#' @param FleetId &#91;required&#93; Unique identifier for a fleet to retrieve instance information for.
-#' @param InstanceId Unique identifier for an instance to retrieve. Specify an instance ID or
-#' leave blank to retrieve all instances in the fleet.
-#' @param Limit Maximum number of results to return. Use this parameter with `NextToken`
-#' to get results as a set of sequential pages.
+#' @param FleetId &#91;required&#93; A unique identifier for a fleet to retrieve instance information for.
+#' You can use either the fleet ID or ARN value.
+#' @param InstanceId A unique identifier for an instance to retrieve. Specify an instance ID
+#' or leave blank to retrieve all instances in the fleet.
+#' @param Limit The maximum number of results to return. Use this parameter with
+#' `NextToken` to get results as a set of sequential pages.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
 #' Use the token that is returned with a previous call to this action. To
 #' start at the beginning of the result set, do not specify a value.
@@ -3154,7 +3208,7 @@ gamelift_describe_instances <- function(FleetId, InstanceId = NULL, Limit = NULL
 #' Client](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html)
 #' 
 #' [Set Up FlexMatch Event
-#' Notification](https://docs.aws.amazon.com/gamelift/latest/developerguidematch-notification.html)
+#' Notification](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html)
 #' 
 #' **Related operations**
 #' 
@@ -3171,8 +3225,8 @@ gamelift_describe_instances <- function(FleetId, InstanceId = NULL, Limit = NULL
 #' @usage
 #' gamelift_describe_matchmaking(TicketIds)
 #'
-#' @param TicketIds &#91;required&#93; Unique identifier for a matchmaking ticket. You can include up to 10 ID
-#' values.
+#' @param TicketIds &#91;required&#93; A unique identifier for a matchmaking ticket. You can include up to 10
+#' ID values.
 #'
 #' @section Request syntax:
 #' ```
@@ -3241,14 +3295,16 @@ gamelift_describe_matchmaking <- function(TicketIds) {
 #' gamelift_describe_matchmaking_configurations(Names, RuleSetName, Limit,
 #'   NextToken)
 #'
-#' @param Names Unique identifier for a matchmaking configuration(s) to retrieve. To
-#' request all existing configurations, leave this parameter empty.
-#' @param RuleSetName Unique identifier for a matchmaking rule set. Use this parameter to
-#' retrieve all matchmaking configurations that use this rule set.
-#' @param Limit Maximum number of results to return. Use this parameter with `NextToken`
-#' to get results as a set of sequential pages. This parameter is limited
-#' to 10.
-#' @param NextToken Token that indicates the start of the next sequential page of results.
+#' @param Names A unique identifier for a matchmaking configuration(s) to retrieve. You
+#' can use either the configuration name or ARN value. To request all
+#' existing configurations, leave this parameter empty.
+#' @param RuleSetName A unique identifier for a matchmaking rule set. You can use either the
+#' rule set name or ARN value. Use this parameter to retrieve all
+#' matchmaking configurations that use this rule set.
+#' @param Limit The maximum number of results to return. Use this parameter with
+#' `NextToken` to get results as a set of sequential pages. This parameter
+#' is limited to 10.
+#' @param NextToken A token that indicates the start of the next sequential page of results.
 #' Use the token that is returned with a previous call to this action. To
 #' start at the beginning of the result set, do not specify a value.
 #'
@@ -3287,7 +3343,7 @@ gamelift_describe_matchmaking_configurations <- function(Names = NULL, RuleSetNa
 #' Retrieves the details for FlexMatch matchmaking rule sets
 #'
 #' Retrieves the details for FlexMatch matchmaking rule sets. You can
-#' request all existing rule sets for the region, or provide a list of one
+#' request all existing rule sets for the Region, or provide a list of one
 #' or more rule set names. When requesting multiple items, use the
 #' pagination parameters to retrieve results as a set of sequential pages.
 #' If successful, a rule set is returned for each requested name.
@@ -3318,12 +3374,13 @@ gamelift_describe_matchmaking_configurations <- function(Names = NULL, RuleSetNa
 #' @usage
 #' gamelift_describe_matchmaking_rule_sets(Names, Limit, NextToken)
 #'
-#' @param Names List of one or more matchmaking rule set names to retrieve details for.
-#' (Note: The rule set name is different from the optional \"name\" field
-#' in the rule set body.)
-#' @param Limit Maximum number of results to return. Use this parameter with `NextToken`
-#' to get results as a set of sequential pages.
-#' @param NextToken Token that indicates the start of the next sequential page of results.
+#' @param Names A list of one or more matchmaking rule set names to retrieve details
+#' for. (Note: The rule set name is different from the optional \"name\"
+#' field in the rule set body.) You can use either the rule set name or ARN
+#' value.
+#' @param Limit The maximum number of results to return. Use this parameter with
+#' `NextToken` to get results as a set of sequential pages.
+#' @param NextToken A token that indicates the start of the next sequential page of results.
 #' Use the token that is returned with a previous call to this action. To
 #' start at the beginning of the result set, do not specify a value.
 #'
@@ -3393,9 +3450,10 @@ gamelift_describe_matchmaking_rule_sets <- function(Names = NULL, Limit = NULL, 
 #' gamelift_describe_player_sessions(GameSessionId, PlayerId,
 #'   PlayerSessionId, PlayerSessionStatusFilter, Limit, NextToken)
 #'
-#' @param GameSessionId Unique identifier for the game session to retrieve player sessions for.
-#' @param PlayerId Unique identifier for a player to retrieve player sessions for.
-#' @param PlayerSessionId Unique identifier for a player session to retrieve.
+#' @param GameSessionId A unique identifier for the game session to retrieve player sessions
+#' for.
+#' @param PlayerId A unique identifier for a player to retrieve player sessions for.
+#' @param PlayerSessionId A unique identifier for a player session to retrieve.
 #' @param PlayerSessionStatusFilter Player session status to filter results on.
 #' 
 #' Possible player session statuses include the following:
@@ -3412,9 +3470,9 @@ gamelift_describe_matchmaking_rule_sets <- function(Names = NULL, Limit = NULL, 
 #' -   **TIMEDOUT** \\-- A player session request was received, but the
 #'     player did not connect and/or was not validated within the timeout
 #'     limit (60 seconds).
-#' @param Limit Maximum number of results to return. Use this parameter with `NextToken`
-#' to get results as a set of sequential pages. If a player session ID is
-#' specified, this parameter is ignored.
+#' @param Limit The maximum number of results to return. Use this parameter with
+#' `NextToken` to get results as a set of sequential pages. If a player
+#' session ID is specified, this parameter is ignored.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
 #' Use the token that is returned with a previous call to this action. To
 #' start at the beginning of the result set, do not specify a value. If a
@@ -3452,10 +3510,10 @@ gamelift_describe_player_sessions <- function(GameSessionId = NULL, PlayerId = N
 }
 .gamelift$operations$describe_player_sessions <- gamelift_describe_player_sessions
 
-#' Retrieves the current run-time configuration for the specified fleet
+#' Retrieves the current runtime configuration for the specified fleet
 #'
-#' Retrieves the current run-time configuration for the specified fleet.
-#' The run-time configuration tells Amazon GameLift how to launch server
+#' Retrieves the current runtime configuration for the specified fleet. The
+#' runtime configuration tells Amazon GameLift how to launch server
 #' processes on instances in the fleet.
 #' 
 #' **Learn more**
@@ -3487,15 +3545,7 @@ gamelift_describe_player_sessions <- function(GameSessionId = NULL, PlayerId = N
 #' 
 #'     -   DescribeFleetEvents
 #' 
-#' -   Update fleets:
-#' 
-#'     -   UpdateFleetAttributes
-#' 
-#'     -   UpdateFleetCapacity
-#' 
-#'     -   UpdateFleetPortSettings
-#' 
-#'     -   UpdateRuntimeConfiguration
+#' -   UpdateFleetAttributes
 #' 
 #' -   Manage fleet actions:
 #' 
@@ -3506,7 +3556,8 @@ gamelift_describe_player_sessions <- function(GameSessionId = NULL, PlayerId = N
 #' @usage
 #' gamelift_describe_runtime_configuration(FleetId)
 #'
-#' @param FleetId &#91;required&#93; Unique identifier for a fleet to get the run-time configuration for.
+#' @param FleetId &#91;required&#93; A unique identifier for a fleet to get the runtime configuration for.
+#' You can use either the fleet ID or ARN value.
 #'
 #' @section Request syntax:
 #' ```
@@ -3575,7 +3626,8 @@ gamelift_describe_runtime_configuration <- function(FleetId) {
 #' gamelift_describe_scaling_policies(FleetId, StatusFilter, Limit,
 #'   NextToken)
 #'
-#' @param FleetId &#91;required&#93; Unique identifier for a fleet to retrieve scaling policies for.
+#' @param FleetId &#91;required&#93; A unique identifier for a fleet to retrieve scaling policies for. You
+#' can use either the fleet ID or ARN value.
 #' @param StatusFilter Scaling policy status to filter results on. A scaling policy is only in
 #' force when in an `ACTIVE` status.
 #' 
@@ -3595,8 +3647,8 @@ gamelift_describe_runtime_configuration <- function(FleetId) {
 #' 
 #' -   **ERROR** \\-- An error occurred in creating the policy. It should be
 #'     removed and recreated.
-#' @param Limit Maximum number of results to return. Use this parameter with `NextToken`
-#' to get results as a set of sequential pages.
+#' @param Limit The maximum number of results to return. Use this parameter with
+#' `NextToken` to get results as a set of sequential pages.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
 #' Use the token that is returned with a previous call to this action. To
 #' start at the beginning of the result set, do not specify a value.
@@ -3658,7 +3710,8 @@ gamelift_describe_scaling_policies <- function(FleetId, StatusFilter = NULL, Lim
 #' @usage
 #' gamelift_describe_script(ScriptId)
 #'
-#' @param ScriptId &#91;required&#93; Unique identifier for a Realtime script to retrieve properties for.
+#' @param ScriptId &#91;required&#93; A unique identifier for a Realtime script to retrieve properties for.
+#' You can use either the script ID or ARN value.
 #'
 #' @section Request syntax:
 #' ```
@@ -3762,7 +3815,8 @@ gamelift_describe_vpc_peering_authorizations <- function() {
 #' @usage
 #' gamelift_describe_vpc_peering_connections(FleetId)
 #'
-#' @param FleetId Unique identifier for a fleet.
+#' @param FleetId A unique identifier for a fleet. You can use either the fleet ID or ARN
+#' value.
 #'
 #' @section Request syntax:
 #' ```
@@ -3827,7 +3881,7 @@ gamelift_describe_vpc_peering_connections <- function(FleetId = NULL) {
 #' @usage
 #' gamelift_get_game_session_log_url(GameSessionId)
 #'
-#' @param GameSessionId &#91;required&#93; Unique identifier for the game session to get logs for.
+#' @param GameSessionId &#91;required&#93; A unique identifier for the game session to get logs for.
 #'
 #' @section Request syntax:
 #' ```
@@ -3883,11 +3937,12 @@ gamelift_get_game_session_log_url <- function(GameSessionId) {
 #' @usage
 #' gamelift_get_instance_access(FleetId, InstanceId)
 #'
-#' @param FleetId &#91;required&#93; Unique identifier for a fleet that contains the instance you want access
-#' to. The fleet can be in any of the following statuses: `ACTIVATING`,
-#' `ACTIVE`, or `ERROR`. Fleets with an `ERROR` status may be accessible
-#' for a short time before they are deleted.
-#' @param InstanceId &#91;required&#93; Unique identifier for an instance you want to get access to. You can
+#' @param FleetId &#91;required&#93; A unique identifier for a fleet that contains the instance you want
+#' access to. You can use either the fleet ID or ARN value. The fleet can
+#' be in any of the following statuses: `ACTIVATING`, `ACTIVE`, or `ERROR`.
+#' Fleets with an `ERROR` status may be accessible for a short time before
+#' they are deleted.
+#' @param InstanceId &#91;required&#93; A unique identifier for an instance you want to get access to. You can
 #' access an instance in any status.
 #'
 #' @section Request syntax:
@@ -3941,9 +3996,9 @@ gamelift_get_instance_access <- function(FleetId, InstanceId) {
 #' @usage
 #' gamelift_list_aliases(RoutingStrategyType, Name, Limit, NextToken)
 #'
-#' @param RoutingStrategyType Type of routing to filter results on. Use this parameter to retrieve
-#' only aliases of a certain type. To retrieve all aliases, leave this
-#' parameter empty.
+#' @param RoutingStrategyType The routing type to filter results on. Use this parameter to retrieve
+#' only aliases with a certain routing type. To retrieve all aliases, leave
+#' this parameter empty.
 #' 
 #' Possible routing types include the following:
 #' 
@@ -3954,11 +4009,11 @@ gamelift_get_instance_access <- function(FleetId, InstanceId) {
 #'     can be used to display a message to the user. A terminal alias
 #'     throws a TerminalRoutingStrategyException with the RoutingStrategy
 #'     message embedded.
-#' @param Name Descriptive label that is associated with an alias. Alias names do not
+#' @param Name A descriptive label that is associated with an alias. Alias names do not
 #' need to be unique.
-#' @param Limit Maximum number of results to return. Use this parameter with `NextToken`
-#' to get results as a set of sequential pages.
-#' @param NextToken Token that indicates the start of the next sequential page of results.
+#' @param Limit The maximum number of results to return. Use this parameter with
+#' `NextToken` to get results as a set of sequential pages.
+#' @param NextToken A token that indicates the start of the next sequential page of results.
 #' Use the token that is returned with a previous call to this action. To
 #' start at the beginning of the result set, do not specify a value.
 #'
@@ -4037,8 +4092,8 @@ gamelift_list_aliases <- function(RoutingStrategyType = NULL, Name = NULL, Limit
 #' 
 #' -   **FAILED** \\-- The game build upload failed. You cannot create new
 #'     fleets for this build.
-#' @param Limit Maximum number of results to return. Use this parameter with `NextToken`
-#' to get results as a set of sequential pages.
+#' @param Limit The maximum number of results to return. Use this parameter with
+#' `NextToken` to get results as a set of sequential pages.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
 #' Use the token that is returned with a previous call to this action. To
 #' start at the beginning of the result set, do not specify a value.
@@ -4094,31 +4149,9 @@ gamelift_list_builds <- function(Status = NULL, Limit = NULL, NextToken = NULL) 
 #' 
 #' -   DeleteFleet
 #' 
-#' -   Describe fleets:
+#' -   DescribeFleetAttributes
 #' 
-#'     -   DescribeFleetAttributes
-#' 
-#'     -   DescribeFleetCapacity
-#' 
-#'     -   DescribeFleetPortSettings
-#' 
-#'     -   DescribeFleetUtilization
-#' 
-#'     -   DescribeRuntimeConfiguration
-#' 
-#'     -   DescribeEC2InstanceLimits
-#' 
-#'     -   DescribeFleetEvents
-#' 
-#' -   Update fleets:
-#' 
-#'     -   UpdateFleetAttributes
-#' 
-#'     -   UpdateFleetCapacity
-#' 
-#'     -   UpdateFleetPortSettings
-#' 
-#'     -   UpdateRuntimeConfiguration
+#' -   UpdateFleetAttributes
 #' 
 #' -   Manage fleet actions:
 #' 
@@ -4129,14 +4162,15 @@ gamelift_list_builds <- function(Status = NULL, Limit = NULL, NextToken = NULL) 
 #' @usage
 #' gamelift_list_fleets(BuildId, ScriptId, Limit, NextToken)
 #'
-#' @param BuildId Unique identifier for a build to return fleets for. Use this parameter
-#' to return only fleets using the specified build. To retrieve all fleets,
-#' leave this parameter empty.
-#' @param ScriptId Unique identifier for a Realtime script to return fleets for. Use this
-#' parameter to return only fleets using the specified script. To retrieve
-#' all fleets, leave this parameter empty.
-#' @param Limit Maximum number of results to return. Use this parameter with `NextToken`
-#' to get results as a set of sequential pages.
+#' @param BuildId A unique identifier for a build to return fleets for. Use this parameter
+#' to return only fleets using the specified build. Use either the build ID
+#' or ARN value.To retrieve all fleets, leave this parameter empty.
+#' @param ScriptId A unique identifier for a Realtime script to return fleets for. Use this
+#' parameter to return only fleets using the specified script. Use either
+#' the script ID or ARN value.To retrieve all fleets, leave this parameter
+#' empty.
+#' @param Limit The maximum number of results to return. Use this parameter with
+#' `NextToken` to get results as a set of sequential pages.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
 #' Use the token that is returned with a previous call to this action. To
 #' start at the beginning of the result set, do not specify a value.
@@ -4197,9 +4231,9 @@ gamelift_list_fleets <- function(BuildId = NULL, ScriptId = NULL, Limit = NULL, 
 #' @usage
 #' gamelift_list_scripts(Limit, NextToken)
 #'
-#' @param Limit Maximum number of results to return. Use this parameter with `NextToken`
-#' to get results as a set of sequential pages.
-#' @param NextToken Token that indicates the start of the next sequential page of results.
+#' @param Limit The maximum number of results to return. Use this parameter with
+#' `NextToken` to get results as a set of sequential pages.
+#' @param NextToken A token that indicates the start of the next sequential page of results.
 #' Use the token that is returned with a previous call to this action. To
 #' start at the beginning of the result set, do not specify a value.
 #'
@@ -4230,6 +4264,84 @@ gamelift_list_scripts <- function(Limit = NULL, NextToken = NULL) {
   return(response)
 }
 .gamelift$operations$list_scripts <- gamelift_list_scripts
+
+#' Retrieves all tags that are assigned to a GameLift resource
+#'
+#' Retrieves all tags that are assigned to a GameLift resource. Resource
+#' tags are used to organize AWS resources for a range of purposes. This
+#' action handles the permissions necessary to manage tags for the
+#' following GameLift resource types:
+#' 
+#' -   Build
+#' 
+#' -   Script
+#' 
+#' -   Fleet
+#' 
+#' -   Alias
+#' 
+#' -   GameSessionQueue
+#' 
+#' -   MatchmakingConfiguration
+#' 
+#' -   MatchmakingRuleSet
+#' 
+#' To list tags for a resource, specify the unique ARN value for the
+#' resource.
+#' 
+#' **Learn more**
+#' 
+#' [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in the *AWS General Reference*
+#' 
+#' [AWS Tagging
+#' Strategies](http://aws.amazon.com/answers/account-management/aws-tagging-strategies/)
+#' 
+#' **Related operations**
+#' 
+#' -   TagResource
+#' 
+#' -   UntagResource
+#' 
+#' -   ListTagsForResource
+#'
+#' @usage
+#' gamelift_list_tags_for_resource(ResourceARN)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name
+#' ([ARN](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
+#' that is assigned to and uniquely identifies the GameLift resource that
+#' you want to retrieve tags for. GameLift resource ARNs are included in
+#' the data object for the resource, which can be retrieved by calling a
+#' List or Describe action for the resource type.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname gamelift_list_tags_for_resource
+gamelift_list_tags_for_resource <- function(ResourceARN) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .gamelift$list_tags_for_resource_input(ResourceARN = ResourceARN)
+  output <- .gamelift$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .gamelift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.gamelift$operations$list_tags_for_resource <- gamelift_list_tags_for_resource
 
 #' Creates or updates a scaling policy for a fleet
 #'
@@ -4342,13 +4454,14 @@ gamelift_list_scripts <- function(Limit = NULL, NextToken = NULL) {
 #'   ScalingAdjustmentType, Threshold, ComparisonOperator, EvaluationPeriods,
 #'   MetricName, PolicyType, TargetConfiguration)
 #'
-#' @param Name &#91;required&#93; Descriptive label that is associated with a scaling policy. Policy names
-#' do not need to be unique. A fleet can have only one scaling policy with
-#' the same name.
-#' @param FleetId &#91;required&#93; Unique identifier for a fleet to apply this policy to. The fleet cannot
-#' be in any of the following statuses: ERROR or DELETING.
+#' @param Name &#91;required&#93; A descriptive label that is associated with a scaling policy. Policy
+#' names do not need to be unique. A fleet can have only one scaling policy
+#' with the same name.
+#' @param FleetId &#91;required&#93; A unique identifier for a fleet to apply this policy to. You can use
+#' either the fleet ID or ARN value. The fleet cannot be in any of the
+#' following statuses: ERROR or DELETING.
 #' @param ScalingAdjustment Amount of adjustment to make, based on the scaling adjustment type.
-#' @param ScalingAdjustmentType Type of adjustment to make to a fleet\'s instance count (see
+#' @param ScalingAdjustmentType The type of adjustment to make to a fleet\'s instance count (see
 #' FleetCapacity):
 #' 
 #' -   **ChangeInCapacity** \\-- add (or subtract) the scaling adjustment
@@ -4407,12 +4520,12 @@ gamelift_list_scripts <- function(Limit = NULL, NextToken = NULL) {
 #' -   **WaitTime** \\-- Current wait time for pending game session
 #'     placement requests, in any queue, where the current fleet is the
 #'     top-priority destination.
-#' @param PolicyType Type of scaling policy to create. For a target-based policy, set the
+#' @param PolicyType The type of scaling policy to create. For a target-based policy, set the
 #' parameter *MetricName* to \'PercentAvailableGameSessions\' and specify a
 #' *TargetConfiguration*. For a rule-based policy set the following
 #' parameters: *MetricName*, *ComparisonOperator*, *Threshold*,
 #' *EvaluationPeriods*, *ScalingAdjustmentType*, and *ScalingAdjustment*.
-#' @param TargetConfiguration Object that contains settings for a target-based scaling policy.
+#' @param TargetConfiguration The settings for a target-based scaling policy.
 #'
 #' @section Request syntax:
 #' ```
@@ -4484,7 +4597,8 @@ gamelift_put_scaling_policy <- function(Name, FleetId, ScalingAdjustment = NULL,
 #' @usage
 #' gamelift_request_upload_credentials(BuildId)
 #'
-#' @param BuildId &#91;required&#93; Unique identifier for a build to get credentials for.
+#' @param BuildId &#91;required&#93; A unique identifier for a build to get credentials for. You can use
+#' either the build ID or ARN value.
 #'
 #' @section Request syntax:
 #' ```
@@ -4513,9 +4627,9 @@ gamelift_request_upload_credentials <- function(BuildId) {
 }
 .gamelift$operations$request_upload_credentials <- gamelift_request_upload_credentials
 
-#' Retrieves the fleet ID that a specified alias is currently pointing to
+#' Retrieves the fleet ID that an alias is currently pointing to
 #'
-#' Retrieves the fleet ID that a specified alias is currently pointing to.
+#' Retrieves the fleet ID that an alias is currently pointing to.
 #' 
 #' -   CreateAlias
 #' 
@@ -4532,7 +4646,8 @@ gamelift_request_upload_credentials <- function(BuildId) {
 #' @usage
 #' gamelift_resolve_alias(AliasId)
 #'
-#' @param AliasId &#91;required&#93; Unique identifier for the alias you want to resolve.
+#' @param AliasId &#91;required&#93; The unique identifier of the alias that you want to retrieve a fleet ID
+#' for. You can use either the alias ID or ARN value.
 #'
 #' @section Request syntax:
 #' ```
@@ -4568,7 +4683,7 @@ gamelift_resolve_alias <- function(AliasId) {
 #' and sorts them in a specified order. You can search or sort by the
 #' following game session attributes:
 #' 
-#' -   **gameSessionId** \\-- Unique identifier for the game session. You
+#' -   **gameSessionId** \\-- A unique identifier for the game session. You
 #'     can use either a `GameSessionId` or `GameSessionArn` value.
 #' 
 #' -   **gameSessionName** \\-- Name assigned to a game session. This value
@@ -4644,11 +4759,12 @@ gamelift_resolve_alias <- function(AliasId) {
 #' gamelift_search_game_sessions(FleetId, AliasId, FilterExpression,
 #'   SortExpression, Limit, NextToken)
 #'
-#' @param FleetId Unique identifier for a fleet to search for active game sessions. Each
+#' @param FleetId A unique identifier for a fleet to search for active game sessions. You
+#' can use either the fleet ID or ARN value. Each request must reference
+#' either a fleet ID or alias ID, but not both.
+#' @param AliasId A unique identifier for an alias associated with the fleet to search for
+#' active game sessions. You can use either the alias ID or ARN value. Each
 #' request must reference either a fleet ID or alias ID, but not both.
-#' @param AliasId Unique identifier for an alias associated with the fleet to search for
-#' active game sessions. Each request must reference either a fleet ID or
-#' alias ID, but not both.
 #' @param FilterExpression String containing the search criteria for the session search. If no
 #' filter expression is included, the request returns results for all game
 #' sessions in the fleet that are in `ACTIVE` status.
@@ -4708,10 +4824,10 @@ gamelift_resolve_alias <- function(AliasId) {
 #' For example, this sort expression returns the oldest active sessions
 #' first: `"SortExpression": "creationTimeMillis ASC"`. Results with a null
 #' value for the sort operand are returned at the end of the list.
-#' @param Limit Maximum number of results to return. Use this parameter with `NextToken`
-#' to get results as a set of sequential pages. The maximum number of
-#' results returned is 20, even if this value is not set or is set higher
-#' than 20.
+#' @param Limit The maximum number of results to return. Use this parameter with
+#' `NextToken` to get results as a set of sequential pages. The maximum
+#' number of results returned is 20, even if this value is not set or is
+#' set higher than 20.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
 #' Use the token that is returned with a previous call to this action. To
 #' start at the beginning of the result set, do not specify a value.
@@ -4809,7 +4925,8 @@ gamelift_search_game_sessions <- function(FleetId = NULL, AliasId = NULL, Filter
 #' @usage
 #' gamelift_start_fleet_actions(FleetId, Actions)
 #'
-#' @param FleetId &#91;required&#93; Unique identifier for a fleet
+#' @param FleetId &#91;required&#93; A unique identifier for a fleet to start actions on. You can use either
+#' the fleet ID or ARN value.
 #' @param Actions &#91;required&#93; List of actions to restart on the fleet.
 #'
 #' @section Request syntax:
@@ -4860,12 +4977,12 @@ gamelift_start_fleet_actions <- function(FleetId, Actions) {
 #' queue\'s destinations are listed in preference order.
 #' 
 #' Alternatively, when requesting a game session with players, you can also
-#' provide latency data for each player in relevant regions. Latency data
+#' provide latency data for each player in relevant Regions. Latency data
 #' indicates the performance lag a player experiences when connected to a
-#' fleet in the region. Amazon GameLift uses latency data to reorder the
-#' list of destinations to place the game session in a region with minimal
+#' fleet in the Region. Amazon GameLift uses latency data to reorder the
+#' list of destinations to place the game session in a Region with minimal
 #' lag. If latency data is provided for multiple players, Amazon GameLift
-#' calculates each region\'s average lag for all players and reorders to
+#' calculates each Region\'s average lag for all players and reorders to
 #' get the best game play across all players.
 #' 
 #' To place a new game session request, specify the following:
@@ -4888,7 +5005,7 @@ gamelift_start_fleet_actions <- function(FleetId, Actions) {
 #' To track the status of a placement request, call
 #' DescribeGameSessionPlacement and check the request\'s status. If the
 #' status is `FULFILLED`, a new game session has been created and a game
-#' session ARN and region are referenced. If the placement request times
+#' session ARN and Region are referenced. If the placement request times
 #' out, you can resubmit the request or retry it with a different queue.
 #' 
 #' -   CreateGameSession
@@ -4916,22 +5033,23 @@ gamelift_start_fleet_actions <- function(FleetId, Actions) {
 #'   GameProperties, MaximumPlayerSessionCount, GameSessionName,
 #'   PlayerLatencies, DesiredPlayerSessions, GameSessionData)
 #'
-#' @param PlacementId &#91;required&#93; Unique identifier to assign to the new game session placement. This
-#' value is developer-defined. The value must be unique across all regions
+#' @param PlacementId &#91;required&#93; A unique identifier to assign to the new game session placement. This
+#' value is developer-defined. The value must be unique across all Regions
 #' and cannot be reused unless you are resubmitting a canceled or timed-out
 #' placement request.
-#' @param GameSessionQueueName &#91;required&#93; Name of the queue to use to place the new game session.
+#' @param GameSessionQueueName &#91;required&#93; Name of the queue to use to place the new game session. You can use
+#' either the qieue name or ARN value.
 #' @param GameProperties Set of custom properties for a game session, formatted as key:value
 #' pairs. These properties are passed to a game server process in the
 #' GameSession object with a request to start a new game session (see
 #' [Start a Game
 #' Session](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
-#' @param MaximumPlayerSessionCount &#91;required&#93; Maximum number of players that can be connected simultaneously to the
-#' game session.
-#' @param GameSessionName Descriptive label that is associated with a game session. Session names
-#' do not need to be unique.
+#' @param MaximumPlayerSessionCount &#91;required&#93; The maximum number of players that can be connected simultaneously to
+#' the game session.
+#' @param GameSessionName A descriptive label that is associated with a game session. Session
+#' names do not need to be unique.
 #' @param PlayerLatencies Set of values, expressed in milliseconds, indicating the amount of
-#' latency that a player experiences when connected to AWS regions. This
+#' latency that a player experiences when connected to AWS Regions. This
 #' information is used to try to place the new game session where it can
 #' offer the best possible gameplay experience for the players.
 #' @param DesiredPlayerSessions Set of information on each player to create a player session for.
@@ -5042,21 +5160,18 @@ gamelift_start_game_session_placement <- function(PlacementId, GameSessionQueueN
 #' gamelift_start_match_backfill(TicketId, ConfigurationName,
 #'   GameSessionArn, Players)
 #'
-#' @param TicketId Unique identifier for a matchmaking ticket. If no ticket ID is specified
-#' here, Amazon GameLift will generate one in the form of a UUID. Use this
-#' identifier to track the match backfill ticket status and retrieve match
-#' results.
-#' @param ConfigurationName &#91;required&#93; Name of the matchmaker to use for this request. The name of the
-#' matchmaker that was used with the original game session is listed in the
-#' GameSession object, `MatchmakerData` property. This property contains a
-#' matchmaking configuration ARN value, which includes the matchmaker name.
-#' (In the ARN value
-#' \"arn:aws:gamelift:us-west-2:111122223333:matchmakingconfiguration/MM-4v4\",
-#' the matchmaking configuration name is \"MM-4v4\".) Use only the name for
-#' this parameter.
+#' @param TicketId A unique identifier for a matchmaking ticket. If no ticket ID is
+#' specified here, Amazon GameLift will generate one in the form of a UUID.
+#' Use this identifier to track the match backfill ticket status and
+#' retrieve match results.
+#' @param ConfigurationName &#91;required&#93; Name of the matchmaker to use for this request. You can use either the
+#' configuration name or ARN value. The ARN of the matchmaker that was used
+#' with the original game session is listed in the GameSession object,
+#' `MatchmakerData` property.
 #' @param GameSessionArn &#91;required&#93; Amazon Resource Name
-#' ([ARN](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
-#' that is assigned to a game session and uniquely identifies it.
+#' ([ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+#' that is assigned to a game session and uniquely identifies it. This is
+#' the same as the game session ID.
 #' @param Players &#91;required&#93; Match information on all players that are currently assigned to the game
 #' session. This information is used by the matchmaker to find new players
 #' and add them to the existing game.
@@ -5069,8 +5184,8 @@ gamelift_start_game_session_placement <- function(PlacementId, GameSessionQueueN
 #'     Data](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-server.html#match-server-data).
 #' 
 #' -   LatencyInMs -\\\\- If the matchmaker uses player latency, include a
-#'     latency value, in milliseconds, for the region that the game session
-#'     is currently in. Do not include latency values for any other region.
+#'     latency value, in milliseconds, for the Region that the game session
+#'     is currently in. Do not include latency values for any other Region.
 #'
 #' @section Request syntax:
 #' ```
@@ -5219,13 +5334,13 @@ gamelift_start_match_backfill <- function(TicketId = NULL, ConfigurationName, Ga
 #' @usage
 #' gamelift_start_matchmaking(TicketId, ConfigurationName, Players)
 #'
-#' @param TicketId Unique identifier for a matchmaking ticket. If no ticket ID is specified
-#' here, Amazon GameLift will generate one in the form of a UUID. Use this
-#' identifier to track the matchmaking ticket status and retrieve match
-#' results.
+#' @param TicketId A unique identifier for a matchmaking ticket. If no ticket ID is
+#' specified here, Amazon GameLift will generate one in the form of a UUID.
+#' Use this identifier to track the matchmaking ticket status and retrieve
+#' match results.
 #' @param ConfigurationName &#91;required&#93; Name of the matchmaking configuration to use for this request.
-#' Matchmaking configurations must exist in the same region as this
-#' request.
+#' Matchmaking configurations must exist in the same Region as this
+#' request. You can use either the configuration name or ARN value.
 #' @param Players &#91;required&#93; Information on each player to be matched. This information must include
 #' a player ID, and may contain player attributes and latency data to be
 #' used in the matchmaking process. After a successful match, `Player`
@@ -5343,7 +5458,8 @@ gamelift_start_matchmaking <- function(TicketId = NULL, ConfigurationName, Playe
 #' @usage
 #' gamelift_stop_fleet_actions(FleetId, Actions)
 #'
-#' @param FleetId &#91;required&#93; Unique identifier for a fleet
+#' @param FleetId &#91;required&#93; A unique identifier for a fleet to stop actions on. You can use either
+#' the fleet ID or ARN value.
 #' @param Actions &#91;required&#93; List of actions to suspend on the fleet.
 #'
 #' @section Request syntax:
@@ -5405,7 +5521,7 @@ gamelift_stop_fleet_actions <- function(FleetId, Actions) {
 #' @usage
 #' gamelift_stop_game_session_placement(PlacementId)
 #'
-#' @param PlacementId &#91;required&#93; Unique identifier for a game session placement to cancel.
+#' @param PlacementId &#91;required&#93; A unique identifier for a game session placement to cancel.
 #'
 #' @section Request syntax:
 #' ```
@@ -5471,7 +5587,7 @@ gamelift_stop_game_session_placement <- function(PlacementId) {
 #' @usage
 #' gamelift_stop_matchmaking(TicketId)
 #'
-#' @param TicketId &#91;required&#93; Unique identifier for a matchmaking ticket.
+#' @param TicketId &#91;required&#93; A unique identifier for a matchmaking ticket.
 #'
 #' @section Request syntax:
 #' ```
@@ -5500,6 +5616,183 @@ gamelift_stop_matchmaking <- function(TicketId) {
 }
 .gamelift$operations$stop_matchmaking <- gamelift_stop_matchmaking
 
+#' Assigns a tag to a GameLift resource
+#'
+#' Assigns a tag to a GameLift resource. AWS resource tags provide an
+#' additional management tool set. You can use tags to organize resources,
+#' create IAM permissions policies to manage access to groups of resources,
+#' customize AWS cost breakdowns, etc. This action handles the permissions
+#' necessary to manage tags for the following GameLift resource types:
+#' 
+#' -   Build
+#' 
+#' -   Script
+#' 
+#' -   Fleet
+#' 
+#' -   Alias
+#' 
+#' -   GameSessionQueue
+#' 
+#' -   MatchmakingConfiguration
+#' 
+#' -   MatchmakingRuleSet
+#' 
+#' To add a tag to a resource, specify the unique ARN value for the
+#' resource and provide a trig list containing one or more tags. The
+#' operation succeeds even if the list includes tags that are already
+#' assigned to the specified resource.
+#' 
+#' **Learn more**
+#' 
+#' [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in the *AWS General Reference*
+#' 
+#' [AWS Tagging
+#' Strategies](http://aws.amazon.com/answers/account-management/aws-tagging-strategies/)
+#' 
+#' **Related operations**
+#' 
+#' -   TagResource
+#' 
+#' -   UntagResource
+#' 
+#' -   ListTagsForResource
+#'
+#' @usage
+#' gamelift_tag_resource(ResourceARN, Tags)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name
+#' ([ARN](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
+#' that is assigned to and uniquely identifies the GameLift resource that
+#' you want to assign tags to. GameLift resource ARNs are included in the
+#' data object for the resource, which can be retrieved by calling a List
+#' or Describe action for the resource type.
+#' @param Tags &#91;required&#93; A list of one or more tags to assign to the specified GameLift resource.
+#' Tags are developer-defined and structured as key-value pairs. The
+#' maximum tag limit may be lower than stated. See [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' for actual tagging limits.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceARN = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname gamelift_tag_resource
+gamelift_tag_resource <- function(ResourceARN, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .gamelift$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
+  output <- .gamelift$tag_resource_output()
+  config <- get_config()
+  svc <- .gamelift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.gamelift$operations$tag_resource <- gamelift_tag_resource
+
+#' Removes a tag that is assigned to a GameLift resource
+#'
+#' Removes a tag that is assigned to a GameLift resource. Resource tags are
+#' used to organize AWS resources for a range of purposes. This action
+#' handles the permissions necessary to manage tags for the following
+#' GameLift resource types:
+#' 
+#' -   Build
+#' 
+#' -   Script
+#' 
+#' -   Fleet
+#' 
+#' -   Alias
+#' 
+#' -   GameSessionQueue
+#' 
+#' -   MatchmakingConfiguration
+#' 
+#' -   MatchmakingRuleSet
+#' 
+#' To remove a tag from a resource, specify the unique ARN value for the
+#' resource and provide a string list containing one or more tags to be
+#' removed. This action succeeds even if the list includes tags that are
+#' not currently assigned to the specified resource.
+#' 
+#' **Learn more**
+#' 
+#' [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in the *AWS General Reference*
+#' 
+#' [AWS Tagging
+#' Strategies](http://aws.amazon.com/answers/account-management/aws-tagging-strategies/)
+#' 
+#' **Related operations**
+#' 
+#' -   TagResource
+#' 
+#' -   UntagResource
+#' 
+#' -   ListTagsForResource
+#'
+#' @usage
+#' gamelift_untag_resource(ResourceARN, TagKeys)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name
+#' ([ARN](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
+#' that is assigned to and uniquely identifies the GameLift resource that
+#' you want to remove tags from. GameLift resource ARNs are included in the
+#' data object for the resource, which can be retrieved by calling a List
+#' or Describe action for the resource type.
+#' @param TagKeys &#91;required&#93; A list of one or more tags to remove from the specified GameLift
+#' resource. Tags are developer-defined and structured as key-value pairs.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceARN = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname gamelift_untag_resource
+gamelift_untag_resource <- function(ResourceARN, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .gamelift$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
+  output <- .gamelift$untag_resource_output()
+  config <- get_config()
+  svc <- .gamelift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.gamelift$operations$untag_resource <- gamelift_untag_resource
+
 #' Updates properties for an alias
 #'
 #' Updates properties for an alias. To update properties, specify the alias
@@ -5522,12 +5815,13 @@ gamelift_stop_matchmaking <- function(TicketId) {
 #' @usage
 #' gamelift_update_alias(AliasId, Name, Description, RoutingStrategy)
 #'
-#' @param AliasId &#91;required&#93; Unique identifier for a fleet alias. Specify the alias you want to
-#' update.
-#' @param Name Descriptive label that is associated with an alias. Alias names do not
+#' @param AliasId &#91;required&#93; A unique identifier for the alias that you want to update. You can use
+#' either the alias ID or ARN value.
+#' @param Name A descriptive label that is associated with an alias. Alias names do not
 #' need to be unique.
-#' @param Description Human-readable description of an alias.
-#' @param RoutingStrategy Object that specifies the fleet and routing type to use for the alias.
+#' @param Description A human-readable description of the alias.
+#' @param RoutingStrategy The routing configuration, including routing type and fleet target, for
+#' the alias.
 #'
 #' @section Request syntax:
 #' ```
@@ -5590,11 +5884,12 @@ gamelift_update_alias <- function(AliasId, Name = NULL, Description = NULL, Rout
 #' @usage
 #' gamelift_update_build(BuildId, Name, Version)
 #'
-#' @param BuildId &#91;required&#93; Unique identifier for a build to update.
-#' @param Name Descriptive label that is associated with a build. Build names do not
+#' @param BuildId &#91;required&#93; A unique identifier for a build to update. You can use either the build
+#' ID or ARN value.
+#' @param Name A descriptive label that is associated with a build. Build names do not
 #' need to be unique.
-#' @param Version Version that is associated with a build or script. Version strings do
-#' not need to be unique.
+#' @param Version Version information that is associated with a build or script. Version
+#' strings do not need to be unique.
 #'
 #' @section Request syntax:
 #' ```
@@ -5645,21 +5940,7 @@ gamelift_update_build <- function(BuildId, Name = NULL, Version = NULL) {
 #' 
 #' -   DeleteFleet
 #' 
-#' -   Describe fleets:
-#' 
-#'     -   DescribeFleetAttributes
-#' 
-#'     -   DescribeFleetCapacity
-#' 
-#'     -   DescribeFleetPortSettings
-#' 
-#'     -   DescribeFleetUtilization
-#' 
-#'     -   DescribeRuntimeConfiguration
-#' 
-#'     -   DescribeEC2InstanceLimits
-#' 
-#'     -   DescribeFleetEvents
+#' -   DescribeFleetAttributes
 #' 
 #' -   Update fleets:
 #' 
@@ -5682,8 +5963,9 @@ gamelift_update_build <- function(BuildId, Name = NULL, Version = NULL) {
 #'   NewGameSessionProtectionPolicy, ResourceCreationLimitPolicy,
 #'   MetricGroups)
 #'
-#' @param FleetId &#91;required&#93; Unique identifier for a fleet to update attribute metadata for.
-#' @param Name Descriptive label that is associated with a fleet. Fleet names do not
+#' @param FleetId &#91;required&#93; A unique identifier for a fleet to update attribute metadata for. You
+#' can use either the fleet ID or ARN value.
+#' @param Name A descriptive label that is associated with a fleet. Fleet names do not
 #' need to be unique.
 #' @param Description Human-readable description of a fleet.
 #' @param NewGameSessionProtectionPolicy Game session protection policy to apply to all new instances created in
@@ -5775,21 +6057,7 @@ gamelift_update_fleet_attributes <- function(FleetId, Name = NULL, Description =
 #' 
 #' -   DeleteFleet
 #' 
-#' -   Describe fleets:
-#' 
-#'     -   DescribeFleetAttributes
-#' 
-#'     -   DescribeFleetCapacity
-#' 
-#'     -   DescribeFleetPortSettings
-#' 
-#'     -   DescribeFleetUtilization
-#' 
-#'     -   DescribeRuntimeConfiguration
-#' 
-#'     -   DescribeEC2InstanceLimits
-#' 
-#'     -   DescribeFleetEvents
+#' -   DescribeFleetAttributes
 #' 
 #' -   Update fleets:
 #' 
@@ -5811,12 +6079,13 @@ gamelift_update_fleet_attributes <- function(FleetId, Name = NULL, Description =
 #' gamelift_update_fleet_capacity(FleetId, DesiredInstances, MinSize,
 #'   MaxSize)
 #'
-#' @param FleetId &#91;required&#93; Unique identifier for a fleet to update capacity for.
+#' @param FleetId &#91;required&#93; A unique identifier for a fleet to update capacity for. You can use
+#' either the fleet ID or ARN value.
 #' @param DesiredInstances Number of EC2 instances you want this fleet to host.
-#' @param MinSize Minimum value allowed for the fleet\'s instance count. Default if not
-#' set is 0.
-#' @param MaxSize Maximum value allowed for the fleet\'s instance count. Default if not
-#' set is 1.
+#' @param MinSize The minimum value allowed for the fleet\'s instance count. Default if
+#' not set is 0.
+#' @param MaxSize The maximum value allowed for the fleet\'s instance count. Default if
+#' not set is 1.
 #'
 #' @section Request syntax:
 #' ```
@@ -5870,21 +6139,7 @@ gamelift_update_fleet_capacity <- function(FleetId, DesiredInstances = NULL, Min
 #' 
 #' -   DeleteFleet
 #' 
-#' -   Describe fleets:
-#' 
-#'     -   DescribeFleetAttributes
-#' 
-#'     -   DescribeFleetCapacity
-#' 
-#'     -   DescribeFleetPortSettings
-#' 
-#'     -   DescribeFleetUtilization
-#' 
-#'     -   DescribeRuntimeConfiguration
-#' 
-#'     -   DescribeEC2InstanceLimits
-#' 
-#'     -   DescribeFleetEvents
+#' -   DescribeFleetAttributes
 #' 
 #' -   Update fleets:
 #' 
@@ -5906,9 +6161,10 @@ gamelift_update_fleet_capacity <- function(FleetId, DesiredInstances = NULL, Min
 #' gamelift_update_fleet_port_settings(FleetId,
 #'   InboundPermissionAuthorizations, InboundPermissionRevocations)
 #'
-#' @param FleetId &#91;required&#93; Unique identifier for a fleet to update port settings for.
-#' @param InboundPermissionAuthorizations Collection of port settings to be added to the fleet record.
-#' @param InboundPermissionRevocations Collection of port settings to be removed from the fleet record.
+#' @param FleetId &#91;required&#93; A unique identifier for a fleet to update port settings for. You can use
+#' either the fleet ID or ARN value.
+#' @param InboundPermissionAuthorizations A collection of port settings to be added to the fleet record.
+#' @param InboundPermissionRevocations A collection of port settings to be removed from the fleet record.
 #'
 #' @section Request syntax:
 #' ```
@@ -5987,11 +6243,11 @@ gamelift_update_fleet_port_settings <- function(FleetId, InboundPermissionAuthor
 #' gamelift_update_game_session(GameSessionId, MaximumPlayerSessionCount,
 #'   Name, PlayerSessionCreationPolicy, ProtectionPolicy)
 #'
-#' @param GameSessionId &#91;required&#93; Unique identifier for the game session to update.
-#' @param MaximumPlayerSessionCount Maximum number of players that can be connected simultaneously to the
-#' game session.
-#' @param Name Descriptive label that is associated with a game session. Session names
-#' do not need to be unique.
+#' @param GameSessionId &#91;required&#93; A unique identifier for the game session to update.
+#' @param MaximumPlayerSessionCount The maximum number of players that can be connected simultaneously to
+#' the game session.
+#' @param Name A descriptive label that is associated with a game session. Session
+#' names do not need to be unique.
 #' @param PlayerSessionCreationPolicy Policy determining whether or not the game session accepts new players.
 #' @param ProtectionPolicy Game session protection policy to apply to this game session only.
 #' 
@@ -6052,22 +6308,23 @@ gamelift_update_game_session <- function(GameSessionId, MaximumPlayerSessionCoun
 #' gamelift_update_game_session_queue(Name, TimeoutInSeconds,
 #'   PlayerLatencyPolicies, Destinations)
 #'
-#' @param Name &#91;required&#93; Descriptive label that is associated with game session queue. Queue
-#' names must be unique within each region.
-#' @param TimeoutInSeconds Maximum time, in seconds, that a new game session placement request
+#' @param Name &#91;required&#93; A descriptive label that is associated with game session queue. Queue
+#' names must be unique within each Region. You can use either the queue ID
+#' or ARN value.
+#' @param TimeoutInSeconds The maximum time, in seconds, that a new game session placement request
 #' remains in the queue. When a request exceeds this time, the game session
 #' placement changes to a `TIMED_OUT` status.
-#' @param PlayerLatencyPolicies Collection of latency policies to apply when processing game sessions
+#' @param PlayerLatencyPolicies A collection of latency policies to apply when processing game sessions
 #' placement requests with player latency information. Multiple policies
 #' are evaluated in order of the maximum latency value, starting with the
-#' lowest latency values. With just one policy, it is enforced at the start
-#' of the game session placement for the duration period. With multiple
-#' policies, each policy is enforced consecutively for its duration period.
-#' For example, a queue might enforce a 60-second policy followed by a
-#' 120-second policy, and then no policy for the remainder of the
-#' placement. When updating policies, provide a complete collection of
+#' lowest latency values. With just one policy, the policy is enforced at
+#' the start of the game session placement for the duration period. With
+#' multiple policies, each policy is enforced consecutively for its
+#' duration period. For example, a queue might enforce a 60-second policy
+#' followed by a 120-second policy, and then no policy for the remainder of
+#' the placement. When updating policies, provide a complete collection of
 #' policies.
-#' @param Destinations List of fleets that can be used to fulfill game session placement
+#' @param Destinations A list of fleets that can be used to fulfill game session placement
 #' requests in the queue. Fleets are identified by either a fleet ARN or a
 #' fleet alias ARN. Destinations are listed in default preference order.
 #' When updating this list, provide a complete list of destinations.
@@ -6148,57 +6405,57 @@ gamelift_update_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #'   AdditionalPlayerCount, CustomEventData, GameProperties, GameSessionData,
 #'   BackfillMode)
 #'
-#' @param Name &#91;required&#93; Unique identifier for a matchmaking configuration to update.
-#' @param Description Descriptive label that is associated with matchmaking configuration.
+#' @param Name &#91;required&#93; A unique identifier for a matchmaking configuration to update. You can
+#' use either the configuration name or ARN value.
+#' @param Description A descriptive label that is associated with matchmaking configuration.
 #' @param GameSessionQueueArns Amazon Resource Name
-#' ([ARN](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
-#' that is assigned to a game session queue and uniquely identifies it.
-#' Format is
-#' `arn:aws:gamelift:&lt;region&gt;:&lt;aws account&gt;:gamesessionqueue/&lt;queue name&gt;`.
-#' These queues are used when placing game sessions for matches that are
-#' created with this matchmaking configuration. Queues can be located in
-#' any region.
-#' @param RequestTimeoutSeconds Maximum duration, in seconds, that a matchmaking ticket can remain in
-#' process before timing out. Requests that fail due to timing out can be
-#' resubmitted as needed.
-#' @param AcceptanceTimeoutSeconds Length of time (in seconds) to wait for players to accept a proposed
+#' ([ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+#' that is assigned to a GameLift game session queue resource and uniquely
+#' identifies it. ARNs are unique across all Regions. These queues are used
+#' when placing game sessions for matches that are created with this
+#' matchmaking configuration. Queues can be located in any Region.
+#' @param RequestTimeoutSeconds The maximum duration, in seconds, that a matchmaking ticket can remain
+#' in process before timing out. Requests that fail due to timing out can
+#' be resubmitted as needed.
+#' @param AcceptanceTimeoutSeconds The length of time (in seconds) to wait for players to accept a proposed
 #' match. If any player rejects the match or fails to accept before the
 #' timeout, the ticket continues to look for an acceptable match.
-#' @param AcceptanceRequired Flag that determines whether a match that was created with this
+#' @param AcceptanceRequired A flag that indicates whether a match that was created with this
 #' configuration must be accepted by the matched players. To require
 #' acceptance, set to TRUE.
-#' @param RuleSetName Unique identifier for a matchmaking rule set to use with this
-#' configuration. A matchmaking configuration can only use rule sets that
-#' are defined in the same region.
-#' @param NotificationTarget SNS topic ARN that is set up to receive matchmaking notifications. See
-#' [Setting up Notifications for
+#' @param RuleSetName A unique identifier for a matchmaking rule set to use with this
+#' configuration. You can use either the rule set name or ARN value. A
+#' matchmaking configuration can only use rule sets that are defined in the
+#' same Region.
+#' @param NotificationTarget An SNS topic ARN that is set up to receive matchmaking notifications.
+#' See [Setting up Notifications for
 #' Matchmaking](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html)
 #' for more information.
-#' @param AdditionalPlayerCount Number of player slots in a match to keep open for future players. For
-#' example, if the configuration\'s rule set specifies a match for a single
-#' 12-person team, and the additional player count is set to 2, only 10
-#' players are selected for the match.
+#' @param AdditionalPlayerCount The number of player slots in a match to keep open for future players.
+#' For example, assume that the configuration\'s rule set specifies a match
+#' for a single 12-person team. If the additional player count is set to 2,
+#' only 10 players are initially selected for the match.
 #' @param CustomEventData Information to add to all events related to the matchmaking
 #' configuration.
-#' @param GameProperties Set of custom properties for a game session, formatted as key:value
+#' @param GameProperties A set of custom properties for a game session, formatted as key-value
 #' pairs. These properties are passed to a game server process in the
 #' GameSession object with a request to start a new game session (see
 #' [Start a Game
 #' Session](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 #' This information is added to the new GameSession object that is created
 #' for a successful match.
-#' @param GameSessionData Set of custom game session properties, formatted as a single string
+#' @param GameSessionData A set of custom game session properties, formatted as a single string
 #' value. This data is passed to a game server process in the GameSession
 #' object with a request to start a new game session (see [Start a Game
 #' Session](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 #' This information is added to the new GameSession object that is created
 #' for a successful match.
-#' @param BackfillMode Method used to backfill game sessions created with this matchmaking
-#' configuration. Specify MANUAL when your game manages backfill requests
-#' manually or does not use the match backfill feature. Specify AUTOMATIC
-#' to have GameLift create a StartMatchBackfill request whenever a game
-#' session has one or more open slots. Learn more about manual and
-#' automatic backfill in [Backfill Existing Games with
+#' @param BackfillMode The method that is used to backfill game sessions created with this
+#' matchmaking configuration. Specify MANUAL when your game manages
+#' backfill requests manually or does not use the match backfill feature.
+#' Specify AUTOMATIC to have GameLift create a StartMatchBackfill request
+#' whenever a game session has one or more open slots. Learn more about
+#' manual and automatic backfill in [Backfill Existing Games with
 #' FlexMatch](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html).
 #'
 #' @section Request syntax:
@@ -6247,24 +6504,23 @@ gamelift_update_matchmaking_configuration <- function(Name, Description = NULL, 
 }
 .gamelift$operations$update_matchmaking_configuration <- gamelift_update_matchmaking_configuration
 
-#' Updates the current run-time configuration for the specified fleet,
-#' which tells Amazon GameLift how to launch server processes on instances
-#' in the fleet
+#' Updates the current runtime configuration for the specified fleet, which
+#' tells Amazon GameLift how to launch server processes on instances in the
+#' fleet
 #'
-#' Updates the current run-time configuration for the specified fleet,
-#' which tells Amazon GameLift how to launch server processes on instances
-#' in the fleet. You can update a fleet\'s run-time configuration at any
-#' time after the fleet is created; it does not need to be in an `ACTIVE`
-#' status.
+#' Updates the current runtime configuration for the specified fleet, which
+#' tells Amazon GameLift how to launch server processes on instances in the
+#' fleet. You can update a fleet\'s runtime configuration at any time after
+#' the fleet is created; it does not need to be in an `ACTIVE` status.
 #' 
-#' To update run-time configuration, specify the fleet ID and provide a
+#' To update runtime configuration, specify the fleet ID and provide a
 #' `RuntimeConfiguration` object with an updated set of server process
 #' configurations.
 #' 
 #' Each instance in a Amazon GameLift fleet checks regularly for an updated
-#' run-time configuration and changes how it launches server processes to
+#' runtime configuration and changes how it launches server processes to
 #' comply with the latest version. Existing server processes are not
-#' affected by the update; run-time configuration changes are applied
+#' affected by the update; runtime configuration changes are applied
 #' gradually as existing processes shut down and new processes are launched
 #' during Amazon GameLift\'s normal process recycling activity.
 #' 
@@ -6281,21 +6537,7 @@ gamelift_update_matchmaking_configuration <- function(Name, Description = NULL, 
 #' 
 #' -   DeleteFleet
 #' 
-#' -   Describe fleets:
-#' 
-#'     -   DescribeFleetAttributes
-#' 
-#'     -   DescribeFleetCapacity
-#' 
-#'     -   DescribeFleetPortSettings
-#' 
-#'     -   DescribeFleetUtilization
-#' 
-#'     -   DescribeRuntimeConfiguration
-#' 
-#'     -   DescribeEC2InstanceLimits
-#' 
-#'     -   DescribeFleetEvents
+#' -   DescribeFleetAttributes
 #' 
 #' -   Update fleets:
 #' 
@@ -6316,14 +6558,15 @@ gamelift_update_matchmaking_configuration <- function(Name, Description = NULL, 
 #' @usage
 #' gamelift_update_runtime_configuration(FleetId, RuntimeConfiguration)
 #'
-#' @param FleetId &#91;required&#93; Unique identifier for a fleet to update run-time configuration for.
+#' @param FleetId &#91;required&#93; A unique identifier for a fleet to update runtime configuration for. You
+#' can use either the fleet ID or ARN value.
 #' @param RuntimeConfiguration &#91;required&#93; Instructions for launching server processes on each instance in the
 #' fleet. Server processes run either a custom game build executable or a
-#' Realtime Servers script. The run-time configuration lists the types of
+#' Realtime Servers script. The runtime configuration lists the types of
 #' server processes to run on an instance and includes the following
 #' configuration settings: the server executable or launch script file,
 #' launch parameters, and the number of processes to run concurrently on
-#' each instance. A CreateFleet request must include a run-time
+#' each instance. A CreateFleet request must include a runtime
 #' configuration with at least one server process configuration.
 #'
 #' @section Request syntax:
@@ -6402,20 +6645,21 @@ gamelift_update_runtime_configuration <- function(FleetId, RuntimeConfiguration)
 #' gamelift_update_script(ScriptId, Name, Version, StorageLocation,
 #'   ZipFile)
 #'
-#' @param ScriptId &#91;required&#93; Unique identifier for a Realtime script to update.
-#' @param Name Descriptive label that is associated with a script. Script names do not
-#' need to be unique.
-#' @param Version Version that is associated with a build or script. Version strings do
+#' @param ScriptId &#91;required&#93; A unique identifier for a Realtime script to update. You can use either
+#' the script ID or ARN value.
+#' @param Name A descriptive label that is associated with a script. Script names do
 #' not need to be unique.
-#' @param StorageLocation Location of the Amazon S3 bucket where a zipped file containing your
+#' @param Version The version that is associated with a build or script. Version strings
+#' do not need to be unique.
+#' @param StorageLocation The location of the Amazon S3 bucket where a zipped file containing your
 #' Realtime scripts is stored. The storage location must specify the Amazon
 #' S3 bucket name, the zip file name (the \"key\"), and a role ARN that
 #' allows Amazon GameLift to access the Amazon S3 storage location. The S3
-#' bucket must be in the same region where you want to create a new script.
+#' bucket must be in the same Region where you want to create a new script.
 #' By default, Amazon GameLift uploads the latest version of the zip file;
 #' if you have S3 object versioning turned on, you can use the
 #' `ObjectVersion` parameter to specify an earlier version.
-#' @param ZipFile Data object containing your Realtime scripts and dependencies as a zip
+#' @param ZipFile A data object containing your Realtime scripts and dependencies as a zip
 #' file. The zip file can have one or multiple files. Maximum size of a zip
 #' file is 5 MB.
 #' 
@@ -6493,7 +6737,8 @@ gamelift_update_script <- function(ScriptId, Name = NULL, Version = NULL, Storag
 #' @usage
 #' gamelift_validate_matchmaking_rule_set(RuleSetBody)
 #'
-#' @param RuleSetBody &#91;required&#93; Collection of matchmaking rules to validate, formatted as a JSON string.
+#' @param RuleSetBody &#91;required&#93; A collection of matchmaking rules to validate, formatted as a JSON
+#' string.
 #'
 #' @section Request syntax:
 #' ```

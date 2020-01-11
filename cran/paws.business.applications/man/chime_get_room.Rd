@@ -2,7 +2,7 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_get_room}
 \alias{chime_get_room}
-\title{Retrieves room details, such as name}
+\title{Retrieves room details, such as the room name}
 \usage{
 chime_get_room(AccountId, RoomId)
 }
@@ -12,7 +12,7 @@ chime_get_room(AccountId, RoomId)
 \item{RoomId}{[required] The room ID.}
 }
 \description{
-Retrieves room details, such as name.
+Retrieves room details, such as the room name.
 }
 \section{Request syntax}{
 \preformatted{svc$get_room(

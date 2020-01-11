@@ -2,7 +2,7 @@
 % Please edit documentation in R/accessanalyzer_operations.R
 \name{accessanalyzer_update_archive_rule}
 \alias{accessanalyzer_update_archive_rule}
-\title{Updates the specified archive rule}
+\title{Updates the criteria and values for the specified archive rule}
 \usage{
 accessanalyzer_update_archive_rule(analyzerName, clientToken, filter,
   ruleName)
@@ -18,7 +18,7 @@ filter are updated.}
 \item{ruleName}{[required] The name of the rule to update.}
 }
 \description{
-Updates the specified archive rule.
+Updates the criteria and values for the specified archive rule.
 }
 \section{Request syntax}{
 \preformatted{svc$update_archive_rule(

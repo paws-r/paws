@@ -7,7 +7,7 @@
 gamelift_create_player_sessions(GameSessionId, PlayerIds, PlayerDataMap)
 }
 \arguments{
-\item{GameSessionId}{[required] Unique identifier for the game session to add players to.}
+\item{GameSessionId}{[required] A unique identifier for the game session to add players to.}
 
 \item{PlayerIds}{[required] List of unique identifiers for the players to be added.}
 

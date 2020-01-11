@@ -1,6 +1,6 @@
 Package: paws.internet.of.things
 Title: Amazon Web Services Internet of Things APIs
-Version: 0.1.5
+Version: 0.1.6
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
@@ -17,7 +17,7 @@ Description: Interface to Amazon Web Services internet of things ('IoT')
     devices. <https://aws.amazon.com/iot/>.
 License: Apache License (>= 2.0)
 Imports: 
-    paws.common (>= 0.2.4)
+    paws.common (>= 0.2.5)
 Suggests: 
     testthat
 Encoding: UTF-8

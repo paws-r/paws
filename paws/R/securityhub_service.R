@@ -27,6 +27,18 @@ NULL
 #' with the master account is created only in the us-west-2 Region.
 #' Security Hub must be enabled for the member account in the same Region
 #' that the invite was sent from.
+#' 
+#' The following throttling limits apply to using Security Hub API
+#' operations:
+#' 
+#' -   `GetFindings` - RateLimit of 3 requests per second, and a BurstLimit
+#'     of 6 requests per second.
+#' 
+#' -   `UpdateFindings` - RateLimit of 1 request per second, and a
+#'     BurstLimit of 5 requests per second.
+#' 
+#' -   All other operations - RateLimit of 10 request per second, and a
+#'     BurstLimit of 30 requests per second.
 #'
 #' @param
 #' config

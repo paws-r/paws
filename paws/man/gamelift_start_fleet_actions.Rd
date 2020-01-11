@@ -7,7 +7,8 @@
 gamelift_start_fleet_actions(FleetId, Actions)
 }
 \arguments{
-\item{FleetId}{[required] Unique identifier for a fleet}
+\item{FleetId}{[required] A unique identifier for a fleet to start actions on. You can use either
+the fleet ID or ARN value.}
 
 \item{Actions}{[required] List of actions to restart on the fleet.}
 }

@@ -53,13 +53,13 @@ NULL
 
 .sesv2$create_email_identity_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EmailIdentity = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(EmailIdentity = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DkimSigningAttributes = structure(list(DomainSigningSelector = structure(logical(0), tags = list(type = "string")), DomainSigningPrivateKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .sesv2$create_email_identity_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IdentityType = structure(logical(0), tags = list(type = "string")), VerifiedForSendingStatus = structure(logical(0), tags = list(type = "boolean")), DkimAttributes = structure(list(SigningEnabled = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), Tokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(IdentityType = structure(logical(0), tags = list(type = "string")), VerifiedForSendingStatus = structure(logical(0), tags = list(type = "boolean")), DkimAttributes = structure(list(SigningEnabled = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), Tokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigningAttributesOrigin = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -251,7 +251,7 @@ NULL
 
 .sesv2$get_email_identity_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IdentityType = structure(logical(0), tags = list(type = "string")), FeedbackForwardingStatus = structure(logical(0), tags = list(type = "boolean")), VerifiedForSendingStatus = structure(logical(0), tags = list(type = "boolean")), DkimAttributes = structure(list(SigningEnabled = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), Tokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), MailFromAttributes = structure(list(MailFromDomain = structure(logical(0), tags = list(type = "string")), MailFromDomainStatus = structure(logical(0), tags = list(type = "string")), BehaviorOnMxFailure = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(IdentityType = structure(logical(0), tags = list(type = "string")), FeedbackForwardingStatus = structure(logical(0), tags = list(type = "boolean")), VerifiedForSendingStatus = structure(logical(0), tags = list(type = "boolean")), DkimAttributes = structure(list(SigningEnabled = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), Tokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigningAttributesOrigin = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MailFromAttributes = structure(list(MailFromDomain = structure(logical(0), tags = list(type = "string")), MailFromDomainStatus = structure(logical(0), tags = list(type = "string")), BehaviorOnMxFailure = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -492,6 +492,18 @@ NULL
 .sesv2$put_email_identity_dkim_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$put_email_identity_dkim_signing_attributes_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EmailIdentity = structure(logical(0), tags = list(location = "uri", locationName = "EmailIdentity", type = "string")), SigningAttributesOrigin = structure(logical(0), tags = list(type = "string")), SigningAttributes = structure(list(DomainSigningSelector = structure(logical(0), tags = list(type = "string")), DomainSigningPrivateKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$put_email_identity_dkim_signing_attributes_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DkimStatus = structure(logical(0), tags = list(type = "string")), DkimTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

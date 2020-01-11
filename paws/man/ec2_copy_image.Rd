@@ -23,10 +23,10 @@ Service (AWS KMS) CMK using \code{KmsKeyId}. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
-\item{KmsKeyId}{An identifier for the AWS Key Management Service (AWS KMS) customer
-master key (CMK) to use when creating the encrypted volume. This
-parameter is only required if you want to use a non-default CMK; if this
-parameter is not specified, the default CMK for EBS is used. If a
+\item{KmsKeyId}{An identifier for the symmetric AWS Key Management Service (AWS KMS)
+customer master key (CMK) to use when creating the encrypted volume.
+This parameter is only required if you want to use a non-default CMK; if
+this parameter is not specified, the default CMK for EBS is used. If a
 \code{KmsKeyId} is specified, the \code{Encrypted} flag must also be set.
 
 To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
@@ -45,7 +45,9 @@ may appear to complete even though you provided an invalid identifier.
 This action will eventually report failure.
 
 The specified CMK must exist in the Region that the snapshot is being
-copied to.}
+copied to.
+
+Amazon EBS does not support asymmetric CMKs.}
 
 \item{Name}{[required] The name of the new AMI in the destination Region.}
 

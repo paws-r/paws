@@ -11,7 +11,8 @@ xray_put_encryption_config(KeyId, Type)
 \itemize{
 \item \strong{Alias} - The name of the key. For example, \code{alias/MyKey}.
 \item \strong{Key ID} - The KMS key ID of the key. For example,
-\verb{ae4aa6d49-a4d8-9df9-a475-4ff6d7898456}.
+\verb{ae4aa6d49-a4d8-9df9-a475-4ff6d7898456}. AWS X-Ray does not support
+asymmetric CMKs.
 \item \strong{ARN} - The full Amazon Resource Name of the key ID or alias. For
 example,
 \verb{arn:aws:kms:us-east-2:123456789012:key/ae4aa6d49-a4d8-9df9-a475-4ff6d7898456}.

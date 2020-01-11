@@ -120,8 +120,13 @@ Optional fields that aren\'t specified are set to null.
   TaskInvocationParameters = list(
     RunCommand = list(
       Comment = "string",
+      CloudWatchOutputConfig = list(
+        CloudWatchLogGroupName = "string",
+        CloudWatchOutputEnabled = TRUE|FALSE
+      ),
       DocumentHash = "string",
       DocumentHashType = "Sha256"|"Sha1",
+      DocumentVersion = "string",
       NotificationConfig = list(
         NotificationArn = "string",
         NotificationEvents = list(

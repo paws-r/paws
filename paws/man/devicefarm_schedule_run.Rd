@@ -11,13 +11,13 @@ devicefarm_schedule_run(projectArn, appArn, devicePoolArn,
 \arguments{
 \item{projectArn}{[required] The ARN of the project for the run to be scheduled.}
 
-\item{appArn}{The ARN of the app to schedule a run.}
+\item{appArn}{The ARN of an application package to run tests against, created with
+CreateUpload. See ListUploads.}
 
 \item{devicePoolArn}{The ARN of the device pool for the run to be scheduled.}
 
 \item{deviceSelectionConfiguration}{The filter criteria used to dynamically select a set of devices for a
-test run, as well as the maximum number of devices to be included in the
-run.
+test run and the maximum number of devices to be included in the run.
 
 Either \strong{\code{devicePoolArn}} or \strong{\code{deviceSelectionConfiguration}} is
 required in a request.}

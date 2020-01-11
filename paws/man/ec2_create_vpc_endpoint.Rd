@@ -37,13 +37,13 @@ endpoint network interface.}
 \item{SecurityGroupIds}{(Interface endpoint) The ID of one or more security groups to associate
 with the endpoint network interface.}
 
-\item{ClientToken}{Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
+\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 
-\item{PrivateDnsEnabled}{(Interface endpoint) Indicate whether to associate a private hosted zone
-with the specified VPC. The private hosted zone contains a record set
-for the default public DNS name for the service for the Region (for
-example, \verb{kinesis.us-east-1.amazonaws.com}) which resolves to the
+\item{PrivateDnsEnabled}{(Interface endpoint) Indicates whether to associate a private hosted
+zone with the specified VPC. The private hosted zone contains a record
+set for the default public DNS name for the service for the Region (for
+example, \verb{kinesis.us-east-1.amazonaws.com}), which resolves to the
 private IP addresses of the endpoint network interfaces in the VPC. This
 enables you to make requests to the default public DNS name for the
 service instead of the public DNS names that are automatically generated
@@ -58,16 +58,16 @@ Default: \code{true}}
 \description{
 Creates a VPC endpoint for a specified service. An endpoint enables you
 to create a private connection between your VPC and the service. The
-service may be provided by AWS, an AWS Marketplace partner, or another
+service may be provided by AWS, an AWS Marketplace Partner, or another
 AWS account. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html}{VPC Endpoints}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \details{
 A \code{gateway} endpoint serves as a target for a route in your route table
 for traffic destined for the AWS service. You can specify an endpoint
-policy to attach to the endpoint that will control access to the service
-from your VPC. You can also specify the VPC route tables that use the
-endpoint.
+policy to attach to the endpoint, which will control access to the
+service from your VPC. You can also specify the VPC route tables that
+use the endpoint.
 
 An \code{interface} endpoint is a network interface in your subnet that
 serves as an endpoint for communicating with the specified service. You
