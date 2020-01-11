@@ -1,3 +1,7 @@
+# paws.common 0.2.5
+
+* Add support for RDS IAM authentication.
+
 # paws.common 0.2.4
 
 * Add support for custom configuration per service, e.g.
