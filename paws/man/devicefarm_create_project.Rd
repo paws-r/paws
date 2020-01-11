@@ -2,7 +2,7 @@
 % Please edit documentation in R/devicefarm_operations.R
 \name{devicefarm_create_project}
 \alias{devicefarm_create_project}
-\title{Creates a new project}
+\title{Creates a project}
 \usage{
 devicefarm_create_project(name, defaultJobTimeoutMinutes)
 }
@@ -10,11 +10,11 @@ devicefarm_create_project(name, defaultJobTimeoutMinutes)
 \item{name}{[required] The project\'s name.}
 
 \item{defaultJobTimeoutMinutes}{Sets the execution timeout value (in minutes) for a project. All test
-runs in this project will use the specified execution timeout value
-unless overridden when scheduling a run.}
+runs in this project use the specified execution timeout value unless
+overridden when scheduling a run.}
 }
 \description{
-Creates a new project.
+Creates a project.
 }
 \section{Request syntax}{
 \preformatted{svc$create_project(

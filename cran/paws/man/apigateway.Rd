@@ -101,8 +101,8 @@ hosted outside of AWS.
 \link[=apigateway_get_method]{get_method} \tab Describe an existing Method resource \cr
 \link[=apigateway_get_method_response]{get_method_response} \tab Describes a MethodResponse resource \cr
 \link[=apigateway_get_model]{get_model} \tab Describes an existing model defined for a RestApi resource \cr
-\link[=apigateway_get_model_template]{get_model_template} \tab Generates a sample mapping template that can be used to transform a payload into the structure of a model \cr
 \link[=apigateway_get_models]{get_models} \tab Describes existing Models defined for a RestApi resource \cr
+\link[=apigateway_get_model_template]{get_model_template} \tab Generates a sample mapping template that can be used to transform a payload into the structure of a model \cr
 \link[=apigateway_get_request_validator]{get_request_validator} \tab Gets a RequestValidator of a given RestApi \cr
 \link[=apigateway_get_request_validators]{get_request_validators} \tab Gets the RequestValidators collection of a given RestApi \cr
 \link[=apigateway_get_resource]{get_resource} \tab Lists information about a resource \cr

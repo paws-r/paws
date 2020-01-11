@@ -26,8 +26,7 @@ the output. You should use the \code{DetectEntitiesV2} operation in all new
 applications.
 
 The \code{DetectEntitiesV2} operation returns the \code{Acuity} and \code{Direction}
-entities as attributes instead of types. It does not return the
-\code{Quality} or \code{Quantity} entities.
+entities as attributes instead of types.
 }
 \section{Request syntax}{
 \preformatted{svc$detect_entities_v2(

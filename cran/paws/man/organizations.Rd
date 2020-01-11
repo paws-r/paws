@@ -55,14 +55,14 @@ AWS Organizations
 \link[=organizations_detach_policy]{detach_policy} \tab Detaches a policy from a target root, organizational unit (OU), or account \cr
 \link[=organizations_disable_aws_service_access]{disable_aws_service_access} \tab Disables the integration of an AWS service (the service that is specified by ServicePrincipal) with AWS Organizations \cr
 \link[=organizations_disable_policy_type]{disable_policy_type} \tab Disables an organizational control policy type in a root and detaches all policies of that type from the organization root, OUs, and accounts\cr
-\link[=organizations_enable_aws_service_access]{enable_aws_service_access} \tab Enables the integration of an AWS service (the service that is specified by ServicePrincipal) with AWS Organizations \cr
 \link[=organizations_enable_all_features]{enable_all_features} \tab Enables all features in an organization \cr
+\link[=organizations_enable_aws_service_access]{enable_aws_service_access} \tab Enables the integration of an AWS service (the service that is specified by ServicePrincipal) with AWS Organizations \cr
 \link[=organizations_enable_policy_type]{enable_policy_type} \tab Enables a policy type in a root \cr
 \link[=organizations_invite_account_to_organization]{invite_account_to_organization} \tab Sends an invitation to another account to join your organization as a member account \cr
 \link[=organizations_leave_organization]{leave_organization} \tab Removes a member account from its parent organization \cr
-\link[=organizations_list_aws_service_access_for_organization]{list_aws_service_access_for_organization} \tab Returns a list of the AWS services that you enabled to integrate with your organization \cr
 \link[=organizations_list_accounts]{list_accounts} \tab Lists all the accounts in the organization \cr
 \link[=organizations_list_accounts_for_parent]{list_accounts_for_parent} \tab Lists the accounts in an organization that are contained by the specified target root or organizational unit (OU) \cr
+\link[=organizations_list_aws_service_access_for_organization]{list_aws_service_access_for_organization} \tab Returns a list of the AWS services that you enabled to integrate with your organization \cr
 \link[=organizations_list_children]{list_children} \tab Lists all of the organizational units (OUs) or accounts that are contained in the specified parent OU or root \cr
 \link[=organizations_list_create_account_status]{list_create_account_status} \tab Lists the account creation requests that match the specified status that is currently being tracked for the organization \cr
 \link[=organizations_list_handshakes_for_account]{list_handshakes_for_account} \tab Lists the current handshakes that are associated with the account of the requesting user \cr

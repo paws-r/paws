@@ -2,21 +2,25 @@
 % Please edit documentation in R/sesv2_operations.R
 \name{sesv2_list_suppressed_destinations}
 \alias{sesv2_list_suppressed_destinations}
-\title{Used to fetch a list suppressed email destinations from your suppression
-list}
+\title{Retrieves a list of email addresses that are on the suppression list for
+your account}
 \usage{
 sesv2_list_suppressed_destinations(Reasons, StartDate, EndDate,
   NextToken, PageSize)
 }
 \arguments{
-\item{Reasons}{Filters email destinations suppressed by the given reasons.}
+\item{Reasons}{The factors that caused the email address to be added to .}
 
-\item{StartDate}{Filters email destinations suppressed before the given time.}
+\item{StartDate}{Used to filter the list of suppressed email destinations so that it only
+includes addresses that were added to the list after a specific date.
+The date that you specify should be in Unix time format.}
 
-\item{EndDate}{Filters email destinations suppressed after the given time.}
+\item{EndDate}{Used to filter the list of suppressed email destinations so that it only
+includes addresses that were added to the list before a specific date.
+The date that you specify should be in Unix time format.}
 
 \item{NextToken}{A token returned from a previous call to \code{ListSuppressedDestinations} to
-indicate the position in the list of suppressed email destinations.}
+indicate the position in the list of suppressed email addresses.}
 
 \item{PageSize}{The number of results to show in a single call to
 \code{ListSuppressedDestinations}. If the number of results is larger than
@@ -24,8 +28,8 @@ the number you specified in this parameter, then the response includes a
 \code{NextToken} element, which you can use to obtain additional results.}
 }
 \description{
-Used to fetch a list suppressed email destinations from your suppression
-list.
+Retrieves a list of email addresses that are on the suppression list for
+your account.
 }
 \section{Request syntax}{
 \preformatted{svc$list_suppressed_destinations(

@@ -5,10 +5,12 @@
 \title{Describes the specified export instance tasks or all your export
 instance tasks}
 \usage{
-ec2_describe_export_tasks(ExportTaskIds)
+ec2_describe_export_tasks(ExportTaskIds, Filters)
 }
 \arguments{
 \item{ExportTaskIds}{The export task IDs.}
+
+\item{Filters}{}
 }
 \description{
 Describes the specified export instance tasks or all your export
@@ -18,6 +20,14 @@ instance tasks.
 \preformatted{svc$describe_export_tasks(
   ExportTaskIds = list(
     "string"
+  ),
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
   )
 )
 }

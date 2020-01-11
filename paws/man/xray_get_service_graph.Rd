@@ -17,15 +17,15 @@ xray_get_service_graph(StartTime, EndTime, GroupName, GroupARN,
 
 \item{GroupARN}{The ARN of a group to generate a graph based on.}
 
-\item{NextToken}{Pagination token. Not used.}
+\item{NextToken}{Pagination token.}
 }
 \description{
 Retrieves a document that describes services that process incoming
 requests, and downstream services that they call as a result. Root
 services process incoming requests and make calls to downstream
-services. Root services are applications that use the AWS X-Ray SDK.
-Downstream services can be other applications, AWS resources, HTTP web
-APIs, or SQL databases.
+services. Root services are applications that use the \href{https://docs.aws.amazon.com/xray/index.html}{AWS X-Ray SDK}. Downstream services
+can be other applications, AWS resources, HTTP web APIs, or SQL
+databases.
 }
 \section{Request syntax}{
 \preformatted{svc$get_service_graph(

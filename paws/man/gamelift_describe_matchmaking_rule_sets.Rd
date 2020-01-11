@@ -7,20 +7,21 @@
 gamelift_describe_matchmaking_rule_sets(Names, Limit, NextToken)
 }
 \arguments{
-\item{Names}{List of one or more matchmaking rule set names to retrieve details for.
-(Note: The rule set name is different from the optional \"name\" field
-in the rule set body.)}
+\item{Names}{A list of one or more matchmaking rule set names to retrieve details
+for. (Note: The rule set name is different from the optional \"name\"
+field in the rule set body.) You can use either the rule set name or ARN
+value.}
 
-\item{Limit}{Maximum number of results to return. Use this parameter with \code{NextToken}
-to get results as a set of sequential pages.}
+\item{Limit}{The maximum number of results to return. Use this parameter with
+\code{NextToken} to get results as a set of sequential pages.}
 
-\item{NextToken}{Token that indicates the start of the next sequential page of results.
+\item{NextToken}{A token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this action. To
 start at the beginning of the result set, do not specify a value.}
 }
 \description{
 Retrieves the details for FlexMatch matchmaking rule sets. You can
-request all existing rule sets for the region, or provide a list of one
+request all existing rule sets for the Region, or provide a list of one
 or more rule set names. When requesting multiple items, use the
 pagination parameters to retrieve results as a set of sequential pages.
 If successful, a rule set is returned for each requested name.

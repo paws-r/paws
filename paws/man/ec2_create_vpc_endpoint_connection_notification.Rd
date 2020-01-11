@@ -23,8 +23,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{ConnectionEvents}{[required] One or more endpoint events for which to receive notifications. Valid
 values are \code{Accept}, \code{Connect}, \code{Delete}, and \code{Reject}.}
 
-\item{ClientToken}{Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
+\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 }
 \description{
 Creates a connection notification for a specified VPC endpoint or VPC

@@ -4,7 +4,8 @@
 \alias{chime_update_user}
 \title{Updates user details for a specified user ID}
 \usage{
-chime_update_user(AccountId, UserId, LicenseType)
+chime_update_user(AccountId, UserId, LicenseType, UserType,
+  AlexaForBusinessMetadata)
 }
 \arguments{
 \item{AccountId}{[required] The Amazon Chime account ID.}
@@ -13,6 +14,10 @@ chime_update_user(AccountId, UserId, LicenseType)
 
 \item{LicenseType}{The user license type to update. This must be a supported license type
 for the Amazon Chime account that the user belongs to.}
+
+\item{UserType}{The user type.}
+
+\item{AlexaForBusinessMetadata}{The Alexa for Business metadata.}
 }
 \description{
 Updates user details for a specified user ID. Currently, only
@@ -22,7 +27,12 @@ Updates user details for a specified user ID. Currently, only
 \preformatted{svc$update_user(
   AccountId = "string",
   UserId = "string",
-  LicenseType = "Basic"|"Plus"|"Pro"|"ProTrial"
+  LicenseType = "Basic"|"Plus"|"Pro"|"ProTrial",
+  UserType = "PrivateUser"|"SharedDevice",
+  AlexaForBusinessMetadata = list(
+    IsAlexaForBusinessEnabled = TRUE|FALSE,
+    AlexaForBusinessRoomArn = "string"
+  )
 )
 }
 }

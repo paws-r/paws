@@ -68,8 +68,8 @@ in the \strong{AWS Lambda Developer Guide}.
 \link[=lambda_list_event_source_mappings]{list_event_source_mappings} \tab Lists event source mappings \cr
 \link[=lambda_list_function_event_invoke_configs]{list_function_event_invoke_configs} \tab Retrieves a list of configurations for asynchronous invocation for a function \cr
 \link[=lambda_list_functions]{list_functions} \tab Returns a list of Lambda functions, with the version-specific configuration of each \cr
-\link[=lambda_list_layer_versions]{list_layer_versions} \tab Lists the versions of an AWS Lambda layer \cr
 \link[=lambda_list_layers]{list_layers} \tab Lists AWS Lambda layers and shows information about the latest version of each \cr
+\link[=lambda_list_layer_versions]{list_layer_versions} \tab Lists the versions of an AWS Lambda layer \cr
 \link[=lambda_list_provisioned_concurrency_configs]{list_provisioned_concurrency_configs} \tab Retrieves a list of provisioned concurrency configurations for a function \cr
 \link[=lambda_list_tags]{list_tags} \tab Returns a function's tags \cr
 \link[=lambda_list_versions_by_function]{list_versions_by_function} \tab Returns a list of versions, with the version-specific configuration of each \cr

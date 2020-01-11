@@ -11,8 +11,7 @@ accessanalyzer_list_analyzers(maxResults, nextToken, type)
 
 \item{nextToken}{A token used for pagination of results returned.}
 
-\item{type}{The type of analyzer, which corresponds to the zone of trust selected
-when the analyzer was created.}
+\item{type}{The type of analyzer.}
 }
 \description{
 Retrieves a list of analyzers.

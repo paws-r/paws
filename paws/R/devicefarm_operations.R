@@ -16,10 +16,10 @@ NULL
 #' @param description The device pool\'s description.
 #' @param rules &#91;required&#93; The device pool\'s rules.
 #' @param maxDevices The number of devices that Device Farm can add to your device pool.
-#' Device Farm adds devices that are available and that meet the criteria
-#' that you assign for the `rules` parameter. Depending on how many devices
-#' meet these constraints, your device pool might contain fewer devices
-#' than the value for this parameter.
+#' Device Farm adds devices that are available and meet the criteria that
+#' you assign for the `rules` parameter. Depending on how many devices meet
+#' these constraints, your device pool might contain fewer devices than the
+#' value for this parameter.
 #' 
 #' By specifying the maximum number of devices, you can control the costs
 #' that you incur by running tests.
@@ -83,15 +83,15 @@ devicefarm_create_device_pool <- function(projectArn, name, description = NULL, 
 #'
 #' @param name &#91;required&#93; The name of your instance profile.
 #' @param description The description of your instance profile.
-#' @param packageCleanup When set to `true`, Device Farm will remove app packages after a test
-#' run. The default value is `false` for private devices.
-#' @param excludeAppPackagesFromCleanup An array of strings specifying the list of app packages that should not
-#' be cleaned up from the device after a test run is over.
+#' @param packageCleanup When set to `true`, Device Farm removes app packages after a test run.
+#' The default value is `false` for private devices.
+#' @param excludeAppPackagesFromCleanup An array of strings that specifies the list of app packages that should
+#' not be cleaned up from the device after a test run.
 #' 
-#' The list of packages is only considered if you set `packageCleanup` to
+#' The list of packages is considered only if you set `packageCleanup` to
 #' `true`.
-#' @param rebootAfterUse When set to `true`, Device Farm will reboot the instance after a test
-#' run. The default value is `true`.
+#' @param rebootAfterUse When set to `true`, Device Farm reboots the instance after a test run.
+#' The default value is `true`.
 #'
 #' @section Request syntax:
 #' ```
@@ -138,10 +138,9 @@ devicefarm_create_instance_profile <- function(name, description = NULL, package
 #'
 #' @param projectArn &#91;required&#93; The Amazon Resource Name (ARN) of the project for which you want to
 #' create a network profile.
-#' @param name &#91;required&#93; The name you wish to specify for the new network profile.
+#' @param name &#91;required&#93; The name for the new network profile.
 #' @param description The description of the network profile.
-#' @param type The type of network profile you wish to create. Valid values are listed
-#' below.
+#' @param type The type of network profile to create. Valid values are listed here.
 #' @param uplinkBandwidthBits The data throughput rate in bits per second, as an integer from 0 to
 #' 104857600.
 #' @param downlinkBandwidthBits The data throughput rate in bits per second, as an integer from 0 to
@@ -197,17 +196,17 @@ devicefarm_create_network_profile <- function(projectArn, name, description = NU
 }
 .devicefarm$operations$create_network_profile <- devicefarm_create_network_profile
 
-#' Creates a new project
+#' Creates a project
 #'
-#' Creates a new project.
+#' Creates a project.
 #'
 #' @usage
 #' devicefarm_create_project(name, defaultJobTimeoutMinutes)
 #'
 #' @param name &#91;required&#93; The project\'s name.
 #' @param defaultJobTimeoutMinutes Sets the execution timeout value (in minutes) for a project. All test
-#' runs in this project will use the specified execution timeout value
-#' unless overridden when scheduling a run.
+#' runs in this project use the specified execution timeout value unless
+#' overridden when scheduling a run.
 #'
 #' @section Request syntax:
 #' ```
@@ -255,53 +254,52 @@ devicefarm_create_project <- function(name, defaultJobTimeoutMinutes = NULL) {
 #'
 #' @param projectArn &#91;required&#93; The Amazon Resource Name (ARN) of the project for which you want to
 #' create a remote access session.
-#' @param deviceArn &#91;required&#93; The Amazon Resource Name (ARN) of the device for which you want to
-#' create a remote access session.
+#' @param deviceArn &#91;required&#93; The ARN of the device for which you want to create a remote access
+#' session.
 #' @param instanceArn The Amazon Resource Name (ARN) of the device instance for which you want
 #' to create a remote access session.
-#' @param sshPublicKey *Ignored.* The public key of the `ssh` key pair you want to use for
-#' connecting to remote devices in your remote debugging session. This is
-#' only required if `remoteDebugEnabled` is set to `true`.
+#' @param sshPublicKey Ignored. The public key of the `ssh` key pair you want to use for
+#' connecting to remote devices in your remote debugging session. This key
+#' is required only if `remoteDebugEnabled` is set to `true`.
 #' 
-#' *Remote debugging is [no longer
-#' supported](https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).*
+#' Remote debugging is [no longer
+#' supported](https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).
 #' @param remoteDebugEnabled Set to `true` if you want to access devices remotely for debugging in
 #' your remote access session.
 #' 
-#' *Remote debugging is [no longer
-#' supported](https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).*
+#' Remote debugging is [no longer
+#' supported](https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).
 #' @param remoteRecordEnabled Set to `true` to enable remote recording for the remote access session.
 #' @param remoteRecordAppArn The Amazon Resource Name (ARN) for the app to be recorded in the remote
 #' access session.
-#' @param name The name of the remote access session that you wish to create.
+#' @param name The name of the remote access session to create.
 #' @param clientId Unique identifier for the client. If you want access to multiple devices
 #' on the same client, you should pass the same `clientId` value in each
-#' call to `CreateRemoteAccessSession`. This is required only if
+#' call to `CreateRemoteAccessSession`. This identifier is required only if
 #' `remoteDebugEnabled` is set to `true`.
 #' 
-#' *Remote debugging is [no longer
-#' supported](https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).*
+#' Remote debugging is [no longer
+#' supported](https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).
 #' @param configuration The configuration information for the remote access session request.
 #' @param interactionMode The interaction mode of the remote access session. Valid values are:
 #' 
 #' -   INTERACTIVE: You can interact with the iOS device by viewing,
-#'     touching, and rotating the screen. You **cannot** run XCUITest
+#'     touching, and rotating the screen. You cannot run XCUITest
 #'     framework-based tests in this mode.
 #' 
-#' -   NO\\_VIDEO: You are connected to the device but cannot interact with
+#' -   NO\\_VIDEO: You are connected to the device, but cannot interact with
 #'     it or view the screen. This mode has the fastest test execution
-#'     speed. You **can** run XCUITest framework-based tests in this mode.
+#'     speed. You can run XCUITest framework-based tests in this mode.
 #' 
-#' -   VIDEO\\_ONLY: You can view the screen but cannot touch or rotate it.
-#'     You **can** run XCUITest framework-based tests and watch the screen
-#'     in this mode.
-#' @param skipAppResign When set to `true`, for private devices, Device Farm will not sign your
-#' app again. For public devices, Device Farm always signs your apps again
-#' and this parameter has no effect.
+#' -   VIDEO\\_ONLY: You can view the screen, but cannot touch or rotate it.
+#'     You can run XCUITest framework-based tests and watch the screen in
+#'     this mode.
+#' @param skipAppResign When set to `true`, for private devices, Device Farm does not sign your
+#' app again. For public devices, Device Farm always signs your apps again.
 #' 
-#' For more information about how Device Farm re-signs your app(s), see [Do
-#' you modify my app?](https://aws.amazon.com/device-farm/faq/) in the *AWS
-#' Device Farm FAQs*.
+#' For more information on how Device Farm modifies your uploads during
+#' tests, see [Do you modify my
+#' app?](https://aws.amazon.com/device-farm/faq/)
 #'
 #' @section Request syntax:
 #' ```
@@ -357,6 +355,86 @@ devicefarm_create_remote_access_session <- function(projectArn, deviceArn, insta
 }
 .devicefarm$operations$create_remote_access_session <- devicefarm_create_remote_access_session
 
+#' Creates a Selenium testing project
+#'
+#' Creates a Selenium testing project. Projects are used to track
+#' TestGridSession instances.
+#'
+#' @usage
+#' devicefarm_create_test_grid_project(name, description)
+#'
+#' @param name &#91;required&#93; Human-readable name of the Selenium testing project.
+#' @param description Human-readable description of the project.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_test_grid_project(
+#'   name = "string",
+#'   description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devicefarm_create_test_grid_project
+devicefarm_create_test_grid_project <- function(name, description = NULL) {
+  op <- new_operation(
+    name = "CreateTestGridProject",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .devicefarm$create_test_grid_project_input(name = name, description = description)
+  output <- .devicefarm$create_test_grid_project_output()
+  config <- get_config()
+  svc <- .devicefarm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devicefarm$operations$create_test_grid_project <- devicefarm_create_test_grid_project
+
+#' Creates a signed, short-term URL that can be passed to a Selenium
+#' RemoteWebDriver constructor
+#'
+#' Creates a signed, short-term URL that can be passed to a Selenium
+#' `RemoteWebDriver` constructor.
+#'
+#' @usage
+#' devicefarm_create_test_grid_url(projectArn, expiresInSeconds)
+#'
+#' @param projectArn &#91;required&#93; ARN (from CreateTestGridProject or ListTestGridProjects) to associate
+#' with the short-term URL.
+#' @param expiresInSeconds &#91;required&#93; Lifetime, in seconds, of the URL.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_test_grid_url(
+#'   projectArn = "string",
+#'   expiresInSeconds = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devicefarm_create_test_grid_url
+devicefarm_create_test_grid_url <- function(projectArn, expiresInSeconds) {
+  op <- new_operation(
+    name = "CreateTestGridUrl",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .devicefarm$create_test_grid_url_input(projectArn = projectArn, expiresInSeconds = expiresInSeconds)
+  output <- .devicefarm$create_test_grid_url_output()
+  config <- get_config()
+  svc <- .devicefarm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devicefarm$operations$create_test_grid_url <- devicefarm_create_test_grid_url
+
 #' Uploads an app or test scripts
 #'
 #' Uploads an app or test scripts.
@@ -365,96 +443,82 @@ devicefarm_create_remote_access_session <- function(projectArn, deviceArn, insta
 #' devicefarm_create_upload(projectArn, name, type, contentType)
 #'
 #' @param projectArn &#91;required&#93; The ARN of the project for the upload.
-#' @param name &#91;required&#93; The upload\'s file name. The name should not contain the \'/\'
-#' character. If uploading an iOS app, the file name needs to end with the
-#' `.ipa` extension. If uploading an Android app, the file name needs to
-#' end with the `.apk` extension. For all others, the file name must end
-#' with the `.zip` file extension.
+#' @param name &#91;required&#93; The upload\'s file name. The name should not contain any forward slashes
+#' (`/`). If you are uploading an iOS app, the file name must end with the
+#' `.ipa` extension. If you are uploading an Android app, the file name
+#' must end with the `.apk` extension. For all others, the file name must
+#' end with the `.zip` file extension.
 #' @param type &#91;required&#93; The upload\'s upload type.
 #' 
 #' Must be one of the following values:
 #' 
-#' -   ANDROID\\_APP: An Android upload.
+#' -   ANDROID\\_APP
 #' 
-#' -   IOS\\_APP: An iOS upload.
+#' -   IOS\\_APP
 #' 
-#' -   WEB\\_APP: A web application upload.
+#' -   WEB\\_APP
 #' 
-#' -   EXTERNAL\\_DATA: An external data upload.
+#' -   EXTERNAL\\_DATA
 #' 
-#' -   APPIUM\\_JAVA\\_JUNIT\\_TEST\\_PACKAGE: An Appium Java JUnit test
-#'     package upload.
+#' -   APPIUM\\_JAVA\\_JUNIT\\_TEST\\_PACKAGE
 #' 
-#' -   APPIUM\\_JAVA\\_TESTNG\\_TEST\\_PACKAGE: An Appium Java TestNG test
-#'     package upload.
+#' -   APPIUM\\_JAVA\\_TESTNG\\_TEST\\_PACKAGE
 #' 
-#' -   APPIUM\\_PYTHON\\_TEST\\_PACKAGE: An Appium Python test package upload.
+#' -   APPIUM\\_PYTHON\\_TEST\\_PACKAGE
 #' 
-#' -   APPIUM\\_NODE\\_TEST\\_PACKAGE: An Appium Node.js test package upload.
+#' -   APPIUM\\_NODE\\_TEST\\_PACKAGE
 #' 
-#' -   APPIUM\\_RUBY\\_TEST\\_PACKAGE: An Appium Ruby test package upload.
+#' -   APPIUM\\_RUBY\\_TEST\\_PACKAGE
 #' 
-#' -   APPIUM\\_WEB\\_JAVA\\_JUNIT\\_TEST\\_PACKAGE: An Appium Java JUnit test
-#'     package upload for a web app.
+#' -   APPIUM\\_WEB\\_JAVA\\_JUNIT\\_TEST\\_PACKAGE
 #' 
-#' -   APPIUM\\_WEB\\_JAVA\\_TESTNG\\_TEST\\_PACKAGE: An Appium Java TestNG test
-#'     package upload for a web app.
+#' -   APPIUM\\_WEB\\_JAVA\\_TESTNG\\_TEST\\_PACKAGE
 #' 
-#' -   APPIUM\\_WEB\\_PYTHON\\_TEST\\_PACKAGE: An Appium Python test package
-#'     upload for a web app.
+#' -   APPIUM\\_WEB\\_PYTHON\\_TEST\\_PACKAGE
 #' 
-#' -   APPIUM\\_WEB\\_NODE\\_TEST\\_PACKAGE: An Appium Node.js test package
-#'     upload for a web app.
+#' -   APPIUM\\_WEB\\_NODE\\_TEST\\_PACKAGE
 #' 
-#' -   APPIUM\\_WEB\\_RUBY\\_TEST\\_PACKAGE: An Appium Ruby test package upload
-#'     for a web app.
+#' -   APPIUM\\_WEB\\_RUBY\\_TEST\\_PACKAGE
 #' 
-#' -   CALABASH\\_TEST\\_PACKAGE: A Calabash test package upload.
+#' -   CALABASH\\_TEST\\_PACKAGE
 #' 
-#' -   INSTRUMENTATION\\_TEST\\_PACKAGE: An instrumentation upload.
+#' -   INSTRUMENTATION\\_TEST\\_PACKAGE
 #' 
-#' -   UIAUTOMATION\\_TEST\\_PACKAGE: A uiautomation test package upload.
+#' -   UIAUTOMATION\\_TEST\\_PACKAGE
 #' 
-#' -   UIAUTOMATOR\\_TEST\\_PACKAGE: A uiautomator test package upload.
+#' -   UIAUTOMATOR\\_TEST\\_PACKAGE
 #' 
-#' -   XCTEST\\_TEST\\_PACKAGE: An Xcode test package upload.
+#' -   XCTEST\\_TEST\\_PACKAGE
 #' 
-#' -   XCTEST\\_UI\\_TEST\\_PACKAGE: An Xcode UI test package upload.
+#' -   XCTEST\\_UI\\_TEST\\_PACKAGE
 #' 
-#' -   APPIUM\\_JAVA\\_JUNIT\\_TEST\\_SPEC: An Appium Java JUnit test spec
-#'     upload.
+#' -   APPIUM\\_JAVA\\_JUNIT\\_TEST\\_SPEC
 #' 
-#' -   APPIUM\\_JAVA\\_TESTNG\\_TEST\\_SPEC: An Appium Java TestNG test spec
-#'     upload.
+#' -   APPIUM\\_JAVA\\_TESTNG\\_TEST\\_SPEC
 #' 
-#' -   APPIUM\\_PYTHON\\_TEST\\_SPEC: An Appium Python test spec upload.
+#' -   APPIUM\\_PYTHON\\_TEST\\_SPEC
 #' 
-#' -   APPIUM\\_NODE\\_TEST\\_SPEC: An Appium Node.js test spec upload.
+#' -   APPIUM\\_NODE\\_TEST\\_SPEC
 #' 
-#' -   APPIUM\\_RUBY\\_TEST\\_SPEC: An Appium Ruby test spec upload.
+#' -   APPIUM\\_RUBY\\_TEST\\_SPEC
 #' 
-#' -   APPIUM\\_WEB\\_JAVA\\_JUNIT\\_TEST\\_SPEC: An Appium Java JUnit test spec
-#'     upload for a web app.
+#' -   APPIUM\\_WEB\\_JAVA\\_JUNIT\\_TEST\\_SPEC
 #' 
-#' -   APPIUM\\_WEB\\_JAVA\\_TESTNG\\_TEST\\_SPEC: An Appium Java TestNG test
-#'     spec upload for a web app.
+#' -   APPIUM\\_WEB\\_JAVA\\_TESTNG\\_TEST\\_SPEC
 #' 
-#' -   APPIUM\\_WEB\\_PYTHON\\_TEST\\_SPEC: An Appium Python test spec upload
-#'     for a web app.
+#' -   APPIUM\\_WEB\\_PYTHON\\_TEST\\_SPEC
 #' 
-#' -   APPIUM\\_WEB\\_NODE\\_TEST\\_SPEC: An Appium Node.js test spec upload
-#'     for a web app.
+#' -   APPIUM\\_WEB\\_NODE\\_TEST\\_SPEC
 #' 
-#' -   APPIUM\\_WEB\\_RUBY\\_TEST\\_SPEC: An Appium Ruby test spec upload for a
-#'     web app.
+#' -   APPIUM\\_WEB\\_RUBY\\_TEST\\_SPEC
 #' 
-#' -   INSTRUMENTATION\\_TEST\\_SPEC: An instrumentation test spec upload.
+#' -   INSTRUMENTATION\\_TEST\\_SPEC
 #' 
-#' -   XCTEST\\_UI\\_TEST\\_SPEC: An Xcode UI test spec upload.
+#' -   XCTEST\\_UI\\_TEST\\_SPEC
 #' 
-#' **Note** If you call `CreateUpload` with `WEB_APP` specified, AWS Device
-#' Farm throws an `ArgumentException` error.
-#' @param contentType The upload\'s content type (for example, \"application/octet-stream\").
+#' If you call `CreateUpload` with `WEB_APP` specified, AWS Device Farm
+#' throws an `ArgumentException` error.
+#' @param contentType The upload\'s content type (for example, `application/octet-stream`).
 #'
 #' @section Request syntax:
 #' ```
@@ -507,11 +571,11 @@ devicefarm_create_upload <- function(projectArn, name, type, contentType = NULL)
 #'
 #' @param vpceConfigurationName &#91;required&#93; The friendly name you give to your VPC endpoint configuration, to manage
 #' your configurations more easily.
-#' @param vpceServiceName &#91;required&#93; The name of the VPC endpoint service running inside your AWS account
-#' that you want Device Farm to test.
+#' @param vpceServiceName &#91;required&#93; The name of the VPC endpoint service running in your AWS account that
+#' you want Device Farm to test.
 #' @param serviceDnsName &#91;required&#93; The DNS name of the service running in your VPC that you want Device
 #' Farm to test.
-#' @param vpceConfigurationDescription An optional description, providing more details about your VPC endpoint
+#' @param vpceConfigurationDescription An optional description that provides details about your VPC endpoint
 #' configuration.
 #'
 #' @section Request syntax:
@@ -553,7 +617,7 @@ devicefarm_create_vpce_configuration <- function(vpceConfigurationName, vpceServ
 #' devicefarm_delete_device_pool(arn)
 #'
 #' @param arn &#91;required&#93; Represents the Amazon Resource Name (ARN) of the Device Farm device pool
-#' you wish to delete.
+#' to delete.
 #'
 #' @section Request syntax:
 #' ```
@@ -634,8 +698,7 @@ devicefarm_delete_instance_profile <- function(arn) {
 #' @usage
 #' devicefarm_delete_network_profile(arn)
 #'
-#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the network profile you want to
-#' delete.
+#' @param arn &#91;required&#93; The ARN of the network profile to delete.
 #'
 #' @section Request syntax:
 #' ```
@@ -668,13 +731,13 @@ devicefarm_delete_network_profile <- function(arn) {
 #'
 #' Deletes an AWS Device Farm project, given the project ARN.
 #' 
-#' **Note** Deleting this resource does not stop an in-progress run.
+#' Deleting this resource does not stop an in-progress run.
 #'
 #' @usage
 #' devicefarm_delete_project(arn)
 #'
-#' @param arn &#91;required&#93; Represents the Amazon Resource Name (ARN) of the Device Farm project you
-#' wish to delete.
+#' @param arn &#91;required&#93; Represents the Amazon Resource Name (ARN) of the Device Farm project to
+#' delete.
 #'
 #' @section Request syntax:
 #' ```
@@ -756,12 +819,12 @@ devicefarm_delete_remote_access_session <- function(arn) {
 #'
 #' Deletes the run, given the run ARN.
 #' 
-#' **Note** Deleting this resource does not stop an in-progress run.
+#' Deleting this resource does not stop an in-progress run.
 #'
 #' @usage
 #' devicefarm_delete_run(arn)
 #'
-#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) for the run you wish to delete.
+#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) for the run to delete.
 #'
 #' @section Request syntax:
 #' ```
@@ -796,6 +859,47 @@ devicefarm_delete_run <- function(arn) {
 }
 .devicefarm$operations$delete_run <- devicefarm_delete_run
 
+#' Deletes a Selenium testing project and all content generated under it
+#'
+#' Deletes a Selenium testing project and all content generated under it.
+#' 
+#' You cannot undo this operation.
+#' 
+#' You cannot delete a project if it has active sessions.
+#'
+#' @usage
+#' devicefarm_delete_test_grid_project(projectArn)
+#'
+#' @param projectArn &#91;required&#93; The ARN of the project to delete, from CreateTestGridProject or
+#' ListTestGridProjects.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_test_grid_project(
+#'   projectArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devicefarm_delete_test_grid_project
+devicefarm_delete_test_grid_project <- function(projectArn) {
+  op <- new_operation(
+    name = "DeleteTestGridProject",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .devicefarm$delete_test_grid_project_input(projectArn = projectArn)
+  output <- .devicefarm$delete_test_grid_project_output()
+  config <- get_config()
+  svc <- .devicefarm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devicefarm$operations$delete_test_grid_project <- devicefarm_delete_test_grid_project
+
 #' Deletes an upload given the upload ARN
 #'
 #' Deletes an upload given the upload ARN.
@@ -803,8 +907,8 @@ devicefarm_delete_run <- function(arn) {
 #' @usage
 #' devicefarm_delete_upload(arn)
 #'
-#' @param arn &#91;required&#93; Represents the Amazon Resource Name (ARN) of the Device Farm upload you
-#' wish to delete.
+#' @param arn &#91;required&#93; Represents the Amazon Resource Name (ARN) of the Device Farm upload to
+#' delete.
 #'
 #' @section Request syntax:
 #' ```
@@ -878,11 +982,11 @@ devicefarm_delete_vpce_configuration <- function(arn) {
 }
 .devicefarm$operations$delete_vpce_configuration <- devicefarm_delete_vpce_configuration
 
-#' Returns the number of unmetered iOS and/or unmetered Android devices
-#' that have been purchased by the account
+#' Returns the number of unmetered iOS or unmetered Android devices that
+#' have been purchased by the account
 #'
-#' Returns the number of unmetered iOS and/or unmetered Android devices
-#' that have been purchased by the account.
+#' Returns the number of unmetered iOS or unmetered Android devices that
+#' have been purchased by the account.
 #'
 #' @usage
 #' devicefarm_get_account_settings()
@@ -959,10 +1063,10 @@ devicefarm_get_device <- function(arn) {
 }
 .devicefarm$operations$get_device <- devicefarm_get_device
 
-#' Returns information about a device instance belonging to a private
+#' Returns information about a device instance that belongs to a private
 #' device fleet
 #'
-#' Returns information about a device instance belonging to a private
+#' Returns information about a device instance that belongs to a private
 #' device fleet.
 #'
 #' @usage
@@ -1055,45 +1159,45 @@ devicefarm_get_device_pool <- function(arn) {
 #' 
 #' Allowed values include the following:
 #' 
-#' -   BUILTIN\\_FUZZ: The built-in fuzz type.
+#' -   BUILTIN\\_FUZZ.
 #' 
-#' -   BUILTIN\\_EXPLORER: For Android, an app explorer that will traverse
-#'     an Android app, interacting with it and capturing screenshots at the
+#' -   BUILTIN\\_EXPLORER. For Android, an app explorer that traverses an
+#'     Android app, interacting with it and capturing screenshots at the
 #'     same time.
 #' 
-#' -   APPIUM\\_JAVA\\_JUNIT: The Appium Java JUnit type.
+#' -   APPIUM\\_JAVA\\_JUNIT.
 #' 
-#' -   APPIUM\\_JAVA\\_TESTNG: The Appium Java TestNG type.
+#' -   APPIUM\\_JAVA\\_TESTNG.
 #' 
-#' -   APPIUM\\_PYTHON: The Appium Python type.
+#' -   APPIUM\\_PYTHON.
 #' 
-#' -   APPIUM\\_NODE: The Appium Node.js type.
+#' -   APPIUM\\_NODE.
 #' 
-#' -   APPIUM\\_RUBY: The Appium Ruby type.
+#' -   APPIUM\\_RUBY.
 #' 
-#' -   APPIUM\\_WEB\\_JAVA\\_JUNIT: The Appium Java JUnit type for web apps.
+#' -   APPIUM\\_WEB\\_JAVA\\_JUNIT.
 #' 
-#' -   APPIUM\\_WEB\\_JAVA\\_TESTNG: The Appium Java TestNG type for web apps.
+#' -   APPIUM\\_WEB\\_JAVA\\_TESTNG.
 #' 
-#' -   APPIUM\\_WEB\\_PYTHON: The Appium Python type for web apps.
+#' -   APPIUM\\_WEB\\_PYTHON.
 #' 
-#' -   APPIUM\\_WEB\\_NODE: The Appium Node.js type for web apps.
+#' -   APPIUM\\_WEB\\_NODE.
 #' 
-#' -   APPIUM\\_WEB\\_RUBY: The Appium Ruby type for web apps.
+#' -   APPIUM\\_WEB\\_RUBY.
 #' 
-#' -   CALABASH: The Calabash type.
+#' -   CALABASH.
 #' 
-#' -   INSTRUMENTATION: The Instrumentation type.
+#' -   INSTRUMENTATION.
 #' 
-#' -   UIAUTOMATION: The uiautomation type.
+#' -   UIAUTOMATION.
 #' 
-#' -   UIAUTOMATOR: The uiautomator type.
+#' -   UIAUTOMATOR.
 #' 
-#' -   XCTEST: The Xcode test type.
+#' -   XCTEST.
 #' 
-#' -   XCTEST\\_UI: The Xcode UI test type.
+#' -   XCTEST\\_UI.
 #' @param test Information about the uploaded test to be run against the device pool.
-#' @param configuration An object containing information about the settings for a run.
+#' @param configuration An object that contains information about the settings for a run.
 #'
 #' @section Request syntax:
 #' ```
@@ -1182,7 +1286,7 @@ devicefarm_get_device_pool_compatibility <- function(devicePoolArn, appArn = NUL
 #' @usage
 #' devicefarm_get_instance_profile(arn)
 #'
-#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of your instance profile.
+#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of an instance profile.
 #'
 #' @section Request syntax:
 #' ```
@@ -1260,8 +1364,7 @@ devicefarm_get_job <- function(arn) {
 #' @usage
 #' devicefarm_get_network_profile(arn)
 #'
-#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the network profile you want to return
-#' information about.
+#' @param arn &#91;required&#93; The ARN of the network profile to return information about.
 #'
 #' @section Request syntax:
 #' ```
@@ -1297,8 +1400,8 @@ devicefarm_get_network_profile <- function(arn) {
 #' an AWS account. The response indicates how many offerings are currently
 #' available and the offerings that will be available in the next period.
 #' The API returns a `NotEligible` error if the user is not permitted to
-#' invoke the operation. Please contact <aws-devicefarm-support@amazon.com>
-#' if you believe that you should be able to invoke this operation.
+#' invoke the operation. If you must be able to invoke this operation,
+#' contact <aws-devicefarm-support@amazon.com>.
 #'
 #' @usage
 #' devicefarm_get_offering_status(nextToken)
@@ -1552,6 +1655,93 @@ devicefarm_get_test <- function(arn) {
 }
 .devicefarm$operations$get_test <- devicefarm_get_test
 
+#' Retrieves information about a Selenium testing project
+#'
+#' Retrieves information about a Selenium testing project.
+#'
+#' @usage
+#' devicefarm_get_test_grid_project(projectArn)
+#'
+#' @param projectArn &#91;required&#93; The ARN of the Selenium testing project, from either
+#' CreateTestGridProject or ListTestGridProjects.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_test_grid_project(
+#'   projectArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devicefarm_get_test_grid_project
+devicefarm_get_test_grid_project <- function(projectArn) {
+  op <- new_operation(
+    name = "GetTestGridProject",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .devicefarm$get_test_grid_project_input(projectArn = projectArn)
+  output <- .devicefarm$get_test_grid_project_output()
+  config <- get_config()
+  svc <- .devicefarm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devicefarm$operations$get_test_grid_project <- devicefarm_get_test_grid_project
+
+#' A session is an instance of a browser created through a RemoteWebDriver
+#' with the URL from CreateTestGridUrlResult$url
+#'
+#' A session is an instance of a browser created through a
+#' `RemoteWebDriver` with the URL from CreateTestGridUrlResult\\$url. You
+#' can use the following to look up sessions:
+#' 
+#' -   The session ARN (GetTestGridSessionRequest\\$sessionArn).
+#' 
+#' -   The project ARN and a session ID
+#'     (GetTestGridSessionRequest\\$projectArn and
+#'     GetTestGridSessionRequest\\$sessionId).
+#'
+#' @usage
+#' devicefarm_get_test_grid_session(projectArn, sessionId, sessionArn)
+#'
+#' @param projectArn The ARN for the project that this session belongs to. See
+#' CreateTestGridProject and ListTestGridProjects.
+#' @param sessionId An ID associated with this session.
+#' @param sessionArn An ARN that uniquely identifies a TestGridSession.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_test_grid_session(
+#'   projectArn = "string",
+#'   sessionId = "string",
+#'   sessionArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devicefarm_get_test_grid_session
+devicefarm_get_test_grid_session <- function(projectArn = NULL, sessionId = NULL, sessionArn = NULL) {
+  op <- new_operation(
+    name = "GetTestGridSession",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .devicefarm$get_test_grid_session_input(projectArn = projectArn, sessionId = sessionId, sessionArn = sessionArn)
+  output <- .devicefarm$get_test_grid_session_output()
+  config <- get_config()
+  svc <- .devicefarm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devicefarm$operations$get_test_grid_session <- devicefarm_get_test_grid_session
+
 #' Gets information about an upload
 #'
 #' Gets information about an upload.
@@ -1645,8 +1835,7 @@ devicefarm_get_vpce_configuration <- function(arn) {
 #'
 #' @param remoteAccessSessionArn &#91;required&#93; The Amazon Resource Name (ARN) of the remote access session about which
 #' you are requesting information.
-#' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the app about which you are requesting
-#' information.
+#' @param appArn &#91;required&#93; The ARN of the app about which you are requesting information.
 #'
 #' @section Request syntax:
 #' ```
@@ -1691,16 +1880,16 @@ devicefarm_install_to_remote_access_session <- function(remoteAccessSessionArn, 
 #' @usage
 #' devicefarm_list_artifacts(arn, type, nextToken)
 #'
-#' @param arn &#91;required&#93; The Run, Job, Suite, or Test ARN.
+#' @param arn &#91;required&#93; The run, job, suite, or test ARN.
 #' @param type &#91;required&#93; The artifacts\' type.
 #' 
 #' Allowed values include:
 #' 
-#' -   FILE: The artifacts are files.
+#' -   FILE
 #' 
-#' -   LOG: The artifacts are logs.
+#' -   LOG
 #' 
-#' -   SCREENSHOT: The artifacts are screenshots.
+#' -   SCREENSHOT
 #' @param nextToken An identifier that was returned from the previous call to this
 #' operation, which can be used to return the next set of items in the
 #' list.
@@ -1750,8 +1939,8 @@ devicefarm_list_artifacts <- function(arn, type, nextToken = NULL) {
 #' @usage
 #' devicefarm_list_device_instances(maxResults, nextToken)
 #'
-#' @param maxResults An integer specifying the maximum number of items you want to return in
-#' the API response.
+#' @param maxResults An integer that specifies the maximum number of items you want to return
+#' in the API response.
 #' @param nextToken An identifier that was returned from the previous call to this
 #' operation, which can be used to return the next set of items in the
 #' list.
@@ -1861,41 +2050,39 @@ devicefarm_list_device_pools <- function(arn, type = NULL, nextToken = NULL) {
 #' 
 #'     Allowed values include:
 #' 
-#'     -   ARN: The Amazon Resource Name (ARN) of the device. For example,
-#'         \"arn:aws:devicefarm:us-west-2::device:12345Example\".
+#'     -   ARN: The Amazon Resource Name (ARN) of the device (for example,
+#'         `arn:aws:devicefarm:us-west-2::device:12345Example`).
 #' 
-#'     -   PLATFORM: The device platform. Valid values are \"ANDROID\" or
-#'         \"IOS\".
+#'     -   PLATFORM: The device platform. Valid values are ANDROID or IOS.
 #' 
-#'     -   OS\\_VERSION: The operating system version. For example,
-#'         \"10.3.2\".
+#'     -   OS\\_VERSION: The operating system version (for example, 10.3.2).
 #' 
-#'     -   MODEL: The device model. For example, \"iPad 5th Gen\".
+#'     -   MODEL: The device model (for example, iPad 5th Gen).
 #' 
 #'     -   AVAILABILITY: The current availability of the device. Valid
-#'         values are \"AVAILABLE\", \"HIGHLY\\_AVAILABLE\", \"BUSY\", or
-#'         \"TEMPORARY\\_NOT\\_AVAILABLE\".
+#'         values are AVAILABLE, HIGHLY\\_AVAILABLE, BUSY, or
+#'         TEMPORARY\\_NOT\\_AVAILABLE.
 #' 
-#'     -   FORM\\_FACTOR: The device form factor. Valid values are \"PHONE\"
-#'         or \"TABLET\".
+#'     -   FORM\\_FACTOR: The device form factor. Valid values are PHONE or
+#'         TABLET.
 #' 
-#'     -   MANUFACTURER: The device manufacturer. For example, \"Apple\".
+#'     -   MANUFACTURER: The device manufacturer (for example, Apple).
 #' 
 #'     -   REMOTE\\_ACCESS\\_ENABLED: Whether the device is enabled for
-#'         remote access. Valid values are \"TRUE\" or \"FALSE\".
+#'         remote access. Valid values are TRUE or FALSE.
 #' 
 #'     -   REMOTE\\_DEBUG\\_ENABLED: Whether the device is enabled for remote
-#'         debugging. Valid values are \"TRUE\" or \"FALSE\". *This
-#'         attribute will be ignored, as remote debugging is [no longer
-#'         supported](https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).*
+#'         debugging. Valid values are TRUE or FALSE. Because remote
+#'         debugging is [no longer
+#'         supported](https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html),
+#'         this attribute is ignored.
 #' 
 #'     -   INSTANCE\\_ARN: The Amazon Resource Name (ARN) of the device
 #'         instance.
 #' 
 #'     -   INSTANCE\\_LABELS: The label of the device instance.
 #' 
-#'     -   FLEET\\_TYPE: The fleet type. Valid values are \"PUBLIC\" or
-#'         \"PRIVATE\".
+#'     -   FLEET\\_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.
 #' 
 #' -   Operator: The filter operator.
 #' 
@@ -1919,9 +2106,9 @@ devicefarm_list_device_pools <- function(arn, type = NULL, nextToken = NULL) {
 #' 
 #'     -   The other operators require an array with a single element.
 #' 
-#'     -   In a request, the AVAILABILITY attribute takes \"AVAILABLE\",
-#'         \"HIGHLY\\_AVAILABLE\", \"BUSY\", or
-#'         \"TEMPORARY\\_NOT\\_AVAILABLE\" as values.
+#'     -   In a request, the AVAILABILITY attribute takes the following
+#'         values: AVAILABLE, HIGHLY\\_AVAILABLE, BUSY, or
+#'         TEMPORARY\\_NOT\\_AVAILABLE.
 #'
 #' @section Request syntax:
 #' ```
@@ -1974,8 +2161,8 @@ devicefarm_list_devices <- function(arn = NULL, nextToken = NULL, filters = NULL
 #' @usage
 #' devicefarm_list_instance_profiles(maxResults, nextToken)
 #'
-#' @param maxResults An integer specifying the maximum number of items you want to return in
-#' the API response.
+#' @param maxResults An integer that specifies the maximum number of items you want to return
+#' in the API response.
 #' @param nextToken An identifier that was returned from the previous call to this
 #' operation, which can be used to return the next set of items in the
 #' list.
@@ -2064,8 +2251,8 @@ devicefarm_list_jobs <- function(arn, nextToken = NULL) {
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the project for which you want to list
 #' network profiles.
-#' @param type The type of network profile you wish to return information about. Valid
-#' values are listed below.
+#' @param type The type of network profile to return information about. Valid values
+#' are listed here.
 #' @param nextToken An identifier that was returned from the previous call to this
 #' operation, which can be used to return the next set of items in the
 #' list.
@@ -2104,8 +2291,8 @@ devicefarm_list_network_profiles <- function(arn, type = NULL, nextToken = NULL)
 #' Returns a list of offering promotions. Each offering promotion record
 #' contains the ID and description of the promotion. The API returns a
 #' `NotEligible` error if the caller is not permitted to invoke the
-#' operation. Contact <aws-devicefarm-support@amazon.com> if you believe
-#' that you should be able to invoke this operation.
+#' operation. Contact <aws-devicefarm-support@amazon.com> if you must be
+#' able to invoke this operation.
 #'
 #' @usage
 #' devicefarm_list_offering_promotions(nextToken)
@@ -2148,8 +2335,8 @@ devicefarm_list_offering_promotions <- function(nextToken = NULL) {
 #' transactions for an AWS account. The list is paginated and ordered by a
 #' descending timestamp (most recent transactions are first). The API
 #' returns a `NotEligible` error if the user is not permitted to invoke the
-#' operation. Please contact <aws-devicefarm-support@amazon.com> if you
-#' believe that you should be able to invoke this operation.
+#' operation. If you must be able to invoke this operation, contact
+#' <aws-devicefarm-support@amazon.com>.
 #'
 #' @usage
 #' devicefarm_list_offering_transactions(nextToken)
@@ -2198,9 +2385,9 @@ devicefarm_list_offering_transactions <- function(nextToken = NULL) {
 #' Returns a list of products or offerings that the user can manage through
 #' the API. Each offering record indicates the recurring price per unit and
 #' the frequency for that offering. The API returns a `NotEligible` error
-#' if the user is not permitted to invoke the operation. Please contact
-#' <aws-devicefarm-support@amazon.com> if you believe that you should be
-#' able to invoke this operation.
+#' if the user is not permitted to invoke the operation. If you must be
+#' able to invoke this operation, contact
+#' <aws-devicefarm-support@amazon.com>.
 #'
 #' @usage
 #' devicefarm_list_offerings(nextToken)
@@ -2493,9 +2680,9 @@ devicefarm_list_suites <- function(arn, nextToken = NULL) {
 #' @usage
 #' devicefarm_list_tags_for_resource(ResourceARN)
 #'
-#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource(s) for which to list
-#' tags. You can associate tags with the following Device Farm resources:
-#' `PROJECT`, `RUN`, `NETWORK_PROFILE`, `INSTANCE_PROFILE`,
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource or resources for which to
+#' list tags. You can associate tags with the following Device Farm
+#' resources: `PROJECT`, `RUN`, `NETWORK_PROFILE`, `INSTANCE_PROFILE`,
 #' `DEVICE_INSTANCE`, `SESSION`, `DEVICE_POOL`, `DEVICE`, and
 #' `VPCE_CONFIGURATION`.
 #'
@@ -2525,6 +2712,188 @@ devicefarm_list_tags_for_resource <- function(ResourceARN) {
   return(response)
 }
 .devicefarm$operations$list_tags_for_resource <- devicefarm_list_tags_for_resource
+
+#' Gets a list of all Selenium testing projects in your account
+#'
+#' Gets a list of all Selenium testing projects in your account.
+#'
+#' @usage
+#' devicefarm_list_test_grid_projects(maxResult, nextToken)
+#'
+#' @param maxResult Return no more than this number of results.
+#' @param nextToken From a response, used to continue a paginated listing.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_test_grid_projects(
+#'   maxResult = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devicefarm_list_test_grid_projects
+devicefarm_list_test_grid_projects <- function(maxResult = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListTestGridProjects",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .devicefarm$list_test_grid_projects_input(maxResult = maxResult, nextToken = nextToken)
+  output <- .devicefarm$list_test_grid_projects_output()
+  config <- get_config()
+  svc <- .devicefarm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devicefarm$operations$list_test_grid_projects <- devicefarm_list_test_grid_projects
+
+#' Returns a list of the actions taken in a TestGridSession
+#'
+#' Returns a list of the actions taken in a TestGridSession.
+#'
+#' @usage
+#' devicefarm_list_test_grid_session_actions(sessionArn, maxResult,
+#'   nextToken)
+#'
+#' @param sessionArn &#91;required&#93; The ARN of the session to retrieve.
+#' @param maxResult The maximum number of sessions to return per response.
+#' @param nextToken Pagination token.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_test_grid_session_actions(
+#'   sessionArn = "string",
+#'   maxResult = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devicefarm_list_test_grid_session_actions
+devicefarm_list_test_grid_session_actions <- function(sessionArn, maxResult = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListTestGridSessionActions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .devicefarm$list_test_grid_session_actions_input(sessionArn = sessionArn, maxResult = maxResult, nextToken = nextToken)
+  output <- .devicefarm$list_test_grid_session_actions_output()
+  config <- get_config()
+  svc <- .devicefarm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devicefarm$operations$list_test_grid_session_actions <- devicefarm_list_test_grid_session_actions
+
+#' Retrieves a list of artifacts created during the session
+#'
+#' Retrieves a list of artifacts created during the session.
+#'
+#' @usage
+#' devicefarm_list_test_grid_session_artifacts(sessionArn, type, maxResult,
+#'   nextToken)
+#'
+#' @param sessionArn &#91;required&#93; The ARN of a TestGridSession.
+#' @param type Limit results to a specified type of artifact.
+#' @param maxResult The maximum number of results to be returned by a request.
+#' @param nextToken Pagination token.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_test_grid_session_artifacts(
+#'   sessionArn = "string",
+#'   type = "VIDEO"|"LOG",
+#'   maxResult = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devicefarm_list_test_grid_session_artifacts
+devicefarm_list_test_grid_session_artifacts <- function(sessionArn, type = NULL, maxResult = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListTestGridSessionArtifacts",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .devicefarm$list_test_grid_session_artifacts_input(sessionArn = sessionArn, type = type, maxResult = maxResult, nextToken = nextToken)
+  output <- .devicefarm$list_test_grid_session_artifacts_output()
+  config <- get_config()
+  svc <- .devicefarm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devicefarm$operations$list_test_grid_session_artifacts <- devicefarm_list_test_grid_session_artifacts
+
+#' Retrieves a list of sessions for a TestGridProject
+#'
+#' Retrieves a list of sessions for a TestGridProject.
+#'
+#' @usage
+#' devicefarm_list_test_grid_sessions(projectArn, status,
+#'   creationTimeAfter, creationTimeBefore, endTimeAfter, endTimeBefore,
+#'   maxResult, nextToken)
+#'
+#' @param projectArn &#91;required&#93; ARN of a TestGridProject.
+#' @param status Return only sessions in this state.
+#' @param creationTimeAfter Return only sessions created after this time.
+#' @param creationTimeBefore Return only sessions created before this time.
+#' @param endTimeAfter Return only sessions that ended after this time.
+#' @param endTimeBefore Return only sessions that ended before this time.
+#' @param maxResult Return only this many results at a time.
+#' @param nextToken Pagination token.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_test_grid_sessions(
+#'   projectArn = "string",
+#'   status = "ACTIVE"|"CLOSED"|"ERRORED",
+#'   creationTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   creationTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   endTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   endTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   maxResult = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devicefarm_list_test_grid_sessions
+devicefarm_list_test_grid_sessions <- function(projectArn, status = NULL, creationTimeAfter = NULL, creationTimeBefore = NULL, endTimeAfter = NULL, endTimeBefore = NULL, maxResult = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListTestGridSessions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .devicefarm$list_test_grid_sessions_input(projectArn = projectArn, status = status, creationTimeAfter = creationTimeAfter, creationTimeBefore = creationTimeBefore, endTimeAfter = endTimeAfter, endTimeBefore = endTimeBefore, maxResult = maxResult, nextToken = nextToken)
+  output <- .devicefarm$list_test_grid_sessions_output()
+  config <- get_config()
+  svc <- .devicefarm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devicefarm$operations$list_test_grid_sessions <- devicefarm_list_test_grid_sessions
 
 #' Gets information about tests in a given test suite
 #'
@@ -2574,9 +2943,16 @@ devicefarm_list_tests <- function(arn, nextToken = NULL) {
 }
 .devicefarm$operations$list_tests <- devicefarm_list_tests
 
-#' Gets information about unique problems
+#' Gets information about unique problems, such as exceptions or crashes
 #'
-#' Gets information about unique problems.
+#' Gets information about unique problems, such as exceptions or crashes.
+#' 
+#' Unique problems are defined as a single instance of an error across a
+#' run, job, or suite. For example, if a call in your application
+#' consistently raises an exception
+#' (`OutOfBoundsException in MyActivity.java:386`), `ListUniqueProblems`
+#' returns a single entry instead of many individual entries for that
+#' exception.
 #'
 #' @usage
 #' devicefarm_list_unique_problems(arn, nextToken)
@@ -2635,83 +3011,69 @@ devicefarm_list_unique_problems <- function(arn, nextToken = NULL) {
 #' 
 #' Must be one of the following values:
 #' 
-#' -   ANDROID\\_APP: An Android upload.
+#' -   ANDROID\\_APP
 #' 
-#' -   IOS\\_APP: An iOS upload.
+#' -   IOS\\_APP
 #' 
-#' -   WEB\\_APP: A web application upload.
+#' -   WEB\\_APP
 #' 
-#' -   EXTERNAL\\_DATA: An external data upload.
+#' -   EXTERNAL\\_DATA
 #' 
-#' -   APPIUM\\_JAVA\\_JUNIT\\_TEST\\_PACKAGE: An Appium Java JUnit test
-#'     package upload.
+#' -   APPIUM\\_JAVA\\_JUNIT\\_TEST\\_PACKAGE
 #' 
-#' -   APPIUM\\_JAVA\\_TESTNG\\_TEST\\_PACKAGE: An Appium Java TestNG test
-#'     package upload.
+#' -   APPIUM\\_JAVA\\_TESTNG\\_TEST\\_PACKAGE
 #' 
-#' -   APPIUM\\_PYTHON\\_TEST\\_PACKAGE: An Appium Python test package upload.
+#' -   APPIUM\\_PYTHON\\_TEST\\_PACKAGE
 #' 
-#' -   APPIUM\\_NODE\\_TEST\\_PACKAGE: An Appium Node.js test package upload.
+#' -   APPIUM\\_NODE\\_TEST\\_PACKAGE
 #' 
-#' -   APPIUM\\_RUBY\\_TEST\\_PACKAGE: An Appium Ruby test package upload.
+#' -   APPIUM\\_RUBY\\_TEST\\_PACKAGE
 #' 
-#' -   APPIUM\\_WEB\\_JAVA\\_JUNIT\\_TEST\\_PACKAGE: An Appium Java JUnit test
-#'     package upload for a web app.
+#' -   APPIUM\\_WEB\\_JAVA\\_JUNIT\\_TEST\\_PACKAGE
 #' 
-#' -   APPIUM\\_WEB\\_JAVA\\_TESTNG\\_TEST\\_PACKAGE: An Appium Java TestNG test
-#'     package upload for a web app.
+#' -   APPIUM\\_WEB\\_JAVA\\_TESTNG\\_TEST\\_PACKAGE
 #' 
-#' -   APPIUM\\_WEB\\_PYTHON\\_TEST\\_PACKAGE: An Appium Python test package
-#'     upload for a web app.
+#' -   APPIUM\\_WEB\\_PYTHON\\_TEST\\_PACKAGE
 #' 
-#' -   APPIUM\\_WEB\\_NODE\\_TEST\\_PACKAGE: An Appium Node.js test package
-#'     upload for a web app.
+#' -   APPIUM\\_WEB\\_NODE\\_TEST\\_PACKAGE
 #' 
-#' -   APPIUM\\_WEB\\_RUBY\\_TEST\\_PACKAGE: An Appium Ruby test package upload
-#'     for a web app.
+#' -   APPIUM\\_WEB\\_RUBY\\_TEST\\_PACKAGE
 #' 
-#' -   CALABASH\\_TEST\\_PACKAGE: A Calabash test package upload.
+#' -   CALABASH\\_TEST\\_PACKAGE
 #' 
-#' -   INSTRUMENTATION\\_TEST\\_PACKAGE: An instrumentation upload.
+#' -   INSTRUMENTATION\\_TEST\\_PACKAGE
 #' 
-#' -   UIAUTOMATION\\_TEST\\_PACKAGE: A uiautomation test package upload.
+#' -   UIAUTOMATION\\_TEST\\_PACKAGE
 #' 
-#' -   UIAUTOMATOR\\_TEST\\_PACKAGE: A uiautomator test package upload.
+#' -   UIAUTOMATOR\\_TEST\\_PACKAGE
 #' 
-#' -   XCTEST\\_TEST\\_PACKAGE: An Xcode test package upload.
+#' -   XCTEST\\_TEST\\_PACKAGE
 #' 
-#' -   XCTEST\\_UI\\_TEST\\_PACKAGE: An Xcode UI test package upload.
+#' -   XCTEST\\_UI\\_TEST\\_PACKAGE
 #' 
-#' -   APPIUM\\_JAVA\\_JUNIT\\_TEST\\_SPEC: An Appium Java JUnit test spec
-#'     upload.
+#' -   APPIUM\\_JAVA\\_JUNIT\\_TEST\\_SPEC
 #' 
-#' -   APPIUM\\_JAVA\\_TESTNG\\_TEST\\_SPEC: An Appium Java TestNG test spec
-#'     upload.
+#' -   APPIUM\\_JAVA\\_TESTNG\\_TEST\\_SPEC
 #' 
-#' -   APPIUM\\_PYTHON\\_TEST\\_SPEC: An Appium Python test spec upload.
+#' -   APPIUM\\_PYTHON\\_TEST\\_SPEC
 #' 
-#' -   APPIUM\\_NODE\\_TEST\\_SPEC: An Appium Node.js test spec upload.
+#' -   APPIUM\\_NODE\\_TEST\\_SPEC
 #' 
-#' -   APPIUM\\_RUBY\\_TEST\\_SPEC: An Appium Ruby test spec upload.
+#' -   APPIUM\\_RUBY\\_TEST\\_SPEC
 #' 
-#' -   APPIUM\\_WEB\\_JAVA\\_JUNIT\\_TEST\\_SPEC: An Appium Java JUnit test spec
-#'     upload for a web app.
+#' -   APPIUM\\_WEB\\_JAVA\\_JUNIT\\_TEST\\_SPEC
 #' 
-#' -   APPIUM\\_WEB\\_JAVA\\_TESTNG\\_TEST\\_SPEC: An Appium Java TestNG test
-#'     spec upload for a web app.
+#' -   APPIUM\\_WEB\\_JAVA\\_TESTNG\\_TEST\\_SPEC
 #' 
-#' -   APPIUM\\_WEB\\_PYTHON\\_TEST\\_SPEC: An Appium Python test spec upload
-#'     for a web app.
+#' -   APPIUM\\_WEB\\_PYTHON\\_TEST\\_SPEC
 #' 
-#' -   APPIUM\\_WEB\\_NODE\\_TEST\\_SPEC: An Appium Node.js test spec upload
-#'     for a web app.
+#' -   APPIUM\\_WEB\\_NODE\\_TEST\\_SPEC
 #' 
-#' -   APPIUM\\_WEB\\_RUBY\\_TEST\\_SPEC: An Appium Ruby test spec upload for a
-#'     web app.
+#' -   APPIUM\\_WEB\\_RUBY\\_TEST\\_SPEC
 #' 
-#' -   INSTRUMENTATION\\_TEST\\_SPEC: An instrumentation test spec upload.
+#' -   INSTRUMENTATION\\_TEST\\_SPEC
 #' 
-#' -   XCTEST\\_UI\\_TEST\\_SPEC: An Xcode UI test spec upload.
+#' -   XCTEST\\_UI\\_TEST\\_SPEC
 #' @param nextToken An identifier that was returned from the previous call to this
 #' operation, which can be used to return the next set of items in the
 #' list.
@@ -2762,8 +3124,8 @@ devicefarm_list_uploads <- function(arn, type = NULL, nextToken = NULL) {
 #' @usage
 #' devicefarm_list_vpce_configurations(maxResults, nextToken)
 #'
-#' @param maxResults An integer specifying the maximum number of items you want to return in
-#' the API response.
+#' @param maxResults An integer that specifies the maximum number of items you want to return
+#' in the API response.
 #' @param nextToken An identifier that was returned from the previous call to this
 #' operation, which can be used to return the next set of items in the
 #' list.
@@ -2801,15 +3163,14 @@ devicefarm_list_vpce_configurations <- function(maxResults = NULL, nextToken = N
 #' Immediately purchases offerings for an AWS account. Offerings renew with
 #' the latest total purchased quantity for an offering, unless the renewal
 #' was overridden. The API returns a `NotEligible` error if the user is not
-#' permitted to invoke the operation. Please contact
-#' <aws-devicefarm-support@amazon.com> if you believe that you should be
-#' able to invoke this operation.
+#' permitted to invoke the operation. If you must be able to invoke this
+#' operation, contact <aws-devicefarm-support@amazon.com>.
 #'
 #' @usage
 #' devicefarm_purchase_offering(offeringId, quantity, offeringPromotionId)
 #'
 #' @param offeringId The ID of the offering.
-#' @param quantity The number of device slots you wish to purchase in an offering request.
+#' @param quantity The number of device slots to purchase in an offering request.
 #' @param offeringPromotionId The ID of the offering promotion to be applied to the purchase.
 #'
 #' @section Request syntax:
@@ -2854,8 +3215,8 @@ devicefarm_purchase_offering <- function(offeringId = NULL, quantity = NULL, off
 #' Explicitly sets the quantity of devices to renew for an offering,
 #' starting from the `effectiveDate` of the next period. The API returns a
 #' `NotEligible` error if the user is not permitted to invoke the
-#' operation. Please contact <aws-devicefarm-support@amazon.com> if you
-#' believe that you should be able to invoke this operation.
+#' operation. If you must be able to invoke this operation, contact
+#' <aws-devicefarm-support@amazon.com>.
 #'
 #' @usage
 #' devicefarm_renew_offering(offeringId, quantity)
@@ -2908,11 +3269,11 @@ devicefarm_renew_offering <- function(offeringId = NULL, quantity = NULL) {
 #'   executionConfiguration)
 #'
 #' @param projectArn &#91;required&#93; The ARN of the project for the run to be scheduled.
-#' @param appArn The ARN of the app to schedule a run.
+#' @param appArn The ARN of an application package to run tests against, created with
+#' CreateUpload. See ListUploads.
 #' @param devicePoolArn The ARN of the device pool for the run to be scheduled.
 #' @param deviceSelectionConfiguration The filter criteria used to dynamically select a set of devices for a
-#' test run, as well as the maximum number of devices to be included in the
-#' run.
+#' test run and the maximum number of devices to be included in the run.
 #' 
 #' Either **`devicePoolArn`** or **`deviceSelectionConfiguration`** is
 #' required in a request.
@@ -3027,19 +3388,18 @@ devicefarm_schedule_run <- function(projectArn, appArn = NULL, devicePoolArn = N
 
 #' Initiates a stop request for the current job
 #'
-#' Initiates a stop request for the current job. AWS Device Farm will
-#' immediately stop the job on the device where tests have not started
-#' executing, and you will not be billed for this device. On the device
-#' where tests have started executing, Setup Suite and Teardown Suite tests
-#' will run to completion before stopping execution on the device. You will
-#' be billed for Setup, Teardown, and any tests that were in progress or
-#' already completed.
+#' Initiates a stop request for the current job. AWS Device Farm
+#' immediately stops the job on the device where tests have not started.
+#' You are not billed for this device. On the device where tests have
+#' started, setup suite and teardown suite tests run to completion on the
+#' device. You are billed for setup, teardown, and any tests that were in
+#' progress or already completed.
 #'
 #' @usage
 #' devicefarm_stop_job(arn)
 #'
-#' @param arn &#91;required&#93; Represents the Amazon Resource Name (ARN) of the Device Farm job you
-#' wish to stop.
+#' @param arn &#91;required&#93; Represents the Amazon Resource Name (ARN) of the Device Farm job to
+#' stop.
 #'
 #' @section Request syntax:
 #' ```
@@ -3075,8 +3435,7 @@ devicefarm_stop_job <- function(arn) {
 #' @usage
 #' devicefarm_stop_remote_access_session(arn)
 #'
-#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the remote access session you wish to
-#' stop.
+#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the remote access session to stop.
 #'
 #' @section Request syntax:
 #' ```
@@ -3107,19 +3466,18 @@ devicefarm_stop_remote_access_session <- function(arn) {
 
 #' Initiates a stop request for the current test run
 #'
-#' Initiates a stop request for the current test run. AWS Device Farm will
-#' immediately stop the run on devices where tests have not started
-#' executing, and you will not be billed for these devices. On devices
-#' where tests have started executing, Setup Suite and Teardown Suite tests
-#' will run to completion before stopping execution on those devices. You
-#' will be billed for Setup, Teardown, and any tests that were in progress
-#' or already completed.
+#' Initiates a stop request for the current test run. AWS Device Farm
+#' immediately stops the run on devices where tests have not started. You
+#' are not billed for these devices. On devices where tests have started
+#' executing, setup suite and teardown suite tests run to completion on
+#' those devices. You are billed for setup, teardown, and any tests that
+#' were in progress or already completed.
 #'
 #' @usage
 #' devicefarm_stop_run(arn)
 #'
-#' @param arn &#91;required&#93; Represents the Amazon Resource Name (ARN) of the Device Farm run you
-#' wish to stop.
+#' @param arn &#91;required&#93; Represents the Amazon Resource Name (ARN) of the Device Farm run to
+#' stop.
 #'
 #' @section Request syntax:
 #' ```
@@ -3160,18 +3518,18 @@ devicefarm_stop_run <- function(arn) {
 #' Associates the specified tags to a resource with the specified
 #' `resourceArn`. If existing tags on a resource are not specified in the
 #' request parameters, they are not changed. When a resource is deleted,
-#' the tags associated with that resource are deleted as well.
+#' the tags associated with that resource are also deleted.
 #'
 #' @usage
 #' devicefarm_tag_resource(ResourceARN, Tags)
 #'
-#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource(s) to which to add tags.
-#' You can associate tags with the following Device Farm resources:
-#' `PROJECT`, `RUN`, `NETWORK_PROFILE`, `INSTANCE_PROFILE`,
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource or resources to which to
+#' add tags. You can associate tags with the following Device Farm
+#' resources: `PROJECT`, `RUN`, `NETWORK_PROFILE`, `INSTANCE_PROFILE`,
 #' `DEVICE_INSTANCE`, `SESSION`, `DEVICE_POOL`, `DEVICE`, and
 #' `VPCE_CONFIGURATION`.
 #' @param Tags &#91;required&#93; The tags to add to the resource. A tag is an array of key-value pairs.
-#' Tag keys can have a maximum character length of 128 characters, and tag
+#' Tag keys can have a maximum character length of 128 characters. Tag
 #' values can have a maximum length of 256 characters.
 #'
 #' @section Request syntax:
@@ -3214,9 +3572,9 @@ devicefarm_tag_resource <- function(ResourceARN, Tags) {
 #' @usage
 #' devicefarm_untag_resource(ResourceARN, TagKeys)
 #'
-#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource(s) from which to delete
-#' tags. You can associate tags with the following Device Farm resources:
-#' `PROJECT`, `RUN`, `NETWORK_PROFILE`, `INSTANCE_PROFILE`,
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource or resources from which
+#' to delete tags. You can associate tags with the following Device Farm
+#' resources: `PROJECT`, `RUN`, `NETWORK_PROFILE`, `INSTANCE_PROFILE`,
 #' `DEVICE_INSTANCE`, `SESSION`, `DEVICE_POOL`, `DEVICE`, and
 #' `VPCE_CONFIGURATION`.
 #' @param TagKeys &#91;required&#93; The keys of the tags to be removed.
@@ -3251,16 +3609,16 @@ devicefarm_untag_resource <- function(ResourceARN, TagKeys) {
 }
 .devicefarm$operations$untag_resource <- devicefarm_untag_resource
 
-#' Updates information about an existing private device instance
+#' Updates information about a private device instance
 #'
-#' Updates information about an existing private device instance.
+#' Updates information about a private device instance.
 #'
 #' @usage
 #' devicefarm_update_device_instance(arn, profileArn, labels)
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the device instance.
-#' @param profileArn The Amazon Resource Name (ARN) of the profile that you want to associate
-#' with the device instance.
+#' @param profileArn The ARN of the profile that you want to associate with the device
+#' instance.
 #' @param labels An array of strings that you want to associate with the device instance.
 #'
 #' @section Request syntax:
@@ -3305,13 +3663,12 @@ devicefarm_update_device_instance <- function(arn, profileArn = NULL, labels = N
 #' devicefarm_update_device_pool(arn, name, description, rules, maxDevices,
 #'   clearMaxDevices)
 #'
-#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the Device Farm device pool you wish
-#' to update.
-#' @param name A string representing the name of the device pool you wish to update.
-#' @param description A description of the device pool you wish to update.
-#' @param rules Represents the rules you wish to modify for the device pool. Updating
-#' rules is optional; however, if you choose to update rules for your
-#' request, the update will replace the existing rules.
+#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the Device Farm device pool to update.
+#' @param name A string that represents the name of the device pool to update.
+#' @param description A description of the device pool to update.
+#' @param rules Represents the rules to modify for the device pool. Updating rules is
+#' optional. If you update rules for your request, the update replaces the
+#' existing rules.
 #' @param maxDevices The number of devices that Device Farm can add to your device pool.
 #' Device Farm adds devices that are available and that meet the criteria
 #' that you assign for the `rules` parameter. Depending on how many devices
@@ -3327,8 +3684,7 @@ devicefarm_update_device_instance <- function(arn, profileArn = NULL, labels = N
 #' you set this parameter to `true`, the `maxDevices` parameter does not
 #' apply, and Device Farm does not limit the number of devices that it adds
 #' to your device pool. In this case, Device Farm adds all available
-#' devices that meet the criteria that are specified for the `rules`
-#' parameter.
+#' devices that meet the criteria specified in the `rules` parameter.
 #' 
 #' If you use this parameter in your request, you cannot use the
 #' `maxDevices` parameter in the same request.
@@ -3401,8 +3757,8 @@ devicefarm_update_device_pool <- function(arn, name = NULL, description = NULL, 
 #' @param description The updated description for your instance profile.
 #' @param packageCleanup The updated choice for whether you want to specify package cleanup. The
 #' default value is `false` for private devices.
-#' @param excludeAppPackagesFromCleanup An array of strings specifying the list of app packages that should not
-#' be cleaned up from the device after a test run is over.
+#' @param excludeAppPackagesFromCleanup An array of strings that specifies the list of app packages that should
+#' not be cleaned up from the device after a test run is over.
 #' 
 #' The list of packages is only considered if you set `packageCleanup` to
 #' `true`.
@@ -3443,9 +3799,9 @@ devicefarm_update_instance_profile <- function(arn, name = NULL, description = N
 }
 .devicefarm$operations$update_instance_profile <- devicefarm_update_instance_profile
 
-#' Updates the network profile with specific settings
+#' Updates the network profile
 #'
-#' Updates the network profile with specific settings.
+#' Updates the network profile.
 #'
 #' @usage
 #' devicefarm_update_network_profile(arn, name, description, type,
@@ -3459,8 +3815,8 @@ devicefarm_update_instance_profile <- function(arn, name = NULL, description = N
 #' information.
 #' @param description The description of the network profile about which you are returning
 #' information.
-#' @param type The type of network profile you wish to return information about. Valid
-#' values are listed below.
+#' @param type The type of network profile to return information about. Valid values
+#' are listed here.
 #' @param uplinkBandwidthBits The data throughput rate in bits per second, as an integer from 0 to
 #' 104857600.
 #' @param downlinkBandwidthBits The data throughput rate in bits per second, as an integer from 0 to
@@ -3525,11 +3881,11 @@ devicefarm_update_network_profile <- function(arn, name = NULL, description = NU
 #' @usage
 #' devicefarm_update_project(arn, name, defaultJobTimeoutMinutes)
 #'
-#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the project whose name you wish to
-#' update.
-#' @param name A string representing the new name of the project that you are updating.
-#' @param defaultJobTimeoutMinutes The number of minutes a test run in the project will execute before it
-#' times out.
+#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the project whose name to update.
+#' @param name A string that represents the new name of the project that you are
+#' updating.
+#' @param defaultJobTimeoutMinutes The number of minutes a test run in the project executes before it times
+#' out.
 #'
 #' @section Request syntax:
 #' ```
@@ -3567,20 +3923,60 @@ devicefarm_update_project <- function(arn, name = NULL, defaultJobTimeoutMinutes
 }
 .devicefarm$operations$update_project <- devicefarm_update_project
 
-#' Update an uploaded test specification (test spec)
+#' Change details of a project
 #'
-#' Update an uploaded test specification (test spec).
+#' Change details of a project.
+#'
+#' @usage
+#' devicefarm_update_test_grid_project(projectArn, name, description)
+#'
+#' @param projectArn &#91;required&#93; ARN of the project to update.
+#' @param name Human-readable name for the project.
+#' @param description Human-readable description for the project.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_test_grid_project(
+#'   projectArn = "string",
+#'   name = "string",
+#'   description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devicefarm_update_test_grid_project
+devicefarm_update_test_grid_project <- function(projectArn, name = NULL, description = NULL) {
+  op <- new_operation(
+    name = "UpdateTestGridProject",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .devicefarm$update_test_grid_project_input(projectArn = projectArn, name = name, description = description)
+  output <- .devicefarm$update_test_grid_project_output()
+  config <- get_config()
+  svc <- .devicefarm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devicefarm$operations$update_test_grid_project <- devicefarm_update_test_grid_project
+
+#' Updates an uploaded test spec
+#'
+#' Updates an uploaded test spec.
 #'
 #' @usage
 #' devicefarm_update_upload(arn, name, contentType, editContent)
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the uploaded test spec.
-#' @param name The upload\'s test spec file name. The name should not contain the \'/\'
-#' character. The test spec file name must end with the `.yaml` or `.yml`
+#' @param name The upload\'s test spec file name. The name must not contain any forward
+#' slashes (/). The test spec file name must end with the `.yaml` or `.yml`
 #' file extension.
-#' @param contentType The upload\'s content type (for example, \"application/x-yaml\").
-#' @param editContent Set to true if the YAML file has changed and needs to be updated;
-#' otherwise, set to false.
+#' @param contentType The upload\'s content type (for example, `application/x-yaml`).
+#' @param editContent Set to true if the YAML file has changed and must be updated. Otherwise,
+#' set to false.
 #'
 #' @section Request syntax:
 #' ```
@@ -3612,11 +4008,11 @@ devicefarm_update_upload <- function(arn, name = NULL, contentType = NULL, editC
 }
 .devicefarm$operations$update_upload <- devicefarm_update_upload
 
-#' Updates information about an existing Amazon Virtual Private Cloud (VPC)
-#' endpoint configuration
+#' Updates information about an Amazon Virtual Private Cloud (VPC) endpoint
+#' configuration
 #'
-#' Updates information about an existing Amazon Virtual Private Cloud (VPC)
-#' endpoint configuration.
+#' Updates information about an Amazon Virtual Private Cloud (VPC) endpoint
+#' configuration.
 #'
 #' @usage
 #' devicefarm_update_vpce_configuration(arn, vpceConfigurationName,
@@ -3624,13 +4020,13 @@ devicefarm_update_upload <- function(arn, name = NULL, contentType = NULL, editC
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the VPC endpoint configuration you
 #' want to update.
-#' @param vpceConfigurationName The friendly name you give to your VPC endpoint configuration, to manage
+#' @param vpceConfigurationName The friendly name you give to your VPC endpoint configuration to manage
 #' your configurations more easily.
-#' @param vpceServiceName The name of the VPC endpoint service running inside your AWS account
-#' that you want Device Farm to test.
+#' @param vpceServiceName The name of the VPC endpoint service running in your AWS account that
+#' you want Device Farm to test.
 #' @param serviceDnsName The DNS (domain) name used to connect to your private service in your
-#' Amazon VPC. The DNS name must not already be in use on the Internet.
-#' @param vpceConfigurationDescription An optional description, providing more details about your VPC endpoint
+#' VPC. The DNS name must not already be in use on the internet.
+#' @param vpceConfigurationDescription An optional description that provides details about your VPC endpoint
 #' configuration.
 #'
 #' @section Request syntax:

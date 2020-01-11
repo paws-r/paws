@@ -37,6 +37,7 @@ Elastic resize operations have the following restrictions:
 \item dc2.8xlarge
 \item ds2.xlarge
 \item ds2.8xlarge
+\item ra3.16xlarge
 }
 \item The type of nodes that you add must match the node type for the
 cluster.

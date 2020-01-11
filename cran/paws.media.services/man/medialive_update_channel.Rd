@@ -281,7 +281,9 @@ Updates a channel.
               "ADOBE"|"ELEMENTAL"|"ELEMENTAL_SCTE35"
             ),
             BaseUrlContent = "string",
+            BaseUrlContent1 = "string",
             BaseUrlManifest = "string",
+            BaseUrlManifest1 = "string",
             CaptionLanguageMappings = list(
               list(
                 CaptionChannel = 123,
@@ -329,6 +331,7 @@ Updates a channel.
                 RestartDelay = 123
               )
             ),
+            HlsId3SegmentTagging = "DISABLED"|"ENABLED",
             IFrameOnlyPlaylists = "DISABLED"|"STANDARD",
             IndexNSegments = 123,
             InputLossAction = "EMIT_OUTPUT"|"PAUSE_OUTPUT",
@@ -487,6 +490,7 @@ Updates a channel.
                 NameModifier = "string"
               ),
               HlsOutputSettings = list(
+                H265PackagingType = "HEV1"|"HVC1",
                 HlsSettings = list(
                   AudioOnlyHlsSettings = list(
                     AudioGroupId = "string",
@@ -495,7 +499,11 @@ Updates a channel.
                       Uri = "string",
                       Username = "string"
                     ),
-                    AudioTrackType = "ALTERNATE_AUDIO_AUTO_SELECT"|"ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"|"ALTERNATE_AUDIO_NOT_AUTO_SELECT"|"AUDIO_ONLY_VARIANT_STREAM"
+                    AudioTrackType = "ALTERNATE_AUDIO_AUTO_SELECT"|"ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"|"ALTERNATE_AUDIO_NOT_AUTO_SELECT"|"AUDIO_ONLY_VARIANT_STREAM",
+                    SegmentType = "AAC"|"FMP4"
+                  ),
+                  Fmp4HlsSettings = list(
+                    AudioRenditionSets = "string"
                   ),
                   StandardHlsSettings = list(
                     AudioRenditionSets = "string",
@@ -628,7 +636,8 @@ Updates a channel.
       list(
         CodecSettings = list(
           FrameCaptureSettings = list(
-            CaptureInterval = 123
+            CaptureInterval = 123,
+            CaptureIntervalUnits = "MILLISECONDS"|"SECONDS"
           ),
           H264Settings = list(
             AdaptiveQuantization = "HIGH"|"HIGHER"|"LOW"|"MAX"|"MEDIUM"|"OFF",

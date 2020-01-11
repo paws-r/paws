@@ -8,7 +8,8 @@ gamelift_describe_scaling_policies(FleetId, StatusFilter, Limit,
   NextToken)
 }
 \arguments{
-\item{FleetId}{[required] Unique identifier for a fleet to retrieve scaling policies for.}
+\item{FleetId}{[required] A unique identifier for a fleet to retrieve scaling policies for. You
+can use either the fleet ID or ARN value.}
 
 \item{StatusFilter}{Scaling policy status to filter results on. A scaling policy is only in
 force when in an \code{ACTIVE} status.
@@ -25,8 +26,8 @@ been received.
 removed and recreated.
 }}
 
-\item{Limit}{Maximum number of results to return. Use this parameter with \code{NextToken}
-to get results as a set of sequential pages.}
+\item{Limit}{The maximum number of results to return. Use this parameter with
+\code{NextToken} to get results as a set of sequential pages.}
 
 \item{NextToken}{Token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this action. To

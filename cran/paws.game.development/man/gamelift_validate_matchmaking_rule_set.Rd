@@ -7,7 +7,8 @@
 gamelift_validate_matchmaking_rule_set(RuleSetBody)
 }
 \arguments{
-\item{RuleSetBody}{[required] Collection of matchmaking rules to validate, formatted as a JSON string.}
+\item{RuleSetBody}{[required] A collection of matchmaking rules to validate, formatted as a JSON
+string.}
 }
 \description{
 Validates the syntax of a matchmaking rule or rule set. This operation

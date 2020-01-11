@@ -50,8 +50,11 @@ Firewall Manager features, see the \href{https://docs.aws.amazon.com/waf/latest/
 \link[=fms_list_compliance_status]{list_compliance_status} \tab Returns an array of PolicyComplianceStatus objects in the response \cr
 \link[=fms_list_member_accounts]{list_member_accounts} \tab Returns a MemberAccounts object that lists the member accounts in the administrator's AWS organization \cr
 \link[=fms_list_policies]{list_policies} \tab Returns an array of PolicySummary objects in the response \cr
+\link[=fms_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the list of tags for the specified AWS resource \cr
 \link[=fms_put_notification_channel]{put_notification_channel} \tab Designates the IAM role and Amazon Simple Notification Service (SNS) topic that AWS Firewall Manager uses to record SNS logs \cr
-\link[=fms_put_policy]{put_policy} \tab Creates an AWS Firewall Manager policy
+\link[=fms_put_policy]{put_policy} \tab Creates an AWS Firewall Manager policy \cr
+\link[=fms_tag_resource]{tag_resource} \tab Adds one or more tags to an AWS resource \cr
+\link[=fms_untag_resource]{untag_resource} \tab Removes one or more tags from an AWS resource
 }
 }
 

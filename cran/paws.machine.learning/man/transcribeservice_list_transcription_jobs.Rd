@@ -27,7 +27,7 @@ Lists transcription jobs with the specified status.
 }
 \section{Request syntax}{
 \preformatted{svc$list_transcription_jobs(
-  Status = "IN_PROGRESS"|"FAILED"|"COMPLETED",
+  Status = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
   JobNameContains = "string",
   NextToken = "string",
   MaxResults = 123

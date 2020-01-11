@@ -7,13 +7,14 @@
 gamelift_update_build(BuildId, Name, Version)
 }
 \arguments{
-\item{BuildId}{[required] Unique identifier for a build to update.}
+\item{BuildId}{[required] A unique identifier for a build to update. You can use either the build
+ID or ARN value.}
 
-\item{Name}{Descriptive label that is associated with a build. Build names do not
+\item{Name}{A descriptive label that is associated with a build. Build names do not
 need to be unique.}
 
-\item{Version}{Version that is associated with a build or script. Version strings do
-not need to be unique.}
+\item{Version}{Version information that is associated with a build or script. Version
+strings do not need to be unique.}
 }
 \description{
 Updates metadata in a build record, including the build name and

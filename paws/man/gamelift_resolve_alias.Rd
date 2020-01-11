@@ -2,15 +2,16 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_resolve_alias}
 \alias{gamelift_resolve_alias}
-\title{Retrieves the fleet ID that a specified alias is currently pointing to}
+\title{Retrieves the fleet ID that an alias is currently pointing to}
 \usage{
 gamelift_resolve_alias(AliasId)
 }
 \arguments{
-\item{AliasId}{[required] Unique identifier for the alias you want to resolve.}
+\item{AliasId}{[required] The unique identifier of the alias that you want to retrieve a fleet ID
+for. You can use either the alias ID or ARN value.}
 }
 \description{
-Retrieves the fleet ID that a specified alias is currently pointing to.
+Retrieves the fleet ID that an alias is currently pointing to.
 }
 \details{
 \itemize{

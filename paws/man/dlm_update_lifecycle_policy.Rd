@@ -75,6 +75,18 @@ Updates the specified lifecycle policy.
           AvailabilityZones = list(
             "string"
           )
+        ),
+        CrossRegionCopyRules = list(
+          list(
+            TargetRegion = "string",
+            Encrypted = TRUE|FALSE,
+            CmkArn = "string",
+            CopyTags = TRUE|FALSE,
+            RetainRule = list(
+              Interval = 123,
+              IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
+            )
+          )
         )
       )
     ),

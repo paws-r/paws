@@ -186,16 +186,20 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'         SizePercent = 123,
 #'         TemplateConfiguration = list(
 #'           EmailTemplate = list(
-#'             Name = "string"
+#'             Name = "string",
+#'             Version = "string"
 #'           ),
 #'           PushTemplate = list(
-#'             Name = "string"
+#'             Name = "string",
+#'             Version = "string"
 #'           ),
 #'           SMSTemplate = list(
-#'             Name = "string"
+#'             Name = "string",
+#'             Version = "string"
 #'           ),
 #'           VoiceTemplate = list(
-#'             Name = "string"
+#'             Name = "string",
+#'             Version = "string"
 #'           )
 #'         ),
 #'         TreatmentDescription = "string",
@@ -343,16 +347,20 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'     ),
 #'     TemplateConfiguration = list(
 #'       EmailTemplate = list(
-#'         Name = "string"
+#'         Name = "string",
+#'         Version = "string"
 #'       ),
 #'       PushTemplate = list(
-#'         Name = "string"
+#'         Name = "string",
+#'         Version = "string"
 #'       ),
 #'       SMSTemplate = list(
-#'         Name = "string"
+#'         Name = "string",
+#'         Version = "string"
 #'       ),
 #'       VoiceTemplate = list(
-#'         Name = "string"
+#'         Name = "string",
+#'         Version = "string"
 #'       )
 #'     ),
 #'     TreatmentDescription = "string",
@@ -381,17 +389,16 @@ pinpoint_create_campaign <- function(ApplicationId, WriteCampaignRequest) {
 }
 .pinpoint$operations$create_campaign <- pinpoint_create_campaign
 
-#' Creates a message template that you can use in messages that are sent
-#' through the email channel
+#' Creates a message template for messages that are sent through the email
+#' channel
 #'
-#' Creates a message template that you can use in messages that are sent
-#' through the email channel.
+#' Creates a message template for messages that are sent through the email
+#' channel.
 #'
 #' @usage
 #' pinpoint_create_email_template(EmailTemplateRequest, TemplateName)
 #'
-#' @param EmailTemplateRequest &#91;required&#93; Creates a new message template that you can use in messages that are
-#' sent through the email channel.
+#' @param EmailTemplateRequest &#91;required&#93; 
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
 #' characters can be alphanumeric characters, underscores (\\_), or hyphens
@@ -676,7 +683,8 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'             FromAddress = "string"
 #'           ),
 #'           NextActivity = "string",
-#'           TemplateName = "string"
+#'           TemplateName = "string",
+#'           TemplateVersion = "string"
 #'         ),
 #'         Holdout = list(
 #'           NextActivity = "string",
@@ -879,18 +887,17 @@ pinpoint_create_journey <- function(ApplicationId, WriteJourneyRequest) {
 }
 .pinpoint$operations$create_journey <- pinpoint_create_journey
 
-#' Creates a message template that you can use in messages that are sent
-#' through a push notification channel
+#' Creates a message template for messages that are sent through a push
+#' notification channel
 #'
-#' Creates a message template that you can use in messages that are sent
-#' through a push notification channel.
+#' Creates a message template for messages that are sent through a push
+#' notification channel.
 #'
 #' @usage
 #' pinpoint_create_push_template(PushNotificationTemplateRequest,
 #'   TemplateName)
 #'
-#' @param PushNotificationTemplateRequest &#91;required&#93; Creates a message template that you can use in messages that are sent
-#' through a push notification channel.
+#' @param PushNotificationTemplateRequest &#91;required&#93; 
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
 #' characters can be alphanumeric characters, underscores (\\_), or hyphens
@@ -1210,17 +1217,16 @@ pinpoint_create_segment <- function(ApplicationId, WriteSegmentRequest) {
 }
 .pinpoint$operations$create_segment <- pinpoint_create_segment
 
-#' Creates a message template that you can use in messages that are sent
-#' through the SMS channel
+#' Creates a message template for messages that are sent through the SMS
+#' channel
 #'
-#' Creates a message template that you can use in messages that are sent
-#' through the SMS channel.
+#' Creates a message template for messages that are sent through the SMS
+#' channel.
 #'
 #' @usage
 #' pinpoint_create_sms_template(SMSTemplateRequest, TemplateName)
 #'
-#' @param SMSTemplateRequest &#91;required&#93; Creates a message template that you can use in messages that are sent
-#' through the SMS channel.
+#' @param SMSTemplateRequest &#91;required&#93; 
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
 #' characters can be alphanumeric characters, underscores (\\_), or hyphens
@@ -1261,11 +1267,11 @@ pinpoint_create_sms_template <- function(SMSTemplateRequest, TemplateName) {
 }
 .pinpoint$operations$create_sms_template <- pinpoint_create_sms_template
 
-#' Creates a message template that you can use in messages that are sent
-#' through the voice channel
+#' Creates a message template for messages that are sent through the voice
+#' channel
 #'
-#' Creates a message template that you can use in messages that are sent
-#' through the voice channel.
+#' Creates a message template for messages that are sent through the voice
+#' channel.
 #'
 #' @usage
 #' pinpoint_create_voice_template(TemplateName, VoiceTemplateRequest)
@@ -1662,38 +1668,61 @@ pinpoint_delete_email_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$delete_email_channel <- pinpoint_delete_email_channel
 
-#' Deletes a message template that was designed for use in messages that
-#' were sent through the email channel
+#' Deletes a message template for messages that were sent through the email
+#' channel
 #'
-#' Deletes a message template that was designed for use in messages that
-#' were sent through the email channel.
+#' Deletes a message template for messages that were sent through the email
+#' channel.
 #'
 #' @usage
-#' pinpoint_delete_email_template(TemplateName)
+#' pinpoint_delete_email_template(TemplateName, Version)
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
 #' characters can be alphanumeric characters, underscores (\\_), or hyphens
 #' (-). Template names are case sensitive.
+#' @param Version The unique identifier for the version of the message template to update,
+#' retrieve information about, or delete. To retrieve identifiers and other
+#' information for all the versions of a template, use the Template
+#' Versions resource.
+#' 
+#' If specified, this value must match the identifier of an existing
+#' template version. If specified for an update operation, this value must
+#' match the identifier of the latest existing version of the template.
+#' This restriction helps ensure that race conditions don\'t occur.
+#' 
+#' If you don\'t specify a value for this parameter, Amazon Pinpoint does
+#' the following:
+#' 
+#' -   For a get operation, retrieves information about the active version
+#'     of the template.
+#' 
+#' -   For an update operation, saves the updates to the latest existing
+#'     version of the template, if the create-new-version parameter isn\'t
+#'     used or is set to false.
+#' 
+#' -   For a delete operation, deletes the template, including all versions
+#'     of the template.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$delete_email_template(
-#'   TemplateName = "string"
+#'   TemplateName = "string",
+#'   Version = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_email_template
-pinpoint_delete_email_template <- function(TemplateName) {
+pinpoint_delete_email_template <- function(TemplateName, Version = NULL) {
   op <- new_operation(
     name = "DeleteEmailTemplate",
     http_method = "DELETE",
     http_path = "/v1/templates/{template-name}/email",
     paginator = list()
   )
-  input <- .pinpoint$delete_email_template_input(TemplateName = TemplateName)
+  input <- .pinpoint$delete_email_template_input(TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$delete_email_template_output()
   config <- get_config()
   svc <- .pinpoint$service(config)
@@ -1857,38 +1886,61 @@ pinpoint_delete_journey <- function(ApplicationId, JourneyId) {
 }
 .pinpoint$operations$delete_journey <- pinpoint_delete_journey
 
-#' Deletes a message template that was designed for use in messages that
-#' were sent through a push notification channel
+#' Deletes a message template for messages that were sent through a push
+#' notification channel
 #'
-#' Deletes a message template that was designed for use in messages that
-#' were sent through a push notification channel.
+#' Deletes a message template for messages that were sent through a push
+#' notification channel.
 #'
 #' @usage
-#' pinpoint_delete_push_template(TemplateName)
+#' pinpoint_delete_push_template(TemplateName, Version)
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
 #' characters can be alphanumeric characters, underscores (\\_), or hyphens
 #' (-). Template names are case sensitive.
+#' @param Version The unique identifier for the version of the message template to update,
+#' retrieve information about, or delete. To retrieve identifiers and other
+#' information for all the versions of a template, use the Template
+#' Versions resource.
+#' 
+#' If specified, this value must match the identifier of an existing
+#' template version. If specified for an update operation, this value must
+#' match the identifier of the latest existing version of the template.
+#' This restriction helps ensure that race conditions don\'t occur.
+#' 
+#' If you don\'t specify a value for this parameter, Amazon Pinpoint does
+#' the following:
+#' 
+#' -   For a get operation, retrieves information about the active version
+#'     of the template.
+#' 
+#' -   For an update operation, saves the updates to the latest existing
+#'     version of the template, if the create-new-version parameter isn\'t
+#'     used or is set to false.
+#' 
+#' -   For a delete operation, deletes the template, including all versions
+#'     of the template.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$delete_push_template(
-#'   TemplateName = "string"
+#'   TemplateName = "string",
+#'   Version = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_push_template
-pinpoint_delete_push_template <- function(TemplateName) {
+pinpoint_delete_push_template <- function(TemplateName, Version = NULL) {
   op <- new_operation(
     name = "DeletePushTemplate",
     http_method = "DELETE",
     http_path = "/v1/templates/{template-name}/push",
     paginator = list()
   )
-  input <- .pinpoint$delete_push_template_input(TemplateName = TemplateName)
+  input <- .pinpoint$delete_push_template_input(TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$delete_push_template_output()
   config <- get_config()
   svc <- .pinpoint$service(config)
@@ -1976,38 +2028,61 @@ pinpoint_delete_sms_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$delete_sms_channel <- pinpoint_delete_sms_channel
 
-#' Deletes a message template that was designed for use in messages that
-#' were sent through the SMS channel
+#' Deletes a message template for messages that were sent through the SMS
+#' channel
 #'
-#' Deletes a message template that was designed for use in messages that
-#' were sent through the SMS channel.
+#' Deletes a message template for messages that were sent through the SMS
+#' channel.
 #'
 #' @usage
-#' pinpoint_delete_sms_template(TemplateName)
+#' pinpoint_delete_sms_template(TemplateName, Version)
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
 #' characters can be alphanumeric characters, underscores (\\_), or hyphens
 #' (-). Template names are case sensitive.
+#' @param Version The unique identifier for the version of the message template to update,
+#' retrieve information about, or delete. To retrieve identifiers and other
+#' information for all the versions of a template, use the Template
+#' Versions resource.
+#' 
+#' If specified, this value must match the identifier of an existing
+#' template version. If specified for an update operation, this value must
+#' match the identifier of the latest existing version of the template.
+#' This restriction helps ensure that race conditions don\'t occur.
+#' 
+#' If you don\'t specify a value for this parameter, Amazon Pinpoint does
+#' the following:
+#' 
+#' -   For a get operation, retrieves information about the active version
+#'     of the template.
+#' 
+#' -   For an update operation, saves the updates to the latest existing
+#'     version of the template, if the create-new-version parameter isn\'t
+#'     used or is set to false.
+#' 
+#' -   For a delete operation, deletes the template, including all versions
+#'     of the template.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$delete_sms_template(
-#'   TemplateName = "string"
+#'   TemplateName = "string",
+#'   Version = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_sms_template
-pinpoint_delete_sms_template <- function(TemplateName) {
+pinpoint_delete_sms_template <- function(TemplateName, Version = NULL) {
   op <- new_operation(
     name = "DeleteSmsTemplate",
     http_method = "DELETE",
     http_path = "/v1/templates/{template-name}/sms",
     paginator = list()
   )
-  input <- .pinpoint$delete_sms_template_input(TemplateName = TemplateName)
+  input <- .pinpoint$delete_sms_template_input(TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$delete_sms_template_output()
   config <- get_config()
   svc <- .pinpoint$service(config)
@@ -2095,38 +2170,61 @@ pinpoint_delete_voice_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$delete_voice_channel <- pinpoint_delete_voice_channel
 
-#' Deletes a message template that was designed for use in messages that
-#' were sent through the voice channel
+#' Deletes a message template for messages that were sent through the voice
+#' channel
 #'
-#' Deletes a message template that was designed for use in messages that
-#' were sent through the voice channel.
+#' Deletes a message template for messages that were sent through the voice
+#' channel.
 #'
 #' @usage
-#' pinpoint_delete_voice_template(TemplateName)
+#' pinpoint_delete_voice_template(TemplateName, Version)
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
 #' characters can be alphanumeric characters, underscores (\\_), or hyphens
 #' (-). Template names are case sensitive.
+#' @param Version The unique identifier for the version of the message template to update,
+#' retrieve information about, or delete. To retrieve identifiers and other
+#' information for all the versions of a template, use the Template
+#' Versions resource.
+#' 
+#' If specified, this value must match the identifier of an existing
+#' template version. If specified for an update operation, this value must
+#' match the identifier of the latest existing version of the template.
+#' This restriction helps ensure that race conditions don\'t occur.
+#' 
+#' If you don\'t specify a value for this parameter, Amazon Pinpoint does
+#' the following:
+#' 
+#' -   For a get operation, retrieves information about the active version
+#'     of the template.
+#' 
+#' -   For an update operation, saves the updates to the latest existing
+#'     version of the template, if the create-new-version parameter isn\'t
+#'     used or is set to false.
+#' 
+#' -   For a delete operation, deletes the template, including all versions
+#'     of the template.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$delete_voice_template(
-#'   TemplateName = "string"
+#'   TemplateName = "string",
+#'   Version = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_voice_template
-pinpoint_delete_voice_template <- function(TemplateName) {
+pinpoint_delete_voice_template <- function(TemplateName, Version = NULL) {
   op <- new_operation(
     name = "DeleteVoiceTemplate",
     http_method = "DELETE",
     http_path = "/v1/templates/{template-name}/voice",
     paginator = list()
   )
-  input <- .pinpoint$delete_voice_template_input(TemplateName = TemplateName)
+  input <- .pinpoint$delete_voice_template_input(TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$delete_voice_template_output()
   config <- get_config()
   svc <- .pinpoint$service(config)
@@ -2382,8 +2480,8 @@ pinpoint_get_app <- function(ApplicationId) {
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param EndTime The last date and time to retrieve data for, as part of an inclusive
 #' date range that filters the query results. This value should be in
-#' extended ISO 8601 format, for example: 2019-07-19T00:00:00Z for July 19,
-#' 2019 and 2019-07-19T20:00:00Z for 8:00 PM July 19, 2019.
+#' extended ISO 8601 format and use Coordinated Universal Time (UTC), for
+#' example: 2019-07-26T20:00:00Z for 8:00 PM UTC July 26, 2019.
 #' @param KpiName &#91;required&#93; The name of the metric, also referred to as a *key performance indicator
 #' (KPI)*, to retrieve data for. This value describes the associated metric
 #' and consists of two or more terms, which are comprised of lowercase
@@ -2399,8 +2497,9 @@ pinpoint_get_app <- function(ApplicationId) {
 #' campaign, and journey metrics.
 #' @param StartTime The first date and time to retrieve data for, as part of an inclusive
 #' date range that filters the query results. This value should be in
-#' extended ISO 8601 format, for example: 2019-07-15T00:00:00Z for July 15,
-#' 2019 and 2019-07-15T16:00:00Z for 4:00 PM July 15, 2019.
+#' extended ISO 8601 format and use Coordinated Universal Time (UTC), for
+#' example: 2019-07-19T20:00:00Z for 8:00 PM UTC July 19, 2019. This value
+#' should also be fewer than 90 days from the current day.
 #'
 #' @section Request syntax:
 #' ```
@@ -2475,9 +2574,11 @@ pinpoint_get_application_settings <- function(ApplicationId) {
 }
 .pinpoint$operations$get_application_settings <- pinpoint_get_application_settings
 
-#' Retrieves information about all of your applications
+#' Retrieves information about all the applications that are associated
+#' with your Amazon Pinpoint account
 #'
-#' Retrieves information about all of your applications.
+#' Retrieves information about all the applications that are associated
+#' with your Amazon Pinpoint account.
 #'
 #' @usage
 #' pinpoint_get_apps(PageSize, Token)
@@ -2658,8 +2759,8 @@ pinpoint_get_campaign_activities <- function(ApplicationId, CampaignId, PageSize
 #' @param CampaignId &#91;required&#93; The unique identifier for the campaign.
 #' @param EndTime The last date and time to retrieve data for, as part of an inclusive
 #' date range that filters the query results. This value should be in
-#' extended ISO 8601 format, for example: 2019-07-19T00:00:00Z for July 19,
-#' 2019 and 2019-07-19T20:00:00Z for 8:00 PM July 19, 2019.
+#' extended ISO 8601 format and use Coordinated Universal Time (UTC), for
+#' example: 2019-07-26T20:00:00Z for 8:00 PM UTC July 26, 2019.
 #' @param KpiName &#91;required&#93; The name of the metric, also referred to as a *key performance indicator
 #' (KPI)*, to retrieve data for. This value describes the associated metric
 #' and consists of two or more terms, which are comprised of lowercase
@@ -2675,8 +2776,9 @@ pinpoint_get_campaign_activities <- function(ApplicationId, CampaignId, PageSize
 #' campaign, and journey metrics.
 #' @param StartTime The first date and time to retrieve data for, as part of an inclusive
 #' date range that filters the query results. This value should be in
-#' extended ISO 8601 format, for example: 2019-07-15T00:00:00Z for July 15,
-#' 2019 and 2019-07-15T16:00:00Z for 4:00 PM July 15, 2019.
+#' extended ISO 8601 format and use Coordinated Universal Time (UTC), for
+#' example: 2019-07-19T20:00:00Z for 8:00 PM UTC July 19, 2019. This value
+#' should also be fewer than 90 days from the current day.
 #'
 #' @section Request syntax:
 #' ```
@@ -2931,38 +3033,61 @@ pinpoint_get_email_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$get_email_channel <- pinpoint_get_email_channel
 
-#' Retrieves the content and settings for a message template that you can
-#' use in messages that are sent through the email channel
+#' Retrieves the content and settings of a message template for messages
+#' that are sent through the email channel
 #'
-#' Retrieves the content and settings for a message template that you can
-#' use in messages that are sent through the email channel.
+#' Retrieves the content and settings of a message template for messages
+#' that are sent through the email channel.
 #'
 #' @usage
-#' pinpoint_get_email_template(TemplateName)
+#' pinpoint_get_email_template(TemplateName, Version)
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
 #' characters can be alphanumeric characters, underscores (\\_), or hyphens
 #' (-). Template names are case sensitive.
+#' @param Version The unique identifier for the version of the message template to update,
+#' retrieve information about, or delete. To retrieve identifiers and other
+#' information for all the versions of a template, use the Template
+#' Versions resource.
+#' 
+#' If specified, this value must match the identifier of an existing
+#' template version. If specified for an update operation, this value must
+#' match the identifier of the latest existing version of the template.
+#' This restriction helps ensure that race conditions don\'t occur.
+#' 
+#' If you don\'t specify a value for this parameter, Amazon Pinpoint does
+#' the following:
+#' 
+#' -   For a get operation, retrieves information about the active version
+#'     of the template.
+#' 
+#' -   For an update operation, saves the updates to the latest existing
+#'     version of the template, if the create-new-version parameter isn\'t
+#'     used or is set to false.
+#' 
+#' -   For a delete operation, deletes the template, including all versions
+#'     of the template.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$get_email_template(
-#'   TemplateName = "string"
+#'   TemplateName = "string",
+#'   Version = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_email_template
-pinpoint_get_email_template <- function(TemplateName) {
+pinpoint_get_email_template <- function(TemplateName, Version = NULL) {
   op <- new_operation(
     name = "GetEmailTemplate",
     http_method = "GET",
     http_path = "/v1/templates/{template-name}/email",
     paginator = list()
   )
-  input <- .pinpoint$get_email_template_input(TemplateName = TemplateName)
+  input <- .pinpoint$get_email_template_input(TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$get_email_template_output()
   config <- get_config()
   svc <- .pinpoint$service(config)
@@ -3479,38 +3604,61 @@ pinpoint_get_journey_execution_metrics <- function(ApplicationId, JourneyId, Nex
 }
 .pinpoint$operations$get_journey_execution_metrics <- pinpoint_get_journey_execution_metrics
 
-#' Retrieves the content and settings for a message template that you can
-#' use in messages that are sent through a push notification channel
+#' Retrieves the content and settings of a message template for messages
+#' that are sent through a push notification channel
 #'
-#' Retrieves the content and settings for a message template that you can
-#' use in messages that are sent through a push notification channel.
+#' Retrieves the content and settings of a message template for messages
+#' that are sent through a push notification channel.
 #'
 #' @usage
-#' pinpoint_get_push_template(TemplateName)
+#' pinpoint_get_push_template(TemplateName, Version)
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
 #' characters can be alphanumeric characters, underscores (\\_), or hyphens
 #' (-). Template names are case sensitive.
+#' @param Version The unique identifier for the version of the message template to update,
+#' retrieve information about, or delete. To retrieve identifiers and other
+#' information for all the versions of a template, use the Template
+#' Versions resource.
+#' 
+#' If specified, this value must match the identifier of an existing
+#' template version. If specified for an update operation, this value must
+#' match the identifier of the latest existing version of the template.
+#' This restriction helps ensure that race conditions don\'t occur.
+#' 
+#' If you don\'t specify a value for this parameter, Amazon Pinpoint does
+#' the following:
+#' 
+#' -   For a get operation, retrieves information about the active version
+#'     of the template.
+#' 
+#' -   For an update operation, saves the updates to the latest existing
+#'     version of the template, if the create-new-version parameter isn\'t
+#'     used or is set to false.
+#' 
+#' -   For a delete operation, deletes the template, including all versions
+#'     of the template.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$get_push_template(
-#'   TemplateName = "string"
+#'   TemplateName = "string",
+#'   Version = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_push_template
-pinpoint_get_push_template <- function(TemplateName) {
+pinpoint_get_push_template <- function(TemplateName, Version = NULL) {
   op <- new_operation(
     name = "GetPushTemplate",
     http_method = "GET",
     http_path = "/v1/templates/{template-name}/push",
     paginator = list()
   )
-  input <- .pinpoint$get_push_template_input(TemplateName = TemplateName)
+  input <- .pinpoint$get_push_template_input(TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$get_push_template_output()
   config <- get_config()
   svc <- .pinpoint$service(config)
@@ -3705,12 +3853,12 @@ pinpoint_get_segment_version <- function(ApplicationId, SegmentId, Version) {
 .pinpoint$operations$get_segment_version <- pinpoint_get_segment_version
 
 #' Retrieves information about the configuration, dimension, and other
-#' settings for all versions of a specific segment that's associated with
-#' an application
+#' settings for all the versions of a specific segment that's associated
+#' with an application
 #'
 #' Retrieves information about the configuration, dimension, and other
-#' settings for all versions of a specific segment that\'s associated with
-#' an application.
+#' settings for all the versions of a specific segment that\'s associated
+#' with an application.
 #'
 #' @usage
 #' pinpoint_get_segment_versions(ApplicationId, PageSize, SegmentId, Token)
@@ -3839,38 +3987,61 @@ pinpoint_get_sms_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$get_sms_channel <- pinpoint_get_sms_channel
 
-#' Retrieves the content and settings for a message template that you can
-#' use in messages that are sent through the SMS channel
+#' Retrieves the content and settings of a message template for messages
+#' that are sent through the SMS channel
 #'
-#' Retrieves the content and settings for a message template that you can
-#' use in messages that are sent through the SMS channel.
+#' Retrieves the content and settings of a message template for messages
+#' that are sent through the SMS channel.
 #'
 #' @usage
-#' pinpoint_get_sms_template(TemplateName)
+#' pinpoint_get_sms_template(TemplateName, Version)
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
 #' characters can be alphanumeric characters, underscores (\\_), or hyphens
 #' (-). Template names are case sensitive.
+#' @param Version The unique identifier for the version of the message template to update,
+#' retrieve information about, or delete. To retrieve identifiers and other
+#' information for all the versions of a template, use the Template
+#' Versions resource.
+#' 
+#' If specified, this value must match the identifier of an existing
+#' template version. If specified for an update operation, this value must
+#' match the identifier of the latest existing version of the template.
+#' This restriction helps ensure that race conditions don\'t occur.
+#' 
+#' If you don\'t specify a value for this parameter, Amazon Pinpoint does
+#' the following:
+#' 
+#' -   For a get operation, retrieves information about the active version
+#'     of the template.
+#' 
+#' -   For an update operation, saves the updates to the latest existing
+#'     version of the template, if the create-new-version parameter isn\'t
+#'     used or is set to false.
+#' 
+#' -   For a delete operation, deletes the template, including all versions
+#'     of the template.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$get_sms_template(
-#'   TemplateName = "string"
+#'   TemplateName = "string",
+#'   Version = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_sms_template
-pinpoint_get_sms_template <- function(TemplateName) {
+pinpoint_get_sms_template <- function(TemplateName, Version = NULL) {
   op <- new_operation(
     name = "GetSmsTemplate",
     http_method = "GET",
     http_path = "/v1/templates/{template-name}/sms",
     paginator = list()
   )
-  input <- .pinpoint$get_sms_template_input(TemplateName = TemplateName)
+  input <- .pinpoint$get_sms_template_input(TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$get_sms_template_output()
   config <- get_config()
   svc <- .pinpoint$service(config)
@@ -3960,38 +4131,61 @@ pinpoint_get_voice_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$get_voice_channel <- pinpoint_get_voice_channel
 
-#' Retrieves the content and settings for a message template that you can
-#' use in messages that are sent through the voice channel
+#' Retrieves the content and settings of a message template for messages
+#' that are sent through the voice channel
 #'
-#' Retrieves the content and settings for a message template that you can
-#' use in messages that are sent through the voice channel.
+#' Retrieves the content and settings of a message template for messages
+#' that are sent through the voice channel.
 #'
 #' @usage
-#' pinpoint_get_voice_template(TemplateName)
+#' pinpoint_get_voice_template(TemplateName, Version)
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
 #' characters can be alphanumeric characters, underscores (\\_), or hyphens
 #' (-). Template names are case sensitive.
+#' @param Version The unique identifier for the version of the message template to update,
+#' retrieve information about, or delete. To retrieve identifiers and other
+#' information for all the versions of a template, use the Template
+#' Versions resource.
+#' 
+#' If specified, this value must match the identifier of an existing
+#' template version. If specified for an update operation, this value must
+#' match the identifier of the latest existing version of the template.
+#' This restriction helps ensure that race conditions don\'t occur.
+#' 
+#' If you don\'t specify a value for this parameter, Amazon Pinpoint does
+#' the following:
+#' 
+#' -   For a get operation, retrieves information about the active version
+#'     of the template.
+#' 
+#' -   For an update operation, saves the updates to the latest existing
+#'     version of the template, if the create-new-version parameter isn\'t
+#'     used or is set to false.
+#' 
+#' -   For a delete operation, deletes the template, including all versions
+#'     of the template.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$get_voice_template(
-#'   TemplateName = "string"
+#'   TemplateName = "string",
+#'   Version = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_voice_template
-pinpoint_get_voice_template <- function(TemplateName) {
+pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
   op <- new_operation(
     name = "GetVoiceTemplate",
     http_method = "GET",
     http_path = "/v1/templates/{template-name}/voice",
     paginator = list()
   )
-  input <- .pinpoint$get_voice_template_input(TemplateName = TemplateName)
+  input <- .pinpoint$get_voice_template_input(TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$get_voice_template_output()
   config <- get_config()
   svc <- .pinpoint$service(config)
@@ -4085,6 +4279,59 @@ pinpoint_list_tags_for_resource <- function(ResourceArn) {
 }
 .pinpoint$operations$list_tags_for_resource <- pinpoint_list_tags_for_resource
 
+#' Retrieves information about all the versions of a specific message
+#' template
+#'
+#' Retrieves information about all the versions of a specific message
+#' template.
+#'
+#' @usage
+#' pinpoint_list_template_versions(NextToken, PageSize, TemplateName,
+#'   TemplateType)
+#'
+#' @param NextToken The string that specifies which page of results to return in a paginated
+#' response. This parameter is currently not supported for application,
+#' campaign, and journey metrics.
+#' @param PageSize The maximum number of items to include in each page of a paginated
+#' response. This parameter is currently not supported for application,
+#' campaign, and journey metrics.
+#' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
+#' alphanumeric character and can contain a maximum of 128 characters. The
+#' characters can be alphanumeric characters, underscores (\\_), or hyphens
+#' (-). Template names are case sensitive.
+#' @param TemplateType &#91;required&#93; The type of channel that the message template is designed for. Valid
+#' values are: EMAIL, PUSH, SMS, and VOICE.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_template_versions(
+#'   NextToken = "string",
+#'   PageSize = "string",
+#'   TemplateName = "string",
+#'   TemplateType = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_list_template_versions
+pinpoint_list_template_versions <- function(NextToken = NULL, PageSize = NULL, TemplateName, TemplateType) {
+  op <- new_operation(
+    name = "ListTemplateVersions",
+    http_method = "GET",
+    http_path = "/v1/templates/{template-name}/{template-type}/versions",
+    paginator = list()
+  )
+  input <- .pinpoint$list_template_versions_input(NextToken = NextToken, PageSize = PageSize, TemplateName = TemplateName, TemplateType = TemplateType)
+  output <- .pinpoint$list_template_versions_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$list_template_versions <- pinpoint_list_template_versions
+
 #' Retrieves information about all the message templates that are
 #' associated with your Amazon Pinpoint account
 #'
@@ -4104,7 +4351,7 @@ pinpoint_list_tags_for_resource <- function(ResourceArn) {
 #' in the results. If you specify this value, Amazon Pinpoint returns only
 #' those templates whose names begin with the value that you specify.
 #' @param TemplateType The type of message template to include in the results. Valid values
-#' are: EMAIL, SMS, PUSH, and VOICE. To include all types of templates in
+#' are: EMAIL, PUSH, SMS, and VOICE. To include all types of templates in
 #' the results, don\'t include this parameter in your request.
 #'
 #' @section Request syntax:
@@ -4606,16 +4853,20 @@ pinpoint_remove_attributes <- function(ApplicationId, AttributeType, UpdateAttri
 #'     ),
 #'     TemplateConfiguration = list(
 #'       EmailTemplate = list(
-#'         Name = "string"
+#'         Name = "string",
+#'         Version = "string"
 #'       ),
 #'       PushTemplate = list(
-#'         Name = "string"
+#'         Name = "string",
+#'         Version = "string"
 #'       ),
 #'       SMSTemplate = list(
-#'         Name = "string"
+#'         Name = "string",
+#'         Version = "string"
 #'       ),
 #'       VoiceTemplate = list(
-#'         Name = "string"
+#'         Name = "string",
+#'         Version = "string"
 #'       )
 #'     ),
 #'     TraceId = "string"
@@ -4839,16 +5090,20 @@ pinpoint_send_messages <- function(ApplicationId, MessageRequest) {
 #'     ),
 #'     TemplateConfiguration = list(
 #'       EmailTemplate = list(
-#'         Name = "string"
+#'         Name = "string",
+#'         Version = "string"
 #'       ),
 #'       PushTemplate = list(
-#'         Name = "string"
+#'         Name = "string",
+#'         Version = "string"
 #'       ),
 #'       SMSTemplate = list(
-#'         Name = "string"
+#'         Name = "string",
+#'         Version = "string"
 #'       ),
 #'       VoiceTemplate = list(
-#'         Name = "string"
+#'         Name = "string",
+#'         Version = "string"
 #'       )
 #'     ),
 #'     TraceId = "string",
@@ -5471,16 +5726,20 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'         SizePercent = 123,
 #'         TemplateConfiguration = list(
 #'           EmailTemplate = list(
-#'             Name = "string"
+#'             Name = "string",
+#'             Version = "string"
 #'           ),
 #'           PushTemplate = list(
-#'             Name = "string"
+#'             Name = "string",
+#'             Version = "string"
 #'           ),
 #'           SMSTemplate = list(
-#'             Name = "string"
+#'             Name = "string",
+#'             Version = "string"
 #'           ),
 #'           VoiceTemplate = list(
-#'             Name = "string"
+#'             Name = "string",
+#'             Version = "string"
 #'           )
 #'         ),
 #'         TreatmentDescription = "string",
@@ -5628,16 +5887,20 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'     ),
 #'     TemplateConfiguration = list(
 #'       EmailTemplate = list(
-#'         Name = "string"
+#'         Name = "string",
+#'         Version = "string"
 #'       ),
 #'       PushTemplate = list(
-#'         Name = "string"
+#'         Name = "string",
+#'         Version = "string"
 #'       ),
 #'       SMSTemplate = list(
-#'         Name = "string"
+#'         Name = "string",
+#'         Version = "string"
 #'       ),
 #'       VoiceTemplate = list(
-#'         Name = "string"
+#'         Name = "string",
+#'         Version = "string"
 #'       )
 #'     ),
 #'     TreatmentDescription = "string",
@@ -5713,24 +5976,57 @@ pinpoint_update_email_channel <- function(ApplicationId, EmailChannelRequest) {
 }
 .pinpoint$operations$update_email_channel <- pinpoint_update_email_channel
 
-#' Updates an existing message template that you can use in messages that
-#' are sent through the email channel
+#' Updates an existing message template for messages that are sent through
+#' the email channel
 #'
-#' Updates an existing message template that you can use in messages that
-#' are sent through the email channel.
+#' Updates an existing message template for messages that are sent through
+#' the email channel.
 #'
 #' @usage
-#' pinpoint_update_email_template(EmailTemplateRequest, TemplateName)
+#' pinpoint_update_email_template(CreateNewVersion, EmailTemplateRequest,
+#'   TemplateName, Version)
 #'
+#' @param CreateNewVersion Specifies whether to save the updates as a new version of the message
+#' template. Valid values are: true, save the updates as a new version;
+#' and, false, save the updates to the latest existing version of the
+#' template.
+#' 
+#' If you don\'t specify a value for this parameter, Amazon Pinpoint saves
+#' the updates to the latest existing version of the template. If you
+#' specify a value of true for this parameter, don\'t specify a value for
+#' the version parameter. Otherwise, an error will occur.
 #' @param EmailTemplateRequest &#91;required&#93; 
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
 #' characters can be alphanumeric characters, underscores (\\_), or hyphens
 #' (-). Template names are case sensitive.
+#' @param Version The unique identifier for the version of the message template to update,
+#' retrieve information about, or delete. To retrieve identifiers and other
+#' information for all the versions of a template, use the Template
+#' Versions resource.
+#' 
+#' If specified, this value must match the identifier of an existing
+#' template version. If specified for an update operation, this value must
+#' match the identifier of the latest existing version of the template.
+#' This restriction helps ensure that race conditions don\'t occur.
+#' 
+#' If you don\'t specify a value for this parameter, Amazon Pinpoint does
+#' the following:
+#' 
+#' -   For a get operation, retrieves information about the active version
+#'     of the template.
+#' 
+#' -   For an update operation, saves the updates to the latest existing
+#'     version of the template, if the create-new-version parameter isn\'t
+#'     used or is set to false.
+#' 
+#' -   For a delete operation, deletes the template, including all versions
+#'     of the template.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_email_template(
+#'   CreateNewVersion = TRUE|FALSE,
 #'   EmailTemplateRequest = list(
 #'     DefaultSubstitutions = "string",
 #'     HtmlPart = "string",
@@ -5741,21 +6037,22 @@ pinpoint_update_email_channel <- function(ApplicationId, EmailChannelRequest) {
 #'     TemplateDescription = "string",
 #'     TextPart = "string"
 #'   ),
-#'   TemplateName = "string"
+#'   TemplateName = "string",
+#'   Version = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_email_template
-pinpoint_update_email_template <- function(EmailTemplateRequest, TemplateName) {
+pinpoint_update_email_template <- function(CreateNewVersion = NULL, EmailTemplateRequest, TemplateName, Version = NULL) {
   op <- new_operation(
     name = "UpdateEmailTemplate",
     http_method = "PUT",
     http_path = "/v1/templates/{template-name}/email",
     paginator = list()
   )
-  input <- .pinpoint$update_email_template_input(EmailTemplateRequest = EmailTemplateRequest, TemplateName = TemplateName)
+  input <- .pinpoint$update_email_template_input(CreateNewVersion = CreateNewVersion, EmailTemplateRequest = EmailTemplateRequest, TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$update_email_template_output()
   config <- get_config()
   svc <- .pinpoint$service(config)
@@ -6134,7 +6431,8 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'             FromAddress = "string"
 #'           ),
 #'           NextActivity = "string",
-#'           TemplateName = "string"
+#'           TemplateName = "string",
+#'           TemplateVersion = "string"
 #'         ),
 #'         Holdout = list(
 #'           NextActivity = "string",
@@ -6337,9 +6635,9 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 }
 .pinpoint$operations$update_journey <- pinpoint_update_journey
 
-#' Cancels an active journey
+#' Cancels (stops) an active journey
 #'
-#' Cancels an active journey.
+#' Cancels (stops) an active journey.
 #'
 #' @usage
 #' pinpoint_update_journey_state(ApplicationId, JourneyId,
@@ -6381,26 +6679,57 @@ pinpoint_update_journey_state <- function(ApplicationId, JourneyId, JourneyState
 }
 .pinpoint$operations$update_journey_state <- pinpoint_update_journey_state
 
-#' Updates an existing message template that you can use in messages that
-#' are sent through a push notification channel
+#' Updates an existing message template for messages that are sent through
+#' a push notification channel
 #'
-#' Updates an existing message template that you can use in messages that
-#' are sent through a push notification channel.
+#' Updates an existing message template for messages that are sent through
+#' a push notification channel.
 #'
 #' @usage
-#' pinpoint_update_push_template(PushNotificationTemplateRequest,
-#'   TemplateName)
+#' pinpoint_update_push_template(CreateNewVersion,
+#'   PushNotificationTemplateRequest, TemplateName, Version)
 #'
-#' @param PushNotificationTemplateRequest &#91;required&#93; Updates an existing message template that you can use in messages that
-#' are sent through a push notification channel.
+#' @param CreateNewVersion Specifies whether to save the updates as a new version of the message
+#' template. Valid values are: true, save the updates as a new version;
+#' and, false, save the updates to the latest existing version of the
+#' template.
+#' 
+#' If you don\'t specify a value for this parameter, Amazon Pinpoint saves
+#' the updates to the latest existing version of the template. If you
+#' specify a value of true for this parameter, don\'t specify a value for
+#' the version parameter. Otherwise, an error will occur.
+#' @param PushNotificationTemplateRequest &#91;required&#93; 
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
 #' characters can be alphanumeric characters, underscores (\\_), or hyphens
 #' (-). Template names are case sensitive.
+#' @param Version The unique identifier for the version of the message template to update,
+#' retrieve information about, or delete. To retrieve identifiers and other
+#' information for all the versions of a template, use the Template
+#' Versions resource.
+#' 
+#' If specified, this value must match the identifier of an existing
+#' template version. If specified for an update operation, this value must
+#' match the identifier of the latest existing version of the template.
+#' This restriction helps ensure that race conditions don\'t occur.
+#' 
+#' If you don\'t specify a value for this parameter, Amazon Pinpoint does
+#' the following:
+#' 
+#' -   For a get operation, retrieves information about the active version
+#'     of the template.
+#' 
+#' -   For an update operation, saves the updates to the latest existing
+#'     version of the template, if the create-new-version parameter isn\'t
+#'     used or is set to false.
+#' 
+#' -   For a delete operation, deletes the template, including all versions
+#'     of the template.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_push_template(
+#'   CreateNewVersion = TRUE|FALSE,
 #'   PushNotificationTemplateRequest = list(
 #'     ADM = list(
 #'       Action = "OPEN_APP"|"DEEP_LINK"|"URL",
@@ -6457,21 +6786,22 @@ pinpoint_update_journey_state <- function(ApplicationId, JourneyId, JourneyState
 #'     ),
 #'     TemplateDescription = "string"
 #'   ),
-#'   TemplateName = "string"
+#'   TemplateName = "string",
+#'   Version = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_push_template
-pinpoint_update_push_template <- function(PushNotificationTemplateRequest, TemplateName) {
+pinpoint_update_push_template <- function(CreateNewVersion = NULL, PushNotificationTemplateRequest, TemplateName, Version = NULL) {
   op <- new_operation(
     name = "UpdatePushTemplate",
     http_method = "PUT",
     http_path = "/v1/templates/{template-name}/push",
     paginator = list()
   )
-  input <- .pinpoint$update_push_template_input(PushNotificationTemplateRequest = PushNotificationTemplateRequest, TemplateName = TemplateName)
+  input <- .pinpoint$update_push_template_input(CreateNewVersion = CreateNewVersion, PushNotificationTemplateRequest = PushNotificationTemplateRequest, TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$update_push_template_output()
   config <- get_config()
   svc <- .pinpoint$service(config)
@@ -6759,24 +7089,57 @@ pinpoint_update_sms_channel <- function(ApplicationId, SMSChannelRequest) {
 }
 .pinpoint$operations$update_sms_channel <- pinpoint_update_sms_channel
 
-#' Updates an existing message template that you can use in messages that
-#' are sent through the SMS channel
+#' Updates an existing message template for messages that are sent through
+#' the SMS channel
 #'
-#' Updates an existing message template that you can use in messages that
-#' are sent through the SMS channel.
+#' Updates an existing message template for messages that are sent through
+#' the SMS channel.
 #'
 #' @usage
-#' pinpoint_update_sms_template(SMSTemplateRequest, TemplateName)
+#' pinpoint_update_sms_template(CreateNewVersion, SMSTemplateRequest,
+#'   TemplateName, Version)
 #'
+#' @param CreateNewVersion Specifies whether to save the updates as a new version of the message
+#' template. Valid values are: true, save the updates as a new version;
+#' and, false, save the updates to the latest existing version of the
+#' template.
+#' 
+#' If you don\'t specify a value for this parameter, Amazon Pinpoint saves
+#' the updates to the latest existing version of the template. If you
+#' specify a value of true for this parameter, don\'t specify a value for
+#' the version parameter. Otherwise, an error will occur.
 #' @param SMSTemplateRequest &#91;required&#93; 
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
 #' characters can be alphanumeric characters, underscores (\\_), or hyphens
 #' (-). Template names are case sensitive.
+#' @param Version The unique identifier for the version of the message template to update,
+#' retrieve information about, or delete. To retrieve identifiers and other
+#' information for all the versions of a template, use the Template
+#' Versions resource.
+#' 
+#' If specified, this value must match the identifier of an existing
+#' template version. If specified for an update operation, this value must
+#' match the identifier of the latest existing version of the template.
+#' This restriction helps ensure that race conditions don\'t occur.
+#' 
+#' If you don\'t specify a value for this parameter, Amazon Pinpoint does
+#' the following:
+#' 
+#' -   For a get operation, retrieves information about the active version
+#'     of the template.
+#' 
+#' -   For an update operation, saves the updates to the latest existing
+#'     version of the template, if the create-new-version parameter isn\'t
+#'     used or is set to false.
+#' 
+#' -   For a delete operation, deletes the template, including all versions
+#'     of the template.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_sms_template(
+#'   CreateNewVersion = TRUE|FALSE,
 #'   SMSTemplateRequest = list(
 #'     Body = "string",
 #'     DefaultSubstitutions = "string",
@@ -6785,21 +7148,22 @@ pinpoint_update_sms_channel <- function(ApplicationId, SMSChannelRequest) {
 #'     ),
 #'     TemplateDescription = "string"
 #'   ),
-#'   TemplateName = "string"
+#'   TemplateName = "string",
+#'   Version = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_sms_template
-pinpoint_update_sms_template <- function(SMSTemplateRequest, TemplateName) {
+pinpoint_update_sms_template <- function(CreateNewVersion = NULL, SMSTemplateRequest, TemplateName, Version = NULL) {
   op <- new_operation(
     name = "UpdateSmsTemplate",
     http_method = "PUT",
     http_path = "/v1/templates/{template-name}/sms",
     paginator = list()
   )
-  input <- .pinpoint$update_sms_template_input(SMSTemplateRequest = SMSTemplateRequest, TemplateName = TemplateName)
+  input <- .pinpoint$update_sms_template_input(CreateNewVersion = CreateNewVersion, SMSTemplateRequest = SMSTemplateRequest, TemplateName = TemplateName, Version = Version)
   output <- .pinpoint$update_sms_template_output()
   config <- get_config()
   svc <- .pinpoint$service(config)
@@ -6808,6 +7172,55 @@ pinpoint_update_sms_template <- function(SMSTemplateRequest, TemplateName) {
   return(response)
 }
 .pinpoint$operations$update_sms_template <- pinpoint_update_sms_template
+
+#' Changes the status of a specific version of a message template to
+#' _active_
+#'
+#' Changes the status of a specific version of a message template to
+#' *active*.
+#'
+#' @usage
+#' pinpoint_update_template_active_version(TemplateActiveVersionRequest,
+#'   TemplateName, TemplateType)
+#'
+#' @param TemplateActiveVersionRequest &#91;required&#93; 
+#' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
+#' alphanumeric character and can contain a maximum of 128 characters. The
+#' characters can be alphanumeric characters, underscores (\\_), or hyphens
+#' (-). Template names are case sensitive.
+#' @param TemplateType &#91;required&#93; The type of channel that the message template is designed for. Valid
+#' values are: EMAIL, PUSH, SMS, and VOICE.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_template_active_version(
+#'   TemplateActiveVersionRequest = list(
+#'     Version = "string"
+#'   ),
+#'   TemplateName = "string",
+#'   TemplateType = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_update_template_active_version
+pinpoint_update_template_active_version <- function(TemplateActiveVersionRequest, TemplateName, TemplateType) {
+  op <- new_operation(
+    name = "UpdateTemplateActiveVersion",
+    http_method = "PUT",
+    http_path = "/v1/templates/{template-name}/{template-type}/active-version",
+    paginator = list()
+  )
+  input <- .pinpoint$update_template_active_version_input(TemplateActiveVersionRequest = TemplateActiveVersionRequest, TemplateName = TemplateName, TemplateType = TemplateType)
+  output <- .pinpoint$update_template_active_version_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$update_template_active_version <- pinpoint_update_template_active_version
 
 #' Enables the voice channel for an application or updates the status and
 #' settings of the voice channel for an application
@@ -6852,25 +7265,59 @@ pinpoint_update_voice_channel <- function(ApplicationId, VoiceChannelRequest) {
 }
 .pinpoint$operations$update_voice_channel <- pinpoint_update_voice_channel
 
-#' Updates an existing message template that you can use in messages that
-#' are sent through the voice channel
+#' Updates an existing message template for messages that are sent through
+#' the voice channel
 #'
-#' Updates an existing message template that you can use in messages that
-#' are sent through the voice channel.
+#' Updates an existing message template for messages that are sent through
+#' the voice channel.
 #'
 #' @usage
-#' pinpoint_update_voice_template(TemplateName, VoiceTemplateRequest)
+#' pinpoint_update_voice_template(CreateNewVersion, TemplateName, Version,
+#'   VoiceTemplateRequest)
 #'
+#' @param CreateNewVersion Specifies whether to save the updates as a new version of the message
+#' template. Valid values are: true, save the updates as a new version;
+#' and, false, save the updates to the latest existing version of the
+#' template.
+#' 
+#' If you don\'t specify a value for this parameter, Amazon Pinpoint saves
+#' the updates to the latest existing version of the template. If you
+#' specify a value of true for this parameter, don\'t specify a value for
+#' the version parameter. Otherwise, an error will occur.
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
 #' characters can be alphanumeric characters, underscores (\\_), or hyphens
 #' (-). Template names are case sensitive.
+#' @param Version The unique identifier for the version of the message template to update,
+#' retrieve information about, or delete. To retrieve identifiers and other
+#' information for all the versions of a template, use the Template
+#' Versions resource.
+#' 
+#' If specified, this value must match the identifier of an existing
+#' template version. If specified for an update operation, this value must
+#' match the identifier of the latest existing version of the template.
+#' This restriction helps ensure that race conditions don\'t occur.
+#' 
+#' If you don\'t specify a value for this parameter, Amazon Pinpoint does
+#' the following:
+#' 
+#' -   For a get operation, retrieves information about the active version
+#'     of the template.
+#' 
+#' -   For an update operation, saves the updates to the latest existing
+#'     version of the template, if the create-new-version parameter isn\'t
+#'     used or is set to false.
+#' 
+#' -   For a delete operation, deletes the template, including all versions
+#'     of the template.
 #' @param VoiceTemplateRequest &#91;required&#93; 
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_voice_template(
+#'   CreateNewVersion = TRUE|FALSE,
 #'   TemplateName = "string",
+#'   Version = "string",
 #'   VoiceTemplateRequest = list(
 #'     Body = "string",
 #'     DefaultSubstitutions = "string",
@@ -6887,14 +7334,14 @@ pinpoint_update_voice_channel <- function(ApplicationId, VoiceChannelRequest) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_voice_template
-pinpoint_update_voice_template <- function(TemplateName, VoiceTemplateRequest) {
+pinpoint_update_voice_template <- function(CreateNewVersion = NULL, TemplateName, Version = NULL, VoiceTemplateRequest) {
   op <- new_operation(
     name = "UpdateVoiceTemplate",
     http_method = "PUT",
     http_path = "/v1/templates/{template-name}/voice",
     paginator = list()
   )
-  input <- .pinpoint$update_voice_template_input(TemplateName = TemplateName, VoiceTemplateRequest = VoiceTemplateRequest)
+  input <- .pinpoint$update_voice_template_input(CreateNewVersion = CreateNewVersion, TemplateName = TemplateName, Version = Version, VoiceTemplateRequest = VoiceTemplateRequest)
   output <- .pinpoint$update_voice_template_output()
   config <- get_config()
   svc <- .pinpoint$service(config)

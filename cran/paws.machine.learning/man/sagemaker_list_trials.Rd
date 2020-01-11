@@ -19,7 +19,8 @@ experiment.}
 
 \item{SortOrder}{The sort order. The default value is \code{Descending}.}
 
-\item{MaxResults}{The maximum number of trials to return in the response.}
+\item{MaxResults}{The maximum number of trials to return in the response. The default
+value is 10.}
 
 \item{NextToken}{If the previous call to \code{ListTrials} didn\'t return the full set of
 trials, the call returns a token for getting the next set of trials.}

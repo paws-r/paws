@@ -57,10 +57,10 @@ API for AWS Elemental MediaLive
 \link[=medialive_describe_reservation]{describe_reservation} \tab Get details for a reservation \cr
 \link[=medialive_describe_schedule]{describe_schedule} \tab Get a channel schedule \cr
 \link[=medialive_list_channels]{list_channels} \tab Produces list of channels that have been created \cr
-\link[=medialive_list_input_security_groups]{list_input_security_groups} \tab Produces a list of Input Security Groups for an account \cr
 \link[=medialive_list_inputs]{list_inputs} \tab Produces list of inputs that have been created \cr
-\link[=medialive_list_multiplex_programs]{list_multiplex_programs} \tab List the programs that currently exist for a specific multiplex\cr
+\link[=medialive_list_input_security_groups]{list_input_security_groups} \tab Produces a list of Input Security Groups for an account \cr
 \link[=medialive_list_multiplexes]{list_multiplexes} \tab Retrieve a list of the existing multiplexes \cr
+\link[=medialive_list_multiplex_programs]{list_multiplex_programs} \tab List the programs that currently exist for a specific multiplex\cr
 \link[=medialive_list_offerings]{list_offerings} \tab List offerings available for purchase \cr
 \link[=medialive_list_reservations]{list_reservations} \tab List purchased reservations \cr
 \link[=medialive_list_tags_for_resource]{list_tags_for_resource} \tab Produces list of tags that have been created for a resource \cr

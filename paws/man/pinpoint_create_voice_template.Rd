@@ -2,8 +2,8 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_create_voice_template}
 \alias{pinpoint_create_voice_template}
-\title{Creates a message template that you can use in messages that are sent
-through the voice channel}
+\title{Creates a message template for messages that are sent through the voice
+channel}
 \usage{
 pinpoint_create_voice_template(TemplateName, VoiceTemplateRequest)
 }
@@ -16,8 +16,8 @@ characters can be alphanumeric characters, underscores (\\_), or hyphens
 \item{VoiceTemplateRequest}{[required]}
 }
 \description{
-Creates a message template that you can use in messages that are sent
-through the voice channel.
+Creates a message template for messages that are sent through the voice
+channel.
 }
 \section{Request syntax}{
 \preformatted{svc$create_voice_template(

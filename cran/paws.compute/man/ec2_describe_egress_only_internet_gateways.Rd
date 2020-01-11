@@ -5,7 +5,7 @@
 \title{Describes one or more of your egress-only internet gateways}
 \usage{
 ec2_describe_egress_only_internet_gateways(DryRun,
-  EgressOnlyInternetGatewayIds, MaxResults, NextToken)
+  EgressOnlyInternetGatewayIds, MaxResults, NextToken, Filters)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -20,6 +20,18 @@ the remaining results, make another call with the returned \code{nextToken}
 value.}
 
 \item{NextToken}{The token for the next page of results.}
+
+\item{Filters}{One or more filters.
+\itemize{
+\item \code{tag}:\\<key\\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
+\item \code{tag-key} - The key of a tag assigned to the resource. Use this
+filter to find all resources assigned a tag with a specific key,
+regardless of the tag value.
+}}
 }
 \description{
 Describes one or more of your egress-only internet gateways.
@@ -31,7 +43,15 @@ Describes one or more of your egress-only internet gateways.
     "string"
   ),
   MaxResults = 123,
-  NextToken = "string"
+  NextToken = "string",
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  )
 )
 }
 }

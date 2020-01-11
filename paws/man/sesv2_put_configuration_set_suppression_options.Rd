@@ -2,26 +2,30 @@
 % Please edit documentation in R/sesv2_operations.R
 \name{sesv2_put_configuration_set_suppression_options}
 \alias{sesv2_put_configuration_set_suppression_options}
-\title{Specify your account's suppression preferences for a configuration set}
+\title{Specify the account suppression list preferences for a configuration set}
 \usage{
 sesv2_put_configuration_set_suppression_options(ConfigurationSetName,
   SuppressedReasons)
 }
 \arguments{
-\item{ConfigurationSetName}{[required] The name of the configuration set that you want to enable or disable
-email sending for.}
+\item{ConfigurationSetName}{[required] The name of the configuration set that you want to change the
+suppression list preferences for.}
 
-\item{SuppressedReasons}{A list of reasons to suppress email addresses. The only valid reasons
-are:
+\item{SuppressedReasons}{A list that contains the reasons that email addresses are automatically
+added to the suppression list for your account. This list can contain
+any or all of the following:
 \itemize{
-\item \code{COMPLAINT} -- Amazon SES will suppress an email address that
-receives a complaint.
-\item \code{BOUNCE} -- Amazon SES will suppress an email address that hard
-bounces.
+\item \code{COMPLAINT} -- Amazon SES adds an email address to the suppression
+list for your account when a message sent to that address results in
+a complaint.
+\item \code{BOUNCE} -- Amazon SES adds an email address to the suppression list
+for your account when a message sent to that address results in a
+hard bounce.
 }}
 }
 \description{
-Specify your account\'s suppression preferences for a configuration set.
+Specify the account suppression list preferences for a configuration
+set.
 }
 \section{Request syntax}{
 \preformatted{svc$put_configuration_set_suppression_options(

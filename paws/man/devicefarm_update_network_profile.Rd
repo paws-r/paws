@@ -2,7 +2,7 @@
 % Please edit documentation in R/devicefarm_operations.R
 \name{devicefarm_update_network_profile}
 \alias{devicefarm_update_network_profile}
-\title{Updates the network profile with specific settings}
+\title{Updates the network profile}
 \usage{
 devicefarm_update_network_profile(arn, name, description, type,
   uplinkBandwidthBits, downlinkBandwidthBits, uplinkDelayMs,
@@ -19,8 +19,8 @@ information.}
 \item{description}{The description of the network profile about which you are returning
 information.}
 
-\item{type}{The type of network profile you wish to return information about. Valid
-values are listed below.}
+\item{type}{The type of network profile to return information about. Valid values
+are listed here.}
 
 \item{uplinkBandwidthBits}{The data throughput rate in bits per second, as an integer from 0 to
 104857600.}
@@ -47,7 +47,7 @@ percent.}
 percent.}
 }
 \description{
-Updates the network profile with specific settings.
+Updates the network profile.
 }
 \section{Request syntax}{
 \preformatted{svc$update_network_profile(

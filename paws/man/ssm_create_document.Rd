@@ -36,7 +36,7 @@ changed.}
 \code{Policy}, \code{Automation}, \code{Session}, and \code{Package}.}
 
 \item{DocumentFormat}{Specify the document format for the request. The document format can be
-either JSON or YAML. JSON is the default format.}
+JSON, YAML, or TEXT. JSON is the default format.}
 
 \item{TargetType}{Specify a target type to define the kinds of resources the document can
 run on. For example, to run a document on EC2 instances, specify the
@@ -77,7 +77,7 @@ it with one or more running instances.
   ),
   Attachments = list(
     list(
-      Key = "SourceUrl"|"S3FileUrl",
+      Key = "SourceUrl"|"S3FileUrl"|"AttachmentReference",
       Values = list(
         "string"
       ),
@@ -86,8 +86,8 @@ it with one or more running instances.
   ),
   Name = "string",
   VersionName = "string",
-  DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy",
-  DocumentFormat = "YAML"|"JSON",
+  DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar",
+  DocumentFormat = "YAML"|"JSON"|"TEXT",
   TargetType = "string",
   Tags = list(
     list(

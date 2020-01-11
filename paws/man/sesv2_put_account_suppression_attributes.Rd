@@ -2,22 +2,25 @@
 % Please edit documentation in R/sesv2_operations.R
 \name{sesv2_put_account_suppression_attributes}
 \alias{sesv2_put_account_suppression_attributes}
-\title{Change your account's suppression preferences for your account}
+\title{Change the settings for the account-level suppression list}
 \usage{
 sesv2_put_account_suppression_attributes(SuppressedReasons)
 }
 \arguments{
-\item{SuppressedReasons}{A list of reasons to suppress email addresses. The only valid reasons
-are:
+\item{SuppressedReasons}{A list that contains the reasons that email addresses will be
+automatically added to the suppression list for your account. This list
+can contain any or all of the following:
 \itemize{
-\item \code{COMPLAINT} -- Amazon SES will suppress an email address that
-receives a complaint.
-\item \code{BOUNCE} -- Amazon SES will suppress an email address that hard
-bounces.
+\item \code{COMPLAINT} -- Amazon SES adds an email address to the suppression
+list for your account when a message sent to that address results in
+a complaint.
+\item \code{BOUNCE} -- Amazon SES adds an email address to the suppression list
+for your account when a message sent to that address results in a
+hard bounce.
 }}
 }
 \description{
-Change your account\'s suppression preferences for your account.
+Change the settings for the account-level suppression list.
 }
 \section{Request syntax}{
 \preformatted{svc$put_account_suppression_attributes(

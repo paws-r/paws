@@ -153,7 +153,8 @@ Creates a journey for an application.
             FromAddress = "string"
           ),
           NextActivity = "string",
-          TemplateName = "string"
+          TemplateName = "string",
+          TemplateVersion = "string"
         ),
         Holdout = list(
           NextActivity = "string",

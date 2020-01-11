@@ -7,8 +7,7 @@
 devicefarm_stop_remote_access_session(arn)
 }
 \arguments{
-\item{arn}{[required] The Amazon Resource Name (ARN) of the remote access session you wish to
-stop.}
+\item{arn}{[required] The Amazon Resource Name (ARN) of the remote access session to stop.}
 }
 \description{
 Ends a specified remote access session.

@@ -24,6 +24,9 @@ Update a channel schedule
       list(
         ActionName = "string",
         ScheduleActionSettings = list(
+          HlsId3SegmentTaggingSettings = list(
+            Tag = "string"
+          ),
           HlsTimedMetadataSettings = list(
             Id3 = "string"
           ),

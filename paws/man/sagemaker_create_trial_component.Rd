@@ -56,12 +56,11 @@ must use the logging APIs provided by the SDK.
 You can add tags to a trial component and then use the Search API to
 search for the tags.
 
-You can create a trial component through a direct call to the
-\code{CreateTrialComponent} API. However, you can\'t specify the \code{Source}
-property of the component in the request, therefore, the component
-isn\'t associated with an Amazon SageMaker job. You must use Amazon
-SageMaker Studio, the Amazon SageMaker Python SDK, or the AWS SDK for
-Python (Boto) to create the component with a valid \code{Source} property.
+\code{CreateTrialComponent} can only be invoked from within an Amazon
+SageMaker managed environment. This includes Amazon SageMaker training
+jobs, processing jobs, transform jobs, and Amazon SageMaker notebooks. A
+call to \code{CreateTrialComponent} from outside one of these environments
+results in an error.
 }
 \section{Request syntax}{
 \preformatted{svc$create_trial_component(

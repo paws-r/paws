@@ -120,11 +120,11 @@ using an access key ID and secret access key.
 \link[=iam_delete_role_permissions_boundary]{delete_role_permissions_boundary} \tab Deletes the permissions boundary for the specified IAM role \cr
 \link[=iam_delete_role_policy]{delete_role_policy} \tab Deletes the specified inline policy that is embedded in the specified IAM role \cr
 \link[=iam_delete_saml_provider]{delete_saml_provider} \tab Deletes a SAML provider resource in IAM \cr
-\link[=iam_delete_ssh_public_key]{delete_ssh_public_key} \tab Deletes the specified SSH public key \cr
 \link[=iam_delete_server_certificate]{delete_server_certificate} \tab Deletes the specified server certificate \cr
 \link[=iam_delete_service_linked_role]{delete_service_linked_role} \tab Submits a service-linked role deletion request and returns a DeletionTaskId, which you can use to check the status of the deletion \cr
 \link[=iam_delete_service_specific_credential]{delete_service_specific_credential} \tab Deletes the specified service-specific credential \cr
 \link[=iam_delete_signing_certificate]{delete_signing_certificate} \tab Deletes a signing certificate associated with the specified IAM user \cr
+\link[=iam_delete_ssh_public_key]{delete_ssh_public_key} \tab Deletes the specified SSH public key \cr
 \link[=iam_delete_user]{delete_user} \tab Deletes the specified IAM user \cr
 \link[=iam_delete_user_permissions_boundary]{delete_user_permissions_boundary} \tab Deletes the permissions boundary for the specified IAM user \cr
 \link[=iam_delete_user_policy]{delete_user_policy} \tab Deletes the specified inline policy that is embedded in the specified IAM user \cr
@@ -154,11 +154,11 @@ using an access key ID and secret access key.
 \link[=iam_get_role]{get_role} \tab Retrieves information about the specified role, including the role's path, GUID, ARN, and the role's trust policy that grants permission to assume the role \cr
 \link[=iam_get_role_policy]{get_role_policy} \tab Retrieves the specified inline policy document that is embedded with the specified IAM role \cr
 \link[=iam_get_saml_provider]{get_saml_provider} \tab Returns the SAML provider metadocument that was uploaded when the IAM SAML provider resource object was created or updated \cr
-\link[=iam_get_ssh_public_key]{get_ssh_public_key} \tab Retrieves the specified SSH public key, including metadata about the key \cr
 \link[=iam_get_server_certificate]{get_server_certificate} \tab Retrieves information about the specified server certificate stored in IAM \cr
 \link[=iam_get_service_last_accessed_details]{get_service_last_accessed_details} \tab Retrieves a service last accessed report that was created using the GenerateServiceLastAccessedDetails operation \cr
 \link[=iam_get_service_last_accessed_details_with_entities]{get_service_last_accessed_details_with_entities} \tab After you generate a group or policy report using the GenerateServiceLastAccessedDetails operation, you can use the JobId parameter in GetServiceLastAccessedDetailsWithEntities \cr
 \link[=iam_get_service_linked_role_deletion_status]{get_service_linked_role_deletion_status} \tab Retrieves the status of your service-linked role deletion \cr
+\link[=iam_get_ssh_public_key]{get_ssh_public_key} \tab Retrieves the specified SSH public key, including metadata about the key \cr
 \link[=iam_get_user]{get_user} \tab Retrieves information about the specified IAM user, including the user's creation date, path, unique ID, and ARN \cr
 \link[=iam_get_user_policy]{get_user_policy} \tab Retrieves the specified inline policy document that is embedded in the specified IAM user \cr
 \link[=iam_list_access_keys]{list_access_keys} \tab Returns information about the access key IDs associated with the specified IAM user \cr
@@ -178,16 +178,16 @@ using an access key ID and secret access key.
 \link[=iam_list_policies_granting_service_access]{list_policies_granting_service_access} \tab Retrieves a list of policies that the IAM identity (user, group, or role) can use to access each specified service \cr
 \link[=iam_list_policy_versions]{list_policy_versions} \tab Lists information about the versions of the specified managed policy, including the version that is currently set as the policy's default version \cr
 \link[=iam_list_role_policies]{list_role_policies} \tab Lists the names of the inline policies that are embedded in the specified IAM role \cr
-\link[=iam_list_role_tags]{list_role_tags} \tab Lists the tags that are attached to the specified role \cr
 \link[=iam_list_roles]{list_roles} \tab Lists the IAM roles that have the specified path prefix \cr
+\link[=iam_list_role_tags]{list_role_tags} \tab Lists the tags that are attached to the specified role \cr
 \link[=iam_list_saml_providers]{list_saml_providers} \tab Lists the SAML provider resource objects defined in IAM in the account \cr
-\link[=iam_list_ssh_public_keys]{list_ssh_public_keys} \tab Returns information about the SSH public keys associated with the specified IAM user \cr
 \link[=iam_list_server_certificates]{list_server_certificates} \tab Lists the server certificates stored in IAM that have the specified path prefix \cr
 \link[=iam_list_service_specific_credentials]{list_service_specific_credentials} \tab Returns information about the service-specific credentials associated with the specified IAM user \cr
 \link[=iam_list_signing_certificates]{list_signing_certificates} \tab Returns information about the signing certificates associated with the specified IAM user \cr
+\link[=iam_list_ssh_public_keys]{list_ssh_public_keys} \tab Returns information about the SSH public keys associated with the specified IAM user \cr
 \link[=iam_list_user_policies]{list_user_policies} \tab Lists the names of the inline policies embedded in the specified IAM user \cr
-\link[=iam_list_user_tags]{list_user_tags} \tab Lists the tags that are attached to the specified user \cr
 \link[=iam_list_users]{list_users} \tab Lists the IAM users that have the specified path prefix \cr
+\link[=iam_list_user_tags]{list_user_tags} \tab Lists the tags that are attached to the specified user \cr
 \link[=iam_list_virtual_mfa_devices]{list_virtual_mfa_devices} \tab Lists the virtual MFA devices defined in the AWS account by assignment status \cr
 \link[=iam_put_group_policy]{put_group_policy} \tab Adds or updates an inline policy document that is embedded in the specified IAM group \cr
 \link[=iam_put_role_permissions_boundary]{put_role_permissions_boundary} \tab Adds or updates the policy that is specified as the IAM role's permissions boundary \cr
@@ -216,14 +216,14 @@ using an access key ID and secret access key.
 \link[=iam_update_role]{update_role} \tab Updates the description or maximum session duration setting of a role \cr
 \link[=iam_update_role_description]{update_role_description} \tab Use UpdateRole instead \cr
 \link[=iam_update_saml_provider]{update_saml_provider} \tab Updates the metadata document for an existing SAML provider resource object \cr
-\link[=iam_update_ssh_public_key]{update_ssh_public_key} \tab Sets the status of an IAM user's SSH public key to active or inactive \cr
 \link[=iam_update_server_certificate]{update_server_certificate} \tab Updates the name and/or the path of the specified server certificate stored in IAM \cr
 \link[=iam_update_service_specific_credential]{update_service_specific_credential} \tab Sets the status of a service-specific credential to Active or Inactive \cr
 \link[=iam_update_signing_certificate]{update_signing_certificate} \tab Changes the status of the specified user signing certificate from active to disabled, or vice versa \cr
+\link[=iam_update_ssh_public_key]{update_ssh_public_key} \tab Sets the status of an IAM user's SSH public key to active or inactive \cr
 \link[=iam_update_user]{update_user} \tab Updates the name and/or the path of the specified IAM user \cr
-\link[=iam_upload_ssh_public_key]{upload_ssh_public_key} \tab Uploads an SSH public key and associates it with the specified IAM user \cr
 \link[=iam_upload_server_certificate]{upload_server_certificate} \tab Uploads a server certificate entity for the AWS account \cr
-\link[=iam_upload_signing_certificate]{upload_signing_certificate} \tab Uploads an X
+\link[=iam_upload_signing_certificate]{upload_signing_certificate} \tab Uploads an X \cr
+\link[=iam_upload_ssh_public_key]{upload_ssh_public_key} \tab Uploads an SSH public key and associates it with the specified IAM user
 }
 }
 

@@ -8,20 +8,20 @@ gamelift_describe_game_sessions(FleetId, GameSessionId, AliasId,
   StatusFilter, Limit, NextToken)
 }
 \arguments{
-\item{FleetId}{Unique identifier for a fleet to retrieve all game sessions for.}
+\item{FleetId}{A unique identifier for a fleet to retrieve all game sessions for. You
+can use either the fleet ID or ARN value.}
 
-\item{GameSessionId}{Unique identifier for the game session to retrieve. You can use either a
-\code{GameSessionId} or \code{GameSessionArn} value.}
+\item{GameSessionId}{A unique identifier for the game session to retrieve.}
 
-\item{AliasId}{Unique identifier for an alias associated with the fleet to retrieve all
-game sessions for.}
+\item{AliasId}{A unique identifier for an alias associated with the fleet to retrieve
+all game sessions for. You can use either the alias ID or ARN value.}
 
 \item{StatusFilter}{Game session status to filter results on. Possible game session statuses
 include \code{ACTIVE}, \code{TERMINATED}, \code{ACTIVATING}, and \code{TERMINATING} (the
 last two are transitory).}
 
-\item{Limit}{Maximum number of results to return. Use this parameter with \code{NextToken}
-to get results as a set of sequential pages.}
+\item{Limit}{The maximum number of results to return. Use this parameter with
+\code{NextToken} to get results as a set of sequential pages.}
 
 \item{NextToken}{Token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this action. To

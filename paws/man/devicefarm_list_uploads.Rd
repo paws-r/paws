@@ -14,52 +14,38 @@ uploads.}
 
 Must be one of the following values:
 \itemize{
-\item ANDROID\\_APP: An Android upload.
-\item IOS\\_APP: An iOS upload.
-\item WEB\\_APP: A web application upload.
-\item EXTERNAL\\_DATA: An external data upload.
-\item APPIUM\\_JAVA\\_JUNIT\\_TEST\\_PACKAGE: An Appium Java JUnit test
-package upload.
-\item APPIUM\\_JAVA\\_TESTNG\\_TEST\\_PACKAGE: An Appium Java TestNG test
-package upload.
-\item APPIUM\\_PYTHON\\_TEST\\_PACKAGE: An Appium Python test package upload.
-\item APPIUM\\_NODE\\_TEST\\_PACKAGE: An Appium Node.js test package upload.
-\item APPIUM\\_RUBY\\_TEST\\_PACKAGE: An Appium Ruby test package upload.
-\item APPIUM\\_WEB\\_JAVA\\_JUNIT\\_TEST\\_PACKAGE: An Appium Java JUnit test
-package upload for a web app.
-\item APPIUM\\_WEB\\_JAVA\\_TESTNG\\_TEST\\_PACKAGE: An Appium Java TestNG test
-package upload for a web app.
-\item APPIUM\\_WEB\\_PYTHON\\_TEST\\_PACKAGE: An Appium Python test package
-upload for a web app.
-\item APPIUM\\_WEB\\_NODE\\_TEST\\_PACKAGE: An Appium Node.js test package
-upload for a web app.
-\item APPIUM\\_WEB\\_RUBY\\_TEST\\_PACKAGE: An Appium Ruby test package upload
-for a web app.
-\item CALABASH\\_TEST\\_PACKAGE: A Calabash test package upload.
-\item INSTRUMENTATION\\_TEST\\_PACKAGE: An instrumentation upload.
-\item UIAUTOMATION\\_TEST\\_PACKAGE: A uiautomation test package upload.
-\item UIAUTOMATOR\\_TEST\\_PACKAGE: A uiautomator test package upload.
-\item XCTEST\\_TEST\\_PACKAGE: An Xcode test package upload.
-\item XCTEST\\_UI\\_TEST\\_PACKAGE: An Xcode UI test package upload.
-\item APPIUM\\_JAVA\\_JUNIT\\_TEST\\_SPEC: An Appium Java JUnit test spec
-upload.
-\item APPIUM\\_JAVA\\_TESTNG\\_TEST\\_SPEC: An Appium Java TestNG test spec
-upload.
-\item APPIUM\\_PYTHON\\_TEST\\_SPEC: An Appium Python test spec upload.
-\item APPIUM\\_NODE\\_TEST\\_SPEC: An Appium Node.js test spec upload.
-\item APPIUM\\_RUBY\\_TEST\\_SPEC: An Appium Ruby test spec upload.
-\item APPIUM\\_WEB\\_JAVA\\_JUNIT\\_TEST\\_SPEC: An Appium Java JUnit test spec
-upload for a web app.
-\item APPIUM\\_WEB\\_JAVA\\_TESTNG\\_TEST\\_SPEC: An Appium Java TestNG test
-spec upload for a web app.
-\item APPIUM\\_WEB\\_PYTHON\\_TEST\\_SPEC: An Appium Python test spec upload
-for a web app.
-\item APPIUM\\_WEB\\_NODE\\_TEST\\_SPEC: An Appium Node.js test spec upload
-for a web app.
-\item APPIUM\\_WEB\\_RUBY\\_TEST\\_SPEC: An Appium Ruby test spec upload for a
-web app.
-\item INSTRUMENTATION\\_TEST\\_SPEC: An instrumentation test spec upload.
-\item XCTEST\\_UI\\_TEST\\_SPEC: An Xcode UI test spec upload.
+\item ANDROID\\_APP
+\item IOS\\_APP
+\item WEB\\_APP
+\item EXTERNAL\\_DATA
+\item APPIUM\\_JAVA\\_JUNIT\\_TEST\\_PACKAGE
+\item APPIUM\\_JAVA\\_TESTNG\\_TEST\\_PACKAGE
+\item APPIUM\\_PYTHON\\_TEST\\_PACKAGE
+\item APPIUM\\_NODE\\_TEST\\_PACKAGE
+\item APPIUM\\_RUBY\\_TEST\\_PACKAGE
+\item APPIUM\\_WEB\\_JAVA\\_JUNIT\\_TEST\\_PACKAGE
+\item APPIUM\\_WEB\\_JAVA\\_TESTNG\\_TEST\\_PACKAGE
+\item APPIUM\\_WEB\\_PYTHON\\_TEST\\_PACKAGE
+\item APPIUM\\_WEB\\_NODE\\_TEST\\_PACKAGE
+\item APPIUM\\_WEB\\_RUBY\\_TEST\\_PACKAGE
+\item CALABASH\\_TEST\\_PACKAGE
+\item INSTRUMENTATION\\_TEST\\_PACKAGE
+\item UIAUTOMATION\\_TEST\\_PACKAGE
+\item UIAUTOMATOR\\_TEST\\_PACKAGE
+\item XCTEST\\_TEST\\_PACKAGE
+\item XCTEST\\_UI\\_TEST\\_PACKAGE
+\item APPIUM\\_JAVA\\_JUNIT\\_TEST\\_SPEC
+\item APPIUM\\_JAVA\\_TESTNG\\_TEST\\_SPEC
+\item APPIUM\\_PYTHON\\_TEST\\_SPEC
+\item APPIUM\\_NODE\\_TEST\\_SPEC
+\item APPIUM\\_RUBY\\_TEST\\_SPEC
+\item APPIUM\\_WEB\\_JAVA\\_JUNIT\\_TEST\\_SPEC
+\item APPIUM\\_WEB\\_JAVA\\_TESTNG\\_TEST\\_SPEC
+\item APPIUM\\_WEB\\_PYTHON\\_TEST\\_SPEC
+\item APPIUM\\_WEB\\_NODE\\_TEST\\_SPEC
+\item APPIUM\\_WEB\\_RUBY\\_TEST\\_SPEC
+\item INSTRUMENTATION\\_TEST\\_SPEC
+\item XCTEST\\_UI\\_TEST\\_SPEC
 }}
 
 \item{nextToken}{An identifier that was returned from the previous call to this

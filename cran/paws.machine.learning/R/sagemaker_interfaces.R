@@ -1205,7 +1205,7 @@ NULL
 
 .sagemaker$list_trial_components_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SourceArn = structure(logical(0), tags = list(type = "string")), CreatedAfter = structure(logical(0), tags = list(type = "timestamp")), CreatedBefore = structure(logical(0), tags = list(type = "timestamp")), SortBy = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ExperimentName = structure(logical(0), tags = list(type = "string")), TrialName = structure(logical(0), tags = list(type = "string")), SourceArn = structure(logical(0), tags = list(type = "string")), CreatedAfter = structure(logical(0), tags = list(type = "timestamp")), CreatedBefore = structure(logical(0), tags = list(type = "timestamp")), SortBy = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

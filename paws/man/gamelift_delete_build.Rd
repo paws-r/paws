@@ -7,7 +7,8 @@
 gamelift_delete_build(BuildId)
 }
 \arguments{
-\item{BuildId}{[required] Unique identifier for a build to delete.}
+\item{BuildId}{[required] A unique identifier for a build to delete. You can use either the build
+ID or ARN value.}
 }
 \description{
 Deletes a build. This action permanently deletes the build record and

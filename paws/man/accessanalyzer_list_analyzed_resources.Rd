@@ -2,7 +2,8 @@
 % Please edit documentation in R/accessanalyzer_operations.R
 \name{accessanalyzer_list_analyzed_resources}
 \alias{accessanalyzer_list_analyzed_resources}
-\title{Retrieves a list of resources that have been analyzed}
+\title{Retrieves a list of resources of the specified type that have been
+analyzed by the specified analyzer}
 \usage{
 accessanalyzer_list_analyzed_resources(analyzerArn, maxResults,
   nextToken, resourceType)
@@ -17,7 +18,8 @@ accessanalyzer_list_analyzed_resources(analyzerArn, maxResults,
 \item{resourceType}{The type of resource.}
 }
 \description{
-Retrieves a list of resources that have been analyzed.
+Retrieves a list of resources of the specified type that have been
+analyzed by the specified analyzer..
 }
 \section{Request syntax}{
 \preformatted{svc$list_analyzed_resources(

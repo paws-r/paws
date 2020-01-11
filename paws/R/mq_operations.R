@@ -11,7 +11,7 @@ NULL
 #' mq_create_broker(AutoMinorVersionUpgrade, BrokerName, Configuration,
 #'   CreatorRequestId, DeploymentMode, EncryptionOptions, EngineType,
 #'   EngineVersion, HostInstanceType, Logs, MaintenanceWindowStartTime,
-#'   PubliclyAccessible, SecurityGroups, SubnetIds, Tags, Users)
+#'   PubliclyAccessible, SecurityGroups, StorageType, SubnetIds, Tags, Users)
 #'
 #' @param AutoMinorVersionUpgrade Required. Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The automatic upgrades occur during the maintenance window of the broker or after a manual broker reboot.
 #' @param BrokerName Required. The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain whitespaces, brackets, wildcard characters, or special characters.
@@ -25,7 +25,8 @@ NULL
 #' @param Logs Enables Amazon CloudWatch logging for brokers.
 #' @param MaintenanceWindowStartTime The parameters that determine the WeeklyStartTime.
 #' @param PubliclyAccessible Required. Enables connections from applications outside of the VPC that hosts the broker's subnets.
-#' @param SecurityGroups The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+#' @param SecurityGroups The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
+#' @param StorageType The broker's storage type.
 #' @param SubnetIds The list of groups (2 maximum) that define which subnets and IP ranges the broker can use from different Availability Zones. A SINGLE_INSTANCE deployment requires one subnet (for example, the default subnet). An ACTIVE_STANDBY_MULTI_AZ deployment requires two subnets.
 #' @param Tags Create tags when creating the broker.
 #' @param Users Required. The list of ActiveMQ users (persons or applications) who can access queues and topics. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.
@@ -61,6 +62,7 @@ NULL
 #'   SecurityGroups = list(
 #'     "string"
 #'   ),
+#'   StorageType = "EBS"|"EFS",
 #'   SubnetIds = list(
 #'     "string"
 #'   ),
@@ -83,14 +85,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname mq_create_broker
-mq_create_broker <- function(AutoMinorVersionUpgrade = NULL, BrokerName = NULL, Configuration = NULL, CreatorRequestId = NULL, DeploymentMode = NULL, EncryptionOptions = NULL, EngineType = NULL, EngineVersion = NULL, HostInstanceType = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, PubliclyAccessible = NULL, SecurityGroups = NULL, SubnetIds = NULL, Tags = NULL, Users = NULL) {
+mq_create_broker <- function(AutoMinorVersionUpgrade = NULL, BrokerName = NULL, Configuration = NULL, CreatorRequestId = NULL, DeploymentMode = NULL, EncryptionOptions = NULL, EngineType = NULL, EngineVersion = NULL, HostInstanceType = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, PubliclyAccessible = NULL, SecurityGroups = NULL, StorageType = NULL, SubnetIds = NULL, Tags = NULL, Users = NULL) {
   op <- new_operation(
     name = "CreateBroker",
     http_method = "POST",
     http_path = "/v1/brokers",
     paginator = list()
   )
-  input <- .mq$create_broker_input(AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerName = BrokerName, Configuration = Configuration, CreatorRequestId = CreatorRequestId, DeploymentMode = DeploymentMode, EncryptionOptions = EncryptionOptions, EngineType = EngineType, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, Logs = Logs, MaintenanceWindowStartTime = MaintenanceWindowStartTime, PubliclyAccessible = PubliclyAccessible, SecurityGroups = SecurityGroups, SubnetIds = SubnetIds, Tags = Tags, Users = Users)
+  input <- .mq$create_broker_input(AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerName = BrokerName, Configuration = Configuration, CreatorRequestId = CreatorRequestId, DeploymentMode = DeploymentMode, EncryptionOptions = EncryptionOptions, EngineType = EngineType, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, Logs = Logs, MaintenanceWindowStartTime = MaintenanceWindowStartTime, PubliclyAccessible = PubliclyAccessible, SecurityGroups = SecurityGroups, StorageType = StorageType, SubnetIds = SubnetIds, Tags = Tags, Users = Users)
   output <- .mq$create_broker_output()
   config <- get_config()
   svc <- .mq$service(config)
@@ -426,12 +428,13 @@ mq_describe_broker_engine_types <- function(EngineType = NULL, MaxResults = NULL
 #'
 #' @usage
 #' mq_describe_broker_instance_options(EngineType, HostInstanceType,
-#'   MaxResults, NextToken)
+#'   MaxResults, NextToken, StorageType)
 #'
 #' @param EngineType Filter response by engine type.
 #' @param HostInstanceType Filter response by host instance type.
 #' @param MaxResults The maximum number of instance options that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.
 #' @param NextToken The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+#' @param StorageType Filter response by storage type.
 #'
 #' @section Request syntax:
 #' ```
@@ -439,21 +442,22 @@ mq_describe_broker_engine_types <- function(EngineType = NULL, MaxResults = NULL
 #'   EngineType = "string",
 #'   HostInstanceType = "string",
 #'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   StorageType = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname mq_describe_broker_instance_options
-mq_describe_broker_instance_options <- function(EngineType = NULL, HostInstanceType = NULL, MaxResults = NULL, NextToken = NULL) {
+mq_describe_broker_instance_options <- function(EngineType = NULL, HostInstanceType = NULL, MaxResults = NULL, NextToken = NULL, StorageType = NULL) {
   op <- new_operation(
     name = "DescribeBrokerInstanceOptions",
     http_method = "GET",
     http_path = "/v1/broker-instance-options",
     paginator = list()
   )
-  input <- .mq$describe_broker_instance_options_input(EngineType = EngineType, HostInstanceType = HostInstanceType, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .mq$describe_broker_instance_options_input(EngineType = EngineType, HostInstanceType = HostInstanceType, MaxResults = MaxResults, NextToken = NextToken, StorageType = StorageType)
   output <- .mq$describe_broker_instance_options_output()
   config <- get_config()
   svc <- .mq$service(config)
@@ -819,7 +823,7 @@ mq_reboot_broker <- function(BrokerId) {
 #' @param EngineVersion The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 #' @param HostInstanceType The host instance type of the broker to upgrade to. For a list of supported instance types, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
 #' @param Logs Enables Amazon CloudWatch logging for brokers.
-#' @param SecurityGroups The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+#' @param SecurityGroups The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
 #'
 #' @section Request syntax:
 #' ```

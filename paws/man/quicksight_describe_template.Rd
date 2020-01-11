@@ -8,15 +8,16 @@ quicksight_describe_template(AwsAccountId, TemplateId, VersionNumber,
   AliasName)
 }
 \arguments{
-\item{AwsAccountId}{[required] AWS account ID that contains the template you are describing.}
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the template that you\'re
+describing.}
 
-\item{TemplateId}{[required] An ID for the template.}
+\item{TemplateId}{[required] The ID for the template.}
 
-\item{VersionNumber}{This is an optional field, when a version number is provided the
-corresponding version is describe, if it\'s not provided the latest
-version of the template is described.}
+\item{VersionNumber}{(Optional) The number for the version to describe. If a \code{VersionNumber}
+parameter value isn\'t provided, the latest version of the template is
+described.}
 
-\item{AliasName}{The alias of the template that you want to describe. If you provide a
+\item{AliasName}{The alias of the template that you want to describe. If you name a
 specific alias, you describe the version that the alias points to. You
 can specify the latest version of the template by providing the keyword
 \verb{$LATEST} in the \code{AliasName} parameter. The keyword \verb{$PUBLISHED}

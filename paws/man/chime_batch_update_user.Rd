@@ -23,7 +23,12 @@ Updates user details within the UpdateUserRequestItem object for up to
   UpdateUserRequestItems = list(
     list(
       UserId = "string",
-      LicenseType = "Basic"|"Plus"|"Pro"|"ProTrial"
+      LicenseType = "Basic"|"Plus"|"Pro"|"ProTrial",
+      UserType = "PrivateUser"|"SharedDevice",
+      AlexaForBusinessMetadata = list(
+        IsAlexaForBusinessEnabled = TRUE|FALSE,
+        AlexaForBusinessRoomArn = "string"
+      )
     )
   )
 )

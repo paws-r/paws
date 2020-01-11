@@ -12,8 +12,9 @@ codebuild_start_build(projectName, secondarySourcesOverride,
   insecureSslOverride, reportBuildStatusOverride, environmentTypeOverride,
   imageOverride, computeTypeOverride, certificateOverride, cacheOverride,
   serviceRoleOverride, privilegedModeOverride, timeoutInMinutesOverride,
-  queuedTimeoutInMinutesOverride, idempotencyToken, logsConfigOverride,
-  registryCredentialOverride, imagePullCredentialsTypeOverride)
+  queuedTimeoutInMinutesOverride, encryptionKeyOverride, idempotencyToken,
+  logsConfigOverride, registryCredentialOverride,
+  imagePullCredentialsTypeOverride)
 }
 \arguments{
 \item{projectName}{[required] The name of the AWS CodeBuild build project to start running a build.}
@@ -115,6 +116,17 @@ the build project.}
 
 \item{queuedTimeoutInMinutesOverride}{The number of minutes a build is allowed to be queued before it times
 out.}
+
+\item{encryptionKeyOverride}{The AWS Key Management Service (AWS KMS) customer master key (CMK) that
+overrides the one specified in the build project. The CMK key encrypts
+the build output artifacts.
+
+You can use a cross-account KMS key to encrypt the build output
+artifacts if your service role has permission to that key.
+
+You can specify either the Amazon Resource Name (ARN) of the CMK or, if
+available, the CMK\'s alias (using the format
+\verb{alias/<i>alias-name</i> }).}
 
 \item{idempotencyToken}{A unique, case sensitive identifier you provide to ensure the
 idempotency of the StartBuild request. The token is included in the
@@ -231,6 +243,7 @@ Starts running a build.
   privilegedModeOverride = TRUE|FALSE,
   timeoutInMinutesOverride = 123,
   queuedTimeoutInMinutesOverride = 123,
+  encryptionKeyOverride = "string",
   idempotencyToken = "string",
   logsConfigOverride = list(
     cloudWatchLogs = list(

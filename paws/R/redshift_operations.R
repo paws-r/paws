@@ -465,9 +465,8 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #' 
-#' Valid Values: `ds2.xlarge` \\| `ds2.8xlarge` \\| `ds2.xlarge` \\|
-#' `ds2.8xlarge` \\| `dc1.large` \\| `dc1.8xlarge` \\| `dc2.large` \\|
-#' `dc2.8xlarge`
+#' Valid Values: `ds2.xlarge` \\| `ds2.8xlarge` \\| `dc1.large` \\|
+#' `dc1.8xlarge` \\| `dc2.large` \\| `dc2.8xlarge` \\| `ra3.16xlarge`
 #' @param MasterUsername &#91;required&#93; The user name associated with the master user account for the cluster
 #' that is being created.
 #' 
@@ -4603,7 +4602,7 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 #' You can use DescribeResize to track the progress of the resize request.
 #' 
 #' Valid Values: `ds2.xlarge` \\| `ds2.8xlarge` \\| `dc1.large` \\|
-#' `dc1.8xlarge` \\| `dc2.large` \\| `dc2.8xlarge`
+#' `dc1.8xlarge` \\| `dc2.large` \\| `dc2.8xlarge` \\| `ra3.16xlarge`
 #' @param NumberOfNodes The new number of nodes of the cluster. If you specify a new number of
 #' nodes, you must also specify the node type parameter.
 #' 
@@ -5624,6 +5623,8 @@ redshift_reset_cluster_parameter_group <- function(ParameterGroupName, ResetAllP
 #'     -   ds2.xlarge
 #' 
 #'     -   ds2.8xlarge
+#' 
+#'     -   ra3.16xlarge
 #' 
 #' -   The type of nodes that you add must match the node type for the
 #'     cluster.

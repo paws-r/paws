@@ -7,13 +7,14 @@
 gamelift_describe_game_session_queues(Names, Limit, NextToken)
 }
 \arguments{
-\item{Names}{List of queue names to retrieve information for. To request settings for
-all queues, leave this parameter empty.}
+\item{Names}{A list of queue names to retrieve information for. You can use either
+the queue ID or ARN value. To request settings for all queues, leave
+this parameter empty.}
 
-\item{Limit}{Maximum number of results to return. Use this parameter with \code{NextToken}
-to get results as a set of sequential pages.}
+\item{Limit}{The maximum number of results to return. Use this parameter with
+\code{NextToken} to get results as a set of sequential pages.}
 
-\item{NextToken}{Token that indicates the start of the next sequential page of results.
+\item{NextToken}{A token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this action. To
 start at the beginning of the result set, do not specify a value.}
 }
@@ -23,7 +24,7 @@ requesting multiple queues, use the pagination parameters to retrieve
 results as a set of sequential pages. If successful, a GameSessionQueue
 object is returned for each requested queue. When specifying a list of
 queues, objects are returned only for queues that currently exist in the
-region.
+Region.
 }
 \details{
 \itemize{

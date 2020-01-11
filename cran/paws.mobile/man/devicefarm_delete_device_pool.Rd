@@ -8,7 +8,7 @@ devicefarm_delete_device_pool(arn)
 }
 \arguments{
 \item{arn}{[required] Represents the Amazon Resource Name (ARN) of the Device Farm device pool
-you wish to delete.}
+to delete.}
 }
 \description{
 Deletes a device pool given the pool ARN. Does not allow deletion of

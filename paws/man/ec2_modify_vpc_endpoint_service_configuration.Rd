@@ -5,8 +5,8 @@
 \title{Modifies the attributes of your VPC endpoint service configuration}
 \usage{
 ec2_modify_vpc_endpoint_service_configuration(DryRun, ServiceId,
-  AcceptanceRequired, AddNetworkLoadBalancerArns,
-  RemoveNetworkLoadBalancerArns)
+  PrivateDnsName, RemovePrivateDnsName, AcceptanceRequired,
+  AddNetworkLoadBalancerArns, RemoveNetworkLoadBalancerArns)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -16,7 +16,11 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ServiceId}{[required] The ID of the service.}
 
-\item{AcceptanceRequired}{Indicate whether requests to create an endpoint to your service must be
+\item{PrivateDnsName}{The private DNS name to assign to the endpoint service.}
+
+\item{RemovePrivateDnsName}{Removes the private DNS name of the endpoint service.}
+
+\item{AcceptanceRequired}{Indicates whether requests to create an endpoint to your service must be
 accepted.}
 
 \item{AddNetworkLoadBalancerArns}{The Amazon Resource Names (ARNs) of Network Load Balancers to add to
@@ -31,10 +35,17 @@ can change the Network Load Balancers for your service, and you can
 specify whether acceptance is required for requests to connect to your
 endpoint service through an interface VPC endpoint.
 }
+\details{
+If you set or modify the private DNS name, you must prove that you own
+the private DNS domain name. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-services-dns-validation.html}{VPC Endpoint Service Private DNS Name Verification}
+in the \emph{Amazon Virtual Private Cloud User Guide}.
+}
 \section{Request syntax}{
 \preformatted{svc$modify_vpc_endpoint_service_configuration(
   DryRun = TRUE|FALSE,
   ServiceId = "string",
+  PrivateDnsName = "string",
+  RemovePrivateDnsName = TRUE|FALSE,
   AcceptanceRequired = TRUE|FALSE,
   AddNetworkLoadBalancerArns = list(
     "string"

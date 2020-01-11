@@ -9,16 +9,17 @@ gamelift_put_scaling_policy(Name, FleetId, ScalingAdjustment,
   MetricName, PolicyType, TargetConfiguration)
 }
 \arguments{
-\item{Name}{[required] Descriptive label that is associated with a scaling policy. Policy names
-do not need to be unique. A fleet can have only one scaling policy with
-the same name.}
+\item{Name}{[required] A descriptive label that is associated with a scaling policy. Policy
+names do not need to be unique. A fleet can have only one scaling policy
+with the same name.}
 
-\item{FleetId}{[required] Unique identifier for a fleet to apply this policy to. The fleet cannot
-be in any of the following statuses: ERROR or DELETING.}
+\item{FleetId}{[required] A unique identifier for a fleet to apply this policy to. You can use
+either the fleet ID or ARN value. The fleet cannot be in any of the
+following statuses: ERROR or DELETING.}
 
 \item{ScalingAdjustment}{Amount of adjustment to make, based on the scaling adjustment type.}
 
-\item{ScalingAdjustmentType}{Type of adjustment to make to a fleet\'s instance count (see
+\item{ScalingAdjustmentType}{The type of adjustment to make to a fleet\'s instance count (see
 FleetCapacity):
 \itemize{
 \item \strong{ChangeInCapacity} \\-- add (or subtract) the scaling adjustment
@@ -71,13 +72,13 @@ placement requests, in any queue, where the current fleet is the
 top-priority destination.
 }}
 
-\item{PolicyType}{Type of scaling policy to create. For a target-based policy, set the
+\item{PolicyType}{The type of scaling policy to create. For a target-based policy, set the
 parameter \emph{MetricName} to \'PercentAvailableGameSessions\' and specify a
 \emph{TargetConfiguration}. For a rule-based policy set the following
 parameters: \emph{MetricName}, \emph{ComparisonOperator}, \emph{Threshold},
 \emph{EvaluationPeriods}, \emph{ScalingAdjustmentType}, and \emph{ScalingAdjustment}.}
 
-\item{TargetConfiguration}{Object that contains settings for a target-based scaling policy.}
+\item{TargetConfiguration}{The settings for a target-based scaling policy.}
 }
 \description{
 Creates or updates a scaling policy for a fleet. Scaling policies are

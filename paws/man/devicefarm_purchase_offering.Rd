@@ -9,7 +9,7 @@ devicefarm_purchase_offering(offeringId, quantity, offeringPromotionId)
 \arguments{
 \item{offeringId}{The ID of the offering.}
 
-\item{quantity}{The number of device slots you wish to purchase in an offering request.}
+\item{quantity}{The number of device slots to purchase in an offering request.}
 
 \item{offeringPromotionId}{The ID of the offering promotion to be applied to the purchase.}
 }
@@ -17,9 +17,8 @@ devicefarm_purchase_offering(offeringId, quantity, offeringPromotionId)
 Immediately purchases offerings for an AWS account. Offerings renew with
 the latest total purchased quantity for an offering, unless the renewal
 was overridden. The API returns a \code{NotEligible} error if the user is not
-permitted to invoke the operation. Please contact
-\href{mailto:aws-devicefarm-support@amazon.com}{aws-devicefarm-support@amazon.com} if you believe that you should be
-able to invoke this operation.
+permitted to invoke the operation. If you must be able to invoke this
+operation, contact \href{mailto:aws-devicefarm-support@amazon.com}{aws-devicefarm-support@amazon.com}.
 }
 \section{Request syntax}{
 \preformatted{svc$purchase_offering(

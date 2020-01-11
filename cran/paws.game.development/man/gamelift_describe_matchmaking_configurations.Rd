@@ -8,17 +8,19 @@ gamelift_describe_matchmaking_configurations(Names, RuleSetName, Limit,
   NextToken)
 }
 \arguments{
-\item{Names}{Unique identifier for a matchmaking configuration(s) to retrieve. To
-request all existing configurations, leave this parameter empty.}
+\item{Names}{A unique identifier for a matchmaking configuration(s) to retrieve. You
+can use either the configuration name or ARN value. To request all
+existing configurations, leave this parameter empty.}
 
-\item{RuleSetName}{Unique identifier for a matchmaking rule set. Use this parameter to
-retrieve all matchmaking configurations that use this rule set.}
+\item{RuleSetName}{A unique identifier for a matchmaking rule set. You can use either the
+rule set name or ARN value. Use this parameter to retrieve all
+matchmaking configurations that use this rule set.}
 
-\item{Limit}{Maximum number of results to return. Use this parameter with \code{NextToken}
-to get results as a set of sequential pages. This parameter is limited
-to 10.}
+\item{Limit}{The maximum number of results to return. Use this parameter with
+\code{NextToken} to get results as a set of sequential pages. This parameter
+is limited to 10.}
 
-\item{NextToken}{Token that indicates the start of the next sequential page of results.
+\item{NextToken}{A token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this action. To
 start at the beginning of the result set, do not specify a value.}
 }

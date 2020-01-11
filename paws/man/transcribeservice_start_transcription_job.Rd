@@ -6,7 +6,8 @@
 \usage{
 transcribeservice_start_transcription_job(TranscriptionJobName,
   LanguageCode, MediaSampleRateHertz, MediaFormat, Media,
-  OutputBucketName, OutputEncryptionKMSKeyId, Settings)
+  OutputBucketName, OutputEncryptionKMSKeyId, Settings,
+  JobExecutionSettings)
 }
 \arguments{
 \item{TranscriptionJobName}{[required] The name of the job. Note that you can\'t use the strings \".\" or
@@ -77,6 +78,11 @@ an output location in the \code{OutputBucketName} parameter.}
 
 \item{Settings}{A \code{Settings} object that provides optional settings for a transcription
 job.}
+
+\item{JobExecutionSettings}{Provides information about how a transcription job is executed. Use this
+field to indicate that the job can be queued for deferred execution if
+the concurrency limit is reached and there are no slots available to
+immediately run the job.}
 }
 \description{
 Starts an asynchronous job to transcribe speech to text.
@@ -98,7 +104,13 @@ Starts an asynchronous job to transcribe speech to text.
     MaxSpeakerLabels = 123,
     ChannelIdentification = TRUE|FALSE,
     ShowAlternatives = TRUE|FALSE,
-    MaxAlternatives = 123
+    MaxAlternatives = 123,
+    VocabularyFilterName = "string",
+    VocabularyFilterMethod = "remove"|"mask"
+  ),
+  JobExecutionSettings = list(
+    AllowDeferredExecution = TRUE|FALSE,
+    DataAccessRoleArn = "string"
   )
 )
 }

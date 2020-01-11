@@ -562,6 +562,44 @@ fms_list_policies <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .fms$operations$list_policies <- fms_list_policies
 
+#' Retrieves the list of tags for the specified AWS resource
+#'
+#' Retrieves the list of tags for the specified AWS resource.
+#'
+#' @usage
+#' fms_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to return tags for. The
+#' Firewall Manager policy is the only AWS resource that supports tagging,
+#' so this ARN is a policy ARN..
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_list_tags_for_resource
+fms_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .fms$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$list_tags_for_resource <- fms_list_tags_for_resource
+
 #' Designates the IAM role and Amazon Simple Notification Service (SNS)
 #' topic that AWS Firewall Manager uses to record SNS logs
 #'
@@ -628,9 +666,10 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #' [CreateSubscription](https://docs.aws.amazon.com/waf/latest/DDOSAPIReference/API_CreateSubscription.html).
 #'
 #' @usage
-#' fms_put_policy(Policy)
+#' fms_put_policy(Policy, TagList)
 #'
 #' @param Policy &#91;required&#93; The details of the AWS Firewall Manager policy to be created.
+#' @param TagList The tags to add to the AWS resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -665,6 +704,12 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #'         "string"
 #'       )
 #'     )
+#'   ),
+#'   TagList = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -672,14 +717,14 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #' @keywords internal
 #'
 #' @rdname fms_put_policy
-fms_put_policy <- function(Policy) {
+fms_put_policy <- function(Policy, TagList = NULL) {
   op <- new_operation(
     name = "PutPolicy",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .fms$put_policy_input(Policy = Policy)
+  input <- .fms$put_policy_input(Policy = Policy, TagList = TagList)
   output <- .fms$put_policy_output()
   config <- get_config()
   svc <- .fms$service(config)
@@ -688,3 +733,90 @@ fms_put_policy <- function(Policy) {
   return(response)
 }
 .fms$operations$put_policy <- fms_put_policy
+
+#' Adds one or more tags to an AWS resource
+#'
+#' Adds one or more tags to an AWS resource.
+#'
+#' @usage
+#' fms_tag_resource(ResourceArn, TagList)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource. The Firewall Manager
+#' policy is the only AWS resource that supports tagging, so this ARN is a
+#' policy ARN.
+#' @param TagList &#91;required&#93; The tags to add to the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   TagList = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_tag_resource
+fms_tag_resource <- function(ResourceArn, TagList) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$tag_resource_input(ResourceArn = ResourceArn, TagList = TagList)
+  output <- .fms$tag_resource_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$tag_resource <- fms_tag_resource
+
+#' Removes one or more tags from an AWS resource
+#'
+#' Removes one or more tags from an AWS resource.
+#'
+#' @usage
+#' fms_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource. The Firewall Manager
+#' policy is the only AWS resource that supports tagging, so this ARN is a
+#' policy ARN.
+#' @param TagKeys &#91;required&#93; The keys of the tags to remove from the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_untag_resource
+fms_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .fms$untag_resource_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$untag_resource <- fms_untag_resource

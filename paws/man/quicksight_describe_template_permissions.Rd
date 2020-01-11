@@ -7,7 +7,8 @@
 quicksight_describe_template_permissions(AwsAccountId, TemplateId)
 }
 \arguments{
-\item{AwsAccountId}{[required] AWS account ID that contains the template you are describing.}
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the template that you\'re
+describing.}
 
 \item{TemplateId}{[required] The ID for the template.}
 }

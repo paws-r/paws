@@ -2,12 +2,13 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_list_dashboards}
 \alias{quicksight_list_dashboards}
-\title{Lists dashboards in the AWS account}
+\title{Lists dashboards in an AWS account}
 \usage{
 quicksight_list_dashboards(AwsAccountId, NextToken, MaxResults)
 }
 \arguments{
-\item{AwsAccountId}{[required] AWS account ID that contains the dashboards you are listing.}
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the dashboards that you\'re
+listing.}
 
 \item{NextToken}{The token for the next set of results, or null if there are no more
 results.}
@@ -15,7 +16,7 @@ results.}
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
 \description{
-Lists dashboards in the AWS account.
+Lists dashboards in an AWS account.
 }
 \section{Request syntax}{
 \preformatted{svc$list_dashboards(

@@ -7,7 +7,8 @@
 gamelift_describe_script(ScriptId)
 }
 \arguments{
-\item{ScriptId}{[required] Unique identifier for a Realtime script to retrieve properties for.}
+\item{ScriptId}{[required] A unique identifier for a Realtime script to retrieve properties for.
+You can use either the script ID or ARN value.}
 }
 \description{
 Retrieves properties for a Realtime script.

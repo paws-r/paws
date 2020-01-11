@@ -13,7 +13,7 @@ NULL
 #' xray_batch_get_traces(TraceIds, NextToken)
 #'
 #' @param TraceIds &#91;required&#93; Specify the trace IDs of requests for which to retrieve segments.
-#' @param NextToken Pagination token. Not used.
+#' @param NextToken Pagination token.
 #'
 #' @section Request syntax:
 #' ```
@@ -299,7 +299,7 @@ xray_get_group <- function(GroupName = NULL, GroupARN = NULL) {
 #' @usage
 #' xray_get_groups(NextToken)
 #'
-#' @param NextToken Pagination token. Not used.
+#' @param NextToken Pagination token.
 #'
 #' @section Request syntax:
 #' ```
@@ -335,7 +335,7 @@ xray_get_groups <- function(NextToken = NULL) {
 #' @usage
 #' xray_get_sampling_rules(NextToken)
 #'
-#' @param NextToken Pagination token. Not used.
+#' @param NextToken Pagination token.
 #'
 #' @section Request syntax:
 #' ```
@@ -373,7 +373,7 @@ xray_get_sampling_rules <- function(NextToken = NULL) {
 #' @usage
 #' xray_get_sampling_statistic_summaries(NextToken)
 #'
-#' @param NextToken Pagination token. Not used.
+#' @param NextToken Pagination token.
 #'
 #' @section Request syntax:
 #' ```
@@ -457,9 +457,10 @@ xray_get_sampling_targets <- function(SamplingStatisticsDocuments) {
 #' Retrieves a document that describes services that process incoming
 #' requests, and downstream services that they call as a result. Root
 #' services process incoming requests and make calls to downstream
-#' services. Root services are applications that use the AWS X-Ray SDK.
-#' Downstream services can be other applications, AWS resources, HTTP web
-#' APIs, or SQL databases.
+#' services. Root services are applications that use the [AWS X-Ray
+#' SDK](https://docs.aws.amazon.com/xray/index.html). Downstream services
+#' can be other applications, AWS resources, HTTP web APIs, or SQL
+#' databases.
 #'
 #' @usage
 #' xray_get_service_graph(StartTime, EndTime, GroupName, GroupARN,
@@ -469,7 +470,7 @@ xray_get_sampling_targets <- function(SamplingStatisticsDocuments) {
 #' @param EndTime &#91;required&#93; The end of the timeframe for which to generate a graph.
 #' @param GroupName The name of a group to generate a graph based on.
 #' @param GroupARN The ARN of a group to generate a graph based on.
-#' @param NextToken Pagination token. Not used.
+#' @param NextToken Pagination token.
 #'
 #' @section Request syntax:
 #' ```
@@ -524,7 +525,7 @@ xray_get_service_graph <- function(StartTime, EndTime, GroupName = NULL, GroupAR
 #' statistics. Supports ID, service, and edge functions. If no selector
 #' expression is specified, edge statistics are returned.
 #' @param Period Aggregation period in seconds.
-#' @param NextToken Pagination token. Not used.
+#' @param NextToken Pagination token.
 #'
 #' @section Request syntax:
 #' ```
@@ -571,7 +572,7 @@ xray_get_time_series_service_statistics <- function(StartTime, EndTime, GroupNam
 #' xray_get_trace_graph(TraceIds, NextToken)
 #'
 #' @param TraceIds &#91;required&#93; Trace IDs of requests for which to generate a service graph.
-#' @param NextToken Pagination token. Not used.
+#' @param NextToken Pagination token.
 #'
 #' @section Request syntax:
 #' ```
@@ -603,10 +604,10 @@ xray_get_trace_graph <- function(TraceIds, NextToken = NULL) {
 }
 .xray$operations$get_trace_graph <- xray_get_trace_graph
 
-#' Retrieves IDs and metadata for traces available for a specified time
+#' Retrieves IDs and annotations for traces available for a specified time
 #' frame using an optional filter
 #'
-#' Retrieves IDs and metadata for traces available for a specified time
+#' Retrieves IDs and annotations for traces available for a specified time
 #' frame using an optional filter. To get the full traces, pass the trace
 #' IDs to `BatchGetTraces`.
 #' 
@@ -695,7 +696,8 @@ xray_get_trace_summaries <- function(StartTime, EndTime, TimeRangeType = NULL, S
 #' -   **Alias** - The name of the key. For example, `alias/MyKey`.
 #' 
 #' -   **Key ID** - The KMS key ID of the key. For example,
-#'     `ae4aa6d49-a4d8-9df9-a475-4ff6d7898456`.
+#'     `ae4aa6d49-a4d8-9df9-a475-4ff6d7898456`. AWS X-Ray does not support
+#'     asymmetric CMKs.
 #' 
 #' -   **ARN** - The full Amazon Resource Name of the key ID or alias. For
 #'     example,
@@ -797,7 +799,8 @@ xray_put_telemetry_records <- function(TelemetryRecords, EC2InstanceId = NULL, H
 
 #' Uploads segment documents to AWS X-Ray
 #'
-#' Uploads segment documents to AWS X-Ray. The X-Ray SDK generates segment
+#' Uploads segment documents to AWS X-Ray. The [X-Ray
+#' SDK](https://docs.aws.amazon.com/xray/index.html) generates segment
 #' documents and sends them to the X-Ray daemon, which uploads them in
 #' batches. A segment document can be a completed segment, an in-progress
 #' segment, or an array of subsegments.

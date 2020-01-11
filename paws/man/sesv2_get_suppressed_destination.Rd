@@ -2,17 +2,17 @@
 % Please edit documentation in R/sesv2_operations.R
 \name{sesv2_get_suppressed_destination}
 \alias{sesv2_get_suppressed_destination}
-\title{Used to fetch a single suppressed email destination from your
-suppression list}
+\title{Retrieves information about a specific email address that's on the
+suppression list for your account}
 \usage{
 sesv2_get_suppressed_destination(EmailAddress)
 }
 \arguments{
-\item{EmailAddress}{[required] Email destination to fetch from the suppression list.}
+\item{EmailAddress}{[required] The email address that\'s on the account suppression list.}
 }
 \description{
-Used to fetch a single suppressed email destination from your
-suppression list.
+Retrieves information about a specific email address that\'s on the
+suppression list for your account.
 }
 \section{Request syntax}{
 \preformatted{svc$get_suppressed_destination(

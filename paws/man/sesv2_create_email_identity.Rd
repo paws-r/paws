@@ -4,13 +4,20 @@
 \alias{sesv2_create_email_identity}
 \title{Starts the process of verifying an email identity}
 \usage{
-sesv2_create_email_identity(EmailIdentity, Tags)
+sesv2_create_email_identity(EmailIdentity, Tags, DkimSigningAttributes)
 }
 \arguments{
 \item{EmailIdentity}{[required] The email address or domain that you want to verify.}
 
 \item{Tags}{An array of objects that define the tags (keys and values) that you want
 to associate with the email identity.}
+
+\item{DkimSigningAttributes}{If your request includes this object, Amazon SES configures the identity
+to use Bring Your Own DKIM (BYODKIM) for DKIM authentication purposes,
+as opposed to the default method, \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html}{Easy DKIM}.
+
+You can only specify this object if the email identity is a domain, as
+opposed to an address.}
 }
 \description{
 Starts the process of verifying an email identity. An \emph{identity} is an
@@ -25,12 +32,21 @@ When you verify an email address, Amazon SES sends an email to the
 address. Your email address is verified as soon as you follow the link
 in the verification email.
 
-When you verify a domain, this operation provides a set of DKIM tokens,
-which you can convert into CNAME tokens. You add these CNAME tokens to
-the DNS configuration for your domain. Your domain is verified when
-Amazon SES detects these records in the DNS configuration for your
-domain. For some DNS providers, it can take 72 hours or more to complete
-the domain verification process.
+When you verify a domain without specifying the \code{DkimSigningAttributes}
+object, this operation provides a set of DKIM tokens. You can convert
+these tokens into CNAME records, which you then add to the DNS
+configuration for your domain. Your domain is verified when Amazon SES
+detects these records in the DNS configuration for your domain. This
+verification method is known as \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html}{Easy DKIM}.
+
+Alternatively, you can perform the verification process by providing
+your own public-private key pair. This verification method is known as
+Bring Your Own DKIM (BYODKIM). To use BYODKIM, your call to the
+\code{CreateEmailIdentity} operation has to include the
+\code{DkimSigningAttributes} object. When you specify this object, you
+provide a selector (a component of the DNS record name that identifies
+the public key that you want to use for DKIM authentication) and a
+private key.
 }
 \section{Request syntax}{
 \preformatted{svc$create_email_identity(
@@ -40,6 +56,10 @@ the domain verification process.
       Key = "string",
       Value = "string"
     )
+  ),
+  DkimSigningAttributes = list(
+    DomainSigningSelector = "string",
+    DomainSigningPrivateKey = "string"
   )
 )
 }

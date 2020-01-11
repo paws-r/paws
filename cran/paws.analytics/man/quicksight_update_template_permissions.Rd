@@ -2,13 +2,13 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_update_template_permissions}
 \alias{quicksight_update_template_permissions}
-\title{Updates the permissions on a template}
+\title{Updates the resource permissions for a template}
 \usage{
 quicksight_update_template_permissions(AwsAccountId, TemplateId,
   GrantPermissions, RevokePermissions)
 }
 \arguments{
-\item{AwsAccountId}{[required] AWS account ID that contains the template.}
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the template.}
 
 \item{TemplateId}{[required] The ID for the template.}
 
@@ -17,7 +17,7 @@ quicksight_update_template_permissions(AwsAccountId, TemplateId,
 \item{RevokePermissions}{A list of resource permissions to be revoked from the template.}
 }
 \description{
-Updates the permissions on a template.
+Updates the resource permissions for a template.
 }
 \section{Request syntax}{
 \preformatted{svc$update_template_permissions(

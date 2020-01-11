@@ -16,6 +16,8 @@ ec2_describe_addresses(Filters, PublicIps, AllocationIds, DryRun)
 (\code{standard}) or in a VPC (\code{vpc}).
 \item \code{instance-id} - The ID of the instance the address is associated
 with, if any.
+\item \code{network-border-group} - The location from where the IP address is
+advertised.
 \item \code{network-interface-id} - [EC2-VPC] The ID of the network interface
 that the address is associated with, if any.
 \item \code{network-interface-owner-id} - The AWS account ID of the owner.

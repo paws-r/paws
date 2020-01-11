@@ -9,27 +9,28 @@ gamelift_create_game_session(FleetId, AliasId,
   GameSessionId, IdempotencyToken, GameSessionData)
 }
 \arguments{
-\item{FleetId}{Unique identifier for a fleet to create a game session in. Each request
-must reference either a fleet ID or alias ID, but not both.}
+\item{FleetId}{A unique identifier for a fleet to create a game session in. You can use
+either the fleet ID or ARN value. Each request must reference either a
+fleet ID or alias ID, but not both.}
 
-\item{AliasId}{Unique identifier for an alias associated with the fleet to create a
-game session in. Each request must reference either a fleet ID or alias
-ID, but not both.}
+\item{AliasId}{A unique identifier for an alias associated with the fleet to create a
+game session in. You can use either the alias ID or ARN value. Each
+request must reference either a fleet ID or alias ID, but not both.}
 
-\item{MaximumPlayerSessionCount}{[required] Maximum number of players that can be connected simultaneously to the
-game session.}
+\item{MaximumPlayerSessionCount}{[required] The maximum number of players that can be connected simultaneously to
+the game session.}
 
-\item{Name}{Descriptive label that is associated with a game session. Session names
-do not need to be unique.}
+\item{Name}{A descriptive label that is associated with a game session. Session
+names do not need to be unique.}
 
 \item{GameProperties}{Set of custom properties for a game session, formatted as key:value
 pairs. These properties are passed to a game server process in the
 GameSession object with a request to start a new game session (see
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}).}
 
-\item{CreatorId}{Unique identifier for a player or entity creating the game session. This
-ID is used to enforce a resource protection policy (if one exists) that
-limits the number of concurrent active game sessions one player can
+\item{CreatorId}{A unique identifier for a player or entity creating the game session.
+This ID is used to enforce a resource protection policy (if one exists)
+that limits the number of concurrent active game sessions one player can
 have.}
 
 \item{GameSessionId}{\emph{This parameter is no longer preferred. Please use \code{IdempotencyToken}

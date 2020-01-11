@@ -34,14 +34,19 @@ Operations and objects for transcribing speech to text.
 
 \tabular{ll}{
 \link[=transcribeservice_create_vocabulary]{create_vocabulary} \tab Creates a new custom vocabulary that you can use to change the way Amazon Transcribe handles transcription of an audio file \cr
+\link[=transcribeservice_create_vocabulary_filter]{create_vocabulary_filter} \tab Creates a new vocabulary filter that you can use to filter words, such as profane words, from the output of a transcription job \cr
 \link[=transcribeservice_delete_transcription_job]{delete_transcription_job} \tab Deletes a previously submitted transcription job along with any other generated results such as the transcription, models, and so on\cr
 \link[=transcribeservice_delete_vocabulary]{delete_vocabulary} \tab Deletes a vocabulary from Amazon Transcribe \cr
+\link[=transcribeservice_delete_vocabulary_filter]{delete_vocabulary_filter} \tab Removes a vocabulary filter \cr
 \link[=transcribeservice_get_transcription_job]{get_transcription_job} \tab Returns information about a transcription job \cr
 \link[=transcribeservice_get_vocabulary]{get_vocabulary} \tab Gets information about a vocabulary \cr
+\link[=transcribeservice_get_vocabulary_filter]{get_vocabulary_filter} \tab Returns information about a vocabulary filter \cr
 \link[=transcribeservice_list_transcription_jobs]{list_transcription_jobs} \tab Lists transcription jobs with the specified status \cr
 \link[=transcribeservice_list_vocabularies]{list_vocabularies} \tab Returns a list of vocabularies that match the specified criteria \cr
+\link[=transcribeservice_list_vocabulary_filters]{list_vocabulary_filters} \tab Gets information about vocabulary filters \cr
 \link[=transcribeservice_start_transcription_job]{start_transcription_job} \tab Starts an asynchronous job to transcribe speech to text \cr
-\link[=transcribeservice_update_vocabulary]{update_vocabulary} \tab Updates an existing vocabulary with new values
+\link[=transcribeservice_update_vocabulary]{update_vocabulary} \tab Updates an existing vocabulary with new values \cr
+\link[=transcribeservice_update_vocabulary_filter]{update_vocabulary_filter} \tab Updates a vocabulary filter with a new list of filtered words
 }
 }
 

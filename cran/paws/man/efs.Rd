@@ -45,8 +45,8 @@ need, when they need it. For more information, see the \href{https://docs.aws.am
 \link[=efs_delete_tags]{delete_tags} \tab Deletes the specified tags from a file system \cr
 \link[=efs_describe_file_systems]{describe_file_systems} \tab Returns the description of a specific Amazon EFS file system if either the file system CreationToken or the FileSystemId is provided\cr
 \link[=efs_describe_lifecycle_configuration]{describe_lifecycle_configuration} \tab Returns the current LifecycleConfiguration object for the specified Amazon EFS file system \cr
-\link[=efs_describe_mount_target_security_groups]{describe_mount_target_security_groups} \tab Returns the security groups currently in effect for a mount target \cr
 \link[=efs_describe_mount_targets]{describe_mount_targets} \tab Returns the descriptions of all the current mount targets, or a specific mount target, for a file system \cr
+\link[=efs_describe_mount_target_security_groups]{describe_mount_target_security_groups} \tab Returns the security groups currently in effect for a mount target \cr
 \link[=efs_describe_tags]{describe_tags} \tab Returns the tags associated with a file system \cr
 \link[=efs_modify_mount_target_security_groups]{modify_mount_target_security_groups} \tab Modifies the set of security groups in effect for a mount target \cr
 \link[=efs_put_lifecycle_configuration]{put_lifecycle_configuration} \tab Enables lifecycle management by creating a new LifecycleConfiguration object \cr

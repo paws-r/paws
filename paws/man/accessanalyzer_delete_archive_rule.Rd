@@ -7,7 +7,8 @@
 accessanalyzer_delete_archive_rule(analyzerName, clientToken, ruleName)
 }
 \arguments{
-\item{analyzerName}{[required] The name of the analyzer that was deleted.}
+\item{analyzerName}{[required] The name of the analyzer that associated with the archive rule to
+delete.}
 
 \item{clientToken}{A client token.}
 

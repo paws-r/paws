@@ -7,7 +7,8 @@
 gamelift_delete_script(ScriptId)
 }
 \arguments{
-\item{ScriptId}{[required] Unique identifier for a Realtime script to delete.}
+\item{ScriptId}{[required] A unique identifier for a Realtime script to delete. You can use either
+the script ID or ARN value.}
 }
 \description{
 Deletes a Realtime script. This action permanently deletes the script

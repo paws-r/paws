@@ -99,7 +99,10 @@ in the \emph{Amazon EKS User Guide}.
       "string"
     ),
     endpointPublicAccess = TRUE|FALSE,
-    endpointPrivateAccess = TRUE|FALSE
+    endpointPrivateAccess = TRUE|FALSE,
+    publicAccessCidrs = list(
+      "string"
+    )
   ),
   logging = list(
     clusterLogging = list(

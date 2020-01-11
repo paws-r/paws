@@ -7,14 +7,14 @@
 devicefarm_delete_project(arn)
 }
 \arguments{
-\item{arn}{[required] Represents the Amazon Resource Name (ARN) of the Device Farm project you
-wish to delete.}
+\item{arn}{[required] Represents the Amazon Resource Name (ARN) of the Device Farm project to
+delete.}
 }
 \description{
 Deletes an AWS Device Farm project, given the project ARN.
 }
 \details{
-\strong{Note} Deleting this resource does not stop an in-progress run.
+Deleting this resource does not stop an in-progress run.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_project(

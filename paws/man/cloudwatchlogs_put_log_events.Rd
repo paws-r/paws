@@ -27,10 +27,11 @@ Uploads a batch of log events to the specified log stream.
 \details{
 You must include the sequence token obtained from the response of the
 previous call. An upload in a newly created log stream does not require
-a sequence token. You can also get the sequence token using
-DescribeLogStreams. If you call \code{PutLogEvents} twice within a narrow
-time period using the same value for \code{sequenceToken}, both calls may be
-successful, or one may be rejected.
+a sequence token. You can also get the sequence token in the
+\code{expectedSequenceToken} field from \code{InvalidSequenceTokenException}. If
+you call \code{PutLogEvents} twice within a narrow time period using the same
+value for \code{sequenceToken}, both calls may be successful, or one may be
+rejected.
 
 The batch of events must satisfy the following constraints:
 \itemize{
@@ -47,9 +48,11 @@ expressed as the number of milliseconds after Jan 1, 1970 00:00:00
 UTC. (In AWS Tools for PowerShell and the AWS SDK for .NET, the
 timestamp is specified in .NET format: yyyy-mm-ddThh:mm:ss. For
 example, 2017-09-15T13:45:30.)
-\item The maximum number of log events in a batch is 10,000.
 \item A batch of log events in a single request cannot span more than 24
 hours. Otherwise, the operation fails.
+\item The maximum number of log events in a batch is 10,000.
+\item There is a quota of 5 requests per second per log stream. Additional
+requests are throttled. This quota can\'t be changed.
 }
 
 If a call to PutLogEvents returns \"UnrecognizedClientException\" the

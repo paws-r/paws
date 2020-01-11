@@ -75,8 +75,8 @@ applications.
 \link[=serverlessapplicationrepository_get_application_policy]{get_application_policy} \tab Retrieves the policy for the application \cr
 \link[=serverlessapplicationrepository_get_cloud_formation_template]{get_cloud_formation_template} \tab Gets the specified AWS CloudFormation template \cr
 \link[=serverlessapplicationrepository_list_application_dependencies]{list_application_dependencies} \tab Retrieves the list of applications nested in the containing application \cr
-\link[=serverlessapplicationrepository_list_application_versions]{list_application_versions} \tab Lists versions for the specified application \cr
 \link[=serverlessapplicationrepository_list_applications]{list_applications} \tab Lists applications owned by the requester \cr
+\link[=serverlessapplicationrepository_list_application_versions]{list_application_versions} \tab Lists versions for the specified application \cr
 \link[=serverlessapplicationrepository_put_application_policy]{put_application_policy} \tab Sets the permission policy for an application \cr
 \link[=serverlessapplicationrepository_update_application]{update_application} \tab Updates the specified application
 }

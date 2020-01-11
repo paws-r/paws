@@ -140,8 +140,7 @@ comprehendmedical_detect_entities <- function(Text) {
 #' applications.
 #' 
 #' The `DetectEntitiesV2` operation returns the `Acuity` and `Direction`
-#' entities as attributes instead of types. It does not return the
-#' `Quality` or `Quantity` entities.
+#' entities as attributes instead of types.
 #'
 #' @usage
 #' comprehendmedical_detect_entities_v2(Text)
@@ -218,6 +217,88 @@ comprehendmedical_detect_phi <- function(Text) {
   return(response)
 }
 .comprehendmedical$operations$detect_phi <- comprehendmedical_detect_phi
+
+#' InferICD10CM detects medical conditions as entities listed in a patient
+#' record and links those entities to normalized concept identifiers in the
+#' ICD-10-CM knowledge base from the Centers for Disease Control
+#'
+#' InferICD10CM detects medical conditions as entities listed in a patient
+#' record and links those entities to normalized concept identifiers in the
+#' ICD-10-CM knowledge base from the Centers for Disease Control.
+#'
+#' @usage
+#' comprehendmedical_infer_icd10cm(Text)
+#'
+#' @param Text &#91;required&#93; The input text used for analysis. The input for InferICD10CM is a string
+#' from 1 to 10000 characters.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$infer_icd10cm(
+#'   Text = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_infer_icd10cm
+comprehendmedical_infer_icd10cm <- function(Text) {
+  op <- new_operation(
+    name = "InferICD10CM",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$infer_icd10cm_input(Text = Text)
+  output <- .comprehendmedical$infer_icd10cm_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$infer_icd10cm <- comprehendmedical_infer_icd10cm
+
+#' InferRxNorm detects medications as entities listed in a patient record
+#' and links to the normalized concept identifiers in the RxNorm database
+#' from the National Library of Medicine
+#'
+#' InferRxNorm detects medications as entities listed in a patient record
+#' and links to the normalized concept identifiers in the RxNorm database
+#' from the National Library of Medicine.
+#'
+#' @usage
+#' comprehendmedical_infer_rx_norm(Text)
+#'
+#' @param Text &#91;required&#93; The input text used for analysis. The input for InferRxNorm is a string
+#' from 1 to 10000 characters.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$infer_rx_norm(
+#'   Text = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_infer_rx_norm
+comprehendmedical_infer_rx_norm <- function(Text) {
+  op <- new_operation(
+    name = "InferRxNorm",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$infer_rx_norm_input(Text = Text)
+  output <- .comprehendmedical$infer_rx_norm_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$infer_rx_norm <- comprehendmedical_infer_rx_norm
 
 #' Gets a list of medical entity detection jobs that you have submitted
 #'

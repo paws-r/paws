@@ -2,13 +2,15 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_list_template_versions}
 \alias{quicksight_list_template_versions}
-\title{Lists all the versions of the templates in the Quicksight account}
+\title{Lists all the versions of the templates in the current Amazon QuickSight
+account}
 \usage{
 quicksight_list_template_versions(AwsAccountId, TemplateId, NextToken,
   MaxResults)
 }
 \arguments{
-\item{AwsAccountId}{[required] AWS account ID that contains the templates you are listing.}
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the templates that you\'re
+listing.}
 
 \item{TemplateId}{[required] The ID for the template.}
 
@@ -18,7 +20,8 @@ results.}
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
 \description{
-Lists all the versions of the templates in the Quicksight account.
+Lists all the versions of the templates in the current Amazon QuickSight
+account.
 }
 \section{Request syntax}{
 \preformatted{svc$list_template_versions(

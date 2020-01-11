@@ -15,7 +15,7 @@ default and the only supported value at this time.}
 }
 \description{
 Returns detailed information about one or more specified events.
-Information includes standard event data (region, service, etc., as
+Information includes standard event data (region, service, and so on, as
 returned by DescribeEvents), a detailed event description, and possible
 additional metadata that depends upon the nature of the event. Affected
 entities are not included; to retrieve those, use the

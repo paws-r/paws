@@ -55,8 +55,8 @@ create real-time metrics.
 \link[=kinesisanalyticsv2_describe_application]{describe_application} \tab Returns information about a specific Amazon Kinesis Data Analytics application \cr
 \link[=kinesisanalyticsv2_describe_application_snapshot]{describe_application_snapshot} \tab Returns information about a snapshot of application state data \cr
 \link[=kinesisanalyticsv2_discover_input_schema]{discover_input_schema} \tab Infers a schema for an SQL-based Amazon Kinesis Data Analytics application by evaluating sample records on the specified streaming source (Kinesis data stream or Kinesis Data Firehose delivery stream) or Amazon S3 object\cr
-\link[=kinesisanalyticsv2_list_application_snapshots]{list_application_snapshots} \tab Lists information about the current application snapshots \cr
 \link[=kinesisanalyticsv2_list_applications]{list_applications} \tab Returns a list of Amazon Kinesis Data Analytics applications in your account \cr
+\link[=kinesisanalyticsv2_list_application_snapshots]{list_application_snapshots} \tab Lists information about the current application snapshots \cr
 \link[=kinesisanalyticsv2_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the list of key-value tags assigned to the application \cr
 \link[=kinesisanalyticsv2_start_application]{start_application} \tab Starts the specified Amazon Kinesis Data Analytics application \cr
 \link[=kinesisanalyticsv2_stop_application]{stop_application} \tab Stops the application from processing data \cr

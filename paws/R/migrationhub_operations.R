@@ -466,6 +466,54 @@ migrationhub_import_migration_task <- function(ProgressUpdateStream, MigrationTa
 }
 .migrationhub$operations$import_migration_task <- migrationhub_import_migration_task
 
+#' Lists all the migration statuses for your applications
+#'
+#' Lists all the migration statuses for your applications. If you use the
+#' optional `ApplicationIds` parameter, only the migration statuses for
+#' those applications will be returned.
+#'
+#' @usage
+#' migrationhub_list_application_states(ApplicationIds, NextToken,
+#'   MaxResults)
+#'
+#' @param ApplicationIds The configurationIds from the Application Discovery Service that
+#' uniquely identifies your applications.
+#' @param NextToken If a `NextToken` was returned by a previous call, there are more results
+#' available. To retrieve the next page of results, make the call again
+#' using the returned token in `NextToken`.
+#' @param MaxResults Maximum number of results to be returned per page.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_application_states(
+#'   ApplicationIds = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname migrationhub_list_application_states
+migrationhub_list_application_states <- function(ApplicationIds = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListApplicationStates",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .migrationhub$list_application_states_input(ApplicationIds = ApplicationIds, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .migrationhub$list_application_states_output()
+  config <- get_config()
+  svc <- .migrationhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.migrationhub$operations$list_application_states <- migrationhub_list_application_states
+
 #' Lists the created artifacts attached to a given migration task in an
 #' update stream
 #'

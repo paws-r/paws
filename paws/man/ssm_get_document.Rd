@@ -26,7 +26,7 @@ Gets the contents of the specified Systems Manager document.
   Name = "string",
   VersionName = "string",
   DocumentVersion = "string",
-  DocumentFormat = "YAML"|"JSON"
+  DocumentFormat = "YAML"|"JSON"|"TEXT"
 )
 }
 }

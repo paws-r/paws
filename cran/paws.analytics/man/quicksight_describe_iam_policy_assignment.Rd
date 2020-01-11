@@ -2,20 +2,23 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_describe_iam_policy_assignment}
 \alias{quicksight_describe_iam_policy_assignment}
-\title{Describes an existing IAMPolicy Assignment by specified assignment name}
+\title{Describes an existing IAM policy assignment, as specified by the
+assignment name}
 \usage{
 quicksight_describe_iam_policy_assignment(AwsAccountId, AssignmentName,
   Namespace)
 }
 \arguments{
-\item{AwsAccountId}{[required] The AWS account ID that contains the assignment you want to describe.}
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the assignment that you want to
+describe.}
 
 \item{AssignmentName}{[required] The name of the assignment.}
 
 \item{Namespace}{[required] The namespace that contains the assignment.}
 }
 \description{
-Describes an existing IAMPolicy Assignment by specified assignment name.
+Describes an existing IAM policy assignment, as specified by the
+assignment name.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_iam_policy_assignment(

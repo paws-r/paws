@@ -16,9 +16,9 @@ list.}
 Returns a list of products or offerings that the user can manage through
 the API. Each offering record indicates the recurring price per unit and
 the frequency for that offering. The API returns a \code{NotEligible} error
-if the user is not permitted to invoke the operation. Please contact
-\href{mailto:aws-devicefarm-support@amazon.com}{aws-devicefarm-support@amazon.com} if you believe that you should be
-able to invoke this operation.
+if the user is not permitted to invoke the operation. If you must be
+able to invoke this operation, contact
+\href{mailto:aws-devicefarm-support@amazon.com}{aws-devicefarm-support@amazon.com}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_offerings(

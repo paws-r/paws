@@ -50,7 +50,8 @@ supports pagination.
 For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
 in the \emph{Amazon Aurora User Guide.}
 
-This action only applies to Aurora DB clusters.
+This operation can also return information for Amazon Neptune DB
+instances and Amazon DocumentDB instances.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_db_clusters(

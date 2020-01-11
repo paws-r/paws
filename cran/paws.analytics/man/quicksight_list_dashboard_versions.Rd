@@ -2,13 +2,14 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_list_dashboard_versions}
 \alias{quicksight_list_dashboard_versions}
-\title{Lists all the versions of the dashboards in the Quicksight subscription}
+\title{Lists all the versions of the dashboards in the QuickSight subscription}
 \usage{
 quicksight_list_dashboard_versions(AwsAccountId, DashboardId, NextToken,
   MaxResults)
 }
 \arguments{
-\item{AwsAccountId}{[required] AWS account ID that contains the dashboard you are listing.}
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the dashboard that you\'re
+listing versions for.}
 
 \item{DashboardId}{[required] The ID for the dashboard.}
 
@@ -18,7 +19,7 @@ results.}
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
 \description{
-Lists all the versions of the dashboards in the Quicksight subscription.
+Lists all the versions of the dashboards in the QuickSight subscription.
 }
 \section{Request syntax}{
 \preformatted{svc$list_dashboard_versions(

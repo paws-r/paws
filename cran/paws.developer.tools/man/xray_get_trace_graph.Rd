@@ -9,7 +9,7 @@ xray_get_trace_graph(TraceIds, NextToken)
 \arguments{
 \item{TraceIds}{[required] Trace IDs of requests for which to generate a service graph.}
 
-\item{NextToken}{Pagination token. Not used.}
+\item{NextToken}{Pagination token.}
 }
 \description{
 Retrieves a service graph for one or more specific trace IDs.

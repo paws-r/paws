@@ -6,7 +6,7 @@
 \usage{
 ssm_start_automation_execution(DocumentName, DocumentVersion,
   Parameters, ClientToken, Mode, TargetParameterName, Targets, TargetMaps,
-  MaxConcurrency, MaxErrors, TargetLocations)
+  MaxConcurrency, MaxErrors, TargetLocations, Tags)
 }
 \arguments{
 \item{DocumentName}{[required] The name of the Automation document to use for this execution.}
@@ -56,6 +56,20 @@ want to run the Automation. Use this action to start an Automation in
 multiple Regions and multiple accounts. For more information, see
 \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html}{Executing Automations in Multiple AWS Regions and Accounts}
 in the \emph{AWS Systems Manager User Guide}.}
+
+\item{Tags}{Optional metadata that you assign to a resource. You can specify a
+maximum of five tags for an automation. Tags enable you to categorize a
+resource in different ways, such as by purpose, owner, or environment.
+For example, you might want to tag an automation to identify an
+environment or operating system. In this case, you could specify the
+following key name/value pairs:
+\itemize{
+\item \verb{Key=environment,Value=test}
+\item \verb{Key=OS,Value=Windows}
+}
+
+To add tags to an existing patch baseline, use the AddTagsToResource
+action.}
 }
 \description{
 Initiates execution of an Automation document.
@@ -100,6 +114,12 @@ Initiates execution of an Automation document.
       TargetLocationMaxConcurrency = "string",
       TargetLocationMaxErrors = "string",
       ExecutionRoleName = "string"
+    )
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
     )
   )
 )

@@ -9,26 +9,26 @@ opsworkscm_create_server(AssociatePublicIpAddress, CustomDomain,
   EngineModel, EngineVersion, EngineAttributes, BackupRetentionCount,
   ServerName, InstanceProfileArn, InstanceType, KeyPair,
   PreferredMaintenanceWindow, PreferredBackupWindow, SecurityGroupIds,
-  ServiceRoleArn, SubnetIds, BackupId)
+  ServiceRoleArn, SubnetIds, Tags, BackupId)
 }
 \arguments{
 \item{AssociatePublicIpAddress}{Associate a public IP address with a server that you are launching.
 Valid values are \code{true} or \code{false}. The default value is \code{true}.}
 
-\item{CustomDomain}{An optional public endpoint of a server, such as
-\verb{https://aws.my-company.com}. To access the server, create a CNAME DNS
-record in your preferred DNS service that points the custom domain to
-the endpoint that is generated when the server is created (the value of
-the CreateServer Endpoint attribute). You cannot access the server by
-using the generated \code{Endpoint} value if the server is using a custom
-domain. If you specify a custom domain, you must also specify values for
-\code{CustomCertificate} and \code{CustomPrivateKey}.}
+\item{CustomDomain}{Supported on servers running Chef Automate 2. An optional public
+endpoint of a server, such as \verb{https://aws.my-company.com}. To access
+the server, create a CNAME DNS record in your preferred DNS service that
+points the custom domain to the endpoint that is generated when the
+server is created (the value of the CreateServer Endpoint attribute).
+You cannot access the server by using the generated \code{Endpoint} value if
+the server is using a custom domain. If you specify a custom domain, you
+must also specify values for \code{CustomCertificate} and \code{CustomPrivateKey}.}
 
-\item{CustomCertificate}{A PEM-formatted HTTPS certificate. The value can be be a single,
-self-signed certificate, or a certificate chain. If you specify a custom
-certificate, you must also specify values for \code{CustomDomain} and
-\code{CustomPrivateKey}. The following are requirements for the
-\code{CustomCertificate} value:
+\item{CustomCertificate}{Supported on servers running Chef Automate 2. A PEM-formatted HTTPS
+certificate. The value can be be a single, self-signed certificate, or a
+certificate chain. If you specify a custom certificate, you must also
+specify values for \code{CustomDomain} and \code{CustomPrivateKey}. The following
+are requirements for the \code{CustomCertificate} value:
 \itemize{
 \item You can provide either a self-signed, custom certificate, or the
 full certificate chain.
@@ -43,10 +43,11 @@ if present, must match the value of \code{CustomDomain}.
 \item The certificate must match the value of \code{CustomPrivateKey}.
 }}
 
-\item{CustomPrivateKey}{A private key in PEM format for connecting to the server by using HTTPS.
-The private key must not be encrypted; it cannot be protected by a
-password or passphrase. If you specify a custom private key, you must
-also specify values for \code{CustomDomain} and \code{CustomCertificate}.}
+\item{CustomPrivateKey}{Supported on servers running Chef Automate 2. A private key in PEM
+format for connecting to the server by using HTTPS. The private key must
+not be encrypted; it cannot be protected by a password or passphrase. If
+you specify a custom private key, you must also specify values for
+\code{CustomDomain} and \code{CustomCertificate}.}
 
 \item{DisableAutomatedBackup}{Enable or disable scheduled backups. Valid values are \code{true} or \code{false}.
 The default value is \code{true}.}
@@ -171,6 +172,22 @@ Assign Public IP\" enabled.
 For more information about supported Amazon EC2 platforms, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html}{Supported Platforms}.}
 
+\item{Tags}{A map that contains tag keys and tag values to attach to an AWS OpsWorks
+for Chef Automate or AWS OpsWorks for Puppet Enterprise server.
+\itemize{
+\item The key cannot be empty.
+\item The key can be a maximum of 127 characters, and can contain only
+Unicode letters, numbers, or separators, or the following special
+characters: \verb{+ - = . _ : /}
+\item The value can be a maximum 255 characters, and contain only Unicode
+letters, numbers, or separators, or the following special
+characters: \verb{+ - = . _ : /}
+\item Leading and trailing white spaces are trimmed from both the key and
+value.
+\item A maximum of 50 user-applied tags is allowed for any AWS OpsWorks-CM
+server.
+}}
+
 \item{BackupId}{If you specify this field, AWS OpsWorks CM creates the server by using
 the backup represented by BackupId.}
 }
@@ -239,6 +256,12 @@ self-signed or CA-signed certificate and private key, specify values for
   ServiceRoleArn = "string",
   SubnetIds = list(
     "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   ),
   BackupId = "string"
 )

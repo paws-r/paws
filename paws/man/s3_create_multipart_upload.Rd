@@ -66,12 +66,12 @@ appropriate for use with the algorithm specified in the
 1321. Amazon S3 uses this header for a message integrity check to ensure
 that the encryption key was transmitted without error.}
 
-\item{SSEKMSKeyId}{Specifies the AWS KMS key ID to use for object encryption. All GET and
-PUT requests for an object protected by AWS KMS will fail if not made
-via SSL or using SigV4. For information about configuring using any of
-the officially supported AWS SDKs and AWS CLI, see Specifying the
-Signature Version in Request Authentication in the \emph{Amazon S3 Developer
-Guide}.}
+\item{SSEKMSKeyId}{Specifies the ID of the symmetric customer managed AWS KMS CMK to use
+for object encryption. All GET and PUT requests for an object protected
+by AWS KMS will fail if not made via SSL or using SigV4. For information
+about configuring using any of the officially supported AWS SDKs and AWS
+CLI, see Specifying the Signature Version in Request Authentication in
+the \emph{Amazon S3 Developer Guide}.}
 
 \item{SSEKMSEncryptionContext}{Specifies the AWS KMS Encryption Context to use for object encryption.
 The value of this header is a base64-encoded UTF-8 string holding JSON
@@ -186,7 +186,7 @@ encryption keys or provide your own encryption key.\preformatted{-   Use encrypt
     -   x-amz-server-side-encryption-context
 
     If you specify `x-amz-server-side-encryption:aws:kms`, but
-    don\\'t provide `x-amz-server-side- encryption-aws-kms-key-id`,
+    don\\'t provide `x-amz-server-side-encryption-aws-kms-key-id`,
     Amazon S3 uses the AWS managed CMK in AWS KMS to protect the
     data.
 

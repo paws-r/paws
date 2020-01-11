@@ -9,16 +9,16 @@ gamelift_create_vpc_peering_connection(FleetId, PeerVpcAwsAccountId,
   PeerVpcId)
 }
 \arguments{
-\item{FleetId}{[required] Unique identifier for a fleet. This tells Amazon GameLift which GameLift
-VPC to peer with.}
+\item{FleetId}{[required] A unique identifier for a fleet. You can use either the fleet ID or ARN
+value. This tells Amazon GameLift which GameLift VPC to peer with.}
 
-\item{PeerVpcAwsAccountId}{[required] Unique identifier for the AWS account with the VPC that you want to peer
-your Amazon GameLift fleet with. You can find your Account ID in the AWS
-Management Console under account settings.}
+\item{PeerVpcAwsAccountId}{[required] A unique identifier for the AWS account with the VPC that you want to
+peer your Amazon GameLift fleet with. You can find your Account ID in
+the AWS Management Console under account settings.}
 
-\item{PeerVpcId}{[required] Unique identifier for a VPC with resources to be accessed by your Amazon
-GameLift fleet. The VPC must be in the same region where your fleet is
-deployed. Look up a VPC ID using the \href{https://console.aws.amazon.com/vpc/}{VPC Dashboard} in the AWS Management
+\item{PeerVpcId}{[required] A unique identifier for a VPC with resources to be accessed by your
+Amazon GameLift fleet. The VPC must be in the same Region where your
+fleet is deployed. Look up a VPC ID using the \href{https://console.aws.amazon.com/vpc/}{VPC Dashboard} in the AWS Management
 Console. Learn more about VPC peering in \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html}{VPC Peering with Amazon GameLift Fleets}.}
 }
 \description{
@@ -28,7 +28,7 @@ peering enables the game servers on your fleet to communicate directly
 with other AWS resources. You can peer with VPCs in any AWS account that
 you have access to, including the account that you use to manage your
 Amazon GameLift fleets. You cannot peer with VPCs that are in different
-regions. For more information, see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html}{VPC Peering with Amazon GameLift Fleets}.
+Regions. For more information, see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html}{VPC Peering with Amazon GameLift Fleets}.
 }
 \details{
 Before calling this operation to establish the peering connection, you

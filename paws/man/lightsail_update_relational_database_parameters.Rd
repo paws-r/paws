@@ -20,7 +20,7 @@ Lightsail.
 \details{
 Parameter updates don\'t cause outages; therefore, their application is
 not subject to the preferred maintenance window. However, there are two
-ways in which paramater updates are applied: \code{dynamic} or
+ways in which parameter updates are applied: \code{dynamic} or
 \code{pending-reboot}. Parameters marked with a \code{dynamic} apply type are
 applied immediately. Parameters marked with a \code{pending-reboot} apply
 type are applied only after the database is rebooted using the

@@ -23,7 +23,7 @@ expression is specified, edge statistics are returned.}
 
 \item{Period}{Aggregation period in seconds.}
 
-\item{NextToken}{Pagination token. Not used.}
+\item{NextToken}{Pagination token.}
 }
 \description{
 Get an aggregation of service statistics defined by a specific time

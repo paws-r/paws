@@ -2,28 +2,31 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_update_template}
 \alias{quicksight_update_template}
-\title{Updates a template from an existing QuickSight analysis}
+\title{Updates a template from an existing Amazon QuickSight analysis or
+another template}
 \usage{
 quicksight_update_template(AwsAccountId, TemplateId, SourceEntity,
   VersionDescription, Name)
 }
 \arguments{
-\item{AwsAccountId}{[required] AWS account ID that contains the template you are updating.}
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the template that you\'re
+updating.}
 
 \item{TemplateId}{[required] The ID for the template.}
 
-\item{SourceEntity}{[required] The source QuickSight entity from which this template is being created.
-Templates can be currently created from an Analysis or another template.}
+\item{SourceEntity}{[required] The source QuickSight entity from which this template is being updated.
+You can currently update templates from an Analysis or another template.}
 
-\item{VersionDescription}{A description of the current template version being updated. Every time
-you cal \code{UpdateTemplate} you create a new version. Each version of the
-template maintains a description of the version in the
-\code{VersionDescription} field.}
+\item{VersionDescription}{A description of the current template version that is being updated.
+Every time you call \code{UpdateTemplate}, you create a new version of the
+template. Each version of the template maintains a description of the
+version in the \code{VersionDescription} field.}
 
 \item{Name}{The name for the template.}
 }
 \description{
-Updates a template from an existing QuickSight analysis.
+Updates a template from an existing Amazon QuickSight analysis or
+another template.
 }
 \section{Request syntax}{
 \preformatted{svc$update_template(

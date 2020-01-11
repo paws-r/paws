@@ -19,7 +19,7 @@ account. For more information about different account types, see
 in the \emph{Amazon Chime Administration Guide}.
 }
 \details{
-Users suspended from a \code{Team} account are dissasociated from the
+Users suspended from a \code{Team} account are disassociated from the
 account, but they can continue to use Amazon Chime as free users. To
 remove the suspension from suspended \code{Team} account users, invite them
 to the \code{Team} account again. You can use the InviteUsers action to do

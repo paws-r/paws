@@ -4,9 +4,9 @@
 \alias{iot_create_ota_update}
 \title{Creates an AWS IoT OTAUpdate on a target group of things or groups}
 \usage{
-iot_create_ota_update(otaUpdateId, description, targets,
-  targetSelection, awsJobExecutionsRolloutConfig, files, roleArn,
-  additionalParameters, tags)
+iot_create_ota_update(otaUpdateId, description, targets, protocols,
+  targetSelection, awsJobExecutionsRolloutConfig,
+  awsJobPresignedUrlConfig, files, roleArn, additionalParameters, tags)
 }
 \arguments{
 \item{otaUpdateId}{[required] The ID of the OTA update to be created.}
@@ -14,6 +14,10 @@ iot_create_ota_update(otaUpdateId, description, targets,
 \item{description}{The description of the OTA update.}
 
 \item{targets}{[required] The targeted devices to receive OTA updates.}
+
+\item{protocols}{The protocol used to transfer the OTA update image. Valid values are
+[HTTP], [MQTT], [HTTP, MQTT]. When both HTTP and MQTT are
+specified, the target device can choose the protocol.}
 
 \item{targetSelection}{Specifies whether the update will continue to run (CONTINUOUS), or will
 be complete after all the things specified as targets have completed the
@@ -24,6 +28,8 @@ update was completed by all things originally in the group. Valid
 values: CONTINUOUS \\| SNAPSHOT.}
 
 \item{awsJobExecutionsRolloutConfig}{Configuration for the rollout of OTA updates.}
+
+\item{awsJobPresignedUrlConfig}{Configuration information for pre-signed URLs.}
 
 \item{files}{[required] The files to be streamed by the OTA update.}
 
@@ -43,9 +49,15 @@ Creates an AWS IoT OTAUpdate on a target group of things or groups.
   targets = list(
     "string"
   ),
+  protocols = list(
+    "MQTT"|"HTTP"
+  ),
   targetSelection = "CONTINUOUS"|"SNAPSHOT",
   awsJobExecutionsRolloutConfig = list(
     maximumPerMinute = 123
+  ),
+  awsJobPresignedUrlConfig = list(
+    expiresInSec = 123
   ),
   files = list(
     list(

@@ -120,8 +120,8 @@ NULL
 #'  \link[=codedeploy_batch_get_applications]{batch_get_applications} \tab Gets information about one or more applications \cr
 #'  \link[=codedeploy_batch_get_deployment_groups]{batch_get_deployment_groups} \tab Gets information about one or more deployment groups \cr
 #'  \link[=codedeploy_batch_get_deployment_instances]{batch_get_deployment_instances} \tab This method works, but is deprecated \cr
-#'  \link[=codedeploy_batch_get_deployment_targets]{batch_get_deployment_targets} \tab Returns an array of one or more targets associated with a deployment \cr
 #'  \link[=codedeploy_batch_get_deployments]{batch_get_deployments} \tab Gets information about one or more deployments \cr
+#'  \link[=codedeploy_batch_get_deployment_targets]{batch_get_deployment_targets} \tab Returns an array of one or more targets associated with a deployment \cr
 #'  \link[=codedeploy_batch_get_on_premises_instances]{batch_get_on_premises_instances} \tab Gets information about one or more on-premises instances \cr
 #'  \link[=codedeploy_continue_deployment]{continue_deployment} \tab For a blue/green deployment, starts the process of rerouting traffic from instances in the original environment to instances in the replacement environment without waiting for a specified wait time to elapse\cr
 #'  \link[=codedeploy_create_application]{create_application} \tab Creates an application \cr
@@ -146,8 +146,8 @@ NULL
 #'  \link[=codedeploy_list_deployment_configs]{list_deployment_configs} \tab Lists the deployment configurations with the IAM user or AWS account \cr
 #'  \link[=codedeploy_list_deployment_groups]{list_deployment_groups} \tab Lists the deployment groups for an application registered with the IAM user or AWS account \cr
 #'  \link[=codedeploy_list_deployment_instances]{list_deployment_instances} \tab The newer BatchGetDeploymentTargets should be used instead because it works with all compute types \cr
-#'  \link[=codedeploy_list_deployment_targets]{list_deployment_targets} \tab Returns an array of target IDs that are associated a deployment \cr
 #'  \link[=codedeploy_list_deployments]{list_deployments} \tab Lists the deployments in a deployment group for an application registered with the IAM user or AWS account \cr
+#'  \link[=codedeploy_list_deployment_targets]{list_deployment_targets} \tab Returns an array of target IDs that are associated a deployment \cr
 #'  \link[=codedeploy_list_git_hub_account_token_names]{list_git_hub_account_token_names} \tab Lists the names of stored connections to GitHub accounts \cr
 #'  \link[=codedeploy_list_on_premises_instances]{list_on_premises_instances} \tab Gets a list of names for one or more on-premises instances \cr
 #'  \link[=codedeploy_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags for the resource identified by a specified ARN \cr

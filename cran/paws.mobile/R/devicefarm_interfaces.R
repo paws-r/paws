@@ -63,6 +63,30 @@ NULL
   return(populate(args, shape))
 }
 
+.devicefarm$create_test_grid_project_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devicefarm$create_test_grid_project_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(testGridProject = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), created = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devicefarm$create_test_grid_url_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(projectArn = structure(logical(0), tags = list(type = "string")), expiresInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devicefarm$create_test_grid_url_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(url = structure(logical(0), tags = list(type = "string")), expires = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .devicefarm$create_upload_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(projectArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), contentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -154,6 +178,18 @@ NULL
 }
 
 .devicefarm$delete_run_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devicefarm$delete_test_grid_project_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(projectArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devicefarm$delete_test_grid_project_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -348,6 +384,30 @@ NULL
 .devicefarm$get_test_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(test = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), created = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), result = structure(logical(0), tags = list(type = "string")), started = structure(logical(0), tags = list(type = "timestamp")), stopped = structure(logical(0), tags = list(type = "timestamp")), counters = structure(list(total = structure(logical(0), tags = list(type = "integer")), passed = structure(logical(0), tags = list(type = "integer")), failed = structure(logical(0), tags = list(type = "integer")), warned = structure(logical(0), tags = list(type = "integer")), errored = structure(logical(0), tags = list(type = "integer")), stopped = structure(logical(0), tags = list(type = "integer")), skipped = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), message = structure(logical(0), tags = list(type = "string")), deviceMinutes = structure(list(total = structure(logical(0), tags = list(type = "double")), metered = structure(logical(0), tags = list(type = "double")), unmetered = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devicefarm$get_test_grid_project_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(projectArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devicefarm$get_test_grid_project_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(testGridProject = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), created = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devicefarm$get_test_grid_session_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(projectArn = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string")), sessionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devicefarm$get_test_grid_session_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(testGridSession = structure(list(arn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), created = structure(logical(0), tags = list(type = "timestamp")), ended = structure(logical(0), tags = list(type = "timestamp")), billingMinutes = structure(logical(0), tags = list(type = "double")), seleniumProperties = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -579,6 +639,54 @@ NULL
   return(populate(args, shape))
 }
 
+.devicefarm$list_test_grid_projects_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(maxResult = structure(logical(0), tags = list(type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devicefarm$list_test_grid_projects_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(testGridProjects = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), created = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devicefarm$list_test_grid_session_actions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(sessionArn = structure(logical(0), tags = list(type = "string")), maxResult = structure(logical(0), tags = list(type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devicefarm$list_test_grid_session_actions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(actions = structure(list(structure(list(action = structure(logical(0), tags = list(type = "string")), started = structure(logical(0), tags = list(type = "timestamp")), duration = structure(logical(0), tags = list(type = "long")), statusCode = structure(logical(0), tags = list(type = "string")), requestMethod = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devicefarm$list_test_grid_session_artifacts_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(sessionArn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), maxResult = structure(logical(0), tags = list(type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devicefarm$list_test_grid_session_artifacts_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(artifacts = structure(list(structure(list(filename = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devicefarm$list_test_grid_sessions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(projectArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationTimeAfter = structure(logical(0), tags = list(type = "timestamp")), creationTimeBefore = structure(logical(0), tags = list(type = "timestamp")), endTimeAfter = structure(logical(0), tags = list(type = "timestamp")), endTimeBefore = structure(logical(0), tags = list(type = "timestamp")), maxResult = structure(logical(0), tags = list(type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devicefarm$list_test_grid_sessions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(testGridSessions = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), created = structure(logical(0), tags = list(type = "timestamp")), ended = structure(logical(0), tags = list(type = "timestamp")), billingMinutes = structure(logical(0), tags = list(type = "double")), seleniumProperties = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .devicefarm$list_tests_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -780,6 +888,18 @@ NULL
 .devicefarm$update_project_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(project = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), defaultJobTimeoutMinutes = structure(logical(0), tags = list(type = "integer")), created = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devicefarm$update_test_grid_project_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(projectArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devicefarm$update_test_grid_project_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(testGridProject = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), created = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -75,8 +75,8 @@ NULL
 #'  \link[=ecs_describe_container_instances]{describe_container_instances} \tab Describes Amazon Elastic Container Service container instances \cr
 #'  \link[=ecs_describe_services]{describe_services} \tab Describes the specified services running in your cluster \cr
 #'  \link[=ecs_describe_task_definition]{describe_task_definition} \tab Describes a task definition \cr
-#'  \link[=ecs_describe_task_sets]{describe_task_sets} \tab Describes the task sets in the specified cluster and service \cr
 #'  \link[=ecs_describe_tasks]{describe_tasks} \tab Describes a specified task or tasks \cr
+#'  \link[=ecs_describe_task_sets]{describe_task_sets} \tab Describes the task sets in the specified cluster and service \cr
 #'  \link[=ecs_discover_poll_endpoint]{discover_poll_endpoint} \tab This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent \cr
 #'  \link[=ecs_list_account_settings]{list_account_settings} \tab Lists the account settings for a specified principal \cr
 #'  \link[=ecs_list_attributes]{list_attributes} \tab Lists the attributes for Amazon ECS resources within a specified target type and cluster \cr

@@ -12,7 +12,7 @@ NULL
 #' @usage
 #' kafka_create_cluster(BrokerNodeGroupInfo, ClientAuthentication,
 #'   ClusterName, ConfigurationInfo, EncryptionInfo, EnhancedMonitoring,
-#'   KafkaVersion, NumberOfBrokerNodes, Tags)
+#'   OpenMonitoring, KafkaVersion, NumberOfBrokerNodes, Tags)
 #'
 #' @param BrokerNodeGroupInfo &#91;required&#93; 
 #'             <p>Information about the broker nodes in the cluster.</p>
@@ -31,6 +31,9 @@ NULL
 #'          
 #' @param EnhancedMonitoring 
 #'             <p>Specifies the level of monitoring for the MSK cluster. The possible values are DEFAULT, PER_BROKER, and PER_TOPIC_PER_BROKER.</p>
+#'          
+#' @param OpenMonitoring 
+#'             <p>The settings for open monitoring.</p>
 #'          
 #' @param KafkaVersion &#91;required&#93; 
 #'             <p>The version of Apache Kafka.</p>
@@ -82,6 +85,16 @@ NULL
 #'     )
 #'   ),
 #'   EnhancedMonitoring = "DEFAULT"|"PER_BROKER"|"PER_TOPIC_PER_BROKER",
+#'   OpenMonitoring = list(
+#'     Prometheus = list(
+#'       JmxExporter = list(
+#'         EnabledInBroker = TRUE|FALSE
+#'       ),
+#'       NodeExporter = list(
+#'         EnabledInBroker = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
 #'   KafkaVersion = "string",
 #'   NumberOfBrokerNodes = 123,
 #'   Tags = list(
@@ -93,14 +106,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname kafka_create_cluster
-kafka_create_cluster <- function(BrokerNodeGroupInfo, ClientAuthentication = NULL, ClusterName, ConfigurationInfo = NULL, EncryptionInfo = NULL, EnhancedMonitoring = NULL, KafkaVersion, NumberOfBrokerNodes, Tags = NULL) {
+kafka_create_cluster <- function(BrokerNodeGroupInfo, ClientAuthentication = NULL, ClusterName, ConfigurationInfo = NULL, EncryptionInfo = NULL, EnhancedMonitoring = NULL, OpenMonitoring = NULL, KafkaVersion, NumberOfBrokerNodes, Tags = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/v1/clusters",
     paginator = list()
   )
-  input <- .kafka$create_cluster_input(BrokerNodeGroupInfo = BrokerNodeGroupInfo, ClientAuthentication = ClientAuthentication, ClusterName = ClusterName, ConfigurationInfo = ConfigurationInfo, EncryptionInfo = EncryptionInfo, EnhancedMonitoring = EnhancedMonitoring, KafkaVersion = KafkaVersion, NumberOfBrokerNodes = NumberOfBrokerNodes, Tags = Tags)
+  input <- .kafka$create_cluster_input(BrokerNodeGroupInfo = BrokerNodeGroupInfo, ClientAuthentication = ClientAuthentication, ClusterName = ClusterName, ConfigurationInfo = ConfigurationInfo, EncryptionInfo = EncryptionInfo, EnhancedMonitoring = EnhancedMonitoring, OpenMonitoring = OpenMonitoring, KafkaVersion = KafkaVersion, NumberOfBrokerNodes = NumberOfBrokerNodes, Tags = Tags)
   output <- .kafka$create_cluster_output()
   config <- get_config()
   svc <- .kafka$service(config)
@@ -964,3 +977,65 @@ kafka_update_cluster_configuration <- function(ClusterArn, ConfigurationInfo, Cu
   return(response)
 }
 .kafka$operations$update_cluster_configuration <- kafka_update_cluster_configuration
+
+#' Updates the monitoring settings for the cluster
+#'
+#' 
+#'             <p>Updates the monitoring settings for the cluster. You can use this operation to specify which Apache Kafka metrics you want Amazon MSK to send to Amazon CloudWatch. You can also specify settings for open monitoring with Prometheus.</p>
+#'          
+#'
+#' @usage
+#' kafka_update_monitoring(ClusterArn, CurrentVersion, EnhancedMonitoring,
+#'   OpenMonitoring)
+#'
+#' @param ClusterArn &#91;required&#93; 
+#'             <p>The Amazon Resource Name (ARN) that uniquely identifies the cluster.</p>
+#'          
+#' @param CurrentVersion &#91;required&#93; 
+#'             <p>The version of the MSK cluster to update. Cluster versions aren't simple numbers. You can describe an MSK cluster to find its version. When this update operation is successful, it generates a new cluster version.</p>
+#'          
+#' @param EnhancedMonitoring 
+#'             <p>Specifies which Apache Kafka metrics Amazon MSK gathers and sends to Amazon CloudWatch for this cluster.</p>
+#'          
+#' @param OpenMonitoring 
+#'             <p>The settings for open monitoring.</p>
+#'          
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_monitoring(
+#'   ClusterArn = "string",
+#'   CurrentVersion = "string",
+#'   EnhancedMonitoring = "DEFAULT"|"PER_BROKER"|"PER_TOPIC_PER_BROKER",
+#'   OpenMonitoring = list(
+#'     Prometheus = list(
+#'       JmxExporter = list(
+#'         EnabledInBroker = TRUE|FALSE
+#'       ),
+#'       NodeExporter = list(
+#'         EnabledInBroker = TRUE|FALSE
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_update_monitoring
+kafka_update_monitoring <- function(ClusterArn, CurrentVersion, EnhancedMonitoring = NULL, OpenMonitoring = NULL) {
+  op <- new_operation(
+    name = "UpdateMonitoring",
+    http_method = "PUT",
+    http_path = "/v1/clusters/{clusterArn}/monitoring",
+    paginator = list()
+  )
+  input <- .kafka$update_monitoring_input(ClusterArn = ClusterArn, CurrentVersion = CurrentVersion, EnhancedMonitoring = EnhancedMonitoring, OpenMonitoring = OpenMonitoring)
+  output <- .kafka$update_monitoring_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$update_monitoring <- kafka_update_monitoring

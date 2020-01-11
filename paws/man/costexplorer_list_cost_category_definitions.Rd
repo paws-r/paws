@@ -2,8 +2,8 @@
 % Please edit documentation in R/costexplorer_operations.R
 \name{costexplorer_list_cost_category_definitions}
 \alias{costexplorer_list_cost_category_definitions}
-\title{_COST CATEGORY IS IN PREVIEW RELEASE FOR AWS BILLING AND COST MANAGEMENT
-AND IS SUBJECT TO CHANGE}
+\title{_COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND
+IS SUBJECT TO CHANGE}
 \usage{
 costexplorer_list_cost_category_definitions(EffectiveOn, NextToken)
 }
@@ -18,9 +18,9 @@ You can use this information to retrieve the full Cost Category
 information using \code{DescribeCostCategory}.}
 }
 \description{
-\emph{\strong{Cost Category is in preview release for AWS Billing and Cost
-Management and is subject to change. Your use of Cost Categories is
-subject to the Beta Service Participation terms of the \href{https://aws.amazon.com/service-terms/}{AWS Service Terms} (Section 1.10).}}
+\emph{\strong{Cost Category is in public beta for AWS Billing and Cost Management
+and is subject to change. Your use of Cost Categories is subject to the
+Beta Service Participation terms of the \href{https://aws.amazon.com/service-terms/}{AWS Service Terms} (Section 1.10).}}
 }
 \details{
 Returns the name, ARN and effective dates of all Cost Categories defined

@@ -3,8 +3,8 @@
 \name{pinpoint_get_segment_versions}
 \alias{pinpoint_get_segment_versions}
 \title{Retrieves information about the configuration, dimension, and other
-settings for all versions of a specific segment that's associated with
-an application}
+settings for all the versions of a specific segment that's associated
+with an application}
 \usage{
 pinpoint_get_segment_versions(ApplicationId, PageSize, SegmentId, Token)
 }
@@ -23,8 +23,8 @@ paginated response.}
 }
 \description{
 Retrieves information about the configuration, dimension, and other
-settings for all versions of a specific segment that\'s associated with
-an application.
+settings for all the versions of a specific segment that\'s associated
+with an application.
 }
 \section{Request syntax}{
 \preformatted{svc$get_segment_versions(

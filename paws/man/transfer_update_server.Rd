@@ -9,8 +9,10 @@ transfer_update_server(EndpointDetails, EndpointType, HostKey,
 }
 \arguments{
 \item{EndpointDetails}{The virtual private cloud (VPC) endpoint settings that are configured
-for your SFTP server. With a VPC endpoint, your SFTP server isn\'t
-accessible over the public internet.}
+for your SFTP server. With a VPC endpoint, you can restrict access to
+your SFTP server to resources only within your VPC. To control incoming
+internet traffic, you will need to associate one or more Elastic IP
+addresses with your server\'s endpoint.}
 
 \item{EndpointType}{The type of endpoint that you want your SFTP server to connect to. You
 can choose to connect to the public internet or a virtual private cloud
@@ -48,9 +50,16 @@ Transfer Protocol (SFTP) server you updated.
 \section{Request syntax}{
 \preformatted{svc$update_server(
   EndpointDetails = list(
-    VpcEndpointId = "string"
+    AddressAllocationIds = list(
+      "string"
+    ),
+    SubnetIds = list(
+      "string"
+    ),
+    VpcEndpointId = "string",
+    VpcId = "string"
   ),
-  EndpointType = "PUBLIC"|"VPC_ENDPOINT",
+  EndpointType = "PUBLIC"|"VPC"|"VPC_ENDPOINT",
   HostKey = "string",
   IdentityProviderDetails = list(
     Url = "string",

@@ -1,6 +1,6 @@
 Package: paws.database
 Title: Amazon Web Services Database APIs
-Version: 0.1.5
+Version: 0.1.6
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
@@ -17,7 +17,7 @@ Description: Interface to Amazon Web Services database APIs, including
     and more <https://aws.amazon.com/>.
 License: Apache License (>= 2.0)
 Imports: 
-    paws.common (>= 0.2.4)
+    paws.common (>= 0.2.5)
 Suggests: 
     testthat
 Encoding: UTF-8
@@ -44,8 +44,9 @@ Collate:
     'neptune_interfaces.R'
     'neptune_operations.R'
     'rds_service.R'
-    'rds_interfaces.R'
     'rds_operations.R'
+    'rds_custom.R'
+    'rds_interfaces.R'
     'rdsdataservice_service.R'
     'rdsdataservice_interfaces.R'
     'rdsdataservice_operations.R'

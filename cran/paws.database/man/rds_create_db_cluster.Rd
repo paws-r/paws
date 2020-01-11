@@ -255,7 +255,17 @@ used. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/late
 in the \emph{Amazon Aurora User Guide}.}
 
 \item{EngineMode}{The DB engine mode of the DB cluster, either \code{provisioned},
-\code{serverless}, \code{parallelquery}, \code{global}, or \code{multimaster}.}
+\code{serverless}, \code{parallelquery}, \code{global}, or \code{multimaster}.
+
+Limitations and requirements apply to some DB engine modes. For more
+information, see the following sections in the \emph{Amazon Aurora User
+Guide}:
+\itemize{
+\item \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html#aurora-serverless.limitations}{Limitations of Aurora Serverless}
+\item \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-mysql-parallel-query.html#aurora-mysql-parallel-query-limitations}{Limitations of Parallel Query}
+\item \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database.limitations}{Requirements for Aurora Global Databases}
+\item \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-limitations}{Limitations of Multi-Master Clusters}
+}}
 
 \item{ScalingConfiguration}{For DB clusters in \code{serverless} DB engine mode, the scaling properties
 of the DB cluster.}

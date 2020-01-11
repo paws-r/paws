@@ -2,18 +2,17 @@
 % Please edit documentation in R/lightsail_operations.R
 \name{lightsail_get_auto_snapshots}
 \alias{lightsail_get_auto_snapshots}
-\title{Returns the available automatic snapshots for the specified resource
-name}
+\title{Returns the available automatic snapshots for an instance or disk}
 \usage{
 lightsail_get_auto_snapshots(resourceName)
 }
 \arguments{
-\item{resourceName}{[required] The name of the source resource from which to get automatic snapshot
-information.}
+\item{resourceName}{[required] The name of the source instance or disk from which to get automatic
+snapshot information.}
 }
 \description{
-Returns the available automatic snapshots for the specified resource
-name. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.
+Returns the available automatic snapshots for an instance or disk. For
+more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_auto_snapshots(

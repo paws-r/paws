@@ -5,9 +5,23 @@ NULL
 #' AWS Device Farm
 #'
 #' @description
-#' AWS Device Farm is a service that enables mobile app developers to test
-#' Android, iOS, and Fire OS apps on physical phones, tablets, and other
-#' devices in the cloud.
+#' Welcome to the AWS Device Farm API documentation, which contains APIs
+#' for:
+#' 
+#' -   Testing on desktop browsers
+#' 
+#'     Device Farm makes it possible for you to test your web applications
+#'     on desktop browsers using Selenium. The APIs for desktop browser
+#'     testing contain `TestGrid` in their names. For more information, see
+#'     [Testing Web Applications on Selenium with Device
+#'     Farm](https://docs.aws.amazon.com/devicefarm/latest/testgrid/).
+#' 
+#' -   Testing on real mobile devices
+#' 
+#'     Device Farm makes it possible for you to test apps on physical
+#'     phones, tablets, and other devices in the cloud. For more
+#'     information, see the [Device Farm Developer
+#'     Guide](https://docs.aws.amazon.com/devicefarm/latest/developerguide/).
 #'
 #' @param
 #' config
@@ -47,8 +61,10 @@ NULL
 #'  \link[=devicefarm_create_device_pool]{create_device_pool} \tab Creates a device pool \cr
 #'  \link[=devicefarm_create_instance_profile]{create_instance_profile} \tab Creates a profile that can be applied to one or more private fleet device instances \cr
 #'  \link[=devicefarm_create_network_profile]{create_network_profile} \tab Creates a network profile \cr
-#'  \link[=devicefarm_create_project]{create_project} \tab Creates a new project \cr
+#'  \link[=devicefarm_create_project]{create_project} \tab Creates a project \cr
 #'  \link[=devicefarm_create_remote_access_session]{create_remote_access_session} \tab Specifies and starts a remote access session \cr
+#'  \link[=devicefarm_create_test_grid_project]{create_test_grid_project} \tab Creates a Selenium testing project \cr
+#'  \link[=devicefarm_create_test_grid_url]{create_test_grid_url} \tab Creates a signed, short-term URL that can be passed to a Selenium RemoteWebDriver constructor \cr
 #'  \link[=devicefarm_create_upload]{create_upload} \tab Uploads an app or test scripts \cr
 #'  \link[=devicefarm_create_vpce_configuration]{create_vpce_configuration} \tab Creates a configuration record in Device Farm for your Amazon Virtual Private Cloud (VPC) endpoint \cr
 #'  \link[=devicefarm_delete_device_pool]{delete_device_pool} \tab Deletes a device pool given the pool ARN \cr
@@ -57,11 +73,12 @@ NULL
 #'  \link[=devicefarm_delete_project]{delete_project} \tab Deletes an AWS Device Farm project, given the project ARN \cr
 #'  \link[=devicefarm_delete_remote_access_session]{delete_remote_access_session} \tab Deletes a completed remote access session and its results \cr
 #'  \link[=devicefarm_delete_run]{delete_run} \tab Deletes the run, given the run ARN \cr
+#'  \link[=devicefarm_delete_test_grid_project]{delete_test_grid_project} \tab Deletes a Selenium testing project and all content generated under it \cr
 #'  \link[=devicefarm_delete_upload]{delete_upload} \tab Deletes an upload given the upload ARN \cr
 #'  \link[=devicefarm_delete_vpce_configuration]{delete_vpce_configuration} \tab Deletes a configuration for your Amazon Virtual Private Cloud (VPC) endpoint \cr
-#'  \link[=devicefarm_get_account_settings]{get_account_settings} \tab Returns the number of unmetered iOS and/or unmetered Android devices that have been purchased by the account \cr
+#'  \link[=devicefarm_get_account_settings]{get_account_settings} \tab Returns the number of unmetered iOS or unmetered Android devices that have been purchased by the account \cr
 #'  \link[=devicefarm_get_device]{get_device} \tab Gets information about a unique device type \cr
-#'  \link[=devicefarm_get_device_instance]{get_device_instance} \tab Returns information about a device instance belonging to a private device fleet \cr
+#'  \link[=devicefarm_get_device_instance]{get_device_instance} \tab Returns information about a device instance that belongs to a private device fleet \cr
 #'  \link[=devicefarm_get_device_pool]{get_device_pool} \tab Gets information about a device pool \cr
 #'  \link[=devicefarm_get_device_pool_compatibility]{get_device_pool_compatibility} \tab Gets information about compatibility with a device pool \cr
 #'  \link[=devicefarm_get_instance_profile]{get_instance_profile} \tab Returns information about the specified instance profile \cr
@@ -73,6 +90,8 @@ NULL
 #'  \link[=devicefarm_get_run]{get_run} \tab Gets information about a run \cr
 #'  \link[=devicefarm_get_suite]{get_suite} \tab Gets information about a suite \cr
 #'  \link[=devicefarm_get_test]{get_test} \tab Gets information about a test \cr
+#'  \link[=devicefarm_get_test_grid_project]{get_test_grid_project} \tab Retrieves information about a Selenium testing project \cr
+#'  \link[=devicefarm_get_test_grid_session]{get_test_grid_session} \tab A session is an instance of a browser created through a RemoteWebDriver with the URL from CreateTestGridUrlResult$url\cr
 #'  \link[=devicefarm_get_upload]{get_upload} \tab Gets information about an upload \cr
 #'  \link[=devicefarm_get_vpce_configuration]{get_vpce_configuration} \tab Returns information about the configuration settings for your Amazon Virtual Private Cloud (VPC) endpoint \cr
 #'  \link[=devicefarm_install_to_remote_access_session]{install_to_remote_access_session} \tab Installs an application to the device in a remote access session \cr
@@ -84,33 +103,38 @@ NULL
 #'  \link[=devicefarm_list_jobs]{list_jobs} \tab Gets information about jobs for a given test run \cr
 #'  \link[=devicefarm_list_network_profiles]{list_network_profiles} \tab Returns the list of available network profiles \cr
 #'  \link[=devicefarm_list_offering_promotions]{list_offering_promotions} \tab Returns a list of offering promotions \cr
-#'  \link[=devicefarm_list_offering_transactions]{list_offering_transactions} \tab Returns a list of all historical purchases, renewals, and system renewal transactions for an AWS account \cr
 #'  \link[=devicefarm_list_offerings]{list_offerings} \tab Returns a list of products or offerings that the user can manage through the API \cr
+#'  \link[=devicefarm_list_offering_transactions]{list_offering_transactions} \tab Returns a list of all historical purchases, renewals, and system renewal transactions for an AWS account \cr
 #'  \link[=devicefarm_list_projects]{list_projects} \tab Gets information about projects \cr
 #'  \link[=devicefarm_list_remote_access_sessions]{list_remote_access_sessions} \tab Returns a list of all currently running remote access sessions \cr
 #'  \link[=devicefarm_list_runs]{list_runs} \tab Gets information about runs, given an AWS Device Farm project ARN \cr
 #'  \link[=devicefarm_list_samples]{list_samples} \tab Gets information about samples, given an AWS Device Farm job ARN \cr
 #'  \link[=devicefarm_list_suites]{list_suites} \tab Gets information about test suites for a given job \cr
 #'  \link[=devicefarm_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for an AWS Device Farm resource \cr
+#'  \link[=devicefarm_list_test_grid_projects]{list_test_grid_projects} \tab Gets a list of all Selenium testing projects in your account \cr
+#'  \link[=devicefarm_list_test_grid_session_actions]{list_test_grid_session_actions} \tab Returns a list of the actions taken in a TestGridSession \cr
+#'  \link[=devicefarm_list_test_grid_session_artifacts]{list_test_grid_session_artifacts} \tab Retrieves a list of artifacts created during the session \cr
+#'  \link[=devicefarm_list_test_grid_sessions]{list_test_grid_sessions} \tab Retrieves a list of sessions for a TestGridProject \cr
 #'  \link[=devicefarm_list_tests]{list_tests} \tab Gets information about tests in a given test suite \cr
-#'  \link[=devicefarm_list_unique_problems]{list_unique_problems} \tab Gets information about unique problems \cr
+#'  \link[=devicefarm_list_unique_problems]{list_unique_problems} \tab Gets information about unique problems, such as exceptions or crashes \cr
 #'  \link[=devicefarm_list_uploads]{list_uploads} \tab Gets information about uploads, given an AWS Device Farm project ARN \cr
 #'  \link[=devicefarm_list_vpce_configurations]{list_vpce_configurations} \tab Returns information about all Amazon Virtual Private Cloud (VPC) endpoint configurations in the AWS account \cr
 #'  \link[=devicefarm_purchase_offering]{purchase_offering} \tab Immediately purchases offerings for an AWS account \cr
-#'  \link[=devicefarm_renew_offering]{renew_offering} \tab Explicitly sets the quantity of devices to renew for an offering, starting from the effectiveDate of the next period\cr
+#'  \link[=devicefarm_renew_offering]{renew_offering} \tab Explicitly sets the quantity of devices to renew for an offering, starting from the effectiveDate of the next period \cr
 #'  \link[=devicefarm_schedule_run]{schedule_run} \tab Schedules a run \cr
 #'  \link[=devicefarm_stop_job]{stop_job} \tab Initiates a stop request for the current job \cr
 #'  \link[=devicefarm_stop_remote_access_session]{stop_remote_access_session} \tab Ends a specified remote access session \cr
 #'  \link[=devicefarm_stop_run]{stop_run} \tab Initiates a stop request for the current test run \cr
 #'  \link[=devicefarm_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn \cr
 #'  \link[=devicefarm_untag_resource]{untag_resource} \tab Deletes the specified tags from a resource \cr
-#'  \link[=devicefarm_update_device_instance]{update_device_instance} \tab Updates information about an existing private device instance \cr
+#'  \link[=devicefarm_update_device_instance]{update_device_instance} \tab Updates information about a private device instance \cr
 #'  \link[=devicefarm_update_device_pool]{update_device_pool} \tab Modifies the name, description, and rules in a device pool given the attributes and the pool ARN \cr
 #'  \link[=devicefarm_update_instance_profile]{update_instance_profile} \tab Updates information about an existing private device instance profile \cr
-#'  \link[=devicefarm_update_network_profile]{update_network_profile} \tab Updates the network profile with specific settings \cr
+#'  \link[=devicefarm_update_network_profile]{update_network_profile} \tab Updates the network profile \cr
 #'  \link[=devicefarm_update_project]{update_project} \tab Modifies the specified project name, given the project ARN and a new name \cr
-#'  \link[=devicefarm_update_upload]{update_upload} \tab Update an uploaded test specification (test spec) \cr
-#'  \link[=devicefarm_update_vpce_configuration]{update_vpce_configuration} \tab Updates information about an existing Amazon Virtual Private Cloud (VPC) endpoint configuration 
+#'  \link[=devicefarm_update_test_grid_project]{update_test_grid_project} \tab Change details of a project \cr
+#'  \link[=devicefarm_update_upload]{update_upload} \tab Updates an uploaded test spec \cr
+#'  \link[=devicefarm_update_vpce_configuration]{update_vpce_configuration} \tab Updates information about an Amazon Virtual Private Cloud (VPC) endpoint configuration 
 #' }
 #'
 #' @rdname devicefarm

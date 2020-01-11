@@ -9,9 +9,10 @@ gamelift_update_fleet_attributes(FleetId, Name, Description,
   MetricGroups)
 }
 \arguments{
-\item{FleetId}{[required] Unique identifier for a fleet to update attribute metadata for.}
+\item{FleetId}{[required] A unique identifier for a fleet to update attribute metadata for. You
+can use either the fleet ID or ARN value.}
 
-\item{Name}{Descriptive label that is associated with a fleet. Fleet names do not
+\item{Name}{A descriptive label that is associated with a fleet. Fleet names do not
 need to be unique.}
 
 \item{Description}{Human-readable description of a fleet.}
@@ -51,16 +52,7 @@ returned.
 \item CreateFleet
 \item ListFleets
 \item DeleteFleet
-\item Describe fleets:
-\itemize{
 \item DescribeFleetAttributes
-\item DescribeFleetCapacity
-\item DescribeFleetPortSettings
-\item DescribeFleetUtilization
-\item DescribeRuntimeConfiguration
-\item DescribeEC2InstanceLimits
-\item DescribeFleetEvents
-}
 \item Update fleets:
 \itemize{
 \item UpdateFleetAttributes

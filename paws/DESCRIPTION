@@ -1,6 +1,6 @@
 Package: paws
 Title: Amazon Web Services Software Development Kit
-Version: 0.1.5
+Version: 0.1.6
 Authors@R: c(
     person(given = "David", family = "Kretch", role = c("aut", "cre"), email = "david.kretch@gmail.com"),
     person(given = "Adam", family = "Banker", role = "aut", email = "adam.banker39@gmail.com"),
@@ -147,6 +147,9 @@ Collate:
     'codestar_service.R'
     'codestar_interfaces.R'
     'codestar_operations.R'
+    'codestarconnections_service.R'
+    'codestarconnections_interfaces.R'
+    'codestarconnections_operations.R'
     'codestarnotifications_service.R'
     'codestarnotifications_interfaces.R'
     'codestarnotifications_operations.R'
@@ -198,6 +201,9 @@ Collate:
     'dax_service.R'
     'dax_interfaces.R'
     'dax_operations.R'
+    'detective_service.R'
+    'detective_interfaces.R'
+    'detective_operations.R'
     'devicefarm_service.R'
     'devicefarm_interfaces.R'
     'devicefarm_operations.R'
@@ -521,8 +527,9 @@ Collate:
     'ram_interfaces.R'
     'ram_operations.R'
     'rds_service.R'
-    'rds_interfaces.R'
     'rds_operations.R'
+    'rds_custom.R'
+    'rds_interfaces.R'
     'rdsdataservice_service.R'
     'rdsdataservice_interfaces.R'
     'rdsdataservice_operations.R'

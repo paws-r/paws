@@ -47,9 +47,9 @@ For information about costs associated with the Cost Explorer API, see
 \section{Operations}{
 
 \tabular{ll}{
-\link[=costexplorer_create_cost_category_definition]{create_cost_category_definition} \tab _COST CATEGORY IS IN PREVIEW RELEASE FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE \cr
-\link[=costexplorer_delete_cost_category_definition]{delete_cost_category_definition} \tab _COST CATEGORY IS IN PREVIEW RELEASE FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE \cr
-\link[=costexplorer_describe_cost_category_definition]{describe_cost_category_definition} \tab _COST CATEGORY IS IN PREVIEW RELEASE FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE \cr
+\link[=costexplorer_create_cost_category_definition]{create_cost_category_definition} \tab _COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE \cr
+\link[=costexplorer_delete_cost_category_definition]{delete_cost_category_definition} \tab _COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE \cr
+\link[=costexplorer_describe_cost_category_definition]{describe_cost_category_definition} \tab _COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE \cr
 \link[=costexplorer_get_cost_and_usage]{get_cost_and_usage} \tab Retrieves cost and usage metrics for your account \cr
 \link[=costexplorer_get_cost_and_usage_with_resources]{get_cost_and_usage_with_resources} \tab Retrieves cost and usage metrics with resources for your account \cr
 \link[=costexplorer_get_cost_forecast]{get_cost_forecast} \tab Retrieves a forecast for how much Amazon Web Services predicts that you will spend over the forecast time period that you select, based on your past costs\cr
@@ -64,8 +64,8 @@ For information about costs associated with the Cost Explorer API, see
 \link[=costexplorer_get_savings_plans_utilization_details]{get_savings_plans_utilization_details} \tab Retrieves attribute data along with aggregate utilization and savings data for a given time period \cr
 \link[=costexplorer_get_tags]{get_tags} \tab Queries for available tag keys and tag values for a specified period \cr
 \link[=costexplorer_get_usage_forecast]{get_usage_forecast} \tab Retrieves a forecast for how much Amazon Web Services predicts that you will use over the forecast time period that you select, based on your past usage \cr
-\link[=costexplorer_list_cost_category_definitions]{list_cost_category_definitions} \tab _COST CATEGORY IS IN PREVIEW RELEASE FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE \cr
-\link[=costexplorer_update_cost_category_definition]{update_cost_category_definition} \tab _COST CATEGORY IS IN PREVIEW RELEASE FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE
+\link[=costexplorer_list_cost_category_definitions]{list_cost_category_definitions} \tab _COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE \cr
+\link[=costexplorer_update_cost_category_definition]{update_cost_category_definition} \tab _COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE
 }
 }
 

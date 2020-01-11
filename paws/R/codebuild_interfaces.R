@@ -135,6 +135,18 @@ NULL
   return(populate(args, shape))
 }
 
+.codebuild$delete_resource_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codebuild$delete_resource_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .codebuild$delete_source_credentials_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -168,6 +180,18 @@ NULL
 .codebuild$describe_test_cases_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), testCases = structure(list(structure(list(reportArn = structure(logical(0), tags = list(type = "string")), testRawDataPath = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), durationInNanoSeconds = structure(logical(0), tags = list(type = "long")), message = structure(logical(0), tags = list(type = "string")), expired = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codebuild$get_resource_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codebuild$get_resource_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -279,6 +303,30 @@ NULL
   return(populate(args, shape))
 }
 
+.codebuild$list_shared_projects_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(sortBy = structure(logical(0), tags = list(type = "string")), sortOrder = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codebuild$list_shared_projects_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), projects = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codebuild$list_shared_report_groups_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(sortOrder = structure(logical(0), tags = list(type = "string")), sortBy = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codebuild$list_shared_report_groups_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), reportGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .codebuild$list_source_credentials_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
@@ -291,9 +339,21 @@ NULL
   return(populate(args, shape))
 }
 
+.codebuild$put_resource_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(policy = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codebuild$put_resource_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .codebuild$start_build_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(projectName = structure(logical(0), tags = list(type = "string")), secondarySourcesOverride = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), gitCloneDepth = structure(logical(0), tags = list(type = "integer")), gitSubmodulesConfig = structure(list(fetchSubmodules = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), buildspec = structure(logical(0), tags = list(type = "string")), auth = structure(list(type = structure(logical(0), tags = list(type = "string")), resource = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), reportBuildStatus = structure(logical(0), tags = list(type = "boolean")), insecureSsl = structure(logical(0), tags = list(type = "boolean")), sourceIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), secondarySourcesVersionOverride = structure(list(structure(list(sourceIdentifier = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), sourceVersion = structure(logical(0), tags = list(type = "string")), artifactsOverride = structure(list(type = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), namespaceType = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), packaging = structure(logical(0), tags = list(type = "string")), overrideArtifactName = structure(logical(0), tags = list(type = "boolean")), encryptionDisabled = structure(logical(0), tags = list(type = "boolean")), artifactIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), secondaryArtifactsOverride = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), namespaceType = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), packaging = structure(logical(0), tags = list(type = "string")), overrideArtifactName = structure(logical(0), tags = list(type = "boolean")), encryptionDisabled = structure(logical(0), tags = list(type = "boolean")), artifactIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), environmentVariablesOverride = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), sourceTypeOverride = structure(logical(0), tags = list(type = "string")), sourceLocationOverride = structure(logical(0), tags = list(type = "string")), sourceAuthOverride = structure(list(type = structure(logical(0), tags = list(type = "string")), resource = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), gitCloneDepthOverride = structure(logical(0), tags = list(type = "integer")), gitSubmodulesConfigOverride = structure(list(fetchSubmodules = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), buildspecOverride = structure(logical(0), tags = list(type = "string")), insecureSslOverride = structure(logical(0), tags = list(type = "boolean")), reportBuildStatusOverride = structure(logical(0), tags = list(type = "boolean")), environmentTypeOverride = structure(logical(0), tags = list(type = "string")), imageOverride = structure(logical(0), tags = list(type = "string")), computeTypeOverride = structure(logical(0), tags = list(type = "string")), certificateOverride = structure(logical(0), tags = list(type = "string")), cacheOverride = structure(list(type = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), modes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), serviceRoleOverride = structure(logical(0), tags = list(type = "string")), privilegedModeOverride = structure(logical(0), tags = list(type = "boolean")), timeoutInMinutesOverride = structure(logical(0), tags = list(type = "integer")), queuedTimeoutInMinutesOverride = structure(logical(0), tags = list(type = "integer")), idempotencyToken = structure(logical(0), tags = list(type = "string")), logsConfigOverride = structure(list(cloudWatchLogs = structure(list(status = structure(logical(0), tags = list(type = "string")), groupName = structure(logical(0), tags = list(type = "string")), streamName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3Logs = structure(list(status = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), encryptionDisabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), registryCredentialOverride = structure(list(credential = structure(logical(0), tags = list(type = "string")), credentialProvider = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), imagePullCredentialsTypeOverride = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(projectName = structure(logical(0), tags = list(type = "string")), secondarySourcesOverride = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), gitCloneDepth = structure(logical(0), tags = list(type = "integer")), gitSubmodulesConfig = structure(list(fetchSubmodules = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), buildspec = structure(logical(0), tags = list(type = "string")), auth = structure(list(type = structure(logical(0), tags = list(type = "string")), resource = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), reportBuildStatus = structure(logical(0), tags = list(type = "boolean")), insecureSsl = structure(logical(0), tags = list(type = "boolean")), sourceIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), secondarySourcesVersionOverride = structure(list(structure(list(sourceIdentifier = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), sourceVersion = structure(logical(0), tags = list(type = "string")), artifactsOverride = structure(list(type = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), namespaceType = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), packaging = structure(logical(0), tags = list(type = "string")), overrideArtifactName = structure(logical(0), tags = list(type = "boolean")), encryptionDisabled = structure(logical(0), tags = list(type = "boolean")), artifactIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), secondaryArtifactsOverride = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), namespaceType = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), packaging = structure(logical(0), tags = list(type = "string")), overrideArtifactName = structure(logical(0), tags = list(type = "boolean")), encryptionDisabled = structure(logical(0), tags = list(type = "boolean")), artifactIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), environmentVariablesOverride = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), sourceTypeOverride = structure(logical(0), tags = list(type = "string")), sourceLocationOverride = structure(logical(0), tags = list(type = "string")), sourceAuthOverride = structure(list(type = structure(logical(0), tags = list(type = "string")), resource = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), gitCloneDepthOverride = structure(logical(0), tags = list(type = "integer")), gitSubmodulesConfigOverride = structure(list(fetchSubmodules = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), buildspecOverride = structure(logical(0), tags = list(type = "string")), insecureSslOverride = structure(logical(0), tags = list(type = "boolean")), reportBuildStatusOverride = structure(logical(0), tags = list(type = "boolean")), environmentTypeOverride = structure(logical(0), tags = list(type = "string")), imageOverride = structure(logical(0), tags = list(type = "string")), computeTypeOverride = structure(logical(0), tags = list(type = "string")), certificateOverride = structure(logical(0), tags = list(type = "string")), cacheOverride = structure(list(type = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), modes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), serviceRoleOverride = structure(logical(0), tags = list(type = "string")), privilegedModeOverride = structure(logical(0), tags = list(type = "boolean")), timeoutInMinutesOverride = structure(logical(0), tags = list(type = "integer")), queuedTimeoutInMinutesOverride = structure(logical(0), tags = list(type = "integer")), encryptionKeyOverride = structure(logical(0), tags = list(type = "string")), idempotencyToken = structure(logical(0), tags = list(type = "string")), logsConfigOverride = structure(list(cloudWatchLogs = structure(list(status = structure(logical(0), tags = list(type = "string")), groupName = structure(logical(0), tags = list(type = "string")), streamName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3Logs = structure(list(status = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), encryptionDisabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), registryCredentialOverride = structure(list(credential = structure(logical(0), tags = list(type = "string")), credentialProvider = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), imagePullCredentialsTypeOverride = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

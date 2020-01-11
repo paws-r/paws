@@ -7,8 +7,8 @@
 devicefarm_delete_upload(arn)
 }
 \arguments{
-\item{arn}{[required] Represents the Amazon Resource Name (ARN) of the Device Farm upload you
-wish to delete.}
+\item{arn}{[required] Represents the Amazon Resource Name (ARN) of the Device Farm upload to
+delete.}
 }
 \description{
 Deletes an upload given the upload ARN.

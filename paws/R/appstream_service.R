@@ -87,8 +87,8 @@ NULL
 #'  \link[=appstream_describe_sessions]{describe_sessions} \tab Retrieves a list that describes the streaming sessions for a specified stack and fleet \cr
 #'  \link[=appstream_describe_stacks]{describe_stacks} \tab Retrieves a list that describes one or more specified stacks, if the stack names are provided \cr
 #'  \link[=appstream_describe_usage_report_subscriptions]{describe_usage_report_subscriptions} \tab Retrieves a list that describes one or more usage report subscriptions \cr
-#'  \link[=appstream_describe_user_stack_associations]{describe_user_stack_associations} \tab Retrieves a list that describes the UserStackAssociation objects \cr
 #'  \link[=appstream_describe_users]{describe_users} \tab Retrieves a list that describes one or more specified users in the user pool \cr
+#'  \link[=appstream_describe_user_stack_associations]{describe_user_stack_associations} \tab Retrieves a list that describes the UserStackAssociation objects \cr
 #'  \link[=appstream_disable_user]{disable_user} \tab Disables the specified user in the user pool \cr
 #'  \link[=appstream_disassociate_fleet]{disassociate_fleet} \tab Disassociates the specified fleet from the specified stack \cr
 #'  \link[=appstream_enable_user]{enable_user} \tab Enables a user in the user pool \cr

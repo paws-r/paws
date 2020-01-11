@@ -2,7 +2,7 @@
 % Please edit documentation in R/accessanalyzer_operations.R
 \name{accessanalyzer_create_analyzer}
 \alias{accessanalyzer_create_analyzer}
-\title{Creates an analyzer with a zone of trust set to your account}
+\title{Creates an analyzer for your account}
 \usage{
 accessanalyzer_create_analyzer(analyzerName, archiveRules, clientToken,
   tags, type)
@@ -10,17 +10,19 @@ accessanalyzer_create_analyzer(analyzerName, archiveRules, clientToken,
 \arguments{
 \item{analyzerName}{[required] The name of the analyzer to create.}
 
-\item{archiveRules}{Specifies the archive rules to add for the analyzer.}
+\item{archiveRules}{Specifies the archive rules to add for the analyzer. Archive rules
+automatically archive findings that meet the criteria you define for the
+rule.}
 
 \item{clientToken}{A client token.}
 
 \item{tags}{The tags to apply to the analyzer.}
 
-\item{type}{[required] The zone of trust for the analyzer. You can create only one analyzer per
-account per Region.}
+\item{type}{[required] The type of analyzer to create. Only ACCOUNT analyzers are supported.
+You can create only one analyzer per account per Region.}
 }
 \description{
-Creates an analyzer with a zone of trust set to your account.
+Creates an analyzer for your account.
 }
 \section{Request syntax}{
 \preformatted{svc$create_analyzer(

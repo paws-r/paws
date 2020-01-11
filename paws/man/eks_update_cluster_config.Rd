@@ -64,7 +64,10 @@ status transition is eventually consistent). When the update is complete
       "string"
     ),
     endpointPublicAccess = TRUE|FALSE,
-    endpointPrivateAccess = TRUE|FALSE
+    endpointPrivateAccess = TRUE|FALSE,
+    publicAccessCidrs = list(
+      "string"
+    )
   ),
   logging = list(
     clusterLogging = list(

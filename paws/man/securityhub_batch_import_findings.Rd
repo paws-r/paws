@@ -9,7 +9,8 @@ securityhub_batch_import_findings(Findings)
 }
 \arguments{
 \item{Findings}{[required] A list of findings to import. To successfully import a finding, it must
-follow the \href{https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format.html}{AWS Security Finding Format}.}
+follow the \href{https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format.html}{AWS Security Finding Format}.
+Maximum of 100 findings per request.}
 }
 \description{
 Imports security findings generated from an integrated third-party
@@ -104,6 +105,28 @@ larger than 240 Kb.
             "string"
           ),
           Details = list(
+            AwsCloudFrontDistribution = list(
+              DomainName = "string",
+              ETag = "string",
+              LastModifiedTime = "string",
+              Logging = list(
+                Bucket = "string",
+                Enabled = TRUE|FALSE,
+                IncludeCookies = TRUE|FALSE,
+                Prefix = "string"
+              ),
+              Origins = list(
+                Items = list(
+                  list(
+                    DomainName = "string",
+                    Id = "string",
+                    OriginPath = "string"
+                  )
+                )
+              ),
+              Status = "string",
+              WebAclId = "string"
+            ),
             AwsEc2Instance = list(
               Type = "string",
               ImageId = "string",
@@ -119,6 +142,28 @@ larger than 240 Kb.
               SubnetId = "string",
               LaunchedAt = "string"
             ),
+            AwsElbv2LoadBalancer = list(
+              AvailabilityZones = list(
+                list(
+                  ZoneName = "string",
+                  SubnetId = "string"
+                )
+              ),
+              CanonicalHostedZoneId = "string",
+              CreatedTime = "string",
+              DNSName = "string",
+              IpAddressType = "string",
+              Scheme = "string",
+              SecurityGroups = list(
+                "string"
+              ),
+              State = list(
+                Code = "string",
+                Reason = "string"
+              ),
+              Type = "string",
+              VpcId = "string"
+            ),
             AwsS3Bucket = list(
               OwnerId = "string",
               OwnerName = "string"
@@ -126,7 +171,93 @@ larger than 240 Kb.
             AwsIamAccessKey = list(
               UserName = "string",
               Status = "Active"|"Inactive",
-              CreatedAt = "string"
+              CreatedAt = "string",
+              PrincipalId = "string",
+              PrincipalType = "string",
+              PrincipalName = "string"
+            ),
+            AwsIamRole = list(
+              AssumeRolePolicyDocument = "string",
+              CreateDate = "string",
+              RoleId = "string",
+              RoleName = "string",
+              MaxSessionDuration = 123,
+              Path = "string"
+            ),
+            AwsKmsKey = list(
+              AWSAccountId = "string",
+              CreationDate = 123.0,
+              KeyId = "string",
+              KeyManager = "string",
+              KeyState = "string",
+              Origin = "string"
+            ),
+            AwsLambdaFunction = list(
+              Code = list(
+                S3Bucket = "string",
+                S3Key = "string",
+                S3ObjectVersion = "string",
+                ZipFile = "string"
+              ),
+              CodeSha256 = "string",
+              DeadLetterConfig = list(
+                TargetArn = "string"
+              ),
+              Environment = list(
+                Variables = list(
+                  "string"
+                ),
+                Error = list(
+                  ErrorCode = "string",
+                  Message = "string"
+                )
+              ),
+              FunctionName = "string",
+              Handler = "string",
+              KmsKeyArn = "string",
+              LastModified = "string",
+              Layers = list(
+                list(
+                  Arn = "string",
+                  CodeSize = 123
+                )
+              ),
+              MasterArn = "string",
+              MemorySize = 123,
+              RevisionId = "string",
+              Role = "string",
+              Runtime = "string",
+              Timeout = 123,
+              TracingConfig = list(
+                Mode = "string"
+              ),
+              VpcConfig = list(
+                SecurityGroupIds = list(
+                  "string"
+                ),
+                SubnetIds = list(
+                  "string"
+                ),
+                VpcId = "string"
+              ),
+              Version = "string"
+            ),
+            AwsSnsTopic = list(
+              KmsMasterKeyId = "string",
+              Subscription = list(
+                list(
+                  Endpoint = "string",
+                  Protocol = "string"
+                )
+              ),
+              TopicName = "string",
+              Owner = "string"
+            ),
+            AwsSqsQueue = list(
+              KmsDataKeyReusePeriodSeconds = 123,
+              KmsMasterKeyId = "string",
+              QueueName = "string",
+              DeadLetterTargetArn = "string"
             ),
             Container = list(
               Name = "string",

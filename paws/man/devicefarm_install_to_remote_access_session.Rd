@@ -11,8 +11,7 @@ devicefarm_install_to_remote_access_session(remoteAccessSessionArn,
 \item{remoteAccessSessionArn}{[required] The Amazon Resource Name (ARN) of the remote access session about which
 you are requesting information.}
 
-\item{appArn}{[required] The Amazon Resource Name (ARN) of the app about which you are requesting
-information.}
+\item{appArn}{[required] The ARN of the app about which you are requesting information.}
 }
 \description{
 Installs an application to the device in a remote access session. For

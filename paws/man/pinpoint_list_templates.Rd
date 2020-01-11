@@ -21,7 +21,7 @@ in the results. If you specify this value, Amazon Pinpoint returns only
 those templates whose names begin with the value that you specify.}
 
 \item{TemplateType}{The type of message template to include in the results. Valid values
-are: EMAIL, SMS, PUSH, and VOICE. To include all types of templates in
+are: EMAIL, PUSH, SMS, and VOICE. To include all types of templates in
 the results, don\'t include this parameter in your request.}
 }
 \description{

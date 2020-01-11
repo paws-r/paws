@@ -2,17 +2,19 @@
 % Please edit documentation in R/sesv2_operations.R
 \name{sesv2_put_suppressed_destination}
 \alias{sesv2_put_suppressed_destination}
-\title{Puts (overwrites) an email destination in your suppression list}
+\title{Adds an email address to the suppression list for your account}
 \usage{
 sesv2_put_suppressed_destination(EmailAddress, Reason)
 }
 \arguments{
-\item{EmailAddress}{[required] Email destination to be suppressed.}
+\item{EmailAddress}{[required] The email address that should be added to the suppression list for your
+account.}
 
-\item{Reason}{[required] Reason for which the email destination is suppressed.}
+\item{Reason}{[required] The factors that should cause the email address to be added to the
+suppression list for your account.}
 }
 \description{
-Puts (overwrites) an email destination in your suppression list.
+Adds an email address to the suppression list for your account.
 }
 \section{Request syntax}{
 \preformatted{svc$put_suppressed_destination(

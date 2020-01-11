@@ -70,8 +70,8 @@ add individualized recommendations to customers.
 \link[=personalize_list_event_trackers]{list_event_trackers} \tab Returns the list of event trackers associated with the account \cr
 \link[=personalize_list_recipes]{list_recipes} \tab Returns a list of available recipes \cr
 \link[=personalize_list_schemas]{list_schemas} \tab Returns the list of schemas associated with the account \cr
-\link[=personalize_list_solution_versions]{list_solution_versions} \tab Returns a list of solution versions for the given solution \cr
 \link[=personalize_list_solutions]{list_solutions} \tab Returns a list of solutions that use the given dataset group \cr
+\link[=personalize_list_solution_versions]{list_solution_versions} \tab Returns a list of solution versions for the given solution \cr
 \link[=personalize_update_campaign]{update_campaign} \tab Updates a campaign by either deploying a new solution or changing the value of the campaign's minProvisionedTPS parameter
 }
 }

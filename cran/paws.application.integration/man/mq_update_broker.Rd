@@ -20,7 +20,7 @@ mq_update_broker(AutoMinorVersionUpgrade, BrokerId, Configuration,
 
 \item{Logs}{Enables Amazon CloudWatch logging for brokers.}
 
-\item{SecurityGroups}{The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.}
+\item{SecurityGroups}{The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.}
 }
 \description{
 Adds a pending configuration change to a broker.

@@ -83,9 +83,9 @@ Defines the public endpoint for the AWS Glue service.
 \link[=glue_get_crawler]{get_crawler} \tab Retrieves metadata for a specified crawler \cr
 \link[=glue_get_crawler_metrics]{get_crawler_metrics} \tab Retrieves metrics about specified crawlers \cr
 \link[=glue_get_crawlers]{get_crawlers} \tab Retrieves metadata for all crawlers defined in the customer account \cr
-\link[=glue_get_data_catalog_encryption_settings]{get_data_catalog_encryption_settings} \tab Retrieves the security configuration for a specified catalog \cr
 \link[=glue_get_database]{get_database} \tab Retrieves the definition of a specified database \cr
 \link[=glue_get_databases]{get_databases} \tab Retrieves all databases defined in a given Data Catalog \cr
+\link[=glue_get_data_catalog_encryption_settings]{get_data_catalog_encryption_settings} \tab Retrieves the security configuration for a specified catalog \cr
 \link[=glue_get_dataflow_graph]{get_dataflow_graph} \tab Transforms a Python script into a directed acyclic graph (DAG) \cr
 \link[=glue_get_dev_endpoint]{get_dev_endpoint} \tab Retrieves information about a specified development endpoint \cr
 \link[=glue_get_dev_endpoints]{get_dev_endpoints} \tab Retrieves all the development endpoints in this AWS account \cr
@@ -94,11 +94,11 @@ Defines the public endpoint for the AWS Glue service.
 \link[=glue_get_job_run]{get_job_run} \tab Retrieves the metadata for a given job run \cr
 \link[=glue_get_job_runs]{get_job_runs} \tab Retrieves metadata for all runs of a given job definition \cr
 \link[=glue_get_jobs]{get_jobs} \tab Retrieves all current job definitions \cr
+\link[=glue_get_mapping]{get_mapping} \tab Creates mappings \cr
 \link[=glue_get_ml_task_run]{get_ml_task_run} \tab Gets details for a specific task run on a machine learning transform \cr
 \link[=glue_get_ml_task_runs]{get_ml_task_runs} \tab Gets a list of runs for a machine learning transform \cr
 \link[=glue_get_ml_transform]{get_ml_transform} \tab Gets an AWS Glue machine learning transform artifact and all its corresponding metadata \cr
 \link[=glue_get_ml_transforms]{get_ml_transforms} \tab Gets a sortable, filterable list of existing AWS Glue machine learning transforms \cr
-\link[=glue_get_mapping]{get_mapping} \tab Creates mappings \cr
 \link[=glue_get_partition]{get_partition} \tab Retrieves information about a specified partition \cr
 \link[=glue_get_partitions]{get_partitions} \tab Retrieves information about the partitions in a table \cr
 \link[=glue_get_plan]{get_plan} \tab Gets code to perform a specified mapping \cr
@@ -106,9 +106,9 @@ Defines the public endpoint for the AWS Glue service.
 \link[=glue_get_security_configuration]{get_security_configuration} \tab Retrieves a specified security configuration \cr
 \link[=glue_get_security_configurations]{get_security_configurations} \tab Retrieves a list of all security configurations \cr
 \link[=glue_get_table]{get_table} \tab Retrieves the Table definition in a Data Catalog for a specified table \cr
+\link[=glue_get_tables]{get_tables} \tab Retrieves the definitions of some or all of the tables in a given Database \cr
 \link[=glue_get_table_version]{get_table_version} \tab Retrieves a specified version of a table \cr
 \link[=glue_get_table_versions]{get_table_versions} \tab Retrieves a list of strings that identify available versions of a specified table \cr
-\link[=glue_get_tables]{get_tables} \tab Retrieves the definitions of some or all of the tables in a given Database \cr
 \link[=glue_get_tags]{get_tags} \tab Retrieves a list of tags associated with a resource \cr
 \link[=glue_get_trigger]{get_trigger} \tab Retrieves the definition of a trigger \cr
 \link[=glue_get_triggers]{get_triggers} \tab Gets all the triggers associated with a job \cr

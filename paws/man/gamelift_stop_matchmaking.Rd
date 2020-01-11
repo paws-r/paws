@@ -8,7 +8,7 @@ being processed}
 gamelift_stop_matchmaking(TicketId)
 }
 \arguments{
-\item{TicketId}{[required] Unique identifier for a matchmaking ticket.}
+\item{TicketId}{[required] A unique identifier for a matchmaking ticket.}
 }
 \description{
 Cancels a matchmaking ticket or match backfill ticket that is currently

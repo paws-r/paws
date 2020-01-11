@@ -73,9 +73,10 @@ the \emph{Amazon Chime Administration Guide}.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=chime_associate_phone_number_with_user]{associate_phone_number_with_user} \tab Associates a phone number with the specified Amazon Chime user \cr
 \link[=chime_associate_phone_numbers_with_voice_connector]{associate_phone_numbers_with_voice_connector} \tab Associates phone numbers with the specified Amazon Chime Voice Connector \cr
 \link[=chime_associate_phone_numbers_with_voice_connector_group]{associate_phone_numbers_with_voice_connector_group} \tab Associates phone numbers with the specified Amazon Chime Voice Connector group \cr
+\link[=chime_associate_phone_number_with_user]{associate_phone_number_with_user} \tab Associates a phone number with the specified Amazon Chime user \cr
+\link[=chime_associate_signin_delegate_groups_with_account]{associate_signin_delegate_groups_with_account} \tab Associates the specified sign-in delegate groups with the specified Amazon Chime account \cr
 \link[=chime_batch_create_attendee]{batch_create_attendee} \tab Creates up to 100 new attendees for an active Amazon Chime SDK meeting \cr
 \link[=chime_batch_create_room_membership]{batch_create_room_membership} \tab Adds up to 50 members to a chat room \cr
 \link[=chime_batch_delete_phone_number]{batch_delete_phone_number} \tab Moves phone numbers into the DELETION QUEUE \cr
@@ -90,6 +91,7 @@ the \emph{Amazon Chime Administration Guide}.
 \link[=chime_create_phone_number_order]{create_phone_number_order} \tab Creates an order for phone numbers to be provisioned \cr
 \link[=chime_create_room]{create_room} \tab Creates a chat room for the specified Amazon Chime account \cr
 \link[=chime_create_room_membership]{create_room_membership} \tab Adds a member to a chat room \cr
+\link[=chime_create_user]{create_user} \tab Creates a user under the specified Amazon Chime account \cr
 \link[=chime_create_voice_connector]{create_voice_connector} \tab Creates an Amazon Chime Voice Connector under the administrator's AWS account \cr
 \link[=chime_create_voice_connector_group]{create_voice_connector_group} \tab Creates an Amazon Chime Voice Connector group under the administrator's AWS account \cr
 \link[=chime_delete_account]{delete_account} \tab Deletes the specified Amazon Chime account \cr
@@ -108,6 +110,7 @@ the \emph{Amazon Chime Administration Guide}.
 \link[=chime_disassociate_phone_number_from_user]{disassociate_phone_number_from_user} \tab Disassociates the primary provisioned phone number from the specified Amazon Chime user \cr
 \link[=chime_disassociate_phone_numbers_from_voice_connector]{disassociate_phone_numbers_from_voice_connector} \tab Disassociates the specified phone numbers from the specified Amazon Chime Voice Connector \cr
 \link[=chime_disassociate_phone_numbers_from_voice_connector_group]{disassociate_phone_numbers_from_voice_connector_group} \tab Disassociates the specified phone numbers from the specified Amazon Chime Voice Connector group \cr
+\link[=chime_disassociate_signin_delegate_groups_from_account]{disassociate_signin_delegate_groups_from_account} \tab Disassociates the specified sign-in delegate groups from the specified Amazon Chime account \cr
 \link[=chime_get_account]{get_account} \tab Retrieves details for the specified Amazon Chime account, such as account type and supported licenses \cr
 \link[=chime_get_account_settings]{get_account_settings} \tab Retrieves account settings for the specified Amazon Chime account ID, such as remote control and dial out settings \cr
 \link[=chime_get_attendee]{get_attendee} \tab Gets the Amazon Chime SDK attendee details for a specified meeting ID and attendee ID \cr
@@ -118,7 +121,7 @@ the \emph{Amazon Chime Administration Guide}.
 \link[=chime_get_phone_number]{get_phone_number} \tab Retrieves details for the specified phone number ID, such as associations, capabilities, and product type \cr
 \link[=chime_get_phone_number_order]{get_phone_number_order} \tab Retrieves details for the specified phone number order, such as order creation timestamp, phone numbers in E \cr
 \link[=chime_get_phone_number_settings]{get_phone_number_settings} \tab Retrieves the phone number settings for the administrator's AWS account, such as the default outbound calling name \cr
-\link[=chime_get_room]{get_room} \tab Retrieves room details, such as name \cr
+\link[=chime_get_room]{get_room} \tab Retrieves room details, such as the room name \cr
 \link[=chime_get_user]{get_user} \tab Retrieves details for the specified user ID, such as primary email address, license type, and personal meeting PIN \cr
 \link[=chime_get_user_settings]{get_user_settings} \tab Retrieves settings for the specified user ID, such as any associated phone number settings \cr
 \link[=chime_get_voice_connector]{get_voice_connector} \tab Retrieves details for the specified Amazon Chime Voice Connector, such as timestamps, name, outbound host, and encryption requirements \cr
@@ -135,12 +138,12 @@ the \emph{Amazon Chime Administration Guide}.
 \link[=chime_list_meetings]{list_meetings} \tab Lists up to 100 active Amazon Chime SDK meetings \cr
 \link[=chime_list_phone_number_orders]{list_phone_number_orders} \tab Lists the phone number orders for the administrator's Amazon Chime account \cr
 \link[=chime_list_phone_numbers]{list_phone_numbers} \tab Lists the phone numbers for the specified Amazon Chime account, Amazon Chime user, Amazon Chime Voice Connector, or Amazon Chime Voice Connector group\cr
-\link[=chime_list_room_memberships]{list_room_memberships} \tab Lists the membership details for the specified room, such as member IDs, member email addresses, and member names \cr
+\link[=chime_list_room_memberships]{list_room_memberships} \tab Lists the membership details for the specified room, such as the members' IDs, email addresses, and names \cr
 \link[=chime_list_rooms]{list_rooms} \tab Lists the room details for the specified Amazon Chime account \cr
 \link[=chime_list_users]{list_users} \tab Lists the users that belong to the specified Amazon Chime account \cr
 \link[=chime_list_voice_connector_groups]{list_voice_connector_groups} \tab Lists the Amazon Chime Voice Connector groups for the administrator's AWS account \cr
-\link[=chime_list_voice_connector_termination_credentials]{list_voice_connector_termination_credentials} \tab Lists the SIP credentials for the specified Amazon Chime Voice Connector \cr
 \link[=chime_list_voice_connectors]{list_voice_connectors} \tab Lists the Amazon Chime Voice Connectors for the administrator's AWS account \cr
+\link[=chime_list_voice_connector_termination_credentials]{list_voice_connector_termination_credentials} \tab Lists the SIP credentials for the specified Amazon Chime Voice Connector \cr
 \link[=chime_logout_user]{logout_user} \tab Logs out the specified user from all of the devices they are currently logged into \cr
 \link[=chime_put_events_configuration]{put_events_configuration} \tab Creates an events configuration that allows a bot to receive outgoing events sent by Amazon Chime \cr
 \link[=chime_put_voice_connector_logging_configuration]{put_voice_connector_logging_configuration} \tab Adds a logging configuration for the specified Amazon Chime Voice Connector \cr
@@ -159,7 +162,7 @@ the \emph{Amazon Chime Administration Guide}.
 \link[=chime_update_phone_number]{update_phone_number} \tab Updates phone number details, such as product type or calling name, for the specified phone number ID \cr
 \link[=chime_update_phone_number_settings]{update_phone_number_settings} \tab Updates the phone number settings for the administrator's AWS account, such as the default outbound calling name \cr
 \link[=chime_update_room]{update_room} \tab Updates room details, such as the room name \cr
-\link[=chime_update_room_membership]{update_room_membership} \tab Updates room membership details, such as member role \cr
+\link[=chime_update_room_membership]{update_room_membership} \tab Updates room membership details, such as the member role \cr
 \link[=chime_update_user]{update_user} \tab Updates user details for a specified user ID \cr
 \link[=chime_update_user_settings]{update_user_settings} \tab Updates the settings for the specified user, such as phone number settings \cr
 \link[=chime_update_voice_connector]{update_voice_connector} \tab Updates details for the specified Amazon Chime Voice Connector \cr

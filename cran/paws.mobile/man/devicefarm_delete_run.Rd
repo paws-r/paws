@@ -7,13 +7,13 @@
 devicefarm_delete_run(arn)
 }
 \arguments{
-\item{arn}{[required] The Amazon Resource Name (ARN) for the run you wish to delete.}
+\item{arn}{[required] The Amazon Resource Name (ARN) for the run to delete.}
 }
 \description{
 Deletes the run, given the run ARN.
 }
 \details{
-\strong{Note} Deleting this resource does not stop an in-progress run.
+Deleting this resource does not stop an in-progress run.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_run(

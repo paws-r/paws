@@ -41,7 +41,7 @@ the network interface.}
 \item{RemoveSecurityGroupIds}{(Interface endpoint) One or more security group IDs to disassociate from
 the network interface.}
 
-\item{PrivateDnsEnabled}{(Interface endpoint) Indicate whether a private hosted zone is
+\item{PrivateDnsEnabled}{(Interface endpoint) Indicates whether a private hosted zone is
 associated with the VPC.}
 }
 \description{

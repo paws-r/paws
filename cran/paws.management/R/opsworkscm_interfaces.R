@@ -17,7 +17,7 @@ NULL
 
 .opsworkscm$create_backup_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServerName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ServerName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -29,7 +29,7 @@ NULL
 
 .opsworkscm$create_server_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AssociatePublicIpAddress = structure(logical(0), tags = list(type = "boolean")), CustomDomain = structure(logical(0), tags = list(type = "string")), CustomCertificate = structure(logical(0), tags = list(type = "string")), CustomPrivateKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DisableAutomatedBackup = structure(logical(0), tags = list(type = "boolean")), Engine = structure(logical(0), tags = list(type = "string")), EngineModel = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), EngineAttributes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), BackupRetentionCount = structure(logical(0), tags = list(type = "integer")), ServerName = structure(logical(0), tags = list(type = "string")), InstanceProfileArn = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), KeyPair = structure(logical(0), tags = list(type = "string")), PreferredMaintenanceWindow = structure(logical(0), tags = list(type = "string")), PreferredBackupWindow = structure(logical(0), tags = list(type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceRoleArn = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), BackupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(AssociatePublicIpAddress = structure(logical(0), tags = list(type = "boolean")), CustomDomain = structure(logical(0), tags = list(type = "string")), CustomCertificate = structure(logical(0), tags = list(type = "string")), CustomPrivateKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DisableAutomatedBackup = structure(logical(0), tags = list(type = "boolean")), Engine = structure(logical(0), tags = list(type = "string")), EngineModel = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), EngineAttributes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), BackupRetentionCount = structure(logical(0), tags = list(type = "integer")), ServerName = structure(logical(0), tags = list(type = "string")), InstanceProfileArn = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), KeyPair = structure(logical(0), tags = list(type = "string")), PreferredMaintenanceWindow = structure(logical(0), tags = list(type = "string")), PreferredBackupWindow = structure(logical(0), tags = list(type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceRoleArn = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), BackupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -147,6 +147,18 @@ NULL
   return(populate(args, shape))
 }
 
+.opsworkscm$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opsworkscm$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .opsworkscm$restore_server_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(BackupId = structure(logical(0), tags = list(type = "string")), ServerName = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), KeyPair = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -168,6 +180,30 @@ NULL
 .opsworkscm$start_maintenance_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Server = structure(list(AssociatePublicIpAddress = structure(logical(0), tags = list(type = "boolean")), BackupRetentionCount = structure(logical(0), tags = list(type = "integer")), ServerName = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), CloudFormationStackArn = structure(logical(0), tags = list(type = "string")), CustomDomain = structure(logical(0), tags = list(type = "string")), DisableAutomatedBackup = structure(logical(0), tags = list(type = "boolean")), Endpoint = structure(logical(0), tags = list(type = "string")), Engine = structure(logical(0), tags = list(type = "string")), EngineModel = structure(logical(0), tags = list(type = "string")), EngineAttributes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), EngineVersion = structure(logical(0), tags = list(type = "string")), InstanceProfileArn = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), KeyPair = structure(logical(0), tags = list(type = "string")), MaintenanceStatus = structure(logical(0), tags = list(type = "string")), PreferredMaintenanceWindow = structure(logical(0), tags = list(type = "string")), PreferredBackupWindow = structure(logical(0), tags = list(type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceRoleArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServerArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opsworkscm$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opsworkscm$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opsworkscm$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opsworkscm$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -194,7 +194,8 @@ This operation requires permissions for the \code{lex:PutIntent} action.
       sampleUtterances = list(
         "string"
       ),
-      responseCard = "string"
+      responseCard = "string",
+      obfuscationSetting = "NONE"|"DEFAULT_OBFUSCATION"
     )
   ),
   sampleUtterances = list(

@@ -284,13 +284,15 @@ lightsail_close_instance_public_ports <- function(portInfo, instanceName) {
 }
 .lightsail$operations$close_instance_public_ports <- lightsail_close_instance_public_ports
 
-#' Copies a manual instance or disk snapshot as another manual snapshot, or
-#' copies an automatic instance or disk snapshot as a manual snapshot
+#' Copies a manual snapshot of an instance or disk as another manual
+#' snapshot, or copies an automatic snapshot of an instance or disk as a
+#' manual snapshot
 #'
-#' Copies a manual instance or disk snapshot as another manual snapshot, or
-#' copies an automatic instance or disk snapshot as a manual snapshot. This
-#' operation can also be used to copy a manual or automatic snapshot of an
-#' instance or a disk from one AWS Region to another in Amazon Lightsail.
+#' Copies a manual snapshot of an instance or disk as another manual
+#' snapshot, or copies an automatic snapshot of an instance or disk as a
+#' manual snapshot. This operation can also be used to copy a manual or
+#' automatic snapshot of an instance or a disk from one AWS Region to
+#' another in Amazon Lightsail.
 #' 
 #' When copying a *manual snapshot*, be sure to define the `source region`,
 #' `source snapshot name`, and `target snapshot name` parameters.
@@ -299,28 +301,29 @@ lightsail_close_instance_public_ports <- function(portInfo, instanceName) {
 #' `source region`, `source resource name`, `target snapshot name`, and
 #' either the `restore date` or the `use latest restorable auto snapshot`
 #' parameters.
-#' 
-#' Database snapshots cannot be copied at this time.
 #'
 #' @usage
 #' lightsail_copy_snapshot(sourceSnapshotName, sourceResourceName,
 #'   restoreDate, useLatestRestorableAutoSnapshot, targetSnapshotName,
 #'   sourceRegion)
 #'
-#' @param sourceSnapshotName The name of the source instance or disk snapshot to be copied.
+#' @param sourceSnapshotName The name of the source manual snapshot to copy.
 #' 
-#' Define this parameter only when copying a manual snapshot as another
-#' manual snapshot.
-#' @param sourceResourceName The name of the source resource from which the automatic snapshot was
-#' created.
+#' Constraint:
 #' 
-#' Define this parameter only when copying an automatic snapshot as a
-#' manual snapshot. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
-#' @param restoreDate The date of the automatic snapshot to copy for the new manual snapshot.
+#' -   Define this parameter only when copying a manual snapshot as another
+#'     manual snapshot.
+#' @param sourceResourceName The name of the source instance or disk from which the source automatic
+#' snapshot was created.
 #' 
-#' Use the `get auto snapshots` operation to identify the dates of the
-#' available automatic snapshots.
+#' Constraint:
+#' 
+#' -   Define this parameter only when copying an automatic snapshot as a
+#'     manual snapshot. For more information, see the [Lightsail Dev
+#'     Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-keeping-automatic-snapshots).
+#' @param restoreDate The date of the source automatic snapshot to copy. Use the
+#' `get auto snapshots` operation to identify the dates of the available
+#' automatic snapshots.
 #' 
 #' Constraints:
 #' 
@@ -331,20 +334,22 @@ lightsail_close_instance_public_ports <- function(portInfo, instanceName) {
 #'     and `use latest restorable auto snapshot` parameters are mutually
 #'     exclusive.
 #' 
-#' Define this parameter only when copying an automatic snapshot as a
-#' manual snapshot. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+#' -   Define this parameter only when copying an automatic snapshot as a
+#'     manual snapshot. For more information, see the [Lightsail Dev
+#'     Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-keeping-automatic-snapshots).
 #' @param useLatestRestorableAutoSnapshot A Boolean value to indicate whether to use the latest available
-#' automatic snapshot.
+#' automatic snapshot of the specified source instance or disk.
 #' 
-#' This parameter cannot be defined together with the `restore date`
-#' parameter. The `use latest restorable auto snapshot` and `restore date`
-#' parameters are mutually exclusive.
+#' Constraints:
 #' 
-#' Define this parameter only when copying an automatic snapshot as a
-#' manual snapshot. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
-#' @param targetSnapshotName &#91;required&#93; The name of the new instance or disk snapshot to be created as a copy.
+#' -   This parameter cannot be defined together with the `restore date`
+#'     parameter. The `use latest restorable auto snapshot` and
+#'     `restore date` parameters are mutually exclusive.
+#' 
+#' -   Define this parameter only when copying an automatic snapshot as a
+#'     manual snapshot. For more information, see the [Lightsail Dev
+#'     Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-keeping-automatic-snapshots).
+#' @param targetSnapshotName &#91;required&#93; The name of the new manual snapshot to be created as a copy.
 #' @param sourceRegion &#91;required&#93; The AWS Region where the source manual or automatic snapshot is located.
 #'
 #' @section Request syntax:
@@ -530,9 +535,11 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
 #' @param diskSnapshotName The name of the disk snapshot (e.g., `my-snapshot`) from which to create
 #' the new storage disk.
 #' 
-#' This parameter cannot be defined together with the `source disk name`
-#' parameter. The `disk snapshot name` and `source disk name` parameters
-#' are mutually exclusive.
+#' Constraint:
+#' 
+#' -   This parameter cannot be defined together with the
+#'     `source disk name` parameter. The `disk snapshot name` and
+#'     `source disk name` parameters are mutually exclusive.
 #' @param availabilityZone &#91;required&#93; The Availability Zone where you want to create the disk (e.g.,
 #' `us-east-2a`). Choose the same Availability Zone as the Lightsail
 #' instance where you want to create the disk.
@@ -549,17 +556,18 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
 #' @param sourceDiskName The name of the source disk from which the source automatic snapshot was
 #' created.
 #' 
-#' This parameter cannot be defined together with the `disk snapshot name`
-#' parameter. The `source disk name` and `disk snapshot name` parameters
-#' are mutually exclusive.
+#' Constraints:
 #' 
-#' Define this parameter only when creating a new disk from an automatic
-#' snapshot. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
-#' @param restoreDate The date of the automatic snapshot to use for the new disk.
+#' -   This parameter cannot be defined together with the
+#'     `disk snapshot name` parameter. The `source disk name` and
+#'     `disk snapshot name` parameters are mutually exclusive.
 #' 
-#' Use the `get auto snapshots` operation to identify the dates of the
-#' available automatic snapshots.
+#' -   Define this parameter only when creating a new disk from an
+#'     automatic snapshot. For more information, see the [Lightsail Dev
+#'     Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+#' @param restoreDate The date of the automatic snapshot to use for the new disk. Use the
+#' `get auto snapshots` operation to identify the dates of the available
+#' automatic snapshots.
 #' 
 #' Constraints:
 #' 
@@ -570,19 +578,21 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
 #'     and `use latest restorable auto snapshot` parameters are mutually
 #'     exclusive.
 #' 
-#' Define this parameter only when creating a new disk from an automatic
-#' snapshot. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+#' -   Define this parameter only when creating a new disk from an
+#'     automatic snapshot. For more information, see the [Lightsail Dev
+#'     Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
 #' @param useLatestRestorableAutoSnapshot A Boolean value to indicate whether to use the latest available
 #' automatic snapshot.
 #' 
-#' This parameter cannot be defined together with the `restore date`
-#' parameter. The `use latest restorable auto snapshot` and `restore date`
-#' parameters are mutually exclusive.
+#' Constraints:
 #' 
-#' Define this parameter only when creating a new disk from an automatic
-#' snapshot. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+#' -   This parameter cannot be defined together with the `restore date`
+#'     parameter. The `use latest restorable auto snapshot` and
+#'     `restore date` parameters are mutually exclusive.
+#' 
+#' -   Define this parameter only when creating a new disk from an
+#'     automatic snapshot. For more information, see the [Lightsail Dev
+#'     Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
 #'
 #' @section Request syntax:
 #' ```
@@ -1020,9 +1030,11 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #' instances. Use the get instance snapshots operation to return
 #' information about your existing snapshots.
 #' 
-#' This parameter cannot be defined together with the
-#' `source instance name` parameter. The `instance snapshot name` and
-#' `source instance name` parameters are mutually exclusive.
+#' Constraint:
+#' 
+#' -   This parameter cannot be defined together with the
+#'     `source instance name` parameter. The `instance snapshot name` and
+#'     `source instance name` parameters are mutually exclusive.
 #' @param bundleId &#91;required&#93; The bundle of specification information for your virtual private server
 #' (or *instance*), including the pricing plan (e.g., `micro_1_0`).
 #' @param userData You can create a launch script that configures a server with additional
@@ -1043,17 +1055,18 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #' @param sourceInstanceName The name of the source instance from which the source automatic snapshot
 #' was created.
 #' 
-#' This parameter cannot be defined together with the
-#' `instance snapshot name` parameter. The `source instance name` and
-#' `instance snapshot name` parameters are mutually exclusive.
+#' Constraints:
 #' 
-#' Define this parameter only when creating a new instance from an
-#' automatic snapshot. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
-#' @param restoreDate The date of the automatic snapshot to use for the new instance.
+#' -   This parameter cannot be defined together with the
+#'     `instance snapshot name` parameter. The `source instance name` and
+#'     `instance snapshot name` parameters are mutually exclusive.
 #' 
-#' Use the `get auto snapshots` operation to identify the dates of the
-#' available automatic snapshots.
+#' -   Define this parameter only when creating a new instance from an
+#'     automatic snapshot. For more information, see the [Lightsail Dev
+#'     Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+#' @param restoreDate The date of the automatic snapshot to use for the new instance. Use the
+#' `get auto snapshots` operation to identify the dates of the available
+#' automatic snapshots.
 #' 
 #' Constraints:
 #' 
@@ -1064,19 +1077,21 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #'     and `use latest restorable auto snapshot` parameters are mutually
 #'     exclusive.
 #' 
-#' Define this parameter only when creating a new instance from an
-#' automatic snapshot. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+#' -   Define this parameter only when creating a new instance from an
+#'     automatic snapshot. For more information, see the [Lightsail Dev
+#'     Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
 #' @param useLatestRestorableAutoSnapshot A Boolean value to indicate whether to use the latest available
 #' automatic snapshot.
 #' 
-#' This parameter cannot be defined together with the `restore date`
-#' parameter. The `use latest restorable auto snapshot` and `restore date`
-#' parameters are mutually exclusive.
+#' Constraints:
 #' 
-#' Define this parameter only when creating a new instance from an
-#' automatic snapshot. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+#' -   This parameter cannot be defined together with the `restore date`
+#'     parameter. The `use latest restorable auto snapshot` and
+#'     `restore date` parameters are mutually exclusive.
+#' 
+#' -   Define this parameter only when creating a new instance from an
+#'     automatic snapshot. For more information, see the [Lightsail Dev
+#'     Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
 #'
 #' @section Request syntax:
 #' ```
@@ -1692,18 +1707,19 @@ lightsail_create_relational_database_snapshot <- function(relationalDatabaseName
 }
 .lightsail$operations$create_relational_database_snapshot <- lightsail_create_relational_database_snapshot
 
-#' Deletes an automatic snapshot for an instance or disk
+#' Deletes an automatic snapshot of an instance or disk
 #'
-#' Deletes an automatic snapshot for an instance or disk.
+#' Deletes an automatic snapshot of an instance or disk. For more
+#' information, see the [Lightsail Dev
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
 #'
 #' @usage
 #' lightsail_delete_auto_snapshot(resourceName, date)
 #'
-#' @param resourceName &#91;required&#93; The name of the source resource from which to delete the automatic
-#' snapshot.
-#' @param date &#91;required&#93; The date of the automatic snapshot to delete in `YYYY-MM-DD` format.
-#' 
-#' Use the `get auto snapshots` operation to get the available automatic
+#' @param resourceName &#91;required&#93; The name of the source instance or disk from which to delete the
+#' automatic snapshot.
+#' @param date &#91;required&#93; The date of the automatic snapshot to delete in `YYYY-MM-DD` format. Use
+#' the `get auto snapshots` operation to get the available automatic
 #' snapshots for a resource.
 #'
 #' @section Request syntax:
@@ -2444,7 +2460,7 @@ lightsail_detach_static_ip <- function(staticIpName) {
 #' lightsail_disable_add_on(addOnType, resourceName)
 #'
 #' @param addOnType &#91;required&#93; The add-on type to disable.
-#' @param resourceName &#91;required&#93; The name of the source resource from which to disable the add-on.
+#' @param resourceName &#91;required&#93; The name of the source resource for which to disable the add-on.
 #'
 #' @section Request syntax:
 #' ```
@@ -2644,18 +2660,17 @@ lightsail_get_active_names <- function(pageToken = NULL) {
 }
 .lightsail$operations$get_active_names <- lightsail_get_active_names
 
-#' Returns the available automatic snapshots for the specified resource
-#' name
+#' Returns the available automatic snapshots for an instance or disk
 #'
-#' Returns the available automatic snapshots for the specified resource
-#' name. For more information, see the [Lightsail Dev
+#' Returns the available automatic snapshots for an instance or disk. For
+#' more information, see the [Lightsail Dev
 #' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
 #'
 #' @usage
 #' lightsail_get_auto_snapshots(resourceName)
 #'
-#' @param resourceName &#91;required&#93; The name of the source resource from which to get automatic snapshot
-#' information.
+#' @param resourceName &#91;required&#93; The name of the source instance or disk from which to get automatic
+#' snapshot information.
 #'
 #' @section Request syntax:
 #' ```
@@ -5351,7 +5366,8 @@ lightsail_update_load_balancer_attribute <- function(loadBalancerName, attribute
 #' lightsail_update_relational_database(relationalDatabaseName,
 #'   masterUserPassword, rotateMasterUserPassword, preferredBackupWindow,
 #'   preferredMaintenanceWindow, enableBackupRetention,
-#'   disableBackupRetention, publiclyAccessible, applyImmediately)
+#'   disableBackupRetention, publiclyAccessible, applyImmediately,
+#'   caCertificateIdentifier)
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your database to update.
 #' @param masterUserPassword The password for the master user of your database. The password can
@@ -5417,6 +5433,7 @@ lightsail_update_load_balancer_attribute <- function(loadBalancerName, attribute
 #' outage.
 #' 
 #' Default: `false`
+#' @param caCertificateIdentifier Indicates the certificate that needs to be associated with the database.
 #'
 #' @section Request syntax:
 #' ```
@@ -5429,21 +5446,22 @@ lightsail_update_load_balancer_attribute <- function(loadBalancerName, attribute
 #'   enableBackupRetention = TRUE|FALSE,
 #'   disableBackupRetention = TRUE|FALSE,
 #'   publiclyAccessible = TRUE|FALSE,
-#'   applyImmediately = TRUE|FALSE
+#'   applyImmediately = TRUE|FALSE,
+#'   caCertificateIdentifier = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname lightsail_update_relational_database
-lightsail_update_relational_database <- function(relationalDatabaseName, masterUserPassword = NULL, rotateMasterUserPassword = NULL, preferredBackupWindow = NULL, preferredMaintenanceWindow = NULL, enableBackupRetention = NULL, disableBackupRetention = NULL, publiclyAccessible = NULL, applyImmediately = NULL) {
+lightsail_update_relational_database <- function(relationalDatabaseName, masterUserPassword = NULL, rotateMasterUserPassword = NULL, preferredBackupWindow = NULL, preferredMaintenanceWindow = NULL, enableBackupRetention = NULL, disableBackupRetention = NULL, publiclyAccessible = NULL, applyImmediately = NULL, caCertificateIdentifier = NULL) {
   op <- new_operation(
     name = "UpdateRelationalDatabase",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .lightsail$update_relational_database_input(relationalDatabaseName = relationalDatabaseName, masterUserPassword = masterUserPassword, rotateMasterUserPassword = rotateMasterUserPassword, preferredBackupWindow = preferredBackupWindow, preferredMaintenanceWindow = preferredMaintenanceWindow, enableBackupRetention = enableBackupRetention, disableBackupRetention = disableBackupRetention, publiclyAccessible = publiclyAccessible, applyImmediately = applyImmediately)
+  input <- .lightsail$update_relational_database_input(relationalDatabaseName = relationalDatabaseName, masterUserPassword = masterUserPassword, rotateMasterUserPassword = rotateMasterUserPassword, preferredBackupWindow = preferredBackupWindow, preferredMaintenanceWindow = preferredMaintenanceWindow, enableBackupRetention = enableBackupRetention, disableBackupRetention = disableBackupRetention, publiclyAccessible = publiclyAccessible, applyImmediately = applyImmediately, caCertificateIdentifier = caCertificateIdentifier)
   output <- .lightsail$update_relational_database_output()
   config <- get_config()
   svc <- .lightsail$service(config)
@@ -5461,7 +5479,7 @@ lightsail_update_relational_database <- function(relationalDatabaseName, masterU
 #' 
 #' Parameter updates don\'t cause outages; therefore, their application is
 #' not subject to the preferred maintenance window. However, there are two
-#' ways in which paramater updates are applied: `dynamic` or
+#' ways in which parameter updates are applied: `dynamic` or
 #' `pending-reboot`. Parameters marked with a `dynamic` apply type are
 #' applied immediately. Parameters marked with a `pending-reboot` apply
 #' type are applied only after the database is rebooted using the

@@ -310,9 +310,11 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' @param InstanceId The instance ID.
 #' 
 #' `InstanceId` has been deprecated. To specify an instance ID for an
-#' association, use the `Targets` parameter. If you use the parameter
-#' `InstanceId`, you cannot use the parameters `AssociationName`,
-#' `DocumentVersion`, `MaxErrors`, `MaxConcurrency`, `OutputLocation`, or
+#' association, use the `Targets` parameter. Requests that include the
+#' parameter `InstanceID` with SSM documents that use schema version 2.0 or
+#' later will fail. In addition, if you use the parameter `InstanceId`, you
+#' cannot use the parameters `AssociationName`, `DocumentVersion`,
+#' `MaxErrors`, `MaxConcurrency`, `OutputLocation`, or
 #' `ScheduleExpression`. To use these parameters, you must use the
 #' `Targets` parameter.
 #' @param Parameters The parameters for the runtime configuration of the document.
@@ -520,7 +522,7 @@ ssm_create_association_batch <- function(Entries) {
 #' @param DocumentType The type of document to create. Valid document types include: `Command`,
 #' `Policy`, `Automation`, `Session`, and `Package`.
 #' @param DocumentFormat Specify the document format for the request. The document format can be
-#' either JSON or YAML. JSON is the default format.
+#' JSON, YAML, or TEXT. JSON is the default format.
 #' @param TargetType Specify a target type to define the kinds of resources the document can
 #' run on. For example, to run a document on EC2 instances, specify the
 #' following value: /AWS::EC2::Instance. If you specify a value of \'/\'
@@ -554,7 +556,7 @@ ssm_create_association_batch <- function(Entries) {
 #'   ),
 #'   Attachments = list(
 #'     list(
-#'       Key = "SourceUrl"|"S3FileUrl",
+#'       Key = "SourceUrl"|"S3FileUrl"|"AttachmentReference",
 #'       Values = list(
 #'         "string"
 #'       ),
@@ -563,8 +565,8 @@ ssm_create_association_batch <- function(Entries) {
 #'   ),
 #'   Name = "string",
 #'   VersionName = "string",
-#'   DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy",
-#'   DocumentFormat = "YAML"|"JSON",
+#'   DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar",
+#'   DocumentFormat = "YAML"|"JSON"|"TEXT",
 #'   TargetType = "string",
 #'   Tags = list(
 #'     list(
@@ -1872,7 +1874,7 @@ ssm_describe_association_executions <- function(AssociationId, Filters = NULL, M
 #' svc$describe_automation_executions(
 #'   Filters = list(
 #'     list(
-#'       Key = "DocumentNamePrefix"|"ExecutionStatus"|"ExecutionId"|"ParentExecutionId"|"CurrentAction"|"StartTimeBefore"|"StartTimeAfter"|"AutomationType",
+#'       Key = "DocumentNamePrefix"|"ExecutionStatus"|"ExecutionId"|"ParentExecutionId"|"CurrentAction"|"StartTimeBefore"|"StartTimeAfter"|"AutomationType"|"TagKey",
 #'       Values = list(
 #'         "string"
 #'       )
@@ -3479,6 +3481,60 @@ ssm_get_automation_execution <- function(AutomationExecutionId) {
 }
 .ssm$operations$get_automation_execution <- ssm_get_automation_execution
 
+#' Gets the state of the AWS Systems Manager Change Calendar at an
+#' optional, specified time
+#'
+#' Gets the state of the AWS Systems Manager Change Calendar at an
+#' optional, specified time. If you specify a time, `GetCalendarState`
+#' returns the state of the calendar at a specific time, and returns the
+#' next time that the Change Calendar state will transition. If you do not
+#' specify a time, `GetCalendarState` assumes the current time. Change
+#' Calendar entries have two possible states: `OPEN` or `CLOSED`. For more
+#' information about Systems Manager Change Calendar, see [AWS Systems
+#' Manager Change
+#' Calendar](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html)
+#' in the *AWS Systems Manager User Guide*.
+#'
+#' @usage
+#' ssm_get_calendar_state(CalendarNames, AtTime)
+#'
+#' @param CalendarNames &#91;required&#93; The names or Amazon Resource Names (ARNs) of the Systems Manager
+#' documents that represent the calendar entries for which you want to get
+#' the state.
+#' @param AtTime (Optional) The specific time for which you want to get calendar state
+#' information, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+#' format. If you do not add `AtTime`, the current time is assumed.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_calendar_state(
+#'   CalendarNames = list(
+#'     "string"
+#'   ),
+#'   AtTime = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_get_calendar_state
+ssm_get_calendar_state <- function(CalendarNames, AtTime = NULL) {
+  op <- new_operation(
+    name = "GetCalendarState",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssm$get_calendar_state_input(CalendarNames = CalendarNames, AtTime = AtTime)
+  output <- .ssm$get_calendar_state_output()
+  config <- get_config()
+  svc <- .ssm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$get_calendar_state <- ssm_get_calendar_state
+
 #' Returns detailed information about command execution for an invocation
 #' or plugin
 #'
@@ -3668,7 +3724,7 @@ ssm_get_deployable_patch_snapshot_for_instance <- function(InstanceId, SnapshotI
 #'   Name = "string",
 #'   VersionName = "string",
 #'   DocumentVersion = "string",
-#'   DocumentFormat = "YAML"|"JSON"
+#'   DocumentFormat = "YAML"|"JSON"|"TEXT"
 #' )
 #' ```
 #'
@@ -5928,8 +5984,13 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 #'   TaskInvocationParameters = list(
 #'     RunCommand = list(
 #'       Comment = "string",
+#'       CloudWatchOutputConfig = list(
+#'         CloudWatchLogGroupName = "string",
+#'         CloudWatchOutputEnabled = TRUE|FALSE
+#'       ),
 #'       DocumentHash = "string",
 #'       DocumentHashType = "Sha256"|"Sha1",
+#'       DocumentVersion = "string",
 #'       NotificationConfig = list(
 #'         NotificationArn = "string",
 #'         NotificationEvents = list(
@@ -6401,7 +6462,7 @@ ssm_start_associations_once <- function(AssociationIds) {
 #' @usage
 #' ssm_start_automation_execution(DocumentName, DocumentVersion,
 #'   Parameters, ClientToken, Mode, TargetParameterName, Targets, TargetMaps,
-#'   MaxConcurrency, MaxErrors, TargetLocations)
+#'   MaxConcurrency, MaxErrors, TargetLocations, Tags)
 #'
 #' @param DocumentName &#91;required&#93; The name of the Automation document to use for this execution.
 #' @param DocumentVersion The version of the Automation document to use for this execution.
@@ -6441,6 +6502,19 @@ ssm_start_associations_once <- function(AssociationIds) {
 #' [Executing Automations in Multiple AWS Regions and
 #' Accounts](http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html)
 #' in the *AWS Systems Manager User Guide*.
+#' @param Tags Optional metadata that you assign to a resource. You can specify a
+#' maximum of five tags for an automation. Tags enable you to categorize a
+#' resource in different ways, such as by purpose, owner, or environment.
+#' For example, you might want to tag an automation to identify an
+#' environment or operating system. In this case, you could specify the
+#' following key name/value pairs:
+#' 
+#' -   `Key=environment,Value=test`
+#' 
+#' -   `Key=OS,Value=Windows`
+#' 
+#' To add tags to an existing patch baseline, use the AddTagsToResource
+#' action.
 #'
 #' @section Request syntax:
 #' ```
@@ -6484,6 +6558,12 @@ ssm_start_associations_once <- function(AssociationIds) {
 #'       TargetLocationMaxErrors = "string",
 #'       ExecutionRoleName = "string"
 #'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -6491,14 +6571,14 @@ ssm_start_associations_once <- function(AssociationIds) {
 #' @keywords internal
 #'
 #' @rdname ssm_start_automation_execution
-ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL, Parameters = NULL, ClientToken = NULL, Mode = NULL, TargetParameterName = NULL, Targets = NULL, TargetMaps = NULL, MaxConcurrency = NULL, MaxErrors = NULL, TargetLocations = NULL) {
+ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL, Parameters = NULL, ClientToken = NULL, Mode = NULL, TargetParameterName = NULL, Targets = NULL, TargetMaps = NULL, MaxConcurrency = NULL, MaxErrors = NULL, TargetLocations = NULL, Tags = NULL) {
   op <- new_operation(
     name = "StartAutomationExecution",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$start_automation_execution_input(DocumentName = DocumentName, DocumentVersion = DocumentVersion, Parameters = Parameters, ClientToken = ClientToken, Mode = Mode, TargetParameterName = TargetParameterName, Targets = Targets, TargetMaps = TargetMaps, MaxConcurrency = MaxConcurrency, MaxErrors = MaxErrors, TargetLocations = TargetLocations)
+  input <- .ssm$start_automation_execution_input(DocumentName = DocumentName, DocumentVersion = DocumentVersion, Parameters = Parameters, ClientToken = ClientToken, Mode = Mode, TargetParameterName = TargetParameterName, Targets = Targets, TargetMaps = TargetMaps, MaxConcurrency = MaxConcurrency, MaxErrors = MaxErrors, TargetLocations = TargetLocations, Tags = Tags)
   output <- .ssm$start_automation_execution_output()
   config <- get_config()
   svc <- .ssm$service(config)
@@ -6860,7 +6940,7 @@ ssm_update_association_status <- function(Name, InstanceId, AssociationStatus) {
 #'   Content = "string",
 #'   Attachments = list(
 #'     list(
-#'       Key = "SourceUrl"|"S3FileUrl",
+#'       Key = "SourceUrl"|"S3FileUrl"|"AttachmentReference",
 #'       Values = list(
 #'         "string"
 #'       ),
@@ -6870,7 +6950,7 @@ ssm_update_association_status <- function(Name, InstanceId, AssociationStatus) {
 #'   Name = "string",
 #'   VersionName = "string",
 #'   DocumentVersion = "string",
-#'   DocumentFormat = "YAML"|"JSON",
+#'   DocumentFormat = "YAML"|"JSON"|"TEXT",
 #'   TargetType = "string"
 #' )
 #' ```
@@ -7205,8 +7285,13 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #'   TaskInvocationParameters = list(
 #'     RunCommand = list(
 #'       Comment = "string",
+#'       CloudWatchOutputConfig = list(
+#'         CloudWatchLogGroupName = "string",
+#'         CloudWatchOutputEnabled = TRUE|FALSE
+#'       ),
 #'       DocumentHash = "string",
 #'       DocumentHashType = "Sha256"|"Sha1",
+#'       DocumentVersion = "string",
 #'       NotificationConfig = list(
 #'         NotificationArn = "string",
 #'         NotificationEvents = list(

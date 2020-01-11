@@ -3,7 +3,7 @@
 \name{workspaces_modify_workspace_access_properties}
 \alias{workspaces_modify_workspace_access_properties}
 \title{Specifies which devices and operating systems users can use to access
-their Workspaces}
+their WorkSpaces}
 \usage{
 workspaces_modify_workspace_access_properties(ResourceId,
   WorkspaceAccessProperties)
@@ -15,7 +15,7 @@ workspaces_modify_workspace_access_properties(ResourceId,
 }
 \description{
 Specifies which devices and operating systems users can use to access
-their Workspaces. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/update-directory-details.html#control-device-access}{Control Device Access}.
+their WorkSpaces. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/update-directory-details.html#control-device-access}{Control Device Access}.
 }
 \section{Request syntax}{
 \preformatted{svc$modify_workspace_access_properties(

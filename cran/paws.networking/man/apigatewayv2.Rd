@@ -72,8 +72,8 @@ Amazon API Gateway V2
 \link[=apigatewayv2_get_integration_responses]{get_integration_responses} \tab Gets the IntegrationResponses for an Integration\cr
 \link[=apigatewayv2_get_integrations]{get_integrations} \tab Gets the Integrations for an API \cr
 \link[=apigatewayv2_get_model]{get_model} \tab Gets a Model \cr
-\link[=apigatewayv2_get_model_template]{get_model_template} \tab Gets a model template \cr
 \link[=apigatewayv2_get_models]{get_models} \tab Gets the Models for an API \cr
+\link[=apigatewayv2_get_model_template]{get_model_template} \tab Gets a model template \cr
 \link[=apigatewayv2_get_route]{get_route} \tab Gets a Route \cr
 \link[=apigatewayv2_get_route_response]{get_route_response} \tab Gets a RouteResponse \cr
 \link[=apigatewayv2_get_route_responses]{get_route_responses} \tab Gets the RouteResponses for a Route \cr

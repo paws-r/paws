@@ -4,11 +4,13 @@
 \alias{mediapackage_update_origin_endpoint}
 \title{Updates an existing OriginEndpoint}
 \usage{
-mediapackage_update_origin_endpoint(CmafPackage, DashPackage,
-  Description, HlsPackage, Id, ManifestName, MssPackage, Origination,
-  StartoverWindowSeconds, TimeDelaySeconds, Whitelist)
+mediapackage_update_origin_endpoint(Authorization, CmafPackage,
+  DashPackage, Description, HlsPackage, Id, ManifestName, MssPackage,
+  Origination, StartoverWindowSeconds, TimeDelaySeconds, Whitelist)
 }
 \arguments{
+\item{Authorization}{}
+
 \item{CmafPackage}{}
 
 \item{DashPackage}{}
@@ -40,6 +42,10 @@ Updates an existing OriginEndpoint.
 }
 \section{Request syntax}{
 \preformatted{svc$update_origin_endpoint(
+  Authorization = list(
+    CdnIdentifierSecret = "string",
+    SecretsRoleArn = "string"
+  ),
   CmafPackage = list(
     Encryption = list(
       KeyRotationIntervalSeconds = 123,

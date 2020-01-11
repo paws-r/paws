@@ -139,6 +139,51 @@ chime_associate_phone_numbers_with_voice_connector_group <- function(VoiceConnec
 }
 .chime$operations$associate_phone_numbers_with_voice_connector_group <- chime_associate_phone_numbers_with_voice_connector_group
 
+#' Associates the specified sign-in delegate groups with the specified
+#' Amazon Chime account
+#'
+#' Associates the specified sign-in delegate groups with the specified
+#' Amazon Chime account.
+#'
+#' @usage
+#' chime_associate_signin_delegate_groups_with_account(AccountId,
+#'   SigninDelegateGroups)
+#'
+#' @param AccountId &#91;required&#93; The Amazon Chime account ID.
+#' @param SigninDelegateGroups &#91;required&#93; The sign-in delegate groups.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_signin_delegate_groups_with_account(
+#'   AccountId = "string",
+#'   SigninDelegateGroups = list(
+#'     list(
+#'       GroupName = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_associate_signin_delegate_groups_with_account
+chime_associate_signin_delegate_groups_with_account <- function(AccountId, SigninDelegateGroups) {
+  op <- new_operation(
+    name = "AssociateSigninDelegateGroupsWithAccount",
+    http_method = "POST",
+    http_path = "/accounts/{accountId}?operation=associate-signin-delegate-groups",
+    paginator = list()
+  )
+  input <- .chime$associate_signin_delegate_groups_with_account_input(AccountId = AccountId, SigninDelegateGroups = SigninDelegateGroups)
+  output <- .chime$associate_signin_delegate_groups_with_account_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$associate_signin_delegate_groups_with_account <- chime_associate_signin_delegate_groups_with_account
+
 #' Creates up to 100 new attendees for an active Amazon Chime SDK meeting
 #'
 #' Creates up to 100 new attendees for an active Amazon Chime SDK meeting.
@@ -285,7 +330,7 @@ chime_batch_delete_phone_number <- function(PhoneNumberIds) {
 #' Accounts](https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html)
 #' in the *Amazon Chime Administration Guide*.
 #' 
-#' Users suspended from a `Team` account are dissasociated from the
+#' Users suspended from a `Team` account are disassociated from the
 #' account, but they can continue to use Amazon Chime as free users. To
 #' remove the suspension from suspended `Team` account users, invite them
 #' to the `Team` account again. You can use the InviteUsers action to do
@@ -458,7 +503,12 @@ chime_batch_update_phone_number <- function(UpdatePhoneNumberRequestItems) {
 #'   UpdateUserRequestItems = list(
 #'     list(
 #'       UserId = "string",
-#'       LicenseType = "Basic"|"Plus"|"Pro"|"ProTrial"
+#'       LicenseType = "Basic"|"Plus"|"Pro"|"ProTrial",
+#'       UserType = "PrivateUser"|"SharedDevice",
+#'       AlexaForBusinessMetadata = list(
+#'         IsAlexaForBusinessEnabled = TRUE|FALSE,
+#'         AlexaForBusinessRoomArn = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -624,7 +674,9 @@ chime_create_bot <- function(AccountId, DisplayName, Domain = NULL) {
 #' different meetings.
 #' @param MeetingHostId Reserved.
 #' @param MediaRegion The Region in which to create the meeting. Available values:
-#' `us-east-1`, `us-west-2`.
+#' `ap-northeast-1`, `ap-southeast-1`, `ap-southeast-2`, `ca-central-1`,
+#' `eu-central-1`, `eu-north-1`, `eu-west-1`, `eu-west-2`, `eu-west-3`,
+#' `sa-east-1`, `us-east-1`, `us-east-2`, `us-west-1`, `us-west-2`.
 #' @param NotificationsConfiguration The configuration for resource targets to receive notifications when
 #' meeting and attendee events occur.
 #'
@@ -787,6 +839,48 @@ chime_create_room_membership <- function(AccountId, RoomId, MemberId, Role = NUL
   return(response)
 }
 .chime$operations$create_room_membership <- chime_create_room_membership
+
+#' Creates a user under the specified Amazon Chime account
+#'
+#' Creates a user under the specified Amazon Chime account.
+#'
+#' @usage
+#' chime_create_user(AccountId, Username, Email, UserType)
+#'
+#' @param AccountId &#91;required&#93; The Amazon Chime account ID.
+#' @param Username The user name.
+#' @param Email The user\'s email address.
+#' @param UserType The user type.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_user(
+#'   AccountId = "string",
+#'   Username = "string",
+#'   Email = "string",
+#'   UserType = "PrivateUser"|"SharedDevice"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_create_user
+chime_create_user <- function(AccountId, Username = NULL, Email = NULL, UserType = NULL) {
+  op <- new_operation(
+    name = "CreateUser",
+    http_method = "POST",
+    http_path = "/accounts/{accountId}/users?operation=create",
+    paginator = list()
+  )
+  input <- .chime$create_user_input(AccountId = AccountId, Username = Username, Email = Email, UserType = UserType)
+  output <- .chime$create_user_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$create_user <- chime_create_user
 
 #' Creates an Amazon Chime Voice Connector under the administrator's AWS
 #' account
@@ -1541,6 +1635,49 @@ chime_disassociate_phone_numbers_from_voice_connector_group <- function(VoiceCon
 }
 .chime$operations$disassociate_phone_numbers_from_voice_connector_group <- chime_disassociate_phone_numbers_from_voice_connector_group
 
+#' Disassociates the specified sign-in delegate groups from the specified
+#' Amazon Chime account
+#'
+#' Disassociates the specified sign-in delegate groups from the specified
+#' Amazon Chime account.
+#'
+#' @usage
+#' chime_disassociate_signin_delegate_groups_from_account(AccountId,
+#'   GroupNames)
+#'
+#' @param AccountId &#91;required&#93; The Amazon Chime account ID.
+#' @param GroupNames &#91;required&#93; The sign-in delegate group names.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_signin_delegate_groups_from_account(
+#'   AccountId = "string",
+#'   GroupNames = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_disassociate_signin_delegate_groups_from_account
+chime_disassociate_signin_delegate_groups_from_account <- function(AccountId, GroupNames) {
+  op <- new_operation(
+    name = "DisassociateSigninDelegateGroupsFromAccount",
+    http_method = "POST",
+    http_path = "/accounts/{accountId}?operation=disassociate-signin-delegate-groups",
+    paginator = list()
+  )
+  input <- .chime$disassociate_signin_delegate_groups_from_account_input(AccountId = AccountId, GroupNames = GroupNames)
+  output <- .chime$disassociate_signin_delegate_groups_from_account_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$disassociate_signin_delegate_groups_from_account <- chime_disassociate_signin_delegate_groups_from_account
+
 #' Retrieves details for the specified Amazon Chime account, such as
 #' account type and supported licenses
 #'
@@ -1926,9 +2063,9 @@ chime_get_phone_number_settings <- function() {
 }
 .chime$operations$get_phone_number_settings <- chime_get_phone_number_settings
 
-#' Retrieves room details, such as name
+#' Retrieves room details, such as the room name
 #'
-#' Retrieves room details, such as name.
+#' Retrieves room details, such as the room name.
 #'
 #' @usage
 #' chime_get_room(AccountId, RoomId)
@@ -2326,10 +2463,11 @@ chime_get_voice_connector_termination_health <- function(VoiceConnectorId) {
 #' supported for this action.
 #'
 #' @usage
-#' chime_invite_users(AccountId, UserEmailList)
+#' chime_invite_users(AccountId, UserEmailList, UserType)
 #'
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param UserEmailList &#91;required&#93; The user email addresses to which to send the email invitation.
+#' @param UserType The user type.
 #'
 #' @section Request syntax:
 #' ```
@@ -2337,21 +2475,22 @@ chime_get_voice_connector_termination_health <- function(VoiceConnectorId) {
 #'   AccountId = "string",
 #'   UserEmailList = list(
 #'     "string"
-#'   )
+#'   ),
+#'   UserType = "PrivateUser"|"SharedDevice"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname chime_invite_users
-chime_invite_users <- function(AccountId, UserEmailList) {
+chime_invite_users <- function(AccountId, UserEmailList, UserType = NULL) {
   op <- new_operation(
     name = "InviteUsers",
     http_method = "POST",
     http_path = "/accounts/{accountId}/users?operation=add",
     paginator = list()
   )
-  input <- .chime$invite_users_input(AccountId = AccountId, UserEmailList = UserEmailList)
+  input <- .chime$invite_users_input(AccountId = AccountId, UserEmailList = UserEmailList, UserType = UserType)
   output <- .chime$invite_users_output()
   config <- get_config()
   svc <- .chime$service(config)
@@ -2625,11 +2764,11 @@ chime_list_phone_numbers <- function(Status = NULL, ProductType = NULL, FilterNa
 }
 .chime$operations$list_phone_numbers <- chime_list_phone_numbers
 
-#' Lists the membership details for the specified room, such as member IDs,
-#' member email addresses, and member names
+#' Lists the membership details for the specified room, such as the
+#' members' IDs, email addresses, and names
 #'
-#' Lists the membership details for the specified room, such as member IDs,
-#' member email addresses, and member names.
+#' Lists the membership details for the specified room, such as the
+#' members\' IDs, email addresses, and names.
 #'
 #' @usage
 #' chime_list_room_memberships(AccountId, RoomId, MaxResults, NextToken)
@@ -2720,10 +2859,11 @@ chime_list_rooms <- function(AccountId, MemberId = NULL, MaxResults = NULL, Next
 #' address belongs to.
 #'
 #' @usage
-#' chime_list_users(AccountId, UserEmail, MaxResults, NextToken)
+#' chime_list_users(AccountId, UserEmail, UserType, MaxResults, NextToken)
 #'
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param UserEmail Optional. The user email address used to filter results. Maximum 1.
+#' @param UserType The user type.
 #' @param MaxResults The maximum number of results to return in a single call. Defaults to
 #' 100.
 #' @param NextToken The token to use to retrieve the next page of results.
@@ -2733,6 +2873,7 @@ chime_list_rooms <- function(AccountId, MemberId = NULL, MaxResults = NULL, Next
 #' svc$list_users(
 #'   AccountId = "string",
 #'   UserEmail = "string",
+#'   UserType = "PrivateUser"|"SharedDevice",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -2741,14 +2882,14 @@ chime_list_rooms <- function(AccountId, MemberId = NULL, MaxResults = NULL, Next
 #' @keywords internal
 #'
 #' @rdname chime_list_users
-chime_list_users <- function(AccountId, UserEmail = NULL, MaxResults = NULL, NextToken = NULL) {
+chime_list_users <- function(AccountId, UserEmail = NULL, UserType = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListUsers",
     http_method = "GET",
     http_path = "/accounts/{accountId}/users",
     paginator = list()
   )
-  input <- .chime$list_users_input(AccountId = AccountId, UserEmail = UserEmail, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .chime$list_users_input(AccountId = AccountId, UserEmail = UserEmail, UserType = UserType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .chime$list_users_output()
   config <- get_config()
   svc <- .chime$service(config)
@@ -3664,11 +3805,12 @@ chime_update_room <- function(AccountId, RoomId, Name = NULL) {
 }
 .chime$operations$update_room <- chime_update_room
 
-#' Updates room membership details, such as member role
+#' Updates room membership details, such as the member role
 #'
-#' Updates room membership details, such as member role. The member role
-#' designates whether the member is a chat room administrator or a general
-#' chat room member. Member role can only be updated for user IDs.
+#' Updates room membership details, such as the member role. The member
+#' role designates whether the member is a chat room administrator or a
+#' general chat room member. The member role can be updated only for user
+#' IDs.
 #'
 #' @usage
 #' chime_update_room_membership(AccountId, RoomId, MemberId, Role)
@@ -3714,33 +3856,41 @@ chime_update_room_membership <- function(AccountId, RoomId, MemberId, Role = NUL
 #' `LicenseType` updates are supported for this action.
 #'
 #' @usage
-#' chime_update_user(AccountId, UserId, LicenseType)
+#' chime_update_user(AccountId, UserId, LicenseType, UserType,
+#'   AlexaForBusinessMetadata)
 #'
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param UserId &#91;required&#93; The user ID.
 #' @param LicenseType The user license type to update. This must be a supported license type
 #' for the Amazon Chime account that the user belongs to.
+#' @param UserType The user type.
+#' @param AlexaForBusinessMetadata The Alexa for Business metadata.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_user(
 #'   AccountId = "string",
 #'   UserId = "string",
-#'   LicenseType = "Basic"|"Plus"|"Pro"|"ProTrial"
+#'   LicenseType = "Basic"|"Plus"|"Pro"|"ProTrial",
+#'   UserType = "PrivateUser"|"SharedDevice",
+#'   AlexaForBusinessMetadata = list(
+#'     IsAlexaForBusinessEnabled = TRUE|FALSE,
+#'     AlexaForBusinessRoomArn = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname chime_update_user
-chime_update_user <- function(AccountId, UserId, LicenseType = NULL) {
+chime_update_user <- function(AccountId, UserId, LicenseType = NULL, UserType = NULL, AlexaForBusinessMetadata = NULL) {
   op <- new_operation(
     name = "UpdateUser",
     http_method = "POST",
     http_path = "/accounts/{accountId}/users/{userId}",
     paginator = list()
   )
-  input <- .chime$update_user_input(AccountId = AccountId, UserId = UserId, LicenseType = LicenseType)
+  input <- .chime$update_user_input(AccountId = AccountId, UserId = UserId, LicenseType = LicenseType, UserType = UserType, AlexaForBusinessMetadata = AlexaForBusinessMetadata)
   output <- .chime$update_user_output()
   config <- get_config()
   svc <- .chime$service(config)

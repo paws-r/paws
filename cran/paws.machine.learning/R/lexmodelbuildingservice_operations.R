@@ -1901,7 +1901,7 @@ lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = 
 #'
 #' @usage
 #' lexmodelbuildingservice_put_bot_alias(name, description, botVersion,
-#'   botName, checksum)
+#'   botName, checksum, conversationLogs)
 #'
 #' @param name &#91;required&#93; The name of the alias. The name is *not* case sensitive.
 #' @param description A description of the alias.
@@ -1917,6 +1917,7 @@ lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = 
 #' don\'t specify the ` checksum` field, or if the checksum does not match
 #' the `$LATEST` version, you get a `PreconditionFailedException`
 #' exception.
+#' @param conversationLogs Settings for conversation logs for the alias.
 #'
 #' @section Request syntax:
 #' ```
@@ -1925,21 +1926,32 @@ lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = 
 #'   description = "string",
 #'   botVersion = "string",
 #'   botName = "string",
-#'   checksum = "string"
+#'   checksum = "string",
+#'   conversationLogs = list(
+#'     logSettings = list(
+#'       list(
+#'         logType = "AUDIO"|"TEXT",
+#'         destination = "CLOUDWATCH_LOGS"|"S3",
+#'         kmsKeyArn = "string",
+#'         resourceArn = "string"
+#'       )
+#'     ),
+#'     iamRoleArn = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_put_bot_alias
-lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botVersion, botName, checksum = NULL) {
+lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botVersion, botName, checksum = NULL, conversationLogs = NULL) {
   op <- new_operation(
     name = "PutBotAlias",
     http_method = "PUT",
     http_path = "/bots/{botName}/aliases/{name}",
     paginator = list()
   )
-  input <- .lexmodelbuildingservice$put_bot_alias_input(name = name, description = description, botVersion = botVersion, botName = botName, checksum = checksum)
+  input <- .lexmodelbuildingservice$put_bot_alias_input(name = name, description = description, botVersion = botVersion, botName = botName, checksum = checksum, conversationLogs = conversationLogs)
   output <- .lexmodelbuildingservice$put_bot_alias_output()
   config <- get_config()
   svc <- .lexmodelbuildingservice$service(config)
@@ -2135,7 +2147,8 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #'       sampleUtterances = list(
 #'         "string"
 #'       ),
-#'       responseCard = "string"
+#'       responseCard = "string",
+#'       obfuscationSetting = "NONE"|"DEFAULT_OBFUSCATION"
 #'     )
 #'   ),
 #'   sampleUtterances = list(

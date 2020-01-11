@@ -2,15 +2,15 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_list_iam_policy_assignments_for_user}
 \alias{quicksight_list_iam_policy_assignments_for_user}
-\title{Lists all the assignments and the Amazon Resource Names (ARNs) for the
-associated IAM policies assigned to the specified user and the group or
-groups that the user belongs to}
+\title{Lists all the IAM policy assignments, including the Amazon Resource
+Names (ARNs) for the IAM policies assigned to the specified user and
+group or groups that the user belongs to}
 \usage{
 quicksight_list_iam_policy_assignments_for_user(AwsAccountId, UserName,
   NextToken, MaxResults, Namespace)
 }
 \arguments{
-\item{AwsAccountId}{[required] The AWS account ID that contains the assignment.}
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the assignments.}
 
 \item{UserName}{[required] The name of the user.}
 
@@ -22,9 +22,9 @@ results.}
 \item{Namespace}{[required] The namespace of the assignment.}
 }
 \description{
-Lists all the assignments and the Amazon Resource Names (ARNs) for the
-associated IAM policies assigned to the specified user and the group or
-groups that the user belongs to.
+Lists all the IAM policy assignments, including the Amazon Resource
+Names (ARNs) for the IAM policies assigned to the specified user and
+group or groups that the user belongs to.
 }
 \section{Request syntax}{
 \preformatted{svc$list_iam_policy_assignments_for_user(

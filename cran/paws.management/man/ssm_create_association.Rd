@@ -36,9 +36,11 @@ specific version or the default version.}
 \item{InstanceId}{The instance ID.
 
 \code{InstanceId} has been deprecated. To specify an instance ID for an
-association, use the \code{Targets} parameter. If you use the parameter
-\code{InstanceId}, you cannot use the parameters \code{AssociationName},
-\code{DocumentVersion}, \code{MaxErrors}, \code{MaxConcurrency}, \code{OutputLocation}, or
+association, use the \code{Targets} parameter. Requests that include the
+parameter \code{InstanceID} with SSM documents that use schema version 2.0 or
+later will fail. In addition, if you use the parameter \code{InstanceId}, you
+cannot use the parameters \code{AssociationName}, \code{DocumentVersion},
+\code{MaxErrors}, \code{MaxConcurrency}, \code{OutputLocation}, or
 \code{ScheduleExpression}. To use these parameters, you must use the
 \code{Targets} parameter.}
 

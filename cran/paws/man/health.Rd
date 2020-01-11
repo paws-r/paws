@@ -33,6 +33,31 @@ specified criteria.
 that meet specified criteria.
 }
 
+AWS Health integrates with AWS Organizations to provide a centralized
+view of AWS Health events across all accounts in your organization.
+\itemize{
+\item DescribeEventsForOrganization: Summary information about events
+across the organization.
+\item DescribeAffectedAccountsForOrganization: List of accounts in your
+organization impacted by an event.
+\item DescribeEventDetailsForOrganization: Detailed information about
+events in your organization.
+\item DescribeAffectedEntitiesForOrganization: Information about AWS
+resources in your organization that are affected by events.
+}
+
+You can use the following operations to enable or disable AWS Health
+from working with AWS Organizations.
+\itemize{
+\item EnableHealthServiceAccessForOrganization: Enables AWS Health to work
+with AWS Organizations.
+\item DisableHealthServiceAccessForOrganization: Disables AWS Health from
+working with AWS Organizations.
+\item DescribeHealthServiceStatusForOrganization: Status information about
+enabling or disabling AWS Health from working with AWS
+Organizations.
+}
+
 The Health API requires a Business or Enterprise support plan from \href{http://aws.amazon.com/premiumsupport/}{AWS Support}. Calling the Health API
 from an account that does not have a Business or Enterprise support plan
 causes a \code{SubscriptionRequiredException}.
@@ -70,18 +95,25 @@ The HTTP endpoint for the AWS Health API is:
 \section{Operations}{
 
 \tabular{ll}{
-\link[=health_describe_affected_entities]{describe_affected_entities} \tab Returns a list of entities that have been affected by the specified events, based on the specified filter criteria\cr
+\link[=health_describe_affected_accounts_for_organization]{describe_affected_accounts_for_organization} \tab Returns a list of accounts in the organization from AWS Organizations that are affected by the provided event \cr
+\link[=health_describe_affected_entities]{describe_affected_entities} \tab Returns a list of entities that have been affected by the specified events, based on the specified filter criteria \cr
+\link[=health_describe_affected_entities_for_organization]{describe_affected_entities_for_organization} \tab Returns a list of entities that have been affected by one or more events for one or more accounts in your organization in AWS Organizations, based on the filter criteria\cr
 \link[=health_describe_entity_aggregates]{describe_entity_aggregates} \tab Returns the number of entities that are affected by each of the specified events \cr
 \link[=health_describe_event_aggregates]{describe_event_aggregates} \tab Returns the number of events of each event type (issue, scheduled change, and account notification) \cr
 \link[=health_describe_event_details]{describe_event_details} \tab Returns detailed information about one or more specified events \cr
+\link[=health_describe_event_details_for_organization]{describe_event_details_for_organization} \tab Returns detailed information about one or more specified events for one or more accounts in your organization \cr
+\link[=health_describe_events]{describe_events} \tab Returns information about events that meet the specified filter criteria \cr
+\link[=health_describe_events_for_organization]{describe_events_for_organization} \tab Returns information about events across your organization in AWS Organizations, meeting the specified filter criteria \cr
 \link[=health_describe_event_types]{describe_event_types} \tab Returns the event types that meet the specified filter criteria \cr
-\link[=health_describe_events]{describe_events} \tab Returns information about events that meet the specified filter criteria
+\link[=health_describe_health_service_status_for_organization]{describe_health_service_status_for_organization} \tab This operation provides status information on enabling or disabling AWS Health to work with your organization \cr
+\link[=health_disable_health_service_access_for_organization]{disable_health_service_access_for_organization} \tab Calling this operation disables Health from working with AWS Organizations \cr
+\link[=health_enable_health_service_access_for_organization]{enable_health_service_access_for_organization} \tab Calling this operation enables AWS Health to work with AWS Organizations
 }
 }
 
 \examples{
 \donttest{svc <- health()
-svc$describe_affected_entities(
+svc$describe_affected_accounts_for_organization(
   Foo = 123
 )}
 

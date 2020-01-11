@@ -1209,13 +1209,16 @@ iot_create_mitigation_action <- function(actionName, roleArn, actionParams, tags
 #' Creates an AWS IoT OTAUpdate on a target group of things or groups.
 #'
 #' @usage
-#' iot_create_ota_update(otaUpdateId, description, targets,
-#'   targetSelection, awsJobExecutionsRolloutConfig, files, roleArn,
-#'   additionalParameters, tags)
+#' iot_create_ota_update(otaUpdateId, description, targets, protocols,
+#'   targetSelection, awsJobExecutionsRolloutConfig,
+#'   awsJobPresignedUrlConfig, files, roleArn, additionalParameters, tags)
 #'
 #' @param otaUpdateId &#91;required&#93; The ID of the OTA update to be created.
 #' @param description The description of the OTA update.
 #' @param targets &#91;required&#93; The targeted devices to receive OTA updates.
+#' @param protocols The protocol used to transfer the OTA update image. Valid values are
+#' \[HTTP\], \[MQTT\], \[HTTP, MQTT\]. When both HTTP and MQTT are
+#' specified, the target device can choose the protocol.
 #' @param targetSelection Specifies whether the update will continue to run (CONTINUOUS), or will
 #' be complete after all the things specified as targets have completed the
 #' update (SNAPSHOT). If continuous, the update may also be run on a thing
@@ -1224,6 +1227,7 @@ iot_create_mitigation_action <- function(actionName, roleArn, actionParams, tags
 #' update was completed by all things originally in the group. Valid
 #' values: CONTINUOUS \\| SNAPSHOT.
 #' @param awsJobExecutionsRolloutConfig Configuration for the rollout of OTA updates.
+#' @param awsJobPresignedUrlConfig Configuration information for pre-signed URLs.
 #' @param files &#91;required&#93; The files to be streamed by the OTA update.
 #' @param roleArn &#91;required&#93; The IAM role that allows access to the AWS IoT Jobs service.
 #' @param additionalParameters A list of additional OTA update parameters which are name-value pairs.
@@ -1237,9 +1241,15 @@ iot_create_mitigation_action <- function(actionName, roleArn, actionParams, tags
 #'   targets = list(
 #'     "string"
 #'   ),
+#'   protocols = list(
+#'     "MQTT"|"HTTP"
+#'   ),
 #'   targetSelection = "CONTINUOUS"|"SNAPSHOT",
 #'   awsJobExecutionsRolloutConfig = list(
 #'     maximumPerMinute = 123
+#'   ),
+#'   awsJobPresignedUrlConfig = list(
+#'     expiresInSec = 123
 #'   ),
 #'   files = list(
 #'     list(
@@ -1305,14 +1315,14 @@ iot_create_mitigation_action <- function(actionName, roleArn, actionParams, tags
 #' @keywords internal
 #'
 #' @rdname iot_create_ota_update
-iot_create_ota_update <- function(otaUpdateId, description = NULL, targets, targetSelection = NULL, awsJobExecutionsRolloutConfig = NULL, files, roleArn, additionalParameters = NULL, tags = NULL) {
+iot_create_ota_update <- function(otaUpdateId, description = NULL, targets, protocols = NULL, targetSelection = NULL, awsJobExecutionsRolloutConfig = NULL, awsJobPresignedUrlConfig = NULL, files, roleArn, additionalParameters = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateOTAUpdate",
     http_method = "POST",
     http_path = "/otaUpdates/{otaUpdateId}",
     paginator = list()
   )
-  input <- .iot$create_ota_update_input(otaUpdateId = otaUpdateId, description = description, targets = targets, targetSelection = targetSelection, awsJobExecutionsRolloutConfig = awsJobExecutionsRolloutConfig, files = files, roleArn = roleArn, additionalParameters = additionalParameters, tags = tags)
+  input <- .iot$create_ota_update_input(otaUpdateId = otaUpdateId, description = description, targets = targets, protocols = protocols, targetSelection = targetSelection, awsJobExecutionsRolloutConfig = awsJobExecutionsRolloutConfig, awsJobPresignedUrlConfig = awsJobPresignedUrlConfig, files = files, roleArn = roleArn, additionalParameters = additionalParameters, tags = tags)
   output <- .iot$create_ota_update_output()
   config <- get_config()
   svc <- .iot$service(config)
@@ -8415,7 +8425,7 @@ iot_test_authorization <- function(principal = NULL, cognitoIdentityPoolId = NUL
 #' @param tokenSignature The signature made with the token and your custom authentication
 #' service\'s private key.
 #' @param httpContext Specifies a test HTTP authorization request.
-#' @param mqttContext Specifies a test MQTT authorization request.\\>
+#' @param mqttContext Specifies a test MQTT authorization request.
 #' @param tlsContext Specifies a test TLS authorization request.
 #'
 #' @section Request syntax:

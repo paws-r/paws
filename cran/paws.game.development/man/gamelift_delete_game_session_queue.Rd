@@ -7,8 +7,9 @@
 gamelift_delete_game_session_queue(Name)
 }
 \arguments{
-\item{Name}{[required] Descriptive label that is associated with game session queue. Queue
-names must be unique within each region.}
+\item{Name}{[required] A descriptive label that is associated with game session queue. Queue
+names must be unique within each Region. You can use either the queue ID
+or ARN value.}
 }
 \description{
 Deletes a game session queue. This action means that any

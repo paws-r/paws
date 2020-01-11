@@ -9,7 +9,7 @@ xray_batch_get_traces(TraceIds, NextToken)
 \arguments{
 \item{TraceIds}{[required] Specify the trace IDs of requests for which to retrieve segments.}
 
-\item{NextToken}{Pagination token. Not used.}
+\item{NextToken}{Pagination token.}
 }
 \description{
 Retrieves a list of traces specified by ID. Each trace is a collection

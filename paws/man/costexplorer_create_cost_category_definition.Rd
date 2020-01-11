@@ -2,8 +2,8 @@
 % Please edit documentation in R/costexplorer_operations.R
 \name{costexplorer_create_cost_category_definition}
 \alias{costexplorer_create_cost_category_definition}
-\title{_COST CATEGORY IS IN PREVIEW RELEASE FOR AWS BILLING AND COST MANAGEMENT
-AND IS SUBJECT TO CHANGE}
+\title{_COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND
+IS SUBJECT TO CHANGE}
 \usage{
 costexplorer_create_cost_category_definition(Name, RuleVersion, Rules)
 }
@@ -12,14 +12,21 @@ costexplorer_create_cost_category_definition(Name, RuleVersion, Rules)
 
 \item{RuleVersion}{[required]}
 
-\item{Rules}{[required] Rules are processed in order. If there are multiple rules that match the
+\item{Rules}{[required] \code{CreateCostCategoryDefinition} supports dimensions, Tags, and nested
+expressions. Currently the only dimensions supported is
+\code{LINKED_ACCOUNT}.
+
+Root level \code{OR} is not supported. We recommend you create a separate
+rule instead.
+
+Rules are processed in order. If there are multiple rules that match the
 line item, then the first rule to match is used to determine that Cost
 Category value.}
 }
 \description{
-\emph{\strong{Cost Category is in preview release for AWS Billing and Cost
-Management and is subject to change. Your use of Cost Categories is
-subject to the Beta Service Participation terms of the \href{https://aws.amazon.com/service-terms/}{AWS Service Terms} (Section 1.10).}}
+\emph{\strong{Cost Category is in public beta for AWS Billing and Cost Management
+and is subject to change. Your use of Cost Categories is subject to the
+Beta Service Participation terms of the \href{https://aws.amazon.com/service-terms/}{AWS Service Terms} (Section 1.10).}}
 }
 \details{
 Creates a new Cost Category with the requested name and rules.

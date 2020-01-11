@@ -4,12 +4,14 @@
 \alias{chime_list_users}
 \title{Lists the users that belong to the specified Amazon Chime account}
 \usage{
-chime_list_users(AccountId, UserEmail, MaxResults, NextToken)
+chime_list_users(AccountId, UserEmail, UserType, MaxResults, NextToken)
 }
 \arguments{
 \item{AccountId}{[required] The Amazon Chime account ID.}
 
 \item{UserEmail}{Optional. The user email address used to filter results. Maximum 1.}
+
+\item{UserType}{The user type.}
 
 \item{MaxResults}{The maximum number of results to return in a single call. Defaults to
 100.}
@@ -25,6 +27,7 @@ address belongs to.
 \preformatted{svc$list_users(
   AccountId = "string",
   UserEmail = "string",
+  UserType = "PrivateUser"|"SharedDevice",
   MaxResults = 123,
   NextToken = "string"
 )

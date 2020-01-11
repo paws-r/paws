@@ -13,7 +13,7 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{ServiceId}{[required] The ID of the endpoint service.}
+\item{ServiceId}{[required] The ID of the VPC endpoint service.}
 
 \item{VpcEndpointIds}{[required] The IDs of one or more interface VPC endpoints.}
 }

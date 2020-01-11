@@ -4,10 +4,17 @@
 \alias{sagemaker_list_trial_components}
 \title{Lists the trial components in your account}
 \usage{
-sagemaker_list_trial_components(SourceArn, CreatedAfter, CreatedBefore,
-  SortBy, SortOrder, MaxResults, NextToken)
+sagemaker_list_trial_components(ExperimentName, TrialName, SourceArn,
+  CreatedAfter, CreatedBefore, SortBy, SortOrder, MaxResults, NextToken)
 }
 \arguments{
+\item{ExperimentName}{A filter that returns only components that are part of the specified
+experiment. If you specify \code{ExperimentName}, you can\'t specify
+\code{TrialName}.}
+
+\item{TrialName}{A filter that returns only components that are part of the specified
+trial. If you specify \code{TrialName}, you can\'t specify \code{ExperimentName}.}
+
 \item{SourceArn}{A filter that returns only components that have the specified source
 Amazon Resource Name (ARN).}
 
@@ -19,7 +26,8 @@ Amazon Resource Name (ARN).}
 
 \item{SortOrder}{The sort order. The default value is \code{Descending}.}
 
-\item{MaxResults}{The maximum number of components to return in the response.}
+\item{MaxResults}{The maximum number of components to return in the response. The default
+value is 10.}
 
 \item{NextToken}{If the previous call to \code{ListTrialComponents} didn\'t return the full
 set of components, the call returns a token for getting the next set of
@@ -32,6 +40,8 @@ sort the list by trial component name or creation time.
 }
 \section{Request syntax}{
 \preformatted{svc$list_trial_components(
+  ExperimentName = "string",
+  TrialName = "string",
   SourceArn = "string",
   CreatedAfter = as.POSIXct(
     "2015-01-01"

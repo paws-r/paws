@@ -147,16 +147,20 @@ Updates the configuration and other settings for a campaign.
         SizePercent = 123,
         TemplateConfiguration = list(
           EmailTemplate = list(
-            Name = "string"
+            Name = "string",
+            Version = "string"
           ),
           PushTemplate = list(
-            Name = "string"
+            Name = "string",
+            Version = "string"
           ),
           SMSTemplate = list(
-            Name = "string"
+            Name = "string",
+            Version = "string"
           ),
           VoiceTemplate = list(
-            Name = "string"
+            Name = "string",
+            Version = "string"
           )
         ),
         TreatmentDescription = "string",
@@ -304,16 +308,20 @@ Updates the configuration and other settings for a campaign.
     ),
     TemplateConfiguration = list(
       EmailTemplate = list(
-        Name = "string"
+        Name = "string",
+        Version = "string"
       ),
       PushTemplate = list(
-        Name = "string"
+        Name = "string",
+        Version = "string"
       ),
       SMSTemplate = list(
-        Name = "string"
+        Name = "string",
+        Version = "string"
       ),
       VoiceTemplate = list(
-        Name = "string"
+        Name = "string",
+        Version = "string"
       )
     ),
     TreatmentDescription = "string",

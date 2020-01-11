@@ -4,28 +4,37 @@
 \alias{gamelift_create_matchmaking_rule_set}
 \title{Creates a new rule set for FlexMatch matchmaking}
 \usage{
-gamelift_create_matchmaking_rule_set(Name, RuleSetBody)
+gamelift_create_matchmaking_rule_set(Name, RuleSetBody, Tags)
 }
 \arguments{
-\item{Name}{[required] Unique identifier for a matchmaking rule set. A matchmaking
-configuration identifies the rule set it uses by this name value. (Note:
-The rule set name is different from the optional \"name\" field in the
-rule set body.)}
+\item{Name}{[required] A unique identifier for a matchmaking rule set. A matchmaking
+configuration identifies the rule set it uses by this name value. Note
+that the rule set name is different from the optional \code{name} field in
+the rule set body.}
 
-\item{RuleSetBody}{[required] Collection of matchmaking rules, formatted as a JSON string. Comments
+\item{RuleSetBody}{[required] A collection of matchmaking rules, formatted as a JSON string. Comments
 are not allowed in JSON, but most elements support a description field.}
+
+\item{Tags}{A list of labels to assign to the new matchmaking rule set resource.
+Tags are developer-defined key-value pairs. Tagging AWS resources are
+useful for resource management, access management and cost allocation.
+For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}
+in the \emph{AWS General Reference}. Once the resource is created, you can
+use TagResource, UntagResource, and ListTagsForResource to add, remove,
+and view tags. The maximum tag limit may be lower than stated. See the
+AWS General Reference for actual tagging limits.}
 }
 \description{
 Creates a new rule set for FlexMatch matchmaking. A rule set describes
-the type of match to create, such as the number and size of teams, and
-sets the parameters for acceptable player matches, such as minimum skill
-level or character type. A rule set is used by a
+the type of match to create, such as the number and size of teams. It
+also sets the parameters for acceptable player matches, such as minimum
+skill level or character type. A rule set is used by a
 MatchmakingConfiguration.
 }
 \details{
 To create a matchmaking rule set, provide unique rule set name and the
 rule set body in JSON format. Rule sets must be defined in the same
-region as the matchmaking configuration they are used with.
+Region as the matchmaking configuration they are used with.
 
 Since matchmaking rule sets cannot be edited, it is a good idea to check
 the rule set syntax using ValidateMatchmakingRuleSet before creating a
@@ -53,7 +62,13 @@ new rule set.
 \section{Request syntax}{
 \preformatted{svc$create_matchmaking_rule_set(
   Name = "string",
-  RuleSetBody = "string"
+  RuleSetBody = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

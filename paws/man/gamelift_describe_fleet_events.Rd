@@ -8,7 +8,8 @@ gamelift_describe_fleet_events(FleetId, StartTime, EndTime, Limit,
   NextToken)
 }
 \arguments{
-\item{FleetId}{[required] Unique identifier for a fleet to get event logs for.}
+\item{FleetId}{[required] A unique identifier for a fleet to get event logs for. You can use
+either the fleet ID or ARN value.}
 
 \item{StartTime}{Earliest date to retrieve event logs for. If no start time is specified,
 this call returns entries starting from when the fleet was created to
@@ -20,8 +21,8 @@ specified, this call returns entries from the specified start time up to
 the present. Format is a number expressed in Unix time as milliseconds
 (ex: \"1469498468.057\").}
 
-\item{Limit}{Maximum number of results to return. Use this parameter with \code{NextToken}
-to get results as a set of sequential pages.}
+\item{Limit}{The maximum number of results to return. Use this parameter with
+\code{NextToken} to get results as a set of sequential pages.}
 
 \item{NextToken}{Token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this action. To
@@ -53,13 +54,7 @@ collection of event log entries matching the request are returned.
 \item DescribeEC2InstanceLimits
 \item DescribeFleetEvents
 }
-\item Update fleets:
-\itemize{
 \item UpdateFleetAttributes
-\item UpdateFleetCapacity
-\item UpdateFleetPortSettings
-\item UpdateRuntimeConfiguration
-}
 \item Manage fleet actions:
 \itemize{
 \item StartFleetActions

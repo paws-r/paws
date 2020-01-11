@@ -2,8 +2,8 @@
 % Please edit documentation in R/devicefarm_operations.R
 \name{devicefarm_update_vpce_configuration}
 \alias{devicefarm_update_vpce_configuration}
-\title{Updates information about an existing Amazon Virtual Private Cloud (VPC)
-endpoint configuration}
+\title{Updates information about an Amazon Virtual Private Cloud (VPC) endpoint
+configuration}
 \usage{
 devicefarm_update_vpce_configuration(arn, vpceConfigurationName,
   vpceServiceName, serviceDnsName, vpceConfigurationDescription)
@@ -12,21 +12,21 @@ devicefarm_update_vpce_configuration(arn, vpceConfigurationName,
 \item{arn}{[required] The Amazon Resource Name (ARN) of the VPC endpoint configuration you
 want to update.}
 
-\item{vpceConfigurationName}{The friendly name you give to your VPC endpoint configuration, to manage
+\item{vpceConfigurationName}{The friendly name you give to your VPC endpoint configuration to manage
 your configurations more easily.}
 
-\item{vpceServiceName}{The name of the VPC endpoint service running inside your AWS account
-that you want Device Farm to test.}
+\item{vpceServiceName}{The name of the VPC endpoint service running in your AWS account that
+you want Device Farm to test.}
 
 \item{serviceDnsName}{The DNS (domain) name used to connect to your private service in your
-Amazon VPC. The DNS name must not already be in use on the Internet.}
+VPC. The DNS name must not already be in use on the internet.}
 
-\item{vpceConfigurationDescription}{An optional description, providing more details about your VPC endpoint
+\item{vpceConfigurationDescription}{An optional description that provides details about your VPC endpoint
 configuration.}
 }
 \description{
-Updates information about an existing Amazon Virtual Private Cloud (VPC)
-endpoint configuration.
+Updates information about an Amazon Virtual Private Cloud (VPC) endpoint
+configuration.
 }
 \section{Request syntax}{
 \preformatted{svc$update_vpce_configuration(

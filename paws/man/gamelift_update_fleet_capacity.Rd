@@ -8,15 +8,16 @@ gamelift_update_fleet_capacity(FleetId, DesiredInstances, MinSize,
   MaxSize)
 }
 \arguments{
-\item{FleetId}{[required] Unique identifier for a fleet to update capacity for.}
+\item{FleetId}{[required] A unique identifier for a fleet to update capacity for. You can use
+either the fleet ID or ARN value.}
 
 \item{DesiredInstances}{Number of EC2 instances you want this fleet to host.}
 
-\item{MinSize}{Minimum value allowed for the fleet\'s instance count. Default if not
-set is 0.}
+\item{MinSize}{The minimum value allowed for the fleet\'s instance count. Default if
+not set is 0.}
 
-\item{MaxSize}{Maximum value allowed for the fleet\'s instance count. Default if not
-set is 1.}
+\item{MaxSize}{The maximum value allowed for the fleet\'s instance count. Default if
+not set is 1.}
 }
 \description{
 Updates capacity settings for a fleet. Use this action to specify the
@@ -49,16 +50,7 @@ desired instance count is higher than the instance type\'s limit, the
 \item CreateFleet
 \item ListFleets
 \item DeleteFleet
-\item Describe fleets:
-\itemize{
 \item DescribeFleetAttributes
-\item DescribeFleetCapacity
-\item DescribeFleetPortSettings
-\item DescribeFleetUtilization
-\item DescribeRuntimeConfiguration
-\item DescribeEC2InstanceLimits
-\item DescribeFleetEvents
-}
 \item Update fleets:
 \itemize{
 \item UpdateFleetAttributes

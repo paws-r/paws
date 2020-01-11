@@ -97,8 +97,8 @@ NULL
 #'  \link[=appconfig_get_environment]{get_environment} \tab Retrieve information about an environment \cr
 #'  \link[=appconfig_list_applications]{list_applications} \tab List all applications in your AWS account \cr
 #'  \link[=appconfig_list_configuration_profiles]{list_configuration_profiles} \tab Lists the configuration profiles for an application \cr
-#'  \link[=appconfig_list_deployment_strategies]{list_deployment_strategies} \tab List deployment strategies \cr
 #'  \link[=appconfig_list_deployments]{list_deployments} \tab Lists the deployments for an environment \cr
+#'  \link[=appconfig_list_deployment_strategies]{list_deployment_strategies} \tab List deployment strategies \cr
 #'  \link[=appconfig_list_environments]{list_environments} \tab List the environments for an application \cr
 #'  \link[=appconfig_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the list of key-value tags assigned to the resource \cr
 #'  \link[=appconfig_start_deployment]{start_deployment} \tab Starts a deployment \cr

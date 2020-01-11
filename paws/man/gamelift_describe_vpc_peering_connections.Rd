@@ -7,7 +7,8 @@
 gamelift_describe_vpc_peering_connections(FleetId)
 }
 \arguments{
-\item{FleetId}{Unique identifier for a fleet.}
+\item{FleetId}{A unique identifier for a fleet. You can use either the fleet ID or ARN
+value.}
 }
 \description{
 Retrieves information on VPC peering connections. Use this operation to

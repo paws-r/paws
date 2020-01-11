@@ -7,15 +7,15 @@
 devicefarm_list_artifacts(arn, type, nextToken)
 }
 \arguments{
-\item{arn}{[required] The Run, Job, Suite, or Test ARN.}
+\item{arn}{[required] The run, job, suite, or test ARN.}
 
 \item{type}{[required] The artifacts\' type.
 
 Allowed values include:
 \itemize{
-\item FILE: The artifacts are files.
-\item LOG: The artifacts are logs.
-\item SCREENSHOT: The artifacts are screenshots.
+\item FILE
+\item LOG
+\item SCREENSHOT
 }}
 
 \item{nextToken}{An identifier that was returned from the previous call to this

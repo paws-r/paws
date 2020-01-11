@@ -25,6 +25,26 @@ in the \emph{AWS Billing and Cost Management User Guide}.}
 Amazon SageMaker uses to encrypt data on the storage volume attached to
 the ML compute instance that hosts the endpoint.
 
+The KmsKeyId can be any of the following formats:
+\itemize{
+\item // KMS Key ID
+
+\code{"1234abcd-12ab-34cd-56ef-1234567890ab" }
+\item // Amazon Resource Name (ARN) (ARN) of a KMS Key
+
+\"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab\"
+\item // KMS Key Alias
+
+\"alias/ExampleAlias\"
+\item // Amazon Resource Name (ARN) of a KMS Key Alias
+
+\code{"arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias" }
+}
+
+The KMS key policy must grant permission to the IAM role that you
+specify in your \code{CreateEndpoint}, \code{UpdateEndpoint} requests. For more
+information, refer to the AWS Key Management Service section \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html}{Using Key Policies in AWS KMS}
+
 Certain Nitro-based instances include local storage, dependent on the
 instance type. Local storage volumes are encrypted using a hardware
 module on the instance. You can\'t request a \code{KmsKeyId} when using an

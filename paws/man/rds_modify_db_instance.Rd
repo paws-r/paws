@@ -17,7 +17,8 @@ rds_modify_db_instance(DBInstanceIdentifier, AllocatedStorage,
   EnableIAMDatabaseAuthentication, EnablePerformanceInsights,
   PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod,
   CloudwatchLogsExportConfiguration, ProcessorFeatures,
-  UseDefaultProcessorFeatures, DeletionProtection, MaxAllocatedStorage)
+  UseDefaultProcessorFeatures, DeletionProtection, MaxAllocatedStorage,
+  CertificateRotationRestart)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The DB instance identifier. This value is stored as a lowercase string.
@@ -510,6 +511,28 @@ information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/US
 
 \item{MaxAllocatedStorage}{The upper limit to which Amazon RDS can automatically scale the storage
 of the DB instance.}
+
+\item{CertificateRotationRestart}{A value that indicates whether the DB instance is restarted when you
+rotate your SSL/TLS certificate.
+
+By default, the DB instance is restarted when you rotate your SSL/TLS
+certificate. The certificate is not updated until the DB instance is
+restarted.
+
+Set this parameter only if you are \emph{not} using SSL/TLS to connect to the
+DB instance.
+
+If you are using SSL/TLS to connect to the DB instance, follow the
+appropriate instructions for your DB engine to rotate your SSL/TLS
+certificate:
+\itemize{
+\item For more information about rotating your SSL/TLS certificate for RDS
+DB engines, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL-certificate-rotation.html}{Rotating Your SSL/TLS Certificate.}
+in the \emph{Amazon RDS User Guide.}
+\item For more information about rotating your SSL/TLS certificate for
+Aurora DB engines, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html}{Rotating Your SSL/TLS Certificate}
+in the \emph{Amazon Aurora User Guide.}
+}}
 }
 \description{
 Modifies settings for a DB instance. You can change one or more database
@@ -576,7 +599,8 @@ DB instance, call \code{DescribeValidDBInstanceModifications} before you call
   ),
   UseDefaultProcessorFeatures = TRUE|FALSE,
   DeletionProtection = TRUE|FALSE,
-  MaxAllocatedStorage = 123
+  MaxAllocatedStorage = 123,
+  CertificateRotationRestart = TRUE|FALSE
 )
 }
 }

@@ -7,7 +7,8 @@
 gamelift_stop_fleet_actions(FleetId, Actions)
 }
 \arguments{
-\item{FleetId}{[required] Unique identifier for a fleet}
+\item{FleetId}{[required] A unique identifier for a fleet to stop actions on. You can use either
+the fleet ID or ARN value.}
 
 \item{Actions}{[required] List of actions to suspend on the fleet.}
 }

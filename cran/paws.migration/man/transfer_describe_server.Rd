@@ -14,7 +14,9 @@ Describes the server that you specify by passing the \code{ServerId}
 parameter.
 }
 \details{
-The response contains a description of the server\'s properties.
+The response contains a description of the server\'s properties. When
+you set \code{EndpointType} to VPC, the response will contain the
+\code{EndpointDetails}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_server(

@@ -10,26 +10,27 @@ gamelift_start_game_session_placement(PlacementId, GameSessionQueueName,
   PlayerLatencies, DesiredPlayerSessions, GameSessionData)
 }
 \arguments{
-\item{PlacementId}{[required] Unique identifier to assign to the new game session placement. This
-value is developer-defined. The value must be unique across all regions
+\item{PlacementId}{[required] A unique identifier to assign to the new game session placement. This
+value is developer-defined. The value must be unique across all Regions
 and cannot be reused unless you are resubmitting a canceled or timed-out
 placement request.}
 
-\item{GameSessionQueueName}{[required] Name of the queue to use to place the new game session.}
+\item{GameSessionQueueName}{[required] Name of the queue to use to place the new game session. You can use
+either the qieue name or ARN value.}
 
 \item{GameProperties}{Set of custom properties for a game session, formatted as key:value
 pairs. These properties are passed to a game server process in the
 GameSession object with a request to start a new game session (see
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}).}
 
-\item{MaximumPlayerSessionCount}{[required] Maximum number of players that can be connected simultaneously to the
-game session.}
+\item{MaximumPlayerSessionCount}{[required] The maximum number of players that can be connected simultaneously to
+the game session.}
 
-\item{GameSessionName}{Descriptive label that is associated with a game session. Session names
-do not need to be unique.}
+\item{GameSessionName}{A descriptive label that is associated with a game session. Session
+names do not need to be unique.}
 
 \item{PlayerLatencies}{Set of values, expressed in milliseconds, indicating the amount of
-latency that a player experiences when connected to AWS regions. This
+latency that a player experiences when connected to AWS Regions. This
 information is used to try to place the new game session where it can
 offer the best possible gameplay experience for the players.}
 
@@ -56,12 +57,12 @@ in the order they are listed in the queue configuration. Ideally, a
 queue\'s destinations are listed in preference order.
 
 Alternatively, when requesting a game session with players, you can also
-provide latency data for each player in relevant regions. Latency data
+provide latency data for each player in relevant Regions. Latency data
 indicates the performance lag a player experiences when connected to a
-fleet in the region. Amazon GameLift uses latency data to reorder the
-list of destinations to place the game session in a region with minimal
+fleet in the Region. Amazon GameLift uses latency data to reorder the
+list of destinations to place the game session in a Region with minimal
 lag. If latency data is provided for multiple players, Amazon GameLift
-calculates each region\'s average lag for all players and reorders to
+calculates each Region\'s average lag for all players and reorders to
 get the best game play across all players.
 
 To place a new game session request, specify the following:
@@ -82,7 +83,7 @@ If successful, a new game session placement is created.
 To track the status of a placement request, call
 DescribeGameSessionPlacement and check the request\'s status. If the
 status is \code{FULFILLED}, a new game session has been created and a game
-session ARN and region are referenced. If the placement request times
+session ARN and Region are referenced. If the placement request times
 out, you can resubmit the request or retry it with a different queue.
 \itemize{
 \item CreateGameSession

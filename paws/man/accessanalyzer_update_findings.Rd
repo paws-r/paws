@@ -2,7 +2,7 @@
 % Please edit documentation in R/accessanalyzer_operations.R
 \name{accessanalyzer_update_findings}
 \alias{accessanalyzer_update_findings}
-\title{Updates findings with the new values provided in the request}
+\title{Updates the status for the specified findings}
 \usage{
 accessanalyzer_update_findings(analyzerArn, clientToken, ids,
   resourceArn, status)
@@ -21,7 +21,7 @@ Use \code{ARCHIVE} to change an Active finding to an Archived finding. Use
 \code{ACTIVE} to change an Archived finding to an Active finding.}
 }
 \description{
-Updates findings with the new values provided in the request.
+Updates the status for the specified findings.
 }
 \section{Request syntax}{
 \preformatted{svc$update_findings(

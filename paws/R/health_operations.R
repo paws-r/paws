@@ -3,6 +3,62 @@
 #' @include health_service.R
 NULL
 
+#' Returns a list of accounts in the organization from AWS Organizations
+#' that are affected by the provided event
+#'
+#' Returns a list of accounts in the organization from AWS Organizations
+#' that are affected by the provided event.
+#' 
+#' Before you can call this operation, you must first enable AWS Health to
+#' work with AWS Organizations. To do this, call the
+#' EnableHealthServiceAccessForOrganization operation from your
+#' organization\'s master account.
+#'
+#' @usage
+#' health_describe_affected_accounts_for_organization(eventArn, nextToken,
+#'   maxResults)
+#'
+#' @param eventArn &#91;required&#93; The unique identifier for the event. Format:
+#' `arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i> `.
+#' Example:
+#' `Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456`
+#' @param nextToken If the results of a search are large, only a portion of the results are
+#' returned, and a `nextToken` pagination token is returned in the
+#' response. To retrieve the next batch of results, reissue the search
+#' request and include the returned token. When all results have been
+#' returned, the response does not contain a pagination token value.
+#' @param maxResults The maximum number of items to return in one batch, between 10 and 100,
+#' inclusive.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_affected_accounts_for_organization(
+#'   eventArn = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname health_describe_affected_accounts_for_organization
+health_describe_affected_accounts_for_organization <- function(eventArn, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeAffectedAccountsForOrganization",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .health$describe_affected_accounts_for_organization_input(eventArn = eventArn, nextToken = nextToken, maxResults = maxResults)
+  output <- .health$describe_affected_accounts_for_organization_output()
+  config <- get_config()
+  svc <- .health$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.health$operations$describe_affected_accounts_for_organization <- health_describe_affected_accounts_for_organization
+
 #' Returns a list of entities that have been affected by the specified
 #' events, based on the specified filter criteria
 #'
@@ -88,6 +144,74 @@ health_describe_affected_entities <- function(filter, locale = NULL, nextToken =
   return(response)
 }
 .health$operations$describe_affected_entities <- health_describe_affected_entities
+
+#' Returns a list of entities that have been affected by one or more events
+#' for one or more accounts in your organization in AWS Organizations,
+#' based on the filter criteria
+#'
+#' Returns a list of entities that have been affected by one or more events
+#' for one or more accounts in your organization in AWS Organizations,
+#' based on the filter criteria. Entities can refer to individual customer
+#' resources, groups of customer resources, or any other construct,
+#' depending on the AWS service.
+#' 
+#' At least one event ARN and account ID are required. Results are sorted
+#' by the `lastUpdatedTime` of the entity, starting with the most recent.
+#' 
+#' Before you can call this operation, you must first enable AWS Health to
+#' work with AWS Organizations. To do this, call the
+#' EnableHealthServiceAccessForOrganization operation from your
+#' organization\'s master account.
+#'
+#' @usage
+#' health_describe_affected_entities_for_organization(
+#'   organizationEntityFilters, locale, nextToken, maxResults)
+#'
+#' @param organizationEntityFilters &#91;required&#93; A JSON set of elements including the `awsAccountId` and the `eventArn`.
+#' @param locale The locale (language) to return information in. English (en) is the
+#' default and the only supported value at this time.
+#' @param nextToken If the results of a search are large, only a portion of the results are
+#' returned, and a `nextToken` pagination token is returned in the
+#' response. To retrieve the next batch of results, reissue the search
+#' request and include the returned token. When all results have been
+#' returned, the response does not contain a pagination token value.
+#' @param maxResults The maximum number of items to return in one batch, between 10 and 100,
+#' inclusive.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_affected_entities_for_organization(
+#'   organizationEntityFilters = list(
+#'     list(
+#'       eventArn = "string",
+#'       awsAccountId = "string"
+#'     )
+#'   ),
+#'   locale = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname health_describe_affected_entities_for_organization
+health_describe_affected_entities_for_organization <- function(organizationEntityFilters, locale = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeAffectedEntitiesForOrganization",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .health$describe_affected_entities_for_organization_input(organizationEntityFilters = organizationEntityFilters, locale = locale, nextToken = nextToken, maxResults = maxResults)
+  output <- .health$describe_affected_entities_for_organization_output()
+  config <- get_config()
+  svc <- .health$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.health$operations$describe_affected_entities_for_organization <- health_describe_affected_entities_for_organization
 
 #' Returns the number of entities that are affected by each of the
 #' specified events
@@ -248,7 +372,7 @@ health_describe_event_aggregates <- function(filter = NULL, aggregateField, maxR
 #' Returns detailed information about one or more specified events
 #'
 #' Returns detailed information about one or more specified events.
-#' Information includes standard event data (region, service, etc., as
+#' Information includes standard event data (region, service, and so on, as
 #' returned by DescribeEvents), a detailed event description, and possible
 #' additional metadata that depends upon the nature of the event. Affected
 #' entities are not included; to retrieve those, use the
@@ -294,6 +418,64 @@ health_describe_event_details <- function(eventArns, locale = NULL) {
   return(response)
 }
 .health$operations$describe_event_details <- health_describe_event_details
+
+#' Returns detailed information about one or more specified events for one
+#' or more accounts in your organization
+#'
+#' Returns detailed information about one or more specified events for one
+#' or more accounts in your organization. Information includes standard
+#' event data (Region, service, and so on, as returned by
+#' DescribeEventsForOrganization, a detailed event description, and
+#' possible additional metadata that depends upon the nature of the event.
+#' Affected entities are not included; to retrieve those, use the
+#' DescribeAffectedEntitiesForOrganization operation.
+#' 
+#' Before you can call this operation, you must first enable AWS Health to
+#' work with AWS Organizations. To do this, call the
+#' EnableHealthServiceAccessForOrganization operation from your
+#' organization\'s master account.
+#'
+#' @usage
+#' health_describe_event_details_for_organization(
+#'   organizationEventDetailFilters, locale)
+#'
+#' @param organizationEventDetailFilters &#91;required&#93; A set of JSON elements that includes the `awsAccountId` and the
+#' `eventArn`.
+#' @param locale The locale (language) to return information in. English (en) is the
+#' default and the only supported value at this time.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_event_details_for_organization(
+#'   organizationEventDetailFilters = list(
+#'     list(
+#'       eventArn = "string",
+#'       awsAccountId = "string"
+#'     )
+#'   ),
+#'   locale = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname health_describe_event_details_for_organization
+health_describe_event_details_for_organization <- function(organizationEventDetailFilters, locale = NULL) {
+  op <- new_operation(
+    name = "DescribeEventDetailsForOrganization",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .health$describe_event_details_for_organization_input(organizationEventDetailFilters = organizationEventDetailFilters, locale = locale)
+  output <- .health$describe_event_details_for_organization_output()
+  config <- get_config()
+  svc <- .health$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.health$operations$describe_event_details_for_organization <- health_describe_event_details_for_organization
 
 #' Returns the event types that meet the specified filter criteria
 #'
@@ -472,3 +654,227 @@ health_describe_events <- function(filter = NULL, nextToken = NULL, maxResults =
   return(response)
 }
 .health$operations$describe_events <- health_describe_events
+
+#' Returns information about events across your organization in AWS
+#' Organizations, meeting the specified filter criteria
+#'
+#' Returns information about events across your organization in AWS
+#' Organizations, meeting the specified filter criteria. Events are
+#' returned in a summary form and do not include the accounts impacted,
+#' detailed description, any additional metadata that depends on the event
+#' type, or any affected resources. To retrieve that information, use the
+#' DescribeAffectedAccountsForOrganization,
+#' DescribeEventDetailsForOrganization, and
+#' DescribeAffectedEntitiesForOrganization operations.
+#' 
+#' If no filter criteria are specified, all events across your organization
+#' are returned. Results are sorted by `lastModifiedTime`, starting with
+#' the most recent.
+#' 
+#' Before you can call this operation, you must first enable Health to work
+#' with AWS Organizations. To do this, call the
+#' EnableHealthServiceAccessForOrganization operation from your
+#' organization\'s master account.
+#'
+#' @usage
+#' health_describe_events_for_organization(filter, nextToken, maxResults,
+#'   locale)
+#'
+#' @param filter Values to narrow the results returned.
+#' @param nextToken If the results of a search are large, only a portion of the results are
+#' returned, and a `nextToken` pagination token is returned in the
+#' response. To retrieve the next batch of results, reissue the search
+#' request and include the returned token. When all results have been
+#' returned, the response does not contain a pagination token value.
+#' @param maxResults The maximum number of items to return in one batch, between 10 and 100,
+#' inclusive.
+#' @param locale The locale (language) to return information in. English (en) is the
+#' default and the only supported value at this time.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_events_for_organization(
+#'   filter = list(
+#'     eventTypeCodes = list(
+#'       "string"
+#'     ),
+#'     awsAccountIds = list(
+#'       "string"
+#'     ),
+#'     services = list(
+#'       "string"
+#'     ),
+#'     regions = list(
+#'       "string"
+#'     ),
+#'     startTime = list(
+#'       from = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       to = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     endTime = list(
+#'       from = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       to = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     lastUpdatedTime = list(
+#'       from = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       to = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     entityArns = list(
+#'       "string"
+#'     ),
+#'     entityValues = list(
+#'       "string"
+#'     ),
+#'     eventTypeCategories = list(
+#'       "issue"|"accountNotification"|"scheduledChange"|"investigation"
+#'     ),
+#'     eventStatusCodes = list(
+#'       "open"|"closed"|"upcoming"
+#'     )
+#'   ),
+#'   nextToken = "string",
+#'   maxResults = 123,
+#'   locale = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname health_describe_events_for_organization
+health_describe_events_for_organization <- function(filter = NULL, nextToken = NULL, maxResults = NULL, locale = NULL) {
+  op <- new_operation(
+    name = "DescribeEventsForOrganization",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .health$describe_events_for_organization_input(filter = filter, nextToken = nextToken, maxResults = maxResults, locale = locale)
+  output <- .health$describe_events_for_organization_output()
+  config <- get_config()
+  svc <- .health$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.health$operations$describe_events_for_organization <- health_describe_events_for_organization
+
+#' This operation provides status information on enabling or disabling AWS
+#' Health to work with your organization
+#'
+#' This operation provides status information on enabling or disabling AWS
+#' Health to work with your organization. To call this operation, you must
+#' sign in as an IAM user, assume an IAM role, or sign in as the root user
+#' (not recommended) in the organization\'s master account.
+#'
+#' @usage
+#' health_describe_health_service_status_for_organization()
+#'
+
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname health_describe_health_service_status_for_organization
+health_describe_health_service_status_for_organization <- function() {
+  op <- new_operation(
+    name = "DescribeHealthServiceStatusForOrganization",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .health$describe_health_service_status_for_organization_input()
+  output <- .health$describe_health_service_status_for_organization_output()
+  config <- get_config()
+  svc <- .health$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.health$operations$describe_health_service_status_for_organization <- health_describe_health_service_status_for_organization
+
+#' Calling this operation disables Health from working with AWS
+#' Organizations
+#'
+#' Calling this operation disables Health from working with AWS
+#' Organizations. This does not remove the Service Linked Role (SLR) from
+#' the the master account in your organization. Use the IAM console, API,
+#' or AWS CLI to remove the SLR if desired. To call this operation, you
+#' must sign in as an IAM user, assume an IAM role, or sign in as the root
+#' user (not recommended) in the organization\'s master account.
+#'
+#' @usage
+#' health_disable_health_service_access_for_organization()
+#'
+
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname health_disable_health_service_access_for_organization
+health_disable_health_service_access_for_organization <- function() {
+  op <- new_operation(
+    name = "DisableHealthServiceAccessForOrganization",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .health$disable_health_service_access_for_organization_input()
+  output <- .health$disable_health_service_access_for_organization_output()
+  config <- get_config()
+  svc <- .health$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.health$operations$disable_health_service_access_for_organization <- health_disable_health_service_access_for_organization
+
+#' Calling this operation enables AWS Health to work with AWS Organizations
+#'
+#' Calling this operation enables AWS Health to work with AWS
+#' Organizations. This applies a Service Linked Role (SLR) to the master
+#' account in the organization. To learn more about the steps in this
+#' process, visit enabling service access for AWS Health in AWS
+#' Organizations. To call this operation, you must sign in as an IAM user,
+#' assume an IAM role, or sign in as the root user (not recommended) in the
+#' organization\'s master account.
+#'
+#' @usage
+#' health_enable_health_service_access_for_organization()
+#'
+
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname health_enable_health_service_access_for_organization
+health_enable_health_service_access_for_organization <- function() {
+  op <- new_operation(
+    name = "EnableHealthServiceAccessForOrganization",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .health$enable_health_service_access_for_organization_input()
+  output <- .health$enable_health_service_access_for_organization_output()
+  config <- get_config()
+  svc <- .health$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.health$operations$enable_health_service_access_for_organization <- health_enable_health_service_access_for_organization

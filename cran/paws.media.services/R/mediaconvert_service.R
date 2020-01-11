@@ -52,8 +52,8 @@ NULL
 #'  \link[=mediaconvert_get_job_template]{get_job_template} \tab Retrieve the JSON for a specific job template \cr
 #'  \link[=mediaconvert_get_preset]{get_preset} \tab Retrieve the JSON for a specific preset \cr
 #'  \link[=mediaconvert_get_queue]{get_queue} \tab Retrieve the JSON for a specific queue \cr
-#'  \link[=mediaconvert_list_job_templates]{list_job_templates} \tab Retrieve a JSON array of up to twenty of your job templates \cr
 #'  \link[=mediaconvert_list_jobs]{list_jobs} \tab Retrieve a JSON array of up to twenty of your most recently created jobs \cr
+#'  \link[=mediaconvert_list_job_templates]{list_job_templates} \tab Retrieve a JSON array of up to twenty of your job templates \cr
 #'  \link[=mediaconvert_list_presets]{list_presets} \tab Retrieve a JSON array of up to twenty of your presets \cr
 #'  \link[=mediaconvert_list_queues]{list_queues} \tab Retrieve a JSON array of up to twenty of your queues \cr
 #'  \link[=mediaconvert_list_tags_for_resource]{list_tags_for_resource} \tab Retrieve the tags for a MediaConvert resource \cr

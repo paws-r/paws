@@ -9,7 +9,7 @@ lightsail_disable_add_on(addOnType, resourceName)
 \arguments{
 \item{addOnType}{[required] The add-on type to disable.}
 
-\item{resourceName}{[required] The name of the source resource from which to disable the add-on.}
+\item{resourceName}{[required] The name of the source resource for which to disable the add-on.}
 }
 \description{
 Disables an add-on for an Amazon Lightsail resource. For more

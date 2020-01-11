@@ -7,8 +7,7 @@
 devicefarm_get_network_profile(arn)
 }
 \arguments{
-\item{arn}{[required] The Amazon Resource Name (ARN) of the network profile you want to return
-information about.}
+\item{arn}{[required] The ARN of the network profile to return information about.}
 }
 \description{
 Returns information about a network profile.
