@@ -10,3 +10,35 @@ test_that("get_structure", {
   want <- "structure(list(a = 1, b = 2), tags = list(type = \"structure\"))"
   expect_equal(got, want)
 })
+
+test_that("parse_operations", {
+  text <-
+  "#' foo
+  NULL
+
+  #' An operation
+  #'
+  #' Documentation
+  #'
+  #' @export
+  foo_operation1 <- function(x) {
+    x
+  }
+
+  #' A second operation
+  #'
+  #' Documentation
+  #'
+  #' @export
+  foo_operation2 <- function(x) {
+    x
+  }
+  "
+  lines <- gsub("^  ", "", strsplit(text, "\n")[[1]])
+  actual <- parse_operations(lines)
+  expect_length(actual, 2)
+  expect_equal(names(actual)[1], "operation1")
+  expect_equal(actual[[1]]$name, "operation1")
+  expect_equal(names(actual)[2], "operation2")
+  expect_equal(actual[[2]]$name, "operation2")
+})

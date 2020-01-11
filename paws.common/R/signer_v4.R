@@ -363,7 +363,7 @@ build_canonical_headers <- function(ctx, header, ignored_headers) {
       next
     } else {
       lower_case_key <- tolower(key)
-      ctx$signed_header_vals[lower_case_key] <- header[key]
+      ctx$signed_header_vals[[lower_case_key]] <- header[[key]]
       headers <- c(headers, lower_case_key)
     }
   }
@@ -383,8 +383,8 @@ build_canonical_headers <- function(ctx, header, ignored_headers) {
         header_value <- paste0("host:", ctx$request$url$host)
       }
     } else {
-      value <- ctx$signed_header_vals[key]
-      header_value <- paste0(key, ":", paste(value, sep =","))
+      value <- ctx$signed_header_vals[[key]]
+      header_value <- paste0(key, ":", paste(value, collapse =","))
     }
     header_values <- c(header_values, header_value)
   }
