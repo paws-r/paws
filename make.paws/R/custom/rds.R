@@ -42,8 +42,8 @@ NULL
 #'   endpoint = sprintf("%s:%s", host, port),
 #'   region = "us-east-1",
 #'   user = user
-#' )
-#' conn <- DBI::dbConnect(
+#' )}
+#' \dontrun{conn <- DBI::dbConnect(
 #'   drv = RMariaDB::MariaDB(),
 #'   user = user,
 #'   password = token,
