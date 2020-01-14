@@ -804,7 +804,7 @@ iot_create_billing_group <- function(billingGroupName, billingGroupProperties = 
 #' On Windows PowerShell, the command to create certificates for all CSRs
 #' in my-csr-directory is:
 #' 
-#' \\> ls -Name my-csr-directory \\| \%\{aws iot create-certificate-from-csr
+#' \\> ls -Name my-csr-directory \\| %\{aws iot create-certificate-from-csr
 #' \\--certificate-signing-request file://my-csr-directory/\\$\\_\}
 #' 
 #' On a Windows command prompt, the command to create certificates for all
@@ -5054,7 +5054,7 @@ iot_get_registration_code <- function() {
 #'   queryVersion)
 #'
 #' @param indexName The name of the index to search. The default value is `AWS_Things`.
-#' @param queryString &#91;required&#93; The query used to search. You can specify \"\*\" for the query string to
+#' @param queryString &#91;required&#93; The query used to search. You can specify \"*\" for the query string to
 #' get the count of all indexed things in your AWS account.
 #' @param aggregationField The aggregation field name.
 #' @param queryVersion The version of the query used to search.

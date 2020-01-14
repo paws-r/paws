@@ -154,7 +154,7 @@ marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimensi
 #'     For example, if a customer has a 10 node Amazon ECS or Amazon EKS
 #'     cluster and a service configured as a Daemon Set, then Amazon ECS or
 #'     Amazon EKS will launch a task on all 10 cluster nodes and the
-#'     customer will be charged: (10 \* hourly\\_rate). Metering for
+#'     customer will be charged: (10 * hourly\\_rate). Metering for
 #'     software use is automatically handled by the AWS Marketplace
 #'     Metering Control Plane \\-- your software is not required to perform
 #'     any metering specific actions, other than call RegisterUsage once

@@ -14,6 +14,8 @@ html_to <- function(html, to) {
   temp_out <- tempfile()
   rmarkdown::pandoc_convert(temp_in, output = temp_out, from = "html", to = to)
   result <- readLines(temp_out)
+  # Pandoc inappropriately escapes "%" and "*"; undo this escaping.
+  result <- gsub("\\\\(\\%|\\*)", "\\1", result)
   result
 }
 

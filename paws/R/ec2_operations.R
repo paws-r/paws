@@ -5437,7 +5437,7 @@ ec2_create_route_table <- function(DryRun = NULL, VpcId) {
 #' Constraints for EC2-Classic: ASCII characters
 #' 
 #' Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
-#' .\\_-:/()\\#,@\[\]+=&;\{\}!\\$\*
+#' .\\_-:/()\\#,@\[\]+=&;\{\}!\\$*
 #' @param GroupName &#91;required&#93; The name of the security group.
 #' 
 #' Constraints: Up to 255 characters in length. Cannot start with `sg-`.
@@ -5445,7 +5445,7 @@ ec2_create_route_table <- function(DryRun = NULL, VpcId) {
 #' Constraints for EC2-Classic: ASCII characters
 #' 
 #' Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
-#' .\\_-:/()\\#,@\[\]+=&;\{\}!\\$\*
+#' .\\_-:/()\\#,@\[\]+=&;\{\}!\\$*
 #' @param VpcId \[EC2-VPC\] The ID of the VPC. Required for EC2-VPC.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
@@ -10264,7 +10264,7 @@ ec2_describe_availability_zones <- function(Filters = NULL, ZoneNames = NULL, Zo
 #' -   `instance-id` - The ID of the instance.
 #' 
 #' -   `progress` - The level of task completion, as a percentage (for
-#'     example, 20\%).
+#'     example, 20%).
 #' 
 #' -   `s3-bucket` - The Amazon S3 bucket to store the AMI.
 #' 
@@ -16381,7 +16381,7 @@ ec2_describe_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL
 #' -   `owner-id` - The ID of the AWS account that owns the snapshot.
 #' 
 #' -   `progress` - The progress of the snapshot, as a percentage (for
-#'     example, 80\%).
+#'     example, 80%).
 #' 
 #' -   `snapshot-id` - The snapshot ID.
 #' 
@@ -16973,7 +16973,7 @@ ec2_describe_spot_instance_requests <- function(Filters = NULL, DryRun = NULL, S
 #' 
 #' -   `timestamp` - The time stamp of the Spot price history, in UTC
 #'     format (for example, *YYYY*-*MM*-*DD*T*HH*:*MM*:*SS*Z). You can use
-#'     wildcards (\* and ?). Greater than or less than comparison is not
+#'     wildcards (* and ?). Greater than or less than comparison is not
 #'     supported.
 #' @param AvailabilityZone Filters the results by the specified Availability Zone.
 #' @param DryRun Checks whether you have the required permissions for the action, without
@@ -18003,9 +18003,8 @@ ec2_describe_transit_gateways <- function(TransitGatewayIds = NULL, Filters = NU
 #' Describes the specified attribute of the specified volume. You can
 #' specify only one attribute at a time.
 #' 
-#' For more information about EBS volumes, see [Amazon EBS
-#' Volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html)
-#' in the *Amazon Elastic Compute Cloud User Guide*.
+#' For more information about EBS volumes, see Amazon EBS Volumes in the
+#' *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @usage
 #' ec2_describe_volume_attribute(Attribute, VolumeId, DryRun)
@@ -24984,7 +24983,7 @@ ec2_modify_vpc_endpoint_service_configuration <- function(DryRun = NULL, Service
 #' @param ServiceId &#91;required&#93; The ID of the service.
 #' @param AddAllowedPrincipals The Amazon Resource Names (ARN) of one or more principals. Permissions
 #' are granted to the principals in this list. To grant permissions to all
-#' principals, specify an asterisk (\*).
+#' principals, specify an asterisk (*).
 #' @param RemoveAllowedPrincipals The Amazon Resource Names (ARN) of one or more principals. Permissions
 #' are revoked for principals in this list.
 #'

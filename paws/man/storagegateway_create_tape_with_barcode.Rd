@@ -14,7 +14,7 @@ return a list of gateways for your account and AWS Region.}
 
 \item{TapeSizeInBytes}{[required] The size, in bytes, of the virtual tape that you want to create.
 
-The size must be aligned by gigabyte (1024\*1024\*1024 byte).}
+The size must be aligned by gigabyte (1024\emph{1024}1024 byte).}
 
 \item{TapeBarcode}{[required] The barcode that you want to assign to the tape.
 

@@ -24,7 +24,7 @@ number of faces with the highest confidence in the match.}
 
 \item{FaceMatchThreshold}{(Optional) Specifies the minimum confidence in the face match to return.
 For example, don\'t return any matches where confidence in matches is
-less than 70\\%. The default value is 80\\%.}
+less than 70\%. The default value is 80\%.}
 
 \item{QualityFilter}{A filter that specifies a quality bar for how much filtering is done to
 identify faces. Filtered faces aren\'t searched for in the collection.

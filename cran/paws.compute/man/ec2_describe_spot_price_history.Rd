@@ -22,7 +22,7 @@ be returned.
 wildcards; greater than or less than comparison is not supported).
 \item \code{timestamp} - The time stamp of the Spot price history, in UTC
 format (for example, \emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z). You can use
-wildcards (\* and ?). Greater than or less than comparison is not
+wildcards (* and ?). Greater than or less than comparison is not
 supported.
 }}
 

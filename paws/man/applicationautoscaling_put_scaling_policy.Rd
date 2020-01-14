@@ -143,7 +143,7 @@ gives precedence to the policy that provides the largest capacity for
 both scale out and scale in. For example, if one policy increases
 capacity by 3, another policy increases capacity by 200 percent, and the
 current capacity is 10, Application Auto Scaling uses the policy with
-the highest calculated capacity (200\\% of 10 = 20) and scales out to 30.
+the highest calculated capacity (200\% of 10 = 20) and scales out to 30.
 
 Learn more about how to work with scaling policies in the \href{https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html}{Application Auto Scaling User Guide}.
 }

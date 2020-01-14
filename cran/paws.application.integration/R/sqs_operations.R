@@ -1272,7 +1272,7 @@ sqs_purge_queue <- function(QueueUrl) {
 #' The length of `ReceiveRequestAttemptId` is 128 characters.
 #' `ReceiveRequestAttemptId` can contain alphanumeric characters (`a-z`,
 #' `A-Z`, `0-9`) and punctuation
-#' (`` !\"#$\%&amp;\'()*+,-./:;&lt;=&gt;?@\\[\\\]^_\`\{|\}~ ``).
+#' (`` !\"#$%&amp;\'()*+,-./:;&lt;=&gt;?@\\[\\\]^_\`\{|\}~ ``).
 #' 
 #' For best practices of using `ReceiveRequestAttemptId`, see [Using the
 #' ReceiveRequestAttemptId Request
@@ -1474,7 +1474,7 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' The length of `MessageDeduplicationId` is 128 characters.
 #' `MessageDeduplicationId` can contain alphanumeric characters (`a-z`,
 #' `A-Z`, `0-9`) and punctuation
-#' (`` !\"#$\%&amp;\'()*+,-./:;&lt;=&gt;?@\\[\\\]^_\`\{|\}~ ``).
+#' (`` !\"#$%&amp;\'()*+,-./:;&lt;=&gt;?@\\[\\\]^_\`\{|\}~ ``).
 #' 
 #' For best practices of using `MessageDeduplicationId`, see [Using the
 #' MessageDeduplicationId
@@ -1499,7 +1499,7 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' 
 #' The length of `MessageGroupId` is 128 characters. Valid values:
 #' alphanumeric characters and punctuation
-#' `` (!\"#$\%&amp;\'()*+,-./:;&lt;=&gt;?@\\[\\\]^_\`\{|\}~) ``.
+#' `` (!\"#$%&amp;\'()*+,-./:;&lt;=&gt;?@\\[\\\]^_\`\{|\}~) ``.
 #' 
 #' For best practices of using `MessageGroupId`, see [Using the
 #' MessageGroupId

@@ -58,11 +58,11 @@ using rate controls.}
 \item{MaxErrors}{The number of errors that are allowed before the system stops sending
 requests to run the association on additional targets. You can specify
 either an absolute number of errors, for example 10, or a percentage of
-the target set, for example 10\\%. If you specify 3, for example, the
+the target set, for example 10\%. If you specify 3, for example, the
 system stops sending requests when the fourth error is received. If you
 specify 0, then the system stops sending requests after the first error
 is returned. If you run an association on 50 instances and set MaxError
-to 10\\%, then the system stops sending the request when the sixth error
+to 10\%, then the system stops sending the request when the sixth error
 is received.
 
 Executions that are already running an association when MaxErrors is
@@ -73,7 +73,7 @@ one at a time.}
 
 \item{MaxConcurrency}{The maximum number of targets allowed to run the association at the same
 time. You can specify a number, for example 10, or a percentage of the
-target set, for example 10\\%. The default value is 100\\%, which means all
+target set, for example 10\%. The default value is 100\%, which means all
 targets run the association at the same time.
 
 If a new instance starts and attempts to run an association while

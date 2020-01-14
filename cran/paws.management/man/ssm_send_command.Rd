@@ -68,14 +68,14 @@ be stored.}
 
 \item{MaxConcurrency}{(Optional) The maximum number of instances that are allowed to run the
 command at the same time. You can specify a number such as 10 or a
-percentage such as 10\\%. The default value is 50. For more information
+percentage such as 10\%. The default value is 50. For more information
 about how to use MaxConcurrency, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-velocity}{Using Concurrency Controls}
 in the \emph{AWS Systems Manager User Guide}.}
 
 \item{MaxErrors}{The maximum number of errors allowed without the command failing. When
 the command fails one more time beyond the value of MaxErrors, the
 systems stops sending the command to additional targets. You can specify
-a number like 10 or a percentage like 10\\%. The default value is 0. For
+a number like 10 or a percentage like 10\%. The default value is 0. For
 more information about how to use MaxErrors, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-maxerrors}{Using Error Controls}
 in the \emph{AWS Systems Manager User Guide}.}
 

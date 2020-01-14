@@ -8161,9 +8161,9 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' instance.
 #' 
 #' For MariaDB, MySQL, Oracle, and PostgreSQL, the value supplied must be
-#' at least 10\% greater than the current value. Values that are not at
-#' least 10\% greater than the existing value are rounded up so that they
-#' are 10\% greater than the current value.
+#' at least 10% greater than the current value. Values that are not at
+#' least 10% greater than the existing value are rounded up so that they
+#' are 10% greater than the current value.
 #' 
 #' For the valid values for allocated storage for each engine, see
 #' `CreateDBInstance`.
@@ -8402,9 +8402,9 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' creating a DB snapshot of the instance.
 #' 
 #' Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL, the value
-#' supplied must be at least 10\% greater than the current value. Values
-#' that are not at least 10\% greater than the existing value are rounded up
-#' so that they are 10\% greater than the current value.
+#' supplied must be at least 10% greater than the current value. Values
+#' that are not at least 10% greater than the existing value are rounded up
+#' so that they are 10% greater than the current value.
 #' 
 #' Default: Uses existing setting
 #' @param OptionGroupName Indicates that the DB instance should be associated with the specified

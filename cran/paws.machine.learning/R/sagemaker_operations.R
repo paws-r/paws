@@ -1248,7 +1248,7 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #' @param HyperParameterTuningJobName &#91;required&#93; The name of the tuning job. This name is the prefix for the names of all
 #' training jobs that this tuning job launches. The name must be unique
 #' within the same AWS account and AWS Region. The name must have \{ \} to \{
-#' \} characters. Valid characters are a-z, A-Z, 0-9, and : + = @ \\_ \% -
+#' \} characters. Valid characters are a-z, A-Z, 0-9, and : + = @ \\_ % -
 #' (hyphen). The name is not case sensitive.
 #' @param HyperParameterTuningJobConfig &#91;required&#93; The HyperParameterTuningJobConfig object that describes the tuning job,
 #' including the search strategy, the objective metric used to evaluate
@@ -2672,7 +2672,7 @@ sagemaker_create_processing_job <- function(ProcessingInputs = NULL, ProcessingO
 #'     training, you specify more than one instance.
 #' 
 #' -   `EnableManagedSpotTraining` - Optimize the cost of training machine
-#'     learning models by up to 80\% by using Amazon EC2 Spot instances. For
+#'     learning models by up to 80% by using Amazon EC2 Spot instances. For
 #'     more information, see [Managed Spot
 #'     Training](https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html).
 #' 

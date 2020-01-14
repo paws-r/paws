@@ -15,7 +15,7 @@ Constraints: Must be the name of an existing snapshot that is in the
 
 \item{SnapshotClusterIdentifier}{The unique identifier of the cluster the snapshot was created from. This
 parameter is required if your IAM user has a policy containing a
-snapshot resource element that specifies anything other than \* for the
+snapshot resource element that specifies anything other than * for the
 cluster name.
 
 Constraints: Must be the name of valid cluster.}

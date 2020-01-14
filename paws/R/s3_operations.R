@@ -5244,7 +5244,8 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #' @param Bucket &#91;required&#93; The bucket to which to apply the ACL.
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. This header must be
 #' used as a message integrity check to verify that the request body was
-#' not corrupted in transit. For more information, go to RFC 1864.
+#' not corrupted in transit. For more information, go to [RFC
+#' 1864.](http://www.ietf.org/rfc/rfc1864.txt)
 #' @param GrantFullControl Allows grantee the read, write, read ACP, and write ACP permissions on
 #' the bucket.
 #' @param GrantRead Allows grantee to list the objects in the bucket.

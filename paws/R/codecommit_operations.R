@@ -357,7 +357,7 @@ codecommit_batch_get_repositories <- function(repositoryNames) {
 #'     the role of CodeCommitReview with a role session name of
 #'     *Mary\\_Major*
 #'     (arn:aws:sts::*123456789012*:assumed-role/CodeCommitReview/*Mary\\_Major*)
-#'     unless you include a wildcard (\*Mary\\_Major).
+#'     unless you include a wildcard (*Mary\\_Major).
 #' 
 #' -   **Fully qualified ARN**: This option allows you to specify the fully
 #'     qualified Amazon Resource Name (ARN) of the IAM user or role.
@@ -619,7 +619,7 @@ codecommit_create_pull_request <- function(title, description = NULL, targets, c
 #'     the role of CodeCommitReview with a role session name of
 #'     *Mary\\_Major*
 #'     (arn:aws:sts::*123456789012*:assumed-role/CodeCommitReview/*Mary\\_Major*)
-#'     unless you include a wildcard (\*Mary\\_Major).
+#'     unless you include a wildcard (*Mary\\_Major).
 #' 
 #' -   **Fully qualified ARN**: This option allows you to specify the fully
 #'     qualified Amazon Resource Name (ARN) of the IAM user or role.
@@ -3660,7 +3660,7 @@ codecommit_update_default_branch <- function(repositoryName, defaultBranchName) 
 #'     the role of CodeCommitReview with a role session name of
 #'     *Mary\\_Major*
 #'     (arn:aws:sts::*123456789012*:assumed-role/CodeCommitReview/*Mary\\_Major*)
-#'     unless you include a wildcard (\*Mary\\_Major).
+#'     unless you include a wildcard (*Mary\\_Major).
 #' 
 #' -   **Fully qualified ARN**: This option allows you to specify the fully
 #'     qualified Amazon Resource Name (ARN) of the IAM user or role.

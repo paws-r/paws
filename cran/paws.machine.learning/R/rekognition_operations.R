@@ -27,7 +27,7 @@ NULL
 #' which indicates how closely the faces match.
 #' 
 #' By default, only faces with a similarity score of greater than or equal
-#' to 80\% are returned in the response. You can change this value by
+#' to 80% are returned in the response. You can change this value by
 #' specifying the `SimilarityThreshold` parameter.
 #' 
 #' `CompareFaces` also returns an array of faces that don\'t match the
@@ -996,7 +996,7 @@ rekognition_detect_faces <- function(Image, Attributes = NULL) {
 #' In response, the API returns an array of labels. In addition, the
 #' response also includes the orientation correction. Optionally, you can
 #' specify `MinConfidence` to control the confidence threshold for the
-#' labels returned. The default is 55\%. You can also add the `MaxLabels`
+#' labels returned. The default is 55%. You can also add the `MaxLabels`
 #' parameter to limit the number of labels returned.
 #' 
 #' If the object detected is a person, the operation doesn\'t provide the
@@ -2290,7 +2290,7 @@ rekognition_recognize_celebrities <- function(Image) {
 #' number of faces with the highest confidence in the match.
 #' @param FaceMatchThreshold Optional value specifying the minimum confidence in the face match to
 #' return. For example, don\'t return any matches where confidence in
-#' matches is less than 70\%. The default value is 80\%.
+#' matches is less than 70%. The default value is 80%.
 #'
 #' @section Request syntax:
 #' ```
@@ -2394,7 +2394,7 @@ rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, Face
 #' number of faces with the highest confidence in the match.
 #' @param FaceMatchThreshold (Optional) Specifies the minimum confidence in the face match to return.
 #' For example, don\'t return any matches where confidence in matches is
-#' less than 70\%. The default value is 80\%.
+#' less than 70%. The default value is 80%.
 #' @param QualityFilter A filter that specifies a quality bar for how much filtering is done to
 #' identify faces. Filtered faces aren\'t searched for in the collection.
 #' If you specify `AUTO`, Amazon Rekognition chooses the quality bar. If
@@ -2731,8 +2731,8 @@ rekognition_start_face_detection <- function(Video, ClientRequestToken = NULL, N
 #' returned. Use `ClientRequestToken` to prevent the same job from being
 #' accidently started more than once.
 #' @param FaceMatchThreshold The minimum confidence in the person match to return. For example,
-#' don\'t return any matches where confidence in matches is less than 70\%.
-#' The default value is 80\%.
+#' don\'t return any matches where confidence in matches is less than 70%.
+#' The default value is 80%.
 #' @param CollectionId &#91;required&#93; ID of the collection that contains the faces you want to search for.
 #' @param NotificationChannel The ARN of the Amazon SNS topic to which you want Amazon Rekognition
 #' Video to publish the completion status of the search.

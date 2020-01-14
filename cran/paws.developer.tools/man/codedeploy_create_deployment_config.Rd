@@ -27,7 +27,7 @@ equivalent number of instance and rounds up fractional instances.
 
 The value parameter takes an integer.
 
-For example, to set a minimum of 95\\% healthy instance, specify a type of
+For example, to set a minimum of 95\% healthy instance, specify a type of
 FLEET\\_PERCENT and a value of 95.}
 
 \item{trafficRoutingConfig}{The configuration that specifies how the deployment traffic is routed.}

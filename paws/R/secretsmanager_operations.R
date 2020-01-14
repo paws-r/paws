@@ -692,7 +692,7 @@ secretsmanager_describe_secret <- function(SecretId) {
 #' the generated password if you don\'t explicitly exclude them with
 #' `ExcludeCharacters` or `ExcludePunctuation`:
 #' 
-#' `` ! \" # $ \% &amp; \' ( ) * + , - . / : ; &lt; = &gt; ? @ \\[ \\ \\] ^ _ \` \{ | \} ~ ``
+#' `` ! \" # $ % &amp; \' ( ) * + , - . / : ; &lt; = &gt; ? @ \\[ \\ \\] ^ _ \` \{ | \} ~ ``
 #' @param ExcludeUppercase Specifies that the generated password should not include uppercase
 #' letters. The default if you do not include this switch parameter is that
 #' uppercase letters can be included.

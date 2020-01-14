@@ -12,7 +12,7 @@ sagemaker_create_hyper_parameter_tuning_job(HyperParameterTuningJobName,
 \item{HyperParameterTuningJobName}{[required] The name of the tuning job. This name is the prefix for the names of all
 training jobs that this tuning job launches. The name must be unique
 within the same AWS account and AWS Region. The name must have \{ \} to \{
-\} characters. Valid characters are a-z, A-Z, 0-9, and : + = @ \\_ \\% -
+\} characters. Valid characters are a-z, A-Z, 0-9, and : + = @ \\_ \% -
 (hyphen). The name is not case sensitive.}
 
 \item{HyperParameterTuningJobConfig}{[required] The HyperParameterTuningJobConfig object that describes the tuning job,

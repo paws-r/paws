@@ -3070,7 +3070,7 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
 #' Note the trailing dot, which can change the sort order when the record
 #' name contains characters that appear before `.` (decimal 46) in the
 #' ASCII table. These characters include the following:
-#' `! \" # $ \% &amp; \' ( ) * + , -`
+#' `! \" # $ % &amp; \' ( ) * + , -`
 #' 
 #' When multiple records have the same DNS name, `ListResourceRecordSets`
 #' sorts results by the record type.

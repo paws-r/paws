@@ -14,7 +14,7 @@ serverlessapplicationrepository_update_application(ApplicationId,
 
 Minimum length=1. Maximum length=127.
 
-Pattern \"\\^[a-z0-9](([a-z0-9]\\|-(?!-))\*[a-z0-9])?\\$\";}
+Pattern \"\\^[a-z0-9](([a-z0-9]\\|-(?!-))*[a-z0-9])?\\$\";}
 
 \item{Description}{The description of the application.
 
