@@ -312,10 +312,10 @@ translate_list_text_translation_jobs <- function(Filter = NULL, NextToken = NULL
 #' list of available terminologies, use the ListTerminologies operation.
 #' @param ClientToken &#91;required&#93; The client token of the EC2 instance calling the request. This token is
 #' auto-generated when using the Amazon Translate SDK. Otherwise, use the
-#' [DescribeInstances](docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
+#' [DescribeInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
 #' EC2 operation to retreive an instance\'s client token. For more
 #' information, see [Client
-#' Tokens](docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html#client-tokens)
+#' Tokens](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html#client-tokens)
 #' in the EC2 User Guide.
 #'
 #' @section Request syntax:
