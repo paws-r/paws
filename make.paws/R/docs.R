@@ -277,6 +277,11 @@ clean_html_a <- function(node) {
     xml2::xml_attr(node, "href") <- url
   }
 
+  if (!startsWith(url, "http")) {
+    url <- sprintf("https://%s", url)
+    xml2::xml_attr(node, "href") <- url
+  }
+
   # Delete URLs when the page is unreachable or explicitly missing.
   if (!url_ok(url)) {
     xml2::xml_attr(node, "href") <- NULL

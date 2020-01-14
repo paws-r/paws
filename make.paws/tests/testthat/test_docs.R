@@ -495,6 +495,10 @@ test_that("convert", {
   text <- "<a href='mailto:foo@bar.com'>foo@bar.com</a>"
   expected <- c("<foo@bar.com>")
   expect_equal(convert(text), expected)
+
+  text <- "<a href='example.com'>foo</a>"
+  expected <- c("[foo](https://example.com)")
+  expect_equal(convert(text), expected)
 })
 
 test_that("first_sentence", {
