@@ -290,8 +290,8 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' The deployment is triggered by changing properties, such as the task
 #' definition or the desired count of a service, with an UpdateService
 #' operation. The default value for a replica service for
-#' `minimumHealthyPercent` is 100\%. The default value for a daemon service
-#' for `minimumHealthyPercent` is 0\%.
+#' `minimumHealthyPercent` is 100%. The default value for a daemon service
+#' for `minimumHealthyPercent` is 0%.
 #' 
 #' If a service is using the `ECS` deployment controller, the minimum
 #' healthy percent represents a lower limit on the number of tasks in a
@@ -301,13 +301,13 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' if the service contains tasks using the EC2 launch type. This parameter
 #' enables you to deploy without using additional cluster capacity. For
 #' example, if your service has a desired number of four tasks and a
-#' minimum healthy percent of 50\%, the scheduler might stop two existing
+#' minimum healthy percent of 50%, the scheduler might stop two existing
 #' tasks to free up cluster capacity before starting two new tasks. Tasks
 #' for services that *do not* use a load balancer are considered healthy if
 #' they\'re in the `RUNNING` state. Tasks for services that *do* use a load
 #' balancer are considered healthy if they\'re in the `RUNNING` state and
 #' they\'re reported as healthy by the load balancer. The default value for
-#' minimum healthy percent is 100\%.
+#' minimum healthy percent is 100%.
 #' 
 #' If a service is using the `ECS` deployment controller, the **maximum
 #' percent** parameter represents an upper limit on the number of tasks in
@@ -317,10 +317,10 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' `DRAINING` state if the service contains tasks using the EC2 launch
 #' type. This parameter enables you to define the deployment batch size.
 #' For example, if your service has a desired number of four tasks and a
-#' maximum percent value of 200\%, the scheduler may start four new tasks
+#' maximum percent value of 200%, the scheduler may start four new tasks
 #' before stopping the four older tasks (provided that the cluster
 #' resources required to do this are available). The default value for
-#' maximum percent is 200\%.
+#' maximum percent is 200%.
 #' 
 #' If a service is using either the `CODE_DEPLOY` or `EXTERNAL` deployment
 #' controller types and tasks that use the EC2 launch type, the **minimum
@@ -4385,11 +4385,11 @@ ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
 #' You can change the deployment configuration of your service using
 #' UpdateService.
 #' 
-#' -   If `minimumHealthyPercent` is below 100\%, the scheduler can ignore
+#' -   If `minimumHealthyPercent` is below 100%, the scheduler can ignore
 #'     `desiredCount` temporarily during task replacement. For example,
-#'     `desiredCount` is four tasks, a minimum of 50\% allows the scheduler
+#'     `desiredCount` is four tasks, a minimum of 50% allows the scheduler
 #'     to stop two existing tasks before starting two new tasks. If the
-#'     minimum is 100\%, the service scheduler can\'t remove existing tasks
+#'     minimum is 100%, the service scheduler can\'t remove existing tasks
 #'     until the replacement tasks are considered healthy. Tasks for
 #'     services that do not use a load balancer are considered healthy if
 #'     they are in the `RUNNING` state. Tasks for services that use a load
@@ -4400,9 +4400,9 @@ ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
 #' -   The `maximumPercent` parameter represents an upper limit on the
 #'     number of running tasks during task replacement, which enables you
 #'     to define the replacement batch size. For example, if `desiredCount`
-#'     is four tasks, a maximum of 200\% starts four new tasks before
+#'     is four tasks, a maximum of 200% starts four new tasks before
 #'     stopping the four tasks to be drained, provided that the cluster
-#'     resources required to do this are available. If the maximum is 100\%,
+#'     resources required to do this are available. If the maximum is 100%,
 #'     then replacement tasks can\'t start until the draining tasks have
 #'     stopped.
 #' 
@@ -4509,9 +4509,9 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' `minimumHealthyPercent` and `maximumPercent`, to determine the
 #' deployment strategy.
 #' 
-#' -   If `minimumHealthyPercent` is below 100\%, the scheduler can ignore
+#' -   If `minimumHealthyPercent` is below 100%, the scheduler can ignore
 #'     `desiredCount` temporarily during a deployment. For example, if
-#'     `desiredCount` is four tasks, a minimum of 50\% allows the scheduler
+#'     `desiredCount` is four tasks, a minimum of 50% allows the scheduler
 #'     to stop two existing tasks before starting two new tasks. Tasks for
 #'     services that do not use a load balancer are considered healthy if
 #'     they are in the `RUNNING` state. Tasks for services that use a load
@@ -4522,7 +4522,7 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' -   The `maximumPercent` parameter represents an upper limit on the
 #'     number of running tasks during a deployment, which enables you to
 #'     define the deployment batch size. For example, if `desiredCount` is
-#'     four tasks, a maximum of 200\% starts four new tasks before stopping
+#'     four tasks, a maximum of 200% starts four new tasks before stopping
 #'     the four older tasks (provided that the cluster resources required
 #'     to do this are available).
 #' 

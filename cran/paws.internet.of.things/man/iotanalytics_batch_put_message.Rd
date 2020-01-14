@@ -20,7 +20,7 @@ other special characters are allowed.
 \item Must begin with an alphabetic character or single underscore (\\_).
 \item Cannot contain hyphens (-).
 \item In regular expression terms:
-\"\\^[A-Za-z\\\emph{]([A-Za-z0-9]\*\\|[A-Za-z0-9][A-Za-z0-9\\}]\*)\\$\".
+\"\\^[A-Za-z\\\emph{]([A-Za-z0-9]*\\|[A-Za-z0-9][A-Za-z0-9\\}]*)\\$\".
 \item Cannot be greater than 255 characters.
 \item Are case-insensitive. (Fields named \"foo\" and \"FOO\" in the same
 payload are considered duplicates.)

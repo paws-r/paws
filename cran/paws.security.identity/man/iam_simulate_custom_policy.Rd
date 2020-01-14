@@ -37,7 +37,7 @@ carriage return (\verb{U+000D})
 \item{ActionNames}{[required] A list of names of API operations to evaluate in the simulation. Each
 operation is evaluated against each resource. Each operation must
 include the service identifier, such as \code{iam:CreateUser}. This operation
-does not support using wildcards (\*) in an action name.}
+does not support using wildcards (*) in an action name.}
 
 \item{ResourceArns}{A list of ARNs of AWS resources to include in the simulation. If this
 parameter is not provided, then the value defaults to \code{*} (all

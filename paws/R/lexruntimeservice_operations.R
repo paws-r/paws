@@ -251,7 +251,7 @@ lexruntimeservice_get_session <- function(botName, botAlias, userId, checkpointL
 #' 
 #'     -   text/plain; charset=utf-8
 #' 
-#'     -   audio/\* (defaults to mpeg)
+#'     -   audio/* (defaults to mpeg)
 #' @param inputStream &#91;required&#93; User input in PCM or Opus audio format or text format as described in
 #' the `Content-Type` HTTP header.
 #' 

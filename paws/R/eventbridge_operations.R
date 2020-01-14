@@ -1100,7 +1100,7 @@ eventbridge_put_partner_events <- function(Entries) {
 #' To enable multiple AWS accounts to put events to an event bus, run
 #' `PutPermission` once for each of these accounts. Or, if all the accounts
 #' are members of the same AWS organization, you can run `PutPermission`
-#' once specifying `Principal` as \"\*\" and specifying the AWS
+#' once specifying `Principal` as \"*\" and specifying the AWS
 #' organization ID in `Condition`, to grant permissions to all accounts in
 #' that organization.
 #' 
@@ -1122,10 +1122,10 @@ eventbridge_put_partner_events <- function(Entries) {
 #' @param Action &#91;required&#93; The action that you\'re enabling the other account to perform.
 #' Currently, this must be `events:PutEvents`.
 #' @param Principal &#91;required&#93; The 12-digit AWS account ID that you are permitting to put events to
-#' your default event bus. Specify \"\*\" to permit any account to put
+#' your default event bus. Specify \"*\" to permit any account to put
 #' events to your default event bus.
 #' 
-#' If you specify \"\*\" without specifying `Condition`, avoid creating
+#' If you specify \"*\" without specifying `Condition`, avoid creating
 #' rules that might match undesirable events. To create more secure rules,
 #' make sure that the event pattern for each rule contains an `account`
 #' field with a specific account ID to receive events from. Rules that have
@@ -1143,7 +1143,7 @@ eventbridge_put_partner_events <- function(Entries) {
 #' in the *AWS Organizations User Guide*.
 #' 
 #' If you specify `Condition` with an AWS organization ID and specify
-#' \"\*\" as the value for `Principal`, you grant permission to all the
+#' \"*\" as the value for `Principal`, you grant permission to all the
 #' accounts in the named organization.
 #' 
 #' The `Condition` is a JSON string that must contain `Type`, `Key`, and

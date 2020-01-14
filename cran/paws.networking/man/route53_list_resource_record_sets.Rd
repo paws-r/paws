@@ -70,7 +70,7 @@ reversed, for example:
 Note the trailing dot, which can change the sort order when the record
 name contains characters that appear before \code{.} (decimal 46) in the
 ASCII table. These characters include the following:
-\verb{! \\" # $ \\\% &amp; \\' ( ) * + , -}
+\verb{! \\" # $ \% &amp; \\' ( ) * + , -}
 
 When multiple records have the same DNS name, \code{ListResourceRecordSets}
 sorts results by the record type.

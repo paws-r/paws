@@ -263,7 +263,7 @@ cloudwatchlogs_create_log_group <- function(logGroupName, kmsKeyId = NULL, tags 
 #' 
 #' -   Log stream names can be between 1 and 512 characters long.
 #' 
-#' -   The \':\' (colon) and \'\*\' (asterisk) characters are not allowed.
+#' -   The \':\' (colon) and \'*\' (asterisk) characters are not allowed.
 #'
 #' @usage
 #' cloudwatchlogs_create_log_stream(logGroupName, logStreamName)

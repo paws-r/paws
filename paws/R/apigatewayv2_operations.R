@@ -23,7 +23,7 @@ NULL
 #' options are available. To specify an IAM Role for API Gateway to assume,
 #' use the role\'s Amazon Resource Name (ARN). To require that the
 #' caller\'s identity be passed through from the request, specify
-#' arn:aws:iam::\*:user/\*. To use resource-based permissions on supported
+#' arn:aws:iam::*:user/*. To use resource-based permissions on supported
 #' AWS services, specify null. Currently, this property is not used for
 #' HTTP integrations. Supported only for HTTP APIs.
 #' @param Description The description of the API.
@@ -375,7 +375,7 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' integrations, three options are available. To specify an IAM Role for
 #' API Gateway to assume, use the role\'s Amazon Resource Name (ARN). To
 #' require that the caller\'s identity be passed through from the request,
-#' specify the string arn:aws:iam::\*:user/\*. To use resource-based
+#' specify the string arn:aws:iam::*:user/*. To use resource-based
 #' permissions on supported AWS services, specify null.
 #' @param Description The description of the integration.
 #' @param IntegrationMethod Specifies the integration\'s HTTP method type.
@@ -2455,7 +2455,7 @@ apigatewayv2_untag_resource <- function(ResourceArn, TagKeys) {
 #' options are available. To specify an IAM Role for API Gateway to assume,
 #' use the role\'s Amazon Resource Name (ARN). To require that the
 #' caller\'s identity be passed through from the request, specify
-#' arn:aws:iam::\*:user/\*. To use resource-based permissions on supported
+#' arn:aws:iam::*:user/*. To use resource-based permissions on supported
 #' AWS services, specify null. Currently, this property is not used for
 #' HTTP integrations. If provided, this value replaces the credentials
 #' associated with the quick create integration. Supported only for HTTP
@@ -2801,7 +2801,7 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' integrations, three options are available. To specify an IAM Role for
 #' API Gateway to assume, use the role\'s Amazon Resource Name (ARN). To
 #' require that the caller\'s identity be passed through from the request,
-#' specify the string arn:aws:iam::\*:user/\*. To use resource-based
+#' specify the string arn:aws:iam::*:user/*. To use resource-based
 #' permissions on supported AWS services, specify null.
 #' @param Description The description of the integration
 #' @param IntegrationId &#91;required&#93; The integration ID.

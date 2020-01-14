@@ -23,7 +23,7 @@ an account ID, do not include any hyphens (\'-\') in the ID.}
 \item{range}{Identifies the range of bytes in the assembled archive that will be
 uploaded in this part. Amazon S3 Glacier uses this information to
 assemble the archive in the proper sequence. The format of this header
-follows RFC 2616. An example header is Content-Range:bytes 0-4194303/\*.}
+follows RFC 2616. An example header is Content-Range:bytes 0-4194303/*.}
 
 \item{body}{The data to upload.}
 }

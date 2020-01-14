@@ -7844,7 +7844,7 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' @param ActionNames &#91;required&#93; A list of names of API operations to evaluate in the simulation. Each
 #' operation is evaluated against each resource. Each operation must
 #' include the service identifier, such as `iam:CreateUser`. This operation
-#' does not support using wildcards (\*) in an action name.
+#' does not support using wildcards (*) in an action name.
 #' @param ResourceArns A list of ARNs of AWS resources to include in the simulation. If this
 #' parameter is not provided, then the value defaults to `*` (all
 #' resources). Each API in the `ActionNames` parameter is evaluated for
@@ -8674,7 +8674,7 @@ iam_update_access_key <- function(UserName = NULL, AccessKeyId, Status) {
 #' @param RequireSymbols Specifies whether IAM user passwords must contain at least one of the
 #' following non-alphanumeric characters:
 #' 
-#' ! @ \\# \\$ \% \\^ & \* ( ) \\_ + - = \[ \] \{ \} \\| \'
+#' ! @ \\# \\$ % \\^ & * ( ) \\_ + - = \[ \] \{ \} \\| \'
 #' 
 #' If you do not specify a value for this parameter, then the operation
 #' uses the default value of `false`. The result is that passwords do not
@@ -9503,7 +9503,7 @@ iam_update_signing_certificate <- function(UserName = NULL, CertificateId, Statu
 #' To change a user name, the requester must have appropriate permissions
 #' on both the source object and the target object. For example, to change
 #' Bob to Robert, the entity making the request must have permission on Bob
-#' and Robert, or must have permission on all (\*). For more information
+#' and Robert, or must have permission on all (*). For more information
 #' about permissions, see [Permissions and
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/PermissionsAndPolicies.html).
 #'

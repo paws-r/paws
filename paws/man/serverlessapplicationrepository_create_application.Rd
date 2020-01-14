@@ -15,7 +15,7 @@ serverlessapplicationrepository_create_application(Author, Description,
 
 Minimum length=1. Maximum length=127.
 
-Pattern \"\\^[a-z0-9](([a-z0-9]\\|-(?!-))\*[a-z0-9])?\\$\";}
+Pattern \"\\^[a-z0-9](([a-z0-9]\\|-(?!-))*[a-z0-9])?\\$\";}
 
 \item{Description}{[required] The description of the application.
 

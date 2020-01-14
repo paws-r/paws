@@ -3618,7 +3618,7 @@ configservice_put_organization_config_rule <- function(OrganizationConfigRuleNam
 #' conformance pack template.
 #' 
 #' The delivery bucket name should start with awsconfigconforms. For
-#' example: \"Resource\": \"arn:aws:s3:::your\\_bucket\\_name/\*\". For more
+#' example: \"Resource\": \"arn:aws:s3:::your\\_bucket\\_name/*\". For more
 #' information, see [Permissions for cross account bucket
 #' access](https://docs.aws.amazon.com/config/latest/developerguide/conformance-pack-organization-apis.html).
 #' @param DeliveryS3KeyPrefix The prefix for the Amazon S3 bucket.

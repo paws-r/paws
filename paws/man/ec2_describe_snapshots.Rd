@@ -20,7 +20,7 @@ owners. Not to be confused with the user-configured AWS account
 alias, which is set from the IAM console.
 \item \code{owner-id} - The ID of the AWS account that owns the snapshot.
 \item \code{progress} - The progress of the snapshot, as a percentage (for
-example, 80\\%).
+example, 80\%).
 \item \code{snapshot-id} - The snapshot ID.
 \item \code{start-time} - The time stamp when the snapshot was initiated.
 \item \code{status} - The status of the snapshot (\code{pending} \\| \code{completed} \\|

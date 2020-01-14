@@ -40,7 +40,7 @@ This option does not recognize an active session of someone assuming
 the role of CodeCommitReview with a role session name of
 \emph{Mary\\_Major}
 (arn:aws:sts::\emph{123456789012}:assumed-role/CodeCommitReview/\emph{Mary\\_Major})
-unless you include a wildcard (\*Mary\\_Major).
+unless you include a wildcard (*Mary\\_Major).
 \item \strong{Fully qualified ARN}: This option allows you to specify the fully
 qualified Amazon Resource Name (ARN) of the IAM user or role.
 }

@@ -4381,12 +4381,12 @@ gamelift_list_tags_for_resource <- function(ResourceARN) {
 #' leave it to Amazon GameLift to take whatever action is needed to
 #' maintain that target.
 #' 
-#' For example, you might choose to maintain a 10\% buffer for a fleet that
+#' For example, you might choose to maintain a 10% buffer for a fleet that
 #' has the capacity to host 100 simultaneous game sessions. This policy
 #' tells Amazon GameLift to take action whenever the fleet\'s available
 #' capacity falls below or rises above 10 game sessions. Amazon GameLift
 #' will start new instances or stop unused instances in order to return to
-#' the 10\% buffer.
+#' the 10% buffer.
 #' 
 #' To create or update a target-based policy, specify a fleet ID and name,
 #' and set the policy type to \"TargetBased\". Specify the metric to track
@@ -4406,8 +4406,8 @@ gamelift_list_tags_for_resource <- function(ResourceARN) {
 #' how much), so you need one policy for each type of action.
 #' 
 #' For example, a policy may make the following statement: \"If the
-#' percentage of idle instances is greater than 20\% for more than 15
-#' minutes, then reduce the fleet capacity by 10\%.\"
+#' percentage of idle instances is greater than 20% for more than 15
+#' minutes, then reduce the fleet capacity by 10%.\"
 #' 
 #' A policy\'s rule statement has the following structure:
 #' 
@@ -4474,7 +4474,7 @@ gamelift_list_tags_for_resource <- function(ResourceARN) {
 #' -   **PercentChangeInCapacity** \\-- increase or reduce the current
 #'     instance count by the scaling adjustment, read as a percentage.
 #'     Positive values scale up while negative values scale down; for
-#'     example, a value of \"-10\" scales the fleet down by 10\%.
+#'     example, a value of \"-10\" scales the fleet down by 10%.
 #' @param Threshold Metric value used to trigger a scaling event.
 #' @param ComparisonOperator Comparison operator to use when measuring the metric against the
 #' threshold value.

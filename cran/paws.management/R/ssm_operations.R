@@ -331,11 +331,11 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' @param MaxErrors The number of errors that are allowed before the system stops sending
 #' requests to run the association on additional targets. You can specify
 #' either an absolute number of errors, for example 10, or a percentage of
-#' the target set, for example 10\%. If you specify 3, for example, the
+#' the target set, for example 10%. If you specify 3, for example, the
 #' system stops sending requests when the fourth error is received. If you
 #' specify 0, then the system stops sending requests after the first error
 #' is returned. If you run an association on 50 instances and set MaxError
-#' to 10\%, then the system stops sending the request when the sixth error
+#' to 10%, then the system stops sending the request when the sixth error
 #' is received.
 #' 
 #' Executions that are already running an association when MaxErrors is
@@ -345,7 +345,7 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' one at a time.
 #' @param MaxConcurrency The maximum number of targets allowed to run the association at the same
 #' time. You can specify a number, for example 10, or a percentage of the
-#' target set, for example 10\%. The default value is 100\%, which means all
+#' target set, for example 10%. The default value is 100%, which means all
 #' targets run the association at the same time.
 #' 
 #' If a new instance starts and attempts to run an association while
@@ -3025,7 +3025,7 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
 #' 
 #'     Operations: Contains
 #' 
-#' -   Key: OperationalData\*
+#' -   Key: OperationalData*
 #' 
 #'     Operations: Equals
 #' 
@@ -3049,7 +3049,7 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
 #' 
 #'     Operations: Equals
 #' 
-#' \*If you filter the response by using the OperationalData operator,
+#' *If you filter the response by using the OperationalData operator,
 #' specify a key-value pair by using the following JSON format:
 #' \{\"key\":\"key\\_name\",\"value\":\"a\\_value\"\}
 #' @param MaxResults The maximum number of items to return for this call. The call also
@@ -6333,14 +6333,14 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #' be stored.
 #' @param MaxConcurrency (Optional) The maximum number of instances that are allowed to run the
 #' command at the same time. You can specify a number such as 10 or a
-#' percentage such as 10\%. The default value is 50. For more information
+#' percentage such as 10%. The default value is 50. For more information
 #' about how to use MaxConcurrency, see [Using Concurrency
 #' Controls](http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-velocity)
 #' in the *AWS Systems Manager User Guide*.
 #' @param MaxErrors The maximum number of errors allowed without the command failing. When
 #' the command fails one more time beyond the value of MaxErrors, the
 #' systems stops sending the command to additional targets. You can specify
-#' a number like 10 or a percentage like 10\%. The default value is 0. For
+#' a number like 10 or a percentage like 10%. The default value is 0. For
 #' more information about how to use MaxErrors, see [Using Error
 #' Controls](http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-maxerrors)
 #' in the *AWS Systems Manager User Guide*.
@@ -6479,16 +6479,16 @@ ssm_start_associations_once <- function(AssociationIds) {
 #' @param TargetMaps A key-value mapping of document parameters to target resources. Both
 #' Targets and TargetMaps cannot be specified together.
 #' @param MaxConcurrency The maximum number of targets allowed to run this task in parallel. You
-#' can specify a number, such as 10, or a percentage, such as 10\%. The
+#' can specify a number, such as 10, or a percentage, such as 10%. The
 #' default value is 10.
 #' @param MaxErrors The number of errors that are allowed before the system stops running
 #' the automation on additional targets. You can specify either an absolute
 #' number of errors, for example 10, or a percentage of the target set, for
-#' example 10\%. If you specify 3, for example, the system stops running the
+#' example 10%. If you specify 3, for example, the system stops running the
 #' automation when the fourth error is received. If you specify 0, then the
 #' system stops running the automation on additional targets after the
 #' first error result is returned. If you run an automation on 50 resources
-#' and set max-errors to 10\%, then the system stops running the automation
+#' and set max-errors to 10%, then the system stops running the automation
 #' on additional targets when the sixth error is received.
 #' 
 #' Executions that are already running an automation when max-errors is
@@ -6784,11 +6784,11 @@ ssm_terminate_session <- function(SessionId) {
 #' @param MaxErrors The number of errors that are allowed before the system stops sending
 #' requests to run the association on additional targets. You can specify
 #' either an absolute number of errors, for example 10, or a percentage of
-#' the target set, for example 10\%. If you specify 3, for example, the
+#' the target set, for example 10%. If you specify 3, for example, the
 #' system stops sending requests when the fourth error is received. If you
 #' specify 0, then the system stops sending requests after the first error
 #' is returned. If you run an association on 50 instances and set MaxError
-#' to 10\%, then the system stops sending the request when the sixth error
+#' to 10%, then the system stops sending the request when the sixth error
 #' is received.
 #' 
 #' Executions that are already running an association when MaxErrors is
@@ -6798,7 +6798,7 @@ ssm_terminate_session <- function(SessionId) {
 #' one at a time.
 #' @param MaxConcurrency The maximum number of targets allowed to run the association at the same
 #' time. You can specify a number, for example 10, or a percentage of the
-#' target set, for example 10\%. The default value is 100\%, which means all
+#' target set, for example 10%. The default value is 100%, which means all
 #' targets run the association at the same time.
 #' 
 #' If a new instance starts and attempts to run an association while

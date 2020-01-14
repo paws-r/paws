@@ -43,7 +43,7 @@ in the \emph{IAM User Guide}.
 To change a user name, the requester must have appropriate permissions
 on both the source object and the target object. For example, to change
 Bob to Robert, the entity making the request must have permission on Bob
-and Robert, or must have permission on all (\*). For more information
+and Robert, or must have permission on all (*). For more information
 about permissions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/PermissionsAndPolicies.html}{Permissions and Policies}.
 }
 \section{Request syntax}{

@@ -19,7 +19,7 @@ A name must \emph{not} contain:
 \item white space
 \item brackets \verb{&lt; &gt; \\\{ \\\} \\\[ \\\]}
 \item wildcard characters \verb{? *}
-\item special characters \verb{\\" # \\\% \\\\ ^ | ~ \\` $ &amp; , ; : /}
+\item special characters \verb{\\" # \% \\\\ ^ | ~ \\` $ &amp; , ; : /}
 \item control characters (\verb{U+0000-001F}, \verb{U+007F-009F})
 }}
 

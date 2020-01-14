@@ -18,7 +18,7 @@ grantee.}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the data. This header must be
 used as a message integrity check to verify that the request body was
-not corrupted in transit. For more information, go to RFC 1864.}
+not corrupted in transit. For more information, go to \href{http://www.ietf.org/rfc/rfc1864.txt}{RFC 1864.}}
 
 \item{GrantFullControl}{Allows grantee the read, write, read ACP, and write ACP permissions on
 the bucket.}

@@ -183,7 +183,7 @@ migrationhub_create_progress_update_stream <- function(ProgressUpdateStreamName,
 #'     `ListProgressUpdateStreams` call.
 #' 
 #' -   `CreateProgressUpdateStream`, `ImportMigrationTask`,
-#'     `NotifyMigrationTaskState`, and all Associate\[\*\] APIs related to
+#'     `NotifyMigrationTaskState`, and all Associate\[*\] APIs related to
 #'     the tasks belonging to the stream will throw
 #'     \"InvalidInputException\" if the stream of the same name is in the
 #'     process of being deleted.

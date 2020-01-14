@@ -37,7 +37,7 @@ response without modification.}
 integrations, three options are available. To specify an IAM Role for
 API Gateway to assume, use the role\'s Amazon Resource Name (ARN). To
 require that the caller\'s identity be passed through from the request,
-specify the string arn:aws:iam::\\emph{:user/\}. To use resource-based
+specify the string arn:aws:iam::\emph{:user/}. To use resource-based
 permissions on supported AWS services, specify null.}
 
 \item{Description}{The description of the integration}

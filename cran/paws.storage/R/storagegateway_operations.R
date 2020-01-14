@@ -1300,7 +1300,7 @@ storagegateway_create_storedi_scsi_volume <- function(GatewayARN, DiskId, Snapsh
 #' return a list of gateways for your account and AWS Region.
 #' @param TapeSizeInBytes &#91;required&#93; The size, in bytes, of the virtual tape that you want to create.
 #' 
-#' The size must be aligned by gigabyte (1024\*1024\*1024 byte).
+#' The size must be aligned by gigabyte (1024*1024*1024 byte).
 #' @param TapeBarcode &#91;required&#93; The barcode that you want to assign to the tape.
 #' 
 #' Barcodes cannot be reused. This includes barcodes used for tapes that
@@ -1390,7 +1390,7 @@ storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes,
 #' return a list of gateways for your account and AWS Region.
 #' @param TapeSizeInBytes &#91;required&#93; The size, in bytes, of the virtual tapes that you want to create.
 #' 
-#' The size must be aligned by gigabyte (1024\*1024\*1024 byte).
+#' The size must be aligned by gigabyte (1024*1024*1024 byte).
 #' @param ClientToken &#91;required&#93; A unique identifier that you use to retry a request. If you retry a
 #' request, use the same `ClientToken` you specified in the initial
 #' request.

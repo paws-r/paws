@@ -30,7 +30,7 @@ resources, resource attributes, created artifacts).
 \item If the stream takes time to be deleted, it might still show up on a
 \code{ListProgressUpdateStreams} call.
 \item \code{CreateProgressUpdateStream}, \code{ImportMigrationTask},
-\code{NotifyMigrationTaskState}, and all Associate[\*] APIs related to
+\code{NotifyMigrationTaskState}, and all Associate[*] APIs related to
 the tasks belonging to the stream will throw
 \"InvalidInputException\" if the stream of the same name is in the
 process of being deleted.

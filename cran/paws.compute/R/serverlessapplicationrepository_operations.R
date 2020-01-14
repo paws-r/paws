@@ -19,7 +19,7 @@ NULL
 #' 
 #' Minimum length=1. Maximum length=127.
 #' 
-#' Pattern \"\\^\[a-z0-9\]((\[a-z0-9\]\\|-(?!-))\*\[a-z0-9\])?\\$\";
+#' Pattern \"\\^\[a-z0-9\]((\[a-z0-9\]\\|-(?!-))*\[a-z0-9\])?\\$\";
 #' @param Description &#91;required&#93; The description of the application.
 #' 
 #' Minimum length=1. Maximum length=256
@@ -716,7 +716,7 @@ serverlessapplicationrepository_put_application_policy <- function(ApplicationId
 #' 
 #' Minimum length=1. Maximum length=127.
 #' 
-#' Pattern \"\\^\[a-z0-9\]((\[a-z0-9\]\\|-(?!-))\*\[a-z0-9\])?\\$\";
+#' Pattern \"\\^\[a-z0-9\]((\[a-z0-9\]\\|-(?!-))*\[a-z0-9\])?\\$\";
 #' @param Description The description of the application.
 #' 
 #' Minimum length=1. Maximum length=256

@@ -30,7 +30,7 @@ Operations: Equals
 \item Key: Title
 
 Operations: Contains
-\item Key: OperationalData\*
+\item Key: OperationalData*
 
 Operations: Equals
 \item Key: OperationalDataKey
@@ -50,7 +50,7 @@ Operations: Contains
 Operations: Equals
 }
 
-\*If you filter the response by using the OperationalData operator,
+*If you filter the response by using the OperationalData operator,
 specify a key-value pair by using the following JSON format:
 \{\"key\":\"key\\_name\",\"value\":\"a\\_value\"\}}
 

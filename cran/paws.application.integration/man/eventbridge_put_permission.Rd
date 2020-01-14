@@ -16,10 +16,10 @@ event bus is used.}
 Currently, this must be \code{events:PutEvents}.}
 
 \item{Principal}{[required] The 12-digit AWS account ID that you are permitting to put events to
-your default event bus. Specify \"\*\" to permit any account to put
+your default event bus. Specify \"*\" to permit any account to put
 events to your default event bus.
 
-If you specify \"\*\" without specifying \code{Condition}, avoid creating
+If you specify \"*\" without specifying \code{Condition}, avoid creating
 rules that might match undesirable events. To create more secure rules,
 make sure that the event pattern for each rule contains an \code{account}
 field with a specific account ID to receive events from. Rules that have
@@ -37,7 +37,7 @@ organization. For more information about AWS Organizations, see \href{https://do
 in the \emph{AWS Organizations User Guide}.
 
 If you specify \code{Condition} with an AWS organization ID and specify
-\"\*\" as the value for \code{Principal}, you grant permission to all the
+\"*\" as the value for \code{Principal}, you grant permission to all the
 accounts in the named organization.
 
 The \code{Condition} is a JSON string that must contain \code{Type}, \code{Key}, and
@@ -56,7 +56,7 @@ account must have a rule with your account\'s event bus as a target.
 To enable multiple AWS accounts to put events to an event bus, run
 \code{PutPermission} once for each of these accounts. Or, if all the accounts
 are members of the same AWS organization, you can run \code{PutPermission}
-once specifying \code{Principal} as \"\*\" and specifying the AWS
+once specifying \code{Principal} as \"*\" and specifying the AWS
 organization ID in \code{Condition}, to grant permissions to all accounts in
 that organization.
 

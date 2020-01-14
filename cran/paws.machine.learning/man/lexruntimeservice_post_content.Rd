@@ -99,7 +99,7 @@ returns speech in the MPEG format.
 \item audio/ogg
 \item audio/pcm
 \item text/plain; charset=utf-8
-\item audio/\* (defaults to mpeg)
+\item audio/* (defaults to mpeg)
 }
 }}
 

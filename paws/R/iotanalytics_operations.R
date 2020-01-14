@@ -25,7 +25,7 @@ NULL
 #' -   Cannot contain hyphens (-).
 #' 
 #' -   In regular expression terms:
-#'     \"\\^\[A-Za-z\\_\](\[A-Za-z0-9\]\*\\|\[A-Za-z0-9\]\[A-Za-z0-9\\_\]\*)\\$\".
+#'     \"\\^\[A-Za-z\\_\](\[A-Za-z0-9\]*\\|\[A-Za-z0-9\]\[A-Za-z0-9\\_\]*)\\$\".
 #' 
 #' -   Cannot be greater than 255 characters.
 #' 
