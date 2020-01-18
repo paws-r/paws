@@ -14,6 +14,13 @@ bucket_name_from_req_params <- function(request) {
   return(bucket_name)
 }
 
+host_compatible_bucket_name <- function(bucket) {
+  if (grepl(".", bucket, fixed = TRUE)) return(FALSE)
+  domain <- "^[a-z0-9][a-z0-9\\.\\-]{1,61}[a-z0-9]$"
+  ip_address <- "^(\\d+\\.){3}\\d+$"
+  return(grepl(domain, bucket) && !grepl(ip_address, bucket))
+}
+
 move_bucket_to_host <- function(url, bucket) {
   url$host <- paste0(bucket, ".", url$host)
   url$path <- gsub("/\\{Bucket\\}", "", url$path)
@@ -29,6 +36,8 @@ update_endpoint_for_s3_config <- function(request) {
   bucket_name <- bucket_name_from_req_params(request)
 
   if (is.null(bucket_name)) return(request)
+
+  if (!host_compatible_bucket_name(bucket_name)) return(request)
 
   request$http_request$url <-
     move_bucket_to_host(request$http_request$url, bucket_name)
