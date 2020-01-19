@@ -38,8 +38,8 @@ Runs the SQL query statements contained in the \code{Query}. Requires you to
 have access to the workgroup in which the query ran.
 }
 \details{
-For code samples using the AWS SDK for Java, see Examples and Code
-Samples in the \emph{Amazon Athena User Guide}.
+For code samples using the AWS SDK for Java, see \href{http://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples}
+in the \emph{Amazon Athena User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$start_query_execution(

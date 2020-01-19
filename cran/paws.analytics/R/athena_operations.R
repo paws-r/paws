@@ -532,8 +532,9 @@ athena_list_named_queries <- function(NextToken = NULL, MaxResults = NULL, WorkG
 #' specified workgroup. Requires you to have access to the workgroup in
 #' which the queries ran.
 #' 
-#' For code samples using the AWS SDK for Java, see Examples and Code
-#' Samples in the *Amazon Athena User Guide*.
+#' For code samples using the AWS SDK for Java, see [Examples and Code
+#' Samples](http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
+#' in the *Amazon Athena User Guide*.
 #'
 #' @usage
 #' athena_list_query_executions(NextToken, MaxResults, WorkGroup)
@@ -658,8 +659,9 @@ athena_list_work_groups <- function(NextToken = NULL, MaxResults = NULL) {
 #' Runs the SQL query statements contained in the `Query`. Requires you to
 #' have access to the workgroup in which the query ran.
 #' 
-#' For code samples using the AWS SDK for Java, see Examples and Code
-#' Samples in the *Amazon Athena User Guide*.
+#' For code samples using the AWS SDK for Java, see [Examples and Code
+#' Samples](http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
+#' in the *Amazon Athena User Guide*.
 #'
 #' @usage
 #' athena_start_query_execution(QueryString, ClientRequestToken,

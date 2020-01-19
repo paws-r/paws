@@ -79,26 +79,28 @@ sorts results by the record type.
 
 You can use the name and type elements to specify the resource record
 set that the list begins with:
+\subsection{If you do not specify Name or Type}{
 
-If you do not specify Name or Type
-
-:   The results begin with the first resource record set that the hosted
+The results begin with the first resource record set that the hosted
 zone contains.
+}
 
-If you specify Name but not Type
+\subsection{If you specify Name but not Type}{
 
-:   The results begin with the first resource record set in the list
-whose name is greater than or equal to \code{Name}.
+The results begin with the first resource record set in the list whose
+name is greater than or equal to \code{Name}.
+}
 
-If you specify Type but not Name
+\subsection{If you specify Type but not Name}{
 
-:   Amazon Route 53 returns the \code{InvalidInput} error.
+Amazon Route 53 returns the \code{InvalidInput} error.
+}
 
-If you specify both Name and Type
+\subsection{If you specify both Name and Type}{
 
-:   The results begin with the first resource record set in the list
-whose name is greater than or equal to \code{Name}, and whose type is
-greater than or equal to \code{Type}.
+The results begin with the first resource record set in the list whose
+name is greater than or equal to \code{Name}, and whose type is greater than
+or equal to \code{Type}.
 
 \strong{Resource record sets that are PENDING}
 
@@ -123,6 +125,7 @@ of results, get the values of \code{NextRecordName}, \code{NextRecordType}, and
 \code{NextRecordIdentifier} (if any) from the response. Then submit another
 \code{ListResourceRecordSets} request, and specify those values for
 \code{StartRecordName}, \code{StartRecordType}, and \code{StartRecordIdentifier}.
+}
 }
 \section{Request syntax}{
 \preformatted{svc$list_resource_record_sets(

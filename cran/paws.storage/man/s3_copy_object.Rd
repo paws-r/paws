@@ -215,157 +215,141 @@ The copy request charge is based on the storage class and Region you
 specify for the destination object. For pricing information, see \href{https://aws.amazon.com/s3/pricing/}{Amazon S3 Pricing}.
 
 Following are other considerations when using \code{CopyObject}:
+\subsection{Versioning}{
 
-Versioning
+By default, \code{x-amz-copy-source} identifies the current version of an
+object to copy. (If the current version is a delete marker, Amazon S3
+behaves as if the object was deleted.) To copy a different version, use
+the \code{versionId} subresource.
 
-:   By default, \code{x-amz-copy-source} identifies the current version of an
-object to copy. (If the current version is a delete marker, Amazon
-S3 behaves as if the object was deleted.) To copy a different
-version, use the \code{versionId} subresource.\preformatted{If you enable versioning on the target bucket, Amazon S3 generates a
+If you enable versioning on the target bucket, Amazon S3 generates a
 unique version ID for the object being copied. This version ID is
-different from the version ID of the source object. Amazon S3
-returns the version ID of the copied object in the
-`x-amz-version-id` response header in the response.
+different from the version ID of the source object. Amazon S3 returns
+the version ID of the copied object in the \code{x-amz-version-id} response
+header in the response.
 
-If you do not enable versioning or suspend it on the target bucket,
-the version ID that Amazon S3 generates is always null.
+If you do not enable versioning or suspend it on the target bucket, the
+version ID that Amazon S3 generates is always null.
 
-If the source object\\'s storage class is GLACIER, you must restore a
+If the source object\'s storage class is GLACIER, you must restore a
 copy of this object before you can use it as a source object for the
 copy operation. For more information, see .
 }
 
-Access Permissions
+\subsection{Access Permissions}{
 
-:   When copying an object, you can optionally specify the accounts or
-groups that should be granted specific permissions on the new
-object. There are two ways to grant the permissions using the
-request headers:\preformatted{-   Specify a canned ACL with the `x-amz-acl` request header. For
-    more information, see [Canned
-    ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
-
--   Specify access permissions explicitly with the
-    `x-amz-grant-read`, `x-amz-grant-read-acp`,
-    `x-amz-grant-write-acp`, and `x-amz-grant-full-control` headers.
-    These parameters map to the set of permissions that Amazon S3
-    supports in an ACL. For more information, see [Access Control
-    List (ACL)
-    Overview](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html).
+When copying an object, you can optionally specify the accounts or
+groups that should be granted specific permissions on the new object.
+There are two ways to grant the permissions using the request headers:
+\itemize{
+\item Specify a canned ACL with the \code{x-amz-acl} request header. For more
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL}{Canned ACL}.
+\item Specify access permissions explicitly with the \code{x-amz-grant-read},
+\code{x-amz-grant-read-acp}, \code{x-amz-grant-write-acp}, and
+\code{x-amz-grant-full-control} headers. These parameters map to the set
+of permissions that Amazon S3 supports in an ACL. For more
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html}{Access Control List (ACL) Overview}.
+}
 
 You can use either a canned ACL or specify access permissions
 explicitly. You cannot do both.
 }
 
-Server-Side- Encryption-Specific Request Headers
+\subsection{Server-Side- Encryption-Specific Request Headers}{
 
-:   To encrypt the target object, you must provide the appropriate
-encryption-related request headers. The one you use depends on
-whether you want to use AWS managed encryption keys or provide your
-own encryption key.\preformatted{-   To encrypt the target object using server-side encryption with
-    an AWS managed encryption key, provide the following request
-    headers, as appropriate.
-
-    -   `x-amz-server-sideâ€‹-encryption`
-
-    -   `x-amz-server-side-encryption-aws-kms-key-id`
-
-    -   `x-amz-server-side-encryption-context`
-
-    If you specify `x-amz-server-side-encryption:aws:kms`, but
-    don\\'t provide `x-amz-server-side-encryption-aws-kms-key-id`,
-    Amazon S3 uses the AWS managed CMK in AWS KMS to protect the
-    data. If you want to use a customer managed AWS KMS CMK, you
-    must provide the `x-amz-server-side-encryption-aws-kms-key-id`
-    of the symmetric customer managed CMK. Amazon S3 only supports
-    symmetric CMKs and not asymmetric CMKs. For more information,
-    see [Using Symmetric and Asymmetric
-    Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
-    in the *AWS Key Management Service Developer Guide*.
-
-    All GET and PUT requests for an object protected by AWS KMS fail
-    if you don\\'t make them with SSL or by using SigV4.
-
-    For more information about server-side encryption with CMKs
-    stored in AWS KMS (SSE-KMS), see [Protecting Data Using
-    Server-Side Encryption with CMKs stored in
-    KMS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
-
--   To encrypt the target object using server-side encryption with
-    an encryption key that you provide, use the following headers.
-
-    -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
-
-    -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
-
-    -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
-
--   If the source object is encrypted using server-side encryption
-    with customer-provided encryption keys, you must use the
-    following headers.
-
-    -   x-amz-copy-sourceâ€‹-server-sideâ€‹-encryptionâ€‹-customer-algorithm
-
-    -   x-amz-copy-sourceâ€‹-server-sideâ€‹-encryptionâ€‹-customer-key
-
-    -   x-amz-copy-source-â€‹server-sideâ€‹-encryptionâ€‹-customer-key-MD5
-
-    For more information about server-side encryption with CMKs
-    stored in AWS KMS (SSE-KMS), see [Protecting Data Using
-    Server-Side Encryption with CMKs stored in Amazon
-    KMS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
+To encrypt the target object, you must provide the appropriate
+encryption-related request headers. The one you use depends on whether
+you want to use AWS managed encryption keys or provide your own
+encryption key.
+\itemize{
+\item To encrypt the target object using server-side encryption with an
+AWS managed encryption key, provide the following request headers,
+as appropriate.
+\itemize{
+\item \verb{x-amz-server-sideâ€‹-encryption}
+\item \code{x-amz-server-side-encryption-aws-kms-key-id}
+\item \code{x-amz-server-side-encryption-context}
 }
 
-Access-Control-List (ACL)-Specific Request Headers
+If you specify \code{x-amz-server-side-encryption:aws:kms}, but don\'t
+provide \code{x-amz-server-side-encryption-aws-kms-key-id}, Amazon S3
+uses the AWS managed CMK in AWS KMS to protect the data. If you want
+to use a customer managed AWS KMS CMK, you must provide the
+\code{x-amz-server-side-encryption-aws-kms-key-id} of the symmetric
+customer managed CMK. Amazon S3 only supports symmetric CMKs and not
+asymmetric CMKs. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric Keys}
+in the \emph{AWS Key Management Service Developer Guide}.
 
-:   You also can use the following access control--related headers with
-this operation. By default, all objects are private. Only the owner
-has full access control. When adding a new object, you can grant
-permissions to individual AWS accounts or to predefined groups
-defined by Amazon S3. These permissions are then added to the access
-control list (ACL) on the object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html}{Using ACLs}.
-With this operation, you can grant access permissions using one of
-the following two methods:\preformatted{-   Specify a canned ACL (`x-amz-acl`) --- Amazon S3 supports a set
-    of predefined ACLs, known as *canned ACLs*. Each canned ACL has
-    a predefined set of grantees and permissions. For more
-    information, see [Canned
-    ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
+All GET and PUT requests for an object protected by AWS KMS fail if
+you don\'t make them with SSL or by using SigV4.
 
--   Specify access permissions explicitly --- To explicitly grant
-    access permissions to specific AWS accounts or groups, use the
-    following headers. Each header maps to specific permissions that
-    Amazon S3 supports in an ACL. For more information, see [Access
-    Control List (ACL)
-    Overview](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html).
-    In the header, you specify a list of grantees who get the
-    specific permission. To grant permissions explicitly, use:
+For more information about server-side encryption with CMKs stored
+in AWS KMS (SSE-KMS), see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html}{Protecting Data Using Server-Side Encryption with CMKs stored in KMS}.
+\item To encrypt the target object using server-side encryption with an
+encryption key that you provide, use the following headers.
+\itemize{
+\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
+\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
+\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
+}
+\item If the source object is encrypted using server-side encryption with
+customer-provided encryption keys, you must use the following
+headers.
+\itemize{
+\item x-amz-copy-sourceâ€‹-server-sideâ€‹-encryptionâ€‹-customer-algorithm
+\item x-amz-copy-sourceâ€‹-server-sideâ€‹-encryptionâ€‹-customer-key
+\item x-amz-copy-source-â€‹server-sideâ€‹-encryptionâ€‹-customer-key-MD5
+}
 
-    -   x-amz-grant-read
+For more information about server-side encryption with CMKs stored
+in AWS KMS (SSE-KMS), see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html}{Protecting Data Using Server-Side Encryption with CMKs stored in Amazon KMS}.
+}
+}
 
-    -   x-amz-grant-write
+\subsection{Access-Control-List (ACL)-Specific Request Headers}{
 
-    -   x-amz-grant-read-acp
+You also can use the following access control--related headers with this
+operation. By default, all objects are private. Only the owner has full
+access control. When adding a new object, you can grant permissions to
+individual AWS accounts or to predefined groups defined by Amazon S3.
+These permissions are then added to the access control list (ACL) on the
+object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html}{Using ACLs}.
+With this operation, you can grant access permissions using one of the
+following two methods:
+\itemize{
+\item Specify a canned ACL (\code{x-amz-acl}) --- Amazon S3 supports a set of
+predefined ACLs, known as \emph{canned ACLs}. Each canned ACL has a
+predefined set of grantees and permissions. For more information,
+see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL}{Canned ACL}.
+\item Specify access permissions explicitly --- To explicitly grant access
+permissions to specific AWS accounts or groups, use the following
+headers. Each header maps to specific permissions that Amazon S3
+supports in an ACL. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html}{Access Control List (ACL) Overview}.
+In the header, you specify a list of grantees who get the specific
+permission. To grant permissions explicitly, use:
+\itemize{
+\item x-amz-grant-read
+\item x-amz-grant-write
+\item x-amz-grant-read-acp
+\item x-amz-grant-write-acp
+\item x-amz-grant-full-control
+}
 
-    -   x-amz-grant-write-acp
+You specify each grantee as a type=value pair, where the type is one
+of the following:
+\itemize{
+\item \code{emailAddress} -- if the value specified is the email address of
+an AWS account
+\item \code{id} -- if the value specified is the canonical user ID of an
+AWS account
+\item \code{uri} -- if you are granting permissions to a predefined group
+}
 
-    -   x-amz-grant-full-control
+For example, the following \code{x-amz-grant-read} header grants the AWS
+accounts identified by email addresses permissions to read object
+data and its metadata:
 
-    You specify each grantee as a type=value pair, where the type is
-    one of the following:
-
-    -   `emailAddress` -- if the value specified is the email
-        address of an AWS account
-
-    -   `id` -- if the value specified is the canonical user ID of
-        an AWS account
-
-    -   `uri` -- if you are granting permissions to a predefined
-        group
-
-    For example, the following `x-amz-grant-read` header grants the
-    AWS accounts identified by email addresses permissions to read
-    object data and its metadata:
-
-    `x-amz-grant-read: emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com" `
+\verb{x-amz-grant-read: emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com" }
 }
 
 The following operations are related to \code{CopyObject}:
@@ -375,6 +359,7 @@ The following operations are related to \code{CopyObject}:
 }
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/CopyingObjectsExamples.html}{Copying Objects}.
+}
 }
 \section{Request syntax}{
 \preformatted{svc$copy_object(

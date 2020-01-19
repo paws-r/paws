@@ -25,14 +25,15 @@ APIs that are specified in its associated policies on your behalf. This
 is how credentials are passed in to your simulation job.}
 
 \item{failureBehavior}{The failure behavior the simulation job.
+\subsection{Continue}{
 
-Continue
+Restart the simulation job in the same host instance.
+}
 
-:   Restart the simulation job in the same host instance.
+\subsection{Fail}{
 
-Fail
-
-:   Stop the simulation job and terminate the instance.}
+Stop the simulation job and terminate the instance.
+}}
 
 \item{robotApplications}{The robot application to use in the simulation job.}
 

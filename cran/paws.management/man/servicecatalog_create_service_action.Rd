@@ -13,28 +13,33 @@ servicecatalog_create_service_action(Name, DefinitionType, Definition,
 \item{DefinitionType}{[required] The service action definition type. For example, \code{SSM_AUTOMATION}.}
 
 \item{Definition}{[required] The self-service action definition. Can be one of the following:
+\subsection{Name}{
 
-Name
-
-:   The name of the AWS Systems Manager Document. For example,
+The name of the AWS Systems Manager Document. For example,
 \code{AWS-RestartEC2Instance}.
-
-Version
-
-:   The AWS Systems Manager automation document version. For example,
-\code{"Version": "1"}
-
-AssumeRole
-
-:   The Amazon Resource Name (ARN) of the role that performs the
-self-service actions on your behalf. For example,
-\code{"AssumeRole": "arn:aws:iam::12345678910:role/ActionRole"}.\preformatted{To reuse the provisioned product launch role, set to
-`"AssumeRole": "LAUNCH_ROLE"`.
 }
 
-Parameters
+\subsection{Version}{
 
-:   The list of parameters in JSON format.\preformatted{For example: `\\\[\\\{\\"Name\\":\\"InstanceId\\",\\"Type\\":\\"TARGET\\"\\\}\\\]`.
+The AWS Systems Manager automation document version. For example,
+\code{"Version": "1"}
+}
+
+\subsection{AssumeRole}{
+
+The Amazon Resource Name (ARN) of the role that performs the
+self-service actions on your behalf. For example,
+\code{"AssumeRole": "arn:aws:iam::12345678910:role/ActionRole"}.
+
+To reuse the provisioned product launch role, set to
+\code{"AssumeRole": "LAUNCH_ROLE"}.
+}
+
+\subsection{Parameters}{
+
+The list of parameters in JSON format.
+
+For example: \verb{\\\[\\\{\\"Name\\":\\"InstanceId\\",\\"Type\\":\\"TARGET\\"\\\}\\\]}.
 }}
 
 \item{Description}{The self-service action description.}

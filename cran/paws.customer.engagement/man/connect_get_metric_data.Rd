@@ -44,132 +44,181 @@ returned.}
 
 \item{HistoricalMetrics}{[required] The metrics to retrieve. Specify the name, unit, and statistic for each
 metric. The following historical metrics are available:
+\subsection{ABANDON\\_TIME}{
 
-ABANDON\\_TIME
+Unit: SECONDS
 
-:   Unit: SECONDS\preformatted{Statistic: AVG
+Statistic: AVG
 }
 
-AFTER\\_CONTACT\\_WORK\\_TIME
+\subsection{AFTER\\_CONTACT\\_WORK\\_TIME}{
 
-:   Unit: SECONDS\preformatted{Statistic: AVG
+Unit: SECONDS
+
+Statistic: AVG
 }
 
-API\\_CONTACTS\\_HANDLED
+\subsection{API\\_CONTACTS\\_HANDLED}{
 
-:   Unit: COUNT\preformatted{Statistic: SUM
+Unit: COUNT
+
+Statistic: SUM
 }
 
-CALLBACK\\_CONTACTS\\_HANDLED
+\subsection{CALLBACK\\_CONTACTS\\_HANDLED}{
 
-:   Unit: COUNT\preformatted{Statistic: SUM
+Unit: COUNT
+
+Statistic: SUM
 }
 
-CONTACTS\\_ABANDONED
+\subsection{CONTACTS\\_ABANDONED}{
 
-:   Unit: COUNT\preformatted{Statistic: SUM
+Unit: COUNT
+
+Statistic: SUM
 }
 
-CONTACTS\\_AGENT\\_HUNG\\_UP\\_FIRST
+\subsection{CONTACTS\\_AGENT\\_HUNG\\_UP\\_FIRST}{
 
-:   Unit: COUNT\preformatted{Statistic: SUM
+Unit: COUNT
+
+Statistic: SUM
 }
 
-CONTACTS\\_CONSULTED
+\subsection{CONTACTS\\_CONSULTED}{
 
-:   Unit: COUNT\preformatted{Statistic: SUM
+Unit: COUNT
+
+Statistic: SUM
 }
 
-CONTACTS\\_HANDLED
+\subsection{CONTACTS\\_HANDLED}{
 
-:   Unit: COUNT\preformatted{Statistic: SUM
+Unit: COUNT
+
+Statistic: SUM
 }
 
-CONTACTS\\_HANDLED\\_INCOMING
+\subsection{CONTACTS\\_HANDLED\\_INCOMING}{
 
-:   Unit: COUNT\preformatted{Statistic: SUM
+Unit: COUNT
+
+Statistic: SUM
 }
 
-CONTACTS\\_HANDLED\\_OUTBOUND
+\subsection{CONTACTS\\_HANDLED\\_OUTBOUND}{
 
-:   Unit: COUNT\preformatted{Statistic: SUM
+Unit: COUNT
+
+Statistic: SUM
 }
 
-CONTACTS\\_HOLD\\_ABANDONS
+\subsection{CONTACTS\\_HOLD\\_ABANDONS}{
 
-:   Unit: COUNT\preformatted{Statistic: SUM
+Unit: COUNT
+
+Statistic: SUM
 }
 
-CONTACTS\\_MISSED
+\subsection{CONTACTS\\_MISSED}{
 
-:   Unit: COUNT\preformatted{Statistic: SUM
+Unit: COUNT
+
+Statistic: SUM
 }
 
-CONTACTS\\_QUEUED
+\subsection{CONTACTS\\_QUEUED}{
 
-:   Unit: COUNT\preformatted{Statistic: SUM
+Unit: COUNT
+
+Statistic: SUM
 }
 
-CONTACTS\\_TRANSFERRED\\_IN
+\subsection{CONTACTS\\_TRANSFERRED\\_IN}{
 
-:   Unit: COUNT\preformatted{Statistic: SUM
+Unit: COUNT
+
+Statistic: SUM
 }
 
-CONTACTS\\_TRANSFERRED\\_IN\\_FROM\\_QUEUE
+\subsection{CONTACTS\\_TRANSFERRED\\_IN\\_FROM\\_QUEUE}{
 
-:   Unit: COUNT\preformatted{Statistic: SUM
+Unit: COUNT
+
+Statistic: SUM
 }
 
-CONTACTS\\_TRANSFERRED\\_OUT
+\subsection{CONTACTS\\_TRANSFERRED\\_OUT}{
 
-:   Unit: COUNT\preformatted{Statistic: SUM
+Unit: COUNT
+
+Statistic: SUM
 }
 
-CONTACTS\\_TRANSFERRED\\_OUT\\_FROM\\_QUEUE
+\subsection{CONTACTS\\_TRANSFERRED\\_OUT\\_FROM\\_QUEUE}{
 
-:   Unit: COUNT\preformatted{Statistic: SUM
+Unit: COUNT
+
+Statistic: SUM
 }
 
-HANDLE\\_TIME
+\subsection{HANDLE\\_TIME}{
 
-:   Unit: SECONDS\preformatted{Statistic: AVG
+Unit: SECONDS
+
+Statistic: AVG
 }
 
-HOLD\\_TIME
+\subsection{HOLD\\_TIME}{
 
-:   Unit: SECONDS\preformatted{Statistic: AVG
+Unit: SECONDS
+
+Statistic: AVG
 }
 
-INTERACTION\\_AND\\_HOLD\\_TIME
+\subsection{INTERACTION\\_AND\\_HOLD\\_TIME}{
 
-:   Unit: SECONDS\preformatted{Statistic: AVG
+Unit: SECONDS
+
+Statistic: AVG
 }
 
-INTERACTION\\_TIME
+\subsection{INTERACTION\\_TIME}{
 
-:   Unit: SECONDS\preformatted{Statistic: AVG
+Unit: SECONDS
+
+Statistic: AVG
 }
 
-OCCUPANCY
+\subsection{OCCUPANCY}{
 
-:   Unit: PERCENT\preformatted{Statistic: AVG
+Unit: PERCENT
+
+Statistic: AVG
 }
 
-QUEUE\\_ANSWER\\_TIME
+\subsection{QUEUE\\_ANSWER\\_TIME}{
 
-:   Unit: SECONDS\preformatted{Statistic: AVG
+Unit: SECONDS
+
+Statistic: AVG
 }
 
-QUEUED\\_TIME
+\subsection{QUEUED\\_TIME}{
 
-:   Unit: SECONDS\preformatted{Statistic: MAX
+Unit: SECONDS
+
+Statistic: MAX
 }
 
-SERVICE\\_LEVEL
+\subsection{SERVICE\\_LEVEL}{
 
-:   Unit: PERCENT\preformatted{Statistic: AVG
+Unit: PERCENT
 
-Threshold: Only \\"Less than\\" comparisons are supported, with the
+Statistic: AVG
+
+Threshold: Only \"Less than\" comparisons are supported, with the
 following service level thresholds: 15, 20, 25, 30, 45, 60, 90, 120,
 180, 240, 300, 600
 }}

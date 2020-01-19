@@ -174,211 +174,183 @@ encryption, Amazon S3 encrypts your data as it writes it to disks in its
 data centers and decrypts the data when you access it. You have the
 option to provide your own encryption key or use AWS managed encryption
 keys. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html}{Using Server-Side Encryption}.
+\subsection{Access Permissions}{
 
-Access Permissions
-
-:   You can optionally specify the accounts or groups that should be
-granted specific permissions on the new object. There are two ways
-to grant the permissions using the request headers:\preformatted{-   Specify a canned ACL with the `x-amz-acl` request header. For
-    more information, see [Canned
-    ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
-
--   Specify access permissions explicitly with the
-    `x-amz-grant-read`, `x-amz-grant-read-acp`,
-    `x-amz-grant-write-acp`, and `x-amz-grant-full-control` headers.
-    These parameters map to the set of permissions that Amazon S3
-    supports in an ACL. For more information, see [Access Control
-    List (ACL)
-    Overview](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html).
+You can optionally specify the accounts or groups that should be granted
+specific permissions on the new object. There are two ways to grant the
+permissions using the request headers:
+\itemize{
+\item Specify a canned ACL with the \code{x-amz-acl} request header. For more
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL}{Canned ACL}.
+\item Specify access permissions explicitly with the \code{x-amz-grant-read},
+\code{x-amz-grant-read-acp}, \code{x-amz-grant-write-acp}, and
+\code{x-amz-grant-full-control} headers. These parameters map to the set
+of permissions that Amazon S3 supports in an ACL. For more
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html}{Access Control List (ACL) Overview}.
+}
 
 You can use either a canned ACL or specify access permissions
 explicitly. You cannot do both.
 }
 
-Server-Side- Encryption-Specific Request Headers
+\subsection{Server-Side- Encryption-Specific Request Headers}{
 
-:   You can optionally tell Amazon S3 to encrypt data at rest using
-server-side encryption. Server-side encryption is for data
-encryption at rest. Amazon S3 encrypts your data as it writes it to
-disks in its data centers and decrypts it when you access it. The
-option you use depends on whether you want to use AWS managed
-encryption keys or provide your own encryption key.\preformatted{-   Use encryption keys managed by Amazon S3 or customer master keys
-    (CMKs) stored in AWS Key Management Service (AWS KMS) -- If you
-    want AWS to manage the keys used to encrypt data, specify the
-    following headers in the request.
-
-    -   x-amz-server-sideâ€‹-encryption
-
-    -   x-amz-server-side-encryption-aws-kms-key-id
-
-    -   x-amz-server-side-encryption-context
-
-    If you specify `x-amz-server-side-encryption:aws:kms`, but
-    don\\'t provide `x-amz-server-side-encryption-aws-kms-key-id`,
-    Amazon S3 uses the AWS managed CMK in AWS KMS to protect the
-    data. If you want to use a customer managed AWS KMS CMK, you
-    must provide the `x-amz-server-side-encryption-aws-kms-key-id`
-    of the symmetric customer managed CMK. Amazon S3 only supports
-    symmetric CMKs and not asymmetric CMKs. For more information,
-    see [Using Symmetric and Asymmetric
-    Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
-    in the *AWS Key Management Service Developer Guide*.
-
-    All GET and PUT requests for an object protected by AWS KMS fail
-    if you don\\'t make them with SSL or by using SigV4.
-
-    For more information about server-side encryption with CMKs
-    stored in AWS KMS (SSE-KMS), see [Protecting Data Using
-    Server-Side Encryption with CMKs stored in
-    AWS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
-
--   Use customer-provided encryption keys -- If you want to manage
-    your own encryption keys, provide all the following headers in
-    the request.
-
-    -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
-
-    -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
-
-    -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
-
-    For more information about server-side encryption with CMKs
-    stored in KMS (SSE-KMS), see [Protecting Data Using Server-Side
-    Encryption with CMKs stored in
-    AWS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
+You can optionally tell Amazon S3 to encrypt data at rest using
+server-side encryption. Server-side encryption is for data encryption at
+rest. Amazon S3 encrypts your data as it writes it to disks in its data
+centers and decrypts it when you access it. The option you use depends
+on whether you want to use AWS managed encryption keys or provide your
+own encryption key.
+\itemize{
+\item Use encryption keys managed by Amazon S3 or customer master keys
+(CMKs) stored in AWS Key Management Service (AWS KMS) -- If you want
+AWS to manage the keys used to encrypt data, specify the following
+headers in the request.
+\itemize{
+\item x-amz-server-sideâ€‹-encryption
+\item x-amz-server-side-encryption-aws-kms-key-id
+\item x-amz-server-side-encryption-context
 }
 
-Access-Control-List (ACL)-Specific Request Headers
+If you specify \code{x-amz-server-side-encryption:aws:kms}, but don\'t
+provide \code{x-amz-server-side-encryption-aws-kms-key-id}, Amazon S3
+uses the AWS managed CMK in AWS KMS to protect the data. If you want
+to use a customer managed AWS KMS CMK, you must provide the
+\code{x-amz-server-side-encryption-aws-kms-key-id} of the symmetric
+customer managed CMK. Amazon S3 only supports symmetric CMKs and not
+asymmetric CMKs. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric Keys}
+in the \emph{AWS Key Management Service Developer Guide}.
 
-:   You also can use the following access control--related headers with
-this operation. By default, all objects are private. Only the owner
-has full access control. When adding a new object, you can grant
-permissions to individual AWS accounts or to predefined groups
-defined by Amazon S3. These permissions are then added to the Access
-Control List (ACL) on the object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html}{Using ACLs}.
-With this operation, you can grant access permissions using one of
-the following two methods:\preformatted{-   Specify a canned ACL (`x-amz-acl`) --- Amazon S3 supports a set
-    of predefined ACLs, known as canned ACLs. Each canned ACL has a
-    predefined set of grantees and permissions. For more
-    information, see [Canned
-    ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
+All GET and PUT requests for an object protected by AWS KMS fail if
+you don\'t make them with SSL or by using SigV4.
 
--   Specify access permissions explicitly --- To explicitly grant
-    access permissions to specific AWS accounts or groups, use the
-    following headers. Each header maps to specific permissions that
-    Amazon S3 supports in an ACL. For more information, see [Access
-    Control List (ACL)
-    Overview](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html).
-    In the header, you specify a list of grantees who get the
-    specific permission. To grant permissions explicitly use:
-
-    -   x-amz-grant-read
-
-    -   x-amz-grant-write
-
-    -   x-amz-grant-read-acp
-
-    -   x-amz-grant-write-acp
-
-    -   x-amz-grant-full-control
-
-    You specify each grantee as a type=value pair, where the type is
-    one of the following:
-
-    -   `emailAddress` -- if the value specified is the email
-        address of an AWS account
-
-        Using email addresses to specify a grantee is only supported
-        in the following AWS Regions:
-
-        -   US East (N. Virginia)
-
-        -   US West (N. California)
-
-        -   US West (Oregon)
-
-        -   Asia Pacific (Singapore)
-
-        -   Asia Pacific (Sydney)
-
-        -   Asia Pacific (Tokyo)
-
-        -   EU (Ireland)
-
-        -   South America (SÃ£o Paulo)
-
-        For a list of all the Amazon S3 supported Regions and
-        endpoints, see [Regions and
-        Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region)
-        in the AWS General Reference
-
-    -   `id` -- if the value specified is the canonical user ID of
-        an AWS account
-
-    -   `uri` -- if you are granting permissions to a predefined
-        group
-
-    For example, the following `x-amz-grant-read` header grants the
-    AWS accounts identified by email addresses permissions to read
-    object data and its metadata:
-
-    `x-amz-grant-read: emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com" `
+For more information about server-side encryption with CMKs stored
+in AWS KMS (SSE-KMS), see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html}{Protecting Data Using Server-Side Encryption with CMKs stored in AWS}.
+\item Use customer-provided encryption keys -- If you want to manage your
+own encryption keys, provide all the following headers in the
+request.
+\itemize{
+\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
+\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
+\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
 }
 
-Server-Side- Encryption-Specific Request Headers
+For more information about server-side encryption with CMKs stored
+in KMS (SSE-KMS), see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html}{Protecting Data Using Server-Side Encryption with CMKs stored in AWS}.
+}
+}
 
-:   You can optionally tell Amazon S3 to encrypt data at rest using
-server-side encryption. Server-side encryption is for data
-encryption at rest. Amazon S3 encrypts your data as it writes it to
-disks in its data centers and decrypts it when you access it. The
-option you use depends on whether you want to use AWS-managed
-encryption keys or provide your own encryption key.\preformatted{-   Use encryption keys managed by Amazon S3 or customer master keys
-    (CMKs) stored in AWS Key Management Service (AWS KMS) -- If you
-    want AWS to manage the keys used to encrypt data, specify the
-    following headers in the request.
+\subsection{Access-Control-List (ACL)-Specific Request Headers}{
 
-    -   x-amz-server-sideâ€‹-encryption
+You also can use the following access control--related headers with this
+operation. By default, all objects are private. Only the owner has full
+access control. When adding a new object, you can grant permissions to
+individual AWS accounts or to predefined groups defined by Amazon S3.
+These permissions are then added to the Access Control List (ACL) on the
+object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html}{Using ACLs}.
+With this operation, you can grant access permissions using one of the
+following two methods:
+\itemize{
+\item Specify a canned ACL (\code{x-amz-acl}) --- Amazon S3 supports a set of
+predefined ACLs, known as canned ACLs. Each canned ACL has a
+predefined set of grantees and permissions. For more information,
+see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL}{Canned ACL}.
+\item Specify access permissions explicitly --- To explicitly grant access
+permissions to specific AWS accounts or groups, use the following
+headers. Each header maps to specific permissions that Amazon S3
+supports in an ACL. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html}{Access Control List (ACL) Overview}.
+In the header, you specify a list of grantees who get the specific
+permission. To grant permissions explicitly use:
+\itemize{
+\item x-amz-grant-read
+\item x-amz-grant-write
+\item x-amz-grant-read-acp
+\item x-amz-grant-write-acp
+\item x-amz-grant-full-control
+}
 
-    -   x-amz-server-side-encryption-aws-kms-key-id
+You specify each grantee as a type=value pair, where the type is one
+of the following:
+\itemize{
+\item \code{emailAddress} -- if the value specified is the email address of
+an AWS account
 
-    -   x-amz-server-side-encryption-context
+Using email addresses to specify a grantee is only supported in
+the following AWS Regions:
+\itemize{
+\item US East (N. Virginia)
+\item US West (N. California)
+\item US West (Oregon)
+\item Asia Pacific (Singapore)
+\item Asia Pacific (Sydney)
+\item Asia Pacific (Tokyo)
+\item EU (Ireland)
+\item South America (SÃ£o Paulo)
+}
 
-    If you specify `x-amz-server-side-encryption:aws:kms`, but
-    don\\'t provide `x-amz-server-side-encryption-aws-kms-key-id`,
-    Amazon S3 uses the AWS managed CMK in AWS KMS to protect the
-    data. If you want to use a customer managed AWS KMS CMK, you
-    must provide the `x-amz-server-side-encryption-aws-kms-key-id`
-    of the symmetric customer managed CMK. Amazon S3 only supports
-    symmetric CMKs and not asymmetric CMKs. For more information,
-    see [Using Symmetric and Asymmetric
-    Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
-    in the *AWS Key Management Service Developer Guide*.
+For a list of all the Amazon S3 supported Regions and endpoints,
+see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region}{Regions and Endpoints}
+in the AWS General Reference
+\item \code{id} -- if the value specified is the canonical user ID of an
+AWS account
+\item \code{uri} -- if you are granting permissions to a predefined group
+}
 
-    All GET and PUT requests for an object protected by AWS KMS fail
-    if you don\\'t make them with SSL or by using SigV4.
+For example, the following \code{x-amz-grant-read} header grants the AWS
+accounts identified by email addresses permissions to read object
+data and its metadata:
 
-    For more information about server-side encryption with CMKs
-    stored in AWS KMS (SSE-KMS), see [Protecting Data Using
-    Server-Side Encryption with CMKs stored in AWS
-    KMS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
+\verb{x-amz-grant-read: emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com" }
+}
+}
 
--   Use customer-provided encryption keys -- If you want to manage
-    your own encryption keys, provide all the following headers in
-    the request.
+\subsection{Server-Side- Encryption-Specific Request Headers}{
 
-    If you use this feature, the ETag value that Amazon S3 returns
-    in the response is not the MD5 of the object.
+You can optionally tell Amazon S3 to encrypt data at rest using
+server-side encryption. Server-side encryption is for data encryption at
+rest. Amazon S3 encrypts your data as it writes it to disks in its data
+centers and decrypts it when you access it. The option you use depends
+on whether you want to use AWS-managed encryption keys or provide your
+own encryption key.
+\itemize{
+\item Use encryption keys managed by Amazon S3 or customer master keys
+(CMKs) stored in AWS Key Management Service (AWS KMS) -- If you want
+AWS to manage the keys used to encrypt data, specify the following
+headers in the request.
+\itemize{
+\item x-amz-server-sideâ€‹-encryption
+\item x-amz-server-side-encryption-aws-kms-key-id
+\item x-amz-server-side-encryption-context
+}
 
-    -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
+If you specify \code{x-amz-server-side-encryption:aws:kms}, but don\'t
+provide \code{x-amz-server-side-encryption-aws-kms-key-id}, Amazon S3
+uses the AWS managed CMK in AWS KMS to protect the data. If you want
+to use a customer managed AWS KMS CMK, you must provide the
+\code{x-amz-server-side-encryption-aws-kms-key-id} of the symmetric
+customer managed CMK. Amazon S3 only supports symmetric CMKs and not
+asymmetric CMKs. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric Keys}
+in the \emph{AWS Key Management Service Developer Guide}.
 
-    -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
+All GET and PUT requests for an object protected by AWS KMS fail if
+you don\'t make them with SSL or by using SigV4.
 
-    -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
+For more information about server-side encryption with CMKs stored
+in AWS KMS (SSE-KMS), see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html}{Protecting Data Using Server-Side Encryption with CMKs stored in AWS KMS}.
+\item Use customer-provided encryption keys -- If you want to manage your
+own encryption keys, provide all the following headers in the
+request.
 
-    For more information about server-side encryption with CMKs
-    stored in AWS KMS (SSE-KMS), see [Protecting Data Using
-    Server-Side Encryption with CMKs stored in AWS
-    KMS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
+If you use this feature, the ETag value that Amazon S3 returns in
+the response is not the MD5 of the object.
+\itemize{
+\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
+\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
+\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
+}
+
+For more information about server-side encryption with CMKs stored
+in AWS KMS (SSE-KMS), see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html}{Protecting Data Using Server-Side Encryption with CMKs stored in AWS KMS}.
 }
 
 \strong{Storage Class Options}
@@ -404,6 +376,7 @@ for the same object simultaneously, it stores all of the objects.
 \itemize{
 \item CopyObject
 \item DeleteObject
+}
 }
 }
 \section{Request syntax}{

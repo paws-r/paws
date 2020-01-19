@@ -507,13 +507,13 @@ robomaker_create_simulation_application_version <- function(application, current
 #' is how credentials are passed in to your simulation job.
 #' @param failureBehavior The failure behavior the simulation job.
 #' 
-#' Continue
+#' ### Continue
 #' 
-#' :   Restart the simulation job in the same host instance.
+#' Restart the simulation job in the same host instance.
 #' 
-#' Fail
+#' ### Fail
 #' 
-#' :   Stop the simulation job and terminate the instance.
+#' Stop the simulation job and terminate the instance.
 #' @param robotApplications The robot application to use in the simulation job.
 #' @param simulationApplications The simulation application to use in the simulation job.
 #' @param dataSources The data sources for the simulation job.

@@ -43,19 +43,20 @@ instance types are available:
 }}
 
 \item{FleetType}{The fleet type.
+\subsection{ALWAYS\\_ON}{
 
-ALWAYS\\_ON
+Provides users with instant-on access to their apps. You are charged for
+all running instances in your fleet, even if no users are streaming
+apps.
+}
 
-:   Provides users with instant-on access to their apps. You are charged
-for all running instances in your fleet, even if no users are
+\subsection{ON\\_DEMAND}{
+
+Provide users with access to applications after they connect, which
+takes one to two minutes. You are charged for instance streaming when
+users are connected and a small hourly fee for instances that are not
 streaming apps.
-
-ON\\_DEMAND
-
-:   Provide users with access to applications after they connect, which
-takes one to two minutes. You are charged for instance streaming
-when users are connected and a small hourly fee for instances that
-are not streaming apps.}
+}}
 
 \item{ComputeCapacity}{[required] The desired capacity for the fleet.}
 

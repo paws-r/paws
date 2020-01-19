@@ -3315,34 +3315,34 @@ ssm_describe_patch_groups <- function(MaxResults = NULL, Filters = NULL, NextTok
 #' The following section lists the properties that can be used in filters
 #' for each major operating system type:
 #' 
-#' WINDOWS
+#' ### WINDOWS
 #' 
-#' :   Valid properties: PRODUCT, PRODUCT\\_FAMILY, CLASSIFICATION,
-#'     MSRC\\_SEVERITY
+#' Valid properties: PRODUCT, PRODUCT\\_FAMILY, CLASSIFICATION,
+#' MSRC\\_SEVERITY
 #' 
-#' AMAZON\\_LINUX
+#' ### AMAZON\\_LINUX
 #' 
-#' :   Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+#' Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 #' 
-#' AMAZON\\_LINUX\\_2
+#' ### AMAZON\\_LINUX\\_2
 #' 
-#' :   Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+#' Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 #' 
-#' UBUNTU
+#' ### UBUNTU
 #' 
-#' :   Valid properties: PRODUCT, PRIORITY
+#' Valid properties: PRODUCT, PRIORITY
 #' 
-#' REDHAT\\_ENTERPRISE\\_LINUX
+#' ### REDHAT\\_ENTERPRISE\\_LINUX
 #' 
-#' :   Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+#' Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 #' 
-#' SUSE
+#' ### SUSE
 #' 
-#' :   Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+#' Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 #' 
-#' CENTOS
+#' ### CENTOS
 #' 
-#' :   Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+#' Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 #'
 #' @usage
 #' ssm_describe_patch_properties(OperatingSystem, Property, PatchSet,
