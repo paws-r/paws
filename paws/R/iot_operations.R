@@ -9657,34 +9657,33 @@ iot_update_thing_groups_for_thing <- function(thingName = NULL, thingGroupsToAdd
 #' @param arn &#91;required&#93; The ARN of the topic rule destination.
 #' @param status &#91;required&#93; The status of the topic rule destination. Valid values are:
 #' 
-#' IN\\_PROGRESS
+#' ### IN\\_PROGRESS
 #' 
-#' :   A topic rule destination was created but has not been confirmed. You
-#'     can set `status` to `IN_PROGRESS` by calling
-#'     `UpdateTopicRuleDestination`. Calling `UpdateTopicRuleDestination`
-#'     causes a new confirmation challenge to be sent to your confirmation
-#'     endpoint.
+#' A topic rule destination was created but has not been confirmed. You can
+#' set `status` to `IN_PROGRESS` by calling `UpdateTopicRuleDestination`.
+#' Calling `UpdateTopicRuleDestination` causes a new confirmation challenge
+#' to be sent to your confirmation endpoint.
 #' 
-#' ENABLED
+#' ### ENABLED
 #' 
-#' :   Confirmation was completed, and traffic to this destination is
-#'     allowed. You can set `status` to `DISABLED` by calling
-#'     `UpdateTopicRuleDestination`.
+#' Confirmation was completed, and traffic to this destination is allowed.
+#' You can set `status` to `DISABLED` by calling
+#' `UpdateTopicRuleDestination`.
 #' 
-#' DISABLED
+#' ### DISABLED
 #' 
-#' :   Confirmation was completed, and traffic to this destination is not
-#'     allowed. You can set `status` to `ENABLED` by calling
-#'     `UpdateTopicRuleDestination`.
+#' Confirmation was completed, and traffic to this destination is not
+#' allowed. You can set `status` to `ENABLED` by calling
+#' `UpdateTopicRuleDestination`.
 #' 
-#' ERROR
+#' ### ERROR
 #' 
-#' :   Confirmation could not be completed, for example if the confirmation
-#'     timed out. You can call `GetTopicRuleDestination` for details about
-#'     the error. You can set `status` to `IN_PROGRESS` by calling
-#'     `UpdateTopicRuleDestination`. Calling `UpdateTopicRuleDestination`
-#'     causes a new confirmation challenge to be sent to your confirmation
-#'     endpoint.
+#' Confirmation could not be completed, for example if the confirmation
+#' timed out. You can call `GetTopicRuleDestination` for details about the
+#' error. You can set `status` to `IN_PROGRESS` by calling
+#' `UpdateTopicRuleDestination`. Calling `UpdateTopicRuleDestination`
+#' causes a new confirmation challenge to be sent to your confirmation
+#' endpoint.
 #'
 #' @section Request syntax:
 #' ```

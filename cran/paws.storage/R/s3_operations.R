@@ -340,162 +340,159 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' 
 #' Following are other considerations when using `CopyObject`:
 #' 
-#' Versioning
+#' ### Versioning
 #' 
-#' :   By default, `x-amz-copy-source` identifies the current version of an
-#'     object to copy. (If the current version is a delete marker, Amazon
-#'     S3 behaves as if the object was deleted.) To copy a different
-#'     version, use the `versionId` subresource.
+#' By default, `x-amz-copy-source` identifies the current version of an
+#' object to copy. (If the current version is a delete marker, Amazon S3
+#' behaves as if the object was deleted.) To copy a different version, use
+#' the `versionId` subresource.
 #' 
-#'     If you enable versioning on the target bucket, Amazon S3 generates a
-#'     unique version ID for the object being copied. This version ID is
-#'     different from the version ID of the source object. Amazon S3
-#'     returns the version ID of the copied object in the
-#'     `x-amz-version-id` response header in the response.
+#' If you enable versioning on the target bucket, Amazon S3 generates a
+#' unique version ID for the object being copied. This version ID is
+#' different from the version ID of the source object. Amazon S3 returns
+#' the version ID of the copied object in the `x-amz-version-id` response
+#' header in the response.
 #' 
-#'     If you do not enable versioning or suspend it on the target bucket,
-#'     the version ID that Amazon S3 generates is always null.
+#' If you do not enable versioning or suspend it on the target bucket, the
+#' version ID that Amazon S3 generates is always null.
 #' 
-#'     If the source object\'s storage class is GLACIER, you must restore a
-#'     copy of this object before you can use it as a source object for the
-#'     copy operation. For more information, see .
+#' If the source object\'s storage class is GLACIER, you must restore a
+#' copy of this object before you can use it as a source object for the
+#' copy operation. For more information, see .
 #' 
-#' Access Permissions
+#' ### Access Permissions
 #' 
-#' :   When copying an object, you can optionally specify the accounts or
-#'     groups that should be granted specific permissions on the new
-#'     object. There are two ways to grant the permissions using the
-#'     request headers:
+#' When copying an object, you can optionally specify the accounts or
+#' groups that should be granted specific permissions on the new object.
+#' There are two ways to grant the permissions using the request headers:
 #' 
-#'     -   Specify a canned ACL with the `x-amz-acl` request header. For
-#'         more information, see [Canned
-#'         ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
+#' -   Specify a canned ACL with the `x-amz-acl` request header. For more
+#'     information, see [Canned
+#'     ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
 #' 
-#'     -   Specify access permissions explicitly with the
-#'         `x-amz-grant-read`, `x-amz-grant-read-acp`,
-#'         `x-amz-grant-write-acp`, and `x-amz-grant-full-control` headers.
-#'         These parameters map to the set of permissions that Amazon S3
-#'         supports in an ACL. For more information, see [Access Control
-#'         List (ACL)
-#'         Overview](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html).
+#' -   Specify access permissions explicitly with the `x-amz-grant-read`,
+#'     `x-amz-grant-read-acp`, `x-amz-grant-write-acp`, and
+#'     `x-amz-grant-full-control` headers. These parameters map to the set
+#'     of permissions that Amazon S3 supports in an ACL. For more
+#'     information, see [Access Control List (ACL)
+#'     Overview](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html).
 #' 
-#'     You can use either a canned ACL or specify access permissions
-#'     explicitly. You cannot do both.
+#' You can use either a canned ACL or specify access permissions
+#' explicitly. You cannot do both.
 #' 
-#' Server-Side- Encryption-Specific Request Headers
+#' ### Server-Side- Encryption-Specific Request Headers
 #' 
-#' :   To encrypt the target object, you must provide the appropriate
-#'     encryption-related request headers. The one you use depends on
-#'     whether you want to use AWS managed encryption keys or provide your
-#'     own encryption key.
+#' To encrypt the target object, you must provide the appropriate
+#' encryption-related request headers. The one you use depends on whether
+#' you want to use AWS managed encryption keys or provide your own
+#' encryption key.
 #' 
-#'     -   To encrypt the target object using server-side encryption with
-#'         an AWS managed encryption key, provide the following request
-#'         headers, as appropriate.
+#' -   To encrypt the target object using server-side encryption with an
+#'     AWS managed encryption key, provide the following request headers,
+#'     as appropriate.
 #' 
-#'         -   `x-amz-server-sideâ€‹-encryption`
+#'     -   `x-amz-server-sideâ€‹-encryption`
 #' 
-#'         -   `x-amz-server-side-encryption-aws-kms-key-id`
+#'     -   `x-amz-server-side-encryption-aws-kms-key-id`
 #' 
-#'         -   `x-amz-server-side-encryption-context`
+#'     -   `x-amz-server-side-encryption-context`
 #' 
-#'         If you specify `x-amz-server-side-encryption:aws:kms`, but
-#'         don\'t provide `x-amz-server-side-encryption-aws-kms-key-id`,
-#'         Amazon S3 uses the AWS managed CMK in AWS KMS to protect the
-#'         data. If you want to use a customer managed AWS KMS CMK, you
-#'         must provide the `x-amz-server-side-encryption-aws-kms-key-id`
-#'         of the symmetric customer managed CMK. Amazon S3 only supports
-#'         symmetric CMKs and not asymmetric CMKs. For more information,
-#'         see [Using Symmetric and Asymmetric
-#'         Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
-#'         in the *AWS Key Management Service Developer Guide*.
+#'     If you specify `x-amz-server-side-encryption:aws:kms`, but don\'t
+#'     provide `x-amz-server-side-encryption-aws-kms-key-id`, Amazon S3
+#'     uses the AWS managed CMK in AWS KMS to protect the data. If you want
+#'     to use a customer managed AWS KMS CMK, you must provide the
+#'     `x-amz-server-side-encryption-aws-kms-key-id` of the symmetric
+#'     customer managed CMK. Amazon S3 only supports symmetric CMKs and not
+#'     asymmetric CMKs. For more information, see [Using Symmetric and
+#'     Asymmetric
+#'     Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
+#'     in the *AWS Key Management Service Developer Guide*.
 #' 
-#'         All GET and PUT requests for an object protected by AWS KMS fail
-#'         if you don\'t make them with SSL or by using SigV4.
+#'     All GET and PUT requests for an object protected by AWS KMS fail if
+#'     you don\'t make them with SSL or by using SigV4.
 #' 
-#'         For more information about server-side encryption with CMKs
-#'         stored in AWS KMS (SSE-KMS), see [Protecting Data Using
-#'         Server-Side Encryption with CMKs stored in
-#'         KMS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
+#'     For more information about server-side encryption with CMKs stored
+#'     in AWS KMS (SSE-KMS), see [Protecting Data Using Server-Side
+#'     Encryption with CMKs stored in
+#'     KMS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
 #' 
-#'     -   To encrypt the target object using server-side encryption with
-#'         an encryption key that you provide, use the following headers.
+#' -   To encrypt the target object using server-side encryption with an
+#'     encryption key that you provide, use the following headers.
 #' 
-#'         -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
+#'     -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
 #' 
-#'         -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
+#'     -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
 #' 
-#'         -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
+#'     -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
 #' 
-#'     -   If the source object is encrypted using server-side encryption
-#'         with customer-provided encryption keys, you must use the
-#'         following headers.
+#' -   If the source object is encrypted using server-side encryption with
+#'     customer-provided encryption keys, you must use the following
+#'     headers.
 #' 
-#'         -   x-amz-copy-sourceâ€‹-server-sideâ€‹-encryptionâ€‹-customer-algorithm
+#'     -   x-amz-copy-sourceâ€‹-server-sideâ€‹-encryptionâ€‹-customer-algorithm
 #' 
-#'         -   x-amz-copy-sourceâ€‹-server-sideâ€‹-encryptionâ€‹-customer-key
+#'     -   x-amz-copy-sourceâ€‹-server-sideâ€‹-encryptionâ€‹-customer-key
 #' 
-#'         -   x-amz-copy-source-â€‹server-sideâ€‹-encryptionâ€‹-customer-key-MD5
+#'     -   x-amz-copy-source-â€‹server-sideâ€‹-encryptionâ€‹-customer-key-MD5
 #' 
-#'         For more information about server-side encryption with CMKs
-#'         stored in AWS KMS (SSE-KMS), see [Protecting Data Using
-#'         Server-Side Encryption with CMKs stored in Amazon
-#'         KMS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
+#'     For more information about server-side encryption with CMKs stored
+#'     in AWS KMS (SSE-KMS), see [Protecting Data Using Server-Side
+#'     Encryption with CMKs stored in Amazon
+#'     KMS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
 #' 
-#' Access-Control-List (ACL)-Specific Request Headers
+#' ### Access-Control-List (ACL)-Specific Request Headers
 #' 
-#' :   You also can use the following access control--related headers with
-#'     this operation. By default, all objects are private. Only the owner
-#'     has full access control. When adding a new object, you can grant
-#'     permissions to individual AWS accounts or to predefined groups
-#'     defined by Amazon S3. These permissions are then added to the access
-#'     control list (ACL) on the object. For more information, see [Using
-#'     ACLs](https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html).
-#'     With this operation, you can grant access permissions using one of
-#'     the following two methods:
+#' You also can use the following access control--related headers with this
+#' operation. By default, all objects are private. Only the owner has full
+#' access control. When adding a new object, you can grant permissions to
+#' individual AWS accounts or to predefined groups defined by Amazon S3.
+#' These permissions are then added to the access control list (ACL) on the
+#' object. For more information, see [Using
+#' ACLs](https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html).
+#' With this operation, you can grant access permissions using one of the
+#' following two methods:
 #' 
-#'     -   Specify a canned ACL (`x-amz-acl`) --- Amazon S3 supports a set
-#'         of predefined ACLs, known as *canned ACLs*. Each canned ACL has
-#'         a predefined set of grantees and permissions. For more
-#'         information, see [Canned
-#'         ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
+#' -   Specify a canned ACL (`x-amz-acl`) --- Amazon S3 supports a set of
+#'     predefined ACLs, known as *canned ACLs*. Each canned ACL has a
+#'     predefined set of grantees and permissions. For more information,
+#'     see [Canned
+#'     ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
 #' 
-#'     -   Specify access permissions explicitly --- To explicitly grant
-#'         access permissions to specific AWS accounts or groups, use the
-#'         following headers. Each header maps to specific permissions that
-#'         Amazon S3 supports in an ACL. For more information, see [Access
-#'         Control List (ACL)
-#'         Overview](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html).
-#'         In the header, you specify a list of grantees who get the
-#'         specific permission. To grant permissions explicitly, use:
+#' -   Specify access permissions explicitly --- To explicitly grant access
+#'     permissions to specific AWS accounts or groups, use the following
+#'     headers. Each header maps to specific permissions that Amazon S3
+#'     supports in an ACL. For more information, see [Access Control List
+#'     (ACL)
+#'     Overview](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html).
+#'     In the header, you specify a list of grantees who get the specific
+#'     permission. To grant permissions explicitly, use:
 #' 
-#'         -   x-amz-grant-read
+#'     -   x-amz-grant-read
 #' 
-#'         -   x-amz-grant-write
+#'     -   x-amz-grant-write
 #' 
-#'         -   x-amz-grant-read-acp
+#'     -   x-amz-grant-read-acp
 #' 
-#'         -   x-amz-grant-write-acp
+#'     -   x-amz-grant-write-acp
 #' 
-#'         -   x-amz-grant-full-control
+#'     -   x-amz-grant-full-control
 #' 
-#'         You specify each grantee as a type=value pair, where the type is
-#'         one of the following:
+#'     You specify each grantee as a type=value pair, where the type is one
+#'     of the following:
 #' 
-#'         -   `emailAddress` -- if the value specified is the email
-#'             address of an AWS account
+#'     -   `emailAddress` -- if the value specified is the email address of
+#'         an AWS account
 #' 
-#'         -   `id` -- if the value specified is the canonical user ID of
-#'             an AWS account
+#'     -   `id` -- if the value specified is the canonical user ID of an
+#'         AWS account
 #' 
-#'         -   `uri` -- if you are granting permissions to a predefined
-#'             group
+#'     -   `uri` -- if you are granting permissions to a predefined group
 #' 
-#'         For example, the following `x-amz-grant-read` header grants the
-#'         AWS accounts identified by email addresses permissions to read
-#'         object data and its metadata:
+#'     For example, the following `x-amz-grant-read` header grants the AWS
+#'     accounts identified by email addresses permissions to read object
+#'     data and its metadata:
 #' 
-#'         `x-amz-grant-read: emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com" `
+#'     `x-amz-grant-read: emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com" `
 #' 
 #' The following operations are related to `CopyObject`:
 #' 
@@ -876,130 +873,126 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' For more information, see [Protecting Data Using Server-Side
 #' Encryption](https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html).
 #' 
-#' Access Permissions
+#' ### Access Permissions
 #' 
-#' :   When copying an object, you can optionally specify the accounts or
-#'     groups that should be granted specific permissions on the new
-#'     object. There are two ways to grant the permissions using the
-#'     request headers:
+#' When copying an object, you can optionally specify the accounts or
+#' groups that should be granted specific permissions on the new object.
+#' There are two ways to grant the permissions using the request headers:
 #' 
-#'     -   Specify a canned ACL with the `x-amz-acl` request header. For
-#'         more information, see [Canned
-#'         ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
+#' -   Specify a canned ACL with the `x-amz-acl` request header. For more
+#'     information, see [Canned
+#'     ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
 #' 
-#'     -   Specify access permissions explicitly with the
-#'         `x-amz-grant-read`, `x-amz-grant-read-acp`,
-#'         `x-amz-grant-write-acp`, and `x-amz-grant-full-control` headers.
-#'         These parameters map to the set of permissions that Amazon S3
-#'         supports in an ACL. For more information, see [Access Control
-#'         List (ACL)
-#'         Overview](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html).
+#' -   Specify access permissions explicitly with the `x-amz-grant-read`,
+#'     `x-amz-grant-read-acp`, `x-amz-grant-write-acp`, and
+#'     `x-amz-grant-full-control` headers. These parameters map to the set
+#'     of permissions that Amazon S3 supports in an ACL. For more
+#'     information, see [Access Control List (ACL)
+#'     Overview](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html).
 #' 
-#'     You can use either a canned ACL or specify access permissions
-#'     explicitly. You cannot do both.
+#' You can use either a canned ACL or specify access permissions
+#' explicitly. You cannot do both.
 #' 
-#' Server-Side- Encryption-Specific Request Headers
+#' ### Server-Side- Encryption-Specific Request Headers
 #' 
-#' :   You can optionally tell Amazon S3 to encrypt data at rest using
-#'     server-side encryption. Server-side encryption is for data
-#'     encryption at rest. Amazon S3 encrypts your data as it writes it to
-#'     disks in its data centers and decrypts it when you access it. The
-#'     option you use depends on whether you want to use AWS managed
-#'     encryption keys or provide your own encryption key.
+#' You can optionally tell Amazon S3 to encrypt data at rest using
+#' server-side encryption. Server-side encryption is for data encryption at
+#' rest. Amazon S3 encrypts your data as it writes it to disks in its data
+#' centers and decrypts it when you access it. The option you use depends
+#' on whether you want to use AWS managed encryption keys or provide your
+#' own encryption key.
 #' 
-#'     -   Use encryption keys managed by Amazon S3 or customer master keys
-#'         (CMKs) stored in AWS Key Management Service (AWS KMS) -- If you
-#'         want AWS to manage the keys used to encrypt data, specify the
-#'         following headers in the request.
+#' -   Use encryption keys managed by Amazon S3 or customer master keys
+#'     (CMKs) stored in AWS Key Management Service (AWS KMS) -- If you want
+#'     AWS to manage the keys used to encrypt data, specify the following
+#'     headers in the request.
 #' 
-#'         -   x-amz-server-sideâ€‹-encryption
+#'     -   x-amz-server-sideâ€‹-encryption
 #' 
-#'         -   x-amz-server-side-encryption-aws-kms-key-id
+#'     -   x-amz-server-side-encryption-aws-kms-key-id
 #' 
-#'         -   x-amz-server-side-encryption-context
+#'     -   x-amz-server-side-encryption-context
 #' 
-#'         If you specify `x-amz-server-side-encryption:aws:kms`, but
-#'         don\'t provide `x-amz-server-side-encryption-aws-kms-key-id`,
-#'         Amazon S3 uses the AWS managed CMK in AWS KMS to protect the
-#'         data.
+#'     If you specify `x-amz-server-side-encryption:aws:kms`, but don\'t
+#'     provide `x-amz-server-side-encryption-aws-kms-key-id`, Amazon S3
+#'     uses the AWS managed CMK in AWS KMS to protect the data.
 #' 
-#'         All GET and PUT requests for an object protected by AWS KMS fail
-#'         if you don\'t make them with SSL or by using SigV4.
+#'     All GET and PUT requests for an object protected by AWS KMS fail if
+#'     you don\'t make them with SSL or by using SigV4.
 #' 
-#'         For more information about server-side encryption with CMKs
-#'         stored in AWS KMS (SSE-KMS), see [Protecting Data Using
-#'         Server-Side Encryption with CMKs stored in AWS
-#'         KMS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
+#'     For more information about server-side encryption with CMKs stored
+#'     in AWS KMS (SSE-KMS), see [Protecting Data Using Server-Side
+#'     Encryption with CMKs stored in AWS
+#'     KMS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
 #' 
-#'     -   Use customer-provided encryption keys -- If you want to manage
-#'         your own encryption keys, provide all the following headers in
-#'         the request.
+#' -   Use customer-provided encryption keys -- If you want to manage your
+#'     own encryption keys, provide all the following headers in the
+#'     request.
 #' 
-#'         -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
+#'     -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
 #' 
-#'         -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
+#'     -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
 #' 
-#'         -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
+#'     -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
 #' 
-#'         For more information about server-side encryption with CMKs
-#'         stored in AWS KMS (SSE-KMS), see [Protecting Data Using
-#'         Server-Side Encryption with CMKs stored in AWS
-#'         KMS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
+#'     For more information about server-side encryption with CMKs stored
+#'     in AWS KMS (SSE-KMS), see [Protecting Data Using Server-Side
+#'     Encryption with CMKs stored in AWS
+#'     KMS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
 #' 
-#' Access-Control-List (ACL)-Specific Request Headers
+#' ### Access-Control-List (ACL)-Specific Request Headers
 #' 
-#' :   You also can use the following access control--related headers with
-#'     this operation. By default, all objects are private. Only the owner
-#'     has full access control. When adding a new object, you can grant
-#'     permissions to individual AWS accounts or to predefined groups
-#'     defined by Amazon S3. These permissions are then added to the access
-#'     control list (ACL) on the object. For more information, see [Using
-#'     ACLs](https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html).
-#'     With this operation, you can grant access permissions using one of
-#'     the following two methods:
+#' You also can use the following access control--related headers with this
+#' operation. By default, all objects are private. Only the owner has full
+#' access control. When adding a new object, you can grant permissions to
+#' individual AWS accounts or to predefined groups defined by Amazon S3.
+#' These permissions are then added to the access control list (ACL) on the
+#' object. For more information, see [Using
+#' ACLs](https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html).
+#' With this operation, you can grant access permissions using one of the
+#' following two methods:
 #' 
-#'     -   Specify a canned ACL (`x-amz-acl`) --- Amazon S3 supports a set
-#'         of predefined ACLs, known as *canned ACLs*. Each canned ACL has
-#'         a predefined set of grantees and permissions. For more
-#'         information, see [Canned
-#'         ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
+#' -   Specify a canned ACL (`x-amz-acl`) --- Amazon S3 supports a set of
+#'     predefined ACLs, known as *canned ACLs*. Each canned ACL has a
+#'     predefined set of grantees and permissions. For more information,
+#'     see [Canned
+#'     ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
 #' 
-#'     -   Specify access permissions explicitly --- To explicitly grant
-#'         access permissions to specific AWS accounts or groups, use the
-#'         following headers. Each header maps to specific permissions that
-#'         Amazon S3 supports in an ACL. For more information, see [Access
-#'         Control List (ACL)
-#'         Overview](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html).
-#'         In the header, you specify a list of grantees who get the
-#'         specific permission. To grant permissions explicitly, use:
+#' -   Specify access permissions explicitly --- To explicitly grant access
+#'     permissions to specific AWS accounts or groups, use the following
+#'     headers. Each header maps to specific permissions that Amazon S3
+#'     supports in an ACL. For more information, see [Access Control List
+#'     (ACL)
+#'     Overview](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html).
+#'     In the header, you specify a list of grantees who get the specific
+#'     permission. To grant permissions explicitly, use:
 #' 
-#'         -   x-amz-grant-read
+#'     -   x-amz-grant-read
 #' 
-#'         -   x-amz-grant-write
+#'     -   x-amz-grant-write
 #' 
-#'         -   x-amz-grant-read-acp
+#'     -   x-amz-grant-read-acp
 #' 
-#'         -   x-amz-grant-write-acp
+#'     -   x-amz-grant-write-acp
 #' 
-#'         -   x-amz-grant-full-control
+#'     -   x-amz-grant-full-control
 #' 
-#'         You specify each grantee as a type=value pair, where the type is
-#'         one of the following:
+#'     You specify each grantee as a type=value pair, where the type is one
+#'     of the following:
 #' 
-#'         -   `emailAddress` -- if the value specified is the email
-#'             address of an AWS account
+#'     -   `emailAddress` -- if the value specified is the email address of
+#'         an AWS account
 #' 
-#'         -   `id` -- if the value specified is the canonical user ID of
-#'             an AWS account
+#'     -   `id` -- if the value specified is the canonical user ID of an
+#'         AWS account
 #' 
-#'         -   `uri` -- if you are granting permissions to a predefined
-#'             group
+#'     -   `uri` -- if you are granting permissions to a predefined group
 #' 
-#'         For example, the following `x-amz-grant-read` header grants the
-#'         AWS accounts identified by email addresses permissions to read
-#'         object data and its metadata:
+#'     For example, the following `x-amz-grant-read` header grants the AWS
+#'     accounts identified by email addresses permissions to read object
+#'     data and its metadata:
 #' 
-#'         `x-amz-grant-read: emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com" `
+#'     `x-amz-grant-read: emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com" `
 #' 
 #' The following operations are related to `CreateMultipartUpload`:
 #' 
@@ -7315,216 +7308,214 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #' keys. For more information, see [Using Server-Side
 #' Encryption](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html).
 #' 
-#' Access Permissions
+#' ### Access Permissions
 #' 
-#' :   You can optionally specify the accounts or groups that should be
-#'     granted specific permissions on the new object. There are two ways
-#'     to grant the permissions using the request headers:
+#' You can optionally specify the accounts or groups that should be granted
+#' specific permissions on the new object. There are two ways to grant the
+#' permissions using the request headers:
 #' 
-#'     -   Specify a canned ACL with the `x-amz-acl` request header. For
-#'         more information, see [Canned
-#'         ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
+#' -   Specify a canned ACL with the `x-amz-acl` request header. For more
+#'     information, see [Canned
+#'     ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
 #' 
-#'     -   Specify access permissions explicitly with the
-#'         `x-amz-grant-read`, `x-amz-grant-read-acp`,
-#'         `x-amz-grant-write-acp`, and `x-amz-grant-full-control` headers.
-#'         These parameters map to the set of permissions that Amazon S3
-#'         supports in an ACL. For more information, see [Access Control
-#'         List (ACL)
-#'         Overview](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html).
+#' -   Specify access permissions explicitly with the `x-amz-grant-read`,
+#'     `x-amz-grant-read-acp`, `x-amz-grant-write-acp`, and
+#'     `x-amz-grant-full-control` headers. These parameters map to the set
+#'     of permissions that Amazon S3 supports in an ACL. For more
+#'     information, see [Access Control List (ACL)
+#'     Overview](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html).
 #' 
-#'     You can use either a canned ACL or specify access permissions
-#'     explicitly. You cannot do both.
+#' You can use either a canned ACL or specify access permissions
+#' explicitly. You cannot do both.
 #' 
-#' Server-Side- Encryption-Specific Request Headers
+#' ### Server-Side- Encryption-Specific Request Headers
 #' 
-#' :   You can optionally tell Amazon S3 to encrypt data at rest using
-#'     server-side encryption. Server-side encryption is for data
-#'     encryption at rest. Amazon S3 encrypts your data as it writes it to
-#'     disks in its data centers and decrypts it when you access it. The
-#'     option you use depends on whether you want to use AWS managed
-#'     encryption keys or provide your own encryption key.
+#' You can optionally tell Amazon S3 to encrypt data at rest using
+#' server-side encryption. Server-side encryption is for data encryption at
+#' rest. Amazon S3 encrypts your data as it writes it to disks in its data
+#' centers and decrypts it when you access it. The option you use depends
+#' on whether you want to use AWS managed encryption keys or provide your
+#' own encryption key.
 #' 
-#'     -   Use encryption keys managed by Amazon S3 or customer master keys
-#'         (CMKs) stored in AWS Key Management Service (AWS KMS) -- If you
-#'         want AWS to manage the keys used to encrypt data, specify the
-#'         following headers in the request.
+#' -   Use encryption keys managed by Amazon S3 or customer master keys
+#'     (CMKs) stored in AWS Key Management Service (AWS KMS) -- If you want
+#'     AWS to manage the keys used to encrypt data, specify the following
+#'     headers in the request.
 #' 
-#'         -   x-amz-server-sideâ€‹-encryption
+#'     -   x-amz-server-sideâ€‹-encryption
 #' 
-#'         -   x-amz-server-side-encryption-aws-kms-key-id
+#'     -   x-amz-server-side-encryption-aws-kms-key-id
 #' 
-#'         -   x-amz-server-side-encryption-context
+#'     -   x-amz-server-side-encryption-context
 #' 
-#'         If you specify `x-amz-server-side-encryption:aws:kms`, but
-#'         don\'t provide `x-amz-server-side-encryption-aws-kms-key-id`,
-#'         Amazon S3 uses the AWS managed CMK in AWS KMS to protect the
-#'         data. If you want to use a customer managed AWS KMS CMK, you
-#'         must provide the `x-amz-server-side-encryption-aws-kms-key-id`
-#'         of the symmetric customer managed CMK. Amazon S3 only supports
-#'         symmetric CMKs and not asymmetric CMKs. For more information,
-#'         see [Using Symmetric and Asymmetric
-#'         Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
-#'         in the *AWS Key Management Service Developer Guide*.
+#'     If you specify `x-amz-server-side-encryption:aws:kms`, but don\'t
+#'     provide `x-amz-server-side-encryption-aws-kms-key-id`, Amazon S3
+#'     uses the AWS managed CMK in AWS KMS to protect the data. If you want
+#'     to use a customer managed AWS KMS CMK, you must provide the
+#'     `x-amz-server-side-encryption-aws-kms-key-id` of the symmetric
+#'     customer managed CMK. Amazon S3 only supports symmetric CMKs and not
+#'     asymmetric CMKs. For more information, see [Using Symmetric and
+#'     Asymmetric
+#'     Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
+#'     in the *AWS Key Management Service Developer Guide*.
 #' 
-#'         All GET and PUT requests for an object protected by AWS KMS fail
-#'         if you don\'t make them with SSL or by using SigV4.
+#'     All GET and PUT requests for an object protected by AWS KMS fail if
+#'     you don\'t make them with SSL or by using SigV4.
 #' 
-#'         For more information about server-side encryption with CMKs
-#'         stored in AWS KMS (SSE-KMS), see [Protecting Data Using
-#'         Server-Side Encryption with CMKs stored in
-#'         AWS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
+#'     For more information about server-side encryption with CMKs stored
+#'     in AWS KMS (SSE-KMS), see [Protecting Data Using Server-Side
+#'     Encryption with CMKs stored in
+#'     AWS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
 #' 
-#'     -   Use customer-provided encryption keys -- If you want to manage
-#'         your own encryption keys, provide all the following headers in
-#'         the request.
+#' -   Use customer-provided encryption keys -- If you want to manage your
+#'     own encryption keys, provide all the following headers in the
+#'     request.
 #' 
-#'         -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
+#'     -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
 #' 
-#'         -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
+#'     -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
 #' 
-#'         -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
+#'     -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
 #' 
-#'         For more information about server-side encryption with CMKs
-#'         stored in KMS (SSE-KMS), see [Protecting Data Using Server-Side
-#'         Encryption with CMKs stored in
-#'         AWS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
+#'     For more information about server-side encryption with CMKs stored
+#'     in KMS (SSE-KMS), see [Protecting Data Using Server-Side Encryption
+#'     with CMKs stored in
+#'     AWS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
 #' 
-#' Access-Control-List (ACL)-Specific Request Headers
+#' ### Access-Control-List (ACL)-Specific Request Headers
 #' 
-#' :   You also can use the following access control--related headers with
-#'     this operation. By default, all objects are private. Only the owner
-#'     has full access control. When adding a new object, you can grant
-#'     permissions to individual AWS accounts or to predefined groups
-#'     defined by Amazon S3. These permissions are then added to the Access
-#'     Control List (ACL) on the object. For more information, see [Using
-#'     ACLs](https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html).
-#'     With this operation, you can grant access permissions using one of
-#'     the following two methods:
+#' You also can use the following access control--related headers with this
+#' operation. By default, all objects are private. Only the owner has full
+#' access control. When adding a new object, you can grant permissions to
+#' individual AWS accounts or to predefined groups defined by Amazon S3.
+#' These permissions are then added to the Access Control List (ACL) on the
+#' object. For more information, see [Using
+#' ACLs](https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html).
+#' With this operation, you can grant access permissions using one of the
+#' following two methods:
 #' 
-#'     -   Specify a canned ACL (`x-amz-acl`) --- Amazon S3 supports a set
-#'         of predefined ACLs, known as canned ACLs. Each canned ACL has a
-#'         predefined set of grantees and permissions. For more
-#'         information, see [Canned
-#'         ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
+#' -   Specify a canned ACL (`x-amz-acl`) --- Amazon S3 supports a set of
+#'     predefined ACLs, known as canned ACLs. Each canned ACL has a
+#'     predefined set of grantees and permissions. For more information,
+#'     see [Canned
+#'     ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
 #' 
-#'     -   Specify access permissions explicitly --- To explicitly grant
-#'         access permissions to specific AWS accounts or groups, use the
-#'         following headers. Each header maps to specific permissions that
-#'         Amazon S3 supports in an ACL. For more information, see [Access
-#'         Control List (ACL)
-#'         Overview](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html).
-#'         In the header, you specify a list of grantees who get the
-#'         specific permission. To grant permissions explicitly use:
+#' -   Specify access permissions explicitly --- To explicitly grant access
+#'     permissions to specific AWS accounts or groups, use the following
+#'     headers. Each header maps to specific permissions that Amazon S3
+#'     supports in an ACL. For more information, see [Access Control List
+#'     (ACL)
+#'     Overview](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html).
+#'     In the header, you specify a list of grantees who get the specific
+#'     permission. To grant permissions explicitly use:
 #' 
-#'         -   x-amz-grant-read
+#'     -   x-amz-grant-read
 #' 
-#'         -   x-amz-grant-write
+#'     -   x-amz-grant-write
 #' 
-#'         -   x-amz-grant-read-acp
+#'     -   x-amz-grant-read-acp
 #' 
-#'         -   x-amz-grant-write-acp
+#'     -   x-amz-grant-write-acp
 #' 
-#'         -   x-amz-grant-full-control
+#'     -   x-amz-grant-full-control
 #' 
-#'         You specify each grantee as a type=value pair, where the type is
-#'         one of the following:
+#'     You specify each grantee as a type=value pair, where the type is one
+#'     of the following:
 #' 
-#'         -   `emailAddress` -- if the value specified is the email
-#'             address of an AWS account
+#'     -   `emailAddress` -- if the value specified is the email address of
+#'         an AWS account
 #' 
-#'             Using email addresses to specify a grantee is only supported
-#'             in the following AWS Regions:
+#'         Using email addresses to specify a grantee is only supported in
+#'         the following AWS Regions:
 #' 
-#'             -   US East (N. Virginia)
+#'         -   US East (N. Virginia)
 #' 
-#'             -   US West (N. California)
+#'         -   US West (N. California)
 #' 
-#'             -   US West (Oregon)
+#'         -   US West (Oregon)
 #' 
-#'             -   Asia Pacific (Singapore)
+#'         -   Asia Pacific (Singapore)
 #' 
-#'             -   Asia Pacific (Sydney)
+#'         -   Asia Pacific (Sydney)
 #' 
-#'             -   Asia Pacific (Tokyo)
+#'         -   Asia Pacific (Tokyo)
 #' 
-#'             -   EU (Ireland)
+#'         -   EU (Ireland)
 #' 
-#'             -   South America (SÃ£o Paulo)
+#'         -   South America (SÃ£o Paulo)
 #' 
-#'             For a list of all the Amazon S3 supported Regions and
-#'             endpoints, see [Regions and
-#'             Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region)
-#'             in the AWS General Reference
+#'         For a list of all the Amazon S3 supported Regions and endpoints,
+#'         see [Regions and
+#'         Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region)
+#'         in the AWS General Reference
 #' 
-#'         -   `id` -- if the value specified is the canonical user ID of
-#'             an AWS account
+#'     -   `id` -- if the value specified is the canonical user ID of an
+#'         AWS account
 #' 
-#'         -   `uri` -- if you are granting permissions to a predefined
-#'             group
+#'     -   `uri` -- if you are granting permissions to a predefined group
 #' 
-#'         For example, the following `x-amz-grant-read` header grants the
-#'         AWS accounts identified by email addresses permissions to read
-#'         object data and its metadata:
+#'     For example, the following `x-amz-grant-read` header grants the AWS
+#'     accounts identified by email addresses permissions to read object
+#'     data and its metadata:
 #' 
-#'         `x-amz-grant-read: emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com" `
+#'     `x-amz-grant-read: emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com" `
 #' 
-#' Server-Side- Encryption-Specific Request Headers
+#' ### Server-Side- Encryption-Specific Request Headers
 #' 
-#' :   You can optionally tell Amazon S3 to encrypt data at rest using
-#'     server-side encryption. Server-side encryption is for data
-#'     encryption at rest. Amazon S3 encrypts your data as it writes it to
-#'     disks in its data centers and decrypts it when you access it. The
-#'     option you use depends on whether you want to use AWS-managed
-#'     encryption keys or provide your own encryption key.
+#' You can optionally tell Amazon S3 to encrypt data at rest using
+#' server-side encryption. Server-side encryption is for data encryption at
+#' rest. Amazon S3 encrypts your data as it writes it to disks in its data
+#' centers and decrypts it when you access it. The option you use depends
+#' on whether you want to use AWS-managed encryption keys or provide your
+#' own encryption key.
 #' 
-#'     -   Use encryption keys managed by Amazon S3 or customer master keys
-#'         (CMKs) stored in AWS Key Management Service (AWS KMS) -- If you
-#'         want AWS to manage the keys used to encrypt data, specify the
-#'         following headers in the request.
+#' -   Use encryption keys managed by Amazon S3 or customer master keys
+#'     (CMKs) stored in AWS Key Management Service (AWS KMS) -- If you want
+#'     AWS to manage the keys used to encrypt data, specify the following
+#'     headers in the request.
 #' 
-#'         -   x-amz-server-sideâ€‹-encryption
+#'     -   x-amz-server-sideâ€‹-encryption
 #' 
-#'         -   x-amz-server-side-encryption-aws-kms-key-id
+#'     -   x-amz-server-side-encryption-aws-kms-key-id
 #' 
-#'         -   x-amz-server-side-encryption-context
+#'     -   x-amz-server-side-encryption-context
 #' 
-#'         If you specify `x-amz-server-side-encryption:aws:kms`, but
-#'         don\'t provide `x-amz-server-side-encryption-aws-kms-key-id`,
-#'         Amazon S3 uses the AWS managed CMK in AWS KMS to protect the
-#'         data. If you want to use a customer managed AWS KMS CMK, you
-#'         must provide the `x-amz-server-side-encryption-aws-kms-key-id`
-#'         of the symmetric customer managed CMK. Amazon S3 only supports
-#'         symmetric CMKs and not asymmetric CMKs. For more information,
-#'         see [Using Symmetric and Asymmetric
-#'         Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
-#'         in the *AWS Key Management Service Developer Guide*.
+#'     If you specify `x-amz-server-side-encryption:aws:kms`, but don\'t
+#'     provide `x-amz-server-side-encryption-aws-kms-key-id`, Amazon S3
+#'     uses the AWS managed CMK in AWS KMS to protect the data. If you want
+#'     to use a customer managed AWS KMS CMK, you must provide the
+#'     `x-amz-server-side-encryption-aws-kms-key-id` of the symmetric
+#'     customer managed CMK. Amazon S3 only supports symmetric CMKs and not
+#'     asymmetric CMKs. For more information, see [Using Symmetric and
+#'     Asymmetric
+#'     Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
+#'     in the *AWS Key Management Service Developer Guide*.
 #' 
-#'         All GET and PUT requests for an object protected by AWS KMS fail
-#'         if you don\'t make them with SSL or by using SigV4.
+#'     All GET and PUT requests for an object protected by AWS KMS fail if
+#'     you don\'t make them with SSL or by using SigV4.
 #' 
-#'         For more information about server-side encryption with CMKs
-#'         stored in AWS KMS (SSE-KMS), see [Protecting Data Using
-#'         Server-Side Encryption with CMKs stored in AWS
-#'         KMS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
+#'     For more information about server-side encryption with CMKs stored
+#'     in AWS KMS (SSE-KMS), see [Protecting Data Using Server-Side
+#'     Encryption with CMKs stored in AWS
+#'     KMS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
 #' 
-#'     -   Use customer-provided encryption keys -- If you want to manage
-#'         your own encryption keys, provide all the following headers in
-#'         the request.
+#' -   Use customer-provided encryption keys -- If you want to manage your
+#'     own encryption keys, provide all the following headers in the
+#'     request.
 #' 
-#'         If you use this feature, the ETag value that Amazon S3 returns
-#'         in the response is not the MD5 of the object.
+#'     If you use this feature, the ETag value that Amazon S3 returns in
+#'     the response is not the MD5 of the object.
 #' 
-#'         -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
+#'     -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
 #' 
-#'         -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
+#'     -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
 #' 
-#'         -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
+#'     -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
 #' 
-#'         For more information about server-side encryption with CMKs
-#'         stored in AWS KMS (SSE-KMS), see [Protecting Data Using
-#'         Server-Side Encryption with CMKs stored in AWS
-#'         KMS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
+#'     For more information about server-side encryption with CMKs stored
+#'     in AWS KMS (SSE-KMS), see [Protecting Data Using Server-Side
+#'     Encryption with CMKs stored in AWS
+#'     KMS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
 #' 
 #' **Storage Class Options**
 #' 

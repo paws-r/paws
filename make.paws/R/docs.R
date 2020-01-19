@@ -239,7 +239,9 @@ clean_html_node <- function(node) {
   switch(
     xml2::xml_name(node),
     code = clean_html_code(node),
-    a = clean_html_a(node)
+    a = clean_html_a(node),
+    dt = clean_html_dt(node),
+    dd = clean_html_dd(node)
   )
   for (child in xml2::xml_children(node)) {
     child <- clean_html_node(child)
@@ -286,6 +288,16 @@ clean_html_a <- function(node) {
   if (!url_ok(url)) {
     xml2::xml_attr(node, "href") <- NULL
   }
+}
+
+# Replace definition title nodes with header nodes.
+clean_html_dt <- function(node) {
+  xml2::xml_name(node) <- "h3"
+}
+
+# Replace definition list nodes with paragraph nodes.
+clean_html_dd <- function(node) {
+  xml2::xml_name(node) <- "p"
 }
 
 # Escape special characters % { }, and single \ not followed by another special

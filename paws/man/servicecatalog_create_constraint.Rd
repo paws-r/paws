@@ -21,46 +21,54 @@ servicecatalog_create_constraint(AcceptLanguage, PortfolioId, ProductId,
 
 \item{Parameters}{[required] The constraint parameters, in JSON format. The syntax depends on the
 constraint type as follows:
+\subsection{LAUNCH}{
 
-LAUNCH
+Specify the \code{RoleArn} property as follows:
 
-:   Specify the \code{RoleArn} property as follows:\preformatted{`\\\{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"\\\}`
+\verb{\\\{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"\\\}}
 
-You cannot have both a `LAUNCH` and a `STACKSET` constraint.
+You cannot have both a \code{LAUNCH} and a \code{STACKSET} constraint.
 
-You also cannot have more than one `LAUNCH` constraint on a product
+You also cannot have more than one \code{LAUNCH} constraint on a product and
+portfolio.
+}
+
+\subsection{NOTIFICATION}{
+
+Specify the \code{NotificationArns} property as follows:
+
+\verb{\\\{"NotificationArns" : \\\["arn:aws:sns:us-east-1:123456789012:Topic"\\\]\\\}}
+}
+
+\subsection{RESOURCE\\_UPDATE}{
+
+Specify the \code{TagUpdatesOnProvisionedProduct} property as follows:
+
+\verb{\\\{"Version":"2.0","Properties":\\\{"TagUpdateOnProvisionedProduct":"String"\\\}\\\}}
+
+The \code{TagUpdatesOnProvisionedProduct} property accepts a string value of
+\code{ALLOWED} or \code{NOT_ALLOWED}.
+}
+
+\subsection{STACKSET}{
+
+Specify the \code{Parameters} property as follows:
+
+\verb{\\\{"Version": "String", "Properties": \\\{"AccountList": \\\[ "String" \\\], "RegionList": \\\[ "String" \\\], "AdminRole": "String", "ExecutionRole": "String"\\\}\\\}}
+
+You cannot have both a \code{LAUNCH} and a \code{STACKSET} constraint.
+
+You also cannot have more than one \code{STACKSET} constraint on a product
 and portfolio.
+
+Products with a \code{STACKSET} constraint will launch an AWS CloudFormation
+stack set.
 }
 
-NOTIFICATION
+\subsection{TEMPLATE}{
 
-:   Specify the \code{NotificationArns} property as follows:\preformatted{`\\\{"NotificationArns" : \\\["arn:aws:sns:us-east-1:123456789012:Topic"\\\]\\\}`
-}
-
-RESOURCE\\_UPDATE
-
-:   Specify the \code{TagUpdatesOnProvisionedProduct} property as follows:\preformatted{`\\\{"Version":"2.0","Properties":\\\{"TagUpdateOnProvisionedProduct":"String"\\\}\\\}`
-
-The `TagUpdatesOnProvisionedProduct` property accepts a string value
-of `ALLOWED` or `NOT_ALLOWED`.
-}
-
-STACKSET
-
-:   Specify the \code{Parameters} property as follows:\preformatted{`\\\{"Version": "String", "Properties": \\\{"AccountList": \\\[ "String" \\\], "RegionList": \\\[ "String" \\\], "AdminRole": "String", "ExecutionRole": "String"\\\}\\\}`
-
-You cannot have both a `LAUNCH` and a `STACKSET` constraint.
-
-You also cannot have more than one `STACKSET` constraint on a
-product and portfolio.
-
-Products with a `STACKSET` constraint will launch an AWS
-CloudFormation stack set.
-}
-
-TEMPLATE
-
-:   Specify the \code{Rules} property. For more information, see \href{http://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html}{Template Constraint Rules}.}
+Specify the \code{Rules} property. For more information, see \href{http://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html}{Template Constraint Rules}.
+}}
 
 \item{Type}{[required] The type of constraint.
 \itemize{

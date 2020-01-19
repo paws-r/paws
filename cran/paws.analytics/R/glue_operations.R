@@ -3682,55 +3682,53 @@ glue_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, Partit
 #' *Operators*: The following are the operators that you can use in the
 #' `Expression` API call:
 #' 
-#' =
+#' ### =
 #' 
-#' :   Checks whether the values of the two operands are equal; if yes,
-#'     then the condition becomes true.
+#' Checks whether the values of the two operands are equal; if yes, then
+#' the condition becomes true.
 #' 
-#'     Example: Assume \'variable a\' holds 10 and \'variable b\' holds 20.
+#' Example: Assume \'variable a\' holds 10 and \'variable b\' holds 20.
 #' 
-#'     (a = b) is not true.
+#' (a = b) is not true.
 #' 
-#' \\< \\>
+#' ### \\< \\>
 #' 
-#' :   Checks whether the values of two operands are equal; if the values
-#'     are not equal, then the condition becomes true.
+#' Checks whether the values of two operands are equal; if the values are
+#' not equal, then the condition becomes true.
 #' 
-#'     Example: (a \\< \\> b) is true.
+#' Example: (a \\< \\> b) is true.
 #' 
-#' \\>
+#' ### \\>
 #' 
-#' :   Checks whether the value of the left operand is greater than the
-#'     value of the right operand; if yes, then the condition becomes true.
+#' Checks whether the value of the left operand is greater than the value
+#' of the right operand; if yes, then the condition becomes true.
 #' 
-#'     Example: (a \\> b) is not true.
+#' Example: (a \\> b) is not true.
 #' 
-#' \\<
+#' ### \\<
 #' 
-#' :   Checks whether the value of the left operand is less than the value
-#'     of the right operand; if yes, then the condition becomes true.
+#' Checks whether the value of the left operand is less than the value of
+#' the right operand; if yes, then the condition becomes true.
 #' 
-#'     Example: (a \\< b) is true.
+#' Example: (a \\< b) is true.
 #' 
-#' \\>=
+#' ### \\>=
 #' 
-#' :   Checks whether the value of the left operand is greater than or
-#'     equal to the value of the right operand; if yes, then the condition
-#'     becomes true.
+#' Checks whether the value of the left operand is greater than or equal to
+#' the value of the right operand; if yes, then the condition becomes true.
 #' 
-#'     Example: (a \\>= b) is not true.
+#' Example: (a \\>= b) is not true.
 #' 
-#' \\<=
+#' ### \\<=
 #' 
-#' :   Checks whether the value of the left operand is less than or equal
-#'     to the value of the right operand; if yes, then the condition
-#'     becomes true.
+#' Checks whether the value of the left operand is less than or equal to
+#' the value of the right operand; if yes, then the condition becomes true.
 #' 
-#'     Example: (a \\<= b) is true.
+#' Example: (a \\<= b) is true.
 #' 
-#' AND, OR, IN, BETWEEN, LIKE, NOT, IS NULL
+#' ### AND, OR, IN, BETWEEN, LIKE, NOT, IS NULL
 #' 
-#' :   Logical operators.
+#' Logical operators.
 #' 
 #' *Supported Partition Key Types*: The following are the supported
 #' partition keys.

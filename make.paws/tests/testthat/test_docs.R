@@ -499,6 +499,10 @@ test_that("convert", {
   text <- "<a href='example.com'>foo</a>"
   expected <- c("[foo](https://example.com)")
   expect_equal(convert(text), expected)
+
+  text <- "<dt>Description</dt><dd>Definition.</dd>"
+  expected <- c("### Description", "", "Definition.")
+  expect_equal(convert(text), expected)
 })
 
 test_that("first_sentence", {

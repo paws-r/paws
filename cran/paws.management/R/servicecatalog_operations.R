@@ -492,51 +492,51 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' @param Parameters &#91;required&#93; The constraint parameters, in JSON format. The syntax depends on the
 #' constraint type as follows:
 #' 
-#' LAUNCH
+#' ### LAUNCH
 #' 
-#' :   Specify the `RoleArn` property as follows:
+#' Specify the `RoleArn` property as follows:
 #' 
-#'     `\{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"\}`
+#' `\{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"\}`
 #' 
-#'     You cannot have both a `LAUNCH` and a `STACKSET` constraint.
+#' You cannot have both a `LAUNCH` and a `STACKSET` constraint.
 #' 
-#'     You also cannot have more than one `LAUNCH` constraint on a product
-#'     and portfolio.
+#' You also cannot have more than one `LAUNCH` constraint on a product and
+#' portfolio.
 #' 
-#' NOTIFICATION
+#' ### NOTIFICATION
 #' 
-#' :   Specify the `NotificationArns` property as follows:
+#' Specify the `NotificationArns` property as follows:
 #' 
-#'     `\{"NotificationArns" : \\["arn:aws:sns:us-east-1:123456789012:Topic"\\]\}`
+#' `\{"NotificationArns" : \\["arn:aws:sns:us-east-1:123456789012:Topic"\\]\}`
 #' 
-#' RESOURCE\\_UPDATE
+#' ### RESOURCE\\_UPDATE
 #' 
-#' :   Specify the `TagUpdatesOnProvisionedProduct` property as follows:
+#' Specify the `TagUpdatesOnProvisionedProduct` property as follows:
 #' 
-#'     `\{"Version":"2.0","Properties":\{"TagUpdateOnProvisionedProduct":"String"\}\}`
+#' `\{"Version":"2.0","Properties":\{"TagUpdateOnProvisionedProduct":"String"\}\}`
 #' 
-#'     The `TagUpdatesOnProvisionedProduct` property accepts a string value
-#'     of `ALLOWED` or `NOT_ALLOWED`.
+#' The `TagUpdatesOnProvisionedProduct` property accepts a string value of
+#' `ALLOWED` or `NOT_ALLOWED`.
 #' 
-#' STACKSET
+#' ### STACKSET
 #' 
-#' :   Specify the `Parameters` property as follows:
+#' Specify the `Parameters` property as follows:
 #' 
-#'     `\{"Version": "String", "Properties": \{"AccountList": \\[ "String" \\], "RegionList": \\[ "String" \\], "AdminRole": "String", "ExecutionRole": "String"\}\}`
+#' `\{"Version": "String", "Properties": \{"AccountList": \\[ "String" \\], "RegionList": \\[ "String" \\], "AdminRole": "String", "ExecutionRole": "String"\}\}`
 #' 
-#'     You cannot have both a `LAUNCH` and a `STACKSET` constraint.
+#' You cannot have both a `LAUNCH` and a `STACKSET` constraint.
 #' 
-#'     You also cannot have more than one `STACKSET` constraint on a
-#'     product and portfolio.
+#' You also cannot have more than one `STACKSET` constraint on a product
+#' and portfolio.
 #' 
-#'     Products with a `STACKSET` constraint will launch an AWS
-#'     CloudFormation stack set.
+#' Products with a `STACKSET` constraint will launch an AWS CloudFormation
+#' stack set.
 #' 
-#' TEMPLATE
+#' ### TEMPLATE
 #' 
-#' :   Specify the `Rules` property. For more information, see [Template
-#'     Constraint
-#'     Rules](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html).
+#' Specify the `Rules` property. For more information, see [Template
+#' Constraint
+#' Rules](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html).
 #' @param Type &#91;required&#93; The type of constraint.
 #' 
 #' -   `LAUNCH`
@@ -962,30 +962,30 @@ servicecatalog_create_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' @param DefinitionType &#91;required&#93; The service action definition type. For example, `SSM_AUTOMATION`.
 #' @param Definition &#91;required&#93; The self-service action definition. Can be one of the following:
 #' 
-#' Name
+#' ### Name
 #' 
-#' :   The name of the AWS Systems Manager Document. For example,
-#'     `AWS-RestartEC2Instance`.
+#' The name of the AWS Systems Manager Document. For example,
+#' `AWS-RestartEC2Instance`.
 #' 
-#' Version
+#' ### Version
 #' 
-#' :   The AWS Systems Manager automation document version. For example,
-#'     `"Version": "1"`
+#' The AWS Systems Manager automation document version. For example,
+#' `"Version": "1"`
 #' 
-#' AssumeRole
+#' ### AssumeRole
 #' 
-#' :   The Amazon Resource Name (ARN) of the role that performs the
-#'     self-service actions on your behalf. For example,
-#'     `"AssumeRole": "arn:aws:iam::12345678910:role/ActionRole"`.
+#' The Amazon Resource Name (ARN) of the role that performs the
+#' self-service actions on your behalf. For example,
+#' `"AssumeRole": "arn:aws:iam::12345678910:role/ActionRole"`.
 #' 
-#'     To reuse the provisioned product launch role, set to
-#'     `"AssumeRole": "LAUNCH_ROLE"`.
+#' To reuse the provisioned product launch role, set to
+#' `"AssumeRole": "LAUNCH_ROLE"`.
 #' 
-#' Parameters
+#' ### Parameters
 #' 
-#' :   The list of parameters in JSON format.
+#' The list of parameters in JSON format.
 #' 
-#'     For example: `\\[\{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"\}\\]`.
+#' For example: `\\[\{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"\}\\]`.
 #' @param Description The self-service action description.
 #' @param AcceptLanguage The language code.
 #' 
@@ -4007,51 +4007,51 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #' @param Parameters The constraint parameters, in JSON format. The syntax depends on the
 #' constraint type as follows:
 #' 
-#' LAUNCH
+#' ### LAUNCH
 #' 
-#' :   Specify the `RoleArn` property as follows:
+#' Specify the `RoleArn` property as follows:
 #' 
-#'     `\{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"\}`
+#' `\{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"\}`
 #' 
-#'     You cannot have both a `LAUNCH` and a `STACKSET` constraint.
+#' You cannot have both a `LAUNCH` and a `STACKSET` constraint.
 #' 
-#'     You also cannot have more than one `LAUNCH` constraint on a product
-#'     and portfolio.
+#' You also cannot have more than one `LAUNCH` constraint on a product and
+#' portfolio.
 #' 
-#' NOTIFICATION
+#' ### NOTIFICATION
 #' 
-#' :   Specify the `NotificationArns` property as follows:
+#' Specify the `NotificationArns` property as follows:
 #' 
-#'     `\{"NotificationArns" : \\["arn:aws:sns:us-east-1:123456789012:Topic"\\]\}`
+#' `\{"NotificationArns" : \\["arn:aws:sns:us-east-1:123456789012:Topic"\\]\}`
 #' 
-#' RESOURCE\\_UPDATE
+#' ### RESOURCE\\_UPDATE
 #' 
-#' :   Specify the `TagUpdatesOnProvisionedProduct` property as follows:
+#' Specify the `TagUpdatesOnProvisionedProduct` property as follows:
 #' 
-#'     `\{"Version":"2.0","Properties":\{"TagUpdateOnProvisionedProduct":"String"\}\}`
+#' `\{"Version":"2.0","Properties":\{"TagUpdateOnProvisionedProduct":"String"\}\}`
 #' 
-#'     The `TagUpdatesOnProvisionedProduct` property accepts a string value
-#'     of `ALLOWED` or `NOT_ALLOWED`.
+#' The `TagUpdatesOnProvisionedProduct` property accepts a string value of
+#' `ALLOWED` or `NOT_ALLOWED`.
 #' 
-#' STACKSET
+#' ### STACKSET
 #' 
-#' :   Specify the `Parameters` property as follows:
+#' Specify the `Parameters` property as follows:
 #' 
-#'     `\{"Version": "String", "Properties": \{"AccountList": \\[ "String" \\], "RegionList": \\[ "String" \\], "AdminRole": "String", "ExecutionRole": "String"\}\}`
+#' `\{"Version": "String", "Properties": \{"AccountList": \\[ "String" \\], "RegionList": \\[ "String" \\], "AdminRole": "String", "ExecutionRole": "String"\}\}`
 #' 
-#'     You cannot have both a `LAUNCH` and a `STACKSET` constraint.
+#' You cannot have both a `LAUNCH` and a `STACKSET` constraint.
 #' 
-#'     You also cannot have more than one `STACKSET` constraint on a
-#'     product and portfolio.
+#' You also cannot have more than one `STACKSET` constraint on a product
+#' and portfolio.
 #' 
-#'     Products with a `STACKSET` constraint will launch an AWS
-#'     CloudFormation stack set.
+#' Products with a `STACKSET` constraint will launch an AWS CloudFormation
+#' stack set.
 #' 
-#' TEMPLATE
+#' ### TEMPLATE
 #' 
-#' :   Specify the `Rules` property. For more information, see [Template
-#'     Constraint
-#'     Rules](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html).
+#' Specify the `Rules` property. For more information, see [Template
+#' Constraint
+#' Rules](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html).
 #'
 #' @section Request syntax:
 #' ```

@@ -579,49 +579,49 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' 
 #' To create different types of CMKs, use the following guidance:
 #' 
-#' Asymmetric CMKs
+#' ### Asymmetric CMKs
 #' 
-#' :   To create an asymmetric CMK, use the `CustomerMasterKeySpec`
-#'     parameter to specify the type of key material in the CMK. Then, use
-#'     the `KeyUsage` parameter to determine whether the CMK will be used
-#'     to encrypt and decrypt or sign and verify. You can\'t change these
-#'     properties after the CMK is created.
+#' To create an asymmetric CMK, use the `CustomerMasterKeySpec` parameter
+#' to specify the type of key material in the CMK. Then, use the `KeyUsage`
+#' parameter to determine whether the CMK will be used to encrypt and
+#' decrypt or sign and verify. You can\'t change these properties after the
+#' CMK is created.
 #' 
-#' Symmetric CMKs
+#' ### Symmetric CMKs
 #' 
-#' :   When creating a symmetric CMK, you don\'t need to specify the
-#'     `CustomerMasterKeySpec` or `KeyUsage` parameters. The default value
-#'     for `CustomerMasterKeySpec`, `SYMMETRIC_DEFAULT`, and the default
-#'     value for `KeyUsage`, `ENCRYPT_DECRYPT`, are the only valid values
-#'     for symmetric CMKs.
+#' When creating a symmetric CMK, you don\'t need to specify the
+#' `CustomerMasterKeySpec` or `KeyUsage` parameters. The default value for
+#' `CustomerMasterKeySpec`, `SYMMETRIC_DEFAULT`, and the default value for
+#' `KeyUsage`, `ENCRYPT_DECRYPT`, are the only valid values for symmetric
+#' CMKs.
 #' 
-#' Imported Key Material
+#' ### Imported Key Material
 #' 
-#' :   To import your own key material, begin by creating a symmetric CMK
-#'     with no key material. To do this, use the `Origin` parameter of
-#'     `CreateKey` with a value of `EXTERNAL`. Next, use
-#'     GetParametersForImport operation to get a public key and import
-#'     token, and use the public key to encrypt your key material. Then,
-#'     use ImportKeyMaterial with your import token to import the key
-#'     material. For step-by-step instructions, see [Importing Key
-#'     Material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html)
-#'     in the **AWS Key Management Service Developer Guide** . You cannot
-#'     import the key material into an asymmetric CMK.
+#' To import your own key material, begin by creating a symmetric CMK with
+#' no key material. To do this, use the `Origin` parameter of `CreateKey`
+#' with a value of `EXTERNAL`. Next, use GetParametersForImport operation
+#' to get a public key and import token, and use the public key to encrypt
+#' your key material. Then, use ImportKeyMaterial with your import token to
+#' import the key material. For step-by-step instructions, see [Importing
+#' Key
+#' Material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html)
+#' in the **AWS Key Management Service Developer Guide** . You cannot
+#' import the key material into an asymmetric CMK.
 #' 
-#' Custom Key Stores
+#' ### Custom Key Stores
 #' 
-#' :   To create a symmetric CMK in a [custom key
-#'     store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html),
-#'     use the `CustomKeyStoreId` parameter to specify the custom key
-#'     store. You must also use the `Origin` parameter with a value of
-#'     `AWS_CLOUDHSM`. The AWS CloudHSM cluster that is associated with the
-#'     custom key store must have at least two active HSMs in different
-#'     Availability Zones in the AWS Region.
+#' To create a symmetric CMK in a [custom key
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html),
+#' use the `CustomKeyStoreId` parameter to specify the custom key store.
+#' You must also use the `Origin` parameter with a value of `AWS_CLOUDHSM`.
+#' The AWS CloudHSM cluster that is associated with the custom key store
+#' must have at least two active HSMs in different Availability Zones in
+#' the AWS Region.
 #' 
-#'     You cannot create an asymmetric CMK in a custom key store. For
-#'     information about custom key stores in AWS KMS see [Using Custom Key
-#'     Stores](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
-#'     in the **AWS Key Management Service Developer Guide** .
+#' You cannot create an asymmetric CMK in a custom key store. For
+#' information about custom key stores in AWS KMS see [Using Custom Key
+#' Stores](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
+#' in the **AWS Key Management Service Developer Guide** .
 #'
 #' @usage
 #' kms_create_key(Policy, Description, KeyUsage, CustomerMasterKeySpec,

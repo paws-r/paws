@@ -27,58 +27,70 @@ returned.}
 
 \item{CurrentMetrics}{[required] The metrics to retrieve. Specify the name and unit for each metric. The
 following metrics are available:
+\subsection{AGENTS\\_AFTER\\_CONTACT\\_WORK}{
 
-AGENTS\\_AFTER\\_CONTACT\\_WORK
+Unit: COUNT
+}
 
-:   Unit: COUNT
+\subsection{AGENTS\\_AVAILABLE}{
 
-AGENTS\\_AVAILABLE
+Unit: COUNT
+}
 
-:   Unit: COUNT
+\subsection{AGENTS\\_ERROR}{
 
-AGENTS\\_ERROR
+Unit: COUNT
+}
 
-:   Unit: COUNT
+\subsection{AGENTS\\_NON\\_PRODUCTIVE}{
 
-AGENTS\\_NON\\_PRODUCTIVE
+Unit: COUNT
+}
 
-:   Unit: COUNT
+\subsection{AGENTS\\_ON\\_CALL}{
 
-AGENTS\\_ON\\_CALL
+Unit: COUNT
+}
 
-:   Unit: COUNT
+\subsection{AGENTS\\_ON\\_CONTACT}{
 
-AGENTS\\_ON\\_CONTACT
+Unit: COUNT
+}
 
-:   Unit: COUNT
+\subsection{AGENTS\\_ONLINE}{
 
-AGENTS\\_ONLINE
+Unit: COUNT
+}
 
-:   Unit: COUNT
+\subsection{AGENTS\\_STAFFED}{
 
-AGENTS\\_STAFFED
+Unit: COUNT
+}
 
-:   Unit: COUNT
+\subsection{CONTACTS\\_IN\\_QUEUE}{
 
-CONTACTS\\_IN\\_QUEUE
+Unit: COUNT
+}
 
-:   Unit: COUNT
+\subsection{CONTACTS\\_SCHEDULED}{
 
-CONTACTS\\_SCHEDULED
+Unit: COUNT
+}
 
-:   Unit: COUNT
+\subsection{OLDEST\\_CONTACT\\_AGE}{
 
-OLDEST\\_CONTACT\\_AGE
+Unit: SECONDS
+}
 
-:   Unit: SECONDS
+\subsection{SLOTS\\_ACTIVE}{
 
-SLOTS\\_ACTIVE
+Unit: COUNT
+}
 
-:   Unit: COUNT
+\subsection{SLOTS\\_AVAILABLE}{
 
-SLOTS\\_AVAILABLE
-
-:   Unit: COUNT}
+Unit: COUNT
+}}
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of

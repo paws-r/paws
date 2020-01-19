@@ -287,18 +287,18 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' -   stream.graphics-pro.16xlarge
 #' @param FleetType The fleet type.
 #' 
-#' ALWAYS\\_ON
+#' ### ALWAYS\\_ON
 #' 
-#' :   Provides users with instant-on access to their apps. You are charged
-#'     for all running instances in your fleet, even if no users are
-#'     streaming apps.
+#' Provides users with instant-on access to their apps. You are charged for
+#' all running instances in your fleet, even if no users are streaming
+#' apps.
 #' 
-#' ON\\_DEMAND
+#' ### ON\\_DEMAND
 #' 
-#' :   Provide users with access to applications after they connect, which
-#'     takes one to two minutes. You are charged for instance streaming
-#'     when users are connected and a small hourly fee for instances that
-#'     are not streaming apps.
+#' Provide users with access to applications after they connect, which
+#' takes one to two minutes. You are charged for instance streaming when
+#' users are connected and a small hourly fee for instances that are not
+#' streaming apps.
 #' @param ComputeCapacity &#91;required&#93; The desired capacity for the fleet.
 #' @param VpcConfig The VPC configuration for the fleet.
 #' @param MaxUserDurationInSeconds The maximum amount of time that a streaming session can remain active,

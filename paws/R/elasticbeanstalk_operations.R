@@ -2762,15 +2762,15 @@ elasticbeanstalk_update_environment <- function(ApplicationName = NULL, Environm
 #' operation, specify one of the following two virtual actions (or both)
 #' instead of the API operation name:
 #' 
-#' elasticbeanstalk:AddTags
+#' ### elasticbeanstalk:AddTags
 #' 
-#' :   Controls permission to call `UpdateTagsForResource` and pass a list
-#'     of tags to add in the `TagsToAdd` parameter.
+#' Controls permission to call `UpdateTagsForResource` and pass a list of
+#' tags to add in the `TagsToAdd` parameter.
 #' 
-#' elasticbeanstalk:RemoveTags
+#' ### elasticbeanstalk:RemoveTags
 #' 
-#' :   Controls permission to call `UpdateTagsForResource` and pass a list
-#'     of tag keys to remove in the `TagsToRemove` parameter.
+#' Controls permission to call `UpdateTagsForResource` and pass a list of
+#' tag keys to remove in the `TagsToRemove` parameter.
 #' 
 #' For details about creating a custom user policy, see [Creating a Custom
 #' User

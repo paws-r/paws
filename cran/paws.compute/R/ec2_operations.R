@@ -18003,8 +18003,9 @@ ec2_describe_transit_gateways <- function(TransitGatewayIds = NULL, Filters = NU
 #' Describes the specified attribute of the specified volume. You can
 #' specify only one attribute at a time.
 #' 
-#' For more information about EBS volumes, see Amazon EBS Volumes in the
-#' *Amazon Elastic Compute Cloud User Guide*.
+#' For more information about EBS volumes, see [Amazon EBS
+#' Volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html)
+#' in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @usage
 #' ec2_describe_volume_attribute(Attribute, VolumeId, DryRun)

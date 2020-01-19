@@ -310,57 +310,57 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 #' @param CurrentMetrics &#91;required&#93; The metrics to retrieve. Specify the name and unit for each metric. The
 #' following metrics are available:
 #' 
-#' AGENTS\\_AFTER\\_CONTACT\\_WORK
+#' ### AGENTS\\_AFTER\\_CONTACT\\_WORK
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#' AGENTS\\_AVAILABLE
+#' ### AGENTS\\_AVAILABLE
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#' AGENTS\\_ERROR
+#' ### AGENTS\\_ERROR
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#' AGENTS\\_NON\\_PRODUCTIVE
+#' ### AGENTS\\_NON\\_PRODUCTIVE
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#' AGENTS\\_ON\\_CALL
+#' ### AGENTS\\_ON\\_CALL
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#' AGENTS\\_ON\\_CONTACT
+#' ### AGENTS\\_ON\\_CONTACT
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#' AGENTS\\_ONLINE
+#' ### AGENTS\\_ONLINE
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#' AGENTS\\_STAFFED
+#' ### AGENTS\\_STAFFED
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#' CONTACTS\\_IN\\_QUEUE
+#' ### CONTACTS\\_IN\\_QUEUE
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#' CONTACTS\\_SCHEDULED
+#' ### CONTACTS\\_SCHEDULED
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#' OLDEST\\_CONTACT\\_AGE
+#' ### OLDEST\\_CONTACT\\_AGE
 #' 
-#' :   Unit: SECONDS
+#' Unit: SECONDS
 #' 
-#' SLOTS\\_ACTIVE
+#' ### SLOTS\\_ACTIVE
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#' SLOTS\\_AVAILABLE
+#' ### SLOTS\\_AVAILABLE
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
@@ -496,159 +496,159 @@ connect_get_federation_token <- function(InstanceId) {
 #' @param HistoricalMetrics &#91;required&#93; The metrics to retrieve. Specify the name, unit, and statistic for each
 #' metric. The following historical metrics are available:
 #' 
-#' ABANDON\\_TIME
+#' ### ABANDON\\_TIME
 #' 
-#' :   Unit: SECONDS
+#' Unit: SECONDS
 #' 
-#'     Statistic: AVG
+#' Statistic: AVG
 #' 
-#' AFTER\\_CONTACT\\_WORK\\_TIME
+#' ### AFTER\\_CONTACT\\_WORK\\_TIME
 #' 
-#' :   Unit: SECONDS
+#' Unit: SECONDS
 #' 
-#'     Statistic: AVG
+#' Statistic: AVG
 #' 
-#' API\\_CONTACTS\\_HANDLED
+#' ### API\\_CONTACTS\\_HANDLED
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#'     Statistic: SUM
+#' Statistic: SUM
 #' 
-#' CALLBACK\\_CONTACTS\\_HANDLED
+#' ### CALLBACK\\_CONTACTS\\_HANDLED
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#'     Statistic: SUM
+#' Statistic: SUM
 #' 
-#' CONTACTS\\_ABANDONED
+#' ### CONTACTS\\_ABANDONED
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#'     Statistic: SUM
+#' Statistic: SUM
 #' 
-#' CONTACTS\\_AGENT\\_HUNG\\_UP\\_FIRST
+#' ### CONTACTS\\_AGENT\\_HUNG\\_UP\\_FIRST
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#'     Statistic: SUM
+#' Statistic: SUM
 #' 
-#' CONTACTS\\_CONSULTED
+#' ### CONTACTS\\_CONSULTED
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#'     Statistic: SUM
+#' Statistic: SUM
 #' 
-#' CONTACTS\\_HANDLED
+#' ### CONTACTS\\_HANDLED
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#'     Statistic: SUM
+#' Statistic: SUM
 #' 
-#' CONTACTS\\_HANDLED\\_INCOMING
+#' ### CONTACTS\\_HANDLED\\_INCOMING
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#'     Statistic: SUM
+#' Statistic: SUM
 #' 
-#' CONTACTS\\_HANDLED\\_OUTBOUND
+#' ### CONTACTS\\_HANDLED\\_OUTBOUND
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#'     Statistic: SUM
+#' Statistic: SUM
 #' 
-#' CONTACTS\\_HOLD\\_ABANDONS
+#' ### CONTACTS\\_HOLD\\_ABANDONS
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#'     Statistic: SUM
+#' Statistic: SUM
 #' 
-#' CONTACTS\\_MISSED
+#' ### CONTACTS\\_MISSED
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#'     Statistic: SUM
+#' Statistic: SUM
 #' 
-#' CONTACTS\\_QUEUED
+#' ### CONTACTS\\_QUEUED
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#'     Statistic: SUM
+#' Statistic: SUM
 #' 
-#' CONTACTS\\_TRANSFERRED\\_IN
+#' ### CONTACTS\\_TRANSFERRED\\_IN
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#'     Statistic: SUM
+#' Statistic: SUM
 #' 
-#' CONTACTS\\_TRANSFERRED\\_IN\\_FROM\\_QUEUE
+#' ### CONTACTS\\_TRANSFERRED\\_IN\\_FROM\\_QUEUE
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#'     Statistic: SUM
+#' Statistic: SUM
 #' 
-#' CONTACTS\\_TRANSFERRED\\_OUT
+#' ### CONTACTS\\_TRANSFERRED\\_OUT
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#'     Statistic: SUM
+#' Statistic: SUM
 #' 
-#' CONTACTS\\_TRANSFERRED\\_OUT\\_FROM\\_QUEUE
+#' ### CONTACTS\\_TRANSFERRED\\_OUT\\_FROM\\_QUEUE
 #' 
-#' :   Unit: COUNT
+#' Unit: COUNT
 #' 
-#'     Statistic: SUM
+#' Statistic: SUM
 #' 
-#' HANDLE\\_TIME
+#' ### HANDLE\\_TIME
 #' 
-#' :   Unit: SECONDS
+#' Unit: SECONDS
 #' 
-#'     Statistic: AVG
+#' Statistic: AVG
 #' 
-#' HOLD\\_TIME
+#' ### HOLD\\_TIME
 #' 
-#' :   Unit: SECONDS
+#' Unit: SECONDS
 #' 
-#'     Statistic: AVG
+#' Statistic: AVG
 #' 
-#' INTERACTION\\_AND\\_HOLD\\_TIME
+#' ### INTERACTION\\_AND\\_HOLD\\_TIME
 #' 
-#' :   Unit: SECONDS
+#' Unit: SECONDS
 #' 
-#'     Statistic: AVG
+#' Statistic: AVG
 #' 
-#' INTERACTION\\_TIME
+#' ### INTERACTION\\_TIME
 #' 
-#' :   Unit: SECONDS
+#' Unit: SECONDS
 #' 
-#'     Statistic: AVG
+#' Statistic: AVG
 #' 
-#' OCCUPANCY
+#' ### OCCUPANCY
 #' 
-#' :   Unit: PERCENT
+#' Unit: PERCENT
 #' 
-#'     Statistic: AVG
+#' Statistic: AVG
 #' 
-#' QUEUE\\_ANSWER\\_TIME
+#' ### QUEUE\\_ANSWER\\_TIME
 #' 
-#' :   Unit: SECONDS
+#' Unit: SECONDS
 #' 
-#'     Statistic: AVG
+#' Statistic: AVG
 #' 
-#' QUEUED\\_TIME
+#' ### QUEUED\\_TIME
 #' 
-#' :   Unit: SECONDS
+#' Unit: SECONDS
 #' 
-#'     Statistic: MAX
+#' Statistic: MAX
 #' 
-#' SERVICE\\_LEVEL
+#' ### SERVICE\\_LEVEL
 #' 
-#' :   Unit: PERCENT
+#' Unit: PERCENT
 #' 
-#'     Statistic: AVG
+#' Statistic: AVG
 #' 
-#'     Threshold: Only \"Less than\" comparisons are supported, with the
-#'     following service level thresholds: 15, 20, 25, 30, 45, 60, 90, 120,
-#'     180, 240, 300, 600
+#' Threshold: Only \"Less than\" comparisons are supported, with the
+#' following service level thresholds: 15, 20, 25, 30, 45, 60, 90, 120,
+#' 180, 240, 300, 600
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
