@@ -540,6 +540,8 @@ test_that("unmarshal error with message in 'Message'", {
   out <- req$error
   expect_equal(out$code, "FooException")
   expect_equal(out$message, "Foo")
+  expect_equal(out$statusCode, 400)
+  expect_equal(out$errorResponse$Message, "Foo")
 })
 
 test_that("unmarshal error with message in 'message'", {
@@ -552,6 +554,8 @@ test_that("unmarshal error with message in 'message'", {
   out <- req$error
   expect_equal(out$code, "FooException")
   expect_equal(out$message, "Foo")
+  expect_equal(out$statusCode, 400)
+  expect_equal(out$errorResponse$message, "Foo")
 })
 
 test_that("unmarshal error with no message", {
@@ -564,4 +568,6 @@ test_that("unmarshal error with no message", {
   out <- req$error
   expect_equal(out$code, "FooException")
   expect_equal(out$message, "")
+  expect_equal(out$statusCode, 400)
+  expect_equal(out$errorResponse$`__type`, "FooException")
 })

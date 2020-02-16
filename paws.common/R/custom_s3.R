@@ -91,20 +91,23 @@ s3_unmarshal_error <- function(request) {
 
   if (is.null(data)) {
     request$error <- Error("SerializationError",
-                           "failed to read from query HTTP response body")
+                           "failed to read from query HTTP response body",
+                           request$http_response$status_code)
     return(request)
   }
 
-  code <- unlist(data$Error$Code)
-  message <- unlist(data$Error$Message)
+  errorResponse <- lapply(data$Error, unlist)
+  code <- errorResponse$Code
+  message <- errorResponse$Message
 
   if (is.null(message) && is.null(code)) {
     request$error <- Error("SerializationError",
-                           "failed to decode query XML error response")
+                           "failed to decode query XML error response",
+                           request$http_response$status_code)
     return(request)
   }
 
-  request$error <- Error(code, message)
+  request$error <- Error(code, message, request$http_response$status_code, errorResponse)
   return(request)
 }
 

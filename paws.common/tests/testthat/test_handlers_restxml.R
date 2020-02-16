@@ -492,6 +492,7 @@ test_that("skip empty argument", {
 op <- Operation(name = "OperationName")
 svc <- Client()
 svc$handlers$unmarshal <- HandlerList(restxml_unmarshal)
+svc$handlers$unmarshal_error <- HandlerList(restxml_unmarshal_error)
 
 op_output1 <- Structure(
   Char = Scalar(type = "character"),
@@ -679,4 +680,21 @@ test_that("unmarshal timestamp", {
   req <- unmarshal(req)
   out <- req$data
   expect_equal(out$Timestamp, unix_time(0))
+})
+
+test_that("unmarshal error", {
+  op_output12 <- Structure(
+    Timestamp = Scalar(type = "timestamp")
+  )
+  req <- new_request(svc, op, NULL, op_output12)
+  req$http_response <- HttpResponse(
+    status_code = 400,
+    body = charToRaw("<Response><Error><Code>Foo</Code><Message>Bar</Message><RequestID>Baz</RequestID></Error></Response>")
+  )
+  req <- unmarshal_error(req)
+  err <- req$error
+  expect_equal(err$message, "Bar")
+  expect_equal(err$code, "Foo")
+  expect_equal(err$statusCode, 400)
+  expect_equal(err$errorResponse$RequestID, "Baz")
 })
