@@ -74,3 +74,18 @@ test_that("delete some tags", {
   expect_equal(tag_get(result$inner[[2]], "foo2"), "")
   expect_equal(tag_get(result$inner[[3]], "foo2"), "")
 })
+
+#-------------------------------------------------------------------------------
+
+test_that("types", {
+  expect_equal(type(List()), "list")
+  expect_equal(type(Map()), "map")
+  expect_equal(type(Scalar()), "scalar")
+  expect_equal(type(Structure(Foo = logical(0))), "structure")
+
+  expect_equal(type(c(1, 2)), "list")
+  expect_equal(type(list(1, 2, 3)), "list")
+  expect_equal(type(1), "scalar")
+  expect_equal(type(c(a = 1, b = 2, c = 3)), "structure")
+  expect_equal(type(list(a = 1, b = 2, c = 3)), "structure")
+})
