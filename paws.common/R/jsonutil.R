@@ -179,6 +179,7 @@ json_parse <- function(node, interface) {
 }
 
 json_parse_structure <- function(node, interface) {
+  if (length(interface) == 0) return(node)
 
   result <- interface
 
@@ -199,6 +200,7 @@ json_parse_structure <- function(node, interface) {
 
 json_parse_list <- function(node, interface) {
   if (length(node) == 0) return(list())
+  if (length(interface) == 0) return(node)
   names(node) <- NULL
   result <- lapply(node, function(x) json_parse(x, interface[[1]]))
   if (type(interface[[1]]) == "scalar") {
@@ -208,6 +210,7 @@ json_parse_list <- function(node, interface) {
 }
 
 json_parse_map <- function(node, interface) {
+  if (length(interface) == 0) return(node)
   result <- list()
   for (name in names(node)) {
     parsed <- json_parse(node[[name]], interface[[1]])

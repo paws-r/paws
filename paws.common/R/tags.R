@@ -110,7 +110,22 @@ type <- function(object) {
       "scalar"
     )
   } else {
-    t <- ""
+    t <- guess_type(object)
+  }
+  return(t)
+}
+
+# If an object has no tag information, guess the type of the object based
+# on its properties.
+guess_type <- function(object) {
+  if (!is.null(names(object))) {
+    t <- "structure"
+  } else {
+    if (is.atomic(object) && length(object) == 1) {
+      t <- "scalar"
+    } else {
+      t <- "list"
+    }
   }
   return(t)
 }
