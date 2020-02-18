@@ -381,6 +381,43 @@ test_that("build nested structure with incomplete input shape", {
   req <- build(req)
   r <- req$http_request
   expect_equal(r$body, '{"TableName":"myname","Item":{"Day":{"N":"1"},"HourMap":{"M":{"1":{"N":"1"},"2":{"N":"2"},"3":{"N":"3"}}},"UserId":{"S":"1"}}}')
+
+  input <- op_input14(
+    TableName = "myname",
+    Item = list(
+      UserId = list(
+        S = "2"
+      ),
+      Day = list(
+        N = 1
+      ),
+      Foo = list(
+        L = list(
+          list(
+            M = list(
+              FooBar = list(
+                N = "1"
+              )
+            )
+          ),
+          list(
+            M = list(
+              FooBar = list(
+                N = "2"
+              )
+            )
+          )
+        )
+      ),
+      Bar = list(
+        NS = list("1", "2", "3")
+      )
+    )
+  )
+  req <- new_request(svc, op, input, NULL)
+  req <- build(req)
+  r <- req$http_request
+  expect_equal(r$body, '{"TableName":"myname","Item":{"Bar":{"NS":["1","2","3"]},"Day":{"N":"1"},"Foo":{"L":[{"M":{"FooBar":{"N":"1"}}},{"M":{"FooBar":{"N":"2"}}}]},"UserId":{"S":"2"}}}')
 })
 
 #-------------------------------------------------------------------------------
@@ -602,7 +639,7 @@ test_that("unmarshal nested structure with incomplete output shape", {
   req <- new_request(svc, op, NULL, op_output8)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = charToRaw("{\"Count\":1,\"Items\":[{\"UserId\":{\"S\":\"1\"},\"HourMap\":{\"M\":{\"1\":{\"N\":\"1\"},\"2\":{\"N\":\"2\"},\"3\":{\"N\":\"3\"}}},\"Day\":{\"N\":\"1\"}}],\"ScannedCount\":1}")
+    body = charToRaw('{"Count":1,"Items":[{"UserId":{"S":"1"},"HourMap":{"M":{"1":{"N":"1"},"2":{"N":"2"},"3":{"N":"3"}}},"Day":{"N":"1"}}],"ScannedCount":1}')
   )
   req <- unmarshal(req)
   out <- req$data
@@ -612,6 +649,18 @@ test_that("unmarshal nested structure with incomplete output shape", {
   expect_equal(out$Items[[1]]$HourMap$M$`1`$N, "1")
   expect_equal(out$Items[[1]]$HourMap$M$`2`$N, "2")
   expect_equal(out$Items[[1]]$HourMap$M$`3`$N, "3")
+
+  req <- new_request(svc, op, NULL, op_output8)
+  req$http_response <- HttpResponse(
+    status_code = 200,
+    body = charToRaw('{"Count":1,"Items":[{"UserId":{"S":"4"},"Day":{"N":"1"},"Bar":{"NS":["3","2","1"]},"Foo":{"L":[{"M":{"FooBar":{"N":"1"}}},{"M":{"FooBar":{"N":"2"}}}]}}],"ScannedCount":1}')
+  )
+  req <- unmarshal(req)
+  out <- req$data
+  expect_length(out$Items, 1)
+  expect_equal(out$Items[[1]]$Bar$NS, c("3", "2", "1"))
+  expect_equal(out$Items[[1]]$Foo$L[[1]], list(M = list(FooBar = list(N = "1"))))
+  expect_equal(out$Items[[1]]$Foo$L[[2]], list(M = list(FooBar = list(N = "2"))))
 })
 
 test_that("unmarshal error with message in 'Message'", {
