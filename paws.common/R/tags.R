@@ -34,6 +34,7 @@
 #' @name tags
 NULL
 
+# Returns the given tag on an object, or "" if not present.
 #' @rdname tags
 #' @export
 tag_get <- function(object, tag) {
@@ -42,6 +43,14 @@ tag_get <- function(object, tag) {
     return(tags[[tag]])
   }
   return("")
+}
+
+# Returns all tags on an object as a list.
+#' @rdname tags
+#' @export
+tag_get_all <- function(object) {
+  tags <- attr(object, "tags", exact = TRUE)
+  return(tags)
 }
 
 # Returns whether the object has the given tag.

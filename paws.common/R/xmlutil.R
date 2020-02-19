@@ -209,6 +209,11 @@ xml_parse_structure <- function(node, interface) {
   for (name in names(interface)) {
     field <- interface[[name]]
 
+    # Skip fields that don't come from the response body.
+    if (tag_get(field, "location") != "") {
+      next
+    }
+
     node_name <- name
     flattened <- tag_get(field, "flattened") != ""
     if (flattened && tag_get(field, "locationNameList") != "") {
@@ -220,12 +225,6 @@ xml_parse_structure <- function(node, interface) {
     elem <- node[[node_name]]
     if (flattened) {
       elem <- node[names(node) == node_name]
-    }
-
-    # Do not over-write fields that don't also exist in the given `node` and
-    # that have already been unmarshalled, e.g. from the response header.
-    if (length(elem) == 0 && length(result[[name]]) > 0) {
-      next
     }
 
     parsed <- xml_parse(elem, field)
