@@ -548,8 +548,8 @@ test_that("unmarshal list of structures", {
   )
   req <- unmarshal(req)
   out <- req$data
-  expect_equal(out$List[[1]], list(Bar = "firstbar", Baz = "firstbaz", Foo = "firstfoo"))
-  expect_equal(out$List[[2]], list(Bar = "secondbar", Baz = "secondbaz", Foo = "secondfoo"))
+  expect_equivalent(out$List[[1]], list(Bar = "firstbar", Baz = "firstbaz", Foo = "firstfoo"))
+  expect_equivalent(out$List[[2]], list(Bar = "secondbar", Baz = "secondbaz", Foo = "secondfoo"))
 })
 
 op_output7 <- Structure(
@@ -571,8 +571,8 @@ test_that("unmarshal flattened list of structures", {
   )
   req <- unmarshal(req)
   out <- req$data
-  expect_equal(out$List[[1]], list(Bar = "firstbar", Baz = "firstbaz", Foo = "firstfoo"))
-  expect_equal(out$List[[2]], list(Bar = "secondbar", Baz = "secondbaz", Foo = "secondfoo"))
+  expect_equivalent(out$List[[1]], list(Bar = "firstbar", Baz = "firstbaz", Foo = "firstfoo"))
+  expect_equivalent(out$List[[2]], list(Bar = "secondbar", Baz = "secondbaz", Foo = "secondfoo"))
 })
 
 op_output8 <- Structure(

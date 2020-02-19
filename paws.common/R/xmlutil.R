@@ -205,7 +205,7 @@ xml_parse_structure <- function(node, interface) {
     return(result)
   }
 
-  result <- list()
+  result <- interface
   for (name in names(interface)) {
     field <- interface[[name]]
 
@@ -222,8 +222,10 @@ xml_parse_structure <- function(node, interface) {
       elem <- node[names(node) == node_name]
     }
 
-    if (length(elem) == 0) {
-      # TODO: Implement.
+    # Do not over-write fields that don't also exist in the given `node` and
+    # that have already been unmarshalled, e.g. from the response header.
+    if (length(elem) == 0 && length(result[[name]] > 0)) {
+      next
     }
 
     parsed <- xml_parse(elem, field)
