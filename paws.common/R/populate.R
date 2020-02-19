@@ -13,6 +13,10 @@ check_location_name <- function(name, interface){
 # Populate the interface for a given API operation with the parameters
 # that the user submitted.
 populate_structure <- function(input, interface) {
+  # If interface is empty (input shape is incomplete), return the input data.
+  # Only needed because input shapes have fixed depth, and some services,
+  # e.g. DynamoDB, can accept data of arbitrary depth.
+  if (length(interface) == 0) return(input)
   for (name in names(input)) {
     if (!(name) %in% names(interface)) {
       check_location <- check_location_name(name, interface)
@@ -29,6 +33,10 @@ populate_structure <- function(input, interface) {
 }
 
 populate_list <- function(input, interface) {
+  # If interface is empty (input shape is incomplete), return the input data.
+  # Only needed because input shapes have fixed depth, and some services,
+  # e.g. DynamoDB, can accept data of arbitrary depth.
+  if (length(interface) == 0) return(input)
   attrs <- attributes(interface)
   interface <- lapply(input, function(x) populate(x, interface[[1]]))
   attributes(interface) <- attrs
@@ -36,6 +44,10 @@ populate_list <- function(input, interface) {
 }
 
 populate_map <- function(input, interface) {
+  # If interface is empty (input shape is incomplete), return the input data.
+  # Only needed because input shapes have fixed depth, and some services,
+  # e.g. DynamoDB, can accept data of arbitrary depth.
+  if (length(interface) == 0) return(input)
   result <- list()
   for (name in names(input)) {
     result[[name]] <- populate(input[[name]], interface[[1]])
