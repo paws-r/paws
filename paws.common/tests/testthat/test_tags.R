@@ -2,10 +2,12 @@ context("Tags")
 
 test_that("add tags to an object without tags", {
   a <- list()
-  b <- tag_add(a, list(foo = "abc", bar = 123, baz = list(qux = "xyz")))
+  tags <- list(foo = "abc", bar = 123, baz = list(qux = "xyz"))
+  b <- tag_add(a, tags)
   expect_equal(tag_get(b, "foo"), "abc")
   expect_equal(tag_get(b, "bar"), 123)
   expect_equal(tag_get(b, "baz"), list(qux = "xyz"))
+  expect_equal(tag_get_all(b), tags)
 })
 
 test_that("add tags to an object with tags", {
