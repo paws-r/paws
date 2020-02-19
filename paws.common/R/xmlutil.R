@@ -224,7 +224,7 @@ xml_parse_structure <- function(node, interface) {
 
     # Do not over-write fields that don't also exist in the given `node` and
     # that have already been unmarshalled, e.g. from the response header.
-    if (length(elem) == 0 && length(result[[name]] > 0)) {
+    if (length(elem) == 0 && length(result[[name]]) > 0) {
       next
     }
 
