@@ -160,19 +160,24 @@ rest_unmarshal_location_elements <- function(request) {
       name <- field_name
     }
 
+    tags <- tag_get_all(field)
     location <- tag_get(field, "location")
     if (location == "statusCode") {
-      values[[field_name]] <- rest_unmarshal_status_code(request$http_response$status_code)
+      result <- rest_unmarshal_status_code(request$http_response$status_code)
     } else if (location == "header") {
       v <- request$http_response$header[[name]]
       type <- tag_get(field, "type")
-      values[[field_name]] <- rest_unmarshal_header(v, type)
+      result <- rest_unmarshal_header(v, type)
     } else if (location == "headers") {
       v <- request$http_response$header
       prefix <- tag_get(field, "locationName")
       type <- tag_get(field, "type")
-      values[[field_name]] <- rest_unmarshal_header_map(v, prefix, type)
+      result <- rest_unmarshal_header_map(v, prefix, type)
+    } else {
+      result <- values[[field_name]]
     }
+    result <- tag_add(result, tags)
+    values[[field_name]] <- result
   }
   request$data <- values
   return(request)
