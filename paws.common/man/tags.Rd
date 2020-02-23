@@ -3,6 +3,7 @@
 \name{tags}
 \alias{tags}
 \alias{tag_get}
+\alias{tag_get_all}
 \alias{tag_has}
 \alias{tag_add}
 \alias{tag_del}
@@ -10,6 +11,8 @@
 \title{Get, set, and delete object tags}
 \usage{
 tag_get(object, tag)
+
+tag_get_all(object)
 
 tag_has(object, tag)
 
