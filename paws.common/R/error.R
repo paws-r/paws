@@ -32,7 +32,6 @@ Error <- struct(
 #'   https://github.com/r-lib/httr/blob/master/R/response-status.r#L310
 #'   for the httr inspiration of this condition
 #'
-#' @export
 aws_error <- function(e, call = sys.call(-1), use_call = FALSE) {
   full_message <- sprintf("%s (HTTP %d). %s", e$code, e$status_code, e$message)
 
