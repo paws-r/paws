@@ -683,24 +683,6 @@ test_that("unmarshal timestamp", {
   expect_equal(out$Timestamp, unix_time(0))
 })
 
-<<<<<<< HEAD
-test_that("unmarshal error", {
-  op_output12 <- Structure(
-    Timestamp = Scalar(type = "timestamp")
-  )
-  req <- new_request(svc, op, NULL, op_output12)
-  req$http_response <- HttpResponse(
-    status_code = 400,
-    body = charToRaw("<Response><Error><Code>Foo</Code><Message>Bar</Message><RequestID>Baz</RequestID></Error></Response>")
-  )
-  req <- unmarshal_error(req)
-  err <- req$error
-  expect_equal(err$message, "Bar")
-  expect_equal(err$code, "Foo")
-  expect_equal(err$status_code, 400)
-  expect_equal(err$error_response$RequestID, "Baz")
-})
-=======
 op_output11 <- Structure(
   Body = Scalar(type = "string"),
   Header = Scalar(type = "string", .tags = list(location = "header"))
@@ -719,4 +701,20 @@ test_that("unmarshal elements in header and body", {
   expect_equivalent(out$Body, "foo")
   expect_equivalent(out$Header, "bar")
 })
->>>>>>> master
+
+op_output12 <- Structure(
+  Timestamp = Scalar(type = "timestamp")
+)
+test_that("unmarshal error", {
+  req <- new_request(svc, op, NULL, op_output12)
+  req$http_response <- HttpResponse(
+    status_code = 400,
+    body = charToRaw("<Response><Error><Code>Foo</Code><Message>Bar</Message><RequestID>Baz</RequestID></Error></Response>")
+  )
+  req <- unmarshal_error(req)
+  err <- req$error
+  expect_equal(err$message, "Bar")
+  expect_equal(err$code, "Foo")
+  expect_equal(err$status_code, 400)
+  expect_equal(err$error_response$RequestID, "Baz")
+})
