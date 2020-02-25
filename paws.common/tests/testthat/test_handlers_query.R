@@ -708,26 +708,26 @@ test_that("unmarshal enums", {
 request <- list()
 
 test_that("unmarshal error", {
-  data <- "<ErrorResponse><Error><Code>FooError</Code><Message>Foo</Message><RequestId>123</RequestId><HostId>ABC</HostId></Error></ErrorResponse>"
+  data <- "<error_response><Error><Code>FooError</Code><Message>Foo</Message><RequestId>123</RequestId><HostId>ABC</HostId></Error></error_response>"
   request$http_response$body <- charToRaw(data)
   request$http_response$status_code <- 400
   request <- query_unmarshal_error(request)
   out <- request$error
   expect_equal(out$code, "FooError")
   expect_equal(out$message, "Foo")
-  expect_equal(out$statusCode, 400)
-  expect_equal(out$errorResponse$RequestId, "123")
+  expect_equal(out$status_code, 400)
+  expect_equal(out$error_response$RequestId, "123")
 })
 
 test_that("unmarshal error with an empty message", {
-  data <- "<ErrorResponse><Error><Code>FooError</Code><Message></Message><RequestId>123</RequestId><HostId>ABC</HostId></Error></ErrorResponse>"
+  data <- "<error_response><Error><Code>FooError</Code><Message></Message><RequestId>123</RequestId><HostId>ABC</HostId></Error></error_response>"
   request$http_response$body <- charToRaw(data)
   request$http_response$status_code <- 400
   request <- query_unmarshal_error(request)
   out <- request$error
   expect_equal(out$code, "FooError")
-  expect_equal(out$statusCode, 400)
-  expect_equal(out$errorResponse$RequestId, "123")
+  expect_equal(out$status_code, 400)
+  expect_equal(out$error_response$RequestId, "123")
 })
 
 test_that("unmarshal error with invalid XML", {
@@ -737,7 +737,7 @@ test_that("unmarshal error with invalid XML", {
   request <- query_unmarshal_error(request)
   out <- request$error
   expect_equal(out$code, "SerializationError")
-  expect_equal(out$statusCode, 400)
+  expect_equal(out$status_code, 400)
 })
 
 test_that("unmarshal error with the wrong shape", {
@@ -747,5 +747,5 @@ test_that("unmarshal error with the wrong shape", {
   request <- query_unmarshal_error(request)
   out <- request$error
   expect_equal(out$code, "SerializationError")
-  expect_equal(out$statusCode, 400)
+  expect_equal(out$status_code, 400)
 })

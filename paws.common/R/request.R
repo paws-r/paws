@@ -154,7 +154,7 @@ send_request <- function(request) {
   request <- sign(request)
 
   if (!is.null(request$error)) {
-    stop(http_error(request$error))
+    stop(aws_error(request$error))
   }
 
   request <- send(request)
@@ -163,7 +163,7 @@ send_request <- function(request) {
 
   if (!is.null(request$error)) {
     request <- unmarshal_error(request)
-    stop(http_error(request$error))
+    stop(aws_error(request$error))
   }
 
   request <- unmarshal(request)

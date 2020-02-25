@@ -40,8 +40,8 @@ restjson_unmarshal_error <- function(request) {
   request$error <- Error(
     code = code,
     message = message,
-    statusCode = request$http_response$status_code,
-    errorResponse = error
+    status_code = request$http_response$status_code,
+    error_response = error
   )
   return(request)
 }

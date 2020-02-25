@@ -166,17 +166,17 @@ xml_unmarshal <- function(data, interface, result_name = NULL) {
 }
 
 # Unmarshal errors in `data` provided as a list.
-xml_unmarshal_error <- function(data, statusCode) {
+xml_unmarshal_error <- function(data, status_code) {
   root <- data[[1]]
-  errorResponse <- lapply(root$Error, unlist)
-  code <- errorResponse$Code
-  message <- errorResponse$Message
+  error_response <- lapply(root$Error, unlist)
+  code <- error_response$Code
+  message <- error_response$Message
 
   if (is.null(message) && is.null(code)) {
     return(NULL)
   }
 
-  error <- Error(code, message, statusCode, errorResponse)
+  error <- Error(code, message, status_code, error_response)
   return(error)
 }
 

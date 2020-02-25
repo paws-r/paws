@@ -96,9 +96,9 @@ s3_unmarshal_error <- function(request) {
     return(request)
   }
 
-  errorResponse <- lapply(data$Error, unlist)
-  code <- errorResponse$Code
-  message <- errorResponse$Message
+  error_response <- lapply(data$Error, unlist)
+  code <- error_response$Code
+  message <- error_response$Message
 
   if (is.null(message) && is.null(code)) {
     request$error <- Error("SerializationError",
@@ -107,7 +107,7 @@ s3_unmarshal_error <- function(request) {
     return(request)
   }
 
-  request$error <- Error(code, message, request$http_response$status_code, errorResponse)
+  request$error <- Error(code, message, request$http_response$status_code, error_response)
   return(request)
 }
 

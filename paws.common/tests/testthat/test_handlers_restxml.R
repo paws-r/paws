@@ -695,6 +695,6 @@ test_that("unmarshal error", {
   err <- req$error
   expect_equal(err$message, "Bar")
   expect_equal(err$code, "Foo")
-  expect_equal(err$statusCode, 400)
-  expect_equal(err$errorResponse$RequestID, "Baz")
+  expect_equal(err$status_code, 400)
+  expect_equal(err$error_response$RequestID, "Baz")
 })

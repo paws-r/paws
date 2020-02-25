@@ -413,7 +413,7 @@ test_that("unmarshal timestamp", {
   expect_equal(out$Timestamp, unix_time(0))
 })
 
-test_that("unmarshall error", {
+test_that("unmarshal error", {
   req <- new_request(svc, op, NULL, op_output10)
   req$http_response <- HttpResponse(
     status_code = 404,
@@ -424,6 +424,6 @@ test_that("unmarshall error", {
   err <- req$error
   expect_equal(err$message, "Bar")
   expect_equal(err$code, "Foo")
-  expect_equal(err$statusCode, 404)
-  expect_equal(err$errorResponse$RequestID, "Baz")
+  expect_equal(err$status_code, 404)
+  expect_equal(err$error_response$RequestID, "Baz")
 })

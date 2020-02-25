@@ -37,10 +37,10 @@ ec2query_unmarshal_meta <- function(request) {
 ec2query_unmarshal_error <- function(request) {
   body <- decode_xml(request$http_response$body)
   data <- body[[1]]
-  errorResponse <- lapply(data$Error, unlist)
-  code <- errorResponse$Code
-  message <- errorResponse$Message
+  error_response <- lapply(data$Error, unlist)
+  code <- error_response$Code
+  message <- error_response$Message
 
-  request$error <- Error(code, message, request$http_response$status_code, errorResponse)
+  request$error <- Error(code, message, request$http_response$status_code, error_response)
   return(request)
 }
