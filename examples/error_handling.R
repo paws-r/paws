@@ -45,4 +45,4 @@ while (is.null(response) | inherits(response, "http_500") | attempt_count < 3){
     # Re-raise the error object on non-500 error or 500 error with maxed retries
     stop(response)
   }
-)
+}
