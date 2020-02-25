@@ -179,6 +179,10 @@ json_parse <- function(node, interface) {
 }
 
 json_parse_structure <- function(node, interface) {
+  # If interface is empty (output shape is incomplete), return the output data.
+  # Only needed because output shapes have fixed depth, and some services,
+  # e.g. DynamoDB, can return data of arbitrary depth.
+  if (length(interface) == 0) return(node)
 
   result <- interface
 
@@ -189,6 +193,9 @@ json_parse_structure <- function(node, interface) {
   }
 
   for (name in names(interface)) {
+    # Skip fields that don't come from the response body.
+    if (tag_get(interface[[name]], "location") != "") next
+
     node_name <- tag_get(interface[[name]], "locationName")
     if (node_name == "") node_name <- name
     parsed <- json_parse(node[[node_name]], interface[[name]])
@@ -199,6 +206,10 @@ json_parse_structure <- function(node, interface) {
 
 json_parse_list <- function(node, interface) {
   if (length(node) == 0) return(list())
+  # If interface is empty (output shape is incomplete), return the output data.
+  # Only needed because output shapes have fixed depth, and some services,
+  # e.g. DynamoDB, can return data of arbitrary depth.
+  if (length(interface) == 0) return(node)
   names(node) <- NULL
   result <- lapply(node, function(x) json_parse(x, interface[[1]]))
   if (type(interface[[1]]) == "scalar") {
@@ -208,6 +219,10 @@ json_parse_list <- function(node, interface) {
 }
 
 json_parse_map <- function(node, interface) {
+  # If interface is empty (output shape is incomplete), return the output data.
+  # Only needed because output shapes have fixed depth, and some services,
+  # e.g. DynamoDB, can return data of arbitrary depth.
+  if (length(interface) == 0) return(node)
   result <- list()
   for (name in names(node)) {
     parsed <- json_parse(node[[name]], interface[[1]])

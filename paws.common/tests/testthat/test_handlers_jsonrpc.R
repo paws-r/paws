@@ -332,6 +332,94 @@ test_that("build enums", {
   expect_equal(req$body, '{"FooEnum":"foo","ListEnums":["foo","","bar"]}')
 })
 
+op_input14 <- function(TableName, Item) {
+  args <- list(TableName = TableName, Item = Item)
+  interface <- Structure(
+    TableName = Scalar(type = "string"),
+    Item = Map(Structure(
+      S = Scalar(type = "string"),
+      N = Scalar(type = "string"),
+      B = Scalar(type = "blob"),
+      SS = List(Scalar(type = "string")),
+      NS = List(Scalar(type = "string")),
+      BS = List(Scalar(type = "blob")),
+      M = Map(),
+      L = List(),
+      `NULL` = Scalar(type = "boolean"),
+      BOOL = Scalar(type = "boolean")
+    ))
+  )
+  return(populate(args, interface))
+}
+
+test_that("build nested structure with incomplete input shape", {
+  input <- op_input14(
+    TableName = "myname",
+    Item = list(
+      UserId = list(
+        S = "1"
+      ),
+      Day = list(
+        N = 1
+      ),
+      HourMap = list(
+        M = list(
+          "1" = list(
+            N = "1"
+          ),
+          "2" = list(
+            N = "2"
+          ),
+          "3" = list(
+            N = "3"
+          )
+        )
+      )
+    )
+  )
+  req <- new_request(svc, op, input, NULL)
+  req <- build(req)
+  r <- req$http_request
+  expect_equal(r$body, '{"TableName":"myname","Item":{"Day":{"N":"1"},"HourMap":{"M":{"1":{"N":"1"},"2":{"N":"2"},"3":{"N":"3"}}},"UserId":{"S":"1"}}}')
+
+  input <- op_input14(
+    TableName = "myname",
+    Item = list(
+      UserId = list(
+        S = "2"
+      ),
+      Day = list(
+        N = 1
+      ),
+      Foo = list(
+        L = list(
+          list(
+            M = list(
+              FooBar = list(
+                N = "1"
+              )
+            )
+          ),
+          list(
+            M = list(
+              FooBar = list(
+                N = "2"
+              )
+            )
+          )
+        )
+      ),
+      Bar = list(
+        NS = list("1", "2", "3")
+      )
+    )
+  )
+  req <- new_request(svc, op, input, NULL)
+  req <- build(req)
+  r <- req$http_request
+  expect_equal(r$body, '{"TableName":"myname","Item":{"Bar":{"NS":["1","2","3"]},"Day":{"N":"1"},"Foo":{"L":[{"M":{"FooBar":{"N":"1"}}},{"M":{"FooBar":{"N":"2"}}}]},"UserId":{"S":"2"}}}')
+})
+
 #-------------------------------------------------------------------------------
 
 # Build with no target prefix
@@ -509,7 +597,7 @@ test_that("unmarshal ignores extra data", {
   req <- unmarshal(req)
   out <- req$data
   expect_equal(names(out), "StrType")
-  expect_equal(out$StrType, character(0))
+  expect_equivalent(out$StrType, character(0))
 })
 
 op_output7 <- Structure(
@@ -528,6 +616,51 @@ test_that("unmarshal enums", {
   expect_equal(out$FooEnum, "foo")
   expect_equal(out$ListEnums[1], "foo")
   expect_equal(out$ListEnums[2], "bar")
+})
+
+op_output8 <- Structure(
+  Count = Scalar(type = "integer"),
+  Items = List(Map(Structure(
+    S = Scalar(type = "string"),
+    N = Scalar(type = "string"),
+    B = Scalar(type = "blob"),
+    SS = List(Scalar(type = "string")),
+    NS = List(Scalar(type = "string")),
+    BS = List(Scalar(type = "blob")),
+    M = Map(),
+    L = List(),
+    `NULL` = Scalar(type = "boolean"),
+    BOOL = Scalar(type = "boolean")
+  ))),
+  ScannedCount = Scalar(type = "integer")
+)
+
+test_that("unmarshal nested structure with incomplete output shape", {
+  req <- new_request(svc, op, NULL, op_output8)
+  req$http_response <- HttpResponse(
+    status_code = 200,
+    body = charToRaw('{"Count":1,"Items":[{"UserId":{"S":"1"},"HourMap":{"M":{"1":{"N":"1"},"2":{"N":"2"},"3":{"N":"3"}}},"Day":{"N":"1"}}],"ScannedCount":1}')
+  )
+  req <- unmarshal(req)
+  out <- req$data
+  expect_length(out$Items, 1)
+  expect_equal(out$Items[[1]]$UserId$S, "1")
+  expect_length(out$Items[[1]]$HourMap$M, 3)
+  expect_equal(out$Items[[1]]$HourMap$M$`1`$N, "1")
+  expect_equal(out$Items[[1]]$HourMap$M$`2`$N, "2")
+  expect_equal(out$Items[[1]]$HourMap$M$`3`$N, "3")
+
+  req <- new_request(svc, op, NULL, op_output8)
+  req$http_response <- HttpResponse(
+    status_code = 200,
+    body = charToRaw('{"Count":1,"Items":[{"UserId":{"S":"4"},"Day":{"N":"1"},"Bar":{"NS":["3","2","1"]},"Foo":{"L":[{"M":{"FooBar":{"N":"1"}}},{"M":{"FooBar":{"N":"2"}}}]}}],"ScannedCount":1}')
+  )
+  req <- unmarshal(req)
+  out <- req$data
+  expect_length(out$Items, 1)
+  expect_equal(out$Items[[1]]$Bar$NS, c("3", "2", "1"))
+  expect_equal(out$Items[[1]]$Foo$L[[1]], list(M = list(FooBar = list(N = "1"))))
+  expect_equal(out$Items[[1]]$Foo$L[[2]], list(M = list(FooBar = list(N = "2"))))
 })
 
 test_that("unmarshal error with message in 'Message'", {

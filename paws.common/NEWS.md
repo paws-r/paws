@@ -1,3 +1,9 @@
+# paws.common 0.2.6
+
+* Fix handling of nested inputs and outputs for services like DynamoDB.
+* Fix handling of output elements that are delivered in HTTP headers for 
+  REST-based services like S3.
+
 # paws.common 0.2.5
 
 * Add support for RDS IAM authentication.

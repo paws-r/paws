@@ -491,6 +491,7 @@ test_that("skip empty argument", {
 
 op <- Operation(name = "OperationName")
 svc <- Client()
+svc$handlers$unmarshal_meta <- HandlerList(restxml_unmarshal_meta)
 svc$handlers$unmarshal <- HandlerList(restxml_unmarshal)
 svc$handlers$unmarshal_error <- HandlerList(restxml_unmarshal_error)
 
@@ -682,6 +683,7 @@ test_that("unmarshal timestamp", {
   expect_equal(out$Timestamp, unix_time(0))
 })
 
+<<<<<<< HEAD
 test_that("unmarshal error", {
   op_output12 <- Structure(
     Timestamp = Scalar(type = "timestamp")
@@ -698,3 +700,23 @@ test_that("unmarshal error", {
   expect_equal(err$status_code, 400)
   expect_equal(err$error_response$RequestID, "Baz")
 })
+=======
+op_output11 <- Structure(
+  Body = Scalar(type = "string"),
+  Header = Scalar(type = "string", .tags = list(location = "header"))
+)
+
+test_that("unmarshal elements in header and body", {
+  req <- new_request(svc, op, NULL, op_output11)
+  req$http_response <- HttpResponse(
+    status_code = 200,
+    body = charToRaw("<OperationNameResponse><Body>foo</Body><RequestId>request-id</RequestId></OperationNameResponse>")
+  )
+  req$http_response$header[["Header"]] <- "bar"
+  req <- unmarshal_meta(req)
+  req <- unmarshal(req)
+  out <- req$data
+  expect_equivalent(out$Body, "foo")
+  expect_equivalent(out$Header, "bar")
+})
+>>>>>>> master
