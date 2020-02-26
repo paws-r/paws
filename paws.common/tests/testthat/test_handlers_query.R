@@ -708,7 +708,7 @@ test_that("unmarshal enums", {
 request <- list()
 
 test_that("unmarshal error", {
-  data <- "<error_response><Error><Code>FooError</Code><Message>Foo</Message><RequestId>123</RequestId><HostId>ABC</HostId></Error></error_response>"
+  data <- "<ErrorResponse><Error><Code>FooError</Code><Message>Foo</Message><RequestId>123</RequestId><HostId>ABC</HostId></Error></ErrorResponse>"
   request$http_response$body <- charToRaw(data)
   request$http_response$status_code <- 400
   request <- query_unmarshal_error(request)
@@ -720,7 +720,7 @@ test_that("unmarshal error", {
 })
 
 test_that("unmarshal error with an empty message", {
-  data <- "<error_response><Error><Code>FooError</Code><Message></Message><RequestId>123</RequestId><HostId>ABC</HostId></Error></error_response>"
+  data <- "<ErrorResponse><Error><Code>FooError</Code><Message></Message><RequestId>123</RequestId><HostId>ABC</HostId></Error></ErrorResponse>"
   request$http_response$body <- charToRaw(data)
   request$http_response$status_code <- 400
   request <- query_unmarshal_error(request)
