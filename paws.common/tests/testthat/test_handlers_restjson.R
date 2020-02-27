@@ -846,6 +846,7 @@ test_that("unmarshal error without header and with error code in response", {
   err <- req$error
   expect_equal(err$message, "foo")
   expect_equal(err$code, "bar")
+  expect_equal(err$status_code, 400)
 })
 
 test_that("unmarshal error with no header/code but with type", {
@@ -858,6 +859,7 @@ test_that("unmarshal error with no header/code but with type", {
   err <- req$error
   expect_equal(err$message, "foo")
   expect_equal(err$code, "ClientException")
+  expect_equal(err$status_code, 400)
 })
 
 test_that("unmarshal error with header", {
@@ -871,4 +873,6 @@ test_that("unmarshal error with header", {
   err <- req$error
   expect_equal(err$message, "foo")
   expect_equal(err$code, "baz")
+  expect_equal(err$status_code, 400)
+  expect_equal(err$error_response$message, "foo")
 })

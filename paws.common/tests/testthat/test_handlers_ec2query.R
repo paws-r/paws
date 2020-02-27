@@ -223,6 +223,7 @@ test_that("build empty list enums", {
 op <- Operation(name = "OperationName")
 svc <- Client()
 svc$handlers$unmarshal <- HandlerList(ec2query_unmarshal)
+svc$handlers$unmarshal_error <- HandlerList(ec2query_unmarshal_error)
 
 op_output1 <- Structure(
   Char = Scalar(type = "character"),
@@ -410,4 +411,19 @@ test_that("unmarshal timestamp", {
   req <- unmarshal(req)
   out <- req$data
   expect_equal(out$Timestamp, unix_time(0))
+})
+
+test_that("unmarshal error", {
+  req <- new_request(svc, op, NULL, op_output10)
+  req$http_response <- HttpResponse(
+    status_code = 404,
+    body = charToRaw("<Response><Error><Code>Foo</Code><Message>Bar</Message><RequestID>Baz</RequestID></Error></Response>")
+  )
+
+  req <- unmarshal_error(req)
+  err <- req$error
+  expect_equal(err$message, "Bar")
+  expect_equal(err$code, "Foo")
+  expect_equal(err$status_code, 404)
+  expect_equal(err$error_response$RequestID, "Baz")
 })

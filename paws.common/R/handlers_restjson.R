@@ -39,7 +39,9 @@ restjson_unmarshal_error <- function(request) {
 
   request$error <- Error(
     code = code,
-    message = message
+    message = message,
+    status_code = request$http_response$status_code,
+    error_response = error
   )
   return(request)
 }
