@@ -4,3 +4,4 @@
 .Ruserdata
 *.Rcheck
 .vscode
+.DS_Store
