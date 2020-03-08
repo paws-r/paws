@@ -120,8 +120,7 @@ sqs <- function(config = list()) {
   target_prefix = ""
 )
 
-.sqs$handlers <- new_handlers("query", "v4")
-
 .sqs$service <- function(config = list()) {
-  new_service(.sqs$metadata, .sqs$handlers, config)
+  handlers <- new_handlers("query", "v4")
+  new_service(.sqs$metadata, handlers, config)
 }

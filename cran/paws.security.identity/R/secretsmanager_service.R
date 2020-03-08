@@ -154,8 +154,7 @@ secretsmanager <- function(config = list()) {
   target_prefix = "secretsmanager"
 )
 
-.secretsmanager$handlers <- new_handlers("jsonrpc", "v4")
-
 .secretsmanager$service <- function(config = list()) {
-  new_service(.secretsmanager$metadata, .secretsmanager$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.secretsmanager$metadata, handlers, config)
 }

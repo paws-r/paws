@@ -64,8 +64,7 @@ workmailmessageflow <- function(config = list()) {
   target_prefix = ""
 )
 
-.workmailmessageflow$handlers <- new_handlers("restjson", "v4")
-
 .workmailmessageflow$service <- function(config = list()) {
-  new_service(.workmailmessageflow$metadata, .workmailmessageflow$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.workmailmessageflow$metadata, handlers, config)
 }

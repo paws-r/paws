@@ -80,8 +80,7 @@ kinesisvideo <- function(config = list()) {
   target_prefix = ""
 )
 
-.kinesisvideo$handlers <- new_handlers("restjson", "v4")
-
 .kinesisvideo$service <- function(config = list()) {
-  new_service(.kinesisvideo$metadata, .kinesisvideo$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.kinesisvideo$metadata, handlers, config)
 }

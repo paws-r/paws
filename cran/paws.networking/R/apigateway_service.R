@@ -186,8 +186,7 @@ apigateway <- function(config = list()) {
   target_prefix = ""
 )
 
-.apigateway$handlers <- new_handlers("restjson", "v4")
-
 .apigateway$service <- function(config = list()) {
-  new_service(.apigateway$metadata, .apigateway$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.apigateway$metadata, handlers, config)
 }

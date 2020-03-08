@@ -404,8 +404,7 @@ codecommit <- function(config = list()) {
   target_prefix = "CodeCommit_20150413"
 )
 
-.codecommit$handlers <- new_handlers("jsonrpc", "v4")
-
 .codecommit$service <- function(config = list()) {
-  new_service(.codecommit$metadata, .codecommit$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.codecommit$metadata, handlers, config)
 }

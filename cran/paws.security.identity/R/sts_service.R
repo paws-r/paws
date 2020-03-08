@@ -187,8 +187,7 @@ sts <- function(config = list()) {
   target_prefix = ""
 )
 
-.sts$handlers <- new_handlers("query", "v4")
-
 .sts$service <- function(config = list()) {
-  new_service(.sts$metadata, .sts$handlers, config)
+  handlers <- new_handlers("query", "v4")
+  new_service(.sts$metadata, handlers, config)
 }

@@ -88,8 +88,7 @@ ebs <- function(config = list()) {
   target_prefix = ""
 )
 
-.ebs$handlers <- new_handlers("restjson", "v4")
-
 .ebs$service <- function(config = list()) {
-  new_service(.ebs$metadata, .ebs$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.ebs$metadata, handlers, config)
 }

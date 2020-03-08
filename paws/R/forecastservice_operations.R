@@ -28,8 +28,8 @@ NULL
 #' 
 #' To get a list of all your datasets, use the ListDatasets operation.
 #' 
-#' For example Forecast datasets, see the [Amazon Forecast Sample GitHub
-#' repository](https://github.com/aws-samples/amazon-forecast-samples/tree/master/data).
+#' For example Forecast datasets, see the Amazon Forecast Sample GitHub
+#' repository.
 #' 
 #' The `Status` of a dataset must be `ACTIVE` before you can import
 #' training data. Use the DescribeDataset operation to get the status.

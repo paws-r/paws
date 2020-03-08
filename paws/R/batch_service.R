@@ -97,8 +97,7 @@ batch <- function(config = list()) {
   target_prefix = ""
 )
 
-.batch$handlers <- new_handlers("restjson", "v4")
-
 .batch$service <- function(config = list()) {
-  new_service(.batch$metadata, .batch$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.batch$metadata, handlers, config)
 }

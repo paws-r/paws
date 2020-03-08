@@ -203,8 +203,7 @@ chime <- function(config = list()) {
   target_prefix = ""
 )
 
-.chime$handlers <- new_handlers("restjson", "v4")
-
 .chime$service <- function(config = list()) {
-  new_service(.chime$metadata, .chime$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.chime$metadata, handlers, config)
 }

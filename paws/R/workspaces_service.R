@@ -106,8 +106,7 @@ workspaces <- function(config = list()) {
   target_prefix = "WorkspacesService"
 )
 
-.workspaces$handlers <- new_handlers("jsonrpc", "v4")
-
 .workspaces$service <- function(config = list()) {
-  new_service(.workspaces$metadata, .workspaces$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.workspaces$metadata, handlers, config)
 }

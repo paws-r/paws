@@ -129,8 +129,7 @@ workmail <- function(config = list()) {
   target_prefix = "WorkMailService"
 )
 
-.workmail$handlers <- new_handlers("jsonrpc", "v4")
-
 .workmail$service <- function(config = list()) {
-  new_service(.workmail$metadata, .workmail$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.workmail$metadata, handlers, config)
 }

@@ -93,8 +93,7 @@ ram <- function(config = list()) {
   target_prefix = ""
 )
 
-.ram$handlers <- new_handlers("restjson", "v4")
-
 .ram$service <- function(config = list()) {
-  new_service(.ram$metadata, .ram$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.ram$metadata, handlers, config)
 }

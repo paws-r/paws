@@ -84,8 +84,7 @@ sso <- function(config = list()) {
   target_prefix = ""
 )
 
-.sso$handlers <- new_handlers("restjson", "v4")
-
 .sso$service <- function(config = list()) {
-  new_service(.sso$metadata, .sso$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.sso$metadata, handlers, config)
 }

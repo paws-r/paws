@@ -100,8 +100,7 @@ athena <- function(config = list()) {
   target_prefix = "AmazonAthena"
 )
 
-.athena$handlers <- new_handlers("jsonrpc", "v4")
-
 .athena$service <- function(config = list()) {
-  new_service(.athena$metadata, .athena$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.athena$metadata, handlers, config)
 }

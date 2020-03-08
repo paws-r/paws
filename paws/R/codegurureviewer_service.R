@@ -67,8 +67,7 @@ codegurureviewer <- function(config = list()) {
   target_prefix = ""
 )
 
-.codegurureviewer$handlers <- new_handlers("restjson", "v4")
-
 .codegurureviewer$service <- function(config = list()) {
-  new_service(.codegurureviewer$metadata, .codegurureviewer$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.codegurureviewer$metadata, handlers, config)
 }

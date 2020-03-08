@@ -115,8 +115,7 @@ imagebuilder <- function(config = list()) {
   target_prefix = ""
 )
 
-.imagebuilder$handlers <- new_handlers("restjson", "v4")
-
 .imagebuilder$service <- function(config = list()) {
-  new_service(.imagebuilder$metadata, .imagebuilder$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.imagebuilder$metadata, handlers, config)
 }

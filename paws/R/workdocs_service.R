@@ -135,8 +135,7 @@ workdocs <- function(config = list()) {
   target_prefix = ""
 )
 
-.workdocs$handlers <- new_handlers("restjson", "v4")
-
 .workdocs$service <- function(config = list()) {
-  new_service(.workdocs$metadata, .workdocs$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.workdocs$metadata, handlers, config)
 }

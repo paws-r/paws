@@ -105,8 +105,7 @@ medialive <- function(config = list()) {
   target_prefix = ""
 )
 
-.medialive$handlers <- new_handlers("restjson", "v4")
-
 .medialive$service <- function(config = list()) {
-  new_service(.medialive$metadata, .medialive$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.medialive$metadata, handlers, config)
 }

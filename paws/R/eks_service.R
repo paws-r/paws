@@ -108,8 +108,7 @@ eks <- function(config = list()) {
   target_prefix = ""
 )
 
-.eks$handlers <- new_handlers("restjson", "v4")
-
 .eks$service <- function(config = list()) {
-  new_service(.eks$metadata, .eks$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.eks$metadata, handlers, config)
 }

@@ -100,8 +100,7 @@ elasticsearchservice <- function(config = list()) {
   target_prefix = ""
 )
 
-.elasticsearchservice$handlers <- new_handlers("restjson", "v4")
-
 .elasticsearchservice$service <- function(config = list()) {
-  new_service(.elasticsearchservice$metadata, .elasticsearchservice$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.elasticsearchservice$metadata, handlers, config)
 }

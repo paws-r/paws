@@ -162,8 +162,7 @@ wafv2 <- function(config = list()) {
   target_prefix = "AWSWAF_20190729"
 )
 
-.wafv2$handlers <- new_handlers("jsonrpc", "v4")
-
 .wafv2$service <- function(config = list()) {
-  new_service(.wafv2$metadata, .wafv2$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.wafv2$metadata, handlers, config)
 }

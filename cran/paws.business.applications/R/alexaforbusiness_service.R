@@ -165,8 +165,7 @@ alexaforbusiness <- function(config = list()) {
   target_prefix = "AlexaForBusiness"
 )
 
-.alexaforbusiness$handlers <- new_handlers("jsonrpc", "v4")
-
 .alexaforbusiness$service <- function(config = list()) {
-  new_service(.alexaforbusiness$metadata, .alexaforbusiness$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.alexaforbusiness$metadata, handlers, config)
 }

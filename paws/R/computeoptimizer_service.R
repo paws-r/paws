@@ -80,8 +80,7 @@ computeoptimizer <- function(config = list()) {
   target_prefix = "ComputeOptimizerService"
 )
 
-.computeoptimizer$handlers <- new_handlers("jsonrpc", "v4")
-
 .computeoptimizer$service <- function(config = list()) {
-  new_service(.computeoptimizer$metadata, .computeoptimizer$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.computeoptimizer$metadata, handlers, config)
 }

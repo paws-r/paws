@@ -81,8 +81,7 @@ elastictranscoder <- function(config = list()) {
   target_prefix = ""
 )
 
-.elastictranscoder$handlers <- new_handlers("restjson", "v4")
-
 .elastictranscoder$service <- function(config = list()) {
-  new_service(.elastictranscoder$metadata, .elastictranscoder$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.elastictranscoder$metadata, handlers, config)
 }

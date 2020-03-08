@@ -79,8 +79,7 @@ mediaconnect <- function(config = list()) {
   target_prefix = ""
 )
 
-.mediaconnect$handlers <- new_handlers("restjson", "v4")
-
 .mediaconnect$service <- function(config = list()) {
-  new_service(.mediaconnect$metadata, .mediaconnect$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.mediaconnect$metadata, handlers, config)
 }

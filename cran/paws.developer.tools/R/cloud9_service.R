@@ -114,8 +114,7 @@ cloud9 <- function(config = list()) {
   target_prefix = "AWSCloud9WorkspaceManagementService"
 )
 
-.cloud9$handlers <- new_handlers("jsonrpc", "v4")
-
 .cloud9$service <- function(config = list()) {
-  new_service(.cloud9$metadata, .cloud9$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.cloud9$metadata, handlers, config)
 }

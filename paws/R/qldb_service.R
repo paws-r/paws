@@ -77,8 +77,7 @@ qldb <- function(config = list()) {
   target_prefix = ""
 )
 
-.qldb$handlers <- new_handlers("restjson", "v4")
-
 .qldb$service <- function(config = list()) {
-  new_service(.qldb$metadata, .qldb$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.qldb$metadata, handlers, config)
 }

@@ -104,8 +104,7 @@ dataexchange <- function(config = list()) {
   target_prefix = ""
 )
 
-.dataexchange$handlers <- new_handlers("restjson", "v4")
-
 .dataexchange$service <- function(config = list()) {
-  new_service(.dataexchange$metadata, .dataexchange$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.dataexchange$metadata, handlers, config)
 }

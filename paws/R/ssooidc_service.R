@@ -86,8 +86,7 @@ ssooidc <- function(config = list()) {
   target_prefix = ""
 )
 
-.ssooidc$handlers <- new_handlers("restjson", "v4")
-
 .ssooidc$service <- function(config = list()) {
-  new_service(.ssooidc$metadata, .ssooidc$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.ssooidc$metadata, handlers, config)
 }

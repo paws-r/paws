@@ -85,8 +85,7 @@ managedblockchain <- function(config = list()) {
   target_prefix = ""
 )
 
-.managedblockchain$handlers <- new_handlers("restjson", "v4")
-
 .managedblockchain$service <- function(config = list()) {
-  new_service(.managedblockchain$metadata, .managedblockchain$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.managedblockchain$metadata, handlers, config)
 }

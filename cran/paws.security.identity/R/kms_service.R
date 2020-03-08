@@ -189,8 +189,7 @@ kms <- function(config = list()) {
   target_prefix = "TrentService"
 )
 
-.kms$handlers <- new_handlers("jsonrpc", "v4")
-
 .kms$service <- function(config = list()) {
-  new_service(.kms$metadata, .kms$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.kms$metadata, handlers, config)
 }

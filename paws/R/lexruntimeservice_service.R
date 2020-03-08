@@ -78,8 +78,7 @@ lexruntimeservice <- function(config = list()) {
   target_prefix = ""
 )
 
-.lexruntimeservice$handlers <- new_handlers("restjson", "v4")
-
 .lexruntimeservice$service <- function(config = list()) {
-  new_service(.lexruntimeservice$metadata, .lexruntimeservice$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.lexruntimeservice$metadata, handlers, config)
 }

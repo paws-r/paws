@@ -126,8 +126,7 @@ applicationautoscaling <- function(config = list()) {
   target_prefix = "AnyScaleFrontendService"
 )
 
-.applicationautoscaling$handlers <- new_handlers("jsonrpc", "v4")
-
 .applicationautoscaling$service <- function(config = list()) {
-  new_service(.applicationautoscaling$metadata, .applicationautoscaling$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.applicationautoscaling$metadata, handlers, config)
 }

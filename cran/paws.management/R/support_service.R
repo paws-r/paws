@@ -133,8 +133,7 @@ support <- function(config = list()) {
   target_prefix = "AWSSupport_20130415"
 )
 
-.support$handlers <- new_handlers("jsonrpc", "v4")
-
 .support$service <- function(config = list()) {
-  new_service(.support$metadata, .support$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.support$metadata, handlers, config)
 }

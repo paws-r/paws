@@ -103,8 +103,7 @@ connect <- function(config = list()) {
   target_prefix = ""
 )
 
-.connect$handlers <- new_handlers("restjson", "v4")
-
 .connect$service <- function(config = list()) {
-  new_service(.connect$metadata, .connect$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.connect$metadata, handlers, config)
 }

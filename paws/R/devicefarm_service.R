@@ -160,8 +160,7 @@ devicefarm <- function(config = list()) {
   target_prefix = "DeviceFarm_20150623"
 )
 
-.devicefarm$handlers <- new_handlers("jsonrpc", "v4")
-
 .devicefarm$service <- function(config = list()) {
-  new_service(.devicefarm$metadata, .devicefarm$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.devicefarm$metadata, handlers, config)
 }

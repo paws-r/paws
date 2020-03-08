@@ -131,8 +131,7 @@ autoscaling <- function(config = list()) {
   target_prefix = ""
 )
 
-.autoscaling$handlers <- new_handlers("query", "v4")
-
 .autoscaling$service <- function(config = list()) {
-  new_service(.autoscaling$metadata, .autoscaling$handlers, config)
+  handlers <- new_handlers("query", "v4")
+  new_service(.autoscaling$metadata, handlers, config)
 }

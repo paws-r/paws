@@ -74,8 +74,7 @@ connectparticipant <- function(config = list()) {
   target_prefix = ""
 )
 
-.connectparticipant$handlers <- new_handlers("restjson", "v4")
-
 .connectparticipant$service <- function(config = list()) {
-  new_service(.connectparticipant$metadata, .connectparticipant$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.connectparticipant$metadata, handlers, config)
 }

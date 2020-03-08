@@ -90,8 +90,7 @@ transfer <- function(config = list()) {
   target_prefix = "TransferService"
 )
 
-.transfer$handlers <- new_handlers("jsonrpc", "v4")
-
 .transfer$service <- function(config = list()) {
-  new_service(.transfer$metadata, .transfer$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.transfer$metadata, handlers, config)
 }

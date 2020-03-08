@@ -75,8 +75,7 @@ marketplacecatalog <- function(config = list()) {
   target_prefix = ""
 )
 
-.marketplacecatalog$handlers <- new_handlers("restjson", "v4")
-
 .marketplacecatalog$service <- function(config = list()) {
-  new_service(.marketplacecatalog$metadata, .marketplacecatalog$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.marketplacecatalog$metadata, handlers, config)
 }

@@ -71,8 +71,7 @@ codeguruprofiler <- function(config = list()) {
   target_prefix = ""
 )
 
-.codeguruprofiler$handlers <- new_handlers("restjson", "v4")
-
 .codeguruprofiler$service <- function(config = list()) {
-  new_service(.codeguruprofiler$metadata, .codeguruprofiler$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.codeguruprofiler$metadata, handlers, config)
 }

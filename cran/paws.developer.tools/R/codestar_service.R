@@ -133,8 +133,7 @@ codestar <- function(config = list()) {
   target_prefix = "CodeStar_20170419"
 )
 
-.codestar$handlers <- new_handlers("jsonrpc", "v4")
-
 .codestar$service <- function(config = list()) {
-  new_service(.codestar$metadata, .codestar$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.codestar$metadata, handlers, config)
 }

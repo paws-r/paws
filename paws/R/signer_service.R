@@ -86,8 +86,7 @@ signer <- function(config = list()) {
   target_prefix = ""
 )
 
-.signer$handlers <- new_handlers("restjson", "v4")
-
 .signer$service <- function(config = list()) {
-  new_service(.signer$metadata, .signer$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.signer$metadata, handlers, config)
 }

@@ -100,8 +100,7 @@ cloudsearch <- function(config = list()) {
   target_prefix = ""
 )
 
-.cloudsearch$handlers <- new_handlers("query", "v4")
-
 .cloudsearch$service <- function(config = list()) {
-  new_service(.cloudsearch$metadata, .cloudsearch$handlers, config)
+  handlers <- new_handlers("query", "v4")
+  new_service(.cloudsearch$metadata, handlers, config)
 }

@@ -74,8 +74,7 @@ importexport <- function(config = list()) {
   target_prefix = ""
 )
 
-.importexport$handlers <- new_handlers("query", "v2")
-
 .importexport$service <- function(config = list()) {
-  new_service(.importexport$metadata, .importexport$handlers, config)
+  handlers <- new_handlers("query", "v2")
+  new_service(.importexport$metadata, handlers, config)
 }

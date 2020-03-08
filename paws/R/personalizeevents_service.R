@@ -62,8 +62,7 @@ personalizeevents <- function(config = list()) {
   target_prefix = ""
 )
 
-.personalizeevents$handlers <- new_handlers("restjson", "v4")
-
 .personalizeevents$service <- function(config = list()) {
-  new_service(.personalizeevents$metadata, .personalizeevents$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.personalizeevents$metadata, handlers, config)
 }

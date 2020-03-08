@@ -84,8 +84,7 @@ mq <- function(config = list()) {
   target_prefix = ""
 )
 
-.mq$handlers <- new_handlers("restjson", "v4")
-
 .mq$service <- function(config = list()) {
-  new_service(.mq$metadata, .mq$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.mq$metadata, handlers, config)
 }

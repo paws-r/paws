@@ -124,8 +124,7 @@ directconnect <- function(config = list()) {
   target_prefix = "OvertureService"
 )
 
-.directconnect$handlers <- new_handlers("jsonrpc", "v4")
-
 .directconnect$service <- function(config = list()) {
-  new_service(.directconnect$metadata, .directconnect$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.directconnect$metadata, handlers, config)
 }

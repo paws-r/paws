@@ -135,8 +135,7 @@ appconfig <- function(config = list()) {
   target_prefix = ""
 )
 
-.appconfig$handlers <- new_handlers("restjson", "v4")
-
 .appconfig$service <- function(config = list()) {
-  new_service(.appconfig$metadata, .appconfig$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.appconfig$metadata, handlers, config)
 }

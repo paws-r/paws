@@ -70,8 +70,7 @@ textract <- function(config = list()) {
   target_prefix = "Textract"
 )
 
-.textract$handlers <- new_handlers("jsonrpc", "v4")
-
 .textract$service <- function(config = list()) {
-  new_service(.textract$metadata, .textract$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.textract$metadata, handlers, config)
 }

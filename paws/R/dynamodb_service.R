@@ -153,8 +153,7 @@ dynamodb <- function(config = list()) {
   target_prefix = "DynamoDB_20120810"
 )
 
-.dynamodb$handlers <- new_handlers("jsonrpc", "v4")
-
 .dynamodb$service <- function(config = list()) {
-  new_service(.dynamodb$metadata, .dynamodb$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.dynamodb$metadata, handlers, config)
 }

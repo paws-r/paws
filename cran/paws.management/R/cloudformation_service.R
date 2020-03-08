@@ -137,8 +137,7 @@ cloudformation <- function(config = list()) {
   target_prefix = ""
 )
 
-.cloudformation$handlers <- new_handlers("query", "v4")
-
 .cloudformation$service <- function(config = list()) {
-  new_service(.cloudformation$metadata, .cloudformation$handlers, config)
+  handlers <- new_handlers("query", "v4")
+  new_service(.cloudformation$metadata, handlers, config)
 }

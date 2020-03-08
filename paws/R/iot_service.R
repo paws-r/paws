@@ -276,8 +276,7 @@ iot <- function(config = list()) {
   target_prefix = ""
 )
 
-.iot$handlers <- new_handlers("restjson", "v4")
-
 .iot$service <- function(config = list()) {
-  new_service(.iot$metadata, .iot$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.iot$metadata, handlers, config)
 }

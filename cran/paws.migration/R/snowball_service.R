@@ -92,8 +92,7 @@ snowball <- function(config = list()) {
   target_prefix = "AWSIESnowballJobManagementService"
 )
 
-.snowball$handlers <- new_handlers("jsonrpc", "v4")
-
 .snowball$service <- function(config = list()) {
-  new_service(.snowball$metadata, .snowball$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.snowball$metadata, handlers, config)
 }

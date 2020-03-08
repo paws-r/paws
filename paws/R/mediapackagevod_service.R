@@ -74,8 +74,7 @@ mediapackagevod <- function(config = list()) {
   target_prefix = ""
 )
 
-.mediapackagevod$handlers <- new_handlers("restjson", "v4")
-
 .mediapackagevod$service <- function(config = list()) {
-  new_service(.mediapackagevod$metadata, .mediapackagevod$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.mediapackagevod$metadata, handlers, config)
 }

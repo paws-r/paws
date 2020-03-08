@@ -77,8 +77,7 @@ comprehendmedical <- function(config = list()) {
   target_prefix = "ComprehendMedical_20181030"
 )
 
-.comprehendmedical$handlers <- new_handlers("jsonrpc", "v4")
-
 .comprehendmedical$service <- function(config = list()) {
-  new_service(.comprehendmedical$metadata, .comprehendmedical$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.comprehendmedical$metadata, handlers, config)
 }

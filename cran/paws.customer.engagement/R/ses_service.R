@@ -146,8 +146,7 @@ ses <- function(config = list()) {
   target_prefix = ""
 )
 
-.ses$handlers <- new_handlers("query", "v4")
-
 .ses$service <- function(config = list()) {
-  new_service(.ses$metadata, .ses$handlers, config)
+  handlers <- new_handlers("query", "v4")
+  new_service(.ses$metadata, handlers, config)
 }

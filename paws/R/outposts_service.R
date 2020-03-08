@@ -72,8 +72,7 @@ outposts <- function(config = list()) {
   target_prefix = ""
 )
 
-.outposts$handlers <- new_handlers("restjson", "v4")
-
 .outposts$service <- function(config = list()) {
-  new_service(.outposts$metadata, .outposts$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.outposts$metadata, handlers, config)
 }

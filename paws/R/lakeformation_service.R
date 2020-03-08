@@ -75,8 +75,7 @@ lakeformation <- function(config = list()) {
   target_prefix = "AWSLakeFormation"
 )
 
-.lakeformation$handlers <- new_handlers("jsonrpc", "v4")
-
 .lakeformation$service <- function(config = list()) {
-  new_service(.lakeformation$metadata, .lakeformation$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.lakeformation$metadata, handlers, config)
 }

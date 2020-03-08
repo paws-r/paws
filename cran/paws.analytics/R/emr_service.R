@@ -96,8 +96,7 @@ emr <- function(config = list()) {
   target_prefix = "ElasticMapReduce"
 )
 
-.emr$handlers <- new_handlers("jsonrpc", "v4")
-
 .emr$service <- function(config = list()) {
-  new_service(.emr$metadata, .emr$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.emr$metadata, handlers, config)
 }

@@ -130,8 +130,7 @@ databasemigrationservice <- function(config = list()) {
   target_prefix = "AmazonDMSv20160101"
 )
 
-.databasemigrationservice$handlers <- new_handlers("jsonrpc", "v4")
-
 .databasemigrationservice$service <- function(config = list()) {
-  new_service(.databasemigrationservice$metadata, .databasemigrationservice$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.databasemigrationservice$metadata, handlers, config)
 }

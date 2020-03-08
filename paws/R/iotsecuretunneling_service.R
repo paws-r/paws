@@ -73,8 +73,7 @@ iotsecuretunneling <- function(config = list()) {
   target_prefix = "IoTSecuredTunneling"
 )
 
-.iotsecuretunneling$handlers <- new_handlers("jsonrpc", "v4")
-
 .iotsecuretunneling$service <- function(config = list()) {
-  new_service(.iotsecuretunneling$metadata, .iotsecuretunneling$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.iotsecuretunneling$metadata, handlers, config)
 }

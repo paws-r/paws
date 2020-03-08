@@ -91,8 +91,7 @@ accessanalyzer <- function(config = list()) {
   target_prefix = ""
 )
 
-.accessanalyzer$handlers <- new_handlers("restjson", "v4")
-
 .accessanalyzer$service <- function(config = list()) {
-  new_service(.accessanalyzer$metadata, .accessanalyzer$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.accessanalyzer$metadata, handlers, config)
 }

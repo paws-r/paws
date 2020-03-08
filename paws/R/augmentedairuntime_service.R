@@ -98,8 +98,7 @@ augmentedairuntime <- function(config = list()) {
   target_prefix = ""
 )
 
-.augmentedairuntime$handlers <- new_handlers("restjson", "v4")
-
 .augmentedairuntime$service <- function(config = list()) {
-  new_service(.augmentedairuntime$metadata, .augmentedairuntime$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.augmentedairuntime$metadata, handlers, config)
 }

@@ -90,8 +90,7 @@ kinesisanalytics <- function(config = list()) {
   target_prefix = "KinesisAnalytics_20150814"
 )
 
-.kinesisanalytics$handlers <- new_handlers("jsonrpc", "v4")
-
 .kinesisanalytics$service <- function(config = list()) {
-  new_service(.kinesisanalytics$metadata, .kinesisanalytics$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.kinesisanalytics$metadata, handlers, config)
 }

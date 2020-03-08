@@ -130,8 +130,7 @@ elb <- function(config = list()) {
   target_prefix = ""
 )
 
-.elb$handlers <- new_handlers("query", "v4")
-
 .elb$service <- function(config = list()) {
-  new_service(.elb$metadata, .elb$handlers, config)
+  handlers <- new_handlers("query", "v4")
+  new_service(.elb$metadata, handlers, config)
 }

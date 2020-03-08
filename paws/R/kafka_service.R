@@ -81,8 +81,7 @@ kafka <- function(config = list()) {
   target_prefix = ""
 )
 
-.kafka$handlers <- new_handlers("restjson", "v4")
-
 .kafka$service <- function(config = list()) {
-  new_service(.kafka$metadata, .kafka$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.kafka$metadata, handlers, config)
 }

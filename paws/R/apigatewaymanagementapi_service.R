@@ -71,8 +71,7 @@ apigatewaymanagementapi <- function(config = list()) {
   target_prefix = ""
 )
 
-.apigatewaymanagementapi$handlers <- new_handlers("restjson", "v4")
-
 .apigatewaymanagementapi$service <- function(config = list()) {
-  new_service(.apigatewaymanagementapi$metadata, .apigatewaymanagementapi$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.apigatewaymanagementapi$metadata, handlers, config)
 }

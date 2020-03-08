@@ -148,8 +148,7 @@ waf <- function(config = list()) {
   target_prefix = "AWSWAF_20150824"
 )
 
-.waf$handlers <- new_handlers("jsonrpc", "v4")
-
 .waf$service <- function(config = list()) {
-  new_service(.waf$metadata, .waf$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.waf$metadata, handlers, config)
 }

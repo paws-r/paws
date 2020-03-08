@@ -69,8 +69,7 @@ mediastoredata <- function(config = list()) {
   target_prefix = ""
 )
 
-.mediastoredata$handlers <- new_handlers("restjson", "v4")
-
 .mediastoredata$service <- function(config = list()) {
-  new_service(.mediastoredata$metadata, .mediastoredata$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.mediastoredata$metadata, handlers, config)
 }

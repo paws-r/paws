@@ -175,8 +175,7 @@ gamelift <- function(config = list()) {
   target_prefix = "GameLift"
 )
 
-.gamelift$handlers <- new_handlers("jsonrpc", "v4")
-
 .gamelift$service <- function(config = list()) {
-  new_service(.gamelift$metadata, .gamelift$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.gamelift$metadata, handlers, config)
 }

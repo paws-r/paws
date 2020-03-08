@@ -165,8 +165,7 @@ globalaccelerator <- function(config = list()) {
   target_prefix = "GlobalAccelerator_V20180706"
 )
 
-.globalaccelerator$handlers <- new_handlers("jsonrpc", "v4")
-
 .globalaccelerator$service <- function(config = list()) {
-  new_service(.globalaccelerator$metadata, .globalaccelerator$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.globalaccelerator$metadata, handlers, config)
 }
