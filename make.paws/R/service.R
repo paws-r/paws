@@ -42,10 +42,9 @@ service_file_template <- template(
     target_prefix = ${target_prefix}
   )
 
-  .${service}$handlers <- new_handlers(${protocol}, ${signer})
-
   .${service}$service <- function(config = list()) {
-    new_service(.${service}$metadata, .${service}$handlers, config)
+    handlers <- new_handlers(${protocol}, ${signer})
+    new_service(.${service}$metadata, handlers, config)
   }
   `
 )
