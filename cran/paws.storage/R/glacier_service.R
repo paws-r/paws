@@ -133,8 +133,7 @@ glacier <- function(config = list()) {
   target_prefix = ""
 )
 
-.glacier$handlers <- new_handlers("restjson", "v4")
-
 .glacier$service <- function(config = list()) {
-  new_service(.glacier$metadata, .glacier$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.glacier$metadata, handlers, config)
 }

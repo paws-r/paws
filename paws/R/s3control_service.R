@@ -78,8 +78,7 @@ s3control <- function(config = list()) {
   target_prefix = ""
 )
 
-.s3control$handlers <- new_handlers("restxml", "s3v4")
-
 .s3control$service <- function(config = list()) {
-  new_service(.s3control$metadata, .s3control$handlers, config)
+  handlers <- new_handlers("restxml", "s3v4")
+  new_service(.s3control$metadata, handlers, config)
 }

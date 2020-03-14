@@ -83,8 +83,7 @@ xray <- function(config = list()) {
   target_prefix = ""
 )
 
-.xray$handlers <- new_handlers("restjson", "v4")
-
 .xray$service <- function(config = list()) {
-  new_service(.xray$metadata, .xray$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.xray$metadata, handlers, config)
 }

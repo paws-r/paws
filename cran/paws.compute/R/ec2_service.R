@@ -479,8 +479,7 @@ ec2 <- function(config = list()) {
   target_prefix = ""
 )
 
-.ec2$handlers <- new_handlers("ec2query", "v4")
-
 .ec2$service <- function(config = list()) {
-  new_service(.ec2$metadata, .ec2$handlers, config)
+  handlers <- new_handlers("ec2query", "v4")
+  new_service(.ec2$metadata, handlers, config)
 }

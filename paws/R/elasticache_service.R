@@ -121,8 +121,7 @@ elasticache <- function(config = list()) {
   target_prefix = ""
 )
 
-.elasticache$handlers <- new_handlers("query", "v4")
-
 .elasticache$service <- function(config = list()) {
-  new_service(.elasticache$metadata, .elasticache$handlers, config)
+  handlers <- new_handlers("query", "v4")
+  new_service(.elasticache$metadata, handlers, config)
 }

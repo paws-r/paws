@@ -87,8 +87,7 @@ mediaconvert <- function(config = list()) {
   target_prefix = ""
 )
 
-.mediaconvert$handlers <- new_handlers("restjson", "v4")
-
 .mediaconvert$service <- function(config = list()) {
-  new_service(.mediaconvert$metadata, .mediaconvert$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.mediaconvert$metadata, handlers, config)
 }

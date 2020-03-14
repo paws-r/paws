@@ -143,8 +143,7 @@ sesv2 <- function(config = list()) {
   target_prefix = ""
 )
 
-.sesv2$handlers <- new_handlers("restjson", "v4")
-
 .sesv2$service <- function(config = list()) {
-  new_service(.sesv2$metadata, .sesv2$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.sesv2$metadata, handlers, config)
 }

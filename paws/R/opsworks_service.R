@@ -219,8 +219,7 @@ opsworks <- function(config = list()) {
   target_prefix = "OpsWorks_20130218"
 )
 
-.opsworks$handlers <- new_handlers("jsonrpc", "v4")
-
 .opsworks$service <- function(config = list()) {
-  new_service(.opsworks$metadata, .opsworks$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.opsworks$metadata, handlers, config)
 }

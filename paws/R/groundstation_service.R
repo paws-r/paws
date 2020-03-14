@@ -91,8 +91,7 @@ groundstation <- function(config = list()) {
   target_prefix = ""
 )
 
-.groundstation$handlers <- new_handlers("restjson", "v4")
-
 .groundstation$service <- function(config = list()) {
-  new_service(.groundstation$metadata, .groundstation$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.groundstation$metadata, handlers, config)
 }

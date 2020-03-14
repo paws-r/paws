@@ -75,8 +75,7 @@ savingsplans <- function(config = list()) {
   target_prefix = ""
 )
 
-.savingsplans$handlers <- new_handlers("restjson", "v4")
-
 .savingsplans$service <- function(config = list()) {
-  new_service(.savingsplans$metadata, .savingsplans$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.savingsplans$metadata, handlers, config)
 }

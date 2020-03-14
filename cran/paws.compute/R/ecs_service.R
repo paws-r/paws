@@ -132,8 +132,7 @@ ecs <- function(config = list()) {
   target_prefix = "AmazonEC2ContainerServiceV20141113"
 )
 
-.ecs$handlers <- new_handlers("jsonrpc", "v4")
-
 .ecs$service <- function(config = list()) {
-  new_service(.ecs$metadata, .ecs$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.ecs$metadata, handlers, config)
 }

@@ -80,8 +80,7 @@ rdsdataservice <- function(config = list()) {
   target_prefix = ""
 )
 
-.rdsdataservice$handlers <- new_handlers("restjson", "v4")
-
 .rdsdataservice$service <- function(config = list()) {
-  new_service(.rdsdataservice$metadata, .rdsdataservice$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.rdsdataservice$metadata, handlers, config)
 }

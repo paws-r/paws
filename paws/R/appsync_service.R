@@ -104,8 +104,7 @@ appsync <- function(config = list()) {
   target_prefix = ""
 )
 
-.appsync$handlers <- new_handlers("restjson", "v4")
-
 .appsync$service <- function(config = list()) {
-  new_service(.appsync$metadata, .appsync$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.appsync$metadata, handlers, config)
 }

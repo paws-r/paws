@@ -214,8 +214,7 @@ codebuild <- function(config = list()) {
   target_prefix = "CodeBuild_20161006"
 )
 
-.codebuild$handlers <- new_handlers("jsonrpc", "v4")
-
 .codebuild$service <- function(config = list()) {
-  new_service(.codebuild$metadata, .codebuild$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.codebuild$metadata, handlers, config)
 }

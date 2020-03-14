@@ -64,8 +64,7 @@ marketplacecommerceanalytics <- function(config = list()) {
   target_prefix = "MarketplaceCommerceAnalytics20150701"
 )
 
-.marketplacecommerceanalytics$handlers <- new_handlers("jsonrpc", "v4")
-
 .marketplacecommerceanalytics$service <- function(config = list()) {
-  new_service(.marketplacecommerceanalytics$metadata, .marketplacecommerceanalytics$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.marketplacecommerceanalytics$metadata, handlers, config)
 }

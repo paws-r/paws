@@ -76,8 +76,7 @@ transcribeservice <- function(config = list()) {
   target_prefix = "Transcribe"
 )
 
-.transcribeservice$handlers <- new_handlers("jsonrpc", "v4")
-
 .transcribeservice$service <- function(config = list()) {
-  new_service(.transcribeservice$metadata, .transcribeservice$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.transcribeservice$metadata, handlers, config)
 }

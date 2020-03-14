@@ -65,7 +65,8 @@ predictor. For more information, see howitworks-datasets-groups.
 
 To get a list of all your datasets, use the ListDatasets operation.
 
-For example Forecast datasets, see the \href{https://github.com/aws-samples/amazon-forecast-samples/tree/master/data}{Amazon Forecast Sample GitHub repository}.
+For example Forecast datasets, see the Amazon Forecast Sample GitHub
+repository.
 
 The \code{Status} of a dataset must be \code{ACTIVE} before you can import
 training data. Use the DescribeDataset operation to get the status.

@@ -88,8 +88,7 @@ forecastservice <- function(config = list()) {
   target_prefix = "AmazonForecast"
 )
 
-.forecastservice$handlers <- new_handlers("jsonrpc", "v4")
-
 .forecastservice$service <- function(config = list()) {
-  new_service(.forecastservice$metadata, .forecastservice$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.forecastservice$metadata, handlers, config)
 }

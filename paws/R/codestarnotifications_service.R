@@ -125,8 +125,7 @@ codestarnotifications <- function(config = list()) {
   target_prefix = ""
 )
 
-.codestarnotifications$handlers <- new_handlers("restjson", "v4")
-
 .codestarnotifications$service <- function(config = list()) {
-  new_service(.codestarnotifications$metadata, .codestarnotifications$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.codestarnotifications$metadata, handlers, config)
 }

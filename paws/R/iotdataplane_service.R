@@ -74,8 +74,7 @@ iotdataplane <- function(config = list()) {
   target_prefix = ""
 )
 
-.iotdataplane$handlers <- new_handlers("restjson", "v4")
-
 .iotdataplane$service <- function(config = list()) {
-  new_service(.iotdataplane$metadata, .iotdataplane$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.iotdataplane$metadata, handlers, config)
 }

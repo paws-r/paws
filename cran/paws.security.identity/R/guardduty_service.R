@@ -128,8 +128,7 @@ guardduty <- function(config = list()) {
   target_prefix = ""
 )
 
-.guardduty$handlers <- new_handlers("restjson", "v4")
-
 .guardduty$service <- function(config = list()) {
-  new_service(.guardduty$metadata, .guardduty$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.guardduty$metadata, handlers, config)
 }

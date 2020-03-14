@@ -110,8 +110,7 @@ sns <- function(config = list()) {
   target_prefix = ""
 )
 
-.sns$handlers <- new_handlers("query", "v4")
-
 .sns$service <- function(config = list()) {
-  new_service(.sns$metadata, .sns$handlers, config)
+  handlers <- new_handlers("query", "v4")
+  new_service(.sns$metadata, handlers, config)
 }

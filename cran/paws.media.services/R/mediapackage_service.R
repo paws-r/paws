@@ -80,8 +80,7 @@ mediapackage <- function(config = list()) {
   target_prefix = ""
 )
 
-.mediapackage$handlers <- new_handlers("restjson", "v4")
-
 .mediapackage$service <- function(config = list()) {
-  new_service(.mediapackage$metadata, .mediapackage$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.mediapackage$metadata, handlers, config)
 }

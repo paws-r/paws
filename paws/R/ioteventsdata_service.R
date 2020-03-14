@@ -69,8 +69,7 @@ ioteventsdata <- function(config = list()) {
   target_prefix = ""
 )
 
-.ioteventsdata$handlers <- new_handlers("restjson", "v4")
-
 .ioteventsdata$service <- function(config = list()) {
-  new_service(.ioteventsdata$metadata, .ioteventsdata$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.ioteventsdata$metadata, handlers, config)
 }

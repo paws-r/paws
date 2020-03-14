@@ -65,8 +65,7 @@ elasticinference <- function(config = list()) {
   target_prefix = ""
 )
 
-.elasticinference$handlers <- new_handlers("restjson", "v4")
-
 .elasticinference$service <- function(config = list()) {
-  new_service(.elasticinference$metadata, .elasticinference$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.elasticinference$metadata, handlers, config)
 }

@@ -142,8 +142,7 @@ pinpointemail <- function(config = list()) {
   target_prefix = ""
 )
 
-.pinpointemail$handlers <- new_handlers("restjson", "v4")
-
 .pinpointemail$service <- function(config = list()) {
-  new_service(.pinpointemail$metadata, .pinpointemail$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.pinpointemail$metadata, handlers, config)
 }

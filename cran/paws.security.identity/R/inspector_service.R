@@ -112,8 +112,7 @@ inspector <- function(config = list()) {
   target_prefix = "InspectorService"
 )
 
-.inspector$handlers <- new_handlers("jsonrpc", "v4")
-
 .inspector$service <- function(config = list()) {
-  new_service(.inspector$metadata, .inspector$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.inspector$metadata, handlers, config)
 }

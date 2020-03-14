@@ -72,8 +72,7 @@ simpledb <- function(config = list()) {
   target_prefix = ""
 )
 
-.simpledb$handlers <- new_handlers("query", "v2")
-
 .simpledb$service <- function(config = list()) {
-  new_service(.simpledb$metadata, .simpledb$handlers, config)
+  handlers <- new_handlers("query", "v2")
+  new_service(.simpledb$metadata, handlers, config)
 }

@@ -126,8 +126,7 @@ elasticbeanstalk <- function(config = list()) {
   target_prefix = ""
 )
 
-.elasticbeanstalk$handlers <- new_handlers("query", "v4")
-
 .elasticbeanstalk$service <- function(config = list()) {
-  new_service(.elasticbeanstalk$metadata, .elasticbeanstalk$handlers, config)
+  handlers <- new_handlers("query", "v4")
+  new_service(.elasticbeanstalk$metadata, handlers, config)
 }

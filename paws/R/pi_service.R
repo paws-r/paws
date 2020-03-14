@@ -82,8 +82,7 @@ pi <- function(config = list()) {
   target_prefix = "PerformanceInsightsv20180227"
 )
 
-.pi$handlers <- new_handlers("jsonrpc", "v4")
-
 .pi$service <- function(config = list()) {
-  new_service(.pi$metadata, .pi$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.pi$metadata, handlers, config)
 }

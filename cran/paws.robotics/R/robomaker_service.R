@@ -99,8 +99,7 @@ robomaker <- function(config = list()) {
   target_prefix = ""
 )
 
-.robomaker$handlers <- new_handlers("restjson", "v4")
-
 .robomaker$service <- function(config = list()) {
-  new_service(.robomaker$metadata, .robomaker$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.robomaker$metadata, handlers, config)
 }

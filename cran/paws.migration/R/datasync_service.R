@@ -95,8 +95,7 @@ datasync <- function(config = list()) {
   target_prefix = "FmrsService"
 )
 
-.datasync$handlers <- new_handlers("jsonrpc", "v4")
-
 .datasync$service <- function(config = list()) {
-  new_service(.datasync$metadata, .datasync$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.datasync$metadata, handlers, config)
 }

@@ -126,8 +126,7 @@ route53 <- function(config = list()) {
   target_prefix = ""
 )
 
-.route53$handlers <- new_handlers("restxml", "v4")
-
 .route53$service <- function(config = list()) {
-  new_service(.route53$metadata, .route53$handlers, config)
+  handlers <- new_handlers("restxml", "v4")
+  new_service(.route53$metadata, handlers, config)
 }

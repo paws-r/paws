@@ -91,8 +91,7 @@ servicequotas <- function(config = list()) {
   target_prefix = "ServiceQuotasV20190624"
 )
 
-.servicequotas$handlers <- new_handlers("jsonrpc", "v4")
-
 .servicequotas$service <- function(config = list()) {
-  new_service(.servicequotas$metadata, .servicequotas$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.servicequotas$metadata, handlers, config)
 }

@@ -109,8 +109,7 @@ marketplacemetering <- function(config = list()) {
   target_prefix = "AWSMPMeteringService"
 )
 
-.marketplacemetering$handlers <- new_handlers("jsonrpc", "v4")
-
 .marketplacemetering$service <- function(config = list()) {
-  new_service(.marketplacemetering$metadata, .marketplacemetering$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.marketplacemetering$metadata, handlers, config)
 }

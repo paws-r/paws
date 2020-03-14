@@ -117,8 +117,7 @@ rekognition <- function(config = list()) {
   target_prefix = "RekognitionService"
 )
 
-.rekognition$handlers <- new_handlers("jsonrpc", "v4")
-
 .rekognition$service <- function(config = list()) {
-  new_service(.rekognition$metadata, .rekognition$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.rekognition$metadata, handlers, config)
 }

@@ -113,8 +113,7 @@ organizations <- function(config = list()) {
   target_prefix = "AWSOrganizationsV20161128"
 )
 
-.organizations$handlers <- new_handlers("jsonrpc", "v4")
-
 .organizations$service <- function(config = list()) {
-  new_service(.organizations$metadata, .organizations$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.organizations$metadata, handlers, config)
 }

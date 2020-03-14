@@ -104,8 +104,7 @@ sfn <- function(config = list()) {
   target_prefix = "AWSStepFunctions"
 )
 
-.sfn$handlers <- new_handlers("jsonrpc", "v4")
-
 .sfn$service <- function(config = list()) {
-  new_service(.sfn$metadata, .sfn$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.sfn$metadata, handlers, config)
 }

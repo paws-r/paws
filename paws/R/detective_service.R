@@ -115,8 +115,7 @@ detective <- function(config = list()) {
   target_prefix = ""
 )
 
-.detective$handlers <- new_handlers("restjson", "v4")
-
 .detective$service <- function(config = list()) {
-  new_service(.detective$metadata, .detective$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.detective$metadata, handlers, config)
 }

@@ -65,8 +65,7 @@ kinesisvideoarchivedmedia <- function(config = list()) {
   target_prefix = ""
 )
 
-.kinesisvideoarchivedmedia$handlers <- new_handlers("restjson", "v4")
-
 .kinesisvideoarchivedmedia$service <- function(config = list()) {
-  new_service(.kinesisvideoarchivedmedia$metadata, .kinesisvideoarchivedmedia$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.kinesisvideoarchivedmedia$metadata, handlers, config)
 }

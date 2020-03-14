@@ -101,8 +101,7 @@ mturk <- function(config = list()) {
   target_prefix = "MTurkRequesterServiceV20170117"
 )
 
-.mturk$handlers <- new_handlers("jsonrpc", "v4")
-
 .mturk$service <- function(config = list()) {
-  new_service(.mturk$metadata, .mturk$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.mturk$metadata, handlers, config)
 }

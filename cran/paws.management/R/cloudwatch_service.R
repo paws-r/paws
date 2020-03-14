@@ -106,8 +106,7 @@ cloudwatch <- function(config = list()) {
   target_prefix = ""
 )
 
-.cloudwatch$handlers <- new_handlers("query", "v4")
-
 .cloudwatch$service <- function(config = list()) {
-  new_service(.cloudwatch$metadata, .cloudwatch$handlers, config)
+  handlers <- new_handlers("query", "v4")
+  new_service(.cloudwatch$metadata, handlers, config)
 }

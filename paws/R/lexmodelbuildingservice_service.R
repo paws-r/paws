@@ -104,8 +104,7 @@ lexmodelbuildingservice <- function(config = list()) {
   target_prefix = ""
 )
 
-.lexmodelbuildingservice$handlers <- new_handlers("restjson", "v4")
-
 .lexmodelbuildingservice$service <- function(config = list()) {
-  new_service(.lexmodelbuildingservice$metadata, .lexmodelbuildingservice$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.lexmodelbuildingservice$metadata, handlers, config)
 }

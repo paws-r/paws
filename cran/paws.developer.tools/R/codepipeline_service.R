@@ -233,8 +233,7 @@ codepipeline <- function(config = list()) {
   target_prefix = "CodePipeline_20150709"
 )
 
-.codepipeline$handlers <- new_handlers("jsonrpc", "v4")
-
 .codepipeline$service <- function(config = list()) {
-  new_service(.codepipeline$metadata, .codepipeline$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.codepipeline$metadata, handlers, config)
 }

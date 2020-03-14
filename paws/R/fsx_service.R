@@ -84,8 +84,7 @@ fsx <- function(config = list()) {
   target_prefix = "AWSSimbaAPIService_v20180301"
 )
 
-.fsx$handlers <- new_handlers("jsonrpc", "v4")
-
 .fsx$service <- function(config = list()) {
-  new_service(.fsx$metadata, .fsx$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.fsx$metadata, handlers, config)
 }

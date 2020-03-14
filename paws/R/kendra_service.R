@@ -82,8 +82,7 @@ kendra <- function(config = list()) {
   target_prefix = "AWSKendraFrontendService"
 )
 
-.kendra$handlers <- new_handlers("jsonrpc", "v4")
-
 .kendra$service <- function(config = list()) {
-  new_service(.kendra$metadata, .kendra$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.kendra$metadata, handlers, config)
 }

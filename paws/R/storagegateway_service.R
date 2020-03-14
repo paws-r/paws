@@ -207,8 +207,7 @@ storagegateway <- function(config = list()) {
   target_prefix = "StorageGateway_20130630"
 )
 
-.storagegateway$handlers <- new_handlers("jsonrpc", "v4")
-
 .storagegateway$service <- function(config = list()) {
-  new_service(.storagegateway$metadata, .storagegateway$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.storagegateway$metadata, handlers, config)
 }

@@ -103,8 +103,7 @@ cognitoidentity <- function(config = list()) {
   target_prefix = "AWSCognitoIdentityService"
 )
 
-.cognitoidentity$handlers <- new_handlers("jsonrpc", "v4")
-
 .cognitoidentity$service <- function(config = list()) {
-  new_service(.cognitoidentity$metadata, .cognitoidentity$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.cognitoidentity$metadata, handlers, config)
 }

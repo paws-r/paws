@@ -152,8 +152,7 @@ greengrass <- function(config = list()) {
   target_prefix = ""
 )
 
-.greengrass$handlers <- new_handlers("restjson", "v4")
-
 .greengrass$service <- function(config = list()) {
-  new_service(.greengrass$metadata, .greengrass$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.greengrass$metadata, handlers, config)
 }

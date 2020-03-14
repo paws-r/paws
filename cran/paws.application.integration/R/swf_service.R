@@ -113,8 +113,7 @@ swf <- function(config = list()) {
   target_prefix = "SimpleWorkflowService"
 )
 
-.swf$handlers <- new_handlers("jsonrpc", "v4")
-
 .swf$service <- function(config = list()) {
-  new_service(.swf$metadata, .swf$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.swf$metadata, handlers, config)
 }

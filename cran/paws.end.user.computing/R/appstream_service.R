@@ -131,8 +131,7 @@ appstream <- function(config = list()) {
   target_prefix = "PhotonAdminProxyService"
 )
 
-.appstream$handlers <- new_handlers("jsonrpc", "v4")
-
 .appstream$service <- function(config = list()) {
-  new_service(.appstream$metadata, .appstream$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.appstream$metadata, handlers, config)
 }

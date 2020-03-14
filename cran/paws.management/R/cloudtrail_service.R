@@ -102,8 +102,7 @@ cloudtrail <- function(config = list()) {
   target_prefix = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101"
 )
 
-.cloudtrail$handlers <- new_handlers("jsonrpc", "v4")
-
 .cloudtrail$service <- function(config = list()) {
-  new_service(.cloudtrail$metadata, .cloudtrail$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.cloudtrail$metadata, handlers, config)
 }

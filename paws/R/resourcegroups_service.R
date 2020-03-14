@@ -109,8 +109,7 @@ resourcegroups <- function(config = list()) {
   target_prefix = ""
 )
 
-.resourcegroups$handlers <- new_handlers("restjson", "v4")
-
 .resourcegroups$service <- function(config = list()) {
-  new_service(.resourcegroups$metadata, .resourcegroups$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.resourcegroups$metadata, handlers, config)
 }

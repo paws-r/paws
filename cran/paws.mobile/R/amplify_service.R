@@ -100,8 +100,7 @@ amplify <- function(config = list()) {
   target_prefix = ""
 )
 
-.amplify$handlers <- new_handlers("restjson", "v4")
-
 .amplify$service <- function(config = list()) {
-  new_service(.amplify$metadata, .amplify$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.amplify$metadata, handlers, config)
 }

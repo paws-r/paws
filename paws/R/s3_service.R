@@ -152,8 +152,7 @@ s3 <- function(config = list()) {
   target_prefix = ""
 )
 
-.s3$handlers <- new_handlers("restxml", "s3")
-
 .s3$service <- function(config = list()) {
-  new_service(.s3$metadata, .s3$handlers, config)
+  handlers <- new_handlers("restxml", "s3")
+  new_service(.s3$metadata, handlers, config)
 }

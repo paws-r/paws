@@ -185,8 +185,7 @@ glue <- function(config = list()) {
   target_prefix = "AWSGlue"
 )
 
-.glue$handlers <- new_handlers("jsonrpc", "v4")
-
 .glue$service <- function(config = list()) {
-  new_service(.glue$metadata, .glue$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.glue$metadata, handlers, config)
 }

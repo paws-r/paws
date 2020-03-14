@@ -77,8 +77,7 @@ iot1clickdevicesservice <- function(config = list()) {
   target_prefix = ""
 )
 
-.iot1clickdevicesservice$handlers <- new_handlers("restjson", "v4")
-
 .iot1clickdevicesservice$service <- function(config = list()) {
-  new_service(.iot1clickdevicesservice$metadata, .iot1clickdevicesservice$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.iot1clickdevicesservice$metadata, handlers, config)
 }

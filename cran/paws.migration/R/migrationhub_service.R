@@ -85,8 +85,7 @@ migrationhub <- function(config = list()) {
   target_prefix = "AWSMigrationHub"
 )
 
-.migrationhub$handlers <- new_handlers("jsonrpc", "v4")
-
 .migrationhub$service <- function(config = list()) {
-  new_service(.migrationhub$metadata, .migrationhub$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.migrationhub$metadata, handlers, config)
 }

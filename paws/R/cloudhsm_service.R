@@ -96,8 +96,7 @@ cloudhsm <- function(config = list()) {
   target_prefix = "CloudHsmFrontendService"
 )
 
-.cloudhsm$handlers <- new_handlers("jsonrpc", "v4")
-
 .cloudhsm$service <- function(config = list()) {
-  new_service(.cloudhsm$metadata, .cloudhsm$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.cloudhsm$metadata, handlers, config)
 }

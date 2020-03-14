@@ -102,8 +102,7 @@ personalize <- function(config = list()) {
   target_prefix = "AmazonPersonalize"
 )
 
-.personalize$handlers <- new_handlers("jsonrpc", "v4")
-
 .personalize$service <- function(config = list()) {
-  new_service(.personalize$metadata, .personalize$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.personalize$metadata, handlers, config)
 }

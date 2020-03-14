@@ -106,8 +106,7 @@ ecr <- function(config = list()) {
   target_prefix = "AmazonEC2ContainerRegistry_V20150921"
 )
 
-.ecr$handlers <- new_handlers("jsonrpc", "v4")
-
 .ecr$service <- function(config = list()) {
-  new_service(.ecr$metadata, .ecr$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.ecr$metadata, handlers, config)
 }

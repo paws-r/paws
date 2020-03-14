@@ -91,8 +91,7 @@ schemas <- function(config = list()) {
   target_prefix = ""
 )
 
-.schemas$handlers <- new_handlers("restjson", "v4")
-
 .schemas$service <- function(config = list()) {
-  new_service(.schemas$metadata, .schemas$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.schemas$metadata, handlers, config)
 }

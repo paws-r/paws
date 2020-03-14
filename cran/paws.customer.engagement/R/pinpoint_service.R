@@ -169,8 +169,7 @@ pinpoint <- function(config = list()) {
   target_prefix = ""
 )
 
-.pinpoint$handlers <- new_handlers("restjson", "v4")
-
 .pinpoint$service <- function(config = list()) {
-  new_service(.pinpoint$metadata, .pinpoint$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.pinpoint$metadata, handlers, config)
 }

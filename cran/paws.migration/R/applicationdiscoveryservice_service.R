@@ -154,8 +154,7 @@ applicationdiscoveryservice <- function(config = list()) {
   target_prefix = "AWSPoseidonService_V2015_11_01"
 )
 
-.applicationdiscoveryservice$handlers <- new_handlers("jsonrpc", "v4")
-
 .applicationdiscoveryservice$service <- function(config = list()) {
-  new_service(.applicationdiscoveryservice$metadata, .applicationdiscoveryservice$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.applicationdiscoveryservice$metadata, handlers, config)
 }

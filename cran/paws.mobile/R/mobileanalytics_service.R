@@ -64,8 +64,7 @@ mobileanalytics <- function(config = list()) {
   target_prefix = ""
 )
 
-.mobileanalytics$handlers <- new_handlers("restjson", "v4")
-
 .mobileanalytics$service <- function(config = list()) {
-  new_service(.mobileanalytics$metadata, .mobileanalytics$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.mobileanalytics$metadata, handlers, config)
 }

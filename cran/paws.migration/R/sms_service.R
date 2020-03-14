@@ -109,8 +109,7 @@ sms <- function(config = list()) {
   target_prefix = "AWSServerMigrationService_V2016_10_24"
 )
 
-.sms$handlers <- new_handlers("jsonrpc", "v4")
-
 .sms$service <- function(config = list()) {
-  new_service(.sms$metadata, .sms$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.sms$metadata, handlers, config)
 }

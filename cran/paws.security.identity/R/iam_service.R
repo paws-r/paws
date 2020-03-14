@@ -267,8 +267,7 @@ iam <- function(config = list()) {
   target_prefix = ""
 )
 
-.iam$handlers <- new_handlers("query", "v4")
-
 .iam$service <- function(config = list()) {
-  new_service(.iam$metadata, .iam$handlers, config)
+  handlers <- new_handlers("query", "v4")
+  new_service(.iam$metadata, handlers, config)
 }

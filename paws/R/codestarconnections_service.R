@@ -100,8 +100,7 @@ codestarconnections <- function(config = list()) {
   target_prefix = "com.amazonaws.codestar.connections.CodeStar_connections_20191201"
 )
 
-.codestarconnections$handlers <- new_handlers("jsonrpc", "v4")
-
 .codestarconnections$service <- function(config = list()) {
-  new_service(.codestarconnections$metadata, .codestarconnections$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.codestarconnections$metadata, handlers, config)
 }

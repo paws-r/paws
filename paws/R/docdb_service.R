@@ -104,8 +104,7 @@ docdb <- function(config = list()) {
   target_prefix = ""
 )
 
-.docdb$handlers <- new_handlers("query", "v4")
-
 .docdb$service <- function(config = list()) {
-  new_service(.docdb$metadata, .docdb$handlers, config)
+  handlers <- new_handlers("query", "v4")
+  new_service(.docdb$metadata, handlers, config)
 }

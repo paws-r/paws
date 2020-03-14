@@ -77,8 +77,7 @@ cloudhsmv2 <- function(config = list()) {
   target_prefix = "BaldrApiService"
 )
 
-.cloudhsmv2$handlers <- new_handlers("jsonrpc", "v4")
-
 .cloudhsmv2$service <- function(config = list()) {
-  new_service(.cloudhsmv2$metadata, .cloudhsmv2$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.cloudhsmv2$metadata, handlers, config)
 }

@@ -82,8 +82,7 @@ autoscalingplans <- function(config = list()) {
   target_prefix = "AnyScaleScalingPlannerFrontendService"
 )
 
-.autoscalingplans$handlers <- new_handlers("jsonrpc", "v4")
-
 .autoscalingplans$service <- function(config = list()) {
-  new_service(.autoscalingplans$metadata, .autoscalingplans$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.autoscalingplans$metadata, handlers, config)
 }

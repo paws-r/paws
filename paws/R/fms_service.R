@@ -85,8 +85,7 @@ fms <- function(config = list()) {
   target_prefix = "AWSFMS_20180101"
 )
 
-.fms$handlers <- new_handlers("jsonrpc", "v4")
-
 .fms$service <- function(config = list()) {
-  new_service(.fms$metadata, .fms$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.fms$metadata, handlers, config)
 }

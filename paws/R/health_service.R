@@ -146,8 +146,7 @@ health <- function(config = list()) {
   target_prefix = "AWSHealth_20160804"
 )
 
-.health$handlers <- new_handlers("jsonrpc", "v4")
-
 .health$service <- function(config = list()) {
-  new_service(.health$metadata, .health$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.health$metadata, handlers, config)
 }

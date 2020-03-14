@@ -63,8 +63,7 @@ qldbsession <- function(config = list()) {
   target_prefix = "QLDBSession"
 )
 
-.qldbsession$handlers <- new_handlers("jsonrpc", "v4")
-
 .qldbsession$service <- function(config = list()) {
-  new_service(.qldbsession$metadata, .qldbsession$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.qldbsession$metadata, handlers, config)
 }

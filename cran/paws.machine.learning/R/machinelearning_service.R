@@ -90,8 +90,7 @@ machinelearning <- function(config = list()) {
   target_prefix = "AmazonML_20141212"
 )
 
-.machinelearning$handlers <- new_handlers("jsonrpc", "v4")
-
 .machinelearning$service <- function(config = list()) {
-  new_service(.machinelearning$metadata, .machinelearning$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.machinelearning$metadata, handlers, config)
 }

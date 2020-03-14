@@ -67,8 +67,7 @@ kinesisvideosignalingchannels <- function(config = list()) {
   target_prefix = ""
 )
 
-.kinesisvideosignalingchannels$handlers <- new_handlers("restjson", "v4")
-
 .kinesisvideosignalingchannels$service <- function(config = list()) {
-  new_service(.kinesisvideosignalingchannels$metadata, .kinesisvideosignalingchannels$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.kinesisvideosignalingchannels$metadata, handlers, config)
 }

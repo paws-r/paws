@@ -88,8 +88,7 @@ shield <- function(config = list()) {
   target_prefix = "AWSShield_20160616"
 )
 
-.shield$handlers <- new_handlers("jsonrpc", "v4")
-
 .shield$service <- function(config = list()) {
-  new_service(.shield$metadata, .shield$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.shield$metadata, handlers, config)
 }

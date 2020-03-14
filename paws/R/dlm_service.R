@@ -78,8 +78,7 @@ dlm <- function(config = list()) {
   target_prefix = ""
 )
 
-.dlm$handlers <- new_handlers("restjson", "v4")
-
 .dlm$service <- function(config = list()) {
-  new_service(.dlm$metadata, .dlm$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.dlm$metadata, handlers, config)
 }

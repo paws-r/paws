@@ -90,8 +90,7 @@ efs <- function(config = list()) {
   target_prefix = ""
 )
 
-.efs$handlers <- new_handlers("restjson", "v4")
-
 .efs$service <- function(config = list()) {
-  new_service(.efs$metadata, .efs$handlers, config)
+  handlers <- new_handlers("restjson", "v4")
+  new_service(.efs$metadata, handlers, config)
 }
