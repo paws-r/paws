@@ -193,14 +193,16 @@ test_that("make_doc_examples", {
   )
   actual <- make_doc_examples(operation, api)
   expected <- paste(
-    "#' @examples",
+    "#' @section Examples:",
+    "#' ```",
     "#' # Description",
-    "#' \\donttest{svc$operation(",
+    "#' svc$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = 123",
     "#'   )",
-    "#' )}",
+    "#' )",
+    "#' ```",
     sep = "\n"
   )
   expect_equal(actual, expected)
@@ -225,17 +227,19 @@ test_that("make_doc_examples", {
   )
   actual <- make_doc_examples(operation, api)
   expected <- paste(
-    "#' @examples",
+    "#' @section Examples:",
+    "#' ```",
     "#' # Description1",
-    "#' \\donttest{svc$operation()}",
+    "#' svc$operation()",
     "#' ",
     "#' # Description2",
-    "#' \\donttest{svc$operation(",
+    "#' svc$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = 123",
     "#'   )",
-    "#' )}",
+    "#' )",
+    "#' ```",
     sep = "\n"
   )
   expect_equal(actual, expected)
@@ -256,14 +260,16 @@ test_that("make_doc_examples", {
   )
   actual <- make_doc_examples(operation, api)
   expected <- paste(
-    "#' @examples",
+    "#' @section Examples:",
+    "#' ```",
     "#' # Description, with a comma",
-    "#' \\donttest{svc$operation(",
+    "#' svc$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = 123",
     "#'   )",
-    "#' )}",
+    "#' )",
+    "#' ```",
     sep = "\n"
   )
   expect_equal(actual, expected)
@@ -284,14 +290,16 @@ test_that("make_doc_examples", {
   )
   actual <- make_doc_examples(operation, api)
   expected <- paste(
-    "#' @examples",
+    "#' @section Examples:",
+    "#' ```",
     "#' # Description, with a comma",
-    "#' \\donttest{svc$operation(",
+    "#' svc$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = \"a,b,c\"",
     "#'   )",
-    "#' )}",
+    "#' )",
+    "#' ```",
     sep = "\n"
   )
   expect_equal(actual, expected)
@@ -312,14 +320,16 @@ test_that("make_doc_examples", {
   )
   actual <- make_doc_examples(operation, api)
   expected <- paste(
-    "#' @examples",
+    "#' @section Examples:",
+    "#' ```",
     "#' # A very long string",
-    "#' \\donttest{svc$operation(",
+    "#' svc$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = \"{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":[{\\\"Sid\\\":\\\"Stmt1\\\",\\\"Effect\\\":...\"",
     "#'   )",
-    "#' )}",
+    "#' )",
+    "#' ```",
     sep = "\n"
   )
   expect_equal(actual, expected)
@@ -340,14 +350,16 @@ test_that("make_doc_examples", {
   )
   actual <- make_doc_examples(operation, api)
   expected <- paste(
-    "#' @examples",
+    "#' @section Examples:",
+    "#' ```",
     "#' # Description with inline `code`",
-    "#' \\donttest{svc$operation(",
+    "#' svc$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = 123",
     "#'   )",
-    "#' )}",
+    "#' )",
+    "#' ```",
     sep = "\n"
   )
   expect_equal(actual, expected)
@@ -368,14 +380,16 @@ test_that("make_doc_examples", {
   )
   actual <- make_doc_examples(operation, api)
   expected <- paste(
-    "#' @examples",
+    "#' @section Examples:",
+    "#' ```",
     "#' # Description with inline ```code```",
-    "#' \\donttest{svc$operation(",
+    "#' svc$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = 123",
     "#'   )",
-    "#' )}",
+    "#' )",
+    "#' ```",
     sep = "\n"
   )
   expect_equal(actual, expected)
