@@ -41,6 +41,13 @@ the \href{https://docs.aws.amazon.com/compute-optimizer/latest/ug/}{AWS Compute 
 }
 }
 
+\section{Examples}{
+\preformatted{svc$get_auto_scaling_group_recommendations(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -53,10 +60,3 @@ the \href{https://docs.aws.amazon.com/compute-optimizer/latest/ug/}{AWS Compute 
 }
 }
 
-\examples{
-\donttest{svc <- computeoptimizer()
-svc$get_auto_scaling_group_recommendations(
-  Foo = 123
-)}
-
-}

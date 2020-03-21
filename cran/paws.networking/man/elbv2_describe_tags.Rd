@@ -23,13 +23,14 @@ and target groups.
 }
 }
 
-\examples{
-# This example describes the tags assigned to the specified load balancer.
-\donttest{svc$describe_tags(
+\section{Examples}{
+\preformatted{# This example describes the tags assigned to the specified load balancer.
+svc$describe_tags(
   ResourceArns = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/5..."
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

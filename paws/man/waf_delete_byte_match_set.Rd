@@ -39,13 +39,14 @@ information, see UpdateByteMatchSet.
 }
 }
 
-\examples{
-# The following example deletes a byte match set with the ID
+\section{Examples}{
+\preformatted{# The following example deletes a byte match set with the ID
 # exampleIDs3t-46da-4fdb-b8d5-abc321j569j5.
-\donttest{svc$delete_byte_match_set(
+svc$delete_byte_match_set(
   ByteMatchSetId = "exampleIDs3t-46da-4fdb-b8d5-abc321j569j5",
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
-)}
-
+)
 }
+}
+
 \keyword{internal}

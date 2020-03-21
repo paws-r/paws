@@ -42,11 +42,12 @@ in the \emph{AWS Key Management Service Developer Guide}.
 }
 }
 
-\examples{
-# The following example disables the specified CMK.
-\donttest{svc$disable_key(
+\section{Examples}{
+\preformatted{# The following example disables the specified CMK.
+svc$disable_key(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)}
-
+)
 }
+}
+
 \keyword{internal}

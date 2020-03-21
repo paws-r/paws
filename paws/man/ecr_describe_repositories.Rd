@@ -53,10 +53,11 @@ Describes image repositories in a registry.
 }
 }
 
-\examples{
-# The following example obtains a list and description of all repositories
+\section{Examples}{
+\preformatted{# The following example obtains a list and description of all repositories
 # in the default registry to which the current user has access.
-\donttest{svc$describe_repositories()}
-
+svc$describe_repositories()
 }
+}
+
 \keyword{internal}

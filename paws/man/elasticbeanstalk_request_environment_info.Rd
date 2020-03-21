@@ -58,12 +58,13 @@ Related Topics
 }
 }
 
-\examples{
-# The following operation requests logs from an environment named my-env:
-\donttest{svc$request_environment_info(
+\section{Examples}{
+\preformatted{# The following operation requests logs from an environment named my-env:
+svc$request_environment_info(
   EnvironmentName = "my-env",
   InfoType = "tail"
-)}
-
+)
 }
+}
+
 \keyword{internal}

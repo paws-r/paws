@@ -86,16 +86,17 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 }
 
-\examples{
-# This example creates a network interface for the specified subnet.
-\donttest{svc$create_network_interface(
+\section{Examples}{
+\preformatted{# This example creates a network interface for the specified subnet.
+svc$create_network_interface(
   Description = "my network interface",
   Groups = list(
     "sg-903004f8"
   ),
   PrivateIpAddress = "10.0.2.17",
   SubnetId = "subnet-9d4a7b6c"
-)}
-
+)
 }
+}
+
 \keyword{internal}

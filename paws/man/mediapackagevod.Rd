@@ -30,6 +30,13 @@ AWS Elemental MediaPackage VOD
 }
 }
 
+\section{Examples}{
+\preformatted{svc$create_asset(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -48,10 +55,3 @@ AWS Elemental MediaPackage VOD
 }
 }
 
-\examples{
-\donttest{svc <- mediapackagevod()
-svc$create_asset(
-  Foo = 123
-)}
-
-}

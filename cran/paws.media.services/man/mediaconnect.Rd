@@ -30,6 +30,13 @@ API for AWS Elemental MediaConnect
 }
 }
 
+\section{Examples}{
+\preformatted{svc$add_flow_outputs(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -53,10 +60,3 @@ API for AWS Elemental MediaConnect
 }
 }
 
-\examples{
-\donttest{svc <- mediaconnect()
-svc$add_flow_outputs(
-  Foo = 123
-)}
-
-}

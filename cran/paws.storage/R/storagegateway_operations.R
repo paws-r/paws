@@ -90,9 +90,10 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Activates the gateway you previously deployed on your host.
-#' \donttest{svc$activate_gateway(
+#' svc$activate_gateway(
 #'   ActivationKey = "29AV1-3OFV9-VVIUB-NKT0I-LRO6V",
 #'   GatewayName = "My_Gateway",
 #'   GatewayRegion = "us-east-1",
@@ -100,7 +101,8 @@ NULL
 #'   GatewayType = "STORED",
 #'   MediumChangerType = "AWS-Gateway-VTL",
 #'   TapeDriveType = "IBM-ULT3580-TD5"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -151,16 +153,18 @@ storagegateway_activate_gateway <- function(ActivationKey, GatewayName, GatewayT
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example shows a request that activates a gateway-stored
 #' # volume.
-#' \donttest{svc$add_cache(
+#' svc$add_cache(
 #'   DiskIds = list(
 #'     "pci-0000:03:00.0-scsi-0:0:0:0",
 #'     "pci-0000:03:00.0-scsi-0:0:1:0"
 #'   ),
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -226,9 +230,10 @@ storagegateway_add_cache <- function(GatewayARN, DiskIds) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Adds one or more tags to the specified resource.
-#' \donttest{svc$add_tags_to_resource(
+#' svc$add_tags_to_resource(
 #'   ResourceARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-11A2222B",
 #'   Tags = list(
 #'     list(
@@ -236,7 +241,8 @@ storagegateway_add_cache <- function(GatewayARN, DiskIds) {
 #'       Value = "East Coast"
 #'     )
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -287,16 +293,18 @@ storagegateway_add_tags_to_resource <- function(ResourceARN, Tags) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Configures one or more gateway local disks as upload buffer for a
 #' # specified gateway.
-#' \donttest{svc$add_upload_buffer(
+#' svc$add_upload_buffer(
 #'   DiskIds = list(
 #'     "pci-0000:03:00.0-scsi-0:0:0:0",
 #'     "pci-0000:03:00.0-scsi-0:0:1:0"
 #'   ),
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -352,16 +360,18 @@ storagegateway_add_upload_buffer <- function(GatewayARN, DiskIds) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Configures one or more gateway local disks as working storage for a
 #' # gateway. (Working storage is also referred to as upload buffer.)
-#' \donttest{svc$add_working_storage(
+#' svc$add_working_storage(
 #'   DiskIds = list(
 #'     "pci-0000:03:00.0-scsi-0:0:0:0",
 #'     "pci-0000:03:00.0-scsi-0:0:1:0"
 #'   ),
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -521,13 +531,15 @@ storagegateway_attach_volume <- function(GatewayARN, TargetName = NULL, VolumeAR
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Cancels archiving of a virtual tape to the virtual tape shelf (VTS)
 #' # after the archiving process is initiated.
-#' \donttest{svc$cancel_archival(
+#' svc$cancel_archival(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
 #'   TapeARN = "arn:aws:storagegateway:us-east-1:999999999999:tape/AMZN01A2A4"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -572,13 +584,15 @@ storagegateway_cancel_archival <- function(GatewayARN, TapeARN) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Cancels retrieval of a virtual tape from the virtual tape shelf (VTS) to
 #' # a gateway after the retrieval process is initiated.
-#' \donttest{svc$cancel_retrieval(
+#' svc$cancel_retrieval(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
 #'   TapeARN = "arn:aws:storagegateway:us-east-1:999999999999:tape/AMZN01A2A4"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -689,16 +703,18 @@ storagegateway_cancel_retrieval <- function(GatewayARN, TapeARN) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Creates a cached volume on a specified cached gateway.
-#' \donttest{svc$create_cachedi_scsi_volume(
+#' svc$create_cachedi_scsi_volume(
 #'   ClientToken = "cachedvol112233",
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
 #'   NetworkInterfaceId = "10.1.1.1",
 #'   SnapshotId = "snap-f47b7b94",
 #'   TargetName = "my-volume",
 #'   VolumeSizeInBytes = 536870912000
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1057,12 +1073,14 @@ storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEnc
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Initiates an ad-hoc snapshot of a gateway volume.
-#' \donttest{svc$create_snapshot(
+#' svc$create_snapshot(
 #'   SnapshotDescription = "My root volume snapshot as of 10/03/2017",
 #'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1139,12 +1157,14 @@ storagegateway_create_snapshot <- function(VolumeARN, SnapshotDescription, Tags 
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Initiates a snapshot of a gateway from a volume recovery point.
-#' \donttest{svc$create_snapshot_from_volume_recovery_point(
+#' svc$create_snapshot_from_volume_recovery_point(
 #'   SnapshotDescription = "My root volume snapshot as of 2017-06-30T10:10:10.000Z",
 #'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1248,16 +1268,18 @@ storagegateway_create_snapshot_from_volume_recovery_point <- function(VolumeARN,
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Creates a stored volume on a specified stored gateway.
-#' \donttest{svc$create_storedi_scsi_volume(
+#' svc$create_storedi_scsi_volume(
 #'   DiskId = "pci-0000:03:00.0-scsi-0:0:0:0",
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
 #'   NetworkInterfaceId = "10.1.1.1",
 #'   PreserveExistingData = TRUE,
 #'   SnapshotId = "snap-f47b7b94",
 #'   TargetName = "my-volume"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1343,13 +1365,15 @@ storagegateway_create_storedi_scsi_volume <- function(GatewayARN, DiskId, Snapsh
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Creates a virtual tape by using your own barcode.
-#' \donttest{svc$create_tape_with_barcode(
+#' svc$create_tape_with_barcode(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
 #'   TapeBarcode = "TEST12345",
 #'   TapeSizeInBytes = 107374182400
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1442,15 +1466,17 @@ storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes,
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Creates one or more virtual tapes.
-#' \donttest{svc$create_tapes(
+#' svc$create_tapes(
 #'   ClientToken = "77777",
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
 #'   NumTapesToCreate = 3L,
 #'   TapeBarcodePrefix = "TEST",
 #'   TapeSizeInBytes = 107374182400
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1498,13 +1524,15 @@ storagegateway_create_tapes <- function(GatewayARN, TapeSizeInBytes, ClientToken
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Deletes the bandwidth rate limits of a gateway; either the upload or
 #' # download limit, or both.
-#' \donttest{svc$delete_bandwidth_rate_limit(
+#' svc$delete_bandwidth_rate_limit(
 #'   BandwidthType = "All",
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1549,13 +1577,15 @@ storagegateway_delete_bandwidth_rate_limit <- function(GatewayARN, BandwidthType
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials
 #' # for a specified iSCSI target and initiator pair.
-#' \donttest{svc$delete_chap_credentials(
+#' svc$delete_chap_credentials(
 #'   InitiatorName = "iqn.1991-05.com.microsoft:computername.domain.example.com",
 #'   TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn..."
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1653,12 +1683,14 @@ storagegateway_delete_file_share <- function(FileShareARN, ForceDelete = NULL) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This operation deletes the gateway, but not the gateway's VM from the
 #' # host computer.
-#' \donttest{svc$delete_gateway(
+#' svc$delete_gateway(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1707,11 +1739,13 @@ storagegateway_delete_gateway <- function(GatewayARN) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This action enables you to delete a snapshot schedule for a volume.
-#' \donttest{svc$delete_snapshot_schedule(
+#' svc$delete_snapshot_schedule(
 #'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1754,12 +1788,14 @@ storagegateway_delete_snapshot_schedule <- function(VolumeARN) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This example deletes the specified virtual tape.
-#' \donttest{svc$delete_tape(
+#' svc$delete_tape(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:204469490176:gateway/sgw-12A3456B",
 #'   TapeARN = "arn:aws:storagegateway:us-east-1:204469490176:tape/TEST05A2A0"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1799,11 +1835,13 @@ storagegateway_delete_tape <- function(GatewayARN, TapeARN) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Deletes the specified virtual tape from the virtual tape shelf (VTS).
-#' \donttest{svc$delete_tape_archive(
+#' svc$delete_tape_archive(
 #'   TapeARN = "arn:aws:storagegateway:us-east-1:204469490176:tape/TEST05A2A0"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1859,12 +1897,14 @@ storagegateway_delete_tape_archive <- function(TapeARN) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Deletes the specified gateway volume that you previously created using
 #' # the CreateCachediSCSIVolume or CreateStorediSCSIVolume API.
-#' \donttest{svc$delete_volume(
+#' svc$delete_volume(
 #'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1950,12 +1990,14 @@ storagegateway_describe_availability_monitor_test <- function(GatewayARN) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Returns a value for a bandwidth rate limit if set. If not set, then only
 #' # the gateway ARN is returned.
-#' \donttest{svc$describe_bandwidth_rate_limit(
+#' svc$describe_bandwidth_rate_limit(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1997,11 +2039,13 @@ storagegateway_describe_bandwidth_rate_limit <- function(GatewayARN) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Returns information about the cache of a gateway.
-#' \donttest{svc$describe_cache(
+#' svc$describe_cache(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -2048,14 +2092,16 @@ storagegateway_describe_cache <- function(GatewayARN) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Returns a description of the gateway cached iSCSI volumes specified in
 #' # the request.
-#' \donttest{svc$describe_cachedi_scsi_volumes(
+#' svc$describe_cachedi_scsi_volumes(
 #'   VolumeARNs = list(
 #'     "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB"
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -2100,13 +2146,15 @@ storagegateway_describe_cachedi_scsi_volumes <- function(VolumeARNs) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Returns an array of Challenge-Handshake Authentication Protocol (CHAP)
 #' # credentials information for a specified iSCSI target, one for each
 #' # target-initiator pair.
-#' \donttest{svc$describe_chap_credentials(
+#' svc$describe_chap_credentials(
 #'   TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn..."
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -2149,13 +2197,15 @@ storagegateway_describe_chap_credentials <- function(TargetARN) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Returns metadata about a gateway such as its name, network interfaces,
 #' # configured time zone, and the state (whether the gateway is running or
 #' # not).
-#' \donttest{svc$describe_gateway_information(
+#' svc$describe_gateway_information(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -2196,12 +2246,14 @@ storagegateway_describe_gateway_information <- function(GatewayARN) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Returns your gateway's weekly maintenance start time including the day
 #' # and time of the week.
-#' \donttest{svc$describe_maintenance_start_time(
+#' svc$describe_maintenance_start_time(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -2364,12 +2416,14 @@ storagegateway_describe_smb_settings <- function(GatewayARN) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Describes the snapshot schedule for the specified gateway volume
 #' # including intervals at which snapshots are automatically initiated.
-#' \donttest{svc$describe_snapshot_schedule(
+#' svc$describe_snapshot_schedule(
 #'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -2415,14 +2469,16 @@ storagegateway_describe_snapshot_schedule <- function(VolumeARN) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Returns the description of the gateway volumes specified in the request
 #' # belonging to the same gateway.
-#' \donttest{svc$describe_storedi_scsi_volumes(
+#' svc$describe_storedi_scsi_volumes(
 #'   VolumeARNs = list(
 #'     "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB"
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -2475,17 +2531,19 @@ storagegateway_describe_storedi_scsi_volumes <- function(VolumeARNs) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Returns a description of specified virtual tapes in the virtual tape
 #' # shelf (VTS).
-#' \donttest{svc$describe_tape_archives(
+#' svc$describe_tape_archives(
 #'   Limit = 123L,
 #'   Marker = "1",
 #'   TapeARNs = list(
 #'     "arn:aws:storagegateway:us-east-1:999999999999:tape/AM08A1AD",
 #'     "arn:aws:storagegateway:us-east-1:999999999999:tape/AMZN01A2A4"
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -2536,14 +2594,16 @@ storagegateway_describe_tape_archives <- function(TapeARNs = NULL, Marker = NULL
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Returns a list of virtual tape recovery points that are available for
 #' # the specified gateway-VTL.
-#' \donttest{svc$describe_tape_recovery_points(
+#' svc$describe_tape_recovery_points(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
 #'   Limit = 1L,
 #'   Marker = "1"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -2602,11 +2662,12 @@ storagegateway_describe_tape_recovery_points <- function(GatewayARN, Marker = NU
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Returns a description of the specified Amazon Resource Name (ARN) of
 #' # virtual tapes. If a TapeARN is not specified, returns a description of
 #' # all virtual tapes.
-#' \donttest{svc$describe_tapes(
+#' svc$describe_tapes(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
 #'   Limit = 2L,
 #'   Marker = "1",
@@ -2614,7 +2675,8 @@ storagegateway_describe_tape_recovery_points <- function(GatewayARN, Marker = NU
 #'     "arn:aws:storagegateway:us-east-1:999999999999:tape/TEST04A2A1",
 #'     "arn:aws:storagegateway:us-east-1:999999999999:tape/TEST05A2A0"
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -2658,18 +2720,20 @@ storagegateway_describe_tapes <- function(GatewayARN, TapeARNs = NULL, Marker = 
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Returns information about the upload buffer of a gateway including disk
 #' # IDs and the amount of upload buffer space allocated/used.
-#' \donttest{svc$describe_upload_buffer(
+#' svc$describe_upload_buffer(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-#' )}
+#' )
 #' 
 #' # Returns information about the upload buffer of a gateway including disk
 #' # IDs and the amount of upload buffer space allocated and used.
-#' \donttest{svc$describe_upload_buffer(
+#' svc$describe_upload_buffer(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -2728,15 +2792,17 @@ storagegateway_describe_upload_buffer <- function(GatewayARN) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Returns a description of virtual tape library (VTL) devices for the
 #' # specified gateway.
-#' \donttest{svc$describe_vtl_devices(
+#' svc$describe_vtl_devices(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
 #'   Limit = 123L,
 #'   Marker = "1",
 #'   VTLDeviceARNs = list()
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -2784,13 +2850,15 @@ storagegateway_describe_vtl_devices <- function(GatewayARN, VTLDeviceARNs = NULL
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This operation is supported only for the gateway-stored volume
 #' # architecture. This operation is deprecated in cached-volumes API version
 #' # (20120630). Use DescribeUploadBuffer instead.
-#' \donttest{svc$describe_working_storage(
+#' svc$describe_working_storage(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -2882,12 +2950,14 @@ storagegateway_detach_volume <- function(VolumeARN, ForceDetach = NULL) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Disables a gateway when the gateway is no longer functioning. Use this
 #' # operation for a gateway-VTL that is not reachable or not functioning.
-#' \donttest{svc$disable_gateway(
+#' svc$disable_gateway(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -3052,14 +3122,16 @@ storagegateway_list_file_shares <- function(GatewayARN = NULL, Limit = NULL, Mar
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Lists gateways owned by an AWS account in a specified region as
 #' # requested. Results are sorted by gateway ARN up to a maximum of 100
 #' # gateways.
-#' \donttest{svc$list_gateways(
+#' svc$list_gateways(
 #'   Limit = 2L,
 #'   Marker = "1"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -3106,13 +3178,15 @@ storagegateway_list_gateways <- function(Marker = NULL, Limit = NULL) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The request returns a list of all disks, specifying which are configured
 #' # as working storage, cache storage, or stored volume or not configured at
 #' # all.
-#' \donttest{svc$list_local_disks(
+#' svc$list_local_disks(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -3158,13 +3232,15 @@ storagegateway_list_local_disks <- function(GatewayARN) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Lists the tags that have been added to the specified resource.
-#' \donttest{svc$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   Limit = 1L,
 #'   Marker = "1",
 #'   ResourceARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-11A2222B"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -3305,12 +3381,14 @@ storagegateway_list_volume_initiators <- function(VolumeARN) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Lists the recovery points for a specified gateway in which all data of
 #' # the volume is consistent and can be used to create a snapshot.
-#' \donttest{svc$list_volume_recovery_points(
+#' svc$list_volume_recovery_points(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -3366,14 +3444,16 @@ storagegateway_list_volume_recovery_points <- function(GatewayARN) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Lists the iSCSI stored volumes of a gateway. Results are sorted by
 #' # volume ARN up to a maximum of 100 volumes.
-#' \donttest{svc$list_volumes(
+#' svc$list_volumes(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
 #'   Limit = 2L,
 #'   Marker = "1"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -3550,16 +3630,18 @@ storagegateway_refresh_cache <- function(FileShareARN, FolderList = NULL, Recurs
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Lists the iSCSI stored volumes of a gateway. Removes one or more tags
 #' # from the specified resource.
-#' \donttest{svc$remove_tags_from_resource(
+#' svc$remove_tags_from_resource(
 #'   ResourceARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-11A2222B",
 #'   TagKeys = list(
 #'     "Dev Gatgeway Region",
 #'     "East Coast"
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -3611,12 +3693,14 @@ storagegateway_remove_tags_from_resource <- function(ResourceARN, TagKeys) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Resets all cache disks that have encountered a error and makes the disks
 #' # available for reconfiguration as cache storage.
-#' \donttest{svc$reset_cache(
+#' svc$reset_cache(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-13B4567C"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -3672,14 +3756,16 @@ storagegateway_reset_cache <- function(GatewayARN) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Retrieves an archived virtual tape from the virtual tape shelf (VTS) to
 #' # a gateway-VTL. Virtual tapes archived in the VTS are not associated with
 #' # any gateway.
-#' \donttest{svc$retrieve_tape_archive(
+#' svc$retrieve_tape_archive(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
 #'   TapeARN = "arn:aws:storagegateway:us-east-1:999999999999:tape/TEST0AA2AF"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -3729,12 +3815,14 @@ storagegateway_retrieve_tape_archive <- function(TapeARN, GatewayARN) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Retrieves the recovery point for the specified virtual tape.
-#' \donttest{svc$retrieve_tape_recovery_point(
+#' svc$retrieve_tape_recovery_point(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
 #'   TapeARN = "arn:aws:storagegateway:us-east-1:999999999999:tape/TEST0AA2AF"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -3778,12 +3866,14 @@ storagegateway_retrieve_tape_recovery_point <- function(TapeARN, GatewayARN) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Sets the password for your VM local console.
-#' \donttest{svc$set_local_console_password(
+#' svc$set_local_console_password(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
 #'   LocalConsolePassword = "PassWordMustBeAtLeast6Chars."
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -3884,12 +3974,14 @@ storagegateway_set_smb_guest_password <- function(GatewayARN, Password) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This operation shuts down the gateway service component running in the
 #' # storage gateway's virtual machine (VM) and not the VM.
-#' \donttest{svc$shutdown_gateway(
+#' svc$shutdown_gateway(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -3983,11 +4075,13 @@ storagegateway_start_availability_monitor_test <- function(GatewayARN) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Starts a gateway service that was previously shut down.
-#' \donttest{svc$start_gateway(
+#' svc$start_gateway(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -4043,15 +4137,17 @@ storagegateway_start_gateway <- function(GatewayARN) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Updates the bandwidth rate limits of a gateway. Both the upload and
 #' # download bandwidth rate limit can be set, or either one of the two. If a
 #' # new limit is not set, the existing rate limit remains.
-#' \donttest{svc$update_bandwidth_rate_limit(
+#' svc$update_bandwidth_rate_limit(
 #'   AverageDownloadRateLimitInBitsPerSec = 102400L,
 #'   AverageUploadRateLimitInBitsPerSec = 51200L,
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -4114,15 +4210,17 @@ storagegateway_update_bandwidth_rate_limit <- function(GatewayARN, AverageUpload
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Updates the Challenge-Handshake Authentication Protocol (CHAP)
 #' # credentials for a specified iSCSI target.
-#' \donttest{svc$update_chap_credentials(
+#' svc$update_chap_credentials(
 #'   InitiatorName = "iqn.1991-05.com.microsoft:computername.domain.example.com",
 #'   SecretToAuthenticateInitiator = "111111111111",
 #'   SecretToAuthenticateTarget = "222222222222",
 #'   TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn..."
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -4178,14 +4276,16 @@ storagegateway_update_chap_credentials <- function(TargetARN, SecretToAuthentica
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Updates a gateway's metadata, which includes the gateway's name and time
 #' # zone.
-#' \donttest{svc$update_gateway_information(
+#' svc$update_gateway_information(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
 #'   GatewayName = "MyGateway2",
 #'   GatewayTimezone = "GMT-12:00"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -4239,12 +4339,14 @@ storagegateway_update_gateway_information <- function(GatewayARN, GatewayName = 
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Updates the gateway virtual machine (VM) software. The request
 #' # immediately triggers the software update.
-#' \donttest{svc$update_gateway_software_now(
+#' svc$update_gateway_software_now(
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -4304,16 +4406,18 @@ storagegateway_update_gateway_software_now <- function(GatewayARN) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Updates a gateway's weekly maintenance start time information, including
 #' # day and time of the week. The maintenance time is in your gateway's time
 #' # zone.
-#' \donttest{svc$update_maintenance_start_time(
+#' svc$update_maintenance_start_time(
 #'   DayOfWeek = 2L,
 #'   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
 #'   HourOfDay = 0L,
 #'   MinuteOfHour = 30L
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -4671,14 +4775,16 @@ storagegateway_update_smb_security_strategy <- function(GatewayARN, SMBSecurityS
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Updates a snapshot schedule configured for a gateway volume.
-#' \donttest{svc$update_snapshot_schedule(
+#' svc$update_snapshot_schedule(
 #'   Description = "Hourly snapshot",
 #'   RecurrenceInHours = 1L,
 #'   StartAt = 0L,
 #'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -4724,13 +4830,15 @@ storagegateway_update_snapshot_schedule <- function(VolumeARN, StartAt, Recurren
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Updates the type of medium changer in a gateway-VTL after a gateway-VTL
 #' # is activated.
-#' \donttest{svc$update_vtl_device_type(
+#' svc$update_vtl_device_type(
 #'   DeviceType = "Medium Changer",
 #'   VTLDeviceARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B/device/..."
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'

@@ -33,11 +33,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- iotsecuretunneling()
+#' @section Examples:
+#' ```
 #' svc$close_tunnel(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

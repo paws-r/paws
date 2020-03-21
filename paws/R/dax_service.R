@@ -35,11 +35,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- dax()
+#' @section Examples:
+#' ```
 #' svc$create_cluster(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

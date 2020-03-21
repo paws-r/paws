@@ -39,6 +39,18 @@ required permissions for Amazon EC2 Auto Scaling actions, see the
 }
 }
 
+\section{Examples}{
+\preformatted{# This example attaches the specified instance to the specified Auto
+# Scaling group.
+svc$attach_instances(
+  AutoScalingGroupName = "my-auto-scaling-group",
+  InstanceIds = list(
+    "i-93633f9b"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -99,15 +111,3 @@ required permissions for Amazon EC2 Auto Scaling actions, see the
 }
 }
 
-\examples{
-# This example attaches the specified instance to the specified Auto
-# Scaling group.
-\donttest{svc <- autoscaling()
-svc$attach_instances(
-  AutoScalingGroupName = "my-auto-scaling-group",
-  InstanceIds = list(
-    "i-93633f9b"
-  )
-)}
-
-}

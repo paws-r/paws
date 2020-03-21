@@ -45,16 +45,17 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example creates a new device pool named MyDevicePool
 #' # inside an existing project.
-#' \donttest{svc <- devicefarm()
 #' svc$create_device_pool(
 #'   name = "MyDevicePool",
 #'   description = "My Android devices",
 #'   projectArn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
 #'   rules = list()
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

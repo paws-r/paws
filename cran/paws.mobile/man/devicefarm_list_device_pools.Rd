@@ -35,13 +35,14 @@ Gets information about device pools.
 }
 }
 
-\examples{
-# The following example returns information about the private device pools
+\section{Examples}{
+\preformatted{# The following example returns information about the private device pools
 # in a specific project.
-\donttest{svc$list_device_pools(
+svc$list_device_pools(
   type = "PRIVATE",
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -84,15 +84,16 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 }
 
-\examples{
-# This example creates a route for the specified route table. The route
+\section{Examples}{
+\preformatted{# This example creates a route for the specified route table. The route
 # matches all traffic (0.0.0.0/0) and routes it to the specified Internet
 # gateway.
-\donttest{svc$create_route(
+svc$create_route(
   DestinationCidrBlock = "0.0.0.0/0",
   GatewayId = "igw-c0a643a9",
   RouteTableId = "rtb-22574640"
-)}
-
+)
 }
+}
+
 \keyword{internal}

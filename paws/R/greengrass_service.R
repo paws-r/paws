@@ -29,11 +29,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- greengrass()
+#' @section Examples:
+#' ```
 #' svc$associate_role_to_group(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

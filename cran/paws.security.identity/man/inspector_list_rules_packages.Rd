@@ -27,11 +27,12 @@ Lists all available Amazon Inspector rules packages.
 }
 }
 
-\examples{
-# Lists all available Amazon Inspector rules packages.
-\donttest{svc$list_rules_packages(
+\section{Examples}{
+\preformatted{# Lists all available Amazon Inspector rules packages.
+svc$list_rules_packages(
   maxResults = 123L
-)}
-
+)
 }
+}
+
 \keyword{internal}

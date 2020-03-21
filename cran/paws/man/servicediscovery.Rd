@@ -37,6 +37,13 @@ contains up to eight healthy records.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$create_http_namespace(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -63,10 +70,3 @@ contains up to eight healthy records.
 }
 }
 
-\examples{
-\donttest{svc <- servicediscovery()
-svc$create_http_namespace(
-  Foo = 123
-)}
-
-}

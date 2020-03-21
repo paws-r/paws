@@ -30,11 +30,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- appsync()
+#' @section Examples:
+#' ```
 #' svc$create_api_cache(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

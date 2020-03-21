@@ -28,11 +28,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- kinesisvideomedia()
+#' @section Examples:
+#' ```
 #' svc$get_media(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -67,11 +67,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- sqs()
+#' @section Examples:
+#' ```
 #' svc$add_permission(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

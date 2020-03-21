@@ -30,13 +30,14 @@ specified, the call describes all of your load balancers.
 }
 }
 
-\examples{
-# This example describes the specified load balancer.
-\donttest{svc$describe_load_balancers(
+\section{Examples}{
+\preformatted{# This example describes the specified load balancer.
+svc$describe_load_balancers(
   LoadBalancerNames = list(
     "my-load-balancer"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

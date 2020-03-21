@@ -19,12 +19,13 @@ Deletes the specified report.
 }
 }
 
-\examples{
-# The following example deletes the AWS Cost and Usage report named
+\section{Examples}{
+\preformatted{# The following example deletes the AWS Cost and Usage report named
 # ExampleReport.
-\donttest{svc$delete_report_definition(
+svc$delete_report_definition(
   ReportName = "ExampleReport"
-)}
-
+)
 }
+}
+
 \keyword{internal}

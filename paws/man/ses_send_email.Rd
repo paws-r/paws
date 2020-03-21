@@ -166,9 +166,9 @@ in the \emph{Amazon SES Developer Guide.}
 }
 }
 
-\examples{
-# The following example sends a formatted email:
-\donttest{svc$send_email(
+\section{Examples}{
+\preformatted{# The following example sends a formatted email:
+svc$send_email(
   Destination = list(
     BccAddresses = list(),
     CcAddresses = list(
@@ -200,7 +200,8 @@ in the \emph{Amazon SES Developer Guide.}
   ReturnPathArn = "",
   Source = "sender@example.com",
   SourceArn = ""
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -44,11 +44,12 @@ The following operations are related to \code{DeleteBucketPolicy}
 }
 }
 
-\examples{
-# The following example deletes bucket policy on the specified bucket.
-\donttest{svc$delete_bucket_policy(
+\section{Examples}{
+\preformatted{# The following example deletes bucket policy on the specified bucket.
+svc$delete_bucket_policy(
   Bucket = "examplebucket"
-)}
-
+)
 }
+}
+
 \keyword{internal}

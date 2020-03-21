@@ -35,11 +35,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- importexport()
+#' @section Examples:
+#' ```
 #' svc$cancel_job(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

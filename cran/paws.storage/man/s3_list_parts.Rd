@@ -70,14 +70,15 @@ The following operations are related to \code{ListParts}:
 }
 }
 
-\examples{
-# The following example lists parts uploaded for a specific multipart
+\section{Examples}{
+\preformatted{# The following example lists parts uploaded for a specific multipart
 # upload.
-\donttest{svc$list_parts(
+svc$list_parts(
   Bucket = "examplebucket",
   Key = "bigobject",
   UploadId = "example7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP..."
-)}
-
+)
 }
+}
+
 \keyword{internal}

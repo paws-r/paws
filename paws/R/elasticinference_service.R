@@ -29,11 +29,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- elasticinference()
+#' @section Examples:
+#' ```
 #' svc$list_tags_for_resource(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

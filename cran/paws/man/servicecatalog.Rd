@@ -33,6 +33,13 @@ should be familiar with the terminology discussed in \href{http://docs.aws.amazo
 }
 }
 
+\section{Examples}{
+\preformatted{svc$accept_portfolio_share(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -122,10 +129,3 @@ should be familiar with the terminology discussed in \href{http://docs.aws.amazo
 }
 }
 
-\examples{
-\donttest{svc <- servicecatalog()
-svc$accept_portfolio_share(
-  Foo = 123
-)}
-
-}

@@ -56,22 +56,23 @@ account.
 }
 }
 
-\examples{
-# The following example shows how to attach a service control policy (SCP)
+\section{Examples}{
+\preformatted{# The following example shows how to attach a service control policy (SCP)
 # to an OU:
 # 
-\donttest{svc$attach_policy(
+svc$attach_policy(
   PolicyId = "p-examplepolicyid111",
   TargetId = "ou-examplerootid111-exampleouid111"
-)}
+)
 
 # The following example shows how to attach a service control policy (SCP)
 # to an account:
 # 
-\donttest{svc$attach_policy(
+svc$attach_policy(
   PolicyId = "p-examplepolicyid111",
   TargetId = "333333333333"
-)}
-
+)
 }
+}
+
 \keyword{internal}

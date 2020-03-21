@@ -92,9 +92,9 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Activates the gateway you previously deployed on your host.
-#' \donttest{svc <- storagegateway()
 #' svc$activate_gateway(
 #'   ActivationKey = "29AV1-3OFV9-VVIUB-NKT0I-LRO6V",
 #'   GatewayName = "My_Gateway",
@@ -103,7 +103,8 @@ NULL
 #'   GatewayType = "STORED",
 #'   MediumChangerType = "AWS-Gateway-VTL",
 #'   TapeDriveType = "IBM-ULT3580-TD5"
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

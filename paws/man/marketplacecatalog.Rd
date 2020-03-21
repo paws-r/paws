@@ -37,6 +37,13 @@ of the Catalog API to manage your products on AWS Marketplace.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$cancel_change_set(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -49,10 +56,3 @@ of the Catalog API to manage your products on AWS Marketplace.
 }
 }
 
-\examples{
-\donttest{svc <- marketplacecatalog()
-svc$cancel_change_set(
-  Foo = 123
-)}
-
-}

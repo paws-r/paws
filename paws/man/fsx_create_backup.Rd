@@ -64,9 +64,9 @@ along with other information.
 }
 }
 
-\examples{
-# This operation creates a new backup.
-\donttest{svc$create_backup(
+\section{Examples}{
+\preformatted{# This operation creates a new backup.
+svc$create_backup(
   FileSystemId = "fs-0498eed5fe91001ec",
   Tags = list(
     list(
@@ -74,7 +74,8 @@ along with other information.
       Value = "MyBackup"
     )
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -41,6 +41,13 @@ operations, see the build-time API, .
 }
 }
 
+\section{Examples}{
+\preformatted{svc$delete_session(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -52,10 +59,3 @@ operations, see the build-time API, .
 }
 }
 
-\examples{
-\donttest{svc <- lexruntimeservice()
-svc$delete_session(
-  Foo = 123
-)}
-
-}

@@ -34,11 +34,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- firehose()
+#' @section Examples:
+#' ```
 #' svc$create_delivery_stream(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

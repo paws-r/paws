@@ -135,10 +135,11 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This operation creates a new file system with the default generalpurpose
 #' # performance mode.
-#' \donttest{svc$create_file_system(
+#' svc$create_file_system(
 #'   CreationToken = "tokenstring",
 #'   PerformanceMode = "generalPurpose",
 #'   Tags = list(
@@ -147,7 +148,8 @@ NULL
 #'       Value = "MyFileSystem"
 #'     )
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -302,12 +304,14 @@ efs_create_file_system <- function(CreationToken, PerformanceMode = NULL, Encryp
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This operation creates a new mount target for an EFS file system.
-#' \donttest{svc$create_mount_target(
+#' svc$create_mount_target(
 #'   FileSystemId = "fs-01234567",
 #'   SubnetId = "subnet-1234abcd"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -361,9 +365,10 @@ efs_create_mount_target <- function(FileSystemId, SubnetId, IpAddress = NULL, Se
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This operation creates a new tag for an EFS file system.
-#' \donttest{svc$create_tags(
+#' svc$create_tags(
 #'   FileSystemId = "fs-01234567",
 #'   Tags = list(
 #'     list(
@@ -371,7 +376,8 @@ efs_create_mount_target <- function(FileSystemId, SubnetId, IpAddress = NULL, Se
 #'       Value = "MyFileSystem"
 #'     )
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -425,11 +431,13 @@ efs_create_tags <- function(FileSystemId, Tags) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This operation deletes an EFS file system.
-#' \donttest{svc$delete_file_system(
+#' svc$delete_file_system(
 #'   FileSystemId = "fs-01234567"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -492,11 +500,13 @@ efs_delete_file_system <- function(FileSystemId) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This operation deletes a mount target.
-#' \donttest{svc$delete_mount_target(
+#' svc$delete_mount_target(
 #'   MountTargetId = "fsmt-12340abc"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -546,14 +556,16 @@ efs_delete_mount_target <- function(MountTargetId) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This operation deletes tags for an EFS file system.
-#' \donttest{svc$delete_tags(
+#' svc$delete_tags(
 #'   FileSystemId = "fs-01234567",
 #'   TagKeys = list(
 #'     "Name"
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -631,9 +643,11 @@ efs_delete_tags <- function(FileSystemId, TagKeys) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This operation describes all of the EFS file systems in an account.
-#' \donttest{svc$describe_file_systems()}
+#' svc$describe_file_systems()
+#' ```
 #'
 #' @keywords internal
 #'
@@ -681,13 +695,15 @@ efs_describe_file_systems <- function(MaxItems = NULL, Marker = NULL, CreationTo
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This operation describes a file system's LifecycleConfiguration. EFS
 #' # lifecycle management uses the LifecycleConfiguration object to identify
 #' # which files to move to the EFS Infrequent Access (IA) storage class.
-#' \donttest{svc$describe_lifecycle_configuration(
+#' svc$describe_lifecycle_configuration(
 #'   FileSystemId = "fs-01234567"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -736,12 +752,14 @@ efs_describe_lifecycle_configuration <- function(FileSystemId) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This operation describes all of the security groups for a file system's
 #' # mount target.
-#' \donttest{svc$describe_mount_target_security_groups(
+#' svc$describe_mount_target_security_groups(
 #'   MountTargetId = "fsmt-12340abc"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -804,11 +822,13 @@ efs_describe_mount_target_security_groups <- function(MountTargetId) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This operation describes all of a file system's mount targets.
-#' \donttest{svc$describe_mount_targets(
+#' svc$describe_mount_targets(
 #'   FileSystemId = "fs-01234567"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -861,11 +881,13 @@ efs_describe_mount_targets <- function(MaxItems = NULL, Marker = NULL, FileSyste
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This operation describes all of a file system's tags.
-#' \donttest{svc$describe_tags(
+#' svc$describe_tags(
 #'   FileSystemId = "fs-01234567"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -923,15 +945,17 @@ efs_describe_tags <- function(MaxItems = NULL, Marker = NULL, FileSystemId) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This operation modifies the security groups associated with a mount
 #' # target for a file system.
-#' \donttest{svc$modify_mount_target_security_groups(
+#' svc$modify_mount_target_security_groups(
 #'   MountTargetId = "fsmt-12340abc",
 #'   SecurityGroups = list(
 #'     "sg-abcd1234"
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1008,20 +1032,22 @@ efs_modify_mount_target_security_groups <- function(MountTargetId, SecurityGroup
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This operation enables lifecycle management on a file system by creating
 #' # a new LifecycleConfiguration object. A LifecycleConfiguration object
 #' # defines when files in an Amazon EFS file system are automatically
 #' # transitioned to the lower-cost EFS Infrequent Access (IA) storage class.
 #' # A LifecycleConfiguration applies to all files in a file system.
-#' \donttest{svc$put_lifecycle_configuration(
+#' svc$put_lifecycle_configuration(
 #'   FileSystemId = "fs-01234567",
 #'   LifecyclePolicies = list(
 #'     list(
 #'       TransitionToIA = "AFTER_30_DAYS"
 #'     )
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'

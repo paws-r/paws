@@ -76,16 +76,17 @@ operations.
 }
 }
 
-\examples{
-# The following operation lists policies that allow ExampleUser01 to
+\section{Examples}{
+\preformatted{# The following operation lists policies that allow ExampleUser01 to
 # access IAM or EC2.
-\donttest{svc$list_policies_granting_service_access(
+svc$list_policies_granting_service_access(
   Arn = "arn:aws:iam::123456789012:user/ExampleUser01",
   ServiceNamespaces = list(
     "iam",
     "ec2"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -20,11 +20,12 @@ Deletes an upload given the upload ARN.
 }
 }
 
-\examples{
-# The following example deletes a specific upload.
-\donttest{svc$delete_upload(
+\section{Examples}{
+\preformatted{# The following example deletes a specific upload.
+svc$delete_upload(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:upload:EXAMPLE-GUID-123-456"
-)}
-
+)
 }
+}
+
 \keyword{internal}

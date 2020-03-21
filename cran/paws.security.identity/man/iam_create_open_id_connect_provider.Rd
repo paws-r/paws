@@ -91,11 +91,11 @@ CreateOpenIDConnectProvider operation to highly privileged users.
 }
 }
 
-\examples{
-# The following example defines a new OIDC provider in IAM with a client
+\section{Examples}{
+\preformatted{# The following example defines a new OIDC provider in IAM with a client
 # ID of my-application-id and pointing at the server with a URL of
 # https://server.example.com.
-\donttest{svc$create_open_id_connect_provider(
+svc$create_open_id_connect_provider(
   ClientIDList = list(
     "my-application-id"
   ),
@@ -103,7 +103,8 @@ CreateOpenIDConnectProvider operation to highly privileged users.
     "3768084dfb3d2b68b7897bf5f565da8efEXAMPLE"
   ),
   Url = "https://server.example.com"
-)}
-
+)
 }
+}
+
 \keyword{internal}

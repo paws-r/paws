@@ -28,11 +28,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- personalizeruntime()
+#' @section Examples:
+#' ```
 #' svc$get_personalized_ranking(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

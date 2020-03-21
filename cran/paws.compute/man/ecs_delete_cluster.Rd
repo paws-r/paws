@@ -23,11 +23,12 @@ deregister them with DeregisterContainerInstance.
 }
 }
 
-\examples{
-# This example deletes an empty cluster in your default region.
-\donttest{svc$delete_cluster(
+\section{Examples}{
+\preformatted{# This example deletes an empty cluster in your default region.
+svc$delete_cluster(
   cluster = "my_cluster"
-)}
-
+)
 }
+}
+
 \keyword{internal}

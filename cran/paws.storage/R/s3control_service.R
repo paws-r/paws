@@ -29,11 +29,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- s3control()
+#' @section Examples:
+#' ```
 #' svc$create_access_point(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -33,6 +33,13 @@ reporting and auditing.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$create_backup_plan(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -82,10 +89,3 @@ reporting and auditing.
 }
 }
 
-\examples{
-\donttest{svc <- backup()
-svc$create_backup_plan(
-  Foo = 123
-)}
-
-}

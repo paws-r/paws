@@ -126,13 +126,14 @@ Describes one or more of your network interfaces.
 }
 }
 
-\examples{
-# 
-\donttest{svc$describe_network_interfaces(
+\section{Examples}{
+\preformatted{# 
+svc$describe_network_interfaces(
   NetworkInterfaceIds = list(
     "eni-e5aa89a3"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -59,14 +59,15 @@ This operation requires permissions to perform the
 }
 }
 
-\examples{
-# Returns the list of voices that are available for use when requesting
+\section{Examples}{
+\preformatted{# Returns the list of voices that are available for use when requesting
 # speech synthesis. Displayed languages are those within the specified
 # language code. If no language code is specified, voices for all
 # available languages are displayed.
-\donttest{svc$describe_voices(
+svc$describe_voices(
   LanguageCode = "en-GB"
-)}
-
+)
 }
+}
+
 \keyword{internal}

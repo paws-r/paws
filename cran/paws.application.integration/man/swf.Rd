@@ -43,6 +43,13 @@ the Amazon SWF programming model, see the \emph{\href{https://docs.aws.amazon.co
 }
 }
 
+\section{Examples}{
+\preformatted{svc$count_closed_workflow_executions(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -86,10 +93,3 @@ the Amazon SWF programming model, see the \emph{\href{https://docs.aws.amazon.co
 }
 }
 
-\examples{
-\donttest{svc <- swf()
-svc$count_closed_workflow_executions(
-  Foo = 123
-)}
-
-}

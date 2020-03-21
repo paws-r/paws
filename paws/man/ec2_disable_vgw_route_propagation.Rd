@@ -24,13 +24,14 @@ specified route table of a VPC.
 }
 }
 
-\examples{
-# This example disables the specified virtual private gateway from
+\section{Examples}{
+\preformatted{# This example disables the specified virtual private gateway from
 # propagating static routes to the specified route table.
-\donttest{svc$disable_vgw_route_propagation(
+svc$disable_vgw_route_propagation(
   GatewayId = "vgw-9a4cacf3",
   RouteTableId = "rtb-22574640"
-)}
-
+)
 }
+}
+
 \keyword{internal}

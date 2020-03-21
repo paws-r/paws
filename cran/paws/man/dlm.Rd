@@ -36,6 +36,13 @@ in the \emph{Amazon EC2 User Guide}.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$create_lifecycle_policy(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -50,10 +57,3 @@ in the \emph{Amazon EC2 User Guide}.
 }
 }
 
-\examples{
-\donttest{svc <- dlm()
-svc$create_lifecycle_policy(
-  Foo = 123
-)}
-
-}

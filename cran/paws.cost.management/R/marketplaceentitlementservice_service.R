@@ -40,11 +40,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- marketplaceentitlementservice()
+#' @section Examples:
+#' ```
 #' svc$get_entitlements(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -56,11 +56,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- redshift()
+#' @section Examples:
+#' ```
 #' svc$accept_reserved_node_exchange(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

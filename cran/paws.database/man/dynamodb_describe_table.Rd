@@ -30,11 +30,12 @@ a few seconds, and then try the \code{DescribeTable} request again.
 }
 }
 
-\examples{
-# This example describes the Music table.
-\donttest{svc$describe_table(
+\section{Examples}{
+\preformatted{# This example describes the Music table.
+svc$describe_table(
   TableName = "Music"
-)}
-
+)
 }
+}
+
 \keyword{internal}

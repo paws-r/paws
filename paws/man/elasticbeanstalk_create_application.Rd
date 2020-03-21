@@ -58,12 +58,13 @@ Creates an application that has one configuration template named
 }
 }
 
-\examples{
-# The following operation creates a new application named my-app:
-\donttest{svc$create_application(
+\section{Examples}{
+\preformatted{# The following operation creates a new application named my-app:
+svc$create_application(
   ApplicationName = "my-app",
   Description = "my application"
-)}
-
+)
 }
+}
+
 \keyword{internal}

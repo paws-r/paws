@@ -29,11 +29,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- sagemaker()
+#' @section Examples:
+#' ```
 #' svc$add_tags(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

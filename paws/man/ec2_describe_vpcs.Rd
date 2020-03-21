@@ -78,13 +78,14 @@ Describes one or more of your VPCs.
 }
 }
 
-\examples{
-# This example describes the specified VPC.
-\donttest{svc$describe_vpcs(
+\section{Examples}{
+\preformatted{# This example describes the specified VPC.
+svc$describe_vpcs(
   VpcIds = list(
     "vpc-a01106c2"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

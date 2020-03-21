@@ -64,11 +64,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- resourcegroups()
+#' @section Examples:
+#' ```
 #' svc$create_group(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

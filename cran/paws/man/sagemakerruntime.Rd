@@ -30,6 +30,13 @@ The Amazon SageMaker runtime API.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$invoke_endpoint(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -37,10 +44,3 @@ The Amazon SageMaker runtime API.
 }
 }
 
-\examples{
-\donttest{svc <- sagemakerruntime()
-svc$invoke_endpoint(
-  Foo = 123
-)}
-
-}

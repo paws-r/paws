@@ -27,15 +27,16 @@ instance.
 }
 }
 
-\examples{
-# This example associates an IAM instance profile named admin-role with
+\section{Examples}{
+\preformatted{# This example associates an IAM instance profile named admin-role with
 # the specified instance.
-\donttest{svc$associate_iam_instance_profile(
+svc$associate_iam_instance_profile(
   IamInstanceProfile = list(
     Name = "admin-role"
   ),
   InstanceId = "i-123456789abcde123"
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -59,14 +59,15 @@ account.
 }
 }
 
-\examples{
-# The following example shows how to move a member account from the root
+\section{Examples}{
+\preformatted{# The following example shows how to move a member account from the root
 # to an OU:/n/n
-\donttest{svc$move_account(
+svc$move_account(
   AccountId = "333333333333",
   DestinationParentId = "ou-examplerootid111-exampleouid111",
   SourceParentId = "r-examplerootid111"
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -51,14 +51,15 @@ relevant APIs for only 30 days. After that, it\'s deleted.
 }
 }
 
-\examples{
-# Bill is the owner of an organization, and he invites Juan's account
+\section{Examples}{
+\preformatted{# Bill is the owner of an organization, and he invites Juan's account
 # (222222222222) to join his organization. The following example shows
 # Juan's account accepting the handshake and thus agreeing to the
 # invitation.
-\donttest{svc$accept_handshake(
+svc$accept_handshake(
   HandshakeId = "h-examplehandshakeid111"
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -37,11 +37,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- ram()
+#' @section Examples:
+#' ```
 #' svc$accept_resource_share_invitation(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

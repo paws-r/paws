@@ -29,11 +29,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- mediaconvert()
+#' @section Examples:
+#' ```
 #' svc$associate_certificate(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -38,6 +38,13 @@ cloud.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$delete_thing_shadow(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -48,10 +55,3 @@ cloud.
 }
 }
 
-\examples{
-\donttest{svc <- iotdataplane()
-svc$delete_thing_shadow(
-  Foo = 123
-)}
-
-}

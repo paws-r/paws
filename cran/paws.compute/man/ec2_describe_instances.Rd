@@ -252,16 +252,16 @@ are in an unaffected zone, the call works normally.
 }
 }
 
-\examples{
-# This example describes the specified instance.
-\donttest{svc$describe_instances(
+\section{Examples}{
+\preformatted{# This example describes the specified instance.
+svc$describe_instances(
   InstanceIds = list(
     "i-1234567890abcdef0"
   )
-)}
+)
 
 # This example describes the instances with the t2.micro instance type.
-\donttest{svc$describe_instances(
+svc$describe_instances(
   Filters = list(
     list(
       Name = "instance-type",
@@ -270,10 +270,10 @@ are in an unaffected zone, the call works normally.
       )
     )
   )
-)}
+)
 
 # This example describes the instances with the Purpose=test tag.
-\donttest{svc$describe_instances(
+svc$describe_instances(
   Filters = list(
     list(
       Name = "tag:Purpose",
@@ -282,7 +282,8 @@ are in an unaffected zone, the call works normally.
       )
     )
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -265,9 +265,9 @@ You can use the \code{DescribeTable} action to check the table status.
 }
 }
 
-\examples{
-# This example creates a table named Music.
-\donttest{svc$create_table(
+\section{Examples}{
+\preformatted{# This example creates a table named Music.
+svc$create_table(
   AttributeDefinitions = list(
     list(
       AttributeName = "Artist",
@@ -293,7 +293,8 @@ You can use the \code{DescribeTable} action to check the table status.
     WriteCapacityUnits = 5L
   ),
   TableName = "Music"
-)}
-
+)
 }
+}
+
 \keyword{internal}

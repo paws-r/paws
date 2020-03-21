@@ -48,11 +48,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- sms()
+#' @section Examples:
+#' ```
 #' svc$create_app(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

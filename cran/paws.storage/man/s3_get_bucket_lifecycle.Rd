@@ -49,11 +49,12 @@ The following operations are related to \code{GetBucketLifecycle}:
 }
 }
 
-\examples{
-# The following example gets ACL on the specified bucket.
-\donttest{svc$get_bucket_lifecycle(
+\section{Examples}{
+\preformatted{# The following example gets ACL on the specified bucket.
+svc$get_bucket_lifecycle(
   Bucket = "acl1"
-)}
-
+)
 }
+}
+
 \keyword{internal}

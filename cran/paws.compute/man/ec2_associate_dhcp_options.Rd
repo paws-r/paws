@@ -42,20 +42,21 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 }
 
-\examples{
-# This example associates the specified DHCP options set with the
+\section{Examples}{
+\preformatted{# This example associates the specified DHCP options set with the
 # specified VPC.
-\donttest{svc$associate_dhcp_options(
+svc$associate_dhcp_options(
   DhcpOptionsId = "dopt-d9070ebb",
   VpcId = "vpc-a01106c2"
-)}
+)
 
 # This example associates the default DHCP options set with the specified
 # VPC.
-\donttest{svc$associate_dhcp_options(
+svc$associate_dhcp_options(
   DhcpOptionsId = "default",
   VpcId = "vpc-a01106c2"
-)}
-
+)
 }
+}
+
 \keyword{internal}

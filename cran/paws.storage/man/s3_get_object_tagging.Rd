@@ -53,20 +53,21 @@ The following operation is related to \code{GetObjectTagging}:
 }
 }
 
-\examples{
-# The following example retrieves tag set of an object.
-\donttest{svc$get_object_tagging(
+\section{Examples}{
+\preformatted{# The following example retrieves tag set of an object.
+svc$get_object_tagging(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
-)}
+)
 
 # The following example retrieves tag set of an object. The request
 # specifies object version.
-\donttest{svc$get_object_tagging(
+svc$get_object_tagging(
   Bucket = "examplebucket",
   Key = "exampleobject",
   VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
-)}
-
+)
 }
+}
+
 \keyword{internal}

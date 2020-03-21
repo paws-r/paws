@@ -73,9 +73,9 @@ You can execute this operation no more than once per second.
 }
 }
 
-\examples{
-# The following example updates a receipt rule to use an Amazon S3 action:
-\donttest{svc$update_receipt_rule(
+\section{Examples}{
+\preformatted{# The following example updates a receipt rule to use an Amazon S3 action:
+svc$update_receipt_rule(
   Rule = list(
     Actions = list(
       list(
@@ -91,7 +91,8 @@ You can execute this operation no more than once per second.
     TlsPolicy = "Optional"
   ),
   RuleSetName = "MyRuleSet"
-)}
-
+)
 }
+}
+
 \keyword{internal}

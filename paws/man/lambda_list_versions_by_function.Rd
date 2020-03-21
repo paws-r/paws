@@ -40,13 +40,14 @@ with the version-specific configuration of each.
 }
 }
 
-\examples{
-# This operation retrieves a Lambda function versions
-\donttest{svc$list_versions_by_function(
+\section{Examples}{
+\preformatted{# This operation retrieves a Lambda function versions
+svc$list_versions_by_function(
   FunctionName = "myFunction",
   Marker = "",
   MaxItems = 123L
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -32,11 +32,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- ioteventsdata()
+#' @section Examples:
+#' ```
 #' svc$batch_put_message(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

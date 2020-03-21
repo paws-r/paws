@@ -66,11 +66,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- gamelift()
+#' @section Examples:
+#' ```
 #' svc$accept_match(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

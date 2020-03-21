@@ -52,11 +52,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- ssm()
+#' @section Examples:
+#' ```
 #' svc$add_tags_to_resource(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

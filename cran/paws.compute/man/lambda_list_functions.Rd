@@ -40,12 +40,13 @@ about a function or version, use GetFunction.
 }
 }
 
-\examples{
-# This operation retrieves a Lambda functions
-\donttest{svc$list_functions(
+\section{Examples}{
+\preformatted{# This operation retrieves a Lambda functions
+svc$list_functions(
   Marker = "",
   MaxItems = 123L
-)}
-
+)
 }
+}
+
 \keyword{internal}

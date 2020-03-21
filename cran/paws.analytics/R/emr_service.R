@@ -33,11 +33,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- emr()
+#' @section Examples:
+#' ```
 #' svc$add_instance_fleet(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

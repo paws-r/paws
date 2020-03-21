@@ -22,11 +22,12 @@ in your route tables.
 }
 }
 
-\examples{
-# This example deletes the specified NAT gateway.
-\donttest{svc$delete_nat_gateway(
+\section{Examples}{
+\preformatted{# This example deletes the specified NAT gateway.
+svc$delete_nat_gateway(
   NatGatewayId = "nat-04ae55e711cec5680"
-)}
-
+)
 }
+}
+
 \keyword{internal}

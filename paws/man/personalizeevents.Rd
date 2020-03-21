@@ -30,6 +30,13 @@ Amazon Personalize Events
 }
 }
 
+\section{Examples}{
+\preformatted{svc$put_events(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -37,10 +44,3 @@ Amazon Personalize Events
 }
 }
 
-\examples{
-\donttest{svc <- personalizeevents()
-svc$put_events(
-  Foo = 123
-)}
-
-}

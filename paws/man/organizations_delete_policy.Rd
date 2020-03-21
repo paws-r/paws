@@ -31,15 +31,16 @@ account.
 }
 }
 
-\examples{
-# The following example shows how to delete a policy from an organization.
+\section{Examples}{
+\preformatted{# The following example shows how to delete a policy from an organization.
 # The example assumes that you previously detached the policy from all
 # entities:
 # 
 # 
-\donttest{svc$delete_policy(
+svc$delete_policy(
   PolicyId = "p-examplepolicyid111"
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -37,15 +37,16 @@ available with AWS Elastic Beanstalk Enhanced Health.
 }
 }
 
-\examples{
-# The following operation retrieves overall health information for an
+\section{Examples}{
+\preformatted{# The following operation retrieves overall health information for an
 # environment named my-env:
-\donttest{svc$describe_environment_health(
+svc$describe_environment_health(
   AttributeNames = list(
     "All"
   ),
   EnvironmentName = "my-env"
-)}
-
+)
 }
+}
+
 \keyword{internal}

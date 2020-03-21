@@ -65,9 +65,9 @@ Describes one or more of your internet gateways.
 }
 }
 
-\examples{
-# This example describes the Internet gateway for the specified VPC.
-\donttest{svc$describe_internet_gateways(
+\section{Examples}{
+\preformatted{# This example describes the Internet gateway for the specified VPC.
+svc$describe_internet_gateways(
   Filters = list(
     list(
       Name = "attachment.vpc-id",
@@ -76,7 +76,8 @@ Describes one or more of your internet gateways.
       )
     )
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

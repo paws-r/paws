@@ -26,11 +26,12 @@ associated with any subnets. You can\'t delete the default network ACL.
 }
 }
 
-\examples{
-# This example deletes the specified network ACL.
-\donttest{svc$delete_network_acl(
+\section{Examples}{
+\preformatted{# This example deletes the specified network ACL.
+svc$delete_network_acl(
   NetworkAclId = "acl-5fb85d36"
-)}
-
+)
 }
+}
+
 \keyword{internal}

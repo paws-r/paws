@@ -25,14 +25,15 @@ This action removes a tag from an Amazon FSx resource.
 }
 }
 
-\examples{
-# This operation untags an Amazon FSx resource.
-\donttest{svc$untag_resource(
+\section{Examples}{
+\preformatted{# This operation untags an Amazon FSx resource.
+svc$untag_resource(
   ResourceARN = "arn:aws:fsx:us-east-1:012345678912:file-system/fs-0498eed5fe91001ec",
   TagKeys = list(
     "Name"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -41,15 +41,16 @@ in the \emph{Classic Load Balancers Guide}.
 }
 }
 
-\examples{
-# This example removes the specified Availability Zone from the set of
+\section{Examples}{
+\preformatted{# This example removes the specified Availability Zone from the set of
 # Availability Zones for the specified load balancer.
-\donttest{svc$disable_availability_zones_for_load_balancer(
+svc$disable_availability_zones_for_load_balancer(
   AvailabilityZones = list(
     "us-west-2a"
   ),
   LoadBalancerName = "my-load-balancer"
-)}
-
+)
 }
+}
+
 \keyword{internal}

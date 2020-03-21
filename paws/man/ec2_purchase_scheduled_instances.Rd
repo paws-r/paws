@@ -45,16 +45,17 @@ resell your purchase.
 }
 }
 
-\examples{
-# This example purchases a Scheduled Instance.
-\donttest{svc$purchase_scheduled_instances(
+\section{Examples}{
+\preformatted{# This example purchases a Scheduled Instance.
+svc$purchase_scheduled_instances(
   PurchaseRequests = list(
     list(
       InstanceCount = 1L,
       PurchaseToken = "eyJ2IjoiMSIsInMiOjEsImMiOi..."
     )
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

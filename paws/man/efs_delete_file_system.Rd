@@ -36,11 +36,12 @@ This operation requires permissions for the
 }
 }
 
-\examples{
-# This operation deletes an EFS file system.
-\donttest{svc$delete_file_system(
+\section{Examples}{
+\preformatted{# This operation deletes an EFS file system.
+svc$delete_file_system(
   FileSystemId = "fs-01234567"
-)}
-
+)
 }
+}
+
 \keyword{internal}

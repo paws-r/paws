@@ -43,15 +43,16 @@ the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-re
 }
 }
 
-\examples{
-# The following example retrieves the Amazon SES Easy DKIM attributes for
+\section{Examples}{
+\preformatted{# The following example retrieves the Amazon SES Easy DKIM attributes for
 # a list of identities:
-\donttest{svc$get_identity_dkim_attributes(
+svc$get_identity_dkim_attributes(
   Identities = list(
     "example.com",
     "user@example.com"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

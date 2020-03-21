@@ -54,13 +54,14 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 
-\examples{
-# This example starts the specified EC2 instance.
-\donttest{svc$start_instances(
+\section{Examples}{
+\preformatted{# This example starts the specified EC2 instance.
+svc$start_instances(
   InstanceIds = list(
     "i-1234567890abcdef0"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

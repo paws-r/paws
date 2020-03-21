@@ -30,11 +30,12 @@ running on the instance.
 }
 }
 
-\examples{
-# The following command removes the role named Test-Role.
-\donttest{svc$delete_role(
+\section{Examples}{
+\preformatted{# The following command removes the role named Test-Role.
+svc$delete_role(
   RoleName = "Test-Role"
-)}
-
+)
 }
+}
+
 \keyword{internal}

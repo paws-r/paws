@@ -72,11 +72,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- marketplacemetering()
+#' @section Examples:
+#' ```
 #' svc$batch_meter_usage(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

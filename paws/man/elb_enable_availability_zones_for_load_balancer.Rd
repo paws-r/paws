@@ -37,15 +37,16 @@ in the \emph{Classic Load Balancers Guide}.
 }
 }
 
-\examples{
-# This example adds the specified Availability Zone to the specified load
+\section{Examples}{
+\preformatted{# This example adds the specified Availability Zone to the specified load
 # balancer.
-\donttest{svc$enable_availability_zones_for_load_balancer(
+svc$enable_availability_zones_for_load_balancer(
   AvailabilityZones = list(
     "us-west-2b"
   ),
   LoadBalancerName = "my-load-balancer"
-)}
-
+)
 }
+}
+
 \keyword{internal}

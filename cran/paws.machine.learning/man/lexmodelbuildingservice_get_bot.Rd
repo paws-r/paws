@@ -26,12 +26,13 @@ This operation requires permissions for the \code{lex:GetBot} action.
 }
 }
 
-\examples{
-# This example shows how to get configuration information for a bot.
-\donttest{svc$get_bot(
+\section{Examples}{
+\preformatted{# This example shows how to get configuration information for a bot.
+svc$get_bot(
   name = "DocOrderPizza",
   versionOrAlias = "$LATEST"
-)}
-
+)
 }
+}
+
 \keyword{internal}

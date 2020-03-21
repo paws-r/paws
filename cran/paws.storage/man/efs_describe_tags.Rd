@@ -37,11 +37,12 @@ This operation requires permissions for the
 }
 }
 
-\examples{
-# This operation describes all of a file system's tags.
-\donttest{svc$describe_tags(
+\section{Examples}{
+\preformatted{# This operation describes all of a file system's tags.
+svc$describe_tags(
   FileSystemId = "fs-01234567"
-)}
-
+)
 }
+}
+
 \keyword{internal}

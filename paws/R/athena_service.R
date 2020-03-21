@@ -48,11 +48,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- athena()
+#' @section Examples:
+#' ```
 #' svc$batch_get_named_query(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

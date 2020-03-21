@@ -33,12 +33,13 @@ You can execute this operation no more than once per second.
 }
 }
 
-\examples{
-# Set the sending enabled flag for a specific configuration set.
-\donttest{svc$update_configuration_set_sending_enabled(
+\section{Examples}{
+\preformatted{# Set the sending enabled flag for a specific configuration set.
+svc$update_configuration_set_sending_enabled(
   ConfigurationSetName = "foo",
   Enabled = TRUE
-)}
-
+)
 }
+}
+
 \keyword{internal}

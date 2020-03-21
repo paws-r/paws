@@ -49,11 +49,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- sfn()
+#' @section Examples:
+#' ```
 #' svc$create_activity(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -30,6 +30,13 @@ Defines the public endpoint for the AWS Glue service.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$batch_create_partition(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -159,10 +166,3 @@ Defines the public endpoint for the AWS Glue service.
 }
 }
 
-\examples{
-\donttest{svc <- glue()
-svc$batch_create_partition(
-  Foo = 123
-)}
-
-}

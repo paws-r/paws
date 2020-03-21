@@ -39,11 +39,12 @@ Use the \code{DescribeTable} action to check the status of the table.
 }
 }
 
-\examples{
-# This example deletes the Music table.
-\donttest{svc$delete_table(
+\section{Examples}{
+\preformatted{# This example deletes the Music table.
+svc$delete_table(
   TableName = "Music"
-)}
-
+)
 }
+}
+
 \keyword{internal}

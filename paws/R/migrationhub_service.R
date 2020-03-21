@@ -35,11 +35,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- migrationhub()
+#' @section Examples:
+#' ```
 #' svc$associate_created_artifact(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

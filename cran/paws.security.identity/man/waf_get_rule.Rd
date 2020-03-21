@@ -22,12 +22,13 @@ the \code{GetRule} request.
 }
 }
 
-\examples{
-# The following example returns the details of a rule with the ID
+\section{Examples}{
+\preformatted{# The following example returns the details of a rule with the ID
 # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-\donttest{svc$get_rule(
+svc$get_rule(
   RuleId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-)}
-
+)
 }
+}
+
 \keyword{internal}

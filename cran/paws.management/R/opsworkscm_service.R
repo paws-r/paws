@@ -93,11 +93,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- opsworkscm()
+#' @section Examples:
+#' ```
 #' svc$associate_node(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

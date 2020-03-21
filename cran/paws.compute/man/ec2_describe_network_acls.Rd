@@ -87,13 +87,14 @@ the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 }
 
-\examples{
-# This example describes the specified network ACL.
-\donttest{svc$describe_network_acls(
+\section{Examples}{
+\preformatted{# This example describes the specified network ACL.
+svc$describe_network_acls(
   NetworkAclIds = list(
     "acl-5fb85d36"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

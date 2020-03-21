@@ -24,13 +24,14 @@ Deletes the specified notification.
 }
 }
 
-\examples{
-# This example deletes the specified notification from the specified Auto
+\section{Examples}{
+\preformatted{# This example deletes the specified notification from the specified Auto
 # Scaling group.
-\donttest{svc$delete_notification_configuration(
+svc$delete_notification_configuration(
   AutoScalingGroupName = "my-auto-scaling-group",
   TopicARN = "arn:aws:sns:us-west-2:123456789012:my-sns-topic"
-)}
-
+)
 }
+}
+
 \keyword{internal}

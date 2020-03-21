@@ -21,12 +21,13 @@ assessment target.
 }
 }
 
-\examples{
-# Deletes the assessment target that is specified by the ARN of the
+\section{Examples}{
+\preformatted{# Deletes the assessment target that is specified by the ARN of the
 # assessment target.
-\donttest{svc$delete_assessment_target(
+svc$delete_assessment_target(
   assessmentTargetArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq"
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -31,6 +31,20 @@ application administrators to launch and use shared file storage.
 }
 }
 
+\section{Examples}{
+\preformatted{# This operation creates a new backup.
+svc$create_backup(
+  FileSystemId = "fs-0498eed5fe91001ec",
+  Tags = list(
+    list(
+      Key = "Name",
+      Value = "MyBackup"
+    )
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -51,17 +65,3 @@ application administrators to launch and use shared file storage.
 }
 }
 
-\examples{
-# This operation creates a new backup.
-\donttest{svc <- fsx()
-svc$create_backup(
-  FileSystemId = "fs-0498eed5fe91001ec",
-  Tags = list(
-    list(
-      Key = "Name",
-      Value = "MyBackup"
-    )
-  )
-)}
-
-}

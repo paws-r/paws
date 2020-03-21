@@ -30,6 +30,16 @@ Amazon Simple Storage Service
 }
 }
 
+\section{Examples}{
+\preformatted{# The following example aborts a multipart upload.
+svc$abort_multipart_upload(
+  Bucket = "examplebucket",
+  Key = "bigobject",
+  UploadId = "xadcOB_7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP..."
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -124,13 +134,3 @@ Amazon Simple Storage Service
 }
 }
 
-\examples{
-# The following example aborts a multipart upload.
-\donttest{svc <- s3()
-svc$abort_multipart_upload(
-  Bucket = "examplebucket",
-  Key = "bigobject",
-  UploadId = "xadcOB_7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP..."
-)}
-
-}

@@ -63,13 +63,14 @@ Describes one or more launch templates.
 }
 }
 
-\examples{
-# This example describes the specified launch template.
-\donttest{svc$describe_launch_templates(
+\section{Examples}{
+\preformatted{# This example describes the specified launch template.
+svc$describe_launch_templates(
   LaunchTemplateIds = list(
     "lt-01238c059e3466abc"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

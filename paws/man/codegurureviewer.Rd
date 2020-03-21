@@ -31,6 +31,13 @@ operations.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$associate_repository(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -41,10 +48,3 @@ operations.
 }
 }
 
-\examples{
-\donttest{svc <- codegurureviewer()
-svc$associate_repository(
-  Foo = 123
-)}
-
-}

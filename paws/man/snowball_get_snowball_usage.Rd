@@ -21,14 +21,15 @@ AWS Support.
 }
 }
 
-\examples{
-# Returns information about the Snowball service limit for your account,
+\section{Examples}{
+\preformatted{# Returns information about the Snowball service limit for your account,
 # and also the number of Snowballs your account has in use.
 # 
 # The default
 # service limit for the number of Snowballs that you can have at one time
 # is 1. If you want to increase your service limit, contact AWS Support.
-\donttest{svc$get_snowball_usage()}
-
+svc$get_snowball_usage()
 }
+}
+
 \keyword{internal}

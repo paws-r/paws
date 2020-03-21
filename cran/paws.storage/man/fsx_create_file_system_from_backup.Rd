@@ -107,9 +107,9 @@ returns the file system state along with other information.
 }
 }
 
-\examples{
-# This operation creates a new file system from backup.
-\donttest{svc$create_file_system_from_backup(
+\section{Examples}{
+\preformatted{# This operation creates a new file system from backup.
+svc$create_file_system_from_backup(
   BackupId = "backup-03e3c82e0183b7b6b",
   ClientRequestToken = "f4c94ed7-238d-4c46-93db-48cd62ec33b7",
   SecurityGroupIds = list(
@@ -127,7 +127,8 @@ returns the file system state along with other information.
   WindowsConfiguration = list(
     ThroughputCapacity = 8L
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

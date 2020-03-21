@@ -24,12 +24,13 @@ You can execute this operation no more than once per second.
 }
 }
 
-\examples{
-# The following example returns the metadata and receipt rules of a
+\section{Examples}{
+\preformatted{# The following example returns the metadata and receipt rules of a
 # receipt rule set:
-\donttest{svc$describe_receipt_rule_set(
+svc$describe_receipt_rule_set(
   RuleSetName = "MyRuleSet"
-)}
-
+)
 }
+}
+
 \keyword{internal}

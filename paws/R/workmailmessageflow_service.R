@@ -30,11 +30,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- workmailmessageflow()
+#' @section Examples:
+#' ```
 #' svc$get_raw_message_content(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

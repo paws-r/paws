@@ -34,9 +34,10 @@ You can call \code{ListStreams} at a maximum rate of 5 times per second.
 }
 }
 
-\examples{
-# The following example lists all of the stream ARNs.
-\donttest{svc$list_streams()}
-
+\section{Examples}{
+\preformatted{# The following example lists all of the stream ARNs.
+svc$list_streams()
 }
+}
+
 \keyword{internal}

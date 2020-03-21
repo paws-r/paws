@@ -45,11 +45,12 @@ The following operations are related to \code{GetBucketReplication}:
 }
 }
 
-\examples{
-# The following example returns replication configuration set on a bucket.
-\donttest{svc$get_bucket_replication(
+\section{Examples}{
+\preformatted{# The following example returns replication configuration set on a bucket.
+svc$get_bucket_replication(
   Bucket = "examplebucket"
-)}
-
+)
 }
+}
+
 \keyword{internal}

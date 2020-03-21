@@ -41,11 +41,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- cloudsearch()
+#' @section Examples:
+#' ```
 #' svc$build_suggesters(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

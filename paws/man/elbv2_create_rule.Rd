@@ -164,11 +164,11 @@ To delete a rule, use DeleteRule.
 }
 }
 
-\examples{
-# This example creates a rule that forwards requests to the specified
+\section{Examples}{
+\preformatted{# This example creates a rule that forwards requests to the specified
 # target group if the URL contains the specified pattern (for example,
 # /img/*).
-\donttest{svc$create_rule(
+svc$create_rule(
   Actions = list(
     list(
       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-t...",
@@ -185,7 +185,8 @@ To delete a rule, use DeleteRule.
   ),
   ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-ba...",
   Priority = 10L
-)}
-
+)
 }
+}
+
 \keyword{internal}

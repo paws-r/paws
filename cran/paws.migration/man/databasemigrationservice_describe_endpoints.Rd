@@ -46,10 +46,10 @@ region.
 }
 }
 
-\examples{
-# Returns information about the endpoints for your account in the current
+\section{Examples}{
+\preformatted{# Returns information about the endpoints for your account in the current
 # region.
-\donttest{svc$describe_endpoints(
+svc$describe_endpoints(
   Filters = list(
     list(
       Name = "string",
@@ -61,7 +61,8 @@ region.
   ),
   Marker = "",
   MaxRecords = 123L
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -193,29 +193,30 @@ ListSecretVersionIds.
 }
 }
 
-\examples{
-# The following example shows how to modify the description of a secret.
-\donttest{svc$update_secret(
+\section{Examples}{
+\preformatted{# The following example shows how to modify the description of a secret.
+svc$update_secret(
   ClientRequestToken = "EXAMPLE1-90ab-cdef-fedc-ba987EXAMPLE",
   Description = "This is a new description for the secret.",
   SecretId = "MyTestDatabaseSecret"
-)}
+)
 
 # This example shows how to update the KMS customer managed key (CMK) used
 # to encrypt the secret value. The KMS CMK must be in the same region as
 # the secret.
-\donttest{svc$update_secret(
+svc$update_secret(
   KmsKeyId = "arn:aws:kms:us-west-2:123456789012:key/EXAMPLE2-90ab-cdef-fedc-ba987EXAMPLE",
   SecretId = "MyTestDatabaseSecret"
-)}
+)
 
 # The following example shows how to create a new version of the secret by
 # updating the SecretString field. Alternatively, you can use the
 # put-secret-value operation.
-\donttest{svc$update_secret(
+svc$update_secret(
   SecretId = "MyTestDatabaseSecret",
-  SecretString = "{JSON STRING WITH CREDENTIALS}"
-)}
-
+  SecretString = "\{JSON STRING WITH CREDENTIALS\}"
+)
 }
+}
+
 \keyword{internal}

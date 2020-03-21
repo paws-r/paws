@@ -32,11 +32,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- comprehend()
+#' @section Examples:
+#' ```
 #' svc$batch_detect_dominant_language(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

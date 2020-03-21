@@ -32,11 +32,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- cloudfront()
+#' @section Examples:
+#' ```
 #' svc$create_cloud_front_origin_access_identity(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -38,11 +38,13 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example describes a stream with a given stream ARN.
-#' \donttest{svc$describe_stream(
+#' svc$describe_stream(
 #'   StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:51:1..."
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -95,11 +97,13 @@ dynamodbstreams_describe_stream <- function(StreamArn, Limit = NULL, ExclusiveSt
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example retrieves all the stream records from a shard.
-#' \donttest{svc$get_records(
+#' svc$get_records(
 #'   ShardIterator = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:..."
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -169,14 +173,16 @@ dynamodbstreams_get_records <- function(ShardIterator, Limit = NULL) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example returns a shard iterator for the provided stream
 #' # ARN and shard ID.
-#' \donttest{svc$get_shard_iterator(
+#' svc$get_shard_iterator(
 #'   ShardId = "00000001414576573621-f55eea83",
 #'   ShardIteratorType = "TRIM_HORIZON",
 #'   StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:51:1..."
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -226,9 +232,11 @@ dynamodbstreams_get_shard_iterator <- function(StreamArn, ShardId, ShardIterator
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example lists all of the stream ARNs.
-#' \donttest{svc$list_streams()}
+#' svc$list_streams()
+#' ```
 #'
 #' @keywords internal
 #'

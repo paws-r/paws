@@ -53,13 +53,14 @@ in the \emph{Amazon Glacier Developer Guide}.
 }
 }
 
-\examples{
-# The example lists all vaults owned by the specified AWS account.
-\donttest{svc$list_vaults(
+\section{Examples}{
+\preformatted{# The example lists all vaults owned by the specified AWS account.
+svc$list_vaults(
   accountId = "-",
   limit = "",
   marker = ""
-)}
-
+)
 }
+}
+
 \keyword{internal}

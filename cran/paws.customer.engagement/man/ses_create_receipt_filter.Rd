@@ -32,9 +32,9 @@ You can execute this operation no more than once per second.
 }
 }
 
-\examples{
-# The following example creates a new IP address filter:
-\donttest{svc$create_receipt_filter(
+\section{Examples}{
+\preformatted{# The following example creates a new IP address filter:
+svc$create_receipt_filter(
   Filter = list(
     IpFilter = list(
       Cidr = "1.2.3.4/24",
@@ -42,7 +42,8 @@ You can execute this operation no more than once per second.
     ),
     Name = "MyFilter"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

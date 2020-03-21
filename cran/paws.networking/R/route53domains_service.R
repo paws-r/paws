@@ -30,11 +30,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- route53domains()
+#' @section Examples:
+#' ```
 #' svc$check_domain_availability(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

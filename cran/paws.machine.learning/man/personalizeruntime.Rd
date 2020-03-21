@@ -30,6 +30,13 @@ Amazon Personalize Runtime
 }
 }
 
+\section{Examples}{
+\preformatted{svc$get_personalized_ranking(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -38,10 +45,3 @@ Amazon Personalize Runtime
 }
 }
 
-\examples{
-\donttest{svc <- personalizeruntime()
-svc$get_personalized_ranking(
-  Foo = 123
-)}
-
-}

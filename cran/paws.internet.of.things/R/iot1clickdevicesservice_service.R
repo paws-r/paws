@@ -31,11 +31,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- iot1clickdevicesservice()
+#' @section Examples:
+#' ```
 #' svc$claim_devices_by_claim_code(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -31,15 +31,16 @@ account.
 }
 }
 
-\examples{
-# The following example shows how to request the status about a previous
+\section{Examples}{
+\preformatted{# The following example shows how to request the status about a previous
 # request to create an account in an organization. This operation can be
 # called only by a principal from the organization's master account. In
 # the example, the specified "createAccountRequestId" comes from the
 # response of the original call to "CreateAccount":
-\donttest{svc$describe_create_account_status(
+svc$describe_create_account_status(
   CreateAccountRequestId = "car-exampleaccountcreationrequestid"
-)}
-
+)
 }
+}
+
 \keyword{internal}

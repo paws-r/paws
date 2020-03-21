@@ -29,12 +29,13 @@ name.
 }
 }
 
-\examples{
-# The following example updates the specified project with a new name.
-\donttest{svc$update_project(
+\section{Examples}{
+\preformatted{# The following example updates the specified project with a new name.
+svc$update_project(
   name = "NewName",
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:8f75187d-101e-4625-accc-12345EXAM..."
-)}
-
+)
 }
+}
+
 \keyword{internal}

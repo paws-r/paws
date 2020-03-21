@@ -51,12 +51,13 @@ actions that have already run, use DescribeScalingActivities.
 }
 }
 
-\examples{
-# This example describes the scheduled actions for the specified Auto
+\section{Examples}{
+\preformatted{# This example describes the scheduled actions for the specified Auto
 # Scaling group.
-\donttest{svc$describe_scheduled_actions(
+svc$describe_scheduled_actions(
   AutoScalingGroupName = "my-auto-scaling-group"
-)}
-
+)
 }
+}
+
 \keyword{internal}

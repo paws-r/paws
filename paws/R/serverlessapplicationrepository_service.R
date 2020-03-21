@@ -61,11 +61,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- serverlessapplicationrepository()
+#' @section Examples:
+#' ```
 #' svc$create_application(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -32,11 +32,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- backup()
+#' @section Examples:
+#' ```
 #' svc$create_backup_plan(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

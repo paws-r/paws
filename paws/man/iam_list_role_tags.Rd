@@ -44,11 +44,12 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\examples{
-# The following example shows how to list the tags attached to a role.
-\donttest{svc$list_role_tags(
+\section{Examples}{
+\preformatted{# The following example shows how to list the tags attached to a role.
+svc$list_role_tags(
   RoleName = "taggedrole1"
-)}
-
+)
 }
+}
+
 \keyword{internal}

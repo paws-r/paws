@@ -19,11 +19,12 @@ Gets information about an upload.
 }
 }
 
-\examples{
-# The following example gets information about a specific upload.
-\donttest{svc$get_upload(
+\section{Examples}{
+\preformatted{# The following example gets information about a specific upload.
+svc$get_upload(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:upload:EXAMPLE-GUID-123-456"
-)}
-
+)
 }
+}
+
 \keyword{internal}

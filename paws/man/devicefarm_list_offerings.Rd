@@ -27,12 +27,13 @@ able to invoke this operation, contact
 }
 }
 
-\examples{
-# The following example returns information about available device
+\section{Examples}{
+\preformatted{# The following example returns information about available device
 # offerings.
-\donttest{svc$list_offerings(
+svc$list_offerings(
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
-)}
-
+)
 }
+}
+
 \keyword{internal}

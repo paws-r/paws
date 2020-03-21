@@ -39,11 +39,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- alexaforbusiness()
+#' @section Examples:
+#' ```
 #' svc$approve_skill(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -24,11 +24,12 @@ includes the amount of cache allocated and used.
 }
 }
 
-\examples{
-# Returns information about the cache of a gateway.
-\donttest{svc$describe_cache(
+\section{Examples}{
+\preformatted{# Returns information about the cache of a gateway.
+svc$describe_cache(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)}
-
+)
 }
+}
+
 \keyword{internal}

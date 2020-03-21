@@ -116,20 +116,20 @@ in the \emph{Network Load Balancers Guide}.
 }
 }
 
-\examples{
-# This example creates an Internet-facing load balancer and enables the
+\section{Examples}{
+\preformatted{# This example creates an Internet-facing load balancer and enables the
 # Availability Zones for the specified subnets.
-\donttest{svc$create_load_balancer(
+svc$create_load_balancer(
   Name = "my-load-balancer",
   Subnets = list(
     "subnet-b7d581c0",
     "subnet-8360a9e7"
   )
-)}
+)
 
 # This example creates an internal load balancer and enables the
 # Availability Zones for the specified subnets.
-\donttest{svc$create_load_balancer(
+svc$create_load_balancer(
   Name = "my-internal-load-balancer",
   Scheme = "internal",
   SecurityGroups = list(),
@@ -137,7 +137,8 @@ in the \emph{Network Load Balancers Guide}.
     "subnet-b7d581c0",
     "subnet-8360a9e7"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

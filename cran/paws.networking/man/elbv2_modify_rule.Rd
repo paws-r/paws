@@ -156,9 +156,9 @@ To modify the actions for the default rule, use ModifyListener.
 }
 }
 
-\examples{
-# This example modifies the condition for the specified rule.
-\donttest{svc$modify_rule(
+\section{Examples}{
+\preformatted{# This example modifies the condition for the specified rule.
+svc$modify_rule(
   Conditions = list(
     list(
       Field = "path-pattern",
@@ -168,7 +168,8 @@ To modify the actions for the default rule, use ModifyListener.
     )
   ),
   RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-b..."
-)}
-
+)
 }
+}
+
 \keyword{internal}

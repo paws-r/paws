@@ -43,11 +43,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- lightsail()
+#' @section Examples:
+#' ```
 #' svc$allocate_static_ip(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

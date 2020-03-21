@@ -33,11 +33,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- groundstation()
+#' @section Examples:
+#' ```
 #' svc$cancel_contact(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -45,13 +45,14 @@ Describes your IAM instance profile associations.
 }
 }
 
-\examples{
-# This example describes the specified IAM instance profile association.
-\donttest{svc$describe_iam_instance_profile_associations(
+\section{Examples}{
+\preformatted{# This example describes the specified IAM instance profile association.
+svc$describe_iam_instance_profile_associations(
   AssociationIds = list(
     "iip-assoc-0db249b1f25fa24b8"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

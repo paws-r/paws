@@ -33,14 +33,15 @@ For more information about using notifications with Amazon SES, see the
 }
 }
 
-\examples{
-# The following example returns the notification attributes for an
+\section{Examples}{
+\preformatted{# The following example returns the notification attributes for an
 # identity:
-\donttest{svc$get_identity_notification_attributes(
+svc$get_identity_notification_attributes(
   Identities = list(
     "example.com"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -42,13 +42,14 @@
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This example cancels a job with the specified job ID.
-#' \donttest{svc <- batch()
 #' svc$cancel_job(
 #'   jobId = "1d828f65-7a4d-42e8-996d-3b900ed59dc4",
 #'   reason = "Cancelling job."
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -121,13 +122,14 @@ batch <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This example allocates an Elastic IP address to use with an instance in
 #' # a VPC.
-#' \donttest{svc <- ec2()
 #' svc$allocate_address(
 #'   Domain = "vpc"
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -566,16 +568,17 @@ ec2 <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example pushes a sample SSH public key to the EC2 instance
 #' # i-abcd1234 in AZ us-west-2b for use by the instance OS user ec2-user.
-#' \donttest{svc <- ec2instanceconnect()
 #' svc$send_ssh_public_key(
 #'   AvailabilityZone = "us-west-2a",
 #'   InstanceId = "i-abcd1234",
 #'   InstanceOSUser = "ec2-user",
 #'   SSHPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3FlHqj2eqCdrGHuA6dRjfZXQ4HX5lXEIRHa..."
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -623,10 +626,10 @@ ec2instanceconnect <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This example deletes images with the tags precise and trusty in a
 #' # repository called ubuntu in the default registry for an account.
-#' \donttest{svc <- ecr()
 #' svc$batch_delete_image(
 #'   imageIds = list(
 #'     list(
@@ -634,7 +637,8 @@ ec2instanceconnect <- function(config = list()) {
 #'     )
 #'   ),
 #'   repositoryName = "ubuntu"
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -723,12 +727,13 @@ ecr <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This example creates a cluster in your default region.
-#' \donttest{svc <- ecs()
 #' svc$create_cluster(
 #'   clusterName = "my_cluster"
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -827,9 +832,9 @@ ecs <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example creates an Amazon EKS cluster called prod.
-#' \donttest{svc <- eks()
 #' svc$create_cluster(
 #'   version = "1.10",
 #'   name = "prod",
@@ -844,7 +849,8 @@ ecs <- function(config = list()) {
 #'     )
 #'   ),
 #'   roleArn = "arn:aws:iam::012345678910:role/eks-service-role-AWSServiceRoleForAmazonEKS-J7ON..."
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -922,13 +928,14 @@ eks <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following code aborts a running application version deployment for
 #' # an environment named my-env:
-#' \donttest{svc <- elasticbeanstalk()
 #' svc$abort_environment_update(
 #'   EnvironmentName = "my-env"
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -1018,10 +1025,10 @@ elasticbeanstalk <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This example adds a permission for an S3 bucket to invoke a Lambda
 #' # function.
-#' \donttest{svc <- lambda()
 #' svc$add_permission(
 #'   Action = "lambda:InvokeFunction",
 #'   FunctionName = "MyFunction",
@@ -1029,7 +1036,8 @@ elasticbeanstalk <- function(config = list()) {
 #'   SourceAccount = "123456789012",
 #'   SourceArn = "arn:aws:s3:::examplebucket/*",
 #'   StatementId = "ID-1"
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -1131,11 +1139,12 @@ lambda <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- lightsail()
+#' @section Examples:
+#' ```
 #' svc$allocate_static_ip(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -1311,11 +1320,12 @@ lightsail <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- serverlessapplicationrepository()
+#' @section Examples:
+#' ```
 #' svc$create_application(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -1370,11 +1380,12 @@ serverlessapplicationrepository <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- backup()
+#' @section Examples:
+#' ```
 #' svc$create_backup_plan(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -1464,11 +1475,12 @@ backup <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- dlm()
+#' @section Examples:
+#' ```
 #' svc$create_lifecycle_policy(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -1520,10 +1532,10 @@ dlm <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This operation creates a new file system with the default generalpurpose
 #' # performance mode.
-#' \donttest{svc <- efs()
 #' svc$create_file_system(
 #'   CreationToken = "tokenstring",
 #'   PerformanceMode = "generalPurpose",
@@ -1533,7 +1545,8 @@ dlm <- function(config = list()) {
 #'       Value = "MyFileSystem"
 #'     )
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -1587,9 +1600,9 @@ efs <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This operation creates a new backup.
-#' \donttest{svc <- fsx()
 #' svc$create_backup(
 #'   FileSystemId = "fs-0498eed5fe91001ec",
 #'   Tags = list(
@@ -1598,7 +1611,8 @@ efs <- function(config = list()) {
 #'       Value = "MyBackup"
 #'     )
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -1685,15 +1699,16 @@ fsx <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The example deletes an in-progress multipart upload to a vault named
 #' # my-vault:
-#' \donttest{svc <- glacier()
 #' svc$abort_multipart_upload(
 #'   accountId = "-",
 #'   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV...",
 #'   vaultName = "my-vault"
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -1764,14 +1779,15 @@ glacier <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example aborts a multipart upload.
-#' \donttest{svc <- s3()
 #' svc$abort_multipart_upload(
 #'   Bucket = "examplebucket",
 #'   Key = "bigobject",
 #'   UploadId = "xadcOB_7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP..."
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -1898,11 +1914,12 @@ s3 <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- s3control()
+#' @section Examples:
+#' ```
 #' svc$create_access_point(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -2020,9 +2037,9 @@ s3control <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Activates the gateway you previously deployed on your host.
-#' \donttest{svc <- storagegateway()
 #' svc$activate_gateway(
 #'   ActivationKey = "29AV1-3OFV9-VVIUB-NKT0I-LRO6V",
 #'   GatewayName = "My_Gateway",
@@ -2031,7 +2048,8 @@ s3control <- function(config = list()) {
 #'   GatewayType = "STORED",
 #'   MediumChangerType = "AWS-Gateway-VTL",
 #'   TapeDriveType = "IBM-ULT3580-TD5"
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -2151,11 +2169,12 @@ storagegateway <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- dax()
+#' @section Examples:
+#' ```
 #' svc$create_cluster(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -2215,11 +2234,12 @@ dax <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- docdb()
+#' @section Examples:
+#' ```
 #' svc$add_tags_to_resource(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -2318,10 +2338,10 @@ docdb <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This example reads multiple items from the Music table using a batch of
 #' # three GetItem requests.  Only the AlbumTitle attribute is returned.
-#' \donttest{svc <- dynamodb()
 #' svc$batch_get_item(
 #'   RequestItems = list(
 #'     Music = list(
@@ -2354,7 +2374,8 @@ docdb <- function(config = list()) {
 #'       ProjectionExpression = "AlbumTitle"
 #'     )
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -2440,12 +2461,13 @@ dynamodb <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example describes a stream with a given stream ARN.
-#' \donttest{svc <- dynamodbstreams()
 #' svc$describe_stream(
 #'   StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:51:1..."
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -2499,11 +2521,12 @@ dynamodbstreams <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- elasticache()
+#' @section Examples:
+#' ```
 #' svc$add_tags_to_resource(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -2610,11 +2633,12 @@ elasticache <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- neptune()
+#' @section Examples:
+#' ```
 #' svc$add_role_to_db_cluster(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -2759,11 +2783,12 @@ neptune <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- rds()
+#' @section Examples:
+#' ```
 #' svc$add_role_to_db_cluster(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -2942,11 +2967,12 @@ rds <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- rdsdataservice()
+#' @section Examples:
+#' ```
 #' svc$batch_execute_statement(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -3018,11 +3044,12 @@ rdsdataservice <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- redshift()
+#' @section Examples:
+#' ```
 #' svc$accept_reserved_node_exchange(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -3147,11 +3174,12 @@ redshift <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- simpledb()
+#' @section Examples:
+#' ```
 #' svc$batch_delete_attributes(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -3204,11 +3232,12 @@ simpledb <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- apigateway()
+#' @section Examples:
+#' ```
 #' svc$create_api_key(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -3373,11 +3402,12 @@ apigateway <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- apigatewaymanagementapi()
+#' @section Examples:
+#' ```
 #' svc$delete_connection(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -3419,11 +3449,12 @@ apigatewaymanagementapi <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- apigatewayv2()
+#' @section Examples:
+#' ```
 #' svc$create_api(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -3542,11 +3573,12 @@ apigatewayv2 <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- appmesh()
+#' @section Examples:
+#' ```
 #' svc$create_mesh(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -3616,11 +3648,12 @@ appmesh <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- cloudfront()
+#' @section Examples:
+#' ```
 #' svc$create_cloud_front_origin_access_identity(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -3713,11 +3746,12 @@ cloudfront <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- directconnect()
+#' @section Examples:
+#' ```
 #' svc$accept_direct_connect_gateway_association_proposal(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -3835,9 +3869,9 @@ directconnect <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This example adds two tags to the specified load balancer.
-#' \donttest{svc <- elb()
 #' svc$add_tags(
 #'   LoadBalancerNames = list(
 #'     "my-load-balancer"
@@ -3852,7 +3886,8 @@ directconnect <- function(config = list()) {
 #'       Value = "digital-media"
 #'     )
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -3946,9 +3981,9 @@ elb <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This example adds the specified tags to the specified load balancer.
-#' \donttest{svc <- elbv2()
 #' svc$add_tags(
 #'   ResourceArns = list(
 #'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/5..."
@@ -3963,7 +3998,8 @@ elb <- function(config = list()) {
 #'       Value = "digital-media"
 #'     )
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -4122,11 +4158,12 @@ elbv2 <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- globalaccelerator()
+#' @section Examples:
+#' ```
 #' svc$create_accelerator(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -4183,10 +4220,10 @@ globalaccelerator <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example associates the VPC with ID vpc-1a2b3c4d with the
 #' # hosted zone with ID Z3M3LMPEXAMPLE.
-#' \donttest{svc <- route53()
 #' svc$associate_vpc_with_hosted_zone(
 #'   Comment = "",
 #'   HostedZoneId = "Z3M3LMPEXAMPLE",
@@ -4194,7 +4231,8 @@ globalaccelerator <- function(config = list()) {
 #'     VPCId = "vpc-1a2b3c4d",
 #'     VPCRegion = "us-east-2"
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -4290,11 +4328,12 @@ route53 <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- route53domains()
+#' @section Examples:
+#' ```
 #' svc$check_domain_availability(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -4389,11 +4428,12 @@ route53domains <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- route53resolver()
+#' @section Examples:
+#' ```
 #' svc$associate_resolver_endpoint_ip_address(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -4461,11 +4501,12 @@ route53resolver <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- servicediscovery()
+#' @section Examples:
+#' ```
 #' svc$create_http_namespace(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -4573,16 +4614,17 @@ servicediscovery <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This example deletes a scaling policy for the Amazon ECS service called
 #' # web-app, which is running in the default cluster.
-#' \donttest{svc <- applicationautoscaling()
 #' svc$delete_scaling_policy(
 #'   PolicyName = "web-app-cpu-lt-25",
 #'   ResourceId = "service/default/web-app",
 #'   ScalableDimension = "ecs:service:DesiredCount",
 #'   ServiceNamespace = "ecs"
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -4648,11 +4690,12 @@ applicationautoscaling <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- applicationinsights()
+#' @section Examples:
+#' ```
 #' svc$create_application(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -4727,16 +4770,17 @@ applicationinsights <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This example attaches the specified instance to the specified Auto
 #' # Scaling group.
-#' \donttest{svc <- autoscaling()
 #' svc$attach_instances(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   InstanceIds = list(
 #'     "i-93633f9b"
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -4843,11 +4887,12 @@ autoscaling <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- autoscalingplans()
+#' @section Examples:
+#' ```
 #' svc$create_scaling_plan(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -4912,11 +4957,12 @@ autoscalingplans <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- cloudformation()
+#' @section Examples:
+#' ```
 #' svc$cancel_update_stack(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -5032,11 +5078,12 @@ cloudformation <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- cloudtrail()
+#' @section Examples:
+#' ```
 #' svc$add_tags(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -5108,11 +5155,12 @@ cloudtrail <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- cloudwatch()
+#' @section Examples:
+#' ```
 #' svc$delete_alarms(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -5200,11 +5248,12 @@ cloudwatch <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- cloudwatchevents()
+#' @section Examples:
+#' ```
 #' svc$activate_event_source(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -5306,11 +5355,12 @@ cloudwatchevents <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- cloudwatchlogs()
+#' @section Examples:
+#' ```
 #' svc$associate_kms_key(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -5410,11 +5460,12 @@ cloudwatchlogs <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- configservice()
+#' @section Examples:
+#' ```
 #' svc$batch_get_aggregate_resource_config(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -5602,11 +5653,12 @@ configservice <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- health()
+#' @section Examples:
+#' ```
 #' svc$describe_affected_accounts_for_organization(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -5659,11 +5711,12 @@ health <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- licensemanager()
+#' @section Examples:
+#' ```
 #' svc$create_license_configuration(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -5801,11 +5854,12 @@ licensemanager <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- opsworks()
+#' @section Examples:
+#' ```
 #' svc$assign_instance(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -5982,11 +6036,12 @@ opsworks <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- opsworkscm()
+#' @section Examples:
+#' ```
 #' svc$associate_node(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -6044,15 +6099,16 @@ opsworkscm <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Bill is the owner of an organization, and he invites Juan's account
 #' # (222222222222) to join his organization. The following example shows
 #' # Juan's account accepting the handshake and thus agreeing to the
 #' # invitation.
-#' \donttest{svc <- organizations()
 #' svc$accept_handshake(
 #'   HandshakeId = "h-examplehandshakeid111"
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -6156,11 +6212,12 @@ organizations <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- pi()
+#' @section Examples:
+#' ```
 #' svc$describe_dimension_keys(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -6236,11 +6293,12 @@ pi <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- resourcegroups()
+#' @section Examples:
+#' ```
 #' svc$create_group(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -6518,11 +6576,12 @@ resourcegroups <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- resourcegroupstaggingapi()
+#' @section Examples:
+#' ```
 #' svc$describe_report_creation(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -6574,11 +6633,12 @@ resourcegroupstaggingapi <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- servicecatalog()
+#' @section Examples:
+#' ```
 #' svc$accept_portfolio_share(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -6713,11 +6773,12 @@ servicecatalog <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- servicequotas()
+#' @section Examples:
+#' ```
 #' svc$associate_service_quota_template(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -6795,11 +6856,12 @@ servicequotas <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- ssm()
+#' @section Examples:
+#' ```
 #' svc$add_tags_to_resource(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -7017,11 +7079,12 @@ ssm <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- support()
+#' @section Examples:
+#' ```
 #' svc$add_attachments_to_set(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -7077,11 +7140,12 @@ support <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- comprehend()
+#' @section Examples:
+#' ```
 #' svc$batch_detect_dominant_language(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -7173,11 +7237,12 @@ comprehend <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- comprehendmedical()
+#' @section Examples:
+#' ```
 #' svc$describe_entities_detection_v2_job(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -7233,13 +7298,14 @@ comprehendmedical <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This example shows how to get configuration information for a bot.
-#' \donttest{svc <- lexmodelbuildingservice()
 #' svc$get_bot(
 #'   name = "DocOrderPizza",
 #'   versionOrAlias = "$LATEST"
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -7325,11 +7391,12 @@ lexmodelbuildingservice <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- lexruntimeservice()
+#' @section Examples:
+#' ```
 #' svc$delete_session(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -7373,11 +7440,12 @@ lexruntimeservice <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- machinelearning()
+#' @section Examples:
+#' ```
 #' svc$add_tags(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -7445,11 +7513,12 @@ machinelearning <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- personalize()
+#' @section Examples:
+#' ```
 #' svc$create_batch_inference_job(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -7526,11 +7595,12 @@ personalize <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- personalizeevents()
+#' @section Examples:
+#' ```
 #' svc$put_events(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -7569,11 +7639,12 @@ personalizeevents <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- personalizeruntime()
+#' @section Examples:
+#' ```
 #' svc$get_personalized_ranking(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -7620,12 +7691,13 @@ personalizeruntime <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Deletes a specified pronunciation lexicon stored in an AWS Region.
-#' \donttest{svc <- polly()
 #' svc$delete_lexicon(
 #'   Name = "example"
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -7673,10 +7745,10 @@ polly <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This operation compares the largest face detected in the source image
 #' # with each face detected in the target image.
-#' \donttest{svc <- rekognition()
 #' svc$compare_faces(
 #'   SimilarityThreshold = 90L,
 #'   SourceImage = list(
@@ -7691,7 +7763,8 @@ polly <- function(config = list()) {
 #'       Name = "mytargetimage"
 #'     )
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -7771,11 +7844,12 @@ rekognition <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- sagemaker()
+#' @section Examples:
+#' ```
 #' svc$add_tags(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -7945,11 +8019,12 @@ sagemaker <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- sagemakerruntime()
+#' @section Examples:
+#' ```
 #' svc$invoke_endpoint(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -7991,11 +8066,12 @@ sagemakerruntime <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- textract()
+#' @section Examples:
+#' ```
 #' svc$analyze_document(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -8040,11 +8116,12 @@ textract <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- transcribeservice()
+#' @section Examples:
+#' ```
 #' svc$create_vocabulary(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -8098,11 +8175,12 @@ transcribeservice <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- translate()
+#' @section Examples:
+#' ```
 #' svc$delete_terminology(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -8169,11 +8247,12 @@ translate <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- athena()
+#' @section Examples:
+#' ```
 #' svc$batch_get_named_query(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -8243,11 +8322,12 @@ athena <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- cloudsearch()
+#' @section Examples:
+#' ```
 #' svc$build_suggesters(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -8323,11 +8403,12 @@ cloudsearch <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- cloudsearchdomain()
+#' @section Examples:
+#' ```
 #' svc$search(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -8391,11 +8472,12 @@ cloudsearchdomain <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- datapipeline()
+#' @section Examples:
+#' ```
 #' svc$activate_pipeline(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -8468,11 +8550,12 @@ datapipeline <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- elasticsearchservice()
+#' @section Examples:
+#' ```
 #' svc$add_tags(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -8538,11 +8621,12 @@ elasticsearchservice <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- emr()
+#' @section Examples:
+#' ```
 #' svc$add_instance_fleet(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -8616,11 +8700,12 @@ emr <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- firehose()
+#' @section Examples:
+#' ```
 #' svc$create_delivery_stream(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -8671,11 +8756,12 @@ firehose <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- glue()
+#' @section Examples:
+#' ```
 #' svc$batch_create_partition(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -8836,11 +8922,12 @@ glue <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- kafka()
+#' @section Examples:
+#' ```
 #' svc$create_cluster(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -8902,11 +8989,12 @@ kafka <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- kinesis()
+#' @section Examples:
+#' ```
 #' svc$add_tags_to_stream(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -8980,11 +9068,12 @@ kinesis <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- kinesisanalytics()
+#' @section Examples:
+#' ```
 #' svc$add_application_cloud_watch_logging_option(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -9047,11 +9136,12 @@ kinesisanalytics <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- kinesisanalyticsv2()
+#' @section Examples:
+#' ```
 #' svc$add_application_cloud_watch_logging_option(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -9116,11 +9206,12 @@ kinesisanalyticsv2 <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- mturk()
+#' @section Examples:
+#' ```
 #' svc$accept_qualification_request(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -9204,11 +9295,12 @@ mturk <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- quicksight()
+#' @section Examples:
+#' ```
 #' svc$cancel_ingestion(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -9317,11 +9409,12 @@ quicksight <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- acm()
+#' @section Examples:
+#' ```
 #' svc$add_tags_to_certificate(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -9388,11 +9481,12 @@ acm <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- acmpca()
+#' @section Examples:
+#' ```
 #' svc$create_certificate_authority(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -9461,11 +9555,12 @@ acmpca <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- clouddirectory()
+#' @section Examples:
+#' ```
 #' svc$add_facet_to_object(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -9584,11 +9679,12 @@ clouddirectory <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- cloudhsm()
+#' @section Examples:
+#' ```
 #' svc$add_tags_to_resource(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -9649,11 +9745,12 @@ cloudhsm <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- cloudhsmv2()
+#' @section Examples:
+#' ```
 #' svc$copy_backup_to_region(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -9725,11 +9822,12 @@ cloudhsmv2 <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- cognitoidentity()
+#' @section Examples:
+#' ```
 #' svc$create_identity_pool(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -9796,11 +9894,12 @@ cognitoidentity <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- cognitoidentityprovider()
+#' @section Examples:
+#' ```
 #' svc$add_custom_attributes(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -9960,11 +10059,12 @@ cognitoidentityprovider <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- cognitosync()
+#' @section Examples:
+#' ```
 #' svc$bulk_publish(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -10035,11 +10135,12 @@ cognitosync <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- directoryservice()
+#' @section Examples:
+#' ```
 #' svc$accept_shared_directory(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -10141,11 +10242,12 @@ directoryservice <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- fms()
+#' @section Examples:
+#' ```
 #' svc$associate_admin_account(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -10217,11 +10319,12 @@ fms <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- guardduty()
+#' @section Examples:
+#' ```
 #' svc$accept_invitation(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -10371,15 +10474,16 @@ guardduty <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following add-client-id-to-open-id-connect-provider command adds the
 #' # client ID my-application-ID to the OIDC provider named
 #' # server.example.com:
-#' \donttest{svc <- iam()
 #' svc$add_client_id_to_open_id_connect_provider(
 #'   ClientID = "my-application-ID",
 #'   OpenIDConnectProviderArn = "arn:aws:iam::123456789012:oidc-provider/server.example.com"
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -10561,10 +10665,10 @@ iam <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # Assigns attributes (key and value pairs) to the findings that are
 #' # specified by the ARNs of the findings.
-#' \donttest{svc <- inspector()
 #' svc$add_attributes_to_findings(
 #'   attributes = list(
 #'     list(
@@ -10575,7 +10679,8 @@ iam <- function(config = list()) {
 #'   findingArns = list(
 #'     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-8l1VIE0D/run/0-Z0..."
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -10731,12 +10836,13 @@ inspector <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example cancels deletion of the specified CMK.
-#' \donttest{svc <- kms()
 #' svc$cancel_key_deletion(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -10827,11 +10933,12 @@ kms <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- macie()
+#' @section Examples:
+#' ```
 #' svc$associate_member_account(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -10885,11 +10992,12 @@ macie <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- ram()
+#' @section Examples:
+#' ```
 #' svc$accept_resource_share_invitation(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -11021,15 +11129,16 @@ ram <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example shows how to cancel rotation for a secret. The
 #' # operation sets the RotationEnabled field to false and cancels all
 #' # scheduled rotations. To resume scheduled rotations, you must re-enable
 #' # rotation by calling the rotate-secret operation.
-#' \donttest{svc <- secretsmanager()
 #' svc$cancel_rotate_secret(
 #'   SecretId = "MyTestDatabaseSecret"
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -11119,11 +11228,12 @@ secretsmanager <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- securityhub()
+#' @section Examples:
+#' ```
 #' svc$accept_invitation(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -11208,11 +11318,12 @@ securityhub <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- shield()
+#' @section Examples:
+#' ```
 #' svc$associate_drt_log_bucket(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -11364,9 +11475,9 @@ shield <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # 
-#' \donttest{svc <- sts()
 #' svc$assume_role(
 #'   ExternalId = "123ABC",
 #'   Policy = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"Stmt1\",\"Effect\":...",
@@ -11390,7 +11501,8 @@ shield <- function(config = list()) {
 #'     "Project",
 #'     "Cost-Center"
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -11445,13 +11557,14 @@ sts <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example creates an IP match set named MyIPSetFriendlyName.
-#' \donttest{svc <- waf()
 #' svc$create_ip_set(
 #'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
 #'   Name = "MyIPSetFriendlyName"
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -11576,13 +11689,14 @@ waf <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example creates an IP match set named MyIPSetFriendlyName.
-#' \donttest{svc <- wafregional()
 #' svc$create_ip_set(
 #'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
 #'   Name = "MyIPSetFriendlyName"
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -11721,11 +11835,12 @@ wafregional <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- eventbridge()
+#' @section Examples:
+#' ```
 #' svc$activate_event_source(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -11795,11 +11910,12 @@ eventbridge <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- mq()
+#' @section Examples:
+#' ```
 #' svc$create_broker(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -11880,11 +11996,12 @@ mq <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- sfn()
+#' @section Examples:
+#' ```
 #' svc$create_activity(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -11960,11 +12077,12 @@ sfn <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- sns()
+#' @section Examples:
+#' ```
 #' svc$add_permission(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -12074,11 +12192,12 @@ sns <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- sqs()
+#' @section Examples:
+#' ```
 #' svc$add_permission(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -12151,11 +12270,12 @@ sqs <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- swf()
+#' @section Examples:
+#' ```
 #' svc$count_closed_workflow_executions(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -12275,11 +12395,12 @@ swf <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- budgets()
+#' @section Examples:
+#' ```
 #' svc$create_budget(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -12345,13 +12466,14 @@ budgets <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example deletes the AWS Cost and Usage report named
 #' # ExampleReport.
-#' \donttest{svc <- costandusagereportservice()
 #' svc$delete_report_definition(
 #'   ReportName = "ExampleReport"
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -12408,11 +12530,12 @@ costandusagereportservice <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- costexplorer()
+#' @section Examples:
+#' ```
 #' svc$create_cost_category_definition(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -12470,11 +12593,12 @@ costexplorer <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- marketplacecommerceanalytics()
+#' @section Examples:
+#' ```
 #' svc$generate_data_set(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -12526,11 +12650,12 @@ marketplacecommerceanalytics <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- marketplaceentitlementservice()
+#' @section Examples:
+#' ```
 #' svc$get_entitlements(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -12613,11 +12738,12 @@ marketplaceentitlementservice <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- marketplacemetering()
+#' @section Examples:
+#' ```
 #' svc$batch_meter_usage(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -12685,13 +12811,14 @@ marketplacemetering <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- pricing()
+#' @section Examples:
+#' ```
 #' svc$describe_services(
 #'   FormatVersion = "aws_v1",
 #'   MaxResults = 1L,
 #'   ServiceCode = "AmazonEC2"
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -12745,11 +12872,12 @@ pricing <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- connect()
+#' @section Examples:
+#' ```
 #' svc$create_user(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -12817,11 +12945,12 @@ connect <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- pinpoint()
+#' @section Examples:
+#' ```
 #' svc$create_app(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -13005,11 +13134,12 @@ pinpoint <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- pinpointemail()
+#' @section Examples:
+#' ```
 #' svc$create_configuration_set(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -13090,11 +13220,12 @@ pinpointemail <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- pinpointsmsvoice()
+#' @section Examples:
+#' ```
 #' svc$create_configuration_set(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{
@@ -13151,14 +13282,15 @@ pinpointsmsvoice <- function(config = list()) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example creates a receipt rule set by cloning an existing
 #' # one:
-#' \donttest{svc <- ses()
 #' svc$clone_receipt_rule_set(
 #'   OriginalRuleSetName = "RuleSetToClone",
 #'   RuleSetName = "RuleSetToCreate"
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

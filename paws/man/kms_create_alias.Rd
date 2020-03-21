@@ -90,13 +90,14 @@ in the \emph{AWS Key Management Service Developer Guide}.
 }
 }
 
-\examples{
-# The following example creates an alias for the specified customer master
+\section{Examples}{
+\preformatted{# The following example creates an alias for the specified customer master
 # key (CMK).
-\donttest{svc$create_alias(
+svc$create_alias(
   AliasName = "alias/ExampleAlias",
   TargetKeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)}
-
+)
 }
+}
+
 \keyword{internal}

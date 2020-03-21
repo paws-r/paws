@@ -30,11 +30,12 @@ You can execute this operation no more than once per second.
 }
 }
 
-\examples{
-# The following example creates an empty receipt rule set:
-\donttest{svc$create_receipt_rule_set(
+\section{Examples}{
+\preformatted{# The following example creates an empty receipt rule set:
+svc$create_receipt_rule_set(
   RuleSetName = "MyRuleSet"
-)}
-
+)
 }
+}
+
 \keyword{internal}

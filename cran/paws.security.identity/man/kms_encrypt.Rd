@@ -151,13 +151,14 @@ the key ARN or alias ARN in the value of the KeyId parameter.
 }
 }
 
-\examples{
-# The following example encrypts data with the specified customer master
+\section{Examples}{
+\preformatted{# The following example encrypts data with the specified customer master
 # key (CMK).
-\donttest{svc$encrypt(
+svc$encrypt(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
   Plaintext = "<binary data>"
-)}
-
+)
 }
+}
+
 \keyword{internal}

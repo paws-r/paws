@@ -68,18 +68,19 @@ TagResource.
 }
 }
 
-\examples{
-# The following example shows how to remove two tags from a secret's
+\section{Examples}{
+\preformatted{# The following example shows how to remove two tags from a secret's
 # metadata. For each, both the tag and the associated value are removed.
 # There is no output from this API. To see the result, use the
 # DescribeSecret operation.
-\donttest{svc$untag_resource(
+svc$untag_resource(
   SecretId = "MyTestDatabaseSecret",
   TagKeys = list(
     "FirstTag",
     "SecondTag"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

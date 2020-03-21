@@ -206,27 +206,28 @@ example:
 }
 }
 
-\examples{
-# The following example uploads a part of a multipart upload by copying a
+\section{Examples}{
+\preformatted{# The following example uploads a part of a multipart upload by copying a
 # specified byte range from an existing object as data source.
-\donttest{svc$upload_part_copy(
+svc$upload_part_copy(
   Bucket = "examplebucket",
   CopySource = "/bucketname/sourceobjectkey",
   CopySourceRange = "bytes=1-100000",
   Key = "examplelargeobject",
   PartNumber = "2",
   UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3cq3LZSUsfjI4FI7PkP..."
-)}
+)
 
 # The following example uploads a part of a multipart upload by copying
 # data from an existing object as data source.
-\donttest{svc$upload_part_copy(
+svc$upload_part_copy(
   Bucket = "examplebucket",
   CopySource = "/bucketname/sourceobjectkey",
   Key = "examplelargeobject",
   PartNumber = "1",
   UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3cq3LZSUsfjI4FI7PkP..."
-)}
-
+)
 }
+}
+
 \keyword{internal}

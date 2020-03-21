@@ -35,11 +35,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- apigatewaymanagementapi()
+#' @section Examples:
+#' ```
 #' svc$delete_connection(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

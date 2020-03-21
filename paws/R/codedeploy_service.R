@@ -107,11 +107,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- codedeploy()
+#' @section Examples:
+#' ```
 #' svc$add_tags_to_on_premises_instances(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

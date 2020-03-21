@@ -23,12 +23,13 @@ Returns the SqlInjectionMatchSet that is specified by
 }
 }
 
-\examples{
-# The following example returns the details of a SQL injection match set
+\section{Examples}{
+\preformatted{# The following example returns the details of a SQL injection match set
 # with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-\donttest{svc$get_sql_injection_match_set(
+svc$get_sql_injection_match_set(
   SqlInjectionMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-)}
-
+)
 }
+}
+
 \keyword{internal}

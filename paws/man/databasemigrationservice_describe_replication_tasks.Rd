@@ -52,10 +52,10 @@ current region.
 }
 }
 
-\examples{
-# Returns information about replication tasks for your account in the
+\section{Examples}{
+\preformatted{# Returns information about replication tasks for your account in the
 # current region.
-\donttest{svc$describe_replication_tasks(
+svc$describe_replication_tasks(
   Filters = list(
     list(
       Name = "string",
@@ -67,7 +67,8 @@ current region.
   ),
   Marker = "",
   MaxRecords = 123L
-)}
-
+)
 }
+}
+
 \keyword{internal}

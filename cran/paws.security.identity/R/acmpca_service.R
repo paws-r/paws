@@ -44,11 +44,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- acmpca()
+#' @section Examples:
+#' ```
 #' svc$create_certificate_authority(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

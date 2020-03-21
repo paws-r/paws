@@ -60,11 +60,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- augmentedairuntime()
+#' @section Examples:
+#' ```
 #' svc$delete_human_loop(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

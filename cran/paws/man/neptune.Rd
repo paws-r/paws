@@ -50,6 +50,13 @@ following some related topics from the user guide.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$add_role_to_db_cluster(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -113,10 +120,3 @@ following some related topics from the user guide.
 }
 }
 
-\examples{
-\donttest{svc <- neptune()
-svc$add_role_to_db_cluster(
-  Foo = 123
-)}
-
-}

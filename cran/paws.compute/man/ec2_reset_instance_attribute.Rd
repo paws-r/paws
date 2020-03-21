@@ -41,13 +41,14 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 }
 
-\examples{
-# This example resets the sourceDestCheck attribute for the specified
+\section{Examples}{
+\preformatted{# This example resets the sourceDestCheck attribute for the specified
 # instance.
-\donttest{svc$reset_instance_attribute(
+svc$reset_instance_attribute(
   Attribute = "sourceDestCheck",
   InstanceId = "i-1234567890abcdef0"
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -27,12 +27,13 @@ cancelled.
 }
 }
 
-\examples{
-# This example terminates a job with the specified job ID.
-\donttest{svc$terminate_job(
+\section{Examples}{
+\preformatted{# This example terminates a job with the specified job ID.
+svc$terminate_job(
   jobId = "61e743ed-35e4-48da-b2de-5c8333821c84",
   reason = "Terminating job."
-)}
-
+)
 }
+}
+
 \keyword{internal}

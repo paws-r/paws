@@ -160,9 +160,9 @@ service. For more information, see \href{https://docs.aws.amazon.com/lambda/late
 }
 }
 
-\examples{
-# This example creates a Lambda function.
-\donttest{svc$create_function(
+\section{Examples}{
+\preformatted{# This example creates a Lambda function.
+svc$create_function(
   Code = structure(
     list(),
     .Names = character(
@@ -183,7 +183,8 @@ service. For more information, see \href{https://docs.aws.amazon.com/lambda/late
       0
     )
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

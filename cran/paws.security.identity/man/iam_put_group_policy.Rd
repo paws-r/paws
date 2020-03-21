@@ -67,14 +67,15 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\examples{
-# The following command adds a policy named AllPerms to the IAM group
+\section{Examples}{
+\preformatted{# The following command adds a policy named AllPerms to the IAM group
 # named Admins.
-\donttest{svc$put_group_policy(
+svc$put_group_policy(
   GroupName = "Admins",
-  PolicyDocument = "{\"Version\":\"2012-10-17\",\"Statement\":{\"Effect\":\"Allow\",...",
+  PolicyDocument = "\{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":\{\\"Effect\\":\\"Allow\\",...",
   PolicyName = "AllPerms"
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -32,12 +32,13 @@ For more information about instance profiles, go to \href{https://docs.aws.amazo
 }
 }
 
-\examples{
-# The following command deletes the instance profile named
+\section{Examples}{
+\preformatted{# The following command deletes the instance profile named
 # ExampleInstanceProfile
-\donttest{svc$delete_instance_profile(
+svc$delete_instance_profile(
   InstanceProfileName = "ExampleInstanceProfile"
-)}
-
+)
 }
+}
+
 \keyword{internal}

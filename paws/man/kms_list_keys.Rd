@@ -31,9 +31,10 @@ account and Region.
 }
 }
 
-\examples{
-# The following example lists CMKs.
-\donttest{svc$list_keys()}
-
+\section{Examples}{
+\preformatted{# The following example lists CMKs.
+svc$list_keys()
 }
+}
+
 \keyword{internal}

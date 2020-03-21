@@ -246,16 +246,17 @@ in the \strong{AWS Key Management Service Developer Guide} .
 }
 }
 
-\examples{
-# The following example creates a CMK.
-\donttest{svc$create_key(
+\section{Examples}{
+\preformatted{# The following example creates a CMK.
+svc$create_key(
   Tags = list(
     list(
       TagKey = "CreatedBy",
       TagValue = "ExampleUser"
     )
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

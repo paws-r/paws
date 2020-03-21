@@ -50,11 +50,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- cognitosync()
+#' @section Examples:
+#' ```
 #' svc$bulk_publish(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

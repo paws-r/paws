@@ -82,11 +82,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- codestar()
+#' @section Examples:
+#' ```
 #' svc$associate_team_member(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -31,9 +31,10 @@ This operation requires permissions to perform the
 }
 }
 
-\examples{
-# This operation returns a list of Rekognition collections.
-\donttest{svc$list_collections()}
-
+\section{Examples}{
+\preformatted{# This operation returns a list of Rekognition collections.
+svc$list_collections()
 }
+}
+
 \keyword{internal}

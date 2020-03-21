@@ -14,10 +14,11 @@ current region.
 \details{
 You can execute this operation no more than once per second.
 }
-\examples{
-# The following example returns if sending status for an account is
+\section{Examples}{
+\preformatted{# The following example returns if sending status for an account is
 # enabled. (true / false):
-\donttest{svc$get_account_sending_enabled()}
-
+svc$get_account_sending_enabled()
 }
+}
+
 \keyword{internal}

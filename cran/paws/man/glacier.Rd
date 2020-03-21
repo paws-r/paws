@@ -61,6 +61,17 @@ archives, retrieving the job output, and deleting archives.
 }
 }
 
+\section{Examples}{
+\preformatted{# The example deletes an in-progress multipart upload to a vault named
+# my-vault:
+svc$abort_multipart_upload(
+  accountId = "-",
+  uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV...",
+  vaultName = "my-vault"
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -100,14 +111,3 @@ archives, retrieving the job output, and deleting archives.
 }
 }
 
-\examples{
-# The example deletes an in-progress multipart upload to a vault named
-# my-vault:
-\donttest{svc <- glacier()
-svc$abort_multipart_upload(
-  accountId = "-",
-  uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV...",
-  vaultName = "my-vault"
-)}
-
-}

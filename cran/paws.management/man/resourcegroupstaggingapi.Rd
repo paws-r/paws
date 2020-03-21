@@ -164,6 +164,13 @@ following AWS services.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$describe_report_creation(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -178,10 +185,3 @@ following AWS services.
 }
 }
 
-\examples{
-\donttest{svc <- resourcegroupstaggingapi()
-svc$describe_report_creation(
-  Foo = 123
-)}
-
-}

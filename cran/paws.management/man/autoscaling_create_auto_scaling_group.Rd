@@ -263,19 +263,19 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 }
 
-\examples{
-# This example creates an Auto Scaling group.
-\donttest{svc$create_auto_scaling_group(
+\section{Examples}{
+\preformatted{# This example creates an Auto Scaling group.
+svc$create_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   LaunchConfigurationName = "my-launch-config",
   MaxSize = 3L,
   MinSize = 1L,
   VPCZoneIdentifier = "subnet-4176792c"
-)}
+)
 
 # This example creates an Auto Scaling group and attaches the specified
 # Classic Load Balancer.
-\donttest{svc$create_auto_scaling_group(
+svc$create_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   AvailabilityZones = list(
     "us-west-2c"
@@ -288,11 +288,11 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
   ),
   MaxSize = 3L,
   MinSize = 1L
-)}
+)
 
 # This example creates an Auto Scaling group and attaches the specified
 # target group.
-\donttest{svc$create_auto_scaling_group(
+svc$create_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   HealthCheckGracePeriod = 120L,
   HealthCheckType = "ELB",
@@ -303,7 +303,8 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8..."
   ),
   VPCZoneIdentifier = "subnet-4176792c, subnet-65ea5f08"
-)}
-
+)
 }
+}
+
 \keyword{internal}

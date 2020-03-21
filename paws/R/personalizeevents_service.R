@@ -28,11 +28,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- personalizeevents()
+#' @section Examples:
+#' ```
 #' svc$put_events(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

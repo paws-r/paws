@@ -103,13 +103,14 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\examples{
-# 
-\donttest{svc$get_session_token(
+\section{Examples}{
+\preformatted{# 
+svc$get_session_token(
   DurationSeconds = 3600L,
   SerialNumber = "YourMFASerialNumber",
   TokenCode = "123456"
-)}
-
+)
 }
+}
+
 \keyword{internal}

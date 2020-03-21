@@ -23,11 +23,12 @@ balancer to which it is attached, using DeleteLoadBalancer.
 }
 }
 
-\examples{
-# This example deletes the specified listener.
-\donttest{svc$delete_listener(
+\section{Examples}{
+\preformatted{# This example deletes the specified listener.
+svc$delete_listener(
   ListenerArn = "arn:aws:elasticloadbalancing:ua-west-2:123456789012:listener/app/my-load-ba..."
-)}
-
+)
 }
+}
+
 \keyword{internal}

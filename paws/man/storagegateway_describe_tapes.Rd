@@ -43,11 +43,11 @@ is only supported in the tape gateway type.
 }
 }
 
-\examples{
-# Returns a description of the specified Amazon Resource Name (ARN) of
+\section{Examples}{
+\preformatted{# Returns a description of the specified Amazon Resource Name (ARN) of
 # virtual tapes. If a TapeARN is not specified, returns a description of
 # all virtual tapes.
-\donttest{svc$describe_tapes(
+svc$describe_tapes(
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
   Limit = 2L,
   Marker = "1",
@@ -55,7 +55,8 @@ is only supported in the tape gateway type.
     "arn:aws:storagegateway:us-east-1:999999999999:tape/TEST04A2A1",
     "arn:aws:storagegateway:us-east-1:999999999999:tape/TEST05A2A0"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

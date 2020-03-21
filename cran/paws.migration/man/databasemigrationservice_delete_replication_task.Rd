@@ -19,11 +19,12 @@ Deletes the specified replication task.
 }
 }
 
-\examples{
-# Deletes the specified replication task.
-\donttest{svc$delete_replication_task(
+\section{Examples}{
+\preformatted{# Deletes the specified replication task.
+svc$delete_replication_task(
   ReplicationTaskArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ"
-)}
-
+)
 }
+}
+
 \keyword{internal}

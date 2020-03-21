@@ -29,12 +29,13 @@ operation, contact \href{mailto:aws-devicefarm-support@amazon.com}{aws-devicefar
 }
 }
 
-\examples{
-# The following example purchases a specific device slot offering.
-\donttest{svc$purchase_offering(
+\section{Examples}{
+\preformatted{# The following example purchases a specific device slot offering.
+svc$purchase_offering(
   offeringId = "D68B3C05-1BA6-4360-BC69-12345EXAMPLE",
   quantity = 1L
-)}
-
+)
 }
+}
+
 \keyword{internal}

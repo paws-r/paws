@@ -33,11 +33,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- apigateway()
+#' @section Examples:
+#' ```
 #' svc$create_api_key(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

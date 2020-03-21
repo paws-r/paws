@@ -86,11 +86,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- support()
+#' @section Examples:
+#' ```
 #' svc$add_attachments_to_set(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

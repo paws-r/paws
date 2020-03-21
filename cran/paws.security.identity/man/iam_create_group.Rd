@@ -42,11 +42,12 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\examples{
-# The following command creates an IAM group named Admins.
-\donttest{svc$create_group(
+\section{Examples}{
+\preformatted{# The following command creates an IAM group named Admins.
+svc$create_group(
   GroupName = "Admins"
-)}
-
+)
 }
+}
+
 \keyword{internal}

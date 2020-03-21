@@ -34,11 +34,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- savingsplans()
+#' @section Examples:
+#' ```
 #' svc$create_savings_plan(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

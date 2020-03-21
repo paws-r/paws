@@ -54,13 +54,14 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- pricing()
+#' @section Examples:
+#' ```
 #' svc$describe_services(
 #'   FormatVersion = "aws_v1",
 #'   MaxResults = 1L,
 #'   ServiceCode = "AmazonEC2"
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -49,6 +49,13 @@ find the product\'s technical documentation at
 }
 }
 
+\section{Examples}{
+\preformatted{svc$cancel_update_stack(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -110,10 +117,3 @@ find the product\'s technical documentation at
 }
 }
 
-\examples{
-\donttest{svc <- cloudformation()
-svc$cancel_update_stack(
-  Foo = 123
-)}
-
-}

@@ -21,10 +21,11 @@ You can execute this operation no more than once per second.
 }
 }
 
-\examples{
-# The following example lists the IP address filters that are associated
+\section{Examples}{
+\preformatted{# The following example lists the IP address filters that are associated
 # with an AWS account:
-\donttest{svc$list_receipt_filters()}
-
+svc$list_receipt_filters()
 }
+}
+
 \keyword{internal}

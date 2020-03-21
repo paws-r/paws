@@ -32,6 +32,13 @@ networks that are built around transit gateways.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$associate_customer_gateway(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -66,10 +73,3 @@ networks that are built around transit gateways.
 }
 }
 
-\examples{
-\donttest{svc <- networkmanager()
-svc$associate_customer_gateway(
-  Foo = 123
-)}
-
-}

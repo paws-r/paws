@@ -50,12 +50,13 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This example creates a cluster in your default region.
-#' \donttest{svc <- ecs()
 #' svc$create_cluster(
 #'   clusterName = "my_cluster"
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

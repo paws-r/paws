@@ -25,20 +25,21 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\examples{
-# This example shows a request and response made with the credentials for
+\section{Examples}{
+\preformatted{# This example shows a request and response made with the credentials for
 # a user named Alice in the AWS account 123456789012.
-\donttest{svc$get_caller_identity()}
+svc$get_caller_identity()
 
 # This example shows a request and response made with temporary
 # credentials created by AssumeRole. The name of the assumed role is
 # my-role-name, and the RoleSessionName is set to my-role-session-name.
-\donttest{svc$get_caller_identity()}
+svc$get_caller_identity()
 
 # This example shows a request and response made with temporary
 # credentials created by using GetFederationToken. The Name parameter is
 # set to my-federated-user-name.
-\donttest{svc$get_caller_identity()}
-
+svc$get_caller_identity()
 }
+}
+
 \keyword{internal}

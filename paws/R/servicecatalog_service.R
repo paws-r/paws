@@ -34,11 +34,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- servicecatalog()
+#' @section Examples:
+#' ```
 #' svc$accept_portfolio_share(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

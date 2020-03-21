@@ -40,11 +40,12 @@ The following operation is related to \code{GetBucketPolicy}:
 }
 }
 
-\examples{
-# The following example returns bucket policy associated with a bucket.
-\donttest{svc$get_bucket_policy(
+\section{Examples}{
+\preformatted{# The following example returns bucket policy associated with a bucket.
+svc$get_bucket_policy(
   Bucket = "examplebucket"
-)}
-
+)
 }
+}
+
 \keyword{internal}

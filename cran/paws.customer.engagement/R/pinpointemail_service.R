@@ -67,11 +67,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- pinpointemail()
+#' @section Examples:
+#' ```
 #' svc$create_configuration_set(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

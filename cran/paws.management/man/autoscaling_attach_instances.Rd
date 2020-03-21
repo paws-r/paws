@@ -38,15 +38,16 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 }
 
-\examples{
-# This example attaches the specified instance to the specified Auto
+\section{Examples}{
+\preformatted{# This example attaches the specified instance to the specified Auto
 # Scaling group.
-\donttest{svc$attach_instances(
+svc$attach_instances(
   AutoScalingGroupName = "my-auto-scaling-group",
   InstanceIds = list(
     "i-93633f9b"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

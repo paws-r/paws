@@ -26,13 +26,14 @@ tape gateway types.
 }
 }
 
-\examples{
-# Returns an array of Challenge-Handshake Authentication Protocol (CHAP)
+\section{Examples}{
+\preformatted{# Returns an array of Challenge-Handshake Authentication Protocol (CHAP)
 # credentials information for a specified iSCSI target, one for each
 # target-initiator pair.
-\donttest{svc$describe_chap_credentials(
+svc$describe_chap_credentials(
   TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn..."
-)}
-
+)
 }
+}
+
 \keyword{internal}

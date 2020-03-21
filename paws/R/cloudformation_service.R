@@ -49,11 +49,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- cloudformation()
+#' @section Examples:
+#' ```
 #' svc$cancel_update_stack(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

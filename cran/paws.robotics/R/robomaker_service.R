@@ -30,11 +30,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- robomaker()
+#' @section Examples:
+#' ```
 #' svc$batch_describe_simulation_job(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

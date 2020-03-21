@@ -110,14 +110,15 @@ in the \emph{AWS Key Management Service Developer Guide}.
 }
 }
 
-\examples{
-# The following example imports key material into the specified CMK.
-\donttest{svc$import_key_material(
+\section{Examples}{
+\preformatted{# The following example imports key material into the specified CMK.
+svc$import_key_material(
   EncryptedKeyMaterial = "<binary data>",
   ExpirationModel = "KEY_MATERIAL_DOES_NOT_EXPIRE",
   ImportToken = "<binary data>",
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -47,14 +47,15 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\examples{
-# The following command deactivates the specified access key (access key
+\section{Examples}{
+\preformatted{# The following command deactivates the specified access key (access key
 # ID and secret access key) for the IAM user named Bob.
-\donttest{svc$update_access_key(
+svc$update_access_key(
   AccessKeyId = "AKIAIOSFODNN7EXAMPLE",
   Status = "Inactive",
   UserName = "Bob"
-)}
-
+)
 }
+}
+
 \keyword{internal}

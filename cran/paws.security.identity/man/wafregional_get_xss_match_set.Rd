@@ -21,12 +21,13 @@ Returns the XssMatchSet that is specified by \code{XssMatchSetId}.
 }
 }
 
-\examples{
-# The following example returns the details of an XSS match set with the
+\section{Examples}{
+\preformatted{# The following example returns the details of an XSS match set with the
 # ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-\donttest{svc$get_xss_match_set(
+svc$get_xss_match_set(
   XssMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-)}
-
+)
 }
+}
+
 \keyword{internal}

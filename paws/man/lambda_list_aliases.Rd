@@ -43,14 +43,15 @@ for a Lambda function.
 }
 }
 
-\examples{
-# This operation retrieves a Lambda function's aliases
-\donttest{svc$list_aliases(
+\section{Examples}{
+\preformatted{# This operation retrieves a Lambda function's aliases
+svc$list_aliases(
   FunctionName = "myFunction",
   FunctionVersion = "1",
   Marker = "",
   MaxItems = 123L
-)}
-
+)
 }
+}
+
 \keyword{internal}

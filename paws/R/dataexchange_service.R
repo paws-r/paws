@@ -49,11 +49,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- dataexchange()
+#' @section Examples:
+#' ```
 #' svc$cancel_job(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

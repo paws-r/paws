@@ -15,10 +15,11 @@ environment in a region. If the storage location already exists,
 \code{CreateStorageLocation} still returns the bucket name but does not
 create a new bucket.
 }
-\examples{
-# The following operation creates a new environment for version v1 of a
+\section{Examples}{
+\preformatted{# The following operation creates a new environment for version v1 of a
 # java application named my-app:
-\donttest{svc$create_storage_location()}
-
+svc$create_storage_location()
 }
+}
+
 \keyword{internal}

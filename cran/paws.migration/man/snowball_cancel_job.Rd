@@ -23,12 +23,13 @@ of the response element data returned.
 }
 }
 
-\examples{
-# This operation cancels a job. You can only cancel a job before its
+\section{Examples}{
+\preformatted{# This operation cancels a job. You can only cancel a job before its
 # JobState value changes to PreparingAppliance.
-\donttest{svc$cancel_job(
+svc$cancel_job(
   JobId = "JID123e4567-e89b-12d3-a456-426655440000"
-)}
-
+)
 }
+}
+
 \keyword{internal}

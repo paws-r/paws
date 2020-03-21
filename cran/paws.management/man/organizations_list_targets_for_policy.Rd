@@ -54,12 +54,13 @@ account.
 }
 }
 
-\examples{
-# The following example shows how to get the list of roots, OUs, and
+\section{Examples}{
+\preformatted{# The following example shows how to get the list of roots, OUs, and
 # accounts to which the specified policy is attached:/n/n
-\donttest{svc$list_targets_for_policy(
+svc$list_targets_for_policy(
   PolicyId = "p-FullAWSAccess"
-)}
-
+)
 }
+}
+
 \keyword{internal}

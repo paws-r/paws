@@ -78,14 +78,15 @@ ListSecretVersionIds.
 }
 }
 
-\examples{
-# The following example shows how to cancel rotation for a secret. The
+\section{Examples}{
+\preformatted{# The following example shows how to cancel rotation for a secret. The
 # operation sets the RotationEnabled field to false and cancels all
 # scheduled rotations. To resume scheduled rotations, you must re-enable
 # rotation by calling the rotate-secret operation.
-\donttest{svc$cancel_rotate_secret(
+svc$cancel_rotate_secret(
   SecretId = "MyTestDatabaseSecret"
-)}
-
+)
 }
+}
+
 \keyword{internal}

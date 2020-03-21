@@ -45,11 +45,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- guardduty()
+#' @section Examples:
+#' ```
 #' svc$accept_invitation(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

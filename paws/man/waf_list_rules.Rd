@@ -29,11 +29,12 @@ Returns an array of RuleSummary objects.
 }
 }
 
-\examples{
-# The following example returns an array of up to 100 rules.
-\donttest{svc$list_rules(
+\section{Examples}{
+\preformatted{# The following example returns an array of up to 100 rules.
+svc$list_rules(
   Limit = 100L
-)}
-
+)
 }
+}
+
 \keyword{internal}

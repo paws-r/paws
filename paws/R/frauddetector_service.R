@@ -33,11 +33,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- frauddetector()
+#' @section Examples:
+#' ```
 #' svc$batch_create_variable(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -52,11 +52,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- ebs()
+#' @section Examples:
+#' ```
 #' svc$get_snapshot_block(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

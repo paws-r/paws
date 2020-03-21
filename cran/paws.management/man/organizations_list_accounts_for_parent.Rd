@@ -54,12 +54,13 @@ account.
 }
 }
 
-\examples{
-# The following example shows how to request a list of the accounts in an
+\section{Examples}{
+\preformatted{# The following example shows how to request a list of the accounts in an
 # OU:/n/n
-\donttest{svc$list_accounts_for_parent(
+svc$list_accounts_for_parent(
   ParentId = "ou-examplerootid111-exampleouid111"
-)}
-
+)
 }
+}
+
 \keyword{internal}

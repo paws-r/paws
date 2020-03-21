@@ -50,13 +50,14 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\examples{
-# The following command creates or changes the password for the IAM user
+\section{Examples}{
+\preformatted{# The following command creates or changes the password for the IAM user
 # named Bob.
-\donttest{svc$update_login_profile(
+svc$update_login_profile(
   Password = "SomeKindOfPassword123!@#",
   UserName = "Bob"
-)}
-
+)
 }
+}
+
 \keyword{internal}

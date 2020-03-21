@@ -33,6 +33,13 @@ receive a lower price for that usage. For more information, see the \href{https:
 }
 }
 
+\section{Examples}{
+\preformatted{svc$create_savings_plan(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -47,10 +54,3 @@ receive a lower price for that usage. For more information, see the \href{https:
 }
 }
 
-\examples{
-\donttest{svc <- savingsplans()
-svc$create_savings_plan(
-  Foo = 123
-)}
-
-}

@@ -21,12 +21,13 @@ assessment run.
 }
 }
 
-\examples{
-# Deletes the assessment run that is specified by the ARN of the
+\section{Examples}{
+\preformatted{# Deletes the assessment run that is specified by the ARN of the
 # assessment run.
-\donttest{svc$delete_assessment_run(
+svc$delete_assessment_run(
   assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-..."
-)}
-
+)
 }
+}
+
 \keyword{internal}

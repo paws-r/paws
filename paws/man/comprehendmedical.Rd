@@ -32,6 +32,13 @@ documents.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$describe_entities_detection_v2_job(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -51,10 +58,3 @@ documents.
 }
 }
 
-\examples{
-\donttest{svc <- comprehendmedical()
-svc$describe_entities_detection_v2_job(
-  Foo = 123
-)}
-
-}

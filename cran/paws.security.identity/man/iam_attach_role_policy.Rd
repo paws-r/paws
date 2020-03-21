@@ -41,13 +41,14 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\examples{
-# The following command attaches the AWS managed policy named
+\section{Examples}{
+\preformatted{# The following command attaches the AWS managed policy named
 # ReadOnlyAccess to the IAM role named ReadOnlyRole.
-\donttest{svc$attach_role_policy(
+svc$attach_role_policy(
   PolicyArn = "arn:aws:iam::aws:policy/ReadOnlyAccess",
   RoleName = "ReadOnlyRole"
-)}
-
+)
 }
+}
+
 \keyword{internal}

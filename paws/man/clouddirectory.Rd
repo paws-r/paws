@@ -37,6 +37,13 @@ Directory features, see \href{https://aws.amazon.com/directoryservice/}{AWS Dire
 }
 }
 
+\section{Examples}{
+\preformatted{svc$add_facet_to_object(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -109,10 +116,3 @@ Directory features, see \href{https://aws.amazon.com/directoryservice/}{AWS Dire
 }
 }
 
-\examples{
-\donttest{svc <- clouddirectory()
-svc$add_facet_to_object(
-  Foo = 123
-)}
-
-}

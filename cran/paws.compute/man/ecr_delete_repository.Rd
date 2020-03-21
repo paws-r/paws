@@ -28,14 +28,15 @@ you must use the \code{force} option to delete it.
 }
 }
 
-\examples{
-# This example force deletes a repository named ubuntu in the default
+\section{Examples}{
+\preformatted{# This example force deletes a repository named ubuntu in the default
 # registry for an account. The force parameter is required if the
 # repository contains images.
-\donttest{svc$delete_repository(
+svc$delete_repository(
   force = TRUE,
   repositoryName = "ubuntu"
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -34,6 +34,13 @@ the \href{https://docs.aws.amazon.com/acm/latest/userguide/}{\emph{AWS Certifica
 }
 }
 
+\section{Examples}{
+\preformatted{svc$add_tags_to_certificate(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -53,10 +60,3 @@ the \href{https://docs.aws.amazon.com/acm/latest/userguide/}{\emph{AWS Certifica
 }
 }
 
-\examples{
-\donttest{svc <- acm()
-svc$add_tags_to_certificate(
-  Foo = 123
-)}
-
-}

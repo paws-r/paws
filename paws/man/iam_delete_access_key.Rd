@@ -37,13 +37,14 @@ if the AWS account has no associated users.
 }
 }
 
-\examples{
-# The following command deletes one access key (access key ID and secret
+\section{Examples}{
+\preformatted{# The following command deletes one access key (access key ID and secret
 # access key) assigned to the IAM user named Bob.
-\donttest{svc$delete_access_key(
+svc$delete_access_key(
   AccessKeyId = "AKIDPMS9RO4H3FEXAMPLE",
   UserName = "Bob"
-)}
-
+)
 }
+}
+
 \keyword{internal}

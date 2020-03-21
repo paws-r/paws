@@ -20,11 +20,12 @@ Returns a link to a currently running remote access session.
 }
 }
 
-\examples{
-# The following example gets a specific remote access session.
-\donttest{svc$get_remote_access_session(
+\section{Examples}{
+\preformatted{# The following example gets a specific remote access session.
+svc$get_remote_access_session(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456"
-)}
-
+)
 }
+}
+
 \keyword{internal}

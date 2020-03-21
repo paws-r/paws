@@ -28,12 +28,13 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 
-\examples{
-# This example deletes the specified placement group.
+\section{Examples}{
+\preformatted{# This example deletes the specified placement group.
 # 
-\donttest{svc$delete_placement_group(
+svc$delete_placement_group(
   GroupName = "my-cluster"
-)}
-
+)
 }
+}
+
 \keyword{internal}

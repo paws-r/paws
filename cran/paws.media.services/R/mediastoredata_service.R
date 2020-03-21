@@ -31,11 +31,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- mediastoredata()
+#' @section Examples:
+#' ```
 #' svc$delete_object(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

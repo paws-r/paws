@@ -25,13 +25,14 @@ Returns a list of all currently running remote access sessions.
 }
 }
 
-\examples{
-# The following example returns information about a specific Device Farm
+\section{Examples}{
+\preformatted{# The following example returns information about a specific Device Farm
 # remote access session.
-\donttest{svc$list_remote_access_sessions(
+svc$list_remote_access_sessions(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456",
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
-)}
-
+)
 }
+}
+
 \keyword{internal}

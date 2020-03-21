@@ -61,11 +61,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- cloudwatchlogs()
+#' @section Examples:
+#' ```
 #' svc$associate_kms_key(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -49,13 +49,14 @@ Updates an AWS Batch compute environment.
 }
 }
 
-\examples{
-# This example disables the P2OnDemand compute environment so it can be
+\section{Examples}{
+\preformatted{# This example disables the P2OnDemand compute environment so it can be
 # deleted.
-\donttest{svc$update_compute_environment(
+svc$update_compute_environment(
   computeEnvironment = "P2OnDemand",
   state = "DISABLED"
-)}
-
+)
 }
+}
+
 \keyword{internal}

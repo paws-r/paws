@@ -42,11 +42,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- servicequotas()
+#' @section Examples:
+#' ```
 #' svc$associate_service_quota_template(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

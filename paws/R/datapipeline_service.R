@@ -51,11 +51,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- datapipeline()
+#' @section Examples:
+#' ```
 #' svc$activate_pipeline(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -22,12 +22,13 @@ assessment run.
 }
 }
 
-\examples{
-# Information about the data that is collected for the specified
+\section{Examples}{
+\preformatted{# Information about the data that is collected for the specified
 # assessment run.
-\donttest{svc$get_telemetry_metadata(
+svc$get_telemetry_metadata(
   assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-..."
-)}
-
+)
 }
+}
+
 \keyword{internal}

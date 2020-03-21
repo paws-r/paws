@@ -26,14 +26,15 @@ operation by calling the DescribeRefreshSchemasStatus operation.
 }
 }
 
-\examples{
-# Populates the schema for the specified endpoint. This is an asynchronous
+\section{Examples}{
+\preformatted{# Populates the schema for the specified endpoint. This is an asynchronous
 # operation and can take several minutes. You can check the status of this
 # operation by calling the describe-refresh-schemas-status operation.
-\donttest{svc$refresh_schemas(
+svc$refresh_schemas(
   EndpointArn = "",
   ReplicationInstanceArn = ""
-)}
-
+)
 }
+}
+
 \keyword{internal}

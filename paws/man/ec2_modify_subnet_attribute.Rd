@@ -39,15 +39,16 @@ time.
 }
 }
 
-\examples{
-# This example modifies the specified subnet so that all instances
+\section{Examples}{
+\preformatted{# This example modifies the specified subnet so that all instances
 # launched into this subnet are assigned a public IP address.
-\donttest{svc$modify_subnet_attribute(
+svc$modify_subnet_attribute(
   MapPublicIpOnLaunch = list(
     Value = TRUE
   ),
   SubnetId = "subnet-1a2b3c4d"
-)}
-
+)
 }
+}
+
 \keyword{internal}

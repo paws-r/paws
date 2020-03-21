@@ -40,11 +40,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- elasticache()
+#' @section Examples:
+#' ```
 #' svc$add_tags_to_resource(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

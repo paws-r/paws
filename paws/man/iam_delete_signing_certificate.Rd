@@ -37,13 +37,14 @@ if the AWS account has no associated IAM users.
 }
 }
 
-\examples{
-# The following command deletes the specified signing certificate for the
+\section{Examples}{
+\preformatted{# The following command deletes the specified signing certificate for the
 # IAM user named Anika.
-\donttest{svc$delete_signing_certificate(
+svc$delete_signing_certificate(
   CertificateId = "TA7SMP42TDN5Z26OBPJE7EXAMPLE",
   UserName = "Anika"
-)}
-
+)
 }
+}
+
 \keyword{internal}

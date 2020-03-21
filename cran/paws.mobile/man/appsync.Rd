@@ -31,6 +31,13 @@ sources using GraphQL from your application.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$create_api_cache(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -78,10 +85,3 @@ sources using GraphQL from your application.
 }
 }
 
-\examples{
-\donttest{svc <- appsync()
-svc$create_api_cache(
-  Foo = 123
-)}
-
-}

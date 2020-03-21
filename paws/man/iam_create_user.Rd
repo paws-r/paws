@@ -61,12 +61,13 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\examples{
-# The following create-user command creates an IAM user named Bob in the
+\section{Examples}{
+\preformatted{# The following create-user command creates an IAM user named Bob in the
 # current account.
-\donttest{svc$create_user(
+svc$create_user(
   UserName = "Bob"
-)}
-
+)
 }
+}
+
 \keyword{internal}

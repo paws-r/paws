@@ -30,11 +30,12 @@ Returns an array of XssMatchSet objects.
 }
 }
 
-\examples{
-# The following example returns an array of up to 100 XSS match sets.
-\donttest{svc$list_xss_match_sets(
+\section{Examples}{
+\preformatted{# The following example returns an array of up to 100 XSS match sets.
+svc$list_xss_match_sets(
   Limit = 100L
-)}
-
+)
 }
+}
+
 \keyword{internal}

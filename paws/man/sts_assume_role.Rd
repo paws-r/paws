@@ -334,11 +334,11 @@ one-time password (TOTP) that the MFA device produces.
 }
 }
 
-\examples{
-# 
-\donttest{svc$assume_role(
+\section{Examples}{
+\preformatted{# 
+svc$assume_role(
   ExternalId = "123ABC",
-  Policy = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"Stmt1\",\"Effect\":...",
+  Policy = "\{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":[\{\\"Sid\\":\\"Stmt1\\",\\"Effect\\":...",
   RoleArn = "arn:aws:iam::123456789012:role/demo",
   RoleSessionName = "testAssumeRoleSession",
   Tags = list(
@@ -359,7 +359,8 @@ one-time password (TOTP) that the MFA device produces.
     "Project",
     "Cost-Center"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

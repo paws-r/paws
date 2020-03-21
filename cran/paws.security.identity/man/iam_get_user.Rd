@@ -31,11 +31,12 @@ this API.
 }
 }
 
-\examples{
-# The following command gets information about the IAM user named Bob.
-\donttest{svc$get_user(
+\section{Examples}{
+\preformatted{# The following command gets information about the IAM user named Bob.
+svc$get_user(
   UserName = "Bob"
-)}
-
+)
 }
+}
+
 \keyword{internal}

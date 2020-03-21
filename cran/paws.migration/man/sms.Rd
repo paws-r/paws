@@ -47,6 +47,13 @@ resources:
 }
 }
 
+\section{Examples}{
+\preformatted{svc$create_app(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -81,10 +88,3 @@ resources:
 }
 }
 
-\examples{
-\donttest{svc <- sms()
-svc$create_app(
-  Foo = 123
-)}
-
-}

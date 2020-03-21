@@ -34,14 +34,15 @@ add an existing client ID to the provider.
 }
 }
 
-\examples{
-# The following add-client-id-to-open-id-connect-provider command adds the
+\section{Examples}{
+\preformatted{# The following add-client-id-to-open-id-connect-provider command adds the
 # client ID my-application-ID to the OIDC provider named
 # server.example.com:
-\donttest{svc$add_client_id_to_open_id_connect_provider(
+svc$add_client_id_to_open_id_connect_provider(
   ClientID = "my-application-ID",
   OpenIDConnectProviderArn = "arn:aws:iam::123456789012:oidc-provider/server.example.com"
-)}
-
+)
 }
+}
+
 \keyword{internal}

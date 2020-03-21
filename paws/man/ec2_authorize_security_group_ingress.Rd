@@ -140,10 +140,10 @@ For more information about VPC security group limits, see \href{https://docs.aws
 }
 }
 
-\examples{
-# This example enables inbound traffic on TCP port 22 (SSH). The rule
+\section{Examples}{
+\preformatted{# This example enables inbound traffic on TCP port 22 (SSH). The rule
 # includes a description to help you identify it later.
-\donttest{svc$authorize_security_group_ingress(
+svc$authorize_security_group_ingress(
   GroupId = "sg-903004f8",
   IpPermissions = list(
     list(
@@ -158,13 +158,13 @@ For more information about VPC security group limits, see \href{https://docs.aws
       ToPort = 22L
     )
   )
-)}
+)
 
 # This example enables inbound traffic on TCP port 80 from the specified
 # security group. The group must be in the same VPC or a peer VPC.
 # Incoming traffic is allowed based on the private IP addresses of
 # instances that are associated with the specified security group.
-\donttest{svc$authorize_security_group_ingress(
+svc$authorize_security_group_ingress(
   GroupId = "sg-111aaa22",
   IpPermissions = list(
     list(
@@ -179,12 +179,12 @@ For more information about VPC security group limits, see \href{https://docs.aws
       )
     )
   )
-)}
+)
 
 # This example adds an inbound rule that allows RDP traffic from the
 # specified IPv6 address range. The rule includes a description to help
 # you identify it later.
-\donttest{svc$authorize_security_group_ingress(
+svc$authorize_security_group_ingress(
   GroupId = "sg-123abc12 ",
   IpPermissions = list(
     list(
@@ -199,7 +199,8 @@ For more information about VPC security group limits, see \href{https://docs.aws
       ToPort = 3389L
     )
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

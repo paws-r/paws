@@ -37,13 +37,14 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 
-\examples{
-# This example reboots the specified EC2 instance.
-\donttest{svc$reboot_instances(
+\section{Examples}{
+\preformatted{# This example reboots the specified EC2 instance.
+svc$reboot_instances(
   InstanceIds = list(
     "i-1234567890abcdef5"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

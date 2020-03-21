@@ -73,12 +73,13 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\examples{
-# The following operation generates a report for the policy:
+\section{Examples}{
+\preformatted{# The following operation generates a report for the policy:
 # ExamplePolicy1
-\donttest{svc$generate_service_last_accessed_details(
+svc$generate_service_last_accessed_details(
   Arn = "arn:aws:iam::123456789012:policy/ExamplePolicy1"
-)}
-
+)
 }
+}
+
 \keyword{internal}

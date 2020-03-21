@@ -45,14 +45,15 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\examples{
-# The following command changes IAM user Bob's password and sets the flag
+\section{Examples}{
+\preformatted{# The following command changes IAM user Bob's password and sets the flag
 # that required Bob to change the password the next time he signs in.
-\donttest{svc$create_login_profile(
-  Password = "h]6EszR}vJ*m",
+svc$create_login_profile(
+  Password = "h]6EszR\}vJ*m",
   PasswordResetRequired = TRUE,
   UserName = "Bob"
-)}
-
+)
 }
+}
+
 \keyword{internal}

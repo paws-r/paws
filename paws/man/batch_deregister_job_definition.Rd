@@ -20,11 +20,12 @@ Deregisters an AWS Batch job definition.
 }
 }
 
-\examples{
-# This example deregisters a job definition called sleep10.
-\donttest{svc$deregister_job_definition(
+\section{Examples}{
+\preformatted{# This example deregisters a job definition called sleep10.
+svc$deregister_job_definition(
   jobDefinition = "sleep10"
-)}
-
+)
 }
+}
+
 \keyword{internal}

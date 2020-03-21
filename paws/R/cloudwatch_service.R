@@ -44,11 +44,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- cloudwatch()
+#' @section Examples:
+#' ```
 #' svc$delete_alarms(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

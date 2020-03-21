@@ -39,11 +39,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- transfer()
+#' @section Examples:
+#' ```
 #' svc$create_server(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

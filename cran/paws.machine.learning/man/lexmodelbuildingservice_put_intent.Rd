@@ -273,18 +273,18 @@ This operation requires permissions for the \code{lex:PutIntent} action.
 }
 }
 
-\examples{
-# This example shows how to create an intent for ordering pizzas.
-\donttest{svc$put_intent(
+\section{Examples}{
+\preformatted{# This example shows how to create an intent for ordering pizzas.
+svc$put_intent(
   name = "DocOrderPizza",
   conclusionStatement = list(
     messages = list(
       list(
-        content = "All right, I ordered  you a {Crust} crust {Type} pizza with {Sauce} sauce...",
+        content = "All right, I ordered  you a \{Crust\} crust \{Type\} pizza with \{Sauce\} sauce...",
         contentType = "PlainText"
       ),
       list(
-        content = "OK, your {Crust} crust {Type} pizza with {Sauce} sauce is on the way.",
+        content = "OK, your \{Crust\} crust \{Type\} pizza with \{Sauce\} sauce is on the way.",
         contentType = "PlainText"
       )
     ),
@@ -294,7 +294,7 @@ This operation requires permissions for the \code{lex:PutIntent} action.
     maxAttempts = 1L,
     messages = list(
       list(
-        content = "Should I order  your {Crust} crust {Type} pizza with {Sauce} sauce?",
+        content = "Should I order  your \{Crust\} crust \{Type\} pizza with \{Sauce\} sauce?",
         contentType = "PlainText"
       )
     )
@@ -317,9 +317,9 @@ This operation requires permissions for the \code{lex:PutIntent} action.
   ),
   sampleUtterances = list(
     "Order me a pizza.",
-    "Order me a {Type} pizza.",
-    "I want a {Crust} crust {Type} pizza",
-    "I want a {Crust} crust {Type} pizza with {Sauce} sauce."
+    "Order me a \{Type\} pizza.",
+    "I want a \{Crust\} crust \{Type\} pizza",
+    "I want a \{Crust\} crust \{Type\} pizza with \{Sauce\} sauce."
   ),
   slots = list(
     list(
@@ -327,9 +327,9 @@ This operation requires permissions for the \code{lex:PutIntent} action.
       description = "The type of pizza to order.",
       priority = 1L,
       sampleUtterances = list(
-        "Get me a {Type} pizza.",
-        "A {Type} pizza please.",
-        "I'd like a {Type} pizza."
+        "Get me a \{Type\} pizza.",
+        "A \{Type\} pizza please.",
+        "I'd like a \{Type\} pizza."
       ),
       slotConstraint = "Required",
       slotType = "DocPizzaType",
@@ -357,8 +357,8 @@ This operation requires permissions for the \code{lex:PutIntent} action.
       description = "The type of pizza crust to order.",
       priority = 2L,
       sampleUtterances = list(
-        "Make it a {Crust} crust.",
-        "I'd like a {Crust} crust."
+        "Make it a \{Crust\} crust.",
+        "I'd like a \{Crust\} crust."
       ),
       slotConstraint = "Required",
       slotType = "DocPizzaCrustType",
@@ -382,8 +382,8 @@ This operation requires permissions for the \code{lex:PutIntent} action.
       description = "The type of sauce to use on the pizza.",
       priority = 3L,
       sampleUtterances = list(
-        "Make it {Sauce} sauce.",
-        "I'd like {Sauce} sauce."
+        "Make it \{Sauce\} sauce.",
+        "I'd like \{Sauce\} sauce."
       ),
       slotConstraint = "Required",
       slotType = "DocPizzaSauceType",
@@ -403,7 +403,8 @@ This operation requires permissions for the \code{lex:PutIntent} action.
       )
     )
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

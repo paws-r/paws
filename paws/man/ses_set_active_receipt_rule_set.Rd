@@ -28,11 +28,12 @@ You can execute this operation no more than once per second.
 }
 }
 
-\examples{
-# The following example sets the active receipt rule set:
-\donttest{svc$set_active_receipt_rule_set(
+\section{Examples}{
+\preformatted{# The following example sets the active receipt rule set:
+svc$set_active_receipt_rule_set(
   RuleSetName = "RuleSetToActivate"
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -50,6 +50,13 @@ import or export operations used to create or copy assets.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$cancel_job(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -78,10 +85,3 @@ import or export operations used to create or copy assets.
 }
 }
 
-\examples{
-\donttest{svc <- dataexchange()
-svc$cancel_job(
-  Foo = 123
-)}
-
-}

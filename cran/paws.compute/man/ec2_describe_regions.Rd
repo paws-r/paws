@@ -56,9 +56,10 @@ in the \emph{AWS General Reference}.
 }
 }
 
-\examples{
-# This example describes all the regions that are available to you.
-\donttest{svc$describe_regions()}
-
+\section{Examples}{
+\preformatted{# This example describes all the regions that are available to you.
+svc$describe_regions()
 }
+}
+
 \keyword{internal}

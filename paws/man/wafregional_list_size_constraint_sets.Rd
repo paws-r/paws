@@ -32,12 +32,13 @@ Returns an array of SizeConstraintSetSummary objects.
 }
 }
 
-\examples{
-# The following example returns an array of up to 100 size contraint match
+\section{Examples}{
+\preformatted{# The following example returns an array of up to 100 size contraint match
 # sets.
-\donttest{svc$list_size_constraint_sets(
+svc$list_size_constraint_sets(
   Limit = 100L
-)}
-
+)
 }
+}
+
 \keyword{internal}

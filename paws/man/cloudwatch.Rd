@@ -45,6 +45,13 @@ performance, and operational health.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$delete_alarms(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -80,10 +87,3 @@ performance, and operational health.
 }
 }
 
-\examples{
-\donttest{svc <- cloudwatch()
-svc$delete_alarms(
-  Foo = 123
-)}
-
-}

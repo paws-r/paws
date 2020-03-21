@@ -43,11 +43,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- costexplorer()
+#' @section Examples:
+#' ```
 #' svc$create_cost_category_definition(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

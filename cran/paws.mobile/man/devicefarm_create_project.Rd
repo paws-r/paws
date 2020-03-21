@@ -24,11 +24,12 @@ Creates a project.
 }
 }
 
-\examples{
-# The following example creates a new project named MyProject.
-\donttest{svc$create_project(
+\section{Examples}{
+\preformatted{# The following example creates a new project named MyProject.
+svc$create_project(
   name = "MyProject"
-)}
-
+)
 }
+}
+
 \keyword{internal}

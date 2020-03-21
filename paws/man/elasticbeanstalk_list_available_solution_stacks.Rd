@@ -11,11 +11,12 @@ elasticbeanstalk_list_available_solution_stacks()
 Returns a list of the available solution stack names, with the public
 version first and then in reverse chronological order.
 }
-\examples{
-# The following operation lists solution stacks for all currently
+\section{Examples}{
+\preformatted{# The following operation lists solution stacks for all currently
 # available platform configurations and any that you have used in the
 # past:
-\donttest{svc$list_available_solution_stacks()}
-
+svc$list_available_solution_stacks()
 }
+}
+
 \keyword{internal}

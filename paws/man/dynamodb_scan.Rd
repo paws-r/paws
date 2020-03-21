@@ -361,11 +361,11 @@ can set the \code{ConsistentRead} parameter to \code{true}.
 }
 }
 
-\examples{
-# This example scans the entire Music table, and then narrows the results
+\section{Examples}{
+\preformatted{# This example scans the entire Music table, and then narrows the results
 # to songs by the artist "No One You Know". For each item, only the album
 # title and song title are returned.
-\donttest{svc$scan(
+svc$scan(
   ExpressionAttributeNames = list(
     `#AT` = "AlbumTitle",
     `#ST` = "SongTitle"
@@ -378,7 +378,8 @@ can set the \code{ConsistentRead} parameter to \code{true}.
   FilterExpression = "Artist = :a",
   ProjectionExpression = "#ST, #AT",
   TableName = "Music"
-)}
-
+)
 }
+}
+
 \keyword{internal}

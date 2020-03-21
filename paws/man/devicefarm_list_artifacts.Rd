@@ -34,12 +34,13 @@ Gets information about artifacts.
 }
 }
 
-\examples{
-# The following example lists screenshot artifacts for a specific run.
-\donttest{svc$list_artifacts(
+\section{Examples}{
+\preformatted{# The following example lists screenshot artifacts for a specific run.
+svc$list_artifacts(
   type = "SCREENSHOT",
   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:EXAMPLE-GUID-123-456"
-)}
-
+)
 }
+}
+
 \keyword{internal}

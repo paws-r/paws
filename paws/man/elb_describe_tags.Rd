@@ -21,13 +21,14 @@ Describes the tags associated with the specified load balancers.
 }
 }
 
-\examples{
-# This example describes the tags for the specified load balancer.
-\donttest{svc$describe_tags(
+\section{Examples}{
+\preformatted{# This example describes the tags for the specified load balancer.
+svc$describe_tags(
   LoadBalancerNames = list(
     "my-load-balancer"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

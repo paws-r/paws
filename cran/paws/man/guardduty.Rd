@@ -45,6 +45,13 @@ information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-g
 }
 }
 
+\section{Examples}{
+\preformatted{svc$accept_invitation(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -101,10 +108,3 @@ information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-g
 }
 }
 
-\examples{
-\donttest{svc <- guardduty()
-svc$accept_invitation(
-  Foo = 123
-)}
-
-}

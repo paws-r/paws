@@ -96,9 +96,9 @@ You must turn on the gateway VM before you can activate your gateway.
 }
 }
 
-\examples{
-# Activates the gateway you previously deployed on your host.
-\donttest{svc$activate_gateway(
+\section{Examples}{
+\preformatted{# Activates the gateway you previously deployed on your host.
+svc$activate_gateway(
   ActivationKey = "29AV1-3OFV9-VVIUB-NKT0I-LRO6V",
   GatewayName = "My_Gateway",
   GatewayRegion = "us-east-1",
@@ -106,7 +106,8 @@ You must turn on the gateway VM before you can activate your gateway.
   GatewayType = "STORED",
   MediumChangerType = "AWS-Gateway-VTL",
   TapeDriveType = "IBM-ULT3580-TD5"
-)}
-
+)
 }
+}
+
 \keyword{internal}

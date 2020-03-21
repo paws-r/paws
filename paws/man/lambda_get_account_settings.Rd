@@ -16,9 +16,10 @@ usage in an AWS Region.
 }
 }
 
-\examples{
-# This operation retrieves a Lambda customer's account settings
-\donttest{svc$get_account_settings()}
-
+\section{Examples}{
+\preformatted{# This operation retrieves a Lambda customer's account settings
+svc$get_account_settings()
 }
+}
+
 \keyword{internal}

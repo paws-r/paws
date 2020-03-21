@@ -30,11 +30,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- personalize()
+#' @section Examples:
+#' ```
 #' svc$create_batch_inference_job(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

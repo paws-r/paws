@@ -36,12 +36,13 @@ Uploads the specified certificate.
 }
 }
 
-\examples{
-# Uploads the specified certificate.
-\donttest{svc$import_certificate(
+\section{Examples}{
+\preformatted{# Uploads the specified certificate.
+svc$import_certificate(
   CertificateIdentifier = "",
   CertificatePem = ""
-)}
-
+)
 }
+}
+
 \keyword{internal}

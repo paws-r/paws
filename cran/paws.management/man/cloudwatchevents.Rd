@@ -48,6 +48,13 @@ For more information about the features of Amazon EventBridge, see the
 }
 }
 
+\section{Examples}{
+\preformatted{svc$activate_event_source(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -85,10 +92,3 @@ For more information about the features of Amazon EventBridge, see the
 }
 }
 
-\examples{
-\donttest{svc <- cloudwatchevents()
-svc$activate_event_source(
-  Foo = 123
-)}
-
-}

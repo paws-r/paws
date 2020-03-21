@@ -33,6 +33,13 @@ list detectors, and view or update a detector\'s status.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$batch_put_message(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -43,10 +50,3 @@ list detectors, and view or update a detector\'s status.
 }
 }
 
-\examples{
-\donttest{svc <- ioteventsdata()
-svc$batch_put_message(
-  Foo = 123
-)}
-
-}

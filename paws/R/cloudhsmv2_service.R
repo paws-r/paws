@@ -31,11 +31,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- cloudhsmv2()
+#' @section Examples:
+#' ```
 #' svc$copy_backup_to_region(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

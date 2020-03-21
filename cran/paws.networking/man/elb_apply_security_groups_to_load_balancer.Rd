@@ -33,15 +33,16 @@ in the \emph{Classic Load Balancers Guide}.
 }
 }
 
-\examples{
-# This example associates a security group with the specified load
+\section{Examples}{
+\preformatted{# This example associates a security group with the specified load
 # balancer in a VPC.
-\donttest{svc$apply_security_groups_to_load_balancer(
+svc$apply_security_groups_to_load_balancer(
   LoadBalancerName = "my-load-balancer",
   SecurityGroups = list(
     "sg-fc448899"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

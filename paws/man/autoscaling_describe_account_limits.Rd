@@ -16,9 +16,10 @@ For information about requesting an increase in these limits, see
 \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html}{Amazon EC2 Auto Scaling Limits}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
-\examples{
-# This example describes the Auto Scaling limits for your AWS account.
-\donttest{svc$describe_account_limits()}
-
+\section{Examples}{
+\preformatted{# This example describes the Auto Scaling limits for your AWS account.
+svc$describe_account_limits()
 }
+}
+
 \keyword{internal}

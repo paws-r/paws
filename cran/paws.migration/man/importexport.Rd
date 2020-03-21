@@ -36,6 +36,13 @@ upgrading your connectivity.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$cancel_job(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -48,10 +55,3 @@ upgrading your connectivity.
 }
 }
 
-\examples{
-\donttest{svc <- importexport()
-svc$cancel_job(
-  Foo = 123
-)}
-
-}

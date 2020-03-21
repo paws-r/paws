@@ -88,13 +88,14 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 
-\examples{
-# This example stops the specified EC2 instance.
-\donttest{svc$stop_instances(
+\section{Examples}{
+\preformatted{# This example stops the specified EC2 instance.
+svc$stop_instances(
   InstanceIds = list(
     "i-1234567890abcdef0"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}
