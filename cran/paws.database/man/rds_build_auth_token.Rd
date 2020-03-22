@@ -38,11 +38,8 @@ for more information on using IAM database authentication with RDS.
 }
 }
 
-\examples{
-# This example gets an authentication token for an RDS database, then
-# connects to the database using the token.
-```
-host <- "database-1.cluster-abcdef123456.us-east-1.rds.amazonaws.com"
+\section{Examples}{
+This example gets an authentication token for an RDS database, thenconnects to the database using the token.\preformatted{host <- "database-1.cluster-abcdef123456.us-east-1.rds.amazonaws.com"
 port <- 3306
 user <- "jane_doe"
 token <- svc$build_auth_token(
@@ -58,7 +55,7 @@ conn <- DBI::dbConnect(
   port = port,
   client.flag = RMariaDB::CLIENT_SSL
 )
-```
-
 }
+}
+
 \keyword{internal}
