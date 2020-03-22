@@ -79,11 +79,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- codestarnotifications()
+#' @section Examples:
+#' ```
 #' svc$create_notification_rule(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

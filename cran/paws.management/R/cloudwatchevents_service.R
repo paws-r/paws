@@ -49,11 +49,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- cloudwatchevents()
+#' @section Examples:
+#' ```
 #' svc$activate_event_source(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

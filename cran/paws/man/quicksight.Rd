@@ -36,6 +36,13 @@ Amazon QuickSight.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$cancel_ingestion(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -107,10 +114,3 @@ Amazon QuickSight.
 }
 }
 
-\examples{
-\donttest{svc <- quicksight()
-svc$cancel_ingestion(
-  Foo = 123
-)}
-
-}

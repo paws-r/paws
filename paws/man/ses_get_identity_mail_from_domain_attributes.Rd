@@ -27,14 +27,15 @@ custom MAIL FROM attributes for up to 100 identities at a time.
 }
 }
 
-\examples{
-# The following example returns the custom MAIL FROM attributes for an
+\section{Examples}{
+\preformatted{# The following example returns the custom MAIL FROM attributes for an
 # identity:
-\donttest{svc$get_identity_mail_from_domain_attributes(
+svc$get_identity_mail_from_domain_attributes(
   Identities = list(
     "example.com"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

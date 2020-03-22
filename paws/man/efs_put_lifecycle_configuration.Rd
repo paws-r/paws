@@ -60,20 +60,21 @@ when you created the encrypted file system.
 }
 }
 
-\examples{
-# This operation enables lifecycle management on a file system by creating
+\section{Examples}{
+\preformatted{# This operation enables lifecycle management on a file system by creating
 # a new LifecycleConfiguration object. A LifecycleConfiguration object
 # defines when files in an Amazon EFS file system are automatically
 # transitioned to the lower-cost EFS Infrequent Access (IA) storage class.
 # A LifecycleConfiguration applies to all files in a file system.
-\donttest{svc$put_lifecycle_configuration(
+svc$put_lifecycle_configuration(
   FileSystemId = "fs-01234567",
   LifecyclePolicies = list(
     list(
       TransitionToIA = "AFTER_30_DAYS"
     )
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

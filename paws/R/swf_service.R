@@ -43,11 +43,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- swf()
+#' @section Examples:
+#' ```
 #' svc$count_closed_workflow_executions(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

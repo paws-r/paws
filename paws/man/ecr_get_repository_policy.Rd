@@ -24,12 +24,13 @@ Retrieves the repository policy for a specified repository.
 }
 }
 
-\examples{
-# This example obtains the repository policy for the repository named
+\section{Examples}{
+\preformatted{# This example obtains the repository policy for the repository named
 # ubuntu.
-\donttest{svc$get_repository_policy(
+svc$get_repository_policy(
   repositoryName = "ubuntu"
-)}
-
+)
 }
+}
+
 \keyword{internal}

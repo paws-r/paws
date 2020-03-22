@@ -102,9 +102,9 @@ Creates a replication task using the specified parameters.
 }
 }
 
-\examples{
-# Creates a replication task using the specified parameters.
-\donttest{svc$create_replication_task(
+\section{Examples}{
+\preformatted{# Creates a replication task using the specified parameters.
+svc$create_replication_task(
   CdcStartTime = "2016-12-14T18:25:43Z",
   MigrationType = "full-load",
   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJ...",
@@ -119,7 +119,8 @@ Creates a replication task using the specified parameters.
     )
   ),
   TargetEndpointArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ASXWXJZLNWNT5HTWCGV2BUJQ7..."
-)}
-
+)
 }
+}
+
 \keyword{internal}

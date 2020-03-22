@@ -54,11 +54,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- iotanalytics()
+#' @section Examples:
+#' ```
 #' svc$batch_put_message(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -43,12 +43,13 @@ in the \emph{AWS Key Management Service Developer Guide}.
 }
 }
 
-\examples{
-# The following example enables automatic annual rotation of the key
+\section{Examples}{
+\preformatted{# The following example enables automatic annual rotation of the key
 # material for the specified CMK.
-\donttest{svc$enable_key_rotation(
+svc$enable_key_rotation(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)}
-
+)
 }
+}
+
 \keyword{internal}

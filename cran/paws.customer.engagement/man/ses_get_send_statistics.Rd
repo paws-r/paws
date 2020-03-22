@@ -15,9 +15,10 @@ activity. Each data point in the list contains statistics for a
 \details{
 You can execute this operation no more than once per second.
 }
-\examples{
-# The following example returns Amazon SES sending statistics:
-\donttest{svc$get_send_statistics()}
-
+\section{Examples}{
+\preformatted{# The following example returns Amazon SES sending statistics:
+svc$get_send_statistics()
 }
+}
+
 \keyword{internal}

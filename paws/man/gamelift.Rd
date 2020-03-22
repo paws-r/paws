@@ -65,6 +65,13 @@ retrieve game logs, and get hosting and game metrics.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$accept_match(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -147,10 +154,3 @@ retrieve game logs, and get hosting and game metrics.
 }
 }
 
-\examples{
-\donttest{svc <- gamelift()
-svc$accept_match(
-  Foo = 123
-)}
-
-}

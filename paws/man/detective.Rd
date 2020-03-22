@@ -66,6 +66,13 @@ All API actions are logged as CloudTrail events. See \href{https://docs.aws.amaz
 }
 }
 
+\section{Examples}{
+\preformatted{svc$accept_invitation(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -83,10 +90,3 @@ All API actions are logged as CloudTrail events. See \href{https://docs.aws.amaz
 }
 }
 
-\examples{
-\donttest{svc <- detective()
-svc$accept_invitation(
-  Foo = 123
-)}
-
-}

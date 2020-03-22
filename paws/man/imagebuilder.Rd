@@ -41,6 +41,13 @@ on AWS.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$cancel_image_creation(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -89,10 +96,3 @@ on AWS.
 }
 }
 
-\examples{
-\donttest{svc <- imagebuilder()
-svc$cancel_image_creation(
-  Foo = 123
-)}
-
-}

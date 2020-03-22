@@ -33,6 +33,13 @@ for real-time processing of streaming big data.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$add_tags_to_stream(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -66,10 +73,3 @@ for real-time processing of streaming big data.
 }
 }
 
-\examples{
-\donttest{svc <- kinesis()
-svc$add_tags_to_stream(
-  Foo = 123
-)}
-
-}

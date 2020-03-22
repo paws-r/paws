@@ -59,12 +59,13 @@ The following operations are related to \code{ListObjects}:
 }
 }
 
-\examples{
-# The following example list two objects in a bucket.
-\donttest{svc$list_objects(
+\section{Examples}{
+\preformatted{# The following example list two objects in a bucket.
+svc$list_objects(
   Bucket = "examplebucket",
   MaxKeys = "2"
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -35,6 +35,13 @@ accessed or moved. For more information, see the \href{https://docs.aws.amazon.c
 }
 }
 
+\section{Examples}{
+\preformatted{svc$associate_member_account(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -48,10 +55,3 @@ accessed or moved. For more information, see the \href{https://docs.aws.amazon.c
 }
 }
 
-\examples{
-\donttest{svc <- macie()
-svc$associate_member_account(
-  Foo = 123
-)}
-
-}

@@ -31,11 +31,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- comprehendmedical()
+#' @section Examples:
+#' ```
 #' svc$describe_entities_detection_v2_job(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -47,11 +47,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- pi()
+#' @section Examples:
+#' ```
 #' svc$describe_dimension_keys(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

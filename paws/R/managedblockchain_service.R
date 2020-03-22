@@ -34,11 +34,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- managedblockchain()
+#' @section Examples:
+#' ```
 #' svc$create_member(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

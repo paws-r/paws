@@ -35,14 +35,15 @@ in the \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing
 }
 }
 
-\examples{
-# This operation returns a list of values available for the given
+\section{Examples}{
+\preformatted{# This operation returns a list of values available for the given
 # attribute.
-\donttest{svc$get_attribute_values(
+svc$get_attribute_values(
   AttributeName = "volumeType",
   MaxResults = 2L,
   ServiceCode = "AmazonEC2"
-)}
-
+)
 }
+}
+
 \keyword{internal}

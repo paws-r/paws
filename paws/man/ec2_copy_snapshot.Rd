@@ -118,17 +118,18 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 
-\examples{
-# This example copies a snapshot with the snapshot ID of
+\section{Examples}{
+\preformatted{# This example copies a snapshot with the snapshot ID of
 # `snap-066877671789bd71b` from the `us-west-2` region to the
 # `us-east-1` region and adds a short description to identify the
 # snapshot.
-\donttest{svc$copy_snapshot(
+svc$copy_snapshot(
   Description = "This is my copied snapshot.",
   DestinationRegion = "us-east-1",
   SourceRegion = "us-west-2",
   SourceSnapshotId = "snap-066877671789bd71b"
-)}
-
+)
 }
+}
+
 \keyword{internal}

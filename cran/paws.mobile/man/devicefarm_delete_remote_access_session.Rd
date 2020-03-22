@@ -20,11 +20,12 @@ Deletes a completed remote access session and its results.
 }
 }
 
-\examples{
-# The following example deletes a specific remote access session.
-\donttest{svc$delete_remote_access_session(
+\section{Examples}{
+\preformatted{# The following example deletes a specific remote access session.
+svc$delete_remote_access_session(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456"
-)}
-
+)
 }
+}
+
 \keyword{internal}

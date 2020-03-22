@@ -28,11 +28,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- kafka()
+#' @section Examples:
+#' ```
 #' svc$create_cluster(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

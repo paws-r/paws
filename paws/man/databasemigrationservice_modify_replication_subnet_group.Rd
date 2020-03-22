@@ -29,13 +29,14 @@ Modifies the settings for the specified replication subnet group.
 }
 }
 
-\examples{
-# Modifies the settings for the specified replication subnet group.
-\donttest{svc$modify_replication_subnet_group(
+\section{Examples}{
+\preformatted{# Modifies the settings for the specified replication subnet group.
+svc$modify_replication_subnet_group(
   ReplicationSubnetGroupDescription = "",
   ReplicationSubnetGroupIdentifier = "",
   SubnetIds = list()
-)}
-
+)
 }
+}
+
 \keyword{internal}

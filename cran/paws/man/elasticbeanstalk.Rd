@@ -45,6 +45,15 @@ in the \emph{Amazon Web Services Glossary}.
 }
 }
 
+\section{Examples}{
+\preformatted{# The following code aborts a running application version deployment for
+# an environment named my-env:
+svc$abort_environment_update(
+  EnvironmentName = "my-env"
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -95,12 +104,3 @@ in the \emph{Amazon Web Services Glossary}.
 }
 }
 
-\examples{
-# The following code aborts a running application version deployment for
-# an environment named my-env:
-\donttest{svc <- elasticbeanstalk()
-svc$abort_environment_update(
-  EnvironmentName = "my-env"
-)}
-
-}

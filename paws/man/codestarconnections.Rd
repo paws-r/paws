@@ -60,6 +60,13 @@ For information about how to use AWS CodeStar Connections, see the \href{https:/
 }
 }
 
+\section{Examples}{
+\preformatted{svc$create_connection(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -70,10 +77,3 @@ For information about how to use AWS CodeStar Connections, see the \href{https:/
 }
 }
 
-\examples{
-\donttest{svc <- codestarconnections()
-svc$create_connection(
-  Foo = 123
-)}
-
-}

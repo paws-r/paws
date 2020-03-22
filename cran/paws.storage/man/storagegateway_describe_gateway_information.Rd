@@ -24,13 +24,14 @@ not). To specify which gateway to describe, use the Amazon Resource Name
 }
 }
 
-\examples{
-# Returns metadata about a gateway such as its name, network interfaces,
+\section{Examples}{
+\preformatted{# Returns metadata about a gateway such as its name, network interfaces,
 # configured time zone, and the state (whether the gateway is running or
 # not).
-\donttest{svc$describe_gateway_information(
+svc$describe_gateway_information(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)}
-
+)
 }
+}
+
 \keyword{internal}

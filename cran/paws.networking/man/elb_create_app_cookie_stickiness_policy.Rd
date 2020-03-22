@@ -45,14 +45,15 @@ in the \emph{Classic Load Balancers Guide}.
 }
 }
 
-\examples{
-# This example generates a stickiness policy that follows the sticky
+\section{Examples}{
+\preformatted{# This example generates a stickiness policy that follows the sticky
 # session lifetimes of the application-generated cookie.
-\donttest{svc$create_app_cookie_stickiness_policy(
+svc$create_app_cookie_stickiness_policy(
   CookieName = "my-app-cookie",
   LoadBalancerName = "my-load-balancer",
   PolicyName = "my-app-cookie-policy"
-)}
-
+)
 }
+}
+
 \keyword{internal}

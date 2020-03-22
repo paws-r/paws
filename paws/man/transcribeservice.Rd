@@ -30,6 +30,13 @@ Operations and objects for transcribing speech to text.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$create_vocabulary(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -50,10 +57,3 @@ Operations and objects for transcribing speech to text.
 }
 }
 
-\examples{
-\donttest{svc <- transcribeservice()
-svc$create_vocabulary(
-  Foo = 123
-)}
-
-}

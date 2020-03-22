@@ -33,6 +33,13 @@ Microsoft Windows and Amazon Linux desktops for your users.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$associate_ip_groups(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -80,10 +87,3 @@ Microsoft Windows and Amazon Linux desktops for your users.
 }
 }
 
-\examples{
-\donttest{svc <- workspaces()
-svc$associate_ip_groups(
-  Foo = 123
-)}
-
-}

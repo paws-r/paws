@@ -21,11 +21,12 @@ the form of an \code{Address} object.
 }
 }
 
-\examples{
-# This operation describes an address for a job.
-\donttest{svc$describe_address(
+\section{Examples}{
+\preformatted{# This operation describes an address for a job.
+svc$describe_address(
   AddressId = "ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b"
-)}
-
+)
 }
+}
+
 \keyword{internal}

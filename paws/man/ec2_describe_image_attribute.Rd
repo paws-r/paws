@@ -34,12 +34,13 @@ only one attribute at a time.
 }
 }
 
-\examples{
-# This example describes the launch permissions for the specified AMI.
-\donttest{svc$describe_image_attribute(
+\section{Examples}{
+\preformatted{# This example describes the launch permissions for the specified AMI.
+svc$describe_image_attribute(
   Attribute = "launchPermission",
   ImageId = "ami-5731123e"
-)}
-
+)
 }
+}
+
 \keyword{internal}

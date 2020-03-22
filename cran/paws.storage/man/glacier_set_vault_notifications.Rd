@@ -69,9 +69,9 @@ in the \emph{Amazon Glacier Developer Guide}.
 }
 }
 
-\examples{
-# The example sets the examplevault notification configuration.
-\donttest{svc$set_vault_notifications(
+\section{Examples}{
+\preformatted{# The example sets the examplevault notification configuration.
+svc$set_vault_notifications(
   accountId = "-",
   vaultName = "examplevault",
   vaultNotificationConfig = list(
@@ -81,7 +81,8 @@ in the \emph{Amazon Glacier Developer Guide}.
     ),
     SNSTopic = "arn:aws:sns:us-west-2:012345678901:mytopic"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

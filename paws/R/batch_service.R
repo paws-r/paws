@@ -46,13 +46,14 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This example cancels a job with the specified job ID.
-#' \donttest{svc <- batch()
 #' svc$cancel_job(
 #'   jobId = "1d828f65-7a4d-42e8-996d-3b900ed59dc4",
 #'   reason = "Cancelling job."
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

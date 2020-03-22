@@ -31,6 +31,13 @@ related operations.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$check_domain_availability(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -61,10 +68,3 @@ related operations.
 }
 }
 
-\examples{
-\donttest{svc <- route53domains()
-svc$check_domain_availability(
-  Foo = 123
-)}
-
-}

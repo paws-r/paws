@@ -24,13 +24,14 @@ This command does not take any parameters.
 }
 }
 
-\examples{
-# Lists all of the AWS DMS attributes for a customer account. The
+\section{Examples}{
+\preformatted{# Lists all of the AWS DMS attributes for a customer account. The
 # attributes include AWS DMS quotas for the account, such as the number of
 # replication instances allowed. The description for a quota includes the
 # quota name, current usage toward that quota, and the quota's maximum
 # value. This operation does not take any parameters.
-\donttest{svc$describe_account_attributes()}
-
+svc$describe_account_attributes()
 }
+}
+
 \keyword{internal}

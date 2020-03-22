@@ -164,11 +164,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- codepipeline()
+#' @section Examples:
+#' ```
 #' svc$acknowledge_job(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -35,11 +35,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- macie()
+#' @section Examples:
+#' ```
 #' svc$associate_member_account(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

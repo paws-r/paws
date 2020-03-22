@@ -41,6 +41,13 @@ in the \emph{Amazon Connect Administrator Guide}.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$create_user(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -76,10 +83,3 @@ in the \emph{Amazon Connect Administrator Guide}.
 }
 }
 
-\examples{
-\donttest{svc <- connect()
-svc$create_user(
-  Foo = 123
-)}
-
-}

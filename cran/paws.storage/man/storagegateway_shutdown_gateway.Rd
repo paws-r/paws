@@ -42,12 +42,13 @@ the gateway.
 }
 }
 
-\examples{
-# This operation shuts down the gateway service component running in the
+\section{Examples}{
+\preformatted{# This operation shuts down the gateway service component running in the
 # storage gateway's virtual machine (VM) and not the VM.
-\donttest{svc$shutdown_gateway(
+svc$shutdown_gateway(
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B"
-)}
-
+)
 }
+}
+
 \keyword{internal}

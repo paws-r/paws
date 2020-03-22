@@ -71,6 +71,13 @@ This reference is intended to be used with the \href{http://docs.aws.amazon.com/
 }
 }
 
+\section{Examples}{
+\preformatted{svc$create_application(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -106,10 +113,3 @@ This reference is intended to be used with the \href{http://docs.aws.amazon.com/
 }
 }
 
-\examples{
-\donttest{svc <- appconfig()
-svc$create_application(
-  Foo = 123
-)}
-
-}

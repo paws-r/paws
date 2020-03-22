@@ -40,6 +40,13 @@ shared devices in their organization.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$approve_skill(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -139,10 +146,3 @@ shared devices in their organization.
 }
 }
 
-\examples{
-\donttest{svc <- alexaforbusiness()
-svc$approve_skill(
-  Foo = 123
-)}
-
-}

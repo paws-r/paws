@@ -40,15 +40,16 @@ Retrieve a list of application versions.
 }
 }
 
-\examples{
-# The following operation retrieves information about an application
+\section{Examples}{
+\preformatted{# The following operation retrieves information about an application
 # version labeled v2:
-\donttest{svc$describe_application_versions(
+svc$describe_application_versions(
   ApplicationName = "my-app",
   VersionLabels = list(
     "v2"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

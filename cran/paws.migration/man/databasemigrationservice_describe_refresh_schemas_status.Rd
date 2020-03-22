@@ -20,11 +20,12 @@ Returns the status of the RefreshSchemas operation.
 }
 }
 
-\examples{
-# Returns the status of the refresh-schemas operation.
-\donttest{svc$describe_refresh_schemas_status(
+\section{Examples}{
+\preformatted{# Returns the status of the refresh-schemas operation.
+svc$describe_refresh_schemas_status(
   EndpointArn = ""
-)}
-
+)
 }
+}
+
 \keyword{internal}

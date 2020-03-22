@@ -35,6 +35,13 @@ Redshift, and Splunk.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$create_delivery_stream(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -53,10 +60,3 @@ Redshift, and Splunk.
 }
 }
 
-\examples{
-\donttest{svc <- firehose()
-svc$create_delivery_stream(
-  Foo = 123
-)}
-
-}

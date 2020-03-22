@@ -66,13 +66,14 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\examples{
-# The following command attaches a policy to the IAM user named Bob.
-\donttest{svc$put_user_policy(
-  PolicyDocument = "{\"Version\":\"2012-10-17\",\"Statement\":{\"Effect\":\"Allow\",...",
+\section{Examples}{
+\preformatted{# The following command attaches a policy to the IAM user named Bob.
+svc$put_user_policy(
+  PolicyDocument = "\{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":\{\\"Effect\\":\\"Allow\\",...",
   PolicyName = "AllAccessPolicy",
   UserName = "Bob"
-)}
-
+)
 }
+}
+
 \keyword{internal}

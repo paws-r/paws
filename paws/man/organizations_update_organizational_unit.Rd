@@ -39,13 +39,14 @@ account.
 }
 }
 
-\examples{
-# The following example shows how to rename an OU. The output confirms the
+\section{Examples}{
+\preformatted{# The following example shows how to rename an OU. The output confirms the
 # new name:/n/n
-\donttest{svc$update_organizational_unit(
+svc$update_organizational_unit(
   Name = "AccountingOU",
   OrganizationalUnitId = "ou-examplerootid111-exampleouid111"
-)}
-
+)
 }
+}
+
 \keyword{internal}

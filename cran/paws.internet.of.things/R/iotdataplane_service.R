@@ -37,11 +37,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- iotdataplane()
+#' @section Examples:
+#' ```
 #' svc$delete_thing_shadow(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

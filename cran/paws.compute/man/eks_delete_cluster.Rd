@@ -31,12 +31,13 @@ DeleteNodegroup andDeleteFargateProfile.
 }
 }
 
-\examples{
-# This example command deletes a cluster named `devel` in your default
+\section{Examples}{
+\preformatted{# This example command deletes a cluster named `devel` in your default
 # region.
-\donttest{svc$delete_cluster(
+svc$delete_cluster(
   name = "devel"
-)}
-
+)
 }
+}
+
 \keyword{internal}

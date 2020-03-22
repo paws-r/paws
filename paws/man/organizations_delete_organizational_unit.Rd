@@ -33,14 +33,15 @@ account.
 }
 }
 
-\examples{
-# The following example shows how to delete an OU. The example assumes
+\section{Examples}{
+\preformatted{# The following example shows how to delete an OU. The example assumes
 # that you previously removed all accounts and other OUs from the OU:
 # 
 # 
-\donttest{svc$delete_organizational_unit(
+svc$delete_organizational_unit(
   OrganizationalUnitId = "ou-examplerootid111-exampleouid111"
-)}
-
+)
 }
+}
+
 \keyword{internal}

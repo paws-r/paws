@@ -30,13 +30,14 @@ Adds the specified user to the specified group.
 }
 }
 
-\examples{
-# The following command adds an IAM user named Bob to the IAM group named
+\section{Examples}{
+\preformatted{# The following command adds an IAM user named Bob to the IAM group named
 # Admins:
-\donttest{svc$add_user_to_group(
+svc$add_user_to_group(
   GroupName = "Admins",
   UserName = "Bob"
-)}
-
+)
 }
+}
+
 \keyword{internal}

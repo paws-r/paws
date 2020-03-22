@@ -65,12 +65,12 @@ selected the requests in the sample.
 }
 }
 
-\examples{
-# The following example returns detailed information about 100 requests
+\section{Examples}{
+\preformatted{# The following example returns detailed information about 100 requests
 # --a sample-- that AWS WAF randomly selects from among the first 5,000
 # requests that your AWS resource received between the time period
 # 2016-09-27T15:50Z to 2016-09-27T15:50Z.
-\donttest{svc$get_sampled_requests(
+svc$get_sampled_requests(
   MaxItems = 100L,
   RuleId = "WAFRule-1-Example",
   TimeWindow = list(
@@ -78,7 +78,8 @@ selected the requests in the sample.
     StartTime = "2016-09-27T15:50Z"
   ),
   WebAclId = "createwebacl-1472061481310"
-)}
-
+)
 }
+}
+
 \keyword{internal}

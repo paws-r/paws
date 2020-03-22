@@ -25,12 +25,13 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\examples{
-# The following command associates the alias examplecorp to your AWS
+\section{Examples}{
+\preformatted{# The following command associates the alias examplecorp to your AWS
 # account.
-\donttest{svc$create_account_alias(
+svc$create_account_alias(
   AccountAlias = "examplecorp"
-)}
-
+)
 }
+}
+
 \keyword{internal}

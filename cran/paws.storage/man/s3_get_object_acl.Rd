@@ -52,12 +52,13 @@ The following operations are related to \code{GetObjectAcl}:
 }
 }
 
-\examples{
-# The following example retrieves access control list (ACL) of an object.
-\donttest{svc$get_object_acl(
+\section{Examples}{
+\preformatted{# The following example retrieves access control list (ACL) of an object.
+svc$get_object_acl(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
-)}
-
+)
 }
+}
+
 \keyword{internal}

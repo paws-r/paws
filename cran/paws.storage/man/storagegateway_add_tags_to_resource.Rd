@@ -48,9 +48,9 @@ storage volumes that are recovered to a new gateway maintain their tags.
 }
 }
 
-\examples{
-# Adds one or more tags to the specified resource.
-\donttest{svc$add_tags_to_resource(
+\section{Examples}{
+\preformatted{# Adds one or more tags to the specified resource.
+svc$add_tags_to_resource(
   ResourceARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-11A2222B",
   Tags = list(
     list(
@@ -58,7 +58,8 @@ storage volumes that are recovered to a new gateway maintain their tags.
       Value = "East Coast"
     )
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

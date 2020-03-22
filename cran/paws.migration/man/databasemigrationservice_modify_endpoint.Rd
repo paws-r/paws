@@ -198,9 +198,9 @@ Modifies the specified endpoint.
 }
 }
 
-\examples{
-# Modifies the specified endpoint.
-\donttest{svc$modify_endpoint(
+\section{Examples}{
+\preformatted{# Modifies the specified endpoint.
+svc$modify_endpoint(
   CertificateArn = "",
   DatabaseName = "",
   EndpointArn = "",
@@ -213,7 +213,8 @@ Modifies the specified endpoint.
   ServerName = "",
   SslMode = "require",
   Username = ""
-)}
-
+)
 }
+}
+
 \keyword{internal}

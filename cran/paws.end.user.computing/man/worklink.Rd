@@ -38,6 +38,13 @@ content on mobile devices.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$associate_domain(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -74,10 +81,3 @@ content on mobile devices.
 }
 }
 
-\examples{
-\donttest{svc <- worklink()
-svc$associate_domain(
-  Foo = 123
-)}
-
-}

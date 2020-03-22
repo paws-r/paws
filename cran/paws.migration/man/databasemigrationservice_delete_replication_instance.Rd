@@ -25,15 +25,16 @@ replication instance before you can delete it.
 }
 }
 
-\examples{
-# Deletes the specified replication instance. You must delete any
+\section{Examples}{
+\preformatted{# Deletes the specified replication instance. You must delete any
 # migration tasks that are associated with the replication instance before
 # you can delete it.
 # 
 # 
-\donttest{svc$delete_replication_instance(
+svc$delete_replication_instance(
   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJ..."
-)}
-
+)
 }
+}
+
 \keyword{internal}

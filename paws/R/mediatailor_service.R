@@ -39,11 +39,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- mediatailor()
+#' @section Examples:
+#' ```
 #' svc$delete_playback_configuration(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

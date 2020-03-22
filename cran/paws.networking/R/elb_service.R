@@ -55,9 +55,9 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This example adds two tags to the specified load balancer.
-#' \donttest{svc <- elb()
 #' svc$add_tags(
 #'   LoadBalancerNames = list(
 #'     "my-load-balancer"
@@ -72,7 +72,8 @@ NULL
 #'       Value = "digital-media"
 #'     )
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

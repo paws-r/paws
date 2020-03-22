@@ -76,11 +76,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- chime()
+#' @section Examples:
+#' ```
 #' svc$associate_phone_number_with_user(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -37,12 +37,12 @@ address is invalid or unsupported, then an exception is thrown.
 }
 }
 
-\examples{
-# This operation creates an address for a job. Addresses are validated at
+\section{Examples}{
+\preformatted{# This operation creates an address for a job. Addresses are validated at
 # the time of creation. The address you provide must be located within the
 # serviceable area of your region. If the address is invalid or
 # unsupported, then an exception is thrown.
-\donttest{svc$create_address(
+svc$create_address(
   Address = list(
     City = "Seattle",
     Company = "My Company's Name",
@@ -53,7 +53,8 @@ address is invalid or unsupported, then an exception is thrown.
     StateOrProvince = "WA",
     Street1 = "123 Main Street"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

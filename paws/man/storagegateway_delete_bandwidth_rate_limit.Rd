@@ -30,13 +30,14 @@ stored volume, cached volume and tape gateway types.
 }
 }
 
-\examples{
-# Deletes the bandwidth rate limits of a gateway; either the upload or
+\section{Examples}{
+\preformatted{# Deletes the bandwidth rate limits of a gateway; either the upload or
 # download limit, or both.
-\donttest{svc$delete_bandwidth_rate_limit(
+svc$delete_bandwidth_rate_limit(
   BandwidthType = "All",
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -37,9 +37,9 @@ This operation requires permission for the
 }
 }
 
-\examples{
-# This operation creates a new tag for an EFS file system.
-\donttest{svc$create_tags(
+\section{Examples}{
+\preformatted{# This operation creates a new tag for an EFS file system.
+svc$create_tags(
   FileSystemId = "fs-01234567",
   Tags = list(
     list(
@@ -47,7 +47,8 @@ This operation requires permission for the
       Value = "MyFileSystem"
     )
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

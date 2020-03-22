@@ -19,11 +19,12 @@ Deletes the specified certificate.
 }
 }
 
-\examples{
-# Deletes the specified certificate.
-\donttest{svc$delete_certificate(
+\section{Examples}{
+\preformatted{# Deletes the specified certificate.
+svc$delete_certificate(
   CertificateArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUSM457DE6XFJCJQ"
-)}
-
+)
 }
+}
+
 \keyword{internal}

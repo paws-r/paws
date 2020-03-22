@@ -42,11 +42,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- iot()
+#' @section Examples:
+#' ```
 #' svc$accept_certificate_transfer(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

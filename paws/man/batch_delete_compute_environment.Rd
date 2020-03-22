@@ -26,11 +26,12 @@ operation.
 }
 }
 
-\examples{
-# This example deletes the P2OnDemand compute environment.
-\donttest{svc$delete_compute_environment(
+\section{Examples}{
+\preformatted{# This example deletes the P2OnDemand compute environment.
+svc$delete_compute_environment(
   computeEnvironment = "P2OnDemand"
-)}
-
+)
 }
+}
+
 \keyword{internal}

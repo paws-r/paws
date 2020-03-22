@@ -41,11 +41,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- rdsdataservice()
+#' @section Examples:
+#' ```
 #' svc$batch_execute_statement(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -30,6 +30,13 @@ API for AWS Elemental MediaLive
 }
 }
 
+\section{Examples}{
+\preformatted{svc$batch_update_schedule(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -79,10 +86,3 @@ API for AWS Elemental MediaLive
 }
 }
 
-\examples{
-\donttest{svc <- medialive()
-svc$batch_update_schedule(
-  Foo = 123
-)}
-
-}

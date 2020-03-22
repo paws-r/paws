@@ -96,11 +96,11 @@ Some settings are applied during the maintenance window.
 }
 }
 
-\examples{
-# Modifies the replication instance to apply new settings. You can change
+\section{Examples}{
+\preformatted{# Modifies the replication instance to apply new settings. You can change
 # one or more parameters by specifying these parameters and the new values
 # in the request. Some settings are applied during the maintenance window.
-\donttest{svc$modify_replication_instance(
+svc$modify_replication_instance(
   AllocatedStorage = 123L,
   AllowMajorVersionUpgrade = TRUE,
   ApplyImmediately = TRUE,
@@ -112,7 +112,8 @@ Some settings are applied during the maintenance window.
   ReplicationInstanceClass = "dms.t2.micro",
   ReplicationInstanceIdentifier = "test-rep-1",
   VpcSecurityGroupIds = list()
-)}
-
+)
 }
+}
+
 \keyword{internal}

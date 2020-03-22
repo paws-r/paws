@@ -49,6 +49,13 @@ information about how to use a Query API, see \href{http://docs.aws.amazon.com/A
 }
 }
 
+\section{Examples}{
+\preformatted{svc$add_tags_to_resource(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -177,10 +184,3 @@ information about how to use a Query API, see \href{http://docs.aws.amazon.com/A
 }
 }
 
-\examples{
-\donttest{svc <- ssm()
-svc$add_tags_to_resource(
-  Foo = 123
-)}
-
-}

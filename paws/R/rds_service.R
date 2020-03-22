@@ -78,11 +78,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- rds()
+#' @section Examples:
+#' ```
 #' svc$add_role_to_db_cluster(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

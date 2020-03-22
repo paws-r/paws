@@ -40,13 +40,14 @@ You can execute this operation no more than once per second.
 }
 }
 
-\examples{
-# The following example deletes a sending authorization policy for an
+\section{Examples}{
+\preformatted{# The following example deletes a sending authorization policy for an
 # identity:
-\donttest{svc$delete_identity_policy(
+svc$delete_identity_policy(
   Identity = "user@example.com",
   PolicyName = "MyPolicy"
-)}
-
+)
 }
+}
+
 \keyword{internal}

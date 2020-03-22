@@ -45,16 +45,17 @@ your gateway\'s time zone.
 }
 }
 
-\examples{
-# Updates a gateway's weekly maintenance start time information, including
+\section{Examples}{
+\preformatted{# Updates a gateway's weekly maintenance start time information, including
 # day and time of the week. The maintenance time is in your gateway's time
 # zone.
-\donttest{svc$update_maintenance_start_time(
+svc$update_maintenance_start_time(
   DayOfWeek = 2L,
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
   HourOfDay = 0L,
   MinuteOfHour = 30L
-)}
-
+)
 }
+}
+
 \keyword{internal}

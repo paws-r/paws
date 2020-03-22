@@ -166,11 +166,11 @@ different version, use the \code{versionId} subresource.
 }
 }
 
-\examples{
-# The following example adds grants to an object ACL. The first permission
+\section{Examples}{
+\preformatted{# The following example adds grants to an object ACL. The first permission
 # grants user1 and user2 FULL_CONTROL and the AllUsers group READ
 # permission.
-\donttest{svc$put_object_acl(
+svc$put_object_acl(
   AccessControlPolicy = structure(
     list(),
     .Names = character(
@@ -181,7 +181,8 @@ different version, use the \code{versionId} subresource.
   GrantFullControl = "emailaddress=user1@example.com,emailaddress=user2@example.com",
   GrantRead = "uri=http://acs.amazonaws.com/groups/global/AllUsers",
   Key = "HappyFace.jpg"
-)}
-
+)
 }
+}
+
 \keyword{internal}

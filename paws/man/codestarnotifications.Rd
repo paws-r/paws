@@ -75,6 +75,13 @@ the CodeStarNotifications User Guide.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$create_notification_rule(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -94,10 +101,3 @@ the CodeStarNotifications User Guide.
 }
 }
 
-\examples{
-\donttest{svc <- codestarnotifications()
-svc$create_notification_rule(
-  Foo = 123
-)}
-
-}

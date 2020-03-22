@@ -43,13 +43,14 @@ Describes one or more of your job queues.
 }
 }
 
-\examples{
-# This example describes the HighPriority job queue.
-\donttest{svc$describe_job_queues(
+\section{Examples}{
+\preformatted{# This example describes the HighPriority job queue.
+svc$describe_job_queues(
   jobQueues = list(
     "HighPriority"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -115,11 +115,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- globalaccelerator()
+#' @section Examples:
+#' ```
 #' svc$create_accelerator(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

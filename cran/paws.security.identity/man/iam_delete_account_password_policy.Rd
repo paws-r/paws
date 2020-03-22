@@ -10,10 +10,11 @@ iam_delete_account_password_policy()
 Deletes the password policy for the AWS account. There are no
 parameters.
 }
-\examples{
-# The following command removes the password policy from the current AWS
+\section{Examples}{
+\preformatted{# The following command removes the password policy from the current AWS
 # account:
-\donttest{svc$delete_account_password_policy()}
-
+svc$delete_account_password_policy()
 }
+}
+
 \keyword{internal}

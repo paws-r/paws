@@ -28,11 +28,12 @@ default set of options with the VPC.
 }
 }
 
-\examples{
-# This example deletes the specified DHCP options set.
-\donttest{svc$delete_dhcp_options(
+\section{Examples}{
+\preformatted{# This example deletes the specified DHCP options set.
+svc$delete_dhcp_options(
   DhcpOptionsId = "dopt-d9070ebb"
-)}
-
+)
 }
+}
+
 \keyword{internal}

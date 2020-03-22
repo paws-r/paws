@@ -27,12 +27,13 @@ version deployment.
 }
 }
 
-\examples{
-# The following code aborts a running application version deployment for
+\section{Examples}{
+\preformatted{# The following code aborts a running application version deployment for
 # an environment named my-env:
-\donttest{svc$abort_environment_update(
+svc$abort_environment_update(
   EnvironmentName = "my-env"
-)}
-
+)
 }
+}
+
 \keyword{internal}

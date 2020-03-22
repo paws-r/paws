@@ -30,6 +30,13 @@ Example service documentation.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$configure_agent(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -45,10 +52,3 @@ Example service documentation.
 }
 }
 
-\examples{
-\donttest{svc <- codeguruprofiler()
-svc$configure_agent(
-  Foo = 123
-)}
-
-}

@@ -21,12 +21,13 @@ information, cluster status, and other important metadata.
 }
 }
 
-\examples{
-# Returns information about a specific cluster including shipping
+\section{Examples}{
+\preformatted{# Returns information about a specific cluster including shipping
 # information, cluster status, and other important metadata.
-\donttest{svc$describe_cluster(
+svc$describe_cluster(
   ClusterId = "CID123e4567-e89b-12d3-a456-426655440000"
-)}
-
+)
 }
+}
+
 \keyword{internal}

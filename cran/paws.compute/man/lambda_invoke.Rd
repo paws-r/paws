@@ -101,16 +101,17 @@ action.
 }
 }
 
-\examples{
-# This operation invokes a Lambda function
-\donttest{svc$invoke(
+\section{Examples}{
+\preformatted{# This operation invokes a Lambda function
+svc$invoke(
   ClientContext = "MyApp",
   FunctionName = "MyFunction",
   InvocationType = "Event",
   LogType = "Tail",
   Payload = "fileb://file-path/input.json",
   Qualifier = "1"
-)}
-
+)
 }
+}
+
 \keyword{internal}

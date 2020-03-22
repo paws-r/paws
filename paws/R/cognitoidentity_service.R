@@ -49,11 +49,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- cognitoidentity()
+#' @section Examples:
+#' ```
 #' svc$create_identity_pool(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

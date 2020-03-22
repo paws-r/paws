@@ -43,6 +43,13 @@ For a list of available SDKs, go to \href{http://aws.amazon.com/tools/}{Tools fo
 }
 }
 
+\section{Examples}{
+\preformatted{svc$add_permission(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -82,10 +89,3 @@ For a list of available SDKs, go to \href{http://aws.amazon.com/tools/}{Tools fo
 }
 }
 
-\examples{
-\donttest{svc <- sns()
-svc$add_permission(
-  Foo = 123
-)}
-
-}

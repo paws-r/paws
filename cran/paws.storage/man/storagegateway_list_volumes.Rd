@@ -40,14 +40,15 @@ is only supported in the cached volume and stored volume gateway types.
 }
 }
 
-\examples{
-# Lists the iSCSI stored volumes of a gateway. Results are sorted by
+\section{Examples}{
+\preformatted{# Lists the iSCSI stored volumes of a gateway. Results are sorted by
 # volume ARN up to a maximum of 100 volumes.
-\donttest{svc$list_volumes(
+svc$list_volumes(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
   Limit = 2L,
   Marker = "1"
-)}
-
+)
 }
+}
+
 \keyword{internal}

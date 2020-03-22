@@ -63,11 +63,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- codestarconnections()
+#' @section Examples:
+#' ```
 #' svc$create_connection(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

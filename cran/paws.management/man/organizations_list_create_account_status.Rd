@@ -53,22 +53,23 @@ account.
 }
 }
 
-\examples{
-# The following example shows a user requesting a list of only the
+\section{Examples}{
+\preformatted{# The following example shows a user requesting a list of only the
 # completed account creation requests made for the current organization:
-\donttest{svc$list_create_account_status(
+svc$list_create_account_status(
   States = list(
     "SUCCEEDED"
   )
-)}
+)
 
 # The following example shows a user requesting a list of only the
 # in-progress account creation requests made for the current organization:
-\donttest{svc$list_create_account_status(
+svc$list_create_account_status(
   States = list(
     "IN_PROGRESS"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

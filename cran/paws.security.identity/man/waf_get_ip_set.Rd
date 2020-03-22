@@ -20,12 +20,13 @@ Returns the IPSet that is specified by \code{IPSetId}.
 }
 }
 
-\examples{
-# The following example returns the details of an IP match set with the ID
+\section{Examples}{
+\preformatted{# The following example returns the details of an IP match set with the ID
 # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-\donttest{svc$get_ip_set(
+svc$get_ip_set(
   IPSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-)}
-
+)
 }
+}
+
 \keyword{internal}

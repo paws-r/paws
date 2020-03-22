@@ -60,6 +60,13 @@ search results
 }
 }
 
+\section{Examples}{
+\preformatted{svc$create_group(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -78,10 +85,3 @@ search results
 }
 }
 
-\examples{
-\donttest{svc <- resourcegroups()
-svc$create_group(
-  Foo = 123
-)}
-
-}

@@ -39,13 +39,15 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' #
-#' \donttest{svc$describe_services(
+#' svc$describe_services(
 #'   FormatVersion = "aws_v1",
 #'   MaxResults = 1L,
 #'   ServiceCode = "AmazonEC2"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -98,14 +100,16 @@ pricing_describe_services <- function(ServiceCode = NULL, FormatVersion = NULL, 
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This operation returns a list of values available for the given
 #' # attribute.
-#' \donttest{svc$get_attribute_values(
+#' svc$get_attribute_values(
 #'   AttributeName = "volumeType",
 #'   MaxResults = 2L,
 #'   ServiceCode = "AmazonEC2"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -162,9 +166,10 @@ pricing_get_attribute_values <- function(ServiceCode, AttributeName, NextToken =
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This operation returns a list of products that match the given criteria.
-#' \donttest{svc$get_products(
+#' svc$get_products(
 #'   Filters = list(
 #'     list(
 #'       Field = "ServiceCode",
@@ -179,7 +184,8 @@ pricing_get_attribute_values <- function(ServiceCode, AttributeName, NextToken =
 #'   ),
 #'   FormatVersion = "aws_v1",
 #'   MaxResults = 1L
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'

@@ -38,11 +38,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- directconnect()
+#' @section Examples:
+#' ```
 #' svc$accept_direct_connect_gateway_association_proposal(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

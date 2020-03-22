@@ -45,12 +45,13 @@ retire a grant, use RetireGrant.
 }
 }
 
-\examples{
-# The following example lists the grants that the specified principal
+\section{Examples}{
+\preformatted{# The following example lists the grants that the specified principal
 # (identity) can retire.
-\donttest{svc$list_retirable_grants(
+svc$list_retirable_grants(
   RetiringPrincipal = "arn:aws:iam::111122223333:role/ExampleRole"
-)}
-
+)
 }
+}
+
 \keyword{internal}

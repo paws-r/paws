@@ -30,14 +30,15 @@ terminated immediately.
 }
 }
 
-\examples{
-# This example terminates the specified instance from the specified Auto
+\section{Examples}{
+\preformatted{# This example terminates the specified instance from the specified Auto
 # Scaling group without updating the size of the group. Auto Scaling
 # launches a replacement instance after the specified instance terminates.
-\donttest{svc$terminate_instance_in_auto_scaling_group(
+svc$terminate_instance_in_auto_scaling_group(
   InstanceId = "i-93633f9b",
   ShouldDecrementDesiredCapacity = FALSE
-)}
-
+)
 }
+}
+
 \keyword{internal}

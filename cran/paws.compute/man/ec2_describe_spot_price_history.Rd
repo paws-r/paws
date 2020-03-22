@@ -93,10 +93,10 @@ price changed.
 }
 }
 
-\examples{
-# This example returns the Spot Price history for m1.xlarge, Linux/UNIX
+\section{Examples}{
+\preformatted{# This example returns the Spot Price history for m1.xlarge, Linux/UNIX
 # (Amazon VPC) instances for a particular day in January.
-\donttest{svc$describe_spot_price_history(
+svc$describe_spot_price_history(
   EndTime = "2014-01-06T08:09:10",
   InstanceTypes = list(
     "m1.xlarge"
@@ -105,7 +105,8 @@ price changed.
     "Linux/UNIX (Amazon VPC)"
   ),
   StartTime = "2014-01-06T07:08:09"
-)}
-
+)
 }
+}
+
 \keyword{internal}

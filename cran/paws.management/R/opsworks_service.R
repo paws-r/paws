@@ -112,11 +112,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- opsworks()
+#' @section Examples:
+#' ```
 #' svc$assign_instance(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

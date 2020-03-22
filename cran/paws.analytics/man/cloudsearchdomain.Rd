@@ -40,6 +40,13 @@ For more information, see the \href{http://docs.aws.amazon.com/cloudsearch/lates
 }
 }
 
+\section{Examples}{
+\preformatted{svc$search(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -49,10 +56,3 @@ For more information, see the \href{http://docs.aws.amazon.com/cloudsearch/lates
 }
 }
 
-\examples{
-\donttest{svc <- cloudsearchdomain()
-svc$search(
-  Foo = 123
-)}
-
-}

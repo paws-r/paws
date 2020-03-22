@@ -44,11 +44,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- sns()
+#' @section Examples:
+#' ```
 #' svc$add_permission(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

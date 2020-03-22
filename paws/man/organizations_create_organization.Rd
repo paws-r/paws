@@ -48,24 +48,25 @@ organization policies.
 }
 }
 
-\examples{
-# Bill wants to create an organization using credentials from account
+\section{Examples}{
+\preformatted{# Bill wants to create an organization using credentials from account
 # 111111111111. The following example shows that the account becomes the
 # master account in the new organization. Because he does not specify a
 # feature set, the new organization defaults to all features enabled and
 # service control policies enabled on the root:
 # 
 # 
-\donttest{svc$create_organization()}
+svc$create_organization()
 
 # In the following example, Bill creates an organization using credentials
 # from account 111111111111, and configures the organization to support
 # only the consolidated billing feature set:
 # 
 # 
-\donttest{svc$create_organization(
+svc$create_organization(
   FeatureSet = "CONSOLIDATED_BILLING"
-)}
-
+)
 }
+}
+
 \keyword{internal}

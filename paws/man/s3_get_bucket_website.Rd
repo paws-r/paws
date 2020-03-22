@@ -34,11 +34,12 @@ The following operations are related to \code{DeleteBucketWebsite}:
 }
 }
 
-\examples{
-# The following example retrieves website configuration of a bucket.
-\donttest{svc$get_bucket_website(
+\section{Examples}{
+\preformatted{# The following example retrieves website configuration of a bucket.
+svc$get_bucket_website(
   Bucket = "examplebucket"
-)}
-
+)
 }
+}
+
 \keyword{internal}

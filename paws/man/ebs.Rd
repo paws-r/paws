@@ -48,6 +48,13 @@ in the \emph{AWS General Reference}.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$get_snapshot_block(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -57,10 +64,3 @@ in the \emph{AWS General Reference}.
 }
 }
 
-\examples{
-\donttest{svc <- ebs()
-svc$get_snapshot_block(
-  Foo = 123
-)}
-
-}

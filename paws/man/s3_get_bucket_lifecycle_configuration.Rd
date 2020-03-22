@@ -56,12 +56,13 @@ The following operations are related to
 }
 }
 
-\examples{
-# The following example retrieves lifecycle configuration on set on a
+\section{Examples}{
+\preformatted{# The following example retrieves lifecycle configuration on set on a
 # bucket.
-\donttest{svc$get_bucket_lifecycle_configuration(
+svc$get_bucket_lifecycle_configuration(
   Bucket = "examplebucket"
-)}
-
+)
 }
+}
+
 \keyword{internal}

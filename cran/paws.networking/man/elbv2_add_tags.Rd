@@ -38,9 +38,9 @@ tags from your resources, use RemoveTags.
 }
 }
 
-\examples{
-# This example adds the specified tags to the specified load balancer.
-\donttest{svc$add_tags(
+\section{Examples}{
+\preformatted{# This example adds the specified tags to the specified load balancer.
+svc$add_tags(
   ResourceArns = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/5..."
   ),
@@ -54,7 +54,8 @@ tags from your resources, use RemoveTags.
       Value = "digital-media"
     )
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

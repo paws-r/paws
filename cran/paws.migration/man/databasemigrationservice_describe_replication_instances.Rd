@@ -47,9 +47,9 @@ current region.
 }
 }
 
-\examples{
-# Returns the status of the refresh-schemas operation.
-\donttest{svc$describe_replication_instances(
+\section{Examples}{
+\preformatted{# Returns the status of the refresh-schemas operation.
+svc$describe_replication_instances(
   Filters = list(
     list(
       Name = "string",
@@ -61,7 +61,8 @@ current region.
   ),
   Marker = "",
   MaxRecords = 123L
-)}
-
+)
 }
+}
+
 \keyword{internal}

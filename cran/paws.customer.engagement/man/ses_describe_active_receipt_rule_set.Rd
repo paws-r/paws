@@ -21,10 +21,11 @@ You can execute this operation no more than once per second.
 }
 }
 
-\examples{
-# The following example returns the metadata and receipt rules for the
+\section{Examples}{
+\preformatted{# The following example returns the metadata and receipt rules for the
 # receipt rule set that is currently active:
-\donttest{svc$describe_active_receipt_rule_set()}
-
+svc$describe_active_receipt_rule_set()
 }
+}
+
 \keyword{internal}

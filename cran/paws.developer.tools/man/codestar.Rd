@@ -72,6 +72,13 @@ across all projects.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$associate_team_member(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -96,10 +103,3 @@ across all projects.
 }
 }
 
-\examples{
-\donttest{svc <- codestar()
-svc$associate_team_member(
-  Foo = 123
-)}
-
-}

@@ -120,17 +120,17 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 }
 
-\examples{
-# This example describes the specified security group.
-\donttest{svc$describe_security_groups(
+\section{Examples}{
+\preformatted{# This example describes the specified security group.
+svc$describe_security_groups(
   GroupIds = list(
     "sg-903004f8"
   )
-)}
+)
 
 # This example describes the security groups that include the specified
 # tag (Purpose=test).
-\donttest{svc$describe_security_groups(
+svc$describe_security_groups(
   Filters = list(
     list(
       Name = "tag:Purpose",
@@ -139,7 +139,8 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
       )
     )
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

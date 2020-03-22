@@ -23,11 +23,12 @@ Deleting a target group also deletes any associated health checks.
 }
 }
 
-\examples{
-# This example deletes the specified target group.
-\donttest{svc$delete_target_group(
+\section{Examples}{
+\preformatted{# This example deletes the specified target group.
+svc$delete_target_group(
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targe..."
-)}
-
+)
 }
+}
+
 \keyword{internal}

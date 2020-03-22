@@ -130,11 +130,11 @@ eventually consistent read, it always returns the last updated value.
 }
 }
 
-\examples{
-# This example retrieves an item from the Music table. The table has a
+\section{Examples}{
+\preformatted{# This example retrieves an item from the Music table. The table has a
 # partition key and a sort key (Artist and SongTitle), so you must specify
 # both of these attributes.
-\donttest{svc$get_item(
+svc$get_item(
   Key = list(
     Artist = list(
       S = "Acme Band"
@@ -144,7 +144,8 @@ eventually consistent read, it always returns the last updated value.
     )
   ),
   TableName = "Music"
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -36,12 +36,13 @@ Invokes a function asynchronously.
 }
 }
 
-\examples{
-# This operation invokes a Lambda function asynchronously
-\donttest{svc$invoke_async(
+\section{Examples}{
+\preformatted{# This operation invokes a Lambda function asynchronously
+svc$invoke_async(
   FunctionName = "myFunction",
   InvokeArgs = "fileb://file-path/input.json"
-)}
-
+)
 }
+}
+
 \keyword{internal}

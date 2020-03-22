@@ -61,11 +61,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- workdocs()
+#' @section Examples:
+#' ```
 #' svc$abort_document_version_upload(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

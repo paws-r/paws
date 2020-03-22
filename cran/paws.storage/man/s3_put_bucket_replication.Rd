@@ -145,9 +145,9 @@ The following operations are related to \code{PutBucketReplication}:
 }
 }
 
-\examples{
-# The following example sets replication configuration on a bucket.
-\donttest{svc$put_bucket_replication(
+\section{Examples}{
+\preformatted{# The following example sets replication configuration on a bucket.
+svc$put_bucket_replication(
   Bucket = "examplebucket",
   ReplicationConfiguration = list(
     Role = "arn:aws:iam::123456789012:role/examplerole",
@@ -162,7 +162,8 @@ The following operations are related to \code{PutBucketReplication}:
       )
     )
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

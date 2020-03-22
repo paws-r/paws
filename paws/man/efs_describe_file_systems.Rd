@@ -63,9 +63,10 @@ This operation requires permissions for the
 }
 }
 
-\examples{
-# This operation describes all of the EFS file systems in an account.
-\donttest{svc$describe_file_systems()}
-
+\section{Examples}{
+\preformatted{# This operation describes all of the EFS file systems in an account.
+svc$describe_file_systems()
 }
+}
+
 \keyword{internal}

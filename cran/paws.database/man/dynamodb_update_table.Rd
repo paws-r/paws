@@ -180,16 +180,17 @@ complete.
 }
 }
 
-\examples{
-# This example increases the provisioned read and write capacity on the
+\section{Examples}{
+\preformatted{# This example increases the provisioned read and write capacity on the
 # Music table.
-\donttest{svc$update_table(
+svc$update_table(
   ProvisionedThroughput = list(
     ReadCapacityUnits = 10L,
     WriteCapacityUnits = 10L
   ),
   TableName = "MusicCollection"
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -32,13 +32,14 @@ see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-poli
 }
 }
 
-\examples{
-# The example retrieves the access-policy set on the vault named
+\section{Examples}{
+\preformatted{# The example retrieves the access-policy set on the vault named
 # example-vault.
-\donttest{svc$get_vault_access_policy(
+svc$get_vault_access_policy(
   accountId = "-",
   vaultName = "example-vault"
-)}
-
+)
 }
+}
+
 \keyword{internal}

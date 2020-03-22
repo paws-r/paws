@@ -62,11 +62,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- securityhub()
+#' @section Examples:
+#' ```
 #' svc$accept_invitation(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

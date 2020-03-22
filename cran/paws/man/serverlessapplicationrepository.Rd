@@ -63,6 +63,13 @@ applications.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$create_application(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -82,10 +89,3 @@ applications.
 }
 }
 
-\examples{
-\donttest{svc <- serverlessapplicationrepository()
-svc$create_application(
-  Foo = 123
-)}
-
-}

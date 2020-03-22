@@ -28,11 +28,12 @@ You can execute this operation no more than once per second.
 }
 }
 
-\examples{
-# The following example updated the sending status for this account.
-\donttest{svc$update_account_sending_enabled(
+\section{Examples}{
+\preformatted{# The following example updated the sending status for this account.
+svc$update_account_sending_enabled(
   Enabled = TRUE
-)}
-
+)
 }
+}
+
 \keyword{internal}

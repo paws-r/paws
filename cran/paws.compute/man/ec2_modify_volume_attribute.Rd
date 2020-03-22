@@ -41,17 +41,18 @@ are stateless or disposable.
 }
 }
 
-\examples{
-# This example sets the `autoEnableIo` attribute of the volume with the
+\section{Examples}{
+\preformatted{# This example sets the `autoEnableIo` attribute of the volume with the
 # ID `vol-1234567890abcdef0` to `true`. If the command succeeds, no
 # output is returned.
-\donttest{svc$modify_volume_attribute(
+svc$modify_volume_attribute(
   AutoEnableIO = list(
     Value = TRUE
   ),
   DryRun = TRUE,
   VolumeId = "vol-1234567890abcdef0"
-)}
-
+)
 }
+}
+
 \keyword{internal}

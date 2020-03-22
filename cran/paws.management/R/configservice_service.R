@@ -51,11 +51,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- configservice()
+#' @section Examples:
+#' ```
 #' svc$batch_get_aggregate_resource_config(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

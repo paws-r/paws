@@ -120,6 +120,13 @@ testing within a Region.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$create_accelerator(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -143,10 +150,3 @@ testing within a Region.
 }
 }
 
-\examples{
-\donttest{svc <- globalaccelerator()
-svc$create_accelerator(
-  Foo = 123
-)}
-
-}

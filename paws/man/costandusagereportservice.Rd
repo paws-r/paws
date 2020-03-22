@@ -44,6 +44,15 @@ The AWS Cost and Usage Report API provides the following endpoint:
 }
 }
 
+\section{Examples}{
+\preformatted{# The following example deletes the AWS Cost and Usage report named
+# ExampleReport.
+svc$delete_report_definition(
+  ReportName = "ExampleReport"
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -54,12 +63,3 @@ The AWS Cost and Usage Report API provides the following endpoint:
 }
 }
 
-\examples{
-# The following example deletes the AWS Cost and Usage report named
-# ExampleReport.
-\donttest{svc <- costandusagereportservice()
-svc$delete_report_definition(
-  ReportName = "ExampleReport"
-)}
-
-}

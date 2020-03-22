@@ -256,11 +256,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- resourcegroupstaggingapi()
+#' @section Examples:
+#' ```
 #' svc$describe_report_creation(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

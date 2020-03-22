@@ -46,12 +46,13 @@ in the \emph{Amazon S3 Glacier Developer Guide}.
 }
 }
 
-\examples{
-# The example deletes a vault named my-vault:
-\donttest{svc$delete_vault(
+\section{Examples}{
+\preformatted{# The example deletes a vault named my-vault:
+svc$delete_vault(
   accountId = "-",
   vaultName = "my-vault"
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -26,11 +26,12 @@ gateway from the VPC before you can delete it.
 }
 }
 
-\examples{
-# This example deletes the specified Internet gateway.
-\donttest{svc$delete_internet_gateway(
+\section{Examples}{
+\preformatted{# This example deletes the specified Internet gateway.
+svc$delete_internet_gateway(
   InternetGatewayId = "igw-c0a643a9"
-)}
-
+)
 }
+}
+
 \keyword{internal}

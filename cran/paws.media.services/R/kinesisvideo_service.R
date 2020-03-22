@@ -28,11 +28,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- kinesisvideo()
+#' @section Examples:
+#' ```
 #' svc$create_signaling_channel(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

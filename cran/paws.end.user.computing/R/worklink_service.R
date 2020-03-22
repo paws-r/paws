@@ -37,11 +37,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- worklink()
+#' @section Examples:
+#' ```
 #' svc$associate_domain(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

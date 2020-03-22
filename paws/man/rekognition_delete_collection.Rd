@@ -25,11 +25,12 @@ This operation requires permissions to perform the
 }
 }
 
-\examples{
-# This operation deletes a Rekognition collection.
-\donttest{svc$delete_collection(
+\section{Examples}{
+\preformatted{# This operation deletes a Rekognition collection.
+svc$delete_collection(
   CollectionId = "myphotos"
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -38,6 +38,20 @@ Docker CLI to author and manage images.
 }
 }
 
+\section{Examples}{
+\preformatted{# This example deletes images with the tags precise and trusty in a
+# repository called ubuntu in the default registry for an account.
+svc$batch_delete_image(
+  imageIds = list(
+    list(
+      imageTag = "precise"
+    )
+  ),
+  repositoryName = "ubuntu"
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -73,17 +87,3 @@ Docker CLI to author and manage images.
 }
 }
 
-\examples{
-# This example deletes images with the tags precise and trusty in a
-# repository called ubuntu in the default registry for an account.
-\donttest{svc <- ecr()
-svc$batch_delete_image(
-  imageIds = list(
-    list(
-      imageTag = "precise"
-    )
-  ),
-  repositoryName = "ubuntu"
-)}
-
-}

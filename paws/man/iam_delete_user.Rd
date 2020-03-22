@@ -41,12 +41,13 @@ DeleteVirtualMFADevice)
 }
 }
 
-\examples{
-# The following command removes the IAM user named Bob from the current
+\section{Examples}{
+\preformatted{# The following command removes the IAM user named Bob from the current
 # account.
-\donttest{svc$delete_user(
+svc$delete_user(
   UserName = "Bob"
-)}
-
+)
 }
+}
+
 \keyword{internal}

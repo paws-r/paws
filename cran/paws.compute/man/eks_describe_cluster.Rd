@@ -27,12 +27,13 @@ until the cluster reaches the \code{ACTIVE} state.
 }
 }
 
-\examples{
-# This example command provides a description of the specified cluster in
+\section{Examples}{
+\preformatted{# This example command provides a description of the specified cluster in
 # your default region.
-\donttest{svc$describe_cluster(
+svc$describe_cluster(
   name = "devel"
-)}
-
+)
 }
+}
+
 \keyword{internal}

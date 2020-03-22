@@ -30,12 +30,13 @@ account.
 }
 }
 
-\examples{
-# The following example shows a user in the master account (111111111111)
+\section{Examples}{
+\preformatted{# The following example shows a user in the master account (111111111111)
 # asking for details about account 555555555555:
-\donttest{svc$describe_account(
+svc$describe_account(
   AccountId = "555555555555"
-)}
-
+)
 }
+}
+
 \keyword{internal}

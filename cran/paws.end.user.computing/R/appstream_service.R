@@ -51,11 +51,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- appstream()
+#' @section Examples:
+#' ```
 #' svc$associate_fleet(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

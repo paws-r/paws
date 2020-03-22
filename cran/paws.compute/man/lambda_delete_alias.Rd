@@ -34,12 +34,13 @@ Deletes a Lambda function
 }
 }
 
-\examples{
-# This operation deletes a Lambda function alias
-\donttest{svc$delete_alias(
+\section{Examples}{
+\preformatted{# This operation deletes a Lambda function alias
+svc$delete_alias(
   FunctionName = "myFunction",
   Name = "alias"
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -50,13 +50,14 @@ a \verb{404 Not found} error. For more information about vault lock policies,
 }
 }
 
-\examples{
-# The example retrieves the attributes from the lock-policy subresource
+\section{Examples}{
+\preformatted{# The example retrieves the attributes from the lock-policy subresource
 # set on the vault named examplevault.
-\donttest{svc$get_vault_lock(
+svc$get_vault_lock(
   accountId = "-",
   vaultName = "examplevault"
-)}
-
+)
 }
+}
+
 \keyword{internal}

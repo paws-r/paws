@@ -55,6 +55,15 @@ AWS Price List Service API provides the following two endpoints:
 }
 }
 
+\section{Examples}{
+\preformatted{svc$describe_services(
+  FormatVersion = "aws_v1",
+  MaxResults = 1L,
+  ServiceCode = "AmazonEC2"
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -64,12 +73,3 @@ AWS Price List Service API provides the following two endpoints:
 }
 }
 
-\examples{
-\donttest{svc <- pricing()
-svc$describe_services(
-  FormatVersion = "aws_v1",
-  MaxResults = 1L,
-  ServiceCode = "AmazonEC2"
-)}
-
-}

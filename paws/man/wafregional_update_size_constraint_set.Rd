@@ -94,11 +94,11 @@ HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developergui
 }
 }
 
-\examples{
-# The following example deletes a SizeConstraint object (filters) in a
+\section{Examples}{
+\preformatted{# The following example deletes a SizeConstraint object (filters) in a
 # size constraint set with the ID
 # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-\donttest{svc$update_size_constraint_set(
+svc$update_size_constraint_set(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   SizeConstraintSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5",
   Updates = list(
@@ -114,7 +114,8 @@ HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developergui
       )
     )
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

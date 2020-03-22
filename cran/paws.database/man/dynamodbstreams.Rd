@@ -35,6 +35,14 @@ in the Amazon DynamoDB Developer Guide.
 }
 }
 
+\section{Examples}{
+\preformatted{# The following example describes a stream with a given stream ARN.
+svc$describe_stream(
+  StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:51:1..."
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -45,11 +53,3 @@ in the Amazon DynamoDB Developer Guide.
 }
 }
 
-\examples{
-# The following example describes a stream with a given stream ARN.
-\donttest{svc <- dynamodbstreams()
-svc$describe_stream(
-  StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:51:1..."
-)}
-
-}

@@ -43,11 +43,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- autoscalingplans()
+#' @section Examples:
+#' ```
 #' svc$create_scaling_plan(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

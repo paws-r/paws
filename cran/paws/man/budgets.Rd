@@ -70,6 +70,13 @@ API, see \href{https://aws.amazon.com/aws-cost-management/pricing/}{AWS Cost Man
 }
 }
 
+\section{Examples}{
+\preformatted{svc$create_budget(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -90,10 +97,3 @@ API, see \href{https://aws.amazon.com/aws-cost-management/pricing/}{AWS Cost Man
 }
 }
 
-\examples{
-\donttest{svc <- budgets()
-svc$create_budget(
-  Foo = 123
-)}
-
-}

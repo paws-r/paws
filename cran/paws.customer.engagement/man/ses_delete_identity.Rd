@@ -25,12 +25,13 @@ You can execute this operation no more than once per second.
 }
 }
 
-\examples{
-# The following example deletes an identity from the list of identities
+\section{Examples}{
+\preformatted{# The following example deletes an identity from the list of identities
 # that have been submitted for verification with Amazon SES:
-\donttest{svc$delete_identity(
+svc$delete_identity(
   Identity = "user@example.com"
-)}
-
+)
 }
+}
+
 \keyword{internal}

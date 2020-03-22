@@ -46,11 +46,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- iotjobsdataplane()
+#' @section Examples:
+#' ```
 #' svc$describe_job_execution(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

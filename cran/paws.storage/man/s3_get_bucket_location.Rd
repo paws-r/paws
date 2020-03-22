@@ -31,11 +31,12 @@ The following operations are related to \code{GetBucketLocation}:
 }
 }
 
-\examples{
-# The following example returns bucket location.
-\donttest{svc$get_bucket_location(
+\section{Examples}{
+\preformatted{# The following example returns bucket location.
+svc$get_bucket_location(
   Bucket = "examplebucket"
-)}
-
+)
 }
+}
+
 \keyword{internal}

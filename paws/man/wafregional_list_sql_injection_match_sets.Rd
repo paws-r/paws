@@ -31,12 +31,13 @@ Returns an array of SqlInjectionMatchSet objects.
 }
 }
 
-\examples{
-# The following example returns an array of up to 100 SQL injection match
+\section{Examples}{
+\preformatted{# The following example returns an array of up to 100 SQL injection match
 # sets.
-\donttest{svc$list_sql_injection_match_sets(
+svc$list_sql_injection_match_sets(
   Limit = 100L
-)}
-
+)
 }
+}
+
 \keyword{internal}

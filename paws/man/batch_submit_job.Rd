@@ -143,14 +143,15 @@ during SubmitJob override parameters defined in the job definition.
 }
 }
 
-\examples{
-# This example submits a simple container job called example to the
+\section{Examples}{
+\preformatted{# This example submits a simple container job called example to the
 # HighPriority job queue.
-\donttest{svc$submit_job(
+svc$submit_job(
   jobDefinition = "sleep60",
   jobName = "example",
   jobQueue = "HighPriority"
-)}
-
+)
 }
+}
+
 \keyword{internal}

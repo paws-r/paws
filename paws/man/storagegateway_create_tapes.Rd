@@ -83,15 +83,16 @@ gateway.
 }
 }
 
-\examples{
-# Creates one or more virtual tapes.
-\donttest{svc$create_tapes(
+\section{Examples}{
+\preformatted{# Creates one or more virtual tapes.
+svc$create_tapes(
   ClientToken = "77777",
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
   NumTapesToCreate = 3L,
   TapeBarcodePrefix = "TEST",
   TapeSizeInBytes = 107374182400
-)}
-
+)
 }
+}
+
 \keyword{internal}

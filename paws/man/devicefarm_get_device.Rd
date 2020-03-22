@@ -19,11 +19,12 @@ Gets information about a unique device type.
 }
 }
 
-\examples{
-# The following example returns information about a specific device.
-\donttest{svc$get_device(
+\section{Examples}{
+\preformatted{# The following example returns information about a specific device.
+svc$get_device(
   arn = "arn:aws:devicefarm:us-west-2::device:123EXAMPLE"
-)}
-
+)
 }
+}
+
 \keyword{internal}

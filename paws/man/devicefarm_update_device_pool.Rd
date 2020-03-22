@@ -63,11 +63,11 @@ they can only be updated as a whole (or not at all).
 }
 }
 
-\examples{
-# The following example updates the specified device pool with a new name
+\section{Examples}{
+\preformatted{# The following example updates the specified device pool with a new name
 # and description. It also enables remote access of devices in the device
 # pool.
-\donttest{svc$update_device_pool(
+svc$update_device_pool(
   name = "NewName",
   arn = "arn:aws:devicefarm:us-west-2::devicepool:082d10e5-d7d7-48a5-ba5c-12345EXAMPLE",
   description = "NewDescription",
@@ -78,7 +78,8 @@ they can only be updated as a whole (or not at all).
       operator = "EQUALS"
     )
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

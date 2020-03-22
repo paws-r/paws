@@ -40,15 +40,16 @@ of the gateway in your request.
 }
 }
 
-\examples{
-# Updates the bandwidth rate limits of a gateway. Both the upload and
+\section{Examples}{
+\preformatted{# Updates the bandwidth rate limits of a gateway. Both the upload and
 # download bandwidth rate limit can be set, or either one of the two. If a
 # new limit is not set, the existing rate limit remains.
-\donttest{svc$update_bandwidth_rate_limit(
+svc$update_bandwidth_rate_limit(
   AverageDownloadRateLimitInBitsPerSec = 102400L,
   AverageUploadRateLimitInBitsPerSec = 51200L,
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -95,14 +95,15 @@ of retries.
 }
 }
 
-\examples{
-# This operation updates a Lambda function event source mapping
-\donttest{svc$update_event_source_mapping(
+\section{Examples}{
+\preformatted{# This operation updates a Lambda function event source mapping
+svc$update_event_source_mapping(
   BatchSize = 123L,
   Enabled = TRUE,
   FunctionName = "myFunction",
   UUID = "1234xCy789012"
-)}
-
+)
 }
+}
+
 \keyword{internal}

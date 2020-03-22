@@ -30,6 +30,13 @@ Pinpoint SMS and Voice Messaging public facing APIs
 }
 }
 
+\section{Examples}{
+\preformatted{svc$create_configuration_set(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -44,10 +51,3 @@ Pinpoint SMS and Voice Messaging public facing APIs
 }
 }
 
-\examples{
-\donttest{svc <- pinpointsmsvoice()
-svc$create_configuration_set(
-  Foo = 123
-)}
-
-}

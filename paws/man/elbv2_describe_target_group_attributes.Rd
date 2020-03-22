@@ -24,11 +24,12 @@ in the \emph{Network Load Balancers Guide}.
 }
 }
 
-\examples{
-# This example describes the attributes of the specified target group.
-\donttest{svc$describe_target_group_attributes(
+\section{Examples}{
+\preformatted{# This example describes the attributes of the specified target group.
+svc$describe_target_group_attributes(
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targe..."
-)}
-
+)
 }
+}
+
 \keyword{internal}

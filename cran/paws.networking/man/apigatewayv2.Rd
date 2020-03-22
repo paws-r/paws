@@ -30,6 +30,13 @@ Amazon API Gateway V2
 }
 }
 
+\section{Examples}{
+\preformatted{svc$create_api(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -99,10 +106,3 @@ Amazon API Gateway V2
 }
 }
 
-\examples{
-\donttest{svc <- apigatewayv2()
-svc$create_api(
-  Foo = 123
-)}
-
-}

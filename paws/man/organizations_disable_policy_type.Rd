@@ -48,14 +48,15 @@ DescribeOrganization.
 }
 }
 
-\examples{
-# The following example shows how to disable the service control policy
+\section{Examples}{
+\preformatted{# The following example shows how to disable the service control policy
 # (SCP) policy type in a root. The response shows that the PolicyTypes
 # response element no longer includes SERVICE_CONTROL_POLICY:/n/n
-\donttest{svc$disable_policy_type(
+svc$disable_policy_type(
   PolicyType = "SERVICE_CONTROL_POLICY",
   RootId = "r-examplerootid111"
-)}
-
+)
 }
+}
+
 \keyword{internal}

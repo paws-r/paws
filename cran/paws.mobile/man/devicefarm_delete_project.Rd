@@ -23,11 +23,12 @@ Deleting this resource does not stop an in-progress run.
 }
 }
 
-\examples{
-# The following example deletes a specific project.
-\donttest{svc$delete_project(
+\section{Examples}{
+\preformatted{# The following example deletes a specific project.
+svc$delete_project(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
-)}
-
+)
 }
+}
+
 \keyword{internal}

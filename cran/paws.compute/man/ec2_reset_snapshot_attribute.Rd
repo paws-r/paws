@@ -33,14 +33,15 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 
-\examples{
-# This example resets the create volume permissions for snapshot
+\section{Examples}{
+\preformatted{# This example resets the create volume permissions for snapshot
 # `snap-1234567890abcdef0`. If the command succeeds, no output is
 # returned.
-\donttest{svc$reset_snapshot_attribute(
+svc$reset_snapshot_attribute(
   Attribute = "createVolumePermission",
   SnapshotId = "snap-1234567890abcdef0"
-)}
-
+)
 }
+}
+
 \keyword{internal}

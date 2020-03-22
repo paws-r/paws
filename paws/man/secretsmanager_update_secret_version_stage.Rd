@@ -90,37 +90,38 @@ a version of a secret, use \verb{<a>DescribeSecret</a>} and examine the
 }
 }
 
-\examples{
-# The following example shows you how to add a staging label to a version
+\section{Examples}{
+\preformatted{# The following example shows you how to add a staging label to a version
 # of a secret. You can review the results by running the operation
 # ListSecretVersionIds and viewing the VersionStages response field for
 # the affected version.
-\donttest{svc$update_secret_version_stage(
+svc$update_secret_version_stage(
   MoveToVersionId = "EXAMPLE1-90ab-cdef-fedc-ba987SECRET1",
   SecretId = "MyTestDatabaseSecret",
   VersionStage = "STAGINGLABEL1"
-)}
+)
 
 # The following example shows you how to delete a staging label that is
 # attached to a version of a secret. You can review the results by running
 # the operation ListSecretVersionIds and viewing the VersionStages
 # response field for the affected version.
-\donttest{svc$update_secret_version_stage(
+svc$update_secret_version_stage(
   RemoveFromVersionId = "EXAMPLE1-90ab-cdef-fedc-ba987SECRET1",
   SecretId = "MyTestDatabaseSecret",
   VersionStage = "STAGINGLABEL1"
-)}
+)
 
 # The following example shows you how to move a staging label that is
 # attached to one version of a secret to a different version. You can
 # review the results by running the operation ListSecretVersionIds and
 # viewing the VersionStages response field for the affected version.
-\donttest{svc$update_secret_version_stage(
+svc$update_secret_version_stage(
   MoveToVersionId = "EXAMPLE2-90ab-cdef-fedc-ba987SECRET2",
   RemoveFromVersionId = "EXAMPLE1-90ab-cdef-fedc-ba987SECRET1",
   SecretId = "MyTestDatabaseSecret",
   VersionStage = "AWSCURRENT"
-)}
-
+)
 }
+}
+
 \keyword{internal}

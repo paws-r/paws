@@ -221,12 +221,14 @@ wafregional_create_geo_match_set <- function(Name, ChangeToken) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example creates an IP match set named MyIPSetFriendlyName.
-#' \donttest{svc$create_ip_set(
+#' svc$create_ip_set(
 #'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
 #'   Name = "MyIPSetFriendlyName"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -576,13 +578,15 @@ wafregional_create_regex_pattern_set <- function(Name, ChangeToken) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example creates a rule named WAFByteHeaderRule.
-#' \donttest{svc$create_rule(
+#' svc$create_rule(
 #'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
 #'   MetricName = "WAFByteHeaderRule",
 #'   Name = "WAFByteHeaderRule"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -715,13 +719,15 @@ wafregional_create_rule_group <- function(Name, MetricName, ChangeToken, Tags = 
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example creates size constraint set named
 #' # MySampleSizeConstraintSet.
-#' \donttest{svc$create_size_constraint_set(
+#' svc$create_size_constraint_set(
 #'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
 #'   Name = "MySampleSizeConstraintSet"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -787,13 +793,15 @@ wafregional_create_size_constraint_set <- function(Name, ChangeToken) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example creates a SQL injection match set named
 #' # MySQLInjectionMatchSet.
-#' \donttest{svc$create_sql_injection_match_set(
+#' svc$create_sql_injection_match_set(
 #'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
 #'   Name = "MySQLInjectionMatchSet"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -889,16 +897,18 @@ wafregional_create_sql_injection_match_set <- function(Name, ChangeToken) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example creates a web ACL named CreateExample.
-#' \donttest{svc$create_web_acl(
+#' svc$create_web_acl(
 #'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
 #'   DefaultAction = list(
 #'     Type = "ALLOW"
 #'   ),
 #'   MetricName = "CreateExample",
 #'   Name = "CreateExample"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -962,13 +972,15 @@ wafregional_create_web_acl <- function(Name, MetricName, DefaultAction, ChangeTo
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example creates an XSS match set named
 #' # MySampleXssMatchSet.
-#' \donttest{svc$create_xss_match_set(
+#' svc$create_xss_match_set(
 #'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
 #'   Name = "MySampleXssMatchSet"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1025,13 +1037,15 @@ wafregional_create_xss_match_set <- function(Name, ChangeToken) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example deletes a byte match set with the ID
 #' # exampleIDs3t-46da-4fdb-b8d5-abc321j569j5.
-#' \donttest{svc$delete_byte_match_set(
+#' svc$delete_byte_match_set(
 #'   ByteMatchSetId = "exampleIDs3t-46da-4fdb-b8d5-abc321j569j5",
 #'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1141,13 +1155,15 @@ wafregional_delete_geo_match_set <- function(GeoMatchSetId, ChangeToken) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example deletes an IP match set  with the ID
 #' # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' \donttest{svc$delete_ip_set(
+#' svc$delete_ip_set(
 #'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
 #'   IPSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1432,12 +1448,14 @@ wafregional_delete_regex_pattern_set <- function(RegexPatternSetId, ChangeToken)
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example deletes a rule with the ID WAFRule-1-Example.
-#' \donttest{svc$delete_rule(
+#' svc$delete_rule(
 #'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
 #'   RuleId = "WAFRule-1-Example"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1550,13 +1568,15 @@ wafregional_delete_rule_group <- function(RuleGroupId, ChangeToken) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example deletes a size constraint set  with the ID
 #' # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' \donttest{svc$delete_size_constraint_set(
+#' svc$delete_size_constraint_set(
 #'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
 #'   SizeConstraintSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1615,13 +1635,15 @@ wafregional_delete_size_constraint_set <- function(SizeConstraintSetId, ChangeTo
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example deletes a SQL injection match set  with the ID
 #' # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' \donttest{svc$delete_sql_injection_match_set(
+#' svc$delete_sql_injection_match_set(
 #'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
 #'   SqlInjectionMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1673,13 +1695,15 @@ wafregional_delete_sql_injection_match_set <- function(SqlInjectionMatchSetId, C
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example deletes a web ACL with the ID
 #' # example-46da-4444-5555-example.
-#' \donttest{svc$delete_web_acl(
+#' svc$delete_web_acl(
 #'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
 #'   WebACLId = "example-46da-4444-5555-example"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1737,13 +1761,15 @@ wafregional_delete_web_acl <- function(WebACLId, ChangeToken) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example deletes an XSS match set with the ID
 #' # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' \donttest{svc$delete_xss_match_set(
+#' svc$delete_xss_match_set(
 #'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
 #'   XssMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1831,12 +1857,14 @@ wafregional_disassociate_web_acl <- function(ResourceArn) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example returns the details of a byte match set with the
 #' # ID exampleIDs3t-46da-4fdb-b8d5-abc321j569j5.
-#' \donttest{svc$get_byte_match_set(
+#' svc$get_byte_match_set(
 #'   ByteMatchSetId = "exampleIDs3t-46da-4fdb-b8d5-abc321j569j5"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1886,10 +1914,12 @@ wafregional_get_byte_match_set <- function(ByteMatchSetId) {
 #' svc$get_change_token()
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example returns a change token to use for a create, update
 #' # or delete operation.
-#' \donttest{svc$get_change_token()}
+#' svc$get_change_token()
+#' ```
 #'
 #' @keywords internal
 #'
@@ -1939,12 +1969,14 @@ wafregional_get_change_token <- function() {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example returns the status of a change token with the ID
 #' # abcd12f2-46da-4fdb-b8d5-fbd4c466928f.
-#' \donttest{svc$get_change_token_status(
+#' svc$get_change_token_status(
 #'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -2021,12 +2053,14 @@ wafregional_get_geo_match_set <- function(GeoMatchSetId) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example returns the details of an IP match set with the ID
 #' # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' \donttest{svc$get_ip_set(
+#' svc$get_ip_set(
 #'   IPSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -2302,12 +2336,14 @@ wafregional_get_regex_pattern_set <- function(RegexPatternSetId) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example returns the details of a rule with the ID
 #' # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' \donttest{svc$get_rule(
+#' svc$get_rule(
 #'   RuleId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -2428,12 +2464,13 @@ wafregional_get_rule_group <- function(RuleGroupId) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example returns detailed information about 100 requests
 #' # --a sample-- that AWS WAF randomly selects from among the first 5,000
 #' # requests that your AWS resource received between the time period
 #' # 2016-09-27T15:50Z to 2016-09-27T15:50Z.
-#' \donttest{svc$get_sampled_requests(
+#' svc$get_sampled_requests(
 #'   MaxItems = 100L,
 #'   RuleId = "WAFRule-1-Example",
 #'   TimeWindow = list(
@@ -2441,7 +2478,8 @@ wafregional_get_rule_group <- function(RuleGroupId) {
 #'     StartTime = "2016-09-27T15:50Z"
 #'   ),
 #'   WebAclId = "createwebacl-1472061481310"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -2481,12 +2519,14 @@ wafregional_get_sampled_requests <- function(WebAclId, RuleId, TimeWindow, MaxIt
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example returns the details of a size constraint match set
 #' # with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' \donttest{svc$get_size_constraint_set(
+#' svc$get_size_constraint_set(
 #'   SizeConstraintSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -2528,12 +2568,14 @@ wafregional_get_size_constraint_set <- function(SizeConstraintSetId) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example returns the details of a SQL injection match set
 #' # with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' \donttest{svc$get_sql_injection_match_set(
+#' svc$get_sql_injection_match_set(
 #'   SqlInjectionMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -2572,12 +2614,14 @@ wafregional_get_sql_injection_match_set <- function(SqlInjectionMatchSetId) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example returns the details of a web ACL with the ID
 #' # createwebacl-1472061481310.
-#' \donttest{svc$get_web_acl(
+#' svc$get_web_acl(
 #'   WebACLId = "createwebacl-1472061481310"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -2664,12 +2708,14 @@ wafregional_get_web_acl_for_resource <- function(ResourceArn) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example returns the details of an XSS match set with the
 #' # ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' \donttest{svc$get_xss_match_set(
+#' svc$get_xss_match_set(
 #'   XssMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -2857,11 +2903,13 @@ wafregional_list_geo_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example returns an array of up to 100 IP match sets.
-#' \donttest{svc$list_ip_sets(
+#' svc$list_ip_sets(
 #'   Limit = 100L
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -3182,11 +3230,13 @@ wafregional_list_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example returns an array of up to 100 rules.
-#' \donttest{svc$list_rules(
+#' svc$list_rules(
 #'   Limit = 100L
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -3236,12 +3286,14 @@ wafregional_list_rules <- function(NextMarker = NULL, Limit = NULL) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example returns an array of up to 100 size contraint match
 #' # sets.
-#' \donttest{svc$list_size_constraint_sets(
+#' svc$list_size_constraint_sets(
 #'   Limit = 100L
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -3290,12 +3342,14 @@ wafregional_list_size_constraint_sets <- function(NextMarker = NULL, Limit = NUL
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example returns an array of up to 100 SQL injection match
 #' # sets.
-#' \donttest{svc$list_sql_injection_match_sets(
+#' svc$list_sql_injection_match_sets(
 #'   Limit = 100L
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -3430,11 +3484,13 @@ wafregional_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, 
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example returns an array of up to 100 web ACLs.
-#' \donttest{svc$list_web_ac_ls(
+#' svc$list_web_ac_ls(
 #'   Limit = 100L
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -3482,11 +3538,13 @@ wafregional_list_web_ac_ls <- function(NextMarker = NULL, Limit = NULL) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example returns an array of up to 100 XSS match sets.
-#' \donttest{svc$list_xss_match_sets(
+#' svc$list_xss_match_sets(
 #'   Limit = 100L
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -3818,10 +3876,11 @@ wafregional_untag_resource <- function(ResourceARN, TagKeys) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example deletes a ByteMatchTuple object (filters) in an
 #' # byte match set with the ID exampleIDs3t-46da-4fdb-b8d5-abc321j569j5.
-#' \donttest{svc$update_byte_match_set(
+#' svc$update_byte_match_set(
 #'   ByteMatchSetId = "exampleIDs3t-46da-4fdb-b8d5-abc321j569j5",
 #'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
 #'   Updates = list(
@@ -3838,7 +3897,8 @@ wafregional_untag_resource <- function(ResourceARN, TagKeys) {
 #'       )
 #'     )
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -4040,10 +4100,11 @@ wafregional_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example deletes an IPSetDescriptor object in an IP match
 #' # set with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' \donttest{svc$update_ip_set(
+#' svc$update_ip_set(
 #'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
 #'   IPSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5",
 #'   Updates = list(
@@ -4055,7 +4116,8 @@ wafregional_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates
 #'       )
 #'     )
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -4426,10 +4488,11 @@ wafregional_update_regex_pattern_set <- function(RegexPatternSetId, Updates, Cha
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example deletes a Predicate object in a rule with the ID
 #' # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' \donttest{svc$update_rule(
+#' svc$update_rule(
 #'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
 #'   RuleId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5",
 #'   Updates = list(
@@ -4442,7 +4505,8 @@ wafregional_update_regex_pattern_set <- function(RegexPatternSetId, Updates, Cha
 #'       )
 #'     )
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -4652,11 +4716,12 @@ wafregional_update_rule_group <- function(RuleGroupId, Updates, ChangeToken) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example deletes a SizeConstraint object (filters) in a
 #' # size constraint set with the ID
 #' # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' \donttest{svc$update_size_constraint_set(
+#' svc$update_size_constraint_set(
 #'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
 #'   SizeConstraintSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5",
 #'   Updates = list(
@@ -4672,7 +4737,8 @@ wafregional_update_rule_group <- function(RuleGroupId, Updates, ChangeToken) {
 #'       )
 #'     )
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -4778,11 +4844,12 @@ wafregional_update_size_constraint_set <- function(SizeConstraintSetId, ChangeTo
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example deletes a SqlInjectionMatchTuple object (filters)
 #' # in a SQL injection match set with the ID
 #' # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' \donttest{svc$update_sql_injection_match_set(
+#' svc$update_sql_injection_match_set(
 #'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
 #'   SqlInjectionMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5",
 #'   Updates = list(
@@ -4796,7 +4863,8 @@ wafregional_update_size_constraint_set <- function(SizeConstraintSetId, ChangeTo
 #'       )
 #'     )
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -4942,10 +5010,11 @@ wafregional_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, C
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example deletes an ActivatedRule object in a WebACL with
 #' # the ID webacl-1472061481310.
-#' \donttest{svc$update_web_acl(
+#' svc$update_web_acl(
 #'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
 #'   DefaultAction = list(
 #'     Type = "ALLOW"
@@ -4963,7 +5032,8 @@ wafregional_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, C
 #'     )
 #'   ),
 #'   WebACLId = "webacl-1472061481310"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -5063,10 +5133,11 @@ wafregional_update_web_acl <- function(WebACLId, ChangeToken, Updates = NULL, De
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example deletes an XssMatchTuple object (filters) in an
 #' # XssMatchSet with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' \donttest{svc$update_xss_match_set(
+#' svc$update_xss_match_set(
 #'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
 #'   Updates = list(
 #'     list(
@@ -5080,7 +5151,8 @@ wafregional_update_web_acl <- function(WebACLId, ChangeToken, Updates = NULL, De
 #'     )
 #'   ),
 #'   XssMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'

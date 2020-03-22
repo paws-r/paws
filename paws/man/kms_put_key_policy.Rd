@@ -78,13 +78,14 @@ in the \emph{AWS Key Management Service Developer Guide}.
 }
 }
 
-\examples{
-# The following example attaches a key policy to the specified CMK.
-\donttest{svc$put_key_policy(
+\section{Examples}{
+\preformatted{# The following example attaches a key policy to the specified CMK.
+svc$put_key_policy(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
-  Policy = "{\n    \"Version\": \"2012-10-17\",\n    \"Id\": \"custom-policy-2016-12-07\",\n...",
+  Policy = "\{\\n    \\"Version\\": \\"2012-10-17\\",\\n    \\"Id\\": \\"custom-policy-2016-12-07\\",\\n...",
   PolicyName = "default"
-)}
-
+)
 }
+}
+
 \keyword{internal}

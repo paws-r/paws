@@ -31,6 +31,13 @@ add individualized recommendations to customers.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$create_batch_inference_job(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -76,10 +83,3 @@ add individualized recommendations to customers.
 }
 }
 
-\examples{
-\donttest{svc <- personalize()
-svc$create_batch_inference_job(
-  Foo = 123
-)}
-
-}

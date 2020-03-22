@@ -87,17 +87,18 @@ action is no longer available.
 }
 }
 
-\examples{
-# This action allows you to update certain parameters for a job. Once the
+\section{Examples}{
+\preformatted{# This action allows you to update certain parameters for a job. Once the
 # job changes to a different job state, usually within 60 minutes of the
 # job being created, this action is no longer available.
-\donttest{svc$update_job(
+svc$update_job(
   AddressId = "ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b",
   Description = "Upgraded to Edge, shipped to Finance Dept, and requested faster shipping sp...",
   JobId = "JID123e4567-e89b-12d3-a456-426655440000",
   ShippingOption = "NEXT_DAY",
   SnowballCapacityPreference = "T100"
-)}
-
+)
 }
+}
+
 \keyword{internal}

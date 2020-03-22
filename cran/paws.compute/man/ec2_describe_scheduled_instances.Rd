@@ -67,13 +67,14 @@ Instances.
 }
 }
 
-\examples{
-# This example describes the specified Scheduled Instance.
-\donttest{svc$describe_scheduled_instances(
+\section{Examples}{
+\preformatted{# This example describes the specified Scheduled Instance.
+svc$describe_scheduled_instances(
   ScheduledInstanceIds = list(
     "sci-1234-1234-1234-1234-123456789012"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

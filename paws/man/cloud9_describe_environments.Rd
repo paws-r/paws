@@ -21,14 +21,15 @@ Gets information about AWS Cloud9 development environments.
 }
 }
 
-\examples{
-# 
-\donttest{svc$describe_environments(
+\section{Examples}{
+\preformatted{# 
+svc$describe_environments(
   environmentIds = list(
     "8d9967e2f0624182b74e7690ad69ebEX",
     "349c86d4579e4e7298d500ff57a6b2EX"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

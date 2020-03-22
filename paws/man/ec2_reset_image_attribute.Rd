@@ -32,13 +32,14 @@ The productCodes attribute can\'t be reset.
 }
 }
 
-\examples{
-# This example resets the launchPermission attribute for the specified
+\section{Examples}{
+\preformatted{# This example resets the launchPermission attribute for the specified
 # AMI. By default, AMIs are private.
-\donttest{svc$reset_image_attribute(
+svc$reset_image_attribute(
   Attribute = "launchPermission",
   ImageId = "ami-5731123e"
-)}
-
+)
 }
+}
+
 \keyword{internal}

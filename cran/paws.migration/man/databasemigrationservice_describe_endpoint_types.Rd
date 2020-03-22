@@ -44,9 +44,9 @@ Returns information about the type of endpoints available.
 }
 }
 
-\examples{
-# Returns information about the type of endpoints available.
-\donttest{svc$describe_endpoint_types(
+\section{Examples}{
+\preformatted{# Returns information about the type of endpoints available.
+svc$describe_endpoint_types(
   Filters = list(
     list(
       Name = "string",
@@ -58,7 +58,8 @@ Returns information about the type of endpoints available.
   ),
   Marker = "",
   MaxRecords = 123L
-)}
-
+)
 }
+}
+
 \keyword{internal}

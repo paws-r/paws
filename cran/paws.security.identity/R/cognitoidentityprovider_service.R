@@ -36,11 +36,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- cognitoidentityprovider()
+#' @section Examples:
+#' ```
 #' svc$add_custom_attributes(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

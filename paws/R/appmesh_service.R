@@ -46,11 +46,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- appmesh()
+#' @section Examples:
+#' ```
 #' svc$create_mesh(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

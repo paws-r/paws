@@ -39,13 +39,14 @@ For more information about instance profiles, go to \href{https://docs.aws.amazo
 }
 }
 
-\examples{
-# The following command removes the role named Test-Role from the instance
+\section{Examples}{
+\preformatted{# The following command removes the role named Test-Role from the instance
 # profile named ExampleInstanceProfile.
-\donttest{svc$remove_role_from_instance_profile(
+svc$remove_role_from_instance_profile(
   InstanceProfileName = "ExampleInstanceProfile",
   RoleName = "Test-Role"
-)}
-
+)
 }
+}
+
 \keyword{internal}

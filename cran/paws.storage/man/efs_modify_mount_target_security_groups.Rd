@@ -41,15 +41,16 @@ network interface.
 }
 }
 
-\examples{
-# This operation modifies the security groups associated with a mount
+\section{Examples}{
+\preformatted{# This operation modifies the security groups associated with a mount
 # target for a file system.
-\donttest{svc$modify_mount_target_security_groups(
+svc$modify_mount_target_security_groups(
   MountTargetId = "fsmt-12340abc",
   SecurityGroups = list(
     "sg-abcd1234"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -30,6 +30,13 @@ Amazon Mechanical Turk API Reference
 }
 }
 
+\section{Examples}{
+\preformatted{svc$accept_qualification_request(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -75,10 +82,3 @@ Amazon Mechanical Turk API Reference
 }
 }
 
-\examples{
-\donttest{svc <- mturk()
-svc$accept_qualification_request(
-  Foo = 123
-)}
-
-}

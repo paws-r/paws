@@ -103,9 +103,9 @@ object.}
 }
 }
 
-\examples{
-# The following example adds tags to an existing object.
-\donttest{svc$put_object_tagging(
+\section{Examples}{
+\preformatted{# The following example adds tags to an existing object.
+svc$put_object_tagging(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg",
   Tagging = list(
@@ -120,7 +120,8 @@ object.}
       )
     )
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

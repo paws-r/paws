@@ -32,6 +32,13 @@ stored in AWS Elemental MediaStore.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$delete_object(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -43,10 +50,3 @@ stored in AWS Elemental MediaStore.
 }
 }
 
-\examples{
-\donttest{svc <- mediastoredata()
-svc$delete_object(
-  Foo = 123
-)}
-
-}

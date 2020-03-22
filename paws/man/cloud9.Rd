@@ -57,6 +57,19 @@ environment member for an environment.
 }
 }
 
+\section{Examples}{
+\preformatted{# 
+svc$create_environment_ec2(
+  name = "my-demo-environment",
+  automaticStopTimeMinutes = 60L,
+  description = "This is my demonstration environment.",
+  instanceType = "t2.micro",
+  ownerArn = "arn:aws:iam::123456789012:user/MyDemoUser",
+  subnetId = "subnet-1fab8aEX"
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -73,16 +86,3 @@ environment member for an environment.
 }
 }
 
-\examples{
-# 
-\donttest{svc <- cloud9()
-svc$create_environment_ec2(
-  name = "my-demo-environment",
-  automaticStopTimeMinutes = 60L,
-  description = "This is my demonstration environment.",
-  instanceType = "t2.micro",
-  ownerArn = "arn:aws:iam::123456789012:user/MyDemoUser",
-  subnetId = "subnet-1fab8aEX"
-)}
-
-}

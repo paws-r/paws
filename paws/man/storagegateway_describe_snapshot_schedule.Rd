@@ -23,12 +23,13 @@ in the cached volume and stored volume types.
 }
 }
 
-\examples{
-# Describes the snapshot schedule for the specified gateway volume
+\section{Examples}{
+\preformatted{# Describes the snapshot schedule for the specified gateway volume
 # including intervals at which snapshots are automatically initiated.
-\donttest{svc$describe_snapshot_schedule(
+svc$describe_snapshot_schedule(
   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
-)}
-
+)
 }
+}
+
 \keyword{internal}

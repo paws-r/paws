@@ -37,16 +37,17 @@ overwritten. For more information about tags, see \href{https://docs.aws.amazon.
 }
 }
 
-\examples{
-# The example adds two tags to a my-vault.
-\donttest{svc$add_tags_to_vault(
+\section{Examples}{
+\preformatted{# The example adds two tags to a my-vault.
+svc$add_tags_to_vault(
   Tags = list(
     examplekey1 = "examplevalue1",
     examplekey2 = "examplevalue2"
   ),
   accountId = "-",
   vaultName = "my-vault"
-)}
-
+)
 }
+}
+
 \keyword{internal}

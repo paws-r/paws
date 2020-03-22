@@ -72,11 +72,11 @@ the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 }
 
-\examples{
-# This example replaces an entry for the specified network ACL. The new
+\section{Examples}{
+\preformatted{# This example replaces an entry for the specified network ACL. The new
 # rule 100 allows ingress traffic from 203.0.113.12/24 on UDP port 53
 # (DNS) into any associated subnet.
-\donttest{svc$replace_network_acl_entry(
+svc$replace_network_acl_entry(
   CidrBlock = "203.0.113.12/24",
   Egress = FALSE,
   NetworkAclId = "acl-5fb85d36",
@@ -87,7 +87,8 @@ the \emph{Amazon Virtual Private Cloud User Guide}.
   Protocol = "17",
   RuleAction = "allow",
   RuleNumber = 100L
-)}
-
+)
 }
+}
+
 \keyword{internal}

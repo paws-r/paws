@@ -34,10 +34,10 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # This operation creates a new file system with the default generalpurpose
 #' # performance mode.
-#' \donttest{svc <- efs()
 #' svc$create_file_system(
 #'   CreationToken = "tokenstring",
 #'   PerformanceMode = "generalPurpose",
@@ -47,7 +47,8 @@ NULL
 #'       Value = "MyFileSystem"
 #'     )
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

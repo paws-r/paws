@@ -31,11 +31,12 @@ stop or terminate them.
 }
 }
 
-\examples{
-# This example deletes the specified load balancer.
-\donttest{svc$delete_load_balancer(
+\section{Examples}{
+\preformatted{# This example deletes the specified load balancer.
+svc$delete_load_balancer(
   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my..."
-)}
-
+)
 }
+}
+
 \keyword{internal}

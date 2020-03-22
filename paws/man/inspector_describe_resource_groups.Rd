@@ -23,14 +23,15 @@ resource groups.
 }
 }
 
-\examples{
-# Describes the resource groups that are specified by the ARNs of the
+\section{Examples}{
+\preformatted{# Describes the resource groups that are specified by the ARNs of the
 # resource groups.
-\donttest{svc$describe_resource_groups(
+svc$describe_resource_groups(
   resourceGroupArns = list(
     "arn:aws:inspector:us-west-2:123456789012:resourcegroup/0-PyGXopAI"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

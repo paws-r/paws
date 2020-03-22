@@ -26,11 +26,12 @@ before submitting a \code{DeleteJobQueue} request.
 }
 }
 
-\examples{
-# This example deletes the GPGPU job queue.
-\donttest{svc$delete_job_queue(
+\section{Examples}{
+\preformatted{# This example deletes the GPGPU job queue.
+svc$delete_job_queue(
   jobQueue = "GPGPU"
-)}
-
+)
 }
+}
+
 \keyword{internal}

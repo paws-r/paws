@@ -53,11 +53,12 @@ secret, use GetSecretValue.
 }
 }
 
-\examples{
-# The following example shows how to get the details about a secret.
-\donttest{svc$describe_secret(
+\section{Examples}{
+\preformatted{# The following example shows how to get the details about a secret.
+svc$describe_secret(
   SecretId = "MyTestDatabaseSecret"
-)}
-
+)
 }
+}
+
 \keyword{internal}

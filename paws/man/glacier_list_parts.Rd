@@ -66,13 +66,14 @@ in the \emph{Amazon Glacier Developer Guide}.
 }
 }
 
-\examples{
-# The example lists all the parts of a multipart upload.
-\donttest{svc$list_parts(
+\section{Examples}{
+\preformatted{# The example lists all the parts of a multipart upload.
+svc$list_parts(
   accountId = "-",
   uploadId = "OW2fM5iVylEpFEMM9_HpKowRapC3vn5sSL39_396UW9zLFUWVrnRHaPjUJddQ5OxSHVXjYtrN47NBZ...",
   vaultName = "examplevault"
-)}
-
+)
 }
+}
+
 \keyword{internal}

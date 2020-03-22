@@ -71,11 +71,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- detective()
+#' @section Examples:
+#' ```
 #' svc$accept_invitation(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

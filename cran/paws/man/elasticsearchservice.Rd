@@ -40,6 +40,13 @@ a current list of supported regions and endpoints, see \href{http://docs.aws.ama
 }
 }
 
+\section{Examples}{
+\preformatted{svc$add_tags(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -69,10 +76,3 @@ a current list of supported regions and endpoints, see \href{http://docs.aws.ama
 }
 }
 
-\examples{
-\donttest{svc <- elasticsearchservice()
-svc$add_tags(
-  Foo = 123
-)}
-
-}

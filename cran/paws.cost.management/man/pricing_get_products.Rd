@@ -42,9 +42,9 @@ Returns a list of all products that match the filter criteria.
 }
 }
 
-\examples{
-# This operation returns a list of products that match the given criteria.
-\donttest{svc$get_products(
+\section{Examples}{
+\preformatted{# This operation returns a list of products that match the given criteria.
+svc$get_products(
   Filters = list(
     list(
       Field = "ServiceCode",
@@ -59,7 +59,8 @@ Returns a list of all products that match the filter criteria.
   ),
   FormatVersion = "aws_v1",
   MaxResults = 1L
-)}
-
+)
 }
+}
+
 \keyword{internal}

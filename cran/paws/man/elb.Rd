@@ -55,6 +55,26 @@ with a 200 OK response code.
 }
 }
 
+\section{Examples}{
+\preformatted{# This example adds two tags to the specified load balancer.
+svc$add_tags(
+  LoadBalancerNames = list(
+    "my-load-balancer"
+  ),
+  Tags = list(
+    list(
+      Key = "project",
+      Value = "lima"
+    ),
+    list(
+      Key = "department",
+      Value = "digital-media"
+    )
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -90,23 +110,3 @@ with a 200 OK response code.
 }
 }
 
-\examples{
-# This example adds two tags to the specified load balancer.
-\donttest{svc <- elb()
-svc$add_tags(
-  LoadBalancerNames = list(
-    "my-load-balancer"
-  ),
-  Tags = list(
-    list(
-      Key = "project",
-      Value = "lima"
-    ),
-    list(
-      Key = "department",
-      Value = "digital-media"
-    )
-  )
-)}
-
-}

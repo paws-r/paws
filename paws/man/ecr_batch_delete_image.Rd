@@ -43,17 +43,18 @@ the image\'s digest in your request.
 }
 }
 
-\examples{
-# This example deletes images with the tags precise and trusty in a
+\section{Examples}{
+\preformatted{# This example deletes images with the tags precise and trusty in a
 # repository called ubuntu in the default registry for an account.
-\donttest{svc$batch_delete_image(
+svc$batch_delete_image(
   imageIds = list(
     list(
       imageTag = "precise"
     )
   ),
   repositoryName = "ubuntu"
-)}
-
+)
 }
+}
+
 \keyword{internal}

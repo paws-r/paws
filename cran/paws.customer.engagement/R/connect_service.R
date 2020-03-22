@@ -41,11 +41,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- connect()
+#' @section Examples:
+#' ```
 #' svc$create_user(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

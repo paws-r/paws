@@ -37,6 +37,13 @@ and customers.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$create_participant_connection(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -48,10 +55,3 @@ and customers.
 }
 }
 
-\examples{
-\donttest{svc <- connectparticipant()
-svc$create_participant_connection(
-  Foo = 123
-)}
-
-}

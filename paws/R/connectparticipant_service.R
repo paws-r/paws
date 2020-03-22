@@ -36,11 +36,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- connectparticipant()
+#' @section Examples:
+#' ```
 #' svc$create_participant_connection(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

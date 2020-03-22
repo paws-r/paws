@@ -50,11 +50,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- ssooidc()
+#' @section Examples:
+#' ```
 #' svc$create_token(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

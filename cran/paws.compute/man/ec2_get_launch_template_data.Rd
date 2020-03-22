@@ -26,11 +26,12 @@ this data to create a launch template.
 }
 }
 
-\examples{
-# This example gets the launch template data for the specified instance.
-\donttest{svc$get_launch_template_data(
+\section{Examples}{
+\preformatted{# This example gets the launch template data for the specified instance.
+svc$get_launch_template_data(
   InstanceId = "0123d646e8048babc"
-)}
-
+)
 }
+}
+
 \keyword{internal}

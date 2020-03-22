@@ -28,11 +28,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- kinesisvideoarchivedmedia()
+#' @section Examples:
+#' ```
 #' svc$get_dash_streaming_session_url(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

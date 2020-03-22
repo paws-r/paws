@@ -61,11 +61,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- sesv2()
+#' @section Examples:
+#' ```
 #' svc$create_configuration_set(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

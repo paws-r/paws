@@ -24,11 +24,12 @@ You can execute this operation no more than once per second.
 }
 }
 
-\examples{
-# The following example deletes an IP address filter:
-\donttest{svc$delete_receipt_filter(
+\section{Examples}{
+\preformatted{# The following example deletes an IP address filter:
+svc$delete_receipt_filter(
   FilterName = "MyFilter"
-)}
-
+)
 }
+}
+
 \keyword{internal}

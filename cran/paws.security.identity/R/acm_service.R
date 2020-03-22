@@ -34,11 +34,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- acm()
+#' @section Examples:
+#' ```
 #' svc$add_tags_to_certificate(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

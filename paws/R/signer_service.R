@@ -41,11 +41,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- signer()
+#' @section Examples:
+#' ```
 #' svc$cancel_signing_profile(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

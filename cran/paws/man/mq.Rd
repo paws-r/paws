@@ -30,6 +30,13 @@ Amazon MQ is a managed message broker service for Apache ActiveMQ that makes it 
 }
 }
 
+\section{Examples}{
+\preformatted{svc$create_broker(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -58,10 +65,3 @@ Amazon MQ is a managed message broker service for Apache ActiveMQ that makes it 
 }
 }
 
-\examples{
-\donttest{svc <- mq()
-svc$create_broker(
-  Foo = 123
-)}
-
-}

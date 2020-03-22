@@ -99,6 +99,13 @@ deployment, and to get details about Amazon ECS service deployments.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$add_tags_to_on_premises_instances(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -151,10 +158,3 @@ deployment, and to get details about Amazon ECS service deployments.
 }
 }
 
-\examples{
-\donttest{svc <- codedeploy()
-svc$add_tags_to_on_premises_instances(
-  Foo = 123
-)}
-
-}

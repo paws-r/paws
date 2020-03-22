@@ -126,13 +126,14 @@ image results in an error indicating that the AMI ID cannot be found.
 }
 }
 
-\examples{
-# This example describes the specified AMI.
-\donttest{svc$describe_images(
+\section{Examples}{
+\preformatted{# This example describes the specified AMI.
+svc$describe_images(
   ImageIds = list(
     "ami-5731123e"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

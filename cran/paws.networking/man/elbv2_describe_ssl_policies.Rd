@@ -34,13 +34,14 @@ in the \emph{Application Load Balancers Guide}.
 }
 }
 
-\examples{
-# This example describes the specified policy used for SSL negotiation.
-\donttest{svc$describe_ssl_policies(
+\section{Examples}{
+\preformatted{# This example describes the specified policy used for SSL negotiation.
+svc$describe_ssl_policies(
   Names = list(
     "ELBSecurityPolicy-2015-05"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

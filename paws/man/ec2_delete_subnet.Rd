@@ -26,11 +26,12 @@ in the subnet before you can delete the subnet.
 }
 }
 
-\examples{
-# This example deletes the specified subnet.
-\donttest{svc$delete_subnet(
+\section{Examples}{
+\preformatted{# This example deletes the specified subnet.
+svc$delete_subnet(
   SubnetId = "subnet-9d4a7b6c"
-)}
-
+)
 }
+}
+
 \keyword{internal}

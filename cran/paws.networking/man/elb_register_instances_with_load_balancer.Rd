@@ -51,17 +51,18 @@ in the \emph{Classic Load Balancers Guide}.
 }
 }
 
-\examples{
-# This example registers the specified instance with the specified load
+\section{Examples}{
+\preformatted{# This example registers the specified instance with the specified load
 # balancer.
-\donttest{svc$register_instances_with_load_balancer(
+svc$register_instances_with_load_balancer(
   Instances = list(
     list(
       InstanceId = "i-d6f6fae3"
     )
   ),
   LoadBalancerName = "my-load-balancer"
-)}
-
+)
 }
+}
+
 \keyword{internal}

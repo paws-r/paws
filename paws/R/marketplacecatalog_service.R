@@ -36,11 +36,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- marketplacecatalog()
+#' @section Examples:
+#' ```
 #' svc$cancel_change_set(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

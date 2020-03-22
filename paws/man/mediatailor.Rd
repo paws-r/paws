@@ -40,6 +40,13 @@ ad decision server (ADS).
 }
 }
 
+\section{Examples}{
+\preformatted{svc$delete_playback_configuration(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -53,10 +60,3 @@ ad decision server (ADS).
 }
 }
 
-\examples{
-\donttest{svc <- mediatailor()
-svc$delete_playback_configuration(
-  Foo = 123
-)}
-
-}

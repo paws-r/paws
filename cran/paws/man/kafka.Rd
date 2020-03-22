@@ -30,6 +30,13 @@ Managed Streaming for Kafka
 }
 }
 
+\section{Examples}{
+\preformatted{svc$create_cluster(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -56,10 +63,3 @@ Managed Streaming for Kafka
 }
 }
 
-\examples{
-\donttest{svc <- kafka()
-svc$create_cluster(
-  Foo = 123
-)}
-
-}

@@ -15,10 +15,11 @@ account.
 For information about limitations on IAM entities, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on IAM Entities}
 in the \emph{IAM User Guide}.
 }
-\examples{
-# The following command returns information about the IAM entity quotas
+\section{Examples}{
+\preformatted{# The following command returns information about the IAM entity quotas
 # and usage in the current AWS account.
-\donttest{svc$get_account_summary()}
-
+svc$get_account_summary()
 }
+}
+
 \keyword{internal}

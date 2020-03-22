@@ -21,12 +21,13 @@ Returns the ByteMatchSet specified by \code{ByteMatchSetId}.
 }
 }
 
-\examples{
-# The following example returns the details of a byte match set with the
+\section{Examples}{
+\preformatted{# The following example returns the details of a byte match set with the
 # ID exampleIDs3t-46da-4fdb-b8d5-abc321j569j5.
-\donttest{svc$get_byte_match_set(
+svc$get_byte_match_set(
   ByteMatchSetId = "exampleIDs3t-46da-4fdb-b8d5-abc321j569j5"
-)}
-
+)
 }
+}
+
 \keyword{internal}

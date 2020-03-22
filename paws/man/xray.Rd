@@ -31,6 +31,13 @@ maps and other data created by processing those traces.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$batch_get_traces(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -57,10 +64,3 @@ maps and other data created by processing those traces.
 }
 }
 
-\examples{
-\donttest{svc <- xray()
-svc$batch_get_traces(
-  Foo = 123
-)}
-
-}

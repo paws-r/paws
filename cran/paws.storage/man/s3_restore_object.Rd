@@ -340,10 +340,10 @@ in the \emph{Amazon Simple Storage Service Developer Guide}
 }
 }
 
-\examples{
-# The following example restores for one day an archived copy of an object
+\section{Examples}{
+\preformatted{# The following example restores for one day an archived copy of an object
 # back into Amazon S3 bucket.
-\donttest{svc$restore_object(
+svc$restore_object(
   Bucket = "examplebucket",
   Key = "archivedobjectkey",
   RestoreRequest = list(
@@ -352,7 +352,8 @@ in the \emph{Amazon Simple Storage Service Developer Guide}
       Tier = "Expedited"
     )
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

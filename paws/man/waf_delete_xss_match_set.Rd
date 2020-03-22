@@ -40,13 +40,14 @@ information, see UpdateXssMatchSet.
 }
 }
 
-\examples{
-# The following example deletes an XSS match set with the ID
+\section{Examples}{
+\preformatted{# The following example deletes an XSS match set with the ID
 # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-\donttest{svc$delete_xss_match_set(
+svc$delete_xss_match_set(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   XssMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-)}
-
+)
 }
+}
+
 \keyword{internal}

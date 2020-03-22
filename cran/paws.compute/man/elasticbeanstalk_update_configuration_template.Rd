@@ -67,11 +67,11 @@ Related Topics
 }
 }
 
-\examples{
-# The following operation removes the configured CloudWatch custom health
+\section{Examples}{
+\preformatted{# The following operation removes the configured CloudWatch custom health
 # metrics configuration ConfigDocument from a saved configuration template
 # named my-template:
-\donttest{svc$update_configuration_template(
+svc$update_configuration_template(
   ApplicationName = "my-app",
   OptionsToRemove = list(
     list(
@@ -80,7 +80,8 @@ Related Topics
     )
   ),
   TemplateName = "my-template"
-)}
-
+)
 }
+}
+
 \keyword{internal}

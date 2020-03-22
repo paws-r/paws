@@ -33,6 +33,13 @@ samples to make use of those resources.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$create_project(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -48,10 +55,3 @@ samples to make use of those resources.
 }
 }
 
-\examples{
-\donttest{svc <- mobile()
-svc$create_project(
-  Foo = 123
-)}
-
-}

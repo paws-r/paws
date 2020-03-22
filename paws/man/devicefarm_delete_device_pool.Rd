@@ -21,11 +21,12 @@ curated pools owned by the system.
 }
 }
 
-\examples{
-# The following example deletes a specific device pool.
-\donttest{svc$delete_device_pool(
+\section{Examples}{
+\preformatted{# The following example deletes a specific device pool.
+svc$delete_device_pool(
   arn = "arn:aws:devicefarm:us-west-2::devicepool:123-456-EXAMPLE-GUID"
-)}
-
+)
 }
+}
+
 \keyword{internal}

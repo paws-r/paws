@@ -46,17 +46,18 @@ that you can allocate for use with EC2-VPC.
 }
 }
 
-\examples{
-# This example describes the supported-platforms attribute for your AWS
+\section{Examples}{
+\preformatted{# This example describes the supported-platforms attribute for your AWS
 # account.
-\donttest{svc$describe_account_attributes(
+svc$describe_account_attributes(
   AttributeNames = list(
     "supported-platforms"
   )
-)}
+)
 
 # This example describes the attributes for your AWS account.
-\donttest{svc$describe_account_attributes()}
-
+svc$describe_account_attributes()
 }
+}
+
 \keyword{internal}

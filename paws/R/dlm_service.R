@@ -37,11 +37,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- dlm()
+#' @section Examples:
+#' ```
 #' svc$create_lifecycle_policy(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

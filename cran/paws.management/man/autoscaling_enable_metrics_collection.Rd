@@ -42,13 +42,14 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 }
 
-\examples{
-# This example enables data collection for the specified Auto Scaling
+\section{Examples}{
+\preformatted{# This example enables data collection for the specified Auto Scaling
 # group.
-\donttest{svc$enable_metrics_collection(
+svc$enable_metrics_collection(
   AutoScalingGroupName = "my-auto-scaling-group",
   Granularity = "1Minute"
-)}
-
+)
 }
+}
+
 \keyword{internal}

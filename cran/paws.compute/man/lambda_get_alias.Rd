@@ -34,12 +34,13 @@ Returns details about a Lambda function
 }
 }
 
-\examples{
-# This operation retrieves a Lambda function alias
-\donttest{svc$get_alias(
+\section{Examples}{
+\preformatted{# This operation retrieves a Lambda function alias
+svc$get_alias(
   FunctionName = "myFunction",
   Name = "myFunctionAlias"
-)}
-
+)
 }
+}
+
 \keyword{internal}

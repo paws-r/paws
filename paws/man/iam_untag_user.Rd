@@ -31,15 +31,16 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\examples{
-# The following example shows how to remove tags that are attached to a
+\section{Examples}{
+\preformatted{# The following example shows how to remove tags that are attached to a
 # user named 'anika'.
-\donttest{svc$untag_user(
+svc$untag_user(
   TagKeys = list(
     "Dept"
   ),
   UserName = "anika"
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -44,14 +44,15 @@ if the AWS account has no associated users.
 }
 }
 
-\examples{
-# The following command changes the status of a signing certificate for a
+\section{Examples}{
+\preformatted{# The following command changes the status of a signing certificate for a
 # user named Bob to Inactive.
-\donttest{svc$update_signing_certificate(
+svc$update_signing_certificate(
   CertificateId = "TA7SMP42TDN5Z26OBPJE7EXAMPLE",
   Status = "Inactive",
   UserName = "Bob"
-)}
-
+)
 }
+}
+
 \keyword{internal}

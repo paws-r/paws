@@ -215,9 +215,9 @@ more information, see security-iam.
 }
 }
 
-\examples{
-# This example shows how to create a bot for ordering pizzas.
-\donttest{svc$put_bot(
+\section{Examples}{
+\preformatted{# This example shows how to create a bot for ordering pizzas.
+svc$put_bot(
   name = "DocOrderPizzaBot",
   abortStatement = list(
     messages = list(
@@ -255,7 +255,8 @@ more information, see security-iam.
   ),
   locale = "en-US",
   processBehavior = "SAVE"
-)}
-
+)
 }
+}
+
 \keyword{internal}

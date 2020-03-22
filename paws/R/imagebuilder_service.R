@@ -40,11 +40,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- imagebuilder()
+#' @section Examples:
+#' ```
 #' svc$cancel_image_creation(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

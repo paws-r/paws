@@ -109,25 +109,26 @@ The following operations are related to
 }
 }
 
-\examples{
-# The following example completes a multipart upload.
-\donttest{svc$complete_multipart_upload(
+\section{Examples}{
+\preformatted{# The following example completes a multipart upload.
+svc$complete_multipart_upload(
   Bucket = "examplebucket",
   Key = "bigobject",
   MultipartUpload = list(
     Parts = list(
       list(
-        ETag = "\"d8c2eafd90c266e19ab9dcacc479f8af\"",
+        ETag = "\\"d8c2eafd90c266e19ab9dcacc479f8af\\"",
         PartNumber = "1"
       ),
       list(
-        ETag = "\"d8c2eafd90c266e19ab9dcacc479f8af\"",
+        ETag = "\\"d8c2eafd90c266e19ab9dcacc479f8af\\"",
         PartNumber = "2"
       )
     )
   ),
   UploadId = "7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP3WA60CE..."
-)}
-
+)
 }
+}
+
 \keyword{internal}

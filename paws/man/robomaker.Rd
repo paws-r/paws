@@ -31,6 +31,13 @@ operations.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$batch_describe_simulation_job(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -73,10 +80,3 @@ operations.
 }
 }
 
-\examples{
-\donttest{svc <- robomaker()
-svc$batch_describe_simulation_job(
-  Foo = 123
-)}
-
-}

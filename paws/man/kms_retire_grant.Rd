@@ -50,12 +50,13 @@ a grant. The CreateGrant operation returns both.
 }
 }
 
-\examples{
-# The following example retires a grant.
-\donttest{svc$retire_grant(
+\section{Examples}{
+\preformatted{# The following example retires a grant.
+svc$retire_grant(
   GrantId = "0c237476b39f8bc44e45212e08498fbe3151305030726c0590dd8d3e9f3d6a60",
   KeyId = "arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab"
-)}
-
+)
 }
+}
+
 \keyword{internal}

@@ -38,15 +38,16 @@ DescribeLoadBalancers. The instances remain running.
 }
 }
 
-\examples{
-# This example detaches the specified load balancer from the specified
+\section{Examples}{
+\preformatted{# This example detaches the specified load balancer from the specified
 # Auto Scaling group.
-\donttest{svc$detach_load_balancers(
+svc$detach_load_balancers(
   AutoScalingGroupName = "my-auto-scaling-group",
   LoadBalancerNames = list(
     "my-load-balancer"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

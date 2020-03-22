@@ -36,11 +36,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- servicediscovery()
+#' @section Examples:
+#' ```
 #' svc$create_http_namespace(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

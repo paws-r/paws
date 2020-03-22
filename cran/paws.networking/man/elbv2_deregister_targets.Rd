@@ -32,17 +32,18 @@ load balancer.
 }
 }
 
-\examples{
-# This example deregisters the specified instance from the specified
+\section{Examples}{
+\preformatted{# This example deregisters the specified instance from the specified
 # target group.
-\donttest{svc$deregister_targets(
+svc$deregister_targets(
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targe...",
   Targets = list(
     list(
       Id = "i-0f76fade"
     )
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

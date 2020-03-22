@@ -38,11 +38,12 @@ The following operations are related to \code{DeleteBucketReplication}:
 }
 }
 
-\examples{
-# The following example deletes replication configuration set on bucket.
-\donttest{svc$delete_bucket_replication(
+\section{Examples}{
+\preformatted{# The following example deletes replication configuration set on bucket.
+svc$delete_bucket_replication(
   Bucket = "example"
-)}
-
+)
 }
+}
+
 \keyword{internal}

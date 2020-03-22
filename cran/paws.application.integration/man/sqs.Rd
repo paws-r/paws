@@ -60,6 +60,13 @@ tasks such as the following automatically:
 }
 }
 
+\section{Examples}{
+\preformatted{svc$add_permission(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -86,10 +93,3 @@ tasks such as the following automatically:
 }
 }
 
-\examples{
-\donttest{svc <- sqs()
-svc$add_permission(
-  Foo = 123
-)}
-
-}

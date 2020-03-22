@@ -73,6 +73,13 @@ the \emph{Amazon Chime Administration Guide}.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$associate_phone_number_with_user(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -173,10 +180,3 @@ the \emph{Amazon Chime Administration Guide}.
 }
 }
 
-\examples{
-\donttest{svc <- chime()
-svc$associate_phone_number_with_user(
-  Foo = 123
-)}
-
-}

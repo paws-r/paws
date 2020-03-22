@@ -301,12 +301,13 @@ The following operations are related to \code{CreateMultipartUpload}:
 }
 }
 
-\examples{
-# The following example initiates a multipart upload.
-\donttest{svc$create_multipart_upload(
+\section{Examples}{
+\preformatted{# The following example initiates a multipart upload.
+svc$create_multipart_upload(
   Bucket = "examplebucket",
   Key = "largeobject"
-)}
-
+)
 }
+}
+
 \keyword{internal}

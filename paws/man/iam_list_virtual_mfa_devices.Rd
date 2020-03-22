@@ -46,10 +46,11 @@ parameters.
 }
 }
 
-\examples{
-# The following command lists the virtual MFA devices that have been
+\section{Examples}{
+\preformatted{# The following command lists the virtual MFA devices that have been
 # configured for the current account.
-\donttest{svc$list_virtual_mfa_devices()}
-
+svc$list_virtual_mfa_devices()
 }
+}
+
 \keyword{internal}

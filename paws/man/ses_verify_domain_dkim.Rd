@@ -51,12 +51,13 @@ You can execute this operation no more than once per second.
 }
 }
 
-\examples{
-# The following example generates DKIM tokens for a domain that has been
+\section{Examples}{
+\preformatted{# The following example generates DKIM tokens for a domain that has been
 # verified with Amazon SES:
-\donttest{svc$verify_domain_dkim(
+svc$verify_domain_dkim(
   Domain = "example.com"
-)}
-
+)
 }
+}
+
 \keyword{internal}

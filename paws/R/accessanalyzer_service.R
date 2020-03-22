@@ -40,11 +40,12 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \donttest{svc <- accessanalyzer()
+#' @section Examples:
+#' ```
 #' svc$create_analyzer(
 #'   Foo = 123
-#' )}
+#' )
+#' ```
 #'
 #' @section Operations:
 #' \tabular{ll}{

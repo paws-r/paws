@@ -60,12 +60,13 @@ account.
 }
 }
 
-\examples{
-# The following example shows how to detach a policy from an OU:/n/n
-\donttest{svc$detach_policy(
+\section{Examples}{
+\preformatted{# The following example shows how to detach a policy from an OU:/n/n
+svc$detach_policy(
   PolicyId = "p-examplepolicyid111",
   TargetId = "ou-examplerootid111-exampleouid111"
-)}
-
+)
 }
+}
+
 \keyword{internal}

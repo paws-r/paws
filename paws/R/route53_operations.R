@@ -42,17 +42,19 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example associates the VPC with ID vpc-1a2b3c4d with the
 #' # hosted zone with ID Z3M3LMPEXAMPLE.
-#' \donttest{svc$associate_vpc_with_hosted_zone(
+#' svc$associate_vpc_with_hosted_zone(
 #'   Comment = "",
 #'   HostedZoneId = "Z3M3LMPEXAMPLE",
 #'   VPC = list(
 #'     VPCId = "vpc-1a2b3c4d",
 #'     VPCRegion = "us-east-2"
 #'   )
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -216,10 +218,11 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example creates a resource record set that routes Internet
 #' # traffic to a resource with an IP address of 192.0.2.44.
-#' \donttest{svc$change_resource_record_sets(
+#' svc$change_resource_record_sets(
 #'   ChangeBatch = list(
 #'     Changes = list(
 #'       list(
@@ -239,12 +242,12 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #'     Comment = "Web server for example.com"
 #'   ),
 #'   HostedZoneId = "Z3M3LMPEXAMPLE"
-#' )}
+#' )
 #' 
 #' # The following example creates two weighted resource record sets. The
 #' # resource with a Weight of 100 will get 1/3rd of traffic (100/100+200),
 #' # and the other resource will get the rest of the traffic for example.com.
-#' \donttest{svc$change_resource_record_sets(
+#' svc$change_resource_record_sets(
 #'   ChangeBatch = list(
 #'     Changes = list(
 #'       list(
@@ -283,11 +286,11 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #'     Comment = "Web servers for example.com"
 #'   ),
 #'   HostedZoneId = "Z3M3LMPEXAMPLE"
-#' )}
+#' )
 #' 
 #' # The following example creates an alias resource record set that routes
 #' # traffic to a CloudFront distribution.
-#' \donttest{svc$change_resource_record_sets(
+#' svc$change_resource_record_sets(
 #'   ChangeBatch = list(
 #'     Changes = list(
 #'       list(
@@ -306,13 +309,13 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #'     Comment = "CloudFront distribution for example.com"
 #'   ),
 #'   HostedZoneId = "Z3M3LMPEXAMPLE"
-#' )}
+#' )
 #' 
 #' # The following example creates two weighted alias resource record sets
 #' # that route traffic to ELB load balancers. The resource with a Weight of
 #' # 100 will get 1/3rd of traffic (100/100+200), and the other resource will
 #' # get the rest of the traffic for example.com.
-#' \donttest{svc$change_resource_record_sets(
+#' svc$change_resource_record_sets(
 #'   ChangeBatch = list(
 #'     Changes = list(
 #'       list(
@@ -347,13 +350,13 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #'     Comment = "ELB load balancers for example.com"
 #'   ),
 #'   HostedZoneId = "Z3M3LMPEXAMPLE"
-#' )}
+#' )
 #' 
 #' # The following example creates two latency resource record sets that
 #' # route traffic to EC2 instances. Traffic for example.com is routed either
 #' # to the Ohio region or the Oregon region, depending on the latency
 #' # between the user and those regions.
-#' \donttest{svc$change_resource_record_sets(
+#' svc$change_resource_record_sets(
 #'   ChangeBatch = list(
 #'     Changes = list(
 #'       list(
@@ -392,13 +395,13 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #'     Comment = "EC2 instances for example.com"
 #'   ),
 #'   HostedZoneId = "Z3M3LMPEXAMPLE"
-#' )}
+#' )
 #' 
 #' # The following example creates two latency alias resource record sets
 #' # that route traffic for example.com to ELB load balancers. Requests are
 #' # routed either to the Ohio region or the Oregon region, depending on the
 #' # latency between the user and those regions.
-#' \donttest{svc$change_resource_record_sets(
+#' svc$change_resource_record_sets(
 #'   ChangeBatch = list(
 #'     Changes = list(
 #'       list(
@@ -433,14 +436,14 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #'     Comment = "ELB load balancers for example.com"
 #'   ),
 #'   HostedZoneId = "Z3M3LMPEXAMPLE"
-#' )}
+#' )
 #' 
 #' # The following example creates primary and secondary failover resource
 #' # record sets that route traffic to EC2 instances. Traffic is generally
 #' # routed to the primary resource, in the Ohio region. If that resource is
 #' # unavailable, traffic is routed to the secondary resource, in the Oregon
 #' # region.
-#' \donttest{svc$change_resource_record_sets(
+#' svc$change_resource_record_sets(
 #'   ChangeBatch = list(
 #'     Changes = list(
 #'       list(
@@ -479,14 +482,14 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #'     Comment = "Failover configuration for example.com"
 #'   ),
 #'   HostedZoneId = "Z3M3LMPEXAMPLE"
-#' )}
+#' )
 #' 
 #' # The following example creates primary and secondary failover alias
 #' # resource record sets that route traffic to ELB load balancers. Traffic
 #' # is generally routed to the primary resource, in the Ohio region. If that
 #' # resource is unavailable, traffic is routed to the secondary resource, in
 #' # the Oregon region.
-#' \donttest{svc$change_resource_record_sets(
+#' svc$change_resource_record_sets(
 #'   ChangeBatch = list(
 #'     Changes = list(
 #'       list(
@@ -521,14 +524,14 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #'     Comment = "Failover alias configuration for example.com"
 #'   ),
 #'   HostedZoneId = "Z3M3LMPEXAMPLE"
-#' )}
+#' )
 #' 
 #' # The following example creates four geolocation resource record sets that
 #' # use IPv4 addresses to route traffic to resources such as web servers
 #' # running on EC2 instances. Traffic is routed to one of four IP addresses,
 #' # for North America (NA), for South America (SA), for Europe (EU), and for
 #' # all other locations (*).
-#' \donttest{svc$change_resource_record_sets(
+#' svc$change_resource_record_sets(
 #'   ChangeBatch = list(
 #'     Changes = list(
 #'       list(
@@ -603,13 +606,13 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #'     Comment = "Geolocation configuration for example.com"
 #'   ),
 #'   HostedZoneId = "Z3M3LMPEXAMPLE"
-#' )}
+#' )
 #' 
 #' # The following example creates four geolocation alias resource record
 #' # sets that route traffic to ELB load balancers. Traffic is routed to one
 #' # of four IP addresses, for North America (NA), for South America (SA),
 #' # for Europe (EU), and for all other locations (*).
-#' \donttest{svc$change_resource_record_sets(
+#' svc$change_resource_record_sets(
 #'   ChangeBatch = list(
 #'     Changes = list(
 #'       list(
@@ -680,7 +683,8 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #'     Comment = "Geolocation alias configuration for example.com"
 #'   ),
 #'   HostedZoneId = "Z3M3LMPEXAMPLE"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -748,10 +752,11 @@ route53_change_resource_record_sets <- function(HostedZoneId, ChangeBatch) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example adds two tags and removes one tag from the hosted
 #' # zone with ID Z3M3LMPEXAMPLE.
-#' \donttest{svc$change_tags_for_resource(
+#' svc$change_tags_for_resource(
 #'   AddTags = list(
 #'     list(
 #'       Key = "apex",
@@ -767,7 +772,8 @@ route53_change_resource_record_sets <- function(HostedZoneId, ChangeBatch) {
 #'   ),
 #'   ResourceId = "Z3M3LMPEXAMPLE",
 #'   ResourceType = "hostedzone"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
@@ -2315,12 +2321,14 @@ route53_get_health_check_status <- function(HealthCheckId) {
 #' )
 #' ```
 #'
-#' @examples
+#' @section Examples:
+#' ```
 #' # The following example gets information about the Z3M3LMPEXAMPLE hosted
 #' # zone.
-#' \donttest{svc$get_hosted_zone(
+#' svc$get_hosted_zone(
 #'   Id = "Z3M3LMPEXAMPLE"
-#' )}
+#' )
+#' ```
 #'
 #' @keywords internal
 #'

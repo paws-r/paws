@@ -9,9 +9,10 @@ autoscaling_describe_adjustment_types()
 \description{
 Describes the policy adjustment types for use with PutScalingPolicy.
 }
-\examples{
-# This example describes the available adjustment types.
-\donttest{svc$describe_adjustment_types()}
-
+\section{Examples}{
+\preformatted{# This example describes the available adjustment types.
+svc$describe_adjustment_types()
 }
+}
+
 \keyword{internal}

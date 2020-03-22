@@ -29,11 +29,12 @@ call to \code{DeleteLoadBalancer} still succeeds.
 }
 }
 
-\examples{
-# This example deletes the specified load balancer.
-\donttest{svc$delete_load_balancer(
+\section{Examples}{
+\preformatted{# This example deletes the specified load balancer.
+svc$delete_load_balancer(
   LoadBalancerName = "my-load-balancer"
-)}
-
+)
 }
+}
+
 \keyword{internal}

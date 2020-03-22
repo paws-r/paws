@@ -12,10 +12,11 @@ Provides the sending limits for the Amazon SES account.
 \details{
 You can execute this operation no more than once per second.
 }
-\examples{
-# The following example returns the Amazon SES sending limits for an AWS
+\section{Examples}{
+\preformatted{# The following example returns the Amazon SES sending limits for an AWS
 # account:
-\donttest{svc$get_send_quota()}
-
+svc$get_send_quota()
 }
+}
+
 \keyword{internal}

@@ -40,16 +40,17 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 }
 
-\examples{
-# This example adds the specified notification to the specified Auto
+\section{Examples}{
+\preformatted{# This example adds the specified notification to the specified Auto
 # Scaling group.
-\donttest{svc$put_notification_configuration(
+svc$put_notification_configuration(
   AutoScalingGroupName = "my-auto-scaling-group",
   NotificationTypes = list(
     "autoscaling:TEST_NOTIFICATION"
   ),
   TopicARN = "arn:aws:sns:us-west-2:123456789012:my-sns-topic"
-)}
-
+)
 }
+}
+
 \keyword{internal}

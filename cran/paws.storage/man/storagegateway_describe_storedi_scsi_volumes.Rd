@@ -27,14 +27,15 @@ type.
 }
 }
 
-\examples{
-# Returns the description of the gateway volumes specified in the request
+\section{Examples}{
+\preformatted{# Returns the description of the gateway volumes specified in the request
 # belonging to the same gateway.
-\donttest{svc$describe_storedi_scsi_volumes(
+svc$describe_storedi_scsi_volumes(
   VolumeARNs = list(
     "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

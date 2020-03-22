@@ -41,6 +41,13 @@ regions and endpoints, see \href{http://docs.aws.amazon.com/general/latest/gr/ra
 }
 }
 
+\section{Examples}{
+\preformatted{svc$build_suggesters(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -73,10 +80,3 @@ regions and endpoints, see \href{http://docs.aws.amazon.com/general/latest/gr/ra
 }
 }
 
-\examples{
-\donttest{svc <- cloudsearch()
-svc$build_suggesters(
-  Foo = 123
-)}
-
-}

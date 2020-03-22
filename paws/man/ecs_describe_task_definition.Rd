@@ -34,11 +34,12 @@ or service references them.
 }
 }
 
-\examples{
-# This example provides a description of the specified task definition.
-\donttest{svc$describe_task_definition(
+\section{Examples}{
+\preformatted{# This example provides a description of the specified task definition.
+svc$describe_task_definition(
   taskDefinition = "hello_world:8"
-)}
-
+)
 }
+}
+
 \keyword{internal}

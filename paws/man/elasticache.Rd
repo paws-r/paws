@@ -41,6 +41,13 @@ their cache and can receive alarms if a part of their cache runs hot.
 }
 }
 
+\section{Examples}{
+\preformatted{svc$add_tags_to_resource(
+  Foo = 123
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
@@ -95,10 +102,3 @@ their cache and can receive alarms if a part of their cache runs hot.
 }
 }
 
-\examples{
-\donttest{svc <- elasticache()
-svc$add_tags_to_resource(
-  Foo = 123
-)}
-
-}

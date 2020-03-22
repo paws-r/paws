@@ -46,15 +46,16 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 }
 
-\examples{
-# This example suspends the specified scaling process for the specified
+\section{Examples}{
+\preformatted{# This example suspends the specified scaling process for the specified
 # Auto Scaling group.
-\donttest{svc$suspend_processes(
+svc$suspend_processes(
   AutoScalingGroupName = "my-auto-scaling-group",
   ScalingProcesses = list(
     "AlarmNotification"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}

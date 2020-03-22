@@ -31,15 +31,16 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\examples{
-# The following example shows how to remove a tag with the key 'Dept' from
+\section{Examples}{
+\preformatted{# The following example shows how to remove a tag with the key 'Dept' from
 # a role named 'taggedrole'.
-\donttest{svc$untag_role(
+svc$untag_role(
   RoleName = "taggedrole",
   TagKeys = list(
     "Dept"
   )
-)}
-
+)
 }
+}
+
 \keyword{internal}
