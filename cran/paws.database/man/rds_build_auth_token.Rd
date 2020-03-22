@@ -41,22 +41,24 @@ for more information on using IAM database authentication with RDS.
 \examples{
 # This example gets an authentication token for an RDS database, then
 # connects to the database using the token.
-\donttest{host <- "database-1.cluster-abcdef123456.us-east-1.rds.amazonaws.com"
+```
+host <- "database-1.cluster-abcdef123456.us-east-1.rds.amazonaws.com"
 port <- 3306
 user <- "jane_doe"
 token <- svc$build_auth_token(
   endpoint = sprintf("\%s:\%s", host, port),
   region = "us-east-1",
   user = user
-)}
-\dontrun{conn <- DBI::dbConnect(
+)
+conn <- DBI::dbConnect(
   drv = RMariaDB::MariaDB(),
   user = user,
   password = token,
   host = host,
   port = port,
   client.flag = RMariaDB::CLIENT_SSL
-)}
+)
+```
 
 }
 \keyword{internal}
