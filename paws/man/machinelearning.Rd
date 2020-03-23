@@ -30,13 +30,6 @@ Definition of the public APIs exposed by Amazon Machine Learning
 }
 }
 
-\section{Examples}{
-\preformatted{svc$add_tags(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -71,3 +64,10 @@ Definition of the public APIs exposed by Amazon Machine Learning
 }
 }
 
+\examples{
+\donttest{svc <- machinelearning()
+svc$add_tags(
+  Foo = 123
+)}
+
+}

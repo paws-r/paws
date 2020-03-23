@@ -34,12 +34,11 @@ SDKs provide similar functionality.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following command gets information about the role named Test-Role.
-svc$get_role(
+\examples{
+# The following command gets information about the role named Test-Role.
+\donttest{svc$get_role(
   RoleName = "Test-Role"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

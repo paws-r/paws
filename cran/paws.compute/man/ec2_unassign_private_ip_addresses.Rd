@@ -29,16 +29,15 @@ interface.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example unassigns the specified private IP address from the
+\examples{
+# This example unassigns the specified private IP address from the
 # specified network interface.
-svc$unassign_private_ip_addresses(
+\donttest{svc$unassign_private_ip_addresses(
   NetworkInterfaceId = "eni-e5aa89a3",
   PrivateIpAddresses = list(
     "10.0.0.82"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

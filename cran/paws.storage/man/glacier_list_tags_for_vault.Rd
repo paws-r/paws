@@ -28,13 +28,12 @@ tags, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.htm
 }
 }
 
-\section{Examples}{
-\preformatted{# The example lists all the tags attached to the vault examplevault.
-svc$list_tags_for_vault(
+\examples{
+# The example lists all the tags attached to the vault examplevault.
+\donttest{svc$list_tags_for_vault(
   accountId = "-",
   vaultName = "examplevault"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

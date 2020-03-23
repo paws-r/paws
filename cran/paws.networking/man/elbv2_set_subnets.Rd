@@ -54,17 +54,16 @@ configurations, plus any additional subnets.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example enables the Availability Zones for the specified subnets
+\examples{
+# This example enables the Availability Zones for the specified subnets
 # for the specified load balancer.
-svc$set_subnets(
+\donttest{svc$set_subnets(
   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my...",
   Subnets = list(
     "subnet-8360a9e7",
     "subnet-b7d581c0"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

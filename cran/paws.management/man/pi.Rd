@@ -47,13 +47,6 @@ point.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$describe_dimension_keys(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -62,3 +55,10 @@ point.
 }
 }
 
+\examples{
+\donttest{svc <- pi()
+svc$describe_dimension_keys(
+  Foo = 123
+)}
+
+}

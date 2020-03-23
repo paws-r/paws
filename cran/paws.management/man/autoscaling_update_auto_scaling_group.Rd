@@ -207,29 +207,28 @@ using PutScalingPolicy.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example updates the launch configuration of the specified Auto
+\examples{
+# This example updates the launch configuration of the specified Auto
 # Scaling group.
-svc$update_auto_scaling_group(
+\donttest{svc$update_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   LaunchConfigurationName = "new-launch-config"
-)
+)}
 
 # This example updates the minimum size and maximum size of the specified
 # Auto Scaling group.
-svc$update_auto_scaling_group(
+\donttest{svc$update_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   MaxSize = 3L,
   MinSize = 1L
-)
+)}
 
 # This example enables instance protection for the specified Auto Scaling
 # group.
-svc$update_auto_scaling_group(
+\donttest{svc$update_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   NewInstancesProtectedFromScaleIn = TRUE
-)
-}
-}
+)}
 
+}
 \keyword{internal}

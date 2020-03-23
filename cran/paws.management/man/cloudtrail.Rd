@@ -51,13 +51,6 @@ listed in the log files.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$add_tags(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -82,3 +75,10 @@ listed in the log files.
 }
 }
 
+\examples{
+\donttest{svc <- cloudtrail()
+svc$add_tags(
+  Foo = 123
+)}
+
+}

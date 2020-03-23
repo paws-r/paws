@@ -118,18 +118,18 @@ I/O.)
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the status for the volume
+\examples{
+# This example describes the status for the volume
 # `vol-1234567890abcdef0`.
-svc$describe_volume_status(
+\donttest{svc$describe_volume_status(
   VolumeIds = list(
     "vol-1234567890abcdef0"
   )
-)
+)}
 
 # This example describes the status for all volumes that are impaired. In
 # this example output, there are no impaired volumes.
-svc$describe_volume_status(
+\donttest{svc$describe_volume_status(
   Filters = list(
     list(
       Name = "volume-status.status",
@@ -138,8 +138,7 @@ svc$describe_volume_status(
       )
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

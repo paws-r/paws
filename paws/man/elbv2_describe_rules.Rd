@@ -32,14 +32,13 @@ You must specify either a listener or one or more rules.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the specified rule.
-svc$describe_rules(
+\examples{
+# This example describes the specified rule.
+\donttest{svc$describe_rules(
   RuleArns = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-balancer/..."
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

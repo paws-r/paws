@@ -36,11 +36,10 @@ Returns a list of existing clusters.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example lists all of your available clusters in your default
+\examples{
+# This example lists all of your available clusters in your default
 # region.
-svc$list_clusters()
-}
-}
+\donttest{svc$list_clusters()}
 
+}
 \keyword{internal}

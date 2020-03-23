@@ -50,16 +50,14 @@ NULL
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example deletes an in-progress multipart upload to a vault named
 #' # my-vault:
-#' svc$abort_multipart_upload(
+#' \donttest{svc$abort_multipart_upload(
 #'   accountId = "-",
 #'   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV...",
 #'   vaultName = "my-vault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -123,15 +121,13 @@ glacier_abort_multipart_upload <- function(accountId, vaultName, uploadId) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example aborts the vault locking process if the vault lock is not in
 #' # the Locked state for the vault named examplevault.
-#' svc$abort_vault_lock(
+#' \donttest{svc$abort_vault_lock(
 #'   accountId = "-",
 #'   vaultName = "examplevault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -187,18 +183,16 @@ glacier_abort_vault_lock <- function(accountId, vaultName) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example adds two tags to a my-vault.
-#' svc$add_tags_to_vault(
+#' \donttest{svc$add_tags_to_vault(
 #'   Tags = list(
 #'     examplekey1 = "examplevalue1",
 #'     examplekey2 = "examplevalue2"
 #'   ),
 #'   accountId = "-",
 #'   vaultName = "my-vault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -304,17 +298,15 @@ glacier_add_tags_to_vault <- function(accountId, vaultName, Tags = NULL) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example completes a multipart upload for a 3 MiB archive.
-#' svc$complete_multipart_upload(
+#' \donttest{svc$complete_multipart_upload(
 #'   accountId = "-",
 #'   archiveSize = "3145728",
 #'   checksum = "9628195fcdbcbbe76cdde456d4646fa7de5f219fb39823836d81f0cc0e18aa67",
 #'   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV...",
 #'   vaultName = "my-vault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -380,16 +372,14 @@ glacier_complete_multipart_upload <- function(accountId, vaultName, uploadId, ar
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example completes the vault locking process by transitioning the
 #' # vault lock from the InProgress state to the Locked state.
-#' svc$complete_vault_lock(
+#' \donttest{svc$complete_vault_lock(
 #'   accountId = "-",
 #'   lockId = "AE863rKkWZU53SLW5be4DUcW",
 #'   vaultName = "example-vault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -460,14 +450,12 @@ glacier_complete_vault_lock <- function(accountId, vaultName, lockId) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The following example creates a new vault named my-vault.
-#' svc$create_vault(
+#' \donttest{svc$create_vault(
 #'   accountId = "-",
 #'   vaultName = "my-vault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -541,15 +529,13 @@ glacier_create_vault <- function(accountId, vaultName) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example deletes the archive specified by the archive ID.
-#' svc$delete_archive(
+#' \donttest{svc$delete_archive(
 #'   accountId = "-",
 #'   archiveId = "NkbByEejwEggmBz2fTHgJrg0XBoDfjP4q6iu87-TjhqG6eGoOY9Z8i1_AUyUsuhPAdTqLHy8pTl5n...",
 #'   vaultName = "examplevault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -620,14 +606,12 @@ glacier_delete_archive <- function(accountId, vaultName, archiveId) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example deletes a vault named my-vault:
-#' svc$delete_vault(
+#' \donttest{svc$delete_vault(
 #'   accountId = "-",
 #'   vaultName = "my-vault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -682,15 +666,13 @@ glacier_delete_vault <- function(accountId, vaultName) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example deletes the access policy associated with the vault named
 #' # examplevault.
-#' svc$delete_vault_access_policy(
+#' \donttest{svc$delete_vault_access_policy(
 #'   accountId = "-",
 #'   vaultName = "examplevault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -752,15 +734,13 @@ glacier_delete_vault_access_policy <- function(accountId, vaultName) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example deletes the notification configuration set for the vault
 #' # named examplevault.
-#' svc$delete_vault_notifications(
+#' \donttest{svc$delete_vault_notifications(
 #'   accountId = "-",
 #'   vaultName = "examplevault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -833,16 +813,14 @@ glacier_delete_vault_notifications <- function(accountId, vaultName) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example returns information about the previously initiated job
 #' # specified by the job ID.
-#' svc$describe_job(
+#' \donttest{svc$describe_job(
 #'   accountId = "-",
 #'   jobId = "zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW4_XqlNH...",
 #'   vaultName = "my-vault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -913,14 +891,12 @@ glacier_describe_job <- function(accountId, vaultName, jobId) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example retrieves data about a vault named my-vault.
-#' svc$describe_vault(
+#' \donttest{svc$describe_vault(
 #'   accountId = "-",
 #'   vaultName = "my-vault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -967,13 +943,11 @@ glacier_describe_vault <- function(accountId, vaultName) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example returns the current data retrieval policy for the account.
-#' svc$get_data_retrieval_policy(
+#' \donttest{svc$get_data_retrieval_policy(
 #'   accountId = "-"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1101,17 +1075,15 @@ glacier_get_data_retrieval_policy <- function(accountId) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example downloads the output of a previously initiated inventory
 #' # retrieval job that is identified by the job ID.
-#' svc$get_job_output(
+#' \donttest{svc$get_job_output(
 #'   accountId = "-",
 #'   jobId = "zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW4_XqlNH...",
 #'   range = "",
 #'   vaultName = "my-vaul"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1164,15 +1136,13 @@ glacier_get_job_output <- function(accountId, vaultName, jobId, range = NULL) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example retrieves the access-policy set on the vault named
 #' # example-vault.
-#' svc$get_vault_access_policy(
+#' \donttest{svc$get_vault_access_policy(
 #'   accountId = "-",
 #'   vaultName = "example-vault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1242,15 +1212,13 @@ glacier_get_vault_access_policy <- function(accountId, vaultName) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example retrieves the attributes from the lock-policy subresource
 #' # set on the vault named examplevault.
-#' svc$get_vault_lock(
+#' \donttest{svc$get_vault_lock(
 #'   accountId = "-",
 #'   vaultName = "examplevault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1317,15 +1285,13 @@ glacier_get_vault_lock <- function(accountId, vaultName) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example retrieves the notification-configuration for the vault named
 #' # my-vault.
-#' svc$get_vault_notifications(
+#' \donttest{svc$get_vault_notifications(
 #'   accountId = "-",
 #'   vaultName = "my-vault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1444,11 +1410,10 @@ glacier_get_vault_notifications <- function(accountId, vaultName) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example initiates an inventory-retrieval job for the vault named
 #' # examplevault.
-#' svc$initiate_job(
+#' \donttest{svc$initiate_job(
 #'   accountId = "-",
 #'   jobParameters = list(
 #'     Description = "My inventory job",
@@ -1457,8 +1422,7 @@ glacier_get_vault_notifications <- function(accountId, vaultName) {
 #'     Type = "inventory-retrieval"
 #'   ),
 #'   vaultName = "examplevault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1551,16 +1515,14 @@ glacier_initiate_job <- function(accountId, vaultName, jobParameters = NULL) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example initiates a multipart upload to a vault named my-vault with
 #' # a part size of 1 MiB (1024 x 1024 bytes) per file.
-#' svc$initiate_multipart_upload(
+#' \donttest{svc$initiate_multipart_upload(
 #'   accountId = "-",
 #'   partSize = "1048576",
 #'   vaultName = "my-vault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1644,18 +1606,16 @@ glacier_initiate_multipart_upload <- function(accountId, vaultName, archiveDescr
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example initiates the vault locking process for the vault named
 #' # my-vault.
-#' svc$initiate_vault_lock(
+#' \donttest{svc$initiate_vault_lock(
 #'   accountId = "-",
 #'   policy = list(
 #'     Policy = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"Define-vault-lock\",..."
 #'   ),
 #'   vaultName = "my-vault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1752,14 +1712,12 @@ glacier_initiate_vault_lock <- function(accountId, vaultName, policy = NULL) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example lists jobs for the vault named my-vault.
-#' svc$list_jobs(
+#' \donttest{svc$list_jobs(
 #'   accountId = "-",
 #'   vaultName = "my-vault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1848,15 +1806,13 @@ glacier_list_jobs <- function(accountId, vaultName, limit = NULL, marker = NULL,
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example lists all the in-progress multipart uploads for the vault
 #' # named examplevault.
-#' svc$list_multipart_uploads(
+#' \donttest{svc$list_multipart_uploads(
 #'   accountId = "-",
 #'   vaultName = "examplevault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1941,15 +1897,13 @@ glacier_list_multipart_uploads <- function(accountId, vaultName, marker = NULL, 
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example lists all the parts of a multipart upload.
-#' svc$list_parts(
+#' \donttest{svc$list_parts(
 #'   accountId = "-",
 #'   uploadId = "OW2fM5iVylEpFEMM9_HpKowRapC3vn5sSL39_396UW9zLFUWVrnRHaPjUJddQ5OxSHVXjYtrN47NBZ...",
 #'   vaultName = "examplevault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1993,13 +1947,11 @@ glacier_list_parts <- function(accountId, vaultName, uploadId, marker = NULL, li
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example lists the provisioned capacity units for an account.
-#' svc$list_provisioned_capacity(
+#' \donttest{svc$list_provisioned_capacity(
 #'   accountId = "-"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2046,14 +1998,12 @@ glacier_list_provisioned_capacity <- function(accountId) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example lists all the tags attached to the vault examplevault.
-#' svc$list_tags_for_vault(
+#' \donttest{svc$list_tags_for_vault(
 #'   accountId = "-",
 #'   vaultName = "examplevault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2127,15 +2077,13 @@ glacier_list_tags_for_vault <- function(accountId, vaultName) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example lists all vaults owned by the specified AWS account.
-#' svc$list_vaults(
+#' \donttest{svc$list_vaults(
 #'   accountId = "-",
 #'   limit = "",
 #'   marker = ""
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2177,13 +2125,11 @@ glacier_list_vaults <- function(accountId, marker = NULL, limit = NULL) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example purchases provisioned capacity unit for an AWS account.
-#' svc$purchase_provisioned_capacity(
+#' \donttest{svc$purchase_provisioned_capacity(
 #'   accountId = "-"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2236,18 +2182,16 @@ glacier_purchase_provisioned_capacity <- function(accountId) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example removes two tags from the vault named examplevault.
-#' svc$remove_tags_from_vault(
+#' \donttest{svc$remove_tags_from_vault(
 #'   TagKeys = list(
 #'     "examplekey1",
 #'     "examplekey2"
 #'   ),
 #'   accountId = "-",
 #'   vaultName = "examplevault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2308,10 +2252,9 @@ glacier_remove_tags_from_vault <- function(accountId, vaultName, TagKeys = NULL)
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example sets and then enacts a data retrieval policy.
-#' svc$set_data_retrieval_policy(
+#' \donttest{svc$set_data_retrieval_policy(
 #'   Policy = list(
 #'     Rules = list(
 #'       list(
@@ -2321,8 +2264,7 @@ glacier_remove_tags_from_vault <- function(accountId, vaultName, TagKeys = NULL)
 #'     )
 #'   ),
 #'   accountId = "-"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2378,18 +2320,16 @@ glacier_set_data_retrieval_policy <- function(accountId, Policy = NULL) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example configures an access policy for the vault named
 #' # examplevault.
-#' svc$set_vault_access_policy(
+#' \donttest{svc$set_vault_access_policy(
 #'   accountId = "-",
 #'   policy = list(
 #'     Policy = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":..."
 #'   ),
 #'   vaultName = "examplevault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2479,10 +2419,9 @@ glacier_set_vault_access_policy <- function(accountId, vaultName, policy = NULL)
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example sets the examplevault notification configuration.
-#' svc$set_vault_notifications(
+#' \donttest{svc$set_vault_notifications(
 #'   accountId = "-",
 #'   vaultName = "examplevault",
 #'   vaultNotificationConfig = list(
@@ -2492,8 +2431,7 @@ glacier_set_vault_access_policy <- function(accountId, vaultName, policy = NULL)
 #'     ),
 #'     SNSTopic = "arn:aws:sns:us-west-2:012345678901:mytopic"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2586,17 +2524,15 @@ glacier_set_vault_notifications <- function(accountId, vaultName, vaultNotificat
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example adds an archive to a vault.
-#' svc$upload_archive(
+#' \donttest{svc$upload_archive(
 #'   accountId = "-",
 #'   archiveDescription = "",
 #'   body = "example-data-to-upload",
 #'   checksum = "",
 #'   vaultName = "my-vault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2701,19 +2637,17 @@ glacier_upload_archive <- function(vaultName, accountId, archiveDescription = NU
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The example uploads the first 1 MiB (1024 x 1024 bytes) part of an
 #' # archive.
-#' svc$upload_multipart_part(
+#' \donttest{svc$upload_multipart_part(
 #'   accountId = "-",
 #'   body = "part1",
 #'   checksum = "c06f7cd4baacb087002a99a5f48bf953",
 #'   range = "bytes 0-1048575/*",
 #'   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV...",
 #'   vaultName = "examplevault"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'

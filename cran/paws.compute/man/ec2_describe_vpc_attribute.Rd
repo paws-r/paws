@@ -29,25 +29,24 @@ only one attribute at a time.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the enableDnsSupport attribute. This attribute
+\examples{
+# This example describes the enableDnsSupport attribute. This attribute
 # indicates whether DNS resolution is enabled for the VPC. If this
 # attribute is true, the Amazon DNS server resolves DNS hostnames for your
 # instances to their corresponding IP addresses; otherwise, it does not.
-svc$describe_vpc_attribute(
+\donttest{svc$describe_vpc_attribute(
   Attribute = "enableDnsSupport",
   VpcId = "vpc-a01106c2"
-)
+)}
 
 # This example describes the enableDnsHostnames attribute. This attribute
 # indicates whether the instances launched in the VPC get DNS hostnames.
 # If this attribute is true, instances in the VPC get DNS hostnames;
 # otherwise, they do not.
-svc$describe_vpc_attribute(
+\donttest{svc$describe_vpc_attribute(
   Attribute = "enableDnsHostnames",
   VpcId = "vpc-a01106c2"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

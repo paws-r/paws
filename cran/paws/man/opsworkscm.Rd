@@ -84,13 +84,6 @@ requests per second.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$associate_node(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -116,3 +109,10 @@ requests per second.
 }
 }
 
+\examples{
+\donttest{svc <- opsworkscm()
+svc$associate_node(
+  Foo = 123
+)}
+
+}

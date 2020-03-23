@@ -37,15 +37,14 @@ next page of gateways.
 }
 }
 
-\section{Examples}{
-\preformatted{# Lists gateways owned by an AWS account in a specified region as
+\examples{
+# Lists gateways owned by an AWS account in a specified region as
 # requested. Results are sorted by gateway ARN up to a maximum of 100
 # gateways.
-svc$list_gateways(
+\donttest{svc$list_gateways(
   Limit = 2L,
   Marker = "1"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

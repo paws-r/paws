@@ -30,12 +30,11 @@ The following operations are related to \code{DeleteBucketTagging}:
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example deletes bucket tags.
-svc$delete_bucket_tagging(
+\examples{
+# The following example deletes bucket tags.
+\donttest{svc$delete_bucket_tagging(
   Bucket = "examplebucket"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

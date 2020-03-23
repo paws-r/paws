@@ -34,15 +34,6 @@ conversational bots for new and existing client applications.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example shows how to get configuration information for a bot.
-svc$get_bot(
-  name = "DocOrderPizza",
-  versionOrAlias = "$LATEST"
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -85,3 +76,12 @@ svc$get_bot(
 }
 }
 
+\examples{
+# This example shows how to get configuration information for a bot.
+\donttest{svc <- lexmodelbuildingservice()
+svc$get_bot(
+  name = "DocOrderPizza",
+  versionOrAlias = "$LATEST"
+)}
+
+}

@@ -79,9 +79,9 @@ You can execute this operation no more than once per second.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example creates a new receipt rule:
-svc$create_receipt_rule(
+\examples{
+# The following example creates a new receipt rule:
+\donttest{svc$create_receipt_rule(
   After = "",
   Rule = list(
     Actions = list(
@@ -98,8 +98,7 @@ svc$create_receipt_rule(
     TlsPolicy = "Optional"
   ),
   RuleSetName = "MyRuleSet"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

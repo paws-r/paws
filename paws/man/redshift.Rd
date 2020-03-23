@@ -53,13 +53,6 @@ make up your data warehouse.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$accept_reserved_node_exchange(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -152,3 +145,10 @@ make up your data warehouse.
 }
 }
 
+\examples{
+\donttest{svc <- redshift()
+svc$accept_reserved_node_exchange(
+  Foo = 123
+)}
+
+}

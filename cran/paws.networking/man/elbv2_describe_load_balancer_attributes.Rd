@@ -26,12 +26,11 @@ in the \emph{Network Load Balancers Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the attributes of the specified load balancer.
-svc$describe_load_balancer_attributes(
+\examples{
+# This example describes the attributes of the specified load balancer.
+\donttest{svc$describe_load_balancer_attributes(
   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my..."
-)
-}
-}
+)}
 
+}
 \keyword{internal}

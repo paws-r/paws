@@ -40,13 +40,6 @@ If you have questions or comments related to the Data API, send email to
 }
 }
 
-\section{Examples}{
-\preformatted{svc$batch_execute_statement(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -59,3 +52,10 @@ If you have questions or comments related to the Data API, send email to
 }
 }
 
+\examples{
+\donttest{svc <- rdsdataservice()
+svc$batch_execute_statement(
+  Foo = 123
+)}
+
+}

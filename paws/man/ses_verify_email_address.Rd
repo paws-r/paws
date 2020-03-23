@@ -20,13 +20,12 @@ email address.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example starts the email address verification process with
+\examples{
+# The following example starts the email address verification process with
 # Amazon SES:
-svc$verify_email_address(
+\donttest{svc$verify_email_address(
   EmailAddress = "user@example.com"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

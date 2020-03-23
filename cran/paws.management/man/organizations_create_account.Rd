@@ -127,8 +127,8 @@ for an account, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/a
 }
 }
 
-\section{Examples}{
-\preformatted{# The owner of an organization creates a member account in the
+\examples{
+# The owner of an organization creates a member account in the
 # organization. The following example shows that when the organization
 # owner creates the member account, the account is preconfigured with the
 # name "Production Account" and an owner email address of
@@ -137,11 +137,10 @@ for an account, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/a
 # Organizations sends Susan a "Welcome to AWS" email:
 # 
 # 
-svc$create_account(
+\donttest{svc$create_account(
   AccountName = "Production Account",
   Email = "susan@example.com"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -24,13 +24,12 @@ Tests the connection between the replication instance and the endpoint.
 }
 }
 
-\section{Examples}{
-\preformatted{# Tests the connection between the replication instance and the endpoint.
-svc$test_connection(
+\examples{
+# Tests the connection between the replication instance and the endpoint.
+\donttest{svc$test_connection(
   EndpointArn = "arn:aws:dms:us-east-1:123456789012:endpoint:RAAR3R22XSH46S3PWLC3NJAWKM",
   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJ..."
-)
-}
-}
+)}
 
+}
 \keyword{internal}

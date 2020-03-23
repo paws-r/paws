@@ -26,12 +26,11 @@ ID, and other important status information.
 }
 }
 
-\section{Examples}{
-\preformatted{# Returns an array of ClusterListEntry objects of the specified length.
+\examples{
+# Returns an array of ClusterListEntry objects of the specified length.
 # Each ClusterListEntry object contains a cluster's state, a cluster's ID,
 # and other important status information.
-svc$list_clusters()
-}
-}
+\donttest{svc$list_clusters()}
 
+}
 \keyword{internal}

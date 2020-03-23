@@ -32,14 +32,13 @@ Describes one or more Auto Scaling instances.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the specified Auto Scaling instance.
-svc$describe_auto_scaling_instances(
+\examples{
+# This example describes the specified Auto Scaling instance.
+\donttest{svc$describe_auto_scaling_instances(
   InstanceIds = list(
     "i-4ba0837f"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

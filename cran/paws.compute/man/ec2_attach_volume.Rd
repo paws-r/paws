@@ -56,15 +56,14 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example attaches a volume (`vol-1234567890abcdef0`) to an
+\examples{
+# This example attaches a volume (`vol-1234567890abcdef0`) to an
 # instance (`i-01474ef662b89480`) as `/dev/sdf`.
-svc$attach_volume(
+\donttest{svc$attach_volume(
   Device = "/dev/sdf",
   InstanceId = "i-01474ef662b89480",
   VolumeId = "vol-1234567890abcdef0"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

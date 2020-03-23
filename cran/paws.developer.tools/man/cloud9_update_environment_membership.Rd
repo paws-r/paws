@@ -35,14 +35,13 @@ development environment.
 }
 }
 
-\section{Examples}{
-\preformatted{# 
-svc$update_environment_membership(
+\examples{
+# 
+\donttest{svc$update_environment_membership(
   environmentId = "8d9967e2f0624182b74e7690ad69ebEX",
   permissions = "read-only",
   userArn = "arn:aws:iam::123456789012:user/AnotherDemoUser"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

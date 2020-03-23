@@ -50,12 +50,11 @@ different AWS account.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example lists key policies for the specified CMK.
-svc$list_key_policies(
+\examples{
+# The following example lists key policies for the specified CMK.
+\donttest{svc$list_key_policies(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

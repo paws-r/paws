@@ -30,14 +30,13 @@ This operation requires permissions for the
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation describes a file system's LifecycleConfiguration. EFS
+\examples{
+# This operation describes a file system's LifecycleConfiguration. EFS
 # lifecycle management uses the LifecycleConfiguration object to identify
 # which files to move to the EFS Infrequent Access (IA) storage class.
-svc$describe_lifecycle_configuration(
+\donttest{svc$describe_lifecycle_configuration(
   FileSystemId = "fs-01234567"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

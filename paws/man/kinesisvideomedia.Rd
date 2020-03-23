@@ -30,13 +30,6 @@ Amazon Kinesis Video Streams Media
 }
 }
 
-\section{Examples}{
-\preformatted{svc$get_media(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -44,3 +37,10 @@ Amazon Kinesis Video Streams Media
 }
 }
 
+\examples{
+\donttest{svc <- kinesisvideomedia()
+svc$get_media(
+  Foo = 123
+)}
+
+}

@@ -62,14 +62,13 @@ For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VP
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the specified customer gateway.
-svc$describe_customer_gateways(
+\examples{
+# This example describes the specified customer gateway.
+\donttest{svc$describe_customer_gateways(
   CustomerGatewayIds = list(
     "cgw-0e11f167"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

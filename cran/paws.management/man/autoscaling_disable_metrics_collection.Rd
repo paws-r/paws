@@ -35,16 +35,15 @@ Disables group metrics for the specified Auto Scaling group.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example disables collecting data for the GroupDesiredCapacity
+\examples{
+# This example disables collecting data for the GroupDesiredCapacity
 # metric for the specified Auto Scaling group.
-svc$disable_metrics_collection(
+\donttest{svc$disable_metrics_collection(
   AutoScalingGroupName = "my-auto-scaling-group",
   Metrics = list(
     "GroupDesiredCapacity"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

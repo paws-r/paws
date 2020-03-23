@@ -48,11 +48,10 @@ Lists the services that are running in a specified cluster.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example lists the services running in the default cluster for an
+\examples{
+# This example lists the services running in the default cluster for an
 # account.
-svc$list_services()
-}
-}
+\donttest{svc$list_services()}
 
+}
 \keyword{internal}

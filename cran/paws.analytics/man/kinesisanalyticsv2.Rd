@@ -34,13 +34,6 @@ create real-time metrics.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$add_application_cloud_watch_logging_option(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -73,3 +66,10 @@ create real-time metrics.
 }
 }
 
+\examples{
+\donttest{svc <- kinesisanalyticsv2()
+svc$add_application_cloud_watch_logging_option(
+  Foo = 123
+)}
+
+}

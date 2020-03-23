@@ -48,12 +48,11 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example gets the console output for the specified instance.
-svc$get_console_output(
+\examples{
+# This example gets the console output for the specified instance.
+\donttest{svc$get_console_output(
   InstanceId = "i-1234567890abcdef0"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

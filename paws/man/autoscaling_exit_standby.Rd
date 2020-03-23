@@ -31,15 +31,14 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example moves the specified instance out of standby mode.
-svc$exit_standby(
+\examples{
+# This example moves the specified instance out of standby mode.
+\donttest{svc$exit_standby(
   AutoScalingGroupName = "my-auto-scaling-group",
   InstanceIds = list(
     "i-93633f9b"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -61,13 +61,6 @@ need it.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$associate_kms_key(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -113,3 +106,10 @@ need it.
 }
 }
 
+\examples{
+\donttest{svc <- cloudwatchlogs()
+svc$associate_kms_key(
+  Foo = 123
+)}
+
+}

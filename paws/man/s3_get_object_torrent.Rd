@@ -40,13 +40,12 @@ The following operation is related to \code{GetObjectTorrent}:
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example retrieves torrent files of an object.
-svc$get_object_torrent(
+\examples{
+# The following example retrieves torrent files of an object.
+\donttest{svc$get_object_torrent(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

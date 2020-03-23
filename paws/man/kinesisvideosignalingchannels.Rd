@@ -33,13 +33,6 @@ webRTC technology.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$get_ice_server_config(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -48,3 +41,10 @@ webRTC technology.
 }
 }
 
+\examples{
+\donttest{svc <- kinesisvideosignalingchannels()
+svc$get_ice_server_config(
+  Foo = 123
+)}
+
+}

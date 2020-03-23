@@ -182,10 +182,10 @@ This operation requires permissions to perform the
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation detects faces in an image and adds them to the specified
+\examples{
+# This operation detects faces in an image and adds them to the specified
 # Rekognition collection.
-svc$index_faces(
+\donttest{svc$index_faces(
   CollectionId = "myphotos",
   DetectionAttributes = list(),
   ExternalImageId = "myphotoid",
@@ -195,8 +195,7 @@ svc$index_faces(
       Name = "myphoto"
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

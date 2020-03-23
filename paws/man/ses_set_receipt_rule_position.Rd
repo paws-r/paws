@@ -32,15 +32,14 @@ You can execute this operation no more than once per second.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example sets the position of a receipt rule in a receipt
+\examples{
+# The following example sets the position of a receipt rule in a receipt
 # rule set:
-svc$set_receipt_rule_position(
+\donttest{svc$set_receipt_rule_position(
   After = "PutRuleAfterThisRule",
   RuleName = "RuleToReposition",
   RuleSetName = "MyRuleSet"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

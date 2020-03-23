@@ -188,9 +188,9 @@ Registers an AWS Batch job definition.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example registers a job definition for a simple container job.
-svc$register_job_definition(
+\examples{
+# This example registers a job definition for a simple container job.
+\donttest{svc$register_job_definition(
   type = "container",
   containerProperties = list(
     command = list(
@@ -202,8 +202,7 @@ svc$register_job_definition(
     vcpus = 1L
   ),
   jobDefinitionName = "sleep10"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

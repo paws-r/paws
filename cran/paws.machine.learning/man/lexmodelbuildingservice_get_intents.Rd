@@ -43,14 +43,13 @@ The operation requires permission for the \code{lex:GetIntents} action.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example shows how to get a list of all of the intents in your
+\examples{
+# This example shows how to get a list of all of the intents in your
 # account.
-svc$get_intents(
+\donttest{svc$get_intents(
   maxResults = 10L,
   nextToken = ""
-)
-}
-}
+)}
 
+}
 \keyword{internal}

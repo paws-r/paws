@@ -42,13 +42,12 @@ user and then create new keys.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following command creates an access key (access key ID and secret
+\examples{
+# The following command creates an access key (access key ID and secret
 # access key) for the IAM user named Bob.
-svc$create_access_key(
+\donttest{svc$create_access_key(
   UserName = "Bob"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

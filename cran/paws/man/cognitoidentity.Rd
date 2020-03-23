@@ -48,13 +48,6 @@ For more information see \href{https://docs.aws.amazon.com/cognito/latest/develo
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_identity_pool(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -82,3 +75,10 @@ For more information see \href{https://docs.aws.amazon.com/cognito/latest/develo
 }
 }
 
+\examples{
+\donttest{svc <- cognitoidentity()
+svc$create_identity_pool(
+  Foo = 123
+)}
+
+}

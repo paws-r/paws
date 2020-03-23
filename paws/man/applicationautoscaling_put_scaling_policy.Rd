@@ -193,13 +193,13 @@ Learn more about how to work with scaling policies in the \href{https://docs.aws
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example applies a target tracking scaling policy with a
+\examples{
+# The following example applies a target tracking scaling policy with a
 # predefined metric specification to an Amazon ECS service called web-app
 # in the default cluster. The policy keeps the average CPU utilization of
 # the service at 75 percent, with scale-out and scale-in cooldown periods
 # of 60 seconds.
-svc$put_scaling_policy(
+\donttest{svc$put_scaling_policy(
   PolicyName = "cpu75-target-tracking-scaling-policy",
   PolicyType = "TargetTrackingScaling",
   ResourceId = "service/default/web-app",
@@ -213,14 +213,14 @@ svc$put_scaling_policy(
     ScaleOutCooldown = 60L,
     TargetValue = 75L
   )
-)
+)}
 
 # The following example applies a target tracking scaling policy with a
 # customized metric specification to an Amazon ECS service called web-app
 # in the default cluster. The policy keeps the average utilization of the
 # service at 75 percent, with scale-out and scale-in cooldown periods of
 # 60 seconds.
-svc$put_scaling_policy(
+\donttest{svc$put_scaling_policy(
   PolicyName = "cms75-target-tracking-scaling-policy",
   PolicyType = "TargetTrackingScaling",
   ResourceId = "service/default/web-app",
@@ -243,13 +243,13 @@ svc$put_scaling_policy(
     ScaleOutCooldown = 60L,
     TargetValue = 75L
   )
-)
+)}
 
 # The following example applies a target tracking scaling policy to an
 # Amazon ECS service called web-app in the default cluster. The policy is
 # used to scale out the ECS service when the RequestCountPerTarget metric
 # from the Application Load Balancer exceeds the threshold.
-svc$put_scaling_policy(
+\donttest{svc$put_scaling_policy(
   PolicyName = "alb-scale-out-target-tracking-scaling-policy",
   PolicyType = "TargetTrackingScaling",
   ResourceId = "service/default/web-app",
@@ -265,12 +265,12 @@ svc$put_scaling_policy(
     ScaleOutCooldown = 60L,
     TargetValue = 1000L
   )
-)
+)}
 
 # This example applies a step scaling policy to an Amazon ECS service
 # called web-app in the default cluster. The policy increases the desired
 # count of the service by 200\%, with a cool down period of 60 seconds.
-svc$put_scaling_policy(
+\donttest{svc$put_scaling_policy(
   PolicyName = "web-app-cpu-gt-75",
   PolicyType = "StepScaling",
   ResourceId = "service/default/web-app",
@@ -286,13 +286,13 @@ svc$put_scaling_policy(
       )
     )
   )
-)
+)}
 
 # This example applies a step scaling policy to an Amazon EC2 Spot fleet.
 # The policy increases the target capacity of the spot fleet by 200\%, with
 # a cool down period of 180 seconds.",
 # 
-svc$put_scaling_policy(
+\donttest{svc$put_scaling_policy(
   PolicyName = "fleet-cpu-gt-75",
   PolicyType = "StepScaling",
   ResourceId = "spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3",
@@ -308,8 +308,7 @@ svc$put_scaling_policy(
       )
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

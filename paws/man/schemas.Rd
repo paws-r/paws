@@ -30,13 +30,6 @@ AWS EventBridge Schemas
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_discoverer(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -72,3 +65,10 @@ AWS EventBridge Schemas
 }
 }
 
+\examples{
+\donttest{svc <- schemas()
+svc$create_discoverer(
+  Foo = 123
+)}
+
+}

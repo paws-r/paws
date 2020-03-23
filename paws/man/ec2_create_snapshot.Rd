@@ -74,15 +74,14 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example creates a snapshot of the volume with a volume ID of
+\examples{
+# This example creates a snapshot of the volume with a volume ID of
 # `vol-1234567890abcdef0` and a short description to identify the
 # snapshot.
-svc$create_snapshot(
+\donttest{svc$create_snapshot(
   Description = "This is my root volume snapshot.",
   VolumeId = "vol-1234567890abcdef0"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

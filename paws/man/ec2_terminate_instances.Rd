@@ -56,14 +56,13 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example terminates the specified EC2 instance.
-svc$terminate_instances(
+\examples{
+# This example terminates the specified EC2 instance.
+\donttest{svc$terminate_instances(
   InstanceIds = list(
     "i-1234567890abcdef0"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

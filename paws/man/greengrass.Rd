@@ -30,13 +30,6 @@ AWS IoT Greengrass seamlessly extends AWS onto physical devices so they can act 
 }
 }
 
-\section{Examples}{
-\preformatted{svc$associate_role_to_group(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -133,3 +126,10 @@ AWS IoT Greengrass seamlessly extends AWS onto physical devices so they can act 
 }
 }
 
+\examples{
+\donttest{svc <- greengrass()
+svc$associate_role_to_group(
+  Foo = 123
+)}
+
+}

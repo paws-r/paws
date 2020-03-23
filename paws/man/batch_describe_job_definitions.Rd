@@ -51,12 +51,11 @@ Describes a list of job definitions. You can specify a \code{status} (such as
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes all of your active job definitions.
-svc$describe_job_definitions(
+\examples{
+# This example describes all of your active job definitions.
+\donttest{svc$describe_job_definitions(
   status = "ACTIVE"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

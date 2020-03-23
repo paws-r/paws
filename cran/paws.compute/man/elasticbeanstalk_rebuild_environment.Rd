@@ -33,13 +33,12 @@ forces a restart.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following operation terminates and recreates the resources in an
+\examples{
+# The following operation terminates and recreates the resources in an
 # environment named my-env:
-svc$rebuild_environment(
+\donttest{svc$rebuild_environment(
   EnvironmentName = "my-env"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

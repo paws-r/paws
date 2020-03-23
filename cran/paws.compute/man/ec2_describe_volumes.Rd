@@ -101,14 +101,14 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes all of your volumes in the default region.
-svc$describe_volumes()
+\examples{
+# This example describes all of your volumes in the default region.
+\donttest{svc$describe_volumes()}
 
 # This example describes all volumes that are both attached to the
 # instance with the ID i-1234567890abcdef0 and set to delete when the
 # instance terminates.
-svc$describe_volumes(
+\donttest{svc$describe_volumes(
   Filters = list(
     list(
       Name = "attachment.instance-id",
@@ -123,8 +123,7 @@ svc$describe_volumes(
       )
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -75,13 +75,13 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes your Elastic IP addresses.
-svc$describe_addresses()
+\examples{
+# This example describes your Elastic IP addresses.
+\donttest{svc$describe_addresses()}
 
 # This example describes your Elastic IP addresses for use with instances
 # in a VPC.
-svc$describe_addresses(
+\donttest{svc$describe_addresses(
   Filters = list(
     list(
       Name = "domain",
@@ -90,11 +90,11 @@ svc$describe_addresses(
       )
     )
   )
-)
+)}
 
 # This example describes your Elastic IP addresses for use with instances
 # in EC2-Classic.
-svc$describe_addresses(
+\donttest{svc$describe_addresses(
   Filters = list(
     list(
       Name = "domain",
@@ -103,8 +103,7 @@ svc$describe_addresses(
       )
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

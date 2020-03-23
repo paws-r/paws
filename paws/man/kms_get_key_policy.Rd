@@ -35,14 +35,13 @@ You cannot perform this operation on a CMK in a different AWS account.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example retrieves the key policy for the specified
+\examples{
+# The following example retrieves the key policy for the specified
 # customer master key (CMK).
-svc$get_key_policy(
+\donttest{svc$get_key_policy(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
   PolicyName = "default"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

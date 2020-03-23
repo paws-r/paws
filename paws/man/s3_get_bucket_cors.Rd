@@ -32,13 +32,12 @@ The following operations are related to \code{GetBucketCors}:
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example returns cross-origin resource sharing (CORS)
+\examples{
+# The following example returns cross-origin resource sharing (CORS)
 # configuration set on a bucket.
-svc$get_bucket_cors(
+\donttest{svc$get_bucket_cors(
   Bucket = "examplebucket"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

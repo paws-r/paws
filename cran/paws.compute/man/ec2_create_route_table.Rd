@@ -30,12 +30,11 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example creates a route table for the specified VPC.
-svc$create_route_table(
+\examples{
+# This example creates a route table for the specified VPC.
+\donttest{svc$create_route_table(
   VpcId = "vpc-a01106c2"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

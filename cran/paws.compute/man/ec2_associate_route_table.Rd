@@ -41,14 +41,13 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example associates the specified route table with the specified
+\examples{
+# This example associates the specified route table with the specified
 # subnet.
-svc$associate_route_table(
+\donttest{svc$associate_route_table(
   RouteTableId = "rtb-22574640",
   SubnetId = "subnet-9d4a7b6"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

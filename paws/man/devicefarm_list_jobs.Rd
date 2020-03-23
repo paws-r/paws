@@ -24,13 +24,12 @@ Gets information about jobs for a given test run.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example returns information about jobs in a specific
+\examples{
+# The following example returns information about jobs in a specific
 # project.
-svc$list_jobs(
+\donttest{svc$list_jobs(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -28,15 +28,14 @@ notifications about a specified event to a specified SNS topic.
 }
 }
 
-\section{Examples}{
-\preformatted{# Enables the process of sending Amazon Simple Notification Service (SNS)
+\examples{
+# Enables the process of sending Amazon Simple Notification Service (SNS)
 # notifications about a specified event to a specified SNS topic.
-svc$subscribe_to_event(
+\donttest{svc$subscribe_to_event(
   event = "ASSESSMENT_RUN_COMPLETED",
   resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-7sbz2...",
   topicArn = "arn:aws:sns:us-west-2:123456789012:exampletopic"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -73,13 +73,6 @@ information, see the \emph{\href{http://docs.aws.amazon.com/awscloudtrail/latest
 }
 }
 
-\section{Examples}{
-\preformatted{svc$batch_meter_usage(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -90,3 +83,10 @@ information, see the \emph{\href{http://docs.aws.amazon.com/awscloudtrail/latest
 }
 }
 
+\examples{
+\donttest{svc <- marketplacemetering()
+svc$batch_meter_usage(
+  Foo = 123
+)}
+
+}

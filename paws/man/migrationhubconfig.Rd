@@ -51,13 +51,6 @@ The Migration Hub Home Region APIs do not support AWS Organizations.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_home_region_control(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -67,3 +60,10 @@ The Migration Hub Home Region APIs do not support AWS Organizations.
 }
 }
 
+\examples{
+\donttest{svc <- migrationhubconfig()
+svc$create_home_region_control(
+  Foo = 123
+)}
+
+}

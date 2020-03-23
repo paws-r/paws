@@ -33,13 +33,6 @@ expressed in them, the predominant language used, and more.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$batch_detect_dominant_language(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -97,3 +90,10 @@ expressed in them, the predominant language used, and more.
 }
 }
 
+\examples{
+\donttest{svc <- comprehend()
+svc$batch_detect_dominant_language(
+  Foo = 123
+)}
+
+}

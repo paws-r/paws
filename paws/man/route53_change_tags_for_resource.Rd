@@ -51,10 +51,10 @@ in the \emph{AWS Billing and Cost Management User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example adds two tags and removes one tag from the hosted
+\examples{
+# The following example adds two tags and removes one tag from the hosted
 # zone with ID Z3M3LMPEXAMPLE.
-svc$change_tags_for_resource(
+\donttest{svc$change_tags_for_resource(
   AddTags = list(
     list(
       Key = "apex",
@@ -70,8 +70,7 @@ svc$change_tags_for_resource(
   ),
   ResourceId = "Z3M3LMPEXAMPLE",
   ResourceType = "hostedzone"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

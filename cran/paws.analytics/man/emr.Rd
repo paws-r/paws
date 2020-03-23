@@ -34,13 +34,6 @@ warehousing.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$add_instance_fleet(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -77,3 +70,10 @@ warehousing.
 }
 }
 
+\examples{
+\donttest{svc <- emr()
+svc$add_instance_fleet(
+  Foo = 123
+)}
+
+}

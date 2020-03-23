@@ -48,13 +48,6 @@ HTTP API. For more information about Step Functions, see the \emph{\href{https:/
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_activity(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -83,3 +76,10 @@ HTTP API. For more information about Step Functions, see the \emph{\href{https:/
 }
 }
 
+\examples{
+\donttest{svc <- sfn()
+svc$create_activity(
+  Foo = 123
+)}
+
+}

@@ -48,21 +48,20 @@ associated with the selection of option values.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following operation validates a CloudWatch custom metrics config
+\examples{
+# The following operation validates a CloudWatch custom metrics config
 # document:
-svc$validate_configuration_settings(
+\donttest{svc$validate_configuration_settings(
   ApplicationName = "my-app",
   EnvironmentName = "my-env",
   OptionSettings = list(
     list(
       Namespace = "aws:elasticbeanstalk:healthreporting:system",
       OptionName = "ConfigDocument",
-      Value = "\{\\"CloudWatchMetrics\\": \{\\"Environment\\": \{\\"ApplicationLatencyP99.9\\": null,..."
+      Value = "{\"CloudWatchMetrics\": {\"Environment\": {\"ApplicationLatencyP99.9\": null,..."
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

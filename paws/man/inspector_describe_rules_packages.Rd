@@ -26,15 +26,14 @@ packages.
 }
 }
 
-\section{Examples}{
-\preformatted{# Describes the rules packages that are specified by the ARNs of the rules
+\examples{
+# Describes the rules packages that are specified by the ARNs of the rules
 # packages.
-svc$describe_rules_packages(
+\donttest{svc$describe_rules_packages(
   rulesPackageArns = list(
     "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-JJOtZiqQ"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

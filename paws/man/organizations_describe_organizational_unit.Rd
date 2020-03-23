@@ -31,12 +31,11 @@ account.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example shows how to request details about an OU:/n/n
-svc$describe_organizational_unit(
+\examples{
+# The following example shows how to request details about an OU:/n/n
+\donttest{svc$describe_organizational_unit(
   OrganizationalUnitId = "ou-examplerootid111-exampleouid111"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

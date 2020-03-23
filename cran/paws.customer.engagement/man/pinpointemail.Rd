@@ -63,13 +63,6 @@ available in each Region, see \href{http://aws.amazon.com/about-aws/global-infra
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_configuration_set(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -118,3 +111,10 @@ available in each Region, see \href{http://aws.amazon.com/about-aws/global-infra
 }
 }
 
+\examples{
+\donttest{svc <- pinpointemail()
+svc$create_configuration_set(
+  Foo = 123
+)}
+
+}

@@ -86,28 +86,27 @@ more information, see the \emph{Elastic IP Addresses} section of \href{http://aw
 }
 }
 
-\section{Examples}{
-\preformatted{# This example associates the specified Elastic IP address with the
+\examples{
+# This example associates the specified Elastic IP address with the
 # specified instance in a VPC.
-svc$associate_address(
+\donttest{svc$associate_address(
   AllocationId = "eipalloc-64d5890a",
   InstanceId = "i-0b263919b6498b123"
-)
+)}
 
 # This example associates the specified Elastic IP address with the
 # specified network interface.
-svc$associate_address(
+\donttest{svc$associate_address(
   AllocationId = "eipalloc-64d5890a",
   NetworkInterfaceId = "eni-1a2b3c4d"
-)
+)}
 
 # This example associates an Elastic IP address with an instance in
 # EC2-Classic.
-svc$associate_address(
+\donttest{svc$associate_address(
   InstanceId = "i-07ffe74c7330ebf53",
   PublicIp = "198.51.100.0"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

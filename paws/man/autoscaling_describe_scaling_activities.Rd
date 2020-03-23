@@ -39,13 +39,12 @@ group.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the scaling activities for the specified Auto
+\examples{
+# This example describes the scaling activities for the specified Auto
 # Scaling group.
-svc$describe_scaling_activities(
+\donttest{svc$describe_scaling_activities(
   AutoScalingGroupName = "my-auto-scaling-group"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

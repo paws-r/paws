@@ -50,14 +50,6 @@ or worry about scaling your management infrastructure.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example creates a cluster in your default region.
-svc$create_cluster(
-  clusterName = "my_cluster"
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -112,3 +104,11 @@ svc$create_cluster(
 }
 }
 
+\examples{
+# This example creates a cluster in your default region.
+\donttest{svc <- ecs()
+svc$create_cluster(
+  clusterName = "my_cluster"
+)}
+
+}

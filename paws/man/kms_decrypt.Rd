@@ -138,13 +138,12 @@ in the \emph{AWS Key Management Service Developer Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example decrypts data that was encrypted with a customer
+\examples{
+# The following example decrypts data that was encrypted with a customer
 # master key (CMK) in AWS KMS.
-svc$decrypt(
+\donttest{svc$decrypt(
   CiphertextBlob = "<binary data>"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

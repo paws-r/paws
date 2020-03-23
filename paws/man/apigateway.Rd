@@ -34,13 +34,6 @@ hosted outside of AWS.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_api_key(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -167,3 +160,10 @@ hosted outside of AWS.
 }
 }
 
+\examples{
+\donttest{svc <- apigateway()
+svc$create_api_key(
+  Foo = 123
+)}
+
+}

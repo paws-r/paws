@@ -21,13 +21,12 @@ servers assigned to the hosted zone.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example gets information about the Z3M3LMPEXAMPLE hosted
+\examples{
+# The following example gets information about the Z3M3LMPEXAMPLE hosted
 # zone.
-svc$get_hosted_zone(
+\donttest{svc$get_hosted_zone(
   Id = "Z3M3LMPEXAMPLE"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

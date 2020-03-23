@@ -36,14 +36,6 @@ get the best results for your application domain.
 }
 }
 
-\section{Examples}{
-\preformatted{# Deletes a specified pronunciation lexicon stored in an AWS Region.
-svc$delete_lexicon(
-  Name = "example"
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -59,3 +51,11 @@ svc$delete_lexicon(
 }
 }
 
+\examples{
+# Deletes a specified pronunciation lexicon stored in an AWS Region.
+\donttest{svc <- polly()
+svc$delete_lexicon(
+  Name = "example"
+)}
+
+}

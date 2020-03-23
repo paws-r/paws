@@ -34,13 +34,6 @@ User Guide.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$close_tunnel(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -54,3 +47,10 @@ User Guide.
 }
 }
 
+\examples{
+\donttest{svc <- iotsecuretunneling()
+svc$close_tunnel(
+  Foo = 123
+)}
+
+}

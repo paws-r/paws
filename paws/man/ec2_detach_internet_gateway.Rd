@@ -31,14 +31,13 @@ with Elastic IP addresses or public IPv4 addresses.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example detaches the specified Internet gateway from the specified
+\examples{
+# This example detaches the specified Internet gateway from the specified
 # VPC.
-svc$detach_internet_gateway(
+\donttest{svc$detach_internet_gateway(
   InternetGatewayId = "igw-c0a643a9",
   VpcId = "vpc-a01106c2"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -30,13 +30,6 @@ AWS S3 Control provides access to Amazon S3 control plane operations.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_access_point(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -59,3 +52,10 @@ AWS S3 Control provides access to Amazon S3 control plane operations.
 }
 }
 
+\examples{
+\donttest{svc <- s3control()
+svc$create_access_point(
+  Foo = 123
+)}
+
+}

@@ -11,10 +11,9 @@ autoscaling_describe_scaling_process_types()
 Describes the scaling process types for use with ResumeProcesses and
 SuspendProcesses.
 }
-\section{Examples}{
-\preformatted{# This example describes the Auto Scaling process types.
-svc$describe_scaling_process_types()
-}
-}
+\examples{
+# This example describes the Auto Scaling process types.
+\donttest{svc$describe_scaling_process_types()}
 
+}
 \keyword{internal}

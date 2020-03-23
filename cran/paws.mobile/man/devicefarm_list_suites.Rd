@@ -24,14 +24,13 @@ Gets information about test suites for a given job.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example returns information about suites, given a specific
+\examples{
+# The following example returns information about suites, given a specific
 # Device Farm job.
-svc$list_suites(
+\donttest{svc$list_suites(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:job:EXAMPLE-GUID-123-456",
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

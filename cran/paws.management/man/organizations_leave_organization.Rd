@@ -39,11 +39,10 @@ to billing in your account. For more information, see \href{http://docs.aws.amaz
 in the \emph{AWS Billing and Cost Management User Guide.}
 }
 }
-\section{Examples}{
-\preformatted{# TThe following example shows how to remove your member account from an
+\examples{
+# TThe following example shows how to remove your member account from an
 # organization:
-svc$leave_organization()
-}
-}
+\donttest{svc$leave_organization()}
 
+}
 \keyword{internal}

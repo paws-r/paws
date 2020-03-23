@@ -26,13 +26,12 @@ Describes the lifecycle hooks for the specified Auto Scaling group.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the lifecycle hooks for the specified Auto
+\examples{
+# This example describes the lifecycle hooks for the specified Auto
 # Scaling group.
-svc$describe_lifecycle_hooks(
+\donttest{svc$describe_lifecycle_hooks(
   AutoScalingGroupName = "my-auto-scaling-group"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

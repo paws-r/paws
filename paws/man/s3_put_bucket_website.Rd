@@ -100,9 +100,9 @@ because some requests might not be redirected.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example adds website configuration to a bucket.
-svc$put_bucket_website(
+\examples{
+# The following example adds website configuration to a bucket.
+\donttest{svc$put_bucket_website(
   Bucket = "examplebucket",
   ContentMD5 = "",
   WebsiteConfiguration = list(
@@ -113,8 +113,7 @@ svc$put_bucket_website(
       Suffix = "index.html"
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

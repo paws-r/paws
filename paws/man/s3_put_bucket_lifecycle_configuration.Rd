@@ -136,10 +136,10 @@ The following are related to \code{PutBucketLifecycleConfiguration}:
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example replaces existing lifecycle configuration, if any,
+\examples{
+# The following example replaces existing lifecycle configuration, if any,
 # on the specified bucket.
-svc$put_bucket_lifecycle_configuration(
+\donttest{svc$put_bucket_lifecycle_configuration(
   Bucket = "examplebucket",
   LifecycleConfiguration = list(
     Rules = list(
@@ -161,8 +161,7 @@ svc$put_bucket_lifecycle_configuration(
       )
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -40,13 +40,6 @@ To start using Access Analyzer, you first need to create an analyzer.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_analyzer(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -71,3 +64,10 @@ To start using Access Analyzer, you first need to create an analyzer.
 }
 }
 
+\examples{
+\donttest{svc <- accessanalyzer()
+svc$create_analyzer(
+  Foo = 123
+)}
+
+}

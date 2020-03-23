@@ -33,12 +33,11 @@ see UpdateAccessKey and DeleteAccessKey.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following command deletes the password for the IAM user named Bob.
-svc$delete_login_profile(
+\examples{
+# The following command deletes the password for the IAM user named Bob.
+\donttest{svc$delete_login_profile(
   UserName = "Bob"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

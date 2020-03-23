@@ -75,11 +75,11 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example creates an AMI from the specified instance and adds an EBS
+\examples{
+# This example creates an AMI from the specified instance and adds an EBS
 # volume with the device name /dev/sdh and an instance store volume with
 # the device name /dev/sdc.
-svc$create_image(
+\donttest{svc$create_image(
   BlockDeviceMappings = list(
     list(
       DeviceName = "/dev/sdh",
@@ -96,8 +96,7 @@ svc$create_image(
   InstanceId = "i-1234567890abcdef0",
   Name = "My server",
   NoReboot = TRUE
-)
-}
-}
+)}
 
+}
 \keyword{internal}

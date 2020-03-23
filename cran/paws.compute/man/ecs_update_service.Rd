@@ -203,21 +203,20 @@ with the largest number of running tasks for this service.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example updates the my-http-service service to use the
+\examples{
+# This example updates the my-http-service service to use the
 # amazon-ecs-sample task definition.
-svc$update_service(
+\donttest{svc$update_service(
   service = "my-http-service",
   taskDefinition = "amazon-ecs-sample"
-)
+)}
 
 # This example updates the desired count of the my-http-service service to
 # 10.
-svc$update_service(
+\donttest{svc$update_service(
   desiredCount = 10L,
   service = "my-http-service"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

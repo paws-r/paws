@@ -44,13 +44,6 @@ For information about costs associated with the Cost Explorer API, see
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_cost_category_definition(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -76,3 +69,10 @@ For information about costs associated with the Cost Explorer API, see
 }
 }
 
+\examples{
+\donttest{svc <- costexplorer()
+svc$create_cost_category_definition(
+  Foo = 123
+)}
+
+}

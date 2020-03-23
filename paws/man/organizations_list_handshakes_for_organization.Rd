@@ -66,11 +66,10 @@ account.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example shows you how to get a list of handshakes
+\examples{
+# The following example shows you how to get a list of handshakes
 # associated with the current organization:
-svc$list_handshakes_for_organization()
-}
-}
+\donttest{svc$list_handshakes_for_organization()}
 
+}
 \keyword{internal}

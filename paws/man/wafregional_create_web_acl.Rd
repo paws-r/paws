@@ -76,17 +76,16 @@ For more information about how to use the AWS WAF API, see the \href{https://doc
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example creates a web ACL named CreateExample.
-svc$create_web_acl(
+\examples{
+# The following example creates a web ACL named CreateExample.
+\donttest{svc$create_web_acl(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   DefaultAction = list(
     Type = "ALLOW"
   ),
   MetricName = "CreateExample",
   Name = "CreateExample"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

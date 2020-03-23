@@ -83,13 +83,12 @@ for the underlying REST API \href{https://docs.aws.amazon.com/amazonglacier/late
 }
 }
 
-\section{Examples}{
-\preformatted{# The example lists jobs for the vault named my-vault.
-svc$list_jobs(
+\examples{
+# The example lists jobs for the vault named my-vault.
+\donttest{svc$list_jobs(
   accountId = "-",
   vaultName = "my-vault"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

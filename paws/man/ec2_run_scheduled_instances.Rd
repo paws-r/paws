@@ -115,9 +115,9 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example launches the specified Scheduled Instance in a VPC.
-svc$run_scheduled_instances(
+\examples{
+# This example launches the specified Scheduled Instance in a VPC.
+\donttest{svc$run_scheduled_instances(
   InstanceCount = 1L,
   LaunchSpecification = list(
     IamInstanceProfile = list(
@@ -138,10 +138,10 @@ svc$run_scheduled_instances(
     )
   ),
   ScheduledInstanceId = "sci-1234-1234-1234-1234-123456789012"
-)
+)}
 
 # This example launches the specified Scheduled Instance in EC2-Classic.
-svc$run_scheduled_instances(
+\donttest{svc$run_scheduled_instances(
   InstanceCount = 1L,
   LaunchSpecification = list(
     IamInstanceProfile = list(
@@ -158,8 +158,7 @@ svc$run_scheduled_instances(
     )
   ),
   ScheduledInstanceId = "sci-1234-1234-1234-1234-123456789012"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -36,13 +36,6 @@ a programming interface that you can use to manage AWS DataSync.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$cancel_task_execution(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -76,3 +69,10 @@ a programming interface that you can use to manage AWS DataSync.
 }
 }
 
+\examples{
+\donttest{svc <- datasync()
+svc$cancel_task_execution(
+  Foo = 123
+)}
+
+}

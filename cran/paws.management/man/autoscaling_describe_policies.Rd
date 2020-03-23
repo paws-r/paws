@@ -42,13 +42,12 @@ Describes the policies for the specified Auto Scaling group.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the policies for the specified Auto Scaling
+\examples{
+# This example describes the policies for the specified Auto Scaling
 # group.
-svc$describe_policies(
+\donttest{svc$describe_policies(
   AutoScalingGroupName = "my-auto-scaling-group"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

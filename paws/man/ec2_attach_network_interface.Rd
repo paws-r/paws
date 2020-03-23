@@ -32,15 +32,14 @@ Attaches a network interface to an instance.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example attaches the specified network interface to the specified
+\examples{
+# This example attaches the specified network interface to the specified
 # instance.
-svc$attach_network_interface(
+\donttest{svc$attach_network_interface(
   DeviceIndex = 1L,
   InstanceId = "i-1234567890abcdef0",
   NetworkInterfaceId = "eni-e5aa89a3"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

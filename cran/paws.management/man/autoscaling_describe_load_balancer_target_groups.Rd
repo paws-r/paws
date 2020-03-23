@@ -28,13 +28,12 @@ Describes the target groups for the specified Auto Scaling group.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the target groups attached to the specified Auto
+\examples{
+# This example describes the target groups attached to the specified Auto
 # Scaling group.
-svc$describe_load_balancer_target_groups(
+\donttest{svc$describe_load_balancer_target_groups(
   AutoScalingGroupName = "my-auto-scaling-group"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

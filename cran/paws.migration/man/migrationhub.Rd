@@ -36,13 +36,6 @@ returned. Also, you must make the API calls while in your home region.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$associate_created_artifact(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -66,3 +59,10 @@ returned. Also, you must make the API calls while in your home region.
 }
 }
 
+\examples{
+\donttest{svc <- migrationhub()
+svc$associate_created_artifact(
+  Foo = 123
+)}
+
+}

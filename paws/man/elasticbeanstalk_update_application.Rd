@@ -30,14 +30,13 @@ remains unchanged. To clear these properties, specify an empty string.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following operation updates the description of an application named
+\examples{
+# The following operation updates the description of an application named
 # my-app:
-svc$update_application(
+\donttest{svc$update_application(
   ApplicationName = "my-app",
   Description = "my Elastic Beanstalk application"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

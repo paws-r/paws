@@ -39,14 +39,13 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example sets the health status of the specified instance to
+\examples{
+# This example sets the health status of the specified instance to
 # Unhealthy.
-svc$set_instance_health(
+\donttest{svc$set_instance_health(
   HealthStatus = "Unhealthy",
   InstanceId = "i-93633f9b"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

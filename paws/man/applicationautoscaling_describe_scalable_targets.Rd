@@ -122,13 +122,12 @@ you can deregister it using DeregisterScalableTarget.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the scalable targets for the ecs service
+\examples{
+# This example describes the scalable targets for the ecs service
 # namespace.
-svc$describe_scalable_targets(
+\donttest{svc$describe_scalable_targets(
   ServiceNamespace = "ecs"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -30,13 +30,12 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example deletes the specified Auto Scaling policy.
-svc$delete_policy(
+\examples{
+# This example deletes the specified Auto Scaling policy.
+\donttest{svc$delete_policy(
   AutoScalingGroupName = "my-auto-scaling-group",
   PolicyName = "ScaleIn"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

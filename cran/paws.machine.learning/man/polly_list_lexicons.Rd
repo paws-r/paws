@@ -21,10 +21,9 @@ more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/managing
 }
 }
 
-\section{Examples}{
-\preformatted{# Returns a list of pronunciation lexicons stored in an AWS Region.
-svc$list_lexicons()
-}
-}
+\examples{
+# Returns a list of pronunciation lexicons stored in an AWS Region.
+\donttest{svc$list_lexicons()}
 
+}
 \keyword{internal}

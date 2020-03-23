@@ -42,14 +42,13 @@ NULL
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The following example deletes the AWS Cost and Usage report named
 #' # ExampleReport.
+#' \donttest{svc <- costandusagereportservice()
 #' svc$delete_report_definition(
 #'   ReportName = "ExampleReport"
-#' )
-#' ```
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

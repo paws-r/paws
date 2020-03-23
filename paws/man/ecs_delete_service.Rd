@@ -48,13 +48,12 @@ service in either \code{ACTIVE} or \code{DRAINING} status, you receive an error.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example deletes the my-http-service service. The service must have
+\examples{
+# This example deletes the my-http-service service. The service must have
 # a desired count and running count of 0 before you can delete it.
-svc$delete_service(
+\donttest{svc$delete_service(
   service = "my-http-service"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

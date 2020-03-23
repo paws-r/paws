@@ -39,16 +39,15 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example attaches the specified load balancer to the specified Auto
+\examples{
+# This example attaches the specified load balancer to the specified Auto
 # Scaling group.
-svc$attach_load_balancers(
+\donttest{svc$attach_load_balancers(
   AutoScalingGroupName = "my-auto-scaling-group",
   LoadBalancerNames = list(
     "my-load-balancer"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

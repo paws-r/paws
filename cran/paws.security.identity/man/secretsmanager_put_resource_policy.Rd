@@ -69,14 +69,13 @@ use DeleteResourcePolicy.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example shows how to add a resource-based policy to a
+\examples{
+# The following example shows how to add a resource-based policy to a
 # secret.
-svc$put_resource_policy(
-  ResourcePolicy = "\{\\n\\"Version\\":\\"2012-10-17\\",\\n\\"Statement\\":[\{\\n\\"Effect\\":\\"Allow\\",...",
+\donttest{svc$put_resource_policy(
+  ResourcePolicy = "{\n\"Version\":\"2012-10-17\",\n\"Statement\":[{\n\"Effect\":\"Allow\",...",
   SecretId = "MyTestDatabaseSecret"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

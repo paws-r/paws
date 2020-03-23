@@ -74,12 +74,11 @@ describe all versions, individual versions, or a range of versions.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the versions for the specified launch template.
-svc$describe_launch_template_versions(
+\examples{
+# This example describes the versions for the specified launch template.
+\donttest{svc$describe_launch_template_versions(
   LaunchTemplateId = "068f72b72934aff71"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

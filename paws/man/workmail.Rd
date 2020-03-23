@@ -65,13 +65,6 @@ access on a selective basis using the IAM model.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$associate_delegate_to_resource(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -111,3 +104,10 @@ access on a selective basis using the IAM model.
 }
 }
 
+\examples{
+\donttest{svc <- workmail()
+svc$associate_delegate_to_resource(
+  Foo = 123
+)}
+
+}

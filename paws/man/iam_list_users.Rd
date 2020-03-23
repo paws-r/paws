@@ -53,10 +53,9 @@ parameters.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following command lists the IAM users in the current account.
-svc$list_users()
-}
-}
+\examples{
+# The following command lists the IAM users in the current account.
+\donttest{svc$list_users()}
 
+}
 \keyword{internal}

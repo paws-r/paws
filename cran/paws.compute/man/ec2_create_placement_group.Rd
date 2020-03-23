@@ -48,13 +48,12 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example creates a placement group with the specified name.
-svc$create_placement_group(
+\examples{
+# This example creates a placement group with the specified name.
+\donttest{svc$create_placement_group(
   GroupName = "my-cluster",
   Strategy = "cluster"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

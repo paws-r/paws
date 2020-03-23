@@ -55,14 +55,13 @@ about permissions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Pe
 }
 }
 
-\section{Examples}{
-\preformatted{# The following command changes the name of the IAM user Bob to Robert. It
+\examples{
+# The following command changes the name of the IAM user Bob to Robert. It
 # does not change the user's path.
-svc$update_user(
+\donttest{svc$update_user(
   NewUserName = "Robert",
   UserName = "Bob"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

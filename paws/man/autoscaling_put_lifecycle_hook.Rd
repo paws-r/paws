@@ -112,16 +112,15 @@ can delete it using DeleteLifecycleHook.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example creates a lifecycle hook.
-svc$put_lifecycle_hook(
+\examples{
+# This example creates a lifecycle hook.
+\donttest{svc$put_lifecycle_hook(
   AutoScalingGroupName = "my-auto-scaling-group",
   LifecycleHookName = "my-lifecycle-hook",
   LifecycleTransition = "autoscaling:EC2_INSTANCE_LAUNCHING",
   NotificationTargetARN = "arn:aws:sns:us-west-2:123456789012:my-sns-topic --role-arn",
   RoleARN = "arn:aws:iam::123456789012:role/my-auto-scaling-role"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

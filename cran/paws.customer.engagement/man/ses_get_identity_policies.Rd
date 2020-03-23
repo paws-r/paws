@@ -46,16 +46,15 @@ You can execute this operation no more than once per second.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example returns a sending authorization policy for an
+\examples{
+# The following example returns a sending authorization policy for an
 # identity:
-svc$get_identity_policies(
+\donttest{svc$get_identity_policies(
   Identity = "example.com",
   PolicyNames = list(
     "MyPolicy"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

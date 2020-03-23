@@ -38,13 +38,6 @@ Management. For general information about using code signing, see the
 }
 }
 
-\section{Examples}{
-\preformatted{svc$cancel_signing_profile(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -63,3 +56,10 @@ Management. For general information about using code signing, see the
 }
 }
 
+\examples{
+\donttest{svc <- signer()
+svc$cancel_signing_profile(
+  Foo = 123
+)}
+
+}

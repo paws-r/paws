@@ -98,16 +98,15 @@ window has expired, use RestoreSecret.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example shows how to delete a secret. The secret stays in
+\examples{
+# The following example shows how to delete a secret. The secret stays in
 # your account in a deprecated and inaccessible state until the recovery
 # window ends. After the date and time in the DeletionDate response field
 # has passed, you can no longer recover this secret with restore-secret.
-svc$delete_secret(
+\donttest{svc$delete_secret(
   RecoveryWindowInDays = 7L,
   SecretId = "MyTestDatabaseSecret1"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

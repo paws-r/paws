@@ -30,9 +30,9 @@ NULL
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This operation creates a new backup.
+#' \donttest{svc <- fsx()
 #' svc$create_backup(
 #'   FileSystemId = "fs-0498eed5fe91001ec",
 #'   Tags = list(
@@ -41,8 +41,7 @@ NULL
 #'       Value = "MyBackup"
 #'     )
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

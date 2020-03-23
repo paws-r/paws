@@ -35,18 +35,17 @@ in the \emph{Classic Load Balancers Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example deregisters the specified instance from the specified load
+\examples{
+# This example deregisters the specified instance from the specified load
 # balancer.
-svc$deregister_instances_from_load_balancer(
+\donttest{svc$deregister_instances_from_load_balancer(
   Instances = list(
     list(
       InstanceId = "i-d6f6fae3"
     )
   ),
   LoadBalancerName = "my-load-balancer"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

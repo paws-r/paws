@@ -144,6 +144,7 @@ make_doc_example <- function(example, op_name) {
   })
   call <- paste(truncated, collapse = "\n")
 
+  call <- paste0("\\donttest{", call, "}")
   desc <- comment(break_lines(example$description))
   # Replace exactly double backticks with single backtick
   desc <- gsub("(?<!`)`{2}(?!`)", "`", desc, perl = T)
@@ -157,8 +158,7 @@ make_doc_examples <- function(operation, api) {
   examples <- lapply(operation$examples, make_doc_example, op_name = func)
   if (length(examples) == 0) return(NULL)
   result <- paste(examples, collapse = "\n\n")
-  result <- paste("```", result, "```", sep = "\n")
-  result <- paste(c("@section Examples:", result), collapse = "\n")
+  result <- paste(c("@examples", result), collapse = "\n")
   result <- comment(result, "#'")
   return(result)
 }

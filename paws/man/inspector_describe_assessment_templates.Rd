@@ -23,15 +23,14 @@ assessment templates.
 }
 }
 
-\section{Examples}{
-\preformatted{# Describes the assessment templates that are specified by the ARNs of the
+\examples{
+# Describes the assessment templates that are specified by the ARNs of the
 # assessment templates.
-svc$describe_assessment_templates(
+\donttest{svc$describe_assessment_templates(
   assessmentTemplateArns = list(
     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -52,13 +52,12 @@ secret, use GetResourcePolicy.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example shows how to delete the resource-based policy that
+\examples{
+# The following example shows how to delete the resource-based policy that
 # is attached to a secret.
-svc$delete_resource_policy(
+\donttest{svc$delete_resource_policy(
   SecretId = "MyTestDatabaseSecret"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

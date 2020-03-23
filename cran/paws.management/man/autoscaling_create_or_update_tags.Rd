@@ -35,9 +35,9 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example adds two tags to the specified Auto Scaling group.
-svc$create_or_update_tags(
+\examples{
+# This example adds two tags to the specified Auto Scaling group.
+\donttest{svc$create_or_update_tags(
   Tags = list(
     list(
       Key = "Role",
@@ -54,8 +54,7 @@ svc$create_or_update_tags(
       Value = "Research"
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

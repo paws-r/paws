@@ -123,10 +123,10 @@ This operation requires permissions to perform the
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation compares the largest face detected in the source image
+\examples{
+# This operation compares the largest face detected in the source image
 # with each face detected in the target image.
-svc$compare_faces(
+\donttest{svc$compare_faces(
   SimilarityThreshold = 90L,
   SourceImage = list(
     S3Object = list(
@@ -140,8 +140,7 @@ svc$compare_faces(
       Name = "mytargetimage"
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

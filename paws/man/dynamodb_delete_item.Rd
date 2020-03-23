@@ -258,9 +258,9 @@ delete. Otherwise, the item is not deleted.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example deletes an item from the Music table.
-svc$delete_item(
+\examples{
+# This example deletes an item from the Music table.
+\donttest{svc$delete_item(
   Key = list(
     Artist = list(
       S = "No One You Know"
@@ -270,8 +270,7 @@ svc$delete_item(
     )
   ),
   TableName = "Music"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

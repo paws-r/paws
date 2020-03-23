@@ -127,13 +127,12 @@ delete it using DeleteScalingPolicy.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the scaling policies for the ecs service
+\examples{
+# This example describes the scaling policies for the ecs service
 # namespace.
-svc$describe_scaling_policies(
+\donttest{svc$describe_scaling_policies(
   ServiceNamespace = "ecs"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

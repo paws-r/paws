@@ -23,13 +23,12 @@ Lists the AWS Cost and Usage reports available to this account.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example lists the AWS Cost and Usage reports for the
+\examples{
+# The following example lists the AWS Cost and Usage reports for the
 # account.
-svc$describe_report_definitions(
+\donttest{svc$describe_report_definitions(
   MaxResults = 5L
-)
-}
-}
+)}
 
+}
 \keyword{internal}

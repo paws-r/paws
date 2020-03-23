@@ -27,13 +27,12 @@ action.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example shows how to get information about an intent.
-svc$get_intent(
+\examples{
+# This example shows how to get information about an intent.
+\donttest{svc$get_intent(
   version = "$LATEST",
   name = "DocOrderPizza"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

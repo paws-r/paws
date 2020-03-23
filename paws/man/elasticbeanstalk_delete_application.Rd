@@ -30,12 +30,11 @@ You cannot delete an application that has a running environment.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following operation deletes an application named my-app:
-svc$delete_application(
+\examples{
+# The following operation deletes an application named my-app:
+\donttest{svc$delete_application(
   ApplicationName = "my-app"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

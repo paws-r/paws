@@ -39,13 +39,6 @@ Regions.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$accept_direct_connect_gateway_association_proposal(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -105,3 +98,10 @@ Regions.
 }
 }
 
+\examples{
+\donttest{svc <- directconnect()
+svc$accept_direct_connect_gateway_association_proposal(
+  Foo = 123
+)}
+
+}

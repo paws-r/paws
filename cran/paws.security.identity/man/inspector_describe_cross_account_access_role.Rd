@@ -11,11 +11,10 @@ inspector_describe_cross_account_access_role()
 Describes the IAM role that enables Amazon Inspector to access your AWS
 account.
 }
-\section{Examples}{
-\preformatted{# Describes the IAM role that enables Amazon Inspector to access your AWS
+\examples{
+# Describes the IAM role that enables Amazon Inspector to access your AWS
 # account.
-svc$describe_cross_account_access_role()
-}
-}
+\donttest{svc$describe_cross_account_access_role()}
 
+}
 \keyword{internal}

@@ -66,14 +66,13 @@ account.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example shows how to request a list of the child OUs in a
+\examples{
+# The following example shows how to request a list of the child OUs in a
 # parent root or OU:/n/n
-svc$list_children(
+\donttest{svc$list_children(
   ChildType = "ORGANIZATIONAL_UNIT",
   ParentId = "ou-examplerootid111-exampleouid111"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

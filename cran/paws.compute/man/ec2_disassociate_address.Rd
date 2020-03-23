@@ -38,19 +38,18 @@ once, Amazon EC2 doesn\'t return an error.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example disassociates an Elastic IP address from an instance in a
+\examples{
+# This example disassociates an Elastic IP address from an instance in a
 # VPC.
-svc$disassociate_address(
+\donttest{svc$disassociate_address(
   AssociationId = "eipassoc-2bebb745"
-)
+)}
 
 # This example disassociates an Elastic IP address from an instance in
 # EC2-Classic.
-svc$disassociate_address(
+\donttest{svc$disassociate_address(
   PublicIp = "198.51.100.0"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -64,22 +64,21 @@ later, you can set the target capacity to 0.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example increases the target capacity of the specified Spot fleet
+\examples{
+# This example increases the target capacity of the specified Spot fleet
 # request.
-svc$modify_spot_fleet_request(
+\donttest{svc$modify_spot_fleet_request(
   SpotFleetRequestId = "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE",
   TargetCapacity = 20L
-)
+)}
 
 # This example decreases the target capacity of the specified Spot fleet
 # request without terminating any Spot Instances as a result.
-svc$modify_spot_fleet_request(
+\donttest{svc$modify_spot_fleet_request(
   ExcessCapacityTerminationPolicy = "NoTermination ",
   SpotFleetRequestId = "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE",
   TargetCapacity = 10L
-)
-}
-}
+)}
 
+}
 \keyword{internal}

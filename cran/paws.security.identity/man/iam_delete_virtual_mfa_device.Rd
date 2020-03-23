@@ -29,13 +29,12 @@ DeactivateMFADevice.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following delete-virtual-mfa-device command removes the specified
+\examples{
+# The following delete-virtual-mfa-device command removes the specified
 # MFA device from the current AWS account.
-svc$delete_virtual_mfa_device(
+\donttest{svc$delete_virtual_mfa_device(
   SerialNumber = "arn:aws:iam::123456789012:mfa/ExampleName"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -32,13 +32,12 @@ of terminated instances is not returned.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the health of the instances for the specified
+\examples{
+# This example describes the health of the instances for the specified
 # load balancer.
-svc$describe_instance_health(
+\donttest{svc$describe_instance_health(
   LoadBalancerName = "my-load-balancer"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

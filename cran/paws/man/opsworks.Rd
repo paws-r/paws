@@ -87,13 +87,6 @@ possible.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$assign_instance(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -174,3 +167,10 @@ possible.
 }
 }
 
+\examples{
+\donttest{svc <- opsworks()
+svc$assign_instance(
+  Foo = 123
+)}
+
+}

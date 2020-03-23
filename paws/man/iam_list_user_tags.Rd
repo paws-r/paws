@@ -44,12 +44,11 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example shows how to list the tags attached to a user.
-svc$list_user_tags(
+\examples{
+# The following example shows how to list the tags attached to a user.
+\donttest{svc$list_user_tags(
   UserName = "anika"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

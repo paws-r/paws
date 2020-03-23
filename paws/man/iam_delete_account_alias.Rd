@@ -25,13 +25,12 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following command removes the alias mycompany from the current AWS
+\examples{
+# The following command removes the alias mycompany from the current AWS
 # account:
-svc$delete_account_alias(
+\donttest{svc$delete_account_alias(
   AccountAlias = "mycompany"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

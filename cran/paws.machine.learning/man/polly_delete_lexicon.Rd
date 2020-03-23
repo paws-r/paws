@@ -26,12 +26,11 @@ For more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/mana
 }
 }
 
-\section{Examples}{
-\preformatted{# Deletes a specified pronunciation lexicon stored in an AWS Region.
-svc$delete_lexicon(
+\examples{
+# Deletes a specified pronunciation lexicon stored in an AWS Region.
+\donttest{svc$delete_lexicon(
   Name = "example"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

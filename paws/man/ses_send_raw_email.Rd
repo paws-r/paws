@@ -216,9 +216,9 @@ in the \emph{Amazon SES Developer Guide.}
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example sends an email with an attachment:
-svc$send_raw_email(
+\examples{
+# The following example sends an email with an attachment:
+\donttest{svc$send_raw_email(
   Destinations = list(),
   FromArn = "",
   RawMessage = list(
@@ -227,8 +227,7 @@ svc$send_raw_email(
   ReturnPathArn = "",
   Source = "",
   SourceArn = ""
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -30,13 +30,6 @@ Provides APIs for creating and managing Amazon Forecast resources.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$query_forecast(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -44,3 +37,10 @@ Provides APIs for creating and managing Amazon Forecast resources.
 }
 }
 
+\examples{
+\donttest{svc <- forecastqueryservice()
+svc$query_forecast(
+  Foo = 123
+)}
+
+}

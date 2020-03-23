@@ -48,14 +48,13 @@ Swaps the CNAMEs of two environments.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following operation swaps the assigned subdomains of two
+\examples{
+# The following operation swaps the assigned subdomains of two
 # environments:
-svc$swap_environment_cnam_es(
+\donttest{svc$swap_environment_cnam_es(
   DestinationEnvironmentName = "my-env-green",
   SourceEnvironmentName = "my-env-blue"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

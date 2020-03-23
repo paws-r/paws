@@ -53,10 +53,10 @@ needed to perform security assessments.
 }
 }
 
-\section{Examples}{
-\preformatted{# Creates an assessment template for the assessment target that is
+\examples{
+# Creates an assessment template for the assessment target that is
 # specified by the ARN of the assessment target.
-svc$create_assessment_template(
+\donttest{svc$create_assessment_template(
   assessmentTargetArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX",
   assessmentTemplateName = "ExampleAssessmentTemplate",
   durationInSeconds = 180L,
@@ -69,8 +69,7 @@ svc$create_assessment_template(
       value = "example"
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

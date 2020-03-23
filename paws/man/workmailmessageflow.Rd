@@ -31,13 +31,6 @@ are being sent and received by a WorkMail organization.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$get_raw_message_content(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -45,3 +38,10 @@ are being sent and received by a WorkMail organization.
 }
 }
 
+\examples{
+\donttest{svc <- workmailmessageflow()
+svc$get_raw_message_content(
+  Foo = 123
+)}
+
+}

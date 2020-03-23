@@ -46,13 +46,6 @@ SDKs, including how to download and install them, see \href{http://aws.amazon.co
 }
 }
 
-\section{Examples}{
-\preformatted{svc$get_role_credentials(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -63,3 +56,10 @@ SDKs, including how to download and install them, see \href{http://aws.amazon.co
 }
 }
 
+\examples{
+\donttest{svc <- sso()
+svc$get_role_credentials(
+  Foo = 123
+)}
+
+}

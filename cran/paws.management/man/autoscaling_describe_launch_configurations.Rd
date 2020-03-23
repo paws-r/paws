@@ -31,14 +31,13 @@ Describes one or more launch configurations.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the specified launch configuration.
-svc$describe_launch_configurations(
+\examples{
+# This example describes the specified launch configuration.
+\donttest{svc$describe_launch_configurations(
   LaunchConfigurationNames = list(
     "my-launch-config"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

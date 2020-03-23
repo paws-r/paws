@@ -54,13 +54,12 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example detaches the volume (`vol-049df61146c4d7901`) from the
+\examples{
+# This example detaches the volume (`vol-049df61146c4d7901`) from the
 # instance it is attached to.
-svc$detach_volume(
+\donttest{svc$detach_volume(
   VolumeId = "vol-1234567890abcdef0"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

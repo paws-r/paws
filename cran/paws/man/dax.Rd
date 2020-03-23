@@ -36,13 +36,6 @@ realize significant improvements in read performance.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_cluster(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -70,3 +63,10 @@ realize significant improvements in read performance.
 }
 }
 
+\examples{
+\donttest{svc <- dax()
+svc$create_cluster(
+  Foo = 123
+)}
+
+}

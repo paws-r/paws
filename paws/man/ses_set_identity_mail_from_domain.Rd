@@ -51,15 +51,14 @@ You can execute this operation no more than once per second.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example configures Amazon SES to use a custom MAIL FROM
+\examples{
+# The following example configures Amazon SES to use a custom MAIL FROM
 # domain for an identity:
-svc$set_identity_mail_from_domain(
+\donttest{svc$set_identity_mail_from_domain(
   BehaviorOnMXFailure = "UseDefaultValue",
   Identity = "user@example.com",
   MailFromDomain = "bounces.example.com"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

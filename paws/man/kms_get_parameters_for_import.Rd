@@ -67,15 +67,14 @@ in the \emph{AWS Key Management Service Developer Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example retrieves the public key and import token for the
+\examples{
+# The following example retrieves the public key and import token for the
 # specified CMK.
-svc$get_parameters_for_import(
+\donttest{svc$get_parameters_for_import(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
   WrappingAlgorithm = "RSAES_OAEP_SHA_1",
   WrappingKeySpec = "RSA_2048"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

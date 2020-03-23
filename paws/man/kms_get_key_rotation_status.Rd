@@ -54,13 +54,12 @@ the key ARN in the value of the \code{KeyId} parameter.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example retrieves the status of automatic annual rotation
+\examples{
+# The following example retrieves the status of automatic annual rotation
 # of the key material for the specified CMK.
-svc$get_key_rotation_status(
+\donttest{svc$get_key_rotation_status(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

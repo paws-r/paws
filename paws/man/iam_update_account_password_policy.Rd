@@ -108,15 +108,14 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following command sets the password policy to require a minimum
+\examples{
+# The following command sets the password policy to require a minimum
 # length of eight characters and to require one or more numbers in the
 # password:
-svc$update_account_password_policy(
+\donttest{svc$update_account_password_policy(
   MinimumPasswordLength = 8L,
   RequireNumbers = TRUE
-)
-}
-}
+)}
 
+}
 \keyword{internal}

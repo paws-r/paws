@@ -42,9 +42,9 @@ Returns information about the replication subnet groups.
 }
 }
 
-\section{Examples}{
-\preformatted{# Returns information about the replication subnet groups.
-svc$describe_replication_subnet_groups(
+\examples{
+# Returns information about the replication subnet groups.
+\donttest{svc$describe_replication_subnet_groups(
   Filters = list(
     list(
       Name = "string",
@@ -56,8 +56,7 @@ svc$describe_replication_subnet_groups(
   ),
   Marker = "",
   MaxRecords = 123L
-)
-}
-}
+)}
 
+}
 \keyword{internal}

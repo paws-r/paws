@@ -22,12 +22,11 @@ Deleting this resource does not stop an in-progress run.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example deletes a specific test run.
-svc$delete_run(
+\examples{
+# The following example deletes a specific test run.
+\donttest{svc$delete_run(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:EXAMPLE-GUID-123-456"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

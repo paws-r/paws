@@ -136,10 +136,10 @@ This operation requires permissions for the
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation creates a new file system with the default generalpurpose
+\examples{
+# This operation creates a new file system with the default generalpurpose
 # performance mode.
-svc$create_file_system(
+\donttest{svc$create_file_system(
   CreationToken = "tokenstring",
   PerformanceMode = "generalPurpose",
   Tags = list(
@@ -148,8 +148,7 @@ svc$create_file_system(
       Value = "MyFileSystem"
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

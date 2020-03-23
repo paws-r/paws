@@ -32,12 +32,11 @@ key (CMK), call UpdateAlias.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example deletes the specified alias.
-svc$delete_alias(
+\examples{
+# The following example deletes the specified alias.
+\donttest{svc$delete_alias(
   AliasName = "alias/ExampleAlias"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

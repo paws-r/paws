@@ -33,13 +33,6 @@ inputs and detector models, and to list their versions.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_detector_model(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -62,3 +55,10 @@ inputs and detector models, and to list their versions.
 }
 }
 
+\examples{
+\donttest{svc <- iotevents()
+svc$create_detector_model(
+  Foo = 123
+)}
+
+}

@@ -56,10 +56,9 @@ including predefined aliases, do not count against your \href{https://docs.aws.a
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example lists aliases.
-svc$list_aliases()
-}
-}
+\examples{
+# The following example lists aliases.
+\donttest{svc$list_aliases()}
 
+}
 \keyword{internal}

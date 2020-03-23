@@ -32,13 +32,6 @@ Amazon Textract.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$analyze_document(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -51,3 +44,10 @@ Amazon Textract.
 }
 }
 
+\examples{
+\donttest{svc <- textract()
+svc$analyze_document(
+  Foo = 123
+)}
+
+}

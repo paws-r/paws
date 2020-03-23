@@ -62,13 +62,12 @@ account.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example shows how to get a list of OUs in a specified
+\examples{
+# The following example shows how to get a list of OUs in a specified
 # root:/n/n
-svc$list_organizational_units_for_parent(
+\donttest{svc$list_organizational_units_for_parent(
   ParentId = "r-examplerootid111"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -45,18 +45,17 @@ request.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example associates the VPC with ID vpc-1a2b3c4d with the
+\examples{
+# The following example associates the VPC with ID vpc-1a2b3c4d with the
 # hosted zone with ID Z3M3LMPEXAMPLE.
-svc$associate_vpc_with_hosted_zone(
+\donttest{svc$associate_vpc_with_hosted_zone(
   Comment = "",
   HostedZoneId = "Z3M3LMPEXAMPLE",
   VPC = list(
     VPCId = "vpc-1a2b3c4d",
     VPCRegion = "us-east-2"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

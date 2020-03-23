@@ -74,9 +74,9 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example creates a DHCP options set.
-svc$create_dhcp_options(
+\examples{
+# This example creates a DHCP options set.
+\donttest{svc$create_dhcp_options(
   DhcpConfigurations = list(
     list(
       Key = "domain-name-servers",
@@ -86,8 +86,7 @@ svc$create_dhcp_options(
       )
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

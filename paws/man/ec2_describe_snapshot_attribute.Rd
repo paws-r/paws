@@ -33,14 +33,13 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the `createVolumePermission` attribute on a
+\examples{
+# This example describes the `createVolumePermission` attribute on a
 # snapshot with the snapshot ID of `snap-066877671789bd71b`.
-svc$describe_snapshot_attribute(
+\donttest{svc$describe_snapshot_attribute(
   Attribute = "createVolumePermission",
   SnapshotId = "snap-066877671789bd71b"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

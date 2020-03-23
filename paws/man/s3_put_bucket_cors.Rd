@@ -90,10 +90,10 @@ the \emph{Amazon Simple Storage Service Developer Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example enables PUT, POST, and DELETE requests from
+\examples{
+# The following example enables PUT, POST, and DELETE requests from
 # www.example.com, and enables GET requests from any domain.
-svc$put_bucket_cors(
+\donttest{svc$put_bucket_cors(
   Bucket = "",
   CORSConfiguration = list(
     CORSRules = list(
@@ -129,8 +129,7 @@ svc$put_bucket_cors(
     )
   ),
   ContentMD5 = ""
-)
-}
-}
+)}
 
+}
 \keyword{internal}

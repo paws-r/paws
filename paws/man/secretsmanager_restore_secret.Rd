@@ -49,13 +49,12 @@ To run this command, you must have the following permissions:
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example shows how to restore a secret that you previously
+\examples{
+# The following example shows how to restore a secret that you previously
 # scheduled for deletion.
-svc$restore_secret(
+\donttest{svc$restore_secret(
   SecretId = "MyTestDatabaseSecret"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

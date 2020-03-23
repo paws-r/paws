@@ -150,13 +150,12 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following operation generates a report for the organizational unit
+\examples{
+# The following operation generates a report for the organizational unit
 # ou-rge0-awexample
-svc$generate_organizations_access_report(
+\donttest{svc$generate_organizations_access_report(
   EntityPath = "o-a1b2c3d4e5/r-f6g7h8i9j0example/ou-1a2b3c-k9l8m7n6o5example"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

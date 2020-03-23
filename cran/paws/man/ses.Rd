@@ -35,16 +35,6 @@ in the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html}
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example creates a receipt rule set by cloning an existing
-# one:
-svc$clone_receipt_rule_set(
-  OriginalRuleSetName = "RuleSetToClone",
-  RuleSetName = "RuleSetToCreate"
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -122,3 +112,13 @@ svc$clone_receipt_rule_set(
 }
 }
 
+\examples{
+# The following example creates a receipt rule set by cloning an existing
+# one:
+\donttest{svc <- ses()
+svc$clone_receipt_rule_set(
+  OriginalRuleSetName = "RuleSetToClone",
+  RuleSetName = "RuleSetToCreate"
+)}
+
+}

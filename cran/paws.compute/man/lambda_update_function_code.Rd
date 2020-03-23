@@ -63,17 +63,16 @@ modify the code of a published version, only the unpublished version.
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation updates a Lambda function's code
-svc$update_function_code(
+\examples{
+# This operation updates a Lambda function's code
+\donttest{svc$update_function_code(
   FunctionName = "myFunction",
   Publish = TRUE,
   S3Bucket = "myBucket",
   S3Key = "myKey",
   S3ObjectVersion = "1",
   ZipFile = "fileb://file-path/file.zip"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

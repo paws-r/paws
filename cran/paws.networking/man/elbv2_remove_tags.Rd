@@ -31,10 +31,10 @@ To list the current tags for your resources, use DescribeTags.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example removes the specified tags from the specified load
+\examples{
+# This example removes the specified tags from the specified load
 # balancer.
-svc$remove_tags(
+\donttest{svc$remove_tags(
   ResourceArns = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/5..."
   ),
@@ -42,8 +42,7 @@ svc$remove_tags(
     "project",
     "department"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

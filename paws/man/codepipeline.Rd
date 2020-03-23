@@ -144,13 +144,6 @@ success.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$acknowledge_job(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -193,3 +186,10 @@ success.
 }
 }
 
+\examples{
+\donttest{svc <- codepipeline()
+svc$acknowledge_job(
+  Foo = 123
+)}
+
+}

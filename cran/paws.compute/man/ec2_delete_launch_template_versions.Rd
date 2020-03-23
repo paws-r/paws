@@ -40,15 +40,14 @@ DeleteLaunchTemplate.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example deletes the specified launch template version.
-svc$delete_launch_template_versions(
+\examples{
+# This example deletes the specified launch template version.
+\donttest{svc$delete_launch_template_versions(
   LaunchTemplateId = "lt-0abcd290751193123",
   Versions = list(
     "1"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

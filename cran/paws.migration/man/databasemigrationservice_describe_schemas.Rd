@@ -36,14 +36,13 @@ Returns information about the schema for the specified endpoint.
 }
 }
 
-\section{Examples}{
-\preformatted{# Returns information about the schema for the specified endpoint.
-svc$describe_schemas(
+\examples{
+# Returns information about the schema for the specified endpoint.
+\donttest{svc$describe_schemas(
   EndpointArn = "",
   Marker = "",
   MaxRecords = 123L
-)
-}
-}
+)}
 
+}
 \keyword{internal}

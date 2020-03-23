@@ -47,12 +47,11 @@ action on the mount target\'s network interface:
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation deletes a mount target.
-svc$delete_mount_target(
+\examples{
+# This operation deletes a mount target.
+\donttest{svc$delete_mount_target(
   MountTargetId = "fsmt-12340abc"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -129,9 +129,9 @@ system state along with other information.
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation creates a new file system.
-svc$create_file_system(
+\examples{
+# This operation creates a new file system.
+\donttest{svc$create_file_system(
   ClientRequestToken = "a8ca07e4-61ec-4399-99f4-19853801bcd5",
   FileSystemType = "WINDOWS",
   KmsKeyId = "arn:aws:kms:us-east-1:012345678912:key/0ff3ea8d-130e-4133-877f-93908b6fdbd6",
@@ -155,8 +155,7 @@ svc$create_file_system(
     ThroughputCapacity = 8L,
     WeeklyMaintenanceStartTime = "1:05:00"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

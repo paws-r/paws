@@ -42,13 +42,6 @@ about the AWS SDKs, including how to download and install them, see
 }
 }
 
-\section{Examples}{
-\preformatted{svc$accept_shared_directory(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -112,3 +105,10 @@ about the AWS SDKs, including how to download and install them, see
 }
 }
 
+\examples{
+\donttest{svc <- directoryservice()
+svc$accept_shared_directory(
+  Foo = 123
+)}
+
+}

@@ -22,11 +22,10 @@ Returns the descriptions of existing applications.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following operation retrieves information about applications in the
+\examples{
+# The following operation retrieves information about applications in the
 # current region:
-svc$describe_applications()
-}
-}
+\donttest{svc$describe_applications()}
 
+}
 \keyword{internal}

@@ -35,13 +35,12 @@ Describes the running instances for the specified Spot Fleet.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example lists the Spot Instances associated with the specified Spot
+\examples{
+# This example lists the Spot Instances associated with the specified Spot
 # fleet.
-svc$describe_spot_fleet_instances(
+\donttest{svc$describe_spot_fleet_instances(
   SpotFleetRequestId = "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -28,13 +28,12 @@ instances).
 }
 }
 
-\section{Examples}{
-\preformatted{# This example deletes the specified lifecycle hook.
-svc$delete_lifecycle_hook(
+\examples{
+# This example deletes the specified lifecycle hook.
+\donttest{svc$delete_lifecycle_hook(
   AutoScalingGroupName = "my-auto-scaling-group",
   LifecycleHookName = "my-lifecycle-hook"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

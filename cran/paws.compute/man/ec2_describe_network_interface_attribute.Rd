@@ -30,35 +30,34 @@ attribute at a time.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the attachment attribute of the specified network
+\examples{
+# This example describes the attachment attribute of the specified network
 # interface.
-svc$describe_network_interface_attribute(
+\donttest{svc$describe_network_interface_attribute(
   Attribute = "attachment",
   NetworkInterfaceId = "eni-686ea200"
-)
+)}
 
 # This example describes the description attribute of the specified
 # network interface.
-svc$describe_network_interface_attribute(
+\donttest{svc$describe_network_interface_attribute(
   Attribute = "description",
   NetworkInterfaceId = "eni-686ea200"
-)
+)}
 
 # This example describes the groupSet attribute of the specified network
 # interface.
-svc$describe_network_interface_attribute(
+\donttest{svc$describe_network_interface_attribute(
   Attribute = "groupSet",
   NetworkInterfaceId = "eni-686ea200"
-)
+)}
 
 # This example describes the sourceDestCheck attribute of the specified
 # network interface.
-svc$describe_network_interface_attribute(
+\donttest{svc$describe_network_interface_attribute(
   Attribute = "sourceDestCheck",
   NetworkInterfaceId = "eni-686ea200"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -91,17 +91,16 @@ Specifies and starts a remote access session.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example creates a remote access session named MySession.
-svc$create_remote_access_session(
+\examples{
+# The following example creates a remote access session named MySession.
+\donttest{svc$create_remote_access_session(
   name = "MySession",
   configuration = list(
     billingMethod = "METERED"
   ),
   deviceArn = "arn:aws:devicefarm:us-west-2::device:123EXAMPLE",
   projectArn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

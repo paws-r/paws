@@ -30,17 +30,6 @@ AWS Organizations
 }
 }
 
-\section{Examples}{
-\preformatted{# Bill is the owner of an organization, and he invites Juan's account
-# (222222222222) to join his organization. The following example shows
-# Juan's account accepting the handshake and thus agreeing to the
-# invitation.
-svc$accept_handshake(
-  HandshakeId = "h-examplehandshakeid111"
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -94,3 +83,14 @@ svc$accept_handshake(
 }
 }
 
+\examples{
+# Bill is the owner of an organization, and he invites Juan's account
+# (222222222222) to join his organization. The following example shows
+# Juan's account accepting the handshake and thus agreeing to the
+# invitation.
+\donttest{svc <- organizations()
+svc$accept_handshake(
+  HandshakeId = "h-examplehandshakeid111"
+)}
+
+}

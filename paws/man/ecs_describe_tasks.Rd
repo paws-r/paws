@@ -35,15 +35,14 @@ Describes a specified task or tasks.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example provides a description of the specified task, using the
+\examples{
+# This example provides a description of the specified task, using the
 # task UUID as an identifier.
-svc$describe_tasks(
+\donttest{svc$describe_tasks(
   tasks = list(
     "c5cba4eb-5dad-405e-96db-71ef8eefe6a8"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

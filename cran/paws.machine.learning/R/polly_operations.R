@@ -26,13 +26,11 @@ NULL
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # Deletes a specified pronunciation lexicon stored in an AWS Region.
-#' svc$delete_lexicon(
+#' \donttest{svc$delete_lexicon(
 #'   Name = "example"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -106,16 +104,14 @@ polly_delete_lexicon <- function(Name) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # Returns the list of voices that are available for use when requesting
 #' # speech synthesis. Displayed languages are those within the specified
 #' # language code. If no language code is specified, voices for all
 #' # available languages are displayed.
-#' svc$describe_voices(
+#' \donttest{svc$describe_voices(
 #'   LanguageCode = "en-GB"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -156,14 +152,12 @@ polly_describe_voices <- function(Engine = NULL, LanguageCode = NULL, IncludeAdd
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # Returns the content of the specified pronunciation lexicon stored in an
 #' # AWS Region.
-#' svc$get_lexicon(
+#' \donttest{svc$get_lexicon(
 #'   Name = ""
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -243,11 +237,9 @@ polly_get_speech_synthesis_task <- function(TaskId) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # Returns a list of pronunciation lexicons stored in an AWS Region.
-#' svc$list_lexicons()
-#' ```
+#' \donttest{svc$list_lexicons()}
 #'
 #' @keywords internal
 #'
@@ -340,14 +332,12 @@ polly_list_speech_synthesis_tasks <- function(MaxResults = NULL, NextToken = NUL
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # Stores a pronunciation lexicon in an AWS Region.
-#' svc$put_lexicon(
+#' \donttest{svc$put_lexicon(
 #'   Content = "file://example.pls",
 #'   Name = "W3C"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -541,10 +531,9 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # Synthesizes plain text or SSML into a file of human-like speech.
-#' svc$synthesize_speech(
+#' \donttest{svc$synthesize_speech(
 #'   LexiconNames = list(
 #'     "example"
 #'   ),
@@ -553,8 +542,7 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 #'   Text = "All Gaul is divided into three parts",
 #'   TextType = "text",
 #'   VoiceId = "Joanna"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'

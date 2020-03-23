@@ -22,14 +22,12 @@ NULL
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This operation cancels a cluster job. You can only cancel a cluster job
 #' # while it's in the AwaitingQuorum status.
-#' svc$cancel_cluster(
+#' \donttest{svc$cancel_cluster(
 #'   ClusterId = "CID123e4567-e89b-12d3-a456-426655440000"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -71,14 +69,12 @@ snowball_cancel_cluster <- function(ClusterId) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This operation cancels a job. You can only cancel a job before its
 #' # JobState value changes to PreparingAppliance.
-#' svc$cancel_job(
+#' \donttest{svc$cancel_job(
 #'   JobId = "JID123e4567-e89b-12d3-a456-426655440000"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -134,13 +130,12 @@ snowball_cancel_job <- function(JobId) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This operation creates an address for a job. Addresses are validated at
 #' # the time of creation. The address you provide must be located within the
 #' # serviceable area of your region. If the address is invalid or
 #' # unsupported, then an exception is thrown.
-#' svc$create_address(
+#' \donttest{svc$create_address(
 #'   Address = list(
 #'     City = "Seattle",
 #'     Company = "My Company's Name",
@@ -151,8 +146,7 @@ snowball_cancel_job <- function(JobId) {
 #'     StateOrProvince = "WA",
 #'     Street1 = "123 Main Street"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -272,12 +266,11 @@ snowball_create_address <- function(Address) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # Creates an empty cluster. Each cluster supports five nodes. You use the
 #' # CreateJob action separately to create the jobs for each of these nodes.
 #' # The cluster does not ship until these five node jobs have been created.
-#' svc$create_cluster(
+#' \donttest{svc$create_cluster(
 #'   AddressId = "ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b",
 #'   Description = "MyCluster",
 #'   JobType = "LOCAL_USE",
@@ -302,8 +295,7 @@ snowball_create_address <- function(Address) {
 #'   RoleARN = "arn:aws:iam::123456789012:role/snowball-import-S3-role",
 #'   ShippingOption = "SECOND_DAY",
 #'   SnowballType = "EDGE"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -442,15 +434,14 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # Creates a job to import or export data between Amazon S3 and your
 #' # on-premises data center. Your AWS account must have the right trust
 #' # policies and permissions in place to create a job for Snowball. If
 #' # you're creating a job for a node in a cluster, you only need to provide
 #' # the clusterId value; the other job attributes are inherited from the
 #' # cluster.
-#' svc$create_job(
+#' \donttest{svc$create_job(
 #'   AddressId = "ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b",
 #'   Description = "My Job",
 #'   JobType = "IMPORT",
@@ -476,8 +467,7 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #'   ShippingOption = "SECOND_DAY",
 #'   SnowballCapacityPreference = "T80",
 #'   SnowballType = "STANDARD"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -517,13 +507,11 @@ snowball_create_job <- function(JobType = NULL, Resources = NULL, Description = 
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This operation describes an address for a job.
-#' svc$describe_address(
+#' \donttest{svc$describe_address(
 #'   AddressId = "ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -568,14 +556,12 @@ snowball_describe_address <- function(AddressId) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This operation describes all the addresses that you've created for AWS
 #' # Snowball. Calling this API in one of the US regions will return
 #' # addresses from the list of all addresses associated with this account in
 #' # all US regions.
-#' svc$describe_addresses()
-#' ```
+#' \donttest{svc$describe_addresses()}
 #'
 #' @keywords internal
 #'
@@ -615,14 +601,12 @@ snowball_describe_addresses <- function(MaxResults = NULL, NextToken = NULL) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # Returns information about a specific cluster including shipping
 #' # information, cluster status, and other important metadata.
-#' svc$describe_cluster(
+#' \donttest{svc$describe_cluster(
 #'   ClusterId = "CID123e4567-e89b-12d3-a456-426655440000"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -663,13 +647,11 @@ snowball_describe_cluster <- function(ClusterId) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This operation describes a job you've created for AWS Snowball.
-#' svc$describe_job(
+#' \donttest{svc$describe_job(
 #'   JobId = "JID123e4567-e89b-12d3-a456-426655440000"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -727,8 +709,7 @@ snowball_describe_job <- function(JobId) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # Returns a link to an Amazon S3 presigned URL for the manifest file
 #' # associated with the specified JobId value. You can access the manifest
 #' # file for up to 60 minutes after this request has been made. To access
@@ -749,10 +730,9 @@ snowball_describe_job <- function(JobId) {
 #' # 
 #' # The credentials of a given job, including its
 #' # manifest file and unlock code, expire 90 days after the job is created.
-#' svc$get_job_manifest(
+#' \donttest{svc$get_job_manifest(
 #'   JobId = "JID123e4567-e89b-12d3-a456-426655440000"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -803,8 +783,7 @@ snowball_get_job_manifest <- function(JobId) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # Returns the UnlockCode code value for the specified job. A particular
 #' # UnlockCode value can be accessed for up to 90 days after the associated
 #' # job has been created.
@@ -819,10 +798,9 @@ snowball_get_job_manifest <- function(JobId) {
 #' # of the UnlockCode in the same location as the manifest file for that
 #' # job. Saving these separately helps prevent unauthorized parties from
 #' # gaining access to the Snowball associated with that job.
-#' svc$get_job_unlock_code(
+#' \donttest{svc$get_job_unlock_code(
 #'   JobId = "JID123e4567-e89b-12d3-a456-426655440000"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -862,16 +840,14 @@ snowball_get_job_unlock_code <- function(JobId) {
 #' svc$get_snowball_usage()
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # Returns information about the Snowball service limit for your account,
 #' # and also the number of Snowballs your account has in use.
 #' # 
 #' # The default
 #' # service limit for the number of Snowballs that you can have at one time
 #' # is 1. If you want to increase your service limit, contact AWS Support.
-#' svc$get_snowball_usage()
-#' ```
+#' \donttest{svc$get_snowball_usage()}
 #'
 #' @keywords internal
 #'
@@ -957,15 +933,13 @@ snowball_get_software_updates <- function(JobId) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # Returns an array of JobListEntry objects of the specified length. Each
 #' # JobListEntry object is for a job in the specified cluster and contains a
 #' # job's state, a job's ID, and other information.
-#' svc$list_cluster_jobs(
+#' \donttest{svc$list_cluster_jobs(
 #'   ClusterId = "CID123e4567-e89b-12d3-a456-426655440000"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1009,13 +983,11 @@ snowball_list_cluster_jobs <- function(ClusterId, MaxResults = NULL, NextToken =
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # Returns an array of ClusterListEntry objects of the specified length.
 #' # Each ClusterListEntry object contains a cluster's state, a cluster's ID,
 #' # and other important status information.
-#' svc$list_clusters()
-#' ```
+#' \donttest{svc$list_clusters()}
 #'
 #' @keywords internal
 #'
@@ -1110,15 +1082,13 @@ snowball_list_compatible_images <- function(MaxResults = NULL, NextToken = NULL)
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # Returns an array of JobListEntry objects of the specified length. Each
 #' # JobListEntry object contains a job's state, a job's ID, and a value that
 #' # indicates whether the job is a job part, in the case of export jobs.
 #' # Calling this API action in one of the US regions will return jobs from
 #' # the list of all jobs associated with this account in all US regions.
-#' svc$list_jobs()
-#' ```
+#' \donttest{svc$list_jobs()}
 #'
 #' @keywords internal
 #'
@@ -1214,17 +1184,15 @@ snowball_list_jobs <- function(MaxResults = NULL, NextToken = NULL) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This action allows you to update certain parameters for a cluster. Once
 #' # the cluster changes to a different state, usually within 60 minutes of
 #' # it being created, this action is no longer available.
-#' svc$update_cluster(
+#' \donttest{svc$update_cluster(
 #'   AddressId = "ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b",
 #'   ClusterId = "CID123e4567-e89b-12d3-a456-426655440000",
 #'   Description = "Updated the address to send this to image processing - RJ"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1322,19 +1290,17 @@ snowball_update_cluster <- function(ClusterId, RoleARN = NULL, Description = NUL
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This action allows you to update certain parameters for a job. Once the
 #' # job changes to a different job state, usually within 60 minutes of the
 #' # job being created, this action is no longer available.
-#' svc$update_job(
+#' \donttest{svc$update_job(
 #'   AddressId = "ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b",
 #'   Description = "Upgraded to Edge, shipped to Finance Dept, and requested faster shipping sp...",
 #'   JobId = "JID123e4567-e89b-12d3-a456-426655440000",
 #'   ShippingOption = "NEXT_DAY",
 #'   SnowballCapacityPreference = "T100"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'

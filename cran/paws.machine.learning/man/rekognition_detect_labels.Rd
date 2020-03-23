@@ -118,9 +118,9 @@ This operation requires permissions to perform the
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation detects labels in the supplied image
-svc$detect_labels(
+\examples{
+# This operation detects labels in the supplied image
+\donttest{svc$detect_labels(
   Image = list(
     S3Object = list(
       Bucket = "mybucket",
@@ -129,8 +129,7 @@ svc$detect_labels(
   ),
   MaxLabels = 123L,
   MinConfidence = 70L
-)
-}
-}
+)}
 
+}
 \keyword{internal}

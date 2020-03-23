@@ -233,21 +233,20 @@ The following operations are related to \code{GetObject}:
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example retrieves an object for an S3 bucket. The request
+\examples{
+# The following example retrieves an object for an S3 bucket. The request
 # specifies the range header to retrieve a specific byte range.
-svc$get_object(
+\donttest{svc$get_object(
   Bucket = "examplebucket",
   Key = "SampleFile.txt",
   Range = "bytes=0-9"
-)
+)}
 
 # The following example retrieves an object for an S3 bucket.
-svc$get_object(
+\donttest{svc$get_object(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

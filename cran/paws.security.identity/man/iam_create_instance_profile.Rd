@@ -44,14 +44,13 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following command creates an instance profile named Webserver that
+\examples{
+# The following command creates an instance profile named Webserver that
 # is ready to have a role attached and then be associated with an EC2
 # instance.
-svc$create_instance_profile(
+\donttest{svc$create_instance_profile(
   InstanceProfileName = "Webserver"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

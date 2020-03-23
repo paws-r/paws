@@ -44,13 +44,12 @@ This operation requires permission for the \code{lex:GetBots} action.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example shows how to get a list of all of the bots in your account.
-svc$get_bots(
+\examples{
+# This example shows how to get a list of all of the bots in your account.
+\donttest{svc$get_bots(
   maxResults = 5L,
   nextToken = ""
-)
-}
-}
+)}
 
+}
 \keyword{internal}

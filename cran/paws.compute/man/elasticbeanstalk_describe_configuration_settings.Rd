@@ -53,14 +53,13 @@ Related Topics
 }
 }
 
-\section{Examples}{
-\preformatted{# The following operation retrieves configuration settings for an
+\examples{
+# The following operation retrieves configuration settings for an
 # environment named my-env:
-svc$describe_configuration_settings(
+\donttest{svc$describe_configuration_settings(
   ApplicationName = "my-app",
   EnvironmentName = "my-env"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

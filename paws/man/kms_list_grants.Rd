@@ -48,12 +48,11 @@ the key ARN in the value of the \code{KeyId} parameter.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example lists grants for the specified CMK.
-svc$list_grants(
+\examples{
+# The following example lists grants for the specified CMK.
+\donttest{svc$list_grants(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

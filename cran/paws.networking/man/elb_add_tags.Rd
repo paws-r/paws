@@ -38,9 +38,9 @@ in the \emph{Classic Load Balancers Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example adds two tags to the specified load balancer.
-svc$add_tags(
+\examples{
+# This example adds two tags to the specified load balancer.
+\donttest{svc$add_tags(
   LoadBalancerNames = list(
     "my-load-balancer"
   ),
@@ -54,8 +54,7 @@ svc$add_tags(
       Value = "digital-media"
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

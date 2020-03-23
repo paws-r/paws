@@ -35,15 +35,14 @@ This operation can be called from any account in the organization.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example shows you how to request details about a
+\examples{
+# The following example shows you how to request details about a
 # handshake. The handshake ID comes either from the original call to
 # "InviteAccountToOrganization", or from a call to
 # "ListHandshakesForAccount" or "ListHandshakesForOrganization":
-svc$describe_handshake(
+\donttest{svc$describe_handshake(
   HandshakeId = "h-examplehandshakeid111"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

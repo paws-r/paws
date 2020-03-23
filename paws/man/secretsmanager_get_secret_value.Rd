@@ -78,17 +78,16 @@ DescribeSecret.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example shows how to retrieve the secret string value from
+\examples{
+# The following example shows how to retrieve the secret string value from
 # the version of the secret that has the AWSPREVIOUS staging label
 # attached. If you want to retrieve the AWSCURRENT version of the secret,
 # then you can omit the VersionStage parameter because it defaults to
 # AWSCURRENT.
-svc$get_secret_value(
+\donttest{svc$get_secret_value(
   SecretId = "MyTestDatabaseSecret",
   VersionStage = "AWSPREVIOUS"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

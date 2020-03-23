@@ -26,12 +26,11 @@ interface before you can delete it.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example deletes the specified network interface.
-svc$delete_network_interface(
+\examples{
+# This example deletes the specified network interface.
+\donttest{svc$delete_network_interface(
   NetworkInterfaceId = "eni-e5aa89a3"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

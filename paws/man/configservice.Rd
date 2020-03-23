@@ -49,13 +49,6 @@ in the \emph{AWS Config Developer Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$batch_get_aggregate_resource_config(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -140,3 +133,10 @@ in the \emph{AWS Config Developer Guide}.
 }
 }
 
+\examples{
+\donttest{svc <- configservice()
+svc$batch_get_aggregate_resource_config(
+  Foo = 123
+)}
+
+}

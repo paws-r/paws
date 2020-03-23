@@ -52,13 +52,12 @@ in the \emph{Amazon Elastic Container Registry User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example creates a repository called nginx-web-app inside the
+\examples{
+# This example creates a repository called nginx-web-app inside the
 # project-a namespace in the default registry for an account.
-svc$create_repository(
+\donttest{svc$create_repository(
   repositoryName = "project-a/nginx-web-app"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

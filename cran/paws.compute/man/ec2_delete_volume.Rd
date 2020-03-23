@@ -32,14 +32,13 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example deletes an available volume with the volume ID of
+\examples{
+# This example deletes an available volume with the volume ID of
 # `vol-049df61146c4d7901`. If the command succeeds, no output is
 # returned.
-svc$delete_volume(
+\donttest{svc$delete_volume(
   VolumeId = "vol-049df61146c4d7901"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

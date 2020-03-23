@@ -122,9 +122,9 @@ in the \emph{Amazon EKS User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example creates an Amazon EKS cluster called prod.
-svc$create_cluster(
+\examples{
+# The following example creates an Amazon EKS cluster called prod.
+\donttest{svc$create_cluster(
   version = "1.10",
   name = "prod",
   clientRequestToken = "1d2129a1-3d38-460a-9756-e5b91fddb951",
@@ -138,8 +138,7 @@ svc$create_cluster(
     )
   ),
   roleArn = "arn:aws:iam::012345678910:role/eks-service-role-AWSServiceRoleForAmazonEKS-J7ON..."
-)
-}
-}
+)}
 
+}
 \keyword{internal}

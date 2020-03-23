@@ -108,11 +108,11 @@ The cluster does not ship until these five node jobs have been created.
 }
 }
 
-\section{Examples}{
-\preformatted{# Creates an empty cluster. Each cluster supports five nodes. You use the
+\examples{
+# Creates an empty cluster. Each cluster supports five nodes. You use the
 # CreateJob action separately to create the jobs for each of these nodes.
 # The cluster does not ship until these five node jobs have been created.
-svc$create_cluster(
+\donttest{svc$create_cluster(
   AddressId = "ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b",
   Description = "MyCluster",
   JobType = "LOCAL_USE",
@@ -137,8 +137,7 @@ svc$create_cluster(
   RoleARN = "arn:aws:iam::123456789012:role/snowball-import-S3-role",
   ShippingOption = "SECOND_DAY",
   SnowballType = "EDGE"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

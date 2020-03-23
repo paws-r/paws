@@ -36,13 +36,12 @@ information, see the \href{http://aws.amazon.com/storagegateway}{AWS Storage Gat
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation deletes the gateway, but not the gateway's VM from the
+\examples{
+# This operation deletes the gateway, but not the gateway's VM from the
 # host computer.
-svc$delete_gateway(
+\donttest{svc$delete_gateway(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

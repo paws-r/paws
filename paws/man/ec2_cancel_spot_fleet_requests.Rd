@@ -41,25 +41,24 @@ them manually.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example cancels the specified Spot fleet request and terminates its
+\examples{
+# This example cancels the specified Spot fleet request and terminates its
 # associated Spot Instances.
-svc$cancel_spot_fleet_requests(
+\donttest{svc$cancel_spot_fleet_requests(
   SpotFleetRequestIds = list(
     "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE"
   ),
   TerminateInstances = TRUE
-)
+)}
 
 # This example cancels the specified Spot fleet request without
 # terminating its associated Spot Instances.
-svc$cancel_spot_fleet_requests(
+\donttest{svc$cancel_spot_fleet_requests(
   SpotFleetRequestIds = list(
     "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE"
   ),
   TerminateInstances = FALSE
-)
-}
-}
+)}
 
+}
 \keyword{internal}

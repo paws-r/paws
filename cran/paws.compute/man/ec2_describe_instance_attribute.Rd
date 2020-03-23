@@ -35,30 +35,29 @@ specify only one attribute at a time. Valid attribute values are:
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the instance type of the specified instance.
+\examples{
+# This example describes the instance type of the specified instance.
 # 
-svc$describe_instance_attribute(
+\donttest{svc$describe_instance_attribute(
   Attribute = "instanceType",
   InstanceId = "i-1234567890abcdef0"
-)
+)}
 
 # This example describes the `disableApiTermination` attribute of the
 # specified instance.
 # 
-svc$describe_instance_attribute(
+\donttest{svc$describe_instance_attribute(
   Attribute = "disableApiTermination",
   InstanceId = "i-1234567890abcdef0"
-)
+)}
 
 # This example describes the `blockDeviceMapping` attribute of the
 # specified instance.
 # 
-svc$describe_instance_attribute(
+\donttest{svc$describe_instance_attribute(
   Attribute = "blockDeviceMapping",
   InstanceId = "i-1234567890abcdef0"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

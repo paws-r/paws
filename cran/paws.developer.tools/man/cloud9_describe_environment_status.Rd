@@ -19,12 +19,11 @@ Gets status information for an AWS Cloud9 development environment.
 }
 }
 
-\section{Examples}{
-\preformatted{# 
-svc$describe_environment_status(
+\examples{
+# 
+\donttest{svc$describe_environment_status(
   environmentId = "8d9967e2f0624182b74e7690ad69ebEX"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

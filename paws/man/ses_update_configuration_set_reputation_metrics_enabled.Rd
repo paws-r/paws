@@ -33,13 +33,12 @@ You can execute this operation no more than once per second.
 }
 }
 
-\section{Examples}{
-\preformatted{# Set the reputationMetricsEnabled flag for a specific configuration set.
-svc$update_configuration_set_reputation_metrics_enabled(
+\examples{
+# Set the reputationMetricsEnabled flag for a specific configuration set.
+\donttest{svc$update_configuration_set_reputation_metrics_enabled(
   ConfigurationSetName = "foo",
   Enabled = TRUE
-)
-}
-}
+)}
 
+}
 \keyword{internal}

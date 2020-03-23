@@ -19,12 +19,11 @@ Gets information about a suite.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example gets information about a specific test suite.
-svc$get_suite(
+\examples{
+# The following example gets information about a specific test suite.
+\donttest{svc$get_suite(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:suite:EXAMPLE-GUID-123-456"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

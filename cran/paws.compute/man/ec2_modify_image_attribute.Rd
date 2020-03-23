@@ -89,9 +89,9 @@ instance.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example makes the specified AMI public.
-svc$modify_image_attribute(
+\examples{
+# This example makes the specified AMI public.
+\donttest{svc$modify_image_attribute(
   ImageId = "ami-5731123e",
   LaunchPermission = list(
     Add = list(
@@ -100,11 +100,11 @@ svc$modify_image_attribute(
       )
     )
   )
-)
+)}
 
 # This example grants launch permissions for the specified AMI to the
 # specified AWS account.
-svc$modify_image_attribute(
+\donttest{svc$modify_image_attribute(
   ImageId = "ami-5731123e",
   LaunchPermission = list(
     Add = list(
@@ -113,8 +113,7 @@ svc$modify_image_attribute(
       )
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

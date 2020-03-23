@@ -78,16 +78,14 @@ NULL
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The following example shows how to cancel rotation for a secret. The
 #' # operation sets the RotationEnabled field to false and cancels all
 #' # scheduled rotations. To resume scheduled rotations, you must re-enable
 #' # rotation by calling the rotate-secret operation.
-#' svc$cancel_rotate_secret(
+#' \donttest{svc$cancel_rotate_secret(
 #'   SecretId = "MyTestDatabaseSecret"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -356,18 +354,16 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The following example shows how to create a secret. The credentials
 #' # stored in the encrypted secret value are retrieved from a file on disk
 #' # named mycreds.json.
-#' svc$create_secret(
+#' \donttest{svc$create_secret(
 #'   ClientRequestToken = "EXAMPLE1-90ab-cdef-fedc-ba987SECRET1",
 #'   Description = "My test database secret created with the CLI",
 #'   Name = "MyTestDatabaseSecret",
 #'   SecretString = "{\"username\":\"david\",\"password\":\"BnQw!XDWgaEeT9XGTT29\"}"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -437,14 +433,12 @@ secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Descri
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The following example shows how to delete the resource-based policy that
 #' # is attached to a secret.
-#' svc$delete_resource_policy(
+#' \donttest{svc$delete_resource_policy(
 #'   SecretId = "MyTestDatabaseSecret"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -557,17 +551,15 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The following example shows how to delete a secret. The secret stays in
 #' # your account in a deprecated and inaccessible state until the recovery
 #' # window ends. After the date and time in the DeletionDate response field
 #' # has passed, you can no longer recover this secret with restore-secret.
-#' svc$delete_secret(
+#' \donttest{svc$delete_secret(
 #'   RecoveryWindowInDays = 7L,
 #'   SecretId = "MyTestDatabaseSecret1"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -639,13 +631,11 @@ secretsmanager_delete_secret <- function(SecretId, RecoveryWindowInDays = NULL, 
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The following example shows how to get the details about a secret.
-#' svc$describe_secret(
+#' \donttest{svc$describe_secret(
 #'   SecretId = "MyTestDatabaseSecret"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -731,18 +721,16 @@ secretsmanager_describe_secret <- function(SecretId) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The following example shows how to request a randomly generated
 #' # password. This example includes the optional flags to require spaces and
 #' # at least one character of each included type. It specifies a length of
 #' # 20 characters.
-#' svc$get_random_password(
+#' \donttest{svc$get_random_password(
 #'   IncludeSpace = TRUE,
 #'   PasswordLength = 20L,
 #'   RequireEachIncludedType = TRUE
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -814,14 +802,12 @@ secretsmanager_get_random_password <- function(PasswordLength = NULL, ExcludeCha
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The following example shows how to retrieve the resource-based policy
 #' # that is attached to a secret.
-#' svc$get_resource_policy(
+#' \donttest{svc$get_resource_policy(
 #'   SecretId = "MyTestDatabaseSecret"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -915,18 +901,16 @@ secretsmanager_get_resource_policy <- function(SecretId) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The following example shows how to retrieve the secret string value from
 #' # the version of the secret that has the AWSPREVIOUS staging label
 #' # attached. If you want to retrieve the AWSCURRENT version of the secret,
 #' # then you can omit the VersionStage parameter because it defaults to
 #' # AWSCURRENT.
-#' svc$get_secret_value(
+#' \donttest{svc$get_secret_value(
 #'   SecretId = "MyTestDatabaseSecret",
 #'   VersionStage = "AWSPREVIOUS"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1022,15 +1006,13 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The following example shows how to retrieve a list of all of the
 #' # versions of a secret, including those without any staging labels.
-#' svc$list_secret_version_ids(
+#' \donttest{svc$list_secret_version_ids(
 #'   IncludeDeprecated = TRUE,
 #'   SecretId = "MyTestDatabaseSecret"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1105,12 +1087,10 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The following example shows how to list all of the secrets in your
 #' # account.
-#' svc$list_secrets()
-#' ```
+#' \donttest{svc$list_secrets()}
 #'
 #' @keywords internal
 #'
@@ -1199,15 +1179,13 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The following example shows how to add a resource-based policy to a
 #' # secret.
-#' svc$put_resource_policy(
+#' \donttest{svc$put_resource_policy(
 #'   ResourcePolicy = "{\n\"Version\":\"2012-10-17\",\n\"Statement\":[{\n\"Effect\":\"Allow\",...",
 #'   SecretId = "MyTestDatabaseSecret"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1418,16 +1396,14 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The following example shows how to create a new version of the secret.
 #' # Alternatively, you can use the update-secret command.
-#' svc$put_secret_value(
+#' \donttest{svc$put_secret_value(
 #'   ClientRequestToken = "EXAMPLE2-90ab-cdef-fedc-ba987EXAMPLE",
 #'   SecretId = "MyTestDatabaseSecret",
 #'   SecretString = "{\"username\":\"david\",\"password\":\"BnQw!XDWgaEeT9XGTT29\"}"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1492,14 +1468,12 @@ secretsmanager_put_secret_value <- function(SecretId, ClientRequestToken = NULL,
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The following example shows how to restore a secret that you previously
 #' # scheduled for deletion.
-#' svc$restore_secret(
+#' \donttest{svc$restore_secret(
 #'   SecretId = "MyTestDatabaseSecret"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1641,29 +1615,27 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The following example configures rotation for a secret by providing the
 #' # ARN of a Lambda rotation function (which must already exist) and the
 #' # number of days between rotation. The first rotation happens immediately
 #' # upon completion of this command. The rotation function runs
 #' # asynchronously in the background.
-#' svc$rotate_secret(
+#' \donttest{svc$rotate_secret(
 #'   RotationLambdaARN = "arn:aws:lambda:us-west-2:123456789012:function:MyTestDatabaseRotation...",
 #'   RotationRules = list(
 #'     AutomaticallyAfterDays = 30L
 #'   ),
 #'   SecretId = "MyTestDatabaseSecret"
-#' )
+#' )}
 #' 
 #' # The following example requests an immediate invocation of the secret's
 #' # Lambda rotation function. It assumes that the specified secret already
 #' # has rotation configured. The rotation function runs asynchronously in
 #' # the background.
-#' svc$rotate_secret(
+#' \donttest{svc$rotate_secret(
 #'   SecretId = "MyTestDatabaseSecret"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1776,12 +1748,11 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The following example shows how to attach two tags each with a Key and
 #' # Value to a secret. There is no output from this API. To see the result,
 #' # use the DescribeSecret operation.
-#' svc$tag_resource(
+#' \donttest{svc$tag_resource(
 #'   SecretId = "MyExampleSecret",
 #'   Tags = list(
 #'     list(
@@ -1793,8 +1764,7 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 #'       Value = "AnotherValue"
 #'     )
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1879,20 +1849,18 @@ secretsmanager_tag_resource <- function(SecretId, Tags) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The following example shows how to remove two tags from a secret's
 #' # metadata. For each, both the tag and the associated value are removed.
 #' # There is no output from this API. To see the result, use the
 #' # DescribeSecret operation.
-#' svc$untag_resource(
+#' \donttest{svc$untag_resource(
 #'   SecretId = "MyTestDatabaseSecret",
 #'   TagKeys = list(
 #'     "FirstTag",
 #'     "SecondTag"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2104,31 +2072,29 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The following example shows how to modify the description of a secret.
-#' svc$update_secret(
+#' \donttest{svc$update_secret(
 #'   ClientRequestToken = "EXAMPLE1-90ab-cdef-fedc-ba987EXAMPLE",
 #'   Description = "This is a new description for the secret.",
 #'   SecretId = "MyTestDatabaseSecret"
-#' )
+#' )}
 #' 
 #' # This example shows how to update the KMS customer managed key (CMK) used
 #' # to encrypt the secret value. The KMS CMK must be in the same region as
 #' # the secret.
-#' svc$update_secret(
+#' \donttest{svc$update_secret(
 #'   KmsKeyId = "arn:aws:kms:us-west-2:123456789012:key/EXAMPLE2-90ab-cdef-fedc-ba987EXAMPLE",
 #'   SecretId = "MyTestDatabaseSecret"
-#' )
+#' )}
 #' 
 #' # The following example shows how to create a new version of the secret by
 #' # updating the SecretString field. Alternatively, you can use the
 #' # put-secret-value operation.
-#' svc$update_secret(
+#' \donttest{svc$update_secret(
 #'   SecretId = "MyTestDatabaseSecret",
 #'   SecretString = "{JSON STRING WITH CREDENTIALS}"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2232,39 +2198,37 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The following example shows you how to add a staging label to a version
 #' # of a secret. You can review the results by running the operation
 #' # ListSecretVersionIds and viewing the VersionStages response field for
 #' # the affected version.
-#' svc$update_secret_version_stage(
+#' \donttest{svc$update_secret_version_stage(
 #'   MoveToVersionId = "EXAMPLE1-90ab-cdef-fedc-ba987SECRET1",
 #'   SecretId = "MyTestDatabaseSecret",
 #'   VersionStage = "STAGINGLABEL1"
-#' )
+#' )}
 #' 
 #' # The following example shows you how to delete a staging label that is
 #' # attached to a version of a secret. You can review the results by running
 #' # the operation ListSecretVersionIds and viewing the VersionStages
 #' # response field for the affected version.
-#' svc$update_secret_version_stage(
+#' \donttest{svc$update_secret_version_stage(
 #'   RemoveFromVersionId = "EXAMPLE1-90ab-cdef-fedc-ba987SECRET1",
 #'   SecretId = "MyTestDatabaseSecret",
 #'   VersionStage = "STAGINGLABEL1"
-#' )
+#' )}
 #' 
 #' # The following example shows you how to move a staging label that is
 #' # attached to one version of a secret to a different version. You can
 #' # review the results by running the operation ListSecretVersionIds and
 #' # viewing the VersionStages response field for the affected version.
-#' svc$update_secret_version_stage(
+#' \donttest{svc$update_secret_version_stage(
 #'   MoveToVersionId = "EXAMPLE2-90ab-cdef-fedc-ba987SECRET2",
 #'   RemoveFromVersionId = "EXAMPLE1-90ab-cdef-fedc-ba987SECRET1",
 #'   SecretId = "MyTestDatabaseSecret",
 #'   VersionStage = "AWSCURRENT"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'

@@ -92,13 +92,6 @@ The HTTP endpoint for the AWS Health API is:
 }
 }
 
-\section{Examples}{
-\preformatted{svc$describe_affected_accounts_for_organization(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -118,3 +111,10 @@ The HTTP endpoint for the AWS Health API is:
 }
 }
 
+\examples{
+\donttest{svc <- health()
+svc$describe_affected_accounts_for_organization(
+  Foo = 123
+)}
+
+}

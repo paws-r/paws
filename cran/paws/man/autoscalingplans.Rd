@@ -43,13 +43,6 @@ see the \href{https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aw
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_scaling_plan(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -62,3 +55,10 @@ see the \href{https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aw
 }
 }
 
+\examples{
+\donttest{svc <- autoscalingplans()
+svc$create_scaling_plan(
+  Foo = 123
+)}
+
+}

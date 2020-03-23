@@ -37,10 +37,9 @@ NULL
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example adds two tags to the specified load balancer.
-#' svc$add_tags(
+#' \donttest{svc$add_tags(
 #'   LoadBalancerNames = list(
 #'     "my-load-balancer"
 #'   ),
@@ -54,8 +53,7 @@ NULL
 #'       Value = "digital-media"
 #'     )
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -106,17 +104,15 @@ elb_add_tags <- function(LoadBalancerNames, Tags) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example associates a security group with the specified load
 #' # balancer in a VPC.
-#' svc$apply_security_groups_to_load_balancer(
+#' \donttest{svc$apply_security_groups_to_load_balancer(
 #'   LoadBalancerName = "my-load-balancer",
 #'   SecurityGroups = list(
 #'     "sg-fc448899"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -167,17 +163,15 @@ elb_apply_security_groups_to_load_balancer <- function(LoadBalancerName, Securit
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example adds the specified subnet to the set of configured subnets
 #' # for the specified load balancer.
-#' svc$attach_load_balancer_to_subnets(
+#' \donttest{svc$attach_load_balancer_to_subnets(
 #'   LoadBalancerName = "my-load-balancer",
 #'   Subnets = list(
 #'     "subnet-0ecac448"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -229,11 +223,10 @@ elb_attach_load_balancer_to_subnets <- function(LoadBalancerName, Subnets) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example specifies the health check settings used to evaluate the
 #' # health of your backend EC2 instances.
-#' svc$configure_health_check(
+#' \donttest{svc$configure_health_check(
 #'   HealthCheck = list(
 #'     HealthyThreshold = 2L,
 #'     Interval = 30L,
@@ -242,8 +235,7 @@ elb_attach_load_balancer_to_subnets <- function(LoadBalancerName, Subnets) {
 #'     UnhealthyThreshold = 2L
 #'   ),
 #'   LoadBalancerName = "my-load-balancer"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -305,16 +297,14 @@ elb_configure_health_check <- function(LoadBalancerName, HealthCheck) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example generates a stickiness policy that follows the sticky
 #' # session lifetimes of the application-generated cookie.
-#' svc$create_app_cookie_stickiness_policy(
+#' \donttest{svc$create_app_cookie_stickiness_policy(
 #'   CookieName = "my-app-cookie",
 #'   LoadBalancerName = "my-load-balancer",
 #'   PolicyName = "my-app-cookie-policy"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -383,16 +373,14 @@ elb_create_app_cookie_stickiness_policy <- function(LoadBalancerName, PolicyName
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example generates a stickiness policy with sticky session lifetimes
 #' # controlled by the specified expiration period.
-#' svc$create_lb_cookie_stickiness_policy(
+#' \donttest{svc$create_lb_cookie_stickiness_policy(
 #'   CookieExpirationPeriod = 60L,
 #'   LoadBalancerName = "my-load-balancer",
 #'   PolicyName = "my-duration-cookie-policy"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -509,10 +497,9 @@ elb_create_lb_cookie_stickiness_policy <- function(LoadBalancerName, PolicyName,
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example creates a load balancer with an HTTP listener in a VPC.
-#' svc$create_load_balancer(
+#' \donttest{svc$create_load_balancer(
 #'   Listeners = list(
 #'     list(
 #'       InstancePort = 80L,
@@ -528,11 +515,11 @@ elb_create_lb_cookie_stickiness_policy <- function(LoadBalancerName, PolicyName,
 #'   Subnets = list(
 #'     "subnet-15aaab61"
 #'   )
-#' )
+#' )}
 #' 
 #' # This example creates a load balancer with an HTTP listener in
 #' # EC2-Classic.
-#' svc$create_load_balancer(
+#' \donttest{svc$create_load_balancer(
 #'   AvailabilityZones = list(
 #'     "us-west-2a"
 #'   ),
@@ -545,10 +532,10 @@ elb_create_lb_cookie_stickiness_policy <- function(LoadBalancerName, PolicyName,
 #'     )
 #'   ),
 #'   LoadBalancerName = "my-load-balancer"
-#' )
+#' )}
 #' 
 #' # This example creates a load balancer with an HTTPS listener in a VPC.
-#' svc$create_load_balancer(
+#' \donttest{svc$create_load_balancer(
 #'   Listeners = list(
 #'     list(
 #'       InstancePort = 80L,
@@ -571,11 +558,11 @@ elb_create_lb_cookie_stickiness_policy <- function(LoadBalancerName, PolicyName,
 #'   Subnets = list(
 #'     "subnet-15aaab61"
 #'   )
-#' )
+#' )}
 #' 
 #' # This example creates a load balancer with an HTTPS listener in
 #' # EC2-Classic.
-#' svc$create_load_balancer(
+#' \donttest{svc$create_load_balancer(
 #'   AvailabilityZones = list(
 #'     "us-west-2a"
 #'   ),
@@ -595,11 +582,11 @@ elb_create_lb_cookie_stickiness_policy <- function(LoadBalancerName, PolicyName,
 #'     )
 #'   ),
 #'   LoadBalancerName = "my-load-balancer"
-#' )
+#' )}
 #' 
 #' # This example creates an internal load balancer with an HTTP listener in
 #' # a VPC.
-#' svc$create_load_balancer(
+#' \donttest{svc$create_load_balancer(
 #'   Listeners = list(
 #'     list(
 #'       InstancePort = 80L,
@@ -616,8 +603,7 @@ elb_create_lb_cookie_stickiness_policy <- function(LoadBalancerName, PolicyName,
 #'   Subnets = list(
 #'     "subnet-15aaab61"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -672,11 +658,10 @@ elb_create_load_balancer <- function(LoadBalancerName, Listeners, AvailabilityZo
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example creates a listener for your load balancer at port 80 using
 #' # the HTTP protocol.
-#' svc$create_load_balancer_listeners(
+#' \donttest{svc$create_load_balancer_listeners(
 #'   Listeners = list(
 #'     list(
 #'       InstancePort = 80L,
@@ -686,11 +671,11 @@ elb_create_load_balancer <- function(LoadBalancerName, Listeners, AvailabilityZo
 #'     )
 #'   ),
 #'   LoadBalancerName = "my-load-balancer"
-#' )
+#' )}
 #' 
 #' # This example creates a listener for your load balancer at port 443 using
 #' # the HTTPS protocol.
-#' svc$create_load_balancer_listeners(
+#' \donttest{svc$create_load_balancer_listeners(
 #'   Listeners = list(
 #'     list(
 #'       InstancePort = 80L,
@@ -701,8 +686,7 @@ elb_create_load_balancer <- function(LoadBalancerName, Listeners, AvailabilityZo
 #'     )
 #'   ),
 #'   LoadBalancerName = "my-load-balancer"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -760,11 +744,10 @@ elb_create_load_balancer_listeners <- function(LoadBalancerName, Listeners) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example creates a policy that enables Proxy Protocol on the
 #' # specified load balancer.
-#' svc$create_load_balancer_policy(
+#' \donttest{svc$create_load_balancer_policy(
 #'   LoadBalancerName = "my-load-balancer",
 #'   PolicyAttributes = list(
 #'     list(
@@ -774,10 +757,10 @@ elb_create_load_balancer_listeners <- function(LoadBalancerName, Listeners) {
 #'   ),
 #'   PolicyName = "my-ProxyProtocol-policy",
 #'   PolicyTypeName = "ProxyProtocolPolicyType"
-#' )
+#' )}
 #' 
 #' # This example creates a public key policy.
-#' svc$create_load_balancer_policy(
+#' \donttest{svc$create_load_balancer_policy(
 #'   LoadBalancerName = "my-load-balancer",
 #'   PolicyAttributes = list(
 #'     list(
@@ -787,11 +770,11 @@ elb_create_load_balancer_listeners <- function(LoadBalancerName, Listeners) {
 #'   ),
 #'   PolicyName = "my-PublicKey-policy",
 #'   PolicyTypeName = "PublicKeyPolicyType"
-#' )
+#' )}
 #' 
 #' # This example creates a backend server authentication policy that enables
 #' # authentication on your backend instance using a public key policy.
-#' svc$create_load_balancer_policy(
+#' \donttest{svc$create_load_balancer_policy(
 #'   LoadBalancerName = "my-load-balancer",
 #'   PolicyAttributes = list(
 #'     list(
@@ -801,8 +784,7 @@ elb_create_load_balancer_listeners <- function(LoadBalancerName, Listeners) {
 #'   ),
 #'   PolicyName = "my-authentication-policy",
 #'   PolicyTypeName = "BackendServerAuthenticationPolicyType"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -849,13 +831,11 @@ elb_create_load_balancer_policy <- function(LoadBalancerName, PolicyName, Policy
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example deletes the specified load balancer.
-#' svc$delete_load_balancer(
+#' \donttest{svc$delete_load_balancer(
 #'   LoadBalancerName = "my-load-balancer"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -897,17 +877,15 @@ elb_delete_load_balancer <- function(LoadBalancerName) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example deletes the listener for the specified port from the
 #' # specified load balancer.
-#' svc$delete_load_balancer_listeners(
+#' \donttest{svc$delete_load_balancer_listeners(
 #'   LoadBalancerName = "my-load-balancer",
 #'   LoadBalancerPorts = list(
 #'     80L
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -948,15 +926,13 @@ elb_delete_load_balancer_listeners <- function(LoadBalancerName, LoadBalancerPor
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example deletes the specified policy from the specified load
 #' # balancer. The policy must not be enabled on any listener.
-#' svc$delete_load_balancer_policy(
+#' \donttest{svc$delete_load_balancer_policy(
 #'   LoadBalancerName = "my-load-balancer",
 #'   PolicyName = "my-duration-cookie-policy"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1009,19 +985,17 @@ elb_delete_load_balancer_policy <- function(LoadBalancerName, PolicyName) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example deregisters the specified instance from the specified load
 #' # balancer.
-#' svc$deregister_instances_from_load_balancer(
+#' \donttest{svc$deregister_instances_from_load_balancer(
 #'   Instances = list(
 #'     list(
 #'       InstanceId = "i-d6f6fae3"
 #'     )
 #'   ),
 #'   LoadBalancerName = "my-load-balancer"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1116,14 +1090,12 @@ elb_describe_account_limits <- function(Marker = NULL, PageSize = NULL) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the health of the instances for the specified
 #' # load balancer.
-#' svc$describe_instance_health(
+#' \donttest{svc$describe_instance_health(
 #'   LoadBalancerName = "my-load-balancer"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1161,13 +1133,11 @@ elb_describe_instance_health <- function(LoadBalancerName, Instances = NULL) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the attributes of the specified load balancer.
-#' svc$describe_load_balancer_attributes(
+#' \donttest{svc$describe_load_balancer_attributes(
 #'   LoadBalancerName = "my-load-balancer"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1217,17 +1187,15 @@ elb_describe_load_balancer_attributes <- function(LoadBalancerName) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the specified policy associated with the
 #' # specified load balancer.
-#' svc$describe_load_balancer_policies(
+#' \donttest{svc$describe_load_balancer_policies(
 #'   LoadBalancerName = "my-load-balancer",
 #'   PolicyNames = list(
 #'     "my-authentication-policy"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1280,15 +1248,13 @@ elb_describe_load_balancer_policies <- function(LoadBalancerName = NULL, PolicyN
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the specified load balancer policy type.
-#' svc$describe_load_balancer_policy_types(
+#' \donttest{svc$describe_load_balancer_policy_types(
 #'   PolicyTypeNames = list(
 #'     "ProxyProtocolPolicyType"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1335,15 +1301,13 @@ elb_describe_load_balancer_policy_types <- function(PolicyTypeNames = NULL) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the specified load balancer.
-#' svc$describe_load_balancers(
+#' \donttest{svc$describe_load_balancers(
 #'   LoadBalancerNames = list(
 #'     "my-load-balancer"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1383,15 +1347,13 @@ elb_describe_load_balancers <- function(LoadBalancerNames = NULL, Marker = NULL,
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the tags for the specified load balancer.
-#' svc$describe_tags(
+#' \donttest{svc$describe_tags(
 #'   LoadBalancerNames = list(
 #'     "my-load-balancer"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1440,17 +1402,15 @@ elb_describe_tags <- function(LoadBalancerNames) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example detaches the specified load balancer from the specified
 #' # subnet.
-#' svc$detach_load_balancer_from_subnets(
+#' \donttest{svc$detach_load_balancer_from_subnets(
 #'   LoadBalancerName = "my-load-balancer",
 #'   Subnets = list(
 #'     "subnet-0ecac448"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1509,17 +1469,15 @@ elb_detach_load_balancer_from_subnets <- function(LoadBalancerName, Subnets) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example removes the specified Availability Zone from the set of
 #' # Availability Zones for the specified load balancer.
-#' svc$disable_availability_zones_for_load_balancer(
+#' \donttest{svc$disable_availability_zones_for_load_balancer(
 #'   AvailabilityZones = list(
 #'     "us-west-2a"
 #'   ),
 #'   LoadBalancerName = "my-load-balancer"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1574,17 +1532,15 @@ elb_disable_availability_zones_for_load_balancer <- function(LoadBalancerName, A
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example adds the specified Availability Zone to the specified load
 #' # balancer.
-#' svc$enable_availability_zones_for_load_balancer(
+#' \donttest{svc$enable_availability_zones_for_load_balancer(
 #'   AvailabilityZones = list(
 #'     "us-west-2b"
 #'   ),
 #'   LoadBalancerName = "my-load-balancer"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1669,22 +1625,21 @@ elb_enable_availability_zones_for_load_balancer <- function(LoadBalancerName, Av
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example enables cross-zone load balancing for the specified load
 #' # balancer.
-#' svc$modify_load_balancer_attributes(
+#' \donttest{svc$modify_load_balancer_attributes(
 #'   LoadBalancerAttributes = list(
 #'     CrossZoneLoadBalancing = list(
 #'       Enabled = TRUE
 #'     )
 #'   ),
 #'   LoadBalancerName = "my-load-balancer"
-#' )
+#' )}
 #' 
 #' # This example enables connection draining for the specified load
 #' # balancer.
-#' svc$modify_load_balancer_attributes(
+#' \donttest{svc$modify_load_balancer_attributes(
 #'   LoadBalancerAttributes = list(
 #'     ConnectionDraining = list(
 #'       Enabled = TRUE,
@@ -1692,8 +1647,7 @@ elb_enable_availability_zones_for_load_balancer <- function(LoadBalancerName, Av
 #'     )
 #'   ),
 #'   LoadBalancerName = "my-load-balancer"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1762,19 +1716,17 @@ elb_modify_load_balancer_attributes <- function(LoadBalancerName, LoadBalancerAt
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example registers the specified instance with the specified load
 #' # balancer.
-#' svc$register_instances_with_load_balancer(
+#' \donttest{svc$register_instances_with_load_balancer(
 #'   Instances = list(
 #'     list(
 #'       InstanceId = "i-d6f6fae3"
 #'     )
 #'   ),
 #'   LoadBalancerName = "my-load-balancer"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1821,10 +1773,9 @@ elb_register_instances_with_load_balancer <- function(LoadBalancerName, Instance
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example removes the specified tag from the specified load balancer.
-#' svc$remove_tags(
+#' \donttest{svc$remove_tags(
 #'   LoadBalancerNames = list(
 #'     "my-load-balancer"
 #'   ),
@@ -1833,8 +1784,7 @@ elb_register_instances_with_load_balancer <- function(LoadBalancerName, Instance
 #'       Key = "project"
 #'     )
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1885,16 +1835,14 @@ elb_remove_tags <- function(LoadBalancerNames, Tags) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example replaces the existing SSL certificate for the specified
 #' # HTTPS listener.
-#' svc$set_load_balancer_listener_ssl_certificate(
+#' \donttest{svc$set_load_balancer_listener_ssl_certificate(
 #'   LoadBalancerName = "my-load-balancer",
 #'   LoadBalancerPort = 443L,
 #'   SSLCertificateId = "arn:aws:iam::123456789012:server-certificate/new-server-cert"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1960,18 +1908,16 @@ elb_set_load_balancer_listener_ssl_certificate <- function(LoadBalancerName, Loa
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example replaces the policies that are currently associated with
 #' # the specified port.
-#' svc$set_load_balancer_policies_for_backend_server(
+#' \donttest{svc$set_load_balancer_policies_for_backend_server(
 #'   InstancePort = 80L,
 #'   LoadBalancerName = "my-load-balancer",
 #'   PolicyNames = list(
 #'     "my-ProxyProtocol-policy"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2032,18 +1978,16 @@ elb_set_load_balancer_policies_for_backend_server <- function(LoadBalancerName, 
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example replaces the policies that are currently associated with
 #' # the specified listener.
-#' svc$set_load_balancer_policies_of_listener(
+#' \donttest{svc$set_load_balancer_policies_of_listener(
 #'   LoadBalancerName = "my-load-balancer",
 #'   LoadBalancerPort = 80L,
 #'   PolicyNames = list(
 #'     "my-SSLNegotiation-policy"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'

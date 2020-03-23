@@ -43,14 +43,13 @@ in the \emph{Amazon Glacier Developer Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The example retrieves the notification-configuration for the vault named
+\examples{
+# The example retrieves the notification-configuration for the vault named
 # my-vault.
-svc$get_vault_notifications(
+\donttest{svc$get_vault_notifications(
   accountId = "-",
   vaultName = "my-vault"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

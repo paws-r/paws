@@ -35,16 +35,15 @@ Elastic Beanstalk. This operation requires \href{https://docs.aws.amazon.com/ela
 }
 }
 
-\section{Examples}{
-\preformatted{# The following operation retrieves health information for instances in an
+\examples{
+# The following operation retrieves health information for instances in an
 # environment named my-env:
-svc$describe_instances_health(
+\donttest{svc$describe_instances_health(
   AttributeNames = list(
     "All"
   ),
   EnvironmentName = "my-env"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

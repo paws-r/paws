@@ -49,13 +49,12 @@ account.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example shows how to get a list of service control
+\examples{
+# The following example shows how to get a list of service control
 # policies (SCPs):/n/n
-svc$list_policies(
+\donttest{svc$list_policies(
   Filter = "SERVICE_CONTROL_POLICY"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

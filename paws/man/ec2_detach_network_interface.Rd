@@ -41,13 +41,12 @@ Detaches a network interface from an instance.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example detaches the specified network interface from its attached
+\examples{
+# This example detaches the specified network interface from its attached
 # instance.
-svc$detach_network_interface(
+\donttest{svc$detach_network_interface(
   AttachmentId = "eni-attach-66c4350a"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

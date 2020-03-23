@@ -52,13 +52,6 @@ service.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$activate_pipeline(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -84,3 +77,10 @@ service.
 }
 }
 
+\examples{
+\donttest{svc <- datapipeline()
+svc$activate_pipeline(
+  Foo = 123
+)}
+
+}

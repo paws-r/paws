@@ -37,10 +37,10 @@ in the \emph{Classic Load Balancers Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example creates a listener for your load balancer at port 80 using
+\examples{
+# This example creates a listener for your load balancer at port 80 using
 # the HTTP protocol.
-svc$create_load_balancer_listeners(
+\donttest{svc$create_load_balancer_listeners(
   Listeners = list(
     list(
       InstancePort = 80L,
@@ -50,11 +50,11 @@ svc$create_load_balancer_listeners(
     )
   ),
   LoadBalancerName = "my-load-balancer"
-)
+)}
 
 # This example creates a listener for your load balancer at port 443 using
 # the HTTPS protocol.
-svc$create_load_balancer_listeners(
+\donttest{svc$create_load_balancer_listeners(
   Listeners = list(
     list(
       InstancePort = 80L,
@@ -65,8 +65,7 @@ svc$create_load_balancer_listeners(
     )
   ),
   LoadBalancerName = "my-load-balancer"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -85,10 +85,10 @@ The following operations are related to \code{PutBucketTagging}:
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example sets tags on a bucket. Any existing tags are
+\examples{
+# The following example sets tags on a bucket. Any existing tags are
 # replaced.
-svc$put_bucket_tagging(
+\donttest{svc$put_bucket_tagging(
   Bucket = "examplebucket",
   Tagging = list(
     TagSet = list(
@@ -102,8 +102,7 @@ svc$put_bucket_tagging(
       )
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

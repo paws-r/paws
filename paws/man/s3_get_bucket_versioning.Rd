@@ -34,12 +34,11 @@ The following operations are related to \code{GetBucketVersioning}:
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example retrieves bucket versioning configuration.
-svc$get_bucket_versioning(
+\examples{
+# The following example retrieves bucket versioning configuration.
+\donttest{svc$get_bucket_versioning(
   Bucket = "examplebucket"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

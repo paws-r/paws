@@ -34,20 +34,19 @@ information, see CreateAssessmentTarget.
 }
 }
 
-\section{Examples}{
-\preformatted{# Creates a resource group using the specified set of tags (key and value
+\examples{
+# Creates a resource group using the specified set of tags (key and value
 # pairs) that are used to select the EC2 instances to be included in an
 # Amazon Inspector assessment target. The created resource group is then
 # used to create an Amazon Inspector assessment target.
-svc$create_resource_group(
+\donttest{svc$create_resource_group(
   resourceGroupTags = list(
     list(
       key = "Name",
       value = "example"
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

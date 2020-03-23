@@ -119,15 +119,14 @@ in the \emph{AWS Key Management Service Developer Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example generates an encrypted copy of a 256-bit symmetric
+\examples{
+# The following example generates an encrypted copy of a 256-bit symmetric
 # data encryption key (data key). The data key is encrypted with the
 # specified customer master key (CMK).
-svc$generate_data_key_without_plaintext(
+\donttest{svc$generate_data_key_without_plaintext(
   KeyId = "alias/ExampleAlias",
   KeySpec = "AES_256"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

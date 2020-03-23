@@ -19,12 +19,11 @@ Gets information about a project.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example gets information about a specific project.
-svc$get_project(
+\examples{
+# The following example gets information about a specific project.
+\donttest{svc$get_project(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:5e01a8c7-c861-4c0a-b1d5-12345EXAM..."
-)
-}
-}
+)}
 
+}
 \keyword{internal}

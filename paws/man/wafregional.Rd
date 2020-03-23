@@ -38,15 +38,6 @@ AWS WAF features and an overview of how to use the AWS WAF API, see the
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example creates an IP match set named MyIPSetFriendlyName.
-svc$create_ip_set(
-  ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
-  Name = "MyIPSetFriendlyName"
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -133,3 +124,12 @@ svc$create_ip_set(
 }
 }
 
+\examples{
+# The following example creates an IP match set named MyIPSetFriendlyName.
+\donttest{svc <- wafregional()
+svc$create_ip_set(
+  ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
+  Name = "MyIPSetFriendlyName"
+)}
+
+}

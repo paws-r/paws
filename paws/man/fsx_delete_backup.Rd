@@ -34,12 +34,11 @@ any means.
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation deletes an Amazon FSx file system backup.
-svc$delete_backup(
+\examples{
+# This operation deletes an Amazon FSx file system backup.
+\donttest{svc$delete_backup(
   BackupId = "backup-03e3c82e0183b7b6b"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

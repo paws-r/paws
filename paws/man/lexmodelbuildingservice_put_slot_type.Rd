@@ -98,10 +98,10 @@ This operation requires permissions for the \code{lex:PutSlotType} action.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example shows how to create a slot type that describes pizza
+\examples{
+# This example shows how to create a slot type that describes pizza
 # sauces.
-svc$put_slot_type(
+\donttest{svc$put_slot_type(
   name = "PizzaSauceType",
   description = "Available pizza sauces",
   enumerationValues = list(
@@ -112,8 +112,7 @@ svc$put_slot_type(
       value = "white"
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

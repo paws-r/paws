@@ -103,10 +103,10 @@ This operation requires permissions to perform the
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation searches for faces in a Rekognition collection that match
+\examples{
+# This operation searches for faces in a Rekognition collection that match
 # the largest face in an S3 bucket stored image.
-svc$search_faces_by_image(
+\donttest{svc$search_faces_by_image(
   CollectionId = "myphotos",
   FaceMatchThreshold = 95L,
   Image = list(
@@ -116,8 +116,7 @@ svc$search_faces_by_image(
     )
   ),
   MaxFaces = 5L
-)
-}
-}
+)}
 
+}
 \keyword{internal}

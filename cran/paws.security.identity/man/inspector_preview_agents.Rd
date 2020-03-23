@@ -32,14 +32,13 @@ specified assessment target.
 }
 }
 
-\section{Examples}{
-\preformatted{# Previews the agents installed on the EC2 instances that are part of the
+\examples{
+# Previews the agents installed on the EC2 instances that are part of the
 # specified assessment target.
-svc$preview_agents(
+\donttest{svc$preview_agents(
   maxResults = 123L,
   previewAgentsArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -39,13 +39,12 @@ You can execute this operation no more than once per second.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example returns a list of sending authorization policies
+\examples{
+# The following example returns a list of sending authorization policies
 # that are attached to an identity:
-svc$list_identity_policies(
+\donttest{svc$list_identity_policies(
   Identity = "example.com"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

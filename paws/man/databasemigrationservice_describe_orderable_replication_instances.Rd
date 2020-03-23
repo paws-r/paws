@@ -34,14 +34,13 @@ created in the specified region.
 }
 }
 
-\section{Examples}{
-\preformatted{# Returns information about the replication instance types that can be
+\examples{
+# Returns information about the replication instance types that can be
 # created in the specified region.
-svc$describe_orderable_replication_instances(
+\donttest{svc$describe_orderable_replication_instances(
   Marker = "",
   MaxRecords = 123L
-)
-}
-}
+)}
 
+}
 \keyword{internal}

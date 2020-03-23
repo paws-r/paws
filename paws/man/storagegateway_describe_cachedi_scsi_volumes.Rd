@@ -29,15 +29,14 @@ volume Amazon Resource Name (ARN).
 }
 }
 
-\section{Examples}{
-\preformatted{# Returns a description of the gateway cached iSCSI volumes specified in
+\examples{
+# Returns a description of the gateway cached iSCSI volumes specified in
 # the request.
-svc$describe_cachedi_scsi_volumes(
+\donttest{svc$describe_cachedi_scsi_volumes(
   VolumeARNs = list(
     "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

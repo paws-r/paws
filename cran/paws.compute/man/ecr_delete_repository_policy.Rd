@@ -25,13 +25,12 @@ Deletes the repository policy from a specified repository.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example deletes the policy associated with the repository named
+\examples{
+# This example deletes the policy associated with the repository named
 # ubuntu in the current account.
-svc$delete_repository_policy(
+\donttest{svc$delete_repository_policy(
   repositoryName = "ubuntu"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

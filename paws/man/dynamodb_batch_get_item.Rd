@@ -183,10 +183,10 @@ in the \emph{Amazon DynamoDB Developer Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example reads multiple items from the Music table using a batch of
+\examples{
+# This example reads multiple items from the Music table using a batch of
 # three GetItem requests.  Only the AlbumTitle attribute is returned.
-svc$batch_get_item(
+\donttest{svc$batch_get_item(
   RequestItems = list(
     Music = list(
       Keys = list(
@@ -218,8 +218,7 @@ svc$batch_get_item(
       ProjectionExpression = "AlbumTitle"
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

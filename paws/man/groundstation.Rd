@@ -34,13 +34,6 @@ build or manage your own ground station infrastructure.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$cancel_contact(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -72,3 +65,10 @@ build or manage your own ground station infrastructure.
 }
 }
 
+\examples{
+\donttest{svc <- groundstation()
+svc$cancel_contact(
+  Foo = 123
+)}
+
+}

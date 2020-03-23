@@ -33,16 +33,15 @@ have the \verb{ELBSample-} prefix.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the specified policy associated with the
+\examples{
+# This example describes the specified policy associated with the
 # specified load balancer.
-svc$describe_load_balancer_policies(
+\donttest{svc$describe_load_balancer_policies(
   LoadBalancerName = "my-load-balancer",
   PolicyNames = list(
     "my-authentication-policy"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

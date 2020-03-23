@@ -39,14 +39,13 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following command removes the policy named ExamplePolicy from the
+\examples{
+# The following command removes the policy named ExamplePolicy from the
 # role named Test-Role.
-svc$delete_role_policy(
+\donttest{svc$delete_role_policy(
   PolicyName = "ExamplePolicy",
   RoleName = "Test-Role"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

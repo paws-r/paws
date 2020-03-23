@@ -33,17 +33,16 @@ configure as cache.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example shows a request that activates a gateway-stored
+\examples{
+# The following example shows a request that activates a gateway-stored
 # volume.
-svc$add_cache(
+\donttest{svc$add_cache(
   DiskIds = list(
     "pci-0000:03:00.0-scsi-0:0:0:0",
     "pci-0000:03:00.0-scsi-0:0:1:0"
   ),
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

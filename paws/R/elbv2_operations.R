@@ -94,10 +94,9 @@ elbv2_add_listener_certificates <- function(ListenerArn, Certificates) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example adds the specified tags to the specified load balancer.
-#' svc$add_tags(
+#' \donttest{svc$add_tags(
 #'   ResourceArns = list(
 #'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/5..."
 #'   ),
@@ -111,8 +110,7 @@ elbv2_add_listener_certificates <- function(ListenerArn, Certificates) {
 #'       Value = "digital-media"
 #'     )
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -272,11 +270,10 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example creates an HTTP listener for the specified load balancer
 #' # that forwards requests to the specified target group.
-#' svc$create_listener(
+#' \donttest{svc$create_listener(
 #'   DefaultActions = list(
 #'     list(
 #'       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-t...",
@@ -286,7 +283,7 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my...",
 #'   Port = 80L,
 #'   Protocol = "HTTP"
-#' )
+#' )}
 #' 
 #' # This example creates an HTTPS listener for the specified load balancer
 #' # that forwards requests to the specified target group. Note that you must
@@ -295,7 +292,7 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #' # you can create a certificate using SSL/TLS tools, get the certificate
 #' # signed by a certificate authority (CA), and upload the certificate to
 #' # AWS Identity and Access Management (IAM).
-#' svc$create_listener(
+#' \donttest{svc$create_listener(
 #'   Certificates = list(
 #'     list(
 #'       CertificateArn = "arn:aws:iam::123456789012:server-certificate/my-server-cert"
@@ -311,8 +308,7 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #'   Port = 443L,
 #'   Protocol = "HTTPS",
 #'   SslPolicy = "ELBSecurityPolicy-2015-05"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -444,21 +440,20 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol, Port, SslPolicy = N
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example creates an Internet-facing load balancer and enables the
 #' # Availability Zones for the specified subnets.
-#' svc$create_load_balancer(
+#' \donttest{svc$create_load_balancer(
 #'   Name = "my-load-balancer",
 #'   Subnets = list(
 #'     "subnet-b7d581c0",
 #'     "subnet-8360a9e7"
 #'   )
-#' )
+#' )}
 #' 
 #' # This example creates an internal load balancer and enables the
 #' # Availability Zones for the specified subnets.
-#' svc$create_load_balancer(
+#' \donttest{svc$create_load_balancer(
 #'   Name = "my-internal-load-balancer",
 #'   Scheme = "internal",
 #'   SecurityGroups = list(),
@@ -466,8 +461,7 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol, Port, SslPolicy = N
 #'     "subnet-b7d581c0",
 #'     "subnet-8360a9e7"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -647,12 +641,11 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example creates a rule that forwards requests to the specified
 #' # target group if the URL contains the specified pattern (for example,
 #' # /img/*).
-#' svc$create_rule(
+#' \donttest{svc$create_rule(
 #'   Actions = list(
 #'     list(
 #'       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-t...",
@@ -669,8 +662,7 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #'   ),
 #'   ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-ba...",
 #'   Priority = 10L
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -815,18 +807,16 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example creates a target group that you can use to route traffic to
 #' # targets using HTTP on port 80. This target group uses the default health
 #' # check configuration.
-#' svc$create_target_group(
+#' \donttest{svc$create_target_group(
 #'   Name = "my-targets",
 #'   Port = 80L,
 #'   Protocol = "HTTP",
 #'   VpcId = "vpc-3ac0fb5f"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -867,13 +857,11 @@ elbv2_create_target_group <- function(Name, Protocol = NULL, Port = NULL, VpcId 
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example deletes the specified listener.
-#' svc$delete_listener(
+#' \donttest{svc$delete_listener(
 #'   ListenerArn = "arn:aws:elasticloadbalancing:ua-west-2:123456789012:listener/app/my-load-ba..."
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -922,13 +910,11 @@ elbv2_delete_listener <- function(ListenerArn) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example deletes the specified load balancer.
-#' svc$delete_load_balancer(
+#' \donttest{svc$delete_load_balancer(
 #'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my..."
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -966,13 +952,11 @@ elbv2_delete_load_balancer <- function(LoadBalancerArn) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example deletes the specified rule.
-#' svc$delete_rule(
+#' \donttest{svc$delete_rule(
 #'   RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-b..."
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1013,13 +997,11 @@ elbv2_delete_rule <- function(RuleArn) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example deletes the specified target group.
-#' svc$delete_target_group(
+#' \donttest{svc$delete_target_group(
 #'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targe..."
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1069,19 +1051,17 @@ elbv2_delete_target_group <- function(TargetGroupArn) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example deregisters the specified instance from the specified
 #' # target group.
-#' svc$deregister_targets(
+#' \donttest{svc$deregister_targets(
 #'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targe...",
 #'   Targets = list(
 #'     list(
 #'       Id = "i-0f76fade"
 #'     )
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1235,15 +1215,13 @@ elbv2_describe_listener_certificates <- function(ListenerArn, Marker = NULL, Pag
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the specified listener.
-#' svc$describe_listeners(
+#' \donttest{svc$describe_listeners(
 #'   ListenerArns = list(
 #'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balancer/50dc6..."
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1289,13 +1267,11 @@ elbv2_describe_listeners <- function(LoadBalancerArn = NULL, ListenerArns = NULL
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the attributes of the specified load balancer.
-#' svc$describe_load_balancer_attributes(
+#' \donttest{svc$describe_load_balancer_attributes(
 #'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my..."
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1349,15 +1325,13 @@ elbv2_describe_load_balancer_attributes <- function(LoadBalancerArn) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the specified load balancer.
-#' svc$describe_load_balancers(
+#' \donttest{svc$describe_load_balancers(
 #'   LoadBalancerArns = list(
 #'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/5..."
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1405,15 +1379,13 @@ elbv2_describe_load_balancers <- function(LoadBalancerArns = NULL, Names = NULL,
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the specified rule.
-#' svc$describe_rules(
+#' \donttest{svc$describe_rules(
 #'   RuleArns = list(
 #'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-balancer/..."
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1464,15 +1436,13 @@ elbv2_describe_rules <- function(ListenerArn = NULL, RuleArns = NULL, Marker = N
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the specified policy used for SSL negotiation.
-#' svc$describe_ssl_policies(
+#' \donttest{svc$describe_ssl_policies(
 #'   Names = list(
 #'     "ELBSecurityPolicy-2015-05"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1514,15 +1484,13 @@ elbv2_describe_ssl_policies <- function(Names = NULL, Marker = NULL, PageSize = 
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the tags assigned to the specified load balancer.
-#' svc$describe_tags(
+#' \donttest{svc$describe_tags(
 #'   ResourceArns = list(
 #'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/5..."
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1566,13 +1534,11 @@ elbv2_describe_tags <- function(ResourceArns) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the attributes of the specified target group.
-#' svc$describe_target_group_attributes(
+#' \donttest{svc$describe_target_group_attributes(
 #'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targe..."
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1632,15 +1598,13 @@ elbv2_describe_target_group_attributes <- function(TargetGroupArn) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the specified target group.
-#' svc$describe_target_groups(
+#' \donttest{svc$describe_target_groups(
 #'   TargetGroupArns = list(
 #'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8..."
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1686,18 +1650,17 @@ elbv2_describe_target_groups <- function(LoadBalancerArn = NULL, TargetGroupArns
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the health of the targets for the specified
 #' # target group. One target is healthy but the other is not specified in an
 #' # action, so it can't receive traffic from the load balancer.
-#' svc$describe_target_health(
+#' \donttest{svc$describe_target_health(
 #'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targe..."
-#' )
+#' )}
 #' 
 #' # This example describes the health of the specified target. This target
 #' # is healthy.
-#' svc$describe_target_health(
+#' \donttest{svc$describe_target_health(
 #'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targe...",
 #'   Targets = list(
 #'     list(
@@ -1705,8 +1668,7 @@ elbv2_describe_target_groups <- function(LoadBalancerArn = NULL, TargetGroupArns
 #'       Port = 80L
 #'     )
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1857,10 +1819,9 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example changes the default action for the specified listener.
-#' svc$modify_listener(
+#' \donttest{svc$modify_listener(
 #'   DefaultActions = list(
 #'     list(
 #'       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-n...",
@@ -1868,19 +1829,18 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #'     )
 #'   ),
 #'   ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-ba..."
-#' )
+#' )}
 #' 
 #' # This example changes the server certificate for the specified HTTPS
 #' # listener.
-#' svc$modify_listener(
+#' \donttest{svc$modify_listener(
 #'   Certificates = list(
 #'     list(
 #'       CertificateArn = "arn:aws:iam::123456789012:server-certificate/my-new-server-cert"
 #'     )
 #'   ),
 #'   ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-ba..."
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1931,11 +1891,10 @@ elbv2_modify_listener <- function(ListenerArn, Port = NULL, Protocol = NULL, Ssl
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example enables deletion protection for the specified load
 #' # balancer.
-#' svc$modify_load_balancer_attributes(
+#' \donttest{svc$modify_load_balancer_attributes(
 #'   Attributes = list(
 #'     list(
 #'       Key = "deletion_protection.enabled",
@@ -1943,11 +1902,11 @@ elbv2_modify_listener <- function(ListenerArn, Port = NULL, Protocol = NULL, Ssl
 #'     )
 #'   ),
 #'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my..."
-#' )
+#' )}
 #' 
 #' # This example changes the idle timeout value for the specified load
 #' # balancer.
-#' svc$modify_load_balancer_attributes(
+#' \donttest{svc$modify_load_balancer_attributes(
 #'   Attributes = list(
 #'     list(
 #'       Key = "idle_timeout.timeout_seconds",
@@ -1955,13 +1914,13 @@ elbv2_modify_listener <- function(ListenerArn, Port = NULL, Protocol = NULL, Ssl
 #'     )
 #'   ),
 #'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my..."
-#' )
+#' )}
 #' 
 #' # This example enables access logs for the specified load balancer. Note
 #' # that the S3 bucket must exist in the same region as the load balancer
 #' # and must have a policy attached that grants access to the Elastic Load
 #' # Balancing service.
-#' svc$modify_load_balancer_attributes(
+#' \donttest{svc$modify_load_balancer_attributes(
 #'   Attributes = list(
 #'     list(
 #'       Key = "access_logs.s3.enabled",
@@ -1977,8 +1936,7 @@ elbv2_modify_listener <- function(ListenerArn, Port = NULL, Protocol = NULL, Ssl
 #'     )
 #'   ),
 #'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my..."
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2150,10 +2108,9 @@ elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example modifies the condition for the specified rule.
-#' svc$modify_rule(
+#' \donttest{svc$modify_rule(
 #'   Conditions = list(
 #'     list(
 #'       Field = "path-pattern",
@@ -2163,8 +2120,7 @@ elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
 #'     )
 #'   ),
 #'   RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-b..."
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2250,16 +2206,14 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example changes the configuration of the health checks used to
 #' # evaluate the health of the targets for the specified target group.
-#' svc$modify_target_group(
+#' \donttest{svc$modify_target_group(
 #'   HealthCheckPort = "443",
 #'   HealthCheckProtocol = "HTTPS",
 #'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-https..."
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2304,11 +2258,10 @@ elbv2_modify_target_group <- function(TargetGroupArn, HealthCheckProtocol = NULL
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example sets the deregistration delay timeout to the specified
 #' # value for the specified target group.
-#' svc$modify_target_group_attributes(
+#' \donttest{svc$modify_target_group_attributes(
 #'   Attributes = list(
 #'     list(
 #'       Key = "deregistration_delay.timeout_seconds",
@@ -2316,8 +2269,7 @@ elbv2_modify_target_group <- function(TargetGroupArn, HealthCheckProtocol = NULL
 #'     )
 #'   ),
 #'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targe..."
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2383,11 +2335,10 @@ elbv2_modify_target_group_attributes <- function(TargetGroupArn, Attributes) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example registers the specified instances with the specified target
 #' # group.
-#' svc$register_targets(
+#' \donttest{svc$register_targets(
 #'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targe...",
 #'   Targets = list(
 #'     list(
@@ -2397,12 +2348,12 @@ elbv2_modify_target_group_attributes <- function(TargetGroupArn, Attributes) {
 #'       Id = "i-ceddcd4d"
 #'     )
 #'   )
-#' )
+#' )}
 #' 
 #' # This example registers the specified instance with the specified target
 #' # group using multiple ports. This enables you to register ECS containers
 #' # on the same instance as targets in the target group.
-#' svc$register_targets(
+#' \donttest{svc$register_targets(
 #'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-new-t...",
 #'   Targets = list(
 #'     list(
@@ -2414,8 +2365,7 @@ elbv2_modify_target_group_attributes <- function(TargetGroupArn, Attributes) {
 #'       Port = 766L
 #'     )
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2515,11 +2465,10 @@ elbv2_remove_listener_certificates <- function(ListenerArn, Certificates) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example removes the specified tags from the specified load
 #' # balancer.
-#' svc$remove_tags(
+#' \donttest{svc$remove_tags(
 #'   ResourceArns = list(
 #'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/5..."
 #'   ),
@@ -2527,8 +2476,7 @@ elbv2_remove_listener_certificates <- function(ListenerArn, Certificates) {
 #'     "project",
 #'     "department"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2617,18 +2565,16 @@ elbv2_set_ip_address_type <- function(LoadBalancerArn, IpAddressType) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example sets the priority of the specified rule.
-#' svc$set_rule_priorities(
+#' \donttest{svc$set_rule_priorities(
 #'   RulePriorities = list(
 #'     list(
 #'       Priority = 5L,
 #'       RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-lo..."
 #'     )
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2675,17 +2621,15 @@ elbv2_set_rule_priorities <- function(RulePriorities) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example associates the specified security group with the specified
 #' # load balancer.
-#' svc$set_security_groups(
+#' \donttest{svc$set_security_groups(
 #'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my...",
 #'   SecurityGroups = list(
 #'     "sg-5943793c"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2755,18 +2699,16 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example enables the Availability Zones for the specified subnets
 #' # for the specified load balancer.
-#' svc$set_subnets(
+#' \donttest{svc$set_subnets(
 #'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my...",
 #'   Subnets = list(
 #'     "subnet-8360a9e7",
 #'     "subnet-b7d581c0"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'

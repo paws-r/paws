@@ -31,12 +31,11 @@ the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example creates a network ACL for the specified VPC.
-svc$create_network_acl(
+\examples{
+# This example creates a network ACL for the specified VPC.
+\donttest{svc$create_network_acl(
   VpcId = "vpc-a01106c2"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -10,11 +10,10 @@ ses_list_verified_email_addresses()
 Deprecated. Use the \code{ListIdentities} operation to list the email
 addresses and domains associated with your account.
 }
-\section{Examples}{
-\preformatted{# The following example lists all email addresses that have been submitted
+\examples{
+# The following example lists all email addresses that have been submitted
 # for verification with Amazon SES:
-svc$list_verified_email_addresses()
-}
-}
+\donttest{svc$list_verified_email_addresses()}
 
+}
 \keyword{internal}

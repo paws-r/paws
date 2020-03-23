@@ -69,14 +69,13 @@ in the \emph{Amazon Glacier Developer Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The example lists all the in-progress multipart uploads for the vault
+\examples{
+# The example lists all the in-progress multipart uploads for the vault
 # named examplevault.
-svc$list_multipart_uploads(
+\donttest{svc$list_multipart_uploads(
   accountId = "-",
   vaultName = "examplevault"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

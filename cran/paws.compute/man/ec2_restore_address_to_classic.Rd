@@ -29,13 +29,12 @@ address must not be associated with an instance or network interface.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example restores the specified Elastic IP address to the
+\examples{
+# This example restores the specified Elastic IP address to the
 # EC2-Classic platform.
-svc$restore_address_to_classic(
+\donttest{svc$restore_address_to_classic(
   PublicIp = "198.51.100.0"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

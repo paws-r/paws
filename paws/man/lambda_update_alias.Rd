@@ -54,15 +54,14 @@ Updates the configuration of a Lambda function
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation updates a Lambda function alias
-svc$update_alias(
+\examples{
+# This operation updates a Lambda function alias
+\donttest{svc$update_alias(
   Description = "",
   FunctionName = "myFunction",
   FunctionVersion = "1",
   Name = "functionAlias"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

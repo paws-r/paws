@@ -53,13 +53,12 @@ group, the operation returns an empty list.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following command lists the names of in-line policies that are
+\examples{
+# The following command lists the names of in-line policies that are
 # embedded in the IAM group named Admins.
-svc$list_group_policies(
+\donttest{svc$list_group_policies(
   GroupName = "Admins"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

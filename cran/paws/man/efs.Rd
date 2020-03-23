@@ -34,22 +34,6 @@ need, when they need it. For more information, see the \href{https://docs.aws.am
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation creates a new file system with the default generalpurpose
-# performance mode.
-svc$create_file_system(
-  CreationToken = "tokenstring",
-  PerformanceMode = "generalPurpose",
-  Tags = list(
-    list(
-      Key = "Name",
-      Value = "MyFileSystem"
-    )
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -70,3 +54,19 @@ svc$create_file_system(
 }
 }
 
+\examples{
+# This operation creates a new file system with the default generalpurpose
+# performance mode.
+\donttest{svc <- efs()
+svc$create_file_system(
+  CreationToken = "tokenstring",
+  PerformanceMode = "generalPurpose",
+  Tags = list(
+    list(
+      Key = "Name",
+      Value = "MyFileSystem"
+    )
+  )
+)}
+
+}

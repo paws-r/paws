@@ -36,15 +36,14 @@ Describes the specified services running in your cluster.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example provides descriptive information about the service named
+\examples{
+# This example provides descriptive information about the service named
 # `ecs-simple-service`.
-svc$describe_services(
+\donttest{svc$describe_services(
   services = list(
     "ecs-simple-service"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

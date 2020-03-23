@@ -44,14 +44,13 @@ For more information about instance profiles, go to \href{https://docs.aws.amazo
 }
 }
 
-\section{Examples}{
-\preformatted{# The following command adds the role named S3Access to the instance
+\examples{
+# The following command adds the role named S3Access to the instance
 # profile named Webserver:
-svc$add_role_to_instance_profile(
+\donttest{svc$add_role_to_instance_profile(
   InstanceProfileName = "Webserver",
   RoleName = "S3Access"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

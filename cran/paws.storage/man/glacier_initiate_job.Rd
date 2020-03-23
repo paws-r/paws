@@ -101,10 +101,10 @@ underlying REST API \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/a
 }
 }
 
-\section{Examples}{
-\preformatted{# The example initiates an inventory-retrieval job for the vault named
+\examples{
+# The example initiates an inventory-retrieval job for the vault named
 # examplevault.
-svc$initiate_job(
+\donttest{svc$initiate_job(
   accountId = "-",
   jobParameters = list(
     Description = "My inventory job",
@@ -113,8 +113,7 @@ svc$initiate_job(
     Type = "inventory-retrieval"
   ),
   vaultName = "examplevault"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

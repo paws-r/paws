@@ -464,12 +464,12 @@ a global secondary index.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example queries items in the Music table. The table has a partition
+\examples{
+# This example queries items in the Music table. The table has a partition
 # key and sort key (Artist and SongTitle), but this query only specifies
 # the partition key value. It returns song titles by the artist named "No
 # One You Know".
-svc$query(
+\donttest{svc$query(
   ExpressionAttributeValues = list(
     `:v1` = list(
       S = "No One You Know"
@@ -478,8 +478,7 @@ svc$query(
   KeyConditionExpression = "Artist = :v1",
   ProjectionExpression = "SongTitle",
   TableName = "Music"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

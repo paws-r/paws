@@ -28,12 +28,11 @@ You can execute this operation no more than once per second.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example deletes a receipt rule set:
-svc$delete_receipt_rule_set(
+\examples{
+# The following example deletes a receipt rule set:
+\donttest{svc$delete_receipt_rule_set(
   RuleSetName = "MyRuleSet"
-)
-}
-}
+)}
 
+}
 \keyword{internal}
