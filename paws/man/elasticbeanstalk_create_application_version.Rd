@@ -113,10 +113,10 @@ to launch an environment from the application version.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following operation creates a new version (v1) of an application
+\examples{
+# The following operation creates a new version (v1) of an application
 # named my-app:
-svc$create_application_version(
+\donttest{svc$create_application_version(
   ApplicationName = "my-app",
   AutoCreateApplication = TRUE,
   Description = "my-app-v1",
@@ -126,8 +126,7 @@ svc$create_application_version(
     S3Key = "sample.war"
   ),
   VersionLabel = "v1"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

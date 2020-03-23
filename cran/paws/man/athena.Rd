@@ -46,13 +46,6 @@ in the \emph{Amazon Athena User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$batch_get_named_query(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -78,3 +71,10 @@ in the \emph{Amazon Athena User Guide}.
 }
 }
 
+\examples{
+\donttest{svc <- athena()
+svc$batch_get_named_query(
+  Foo = 123
+)}
+
+}

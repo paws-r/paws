@@ -28,11 +28,10 @@ returning a maximum of 100 table names.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example lists all of the tables associated with the current AWS
+\examples{
+# This example lists all of the tables associated with the current AWS
 # account and endpoint.
-svc$list_tables()
-}
-}
+\donttest{svc$list_tables()}
 
+}
 \keyword{internal}

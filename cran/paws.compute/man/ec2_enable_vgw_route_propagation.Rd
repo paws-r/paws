@@ -27,14 +27,13 @@ specified route table of a VPC.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example enables the specified virtual private gateway to propagate
+\examples{
+# This example enables the specified virtual private gateway to propagate
 # static routes to the specified route table.
-svc$enable_vgw_route_propagation(
+\donttest{svc$enable_vgw_route_propagation(
   GatewayId = "vgw-9a4cacf3",
   RouteTableId = "rtb-22574640"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

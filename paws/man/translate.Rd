@@ -31,13 +31,6 @@ set of languages.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$delete_terminology(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -53,3 +46,10 @@ set of languages.
 }
 }
 
+\examples{
+\donttest{svc <- translate()
+svc$delete_terminology(
+  Foo = 123
+)}
+
+}

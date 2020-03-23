@@ -35,21 +35,20 @@ root user for an account.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example deletes the account setting for your user for the specified
+\examples{
+# This example deletes the account setting for your user for the specified
 # resource type.
-svc$delete_account_setting(
+\donttest{svc$delete_account_setting(
   name = "serviceLongArnFormat"
-)
+)}
 
 # This example deletes the account setting for a specific IAM user or IAM
 # role for the specified resource type. Only the root user can view or
 # modify the account settings for another user.
-svc$delete_account_setting(
+\donttest{svc$delete_account_setting(
   name = "containerInstanceLongArnFormat",
   principalArn = "arn:aws:iam::<aws_account_id>:user/principalName"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

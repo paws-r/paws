@@ -31,13 +31,12 @@ Returns AWS resources for this environment.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following operation retrieves information about resources in an
+\examples{
+# The following operation retrieves information about resources in an
 # environment named my-env:
-svc$describe_environment_resources(
+\donttest{svc$describe_environment_resources(
   EnvironmentName = "my-env"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

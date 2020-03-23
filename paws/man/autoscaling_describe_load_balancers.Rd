@@ -33,13 +33,12 @@ DescribeLoadBalancerTargetGroups instead.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the load balancers attached to the specified Auto
+\examples{
+# This example describes the load balancers attached to the specified Auto
 # Scaling group.
-svc$describe_load_balancers(
+\donttest{svc$describe_load_balancers(
   AutoScalingGroupName = "my-auto-scaling-group"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

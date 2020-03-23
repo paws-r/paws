@@ -16,11 +16,10 @@ have been purchased by the account.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example returns information about your Device Farm account
+\examples{
+# The following example returns information about your Device Farm account
 # settings.
-svc$get_account_settings()
-}
-}
+\donttest{svc$get_account_settings()}
 
+}
 \keyword{internal}

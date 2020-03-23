@@ -35,12 +35,11 @@ whitepaper.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example uses AWS KMS to generate 32 bytes of random data.
-svc$generate_random(
+\examples{
+# The following example uses AWS KMS to generate 32 bytes of random data.
+\donttest{svc$generate_random(
   NumberOfBytes = 32L
-)
-}
-}
+)}
 
+}
 \keyword{internal}

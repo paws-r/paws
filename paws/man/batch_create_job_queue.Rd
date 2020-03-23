@@ -54,10 +54,10 @@ preference for scheduling jobs to that compute environment.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example creates a job queue called LowPriority that uses the M4Spot
+\examples{
+# This example creates a job queue called LowPriority that uses the M4Spot
 # compute environment.
-svc$create_job_queue(
+\donttest{svc$create_job_queue(
   computeEnvironmentOrder = list(
     list(
       computeEnvironment = "M4Spot",
@@ -67,12 +67,12 @@ svc$create_job_queue(
   jobQueueName = "LowPriority",
   priority = 1L,
   state = "ENABLED"
-)
+)}
 
 # This example creates a job queue called HighPriority that uses the
 # C4OnDemand compute environment with an order of 1 and the M4Spot compute
 # environment with an order of 2.
-svc$create_job_queue(
+\donttest{svc$create_job_queue(
   computeEnvironmentOrder = list(
     list(
       computeEnvironment = "C4OnDemand",
@@ -86,8 +86,7 @@ svc$create_job_queue(
   jobQueueName = "HighPriority",
   priority = 10L,
   state = "ENABLED"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

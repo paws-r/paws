@@ -31,14 +31,13 @@ configuration remains in existence until it is deleted with this action.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following operation deletes a draft configuration for an environment
+\examples{
+# The following operation deletes a draft configuration for an environment
 # named my-env:
-svc$delete_environment_configuration(
+\donttest{svc$delete_environment_configuration(
   ApplicationName = "my-app",
   EnvironmentName = "my-env"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

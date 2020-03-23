@@ -36,13 +36,12 @@ for a function, version, or alias.
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation retrieves a Lambda function policy
-svc$get_policy(
+\examples{
+# This operation retrieves a Lambda function policy
+\donttest{svc$get_policy(
   FunctionName = "myFunction",
   Qualifier = "1"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

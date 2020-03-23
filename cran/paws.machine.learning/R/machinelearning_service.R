@@ -29,12 +29,11 @@ NULL
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
+#' \donttest{svc <- machinelearning()
 #' svc$add_tags(
 #'   Foo = 123
-#' )
-#' ```
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

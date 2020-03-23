@@ -44,13 +44,6 @@ in the Kubernetes documentation.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_mesh(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -85,3 +78,10 @@ in the Kubernetes documentation.
 }
 }
 
+\examples{
+\donttest{svc <- appmesh()
+svc$create_mesh(
+  Foo = 123
+)}
+
+}

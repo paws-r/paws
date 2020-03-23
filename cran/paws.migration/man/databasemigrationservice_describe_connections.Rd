@@ -47,11 +47,11 @@ test an endpoint.
 }
 }
 
-\section{Examples}{
-\preformatted{# Describes the status of the connections that have been made between the
+\examples{
+# Describes the status of the connections that have been made between the
 # replication instance and an endpoint. Connections are created when you
 # test an endpoint.
-svc$describe_connections(
+\donttest{svc$describe_connections(
   Filters = list(
     list(
       Name = "string",
@@ -63,8 +63,7 @@ svc$describe_connections(
   ),
   Marker = "",
   MaxRecords = 123L
-)
-}
-}
+)}
 
+}
 \keyword{internal}

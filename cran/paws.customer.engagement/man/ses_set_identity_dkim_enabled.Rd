@@ -40,14 +40,13 @@ For more information about Easy DKIM signing, go to the \href{https://docs.aws.a
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example configures Amazon SES to Easy DKIM-sign the email
+\examples{
+# The following example configures Amazon SES to Easy DKIM-sign the email
 # sent from an identity:
-svc$set_identity_dkim_enabled(
+\donttest{svc$set_identity_dkim_enabled(
   DkimEnabled = TRUE,
   Identity = "user@example.com"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

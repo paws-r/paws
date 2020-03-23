@@ -19,13 +19,12 @@ Checks if the specified CNAME is available.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following operation checks the availability of the subdomain
+\examples{
+# The following operation checks the availability of the subdomain
 # my-cname:
-svc$check_dns_availability(
+\donttest{svc$check_dns_availability(
   CNAMEPrefix = "my-cname"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

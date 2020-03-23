@@ -144,10 +144,10 @@ in the \emph{Network Load Balancers Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example creates an HTTP listener for the specified load balancer
+\examples{
+# This example creates an HTTP listener for the specified load balancer
 # that forwards requests to the specified target group.
-svc$create_listener(
+\donttest{svc$create_listener(
   DefaultActions = list(
     list(
       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-t...",
@@ -157,7 +157,7 @@ svc$create_listener(
   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my...",
   Port = 80L,
   Protocol = "HTTP"
-)
+)}
 
 # This example creates an HTTPS listener for the specified load balancer
 # that forwards requests to the specified target group. Note that you must
@@ -166,7 +166,7 @@ svc$create_listener(
 # you can create a certificate using SSL/TLS tools, get the certificate
 # signed by a certificate authority (CA), and upload the certificate to
 # AWS Identity and Access Management (IAM).
-svc$create_listener(
+\donttest{svc$create_listener(
   Certificates = list(
     list(
       CertificateArn = "arn:aws:iam::123456789012:server-certificate/my-server-cert"
@@ -182,8 +182,7 @@ svc$create_listener(
   Port = 443L,
   Protocol = "HTTPS",
   SslPolicy = "ELBSecurityPolicy-2015-05"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -35,13 +35,6 @@ Hyperledger Fabric open source framework.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_member(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -66,3 +59,10 @@ Hyperledger Fabric open source framework.
 }
 }
 
+\examples{
+\donttest{svc <- managedblockchain()
+svc$create_member(
+  Foo = 123
+)}
+
+}

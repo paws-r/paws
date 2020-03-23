@@ -65,15 +65,14 @@ parameter.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example lists all of your registered task definition families.
-svc$list_task_definition_families()
+\examples{
+# This example lists all of your registered task definition families.
+\donttest{svc$list_task_definition_families()}
 
 # This example lists the task definition revisions that start with "hpcc".
-svc$list_task_definition_families(
+\donttest{svc$list_task_definition_families(
   familyPrefix = "hpcc"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -29,12 +29,11 @@ NULL
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
+#' \donttest{svc <- simpledb()
 #' svc$batch_delete_attributes(
 #'   Foo = 123
-#' )
-#' ```
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

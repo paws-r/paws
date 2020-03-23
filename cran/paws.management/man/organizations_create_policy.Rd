@@ -46,8 +46,8 @@ account.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example shows how to create a service control policy (SCP)
+\examples{
+# The following example shows how to create a service control policy (SCP)
 # that is named AllowAllS3Actions. The JSON string in the content
 # parameter specifies the content in the policy. The parameter string is
 # escaped with backslashes to ensure that the embedded double quotes in
@@ -55,13 +55,12 @@ account.
 # is surrounded by double quotes:
 # 
 # 
-svc$create_policy(
-  Content = "\{\\\\\\"Version\\\\\\":\\\\\\"2012-10-17\\\\\\",\\\\\\"Statement\\\\\\":\{\\\\\\"Effect\\\\\\":...",
+\donttest{svc$create_policy(
+  Content = "{\\\\\"Version\\\\\":\\\\\"2012-10-17\\\\\",\\\\\"Statement\\\\\":{\\\\\"Effect\\\\\":...",
   Description = "Enables admins of attached accounts to delegate all S3 permissions",
   Name = "AllowAllS3Actions",
   Type = "SERVICE_CONTROL_POLICY"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

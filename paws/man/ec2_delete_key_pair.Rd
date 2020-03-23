@@ -27,12 +27,11 @@ EC2.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example deletes the specified key pair.
-svc$delete_key_pair(
+\examples{
+# This example deletes the specified key pair.
+\donttest{svc$delete_key_pair(
   KeyName = "my-key-pair"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

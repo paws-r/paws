@@ -213,9 +213,9 @@ Creates an endpoint using the provided settings.
 }
 }
 
-\section{Examples}{
-\preformatted{# Creates an endpoint using the provided settings.
-svc$create_endpoint(
+\examples{
+# Creates an endpoint using the provided settings.
+\donttest{svc$create_endpoint(
   CertificateArn = "",
   DatabaseName = "testdb",
   EndpointIdentifier = "test-endpoint-1",
@@ -234,8 +234,7 @@ svc$create_endpoint(
     )
   ),
   Username = "username"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

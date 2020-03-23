@@ -66,19 +66,18 @@ If you do not specify a status, only \code{RUNNING} jobs are returned.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example lists the running jobs in the HighPriority job queue.
-svc$list_jobs(
+\examples{
+# This example lists the running jobs in the HighPriority job queue.
+\donttest{svc$list_jobs(
   jobQueue = "HighPriority"
-)
+)}
 
 # This example lists jobs in the HighPriority job queue that are in the
 # SUBMITTED job status.
-svc$list_jobs(
+\donttest{svc$list_jobs(
   jobQueue = "HighPriority",
   jobStatus = "SUBMITTED"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

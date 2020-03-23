@@ -31,12 +31,11 @@ NULL
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
+#' \donttest{svc <- textract()
 #' svc$analyze_document(
 #'   Foo = 123
-#' )
-#' ```
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

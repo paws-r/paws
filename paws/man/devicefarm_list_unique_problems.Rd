@@ -32,14 +32,13 @@ exception.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example returns information about unique problems, given a
+\examples{
+# The following example returns information about unique problems, given a
 # specific Device Farm project.
-svc$list_unique_problems(
+\donttest{svc$list_unique_problems(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

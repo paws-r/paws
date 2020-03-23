@@ -44,14 +44,13 @@ there is no policy associated with the vault.
 }
 }
 
-\section{Examples}{
-\preformatted{# The example aborts the vault locking process if the vault lock is not in
+\examples{
+# The example aborts the vault locking process if the vault lock is not in
 # the Locked state for the vault named examplevault.
-svc$abort_vault_lock(
+\donttest{svc$abort_vault_lock(
   accountId = "-",
   vaultName = "examplevault"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

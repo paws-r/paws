@@ -33,13 +33,6 @@ Detector features, see the \href{https://docs.aws.amazon.com/frauddetector/lates
 }
 }
 
-\section{Examples}{
-\preformatted{svc$batch_create_variable(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -76,3 +69,10 @@ Detector features, see the \href{https://docs.aws.amazon.com/frauddetector/lates
 }
 }
 
+\examples{
+\donttest{svc <- frauddetector()
+svc$batch_create_variable(
+  Foo = 123
+)}
+
+}

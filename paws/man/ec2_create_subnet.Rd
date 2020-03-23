@@ -80,15 +80,14 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example creates a subnet in the specified VPC with the specified
+\examples{
+# This example creates a subnet in the specified VPC with the specified
 # CIDR block. We recommend that you let us select an Availability Zone for
 # you.
-svc$create_subnet(
+\donttest{svc$create_subnet(
   CidrBlock = "10.0.1.0/24",
   VpcId = "vpc-a01106c2"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

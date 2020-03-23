@@ -38,14 +38,13 @@ route table ID of the new main route table.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example associates the specified route table with the subnet for
+\examples{
+# This example associates the specified route table with the subnet for
 # the specified route table association.
-svc$replace_route_table_association(
+\donttest{svc$replace_route_table_association(
   AssociationId = "rtbassoc-781d0d1a",
   RouteTableId = "rtb-22574640"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

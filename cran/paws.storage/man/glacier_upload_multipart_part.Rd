@@ -85,18 +85,17 @@ in the \emph{Amazon Glacier Developer Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The example uploads the first 1 MiB (1024 x 1024 bytes) part of an
+\examples{
+# The example uploads the first 1 MiB (1024 x 1024 bytes) part of an
 # archive.
-svc$upload_multipart_part(
+\donttest{svc$upload_multipart_part(
   accountId = "-",
   body = "part1",
   checksum = "c06f7cd4baacb087002a99a5f48bf953",
   range = "bytes 0-1048575/*",
   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV...",
   vaultName = "examplevault"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

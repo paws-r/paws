@@ -42,13 +42,6 @@ capacity in a multi-tenant database.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$get_entitlements(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -56,3 +49,10 @@ capacity in a multi-tenant database.
 }
 }
 
+\examples{
+\donttest{svc <- marketplaceentitlementservice()
+svc$get_entitlements(
+  Foo = 123
+)}
+
+}

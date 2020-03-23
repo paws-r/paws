@@ -47,13 +47,12 @@ in the \emph{AWS Key Management Service Developer Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example deletes the imported key material from the
+\examples{
+# The following example deletes the imported key material from the
 # specified customer master key (CMK).
-svc$delete_imported_key_material(
+\donttest{svc$delete_imported_key_material(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

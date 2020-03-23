@@ -36,12 +36,11 @@ records, whichever comes first.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example retrieves all the stream records from a shard.
-svc$get_records(
+\examples{
+# The following example retrieves all the stream records from a shard.
+\donttest{svc$get_records(
   ShardIterator = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:..."
-)
-}
-}
+)}
 
+}
 \keyword{internal}

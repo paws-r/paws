@@ -27,10 +27,10 @@ Deletes the specified tags.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example deletes the specified tag from the specified Auto Scaling
+\examples{
+# This example deletes the specified tag from the specified Auto Scaling
 # group.
-svc$delete_tags(
+\donttest{svc$delete_tags(
   Tags = list(
     list(
       Key = "Dept",
@@ -39,8 +39,7 @@ svc$delete_tags(
       Value = "Research"
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

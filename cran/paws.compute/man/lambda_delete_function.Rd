@@ -44,13 +44,12 @@ originally configured it.
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation deletes a Lambda function
-svc$delete_function(
+\examples{
+# This operation deletes a Lambda function
+\donttest{svc$delete_function(
   FunctionName = "myFunction",
   Qualifier = "1"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

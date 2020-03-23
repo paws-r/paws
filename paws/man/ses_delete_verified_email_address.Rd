@@ -20,13 +20,12 @@ and domains.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example deletes an email address from the list of
+\examples{
+# The following example deletes an email address from the list of
 # identities that have been submitted for verification with Amazon SES:
-svc$delete_verified_email_address(
+\donttest{svc$delete_verified_email_address(
   EmailAddress = "user@example.com"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

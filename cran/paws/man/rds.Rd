@@ -70,13 +70,6 @@ some related topics from the user guide.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$add_role_to_db_cluster(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -211,3 +204,10 @@ some related topics from the user guide.
 }
 }
 
+\examples{
+\donttest{svc <- rds()
+svc$add_role_to_db_cluster(
+  Foo = 123
+)}
+
+}

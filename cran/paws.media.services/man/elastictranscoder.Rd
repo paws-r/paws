@@ -32,13 +32,6 @@ The AWS Elastic Transcoder Service.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$cancel_job(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -62,3 +55,10 @@ The AWS Elastic Transcoder Service.
 }
 }
 
+\examples{
+\donttest{svc <- elastictranscoder()
+svc$cancel_job(
+  Foo = 123
+)}
+
+}

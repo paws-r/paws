@@ -67,9 +67,9 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example shows how to add tags to an existing role.
-svc$tag_role(
+\examples{
+# The following example shows how to add tags to an existing role.
+\donttest{svc$tag_role(
   RoleName = "taggedrole",
   Tags = list(
     list(
@@ -81,8 +81,7 @@ svc$tag_role(
       Value = "12345"
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

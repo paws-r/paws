@@ -188,10 +188,10 @@ range keys (which essentially is two put operations).
 }
 }
 
-\section{Examples}{
-\preformatted{# This example adds three new items to the Music table using a batch of
+\examples{
+# This example adds three new items to the Music table using a batch of
 # three PutItem requests.
-svc$batch_write_item(
+\donttest{svc$batch_write_item(
   RequestItems = list(
     Music = list(
       list(
@@ -241,8 +241,7 @@ svc$batch_write_item(
       )
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

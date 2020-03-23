@@ -30,13 +30,6 @@ Provides APIs for creating and managing Amazon SageMaker resources.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$add_tags(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -174,3 +167,10 @@ Provides APIs for creating and managing Amazon SageMaker resources.
 }
 }
 
+\examples{
+\donttest{svc <- sagemaker()
+svc$add_tags(
+  Foo = 123
+)}
+
+}

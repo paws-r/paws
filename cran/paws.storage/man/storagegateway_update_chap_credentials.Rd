@@ -48,16 +48,15 @@ are closed and initiators must reconnect with the new credentials.
 }
 }
 
-\section{Examples}{
-\preformatted{# Updates the Challenge-Handshake Authentication Protocol (CHAP)
+\examples{
+# Updates the Challenge-Handshake Authentication Protocol (CHAP)
 # credentials for a specified iSCSI target.
-svc$update_chap_credentials(
+\donttest{svc$update_chap_credentials(
   InitiatorName = "iqn.1991-05.com.microsoft:computername.domain.example.com",
   SecretToAuthenticateInitiator = "111111111111",
   SecretToAuthenticateTarget = "222222222222",
   TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn..."
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -215,9 +215,9 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example creates a launch configuration.
-svc$create_launch_configuration(
+\examples{
+# This example creates a launch configuration.
+\donttest{svc$create_launch_configuration(
   IamInstanceProfile = "my-iam-role",
   ImageId = "ami-12345678",
   InstanceType = "m3.medium",
@@ -225,8 +225,7 @@ svc$create_launch_configuration(
   SecurityGroups = list(
     "sg-eb2af88e"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

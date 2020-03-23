@@ -60,11 +60,10 @@ To run this command, you must have the following permissions:
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example shows how to list all of the secrets in your
+\examples{
+# The following example shows how to list all of the secrets in your
 # account.
-svc$list_secrets()
-}
-}
+\donttest{svc$list_secrets()}
 
+}
 \keyword{internal}

@@ -39,14 +39,13 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following delete-user-policy command removes the specified policy
+\examples{
+# The following delete-user-policy command removes the specified policy
 # from the IAM user named Juan:
-svc$delete_user_policy(
+\donttest{svc$delete_user_policy(
   PolicyName = "ExamplePolicy",
   UserName = "Juan"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

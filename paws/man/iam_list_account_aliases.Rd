@@ -37,10 +37,9 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following command lists the aliases for the current account.
-svc$list_account_aliases()
-}
-}
+\examples{
+# The following command lists the aliases for the current account.
+\donttest{svc$list_account_aliases()}
 
+}
 \keyword{internal}

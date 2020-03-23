@@ -293,9 +293,9 @@ in the \emph{Amazon DynamoDB Developer Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example adds a new item to the Music table.
-svc$put_item(
+\examples{
+# This example adds a new item to the Music table.
+\donttest{svc$put_item(
   Item = list(
     AlbumTitle = list(
       S = "Somewhat Famous"
@@ -309,8 +309,7 @@ svc$put_item(
   ),
   ReturnConsumedCapacity = "TOTAL",
   TableName = "Music"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

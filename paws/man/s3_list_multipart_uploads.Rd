@@ -105,22 +105,21 @@ The following operations are related to \code{ListMultipartUploads}:
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example specifies the upload-id-marker and key-marker from
+\examples{
+# The following example specifies the upload-id-marker and key-marker from
 # previous truncated response to retrieve next setup of multipart uploads.
-svc$list_multipart_uploads(
+\donttest{svc$list_multipart_uploads(
   Bucket = "examplebucket",
   KeyMarker = "nextkeyfrompreviousresponse",
   MaxUploads = "2",
   UploadIdMarker = "valuefrompreviousresponse"
-)
+)}
 
 # The following example lists in-progress multipart uploads on a specific
 # bucket.
-svc$list_multipart_uploads(
+\donttest{svc$list_multipart_uploads(
   Bucket = "examplebucket"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

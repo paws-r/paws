@@ -40,13 +40,6 @@ infrastructure to buy and set up.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_server(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -71,3 +64,10 @@ infrastructure to buy and set up.
 }
 }
 
+\examples{
+\donttest{svc <- transfer()
+svc$create_server(
+  Foo = 123
+)}
+
+}

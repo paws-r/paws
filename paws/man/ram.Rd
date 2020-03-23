@@ -37,13 +37,6 @@ For more information, see the \href{https://docs.aws.amazon.com/ram/latest/userg
 }
 }
 
-\section{Examples}{
-\preformatted{svc$accept_resource_share_invitation(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -73,3 +66,10 @@ For more information, see the \href{https://docs.aws.amazon.com/ram/latest/userg
 }
 }
 
+\examples{
+\donttest{svc <- ram()
+svc$accept_resource_share_invitation(
+  Foo = 123
+)}
+
+}

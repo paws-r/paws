@@ -47,13 +47,6 @@ job
 }
 }
 
-\section{Examples}{
-\preformatted{svc$describe_job_execution(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -64,3 +57,10 @@ job
 }
 }
 
+\examples{
+\donttest{svc <- iotjobsdataplane()
+svc$describe_job_execution(
+  Foo = 123
+)}
+
+}

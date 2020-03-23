@@ -94,12 +94,12 @@ The following operations are related to \code{DeleteObjects}:
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example deletes objects from a bucket. The bucket is
+\examples{
+# The following example deletes objects from a bucket. The bucket is
 # versioned, and the request does not specify the object version to
 # delete. In this case, all versions remain in the bucket and S3 adds a
 # delete marker.
-svc$delete_objects(
+\donttest{svc$delete_objects(
   Bucket = "examplebucket",
   Delete = list(
     Objects = list(
@@ -112,12 +112,12 @@ svc$delete_objects(
     ),
     Quiet = FALSE
   )
-)
+)}
 
 # The following example deletes objects from a bucket. The request
 # specifies object versions. S3 deletes specific object versions and
 # returns the key and versions of deleted objects in the response.
-svc$delete_objects(
+\donttest{svc$delete_objects(
   Bucket = "examplebucket",
   Delete = list(
     Objects = list(
@@ -132,8 +132,7 @@ svc$delete_objects(
     ),
     Quiet = FALSE
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

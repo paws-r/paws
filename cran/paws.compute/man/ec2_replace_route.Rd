@@ -71,16 +71,15 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example replaces the specified route in the specified table table.
+\examples{
+# This example replaces the specified route in the specified table table.
 # The new route matches the specified CIDR and sends the traffic to the
 # specified virtual private gateway.
-svc$replace_route(
+\donttest{svc$replace_route(
   DestinationCidrBlock = "10.0.0.0/16",
   GatewayId = "vgw-9a4cacf3",
   RouteTableId = "rtb-22574640"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

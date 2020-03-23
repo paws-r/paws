@@ -37,13 +37,6 @@ For more information, see the Amazon Cognito Documentation.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$add_custom_attributes(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -150,3 +143,10 @@ For more information, see the Amazon Cognito Documentation.
 }
 }
 
+\examples{
+\donttest{svc <- cognitoidentityprovider()
+svc$add_custom_attributes(
+  Foo = 123
+)}
+
+}

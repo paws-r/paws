@@ -58,7 +58,7 @@ get_version <- function(path) {
 clear_files <- function(path, keep) {
   if (dir.exists(path)) {
     files <- list.files(path, full.names = TRUE)
-    delete <- grep(paste(keep, collapse = "|"), files, invert = TRUE, value = TRUE)
+    delete <- grep(keep, files, invert = TRUE, value = TRUE)
     unlink(delete, recursive = TRUE)
   }
 }

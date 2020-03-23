@@ -24,12 +24,11 @@ available for use.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example deletes the specified launch configuration.
-svc$delete_launch_configuration(
+\examples{
+# This example deletes the specified launch configuration.
+\donttest{svc$delete_launch_configuration(
   LaunchConfigurationName = "my-launch-config"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

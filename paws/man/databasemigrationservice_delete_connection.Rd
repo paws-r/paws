@@ -24,14 +24,13 @@ Deletes the connection between a replication instance and an endpoint.
 }
 }
 
-\section{Examples}{
-\preformatted{# Deletes the connection between the replication instance and the
+\examples{
+# Deletes the connection between the replication instance and the
 # endpoint.
-svc$delete_connection(
+\donttest{svc$delete_connection(
   EndpointArn = "arn:aws:dms:us-east-1:123456789012:endpoint:RAAR3R22XSH46S3PWLC3NJAWKM",
   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJ..."
-)
-}
-}
+)}
 
+}
 \keyword{internal}

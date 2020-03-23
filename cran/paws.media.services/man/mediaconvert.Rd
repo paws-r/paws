@@ -30,13 +30,6 @@ AWS Elemental MediaConvert
 }
 }
 
-\section{Examples}{
-\preformatted{svc$associate_certificate(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -68,3 +61,10 @@ AWS Elemental MediaConvert
 }
 }
 
+\examples{
+\donttest{svc <- mediaconvert()
+svc$associate_certificate(
+  Foo = 123
+)}
+
+}

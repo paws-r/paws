@@ -26,13 +26,12 @@ You can execute this operation no more than once per second.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example starts the email address verification process with
+\examples{
+# The following example starts the email address verification process with
 # Amazon SES:
-svc$verify_email_identity(
+\donttest{svc$verify_email_identity(
   EmailAddress = "user@example.com"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

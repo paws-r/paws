@@ -112,16 +112,15 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following upload-server-certificate command uploads a server
+\examples{
+# The following upload-server-certificate command uploads a server
 # certificate to your AWS account:
-svc$upload_server_certificate(
+\donttest{svc$upload_server_certificate(
   CertificateBody = "-----BEGIN CERTIFICATE-----<a very long certificate text string>-----EN...",
   Path = "/company/servercerts/",
   PrivateKey = "-----BEGIN DSA PRIVATE KEY-----<a very long private key string>-----END DSA ...",
   ServerCertificateName = "ProdServerCert"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

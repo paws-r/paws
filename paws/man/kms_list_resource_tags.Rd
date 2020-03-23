@@ -49,12 +49,11 @@ You cannot perform this operation on a CMK in a different AWS account.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example lists tags for a CMK.
-svc$list_resource_tags(
+\examples{
+# The following example lists tags for a CMK.
+\donttest{svc$list_resource_tags(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

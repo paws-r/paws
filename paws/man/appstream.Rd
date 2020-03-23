@@ -48,13 +48,6 @@ To learn more about AppStream 2.0, see the following resources:
 }
 }
 
-\section{Examples}{
-\preformatted{svc$associate_fleet(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -108,3 +101,10 @@ To learn more about AppStream 2.0, see the following resources:
 }
 }
 
+\examples{
+\donttest{svc <- appstream()
+svc$associate_fleet(
+  Foo = 123
+)}
+
+}

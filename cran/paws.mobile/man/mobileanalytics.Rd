@@ -31,13 +31,6 @@ understanding app usage data at scale.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$put_events(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -45,3 +38,10 @@ understanding app usage data at scale.
 }
 }
 
+\examples{
+\donttest{svc <- mobileanalytics()
+svc$put_events(
+  Foo = 123
+)}
+
+}

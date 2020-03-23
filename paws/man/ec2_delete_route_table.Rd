@@ -27,12 +27,11 @@ route table.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example deletes the specified route table.
-svc$delete_route_table(
+\examples{
+# This example deletes the specified route table.
+\donttest{svc$delete_route_table(
   RouteTableId = "rtb-22574640"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

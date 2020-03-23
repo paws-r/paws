@@ -37,14 +37,13 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following command attaches the AWS managed policy named
+\examples{
+# The following command attaches the AWS managed policy named
 # AdministratorAccess to the IAM user named Alice.
-svc$attach_user_policy(
+\donttest{svc$attach_user_policy(
   PolicyArn = "arn:aws:iam::aws:policy/AdministratorAccess",
   UserName = "Alice"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

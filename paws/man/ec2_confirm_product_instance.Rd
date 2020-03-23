@@ -31,14 +31,13 @@ is eligible for support.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example determines whether the specified product code is associated
+\examples{
+# This example determines whether the specified product code is associated
 # with the specified instance.
-svc$confirm_product_instance(
+\donttest{svc$confirm_product_instance(
   InstanceId = "i-1234567890abcdef0",
   ProductCode = "774F4FF8"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

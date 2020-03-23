@@ -25,12 +25,11 @@ AWS account.
 }
 }
 
-\section{Examples}{
-\preformatted{# The example lists the provisioned capacity units for an account.
-svc$list_provisioned_capacity(
+\examples{
+# The example lists the provisioned capacity units for an account.
+\donttest{svc$list_provisioned_capacity(
   accountId = "-"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -37,18 +37,17 @@ account.
 }
 }
 
-\section{Examples}{
-\preformatted{# Returns a description of specified virtual tapes in the virtual tape
+\examples{
+# Returns a description of specified virtual tapes in the virtual tape
 # shelf (VTS).
-svc$describe_tape_archives(
+\donttest{svc$describe_tape_archives(
   Limit = 123L,
   Marker = "1",
   TapeARNs = list(
     "arn:aws:storagegateway:us-east-1:999999999999:tape/AM08A1AD",
     "arn:aws:storagegateway:us-east-1:999999999999:tape/AMZN01A2A4"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

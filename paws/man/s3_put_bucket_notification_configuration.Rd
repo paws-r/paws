@@ -137,10 +137,10 @@ The following operation is related to
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example sets notification configuration on a bucket to
+\examples{
+# The following example sets notification configuration on a bucket to
 # publish the object created events to an SNS topic.
-svc$put_bucket_notification_configuration(
+\donttest{svc$put_bucket_notification_configuration(
   Bucket = "examplebucket",
   NotificationConfiguration = list(
     TopicConfigurations = list(
@@ -152,8 +152,7 @@ svc$put_bucket_notification_configuration(
       )
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

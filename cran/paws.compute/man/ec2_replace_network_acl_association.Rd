@@ -35,14 +35,13 @@ This is an idempotent operation.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example associates the specified network ACL with the subnet for
+\examples{
+# This example associates the specified network ACL with the subnet for
 # the specified network ACL association.
-svc$replace_network_acl_association(
+\donttest{svc$replace_network_acl_association(
   AssociationId = "aclassoc-e5b95c8c",
   NetworkAclId = "acl-5fb85d36"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

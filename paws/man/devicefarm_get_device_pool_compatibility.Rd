@@ -96,15 +96,14 @@ Gets information about compatibility with a device pool.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example returns information about the compatibility of a
+\examples{
+# The following example returns information about the compatibility of a
 # specific device pool, given its ARN.
-svc$get_device_pool_compatibility(
+\donttest{svc$get_device_pool_compatibility(
   appArn = "arn:aws:devicefarm:us-west-2::app:123-456-EXAMPLE-GUID",
   devicePoolArn = "arn:aws:devicefarm:us-west-2::devicepool:123-456-EXAMPLE-GUID",
   testType = "APPIUM_PYTHON"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

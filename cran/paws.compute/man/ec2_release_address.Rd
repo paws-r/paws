@@ -58,19 +58,18 @@ AllocateAddress.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example releases an Elastic IP address for use with instances in a
+\examples{
+# This example releases an Elastic IP address for use with instances in a
 # VPC.
-svc$release_address(
+\donttest{svc$release_address(
   AllocationId = "eipalloc-64d5890a"
-)
+)}
 
 # This example releases an Elastic IP address for use with instances in
 # EC2-Classic.
-svc$release_address(
+\donttest{svc$release_address(
   PublicIp = "198.51.100.0"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

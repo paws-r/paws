@@ -31,13 +31,6 @@ vendors across multiple AWS accounts and on-premises servers.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_license_configuration(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -60,3 +53,10 @@ vendors across multiple AWS accounts and on-premises servers.
 }
 }
 
+\examples{
+\donttest{svc <- licensemanager()
+svc$create_license_configuration(
+  Foo = 123
+)}
+
+}

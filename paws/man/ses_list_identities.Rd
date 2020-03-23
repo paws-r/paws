@@ -35,15 +35,14 @@ You can execute this operation no more than once per second.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example lists the email address identities that have been
+\examples{
+# The following example lists the email address identities that have been
 # submitted for verification with Amazon SES:
-svc$list_identities(
+\donttest{svc$list_identities(
   IdentityType = "EmailAddress",
   MaxItems = 123L,
   NextToken = ""
-)
-}
-}
+)}
 
+}
 \keyword{internal}

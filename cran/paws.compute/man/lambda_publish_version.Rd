@@ -59,14 +59,13 @@ alias, use CreateAlias.
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation publishes a version of a Lambda function
-svc$publish_version(
+\examples{
+# This operation publishes a version of a Lambda function
+\donttest{svc$publish_version(
   CodeSha256 = "",
   Description = "",
   FunctionName = "myFunction"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

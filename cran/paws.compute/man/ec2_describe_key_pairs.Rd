@@ -52,14 +52,13 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example displays the fingerprint for the specified key.
-svc$describe_key_pairs(
+\examples{
+# This example displays the fingerprint for the specified key.
+\donttest{svc$describe_key_pairs(
   KeyNames = list(
     "my-key-pair"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

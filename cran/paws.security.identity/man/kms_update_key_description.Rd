@@ -41,13 +41,12 @@ in the \emph{AWS Key Management Service Developer Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example updates the description of the specified CMK.
-svc$update_key_description(
+\examples{
+# The following example updates the description of the specified CMK.
+\donttest{svc$update_key_description(
   Description = "Example description that indicates the intended use of this CMK.",
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

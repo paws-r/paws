@@ -30,13 +30,6 @@ The control plane for Amazon QLDB
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_ledger(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -58,3 +51,10 @@ The control plane for Amazon QLDB
 }
 }
 
+\examples{
+\donttest{svc <- qldb()
+svc$create_ledger(
+  Foo = 123
+)}
+
+}

@@ -35,13 +35,6 @@ latency and local data processing needs.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_outpost(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -53,3 +46,10 @@ latency and local data processing needs.
 }
 }
 
+\examples{
+\donttest{svc <- outposts()
+svc$create_outpost(
+  Foo = 123
+)}
+
+}

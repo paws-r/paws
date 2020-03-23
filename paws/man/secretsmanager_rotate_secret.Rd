@@ -124,28 +124,27 @@ of a secret, use UpdateSecretVersionStage.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example configures rotation for a secret by providing the
+\examples{
+# The following example configures rotation for a secret by providing the
 # ARN of a Lambda rotation function (which must already exist) and the
 # number of days between rotation. The first rotation happens immediately
 # upon completion of this command. The rotation function runs
 # asynchronously in the background.
-svc$rotate_secret(
+\donttest{svc$rotate_secret(
   RotationLambdaARN = "arn:aws:lambda:us-west-2:123456789012:function:MyTestDatabaseRotation...",
   RotationRules = list(
     AutomaticallyAfterDays = 30L
   ),
   SecretId = "MyTestDatabaseSecret"
-)
+)}
 
 # The following example requests an immediate invocation of the secret's
 # Lambda rotation function. It assumes that the specified secret already
 # has rotation configured. The rotation function runs asynchronously in
 # the background.
-svc$rotate_secret(
+\donttest{svc$rotate_secret(
   SecretId = "MyTestDatabaseSecret"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -66,15 +66,14 @@ Returns descriptions for existing environments.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following operation retrieves information about an environment named
+\examples{
+# The following operation retrieves information about an environment named
 # my-env:
-svc$describe_environments(
+\donttest{svc$describe_environments(
   EnvironmentNames = list(
     "my-env"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

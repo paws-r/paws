@@ -67,14 +67,13 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the specified DHCP options set.
-svc$describe_dhcp_options(
+\examples{
+# This example describes the specified DHCP options set.
+\donttest{svc$describe_dhcp_options(
   DhcpOptionsIds = list(
     "dopt-d9070ebb"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

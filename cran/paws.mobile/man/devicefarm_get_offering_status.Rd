@@ -27,13 +27,12 @@ contact \href{mailto:aws-devicefarm-support@amazon.com}{aws-devicefarm-support@a
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example returns information about Device Farm offerings
+\examples{
+# The following example returns information about Device Farm offerings
 # available to your account.
-svc$get_offering_status(
+\donttest{svc$get_offering_status(
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
-)
-}
-}
+)}
 
+}
 \keyword{internal}

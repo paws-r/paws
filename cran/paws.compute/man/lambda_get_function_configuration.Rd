@@ -42,13 +42,12 @@ use GetFunction.
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation retrieves a Lambda function's event source mapping
-svc$get_function_configuration(
+\examples{
+# This operation retrieves a Lambda function's event source mapping
+\donttest{svc$get_function_configuration(
   FunctionName = "myFunction",
   Qualifier = "1"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

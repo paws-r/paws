@@ -18,11 +18,10 @@ Even if a policy type is shown as available in the organization, you can
 disable it separately at the root level with DisablePolicyType. Use
 ListRoots to see the status of policy types for a specified root.
 }
-\section{Examples}{
-\preformatted{# The following example shows how to request information about the current
+\examples{
+# The following example shows how to request information about the current
 # user's organization:/n/n
-svc$describe_organization()
-}
-}
+\donttest{svc$describe_organization()}
 
+}
 \keyword{internal}

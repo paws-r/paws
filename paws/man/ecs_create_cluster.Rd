@@ -128,12 +128,11 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example creates a cluster in your default region.
-svc$create_cluster(
+\examples{
+# This example creates a cluster in your default region.
+\donttest{svc$create_cluster(
   clusterName = "my_cluster"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

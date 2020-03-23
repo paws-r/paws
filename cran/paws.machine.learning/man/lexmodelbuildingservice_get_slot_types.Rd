@@ -44,14 +44,13 @@ The operation requires permission for the \code{lex:GetSlotTypes} action.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example shows how to get a list of all of the slot types in your
+\examples{
+# This example shows how to get a list of all of the slot types in your
 # account.
-svc$get_slot_types(
+\donttest{svc$get_slot_types(
   maxResults = 10L,
   nextToken = ""
-)
-}
-}
+)}
 
+}
 \keyword{internal}

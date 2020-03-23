@@ -60,9 +60,9 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the tags for the specified instance.
-svc$describe_tags(
+\examples{
+# This example describes the tags for the specified instance.
+\donttest{svc$describe_tags(
   Filters = list(
     list(
       Name = "resource-id",
@@ -71,8 +71,7 @@ svc$describe_tags(
       )
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

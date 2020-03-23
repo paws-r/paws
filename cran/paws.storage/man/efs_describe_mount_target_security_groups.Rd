@@ -31,13 +31,12 @@ target\'s network interface.
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation describes all of the security groups for a file system's
+\examples{
+# This operation describes all of the security groups for a file system's
 # mount target.
-svc$describe_mount_target_security_groups(
+\donttest{svc$describe_mount_target_security_groups(
   MountTargetId = "fsmt-12340abc"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

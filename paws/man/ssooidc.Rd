@@ -49,13 +49,6 @@ SDKs, including how to download and install them, see \href{http://aws.amazon.co
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_token(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -65,3 +58,10 @@ SDKs, including how to download and install them, see \href{http://aws.amazon.co
 }
 }
 
+\examples{
+\donttest{svc <- ssooidc()
+svc$create_token(
+  Foo = 123
+)}
+
+}

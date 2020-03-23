@@ -23,14 +23,13 @@ Deletes the specified scheduled action.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example deletes the specified scheduled action from the specified
+\examples{
+# This example deletes the specified scheduled action from the specified
 # Auto Scaling group.
-svc$delete_scheduled_action(
+\donttest{svc$delete_scheduled_action(
   AutoScalingGroupName = "my-auto-scaling-group",
   ScheduledActionName = "my-scheduled-action"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

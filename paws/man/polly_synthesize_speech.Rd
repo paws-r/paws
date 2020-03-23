@@ -84,9 +84,9 @@ information, see \href{https://docs.aws.amazon.com/polly/latest/dg/how-text-to-s
 }
 }
 
-\section{Examples}{
-\preformatted{# Synthesizes plain text or SSML into a file of human-like speech.
-svc$synthesize_speech(
+\examples{
+# Synthesizes plain text or SSML into a file of human-like speech.
+\donttest{svc$synthesize_speech(
   LexiconNames = list(
     "example"
   ),
@@ -95,8 +95,7 @@ svc$synthesize_speech(
   Text = "All Gaul is divided into three parts",
   TextType = "text",
   VoiceId = "Joanna"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

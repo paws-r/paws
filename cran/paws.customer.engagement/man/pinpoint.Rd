@@ -30,13 +30,6 @@ Doc Engage API - Amazon Pinpoint API
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_app(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -150,3 +143,10 @@ Doc Engage API - Amazon Pinpoint API
 }
 }
 
+\examples{
+\donttest{svc <- pinpoint()
+svc$create_app(
+  Foo = 123
+)}
+
+}

@@ -34,16 +34,15 @@ on a per-Region basis.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example modifies the default account setting for the specified
+\examples{
+# This example modifies the default account setting for the specified
 # resource for all IAM users or roles on an account. These changes apply
 # to the entire AWS account, unless an IAM user or role explicitly
 # overrides these settings for themselves.
-svc$put_account_setting_default(
+\donttest{svc$put_account_setting_default(
   name = "serviceLongArnFormat",
   value = "enabled"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

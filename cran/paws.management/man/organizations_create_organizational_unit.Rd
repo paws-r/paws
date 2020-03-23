@@ -45,16 +45,15 @@ account.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example shows how to create an OU that is named
+\examples{
+# The following example shows how to create an OU that is named
 # AccountingOU. The new OU is directly under the root.:
 # 
 # 
-svc$create_organizational_unit(
+\donttest{svc$create_organizational_unit(
   Name = "AccountingOU",
   ParentId = "r-examplerootid111"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

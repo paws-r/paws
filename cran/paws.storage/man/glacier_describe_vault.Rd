@@ -48,13 +48,12 @@ in the \emph{Amazon Glacier Developer Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The example retrieves data about a vault named my-vault.
-svc$describe_vault(
+\examples{
+# The example retrieves data about a vault named my-vault.
+\donttest{svc$describe_vault(
   accountId = "-",
   vaultName = "my-vault"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

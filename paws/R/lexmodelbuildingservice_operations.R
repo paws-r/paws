@@ -636,14 +636,12 @@ lexmodelbuildingservice_delete_utterances <- function(botName, userId) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example shows how to get configuration information for a bot.
-#' svc$get_bot(
+#' \donttest{svc$get_bot(
 #'   name = "DocOrderPizza",
 #'   versionOrAlias = "$LATEST"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -954,14 +952,12 @@ lexmodelbuildingservice_get_bot_versions <- function(name, nextToken = NULL, max
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example shows how to get a list of all of the bots in your account.
-#' svc$get_bots(
+#' \donttest{svc$get_bots(
 #'   maxResults = 5L,
 #'   nextToken = ""
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1239,14 +1235,12 @@ lexmodelbuildingservice_get_import <- function(importId) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example shows how to get information about an intent.
-#' svc$get_intent(
+#' \donttest{svc$get_intent(
 #'   version = "$LATEST",
 #'   name = "DocOrderPizza"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1360,15 +1354,13 @@ lexmodelbuildingservice_get_intent_versions <- function(name, nextToken = NULL, 
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example shows how to get a list of all of the intents in your
 #' # account.
-#' svc$get_intents(
+#' \donttest{svc$get_intents(
 #'   maxResults = 10L,
 #'   nextToken = ""
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1412,14 +1404,12 @@ lexmodelbuildingservice_get_intents <- function(nextToken = NULL, maxResults = N
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example shows how to get information about a slot type.
-#' svc$get_slot_type(
+#' \donttest{svc$get_slot_type(
 #'   version = "$LATEST",
 #'   name = "DocPizzaCrustType"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1535,15 +1525,13 @@ lexmodelbuildingservice_get_slot_type_versions <- function(name, nextToken = NUL
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example shows how to get a list of all of the slot types in your
 #' # account.
-#' svc$get_slot_types(
+#' \donttest{svc$get_slot_types(
 #'   maxResults = 10L,
 #'   nextToken = ""
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1839,10 +1827,9 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example shows how to create a bot for ordering pizzas.
-#' svc$put_bot(
+#' \donttest{svc$put_bot(
 #'   name = "DocOrderPizzaBot",
 #'   abortStatement = list(
 #'     messages = list(
@@ -1880,8 +1867,7 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
 #'   ),
 #'   locale = "en-US",
 #'   processBehavior = "SAVE"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2239,10 +2225,9 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example shows how to create an intent for ordering pizzas.
-#' svc$put_intent(
+#' \donttest{svc$put_intent(
 #'   name = "DocOrderPizza",
 #'   conclusionStatement = list(
 #'     messages = list(
@@ -2370,8 +2355,7 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #'       )
 #'     )
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2483,11 +2467,10 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example shows how to create a slot type that describes pizza
 #' # sauces.
-#' svc$put_slot_type(
+#' \donttest{svc$put_slot_type(
 #'   name = "PizzaSauceType",
 #'   description = "Available pizza sauces",
 #'   enumerationValues = list(
@@ -2498,8 +2481,7 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
 #'       value = "white"
 #'     )
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'

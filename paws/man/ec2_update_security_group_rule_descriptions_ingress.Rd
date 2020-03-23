@@ -78,10 +78,10 @@ description parameter in the request.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example updates the description for the specified security group
+\examples{
+# This example updates the description for the specified security group
 # rule.
-svc$update_security_group_rule_descriptions_ingress(
+\donttest{svc$update_security_group_rule_descriptions_ingress(
   GroupId = "sg-123abc12",
   IpPermissions = list(
     list(
@@ -96,8 +96,7 @@ svc$update_security_group_rule_descriptions_ingress(
       ToPort = 22L
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

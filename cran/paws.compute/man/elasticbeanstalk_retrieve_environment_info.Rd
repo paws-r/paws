@@ -47,14 +47,13 @@ Related Topics
 }
 }
 
-\section{Examples}{
-\preformatted{# The following operation retrieves a link to logs from an environment
+\examples{
+# The following operation retrieves a link to logs from an environment
 # named my-env:
-svc$retrieve_environment_info(
+\donttest{svc$retrieve_environment_info(
   EnvironmentName = "my-env",
   InfoType = "tail"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

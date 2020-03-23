@@ -49,13 +49,12 @@ in the \emph{Amazon Glacier Developer Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example creates a new vault named my-vault.
-svc$create_vault(
+\examples{
+# The following example creates a new vault named my-vault.
+\donttest{svc$create_vault(
   accountId = "-",
   vaultName = "my-vault"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

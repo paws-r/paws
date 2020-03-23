@@ -27,13 +27,12 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following command gets information about the instance profile named
+\examples{
+# The following command gets information about the instance profile named
 # ExampleInstanceProfile.
-svc$get_instance_profile(
+\donttest{svc$get_instance_profile(
   InstanceProfileName = "ExampleInstanceProfile"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

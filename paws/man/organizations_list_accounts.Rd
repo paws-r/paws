@@ -46,11 +46,10 @@ account.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example shows you how to request a list of the accounts in
+\examples{
+# The following example shows you how to request a list of the accounts in
 # an organization:
-svc$list_accounts()
-}
-}
+\donttest{svc$list_accounts()}
 
+}
 \keyword{internal}

@@ -41,16 +41,15 @@ The following operations are related to \code{PutBucketRequestPayment}:
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example sets request payment configuration on a bucket so
+\examples{
+# The following example sets request payment configuration on a bucket so
 # that person requesting the download is charged.
-svc$put_bucket_request_payment(
+\donttest{svc$put_bucket_request_payment(
   Bucket = "examplebucket",
   RequestPaymentConfiguration = list(
     Payer = "Requester"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

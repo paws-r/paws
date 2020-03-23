@@ -30,13 +30,6 @@ Amazon Kendra is a service for indexing large document sets.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$batch_delete_document(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -63,3 +56,10 @@ Amazon Kendra is a service for indexing large document sets.
 }
 }
 
+\examples{
+\donttest{svc <- kendra()
+svc$batch_delete_document(
+  Foo = 123
+)}
+
+}

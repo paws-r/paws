@@ -56,19 +56,18 @@ Lists the account settings for a specified principal.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example displays the effective account settings for your account.
-svc$list_account_settings(
+\examples{
+# This example displays the effective account settings for your account.
+\donttest{svc$list_account_settings(
   effectiveSettings = TRUE
-)
+)}
 
 # This example displays the effective account settings for the specified
 # user or role.
-svc$list_account_settings(
+\donttest{svc$list_account_settings(
   effectiveSettings = TRUE,
   principalArn = "arn:aws:iam::<aws_account_id>:user/principalName"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

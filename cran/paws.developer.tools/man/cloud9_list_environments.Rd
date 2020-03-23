@@ -27,10 +27,9 @@ Gets a list of AWS Cloud9 development environment identifiers.
 }
 }
 
-\section{Examples}{
-\preformatted{# 
-svc$list_environments()
-}
-}
+\examples{
+# 
+\donttest{svc$list_environments()}
 
+}
 \keyword{internal}

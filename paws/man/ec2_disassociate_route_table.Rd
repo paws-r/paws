@@ -32,13 +32,12 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example disassociates the specified route table from its associated
+\examples{
+# This example disassociates the specified route table from its associated
 # subnet.
-svc$disassociate_route_table(
+\donttest{svc$disassociate_route_table(
   AssociationId = "rtbassoc-781d0d1a"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

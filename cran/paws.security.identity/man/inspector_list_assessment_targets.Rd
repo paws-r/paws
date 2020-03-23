@@ -38,12 +38,11 @@ more information about assessment targets, see \href{https://docs.aws.amazon.com
 }
 }
 
-\section{Examples}{
-\preformatted{# Lists the ARNs of the assessment targets within this AWS account.
-svc$list_assessment_targets(
+\examples{
+# Lists the ARNs of the assessment targets within this AWS account.
+\donttest{svc$list_assessment_targets(
   maxResults = 123L
-)
-}
-}
+)}
 
+}
 \keyword{internal}

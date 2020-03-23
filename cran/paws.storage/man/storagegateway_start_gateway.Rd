@@ -32,12 +32,11 @@ the gateway in your request.
 }
 }
 
-\section{Examples}{
-\preformatted{# Starts a gateway service that was previously shut down.
-svc$start_gateway(
+\examples{
+# Starts a gateway service that was previously shut down.
+\donttest{svc$start_gateway(
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

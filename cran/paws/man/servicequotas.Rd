@@ -42,13 +42,6 @@ Services page.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$associate_service_quota_template(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -71,3 +64,10 @@ Services page.
 }
 }
 
+\examples{
+\donttest{svc <- servicequotas()
+svc$associate_service_quota_template(
+  Foo = 123
+)}
+
+}

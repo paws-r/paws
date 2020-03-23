@@ -61,11 +61,10 @@ across the responses of a multicall iteration is unspecified.
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation describes all of the Amazon FSx file systems in an
+\examples{
+# This operation describes all of the Amazon FSx file systems in an
 # account.
-svc$describe_file_systems()
-}
-}
+\donttest{svc$describe_file_systems()}
 
+}
 \keyword{internal}

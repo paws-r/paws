@@ -376,11 +376,11 @@ You can also return the item\'s attribute values in the same
 }
 }
 
-\section{Examples}{
-\preformatted{# This example updates an item in the Music table. It adds a new attribute
+\examples{
+# This example updates an item in the Music table. It adds a new attribute
 # (Year) and modifies the AlbumTitle attribute.  All of the attributes in
 # the item, as they appear after the update, are returned in the response.
-svc$update_item(
+\donttest{svc$update_item(
   ExpressionAttributeNames = list(
     `#AT` = "AlbumTitle",
     `#Y` = "Year"
@@ -404,8 +404,7 @@ svc$update_item(
   ReturnValues = "ALL_NEW",
   TableName = "Music",
   UpdateExpression = "SET #Y = :y, #AT = :t"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

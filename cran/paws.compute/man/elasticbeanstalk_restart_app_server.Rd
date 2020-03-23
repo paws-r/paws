@@ -32,13 +32,12 @@ running on each Amazon EC2 instance.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following operation restarts application servers on all instances in
+\examples{
+# The following operation restarts application servers on all instances in
 # an environment named my-env:
-svc$restart_app_server(
+\donttest{svc$restart_app_server(
   EnvironmentName = "my-env"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

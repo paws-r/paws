@@ -62,21 +62,21 @@ Guide}:
 }
 }
 
-\section{Examples}{
-\preformatted{# This example enables cross-zone load balancing for the specified load
+\examples{
+# This example enables cross-zone load balancing for the specified load
 # balancer.
-svc$modify_load_balancer_attributes(
+\donttest{svc$modify_load_balancer_attributes(
   LoadBalancerAttributes = list(
     CrossZoneLoadBalancing = list(
       Enabled = TRUE
     )
   ),
   LoadBalancerName = "my-load-balancer"
-)
+)}
 
 # This example enables connection draining for the specified load
 # balancer.
-svc$modify_load_balancer_attributes(
+\donttest{svc$modify_load_balancer_attributes(
   LoadBalancerAttributes = list(
     ConnectionDraining = list(
       Enabled = TRUE,
@@ -84,8 +84,7 @@ svc$modify_load_balancer_attributes(
     )
   ),
   LoadBalancerName = "my-load-balancer"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

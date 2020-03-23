@@ -30,12 +30,11 @@ can be deleted.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example deletes the specified bucket.
-svc$delete_bucket(
+\examples{
+# The following example deletes the specified bucket.
+\donttest{svc$delete_bucket(
   Bucket = "forrandall2"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -53,16 +53,15 @@ that are specified by the ARNs of the assessment targets.
 }
 }
 
-\section{Examples}{
-\preformatted{# Lists the assessment templates that correspond to the assessment targets
+\examples{
+# Lists the assessment templates that correspond to the assessment targets
 # that are specified by the ARNs of the assessment targets.
-svc$list_assessment_templates(
+\donttest{svc$list_assessment_templates(
   assessmentTargetArns = list(
     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq"
   ),
   maxResults = 123L
-)
-}
-}
+)}
 
+}
 \keyword{internal}

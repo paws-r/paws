@@ -20,12 +20,11 @@ identifier of a mapping from the output of ListEventSourceMappings.
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation retrieves a Lambda function's event source mapping
-svc$get_event_source_mapping(
+\examples{
+# This operation retrieves a Lambda function's event source mapping
+\donttest{svc$get_event_source_mapping(
   UUID = "123489-xxxxx-kdla8d89d7"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

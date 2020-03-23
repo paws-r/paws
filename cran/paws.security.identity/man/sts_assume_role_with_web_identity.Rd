@@ -268,17 +268,16 @@ Amazon S3.
 }
 }
 
-\section{Examples}{
-\preformatted{# 
-svc$assume_role_with_web_identity(
+\examples{
+# 
+\donttest{svc$assume_role_with_web_identity(
   DurationSeconds = 3600L,
-  Policy = "\{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":[\{\\"Sid\\":\\"Stmt1\\",\\"Effect\\":...",
+  Policy = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"Stmt1\",\"Effect\":...",
   ProviderId = "www.amazon.com",
   RoleArn = "arn:aws:iam::123456789012:role/FederatedWebIdentityRole",
   RoleSessionName = "app1",
   WebIdentityToken = "Atza\%7CIQEBLjAsAhRFiXuWpUXuRvQ9PZL3GMFcYevydwIUFAHZwXZXXXXXXXXJnrulxKD..."
-)
-}
-}
+)}
 
+}
 \keyword{internal}

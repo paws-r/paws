@@ -41,9 +41,9 @@ Provides a description of the certificate.
 }
 }
 
-\section{Examples}{
-\preformatted{# Provides a description of the certificate.
-svc$describe_certificates(
+\examples{
+# Provides a description of the certificate.
+\donttest{svc$describe_certificates(
   Filters = list(
     list(
       Name = "string",
@@ -55,8 +55,7 @@ svc$describe_certificates(
   ),
   Marker = "",
   MaxRecords = 123L
-)
-}
-}
+)}
 
+}
 \keyword{internal}

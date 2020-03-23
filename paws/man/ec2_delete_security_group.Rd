@@ -35,12 +35,11 @@ in EC2-VPC.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example deletes the specified security group.
-svc$delete_security_group(
+\examples{
+# This example deletes the specified security group.
+\donttest{svc$delete_security_group(
   GroupId = "sg-903004f8"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

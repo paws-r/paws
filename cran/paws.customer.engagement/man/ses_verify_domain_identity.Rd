@@ -26,13 +26,12 @@ You can execute this operation no more than once per second.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example starts the domain verification process with Amazon
+\examples{
+# The following example starts the domain verification process with Amazon
 # SES:
-svc$verify_domain_identity(
+\donttest{svc$verify_domain_identity(
   Domain = "example.com"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

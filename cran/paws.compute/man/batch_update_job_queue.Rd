@@ -42,13 +42,12 @@ Updates a job queue.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example disables a job queue so that it can be deleted.
-svc$update_job_queue(
+\examples{
+# This example disables a job queue so that it can be deleted.
+\donttest{svc$update_job_queue(
   jobQueue = "GPGPU",
   state = "DISABLED"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

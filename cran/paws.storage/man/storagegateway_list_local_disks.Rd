@@ -29,14 +29,13 @@ by a disk that has incorrect metadata or the disk content is corrupted).
 }
 }
 
-\section{Examples}{
-\preformatted{# The request returns a list of all disks, specifying which are configured
+\examples{
+# The request returns a list of all disks, specifying which are configured
 # as working storage, cache storage, or stored volume or not configured at
 # all.
-svc$list_local_disks(
+\donttest{svc$list_local_disks(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -61,13 +61,6 @@ basis using the IAM model.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$abort_document_version_upload(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -115,3 +108,10 @@ basis using the IAM model.
 }
 }
 
+\examples{
+\donttest{svc <- workdocs()
+svc$abort_document_version_upload(
+  Foo = 123
+)}
+
+}

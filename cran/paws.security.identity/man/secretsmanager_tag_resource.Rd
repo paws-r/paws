@@ -92,11 +92,11 @@ use UntagResource.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example shows how to attach two tags each with a Key and
+\examples{
+# The following example shows how to attach two tags each with a Key and
 # Value to a secret. There is no output from this API. To see the result,
 # use the DescribeSecret operation.
-svc$tag_resource(
+\donttest{svc$tag_resource(
   SecretId = "MyExampleSecret",
   Tags = list(
     list(
@@ -108,8 +108,7 @@ svc$tag_resource(
       Value = "AnotherValue"
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

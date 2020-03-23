@@ -119,17 +119,16 @@ specified configuration.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following operation creates a new environment for version v1 of a
+\examples{
+# The following operation creates a new environment for version v1 of a
 # java application named my-app:
-svc$create_environment(
+\donttest{svc$create_environment(
   ApplicationName = "my-app",
   CNAMEPrefix = "my-app",
   EnvironmentName = "my-env",
   SolutionStackName = "64bit Amazon Linux 2015.03 v2.0.0 running Tomcat 8 Java 8",
   VersionLabel = "v1"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

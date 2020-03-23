@@ -10,11 +10,10 @@ iam_get_account_password_policy()
 Retrieves the password policy for the AWS account. For more information
 about using a password policy, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingPasswordPolicies.html}{Managing an IAM Password Policy}.
 }
-\section{Examples}{
-\preformatted{# The following command displays details about the password policy for the
+\examples{
+# The following command displays details about the password policy for the
 # current AWS account.
-svc$get_account_password_policy()
-}
-}
+\donttest{svc$get_account_password_policy()}
 
+}
 \keyword{internal}

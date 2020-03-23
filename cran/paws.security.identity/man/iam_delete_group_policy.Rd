@@ -39,14 +39,13 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following command deletes the policy named ExamplePolicy from the
+\examples{
+# The following command deletes the policy named ExamplePolicy from the
 # group named Admins:
-svc$delete_group_policy(
+\donttest{svc$delete_group_policy(
   GroupName = "Admins",
   PolicyName = "ExamplePolicy"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

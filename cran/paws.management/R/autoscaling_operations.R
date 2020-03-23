@@ -37,17 +37,15 @@ NULL
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example attaches the specified instance to the specified Auto
 #' # Scaling group.
-#' svc$attach_instances(
+#' \donttest{svc$attach_instances(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   InstanceIds = list(
 #'     "i-93633f9b"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -102,17 +100,15 @@ autoscaling_attach_instances <- function(InstanceIds = NULL, AutoScalingGroupNam
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example attaches the specified target group to the specified Auto
 #' # Scaling group.
-#' svc$attach_load_balancer_target_groups(
+#' \donttest{svc$attach_load_balancer_target_groups(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   TargetGroupARNs = list(
 #'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8..."
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -170,17 +166,15 @@ autoscaling_attach_load_balancer_target_groups <- function(AutoScalingGroupName,
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example attaches the specified load balancer to the specified Auto
 #' # Scaling group.
-#' svc$attach_load_balancers(
+#' \donttest{svc$attach_load_balancers(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   LoadBalancerNames = list(
 #'     "my-load-balancer"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -359,17 +353,15 @@ autoscaling_batch_put_scheduled_update_group_action <- function(AutoScalingGroup
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example notifies Auto Scaling that the specified lifecycle action
 #' # is complete so that it can finish launching or terminating the instance.
-#' svc$complete_lifecycle_action(
+#' \donttest{svc$complete_lifecycle_action(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   LifecycleActionResult = "CONTINUE",
 #'   LifecycleActionToken = "bcd2f1b8-9a78-44d3-8a7a-4dd07d7cf635",
 #'   LifecycleHookName = "my-lifecycle-hook"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -644,20 +636,19 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example creates an Auto Scaling group.
-#' svc$create_auto_scaling_group(
+#' \donttest{svc$create_auto_scaling_group(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   LaunchConfigurationName = "my-launch-config",
 #'   MaxSize = 3L,
 #'   MinSize = 1L,
 #'   VPCZoneIdentifier = "subnet-4176792c"
-#' )
+#' )}
 #' 
 #' # This example creates an Auto Scaling group and attaches the specified
 #' # Classic Load Balancer.
-#' svc$create_auto_scaling_group(
+#' \donttest{svc$create_auto_scaling_group(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   AvailabilityZones = list(
 #'     "us-west-2c"
@@ -670,11 +661,11 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #'   ),
 #'   MaxSize = 3L,
 #'   MinSize = 1L
-#' )
+#' )}
 #' 
 #' # This example creates an Auto Scaling group and attaches the specified
 #' # target group.
-#' svc$create_auto_scaling_group(
+#' \donttest{svc$create_auto_scaling_group(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   HealthCheckGracePeriod = 120L,
 #'   HealthCheckType = "ELB",
@@ -685,8 +676,7 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8..."
 #'   ),
 #'   VPCZoneIdentifier = "subnet-4176792c, subnet-65ea5f08"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -923,10 +913,9 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example creates a launch configuration.
-#' svc$create_launch_configuration(
+#' \donttest{svc$create_launch_configuration(
 #'   IamInstanceProfile = "my-iam-role",
 #'   ImageId = "ami-12345678",
 #'   InstanceType = "m3.medium",
@@ -934,8 +923,7 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #'   SecurityGroups = list(
 #'     "sg-eb2af88e"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -989,10 +977,9 @@ autoscaling_create_launch_configuration <- function(LaunchConfigurationName, Ima
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example adds two tags to the specified Auto Scaling group.
-#' svc$create_or_update_tags(
+#' \donttest{svc$create_or_update_tags(
 #'   Tags = list(
 #'     list(
 #'       Key = "Role",
@@ -1009,8 +996,7 @@ autoscaling_create_launch_configuration <- function(LaunchConfigurationName, Ima
 #'       Value = "Research"
 #'     )
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1069,20 +1055,18 @@ autoscaling_create_or_update_tags <- function(Tags) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example deletes the specified Auto Scaling group.
-#' svc$delete_auto_scaling_group(
+#' \donttest{svc$delete_auto_scaling_group(
 #'   AutoScalingGroupName = "my-auto-scaling-group"
-#' )
+#' )}
 #' 
 #' # This example deletes the specified Auto Scaling group and all its
 #' # instances.
-#' svc$delete_auto_scaling_group(
+#' \donttest{svc$delete_auto_scaling_group(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   ForceDelete = TRUE
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1124,13 +1108,11 @@ autoscaling_delete_auto_scaling_group <- function(AutoScalingGroupName, ForceDel
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example deletes the specified launch configuration.
-#' svc$delete_launch_configuration(
+#' \donttest{svc$delete_launch_configuration(
 #'   LaunchConfigurationName = "my-launch-config"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1175,14 +1157,12 @@ autoscaling_delete_launch_configuration <- function(LaunchConfigurationName) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example deletes the specified lifecycle hook.
-#' svc$delete_lifecycle_hook(
+#' \donttest{svc$delete_lifecycle_hook(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   LifecycleHookName = "my-lifecycle-hook"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1224,15 +1204,13 @@ autoscaling_delete_lifecycle_hook <- function(LifecycleHookName, AutoScalingGrou
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example deletes the specified notification from the specified Auto
 #' # Scaling group.
-#' svc$delete_notification_configuration(
+#' \donttest{svc$delete_notification_configuration(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   TopicARN = "arn:aws:sns:us-west-2:123456789012:my-sns-topic"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1280,14 +1258,12 @@ autoscaling_delete_notification_configuration <- function(AutoScalingGroupName, 
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example deletes the specified Auto Scaling policy.
-#' svc$delete_policy(
+#' \donttest{svc$delete_policy(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   PolicyName = "ScaleIn"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1328,15 +1304,13 @@ autoscaling_delete_policy <- function(AutoScalingGroupName = NULL, PolicyName) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example deletes the specified scheduled action from the specified
 #' # Auto Scaling group.
-#' svc$delete_scheduled_action(
+#' \donttest{svc$delete_scheduled_action(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   ScheduledActionName = "my-scheduled-action"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1382,11 +1356,10 @@ autoscaling_delete_scheduled_action <- function(AutoScalingGroupName, ScheduledA
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example deletes the specified tag from the specified Auto Scaling
 #' # group.
-#' svc$delete_tags(
+#' \donttest{svc$delete_tags(
 #'   Tags = list(
 #'     list(
 #'       Key = "Dept",
@@ -1395,8 +1368,7 @@ autoscaling_delete_scheduled_action <- function(AutoScalingGroupName, ScheduledA
 #'       Value = "Research"
 #'     )
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1436,11 +1408,9 @@ autoscaling_delete_tags <- function(Tags) {
 #'
 
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the Auto Scaling limits for your AWS account.
-#' svc$describe_account_limits()
-#' ```
+#' \donttest{svc$describe_account_limits()}
 #'
 #' @keywords internal
 #'
@@ -1473,11 +1443,9 @@ autoscaling_describe_account_limits <- function() {
 #'
 
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the available adjustment types.
-#' svc$describe_adjustment_types()
-#' ```
+#' \donttest{svc$describe_adjustment_types()}
 #'
 #' @keywords internal
 #'
@@ -1528,15 +1496,13 @@ autoscaling_describe_adjustment_types <- function() {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the specified Auto Scaling group.
-#' svc$describe_auto_scaling_groups(
+#' \donttest{svc$describe_auto_scaling_groups(
 #'   AutoScalingGroupNames = list(
 #'     "my-auto-scaling-group"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1585,15 +1551,13 @@ autoscaling_describe_auto_scaling_groups <- function(AutoScalingGroupNames = NUL
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the specified Auto Scaling instance.
-#' svc$describe_auto_scaling_instances(
+#' \donttest{svc$describe_auto_scaling_instances(
 #'   InstanceIds = list(
 #'     "i-4ba0837f"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1628,11 +1592,9 @@ autoscaling_describe_auto_scaling_instances <- function(InstanceIds = NULL, MaxR
 #'
 
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the available notification types.
-#' svc$describe_auto_scaling_notification_types()
-#' ```
+#' \donttest{svc$describe_auto_scaling_notification_types()}
 #'
 #' @keywords internal
 #'
@@ -1680,15 +1642,13 @@ autoscaling_describe_auto_scaling_notification_types <- function() {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the specified launch configuration.
-#' svc$describe_launch_configurations(
+#' \donttest{svc$describe_launch_configurations(
 #'   LaunchConfigurationNames = list(
 #'     "my-launch-config"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1727,11 +1687,9 @@ autoscaling_describe_launch_configurations <- function(LaunchConfigurationNames 
 #'
 
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the available lifecycle hook types.
-#' svc$describe_lifecycle_hook_types()
-#' ```
+#' \donttest{svc$describe_lifecycle_hook_types()}
 #'
 #' @keywords internal
 #'
@@ -1775,14 +1733,12 @@ autoscaling_describe_lifecycle_hook_types <- function() {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the lifecycle hooks for the specified Auto
 #' # Scaling group.
-#' svc$describe_lifecycle_hooks(
+#' \donttest{svc$describe_lifecycle_hooks(
 #'   AutoScalingGroupName = "my-auto-scaling-group"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1827,14 +1783,12 @@ autoscaling_describe_lifecycle_hooks <- function(AutoScalingGroupName, Lifecycle
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the target groups attached to the specified Auto
 #' # Scaling group.
-#' svc$describe_load_balancer_target_groups(
+#' \donttest{svc$describe_load_balancer_target_groups(
 #'   AutoScalingGroupName = "my-auto-scaling-group"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1883,14 +1837,12 @@ autoscaling_describe_load_balancer_target_groups <- function(AutoScalingGroupNam
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the load balancers attached to the specified Auto
 #' # Scaling group.
-#' svc$describe_load_balancers(
+#' \donttest{svc$describe_load_balancers(
 #'   AutoScalingGroupName = "my-auto-scaling-group"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1926,11 +1878,9 @@ autoscaling_describe_load_balancers <- function(AutoScalingGroupName, NextToken 
 #'
 
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the available metric collection types.
-#' svc$describe_metric_collection_types()
-#' ```
+#' \donttest{svc$describe_metric_collection_types()}
 #'
 #' @keywords internal
 #'
@@ -1979,16 +1929,14 @@ autoscaling_describe_metric_collection_types <- function() {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the notification configurations for the specified
 #' # Auto Scaling group.
-#' svc$describe_notification_configurations(
+#' \donttest{svc$describe_notification_configurations(
 #'   AutoScalingGroupNames = list(
 #'     "my-auto-scaling-group"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2045,14 +1993,12 @@ autoscaling_describe_notification_configurations <- function(AutoScalingGroupNam
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the policies for the specified Auto Scaling
 #' # group.
-#' svc$describe_policies(
+#' \donttest{svc$describe_policies(
 #'   AutoScalingGroupName = "my-auto-scaling-group"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2107,14 +2053,12 @@ autoscaling_describe_policies <- function(AutoScalingGroupName = NULL, PolicyNam
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the scaling activities for the specified Auto
 #' # Scaling group.
-#' svc$describe_scaling_activities(
+#' \donttest{svc$describe_scaling_activities(
 #'   AutoScalingGroupName = "my-auto-scaling-group"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2149,11 +2093,9 @@ autoscaling_describe_scaling_activities <- function(ActivityIds = NULL, AutoScal
 #'
 
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the Auto Scaling process types.
-#' svc$describe_scaling_process_types()
-#' ```
+#' \donttest{svc$describe_scaling_process_types()}
 #'
 #' @keywords internal
 #'
@@ -2218,14 +2160,12 @@ autoscaling_describe_scaling_process_types <- function() {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the scheduled actions for the specified Auto
 #' # Scaling group.
-#' svc$describe_scheduled_actions(
+#' \donttest{svc$describe_scheduled_actions(
 #'   AutoScalingGroupName = "my-auto-scaling-group"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2286,10 +2226,9 @@ autoscaling_describe_scheduled_actions <- function(AutoScalingGroupName = NULL, 
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the tags for the specified Auto Scaling group.
-#' svc$describe_tags(
+#' \donttest{svc$describe_tags(
 #'   Filters = list(
 #'     list(
 #'       Name = "auto-scaling-group",
@@ -2298,8 +2237,7 @@ autoscaling_describe_scheduled_actions <- function(AutoScalingGroupName = NULL, 
 #'       )
 #'     )
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2337,11 +2275,9 @@ autoscaling_describe_tags <- function(Filters = NULL, NextToken = NULL, MaxRecor
 #'
 
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the available termination policy types.
-#' svc$describe_termination_policy_types()
-#' ```
+#' \donttest{svc$describe_termination_policy_types()}
 #'
 #' @keywords internal
 #'
@@ -2403,18 +2339,16 @@ autoscaling_describe_termination_policy_types <- function() {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example detaches the specified instance from the specified Auto
 #' # Scaling group.
-#' svc$detach_instances(
+#' \donttest{svc$detach_instances(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   InstanceIds = list(
 #'     "i-93633f9b"
 #'   ),
 #'   ShouldDecrementDesiredCapacity = TRUE
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2459,17 +2393,15 @@ autoscaling_detach_instances <- function(InstanceIds = NULL, AutoScalingGroupNam
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example detaches the specified target group from the specified Auto
 #' # Scaling group
-#' svc$detach_load_balancer_target_groups(
+#' \donttest{svc$detach_load_balancer_target_groups(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   TargetGroupARNs = list(
 #'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8..."
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2524,17 +2456,15 @@ autoscaling_detach_load_balancer_target_groups <- function(AutoScalingGroupName,
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example detaches the specified load balancer from the specified
 #' # Auto Scaling group.
-#' svc$detach_load_balancers(
+#' \donttest{svc$detach_load_balancers(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   LoadBalancerNames = list(
 #'     "my-load-balancer"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2593,17 +2523,15 @@ autoscaling_detach_load_balancers <- function(AutoScalingGroupName, LoadBalancer
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example disables collecting data for the GroupDesiredCapacity
 #' # metric for the specified Auto Scaling group.
-#' svc$disable_metrics_collection(
+#' \donttest{svc$disable_metrics_collection(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   Metrics = list(
 #'     "GroupDesiredCapacity"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2669,15 +2597,13 @@ autoscaling_disable_metrics_collection <- function(AutoScalingGroupName, Metrics
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example enables data collection for the specified Auto Scaling
 #' # group.
-#' svc$enable_metrics_collection(
+#' \donttest{svc$enable_metrics_collection(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   Granularity = "1Minute"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2737,17 +2663,15 @@ autoscaling_enable_metrics_collection <- function(AutoScalingGroupName, Metrics 
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example puts the specified instance into standby mode.
-#' svc$enter_standby(
+#' \donttest{svc$enter_standby(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   InstanceIds = list(
 #'     "i-93633f9b"
 #'   ),
 #'   ShouldDecrementDesiredCapacity = TRUE
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2815,16 +2739,14 @@ autoscaling_enter_standby <- function(InstanceIds = NULL, AutoScalingGroupName, 
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example executes the specified Auto Scaling policy for the
 #' # specified Auto Scaling group.
-#' svc$execute_policy(
+#' \donttest{svc$execute_policy(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   HonorCooldown = TRUE,
 #'   PolicyName = "ScaleIn"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -2874,16 +2796,14 @@ autoscaling_execute_policy <- function(AutoScalingGroupName = NULL, PolicyName, 
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example moves the specified instance out of standby mode.
-#' svc$exit_standby(
+#' \donttest{svc$exit_standby(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   InstanceIds = list(
 #'     "i-93633f9b"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -3010,17 +2930,15 @@ autoscaling_exit_standby <- function(InstanceIds = NULL, AutoScalingGroupName) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example creates a lifecycle hook.
-#' svc$put_lifecycle_hook(
+#' \donttest{svc$put_lifecycle_hook(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   LifecycleHookName = "my-lifecycle-hook",
 #'   LifecycleTransition = "autoscaling:EC2_INSTANCE_LAUNCHING",
 #'   NotificationTargetARN = "arn:aws:sns:us-west-2:123456789012:my-sns-topic --role-arn",
 #'   RoleARN = "arn:aws:iam::123456789012:role/my-auto-scaling-role"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -3078,18 +2996,16 @@ autoscaling_put_lifecycle_hook <- function(LifecycleHookName, AutoScalingGroupNa
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example adds the specified notification to the specified Auto
 #' # Scaling group.
-#' svc$put_notification_configuration(
+#' \donttest{svc$put_notification_configuration(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   NotificationTypes = list(
 #'     "autoscaling:TEST_NOTIFICATION"
 #'   ),
 #'   TopicARN = "arn:aws:sns:us-west-2:123456789012:my-sns-topic"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -3245,17 +3161,15 @@ autoscaling_put_notification_configuration <- function(AutoScalingGroupName, Top
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example adds the specified policy to the specified Auto Scaling
 #' # group.
-#' svc$put_scaling_policy(
+#' \donttest{svc$put_scaling_policy(
 #'   AdjustmentType = "ChangeInCapacity",
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   PolicyName = "ScaleIn",
 #'   ScalingAdjustment = -1L
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -3341,11 +3255,10 @@ autoscaling_put_scaling_policy <- function(AutoScalingGroupName, PolicyName, Pol
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example adds the specified scheduled action to the specified Auto
 #' # Scaling group.
-#' svc$put_scheduled_update_group_action(
+#' \donttest{svc$put_scheduled_update_group_action(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   DesiredCapacity = 4L,
 #'   EndTime = "2014-05-12T08:00:00Z",
@@ -3353,8 +3266,7 @@ autoscaling_put_scaling_policy <- function(AutoScalingGroupName, PolicyName, Pol
 #'   MinSize = 2L,
 #'   ScheduledActionName = "my-scheduled-action",
 #'   StartTime = "2014-05-12T08:00:00Z"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -3430,16 +3342,14 @@ autoscaling_put_scheduled_update_group_action <- function(AutoScalingGroupName, 
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example records a lifecycle action heartbeat to keep the instance
 #' # in a pending state.
-#' svc$record_lifecycle_action_heartbeat(
+#' \donttest{svc$record_lifecycle_action_heartbeat(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   LifecycleActionToken = "bcd2f1b8-9a78-44d3-8a7a-4dd07d7cf635",
 #'   LifecycleHookName = "my-lifecycle-hook"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -3504,17 +3414,15 @@ autoscaling_record_lifecycle_action_heartbeat <- function(LifecycleHookName, Aut
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example resumes the specified suspended scaling process for the
 #' # specified Auto Scaling group.
-#' svc$resume_processes(
+#' \donttest{svc$resume_processes(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   ScalingProcesses = list(
 #'     "AlarmNotification"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -3566,16 +3474,14 @@ autoscaling_resume_processes <- function(AutoScalingGroupName, ScalingProcesses 
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example sets the desired capacity for the specified Auto Scaling
 #' # group.
-#' svc$set_desired_capacity(
+#' \donttest{svc$set_desired_capacity(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   DesiredCapacity = 2L,
 #'   HonorCooldown = TRUE
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -3631,15 +3537,13 @@ autoscaling_set_desired_capacity <- function(AutoScalingGroupName, DesiredCapaci
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example sets the health status of the specified instance to
 #' # Unhealthy.
-#' svc$set_instance_health(
+#' \donttest{svc$set_instance_health(
 #'   HealthStatus = "Unhealthy",
 #'   InstanceId = "i-93633f9b"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -3690,26 +3594,24 @@ autoscaling_set_instance_health <- function(InstanceId, HealthStatus, ShouldResp
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example enables instance protection for the specified instance.
-#' svc$set_instance_protection(
+#' \donttest{svc$set_instance_protection(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   InstanceIds = list(
 #'     "i-93633f9b"
 #'   ),
 #'   ProtectedFromScaleIn = TRUE
-#' )
+#' )}
 #' 
 #' # This example disables instance protection for the specified instance.
-#' svc$set_instance_protection(
+#' \donttest{svc$set_instance_protection(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   InstanceIds = list(
 #'     "i-93633f9b"
 #'   ),
 #'   ProtectedFromScaleIn = FALSE
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -3779,17 +3681,15 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example suspends the specified scaling process for the specified
 #' # Auto Scaling group.
-#' svc$suspend_processes(
+#' \donttest{svc$suspend_processes(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   ScalingProcesses = list(
 #'     "AlarmNotification"
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -3836,16 +3736,14 @@ autoscaling_suspend_processes <- function(AutoScalingGroupName, ScalingProcesses
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example terminates the specified instance from the specified Auto
 #' # Scaling group without updating the size of the group. Auto Scaling
 #' # launches a replacement instance after the specified instance terminates.
-#' svc$terminate_instance_in_auto_scaling_group(
+#' \donttest{svc$terminate_instance_in_auto_scaling_group(
 #'   InstanceId = "i-93633f9b",
 #'   ShouldDecrementDesiredCapacity = FALSE
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -4064,30 +3962,28 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example updates the launch configuration of the specified Auto
 #' # Scaling group.
-#' svc$update_auto_scaling_group(
+#' \donttest{svc$update_auto_scaling_group(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   LaunchConfigurationName = "new-launch-config"
-#' )
+#' )}
 #' 
 #' # This example updates the minimum size and maximum size of the specified
 #' # Auto Scaling group.
-#' svc$update_auto_scaling_group(
+#' \donttest{svc$update_auto_scaling_group(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   MaxSize = 3L,
 #'   MinSize = 1L
-#' )
+#' )}
 #' 
 #' # This example enables instance protection for the specified Auto Scaling
 #' # group.
-#' svc$update_auto_scaling_group(
+#' \donttest{svc$update_auto_scaling_group(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   NewInstancesProtectedFromScaleIn = TRUE
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'

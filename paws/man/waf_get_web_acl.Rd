@@ -20,13 +20,12 @@ Returns the WebACL that is specified by \code{WebACLId}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example returns the details of a web ACL with the ID
+\examples{
+# The following example returns the details of a web ACL with the ID
 # createwebacl-1472061481310.
-svc$get_web_acl(
+\donttest{svc$get_web_acl(
   WebACLId = "createwebacl-1472061481310"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

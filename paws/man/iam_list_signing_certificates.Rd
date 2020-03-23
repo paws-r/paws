@@ -53,13 +53,12 @@ credentials even if the AWS account has no associated users.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following command lists the signing certificates for the IAM user
+\examples{
+# The following command lists the signing certificates for the IAM user
 # named Bob.
-svc$list_signing_certificates(
+\donttest{svc$list_signing_certificates(
   UserName = "Bob"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

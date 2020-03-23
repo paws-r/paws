@@ -72,29 +72,28 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example modifies snapshot `snap-1234567890abcdef0` to remove the
+\examples{
+# This example modifies snapshot `snap-1234567890abcdef0` to remove the
 # create volume permission for a user with the account ID
 # `123456789012`. If the command succeeds, no output is returned.
-svc$modify_snapshot_attribute(
+\donttest{svc$modify_snapshot_attribute(
   Attribute = "createVolumePermission",
   OperationType = "remove",
   SnapshotId = "snap-1234567890abcdef0",
   UserIds = list(
     "123456789012"
   )
-)
+)}
 
 # This example makes the snapshot `snap-1234567890abcdef0` public.
-svc$modify_snapshot_attribute(
+\donttest{svc$modify_snapshot_attribute(
   Attribute = "createVolumePermission",
   GroupNames = list(
     "all"
   ),
   OperationType = "add",
   SnapshotId = "snap-1234567890abcdef0"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

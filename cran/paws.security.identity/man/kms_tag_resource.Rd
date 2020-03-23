@@ -54,9 +54,9 @@ in the \emph{AWS Key Management Service Developer Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example tags a CMK.
-svc$tag_resource(
+\examples{
+# The following example tags a CMK.
+\donttest{svc$tag_resource(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
   Tags = list(
     list(
@@ -64,8 +64,7 @@ svc$tag_resource(
       TagValue = "Test"
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

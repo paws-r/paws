@@ -19,19 +19,18 @@ No longer used, see GetBucketNotificationConfiguration.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example returns notification configuration set on a
+\examples{
+# The following example returns notification configuration set on a
 # bucket.
-svc$get_bucket_notification(
+\donttest{svc$get_bucket_notification(
   Bucket = "examplebucket"
-)
+)}
 
 # The following example returns notification configuration set on a
 # bucket.
-svc$get_bucket_notification(
+\donttest{svc$get_bucket_notification(
   Bucket = "examplebucket"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

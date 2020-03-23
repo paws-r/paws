@@ -21,13 +21,12 @@ AWS Region. For more information, see \href{https://docs.aws.amazon.com/polly/la
 }
 }
 
-\section{Examples}{
-\preformatted{# Returns the content of the specified pronunciation lexicon stored in an
+\examples{
+# Returns the content of the specified pronunciation lexicon stored in an
 # AWS Region.
-svc$get_lexicon(
+\donttest{svc$get_lexicon(
   Name = ""
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -23,12 +23,11 @@ This operation purchases a provisioned capacity unit for an AWS account.
 }
 }
 
-\section{Examples}{
-\preformatted{# The example purchases provisioned capacity unit for an AWS account.
-svc$purchase_provisioned_capacity(
+\examples{
+# The example purchases provisioned capacity unit for an AWS account.
+\donttest{svc$purchase_provisioned_capacity(
   accountId = "-"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

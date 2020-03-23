@@ -36,13 +36,6 @@ if applicable.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$delete_connection(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -52,3 +45,10 @@ if applicable.
 }
 }
 
+\examples{
+\donttest{svc <- apigatewaymanagementapi()
+svc$delete_connection(
+  Foo = 123
+)}
+
+}

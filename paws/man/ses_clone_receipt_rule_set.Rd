@@ -35,14 +35,13 @@ You can execute this operation no more than once per second.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example creates a receipt rule set by cloning an existing
+\examples{
+# The following example creates a receipt rule set by cloning an existing
 # one:
-svc$clone_receipt_rule_set(
+\donttest{svc$clone_receipt_rule_set(
   OriginalRuleSetName = "RuleSetToClone",
   RuleSetName = "RuleSetToCreate"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

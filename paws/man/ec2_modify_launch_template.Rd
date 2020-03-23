@@ -42,14 +42,13 @@ default version applies when a launch template version is not specified.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example specifies version 2 as the default version of the specified
+\examples{
+# This example specifies version 2 as the default version of the specified
 # launch template.
-svc$modify_launch_template(
+\donttest{svc$modify_launch_template(
   DefaultVersion = "2",
   LaunchTemplateId = "lt-0abcd290751193123"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

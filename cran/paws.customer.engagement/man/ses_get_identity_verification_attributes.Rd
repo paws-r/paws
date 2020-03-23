@@ -46,15 +46,14 @@ verification attributes for up to 100 identities at a time.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example returns the verification status and the
+\examples{
+# The following example returns the verification status and the
 # verification token for a domain identity:
-svc$get_identity_verification_attributes(
+\donttest{svc$get_identity_verification_attributes(
   Identities = list(
     "example.com"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

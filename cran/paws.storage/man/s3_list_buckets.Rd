@@ -11,14 +11,13 @@ s3_list_buckets()
 Returns a list of all buckets owned by the authenticated sender of the
 request.
 }
-\section{Examples}{
-\preformatted{# The following example return versions of an object with specific key
+\examples{
+# The following example return versions of an object with specific key
 # name prefix. The request limits the number of items returned to two. If
 # there are are more than two object version, S3 returns NextToken in the
 # response. You can specify this token value in your next request to fetch
 # next set of object versions.
-svc$list_buckets()
-}
-}
+\donttest{svc$list_buckets()}
 
+}
 \keyword{internal}

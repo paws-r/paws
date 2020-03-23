@@ -29,9 +29,9 @@ Removes one or more tags from the specified load balancer.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example removes the specified tag from the specified load balancer.
-svc$remove_tags(
+\examples{
+# This example removes the specified tag from the specified load balancer.
+\donttest{svc$remove_tags(
   LoadBalancerNames = list(
     "my-load-balancer"
   ),
@@ -40,8 +40,7 @@ svc$remove_tags(
       Key = "project"
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

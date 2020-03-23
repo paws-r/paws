@@ -134,17 +134,15 @@ NULL
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example deletes a scaling policy for the Amazon ECS service called
 #' # web-app, which is running in the default cluster.
-#' svc$delete_scaling_policy(
+#' \donttest{svc$delete_scaling_policy(
 #'   PolicyName = "web-app-cpu-lt-25",
 #'   ResourceId = "service/default/web-app",
 #'   ScalableDimension = "ecs:service:DesiredCount",
 #'   ServiceNamespace = "ecs"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -428,16 +426,14 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example deregisters a scalable target for an Amazon ECS service
 #' # called web-app that is running in the default cluster.
-#' svc$deregister_scalable_target(
+#' \donttest{svc$deregister_scalable_target(
 #'   ResourceId = "service/default/web-app",
 #'   ScalableDimension = "ecs:service:DesiredCount",
 #'   ServiceNamespace = "ecs"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -595,14 +591,12 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the scalable targets for the ecs service
 #' # namespace.
-#' svc$describe_scalable_targets(
+#' \donttest{svc$describe_scalable_targets(
 #'   ServiceNamespace = "ecs"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -760,16 +754,14 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the scaling activities for an Amazon ECS service
 #' # called web-app that is running in the default cluster.
-#' svc$describe_scaling_activities(
+#' \donttest{svc$describe_scaling_activities(
 #'   ResourceId = "service/default/web-app",
 #'   ScalableDimension = "ecs:service:DesiredCount",
 #'   ServiceNamespace = "ecs"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -931,14 +923,12 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example describes the scaling policies for the ecs service
 #' # namespace.
-#' svc$describe_scaling_policies(
+#' \donttest{svc$describe_scaling_policies(
 #'   ServiceNamespace = "ecs"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1329,14 +1319,13 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The following example applies a target tracking scaling policy with a
 #' # predefined metric specification to an Amazon ECS service called web-app
 #' # in the default cluster. The policy keeps the average CPU utilization of
 #' # the service at 75 percent, with scale-out and scale-in cooldown periods
 #' # of 60 seconds.
-#' svc$put_scaling_policy(
+#' \donttest{svc$put_scaling_policy(
 #'   PolicyName = "cpu75-target-tracking-scaling-policy",
 #'   PolicyType = "TargetTrackingScaling",
 #'   ResourceId = "service/default/web-app",
@@ -1350,14 +1339,14 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #'     ScaleOutCooldown = 60L,
 #'     TargetValue = 75L
 #'   )
-#' )
+#' )}
 #' 
 #' # The following example applies a target tracking scaling policy with a
 #' # customized metric specification to an Amazon ECS service called web-app
 #' # in the default cluster. The policy keeps the average utilization of the
 #' # service at 75 percent, with scale-out and scale-in cooldown periods of
 #' # 60 seconds.
-#' svc$put_scaling_policy(
+#' \donttest{svc$put_scaling_policy(
 #'   PolicyName = "cms75-target-tracking-scaling-policy",
 #'   PolicyType = "TargetTrackingScaling",
 #'   ResourceId = "service/default/web-app",
@@ -1380,13 +1369,13 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #'     ScaleOutCooldown = 60L,
 #'     TargetValue = 75L
 #'   )
-#' )
+#' )}
 #' 
 #' # The following example applies a target tracking scaling policy to an
 #' # Amazon ECS service called web-app in the default cluster. The policy is
 #' # used to scale out the ECS service when the RequestCountPerTarget metric
 #' # from the Application Load Balancer exceeds the threshold.
-#' svc$put_scaling_policy(
+#' \donttest{svc$put_scaling_policy(
 #'   PolicyName = "alb-scale-out-target-tracking-scaling-policy",
 #'   PolicyType = "TargetTrackingScaling",
 #'   ResourceId = "service/default/web-app",
@@ -1402,12 +1391,12 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #'     ScaleOutCooldown = 60L,
 #'     TargetValue = 1000L
 #'   )
-#' )
+#' )}
 #' 
 #' # This example applies a step scaling policy to an Amazon ECS service
 #' # called web-app in the default cluster. The policy increases the desired
 #' # count of the service by 200%, with a cool down period of 60 seconds.
-#' svc$put_scaling_policy(
+#' \donttest{svc$put_scaling_policy(
 #'   PolicyName = "web-app-cpu-gt-75",
 #'   PolicyType = "StepScaling",
 #'   ResourceId = "service/default/web-app",
@@ -1423,13 +1412,13 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #'       )
 #'     )
 #'   )
-#' )
+#' )}
 #' 
 #' # This example applies a step scaling policy to an Amazon EC2 Spot fleet.
 #' # The policy increases the target capacity of the spot fleet by 200%, with
 #' # a cool down period of 180 seconds.",
 #' # 
-#' svc$put_scaling_policy(
+#' \donttest{svc$put_scaling_policy(
 #'   PolicyName = "fleet-cpu-gt-75",
 #'   PolicyType = "StepScaling",
 #'   ResourceId = "spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3",
@@ -1445,8 +1434,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #'       )
 #'     )
 #'   )
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1840,29 +1828,27 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example registers a scalable target from an Amazon ECS service
 #' # called web-app that is running on the default cluster, with a minimum
 #' # desired count of 1 task and a maximum desired count of 10 tasks.
-#' svc$register_scalable_target(
+#' \donttest{svc$register_scalable_target(
 #'   MaxCapacity = 10L,
 #'   MinCapacity = 1L,
 #'   ResourceId = "service/default/web-app",
 #'   ScalableDimension = "ecs:service:DesiredCount",
 #'   ServiceNamespace = "ecs"
-#' )
+#' )}
 #' 
 #' # This example registers a scalable target from an Amazon EC2 Spot fleet
 #' # with a minimum target capacity of 1 and a maximum of 10.
-#' svc$register_scalable_target(
+#' \donttest{svc$register_scalable_target(
 #'   MaxCapacity = 10L,
 #'   MinCapacity = 1L,
 #'   ResourceId = "spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3",
 #'   ScalableDimension = "ec2:spot-fleet-request:TargetCapacity",
 #'   ServiceNamespace = "ec2"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'

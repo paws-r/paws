@@ -30,13 +30,6 @@ Elastic Inference public APIs.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$list_tags_for_resource(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -46,3 +39,10 @@ Elastic Inference public APIs.
 }
 }
 
+\examples{
+\donttest{svc <- elasticinference()
+svc$list_tags_for_resource(
+  Foo = 123
+)}
+
+}

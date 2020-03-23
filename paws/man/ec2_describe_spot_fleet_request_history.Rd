@@ -52,14 +52,13 @@ hours.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example returns the history for the specified Spot fleet starting
+\examples{
+# This example returns the history for the specified Spot fleet starting
 # at the specified time.
-svc$describe_spot_fleet_request_history(
+\donttest{svc$describe_spot_fleet_request_history(
   SpotFleetRequestId = "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE",
   StartTime = "2015-05-26T00:00:00Z"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

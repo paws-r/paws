@@ -26,13 +26,12 @@ returns a 404 (\code{NoSuchEntity}) error.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following command gets information about the password for the IAM
+\examples{
+# The following command gets information about the password for the IAM
 # user named Anika.
-svc$get_login_profile(
+\donttest{svc$get_login_profile(
   UserName = "Anika"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

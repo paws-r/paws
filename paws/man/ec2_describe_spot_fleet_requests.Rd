@@ -41,14 +41,13 @@ their instances are terminated.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the specified Spot fleet request.
-svc$describe_spot_fleet_requests(
+\examples{
+# This example describes the specified Spot fleet request.
+\donttest{svc$describe_spot_fleet_requests(
   SpotFleetRequestIds = list(
     "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

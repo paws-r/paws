@@ -32,13 +32,6 @@ the supported web services protocols.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$claim_devices_by_claim_code(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -58,3 +51,10 @@ the supported web services protocols.
 }
 }
 
+\examples{
+\donttest{svc <- iot1clickdevicesservice()
+svc$claim_devices_by_claim_code(
+  Foo = 123
+)}
+
+}

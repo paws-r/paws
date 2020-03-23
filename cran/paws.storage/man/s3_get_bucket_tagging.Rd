@@ -38,12 +38,11 @@ The following operations are related to \code{GetBucketTagging}:
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example returns tag set associated with a bucket
-svc$get_bucket_tagging(
+\examples{
+# The following example returns tag set associated with a bucket
+\donttest{svc$get_bucket_tagging(
   Bucket = "examplebucket"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

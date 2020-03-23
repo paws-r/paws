@@ -66,17 +66,16 @@ before you can initiate a new vault lock policy.
 }
 }
 
-\section{Examples}{
-\preformatted{# The example initiates the vault locking process for the vault named
+\examples{
+# The example initiates the vault locking process for the vault named
 # my-vault.
-svc$initiate_vault_lock(
+\donttest{svc$initiate_vault_lock(
   accountId = "-",
   policy = list(
-    Policy = "\{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":[\{\\"Sid\\":\\"Define-vault-lock\\",..."
+    Policy = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"Define-vault-lock\",..."
   ),
   vaultName = "my-vault"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -58,10 +58,9 @@ in your account.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes all of your moving Elastic IP addresses.
-svc$describe_moving_addresses()
-}
-}
+\examples{
+# This example describes all of your moving Elastic IP addresses.
+\donttest{svc$describe_moving_addresses()}
 
+}
 \keyword{internal}

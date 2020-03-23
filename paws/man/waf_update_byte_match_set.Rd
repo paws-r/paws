@@ -85,10 +85,10 @@ HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developergui
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example deletes a ByteMatchTuple object (filters) in an
+\examples{
+# The following example deletes a ByteMatchTuple object (filters) in an
 # byte match set with the ID exampleIDs3t-46da-4fdb-b8d5-abc321j569j5.
-svc$update_byte_match_set(
+\donttest{svc$update_byte_match_set(
   ByteMatchSetId = "exampleIDs3t-46da-4fdb-b8d5-abc321j569j5",
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   Updates = list(
@@ -105,8 +105,7 @@ svc$update_byte_match_set(
       )
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

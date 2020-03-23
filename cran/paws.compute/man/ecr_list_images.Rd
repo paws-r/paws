@@ -59,13 +59,12 @@ tags in your repository.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example lists all of the images in the repository named ubuntu in
+\examples{
+# This example lists all of the images in the repository named ubuntu in
 # the default registry in the current account.
-svc$list_images(
+\donttest{svc$list_images(
   repositoryName = "ubuntu"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -31,13 +31,12 @@ For more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/mana
 }
 }
 
-\section{Examples}{
-\preformatted{# Stores a pronunciation lexicon in an AWS Region.
-svc$put_lexicon(
+\examples{
+# Stores a pronunciation lexicon in an AWS Region.
+\donttest{svc$put_lexicon(
   Content = "file://example.pls",
   Name = "W3C"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

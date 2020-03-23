@@ -30,13 +30,6 @@ Defines the public endpoint for the AWS Lake Formation service.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$batch_grant_permissions(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -56,3 +49,10 @@ Defines the public endpoint for the AWS Lake Formation service.
 }
 }
 
+\examples{
+\donttest{svc <- lakeformation()
+svc$batch_grant_permissions(
+  Foo = 123
+)}
+
+}

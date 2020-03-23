@@ -86,13 +86,12 @@ Gets information about unique device types.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example returns information about the available devices in
+\examples{
+# The following example returns information about the available devices in
 # a specific project.
-svc$list_devices(
+\donttest{svc$list_devices(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

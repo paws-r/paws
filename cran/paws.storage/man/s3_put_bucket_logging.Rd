@@ -93,11 +93,11 @@ The following operations are related to \code{PutBucketLogging}:
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example sets logging policy on a bucket. For the Log
+\examples{
+# The following example sets logging policy on a bucket. For the Log
 # Delivery group to deliver logs to the destination bucket, it needs
 # permission for the READ_ACP action which the policy grants.
-svc$put_bucket_logging(
+\donttest{svc$put_bucket_logging(
   Bucket = "sourcebucket",
   BucketLoggingStatus = list(
     LoggingEnabled = list(
@@ -114,8 +114,7 @@ svc$put_bucket_logging(
       TargetPrefix = "MyBucketLogs/"
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

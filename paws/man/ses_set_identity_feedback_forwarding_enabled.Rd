@@ -44,14 +44,13 @@ For more information about using notifications with Amazon SES, see the
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example configures Amazon SES to forward an identity's
+\examples{
+# The following example configures Amazon SES to forward an identity's
 # bounces and complaints via email:
-svc$set_identity_feedback_forwarding_enabled(
+\donttest{svc$set_identity_feedback_forwarding_enabled(
   ForwardingEnabled = TRUE,
   Identity = "user@example.com"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

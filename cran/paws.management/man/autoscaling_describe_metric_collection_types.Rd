@@ -13,10 +13,9 @@ Describes the available CloudWatch metrics for Amazon EC2 Auto Scaling.
 The \code{GroupStandbyInstances} metric is not returned by default. You must
 explicitly request this metric when calling EnableMetricsCollection.
 }
-\section{Examples}{
-\preformatted{# This example describes the available metric collection types.
-svc$describe_metric_collection_types()
-}
-}
+\examples{
+# This example describes the available metric collection types.
+\donttest{svc$describe_metric_collection_types()}
 
+}
 \keyword{internal}

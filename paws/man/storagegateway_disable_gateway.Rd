@@ -27,13 +27,12 @@ Once a gateway is disabled it cannot be enabled.
 }
 }
 
-\section{Examples}{
-\preformatted{# Disables a gateway when the gateway is no longer functioning. Use this
+\examples{
+# Disables a gateway when the gateway is no longer functioning. Use this
 # operation for a gateway-VTL that is not reachable or not functioning.
-svc$disable_gateway(
+\donttest{svc$disable_gateway(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

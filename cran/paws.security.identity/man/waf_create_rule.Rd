@@ -74,14 +74,13 @@ HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developergui
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example creates a rule named WAFByteHeaderRule.
-svc$create_rule(
+\examples{
+# The following example creates a rule named WAFByteHeaderRule.
+\donttest{svc$create_rule(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   MetricName = "WAFByteHeaderRule",
   Name = "WAFByteHeaderRule"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

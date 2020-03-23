@@ -22,12 +22,11 @@ job status, and other important metadata.
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation describes a job you've created for AWS Snowball.
-svc$describe_job(
+\examples{
+# This operation describes a job you've created for AWS Snowball.
+\donttest{svc$describe_job(
   JobId = "JID123e4567-e89b-12d3-a456-426655440000"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

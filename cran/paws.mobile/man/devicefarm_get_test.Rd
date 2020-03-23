@@ -19,12 +19,11 @@ Gets information about a test.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example gets information about a specific test.
-svc$get_test(
+\examples{
+# The following example gets information about a specific test.
+\donttest{svc$get_test(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:test:EXAMPLE-GUID-123-456"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

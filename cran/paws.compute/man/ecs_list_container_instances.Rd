@@ -59,13 +59,12 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example lists all of your available container instances in the
+\examples{
+# This example lists all of your available container instances in the
 # specified cluster in your default region.
-svc$list_container_instances(
+\donttest{svc$list_container_instances(
   cluster = "default"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

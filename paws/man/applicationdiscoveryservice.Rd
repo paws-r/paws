@@ -92,13 +92,6 @@ returned. Also, you must make the API calls while in your home region.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$associate_configuration_items_to_application(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -130,3 +123,10 @@ returned. Also, you must make the API calls while in your home region.
 }
 }
 
+\examples{
+\donttest{svc <- applicationdiscoveryservice()
+svc$associate_configuration_items_to_application(
+  Foo = 123
+)}
+
+}

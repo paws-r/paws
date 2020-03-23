@@ -124,10 +124,10 @@ HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developergui
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example deletes an ActivatedRule object in a WebACL with
+\examples{
+# The following example deletes an ActivatedRule object in a WebACL with
 # the ID webacl-1472061481310.
-svc$update_web_acl(
+\donttest{svc$update_web_acl(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   DefaultAction = list(
     Type = "ALLOW"
@@ -145,8 +145,7 @@ svc$update_web_acl(
     )
   ),
   WebACLId = "webacl-1472061481310"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

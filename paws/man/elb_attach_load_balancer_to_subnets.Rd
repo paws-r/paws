@@ -32,16 +32,15 @@ in the \emph{Classic Load Balancers Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example adds the specified subnet to the set of configured subnets
+\examples{
+# This example adds the specified subnet to the set of configured subnets
 # for the specified load balancer.
-svc$attach_load_balancer_to_subnets(
+\donttest{svc$attach_load_balancer_to_subnets(
   LoadBalancerName = "my-load-balancer",
   Subnets = list(
     "subnet-0ecac448"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

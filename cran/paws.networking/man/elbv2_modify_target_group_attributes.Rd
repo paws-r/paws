@@ -27,10 +27,10 @@ Modifies the specified attributes of the specified target group.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example sets the deregistration delay timeout to the specified
+\examples{
+# This example sets the deregistration delay timeout to the specified
 # value for the specified target group.
-svc$modify_target_group_attributes(
+\donttest{svc$modify_target_group_attributes(
   Attributes = list(
     list(
       Key = "deregistration_delay.timeout_seconds",
@@ -38,8 +38,7 @@ svc$modify_target_group_attributes(
     )
   ),
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targe..."
-)
-}
-}
+)}
 
+}
 \keyword{internal}

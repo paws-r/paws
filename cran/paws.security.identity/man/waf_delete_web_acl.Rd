@@ -34,14 +34,13 @@ see UpdateWebACL.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example deletes a web ACL with the ID
+\examples{
+# The following example deletes a web ACL with the ID
 # example-46da-4444-5555-example.
-svc$delete_web_acl(
+\donttest{svc$delete_web_acl(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   WebACLId = "example-46da-4444-5555-example"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

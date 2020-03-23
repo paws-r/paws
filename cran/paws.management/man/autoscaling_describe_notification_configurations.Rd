@@ -32,15 +32,14 @@ Scaling group.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the notification configurations for the specified
+\examples{
+# This example describes the notification configurations for the specified
 # Auto Scaling group.
-svc$describe_notification_configurations(
+\donttest{svc$describe_notification_configurations(
   AutoScalingGroupNames = list(
     "my-auto-scaling-group"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

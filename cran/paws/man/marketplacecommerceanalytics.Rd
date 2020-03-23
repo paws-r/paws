@@ -30,13 +30,6 @@ Provides AWS Marketplace business intelligence data on-demand.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$generate_data_set(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -45,3 +38,10 @@ Provides AWS Marketplace business intelligence data on-demand.
 }
 }
 
+\examples{
+\donttest{svc <- marketplacecommerceanalytics()
+svc$generate_data_set(
+  Foo = 123
+)}
+
+}

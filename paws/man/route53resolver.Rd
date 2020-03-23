@@ -60,13 +60,6 @@ To delete an endpoint, use the following AWS CLI command:
 }
 }
 
-\section{Examples}{
-\preformatted{svc$associate_resolver_endpoint_ip_address(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -95,3 +88,10 @@ To delete an endpoint, use the following AWS CLI command:
 }
 }
 
+\examples{
+\donttest{svc <- route53resolver()
+svc$associate_resolver_endpoint_ip_address(
+  Foo = 123
+)}
+
+}

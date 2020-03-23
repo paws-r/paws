@@ -29,13 +29,12 @@ You can execute this operation no more than once per second.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example lists the receipt rule sets that exist under an
+\examples{
+# The following example lists the receipt rule sets that exist under an
 # AWS account:
-svc$list_receipt_rule_sets(
+\donttest{svc$list_receipt_rule_sets(
   NextToken = ""
-)
-}
-}
+)}
 
+}
 \keyword{internal}

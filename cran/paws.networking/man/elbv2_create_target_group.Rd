@@ -136,17 +136,16 @@ in the \emph{Network Load Balancers Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example creates a target group that you can use to route traffic to
+\examples{
+# This example creates a target group that you can use to route traffic to
 # targets using HTTP on port 80. This target group uses the default health
 # check configuration.
-svc$create_target_group(
+\donttest{svc$create_target_group(
   Name = "my-targets",
   Port = 80L,
   Protocol = "HTTP",
   VpcId = "vpc-3ac0fb5f"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

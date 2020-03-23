@@ -104,16 +104,15 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following command creates a role named Test-Role and attaches a
+\examples{
+# The following command creates a role named Test-Role and attaches a
 # trust policy that you must convert from JSON to a string. Upon success,
 # the response includes the same policy as a URL-encoded JSON string.
-svc$create_role(
+\donttest{svc$create_role(
   AssumeRolePolicyDocument = "<Stringified-JSON>",
   Path = "/",
   RoleName = "Test-Role"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

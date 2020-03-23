@@ -52,13 +52,12 @@ Terminates the specified environment.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following operation terminates an Elastic Beanstalk environment
+\examples{
+# The following operation terminates an Elastic Beanstalk environment
 # named my-env:
-svc$terminate_environment(
+\donttest{svc$terminate_environment(
   EnvironmentName = "my-env"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

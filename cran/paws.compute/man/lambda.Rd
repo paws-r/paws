@@ -35,20 +35,6 @@ in the \strong{AWS Lambda Developer Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example adds a permission for an S3 bucket to invoke a Lambda
-# function.
-svc$add_permission(
-  Action = "lambda:InvokeFunction",
-  FunctionName = "MyFunction",
-  Principal = "s3.amazonaws.com",
-  SourceAccount = "123456789012",
-  SourceArn = "arn:aws:s3:::examplebucket/*",
-  StatementId = "ID-1"
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -104,3 +90,17 @@ svc$add_permission(
 }
 }
 
+\examples{
+# This example adds a permission for an S3 bucket to invoke a Lambda
+# function.
+\donttest{svc <- lambda()
+svc$add_permission(
+  Action = "lambda:InvokeFunction",
+  FunctionName = "MyFunction",
+  Principal = "s3.amazonaws.com",
+  SourceAccount = "123456789012",
+  SourceArn = "arn:aws:s3:::examplebucket/*",
+  StatementId = "ID-1"
+)}
+
+}

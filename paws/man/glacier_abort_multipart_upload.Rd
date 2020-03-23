@@ -48,15 +48,14 @@ in the \emph{Amazon Glacier Developer Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The example deletes an in-progress multipart upload to a vault named
+\examples{
+# The example deletes an in-progress multipart upload to a vault named
 # my-vault:
-svc$abort_multipart_upload(
+\donttest{svc$abort_multipart_upload(
   accountId = "-",
   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV...",
   vaultName = "my-vault"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

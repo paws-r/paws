@@ -40,8 +40,8 @@ code, expire 90 days after the job is created.
 }
 }
 
-\section{Examples}{
-\preformatted{# Returns a link to an Amazon S3 presigned URL for the manifest file
+\examples{
+# Returns a link to an Amazon S3 presigned URL for the manifest file
 # associated with the specified JobId value. You can access the manifest
 # file for up to 60 minutes after this request has been made. To access
 # the manifest file after 60 minutes have passed, you'll have to make
@@ -61,10 +61,9 @@ code, expire 90 days after the job is created.
 # 
 # The credentials of a given job, including its
 # manifest file and unlock code, expire 90 days after the job is created.
-svc$get_job_manifest(
+\donttest{svc$get_job_manifest(
   JobId = "JID123e4567-e89b-12d3-a456-426655440000"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -55,13 +55,6 @@ wearable devices.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$batch_put_message(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -102,3 +95,10 @@ wearable devices.
 }
 }
 
+\examples{
+\donttest{svc <- iotanalytics()
+svc$batch_put_message(
+  Foo = 123
+)}
+
+}

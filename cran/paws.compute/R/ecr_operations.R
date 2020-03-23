@@ -92,19 +92,17 @@ ecr_batch_check_layer_availability <- function(registryId = NULL, repositoryName
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example deletes images with the tags precise and trusty in a
 #' # repository called ubuntu in the default registry for an account.
-#' svc$batch_delete_image(
+#' \donttest{svc$batch_delete_image(
 #'   imageIds = list(
 #'     list(
 #'       imageTag = "precise"
 #'     )
 #'   ),
 #'   repositoryName = "ubuntu"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -167,19 +165,17 @@ ecr_batch_delete_image <- function(registryId = NULL, repositoryName, imageIds) 
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example obtains information for an image with a specified image
 #' # digest ID from the repository named ubuntu in the current account.
-#' svc$batch_get_image(
+#' \donttest{svc$batch_get_image(
 #'   imageIds = list(
 #'     list(
 #'       imageTag = "precise"
 #'     )
 #'   ),
 #'   repositoryName = "ubuntu"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -304,14 +300,12 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example creates a repository called nginx-web-app inside the
 #' # project-a namespace in the default registry for an account.
-#' svc$create_repository(
+#' \donttest{svc$create_repository(
 #'   repositoryName = "project-a/nginx-web-app"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -396,16 +390,14 @@ ecr_delete_lifecycle_policy <- function(registryId = NULL, repositoryName) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example force deletes a repository named ubuntu in the default
 #' # registry for an account. The force parameter is required if the
 #' # repository contains images.
-#' svc$delete_repository(
+#' \donttest{svc$delete_repository(
 #'   force = TRUE,
 #'   repositoryName = "ubuntu"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -448,14 +440,12 @@ ecr_delete_repository <- function(registryId = NULL, repositoryName, force = NUL
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example deletes the policy associated with the repository named
 #' # ubuntu in the current account.
-#' svc$delete_repository_policy(
+#' \donttest{svc$delete_repository_policy(
 #'   repositoryName = "ubuntu"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -664,12 +654,10 @@ ecr_describe_images <- function(registryId = NULL, repositoryName, imageIds = NU
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The following example obtains a list and description of all repositories
 #' # in the default registry to which the current user has access.
-#' svc$describe_repositories()
-#' ```
+#' \donttest{svc$describe_repositories()}
 #'
 #' @keywords internal
 #'
@@ -719,11 +707,9 @@ ecr_describe_repositories <- function(registryId = NULL, repositoryNames = NULL,
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example gets an authorization token for your default registry.
-#' svc$get_authorization_token()
-#' ```
+#' \donttest{svc$get_authorization_token()}
 #'
 #' @keywords internal
 #'
@@ -927,14 +913,12 @@ ecr_get_lifecycle_policy_preview <- function(registryId = NULL, repositoryName, 
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example obtains the repository policy for the repository named
 #' # ubuntu.
-#' svc$get_repository_policy(
+#' \donttest{svc$get_repository_policy(
 #'   repositoryName = "ubuntu"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'
@@ -1051,14 +1035,12 @@ ecr_initiate_layer_upload <- function(registryId = NULL, repositoryName) {
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # This example lists all of the images in the repository named ubuntu in
 #' # the default registry in the current account.
-#' svc$list_images(
+#' \donttest{svc$list_images(
 #'   repositoryName = "ubuntu"
-#' )
-#' ```
+#' )}
 #'
 #' @keywords internal
 #'

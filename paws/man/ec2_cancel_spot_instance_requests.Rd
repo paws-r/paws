@@ -31,14 +31,13 @@ Instances associated with the request.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example cancels a Spot Instance request.
-svc$cancel_spot_instance_requests(
+\examples{
+# This example cancels a Spot Instance request.
+\donttest{svc$cancel_spot_instance_requests(
   SpotInstanceRequestIds = list(
     "sir-08b93456"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -82,20 +82,6 @@ For more information, see \href{https://forums.aws.amazon.com/ann.jspa?annID=355
 }
 }
 
-\section{Examples}{
-\preformatted{# Activates the gateway you previously deployed on your host.
-svc$activate_gateway(
-  ActivationKey = "29AV1-3OFV9-VVIUB-NKT0I-LRO6V",
-  GatewayName = "My_Gateway",
-  GatewayRegion = "us-east-1",
-  GatewayTimezone = "GMT-12:00",
-  GatewayType = "STORED",
-  MediumChangerType = "AWS-Gateway-VTL",
-  TapeDriveType = "IBM-ULT3580-TD5"
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -177,3 +163,17 @@ svc$activate_gateway(
 }
 }
 
+\examples{
+# Activates the gateway you previously deployed on your host.
+\donttest{svc <- storagegateway()
+svc$activate_gateway(
+  ActivationKey = "29AV1-3OFV9-VVIUB-NKT0I-LRO6V",
+  GatewayName = "My_Gateway",
+  GatewayRegion = "us-east-1",
+  GatewayTimezone = "GMT-12:00",
+  GatewayType = "STORED",
+  MediumChangerType = "AWS-Gateway-VTL",
+  TapeDriveType = "IBM-ULT3580-TD5"
+)}
+
+}

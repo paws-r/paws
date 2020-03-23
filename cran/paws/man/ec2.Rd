@@ -45,15 +45,6 @@ documentation
 }
 }
 
-\section{Examples}{
-\preformatted{# This example allocates an Elastic IP address to use with an instance in
-# a VPC.
-svc$allocate_address(
-  Domain = "vpc"
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -457,3 +448,12 @@ svc$allocate_address(
 }
 }
 
+\examples{
+# This example allocates an Elastic IP address to use with an instance in
+# a VPC.
+\donttest{svc <- ec2()
+svc$allocate_address(
+  Domain = "vpc"
+)}
+
+}

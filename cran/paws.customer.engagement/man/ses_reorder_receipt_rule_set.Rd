@@ -34,17 +34,16 @@ You can execute this operation no more than once per second.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example reorders the receipt rules within a receipt rule
+\examples{
+# The following example reorders the receipt rules within a receipt rule
 # set:
-svc$reorder_receipt_rule_set(
+\donttest{svc$reorder_receipt_rule_set(
   RuleNames = list(
     "MyRule",
     "MyOtherRule"
   ),
   RuleSetName = "MyRuleSet"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

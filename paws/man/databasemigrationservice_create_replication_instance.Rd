@@ -121,9 +121,9 @@ For information on the required permissions, see \href{https://docs.aws.amazon.c
 }
 }
 
-\section{Examples}{
-\preformatted{# Creates the replication instance using the specified parameters.
-svc$create_replication_instance(
+\examples{
+# Creates the replication instance using the specified parameters.
+\donttest{svc$create_replication_instance(
   AllocatedStorage = 123L,
   AutoMinorVersionUpgrade = TRUE,
   AvailabilityZone = "",
@@ -142,8 +142,7 @@ svc$create_replication_instance(
     )
   ),
   VpcSecurityGroupIds = list()
-)
-}
-}
+)}
 
+}
 \keyword{internal}

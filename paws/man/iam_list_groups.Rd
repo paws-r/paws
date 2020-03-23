@@ -50,10 +50,9 @@ parameters.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following command lists the IAM groups in the current account:
-svc$list_groups()
-}
-}
+\examples{
+# The following command lists the IAM groups in the current account:
+\donttest{svc$list_groups()}
 
+}
 \keyword{internal}

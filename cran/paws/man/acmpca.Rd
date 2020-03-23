@@ -43,13 +43,6 @@ in the ACM Private CA user guide.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_certificate_authority(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -76,3 +69,10 @@ in the ACM Private CA user guide.
 }
 }
 
+\examples{
+\donttest{svc <- acmpca()
+svc$create_certificate_authority(
+  Foo = 123
+)}
+
+}

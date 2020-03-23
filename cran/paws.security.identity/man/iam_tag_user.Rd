@@ -65,9 +65,9 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example shows how to add tags to an existing user.
-svc$tag_user(
+\examples{
+# The following example shows how to add tags to an existing user.
+\donttest{svc$tag_user(
   Tags = list(
     list(
       Key = "Dept",
@@ -79,8 +79,7 @@ svc$tag_user(
     )
   ),
   UserName = "anika"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -78,17 +78,16 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example allocates an Elastic IP address to use with an instance in
+\examples{
+# This example allocates an Elastic IP address to use with an instance in
 # a VPC.
-svc$allocate_address(
+\donttest{svc$allocate_address(
   Domain = "vpc"
-)
+)}
 
 # This example allocates an Elastic IP address to use with an instance in
 # EC2-Classic.
-svc$allocate_address()
-}
-}
+\donttest{svc$allocate_address()}
 
+}
 \keyword{internal}

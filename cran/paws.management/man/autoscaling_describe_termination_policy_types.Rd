@@ -13,10 +13,9 @@ Describes the termination policies supported by Amazon EC2 Auto Scaling.
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html}{Controlling Which Auto Scaling Instances Terminate During Scale In}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
-\section{Examples}{
-\preformatted{# This example describes the available termination policy types.
-svc$describe_termination_policy_types()
-}
-}
+\examples{
+# This example describes the available termination policy types.
+\donttest{svc$describe_termination_policy_types()}
 
+}
 \keyword{internal}

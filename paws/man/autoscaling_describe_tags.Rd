@@ -45,9 +45,9 @@ match, no special message is returned.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the tags for the specified Auto Scaling group.
-svc$describe_tags(
+\examples{
+# This example describes the tags for the specified Auto Scaling group.
+\donttest{svc$describe_tags(
   Filters = list(
     list(
       Name = "auto-scaling-group",
@@ -56,8 +56,7 @@ svc$describe_tags(
       )
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

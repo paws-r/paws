@@ -81,17 +81,6 @@ using an access key ID and secret access key.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following add-client-id-to-open-id-connect-provider command adds the
-# client ID my-application-ID to the OIDC provider named
-# server.example.com:
-svc$add_client_id_to_open_id_connect_provider(
-  ClientID = "my-application-ID",
-  OpenIDConnectProviderArn = "arn:aws:iam::123456789012:oidc-provider/server.example.com"
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -238,3 +227,14 @@ svc$add_client_id_to_open_id_connect_provider(
 }
 }
 
+\examples{
+# The following add-client-id-to-open-id-connect-provider command adds the
+# client ID my-application-ID to the OIDC provider named
+# server.example.com:
+\donttest{svc <- iam()
+svc$add_client_id_to_open_id_connect_provider(
+  ClientID = "my-application-ID",
+  OpenIDConnectProviderArn = "arn:aws:iam::123456789012:oidc-provider/server.example.com"
+)}
+
+}

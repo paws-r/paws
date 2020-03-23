@@ -50,12 +50,11 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# 
-svc$decode_authorization_message(
+\examples{
+# 
+\donttest{svc$decode_authorization_message(
   EncodedMessage = "<encoded-message>"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

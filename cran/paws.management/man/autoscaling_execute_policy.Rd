@@ -52,15 +52,14 @@ Executes the specified policy.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example executes the specified Auto Scaling policy for the
+\examples{
+# This example executes the specified Auto Scaling policy for the
 # specified Auto Scaling group.
-svc$execute_policy(
+\donttest{svc$execute_policy(
   AutoScalingGroupName = "my-auto-scaling-group",
   HonorCooldown = TRUE,
   PolicyName = "ScaleIn"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -53,14 +53,13 @@ environment if an option value is changed.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following operation retrieves descriptions of all available
+\examples{
+# The following operation retrieves descriptions of all available
 # configuration options for an environment named my-env:
-svc$describe_configuration_options(
+\donttest{svc$describe_configuration_options(
   ApplicationName = "my-app",
   EnvironmentName = "my-env"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

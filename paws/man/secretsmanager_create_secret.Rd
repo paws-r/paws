@@ -244,17 +244,16 @@ response value.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example shows how to create a secret. The credentials
+\examples{
+# The following example shows how to create a secret. The credentials
 # stored in the encrypted secret value are retrieved from a file on disk
 # named mycreds.json.
-svc$create_secret(
+\donttest{svc$create_secret(
   ClientRequestToken = "EXAMPLE1-90ab-cdef-fedc-ba987SECRET1",
   Description = "My test database secret created with the CLI",
   Name = "MyTestDatabaseSecret",
-  SecretString = "\{\\"username\\":\\"david\\",\\"password\\":\\"BnQw!XDWgaEeT9XGTT29\\"\}"
-)
-}
-}
+  SecretString = "{\"username\":\"david\",\"password\":\"BnQw!XDWgaEeT9XGTT29\"}"
+)}
 
+}
 \keyword{internal}

@@ -51,9 +51,9 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example deletes the tag Stack=test from the specified image.
-svc$delete_tags(
+\examples{
+# This example deletes the tag Stack=test from the specified image.
+\donttest{svc$delete_tags(
   Resources = list(
     "ami-78a54011"
   ),
@@ -63,8 +63,7 @@ svc$delete_tags(
       Value = "test"
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -27,13 +27,12 @@ You can execute this operation no more than once per second.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example returns the details of a receipt rule:
-svc$describe_receipt_rule(
+\examples{
+# The following example returns the details of a receipt rule:
+\donttest{svc$describe_receipt_rule(
   RuleName = "MyRule",
   RuleSetName = "MyRuleSet"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

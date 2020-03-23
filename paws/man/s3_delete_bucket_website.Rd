@@ -39,12 +39,11 @@ The following operations are related to \code{DeleteBucketWebsite}:
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example deletes bucket website configuration.
-svc$delete_bucket_website(
+\examples{
+# The following example deletes bucket website configuration.
+\donttest{svc$delete_bucket_website(
   Bucket = "examplebucket"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

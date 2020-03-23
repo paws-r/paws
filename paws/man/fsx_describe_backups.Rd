@@ -72,10 +72,9 @@ responses of a multi-call iteration is unspecified.
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation describes all of the Amazon FSx backups in an account.
-svc$describe_backups()
-}
-}
+\examples{
+# This operation describes all of the Amazon FSx backups in an account.
+\donttest{svc$describe_backups()}
 
+}
 \keyword{internal}

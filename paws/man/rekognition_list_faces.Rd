@@ -36,13 +36,12 @@ This operation requires permissions to perform the
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation lists the faces in a Rekognition collection.
-svc$list_faces(
+\examples{
+# This operation lists the faces in a Rekognition collection.
+\donttest{svc$list_faces(
   CollectionId = "myphotos",
   MaxResults = 20L
-)
-}
-}
+)}
 
+}
 \keyword{internal}

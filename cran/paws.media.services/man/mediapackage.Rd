@@ -30,13 +30,6 @@ AWS Elemental MediaPackage
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_channel(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -61,3 +54,10 @@ AWS Elemental MediaPackage
 }
 }
 
+\examples{
+\donttest{svc <- mediapackage()
+svc$create_channel(
+  Foo = 123
+)}
+
+}

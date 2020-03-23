@@ -147,13 +147,12 @@ The following operation is related to \code{HeadObject}:
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example retrieves an object metadata.
-svc$head_object(
+\examples{
+# The following example retrieves an object metadata.
+\donttest{svc$head_object(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

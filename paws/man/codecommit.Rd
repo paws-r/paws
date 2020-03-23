@@ -240,13 +240,6 @@ For information about how to use AWS CodeCommit, see the \href{https://docs.aws.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$associate_approval_rule_template_with_repository(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -328,3 +321,10 @@ For information about how to use AWS CodeCommit, see the \href{https://docs.aws.
 }
 }
 
+\examples{
+\donttest{svc <- codecommit()
+svc$associate_approval_rule_template_with_repository(
+  Foo = 123
+)}
+
+}

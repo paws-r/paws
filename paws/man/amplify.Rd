@@ -31,13 +31,6 @@ modern web apps.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_app(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -81,3 +74,10 @@ modern web apps.
 }
 }
 
+\examples{
+\donttest{svc <- amplify()
+svc$create_app(
+  Foo = 123
+)}
+
+}

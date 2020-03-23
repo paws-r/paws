@@ -32,15 +32,14 @@ This operation requires permissions for the
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation deletes tags for an EFS file system.
-svc$delete_tags(
+\examples{
+# This operation deletes tags for an EFS file system.
+\donttest{svc$delete_tags(
   FileSystemId = "fs-01234567",
   TagKeys = list(
     "Name"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -20,12 +20,11 @@ Lists all tags for an AWS DMS resource.
 }
 }
 
-\section{Examples}{
-\preformatted{# Lists all tags for an AWS DMS resource.
-svc$list_tags_for_resource(
+\examples{
+# Lists all tags for an AWS DMS resource.
+\donttest{svc$list_tags_for_resource(
   ResourceArn = ""
-)
-}
-}
+)}
 
+}
 \keyword{internal}

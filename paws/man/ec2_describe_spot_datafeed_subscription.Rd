@@ -24,11 +24,10 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the Spot Instance datafeed subscription for your
+\examples{
+# This example describes the Spot Instance datafeed subscription for your
 # AWS account.
-svc$describe_spot_datafeed_subscription()
-}
-}
+\donttest{svc$describe_spot_datafeed_subscription()}
 
+}
 \keyword{internal}

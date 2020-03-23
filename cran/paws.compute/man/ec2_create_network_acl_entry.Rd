@@ -92,11 +92,11 @@ the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example creates an entry for the specified network ACL. The rule
+\examples{
+# This example creates an entry for the specified network ACL. The rule
 # allows ingress traffic from anywhere (0.0.0.0/0) on UDP port 53 (DNS)
 # into any associated subnet.
-svc$create_network_acl_entry(
+\donttest{svc$create_network_acl_entry(
   CidrBlock = "0.0.0.0/0",
   Egress = FALSE,
   NetworkAclId = "acl-5fb85d36",
@@ -107,8 +107,7 @@ svc$create_network_acl_entry(
   Protocol = "17",
   RuleAction = "allow",
   RuleNumber = 100L
-)
-}
-}
+)}
 
+}
 \keyword{internal}

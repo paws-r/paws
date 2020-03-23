@@ -32,17 +32,16 @@ NULL
 #' )
 #' ```
 #'
-#' @section Examples:
-#' ```
+#' @examples
 #' # The following example pushes a sample SSH public key to the EC2 instance
 #' # i-abcd1234 in AZ us-west-2b for use by the instance OS user ec2-user.
+#' \donttest{svc <- ec2instanceconnect()
 #' svc$send_ssh_public_key(
 #'   AvailabilityZone = "us-west-2a",
 #'   InstanceId = "i-abcd1234",
 #'   InstanceOSUser = "ec2-user",
 #'   SSHPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3FlHqj2eqCdrGHuA6dRjfZXQ4HX5lXEIRHa..."
-#' )
-#' ```
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

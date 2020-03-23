@@ -29,17 +29,16 @@ current priority.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example sets the priority of the specified rule.
-svc$set_rule_priorities(
+\examples{
+# This example sets the priority of the specified rule.
+\donttest{svc$set_rule_priorities(
   RulePriorities = list(
     list(
       Priority = 5L,
       RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-lo..."
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

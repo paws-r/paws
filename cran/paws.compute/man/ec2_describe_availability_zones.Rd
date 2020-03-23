@@ -76,11 +76,10 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the Availability Zones that are available to you.
+\examples{
+# This example describes the Availability Zones that are available to you.
 # The response includes Availability Zones only for the current region.
-svc$describe_availability_zones()
-}
-}
+\donttest{svc$describe_availability_zones()}
 
+}
 \keyword{internal}

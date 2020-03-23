@@ -36,14 +36,13 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following command attaches the AWS managed policy named
+\examples{
+# The following command attaches the AWS managed policy named
 # ReadOnlyAccess to the IAM group named Finance.
-svc$attach_group_policy(
+\donttest{svc$attach_group_policy(
   GroupName = "Finance",
   PolicyArn = "arn:aws:iam::aws:policy/ReadOnlyAccess"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

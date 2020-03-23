@@ -31,11 +31,10 @@ AWS WAF is propagating the change to all AWS WAF servers. Use
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example returns a change token to use for a create, update
+\examples{
+# The following example returns a change token to use for a create, update
 # or delete operation.
-svc$get_change_token()
-}
-}
+\donttest{svc$get_change_token()}
 
+}
 \keyword{internal}

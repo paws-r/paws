@@ -32,19 +32,18 @@ specified key exists.
 }
 }
 
-\section{Examples}{
-\preformatted{# Removes entire attributes (key and value pairs) from the findings that
+\examples{
+# Removes entire attributes (key and value pairs) from the findings that
 # are specified by the ARNs of the findings where an attribute with the
 # specified key exists.
-svc$remove_attributes_from_findings(
+\donttest{svc$remove_attributes_from_findings(
   attributeKeys = list(
     "key=Example,value=example"
   ),
   findingArns = list(
     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-8l1VIE0D/run/0-Z0..."
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

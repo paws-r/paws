@@ -75,13 +75,12 @@ This action returns the most recent 1,000 events from the specified
 }
 }
 
-\section{Examples}{
-\preformatted{# The following operation retrieves events for an environment named
+\examples{
+# The following operation retrieves events for an environment named
 # my-env:
-svc$describe_events(
+\donttest{svc$describe_events(
   EnvironmentName = "my-env"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -64,13 +64,12 @@ In the current release, a child can have only a single parent.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example shows how to list the root or OUs that contain
+\examples{
+# The following example shows how to list the root or OUs that contain
 # account 444444444444:/n/n
-svc$list_parents(
+\donttest{svc$list_parents(
   ChildId = "444444444444"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

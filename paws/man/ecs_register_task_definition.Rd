@@ -465,9 +465,9 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example registers a task definition to the specified family.
-svc$register_task_definition(
+\examples{
+# This example registers a task definition to the specified family.
+\donttest{svc$register_task_definition(
   containerDefinitions = list(
     list(
       name = "sleep",
@@ -484,8 +484,7 @@ svc$register_task_definition(
   family = "sleep360",
   taskRoleArn = "",
   volumes = list()
-)
-}
-}
+)}
 
+}
 \keyword{internal}

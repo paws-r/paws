@@ -42,19 +42,18 @@ the Auto Scaling group to zero.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example deletes the specified Auto Scaling group.
-svc$delete_auto_scaling_group(
+\examples{
+# This example deletes the specified Auto Scaling group.
+\donttest{svc$delete_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group"
-)
+)}
 
 # This example deletes the specified Auto Scaling group and all its
 # instances.
-svc$delete_auto_scaling_group(
+\donttest{svc$delete_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   ForceDelete = TRUE
-)
-}
-}
+)}
 
+}
 \keyword{internal}

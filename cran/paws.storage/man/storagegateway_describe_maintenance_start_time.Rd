@@ -22,13 +22,12 @@ time zone.
 }
 }
 
-\section{Examples}{
-\preformatted{# Returns your gateway's weekly maintenance start time including the day
+\examples{
+# Returns your gateway's weekly maintenance start time including the day
 # and time of the week.
-svc$describe_maintenance_start_time(
+\donttest{svc$describe_maintenance_start_time(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -30,13 +30,6 @@ Amazon Kinesis Video Streams
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_signaling_channel(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -62,3 +55,10 @@ Amazon Kinesis Video Streams
 }
 }
 
+\examples{
+\donttest{svc <- kinesisvideo()
+svc$create_signaling_channel(
+  Foo = 123
+)}
+
+}

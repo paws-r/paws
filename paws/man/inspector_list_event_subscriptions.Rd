@@ -34,14 +34,13 @@ see SubscribeToEvent and UnsubscribeFromEvent.
 }
 }
 
-\section{Examples}{
-\preformatted{# Lists all the event subscriptions for the assessment template that is
+\examples{
+# Lists all the event subscriptions for the assessment template that is
 # specified by the ARN of the assessment template.
-svc$list_event_subscriptions(
+\donttest{svc$list_event_subscriptions(
   maxResults = 123L,
   resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-7sbz2..."
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -28,14 +28,13 @@ the tape gateway type.
 }
 }
 
-\section{Examples}{
-\preformatted{# Updates the type of medium changer in a gateway-VTL after a gateway-VTL
+\examples{
+# Updates the type of medium changer in a gateway-VTL after a gateway-VTL
 # is activated.
-svc$update_vtl_device_type(
+\donttest{svc$update_vtl_device_type(
   DeviceType = "Medium Changer",
   VTLDeviceARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B/device/..."
-)
-}
-}
+)}
 
+}
 \keyword{internal}

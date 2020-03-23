@@ -30,13 +30,6 @@ The transactional data APIs for Amazon QLDB
 }
 }
 
-\section{Examples}{
-\preformatted{svc$send_command(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -44,3 +37,10 @@ The transactional data APIs for Amazon QLDB
 }
 }
 
+\examples{
+\donttest{svc <- qldbsession()
+svc$send_command(
+  Foo = 123
+)}
+
+}

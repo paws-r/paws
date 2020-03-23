@@ -38,17 +38,16 @@ instance requested.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example provides a description of the specified container instance
+\examples{
+# This example provides a description of the specified container instance
 # in your default region, using the container instance UUID as an
 # identifier.
-svc$describe_container_instances(
+\donttest{svc$describe_container_instances(
   cluster = "default",
   containerInstances = list(
     "f2756532-8f13-4d53-87c9-aed50dc94cd7"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

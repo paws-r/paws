@@ -40,14 +40,13 @@ in the Amazon S3 Glacier Developer Guide.
 }
 }
 
-\section{Examples}{
-\preformatted{# The example deletes the notification configuration set for the vault
+\examples{
+# The example deletes the notification configuration set for the vault
 # named examplevault.
-svc$delete_vault_notifications(
+\donttest{svc$delete_vault_notifications(
   accountId = "-",
   vaultName = "examplevault"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

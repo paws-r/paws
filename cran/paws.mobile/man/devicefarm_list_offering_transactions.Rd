@@ -27,13 +27,12 @@ operation. If you must be able to invoke this operation, contact
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example returns information about Device Farm offering
+\examples{
+# The following example returns information about Device Farm offering
 # transactions.
-svc$list_offering_transactions(
+\donttest{svc$list_offering_transactions(
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
-)
-}
-}
+)}
 
+}
 \keyword{internal}

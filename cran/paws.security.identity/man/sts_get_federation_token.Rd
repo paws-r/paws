@@ -243,12 +243,12 @@ the user tag.
 }
 }
 
-\section{Examples}{
-\preformatted{# 
-svc$get_federation_token(
+\examples{
+# 
+\donttest{svc$get_federation_token(
   DurationSeconds = 3600L,
   Name = "testFedUserSession",
-  Policy = "\{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":[\{\\"Sid\\":\\"Stmt1\\",\\"Effect\\":...",
+  Policy = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"Stmt1\",\"Effect\":...",
   Tags = list(
     list(
       Key = "Project",
@@ -259,8 +259,7 @@ svc$get_federation_token(
       Value = "98765"
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

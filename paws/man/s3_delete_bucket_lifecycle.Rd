@@ -40,12 +40,11 @@ Related actions include:
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example deletes lifecycle configuration on a bucket.
-svc$delete_bucket_lifecycle(
+\examples{
+# The following example deletes lifecycle configuration on a bucket.
+\donttest{svc$delete_bucket_lifecycle(
   Bucket = "examplebucket"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

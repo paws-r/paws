@@ -73,11 +73,10 @@ The \code{DescribeLimits} Request element has no content.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example returns the maximum read and write capacity units
+\examples{
+# The following example returns the maximum read and write capacity units
 # per table, and for the AWS account, in the current AWS region.
-svc$describe_limits()
-}
-}
+\donttest{svc$describe_limits()}
 
+}
 \keyword{internal}

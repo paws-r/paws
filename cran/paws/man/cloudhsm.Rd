@@ -37,13 +37,6 @@ information, see \href{http://aws.amazon.com/cloudhsm/faqs-classic/}{AWS CloudHS
 }
 }
 
-\section{Examples}{
-\preformatted{svc$add_tags_to_resource(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -70,3 +63,10 @@ information, see \href{http://aws.amazon.com/cloudhsm/faqs-classic/}{AWS CloudHS
 }
 }
 
+\examples{
+\donttest{svc <- cloudhsm()
+svc$add_tags_to_resource(
+  Foo = 123
+)}
+
+}

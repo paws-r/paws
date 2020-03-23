@@ -29,13 +29,12 @@ account.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example shows how to request information about a
+\examples{
+# The following example shows how to request information about a
 # policy:/n/n
-svc$describe_policy(
+\donttest{svc$describe_policy(
   PolicyId = "p-examplepolicyid111"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

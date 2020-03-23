@@ -33,15 +33,14 @@ in the \emph{Classic Load Balancers Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example replaces the existing SSL certificate for the specified
+\examples{
+# This example replaces the existing SSL certificate for the specified
 # HTTPS listener.
-svc$set_load_balancer_listener_ssl_certificate(
+\donttest{svc$set_load_balancer_listener_ssl_certificate(
   LoadBalancerName = "my-load-balancer",
   LoadBalancerPort = 443L,
   SSLCertificateId = "arn:aws:iam::123456789012:server-certificate/new-server-cert"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

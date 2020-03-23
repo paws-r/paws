@@ -76,19 +76,18 @@ The following operation is related to \code{DeleteObject}:
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example deletes an object from a non-versioned bucket.
-svc$delete_object(
+\examples{
+# The following example deletes an object from a non-versioned bucket.
+\donttest{svc$delete_object(
   Bucket = "ExampleBucket",
   Key = "HappyFace.jpg"
-)
+)}
 
 # The following example deletes an object from an S3 bucket.
-svc$delete_object(
+\donttest{svc$delete_object(
   Bucket = "examplebucket",
   Key = "objectkey.jpg"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

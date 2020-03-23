@@ -30,13 +30,6 @@ Provides APIs for creating and managing Amazon Forecast resources.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_dataset(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -69,3 +62,10 @@ Provides APIs for creating and managing Amazon Forecast resources.
 }
 }
 
+\examples{
+\donttest{svc <- forecastservice()
+svc$create_dataset(
+  Foo = 123
+)}
+
+}

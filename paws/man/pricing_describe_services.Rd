@@ -42,14 +42,13 @@ available for EC2 are \code{volumeType}, \code{maxIopsVolume}, \code{operation},
 }
 }
 
-\section{Examples}{
-\preformatted{#
-svc$describe_services(
+\examples{
+#
+\donttest{svc$describe_services(
   FormatVersion = "aws_v1",
   MaxResults = 1L,
   ServiceCode = "AmazonEC2"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

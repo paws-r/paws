@@ -20,12 +20,11 @@ Deletes a subnet group.
 }
 }
 
-\section{Examples}{
-\preformatted{# Deletes a replication subnet group.
-svc$delete_replication_subnet_group(
+\examples{
+# Deletes a replication subnet group.
+\donttest{svc$delete_replication_subnet_group(
   ReplicationSubnetGroupIdentifier = "us-west-2ab-vpc-215ds366"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

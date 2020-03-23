@@ -27,13 +27,12 @@ associated with this account in all US regions.
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation describes all the addresses that you've created for AWS
+\examples{
+# This operation describes all the addresses that you've created for AWS
 # Snowball. Calling this API in one of the US regions will return
 # addresses from the list of all addresses associated with this account in
 # all US regions.
-svc$describe_addresses()
-}
-}
+\donttest{svc$describe_addresses()}
 
+}
 \keyword{internal}

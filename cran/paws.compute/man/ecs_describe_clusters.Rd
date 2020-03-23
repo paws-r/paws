@@ -51,15 +51,14 @@ Describes one or more of your clusters.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example provides a description of the specified cluster in your
+\examples{
+# This example provides a description of the specified cluster in your
 # default region.
-svc$describe_clusters(
+\donttest{svc$describe_clusters(
   clusters = list(
     "default"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

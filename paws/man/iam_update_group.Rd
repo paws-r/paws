@@ -56,13 +56,12 @@ then the update fails. For more information about permissions, see
 }
 }
 
-\section{Examples}{
-\preformatted{# The following command changes the name of the IAM group Test to Test-1.
-svc$update_group(
+\examples{
+# The following command changes the name of the IAM group Test to Test-1.
+\donttest{svc$update_group(
   GroupName = "Test",
   NewGroupName = "Test-1"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

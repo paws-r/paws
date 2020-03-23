@@ -29,14 +29,13 @@ environment.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following operation deletes a configuration template named
+\examples{
+# The following operation deletes a configuration template named
 # my-template for an application named my-app:
-svc$delete_configuration_template(
+\donttest{svc$delete_configuration_template(
   ApplicationName = "my-app",
   TemplateName = "my-template"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

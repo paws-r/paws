@@ -34,16 +34,15 @@ relevant APIs for only 30 days. After that, it\'s deleted.
 }
 }
 
-\section{Examples}{
-\preformatted{# Bill previously sent an invitation to Susan's account to join his
+\examples{
+# Bill previously sent an invitation to Susan's account to join his
 # organization. He changes his mind and decides to cancel the invitation
 # before Susan accepts it. The following example shows Bill's
 # cancellation:
 # 
-svc$cancel_handshake(
+\donttest{svc$cancel_handshake(
   HandshakeId = "h-examplehandshakeid111"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

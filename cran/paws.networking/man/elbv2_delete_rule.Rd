@@ -19,12 +19,11 @@ Deletes the specified rule.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example deletes the specified rule.
-svc$delete_rule(
+\examples{
+# This example deletes the specified rule.
+\donttest{svc$delete_rule(
   RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-b..."
-)
-}
-}
+)}
 
+}
 \keyword{internal}

@@ -56,13 +56,12 @@ accessible only during key and user creation.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following command lists the access keys IDs for the IAM user named
+\examples{
+# The following command lists the access keys IDs for the IAM user named
 # Alice.
-svc$list_access_keys(
+\donttest{svc$list_access_keys(
   UserName = "Alice"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

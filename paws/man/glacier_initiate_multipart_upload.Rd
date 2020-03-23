@@ -73,15 +73,14 @@ in the \emph{Amazon Glacier Developer Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The example initiates a multipart upload to a vault named my-vault with
+\examples{
+# The example initiates a multipart upload to a vault named my-vault with
 # a part size of 1 MiB (1024 x 1024 bytes) per file.
-svc$initiate_multipart_upload(
+\donttest{svc$initiate_multipart_upload(
   accountId = "-",
   partSize = "1048576",
   vaultName = "my-vault"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

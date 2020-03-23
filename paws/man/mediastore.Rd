@@ -32,13 +32,6 @@ objects.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$create_container(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -63,3 +56,10 @@ objects.
 }
 }
 
+\examples{
+\donttest{svc <- mediastore()
+svc$create_container(
+  Foo = 123
+)}
+
+}

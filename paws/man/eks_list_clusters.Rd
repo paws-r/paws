@@ -38,11 +38,10 @@ Region.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example command lists all of your available clusters in your
+\examples{
+# This example command lists all of your available clusters in your
 # default region.
-svc$list_clusters()
-}
-}
+\donttest{svc$list_clusters()}
 
+}
 \keyword{internal}

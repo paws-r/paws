@@ -85,9 +85,9 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the subnets for the specified VPC.
-svc$describe_subnets(
+\examples{
+# This example describes the subnets for the specified VPC.
+\donttest{svc$describe_subnets(
   Filters = list(
     list(
       Name = "vpc-id",
@@ -96,8 +96,7 @@ svc$describe_subnets(
       )
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

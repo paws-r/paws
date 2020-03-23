@@ -41,17 +41,16 @@ in the \emph{Classic Load Balancers Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example replaces the policies that are currently associated with
+\examples{
+# This example replaces the policies that are currently associated with
 # the specified listener.
-svc$set_load_balancer_policies_of_listener(
+\donttest{svc$set_load_balancer_policies_of_listener(
   LoadBalancerName = "my-load-balancer",
   LoadBalancerPort = 80L,
   PolicyNames = list(
     "my-SSLNegotiation-policy"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

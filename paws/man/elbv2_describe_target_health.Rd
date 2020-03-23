@@ -28,17 +28,17 @@ Describes the health of the specified targets or all of your targets.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the health of the targets for the specified
+\examples{
+# This example describes the health of the targets for the specified
 # target group. One target is healthy but the other is not specified in an
 # action, so it can't receive traffic from the load balancer.
-svc$describe_target_health(
+\donttest{svc$describe_target_health(
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targe..."
-)
+)}
 
 # This example describes the health of the specified target. This target
 # is healthy.
-svc$describe_target_health(
+\donttest{svc$describe_target_health(
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targe...",
   Targets = list(
     list(
@@ -46,8 +46,7 @@ svc$describe_target_health(
       Port = 80L
     )
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

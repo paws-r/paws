@@ -36,10 +36,10 @@ Creates a new report using the description that you provide.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example creates a AWS Cost and Usage report named
+\examples{
+# The following example creates a AWS Cost and Usage report named
 # ExampleReport.
-svc$put_report_definition(
+\donttest{svc$put_report_definition(
   ReportDefinition = list(
     AdditionalArtifacts = list(
       "REDSHIFT",
@@ -56,8 +56,7 @@ svc$put_report_definition(
     S3Region = "us-east-1",
     TimeUnit = "DAILY"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

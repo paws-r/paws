@@ -30,13 +30,6 @@ The AWS IoT 1-Click Projects API Reference
 }
 }
 
-\section{Examples}{
-\preformatted{svc$associate_device_with_placement(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -59,3 +52,10 @@ The AWS IoT 1-Click Projects API Reference
 }
 }
 
+\examples{
+\donttest{svc <- iot1clickprojects()
+svc$associate_device_with_placement(
+  Foo = 123
+)}
+
+}

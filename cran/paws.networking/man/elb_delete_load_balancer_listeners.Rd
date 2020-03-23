@@ -24,16 +24,15 @@ Deletes the specified listeners from the specified load balancer.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example deletes the listener for the specified port from the
+\examples{
+# This example deletes the listener for the specified port from the
 # specified load balancer.
-svc$delete_load_balancer_listeners(
+\donttest{svc$delete_load_balancer_listeners(
   LoadBalancerName = "my-load-balancer",
   LoadBalancerPorts = list(
     80L
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

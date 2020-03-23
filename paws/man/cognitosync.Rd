@@ -48,13 +48,6 @@ and the \href{http://docs.aws.amazon.com/mobile/sdkforios/developerguide/cognito
 }
 }
 
-\section{Examples}{
-\preformatted{svc$bulk_publish(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -78,3 +71,10 @@ and the \href{http://docs.aws.amazon.com/mobile/sdkforios/developerguide/cognito
 }
 }
 
+\examples{
+\donttest{svc <- cognitosync()
+svc$bulk_publish(
+  Foo = 123
+)}
+
+}

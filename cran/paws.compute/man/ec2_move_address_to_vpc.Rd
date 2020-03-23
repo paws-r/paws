@@ -33,13 +33,12 @@ EC2-Classic platform.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example moves the specified Elastic IP address to the EC2-VPC
+\examples{
+# This example moves the specified Elastic IP address to the EC2-VPC
 # platform.
-svc$move_address_to_vpc(
+\donttest{svc$move_address_to_vpc(
   PublicIp = "54.123.4.56"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

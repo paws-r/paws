@@ -82,13 +82,12 @@ the key ARN or alias ARN in the value of the KeyId parameter.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example returns information (metadata) about the specified
+\examples{
+# The following example returns information (metadata) about the specified
 # CMK.
-svc$describe_key(
+\donttest{svc$describe_key(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

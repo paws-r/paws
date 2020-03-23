@@ -31,15 +31,14 @@ this request.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example describes the security group references for the specified
+\examples{
+# This example describes the security group references for the specified
 # security group.
-svc$describe_security_group_references(
+\donttest{svc$describe_security_group_references(
   GroupId = list(
     "sg-903004f8"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

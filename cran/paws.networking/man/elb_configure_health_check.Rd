@@ -34,10 +34,10 @@ in the \emph{Classic Load Balancers Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example specifies the health check settings used to evaluate the
+\examples{
+# This example specifies the health check settings used to evaluate the
 # health of your backend EC2 instances.
-svc$configure_health_check(
+\donttest{svc$configure_health_check(
   HealthCheck = list(
     HealthyThreshold = 2L,
     Interval = 30L,
@@ -46,8 +46,7 @@ svc$configure_health_check(
     UnhealthyThreshold = 2L
   ),
   LoadBalancerName = "my-load-balancer"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

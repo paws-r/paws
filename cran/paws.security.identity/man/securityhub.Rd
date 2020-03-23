@@ -61,13 +61,6 @@ BurstLimit of 30 requests per second.
 }
 }
 
-\section{Examples}{
-\preformatted{svc$accept_invitation(
-  Foo = 123
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -112,3 +105,10 @@ BurstLimit of 30 requests per second.
 }
 }
 
+\examples{
+\donttest{svc <- securityhub()
+svc$accept_invitation(
+  Foo = 123
+)}
+
+}

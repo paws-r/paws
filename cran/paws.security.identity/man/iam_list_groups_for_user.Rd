@@ -44,13 +44,12 @@ parameters.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following command displays the groups that the IAM user named Bob
+\examples{
+# The following command displays the groups that the IAM user named Bob
 # belongs to.
-svc$list_groups_for_user(
+\donttest{svc$list_groups_for_user(
   UserName = "Bob"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

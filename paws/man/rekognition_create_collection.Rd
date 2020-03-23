@@ -34,12 +34,11 @@ This operation requires permissions to perform the
 }
 }
 
-\section{Examples}{
-\preformatted{# This operation creates a Rekognition collection for storing image data.
-svc$create_collection(
+\examples{
+# This operation creates a Rekognition collection for storing image data.
+\donttest{svc$create_collection(
   CollectionId = "myphotos"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

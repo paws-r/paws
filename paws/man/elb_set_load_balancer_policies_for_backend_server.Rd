@@ -48,17 +48,16 @@ in the \emph{Classic Load Balancers Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example replaces the policies that are currently associated with
+\examples{
+# This example replaces the policies that are currently associated with
 # the specified port.
-svc$set_load_balancer_policies_for_backend_server(
+\donttest{svc$set_load_balancer_policies_for_backend_server(
   InstancePort = 80L,
   LoadBalancerName = "my-load-balancer",
   PolicyNames = list(
     "my-ProxyProtocol-policy"
   )
-)
-}
-}
+)}
 
+}
 \keyword{internal}

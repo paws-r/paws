@@ -51,11 +51,10 @@ DescribeOrganization.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following example shows how to get the list of the roots in the
+\examples{
+# The following example shows how to get the list of the roots in the
 # current organization:/n/n
-svc$list_roots()
-}
-}
+\donttest{svc$list_roots()}
 
+}
 \keyword{internal}

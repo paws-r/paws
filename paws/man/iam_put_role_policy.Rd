@@ -72,15 +72,14 @@ in the \emph{IAM User Guide}.
 }
 }
 
-\section{Examples}{
-\preformatted{# The following command adds a permissions policy to the role named
+\examples{
+# The following command adds a permissions policy to the role named
 # Test-Role.
-svc$put_role_policy(
-  PolicyDocument = "\{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":\{\\"Effect\\":\\"Allow\\",...",
+\donttest{svc$put_role_policy(
+  PolicyDocument = "{\"Version\":\"2012-10-17\",\"Statement\":{\"Effect\":\"Allow\",...",
   PolicyName = "S3AccessPolicy",
   RoleName = "S3Access"
-)
-}
-}
+)}
 
+}
 \keyword{internal}

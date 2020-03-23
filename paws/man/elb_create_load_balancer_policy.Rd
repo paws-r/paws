@@ -43,10 +43,10 @@ policy type.
 }
 }
 
-\section{Examples}{
-\preformatted{# This example creates a policy that enables Proxy Protocol on the
+\examples{
+# This example creates a policy that enables Proxy Protocol on the
 # specified load balancer.
-svc$create_load_balancer_policy(
+\donttest{svc$create_load_balancer_policy(
   LoadBalancerName = "my-load-balancer",
   PolicyAttributes = list(
     list(
@@ -56,10 +56,10 @@ svc$create_load_balancer_policy(
   ),
   PolicyName = "my-ProxyProtocol-policy",
   PolicyTypeName = "ProxyProtocolPolicyType"
-)
+)}
 
 # This example creates a public key policy.
-svc$create_load_balancer_policy(
+\donttest{svc$create_load_balancer_policy(
   LoadBalancerName = "my-load-balancer",
   PolicyAttributes = list(
     list(
@@ -69,11 +69,11 @@ svc$create_load_balancer_policy(
   ),
   PolicyName = "my-PublicKey-policy",
   PolicyTypeName = "PublicKeyPolicyType"
-)
+)}
 
 # This example creates a backend server authentication policy that enables
 # authentication on your backend instance using a public key policy.
-svc$create_load_balancer_policy(
+\donttest{svc$create_load_balancer_policy(
   LoadBalancerName = "my-load-balancer",
   PolicyAttributes = list(
     list(
@@ -83,8 +83,7 @@ svc$create_load_balancer_policy(
   ),
   PolicyName = "my-authentication-policy",
   PolicyTypeName = "BackendServerAuthenticationPolicyType"
-)
-}
-}
+)}
 
+}
 \keyword{internal}
