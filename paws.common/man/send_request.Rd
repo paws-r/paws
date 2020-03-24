@@ -15,7 +15,7 @@ AWS, interpret the response, and throw an error if the response is not ok.
 }
 \examples{
 # Send a request and handle the response.
-\donttest{resp <- send_request(req)}
+\dontrun{resp <- send_request(req)}
 
 }
 \seealso{

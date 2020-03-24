@@ -20,7 +20,7 @@ Return an API request object with everything needed to make a request.
 }
 \examples{
 # Make a request object for the S3 ListBuckets operation.
-\donttest{metadata <- list(
+\dontrun{metadata <- list(
   endpoints = list("*" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE)),
   service_name = "s3"
 )
