@@ -9,12 +9,12 @@ install:
   - R -e "install.packages('devtools')"
   - R -e "devtools::install_deps('paws.common', dep = T)"
   - R -e "devtools::install_deps('make.paws', dep = T)"
-  - R -e "devtools::install('paws.common')"
+  - R -e "devtools::install_deps('paws', dep = T)"
 
 script:
-  - R CMD build paws.common && R CMD check --as-cran --run-donttest paws.common*.tar.gz
-  - R CMD build make.paws && R CMD check --as-cran --run-donttest make.paws*.tar.gz
-  - R CMD build cran/paws && R CMD check --as-cran --run-donttest paws*.tar.gz
+  - R CMD build paws.common && R CMD check --as-cran --run-donttest paws.common_*.tar.gz
+  - R CMD build make.paws && R CMD check --as-cran --run-donttest make.paws_*.tar.gz
+  - R CMD build cran/paws && R CMD check --as-cran --run-donttest paws_*.tar.gz
 
 after_success:
   - Rscript script/codecov.R paws.common make.paws
