@@ -1,0 +1,71 @@
+# Do not build feature branch with open Pull Requests
+skip_branch_with_pr: true
+
+# DO NOT CHANGE the "init" and "install" sections below
+
+# Download script file from GitHub
+init:
+  ps: |
+    $ErrorActionPreference = "Stop"
+    Invoke-WebRequest http://raw.github.com/krlmlr/r-appveyor/master/scripts/appveyor-tool.ps1 -OutFile "..\appveyor-tool.ps1"
+    Import-Module '..\appveyor-tool.ps1'
+
+install:
+  ps: Bootstrap
+
+cache:
+  - C:\RLibrary
+
+environment:
+  USE_RTOOLS: true
+  WARNINGS_ARE_ERRORS: 1
+  matrix:
+    - TEST_DIR: paws.common
+    - TEST_DIR: make.paws
+
+before_build:
+  - cp ../travis-tool.sh travis-tool.sh
+  - cp travis-tool.sh.cmd %TEST_DIR%/travis-tool.sh.cmd
+  - cd %TEST_DIR%
+  - bash -c "echo '^travis-tool\.sh\.cmd$' >> .Rbuildignore"
+
+build_script:
+  - travis-tool.sh install_deps
+
+for:
+  - 
+    matrix:
+      only:
+        - TEST_DIR: make.paws
+    after_build:
+      - Rscript -e "library(devtools); install('../paws.common', upgrade = FALSE)"
+
+before_test:
+  - cinst pandoc
+  - ps: $env:Path += ";C:\Program Files (x86)\Pandoc\"
+
+test_script:
+  - travis-tool.sh run_tests
+
+on_failure:
+  - 7z a failure.zip *.Rcheck\*
+  - appveyor PushArtifact failure.zip
+
+artifacts:
+  - path: '*.Rcheck\*.log'
+    name: Logs
+
+  - path: '*.Rcheck\*.out'
+    name: Logs
+
+  - path: '*.Rcheck\*.fail'
+    name: Logs
+
+  - path: '*.Rcheck\*.Rout'
+    name: Logs
+
+  - path: '\*_*.tar.gz'
+    name: Bits
+
+  - path: '\*_*.zip'
+    name: Bits
