@@ -89,7 +89,7 @@ new_handlers <- function(protocol, signer) {
 #' @family API request functions
 #'
 #' @examples
-#' \donttest{# Metadata for the S3 API.
+#' \dontrun{# Metadata for the S3 API.
 #' metadata <- list(
 #'   service_name = "s3",
 #'   endpoints = list("us-east-1" = list(endpoint = "s3.amazonaws.com", global = FALSE)),
