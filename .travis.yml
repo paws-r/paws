@@ -9,7 +9,7 @@ install:
   - R -e "install.packages('devtools')"
   - R -e "devtools::install_deps('paws.common', dep = T)"
   - R -e "devtools::install_deps('make.paws', dep = T)"
-  - R -e "devtools::install_deps('paws', dep = T)"
+  - R -e "devtools::install_deps('cran/paws', dep = T)"
 
 script:
   - R CMD build paws.common && R CMD check --as-cran --run-donttest paws.common_*.tar.gz
