@@ -140,11 +140,14 @@ make_doc_example <- function(example, op_name) {
     }
     # Fix special case \..." -> ..." (extra backslash)
     trunc <- gsub('\\\\+(\\.){3}"(,)?$', '..."\\2', trunc)
+    # Escape braces.
+    trunc <- gsub("{", "\\{", trunc, fixed = TRUE)
+    trunc <- gsub("}", "\\}", trunc, fixed = TRUE)
     trunc
   })
   call <- paste(truncated, collapse = "\n")
 
-  call <- paste0("\\donttest{", call, "}")
+  call <- paste0("\\dontrun{", call, "}")
   desc <- comment(break_lines(example$description))
   # Replace exactly double backticks with single backtick
   desc <- gsub("(?<!`)`{2}(?!`)", "`", desc, perl = T)
@@ -327,6 +330,10 @@ escape_special_chars <- function(text) {
   # Control character codes: e.g. \n to `\\n`
   result <- gsub("(\\\\)+([a-zA-Z])\\b", "`\\\\\\\\\\2`", result)
 
+  # @ symbol, escaped for Roxygen.
+  # See http://r-pkgs.had.co.nz/man.html#roxygen-comments.
+  result <- gsub("@", "@@", result)
+
   result
 }
 
@@ -336,7 +343,7 @@ escape_special_chars <- function(text) {
 escape_unmatched_quotes <- function(x) {
   result <- x
   for (char in c("'", '"', "`")) {
-    if (stringr::str_count(result, char) %% 2 != 0) {
+    if (stringr::str_count(result, stringr::fixed(char)) %% 2 != 0) {
       result <- gsub(char, paste0("\\", char), result, fixed = TRUE)
     }
   }

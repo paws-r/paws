@@ -195,7 +195,7 @@ test_that("make_doc_examples", {
   expected <- paste(
     "#' @examples",
     "#' # Description",
-    "#' \\donttest{svc$operation(",
+    "#' \\dontrun{svc$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = 123",
@@ -227,10 +227,10 @@ test_that("make_doc_examples", {
   expected <- paste(
     "#' @examples",
     "#' # Description1",
-    "#' \\donttest{svc$operation()}",
+    "#' \\dontrun{svc$operation()}",
     "#' ",
     "#' # Description2",
-    "#' \\donttest{svc$operation(",
+    "#' \\dontrun{svc$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = 123",
@@ -258,7 +258,7 @@ test_that("make_doc_examples", {
   expected <- paste(
     "#' @examples",
     "#' # Description, with a comma",
-    "#' \\donttest{svc$operation(",
+    "#' \\dontrun{svc$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = 123",
@@ -286,7 +286,7 @@ test_that("make_doc_examples", {
   expected <- paste(
     "#' @examples",
     "#' # Description, with a comma",
-    "#' \\donttest{svc$operation(",
+    "#' \\dontrun{svc$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = \"a,b,c\"",
@@ -314,10 +314,10 @@ test_that("make_doc_examples", {
   expected <- paste(
     "#' @examples",
     "#' # A very long string",
-    "#' \\donttest{svc$operation(",
+    "#' \\dontrun{svc$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
-    "#'     Qux = \"{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":[{\\\"Sid\\\":\\\"Stmt1\\\",\\\"Effect\\\":...\"",
+    "#'     Qux = \"\\{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":[\\{\\\"Sid\\\":\\\"Stmt1\\\",\\\"Effect\\\":...\"",
     "#'   )",
     "#' )}",
     sep = "\n"
@@ -342,7 +342,7 @@ test_that("make_doc_examples", {
   expected <- paste(
     "#' @examples",
     "#' # Description with inline `code`",
-    "#' \\donttest{svc$operation(",
+    "#' \\dontrun{svc$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = 123",
@@ -370,7 +370,7 @@ test_that("make_doc_examples", {
   expected <- paste(
     "#' @examples",
     "#' # Description with inline ```code```",
-    "#' \\donttest{svc$operation(",
+    "#' \\dontrun{svc$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = 123",
@@ -493,7 +493,7 @@ test_that("convert", {
   expect_equal(convert(text), expected)
 
   text <- "<a href='mailto:foo@bar.com'>foo@bar.com</a>"
-  expected <- c("<foo@bar.com>")
+  expected <- c("<foo@@bar.com>")
   expect_equal(convert(text), expected)
 
   text <- "<a href='example.com'>foo</a>"
