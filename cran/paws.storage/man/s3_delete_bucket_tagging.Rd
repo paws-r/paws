@@ -32,7 +32,7 @@ The following operations are related to \code{DeleteBucketTagging}:
 
 \examples{
 # The following example deletes bucket tags.
-\donttest{svc$delete_bucket_tagging(
+\dontrun{svc$delete_bucket_tagging(
   Bucket = "examplebucket"
 )}
 

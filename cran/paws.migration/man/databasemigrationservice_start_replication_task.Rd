@@ -69,7 +69,7 @@ in the \emph{AWS Database Migration Service User Guide.}
 
 \examples{
 # Starts the replication task.
-\donttest{svc$start_replication_task(
+\dontrun{svc$start_replication_task(
   CdcStartTime = "2016-12-14T13:33:20Z",
   ReplicationTaskArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ",
   StartReplicationTaskType = "start-replication"

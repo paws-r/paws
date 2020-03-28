@@ -30,7 +30,7 @@ gateway type.
 \examples{
 # Cancels retrieval of a virtual tape from the virtual tape shelf (VTS) to
 # a gateway after the retrieval process is initiated.
-\donttest{svc$cancel_retrieval(
+\dontrun{svc$cancel_retrieval(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
   TapeARN = "arn:aws:storagegateway:us-east-1:999999999999:tape/AMZN01A2A4"
 )}

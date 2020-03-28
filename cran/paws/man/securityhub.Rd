@@ -106,7 +106,7 @@ BurstLimit of 30 requests per second.
 }
 
 \examples{
-\donttest{svc <- securityhub()
+\dontrun{svc <- securityhub()
 svc$accept_invitation(
   Foo = 123
 )}

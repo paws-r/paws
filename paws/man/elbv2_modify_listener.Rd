@@ -139,7 +139,7 @@ action, specify a list with the current actions plus the new action.
 
 \examples{
 # This example changes the default action for the specified listener.
-\donttest{svc$modify_listener(
+\dontrun{svc$modify_listener(
   DefaultActions = list(
     list(
       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-n...",
@@ -151,7 +151,7 @@ action, specify a list with the current actions plus the new action.
 
 # This example changes the server certificate for the specified HTTPS
 # listener.
-\donttest{svc$modify_listener(
+\dontrun{svc$modify_listener(
   Certificates = list(
     list(
       CertificateArn = "arn:aws:iam::123456789012:server-certificate/my-new-server-cert"

@@ -57,7 +57,7 @@ Amazon Kendra is a service for indexing large document sets.
 }
 
 \examples{
-\donttest{svc <- kendra()
+\dontrun{svc <- kendra()
 svc$batch_delete_document(
   Foo = 123
 )}

@@ -35,7 +35,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- outposts()
+#' \dontrun{svc <- outposts()
 #' svc$create_outpost(
 #'   Foo = 123
 #' )}

@@ -322,7 +322,7 @@ For information about how to use AWS CodeCommit, see the \href{https://docs.aws.
 }
 
 \examples{
-\donttest{svc <- codecommit()
+\dontrun{svc <- codecommit()
 svc$associate_approval_rule_template_with_repository(
   Foo = 123
 )}

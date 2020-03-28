@@ -186,7 +186,7 @@ in the \emph{Amazon DynamoDB Developer Guide}.
 \examples{
 # This example reads multiple items from the Music table using a batch of
 # three GetItem requests.  Only the AlbumTitle attribute is returned.
-\donttest{svc$batch_get_item(
+\dontrun{svc$batch_get_item(
   RequestItems = list(
     Music = list(
       Keys = list(

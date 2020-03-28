@@ -48,7 +48,7 @@ You can get the ID of the statement from the output of GetPolicy.
 
 \examples{
 # This operation removes a Lambda function's permissions
-\donttest{svc$remove_permission(
+\dontrun{svc$remove_permission(
   FunctionName = "myFunction",
   Qualifier = "1",
   StatementId = "role-statement-id"

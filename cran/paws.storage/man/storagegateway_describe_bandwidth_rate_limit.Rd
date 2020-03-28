@@ -32,7 +32,7 @@ gateway in your request.
 \examples{
 # Returns a value for a bandwidth rate limit if set. If not set, then only
 # the gateway ARN is returned.
-\donttest{svc$describe_bandwidth_rate_limit(
+\dontrun{svc$describe_bandwidth_rate_limit(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
 )}
 

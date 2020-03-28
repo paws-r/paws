@@ -36,7 +36,7 @@ The following operations are related to \code{DeleteBucketWebsite}:
 
 \examples{
 # The following example retrieves website configuration of a bucket.
-\donttest{svc$get_bucket_website(
+\dontrun{svc$get_bucket_website(
   Bucket = "examplebucket"
 )}
 

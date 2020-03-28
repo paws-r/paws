@@ -78,7 +78,7 @@ service.
 }
 
 \examples{
-\donttest{svc <- datapipeline()
+\dontrun{svc <- datapipeline()
 svc$activate_pipeline(
   Foo = 123
 )}

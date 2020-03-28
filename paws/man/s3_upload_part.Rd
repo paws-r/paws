@@ -154,7 +154,7 @@ following headers.
 # The following example uploads part 1 of a multipart upload. The example
 # specifies a file name for the part data. The Upload ID is same that is
 # returned by the initiate multipart upload.
-\donttest{svc$upload_part(
+\dontrun{svc$upload_part(
   Body = "fileToUpload",
   Bucket = "examplebucket",
   Key = "examplelargeobject",

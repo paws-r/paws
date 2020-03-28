@@ -40,7 +40,7 @@ This operation can be called from any account in the organization.
 # handshake. The handshake ID comes either from the original call to
 # "InviteAccountToOrganization", or from a call to
 # "ListHandshakesForAccount" or "ListHandshakesForOrganization":
-\donttest{svc$describe_handshake(
+\dontrun{svc$describe_handshake(
   HandshakeId = "h-examplehandshakeid111"
 )}
 

@@ -65,7 +65,7 @@ infrastructure to buy and set up.
 }
 
 \examples{
-\donttest{svc <- transfer()
+\dontrun{svc <- transfer()
 svc$create_server(
   Foo = 123
 )}

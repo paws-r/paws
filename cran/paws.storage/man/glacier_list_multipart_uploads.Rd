@@ -72,7 +72,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 \examples{
 # The example lists all the in-progress multipart uploads for the vault
 # named examplevault.
-\donttest{svc$list_multipart_uploads(
+\dontrun{svc$list_multipart_uploads(
   accountId = "-",
   vaultName = "examplevault"
 )}

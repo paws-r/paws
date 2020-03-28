@@ -36,7 +36,7 @@ respectively.
 \examples{
 # Updates the gateway virtual machine (VM) software. The request
 # immediately triggers the software update.
-\donttest{svc$update_gateway_software_now(
+\dontrun{svc$update_gateway_software_now(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
 )}
 

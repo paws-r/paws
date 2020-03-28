@@ -68,7 +68,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- pinpointemail()
+#' \dontrun{svc <- pinpointemail()
 #' svc$create_configuration_set(
 #'   Foo = 123
 #' )}

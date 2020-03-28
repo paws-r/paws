@@ -139,7 +139,7 @@ This operation requires permissions for the
 \examples{
 # This operation creates a new file system with the default generalpurpose
 # performance mode.
-\donttest{svc$create_file_system(
+\dontrun{svc$create_file_system(
   CreationToken = "tokenstring",
   PerformanceMode = "generalPurpose",
   Tags = list(

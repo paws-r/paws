@@ -47,7 +47,7 @@ parameters.
 \examples{
 # The following command displays the groups that the IAM user named Bob
 # belongs to.
-\donttest{svc$list_groups_for_user(
+\dontrun{svc$list_groups_for_user(
   UserName = "Bob"
 )}
 

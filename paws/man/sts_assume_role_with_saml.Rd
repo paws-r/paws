@@ -233,7 +233,7 @@ in the \emph{IAM User Guide}.
 
 \examples{
 # 
-\donttest{svc$assume_role_with_saml(
+\dontrun{svc$assume_role_with_saml(
   DurationSeconds = 3600L,
   PrincipalArn = "arn:aws:iam::123456789012:saml-provider/SAML-test",
   RoleArn = "arn:aws:iam::123456789012:role/TestSaml",

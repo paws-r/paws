@@ -52,7 +52,7 @@ parameters.
 
 \examples{
 # The following command lists the IAM groups in the current account:
-\donttest{svc$list_groups()}
+\dontrun{svc$list_groups()}
 
 }
 \keyword{internal}

@@ -52,7 +52,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- appstream()
+#' \dontrun{svc <- appstream()
 #' svc$associate_fleet(
 #'   Foo = 123
 #' )}

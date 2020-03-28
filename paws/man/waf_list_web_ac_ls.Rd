@@ -32,7 +32,7 @@ Returns an array of WebACLSummary objects in the response.
 
 \examples{
 # The following example returns an array of up to 100 web ACLs.
-\donttest{svc$list_web_ac_ls(
+\dontrun{svc$list_web_ac_ls(
   Limit = 100L
 )}
 

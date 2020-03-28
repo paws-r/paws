@@ -39,7 +39,7 @@ in the \emph{IAM User Guide}.
 
 \examples{
 # The following command lists the aliases for the current account.
-\donttest{svc$list_account_aliases()}
+\dontrun{svc$list_account_aliases()}
 
 }
 \keyword{internal}

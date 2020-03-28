@@ -45,7 +45,7 @@ Describes the policies for the specified Auto Scaling group.
 \examples{
 # This example describes the policies for the specified Auto Scaling
 # group.
-\donttest{svc$describe_policies(
+\dontrun{svc$describe_policies(
   AutoScalingGroupName = "my-auto-scaling-group"
 )}
 

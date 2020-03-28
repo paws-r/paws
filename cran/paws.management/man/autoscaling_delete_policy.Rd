@@ -32,7 +32,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 \examples{
 # This example deletes the specified Auto Scaling policy.
-\donttest{svc$delete_policy(
+\dontrun{svc$delete_policy(
   AutoScalingGroupName = "my-auto-scaling-group",
   PolicyName = "ScaleIn"
 )}

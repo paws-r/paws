@@ -34,7 +34,7 @@ Returns AWS resources for this environment.
 \examples{
 # The following operation retrieves information about resources in an
 # environment named my-env:
-\donttest{svc$describe_environment_resources(
+\dontrun{svc$describe_environment_resources(
   EnvironmentName = "my-env"
 )}
 

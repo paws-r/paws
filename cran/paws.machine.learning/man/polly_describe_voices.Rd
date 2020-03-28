@@ -64,7 +64,7 @@ This operation requires permissions to perform the
 # speech synthesis. Displayed languages are those within the specified
 # language code. If no language code is specified, voices for all
 # available languages are displayed.
-\donttest{svc$describe_voices(
+\dontrun{svc$describe_voices(
   LanguageCode = "en-GB"
 )}
 

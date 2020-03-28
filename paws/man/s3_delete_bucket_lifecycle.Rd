@@ -42,7 +42,7 @@ Related actions include:
 
 \examples{
 # The following example deletes lifecycle configuration on a bucket.
-\donttest{svc$delete_bucket_lifecycle(
+\dontrun{svc$delete_bucket_lifecycle(
   Bucket = "examplebucket"
 )}
 

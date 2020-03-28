@@ -81,13 +81,13 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 \examples{
 # This example allocates an Elastic IP address to use with an instance in
 # a VPC.
-\donttest{svc$allocate_address(
+\dontrun{svc$allocate_address(
   Domain = "vpc"
 )}
 
 # This example allocates an Elastic IP address to use with an instance in
 # EC2-Classic.
-\donttest{svc$allocate_address()}
+\dontrun{svc$allocate_address()}
 
 }
 \keyword{internal}

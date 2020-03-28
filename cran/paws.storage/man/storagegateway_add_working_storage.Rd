@@ -42,7 +42,7 @@ want to configure as working storage.
 \examples{
 # Configures one or more gateway local disks as working storage for a
 # gateway. (Working storage is also referred to as upload buffer.)
-\donttest{svc$add_working_storage(
+\dontrun{svc$add_working_storage(
   DiskIds = list(
     "pci-0000:03:00.0-scsi-0:0:0:0",
     "pci-0000:03:00.0-scsi-0:0:1:0"

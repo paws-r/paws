@@ -30,7 +30,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- mediaconnect()
+#' \dontrun{svc <- mediaconnect()
 #' svc$add_flow_outputs(
 #'   Foo = 123
 #' )}

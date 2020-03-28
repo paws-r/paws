@@ -165,7 +165,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- codepipeline()
+#' \dontrun{svc <- codepipeline()
 #' svc$acknowledge_job(
 #'   Foo = 123
 #' )}

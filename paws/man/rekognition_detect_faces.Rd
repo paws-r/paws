@@ -72,7 +72,7 @@ This operation requires permissions to perform the
 
 \examples{
 # This operation detects faces in an image stored in an AWS S3 bucket.
-\donttest{svc$detect_faces(
+\dontrun{svc$detect_faces(
   Image = list(
     S3Object = list(
       Bucket = "mybucket",

@@ -34,7 +34,7 @@ AWS WAF is propagating the change to all AWS WAF servers. Use
 \examples{
 # The following example returns a change token to use for a create, update
 # or delete operation.
-\donttest{svc$get_change_token()}
+\dontrun{svc$get_change_token()}
 
 }
 \keyword{internal}

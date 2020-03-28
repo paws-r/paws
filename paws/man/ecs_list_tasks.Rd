@@ -88,14 +88,14 @@ stopped tasks appear in the returned results for at least one hour.
 
 \examples{
 # This example lists all of the tasks in a cluster.
-\donttest{svc$list_tasks(
+\dontrun{svc$list_tasks(
   cluster = "default"
 )}
 
 # This example lists the tasks of a specified container instance.
 # Specifying a `containerInstance` value limits  the  results  to  tasks
 #  that belong to that container instance.
-\donttest{svc$list_tasks(
+\dontrun{svc$list_tasks(
   cluster = "default",
   containerInstance = "f6bbb147-5370-4ace-8c73-c7181ded911f"
 )}

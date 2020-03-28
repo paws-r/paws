@@ -441,7 +441,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 \examples{
 # This example launches an instance using the specified AMI, instance
 # type, security group, subnet, block device mapping, and tags.
-\donttest{svc$run_instances(
+\dontrun{svc$run_instances(
   BlockDeviceMappings = list(
     list(
       DeviceName = "/dev/sdh",

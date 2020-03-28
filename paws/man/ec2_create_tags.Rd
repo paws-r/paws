@@ -54,7 +54,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 \examples{
 # This example adds the tag Stack=production to the specified image, or
 # overwrites an existing tag for the AMI where the tag key is Stack.
-\donttest{svc$create_tags(
+\dontrun{svc$create_tags(
   Resources = list(
     "ami-78a54011"
   ),

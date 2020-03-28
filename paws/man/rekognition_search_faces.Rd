@@ -56,7 +56,7 @@ This operation requires permissions to perform the
 \examples{
 # This operation searches for matching faces in the collection the
 # supplied face belongs to.
-\donttest{svc$search_faces(
+\dontrun{svc$search_faces(
   CollectionId = "myphotos",
   FaceId = "70008e50-75e4-55d0-8e80-363fb73b3a14",
   FaceMatchThreshold = 90L,

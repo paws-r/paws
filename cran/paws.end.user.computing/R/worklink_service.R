@@ -38,7 +38,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- worklink()
+#' \dontrun{svc <- worklink()
 #' svc$associate_domain(
 #'   Foo = 123
 #' )}

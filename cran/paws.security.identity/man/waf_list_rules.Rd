@@ -31,7 +31,7 @@ Returns an array of RuleSummary objects.
 
 \examples{
 # The following example returns an array of up to 100 rules.
-\donttest{svc$list_rules(
+\dontrun{svc$list_rules(
   Limit = 100L
 )}
 

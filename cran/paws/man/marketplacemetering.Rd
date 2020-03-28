@@ -84,7 +84,7 @@ information, see the \emph{\href{http://docs.aws.amazon.com/awscloudtrail/latest
 }
 
 \examples{
-\donttest{svc <- marketplacemetering()
+\dontrun{svc <- marketplacemetering()
 svc$batch_meter_usage(
   Foo = 123
 )}

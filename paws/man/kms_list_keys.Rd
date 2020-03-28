@@ -33,7 +33,7 @@ account and Region.
 
 \examples{
 # The following example lists CMKs.
-\donttest{svc$list_keys()}
+\dontrun{svc$list_keys()}
 
 }
 \keyword{internal}

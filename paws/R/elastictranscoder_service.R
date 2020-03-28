@@ -32,7 +32,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- elastictranscoder()
+#' \dontrun{svc <- elastictranscoder()
 #' svc$cancel_job(
 #'   Foo = 123
 #' )}

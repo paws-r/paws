@@ -28,7 +28,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following command removes the alias mycompany from the current AWS
 # account:
-\donttest{svc$delete_account_alias(
+\dontrun{svc$delete_account_alias(
   AccountAlias = "mycompany"
 )}
 

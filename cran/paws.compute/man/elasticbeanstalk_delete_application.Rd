@@ -32,7 +32,7 @@ You cannot delete an application that has a running environment.
 
 \examples{
 # The following operation deletes an application named my-app:
-\donttest{svc$delete_application(
+\dontrun{svc$delete_application(
   ApplicationName = "my-app"
 )}
 

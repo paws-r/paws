@@ -49,7 +49,7 @@ current region.
 
 \examples{
 # Returns the status of the refresh-schemas operation.
-\donttest{svc$describe_replication_instances(
+\dontrun{svc$describe_replication_instances(
   Filters = list(
     list(
       Name = "string",

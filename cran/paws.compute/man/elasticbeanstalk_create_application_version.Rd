@@ -116,7 +116,7 @@ to launch an environment from the application version.
 \examples{
 # The following operation creates a new version (v1) of an application
 # named my-app:
-\donttest{svc$create_application_version(
+\dontrun{svc$create_application_version(
   ApplicationName = "my-app",
   AutoCreateApplication = TRUE,
   Description = "my-app-v1",

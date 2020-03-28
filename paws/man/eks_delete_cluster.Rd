@@ -34,7 +34,7 @@ DeleteNodegroup andDeleteFargateProfile.
 \examples{
 # This example command deletes a cluster named `devel` in your default
 # region.
-\donttest{svc$delete_cluster(
+\dontrun{svc$delete_cluster(
   name = "devel"
 )}
 

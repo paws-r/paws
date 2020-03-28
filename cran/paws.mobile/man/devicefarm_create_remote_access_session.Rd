@@ -93,7 +93,7 @@ Specifies and starts a remote access session.
 
 \examples{
 # The following example creates a remote access session named MySession.
-\donttest{svc$create_remote_access_session(
+\dontrun{svc$create_remote_access_session(
   name = "MySession",
   configuration = list(
     billingMethod = "METERED"

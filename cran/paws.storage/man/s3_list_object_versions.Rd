@@ -83,7 +83,7 @@ The following operations are related to \code{ListObjectVersions}:
 # there are are more than two object version, S3 returns NextToken in the
 # response. You can specify this token value in your next request to fetch
 # next set of object versions.
-\donttest{svc$list_object_versions(
+\dontrun{svc$list_object_versions(
   Bucket = "examplebucket",
   Prefix = "HappyFace.jpg"
 )}

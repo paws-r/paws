@@ -67,7 +67,7 @@ networks that are built around transit gateways.
 }
 
 \examples{
-\donttest{svc <- networkmanager()
+\dontrun{svc <- networkmanager()
 svc$associate_customer_gateway(
   Foo = 123
 )}

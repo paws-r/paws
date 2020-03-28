@@ -52,7 +52,7 @@ that you should launch your Amazon ECS container instances into.
 
 \examples{
 # This example describes the P2OnDemand compute environment.
-\donttest{svc$describe_compute_environments(
+\dontrun{svc$describe_compute_environments(
   computeEnvironments = list(
     "P2OnDemand"
   )

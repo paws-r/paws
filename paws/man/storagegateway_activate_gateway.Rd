@@ -98,7 +98,7 @@ You must turn on the gateway VM before you can activate your gateway.
 
 \examples{
 # Activates the gateway you previously deployed on your host.
-\donttest{svc$activate_gateway(
+\dontrun{svc$activate_gateway(
   ActivationKey = "29AV1-3OFV9-VVIUB-NKT0I-LRO6V",
   GatewayName = "My_Gateway",
   GatewayRegion = "us-east-1",

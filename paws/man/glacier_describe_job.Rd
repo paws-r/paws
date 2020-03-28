@@ -57,7 +57,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 \examples{
 # The example returns information about the previously initiated job
 # specified by the job ID.
-\donttest{svc$describe_job(
+\dontrun{svc$describe_job(
   accountId = "-",
   jobId = "zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW4_XqlNH...",
   vaultName = "my-vault"

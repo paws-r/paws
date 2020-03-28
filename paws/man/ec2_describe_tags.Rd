@@ -62,7 +62,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example describes the tags for the specified instance.
-\donttest{svc$describe_tags(
+\dontrun{svc$describe_tags(
   Filters = list(
     list(
       Name = "resource-id",

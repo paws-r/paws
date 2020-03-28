@@ -94,7 +94,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- wafv2()
+#' \dontrun{svc <- wafv2()
 #' svc$associate_web_acl(
 #'   Foo = 123
 #' )}

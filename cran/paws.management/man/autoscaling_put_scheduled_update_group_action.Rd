@@ -78,7 +78,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 \examples{
 # This example adds the specified scheduled action to the specified Auto
 # Scaling group.
-\donttest{svc$put_scheduled_update_group_action(
+\dontrun{svc$put_scheduled_update_group_action(
   AutoScalingGroupName = "my-auto-scaling-group",
   DesiredCapacity = 4L,
   EndTime = "2014-05-12T08:00:00Z",

@@ -812,7 +812,7 @@ iot_create_billing_group <- function(billingGroupName, billingGroupProperties = 
 #' 
 #' \\> forfiles /p my-csr-directory /c \"cmd /c aws iot
 #' create-certificate-from-csr \\--certificate-signing-request
-#' file://\\@path\"
+#' file://\\@@path\"
 #'
 #' @usage
 #' iot_create_certificate_from_csr(certificateSigningRequest, setAsActive)

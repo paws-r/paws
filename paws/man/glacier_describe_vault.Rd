@@ -50,7 +50,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 
 \examples{
 # The example retrieves data about a vault named my-vault.
-\donttest{svc$describe_vault(
+\dontrun{svc$describe_vault(
   accountId = "-",
   vaultName = "my-vault"
 )}

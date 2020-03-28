@@ -30,7 +30,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- glue()
+#' \dontrun{svc <- glue()
 #' svc$batch_create_partition(
 #'   Foo = 123
 #' )}

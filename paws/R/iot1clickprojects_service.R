@@ -30,7 +30,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- iot1clickprojects()
+#' \dontrun{svc <- iot1clickprojects()
 #' svc$associate_device_with_placement(
 #'   Foo = 123
 #' )}

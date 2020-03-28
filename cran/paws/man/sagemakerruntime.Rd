@@ -38,7 +38,7 @@ The Amazon SageMaker runtime API.
 }
 
 \examples{
-\donttest{svc <- sagemakerruntime()
+\dontrun{svc <- sagemakerruntime()
 svc$invoke_endpoint(
   Foo = 123
 )}

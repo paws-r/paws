@@ -42,7 +42,7 @@ time.
 \examples{
 # This example modifies the specified subnet so that all instances
 # launched into this subnet are assigned a public IP address.
-\donttest{svc$modify_subnet_attribute(
+\dontrun{svc$modify_subnet_attribute(
   MapPublicIpOnLaunch = list(
     Value = TRUE
   ),

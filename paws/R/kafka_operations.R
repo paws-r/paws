@@ -787,7 +787,7 @@ kafka_tag_resource <- function(ResourceArn, Tags) {
 #'                <li>
 #'                   <p>Tag keys must consist of the following characters: Unicode letters, digits,
 #'                   white space, and the following special characters: _ . / = + -
-#'                      @.</p>
+#'                      @@.</p>
 #'                </li>
 #'             </ul>
 #'          

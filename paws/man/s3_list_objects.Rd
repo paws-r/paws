@@ -61,7 +61,7 @@ The following operations are related to \code{ListObjects}:
 
 \examples{
 # The following example list two objects in a bucket.
-\donttest{svc$list_objects(
+\dontrun{svc$list_objects(
   Bucket = "examplebucket",
   MaxKeys = "2"
 )}

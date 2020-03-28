@@ -27,7 +27,7 @@ assessment targets.
 \examples{
 # Describes the assessment targets that are specified by the ARNs of the
 # assessment targets.
-\donttest{svc$describe_assessment_targets(
+\dontrun{svc$describe_assessment_targets(
   assessmentTargetArns = list(
     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq"
   )

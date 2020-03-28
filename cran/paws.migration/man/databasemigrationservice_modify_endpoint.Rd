@@ -200,7 +200,7 @@ Modifies the specified endpoint.
 
 \examples{
 # Modifies the specified endpoint.
-\donttest{svc$modify_endpoint(
+\dontrun{svc$modify_endpoint(
   CertificateArn = "",
   DatabaseName = "",
   EndpointArn = "",

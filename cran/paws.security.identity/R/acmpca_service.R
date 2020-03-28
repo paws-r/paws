@@ -45,7 +45,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- acmpca()
+#' \dontrun{svc <- acmpca()
 #' svc$create_certificate_authority(
 #'   Foo = 123
 #' )}

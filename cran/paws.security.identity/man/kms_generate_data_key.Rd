@@ -140,7 +140,7 @@ plaintext data key from memory.
 # (data key) in two formats. One is the unencrypted (plainext) data key,
 # and the other is the data key encrypted with the specified customer
 # master key (CMK).
-\donttest{svc$generate_data_key(
+\dontrun{svc$generate_data_key(
   KeyId = "alias/ExampleAlias",
   KeySpec = "AES_256"
 )}

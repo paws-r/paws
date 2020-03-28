@@ -159,7 +159,7 @@ DisplayName is optional and ignored in the request
 # the LogDelivery group. Because this is a replace operation, you must
 # specify all the grants in your request. To incrementally add or remove
 # ACL grants, you might use the console.
-\donttest{svc$put_bucket_acl(
+\dontrun{svc$put_bucket_acl(
   Bucket = "examplebucket",
   GrantFullControl = "id=examplee7a2f25102679df27bb0ae12b3f85be6f290b936c4393484",
   GrantWrite = "uri=http://acs.amazonaws.com/groups/s3/LogDelivery"

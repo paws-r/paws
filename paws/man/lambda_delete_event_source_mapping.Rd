@@ -27,7 +27,7 @@ and might not be completely deleted for several seconds.
 
 \examples{
 # This operation deletes a Lambda function event source mapping
-\donttest{svc$delete_event_source_mapping(
+\dontrun{svc$delete_event_source_mapping(
   UUID = "12345kxodurf3443"
 )}
 

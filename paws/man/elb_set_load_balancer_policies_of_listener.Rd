@@ -44,7 +44,7 @@ in the \emph{Classic Load Balancers Guide}.
 \examples{
 # This example replaces the policies that are currently associated with
 # the specified listener.
-\donttest{svc$set_load_balancer_policies_of_listener(
+\dontrun{svc$set_load_balancer_policies_of_listener(
   LoadBalancerName = "my-load-balancer",
   LoadBalancerPort = 80L,
   PolicyNames = list(

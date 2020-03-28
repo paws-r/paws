@@ -33,7 +33,7 @@ Instances associated with the request.
 
 \examples{
 # This example cancels a Spot Instance request.
-\donttest{svc$cancel_spot_instance_requests(
+\dontrun{svc$cancel_spot_instance_requests(
   SpotInstanceRequestIds = list(
     "sir-08b93456"
   )

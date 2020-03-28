@@ -40,7 +40,7 @@ account.
 \examples{
 # Returns a description of specified virtual tapes in the virtual tape
 # shelf (VTS).
-\donttest{svc$describe_tape_archives(
+\dontrun{svc$describe_tape_archives(
   Limit = 123L,
   Marker = "1",
   TapeARNs = list(

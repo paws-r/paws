@@ -95,7 +95,7 @@ the CodeStarNotifications User Guide.
 }
 
 \examples{
-\donttest{svc <- codestarnotifications()
+\dontrun{svc <- codestarnotifications()
 svc$create_notification_rule(
   Foo = 123
 )}

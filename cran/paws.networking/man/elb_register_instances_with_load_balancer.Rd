@@ -54,7 +54,7 @@ in the \emph{Classic Load Balancers Guide}.
 \examples{
 # This example registers the specified instance with the specified load
 # balancer.
-\donttest{svc$register_instances_with_load_balancer(
+\dontrun{svc$register_instances_with_load_balancer(
   Instances = list(
     list(
       InstanceId = "i-d6f6fae3"

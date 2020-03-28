@@ -31,7 +31,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- translate()
+#' \dontrun{svc <- translate()
 #' svc$delete_terminology(
 #'   Foo = 123
 #' )}

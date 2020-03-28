@@ -50,7 +50,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example creates a placement group with the specified name.
-\donttest{svc$create_placement_group(
+\dontrun{svc$create_placement_group(
   GroupName = "my-cluster",
   Strategy = "cluster"
 )}

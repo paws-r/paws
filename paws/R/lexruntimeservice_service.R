@@ -41,7 +41,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- lexruntimeservice()
+#' \dontrun{svc <- lexruntimeservice()
 #' svc$delete_session(
 #'   Foo = 123
 #' )}

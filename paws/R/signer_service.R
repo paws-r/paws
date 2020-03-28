@@ -42,7 +42,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- signer()
+#' \dontrun{svc <- signer()
 #' svc$cancel_signing_profile(
 #'   Foo = 123
 #' )}

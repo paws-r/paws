@@ -83,7 +83,7 @@ applications.
 }
 
 \examples{
-\donttest{svc <- serverlessapplicationrepository()
+\dontrun{svc <- serverlessapplicationrepository()
 svc$create_application(
   Foo = 123
 )}

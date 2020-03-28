@@ -42,7 +42,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following command deletes the policy named ExamplePolicy from the
 # group named Admins:
-\donttest{svc$delete_group_policy(
+\dontrun{svc$delete_group_policy(
   GroupName = "Admins",
   PolicyName = "ExamplePolicy"
 )}

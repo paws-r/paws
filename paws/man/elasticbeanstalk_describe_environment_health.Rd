@@ -40,7 +40,7 @@ available with AWS Elastic Beanstalk Enhanced Health.
 \examples{
 # The following operation retrieves overall health information for an
 # environment named my-env:
-\donttest{svc$describe_environment_health(
+\dontrun{svc$describe_environment_health(
   AttributeNames = list(
     "All"
   ),

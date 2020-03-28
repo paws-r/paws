@@ -44,7 +44,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- autoscalingplans()
+#' \dontrun{svc <- autoscalingplans()
 #' svc$create_scaling_plan(
 #'   Foo = 123
 #' )}

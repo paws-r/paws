@@ -43,7 +43,7 @@ the name of the gateway has no effect on the gateway\'s ARN.
 \examples{
 # Updates a gateway's metadata, which includes the gateway's name and time
 # zone.
-\donttest{svc$update_gateway_information(
+\dontrun{svc$update_gateway_information(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
   GatewayName = "MyGateway2",
   GatewayTimezone = "GMT-12:00"

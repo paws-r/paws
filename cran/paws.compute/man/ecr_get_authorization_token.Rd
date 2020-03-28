@@ -34,7 +34,7 @@ command to authenticate to a registry. The AWS CLI offers an
 
 \examples{
 # This example gets an authorization token for your default registry.
-\donttest{svc$get_authorization_token()}
+\dontrun{svc$get_authorization_token()}
 
 }
 \keyword{internal}

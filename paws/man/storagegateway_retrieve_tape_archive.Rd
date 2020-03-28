@@ -43,7 +43,7 @@ supported in the tape gateway type.
 # Retrieves an archived virtual tape from the virtual tape shelf (VTS) to
 # a gateway-VTL. Virtual tapes archived in the VTS are not associated with
 # any gateway.
-\donttest{svc$retrieve_tape_archive(
+\dontrun{svc$retrieve_tape_archive(
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
   TapeARN = "arn:aws:storagegateway:us-east-1:999999999999:tape/TEST0AA2AF"
 )}

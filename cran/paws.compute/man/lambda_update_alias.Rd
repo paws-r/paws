@@ -56,7 +56,7 @@ Updates the configuration of a Lambda function
 
 \examples{
 # This operation updates a Lambda function alias
-\donttest{svc$update_alias(
+\dontrun{svc$update_alias(
   Description = "",
   FunctionName = "myFunction",
   FunctionVersion = "1",

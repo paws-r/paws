@@ -46,7 +46,7 @@ Returns information about the type of endpoints available.
 
 \examples{
 # Returns information about the type of endpoints available.
-\donttest{svc$describe_endpoint_types(
+\dontrun{svc$describe_endpoint_types(
   Filters = list(
     list(
       Name = "string",

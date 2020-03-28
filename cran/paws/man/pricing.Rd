@@ -65,7 +65,7 @@ AWS Price List Service API provides the following two endpoints:
 }
 
 \examples{
-\donttest{svc <- pricing()
+\dontrun{svc <- pricing()
 svc$describe_services(
   FormatVersion = "aws_v1",
   MaxResults = 1L,

@@ -56,7 +56,7 @@ that are specified by the ARNs of the assessment targets.
 \examples{
 # Lists the assessment templates that correspond to the assessment targets
 # that are specified by the ARNs of the assessment targets.
-\donttest{svc$list_assessment_templates(
+\dontrun{svc$list_assessment_templates(
   assessmentTargetArns = list(
     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq"
   ),

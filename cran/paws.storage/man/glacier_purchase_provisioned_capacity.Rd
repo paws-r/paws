@@ -25,7 +25,7 @@ This operation purchases a provisioned capacity unit for an AWS account.
 
 \examples{
 # The example purchases provisioned capacity unit for an AWS account.
-\donttest{svc$purchase_provisioned_capacity(
+\dontrun{svc$purchase_provisioned_capacity(
   accountId = "-"
 )}
 

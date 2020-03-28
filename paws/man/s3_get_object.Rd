@@ -236,14 +236,14 @@ The following operations are related to \code{GetObject}:
 \examples{
 # The following example retrieves an object for an S3 bucket. The request
 # specifies the range header to retrieve a specific byte range.
-\donttest{svc$get_object(
+\dontrun{svc$get_object(
   Bucket = "examplebucket",
   Key = "SampleFile.txt",
   Range = "bytes=0-9"
 )}
 
 # The following example retrieves an object for an S3 bucket.
-\donttest{svc$get_object(
+\dontrun{svc$get_object(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
 )}

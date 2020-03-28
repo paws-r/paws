@@ -39,7 +39,7 @@ Creates a new report using the description that you provide.
 \examples{
 # The following example creates a AWS Cost and Usage report named
 # ExampleReport.
-\donttest{svc$put_report_definition(
+\dontrun{svc$put_report_definition(
   ReportDefinition = list(
     AdditionalArtifacts = list(
       "REDSHIFT",

@@ -28,7 +28,7 @@ AWS Support.
 # The default
 # service limit for the number of Snowballs that you can have at one time
 # is 1. If you want to increase your service limit, contact AWS Support.
-\donttest{svc$get_snowball_usage()}
+\dontrun{svc$get_snowball_usage()}
 
 }
 \keyword{internal}

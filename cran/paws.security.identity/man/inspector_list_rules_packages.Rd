@@ -29,7 +29,7 @@ Lists all available Amazon Inspector rules packages.
 
 \examples{
 # Lists all available Amazon Inspector rules packages.
-\donttest{svc$list_rules_packages(
+\dontrun{svc$list_rules_packages(
   maxResults = 123L
 )}
 

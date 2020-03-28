@@ -38,7 +38,7 @@ specify only one attribute at a time. Valid attribute values are:
 \examples{
 # This example describes the instance type of the specified instance.
 # 
-\donttest{svc$describe_instance_attribute(
+\dontrun{svc$describe_instance_attribute(
   Attribute = "instanceType",
   InstanceId = "i-1234567890abcdef0"
 )}
@@ -46,7 +46,7 @@ specify only one attribute at a time. Valid attribute values are:
 # This example describes the `disableApiTermination` attribute of the
 # specified instance.
 # 
-\donttest{svc$describe_instance_attribute(
+\dontrun{svc$describe_instance_attribute(
   Attribute = "disableApiTermination",
   InstanceId = "i-1234567890abcdef0"
 )}
@@ -54,7 +54,7 @@ specify only one attribute at a time. Valid attribute values are:
 # This example describes the `blockDeviceMapping` attribute of the
 # specified instance.
 # 
-\donttest{svc$describe_instance_attribute(
+\dontrun{svc$describe_instance_attribute(
   Attribute = "blockDeviceMapping",
   InstanceId = "i-1234567890abcdef0"
 )}

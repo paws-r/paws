@@ -774,15 +774,15 @@ acm_request_certificate <- function(DomainName, ValidationMethod = NULL, Subject
 #' the domain registrant, technical contact, and administrative contact in
 #' WHOIS and the following five addresses:
 #' 
-#' -   admin\\@subdomain.example.com
+#' -   admin\\@@subdomain.example.com
 #' 
-#' -   administrator\\@subdomain.example.com
+#' -   administrator\\@@subdomain.example.com
 #' 
-#' -   hostmaster\\@subdomain.example.com
+#' -   hostmaster\\@@subdomain.example.com
 #' 
-#' -   postmaster\\@subdomain.example.com
+#' -   postmaster\\@@subdomain.example.com
 #' 
-#' -   webmaster\\@subdomain.example.com
+#' -   webmaster\\@@subdomain.example.com
 #'
 #' @section Request syntax:
 #' ```

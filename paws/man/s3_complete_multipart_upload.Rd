@@ -111,7 +111,7 @@ The following operations are related to
 
 \examples{
 # The following example completes a multipart upload.
-\donttest{svc$complete_multipart_upload(
+\dontrun{svc$complete_multipart_upload(
   Bucket = "examplebucket",
   Key = "bigobject",
   MultipartUpload = list(

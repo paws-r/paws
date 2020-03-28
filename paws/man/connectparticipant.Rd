@@ -49,7 +49,7 @@ and customers.
 }
 
 \examples{
-\donttest{svc <- connectparticipant()
+\dontrun{svc <- connectparticipant()
 svc$create_participant_connection(
   Foo = 123
 )}

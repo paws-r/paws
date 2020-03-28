@@ -125,7 +125,7 @@ you can deregister it using DeregisterScalableTarget.
 \examples{
 # This example describes the scalable targets for the ecs service
 # namespace.
-\donttest{svc$describe_scalable_targets(
+\dontrun{svc$describe_scalable_targets(
   ServiceNamespace = "ecs"
 )}
 

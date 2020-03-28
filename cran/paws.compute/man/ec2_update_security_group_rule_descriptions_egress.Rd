@@ -81,7 +81,7 @@ description parameter in the request.
 \examples{
 # This example updates the description for the specified security group
 # rule.
-\donttest{svc$update_security_group_rule_descriptions_egress(
+\dontrun{svc$update_security_group_rule_descriptions_egress(
   GroupId = "sg-123abc12",
   IpPermissions = list(
     list(

@@ -56,7 +56,7 @@ The AWS Elastic Transcoder Service.
 }
 
 \examples{
-\donttest{svc <- elastictranscoder()
+\dontrun{svc <- elastictranscoder()
 svc$cancel_job(
   Foo = 123
 )}

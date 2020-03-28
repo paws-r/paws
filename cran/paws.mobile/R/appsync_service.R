@@ -31,7 +31,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- appsync()
+#' \dontrun{svc <- appsync()
 #' svc$create_api_cache(
 #'   Foo = 123
 #' )}

@@ -67,7 +67,7 @@ in the \emph{IAM User Guide}.
 
 \examples{
 # The following example shows how to add tags to an existing user.
-\donttest{svc$tag_user(
+\dontrun{svc$tag_user(
   Tags = list(
     list(
       Key = "Dept",

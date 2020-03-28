@@ -35,7 +35,7 @@ running on each Amazon EC2 instance.
 \examples{
 # The following operation restarts application servers on all instances in
 # an environment named my-env:
-\donttest{svc$restart_app_server(
+\dontrun{svc$restart_app_server(
   EnvironmentName = "my-env"
 )}
 

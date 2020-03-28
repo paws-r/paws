@@ -261,7 +261,7 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #'     user in the Chef Automate web-based dashboard. The password length
 #'     is a minimum of eight characters, and a maximum of 32. The password
 #'     can contain letters, numbers, and special characters
-#'     (!/@\\#\\$%\\^&+=\\_). The password must contain at least one lower case
+#'     (!/@@\\#\\$%\\^&+=\\_). The password must contain at least one lower case
 #'     letter, one upper case letter, one number, and one special
 #'     character. When no CHEF\\_AUTOMATE\\_ADMIN\\_PASSWORD is set, one is
 #'     generated and returned in the response.
@@ -273,7 +273,7 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #' 
 #' -   `PUPPET_R10K_REMOTE`: The r10k remote is the URL of your control
 #'     repository (for example,
-#'     ssh://git\\@your.git-repo.com:user/control-repo.git). Specifying an
+#'     ssh://git\\@@your.git-repo.com:user/control-repo.git). Specifying an
 #'     r10k remote opens TCP port 8170.
 #' 
 #' -   `PUPPET_R10K_PRIVATE_KEY`: If you are using a private Git

@@ -35,7 +35,7 @@ Returns an array of SizeConstraintSetSummary objects.
 \examples{
 # The following example returns an array of up to 100 size contraint match
 # sets.
-\donttest{svc$list_size_constraint_sets(
+\dontrun{svc$list_size_constraint_sets(
   Limit = 100L
 )}
 

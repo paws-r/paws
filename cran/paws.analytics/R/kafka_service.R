@@ -29,7 +29,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- kafka()
+#' \dontrun{svc <- kafka()
 #' svc$create_cluster(
 #'   Foo = 123
 #' )}

@@ -72,8 +72,8 @@ use DeleteResourcePolicy.
 \examples{
 # The following example shows how to add a resource-based policy to a
 # secret.
-\donttest{svc$put_resource_policy(
-  ResourcePolicy = "{\n\"Version\":\"2012-10-17\",\n\"Statement\":[{\n\"Effect\":\"Allow\",...",
+\dontrun{svc$put_resource_policy(
+  ResourcePolicy = "\{\n\"Version\":\"2012-10-17\",\n\"Statement\":[\{\n\"Effect\":\"Allow\",...",
   SecretId = "MyTestDatabaseSecret"
 )}
 

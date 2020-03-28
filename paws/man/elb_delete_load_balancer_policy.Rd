@@ -26,7 +26,7 @@ policy must not be enabled for any listeners.
 \examples{
 # This example deletes the specified policy from the specified load
 # balancer. The policy must not be enabled on any listener.
-\donttest{svc$delete_load_balancer_policy(
+\dontrun{svc$delete_load_balancer_policy(
   LoadBalancerName = "my-load-balancer",
   PolicyName = "my-duration-cookie-policy"
 )}

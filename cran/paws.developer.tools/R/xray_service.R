@@ -31,7 +31,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- xray()
+#' \dontrun{svc <- xray()
 #' svc$batch_get_traces(
 #'   Foo = 123
 #' )}

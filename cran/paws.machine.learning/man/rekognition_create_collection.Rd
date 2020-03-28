@@ -36,7 +36,7 @@ This operation requires permissions to perform the
 
 \examples{
 # This operation creates a Rekognition collection for storing image data.
-\donttest{svc$create_collection(
+\dontrun{svc$create_collection(
   CollectionId = "myphotos"
 )}
 

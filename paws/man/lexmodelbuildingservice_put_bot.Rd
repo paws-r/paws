@@ -217,7 +217,7 @@ more information, see security-iam.
 
 \examples{
 # This example shows how to create a bot for ordering pizzas.
-\donttest{svc$put_bot(
+\dontrun{svc$put_bot(
   name = "DocOrderPizzaBot",
   abortStatement = list(
     messages = list(

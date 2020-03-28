@@ -45,7 +45,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- elasticsearchservice()
+#' \dontrun{svc <- elasticsearchservice()
 #' svc$add_tags(
 #'   Foo = 123
 #' )}

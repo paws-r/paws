@@ -33,7 +33,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- workspaces()
+#' \dontrun{svc <- workspaces()
 #' svc$associate_ip_groups(
 #'   Foo = 123
 #' )}

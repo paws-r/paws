@@ -19,7 +19,7 @@ have been purchased by the account.
 \examples{
 # The following example returns information about your Device Farm account
 # settings.
-\donttest{svc$get_account_settings()}
+\dontrun{svc$get_account_settings()}
 
 }
 \keyword{internal}

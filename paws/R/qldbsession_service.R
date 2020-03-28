@@ -30,7 +30,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- qldbsession()
+#' \dontrun{svc <- qldbsession()
 #' svc$send_command(
 #'   Foo = 123
 #' )}

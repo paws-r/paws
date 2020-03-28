@@ -30,7 +30,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- transcribeservice()
+#' \dontrun{svc <- transcribeservice()
 #' svc$create_vocabulary(
 #'   Foo = 123
 #' )}

@@ -99,7 +99,7 @@ Regions.
 }
 
 \examples{
-\donttest{svc <- directconnect()
+\dontrun{svc <- directconnect()
 svc$accept_direct_connect_gateway_association_proposal(
   Foo = 123
 )}

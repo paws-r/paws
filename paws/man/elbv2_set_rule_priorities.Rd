@@ -31,7 +31,7 @@ current priority.
 
 \examples{
 # This example sets the priority of the specified rule.
-\donttest{svc$set_rule_priorities(
+\dontrun{svc$set_rule_priorities(
   RulePriorities = list(
     list(
       Priority = 5L,

@@ -42,7 +42,7 @@ DeleteLaunchTemplate.
 
 \examples{
 # This example deletes the specified launch template version.
-\donttest{svc$delete_launch_template_versions(
+\dontrun{svc$delete_launch_template_versions(
   LaunchTemplateId = "lt-0abcd290751193123",
   Versions = list(
     "1"

@@ -42,7 +42,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- computeoptimizer()
+#' \dontrun{svc <- computeoptimizer()
 #' svc$get_auto_scaling_group_recommendations(
 #'   Foo = 123
 #' )}

@@ -46,7 +46,7 @@ in the \emph{IAM User Guide}.
 
 \examples{
 # The following example shows how to list the tags attached to a role.
-\donttest{svc$list_role_tags(
+\dontrun{svc$list_role_tags(
   RoleName = "taggedrole1"
 )}
 

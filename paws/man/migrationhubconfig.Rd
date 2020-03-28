@@ -61,7 +61,7 @@ The Migration Hub Home Region APIs do not support AWS Organizations.
 }
 
 \examples{
-\donttest{svc <- migrationhubconfig()
+\dontrun{svc <- migrationhubconfig()
 svc$create_home_region_control(
   Foo = 123
 )}

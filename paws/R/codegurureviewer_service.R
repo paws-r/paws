@@ -31,7 +31,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- codegurureviewer()
+#' \dontrun{svc <- codegurureviewer()
 #' svc$associate_repository(
 #'   Foo = 123
 #' )}

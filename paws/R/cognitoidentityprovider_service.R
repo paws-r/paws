@@ -37,7 +37,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- cognitoidentityprovider()
+#' \dontrun{svc <- cognitoidentityprovider()
 #' svc$add_custom_attributes(
 #'   Foo = 123
 #' )}

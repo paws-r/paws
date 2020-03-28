@@ -69,7 +69,7 @@ account.
 \examples{
 # The following example shows you how to get a list of handshakes
 # associated with the current organization:
-\donttest{svc$list_handshakes_for_organization()}
+\dontrun{svc$list_handshakes_for_organization()}
 
 }
 \keyword{internal}

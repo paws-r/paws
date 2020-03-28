@@ -30,7 +30,7 @@ NULL
 #'
 #' @examples
 #' # The following example aborts a multipart upload.
-#' \donttest{svc <- s3()
+#' \dontrun{svc <- s3()
 #' svc$abort_multipart_upload(
 #'   Bucket = "examplebucket",
 #'   Key = "bigobject",

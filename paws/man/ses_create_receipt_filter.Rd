@@ -34,7 +34,7 @@ You can execute this operation no more than once per second.
 
 \examples{
 # The following example creates a new IP address filter:
-\donttest{svc$create_receipt_filter(
+\dontrun{svc$create_receipt_filter(
   Filter = list(
     IpFilter = list(
       Cidr = "1.2.3.4/24",

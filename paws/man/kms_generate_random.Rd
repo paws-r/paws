@@ -37,7 +37,7 @@ whitepaper.
 
 \examples{
 # The following example uses AWS KMS to generate 32 bytes of random data.
-\donttest{svc$generate_random(
+\dontrun{svc$generate_random(
   NumberOfBytes = 32L
 )}
 

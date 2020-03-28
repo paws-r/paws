@@ -55,7 +55,7 @@ the tags associated with that resource are deleted as well.
 
 \examples{
 # This example tags the 'dev' cluster with key 'team' and value 'dev'.
-\donttest{svc$tag_resource(
+\dontrun{svc$tag_resource(
   resourceArn = "arn:aws:ecs:region:aws_account_id:cluster/dev",
   tags = list(
     list(

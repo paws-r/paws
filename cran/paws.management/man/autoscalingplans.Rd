@@ -56,7 +56,7 @@ see the \href{https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aw
 }
 
 \examples{
-\donttest{svc <- autoscalingplans()
+\dontrun{svc <- autoscalingplans()
 svc$create_scaling_plan(
   Foo = 123
 )}

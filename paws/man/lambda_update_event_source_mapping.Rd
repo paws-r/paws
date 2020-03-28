@@ -97,7 +97,7 @@ of retries.
 
 \examples{
 # This operation updates a Lambda function event source mapping
-\donttest{svc$update_event_source_mapping(
+\dontrun{svc$update_event_source_mapping(
   BatchSize = 123L,
   Enabled = TRUE,
   FunctionName = "myFunction",

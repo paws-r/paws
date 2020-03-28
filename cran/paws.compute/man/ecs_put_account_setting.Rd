@@ -76,7 +76,7 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
 # resource ID format for Amazon ECS services. If youâ€™re using this command
 # as the root user, then changes apply to the entire AWS account, unless
 # an IAM user or role explicitly overrides these settings for themselves.
-\donttest{svc$put_account_setting(
+\dontrun{svc$put_account_setting(
   name = "serviceLongArnFormat",
   value = "enabled"
 )}
@@ -86,7 +86,7 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
 # container instances. If youâ€™re using this command as the root user, then
 # changes apply to the entire AWS account, unless an IAM user or role
 # explicitly overrides these settings for themselves.
-\donttest{svc$put_account_setting(
+\dontrun{svc$put_account_setting(
   name = "containerInstanceLongArnFormat",
   value = "enabled",
   principalArn = "arn:aws:iam::<aws_account_id>:user/principalName"

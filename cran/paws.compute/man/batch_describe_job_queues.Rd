@@ -45,7 +45,7 @@ Describes one or more of your job queues.
 
 \examples{
 # This example describes the HighPriority job queue.
-\donttest{svc$describe_job_queues(
+\dontrun{svc$describe_job_queues(
   jobQueues = list(
     "HighPriority"
   )

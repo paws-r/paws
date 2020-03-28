@@ -65,7 +65,7 @@ account.
 \examples{
 # The following example shows how to get a list of OUs in a specified
 # root:/n/n
-\donttest{svc$list_organizational_units_for_parent(
+\dontrun{svc$list_organizational_units_for_parent(
   ParentId = "r-examplerootid111"
 )}
 

@@ -62,7 +62,7 @@ NULL
 #'
 #' @examples
 #' # The following example aborts a multipart upload.
-#' \donttest{svc$abort_multipart_upload(
+#' \dontrun{svc$abort_multipart_upload(
 #'   Bucket = "examplebucket",
 #'   Key = "bigobject",
 #'   UploadId = "xadcOB_7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP..."
@@ -201,7 +201,7 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #'
 #' @examples
 #' # The following example completes a multipart upload.
-#' \donttest{svc$complete_multipart_upload(
+#' \dontrun{svc$complete_multipart_upload(
 #'   Bucket = "examplebucket",
 #'   Key = "bigobject",
 #'   MultipartUpload = list(
@@ -492,7 +492,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #'     accounts identified by email addresses permissions to read object
 #'     data and its metadata:
 #' 
-#'     `x-amz-grant-read: emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com" `
+#'     `x-amz-grant-read: emailAddress="xyz@@amazon.com", emailAddress="abc@@amazon.com" `
 #' 
 #' The following operations are related to `CopyObject`:
 #' 
@@ -642,7 +642,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #'
 #' @examples
 #' # The following example copies an object from one bucket to another.
-#' \donttest{svc$copy_object(
+#' \dontrun{svc$copy_object(
 #'   Bucket = "destinationbucket",
 #'   CopySource = "/sourcebucket/HappyFacejpg",
 #'   Key = "HappyFaceCopyjpg"
@@ -729,7 +729,7 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ContentDispo
 #'     accounts identified by email addresses permissions to read object
 #'     data and its metadata:
 #' 
-#'     `x-amz-grant-read: emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com" `
+#'     `x-amz-grant-read: emailAddress="xyz@@amazon.com", emailAddress="abc@@amazon.com" `
 #' 
 #' You can use either a canned ACL or specify access permissions
 #' explicitly. You cannot do both.
@@ -777,13 +777,13 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ContentDispo
 #'
 #' @examples
 #' # The following example creates a bucket.
-#' \donttest{svc$create_bucket(
+#' \dontrun{svc$create_bucket(
 #'   Bucket = "examplebucket"
 #' )}
 #' 
 #' # The following example creates a bucket. The request specifies an AWS
 #' # region where to create the bucket.
-#' \donttest{svc$create_bucket(
+#' \dontrun{svc$create_bucket(
 #'   Bucket = "examplebucket",
 #'   CreateBucketConfiguration = list(
 #'     LocationConstraint = "eu-west-1"
@@ -992,7 +992,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #'     accounts identified by email addresses permissions to read object
 #'     data and its metadata:
 #' 
-#'     `x-amz-grant-read: emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com" `
+#'     `x-amz-grant-read: emailAddress="xyz@@amazon.com", emailAddress="abc@@amazon.com" `
 #' 
 #' The following operations are related to `CreateMultipartUpload`:
 #' 
@@ -1106,7 +1106,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #'
 #' @examples
 #' # The following example initiates a multipart upload.
-#' \donttest{svc$create_multipart_upload(
+#' \dontrun{svc$create_multipart_upload(
 #'   Bucket = "examplebucket",
 #'   Key = "largeobject"
 #' )}
@@ -1155,7 +1155,7 @@ s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, 
 #'
 #' @examples
 #' # The following example deletes the specified bucket.
-#' \donttest{svc$delete_bucket(
+#' \dontrun{svc$delete_bucket(
 #'   Bucket = "forrandall2"
 #' )}
 #'
@@ -1267,7 +1267,7 @@ s3_delete_bucket_analytics_configuration <- function(Bucket, Id) {
 #'
 #' @examples
 #' # The following example deletes CORS configuration on a bucket.
-#' \donttest{svc$delete_bucket_cors(
+#' \dontrun{svc$delete_bucket_cors(
 #'   Bucket = "examplebucket"
 #' )}
 #'
@@ -1449,7 +1449,7 @@ s3_delete_bucket_inventory_configuration <- function(Bucket, Id) {
 #'
 #' @examples
 #' # The following example deletes lifecycle configuration on a bucket.
-#' \donttest{svc$delete_bucket_lifecycle(
+#' \dontrun{svc$delete_bucket_lifecycle(
 #'   Bucket = "examplebucket"
 #' )}
 #'
@@ -1581,7 +1581,7 @@ s3_delete_bucket_metrics_configuration <- function(Bucket, Id) {
 #'
 #' @examples
 #' # The following example deletes bucket policy on the specified bucket.
-#' \donttest{svc$delete_bucket_policy(
+#' \dontrun{svc$delete_bucket_policy(
 #'   Bucket = "examplebucket"
 #' )}
 #'
@@ -1643,7 +1643,7 @@ s3_delete_bucket_policy <- function(Bucket) {
 #'
 #' @examples
 #' # The following example deletes replication configuration set on bucket.
-#' \donttest{svc$delete_bucket_replication(
+#' \dontrun{svc$delete_bucket_replication(
 #'   Bucket = "example"
 #' )}
 #'
@@ -1695,7 +1695,7 @@ s3_delete_bucket_replication <- function(Bucket) {
 #'
 #' @examples
 #' # The following example deletes bucket tags.
-#' \donttest{svc$delete_bucket_tagging(
+#' \dontrun{svc$delete_bucket_tagging(
 #'   Bucket = "examplebucket"
 #' )}
 #'
@@ -1758,7 +1758,7 @@ s3_delete_bucket_tagging <- function(Bucket) {
 #'
 #' @examples
 #' # The following example deletes bucket website configuration.
-#' \donttest{svc$delete_bucket_website(
+#' \dontrun{svc$delete_bucket_website(
 #'   Bucket = "examplebucket"
 #' )}
 #'
@@ -1853,13 +1853,13 @@ s3_delete_bucket_website <- function(Bucket) {
 #'
 #' @examples
 #' # The following example deletes an object from a non-versioned bucket.
-#' \donttest{svc$delete_object(
+#' \dontrun{svc$delete_object(
 #'   Bucket = "ExampleBucket",
 #'   Key = "HappyFace.jpg"
 #' )}
 #' 
 #' # The following example deletes an object from an S3 bucket.
-#' \donttest{svc$delete_object(
+#' \dontrun{svc$delete_object(
 #'   Bucket = "examplebucket",
 #'   Key = "objectkey.jpg"
 #' )}
@@ -1933,7 +1933,7 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 #' # The following example removes tag set associated with the specified
 #' # object version. The request specifies both the object key and object
 #' # version.
-#' \donttest{svc$delete_object_tagging(
+#' \dontrun{svc$delete_object_tagging(
 #'   Bucket = "examplebucket",
 #'   Key = "HappyFace.jpg",
 #'   VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
@@ -1942,7 +1942,7 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 #' # The following example removes tag set associated with the specified
 #' # object. If the bucket is versioning enabled, the operation removes tag
 #' # set from the latest object version.
-#' \donttest{svc$delete_object_tagging(
+#' \dontrun{svc$delete_object_tagging(
 #'   Bucket = "examplebucket",
 #'   Key = "HappyFace.jpg"
 #' )}
@@ -2063,7 +2063,7 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL) {
 #' # versioned, and the request does not specify the object version to
 #' # delete. In this case, all versions remain in the bucket and S3 adds a
 #' # delete marker.
-#' \donttest{svc$delete_objects(
+#' \dontrun{svc$delete_objects(
 #'   Bucket = "examplebucket",
 #'   Delete = list(
 #'     Objects = list(
@@ -2081,7 +2081,7 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL) {
 #' # The following example deletes objects from a bucket. The request
 #' # specifies object versions. S3 deletes specific object versions and
 #' # returns the key and versions of deleted objects in the response.
-#' \donttest{svc$delete_objects(
+#' \dontrun{svc$delete_objects(
 #'   Bucket = "examplebucket",
 #'   Delete = list(
 #'     Objects = list(
@@ -2380,7 +2380,7 @@ s3_get_bucket_analytics_configuration <- function(Bucket, Id) {
 #' @examples
 #' # The following example returns cross-origin resource sharing (CORS)
 #' # configuration set on a bucket.
-#' \donttest{svc$get_bucket_cors(
+#' \dontrun{svc$get_bucket_cors(
 #'   Bucket = "examplebucket"
 #' )}
 #'
@@ -2573,7 +2573,7 @@ s3_get_bucket_inventory_configuration <- function(Bucket, Id) {
 #'
 #' @examples
 #' # The following example gets ACL on the specified bucket.
-#' \donttest{svc$get_bucket_lifecycle(
+#' \dontrun{svc$get_bucket_lifecycle(
 #'   Bucket = "acl1"
 #' )}
 #'
@@ -2657,7 +2657,7 @@ s3_get_bucket_lifecycle <- function(Bucket) {
 #' @examples
 #' # The following example retrieves lifecycle configuration on set on a
 #' # bucket.
-#' \donttest{svc$get_bucket_lifecycle_configuration(
+#' \dontrun{svc$get_bucket_lifecycle_configuration(
 #'   Bucket = "examplebucket"
 #' )}
 #'
@@ -2710,7 +2710,7 @@ s3_get_bucket_lifecycle_configuration <- function(Bucket) {
 #'
 #' @examples
 #' # The following example returns bucket location.
-#' \donttest{svc$get_bucket_location(
+#' \dontrun{svc$get_bucket_location(
 #'   Bucket = "examplebucket"
 #' )}
 #'
@@ -2862,13 +2862,13 @@ s3_get_bucket_metrics_configuration <- function(Bucket, Id) {
 #' @examples
 #' # The following example returns notification configuration set on a
 #' # bucket.
-#' \donttest{svc$get_bucket_notification(
+#' \dontrun{svc$get_bucket_notification(
 #'   Bucket = "examplebucket"
 #' )}
 #' 
 #' # The following example returns notification configuration set on a
 #' # bucket.
-#' \donttest{svc$get_bucket_notification(
+#' \dontrun{svc$get_bucket_notification(
 #'   Bucket = "examplebucket"
 #' )}
 #'
@@ -2985,7 +2985,7 @@ s3_get_bucket_notification_configuration <- function(Bucket) {
 #'
 #' @examples
 #' # The following example returns bucket policy associated with a bucket.
-#' \donttest{svc$get_bucket_policy(
+#' \dontrun{svc$get_bucket_policy(
 #'   Bucket = "examplebucket"
 #' )}
 #'
@@ -3110,7 +3110,7 @@ s3_get_bucket_policy_status <- function(Bucket) {
 #'
 #' @examples
 #' # The following example returns replication configuration set on a bucket.
-#' \donttest{svc$get_bucket_replication(
+#' \dontrun{svc$get_bucket_replication(
 #'   Bucket = "examplebucket"
 #' )}
 #'
@@ -3160,7 +3160,7 @@ s3_get_bucket_replication <- function(Bucket) {
 #'
 #' @examples
 #' # The following example retrieves bucket versioning configuration.
-#' \donttest{svc$get_bucket_request_payment(
+#' \dontrun{svc$get_bucket_request_payment(
 #'   Bucket = "examplebucket"
 #' )}
 #'
@@ -3218,7 +3218,7 @@ s3_get_bucket_request_payment <- function(Bucket) {
 #'
 #' @examples
 #' # The following example returns tag set associated with a bucket
-#' \donttest{svc$get_bucket_tagging(
+#' \dontrun{svc$get_bucket_tagging(
 #'   Bucket = "examplebucket"
 #' )}
 #'
@@ -3275,7 +3275,7 @@ s3_get_bucket_tagging <- function(Bucket) {
 #'
 #' @examples
 #' # The following example retrieves bucket versioning configuration.
-#' \donttest{svc$get_bucket_versioning(
+#' \dontrun{svc$get_bucket_versioning(
 #'   Bucket = "examplebucket"
 #' )}
 #'
@@ -3333,7 +3333,7 @@ s3_get_bucket_versioning <- function(Bucket) {
 #'
 #' @examples
 #' # The following example retrieves website configuration of a bucket.
-#' \donttest{svc$get_bucket_website(
+#' \dontrun{svc$get_bucket_website(
 #'   Bucket = "examplebucket"
 #' )}
 #'
@@ -3584,14 +3584,14 @@ s3_get_bucket_website <- function(Bucket) {
 #' @examples
 #' # The following example retrieves an object for an S3 bucket. The request
 #' # specifies the range header to retrieve a specific byte range.
-#' \donttest{svc$get_object(
+#' \dontrun{svc$get_object(
 #'   Bucket = "examplebucket",
 #'   Key = "SampleFile.txt",
 #'   Range = "bytes=0-9"
 #' )}
 #' 
 #' # The following example retrieves an object for an S3 bucket.
-#' \donttest{svc$get_object(
+#' \dontrun{svc$get_object(
 #'   Bucket = "examplebucket",
 #'   Key = "HappyFace.jpg"
 #' )}
@@ -3665,7 +3665,7 @@ s3_get_object <- function(Bucket, IfMatch = NULL, IfModifiedSince = NULL, IfNone
 #'
 #' @examples
 #' # The following example retrieves access control list (ACL) of an object.
-#' \donttest{svc$get_object_acl(
+#' \dontrun{svc$get_object_acl(
 #'   Bucket = "examplebucket",
 #'   Key = "HappyFace.jpg"
 #' )}
@@ -3892,14 +3892,14 @@ s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer 
 #'
 #' @examples
 #' # The following example retrieves tag set of an object.
-#' \donttest{svc$get_object_tagging(
+#' \dontrun{svc$get_object_tagging(
 #'   Bucket = "examplebucket",
 #'   Key = "HappyFace.jpg"
 #' )}
 #' 
 #' # The following example retrieves tag set of an object. The request
 #' # specifies object version.
-#' \donttest{svc$get_object_tagging(
+#' \dontrun{svc$get_object_tagging(
 #'   Bucket = "examplebucket",
 #'   Key = "exampleobject",
 #'   VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
@@ -3961,7 +3961,7 @@ s3_get_object_tagging <- function(Bucket, Key, VersionId = NULL) {
 #'
 #' @examples
 #' # The following example retrieves torrent files of an object.
-#' \donttest{svc$get_object_torrent(
+#' \dontrun{svc$get_object_torrent(
 #'   Bucket = "examplebucket",
 #'   Key = "HappyFace.jpg"
 #' )}
@@ -4079,7 +4079,7 @@ s3_get_public_access_block <- function(Bucket) {
 #'
 #' @examples
 #' # This operation checks to see if a bucket exists.
-#' \donttest{svc$head_bucket(
+#' \dontrun{svc$head_bucket(
 #'   Bucket = "acl1"
 #' )}
 #'
@@ -4241,7 +4241,7 @@ s3_head_bucket <- function(Bucket) {
 #'
 #' @examples
 #' # The following example retrieves an object metadata.
-#' \donttest{svc$head_object(
+#' \dontrun{svc$head_object(
 #'   Bucket = "examplebucket",
 #'   Key = "HappyFace.jpg"
 #' )}
@@ -4506,7 +4506,7 @@ s3_list_bucket_metrics_configurations <- function(Bucket, ContinuationToken = NU
 #' # there are are more than two object version, S3 returns NextToken in the
 #' # response. You can specify this token value in your next request to fetch
 #' # next set of object versions.
-#' \donttest{svc$list_buckets()}
+#' \dontrun{svc$list_buckets()}
 #'
 #' @keywords internal
 #'
@@ -4633,7 +4633,7 @@ s3_list_buckets <- function() {
 #' @examples
 #' # The following example specifies the upload-id-marker and key-marker from
 #' # previous truncated response to retrieve next setup of multipart uploads.
-#' \donttest{svc$list_multipart_uploads(
+#' \dontrun{svc$list_multipart_uploads(
 #'   Bucket = "examplebucket",
 #'   KeyMarker = "nextkeyfrompreviousresponse",
 #'   MaxUploads = "2",
@@ -4642,7 +4642,7 @@ s3_list_buckets <- function() {
 #' 
 #' # The following example lists in-progress multipart uploads on a specific
 #' # bucket.
-#' \donttest{svc$list_multipart_uploads(
+#' \dontrun{svc$list_multipart_uploads(
 #'   Bucket = "examplebucket"
 #' )}
 #'
@@ -4742,7 +4742,7 @@ s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = N
 #' # there are are more than two object version, S3 returns NextToken in the
 #' # response. You can specify this token value in your next request to fetch
 #' # next set of object versions.
-#' \donttest{svc$list_object_versions(
+#' \dontrun{svc$list_object_versions(
 #'   Bucket = "examplebucket",
 #'   Prefix = "HappyFace.jpg"
 #' )}
@@ -4821,7 +4821,7 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #'
 #' @examples
 #' # The following example list two objects in a bucket.
-#' \donttest{svc$list_objects(
+#' \dontrun{svc$list_objects(
 #'   Bucket = "examplebucket",
 #'   MaxKeys = "2"
 #' )}
@@ -4930,7 +4930,7 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' @examples
 #' # The following example retrieves object list. The request specifies max
 #' # keys to limit response to include only 2 object keys.
-#' \donttest{svc$list_objects_v2(
+#' \dontrun{svc$list_objects_v2(
 #'   Bucket = "examplebucket",
 #'   MaxKeys = "2"
 #' )}
@@ -5026,7 +5026,7 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' @examples
 #' # The following example lists parts uploaded for a specific multipart
 #' # upload.
-#' \donttest{svc$list_parts(
+#' \dontrun{svc$list_parts(
 #'   Bucket = "examplebucket",
 #'   Key = "bigobject",
 #'   UploadId = "example7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP..."
@@ -5192,7 +5192,7 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #'     predefined by Amazon S3 and two AWS accounts identified by their
 #'     email addresses.
 #' 
-#'     `x-amz-grant-write: uri="http://acs.amazonaws.com/groups/s3/LogDelivery", emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com" `
+#'     `x-amz-grant-write: uri="http://acs.amazonaws.com/groups/s3/LogDelivery", emailAddress="xyz@@amazon.com", emailAddress="abc@@amazon.com" `
 #' 
 #' You can use either a canned ACL or specify access permissions
 #' explicitly. You cannot do both.
@@ -5204,7 +5204,7 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #' 
 #' -   By Email address:
 #' 
-#'     `&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AmazonCustomerByEmail"&gt;&lt;EmailAddress&gt;&lt;&gt;Grantees@email.com&lt;&gt;&lt;/EmailAddress&gt;lt;/Grantee&gt;`
+#'     `&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AmazonCustomerByEmail"&gt;&lt;EmailAddress&gt;&lt;&gt;Grantees@@email.com&lt;&gt;&lt;/EmailAddress&gt;lt;/Grantee&gt;`
 #' 
 #'     The grantee is resolved to the CanonicalUser and, in a response to a
 #'     GET Object acl request, appears as the CanonicalUser.
@@ -5285,7 +5285,7 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #' # the LogDelivery group. Because this is a replace operation, you must
 #' # specify all the grants in your request. To incrementally add or remove
 #' # ACL grants, you might use the console.
-#' \donttest{svc$put_bucket_acl(
+#' \dontrun{svc$put_bucket_acl(
 #'   Bucket = "examplebucket",
 #'   GrantFullControl = "id=examplee7a2f25102679df27bb0ae12b3f85be6f290b936c4393484",
 #'   GrantWrite = "uri=http://acs.amazonaws.com/groups/s3/LogDelivery"
@@ -5531,7 +5531,7 @@ s3_put_bucket_analytics_configuration <- function(Bucket, Id, AnalyticsConfigura
 #' @examples
 #' # The following example enables PUT, POST, and DELETE requests from
 #' # www.example.com, and enables GET requests from any domain.
-#' \donttest{svc$put_bucket_cors(
+#' \dontrun{svc$put_bucket_cors(
 #'   Bucket = "",
 #'   CORSConfiguration = list(
 #'     CORSRules = list(
@@ -6074,7 +6074,7 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, LifecycleConfigur
 #' @examples
 #' # The following example replaces existing lifecycle configuration, if any,
 #' # on the specified bucket.
-#' \donttest{svc$put_bucket_lifecycle_configuration(
+#' \dontrun{svc$put_bucket_lifecycle_configuration(
 #'   Bucket = "examplebucket",
 #'   LifecycleConfiguration = list(
 #'     Rules = list(
@@ -6144,7 +6144,7 @@ s3_put_bucket_lifecycle_configuration <- function(Bucket, LifecycleConfiguration
 #' 
 #' -   By Email address:
 #' 
-#'     ` &lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AmazonCustomerByEmail"&gt;&lt;EmailAddress&gt;&lt;&gt;Grantees@email.com&lt;&gt;&lt;/EmailAddress&gt;&lt;/Grantee&gt;`
+#'     ` &lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AmazonCustomerByEmail"&gt;&lt;EmailAddress&gt;&lt;&gt;Grantees@@email.com&lt;&gt;&lt;/EmailAddress&gt;&lt;/Grantee&gt;`
 #' 
 #'     The grantee is resolved to the CanonicalUser and, in a response to a
 #'     GET Object acl request, appears as the CanonicalUser.
@@ -6213,7 +6213,7 @@ s3_put_bucket_lifecycle_configuration <- function(Bucket, LifecycleConfiguration
 #' # The following example sets logging policy on a bucket. For the Log
 #' # Delivery group to deliver logs to the destination bucket, it needs
 #' # permission for the READ_ACP action which the policy grants.
-#' \donttest{svc$put_bucket_logging(
+#' \dontrun{svc$put_bucket_logging(
 #'   Bucket = "sourcebucket",
 #'   BucketLoggingStatus = list(
 #'     LoggingEnabled = list(
@@ -6549,7 +6549,7 @@ s3_put_bucket_notification <- function(Bucket, ContentMD5 = NULL, NotificationCo
 #' @examples
 #' # The following example sets notification configuration on a bucket to
 #' # publish the object created events to an SNS topic.
-#' \donttest{svc$put_bucket_notification_configuration(
+#' \dontrun{svc$put_bucket_notification_configuration(
 #'   Bucket = "examplebucket",
 #'   NotificationConfiguration = list(
 #'     TopicConfigurations = list(
@@ -6632,9 +6632,9 @@ s3_put_bucket_notification_configuration <- function(Bucket, NotificationConfigu
 #'
 #' @examples
 #' # The following example sets a permission policy on a bucket.
-#' \donttest{svc$put_bucket_policy(
+#' \dontrun{svc$put_bucket_policy(
 #'   Bucket = "examplebucket",
-#'   Policy = "{\"Version\": \"2012-10-17\", \"Statement\": [{ \"Sid\": \"id-1\",\"Effect\": ..."
+#'   Policy = "\{\"Version\": \"2012-10-17\", \"Statement\": [\{ \"Sid\": \"id-1\",\"Effect\": ..."
 #' )}
 #'
 #' @keywords internal
@@ -6802,7 +6802,7 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ConfirmRemoveSelfBuc
 #'
 #' @examples
 #' # The following example sets replication configuration on a bucket.
-#' \donttest{svc$put_bucket_replication(
+#' \dontrun{svc$put_bucket_replication(
 #'   Bucket = "examplebucket",
 #'   ReplicationConfiguration = list(
 #'     Role = "arn:aws:iam::123456789012:role/examplerole",
@@ -6879,7 +6879,7 @@ s3_put_bucket_replication <- function(Bucket, ContentMD5 = NULL, ReplicationConf
 #' @examples
 #' # The following example sets request payment configuration on a bucket so
 #' # that person requesting the download is charged.
-#' \donttest{svc$put_bucket_request_payment(
+#' \dontrun{svc$put_bucket_request_payment(
 #'   Bucket = "examplebucket",
 #'   RequestPaymentConfiguration = list(
 #'     Payer = "Requester"
@@ -6993,7 +6993,7 @@ s3_put_bucket_request_payment <- function(Bucket, ContentMD5 = NULL, RequestPaym
 #' @examples
 #' # The following example sets tags on a bucket. Any existing tags are
 #' # replaced.
-#' \donttest{svc$put_bucket_tagging(
+#' \dontrun{svc$put_bucket_tagging(
 #'   Bucket = "examplebucket",
 #'   Tagging = list(
 #'     TagSet = list(
@@ -7097,7 +7097,7 @@ s3_put_bucket_tagging <- function(Bucket, ContentMD5 = NULL, Tagging) {
 #' @examples
 #' # The following example sets versioning configuration on bucket. The
 #' # configuration enables versioning on the bucket.
-#' \donttest{svc$put_bucket_versioning(
+#' \dontrun{svc$put_bucket_versioning(
 #'   Bucket = "examplebucket",
 #'   VersioningConfiguration = list(
 #'     MFADelete = "Disabled",
@@ -7239,7 +7239,7 @@ s3_put_bucket_versioning <- function(Bucket, ContentMD5 = NULL, MFA = NULL, Vers
 #'
 #' @examples
 #' # The following example adds website configuration to a bucket.
-#' \donttest{svc$put_bucket_website(
+#' \dontrun{svc$put_bucket_website(
 #'   Bucket = "examplebucket",
 #'   ContentMD5 = "",
 #'   WebsiteConfiguration = list(
@@ -7458,7 +7458,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #'     accounts identified by email addresses permissions to read object
 #'     data and its metadata:
 #' 
-#'     `x-amz-grant-read: emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com" `
+#'     `x-amz-grant-read: emailAddress="xyz@@amazon.com", emailAddress="abc@@amazon.com" `
 #' 
 #' ### Server-Side- Encryption-Specific Request Headers
 #' 
@@ -7704,7 +7704,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #' # The following example uploads an object. The request specifies optional
 #' # request headers to directs S3 to use specific storage class and use
 #' # server-side encryption.
-#' \donttest{svc$put_object(
+#' \dontrun{svc$put_object(
 #'   Body = "HappyFace.jpg",
 #'   Bucket = "examplebucket",
 #'   Key = "HappyFace.jpg",
@@ -7715,7 +7715,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #' # The following example uploads an object. The request specifies optional
 #' # object tags. The bucket is versioned, therefore S3 returns version ID of
 #' # the newly created object.
-#' \donttest{svc$put_object(
+#' \dontrun{svc$put_object(
 #'   Body = "c:\\HappyFace.jpg",
 #'   Bucket = "examplebucket",
 #'   Key = "HappyFace.jpg",
@@ -7725,7 +7725,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #' # The following example creates an object. The request also specifies
 #' # optional metadata. If the bucket is versioning enabled, S3 returns
 #' # version ID in response.
-#' \donttest{svc$put_object(
+#' \dontrun{svc$put_object(
 #'   Body = "filetoupload",
 #'   Bucket = "examplebucket",
 #'   Key = "exampleobject",
@@ -7737,7 +7737,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #' 
 #' # The following example creates an object. If the bucket is versioning
 #' # enabled, S3 returns version ID in response.
-#' \donttest{svc$put_object(
+#' \dontrun{svc$put_object(
 #'   Body = "filetoupload",
 #'   Bucket = "examplebucket",
 #'   Key = "objectkey"
@@ -7746,7 +7746,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #' # The following example uploads an object to a versioning-enabled bucket.
 #' # The source file is specified using Windows file syntax. S3 returns
 #' # VersionId of the newly created object.
-#' \donttest{svc$put_object(
+#' \dontrun{svc$put_object(
 #'   Body = "HappyFace.jpg",
 #'   Bucket = "examplebucket",
 #'   Key = "HappyFace.jpg"
@@ -7756,7 +7756,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #' # canned ACL (access control list) to all READ access to authenticated
 #' # users. If the bucket is versioning enabled, S3 returns version ID in
 #' # response.
-#' \donttest{svc$put_object(
+#' \dontrun{svc$put_object(
 #'   ACL = "authenticated-read",
 #'   Body = "filetoupload",
 #'   Bucket = "examplebucket",
@@ -7767,7 +7767,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #' # optional server-side encryption option. The request also specifies
 #' # optional object tags. If the bucket is versioning enabled, S3 returns
 #' # version ID in response.
-#' \donttest{svc$put_object(
+#' \dontrun{svc$put_object(
 #'   Body = "filetoupload",
 #'   Bucket = "examplebucket",
 #'   Key = "exampleobject",
@@ -7845,7 +7845,7 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #'     objects permission to the two AWS accounts identified by their email
 #'     addresses.
 #' 
-#'     `x-amz-grant-read: emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com" `
+#'     `x-amz-grant-read: emailAddress="xyz@@amazon.com", emailAddress="abc@@amazon.com" `
 #' 
 #' You can use either a canned ACL or specify access permissions
 #' explicitly. You cannot do both.
@@ -7857,7 +7857,7 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' 
 #' -   By Email address:
 #' 
-#'     `&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AmazonCustomerByEmail"&gt;&lt;EmailAddress&gt;&lt;&gt;Grantees@email.com&lt;&gt;&lt;/EmailAddress&gt;lt;/Grantee&gt;`
+#'     `&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AmazonCustomerByEmail"&gt;&lt;EmailAddress&gt;&lt;&gt;Grantees@@email.com&lt;&gt;&lt;/EmailAddress&gt;lt;/Grantee&gt;`
 #' 
 #'     The grantee is resolved to the CanonicalUser and, in a response to a
 #'     GET Object acl request, appears as the CanonicalUser.
@@ -7958,7 +7958,7 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' # The following example adds grants to an object ACL. The first permission
 #' # grants user1 and user2 FULL_CONTROL and the AllUsers group READ
 #' # permission.
-#' \donttest{svc$put_object_acl(
+#' \dontrun{svc$put_object_acl(
 #'   AccessControlPolicy = structure(
 #'     list(),
 #'     .Names = character(
@@ -8289,7 +8289,7 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #'
 #' @examples
 #' # The following example adds tags to an existing object.
-#' \donttest{svc$put_object_tagging(
+#' \dontrun{svc$put_object_tagging(
 #'   Bucket = "examplebucket",
 #'   Key = "HappyFace.jpg",
 #'   Tagging = list(
@@ -8760,7 +8760,7 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, PublicAccessBl
 #' @examples
 #' # The following example restores for one day an archived copy of an object
 #' # back into Amazon S3 bucket.
-#' \donttest{svc$restore_object(
+#' \dontrun{svc$restore_object(
 #'   Bucket = "examplebucket",
 #'   Key = "archivedobjectkey",
 #'   RestoreRequest = list(
@@ -9148,7 +9148,7 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' # The following example uploads part 1 of a multipart upload. The example
 #' # specifies a file name for the part data. The Upload ID is same that is
 #' # returned by the initiate multipart upload.
-#' \donttest{svc$upload_part(
+#' \dontrun{svc$upload_part(
 #'   Body = "fileToUpload",
 #'   Bucket = "examplebucket",
 #'   Key = "examplelargeobject",
@@ -9376,7 +9376,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' @examples
 #' # The following example uploads a part of a multipart upload by copying a
 #' # specified byte range from an existing object as data source.
-#' \donttest{svc$upload_part_copy(
+#' \dontrun{svc$upload_part_copy(
 #'   Bucket = "examplebucket",
 #'   CopySource = "/bucketname/sourceobjectkey",
 #'   CopySourceRange = "bytes=1-100000",
@@ -9387,7 +9387,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' 
 #' # The following example uploads a part of a multipart upload by copying
 #' # data from an existing object as data source.
-#' \donttest{svc$upload_part_copy(
+#' \dontrun{svc$upload_part_copy(
 #'   Bucket = "examplebucket",
 #'   CopySource = "/bucketname/sourceobjectkey",
 #'   Key = "examplelargeobject",

@@ -64,7 +64,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 \examples{
 # This example notifies Auto Scaling that the specified lifecycle action
 # is complete so that it can finish launching or terminating the instance.
-\donttest{svc$complete_lifecycle_action(
+\dontrun{svc$complete_lifecycle_action(
   AutoScalingGroupName = "my-auto-scaling-group",
   LifecycleActionResult = "CONTINUE",
   LifecycleActionToken = "bcd2f1b8-9a78-44d3-8a7a-4dd07d7cf635",

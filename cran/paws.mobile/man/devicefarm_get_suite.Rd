@@ -21,7 +21,7 @@ Gets information about a suite.
 
 \examples{
 # The following example gets information about a specific test suite.
-\donttest{svc$get_suite(
+\dontrun{svc$get_suite(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:suite:EXAMPLE-GUID-123-456"
 )}
 

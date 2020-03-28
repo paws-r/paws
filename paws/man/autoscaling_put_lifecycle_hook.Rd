@@ -114,7 +114,7 @@ can delete it using DeleteLifecycleHook.
 
 \examples{
 # This example creates a lifecycle hook.
-\donttest{svc$put_lifecycle_hook(
+\dontrun{svc$put_lifecycle_hook(
   AutoScalingGroupName = "my-auto-scaling-group",
   LifecycleHookName = "my-lifecycle-hook",
   LifecycleTransition = "autoscaling:EC2_INSTANCE_LAUNCHING",

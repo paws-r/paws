@@ -56,7 +56,7 @@ point.
 }
 
 \examples{
-\donttest{svc <- pi()
+\dontrun{svc <- pi()
 svc$describe_dimension_keys(
   Foo = 123
 )}

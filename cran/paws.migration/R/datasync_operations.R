@@ -95,7 +95,7 @@ datasync_cancel_task_execution <- function(TaskExecutionArn) {
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
 #' representable in UTF-8 format, and the following special characters: + -
-#' = . \\_ : / @.
+#' = . \\_ : / @@.
 #' @param VpcEndpointId The ID of the VPC (Virtual Private Cloud) endpoint that the agent has
 #' access to. This is the client-side VPC endpoint, also called a
 #' PrivateLink. If you don\'t have a PrivateLink VPC endpoint, see

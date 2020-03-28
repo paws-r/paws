@@ -33,7 +33,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- comprehend()
+#' \dontrun{svc <- comprehend()
 #' svc$batch_detect_dominant_language(
 #'   Foo = 123
 #' )}

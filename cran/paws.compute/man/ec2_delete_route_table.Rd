@@ -29,7 +29,7 @@ route table.
 
 \examples{
 # This example deletes the specified route table.
-\donttest{svc$delete_route_table(
+\dontrun{svc$delete_route_table(
   RouteTableId = "rtb-22574640"
 )}
 

@@ -58,7 +58,7 @@ maps and other data created by processing those traces.
 }
 
 \examples{
-\donttest{svc <- xray()
+\dontrun{svc <- xray()
 svc$batch_get_traces(
   Foo = 123
 )}

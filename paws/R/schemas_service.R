@@ -30,7 +30,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- schemas()
+#' \dontrun{svc <- schemas()
 #' svc$create_discoverer(
 #'   Foo = 123
 #' )}

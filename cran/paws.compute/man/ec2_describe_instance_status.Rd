@@ -115,7 +115,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example describes the current status of the specified instance.
-\donttest{svc$describe_instance_status(
+\dontrun{svc$describe_instance_status(
   InstanceIds = list(
     "i-1234567890abcdef0"
   )

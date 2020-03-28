@@ -66,7 +66,7 @@ when you created the encrypted file system.
 # defines when files in an Amazon EFS file system are automatically
 # transitioned to the lower-cost EFS Infrequent Access (IA) storage class.
 # A LifecycleConfiguration applies to all files in a file system.
-\donttest{svc$put_lifecycle_configuration(
+\dontrun{svc$put_lifecycle_configuration(
   FileSystemId = "fs-01234567",
   LifecyclePolicies = list(
     list(

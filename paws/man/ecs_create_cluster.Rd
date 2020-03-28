@@ -130,7 +130,7 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
 
 \examples{
 # This example creates a cluster in your default region.
-\donttest{svc$create_cluster(
+\dontrun{svc$create_cluster(
   clusterName = "my_cluster"
 )}
 

@@ -36,7 +36,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- fms()
+#' \dontrun{svc <- fms()
 #' svc$associate_admin_account(
 #'   Foo = 123
 #' )}

@@ -21,7 +21,7 @@ Gets information about a unique device type.
 
 \examples{
 # The following example returns information about a specific device.
-\donttest{svc$get_device(
+\dontrun{svc$get_device(
   arn = "arn:aws:devicefarm:us-west-2::device:123EXAMPLE"
 )}
 

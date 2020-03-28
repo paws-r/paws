@@ -78,13 +78,13 @@ The following operation is related to \code{DeleteObject}:
 
 \examples{
 # The following example deletes an object from a non-versioned bucket.
-\donttest{svc$delete_object(
+\dontrun{svc$delete_object(
   Bucket = "ExampleBucket",
   Key = "HappyFace.jpg"
 )}
 
 # The following example deletes an object from an S3 bucket.
-\donttest{svc$delete_object(
+\dontrun{svc$delete_object(
   Bucket = "examplebucket",
   Key = "objectkey.jpg"
 )}

@@ -27,7 +27,7 @@ This operation requires permissions to perform the
 
 \examples{
 # This operation deletes a Rekognition collection.
-\donttest{svc$delete_collection(
+\dontrun{svc$delete_collection(
   CollectionId = "myphotos"
 )}
 

@@ -167,7 +167,7 @@ DeregisterScalableTarget.
 # This example registers a scalable target from an Amazon ECS service
 # called web-app that is running on the default cluster, with a minimum
 # desired count of 1 task and a maximum desired count of 10 tasks.
-\donttest{svc$register_scalable_target(
+\dontrun{svc$register_scalable_target(
   MaxCapacity = 10L,
   MinCapacity = 1L,
   ResourceId = "service/default/web-app",
@@ -177,7 +177,7 @@ DeregisterScalableTarget.
 
 # This example registers a scalable target from an Amazon EC2 Spot fleet
 # with a minimum target capacity of 1 and a maximum of 10.
-\donttest{svc$register_scalable_target(
+\dontrun{svc$register_scalable_target(
   MaxCapacity = 10L,
   MinCapacity = 1L,
   ResourceId = "spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3",

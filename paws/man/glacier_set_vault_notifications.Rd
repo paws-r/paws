@@ -71,7 +71,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 
 \examples{
 # The example sets the examplevault notification configuration.
-\donttest{svc$set_vault_notifications(
+\dontrun{svc$set_vault_notifications(
   accountId = "-",
   vaultName = "examplevault",
   vaultNotificationConfig = list(

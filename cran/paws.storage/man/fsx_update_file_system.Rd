@@ -49,7 +49,7 @@ Updates a file system configuration.
 
 \examples{
 # This operation updates an existing file system.
-\donttest{svc$update_file_system(
+\dontrun{svc$update_file_system(
   FileSystemId = "fs-0498eed5fe91001ec",
   WindowsConfiguration = list(
     AutomaticBackupRetentionDays = 10L,

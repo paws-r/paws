@@ -204,7 +204,7 @@ in the \emph{AWS Key Management Service Developer Guide}.
 
 \examples{
 # The following example reencrypts data with the specified CMK.
-\donttest{svc$re_encrypt(
+\dontrun{svc$re_encrypt(
   CiphertextBlob = "<binary data>",
   DestinationKeyId = "0987dcba-09fe-87dc-65ba-ab0987654321"
 )}

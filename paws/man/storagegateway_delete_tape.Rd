@@ -27,7 +27,7 @@ the tape gateway type.
 
 \examples{
 # This example deletes the specified virtual tape.
-\donttest{svc$delete_tape(
+\dontrun{svc$delete_tape(
   GatewayARN = "arn:aws:storagegateway:us-east-1:204469490176:gateway/sgw-12A3456B",
   TapeARN = "arn:aws:storagegateway:us-east-1:204469490176:tape/TEST05A2A0"
 )}

@@ -45,7 +45,7 @@ NULL
 #' **Support and Feedback for AWS Secrets Manager**
 #' 
 #' We welcome your feedback. Send your comments to
-#' <awssecretsmanager-feedback@amazon.com>, or post your feedback and
+#' <awssecretsmanager-feedback@@amazon.com>, or post your feedback and
 #' questions in the [AWS Secrets Manager Discussion
 #' Forum](http://forums.aws.amazon.com/forum.jspa?forumID=296). For more
 #' information about the AWS Discussion Forums, see [Forums
@@ -104,7 +104,7 @@ NULL
 #' # operation sets the RotationEnabled field to false and cancels all
 #' # scheduled rotations. To resume scheduled rotations, you must re-enable
 #' # rotation by calling the rotate-secret operation.
-#' \donttest{svc <- secretsmanager()
+#' \dontrun{svc <- secretsmanager()
 #' svc$cancel_rotate_secret(
 #'   SecretId = "MyTestDatabaseSecret"
 #' )}

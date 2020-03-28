@@ -51,7 +51,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 
 \examples{
 # The following example creates a new vault named my-vault.
-\donttest{svc$create_vault(
+\dontrun{svc$create_vault(
   accountId = "-",
   vaultName = "my-vault"
 )}

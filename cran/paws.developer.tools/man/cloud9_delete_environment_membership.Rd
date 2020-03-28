@@ -26,7 +26,7 @@ environment.
 
 \examples{
 # 
-\donttest{svc$delete_environment_membership(
+\dontrun{svc$delete_environment_membership(
   environmentId = "8d9967e2f0624182b74e7690ad69ebEX",
   userArn = "arn:aws:iam::123456789012:user/AnotherDemoUser"
 )}

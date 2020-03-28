@@ -26,7 +26,7 @@ available for use.
 
 \examples{
 # This example deletes the specified launch configuration.
-\donttest{svc$delete_launch_configuration(
+\dontrun{svc$delete_launch_configuration(
   LaunchConfigurationName = "my-launch-config"
 )}
 

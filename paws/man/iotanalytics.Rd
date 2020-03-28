@@ -96,7 +96,7 @@ wearable devices.
 }
 
 \examples{
-\donttest{svc <- iotanalytics()
+\dontrun{svc <- iotanalytics()
 svc$batch_put_message(
   Foo = 123
 )}

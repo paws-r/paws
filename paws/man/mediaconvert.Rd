@@ -62,7 +62,7 @@ AWS Elemental MediaConvert
 }
 
 \examples{
-\donttest{svc <- mediaconvert()
+\dontrun{svc <- mediaconvert()
 svc$associate_certificate(
   Foo = 123
 )}

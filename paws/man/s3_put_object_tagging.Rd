@@ -105,7 +105,7 @@ object.}
 
 \examples{
 # The following example adds tags to an existing object.
-\donttest{svc$put_object_tagging(
+\dontrun{svc$put_object_tagging(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg",
   Tagging = list(

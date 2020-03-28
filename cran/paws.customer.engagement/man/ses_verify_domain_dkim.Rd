@@ -54,7 +54,7 @@ You can execute this operation no more than once per second.
 \examples{
 # The following example generates DKIM tokens for a domain that has been
 # verified with Amazon SES:
-\donttest{svc$verify_domain_dkim(
+\dontrun{svc$verify_domain_dkim(
   Domain = "example.com"
 )}
 

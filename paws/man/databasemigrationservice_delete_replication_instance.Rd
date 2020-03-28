@@ -31,7 +31,7 @@ replication instance before you can delete it.
 # you can delete it.
 # 
 # 
-\donttest{svc$delete_replication_instance(
+\dontrun{svc$delete_replication_instance(
   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJ..."
 )}
 

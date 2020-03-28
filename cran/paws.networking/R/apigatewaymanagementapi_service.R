@@ -36,7 +36,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- apigatewaymanagementapi()
+#' \dontrun{svc <- apigatewaymanagementapi()
 #' svc$delete_connection(
 #'   Foo = 123
 #' )}

@@ -95,7 +95,7 @@ ecr_batch_check_layer_availability <- function(registryId = NULL, repositoryName
 #' @examples
 #' # This example deletes images with the tags precise and trusty in a
 #' # repository called ubuntu in the default registry for an account.
-#' \donttest{svc$batch_delete_image(
+#' \dontrun{svc$batch_delete_image(
 #'   imageIds = list(
 #'     list(
 #'       imageTag = "precise"
@@ -168,7 +168,7 @@ ecr_batch_delete_image <- function(registryId = NULL, repositoryName, imageIds) 
 #' @examples
 #' # This example obtains information for an image with a specified image
 #' # digest ID from the repository named ubuntu in the current account.
-#' \donttest{svc$batch_get_image(
+#' \dontrun{svc$batch_get_image(
 #'   imageIds = list(
 #'     list(
 #'       imageTag = "precise"
@@ -303,7 +303,7 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 #' @examples
 #' # This example creates a repository called nginx-web-app inside the
 #' # project-a namespace in the default registry for an account.
-#' \donttest{svc$create_repository(
+#' \dontrun{svc$create_repository(
 #'   repositoryName = "project-a/nginx-web-app"
 #' )}
 #'
@@ -394,7 +394,7 @@ ecr_delete_lifecycle_policy <- function(registryId = NULL, repositoryName) {
 #' # This example force deletes a repository named ubuntu in the default
 #' # registry for an account. The force parameter is required if the
 #' # repository contains images.
-#' \donttest{svc$delete_repository(
+#' \dontrun{svc$delete_repository(
 #'   force = TRUE,
 #'   repositoryName = "ubuntu"
 #' )}
@@ -443,7 +443,7 @@ ecr_delete_repository <- function(registryId = NULL, repositoryName, force = NUL
 #' @examples
 #' # This example deletes the policy associated with the repository named
 #' # ubuntu in the current account.
-#' \donttest{svc$delete_repository_policy(
+#' \dontrun{svc$delete_repository_policy(
 #'   repositoryName = "ubuntu"
 #' )}
 #'
@@ -657,7 +657,7 @@ ecr_describe_images <- function(registryId = NULL, repositoryName, imageIds = NU
 #' @examples
 #' # The following example obtains a list and description of all repositories
 #' # in the default registry to which the current user has access.
-#' \donttest{svc$describe_repositories()}
+#' \dontrun{svc$describe_repositories()}
 #'
 #' @keywords internal
 #'
@@ -709,7 +709,7 @@ ecr_describe_repositories <- function(registryId = NULL, repositoryNames = NULL,
 #'
 #' @examples
 #' # This example gets an authorization token for your default registry.
-#' \donttest{svc$get_authorization_token()}
+#' \dontrun{svc$get_authorization_token()}
 #'
 #' @keywords internal
 #'
@@ -916,7 +916,7 @@ ecr_get_lifecycle_policy_preview <- function(registryId = NULL, repositoryName, 
 #' @examples
 #' # This example obtains the repository policy for the repository named
 #' # ubuntu.
-#' \donttest{svc$get_repository_policy(
+#' \dontrun{svc$get_repository_policy(
 #'   repositoryName = "ubuntu"
 #' )}
 #'
@@ -1038,7 +1038,7 @@ ecr_initiate_layer_upload <- function(registryId = NULL, repositoryName) {
 #' @examples
 #' # This example lists all of the images in the repository named ubuntu in
 #' # the default registry in the current account.
-#' \donttest{svc$list_images(
+#' \dontrun{svc$list_images(
 #'   repositoryName = "ubuntu"
 #' )}
 #'

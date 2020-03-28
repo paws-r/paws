@@ -46,7 +46,7 @@ originally configured it.
 
 \examples{
 # This operation deletes a Lambda function
-\donttest{svc$delete_function(
+\dontrun{svc$delete_function(
   FunctionName = "myFunction",
   Qualifier = "1"
 )}

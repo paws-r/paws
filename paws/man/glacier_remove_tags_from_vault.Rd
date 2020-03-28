@@ -37,7 +37,7 @@ there are no tags attached to the vault.
 
 \examples{
 # The example removes two tags from the vault named examplevault.
-\donttest{svc$remove_tags_from_vault(
+\dontrun{svc$remove_tags_from_vault(
   TagKeys = list(
     "examplekey1",
     "examplekey2"

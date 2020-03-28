@@ -75,7 +75,7 @@ You can execute this operation no more than once per second.
 
 \examples{
 # The following example updates a receipt rule to use an Amazon S3 action:
-\donttest{svc$update_receipt_rule(
+\dontrun{svc$update_receipt_rule(
   Rule = list(
     Actions = list(
       list(

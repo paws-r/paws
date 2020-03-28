@@ -31,7 +31,7 @@ operation is supported in storage gateways of all types.
 
 \examples{
 # Lists the tags that have been added to the specified resource.
-\donttest{svc$list_tags_for_resource(
+\dontrun{svc$list_tags_for_resource(
   Limit = 1L,
   Marker = "1",
   ResourceARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-11A2222B"

@@ -47,7 +47,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- iotjobsdataplane()
+#' \dontrun{svc <- iotjobsdataplane()
 #' svc$describe_job_execution(
 #'   Foo = 123
 #' )}

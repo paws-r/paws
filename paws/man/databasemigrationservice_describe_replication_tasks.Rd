@@ -55,7 +55,7 @@ current region.
 \examples{
 # Returns information about replication tasks for your account in the
 # current region.
-\donttest{svc$describe_replication_tasks(
+\dontrun{svc$describe_replication_tasks(
   Filters = list(
     list(
       Name = "string",

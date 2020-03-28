@@ -107,7 +107,7 @@ RegisterScalableTarget.
 \examples{
 # This example deregisters a scalable target for an Amazon ECS service
 # called web-app that is running in the default cluster.
-\donttest{svc$deregister_scalable_target(
+\dontrun{svc$deregister_scalable_target(
   ResourceId = "service/default/web-app",
   ScalableDimension = "ecs:service:DesiredCount",
   ServiceNamespace = "ecs"

@@ -32,7 +32,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- mediastoredata()
+#' \dontrun{svc <- mediastoredata()
 #' svc$delete_object(
 #'   Foo = 123
 #' )}

@@ -467,7 +467,7 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
 
 \examples{
 # This example registers a task definition to the specified family.
-\donttest{svc$register_task_definition(
+\dontrun{svc$register_task_definition(
   containerDefinitions = list(
     list(
       name = "sleep",

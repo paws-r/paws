@@ -21,7 +21,7 @@ ListRoots to see the status of policy types for a specified root.
 \examples{
 # The following example shows how to request information about the current
 # user's organization:/n/n
-\donttest{svc$describe_organization()}
+\dontrun{svc$describe_organization()}
 
 }
 \keyword{internal}

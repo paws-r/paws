@@ -35,7 +35,7 @@ You can execute this operation no more than once per second.
 
 \examples{
 # Set the reputationMetricsEnabled flag for a specific configuration set.
-\donttest{svc$update_configuration_set_reputation_metrics_enabled(
+\dontrun{svc$update_configuration_set_reputation_metrics_enabled(
   ConfigurationSetName = "foo",
   Enabled = TRUE
 )}

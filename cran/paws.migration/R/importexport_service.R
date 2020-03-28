@@ -36,7 +36,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- importexport()
+#' \dontrun{svc <- importexport()
 #' svc$cancel_job(
 #'   Foo = 123
 #' )}

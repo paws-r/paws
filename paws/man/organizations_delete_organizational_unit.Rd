@@ -38,7 +38,7 @@ account.
 # that you previously removed all accounts and other OUs from the OU:
 # 
 # 
-\donttest{svc$delete_organizational_unit(
+\dontrun{svc$delete_organizational_unit(
   OrganizationalUnitId = "ou-examplerootid111-exampleouid111"
 )}
 

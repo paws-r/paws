@@ -78,7 +78,7 @@ This action returns the most recent 1,000 events from the specified
 \examples{
 # The following operation retrieves events for an environment named
 # my-env:
-\donttest{svc$describe_events(
+\dontrun{svc$describe_events(
   EnvironmentName = "my-env"
 )}
 

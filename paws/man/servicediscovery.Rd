@@ -64,7 +64,7 @@ contains up to eight healthy records.
 }
 
 \examples{
-\donttest{svc <- servicediscovery()
+\dontrun{svc <- servicediscovery()
 svc$create_http_namespace(
   Foo = 123
 )}

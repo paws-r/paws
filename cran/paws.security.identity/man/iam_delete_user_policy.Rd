@@ -42,7 +42,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following delete-user-policy command removes the specified policy
 # from the IAM user named Juan:
-\donttest{svc$delete_user_policy(
+\dontrun{svc$delete_user_policy(
   PolicyName = "ExamplePolicy",
   UserName = "Juan"
 )}

@@ -33,7 +33,7 @@ remains unchanged. To clear these properties, specify an empty string.
 \examples{
 # The following operation updates the description of an application named
 # my-app:
-\donttest{svc$update_application(
+\dontrun{svc$update_application(
   ApplicationName = "my-app",
   Description = "my Elastic Beanstalk application"
 )}

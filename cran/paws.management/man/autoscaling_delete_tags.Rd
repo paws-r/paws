@@ -30,7 +30,7 @@ Deletes the specified tags.
 \examples{
 # This example deletes the specified tag from the specified Auto Scaling
 # group.
-\donttest{svc$delete_tags(
+\dontrun{svc$delete_tags(
   Tags = list(
     list(
       Key = "Dept",

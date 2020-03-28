@@ -27,7 +27,7 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
 \examples{
 # This example describes the Spot Instance datafeed subscription for your
 # AWS account.
-\donttest{svc$describe_spot_datafeed_subscription()}
+\dontrun{svc$describe_spot_datafeed_subscription()}
 
 }
 \keyword{internal}

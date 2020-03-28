@@ -134,7 +134,7 @@ eventually consistent read, it always returns the last updated value.
 # This example retrieves an item from the Music table. The table has a
 # partition key and a sort key (Artist and SongTitle), so you must specify
 # both of these attributes.
-\donttest{svc$get_item(
+\dontrun{svc$get_item(
   Key = list(
     Artist = list(
       S = "Acme Band"

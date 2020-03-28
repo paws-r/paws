@@ -416,7 +416,7 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/
 
 \examples{
 # The following example copies an object from one bucket to another.
-\donttest{svc$copy_object(
+\dontrun{svc$copy_object(
   Bucket = "destinationbucket",
   CopySource = "/sourcebucket/HappyFacejpg",
   Key = "HappyFaceCopyjpg"

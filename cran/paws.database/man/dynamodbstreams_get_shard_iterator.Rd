@@ -56,7 +56,7 @@ requester.
 \examples{
 # The following example returns a shard iterator for the provided stream
 # ARN and shard ID.
-\donttest{svc$get_shard_iterator(
+\dontrun{svc$get_shard_iterator(
   ShardId = "00000001414576573621-f55eea83",
   ShardIteratorType = "TRIM_HORIZON",
   StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:51:1..."

@@ -48,8 +48,8 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following command changes IAM user Bob's password and sets the flag
 # that required Bob to change the password the next time he signs in.
-\donttest{svc$create_login_profile(
-  Password = "h]6EszR}vJ*m",
+\dontrun{svc$create_login_profile(
+  Password = "h]6EszR\}vJ*m",
   PasswordResetRequired = TRUE,
   UserName = "Bob"
 )}

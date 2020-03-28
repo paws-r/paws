@@ -102,7 +102,7 @@ because some requests might not be redirected.
 
 \examples{
 # The following example adds website configuration to a bucket.
-\donttest{svc$put_bucket_website(
+\dontrun{svc$put_bucket_website(
   Bucket = "examplebucket",
   ContentMD5 = "",
   WebsiteConfiguration = list(

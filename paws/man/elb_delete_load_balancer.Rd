@@ -31,7 +31,7 @@ call to \code{DeleteLoadBalancer} still succeeds.
 
 \examples{
 # This example deletes the specified load balancer.
-\donttest{svc$delete_load_balancer(
+\dontrun{svc$delete_load_balancer(
   LoadBalancerName = "my-load-balancer"
 )}
 

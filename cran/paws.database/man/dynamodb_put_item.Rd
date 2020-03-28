@@ -295,7 +295,7 @@ in the \emph{Amazon DynamoDB Developer Guide}.
 
 \examples{
 # This example adds a new item to the Music table.
-\donttest{svc$put_item(
+\dontrun{svc$put_item(
   Item = list(
     AlbumTitle = list(
       S = "Somewhat Famous"

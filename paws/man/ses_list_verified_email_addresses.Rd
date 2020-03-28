@@ -13,7 +13,7 @@ addresses and domains associated with your account.
 \examples{
 # The following example lists all email addresses that have been submitted
 # for verification with Amazon SES:
-\donttest{svc$list_verified_email_addresses()}
+\dontrun{svc$list_verified_email_addresses()}
 
 }
 \keyword{internal}

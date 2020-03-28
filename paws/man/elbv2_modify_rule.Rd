@@ -158,7 +158,7 @@ To modify the actions for the default rule, use ModifyListener.
 
 \examples{
 # This example modifies the condition for the specified rule.
-\donttest{svc$modify_rule(
+\dontrun{svc$modify_rule(
   Conditions = list(
     list(
       Field = "path-pattern",

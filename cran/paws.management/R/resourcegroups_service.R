@@ -65,7 +65,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- resourcegroups()
+#' \dontrun{svc <- resourcegroups()
 #' svc$create_group(
 #'   Foo = 123
 #' )}

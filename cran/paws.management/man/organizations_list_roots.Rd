@@ -54,7 +54,7 @@ DescribeOrganization.
 \examples{
 # The following example shows how to get the list of the roots in the
 # current organization:/n/n
-\donttest{svc$list_roots()}
+\dontrun{svc$list_roots()}
 
 }
 \keyword{internal}

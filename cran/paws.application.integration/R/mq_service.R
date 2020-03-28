@@ -30,7 +30,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- mq()
+#' \dontrun{svc <- mq()
 #' svc$create_broker(
 #'   Foo = 123
 #' )}

@@ -30,7 +30,7 @@ instance.
 \examples{
 # This example associates an IAM instance profile named admin-role with
 # the specified instance.
-\donttest{svc$associate_iam_instance_profile(
+\dontrun{svc$associate_iam_instance_profile(
   IamInstanceProfile = list(
     Name = "admin-role"
   ),

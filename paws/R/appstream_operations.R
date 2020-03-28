@@ -329,7 +329,7 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' Generally allowed characters are: letters, numbers, and spaces
 #' representable in UTF-8, and the following special characters:
 #' 
-#' \\_ . : / = + \\ - @
+#' \\_ . : / = + \\ - @@
 #' 
 #' For more information, see [Tagging Your
 #' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
@@ -513,7 +513,7 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #' Generally allowed characters are: letters, numbers, and spaces
 #' representable in UTF-8, and the following special characters:
 #' 
-#' \\_ . : / = + \\ - @
+#' \\_ . : / = + \\ - @@
 #' 
 #' If you do not specify a value, the value is set to an empty string.
 #' 
@@ -652,7 +652,7 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 #' Generally allowed characters are: letters, numbers, and spaces
 #' representable in UTF-8, and the following special characters:
 #' 
-#' \\_ . : / = + \\ - @
+#' \\_ . : / = + \\ - @@
 #' 
 #' For more information about tags, see [Tagging Your
 #' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
@@ -2110,7 +2110,7 @@ appstream_stop_image_builder <- function(Name) {
 #' Generally allowed characters are: letters, numbers, and spaces
 #' representable in UTF-8, and the following special characters:
 #' 
-#' \\_ . : / = + \\ - @
+#' \\_ . : / = + \\ - @@
 #'
 #' @section Request syntax:
 #' ```

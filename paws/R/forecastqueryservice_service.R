@@ -30,7 +30,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- forecastqueryservice()
+#' \dontrun{svc <- forecastqueryservice()
 #' svc$query_forecast(
 #'   Foo = 123
 #' )}

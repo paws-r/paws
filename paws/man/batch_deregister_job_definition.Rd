@@ -22,7 +22,7 @@ Deregisters an AWS Batch job definition.
 
 \examples{
 # This example deregisters a job definition called sleep10.
-\donttest{svc$deregister_job_definition(
+\dontrun{svc$deregister_job_definition(
   jobDefinition = "sleep10"
 )}
 

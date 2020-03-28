@@ -32,7 +32,7 @@ and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html
 
 \examples{
 # This operation checks to see if a bucket exists.
-\donttest{svc$head_bucket(
+\dontrun{svc$head_bucket(
   Bucket = "acl1"
 )}
 

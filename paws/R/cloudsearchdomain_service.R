@@ -41,7 +41,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- cloudsearchdomain()
+#' \dontrun{svc <- cloudsearchdomain()
 #' svc$search(
 #'   Foo = 123
 #' )}

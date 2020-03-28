@@ -36,7 +36,7 @@ Returns details about a Lambda function
 
 \examples{
 # This operation retrieves a Lambda function alias
-\donttest{svc$get_alias(
+\dontrun{svc$get_alias(
   FunctionName = "myFunction",
   Name = "myFunctionAlias"
 )}

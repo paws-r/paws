@@ -79,7 +79,7 @@ For more information about how AWS IoT Things Graph works, see the \href{https:/
 }
 
 \examples{
-\donttest{svc <- iotthingsgraph()
+\dontrun{svc <- iotthingsgraph()
 svc$associate_entity_to_thing(
   Foo = 123
 )}

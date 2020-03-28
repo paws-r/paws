@@ -35,7 +35,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- acm()
+#' \dontrun{svc <- acm()
 #' svc$add_tags_to_certificate(
 #'   Foo = 123
 #' )}

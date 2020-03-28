@@ -36,7 +36,7 @@ SDKs provide similar functionality.
 
 \examples{
 # The following command gets information about the role named Test-Role.
-\donttest{svc$get_role(
+\dontrun{svc$get_role(
   RoleName = "Test-Role"
 )}
 

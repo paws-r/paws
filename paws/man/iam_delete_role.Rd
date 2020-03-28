@@ -32,7 +32,7 @@ running on the instance.
 
 \examples{
 # The following command removes the role named Test-Role.
-\donttest{svc$delete_role(
+\dontrun{svc$delete_role(
   RoleName = "Test-Role"
 )}
 

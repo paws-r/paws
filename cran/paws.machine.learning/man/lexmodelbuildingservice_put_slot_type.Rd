@@ -101,7 +101,7 @@ This operation requires permissions for the \code{lex:PutSlotType} action.
 \examples{
 # This example shows how to create a slot type that describes pizza
 # sauces.
-\donttest{svc$put_slot_type(
+\dontrun{svc$put_slot_type(
   name = "PizzaSauceType",
   description = "Available pizza sauces",
   enumerationValues = list(

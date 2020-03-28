@@ -34,7 +34,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- frauddetector()
+#' \dontrun{svc <- frauddetector()
 #' svc$batch_create_variable(
 #'   Foo = 123
 #' )}

@@ -33,7 +33,7 @@ this API.
 
 \examples{
 # The following command gets information about the IAM user named Bob.
-\donttest{svc$get_user(
+\dontrun{svc$get_user(
   UserName = "Bob"
 )}
 

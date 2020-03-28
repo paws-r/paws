@@ -72,7 +72,7 @@ For more information about VPC security group limits, see \href{https://docs.aws
 
 \examples{
 # This example creates a security group for the specified VPC.
-\donttest{svc$create_security_group(
+\dontrun{svc$create_security_group(
   Description = "My security group",
   GroupName = "my-security-group",
   VpcId = "vpc-1a2b3c4d"

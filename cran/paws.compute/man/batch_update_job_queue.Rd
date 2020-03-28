@@ -44,7 +44,7 @@ Updates a job queue.
 
 \examples{
 # This example disables a job queue so that it can be deleted.
-\donttest{svc$update_job_queue(
+\dontrun{svc$update_job_queue(
   jobQueue = "GPGPU",
   state = "DISABLED"
 )}

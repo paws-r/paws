@@ -50,7 +50,7 @@ Related Topics
 \examples{
 # The following operation retrieves a link to logs from an environment
 # named my-env:
-\donttest{svc$retrieve_environment_info(
+\dontrun{svc$retrieve_environment_info(
   EnvironmentName = "my-env",
   InfoType = "tail"
 )}

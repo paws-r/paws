@@ -34,7 +34,7 @@ a job\'s state, a job\'s ID, and other information.
 # Returns an array of JobListEntry objects of the specified length. Each
 # JobListEntry object is for a job in the specified cluster and contains a
 # job's state, a job's ID, and other information.
-\donttest{svc$list_cluster_jobs(
+\dontrun{svc$list_cluster_jobs(
   ClusterId = "CID123e4567-e89b-12d3-a456-426655440000"
 )}
 

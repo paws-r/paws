@@ -85,7 +85,7 @@ features, see the \emph{Amazon CloudFront Developer Guide}.
 }
 
 \examples{
-\donttest{svc <- cloudfront()
+\dontrun{svc <- cloudfront()
 svc$create_cloud_front_origin_access_identity(
   Foo = 123
 )}

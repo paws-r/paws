@@ -130,7 +130,7 @@ of a secret, use UpdateSecretVersionStage.
 # number of days between rotation. The first rotation happens immediately
 # upon completion of this command. The rotation function runs
 # asynchronously in the background.
-\donttest{svc$rotate_secret(
+\dontrun{svc$rotate_secret(
   RotationLambdaARN = "arn:aws:lambda:us-west-2:123456789012:function:MyTestDatabaseRotation...",
   RotationRules = list(
     AutomaticallyAfterDays = 30L
@@ -142,7 +142,7 @@ of a secret, use UpdateSecretVersionStage.
 # Lambda rotation function. It assumes that the specified secret already
 # has rotation configured. The rotation function runs asynchronously in
 # the background.
-\donttest{svc$rotate_secret(
+\dontrun{svc$rotate_secret(
   SecretId = "MyTestDatabaseSecret"
 )}
 

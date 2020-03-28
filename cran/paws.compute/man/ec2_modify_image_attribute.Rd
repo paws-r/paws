@@ -91,7 +91,7 @@ instance.
 
 \examples{
 # This example makes the specified AMI public.
-\donttest{svc$modify_image_attribute(
+\dontrun{svc$modify_image_attribute(
   ImageId = "ami-5731123e",
   LaunchPermission = list(
     Add = list(
@@ -104,7 +104,7 @@ instance.
 
 # This example grants launch permissions for the specified AMI to the
 # specified AWS account.
-\donttest{svc$modify_image_attribute(
+\dontrun{svc$modify_image_attribute(
   ImageId = "ami-5731123e",
   LaunchPermission = list(
     Add = list(

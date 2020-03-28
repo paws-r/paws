@@ -33,7 +33,7 @@ The following operations are related to \code{GetBucketLocation}:
 
 \examples{
 # The following example returns bucket location.
-\donttest{svc$get_bucket_location(
+\dontrun{svc$get_bucket_location(
   Bucket = "examplebucket"
 )}
 

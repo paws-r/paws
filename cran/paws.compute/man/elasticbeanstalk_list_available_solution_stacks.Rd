@@ -15,7 +15,7 @@ version first and then in reverse chronological order.
 # The following operation lists solution stacks for all currently
 # available platform configurations and any that you have used in the
 # past:
-\donttest{svc$list_available_solution_stacks()}
+\dontrun{svc$list_available_solution_stacks()}
 
 }
 \keyword{internal}

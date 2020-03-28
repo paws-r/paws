@@ -49,7 +49,7 @@ account.
 \examples{
 # The following example shows you how to request a list of the accounts in
 # an organization:
-\donttest{svc$list_accounts()}
+\dontrun{svc$list_accounts()}
 
 }
 \keyword{internal}

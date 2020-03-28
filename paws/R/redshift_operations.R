@@ -495,7 +495,7 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' -   Must contain one number.
 #' 
 #' -   Can be any printable ASCII character (ASCII code 33 to 126) except
-#'     \' (single quote), \" (double quote), \\, /, @, or space.
+#'     \' (single quote), \" (double quote), \\, /, @@, or space.
 #' @param ClusterSecurityGroups A list of security groups to be associated with this cluster.
 #' 
 #' Default: The default cluster security group for Amazon Redshift.
@@ -4412,7 +4412,7 @@ redshift_enable_snapshot_copy <- function(ClusterIdentifier, DestinationRegion, 
 #'     can\'t be `PUBLIC`.
 #' 
 #' -   Must contain only lowercase letters, numbers, underscore, plus sign,
-#'     period (dot), at symbol (@), or hyphen.
+#'     period (dot), at symbol (@@), or hyphen.
 #' 
 #' -   First character must be a letter.
 #' 
@@ -4430,7 +4430,7 @@ redshift_enable_snapshot_copy <- function(ClusterIdentifier, DestinationRegion, 
 #' -   Must be 1 to 64 alphanumeric characters or hyphens
 #' 
 #' -   Must contain only lowercase letters, numbers, underscore, plus sign,
-#'     period (dot), at symbol (@), or hyphen.
+#'     period (dot), at symbol (@@), or hyphen.
 #' 
 #' -   First character must be a letter.
 #' 
@@ -4459,7 +4459,7 @@ redshift_enable_snapshot_copy <- function(ClusterIdentifier, DestinationRegion, 
 #' -   Must be 1 to 64 alphanumeric characters or hyphens
 #' 
 #' -   Must contain only lowercase letters, numbers, underscore, plus sign,
-#'     period (dot), at symbol (@), or hyphen.
+#'     period (dot), at symbol (@@), or hyphen.
 #' 
 #' -   First character must be a letter.
 #' 
@@ -4654,7 +4654,7 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 #' -   Must contain one number.
 #' 
 #' -   Can be any printable ASCII character (ASCII code 33 to 126) except
-#'     \' (single quote), \" (double quote), \\, /, @, or space.
+#'     \' (single quote), \" (double quote), \\, /, @@, or space.
 #' @param ClusterParameterGroupName The name of the cluster parameter group to apply to this cluster. This
 #' change is applied only after the cluster is rebooted. To reboot a
 #' cluster use RebootCluster.

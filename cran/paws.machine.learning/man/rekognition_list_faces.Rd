@@ -38,7 +38,7 @@ This operation requires permissions to perform the
 
 \examples{
 # This operation lists the faces in a Rekognition collection.
-\donttest{svc$list_faces(
+\dontrun{svc$list_faces(
   CollectionId = "myphotos",
   MaxResults = 20L
 )}

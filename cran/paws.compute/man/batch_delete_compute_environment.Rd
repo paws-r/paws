@@ -28,7 +28,7 @@ operation.
 
 \examples{
 # This example deletes the P2OnDemand compute environment.
-\donttest{svc$delete_compute_environment(
+\dontrun{svc$delete_compute_environment(
   computeEnvironment = "P2OnDemand"
 )}
 

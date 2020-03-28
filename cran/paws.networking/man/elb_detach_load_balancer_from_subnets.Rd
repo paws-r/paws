@@ -35,7 +35,7 @@ subnets.
 \examples{
 # This example detaches the specified load balancer from the specified
 # subnet.
-\donttest{svc$detach_load_balancer_from_subnets(
+\dontrun{svc$detach_load_balancer_from_subnets(
   LoadBalancerName = "my-load-balancer",
   Subnets = list(
     "subnet-0ecac448"

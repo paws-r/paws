@@ -29,7 +29,7 @@ action.
 
 \examples{
 # This example shows how to get information about an intent.
-\donttest{svc$get_intent(
+\dontrun{svc$get_intent(
   version = "$LATEST",
   name = "DocOrderPizza"
 )}

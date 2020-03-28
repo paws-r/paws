@@ -41,7 +41,7 @@ NULL
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . \\_ : / @.
+#'     characters: + - = . \\_ : / @@.
 #' 
 #' -   Tag keys and values are case-sensitive.
 #' 
@@ -136,7 +136,7 @@ ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = 
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . \\_ : / @.
+#'     characters: + - = . \\_ : / @@.
 #' 
 #' -   Tag keys and values are case-sensitive.
 #' 
@@ -222,7 +222,7 @@ ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = 
 #'
 #' @examples
 #' # This example creates a cluster in your default region.
-#' \donttest{svc$create_cluster(
+#' \dontrun{svc$create_cluster(
 #'   clusterName = "my_cluster"
 #' )}
 #'
@@ -582,7 +582,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . \\_ : / @.
+#'     characters: + - = . \\_ : / @@.
 #' 
 #' -   Tag keys and values are case-sensitive.
 #' 
@@ -682,7 +682,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' # This example creates a service in your default region called
 #' # `ecs-simple-service`. The service uses the `hello_world` task
 #' # definition and it maintains 10 copies of that task.
-#' \donttest{svc$create_service(
+#' \dontrun{svc$create_service(
 #'   desiredCount = 10L,
 #'   serviceName = "ecs-simple-service",
 #'   taskDefinition = "hello_world"
@@ -692,7 +692,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' # `ecs-simple-service-elb`. The service uses the `ecs-demo` task
 #' # definition and it maintains 10 copies of that task. You must reference
 #' # an existing load balancer in the same region by its name.
-#' \donttest{svc$create_service(
+#' \dontrun{svc$create_service(
 #'   desiredCount = 10L,
 #'   loadBalancers = list(
 #'     list(
@@ -902,14 +902,14 @@ ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinit
 #' @examples
 #' # This example deletes the account setting for your user for the specified
 #' # resource type.
-#' \donttest{svc$delete_account_setting(
+#' \dontrun{svc$delete_account_setting(
 #'   name = "serviceLongArnFormat"
 #' )}
 #' 
 #' # This example deletes the account setting for a specific IAM user or IAM
 #' # role for the specified resource type. Only the root user can view or
 #' # modify the account settings for another user.
-#' \donttest{svc$delete_account_setting(
+#' \dontrun{svc$delete_account_setting(
 #'   name = "containerInstanceLongArnFormat",
 #'   principalArn = "arn:aws:iam::<aws_account_id>:user/principalName"
 #' )}
@@ -1006,7 +1006,7 @@ ecs_delete_attributes <- function(cluster = NULL, attributes) {
 #'
 #' @examples
 #' # This example deletes an empty cluster in your default region.
-#' \donttest{svc$delete_cluster(
+#' \dontrun{svc$delete_cluster(
 #'   cluster = "my_cluster"
 #' )}
 #'
@@ -1075,7 +1075,7 @@ ecs_delete_cluster <- function(cluster) {
 #' @examples
 #' # This example deletes the my-http-service service. The service must have
 #' # a desired count and running count of 0 before you can delete it.
-#' \donttest{svc$delete_service(
+#' \dontrun{svc$delete_service(
 #'   service = "my-http-service"
 #' )}
 #'
@@ -1209,7 +1209,7 @@ ecs_delete_task_set <- function(cluster, service, taskSet, force = NULL) {
 #' # in your default region. If there are still tasks running on the
 #' # container instance, you must either stop those tasks before
 #' # deregistering, or use the force option.
-#' \donttest{svc$deregister_container_instance(
+#' \dontrun{svc$deregister_container_instance(
 #'   cluster = "default",
 #'   containerInstance = "container_instance_UUID",
 #'   force = TRUE
@@ -1412,7 +1412,7 @@ ecs_describe_capacity_providers <- function(capacityProviders = NULL, include = 
 #' @examples
 #' # This example provides a description of the specified cluster in your
 #' # default region.
-#' \donttest{svc$describe_clusters(
+#' \dontrun{svc$describe_clusters(
 #'   clusters = list(
 #'     "default"
 #'   )
@@ -1475,7 +1475,7 @@ ecs_describe_clusters <- function(clusters = NULL, include = NULL) {
 #' # This example provides a description of the specified container instance
 #' # in your default region, using the container instance UUID as an
 #' # identifier.
-#' \donttest{svc$describe_container_instances(
+#' \dontrun{svc$describe_container_instances(
 #'   cluster = "default",
 #'   containerInstances = list(
 #'     "f2756532-8f13-4d53-87c9-aed50dc94cd7"
@@ -1536,7 +1536,7 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
 #' @examples
 #' # This example provides descriptive information about the service named
 #' # `ecs-simple-service`.
-#' \donttest{svc$describe_services(
+#' \dontrun{svc$describe_services(
 #'   services = list(
 #'     "ecs-simple-service"
 #'   )
@@ -1593,7 +1593,7 @@ ecs_describe_services <- function(cluster = NULL, services, include = NULL) {
 #'
 #' @examples
 #' # This example provides a description of the specified task definition.
-#' \donttest{svc$describe_task_definition(
+#' \dontrun{svc$describe_task_definition(
 #'   taskDefinition = "hello_world:8"
 #' )}
 #'
@@ -1698,7 +1698,7 @@ ecs_describe_task_sets <- function(cluster, service, taskSets = NULL) {
 #' @examples
 #' # This example provides a description of the specified task, using the
 #' # task UUID as an identifier.
-#' \donttest{svc$describe_tasks(
+#' \dontrun{svc$describe_tasks(
 #'   tasks = list(
 #'     "c5cba4eb-5dad-405e-96db-71ef8eefe6a8"
 #'   )
@@ -1822,13 +1822,13 @@ ecs_discover_poll_endpoint <- function(containerInstance = NULL, cluster = NULL)
 #'
 #' @examples
 #' # This example displays the effective account settings for your account.
-#' \donttest{svc$list_account_settings(
+#' \dontrun{svc$list_account_settings(
 #'   effectiveSettings = TRUE
 #' )}
 #' 
 #' # This example displays the effective account settings for the specified
 #' # user or role.
-#' \donttest{svc$list_account_settings(
+#' \dontrun{svc$list_account_settings(
 #'   effectiveSettings = TRUE,
 #'   principalArn = "arn:aws:iam::<aws_account_id>:user/principalName"
 #' )}
@@ -1960,7 +1960,7 @@ ecs_list_attributes <- function(cluster = NULL, targetType, attributeName = NULL
 #' @examples
 #' # This example lists all of your available clusters in your default
 #' # region.
-#' \donttest{svc$list_clusters()}
+#' \dontrun{svc$list_clusters()}
 #'
 #' @keywords internal
 #'
@@ -2040,7 +2040,7 @@ ecs_list_clusters <- function(nextToken = NULL, maxResults = NULL) {
 #' @examples
 #' # This example lists all of your available container instances in the
 #' # specified cluster in your default region.
-#' \donttest{svc$list_container_instances(
+#' \dontrun{svc$list_container_instances(
 #'   cluster = "default"
 #' )}
 #'
@@ -2108,7 +2108,7 @@ ecs_list_container_instances <- function(cluster = NULL, filter = NULL, nextToke
 #' @examples
 #' # This example lists the services running in the default cluster for an
 #' # account.
-#' \donttest{svc$list_services()}
+#' \dontrun{svc$list_services()}
 #'
 #' @keywords internal
 #'
@@ -2150,7 +2150,7 @@ ecs_list_services <- function(cluster = NULL, nextToken = NULL, maxResults = NUL
 #'
 #' @examples
 #' # This example lists the tags for the 'dev' cluster.
-#' \donttest{svc$list_tags_for_resource(
+#' \dontrun{svc$list_tags_for_resource(
 #'   resourceArn = "arn:aws:ecs:region:aws_account_id:cluster/dev"
 #' )}
 #'
@@ -2234,10 +2234,10 @@ ecs_list_tags_for_resource <- function(resourceArn) {
 #'
 #' @examples
 #' # This example lists all of your registered task definition families.
-#' \donttest{svc$list_task_definition_families()}
+#' \dontrun{svc$list_task_definition_families()}
 #' 
 #' # This example lists the task definition revisions that start with "hpcc".
-#' \donttest{svc$list_task_definition_families(
+#' \dontrun{svc$list_task_definition_families(
 #'   familyPrefix = "hpcc"
 #' )}
 #'
@@ -2317,10 +2317,10 @@ ecs_list_task_definition_families <- function(familyPrefix = NULL, status = NULL
 #'
 #' @examples
 #' # This example lists all of your registered task definitions.
-#' \donttest{svc$list_task_definitions()}
+#' \dontrun{svc$list_task_definitions()}
 #' 
 #' # This example lists the task definition revisions of a specified family.
-#' \donttest{svc$list_task_definitions(
+#' \dontrun{svc$list_task_definitions(
 #'   familyPrefix = "wordpress"
 #' )}
 #'
@@ -2420,14 +2420,14 @@ ecs_list_task_definitions <- function(familyPrefix = NULL, status = NULL, sort =
 #'
 #' @examples
 #' # This example lists all of the tasks in a cluster.
-#' \donttest{svc$list_tasks(
+#' \dontrun{svc$list_tasks(
 #'   cluster = "default"
 #' )}
 #' 
 #' # This example lists the tasks of a specified container instance.
 #' # Specifying a `containerInstance` value limits  the  results  to  tasks
 #' #  that belong to that container instance.
-#' \donttest{svc$list_tasks(
+#' \dontrun{svc$list_tasks(
 #'   cluster = "default",
 #'   containerInstance = "f6bbb147-5370-4ace-8c73-c7181ded911f"
 #' )}
@@ -2525,7 +2525,7 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #' # resource ID format for Amazon ECS services. If you’re using this command
 #' # as the root user, then changes apply to the entire AWS account, unless
 #' # an IAM user or role explicitly overrides these settings for themselves.
-#' \donttest{svc$put_account_setting(
+#' \dontrun{svc$put_account_setting(
 #'   name = "serviceLongArnFormat",
 #'   value = "enabled"
 #' )}
@@ -2535,7 +2535,7 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #' # container instances. If you’re using this command as the root user, then
 #' # changes apply to the entire AWS account, unless an IAM user or role
 #' # explicitly overrides these settings for themselves.
-#' \donttest{svc$put_account_setting(
+#' \dontrun{svc$put_account_setting(
 #'   name = "containerInstanceLongArnFormat",
 #'   value = "enabled",
 #'   principalArn = "arn:aws:iam::<aws_account_id>:user/principalName"
@@ -2596,7 +2596,7 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #' # resource for all IAM users or roles on an account. These changes apply
 #' # to the entire AWS account, unless an IAM user or role explicitly
 #' # overrides these settings for themselves.
-#' \donttest{svc$put_account_setting_default(
+#' \dontrun{svc$put_account_setting_default(
 #'   name = "serviceLongArnFormat",
 #'   value = "enabled"
 #' )}
@@ -2825,7 +2825,7 @@ ecs_put_cluster_capacity_providers <- function(cluster, capacityProviders, defau
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . \\_ : / @.
+#'     characters: + - = . \\_ : / @@.
 #' 
 #' -   Tag keys and values are case-sensitive.
 #' 
@@ -3080,7 +3080,7 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . \\_ : / @.
+#'     characters: + - = . \\_ : / @@.
 #' 
 #' -   Tag keys and values are case-sensitive.
 #' 
@@ -3374,7 +3374,7 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #'
 #' @examples
 #' # This example registers a task definition to the specified family.
-#' \donttest{svc$register_task_definition(
+#' \dontrun{svc$register_task_definition(
 #'   containerDefinitions = list(
 #'     list(
 #'       name = "sleep",
@@ -3563,7 +3563,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . \\_ : / @.
+#'     characters: + - = . \\_ : / @@.
 #' 
 #' -   Tag keys and values are case-sensitive.
 #' 
@@ -3665,7 +3665,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #'
 #' @examples
 #' # This example runs the specified task definition on your default cluster.
-#' \donttest{svc$run_task(
+#' \dontrun{svc$run_task(
 #'   cluster = "default",
 #'   taskDefinition = "sleep360:1"
 #' )}
@@ -3765,7 +3765,7 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . \\_ : / @.
+#'     characters: + - = . \\_ : / @@.
 #' 
 #' -   Tag keys and values are case-sensitive.
 #' 
@@ -4153,7 +4153,7 @@ ecs_submit_task_state_change <- function(cluster = NULL, task = NULL, status = N
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . \\_ : / @.
+#'     characters: + - = . \\_ : / @@.
 #' 
 #' -   Tag keys and values are case-sensitive.
 #' 
@@ -4178,7 +4178,7 @@ ecs_submit_task_state_change <- function(cluster = NULL, task = NULL, status = N
 #'
 #' @examples
 #' # This example tags the 'dev' cluster with key 'team' and value 'dev'.
-#' \donttest{svc$tag_resource(
+#' \dontrun{svc$tag_resource(
 #'   resourceArn = "arn:aws:ecs:region:aws_account_id:cluster/dev",
 #'   tags = list(
 #'     list(
@@ -4233,7 +4233,7 @@ ecs_tag_resource <- function(resourceArn, tags) {
 #'
 #' @examples
 #' # This example deletes the 'team' tag from the 'dev' cluster.
-#' \donttest{svc$untag_resource(
+#' \dontrun{svc$untag_resource(
 #'   resourceArn = "arn:aws:ecs:region:aws_account_id:cluster/dev",
 #'   tagKeys = list(
 #'     "team"
@@ -4658,14 +4658,14 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' @examples
 #' # This example updates the my-http-service service to use the
 #' # amazon-ecs-sample task definition.
-#' \donttest{svc$update_service(
+#' \dontrun{svc$update_service(
 #'   service = "my-http-service",
 #'   taskDefinition = "amazon-ecs-sample"
 #' )}
 #' 
 #' # This example updates the desired count of the my-http-service service to
 #' # 10.
-#' \donttest{svc$update_service(
+#' \dontrun{svc$update_service(
 #'   desiredCount = 10L,
 #'   service = "my-http-service"
 #' )}

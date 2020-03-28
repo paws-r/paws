@@ -34,7 +34,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- kinesisanalyticsv2()
+#' \dontrun{svc <- kinesisanalyticsv2()
 #' svc$add_application_cloud_watch_logging_option(
 #'   Foo = 123
 #' )}

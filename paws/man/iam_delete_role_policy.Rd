@@ -42,7 +42,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following command removes the policy named ExamplePolicy from the
 # role named Test-Role.
-\donttest{svc$delete_role_policy(
+\dontrun{svc$delete_role_policy(
   PolicyName = "ExamplePolicy",
   RoleName = "Test-Role"
 )}

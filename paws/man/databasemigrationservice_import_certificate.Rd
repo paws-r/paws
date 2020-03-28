@@ -38,7 +38,7 @@ Uploads the specified certificate.
 
 \examples{
 # Uploads the specified certificate.
-\donttest{svc$import_certificate(
+\dontrun{svc$import_certificate(
   CertificateIdentifier = "",
   CertificatePem = ""
 )}

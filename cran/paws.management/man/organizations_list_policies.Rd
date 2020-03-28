@@ -52,7 +52,7 @@ account.
 \examples{
 # The following example shows how to get a list of service control
 # policies (SCPs):/n/n
-\donttest{svc$list_policies(
+\dontrun{svc$list_policies(
   Filter = "SERVICE_CONTROL_POLICY"
 )}
 

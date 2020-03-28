@@ -50,7 +50,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- neptune()
+#' \dontrun{svc <- neptune()
 #' svc$add_role_to_db_cluster(
 #'   Foo = 123
 #' )}

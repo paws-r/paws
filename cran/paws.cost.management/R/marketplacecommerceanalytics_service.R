@@ -30,7 +30,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- marketplacecommerceanalytics()
+#' \dontrun{svc <- marketplacecommerceanalytics()
 #' svc$generate_data_set(
 #'   Foo = 123
 #' )}

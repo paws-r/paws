@@ -28,7 +28,7 @@ This operation requires permissions for the \code{lex:GetBot} action.
 
 \examples{
 # This example shows how to get configuration information for a bot.
-\donttest{svc$get_bot(
+\dontrun{svc$get_bot(
   name = "DocOrderPizza",
   versionOrAlias = "$LATEST"
 )}

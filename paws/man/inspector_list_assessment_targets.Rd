@@ -40,7 +40,7 @@ more information about assessment targets, see \href{https://docs.aws.amazon.com
 
 \examples{
 # Lists the ARNs of the assessment targets within this AWS account.
-\donttest{svc$list_assessment_targets(
+\dontrun{svc$list_assessment_targets(
   maxResults = 123L
 )}
 

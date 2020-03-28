@@ -30,7 +30,7 @@ This command does not take any parameters.
 # replication instances allowed. The description for a quota includes the
 # quota name, current usage toward that quota, and the quota's maximum
 # value. This operation does not take any parameters.
-\donttest{svc$describe_account_attributes()}
+\dontrun{svc$describe_account_attributes()}
 
 }
 \keyword{internal}

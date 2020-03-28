@@ -108,7 +108,7 @@ and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-job-output-ge
 \examples{
 # The example downloads the output of a previously initiated inventory
 # retrieval job that is identified by the job ID.
-\donttest{svc$get_job_output(
+\dontrun{svc$get_job_output(
   accountId = "-",
   jobId = "zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW4_XqlNH...",
   range = "",

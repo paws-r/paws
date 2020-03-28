@@ -38,7 +38,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- shield()
+#' \dontrun{svc <- shield()
 #' svc$associate_drt_log_bucket(
 #'   Foo = 123
 #' )}

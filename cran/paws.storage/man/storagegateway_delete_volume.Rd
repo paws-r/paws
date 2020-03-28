@@ -41,7 +41,7 @@ storage volume you want to delete.
 \examples{
 # Deletes the specified gateway volume that you previously created using
 # the CreateCachediSCSIVolume or CreateStorediSCSIVolume API.
-\donttest{svc$delete_volume(
+\dontrun{svc$delete_volume(
   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
 )}
 

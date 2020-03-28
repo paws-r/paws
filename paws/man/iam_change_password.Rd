@@ -41,8 +41,8 @@ in the \emph{IAM User Guide}.
 
 \examples{
 # The following command changes the password for the current IAM user.
-\donttest{svc$change_password(
-  NewPassword = "]35d/{pB9Fo9wJ",
+\dontrun{svc$change_password(
+  NewPassword = "]35d/\{pB9Fo9wJ",
   OldPassword = "3s0K_;xh4~8XXI"
 )}
 

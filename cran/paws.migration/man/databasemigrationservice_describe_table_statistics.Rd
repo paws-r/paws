@@ -60,7 +60,7 @@ It does not indicate the time of the last update to the table.
 \examples{
 # Returns table statistics on the database migration task, including table
 # name, rows inserted, rows updated, and rows deleted.
-\donttest{svc$describe_table_statistics(
+\dontrun{svc$describe_table_statistics(
   Marker = "",
   MaxRecords = 123L,
   ReplicationTaskArn = ""

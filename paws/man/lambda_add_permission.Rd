@@ -91,7 +91,7 @@ the function. For more information about function policies, see \href{https://do
 \examples{
 # This example adds a permission for an S3 bucket to invoke a Lambda
 # function.
-\donttest{svc$add_permission(
+\dontrun{svc$add_permission(
   Action = "lambda:InvokeFunction",
   FunctionName = "MyFunction",
   Principal = "s3.amazonaws.com",

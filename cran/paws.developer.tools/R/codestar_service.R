@@ -83,7 +83,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- codestar()
+#' \dontrun{svc <- codestar()
 #' svc$associate_team_member(
 #'   Foo = 123
 #' )}

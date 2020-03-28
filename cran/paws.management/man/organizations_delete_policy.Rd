@@ -37,7 +37,7 @@ account.
 # entities:
 # 
 # 
-\donttest{svc$delete_policy(
+\dontrun{svc$delete_policy(
   PolicyId = "p-examplepolicyid111"
 )}
 

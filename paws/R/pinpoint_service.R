@@ -30,7 +30,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- pinpoint()
+#' \dontrun{svc <- pinpoint()
 #' svc$create_app(
 #'   Foo = 123
 #' )}

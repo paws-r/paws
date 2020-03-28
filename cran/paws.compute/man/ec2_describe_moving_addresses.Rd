@@ -60,7 +60,7 @@ in your account.
 
 \examples{
 # This example describes all of your moving Elastic IP addresses.
-\donttest{svc$describe_moving_addresses()}
+\dontrun{svc$describe_moving_addresses()}
 
 }
 \keyword{internal}

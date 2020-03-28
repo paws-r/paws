@@ -29,7 +29,7 @@ You can execute this operation no more than once per second.
 \examples{
 # The following example starts the email address verification process with
 # Amazon SES:
-\donttest{svc$verify_email_identity(
+\dontrun{svc$verify_email_identity(
   EmailAddress = "user@example.com"
 )}
 

@@ -46,7 +46,7 @@ in the \emph{IAM User Guide}.
 
 \examples{
 # The following example shows how to list the tags attached to a user.
-\donttest{svc$list_user_tags(
+\dontrun{svc$list_user_tags(
   UserName = "anika"
 )}
 

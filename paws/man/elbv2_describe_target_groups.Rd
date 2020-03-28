@@ -48,7 +48,7 @@ DescribeTargetGroupAttributes.
 
 \examples{
 # This example describes the specified target group.
-\donttest{svc$describe_target_groups(
+\dontrun{svc$describe_target_groups(
   TargetGroupArns = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8..."
   )

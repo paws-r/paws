@@ -43,7 +43,7 @@ You can execute this operation no more than once per second.
 \examples{
 # The following example deletes a sending authorization policy for an
 # identity:
-\donttest{svc$delete_identity_policy(
+\dontrun{svc$delete_identity_policy(
   Identity = "user@example.com",
   PolicyName = "MyPolicy"
 )}

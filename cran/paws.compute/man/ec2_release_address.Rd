@@ -61,13 +61,13 @@ AllocateAddress.
 \examples{
 # This example releases an Elastic IP address for use with instances in a
 # VPC.
-\donttest{svc$release_address(
+\dontrun{svc$release_address(
   AllocationId = "eipalloc-64d5890a"
 )}
 
 # This example releases an Elastic IP address for use with instances in
 # EC2-Classic.
-\donttest{svc$release_address(
+\dontrun{svc$release_address(
   PublicIp = "198.51.100.0"
 )}
 

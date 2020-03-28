@@ -67,7 +67,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- gamelift()
+#' \dontrun{svc <- gamelift()
 #' svc$accept_match(
 #'   Foo = 123
 #' )}

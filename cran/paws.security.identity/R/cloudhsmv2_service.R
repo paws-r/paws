@@ -32,7 +32,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- cloudhsmv2()
+#' \dontrun{svc <- cloudhsmv2()
 #' svc$copy_backup_to_region(
 #'   Foo = 123
 #' )}

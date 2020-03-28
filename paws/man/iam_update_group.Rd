@@ -58,7 +58,7 @@ then the update fails. For more information about permissions, see
 
 \examples{
 # The following command changes the name of the IAM group Test to Test-1.
-\donttest{svc$update_group(
+\dontrun{svc$update_group(
   GroupName = "Test",
   NewGroupName = "Test-1"
 )}

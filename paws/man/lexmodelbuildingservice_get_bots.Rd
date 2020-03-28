@@ -46,7 +46,7 @@ This operation requires permission for the \code{lex:GetBots} action.
 
 \examples{
 # This example shows how to get a list of all of the bots in your account.
-\donttest{svc$get_bots(
+\dontrun{svc$get_bots(
   maxResults = 5L,
   nextToken = ""
 )}

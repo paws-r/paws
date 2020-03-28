@@ -46,7 +46,7 @@ types in the organization, use DescribeOrganization.
 # The following example shows how to enable the service control policy
 # (SCP) policy type in a root. The output shows a root object with a
 # PolicyTypes response element showing that SCPs are now enabled:/n/n
-\donttest{svc$enable_policy_type(
+\dontrun{svc$enable_policy_type(
   PolicyType = "SERVICE_CONTROL_POLICY",
   RootId = "r-examplerootid111"
 )}

@@ -65,7 +65,7 @@ To start using Access Analyzer, you first need to create an analyzer.
 }
 
 \examples{
-\donttest{svc <- accessanalyzer()
+\dontrun{svc <- accessanalyzer()
 svc$create_analyzer(
   Foo = 123
 )}

@@ -36,7 +36,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 \examples{
 # This example enables instance protection for the specified instance.
-\donttest{svc$set_instance_protection(
+\dontrun{svc$set_instance_protection(
   AutoScalingGroupName = "my-auto-scaling-group",
   InstanceIds = list(
     "i-93633f9b"
@@ -45,7 +45,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 )}
 
 # This example disables instance protection for the specified instance.
-\donttest{svc$set_instance_protection(
+\dontrun{svc$set_instance_protection(
   AutoScalingGroupName = "my-auto-scaling-group",
   InstanceIds = list(
     "i-93633f9b"

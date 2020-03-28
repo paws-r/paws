@@ -77,7 +77,7 @@ in the \emph{Amazon Connect Administrator Guide}.
 }
 
 \examples{
-\donttest{svc <- connect()
+\dontrun{svc <- connect()
 svc$create_user(
   Foo = 123
 )}

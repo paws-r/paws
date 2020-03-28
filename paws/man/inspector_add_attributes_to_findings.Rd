@@ -35,7 +35,7 @@ specified by the ARNs of the findings.
 \examples{
 # Assigns attributes (key and value pairs) to the findings that are
 # specified by the ARNs of the findings.
-\donttest{svc$add_attributes_to_findings(
+\dontrun{svc$add_attributes_to_findings(
   attributes = list(
     list(
       key = "Example",

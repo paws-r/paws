@@ -41,7 +41,7 @@ Use the \code{DescribeTable} action to check the status of the table.
 
 \examples{
 # This example deletes the Music table.
-\donttest{svc$delete_table(
+\dontrun{svc$delete_table(
   TableName = "Music"
 )}
 

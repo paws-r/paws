@@ -193,10 +193,10 @@ secret, use GetSecretValue.
 \examples{
 # The following example shows how to create a new version of the secret.
 # Alternatively, you can use the update-secret command.
-\donttest{svc$put_secret_value(
+\dontrun{svc$put_secret_value(
   ClientRequestToken = "EXAMPLE2-90ab-cdef-fedc-ba987EXAMPLE",
   SecretId = "MyTestDatabaseSecret",
-  SecretString = "{\"username\":\"david\",\"password\":\"BnQw!XDWgaEeT9XGTT29\"}"
+  SecretString = "\{\"username\":\"david\",\"password\":\"BnQw!XDWgaEeT9XGTT29\"\}"
 )}
 
 }

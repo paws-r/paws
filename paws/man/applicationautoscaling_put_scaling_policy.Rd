@@ -199,7 +199,7 @@ Learn more about how to work with scaling policies in the \href{https://docs.aws
 # in the default cluster. The policy keeps the average CPU utilization of
 # the service at 75 percent, with scale-out and scale-in cooldown periods
 # of 60 seconds.
-\donttest{svc$put_scaling_policy(
+\dontrun{svc$put_scaling_policy(
   PolicyName = "cpu75-target-tracking-scaling-policy",
   PolicyType = "TargetTrackingScaling",
   ResourceId = "service/default/web-app",
@@ -220,7 +220,7 @@ Learn more about how to work with scaling policies in the \href{https://docs.aws
 # in the default cluster. The policy keeps the average utilization of the
 # service at 75 percent, with scale-out and scale-in cooldown periods of
 # 60 seconds.
-\donttest{svc$put_scaling_policy(
+\dontrun{svc$put_scaling_policy(
   PolicyName = "cms75-target-tracking-scaling-policy",
   PolicyType = "TargetTrackingScaling",
   ResourceId = "service/default/web-app",
@@ -249,7 +249,7 @@ Learn more about how to work with scaling policies in the \href{https://docs.aws
 # Amazon ECS service called web-app in the default cluster. The policy is
 # used to scale out the ECS service when the RequestCountPerTarget metric
 # from the Application Load Balancer exceeds the threshold.
-\donttest{svc$put_scaling_policy(
+\dontrun{svc$put_scaling_policy(
   PolicyName = "alb-scale-out-target-tracking-scaling-policy",
   PolicyType = "TargetTrackingScaling",
   ResourceId = "service/default/web-app",
@@ -270,7 +270,7 @@ Learn more about how to work with scaling policies in the \href{https://docs.aws
 # This example applies a step scaling policy to an Amazon ECS service
 # called web-app in the default cluster. The policy increases the desired
 # count of the service by 200\%, with a cool down period of 60 seconds.
-\donttest{svc$put_scaling_policy(
+\dontrun{svc$put_scaling_policy(
   PolicyName = "web-app-cpu-gt-75",
   PolicyType = "StepScaling",
   ResourceId = "service/default/web-app",
@@ -292,7 +292,7 @@ Learn more about how to work with scaling policies in the \href{https://docs.aws
 # The policy increases the target capacity of the spot fleet by 200\%, with
 # a cool down period of 180 seconds.",
 # 
-\donttest{svc$put_scaling_policy(
+\dontrun{svc$put_scaling_policy(
   PolicyName = "fleet-cpu-gt-75",
   PolicyType = "StepScaling",
   ResourceId = "spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3",

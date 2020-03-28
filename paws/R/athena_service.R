@@ -49,7 +49,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- athena()
+#' \dontrun{svc <- athena()
 #' svc$batch_get_named_query(
 #'   Foo = 123
 #' )}

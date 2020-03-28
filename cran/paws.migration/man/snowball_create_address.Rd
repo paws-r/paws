@@ -42,7 +42,7 @@ address is invalid or unsupported, then an exception is thrown.
 # the time of creation. The address you provide must be located within the
 # serviceable area of your region. If the address is invalid or
 # unsupported, then an exception is thrown.
-\donttest{svc$create_address(
+\dontrun{svc$create_address(
   Address = list(
     City = "Seattle",
     Company = "My Company's Name",

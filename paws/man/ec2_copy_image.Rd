@@ -92,7 +92,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 \examples{
 # This example copies the specified AMI from the us-east-1 region to the
 # current region.
-\donttest{svc$copy_image(
+\dontrun{svc$copy_image(
   Description = "",
   Name = "My server",
   SourceImageId = "ami-5731123e",

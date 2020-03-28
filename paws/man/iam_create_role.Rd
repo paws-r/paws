@@ -108,7 +108,7 @@ in the \emph{IAM User Guide}.
 # The following command creates a role named Test-Role and attaches a
 # trust policy that you must convert from JSON to a string. Upon success,
 # the response includes the same policy as a URL-encoded JSON string.
-\donttest{svc$create_role(
+\dontrun{svc$create_role(
   AssumeRolePolicyDocument = "<Stringified-JSON>",
   Path = "/",
   RoleName = "Test-Role"

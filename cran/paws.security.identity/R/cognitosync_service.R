@@ -51,7 +51,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- cognitosync()
+#' \dontrun{svc <- cognitosync()
 #' svc$bulk_publish(
 #'   Foo = 123
 #' )}

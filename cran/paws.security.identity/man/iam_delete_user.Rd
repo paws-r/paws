@@ -44,7 +44,7 @@ DeleteVirtualMFADevice)
 \examples{
 # The following command removes the IAM user named Bob from the current
 # account.
-\donttest{svc$delete_user(
+\dontrun{svc$delete_user(
   UserName = "Bob"
 )}
 

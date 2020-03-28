@@ -26,7 +26,7 @@ Services needed to perform security assessments.
 # Registers the IAM role that Amazon Inspector uses to list your EC2
 # instances at the start of the assessment run or when you call the
 # PreviewAgents action.
-\donttest{svc$register_cross_account_access_role(
+\dontrun{svc$register_cross_account_access_role(
   roleArn = "arn:aws:iam::123456789012:role/inspector"
 )}
 

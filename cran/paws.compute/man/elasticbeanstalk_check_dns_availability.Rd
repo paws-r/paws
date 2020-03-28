@@ -22,7 +22,7 @@ Checks if the specified CNAME is available.
 \examples{
 # The following operation checks the availability of the subdomain
 # my-cname:
-\donttest{svc$check_dns_availability(
+\dontrun{svc$check_dns_availability(
   CNAMEPrefix = "my-cname"
 )}
 

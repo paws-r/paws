@@ -29,7 +29,7 @@ retrieval policies, see \href{https://docs.aws.amazon.com/amazonglacier/latest/d
 
 \examples{
 # The example returns the current data retrieval policy for the account.
-\donttest{svc$get_data_retrieval_policy(
+\dontrun{svc$get_data_retrieval_policy(
   accountId = "-"
 )}
 

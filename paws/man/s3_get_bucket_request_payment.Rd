@@ -30,7 +30,7 @@ The following operations are related to \code{GetBucketRequestPayment}:
 
 \examples{
 # The following example retrieves bucket versioning configuration.
-\donttest{svc$get_bucket_request_payment(
+\dontrun{svc$get_bucket_request_payment(
   Bucket = "examplebucket"
 )}
 

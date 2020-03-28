@@ -38,7 +38,7 @@ You can execute this operation no more than once per second.
 \examples{
 # The following example creates a receipt rule set by cloning an existing
 # one:
-\donttest{svc$clone_receipt_rule_set(
+\dontrun{svc$clone_receipt_rule_set(
   OriginalRuleSetName = "RuleSetToClone",
   RuleSetName = "RuleSetToCreate"
 )}

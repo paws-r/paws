@@ -80,7 +80,7 @@ By default, the list is sorted by service namespace.
 \examples{
 # The following operation gets details about the report with the job ID:
 # examplef-1305-c245-eba4-71fe298bcda7
-\donttest{svc$get_service_last_accessed_details(
+\dontrun{svc$get_service_last_accessed_details(
   JobId = "examplef-1305-c245-eba4-71fe298bcda7"
 )}
 

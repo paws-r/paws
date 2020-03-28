@@ -102,7 +102,7 @@ required permissions for Amazon EC2 Auto Scaling actions, see the
 \examples{
 # This example attaches the specified instance to the specified Auto
 # Scaling group.
-\donttest{svc <- autoscaling()
+\dontrun{svc <- autoscaling()
 svc$attach_instances(
   AutoScalingGroupName = "my-auto-scaling-group",
   InstanceIds = list(

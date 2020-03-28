@@ -56,7 +56,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 
 \examples{
 # The example deletes the archive specified by the archive ID.
-\donttest{svc$delete_archive(
+\dontrun{svc$delete_archive(
   accountId = "-",
   archiveId = "NkbByEejwEggmBz2fTHgJrg0XBoDfjP4q6iu87-TjhqG6eGoOY9Z8i1_AUyUsuhPAdTqLHy8pTl5n...",
   vaultName = "examplevault"

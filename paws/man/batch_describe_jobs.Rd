@@ -23,7 +23,7 @@ Describes a list of AWS Batch jobs.
 
 \examples{
 # This example describes a job with the specified job ID.
-\donttest{svc$describe_jobs(
+\dontrun{svc$describe_jobs(
   jobs = list(
     "24fa2d7a-64c4-49d2-8b47-f8da4fbde8e9"
   )

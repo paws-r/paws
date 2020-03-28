@@ -76,7 +76,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 # This example modifies snapshot `snap-1234567890abcdef0` to remove the
 # create volume permission for a user with the account ID
 # `123456789012`. If the command succeeds, no output is returned.
-\donttest{svc$modify_snapshot_attribute(
+\dontrun{svc$modify_snapshot_attribute(
   Attribute = "createVolumePermission",
   OperationType = "remove",
   SnapshotId = "snap-1234567890abcdef0",
@@ -86,7 +86,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 )}
 
 # This example makes the snapshot `snap-1234567890abcdef0` public.
-\donttest{svc$modify_snapshot_attribute(
+\dontrun{svc$modify_snapshot_attribute(
   Attribute = "createVolumePermission",
   GroupNames = list(
     "all"

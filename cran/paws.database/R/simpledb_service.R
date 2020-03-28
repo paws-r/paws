@@ -30,7 +30,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- simpledb()
+#' \dontrun{svc <- simpledb()
 #' svc$batch_delete_attributes(
 #'   Foo = 123
 #' )}

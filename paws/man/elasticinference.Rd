@@ -40,7 +40,7 @@ Elastic Inference public APIs.
 }
 
 \examples{
-\donttest{svc <- elasticinference()
+\dontrun{svc <- elasticinference()
 svc$list_tags_for_resource(
   Foo = 123
 )}

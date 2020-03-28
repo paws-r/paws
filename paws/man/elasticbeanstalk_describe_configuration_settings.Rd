@@ -56,7 +56,7 @@ Related Topics
 \examples{
 # The following operation retrieves configuration settings for an
 # environment named my-env:
-\donttest{svc$describe_configuration_settings(
+\dontrun{svc$describe_configuration_settings(
   ApplicationName = "my-app",
   EnvironmentName = "my-env"
 )}

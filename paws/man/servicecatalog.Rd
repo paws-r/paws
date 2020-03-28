@@ -123,7 +123,7 @@ should be familiar with the terminology discussed in \href{http://docs.aws.amazo
 }
 
 \examples{
-\donttest{svc <- servicecatalog()
+\dontrun{svc <- servicecatalog()
 svc$accept_portfolio_share(
   Foo = 123
 )}

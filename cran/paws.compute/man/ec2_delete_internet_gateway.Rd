@@ -28,7 +28,7 @@ gateway from the VPC before you can delete it.
 
 \examples{
 # This example deletes the specified Internet gateway.
-\donttest{svc$delete_internet_gateway(
+\dontrun{svc$delete_internet_gateway(
   InternetGatewayId = "igw-c0a643a9"
 )}
 

@@ -32,7 +32,7 @@ associated with this account in all US regions.
 # Snowball. Calling this API in one of the US regions will return
 # addresses from the list of all addresses associated with this account in
 # all US regions.
-\donttest{svc$describe_addresses()}
+\dontrun{svc$describe_addresses()}
 
 }
 \keyword{internal}

@@ -36,7 +36,7 @@ Deletes a Lambda function
 
 \examples{
 # This operation deletes a Lambda function alias
-\donttest{svc$delete_alias(
+\dontrun{svc$delete_alias(
   FunctionName = "myFunction",
   Name = "alias"
 )}

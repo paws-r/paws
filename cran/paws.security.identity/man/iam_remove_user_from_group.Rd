@@ -33,7 +33,7 @@ Removes the specified user from the specified group.
 \examples{
 # The following command removes the user named Bob from the IAM group
 # named Admins.
-\donttest{svc$remove_user_from_group(
+\dontrun{svc$remove_user_from_group(
   GroupName = "Admins",
   UserName = "Bob"
 )}

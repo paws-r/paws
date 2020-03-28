@@ -52,7 +52,7 @@ documents.
 }
 
 \examples{
-\donttest{svc <- comprehendmedical()
+\dontrun{svc <- comprehendmedical()
 svc$describe_entities_detection_v2_job(
   Foo = 123
 )}

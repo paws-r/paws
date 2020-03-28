@@ -33,28 +33,28 @@ attribute at a time.
 \examples{
 # This example describes the attachment attribute of the specified network
 # interface.
-\donttest{svc$describe_network_interface_attribute(
+\dontrun{svc$describe_network_interface_attribute(
   Attribute = "attachment",
   NetworkInterfaceId = "eni-686ea200"
 )}
 
 # This example describes the description attribute of the specified
 # network interface.
-\donttest{svc$describe_network_interface_attribute(
+\dontrun{svc$describe_network_interface_attribute(
   Attribute = "description",
   NetworkInterfaceId = "eni-686ea200"
 )}
 
 # This example describes the groupSet attribute of the specified network
 # interface.
-\donttest{svc$describe_network_interface_attribute(
+\dontrun{svc$describe_network_interface_attribute(
   Attribute = "groupSet",
   NetworkInterfaceId = "eni-686ea200"
 )}
 
 # This example describes the sourceDestCheck attribute of the specified
 # network interface.
-\donttest{svc$describe_network_interface_attribute(
+\dontrun{svc$describe_network_interface_attribute(
   Attribute = "sourceDestCheck",
   NetworkInterfaceId = "eni-686ea200"
 )}

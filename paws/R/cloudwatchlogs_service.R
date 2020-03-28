@@ -62,7 +62,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- cloudwatchlogs()
+#' \dontrun{svc <- cloudwatchlogs()
 #' svc$associate_kms_key(
 #'   Foo = 123
 #' )}

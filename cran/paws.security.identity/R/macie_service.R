@@ -36,7 +36,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- macie()
+#' \dontrun{svc <- macie()
 #' svc$associate_member_account(
 #'   Foo = 123
 #' )}

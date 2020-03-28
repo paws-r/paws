@@ -39,7 +39,7 @@ This operation requires permissions for the
 
 \examples{
 # This operation describes all of a file system's tags.
-\donttest{svc$describe_tags(
+\dontrun{svc$describe_tags(
   FileSystemId = "fs-01234567"
 )}
 

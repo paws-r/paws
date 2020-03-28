@@ -40,7 +40,7 @@ The following operations are related to \code{GetBucketTagging}:
 
 \examples{
 # The following example returns tag set associated with a bucket
-\donttest{svc$get_bucket_tagging(
+\dontrun{svc$get_bucket_tagging(
   Bucket = "examplebucket"
 )}
 

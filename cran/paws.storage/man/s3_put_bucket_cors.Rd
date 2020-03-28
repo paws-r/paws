@@ -93,7 +93,7 @@ the \emph{Amazon Simple Storage Service Developer Guide}.
 \examples{
 # The following example enables PUT, POST, and DELETE requests from
 # www.example.com, and enables GET requests from any domain.
-\donttest{svc$put_bucket_cors(
+\dontrun{svc$put_bucket_cors(
   Bucket = "",
   CORSConfiguration = list(
     CORSRules = list(

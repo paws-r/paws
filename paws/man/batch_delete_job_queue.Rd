@@ -28,7 +28,7 @@ before submitting a \code{DeleteJobQueue} request.
 
 \examples{
 # This example deletes the GPGPU job queue.
-\donttest{svc$delete_job_queue(
+\dontrun{svc$delete_job_queue(
   jobQueue = "GPGPU"
 )}
 

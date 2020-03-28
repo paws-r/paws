@@ -137,7 +137,7 @@ for an account, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/a
 # Organizations sends Susan a "Welcome to AWS" email:
 # 
 # 
-\donttest{svc$create_account(
+\dontrun{svc$create_account(
   AccountName = "Production Account",
   Email = "susan@example.com"
 )}

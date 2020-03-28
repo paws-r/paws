@@ -27,7 +27,7 @@ AWS account.
 
 \examples{
 # The example lists the provisioned capacity units for an account.
-\donttest{svc$list_provisioned_capacity(
+\dontrun{svc$list_provisioned_capacity(
   accountId = "-"
 )}
 

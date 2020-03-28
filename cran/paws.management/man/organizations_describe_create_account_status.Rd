@@ -37,7 +37,7 @@ account.
 # called only by a principal from the organization's master account. In
 # the example, the specified "createAccountRequestId" comes from the
 # response of the original call to "CreateAccount":
-\donttest{svc$describe_create_account_status(
+\dontrun{svc$describe_create_account_status(
   CreateAccountRequestId = "car-exampleaccountcreationrequestid"
 )}
 

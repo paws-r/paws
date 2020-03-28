@@ -160,7 +160,7 @@ NULL
 #' The regex used to validate this parameter is a string of characters
 #' consisting of upper- and lower-case alphanumeric characters with no
 #' spaces. You can also include underscores or any of the following
-#' characters: =,.@-
+#' characters: =,.@@-
 #' @param PolicyArns The Amazon Resource Names (ARNs) of the IAM managed policies that you
 #' want to use as managed session policies. The policies must exist in the
 #' same account as the role.
@@ -303,7 +303,7 @@ NULL
 #' The regex used to validate this parameter is a string of characters
 #' consisting of upper- and lower-case alphanumeric characters with no
 #' spaces. You can also include underscores or any of the following
-#' characters: =,.@:/-
+#' characters: =,.@@:/-
 #' @param SerialNumber The identification number of the MFA device that is associated with the
 #' user who is making the `AssumeRole` call. Specify this value if the
 #' trust policy of the role being assumed includes a condition that
@@ -315,7 +315,7 @@ NULL
 #' The regex used to validate this parameter is a string of characters
 #' consisting of upper- and lower-case alphanumeric characters with no
 #' spaces. You can also include underscores or any of the following
-#' characters: =,.@-
+#' characters: =,.@@-
 #' @param TokenCode The value provided by the MFA device, if the trust policy of the role
 #' being assumed requires MFA (that is, if the policy includes a condition
 #' that tests for MFA). If the role being assumed requires MFA and if the
@@ -354,9 +354,9 @@ NULL
 #'
 #' @examples
 #' # 
-#' \donttest{svc$assume_role(
+#' \dontrun{svc$assume_role(
 #'   ExternalId = "123ABC",
-#'   Policy = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"Stmt1\",\"Effect\":...",
+#'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":...",
 #'   RoleArn = "arn:aws:iam::123456789012:role/demo",
 #'   RoleSessionName = "testAssumeRoleSession",
 #'   Tags = list(
@@ -649,7 +649,7 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #'
 #' @examples
 #' # 
-#' \donttest{svc$assume_role_with_saml(
+#' \dontrun{svc$assume_role_with_saml(
 #'   DurationSeconds = 3600L,
 #'   PrincipalArn = "arn:aws:iam::123456789012:saml-provider/SAML-test",
 #'   RoleArn = "arn:aws:iam::123456789012:role/TestSaml",
@@ -856,7 +856,7 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' The regex used to validate this parameter is a string of characters
 #' consisting of upper- and lower-case alphanumeric characters with no
 #' spaces. You can also include underscores or any of the following
-#' characters: =,.@-
+#' characters: =,.@@-
 #' @param WebIdentityToken &#91;required&#93; The OAuth 2.0 access token or OpenID Connect ID token that is provided
 #' by the identity provider. Your application must get this token by
 #' authenticating the user who is using your application with a web
@@ -965,9 +965,9 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #'
 #' @examples
 #' # 
-#' \donttest{svc$assume_role_with_web_identity(
+#' \dontrun{svc$assume_role_with_web_identity(
 #'   DurationSeconds = 3600L,
-#'   Policy = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"Stmt1\",\"Effect\":...",
+#'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":...",
 #'   ProviderId = "www.amazon.com",
 #'   RoleArn = "arn:aws:iam::123456789012:role/FederatedWebIdentityRole",
 #'   RoleSessionName = "app1",
@@ -1047,7 +1047,7 @@ sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdent
 #'
 #' @examples
 #' # 
-#' \donttest{svc$decode_authorization_message(
+#' \dontrun{svc$decode_authorization_message(
 #'   EncodedMessage = "<encoded-message>"
 #' )}
 #'
@@ -1162,17 +1162,17 @@ sts_get_access_key_info <- function(AccessKeyId) {
 #' @examples
 #' # This example shows a request and response made with the credentials for
 #' # a user named Alice in the AWS account 123456789012.
-#' \donttest{svc$get_caller_identity()}
+#' \dontrun{svc$get_caller_identity()}
 #' 
 #' # This example shows a request and response made with temporary
 #' # credentials created by AssumeRole. The name of the assumed role is
 #' # my-role-name, and the RoleSessionName is set to my-role-session-name.
-#' \donttest{svc$get_caller_identity()}
+#' \dontrun{svc$get_caller_identity()}
 #' 
 #' # This example shows a request and response made with temporary
 #' # credentials created by using GetFederationToken. The Name parameter is
 #' # set to my-federated-user-name.
-#' \donttest{svc$get_caller_identity()}
+#' \dontrun{svc$get_caller_identity()}
 #'
 #' @keywords internal
 #'
@@ -1309,7 +1309,7 @@ sts_get_caller_identity <- function() {
 #' The regex used to validate this parameter is a string of characters
 #' consisting of upper- and lower-case alphanumeric characters with no
 #' spaces. You can also include underscores or any of the following
-#' characters: =,.@-
+#' characters: =,.@@-
 #' @param Policy An IAM policy in JSON format that you want to use as an inline session
 #' policy.
 #' 
@@ -1450,10 +1450,10 @@ sts_get_caller_identity <- function() {
 #'
 #' @examples
 #' # 
-#' \donttest{svc$get_federation_token(
+#' \dontrun{svc$get_federation_token(
 #'   DurationSeconds = 3600L,
 #'   Name = "testFedUserSession",
-#'   Policy = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"Stmt1\",\"Effect\":...",
+#'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":...",
 #'   Tags = list(
 #'     list(
 #'       Key = "Project",
@@ -1567,7 +1567,7 @@ sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, Dur
 #' The regex used to validate this parameter is a string of characters
 #' consisting of upper- and lower-case alphanumeric characters with no
 #' spaces. You can also include underscores or any of the following
-#' characters: =,.@:/-
+#' characters: =,.@@:/-
 #' @param TokenCode The value provided by the MFA device, if MFA is required. If any policy
 #' requires the IAM user to submit an MFA code, specify this value. If MFA
 #' authentication is required, the user must provide a code when requesting
@@ -1589,7 +1589,7 @@ sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, Dur
 #'
 #' @examples
 #' # 
-#' \donttest{svc$get_session_token(
+#' \dontrun{svc$get_session_token(
 #'   DurationSeconds = 3600L,
 #'   SerialNumber = "YourMFASerialNumber",
 #'   TokenCode = "123456"

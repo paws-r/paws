@@ -35,7 +35,7 @@ The following operations are related to \code{GetBucketCors}:
 \examples{
 # The following example returns cross-origin resource sharing (CORS)
 # configuration set on a bucket.
-\donttest{svc$get_bucket_cors(
+\dontrun{svc$get_bucket_cors(
   Bucket = "examplebucket"
 )}
 

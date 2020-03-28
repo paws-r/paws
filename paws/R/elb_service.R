@@ -57,7 +57,7 @@ NULL
 #'
 #' @examples
 #' # This example adds two tags to the specified load balancer.
-#' \donttest{svc <- elb()
+#' \dontrun{svc <- elb()
 #' svc$add_tags(
 #'   LoadBalancerNames = list(
 #'     "my-load-balancer"

@@ -28,7 +28,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following command associates the alias examplecorp to your AWS
 # account.
-\donttest{svc$create_account_alias(
+\dontrun{svc$create_account_alias(
   AccountAlias = "examplecorp"
 )}
 

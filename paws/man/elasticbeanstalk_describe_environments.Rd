@@ -69,7 +69,7 @@ Returns descriptions for existing environments.
 \examples{
 # The following operation retrieves information about an environment named
 # my-env:
-\donttest{svc$describe_environments(
+\dontrun{svc$describe_environments(
   EnvironmentNames = list(
     "my-env"
   )

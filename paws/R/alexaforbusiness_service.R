@@ -40,7 +40,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- alexaforbusiness()
+#' \dontrun{svc <- alexaforbusiness()
 #' svc$approve_skill(
 #'   Foo = 123
 #' )}

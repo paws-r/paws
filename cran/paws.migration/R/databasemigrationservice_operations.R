@@ -41,7 +41,7 @@ NULL
 #' # also be used with cost allocation reporting to track cost associated
 #' # with AWS DMS resources, or used in a Condition statement in an IAM
 #' # policy for AWS DMS.
-#' \donttest{svc$add_tags_to_resource(
+#' \dontrun{svc$add_tags_to_resource(
 #'   ResourceArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ASXWXJZLNWNT5HTWCGV2BUJQ7E",
 #'   Tags = list(
 #'     list(
@@ -329,7 +329,7 @@ databasemigrationservice_apply_pending_maintenance_action <- function(Replicatio
 #'
 #' @examples
 #' # Creates an endpoint using the provided settings.
-#' \donttest{svc$create_endpoint(
+#' \dontrun{svc$create_endpoint(
 #'   CertificateArn = "",
 #'   DatabaseName = "testdb",
 #'   EndpointIdentifier = "test-endpoint-1",
@@ -576,7 +576,7 @@ databasemigrationservice_create_event_subscription <- function(SubscriptionName,
 #'
 #' @examples
 #' # Creates the replication instance using the specified parameters.
-#' \donttest{svc$create_replication_instance(
+#' \dontrun{svc$create_replication_instance(
 #'   AllocatedStorage = 123L,
 #'   AutoMinorVersionUpgrade = TRUE,
 #'   AvailabilityZone = "",
@@ -659,7 +659,7 @@ databasemigrationservice_create_replication_instance <- function(ReplicationInst
 #' @examples
 #' # Creates a replication subnet group given a list of the subnet IDs in a
 #' # VPC.
-#' \donttest{svc$create_replication_subnet_group(
+#' \dontrun{svc$create_replication_subnet_group(
 #'   ReplicationSubnetGroupDescription = "US West subnet group",
 #'   ReplicationSubnetGroupIdentifier = "us-west-2ab-vpc-215ds366",
 #'   SubnetIds = list(
@@ -790,7 +790,7 @@ databasemigrationservice_create_replication_subnet_group <- function(Replication
 #'
 #' @examples
 #' # Creates a replication task using the specified parameters.
-#' \donttest{svc$create_replication_task(
+#' \dontrun{svc$create_replication_task(
 #'   CdcStartTime = "2016-12-14T18:25:43Z",
 #'   MigrationType = "full-load",
 #'   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJ...",
@@ -845,7 +845,7 @@ databasemigrationservice_create_replication_task <- function(ReplicationTaskIden
 #'
 #' @examples
 #' # Deletes the specified certificate.
-#' \donttest{svc$delete_certificate(
+#' \dontrun{svc$delete_certificate(
 #'   CertificateArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUSM457DE6XFJCJQ"
 #' )}
 #'
@@ -892,7 +892,7 @@ databasemigrationservice_delete_certificate <- function(CertificateArn) {
 #' @examples
 #' # Deletes the connection between the replication instance and the
 #' # endpoint.
-#' \donttest{svc$delete_connection(
+#' \dontrun{svc$delete_connection(
 #'   EndpointArn = "arn:aws:dms:us-east-1:123456789012:endpoint:RAAR3R22XSH46S3PWLC3NJAWKM",
 #'   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJ..."
 #' )}
@@ -941,7 +941,7 @@ databasemigrationservice_delete_connection <- function(EndpointArn, ReplicationI
 #' # Deletes the specified endpoint. All tasks associated with the endpoint
 #' # must be deleted before you can delete the endpoint.
 #' # 
-#' \donttest{svc$delete_endpoint(
+#' \dontrun{svc$delete_endpoint(
 #'   EndpointArn = "arn:aws:dms:us-east-1:123456789012:endpoint:RAAR3R22XSH46S3PWLC3NJAWKM"
 #' )}
 #'
@@ -1028,7 +1028,7 @@ databasemigrationservice_delete_event_subscription <- function(SubscriptionName)
 #' # you can delete it.
 #' # 
 #' # 
-#' \donttest{svc$delete_replication_instance(
+#' \dontrun{svc$delete_replication_instance(
 #'   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJ..."
 #' )}
 #'
@@ -1071,7 +1071,7 @@ databasemigrationservice_delete_replication_instance <- function(ReplicationInst
 #'
 #' @examples
 #' # Deletes a replication subnet group.
-#' \donttest{svc$delete_replication_subnet_group(
+#' \dontrun{svc$delete_replication_subnet_group(
 #'   ReplicationSubnetGroupIdentifier = "us-west-2ab-vpc-215ds366"
 #' )}
 #'
@@ -1113,7 +1113,7 @@ databasemigrationservice_delete_replication_subnet_group <- function(Replication
 #'
 #' @examples
 #' # Deletes the specified replication task.
-#' \donttest{svc$delete_replication_task(
+#' \dontrun{svc$delete_replication_task(
 #'   ReplicationTaskArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ"
 #' )}
 #'
@@ -1164,7 +1164,7 @@ databasemigrationservice_delete_replication_task <- function(ReplicationTaskArn)
 #' # replication instances allowed. The description for a quota includes the
 #' # quota name, current usage toward that quota, and the quota's maximum
 #' # value. This operation does not take any parameters.
-#' \donttest{svc$describe_account_attributes()}
+#' \dontrun{svc$describe_account_attributes()}
 #'
 #' @keywords internal
 #'
@@ -1224,7 +1224,7 @@ databasemigrationservice_describe_account_attributes <- function() {
 #'
 #' @examples
 #' # Provides a description of the certificate.
-#' \donttest{svc$describe_certificates(
+#' \dontrun{svc$describe_certificates(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -1304,7 +1304,7 @@ databasemigrationservice_describe_certificates <- function(Filters = NULL, MaxRe
 #' # Describes the status of the connections that have been made between the
 #' # replication instance and an endpoint. Connections are created when you
 #' # test an endpoint.
-#' \donttest{svc$describe_connections(
+#' \dontrun{svc$describe_connections(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -1379,7 +1379,7 @@ databasemigrationservice_describe_connections <- function(Filters = NULL, MaxRec
 #'
 #' @examples
 #' # Returns information about the type of endpoints available.
-#' \donttest{svc$describe_endpoint_types(
+#' \dontrun{svc$describe_endpoint_types(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -1457,7 +1457,7 @@ databasemigrationservice_describe_endpoint_types <- function(Filters = NULL, Max
 #' @examples
 #' # Returns information about the endpoints for your account in the current
 #' # region.
-#' \donttest{svc$describe_endpoints(
+#' \dontrun{svc$describe_endpoints(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -1723,7 +1723,7 @@ databasemigrationservice_describe_events <- function(SourceIdentifier = NULL, So
 #' @examples
 #' # Returns information about the replication instance types that can be
 #' # created in the specified region.
-#' \donttest{svc$describe_orderable_replication_instances(
+#' \dontrun{svc$describe_orderable_replication_instances(
 #'   Marker = "",
 #'   MaxRecords = 123L
 #' )}
@@ -1826,7 +1826,7 @@ databasemigrationservice_describe_pending_maintenance_actions <- function(Replic
 #'
 #' @examples
 #' # Returns the status of the refresh-schemas operation.
-#' \donttest{svc$describe_refresh_schemas_status(
+#' \dontrun{svc$describe_refresh_schemas_status(
 #'   EndpointArn = ""
 #' )}
 #'
@@ -1944,7 +1944,7 @@ databasemigrationservice_describe_replication_instance_task_logs <- function(Rep
 #'
 #' @examples
 #' # Returns the status of the refresh-schemas operation.
-#' \donttest{svc$describe_replication_instances(
+#' \dontrun{svc$describe_replication_instances(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -2017,7 +2017,7 @@ databasemigrationservice_describe_replication_instances <- function(Filters = NU
 #'
 #' @examples
 #' # Returns information about the replication subnet groups.
-#' \donttest{svc$describe_replication_subnet_groups(
+#' \dontrun{svc$describe_replication_subnet_groups(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -2154,7 +2154,7 @@ databasemigrationservice_describe_replication_task_assessment_results <- functio
 #' @examples
 #' # Returns information about replication tasks for your account in the
 #' # current region.
-#' \donttest{svc$describe_replication_tasks(
+#' \dontrun{svc$describe_replication_tasks(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -2221,7 +2221,7 @@ databasemigrationservice_describe_replication_tasks <- function(Filters = NULL, 
 #'
 #' @examples
 #' # Returns information about the schema for the specified endpoint.
-#' \donttest{svc$describe_schemas(
+#' \dontrun{svc$describe_schemas(
 #'   EndpointArn = "",
 #'   Marker = "",
 #'   MaxRecords = 123L
@@ -2300,7 +2300,7 @@ databasemigrationservice_describe_schemas <- function(EndpointArn, MaxRecords = 
 #' @examples
 #' # Returns table statistics on the database migration task, including table
 #' # name, rows inserted, rows updated, and rows deleted.
-#' \donttest{svc$describe_table_statistics(
+#' \dontrun{svc$describe_table_statistics(
 #'   Marker = "",
 #'   MaxRecords = 123L,
 #'   ReplicationTaskArn = ""
@@ -2358,7 +2358,7 @@ databasemigrationservice_describe_table_statistics <- function(ReplicationTaskAr
 #'
 #' @examples
 #' # Uploads the specified certificate.
-#' \donttest{svc$import_certificate(
+#' \dontrun{svc$import_certificate(
 #'   CertificateIdentifier = "",
 #'   CertificatePem = ""
 #' )}
@@ -2402,7 +2402,7 @@ databasemigrationservice_import_certificate <- function(CertificateIdentifier, C
 #'
 #' @examples
 #' # Lists all tags for an AWS DMS resource.
-#' \donttest{svc$list_tags_for_resource(
+#' \dontrun{svc$list_tags_for_resource(
 #'   ResourceArn = ""
 #' )}
 #'
@@ -2614,7 +2614,7 @@ databasemigrationservice_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @examples
 #' # Modifies the specified endpoint.
-#' \donttest{svc$modify_endpoint(
+#' \dontrun{svc$modify_endpoint(
 #'   CertificateArn = "",
 #'   DatabaseName = "",
 #'   EndpointArn = "",
@@ -2789,7 +2789,7 @@ databasemigrationservice_modify_event_subscription <- function(SubscriptionName,
 #' # Modifies the replication instance to apply new settings. You can change
 #' # one or more parameters by specifying these parameters and the new values
 #' # in the request. Some settings are applied during the maintenance window.
-#' \donttest{svc$modify_replication_instance(
+#' \dontrun{svc$modify_replication_instance(
 #'   AllocatedStorage = 123L,
 #'   AllowMajorVersionUpgrade = TRUE,
 #'   ApplyImmediately = TRUE,
@@ -2849,7 +2849,7 @@ databasemigrationservice_modify_replication_instance <- function(ReplicationInst
 #'
 #' @examples
 #' # Modifies the settings for the specified replication subnet group.
-#' \donttest{svc$modify_replication_subnet_group(
+#' \dontrun{svc$modify_replication_subnet_group(
 #'   ReplicationSubnetGroupDescription = "",
 #'   ReplicationSubnetGroupIdentifier = "",
 #'   SubnetIds = list()
@@ -3048,7 +3048,7 @@ databasemigrationservice_reboot_replication_instance <- function(ReplicationInst
 #' # Populates the schema for the specified endpoint. This is an asynchronous
 #' # operation and can take several minutes. You can check the status of this
 #' # operation by calling the describe-refresh-schemas-status operation.
-#' \donttest{svc$refresh_schemas(
+#' \dontrun{svc$refresh_schemas(
 #'   EndpointArn = "",
 #'   ReplicationInstanceArn = ""
 #' )}
@@ -3149,7 +3149,7 @@ databasemigrationservice_reload_tables <- function(ReplicationTaskArn, TablesToR
 #'
 #' @examples
 #' # Removes metadata tags from an AWS DMS resource.
-#' \donttest{svc$remove_tags_from_resource(
+#' \dontrun{svc$remove_tags_from_resource(
 #'   ResourceArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ASXWXJZLNWNT5HTWCGV2BUJQ7E",
 #'   TagKeys = list()
 #' )}
@@ -3238,7 +3238,7 @@ databasemigrationservice_remove_tags_from_resource <- function(ResourceArn, TagK
 #'
 #' @examples
 #' # Starts the replication task.
-#' \donttest{svc$start_replication_task(
+#' \dontrun{svc$start_replication_task(
 #'   CdcStartTime = "2016-12-14T13:33:20Z",
 #'   ReplicationTaskArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ",
 #'   StartReplicationTaskType = "start-replication"
@@ -3321,7 +3321,7 @@ databasemigrationservice_start_replication_task_assessment <- function(Replicati
 #'
 #' @examples
 #' # Stops the replication task.
-#' \donttest{svc$stop_replication_task(
+#' \dontrun{svc$stop_replication_task(
 #'   ReplicationTaskArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ASXWXJZLNWNT5HTWCGV2BUJQ..."
 #' )}
 #'
@@ -3367,7 +3367,7 @@ databasemigrationservice_stop_replication_task <- function(ReplicationTaskArn) {
 #'
 #' @examples
 #' # Tests the connection between the replication instance and the endpoint.
-#' \donttest{svc$test_connection(
+#' \dontrun{svc$test_connection(
 #'   EndpointArn = "arn:aws:dms:us-east-1:123456789012:endpoint:RAAR3R22XSH46S3PWLC3NJAWKM",
 #'   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJ..."
 #' )}

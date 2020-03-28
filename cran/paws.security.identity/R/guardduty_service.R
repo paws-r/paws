@@ -46,7 +46,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- guardduty()
+#' \dontrun{svc <- guardduty()
 #' svc$accept_invitation(
 #'   Foo = 123
 #' )}

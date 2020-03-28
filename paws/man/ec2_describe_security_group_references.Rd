@@ -34,7 +34,7 @@ this request.
 \examples{
 # This example describes the security group references for the specified
 # security group.
-\donttest{svc$describe_security_group_references(
+\dontrun{svc$describe_security_group_references(
   GroupId = list(
     "sg-903004f8"
   )

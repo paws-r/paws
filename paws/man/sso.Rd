@@ -57,7 +57,7 @@ SDKs, including how to download and install them, see \href{http://aws.amazon.co
 }
 
 \examples{
-\donttest{svc <- sso()
+\dontrun{svc <- sso()
 svc$get_role_credentials(
   Foo = 123
 )}

@@ -41,7 +41,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- imagebuilder()
+#' \dontrun{svc <- imagebuilder()
 #' svc$cancel_image_creation(
 #'   Foo = 123
 #' )}

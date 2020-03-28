@@ -77,11 +77,11 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example describes your Elastic IP addresses.
-\donttest{svc$describe_addresses()}
+\dontrun{svc$describe_addresses()}
 
 # This example describes your Elastic IP addresses for use with instances
 # in a VPC.
-\donttest{svc$describe_addresses(
+\dontrun{svc$describe_addresses(
   Filters = list(
     list(
       Name = "domain",
@@ -94,7 +94,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 # This example describes your Elastic IP addresses for use with instances
 # in EC2-Classic.
-\donttest{svc$describe_addresses(
+\dontrun{svc$describe_addresses(
   Filters = list(
     list(
       Name = "domain",

@@ -72,7 +72,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- detective()
+#' \dontrun{svc <- detective()
 #' svc$accept_invitation(
 #'   Foo = 123
 #' )}

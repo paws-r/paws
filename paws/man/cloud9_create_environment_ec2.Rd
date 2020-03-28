@@ -55,7 +55,7 @@ instance to the environment.
 
 \examples{
 # 
-\donttest{svc$create_environment_ec2(
+\dontrun{svc$create_environment_ec2(
   name = "my-demo-environment",
   automaticStopTimeMinutes = 60L,
   description = "This is my demonstration environment.",

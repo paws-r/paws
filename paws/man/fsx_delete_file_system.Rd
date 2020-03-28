@@ -60,7 +60,7 @@ recovered by any means.
 
 \examples{
 # This operation deletes an Amazon FSx file system.
-\donttest{svc$delete_file_system(
+\dontrun{svc$delete_file_system(
   FileSystemId = "fs-0498eed5fe91001ec"
 )}
 

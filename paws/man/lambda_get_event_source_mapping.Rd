@@ -22,7 +22,7 @@ identifier of a mapping from the output of ListEventSourceMappings.
 
 \examples{
 # This operation retrieves a Lambda function's event source mapping
-\donttest{svc$get_event_source_mapping(
+\dontrun{svc$get_event_source_mapping(
   UUID = "123489-xxxxx-kdla8d89d7"
 )}
 

@@ -85,7 +85,7 @@ for the underlying REST API \href{https://docs.aws.amazon.com/amazonglacier/late
 
 \examples{
 # The example lists jobs for the vault named my-vault.
-\donttest{svc$list_jobs(
+\dontrun{svc$list_jobs(
   accountId = "-",
   vaultName = "my-vault"
 )}

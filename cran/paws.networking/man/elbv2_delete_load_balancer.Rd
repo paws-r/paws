@@ -33,7 +33,7 @@ stop or terminate them.
 
 \examples{
 # This example deletes the specified load balancer.
-\donttest{svc$delete_load_balancer(
+\dontrun{svc$delete_load_balancer(
   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my..."
 )}
 

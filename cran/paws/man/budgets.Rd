@@ -91,7 +91,7 @@ API, see \href{https://aws.amazon.com/aws-cost-management/pricing/}{AWS Cost Man
 }
 
 \examples{
-\donttest{svc <- budgets()
+\dontrun{svc <- budgets()
 svc$create_budget(
   Foo = 123
 )}

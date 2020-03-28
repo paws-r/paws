@@ -36,7 +36,7 @@ specified key exists.
 # Removes entire attributes (key and value pairs) from the findings that
 # are specified by the ARNs of the findings where an attribute with the
 # specified key exists.
-\donttest{svc$remove_attributes_from_findings(
+\dontrun{svc$remove_attributes_from_findings(
   attributeKeys = list(
     "key=Example,value=example"
   ),

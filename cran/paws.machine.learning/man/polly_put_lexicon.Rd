@@ -33,7 +33,7 @@ For more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/mana
 
 \examples{
 # Stores a pronunciation lexicon in an AWS Region.
-\donttest{svc$put_lexicon(
+\dontrun{svc$put_lexicon(
   Content = "file://example.pls",
   Name = "W3C"
 )}

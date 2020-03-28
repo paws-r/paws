@@ -75,7 +75,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 
 \examples{
 # The example adds an archive to a vault.
-\donttest{svc$upload_archive(
+\dontrun{svc$upload_archive(
   accountId = "-",
   archiveDescription = "",
   body = "example-data-to-upload",

@@ -535,7 +535,7 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' 
 #' -   Cannot be a reserved word for the chosen database engine.
 #' @param MasterUserPassword The password for the master database user. This password can contain any
-#' printable ASCII character except \"/\", \"\"\", or \"@\".
+#' printable ASCII character except \"/\", \"\"\", or \"@@\".
 #' 
 #' Constraints: Must contain from 8 to 41 characters.
 #' @param OptionGroupName A value that indicates that the DB cluster should be associated with the
@@ -871,7 +871,7 @@ neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCl
 #' Valid Values: `neptune`
 #' @param MasterUsername The name for the master user. Not used.
 #' @param MasterUserPassword The password for the master user. The password can include any printable
-#' ASCII character except \"/\", \"\"\", or \"@\".
+#' ASCII character except \"/\", \"\"\", or \"@@\".
 #' 
 #' Not used.
 #' @param DBSecurityGroups A list of DB security groups to associate with this DB instance.
@@ -3199,7 +3199,7 @@ neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' 
 #' Default: The same port as the original DB cluster.
 #' @param MasterUserPassword The new password for the master database user. This password can contain
-#' any printable ASCII character except \"/\", \"\"\", or \"@\".
+#' any printable ASCII character except \"/\", \"\"\", or \"@@\".
 #' 
 #' Constraints: Must contain from 8 to 41 characters.
 #' @param OptionGroupName A value that indicates that the DB cluster should be associated with the

@@ -30,7 +30,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- forecastservice()
+#' \dontrun{svc <- forecastservice()
 #' svc$create_dataset(
 #'   Foo = 123
 #' )}

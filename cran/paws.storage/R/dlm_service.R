@@ -38,7 +38,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- dlm()
+#' \dontrun{svc <- dlm()
 #' svc$create_lifecycle_policy(
 #'   Foo = 123
 #' )}

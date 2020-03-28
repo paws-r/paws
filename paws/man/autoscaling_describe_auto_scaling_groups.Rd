@@ -36,7 +36,7 @@ Describes one or more Auto Scaling groups.
 
 \examples{
 # This example describes the specified Auto Scaling group.
-\donttest{svc$describe_auto_scaling_groups(
+\dontrun{svc$describe_auto_scaling_groups(
   AutoScalingGroupNames = list(
     "my-auto-scaling-group"
   )

@@ -29,7 +29,7 @@ Deletes specified tags from a resource.
 
 \examples{
 # This example deletes the 'team' tag from the 'dev' cluster.
-\donttest{svc$untag_resource(
+\dontrun{svc$untag_resource(
   resourceArn = "arn:aws:ecs:region:aws_account_id:cluster/dev",
   tagKeys = list(
     "team"

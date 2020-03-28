@@ -85,7 +85,7 @@ gateway.
 
 \examples{
 # Creates one or more virtual tapes.
-\donttest{svc$create_tapes(
+\dontrun{svc$create_tapes(
   ClientToken = "77777",
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
   NumTapesToCreate = 3L,

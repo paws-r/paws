@@ -50,7 +50,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- dataexchange()
+#' \dontrun{svc <- dataexchange()
 #' svc$cancel_job(
 #'   Foo = 123
 #' )}
