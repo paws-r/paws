@@ -1,3 +1,12 @@
+# paws.common 0.3.0
+
+* Add HTTP status codes to the error response when an operation fails, along
+  with any other information returned by AWS about the error.
+* Add support for S3 operation GetBucketLocation, which needs special handling.
+* Fix how paws.common provides request handlers to specific services (e.g. S3)
+  so that fixes to handlers don't require re-installing any package other than
+  paws.common.
+
 # paws.common 0.2.6
 
 * Fix handling of nested inputs and outputs for services like DynamoDB.
