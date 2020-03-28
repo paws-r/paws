@@ -52,7 +52,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- configservice()
+#' \dontrun{svc <- configservice()
 #' svc$batch_get_aggregate_resource_config(
 #'   Foo = 123
 #' )}

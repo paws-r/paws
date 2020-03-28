@@ -191,7 +191,7 @@ template versions.
 \examples{
 # This example creates a new launch template version based on version 1 of
 # the specified launch template and specifies a different AMI ID.
-\donttest{svc$create_launch_template_version(
+\dontrun{svc$create_launch_template_version(
   LaunchTemplateData = list(
     ImageId = "ami-c998b6b2"
   ),

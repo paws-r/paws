@@ -123,7 +123,7 @@ For information on the required permissions, see \href{https://docs.aws.amazon.c
 
 \examples{
 # Creates the replication instance using the specified parameters.
-\donttest{svc$create_replication_instance(
+\dontrun{svc$create_replication_instance(
   AllocatedStorage = 123L,
   AutoMinorVersionUpgrade = TRUE,
   AvailabilityZone = "",

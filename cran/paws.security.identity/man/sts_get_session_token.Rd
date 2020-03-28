@@ -105,7 +105,7 @@ in the \emph{IAM User Guide}.
 
 \examples{
 # 
-\donttest{svc$get_session_token(
+\dontrun{svc$get_session_token(
   DurationSeconds = 3600L,
   SerialNumber = "YourMFASerialNumber",
   TokenCode = "123456"

@@ -41,7 +41,7 @@ NULL
 #'
 #' @examples
 #' #
-#' \donttest{svc$describe_services(
+#' \dontrun{svc$describe_services(
 #'   FormatVersion = "aws_v1",
 #'   MaxResults = 1L,
 #'   ServiceCode = "AmazonEC2"
@@ -101,7 +101,7 @@ pricing_describe_services <- function(ServiceCode = NULL, FormatVersion = NULL, 
 #' @examples
 #' # This operation returns a list of values available for the given
 #' # attribute.
-#' \donttest{svc$get_attribute_values(
+#' \dontrun{svc$get_attribute_values(
 #'   AttributeName = "volumeType",
 #'   MaxResults = 2L,
 #'   ServiceCode = "AmazonEC2"
@@ -164,7 +164,7 @@ pricing_get_attribute_values <- function(ServiceCode, AttributeName, NextToken =
 #'
 #' @examples
 #' # This operation returns a list of products that match the given criteria.
-#' \donttest{svc$get_products(
+#' \dontrun{svc$get_products(
 #'   Filters = list(
 #'     list(
 #'       Field = "ServiceCode",

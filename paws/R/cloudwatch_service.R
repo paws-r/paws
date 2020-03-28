@@ -45,7 +45,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- cloudwatch()
+#' \dontrun{svc <- cloudwatch()
 #' svc$delete_alarms(
 #'   Foo = 123
 #' )}

@@ -128,7 +128,7 @@ NULL
 #'
 #' @examples
 #' # The following example creates an Amazon EKS cluster called prod.
-#' \donttest{svc$create_cluster(
+#' \dontrun{svc$create_cluster(
 #'   version = "1.10",
 #'   name = "prod",
 #'   clientRequestToken = "1d2129a1-3d38-460a-9756-e5b91fddb951",
@@ -431,7 +431,7 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
 #' @examples
 #' # This example command deletes a cluster named `devel` in your default
 #' # region.
-#' \donttest{svc$delete_cluster(
+#' \dontrun{svc$delete_cluster(
 #'   name = "devel"
 #' )}
 #'
@@ -571,7 +571,7 @@ eks_delete_nodegroup <- function(clusterName, nodegroupName) {
 #' @examples
 #' # This example command provides a description of the specified cluster in
 #' # your default region.
-#' \donttest{svc$describe_cluster(
+#' \dontrun{svc$describe_cluster(
 #'   name = "devel"
 #' )}
 #'
@@ -754,7 +754,7 @@ eks_describe_update <- function(name, updateId, nodegroupName = NULL) {
 #' @examples
 #' # This example command lists all of your available clusters in your
 #' # default region.
-#' \donttest{svc$list_clusters()}
+#' \dontrun{svc$list_clusters()}
 #'
 #' @keywords internal
 #'
@@ -902,7 +902,7 @@ eks_list_nodegroups <- function(clusterName, maxResults = NULL, nextToken = NULL
 #'
 #' @examples
 #' # This example lists all of the tags for the `beta` cluster.
-#' \donttest{svc$list_tags_for_resource(
+#' \dontrun{svc$list_tags_for_resource(
 #'   resourceArn = "arn:aws:eks:us-west-2:012345678910:cluster/beta"
 #' )}
 #'

@@ -30,7 +30,7 @@ until the cluster reaches the \code{ACTIVE} state.
 \examples{
 # This example command provides a description of the specified cluster in
 # your default region.
-\donttest{svc$describe_cluster(
+\dontrun{svc$describe_cluster(
   name = "devel"
 )}
 

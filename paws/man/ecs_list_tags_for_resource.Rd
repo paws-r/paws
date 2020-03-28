@@ -23,7 +23,7 @@ List the tags for an Amazon ECS resource.
 
 \examples{
 # This example lists the tags for the 'dev' cluster.
-\donttest{svc$list_tags_for_resource(
+\dontrun{svc$list_tags_for_resource(
   resourceArn = "arn:aws:ecs:region:aws_account_id:cluster/dev"
 )}
 

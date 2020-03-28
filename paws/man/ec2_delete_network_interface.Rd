@@ -28,7 +28,7 @@ interface before you can delete it.
 
 \examples{
 # This example deletes the specified network interface.
-\donttest{svc$delete_network_interface(
+\dontrun{svc$delete_network_interface(
   NetworkInterfaceId = "eni-e5aa89a3"
 )}
 

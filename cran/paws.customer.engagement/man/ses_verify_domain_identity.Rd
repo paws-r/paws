@@ -29,7 +29,7 @@ You can execute this operation no more than once per second.
 \examples{
 # The following example starts the domain verification process with Amazon
 # SES:
-\donttest{svc$verify_domain_identity(
+\dontrun{svc$verify_domain_identity(
   Domain = "example.com"
 )}
 

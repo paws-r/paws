@@ -28,7 +28,7 @@ to know the default password to set a new password.
 
 \examples{
 # Sets the password for your VM local console.
-\donttest{svc$set_local_console_password(
+\dontrun{svc$set_local_console_password(
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
   LocalConsolePassword = "PassWordMustBeAtLeast6Chars."
 )}

@@ -39,7 +39,7 @@ NULL
 #' @examples
 #' # This example adds a permission for an S3 bucket to invoke a Lambda
 #' # function.
-#' \donttest{svc <- lambda()
+#' \dontrun{svc <- lambda()
 #' svc$add_permission(
 #'   Action = "lambda:InvokeFunction",
 #'   FunctionName = "MyFunction",

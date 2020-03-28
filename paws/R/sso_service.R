@@ -48,7 +48,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- sso()
+#' \dontrun{svc <- sso()
 #' svc$get_role_credentials(
 #'   Foo = 123
 #' )}

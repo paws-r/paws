@@ -42,7 +42,7 @@ version are returned.
 
 \examples{
 # This operation retrieves a Lambda function's event source mapping
-\donttest{svc$get_function(
+\dontrun{svc$get_function(
   FunctionName = "myFunction",
   Qualifier = "1"
 )}

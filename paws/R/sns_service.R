@@ -45,7 +45,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- sns()
+#' \dontrun{svc <- sns()
 #' svc$add_permission(
 #'   Foo = 123
 #' )}

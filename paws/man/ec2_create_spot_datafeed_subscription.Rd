@@ -34,7 +34,7 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
 
 \examples{
 # This example creates a Spot Instance data feed for your AWS account.
-\donttest{svc$create_spot_datafeed_subscription(
+\dontrun{svc$create_spot_datafeed_subscription(
   Bucket = "my-s3-bucket",
   Prefix = "spotdata"
 )}

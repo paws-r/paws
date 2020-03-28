@@ -34,7 +34,7 @@ key (CMK), call UpdateAlias.
 
 \examples{
 # The following example deletes the specified alias.
-\donttest{svc$delete_alias(
+\dontrun{svc$delete_alias(
   AliasName = "alias/ExampleAlias"
 )}
 

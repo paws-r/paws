@@ -46,7 +46,7 @@ The following operations are related to \code{DeleteBucketPolicy}
 
 \examples{
 # The following example deletes bucket policy on the specified bucket.
-\donttest{svc$delete_bucket_policy(
+\dontrun{svc$delete_bucket_policy(
   Bucket = "examplebucket"
 )}
 

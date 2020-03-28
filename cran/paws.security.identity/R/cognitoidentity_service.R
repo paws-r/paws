@@ -50,7 +50,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- cognitoidentity()
+#' \dontrun{svc <- cognitoidentity()
 #' svc$create_identity_pool(
 #'   Foo = 123
 #' )}

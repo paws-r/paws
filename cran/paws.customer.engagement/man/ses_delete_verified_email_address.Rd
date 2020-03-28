@@ -23,7 +23,7 @@ and domains.
 \examples{
 # The following example deletes an email address from the list of
 # identities that have been submitted for verification with Amazon SES:
-\donttest{svc$delete_verified_email_address(
+\dontrun{svc$delete_verified_email_address(
   EmailAddress = "user@example.com"
 )}
 

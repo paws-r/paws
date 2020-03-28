@@ -43,7 +43,7 @@ Provides a description of the certificate.
 
 \examples{
 # Provides a description of the certificate.
-\donttest{svc$describe_certificates(
+\dontrun{svc$describe_certificates(
   Filters = list(
     list(
       Name = "string",

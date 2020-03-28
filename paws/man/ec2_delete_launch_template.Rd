@@ -33,7 +33,7 @@ versions.
 
 \examples{
 # This example deletes the specified launch template.
-\donttest{svc$delete_launch_template(
+\dontrun{svc$delete_launch_template(
   LaunchTemplateId = "lt-0abcd290751193123"
 )}
 

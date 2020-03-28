@@ -22,7 +22,7 @@ NULL
 #' @examples
 #' # The following example deletes the AWS Cost and Usage report named
 #' # ExampleReport.
-#' \donttest{svc$delete_report_definition(
+#' \dontrun{svc$delete_report_definition(
 #'   ReportName = "ExampleReport"
 #' )}
 #'
@@ -68,7 +68,7 @@ costandusagereportservice_delete_report_definition <- function(ReportName = NULL
 #' @examples
 #' # The following example lists the AWS Cost and Usage reports for the
 #' # account.
-#' \donttest{svc$describe_report_definitions(
+#' \dontrun{svc$describe_report_definitions(
 #'   MaxResults = 5L
 #' )}
 #'
@@ -183,7 +183,7 @@ costandusagereportservice_modify_report_definition <- function(ReportName, Repor
 #' @examples
 #' # The following example creates a AWS Cost and Usage report named
 #' # ExampleReport.
-#' \donttest{svc$put_report_definition(
+#' \dontrun{svc$put_report_definition(
 #'   ReportDefinition = list(
 #'     AdditionalArtifacts = list(
 #'       "REDSHIFT",

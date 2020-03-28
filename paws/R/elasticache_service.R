@@ -41,7 +41,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- elasticache()
+#' \dontrun{svc <- elasticache()
 #' svc$add_tags_to_resource(
 #'   Foo = 123
 #' )}

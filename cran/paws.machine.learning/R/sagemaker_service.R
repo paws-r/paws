@@ -30,7 +30,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- sagemaker()
+#' \dontrun{svc <- sagemaker()
 #' svc$add_tags(
 #'   Foo = 123
 #' )}

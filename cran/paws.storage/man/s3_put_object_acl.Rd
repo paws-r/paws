@@ -170,7 +170,7 @@ different version, use the \code{versionId} subresource.
 # The following example adds grants to an object ACL. The first permission
 # grants user1 and user2 FULL_CONTROL and the AllUsers group READ
 # permission.
-\donttest{svc$put_object_acl(
+\dontrun{svc$put_object_acl(
   AccessControlPolicy = structure(
     list(),
     .Names = character(

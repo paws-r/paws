@@ -39,7 +39,7 @@ Provides AWS Marketplace business intelligence data on-demand.
 }
 
 \examples{
-\donttest{svc <- marketplacecommerceanalytics()
+\dontrun{svc <- marketplacecommerceanalytics()
 svc$generate_data_set(
   Foo = 123
 )}

@@ -38,7 +38,7 @@ Returns information about the schema for the specified endpoint.
 
 \examples{
 # Returns information about the schema for the specified endpoint.
-\donttest{svc$describe_schemas(
+\dontrun{svc$describe_schemas(
   EndpointArn = "",
   Marker = "",
   MaxRecords = 123L

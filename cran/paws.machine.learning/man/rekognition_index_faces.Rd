@@ -185,7 +185,7 @@ This operation requires permissions to perform the
 \examples{
 # This operation detects faces in an image and adds them to the specified
 # Rekognition collection.
-\donttest{svc$index_faces(
+\dontrun{svc$index_faces(
   CollectionId = "myphotos",
   DetectionAttributes = list(),
   ExternalImageId = "myphotoid",

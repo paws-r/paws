@@ -29,7 +29,7 @@ For more information about your VPC and internet gateway, see the
 
 \examples{
 # This example creates an Internet gateway.
-\donttest{svc$create_internet_gateway()}
+\dontrun{svc$create_internet_gateway()}
 
 }
 \keyword{internal}

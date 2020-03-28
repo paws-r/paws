@@ -30,7 +30,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- pinpointsmsvoice()
+#' \dontrun{svc <- pinpointsmsvoice()
 #' svc$create_configuration_set(
 #'   Foo = 123
 #' )}

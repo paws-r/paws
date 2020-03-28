@@ -35,7 +35,7 @@ running environment.
 \examples{
 # The following operation deletes an application version named
 # 22a0-stage-150819_182129 for an application named my-app:
-\donttest{svc$delete_application_version(
+\dontrun{svc$delete_application_version(
   ApplicationName = "my-app",
   DeleteSourceBundle = TRUE,
   VersionLabel = "22a0-stage-150819_182129"

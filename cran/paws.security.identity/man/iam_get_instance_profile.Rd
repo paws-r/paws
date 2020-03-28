@@ -30,7 +30,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following command gets information about the instance profile named
 # ExampleInstanceProfile.
-\donttest{svc$get_instance_profile(
+\dontrun{svc$get_instance_profile(
   InstanceProfileName = "ExampleInstanceProfile"
 )}
 

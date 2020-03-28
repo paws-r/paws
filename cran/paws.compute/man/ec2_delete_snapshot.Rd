@@ -45,7 +45,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 # This example deletes a snapshot with the snapshot ID of
 # `snap-1234567890abcdef0`. If the command succeeds, no output is
 # returned.
-\donttest{svc$delete_snapshot(
+\dontrun{svc$delete_snapshot(
   SnapshotId = "snap-1234567890abcdef0"
 )}
 

@@ -35,7 +35,7 @@ see UpdateAccessKey and DeleteAccessKey.
 
 \examples{
 # The following command deletes the password for the IAM user named Bob.
-\donttest{svc$delete_login_profile(
+\dontrun{svc$delete_login_profile(
   UserName = "Bob"
 )}
 

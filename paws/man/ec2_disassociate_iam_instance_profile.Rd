@@ -26,7 +26,7 @@ Use DescribeIamInstanceProfileAssociations to get the association ID.
 \examples{
 # This example disassociates the specified IAM instance profile from an
 # instance.
-\donttest{svc$disassociate_iam_instance_profile(
+\dontrun{svc$disassociate_iam_instance_profile(
   AssociationId = "iip-assoc-05020b59952902f5f"
 )}
 

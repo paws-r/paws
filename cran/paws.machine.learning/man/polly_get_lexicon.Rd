@@ -24,7 +24,7 @@ AWS Region. For more information, see \href{https://docs.aws.amazon.com/polly/la
 \examples{
 # Returns the content of the specified pronunciation lexicon stored in an
 # AWS Region.
-\donttest{svc$get_lexicon(
+\dontrun{svc$get_lexicon(
   Name = ""
 )}
 

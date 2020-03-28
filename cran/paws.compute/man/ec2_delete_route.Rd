@@ -36,7 +36,7 @@ Deletes the specified route from the specified route table.
 
 \examples{
 # This example deletes the specified route from the specified route table.
-\donttest{svc$delete_route(
+\dontrun{svc$delete_route(
   DestinationCidrBlock = "0.0.0.0/0",
   RouteTableId = "rtb-22574640"
 )}

@@ -45,7 +45,7 @@ retrieval policies, see \href{https://docs.aws.amazon.com/amazonglacier/latest/d
 
 \examples{
 # The example sets and then enacts a data retrieval policy.
-\donttest{svc$set_data_retrieval_policy(
+\dontrun{svc$set_data_retrieval_policy(
   Policy = list(
     Rules = list(
       list(

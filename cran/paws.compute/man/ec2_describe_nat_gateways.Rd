@@ -56,7 +56,7 @@ Describes one or more of your NAT gateways.
 
 \examples{
 # This example describes the NAT gateway for the specified VPC.
-\donttest{svc$describe_nat_gateways(
+\dontrun{svc$describe_nat_gateways(
   Filter = list(
     list(
       Name = "vpc-id",

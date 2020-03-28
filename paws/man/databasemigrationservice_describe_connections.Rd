@@ -51,7 +51,7 @@ test an endpoint.
 # Describes the status of the connections that have been made between the
 # replication instance and an endpoint. Connections are created when you
 # test an endpoint.
-\donttest{svc$describe_connections(
+\dontrun{svc$describe_connections(
   Filters = list(
     list(
       Name = "string",

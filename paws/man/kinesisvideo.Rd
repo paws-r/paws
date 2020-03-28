@@ -56,7 +56,7 @@ Amazon Kinesis Video Streams
 }
 
 \examples{
-\donttest{svc <- kinesisvideo()
+\dontrun{svc <- kinesisvideo()
 svc$create_signaling_channel(
   Foo = 123
 )}

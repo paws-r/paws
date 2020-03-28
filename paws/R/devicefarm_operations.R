@@ -44,7 +44,7 @@ NULL
 #' @examples
 #' # The following example creates a new device pool named MyDevicePool
 #' # inside an existing project.
-#' \donttest{svc$create_device_pool(
+#' \dontrun{svc$create_device_pool(
 #'   name = "MyDevicePool",
 #'   description = "My Android devices",
 #'   projectArn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
@@ -218,7 +218,7 @@ devicefarm_create_network_profile <- function(projectArn, name, description = NU
 #'
 #' @examples
 #' # The following example creates a new project named MyProject.
-#' \donttest{svc$create_project(
+#' \dontrun{svc$create_project(
 #'   name = "MyProject"
 #' )}
 #'
@@ -326,7 +326,7 @@ devicefarm_create_project <- function(name, defaultJobTimeoutMinutes = NULL) {
 #'
 #' @examples
 #' # The following example creates a remote access session named MySession.
-#' \donttest{svc$create_remote_access_session(
+#' \dontrun{svc$create_remote_access_session(
 #'   name = "MySession",
 #'   configuration = list(
 #'     billingMethod = "METERED"
@@ -533,7 +533,7 @@ devicefarm_create_test_grid_url <- function(projectArn, expiresInSeconds) {
 #' @examples
 #' # The following example creates a new Appium Python test package upload
 #' # inside an existing project.
-#' \donttest{svc$create_upload(
+#' \dontrun{svc$create_upload(
 #'   name = "MyAppiumPythonUpload",
 #'   type = "APPIUM_PYTHON_TEST_PACKAGE",
 #'   projectArn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
@@ -628,7 +628,7 @@ devicefarm_create_vpce_configuration <- function(vpceConfigurationName, vpceServ
 #'
 #' @examples
 #' # The following example deletes a specific device pool.
-#' \donttest{svc$delete_device_pool(
+#' \dontrun{svc$delete_device_pool(
 #'   arn = "arn:aws:devicefarm:us-west-2::devicepool:123-456-EXAMPLE-GUID"
 #' )}
 #'
@@ -748,7 +748,7 @@ devicefarm_delete_network_profile <- function(arn) {
 #'
 #' @examples
 #' # The following example deletes a specific project.
-#' \donttest{svc$delete_project(
+#' \dontrun{svc$delete_project(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
 #' )}
 #'
@@ -791,7 +791,7 @@ devicefarm_delete_project <- function(arn) {
 #'
 #' @examples
 #' # The following example deletes a specific remote access session.
-#' \donttest{svc$delete_remote_access_session(
+#' \dontrun{svc$delete_remote_access_session(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456"
 #' )}
 #'
@@ -835,7 +835,7 @@ devicefarm_delete_remote_access_session <- function(arn) {
 #'
 #' @examples
 #' # The following example deletes a specific test run.
-#' \donttest{svc$delete_run(
+#' \dontrun{svc$delete_run(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:EXAMPLE-GUID-123-456"
 #' )}
 #'
@@ -919,7 +919,7 @@ devicefarm_delete_test_grid_project <- function(projectArn) {
 #'
 #' @examples
 #' # The following example deletes a specific upload.
-#' \donttest{svc$delete_upload(
+#' \dontrun{svc$delete_upload(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:upload:EXAMPLE-GUID-123-456"
 #' )}
 #'
@@ -999,7 +999,7 @@ devicefarm_delete_vpce_configuration <- function(arn) {
 #' @examples
 #' # The following example returns information about your Device Farm account
 #' # settings.
-#' \donttest{svc$get_account_settings()}
+#' \dontrun{svc$get_account_settings()}
 #'
 #' @keywords internal
 #'
@@ -1039,7 +1039,7 @@ devicefarm_get_account_settings <- function() {
 #'
 #' @examples
 #' # The following example returns information about a specific device.
-#' \donttest{svc$get_device(
+#' \dontrun{svc$get_device(
 #'   arn = "arn:aws:devicefarm:us-west-2::device:123EXAMPLE"
 #' )}
 #'
@@ -1121,7 +1121,7 @@ devicefarm_get_device_instance <- function(arn) {
 #' @examples
 #' # The following example returns information about a specific device pool,
 #' # given a project ARN.
-#' \donttest{svc$get_device_pool(
+#' \dontrun{svc$get_device_pool(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
 #' )}
 #'
@@ -1253,7 +1253,7 @@ devicefarm_get_device_pool <- function(arn) {
 #' @examples
 #' # The following example returns information about the compatibility of a
 #' # specific device pool, given its ARN.
-#' \donttest{svc$get_device_pool_compatibility(
+#' \dontrun{svc$get_device_pool_compatibility(
 #'   appArn = "arn:aws:devicefarm:us-west-2::app:123-456-EXAMPLE-GUID",
 #'   devicePoolArn = "arn:aws:devicefarm:us-west-2::devicepool:123-456-EXAMPLE-GUID",
 #'   testType = "APPIUM_PYTHON"
@@ -1333,7 +1333,7 @@ devicefarm_get_instance_profile <- function(arn) {
 #'
 #' @examples
 #' # The following example returns information about a specific job.
-#' \donttest{svc$get_job(
+#' \dontrun{svc$get_job(
 #'   arn = "arn:aws:devicefarm:us-west-2::job:123-456-EXAMPLE-GUID"
 #' )}
 #'
@@ -1401,7 +1401,7 @@ devicefarm_get_network_profile <- function(arn) {
 #' available and the offerings that will be available in the next period.
 #' The API returns a `NotEligible` error if the user is not permitted to
 #' invoke the operation. If you must be able to invoke this operation,
-#' contact <aws-devicefarm-support@amazon.com>.
+#' contact <aws-devicefarm-support@@amazon.com>.
 #'
 #' @usage
 #' devicefarm_get_offering_status(nextToken)
@@ -1420,7 +1420,7 @@ devicefarm_get_network_profile <- function(arn) {
 #' @examples
 #' # The following example returns information about Device Farm offerings
 #' # available to your account.
-#' \donttest{svc$get_offering_status(
+#' \dontrun{svc$get_offering_status(
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
 #' )}
 #'
@@ -1462,7 +1462,7 @@ devicefarm_get_offering_status <- function(nextToken = NULL) {
 #'
 #' @examples
 #' # The following example gets information about a specific project.
-#' \donttest{svc$get_project(
+#' \dontrun{svc$get_project(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:5e01a8c7-c861-4c0a-b1d5-12345EXAM..."
 #' )}
 #'
@@ -1505,7 +1505,7 @@ devicefarm_get_project <- function(arn) {
 #'
 #' @examples
 #' # The following example gets a specific remote access session.
-#' \donttest{svc$get_remote_access_session(
+#' \dontrun{svc$get_remote_access_session(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456"
 #' )}
 #'
@@ -1547,7 +1547,7 @@ devicefarm_get_remote_access_session <- function(arn) {
 #'
 #' @examples
 #' # The following example gets information about a specific test run.
-#' \donttest{svc$get_run(
+#' \dontrun{svc$get_run(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:5e01a8c7-c861-4c0a-b1d5-5ec6e6c6dd23/..."
 #' )}
 #'
@@ -1589,7 +1589,7 @@ devicefarm_get_run <- function(arn) {
 #'
 #' @examples
 #' # The following example gets information about a specific test suite.
-#' \donttest{svc$get_suite(
+#' \dontrun{svc$get_suite(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:suite:EXAMPLE-GUID-123-456"
 #' )}
 #'
@@ -1631,7 +1631,7 @@ devicefarm_get_suite <- function(arn) {
 #'
 #' @examples
 #' # The following example gets information about a specific test.
-#' \donttest{svc$get_test(
+#' \dontrun{svc$get_test(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:test:EXAMPLE-GUID-123-456"
 #' )}
 #'
@@ -1760,7 +1760,7 @@ devicefarm_get_test_grid_session <- function(projectArn = NULL, sessionId = NULL
 #'
 #' @examples
 #' # The following example gets information about a specific upload.
-#' \donttest{svc$get_upload(
+#' \dontrun{svc$get_upload(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:upload:EXAMPLE-GUID-123-456"
 #' )}
 #'
@@ -1848,7 +1848,7 @@ devicefarm_get_vpce_configuration <- function(arn) {
 #' @examples
 #' # The following example installs a specific app to a device in a specific
 #' # remote access session.
-#' \donttest{svc$install_to_remote_access_session(
+#' \dontrun{svc$install_to_remote_access_session(
 #'   appArn = "arn:aws:devicefarm:us-west-2:123456789101:app:EXAMPLE-GUID-123-456",
 #'   remoteAccessSessionArn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-1..."
 #' )}
@@ -1905,7 +1905,7 @@ devicefarm_install_to_remote_access_session <- function(remoteAccessSessionArn, 
 #'
 #' @examples
 #' # The following example lists screenshot artifacts for a specific run.
-#' \donttest{svc$list_artifacts(
+#' \dontrun{svc$list_artifacts(
 #'   type = "SCREENSHOT",
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:EXAMPLE-GUID-123-456"
 #' )}
@@ -2006,7 +2006,7 @@ devicefarm_list_device_instances <- function(maxResults = NULL, nextToken = NULL
 #' @examples
 #' # The following example returns information about the private device pools
 #' # in a specific project.
-#' \donttest{svc$list_device_pools(
+#' \dontrun{svc$list_device_pools(
 #'   type = "PRIVATE",
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
 #' )}
@@ -2130,7 +2130,7 @@ devicefarm_list_device_pools <- function(arn, type = NULL, nextToken = NULL) {
 #' @examples
 #' # The following example returns information about the available devices in
 #' # a specific project.
-#' \donttest{svc$list_devices(
+#' \dontrun{svc$list_devices(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
 #' )}
 #'
@@ -2218,7 +2218,7 @@ devicefarm_list_instance_profiles <- function(maxResults = NULL, nextToken = NUL
 #' @examples
 #' # The following example returns information about jobs in a specific
 #' # project.
-#' \donttest{svc$list_jobs(
+#' \dontrun{svc$list_jobs(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
 #' )}
 #'
@@ -2291,7 +2291,7 @@ devicefarm_list_network_profiles <- function(arn, type = NULL, nextToken = NULL)
 #' Returns a list of offering promotions. Each offering promotion record
 #' contains the ID and description of the promotion. The API returns a
 #' `NotEligible` error if the caller is not permitted to invoke the
-#' operation. Contact <aws-devicefarm-support@amazon.com> if you must be
+#' operation. Contact <aws-devicefarm-support@@amazon.com> if you must be
 #' able to invoke this operation.
 #'
 #' @usage
@@ -2336,7 +2336,7 @@ devicefarm_list_offering_promotions <- function(nextToken = NULL) {
 #' descending timestamp (most recent transactions are first). The API
 #' returns a `NotEligible` error if the user is not permitted to invoke the
 #' operation. If you must be able to invoke this operation, contact
-#' <aws-devicefarm-support@amazon.com>.
+#' <aws-devicefarm-support@@amazon.com>.
 #'
 #' @usage
 #' devicefarm_list_offering_transactions(nextToken)
@@ -2355,7 +2355,7 @@ devicefarm_list_offering_promotions <- function(nextToken = NULL) {
 #' @examples
 #' # The following example returns information about Device Farm offering
 #' # transactions.
-#' \donttest{svc$list_offering_transactions(
+#' \dontrun{svc$list_offering_transactions(
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
 #' )}
 #'
@@ -2387,7 +2387,7 @@ devicefarm_list_offering_transactions <- function(nextToken = NULL) {
 #' the frequency for that offering. The API returns a `NotEligible` error
 #' if the user is not permitted to invoke the operation. If you must be
 #' able to invoke this operation, contact
-#' <aws-devicefarm-support@amazon.com>.
+#' <aws-devicefarm-support@@amazon.com>.
 #'
 #' @usage
 #' devicefarm_list_offerings(nextToken)
@@ -2406,7 +2406,7 @@ devicefarm_list_offering_transactions <- function(nextToken = NULL) {
 #' @examples
 #' # The following example returns information about available device
 #' # offerings.
-#' \donttest{svc$list_offerings(
+#' \dontrun{svc$list_offerings(
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
 #' )}
 #'
@@ -2455,7 +2455,7 @@ devicefarm_list_offerings <- function(nextToken = NULL) {
 #' @examples
 #' # The following example returns information about the specified project in
 #' # Device Farm.
-#' \donttest{svc$list_projects(
+#' \dontrun{svc$list_projects(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:7ad300ed-8183-41a7-bf94-12345EXAM...",
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 #' )}
@@ -2504,7 +2504,7 @@ devicefarm_list_projects <- function(arn = NULL, nextToken = NULL) {
 #' @examples
 #' # The following example returns information about a specific Device Farm
 #' # remote access session.
-#' \donttest{svc$list_remote_access_sessions(
+#' \dontrun{svc$list_remote_access_sessions(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456",
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
 #' )}
@@ -2552,7 +2552,7 @@ devicefarm_list_remote_access_sessions <- function(arn, nextToken = NULL) {
 #'
 #' @examples
 #' # The following example returns information about a specific test run.
-#' \donttest{svc$list_runs(
+#' \dontrun{svc$list_runs(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:5e01a8c7-c861-4c0a-b1d5-5ec6e6c6dd23/...",
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 #' )}
@@ -2600,7 +2600,7 @@ devicefarm_list_runs <- function(arn, nextToken = NULL) {
 #' @examples
 #' # The following example returns information about samples, given a
 #' # specific Device Farm project.
-#' \donttest{svc$list_samples(
+#' \dontrun{svc$list_samples(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 #' )}
@@ -2648,7 +2648,7 @@ devicefarm_list_samples <- function(arn, nextToken = NULL) {
 #' @examples
 #' # The following example returns information about suites, given a specific
 #' # Device Farm job.
-#' \donttest{svc$list_suites(
+#' \dontrun{svc$list_suites(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:job:EXAMPLE-GUID-123-456",
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 #' )}
@@ -2918,7 +2918,7 @@ devicefarm_list_test_grid_sessions <- function(projectArn, status = NULL, creati
 #' @examples
 #' # The following example returns information about tests, given a specific
 #' # Device Farm project.
-#' \donttest{svc$list_tests(
+#' \dontrun{svc$list_tests(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 #' )}
@@ -2973,7 +2973,7 @@ devicefarm_list_tests <- function(arn, nextToken = NULL) {
 #' @examples
 #' # The following example returns information about unique problems, given a
 #' # specific Device Farm project.
-#' \donttest{svc$list_unique_problems(
+#' \dontrun{svc$list_unique_problems(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 #' )}
@@ -3090,7 +3090,7 @@ devicefarm_list_unique_problems <- function(arn, nextToken = NULL) {
 #' @examples
 #' # The following example returns information about uploads, given a
 #' # specific Device Farm project.
-#' \donttest{svc$list_uploads(
+#' \dontrun{svc$list_uploads(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 #' )}
@@ -3164,7 +3164,7 @@ devicefarm_list_vpce_configurations <- function(maxResults = NULL, nextToken = N
 #' the latest total purchased quantity for an offering, unless the renewal
 #' was overridden. The API returns a `NotEligible` error if the user is not
 #' permitted to invoke the operation. If you must be able to invoke this
-#' operation, contact <aws-devicefarm-support@amazon.com>.
+#' operation, contact <aws-devicefarm-support@@amazon.com>.
 #'
 #' @usage
 #' devicefarm_purchase_offering(offeringId, quantity, offeringPromotionId)
@@ -3184,7 +3184,7 @@ devicefarm_list_vpce_configurations <- function(maxResults = NULL, nextToken = N
 #'
 #' @examples
 #' # The following example purchases a specific device slot offering.
-#' \donttest{svc$purchase_offering(
+#' \dontrun{svc$purchase_offering(
 #'   offeringId = "D68B3C05-1BA6-4360-BC69-12345EXAMPLE",
 #'   quantity = 1L
 #' )}
@@ -3216,7 +3216,7 @@ devicefarm_purchase_offering <- function(offeringId = NULL, quantity = NULL, off
 #' starting from the `effectiveDate` of the next period. The API returns a
 #' `NotEligible` error if the user is not permitted to invoke the
 #' operation. If you must be able to invoke this operation, contact
-#' <aws-devicefarm-support@amazon.com>.
+#' <aws-devicefarm-support@@amazon.com>.
 #'
 #' @usage
 #' devicefarm_renew_offering(offeringId, quantity)
@@ -3234,7 +3234,7 @@ devicefarm_purchase_offering <- function(offeringId = NULL, quantity = NULL, off
 #'
 #' @examples
 #' # The following example renews a specific device slot offering.
-#' \donttest{svc$renew_offering(
+#' \dontrun{svc$renew_offering(
 #'   offeringId = "D68B3C05-1BA6-4360-BC69-12345EXAMPLE",
 #'   quantity = 1L
 #' )}
@@ -3356,7 +3356,7 @@ devicefarm_renew_offering <- function(offeringId = NULL, quantity = NULL) {
 #'
 #' @examples
 #' # The following example schedules a test run named MyRun.
-#' \donttest{svc$schedule_run(
+#' \dontrun{svc$schedule_run(
 #'   name = "MyRun",
 #'   devicePoolArn = "arn:aws:devicefarm:us-west-2:123456789101:pool:EXAMPLE-GUID-123-456",
 #'   projectArn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
@@ -3488,7 +3488,7 @@ devicefarm_stop_remote_access_session <- function(arn) {
 #'
 #' @examples
 #' # The following example stops a specific test run.
-#' \donttest{svc$stop_run(
+#' \dontrun{svc$stop_run(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:EXAMPLE-GUID-123-456"
 #' )}
 #'
@@ -3711,7 +3711,7 @@ devicefarm_update_device_instance <- function(arn, profileArn = NULL, labels = N
 #' # The following example updates the specified device pool with a new name
 #' # and description. It also enables remote access of devices in the device
 #' # pool.
-#' \donttest{svc$update_device_pool(
+#' \dontrun{svc$update_device_pool(
 #'   name = "NewName",
 #'   arn = "arn:aws:devicefarm:us-west-2::devicepool:082d10e5-d7d7-48a5-ba5c-12345EXAMPLE",
 #'   description = "NewDescription",
@@ -3898,7 +3898,7 @@ devicefarm_update_network_profile <- function(arn, name = NULL, description = NU
 #'
 #' @examples
 #' # The following example updates the specified project with a new name.
-#' \donttest{svc$update_project(
+#' \dontrun{svc$update_project(
 #'   name = "NewName",
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:8f75187d-101e-4625-accc-12345EXAM..."
 #' )}

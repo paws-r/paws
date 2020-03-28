@@ -30,7 +30,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- machinelearning()
+#' \dontrun{svc <- machinelearning()
 #' svc$add_tags(
 #'   Foo = 123
 #' )}

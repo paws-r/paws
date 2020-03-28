@@ -136,7 +136,7 @@ actions:
 
 \examples{
 # This operation creates a new mount target for an EFS file system.
-\donttest{svc$create_mount_target(
+\dontrun{svc$create_mount_target(
   FileSystemId = "fs-01234567",
   SubnetId = "subnet-1234abcd"
 )}

@@ -59,7 +59,7 @@ accessible only during key and user creation.
 \examples{
 # The following command lists the access keys IDs for the IAM user named
 # Alice.
-\donttest{svc$list_access_keys(
+\dontrun{svc$list_access_keys(
   UserName = "Alice"
 )}
 

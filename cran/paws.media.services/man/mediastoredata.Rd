@@ -44,7 +44,7 @@ stored in AWS Elemental MediaStore.
 }
 
 \examples{
-\donttest{svc <- mediastoredata()
+\dontrun{svc <- mediastoredata()
 svc$delete_object(
   Foo = 123
 )}

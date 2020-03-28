@@ -146,7 +146,7 @@ make up your data warehouse.
 }
 
 \examples{
-\donttest{svc <- redshift()
+\dontrun{svc <- redshift()
 svc$accept_reserved_node_exchange(
   Foo = 123
 )}

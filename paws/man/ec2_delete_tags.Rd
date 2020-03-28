@@ -53,7 +53,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example deletes the tag Stack=test from the specified image.
-\donttest{svc$delete_tags(
+\dontrun{svc$delete_tags(
   Resources = list(
     "ami-78a54011"
   ),

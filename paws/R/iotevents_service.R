@@ -33,7 +33,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- iotevents()
+#' \dontrun{svc <- iotevents()
 #' svc$create_detector_model(
 #'   Foo = 123
 #' )}

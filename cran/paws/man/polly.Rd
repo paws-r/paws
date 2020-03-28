@@ -53,7 +53,7 @@ get the best results for your application domain.
 
 \examples{
 # Deletes a specified pronunciation lexicon stored in an AWS Region.
-\donttest{svc <- polly()
+\dontrun{svc <- polly()
 svc$delete_lexicon(
   Name = "example"
 )}

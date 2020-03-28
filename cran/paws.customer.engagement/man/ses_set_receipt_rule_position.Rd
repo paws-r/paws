@@ -35,7 +35,7 @@ You can execute this operation no more than once per second.
 \examples{
 # The following example sets the position of a receipt rule in a receipt
 # rule set:
-\donttest{svc$set_receipt_rule_position(
+\dontrun{svc$set_receipt_rule_position(
   After = "PutRuleAfterThisRule",
   RuleName = "RuleToReposition",
   RuleSetName = "MyRuleSet"

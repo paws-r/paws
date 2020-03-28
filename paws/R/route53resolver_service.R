@@ -62,7 +62,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- route53resolver()
+#' \dontrun{svc <- route53resolver()
 #' svc$associate_resolver_endpoint_ip_address(
 #'   Foo = 123
 #' )}

@@ -75,7 +75,7 @@ environment member for an environment.
 
 \examples{
 # 
-\donttest{svc <- cloud9()
+\dontrun{svc <- cloud9()
 svc$create_environment_ec2(
   name = "my-demo-environment",
   automaticStopTimeMinutes = 60L,

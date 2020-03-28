@@ -261,7 +261,7 @@ increase gradually up to about five minutes of wait time.
 
 \examples{
 # This example runs the specified task definition on your default cluster.
-\donttest{svc$run_task(
+\dontrun{svc$run_task(
   cluster = "default",
   taskDefinition = "sleep360:1"
 )}

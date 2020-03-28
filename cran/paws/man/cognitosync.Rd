@@ -72,7 +72,7 @@ and the \href{http://docs.aws.amazon.com/mobile/sdkforios/developerguide/cognito
 }
 
 \examples{
-\donttest{svc <- cognitosync()
+\dontrun{svc <- cognitosync()
 svc$bulk_publish(
   Foo = 123
 )}

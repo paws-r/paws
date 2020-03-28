@@ -29,7 +29,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- kinesisvideoarchivedmedia()
+#' \dontrun{svc <- kinesisvideoarchivedmedia()
 #' svc$get_dash_streaming_session_url(
 #'   Foo = 123
 #' )}

@@ -39,7 +39,7 @@ Returns a list of existing clusters.
 \examples{
 # This example lists all of your available clusters in your default
 # region.
-\donttest{svc$list_clusters()}
+\dontrun{svc$list_clusters()}
 
 }
 \keyword{internal}

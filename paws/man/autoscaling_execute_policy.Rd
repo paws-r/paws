@@ -55,7 +55,7 @@ Executes the specified policy.
 \examples{
 # This example executes the specified Auto Scaling policy for the
 # specified Auto Scaling group.
-\donttest{svc$execute_policy(
+\dontrun{svc$execute_policy(
   AutoScalingGroupName = "my-auto-scaling-group",
   HonorCooldown = TRUE,
   PolicyName = "ScaleIn"

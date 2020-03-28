@@ -120,7 +120,7 @@ including how to turn it on and find your log files, see the \href{https://docs.
 # operation sets the RotationEnabled field to false and cancels all
 # scheduled rotations. To resume scheduled rotations, you must re-enable
 # rotation by calling the rotate-secret operation.
-\donttest{svc <- secretsmanager()
+\dontrun{svc <- secretsmanager()
 svc$cancel_rotate_secret(
   SecretId = "MyTestDatabaseSecret"
 )}

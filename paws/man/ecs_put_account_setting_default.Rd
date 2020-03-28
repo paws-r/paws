@@ -39,7 +39,7 @@ on a per-Region basis.
 # resource for all IAM users or roles on an account. These changes apply
 # to the entire AWS account, unless an IAM user or role explicitly
 # overrides these settings for themselves.
-\donttest{svc$put_account_setting_default(
+\dontrun{svc$put_account_setting_default(
   name = "serviceLongArnFormat",
   value = "enabled"
 )}

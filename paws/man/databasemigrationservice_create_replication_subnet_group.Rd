@@ -48,7 +48,7 @@ VPC.
 \examples{
 # Creates a replication subnet group given a list of the subnet IDs in a
 # VPC.
-\donttest{svc$create_replication_subnet_group(
+\dontrun{svc$create_replication_subnet_group(
   ReplicationSubnetGroupDescription = "US West subnet group",
   ReplicationSubnetGroupIdentifier = "us-west-2ab-vpc-215ds366",
   SubnetIds = list(

@@ -31,7 +31,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- personalize()
+#' \dontrun{svc <- personalize()
 #' svc$create_batch_inference_job(
 #'   Foo = 123
 #' )}

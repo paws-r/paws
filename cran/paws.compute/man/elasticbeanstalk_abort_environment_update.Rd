@@ -30,7 +30,7 @@ version deployment.
 \examples{
 # The following code aborts a running application version deployment for
 # an environment named my-env:
-\donttest{svc$abort_environment_update(
+\dontrun{svc$abort_environment_update(
   EnvironmentName = "my-env"
 )}
 

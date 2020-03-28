@@ -30,7 +30,7 @@ operation. If you must be able to invoke this operation, contact
 \examples{
 # The following example returns information about Device Farm offering
 # transactions.
-\donttest{svc$list_offering_transactions(
+\dontrun{svc$list_offering_transactions(
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
 )}
 

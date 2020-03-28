@@ -103,7 +103,7 @@ action.
 
 \examples{
 # This operation invokes a Lambda function
-\donttest{svc$invoke(
+\dontrun{svc$invoke(
   ClientContext = "MyApp",
   FunctionName = "MyFunction",
   InvocationType = "Event",

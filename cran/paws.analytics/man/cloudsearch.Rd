@@ -74,7 +74,7 @@ regions and endpoints, see \href{http://docs.aws.amazon.com/general/latest/gr/ra
 }
 
 \examples{
-\donttest{svc <- cloudsearch()
+\dontrun{svc <- cloudsearch()
 svc$build_suggesters(
   Foo = 123
 )}

@@ -97,7 +97,7 @@ schedule.
 # This example describes a schedule that occurs every week on Sunday,
 # starting on the specified date. Note that the output contains a single
 # schedule as an example.
-\donttest{svc$describe_scheduled_instance_availability(
+\dontrun{svc$describe_scheduled_instance_availability(
   FirstSlotStartTimeRange = list(
     EarliestTime = "2016-01-31T00:00:00Z",
     LatestTime = "2016-01-31T04:00:00Z"

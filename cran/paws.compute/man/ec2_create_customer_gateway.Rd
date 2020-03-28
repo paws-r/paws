@@ -70,7 +70,7 @@ customer gateway and do not create new customer gateways.
 \examples{
 # This example creates a customer gateway with the specified IP address
 # for its outside interface.
-\donttest{svc$create_customer_gateway(
+\dontrun{svc$create_customer_gateway(
   BgpAsn = 65534L,
   PublicIp = "12.1.2.3",
   Type = "ipsec.1"

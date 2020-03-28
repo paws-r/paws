@@ -35,7 +35,7 @@ regions.
 # indicates whether the job is a job part, in the case of export jobs.
 # Calling this API action in one of the US regions will return jobs from
 # the list of all jobs associated with this account in all US regions.
-\donttest{svc$list_jobs()}
+\dontrun{svc$list_jobs()}
 
 }
 \keyword{internal}

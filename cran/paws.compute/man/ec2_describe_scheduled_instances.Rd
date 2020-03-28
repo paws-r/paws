@@ -69,7 +69,7 @@ Instances.
 
 \examples{
 # This example describes the specified Scheduled Instance.
-\donttest{svc$describe_scheduled_instances(
+\dontrun{svc$describe_scheduled_instances(
   ScheduledInstanceIds = list(
     "sci-1234-1234-1234-1234-123456789012"
   )

@@ -52,7 +52,7 @@ different AWS account.
 
 \examples{
 # The following example lists key policies for the specified CMK.
-\donttest{svc$list_key_policies(
+\dontrun{svc$list_key_policies(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 )}
 

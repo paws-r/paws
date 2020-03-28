@@ -148,7 +148,7 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 #' @examples
 #' # This example adds a permission for an S3 bucket to invoke a Lambda
 #' # function.
-#' \donttest{svc$add_permission(
+#' \dontrun{svc$add_permission(
 #'   Action = "lambda:InvokeFunction",
 #'   FunctionName = "MyFunction",
 #'   Principal = "s3.amazonaws.com",
@@ -533,7 +533,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #'
 #' @examples
 #' # This example creates a Lambda function.
-#' \donttest{svc$create_function(
+#' \dontrun{svc$create_function(
 #'   Code = structure(
 #'     list(),
 #'     .Names = character(
@@ -609,7 +609,7 @@ lambda_create_function <- function(FunctionName, Runtime, Role, Handler, Code, D
 #'
 #' @examples
 #' # This operation deletes a Lambda function alias
-#' \donttest{svc$delete_alias(
+#' \dontrun{svc$delete_alias(
 #'   FunctionName = "myFunction",
 #'   Name = "alias"
 #' )}
@@ -658,7 +658,7 @@ lambda_delete_alias <- function(FunctionName, Name) {
 #'
 #' @examples
 #' # This operation deletes a Lambda function event source mapping
-#' \donttest{svc$delete_event_source_mapping(
+#' \dontrun{svc$delete_event_source_mapping(
 #'   UUID = "12345kxodurf3443"
 #' )}
 #'
@@ -724,7 +724,7 @@ lambda_delete_event_source_mapping <- function(UUID) {
 #'
 #' @examples
 #' # This operation deletes a Lambda function
-#' \donttest{svc$delete_function(
+#' \dontrun{svc$delete_function(
 #'   FunctionName = "myFunction",
 #'   Qualifier = "1"
 #' )}
@@ -962,7 +962,7 @@ lambda_delete_provisioned_concurrency_config <- function(FunctionName, Qualifier
 #'
 #' @examples
 #' # This operation retrieves a Lambda customer's account settings
-#' \donttest{svc$get_account_settings()}
+#' \dontrun{svc$get_account_settings()}
 #'
 #' @keywords internal
 #'
@@ -1017,7 +1017,7 @@ lambda_get_account_settings <- function() {
 #'
 #' @examples
 #' # This operation retrieves a Lambda function alias
-#' \donttest{svc$get_alias(
+#' \dontrun{svc$get_alias(
 #'   FunctionName = "myFunction",
 #'   Name = "myFunctionAlias"
 #' )}
@@ -1061,7 +1061,7 @@ lambda_get_alias <- function(FunctionName, Name) {
 #'
 #' @examples
 #' # This operation retrieves a Lambda function's event source mapping
-#' \donttest{svc$get_event_source_mapping(
+#' \dontrun{svc$get_event_source_mapping(
 #'   UUID = "123489-xxxxx-kdla8d89d7"
 #' )}
 #'
@@ -1124,7 +1124,7 @@ lambda_get_event_source_mapping <- function(UUID) {
 #'
 #' @examples
 #' # This operation retrieves a Lambda function's event source mapping
-#' \donttest{svc$get_function(
+#' \dontrun{svc$get_function(
 #'   FunctionName = "myFunction",
 #'   Qualifier = "1"
 #' )}
@@ -1238,7 +1238,7 @@ lambda_get_function_concurrency <- function(FunctionName) {
 #'
 #' @examples
 #' # This operation retrieves a Lambda function's event source mapping
-#' \donttest{svc$get_function_configuration(
+#' \dontrun{svc$get_function_configuration(
 #'   FunctionName = "myFunction",
 #'   Qualifier = "1"
 #' )}
@@ -1476,7 +1476,7 @@ lambda_get_layer_version_policy <- function(LayerName, VersionNumber) {
 #'
 #' @examples
 #' # This operation retrieves a Lambda function policy
-#' \donttest{svc$get_policy(
+#' \dontrun{svc$get_policy(
 #'   FunctionName = "myFunction",
 #'   Qualifier = "1"
 #' )}
@@ -1655,7 +1655,7 @@ lambda_get_provisioned_concurrency_config <- function(FunctionName, Qualifier) {
 #'
 #' @examples
 #' # This operation invokes a Lambda function
-#' \donttest{svc$invoke(
+#' \dontrun{svc$invoke(
 #'   ClientContext = "MyApp",
 #'   FunctionName = "MyFunction",
 #'   InvocationType = "Event",
@@ -1718,7 +1718,7 @@ lambda_invoke <- function(FunctionName, InvocationType = NULL, LogType = NULL, C
 #'
 #' @examples
 #' # This operation invokes a Lambda function asynchronously
-#' \donttest{svc$invoke_async(
+#' \dontrun{svc$invoke_async(
 #'   FunctionName = "myFunction",
 #'   InvokeArgs = "fileb://file-path/input.json"
 #' )}
@@ -1783,7 +1783,7 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
 #'
 #' @examples
 #' # This operation retrieves a Lambda function's aliases
-#' \donttest{svc$list_aliases(
+#' \dontrun{svc$list_aliases(
 #'   FunctionName = "myFunction",
 #'   FunctionVersion = "1",
 #'   Marker = "",
@@ -1948,7 +1948,7 @@ lambda_list_function_event_invoke_configs <- function(FunctionName, Marker = NUL
 #' @usage
 #' lambda_list_functions(MasterRegion, FunctionVersion, Marker, MaxItems)
 #'
-#' @param MasterRegion For Lambda\\@Edge functions, the AWS Region of the master function. For
+#' @param MasterRegion For Lambda\\@@Edge functions, the AWS Region of the master function. For
 #' example, `us-east-2` or `ALL`. If specified, you must set
 #' `FunctionVersion` to `ALL`.
 #' @param FunctionVersion Set to `ALL` to include entries for all published versions of each
@@ -1970,7 +1970,7 @@ lambda_list_function_event_invoke_configs <- function(FunctionName, Marker = NUL
 #'
 #' @examples
 #' # This operation retrieves a Lambda functions
-#' \donttest{svc$list_functions(
+#' \dontrun{svc$list_functions(
 #'   Marker = "",
 #'   MaxItems = 123L
 #' )}
@@ -2222,7 +2222,7 @@ lambda_list_tags <- function(Resource) {
 #'
 #' @examples
 #' # This operation retrieves a Lambda function versions
-#' \donttest{svc$list_versions_by_function(
+#' \dontrun{svc$list_versions_by_function(
 #'   FunctionName = "myFunction",
 #'   Marker = "",
 #'   MaxItems = 123L
@@ -2371,7 +2371,7 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #'
 #' @examples
 #' # This operation publishes a version of a Lambda function
-#' \donttest{svc$publish_version(
+#' \dontrun{svc$publish_version(
 #'   CodeSha256 = "",
 #'   Description = "",
 #'   FunctionName = "myFunction"
@@ -2699,7 +2699,7 @@ lambda_remove_layer_version_permission <- function(LayerName, VersionNumber, Sta
 #'
 #' @examples
 #' # This operation removes a Lambda function's permissions
-#' \donttest{svc$remove_permission(
+#' \dontrun{svc$remove_permission(
 #'   FunctionName = "myFunction",
 #'   Qualifier = "1",
 #'   StatementId = "role-statement-id"
@@ -2858,7 +2858,7 @@ lambda_untag_resource <- function(Resource, TagKeys) {
 #'
 #' @examples
 #' # This operation updates a Lambda function alias
-#' \donttest{svc$update_alias(
+#' \dontrun{svc$update_alias(
 #'   Description = "",
 #'   FunctionName = "myFunction",
 #'   FunctionVersion = "1",
@@ -2974,7 +2974,7 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
 #'
 #' @examples
 #' # This operation updates a Lambda function event source mapping
-#' \donttest{svc$update_event_source_mapping(
+#' \dontrun{svc$update_event_source_mapping(
 #'   BatchSize = 123L,
 #'   Enabled = TRUE,
 #'   FunctionName = "myFunction",
@@ -3056,7 +3056,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #'
 #' @examples
 #' # This operation updates a Lambda function's code
-#' \donttest{svc$update_function_code(
+#' \dontrun{svc$update_function_code(
 #'   FunctionName = "myFunction",
 #'   Publish = TRUE,
 #'   S3Bucket = "myBucket",
@@ -3201,7 +3201,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'
 #' @examples
 #' # This operation updates a Lambda function's configuration
-#' \donttest{svc$update_function_configuration(
+#' \dontrun{svc$update_function_configuration(
 #'   Description = "",
 #'   FunctionName = "myFunction",
 #'   Handler = "index.handler",

@@ -56,14 +56,14 @@ organization policies.
 # service control policies enabled on the root:
 # 
 # 
-\donttest{svc$create_organization()}
+\dontrun{svc$create_organization()}
 
 # In the following example, Bill creates an organization using credentials
 # from account 111111111111, and configures the organization to support
 # only the consolidated billing feature set:
 # 
 # 
-\donttest{svc$create_organization(
+\dontrun{svc$create_organization(
   FeatureSet = "CONSOLIDATED_BILLING"
 )}
 

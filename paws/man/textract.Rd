@@ -45,7 +45,7 @@ Amazon Textract.
 }
 
 \examples{
-\donttest{svc <- textract()
+\dontrun{svc <- textract()
 svc$analyze_document(
   Foo = 123
 )}

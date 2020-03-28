@@ -53,7 +53,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- ebs()
+#' \dontrun{svc <- ebs()
 #' svc$get_snapshot_block(
 #'   Foo = 123
 #' )}

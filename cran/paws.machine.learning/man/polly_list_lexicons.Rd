@@ -23,7 +23,7 @@ more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/managing
 
 \examples{
 # Returns a list of pronunciation lexicons stored in an AWS Region.
-\donttest{svc$list_lexicons()}
+\dontrun{svc$list_lexicons()}
 
 }
 \keyword{internal}

@@ -28,7 +28,7 @@ delete the endpoint.
 # Deletes the specified endpoint. All tasks associated with the endpoint
 # must be deleted before you can delete the endpoint.
 # 
-\donttest{svc$delete_endpoint(
+\dontrun{svc$delete_endpoint(
   EndpointArn = "arn:aws:dms:us-east-1:123456789012:endpoint:RAAR3R22XSH46S3PWLC3NJAWKM"
 )}
 

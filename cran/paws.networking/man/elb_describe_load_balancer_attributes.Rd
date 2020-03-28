@@ -21,7 +21,7 @@ Describes the attributes for the specified load balancer.
 
 \examples{
 # This example describes the attributes of the specified load balancer.
-\donttest{svc$describe_load_balancer_attributes(
+\dontrun{svc$describe_load_balancer_attributes(
   LoadBalancerName = "my-load-balancer"
 )}
 

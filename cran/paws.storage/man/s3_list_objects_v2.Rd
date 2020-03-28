@@ -92,7 +92,7 @@ The following operations are related to \code{ListObjectsV2}:
 \examples{
 # The following example retrieves object list. The request specifies max
 # keys to limit response to include only 2 object keys.
-\donttest{svc$list_objects_v2(
+\dontrun{svc$list_objects_v2(
   Bucket = "examplebucket",
   MaxKeys = "2"
 )}

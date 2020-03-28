@@ -57,7 +57,7 @@ The AWS Cost and Usage Report API provides the following endpoint:
 \examples{
 # The following example deletes the AWS Cost and Usage report named
 # ExampleReport.
-\donttest{svc <- costandusagereportservice()
+\dontrun{svc <- costandusagereportservice()
 svc$delete_report_definition(
   ReportName = "ExampleReport"
 )}

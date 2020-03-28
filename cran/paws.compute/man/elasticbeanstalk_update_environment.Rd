@@ -120,14 +120,14 @@ descriptions with different \code{DeploymentStatus} values.
 \examples{
 # The following operation updates an environment named "my-env" to version
 # "v2" of the application to which it belongs:
-\donttest{svc$update_environment(
+\dontrun{svc$update_environment(
   EnvironmentName = "my-env",
   VersionLabel = "v2"
 )}
 
 # The following operation configures several options in the
 # aws:elb:loadbalancer namespace:
-\donttest{svc$update_environment(
+\dontrun{svc$update_environment(
   EnvironmentName = "my-env",
   OptionSettings = list(
     list(

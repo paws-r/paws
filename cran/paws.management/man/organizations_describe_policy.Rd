@@ -32,7 +32,7 @@ account.
 \examples{
 # The following example shows how to request information about a
 # policy:/n/n
-\donttest{svc$describe_policy(
+\dontrun{svc$describe_policy(
   PolicyId = "p-examplepolicyid111"
 )}
 

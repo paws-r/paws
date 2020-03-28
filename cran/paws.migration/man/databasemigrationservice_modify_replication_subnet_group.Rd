@@ -31,7 +31,7 @@ Modifies the settings for the specified replication subnet group.
 
 \examples{
 # Modifies the settings for the specified replication subnet group.
-\donttest{svc$modify_replication_subnet_group(
+\dontrun{svc$modify_replication_subnet_group(
   ReplicationSubnetGroupDescription = "",
   ReplicationSubnetGroupIdentifier = "",
   SubnetIds = list()

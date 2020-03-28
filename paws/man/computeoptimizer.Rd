@@ -54,7 +54,7 @@ the \href{https://docs.aws.amazon.com/compute-optimizer/latest/ug/}{AWS Compute 
 }
 
 \examples{
-\donttest{svc <- computeoptimizer()
+\dontrun{svc <- computeoptimizer()
 svc$get_auto_scaling_group_recommendations(
   Foo = 123
 )}

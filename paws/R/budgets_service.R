@@ -74,7 +74,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- budgets()
+#' \dontrun{svc <- budgets()
 #' svc$create_budget(
 #'   Foo = 123
 #' )}

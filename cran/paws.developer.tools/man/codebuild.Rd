@@ -153,7 +153,7 @@ set of credentials.
 \examples{
 # The following example gets information about builds with the specified
 # build IDs.
-\donttest{svc <- codebuild()
+\dontrun{svc <- codebuild()
 svc$batch_get_builds(
   ids = list(
     "codebuild-demo-project:9b0ac37f-d19e-4254-9079-f47e9a389eEX",

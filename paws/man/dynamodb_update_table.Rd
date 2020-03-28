@@ -183,7 +183,7 @@ complete.
 \examples{
 # This example increases the provisioned read and write capacity on the
 # Music table.
-\donttest{svc$update_table(
+\dontrun{svc$update_table(
   ProvisionedThroughput = list(
     ReadCapacityUnits = 10L,
     WriteCapacityUnits = 10L

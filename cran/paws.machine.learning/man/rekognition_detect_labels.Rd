@@ -120,7 +120,7 @@ This operation requires permissions to perform the
 
 \examples{
 # This operation detects labels in the supplied image
-\donttest{svc$detect_labels(
+\dontrun{svc$detect_labels(
   Image = list(
     S3Object = list(
       Bucket = "mybucket",

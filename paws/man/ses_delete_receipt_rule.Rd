@@ -30,7 +30,7 @@ You can execute this operation no more than once per second.
 
 \examples{
 # The following example deletes a receipt rule:
-\donttest{svc$delete_receipt_rule(
+\dontrun{svc$delete_receipt_rule(
   RuleName = "MyRule",
   RuleSetName = "MyRuleSet"
 )}

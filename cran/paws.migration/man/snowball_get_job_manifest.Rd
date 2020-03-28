@@ -61,7 +61,7 @@ code, expire 90 days after the job is created.
 # 
 # The credentials of a given job, including its
 # manifest file and unlock code, expire 90 days after the job is created.
-\donttest{svc$get_job_manifest(
+\dontrun{svc$get_job_manifest(
   JobId = "JID123e4567-e89b-12d3-a456-426655440000"
 )}
 

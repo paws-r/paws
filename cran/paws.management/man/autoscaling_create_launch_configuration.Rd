@@ -217,7 +217,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 \examples{
 # This example creates a launch configuration.
-\donttest{svc$create_launch_configuration(
+\dontrun{svc$create_launch_configuration(
   IamInstanceProfile = "my-iam-role",
   ImageId = "ami-12345678",
   InstanceType = "m3.medium",

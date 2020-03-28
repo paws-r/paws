@@ -190,7 +190,7 @@ Registers an AWS Batch job definition.
 
 \examples{
 # This example registers a job definition for a simple container job.
-\donttest{svc$register_job_definition(
+\dontrun{svc$register_job_definition(
   type = "container",
   containerProperties = list(
     command = list(

@@ -29,7 +29,7 @@ Describes the lifecycle hooks for the specified Auto Scaling group.
 \examples{
 # This example describes the lifecycle hooks for the specified Auto
 # Scaling group.
-\donttest{svc$describe_lifecycle_hooks(
+\dontrun{svc$describe_lifecycle_hooks(
   AutoScalingGroupName = "my-auto-scaling-group"
 )}
 

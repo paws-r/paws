@@ -49,7 +49,7 @@ region.
 \examples{
 # Returns information about the endpoints for your account in the current
 # region.
-\donttest{svc$describe_endpoints(
+\dontrun{svc$describe_endpoints(
   Filters = list(
     list(
       Name = "string",

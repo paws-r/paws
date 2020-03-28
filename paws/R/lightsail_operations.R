@@ -1428,7 +1428,7 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #'     [MySQL 5.7](https://dev.mysql.com/doc/refman/5.7/en/keywords.html)
 #'     respectively.
 #' @param masterUserPassword The password for the master user of your new database. The password can
-#' include any printable ASCII character except \"/\", \"\"\", or \"@\".
+#' include any printable ASCII character except \"/\", \"\"\", or \"@@\".
 #' 
 #' Constraints: Must contain 8 to 41 characters.
 #' @param preferredBackupWindow The daily time range during which automated backups are created for your
@@ -5371,7 +5371,7 @@ lightsail_update_load_balancer_attribute <- function(loadBalancerName, attribute
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your database to update.
 #' @param masterUserPassword The password for the master user of your database. The password can
-#' include any printable ASCII character except \"/\", \"\"\", or \"@\".
+#' include any printable ASCII character except \"/\", \"\"\", or \"@@\".
 #' 
 #' Constraints: Must contain 8 to 41 characters.
 #' @param rotateMasterUserPassword When `true`, the master user password is changed to a new strong

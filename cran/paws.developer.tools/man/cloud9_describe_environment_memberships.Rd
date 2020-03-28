@@ -55,13 +55,13 @@ environment.
 \examples{
 # The following example gets information about all of the environment
 # members for the specified AWS Cloud9 development environment.
-\donttest{svc$describe_environment_memberships(
+\dontrun{svc$describe_environment_memberships(
   environmentId = "8d9967e2f0624182b74e7690ad69ebEX"
 )}
 
 # The following example gets information about the owner of the specified
 # AWS Cloud9 development environment.
-\donttest{svc$describe_environment_memberships(
+\dontrun{svc$describe_environment_memberships(
   environmentId = "8d9967e2f0624182b74e7690ad69ebEX",
   permissions = list(
     "owner"
@@ -70,7 +70,7 @@ environment.
 
 # The following example gets AWS Cloud9 development environment membership
 # information for the specified user.
-\donttest{svc$describe_environment_memberships(
+\dontrun{svc$describe_environment_memberships(
   userArn = "arn:aws:iam::123456789012:user/MyDemoUser"
 )}
 

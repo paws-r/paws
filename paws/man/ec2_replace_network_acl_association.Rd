@@ -38,7 +38,7 @@ This is an idempotent operation.
 \examples{
 # This example associates the specified network ACL with the subnet for
 # the specified network ACL association.
-\donttest{svc$replace_network_acl_association(
+\dontrun{svc$replace_network_acl_association(
   AssociationId = "aclassoc-e5b95c8c",
   NetworkAclId = "acl-5fb85d36"
 )}

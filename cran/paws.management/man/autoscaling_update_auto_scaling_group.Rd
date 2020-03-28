@@ -210,14 +210,14 @@ using PutScalingPolicy.
 \examples{
 # This example updates the launch configuration of the specified Auto
 # Scaling group.
-\donttest{svc$update_auto_scaling_group(
+\dontrun{svc$update_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   LaunchConfigurationName = "new-launch-config"
 )}
 
 # This example updates the minimum size and maximum size of the specified
 # Auto Scaling group.
-\donttest{svc$update_auto_scaling_group(
+\dontrun{svc$update_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   MaxSize = 3L,
   MinSize = 1L
@@ -225,7 +225,7 @@ using PutScalingPolicy.
 
 # This example enables instance protection for the specified Auto Scaling
 # group.
-\donttest{svc$update_auto_scaling_group(
+\dontrun{svc$update_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   NewInstancesProtectedFromScaleIn = TRUE
 )}

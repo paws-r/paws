@@ -29,7 +29,7 @@ Gets a list of AWS Cloud9 development environment identifiers.
 
 \examples{
 # 
-\donttest{svc$list_environments()}
+\dontrun{svc$list_environments()}
 
 }
 \keyword{internal}

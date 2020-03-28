@@ -146,7 +146,7 @@ during SubmitJob override parameters defined in the job definition.
 \examples{
 # This example submits a simple container job called example to the
 # HighPriority job queue.
-\donttest{svc$submit_job(
+\dontrun{svc$submit_job(
   jobDefinition = "sleep60",
   jobName = "example",
   jobQueue = "HighPriority"

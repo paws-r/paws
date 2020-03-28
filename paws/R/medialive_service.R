@@ -30,7 +30,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- medialive()
+#' \dontrun{svc <- medialive()
 #' svc$batch_update_schedule(
 #'   Foo = 123
 #' )}

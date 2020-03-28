@@ -44,7 +44,7 @@ available for EC2 are \code{volumeType}, \code{maxIopsVolume}, \code{operation},
 
 \examples{
 #
-\donttest{svc$describe_services(
+\dontrun{svc$describe_services(
   FormatVersion = "aws_v1",
   MaxResults = 1L,
   ServiceCode = "AmazonEC2"

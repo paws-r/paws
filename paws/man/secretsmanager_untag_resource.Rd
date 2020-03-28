@@ -73,7 +73,7 @@ TagResource.
 # metadata. For each, both the tag and the associated value are removed.
 # There is no output from this API. To see the result, use the
 # DescribeSecret operation.
-\donttest{svc$untag_resource(
+\dontrun{svc$untag_resource(
   SecretId = "MyTestDatabaseSecret",
   TagKeys = list(
     "FirstTag",

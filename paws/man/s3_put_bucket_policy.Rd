@@ -54,9 +54,9 @@ The following operations are related to \code{PutBucketPolicy}:
 
 \examples{
 # The following example sets a permission policy on a bucket.
-\donttest{svc$put_bucket_policy(
+\dontrun{svc$put_bucket_policy(
   Bucket = "examplebucket",
-  Policy = "{\"Version\": \"2012-10-17\", \"Statement\": [{ \"Sid\": \"id-1\",\"Effect\": ..."
+  Policy = "\{\"Version\": \"2012-10-17\", \"Statement\": [\{ \"Sid\": \"id-1\",\"Effect\": ..."
 )}
 
 }

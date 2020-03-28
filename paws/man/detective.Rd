@@ -84,7 +84,7 @@ All API actions are logged as CloudTrail events. See \href{https://docs.aws.amaz
 }
 
 \examples{
-\donttest{svc <- detective()
+\dontrun{svc <- detective()
 svc$accept_invitation(
   Foo = 123
 )}

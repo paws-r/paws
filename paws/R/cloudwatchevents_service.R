@@ -50,7 +50,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- cloudwatchevents()
+#' \dontrun{svc <- cloudwatchevents()
 #' svc$activate_event_source(
 #'   Foo = 123
 #' )}

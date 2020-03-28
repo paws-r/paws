@@ -62,7 +62,7 @@ tags in your repository.
 \examples{
 # This example lists all of the images in the repository named ubuntu in
 # the default registry in the current account.
-\donttest{svc$list_images(
+\dontrun{svc$list_images(
   repositoryName = "ubuntu"
 )}
 

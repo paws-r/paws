@@ -41,7 +41,7 @@ route table ID of the new main route table.
 \examples{
 # This example associates the specified route table with the subnet for
 # the specified route table association.
-\donttest{svc$replace_route_table_association(
+\dontrun{svc$replace_route_table_association(
   AssociationId = "rtbassoc-781d0d1a",
   RouteTableId = "rtb-22574640"
 )}

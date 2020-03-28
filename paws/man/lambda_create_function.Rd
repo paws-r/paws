@@ -162,7 +162,7 @@ service. For more information, see \href{https://docs.aws.amazon.com/lambda/late
 
 \examples{
 # This example creates a Lambda function.
-\donttest{svc$create_function(
+\dontrun{svc$create_function(
   Code = structure(
     list(),
     .Names = character(

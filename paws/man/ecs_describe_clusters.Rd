@@ -54,7 +54,7 @@ Describes one or more of your clusters.
 \examples{
 # This example provides a description of the specified cluster in your
 # default region.
-\donttest{svc$describe_clusters(
+\dontrun{svc$describe_clusters(
   clusters = list(
     "default"
   )

@@ -81,7 +81,7 @@ You can execute this operation no more than once per second.
 
 \examples{
 # The following example creates a new receipt rule:
-\donttest{svc$create_receipt_rule(
+\dontrun{svc$create_receipt_rule(
   After = "",
   Rule = list(
     Actions = list(

@@ -51,7 +51,7 @@ Swaps the CNAMEs of two environments.
 \examples{
 # The following operation swaps the assigned subdomains of two
 # environments:
-\donttest{svc$swap_environment_cnam_es(
+\dontrun{svc$swap_environment_cnam_es(
   DestinationEnvironmentName = "my-env-green",
   SourceEnvironmentName = "my-env-blue"
 )}

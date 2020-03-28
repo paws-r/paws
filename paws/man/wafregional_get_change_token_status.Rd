@@ -35,7 +35,7 @@ request to all AWS WAF servers.
 \examples{
 # The following example returns the status of a change token with the ID
 # abcd12f2-46da-4fdb-b8d5-fbd4c466928f.
-\donttest{svc$get_change_token_status(
+\dontrun{svc$get_change_token_status(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
 )}
 

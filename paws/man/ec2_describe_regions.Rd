@@ -58,7 +58,7 @@ in the \emph{AWS General Reference}.
 
 \examples{
 # This example describes all the regions that are available to you.
-\donttest{svc$describe_regions()}
+\dontrun{svc$describe_regions()}
 
 }
 \keyword{internal}

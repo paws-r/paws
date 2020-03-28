@@ -52,7 +52,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- cloudtrail()
+#' \dontrun{svc <- cloudtrail()
 #' svc$add_tags(
 #'   Foo = 123
 #' )}

@@ -32,7 +32,7 @@ so on.
 
 \examples{
 # This example deletes the specified VPC.
-\donttest{svc$delete_vpc(
+\dontrun{svc$delete_vpc(
   VpcId = "vpc-a01106c2"
 )}
 

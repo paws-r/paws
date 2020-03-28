@@ -33,7 +33,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- mobile()
+#' \dontrun{svc <- mobile()
 #' svc$create_project(
 #'   Foo = 123
 #' )}

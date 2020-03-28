@@ -42,7 +42,7 @@ group.
 \examples{
 # This example describes the scaling activities for the specified Auto
 # Scaling group.
-\donttest{svc$describe_scaling_activities(
+\dontrun{svc$describe_scaling_activities(
   AutoScalingGroupName = "my-auto-scaling-group"
 )}
 

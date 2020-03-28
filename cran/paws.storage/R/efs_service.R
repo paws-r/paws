@@ -37,7 +37,7 @@ NULL
 #' @examples
 #' # This operation creates a new file system with the default generalpurpose
 #' # performance mode.
-#' \donttest{svc <- efs()
+#' \dontrun{svc <- efs()
 #' svc$create_file_system(
 #'   CreationToken = "tokenstring",
 #'   PerformanceMode = "generalPurpose",

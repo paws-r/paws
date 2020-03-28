@@ -22,13 +22,13 @@ No longer used, see GetBucketNotificationConfiguration.
 \examples{
 # The following example returns notification configuration set on a
 # bucket.
-\donttest{svc$get_bucket_notification(
+\dontrun{svc$get_bucket_notification(
   Bucket = "examplebucket"
 )}
 
 # The following example returns notification configuration set on a
 # bucket.
-\donttest{svc$get_bucket_notification(
+\dontrun{svc$get_bucket_notification(
   Bucket = "examplebucket"
 )}
 

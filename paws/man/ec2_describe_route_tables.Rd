@@ -109,7 +109,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 
 \examples{
 # This example describes the specified route table.
-\donttest{svc$describe_route_tables(
+\dontrun{svc$describe_route_tables(
   RouteTableIds = list(
     "rtb-1f382e7d"
   )

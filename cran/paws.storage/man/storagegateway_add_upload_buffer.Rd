@@ -37,7 +37,7 @@ want to configure as upload buffer.
 \examples{
 # Configures one or more gateway local disks as upload buffer for a
 # specified gateway.
-\donttest{svc$add_upload_buffer(
+\dontrun{svc$add_upload_buffer(
   DiskIds = list(
     "pci-0000:03:00.0-scsi-0:0:0:0",
     "pci-0000:03:00.0-scsi-0:0:1:0"

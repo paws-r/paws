@@ -380,7 +380,7 @@ You can also return the item\'s attribute values in the same
 # This example updates an item in the Music table. It adds a new attribute
 # (Year) and modifies the AlbumTitle attribute.  All of the attributes in
 # the item, as they appear after the update, are returned in the response.
-\donttest{svc$update_item(
+\dontrun{svc$update_item(
   ExpressionAttributeNames = list(
     `#AT` = "AlbumTitle",
     `#Y` = "Year"

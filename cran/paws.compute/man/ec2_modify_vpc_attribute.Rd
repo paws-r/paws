@@ -49,7 +49,7 @@ Modifies the specified attribute of the specified VPC.
 # attribute is true, the Amazon DNS server resolves DNS hostnames for
 # instances in the VPC to their corresponding IP addresses; otherwise, it
 # does not.
-\donttest{svc$modify_vpc_attribute(
+\dontrun{svc$modify_vpc_attribute(
   EnableDnsSupport = list(
     Value = FALSE
   ),
@@ -60,7 +60,7 @@ Modifies the specified attribute of the specified VPC.
 # indicates whether instances launched in the VPC get DNS hostnames. If
 # this attribute is true, instances in the VPC get DNS hostnames;
 # otherwise, they do not.
-\donttest{svc$modify_vpc_attribute(
+\dontrun{svc$modify_vpc_attribute(
   EnableDnsHostnames = list(
     Value = FALSE
   ),

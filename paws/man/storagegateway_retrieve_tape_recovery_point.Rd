@@ -35,7 +35,7 @@ gateway. There is no charge for retrieving recovery points.
 
 \examples{
 # Retrieves the recovery point for the specified virtual tape.
-\donttest{svc$retrieve_tape_recovery_point(
+\dontrun{svc$retrieve_tape_recovery_point(
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
   TapeARN = "arn:aws:storagegateway:us-east-1:999999999999:tape/TEST0AA2AF"
 )}

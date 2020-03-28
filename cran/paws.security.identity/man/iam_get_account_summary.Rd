@@ -18,7 +18,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following command returns information about the IAM entity quotas
 # and usage in the current AWS account.
-\donttest{svc$get_account_summary()}
+\dontrun{svc$get_account_summary()}
 
 }
 \keyword{internal}

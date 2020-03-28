@@ -42,7 +42,7 @@ about a function or version, use GetFunction.
 
 \examples{
 # This operation retrieves a Lambda functions
-\donttest{svc$list_functions(
+\dontrun{svc$list_functions(
   Marker = "",
   MaxItems = 123L
 )}

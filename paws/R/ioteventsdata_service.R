@@ -33,7 +33,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- ioteventsdata()
+#' \dontrun{svc <- ioteventsdata()
 #' svc$batch_put_message(
 #'   Foo = 123
 #' )}

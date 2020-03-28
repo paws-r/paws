@@ -41,7 +41,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- accessanalyzer()
+#' \dontrun{svc <- accessanalyzer()
 #' svc$create_analyzer(
 #'   Foo = 123
 #' )}

@@ -87,7 +87,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- support()
+#' \dontrun{svc <- support()
 #' svc$add_attachments_to_set(
 #'   Foo = 123
 #' )}

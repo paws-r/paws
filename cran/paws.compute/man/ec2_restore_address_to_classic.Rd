@@ -32,7 +32,7 @@ address must not be associated with an instance or network interface.
 \examples{
 # This example restores the specified Elastic IP address to the
 # EC2-Classic platform.
-\donttest{svc$restore_address_to_classic(
+\dontrun{svc$restore_address_to_classic(
   PublicIp = "198.51.100.0"
 )}
 

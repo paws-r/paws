@@ -38,7 +38,7 @@ in the \emph{Classic Load Balancers Guide}.
 \examples{
 # This example deregisters the specified instance from the specified load
 # balancer.
-\donttest{svc$deregister_instances_from_load_balancer(
+\dontrun{svc$deregister_instances_from_load_balancer(
   Instances = list(
     list(
       InstanceId = "i-d6f6fae3"

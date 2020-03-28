@@ -40,7 +40,7 @@ The following operations are related to \code{DeleteBucketReplication}:
 
 \examples{
 # The following example deletes replication configuration set on bucket.
-\donttest{svc$delete_bucket_replication(
+\dontrun{svc$delete_bucket_replication(
   Bucket = "example"
 )}
 

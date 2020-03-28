@@ -43,7 +43,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 \examples{
 # This example adds the specified notification to the specified Auto
 # Scaling group.
-\donttest{svc$put_notification_configuration(
+\dontrun{svc$put_notification_configuration(
   AutoScalingGroupName = "my-auto-scaling-group",
   NotificationTypes = list(
     "autoscaling:TEST_NOTIFICATION"

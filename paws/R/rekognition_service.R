@@ -32,7 +32,7 @@ NULL
 #' @examples
 #' # This operation compares the largest face detected in the source image
 #' # with each face detected in the target image.
-#' \donttest{svc <- rekognition()
+#' \dontrun{svc <- rekognition()
 #' svc$compare_faces(
 #'   SimilarityThreshold = 90L,
 #'   SourceImage = list(

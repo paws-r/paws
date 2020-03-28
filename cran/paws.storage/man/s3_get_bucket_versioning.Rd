@@ -36,7 +36,7 @@ The following operations are related to \code{GetBucketVersioning}:
 
 \examples{
 # The following example retrieves bucket versioning configuration.
-\donttest{svc$get_bucket_versioning(
+\dontrun{svc$get_bucket_versioning(
   Bucket = "examplebucket"
 )}
 

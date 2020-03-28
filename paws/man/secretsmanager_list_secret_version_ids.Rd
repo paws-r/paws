@@ -86,7 +86,7 @@ To run this command, you must have the following permissions:
 \examples{
 # The following example shows how to retrieve a list of all of the
 # versions of a secret, including those without any staging labels.
-\donttest{svc$list_secret_version_ids(
+\dontrun{svc$list_secret_version_ids(
   IncludeDeprecated = TRUE,
   SecretId = "MyTestDatabaseSecret"
 )}

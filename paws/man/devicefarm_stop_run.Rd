@@ -27,7 +27,7 @@ were in progress or already completed.
 
 \examples{
 # The following example stops a specific test run.
-\donttest{svc$stop_run(
+\dontrun{svc$stop_run(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:EXAMPLE-GUID-123-456"
 )}
 

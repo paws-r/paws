@@ -72,7 +72,7 @@ object versions.) For more information, see \href{https://docs.aws.amazon.com/Am
 \examples{
 # The following example sets versioning configuration on bucket. The
 # configuration enables versioning on the bucket.
-\donttest{svc$put_bucket_versioning(
+\dontrun{svc$put_bucket_versioning(
   Bucket = "examplebucket",
   VersioningConfiguration = list(
     MFADelete = "Disabled",

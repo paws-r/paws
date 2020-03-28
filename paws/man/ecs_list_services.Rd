@@ -51,7 +51,7 @@ Lists the services that are running in a specified cluster.
 \examples{
 # This example lists the services running in the default cluster for an
 # account.
-\donttest{svc$list_services()}
+\dontrun{svc$list_services()}
 
 }
 \keyword{internal}

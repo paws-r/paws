@@ -31,7 +31,7 @@ Removes one or more tags from the specified load balancer.
 
 \examples{
 # This example removes the specified tag from the specified load balancer.
-\donttest{svc$remove_tags(
+\dontrun{svc$remove_tags(
   LoadBalancerNames = list(
     "my-load-balancer"
   ),

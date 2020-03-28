@@ -36,7 +36,7 @@ NULL
 #' # The following add-client-id-to-open-id-connect-provider command adds the
 #' # client ID my-application-ID to the OIDC provider named
 #' # server.example.com:
-#' \donttest{svc$add_client_id_to_open_id_connect_provider(
+#' \dontrun{svc$add_client_id_to_open_id_connect_provider(
 #'   ClientID = "my-application-ID",
 #'   OpenIDConnectProviderArn = "arn:aws:iam::123456789012:oidc-provider/server.example.com"
 #' )}
@@ -91,13 +91,13 @@ iam_add_client_id_to_open_id_connect_provider <- function(OpenIDConnectProviderA
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param RoleName &#91;required&#93; The name of the role to add.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -110,7 +110,7 @@ iam_add_client_id_to_open_id_connect_provider <- function(OpenIDConnectProviderA
 #' @examples
 #' # The following command adds the role named S3Access to the instance
 #' # profile named Webserver:
-#' \donttest{svc$add_role_to_instance_profile(
+#' \dontrun{svc$add_role_to_instance_profile(
 #'   InstanceProfileName = "Webserver",
 #'   RoleName = "S3Access"
 #' )}
@@ -147,13 +147,13 @@ iam_add_role_to_instance_profile <- function(InstanceProfileName, RoleName) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param UserName &#91;required&#93; The name of the user to add.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -166,7 +166,7 @@ iam_add_role_to_instance_profile <- function(InstanceProfileName, RoleName) {
 #' @examples
 #' # The following command adds an IAM user named Bob to the IAM group named
 #' # Admins:
-#' \donttest{svc$add_user_to_group(
+#' \dontrun{svc$add_user_to_group(
 #'   GroupName = "Admins",
 #'   UserName = "Bob"
 #' )}
@@ -210,7 +210,7 @@ iam_add_user_to_group <- function(GroupName, UserName) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to attach.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
@@ -229,7 +229,7 @@ iam_add_user_to_group <- function(GroupName, UserName) {
 #' @examples
 #' # The following command attaches the AWS managed policy named
 #' # ReadOnlyAccess to the IAM group named Finance.
-#' \donttest{svc$attach_group_policy(
+#' \dontrun{svc$attach_group_policy(
 #'   GroupName = "Finance",
 #'   PolicyArn = "arn:aws:iam::aws:policy/ReadOnlyAccess"
 #' )}
@@ -278,7 +278,7 @@ iam_attach_group_policy <- function(GroupName, PolicyArn) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to attach.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
@@ -297,7 +297,7 @@ iam_attach_group_policy <- function(GroupName, PolicyArn) {
 #' @examples
 #' # The following command attaches the AWS managed policy named
 #' # ReadOnlyAccess to the IAM role named ReadOnlyRole.
-#' \donttest{svc$attach_role_policy(
+#' \dontrun{svc$attach_role_policy(
 #'   PolicyArn = "arn:aws:iam::aws:policy/ReadOnlyAccess",
 #'   RoleName = "ReadOnlyRole"
 #' )}
@@ -342,7 +342,7 @@ iam_attach_role_policy <- function(RoleName, PolicyArn) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to attach.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
@@ -361,7 +361,7 @@ iam_attach_role_policy <- function(RoleName, PolicyArn) {
 #' @examples
 #' # The following command attaches the AWS managed policy named
 #' # AdministratorAccess to the IAM user named Alice.
-#' \donttest{svc$attach_user_policy(
+#' \dontrun{svc$attach_user_policy(
 #'   PolicyArn = "arn:aws:iam::aws:policy/AdministratorAccess",
 #'   UserName = "Alice"
 #' )}
@@ -423,8 +423,8 @@ iam_attach_user_policy <- function(UserName, PolicyArn) {
 #'
 #' @examples
 #' # The following command changes the password for the current IAM user.
-#' \donttest{svc$change_password(
-#'   NewPassword = "]35d/{pB9Fo9wJ",
+#' \dontrun{svc$change_password(
+#'   NewPassword = "]35d/\{pB9Fo9wJ",
 #'   OldPassword = "3s0K_;xh4~8XXI"
 #' )}
 #'
@@ -479,7 +479,7 @@ iam_change_password <- function(OldPassword, NewPassword) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -491,7 +491,7 @@ iam_change_password <- function(OldPassword, NewPassword) {
 #' @examples
 #' # The following command creates an access key (access key ID and secret
 #' # access key) for the IAM user named Bob.
-#' \donttest{svc$create_access_key(
+#' \dontrun{svc$create_access_key(
 #'   UserName = "Bob"
 #' )}
 #'
@@ -542,7 +542,7 @@ iam_create_access_key <- function(UserName = NULL) {
 #' @examples
 #' # The following command associates the alias examplecorp to your AWS
 #' # account.
-#' \donttest{svc$create_account_alias(
+#' \dontrun{svc$create_account_alias(
 #'   AccountAlias = "examplecorp"
 #' )}
 #'
@@ -608,7 +608,7 @@ iam_create_account_alias <- function(AccountAlias) {
 #'
 #' @examples
 #' # The following command creates an IAM group named Admins.
-#' \donttest{svc$create_group(
+#' \dontrun{svc$create_group(
 #'   GroupName = "Admins"
 #' )}
 #'
@@ -651,7 +651,7 @@ iam_create_group <- function(Path = NULL, GroupName) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Path The path to the instance profile. For more information about paths, see
 #' [IAM
 #' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
@@ -680,7 +680,7 @@ iam_create_group <- function(Path = NULL, GroupName) {
 #' # The following command creates an instance profile named Webserver that
 #' # is ready to have a role attached and then be associated with an EC2
 #' # instance.
-#' \donttest{svc$create_instance_profile(
+#' \dontrun{svc$create_instance_profile(
 #'   InstanceProfileName = "Webserver"
 #' )}
 #'
@@ -722,7 +722,7 @@ iam_create_instance_profile <- function(InstanceProfileName, Path = NULL) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Password &#91;required&#93; The new password for the user.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) that is used to
@@ -749,8 +749,8 @@ iam_create_instance_profile <- function(InstanceProfileName, Path = NULL) {
 #' @examples
 #' # The following command changes IAM user Bob's password and sets the flag
 #' # that required Bob to change the password the next time he signs in.
-#' \donttest{svc$create_login_profile(
-#'   Password = "h]6EszR}vJ*m",
+#' \dontrun{svc$create_login_profile(
+#'   Password = "h]6EszR\}vJ*m",
 #'   PasswordResetRequired = TRUE,
 #'   UserName = "Bob"
 #' )}
@@ -866,7 +866,7 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #' # The following example defines a new OIDC provider in IAM with a client
 #' # ID of my-application-id and pointing at the server with a URL of
 #' # https://server.example.com.
-#' \donttest{svc$create_open_id_connect_provider(
+#' \dontrun{svc$create_open_id_connect_provider(
 #'   ClientIDList = list(
 #'     "my-application-id"
 #'   ),
@@ -1184,7 +1184,7 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 #' # The following command creates a role named Test-Role and attaches a
 #' # trust policy that you must convert from JSON to a string. Upon success,
 #' # the response includes the same policy as a URL-encoded JSON string.
-#' \donttest{svc$create_role(
+#' \dontrun{svc$create_role(
 #'   AssumeRolePolicyDocument = "<Stringified-JSON>",
 #'   Path = "/",
 #'   RoleName = "Test-Role"
@@ -1258,7 +1258,7 @@ iam_create_role <- function(Path = NULL, RoleName, AssumeRolePolicyDocument, Des
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -1390,7 +1390,7 @@ iam_create_service_linked_role <- function(AWSServiceName, Description = NULL, C
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param ServiceName &#91;required&#93; The name of the AWS service that is to be associated with the
 #' credentials. The service you specify here is the only service that can
 #' be accessed using these credentials.
@@ -1484,7 +1484,7 @@ iam_create_service_specific_credential <- function(UserName, ServiceName) {
 #' @examples
 #' # The following create-user command creates an IAM user named Bob in the
 #' # current account.
-#' \donttest{svc$create_user(
+#' \dontrun{svc$create_user(
 #'   UserName = "Bob"
 #' )}
 #'
@@ -1552,7 +1552,7 @@ iam_create_user <- function(Path = NULL, UserName, PermissionsBoundary = NULL, T
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -1601,14 +1601,14 @@ iam_create_virtual_mfa_device <- function(Path = NULL, VirtualMFADeviceName) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param SerialNumber &#91;required&#93; The serial number that uniquely identifies the MFA device. For virtual
 #' MFA devices, the serial number is the device ARN.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: =,.@:/-
+#' spaces. You can also include any of the following characters: =,.@@:/-
 #'
 #' @section Request syntax:
 #' ```
@@ -1656,7 +1656,7 @@ iam_deactivate_mfa_device <- function(UserName, SerialNumber) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param AccessKeyId &#91;required&#93; The access key ID for the access key ID and secret access key you want
 #' to delete.
 #' 
@@ -1675,7 +1675,7 @@ iam_deactivate_mfa_device <- function(UserName, SerialNumber) {
 #' @examples
 #' # The following command deletes one access key (access key ID and secret
 #' # access key) assigned to the IAM user named Bob.
-#' \donttest{svc$delete_access_key(
+#' \dontrun{svc$delete_access_key(
 #'   AccessKeyId = "AKIDPMS9RO4H3FEXAMPLE",
 #'   UserName = "Bob"
 #' )}
@@ -1727,7 +1727,7 @@ iam_delete_access_key <- function(UserName = NULL, AccessKeyId) {
 #' @examples
 #' # The following command removes the alias mycompany from the current AWS
 #' # account:
-#' \donttest{svc$delete_account_alias(
+#' \dontrun{svc$delete_account_alias(
 #'   AccountAlias = "mycompany"
 #' )}
 #'
@@ -1766,7 +1766,7 @@ iam_delete_account_alias <- function(AccountAlias) {
 #' @examples
 #' # The following command removes the password policy from the current AWS
 #' # account:
-#' \donttest{svc$delete_account_password_policy()}
+#' \dontrun{svc$delete_account_password_policy()}
 #'
 #' @keywords internal
 #'
@@ -1801,7 +1801,7 @@ iam_delete_account_password_policy <- function() {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -1851,13 +1851,13 @@ iam_delete_group <- function(GroupName) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyName &#91;required&#93; The name identifying the policy document to delete.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -1870,7 +1870,7 @@ iam_delete_group <- function(GroupName) {
 #' @examples
 #' # The following command deletes the policy named ExamplePolicy from the
 #' # group named Admins:
-#' \donttest{svc$delete_group_policy(
+#' \dontrun{svc$delete_group_policy(
 #'   GroupName = "Admins",
 #'   PolicyName = "ExamplePolicy"
 #' )}
@@ -1916,7 +1916,7 @@ iam_delete_group_policy <- function(GroupName, PolicyName) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -1928,7 +1928,7 @@ iam_delete_group_policy <- function(GroupName, PolicyName) {
 #' @examples
 #' # The following command deletes the instance profile named
 #' # ExampleInstanceProfile
-#' \donttest{svc$delete_instance_profile(
+#' \dontrun{svc$delete_instance_profile(
 #'   InstanceProfileName = "ExampleInstanceProfile"
 #' )}
 #'
@@ -1973,7 +1973,7 @@ iam_delete_instance_profile <- function(InstanceProfileName) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -1984,7 +1984,7 @@ iam_delete_instance_profile <- function(InstanceProfileName) {
 #'
 #' @examples
 #' # The following command deletes the password for the IAM user named Bob.
-#' \donttest{svc$delete_login_profile(
+#' \dontrun{svc$delete_login_profile(
 #'   UserName = "Bob"
 #' )}
 #'
@@ -2202,7 +2202,7 @@ iam_delete_policy_version <- function(PolicyArn, VersionId) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -2213,7 +2213,7 @@ iam_delete_policy_version <- function(PolicyArn, VersionId) {
 #'
 #' @examples
 #' # The following command removes the role named Test-Role.
-#' \donttest{svc$delete_role(
+#' \dontrun{svc$delete_role(
 #'   RoleName = "Test-Role"
 #' )}
 #'
@@ -2299,13 +2299,13 @@ iam_delete_role_permissions_boundary <- function(RoleName) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyName &#91;required&#93; The name of the inline policy to delete from the specified IAM role.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -2318,7 +2318,7 @@ iam_delete_role_permissions_boundary <- function(RoleName) {
 #' @examples
 #' # The following command removes the policy named ExamplePolicy from the
 #' # role named Test-Role.
-#' \donttest{svc$delete_role_policy(
+#' \dontrun{svc$delete_role_policy(
 #'   PolicyName = "ExamplePolicy",
 #'   RoleName = "Test-Role"
 #' )}
@@ -2406,7 +2406,7 @@ iam_delete_saml_provider <- function(SAMLProviderArn) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param SSHPublicKeyId &#91;required&#93; The unique identifier for the SSH public key.
 #' 
 #' This parameter allows (through its [regex
@@ -2470,7 +2470,7 @@ iam_delete_ssh_public_key <- function(UserName, SSHPublicKeyId) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -2572,7 +2572,7 @@ iam_delete_service_linked_role <- function(RoleName) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param ServiceSpecificCredentialId &#91;required&#93; The unique identifier of the service-specific credential. You can get
 #' this value by calling ListServiceSpecificCredentials.
 #' 
@@ -2626,7 +2626,7 @@ iam_delete_service_specific_credential <- function(UserName = NULL, ServiceSpeci
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param CertificateId &#91;required&#93; The ID of the signing certificate to delete.
 #' 
 #' The format of this parameter, as described by its
@@ -2644,7 +2644,7 @@ iam_delete_service_specific_credential <- function(UserName = NULL, ServiceSpeci
 #' @examples
 #' # The following command deletes the specified signing certificate for the
 #' # IAM user named Anika.
-#' \donttest{svc$delete_signing_certificate(
+#' \dontrun{svc$delete_signing_certificate(
 #'   CertificateId = "TA7SMP42TDN5Z26OBPJE7EXAMPLE",
 #'   UserName = "Anika"
 #' )}
@@ -2705,7 +2705,7 @@ iam_delete_signing_certificate <- function(UserName = NULL, CertificateId) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -2717,7 +2717,7 @@ iam_delete_signing_certificate <- function(UserName = NULL, CertificateId) {
 #' @examples
 #' # The following command removes the IAM user named Bob from the current
 #' # account.
-#' \donttest{svc$delete_user(
+#' \dontrun{svc$delete_user(
 #'   UserName = "Bob"
 #' )}
 #'
@@ -2803,13 +2803,13 @@ iam_delete_user_permissions_boundary <- function(UserName) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyName &#91;required&#93; The name identifying the policy document to delete.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -2822,7 +2822,7 @@ iam_delete_user_permissions_boundary <- function(UserName) {
 #' @examples
 #' # The following delete-user-policy command removes the specified policy
 #' # from the IAM user named Juan:
-#' \donttest{svc$delete_user_policy(
+#' \dontrun{svc$delete_user_policy(
 #'   PolicyName = "ExamplePolicy",
 #'   UserName = "Juan"
 #' )}
@@ -2864,7 +2864,7 @@ iam_delete_user_policy <- function(UserName, PolicyName) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: =,.@:/-
+#' spaces. You can also include any of the following characters: =,.@@:/-
 #'
 #' @section Request syntax:
 #' ```
@@ -2876,7 +2876,7 @@ iam_delete_user_policy <- function(UserName, PolicyName) {
 #' @examples
 #' # The following delete-virtual-mfa-device command removes the specified
 #' # MFA device from the current AWS account.
-#' \donttest{svc$delete_virtual_mfa_device(
+#' \dontrun{svc$delete_virtual_mfa_device(
 #'   SerialNumber = "arn:aws:iam::123456789012:mfa/ExampleName"
 #' )}
 #'
@@ -2919,7 +2919,7 @@ iam_delete_virtual_mfa_device <- function(SerialNumber) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to detach.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
@@ -2974,7 +2974,7 @@ iam_detach_group_policy <- function(GroupName, PolicyArn) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to detach.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
@@ -3029,7 +3029,7 @@ iam_detach_role_policy <- function(RoleName, PolicyArn) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to detach.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
@@ -3081,14 +3081,14 @@ iam_detach_user_policy <- function(UserName, PolicyArn) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param SerialNumber &#91;required&#93; The serial number that uniquely identifies the MFA device. For virtual
 #' MFA devices, the serial number is the device ARN.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: =,.@:/-
+#' spaces. You can also include any of the following characters: =,.@@:/-
 #' @param AuthenticationCode1 &#91;required&#93; An authentication code emitted by the device.
 #' 
 #' The format for this parameter is a string of six digits.
@@ -3335,7 +3335,7 @@ iam_generate_credential_report <- function() {
 #' @examples
 #' # The following operation generates a report for the organizational unit
 #' # ou-rge0-awexample
-#' \donttest{svc$generate_organizations_access_report(
+#' \dontrun{svc$generate_organizations_access_report(
 #'   EntityPath = "o-a1b2c3d4e5/r-f6g7h8i9j0example/ou-1a2b3c-k9l8m7n6o5example"
 #' )}
 #'
@@ -3437,7 +3437,7 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
 #' @examples
 #' # The following operation generates a report for the policy:
 #' # ExamplePolicy1
-#' \donttest{svc$generate_service_last_accessed_details(
+#' \dontrun{svc$generate_service_last_accessed_details(
 #'   Arn = "arn:aws:iam::123456789012:policy/ExamplePolicy1"
 #' )}
 #'
@@ -3593,7 +3593,7 @@ iam_get_account_authorization_details <- function(Filter = NULL, MaxItems = NULL
 #' @examples
 #' # The following command displays details about the password policy for the
 #' # current AWS account.
-#' \donttest{svc$get_account_password_policy()}
+#' \dontrun{svc$get_account_password_policy()}
 #'
 #' @keywords internal
 #'
@@ -3636,7 +3636,7 @@ iam_get_account_password_policy <- function() {
 #' @examples
 #' # The following command returns information about the IAM entity quotas
 #' # and usage in the current AWS account.
-#' \donttest{svc$get_account_summary()}
+#' \dontrun{svc$get_account_summary()}
 #'
 #' @keywords internal
 #'
@@ -3854,7 +3854,7 @@ iam_get_credential_report <- function() {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -3928,13 +3928,13 @@ iam_get_group <- function(GroupName, Marker = NULL, MaxItems = NULL) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyName &#91;required&#93; The name of the policy document to get.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -3981,7 +3981,7 @@ iam_get_group_policy <- function(GroupName, PolicyName) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -3993,7 +3993,7 @@ iam_get_group_policy <- function(GroupName, PolicyName) {
 #' @examples
 #' # The following command gets information about the instance profile named
 #' # ExampleInstanceProfile.
-#' \donttest{svc$get_instance_profile(
+#' \dontrun{svc$get_instance_profile(
 #'   InstanceProfileName = "ExampleInstanceProfile"
 #' )}
 #'
@@ -4032,7 +4032,7 @@ iam_get_instance_profile <- function(InstanceProfileName) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -4044,7 +4044,7 @@ iam_get_instance_profile <- function(InstanceProfileName) {
 #' @examples
 #' # The following command gets information about the password for the IAM
 #' # user named Anika.
-#' \donttest{svc$get_login_profile(
+#' \dontrun{svc$get_login_profile(
 #'   UserName = "Anika"
 #' )}
 #'
@@ -4177,7 +4177,7 @@ iam_get_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
 #' @examples
 #' # The following operation gets details about the report with the job ID:
 #' # examplea-1234-b567-cde8-90fg123abcd4
-#' \donttest{svc$get_organizations_access_report(
+#' \dontrun{svc$get_organizations_access_report(
 #'   JobId = "examplea-1234-b567-cde8-90fg123abcd4"
 #' )}
 #'
@@ -4359,7 +4359,7 @@ iam_get_policy_version <- function(PolicyArn, VersionId) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -4370,7 +4370,7 @@ iam_get_policy_version <- function(PolicyArn, VersionId) {
 #'
 #' @examples
 #' # The following command gets information about the role named Test-Role.
-#' \donttest{svc$get_role(
+#' \dontrun{svc$get_role(
 #'   RoleName = "Test-Role"
 #' )}
 #'
@@ -4428,13 +4428,13 @@ iam_get_role <- function(RoleName) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyName &#91;required&#93; The name of the policy document to get.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -4531,7 +4531,7 @@ iam_get_saml_provider <- function(SAMLProviderArn) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param SSHPublicKeyId &#91;required&#93; The unique identifier for the SSH public key.
 #' 
 #' This parameter allows (through its [regex
@@ -4591,7 +4591,7 @@ iam_get_ssh_public_key <- function(UserName, SSHPublicKeyId, Encoding) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -4697,7 +4697,7 @@ iam_get_server_certificate <- function(ServerCertificateName) {
 #' @examples
 #' # The following operation gets details about the report with the job ID:
 #' # examplef-1305-c245-eba4-71fe298bcda7
-#' \donttest{svc$get_service_last_accessed_details(
+#' \dontrun{svc$get_service_last_accessed_details(
 #'   JobId = "examplef-1305-c245-eba4-71fe298bcda7"
 #' )}
 #'
@@ -4795,7 +4795,7 @@ iam_get_service_last_accessed_details <- function(JobId, MaxItems = NULL, Marker
 #' @examples
 #' # The following operation returns details about the entities that
 #' # attempted to access the IAM service.
-#' \donttest{svc$get_service_last_accessed_details_with_entities(
+#' \dontrun{svc$get_service_last_accessed_details_with_entities(
 #'   JobId = "examplef-1305-c245-eba4-71fe298bcda7",
 #'   ServiceNamespace = "iam"
 #' )}
@@ -4882,7 +4882,7 @@ iam_get_service_linked_role_deletion_status <- function(DeletionTaskId) {
 #' user making the request. This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -4893,7 +4893,7 @@ iam_get_service_linked_role_deletion_status <- function(DeletionTaskId) {
 #'
 #' @examples
 #' # The following command gets information about the IAM user named Bob.
-#' \donttest{svc$get_user(
+#' \dontrun{svc$get_user(
 #'   UserName = "Bob"
 #' )}
 #'
@@ -4947,13 +4947,13 @@ iam_get_user <- function(UserName = NULL) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyName &#91;required&#93; The name of the policy document to get.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -5010,7 +5010,7 @@ iam_get_user_policy <- function(UserName, PolicyName) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -5037,7 +5037,7 @@ iam_get_user_policy <- function(UserName, PolicyName) {
 #' @examples
 #' # The following command lists the access keys IDs for the IAM user named
 #' # Alice.
-#' \donttest{svc$list_access_keys(
+#' \dontrun{svc$list_access_keys(
 #'   UserName = "Alice"
 #' )}
 #'
@@ -5097,7 +5097,7 @@ iam_list_access_keys <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
 #'
 #' @examples
 #' # The following command lists the aliases for the current account.
-#' \donttest{svc$list_account_aliases()}
+#' \dontrun{svc$list_account_aliases()}
 #'
 #' @keywords internal
 #'
@@ -5145,7 +5145,7 @@ iam_list_account_aliases <- function(Marker = NULL, MaxItems = NULL) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PathPrefix The path prefix for filtering the results. This parameter is optional.
 #' If it is not included, it defaults to a slash (/), listing all policies.
 #' 
@@ -5225,7 +5225,7 @@ iam_list_attached_group_policies <- function(GroupName, PathPrefix = NULL, Marke
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PathPrefix The path prefix for filtering the results. This parameter is optional.
 #' If it is not included, it defaults to a slash (/), listing all policies.
 #' 
@@ -5305,7 +5305,7 @@ iam_list_attached_role_policies <- function(RoleName, PathPrefix = NULL, Marker 
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PathPrefix The path prefix for filtering the results. This parameter is optional.
 #' If it is not included, it defaults to a slash (/), listing all policies.
 #' 
@@ -5482,7 +5482,7 @@ iam_list_entities_for_policy <- function(PolicyArn, EntityFilter = NULL, PathPre
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -5509,7 +5509,7 @@ iam_list_entities_for_policy <- function(PolicyArn, EntityFilter = NULL, PathPre
 #' @examples
 #' # The following command lists the names of in-line policies that are
 #' # embedded in the IAM group named Admins.
-#' \donttest{svc$list_group_policies(
+#' \dontrun{svc$list_group_policies(
 #'   GroupName = "Admins"
 #' )}
 #'
@@ -5580,7 +5580,7 @@ iam_list_group_policies <- function(GroupName, Marker = NULL, MaxItems = NULL) {
 #'
 #' @examples
 #' # The following command lists the IAM groups in the current account:
-#' \donttest{svc$list_groups()}
+#' \dontrun{svc$list_groups()}
 #'
 #' @keywords internal
 #'
@@ -5617,7 +5617,7 @@ iam_list_groups <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -5644,7 +5644,7 @@ iam_list_groups <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
 #' @examples
 #' # The following command displays the groups that the IAM user named Bob
 #' # belongs to.
-#' \donttest{svc$list_groups_for_user(
+#' \dontrun{svc$list_groups_for_user(
 #'   UserName = "Bob"
 #' )}
 #'
@@ -5754,7 +5754,7 @@ iam_list_instance_profiles <- function(PathPrefix = NULL, Marker = NULL, MaxItem
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -5817,7 +5817,7 @@ iam_list_instance_profiles_for_role <- function(RoleName, Marker = NULL, MaxItem
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -6077,7 +6077,7 @@ iam_list_policies <- function(Scope = NULL, OnlyAttached = NULL, PathPrefix = NU
 #' @examples
 #' # The following operation lists policies that allow ExampleUser01 to
 #' # access IAM or EC2.
-#' \donttest{svc$list_policies_granting_service_access(
+#' \dontrun{svc$list_policies_granting_service_access(
 #'   Arn = "arn:aws:iam::123456789012:user/ExampleUser01",
 #'   ServiceNamespaces = list(
 #'     "iam",
@@ -6196,7 +6196,7 @@ iam_list_policy_versions <- function(PolicyArn, Marker = NULL, MaxItems = NULL) 
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -6256,7 +6256,7 @@ iam_list_role_policies <- function(RoleName, Marker = NULL, MaxItems = NULL) {
 #' This parameter accepts (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
 #' consist of upper and lowercase alphanumeric characters with no spaces.
-#' You can also include any of the following characters: \\_+=,.@-
+#' You can also include any of the following characters: \\_+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -6283,7 +6283,7 @@ iam_list_role_policies <- function(RoleName, Marker = NULL, MaxItems = NULL) {
 #'
 #' @examples
 #' # The following example shows how to list the tags attached to a role.
-#' \donttest{svc$list_role_tags(
+#' \dontrun{svc$list_role_tags(
 #'   RoleName = "taggedrole1"
 #' )}
 #'
@@ -6436,7 +6436,7 @@ iam_list_saml_providers <- function() {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -6575,7 +6575,7 @@ iam_list_server_certificates <- function(PathPrefix = NULL, Marker = NULL, MaxIt
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param ServiceName Filters the returned results to only those for the specified AWS
 #' service. If not specified, then AWS returns service-specific credentials
 #' for all services.
@@ -6632,7 +6632,7 @@ iam_list_service_specific_credentials <- function(UserName = NULL, ServiceName =
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -6659,7 +6659,7 @@ iam_list_service_specific_credentials <- function(UserName = NULL, ServiceName =
 #' @examples
 #' # The following command lists the signing certificates for the IAM user
 #' # named Bob.
-#' \donttest{svc$list_signing_certificates(
+#' \dontrun{svc$list_signing_certificates(
 #'   UserName = "Bob"
 #' )}
 #'
@@ -6708,7 +6708,7 @@ iam_list_signing_certificates <- function(UserName = NULL, Marker = NULL, MaxIte
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -6768,7 +6768,7 @@ iam_list_user_policies <- function(UserName, Marker = NULL, MaxItems = NULL) {
 #' This parameter accepts (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
 #' consist of upper and lowercase alphanumeric characters with no spaces.
-#' You can also include any of the following characters: =,.@-
+#' You can also include any of the following characters: =,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -6795,7 +6795,7 @@ iam_list_user_policies <- function(UserName, Marker = NULL, MaxItems = NULL) {
 #'
 #' @examples
 #' # The following example shows how to list the tags attached to a user.
-#' \donttest{svc$list_user_tags(
+#' \dontrun{svc$list_user_tags(
 #'   UserName = "anika"
 #' )}
 #'
@@ -6868,7 +6868,7 @@ iam_list_user_tags <- function(UserName, Marker = NULL, MaxItems = NULL) {
 #'
 #' @examples
 #' # The following command lists the IAM users in the current account.
-#' \donttest{svc$list_users()}
+#' \dontrun{svc$list_users()}
 #'
 #' @keywords internal
 #'
@@ -6933,7 +6933,7 @@ iam_list_users <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
 #' @examples
 #' # The following command lists the virtual MFA devices that have been
 #' # configured for the current account.
-#' \donttest{svc$list_virtual_mfa_devices()}
+#' \dontrun{svc$list_virtual_mfa_devices()}
 #'
 #' @keywords internal
 #'
@@ -6987,13 +6987,13 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-.
+#' spaces. You can also include any of the following characters: \\_+=,.@@-.
 #' @param PolicyName &#91;required&#93; The name of the policy document.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyDocument &#91;required&#93; The policy document.
 #' 
 #' You must provide policies in JSON format in IAM. However, for AWS
@@ -7025,9 +7025,9 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
 #' @examples
 #' # The following command adds a policy named AllPerms to the IAM group
 #' # named Admins.
-#' \donttest{svc$put_group_policy(
+#' \dontrun{svc$put_group_policy(
 #'   GroupName = "Admins",
-#'   PolicyDocument = "{\"Version\":\"2012-10-17\",\"Statement\":{\"Effect\":\"Allow\",...",
+#'   PolicyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":\{\"Effect\":\"Allow\",...",
 #'   PolicyName = "AllPerms"
 #' )}
 #'
@@ -7146,13 +7146,13 @@ iam_put_role_permissions_boundary <- function(RoleName, PermissionsBoundary) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyName &#91;required&#93; The name of the policy document.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyDocument &#91;required&#93; The policy document.
 #' 
 #' You must provide policies in JSON format in IAM. However, for AWS
@@ -7184,8 +7184,8 @@ iam_put_role_permissions_boundary <- function(RoleName, PermissionsBoundary) {
 #' @examples
 #' # The following command adds a permissions policy to the role named
 #' # Test-Role.
-#' \donttest{svc$put_role_policy(
-#'   PolicyDocument = "{\"Version\":\"2012-10-17\",\"Statement\":{\"Effect\":\"Allow\",...",
+#' \dontrun{svc$put_role_policy(
+#'   PolicyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":\{\"Effect\":\"Allow\",...",
 #'   PolicyName = "S3AccessPolicy",
 #'   RoleName = "S3Access"
 #' )}
@@ -7295,13 +7295,13 @@ iam_put_user_permissions_boundary <- function(UserName, PermissionsBoundary) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyName &#91;required&#93; The name of the policy document.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyDocument &#91;required&#93; The policy document.
 #' 
 #' You must provide policies in JSON format in IAM. However, for AWS
@@ -7332,8 +7332,8 @@ iam_put_user_permissions_boundary <- function(UserName, PermissionsBoundary) {
 #'
 #' @examples
 #' # The following command attaches a policy to the IAM user named Bob.
-#' \donttest{svc$put_user_policy(
-#'   PolicyDocument = "{\"Version\":\"2012-10-17\",\"Statement\":{\"Effect\":\"Allow\",...",
+#' \dontrun{svc$put_user_policy(
+#'   PolicyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":\{\"Effect\":\"Allow\",...",
 #'   PolicyName = "AllAccessPolicy",
 #'   UserName = "Bob"
 #' )}
@@ -7435,13 +7435,13 @@ iam_remove_client_id_from_open_id_connect_provider <- function(OpenIDConnectProv
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param RoleName &#91;required&#93; The name of the role to remove.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -7454,7 +7454,7 @@ iam_remove_client_id_from_open_id_connect_provider <- function(OpenIDConnectProv
 #' @examples
 #' # The following command removes the role named Test-Role from the instance
 #' # profile named ExampleInstanceProfile.
-#' \donttest{svc$remove_role_from_instance_profile(
+#' \dontrun{svc$remove_role_from_instance_profile(
 #'   InstanceProfileName = "ExampleInstanceProfile",
 #'   RoleName = "Test-Role"
 #' )}
@@ -7491,13 +7491,13 @@ iam_remove_role_from_instance_profile <- function(InstanceProfileName, RoleName)
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param UserName &#91;required&#93; The name of the user to remove.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -7510,7 +7510,7 @@ iam_remove_role_from_instance_profile <- function(InstanceProfileName, RoleName)
 #' @examples
 #' # The following command removes the user named Bob from the IAM group
 #' # named Admins.
-#' \donttest{svc$remove_user_from_group(
+#' \dontrun{svc$remove_user_from_group(
 #'   GroupName = "Admins",
 #'   UserName = "Bob"
 #' )}
@@ -7553,7 +7553,7 @@ iam_remove_user_from_group <- function(GroupName, UserName) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param ServiceSpecificCredentialId &#91;required&#93; The unique identifier of the service-specific credential.
 #' 
 #' This parameter allows (through its [regex
@@ -7608,13 +7608,13 @@ iam_reset_service_specific_credential <- function(UserName = NULL, ServiceSpecif
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param SerialNumber &#91;required&#93; Serial number that uniquely identifies the MFA device.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param AuthenticationCode1 &#91;required&#93; An authentication code emitted by the device.
 #' 
 #' The format for this parameter is a sequence of six digits.
@@ -7764,7 +7764,7 @@ iam_set_default_policy_version <- function(PolicyArn, VersionId) {
 #' @examples
 #' # The following command sets the STS global endpoint token to version 2.
 #' # Version 2 tokens are valid in all Regions.
-#' \donttest{svc$set_security_token_service_preferences(
+#' \dontrun{svc$set_security_token_service_preferences(
 #'   GlobalEndpointTokenVersion = "v2Token"
 #' )}
 #'
@@ -8298,7 +8298,7 @@ iam_simulate_principal_policy <- function(PolicySourceArn, PolicyInputList = NUL
 #' This parameter accepts (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
 #' consist of upper and lowercase alphanumeric characters with no spaces.
-#' You can also include any of the following characters: \\_+=,.@-
+#' You can also include any of the following characters: \\_+=,.@@-
 #' @param Tags &#91;required&#93; The list of tags that you want to attach to the role. Each tag consists
 #' of a key name and an associated value. You can specify this with a JSON
 #' string.
@@ -8318,7 +8318,7 @@ iam_simulate_principal_policy <- function(PolicySourceArn, PolicyInputList = NUL
 #'
 #' @examples
 #' # The following example shows how to add tags to an existing role.
-#' \donttest{svc$tag_role(
+#' \dontrun{svc$tag_role(
 #'   RoleName = "taggedrole",
 #'   Tags = list(
 #'     list(
@@ -8400,7 +8400,7 @@ iam_tag_role <- function(RoleName, Tags) {
 #' This parameter accepts (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
 #' consist of upper and lowercase alphanumeric characters with no spaces.
-#' You can also include any of the following characters: =,.@-
+#' You can also include any of the following characters: =,.@@-
 #' @param Tags &#91;required&#93; The list of tags that you want to attach to the user. Each tag consists
 #' of a key name and an associated value.
 #'
@@ -8419,7 +8419,7 @@ iam_tag_role <- function(RoleName, Tags) {
 #'
 #' @examples
 #' # The following example shows how to add tags to an existing user.
-#' \donttest{svc$tag_user(
+#' \dontrun{svc$tag_user(
 #'   Tags = list(
 #'     list(
 #'       Key = "Dept",
@@ -8468,7 +8468,7 @@ iam_tag_user <- function(UserName, Tags) {
 #' This parameter accepts (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
 #' consist of upper and lowercase alphanumeric characters with no spaces.
-#' You can also include any of the following characters: \\_+=,.@-
+#' You can also include any of the following characters: \\_+=,.@@-
 #' @param TagKeys &#91;required&#93; A list of key names as a simple array of strings. The tags with matching
 #' keys are removed from the specified role.
 #'
@@ -8485,7 +8485,7 @@ iam_tag_user <- function(UserName, Tags) {
 #' @examples
 #' # The following example shows how to remove a tag with the key 'Dept' from
 #' # a role named 'taggedrole'.
-#' \donttest{svc$untag_role(
+#' \dontrun{svc$untag_role(
 #'   RoleName = "taggedrole",
 #'   TagKeys = list(
 #'     "Dept"
@@ -8527,7 +8527,7 @@ iam_untag_role <- function(RoleName, TagKeys) {
 #' This parameter accepts (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
 #' consist of upper and lowercase alphanumeric characters with no spaces.
-#' You can also include any of the following characters: =,.@-
+#' You can also include any of the following characters: =,.@@-
 #' @param TagKeys &#91;required&#93; A list of key names as a simple array of strings. The tags with matching
 #' keys are removed from the specified user.
 #'
@@ -8544,7 +8544,7 @@ iam_untag_role <- function(RoleName, TagKeys) {
 #' @examples
 #' # The following example shows how to remove tags that are attached to a
 #' # user named 'anika'.
-#' \donttest{svc$untag_user(
+#' \dontrun{svc$untag_user(
 #'   TagKeys = list(
 #'     "Dept"
 #'   ),
@@ -8596,7 +8596,7 @@ iam_untag_user <- function(UserName, TagKeys) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param AccessKeyId &#91;required&#93; The access key ID of the secret access key you want to update.
 #' 
 #' This parameter allows (through its [regex
@@ -8618,7 +8618,7 @@ iam_untag_user <- function(UserName, TagKeys) {
 #' @examples
 #' # The following command deactivates the specified access key (access key
 #' # ID and secret access key) for the IAM user named Bob.
-#' \donttest{svc$update_access_key(
+#' \dontrun{svc$update_access_key(
 #'   AccessKeyId = "AKIAIOSFODNN7EXAMPLE",
 #'   Status = "Inactive",
 #'   UserName = "Bob"
@@ -8674,7 +8674,7 @@ iam_update_access_key <- function(UserName = NULL, AccessKeyId, Status) {
 #' @param RequireSymbols Specifies whether IAM user passwords must contain at least one of the
 #' following non-alphanumeric characters:
 #' 
-#' ! @ \\# \\$ % \\^ & * ( ) \\_ + - = \[ \] \{ \} \\| \'
+#' ! @@ \\# \\$ % \\^ & * ( ) \\_ + - = \[ \] \{ \} \\| \'
 #' 
 #' If you do not specify a value for this parameter, then the operation
 #' uses the default value of `false`. The result is that passwords do not
@@ -8746,7 +8746,7 @@ iam_update_access_key <- function(UserName = NULL, AccessKeyId, Status) {
 #' # The following command sets the password policy to require a minimum
 #' # length of eight characters and to require one or more numbers in the
 #' # password:
-#' \donttest{svc$update_account_password_policy(
+#' \dontrun{svc$update_account_password_policy(
 #'   MinimumPasswordLength = 8L,
 #'   RequireNumbers = TRUE
 #' )}
@@ -8787,7 +8787,7 @@ iam_update_account_password_policy <- function(MinimumPasswordLength = NULL, Req
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param PolicyDocument &#91;required&#93; The policy that grants an entity permission to assume the role.
 #' 
 #' You must provide policies in JSON format in IAM. However, for AWS
@@ -8818,8 +8818,8 @@ iam_update_account_password_policy <- function(MinimumPasswordLength = NULL, Req
 #' @examples
 #' # The following command updates the role trust policy for the role named
 #' # Test-Role:
-#' \donttest{svc$update_assume_role_policy(
-#'   PolicyDocument = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",...",
+#' \dontrun{svc$update_assume_role_policy(
+#'   PolicyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Effect\":\"Allow\",...",
 #'   RoleName = "S3AccessForEC2Instances"
 #' )}
 #'
@@ -8870,7 +8870,7 @@ iam_update_assume_role_policy <- function(RoleName, PolicyDocument) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param NewPath New path for the IAM group. Only include this if changing the group\'s
 #' path.
 #' 
@@ -8899,7 +8899,7 @@ iam_update_assume_role_policy <- function(RoleName, PolicyDocument) {
 #'
 #' @examples
 #' # The following command changes the name of the IAM group Test to Test-1.
-#' \donttest{svc$update_group(
+#' \dontrun{svc$update_group(
 #'   GroupName = "Test",
 #'   NewGroupName = "Test-1"
 #' )}
@@ -8941,7 +8941,7 @@ iam_update_group <- function(GroupName, NewPath = NULL, NewGroupName = NULL) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param Password The new password for the specified IAM user.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) used to validate
@@ -8974,7 +8974,7 @@ iam_update_group <- function(GroupName, NewPath = NULL, NewGroupName = NULL) {
 #' @examples
 #' # The following command creates or changes the password for the IAM user
 #' # named Bob.
-#' \donttest{svc$update_login_profile(
+#' \dontrun{svc$update_login_profile(
 #'   Password = "SomeKindOfPassword123!@#",
 #'   UserName = "Bob"
 #' )}
@@ -9239,7 +9239,7 @@ iam_update_saml_provider <- function(SAMLMetadataDocument, SAMLProviderArn) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param SSHPublicKeyId &#91;required&#93; The unique identifier for the SSH public key.
 #' 
 #' This parameter allows (through its [regex
@@ -9315,7 +9315,7 @@ iam_update_ssh_public_key <- function(UserName, SSHPublicKeyId, Status) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param NewPath The new path for the server certificate. Include this only if you are
 #' updating the server certificate\'s path.
 #' 
@@ -9333,7 +9333,7 @@ iam_update_ssh_public_key <- function(UserName, SSHPublicKeyId, Status) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #'
 #' @section Request syntax:
 #' ```
@@ -9383,7 +9383,7 @@ iam_update_server_certificate <- function(ServerCertificateName, NewPath = NULL,
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param ServiceSpecificCredentialId &#91;required&#93; The unique identifier of the service-specific credential.
 #' 
 #' This parameter allows (through its [regex
@@ -9441,7 +9441,7 @@ iam_update_service_specific_credential <- function(UserName = NULL, ServiceSpeci
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param CertificateId &#91;required&#93; The ID of the signing certificate you want to update.
 #' 
 #' This parameter allows (through its [regex
@@ -9463,7 +9463,7 @@ iam_update_service_specific_credential <- function(UserName = NULL, ServiceSpeci
 #' @examples
 #' # The following command changes the status of a signing certificate for a
 #' # user named Bob to Inactive.
-#' \donttest{svc$update_signing_certificate(
+#' \dontrun{svc$update_signing_certificate(
 #'   CertificateId = "TA7SMP42TDN5Z26OBPJE7EXAMPLE",
 #'   Status = "Inactive",
 #'   UserName = "Bob"
@@ -9516,7 +9516,7 @@ iam_update_signing_certificate <- function(UserName = NULL, CertificateId, Statu
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param NewPath New path for the IAM user. Include this parameter only if you\'re
 #' changing the user\'s path.
 #' 
@@ -9546,7 +9546,7 @@ iam_update_signing_certificate <- function(UserName = NULL, CertificateId, Statu
 #' @examples
 #' # The following command changes the name of the IAM user Bob to Robert. It
 #' # does not change the user's path.
-#' \donttest{svc$update_user(
+#' \dontrun{svc$update_user(
 #'   NewUserName = "Robert",
 #'   UserName = "Bob"
 #' )}
@@ -9590,7 +9590,7 @@ iam_update_user <- function(UserName, NewPath = NULL, NewUserName = NULL) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param SSHPublicKeyBody &#91;required&#93; The SSH public key. The public key must be encoded in ssh-rsa format or
 #' PEM format. The minimum bit-length of the public key is 2048 bits. For
 #' example, you can generate a 2048-bit key, and the resulting PEM file is
@@ -9699,7 +9699,7 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param CertificateBody &#91;required&#93; The contents of the public key certificate in PEM-encoded format.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) used to validate
@@ -9755,7 +9755,7 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' @examples
 #' # The following upload-server-certificate command uploads a server
 #' # certificate to your AWS account:
-#' \donttest{svc$upload_server_certificate(
+#' \dontrun{svc$upload_server_certificate(
 #'   CertificateBody = "-----BEGIN CERTIFICATE-----<a very long certificate text string>-----EN...",
 #'   Path = "/company/servercerts/",
 #'   PrivateKey = "-----BEGIN DSA PRIVATE KEY-----<a very long private key string>-----END DSA ...",
@@ -9813,7 +9813,7 @@ iam_upload_server_certificate <- function(Path = NULL, ServerCertificateName, Ce
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@-
+#' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param CertificateBody &#91;required&#93; The contents of the signing certificate.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) used to validate
@@ -9839,7 +9839,7 @@ iam_upload_server_certificate <- function(Path = NULL, ServerCertificateName, Ce
 #' @examples
 #' # The following command uploads a signing certificate for the IAM user
 #' # named Bob.
-#' \donttest{svc$upload_signing_certificate(
+#' \dontrun{svc$upload_signing_certificate(
 #'   CertificateBody = "-----BEGIN CERTIFICATE-----<certificate-body>-----END CERTIFICATE-----",
 #'   UserName = "Bob"
 #' )}

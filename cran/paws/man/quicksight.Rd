@@ -108,7 +108,7 @@ Amazon QuickSight.
 }
 
 \examples{
-\donttest{svc <- quicksight()
+\dontrun{svc <- quicksight()
 svc$cancel_ingestion(
   Foo = 123
 )}

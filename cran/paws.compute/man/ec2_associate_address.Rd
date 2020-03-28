@@ -89,21 +89,21 @@ more information, see the \emph{Elastic IP Addresses} section of \href{http://aw
 \examples{
 # This example associates the specified Elastic IP address with the
 # specified instance in a VPC.
-\donttest{svc$associate_address(
+\dontrun{svc$associate_address(
   AllocationId = "eipalloc-64d5890a",
   InstanceId = "i-0b263919b6498b123"
 )}
 
 # This example associates the specified Elastic IP address with the
 # specified network interface.
-\donttest{svc$associate_address(
+\dontrun{svc$associate_address(
   AllocationId = "eipalloc-64d5890a",
   NetworkInterfaceId = "eni-1a2b3c4d"
 )}
 
 # This example associates an Elastic IP address with an instance in
 # EC2-Classic.
-\donttest{svc$associate_address(
+\dontrun{svc$associate_address(
   InstanceId = "i-07ffe74c7330ebf53",
   PublicIp = "198.51.100.0"
 )}

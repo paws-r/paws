@@ -55,7 +55,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 
 \examples{
 # The example lists all vaults owned by the specified AWS account.
-\donttest{svc$list_vaults(
+\dontrun{svc$list_vaults(
   accountId = "-",
   limit = "",
   marker = ""

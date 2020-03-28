@@ -38,7 +38,7 @@ Invokes a function asynchronously.
 
 \examples{
 # This operation invokes a Lambda function asynchronously
-\donttest{svc$invoke_async(
+\dontrun{svc$invoke_async(
   FunctionName = "myFunction",
   InvokeArgs = "fileb://file-path/input.json"
 )}

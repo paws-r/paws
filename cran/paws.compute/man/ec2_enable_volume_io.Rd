@@ -29,7 +29,7 @@ because the data on the volume was potentially inconsistent.
 
 \examples{
 # This example enables I/O on volume `vol-1234567890abcdef0`.
-\donttest{svc$enable_volume_io(
+\dontrun{svc$enable_volume_io(
   VolumeId = "vol-1234567890abcdef0"
 )}
 

@@ -35,7 +35,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- firehose()
+#' \dontrun{svc <- firehose()
 #' svc$create_delivery_stream(
 #'   Foo = 123
 #' )}

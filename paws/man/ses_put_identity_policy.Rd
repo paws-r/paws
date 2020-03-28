@@ -51,9 +51,9 @@ You can execute this operation no more than once per second.
 \examples{
 # The following example adds a sending authorization policy to an
 # identity:
-\donttest{svc$put_identity_policy(
+\dontrun{svc$put_identity_policy(
   Identity = "example.com",
-  Policy = "{\"Version\":\"2008-10-17\",\"Statement\":[{\"Sid\":\"stmt1469123904194\",...",
+  Policy = "\{\"Version\":\"2008-10-17\",\"Statement\":[\{\"Sid\":\"stmt1469123904194\",...",
   PolicyName = "MyPolicy"
 )}
 

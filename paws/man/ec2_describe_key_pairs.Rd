@@ -54,7 +54,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example displays the fingerprint for the specified key.
-\donttest{svc$describe_key_pairs(
+\dontrun{svc$describe_key_pairs(
   KeyNames = list(
     "my-key-pair"
   )

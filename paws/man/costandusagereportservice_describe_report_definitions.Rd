@@ -26,7 +26,7 @@ Lists the AWS Cost and Usage reports available to this account.
 \examples{
 # The following example lists the AWS Cost and Usage reports for the
 # account.
-\donttest{svc$describe_report_definitions(
+\dontrun{svc$describe_report_definitions(
   MaxResults = 5L
 )}
 

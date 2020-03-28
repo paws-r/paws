@@ -38,7 +38,7 @@ Disables group metrics for the specified Auto Scaling group.
 \examples{
 # This example disables collecting data for the GroupDesiredCapacity
 # metric for the specified Auto Scaling group.
-\donttest{svc$disable_metrics_collection(
+\dontrun{svc$disable_metrics_collection(
   AutoScalingGroupName = "my-auto-scaling-group",
   Metrics = list(
     "GroupDesiredCapacity"

@@ -49,7 +49,7 @@ You can execute this operation no more than once per second.
 \examples{
 # The following example returns a sending authorization policy for an
 # identity:
-\donttest{svc$get_identity_policies(
+\dontrun{svc$get_identity_policies(
   Identity = "example.com",
   PolicyNames = list(
     "MyPolicy"

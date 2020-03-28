@@ -49,7 +49,7 @@ cloud.
 }
 
 \examples{
-\donttest{svc <- iotdataplane()
+\dontrun{svc <- iotdataplane()
 svc$delete_thing_shadow(
   Foo = 123
 )}

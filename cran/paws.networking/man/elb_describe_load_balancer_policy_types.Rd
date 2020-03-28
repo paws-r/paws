@@ -37,7 +37,7 @@ SetLoadBalancerPoliciesForBackendServer to set the policy.
 
 \examples{
 # This example describes the specified load balancer policy type.
-\donttest{svc$describe_load_balancer_policy_types(
+\dontrun{svc$describe_load_balancer_policy_types(
   PolicyTypeNames = list(
     "ProxyProtocolPolicyType"
   )

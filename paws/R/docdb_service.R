@@ -30,7 +30,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- docdb()
+#' \dontrun{svc <- docdb()
 #' svc$add_tags_to_resource(
 #'   Foo = 123
 #' )}

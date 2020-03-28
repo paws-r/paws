@@ -67,7 +67,7 @@ In the current release, a child can have only a single parent.
 \examples{
 # The following example shows how to list the root or OUs that contain
 # account 444444444444:/n/n
-\donttest{svc$list_parents(
+\dontrun{svc$list_parents(
   ChildId = "444444444444"
 )}
 

@@ -38,7 +38,7 @@ You can execute this operation no more than once per second.
 \examples{
 # The following example lists the email address identities that have been
 # submitted for verification with Amazon SES:
-\donttest{svc$list_identities(
+\dontrun{svc$list_identities(
   IdentityType = "EmailAddress",
   MaxItems = 123L,
   NextToken = ""

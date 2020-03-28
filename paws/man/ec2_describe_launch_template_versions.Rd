@@ -76,7 +76,7 @@ describe all versions, individual versions, or a range of versions.
 
 \examples{
 # This example describes the versions for the specified launch template.
-\donttest{svc$describe_launch_template_versions(
+\dontrun{svc$describe_launch_template_versions(
   LaunchTemplateId = "068f72b72934aff71"
 )}
 

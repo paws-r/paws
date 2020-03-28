@@ -190,7 +190,7 @@ NULL
 #' @examples
 #' # This example reads multiple items from the Music table using a batch of
 #' # three GetItem requests.  Only the AlbumTitle attribute is returned.
-#' \donttest{svc$batch_get_item(
+#' \dontrun{svc$batch_get_item(
 #'   RequestItems = list(
 #'     Music = list(
 #'       Keys = list(
@@ -433,7 +433,7 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
 #' @examples
 #' # This example adds three new items to the Music table using a batch of
 #' # three PutItem requests.
-#' \donttest{svc$batch_write_item(
+#' \dontrun{svc$batch_write_item(
 #'   RequestItems = list(
 #'     Music = list(
 #'       list(
@@ -919,7 +919,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'
 #' @examples
 #' # This example creates a table named Music.
-#' \donttest{svc$create_table(
+#' \dontrun{svc$create_table(
 #'   AttributeDefinitions = list(
 #'     list(
 #'       AttributeName = "Artist",
@@ -1255,7 +1255,7 @@ dynamodb_delete_backup <- function(BackupArn) {
 #'
 #' @examples
 #' # This example deletes an item from the Music table.
-#' \donttest{svc$delete_item(
+#' \dontrun{svc$delete_item(
 #'   Key = list(
 #'     Artist = list(
 #'       S = "No One You Know"
@@ -1324,7 +1324,7 @@ dynamodb_delete_item <- function(TableName, Key, Expected = NULL, ConditionalOpe
 #'
 #' @examples
 #' # This example deletes the Music table.
-#' \donttest{svc$delete_table(
+#' \dontrun{svc$delete_table(
 #'   TableName = "Music"
 #' )}
 #'
@@ -1668,7 +1668,7 @@ dynamodb_describe_global_table_settings <- function(GlobalTableName) {
 #' @examples
 #' # The following example returns the maximum read and write capacity units
 #' # per table, and for the AWS account, in the current AWS region.
-#' \donttest{svc$describe_limits()}
+#' \dontrun{svc$describe_limits()}
 #'
 #' @keywords internal
 #'
@@ -1718,7 +1718,7 @@ dynamodb_describe_limits <- function() {
 #'
 #' @examples
 #' # This example describes the Music table.
-#' \donttest{svc$describe_table(
+#' \dontrun{svc$describe_table(
 #'   TableName = "Music"
 #' )}
 #'
@@ -1947,7 +1947,7 @@ dynamodb_describe_time_to_live <- function(TableName) {
 #' # This example retrieves an item from the Music table. The table has a
 #' # partition key and a sort key (Artist and SongTitle), so you must specify
 #' # both of these attributes.
-#' \donttest{svc$get_item(
+#' \dontrun{svc$get_item(
 #'   Key = list(
 #'     Artist = list(
 #'       S = "Acme Band"
@@ -2167,7 +2167,7 @@ dynamodb_list_global_tables <- function(ExclusiveStartGlobalTableName = NULL, Li
 #' @examples
 #' # This example lists all of the tables associated with the current AWS
 #' # account and endpoint.
-#' \donttest{svc$list_tables()}
+#' \dontrun{svc$list_tables()}
 #'
 #' @keywords internal
 #'
@@ -2538,7 +2538,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #'
 #' @examples
 #' # This example adds a new item to the Music table.
-#' \donttest{svc$put_item(
+#' \dontrun{svc$put_item(
 #'   Item = list(
 #'     AlbumTitle = list(
 #'       S = "Somewhat Famous"
@@ -3036,7 +3036,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' # key and sort key (Artist and SongTitle), but this query only specifies
 #' # the partition key value. It returns song titles by the artist named "No
 #' # One You Know".
-#' \donttest{svc$query(
+#' \dontrun{svc$query(
 #'   ExpressionAttributeValues = list(
 #'     `:v1` = list(
 #'       S = "No One You Know"
@@ -3670,7 +3670,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableName, TargetTable
 #' # This example scans the entire Music table, and then narrows the results
 #' # to songs by the artist "No One You Know". For each item, only the album
 #' # title and song title are returned.
-#' \donttest{svc$scan(
+#' \dontrun{svc$scan(
 #'   ExpressionAttributeNames = list(
 #'     `#AT` = "AlbumTitle",
 #'     `#ST` = "SongTitle"
@@ -4932,7 +4932,7 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' # This example updates an item in the Music table. It adds a new attribute
 #' # (Year) and modifies the AlbumTitle attribute.  All of the attributes in
 #' # the item, as they appear after the update, are returned in the response.
-#' \donttest{svc$update_item(
+#' \dontrun{svc$update_item(
 #'   ExpressionAttributeNames = list(
 #'     `#AT` = "AlbumTitle",
 #'     `#Y` = "Year"
@@ -5157,7 +5157,7 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #' @examples
 #' # This example increases the provisioned read and write capacity on the
 #' # Music table.
-#' \donttest{svc$update_table(
+#' \dontrun{svc$update_table(
 #'   ProvisionedThroughput = list(
 #'     ReadCapacityUnits = 10L,
 #'     WriteCapacityUnits = 10L

@@ -35,7 +35,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- savingsplans()
+#' \dontrun{svc <- savingsplans()
 #' svc$create_savings_plan(
 #'   Foo = 123
 #' )}

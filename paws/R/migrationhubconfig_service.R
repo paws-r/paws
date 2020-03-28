@@ -51,7 +51,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- migrationhubconfig()
+#' \dontrun{svc <- migrationhubconfig()
 #' svc$create_home_region_control(
 #'   Foo = 123
 #' )}

@@ -73,7 +73,7 @@ account.
 # directly attached to an account. The returned list does not include
 # policies that apply to the account because of inheritance from its
 # location in an OU hierarchy:/n/n
-\donttest{svc$list_policies_for_target(
+\dontrun{svc$list_policies_for_target(
   Filter = "SERVICE_CONTROL_POLICY",
   TargetId = "444444444444"
 )}

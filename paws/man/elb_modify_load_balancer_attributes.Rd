@@ -65,7 +65,7 @@ Guide}:
 \examples{
 # This example enables cross-zone load balancing for the specified load
 # balancer.
-\donttest{svc$modify_load_balancer_attributes(
+\dontrun{svc$modify_load_balancer_attributes(
   LoadBalancerAttributes = list(
     CrossZoneLoadBalancing = list(
       Enabled = TRUE
@@ -76,7 +76,7 @@ Guide}:
 
 # This example enables connection draining for the specified load
 # balancer.
-\donttest{svc$modify_load_balancer_attributes(
+\dontrun{svc$modify_load_balancer_attributes(
   LoadBalancerAttributes = list(
     ConnectionDraining = list(
       Enabled = TRUE,

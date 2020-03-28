@@ -71,7 +71,7 @@ warehousing.
 }
 
 \examples{
-\donttest{svc <- emr()
+\dontrun{svc <- emr()
 svc$add_instance_fleet(
   Foo = 123
 )}

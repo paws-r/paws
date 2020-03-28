@@ -137,7 +137,7 @@ NULL
 #' @examples
 #' # This example deletes a scaling policy for the Amazon ECS service called
 #' # web-app, which is running in the default cluster.
-#' \donttest{svc$delete_scaling_policy(
+#' \dontrun{svc$delete_scaling_policy(
 #'   PolicyName = "web-app-cpu-lt-25",
 #'   ResourceId = "service/default/web-app",
 #'   ScalableDimension = "ecs:service:DesiredCount",
@@ -429,7 +429,7 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' @examples
 #' # This example deregisters a scalable target for an Amazon ECS service
 #' # called web-app that is running in the default cluster.
-#' \donttest{svc$deregister_scalable_target(
+#' \dontrun{svc$deregister_scalable_target(
 #'   ResourceId = "service/default/web-app",
 #'   ScalableDimension = "ecs:service:DesiredCount",
 #'   ServiceNamespace = "ecs"
@@ -594,7 +594,7 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' @examples
 #' # This example describes the scalable targets for the ecs service
 #' # namespace.
-#' \donttest{svc$describe_scalable_targets(
+#' \dontrun{svc$describe_scalable_targets(
 #'   ServiceNamespace = "ecs"
 #' )}
 #'
@@ -757,7 +757,7 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' @examples
 #' # This example describes the scaling activities for an Amazon ECS service
 #' # called web-app that is running in the default cluster.
-#' \donttest{svc$describe_scaling_activities(
+#' \dontrun{svc$describe_scaling_activities(
 #'   ResourceId = "service/default/web-app",
 #'   ScalableDimension = "ecs:service:DesiredCount",
 #'   ServiceNamespace = "ecs"
@@ -926,7 +926,7 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' @examples
 #' # This example describes the scaling policies for the ecs service
 #' # namespace.
-#' \donttest{svc$describe_scaling_policies(
+#' \dontrun{svc$describe_scaling_policies(
 #'   ServiceNamespace = "ecs"
 #' )}
 #'
@@ -1325,7 +1325,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' # in the default cluster. The policy keeps the average CPU utilization of
 #' # the service at 75 percent, with scale-out and scale-in cooldown periods
 #' # of 60 seconds.
-#' \donttest{svc$put_scaling_policy(
+#' \dontrun{svc$put_scaling_policy(
 #'   PolicyName = "cpu75-target-tracking-scaling-policy",
 #'   PolicyType = "TargetTrackingScaling",
 #'   ResourceId = "service/default/web-app",
@@ -1346,7 +1346,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' # in the default cluster. The policy keeps the average utilization of the
 #' # service at 75 percent, with scale-out and scale-in cooldown periods of
 #' # 60 seconds.
-#' \donttest{svc$put_scaling_policy(
+#' \dontrun{svc$put_scaling_policy(
 #'   PolicyName = "cms75-target-tracking-scaling-policy",
 #'   PolicyType = "TargetTrackingScaling",
 #'   ResourceId = "service/default/web-app",
@@ -1375,7 +1375,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' # Amazon ECS service called web-app in the default cluster. The policy is
 #' # used to scale out the ECS service when the RequestCountPerTarget metric
 #' # from the Application Load Balancer exceeds the threshold.
-#' \donttest{svc$put_scaling_policy(
+#' \dontrun{svc$put_scaling_policy(
 #'   PolicyName = "alb-scale-out-target-tracking-scaling-policy",
 #'   PolicyType = "TargetTrackingScaling",
 #'   ResourceId = "service/default/web-app",
@@ -1396,7 +1396,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' # This example applies a step scaling policy to an Amazon ECS service
 #' # called web-app in the default cluster. The policy increases the desired
 #' # count of the service by 200%, with a cool down period of 60 seconds.
-#' \donttest{svc$put_scaling_policy(
+#' \dontrun{svc$put_scaling_policy(
 #'   PolicyName = "web-app-cpu-gt-75",
 #'   PolicyType = "StepScaling",
 #'   ResourceId = "service/default/web-app",
@@ -1418,7 +1418,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' # The policy increases the target capacity of the spot fleet by 200%, with
 #' # a cool down period of 180 seconds.",
 #' # 
-#' \donttest{svc$put_scaling_policy(
+#' \dontrun{svc$put_scaling_policy(
 #'   PolicyName = "fleet-cpu-gt-75",
 #'   PolicyType = "StepScaling",
 #'   ResourceId = "spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3",
@@ -1832,7 +1832,7 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' # This example registers a scalable target from an Amazon ECS service
 #' # called web-app that is running on the default cluster, with a minimum
 #' # desired count of 1 task and a maximum desired count of 10 tasks.
-#' \donttest{svc$register_scalable_target(
+#' \dontrun{svc$register_scalable_target(
 #'   MaxCapacity = 10L,
 #'   MinCapacity = 1L,
 #'   ResourceId = "service/default/web-app",
@@ -1842,7 +1842,7 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' 
 #' # This example registers a scalable target from an Amazon EC2 Spot fleet
 #' # with a minimum target capacity of 1 and a maximum of 10.
-#' \donttest{svc$register_scalable_target(
+#' \dontrun{svc$register_scalable_target(
 #'   MaxCapacity = 10L,
 #'   MinCapacity = 1L,
 #'   ResourceId = "spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3",

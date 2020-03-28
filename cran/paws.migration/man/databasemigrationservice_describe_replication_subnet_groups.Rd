@@ -44,7 +44,7 @@ Returns information about the replication subnet groups.
 
 \examples{
 # Returns information about the replication subnet groups.
-\donttest{svc$describe_replication_subnet_groups(
+\dontrun{svc$describe_replication_subnet_groups(
   Filters = list(
     list(
       Name = "string",

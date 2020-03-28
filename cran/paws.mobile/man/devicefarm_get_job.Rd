@@ -21,7 +21,7 @@ Gets information about a job.
 
 \examples{
 # The following example returns information about a specific job.
-\donttest{svc$get_job(
+\dontrun{svc$get_job(
   arn = "arn:aws:devicefarm:us-west-2::job:123-456-EXAMPLE-GUID"
 )}
 

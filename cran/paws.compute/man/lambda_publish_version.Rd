@@ -61,7 +61,7 @@ alias, use CreateAlias.
 
 \examples{
 # This operation publishes a version of a Lambda function
-\donttest{svc$publish_version(
+\dontrun{svc$publish_version(
   CodeSha256 = "",
   Description = "",
   FunctionName = "myFunction"

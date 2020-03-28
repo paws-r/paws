@@ -67,10 +67,10 @@ parameter.
 
 \examples{
 # This example lists all of your registered task definition families.
-\donttest{svc$list_task_definition_families()}
+\dontrun{svc$list_task_definition_families()}
 
 # This example lists the task definition revisions that start with "hpcc".
-\donttest{svc$list_task_definition_families(
+\dontrun{svc$list_task_definition_families(
   familyPrefix = "hpcc"
 )}
 

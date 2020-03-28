@@ -30,7 +30,7 @@ tags, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.htm
 
 \examples{
 # The example lists all the tags attached to the vault examplevault.
-\donttest{svc$list_tags_for_vault(
+\dontrun{svc$list_tags_for_vault(
   accountId = "-",
   vaultName = "examplevault"
 )}

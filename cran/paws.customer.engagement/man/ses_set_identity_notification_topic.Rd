@@ -53,7 +53,7 @@ For more information about feedback notification, see the \href{https://docs.aws
 # The following example sets the Amazon SNS topic to which Amazon SES will
 # publish bounce, complaint, and/or delivery notifications for emails sent
 # with the specified identity as the Source:
-\donttest{svc$set_identity_notification_topic(
+\dontrun{svc$set_identity_notification_topic(
   Identity = "user@example.com",
   NotificationType = "Bounce",
   SnsTopic = "arn:aws:sns:us-west-2:111122223333:MyTopic"

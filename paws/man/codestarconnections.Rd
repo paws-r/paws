@@ -71,7 +71,7 @@ For information about how to use AWS CodeStar Connections, see the \href{https:/
 }
 
 \examples{
-\donttest{svc <- codestarconnections()
+\dontrun{svc <- codestarconnections()
 svc$create_connection(
   Foo = 123
 )}

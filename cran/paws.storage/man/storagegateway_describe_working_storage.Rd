@@ -34,7 +34,7 @@ and it includes the amount of working storage allocated and used.
 # This operation is supported only for the gateway-stored volume
 # architecture. This operation is deprecated in cached-volumes API version
 # (20120630). Use DescribeUploadBuffer instead.
-\donttest{svc$describe_working_storage(
+\dontrun{svc$describe_working_storage(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
 )}
 

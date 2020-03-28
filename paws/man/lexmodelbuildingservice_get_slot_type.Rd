@@ -29,7 +29,7 @@ This operation requires permissions for the \code{lex:GetSlotType} action.
 
 \examples{
 # This example shows how to get information about a slot type.
-\donttest{svc$get_slot_type(
+\dontrun{svc$get_slot_type(
   version = "$LATEST",
   name = "DocPizzaCrustType"
 )}

@@ -104,7 +104,7 @@ underlying REST API \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/a
 \examples{
 # The example initiates an inventory-retrieval job for the vault named
 # examplevault.
-\donttest{svc$initiate_job(
+\dontrun{svc$initiate_job(
   accountId = "-",
   jobParameters = list(
     Description = "My inventory job",

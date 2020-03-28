@@ -61,7 +61,7 @@ hours) of snapshots.
 
 \examples{
 # Updates a snapshot schedule configured for a gateway volume.
-\donttest{svc$update_snapshot_schedule(
+\dontrun{svc$update_snapshot_schedule(
   Description = "Hourly snapshot",
   RecurrenceInHours = 1L,
   StartAt = 0L,

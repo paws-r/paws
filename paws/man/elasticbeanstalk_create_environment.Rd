@@ -122,7 +122,7 @@ specified configuration.
 \examples{
 # The following operation creates a new environment for version v1 of a
 # java application named my-app:
-\donttest{svc$create_environment(
+\dontrun{svc$create_environment(
   ApplicationName = "my-app",
   CNAMEPrefix = "my-app",
   EnvironmentName = "my-env",

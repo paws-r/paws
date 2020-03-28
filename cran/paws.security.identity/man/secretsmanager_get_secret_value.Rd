@@ -84,7 +84,7 @@ DescribeSecret.
 # attached. If you want to retrieve the AWSCURRENT version of the secret,
 # then you can omit the VersionStage parameter because it defaults to
 # AWSCURRENT.
-\donttest{svc$get_secret_value(
+\dontrun{svc$get_secret_value(
   SecretId = "MyTestDatabaseSecret",
   VersionStage = "AWSPREVIOUS"
 )}

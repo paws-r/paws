@@ -44,7 +44,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- lightsail()
+#' \dontrun{svc <- lightsail()
 #' svc$allocate_static_ip(
 #'   Foo = 123
 #' )}

@@ -380,7 +380,7 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' -   Cannot be a reserved word for the chosen database engine.
 #' @param MasterUserPassword &#91;required&#93; The password for the master database user. This password can contain any
 #' printable ASCII character except forward slash (/), double quote (\"),
-#' or the \"at\" symbol (@).
+#' or the \"at\" symbol (@@).
 #' 
 #' Constraints: Must contain from 8 to 100 characters.
 #' @param PreferredBackupWindow The daily time range during which automated backups are created if
@@ -2238,7 +2238,7 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' Default: The same port as the original DB cluster.
 #' @param MasterUserPassword The password for the master database user. This password can contain any
 #' printable ASCII character except forward slash (/), double quote (\"),
-#' or the \"at\" symbol (@).
+#' or the \"at\" symbol (@@).
 #' 
 #' Constraints: Must contain from 8 to 100 characters.
 #' @param PreferredBackupWindow The daily time range during which automated backups are created if

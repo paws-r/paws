@@ -64,7 +64,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- codestarconnections()
+#' \dontrun{svc <- codestarconnections()
 #' svc$create_connection(
 #'   Foo = 123
 #' )}

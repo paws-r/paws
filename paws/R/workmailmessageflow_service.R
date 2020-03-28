@@ -31,7 +31,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- workmailmessageflow()
+#' \dontrun{svc <- workmailmessageflow()
 #' svc$get_raw_message_content(
 #'   Foo = 123
 #' )}

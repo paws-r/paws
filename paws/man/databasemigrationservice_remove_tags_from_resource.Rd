@@ -27,7 +27,7 @@ Removes metadata tags from a DMS resource.
 
 \examples{
 # Removes metadata tags from an AWS DMS resource.
-\donttest{svc$remove_tags_from_resource(
+\dontrun{svc$remove_tags_from_resource(
   ResourceArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ASXWXJZLNWNT5HTWCGV2BUJQ7E",
   TagKeys = list()
 )}

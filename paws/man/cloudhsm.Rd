@@ -64,7 +64,7 @@ information, see \href{http://aws.amazon.com/cloudhsm/faqs-classic/}{AWS CloudHS
 }
 
 \examples{
-\donttest{svc <- cloudhsm()
+\dontrun{svc <- cloudhsm()
 svc$add_tags_to_resource(
   Foo = 123
 )}

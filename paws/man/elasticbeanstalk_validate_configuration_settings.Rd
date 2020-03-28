@@ -51,14 +51,14 @@ associated with the selection of option values.
 \examples{
 # The following operation validates a CloudWatch custom metrics config
 # document:
-\donttest{svc$validate_configuration_settings(
+\dontrun{svc$validate_configuration_settings(
   ApplicationName = "my-app",
   EnvironmentName = "my-env",
   OptionSettings = list(
     list(
       Namespace = "aws:elasticbeanstalk:healthreporting:system",
       OptionName = "ConfigDocument",
-      Value = "{\"CloudWatchMetrics\": {\"Environment\": {\"ApplicationLatencyP99.9\": null,..."
+      Value = "\{\"CloudWatchMetrics\": \{\"Environment\": \{\"ApplicationLatencyP99.9\": null,..."
     )
   )
 )}

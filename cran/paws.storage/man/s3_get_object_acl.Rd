@@ -54,7 +54,7 @@ The following operations are related to \code{GetObjectAcl}:
 
 \examples{
 # The following example retrieves access control list (ACL) of an object.
-\donttest{svc$get_object_acl(
+\dontrun{svc$get_object_acl(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
 )}

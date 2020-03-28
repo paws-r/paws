@@ -32,7 +32,7 @@ can be deleted.
 
 \examples{
 # The following example deletes the specified bucket.
-\donttest{svc$delete_bucket(
+\dontrun{svc$delete_bucket(
   Bucket = "forrandall2"
 )}
 

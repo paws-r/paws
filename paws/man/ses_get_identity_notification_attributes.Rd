@@ -36,7 +36,7 @@ For more information about using notifications with Amazon SES, see the
 \examples{
 # The following example returns the notification attributes for an
 # identity:
-\donttest{svc$get_identity_notification_attributes(
+\dontrun{svc$get_identity_notification_attributes(
   Identities = list(
     "example.com"
   )

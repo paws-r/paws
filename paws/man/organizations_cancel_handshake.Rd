@@ -40,7 +40,7 @@ relevant APIs for only 30 days. After that, it\'s deleted.
 # before Susan accepts it. The following example shows Bill's
 # cancellation:
 # 
-\donttest{svc$cancel_handshake(
+\dontrun{svc$cancel_handshake(
   HandshakeId = "h-examplehandshakeid111"
 )}
 

@@ -37,7 +37,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 \examples{
 # This example adds two tags to the specified Auto Scaling group.
-\donttest{svc$create_or_update_tags(
+\dontrun{svc$create_or_update_tags(
   Tags = list(
     list(
       Key = "Role",

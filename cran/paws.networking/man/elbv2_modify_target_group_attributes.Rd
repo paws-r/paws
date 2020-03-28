@@ -30,7 +30,7 @@ Modifies the specified attributes of the specified target group.
 \examples{
 # This example sets the deregistration delay timeout to the specified
 # value for the specified target group.
-\donttest{svc$modify_target_group_attributes(
+\dontrun{svc$modify_target_group_attributes(
   Attributes = list(
     list(
       Key = "deregistration_delay.timeout_seconds",

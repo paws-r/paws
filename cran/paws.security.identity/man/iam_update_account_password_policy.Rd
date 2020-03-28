@@ -112,7 +112,7 @@ in the \emph{IAM User Guide}.
 # The following command sets the password policy to require a minimum
 # length of eight characters and to require one or more numbers in the
 # password:
-\donttest{svc$update_account_password_policy(
+\dontrun{svc$update_account_password_policy(
   MinimumPasswordLength = 8L,
   RequireNumbers = TRUE
 )}

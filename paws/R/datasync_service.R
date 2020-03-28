@@ -36,7 +36,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- datasync()
+#' \dontrun{svc <- datasync()
 #' svc$cancel_task_execution(
 #'   Foo = 123
 #' )}

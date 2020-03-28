@@ -75,7 +75,7 @@ modern web apps.
 }
 
 \examples{
-\donttest{svc <- amplify()
+\dontrun{svc <- amplify()
 svc$create_app(
   Foo = 123
 )}

@@ -55,7 +55,7 @@ Terminates the specified environment.
 \examples{
 # The following operation terminates an Elastic Beanstalk environment
 # named my-env:
-\donttest{svc$terminate_environment(
+\dontrun{svc$terminate_environment(
   EnvironmentName = "my-env"
 )}
 

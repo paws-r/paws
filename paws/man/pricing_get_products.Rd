@@ -44,7 +44,7 @@ Returns a list of all products that match the filter criteria.
 
 \examples{
 # This operation returns a list of products that match the given criteria.
-\donttest{svc$get_products(
+\dontrun{svc$get_products(
   Filters = list(
     list(
       Field = "ServiceCode",

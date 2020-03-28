@@ -71,7 +71,7 @@ application to Amazon EKS without any code modification required.
 
 \examples{
 # The following example creates an Amazon EKS cluster called prod.
-\donttest{svc <- eks()
+\dontrun{svc <- eks()
 svc$create_cluster(
   version = "1.10",
   name = "prod",

@@ -51,7 +51,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- ssooidc()
+#' \dontrun{svc <- ssooidc()
 #' svc$create_token(
 #'   Foo = 123
 #' )}

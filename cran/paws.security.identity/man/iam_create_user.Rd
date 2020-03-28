@@ -64,7 +64,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following create-user command creates an IAM user named Bob in the
 # current account.
-\donttest{svc$create_user(
+\dontrun{svc$create_user(
   UserName = "Bob"
 )}
 

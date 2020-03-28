@@ -52,7 +52,7 @@ in the \emph{AWS Organizations User Guide.}
 \examples{
 # The following example shows you how to remove an account from an
 # organization:
-\donttest{svc$remove_account_from_organization(
+\dontrun{svc$remove_account_from_organization(
   AccountId = "333333333333"
 )}
 

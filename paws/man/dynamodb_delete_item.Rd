@@ -260,7 +260,7 @@ delete. Otherwise, the item is not deleted.
 
 \examples{
 # This example deletes an item from the Music table.
-\donttest{svc$delete_item(
+\dontrun{svc$delete_item(
   Key = list(
     Artist = list(
       S = "No One You Know"

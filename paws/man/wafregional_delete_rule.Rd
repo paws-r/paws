@@ -40,7 +40,7 @@ information, see UpdateRule.
 
 \examples{
 # The following example deletes a rule with the ID WAFRule-1-Example.
-\donttest{svc$delete_rule(
+\dontrun{svc$delete_rule(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   RuleId = "WAFRule-1-Example"
 )}

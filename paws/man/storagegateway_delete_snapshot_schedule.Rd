@@ -32,7 +32,7 @@ To list or delete a snapshot, you must use the Amazon EC2 API. in
 
 \examples{
 # This action enables you to delete a snapshot schedule for a volume.
-\donttest{svc$delete_snapshot_schedule(
+\dontrun{svc$delete_snapshot_schedule(
   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
 )}
 

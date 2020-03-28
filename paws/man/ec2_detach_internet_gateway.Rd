@@ -34,7 +34,7 @@ with Elastic IP addresses or public IPv4 addresses.
 \examples{
 # This example detaches the specified Internet gateway from the specified
 # VPC.
-\donttest{svc$detach_internet_gateway(
+\dontrun{svc$detach_internet_gateway(
   InternetGatewayId = "igw-c0a643a9",
   VpcId = "vpc-a01106c2"
 )}

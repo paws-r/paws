@@ -128,7 +128,7 @@ Describes one or more of your network interfaces.
 
 \examples{
 # 
-\donttest{svc$describe_network_interfaces(
+\dontrun{svc$describe_network_interfaces(
   NetworkInterfaceIds = list(
     "eni-e5aa89a3"
   )

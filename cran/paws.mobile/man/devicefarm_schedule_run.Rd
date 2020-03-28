@@ -107,7 +107,7 @@ Schedules a run.
 
 \examples{
 # The following example schedules a test run named MyRun.
-\donttest{svc$schedule_run(
+\dontrun{svc$schedule_run(
   name = "MyRun",
   devicePoolArn = "arn:aws:devicefarm:us-west-2:123456789101:pool:EXAMPLE-GUID-123-456",
   projectArn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",

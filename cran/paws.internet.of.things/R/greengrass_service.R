@@ -30,7 +30,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- greengrass()
+#' \dontrun{svc <- greengrass()
 #' svc$associate_role_to_group(
 #'   Foo = 123
 #' )}

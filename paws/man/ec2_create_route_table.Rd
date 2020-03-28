@@ -32,7 +32,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 
 \examples{
 # This example creates a route table for the specified VPC.
-\donttest{svc$create_route_table(
+\dontrun{svc$create_route_table(
   VpcId = "vpc-a01106c2"
 )}
 

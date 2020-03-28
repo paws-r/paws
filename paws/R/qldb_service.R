@@ -30,7 +30,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- qldb()
+#' \dontrun{svc <- qldb()
 #' svc$create_ledger(
 #'   Foo = 123
 #' )}

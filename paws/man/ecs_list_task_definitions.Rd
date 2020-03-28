@@ -63,10 +63,10 @@ parameter or by status with the \code{status} parameter.
 
 \examples{
 # This example lists all of your registered task definitions.
-\donttest{svc$list_task_definitions()}
+\dontrun{svc$list_task_definitions()}
 
 # This example lists the task definition revisions of a specified family.
-\donttest{svc$list_task_definitions(
+\dontrun{svc$list_task_definitions(
   familyPrefix = "wordpress"
 )}
 

@@ -144,7 +144,7 @@ testing within a Region.
 }
 
 \examples{
-\donttest{svc <- globalaccelerator()
+\dontrun{svc <- globalaccelerator()
 svc$create_accelerator(
   Foo = 123
 )}

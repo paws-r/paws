@@ -209,7 +209,7 @@ example:
 \examples{
 # The following example uploads a part of a multipart upload by copying a
 # specified byte range from an existing object as data source.
-\donttest{svc$upload_part_copy(
+\dontrun{svc$upload_part_copy(
   Bucket = "examplebucket",
   CopySource = "/bucketname/sourceobjectkey",
   CopySourceRange = "bytes=1-100000",
@@ -220,7 +220,7 @@ example:
 
 # The following example uploads a part of a multipart upload by copying
 # data from an existing object as data source.
-\donttest{svc$upload_part_copy(
+\dontrun{svc$upload_part_copy(
   Bucket = "examplebucket",
   CopySource = "/bucketname/sourceobjectkey",
   Key = "examplelargeobject",

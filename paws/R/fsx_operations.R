@@ -109,7 +109,7 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'
 #' @examples
 #' # This operation creates a new backup.
-#' \donttest{svc$create_backup(
+#' \dontrun{svc$create_backup(
 #'   FileSystemId = "fs-0498eed5fe91001ec",
 #'   Tags = list(
 #'     list(
@@ -334,7 +334,7 @@ fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Re
 #'
 #' @examples
 #' # This operation creates a new file system.
-#' \donttest{svc$create_file_system(
+#' \dontrun{svc$create_file_system(
 #'   ClientRequestToken = "a8ca07e4-61ec-4399-99f4-19853801bcd5",
 #'   FileSystemType = "WINDOWS",
 #'   KmsKeyId = "arn:aws:kms:us-east-1:012345678912:key/0ff3ea8d-130e-4133-877f-93908b6fdbd6",
@@ -480,7 +480,7 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'
 #' @examples
 #' # This operation creates a new file system from backup.
-#' \donttest{svc$create_file_system_from_backup(
+#' \dontrun{svc$create_file_system_from_backup(
 #'   BackupId = "backup-03e3c82e0183b7b6b",
 #'   ClientRequestToken = "f4c94ed7-238d-4c46-93db-48cd62ec33b7",
 #'   SecurityGroupIds = list(
@@ -551,7 +551,7 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #'
 #' @examples
 #' # This operation deletes an Amazon FSx file system backup.
-#' \donttest{svc$delete_backup(
+#' \dontrun{svc$delete_backup(
 #'   BackupId = "backup-03e3c82e0183b7b6b"
 #' )}
 #'
@@ -629,7 +629,7 @@ fsx_delete_backup <- function(BackupId, ClientRequestToken = NULL) {
 #'
 #' @examples
 #' # This operation deletes an Amazon FSx file system.
-#' \donttest{svc$delete_file_system(
+#' \dontrun{svc$delete_file_system(
 #'   FileSystemId = "fs-0498eed5fe91001ec"
 #' )}
 #'
@@ -720,7 +720,7 @@ fsx_delete_file_system <- function(FileSystemId, ClientRequestToken = NULL, Wind
 #'
 #' @examples
 #' # This operation describes all of the Amazon FSx backups in an account.
-#' \donttest{svc$describe_backups()}
+#' \dontrun{svc$describe_backups()}
 #'
 #' @keywords internal
 #'
@@ -870,7 +870,7 @@ fsx_describe_data_repository_tasks <- function(TaskIds = NULL, Filters = NULL, M
 #' @examples
 #' # This operation describes all of the Amazon FSx file systems in an
 #' # account.
-#' \donttest{svc$describe_file_systems()}
+#' \dontrun{svc$describe_file_systems()}
 #'
 #' @keywords internal
 #'
@@ -943,7 +943,7 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 #'
 #' @examples
 #' # This operation lists tags for an Amazon FSx resource.
-#' \donttest{svc$list_tags_for_resource(
+#' \dontrun{svc$list_tags_for_resource(
 #'   ResourceARN = "arn:aws:fsx:us-east-1:012345678912:file-system/fs-0498eed5fe91001ec"
 #' )}
 #'
@@ -994,7 +994,7 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #'
 #' @examples
 #' # This operation tags an Amazon FSx resource.
-#' \donttest{svc$tag_resource(
+#' \dontrun{svc$tag_resource(
 #'   ResourceARN = "arn:aws:fsx:us-east-1:012345678912:file-system/fs-0498eed5fe91001ec",
 #'   Tags = list(
 #'     list(
@@ -1047,7 +1047,7 @@ fsx_tag_resource <- function(ResourceARN, Tags) {
 #'
 #' @examples
 #' # This operation untags an Amazon FSx resource.
-#' \donttest{svc$untag_resource(
+#' \dontrun{svc$untag_resource(
 #'   ResourceARN = "arn:aws:fsx:us-east-1:012345678912:file-system/fs-0498eed5fe91001ec",
 #'   TagKeys = list(
 #'     "Name"
@@ -1117,7 +1117,7 @@ fsx_untag_resource <- function(ResourceARN, TagKeys) {
 #'
 #' @examples
 #' # This operation updates an existing file system.
-#' \donttest{svc$update_file_system(
+#' \dontrun{svc$update_file_system(
 #'   FileSystemId = "fs-0498eed5fe91001ec",
 #'   WindowsConfiguration = list(
 #'     AutomaticBackupRetentionDays = 10L,

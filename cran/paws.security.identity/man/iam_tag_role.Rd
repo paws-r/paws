@@ -69,7 +69,7 @@ in the \emph{IAM User Guide}.
 
 \examples{
 # The following example shows how to add tags to an existing role.
-\donttest{svc$tag_role(
+\dontrun{svc$tag_role(
   RoleName = "taggedrole",
   Tags = list(
     list(

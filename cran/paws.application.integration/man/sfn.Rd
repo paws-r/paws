@@ -77,7 +77,7 @@ HTTP API. For more information about Step Functions, see the \emph{\href{https:/
 }
 
 \examples{
-\donttest{svc <- sfn()
+\dontrun{svc <- sfn()
 svc$create_activity(
   Foo = 123
 )}

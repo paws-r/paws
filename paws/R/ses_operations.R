@@ -39,7 +39,7 @@ NULL
 #' @examples
 #' # The following example creates a receipt rule set by cloning an existing
 #' # one:
-#' \donttest{svc$clone_receipt_rule_set(
+#' \dontrun{svc$clone_receipt_rule_set(
 #'   OriginalRuleSetName = "RuleSetToClone",
 #'   RuleSetName = "RuleSetToCreate"
 #' )}
@@ -328,7 +328,7 @@ ses_create_custom_verification_email_template <- function(TemplateName, FromEmai
 #'
 #' @examples
 #' # The following example creates a new IP address filter:
-#' \donttest{svc$create_receipt_filter(
+#' \dontrun{svc$create_receipt_filter(
 #'   Filter = list(
 #'     IpFilter = list(
 #'       Cidr = "1.2.3.4/24",
@@ -435,7 +435,7 @@ ses_create_receipt_filter <- function(Filter) {
 #'
 #' @examples
 #' # The following example creates a new receipt rule:
-#' \donttest{svc$create_receipt_rule(
+#' \dontrun{svc$create_receipt_rule(
 #'   After = "",
 #'   Rule = list(
 #'     Actions = list(
@@ -505,7 +505,7 @@ ses_create_receipt_rule <- function(RuleSetName, After = NULL, Rule) {
 #'
 #' @examples
 #' # The following example creates an empty receipt rule set:
-#' \donttest{svc$create_receipt_rule_set(
+#' \dontrun{svc$create_receipt_rule_set(
 #'   RuleSetName = "MyRuleSet"
 #' )}
 #'
@@ -780,7 +780,7 @@ ses_delete_custom_verification_email_template <- function(TemplateName) {
 #' @examples
 #' # The following example deletes an identity from the list of identities
 #' # that have been submitted for verification with Amazon SES:
-#' \donttest{svc$delete_identity(
+#' \dontrun{svc$delete_identity(
 #'   Identity = "user@example.com"
 #' )}
 #'
@@ -826,7 +826,7 @@ ses_delete_identity <- function(Identity) {
 #'
 #' @param Identity &#91;required&#93; The identity that is associated with the policy that you want to delete.
 #' You can specify the identity by using its name or by using its Amazon
-#' Resource Name (ARN). Examples: `user@example.com`, `example.com`,
+#' Resource Name (ARN). Examples: `user@@example.com`, `example.com`,
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`.
 #' 
 #' To successfully call this API, you must own the identity.
@@ -843,7 +843,7 @@ ses_delete_identity <- function(Identity) {
 #' @examples
 #' # The following example deletes a sending authorization policy for an
 #' # identity:
-#' \donttest{svc$delete_identity_policy(
+#' \dontrun{svc$delete_identity_policy(
 #'   Identity = "user@example.com",
 #'   PolicyName = "MyPolicy"
 #' )}
@@ -892,7 +892,7 @@ ses_delete_identity_policy <- function(Identity, PolicyName) {
 #'
 #' @examples
 #' # The following example deletes an IP address filter:
-#' \donttest{svc$delete_receipt_filter(
+#' \dontrun{svc$delete_receipt_filter(
 #'   FilterName = "MyFilter"
 #' )}
 #'
@@ -943,7 +943,7 @@ ses_delete_receipt_filter <- function(FilterName) {
 #'
 #' @examples
 #' # The following example deletes a receipt rule:
-#' \donttest{svc$delete_receipt_rule(
+#' \dontrun{svc$delete_receipt_rule(
 #'   RuleName = "MyRule",
 #'   RuleSetName = "MyRuleSet"
 #' )}
@@ -996,7 +996,7 @@ ses_delete_receipt_rule <- function(RuleSetName, RuleName) {
 #'
 #' @examples
 #' # The following example deletes a receipt rule set:
-#' \donttest{svc$delete_receipt_rule_set(
+#' \dontrun{svc$delete_receipt_rule_set(
 #'   RuleSetName = "MyRuleSet"
 #' )}
 #'
@@ -1078,7 +1078,7 @@ ses_delete_template <- function(TemplateName) {
 #' @examples
 #' # The following example deletes an email address from the list of
 #' # identities that have been submitted for verification with Amazon SES:
-#' \donttest{svc$delete_verified_email_address(
+#' \dontrun{svc$delete_verified_email_address(
 #'   EmailAddress = "user@example.com"
 #' )}
 #'
@@ -1125,7 +1125,7 @@ ses_delete_verified_email_address <- function(EmailAddress) {
 #' @examples
 #' # The following example returns the metadata and receipt rules for the
 #' # receipt rule set that is currently active:
-#' \donttest{svc$describe_active_receipt_rule_set()}
+#' \dontrun{svc$describe_active_receipt_rule_set()}
 #'
 #' @keywords internal
 #'
@@ -1218,7 +1218,7 @@ ses_describe_configuration_set <- function(ConfigurationSetName, ConfigurationSe
 #'
 #' @examples
 #' # The following example returns the details of a receipt rule:
-#' \donttest{svc$describe_receipt_rule(
+#' \dontrun{svc$describe_receipt_rule(
 #'   RuleName = "MyRule",
 #'   RuleSetName = "MyRuleSet"
 #' )}
@@ -1268,7 +1268,7 @@ ses_describe_receipt_rule <- function(RuleSetName, RuleName) {
 #' @examples
 #' # The following example returns the metadata and receipt rules of a
 #' # receipt rule set:
-#' \donttest{svc$describe_receipt_rule_set(
+#' \dontrun{svc$describe_receipt_rule_set(
 #'   RuleSetName = "MyRuleSet"
 #' )}
 #'
@@ -1310,7 +1310,7 @@ ses_describe_receipt_rule_set <- function(RuleSetName) {
 #' @examples
 #' # The following example returns if sending status for an account is
 #' # enabled. (true / false):
-#' \donttest{svc$get_account_sending_enabled()}
+#' \dontrun{svc$get_account_sending_enabled()}
 #'
 #' @keywords internal
 #'
@@ -1422,7 +1422,7 @@ ses_get_custom_verification_email_template <- function(TemplateName) {
 #' @examples
 #' # The following example retrieves the Amazon SES Easy DKIM attributes for
 #' # a list of identities:
-#' \donttest{svc$get_identity_dkim_attributes(
+#' \dontrun{svc$get_identity_dkim_attributes(
 #'   Identities = list(
 #'     "example.com",
 #'     "user@example.com"
@@ -1475,7 +1475,7 @@ ses_get_identity_dkim_attributes <- function(Identities) {
 #' @examples
 #' # The following example returns the custom MAIL FROM attributes for an
 #' # identity:
-#' \donttest{svc$get_identity_mail_from_domain_attributes(
+#' \dontrun{svc$get_identity_mail_from_domain_attributes(
 #'   Identities = list(
 #'     "example.com"
 #'   )
@@ -1519,7 +1519,7 @@ ses_get_identity_mail_from_domain_attributes <- function(Identities) {
 #'
 #' @param Identities &#91;required&#93; A list of one or more identities. You can specify an identity by using
 #' its name or by using its Amazon Resource Name (ARN). Examples:
-#' `user@example.com`, `example.com`,
+#' `user@@example.com`, `example.com`,
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`.
 #'
 #' @section Request syntax:
@@ -1534,7 +1534,7 @@ ses_get_identity_mail_from_domain_attributes <- function(Identities) {
 #' @examples
 #' # The following example returns the notification attributes for an
 #' # identity:
-#' \donttest{svc$get_identity_notification_attributes(
+#' \dontrun{svc$get_identity_notification_attributes(
 #'   Identities = list(
 #'     "example.com"
 #'   )
@@ -1583,7 +1583,7 @@ ses_get_identity_notification_attributes <- function(Identities) {
 #'
 #' @param Identity &#91;required&#93; The identity for which the policies will be retrieved. You can specify
 #' an identity by using its name or by using its Amazon Resource Name
-#' (ARN). Examples: `user@example.com`, `example.com`,
+#' (ARN). Examples: `user@@example.com`, `example.com`,
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`.
 #' 
 #' To successfully call this API, you must own the identity.
@@ -1605,7 +1605,7 @@ ses_get_identity_notification_attributes <- function(Identities) {
 #' @examples
 #' # The following example returns a sending authorization policy for an
 #' # identity:
-#' \donttest{svc$get_identity_policies(
+#' \dontrun{svc$get_identity_policies(
 #'   Identity = "example.com",
 #'   PolicyNames = list(
 #'     "MyPolicy"
@@ -1677,7 +1677,7 @@ ses_get_identity_policies <- function(Identity, PolicyNames) {
 #' @examples
 #' # The following example returns the verification status and the
 #' # verification token for a domain identity:
-#' \donttest{svc$get_identity_verification_attributes(
+#' \dontrun{svc$get_identity_verification_attributes(
 #'   Identities = list(
 #'     "example.com"
 #'   )
@@ -1719,7 +1719,7 @@ ses_get_identity_verification_attributes <- function(Identities) {
 #' @examples
 #' # The following example returns the Amazon SES sending limits for an AWS
 #' # account:
-#' \donttest{svc$get_send_quota()}
+#' \dontrun{svc$get_send_quota()}
 #'
 #' @keywords internal
 #'
@@ -1759,7 +1759,7 @@ ses_get_send_quota <- function() {
 #'
 #' @examples
 #' # The following example returns Amazon SES sending statistics:
-#' \donttest{svc$get_send_statistics()}
+#' \dontrun{svc$get_send_statistics()}
 #'
 #' @keywords internal
 #'
@@ -1957,7 +1957,7 @@ ses_list_custom_verification_email_templates <- function(NextToken = NULL, MaxRe
 #' @examples
 #' # The following example lists the email address identities that have been
 #' # submitted for verification with Amazon SES:
-#' \donttest{svc$list_identities(
+#' \dontrun{svc$list_identities(
 #'   IdentityType = "EmailAddress",
 #'   MaxItems = 123L,
 #'   NextToken = ""
@@ -2006,7 +2006,7 @@ ses_list_identities <- function(IdentityType = NULL, NextToken = NULL, MaxItems 
 #'
 #' @param Identity &#91;required&#93; The identity that is associated with the policy for which the policies
 #' will be listed. You can specify an identity by using its name or by
-#' using its Amazon Resource Name (ARN). Examples: `user@example.com`,
+#' using its Amazon Resource Name (ARN). Examples: `user@@example.com`,
 #' `example.com`,
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`.
 #' 
@@ -2022,7 +2022,7 @@ ses_list_identities <- function(IdentityType = NULL, NextToken = NULL, MaxItems 
 #' @examples
 #' # The following example returns a list of sending authorization policies
 #' # that are attached to an identity:
-#' \donttest{svc$list_identity_policies(
+#' \dontrun{svc$list_identity_policies(
 #'   Identity = "example.com"
 #' )}
 #'
@@ -2069,7 +2069,7 @@ ses_list_identity_policies <- function(Identity) {
 #' @examples
 #' # The following example lists the IP address filters that are associated
 #' # with an AWS account:
-#' \donttest{svc$list_receipt_filters()}
+#' \dontrun{svc$list_receipt_filters()}
 #'
 #' @keywords internal
 #'
@@ -2121,7 +2121,7 @@ ses_list_receipt_filters <- function() {
 #' @examples
 #' # The following example lists the receipt rule sets that exist under an
 #' # AWS account:
-#' \donttest{svc$list_receipt_rule_sets(
+#' \dontrun{svc$list_receipt_rule_sets(
 #'   NextToken = ""
 #' )}
 #'
@@ -2206,7 +2206,7 @@ ses_list_templates <- function(NextToken = NULL, MaxItems = NULL) {
 #' @examples
 #' # The following example lists all email addresses that have been submitted
 #' # for verification with Amazon SES:
-#' \donttest{svc$list_verified_email_addresses()}
+#' \dontrun{svc$list_verified_email_addresses()}
 #'
 #' @keywords internal
 #'
@@ -2292,7 +2292,7 @@ ses_put_configuration_set_delivery_options <- function(ConfigurationSetName, Del
 #'
 #' @param Identity &#91;required&#93; The identity that the policy will apply to. You can specify an identity
 #' by using its name or by using its Amazon Resource Name (ARN). Examples:
-#' `user@example.com`, `example.com`,
+#' `user@@example.com`, `example.com`,
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`.
 #' 
 #' To successfully call this API, you must own the identity.
@@ -2318,9 +2318,9 @@ ses_put_configuration_set_delivery_options <- function(ConfigurationSetName, Del
 #' @examples
 #' # The following example adds a sending authorization policy to an
 #' # identity:
-#' \donttest{svc$put_identity_policy(
+#' \dontrun{svc$put_identity_policy(
 #'   Identity = "example.com",
-#'   Policy = "{\"Version\":\"2008-10-17\",\"Statement\":[{\"Sid\":\"stmt1469123904194\",...",
+#'   Policy = "\{\"Version\":\"2008-10-17\",\"Statement\":[\{\"Sid\":\"stmt1469123904194\",...",
 #'   PolicyName = "MyPolicy"
 #' )}
 #'
@@ -2378,7 +2378,7 @@ ses_put_identity_policy <- function(Identity, PolicyName, Policy) {
 #' @examples
 #' # The following example reorders the receipt rules within a receipt rule
 #' # set:
-#' \donttest{svc$reorder_receipt_rule_set(
+#' \dontrun{svc$reorder_receipt_rule_set(
 #'   RuleNames = list(
 #'     "MyRule",
 #'     "MyOtherRule"
@@ -2536,7 +2536,7 @@ ses_send_bounce <- function(OriginalMessageId, BounceSender, Explanation = NULL,
 #'     email address. The recipient address can be a To: address, a CC:
 #'     address, or a BCC: address. If a recipient email address is invalid
 #'     (that is, it is not in the format
-#'     *UserName@\[SubDomain.\]Domain.TopLevelDomain*), the entire message
+#'     *UserName@@\[SubDomain.\]Domain.TopLevelDomain*), the entire message
 #'     will be rejected, even if the message contains other recipients that
 #'     are valid.
 #' 
@@ -2567,11 +2567,11 @@ ses_send_bounce <- function(OriginalMessageId, BounceSender, Explanation = NULL,
 #' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 #' 
 #' Amazon SES does not support the SMTPUTF8 extension, as described in
-#' RFC6531. For this reason, the *local part* of a source email address
-#' (the part of the email address that precedes the @ sign) may only
-#' contain [7-bit ASCII
+#' [RFC6531](https://tools.ietf.org/html/rfc6531). For this reason, the
+#' *local part* of a source email address (the part of the email address
+#' that precedes the @@ sign) may only contain [7-bit ASCII
 #' characters](https://en.wikipedia.org/wiki/Email_address#Local-part). If
-#' the *domain part* of an address (the part after the @ sign) contains
+#' the *domain part* of an address (the part after the @@ sign) contains
 #' non-ASCII characters, they must be encoded using Punycode, as described
 #' in [RFC3492](https://tools.ietf.org/html/rfc3492.html). The sender name
 #' (also known as the *friendly name*) may contain non-ASCII characters.
@@ -2586,10 +2586,10 @@ ses_send_bounce <- function(OriginalMessageId, BounceSender, Explanation = NULL,
 #' 
 #' For example, if the owner of `example.com` (which has ARN
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`) attaches a
-#' policy to it that authorizes you to send from `user@example.com`, then
+#' policy to it that authorizes you to send from `user@@example.com`, then
 #' you would specify the `SourceArn` to be
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`, and the
-#' `Source` to be `user@example.com`.
+#' `Source` to be `user@@example.com`.
 #' 
 #' For more information about sending authorization, see the [Amazon SES
 #' Developer
@@ -2611,10 +2611,10 @@ ses_send_bounce <- function(OriginalMessageId, BounceSender, Explanation = NULL,
 #' 
 #' For example, if the owner of `example.com` (which has ARN
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`) attaches a
-#' policy to it that authorizes you to use `feedback@example.com`, then you
+#' policy to it that authorizes you to use `feedback@@example.com`, then you
 #' would specify the `ReturnPathArn` to be
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`, and the
-#' `ReturnPath` to be `feedback@example.com`.
+#' `ReturnPath` to be `feedback@@example.com`.
 #' 
 #' For more information about sending authorization, see the [Amazon SES
 #' Developer
@@ -2778,7 +2778,7 @@ ses_send_custom_verification_email <- function(EmailAddress, TemplateName, Confi
 #' -   The message must include at least one recipient email address. The
 #'     recipient address can be a To: address, a CC: address, or a BCC:
 #'     address. If a recipient email address is invalid (that is, it is not
-#'     in the format *UserName@\[SubDomain.\]Domain.TopLevelDomain*), the
+#'     in the format *UserName@@\[SubDomain.\]Domain.TopLevelDomain*), the
 #'     entire message will be rejected, even if the message contains other
 #'     recipients that are valid.
 #' 
@@ -2815,9 +2815,9 @@ ses_send_custom_verification_email <- function(EmailAddress, TemplateName, Confi
 #' Amazon SES does not support the SMTPUTF8 extension, as described in
 #' [RFC6531](https://tools.ietf.org/html/rfc6531). For this reason, the
 #' *local part* of a source email address (the part of the email address
-#' that precedes the @ sign) may only contain [7-bit ASCII
+#' that precedes the @@ sign) may only contain [7-bit ASCII
 #' characters](https://en.wikipedia.org/wiki/Email_address#Local-part). If
-#' the *domain part* of an address (the part after the @ sign) contains
+#' the *domain part* of an address (the part after the @@ sign) contains
 #' non-ASCII characters, they must be encoded using Punycode, as described
 #' in [RFC3492](https://tools.ietf.org/html/rfc3492.html). The sender name
 #' (also known as the *friendly name*) may contain non-ASCII characters.
@@ -2844,10 +2844,10 @@ ses_send_custom_verification_email <- function(EmailAddress, TemplateName, Confi
 #' 
 #' For example, if the owner of `example.com` (which has ARN
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`) attaches a
-#' policy to it that authorizes you to send from `user@example.com`, then
+#' policy to it that authorizes you to send from `user@@example.com`, then
 #' you would specify the `SourceArn` to be
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`, and the
-#' `Source` to be `user@example.com`.
+#' `Source` to be `user@@example.com`.
 #' 
 #' For more information about sending authorization, see the [Amazon SES
 #' Developer
@@ -2859,10 +2859,10 @@ ses_send_custom_verification_email <- function(EmailAddress, TemplateName, Confi
 #' 
 #' For example, if the owner of `example.com` (which has ARN
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`) attaches a
-#' policy to it that authorizes you to use `feedback@example.com`, then you
+#' policy to it that authorizes you to use `feedback@@example.com`, then you
 #' would specify the `ReturnPathArn` to be
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`, and the
-#' `ReturnPath` to be `feedback@example.com`.
+#' `ReturnPath` to be `feedback@@example.com`.
 #' 
 #' For more information about sending authorization, see the [Amazon SES
 #' Developer
@@ -2922,7 +2922,7 @@ ses_send_custom_verification_email <- function(EmailAddress, TemplateName, Confi
 #'
 #' @examples
 #' # The following example sends a formatted email:
-#' \donttest{svc$send_email(
+#' \dontrun{svc$send_email(
 #'   Destination = list(
 #'     BccAddresses = list(),
 #'     CcAddresses = list(
@@ -3009,7 +3009,7 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #' -   If you send a single message to more than one recipient address, and
 #'     one of the recipient addresses isn\'t in a valid format (that is,
 #'     it\'s not in the format
-#'     *UserName@\[SubDomain.\]Domain.TopLevelDomain*), Amazon SES rejects
+#'     *UserName@@\[SubDomain.\]Domain.TopLevelDomain*), Amazon SES rejects
 #'     the entire message, even if the other addresses are valid.
 #' 
 #' -   Each message can include up to 50 recipient addresses across the
@@ -3080,9 +3080,9 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #' Amazon SES does not support the SMTPUTF8 extension, as described
 #' in[RFC6531](https://tools.ietf.org/html/rfc6531). For this reason, the
 #' *local part* of a source email address (the part of the email address
-#' that precedes the @ sign) may only contain [7-bit ASCII
+#' that precedes the @@ sign) may only contain [7-bit ASCII
 #' characters](https://en.wikipedia.org/wiki/Email_address#Local-part). If
-#' the *domain part* of an address (the part after the @ sign) contains
+#' the *domain part* of an address (the part after the @@ sign) contains
 #' non-ASCII characters, they must be encoded using Punycode, as described
 #' in [RFC3492](https://tools.ietf.org/html/rfc3492.html). The sender name
 #' (also known as the *friendly name*) may contain non-ASCII characters.
@@ -3144,10 +3144,10 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #' 
 #' For example, if the owner of `example.com` (which has ARN
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`) attaches a
-#' policy to it that authorizes you to send from `user@example.com`, then
+#' policy to it that authorizes you to send from `user@@example.com`, then
 #' you would specify the `SourceArn` to be
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`, and the
-#' `Source` to be `user@example.com`.
+#' `Source` to be `user@@example.com`.
 #' 
 #' Instead of using this parameter, you can use the X-header
 #' `X-SES-SOURCE-ARN` in the raw message of the email. If you use both the
@@ -3164,10 +3164,10 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #' 
 #' For example, if the owner of `example.com` (which has ARN
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`) attaches a
-#' policy to it that authorizes you to use `feedback@example.com`, then you
+#' policy to it that authorizes you to use `feedback@@example.com`, then you
 #' would specify the `ReturnPathArn` to be
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`, and the
-#' `ReturnPath` to be `feedback@example.com`.
+#' `ReturnPath` to be `feedback@@example.com`.
 #' 
 #' Instead of using this parameter, you can use the X-header
 #' `X-SES-RETURN-PATH-ARN` in the raw message of the email. If you use both
@@ -3209,7 +3209,7 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #'
 #' @examples
 #' # The following example sends an email with an attachment:
-#' \donttest{svc$send_raw_email(
+#' \dontrun{svc$send_raw_email(
 #'   Destinations = list(),
 #'   FromArn = "",
 #'   RawMessage = list(
@@ -3273,7 +3273,7 @@ ses_send_raw_email <- function(Source = NULL, Destinations = NULL, RawMessage, F
 #'     email address. The recipient address can be a To: address, a CC:
 #'     address, or a BCC: address. If a recipient email address is invalid
 #'     (that is, it is not in the format
-#'     *UserName@\[SubDomain.\]Domain.TopLevelDomain*), the entire message
+#'     *UserName@@\[SubDomain.\]Domain.TopLevelDomain*), the entire message
 #'     will be rejected, even if the message contains other recipients that
 #'     are valid.
 #' 
@@ -3310,9 +3310,9 @@ ses_send_raw_email <- function(Source = NULL, Destinations = NULL, RawMessage, F
 #' Amazon SES does not support the SMTPUTF8 extension, as described in
 #' [RFC6531](https://tools.ietf.org/html/rfc6531). For this reason, the
 #' *local part* of a source email address (the part of the email address
-#' that precedes the @ sign) may only contain [7-bit ASCII
+#' that precedes the @@ sign) may only contain [7-bit ASCII
 #' characters](https://en.wikipedia.org/wiki/Email_address#Local-part). If
-#' the *domain part* of an address (the part after the @ sign) contains
+#' the *domain part* of an address (the part after the @@ sign) contains
 #' non-ASCII characters, they must be encoded using Punycode, as described
 #' in [RFC3492](https://tools.ietf.org/html/rfc3492.html). The sender name
 #' (also known as the *friendly name*) may contain non-ASCII characters.
@@ -3339,10 +3339,10 @@ ses_send_raw_email <- function(Source = NULL, Destinations = NULL, RawMessage, F
 #' 
 #' For example, if the owner of `example.com` (which has ARN
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`) attaches a
-#' policy to it that authorizes you to send from `user@example.com`, then
+#' policy to it that authorizes you to send from `user@@example.com`, then
 #' you would specify the `SourceArn` to be
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`, and the
-#' `Source` to be `user@example.com`.
+#' `Source` to be `user@@example.com`.
 #' 
 #' For more information about sending authorization, see the [Amazon SES
 #' Developer
@@ -3354,10 +3354,10 @@ ses_send_raw_email <- function(Source = NULL, Destinations = NULL, RawMessage, F
 #' 
 #' For example, if the owner of `example.com` (which has ARN
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`) attaches a
-#' policy to it that authorizes you to use `feedback@example.com`, then you
+#' policy to it that authorizes you to use `feedback@@example.com`, then you
 #' would specify the `ReturnPathArn` to be
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`, and the
-#' `ReturnPath` to be `feedback@example.com`.
+#' `ReturnPath` to be `feedback@@example.com`.
 #' 
 #' For more information about sending authorization, see the [Amazon SES
 #' Developer
@@ -3456,7 +3456,7 @@ ses_send_templated_email <- function(Source, Destination, ReplyToAddresses = NUL
 #'
 #' @examples
 #' # The following example sets the active receipt rule set:
-#' \donttest{svc$set_active_receipt_rule_set(
+#' \dontrun{svc$set_active_receipt_rule_set(
 #'   RuleSetName = "RuleSetToActivate"
 #' )}
 #'
@@ -3488,7 +3488,7 @@ ses_set_active_receipt_rule_set <- function(RuleSetName = NULL) {
 #' signing is enabled for an email address, then Amazon SES uses DKIM to
 #' sign all email it sends from that address.
 #' 
-#' For email addresses (for example, `user@example.com`), you can only
+#' For email addresses (for example, `user@@example.com`), you can only
 #' enable DKIM signing if the corresponding domain (in this case,
 #' `example.com`) has been set up to use Easy DKIM.
 #' 
@@ -3520,7 +3520,7 @@ ses_set_active_receipt_rule_set <- function(RuleSetName = NULL) {
 #' @examples
 #' # The following example configures Amazon SES to Easy DKIM-sign the email
 #' # sent from an identity:
-#' \donttest{svc$set_identity_dkim_enabled(
+#' \dontrun{svc$set_identity_dkim_enabled(
 #'   DkimEnabled = TRUE,
 #'   Identity = "user@example.com"
 #' )}
@@ -3568,7 +3568,7 @@ ses_set_identity_dkim_enabled <- function(Identity, DkimEnabled) {
 #'   ForwardingEnabled)
 #'
 #' @param Identity &#91;required&#93; The identity for which to set bounce and complaint notification
-#' forwarding. Examples: `user@example.com`, `example.com`.
+#' forwarding. Examples: `user@@example.com`, `example.com`.
 #' @param ForwardingEnabled &#91;required&#93; Sets whether Amazon SES will forward bounce and complaint notifications
 #' as email. `true` specifies that Amazon SES will forward bounce and
 #' complaint notifications as email, in addition to any Amazon SNS topic
@@ -3588,7 +3588,7 @@ ses_set_identity_dkim_enabled <- function(Identity, DkimEnabled) {
 #' @examples
 #' # The following example configures Amazon SES to forward an identity's
 #' # bounces and complaints via email:
-#' \donttest{svc$set_identity_feedback_forwarding_enabled(
+#' \dontrun{svc$set_identity_feedback_forwarding_enabled(
 #'   ForwardingEnabled = TRUE,
 #'   Identity = "user@example.com"
 #' )}
@@ -3632,7 +3632,7 @@ ses_set_identity_feedback_forwarding_enabled <- function(Identity, ForwardingEna
 #'   NotificationType, Enabled)
 #'
 #' @param Identity &#91;required&#93; The identity for which to enable or disable headers in notifications.
-#' Examples: `user@example.com`, `example.com`.
+#' Examples: `user@@example.com`, `example.com`.
 #' @param NotificationType &#91;required&#93; The notification type for which to enable or disable headers in
 #' notifications.
 #' @param Enabled &#91;required&#93; Sets whether Amazon SES includes the original email headers in Amazon
@@ -3656,7 +3656,7 @@ ses_set_identity_feedback_forwarding_enabled <- function(Identity, ForwardingEna
 #' @examples
 #' # The following example configures Amazon SES to include the original
 #' # email headers in the Amazon SNS bounce notifications for an identity:
-#' \donttest{svc$set_identity_headers_in_notifications_enabled(
+#' \dontrun{svc$set_identity_headers_in_notifications_enabled(
 #'   Enabled = TRUE,
 #'   Identity = "user@example.com",
 #'   NotificationType = "Bounce"
@@ -3733,7 +3733,7 @@ ses_set_identity_headers_in_notifications_enabled <- function(Identity, Notifica
 #' @examples
 #' # The following example configures Amazon SES to use a custom MAIL FROM
 #' # domain for an identity:
-#' \donttest{svc$set_identity_mail_from_domain(
+#' \dontrun{svc$set_identity_mail_from_domain(
 #'   BehaviorOnMXFailure = "UseDefaultValue",
 #'   Identity = "user@example.com",
 #'   MailFromDomain = "bounces.example.com"
@@ -3787,7 +3787,7 @@ ses_set_identity_mail_from_domain <- function(Identity, MailFromDomain = NULL, B
 #' 
 #' You can specify an identity by using its name or by using its Amazon
 #' Resource Name (ARN). The following examples are all valid identities:
-#' `sender@example.com`, `example.com`,
+#' `sender@@example.com`, `example.com`,
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`.
 #' @param NotificationType &#91;required&#93; The type of notifications that will be published to the specified Amazon
 #' SNS topic.
@@ -3808,7 +3808,7 @@ ses_set_identity_mail_from_domain <- function(Identity, MailFromDomain = NULL, B
 #' # The following example sets the Amazon SNS topic to which Amazon SES will
 #' # publish bounce, complaint, and/or delivery notifications for emails sent
 #' # with the specified identity as the Source:
-#' \donttest{svc$set_identity_notification_topic(
+#' \dontrun{svc$set_identity_notification_topic(
 #'   Identity = "user@example.com",
 #'   NotificationType = "Bounce",
 #'   SnsTopic = "arn:aws:sns:us-west-2:111122223333:MyTopic"
@@ -3865,7 +3865,7 @@ ses_set_identity_notification_topic <- function(Identity, NotificationType, SnsT
 #' @examples
 #' # The following example sets the position of a receipt rule in a receipt
 #' # rule set:
-#' \donttest{svc$set_receipt_rule_position(
+#' \dontrun{svc$set_receipt_rule_position(
 #'   After = "PutRuleAfterThisRule",
 #'   RuleName = "RuleToReposition",
 #'   RuleSetName = "MyRuleSet"
@@ -3961,7 +3961,7 @@ ses_test_render_template <- function(TemplateName, TemplateData) {
 #'
 #' @examples
 #' # The following example updated the sending status for this account.
-#' \donttest{svc$update_account_sending_enabled(
+#' \dontrun{svc$update_account_sending_enabled(
 #'   Enabled = TRUE
 #' )}
 #'
@@ -4091,7 +4091,7 @@ ses_update_configuration_set_event_destination <- function(ConfigurationSetName,
 #'
 #' @examples
 #' # Set the reputationMetricsEnabled flag for a specific configuration set.
-#' \donttest{svc$update_configuration_set_reputation_metrics_enabled(
+#' \dontrun{svc$update_configuration_set_reputation_metrics_enabled(
 #'   ConfigurationSetName = "foo",
 #'   Enabled = TRUE
 #' )}
@@ -4146,7 +4146,7 @@ ses_update_configuration_set_reputation_metrics_enabled <- function(Configuratio
 #'
 #' @examples
 #' # Set the sending enabled flag for a specific configuration set.
-#' \donttest{svc$update_configuration_set_sending_enabled(
+#' \dontrun{svc$update_configuration_set_sending_enabled(
 #'   ConfigurationSetName = "foo",
 #'   Enabled = TRUE
 #' )}
@@ -4356,7 +4356,7 @@ ses_update_custom_verification_email_template <- function(TemplateName, FromEmai
 #'
 #' @examples
 #' # The following example updates a receipt rule to use an Amazon S3 action:
-#' \donttest{svc$update_receipt_rule(
+#' \dontrun{svc$update_receipt_rule(
 #'   Rule = list(
 #'     Actions = list(
 #'       list(
@@ -4493,7 +4493,7 @@ ses_update_template <- function(Template) {
 #' @examples
 #' # The following example generates DKIM tokens for a domain that has been
 #' # verified with Amazon SES:
-#' \donttest{svc$verify_domain_dkim(
+#' \dontrun{svc$verify_domain_dkim(
 #'   Domain = "example.com"
 #' )}
 #'
@@ -4543,7 +4543,7 @@ ses_verify_domain_dkim <- function(Domain) {
 #' @examples
 #' # The following example starts the domain verification process with Amazon
 #' # SES:
-#' \donttest{svc$verify_domain_identity(
+#' \dontrun{svc$verify_domain_identity(
 #'   Domain = "example.com"
 #' )}
 #'
@@ -4587,7 +4587,7 @@ ses_verify_domain_identity <- function(Domain) {
 #' @examples
 #' # The following example starts the email address verification process with
 #' # Amazon SES:
-#' \donttest{svc$verify_email_address(
+#' \dontrun{svc$verify_email_address(
 #'   EmailAddress = "user@example.com"
 #' )}
 #'
@@ -4636,7 +4636,7 @@ ses_verify_email_address <- function(EmailAddress) {
 #' @examples
 #' # The following example starts the email address verification process with
 #' # Amazon SES:
-#' \donttest{svc$verify_email_identity(
+#' \dontrun{svc$verify_email_identity(
 #'   EmailAddress = "user@example.com"
 #' )}
 #'

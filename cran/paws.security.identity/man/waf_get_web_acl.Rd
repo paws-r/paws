@@ -23,7 +23,7 @@ Returns the WebACL that is specified by \code{WebACLId}.
 \examples{
 # The following example returns the details of a web ACL with the ID
 # createwebacl-1472061481310.
-\donttest{svc$get_web_acl(
+\dontrun{svc$get_web_acl(
   WebACLId = "createwebacl-1472061481310"
 )}
 

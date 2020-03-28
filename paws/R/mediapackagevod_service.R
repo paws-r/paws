@@ -30,7 +30,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- mediapackagevod()
+#' \dontrun{svc <- mediapackagevod()
 #' svc$create_asset(
 #'   Foo = 123
 #' )}

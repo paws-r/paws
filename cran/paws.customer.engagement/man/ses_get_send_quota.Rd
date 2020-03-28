@@ -15,7 +15,7 @@ You can execute this operation no more than once per second.
 \examples{
 # The following example returns the Amazon SES sending limits for an AWS
 # account:
-\donttest{svc$get_send_quota()}
+\dontrun{svc$get_send_quota()}
 
 }
 \keyword{internal}

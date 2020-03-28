@@ -34,7 +34,7 @@ configuration remains in existence until it is deleted with this action.
 \examples{
 # The following operation deletes a draft configuration for an environment
 # named my-env:
-\donttest{svc$delete_environment_configuration(
+\dontrun{svc$delete_environment_configuration(
   ApplicationName = "my-app",
   EnvironmentName = "my-env"
 )}

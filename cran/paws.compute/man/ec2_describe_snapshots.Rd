@@ -149,7 +149,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 \examples{
 # This example describes a snapshot with the snapshot ID of
 # `snap-1234567890abcdef0`.
-\donttest{svc$describe_snapshots(
+\dontrun{svc$describe_snapshots(
   SnapshotIds = list(
     "snap-1234567890abcdef0"
   )
@@ -157,7 +157,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 # This example describes all snapshots owned by the ID 012345678910 that
 # are in the `pending` status.
-\donttest{svc$describe_snapshots(
+\dontrun{svc$describe_snapshots(
   Filters = list(
     list(
       Name = "status",

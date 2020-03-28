@@ -25,7 +25,7 @@ deregister them with DeregisterContainerInstance.
 
 \examples{
 # This example deletes an empty cluster in your default region.
-\donttest{svc$delete_cluster(
+\dontrun{svc$delete_cluster(
   cluster = "my_cluster"
 )}
 

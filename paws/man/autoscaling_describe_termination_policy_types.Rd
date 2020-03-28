@@ -15,7 +15,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \examples{
 # This example describes the available termination policy types.
-\donttest{svc$describe_termination_policy_types()}
+\dontrun{svc$describe_termination_policy_types()}
 
 }
 \keyword{internal}

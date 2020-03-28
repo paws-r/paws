@@ -43,7 +43,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example creates a key pair named my-key-pair.
-\donttest{svc$create_key_pair(
+\dontrun{svc$create_key_pair(
   KeyName = "my-key-pair"
 )}
 

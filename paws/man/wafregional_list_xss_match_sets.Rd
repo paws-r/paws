@@ -32,7 +32,7 @@ Returns an array of XssMatchSet objects.
 
 \examples{
 # The following example returns an array of up to 100 XSS match sets.
-\donttest{svc$list_xss_match_sets(
+\dontrun{svc$list_xss_match_sets(
   Limit = 100L
 )}
 

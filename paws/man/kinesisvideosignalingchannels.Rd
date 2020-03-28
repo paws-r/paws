@@ -42,7 +42,7 @@ webRTC technology.
 }
 
 \examples{
-\donttest{svc <- kinesisvideosignalingchannels()
+\dontrun{svc <- kinesisvideosignalingchannels()
 svc$get_ice_server_config(
   Foo = 123
 )}

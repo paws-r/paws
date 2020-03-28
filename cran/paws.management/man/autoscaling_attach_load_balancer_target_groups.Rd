@@ -40,7 +40,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 \examples{
 # This example attaches the specified target group to the specified Auto
 # Scaling group.
-\donttest{svc$attach_load_balancer_target_groups(
+\dontrun{svc$attach_load_balancer_target_groups(
   AutoScalingGroupName = "my-auto-scaling-group",
   TargetGroupARNs = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8..."

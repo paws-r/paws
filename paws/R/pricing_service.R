@@ -55,7 +55,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- pricing()
+#' \dontrun{svc <- pricing()
 #' svc$describe_services(
 #'   FormatVersion = "aws_v1",
 #'   MaxResults = 1L,

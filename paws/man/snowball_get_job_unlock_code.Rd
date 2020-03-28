@@ -48,7 +48,7 @@ access to the Snowball associated with that job.
 # of the UnlockCode in the same location as the manifest file for that
 # job. Saving these separately helps prevent unauthorized parties from
 # gaining access to the Snowball associated with that job.
-\donttest{svc$get_job_unlock_code(
+\dontrun{svc$get_job_unlock_code(
   JobId = "JID123e4567-e89b-12d3-a456-426655440000"
 )}
 

@@ -53,7 +53,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- ssm()
+#' \dontrun{svc <- ssm()
 #' svc$add_tags_to_resource(
 #'   Foo = 123
 #' )}

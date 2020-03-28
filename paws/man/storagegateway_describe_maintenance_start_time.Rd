@@ -25,7 +25,7 @@ time zone.
 \examples{
 # Returns your gateway's weekly maintenance start time including the day
 # and time of the week.
-\donttest{svc$describe_maintenance_start_time(
+\dontrun{svc$describe_maintenance_start_time(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
 )}
 

@@ -63,7 +63,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- securityhub()
+#' \dontrun{svc <- securityhub()
 #' svc$accept_invitation(
 #'   Foo = 123
 #' )}

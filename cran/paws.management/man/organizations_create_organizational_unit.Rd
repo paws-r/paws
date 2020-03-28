@@ -50,7 +50,7 @@ account.
 # AccountingOU. The new OU is directly under the root.:
 # 
 # 
-\donttest{svc$create_organizational_unit(
+\dontrun{svc$create_organizational_unit(
   Name = "AccountingOU",
   ParentId = "r-examplerootid111"
 )}

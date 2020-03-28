@@ -31,7 +31,7 @@ the tape gateway type.
 \examples{
 # Updates the type of medium changer in a gateway-VTL after a gateway-VTL
 # is activated.
-\donttest{svc$update_vtl_device_type(
+\dontrun{svc$update_vtl_device_type(
   DeviceType = "Medium Changer",
   VTLDeviceARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B/device/..."
 )}

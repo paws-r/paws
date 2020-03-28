@@ -24,7 +24,7 @@ Deletes the data feed for Spot Instances.
 
 \examples{
 # This example deletes a Spot data feed subscription for the account.
-\donttest{svc$delete_spot_datafeed_subscription()}
+\dontrun{svc$delete_spot_datafeed_subscription()}
 
 }
 \keyword{internal}

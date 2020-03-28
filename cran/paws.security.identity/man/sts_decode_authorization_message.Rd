@@ -52,7 +52,7 @@ in the \emph{IAM User Guide}.
 
 \examples{
 # 
-\donttest{svc$decode_authorization_message(
+\dontrun{svc$decode_authorization_message(
   EncodedMessage = "<encoded-message>"
 )}
 

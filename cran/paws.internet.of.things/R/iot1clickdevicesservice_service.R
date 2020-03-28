@@ -32,7 +32,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- iot1clickdevicesservice()
+#' \dontrun{svc <- iot1clickdevicesservice()
 #' svc$claim_devices_by_claim_code(
 #'   Foo = 123
 #' )}

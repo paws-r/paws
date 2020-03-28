@@ -130,7 +130,7 @@ information, see the \href{https://docs.aws.amazon.com/devicefarm/latest/develop
 \examples{
 # The following example creates a new device pool named MyDevicePool
 # inside an existing project.
-\donttest{svc <- devicefarm()
+\dontrun{svc <- devicefarm()
 svc$create_device_pool(
   name = "MyDevicePool",
   description = "My Android devices",

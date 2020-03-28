@@ -38,7 +38,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- ram()
+#' \dontrun{svc <- ram()
 #' svc$accept_resource_share_invitation(
 #'   Foo = 123
 #' )}

@@ -127,7 +127,7 @@ invoke permissions to an account or AWS service, use AddPermission.
 
 \examples{
 # This operation updates a Lambda function's configuration
-\donttest{svc$update_function_configuration(
+\dontrun{svc$update_function_configuration(
   Description = "",
   FunctionName = "myFunction",
   Handler = "index.handler",

@@ -83,7 +83,7 @@ reporting and auditing.
 }
 
 \examples{
-\donttest{svc <- backup()
+\dontrun{svc <- backup()
 svc$create_backup_plan(
   Foo = 123
 )}

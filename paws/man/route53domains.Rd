@@ -62,7 +62,7 @@ related operations.
 }
 
 \examples{
-\donttest{svc <- route53domains()
+\dontrun{svc <- route53domains()
 svc$check_domain_availability(
   Foo = 123
 )}

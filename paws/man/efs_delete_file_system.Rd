@@ -38,7 +38,7 @@ This operation requires permissions for the
 
 \examples{
 # This operation deletes an EFS file system.
-\donttest{svc$delete_file_system(
+\dontrun{svc$delete_file_system(
   FileSystemId = "fs-01234567"
 )}
 

@@ -23,7 +23,7 @@ List the tags for an Amazon EKS resource.
 
 \examples{
 # This example lists all of the tags for the `beta` cluster.
-\donttest{svc$list_tags_for_resource(
+\dontrun{svc$list_tags_for_resource(
   resourceArn = "arn:aws:eks:us-west-2:012345678910:cluster/beta"
 )}
 

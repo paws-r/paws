@@ -50,7 +50,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- eventbridge()
+#' \dontrun{svc <- eventbridge()
 #' svc$activate_event_source(
 #'   Foo = 123
 #' )}

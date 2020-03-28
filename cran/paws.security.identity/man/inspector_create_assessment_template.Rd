@@ -56,7 +56,7 @@ needed to perform security assessments.
 \examples{
 # Creates an assessment template for the assessment target that is
 # specified by the ARN of the assessment target.
-\donttest{svc$create_assessment_template(
+\dontrun{svc$create_assessment_template(
   assessmentTargetArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX",
   assessmentTemplateName = "ExampleAssessmentTemplate",
   durationInSeconds = 180L,

@@ -117,7 +117,7 @@ PutScalingPolicy.
 \examples{
 # This example deletes a scaling policy for the Amazon ECS service called
 # web-app, which is running in the default cluster.
-\donttest{svc$delete_scaling_policy(
+\dontrun{svc$delete_scaling_policy(
   PolicyName = "web-app-cpu-lt-25",
   ResourceId = "service/default/web-app",
   ScalableDimension = "ecs:service:DesiredCount",

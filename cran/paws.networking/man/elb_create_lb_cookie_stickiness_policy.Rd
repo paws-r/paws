@@ -55,7 +55,7 @@ in the \emph{Classic Load Balancers Guide}.
 \examples{
 # This example generates a stickiness policy with sticky session lifetimes
 # controlled by the specified expiration period.
-\donttest{svc$create_lb_cookie_stickiness_policy(
+\dontrun{svc$create_lb_cookie_stickiness_policy(
   CookieExpirationPeriod = 60L,
   LoadBalancerName = "my-load-balancer",
   PolicyName = "my-duration-cookie-policy"

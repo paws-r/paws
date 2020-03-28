@@ -58,7 +58,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following command uploads a signing certificate for the IAM user
 # named Bob.
-\donttest{svc$upload_signing_certificate(
+\dontrun{svc$upload_signing_certificate(
   CertificateBody = "-----BEGIN CERTIFICATE-----<certificate-body>-----END CERTIFICATE-----",
   UserName = "Bob"
 )}

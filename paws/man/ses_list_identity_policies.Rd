@@ -42,7 +42,7 @@ You can execute this operation no more than once per second.
 \examples{
 # The following example returns a list of sending authorization policies
 # that are attached to an identity:
-\donttest{svc$list_identity_policies(
+\dontrun{svc$list_identity_policies(
   Identity = "example.com"
 )}
 

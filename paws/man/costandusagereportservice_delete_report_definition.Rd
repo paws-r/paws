@@ -22,7 +22,7 @@ Deletes the specified report.
 \examples{
 # The following example deletes the AWS Cost and Usage report named
 # ExampleReport.
-\donttest{svc$delete_report_definition(
+\dontrun{svc$delete_report_definition(
   ReportName = "ExampleReport"
 )}
 

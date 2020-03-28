@@ -50,7 +50,7 @@ repository. Images are specified with either \code{imageTag} or
 \examples{
 # This example obtains information for an image with a specified image
 # digest ID from the repository named ubuntu in the current account.
-\donttest{svc$batch_get_image(
+\dontrun{svc$batch_get_image(
   imageIds = list(
     list(
       imageTag = "precise"

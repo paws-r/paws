@@ -168,7 +168,7 @@ possible.
 }
 
 \examples{
-\donttest{svc <- opsworks()
+\dontrun{svc <- opsworks()
 svc$assign_instance(
   Foo = 123
 )}

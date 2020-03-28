@@ -60,7 +60,7 @@ Related Topics
 
 \examples{
 # The following operation requests logs from an environment named my-env:
-\donttest{svc$request_environment_info(
+\dontrun{svc$request_environment_info(
   EnvironmentName = "my-env",
   InfoType = "tail"
 )}

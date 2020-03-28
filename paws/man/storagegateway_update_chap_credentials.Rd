@@ -51,7 +51,7 @@ are closed and initiators must reconnect with the new credentials.
 \examples{
 # Updates the Challenge-Handshake Authentication Protocol (CHAP)
 # credentials for a specified iSCSI target.
-\donttest{svc$update_chap_credentials(
+\dontrun{svc$update_chap_credentials(
   InitiatorName = "iqn.1991-05.com.microsoft:computername.domain.example.com",
   SecretToAuthenticateInitiator = "111111111111",
   SecretToAuthenticateTarget = "222222222222",

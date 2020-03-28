@@ -28,7 +28,7 @@ NULL
 #'
 #' @examples
 #' # Deletes a specified pronunciation lexicon stored in an AWS Region.
-#' \donttest{svc$delete_lexicon(
+#' \dontrun{svc$delete_lexicon(
 #'   Name = "example"
 #' )}
 #'
@@ -109,7 +109,7 @@ polly_delete_lexicon <- function(Name) {
 #' # speech synthesis. Displayed languages are those within the specified
 #' # language code. If no language code is specified, voices for all
 #' # available languages are displayed.
-#' \donttest{svc$describe_voices(
+#' \dontrun{svc$describe_voices(
 #'   LanguageCode = "en-GB"
 #' )}
 #'
@@ -155,7 +155,7 @@ polly_describe_voices <- function(Engine = NULL, LanguageCode = NULL, IncludeAdd
 #' @examples
 #' # Returns the content of the specified pronunciation lexicon stored in an
 #' # AWS Region.
-#' \donttest{svc$get_lexicon(
+#' \dontrun{svc$get_lexicon(
 #'   Name = ""
 #' )}
 #'
@@ -239,7 +239,7 @@ polly_get_speech_synthesis_task <- function(TaskId) {
 #'
 #' @examples
 #' # Returns a list of pronunciation lexicons stored in an AWS Region.
-#' \donttest{svc$list_lexicons()}
+#' \dontrun{svc$list_lexicons()}
 #'
 #' @keywords internal
 #'
@@ -334,7 +334,7 @@ polly_list_speech_synthesis_tasks <- function(MaxResults = NULL, NextToken = NUL
 #'
 #' @examples
 #' # Stores a pronunciation lexicon in an AWS Region.
-#' \donttest{svc$put_lexicon(
+#' \dontrun{svc$put_lexicon(
 #'   Content = "file://example.pls",
 #'   Name = "W3C"
 #' )}
@@ -533,7 +533,7 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 #'
 #' @examples
 #' # Synthesizes plain text or SSML into a file of human-like speech.
-#' \donttest{svc$synthesize_speech(
+#' \dontrun{svc$synthesize_speech(
 #'   LexiconNames = list(
 #'     "example"
 #'   ),

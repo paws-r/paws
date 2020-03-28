@@ -191,7 +191,7 @@ range keys (which essentially is two put operations).
 \examples{
 # This example adds three new items to the Music table using a batch of
 # three PutItem requests.
-\donttest{svc$batch_write_item(
+\dontrun{svc$batch_write_item(
   RequestItems = list(
     Music = list(
       list(

@@ -43,7 +43,7 @@ more information, see UpdateSqlInjectionMatchSet.
 \examples{
 # The following example deletes a SQL injection match set  with the ID
 # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-\donttest{svc$delete_sql_injection_match_set(
+\dontrun{svc$delete_sql_injection_match_set(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   SqlInjectionMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
 )}

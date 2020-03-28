@@ -35,7 +35,7 @@ You can execute this operation no more than once per second.
 
 \examples{
 # Set the sending enabled flag for a specific configuration set.
-\donttest{svc$update_configuration_set_sending_enabled(
+\dontrun{svc$update_configuration_set_sending_enabled(
   ConfigurationSetName = "foo",
   Enabled = TRUE
 )}

@@ -39,7 +39,7 @@ Describes the specified services running in your cluster.
 \examples{
 # This example provides descriptive information about the service named
 # `ecs-simple-service`.
-\donttest{svc$describe_services(
+\dontrun{svc$describe_services(
   services = list(
     "ecs-simple-service"
   )

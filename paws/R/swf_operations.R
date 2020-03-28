@@ -2017,7 +2017,7 @@ swf_register_activity_type <- function(domain, name, version, description = NULL
 #' @param tags Tags to be added when registering a domain.
 #' 
 #' Tags may only contain unicode letters, digits, whitespace, or these
-#' symbols: `_ . : / = + - @`.
+#' symbols: `_ . : / = + - @@`.
 #'
 #' @section Request syntax:
 #' ```
@@ -2990,7 +2990,7 @@ swf_start_workflow_execution <- function(domain, workflowId, workflowType, taskL
 #' @param tags &#91;required&#93; The list of tags to add to a domain.
 #' 
 #' Tags may only contain unicode letters, digits, whitespace, or these
-#' symbols: `_ . : / = + - @`.
+#' symbols: `_ . : / = + - @@`.
 #'
 #' @section Request syntax:
 #' ```

@@ -144,7 +144,7 @@ For more information, see the Amazon Cognito Documentation.
 }
 
 \examples{
-\donttest{svc <- cognitoidentityprovider()
+\dontrun{svc <- cognitoidentityprovider()
 svc$add_custom_attributes(
   Foo = 123
 )}

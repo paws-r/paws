@@ -22,7 +22,7 @@ Lists all tags for an AWS DMS resource.
 
 \examples{
 # Lists all tags for an AWS DMS resource.
-\donttest{svc$list_tags_for_resource(
+\dontrun{svc$list_tags_for_resource(
   ResourceArn = ""
 )}
 

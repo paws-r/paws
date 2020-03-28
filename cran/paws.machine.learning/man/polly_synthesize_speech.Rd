@@ -86,7 +86,7 @@ information, see \href{https://docs.aws.amazon.com/polly/latest/dg/how-text-to-s
 
 \examples{
 # Synthesizes plain text or SSML into a file of human-like speech.
-\donttest{svc$synthesize_speech(
+\dontrun{svc$synthesize_speech(
   LexiconNames = list(
     "example"
   ),

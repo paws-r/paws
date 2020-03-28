@@ -54,7 +54,7 @@ the \href{https://docs.aws.amazon.com/acm/latest/userguide/}{\emph{AWS Certifica
 }
 
 \examples{
-\donttest{svc <- acm()
+\dontrun{svc <- acm()
 svc$add_tags_to_certificate(
   Foo = 123
 )}

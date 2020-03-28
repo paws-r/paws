@@ -24,7 +24,7 @@ servers assigned to the hosted zone.
 \examples{
 # The following example gets information about the Z3M3LMPEXAMPLE hosted
 # zone.
-\donttest{svc$get_hosted_zone(
+\dontrun{svc$get_hosted_zone(
   Id = "Z3M3LMPEXAMPLE"
 )}
 

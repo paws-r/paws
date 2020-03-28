@@ -125,7 +125,7 @@ policy or update an existing one, see PutScalingPolicy.
 \examples{
 # This example describes the scaling activities for an Amazon ECS service
 # called web-app that is running in the default cluster.
-\donttest{svc$describe_scaling_activities(
+\dontrun{svc$describe_scaling_activities(
   ResourceId = "service/default/web-app",
   ScalableDimension = "ecs:service:DesiredCount",
   ServiceNamespace = "ecs"

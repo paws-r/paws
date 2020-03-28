@@ -108,7 +108,7 @@ The following operations are related to \code{ListMultipartUploads}:
 \examples{
 # The following example specifies the upload-id-marker and key-marker from
 # previous truncated response to retrieve next setup of multipart uploads.
-\donttest{svc$list_multipart_uploads(
+\dontrun{svc$list_multipart_uploads(
   Bucket = "examplebucket",
   KeyMarker = "nextkeyfrompreviousresponse",
   MaxUploads = "2",
@@ -117,7 +117,7 @@ The following operations are related to \code{ListMultipartUploads}:
 
 # The following example lists in-progress multipart uploads on a specific
 # bucket.
-\donttest{svc$list_multipart_uploads(
+\dontrun{svc$list_multipart_uploads(
   Bucket = "examplebucket"
 )}
 

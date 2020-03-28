@@ -65,7 +65,7 @@ Services page.
 }
 
 \examples{
-\donttest{svc <- servicequotas()
+\dontrun{svc <- servicequotas()
 svc$associate_service_quota_template(
   Foo = 123
 )}

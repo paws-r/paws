@@ -62,7 +62,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- sesv2()
+#' \dontrun{svc <- sesv2()
 #' svc$create_configuration_set(
 #'   Foo = 123
 #' )}

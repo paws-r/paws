@@ -54,7 +54,7 @@ ad decision server (ADS).
 }
 
 \examples{
-\donttest{svc <- mediatailor()
+\dontrun{svc <- mediatailor()
 svc$delete_playback_configuration(
   Foo = 123
 )}

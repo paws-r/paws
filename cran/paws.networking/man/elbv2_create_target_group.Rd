@@ -140,7 +140,7 @@ in the \emph{Network Load Balancers Guide}.
 # This example creates a target group that you can use to route traffic to
 # targets using HTTP on port 80. This target group uses the default health
 # check configuration.
-\donttest{svc$create_target_group(
+\dontrun{svc$create_target_group(
   Name = "my-targets",
   Port = 80L,
   Protocol = "HTTP",

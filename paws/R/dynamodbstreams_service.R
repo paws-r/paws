@@ -37,7 +37,7 @@ NULL
 #'
 #' @examples
 #' # The following example describes a stream with a given stream ARN.
-#' \donttest{svc <- dynamodbstreams()
+#' \dontrun{svc <- dynamodbstreams()
 #' svc$describe_stream(
 #'   StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:51:1..."
 #' )}

@@ -83,7 +83,7 @@ For a list of available SDKs, go to \href{http://aws.amazon.com/tools/}{Tools fo
 }
 
 \examples{
-\donttest{svc <- sns()
+\dontrun{svc <- sns()
 svc$add_permission(
   Foo = 123
 )}

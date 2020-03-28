@@ -638,7 +638,7 @@ lexmodelbuildingservice_delete_utterances <- function(botName, userId) {
 #'
 #' @examples
 #' # This example shows how to get configuration information for a bot.
-#' \donttest{svc$get_bot(
+#' \dontrun{svc$get_bot(
 #'   name = "DocOrderPizza",
 #'   versionOrAlias = "$LATEST"
 #' )}
@@ -954,7 +954,7 @@ lexmodelbuildingservice_get_bot_versions <- function(name, nextToken = NULL, max
 #'
 #' @examples
 #' # This example shows how to get a list of all of the bots in your account.
-#' \donttest{svc$get_bots(
+#' \dontrun{svc$get_bots(
 #'   maxResults = 5L,
 #'   nextToken = ""
 #' )}
@@ -1237,7 +1237,7 @@ lexmodelbuildingservice_get_import <- function(importId) {
 #'
 #' @examples
 #' # This example shows how to get information about an intent.
-#' \donttest{svc$get_intent(
+#' \dontrun{svc$get_intent(
 #'   version = "$LATEST",
 #'   name = "DocOrderPizza"
 #' )}
@@ -1357,7 +1357,7 @@ lexmodelbuildingservice_get_intent_versions <- function(name, nextToken = NULL, 
 #' @examples
 #' # This example shows how to get a list of all of the intents in your
 #' # account.
-#' \donttest{svc$get_intents(
+#' \dontrun{svc$get_intents(
 #'   maxResults = 10L,
 #'   nextToken = ""
 #' )}
@@ -1406,7 +1406,7 @@ lexmodelbuildingservice_get_intents <- function(nextToken = NULL, maxResults = N
 #'
 #' @examples
 #' # This example shows how to get information about a slot type.
-#' \donttest{svc$get_slot_type(
+#' \dontrun{svc$get_slot_type(
 #'   version = "$LATEST",
 #'   name = "DocPizzaCrustType"
 #' )}
@@ -1528,7 +1528,7 @@ lexmodelbuildingservice_get_slot_type_versions <- function(name, nextToken = NUL
 #' @examples
 #' # This example shows how to get a list of all of the slot types in your
 #' # account.
-#' \donttest{svc$get_slot_types(
+#' \dontrun{svc$get_slot_types(
 #'   maxResults = 10L,
 #'   nextToken = ""
 #' )}
@@ -1829,7 +1829,7 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
 #'
 #' @examples
 #' # This example shows how to create a bot for ordering pizzas.
-#' \donttest{svc$put_bot(
+#' \dontrun{svc$put_bot(
 #'   name = "DocOrderPizzaBot",
 #'   abortStatement = list(
 #'     messages = list(
@@ -2227,16 +2227,16 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #'
 #' @examples
 #' # This example shows how to create an intent for ordering pizzas.
-#' \donttest{svc$put_intent(
+#' \dontrun{svc$put_intent(
 #'   name = "DocOrderPizza",
 #'   conclusionStatement = list(
 #'     messages = list(
 #'       list(
-#'         content = "All right, I ordered  you a {Crust} crust {Type} pizza with {Sauce} sauce...",
+#'         content = "All right, I ordered  you a \{Crust\} crust \{Type\} pizza with \{Sauce\} sauce...",
 #'         contentType = "PlainText"
 #'       ),
 #'       list(
-#'         content = "OK, your {Crust} crust {Type} pizza with {Sauce} sauce is on the way.",
+#'         content = "OK, your \{Crust\} crust \{Type\} pizza with \{Sauce\} sauce is on the way.",
 #'         contentType = "PlainText"
 #'       )
 #'     ),
@@ -2246,7 +2246,7 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #'     maxAttempts = 1L,
 #'     messages = list(
 #'       list(
-#'         content = "Should I order  your {Crust} crust {Type} pizza with {Sauce} sauce?",
+#'         content = "Should I order  your \{Crust\} crust \{Type\} pizza with \{Sauce\} sauce?",
 #'         contentType = "PlainText"
 #'       )
 #'     )
@@ -2269,9 +2269,9 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #'   ),
 #'   sampleUtterances = list(
 #'     "Order me a pizza.",
-#'     "Order me a {Type} pizza.",
-#'     "I want a {Crust} crust {Type} pizza",
-#'     "I want a {Crust} crust {Type} pizza with {Sauce} sauce."
+#'     "Order me a \{Type\} pizza.",
+#'     "I want a \{Crust\} crust \{Type\} pizza",
+#'     "I want a \{Crust\} crust \{Type\} pizza with \{Sauce\} sauce."
 #'   ),
 #'   slots = list(
 #'     list(
@@ -2279,9 +2279,9 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #'       description = "The type of pizza to order.",
 #'       priority = 1L,
 #'       sampleUtterances = list(
-#'         "Get me a {Type} pizza.",
-#'         "A {Type} pizza please.",
-#'         "I'd like a {Type} pizza."
+#'         "Get me a \{Type\} pizza.",
+#'         "A \{Type\} pizza please.",
+#'         "I'd like a \{Type\} pizza."
 #'       ),
 #'       slotConstraint = "Required",
 #'       slotType = "DocPizzaType",
@@ -2309,8 +2309,8 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #'       description = "The type of pizza crust to order.",
 #'       priority = 2L,
 #'       sampleUtterances = list(
-#'         "Make it a {Crust} crust.",
-#'         "I'd like a {Crust} crust."
+#'         "Make it a \{Crust\} crust.",
+#'         "I'd like a \{Crust\} crust."
 #'       ),
 #'       slotConstraint = "Required",
 #'       slotType = "DocPizzaCrustType",
@@ -2334,8 +2334,8 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #'       description = "The type of sauce to use on the pizza.",
 #'       priority = 3L,
 #'       sampleUtterances = list(
-#'         "Make it {Sauce} sauce.",
-#'         "I'd like {Sauce} sauce."
+#'         "Make it \{Sauce\} sauce.",
+#'         "I'd like \{Sauce\} sauce."
 #'       ),
 #'       slotConstraint = "Required",
 #'       slotType = "DocPizzaSauceType",
@@ -2470,7 +2470,7 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
 #' @examples
 #' # This example shows how to create a slot type that describes pizza
 #' # sauces.
-#' \donttest{svc$put_slot_type(
+#' \dontrun{svc$put_slot_type(
 #'   name = "PizzaSauceType",
 #'   description = "Available pizza sauces",
 #'   enumerationValues = list(

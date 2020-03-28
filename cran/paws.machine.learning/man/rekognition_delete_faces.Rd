@@ -31,7 +31,7 @@ This operation requires permissions to perform the
 
 \examples{
 # This operation deletes one or more faces from a Rekognition collection.
-\donttest{svc$delete_faces(
+\dontrun{svc$delete_faces(
   CollectionId = "myphotos",
   FaceIds = list(
     "ff43d742-0c13-5d16-a3e8-03d3f58e980b"

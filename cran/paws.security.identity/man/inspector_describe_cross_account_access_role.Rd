@@ -14,7 +14,7 @@ account.
 \examples{
 # Describes the IAM role that enables Amazon Inspector to access your AWS
 # account.
-\donttest{svc$describe_cross_account_access_role()}
+\dontrun{svc$describe_cross_account_access_role()}
 
 }
 \keyword{internal}

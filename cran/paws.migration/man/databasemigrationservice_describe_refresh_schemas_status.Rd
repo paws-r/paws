@@ -22,7 +22,7 @@ Returns the status of the RefreshSchemas operation.
 
 \examples{
 # Returns the status of the refresh-schemas operation.
-\donttest{svc$describe_refresh_schemas_status(
+\dontrun{svc$describe_refresh_schemas_status(
   EndpointArn = ""
 )}
 

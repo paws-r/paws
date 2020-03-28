@@ -33,7 +33,7 @@ Describes one or more launch configurations.
 
 \examples{
 # This example describes the specified launch configuration.
-\donttest{svc$describe_launch_configurations(
+\dontrun{svc$describe_launch_configurations(
   LaunchConfigurationNames = list(
     "my-launch-config"
   )

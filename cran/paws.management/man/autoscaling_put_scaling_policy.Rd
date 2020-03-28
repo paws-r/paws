@@ -149,7 +149,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 \examples{
 # This example adds the specified policy to the specified Auto Scaling
 # group.
-\donttest{svc$put_scaling_policy(
+\dontrun{svc$put_scaling_policy(
   AdjustmentType = "ChangeInCapacity",
   AutoScalingGroupName = "my-auto-scaling-group",
   PolicyName = "ScaleIn",

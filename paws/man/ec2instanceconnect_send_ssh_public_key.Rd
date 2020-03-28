@@ -36,7 +36,7 @@ for 60 seconds.
 \examples{
 # The following example pushes a sample SSH public key to the EC2 instance
 # i-abcd1234 in AZ us-west-2b for use by the instance OS user ec2-user.
-\donttest{svc$send_ssh_public_key(
+\dontrun{svc$send_ssh_public_key(
   AvailabilityZone = "us-west-2a",
   InstanceId = "i-abcd1234",
   InstanceOSUser = "ec2-user",

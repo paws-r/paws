@@ -40,7 +40,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- clouddirectory()
+#' \dontrun{svc <- clouddirectory()
 #' svc$add_facet_to_object(
 #'   Foo = 123
 #' )}

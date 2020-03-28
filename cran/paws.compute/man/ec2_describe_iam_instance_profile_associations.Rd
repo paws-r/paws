@@ -47,7 +47,7 @@ Describes your IAM instance profile associations.
 
 \examples{
 # This example describes the specified IAM instance profile association.
-\donttest{svc$describe_iam_instance_profile_associations(
+\dontrun{svc$describe_iam_instance_profile_associations(
   AssociationIds = list(
     "iip-assoc-0db249b1f25fa24b8"
   )

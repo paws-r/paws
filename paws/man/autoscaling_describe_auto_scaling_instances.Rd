@@ -34,7 +34,7 @@ Describes one or more Auto Scaling instances.
 
 \examples{
 # This example describes the specified Auto Scaling instance.
-\donttest{svc$describe_auto_scaling_instances(
+\dontrun{svc$describe_auto_scaling_instances(
   InstanceIds = list(
     "i-4ba0837f"
   )

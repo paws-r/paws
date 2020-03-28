@@ -88,7 +88,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 
 \examples{
 # This example creates a network interface for the specified subnet.
-\donttest{svc$create_network_interface(
+\dontrun{svc$create_network_interface(
   Description = "my network interface",
   Groups = list(
     "sg-903004f8"

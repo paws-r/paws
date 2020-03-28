@@ -44,7 +44,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- cloudhsm()
+#' \dontrun{svc <- cloudhsm()
 #' svc$add_tags_to_resource(
 #'   Foo = 123
 #' )}

@@ -34,7 +34,7 @@ target\'s network interface.
 \examples{
 # This operation describes all of the security groups for a file system's
 # mount target.
-\donttest{svc$describe_mount_target_security_groups(
+\dontrun{svc$describe_mount_target_security_groups(
   MountTargetId = "fsmt-12340abc"
 )}
 

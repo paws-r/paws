@@ -99,7 +99,7 @@ The following operations are related to \code{DeleteObjects}:
 # versioned, and the request does not specify the object version to
 # delete. In this case, all versions remain in the bucket and S3 adds a
 # delete marker.
-\donttest{svc$delete_objects(
+\dontrun{svc$delete_objects(
   Bucket = "examplebucket",
   Delete = list(
     Objects = list(
@@ -117,7 +117,7 @@ The following operations are related to \code{DeleteObjects}:
 # The following example deletes objects from a bucket. The request
 # specifies object versions. S3 deletes specific object versions and
 # returns the key and versions of deleted objects in the response.
-\donttest{svc$delete_objects(
+\dontrun{svc$delete_objects(
   Bucket = "examplebucket",
   Delete = list(
     Objects = list(

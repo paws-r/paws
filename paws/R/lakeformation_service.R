@@ -30,7 +30,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- lakeformation()
+#' \dontrun{svc <- lakeformation()
 #' svc$batch_grant_permissions(
 #'   Foo = 123
 #' )}

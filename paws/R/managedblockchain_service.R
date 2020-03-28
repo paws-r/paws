@@ -35,7 +35,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- managedblockchain()
+#' \dontrun{svc <- managedblockchain()
 #' svc$create_member(
 #'   Foo = 123
 #' )}

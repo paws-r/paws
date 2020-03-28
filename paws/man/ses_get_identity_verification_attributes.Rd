@@ -49,7 +49,7 @@ verification attributes for up to 100 identities at a time.
 \examples{
 # The following example returns the verification status and the
 # verification token for a domain identity:
-\donttest{svc$get_identity_verification_attributes(
+\dontrun{svc$get_identity_verification_attributes(
   Identities = list(
     "example.com"
   )

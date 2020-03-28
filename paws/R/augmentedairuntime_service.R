@@ -61,7 +61,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- augmentedairuntime()
+#' \dontrun{svc <- augmentedairuntime()
 #' svc$delete_human_loop(
 #'   Foo = 123
 #' )}

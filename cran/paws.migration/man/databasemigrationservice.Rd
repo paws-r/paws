@@ -98,7 +98,7 @@ in the \emph{AWS Database Migration User Guide.}
 # also be used with cost allocation reporting to track cost associated
 # with AWS DMS resources, or used in a Condition statement in an IAM
 # policy for AWS DMS.
-\donttest{svc <- databasemigrationservice()
+\dontrun{svc <- databasemigrationservice()
 svc$add_tags_to_resource(
   ResourceArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ASXWXJZLNWNT5HTWCGV2BUJQ7E",
   Tags = list(

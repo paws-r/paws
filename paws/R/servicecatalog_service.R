@@ -35,7 +35,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- servicecatalog()
+#' \dontrun{svc <- servicecatalog()
 #' svc$accept_portfolio_share(
 #'   Foo = 123
 #' )}

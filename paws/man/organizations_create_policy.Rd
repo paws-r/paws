@@ -55,8 +55,8 @@ account.
 # is surrounded by double quotes:
 # 
 # 
-\donttest{svc$create_policy(
-  Content = "{\\\\\"Version\\\\\":\\\\\"2012-10-17\\\\\",\\\\\"Statement\\\\\":{\\\\\"Effect\\\\\":...",
+\dontrun{svc$create_policy(
+  Content = "\{\\\\\"Version\\\\\":\\\\\"2012-10-17\\\\\",\\\\\"Statement\\\\\":\{\\\\\"Effect\\\\\":...",
   Description = "Enables admins of attached accounts to delegate all S3 permissions",
   Name = "AllowAllS3Actions",
   Type = "SERVICE_CONTROL_POLICY"

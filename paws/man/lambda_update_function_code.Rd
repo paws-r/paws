@@ -65,7 +65,7 @@ modify the code of a published version, only the unpublished version.
 
 \examples{
 # This operation updates a Lambda function's code
-\donttest{svc$update_function_code(
+\dontrun{svc$update_function_code(
   FunctionName = "myFunction",
   Publish = TRUE,
   S3Bucket = "myBucket",

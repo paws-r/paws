@@ -267,7 +267,7 @@ You can use the \code{DescribeTable} action to check the table status.
 
 \examples{
 # This example creates a table named Music.
-\donttest{svc$create_table(
+\dontrun{svc$create_table(
   AttributeDefinitions = list(
     list(
       AttributeName = "Artist",

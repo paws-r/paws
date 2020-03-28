@@ -47,7 +47,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- applicationinsights()
+#' \dontrun{svc <- applicationinsights()
 #' svc$create_application(
 #'   Foo = 123
 #' )}

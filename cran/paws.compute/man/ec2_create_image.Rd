@@ -79,7 +79,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 # This example creates an AMI from the specified instance and adds an EBS
 # volume with the device name /dev/sdh and an instance store volume with
 # the device name /dev/sdc.
-\donttest{svc$create_image(
+\dontrun{svc$create_image(
   BlockDeviceMappings = list(
     list(
       DeviceName = "/dev/sdh",

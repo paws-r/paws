@@ -781,7 +781,7 @@ athena_stop_query_execution <- function(QueryExecutionId) {
 #' The key length is from 1 (minimum) to 128 (maximum) Unicode characters
 #' in UTF-8. The tag value length is from 0 (minimum) to 256 (maximum)
 #' Unicode characters in UTF-8. You can use letters and numbers
-#' representable in UTF-8, and the following characters: + - = . \\_ : / @.
+#' representable in UTF-8, and the following characters: + - = . \\_ : / @@.
 #' Tag keys and values are case-sensitive. Tag keys must be unique per
 #' resource. If you specify more than one, separate them by commas.
 #'

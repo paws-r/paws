@@ -146,7 +146,7 @@ and their instances are terminated.
 
 \examples{
 # This example describes the specified Spot Instance request.
-\donttest{svc$describe_spot_instance_requests(
+\dontrun{svc$describe_spot_instance_requests(
   SpotInstanceRequestIds = list(
     "sir-08b93456"
   )

@@ -21,7 +21,7 @@ Stops the replication task.
 
 \examples{
 # Stops the replication task.
-\donttest{svc$stop_replication_task(
+\dontrun{svc$stop_replication_task(
   ReplicationTaskArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ASXWXJZLNWNT5HTWCGV2BUJQ..."
 )}
 

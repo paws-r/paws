@@ -3169,7 +3169,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #'     length
 #' 
 #' -   Cannot contain any of the following characters: \'/\', \'\"\', or
-#'     \'@\', \'%\'
+#'     \'@@\', \'%\'
 #' 
 #' For more information, see AUTH password at AUTH.
 #' @param AuthTokenUpdateStrategy Specifies the strategy to use to update the AUTH token. This parameter
@@ -3480,7 +3480,7 @@ elasticache_modify_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #'     length
 #' 
 #' -   Cannot contain any of the following characters: \'/\', \'\"\', or
-#'     \'@\', \'%\'
+#'     \'@@\', \'%\'
 #' 
 #' For more information, see AUTH password at AUTH.
 #' @param AuthTokenUpdateStrategy Specifies the strategy to use to update the AUTH token. This parameter

@@ -87,7 +87,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 
 \examples{
 # This example describes the subnets for the specified VPC.
-\donttest{svc$describe_subnets(
+\dontrun{svc$describe_subnets(
   Filters = list(
     list(
       Name = "vpc-id",

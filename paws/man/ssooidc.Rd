@@ -59,7 +59,7 @@ SDKs, including how to download and install them, see \href{http://aws.amazon.co
 }
 
 \examples{
-\donttest{svc <- ssooidc()
+\dontrun{svc <- ssooidc()
 svc$create_token(
   Foo = 123
 )}

@@ -101,7 +101,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- health()
+#' \dontrun{svc <- health()
 #' svc$describe_affected_accounts_for_organization(
 #'   Foo = 123
 #' )}

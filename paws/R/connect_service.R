@@ -42,7 +42,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- connect()
+#' \dontrun{svc <- connect()
 #' svc$create_user(
 #'   Foo = 123
 #' )}

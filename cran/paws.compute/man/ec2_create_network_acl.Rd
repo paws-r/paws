@@ -33,7 +33,7 @@ the \emph{Amazon Virtual Private Cloud User Guide}.
 
 \examples{
 # This example creates a network ACL for the specified VPC.
-\donttest{svc$create_network_acl(
+\dontrun{svc$create_network_acl(
   VpcId = "vpc-a01106c2"
 )}
 

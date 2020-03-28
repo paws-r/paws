@@ -32,7 +32,7 @@ you must use the \code{force} option to delete it.
 # This example force deletes a repository named ubuntu in the default
 # registry for an account. The force parameter is required if the
 # repository contains images.
-\donttest{svc$delete_repository(
+\dontrun{svc$delete_repository(
   force = TRUE,
   repositoryName = "ubuntu"
 )}

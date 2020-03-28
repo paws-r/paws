@@ -82,7 +82,7 @@ resources:
 }
 
 \examples{
-\donttest{svc <- sms()
+\dontrun{svc <- sms()
 svc$create_app(
   Foo = 123
 )}

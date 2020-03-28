@@ -88,7 +88,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 
 \examples{
 # The example completes a multipart upload for a 3 MiB archive.
-\donttest{svc$complete_multipart_upload(
+\dontrun{svc$complete_multipart_upload(
   accountId = "-",
   archiveSize = "3145728",
   checksum = "9628195fcdbcbbe76cdde456d4646fa7de5f219fb39823836d81f0cc0e18aa67",

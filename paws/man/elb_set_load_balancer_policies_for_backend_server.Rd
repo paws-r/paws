@@ -51,7 +51,7 @@ in the \emph{Classic Load Balancers Guide}.
 \examples{
 # This example replaces the policies that are currently associated with
 # the specified port.
-\donttest{svc$set_load_balancer_policies_for_backend_server(
+\dontrun{svc$set_load_balancer_policies_for_backend_server(
   InstancePort = 80L,
   LoadBalancerName = "my-load-balancer",
   PolicyNames = list(

@@ -117,7 +117,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example launches the specified Scheduled Instance in a VPC.
-\donttest{svc$run_scheduled_instances(
+\dontrun{svc$run_scheduled_instances(
   InstanceCount = 1L,
   LaunchSpecification = list(
     IamInstanceProfile = list(
@@ -141,7 +141,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 )}
 
 # This example launches the specified Scheduled Instance in EC2-Classic.
-\donttest{svc$run_scheduled_instances(
+\dontrun{svc$run_scheduled_instances(
   InstanceCount = 1L,
   LaunchSpecification = list(
     IamInstanceProfile = list(

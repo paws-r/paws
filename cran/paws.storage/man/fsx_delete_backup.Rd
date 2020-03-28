@@ -36,7 +36,7 @@ any means.
 
 \examples{
 # This operation deletes an Amazon FSx file system backup.
-\donttest{svc$delete_backup(
+\dontrun{svc$delete_backup(
   BackupId = "backup-03e3c82e0183b7b6b"
 )}
 

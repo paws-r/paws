@@ -39,7 +39,7 @@ This operation requires permission for the
 
 \examples{
 # This operation creates a new tag for an EFS file system.
-\donttest{svc$create_tags(
+\dontrun{svc$create_tags(
   FileSystemId = "fs-01234567",
   Tags = list(
     list(

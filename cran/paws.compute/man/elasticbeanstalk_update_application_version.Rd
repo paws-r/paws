@@ -41,7 +41,7 @@ remains unchanged. To clear properties, specify an empty string.
 \examples{
 # The following operation updates the description of an application
 # version named 22a0-stage-150819_185942:
-\donttest{svc$update_application_version(
+\dontrun{svc$update_application_version(
   ApplicationName = "my-app",
   Description = "new description",
   VersionLabel = "22a0-stage-150819_185942"

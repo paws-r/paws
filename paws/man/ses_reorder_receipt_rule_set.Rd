@@ -37,7 +37,7 @@ You can execute this operation no more than once per second.
 \examples{
 # The following example reorders the receipt rules within a receipt rule
 # set:
-\donttest{svc$reorder_receipt_rule_set(
+\dontrun{svc$reorder_receipt_rule_set(
   RuleNames = list(
     "MyRule",
     "MyOtherRule"
