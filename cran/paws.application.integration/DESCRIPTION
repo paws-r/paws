@@ -1,6 +1,6 @@
 Package: paws.application.integration
 Title: Amazon Web Services Application Integration APIs
-Version: 0.1.6
+Version: 0.1.7
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
@@ -18,7 +18,7 @@ Description: Interface to Amazon Web Services application integration
     <https://aws.amazon.com/>.
 License: Apache License (>= 2.0)
 Imports: 
-    paws.common (>= 0.2.5)
+    paws.common (>= 0.3.0)
 Suggests: 
     testthat
 Encoding: UTF-8

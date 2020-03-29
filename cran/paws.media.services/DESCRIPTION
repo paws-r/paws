@@ -1,6 +1,6 @@
 Package: paws.media.services
 Title: Amazon Web Services Media Services APIs
-Version: 0.1.6
+Version: 0.1.7
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
@@ -17,7 +17,7 @@ Description: Interface to Amazon Web Services media services APIs,
     conversion, and more <https://aws.amazon.com/media-services/>.
 License: Apache License (>= 2.0)
 Imports: 
-    paws.common (>= 0.2.5)
+    paws.common (>= 0.3.0)
 Suggests: 
     testthat
 Encoding: UTF-8
