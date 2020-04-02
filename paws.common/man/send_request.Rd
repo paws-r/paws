@@ -14,8 +14,10 @@ Send a request and handle the response. Build the HTTP request, send it to
 AWS, interpret the response, and throw an error if the response is not ok.
 }
 \examples{
+\dontrun{
 # Send a request and handle the response.
-\dontrun{resp <- send_request(req)}
+resp <- send_request(req)
+}
 
 }
 \seealso{

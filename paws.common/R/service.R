@@ -89,7 +89,8 @@ new_handlers <- function(protocol, signer) {
 #' @family API request functions
 #'
 #' @examples
-#' \dontrun{# Metadata for the S3 API.
+#' \dontrun{
+#' # Metadata for the S3 API.
 #' metadata <- list(
 #'   service_name = "s3",
 #'   endpoints = list("us-east-1" = list(endpoint = "s3.amazonaws.com", global = FALSE)),
@@ -105,7 +106,8 @@ new_handlers <- function(protocol, signer) {
 #'
 #' # Build a service object for S3, containing the information necessary to
 #' # build, send, and receive requests.
-#' service <- new_service(metadata, handlers)}
+#' service <- new_service(metadata, handlers)
+#' }
 #'
 #' @export
 new_service <- function(metadata, handlers, cfgs = NULL) {

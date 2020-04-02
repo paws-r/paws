@@ -23,14 +23,16 @@ Set or add to a list of request-handling functions. Request-handling
 functions must take a request and return a request.
 }
 \examples{
+\dontrun{
 # Replace a handler list with a new handler list.
-\dontrun{handlers$build <- handlers_set(restxml_build)}
+handlers$build <- handlers_set(restxml_build)
 
 # Add a new handler onto the end of an existing handler list.
-\dontrun{handlers$build <- handlers_add_back(handlers$build, restxml_build)}
+handlers$build <- handlers_add_back(handlers$build, restxml_build)
 
 # Add a new handler at the beginning of an existing handler list.
-\dontrun{handlers$build <- handlers_add_front(handlers$build, restxml_build)}
+handlers$build <- handlers_add_front(handlers$build, restxml_build)
+}
 
 }
 \keyword{internal}
