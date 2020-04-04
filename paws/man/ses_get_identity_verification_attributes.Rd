@@ -47,13 +47,15 @@ verification attributes for up to 100 identities at a time.
 }
 
 \examples{
+\dontrun{
 # The following example returns the verification status and the
 # verification token for a domain identity:
-\dontrun{svc$get_identity_verification_attributes(
+svc$get_identity_verification_attributes(
   Identities = list(
     "example.com"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

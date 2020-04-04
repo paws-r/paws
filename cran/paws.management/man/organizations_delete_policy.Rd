@@ -32,14 +32,16 @@ account.
 }
 
 \examples{
+\dontrun{
 # The following example shows how to delete a policy from an organization.
 # The example assumes that you previously detached the policy from all
 # entities:
 # 
 # 
-\dontrun{svc$delete_policy(
+svc$delete_policy(
   PolicyId = "p-examplepolicyid111"
-)}
+)
+}
 
 }
 \keyword{internal}

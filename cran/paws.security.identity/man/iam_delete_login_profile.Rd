@@ -34,10 +34,12 @@ see UpdateAccessKey and DeleteAccessKey.
 }
 
 \examples{
+\dontrun{
 # The following command deletes the password for the IAM user named Bob.
-\dontrun{svc$delete_login_profile(
+svc$delete_login_profile(
   UserName = "Bob"
-)}
+)
+}
 
 }
 \keyword{internal}

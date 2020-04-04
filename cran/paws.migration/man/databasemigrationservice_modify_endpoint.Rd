@@ -199,8 +199,9 @@ Modifies the specified endpoint.
 }
 
 \examples{
+\dontrun{
 # Modifies the specified endpoint.
-\dontrun{svc$modify_endpoint(
+svc$modify_endpoint(
   CertificateArn = "",
   DatabaseName = "",
   EndpointArn = "",
@@ -213,7 +214,8 @@ Modifies the specified endpoint.
   ServerName = "",
   SslMode = "require",
   Username = ""
-)}
+)
+}
 
 }
 \keyword{internal}

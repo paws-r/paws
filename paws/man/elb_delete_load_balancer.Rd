@@ -30,10 +30,12 @@ call to \code{DeleteLoadBalancer} still succeeds.
 }
 
 \examples{
+\dontrun{
 # This example deletes the specified load balancer.
-\dontrun{svc$delete_load_balancer(
+svc$delete_load_balancer(
   LoadBalancerName = "my-load-balancer"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -83,9 +83,11 @@ applications.
 }
 
 \examples{
-\dontrun{svc <- serverlessapplicationrepository()
+\dontrun{
+svc <- serverlessapplicationrepository()
 svc$create_application(
   Foo = 123
-)}
+)
+}
 
 }

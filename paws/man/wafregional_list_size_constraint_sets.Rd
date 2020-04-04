@@ -33,11 +33,13 @@ Returns an array of SizeConstraintSetSummary objects.
 }
 
 \examples{
+\dontrun{
 # The following example returns an array of up to 100 size contraint match
 # sets.
-\dontrun{svc$list_size_constraint_sets(
+svc$list_size_constraint_sets(
   Limit = 100L
-)}
+)
+}
 
 }
 \keyword{internal}

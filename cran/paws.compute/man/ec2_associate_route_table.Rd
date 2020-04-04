@@ -42,12 +42,14 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example associates the specified route table with the specified
 # subnet.
-\dontrun{svc$associate_route_table(
+svc$associate_route_table(
   RouteTableId = "rtb-22574640",
   SubnetId = "subnet-9d4a7b6"
-)}
+)
+}
 
 }
 \keyword{internal}

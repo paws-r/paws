@@ -29,11 +29,13 @@ You can execute this operation no more than once per second.
 }
 
 \examples{
+\dontrun{
 # The following example deletes a receipt rule:
-\dontrun{svc$delete_receipt_rule(
+svc$delete_receipt_rule(
   RuleName = "MyRule",
   RuleSetName = "MyRuleSet"
-)}
+)
+}
 
 }
 \keyword{internal}

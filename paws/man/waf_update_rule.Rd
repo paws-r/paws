@@ -77,9 +77,10 @@ HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developergui
 }
 
 \examples{
+\dontrun{
 # The following example deletes a Predicate object in a rule with the ID
 # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-\dontrun{svc$update_rule(
+svc$update_rule(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   RuleId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5",
   Updates = list(
@@ -92,7 +93,8 @@ HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developergui
       )
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

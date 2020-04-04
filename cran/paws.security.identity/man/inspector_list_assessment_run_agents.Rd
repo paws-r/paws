@@ -50,12 +50,14 @@ of the assessment runs.
 }
 
 \examples{
+\dontrun{
 # Lists the agents of the assessment runs that are specified by the ARNs
 # of the assessment runs.
-\dontrun{svc$list_assessment_run_agents(
+svc$list_assessment_run_agents(
   assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-...",
   maxResults = 123L
-)}
+)
+}
 
 }
 \keyword{internal}

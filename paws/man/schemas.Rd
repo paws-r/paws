@@ -66,9 +66,11 @@ AWS EventBridge Schemas
 }
 
 \examples{
-\dontrun{svc <- schemas()
+\dontrun{
+svc <- schemas()
 svc$create_discoverer(
   Foo = 123
-)}
+)
+}
 
 }

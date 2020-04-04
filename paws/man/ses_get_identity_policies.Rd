@@ -47,14 +47,16 @@ You can execute this operation no more than once per second.
 }
 
 \examples{
+\dontrun{
 # The following example returns a sending authorization policy for an
 # identity:
-\dontrun{svc$get_identity_policies(
+svc$get_identity_policies(
   Identity = "example.com",
   PolicyNames = list(
     "MyPolicy"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

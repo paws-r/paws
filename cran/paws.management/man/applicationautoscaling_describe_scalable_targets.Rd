@@ -123,11 +123,13 @@ you can deregister it using DeregisterScalableTarget.
 }
 
 \examples{
+\dontrun{
 # This example describes the scalable targets for the ecs service
 # namespace.
-\dontrun{svc$describe_scalable_targets(
+svc$describe_scalable_targets(
   ServiceNamespace = "ecs"
-)}
+)
+}
 
 }
 \keyword{internal}

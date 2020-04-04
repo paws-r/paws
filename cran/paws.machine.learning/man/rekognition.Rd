@@ -78,9 +78,10 @@ This is the Amazon Rekognition API reference.
 }
 
 \examples{
+\dontrun{
+svc <- rekognition()
 # This operation compares the largest face detected in the source image
 # with each face detected in the target image.
-\dontrun{svc <- rekognition()
 svc$compare_faces(
   SimilarityThreshold = 90L,
   SourceImage = list(
@@ -95,6 +96,7 @@ svc$compare_faces(
       Name = "mytargetimage"
     )
   )
-)}
+)
+}
 
 }

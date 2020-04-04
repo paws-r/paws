@@ -22,11 +22,13 @@ assessment template.
 }
 
 \examples{
+\dontrun{
 # Deletes the assessment template that is specified by the ARN of the
 # assessment template.
-\dontrun{svc$delete_assessment_template(
+svc$delete_assessment_template(
   assessmentTemplateArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/templa..."
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -52,9 +52,11 @@ DescribeOrganization.
 }
 
 \examples{
+\dontrun{
 # The following example shows how to get the list of the roots in the
 # current organization:/n/n
-\dontrun{svc$list_roots()}
+svc$list_roots()
+}
 
 }
 \keyword{internal}

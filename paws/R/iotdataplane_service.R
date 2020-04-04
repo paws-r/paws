@@ -38,10 +38,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- iotdataplane()
+#' \dontrun{
+#' svc <- iotdataplane()
 #' svc$delete_thing_shadow(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -22,11 +22,13 @@ information, cluster status, and other important metadata.
 }
 
 \examples{
+\dontrun{
 # Returns information about a specific cluster including shipping
 # information, cluster status, and other important metadata.
-\dontrun{svc$describe_cluster(
+svc$describe_cluster(
   ClusterId = "CID123e4567-e89b-12d3-a456-426655440000"
-)}
+)
+}
 
 }
 \keyword{internal}

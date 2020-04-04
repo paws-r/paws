@@ -32,10 +32,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- mediastore()
+#' \dontrun{
+#' svc <- mediastore()
 #' svc$create_container(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

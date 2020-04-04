@@ -25,10 +25,12 @@ Creates a project.
 }
 
 \examples{
+\dontrun{
 # The following example creates a new project named MyProject.
-\dontrun{svc$create_project(
+svc$create_project(
   name = "MyProject"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -42,10 +42,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- connect()
+#' \dontrun{
+#' svc <- connect()
 #' svc$create_user(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

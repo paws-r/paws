@@ -57,10 +57,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- redshift()
+#' \dontrun{
+#' svc <- redshift()
 #' svc$accept_reserved_node_exchange(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

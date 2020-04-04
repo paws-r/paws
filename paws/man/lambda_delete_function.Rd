@@ -45,11 +45,13 @@ originally configured it.
 }
 
 \examples{
+\dontrun{
 # This operation deletes a Lambda function
-\dontrun{svc$delete_function(
+svc$delete_function(
   FunctionName = "myFunction",
   Qualifier = "1"
-)}
+)
+}
 
 }
 \keyword{internal}

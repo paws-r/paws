@@ -145,12 +145,14 @@ and their instances are terminated.
 }
 
 \examples{
+\dontrun{
 # This example describes the specified Spot Instance request.
-\dontrun{svc$describe_spot_instance_requests(
+svc$describe_spot_instance_requests(
   SpotInstanceRequestIds = list(
     "sir-08b93456"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

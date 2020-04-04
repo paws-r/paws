@@ -24,10 +24,12 @@ deregister them with DeregisterContainerInstance.
 }
 
 \examples{
+\dontrun{
 # This example deletes an empty cluster in your default region.
-\dontrun{svc$delete_cluster(
+svc$delete_cluster(
   cluster = "my_cluster"
-)}
+)
+}
 
 }
 \keyword{internal}

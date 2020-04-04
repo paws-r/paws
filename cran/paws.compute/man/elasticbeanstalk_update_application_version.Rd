@@ -39,13 +39,15 @@ remains unchanged. To clear properties, specify an empty string.
 }
 
 \examples{
+\dontrun{
 # The following operation updates the description of an application
 # version named 22a0-stage-150819_185942:
-\dontrun{svc$update_application_version(
+svc$update_application_version(
   ApplicationName = "my-app",
   Description = "new description",
   VersionLabel = "22a0-stage-150819_185942"
-)}
+)
+}
 
 }
 \keyword{internal}

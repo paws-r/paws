@@ -50,22 +50,24 @@ The following operations are related to
 }
 
 \examples{
+\dontrun{
 # The following example removes tag set associated with the specified
 # object version. The request specifies both the object key and object
 # version.
-\dontrun{svc$delete_object_tagging(
+svc$delete_object_tagging(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg",
   VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
-)}
+)
 
 # The following example removes tag set associated with the specified
 # object. If the bucket is versioning enabled, the operation removes tag
 # set from the latest object version.
-\dontrun{svc$delete_object_tagging(
+svc$delete_object_tagging(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
-)}
+)
+}
 
 }
 \keyword{internal}

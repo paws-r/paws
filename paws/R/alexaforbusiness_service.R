@@ -40,10 +40,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- alexaforbusiness()
+#' \dontrun{
+#' svc <- alexaforbusiness()
 #' svc$approve_skill(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

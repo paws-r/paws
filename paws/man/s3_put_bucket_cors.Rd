@@ -91,9 +91,10 @@ the \emph{Amazon Simple Storage Service Developer Guide}.
 }
 
 \examples{
+\dontrun{
 # The following example enables PUT, POST, and DELETE requests from
 # www.example.com, and enables GET requests from any domain.
-\dontrun{svc$put_bucket_cors(
+svc$put_bucket_cors(
   Bucket = "",
   CORSConfiguration = list(
     CORSRules = list(
@@ -129,7 +130,8 @@ the \emph{Amazon Simple Storage Service Developer Guide}.
     )
   ),
   ContentMD5 = ""
-)}
+)
+}
 
 }
 \keyword{internal}

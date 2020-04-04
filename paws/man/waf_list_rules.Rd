@@ -30,10 +30,12 @@ Returns an array of RuleSummary objects.
 }
 
 \examples{
+\dontrun{
 # The following example returns an array of up to 100 rules.
-\dontrun{svc$list_rules(
+svc$list_rules(
   Limit = 100L
-)}
+)
+}
 
 }
 \keyword{internal}

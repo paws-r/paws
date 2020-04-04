@@ -40,11 +40,13 @@ group.
 }
 
 \examples{
+\dontrun{
 # This example describes the scaling activities for the specified Auto
 # Scaling group.
-\dontrun{svc$describe_scaling_activities(
+svc$describe_scaling_activities(
   AutoScalingGroupName = "my-auto-scaling-group"
-)}
+)
+}
 
 }
 \keyword{internal}

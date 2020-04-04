@@ -45,12 +45,14 @@ The operation requires permission for the \code{lex:GetSlotTypes} action.
 }
 
 \examples{
+\dontrun{
 # This example shows how to get a list of all of the slot types in your
 # account.
-\dontrun{svc$get_slot_types(
+svc$get_slot_types(
   maxResults = 10L,
   nextToken = ""
-)}
+)
+}
 
 }
 \keyword{internal}

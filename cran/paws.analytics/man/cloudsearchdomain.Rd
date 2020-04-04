@@ -50,9 +50,11 @@ For more information, see the \href{http://docs.aws.amazon.com/cloudsearch/lates
 }
 
 \examples{
-\dontrun{svc <- cloudsearchdomain()
+\dontrun{
+svc <- cloudsearchdomain()
 svc$search(
   Foo = 123
-)}
+)
+}
 
 }

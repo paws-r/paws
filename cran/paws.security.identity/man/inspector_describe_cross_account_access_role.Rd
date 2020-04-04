@@ -12,9 +12,11 @@ Describes the IAM role that enables Amazon Inspector to access your AWS
 account.
 }
 \examples{
+\dontrun{
 # Describes the IAM role that enables Amazon Inspector to access your AWS
 # account.
-\dontrun{svc$describe_cross_account_access_role()}
+svc$describe_cross_account_access_role()
+}
 
 }
 \keyword{internal}

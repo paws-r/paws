@@ -38,10 +38,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- dlm()
+#' \dontrun{
+#' svc <- dlm()
 #' svc$create_lifecycle_policy(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

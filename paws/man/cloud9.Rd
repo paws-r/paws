@@ -74,8 +74,9 @@ environment member for an environment.
 }
 
 \examples{
+\dontrun{
+svc <- cloud9()
 # 
-\dontrun{svc <- cloud9()
 svc$create_environment_ec2(
   name = "my-demo-environment",
   automaticStopTimeMinutes = 60L,
@@ -83,6 +84,7 @@ svc$create_environment_ec2(
   instanceType = "t2.micro",
   ownerArn = "arn:aws:iam::123456789012:user/MyDemoUser",
   subnetId = "subnet-1fab8aEX"
-)}
+)
+}
 
 }

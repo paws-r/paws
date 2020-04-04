@@ -49,15 +49,17 @@ in the \emph{Classic Load Balancers Guide}.
 }
 
 \examples{
+\dontrun{
 # This example replaces the policies that are currently associated with
 # the specified port.
-\dontrun{svc$set_load_balancer_policies_for_backend_server(
+svc$set_load_balancer_policies_for_backend_server(
   InstancePort = 80L,
   LoadBalancerName = "my-load-balancer",
   PolicyNames = list(
     "my-ProxyProtocol-policy"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -61,9 +61,11 @@ AWS WAF and AWS Shield Advanced APIs, see the \href{https://docs.aws.amazon.com/
 }
 
 \examples{
-\dontrun{svc <- shield()
+\dontrun{
+svc <- shield()
 svc$associate_drt_log_bucket(
   Foo = 123
-)}
+)
+}
 
 }

@@ -42,8 +42,9 @@ Provides a description of the certificate.
 }
 
 \examples{
+\dontrun{
 # Provides a description of the certificate.
-\dontrun{svc$describe_certificates(
+svc$describe_certificates(
   Filters = list(
     list(
       Name = "string",
@@ -55,7 +56,8 @@ Provides a description of the certificate.
   ),
   Marker = "",
   MaxRecords = 123L
-)}
+)
+}
 
 }
 \keyword{internal}

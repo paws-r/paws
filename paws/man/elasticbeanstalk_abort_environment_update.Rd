@@ -28,11 +28,13 @@ version deployment.
 }
 
 \examples{
+\dontrun{
 # The following code aborts a running application version deployment for
 # an environment named my-env:
-\dontrun{svc$abort_environment_update(
+svc$abort_environment_update(
   EnvironmentName = "my-env"
-)}
+)
+}
 
 }
 \keyword{internal}

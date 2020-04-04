@@ -36,12 +36,14 @@ You can execute this operation no more than once per second.
 }
 
 \examples{
+\dontrun{
 # The following example creates a receipt rule set by cloning an existing
 # one:
-\dontrun{svc$clone_receipt_rule_set(
+svc$clone_receipt_rule_set(
   OriginalRuleSetName = "RuleSetToClone",
   RuleSetName = "RuleSetToCreate"
-)}
+)
+}
 
 }
 \keyword{internal}

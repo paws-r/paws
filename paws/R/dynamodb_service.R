@@ -48,9 +48,10 @@ NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
+#' svc <- dynamodb()
 #' # This example reads multiple items from the Music table using a batch of
 #' # three GetItem requests.  Only the AlbumTitle attribute is returned.
-#' \dontrun{svc <- dynamodb()
 #' svc$batch_get_item(
 #'   RequestItems = list(
 #'     Music = list(
@@ -83,7 +84,8 @@ NULL
 #'       ProjectionExpression = "AlbumTitle"
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

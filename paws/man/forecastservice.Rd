@@ -63,9 +63,11 @@ Provides APIs for creating and managing Amazon Forecast resources.
 }
 
 \examples{
-\dontrun{svc <- forecastservice()
+\dontrun{
+svc <- forecastservice()
 svc$create_dataset(
   Foo = 123
-)}
+)
+}
 
 }

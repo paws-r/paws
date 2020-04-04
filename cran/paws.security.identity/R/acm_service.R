@@ -35,10 +35,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- acm()
+#' \dontrun{
+#' svc <- acm()
 #' svc$add_tags_to_certificate(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

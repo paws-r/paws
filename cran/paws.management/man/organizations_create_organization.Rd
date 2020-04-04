@@ -49,6 +49,7 @@ organization policies.
 }
 
 \examples{
+\dontrun{
 # Bill wants to create an organization using credentials from account
 # 111111111111. The following example shows that the account becomes the
 # master account in the new organization. Because he does not specify a
@@ -56,16 +57,17 @@ organization policies.
 # service control policies enabled on the root:
 # 
 # 
-\dontrun{svc$create_organization()}
+svc$create_organization()
 
 # In the following example, Bill creates an organization using credentials
 # from account 111111111111, and configures the organization to support
 # only the consolidated billing feature set:
 # 
 # 
-\dontrun{svc$create_organization(
+svc$create_organization(
   FeatureSet = "CONSOLIDATED_BILLING"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -50,10 +50,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- dataexchange()
+#' \dontrun{
+#' svc <- dataexchange()
 #' svc$cancel_job(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

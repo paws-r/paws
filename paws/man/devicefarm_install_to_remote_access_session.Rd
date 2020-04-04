@@ -27,12 +27,14 @@ applications, the file must be in .ipa format.
 }
 
 \examples{
+\dontrun{
 # The following example installs a specific app to a device in a specific
 # remote access session.
-\dontrun{svc$install_to_remote_access_session(
+svc$install_to_remote_access_session(
   appArn = "arn:aws:devicefarm:us-west-2:123456789101:app:EXAMPLE-GUID-123-456",
   remoteAccessSessionArn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-1..."
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -110,8 +110,9 @@ The following operations are related to
 }
 
 \examples{
+\dontrun{
 # The following example completes a multipart upload.
-\dontrun{svc$complete_multipart_upload(
+svc$complete_multipart_upload(
   Bucket = "examplebucket",
   Key = "bigobject",
   MultipartUpload = list(
@@ -127,7 +128,8 @@ The following operations are related to
     )
   ),
   UploadId = "7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP3WA60CE..."
-)}
+)
+}
 
 }
 \keyword{internal}

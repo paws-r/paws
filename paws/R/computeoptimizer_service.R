@@ -42,10 +42,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- computeoptimizer()
+#' \dontrun{
+#' svc <- computeoptimizer()
 #' svc$get_auto_scaling_group_recommendations(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

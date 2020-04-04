@@ -41,10 +41,12 @@ Related actions include:
 }
 
 \examples{
+\dontrun{
 # The following example deletes lifecycle configuration on a bucket.
-\dontrun{svc$delete_bucket_lifecycle(
+svc$delete_bucket_lifecycle(
   Bucket = "examplebucket"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -70,9 +70,11 @@ a programming interface that you can use to manage AWS DataSync.
 }
 
 \examples{
-\dontrun{svc <- datasync()
+\dontrun{
+svc <- datasync()
 svc$cancel_task_execution(
   Foo = 123
-)}
+)
+}
 
 }

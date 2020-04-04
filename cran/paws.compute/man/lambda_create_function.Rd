@@ -161,8 +161,9 @@ service. For more information, see \href{https://docs.aws.amazon.com/lambda/late
 }
 
 \examples{
+\dontrun{
 # This example creates a Lambda function.
-\dontrun{svc$create_function(
+svc$create_function(
   Code = structure(
     list(),
     .Names = character(
@@ -183,7 +184,8 @@ service. For more information, see \href{https://docs.aws.amazon.com/lambda/late
       0
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -27,11 +27,13 @@ You can execute this operation no more than once per second.
 }
 
 \examples{
+\dontrun{
 # The following example starts the email address verification process with
 # Amazon SES:
-\dontrun{svc$verify_email_identity(
+svc$verify_email_identity(
   EmailAddress = "user@example.com"
-)}
+)
+}
 
 }
 \keyword{internal}

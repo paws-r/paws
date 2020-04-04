@@ -20,10 +20,12 @@ Deletes the specified certificate.
 }
 
 \examples{
+\dontrun{
 # Deletes the specified certificate.
-\dontrun{svc$delete_certificate(
+svc$delete_certificate(
   CertificateArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUSM457DE6XFJCJQ"
-)}
+)
+}
 
 }
 \keyword{internal}

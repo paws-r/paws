@@ -35,13 +35,15 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example sets the desired capacity for the specified Auto Scaling
 # group.
-\dontrun{svc$set_desired_capacity(
+svc$set_desired_capacity(
   AutoScalingGroupName = "my-auto-scaling-group",
   DesiredCapacity = 2L,
   HonorCooldown = TRUE
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -33,10 +33,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- iotevents()
+#' \dontrun{
+#' svc <- iotevents()
 #' svc$create_detector_model(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

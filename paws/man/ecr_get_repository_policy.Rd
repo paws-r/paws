@@ -25,11 +25,13 @@ Retrieves the repository policy for a specified repository.
 }
 
 \examples{
+\dontrun{
 # This example obtains the repository policy for the repository named
 # ubuntu.
-\dontrun{svc$get_repository_policy(
+svc$get_repository_policy(
   repositoryName = "ubuntu"
-)}
+)
+}
 
 }
 \keyword{internal}

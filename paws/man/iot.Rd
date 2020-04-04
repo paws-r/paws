@@ -249,9 +249,11 @@ see \href{https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-dire
 }
 
 \examples{
-\dontrun{svc <- iot()
+\dontrun{
+svc <- iot()
 svc$accept_certificate_transfer(
   Foo = 123
-)}
+)
+}
 
 }

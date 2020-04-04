@@ -34,13 +34,15 @@ network ACL.
 }
 
 \examples{
+\dontrun{
 # This example deletes ingress rule number 100 from the specified network
 # ACL.
-\dontrun{svc$delete_network_acl_entry(
+svc$delete_network_acl_entry(
   Egress = TRUE,
   NetworkAclId = "acl-5fb85d36",
   RuleNumber = 100L
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -42,11 +42,13 @@ Detaches a network interface from an instance.
 }
 
 \examples{
+\dontrun{
 # This example detaches the specified network interface from its attached
 # instance.
-\dontrun{svc$detach_network_interface(
+svc$detach_network_interface(
   AttachmentId = "eni-attach-66c4350a"
-)}
+)
+}
 
 }
 \keyword{internal}

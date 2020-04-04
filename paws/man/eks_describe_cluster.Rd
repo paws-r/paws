@@ -28,11 +28,13 @@ until the cluster reaches the \code{ACTIVE} state.
 }
 
 \examples{
+\dontrun{
 # This example command provides a description of the specified cluster in
 # your default region.
-\dontrun{svc$describe_cluster(
+svc$describe_cluster(
   name = "devel"
-)}
+)
+}
 
 }
 \keyword{internal}

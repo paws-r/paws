@@ -31,10 +31,12 @@ a few seconds, and then try the \code{DescribeTable} request again.
 }
 
 \examples{
+\dontrun{
 # This example describes the Music table.
-\dontrun{svc$describe_table(
+svc$describe_table(
   TableName = "Music"
-)}
+)
+}
 
 }
 \keyword{internal}

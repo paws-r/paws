@@ -53,9 +53,11 @@ If you have questions or comments related to the Data API, send email to
 }
 
 \examples{
-\dontrun{svc <- rdsdataservice()
+\dontrun{
+svc <- rdsdataservice()
 svc$batch_execute_statement(
   Foo = 123
-)}
+)
+}
 
 }

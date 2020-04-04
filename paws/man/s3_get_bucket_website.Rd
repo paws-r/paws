@@ -35,10 +35,12 @@ The following operations are related to \code{DeleteBucketWebsite}:
 }
 
 \examples{
+\dontrun{
 # The following example retrieves website configuration of a bucket.
-\dontrun{svc$get_bucket_website(
+svc$get_bucket_website(
   Bucket = "examplebucket"
-)}
+)
+}
 
 }
 \keyword{internal}

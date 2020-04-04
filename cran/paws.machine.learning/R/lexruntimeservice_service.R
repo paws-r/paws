@@ -41,10 +41,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- lexruntimeservice()
+#' \dontrun{
+#' svc <- lexruntimeservice()
 #' svc$delete_session(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

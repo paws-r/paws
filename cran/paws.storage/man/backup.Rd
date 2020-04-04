@@ -83,9 +83,11 @@ reporting and auditing.
 }
 
 \examples{
-\dontrun{svc <- backup()
+\dontrun{
+svc <- backup()
 svc$create_backup_plan(
   Foo = 123
-)}
+)
+}
 
 }

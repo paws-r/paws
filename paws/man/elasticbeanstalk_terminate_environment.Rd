@@ -53,11 +53,13 @@ Terminates the specified environment.
 }
 
 \examples{
+\dontrun{
 # The following operation terminates an Elastic Beanstalk environment
 # named my-env:
-\dontrun{svc$terminate_environment(
+svc$terminate_environment(
   EnvironmentName = "my-env"
-)}
+)
+}
 
 }
 \keyword{internal}

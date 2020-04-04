@@ -29,10 +29,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- kinesisvideoarchivedmedia()
+#' \dontrun{
+#' svc <- kinesisvideoarchivedmedia()
 #' svc$get_dash_streaming_session_url(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

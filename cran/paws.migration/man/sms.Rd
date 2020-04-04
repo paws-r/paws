@@ -82,9 +82,11 @@ resources:
 }
 
 \examples{
-\dontrun{svc <- sms()
+\dontrun{
+svc <- sms()
 svc$create_app(
   Foo = 123
-)}
+)
+}
 
 }

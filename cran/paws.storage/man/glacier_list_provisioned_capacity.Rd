@@ -26,10 +26,12 @@ AWS account.
 }
 
 \examples{
+\dontrun{
 # The example lists the provisioned capacity units for an account.
-\dontrun{svc$list_provisioned_capacity(
+svc$list_provisioned_capacity(
   accountId = "-"
-)}
+)
+}
 
 }
 \keyword{internal}

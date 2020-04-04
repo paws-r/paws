@@ -80,8 +80,9 @@ You can execute this operation no more than once per second.
 }
 
 \examples{
+\dontrun{
 # The following example creates a new receipt rule:
-\dontrun{svc$create_receipt_rule(
+svc$create_receipt_rule(
   After = "",
   Rule = list(
     Actions = list(
@@ -98,7 +99,8 @@ You can execute this operation no more than once per second.
     TlsPolicy = "Optional"
   ),
   RuleSetName = "MyRuleSet"
-)}
+)
+}
 
 }
 \keyword{internal}

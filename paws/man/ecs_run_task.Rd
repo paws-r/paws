@@ -260,11 +260,13 @@ increase gradually up to about five minutes of wait time.
 }
 
 \examples{
+\dontrun{
 # This example runs the specified task definition on your default cluster.
-\dontrun{svc$run_task(
+svc$run_task(
   cluster = "default",
   taskDefinition = "sleep360:1"
-)}
+)
+}
 
 }
 \keyword{internal}

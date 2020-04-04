@@ -97,10 +97,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- applicationdiscoveryservice()
+#' \dontrun{
+#' svc <- applicationdiscoveryservice()
 #' svc$associate_configuration_items_to_application(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

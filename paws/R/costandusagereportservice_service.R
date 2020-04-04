@@ -43,12 +43,14 @@ NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
+#' svc <- costandusagereportservice()
 #' # The following example deletes the AWS Cost and Usage report named
 #' # ExampleReport.
-#' \dontrun{svc <- costandusagereportservice()
 #' svc$delete_report_definition(
 #'   ReportName = "ExampleReport"
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

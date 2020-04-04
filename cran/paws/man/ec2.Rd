@@ -449,11 +449,13 @@ documentation
 }
 
 \examples{
+\dontrun{
+svc <- ec2()
 # This example allocates an Elastic IP address to use with an instance in
 # a VPC.
-\dontrun{svc <- ec2()
 svc$allocate_address(
   Domain = "vpc"
-)}
+)
+}
 
 }

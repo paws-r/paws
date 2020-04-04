@@ -22,8 +22,10 @@ more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/managing
 }
 
 \examples{
+\dontrun{
 # Returns a list of pronunciation lexicons stored in an AWS Region.
-\dontrun{svc$list_lexicons()}
+svc$list_lexicons()
+}
 
 }
 \keyword{internal}

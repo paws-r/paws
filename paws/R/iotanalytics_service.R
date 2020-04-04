@@ -55,10 +55,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- iotanalytics()
+#' \dontrun{
+#' svc <- iotanalytics()
 #' svc$batch_put_message(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

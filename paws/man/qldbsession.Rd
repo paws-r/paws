@@ -38,9 +38,11 @@ The transactional data APIs for Amazon QLDB
 }
 
 \examples{
-\dontrun{svc <- qldbsession()
+\dontrun{
+svc <- qldbsession()
 svc$send_command(
   Foo = 123
-)}
+)
+}
 
 }

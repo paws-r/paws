@@ -46,10 +46,12 @@ The following operations are related to \code{GetBucketReplication}:
 }
 
 \examples{
+\dontrun{
 # The following example returns replication configuration set on a bucket.
-\dontrun{svc$get_bucket_replication(
+svc$get_bucket_replication(
   Bucket = "examplebucket"
-)}
+)
+}
 
 }
 \keyword{internal}

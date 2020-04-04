@@ -31,12 +31,14 @@ This operation requires permissions for the
 }
 
 \examples{
+\dontrun{
 # This operation describes a file system's LifecycleConfiguration. EFS
 # lifecycle management uses the LifecycleConfiguration object to identify
 # which files to move to the EFS Infrequent Access (IA) storage class.
-\dontrun{svc$describe_lifecycle_configuration(
+svc$describe_lifecycle_configuration(
   FileSystemId = "fs-01234567"
-)}
+)
+}
 
 }
 \keyword{internal}

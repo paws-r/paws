@@ -21,10 +21,12 @@ Lists all tags for an AWS DMS resource.
 }
 
 \examples{
+\dontrun{
 # Lists all tags for an AWS DMS resource.
-\dontrun{svc$list_tags_for_resource(
+svc$list_tags_for_resource(
   ResourceArn = ""
-)}
+)
+}
 
 }
 \keyword{internal}

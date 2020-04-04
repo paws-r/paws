@@ -353,8 +353,9 @@ NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # 
-#' \dontrun{svc$assume_role(
+#' svc$assume_role(
 #'   ExternalId = "123ABC",
 #'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":...",
 #'   RoleArn = "arn:aws:iam::123456789012:role/demo",
@@ -377,7 +378,8 @@ NULL
 #'     "Project",
 #'     "Cost-Center"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -648,13 +650,15 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # 
-#' \dontrun{svc$assume_role_with_saml(
+#' svc$assume_role_with_saml(
 #'   DurationSeconds = 3600L,
 #'   PrincipalArn = "arn:aws:iam::123456789012:saml-provider/SAML-test",
 #'   RoleArn = "arn:aws:iam::123456789012:role/TestSaml",
 #'   SAMLAssertion = "VERYLONGENCODEDASSERTIONEXAMPLExzYW1sOkF1ZGllbmNlPmJsYW5rPC9zYW1sOkF1ZGll..."
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -964,15 +968,17 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # 
-#' \dontrun{svc$assume_role_with_web_identity(
+#' svc$assume_role_with_web_identity(
 #'   DurationSeconds = 3600L,
 #'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":...",
 #'   ProviderId = "www.amazon.com",
 #'   RoleArn = "arn:aws:iam::123456789012:role/FederatedWebIdentityRole",
 #'   RoleSessionName = "app1",
 #'   WebIdentityToken = "Atza%7CIQEBLjAsAhRFiXuWpUXuRvQ9PZL3GMFcYevydwIUFAHZwXZXXXXXXXXJnrulxKD..."
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1046,10 +1052,12 @@ sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdent
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # 
-#' \dontrun{svc$decode_authorization_message(
+#' svc$decode_authorization_message(
 #'   EncodedMessage = "<encoded-message>"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1160,19 +1168,21 @@ sts_get_access_key_info <- function(AccessKeyId) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example shows a request and response made with the credentials for
 #' # a user named Alice in the AWS account 123456789012.
-#' \dontrun{svc$get_caller_identity()}
+#' svc$get_caller_identity()
 #' 
 #' # This example shows a request and response made with temporary
 #' # credentials created by AssumeRole. The name of the assumed role is
 #' # my-role-name, and the RoleSessionName is set to my-role-session-name.
-#' \dontrun{svc$get_caller_identity()}
+#' svc$get_caller_identity()
 #' 
 #' # This example shows a request and response made with temporary
 #' # credentials created by using GetFederationToken. The Name parameter is
 #' # set to my-federated-user-name.
-#' \dontrun{svc$get_caller_identity()}
+#' svc$get_caller_identity()
+#' }
 #'
 #' @keywords internal
 #'
@@ -1449,8 +1459,9 @@ sts_get_caller_identity <- function() {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # 
-#' \dontrun{svc$get_federation_token(
+#' svc$get_federation_token(
 #'   DurationSeconds = 3600L,
 #'   Name = "testFedUserSession",
 #'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":...",
@@ -1464,7 +1475,8 @@ sts_get_caller_identity <- function() {
 #'       Value = "98765"
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1588,12 +1600,14 @@ sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, Dur
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # 
-#' \dontrun{svc$get_session_token(
+#' svc$get_session_token(
 #'   DurationSeconds = 3600L,
 #'   SerialNumber = "YourMFASerialNumber",
 #'   TokenCode = "123456"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'

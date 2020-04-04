@@ -55,8 +55,9 @@ Describes one or more of your NAT gateways.
 }
 
 \examples{
+\dontrun{
 # This example describes the NAT gateway for the specified VPC.
-\dontrun{svc$describe_nat_gateways(
+svc$describe_nat_gateways(
   Filter = list(
     list(
       Name = "vpc-id",
@@ -65,7 +66,8 @@ Describes one or more of your NAT gateways.
       )
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

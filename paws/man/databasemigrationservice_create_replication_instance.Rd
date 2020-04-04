@@ -122,8 +122,9 @@ For information on the required permissions, see \href{https://docs.aws.amazon.c
 }
 
 \examples{
+\dontrun{
 # Creates the replication instance using the specified parameters.
-\dontrun{svc$create_replication_instance(
+svc$create_replication_instance(
   AllocatedStorage = 123L,
   AutoMinorVersionUpgrade = TRUE,
   AvailabilityZone = "",
@@ -142,7 +143,8 @@ For information on the required permissions, see \href{https://docs.aws.amazon.c
     )
   ),
   VpcSecurityGroupIds = list()
-)}
+)
+}
 
 }
 \keyword{internal}

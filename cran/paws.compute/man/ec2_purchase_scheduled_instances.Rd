@@ -46,15 +46,17 @@ resell your purchase.
 }
 
 \examples{
+\dontrun{
 # This example purchases a Scheduled Instance.
-\dontrun{svc$purchase_scheduled_instances(
+svc$purchase_scheduled_instances(
   PurchaseRequests = list(
     list(
       InstanceCount = 1L,
       PurchaseToken = "eyJ2IjoiMSIsInMiOjEsImMiOi..."
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

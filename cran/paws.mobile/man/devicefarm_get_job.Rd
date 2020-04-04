@@ -20,10 +20,12 @@ Gets information about a job.
 }
 
 \examples{
+\dontrun{
 # The following example returns information about a specific job.
-\dontrun{svc$get_job(
+svc$get_job(
   arn = "arn:aws:devicefarm:us-west-2::job:123-456-EXAMPLE-GUID"
-)}
+)
+}
 
 }
 \keyword{internal}

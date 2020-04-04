@@ -31,10 +31,12 @@ Returns an array of XssMatchSet objects.
 }
 
 \examples{
+\dontrun{
 # The following example returns an array of up to 100 XSS match sets.
-\dontrun{svc$list_xss_match_sets(
+svc$list_xss_match_sets(
   Limit = 100L
-)}
+)
+}
 
 }
 \keyword{internal}

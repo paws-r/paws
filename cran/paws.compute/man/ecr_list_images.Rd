@@ -60,11 +60,13 @@ tags in your repository.
 }
 
 \examples{
+\dontrun{
 # This example lists all of the images in the repository named ubuntu in
 # the default registry in the current account.
-\dontrun{svc$list_images(
+svc$list_images(
   repositoryName = "ubuntu"
-)}
+)
+}
 
 }
 \keyword{internal}

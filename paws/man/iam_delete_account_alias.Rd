@@ -26,11 +26,13 @@ in the \emph{IAM User Guide}.
 }
 
 \examples{
+\dontrun{
 # The following command removes the alias mycompany from the current AWS
 # account:
-\dontrun{svc$delete_account_alias(
+svc$delete_account_alias(
   AccountAlias = "mycompany"
-)}
+)
+}
 
 }
 \keyword{internal}

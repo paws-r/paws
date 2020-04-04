@@ -29,10 +29,12 @@ default set of options with the VPC.
 }
 
 \examples{
+\dontrun{
 # This example deletes the specified DHCP options set.
-\dontrun{svc$delete_dhcp_options(
+svc$delete_dhcp_options(
   DhcpOptionsId = "dopt-d9070ebb"
-)}
+)
+}
 
 }
 \keyword{internal}

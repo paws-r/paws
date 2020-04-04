@@ -94,9 +94,10 @@ Amazon Route 53 is a highly available and scalable Domain Name System
 }
 
 \examples{
+\dontrun{
+svc <- route53()
 # The following example associates the VPC with ID vpc-1a2b3c4d with the
 # hosted zone with ID Z3M3LMPEXAMPLE.
-\dontrun{svc <- route53()
 svc$associate_vpc_with_hosted_zone(
   Comment = "",
   HostedZoneId = "Z3M3LMPEXAMPLE",
@@ -104,6 +105,7 @@ svc$associate_vpc_with_hosted_zone(
     VPCId = "vpc-1a2b3c4d",
     VPCRegion = "us-east-2"
   )
-)}
+)
+}
 
 }

@@ -104,12 +104,14 @@ in the \emph{IAM User Guide}.
 }
 
 \examples{
+\dontrun{
 # 
-\dontrun{svc$get_session_token(
+svc$get_session_token(
   DurationSeconds = 3600L,
   SerialNumber = "YourMFASerialNumber",
   TokenCode = "123456"
-)}
+)
+}
 
 }
 \keyword{internal}

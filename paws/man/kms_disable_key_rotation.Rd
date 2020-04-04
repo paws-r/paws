@@ -45,11 +45,13 @@ in the \emph{AWS Key Management Service Developer Guide}.
 }
 
 \examples{
+\dontrun{
 # The following example disables automatic annual rotation of the key
 # material for the specified CMK.
-\dontrun{svc$disable_key_rotation(
+svc$disable_key_rotation(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)}
+)
+}
 
 }
 \keyword{internal}

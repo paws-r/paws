@@ -24,13 +24,15 @@ assessment runs.
 }
 
 \examples{
+\dontrun{
 # Describes the assessment runs that are specified by the ARNs of the
 # assessment runs.
-\dontrun{svc$describe_assessment_runs(
+svc$describe_assessment_runs(
   assessmentRunArns = list(
     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw/run/0-MK..."
   )
-)}
+)
+}
 
 }
 \keyword{internal}

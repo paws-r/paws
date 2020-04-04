@@ -70,8 +70,9 @@ in the \emph{Amazon Glacier Developer Guide}.
 }
 
 \examples{
+\dontrun{
 # The example sets the examplevault notification configuration.
-\dontrun{svc$set_vault_notifications(
+svc$set_vault_notifications(
   accountId = "-",
   vaultName = "examplevault",
   vaultNotificationConfig = list(
@@ -81,7 +82,8 @@ in the \emph{Amazon Glacier Developer Guide}.
     ),
     SNSTopic = "arn:aws:sns:us-west-2:012345678901:mytopic"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

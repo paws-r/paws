@@ -44,9 +44,11 @@ list detectors, and view or update a detector\'s status.
 }
 
 \examples{
-\dontrun{svc <- ioteventsdata()
+\dontrun{
+svc <- ioteventsdata()
 svc$batch_put_message(
   Foo = 123
-)}
+)
+}
 
 }

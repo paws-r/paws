@@ -29,11 +29,13 @@ tags, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.htm
 }
 
 \examples{
+\dontrun{
 # The example lists all the tags attached to the vault examplevault.
-\dontrun{svc$list_tags_for_vault(
+svc$list_tags_for_vault(
   accountId = "-",
   vaultName = "examplevault"
-)}
+)
+}
 
 }
 \keyword{internal}

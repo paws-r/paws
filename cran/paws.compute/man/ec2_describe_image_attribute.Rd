@@ -35,11 +35,13 @@ only one attribute at a time.
 }
 
 \examples{
+\dontrun{
 # This example describes the launch permissions for the specified AMI.
-\dontrun{svc$describe_image_attribute(
+svc$describe_image_attribute(
   Attribute = "launchPermission",
   ImageId = "ami-5731123e"
-)}
+)
+}
 
 }
 \keyword{internal}

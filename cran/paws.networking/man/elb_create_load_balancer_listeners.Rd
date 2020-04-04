@@ -38,9 +38,10 @@ in the \emph{Classic Load Balancers Guide}.
 }
 
 \examples{
+\dontrun{
 # This example creates a listener for your load balancer at port 80 using
 # the HTTP protocol.
-\dontrun{svc$create_load_balancer_listeners(
+svc$create_load_balancer_listeners(
   Listeners = list(
     list(
       InstancePort = 80L,
@@ -50,11 +51,11 @@ in the \emph{Classic Load Balancers Guide}.
     )
   ),
   LoadBalancerName = "my-load-balancer"
-)}
+)
 
 # This example creates a listener for your load balancer at port 443 using
 # the HTTPS protocol.
-\dontrun{svc$create_load_balancer_listeners(
+svc$create_load_balancer_listeners(
   Listeners = list(
     list(
       InstancePort = 80L,
@@ -65,7 +66,8 @@ in the \emph{Classic Load Balancers Guide}.
     )
   ),
   LoadBalancerName = "my-load-balancer"
-)}
+)
+}
 
 }
 \keyword{internal}

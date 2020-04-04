@@ -65,9 +65,11 @@ Definition of the public APIs exposed by Amazon Machine Learning
 }
 
 \examples{
-\dontrun{svc <- machinelearning()
+\dontrun{
+svc <- machinelearning()
 svc$add_tags(
   Foo = 123
-)}
+)
+}
 
 }

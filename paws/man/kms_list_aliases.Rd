@@ -57,8 +57,10 @@ including predefined aliases, do not count against your \href{https://docs.aws.a
 }
 
 \examples{
+\dontrun{
 # The following example lists aliases.
-\dontrun{svc$list_aliases()}
+svc$list_aliases()
+}
 
 }
 \keyword{internal}

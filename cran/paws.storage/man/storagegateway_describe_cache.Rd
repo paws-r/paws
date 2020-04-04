@@ -25,10 +25,12 @@ includes the amount of cache allocated and used.
 }
 
 \examples{
+\dontrun{
 # Returns information about the cache of a gateway.
-\dontrun{svc$describe_cache(
+svc$describe_cache(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)}
+)
+}
 
 }
 \keyword{internal}

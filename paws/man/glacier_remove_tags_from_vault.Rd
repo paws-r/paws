@@ -36,15 +36,17 @@ there are no tags attached to the vault.
 }
 
 \examples{
+\dontrun{
 # The example removes two tags from the vault named examplevault.
-\dontrun{svc$remove_tags_from_vault(
+svc$remove_tags_from_vault(
   TagKeys = list(
     "examplekey1",
     "examplekey2"
   ),
   accountId = "-",
   vaultName = "examplevault"
-)}
+)
+}
 
 }
 \keyword{internal}

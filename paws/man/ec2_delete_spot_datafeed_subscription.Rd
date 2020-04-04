@@ -23,8 +23,10 @@ Deletes the data feed for Spot Instances.
 }
 
 \examples{
+\dontrun{
 # This example deletes a Spot data feed subscription for the account.
-\dontrun{svc$delete_spot_datafeed_subscription()}
+svc$delete_spot_datafeed_subscription()
+}
 
 }
 \keyword{internal}

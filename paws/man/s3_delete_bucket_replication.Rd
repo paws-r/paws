@@ -39,10 +39,12 @@ The following operations are related to \code{DeleteBucketReplication}:
 }
 
 \examples{
+\dontrun{
 # The following example deletes replication configuration set on bucket.
-\dontrun{svc$delete_bucket_replication(
+svc$delete_bucket_replication(
   Bucket = "example"
-)}
+)
+}
 
 }
 \keyword{internal}

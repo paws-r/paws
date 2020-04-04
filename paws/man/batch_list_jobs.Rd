@@ -67,17 +67,19 @@ If you do not specify a status, only \code{RUNNING} jobs are returned.
 }
 
 \examples{
+\dontrun{
 # This example lists the running jobs in the HighPriority job queue.
-\dontrun{svc$list_jobs(
+svc$list_jobs(
   jobQueue = "HighPriority"
-)}
+)
 
 # This example lists jobs in the HighPriority job queue that are in the
 # SUBMITTED job status.
-\dontrun{svc$list_jobs(
+svc$list_jobs(
   jobQueue = "HighPriority",
   jobStatus = "SUBMITTED"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -36,10 +36,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- datasync()
+#' \dontrun{
+#' svc <- datasync()
 #' svc$cancel_task_execution(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -47,14 +47,16 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example suspends the specified scaling process for the specified
 # Auto Scaling group.
-\dontrun{svc$suspend_processes(
+svc$suspend_processes(
   AutoScalingGroupName = "my-auto-scaling-group",
   ScalingProcesses = list(
     "AlarmNotification"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

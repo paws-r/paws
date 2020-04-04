@@ -32,11 +32,13 @@ For more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/mana
 }
 
 \examples{
+\dontrun{
 # Stores a pronunciation lexicon in an AWS Region.
-\dontrun{svc$put_lexicon(
+svc$put_lexicon(
   Content = "file://example.pls",
   Name = "W3C"
-)}
+)
+}
 
 }
 \keyword{internal}

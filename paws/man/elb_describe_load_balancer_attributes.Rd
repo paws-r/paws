@@ -20,10 +20,12 @@ Describes the attributes for the specified load balancer.
 }
 
 \examples{
+\dontrun{
 # This example describes the attributes of the specified load balancer.
-\dontrun{svc$describe_load_balancer_attributes(
+svc$describe_load_balancer_attributes(
   LoadBalancerName = "my-load-balancer"
-)}
+)
+}
 
 }
 \keyword{internal}

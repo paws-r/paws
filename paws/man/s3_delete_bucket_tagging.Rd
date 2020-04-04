@@ -31,10 +31,12 @@ The following operations are related to \code{DeleteBucketTagging}:
 }
 
 \examples{
+\dontrun{
 # The following example deletes bucket tags.
-\dontrun{svc$delete_bucket_tagging(
+svc$delete_bucket_tagging(
   Bucket = "examplebucket"
-)}
+)
+}
 
 }
 \keyword{internal}

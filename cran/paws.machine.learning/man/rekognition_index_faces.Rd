@@ -183,9 +183,10 @@ This operation requires permissions to perform the
 }
 
 \examples{
+\dontrun{
 # This operation detects faces in an image and adds them to the specified
 # Rekognition collection.
-\dontrun{svc$index_faces(
+svc$index_faces(
   CollectionId = "myphotos",
   DetectionAttributes = list(),
   ExternalImageId = "myphotoid",
@@ -195,7 +196,8 @@ This operation requires permissions to perform the
       Name = "myphoto"
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -61,10 +61,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- augmentedairuntime()
+#' \dontrun{
+#' svc <- augmentedairuntime()
 #' svc$delete_human_loop(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

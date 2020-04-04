@@ -32,11 +32,13 @@ Returns an array of SqlInjectionMatchSet objects.
 }
 
 \examples{
+\dontrun{
 # The following example returns an array of up to 100 SQL injection match
 # sets.
-\dontrun{svc$list_sql_injection_match_sets(
+svc$list_sql_injection_match_sets(
   Limit = 100L
-)}
+)
+}
 
 }
 \keyword{internal}

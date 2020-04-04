@@ -63,12 +63,14 @@ For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VP
 }
 
 \examples{
+\dontrun{
 # This example describes the specified customer gateway.
-\dontrun{svc$describe_customer_gateways(
+svc$describe_customer_gateways(
   CustomerGatewayIds = list(
     "cgw-0e11f167"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -54,11 +54,13 @@ group, the operation returns an empty list.
 }
 
 \examples{
+\dontrun{
 # The following command lists the names of in-line policies that are
 # embedded in the IAM group named Admins.
-\dontrun{svc$list_group_policies(
+svc$list_group_policies(
   GroupName = "Admins"
-)}
+)
+}
 
 }
 \keyword{internal}

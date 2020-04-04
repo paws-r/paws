@@ -217,8 +217,9 @@ in the \emph{Amazon SES Developer Guide.}
 }
 
 \examples{
+\dontrun{
 # The following example sends an email with an attachment:
-\dontrun{svc$send_raw_email(
+svc$send_raw_email(
   Destinations = list(),
   FromArn = "",
   RawMessage = list(
@@ -227,7 +228,8 @@ in the \emph{Amazon SES Developer Guide.}
   ReturnPathArn = "",
   Source = "",
   SourceArn = ""
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -37,13 +37,15 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example creates a NAT gateway in subnet subnet-1a2b3c4d and
 # associates an Elastic IP address with the allocation ID
 # eipalloc-37fc1a52 with the NAT gateway.
-\dontrun{svc$create_nat_gateway(
+svc$create_nat_gateway(
   AllocationId = "eipalloc-37fc1a52",
   SubnetId = "subnet-1a2b3c4d"
-)}
+)
+}
 
 }
 \keyword{internal}

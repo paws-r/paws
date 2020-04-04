@@ -124,9 +124,10 @@ This operation requires permissions to perform the
 }
 
 \examples{
+\dontrun{
 # This operation compares the largest face detected in the source image
 # with each face detected in the target image.
-\dontrun{svc$compare_faces(
+svc$compare_faces(
   SimilarityThreshold = 90L,
   SourceImage = list(
     S3Object = list(
@@ -140,7 +141,8 @@ This operation requires permissions to perform the
       Name = "mytargetimage"
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

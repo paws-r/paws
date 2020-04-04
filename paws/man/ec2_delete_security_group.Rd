@@ -36,10 +36,12 @@ in EC2-VPC.
 }
 
 \examples{
+\dontrun{
 # This example deletes the specified security group.
-\dontrun{svc$delete_security_group(
+svc$delete_security_group(
   GroupId = "sg-903004f8"
-)}
+)
+}
 
 }
 \keyword{internal}

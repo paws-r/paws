@@ -32,9 +32,11 @@ AWS WAF is propagating the change to all AWS WAF servers. Use
 }
 
 \examples{
+\dontrun{
 # The following example returns a change token to use for a create, update
 # or delete operation.
-\dontrun{svc$get_change_token()}
+svc$get_change_token()
+}
 
 }
 \keyword{internal}

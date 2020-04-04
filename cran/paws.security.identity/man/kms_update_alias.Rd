@@ -69,12 +69,14 @@ in the \emph{AWS Key Management Service Developer Guide}.
 }
 
 \examples{
+\dontrun{
 # The following example updates the specified alias to refer to the
 # specified customer master key (CMK).
-\dontrun{svc$update_alias(
+svc$update_alias(
   AliasName = "alias/ExampleAlias",
   TargetKeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)}
+)
+}
 
 }
 \keyword{internal}

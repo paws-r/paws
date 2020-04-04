@@ -37,10 +37,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- connectparticipant()
+#' \dontrun{
+#' svc <- connectparticipant()
 #' svc$create_participant_connection(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

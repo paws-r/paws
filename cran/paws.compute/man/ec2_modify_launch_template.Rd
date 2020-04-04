@@ -43,12 +43,14 @@ default version applies when a launch template version is not specified.
 }
 
 \examples{
+\dontrun{
 # This example specifies version 2 as the default version of the specified
 # launch template.
-\dontrun{svc$modify_launch_template(
+svc$modify_launch_template(
   DefaultVersion = "2",
   LaunchTemplateId = "lt-0abcd290751193123"
-)}
+)
+}
 
 }
 \keyword{internal}

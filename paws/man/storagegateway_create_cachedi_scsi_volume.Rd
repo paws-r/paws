@@ -108,15 +108,17 @@ bytes.
 }
 
 \examples{
+\dontrun{
 # Creates a cached volume on a specified cached gateway.
-\dontrun{svc$create_cachedi_scsi_volume(
+svc$create_cachedi_scsi_volume(
   ClientToken = "cachedvol112233",
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
   NetworkInterfaceId = "10.1.1.1",
   SnapshotId = "snap-f47b7b94",
   TargetName = "my-volume",
   VolumeSizeInBytes = 536870912000
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -60,11 +60,13 @@ The following operations are related to \code{ListObjects}:
 }
 
 \examples{
+\dontrun{
 # The following example list two objects in a bucket.
-\dontrun{svc$list_objects(
+svc$list_objects(
   Bucket = "examplebucket",
   MaxKeys = "2"
-)}
+)
+}
 
 }
 \keyword{internal}

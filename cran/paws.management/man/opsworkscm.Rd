@@ -110,9 +110,11 @@ requests per second.
 }
 
 \examples{
-\dontrun{svc <- opsworkscm()
+\dontrun{
+svc <- opsworkscm()
 svc$associate_node(
   Foo = 123
-)}
+)
+}
 
 }

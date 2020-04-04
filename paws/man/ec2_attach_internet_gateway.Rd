@@ -32,12 +32,14 @@ information about your VPC and internet gateway, see the \href{https://docs.aws.
 }
 
 \examples{
+\dontrun{
 # This example attaches the specified Internet gateway to the specified
 # VPC.
-\dontrun{svc$attach_internet_gateway(
+svc$attach_internet_gateway(
   InternetGatewayId = "igw-c0a643a9",
   VpcId = "vpc-a01106c2"
-)}
+)
+}
 
 }
 \keyword{internal}

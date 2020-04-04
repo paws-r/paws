@@ -38,14 +38,16 @@ available with AWS Elastic Beanstalk Enhanced Health.
 }
 
 \examples{
+\dontrun{
 # The following operation retrieves overall health information for an
 # environment named my-env:
-\dontrun{svc$describe_environment_health(
+svc$describe_environment_health(
   AttributeNames = list(
     "All"
   ),
   EnvironmentName = "my-env"
-)}
+)
+}
 
 }
 \keyword{internal}

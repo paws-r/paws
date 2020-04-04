@@ -73,10 +73,12 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example creates a VPC with the specified CIDR block.
-\dontrun{svc$create_vpc(
+svc$create_vpc(
   CidrBlock = "10.0.0.0/16"
-)}
+)
+}
 
 }
 \keyword{internal}

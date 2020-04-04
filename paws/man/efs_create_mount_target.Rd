@@ -135,11 +135,13 @@ actions:
 }
 
 \examples{
+\dontrun{
 # This operation creates a new mount target for an EFS file system.
-\dontrun{svc$create_mount_target(
+svc$create_mount_target(
   FileSystemId = "fs-01234567",
   SubnetId = "subnet-1234abcd"
-)}
+)
+}
 
 }
 \keyword{internal}

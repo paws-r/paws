@@ -86,14 +86,16 @@ Scaling actions, see the \href{https://docs.aws.amazon.com/autoscaling/applicati
 }
 
 \examples{
+\dontrun{
+svc <- applicationautoscaling()
 # This example deletes a scaling policy for the Amazon ECS service called
 # web-app, which is running in the default cluster.
-\dontrun{svc <- applicationautoscaling()
 svc$delete_scaling_policy(
   PolicyName = "web-app-cpu-lt-25",
   ResourceId = "service/default/web-app",
   ScalableDimension = "ecs:service:DesiredCount",
   ServiceNamespace = "ecs"
-)}
+)
+}
 
 }

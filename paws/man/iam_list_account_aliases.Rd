@@ -38,8 +38,10 @@ in the \emph{IAM User Guide}.
 }
 
 \examples{
+\dontrun{
 # The following command lists the aliases for the current account.
-\dontrun{svc$list_account_aliases()}
+svc$list_account_aliases()
+}
 
 }
 \keyword{internal}

@@ -53,10 +53,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- ssm()
+#' \dontrun{
+#' svc <- ssm()
 #' svc$add_tags_to_resource(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

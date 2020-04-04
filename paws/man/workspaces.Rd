@@ -81,9 +81,11 @@ Microsoft Windows and Amazon Linux desktops for your users.
 }
 
 \examples{
-\dontrun{svc <- workspaces()
+\dontrun{
+svc <- workspaces()
 svc$associate_ip_groups(
   Foo = 123
-)}
+)
+}
 
 }

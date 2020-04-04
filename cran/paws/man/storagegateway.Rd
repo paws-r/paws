@@ -164,8 +164,9 @@ For more information, see \href{https://forums.aws.amazon.com/ann.jspa?annID=355
 }
 
 \examples{
+\dontrun{
+svc <- storagegateway()
 # Activates the gateway you previously deployed on your host.
-\dontrun{svc <- storagegateway()
 svc$activate_gateway(
   ActivationKey = "29AV1-3OFV9-VVIUB-NKT0I-LRO6V",
   GatewayName = "My_Gateway",
@@ -174,6 +175,7 @@ svc$activate_gateway(
   GatewayType = "STORED",
   MediumChangerType = "AWS-Gateway-VTL",
   TapeDriveType = "IBM-ULT3580-TD5"
-)}
+)
+}
 
 }

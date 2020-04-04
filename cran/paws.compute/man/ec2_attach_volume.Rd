@@ -57,13 +57,15 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example attaches a volume (`vol-1234567890abcdef0`) to an
 # instance (`i-01474ef662b89480`) as `/dev/sdf`.
-\dontrun{svc$attach_volume(
+svc$attach_volume(
   Device = "/dev/sdf",
   InstanceId = "i-01474ef662b89480",
   VolumeId = "vol-1234567890abcdef0"
-)}
+)
+}
 
 }
 \keyword{internal}

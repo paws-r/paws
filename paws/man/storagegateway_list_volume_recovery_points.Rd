@@ -28,11 +28,13 @@ CreateSnapshotFromVolumeRecoveryPoint operation.
 }
 
 \examples{
+\dontrun{
 # Lists the recovery points for a specified gateway in which all data of
 # the volume is consistent and can be used to create a snapshot.
-\dontrun{svc$list_volume_recovery_points(
+svc$list_volume_recovery_points(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)}
+)
+}
 
 }
 \keyword{internal}

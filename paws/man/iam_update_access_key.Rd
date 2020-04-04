@@ -48,13 +48,15 @@ in the \emph{IAM User Guide}.
 }
 
 \examples{
+\dontrun{
 # The following command deactivates the specified access key (access key
 # ID and secret access key) for the IAM user named Bob.
-\dontrun{svc$update_access_key(
+svc$update_access_key(
   AccessKeyId = "AKIAIOSFODNN7EXAMPLE",
   Status = "Inactive",
   UserName = "Bob"
-)}
+)
+}
 
 }
 \keyword{internal}

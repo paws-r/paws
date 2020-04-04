@@ -31,10 +31,12 @@ Returns an array of WebACLSummary objects in the response.
 }
 
 \examples{
+\dontrun{
 # The following example returns an array of up to 100 web ACLs.
-\dontrun{svc$list_web_ac_ls(
+svc$list_web_ac_ls(
   Limit = 100L
-)}
+)
+}
 
 }
 \keyword{internal}

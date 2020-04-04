@@ -45,12 +45,14 @@ For more information about instance profiles, go to \href{https://docs.aws.amazo
 }
 
 \examples{
+\dontrun{
 # The following command adds the role named S3Access to the instance
 # profile named Webserver:
-\dontrun{svc$add_role_to_instance_profile(
+svc$add_role_to_instance_profile(
   InstanceProfileName = "Webserver",
   RoleName = "S3Access"
-)}
+)
+}
 
 }
 \keyword{internal}

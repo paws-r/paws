@@ -33,12 +33,14 @@ Describes one or more Auto Scaling instances.
 }
 
 \examples{
+\dontrun{
 # This example describes the specified Auto Scaling instance.
-\dontrun{svc$describe_auto_scaling_instances(
+svc$describe_auto_scaling_instances(
   InstanceIds = list(
     "i-4ba0837f"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

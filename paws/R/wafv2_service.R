@@ -94,10 +94,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- wafv2()
+#' \dontrun{
+#' svc <- wafv2()
 #' svc$associate_web_acl(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

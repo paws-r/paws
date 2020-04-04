@@ -151,16 +151,18 @@ following headers.
 }
 
 \examples{
+\dontrun{
 # The following example uploads part 1 of a multipart upload. The example
 # specifies a file name for the part data. The Upload ID is same that is
 # returned by the initiate multipart upload.
-\dontrun{svc$upload_part(
+svc$upload_part(
   Body = "fileToUpload",
   Bucket = "examplebucket",
   Key = "examplelargeobject",
   PartNumber = "1",
   UploadId = "xadcOB_7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP..."
-)}
+)
+}
 
 }
 \keyword{internal}

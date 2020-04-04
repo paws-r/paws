@@ -52,8 +52,9 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example deletes the tag Stack=test from the specified image.
-\dontrun{svc$delete_tags(
+svc$delete_tags(
   Resources = list(
     "ami-78a54011"
   ),
@@ -63,7 +64,8 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
       Value = "test"
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -67,15 +67,17 @@ before you can initiate a new vault lock policy.
 }
 
 \examples{
+\dontrun{
 # The example initiates the vault locking process for the vault named
 # my-vault.
-\dontrun{svc$initiate_vault_lock(
+svc$initiate_vault_lock(
   accountId = "-",
   policy = list(
     Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Define-vault-lock\",..."
   ),
   vaultName = "my-vault"
-)}
+)
+}
 
 }
 \keyword{internal}

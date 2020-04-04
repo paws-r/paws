@@ -36,10 +36,12 @@ the \emph{Amazon Simple Storage Service Developer Guide}.
 }
 
 \examples{
+\dontrun{
 # The following example deletes CORS configuration on a bucket.
-\dontrun{svc$delete_bucket_cors(
+svc$delete_bucket_cors(
   Bucket = "examplebucket"
-)}
+)
+}
 
 }
 \keyword{internal}

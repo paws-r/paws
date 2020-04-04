@@ -32,8 +32,10 @@ account and Region.
 }
 
 \examples{
+\dontrun{
 # The following example lists CMKs.
-\dontrun{svc$list_keys()}
+svc$list_keys()
+}
 
 }
 \keyword{internal}

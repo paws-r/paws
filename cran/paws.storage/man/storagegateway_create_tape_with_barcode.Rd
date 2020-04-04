@@ -75,12 +75,14 @@ gateway.
 }
 
 \examples{
+\dontrun{
 # Creates a virtual tape by using your own barcode.
-\dontrun{svc$create_tape_with_barcode(
+svc$create_tape_with_barcode(
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
   TapeBarcode = "TEST12345",
   TapeSizeInBytes = 107374182400
-)}
+)
+}
 
 }
 \keyword{internal}

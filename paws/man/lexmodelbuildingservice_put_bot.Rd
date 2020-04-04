@@ -216,8 +216,9 @@ more information, see security-iam.
 }
 
 \examples{
+\dontrun{
 # This example shows how to create a bot for ordering pizzas.
-\dontrun{svc$put_bot(
+svc$put_bot(
   name = "DocOrderPizzaBot",
   abortStatement = list(
     messages = list(
@@ -255,7 +256,8 @@ more information, see security-iam.
   ),
   locale = "en-US",
   processBehavior = "SAVE"
-)}
+)
+}
 
 }
 \keyword{internal}

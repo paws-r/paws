@@ -59,8 +59,10 @@ in your account.
 }
 
 \examples{
+\dontrun{
 # This example describes all of your moving Elastic IP addresses.
-\dontrun{svc$describe_moving_addresses()}
+svc$describe_moving_addresses()
+}
 
 }
 \keyword{internal}

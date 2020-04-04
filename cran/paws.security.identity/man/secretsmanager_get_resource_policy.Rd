@@ -55,11 +55,13 @@ use DeleteResourcePolicy.
 }
 
 \examples{
+\dontrun{
 # The following example shows how to retrieve the resource-based policy
 # that is attached to a secret.
-\dontrun{svc$get_resource_policy(
+svc$get_resource_policy(
   SecretId = "MyTestDatabaseSecret"
-)}
+)
+}
 
 }
 \keyword{internal}

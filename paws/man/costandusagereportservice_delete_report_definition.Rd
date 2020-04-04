@@ -20,11 +20,13 @@ Deletes the specified report.
 }
 
 \examples{
+\dontrun{
 # The following example deletes the AWS Cost and Usage report named
 # ExampleReport.
-\dontrun{svc$delete_report_definition(
+svc$delete_report_definition(
   ReportName = "ExampleReport"
-)}
+)
+}
 
 }
 \keyword{internal}

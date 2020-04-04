@@ -161,9 +161,11 @@ hosted outside of AWS.
 }
 
 \examples{
-\dontrun{svc <- apigateway()
+\dontrun{
+svc <- apigateway()
 svc$create_api_key(
   Foo = 123
-)}
+)
+}
 
 }

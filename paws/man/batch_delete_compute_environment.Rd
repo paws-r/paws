@@ -27,10 +27,12 @@ operation.
 }
 
 \examples{
+\dontrun{
 # This example deletes the P2OnDemand compute environment.
-\dontrun{svc$delete_compute_environment(
+svc$delete_compute_environment(
   computeEnvironment = "P2OnDemand"
-)}
+)
+}
 
 }
 \keyword{internal}

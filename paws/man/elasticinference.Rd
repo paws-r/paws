@@ -40,9 +40,11 @@ Elastic Inference public APIs.
 }
 
 \examples{
-\dontrun{svc <- elasticinference()
+\dontrun{
+svc <- elasticinference()
 svc$list_tags_for_resource(
   Foo = 123
-)}
+)
+}
 
 }

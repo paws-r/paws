@@ -140,9 +140,11 @@ shared devices in their organization.
 }
 
 \examples{
-\dontrun{svc <- alexaforbusiness()
+\dontrun{
+svc <- alexaforbusiness()
 svc$approve_skill(
   Foo = 123
-)}
+)
+}
 
 }

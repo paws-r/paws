@@ -74,9 +74,10 @@ Docker CLI to author and manage images.
 }
 
 \examples{
+\dontrun{
+svc <- ecr()
 # This example deletes images with the tags precise and trusty in a
 # repository called ubuntu in the default registry for an account.
-\dontrun{svc <- ecr()
 svc$batch_delete_image(
   imageIds = list(
     list(
@@ -84,6 +85,7 @@ svc$batch_delete_image(
     )
   ),
   repositoryName = "ubuntu"
-)}
+)
+}
 
 }

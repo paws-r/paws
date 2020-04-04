@@ -50,9 +50,11 @@ of the Catalog API to manage your products on AWS Marketplace.
 }
 
 \examples{
-\dontrun{svc <- marketplacecatalog()
+\dontrun{
+svc <- marketplacecatalog()
 svc$cancel_change_set(
   Foo = 123
-)}
+)
+}
 
 }

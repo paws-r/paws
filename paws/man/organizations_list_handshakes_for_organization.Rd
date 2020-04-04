@@ -67,9 +67,11 @@ account.
 }
 
 \examples{
+\dontrun{
 # The following example shows you how to get a list of handshakes
 # associated with the current organization:
-\dontrun{svc$list_handshakes_for_organization()}
+svc$list_handshakes_for_organization()
+}
 
 }
 \keyword{internal}

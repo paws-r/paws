@@ -62,9 +62,11 @@ across the responses of a multicall iteration is unspecified.
 }
 
 \examples{
+\dontrun{
 # This operation describes all of the Amazon FSx file systems in an
 # account.
-\dontrun{svc$describe_file_systems()}
+svc$describe_file_systems()
+}
 
 }
 \keyword{internal}

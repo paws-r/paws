@@ -49,9 +49,11 @@ Lists the services that are running in a specified cluster.
 }
 
 \examples{
+\dontrun{
 # This example lists the services running in the default cluster for an
 # account.
-\dontrun{svc$list_services()}
+svc$list_services()
+}
 
 }
 \keyword{internal}

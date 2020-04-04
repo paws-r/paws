@@ -34,10 +34,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- groundstation()
+#' \dontrun{
+#' svc <- groundstation()
 #' svc$cancel_contact(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

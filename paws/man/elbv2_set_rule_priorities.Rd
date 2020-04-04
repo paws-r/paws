@@ -30,15 +30,17 @@ current priority.
 }
 
 \examples{
+\dontrun{
 # This example sets the priority of the specified rule.
-\dontrun{svc$set_rule_priorities(
+svc$set_rule_priorities(
   RulePriorities = list(
     list(
       Priority = 5L,
       RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-lo..."
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

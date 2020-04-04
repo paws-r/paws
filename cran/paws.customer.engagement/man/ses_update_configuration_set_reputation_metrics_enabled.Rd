@@ -34,11 +34,13 @@ You can execute this operation no more than once per second.
 }
 
 \examples{
+\dontrun{
 # Set the reputationMetricsEnabled flag for a specific configuration set.
-\dontrun{svc$update_configuration_set_reputation_metrics_enabled(
+svc$update_configuration_set_reputation_metrics_enabled(
   ConfigurationSetName = "foo",
   Enabled = TRUE
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -91,9 +91,11 @@ expressed in them, the predominant language used, and more.
 }
 
 \examples{
-\dontrun{svc <- comprehend()
+\dontrun{
+svc <- comprehend()
 svc$batch_detect_dominant_language(
   Foo = 123
-)}
+)
+}
 
 }

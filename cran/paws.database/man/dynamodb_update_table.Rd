@@ -181,15 +181,17 @@ complete.
 }
 
 \examples{
+\dontrun{
 # This example increases the provisioned read and write capacity on the
 # Music table.
-\dontrun{svc$update_table(
+svc$update_table(
   ProvisionedThroughput = list(
     ReadCapacityUnits = 10L,
     WriteCapacityUnits = 10L
   ),
   TableName = "MusicCollection"
-)}
+)
+}
 
 }
 \keyword{internal}

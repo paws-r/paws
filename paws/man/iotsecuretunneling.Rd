@@ -48,9 +48,11 @@ User Guide.
 }
 
 \examples{
-\dontrun{svc <- iotsecuretunneling()
+\dontrun{
+svc <- iotsecuretunneling()
 svc$close_tunnel(
   Foo = 123
-)}
+)
+}
 
 }

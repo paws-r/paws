@@ -46,8 +46,9 @@ match, no special message is returned.
 }
 
 \examples{
+\dontrun{
 # This example describes the tags for the specified Auto Scaling group.
-\dontrun{svc$describe_tags(
+svc$describe_tags(
   Filters = list(
     list(
       Name = "auto-scaling-group",
@@ -56,7 +57,8 @@ match, no special message is returned.
       )
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -49,13 +49,15 @@ You can execute this operation no more than once per second.
 }
 
 \examples{
+\dontrun{
 # The following example adds a sending authorization policy to an
 # identity:
-\dontrun{svc$put_identity_policy(
+svc$put_identity_policy(
   Identity = "example.com",
   Policy = "\{\"Version\":\"2008-10-17\",\"Statement\":[\{\"Sid\":\"stmt1469123904194\",...",
   PolicyName = "MyPolicy"
-)}
+)
+}
 
 }
 \keyword{internal}

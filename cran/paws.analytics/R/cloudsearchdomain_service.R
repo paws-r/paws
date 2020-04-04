@@ -41,10 +41,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- cloudsearchdomain()
+#' \dontrun{
+#' svc <- cloudsearchdomain()
 #' svc$search(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

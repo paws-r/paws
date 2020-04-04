@@ -79,12 +79,14 @@ Describes one or more of your VPCs.
 }
 
 \examples{
+\dontrun{
 # This example describes the specified VPC.
-\dontrun{svc$describe_vpcs(
+svc$describe_vpcs(
   VpcIds = list(
     "vpc-a01106c2"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

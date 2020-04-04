@@ -28,10 +28,12 @@ route table.
 }
 
 \examples{
+\dontrun{
 # This example deletes the specified route table.
-\dontrun{svc$delete_route_table(
+svc$delete_route_table(
   RouteTableId = "rtb-22574640"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -29,11 +29,13 @@ Describes the target groups for the specified Auto Scaling group.
 }
 
 \examples{
+\dontrun{
 # This example describes the target groups attached to the specified Auto
 # Scaling group.
-\dontrun{svc$describe_load_balancer_target_groups(
+svc$describe_load_balancer_target_groups(
   AutoScalingGroupName = "my-auto-scaling-group"
-)}
+)
+}
 
 }
 \keyword{internal}

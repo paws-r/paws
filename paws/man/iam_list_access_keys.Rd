@@ -57,11 +57,13 @@ accessible only during key and user creation.
 }
 
 \examples{
+\dontrun{
 # The following command lists the access keys IDs for the IAM user named
 # Alice.
-\dontrun{svc$list_access_keys(
+svc$list_access_keys(
   UserName = "Alice"
-)}
+)
+}
 
 }
 \keyword{internal}

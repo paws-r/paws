@@ -44,13 +44,15 @@ for a Lambda function.
 }
 
 \examples{
+\dontrun{
 # This operation retrieves a Lambda function's aliases
-\dontrun{svc$list_aliases(
+svc$list_aliases(
   FunctionName = "myFunction",
   FunctionVersion = "1",
   Marker = "",
   MaxItems = 123L
-)}
+)
+}
 
 }
 \keyword{internal}

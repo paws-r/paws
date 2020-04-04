@@ -29,11 +29,13 @@ instances).
 }
 
 \examples{
+\dontrun{
 # This example deletes the specified lifecycle hook.
-\dontrun{svc$delete_lifecycle_hook(
+svc$delete_lifecycle_hook(
   AutoScalingGroupName = "my-auto-scaling-group",
   LifecycleHookName = "my-lifecycle-hook"
-)}
+)
+}
 
 }
 \keyword{internal}

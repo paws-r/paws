@@ -45,14 +45,16 @@ This operation is only supported in the tape gateway type.
 }
 
 \examples{
+\dontrun{
 # Returns a description of virtual tape library (VTL) devices for the
 # specified gateway.
-\dontrun{svc$describe_vtl_devices(
+svc$describe_vtl_devices(
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
   Limit = 123L,
   Marker = "1",
   VTLDeviceARNs = list()
-)}
+)
+}
 
 }
 \keyword{internal}

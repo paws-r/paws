@@ -32,10 +32,12 @@ this API.
 }
 
 \examples{
+\dontrun{
 # The following command gets information about the IAM user named Bob.
-\dontrun{svc$get_user(
+svc$get_user(
   UserName = "Bob"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -30,8 +30,9 @@ Removes one or more tags from the specified load balancer.
 }
 
 \examples{
+\dontrun{
 # This example removes the specified tag from the specified load balancer.
-\dontrun{svc$remove_tags(
+svc$remove_tags(
   LoadBalancerNames = list(
     "my-load-balancer"
   ),
@@ -40,7 +41,8 @@ Removes one or more tags from the specified load balancer.
       Key = "project"
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

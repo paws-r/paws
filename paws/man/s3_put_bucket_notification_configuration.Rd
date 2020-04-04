@@ -138,9 +138,10 @@ The following operation is related to
 }
 
 \examples{
+\dontrun{
 # The following example sets notification configuration on a bucket to
 # publish the object created events to an SNS topic.
-\dontrun{svc$put_bucket_notification_configuration(
+svc$put_bucket_notification_configuration(
   Bucket = "examplebucket",
   NotificationConfiguration = list(
     TopicConfigurations = list(
@@ -152,7 +153,8 @@ The following operation is related to
       )
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

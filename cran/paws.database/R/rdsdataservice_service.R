@@ -42,10 +42,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- rdsdataservice()
+#' \dontrun{
+#' svc <- rdsdataservice()
 #' svc$batch_execute_statement(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

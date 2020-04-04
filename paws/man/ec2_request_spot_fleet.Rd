@@ -200,6 +200,7 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
 }
 
 \examples{
+\dontrun{
 # This example creates a Spot fleet request with two launch specifications
 # that differ only by subnet. The Spot fleet launches the instances in the
 # specified subnet with the lowest price. If the instances are launched in
@@ -207,7 +208,7 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
 # instances are launched in a nondefault VPC, they do not receive a public
 # IP address by default. Note that you can't specify different subnets
 # from the same Availability Zone in a Spot fleet request.
-\dontrun{svc$request_spot_fleet(
+svc$request_spot_fleet(
   SpotFleetRequestConfig = list(
     IamFleetRole = "arn:aws:iam::123456789012:role/my-spot-fleet-role",
     LaunchSpecifications = list(
@@ -229,7 +230,7 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
     SpotPrice = "0.04",
     TargetCapacity = 2L
   )
-)}
+)
 
 # This example creates a Spot fleet request with two launch specifications
 # that differ only by Availability Zone. The Spot fleet launches the
@@ -238,7 +239,7 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
 # instances in the default subnet of the Availability Zone. If your
 # account supports EC2-Classic, Amazon EC2 launches the instances in
 # EC2-Classic in the Availability Zone.
-\dontrun{svc$request_spot_fleet(
+svc$request_spot_fleet(
   SpotFleetRequestConfig = list(
     IamFleetRole = "arn:aws:iam::123456789012:role/my-spot-fleet-role",
     LaunchSpecifications = list(
@@ -262,12 +263,12 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
     SpotPrice = "0.04",
     TargetCapacity = 2L
   )
-)}
+)
 
 # This example assigns public addresses to instances launched in a
 # nondefault VPC. Note that when you specify a network interface, you must
 # include the subnet ID and security group ID using the network interface.
-\dontrun{svc$request_spot_fleet(
+svc$request_spot_fleet(
   SpotFleetRequestConfig = list(
     IamFleetRole = "arn:aws:iam::123456789012:role/my-spot-fleet-role",
     LaunchSpecifications = list(
@@ -293,13 +294,13 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
     SpotPrice = "0.04",
     TargetCapacity = 2L
   )
-)}
+)
 
 # This example creates a Spot fleet request that launches 30 instances
 # using the diversified allocation strategy. The launch specifications
 # differ by instance type. The Spot fleet distributes the instances across
 # the launch specifications such that there are 10 instances of each type.
-\dontrun{svc$request_spot_fleet(
+svc$request_spot_fleet(
   SpotFleetRequestConfig = list(
     AllocationStrategy = "diversified",
     IamFleetRole = "arn:aws:iam::123456789012:role/my-spot-fleet-role",
@@ -323,7 +324,8 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
     SpotPrice = "0.70",
     TargetCapacity = 30L
   )
-)}
+)
+}
 
 }
 \keyword{internal}

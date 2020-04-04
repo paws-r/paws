@@ -147,17 +147,18 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example describes a snapshot with the snapshot ID of
 # `snap-1234567890abcdef0`.
-\dontrun{svc$describe_snapshots(
+svc$describe_snapshots(
   SnapshotIds = list(
     "snap-1234567890abcdef0"
   )
-)}
+)
 
 # This example describes all snapshots owned by the ID 012345678910 that
 # are in the `pending` status.
-\dontrun{svc$describe_snapshots(
+svc$describe_snapshots(
   Filters = list(
     list(
       Name = "status",
@@ -169,7 +170,8 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   OwnerIds = list(
     "012345678910"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

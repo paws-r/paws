@@ -50,10 +50,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- cognitoidentity()
+#' \dontrun{
+#' svc <- cognitoidentity()
 #' svc$create_identity_pool(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

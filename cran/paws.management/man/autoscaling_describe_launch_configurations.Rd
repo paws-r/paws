@@ -32,12 +32,14 @@ Describes one or more launch configurations.
 }
 
 \examples{
+\dontrun{
 # This example describes the specified launch configuration.
-\dontrun{svc$describe_launch_configurations(
+svc$describe_launch_configurations(
   LaunchConfigurationNames = list(
     "my-launch-config"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

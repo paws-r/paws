@@ -49,9 +49,11 @@ upgrading your connectivity.
 }
 
 \examples{
-\dontrun{svc <- importexport()
+\dontrun{
+svc <- importexport()
 svc$cancel_job(
   Foo = 123
-)}
+)
+}
 
 }

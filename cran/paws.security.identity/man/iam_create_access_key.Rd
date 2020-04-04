@@ -43,11 +43,13 @@ user and then create new keys.
 }
 
 \examples{
+\dontrun{
 # The following command creates an access key (access key ID and secret
 # access key) for the IAM user named Bob.
-\dontrun{svc$create_access_key(
+svc$create_access_key(
   UserName = "Bob"
-)}
+)
+}
 
 }
 \keyword{internal}

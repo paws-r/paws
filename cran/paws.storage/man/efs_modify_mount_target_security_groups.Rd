@@ -42,14 +42,16 @@ network interface.
 }
 
 \examples{
+\dontrun{
 # This operation modifies the security groups associated with a mount
 # target for a file system.
-\dontrun{svc$modify_mount_target_security_groups(
+svc$modify_mount_target_security_groups(
   MountTargetId = "fsmt-12340abc",
   SecurityGroups = list(
     "sg-abcd1234"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -21,10 +21,12 @@ Deletes an upload given the upload ARN.
 }
 
 \examples{
+\dontrun{
 # The following example deletes a specific upload.
-\dontrun{svc$delete_upload(
+svc$delete_upload(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:upload:EXAMPLE-GUID-123-456"
-)}
+)
+}
 
 }
 \keyword{internal}

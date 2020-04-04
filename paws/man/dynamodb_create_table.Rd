@@ -266,8 +266,9 @@ You can use the \code{DescribeTable} action to check the table status.
 }
 
 \examples{
+\dontrun{
 # This example creates a table named Music.
-\dontrun{svc$create_table(
+svc$create_table(
   AttributeDefinitions = list(
     list(
       AttributeName = "Artist",
@@ -293,7 +294,8 @@ You can use the \code{DescribeTable} action to check the table status.
     WriteCapacityUnits = 5L
   ),
   TableName = "Music"
-)}
+)
+}
 
 }
 \keyword{internal}

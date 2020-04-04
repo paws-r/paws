@@ -40,12 +40,14 @@ in the \emph{IAM User Guide}.
 }
 
 \examples{
+\dontrun{
 # The following command removes the policy named ExamplePolicy from the
 # role named Test-Role.
-\dontrun{svc$delete_role_policy(
+svc$delete_role_policy(
   PolicyName = "ExamplePolicy",
   RoleName = "Test-Role"
-)}
+)
+}
 
 }
 \keyword{internal}

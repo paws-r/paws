@@ -32,10 +32,12 @@ The following operations are related to \code{GetBucketLocation}:
 }
 
 \examples{
+\dontrun{
 # The following example returns bucket location.
-\dontrun{svc$get_bucket_location(
+svc$get_bucket_location(
   Bucket = "examplebucket"
-)}
+)
+}
 
 }
 \keyword{internal}

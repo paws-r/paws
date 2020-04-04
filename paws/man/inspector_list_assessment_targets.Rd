@@ -39,10 +39,12 @@ more information about assessment targets, see \href{https://docs.aws.amazon.com
 }
 
 \examples{
+\dontrun{
 # Lists the ARNs of the assessment targets within this AWS account.
-\dontrun{svc$list_assessment_targets(
+svc$list_assessment_targets(
   maxResults = 123L
-)}
+)
+}
 
 }
 \keyword{internal}

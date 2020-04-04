@@ -76,9 +76,11 @@ listed in the log files.
 }
 
 \examples{
-\dontrun{svc <- cloudtrail()
+\dontrun{
+svc <- cloudtrail()
 svc$add_tags(
   Foo = 123
-)}
+)
+}
 
 }

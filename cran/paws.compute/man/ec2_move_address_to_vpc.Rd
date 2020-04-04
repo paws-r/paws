@@ -34,11 +34,13 @@ EC2-Classic platform.
 }
 
 \examples{
+\dontrun{
 # This example moves the specified Elastic IP address to the EC2-VPC
 # platform.
-\dontrun{svc$move_address_to_vpc(
+svc$move_address_to_vpc(
   PublicIp = "54.123.4.56"
-)}
+)
+}
 
 }
 \keyword{internal}

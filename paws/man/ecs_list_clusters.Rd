@@ -37,9 +37,11 @@ Returns a list of existing clusters.
 }
 
 \examples{
+\dontrun{
 # This example lists all of your available clusters in your default
 # region.
-\dontrun{svc$list_clusters()}
+svc$list_clusters()
+}
 
 }
 \keyword{internal}

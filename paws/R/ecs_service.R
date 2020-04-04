@@ -51,11 +51,13 @@ NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
+#' svc <- ecs()
 #' # This example creates a cluster in your default region.
-#' \dontrun{svc <- ecs()
 #' svc$create_cluster(
 #'   clusterName = "my_cluster"
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

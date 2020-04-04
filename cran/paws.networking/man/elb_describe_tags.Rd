@@ -22,12 +22,14 @@ Describes the tags associated with the specified load balancers.
 }
 
 \examples{
+\dontrun{
 # This example describes the tags for the specified load balancer.
-\dontrun{svc$describe_tags(
+svc$describe_tags(
   LoadBalancerNames = list(
     "my-load-balancer"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

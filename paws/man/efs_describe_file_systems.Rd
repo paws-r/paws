@@ -64,8 +64,10 @@ This operation requires permissions for the
 }
 
 \examples{
+\dontrun{
 # This operation describes all of the EFS file systems in an account.
-\dontrun{svc$describe_file_systems()}
+svc$describe_file_systems()
+}
 
 }
 \keyword{internal}

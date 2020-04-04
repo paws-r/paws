@@ -102,15 +102,17 @@ action.
 }
 
 \examples{
+\dontrun{
 # This operation invokes a Lambda function
-\dontrun{svc$invoke(
+svc$invoke(
   ClientContext = "MyApp",
   FunctionName = "MyFunction",
   InvocationType = "Event",
   LogType = "Tail",
   Payload = "fileb://file-path/input.json",
   Qualifier = "1"
-)}
+)
+}
 
 }
 \keyword{internal}

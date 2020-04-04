@@ -36,8 +36,9 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example adds two tags to the specified Auto Scaling group.
-\dontrun{svc$create_or_update_tags(
+svc$create_or_update_tags(
   Tags = list(
     list(
       Key = "Role",
@@ -54,7 +55,8 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
       Value = "Research"
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

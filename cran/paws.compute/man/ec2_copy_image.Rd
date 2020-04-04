@@ -90,14 +90,16 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example copies the specified AMI from the us-east-1 region to the
 # current region.
-\dontrun{svc$copy_image(
+svc$copy_image(
   Description = "",
   Name = "My server",
   SourceImageId = "ami-5731123e",
   SourceRegion = "us-east-1"
-)}
+)
+}
 
 }
 \keyword{internal}

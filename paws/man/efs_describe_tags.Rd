@@ -38,10 +38,12 @@ This operation requires permissions for the
 }
 
 \examples{
+\dontrun{
 # This operation describes all of a file system's tags.
-\dontrun{svc$describe_tags(
+svc$describe_tags(
   FileSystemId = "fs-01234567"
-)}
+)
+}
 
 }
 \keyword{internal}

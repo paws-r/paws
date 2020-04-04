@@ -35,10 +35,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- outposts()
+#' \dontrun{
+#' svc <- outposts()
 #' svc$create_outpost(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

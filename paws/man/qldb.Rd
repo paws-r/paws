@@ -52,9 +52,11 @@ The control plane for Amazon QLDB
 }
 
 \examples{
-\dontrun{svc <- qldb()
+\dontrun{
+svc <- qldb()
 svc$create_ledger(
   Foo = 123
-)}
+)
+}
 
 }

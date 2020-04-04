@@ -37,12 +37,14 @@ Returns information about the schema for the specified endpoint.
 }
 
 \examples{
+\dontrun{
 # Returns information about the schema for the specified endpoint.
-\dontrun{svc$describe_schemas(
+svc$describe_schemas(
   EndpointArn = "",
   Marker = "",
   MaxRecords = 123L
-)}
+)
+}
 
 }
 \keyword{internal}

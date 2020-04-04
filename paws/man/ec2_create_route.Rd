@@ -85,14 +85,16 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example creates a route for the specified route table. The route
 # matches all traffic (0.0.0.0/0) and routes it to the specified Internet
 # gateway.
-\dontrun{svc$create_route(
+svc$create_route(
   DestinationCidrBlock = "0.0.0.0/0",
   GatewayId = "igw-c0a643a9",
   RouteTableId = "rtb-22574640"
-)}
+)
+}
 
 }
 \keyword{internal}

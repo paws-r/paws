@@ -68,15 +68,17 @@ account.
 }
 
 \examples{
+\dontrun{
 # The following example shows how to get a list of all service control
 # policies (SCPs) of the type specified by the Filter parameter, that are
 # directly attached to an account. The returned list does not include
 # policies that apply to the account because of inheritance from its
 # location in an OU hierarchy:/n/n
-\dontrun{svc$list_policies_for_target(
+svc$list_policies_for_target(
   Filter = "SERVICE_CONTROL_POLICY",
   TargetId = "444444444444"
-)}
+)
+}
 
 }
 \keyword{internal}

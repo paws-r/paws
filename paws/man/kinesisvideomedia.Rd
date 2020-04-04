@@ -38,9 +38,11 @@ Amazon Kinesis Video Streams Media
 }
 
 \examples{
-\dontrun{svc <- kinesisvideomedia()
+\dontrun{
+svc <- kinesisvideomedia()
 svc$get_media(
   Foo = 123
-)}
+)
+}
 
 }

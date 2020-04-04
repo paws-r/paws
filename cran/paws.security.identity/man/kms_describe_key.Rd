@@ -83,11 +83,13 @@ the key ARN or alias ARN in the value of the KeyId parameter.
 }
 
 \examples{
+\dontrun{
 # The following example returns information (metadata) about the specified
 # CMK.
-\dontrun{svc$describe_key(
+svc$describe_key(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)}
+)
+}
 
 }
 \keyword{internal}

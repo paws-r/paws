@@ -32,10 +32,12 @@ account.
 }
 
 \examples{
+\dontrun{
 # The following example shows how to request details about an OU:/n/n
-\dontrun{svc$describe_organizational_unit(
+svc$describe_organizational_unit(
   OrganizationalUnitId = "ou-examplerootid111-exampleouid111"
-)}
+)
+}
 
 }
 \keyword{internal}

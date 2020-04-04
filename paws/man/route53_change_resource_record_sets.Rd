@@ -145,9 +145,10 @@ in the \emph{Amazon Route 53 Developer Guide}.
 }
 
 \examples{
+\dontrun{
 # The following example creates a resource record set that routes Internet
 # traffic to a resource with an IP address of 192.0.2.44.
-\dontrun{svc$change_resource_record_sets(
+svc$change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -167,12 +168,12 @@ in the \emph{Amazon Route 53 Developer Guide}.
     Comment = "Web server for example.com"
   ),
   HostedZoneId = "Z3M3LMPEXAMPLE"
-)}
+)
 
 # The following example creates two weighted resource record sets. The
 # resource with a Weight of 100 will get 1/3rd of traffic (100/100+200),
 # and the other resource will get the rest of the traffic for example.com.
-\dontrun{svc$change_resource_record_sets(
+svc$change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -211,11 +212,11 @@ in the \emph{Amazon Route 53 Developer Guide}.
     Comment = "Web servers for example.com"
   ),
   HostedZoneId = "Z3M3LMPEXAMPLE"
-)}
+)
 
 # The following example creates an alias resource record set that routes
 # traffic to a CloudFront distribution.
-\dontrun{svc$change_resource_record_sets(
+svc$change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -234,13 +235,13 @@ in the \emph{Amazon Route 53 Developer Guide}.
     Comment = "CloudFront distribution for example.com"
   ),
   HostedZoneId = "Z3M3LMPEXAMPLE"
-)}
+)
 
 # The following example creates two weighted alias resource record sets
 # that route traffic to ELB load balancers. The resource with a Weight of
 # 100 will get 1/3rd of traffic (100/100+200), and the other resource will
 # get the rest of the traffic for example.com.
-\dontrun{svc$change_resource_record_sets(
+svc$change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -275,13 +276,13 @@ in the \emph{Amazon Route 53 Developer Guide}.
     Comment = "ELB load balancers for example.com"
   ),
   HostedZoneId = "Z3M3LMPEXAMPLE"
-)}
+)
 
 # The following example creates two latency resource record sets that
 # route traffic to EC2 instances. Traffic for example.com is routed either
 # to the Ohio region or the Oregon region, depending on the latency
 # between the user and those regions.
-\dontrun{svc$change_resource_record_sets(
+svc$change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -320,13 +321,13 @@ in the \emph{Amazon Route 53 Developer Guide}.
     Comment = "EC2 instances for example.com"
   ),
   HostedZoneId = "Z3M3LMPEXAMPLE"
-)}
+)
 
 # The following example creates two latency alias resource record sets
 # that route traffic for example.com to ELB load balancers. Requests are
 # routed either to the Ohio region or the Oregon region, depending on the
 # latency between the user and those regions.
-\dontrun{svc$change_resource_record_sets(
+svc$change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -361,14 +362,14 @@ in the \emph{Amazon Route 53 Developer Guide}.
     Comment = "ELB load balancers for example.com"
   ),
   HostedZoneId = "Z3M3LMPEXAMPLE"
-)}
+)
 
 # The following example creates primary and secondary failover resource
 # record sets that route traffic to EC2 instances. Traffic is generally
 # routed to the primary resource, in the Ohio region. If that resource is
 # unavailable, traffic is routed to the secondary resource, in the Oregon
 # region.
-\dontrun{svc$change_resource_record_sets(
+svc$change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -407,14 +408,14 @@ in the \emph{Amazon Route 53 Developer Guide}.
     Comment = "Failover configuration for example.com"
   ),
   HostedZoneId = "Z3M3LMPEXAMPLE"
-)}
+)
 
 # The following example creates primary and secondary failover alias
 # resource record sets that route traffic to ELB load balancers. Traffic
 # is generally routed to the primary resource, in the Ohio region. If that
 # resource is unavailable, traffic is routed to the secondary resource, in
 # the Oregon region.
-\dontrun{svc$change_resource_record_sets(
+svc$change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -449,14 +450,14 @@ in the \emph{Amazon Route 53 Developer Guide}.
     Comment = "Failover alias configuration for example.com"
   ),
   HostedZoneId = "Z3M3LMPEXAMPLE"
-)}
+)
 
 # The following example creates four geolocation resource record sets that
 # use IPv4 addresses to route traffic to resources such as web servers
 # running on EC2 instances. Traffic is routed to one of four IP addresses,
 # for North America (NA), for South America (SA), for Europe (EU), and for
 # all other locations (*).
-\dontrun{svc$change_resource_record_sets(
+svc$change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -531,13 +532,13 @@ in the \emph{Amazon Route 53 Developer Guide}.
     Comment = "Geolocation configuration for example.com"
   ),
   HostedZoneId = "Z3M3LMPEXAMPLE"
-)}
+)
 
 # The following example creates four geolocation alias resource record
 # sets that route traffic to ELB load balancers. Traffic is routed to one
 # of four IP addresses, for North America (NA), for South America (SA),
 # for Europe (EU), and for all other locations (*).
-\dontrun{svc$change_resource_record_sets(
+svc$change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -608,7 +609,8 @@ in the \emph{Amazon Route 53 Developer Guide}.
     Comment = "Geolocation alias configuration for example.com"
   ),
   HostedZoneId = "Z3M3LMPEXAMPLE"
-)}
+)
+}
 
 }
 \keyword{internal}

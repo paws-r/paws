@@ -31,12 +31,14 @@ remains unchanged. To clear these properties, specify an empty string.
 }
 
 \examples{
+\dontrun{
 # The following operation updates the description of an application named
 # my-app:
-\dontrun{svc$update_application(
+svc$update_application(
   ApplicationName = "my-app",
   Description = "my Elastic Beanstalk application"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -127,12 +127,14 @@ image results in an error indicating that the AMI ID cannot be found.
 }
 
 \examples{
+\dontrun{
 # This example describes the specified AMI.
-\dontrun{svc$describe_images(
+svc$describe_images(
   ImageIds = list(
     "ami-5731123e"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

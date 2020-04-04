@@ -75,10 +75,12 @@ describe all versions, individual versions, or a range of versions.
 }
 
 \examples{
+\dontrun{
 # This example describes the versions for the specified launch template.
-\dontrun{svc$describe_launch_template_versions(
+svc$describe_launch_template_versions(
   LaunchTemplateId = "068f72b72934aff71"
-)}
+)
+}
 
 }
 \keyword{internal}

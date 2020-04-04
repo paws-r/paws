@@ -50,9 +50,11 @@ capacity in a multi-tenant database.
 }
 
 \examples{
-\dontrun{svc <- marketplaceentitlementservice()
+\dontrun{
+svc <- marketplaceentitlementservice()
 svc$get_entitlements(
   Foo = 123
-)}
+)
+}
 
 }

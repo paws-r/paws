@@ -121,16 +121,17 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example describes the specified security group.
-\dontrun{svc$describe_security_groups(
+svc$describe_security_groups(
   GroupIds = list(
     "sg-903004f8"
   )
-)}
+)
 
 # This example describes the security groups that include the specified
 # tag (Purpose=test).
-\dontrun{svc$describe_security_groups(
+svc$describe_security_groups(
   Filters = list(
     list(
       Name = "tag:Purpose",
@@ -139,7 +140,8 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
       )
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

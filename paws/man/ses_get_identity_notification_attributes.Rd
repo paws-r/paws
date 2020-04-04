@@ -34,13 +34,15 @@ For more information about using notifications with Amazon SES, see the
 }
 
 \examples{
+\dontrun{
 # The following example returns the notification attributes for an
 # identity:
-\dontrun{svc$get_identity_notification_attributes(
+svc$get_identity_notification_attributes(
   Identities = list(
     "example.com"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

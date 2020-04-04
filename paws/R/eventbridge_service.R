@@ -50,10 +50,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- eventbridge()
+#' \dontrun{
+#' svc <- eventbridge()
 #' svc$activate_event_source(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -35,11 +35,13 @@ Returns details about a Lambda function
 }
 
 \examples{
+\dontrun{
 # This operation retrieves a Lambda function alias
-\dontrun{svc$get_alias(
+svc$get_alias(
   FunctionName = "myFunction",
   Name = "myFunctionAlias"
-)}
+)
+}
 
 }
 \keyword{internal}

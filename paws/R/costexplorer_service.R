@@ -44,10 +44,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- costexplorer()
+#' \dontrun{
+#' svc <- costexplorer()
 #' svc$create_cost_category_definition(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

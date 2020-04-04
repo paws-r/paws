@@ -38,10 +38,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- ram()
+#' \dontrun{
+#' svc <- ram()
 #' svc$accept_resource_share_invitation(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

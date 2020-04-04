@@ -36,28 +36,30 @@ specify only one attribute at a time. Valid attribute values are:
 }
 
 \examples{
+\dontrun{
 # This example describes the instance type of the specified instance.
 # 
-\dontrun{svc$describe_instance_attribute(
+svc$describe_instance_attribute(
   Attribute = "instanceType",
   InstanceId = "i-1234567890abcdef0"
-)}
+)
 
 # This example describes the `disableApiTermination` attribute of the
 # specified instance.
 # 
-\dontrun{svc$describe_instance_attribute(
+svc$describe_instance_attribute(
   Attribute = "disableApiTermination",
   InstanceId = "i-1234567890abcdef0"
-)}
+)
 
 # This example describes the `blockDeviceMapping` attribute of the
 # specified instance.
 # 
-\dontrun{svc$describe_instance_attribute(
+svc$describe_instance_attribute(
   Attribute = "blockDeviceMapping",
   InstanceId = "i-1234567890abcdef0"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -86,8 +86,9 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example describes the subnets for the specified VPC.
-\dontrun{svc$describe_subnets(
+svc$describe_subnets(
   Filters = list(
     list(
       Name = "vpc-id",
@@ -96,7 +97,8 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
       )
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

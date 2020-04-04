@@ -44,10 +44,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- swf()
+#' \dontrun{
+#' svc <- swf()
 #' svc$count_closed_workflow_executions(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

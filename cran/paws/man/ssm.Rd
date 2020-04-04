@@ -178,9 +178,11 @@ information about how to use a Query API, see \href{http://docs.aws.amazon.com/A
 }
 
 \examples{
-\dontrun{svc <- ssm()
+\dontrun{
+svc <- ssm()
 svc$add_tags_to_resource(
   Foo = 123
-)}
+)
+}
 
 }

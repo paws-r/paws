@@ -77,17 +77,19 @@ The following operation is related to \code{DeleteObject}:
 }
 
 \examples{
+\dontrun{
 # The following example deletes an object from a non-versioned bucket.
-\dontrun{svc$delete_object(
+svc$delete_object(
   Bucket = "ExampleBucket",
   Key = "HappyFace.jpg"
-)}
+)
 
 # The following example deletes an object from an S3 bucket.
-\dontrun{svc$delete_object(
+svc$delete_object(
   Bucket = "examplebucket",
   Key = "objectkey.jpg"
-)}
+)
+}
 
 }
 \keyword{internal}

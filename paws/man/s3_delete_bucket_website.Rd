@@ -40,10 +40,12 @@ The following operations are related to \code{DeleteBucketWebsite}:
 }
 
 \examples{
+\dontrun{
 # The following example deletes bucket website configuration.
-\dontrun{svc$delete_bucket_website(
+svc$delete_bucket_website(
   Bucket = "examplebucket"
-)}
+)
+}
 
 }
 \keyword{internal}

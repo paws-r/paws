@@ -25,10 +25,12 @@ available for use.
 }
 
 \examples{
+\dontrun{
 # This example deletes the specified launch configuration.
-\dontrun{svc$delete_launch_configuration(
+svc$delete_launch_configuration(
   LaunchConfigurationName = "my-launch-config"
-)}
+)
+}
 
 }
 \keyword{internal}

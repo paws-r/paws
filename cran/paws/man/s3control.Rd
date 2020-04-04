@@ -53,9 +53,11 @@ AWS S3 Control provides access to Amazon S3 control plane operations.
 }
 
 \examples{
-\dontrun{svc <- s3control()
+\dontrun{
+svc <- s3control()
 svc$create_access_point(
   Foo = 123
-)}
+)
+}
 
 }

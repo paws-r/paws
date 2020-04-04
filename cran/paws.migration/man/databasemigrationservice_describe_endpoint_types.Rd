@@ -45,8 +45,9 @@ Returns information about the type of endpoints available.
 }
 
 \examples{
+\dontrun{
 # Returns information about the type of endpoints available.
-\dontrun{svc$describe_endpoint_types(
+svc$describe_endpoint_types(
   Filters = list(
     list(
       Name = "string",
@@ -58,7 +59,8 @@ Returns information about the type of endpoints available.
   ),
   Marker = "",
   MaxRecords = 123L
-)}
+)
+}
 
 }
 \keyword{internal}

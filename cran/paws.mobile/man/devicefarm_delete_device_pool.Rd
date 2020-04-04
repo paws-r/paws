@@ -22,10 +22,12 @@ curated pools owned by the system.
 }
 
 \examples{
+\dontrun{
 # The following example deletes a specific device pool.
-\dontrun{svc$delete_device_pool(
+svc$delete_device_pool(
   arn = "arn:aws:devicefarm:us-west-2::devicepool:123-456-EXAMPLE-GUID"
-)}
+)
+}
 
 }
 \keyword{internal}

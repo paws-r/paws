@@ -21,10 +21,12 @@ Lists all tags associated with an assessment template.
 }
 
 \examples{
+\dontrun{
 # Lists all tags associated with an assessment template.
-\dontrun{svc$list_tags_for_resource(
+svc$list_tags_for_resource(
   resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-gcwFl..."
-)}
+)
+}
 
 }
 \keyword{internal}

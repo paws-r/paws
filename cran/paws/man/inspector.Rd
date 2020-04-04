@@ -76,9 +76,10 @@ information, see \href{https://docs.aws.amazon.com/inspector/latest/userguide/in
 }
 
 \examples{
+\dontrun{
+svc <- inspector()
 # Assigns attributes (key and value pairs) to the findings that are
 # specified by the ARNs of the findings.
-\dontrun{svc <- inspector()
 svc$add_attributes_to_findings(
   attributes = list(
     list(
@@ -89,6 +90,7 @@ svc$add_attributes_to_findings(
   findingArns = list(
     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-8l1VIE0D/run/0-Z0..."
   )
-)}
+)
+}
 
 }

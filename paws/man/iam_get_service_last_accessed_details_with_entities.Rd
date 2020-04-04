@@ -77,12 +77,14 @@ most recent access listed first.
 }
 
 \examples{
+\dontrun{
 # The following operation returns details about the entities that
 # attempted to access the IAM service.
-\dontrun{svc$get_service_last_accessed_details_with_entities(
+svc$get_service_last_accessed_details_with_entities(
   JobId = "examplef-1305-c245-eba4-71fe298bcda7",
   ServiceNamespace = "iam"
-)}
+)
+}
 
 }
 \keyword{internal}

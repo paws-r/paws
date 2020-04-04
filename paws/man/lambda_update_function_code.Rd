@@ -64,15 +64,17 @@ modify the code of a published version, only the unpublished version.
 }
 
 \examples{
+\dontrun{
 # This operation updates a Lambda function's code
-\dontrun{svc$update_function_code(
+svc$update_function_code(
   FunctionName = "myFunction",
   Publish = TRUE,
   S3Bucket = "myBucket",
   S3Key = "myKey",
   S3ObjectVersion = "1",
   ZipFile = "fileb://file-path/file.zip"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -33,14 +33,16 @@ subnets.
 }
 
 \examples{
+\dontrun{
 # This example detaches the specified load balancer from the specified
 # subnet.
-\dontrun{svc$detach_load_balancer_from_subnets(
+svc$detach_load_balancer_from_subnets(
   LoadBalancerName = "my-load-balancer",
   Subnets = list(
     "subnet-0ecac448"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -24,11 +24,13 @@ Lists the AWS Cost and Usage reports available to this account.
 }
 
 \examples{
+\dontrun{
 # The following example lists the AWS Cost and Usage reports for the
 # account.
-\dontrun{svc$describe_report_definitions(
+svc$describe_report_definitions(
   MaxResults = 5L
-)}
+)
+}
 
 }
 \keyword{internal}

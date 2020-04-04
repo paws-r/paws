@@ -50,10 +50,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- sfn()
+#' \dontrun{
+#' svc <- sfn()
 #' svc$create_activity(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

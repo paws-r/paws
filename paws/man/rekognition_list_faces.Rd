@@ -37,11 +37,13 @@ This operation requires permissions to perform the
 }
 
 \examples{
+\dontrun{
 # This operation lists the faces in a Rekognition collection.
-\dontrun{svc$list_faces(
+svc$list_faces(
   CollectionId = "myphotos",
   MaxResults = 20L
-)}
+)
+}
 
 }
 \keyword{internal}

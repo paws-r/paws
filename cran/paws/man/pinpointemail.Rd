@@ -112,9 +112,11 @@ available in each Region, see \href{http://aws.amazon.com/about-aws/global-infra
 }
 
 \examples{
-\dontrun{svc <- pinpointemail()
+\dontrun{
+svc <- pinpointemail()
 svc$create_configuration_set(
   Foo = 123
-)}
+)
+}
 
 }

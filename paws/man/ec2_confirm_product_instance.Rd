@@ -32,12 +32,14 @@ is eligible for support.
 }
 
 \examples{
+\dontrun{
 # This example determines whether the specified product code is associated
 # with the specified instance.
-\dontrun{svc$confirm_product_instance(
+svc$confirm_product_instance(
   InstanceId = "i-1234567890abcdef0",
   ProductCode = "774F4FF8"
-)}
+)
+}
 
 }
 \keyword{internal}

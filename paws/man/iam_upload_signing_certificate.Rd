@@ -56,12 +56,14 @@ in the \emph{IAM User Guide}.
 }
 
 \examples{
+\dontrun{
 # The following command uploads a signing certificate for the IAM user
 # named Bob.
-\dontrun{svc$upload_signing_certificate(
+svc$upload_signing_certificate(
   CertificateBody = "-----BEGIN CERTIFICATE-----<certificate-body>-----END CERTIFICATE-----",
   UserName = "Bob"
-)}
+)
+}
 
 }
 \keyword{internal}

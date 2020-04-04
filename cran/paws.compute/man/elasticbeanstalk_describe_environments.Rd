@@ -67,13 +67,15 @@ Returns descriptions for existing environments.
 }
 
 \examples{
+\dontrun{
 # The following operation retrieves information about an environment named
 # my-env:
-\dontrun{svc$describe_environments(
+svc$describe_environments(
   EnvironmentNames = list(
     "my-env"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

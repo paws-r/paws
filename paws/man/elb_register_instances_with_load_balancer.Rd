@@ -52,16 +52,18 @@ in the \emph{Classic Load Balancers Guide}.
 }
 
 \examples{
+\dontrun{
 # This example registers the specified instance with the specified load
 # balancer.
-\dontrun{svc$register_instances_with_load_balancer(
+svc$register_instances_with_load_balancer(
   Instances = list(
     list(
       InstanceId = "i-d6f6fae3"
     )
   ),
   LoadBalancerName = "my-load-balancer"
-)}
+)
+}
 
 }
 \keyword{internal}

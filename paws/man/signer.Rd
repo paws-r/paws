@@ -57,9 +57,11 @@ Management. For general information about using code signing, see the
 }
 
 \examples{
-\dontrun{svc <- signer()
+\dontrun{
+svc <- signer()
 svc$cancel_signing_profile(
   Foo = 123
-)}
+)
+}
 
 }

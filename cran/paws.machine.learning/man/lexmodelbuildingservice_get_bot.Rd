@@ -27,11 +27,13 @@ This operation requires permissions for the \code{lex:GetBot} action.
 }
 
 \examples{
+\dontrun{
 # This example shows how to get configuration information for a bot.
-\dontrun{svc$get_bot(
+svc$get_bot(
   name = "DocOrderPizza",
   versionOrAlias = "$LATEST"
-)}
+)
+}
 
 }
 \keyword{internal}

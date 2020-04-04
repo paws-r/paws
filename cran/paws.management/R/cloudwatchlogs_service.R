@@ -62,10 +62,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- cloudwatchlogs()
+#' \dontrun{
+#' svc <- cloudwatchlogs()
 #' svc$associate_kms_key(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -50,11 +50,13 @@ account.
 }
 
 \examples{
+\dontrun{
 # The following example shows how to get a list of service control
 # policies (SCPs):/n/n
-\dontrun{svc$list_policies(
+svc$list_policies(
   Filter = "SERVICE_CONTROL_POLICY"
-)}
+)
+}
 
 }
 \keyword{internal}

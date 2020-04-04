@@ -40,12 +40,14 @@ DescribeLoadBalancerAttributes.
 }
 
 \examples{
+\dontrun{
 # This example describes the specified load balancer.
-\dontrun{svc$describe_load_balancers(
+svc$describe_load_balancers(
   LoadBalancerArns = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/5..."
   )
-)}
+)
+}
 
 }
 \keyword{internal}

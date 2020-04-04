@@ -48,12 +48,14 @@ Related Topics
 }
 
 \examples{
+\dontrun{
 # The following operation retrieves a link to logs from an environment
 # named my-env:
-\dontrun{svc$retrieve_environment_info(
+svc$retrieve_environment_info(
   EnvironmentName = "my-env",
   InfoType = "tail"
-)}
+)
+}
 
 }
 \keyword{internal}

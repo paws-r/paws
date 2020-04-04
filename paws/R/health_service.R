@@ -101,10 +101,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- health()
+#' \dontrun{
+#' svc <- health()
 #' svc$describe_affected_accounts_for_organization(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -60,12 +60,14 @@ alias, use CreateAlias.
 }
 
 \examples{
+\dontrun{
 # This operation publishes a version of a Lambda function
-\dontrun{svc$publish_version(
+svc$publish_version(
   CodeSha256 = "",
   Description = "",
   FunctionName = "myFunction"
-)}
+)
+}
 
 }
 \keyword{internal}

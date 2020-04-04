@@ -31,10 +31,12 @@ can be deleted.
 }
 
 \examples{
+\dontrun{
 # The following example deletes the specified bucket.
-\dontrun{svc$delete_bucket(
+svc$delete_bucket(
   Bucket = "forrandall2"
-)}
+)
+}
 
 }
 \keyword{internal}

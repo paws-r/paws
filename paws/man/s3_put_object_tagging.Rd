@@ -104,8 +104,9 @@ object.}
 }
 
 \examples{
+\dontrun{
 # The following example adds tags to an existing object.
-\dontrun{svc$put_object_tagging(
+svc$put_object_tagging(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg",
   Tagging = list(
@@ -120,7 +121,8 @@ object.}
       )
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

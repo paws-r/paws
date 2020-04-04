@@ -33,13 +33,15 @@ Scaling group.
 }
 
 \examples{
+\dontrun{
 # This example describes the notification configurations for the specified
 # Auto Scaling group.
-\dontrun{svc$describe_notification_configurations(
+svc$describe_notification_configurations(
   AutoScalingGroupNames = list(
     "my-auto-scaling-group"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

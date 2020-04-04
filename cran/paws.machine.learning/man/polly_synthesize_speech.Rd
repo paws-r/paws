@@ -85,8 +85,9 @@ information, see \href{https://docs.aws.amazon.com/polly/latest/dg/how-text-to-s
 }
 
 \examples{
+\dontrun{
 # Synthesizes plain text or SSML into a file of human-like speech.
-\dontrun{svc$synthesize_speech(
+svc$synthesize_speech(
   LexiconNames = list(
     "example"
   ),
@@ -95,7 +96,8 @@ information, see \href{https://docs.aws.amazon.com/polly/latest/dg/how-text-to-s
   Text = "All Gaul is divided into three parts",
   TextType = "text",
   VoiceId = "Joanna"
-)}
+)
+}
 
 }
 \keyword{internal}

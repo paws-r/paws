@@ -106,20 +106,22 @@ The following operations are related to \code{ListMultipartUploads}:
 }
 
 \examples{
+\dontrun{
 # The following example specifies the upload-id-marker and key-marker from
 # previous truncated response to retrieve next setup of multipart uploads.
-\dontrun{svc$list_multipart_uploads(
+svc$list_multipart_uploads(
   Bucket = "examplebucket",
   KeyMarker = "nextkeyfrompreviousresponse",
   MaxUploads = "2",
   UploadIdMarker = "valuefrompreviousresponse"
-)}
+)
 
 # The following example lists in-progress multipart uploads on a specific
 # bucket.
-\dontrun{svc$list_multipart_uploads(
+svc$list_multipart_uploads(
   Bucket = "examplebucket"
-)}
+)
+}
 
 }
 \keyword{internal}

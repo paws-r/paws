@@ -79,15 +79,17 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example allocates an Elastic IP address to use with an instance in
 # a VPC.
-\dontrun{svc$allocate_address(
+svc$allocate_address(
   Domain = "vpc"
-)}
+)
 
 # This example allocates an Elastic IP address to use with an instance in
 # EC2-Classic.
-\dontrun{svc$allocate_address()}
+svc$allocate_address()
+}
 
 }
 \keyword{internal}

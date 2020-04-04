@@ -15,9 +15,11 @@ current region.
 You can execute this operation no more than once per second.
 }
 \examples{
+\dontrun{
 # The following example returns if sending status for an account is
 # enabled. (true / false):
-\dontrun{svc$get_account_sending_enabled()}
+svc$get_account_sending_enabled()
+}
 
 }
 \keyword{internal}

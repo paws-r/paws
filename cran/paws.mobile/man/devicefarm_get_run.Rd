@@ -20,10 +20,12 @@ Gets information about a run.
 }
 
 \examples{
+\dontrun{
 # The following example gets information about a specific test run.
-\dontrun{svc$get_run(
+svc$get_run(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:5e01a8c7-c861-4c0a-b1d5-5ec6e6c6dd23/..."
-)}
+)
+}
 
 }
 \keyword{internal}

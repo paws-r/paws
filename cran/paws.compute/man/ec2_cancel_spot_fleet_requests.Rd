@@ -42,23 +42,25 @@ them manually.
 }
 
 \examples{
+\dontrun{
 # This example cancels the specified Spot fleet request and terminates its
 # associated Spot Instances.
-\dontrun{svc$cancel_spot_fleet_requests(
+svc$cancel_spot_fleet_requests(
   SpotFleetRequestIds = list(
     "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE"
   ),
   TerminateInstances = TRUE
-)}
+)
 
 # This example cancels the specified Spot fleet request without
 # terminating its associated Spot Instances.
-\dontrun{svc$cancel_spot_fleet_requests(
+svc$cancel_spot_fleet_requests(
   SpotFleetRequestIds = list(
     "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE"
   ),
   TerminateInstances = FALSE
-)}
+)
+}
 
 }
 \keyword{internal}
