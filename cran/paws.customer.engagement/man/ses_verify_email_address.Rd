@@ -21,11 +21,13 @@ email address.
 }
 
 \examples{
+\dontrun{
 # The following example starts the email address verification process with
 # Amazon SES:
-\dontrun{svc$verify_email_address(
+svc$verify_email_address(
   EmailAddress = "user@example.com"
-)}
+)
+}
 
 }
 \keyword{internal}

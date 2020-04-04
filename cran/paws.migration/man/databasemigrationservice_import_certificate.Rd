@@ -37,11 +37,13 @@ Uploads the specified certificate.
 }
 
 \examples{
+\dontrun{
 # Uploads the specified certificate.
-\dontrun{svc$import_certificate(
+svc$import_certificate(
   CertificateIdentifier = "",
   CertificatePem = ""
-)}
+)
+}
 
 }
 \keyword{internal}

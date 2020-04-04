@@ -33,10 +33,12 @@ the gateway in your request.
 }
 
 \examples{
+\dontrun{
 # Starts a gateway service that was previously shut down.
-\dontrun{svc$start_gateway(
+svc$start_gateway(
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B"
-)}
+)
+}
 
 }
 \keyword{internal}

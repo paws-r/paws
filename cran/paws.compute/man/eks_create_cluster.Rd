@@ -123,8 +123,9 @@ in the \emph{Amazon EKS User Guide}.
 }
 
 \examples{
+\dontrun{
 # The following example creates an Amazon EKS cluster called prod.
-\dontrun{svc$create_cluster(
+svc$create_cluster(
   version = "1.10",
   name = "prod",
   clientRequestToken = "1d2129a1-3d38-460a-9756-e5b91fddb951",
@@ -138,7 +139,8 @@ in the \emph{Amazon EKS User Guide}.
     )
   ),
   roleArn = "arn:aws:iam::012345678910:role/eks-service-role-AWSServiceRoleForAmazonEKS-J7ON..."
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -71,13 +71,15 @@ The following operations are related to \code{ListParts}:
 }
 
 \examples{
+\dontrun{
 # The following example lists parts uploaded for a specific multipart
 # upload.
-\dontrun{svc$list_parts(
+svc$list_parts(
   Bucket = "examplebucket",
   Key = "bigobject",
   UploadId = "example7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP..."
-)}
+)
+}
 
 }
 \keyword{internal}

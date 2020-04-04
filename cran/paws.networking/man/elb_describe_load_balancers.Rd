@@ -31,12 +31,14 @@ specified, the call describes all of your load balancers.
 }
 
 \examples{
+\dontrun{
 # This example describes the specified load balancer.
-\dontrun{svc$describe_load_balancers(
+svc$describe_load_balancers(
   LoadBalancerNames = list(
     "my-load-balancer"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

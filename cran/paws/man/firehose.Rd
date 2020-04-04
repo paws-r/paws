@@ -54,9 +54,11 @@ Redshift, and Splunk.
 }
 
 \examples{
-\dontrun{svc <- firehose()
+\dontrun{
+svc <- firehose()
 svc$create_delivery_stream(
   Foo = 123
-)}
+)
+}
 
 }

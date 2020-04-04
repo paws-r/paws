@@ -30,10 +30,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- codeguruprofiler()
+#' \dontrun{
+#' svc <- codeguruprofiler()
 #' svc$configure_agent(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

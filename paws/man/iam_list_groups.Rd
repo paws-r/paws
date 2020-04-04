@@ -51,8 +51,10 @@ parameters.
 }
 
 \examples{
+\dontrun{
 # The following command lists the IAM groups in the current account:
-\dontrun{svc$list_groups()}
+svc$list_groups()
+}
 
 }
 \keyword{internal}

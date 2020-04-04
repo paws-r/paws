@@ -48,10 +48,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- sso()
+#' \dontrun{
+#' svc <- sso()
 #' svc$get_role_credentials(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

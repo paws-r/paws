@@ -36,13 +36,15 @@ gateway. This operation is only supported in the tape gateway type.
 }
 
 \examples{
+\dontrun{
 # Returns a list of virtual tape recovery points that are available for
 # the specified gateway-VTL.
-\dontrun{svc$describe_tape_recovery_points(
+svc$describe_tape_recovery_points(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
   Limit = 1L,
   Marker = "1"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -64,9 +64,11 @@ realize significant improvements in read performance.
 }
 
 \examples{
-\dontrun{svc <- dax()
+\dontrun{
+svc <- dax()
 svc$create_cluster(
   Foo = 123
-)}
+)
+}
 
 }

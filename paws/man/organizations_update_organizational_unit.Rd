@@ -40,12 +40,14 @@ account.
 }
 
 \examples{
+\dontrun{
 # The following example shows how to rename an OU. The output confirms the
 # new name:/n/n
-\dontrun{svc$update_organizational_unit(
+svc$update_organizational_unit(
   Name = "AccountingOU",
   OrganizationalUnitId = "ou-examplerootid111-exampleouid111"
-)}
+)
+}
 
 }
 \keyword{internal}

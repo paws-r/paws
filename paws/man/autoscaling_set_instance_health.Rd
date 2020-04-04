@@ -40,12 +40,14 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example sets the health status of the specified instance to
 # Unhealthy.
-\dontrun{svc$set_instance_health(
+svc$set_instance_health(
   HealthStatus = "Unhealthy",
   InstanceId = "i-93633f9b"
-)}
+)
+}
 
 }
 \keyword{internal}

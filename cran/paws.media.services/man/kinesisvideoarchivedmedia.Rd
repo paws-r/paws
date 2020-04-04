@@ -41,9 +41,11 @@ Amazon Kinesis Video Streams Archived Media
 }
 
 \examples{
-\dontrun{svc <- kinesisvideoarchivedmedia()
+\dontrun{
+svc <- kinesisvideoarchivedmedia()
 svc$get_dash_streaming_session_url(
   Foo = 123
-)}
+)
+}
 
 }

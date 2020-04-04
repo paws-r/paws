@@ -53,9 +53,11 @@ The AWS IoT 1-Click Projects API Reference
 }
 
 \examples{
-\dontrun{svc <- iot1clickprojects()
+\dontrun{
+svc <- iot1clickprojects()
 svc$associate_device_with_placement(
   Foo = 123
-)}
+)
+}
 
 }

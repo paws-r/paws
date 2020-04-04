@@ -45,10 +45,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- cloudwatch()
+#' \dontrun{
+#' svc <- cloudwatch()
 #' svc$delete_alarms(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

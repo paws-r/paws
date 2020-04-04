@@ -44,12 +44,14 @@ The operation requires permission for the \code{lex:GetIntents} action.
 }
 
 \examples{
+\dontrun{
 # This example shows how to get a list of all of the intents in your
 # account.
-\dontrun{svc$get_intents(
+svc$get_intents(
   maxResults = 10L,
   nextToken = ""
-)}
+)
+}
 
 }
 \keyword{internal}

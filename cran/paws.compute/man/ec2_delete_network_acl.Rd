@@ -27,10 +27,12 @@ associated with any subnets. You can\'t delete the default network ACL.
 }
 
 \examples{
+\dontrun{
 # This example deletes the specified network ACL.
-\dontrun{svc$delete_network_acl(
+svc$delete_network_acl(
   NetworkAclId = "acl-5fb85d36"
-)}
+)
+}
 
 }
 \keyword{internal}

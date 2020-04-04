@@ -51,11 +51,13 @@ GetAccountSummary operation.
 }
 
 \examples{
+\dontrun{
 # The following command sets the STS global endpoint token to version 2.
 # Version 2 tokens are valid in all Regions.
-\dontrun{svc$set_security_token_service_preferences(
+svc$set_security_token_service_preferences(
   GlobalEndpointTokenVersion = "v2Token"
-)}
+)
+}
 
 }
 \keyword{internal}

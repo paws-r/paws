@@ -65,10 +65,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- resourcegroups()
+#' \dontrun{
+#' svc <- resourcegroups()
 #' svc$create_group(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

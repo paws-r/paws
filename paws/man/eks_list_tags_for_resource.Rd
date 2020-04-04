@@ -22,10 +22,12 @@ List the tags for an Amazon EKS resource.
 }
 
 \examples{
+\dontrun{
 # This example lists all of the tags for the `beta` cluster.
-\dontrun{svc$list_tags_for_resource(
+svc$list_tags_for_resource(
   resourceArn = "arn:aws:eks:us-west-2:012345678910:cluster/beta"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -68,12 +68,14 @@ Instances.
 }
 
 \examples{
+\dontrun{
 # This example describes the specified Scheduled Instance.
-\dontrun{svc$describe_scheduled_instances(
+svc$describe_scheduled_instances(
   ScheduledInstanceIds = list(
     "sci-1234-1234-1234-1234-123456789012"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

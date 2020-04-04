@@ -28,11 +28,13 @@ cancelled.
 }
 
 \examples{
+\dontrun{
 # This example terminates a job with the specified job ID.
-\dontrun{svc$terminate_job(
+svc$terminate_job(
   jobId = "61e743ed-35e4-48da-b2de-5c8333821c84",
   reason = "Terminating job."
-)}
+)
+}
 
 }
 \keyword{internal}

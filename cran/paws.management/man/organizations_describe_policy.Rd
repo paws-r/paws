@@ -30,11 +30,13 @@ account.
 }
 
 \examples{
+\dontrun{
 # The following example shows how to request information about a
 # policy:/n/n
-\dontrun{svc$describe_policy(
+svc$describe_policy(
   PolicyId = "p-examplepolicyid111"
-)}
+)
+}
 
 }
 \keyword{internal}

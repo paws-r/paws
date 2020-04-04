@@ -54,9 +54,11 @@ vendors across multiple AWS accounts and on-premises servers.
 }
 
 \examples{
-\dontrun{svc <- licensemanager()
+\dontrun{
+svc <- licensemanager()
 svc$create_license_configuration(
   Foo = 123
-)}
+)
+}
 
 }

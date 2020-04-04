@@ -32,11 +32,13 @@ Returns AWS resources for this environment.
 }
 
 \examples{
+\dontrun{
 # The following operation retrieves information about resources in an
 # environment named my-env:
-\dontrun{svc$describe_environment_resources(
+svc$describe_environment_resources(
   EnvironmentName = "my-env"
-)}
+)
+}
 
 }
 \keyword{internal}

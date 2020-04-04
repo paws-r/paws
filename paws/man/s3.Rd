@@ -125,12 +125,14 @@ Amazon Simple Storage Service
 }
 
 \examples{
+\dontrun{
+svc <- s3()
 # The following example aborts a multipart upload.
-\dontrun{svc <- s3()
 svc$abort_multipart_upload(
   Bucket = "examplebucket",
   Key = "bigobject",
   UploadId = "xadcOB_7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP..."
-)}
+)
+}
 
 }

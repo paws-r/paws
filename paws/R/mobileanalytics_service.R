@@ -31,10 +31,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- mobileanalytics()
+#' \dontrun{
+#' svc <- mobileanalytics()
 #' svc$put_events(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

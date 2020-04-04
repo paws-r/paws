@@ -70,9 +70,11 @@ For information about costs associated with the Cost Explorer API, see
 }
 
 \examples{
-\dontrun{svc <- costexplorer()
+\dontrun{
+svc <- costexplorer()
 svc$create_cost_category_definition(
   Foo = 123
-)}
+)
+}
 
 }

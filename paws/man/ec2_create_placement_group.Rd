@@ -49,11 +49,13 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example creates a placement group with the specified name.
-\dontrun{svc$create_placement_group(
+svc$create_placement_group(
   GroupName = "my-cluster",
   Strategy = "cluster"
-)}
+)
+}
 
 }
 \keyword{internal}

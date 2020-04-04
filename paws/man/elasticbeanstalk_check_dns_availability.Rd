@@ -20,11 +20,13 @@ Checks if the specified CNAME is available.
 }
 
 \examples{
+\dontrun{
 # The following operation checks the availability of the subdomain
 # my-cname:
-\dontrun{svc$check_dns_availability(
+svc$check_dns_availability(
   CNAMEPrefix = "my-cname"
-)}
+)
+}
 
 }
 \keyword{internal}

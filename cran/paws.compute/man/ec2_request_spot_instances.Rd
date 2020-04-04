@@ -192,13 +192,14 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
 }
 
 \examples{
+\dontrun{
 # This example creates a one-time Spot Instance request for five instances
 # in the specified Availability Zone. If your account supports EC2-VPC
 # only, Amazon EC2 launches the instances in the default subnet of the
 # specified Availability Zone. If your account supports EC2-Classic,
 # Amazon EC2 launches the instances in EC2-Classic in the specified
 # Availability Zone.
-\dontrun{svc$request_spot_instances(
+svc$request_spot_instances(
   InstanceCount = 5L,
   LaunchSpecification = list(
     IamInstanceProfile = list(
@@ -216,13 +217,13 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
   ),
   SpotPrice = "0.03",
   Type = "one-time"
-)}
+)
 
 # This example command creates a one-time Spot Instance request for five
 # instances in the specified subnet. Amazon EC2 launches the instances in
 # the specified subnet. If the VPC is a nondefault VPC, the instances do
 # not receive a public IP address by default.
-\dontrun{svc$request_spot_instances(
+svc$request_spot_instances(
   InstanceCount = 5L,
   LaunchSpecification = list(
     IamInstanceProfile = list(
@@ -237,7 +238,8 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
   ),
   SpotPrice = "0.050",
   Type = "one-time"
-)}
+)
+}
 
 }
 \keyword{internal}

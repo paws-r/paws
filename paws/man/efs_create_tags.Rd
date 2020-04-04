@@ -38,8 +38,9 @@ This operation requires permission for the
 }
 
 \examples{
+\dontrun{
 # This operation creates a new tag for an EFS file system.
-\dontrun{svc$create_tags(
+svc$create_tags(
   FileSystemId = "fs-01234567",
   Tags = list(
     list(
@@ -47,7 +48,8 @@ This operation requires permission for the
       Value = "MyFileSystem"
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

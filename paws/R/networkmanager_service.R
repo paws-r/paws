@@ -32,10 +32,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- networkmanager()
+#' \dontrun{
+#' svc <- networkmanager()
 #' svc$associate_customer_gateway(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

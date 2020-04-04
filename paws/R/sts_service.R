@@ -125,8 +125,9 @@ NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
+#' svc <- sts()
 #' # 
-#' \dontrun{svc <- sts()
 #' svc$assume_role(
 #'   ExternalId = "123ABC",
 #'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":...",
@@ -150,7 +151,8 @@ NULL
 #'     "Project",
 #'     "Cost-Center"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

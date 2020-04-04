@@ -68,13 +68,15 @@ in the \emph{AWS Key Management Service Developer Guide}.
 }
 
 \examples{
+\dontrun{
 # The following example retrieves the public key and import token for the
 # specified CMK.
-\dontrun{svc$get_parameters_for_import(
+svc$get_parameters_for_import(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
   WrappingAlgorithm = "RSAES_OAEP_SHA_1",
   WrappingKeySpec = "RSA_2048"
-)}
+)
+}
 
 }
 \keyword{internal}

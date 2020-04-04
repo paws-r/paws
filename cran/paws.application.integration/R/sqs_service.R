@@ -68,10 +68,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- sqs()
+#' \dontrun{
+#' svc <- sqs()
 #' svc$add_permission(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

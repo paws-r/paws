@@ -134,9 +134,11 @@ in the \emph{AWS Config Developer Guide}.
 }
 
 \examples{
-\dontrun{svc <- configservice()
+\dontrun{
+svc <- configservice()
 svc$batch_get_aggregate_resource_config(
   Foo = 123
-)}
+)
+}
 
 }

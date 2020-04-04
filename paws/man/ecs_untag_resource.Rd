@@ -28,13 +28,15 @@ Deletes specified tags from a resource.
 }
 
 \examples{
+\dontrun{
 # This example deletes the 'team' tag from the 'dev' cluster.
-\dontrun{svc$untag_resource(
+svc$untag_resource(
   resourceArn = "arn:aws:ecs:region:aws_account_id:cluster/dev",
   tagKeys = list(
     "team"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

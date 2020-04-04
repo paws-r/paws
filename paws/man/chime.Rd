@@ -174,9 +174,11 @@ the \emph{Amazon Chime Administration Guide}.
 }
 
 \examples{
-\dontrun{svc <- chime()
+\dontrun{
+svc <- chime()
 svc$associate_phone_number_with_user(
   Foo = 123
-)}
+)
+}
 
 }

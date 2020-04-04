@@ -23,9 +23,11 @@ Returns the descriptions of existing applications.
 }
 
 \examples{
+\dontrun{
 # The following operation retrieves information about applications in the
 # current region:
-\dontrun{svc$describe_applications()}
+svc$describe_applications()
+}
 
 }
 \keyword{internal}

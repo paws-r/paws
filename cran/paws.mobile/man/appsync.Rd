@@ -79,9 +79,11 @@ sources using GraphQL from your application.
 }
 
 \examples{
-\dontrun{svc <- appsync()
+\dontrun{
+svc <- appsync()
 svc$create_api_cache(
   Foo = 123
-)}
+)
+}
 
 }

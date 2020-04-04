@@ -130,23 +130,25 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example creates an 80 GiB General Purpose (SSD) volume in the
 # Availability Zone `us-east-1a`.
-\dontrun{svc$create_volume(
+svc$create_volume(
   AvailabilityZone = "us-east-1a",
   Size = 80L,
   VolumeType = "gp2"
-)}
+)
 
 # This example creates a new Provisioned IOPS (SSD) volume with 1000
 # provisioned IOPS from a snapshot in the Availability Zone
 # `us-east-1a`.
-\dontrun{svc$create_volume(
+svc$create_volume(
   AvailabilityZone = "us-east-1a",
   Iops = 1000L,
   SnapshotId = "snap-066877671789bd71b",
   VolumeType = "io1"
-)}
+)
+}
 
 }
 \keyword{internal}

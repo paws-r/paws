@@ -36,10 +36,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- quicksight()
+#' \dontrun{
+#' svc <- quicksight()
 #' svc$cancel_ingestion(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

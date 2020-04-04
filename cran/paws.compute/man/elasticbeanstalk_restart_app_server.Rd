@@ -33,11 +33,13 @@ running on each Amazon EC2 instance.
 }
 
 \examples{
+\dontrun{
 # The following operation restarts application servers on all instances in
 # an environment named my-env:
-\dontrun{svc$restart_app_server(
+svc$restart_app_server(
   EnvironmentName = "my-env"
-)}
+)
+}
 
 }
 \keyword{internal}

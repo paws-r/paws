@@ -73,8 +73,10 @@ responses of a multi-call iteration is unspecified.
 }
 
 \examples{
+\dontrun{
 # This operation describes all of the Amazon FSx backups in an account.
-\dontrun{svc$describe_backups()}
+svc$describe_backups()
+}
 
 }
 \keyword{internal}

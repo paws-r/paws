@@ -57,11 +57,13 @@ then the update fails. For more information about permissions, see
 }
 
 \examples{
+\dontrun{
 # The following command changes the name of the IAM group Test to Test-1.
-\dontrun{svc$update_group(
+svc$update_group(
   GroupName = "Test",
   NewGroupName = "Test-1"
-)}
+)
+}
 
 }
 \keyword{internal}

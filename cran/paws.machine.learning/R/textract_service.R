@@ -32,10 +32,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- textract()
+#' \dontrun{
+#' svc <- textract()
 #' svc$analyze_document(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

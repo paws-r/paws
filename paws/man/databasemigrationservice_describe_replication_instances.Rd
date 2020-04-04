@@ -48,8 +48,9 @@ current region.
 }
 
 \examples{
+\dontrun{
 # Returns the status of the refresh-schemas operation.
-\dontrun{svc$describe_replication_instances(
+svc$describe_replication_instances(
   Filters = list(
     list(
       Name = "string",
@@ -61,7 +62,8 @@ current region.
   ),
   Marker = "",
   MaxRecords = 123L
-)}
+)
+}
 
 }
 \keyword{internal}

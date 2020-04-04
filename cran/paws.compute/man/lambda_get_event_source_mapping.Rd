@@ -21,10 +21,12 @@ identifier of a mapping from the output of ListEventSourceMappings.
 }
 
 \examples{
+\dontrun{
 # This operation retrieves a Lambda function's event source mapping
-\dontrun{svc$get_event_source_mapping(
+svc$get_event_source_mapping(
   UUID = "123489-xxxxx-kdla8d89d7"
-)}
+)
+}
 
 }
 \keyword{internal}

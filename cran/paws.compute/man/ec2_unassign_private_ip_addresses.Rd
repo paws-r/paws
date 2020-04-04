@@ -30,14 +30,16 @@ interface.
 }
 
 \examples{
+\dontrun{
 # This example unassigns the specified private IP address from the
 # specified network interface.
-\dontrun{svc$unassign_private_ip_addresses(
+svc$unassign_private_ip_addresses(
   NetworkInterfaceId = "eni-e5aa89a3",
   PrivateIpAddresses = list(
     "10.0.0.82"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

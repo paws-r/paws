@@ -22,11 +22,13 @@ Returns the SizeConstraintSet specified by \code{SizeConstraintSetId}.
 }
 
 \examples{
+\dontrun{
 # The following example returns the details of a size constraint match set
 # with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-\dontrun{svc$get_size_constraint_set(
+svc$get_size_constraint_set(
   SizeConstraintSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-)}
+)
+}
 
 }
 \keyword{internal}

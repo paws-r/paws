@@ -32,8 +32,10 @@ This operation requires permissions to perform the
 }
 
 \examples{
+\dontrun{
 # This operation returns a list of Rekognition collections.
-\dontrun{svc$list_collections()}
+svc$list_collections()
+}
 
 }
 \keyword{internal}

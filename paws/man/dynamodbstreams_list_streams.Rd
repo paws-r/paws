@@ -35,8 +35,10 @@ You can call \code{ListStreams} at a maximum rate of 5 times per second.
 }
 
 \examples{
+\dontrun{
 # The following example lists all of the stream ARNs.
-\dontrun{svc$list_streams()}
+svc$list_streams()
+}
 
 }
 \keyword{internal}

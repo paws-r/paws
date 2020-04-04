@@ -38,12 +38,14 @@ if the AWS account has no associated users.
 }
 
 \examples{
+\dontrun{
 # The following command deletes one access key (access key ID and secret
 # access key) assigned to the IAM user named Bob.
-\dontrun{svc$delete_access_key(
+svc$delete_access_key(
   AccessKeyId = "AKIDPMS9RO4H3FEXAMPLE",
   UserName = "Bob"
-)}
+)
+}
 
 }
 \keyword{internal}

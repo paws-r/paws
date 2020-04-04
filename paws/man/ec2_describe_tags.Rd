@@ -61,8 +61,9 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example describes the tags for the specified instance.
-\dontrun{svc$describe_tags(
+svc$describe_tags(
   Filters = list(
     list(
       Name = "resource-id",
@@ -71,7 +72,8 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
       )
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -31,10 +31,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- route53domains()
+#' \dontrun{
+#' svc <- route53domains()
 #' svc$check_domain_availability(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

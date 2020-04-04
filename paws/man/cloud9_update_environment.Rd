@@ -26,12 +26,14 @@ Changes the settings of an existing AWS Cloud9 development environment.
 }
 
 \examples{
+\dontrun{
 # 
-\dontrun{svc$update_environment(
+svc$update_environment(
   name = "my-changed-demo-environment",
   description = "This is my changed demonstration environment.",
   environmentId = "8d9967e2f0624182b74e7690ad69ebEX"
-)}
+)
+}
 
 }
 \keyword{internal}

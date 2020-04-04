@@ -26,10 +26,12 @@ and might not be completely deleted for several seconds.
 }
 
 \examples{
+\dontrun{
 # This operation deletes a Lambda function event source mapping
-\dontrun{svc$delete_event_source_mapping(
+svc$delete_event_source_mapping(
   UUID = "12345kxodurf3443"
-)}
+)
+}
 
 }
 \keyword{internal}

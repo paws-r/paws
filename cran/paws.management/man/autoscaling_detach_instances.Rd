@@ -46,15 +46,17 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example detaches the specified instance from the specified Auto
 # Scaling group.
-\dontrun{svc$detach_instances(
+svc$detach_instances(
   AutoScalingGroupName = "my-auto-scaling-group",
   InstanceIds = list(
     "i-93633f9b"
   ),
   ShouldDecrementDesiredCapacity = TRUE
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -57,9 +57,11 @@ Managed Streaming for Kafka
 }
 
 \examples{
-\dontrun{svc <- kafka()
+\dontrun{
+svc <- kafka()
 svc$create_cluster(
   Foo = 123
-)}
+)
+}
 
 }

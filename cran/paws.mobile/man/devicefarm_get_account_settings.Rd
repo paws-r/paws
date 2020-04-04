@@ -17,9 +17,11 @@ have been purchased by the account.
 }
 
 \examples{
+\dontrun{
 # The following example returns information about your Device Farm account
 # settings.
-\dontrun{svc$get_account_settings()}
+svc$get_account_settings()
+}
 
 }
 \keyword{internal}

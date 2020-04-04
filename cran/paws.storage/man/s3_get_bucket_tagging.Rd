@@ -39,10 +39,12 @@ The following operations are related to \code{GetBucketTagging}:
 }
 
 \examples{
+\dontrun{
 # The following example returns tag set associated with a bucket
-\dontrun{svc$get_bucket_tagging(
+svc$get_bucket_tagging(
   Bucket = "examplebucket"
-)}
+)
+}
 
 }
 \keyword{internal}

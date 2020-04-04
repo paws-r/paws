@@ -52,11 +52,13 @@ actions that have already run, use DescribeScalingActivities.
 }
 
 \examples{
+\dontrun{
 # This example describes the scheduled actions for the specified Auto
 # Scaling group.
-\dontrun{svc$describe_scheduled_actions(
+svc$describe_scheduled_actions(
   AutoScalingGroupName = "my-auto-scaling-group"
-)}
+)
+}
 
 }
 \keyword{internal}

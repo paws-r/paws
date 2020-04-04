@@ -40,14 +40,16 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example attaches the specified load balancer to the specified Auto
 # Scaling group.
-\dontrun{svc$attach_load_balancers(
+svc$attach_load_balancers(
   AutoScalingGroupName = "my-auto-scaling-group",
   LoadBalancerNames = list(
     "my-load-balancer"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

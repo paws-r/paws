@@ -48,10 +48,11 @@ test an endpoint.
 }
 
 \examples{
+\dontrun{
 # Describes the status of the connections that have been made between the
 # replication instance and an endpoint. Connections are created when you
 # test an endpoint.
-\dontrun{svc$describe_connections(
+svc$describe_connections(
   Filters = list(
     list(
       Name = "string",
@@ -63,7 +64,8 @@ test an endpoint.
   ),
   Marker = "",
   MaxRecords = 123L
-)}
+)
+}
 
 }
 \keyword{internal}

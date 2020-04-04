@@ -27,10 +27,12 @@ For more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/mana
 }
 
 \examples{
+\dontrun{
 # Deletes a specified pronunciation lexicon stored in an AWS Region.
-\dontrun{svc$delete_lexicon(
+svc$delete_lexicon(
   Name = "example"
-)}
+)
+}
 
 }
 \keyword{internal}

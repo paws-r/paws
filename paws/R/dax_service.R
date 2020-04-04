@@ -36,10 +36,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- dax()
+#' \dontrun{
+#' svc <- dax()
 #' svc$create_cluster(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

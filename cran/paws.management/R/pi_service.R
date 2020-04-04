@@ -48,10 +48,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- pi()
+#' \dontrun{
+#' svc <- pi()
 #' svc$describe_dimension_keys(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

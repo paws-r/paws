@@ -154,16 +154,18 @@ DisplayName is optional and ignored in the request
 }
 
 \examples{
+\dontrun{
 # The following example replaces existing ACL on a bucket. The ACL grants
 # the bucket owner (specified using the owner ID) and write permission to
 # the LogDelivery group. Because this is a replace operation, you must
 # specify all the grants in your request. To incrementally add or remove
 # ACL grants, you might use the console.
-\dontrun{svc$put_bucket_acl(
+svc$put_bucket_acl(
   Bucket = "examplebucket",
   GrantFullControl = "id=examplee7a2f25102679df27bb0ae12b3f85be6f290b936c4393484",
   GrantWrite = "uri=http://acs.amazonaws.com/groups/s3/LogDelivery"
-)}
+)
+}
 
 }
 \keyword{internal}

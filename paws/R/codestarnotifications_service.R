@@ -80,10 +80,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- codestarnotifications()
+#' \dontrun{
+#' svc <- codestarnotifications()
 #' svc$create_notification_rule(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

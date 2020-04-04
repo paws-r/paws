@@ -51,9 +51,11 @@ Operations and objects for transcribing speech to text.
 }
 
 \examples{
-\dontrun{svc <- transcribeservice()
+\dontrun{
+svc <- transcribeservice()
 svc$create_vocabulary(
   Foo = 123
-)}
+)
+}
 
 }

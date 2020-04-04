@@ -16,8 +16,10 @@ activity. Each data point in the list contains statistics for a
 You can execute this operation no more than once per second.
 }
 \examples{
+\dontrun{
 # The following example returns Amazon SES sending statistics:
-\dontrun{svc$get_send_statistics()}
+svc$get_send_statistics()
+}
 
 }
 \keyword{internal}

@@ -24,12 +24,14 @@ Deletes the specified scheduled action.
 }
 
 \examples{
+\dontrun{
 # This example deletes the specified scheduled action from the specified
 # Auto Scaling group.
-\dontrun{svc$delete_scheduled_action(
+svc$delete_scheduled_action(
   AutoScalingGroupName = "my-auto-scaling-group",
   ScheduledActionName = "my-scheduled-action"
-)}
+)
+}
 
 }
 \keyword{internal}

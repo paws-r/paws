@@ -31,12 +31,14 @@ Removes the specified user from the specified group.
 }
 
 \examples{
+\dontrun{
 # The following command removes the user named Bob from the IAM group
 # named Admins.
-\dontrun{svc$remove_user_from_group(
+svc$remove_user_from_group(
   GroupName = "Admins",
   UserName = "Bob"
-)}
+)
+}
 
 }
 \keyword{internal}

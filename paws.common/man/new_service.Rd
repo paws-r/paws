@@ -47,7 +47,8 @@ API requests.
 }
 
 \examples{
-\dontrun{# Metadata for the S3 API.
+\dontrun{
+# Metadata for the S3 API.
 metadata <- list(
   service_name = "s3",
   endpoints = list("us-east-1" = list(endpoint = "s3.amazonaws.com", global = FALSE)),
@@ -63,7 +64,8 @@ handlers <- new_handlers("restxml", "v4")
 
 # Build a service object for S3, containing the information necessary to
 # build, send, and receive requests.
-service <- new_service(metadata, handlers)}
+service <- new_service(metadata, handlers)
+}
 
 }
 \seealso{

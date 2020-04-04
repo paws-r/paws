@@ -53,9 +53,11 @@ operations, see the build-time API, .
 }
 
 \examples{
-\dontrun{svc <- lexruntimeservice()
+\dontrun{
+svc <- lexruntimeservice()
 svc$delete_session(
   Foo = 123
-)}
+)
+}
 
 }

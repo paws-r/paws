@@ -162,23 +162,25 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example modifies the instance type of the specified stopped
 # instance.
-\dontrun{svc$modify_instance_attribute(
+svc$modify_instance_attribute(
   InstanceId = "i-1234567890abcdef0",
   InstanceType = list(
     Value = "m5.large"
   )
-)}
+)
 
 # This example enables enhanced networking for the specified stopped
 # instance.
-\dontrun{svc$modify_instance_attribute(
+svc$modify_instance_attribute(
   EnaSupport = list(
     Value = TRUE
   ),
   InstanceId = "i-1234567890abcdef0"
-)}
+)
+}
 
 }
 \keyword{internal}

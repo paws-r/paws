@@ -36,13 +36,15 @@ Describes a specified task or tasks.
 }
 
 \examples{
+\dontrun{
 # This example provides a description of the specified task, using the
 # task UUID as an identifier.
-\dontrun{svc$describe_tasks(
+svc$describe_tasks(
   tasks = list(
     "c5cba4eb-5dad-405e-96db-71ef8eefe6a8"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

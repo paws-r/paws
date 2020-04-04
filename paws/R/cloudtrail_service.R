@@ -52,10 +52,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- cloudtrail()
+#' \dontrun{
+#' svc <- cloudtrail()
 #' svc$add_tags(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

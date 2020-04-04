@@ -50,11 +50,13 @@ in the \emph{Amazon Glacier Developer Guide}.
 }
 
 \examples{
+\dontrun{
 # The following example creates a new vault named my-vault.
-\dontrun{svc$create_vault(
+svc$create_vault(
   accountId = "-",
   vaultName = "my-vault"
-)}
+)
+}
 
 }
 \keyword{internal}

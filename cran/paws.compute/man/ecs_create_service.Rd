@@ -435,20 +435,21 @@ tasks for this service.
 }
 
 \examples{
+\dontrun{
 # This example creates a service in your default region called
 # `ecs-simple-service`. The service uses the `hello_world` task
 # definition and it maintains 10 copies of that task.
-\dontrun{svc$create_service(
+svc$create_service(
   desiredCount = 10L,
   serviceName = "ecs-simple-service",
   taskDefinition = "hello_world"
-)}
+)
 
 # This example creates a service in your default region called
 # `ecs-simple-service-elb`. The service uses the `ecs-demo` task
 # definition and it maintains 10 copies of that task. You must reference
 # an existing load balancer in the same region by its name.
-\dontrun{svc$create_service(
+svc$create_service(
   desiredCount = 10L,
   loadBalancers = list(
     list(
@@ -460,7 +461,8 @@ tasks for this service.
   role = "ecsServiceRole",
   serviceName = "ecs-simple-service-elb",
   taskDefinition = "console-sample-app-static"
-)}
+)
+}
 
 }
 \keyword{internal}

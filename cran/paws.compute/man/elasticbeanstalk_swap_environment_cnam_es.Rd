@@ -49,12 +49,14 @@ Swaps the CNAMEs of two environments.
 }
 
 \examples{
+\dontrun{
 # The following operation swaps the assigned subdomains of two
 # environments:
-\dontrun{svc$swap_environment_cnam_es(
+svc$swap_environment_cnam_es(
   DestinationEnvironmentName = "my-env-green",
   SourceEnvironmentName = "my-env-blue"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -27,10 +27,12 @@ in the \emph{Network Load Balancers Guide}.
 }
 
 \examples{
+\dontrun{
 # This example describes the attributes of the specified load balancer.
-\dontrun{svc$describe_load_balancer_attributes(
+svc$describe_load_balancer_attributes(
   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my..."
-)}
+)
+}
 
 }
 \keyword{internal}

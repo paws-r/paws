@@ -37,10 +37,12 @@ This operation requires permissions for the
 }
 
 \examples{
+\dontrun{
 # This operation deletes an EFS file system.
-\dontrun{svc$delete_file_system(
+svc$delete_file_system(
   FileSystemId = "fs-01234567"
-)}
+)
+}
 
 }
 \keyword{internal}

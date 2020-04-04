@@ -28,9 +28,10 @@ Deletes the specified tags.
 }
 
 \examples{
+\dontrun{
 # This example deletes the specified tag from the specified Auto Scaling
 # group.
-\dontrun{svc$delete_tags(
+svc$delete_tags(
   Tags = list(
     list(
       Key = "Dept",
@@ -39,7 +40,8 @@ Deletes the specified tags.
       Value = "Research"
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

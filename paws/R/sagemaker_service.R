@@ -30,10 +30,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- sagemaker()
+#' \dontrun{
+#' svc <- sagemaker()
 #' svc$add_tags(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

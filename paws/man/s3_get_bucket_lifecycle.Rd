@@ -50,10 +50,12 @@ The following operations are related to \code{GetBucketLifecycle}:
 }
 
 \examples{
+\dontrun{
 # The following example gets ACL on the specified bucket.
-\dontrun{svc$get_bucket_lifecycle(
+svc$get_bucket_lifecycle(
   Bucket = "acl1"
-)}
+)
+}
 
 }
 \keyword{internal}

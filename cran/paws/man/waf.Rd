@@ -120,11 +120,13 @@ AWS WAF features and an overview of how to use the AWS WAF API, see the
 }
 
 \examples{
+\dontrun{
+svc <- waf()
 # The following example creates an IP match set named MyIPSetFriendlyName.
-\dontrun{svc <- waf()
 svc$create_ip_set(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   Name = "MyIPSetFriendlyName"
-)}
+)
+}
 
 }

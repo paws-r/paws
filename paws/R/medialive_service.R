@@ -30,10 +30,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- medialive()
+#' \dontrun{
+#' svc <- medialive()
 #' svc$batch_update_schedule(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

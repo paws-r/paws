@@ -44,12 +44,14 @@ in the \emph{Amazon Glacier Developer Guide}.
 }
 
 \examples{
+\dontrun{
 # The example retrieves the notification-configuration for the vault named
 # my-vault.
-\dontrun{svc$get_vault_notifications(
+svc$get_vault_notifications(
   accountId = "-",
   vaultName = "my-vault"
-)}
+)
+}
 
 }
 \keyword{internal}

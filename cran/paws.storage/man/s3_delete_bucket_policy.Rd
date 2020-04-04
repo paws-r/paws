@@ -45,10 +45,12 @@ The following operations are related to \code{DeleteBucketPolicy}
 }
 
 \examples{
+\dontrun{
 # The following example deletes bucket policy on the specified bucket.
-\dontrun{svc$delete_bucket_policy(
+svc$delete_bucket_policy(
   Bucket = "examplebucket"
-)}
+)
+}
 
 }
 \keyword{internal}

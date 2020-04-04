@@ -54,9 +54,11 @@ Describes image repositories in a registry.
 }
 
 \examples{
+\dontrun{
 # The following example obtains a list and description of all repositories
 # in the default registry to which the current user has access.
-\dontrun{svc$describe_repositories()}
+svc$describe_repositories()
+}
 
 }
 \keyword{internal}

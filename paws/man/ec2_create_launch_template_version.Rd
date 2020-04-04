@@ -189,16 +189,18 @@ template versions.
 }
 
 \examples{
+\dontrun{
 # This example creates a new launch template version based on version 1 of
 # the specified launch template and specifies a different AMI ID.
-\dontrun{svc$create_launch_template_version(
+svc$create_launch_template_version(
   LaunchTemplateData = list(
     ImageId = "ami-c998b6b2"
   ),
   LaunchTemplateId = "lt-0abcd290751193123",
   SourceVersion = "1",
   VersionDescription = "WebVersion2"
-)}
+)
+}
 
 }
 \keyword{internal}

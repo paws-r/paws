@@ -38,15 +38,17 @@ overwritten. For more information about tags, see \href{https://docs.aws.amazon.
 }
 
 \examples{
+\dontrun{
 # The example adds two tags to a my-vault.
-\dontrun{svc$add_tags_to_vault(
+svc$add_tags_to_vault(
   Tags = list(
     examplekey1 = "examplevalue1",
     examplekey2 = "examplevalue2"
   ),
   accountId = "-",
   vaultName = "my-vault"
-)}
+)
+}
 
 }
 \keyword{internal}

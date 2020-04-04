@@ -35,12 +35,14 @@ see SubscribeToEvent and UnsubscribeFromEvent.
 }
 
 \examples{
+\dontrun{
 # Lists all the event subscriptions for the assessment template that is
 # specified by the ARN of the assessment template.
-\dontrun{svc$list_event_subscriptions(
+svc$list_event_subscriptions(
   maxResults = 123L,
   resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-7sbz2..."
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -50,12 +50,14 @@ Updates an AWS Batch compute environment.
 }
 
 \examples{
+\dontrun{
 # This example disables the P2OnDemand compute environment so it can be
 # deleted.
-\dontrun{svc$update_compute_environment(
+svc$update_compute_environment(
   computeEnvironment = "P2OnDemand",
   state = "DISABLED"
-)}
+)
+}
 
 }
 \keyword{internal}

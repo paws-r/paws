@@ -47,10 +47,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- appmesh()
+#' \dontrun{
+#' svc <- appmesh()
 #' svc$create_mesh(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

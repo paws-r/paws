@@ -119,8 +119,9 @@ This operation requires permissions to perform the
 }
 
 \examples{
+\dontrun{
 # This operation detects labels in the supplied image
-\dontrun{svc$detect_labels(
+svc$detect_labels(
   Image = list(
     S3Object = list(
       Bucket = "mybucket",
@@ -129,7 +130,8 @@ This operation requires permissions to perform the
   ),
   MaxLabels = 123L,
   MinConfidence = 70L
-)}
+)
+}
 
 }
 \keyword{internal}

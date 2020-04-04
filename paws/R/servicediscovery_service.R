@@ -37,10 +37,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- servicediscovery()
+#' \dontrun{
+#' svc <- servicediscovery()
 #' svc$create_http_namespace(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

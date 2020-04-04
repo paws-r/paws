@@ -79,9 +79,10 @@ description parameter in the request.
 }
 
 \examples{
+\dontrun{
 # This example updates the description for the specified security group
 # rule.
-\dontrun{svc$update_security_group_rule_descriptions_ingress(
+svc$update_security_group_rule_descriptions_ingress(
   GroupId = "sg-123abc12",
   IpPermissions = list(
     list(
@@ -96,7 +97,8 @@ description parameter in the request.
       ToPort = 22L
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

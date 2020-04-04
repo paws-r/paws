@@ -77,15 +77,17 @@ For more information about how to use the AWS WAF API, see the \href{https://doc
 }
 
 \examples{
+\dontrun{
 # The following example creates a web ACL named CreateExample.
-\dontrun{svc$create_web_acl(
+svc$create_web_acl(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   DefaultAction = list(
     Type = "ALLOW"
   ),
   MetricName = "CreateExample",
   Name = "CreateExample"
-)}
+)
+}
 
 }
 \keyword{internal}

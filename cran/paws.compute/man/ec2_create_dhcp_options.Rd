@@ -75,8 +75,9 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example creates a DHCP options set.
-\dontrun{svc$create_dhcp_options(
+svc$create_dhcp_options(
   DhcpConfigurations = list(
     list(
       Key = "domain-name-servers",
@@ -86,7 +87,8 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
       )
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

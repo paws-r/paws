@@ -33,11 +33,13 @@ of terminated instances is not returned.
 }
 
 \examples{
+\dontrun{
 # This example describes the health of the instances for the specified
 # load balancer.
-\dontrun{svc$describe_instance_health(
+svc$describe_instance_health(
   LoadBalancerName = "my-load-balancer"
-)}
+)
+}
 
 }
 \keyword{internal}

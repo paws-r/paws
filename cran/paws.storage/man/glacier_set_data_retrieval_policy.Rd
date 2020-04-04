@@ -44,8 +44,9 @@ retrieval policies, see \href{https://docs.aws.amazon.com/amazonglacier/latest/d
 }
 
 \examples{
+\dontrun{
 # The example sets and then enacts a data retrieval policy.
-\dontrun{svc$set_data_retrieval_policy(
+svc$set_data_retrieval_policy(
   Policy = list(
     Rules = list(
       list(
@@ -55,7 +56,8 @@ retrieval policies, see \href{https://docs.aws.amazon.com/amazonglacier/latest/d
     )
   ),
   accountId = "-"
-)}
+)
+}
 
 }
 \keyword{internal}

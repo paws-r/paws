@@ -189,9 +189,10 @@ range keys (which essentially is two put operations).
 }
 
 \examples{
+\dontrun{
 # This example adds three new items to the Music table using a batch of
 # three PutItem requests.
-\dontrun{svc$batch_write_item(
+svc$batch_write_item(
   RequestItems = list(
     Music = list(
       list(
@@ -241,7 +242,8 @@ range keys (which essentially is two put operations).
       )
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

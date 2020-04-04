@@ -75,9 +75,11 @@ modern web apps.
 }
 
 \examples{
-\dontrun{svc <- amplify()
+\dontrun{
+svc <- amplify()
 svc$create_app(
   Foo = 123
-)}
+)
+}
 
 }

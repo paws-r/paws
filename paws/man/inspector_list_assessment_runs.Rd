@@ -82,14 +82,16 @@ that are specified by the ARNs of the assessment templates.
 }
 
 \examples{
+\dontrun{
 # Lists the assessment runs that correspond to the assessment templates
 # that are specified by the ARNs of the assessment templates.
-\dontrun{svc$list_assessment_runs(
+svc$list_assessment_runs(
   assessmentTemplateArns = list(
     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw"
   ),
   maxResults = 123L
-)}
+)
+}
 
 }
 \keyword{internal}

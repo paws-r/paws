@@ -65,16 +65,18 @@ account.
 }
 
 \examples{
+\dontrun{
 # The following example shows the admin of the master account owned by
 # bill@example.com inviting the account owned by juan@example.com to join
 # an organization.
-\dontrun{svc$invite_account_to_organization(
+svc$invite_account_to_organization(
   Notes = "This is a request for Juan's account to join Bill's organization",
   Target = list(
     Id = "juan@example.com",
     Type = "EMAIL"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

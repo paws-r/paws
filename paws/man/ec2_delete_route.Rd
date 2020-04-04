@@ -35,11 +35,13 @@ Deletes the specified route from the specified route table.
 }
 
 \examples{
+\dontrun{
 # This example deletes the specified route from the specified route table.
-\dontrun{svc$delete_route(
+svc$delete_route(
   DestinationCidrBlock = "0.0.0.0/0",
   RouteTableId = "rtb-22574640"
-)}
+)
+}
 
 }
 \keyword{internal}

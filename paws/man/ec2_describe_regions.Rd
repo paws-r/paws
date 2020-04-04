@@ -57,8 +57,10 @@ in the \emph{AWS General Reference}.
 }
 
 \examples{
+\dontrun{
 # This example describes all the regions that are available to you.
-\dontrun{svc$describe_regions()}
+svc$describe_regions()
+}
 
 }
 \keyword{internal}

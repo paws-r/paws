@@ -55,12 +55,14 @@ in the \emph{Amazon Glacier Developer Guide}.
 }
 
 \examples{
+\dontrun{
 # The example deletes the archive specified by the archive ID.
-\dontrun{svc$delete_archive(
+svc$delete_archive(
   accountId = "-",
   archiveId = "NkbByEejwEggmBz2fTHgJrg0XBoDfjP4q6iu87-TjhqG6eGoOY9Z8i1_AUyUsuhPAdTqLHy8pTl5n...",
   vaultName = "examplevault"
-)}
+)
+}
 
 }
 \keyword{internal}

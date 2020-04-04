@@ -33,13 +33,15 @@ You can execute this operation no more than once per second.
 }
 
 \examples{
+\dontrun{
 # The following example sets the position of a receipt rule in a receipt
 # rule set:
-\dontrun{svc$set_receipt_rule_position(
+svc$set_receipt_rule_position(
   After = "PutRuleAfterThisRule",
   RuleName = "RuleToReposition",
   RuleSetName = "MyRuleSet"
-)}
+)
+}
 
 }
 \keyword{internal}

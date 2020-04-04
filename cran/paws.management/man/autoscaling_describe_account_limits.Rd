@@ -17,8 +17,10 @@ For information about requesting an increase in these limits, see
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \examples{
+\dontrun{
 # This example describes the Auto Scaling limits for your AWS account.
-\dontrun{svc$describe_account_limits()}
+svc$describe_account_limits()
+}
 
 }
 \keyword{internal}

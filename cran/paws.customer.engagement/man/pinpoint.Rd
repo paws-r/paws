@@ -144,9 +144,11 @@ Doc Engage API - Amazon Pinpoint API
 }
 
 \examples{
-\dontrun{svc <- pinpoint()
+\dontrun{
+svc <- pinpoint()
 svc$create_app(
   Foo = 123
-)}
+)
+}
 
 }

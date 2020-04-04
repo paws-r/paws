@@ -48,12 +48,14 @@ NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
+#' svc <- elasticbeanstalk()
 #' # The following code aborts a running application version deployment for
 #' # an environment named my-env:
-#' \dontrun{svc <- elasticbeanstalk()
 #' svc$abort_environment_update(
 #'   EnvironmentName = "my-env"
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

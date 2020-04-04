@@ -39,8 +39,9 @@ in the \emph{Classic Load Balancers Guide}.
 }
 
 \examples{
+\dontrun{
 # This example adds two tags to the specified load balancer.
-\dontrun{svc$add_tags(
+svc$add_tags(
   LoadBalancerNames = list(
     "my-load-balancer"
   ),
@@ -54,7 +55,8 @@ in the \emph{Classic Load Balancers Guide}.
       Value = "digital-media"
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

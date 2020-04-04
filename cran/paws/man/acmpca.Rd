@@ -70,9 +70,11 @@ in the ACM Private CA user guide.
 }
 
 \examples{
-\dontrun{svc <- acmpca()
+\dontrun{
+svc <- acmpca()
 svc$create_certificate_authority(
   Foo = 123
-)}
+)
+}
 
 }

@@ -79,9 +79,11 @@ import or export operations used to create or copy assets.
 }
 
 \examples{
-\dontrun{svc <- dataexchange()
+\dontrun{
+svc <- dataexchange()
 svc$cancel_job(
   Foo = 123
-)}
+)
+}
 
 }

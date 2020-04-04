@@ -41,12 +41,14 @@ For more information about Easy DKIM signing, go to the \href{https://docs.aws.a
 }
 
 \examples{
+\dontrun{
 # The following example configures Amazon SES to Easy DKIM-sign the email
 # sent from an identity:
-\dontrun{svc$set_identity_dkim_enabled(
+svc$set_identity_dkim_enabled(
   DkimEnabled = TRUE,
   Identity = "user@example.com"
-)}
+)
+}
 
 }
 \keyword{internal}

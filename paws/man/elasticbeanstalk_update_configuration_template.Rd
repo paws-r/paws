@@ -68,10 +68,11 @@ Related Topics
 }
 
 \examples{
+\dontrun{
 # The following operation removes the configured CloudWatch custom health
 # metrics configuration ConfigDocument from a saved configuration template
 # named my-template:
-\dontrun{svc$update_configuration_template(
+svc$update_configuration_template(
   ApplicationName = "my-app",
   OptionsToRemove = list(
     list(
@@ -80,7 +81,8 @@ Related Topics
     )
   ),
   TemplateName = "my-template"
-)}
+)
+}
 
 }
 \keyword{internal}

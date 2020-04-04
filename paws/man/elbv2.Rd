@@ -96,8 +96,9 @@ they complete at most one time. If you repeat an operation, it succeeds.
 }
 
 \examples{
+\dontrun{
+svc <- elbv2()
 # This example adds the specified tags to the specified load balancer.
-\dontrun{svc <- elbv2()
 svc$add_tags(
   ResourceArns = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/5..."
@@ -112,6 +113,7 @@ svc$add_tags(
       Value = "digital-media"
     )
   )
-)}
+)
+}
 
 }

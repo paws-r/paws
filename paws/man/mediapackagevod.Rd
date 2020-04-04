@@ -49,9 +49,11 @@ AWS Elemental MediaPackage VOD
 }
 
 \examples{
-\dontrun{svc <- mediapackagevod()
+\dontrun{
+svc <- mediapackagevod()
 svc$create_asset(
   Foo = 123
-)}
+)
+}
 
 }

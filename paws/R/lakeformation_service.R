@@ -30,10 +30,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- lakeformation()
+#' \dontrun{
+#' svc <- lakeformation()
 #' svc$batch_grant_permissions(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

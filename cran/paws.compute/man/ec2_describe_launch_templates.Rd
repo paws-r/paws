@@ -64,12 +64,14 @@ Describes one or more launch templates.
 }
 
 \examples{
+\dontrun{
 # This example describes the specified launch template.
-\dontrun{svc$describe_launch_templates(
+svc$describe_launch_templates(
   LaunchTemplateIds = list(
     "lt-01238c059e3466abc"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

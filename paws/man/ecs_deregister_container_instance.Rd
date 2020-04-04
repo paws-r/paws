@@ -62,15 +62,17 @@ when terminated).
 }
 
 \examples{
+\dontrun{
 # This example deregisters a container instance from the specified cluster
 # in your default region. If there are still tasks running on the
 # container instance, you must either stop those tasks before
 # deregistering, or use the force option.
-\dontrun{svc$deregister_container_instance(
+svc$deregister_container_instance(
   cluster = "default",
   containerInstance = "container_instance_UUID",
   force = TRUE
-)}
+)
+}
 
 }
 \keyword{internal}

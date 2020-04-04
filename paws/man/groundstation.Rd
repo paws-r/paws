@@ -66,9 +66,11 @@ build or manage your own ground station infrastructure.
 }
 
 \examples{
-\dontrun{svc <- groundstation()
+\dontrun{
+svc <- groundstation()
 svc$cancel_contact(
   Foo = 123
-)}
+)
+}
 
 }

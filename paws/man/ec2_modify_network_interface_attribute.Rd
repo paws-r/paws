@@ -59,43 +59,45 @@ security groups from an existing EC2 instance.
 }
 
 \examples{
+\dontrun{
 # This example modifies the attachment attribute of the specified network
 # interface.
-\dontrun{svc$modify_network_interface_attribute(
+svc$modify_network_interface_attribute(
   Attachment = list(
     AttachmentId = "eni-attach-43348162",
     DeleteOnTermination = FALSE
   ),
   NetworkInterfaceId = "eni-686ea200"
-)}
+)
 
 # This example modifies the description attribute of the specified network
 # interface.
-\dontrun{svc$modify_network_interface_attribute(
+svc$modify_network_interface_attribute(
   Description = list(
     Value = "My description"
   ),
   NetworkInterfaceId = "eni-686ea200"
-)}
+)
 
 # This example command modifies the groupSet attribute of the specified
 # network interface.
-\dontrun{svc$modify_network_interface_attribute(
+svc$modify_network_interface_attribute(
   Groups = list(
     "sg-903004f8",
     "sg-1a2b3c4d"
   ),
   NetworkInterfaceId = "eni-686ea200"
-)}
+)
 
 # This example command modifies the sourceDestCheck attribute of the
 # specified network interface.
-\dontrun{svc$modify_network_interface_attribute(
+svc$modify_network_interface_attribute(
   NetworkInterfaceId = "eni-686ea200",
   SourceDestCheck = list(
     Value = FALSE
   )
-)}
+)
+}
 
 }
 \keyword{internal}

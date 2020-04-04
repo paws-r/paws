@@ -23,10 +23,12 @@ Deleting this resource does not stop an in-progress run.
 }
 
 \examples{
+\dontrun{
 # The following example deletes a specific test run.
-\dontrun{svc$delete_run(
+svc$delete_run(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:EXAMPLE-GUID-123-456"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -39,14 +39,16 @@ DescribeLoadBalancers. The instances remain running.
 }
 
 \examples{
+\dontrun{
 # This example detaches the specified load balancer from the specified
 # Auto Scaling group.
-\dontrun{svc$detach_load_balancers(
+svc$detach_load_balancers(
   AutoScalingGroupName = "my-auto-scaling-group",
   LoadBalancerNames = list(
     "my-load-balancer"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

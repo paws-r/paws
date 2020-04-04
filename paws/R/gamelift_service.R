@@ -67,10 +67,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- gamelift()
+#' \dontrun{
+#' svc <- gamelift()
 #' svc$accept_match(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -35,9 +35,10 @@ current values.
 }
 
 \examples{
+\dontrun{
 # This example enables deletion protection for the specified load
 # balancer.
-\dontrun{svc$modify_load_balancer_attributes(
+svc$modify_load_balancer_attributes(
   Attributes = list(
     list(
       Key = "deletion_protection.enabled",
@@ -45,11 +46,11 @@ current values.
     )
   ),
   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my..."
-)}
+)
 
 # This example changes the idle timeout value for the specified load
 # balancer.
-\dontrun{svc$modify_load_balancer_attributes(
+svc$modify_load_balancer_attributes(
   Attributes = list(
     list(
       Key = "idle_timeout.timeout_seconds",
@@ -57,13 +58,13 @@ current values.
     )
   ),
   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my..."
-)}
+)
 
 # This example enables access logs for the specified load balancer. Note
 # that the S3 bucket must exist in the same region as the load balancer
 # and must have a policy attached that grants access to the Elastic Load
 # Balancing service.
-\dontrun{svc$modify_load_balancer_attributes(
+svc$modify_load_balancer_attributes(
   Attributes = list(
     list(
       Key = "access_logs.s3.enabled",
@@ -79,7 +80,8 @@ current values.
     )
   ),
   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my..."
-)}
+)
+}
 
 }
 \keyword{internal}

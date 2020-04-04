@@ -186,10 +186,11 @@ in the request.
 }
 
 \examples{
+\dontrun{
 # This example creates a launch template that specifies the subnet in
 # which to launch the instance, assigns a public IP address and an IPv6
 # address to the instance, and creates a tag for the instance.
-\dontrun{svc$create_launch_template(
+svc$create_launch_template(
   LaunchTemplateData = list(
     ImageId = "ami-8c1be5f6",
     InstanceType = "t2.small",
@@ -215,7 +216,8 @@ in the request.
   ),
   LaunchTemplateName = "my-template",
   VersionDescription = "WebVersion1"
-)}
+)
+}
 
 }
 \keyword{internal}

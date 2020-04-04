@@ -40,10 +40,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- mediatailor()
+#' \dontrun{
+#' svc <- mediatailor()
 #' svc$delete_playback_configuration(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

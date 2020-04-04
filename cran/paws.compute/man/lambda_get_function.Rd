@@ -41,11 +41,13 @@ version are returned.
 }
 
 \examples{
+\dontrun{
 # This operation retrieves a Lambda function's event source mapping
-\dontrun{svc$get_function(
+svc$get_function(
   FunctionName = "myFunction",
   Qualifier = "1"
-)}
+)
+}
 
 }
 \keyword{internal}

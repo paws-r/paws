@@ -53,11 +53,13 @@ The following operations are related to \code{GetObjectAcl}:
 }
 
 \examples{
+\dontrun{
 # The following example retrieves access control list (ACL) of an object.
-\dontrun{svc$get_object_acl(
+svc$get_object_acl(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
-)}
+)
+}
 
 }
 \keyword{internal}

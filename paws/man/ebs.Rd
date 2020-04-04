@@ -58,9 +58,11 @@ in the \emph{AWS General Reference}.
 }
 
 \examples{
-\dontrun{svc <- ebs()
+\dontrun{
+svc <- ebs()
 svc$get_snapshot_block(
   Foo = 123
-)}
+)
+}
 
 }

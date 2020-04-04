@@ -35,9 +35,10 @@ in the \emph{Classic Load Balancers Guide}.
 }
 
 \examples{
+\dontrun{
 # This example specifies the health check settings used to evaluate the
 # health of your backend EC2 instances.
-\dontrun{svc$configure_health_check(
+svc$configure_health_check(
   HealthCheck = list(
     HealthyThreshold = 2L,
     Interval = 30L,
@@ -46,7 +47,8 @@ in the \emph{Classic Load Balancers Guide}.
     UnhealthyThreshold = 2L
   ),
   LoadBalancerName = "my-load-balancer"
-)}
+)
+}
 
 }
 \keyword{internal}

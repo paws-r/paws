@@ -52,8 +52,9 @@ application administrators to launch and use shared file storage.
 }
 
 \examples{
+\dontrun{
+svc <- fsx()
 # This operation creates a new backup.
-\dontrun{svc <- fsx()
 svc$create_backup(
   FileSystemId = "fs-0498eed5fe91001ec",
   Tags = list(
@@ -62,6 +63,7 @@ svc$create_backup(
       Value = "MyBackup"
     )
   )
-)}
+)
+}
 
 }

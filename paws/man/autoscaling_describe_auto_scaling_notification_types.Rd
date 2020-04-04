@@ -12,8 +12,10 @@ Describes the notification types that are supported by Amazon EC2 Auto
 Scaling.
 }
 \examples{
+\dontrun{
 # This example describes the available notification types.
-\dontrun{svc$describe_auto_scaling_notification_types()}
+svc$describe_auto_scaling_notification_types()
+}
 
 }
 \keyword{internal}

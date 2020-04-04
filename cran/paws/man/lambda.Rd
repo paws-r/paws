@@ -91,9 +91,10 @@ in the \strong{AWS Lambda Developer Guide}.
 }
 
 \examples{
+\dontrun{
+svc <- lambda()
 # This example adds a permission for an S3 bucket to invoke a Lambda
 # function.
-\dontrun{svc <- lambda()
 svc$add_permission(
   Action = "lambda:InvokeFunction",
   FunctionName = "MyFunction",
@@ -101,6 +102,7 @@ svc$add_permission(
   SourceAccount = "123456789012",
   SourceArn = "arn:aws:s3:::examplebucket/*",
   StatementId = "ID-1"
-)}
+)
+}
 
 }

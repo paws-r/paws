@@ -46,14 +46,16 @@ account.
 }
 
 \examples{
+\dontrun{
 # The following example shows how to create an OU that is named
 # AccountingOU. The new OU is directly under the root.:
 # 
 # 
-\dontrun{svc$create_organizational_unit(
+svc$create_organizational_unit(
   Name = "AccountingOU",
   ParentId = "r-examplerootid111"
-)}
+)
+}
 
 }
 \keyword{internal}

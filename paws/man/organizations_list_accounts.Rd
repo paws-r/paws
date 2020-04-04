@@ -47,9 +47,11 @@ account.
 }
 
 \examples{
+\dontrun{
 # The following example shows you how to request a list of the accounts in
 # an organization:
-\dontrun{svc$list_accounts()}
+svc$list_accounts()
+}
 
 }
 \keyword{internal}

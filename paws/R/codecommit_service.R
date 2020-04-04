@@ -297,10 +297,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- codecommit()
+#' \dontrun{
+#' svc <- codecommit()
 #' svc$associate_approval_rule_template_with_repository(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

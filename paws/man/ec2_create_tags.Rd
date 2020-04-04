@@ -52,9 +52,10 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example adds the tag Stack=production to the specified image, or
 # overwrites an existing tag for the AMI where the tag key is Stack.
-\dontrun{svc$create_tags(
+svc$create_tags(
   Resources = list(
     "ami-78a54011"
   ),
@@ -64,7 +65,8 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
       Value = "production"
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -51,12 +51,14 @@ a \verb{404 Not found} error. For more information about vault lock policies,
 }
 
 \examples{
+\dontrun{
 # The example retrieves the attributes from the lock-policy subresource
 # set on the vault named examplevault.
-\dontrun{svc$get_vault_lock(
+svc$get_vault_lock(
   accountId = "-",
   vaultName = "examplevault"
-)}
+)
+}
 
 }
 \keyword{internal}

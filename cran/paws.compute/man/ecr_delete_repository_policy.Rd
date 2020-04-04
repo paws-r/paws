@@ -26,11 +26,13 @@ Deletes the repository policy from a specified repository.
 }
 
 \examples{
+\dontrun{
 # This example deletes the policy associated with the repository named
 # ubuntu in the current account.
-\dontrun{svc$delete_repository_policy(
+svc$delete_repository_policy(
   repositoryName = "ubuntu"
-)}
+)
+}
 
 }
 \keyword{internal}

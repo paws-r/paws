@@ -31,9 +31,10 @@ specified by the ARN of the assessment template.
 }
 
 \examples{
+\dontrun{
 # Sets tags (key and value pairs) to the assessment template that is
 # specified by the ARN of the assessment template.
-\dontrun{svc$set_tags_for_resource(
+svc$set_tags_for_resource(
   resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-7sbz2...",
   tags = list(
     list(
@@ -41,7 +42,8 @@ specified by the ARN of the assessment template.
       value = "example"
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

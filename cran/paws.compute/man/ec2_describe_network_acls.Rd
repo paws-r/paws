@@ -88,12 +88,14 @@ the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example describes the specified network ACL.
-\dontrun{svc$describe_network_acls(
+svc$describe_network_acls(
   NetworkAclIds = list(
     "acl-5fb85d36"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

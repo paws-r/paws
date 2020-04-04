@@ -49,10 +49,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- athena()
+#' \dontrun{
+#' svc <- athena()
 #' svc$batch_get_named_query(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

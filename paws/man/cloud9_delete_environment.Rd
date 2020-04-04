@@ -21,10 +21,12 @@ is connected to the environment, also terminates the instance.
 }
 
 \examples{
+\dontrun{
 # 
-\dontrun{svc$delete_environment(
+svc$delete_environment(
   environmentId = "8d9967e2f0624182b74e7690ad69ebEX"
-)}
+)
+}
 
 }
 \keyword{internal}

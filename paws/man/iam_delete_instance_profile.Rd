@@ -33,11 +33,13 @@ For more information about instance profiles, go to \href{https://docs.aws.amazo
 }
 
 \examples{
+\dontrun{
 # The following command deletes the instance profile named
 # ExampleInstanceProfile
-\dontrun{svc$delete_instance_profile(
+svc$delete_instance_profile(
   InstanceProfileName = "ExampleInstanceProfile"
-)}
+)
+}
 
 }
 \keyword{internal}

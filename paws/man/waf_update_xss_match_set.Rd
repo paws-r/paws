@@ -82,9 +82,10 @@ HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developergui
 }
 
 \examples{
+\dontrun{
 # The following example deletes an XssMatchTuple object (filters) in an
 # XssMatchSet with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-\dontrun{svc$update_xss_match_set(
+svc$update_xss_match_set(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   Updates = list(
     list(
@@ -98,7 +99,8 @@ HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developergui
     )
   ),
   XssMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-)}
+)
+}
 
 }
 \keyword{internal}

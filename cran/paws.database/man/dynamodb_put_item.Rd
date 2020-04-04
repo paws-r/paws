@@ -294,8 +294,9 @@ in the \emph{Amazon DynamoDB Developer Guide}.
 }
 
 \examples{
+\dontrun{
 # This example adds a new item to the Music table.
-\dontrun{svc$put_item(
+svc$put_item(
   Item = list(
     AlbumTitle = list(
       S = "Somewhat Famous"
@@ -309,7 +310,8 @@ in the \emph{Amazon DynamoDB Developer Guide}.
   ),
   ReturnConsumedCapacity = "TOTAL",
   TableName = "Music"
-)}
+)
+}
 
 }
 \keyword{internal}

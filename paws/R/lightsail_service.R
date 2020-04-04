@@ -44,10 +44,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- lightsail()
+#' \dontrun{
+#' svc <- lightsail()
 #' svc$allocate_static_ip(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -137,9 +137,10 @@ This operation requires permissions for the
 }
 
 \examples{
+\dontrun{
 # This operation creates a new file system with the default generalpurpose
 # performance mode.
-\dontrun{svc$create_file_system(
+svc$create_file_system(
   CreationToken = "tokenstring",
   PerformanceMode = "generalPurpose",
   Tags = list(
@@ -148,7 +149,8 @@ This operation requires permissions for the
       Value = "MyFileSystem"
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

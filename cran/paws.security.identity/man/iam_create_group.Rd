@@ -43,10 +43,12 @@ in the \emph{IAM User Guide}.
 }
 
 \examples{
+\dontrun{
 # The following command creates an IAM group named Admins.
-\dontrun{svc$create_group(
+svc$create_group(
   GroupName = "Admins"
-)}
+)
+}
 
 }
 \keyword{internal}

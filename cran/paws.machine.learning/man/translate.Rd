@@ -47,9 +47,11 @@ set of languages.
 }
 
 \examples{
-\dontrun{svc <- translate()
+\dontrun{
+svc <- translate()
 svc$delete_terminology(
   Foo = 123
-)}
+)
+}
 
 }

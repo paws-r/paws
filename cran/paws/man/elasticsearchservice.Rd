@@ -70,9 +70,11 @@ a current list of supported regions and endpoints, see \href{http://docs.aws.ama
 }
 
 \examples{
-\dontrun{svc <- elasticsearchservice()
+\dontrun{
+svc <- elasticsearchservice()
 svc$add_tags(
   Foo = 123
-)}
+)
+}
 
 }

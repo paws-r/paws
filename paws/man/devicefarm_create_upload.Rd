@@ -72,13 +72,15 @@ Uploads an app or test scripts.
 }
 
 \examples{
+\dontrun{
 # The following example creates a new Appium Python test package upload
 # inside an existing project.
-\dontrun{svc$create_upload(
+svc$create_upload(
   name = "MyAppiumPythonUpload",
   type = "APPIUM_PYTHON_TEST_PACKAGE",
   projectArn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
-)}
+)
+}
 
 }
 \keyword{internal}

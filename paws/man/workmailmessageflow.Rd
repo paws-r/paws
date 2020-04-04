@@ -39,9 +39,11 @@ are being sent and received by a WorkMail organization.
 }
 
 \examples{
-\dontrun{svc <- workmailmessageflow()
+\dontrun{
+svc <- workmailmessageflow()
 svc$get_raw_message_content(
   Foo = 123
-)}
+)
+}
 
 }

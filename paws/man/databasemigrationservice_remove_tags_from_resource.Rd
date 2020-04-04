@@ -26,11 +26,13 @@ Removes metadata tags from a DMS resource.
 }
 
 \examples{
+\dontrun{
 # Removes metadata tags from an AWS DMS resource.
-\dontrun{svc$remove_tags_from_resource(
+svc$remove_tags_from_resource(
   ResourceArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ASXWXJZLNWNT5HTWCGV2BUJQ7E",
   TagKeys = list()
-)}
+)
+}
 
 }
 \keyword{internal}

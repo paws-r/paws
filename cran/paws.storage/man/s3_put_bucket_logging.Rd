@@ -94,10 +94,11 @@ The following operations are related to \code{PutBucketLogging}:
 }
 
 \examples{
+\dontrun{
 # The following example sets logging policy on a bucket. For the Log
 # Delivery group to deliver logs to the destination bucket, it needs
 # permission for the READ_ACP action which the policy grants.
-\dontrun{svc$put_bucket_logging(
+svc$put_bucket_logging(
   Bucket = "sourcebucket",
   BucketLoggingStatus = list(
     LoggingEnabled = list(
@@ -114,7 +115,8 @@ The following operations are related to \code{PutBucketLogging}:
       TargetPrefix = "MyBucketLogs/"
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

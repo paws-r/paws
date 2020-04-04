@@ -41,10 +41,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- elasticache()
+#' \dontrun{
+#' svc <- elasticache()
 #' svc$add_tags_to_resource(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

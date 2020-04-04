@@ -48,9 +48,11 @@ receive a lower price for that usage. For more information, see the \href{https:
 }
 
 \examples{
-\dontrun{svc <- savingsplans()
+\dontrun{
+svc <- savingsplans()
 svc$create_savings_plan(
   Foo = 123
-)}
+)
+}
 
 }

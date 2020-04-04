@@ -53,9 +53,10 @@ current region.
 }
 
 \examples{
+\dontrun{
 # Returns information about replication tasks for your account in the
 # current region.
-\dontrun{svc$describe_replication_tasks(
+svc$describe_replication_tasks(
   Filters = list(
     list(
       Name = "string",
@@ -67,7 +68,8 @@ current region.
   ),
   Marker = "",
   MaxRecords = 123L
-)}
+)
+}
 
 }
 \keyword{internal}

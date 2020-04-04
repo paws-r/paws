@@ -54,11 +54,13 @@ credentials even if the AWS account has no associated users.
 }
 
 \examples{
+\dontrun{
 # The following command lists the signing certificates for the IAM user
 # named Bob.
-\dontrun{svc$list_signing_certificates(
+svc$list_signing_certificates(
   UserName = "Bob"
-)}
+)
+}
 
 }
 \keyword{internal}

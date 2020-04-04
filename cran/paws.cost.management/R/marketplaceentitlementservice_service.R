@@ -41,10 +41,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- marketplaceentitlementservice()
+#' \dontrun{
+#' svc <- marketplaceentitlementservice()
 #' svc$get_entitlements(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

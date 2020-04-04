@@ -38,9 +38,11 @@ Amazon Personalize Events
 }
 
 \examples{
-\dontrun{svc <- personalizeevents()
+\dontrun{
+svc <- personalizeevents()
 svc$put_events(
   Foo = 123
-)}
+)
+}
 
 }

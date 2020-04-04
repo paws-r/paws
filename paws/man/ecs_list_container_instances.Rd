@@ -60,11 +60,13 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 
 \examples{
+\dontrun{
 # This example lists all of your available container instances in the
 # specified cluster in your default region.
-\dontrun{svc$list_container_instances(
+svc$list_container_instances(
   cluster = "default"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -62,23 +62,25 @@ confirm that the remapping is complete.
 }
 
 \examples{
+\dontrun{
 # This example assigns the specified secondary private IP address to the
 # specified network interface.
-\dontrun{svc$assign_private_ip_addresses(
+svc$assign_private_ip_addresses(
   NetworkInterfaceId = "eni-e5aa89a3",
   PrivateIpAddresses = list(
     "10.0.0.82"
   )
-)}
+)
 
 # This example assigns two secondary private IP addresses to the specified
 # network interface. Amazon EC2 automatically assigns these IP addresses
 # from the available IP addresses in the CIDR block range of the subnet
 # the network interface is associated with.
-\dontrun{svc$assign_private_ip_addresses(
+svc$assign_private_ip_addresses(
   NetworkInterfaceId = "eni-e5aa89a3",
   SecondaryPrivateIpAddressCount = 2L
-)}
+)
+}
 
 }
 \keyword{internal}

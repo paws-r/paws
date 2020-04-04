@@ -27,10 +27,12 @@ NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # Deletes a specified pronunciation lexicon stored in an AWS Region.
-#' \dontrun{svc$delete_lexicon(
+#' svc$delete_lexicon(
 #'   Name = "example"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -105,13 +107,15 @@ polly_delete_lexicon <- function(Name) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # Returns the list of voices that are available for use when requesting
 #' # speech synthesis. Displayed languages are those within the specified
 #' # language code. If no language code is specified, voices for all
 #' # available languages are displayed.
-#' \dontrun{svc$describe_voices(
+#' svc$describe_voices(
 #'   LanguageCode = "en-GB"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -153,11 +157,13 @@ polly_describe_voices <- function(Engine = NULL, LanguageCode = NULL, IncludeAdd
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # Returns the content of the specified pronunciation lexicon stored in an
 #' # AWS Region.
-#' \dontrun{svc$get_lexicon(
+#' svc$get_lexicon(
 #'   Name = ""
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -238,8 +244,10 @@ polly_get_speech_synthesis_task <- function(TaskId) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # Returns a list of pronunciation lexicons stored in an AWS Region.
-#' \dontrun{svc$list_lexicons()}
+#' svc$list_lexicons()
+#' }
 #'
 #' @keywords internal
 #'
@@ -333,11 +341,13 @@ polly_list_speech_synthesis_tasks <- function(MaxResults = NULL, NextToken = NUL
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # Stores a pronunciation lexicon in an AWS Region.
-#' \dontrun{svc$put_lexicon(
+#' svc$put_lexicon(
 #'   Content = "file://example.pls",
 #'   Name = "W3C"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -532,8 +542,9 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # Synthesizes plain text or SSML into a file of human-like speech.
-#' \dontrun{svc$synthesize_speech(
+#' svc$synthesize_speech(
 #'   LexiconNames = list(
 #'     "example"
 #'   ),
@@ -542,7 +553,8 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 #'   Text = "All Gaul is divided into three parts",
 #'   TextType = "text",
 #'   VoiceId = "Joanna"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'

@@ -60,13 +60,15 @@ This operation requires permissions to perform the
 }
 
 \examples{
+\dontrun{
 # Returns the list of voices that are available for use when requesting
 # speech synthesis. Displayed languages are those within the specified
 # language code. If no language code is specified, voices for all
 # available languages are displayed.
-\dontrun{svc$describe_voices(
+svc$describe_voices(
   LanguageCode = "en-GB"
-)}
+)
+}
 
 }
 \keyword{internal}

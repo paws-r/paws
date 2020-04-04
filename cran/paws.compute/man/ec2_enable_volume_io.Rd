@@ -28,10 +28,12 @@ because the data on the volume was potentially inconsistent.
 }
 
 \examples{
+\dontrun{
 # This example enables I/O on volume `vol-1234567890abcdef0`.
-\dontrun{svc$enable_volume_io(
+svc$enable_volume_io(
   VolumeId = "vol-1234567890abcdef0"
-)}
+)
+}
 
 }
 \keyword{internal}

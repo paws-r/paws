@@ -51,10 +51,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- migrationhubconfig()
+#' \dontrun{
+#' svc <- migrationhubconfig()
 #' svc$create_home_region_control(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

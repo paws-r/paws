@@ -35,10 +35,12 @@ SDKs provide similar functionality.
 }
 
 \examples{
+\dontrun{
 # The following command gets information about the role named Test-Role.
-\dontrun{svc$get_role(
+svc$get_role(
   RoleName = "Test-Role"
-)}
+)
+}
 
 }
 \keyword{internal}

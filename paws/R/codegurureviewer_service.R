@@ -31,10 +31,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- codegurureviewer()
+#' \dontrun{
+#' svc <- codegurureviewer()
 #' svc$associate_repository(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

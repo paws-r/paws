@@ -42,10 +42,12 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example creates a key pair named my-key-pair.
-\dontrun{svc$create_key_pair(
+svc$create_key_pair(
   KeyName = "my-key-pair"
-)}
+)
+}
 
 }
 \keyword{internal}

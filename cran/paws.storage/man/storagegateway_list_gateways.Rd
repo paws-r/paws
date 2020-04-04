@@ -38,13 +38,15 @@ next page of gateways.
 }
 
 \examples{
+\dontrun{
 # Lists gateways owned by an AWS account in a specified region as
 # requested. Results are sorted by gateway ARN up to a maximum of 100
 # gateways.
-\dontrun{svc$list_gateways(
+svc$list_gateways(
   Limit = 2L,
   Marker = "1"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -89,9 +89,11 @@ To delete an endpoint, use the following AWS CLI command:
 }
 
 \examples{
-\dontrun{svc <- route53resolver()
+\dontrun{
+svc <- route53resolver()
 svc$associate_resolver_endpoint_ip_address(
   Foo = 123
-)}
+)
+}
 
 }

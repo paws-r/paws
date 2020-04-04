@@ -30,10 +30,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- pinpoint()
+#' \dontrun{
+#' svc <- pinpoint()
 #' svc$create_app(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

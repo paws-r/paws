@@ -40,10 +40,12 @@ Use the \code{DescribeTable} action to check the status of the table.
 }
 
 \examples{
+\dontrun{
 # This example deletes the Music table.
-\dontrun{svc$delete_table(
+svc$delete_table(
   TableName = "Music"
-)}
+)
+}
 
 }
 \keyword{internal}

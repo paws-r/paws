@@ -32,10 +32,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- elastictranscoder()
+#' \dontrun{
+#' svc <- elastictranscoder()
 #' svc$cancel_job(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

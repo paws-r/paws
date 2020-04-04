@@ -55,8 +55,9 @@ in the \emph{AWS Key Management Service Developer Guide}.
 }
 
 \examples{
+\dontrun{
 # The following example tags a CMK.
-\dontrun{svc$tag_resource(
+svc$tag_resource(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
   Tags = list(
     list(
@@ -64,7 +65,8 @@ in the \emph{AWS Key Management Service Developer Guide}.
       TagValue = "Test"
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

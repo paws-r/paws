@@ -74,8 +74,9 @@ You can execute this operation no more than once per second.
 }
 
 \examples{
+\dontrun{
 # The following example updates a receipt rule to use an Amazon S3 action:
-\dontrun{svc$update_receipt_rule(
+svc$update_receipt_rule(
   Rule = list(
     Actions = list(
       list(
@@ -91,7 +92,8 @@ You can execute this operation no more than once per second.
     TlsPolicy = "Optional"
   ),
   RuleSetName = "MyRuleSet"
-)}
+)
+}
 
 }
 \keyword{internal}

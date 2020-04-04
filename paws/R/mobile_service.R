@@ -33,10 +33,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- mobile()
+#' \dontrun{
+#' svc <- mobile()
 #' svc$create_project(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

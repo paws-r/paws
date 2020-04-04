@@ -214,8 +214,9 @@ Creates an endpoint using the provided settings.
 }
 
 \examples{
+\dontrun{
 # Creates an endpoint using the provided settings.
-\dontrun{svc$create_endpoint(
+svc$create_endpoint(
   CertificateArn = "",
   DatabaseName = "testdb",
   EndpointIdentifier = "test-endpoint-1",
@@ -234,7 +235,8 @@ Creates an endpoint using the provided settings.
     )
   ),
   Username = "username"
-)}
+)
+}
 
 }
 \keyword{internal}

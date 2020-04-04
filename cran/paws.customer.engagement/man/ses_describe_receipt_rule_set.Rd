@@ -25,11 +25,13 @@ You can execute this operation no more than once per second.
 }
 
 \examples{
+\dontrun{
 # The following example returns the metadata and receipt rules of a
 # receipt rule set:
-\dontrun{svc$describe_receipt_rule_set(
+svc$describe_receipt_rule_set(
   RuleSetName = "MyRuleSet"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -74,14 +74,16 @@ in the \emph{Amazon Glacier Developer Guide}.
 }
 
 \examples{
+\dontrun{
 # The example adds an archive to a vault.
-\dontrun{svc$upload_archive(
+svc$upload_archive(
   accountId = "-",
   archiveDescription = "",
   body = "example-data-to-upload",
   checksum = "",
   vaultName = "my-vault"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -47,9 +47,11 @@ Amazon SimpleDB is a web service providing the core database functions of data i
 }
 
 \examples{
-\dontrun{svc <- simpledb()
+\dontrun{
+svc <- simpledb()
 svc$batch_delete_attributes(
   Foo = 123
-)}
+)
+}
 
 }

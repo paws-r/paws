@@ -32,12 +32,14 @@ configuration remains in existence until it is deleted with this action.
 }
 
 \examples{
+\dontrun{
 # The following operation deletes a draft configuration for an environment
 # named my-env:
-\dontrun{svc$delete_environment_configuration(
+svc$delete_environment_configuration(
   ApplicationName = "my-app",
   EnvironmentName = "my-env"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -29,10 +29,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- personalizeruntime()
+#' \dontrun{
+#' svc <- personalizeruntime()
 #' svc$get_personalized_ranking(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

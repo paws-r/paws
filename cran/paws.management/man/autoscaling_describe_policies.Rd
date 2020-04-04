@@ -43,11 +43,13 @@ Describes the policies for the specified Auto Scaling group.
 }
 
 \examples{
+\dontrun{
 # This example describes the policies for the specified Auto Scaling
 # group.
-\dontrun{svc$describe_policies(
+svc$describe_policies(
   AutoScalingGroupName = "my-auto-scaling-group"
-)}
+)
+}
 
 }
 \keyword{internal}

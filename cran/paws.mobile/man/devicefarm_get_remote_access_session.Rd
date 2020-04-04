@@ -21,10 +21,12 @@ Returns a link to a currently running remote access session.
 }
 
 \examples{
+\dontrun{
 # The following example gets a specific remote access session.
-\dontrun{svc$get_remote_access_session(
+svc$get_remote_access_session(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -46,10 +46,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- guardduty()
+#' \dontrun{
+#' svc <- guardduty()
 #' svc$accept_invitation(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

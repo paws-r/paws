@@ -31,8 +31,9 @@ NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
+#' svc <- fsx()
 #' # This operation creates a new backup.
-#' \dontrun{svc <- fsx()
 #' svc$create_backup(
 #'   FileSystemId = "fs-0498eed5fe91001ec",
 #'   Tags = list(
@@ -41,7 +42,8 @@ NULL
 #'       Value = "MyBackup"
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

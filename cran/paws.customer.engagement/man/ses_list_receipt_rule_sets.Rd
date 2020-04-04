@@ -30,11 +30,13 @@ You can execute this operation no more than once per second.
 }
 
 \examples{
+\dontrun{
 # The following example lists the receipt rule sets that exist under an
 # AWS account:
-\dontrun{svc$list_receipt_rule_sets(
+svc$list_receipt_rule_sets(
   NextToken = ""
-)}
+)
+}
 
 }
 \keyword{internal}

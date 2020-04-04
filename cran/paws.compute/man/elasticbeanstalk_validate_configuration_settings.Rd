@@ -49,9 +49,10 @@ associated with the selection of option values.
 }
 
 \examples{
+\dontrun{
 # The following operation validates a CloudWatch custom metrics config
 # document:
-\dontrun{svc$validate_configuration_settings(
+svc$validate_configuration_settings(
   ApplicationName = "my-app",
   EnvironmentName = "my-env",
   OptionSettings = list(
@@ -61,7 +62,8 @@ associated with the selection of option values.
       Value = "\{\"CloudWatchMetrics\": \{\"Environment\": \{\"ApplicationLatencyP99.9\": null,..."
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

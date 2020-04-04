@@ -22,13 +22,15 @@ Gets information about AWS Cloud9 development environments.
 }
 
 \examples{
+\dontrun{
 # 
-\dontrun{svc$describe_environments(
+svc$describe_environments(
   environmentIds = list(
     "8d9967e2f0624182b74e7690ad69ebEX",
     "349c86d4579e4e7298d500ff57a6b2EX"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

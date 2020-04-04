@@ -216,8 +216,9 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example creates a launch configuration.
-\dontrun{svc$create_launch_configuration(
+svc$create_launch_configuration(
   IamInstanceProfile = "my-iam-role",
   ImageId = "ami-12345678",
   InstanceType = "m3.medium",
@@ -225,7 +226,8 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
   SecurityGroups = list(
     "sg-eb2af88e"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

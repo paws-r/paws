@@ -67,9 +67,11 @@ networks that are built around transit gateways.
 }
 
 \examples{
-\dontrun{svc <- networkmanager()
+\dontrun{
+svc <- networkmanager()
 svc$associate_customer_gateway(
   Foo = 123
-)}
+)
+}
 
 }

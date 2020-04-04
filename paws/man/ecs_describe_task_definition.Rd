@@ -35,10 +35,12 @@ or service references them.
 }
 
 \examples{
+\dontrun{
 # This example provides a description of the specified task definition.
-\dontrun{svc$describe_task_definition(
+svc$describe_task_definition(
   taskDefinition = "hello_world:8"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -67,9 +67,11 @@ For more information, see the \href{https://docs.aws.amazon.com/ram/latest/userg
 }
 
 \examples{
-\dontrun{svc <- ram()
+\dontrun{
+svc <- ram()
 svc$accept_resource_share_invitation(
   Foo = 123
-)}
+)
+}
 
 }

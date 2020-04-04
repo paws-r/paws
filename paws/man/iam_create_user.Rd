@@ -62,11 +62,13 @@ in the \emph{IAM User Guide}.
 }
 
 \examples{
+\dontrun{
 # The following create-user command creates an IAM user named Bob in the
 # current account.
-\dontrun{svc$create_user(
+svc$create_user(
   UserName = "Bob"
-)}
+)
+}
 
 }
 \keyword{internal}

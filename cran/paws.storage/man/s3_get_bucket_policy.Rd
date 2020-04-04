@@ -41,10 +41,12 @@ The following operation is related to \code{GetBucketPolicy}:
 }
 
 \examples{
+\dontrun{
 # The following example returns bucket policy associated with a bucket.
-\dontrun{svc$get_bucket_policy(
+svc$get_bucket_policy(
   Bucket = "examplebucket"
-)}
+)
+}
 
 }
 \keyword{internal}

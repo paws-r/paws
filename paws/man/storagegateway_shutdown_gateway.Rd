@@ -43,11 +43,13 @@ the gateway.
 }
 
 \examples{
+\dontrun{
 # This operation shuts down the gateway service component running in the
 # storage gateway's virtual machine (VM) and not the VM.
-\dontrun{svc$shutdown_gateway(
+svc$shutdown_gateway(
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B"
-)}
+)
+}
 
 }
 \keyword{internal}

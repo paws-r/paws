@@ -31,10 +31,12 @@ and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html
 }
 
 \examples{
+\dontrun{
 # This operation checks to see if a bucket exists.
-\dontrun{svc$head_bucket(
+svc$head_bucket(
   Bucket = "acl1"
-)}
+)
+}
 
 }
 \keyword{internal}

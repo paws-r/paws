@@ -57,11 +57,13 @@ The following operations are related to
 }
 
 \examples{
+\dontrun{
 # The following example retrieves lifecycle configuration on set on a
 # bucket.
-\dontrun{svc$get_bucket_lifecycle_configuration(
+svc$get_bucket_lifecycle_configuration(
   Bucket = "examplebucket"
-)}
+)
+}
 
 }
 \keyword{internal}

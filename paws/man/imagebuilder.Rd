@@ -90,9 +90,11 @@ on AWS.
 }
 
 \examples{
-\dontrun{svc <- imagebuilder()
+\dontrun{
+svc <- imagebuilder()
 svc$cancel_image_creation(
   Foo = 123
-)}
+)
+}
 
 }

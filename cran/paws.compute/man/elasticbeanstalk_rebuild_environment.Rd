@@ -34,11 +34,13 @@ forces a restart.
 }
 
 \examples{
+\dontrun{
 # The following operation terminates and recreates the resources in an
 # environment named my-env:
-\dontrun{svc$rebuild_environment(
+svc$rebuild_environment(
   EnvironmentName = "my-env"
-)}
+)
+}
 
 }
 \keyword{internal}

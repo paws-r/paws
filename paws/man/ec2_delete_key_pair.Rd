@@ -28,10 +28,12 @@ EC2.
 }
 
 \examples{
+\dontrun{
 # This example deletes the specified key pair.
-\dontrun{svc$delete_key_pair(
+svc$delete_key_pair(
   KeyName = "my-key-pair"
-)}
+)
+}
 
 }
 \keyword{internal}

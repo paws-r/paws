@@ -43,10 +43,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- iot()
+#' \dontrun{
+#' svc <- iot()
 #' svc$accept_certificate_transfer(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

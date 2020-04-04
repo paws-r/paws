@@ -44,12 +44,14 @@ Describes one or more of your job queues.
 }
 
 \examples{
+\dontrun{
 # This example describes the HighPriority job queue.
-\dontrun{svc$describe_job_queues(
+svc$describe_job_queues(
   jobQueues = list(
     "HighPriority"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

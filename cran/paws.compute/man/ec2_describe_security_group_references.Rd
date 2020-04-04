@@ -32,13 +32,15 @@ this request.
 }
 
 \examples{
+\dontrun{
 # This example describes the security group references for the specified
 # security group.
-\dontrun{svc$describe_security_group_references(
+svc$describe_security_group_references(
   GroupId = list(
     "sg-903004f8"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

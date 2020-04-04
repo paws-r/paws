@@ -100,9 +100,11 @@ Amazon API Gateway V2
 }
 
 \examples{
-\dontrun{svc <- apigatewayv2()
+\dontrun{
+svc <- apigatewayv2()
 svc$create_api(
   Foo = 123
-)}
+)
+}
 
 }

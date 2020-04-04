@@ -59,11 +59,13 @@ Creates an application that has one configuration template named
 }
 
 \examples{
+\dontrun{
 # The following operation creates a new application named my-app:
-\dontrun{svc$create_application(
+svc$create_application(
   ApplicationName = "my-app",
   Description = "my application"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -84,14 +84,16 @@ gateway.
 }
 
 \examples{
+\dontrun{
 # Creates one or more virtual tapes.
-\dontrun{svc$create_tapes(
+svc$create_tapes(
   ClientToken = "77777",
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
   NumTapesToCreate = 3L,
   TapeBarcodePrefix = "TEST",
   TapeSizeInBytes = 107374182400
-)}
+)
+}
 
 }
 \keyword{internal}

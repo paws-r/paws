@@ -35,10 +35,12 @@ The following operations are related to \code{GetBucketVersioning}:
 }
 
 \examples{
+\dontrun{
 # The following example retrieves bucket versioning configuration.
-\dontrun{svc$get_bucket_versioning(
+svc$get_bucket_versioning(
   Bucket = "examplebucket"
-)}
+)
+}
 
 }
 \keyword{internal}

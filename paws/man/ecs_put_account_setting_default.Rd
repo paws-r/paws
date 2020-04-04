@@ -35,14 +35,16 @@ on a per-Region basis.
 }
 
 \examples{
+\dontrun{
 # This example modifies the default account setting for the specified
 # resource for all IAM users or roles on an account. These changes apply
 # to the entire AWS account, unless an IAM user or role explicitly
 # overrides these settings for themselves.
-\dontrun{svc$put_account_setting_default(
+svc$put_account_setting_default(
   name = "serviceLongArnFormat",
   value = "enabled"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -62,14 +62,16 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example notifies Auto Scaling that the specified lifecycle action
 # is complete so that it can finish launching or terminating the instance.
-\dontrun{svc$complete_lifecycle_action(
+svc$complete_lifecycle_action(
   AutoScalingGroupName = "my-auto-scaling-group",
   LifecycleActionResult = "CONTINUE",
   LifecycleActionToken = "bcd2f1b8-9a78-44d3-8a7a-4dd07d7cf635",
   LifecycleHookName = "my-lifecycle-hook"
-)}
+)
+}
 
 }
 \keyword{internal}

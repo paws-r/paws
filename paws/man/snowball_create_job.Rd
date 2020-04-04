@@ -130,13 +130,14 @@ cluster.
 }
 
 \examples{
+\dontrun{
 # Creates a job to import or export data between Amazon S3 and your
 # on-premises data center. Your AWS account must have the right trust
 # policies and permissions in place to create a job for Snowball. If
 # you're creating a job for a node in a cluster, you only need to provide
 # the clusterId value; the other job attributes are inherited from the
 # cluster.
-\dontrun{svc$create_job(
+svc$create_job(
   AddressId = "ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b",
   Description = "My Job",
   JobType = "IMPORT",
@@ -162,7 +163,8 @@ cluster.
   ShippingOption = "SECOND_DAY",
   SnowballCapacityPreference = "T80",
   SnowballType = "STANDARD"
-)}
+)
+}
 
 }
 \keyword{internal}

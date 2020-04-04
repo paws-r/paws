@@ -45,11 +45,13 @@ This operation requires permission for the \code{lex:GetBots} action.
 }
 
 \examples{
+\dontrun{
 # This example shows how to get a list of all of the bots in your account.
-\dontrun{svc$get_bots(
+svc$get_bots(
   maxResults = 5L,
   nextToken = ""
-)}
+)
+}
 
 }
 \keyword{internal}

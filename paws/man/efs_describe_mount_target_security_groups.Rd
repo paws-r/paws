@@ -32,11 +32,13 @@ target\'s network interface.
 }
 
 \examples{
+\dontrun{
 # This operation describes all of the security groups for a file system's
 # mount target.
-\dontrun{svc$describe_mount_target_security_groups(
+svc$describe_mount_target_security_groups(
   MountTargetId = "fsmt-12340abc"
-)}
+)
+}
 
 }
 \keyword{internal}

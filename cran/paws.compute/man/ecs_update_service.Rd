@@ -204,19 +204,21 @@ with the largest number of running tasks for this service.
 }
 
 \examples{
+\dontrun{
 # This example updates the my-http-service service to use the
 # amazon-ecs-sample task definition.
-\dontrun{svc$update_service(
+svc$update_service(
   service = "my-http-service",
   taskDefinition = "amazon-ecs-sample"
-)}
+)
 
 # This example updates the desired count of the my-http-service service to
 # 10.
-\dontrun{svc$update_service(
+svc$update_service(
   desiredCount = 10L,
   service = "my-http-service"
-)}
+)
+}
 
 }
 \keyword{internal}

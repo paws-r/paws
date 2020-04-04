@@ -43,8 +43,9 @@ Returns a list of all products that match the filter criteria.
 }
 
 \examples{
+\dontrun{
 # This operation returns a list of products that match the given criteria.
-\dontrun{svc$get_products(
+svc$get_products(
   Filters = list(
     list(
       Field = "ServiceCode",
@@ -59,7 +60,8 @@ Returns a list of all products that match the filter criteria.
   ),
   FormatVersion = "aws_v1",
   MaxResults = 1L
-)}
+)
+}
 
 }
 \keyword{internal}

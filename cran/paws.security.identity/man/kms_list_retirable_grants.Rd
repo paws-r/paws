@@ -46,11 +46,13 @@ retire a grant, use RetireGrant.
 }
 
 \examples{
+\dontrun{
 # The following example lists the grants that the specified principal
 # (identity) can retire.
-\dontrun{svc$list_retirable_grants(
+svc$list_retirable_grants(
   RetiringPrincipal = "arn:aws:iam::111122223333:role/ExampleRole"
-)}
+)
+}
 
 }
 \keyword{internal}

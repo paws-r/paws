@@ -31,10 +31,12 @@ running on the instance.
 }
 
 \examples{
+\dontrun{
 # The following command removes the role named Test-Role.
-\dontrun{svc$delete_role(
+svc$delete_role(
   RoleName = "Test-Role"
-)}
+)
+}
 
 }
 \keyword{internal}

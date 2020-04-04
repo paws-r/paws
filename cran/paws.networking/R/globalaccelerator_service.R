@@ -116,10 +116,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- globalaccelerator()
+#' \dontrun{
+#' svc <- globalaccelerator()
 #' svc$create_accelerator(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

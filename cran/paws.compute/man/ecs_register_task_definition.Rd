@@ -466,8 +466,9 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 
 \examples{
+\dontrun{
 # This example registers a task definition to the specified family.
-\dontrun{svc$register_task_definition(
+svc$register_task_definition(
   containerDefinitions = list(
     list(
       name = "sleep",
@@ -484,7 +485,8 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
   family = "sleep360",
   taskRoleArn = "",
   volumes = list()
-)}
+)
+}
 
 }
 \keyword{internal}

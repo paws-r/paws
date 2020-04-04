@@ -31,10 +31,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- translate()
+#' \dontrun{
+#' svc <- translate()
 #' svc$delete_terminology(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

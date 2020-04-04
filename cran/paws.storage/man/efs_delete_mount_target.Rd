@@ -48,10 +48,12 @@ action on the mount target\'s network interface:
 }
 
 \examples{
+\dontrun{
 # This operation deletes a mount target.
-\dontrun{svc$delete_mount_target(
+svc$delete_mount_target(
   MountTargetId = "fsmt-12340abc"
-)}
+)
+}
 
 }
 \keyword{internal}

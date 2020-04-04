@@ -11,9 +11,11 @@ Deletes the password policy for the AWS account. There are no
 parameters.
 }
 \examples{
+\dontrun{
 # The following command removes the password policy from the current AWS
 # account:
-\dontrun{svc$delete_account_password_policy()}
+svc$delete_account_password_policy()
+}
 
 }
 \keyword{internal}

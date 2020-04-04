@@ -91,8 +91,9 @@ with a 200 OK response code.
 }
 
 \examples{
+\dontrun{
+svc <- elb()
 # This example adds two tags to the specified load balancer.
-\dontrun{svc <- elb()
 svc$add_tags(
   LoadBalancerNames = list(
     "my-load-balancer"
@@ -107,6 +108,7 @@ svc$add_tags(
       Value = "digital-media"
     )
   )
-)}
+)
+}
 
 }

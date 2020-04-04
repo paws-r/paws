@@ -42,10 +42,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- signer()
+#' \dontrun{
+#' svc <- signer()
 #' svc$cancel_signing_profile(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

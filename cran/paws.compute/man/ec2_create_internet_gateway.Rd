@@ -28,8 +28,10 @@ For more information about your VPC and internet gateway, see the
 }
 
 \examples{
+\dontrun{
 # This example creates an Internet gateway.
-\dontrun{svc$create_internet_gateway()}
+svc$create_internet_gateway()
+}
 
 }
 \keyword{internal}

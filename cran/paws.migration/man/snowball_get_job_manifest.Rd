@@ -41,6 +41,7 @@ code, expire 90 days after the job is created.
 }
 
 \examples{
+\dontrun{
 # Returns a link to an Amazon S3 presigned URL for the manifest file
 # associated with the specified JobId value. You can access the manifest
 # file for up to 60 minutes after this request has been made. To access
@@ -61,9 +62,10 @@ code, expire 90 days after the job is created.
 # 
 # The credentials of a given job, including its
 # manifest file and unlock code, expire 90 days after the job is created.
-\dontrun{svc$get_job_manifest(
+svc$get_job_manifest(
   JobId = "JID123e4567-e89b-12d3-a456-426655440000"
-)}
+)
+}
 
 }
 \keyword{internal}

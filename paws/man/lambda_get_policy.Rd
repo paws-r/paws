@@ -37,11 +37,13 @@ for a function, version, or alias.
 }
 
 \examples{
+\dontrun{
 # This operation retrieves a Lambda function policy
-\dontrun{svc$get_policy(
+svc$get_policy(
   FunctionName = "myFunction",
   Qualifier = "1"
-)}
+)
+}
 
 }
 \keyword{internal}

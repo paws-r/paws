@@ -53,13 +53,15 @@ in the \emph{Classic Load Balancers Guide}.
 }
 
 \examples{
+\dontrun{
 # This example generates a stickiness policy with sticky session lifetimes
 # controlled by the specified expiration period.
-\dontrun{svc$create_lb_cookie_stickiness_policy(
+svc$create_lb_cookie_stickiness_policy(
   CookieExpirationPeriod = 60L,
   LoadBalancerName = "my-load-balancer",
   PolicyName = "my-duration-cookie-policy"
-)}
+)
+}
 
 }
 \keyword{internal}

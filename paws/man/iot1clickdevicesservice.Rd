@@ -52,9 +52,11 @@ the supported web services protocols.
 }
 
 \examples{
-\dontrun{svc <- iot1clickdevicesservice()
+\dontrun{
+svc <- iot1clickdevicesservice()
 svc$claim_devices_by_claim_code(
   Foo = 123
-)}
+)
+}
 
 }

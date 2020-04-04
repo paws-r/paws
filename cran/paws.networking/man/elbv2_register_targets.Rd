@@ -50,9 +50,10 @@ To remove a target from a target group, use DeregisterTargets.
 }
 
 \examples{
+\dontrun{
 # This example registers the specified instances with the specified target
 # group.
-\dontrun{svc$register_targets(
+svc$register_targets(
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targe...",
   Targets = list(
     list(
@@ -62,12 +63,12 @@ To remove a target from a target group, use DeregisterTargets.
       Id = "i-ceddcd4d"
     )
   )
-)}
+)
 
 # This example registers the specified instance with the specified target
 # group using multiple ports. This enables you to register ECS containers
 # on the same instance as targets in the target group.
-\dontrun{svc$register_targets(
+svc$register_targets(
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-new-t...",
   Targets = list(
     list(
@@ -79,7 +80,8 @@ To remove a target from a target group, use DeregisterTargets.
       Port = 766L
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

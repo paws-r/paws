@@ -29,10 +29,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- kafka()
+#' \dontrun{
+#' svc <- kafka()
 #' svc$create_cluster(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

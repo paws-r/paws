@@ -49,11 +49,13 @@ in the \emph{Amazon Glacier Developer Guide}.
 }
 
 \examples{
+\dontrun{
 # The example retrieves data about a vault named my-vault.
-\dontrun{svc$describe_vault(
+svc$describe_vault(
   accountId = "-",
   vaultName = "my-vault"
-)}
+)
+}
 
 }
 \keyword{internal}

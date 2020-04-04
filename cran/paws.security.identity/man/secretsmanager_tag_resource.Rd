@@ -93,10 +93,11 @@ use UntagResource.
 }
 
 \examples{
+\dontrun{
 # The following example shows how to attach two tags each with a Key and
 # Value to a secret. There is no output from this API. To see the result,
 # use the DescribeSecret operation.
-\dontrun{svc$tag_resource(
+svc$tag_resource(
   SecretId = "MyExampleSecret",
   Tags = list(
     list(
@@ -108,7 +109,8 @@ use UntagResource.
       Value = "AnotherValue"
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

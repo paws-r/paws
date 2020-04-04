@@ -24,10 +24,12 @@ This operation purchases a provisioned capacity unit for an AWS account.
 }
 
 \examples{
+\dontrun{
 # The example purchases provisioned capacity unit for an AWS account.
-\dontrun{svc$purchase_provisioned_capacity(
+svc$purchase_provisioned_capacity(
   accountId = "-"
-)}
+)
+}
 
 }
 \keyword{internal}

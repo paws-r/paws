@@ -33,12 +33,14 @@ see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-poli
 }
 
 \examples{
+\dontrun{
 # The example retrieves the access-policy set on the vault named
 # example-vault.
-\dontrun{svc$get_vault_access_policy(
+svc$get_vault_access_policy(
   accountId = "-",
   vaultName = "example-vault"
-)}
+)
+}
 
 }
 \keyword{internal}

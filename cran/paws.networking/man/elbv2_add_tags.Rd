@@ -39,8 +39,9 @@ tags from your resources, use RemoveTags.
 }
 
 \examples{
+\dontrun{
 # This example adds the specified tags to the specified load balancer.
-\dontrun{svc$add_tags(
+svc$add_tags(
   ResourceArns = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/5..."
   ),
@@ -54,7 +55,8 @@ tags from your resources, use RemoveTags.
       Value = "digital-media"
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

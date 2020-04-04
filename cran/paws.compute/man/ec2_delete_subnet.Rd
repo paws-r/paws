@@ -27,10 +27,12 @@ in the subnet before you can delete the subnet.
 }
 
 \examples{
+\dontrun{
 # This example deletes the specified subnet.
-\dontrun{svc$delete_subnet(
+svc$delete_subnet(
   SubnetId = "subnet-9d4a7b6c"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -49,15 +49,17 @@ NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # 
-#' \dontrun{svc$create_environment_ec2(
+#' svc$create_environment_ec2(
 #'   name = "my-demo-environment",
 #'   automaticStopTimeMinutes = 60L,
 #'   description = "This is my demonstration environment.",
 #'   instanceType = "t2.micro",
 #'   ownerArn = "arn:aws:iam::123456789012:user/MyDemoUser",
 #'   subnetId = "subnet-1fab8aEX"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -108,12 +110,14 @@ cloud9_create_environment_ec2 <- function(name, description = NULL, clientReques
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # 
-#' \dontrun{svc$create_environment_membership(
+#' svc$create_environment_membership(
 #'   environmentId = "8d9967e2f0624182b74e7690ad69ebEX",
 #'   permissions = "read-write",
 #'   userArn = "arn:aws:iam::123456789012:user/AnotherDemoUser"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -153,10 +157,12 @@ cloud9_create_environment_membership <- function(environmentId, userArn, permiss
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # 
-#' \dontrun{svc$delete_environment(
+#' svc$delete_environment(
 #'   environmentId = "8d9967e2f0624182b74e7690ad69ebEX"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -199,11 +205,13 @@ cloud9_delete_environment <- function(environmentId) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # 
-#' \dontrun{svc$delete_environment_membership(
+#' svc$delete_environment_membership(
 #'   environmentId = "8d9967e2f0624182b74e7690ad69ebEX",
 #'   userArn = "arn:aws:iam::123456789012:user/AnotherDemoUser"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -272,26 +280,28 @@ cloud9_delete_environment_membership <- function(environmentId, userArn) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example gets information about all of the environment
 #' # members for the specified AWS Cloud9 development environment.
-#' \dontrun{svc$describe_environment_memberships(
+#' svc$describe_environment_memberships(
 #'   environmentId = "8d9967e2f0624182b74e7690ad69ebEX"
-#' )}
+#' )
 #' 
 #' # The following example gets information about the owner of the specified
 #' # AWS Cloud9 development environment.
-#' \dontrun{svc$describe_environment_memberships(
+#' svc$describe_environment_memberships(
 #'   environmentId = "8d9967e2f0624182b74e7690ad69ebEX",
 #'   permissions = list(
 #'     "owner"
 #'   )
-#' )}
+#' )
 #' 
 #' # The following example gets AWS Cloud9 development environment membership
 #' # information for the specified user.
-#' \dontrun{svc$describe_environment_memberships(
+#' svc$describe_environment_memberships(
 #'   userArn = "arn:aws:iam::123456789012:user/MyDemoUser"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -330,10 +340,12 @@ cloud9_describe_environment_memberships <- function(userArn = NULL, environmentI
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # 
-#' \dontrun{svc$describe_environment_status(
+#' svc$describe_environment_status(
 #'   environmentId = "8d9967e2f0624182b74e7690ad69ebEX"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -374,13 +386,15 @@ cloud9_describe_environment_status <- function(environmentId) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # 
-#' \dontrun{svc$describe_environments(
+#' svc$describe_environments(
 #'   environmentIds = list(
 #'     "8d9967e2f0624182b74e7690ad69ebEX",
 #'     "349c86d4579e4e7298d500ff57a6b2EX"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -426,8 +440,10 @@ cloud9_describe_environments <- function(environmentIds) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # 
-#' \dontrun{svc$list_environments()}
+#' svc$list_environments()
+#' }
 #'
 #' @keywords internal
 #'
@@ -470,12 +486,14 @@ cloud9_list_environments <- function(nextToken = NULL, maxResults = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # 
-#' \dontrun{svc$update_environment(
+#' svc$update_environment(
 #'   name = "my-changed-demo-environment",
 #'   description = "This is my changed demonstration environment.",
 #'   environmentId = "8d9967e2f0624182b74e7690ad69ebEX"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -528,12 +546,14 @@ cloud9_update_environment <- function(environmentId, name = NULL, description = 
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # 
-#' \dontrun{svc$update_environment_membership(
+#' svc$update_environment_membership(
 #'   environmentId = "8d9967e2f0624182b74e7690ad69ebEX",
 #'   permissions = "read-only",
 #'   userArn = "arn:aws:iam::123456789012:user/AnotherDemoUser"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'

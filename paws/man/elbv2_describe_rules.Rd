@@ -33,12 +33,14 @@ You must specify either a listener or one or more rules.
 }
 
 \examples{
+\dontrun{
 # This example describes the specified rule.
-\dontrun{svc$describe_rules(
+svc$describe_rules(
   RuleArns = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-balancer/..."
   )
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -28,11 +28,13 @@ action.
 }
 
 \examples{
+\dontrun{
 # This example shows how to get information about an intent.
-\dontrun{svc$get_intent(
+svc$get_intent(
   version = "$LATEST",
   name = "DocOrderPizza"
-)}
+)
+}
 
 }
 \keyword{internal}

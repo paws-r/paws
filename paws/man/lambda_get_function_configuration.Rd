@@ -43,11 +43,13 @@ use GetFunction.
 }
 
 \examples{
+\dontrun{
 # This operation retrieves a Lambda function's event source mapping
-\dontrun{svc$get_function_configuration(
+svc$get_function_configuration(
   FunctionName = "myFunction",
   Qualifier = "1"
-)}
+)
+}
 
 }
 \keyword{internal}

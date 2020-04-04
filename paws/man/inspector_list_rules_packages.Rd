@@ -28,10 +28,12 @@ Lists all available Amazon Inspector rules packages.
 }
 
 \examples{
+\dontrun{
 # Lists all available Amazon Inspector rules packages.
-\dontrun{svc$list_rules_packages(
+svc$list_rules_packages(
   maxResults = 123L
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -120,9 +120,10 @@ NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation compares the largest face detected in the source image
 #' # with each face detected in the target image.
-#' \dontrun{svc$compare_faces(
+#' svc$compare_faces(
 #'   SimilarityThreshold = 90L,
 #'   SourceImage = list(
 #'     S3Object = list(
@@ -136,7 +137,8 @@ NULL
 #'       Name = "mytargetimage"
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -189,10 +191,12 @@ rekognition_compare_faces <- function(SourceImage, TargetImage, SimilarityThresh
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation creates a Rekognition collection for storing image data.
-#' \dontrun{svc$create_collection(
+#' svc$create_collection(
 #'   CollectionId = "myphotos"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -451,10 +455,12 @@ rekognition_create_stream_processor <- function(Input, Output, Name, Settings, R
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation deletes a Rekognition collection.
-#' \dontrun{svc$delete_collection(
+#' svc$delete_collection(
 #'   CollectionId = "myphotos"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -501,13 +507,15 @@ rekognition_delete_collection <- function(CollectionId) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation deletes one or more faces from a Rekognition collection.
-#' \dontrun{svc$delete_faces(
+#' svc$delete_faces(
 #'   CollectionId = "myphotos",
 #'   FaceIds = list(
 #'     "ff43d742-0c13-5d16-a3e8-03d3f58e980b"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -915,15 +923,17 @@ rekognition_detect_custom_labels <- function(ProjectVersionArn, Image, MaxResult
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation detects faces in an image stored in an AWS S3 bucket.
-#' \dontrun{svc$detect_faces(
+#' svc$detect_faces(
 #'   Image = list(
 #'     S3Object = list(
 #'       Bucket = "mybucket",
 #'       Name = "myphoto"
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1058,8 +1068,9 @@ rekognition_detect_faces <- function(Image, Attributes = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation detects labels in the supplied image
-#' \dontrun{svc$detect_labels(
+#' svc$detect_labels(
 #'   Image = list(
 #'     S3Object = list(
 #'       Bucket = "mybucket",
@@ -1068,7 +1079,8 @@ rekognition_detect_faces <- function(Image, Attributes = NULL) {
 #'   ),
 #'   MaxLabels = 123L,
 #'   MinConfidence = 70L
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1989,9 +2001,10 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation detects faces in an image and adds them to the specified
 #' # Rekognition collection.
-#' \dontrun{svc$index_faces(
+#' svc$index_faces(
 #'   CollectionId = "myphotos",
 #'   DetectionAttributes = list(),
 #'   ExternalImageId = "myphotoid",
@@ -2001,7 +2014,8 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
 #'       Name = "myphoto"
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2050,8 +2064,10 @@ rekognition_index_faces <- function(CollectionId, Image, ExternalImageId = NULL,
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation returns a list of Rekognition collections.
-#' \dontrun{svc$list_collections()}
+#' svc$list_collections()
+#' }
 #'
 #' @keywords internal
 #'
@@ -2104,11 +2120,13 @@ rekognition_list_collections <- function(NextToken = NULL, MaxResults = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation lists the faces in a Rekognition collection.
-#' \dontrun{svc$list_faces(
+#' svc$list_faces(
 #'   CollectionId = "myphotos",
 #'   MaxResults = 20L
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2303,14 +2321,16 @@ rekognition_recognize_celebrities <- function(Image) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation searches for matching faces in the collection the
 #' # supplied face belongs to.
-#' \dontrun{svc$search_faces(
+#' svc$search_faces(
 #'   CollectionId = "myphotos",
 #'   FaceId = "70008e50-75e4-55d0-8e80-363fb73b3a14",
 #'   FaceMatchThreshold = 90L,
 #'   MaxFaces = 10L
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2428,9 +2448,10 @@ rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, Face
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation searches for faces in a Rekognition collection that match
 #' # the largest face in an S3 bucket stored image.
-#' \dontrun{svc$search_faces_by_image(
+#' svc$search_faces_by_image(
 #'   CollectionId = "myphotos",
 #'   FaceMatchThreshold = 95L,
 #'   Image = list(
@@ -2440,7 +2461,8 @@ rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, Face
 #'     )
 #'   ),
 #'   MaxFaces = 5L
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'

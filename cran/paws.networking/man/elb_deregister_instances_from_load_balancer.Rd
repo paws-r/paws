@@ -36,16 +36,18 @@ in the \emph{Classic Load Balancers Guide}.
 }
 
 \examples{
+\dontrun{
 # This example deregisters the specified instance from the specified load
 # balancer.
-\dontrun{svc$deregister_instances_from_load_balancer(
+svc$deregister_instances_from_load_balancer(
   Instances = list(
     list(
       InstanceId = "i-d6f6fae3"
     )
   ),
   LoadBalancerName = "my-load-balancer"
-)}
+)
+}
 
 }
 \keyword{internal}

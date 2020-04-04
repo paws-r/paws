@@ -29,10 +29,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- personalizeevents()
+#' \dontrun{
+#' svc <- personalizeevents()
 #' svc$put_events(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

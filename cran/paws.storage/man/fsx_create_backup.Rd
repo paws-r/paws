@@ -65,8 +65,9 @@ along with other information.
 }
 
 \examples{
+\dontrun{
 # This operation creates a new backup.
-\dontrun{svc$create_backup(
+svc$create_backup(
   FileSystemId = "fs-0498eed5fe91001ec",
   Tags = list(
     list(
@@ -74,7 +75,8 @@ along with other information.
       Value = "MyBackup"
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

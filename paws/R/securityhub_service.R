@@ -63,10 +63,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- securityhub()
+#' \dontrun{
+#' svc <- securityhub()
 #' svc$accept_invitation(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

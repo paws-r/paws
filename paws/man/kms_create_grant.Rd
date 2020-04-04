@@ -141,16 +141,18 @@ in the \emph{AWS Key Management Service Developer Guide}.
 }
 
 \examples{
+\dontrun{
 # The following example creates a grant that allows the specified IAM role
 # to encrypt data with the specified customer master key (CMK).
-\dontrun{svc$create_grant(
+svc$create_grant(
   GranteePrincipal = "arn:aws:iam::111122223333:role/ExampleRole",
   KeyId = "arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab",
   Operations = list(
     "Encrypt",
     "Decrypt"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

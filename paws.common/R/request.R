@@ -87,8 +87,9 @@ Request <- struct(
 #' @family API request functions
 #'
 #' @examples
+#' \dontrun{
 #' # Make a request object for the S3 ListBuckets operation.
-#' \dontrun{metadata <- list(
+#' metadata <- list(
 #'   endpoints = list("*" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE)),
 #'   service_name = "s3"
 #' )
@@ -96,7 +97,8 @@ Request <- struct(
 #' op <- new_operation("ListBuckets", "GET", "/", list())
 #' params <- list()
 #' data <- tag_add(list(Buckets = list()), list(type = "structure"))
-#' req <- new_request(client, op, params, data)}
+#' req <- new_request(client, op, params, data)
+#' }
 #'
 #' @export
 new_request <- function(client, operation, params, data) {
@@ -145,8 +147,10 @@ new_request <- function(client, operation, params, data) {
 #' @family API request functions
 #'
 #' @examples
+#' \dontrun{
 #' # Send a request and handle the response.
-#' \dontrun{resp <- send_request(req)}
+#' resp <- send_request(req)
+#' }
 #'
 #' @export
 send_request <- function(request) {

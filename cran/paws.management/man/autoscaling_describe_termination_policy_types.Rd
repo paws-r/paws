@@ -14,8 +14,10 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/user
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \examples{
+\dontrun{
 # This example describes the available termination policy types.
-\dontrun{svc$describe_termination_policy_types()}
+svc$describe_termination_policy_types()
+}
 
 }
 \keyword{internal}

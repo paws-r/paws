@@ -52,11 +52,13 @@ You can execute this operation no more than once per second.
 }
 
 \examples{
+\dontrun{
 # The following example generates DKIM tokens for a domain that has been
 # verified with Amazon SES:
-\dontrun{svc$verify_domain_dkim(
+svc$verify_domain_dkim(
   Domain = "example.com"
-)}
+)
+}
 
 }
 \keyword{internal}

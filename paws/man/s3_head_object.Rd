@@ -148,11 +148,13 @@ The following operation is related to \code{HeadObject}:
 }
 
 \examples{
+\dontrun{
 # The following example retrieves an object metadata.
-\dontrun{svc$head_object(
+svc$head_object(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
-)}
+)
+}
 
 }
 \keyword{internal}

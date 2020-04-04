@@ -19,8 +19,9 @@ new_request(client, operation, params, data)
 Return an API request object with everything needed to make a request.
 }
 \examples{
+\dontrun{
 # Make a request object for the S3 ListBuckets operation.
-\dontrun{metadata <- list(
+metadata <- list(
   endpoints = list("*" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE)),
   service_name = "s3"
 )
@@ -28,7 +29,8 @@ client <- new_service(metadata, new_handlers("restxml", "s3"))
 op <- new_operation("ListBuckets", "GET", "/", list())
 params <- list()
 data <- tag_add(list(Buckets = list()), list(type = "structure"))
-req <- new_request(client, op, params, data)}
+req <- new_request(client, op, params, data)
+}
 
 }
 \seealso{

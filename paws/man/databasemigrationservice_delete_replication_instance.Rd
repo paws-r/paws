@@ -26,14 +26,16 @@ replication instance before you can delete it.
 }
 
 \examples{
+\dontrun{
 # Deletes the specified replication instance. You must delete any
 # migration tasks that are associated with the replication instance before
 # you can delete it.
 # 
 # 
-\dontrun{svc$delete_replication_instance(
+svc$delete_replication_instance(
   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJ..."
-)}
+)
+}
 
 }
 \keyword{internal}

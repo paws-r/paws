@@ -34,6 +34,7 @@ access to the Snowball associated with that job.
 }
 
 \examples{
+\dontrun{
 # Returns the UnlockCode code value for the specified job. A particular
 # UnlockCode value can be accessed for up to 90 days after the associated
 # job has been created.
@@ -48,9 +49,10 @@ access to the Snowball associated with that job.
 # of the UnlockCode in the same location as the manifest file for that
 # job. Saving these separately helps prevent unauthorized parties from
 # gaining access to the Snowball associated with that job.
-\dontrun{svc$get_job_unlock_code(
+svc$get_job_unlock_code(
   JobId = "JID123e4567-e89b-12d3-a456-426655440000"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -55,11 +55,13 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example detaches the volume (`vol-049df61146c4d7901`) from the
 # instance it is attached to.
-\dontrun{svc$detach_volume(
+svc$detach_volume(
   VolumeId = "vol-1234567890abcdef0"
-)}
+)
+}
 
 }
 \keyword{internal}

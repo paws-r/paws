@@ -54,9 +54,11 @@ API for AWS Elemental MediaConnect
 }
 
 \examples{
-\dontrun{svc <- mediaconnect()
+\dontrun{
+svc <- mediaconnect()
 svc$add_flow_outputs(
   Foo = 123
-)}
+)
+}
 
 }

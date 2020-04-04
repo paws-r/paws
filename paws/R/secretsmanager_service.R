@@ -100,14 +100,16 @@ NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
+#' svc <- secretsmanager()
 #' # The following example shows how to cancel rotation for a secret. The
 #' # operation sets the RotationEnabled field to false and cancels all
 #' # scheduled rotations. To resume scheduled rotations, you must re-enable
 #' # rotation by calling the rotate-secret operation.
-#' \dontrun{svc <- secretsmanager()
 #' svc$cancel_rotate_secret(
 #'   SecretId = "MyTestDatabaseSecret"
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

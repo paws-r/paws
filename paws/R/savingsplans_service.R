@@ -35,10 +35,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- savingsplans()
+#' \dontrun{
+#' svc <- savingsplans()
 #' svc$create_savings_plan(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

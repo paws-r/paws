@@ -16,9 +16,11 @@ For information about limitations on IAM entities, see \href{https://docs.aws.am
 in the \emph{IAM User Guide}.
 }
 \examples{
+\dontrun{
 # The following command returns information about the IAM entity quotas
 # and usage in the current AWS account.
-\dontrun{svc$get_account_summary()}
+svc$get_account_summary()
+}
 
 }
 \keyword{internal}

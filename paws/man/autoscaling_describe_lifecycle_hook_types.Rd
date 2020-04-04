@@ -17,8 +17,10 @@ The following hook types are supported:
 }
 }
 \examples{
+\dontrun{
 # This example describes the available lifecycle hook types.
-\dontrun{svc$describe_lifecycle_hook_types()}
+svc$describe_lifecycle_hook_types()
+}
 
 }
 \keyword{internal}

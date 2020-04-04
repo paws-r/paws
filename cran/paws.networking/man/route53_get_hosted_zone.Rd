@@ -22,11 +22,13 @@ servers assigned to the hosted zone.
 }
 
 \examples{
+\dontrun{
 # The following example gets information about the Z3M3LMPEXAMPLE hosted
 # zone.
-\dontrun{svc$get_hosted_zone(
+svc$get_hosted_zone(
   Id = "Z3M3LMPEXAMPLE"
-)}
+)
+}
 
 }
 \keyword{internal}

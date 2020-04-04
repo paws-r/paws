@@ -81,9 +81,11 @@ performance, and operational health.
 }
 
 \examples{
-\dontrun{svc <- cloudwatch()
+\dontrun{
+svc <- cloudwatch()
 svc$delete_alarms(
   Foo = 123
-)}
+)
+}
 
 }
