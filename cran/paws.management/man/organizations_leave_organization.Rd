@@ -40,9 +40,11 @@ in the \emph{AWS Billing and Cost Management User Guide.}
 }
 }
 \examples{
+\dontrun{
 # TThe following example shows how to remove your member account from an
 # organization:
-\dontrun{svc$leave_organization()}
+svc$leave_organization()
+}
 
 }
 \keyword{internal}

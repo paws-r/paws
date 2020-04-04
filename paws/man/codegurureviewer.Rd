@@ -42,9 +42,11 @@ operations.
 }
 
 \examples{
-\dontrun{svc <- codegurureviewer()
+\dontrun{
+svc <- codegurureviewer()
 svc$associate_repository(
   Foo = 123
-)}
+)
+}
 
 }

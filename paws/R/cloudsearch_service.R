@@ -42,10 +42,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- cloudsearch()
+#' \dontrun{
+#' svc <- cloudsearch()
 #' svc$build_suggesters(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

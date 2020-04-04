@@ -87,9 +87,11 @@ tasks such as the following automatically:
 }
 
 \examples{
-\dontrun{svc <- sqs()
+\dontrun{
+svc <- sqs()
 svc$add_permission(
   Foo = 123
-)}
+)
+}
 
 }

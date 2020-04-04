@@ -54,12 +54,14 @@ in the \emph{Amazon Glacier Developer Guide}.
 }
 
 \examples{
+\dontrun{
 # The example lists all vaults owned by the specified AWS account.
-\dontrun{svc$list_vaults(
+svc$list_vaults(
   accountId = "-",
   limit = "",
   marker = ""
-)}
+)
+}
 
 }
 \keyword{internal}

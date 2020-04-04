@@ -40,12 +40,14 @@ NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
+#' svc <- wafregional()
 #' # The following example creates an IP match set named MyIPSetFriendlyName.
-#' \dontrun{svc <- wafregional()
 #' svc$create_ip_set(
 #'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
 #'   Name = "MyIPSetFriendlyName"
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

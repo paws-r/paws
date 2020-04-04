@@ -76,12 +76,13 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example describes your Elastic IP addresses.
-\dontrun{svc$describe_addresses()}
+svc$describe_addresses()
 
 # This example describes your Elastic IP addresses for use with instances
 # in a VPC.
-\dontrun{svc$describe_addresses(
+svc$describe_addresses(
   Filters = list(
     list(
       Name = "domain",
@@ -90,11 +91,11 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
       )
     )
   )
-)}
+)
 
 # This example describes your Elastic IP addresses for use with instances
 # in EC2-Classic.
-\dontrun{svc$describe_addresses(
+svc$describe_addresses(
   Filters = list(
     list(
       Name = "domain",
@@ -103,7 +104,8 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
       )
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

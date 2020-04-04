@@ -51,10 +51,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- cognitosync()
+#' \dontrun{
+#' svc <- cognitosync()
 #' svc$bulk_publish(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

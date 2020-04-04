@@ -36,14 +36,16 @@ Disables group metrics for the specified Auto Scaling group.
 }
 
 \examples{
+\dontrun{
 # This example disables collecting data for the GroupDesiredCapacity
 # metric for the specified Auto Scaling group.
-\dontrun{svc$disable_metrics_collection(
+svc$disable_metrics_collection(
   AutoScalingGroupName = "my-auto-scaling-group",
   Metrics = list(
     "GroupDesiredCapacity"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

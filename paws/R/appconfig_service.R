@@ -74,10 +74,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- appconfig()
+#' \dontrun{
+#' svc <- appconfig()
 #' svc$create_application(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

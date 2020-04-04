@@ -32,10 +32,12 @@ the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example creates a network ACL for the specified VPC.
-\dontrun{svc$create_network_acl(
+svc$create_network_acl(
   VpcId = "vpc-a01106c2"
-)}
+)
+}
 
 }
 \keyword{internal}

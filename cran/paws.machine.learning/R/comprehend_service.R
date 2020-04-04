@@ -33,10 +33,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- comprehend()
+#' \dontrun{
+#' svc <- comprehend()
 #' svc$batch_detect_dominant_language(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -66,8 +66,9 @@ Describes one or more of your internet gateways.
 }
 
 \examples{
+\dontrun{
 # This example describes the Internet gateway for the specified VPC.
-\dontrun{svc$describe_internet_gateways(
+svc$describe_internet_gateways(
   Filters = list(
     list(
       Name = "attachment.vpc-id",
@@ -76,7 +77,8 @@ Describes one or more of your internet gateways.
       )
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

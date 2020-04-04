@@ -46,13 +46,15 @@ in the \emph{Classic Load Balancers Guide}.
 }
 
 \examples{
+\dontrun{
 # This example generates a stickiness policy that follows the sticky
 # session lifetimes of the application-generated cookie.
-\dontrun{svc$create_app_cookie_stickiness_policy(
+svc$create_app_cookie_stickiness_policy(
   CookieName = "my-app-cookie",
   LoadBalancerName = "my-load-balancer",
   PolicyName = "my-app-cookie-policy"
-)}
+)
+}
 
 }
 \keyword{internal}

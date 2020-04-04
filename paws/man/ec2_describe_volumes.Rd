@@ -102,13 +102,14 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example describes all of your volumes in the default region.
-\dontrun{svc$describe_volumes()}
+svc$describe_volumes()
 
 # This example describes all volumes that are both attached to the
 # instance with the ID i-1234567890abcdef0 and set to delete when the
 # instance terminates.
-\dontrun{svc$describe_volumes(
+svc$describe_volumes(
   Filters = list(
     list(
       Name = "attachment.instance-id",
@@ -123,7 +124,8 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
       )
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

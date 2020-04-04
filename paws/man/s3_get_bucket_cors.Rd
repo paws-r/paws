@@ -33,11 +33,13 @@ The following operations are related to \code{GetBucketCors}:
 }
 
 \examples{
+\dontrun{
 # The following example returns cross-origin resource sharing (CORS)
 # configuration set on a bucket.
-\dontrun{svc$get_bucket_cors(
+svc$get_bucket_cors(
   Bucket = "examplebucket"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -41,11 +41,13 @@ about a function or version, use GetFunction.
 }
 
 \examples{
+\dontrun{
 # This operation retrieves a Lambda functions
-\dontrun{svc$list_functions(
+svc$list_functions(
   Marker = "",
   MaxItems = 123L
-)}
+)
+}
 
 }
 \keyword{internal}

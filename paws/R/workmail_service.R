@@ -64,10 +64,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- workmail()
+#' \dontrun{
+#' svc <- workmail()
 #' svc$associate_delegate_to_resource(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -100,8 +100,9 @@ in the \emph{Classic Load Balancers Guide}.
 }
 
 \examples{
+\dontrun{
 # This example creates a load balancer with an HTTP listener in a VPC.
-\dontrun{svc$create_load_balancer(
+svc$create_load_balancer(
   Listeners = list(
     list(
       InstancePort = 80L,
@@ -117,11 +118,11 @@ in the \emph{Classic Load Balancers Guide}.
   Subnets = list(
     "subnet-15aaab61"
   )
-)}
+)
 
 # This example creates a load balancer with an HTTP listener in
 # EC2-Classic.
-\dontrun{svc$create_load_balancer(
+svc$create_load_balancer(
   AvailabilityZones = list(
     "us-west-2a"
   ),
@@ -134,10 +135,10 @@ in the \emph{Classic Load Balancers Guide}.
     )
   ),
   LoadBalancerName = "my-load-balancer"
-)}
+)
 
 # This example creates a load balancer with an HTTPS listener in a VPC.
-\dontrun{svc$create_load_balancer(
+svc$create_load_balancer(
   Listeners = list(
     list(
       InstancePort = 80L,
@@ -160,11 +161,11 @@ in the \emph{Classic Load Balancers Guide}.
   Subnets = list(
     "subnet-15aaab61"
   )
-)}
+)
 
 # This example creates a load balancer with an HTTPS listener in
 # EC2-Classic.
-\dontrun{svc$create_load_balancer(
+svc$create_load_balancer(
   AvailabilityZones = list(
     "us-west-2a"
   ),
@@ -184,11 +185,11 @@ in the \emph{Classic Load Balancers Guide}.
     )
   ),
   LoadBalancerName = "my-load-balancer"
-)}
+)
 
 # This example creates an internal load balancer with an HTTP listener in
 # a VPC.
-\dontrun{svc$create_load_balancer(
+svc$create_load_balancer(
   Listeners = list(
     list(
       InstancePort = 80L,
@@ -205,7 +206,8 @@ in the \emph{Classic Load Balancers Guide}.
   Subnets = list(
     "subnet-15aaab61"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

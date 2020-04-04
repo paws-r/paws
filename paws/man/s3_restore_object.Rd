@@ -341,9 +341,10 @@ in the \emph{Amazon Simple Storage Service Developer Guide}
 }
 
 \examples{
+\dontrun{
 # The following example restores for one day an archived copy of an object
 # back into Amazon S3 bucket.
-\dontrun{svc$restore_object(
+svc$restore_object(
   Bucket = "examplebucket",
   Key = "archivedobjectkey",
   RestoreRequest = list(
@@ -352,7 +353,8 @@ in the \emph{Amazon Simple Storage Service Developer Guide}
       Tier = "Expedited"
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

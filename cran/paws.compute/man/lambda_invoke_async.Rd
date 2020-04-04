@@ -37,11 +37,13 @@ Invokes a function asynchronously.
 }
 
 \examples{
+\dontrun{
 # This operation invokes a Lambda function asynchronously
-\dontrun{svc$invoke_async(
+svc$invoke_async(
   FunctionName = "myFunction",
   InvokeArgs = "fileb://file-path/input.json"
-)}
+)
+}
 
 }
 \keyword{internal}

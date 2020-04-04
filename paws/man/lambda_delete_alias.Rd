@@ -35,11 +35,13 @@ Deletes a Lambda function
 }
 
 \examples{
+\dontrun{
 # This operation deletes a Lambda function alias
-\dontrun{svc$delete_alias(
+svc$delete_alias(
   FunctionName = "myFunction",
   Name = "alias"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -274,8 +274,9 @@ This operation requires permissions for the \code{lex:PutIntent} action.
 }
 
 \examples{
+\dontrun{
 # This example shows how to create an intent for ordering pizzas.
-\dontrun{svc$put_intent(
+svc$put_intent(
   name = "DocOrderPizza",
   conclusionStatement = list(
     messages = list(
@@ -403,7 +404,8 @@ This operation requires permissions for the \code{lex:PutIntent} action.
       )
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

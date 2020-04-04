@@ -113,9 +113,11 @@ available in each Region, see \href{http://aws.amazon.com/about-aws/global-infra
 }
 
 \examples{
-\dontrun{svc <- sesv2()
+\dontrun{
+svc <- sesv2()
 svc$create_configuration_set(
   Foo = 123
-)}
+)
+}
 
 }

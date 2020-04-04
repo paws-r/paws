@@ -189,8 +189,9 @@ Registers an AWS Batch job definition.
 }
 
 \examples{
+\dontrun{
 # This example registers a job definition for a simple container job.
-\dontrun{svc$register_job_definition(
+svc$register_job_definition(
   type = "container",
   containerProperties = list(
     command = list(
@@ -202,7 +203,8 @@ Registers an AWS Batch job definition.
     vcpus = 1L
   ),
   jobDefinitionName = "sleep10"
-)}
+)
+}
 
 }
 \keyword{internal}

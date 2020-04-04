@@ -116,8 +116,9 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example launches the specified Scheduled Instance in a VPC.
-\dontrun{svc$run_scheduled_instances(
+svc$run_scheduled_instances(
   InstanceCount = 1L,
   LaunchSpecification = list(
     IamInstanceProfile = list(
@@ -138,10 +139,10 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
     )
   ),
   ScheduledInstanceId = "sci-1234-1234-1234-1234-123456789012"
-)}
+)
 
 # This example launches the specified Scheduled Instance in EC2-Classic.
-\dontrun{svc$run_scheduled_instances(
+svc$run_scheduled_instances(
   InstanceCount = 1L,
   LaunchSpecification = list(
     IamInstanceProfile = list(
@@ -158,7 +159,8 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
     )
   ),
   ScheduledInstanceId = "sci-1234-1234-1234-1234-123456789012"
-)}
+)
+}
 
 }
 \keyword{internal}

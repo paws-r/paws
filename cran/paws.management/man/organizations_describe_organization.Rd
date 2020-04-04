@@ -19,9 +19,11 @@ disable it separately at the root level with DisablePolicyType. Use
 ListRoots to see the status of policy types for a specified root.
 }
 \examples{
+\dontrun{
 # The following example shows how to request information about the current
 # user's organization:/n/n
-\dontrun{svc$describe_organization()}
+svc$describe_organization()
+}
 
 }
 \keyword{internal}

@@ -55,11 +55,13 @@ account.
 }
 
 \examples{
+\dontrun{
 # The following example shows how to request a list of the accounts in an
 # OU:/n/n
-\dontrun{svc$list_accounts_for_parent(
+svc$list_accounts_for_parent(
   ParentId = "ou-examplerootid111-exampleouid111"
-)}
+)
+}
 
 }
 \keyword{internal}

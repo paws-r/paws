@@ -77,11 +77,13 @@ conversational bots for new and existing client applications.
 }
 
 \examples{
+\dontrun{
+svc <- lexmodelbuildingservice()
 # This example shows how to get configuration information for a bot.
-\dontrun{svc <- lexmodelbuildingservice()
 svc$get_bot(
   name = "DocOrderPizza",
   versionOrAlias = "$LATEST"
-)}
+)
+}
 
 }

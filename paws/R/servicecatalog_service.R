@@ -35,10 +35,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- servicecatalog()
+#' \dontrun{
+#' svc <- servicecatalog()
 #' svc$accept_portfolio_share(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

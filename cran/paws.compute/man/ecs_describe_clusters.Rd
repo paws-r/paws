@@ -52,13 +52,15 @@ Describes one or more of your clusters.
 }
 
 \examples{
+\dontrun{
 # This example provides a description of the specified cluster in your
 # default region.
-\dontrun{svc$describe_clusters(
+svc$describe_clusters(
   clusters = list(
     "default"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

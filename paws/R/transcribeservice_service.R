@@ -30,10 +30,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- transcribeservice()
+#' \dontrun{
+#' svc <- transcribeservice()
 #' svc$create_vocabulary(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

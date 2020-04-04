@@ -66,8 +66,9 @@ in the \emph{IAM User Guide}.
 }
 
 \examples{
+\dontrun{
 # The following example shows how to add tags to an existing user.
-\dontrun{svc$tag_user(
+svc$tag_user(
   Tags = list(
     list(
       Key = "Dept",
@@ -79,7 +80,8 @@ in the \emph{IAM User Guide}.
     )
   ),
   UserName = "anika"
-)}
+)
+}
 
 }
 \keyword{internal}

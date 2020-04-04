@@ -29,10 +29,12 @@ You can execute this operation no more than once per second.
 }
 
 \examples{
+\dontrun{
 # The following example updated the sending status for this account.
-\dontrun{svc$update_account_sending_enabled(
+svc$update_account_sending_enabled(
   Enabled = TRUE
-)}
+)
+}
 
 }
 \keyword{internal}

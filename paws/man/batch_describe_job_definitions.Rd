@@ -52,10 +52,12 @@ Describes a list of job definitions. You can specify a \code{status} (such as
 }
 
 \examples{
+\dontrun{
 # This example describes all of your active job definitions.
-\dontrun{svc$describe_job_definitions(
+svc$describe_job_definitions(
   status = "ACTIVE"
-)}
+)
+}
 
 }
 \keyword{internal}

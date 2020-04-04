@@ -35,15 +35,17 @@ want to configure as upload buffer.
 }
 
 \examples{
+\dontrun{
 # Configures one or more gateway local disks as upload buffer for a
 # specified gateway.
-\dontrun{svc$add_upload_buffer(
+svc$add_upload_buffer(
   DiskIds = list(
     "pci-0000:03:00.0-scsi-0:0:0:0",
     "pci-0000:03:00.0-scsi-0:0:1:0"
   ),
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)}
+)
+}
 
 }
 \keyword{internal}

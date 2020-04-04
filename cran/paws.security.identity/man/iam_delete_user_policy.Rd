@@ -40,12 +40,14 @@ in the \emph{IAM User Guide}.
 }
 
 \examples{
+\dontrun{
 # The following delete-user-policy command removes the specified policy
 # from the IAM user named Juan:
-\dontrun{svc$delete_user_policy(
+svc$delete_user_policy(
   PolicyName = "ExamplePolicy",
   UserName = "Juan"
-)}
+)
+}
 
 }
 \keyword{internal}

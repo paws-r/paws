@@ -30,11 +30,13 @@ operation, contact \href{mailto:aws-devicefarm-support@amazon.com}{aws-devicefar
 }
 
 \examples{
+\dontrun{
 # The following example purchases a specific device slot offering.
-\dontrun{svc$purchase_offering(
+svc$purchase_offering(
   offeringId = "D68B3C05-1BA6-4360-BC69-12345EXAMPLE",
   quantity = 1L
-)}
+)
+}
 
 }
 \keyword{internal}

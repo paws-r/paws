@@ -160,9 +160,11 @@ Defines the public endpoint for the AWS Glue service.
 }
 
 \examples{
-\dontrun{svc <- glue()
+\dontrun{
+svc <- glue()
 svc$batch_create_partition(
   Foo = 123
-)}
+)
+}
 
 }

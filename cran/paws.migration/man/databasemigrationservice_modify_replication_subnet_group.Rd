@@ -30,12 +30,14 @@ Modifies the settings for the specified replication subnet group.
 }
 
 \examples{
+\dontrun{
 # Modifies the settings for the specified replication subnet group.
-\dontrun{svc$modify_replication_subnet_group(
+svc$modify_replication_subnet_group(
   ReplicationSubnetGroupDescription = "",
   ReplicationSubnetGroupIdentifier = "",
   SubnetIds = list()
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -35,12 +35,14 @@ in the \emph{Application Load Balancers Guide}.
 }
 
 \examples{
+\dontrun{
 # This example describes the specified policy used for SSL negotiation.
-\dontrun{svc$describe_ssl_policies(
+svc$describe_ssl_policies(
   Names = list(
     "ELBSecurityPolicy-2015-05"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

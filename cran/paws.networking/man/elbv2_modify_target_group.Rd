@@ -78,13 +78,15 @@ To monitor the health of the targets, use DescribeTargetHealth.
 }
 
 \examples{
+\dontrun{
 # This example changes the configuration of the health checks used to
 # evaluate the health of the targets for the specified target group.
-\dontrun{svc$modify_target_group(
+svc$modify_target_group(
   HealthCheckPort = "443",
   HealthCheckProtocol = "HTTPS",
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-https..."
-)}
+)
+}
 
 }
 \keyword{internal}

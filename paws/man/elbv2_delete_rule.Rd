@@ -20,10 +20,12 @@ Deletes the specified rule.
 }
 
 \examples{
+\dontrun{
 # This example deletes the specified rule.
-\dontrun{svc$delete_rule(
+svc$delete_rule(
   RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-b..."
-)}
+)
+}
 
 }
 \keyword{internal}

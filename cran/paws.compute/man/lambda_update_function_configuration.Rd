@@ -126,8 +126,9 @@ invoke permissions to an account or AWS service, use AddPermission.
 }
 
 \examples{
+\dontrun{
 # This operation updates a Lambda function's configuration
-\dontrun{svc$update_function_configuration(
+svc$update_function_configuration(
   Description = "",
   FunctionName = "myFunction",
   Handler = "index.handler",
@@ -141,7 +142,8 @@ invoke permissions to an account or AWS service, use AddPermission.
       0
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

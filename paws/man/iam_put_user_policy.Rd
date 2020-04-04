@@ -67,12 +67,14 @@ in the \emph{IAM User Guide}.
 }
 
 \examples{
+\dontrun{
 # The following command attaches a policy to the IAM user named Bob.
-\dontrun{svc$put_user_policy(
+svc$put_user_policy(
   PolicyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":\{\"Effect\":\"Allow\",...",
   PolicyName = "AllAccessPolicy",
   UserName = "Bob"
-)}
+)
+}
 
 }
 \keyword{internal}

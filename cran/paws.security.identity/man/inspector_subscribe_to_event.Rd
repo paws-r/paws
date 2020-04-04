@@ -29,13 +29,15 @@ notifications about a specified event to a specified SNS topic.
 }
 
 \examples{
+\dontrun{
 # Enables the process of sending Amazon Simple Notification Service (SNS)
 # notifications about a specified event to a specified SNS topic.
-\dontrun{svc$subscribe_to_event(
+svc$subscribe_to_event(
   event = "ASSESSMENT_RUN_COMPLETED",
   resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-7sbz2...",
   topicArn = "arn:aws:sns:us-west-2:123456789012:exampletopic"
-)}
+)
+}
 
 }
 \keyword{internal}

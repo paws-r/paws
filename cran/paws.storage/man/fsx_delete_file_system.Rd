@@ -59,10 +59,12 @@ recovered by any means.
 }
 
 \examples{
+\dontrun{
 # This operation deletes an Amazon FSx file system.
-\dontrun{svc$delete_file_system(
+svc$delete_file_system(
   FileSystemId = "fs-0498eed5fe91001ec"
-)}
+)
+}
 
 }
 \keyword{internal}

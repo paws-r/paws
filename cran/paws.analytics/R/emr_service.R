@@ -34,10 +34,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- emr()
+#' \dontrun{
+#' svc <- emr()
 #' svc$add_instance_fleet(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

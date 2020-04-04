@@ -68,8 +68,9 @@ in the \emph{IAM User Guide}.
 }
 
 \examples{
+\dontrun{
 # The following example shows how to add tags to an existing role.
-\dontrun{svc$tag_role(
+svc$tag_role(
   RoleName = "taggedrole",
   Tags = list(
     list(
@@ -81,7 +82,8 @@ in the \emph{IAM User Guide}.
       Value = "12345"
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

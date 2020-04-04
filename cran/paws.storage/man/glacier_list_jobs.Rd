@@ -84,11 +84,13 @@ for the underlying REST API \href{https://docs.aws.amazon.com/amazonglacier/late
 }
 
 \examples{
+\dontrun{
 # The example lists jobs for the vault named my-vault.
-\dontrun{svc$list_jobs(
+svc$list_jobs(
   accountId = "-",
   vaultName = "my-vault"
-)}
+)
+}
 
 }
 \keyword{internal}

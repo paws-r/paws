@@ -54,19 +54,21 @@ The following operation is related to \code{GetObjectTagging}:
 }
 
 \examples{
+\dontrun{
 # The following example retrieves tag set of an object.
-\dontrun{svc$get_object_tagging(
+svc$get_object_tagging(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
-)}
+)
 
 # The following example retrieves tag set of an object. The request
 # specifies object version.
-\dontrun{svc$get_object_tagging(
+svc$get_object_tagging(
   Bucket = "examplebucket",
   Key = "exampleobject",
   VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
-)}
+)
+}
 
 }
 \keyword{internal}

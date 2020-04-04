@@ -50,10 +50,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- cloudformation()
+#' \dontrun{
+#' svc <- cloudformation()
 #' svc$cancel_update_stack(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

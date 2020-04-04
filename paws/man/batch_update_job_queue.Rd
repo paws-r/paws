@@ -43,11 +43,13 @@ Updates a job queue.
 }
 
 \examples{
+\dontrun{
 # This example disables a job queue so that it can be deleted.
-\dontrun{svc$update_job_queue(
+svc$update_job_queue(
   jobQueue = "GPGPU",
   state = "DISABLED"
-)}
+)
+}
 
 }
 \keyword{internal}

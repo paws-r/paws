@@ -50,13 +50,15 @@ lock is in the \code{InProgress} state, the operation throws an
 }
 
 \examples{
+\dontrun{
 # The example completes the vault locking process by transitioning the
 # vault lock from the InProgress state to the Locked state.
-\dontrun{svc$complete_vault_lock(
+svc$complete_vault_lock(
   accountId = "-",
   lockId = "AE863rKkWZU53SLW5be4DUcW",
   vaultName = "example-vault"
-)}
+)
+}
 
 }
 \keyword{internal}

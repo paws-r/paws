@@ -113,12 +113,14 @@ in the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html}
 }
 
 \examples{
+\dontrun{
+svc <- ses()
 # The following example creates a receipt rule set by cloning an existing
 # one:
-\dontrun{svc <- ses()
 svc$clone_receipt_rule_set(
   OriginalRuleSetName = "RuleSetToClone",
   RuleSetName = "RuleSetToCreate"
-)}
+)
+}
 
 }

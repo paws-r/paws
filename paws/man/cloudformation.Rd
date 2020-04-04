@@ -111,9 +111,11 @@ find the product\'s technical documentation at
 }
 
 \examples{
-\dontrun{svc <- cloudformation()
+\dontrun{
+svc <- cloudformation()
 svc$cancel_update_stack(
   Foo = 123
-)}
+)
+}
 
 }

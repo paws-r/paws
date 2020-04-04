@@ -113,10 +113,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- opsworks()
+#' \dontrun{
+#' svc <- opsworks()
 #' svc$assign_instance(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

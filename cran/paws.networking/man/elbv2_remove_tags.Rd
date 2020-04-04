@@ -32,9 +32,10 @@ To list the current tags for your resources, use DescribeTags.
 }
 
 \examples{
+\dontrun{
 # This example removes the specified tags from the specified load
 # balancer.
-\dontrun{svc$remove_tags(
+svc$remove_tags(
   ResourceArns = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/5..."
   ),
@@ -42,7 +43,8 @@ To list the current tags for your resources, use DescribeTags.
     "project",
     "department"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

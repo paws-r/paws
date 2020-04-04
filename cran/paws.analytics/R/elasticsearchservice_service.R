@@ -45,10 +45,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- elasticsearchservice()
+#' \dontrun{
+#' svc <- elasticsearchservice()
 #' svc$add_tags(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -83,10 +83,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- codestar()
+#' \dontrun{
+#' svc <- codestar()
 #' svc$associate_team_member(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

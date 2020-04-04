@@ -245,15 +245,17 @@ response value.
 }
 
 \examples{
+\dontrun{
 # The following example shows how to create a secret. The credentials
 # stored in the encrypted secret value are retrieved from a file on disk
 # named mycreds.json.
-\dontrun{svc$create_secret(
+svc$create_secret(
   ClientRequestToken = "EXAMPLE1-90ab-cdef-fedc-ba987SECRET1",
   Description = "My test database secret created with the CLI",
   Name = "MyTestDatabaseSecret",
   SecretString = "\{\"username\":\"david\",\"password\":\"BnQw!XDWgaEeT9XGTT29\"\}"
-)}
+)
+}
 
 }
 \keyword{internal}

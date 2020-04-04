@@ -40,10 +40,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- transfer()
+#' \dontrun{
+#' svc <- transfer()
 #' svc$create_server(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

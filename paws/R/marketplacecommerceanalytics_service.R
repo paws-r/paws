@@ -30,10 +30,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- marketplacecommerceanalytics()
+#' \dontrun{
+#' svc <- marketplacecommerceanalytics()
 #' svc$generate_data_set(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

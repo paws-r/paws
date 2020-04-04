@@ -20,17 +20,19 @@ No longer used, see GetBucketNotificationConfiguration.
 }
 
 \examples{
+\dontrun{
 # The following example returns notification configuration set on a
 # bucket.
-\dontrun{svc$get_bucket_notification(
+svc$get_bucket_notification(
   Bucket = "examplebucket"
-)}
+)
 
 # The following example returns notification configuration set on a
 # bucket.
-\dontrun{svc$get_bucket_notification(
+svc$get_bucket_notification(
   Bucket = "examplebucket"
-)}
+)
+}
 
 }
 \keyword{internal}

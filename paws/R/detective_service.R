@@ -72,10 +72,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- detective()
+#' \dontrun{
+#' svc <- detective()
 #' svc$accept_invitation(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

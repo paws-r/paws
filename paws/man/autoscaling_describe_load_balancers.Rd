@@ -34,11 +34,13 @@ DescribeLoadBalancerTargetGroups instead.
 }
 
 \examples{
+\dontrun{
 # This example describes the load balancers attached to the specified Auto
 # Scaling group.
-\dontrun{svc$describe_load_balancers(
+svc$describe_load_balancers(
   AutoScalingGroupName = "my-auto-scaling-group"
-)}
+)
+}
 
 }
 \keyword{internal}

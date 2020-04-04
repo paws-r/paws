@@ -64,11 +64,13 @@ see the \href{https://docs.aws.amazon.com/AWSImportExport/latest/ug/api-referenc
 }
 
 \examples{
+\dontrun{
+svc <- snowball()
 # This operation cancels a cluster job. You can only cancel a cluster job
 # while it's in the AwaitingQuorum status.
-\dontrun{svc <- snowball()
 svc$cancel_cluster(
   ClusterId = "CID123e4567-e89b-12d3-a456-426655440000"
-)}
+)
+}
 
 }

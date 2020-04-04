@@ -31,14 +31,16 @@ You can\'t specify a security group for a Network Load Balancer.
 }
 
 \examples{
+\dontrun{
 # This example associates the specified security group with the specified
 # load balancer.
-\dontrun{svc$set_security_groups(
+svc$set_security_groups(
   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my...",
   SecurityGroups = list(
     "sg-5943793c"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

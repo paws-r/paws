@@ -30,10 +30,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- forecastqueryservice()
+#' \dontrun{
+#' svc <- forecastqueryservice()
 #' svc$query_forecast(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

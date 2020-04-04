@@ -14,8 +14,10 @@ The \code{GroupStandbyInstances} metric is not returned by default. You must
 explicitly request this metric when calling EnableMetricsCollection.
 }
 \examples{
+\dontrun{
 # This example describes the available metric collection types.
-\dontrun{svc$describe_metric_collection_types()}
+svc$describe_metric_collection_types()
+}
 
 }
 \keyword{internal}

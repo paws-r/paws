@@ -30,10 +30,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- pinpointsmsvoice()
+#' \dontrun{
+#' svc <- pinpointsmsvoice()
 #' svc$create_configuration_set(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -51,12 +51,14 @@ that you should launch your Amazon ECS container instances into.
 }
 
 \examples{
+\dontrun{
 # This example describes the P2OnDemand compute environment.
-\dontrun{svc$describe_compute_environments(
+svc$describe_compute_environments(
   computeEnvironments = list(
     "P2OnDemand"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

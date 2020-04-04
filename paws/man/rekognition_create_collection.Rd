@@ -35,10 +35,12 @@ This operation requires permissions to perform the
 }
 
 \examples{
+\dontrun{
 # This operation creates a Rekognition collection for storing image data.
-\dontrun{svc$create_collection(
+svc$create_collection(
   CollectionId = "myphotos"
-)}
+)
+}
 
 }
 \keyword{internal}

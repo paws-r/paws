@@ -52,9 +52,10 @@ in the \emph{AWS Billing and Cost Management User Guide}.
 }
 
 \examples{
+\dontrun{
 # The following example adds two tags and removes one tag from the hosted
 # zone with ID Z3M3LMPEXAMPLE.
-\dontrun{svc$change_tags_for_resource(
+svc$change_tags_for_resource(
   AddTags = list(
     list(
       Key = "apex",
@@ -70,7 +71,8 @@ in the \emph{AWS Billing and Cost Management User Guide}.
   ),
   ResourceId = "Z3M3LMPEXAMPLE",
   ResourceType = "hostedzone"
-)}
+)
+}
 
 }
 \keyword{internal}

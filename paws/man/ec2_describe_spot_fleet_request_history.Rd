@@ -53,12 +53,14 @@ hours.
 }
 
 \examples{
+\dontrun{
 # This example returns the history for the specified Spot fleet starting
 # at the specified time.
-\dontrun{svc$describe_spot_fleet_request_history(
+svc$describe_spot_fleet_request_history(
   SpotFleetRequestId = "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE",
   StartTime = "2015-05-26T00:00:00Z"
-)}
+)
+}
 
 }
 \keyword{internal}

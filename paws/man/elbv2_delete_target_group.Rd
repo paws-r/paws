@@ -24,10 +24,12 @@ Deleting a target group also deletes any associated health checks.
 }
 
 \examples{
+\dontrun{
 # This example deletes the specified target group.
-\dontrun{svc$delete_target_group(
+svc$delete_target_group(
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targe..."
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -61,11 +61,13 @@ account.
 }
 
 \examples{
+\dontrun{
 # The following example shows how to detach a policy from an OU:/n/n
-\dontrun{svc$detach_policy(
+svc$detach_policy(
   PolicyId = "p-examplepolicyid111",
   TargetId = "ou-examplerootid111-exampleouid111"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -47,11 +47,13 @@ in the \emph{Amazon S3 Glacier Developer Guide}.
 }
 
 \examples{
+\dontrun{
 # The example deletes a vault named my-vault:
-\dontrun{svc$delete_vault(
+svc$delete_vault(
   accountId = "-",
   vaultName = "my-vault"
-)}
+)
+}
 
 }
 \keyword{internal}

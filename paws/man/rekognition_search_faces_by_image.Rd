@@ -104,9 +104,10 @@ This operation requires permissions to perform the
 }
 
 \examples{
+\dontrun{
 # This operation searches for faces in a Rekognition collection that match
 # the largest face in an S3 bucket stored image.
-\dontrun{svc$search_faces_by_image(
+svc$search_faces_by_image(
   CollectionId = "myphotos",
   FaceMatchThreshold = 95L,
   Image = list(
@@ -116,7 +117,8 @@ This operation requires permissions to perform the
     )
   ),
   MaxFaces = 5L
-)}
+)
+}
 
 }
 \keyword{internal}

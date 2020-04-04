@@ -70,15 +70,17 @@ object versions.) For more information, see \href{https://docs.aws.amazon.com/Am
 }
 
 \examples{
+\dontrun{
 # The following example sets versioning configuration on bucket. The
 # configuration enables versioning on the bucket.
-\dontrun{svc$put_bucket_versioning(
+svc$put_bucket_versioning(
   Bucket = "examplebucket",
   VersioningConfiguration = list(
     MFADelete = "Disabled",
     Status = "Enabled"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

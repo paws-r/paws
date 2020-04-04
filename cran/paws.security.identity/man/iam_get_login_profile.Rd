@@ -27,11 +27,13 @@ returns a 404 (\code{NoSuchEntity}) error.
 }
 
 \examples{
+\dontrun{
 # The following command gets information about the password for the IAM
 # user named Anika.
-\dontrun{svc$get_login_profile(
+svc$get_login_profile(
   UserName = "Anika"
-)}
+)
+}
 
 }
 \keyword{internal}

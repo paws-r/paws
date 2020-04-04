@@ -76,11 +76,13 @@ This action returns the most recent 1,000 events from the specified
 }
 
 \examples{
+\dontrun{
 # The following operation retrieves events for an environment named
 # my-env:
-\dontrun{svc$describe_events(
+svc$describe_events(
   EnvironmentName = "my-env"
-)}
+)
+}
 
 }
 \keyword{internal}

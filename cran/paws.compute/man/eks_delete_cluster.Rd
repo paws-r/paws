@@ -32,11 +32,13 @@ DeleteNodegroup andDeleteFargateProfile.
 }
 
 \examples{
+\dontrun{
 # This example command deletes a cluster named `devel` in your default
 # region.
-\dontrun{svc$delete_cluster(
+svc$delete_cluster(
   name = "devel"
-)}
+)
+}
 
 }
 \keyword{internal}

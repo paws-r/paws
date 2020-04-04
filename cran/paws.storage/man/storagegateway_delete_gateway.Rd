@@ -37,11 +37,13 @@ information, see the \href{http://aws.amazon.com/storagegateway}{AWS Storage Gat
 }
 
 \examples{
+\dontrun{
 # This operation deletes the gateway, but not the gateway's VM from the
 # host computer.
-\dontrun{svc$delete_gateway(
+svc$delete_gateway(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)}
+)
+}
 
 }
 \keyword{internal}

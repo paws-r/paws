@@ -33,13 +33,15 @@ This operation requires permissions for the
 }
 
 \examples{
+\dontrun{
 # This operation deletes tags for an EFS file system.
-\dontrun{svc$delete_tags(
+svc$delete_tags(
   FileSystemId = "fs-01234567",
   TagKeys = list(
     "Name"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

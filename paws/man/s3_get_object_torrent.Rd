@@ -41,11 +41,13 @@ The following operation is related to \code{GetObjectTorrent}:
 }
 
 \examples{
+\dontrun{
 # The following example retrieves torrent files of an object.
-\dontrun{svc$get_object_torrent(
+svc$get_object_torrent(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -144,13 +144,15 @@ during SubmitJob override parameters defined in the job definition.
 }
 
 \examples{
+\dontrun{
 # This example submits a simple container job called example to the
 # HighPriority job queue.
-\dontrun{svc$submit_job(
+svc$submit_job(
   jobDefinition = "sleep60",
   jobName = "example",
   jobQueue = "HighPriority"
-)}
+)
+}
 
 }
 \keyword{internal}

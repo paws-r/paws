@@ -36,13 +36,15 @@ This operation can be called from any account in the organization.
 }
 
 \examples{
+\dontrun{
 # The following example shows you how to request details about a
 # handshake. The handshake ID comes either from the original call to
 # "InviteAccountToOrganization", or from a call to
 # "ListHandshakesForAccount" or "ListHandshakesForOrganization":
-\dontrun{svc$describe_handshake(
+svc$describe_handshake(
   HandshakeId = "h-examplehandshakeid111"
-)}
+)
+}
 
 }
 \keyword{internal}

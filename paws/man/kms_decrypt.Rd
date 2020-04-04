@@ -139,11 +139,13 @@ in the \emph{AWS Key Management Service Developer Guide}.
 }
 
 \examples{
+\dontrun{
 # The following example decrypts data that was encrypted with a customer
 # master key (CMK) in AWS KMS.
-\dontrun{svc$decrypt(
+svc$decrypt(
   CiphertextBlob = "<binary data>"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -53,12 +53,14 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example displays the fingerprint for the specified key.
-\dontrun{svc$describe_key_pairs(
+svc$describe_key_pairs(
   KeyNames = list(
     "my-key-pair"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -48,15 +48,17 @@ Updates a file system configuration.
 }
 
 \examples{
+\dontrun{
 # This operation updates an existing file system.
-\dontrun{svc$update_file_system(
+svc$update_file_system(
   FileSystemId = "fs-0498eed5fe91001ec",
   WindowsConfiguration = list(
     AutomaticBackupRetentionDays = 10L,
     DailyAutomaticBackupStartTime = "06:00",
     WeeklyMaintenanceStartTime = "3:06:00"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

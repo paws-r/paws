@@ -33,11 +33,13 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
 }
 
 \examples{
+\dontrun{
 # This example creates a Spot Instance data feed for your AWS account.
-\dontrun{svc$create_spot_datafeed_subscription(
+svc$create_spot_datafeed_subscription(
   Bucket = "my-s3-bucket",
   Prefix = "spotdata"
-)}
+)
+}
 
 }
 \keyword{internal}

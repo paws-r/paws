@@ -21,10 +21,12 @@ Deregisters an AWS Batch job definition.
 }
 
 \examples{
+\dontrun{
 # This example deregisters a job definition called sleep10.
-\dontrun{svc$deregister_job_definition(
+svc$deregister_job_definition(
   jobDefinition = "sleep10"
-)}
+)
+}
 
 }
 \keyword{internal}

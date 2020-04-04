@@ -99,9 +99,10 @@ This operation requires permissions for the \code{lex:PutSlotType} action.
 }
 
 \examples{
+\dontrun{
 # This example shows how to create a slot type that describes pizza
 # sauces.
-\dontrun{svc$put_slot_type(
+svc$put_slot_type(
   name = "PizzaSauceType",
   description = "Available pizza sauces",
   enumerationValues = list(
@@ -112,7 +113,8 @@ This operation requires permissions for the \code{lex:PutSlotType} action.
       value = "white"
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

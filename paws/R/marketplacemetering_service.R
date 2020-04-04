@@ -73,10 +73,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- marketplacemetering()
+#' \dontrun{
+#' svc <- marketplacemetering()
 #' svc$batch_meter_usage(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

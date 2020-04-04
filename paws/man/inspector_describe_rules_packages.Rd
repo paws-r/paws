@@ -27,13 +27,15 @@ packages.
 }
 
 \examples{
+\dontrun{
 # Describes the rules packages that are specified by the ARNs of the rules
 # packages.
-\dontrun{svc$describe_rules_packages(
+svc$describe_rules_packages(
   rulesPackageArns = list(
     "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-JJOtZiqQ"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

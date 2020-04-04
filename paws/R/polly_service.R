@@ -36,11 +36,13 @@ NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
+#' svc <- polly()
 #' # Deletes a specified pronunciation lexicon stored in an AWS Region.
-#' \dontrun{svc <- polly()
 #' svc$delete_lexicon(
 #'   Name = "example"
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

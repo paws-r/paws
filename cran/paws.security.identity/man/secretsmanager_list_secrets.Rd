@@ -61,9 +61,11 @@ To run this command, you must have the following permissions:
 }
 
 \examples{
+\dontrun{
 # The following example shows how to list all of the secrets in your
 # account.
-\dontrun{svc$list_secrets()}
+svc$list_secrets()
+}
 
 }
 \keyword{internal}

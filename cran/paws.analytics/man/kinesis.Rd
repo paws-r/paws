@@ -67,9 +67,11 @@ for real-time processing of streaming big data.
 }
 
 \examples{
-\dontrun{svc <- kinesis()
+\dontrun{
+svc <- kinesis()
 svc$add_tags_to_stream(
   Foo = 123
-)}
+)
+}
 
 }

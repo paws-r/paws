@@ -45,10 +45,12 @@ in the \emph{IAM User Guide}.
 }
 
 \examples{
+\dontrun{
 # The following example shows how to list the tags attached to a role.
-\dontrun{svc$list_role_tags(
+svc$list_role_tags(
   RoleName = "taggedrole1"
-)}
+)
+}
 
 }
 \keyword{internal}

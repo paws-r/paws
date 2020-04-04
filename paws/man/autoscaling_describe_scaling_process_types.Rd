@@ -12,8 +12,10 @@ Describes the scaling process types for use with ResumeProcesses and
 SuspendProcesses.
 }
 \examples{
+\dontrun{
 # This example describes the Auto Scaling process types.
-\dontrun{svc$describe_scaling_process_types()}
+svc$describe_scaling_process_types()
+}
 
 }
 \keyword{internal}

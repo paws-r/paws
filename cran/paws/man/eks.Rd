@@ -70,8 +70,9 @@ application to Amazon EKS without any code modification required.
 }
 
 \examples{
+\dontrun{
+svc <- eks()
 # The following example creates an Amazon EKS cluster called prod.
-\dontrun{svc <- eks()
 svc$create_cluster(
   version = "1.10",
   name = "prod",
@@ -86,6 +87,7 @@ svc$create_cluster(
     )
   ),
   roleArn = "arn:aws:iam::012345678910:role/eks-service-role-AWSServiceRoleForAmazonEKS-J7ON..."
-)}
+)
+}
 
 }

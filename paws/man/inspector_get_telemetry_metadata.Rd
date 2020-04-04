@@ -23,11 +23,13 @@ assessment run.
 }
 
 \examples{
+\dontrun{
 # Information about the data that is collected for the specified
 # assessment run.
-\dontrun{svc$get_telemetry_metadata(
+svc$get_telemetry_metadata(
   assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-..."
-)}
+)
+}
 
 }
 \keyword{internal}

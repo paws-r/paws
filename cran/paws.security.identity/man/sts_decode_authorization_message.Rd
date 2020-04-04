@@ -51,10 +51,12 @@ in the \emph{IAM User Guide}.
 }
 
 \examples{
+\dontrun{
 # 
-\dontrun{svc$decode_authorization_message(
+svc$decode_authorization_message(
   EncodedMessage = "<encoded-message>"
-)}
+)
+}
 
 }
 \keyword{internal}

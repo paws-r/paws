@@ -110,13 +110,15 @@ Related Topics
 }
 
 \examples{
+\dontrun{
 # The following operation creates a configuration template named my-app-v1
 # from the settings applied to an environment with the id e-rpqsewtp2j:
-\dontrun{svc$create_configuration_template(
+svc$create_configuration_template(
   ApplicationName = "my-app",
   EnvironmentId = "e-rpqsewtp2j",
   TemplateName = "my-app-v1"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -29,10 +29,12 @@ The following operations are related to \code{GetBucketRequestPayment}:
 }
 
 \examples{
+\dontrun{
 # The following example retrieves bucket versioning configuration.
-\dontrun{svc$get_bucket_request_payment(
+svc$get_bucket_request_payment(
   Bucket = "examplebucket"
-)}
+)
+}
 
 }
 \keyword{internal}

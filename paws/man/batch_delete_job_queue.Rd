@@ -27,10 +27,12 @@ before submitting a \code{DeleteJobQueue} request.
 }
 
 \examples{
+\dontrun{
 # This example deletes the GPGPU job queue.
-\dontrun{svc$delete_job_queue(
+svc$delete_job_queue(
   jobQueue = "GPGPU"
-)}
+)
+}
 
 }
 \keyword{internal}

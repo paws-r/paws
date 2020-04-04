@@ -25,10 +25,12 @@ You can execute this operation no more than once per second.
 }
 
 \examples{
+\dontrun{
 # The following example deletes an IP address filter:
-\dontrun{svc$delete_receipt_filter(
+svc$delete_receipt_filter(
   FilterName = "MyFilter"
-)}
+)
+}
 
 }
 \keyword{internal}

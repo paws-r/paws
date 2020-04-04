@@ -168,9 +168,11 @@ Provides APIs for creating and managing Amazon SageMaker resources.
 }
 
 \examples{
-\dontrun{svc <- sagemaker()
+\dontrun{
+svc <- sagemaker()
 svc$add_tags(
   Foo = 123
-)}
+)
+}
 
 }

@@ -47,12 +47,14 @@ DescribeTargetGroupAttributes.
 }
 
 \examples{
+\dontrun{
 # This example describes the specified target group.
-\dontrun{svc$describe_target_groups(
+svc$describe_target_groups(
   TargetGroupArns = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8..."
   )
-)}
+)
+}
 
 }
 \keyword{internal}

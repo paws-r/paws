@@ -79,10 +79,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- rds()
+#' \dontrun{
+#' svc <- rds()
 #' svc$add_role_to_db_cluster(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

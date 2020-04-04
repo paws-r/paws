@@ -79,9 +79,11 @@ in the Kubernetes documentation.
 }
 
 \examples{
-\dontrun{svc <- appmesh()
+\dontrun{
+svc <- appmesh()
 svc$create_mesh(
   Foo = 123
-)}
+)
+}
 
 }

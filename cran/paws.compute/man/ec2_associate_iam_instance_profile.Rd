@@ -28,14 +28,16 @@ instance.
 }
 
 \examples{
+\dontrun{
 # This example associates an IAM instance profile named admin-role with
 # the specified instance.
-\dontrun{svc$associate_iam_instance_profile(
+svc$associate_iam_instance_profile(
   IamInstanceProfile = list(
     Name = "admin-role"
   ),
   InstanceId = "i-123456789abcde123"
-)}
+)
+}
 
 }
 \keyword{internal}

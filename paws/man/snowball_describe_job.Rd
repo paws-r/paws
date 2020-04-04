@@ -23,10 +23,12 @@ job status, and other important metadata.
 }
 
 \examples{
+\dontrun{
 # This operation describes a job you've created for AWS Snowball.
-\dontrun{svc$describe_job(
+svc$describe_job(
   JobId = "JID123e4567-e89b-12d3-a456-426655440000"
-)}
+)
+}
 
 }
 \keyword{internal}

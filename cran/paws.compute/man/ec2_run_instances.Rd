@@ -439,9 +439,10 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example launches an instance using the specified AMI, instance
 # type, security group, subnet, block device mapping, and tags.
-\dontrun{svc$run_instances(
+svc$run_instances(
   BlockDeviceMappings = list(
     list(
       DeviceName = "/dev/sdh",
@@ -470,7 +471,8 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
       )
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -70,12 +70,14 @@ in the \emph{Amazon Glacier Developer Guide}.
 }
 
 \examples{
+\dontrun{
 # The example lists all the in-progress multipart uploads for the vault
 # named examplevault.
-\dontrun{svc$list_multipart_uploads(
+svc$list_multipart_uploads(
   accountId = "-",
   vaultName = "examplevault"
-)}
+)
+}
 
 }
 \keyword{internal}

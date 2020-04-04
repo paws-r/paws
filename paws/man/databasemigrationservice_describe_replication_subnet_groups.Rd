@@ -43,8 +43,9 @@ Returns information about the replication subnet groups.
 }
 
 \examples{
+\dontrun{
 # Returns information about the replication subnet groups.
-\dontrun{svc$describe_replication_subnet_groups(
+svc$describe_replication_subnet_groups(
   Filters = list(
     list(
       Name = "string",
@@ -56,7 +57,8 @@ Returns information about the replication subnet groups.
   ),
   Marker = "",
   MaxRecords = 123L
-)}
+)
+}
 
 }
 \keyword{internal}

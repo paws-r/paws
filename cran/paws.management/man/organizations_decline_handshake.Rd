@@ -35,12 +35,14 @@ relevant API operations for only 30 days. After that, it\'s deleted.
 }
 
 \examples{
+\dontrun{
 # The following example shows Susan declining an invitation to join Bill's
 # organization. The DeclineHandshake operation returns a handshake object,
 # showing that the state is now DECLINED:
-\dontrun{svc$decline_handshake(
+svc$decline_handshake(
   HandshakeId = "h-examplehandshakeid111"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -35,12 +35,14 @@ Describes one or more Auto Scaling groups.
 }
 
 \examples{
+\dontrun{
 # This example describes the specified Auto Scaling group.
-\dontrun{svc$describe_auto_scaling_groups(
+svc$describe_auto_scaling_groups(
   AutoScalingGroupNames = list(
     "my-auto-scaling-group"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

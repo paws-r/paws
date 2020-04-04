@@ -71,15 +71,17 @@ This operation requires permissions to perform the
 }
 
 \examples{
+\dontrun{
 # This operation detects faces in an image stored in an AWS S3 bucket.
-\dontrun{svc$detect_faces(
+svc$detect_faces(
   Image = list(
     S3Object = list(
       Bucket = "mybucket",
       Name = "myphoto"
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -33,13 +33,15 @@ Attaches a network interface to an instance.
 }
 
 \examples{
+\dontrun{
 # This example attaches the specified network interface to the specified
 # instance.
-\dontrun{svc$attach_network_interface(
+svc$attach_network_interface(
   DeviceIndex = 1L,
   InstanceId = "i-1234567890abcdef0",
   NetworkInterfaceId = "eni-e5aa89a3"
-)}
+)
+}
 
 }
 \keyword{internal}

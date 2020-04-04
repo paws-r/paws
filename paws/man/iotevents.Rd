@@ -56,9 +56,11 @@ inputs and detector models, and to list their versions.
 }
 
 \examples{
-\dontrun{svc <- iotevents()
+\dontrun{
+svc <- iotevents()
 svc$create_detector_model(
   Foo = 123
-)}
+)
+}
 
 }

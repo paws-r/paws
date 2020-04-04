@@ -60,13 +60,15 @@ hours) of snapshots.
 }
 
 \examples{
+\dontrun{
 # Updates a snapshot schedule configured for a gateway volume.
-\dontrun{svc$update_snapshot_schedule(
+svc$update_snapshot_schedule(
   Description = "Hourly snapshot",
   RecurrenceInHours = 1L,
   StartAt = 0L,
   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -62,10 +62,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- sesv2()
+#' \dontrun{
+#' svc <- sesv2()
 #' svc$create_configuration_set(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

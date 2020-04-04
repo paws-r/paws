@@ -49,10 +49,12 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example gets the console output for the specified instance.
-\dontrun{svc$get_console_output(
+svc$get_console_output(
   InstanceId = "i-1234567890abcdef0"
-)}
+)
+}
 
 }
 \keyword{internal}

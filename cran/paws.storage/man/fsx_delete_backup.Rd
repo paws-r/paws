@@ -35,10 +35,12 @@ any means.
 }
 
 \examples{
+\dontrun{
 # This operation deletes an Amazon FSx file system backup.
-\dontrun{svc$delete_backup(
+svc$delete_backup(
   BackupId = "backup-03e3c82e0183b7b6b"
-)}
+)
+}
 
 }
 \keyword{internal}

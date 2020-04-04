@@ -415,12 +415,14 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/
 }
 
 \examples{
+\dontrun{
 # The following example copies an object from one bucket to another.
-\dontrun{svc$copy_object(
+svc$copy_object(
   Bucket = "destinationbucket",
   CopySource = "/sourcebucket/HappyFacejpg",
   Key = "HappyFaceCopyjpg"
-)}
+)
+}
 
 }
 \keyword{internal}

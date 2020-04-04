@@ -54,12 +54,14 @@ Related Topics
 }
 
 \examples{
+\dontrun{
 # The following operation retrieves configuration settings for an
 # environment named my-env:
-\dontrun{svc$describe_configuration_settings(
+svc$describe_configuration_settings(
   ApplicationName = "my-app",
   EnvironmentName = "my-env"
-)}
+)
+}
 
 }
 \keyword{internal}

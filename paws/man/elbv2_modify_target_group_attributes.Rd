@@ -28,9 +28,10 @@ Modifies the specified attributes of the specified target group.
 }
 
 \examples{
+\dontrun{
 # This example sets the deregistration delay timeout to the specified
 # value for the specified target group.
-\dontrun{svc$modify_target_group_attributes(
+svc$modify_target_group_attributes(
   Attributes = list(
     list(
       Key = "deregistration_delay.timeout_seconds",
@@ -38,7 +39,8 @@ Modifies the specified attributes of the specified target group.
     )
   ),
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targe..."
-)}
+)
+}
 
 }
 \keyword{internal}

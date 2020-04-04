@@ -48,6 +48,7 @@ account.
 }
 
 \examples{
+\dontrun{
 # This example shows the administrator asking all the invited accounts in
 # the organization to approve enabling all features in the organization.
 # AWS Organizations sends an email to the address that is registered with
@@ -56,7 +57,8 @@ account.
 # accept the handshake, the organization administrator can finalize the
 # change to enable all features, and those with appropriate permissions
 # can create policies and apply them to roots, OUs, and accounts:/n/n
-\dontrun{svc$enable_all_features()}
+svc$enable_all_features()
+}
 
 }
 \keyword{internal}

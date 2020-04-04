@@ -37,12 +37,14 @@ NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example creates a receipt rule set by cloning an existing
 #' # one:
-#' \dontrun{svc$clone_receipt_rule_set(
+#' svc$clone_receipt_rule_set(
 #'   OriginalRuleSetName = "RuleSetToClone",
 #'   RuleSetName = "RuleSetToCreate"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -327,8 +329,9 @@ ses_create_custom_verification_email_template <- function(TemplateName, FromEmai
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example creates a new IP address filter:
-#' \dontrun{svc$create_receipt_filter(
+#' svc$create_receipt_filter(
 #'   Filter = list(
 #'     IpFilter = list(
 #'       Cidr = "1.2.3.4/24",
@@ -336,7 +339,8 @@ ses_create_custom_verification_email_template <- function(TemplateName, FromEmai
 #'     ),
 #'     Name = "MyFilter"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -434,8 +438,9 @@ ses_create_receipt_filter <- function(Filter) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example creates a new receipt rule:
-#' \dontrun{svc$create_receipt_rule(
+#' svc$create_receipt_rule(
 #'   After = "",
 #'   Rule = list(
 #'     Actions = list(
@@ -452,7 +457,8 @@ ses_create_receipt_filter <- function(Filter) {
 #'     TlsPolicy = "Optional"
 #'   ),
 #'   RuleSetName = "MyRuleSet"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -504,10 +510,12 @@ ses_create_receipt_rule <- function(RuleSetName, After = NULL, Rule) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example creates an empty receipt rule set:
-#' \dontrun{svc$create_receipt_rule_set(
+#' svc$create_receipt_rule_set(
 #'   RuleSetName = "MyRuleSet"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -778,11 +786,13 @@ ses_delete_custom_verification_email_template <- function(TemplateName) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example deletes an identity from the list of identities
 #' # that have been submitted for verification with Amazon SES:
-#' \dontrun{svc$delete_identity(
+#' svc$delete_identity(
 #'   Identity = "user@example.com"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -841,12 +851,14 @@ ses_delete_identity <- function(Identity) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example deletes a sending authorization policy for an
 #' # identity:
-#' \dontrun{svc$delete_identity_policy(
+#' svc$delete_identity_policy(
 #'   Identity = "user@example.com",
 #'   PolicyName = "MyPolicy"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -891,10 +903,12 @@ ses_delete_identity_policy <- function(Identity, PolicyName) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example deletes an IP address filter:
-#' \dontrun{svc$delete_receipt_filter(
+#' svc$delete_receipt_filter(
 #'   FilterName = "MyFilter"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -942,11 +956,13 @@ ses_delete_receipt_filter <- function(FilterName) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example deletes a receipt rule:
-#' \dontrun{svc$delete_receipt_rule(
+#' svc$delete_receipt_rule(
 #'   RuleName = "MyRule",
 #'   RuleSetName = "MyRuleSet"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -995,10 +1011,12 @@ ses_delete_receipt_rule <- function(RuleSetName, RuleName) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example deletes a receipt rule set:
-#' \dontrun{svc$delete_receipt_rule_set(
+#' svc$delete_receipt_rule_set(
 #'   RuleSetName = "MyRuleSet"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1076,11 +1094,13 @@ ses_delete_template <- function(TemplateName) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example deletes an email address from the list of
 #' # identities that have been submitted for verification with Amazon SES:
-#' \dontrun{svc$delete_verified_email_address(
+#' svc$delete_verified_email_address(
 #'   EmailAddress = "user@example.com"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1123,9 +1143,11 @@ ses_delete_verified_email_address <- function(EmailAddress) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example returns the metadata and receipt rules for the
 #' # receipt rule set that is currently active:
-#' \dontrun{svc$describe_active_receipt_rule_set()}
+#' svc$describe_active_receipt_rule_set()
+#' }
 #'
 #' @keywords internal
 #'
@@ -1217,11 +1239,13 @@ ses_describe_configuration_set <- function(ConfigurationSetName, ConfigurationSe
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example returns the details of a receipt rule:
-#' \dontrun{svc$describe_receipt_rule(
+#' svc$describe_receipt_rule(
 #'   RuleName = "MyRule",
 #'   RuleSetName = "MyRuleSet"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1266,11 +1290,13 @@ ses_describe_receipt_rule <- function(RuleSetName, RuleName) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example returns the metadata and receipt rules of a
 #' # receipt rule set:
-#' \dontrun{svc$describe_receipt_rule_set(
+#' svc$describe_receipt_rule_set(
 #'   RuleSetName = "MyRuleSet"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1308,9 +1334,11 @@ ses_describe_receipt_rule_set <- function(RuleSetName) {
 
 #'
 #' @examples
+#' \dontrun{
 #' # The following example returns if sending status for an account is
 #' # enabled. (true / false):
-#' \dontrun{svc$get_account_sending_enabled()}
+#' svc$get_account_sending_enabled()
+#' }
 #'
 #' @keywords internal
 #'
@@ -1420,14 +1448,16 @@ ses_get_custom_verification_email_template <- function(TemplateName) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example retrieves the Amazon SES Easy DKIM attributes for
 #' # a list of identities:
-#' \dontrun{svc$get_identity_dkim_attributes(
+#' svc$get_identity_dkim_attributes(
 #'   Identities = list(
 #'     "example.com",
 #'     "user@example.com"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1473,13 +1503,15 @@ ses_get_identity_dkim_attributes <- function(Identities) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example returns the custom MAIL FROM attributes for an
 #' # identity:
-#' \dontrun{svc$get_identity_mail_from_domain_attributes(
+#' svc$get_identity_mail_from_domain_attributes(
 #'   Identities = list(
 #'     "example.com"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1532,13 +1564,15 @@ ses_get_identity_mail_from_domain_attributes <- function(Identities) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example returns the notification attributes for an
 #' # identity:
-#' \dontrun{svc$get_identity_notification_attributes(
+#' svc$get_identity_notification_attributes(
 #'   Identities = list(
 #'     "example.com"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1603,14 +1637,16 @@ ses_get_identity_notification_attributes <- function(Identities) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example returns a sending authorization policy for an
 #' # identity:
-#' \dontrun{svc$get_identity_policies(
+#' svc$get_identity_policies(
 #'   Identity = "example.com",
 #'   PolicyNames = list(
 #'     "MyPolicy"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1675,13 +1711,15 @@ ses_get_identity_policies <- function(Identity, PolicyNames) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example returns the verification status and the
 #' # verification token for a domain identity:
-#' \dontrun{svc$get_identity_verification_attributes(
+#' svc$get_identity_verification_attributes(
 #'   Identities = list(
 #'     "example.com"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1717,9 +1755,11 @@ ses_get_identity_verification_attributes <- function(Identities) {
 
 #'
 #' @examples
+#' \dontrun{
 #' # The following example returns the Amazon SES sending limits for an AWS
 #' # account:
-#' \dontrun{svc$get_send_quota()}
+#' svc$get_send_quota()
+#' }
 #'
 #' @keywords internal
 #'
@@ -1758,8 +1798,10 @@ ses_get_send_quota <- function() {
 
 #'
 #' @examples
+#' \dontrun{
 #' # The following example returns Amazon SES sending statistics:
-#' \dontrun{svc$get_send_statistics()}
+#' svc$get_send_statistics()
+#' }
 #'
 #' @keywords internal
 #'
@@ -1955,13 +1997,15 @@ ses_list_custom_verification_email_templates <- function(NextToken = NULL, MaxRe
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example lists the email address identities that have been
 #' # submitted for verification with Amazon SES:
-#' \dontrun{svc$list_identities(
+#' svc$list_identities(
 #'   IdentityType = "EmailAddress",
 #'   MaxItems = 123L,
 #'   NextToken = ""
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2020,11 +2064,13 @@ ses_list_identities <- function(IdentityType = NULL, NextToken = NULL, MaxItems 
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example returns a list of sending authorization policies
 #' # that are attached to an identity:
-#' \dontrun{svc$list_identity_policies(
+#' svc$list_identity_policies(
 #'   Identity = "example.com"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2067,9 +2113,11 @@ ses_list_identity_policies <- function(Identity) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example lists the IP address filters that are associated
 #' # with an AWS account:
-#' \dontrun{svc$list_receipt_filters()}
+#' svc$list_receipt_filters()
+#' }
 #'
 #' @keywords internal
 #'
@@ -2119,11 +2167,13 @@ ses_list_receipt_filters <- function() {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example lists the receipt rule sets that exist under an
 #' # AWS account:
-#' \dontrun{svc$list_receipt_rule_sets(
+#' svc$list_receipt_rule_sets(
 #'   NextToken = ""
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2204,9 +2254,11 @@ ses_list_templates <- function(NextToken = NULL, MaxItems = NULL) {
 
 #'
 #' @examples
+#' \dontrun{
 #' # The following example lists all email addresses that have been submitted
 #' # for verification with Amazon SES:
-#' \dontrun{svc$list_verified_email_addresses()}
+#' svc$list_verified_email_addresses()
+#' }
 #'
 #' @keywords internal
 #'
@@ -2316,13 +2368,15 @@ ses_put_configuration_set_delivery_options <- function(ConfigurationSetName, Del
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example adds a sending authorization policy to an
 #' # identity:
-#' \dontrun{svc$put_identity_policy(
+#' svc$put_identity_policy(
 #'   Identity = "example.com",
 #'   Policy = "\{\"Version\":\"2008-10-17\",\"Statement\":[\{\"Sid\":\"stmt1469123904194\",...",
 #'   PolicyName = "MyPolicy"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2376,15 +2430,17 @@ ses_put_identity_policy <- function(Identity, PolicyName, Policy) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example reorders the receipt rules within a receipt rule
 #' # set:
-#' \dontrun{svc$reorder_receipt_rule_set(
+#' svc$reorder_receipt_rule_set(
 #'   RuleNames = list(
 #'     "MyRule",
 #'     "MyOtherRule"
 #'   ),
 #'   RuleSetName = "MyRuleSet"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2921,8 +2977,9 @@ ses_send_custom_verification_email <- function(EmailAddress, TemplateName, Confi
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example sends a formatted email:
-#' \dontrun{svc$send_email(
+#' svc$send_email(
 #'   Destination = list(
 #'     BccAddresses = list(),
 #'     CcAddresses = list(
@@ -2954,7 +3011,8 @@ ses_send_custom_verification_email <- function(EmailAddress, TemplateName, Confi
 #'   ReturnPathArn = "",
 #'   Source = "sender@example.com",
 #'   SourceArn = ""
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -3208,8 +3266,9 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example sends an email with an attachment:
-#' \dontrun{svc$send_raw_email(
+#' svc$send_raw_email(
 #'   Destinations = list(),
 #'   FromArn = "",
 #'   RawMessage = list(
@@ -3218,7 +3277,8 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #'   ReturnPathArn = "",
 #'   Source = "",
 #'   SourceArn = ""
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -3455,10 +3515,12 @@ ses_send_templated_email <- function(Source, Destination, ReplyToAddresses = NUL
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example sets the active receipt rule set:
-#' \dontrun{svc$set_active_receipt_rule_set(
+#' svc$set_active_receipt_rule_set(
 #'   RuleSetName = "RuleSetToActivate"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -3518,12 +3580,14 @@ ses_set_active_receipt_rule_set <- function(RuleSetName = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example configures Amazon SES to Easy DKIM-sign the email
 #' # sent from an identity:
-#' \dontrun{svc$set_identity_dkim_enabled(
+#' svc$set_identity_dkim_enabled(
 #'   DkimEnabled = TRUE,
 #'   Identity = "user@example.com"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -3586,12 +3650,14 @@ ses_set_identity_dkim_enabled <- function(Identity, DkimEnabled) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example configures Amazon SES to forward an identity's
 #' # bounces and complaints via email:
-#' \dontrun{svc$set_identity_feedback_forwarding_enabled(
+#' svc$set_identity_feedback_forwarding_enabled(
 #'   ForwardingEnabled = TRUE,
 #'   Identity = "user@example.com"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -3654,13 +3720,15 @@ ses_set_identity_feedback_forwarding_enabled <- function(Identity, ForwardingEna
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example configures Amazon SES to include the original
 #' # email headers in the Amazon SNS bounce notifications for an identity:
-#' \dontrun{svc$set_identity_headers_in_notifications_enabled(
+#' svc$set_identity_headers_in_notifications_enabled(
 #'   Enabled = TRUE,
 #'   Identity = "user@example.com",
 #'   NotificationType = "Bounce"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -3731,13 +3799,15 @@ ses_set_identity_headers_in_notifications_enabled <- function(Identity, Notifica
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example configures Amazon SES to use a custom MAIL FROM
 #' # domain for an identity:
-#' \dontrun{svc$set_identity_mail_from_domain(
+#' svc$set_identity_mail_from_domain(
 #'   BehaviorOnMXFailure = "UseDefaultValue",
 #'   Identity = "user@example.com",
 #'   MailFromDomain = "bounces.example.com"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -3805,14 +3875,16 @@ ses_set_identity_mail_from_domain <- function(Identity, MailFromDomain = NULL, B
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example sets the Amazon SNS topic to which Amazon SES will
 #' # publish bounce, complaint, and/or delivery notifications for emails sent
 #' # with the specified identity as the Source:
-#' \dontrun{svc$set_identity_notification_topic(
+#' svc$set_identity_notification_topic(
 #'   Identity = "user@example.com",
 #'   NotificationType = "Bounce",
 #'   SnsTopic = "arn:aws:sns:us-west-2:111122223333:MyTopic"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -3863,13 +3935,15 @@ ses_set_identity_notification_topic <- function(Identity, NotificationType, SnsT
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example sets the position of a receipt rule in a receipt
 #' # rule set:
-#' \dontrun{svc$set_receipt_rule_position(
+#' svc$set_receipt_rule_position(
 #'   After = "PutRuleAfterThisRule",
 #'   RuleName = "RuleToReposition",
 #'   RuleSetName = "MyRuleSet"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -3960,10 +4034,12 @@ ses_test_render_template <- function(TemplateName, TemplateData) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example updated the sending status for this account.
-#' \dontrun{svc$update_account_sending_enabled(
+#' svc$update_account_sending_enabled(
 #'   Enabled = TRUE
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -4090,11 +4166,13 @@ ses_update_configuration_set_event_destination <- function(ConfigurationSetName,
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # Set the reputationMetricsEnabled flag for a specific configuration set.
-#' \dontrun{svc$update_configuration_set_reputation_metrics_enabled(
+#' svc$update_configuration_set_reputation_metrics_enabled(
 #'   ConfigurationSetName = "foo",
 #'   Enabled = TRUE
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -4145,11 +4223,13 @@ ses_update_configuration_set_reputation_metrics_enabled <- function(Configuratio
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # Set the sending enabled flag for a specific configuration set.
-#' \dontrun{svc$update_configuration_set_sending_enabled(
+#' svc$update_configuration_set_sending_enabled(
 #'   ConfigurationSetName = "foo",
 #'   Enabled = TRUE
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -4355,8 +4435,9 @@ ses_update_custom_verification_email_template <- function(TemplateName, FromEmai
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example updates a receipt rule to use an Amazon S3 action:
-#' \dontrun{svc$update_receipt_rule(
+#' svc$update_receipt_rule(
 #'   Rule = list(
 #'     Actions = list(
 #'       list(
@@ -4372,7 +4453,8 @@ ses_update_custom_verification_email_template <- function(TemplateName, FromEmai
 #'     TlsPolicy = "Optional"
 #'   ),
 #'   RuleSetName = "MyRuleSet"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -4491,11 +4573,13 @@ ses_update_template <- function(Template) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example generates DKIM tokens for a domain that has been
 #' # verified with Amazon SES:
-#' \dontrun{svc$verify_domain_dkim(
+#' svc$verify_domain_dkim(
 #'   Domain = "example.com"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -4541,11 +4625,13 @@ ses_verify_domain_dkim <- function(Domain) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example starts the domain verification process with Amazon
 #' # SES:
-#' \dontrun{svc$verify_domain_identity(
+#' svc$verify_domain_identity(
 #'   Domain = "example.com"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -4585,11 +4671,13 @@ ses_verify_domain_identity <- function(Domain) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example starts the email address verification process with
 #' # Amazon SES:
-#' \dontrun{svc$verify_email_address(
+#' svc$verify_email_address(
 #'   EmailAddress = "user@example.com"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -4634,11 +4722,13 @@ ses_verify_email_address <- function(EmailAddress) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following example starts the email address verification process with
 #' # Amazon SES:
-#' \dontrun{svc$verify_email_identity(
+#' svc$verify_email_identity(
 #'   EmailAddress = "user@example.com"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'

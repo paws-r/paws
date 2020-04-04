@@ -24,10 +24,12 @@ balancer to which it is attached, using DeleteLoadBalancer.
 }
 
 \examples{
+\dontrun{
 # This example deletes the specified listener.
-\dontrun{svc$delete_listener(
+svc$delete_listener(
   ListenerArn = "arn:aws:elasticloadbalancing:ua-west-2:123456789012:listener/app/my-load-ba..."
-)}
+)
+}
 
 }
 \keyword{internal}

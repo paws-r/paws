@@ -28,11 +28,13 @@ This operation requires permissions for the \code{lex:GetSlotType} action.
 }
 
 \examples{
+\dontrun{
 # This example shows how to get information about a slot type.
-\dontrun{svc$get_slot_type(
+svc$get_slot_type(
   version = "$LATEST",
   name = "DocPizzaCrustType"
-)}
+)
+}
 
 }
 \keyword{internal}

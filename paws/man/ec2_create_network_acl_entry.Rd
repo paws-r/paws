@@ -93,10 +93,11 @@ the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example creates an entry for the specified network ACL. The rule
 # allows ingress traffic from anywhere (0.0.0.0/0) on UDP port 53 (DNS)
 # into any associated subnet.
-\dontrun{svc$create_network_acl_entry(
+svc$create_network_acl_entry(
   CidrBlock = "0.0.0.0/0",
   Egress = FALSE,
   NetworkAclId = "acl-5fb85d36",
@@ -107,7 +108,8 @@ the \emph{Amazon Virtual Private Cloud User Guide}.
   Protocol = "17",
   RuleAction = "allow",
   RuleNumber = 100L
-)}
+)
+}
 
 }
 \keyword{internal}

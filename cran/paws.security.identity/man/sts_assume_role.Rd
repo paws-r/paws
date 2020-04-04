@@ -335,8 +335,9 @@ one-time password (TOTP) that the MFA device produces.
 }
 
 \examples{
+\dontrun{
 # 
-\dontrun{svc$assume_role(
+svc$assume_role(
   ExternalId = "123ABC",
   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":...",
   RoleArn = "arn:aws:iam::123456789012:role/demo",
@@ -359,7 +360,8 @@ one-time password (TOTP) that the MFA device produces.
     "Project",
     "Cost-Center"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

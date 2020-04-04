@@ -46,10 +46,12 @@ in the Amazon DynamoDB Developer Guide.
 }
 
 \examples{
+\dontrun{
+svc <- dynamodbstreams()
 # The following example describes a stream with a given stream ARN.
-\dontrun{svc <- dynamodbstreams()
 svc$describe_stream(
   StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:51:1..."
-)}
+)
+}
 
 }

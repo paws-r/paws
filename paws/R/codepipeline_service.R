@@ -165,10 +165,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- codepipeline()
+#' \dontrun{
+#' svc <- codepipeline()
 #' svc$acknowledge_job(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

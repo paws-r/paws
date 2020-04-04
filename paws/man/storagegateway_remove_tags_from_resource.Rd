@@ -28,15 +28,17 @@ supported in storage gateways of all types.
 }
 
 \examples{
+\dontrun{
 # Lists the iSCSI stored volumes of a gateway. Removes one or more tags
 # from the specified resource.
-\dontrun{svc$remove_tags_from_resource(
+svc$remove_tags_from_resource(
   ResourceARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-11A2222B",
   TagKeys = list(
     "Dev Gatgeway Region",
     "East Coast"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

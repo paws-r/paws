@@ -16,9 +16,11 @@ environment in a region. If the storage location already exists,
 create a new bucket.
 }
 \examples{
+\dontrun{
 # The following operation creates a new environment for version v1 of a
 # java application named my-app:
-\dontrun{svc$create_storage_location()}
+svc$create_storage_location()
+}
 
 }
 \keyword{internal}

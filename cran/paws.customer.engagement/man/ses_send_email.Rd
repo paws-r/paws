@@ -167,8 +167,9 @@ in the \emph{Amazon SES Developer Guide.}
 }
 
 \examples{
+\dontrun{
 # The following example sends a formatted email:
-\dontrun{svc$send_email(
+svc$send_email(
   Destination = list(
     BccAddresses = list(),
     CcAddresses = list(
@@ -200,7 +201,8 @@ in the \emph{Amazon SES Developer Guide.}
   ReturnPathArn = "",
   Source = "sender@example.com",
   SourceArn = ""
-)}
+)
+}
 
 }
 \keyword{internal}

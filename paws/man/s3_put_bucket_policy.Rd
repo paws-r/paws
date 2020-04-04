@@ -53,11 +53,13 @@ The following operations are related to \code{PutBucketPolicy}:
 }
 
 \examples{
+\dontrun{
 # The following example sets a permission policy on a bucket.
-\dontrun{svc$put_bucket_policy(
+svc$put_bucket_policy(
   Bucket = "examplebucket",
   Policy = "\{\"Version\": \"2012-10-17\", \"Statement\": [\{ \"Sid\": \"id-1\",\"Effect\": ..."
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -47,6 +47,7 @@ account.
 }
 
 \examples{
+\dontrun{
 # The following example shows how to create a service control policy (SCP)
 # that is named AllowAllS3Actions. The JSON string in the content
 # parameter specifies the content in the policy. The parameter string is
@@ -55,12 +56,13 @@ account.
 # is surrounded by double quotes:
 # 
 # 
-\dontrun{svc$create_policy(
+svc$create_policy(
   Content = "\{\\\\\"Version\\\\\":\\\\\"2012-10-17\\\\\",\\\\\"Statement\\\\\":\{\\\\\"Effect\\\\\":...",
   Description = "Enables admins of attached accounts to delegate all S3 permissions",
   Name = "AllowAllS3Actions",
   Type = "SERVICE_CONTROL_POLICY"
-)}
+)
+}
 
 }
 \keyword{internal}

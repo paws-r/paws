@@ -38,10 +38,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- worklink()
+#' \dontrun{
+#' svc <- worklink()
 #' svc$associate_domain(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

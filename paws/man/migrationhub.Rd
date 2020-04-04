@@ -60,9 +60,11 @@ returned. Also, you must make the API calls while in your home region.
 }
 
 \examples{
-\dontrun{svc <- migrationhub()
+\dontrun{
+svc <- migrationhub()
 svc$associate_created_artifact(
   Foo = 123
-)}
+)
+}
 
 }

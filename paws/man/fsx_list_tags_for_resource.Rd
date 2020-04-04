@@ -56,10 +56,12 @@ responses of a multi-call iteration is unspecified.
 }
 
 \examples{
+\dontrun{
 # This operation lists tags for an Amazon FSx resource.
-\dontrun{svc$list_tags_for_resource(
+svc$list_tags_for_resource(
   ResourceARN = "arn:aws:fsx:us-east-1:012345678912:file-system/fs-0498eed5fe91001ec"
-)}
+)
+}
 
 }
 \keyword{internal}

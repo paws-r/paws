@@ -31,10 +31,12 @@ so on.
 }
 
 \examples{
+\dontrun{
 # This example deletes the specified VPC.
-\dontrun{svc$delete_vpc(
+svc$delete_vpc(
   VpcId = "vpc-a01106c2"
-)}
+)
+}
 
 }
 \keyword{internal}

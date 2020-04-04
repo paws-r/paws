@@ -53,13 +53,15 @@ Executes the specified policy.
 }
 
 \examples{
+\dontrun{
 # This example executes the specified Auto Scaling policy for the
 # specified Auto Scaling group.
-\dontrun{svc$execute_policy(
+svc$execute_policy(
   AutoScalingGroupName = "my-auto-scaling-group",
   HonorCooldown = TRUE,
   PolicyName = "ScaleIn"
-)}
+)
+}
 
 }
 \keyword{internal}

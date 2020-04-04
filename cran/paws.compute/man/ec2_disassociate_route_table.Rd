@@ -33,11 +33,13 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example disassociates the specified route table from its associated
 # subnet.
-\dontrun{svc$disassociate_route_table(
+svc$disassociate_route_table(
   AssociationId = "rtbassoc-781d0d1a"
-)}
+)
+}
 
 }
 \keyword{internal}

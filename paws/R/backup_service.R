@@ -33,10 +33,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- backup()
+#' \dontrun{
+#' svc <- backup()
 #' svc$create_backup_plan(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

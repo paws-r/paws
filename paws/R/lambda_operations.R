@@ -146,16 +146,18 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example adds a permission for an S3 bucket to invoke a Lambda
 #' # function.
-#' \dontrun{svc$add_permission(
+#' svc$add_permission(
 #'   Action = "lambda:InvokeFunction",
 #'   FunctionName = "MyFunction",
 #'   Principal = "s3.amazonaws.com",
 #'   SourceAccount = "123456789012",
 #'   SourceArn = "arn:aws:s3:::examplebucket/*",
 #'   StatementId = "ID-1"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -532,8 +534,9 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example creates a Lambda function.
-#' \dontrun{svc$create_function(
+#' svc$create_function(
 #'   Code = structure(
 #'     list(),
 #'     .Names = character(
@@ -554,7 +557,8 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #'       0
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -608,11 +612,13 @@ lambda_create_function <- function(FunctionName, Runtime, Role, Handler, Code, D
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation deletes a Lambda function alias
-#' \dontrun{svc$delete_alias(
+#' svc$delete_alias(
 #'   FunctionName = "myFunction",
 #'   Name = "alias"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -657,10 +663,12 @@ lambda_delete_alias <- function(FunctionName, Name) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation deletes a Lambda function event source mapping
-#' \dontrun{svc$delete_event_source_mapping(
+#' svc$delete_event_source_mapping(
 #'   UUID = "12345kxodurf3443"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -723,11 +731,13 @@ lambda_delete_event_source_mapping <- function(UUID) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation deletes a Lambda function
-#' \dontrun{svc$delete_function(
+#' svc$delete_function(
 #'   FunctionName = "myFunction",
 #'   Qualifier = "1"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -961,8 +971,10 @@ lambda_delete_provisioned_concurrency_config <- function(FunctionName, Qualifier
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation retrieves a Lambda customer's account settings
-#' \dontrun{svc$get_account_settings()}
+#' svc$get_account_settings()
+#' }
 #'
 #' @keywords internal
 #'
@@ -1016,11 +1028,13 @@ lambda_get_account_settings <- function() {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation retrieves a Lambda function alias
-#' \dontrun{svc$get_alias(
+#' svc$get_alias(
 #'   FunctionName = "myFunction",
 #'   Name = "myFunctionAlias"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1060,10 +1074,12 @@ lambda_get_alias <- function(FunctionName, Name) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation retrieves a Lambda function's event source mapping
-#' \dontrun{svc$get_event_source_mapping(
+#' svc$get_event_source_mapping(
 #'   UUID = "123489-xxxxx-kdla8d89d7"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1123,11 +1139,13 @@ lambda_get_event_source_mapping <- function(UUID) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation retrieves a Lambda function's event source mapping
-#' \dontrun{svc$get_function(
+#' svc$get_function(
 #'   FunctionName = "myFunction",
 #'   Qualifier = "1"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1237,11 +1255,13 @@ lambda_get_function_concurrency <- function(FunctionName) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation retrieves a Lambda function's event source mapping
-#' \dontrun{svc$get_function_configuration(
+#' svc$get_function_configuration(
 #'   FunctionName = "myFunction",
 #'   Qualifier = "1"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1475,11 +1495,13 @@ lambda_get_layer_version_policy <- function(LayerName, VersionNumber) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation retrieves a Lambda function policy
-#' \dontrun{svc$get_policy(
+#' svc$get_policy(
 #'   FunctionName = "myFunction",
 #'   Qualifier = "1"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1654,15 +1676,17 @@ lambda_get_provisioned_concurrency_config <- function(FunctionName, Qualifier) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation invokes a Lambda function
-#' \dontrun{svc$invoke(
+#' svc$invoke(
 #'   ClientContext = "MyApp",
 #'   FunctionName = "MyFunction",
 #'   InvocationType = "Event",
 #'   LogType = "Tail",
 #'   Payload = "fileb://file-path/input.json",
 #'   Qualifier = "1"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1717,11 +1741,13 @@ lambda_invoke <- function(FunctionName, InvocationType = NULL, LogType = NULL, C
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation invokes a Lambda function asynchronously
-#' \dontrun{svc$invoke_async(
+#' svc$invoke_async(
 #'   FunctionName = "myFunction",
 #'   InvokeArgs = "fileb://file-path/input.json"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1782,13 +1808,15 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation retrieves a Lambda function's aliases
-#' \dontrun{svc$list_aliases(
+#' svc$list_aliases(
 #'   FunctionName = "myFunction",
 #'   FunctionVersion = "1",
 #'   Marker = "",
 #'   MaxItems = 123L
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1969,11 +1997,13 @@ lambda_list_function_event_invoke_configs <- function(FunctionName, Marker = NUL
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation retrieves a Lambda functions
-#' \dontrun{svc$list_functions(
+#' svc$list_functions(
 #'   Marker = "",
 #'   MaxItems = 123L
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2221,12 +2251,14 @@ lambda_list_tags <- function(Resource) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation retrieves a Lambda function versions
-#' \dontrun{svc$list_versions_by_function(
+#' svc$list_versions_by_function(
 #'   FunctionName = "myFunction",
 #'   Marker = "",
 #'   MaxItems = 123L
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2370,12 +2402,14 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation publishes a version of a Lambda function
-#' \dontrun{svc$publish_version(
+#' svc$publish_version(
 #'   CodeSha256 = "",
 #'   Description = "",
 #'   FunctionName = "myFunction"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2698,12 +2732,14 @@ lambda_remove_layer_version_permission <- function(LayerName, VersionNumber, Sta
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation removes a Lambda function's permissions
-#' \dontrun{svc$remove_permission(
+#' svc$remove_permission(
 #'   FunctionName = "myFunction",
 #'   Qualifier = "1",
 #'   StatementId = "role-statement-id"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2857,13 +2893,15 @@ lambda_untag_resource <- function(Resource, TagKeys) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation updates a Lambda function alias
-#' \dontrun{svc$update_alias(
+#' svc$update_alias(
 #'   Description = "",
 #'   FunctionName = "myFunction",
 #'   FunctionVersion = "1",
 #'   Name = "functionAlias"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2973,13 +3011,15 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation updates a Lambda function event source mapping
-#' \dontrun{svc$update_event_source_mapping(
+#' svc$update_event_source_mapping(
 #'   BatchSize = 123L,
 #'   Enabled = TRUE,
 #'   FunctionName = "myFunction",
 #'   UUID = "1234xCy789012"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -3055,15 +3095,17 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation updates a Lambda function's code
-#' \dontrun{svc$update_function_code(
+#' svc$update_function_code(
 #'   FunctionName = "myFunction",
 #'   Publish = TRUE,
 #'   S3Bucket = "myBucket",
 #'   S3Key = "myKey",
 #'   S3ObjectVersion = "1",
 #'   ZipFile = "fileb://file-path/file.zip"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -3200,8 +3242,9 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This operation updates a Lambda function's configuration
-#' \dontrun{svc$update_function_configuration(
+#' svc$update_function_configuration(
 #'   Description = "",
 #'   FunctionName = "myFunction",
 #'   Handler = "index.handler",
@@ -3215,7 +3258,8 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'       0
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'

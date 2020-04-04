@@ -55,9 +55,10 @@ need, when they need it. For more information, see the \href{https://docs.aws.am
 }
 
 \examples{
+\dontrun{
+svc <- efs()
 # This operation creates a new file system with the default generalpurpose
 # performance mode.
-\dontrun{svc <- efs()
 svc$create_file_system(
   CreationToken = "tokenstring",
   PerformanceMode = "generalPurpose",
@@ -67,6 +68,7 @@ svc$create_file_system(
       Value = "MyFileSystem"
     )
   )
-)}
+)
+}
 
 }

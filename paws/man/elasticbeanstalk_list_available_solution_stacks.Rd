@@ -12,10 +12,12 @@ Returns a list of the available solution stack names, with the public
 version first and then in reverse chronological order.
 }
 \examples{
+\dontrun{
 # The following operation lists solution stacks for all currently
 # available platform configurations and any that you have used in the
 # past:
-\dontrun{svc$list_available_solution_stacks()}
+svc$list_available_solution_stacks()
+}
 
 }
 \keyword{internal}

@@ -37,10 +37,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- marketplacecatalog()
+#' \dontrun{
+#' svc <- marketplacecatalog()
 #' svc$cancel_change_set(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

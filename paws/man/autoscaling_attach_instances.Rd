@@ -39,14 +39,16 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example attaches the specified instance to the specified Auto
 # Scaling group.
-\dontrun{svc$attach_instances(
+svc$attach_instances(
   AutoScalingGroupName = "my-auto-scaling-group",
   InstanceIds = list(
     "i-93633f9b"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

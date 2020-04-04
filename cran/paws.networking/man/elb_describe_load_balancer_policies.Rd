@@ -34,14 +34,16 @@ have the \verb{ELBSample-} prefix.
 }
 
 \examples{
+\dontrun{
 # This example describes the specified policy associated with the
 # specified load balancer.
-\dontrun{svc$describe_load_balancer_policies(
+svc$describe_load_balancer_policies(
   LoadBalancerName = "my-load-balancer",
   PolicyNames = list(
     "my-authentication-policy"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

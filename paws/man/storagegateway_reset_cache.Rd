@@ -35,11 +35,13 @@ function properly.
 }
 
 \examples{
+\dontrun{
 # Resets all cache disks that have encountered a error and makes the disks
 # available for reconfiguration as cache storage.
-\dontrun{svc$reset_cache(
+svc$reset_cache(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-13B4567C"
-)}
+)
+}
 
 }
 \keyword{internal}

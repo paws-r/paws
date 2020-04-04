@@ -259,8 +259,9 @@ delete. Otherwise, the item is not deleted.
 }
 
 \examples{
+\dontrun{
 # This example deletes an item from the Music table.
-\dontrun{svc$delete_item(
+svc$delete_item(
   Key = list(
     Artist = list(
       S = "No One You Know"
@@ -270,7 +271,8 @@ delete. Otherwise, the item is not deleted.
     )
   ),
   TableName = "Music"
-)}
+)
+}
 
 }
 \keyword{internal}

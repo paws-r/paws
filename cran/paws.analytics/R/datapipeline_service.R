@@ -52,10 +52,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- datapipeline()
+#' \dontrun{
+#' svc <- datapipeline()
 #' svc$activate_pipeline(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

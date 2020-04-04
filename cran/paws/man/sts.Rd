@@ -127,8 +127,9 @@ your log files, see the \href{https://docs.aws.amazon.com/awscloudtrail/latest/u
 }
 
 \examples{
+\dontrun{
+svc <- sts()
 # 
-\dontrun{svc <- sts()
 svc$assume_role(
   ExternalId = "123ABC",
   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":...",
@@ -152,6 +153,7 @@ svc$assume_role(
     "Project",
     "Cost-Center"
   )
-)}
+)
+}
 
 }

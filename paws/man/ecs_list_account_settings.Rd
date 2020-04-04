@@ -57,17 +57,19 @@ Lists the account settings for a specified principal.
 }
 
 \examples{
+\dontrun{
 # This example displays the effective account settings for your account.
-\dontrun{svc$list_account_settings(
+svc$list_account_settings(
   effectiveSettings = TRUE
-)}
+)
 
 # This example displays the effective account settings for the specified
 # user or role.
-\dontrun{svc$list_account_settings(
+svc$list_account_settings(
   effectiveSettings = TRUE,
   principalArn = "arn:aws:iam::<aws_account_id>:user/principalName"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -114,9 +114,10 @@ to launch an environment from the application version.
 }
 
 \examples{
+\dontrun{
 # The following operation creates a new version (v1) of an application
 # named my-app:
-\dontrun{svc$create_application_version(
+svc$create_application_version(
   ApplicationName = "my-app",
   AutoCreateApplication = TRUE,
   Description = "my-app-v1",
@@ -126,7 +127,8 @@ to launch an environment from the application version.
     S3Key = "sample.war"
   ),
   VersionLabel = "v1"
-)}
+)
+}
 
 }
 \keyword{internal}

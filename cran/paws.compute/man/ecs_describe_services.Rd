@@ -37,13 +37,15 @@ Describes the specified services running in your cluster.
 }
 
 \examples{
+\dontrun{
 # This example provides descriptive information about the service named
 # `ecs-simple-service`.
-\dontrun{svc$describe_services(
+svc$describe_services(
   services = list(
     "ecs-simple-service"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -37,9 +37,10 @@ NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
+#' svc <- lambda()
 #' # This example adds a permission for an S3 bucket to invoke a Lambda
 #' # function.
-#' \dontrun{svc <- lambda()
 #' svc$add_permission(
 #'   Action = "lambda:InvokeFunction",
 #'   FunctionName = "MyFunction",
@@ -47,7 +48,8 @@ NULL
 #'   SourceAccount = "123456789012",
 #'   SourceArn = "arn:aws:s3:::examplebucket/*",
 #'   StatementId = "ID-1"
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

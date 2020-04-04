@@ -50,9 +50,11 @@ Defines the public endpoint for the AWS Lake Formation service.
 }
 
 \examples{
-\dontrun{svc <- lakeformation()
+\dontrun{
+svc <- lakeformation()
 svc$batch_grant_permissions(
   Foo = 123
-)}
+)
+}
 
 }

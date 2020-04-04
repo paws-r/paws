@@ -68,12 +68,14 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example describes the specified DHCP options set.
-\dontrun{svc$describe_dhcp_options(
+svc$describe_dhcp_options(
   DhcpOptionsIds = list(
     "dopt-d9070ebb"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

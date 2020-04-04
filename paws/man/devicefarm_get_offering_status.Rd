@@ -28,11 +28,13 @@ contact \href{mailto:aws-devicefarm-support@amazon.com}{aws-devicefarm-support@a
 }
 
 \examples{
+\dontrun{
 # The following example returns information about Device Farm offerings
 # available to your account.
-\dontrun{svc$get_offering_status(
+svc$get_offering_status(
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
-)}
+)
+}
 
 }
 \keyword{internal}

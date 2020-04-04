@@ -32,14 +32,16 @@ in the \emph{IAM User Guide}.
 }
 
 \examples{
+\dontrun{
 # The following example shows how to remove tags that are attached to a
 # user named 'anika'.
-\dontrun{svc$untag_user(
+svc$untag_user(
   TagKeys = list(
     "Dept"
   ),
   UserName = "anika"
-)}
+)
+}
 
 }
 \keyword{internal}

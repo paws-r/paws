@@ -87,11 +87,13 @@ Gets information about unique device types.
 }
 
 \examples{
+\dontrun{
 # The following example returns information about the available devices in
 # a specific project.
-\dontrun{svc$list_devices(
+svc$list_devices(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
-)}
+)
+}
 
 }
 \keyword{internal}

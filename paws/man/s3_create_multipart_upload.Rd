@@ -302,11 +302,13 @@ The following operations are related to \code{CreateMultipartUpload}:
 }
 
 \examples{
+\dontrun{
 # The following example initiates a multipart upload.
-\dontrun{svc$create_multipart_upload(
+svc$create_multipart_upload(
   Bucket = "examplebucket",
   Key = "largeobject"
-)}
+)
+}
 
 }
 \keyword{internal}

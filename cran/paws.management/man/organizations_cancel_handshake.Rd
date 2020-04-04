@@ -35,14 +35,16 @@ relevant APIs for only 30 days. After that, it\'s deleted.
 }
 
 \examples{
+\dontrun{
 # Bill previously sent an invitation to Susan's account to join his
 # organization. He changes his mind and decides to cancel the invitation
 # before Susan accepts it. The following example shows Bill's
 # cancellation:
 # 
-\dontrun{svc$cancel_handshake(
+svc$cancel_handshake(
   HandshakeId = "h-examplehandshakeid111"
-)}
+)
+}
 
 }
 \keyword{internal}

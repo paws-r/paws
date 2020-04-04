@@ -377,10 +377,11 @@ You can also return the item\'s attribute values in the same
 }
 
 \examples{
+\dontrun{
 # This example updates an item in the Music table. It adds a new attribute
 # (Year) and modifies the AlbumTitle attribute.  All of the attributes in
 # the item, as they appear after the update, are returned in the response.
-\dontrun{svc$update_item(
+svc$update_item(
   ExpressionAttributeNames = list(
     `#AT` = "AlbumTitle",
     `#Y` = "Year"
@@ -404,7 +405,8 @@ You can also return the item\'s attribute values in the same
   ReturnValues = "ALL_NEW",
   TableName = "Music",
   UpdateExpression = "SET #Y = :y, #AT = :t"
-)}
+)
+}
 
 }
 \keyword{internal}

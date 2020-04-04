@@ -47,9 +47,11 @@ latency and local data processing needs.
 }
 
 \examples{
-\dontrun{svc <- outposts()
+\dontrun{
+svc <- outposts()
 svc$create_outpost(
   Foo = 123
-)}
+)
+}
 
 }

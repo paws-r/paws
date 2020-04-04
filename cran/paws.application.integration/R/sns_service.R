@@ -45,10 +45,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- sns()
+#' \dontrun{
+#' svc <- sns()
 #' svc$add_permission(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

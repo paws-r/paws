@@ -35,12 +35,14 @@ see UpdateWebACL.
 }
 
 \examples{
+\dontrun{
 # The following example deletes a web ACL with the ID
 # example-46da-4444-5555-example.
-\dontrun{svc$delete_web_acl(
+svc$delete_web_acl(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   WebACLId = "example-46da-4444-5555-example"
-)}
+)
+}
 
 }
 \keyword{internal}

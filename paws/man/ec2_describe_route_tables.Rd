@@ -108,12 +108,14 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example describes the specified route table.
-\dontrun{svc$describe_route_tables(
+svc$describe_route_tables(
   RouteTableIds = list(
     "rtb-1f382e7d"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

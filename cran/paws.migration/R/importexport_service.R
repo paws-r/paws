@@ -36,10 +36,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- importexport()
+#' \dontrun{
+#' svc <- importexport()
 #' svc$cancel_job(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

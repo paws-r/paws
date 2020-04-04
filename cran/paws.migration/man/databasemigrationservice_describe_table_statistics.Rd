@@ -58,13 +58,15 @@ It does not indicate the time of the last update to the table.
 }
 
 \examples{
+\dontrun{
 # Returns table statistics on the database migration task, including table
 # name, rows inserted, rows updated, and rows deleted.
-\dontrun{svc$describe_table_statistics(
+svc$describe_table_statistics(
   Marker = "",
   MaxRecords = 123L,
   ReplicationTaskArn = ""
-)}
+)
+}
 
 }
 \keyword{internal}

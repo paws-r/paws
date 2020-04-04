@@ -105,10 +105,12 @@ or worry about scaling your management infrastructure.
 }
 
 \examples{
+\dontrun{
+svc <- ecs()
 # This example creates a cluster in your default region.
-\dontrun{svc <- ecs()
 svc$create_cluster(
   clusterName = "my_cluster"
-)}
+)
+}
 
 }

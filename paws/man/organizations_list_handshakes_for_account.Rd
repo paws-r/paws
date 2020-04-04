@@ -63,10 +63,12 @@ This operation can be called from any account in the organization.
 }
 
 \examples{
+\dontrun{
 # The following example shows you how to get a list of handshakes that are
 # associated with the account of the credentials used to call the
 # operation:
-\dontrun{svc$list_handshakes_for_account()}
+svc$list_handshakes_for_account()
+}
 
 }
 \keyword{internal}

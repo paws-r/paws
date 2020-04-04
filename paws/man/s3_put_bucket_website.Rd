@@ -101,8 +101,9 @@ because some requests might not be redirected.
 }
 
 \examples{
+\dontrun{
 # The following example adds website configuration to a bucket.
-\dontrun{svc$put_bucket_website(
+svc$put_bucket_website(
   Bucket = "examplebucket",
   ContentMD5 = "",
   WebsiteConfiguration = list(
@@ -113,7 +114,8 @@ because some requests might not be redirected.
       Suffix = "index.html"
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

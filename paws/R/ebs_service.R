@@ -53,10 +53,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- ebs()
+#' \dontrun{
+#' svc <- ebs()
 #' svc$get_snapshot_block(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

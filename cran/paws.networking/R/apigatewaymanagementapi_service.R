@@ -36,10 +36,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- apigatewaymanagementapi()
+#' \dontrun{
+#' svc <- apigatewaymanagementapi()
 #' svc$delete_connection(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

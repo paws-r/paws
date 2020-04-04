@@ -40,12 +40,14 @@ in the \emph{IAM User Guide}.
 }
 
 \examples{
+\dontrun{
 # The following command deletes the policy named ExamplePolicy from the
 # group named Admins:
-\dontrun{svc$delete_group_policy(
+svc$delete_group_policy(
   GroupName = "Admins",
   PolicyName = "ExamplePolicy"
-)}
+)
+}
 
 }
 \keyword{internal}

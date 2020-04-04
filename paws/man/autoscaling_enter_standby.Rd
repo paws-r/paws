@@ -43,14 +43,16 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example puts the specified instance into standby mode.
-\dontrun{svc$enter_standby(
+svc$enter_standby(
   AutoScalingGroupName = "my-auto-scaling-group",
   InstanceIds = list(
     "i-93633f9b"
   ),
   ShouldDecrementDesiredCapacity = TRUE
-)}
+)
+}
 
 }
 \keyword{internal}

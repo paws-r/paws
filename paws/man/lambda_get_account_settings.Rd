@@ -17,8 +17,10 @@ usage in an AWS Region.
 }
 
 \examples{
+\dontrun{
 # This operation retrieves a Lambda customer's account settings
-\dontrun{svc$get_account_settings()}
+svc$get_account_settings()
+}
 
 }
 \keyword{internal}

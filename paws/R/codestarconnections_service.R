@@ -64,10 +64,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- codestarconnections()
+#' \dontrun{
+#' svc <- codestarconnections()
 #' svc$create_connection(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

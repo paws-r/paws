@@ -28,12 +28,14 @@ specified route table of a VPC.
 }
 
 \examples{
+\dontrun{
 # This example enables the specified virtual private gateway to propagate
 # static routes to the specified route table.
-\dontrun{svc$enable_vgw_route_propagation(
+svc$enable_vgw_route_propagation(
   GatewayId = "vgw-9a4cacf3",
   RouteTableId = "rtb-22574640"
-)}
+)
+}
 
 }
 \keyword{internal}

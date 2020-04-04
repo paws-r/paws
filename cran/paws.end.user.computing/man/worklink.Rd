@@ -75,9 +75,11 @@ content on mobile devices.
 }
 
 \examples{
-\dontrun{svc <- worklink()
+\dontrun{
+svc <- worklink()
 svc$associate_domain(
   Foo = 123
-)}
+)
+}
 
 }

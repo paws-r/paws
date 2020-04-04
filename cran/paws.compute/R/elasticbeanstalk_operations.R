@@ -27,11 +27,13 @@ NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following code aborts a running application version deployment for
 #' # an environment named my-env:
-#' \dontrun{svc$abort_environment_update(
+#' svc$abort_environment_update(
 #'   EnvironmentName = "my-env"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -113,11 +115,13 @@ elasticbeanstalk_apply_environment_managed_action <- function(EnvironmentName = 
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation checks the availability of the subdomain
 #' # my-cname:
-#' \dontrun{svc$check_dns_availability(
+#' svc$check_dns_availability(
 #'   CNAMEPrefix = "my-cname"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -253,11 +257,13 @@ elasticbeanstalk_compose_environments <- function(ApplicationName = NULL, GroupN
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation creates a new application named my-app:
-#' \dontrun{svc$create_application(
+#' svc$create_application(
 #'   ApplicationName = "my-app",
 #'   Description = "my application"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -381,9 +387,10 @@ elasticbeanstalk_create_application <- function(ApplicationName, Description = N
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation creates a new version (v1) of an application
 #' # named my-app:
-#' \dontrun{svc$create_application_version(
+#' svc$create_application_version(
 #'   ApplicationName = "my-app",
 #'   AutoCreateApplication = TRUE,
 #'   Description = "my-app-v1",
@@ -393,7 +400,8 @@ elasticbeanstalk_create_application <- function(ApplicationName, Description = N
 #'     S3Key = "sample.war"
 #'   ),
 #'   VersionLabel = "v1"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -514,13 +522,15 @@ elasticbeanstalk_create_application_version <- function(ApplicationName, Version
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation creates a configuration template named my-app-v1
 #' # from the settings applied to an environment with the id e-rpqsewtp2j:
-#' \dontrun{svc$create_configuration_template(
+#' svc$create_configuration_template(
 #'   ApplicationName = "my-app",
 #'   EnvironmentId = "e-rpqsewtp2j",
 #'   TemplateName = "my-app-v1"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -649,15 +659,17 @@ elasticbeanstalk_create_configuration_template <- function(ApplicationName, Temp
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation creates a new environment for version v1 of a
 #' # java application named my-app:
-#' \dontrun{svc$create_environment(
+#' svc$create_environment(
 #'   ApplicationName = "my-app",
 #'   CNAMEPrefix = "my-app",
 #'   EnvironmentName = "my-env",
 #'   SolutionStackName = "64bit Amazon Linux 2015.03 v2.0.0 running Tomcat 8 Java 8",
 #'   VersionLabel = "v1"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -763,9 +775,11 @@ elasticbeanstalk_create_platform_version <- function(PlatformName, PlatformVersi
 
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation creates a new environment for version v1 of a
 #' # java application named my-app:
-#' \dontrun{svc$create_storage_location()}
+#' svc$create_storage_location()
+#' }
 #'
 #' @keywords internal
 #'
@@ -813,10 +827,12 @@ elasticbeanstalk_create_storage_location <- function() {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation deletes an application named my-app:
-#' \dontrun{svc$delete_application(
+#' svc$delete_application(
 #'   ApplicationName = "my-app"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -865,13 +881,15 @@ elasticbeanstalk_delete_application <- function(ApplicationName, TerminateEnvByF
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation deletes an application version named
 #' # 22a0-stage-150819_182129 for an application named my-app:
-#' \dontrun{svc$delete_application_version(
+#' svc$delete_application_version(
 #'   ApplicationName = "my-app",
 #'   DeleteSourceBundle = TRUE,
 #'   VersionLabel = "22a0-stage-150819_182129"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -918,12 +936,14 @@ elasticbeanstalk_delete_application_version <- function(ApplicationName, Version
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation deletes a configuration template named
 #' # my-template for an application named my-app:
-#' \dontrun{svc$delete_configuration_template(
+#' svc$delete_configuration_template(
 #'   ApplicationName = "my-app",
 #'   TemplateName = "my-template"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -972,12 +992,14 @@ elasticbeanstalk_delete_configuration_template <- function(ApplicationName, Temp
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation deletes a draft configuration for an environment
 #' # named my-env:
-#' \dontrun{svc$delete_environment_configuration(
+#' svc$delete_environment_configuration(
 #'   ApplicationName = "my-app",
 #'   EnvironmentName = "my-env"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1105,14 +1127,16 @@ elasticbeanstalk_describe_account_attributes <- function() {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation retrieves information about an application
 #' # version labeled v2:
-#' \dontrun{svc$describe_application_versions(
+#' svc$describe_application_versions(
 #'   ApplicationName = "my-app",
 #'   VersionLabels = list(
 #'     "v2"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1154,9 +1178,11 @@ elasticbeanstalk_describe_application_versions <- function(ApplicationName = NUL
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation retrieves information about applications in the
 #' # current region:
-#' \dontrun{svc$describe_applications()}
+#' svc$describe_applications()
+#' }
 #'
 #' @keywords internal
 #'
@@ -1224,12 +1250,14 @@ elasticbeanstalk_describe_applications <- function(ApplicationNames = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation retrieves descriptions of all available
 #' # configuration options for an environment named my-env:
-#' \dontrun{svc$describe_configuration_options(
+#' svc$describe_configuration_options(
 #'   ApplicationName = "my-app",
 #'   EnvironmentName = "my-env"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1298,12 +1326,14 @@ elasticbeanstalk_describe_configuration_options <- function(ApplicationName = NU
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation retrieves configuration settings for an
 #' # environment named my-env:
-#' \dontrun{svc$describe_configuration_settings(
+#' svc$describe_configuration_settings(
 #'   ApplicationName = "my-app",
 #'   EnvironmentName = "my-env"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1358,14 +1388,16 @@ elasticbeanstalk_describe_configuration_settings <- function(ApplicationName, Te
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation retrieves overall health information for an
 #' # environment named my-env:
-#' \dontrun{svc$describe_environment_health(
+#' svc$describe_environment_health(
 #'   AttributeNames = list(
 #'     "All"
 #'   ),
 #'   EnvironmentName = "my-env"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1499,11 +1531,13 @@ elasticbeanstalk_describe_environment_managed_actions <- function(EnvironmentNam
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation retrieves information about resources in an
 #' # environment named my-env:
-#' \dontrun{svc$describe_environment_resources(
+#' svc$describe_environment_resources(
 #'   EnvironmentName = "my-env"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1582,13 +1616,15 @@ elasticbeanstalk_describe_environment_resources <- function(EnvironmentId = NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation retrieves information about an environment named
 #' # my-env:
-#' \dontrun{svc$describe_environments(
+#' svc$describe_environments(
 #'   EnvironmentNames = list(
 #'     "my-env"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1671,11 +1707,13 @@ elasticbeanstalk_describe_environments <- function(ApplicationName = NULL, Versi
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation retrieves events for an environment named
 #' # my-env:
-#' \dontrun{svc$describe_events(
+#' svc$describe_events(
 #'   EnvironmentName = "my-env"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1728,14 +1766,16 @@ elasticbeanstalk_describe_events <- function(ApplicationName = NULL, VersionLabe
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation retrieves health information for instances in an
 #' # environment named my-env:
-#' \dontrun{svc$describe_instances_health(
+#' svc$describe_instances_health(
 #'   AttributeNames = list(
 #'     "All"
 #'   ),
 #'   EnvironmentName = "my-env"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1807,10 +1847,12 @@ elasticbeanstalk_describe_platform_version <- function(PlatformArn = NULL) {
 
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation lists solution stacks for all currently
 #' # available platform configurations and any that you have used in the
 #' # past:
-#' \dontrun{svc$list_available_solution_stacks()}
+#' svc$list_available_solution_stacks()
+#' }
 #'
 #' @keywords internal
 #'
@@ -1957,11 +1999,13 @@ elasticbeanstalk_list_tags_for_resource <- function(ResourceArn) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation terminates and recreates the resources in an
 #' # environment named my-env:
-#' \dontrun{svc$rebuild_environment(
+#' svc$rebuild_environment(
 #'   EnvironmentName = "my-env"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2035,11 +2079,13 @@ elasticbeanstalk_rebuild_environment <- function(EnvironmentId = NULL, Environme
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation requests logs from an environment named my-env:
-#' \dontrun{svc$request_environment_info(
+#' svc$request_environment_info(
 #'   EnvironmentName = "my-env",
 #'   InfoType = "tail"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2090,11 +2136,13 @@ elasticbeanstalk_request_environment_info <- function(EnvironmentId = NULL, Envi
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation restarts application servers on all instances in
 #' # an environment named my-env:
-#' \dontrun{svc$restart_app_server(
+#' svc$restart_app_server(
 #'   EnvironmentName = "my-env"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2157,12 +2205,14 @@ elasticbeanstalk_restart_app_server <- function(EnvironmentId = NULL, Environmen
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation retrieves a link to logs from an environment
 #' # named my-env:
-#' \dontrun{svc$retrieve_environment_info(
+#' svc$retrieve_environment_info(
 #'   EnvironmentName = "my-env",
 #'   InfoType = "tail"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2227,12 +2277,14 @@ elasticbeanstalk_retrieve_environment_info <- function(EnvironmentId = NULL, Env
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation swaps the assigned subdomains of two
 #' # environments:
-#' \dontrun{svc$swap_environment_cnam_es(
+#' svc$swap_environment_cnam_es(
 #'   DestinationEnvironmentName = "my-env-green",
 #'   SourceEnvironmentName = "my-env-blue"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2302,11 +2354,13 @@ elasticbeanstalk_swap_environment_cnam_es <- function(SourceEnvironmentId = NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation terminates an Elastic Beanstalk environment
 #' # named my-env:
-#' \dontrun{svc$terminate_environment(
+#' svc$terminate_environment(
 #'   EnvironmentName = "my-env"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2354,12 +2408,14 @@ elasticbeanstalk_terminate_environment <- function(EnvironmentId = NULL, Environ
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation updates the description of an application named
 #' # my-app:
-#' \dontrun{svc$update_application(
+#' svc$update_application(
 #'   ApplicationName = "my-app",
 #'   Description = "my Elastic Beanstalk application"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2467,13 +2523,15 @@ elasticbeanstalk_update_application_resource_lifecycle <- function(ApplicationNa
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation updates the description of an application
 #' # version named 22a0-stage-150819_185942:
-#' \dontrun{svc$update_application_version(
+#' svc$update_application_version(
 #'   ApplicationName = "my-app",
 #'   Description = "new description",
 #'   VersionLabel = "22a0-stage-150819_185942"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2554,10 +2612,11 @@ elasticbeanstalk_update_application_version <- function(ApplicationName, Version
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation removes the configured CloudWatch custom health
 #' # metrics configuration ConfigDocument from a saved configuration template
 #' # named my-template:
-#' \dontrun{svc$update_configuration_template(
+#' svc$update_configuration_template(
 #'   ApplicationName = "my-app",
 #'   OptionsToRemove = list(
 #'     list(
@@ -2566,7 +2625,8 @@ elasticbeanstalk_update_application_version <- function(ApplicationName, Version
 #'     )
 #'   ),
 #'   TemplateName = "my-template"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2692,16 +2752,17 @@ elasticbeanstalk_update_configuration_template <- function(ApplicationName, Temp
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation updates an environment named "my-env" to version
 #' # "v2" of the application to which it belongs:
-#' \dontrun{svc$update_environment(
+#' svc$update_environment(
 #'   EnvironmentName = "my-env",
 #'   VersionLabel = "v2"
-#' )}
+#' )
 #' 
 #' # The following operation configures several options in the
 #' # aws:elb:loadbalancer namespace:
-#' \dontrun{svc$update_environment(
+#' svc$update_environment(
 #'   EnvironmentName = "my-env",
 #'   OptionSettings = list(
 #'     list(
@@ -2725,7 +2786,8 @@ elasticbeanstalk_update_configuration_template <- function(ApplicationName, Temp
 #'       Value = "3"
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2868,9 +2930,10 @@ elasticbeanstalk_update_tags_for_resource <- function(ResourceArn, TagsToAdd = N
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # The following operation validates a CloudWatch custom metrics config
 #' # document:
-#' \dontrun{svc$validate_configuration_settings(
+#' svc$validate_configuration_settings(
 #'   ApplicationName = "my-app",
 #'   EnvironmentName = "my-env",
 #'   OptionSettings = list(
@@ -2880,7 +2943,8 @@ elasticbeanstalk_update_tags_for_resource <- function(ResourceArn, TagsToAdd = N
 #'       Value = "\{\"CloudWatchMetrics\": \{\"Environment\": \{\"ApplicationLatencyP99.9\": null,..."
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'

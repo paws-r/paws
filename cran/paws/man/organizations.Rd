@@ -84,13 +84,15 @@ AWS Organizations
 }
 
 \examples{
+\dontrun{
+svc <- organizations()
 # Bill is the owner of an organization, and he invites Juan's account
 # (222222222222) to join his organization. The following example shows
 # Juan's account accepting the handshake and thus agreeing to the
 # invitation.
-\dontrun{svc <- organizations()
 svc$accept_handshake(
   HandshakeId = "h-examplehandshakeid111"
-)}
+)
+}
 
 }

@@ -38,12 +38,14 @@ in the \emph{IAM User Guide}.
 }
 
 \examples{
+\dontrun{
 # The following command attaches the AWS managed policy named
 # AdministratorAccess to the IAM user named Alice.
-\dontrun{svc$attach_user_policy(
+svc$attach_user_policy(
   PolicyArn = "arn:aws:iam::aws:policy/AdministratorAccess",
   UserName = "Alice"
-)}
+)
+}
 
 }
 \keyword{internal}

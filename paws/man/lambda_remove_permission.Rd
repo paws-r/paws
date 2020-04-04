@@ -47,12 +47,14 @@ You can get the ID of the statement from the output of GetPolicy.
 }
 
 \examples{
+\dontrun{
 # This operation removes a Lambda function's permissions
-\dontrun{svc$remove_permission(
+svc$remove_permission(
   FunctionName = "myFunction",
   Qualifier = "1",
   StatementId = "role-statement-id"
-)}
+)
+}
 
 }
 \keyword{internal}

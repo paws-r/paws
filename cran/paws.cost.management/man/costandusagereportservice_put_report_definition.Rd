@@ -37,9 +37,10 @@ Creates a new report using the description that you provide.
 }
 
 \examples{
+\dontrun{
 # The following example creates a AWS Cost and Usage report named
 # ExampleReport.
-\dontrun{svc$put_report_definition(
+svc$put_report_definition(
   ReportDefinition = list(
     AdditionalArtifacts = list(
       "REDSHIFT",
@@ -56,7 +57,8 @@ Creates a new report using the description that you provide.
     S3Region = "us-east-1",
     TimeUnit = "DAILY"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

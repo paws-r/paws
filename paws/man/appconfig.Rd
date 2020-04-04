@@ -107,9 +107,11 @@ This reference is intended to be used with the \href{http://docs.aws.amazon.com/
 }
 
 \examples{
-\dontrun{svc <- appconfig()
+\dontrun{
+svc <- appconfig()
 svc$create_application(
   Foo = 123
-)}
+)
+}
 
 }

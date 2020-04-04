@@ -57,12 +57,14 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example terminates the specified EC2 instance.
-\dontrun{svc$terminate_instances(
+svc$terminate_instances(
   InstanceIds = list(
     "i-1234567890abcdef0"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -21,10 +21,12 @@ Returns the status of the RefreshSchemas operation.
 }
 
 \examples{
+\dontrun{
 # Returns the status of the refresh-schemas operation.
-\dontrun{svc$describe_refresh_schemas_status(
+svc$describe_refresh_schemas_status(
   EndpointArn = ""
-)}
+)
+}
 
 }
 \keyword{internal}

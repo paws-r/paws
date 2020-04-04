@@ -68,11 +68,13 @@ By default, the list is sorted by service namespace.
 }
 
 \examples{
+\dontrun{
 # The following operation gets details about the report with the job ID:
 # examplea-1234-b567-cde8-90fg123abcd4
-\dontrun{svc$get_organizations_access_report(
+svc$get_organizations_access_report(
   JobId = "examplea-1234-b567-cde8-90fg123abcd4"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -46,13 +46,15 @@ For more information about using notifications with Amazon SES, see the
 }
 
 \examples{
+\dontrun{
 # The following example configures Amazon SES to include the original
 # email headers in the Amazon SNS bounce notifications for an identity:
-\dontrun{svc$set_identity_headers_in_notifications_enabled(
+svc$set_identity_headers_in_notifications_enabled(
   Enabled = TRUE,
   Identity = "user@example.com",
   NotificationType = "Bounce"
-)}
+)
+}
 
 }
 \keyword{internal}

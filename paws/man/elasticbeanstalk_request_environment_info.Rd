@@ -59,11 +59,13 @@ Related Topics
 }
 
 \examples{
+\dontrun{
 # The following operation requests logs from an environment named my-env:
-\dontrun{svc$request_environment_info(
+svc$request_environment_info(
   EnvironmentName = "my-env",
   InfoType = "tail"
-)}
+)
+}
 
 }
 \keyword{internal}

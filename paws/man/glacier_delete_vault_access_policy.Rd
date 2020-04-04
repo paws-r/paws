@@ -37,12 +37,14 @@ about vault access policies, see \href{https://docs.aws.amazon.com/amazonglacier
 }
 
 \examples{
+\dontrun{
 # The example deletes the access policy associated with the vault named
 # examplevault.
-\dontrun{svc$delete_vault_access_policy(
+svc$delete_vault_access_policy(
   accountId = "-",
   vaultName = "examplevault"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -102,9 +102,11 @@ information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-g
 }
 
 \examples{
-\dontrun{svc <- guardduty()
+\dontrun{
+svc <- guardduty()
 svc$accept_invitation(
   Foo = 123
-)}
+)
+}
 
 }

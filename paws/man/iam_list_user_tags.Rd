@@ -45,10 +45,12 @@ in the \emph{IAM User Guide}.
 }
 
 \examples{
+\dontrun{
 # The following example shows how to list the tags attached to a user.
-\dontrun{svc$list_user_tags(
+svc$list_user_tags(
   UserName = "anika"
-)}
+)
+}
 
 }
 \keyword{internal}

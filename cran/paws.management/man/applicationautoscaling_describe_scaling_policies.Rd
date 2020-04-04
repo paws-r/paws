@@ -128,11 +128,13 @@ delete it using DeleteScalingPolicy.
 }
 
 \examples{
+\dontrun{
 # This example describes the scaling policies for the ecs service
 # namespace.
-\dontrun{svc$describe_scaling_policies(
+svc$describe_scaling_policies(
   ServiceNamespace = "ecs"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -27,10 +27,12 @@ interface before you can delete it.
 }
 
 \examples{
+\dontrun{
 # This example deletes the specified network interface.
-\dontrun{svc$delete_network_interface(
+svc$delete_network_interface(
   NetworkInterfaceId = "eni-e5aa89a3"
-)}
+)
+}
 
 }
 \keyword{internal}

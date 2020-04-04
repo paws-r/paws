@@ -29,10 +29,12 @@ You can execute this operation no more than once per second.
 }
 
 \examples{
+\dontrun{
 # The following example sets the active receipt rule set:
-\dontrun{svc$set_active_receipt_rule_set(
+svc$set_active_receipt_rule_set(
   RuleSetName = "RuleSetToActivate"
-)}
+)
+}
 
 }
 \keyword{internal}

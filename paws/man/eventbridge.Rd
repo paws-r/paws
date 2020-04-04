@@ -86,9 +86,11 @@ For more information about the features of Amazon EventBridge, see the
 }
 
 \examples{
-\dontrun{svc <- eventbridge()
+\dontrun{
+svc <- eventbridge()
 svc$activate_event_source(
   Foo = 123
-)}
+)
+}
 
 }

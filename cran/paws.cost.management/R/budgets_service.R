@@ -74,10 +74,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- budgets()
+#' \dontrun{
+#' svc <- budgets()
 #' svc$create_budget(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

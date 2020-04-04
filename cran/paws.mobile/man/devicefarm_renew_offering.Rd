@@ -28,11 +28,13 @@ operation. If you must be able to invoke this operation, contact
 }
 
 \examples{
+\dontrun{
 # The following example renews a specific device slot offering.
-\dontrun{svc$renew_offering(
+svc$renew_offering(
   offeringId = "D68B3C05-1BA6-4360-BC69-12345EXAMPLE",
   quantity = 1L
-)}
+)
+}
 
 }
 \keyword{internal}

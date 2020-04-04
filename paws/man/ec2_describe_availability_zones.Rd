@@ -77,9 +77,11 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example describes the Availability Zones that are available to you.
 # The response includes Availability Zones only for the current region.
-\dontrun{svc$describe_availability_zones()}
+svc$describe_availability_zones()
+}
 
 }
 \keyword{internal}

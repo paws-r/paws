@@ -234,19 +234,21 @@ The following operations are related to \code{GetObject}:
 }
 
 \examples{
+\dontrun{
 # The following example retrieves an object for an S3 bucket. The request
 # specifies the range header to retrieve a specific byte range.
-\dontrun{svc$get_object(
+svc$get_object(
   Bucket = "examplebucket",
   Key = "SampleFile.txt",
   Range = "bytes=0-9"
-)}
+)
 
 # The following example retrieves an object for an S3 bucket.
-\dontrun{svc$get_object(
+svc$get_object(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
-)}
+)
+}
 
 }
 \keyword{internal}

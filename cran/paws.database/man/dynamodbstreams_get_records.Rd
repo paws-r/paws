@@ -37,10 +37,12 @@ records, whichever comes first.
 }
 
 \examples{
+\dontrun{
 # The following example retrieves all the stream records from a shard.
-\dontrun{svc$get_records(
+svc$get_records(
   ShardIterator = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:..."
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -41,12 +41,14 @@ in the Amazon S3 Glacier Developer Guide.
 }
 
 \examples{
+\dontrun{
 # The example deletes the notification configuration set for the vault
 # named examplevault.
-\dontrun{svc$delete_vault_notifications(
+svc$delete_vault_notifications(
   accountId = "-",
   vaultName = "examplevault"
-)}
+)
+}
 
 }
 \keyword{internal}

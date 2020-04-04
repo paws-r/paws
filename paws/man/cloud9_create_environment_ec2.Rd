@@ -54,15 +54,17 @@ instance to the environment.
 }
 
 \examples{
+\dontrun{
 # 
-\dontrun{svc$create_environment_ec2(
+svc$create_environment_ec2(
   name = "my-demo-environment",
   automaticStopTimeMinutes = 60L,
   description = "This is my demonstration environment.",
   instanceType = "t2.micro",
   ownerArn = "arn:aws:iam::123456789012:user/MyDemoUser",
   subnetId = "subnet-1fab8aEX"
-)}
+)
+}
 
 }
 \keyword{internal}

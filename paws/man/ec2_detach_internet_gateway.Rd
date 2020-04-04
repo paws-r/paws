@@ -32,12 +32,14 @@ with Elastic IP addresses or public IPv4 addresses.
 }
 
 \examples{
+\dontrun{
 # This example detaches the specified Internet gateway from the specified
 # VPC.
-\dontrun{svc$detach_internet_gateway(
+svc$detach_internet_gateway(
   InternetGatewayId = "igw-c0a643a9",
   VpcId = "vpc-a01106c2"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -39,9 +39,11 @@ Amazon Personalize Runtime
 }
 
 \examples{
-\dontrun{svc <- personalizeruntime()
+\dontrun{
+svc <- personalizeruntime()
 svc$get_personalized_ranking(
   Foo = 123
-)}
+)
+}
 
 }

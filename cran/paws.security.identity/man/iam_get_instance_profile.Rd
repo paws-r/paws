@@ -28,11 +28,13 @@ in the \emph{IAM User Guide}.
 }
 
 \examples{
+\dontrun{
 # The following command gets information about the instance profile named
 # ExampleInstanceProfile.
-\dontrun{svc$get_instance_profile(
+svc$get_instance_profile(
   InstanceProfileName = "ExampleInstanceProfile"
-)}
+)
+}
 
 }
 \keyword{internal}

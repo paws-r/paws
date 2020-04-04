@@ -38,12 +38,14 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example reboots the specified EC2 instance.
-\dontrun{svc$reboot_instances(
+svc$reboot_instances(
   InstanceIds = list(
     "i-1234567890abcdef5"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

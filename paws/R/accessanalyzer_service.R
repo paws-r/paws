@@ -41,10 +41,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- accessanalyzer()
+#' \dontrun{
+#' svc <- accessanalyzer()
 #' svc$create_analyzer(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

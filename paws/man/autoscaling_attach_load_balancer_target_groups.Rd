@@ -38,14 +38,16 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 
 \examples{
+\dontrun{
 # This example attaches the specified target group to the specified Auto
 # Scaling group.
-\dontrun{svc$attach_load_balancer_target_groups(
+svc$attach_load_balancer_target_groups(
   AutoScalingGroupName = "my-auto-scaling-group",
   TargetGroupARNs = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8..."
   )
-)}
+)
+}
 
 }
 \keyword{internal}

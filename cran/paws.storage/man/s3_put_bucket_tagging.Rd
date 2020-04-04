@@ -86,9 +86,10 @@ The following operations are related to \code{PutBucketTagging}:
 }
 
 \examples{
+\dontrun{
 # The following example sets tags on a bucket. Any existing tags are
 # replaced.
-\dontrun{svc$put_bucket_tagging(
+svc$put_bucket_tagging(
   Bucket = "examplebucket",
   Tagging = list(
     TagSet = list(
@@ -102,7 +103,8 @@ The following operations are related to \code{PutBucketTagging}:
       )
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

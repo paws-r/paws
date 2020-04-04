@@ -26,10 +26,12 @@ This operation requires permissions to perform the
 }
 
 \examples{
+\dontrun{
 # This operation deletes a Rekognition collection.
-\dontrun{svc$delete_collection(
+svc$delete_collection(
   CollectionId = "myphotos"
-)}
+)
+}
 
 }
 \keyword{internal}

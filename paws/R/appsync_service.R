@@ -31,10 +31,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- appsync()
+#' \dontrun{
+#' svc <- appsync()
 #' svc$create_api_cache(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

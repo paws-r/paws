@@ -75,12 +75,14 @@ HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developergui
 }
 
 \examples{
+\dontrun{
 # The following example creates a rule named WAFByteHeaderRule.
-\dontrun{svc$create_rule(
+svc$create_rule(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   MetricName = "WAFByteHeaderRule",
   Name = "WAFByteHeaderRule"
-)}
+)
+}
 
 }
 \keyword{internal}

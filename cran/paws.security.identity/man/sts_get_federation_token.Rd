@@ -244,8 +244,9 @@ the user tag.
 }
 
 \examples{
+\dontrun{
 # 
-\dontrun{svc$get_federation_token(
+svc$get_federation_token(
   DurationSeconds = 3600L,
   Name = "testFedUserSession",
   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":...",
@@ -259,7 +260,8 @@ the user tag.
       Value = "98765"
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

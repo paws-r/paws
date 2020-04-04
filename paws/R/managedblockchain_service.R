@@ -35,10 +35,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- managedblockchain()
+#' \dontrun{
+#' svc <- managedblockchain()
 #' svc$create_member(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

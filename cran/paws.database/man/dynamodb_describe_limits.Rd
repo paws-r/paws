@@ -74,9 +74,11 @@ The \code{DescribeLimits} Request element has no content.
 }
 
 \examples{
+\dontrun{
 # The following example returns the maximum read and write capacity units
 # per table, and for the AWS account, in the current AWS region.
-\dontrun{svc$describe_limits()}
+svc$describe_limits()
+}
 
 }
 \keyword{internal}

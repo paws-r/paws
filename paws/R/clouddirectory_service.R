@@ -40,10 +40,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- clouddirectory()
+#' \dontrun{
+#' svc <- clouddirectory()
 #' svc$add_facet_to_object(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -30,8 +30,9 @@ Tags an Amazon FSx resource.
 }
 
 \examples{
+\dontrun{
 # This operation tags an Amazon FSx resource.
-\dontrun{svc$tag_resource(
+svc$tag_resource(
   ResourceARN = "arn:aws:fsx:us-east-1:012345678912:file-system/fs-0498eed5fe91001ec",
   Tags = list(
     list(
@@ -39,7 +40,8 @@ Tags an Amazon FSx resource.
       Value = "MyFileSystem"
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

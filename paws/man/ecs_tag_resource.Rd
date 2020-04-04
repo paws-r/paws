@@ -54,8 +54,9 @@ the tags associated with that resource are deleted as well.
 }
 
 \examples{
+\dontrun{
 # This example tags the 'dev' cluster with key 'team' and value 'dev'.
-\dontrun{svc$tag_resource(
+svc$tag_resource(
   resourceArn = "arn:aws:ecs:region:aws_account_id:cluster/dev",
   tags = list(
     list(
@@ -63,7 +64,8 @@ the tags associated with that resource are deleted as well.
       value = "dev"
     )
   )
-)}
+)
+}
 
 }
 \keyword{internal}

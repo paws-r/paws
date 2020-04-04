@@ -109,13 +109,15 @@ in the \emph{IAM User Guide}.
 }
 
 \examples{
+\dontrun{
 # The following command sets the password policy to require a minimum
 # length of eight characters and to require one or more numbers in the
 # password:
-\dontrun{svc$update_account_password_policy(
+svc$update_account_password_policy(
   MinimumPasswordLength = 8L,
   RequireNumbers = TRUE
-)}
+)
+}
 
 }
 \keyword{internal}

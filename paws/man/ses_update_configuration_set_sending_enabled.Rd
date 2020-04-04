@@ -34,11 +34,13 @@ You can execute this operation no more than once per second.
 }
 
 \examples{
+\dontrun{
 # Set the sending enabled flag for a specific configuration set.
-\dontrun{svc$update_configuration_set_sending_enabled(
+svc$update_configuration_set_sending_enabled(
   ConfigurationSetName = "foo",
   Enabled = TRUE
-)}
+)
+}
 
 }
 \keyword{internal}

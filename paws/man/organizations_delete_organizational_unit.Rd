@@ -34,13 +34,15 @@ account.
 }
 
 \examples{
+\dontrun{
 # The following example shows how to delete an OU. The example assumes
 # that you previously removed all accounts and other OUs from the OU:
 # 
 # 
-\dontrun{svc$delete_organizational_unit(
+svc$delete_organizational_unit(
   OrganizationalUnitId = "ou-examplerootid111-exampleouid111"
-)}
+)
+}
 
 }
 \keyword{internal}

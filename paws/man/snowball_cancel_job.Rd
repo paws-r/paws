@@ -24,11 +24,13 @@ of the response element data returned.
 }
 
 \examples{
+\dontrun{
 # This operation cancels a job. You can only cancel a job before its
 # JobState value changes to PreparingAppliance.
-\dontrun{svc$cancel_job(
+svc$cancel_job(
   JobId = "JID123e4567-e89b-12d3-a456-426655440000"
-)}
+)
+}
 
 }
 \keyword{internal}

@@ -48,16 +48,18 @@ repository. Images are specified with either \code{imageTag} or
 }
 
 \examples{
+\dontrun{
 # This example obtains information for an image with a specified image
 # digest ID from the repository named ubuntu in the current account.
-\dontrun{svc$batch_get_image(
+svc$batch_get_image(
   imageIds = list(
     list(
       imageTag = "precise"
     )
   ),
   repositoryName = "ubuntu"
-)}
+)
+}
 
 }
 \keyword{internal}

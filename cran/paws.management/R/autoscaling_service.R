@@ -40,15 +40,17 @@ NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
+#' svc <- autoscaling()
 #' # This example attaches the specified instance to the specified Auto
 #' # Scaling group.
-#' \dontrun{svc <- autoscaling()
 #' svc$attach_instances(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   InstanceIds = list(
 #'     "i-93633f9b"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

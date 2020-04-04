@@ -54,12 +54,14 @@ environment if an option value is changed.
 }
 
 \examples{
+\dontrun{
 # The following operation retrieves descriptions of all available
 # configuration options for an environment named my-env:
-\dontrun{svc$describe_configuration_options(
+svc$describe_configuration_options(
   ApplicationName = "my-app",
   EnvironmentName = "my-env"
-)}
+)
+}
 
 }
 \keyword{internal}

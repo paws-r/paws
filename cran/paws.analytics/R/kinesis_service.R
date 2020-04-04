@@ -33,10 +33,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- kinesis()
+#' \dontrun{
+#' svc <- kinesis()
 #' svc$add_tags_to_stream(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

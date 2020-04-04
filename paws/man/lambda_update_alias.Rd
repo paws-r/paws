@@ -55,13 +55,15 @@ Updates the configuration of a Lambda function
 }
 
 \examples{
+\dontrun{
 # This operation updates a Lambda function alias
-\dontrun{svc$update_alias(
+svc$update_alias(
   Description = "",
   FunctionName = "myFunction",
   FunctionVersion = "1",
   Name = "functionAlias"
-)}
+)
+}
 
 }
 \keyword{internal}

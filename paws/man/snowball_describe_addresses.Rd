@@ -28,11 +28,13 @@ associated with this account in all US regions.
 }
 
 \examples{
+\dontrun{
 # This operation describes all the addresses that you've created for AWS
 # Snowball. Calling this API in one of the US regions will return
 # addresses from the list of all addresses associated with this account in
 # all US regions.
-\dontrun{svc$describe_addresses()}
+svc$describe_addresses()
+}
 
 }
 \keyword{internal}

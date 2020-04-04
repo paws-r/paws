@@ -376,15 +376,17 @@ ec2_advertise_byoip_cidr <- function(Cidr, DryRun = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example allocates an Elastic IP address to use with an instance in
 #' # a VPC.
-#' \dontrun{svc$allocate_address(
+#' svc$allocate_address(
 #'   Domain = "vpc"
-#' )}
+#' )
 #' 
 #' # This example allocates an Elastic IP address to use with an instance in
 #' # EC2-Classic.
-#' \dontrun{svc$allocate_address()}
+#' svc$allocate_address()
+#' }
 #'
 #' @keywords internal
 #'
@@ -664,23 +666,25 @@ ec2_assign_ipv_6_addresses <- function(Ipv6AddressCount = NULL, Ipv6Addresses = 
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example assigns the specified secondary private IP address to the
 #' # specified network interface.
-#' \dontrun{svc$assign_private_ip_addresses(
+#' svc$assign_private_ip_addresses(
 #'   NetworkInterfaceId = "eni-e5aa89a3",
 #'   PrivateIpAddresses = list(
 #'     "10.0.0.82"
 #'   )
-#' )}
+#' )
 #' 
 #' # This example assigns two secondary private IP addresses to the specified
 #' # network interface. Amazon EC2 automatically assigns these IP addresses
 #' # from the available IP addresses in the CIDR block range of the subnet
 #' # the network interface is associated with.
-#' \dontrun{svc$assign_private_ip_addresses(
+#' svc$assign_private_ip_addresses(
 #'   NetworkInterfaceId = "eni-e5aa89a3",
 #'   SecondaryPrivateIpAddressCount = 2L
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -781,26 +785,28 @@ ec2_assign_private_ip_addresses <- function(AllowReassignment = NULL, NetworkInt
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example associates the specified Elastic IP address with the
 #' # specified instance in a VPC.
-#' \dontrun{svc$associate_address(
+#' svc$associate_address(
 #'   AllocationId = "eipalloc-64d5890a",
 #'   InstanceId = "i-0b263919b6498b123"
-#' )}
+#' )
 #' 
 #' # This example associates the specified Elastic IP address with the
 #' # specified network interface.
-#' \dontrun{svc$associate_address(
+#' svc$associate_address(
 #'   AllocationId = "eipalloc-64d5890a",
 #'   NetworkInterfaceId = "eni-1a2b3c4d"
-#' )}
+#' )
 #' 
 #' # This example associates an Elastic IP address with an instance in
 #' # EC2-Classic.
-#' \dontrun{svc$associate_address(
+#' svc$associate_address(
 #'   InstanceId = "i-07ffe74c7330ebf53",
 #'   PublicIp = "198.51.100.0"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -912,19 +918,21 @@ ec2_associate_client_vpn_target_network <- function(ClientVpnEndpointId, SubnetI
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example associates the specified DHCP options set with the
 #' # specified VPC.
-#' \dontrun{svc$associate_dhcp_options(
+#' svc$associate_dhcp_options(
 #'   DhcpOptionsId = "dopt-d9070ebb",
 #'   VpcId = "vpc-a01106c2"
-#' )}
+#' )
 #' 
 #' # This example associates the default DHCP options set with the specified
 #' # VPC.
-#' \dontrun{svc$associate_dhcp_options(
+#' svc$associate_dhcp_options(
 #'   DhcpOptionsId = "default",
 #'   VpcId = "vpc-a01106c2"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -970,14 +978,16 @@ ec2_associate_dhcp_options <- function(DhcpOptionsId, VpcId, DryRun = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example associates an IAM instance profile named admin-role with
 #' # the specified instance.
-#' \dontrun{svc$associate_iam_instance_profile(
+#' svc$associate_iam_instance_profile(
 #'   IamInstanceProfile = list(
 #'     Name = "admin-role"
 #'   ),
 #'   InstanceId = "i-123456789abcde123"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1035,12 +1045,14 @@ ec2_associate_iam_instance_profile <- function(IamInstanceProfile, InstanceId) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example associates the specified route table with the specified
 #' # subnet.
-#' \dontrun{svc$associate_route_table(
+#' svc$associate_route_table(
 #'   RouteTableId = "rtb-22574640",
 #'   SubnetId = "subnet-9d4a7b6"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1356,12 +1368,14 @@ ec2_attach_classic_link_vpc <- function(DryRun = NULL, Groups, InstanceId, VpcId
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example attaches the specified Internet gateway to the specified
 #' # VPC.
-#' \dontrun{svc$attach_internet_gateway(
+#' svc$attach_internet_gateway(
 #'   InternetGatewayId = "igw-c0a643a9",
 #'   VpcId = "vpc-a01106c2"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1410,13 +1424,15 @@ ec2_attach_internet_gateway <- function(DryRun = NULL, InternetGatewayId, VpcId)
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example attaches the specified network interface to the specified
 #' # instance.
-#' \dontrun{svc$attach_network_interface(
+#' svc$attach_network_interface(
 #'   DeviceIndex = 1L,
 #'   InstanceId = "i-1234567890abcdef0",
 #'   NetworkInterfaceId = "eni-e5aa89a3"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1493,13 +1509,15 @@ ec2_attach_network_interface <- function(DeviceIndex, DryRun = NULL, InstanceId,
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example attaches a volume (`vol-1234567890abcdef0`) to an
 #' # instance (`i-01474ef662b89480`) as `/dev/sdf`.
-#' \dontrun{svc$attach_volume(
+#' svc$attach_volume(
 #'   Device = "/dev/sdf",
 #'   InstanceId = "i-01474ef662b89480",
 #'   VolumeId = "vol-1234567890abcdef0"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1723,9 +1741,10 @@ ec2_authorize_client_vpn_ingress <- function(ClientVpnEndpointId, TargetNetworkC
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example adds a rule that grants access to the specified address
 #' # ranges on TCP port 80.
-#' \dontrun{svc$authorize_security_group_egress(
+#' svc$authorize_security_group_egress(
 #'   GroupId = "sg-1a2b3c4d",
 #'   IpPermissions = list(
 #'     list(
@@ -1739,11 +1758,11 @@ ec2_authorize_client_vpn_ingress <- function(ClientVpnEndpointId, TargetNetworkC
 #'       ToPort = 80L
 #'     )
 #'   )
-#' )}
+#' )
 #' 
 #' # This example adds a rule that grants access to the specified security
 #' # group on TCP port 80.
-#' \dontrun{svc$authorize_security_group_egress(
+#' svc$authorize_security_group_egress(
 #'   GroupId = "sg-1a2b3c4d",
 #'   IpPermissions = list(
 #'     list(
@@ -1757,7 +1776,8 @@ ec2_authorize_client_vpn_ingress <- function(ClientVpnEndpointId, TargetNetworkC
 #'       )
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1909,9 +1929,10 @@ ec2_authorize_security_group_egress <- function(DryRun = NULL, GroupId, IpPermis
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example enables inbound traffic on TCP port 22 (SSH). The rule
 #' # includes a description to help you identify it later.
-#' \dontrun{svc$authorize_security_group_ingress(
+#' svc$authorize_security_group_ingress(
 #'   GroupId = "sg-903004f8",
 #'   IpPermissions = list(
 #'     list(
@@ -1926,13 +1947,13 @@ ec2_authorize_security_group_egress <- function(DryRun = NULL, GroupId, IpPermis
 #'       ToPort = 22L
 #'     )
 #'   )
-#' )}
+#' )
 #' 
 #' # This example enables inbound traffic on TCP port 80 from the specified
 #' # security group. The group must be in the same VPC or a peer VPC.
 #' # Incoming traffic is allowed based on the private IP addresses of
 #' # instances that are associated with the specified security group.
-#' \dontrun{svc$authorize_security_group_ingress(
+#' svc$authorize_security_group_ingress(
 #'   GroupId = "sg-111aaa22",
 #'   IpPermissions = list(
 #'     list(
@@ -1947,12 +1968,12 @@ ec2_authorize_security_group_egress <- function(DryRun = NULL, GroupId, IpPermis
 #'       )
 #'     )
 #'   )
-#' )}
+#' )
 #' 
 #' # This example adds an inbound rule that allows RDP traffic from the
 #' # specified IPv6 address range. The rule includes a description to help
 #' # you identify it later.
-#' \dontrun{svc$authorize_security_group_ingress(
+#' svc$authorize_security_group_ingress(
 #'   GroupId = "sg-123abc12 ",
 #'   IpPermissions = list(
 #'     list(
@@ -1967,7 +1988,8 @@ ec2_authorize_security_group_egress <- function(DryRun = NULL, GroupId, IpPermis
 #'       ToPort = 3389L
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2360,23 +2382,25 @@ ec2_cancel_reserved_instances_listing <- function(ReservedInstancesListingId) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example cancels the specified Spot fleet request and terminates its
 #' # associated Spot Instances.
-#' \dontrun{svc$cancel_spot_fleet_requests(
+#' svc$cancel_spot_fleet_requests(
 #'   SpotFleetRequestIds = list(
 #'     "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE"
 #'   ),
 #'   TerminateInstances = TRUE
-#' )}
+#' )
 #' 
 #' # This example cancels the specified Spot fleet request without
 #' # terminating its associated Spot Instances.
-#' \dontrun{svc$cancel_spot_fleet_requests(
+#' svc$cancel_spot_fleet_requests(
 #'   SpotFleetRequestIds = list(
 #'     "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE"
 #'   ),
 #'   TerminateInstances = FALSE
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2425,12 +2449,14 @@ ec2_cancel_spot_fleet_requests <- function(DryRun = NULL, SpotFleetRequestIds, T
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example cancels a Spot Instance request.
-#' \dontrun{svc$cancel_spot_instance_requests(
+#' svc$cancel_spot_instance_requests(
 #'   SpotInstanceRequestIds = list(
 #'     "sir-08b93456"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2479,12 +2505,14 @@ ec2_cancel_spot_instance_requests <- function(DryRun = NULL, SpotInstanceRequest
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example determines whether the specified product code is associated
 #' # with the specified instance.
-#' \dontrun{svc$confirm_product_instance(
+#' svc$confirm_product_instance(
 #'   InstanceId = "i-1234567890abcdef0",
 #'   ProductCode = "774F4FF8"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2642,14 +2670,16 @@ ec2_copy_fpga_image <- function(DryRun = NULL, SourceFpgaImageId, Description = 
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example copies the specified AMI from the us-east-1 region to the
 #' # current region.
-#' \dontrun{svc$copy_image(
+#' svc$copy_image(
 #'   Description = "",
 #'   Name = "My server",
 #'   SourceImageId = "ami-5731123e",
 #'   SourceRegion = "us-east-1"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2785,16 +2815,18 @@ ec2_copy_image <- function(ClientToken = NULL, Description = NULL, Encrypted = N
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example copies a snapshot with the snapshot ID of
 #' # `snap-066877671789bd71b` from the `us-west-2` region to the
 #' # `us-east-1` region and adds a short description to identify the
 #' # snapshot.
-#' \dontrun{svc$copy_snapshot(
+#' svc$copy_snapshot(
 #'   Description = "This is my copied snapshot.",
 #'   DestinationRegion = "us-east-1",
 #'   SourceRegion = "us-west-2",
 #'   SourceSnapshotId = "snap-066877671789bd71b"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -3229,13 +3261,15 @@ ec2_create_client_vpn_route <- function(ClientVpnEndpointId, DestinationCidrBloc
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example creates a customer gateway with the specified IP address
 #' # for its outside interface.
-#' \dontrun{svc$create_customer_gateway(
+#' svc$create_customer_gateway(
 #'   BgpAsn = 65534L,
 #'   PublicIp = "12.1.2.3",
 #'   Type = "ipsec.1"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -3432,8 +3466,9 @@ ec2_create_default_vpc <- function(DryRun = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example creates a DHCP options set.
-#' \dontrun{svc$create_dhcp_options(
+#' svc$create_dhcp_options(
 #'   DhcpConfigurations = list(
 #'     list(
 #'       Key = "domain-name-servers",
@@ -3443,7 +3478,8 @@ ec2_create_default_vpc <- function(DryRun = NULL) {
 #'       )
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -3956,10 +3992,11 @@ ec2_create_fpga_image <- function(DryRun = NULL, InputStorageLocation, LogsStora
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example creates an AMI from the specified instance and adds an EBS
 #' # volume with the device name /dev/sdh and an instance store volume with
 #' # the device name /dev/sdc.
-#' \dontrun{svc$create_image(
+#' svc$create_image(
 #'   BlockDeviceMappings = list(
 #'     list(
 #'       DeviceName = "/dev/sdh",
@@ -3976,7 +4013,8 @@ ec2_create_fpga_image <- function(DryRun = NULL, InputStorageLocation, LogsStora
 #'   InstanceId = "i-1234567890abcdef0",
 #'   Name = "My server",
 #'   NoReboot = TRUE
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -4078,8 +4116,10 @@ ec2_create_instance_export_task <- function(Description = NULL, ExportToS3Task =
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example creates an Internet gateway.
-#' \dontrun{svc$create_internet_gateway()}
+#' svc$create_internet_gateway()
+#' }
 #'
 #' @keywords internal
 #'
@@ -4139,10 +4179,12 @@ ec2_create_internet_gateway <- function(DryRun = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example creates a key pair named my-key-pair.
-#' \dontrun{svc$create_key_pair(
+#' svc$create_key_pair(
 #'   KeyName = "my-key-pair"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -4343,10 +4385,11 @@ ec2_create_key_pair <- function(KeyName, DryRun = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example creates a launch template that specifies the subnet in
 #' # which to launch the instance, assigns a public IP address and an IPv6
 #' # address to the instance, and creates a tag for the instance.
-#' \dontrun{svc$create_launch_template(
+#' svc$create_launch_template(
 #'   LaunchTemplateData = list(
 #'     ImageId = "ami-8c1be5f6",
 #'     InstanceType = "t2.small",
@@ -4372,7 +4415,8 @@ ec2_create_key_pair <- function(KeyName, DryRun = NULL) {
 #'   ),
 #'   LaunchTemplateName = "my-template",
 #'   VersionDescription = "WebVersion1"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -4574,16 +4618,18 @@ ec2_create_launch_template <- function(DryRun = NULL, ClientToken = NULL, Launch
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example creates a new launch template version based on version 1 of
 #' # the specified launch template and specifies a different AMI ID.
-#' \dontrun{svc$create_launch_template_version(
+#' svc$create_launch_template_version(
 #'   LaunchTemplateData = list(
 #'     ImageId = "ami-c998b6b2"
 #'   ),
 #'   LaunchTemplateId = "lt-0abcd290751193123",
 #'   SourceVersion = "1",
 #'   VersionDescription = "WebVersion2"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -4732,13 +4778,15 @@ ec2_create_local_gateway_route_table_vpc_association <- function(LocalGatewayRou
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example creates a NAT gateway in subnet subnet-1a2b3c4d and
 #' # associates an Elastic IP address with the allocation ID
 #' # eipalloc-37fc1a52 with the NAT gateway.
-#' \dontrun{svc$create_nat_gateway(
+#' svc$create_nat_gateway(
 #'   AllocationId = "eipalloc-37fc1a52",
 #'   SubnetId = "subnet-1a2b3c4d"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -4788,10 +4836,12 @@ ec2_create_nat_gateway <- function(AllocationId, ClientToken = NULL, SubnetId) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example creates a network ACL for the specified VPC.
-#' \dontrun{svc$create_network_acl(
+#' svc$create_network_acl(
 #'   VpcId = "vpc-a01106c2"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -4894,10 +4944,11 @@ ec2_create_network_acl <- function(DryRun = NULL, VpcId) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example creates an entry for the specified network ACL. The rule
 #' # allows ingress traffic from anywhere (0.0.0.0/0) on UDP port 53 (DNS)
 #' # into any associated subnet.
-#' \dontrun{svc$create_network_acl_entry(
+#' svc$create_network_acl_entry(
 #'   CidrBlock = "0.0.0.0/0",
 #'   Egress = FALSE,
 #'   NetworkAclId = "acl-5fb85d36",
@@ -4908,7 +4959,8 @@ ec2_create_network_acl <- function(DryRun = NULL, VpcId) {
 #'   Protocol = "17",
 #'   RuleAction = "allow",
 #'   RuleNumber = 100L
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -5008,15 +5060,17 @@ ec2_create_network_acl_entry <- function(CidrBlock = NULL, DryRun = NULL, Egress
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example creates a network interface for the specified subnet.
-#' \dontrun{svc$create_network_interface(
+#' svc$create_network_interface(
 #'   Description = "my network interface",
 #'   Groups = list(
 #'     "sg-903004f8"
 #'   ),
 #'   PrivateIpAddress = "10.0.2.17",
 #'   SubnetId = "subnet-9d4a7b6c"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -5134,11 +5188,13 @@ ec2_create_network_interface_permission <- function(NetworkInterfaceId, AwsAccou
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example creates a placement group with the specified name.
-#' \dontrun{svc$create_placement_group(
+#' svc$create_placement_group(
 #'   GroupName = "my-cluster",
 #'   Strategy = "cluster"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -5313,14 +5369,16 @@ ec2_create_reserved_instances_listing <- function(ClientToken, InstanceCount, Pr
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example creates a route for the specified route table. The route
 #' # matches all traffic (0.0.0.0/0) and routes it to the specified Internet
 #' # gateway.
-#' \dontrun{svc$create_route(
+#' svc$create_route(
 #'   DestinationCidrBlock = "0.0.0.0/0",
 #'   GatewayId = "igw-c0a643a9",
 #'   RouteTableId = "rtb-22574640"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -5369,10 +5427,12 @@ ec2_create_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBlo
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example creates a route table for the specified VPC.
-#' \dontrun{svc$create_route_table(
+#' svc$create_route_table(
 #'   VpcId = "vpc-a01106c2"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -5463,12 +5523,14 @@ ec2_create_route_table <- function(DryRun = NULL, VpcId) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example creates a security group for the specified VPC.
-#' \dontrun{svc$create_security_group(
+#' svc$create_security_group(
 #'   Description = "My security group",
 #'   GroupName = "my-security-group",
 #'   VpcId = "vpc-1a2b3c4d"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -5561,13 +5623,15 @@ ec2_create_security_group <- function(Description, GroupName, VpcId = NULL, DryR
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example creates a snapshot of the volume with a volume ID of
 #' # `vol-1234567890abcdef0` and a short description to identify the
 #' # snapshot.
-#' \dontrun{svc$create_snapshot(
+#' svc$create_snapshot(
 #'   Description = "This is my root volume snapshot.",
 #'   VolumeId = "vol-1234567890abcdef0"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -5685,11 +5749,13 @@ ec2_create_snapshots <- function(Description = NULL, InstanceSpecification, TagS
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example creates a Spot Instance data feed for your AWS account.
-#' \dontrun{svc$create_spot_datafeed_subscription(
+#' svc$create_spot_datafeed_subscription(
 #'   Bucket = "my-s3-bucket",
 #'   Prefix = "spotdata"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -5784,13 +5850,15 @@ ec2_create_spot_datafeed_subscription <- function(Bucket, DryRun = NULL, Prefix 
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example creates a subnet in the specified VPC with the specified
 #' # CIDR block. We recommend that you let us select an Availability Zone for
 #' # you.
-#' \dontrun{svc$create_subnet(
+#' svc$create_subnet(
 #'   CidrBlock = "10.0.1.0/24",
 #'   VpcId = "vpc-a01106c2"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -5861,9 +5929,10 @@ ec2_create_subnet <- function(AvailabilityZone = NULL, AvailabilityZoneId = NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example adds the tag Stack=production to the specified image, or
 #' # overwrites an existing tag for the AMI where the tag key is Stack.
-#' \dontrun{svc$create_tags(
+#' svc$create_tags(
 #'   Resources = list(
 #'     "ami-78a54011"
 #'   ),
@@ -5873,7 +5942,8 @@ ec2_create_subnet <- function(AvailabilityZone = NULL, AvailabilityZoneId = NULL
 #'       Value = "production"
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -6742,23 +6812,25 @@ ec2_create_transit_gateway_vpc_attachment <- function(TransitGatewayId, VpcId, S
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example creates an 80 GiB General Purpose (SSD) volume in the
 #' # Availability Zone `us-east-1a`.
-#' \dontrun{svc$create_volume(
+#' svc$create_volume(
 #'   AvailabilityZone = "us-east-1a",
 #'   Size = 80L,
 #'   VolumeType = "gp2"
-#' )}
+#' )
 #' 
 #' # This example creates a new Provisioned IOPS (SSD) volume with 1000
 #' # provisioned IOPS from a snapshot in the Availability Zone
 #' # `us-east-1a`.
-#' \dontrun{svc$create_volume(
+#' svc$create_volume(
 #'   AvailabilityZone = "us-east-1a",
 #'   Iops = 1000L,
 #'   SnapshotId = "snap-066877671789bd71b",
 #'   VolumeType = "io1"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -6848,10 +6920,12 @@ ec2_create_volume <- function(AvailabilityZone, Encrypted = NULL, Iops = NULL, K
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example creates a VPC with the specified CIDR block.
-#' \dontrun{svc$create_vpc(
+#' svc$create_vpc(
 #'   CidrBlock = "10.0.0.0/16"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -7526,10 +7600,12 @@ ec2_delete_client_vpn_route <- function(ClientVpnEndpointId, TargetVpcSubnetId =
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example deletes the specified customer gateway.
-#' \dontrun{svc$delete_customer_gateway(
+#' svc$delete_customer_gateway(
 #'   CustomerGatewayId = "cgw-0e11f167"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -7576,10 +7652,12 @@ ec2_delete_customer_gateway <- function(CustomerGatewayId, DryRun = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example deletes the specified DHCP options set.
-#' \dontrun{svc$delete_dhcp_options(
+#' svc$delete_dhcp_options(
 #'   DhcpOptionsId = "dopt-d9070ebb"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -7805,10 +7883,12 @@ ec2_delete_fpga_image <- function(DryRun = NULL, FpgaImageId) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example deletes the specified Internet gateway.
-#' \dontrun{svc$delete_internet_gateway(
+#' svc$delete_internet_gateway(
 #'   InternetGatewayId = "igw-c0a643a9"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -7854,10 +7934,12 @@ ec2_delete_internet_gateway <- function(DryRun = NULL, InternetGatewayId) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example deletes the specified key pair.
-#' \dontrun{svc$delete_key_pair(
+#' svc$delete_key_pair(
 #'   KeyName = "my-key-pair"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -7906,10 +7988,12 @@ ec2_delete_key_pair <- function(KeyName, DryRun = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example deletes the specified launch template.
-#' \dontrun{svc$delete_launch_template(
+#' svc$delete_launch_template(
 #'   LaunchTemplateId = "lt-0abcd290751193123"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -7966,13 +8050,15 @@ ec2_delete_launch_template <- function(DryRun = NULL, LaunchTemplateId = NULL, L
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example deletes the specified launch template version.
-#' \dontrun{svc$delete_launch_template_versions(
+#' svc$delete_launch_template_versions(
 #'   LaunchTemplateId = "lt-0abcd290751193123",
 #'   Versions = list(
 #'     "1"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -8104,10 +8190,12 @@ ec2_delete_local_gateway_route_table_vpc_association <- function(LocalGatewayRou
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example deletes the specified NAT gateway.
-#' \dontrun{svc$delete_nat_gateway(
+#' svc$delete_nat_gateway(
 #'   NatGatewayId = "nat-04ae55e711cec5680"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -8152,10 +8240,12 @@ ec2_delete_nat_gateway <- function(NatGatewayId) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example deletes the specified network ACL.
-#' \dontrun{svc$delete_network_acl(
+#' svc$delete_network_acl(
 #'   NetworkAclId = "acl-5fb85d36"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -8205,13 +8295,15 @@ ec2_delete_network_acl <- function(DryRun = NULL, NetworkAclId) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example deletes ingress rule number 100 from the specified network
 #' # ACL.
-#' \dontrun{svc$delete_network_acl_entry(
+#' svc$delete_network_acl_entry(
 #'   Egress = TRUE,
 #'   NetworkAclId = "acl-5fb85d36",
 #'   RuleNumber = 100L
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -8256,10 +8348,12 @@ ec2_delete_network_acl_entry <- function(DryRun = NULL, Egress, NetworkAclId, Ru
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example deletes the specified network interface.
-#' \dontrun{svc$delete_network_interface(
+#' svc$delete_network_interface(
 #'   NetworkInterfaceId = "eni-e5aa89a3"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -8355,11 +8449,13 @@ ec2_delete_network_interface_permission <- function(NetworkInterfacePermissionId
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example deletes the specified placement group.
 #' # 
-#' \dontrun{svc$delete_placement_group(
+#' svc$delete_placement_group(
 #'   GroupName = "my-cluster"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -8453,11 +8549,13 @@ ec2_delete_queued_reserved_instances <- function(DryRun = NULL, ReservedInstance
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example deletes the specified route from the specified route table.
-#' \dontrun{svc$delete_route(
+#' svc$delete_route(
 #'   DestinationCidrBlock = "0.0.0.0/0",
 #'   RouteTableId = "rtb-22574640"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -8503,10 +8601,12 @@ ec2_delete_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBlo
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example deletes the specified route table.
-#' \dontrun{svc$delete_route_table(
+#' svc$delete_route_table(
 #'   RouteTableId = "rtb-22574640"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -8558,10 +8658,12 @@ ec2_delete_route_table <- function(DryRun = NULL, RouteTableId) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example deletes the specified security group.
-#' \dontrun{svc$delete_security_group(
+#' svc$delete_security_group(
 #'   GroupId = "sg-903004f8"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -8621,12 +8723,14 @@ ec2_delete_security_group <- function(GroupId = NULL, GroupName = NULL, DryRun =
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example deletes a snapshot with the snapshot ID of
 #' # `snap-1234567890abcdef0`. If the command succeeds, no output is
 #' # returned.
-#' \dontrun{svc$delete_snapshot(
+#' svc$delete_snapshot(
 #'   SnapshotId = "snap-1234567890abcdef0"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -8668,8 +8772,10 @@ ec2_delete_snapshot <- function(SnapshotId, DryRun = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example deletes a Spot data feed subscription for the account.
-#' \dontrun{svc$delete_spot_datafeed_subscription()}
+#' svc$delete_spot_datafeed_subscription()
+#' }
 #'
 #' @keywords internal
 #'
@@ -8714,10 +8820,12 @@ ec2_delete_spot_datafeed_subscription <- function(DryRun = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example deletes the specified subnet.
-#' \dontrun{svc$delete_subnet(
+#' svc$delete_subnet(
 #'   SubnetId = "subnet-9d4a7b6c"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -8786,8 +8894,9 @@ ec2_delete_subnet <- function(SubnetId, DryRun = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example deletes the tag Stack=test from the specified image.
-#' \dontrun{svc$delete_tags(
+#' svc$delete_tags(
 #'   Resources = list(
 #'     "ami-78a54011"
 #'   ),
@@ -8797,7 +8906,8 @@ ec2_delete_subnet <- function(SubnetId, DryRun = NULL) {
 #'       Value = "test"
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -9276,12 +9386,14 @@ ec2_delete_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example deletes an available volume with the volume ID of
 #' # `vol-049df61146c4d7901`. If the command succeeds, no output is
 #' # returned.
-#' \dontrun{svc$delete_volume(
+#' svc$delete_volume(
 #'   VolumeId = "vol-049df61146c4d7901"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -9330,10 +9442,12 @@ ec2_delete_volume <- function(VolumeId, DryRun = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example deletes the specified VPC.
-#' \dontrun{svc$delete_vpc(
+#' svc$delete_vpc(
 #'   VpcId = "vpc-a01106c2"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -9922,16 +10036,18 @@ ec2_deregister_transit_gateway_multicast_group_sources <- function(TransitGatewa
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the supported-platforms attribute for your AWS
 #' # account.
-#' \dontrun{svc$describe_account_attributes(
+#' svc$describe_account_attributes(
 #'   AttributeNames = list(
 #'     "supported-platforms"
 #'   )
-#' )}
+#' )
 #' 
 #' # This example describes the attributes for your AWS account.
-#' \dontrun{svc$describe_account_attributes()}
+#' svc$describe_account_attributes()
+#' }
 #'
 #' @keywords internal
 #'
@@ -10032,12 +10148,13 @@ ec2_describe_account_attributes <- function(AttributeNames = NULL, DryRun = NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes your Elastic IP addresses.
-#' \dontrun{svc$describe_addresses()}
+#' svc$describe_addresses()
 #' 
 #' # This example describes your Elastic IP addresses for use with instances
 #' # in a VPC.
-#' \dontrun{svc$describe_addresses(
+#' svc$describe_addresses(
 #'   Filters = list(
 #'     list(
 #'       Name = "domain",
@@ -10046,11 +10163,11 @@ ec2_describe_account_attributes <- function(AttributeNames = NULL, DryRun = NULL
 #'       )
 #'     )
 #'   )
-#' )}
+#' )
 #' 
 #' # This example describes your Elastic IP addresses for use with instances
 #' # in EC2-Classic.
-#' \dontrun{svc$describe_addresses(
+#' svc$describe_addresses(
 #'   Filters = list(
 #'     list(
 #'       Name = "domain",
@@ -10059,7 +10176,8 @@ ec2_describe_account_attributes <- function(AttributeNames = NULL, DryRun = NULL
 #'       )
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -10214,9 +10332,11 @@ ec2_describe_aggregate_id_format <- function(DryRun = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the Availability Zones that are available to you.
 #' # The response includes Availability Zones only for the current region.
-#' \dontrun{svc$describe_availability_zones()}
+#' svc$describe_availability_zones()
+#' }
 #'
 #' @keywords internal
 #'
@@ -10992,12 +11112,14 @@ ec2_describe_conversion_tasks <- function(ConversionTaskIds = NULL, DryRun = NUL
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the specified customer gateway.
-#' \dontrun{svc$describe_customer_gateways(
+#' svc$describe_customer_gateways(
 #'   CustomerGatewayIds = list(
 #'     "cgw-0e11f167"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -11084,12 +11206,14 @@ ec2_describe_customer_gateways <- function(CustomerGatewayIds = NULL, Filters = 
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the specified DHCP options set.
-#' \dontrun{svc$describe_dhcp_options(
+#' svc$describe_dhcp_options(
 #'   DhcpOptionsIds = list(
 #'     "dopt-d9070ebb"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -12130,12 +12254,14 @@ ec2_describe_hosts <- function(Filter = NULL, HostIds = NULL, MaxResults = NULL,
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the specified IAM instance profile association.
-#' \dontrun{svc$describe_iam_instance_profile_associations(
+#' svc$describe_iam_instance_profile_associations(
 #'   AssociationIds = list(
 #'     "iip-assoc-0db249b1f25fa24b8"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -12329,11 +12455,13 @@ ec2_describe_identity_id_format <- function(PrincipalArn, Resource = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the launch permissions for the specified AMI.
-#' \dontrun{svc$describe_image_attribute(
+#' svc$describe_image_attribute(
 #'   Attribute = "launchPermission",
 #'   ImageId = "ami-5731123e"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -12503,12 +12631,14 @@ ec2_describe_image_attribute <- function(Attribute, ImageId, DryRun = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the specified AMI.
-#' \dontrun{svc$describe_images(
+#' svc$describe_images(
 #'   ImageIds = list(
 #'     "ami-5731123e"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -12680,28 +12810,30 @@ ec2_describe_import_snapshot_tasks <- function(DryRun = NULL, Filters = NULL, Im
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the instance type of the specified instance.
 #' # 
-#' \dontrun{svc$describe_instance_attribute(
+#' svc$describe_instance_attribute(
 #'   Attribute = "instanceType",
 #'   InstanceId = "i-1234567890abcdef0"
-#' )}
+#' )
 #' 
 #' # This example describes the `disableApiTermination` attribute of the
 #' # specified instance.
 #' # 
-#' \dontrun{svc$describe_instance_attribute(
+#' svc$describe_instance_attribute(
 #'   Attribute = "disableApiTermination",
 #'   InstanceId = "i-1234567890abcdef0"
-#' )}
+#' )
 #' 
 #' # This example describes the `blockDeviceMapping` attribute of the
 #' # specified instance.
 #' # 
-#' \dontrun{svc$describe_instance_attribute(
+#' svc$describe_instance_attribute(
 #'   Attribute = "blockDeviceMapping",
 #'   InstanceId = "i-1234567890abcdef0"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -12937,12 +13069,14 @@ ec2_describe_instance_credit_specifications <- function(DryRun = NULL, Filters =
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the current status of the specified instance.
-#' \dontrun{svc$describe_instance_status(
+#' svc$describe_instance_status(
 #'   InstanceIds = list(
 #'     "i-1234567890abcdef0"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -13496,15 +13630,16 @@ ec2_describe_instance_types <- function(DryRun = NULL, InstanceTypes = NULL, Fil
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the specified instance.
-#' \dontrun{svc$describe_instances(
+#' svc$describe_instances(
 #'   InstanceIds = list(
 #'     "i-1234567890abcdef0"
 #'   )
-#' )}
+#' )
 #' 
 #' # This example describes the instances with the t2.micro instance type.
-#' \dontrun{svc$describe_instances(
+#' svc$describe_instances(
 #'   Filters = list(
 #'     list(
 #'       Name = "instance-type",
@@ -13513,10 +13648,10 @@ ec2_describe_instance_types <- function(DryRun = NULL, InstanceTypes = NULL, Fil
 #'       )
 #'     )
 #'   )
-#' )}
+#' )
 #' 
 #' # This example describes the instances with the Purpose=test tag.
-#' \dontrun{svc$describe_instances(
+#' svc$describe_instances(
 #'   Filters = list(
 #'     list(
 #'       Name = "tag:Purpose",
@@ -13525,7 +13660,8 @@ ec2_describe_instance_types <- function(DryRun = NULL, InstanceTypes = NULL, Fil
 #'       )
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -13610,8 +13746,9 @@ ec2_describe_instances <- function(Filters = NULL, InstanceIds = NULL, DryRun = 
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the Internet gateway for the specified VPC.
-#' \dontrun{svc$describe_internet_gateways(
+#' svc$describe_internet_gateways(
 #'   Filters = list(
 #'     list(
 #'       Name = "attachment.vpc-id",
@@ -13620,7 +13757,8 @@ ec2_describe_instances <- function(Filters = NULL, InstanceIds = NULL, DryRun = 
 #'       )
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -13689,12 +13827,14 @@ ec2_describe_internet_gateways <- function(Filters = NULL, DryRun = NULL, Intern
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example displays the fingerprint for the specified key.
-#' \dontrun{svc$describe_key_pairs(
+#' svc$describe_key_pairs(
 #'   KeyNames = list(
 #'     "my-key-pair"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -13786,10 +13926,12 @@ ec2_describe_key_pairs <- function(Filters = NULL, KeyNames = NULL, KeyPairIds =
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the versions for the specified launch template.
-#' \dontrun{svc$describe_launch_template_versions(
+#' svc$describe_launch_template_versions(
 #'   LaunchTemplateId = "068f72b72934aff71"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -13869,12 +14011,14 @@ ec2_describe_launch_template_versions <- function(DryRun = NULL, LaunchTemplateI
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the specified launch template.
-#' \dontrun{svc$describe_launch_templates(
+#' svc$describe_launch_templates(
 #'   LaunchTemplateIds = list(
 #'     "lt-01238c059e3466abc"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -14311,8 +14455,10 @@ ec2_describe_local_gateways <- function(LocalGatewayIds = NULL, Filters = NULL, 
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes all of your moving Elastic IP addresses.
-#' \dontrun{svc$describe_moving_addresses()}
+#' svc$describe_moving_addresses()
+#' }
 #'
 #' @keywords internal
 #'
@@ -14387,8 +14533,9 @@ ec2_describe_moving_addresses <- function(Filters = NULL, DryRun = NULL, MaxResu
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the NAT gateway for the specified VPC.
-#' \dontrun{svc$describe_nat_gateways(
+#' svc$describe_nat_gateways(
 #'   Filter = list(
 #'     list(
 #'       Name = "vpc-id",
@@ -14397,7 +14544,8 @@ ec2_describe_moving_addresses <- function(Filters = NULL, DryRun = NULL, MaxResu
 #'       )
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -14516,12 +14664,14 @@ ec2_describe_nat_gateways <- function(Filter = NULL, MaxResults = NULL, NatGatew
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the specified network ACL.
-#' \dontrun{svc$describe_network_acls(
+#' svc$describe_network_acls(
 #'   NetworkAclIds = list(
 #'     "acl-5fb85d36"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -14569,33 +14719,35 @@ ec2_describe_network_acls <- function(Filters = NULL, DryRun = NULL, NetworkAclI
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the attachment attribute of the specified network
 #' # interface.
-#' \dontrun{svc$describe_network_interface_attribute(
+#' svc$describe_network_interface_attribute(
 #'   Attribute = "attachment",
 #'   NetworkInterfaceId = "eni-686ea200"
-#' )}
+#' )
 #' 
 #' # This example describes the description attribute of the specified
 #' # network interface.
-#' \dontrun{svc$describe_network_interface_attribute(
+#' svc$describe_network_interface_attribute(
 #'   Attribute = "description",
 #'   NetworkInterfaceId = "eni-686ea200"
-#' )}
+#' )
 #' 
 #' # This example describes the groupSet attribute of the specified network
 #' # interface.
-#' \dontrun{svc$describe_network_interface_attribute(
+#' svc$describe_network_interface_attribute(
 #'   Attribute = "groupSet",
 #'   NetworkInterfaceId = "eni-686ea200"
-#' )}
+#' )
 #' 
 #' # This example describes the sourceDestCheck attribute of the specified
 #' # network interface.
-#' \dontrun{svc$describe_network_interface_attribute(
+#' svc$describe_network_interface_attribute(
 #'   Attribute = "sourceDestCheck",
 #'   NetworkInterfaceId = "eni-686ea200"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -14838,12 +14990,14 @@ ec2_describe_network_interface_permissions <- function(NetworkInterfacePermissio
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # 
-#' \dontrun{svc$describe_network_interfaces(
+#' svc$describe_network_interfaces(
 #'   NetworkInterfaceIds = list(
 #'     "eni-e5aa89a3"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -15182,8 +15336,10 @@ ec2_describe_public_ipv_4_pools <- function(PoolIds = NULL, NextToken = NULL, Ma
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes all the regions that are available to you.
-#' \dontrun{svc$describe_regions()}
+#' svc$describe_regions()
+#' }
 #'
 #' @keywords internal
 #'
@@ -15778,12 +15934,14 @@ ec2_describe_reserved_instances_offerings <- function(AvailabilityZone = NULL, F
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the specified route table.
-#' \dontrun{svc$describe_route_tables(
+#' svc$describe_route_tables(
 #'   RouteTableIds = list(
 #'     "rtb-1f382e7d"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -15890,10 +16048,11 @@ ec2_describe_route_tables <- function(Filters = NULL, DryRun = NULL, RouteTableI
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes a schedule that occurs every week on Sunday,
 #' # starting on the specified date. Note that the output contains a single
 #' # schedule as an example.
-#' \dontrun{svc$describe_scheduled_instance_availability(
+#' svc$describe_scheduled_instance_availability(
 #'   FirstSlotStartTimeRange = list(
 #'     EarliestTime = "2016-01-31T00:00:00Z",
 #'     LatestTime = "2016-01-31T04:00:00Z"
@@ -15905,7 +16064,8 @@ ec2_describe_route_tables <- function(Filters = NULL, DryRun = NULL, RouteTableI
 #'       1L
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -15989,12 +16149,14 @@ ec2_describe_scheduled_instance_availability <- function(DryRun = NULL, Filters 
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the specified Scheduled Instance.
-#' \dontrun{svc$describe_scheduled_instances(
+#' svc$describe_scheduled_instances(
 #'   ScheduledInstanceIds = list(
 #'     "sci-1234-1234-1234-1234-123456789012"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -16044,13 +16206,15 @@ ec2_describe_scheduled_instances <- function(DryRun = NULL, Filters = NULL, MaxR
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the security group references for the specified
 #' # security group.
-#' \dontrun{svc$describe_security_group_references(
+#' svc$describe_security_group_references(
 #'   GroupId = list(
 #'     "sg-903004f8"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -16211,16 +16375,17 @@ ec2_describe_security_group_references <- function(DryRun = NULL, GroupId) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the specified security group.
-#' \dontrun{svc$describe_security_groups(
+#' svc$describe_security_groups(
 #'   GroupIds = list(
 #'     "sg-903004f8"
 #'   )
-#' )}
+#' )
 #' 
 #' # This example describes the security groups that include the specified
 #' # tag (Purpose=test).
-#' \dontrun{svc$describe_security_groups(
+#' svc$describe_security_groups(
 #'   Filters = list(
 #'     list(
 #'       Name = "tag:Purpose",
@@ -16229,7 +16394,8 @@ ec2_describe_security_group_references <- function(DryRun = NULL, GroupId) {
 #'       )
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -16280,12 +16446,14 @@ ec2_describe_security_groups <- function(Filters = NULL, GroupIds = NULL, GroupN
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the `createVolumePermission` attribute on a
 #' # snapshot with the snapshot ID of `snap-066877671789bd71b`.
-#' \dontrun{svc$describe_snapshot_attribute(
+#' svc$describe_snapshot_attribute(
 #'   Attribute = "createVolumePermission",
 #'   SnapshotId = "snap-066877671789bd71b"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -16456,17 +16624,18 @@ ec2_describe_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes a snapshot with the snapshot ID of
 #' # `snap-1234567890abcdef0`.
-#' \dontrun{svc$describe_snapshots(
+#' svc$describe_snapshots(
 #'   SnapshotIds = list(
 #'     "snap-1234567890abcdef0"
 #'   )
-#' )}
+#' )
 #' 
 #' # This example describes all snapshots owned by the ID 012345678910 that
 #' # are in the `pending` status.
-#' \dontrun{svc$describe_snapshots(
+#' svc$describe_snapshots(
 #'   Filters = list(
 #'     list(
 #'       Name = "status",
@@ -16478,7 +16647,8 @@ ec2_describe_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL
 #'   OwnerIds = list(
 #'     "012345678910"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -16523,9 +16693,11 @@ ec2_describe_snapshots <- function(Filters = NULL, MaxResults = NULL, NextToken 
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the Spot Instance datafeed subscription for your
 #' # AWS account.
-#' \dontrun{svc$describe_spot_datafeed_subscription()}
+#' svc$describe_spot_datafeed_subscription()
+#' }
 #'
 #' @keywords internal
 #'
@@ -16577,11 +16749,13 @@ ec2_describe_spot_datafeed_subscription <- function(DryRun = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example lists the Spot Instances associated with the specified Spot
 #' # fleet.
-#' \dontrun{svc$describe_spot_fleet_instances(
+#' svc$describe_spot_fleet_instances(
 #'   SpotFleetRequestId = "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -16647,12 +16821,14 @@ ec2_describe_spot_fleet_instances <- function(DryRun = NULL, MaxResults = NULL, 
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example returns the history for the specified Spot fleet starting
 #' # at the specified time.
-#' \dontrun{svc$describe_spot_fleet_request_history(
+#' svc$describe_spot_fleet_request_history(
 #'   SpotFleetRequestId = "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE",
 #'   StartTime = "2015-05-26T00:00:00Z"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -16709,12 +16885,14 @@ ec2_describe_spot_fleet_request_history <- function(DryRun = NULL, EventType = N
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the specified Spot fleet request.
-#' \dontrun{svc$describe_spot_fleet_requests(
+#' svc$describe_spot_fleet_requests(
 #'   SpotFleetRequestIds = list(
 #'     "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -16911,12 +17089,14 @@ ec2_describe_spot_fleet_requests <- function(DryRun = NULL, MaxResults = NULL, N
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the specified Spot Instance request.
-#' \dontrun{svc$describe_spot_instance_requests(
+#' svc$describe_spot_instance_requests(
 #'   SpotInstanceRequestIds = list(
 #'     "sir-08b93456"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -17025,9 +17205,10 @@ ec2_describe_spot_instance_requests <- function(Filters = NULL, DryRun = NULL, S
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example returns the Spot Price history for m1.xlarge, Linux/UNIX
 #' # (Amazon VPC) instances for a particular day in January.
-#' \dontrun{svc$describe_spot_price_history(
+#' svc$describe_spot_price_history(
 #'   EndTime = "2014-01-06T08:09:10",
 #'   InstanceTypes = list(
 #'     "m1.xlarge"
@@ -17036,7 +17217,8 @@ ec2_describe_spot_instance_requests <- function(Filters = NULL, DryRun = NULL, S
 #'     "Linux/UNIX (Amazon VPC)"
 #'   ),
 #'   StartTime = "2014-01-06T07:08:09"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -17202,8 +17384,9 @@ ec2_describe_stale_security_groups <- function(DryRun = NULL, MaxResults = NULL,
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the subnets for the specified VPC.
-#' \dontrun{svc$describe_subnets(
+#' svc$describe_subnets(
 #'   Filters = list(
 #'     list(
 #'       Name = "vpc-id",
@@ -17212,7 +17395,8 @@ ec2_describe_stale_security_groups <- function(DryRun = NULL, MaxResults = NULL,
 #'       )
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -17292,8 +17476,9 @@ ec2_describe_subnets <- function(Filters = NULL, SubnetIds = NULL, DryRun = NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the tags for the specified instance.
-#' \dontrun{svc$describe_tags(
+#' svc$describe_tags(
 #'   Filters = list(
 #'     list(
 #'       Name = "resource-id",
@@ -17302,7 +17487,8 @@ ec2_describe_subnets <- function(Filters = NULL, SubnetIds = NULL, DryRun = NULL
 #'       )
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -18027,12 +18213,14 @@ ec2_describe_transit_gateways <- function(TransitGatewayIds = NULL, Filters = NU
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the `autoEnableIo` attribute of the volume with
 #' # the ID `vol-049df61146c4d7901`.
-#' \dontrun{svc$describe_volume_attribute(
+#' svc$describe_volume_attribute(
 #'   Attribute = "autoEnableIO",
 #'   VolumeId = "vol-049df61146c4d7901"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -18176,17 +18364,18 @@ ec2_describe_volume_attribute <- function(Attribute, VolumeId, DryRun = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the status for the volume
 #' # `vol-1234567890abcdef0`.
-#' \dontrun{svc$describe_volume_status(
+#' svc$describe_volume_status(
 #'   VolumeIds = list(
 #'     "vol-1234567890abcdef0"
 #'   )
-#' )}
+#' )
 #' 
 #' # This example describes the status for all volumes that are impaired. In
 #' # this example output, there are no impaired volumes.
-#' \dontrun{svc$describe_volume_status(
+#' svc$describe_volume_status(
 #'   Filters = list(
 #'     list(
 #'       Name = "volume-status.status",
@@ -18195,7 +18384,8 @@ ec2_describe_volume_attribute <- function(Attribute, VolumeId, DryRun = NULL) {
 #'       )
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -18325,13 +18515,14 @@ ec2_describe_volume_status <- function(Filters = NULL, MaxResults = NULL, NextTo
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes all of your volumes in the default region.
-#' \dontrun{svc$describe_volumes()}
+#' svc$describe_volumes()
 #' 
 #' # This example describes all volumes that are both attached to the
 #' # instance with the ID i-1234567890abcdef0 and set to delete when the
 #' # instance terminates.
-#' \dontrun{svc$describe_volumes(
+#' svc$describe_volumes(
 #'   Filters = list(
 #'     list(
 #'       Name = "attachment.instance-id",
@@ -18346,7 +18537,8 @@ ec2_describe_volume_status <- function(Filters = NULL, MaxResults = NULL, NextTo
 #'       )
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -18470,23 +18662,25 @@ ec2_describe_volumes_modifications <- function(DryRun = NULL, VolumeIds = NULL, 
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the enableDnsSupport attribute. This attribute
 #' # indicates whether DNS resolution is enabled for the VPC. If this
 #' # attribute is true, the Amazon DNS server resolves DNS hostnames for your
 #' # instances to their corresponding IP addresses; otherwise, it does not.
-#' \dontrun{svc$describe_vpc_attribute(
+#' svc$describe_vpc_attribute(
 #'   Attribute = "enableDnsSupport",
 #'   VpcId = "vpc-a01106c2"
-#' )}
+#' )
 #' 
 #' # This example describes the enableDnsHostnames attribute. This attribute
 #' # indicates whether the instances launched in the VPC get DNS hostnames.
 #' # If this attribute is true, instances in the VPC get DNS hostnames;
 #' # otherwise, they do not.
-#' \dontrun{svc$describe_vpc_attribute(
+#' svc$describe_vpc_attribute(
 #'   Attribute = "enableDnsHostnames",
 #'   VpcId = "vpc-a01106c2"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -19254,12 +19448,14 @@ ec2_describe_vpc_peering_connections <- function(Filters = NULL, DryRun = NULL, 
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example describes the specified VPC.
-#' \dontrun{svc$describe_vpcs(
+#' svc$describe_vpcs(
 #'   VpcIds = list(
 #'     "vpc-a01106c2"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -19540,12 +19736,14 @@ ec2_detach_classic_link_vpc <- function(DryRun = NULL, InstanceId, VpcId) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example detaches the specified Internet gateway from the specified
 #' # VPC.
-#' \dontrun{svc$detach_internet_gateway(
+#' svc$detach_internet_gateway(
 #'   InternetGatewayId = "igw-c0a643a9",
 #'   VpcId = "vpc-a01106c2"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -19606,11 +19804,13 @@ ec2_detach_internet_gateway <- function(DryRun = NULL, InternetGatewayId, VpcId)
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example detaches the specified network interface from its attached
 #' # instance.
-#' \dontrun{svc$detach_network_interface(
+#' svc$detach_network_interface(
 #'   AttachmentId = "eni-attach-66c4350a"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -19680,11 +19880,13 @@ ec2_detach_network_interface <- function(AttachmentId, DryRun = NULL, Force = NU
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example detaches the volume (`vol-049df61146c4d7901`) from the
 #' # instance it is attached to.
-#' \dontrun{svc$detach_volume(
+#' svc$detach_volume(
 #'   VolumeId = "vol-1234567890abcdef0"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -19925,12 +20127,14 @@ ec2_disable_transit_gateway_route_table_propagation <- function(TransitGatewayRo
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example disables the specified virtual private gateway from
 #' # propagating static routes to the specified route table.
-#' \dontrun{svc$disable_vgw_route_propagation(
+#' svc$disable_vgw_route_propagation(
 #'   GatewayId = "vgw-9a4cacf3",
 #'   RouteTableId = "rtb-22574640"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -20069,17 +20273,19 @@ ec2_disable_vpc_classic_link_dns_support <- function(VpcId = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example disassociates an Elastic IP address from an instance in a
 #' # VPC.
-#' \dontrun{svc$disassociate_address(
+#' svc$disassociate_address(
 #'   AssociationId = "eipassoc-2bebb745"
-#' )}
+#' )
 #' 
 #' # This example disassociates an Elastic IP address from an instance in
 #' # EC2-Classic.
-#' \dontrun{svc$disassociate_address(
+#' svc$disassociate_address(
 #'   PublicIp = "198.51.100.0"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -20176,11 +20382,13 @@ ec2_disassociate_client_vpn_target_network <- function(ClientVpnEndpointId, Asso
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example disassociates the specified IAM instance profile from an
 #' # instance.
-#' \dontrun{svc$disassociate_iam_instance_profile(
+#' svc$disassociate_iam_instance_profile(
 #'   AssociationId = "iip-assoc-05020b59952902f5f"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -20231,11 +20439,13 @@ ec2_disassociate_iam_instance_profile <- function(AssociationId) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example disassociates the specified route table from its associated
 #' # subnet.
-#' \dontrun{svc$disassociate_route_table(
+#' svc$disassociate_route_table(
 #'   AssociationId = "rtbassoc-781d0d1a"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -20618,12 +20828,14 @@ ec2_enable_transit_gateway_route_table_propagation <- function(TransitGatewayRou
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example enables the specified virtual private gateway to propagate
 #' # static routes to the specified route table.
-#' \dontrun{svc$enable_vgw_route_propagation(
+#' svc$enable_vgw_route_propagation(
 #'   GatewayId = "vgw-9a4cacf3",
 #'   RouteTableId = "rtb-22574640"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -20669,10 +20881,12 @@ ec2_enable_vgw_route_propagation <- function(GatewayId, RouteTableId) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example enables I/O on volume `vol-1234567890abcdef0`.
-#' \dontrun{svc$enable_volume_io(
+#' svc$enable_volume_io(
 #'   VolumeId = "vol-1234567890abcdef0"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -21192,10 +21406,12 @@ ec2_get_coip_pool_usage <- function(PoolId, Filters = NULL, MaxResults = NULL, N
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example gets the console output for the specified instance.
-#' \dontrun{svc$get_console_output(
+#' svc$get_console_output(
 #'   InstanceId = "i-1234567890abcdef0"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -21473,10 +21689,12 @@ ec2_get_host_reservation_purchase_preview <- function(HostIdSet, OfferingId) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example gets the launch template data for the specified instance.
-#' \dontrun{svc$get_launch_template_data(
+#' svc$get_launch_template_data(
 #'   InstanceId = "0123d646e8048babc"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -23188,8 +23406,9 @@ ec2_modify_identity_id_format <- function(PrincipalArn, Resource, UseLongIds) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example makes the specified AMI public.
-#' \dontrun{svc$modify_image_attribute(
+#' svc$modify_image_attribute(
 #'   ImageId = "ami-5731123e",
 #'   LaunchPermission = list(
 #'     Add = list(
@@ -23198,11 +23417,11 @@ ec2_modify_identity_id_format <- function(PrincipalArn, Resource, UseLongIds) {
 #'       )
 #'     )
 #'   )
-#' )}
+#' )
 #' 
 #' # This example grants launch permissions for the specified AMI to the
 #' # specified AWS account.
-#' \dontrun{svc$modify_image_attribute(
+#' svc$modify_image_attribute(
 #'   ImageId = "ami-5731123e",
 #'   LaunchPermission = list(
 #'     Add = list(
@@ -23211,7 +23430,8 @@ ec2_modify_identity_id_format <- function(PrincipalArn, Resource, UseLongIds) {
 #'       )
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -23379,23 +23599,25 @@ ec2_modify_image_attribute <- function(Attribute = NULL, Description = NULL, Ima
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example modifies the instance type of the specified stopped
 #' # instance.
-#' \dontrun{svc$modify_instance_attribute(
+#' svc$modify_instance_attribute(
 #'   InstanceId = "i-1234567890abcdef0",
 #'   InstanceType = list(
 #'     Value = "m5.large"
 #'   )
-#' )}
+#' )
 #' 
 #' # This example enables enhanced networking for the specified stopped
 #' # instance.
-#' \dontrun{svc$modify_instance_attribute(
+#' svc$modify_instance_attribute(
 #'   EnaSupport = list(
 #'     Value = TRUE
 #'   ),
 #'   InstanceId = "i-1234567890abcdef0"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -23769,12 +23991,14 @@ ec2_modify_instance_placement <- function(Affinity = NULL, GroupName = NULL, Hos
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example specifies version 2 as the default version of the specified
 #' # launch template.
-#' \dontrun{svc$modify_launch_template(
+#' svc$modify_launch_template(
 #'   DefaultVersion = "2",
 #'   LaunchTemplateId = "lt-0abcd290751193123"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -23848,43 +24072,45 @@ ec2_modify_launch_template <- function(DryRun = NULL, ClientToken = NULL, Launch
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example modifies the attachment attribute of the specified network
 #' # interface.
-#' \dontrun{svc$modify_network_interface_attribute(
+#' svc$modify_network_interface_attribute(
 #'   Attachment = list(
 #'     AttachmentId = "eni-attach-43348162",
 #'     DeleteOnTermination = FALSE
 #'   ),
 #'   NetworkInterfaceId = "eni-686ea200"
-#' )}
+#' )
 #' 
 #' # This example modifies the description attribute of the specified network
 #' # interface.
-#' \dontrun{svc$modify_network_interface_attribute(
+#' svc$modify_network_interface_attribute(
 #'   Description = list(
 #'     Value = "My description"
 #'   ),
 #'   NetworkInterfaceId = "eni-686ea200"
-#' )}
+#' )
 #' 
 #' # This example command modifies the groupSet attribute of the specified
 #' # network interface.
-#' \dontrun{svc$modify_network_interface_attribute(
+#' svc$modify_network_interface_attribute(
 #'   Groups = list(
 #'     "sg-903004f8",
 #'     "sg-1a2b3c4d"
 #'   ),
 #'   NetworkInterfaceId = "eni-686ea200"
-#' )}
+#' )
 #' 
 #' # This example command modifies the sourceDestCheck attribute of the
 #' # specified network interface.
-#' \dontrun{svc$modify_network_interface_attribute(
+#' svc$modify_network_interface_attribute(
 #'   NetworkInterfaceId = "eni-686ea200",
 #'   SourceDestCheck = list(
 #'     Value = FALSE
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -24031,27 +24257,29 @@ ec2_modify_reserved_instances <- function(ReservedInstancesIds, ClientToken = NU
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example modifies snapshot `snap-1234567890abcdef0` to remove the
 #' # create volume permission for a user with the account ID
 #' # `123456789012`. If the command succeeds, no output is returned.
-#' \dontrun{svc$modify_snapshot_attribute(
+#' svc$modify_snapshot_attribute(
 #'   Attribute = "createVolumePermission",
 #'   OperationType = "remove",
 #'   SnapshotId = "snap-1234567890abcdef0",
 #'   UserIds = list(
 #'     "123456789012"
 #'   )
-#' )}
+#' )
 #' 
 #' # This example makes the snapshot `snap-1234567890abcdef0` public.
-#' \dontrun{svc$modify_snapshot_attribute(
+#' svc$modify_snapshot_attribute(
 #'   Attribute = "createVolumePermission",
 #'   GroupNames = list(
 #'     "all"
 #'   ),
 #'   OperationType = "add",
 #'   SnapshotId = "snap-1234567890abcdef0"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -24131,20 +24359,22 @@ ec2_modify_snapshot_attribute <- function(Attribute = NULL, CreateVolumePermissi
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example increases the target capacity of the specified Spot fleet
 #' # request.
-#' \dontrun{svc$modify_spot_fleet_request(
+#' svc$modify_spot_fleet_request(
 #'   SpotFleetRequestId = "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE",
 #'   TargetCapacity = 20L
-#' )}
+#' )
 #' 
 #' # This example decreases the target capacity of the specified Spot fleet
 #' # request without terminating any Spot Instances as a result.
-#' \dontrun{svc$modify_spot_fleet_request(
+#' svc$modify_spot_fleet_request(
 #'   ExcessCapacityTerminationPolicy = "NoTermination ",
 #'   SpotFleetRequestId = "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE",
 #'   TargetCapacity = 10L
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -24201,14 +24431,16 @@ ec2_modify_spot_fleet_request <- function(ExcessCapacityTerminationPolicy = NULL
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example modifies the specified subnet so that all instances
 #' # launched into this subnet are assigned a public IP address.
-#' \dontrun{svc$modify_subnet_attribute(
+#' svc$modify_subnet_attribute(
 #'   MapPublicIpOnLaunch = list(
 #'     Value = TRUE
 #'   ),
 #'   SubnetId = "subnet-1a2b3c4d"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -24640,16 +24872,18 @@ ec2_modify_volume <- function(DryRun = NULL, VolumeId, Size = NULL, VolumeType =
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example sets the `autoEnableIo` attribute of the volume with the
 #' # ID `vol-1234567890abcdef0` to `true`. If the command succeeds, no
 #' # output is returned.
-#' \dontrun{svc$modify_volume_attribute(
+#' svc$modify_volume_attribute(
 #'   AutoEnableIO = list(
 #'     Value = TRUE
 #'   ),
 #'   DryRun = TRUE,
 #'   VolumeId = "vol-1234567890abcdef0"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -24710,28 +24944,30 @@ ec2_modify_volume_attribute <- function(AutoEnableIO = NULL, VolumeId, DryRun = 
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example modifies the enableDnsSupport attribute. This attribute
 #' # indicates whether DNS resolution is enabled for the VPC. If this
 #' # attribute is true, the Amazon DNS server resolves DNS hostnames for
 #' # instances in the VPC to their corresponding IP addresses; otherwise, it
 #' # does not.
-#' \dontrun{svc$modify_vpc_attribute(
+#' svc$modify_vpc_attribute(
 #'   EnableDnsSupport = list(
 #'     Value = FALSE
 #'   ),
 #'   VpcId = "vpc-a01106c2"
-#' )}
+#' )
 #' 
 #' # This example modifies the enableDnsHostnames attribute. This attribute
 #' # indicates whether instances launched in the VPC get DNS hostnames. If
 #' # this attribute is true, instances in the VPC get DNS hostnames;
 #' # otherwise, they do not.
-#' \dontrun{svc$modify_vpc_attribute(
+#' svc$modify_vpc_attribute(
 #'   EnableDnsHostnames = list(
 #'     Value = FALSE
 #'   ),
 #'   VpcId = "vpc-a01106c2"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -25466,11 +25702,13 @@ ec2_monitor_instances <- function(InstanceIds, DryRun = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example moves the specified Elastic IP address to the EC2-VPC
 #' # platform.
-#' \dontrun{svc$move_address_to_vpc(
+#' svc$move_address_to_vpc(
 #'   PublicIp = "54.123.4.56"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -25741,15 +25979,17 @@ ec2_purchase_reserved_instances_offering <- function(InstanceCount, ReservedInst
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example purchases a Scheduled Instance.
-#' \dontrun{svc$purchase_scheduled_instances(
+#' svc$purchase_scheduled_instances(
 #'   PurchaseRequests = list(
 #'     list(
 #'       InstanceCount = 1L,
 #'       PurchaseToken = "eyJ2IjoiMSIsInMiOjEsImMiOi..."
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -25806,12 +26046,14 @@ ec2_purchase_scheduled_instances <- function(ClientToken = NULL, DryRun = NULL, 
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example reboots the specified EC2 instance.
-#' \dontrun{svc$reboot_instances(
+#' svc$reboot_instances(
 #'   InstanceIds = list(
 #'     "i-1234567890abcdef5"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -26344,17 +26586,19 @@ ec2_reject_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectio
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example releases an Elastic IP address for use with instances in a
 #' # VPC.
-#' \dontrun{svc$release_address(
+#' svc$release_address(
 #'   AllocationId = "eipalloc-64d5890a"
-#' )}
+#' )
 #' 
 #' # This example releases an Elastic IP address for use with instances in
 #' # EC2-Classic.
-#' \dontrun{svc$release_address(
+#' svc$release_address(
 #'   PublicIp = "198.51.100.0"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -26505,12 +26749,14 @@ ec2_replace_iam_instance_profile_association <- function(IamInstanceProfile, Ass
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example associates the specified network ACL with the subnet for
 #' # the specified network ACL association.
-#' \dontrun{svc$replace_network_acl_association(
+#' svc$replace_network_acl_association(
 #'   AssociationId = "aclassoc-e5b95c8c",
 #'   NetworkAclId = "acl-5fb85d36"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -26594,10 +26840,11 @@ ec2_replace_network_acl_association <- function(AssociationId, DryRun = NULL, Ne
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example replaces an entry for the specified network ACL. The new
 #' # rule 100 allows ingress traffic from 203.0.113.12/24 on UDP port 53
 #' # (DNS) into any associated subnet.
-#' \dontrun{svc$replace_network_acl_entry(
+#' svc$replace_network_acl_entry(
 #'   CidrBlock = "203.0.113.12/24",
 #'   Egress = FALSE,
 #'   NetworkAclId = "acl-5fb85d36",
@@ -26608,7 +26855,8 @@ ec2_replace_network_acl_association <- function(AssociationId, DryRun = NULL, Ne
 #'   Protocol = "17",
 #'   RuleAction = "allow",
 #'   RuleNumber = 100L
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -26687,14 +26935,16 @@ ec2_replace_network_acl_entry <- function(CidrBlock = NULL, DryRun = NULL, Egres
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example replaces the specified route in the specified table table.
 #' # The new route matches the specified CIDR and sends the traffic to the
 #' # specified virtual private gateway.
-#' \dontrun{svc$replace_route(
+#' svc$replace_route(
 #'   DestinationCidrBlock = "10.0.0.0/16",
 #'   GatewayId = "vgw-9a4cacf3",
 #'   RouteTableId = "rtb-22574640"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -26750,12 +27000,14 @@ ec2_replace_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBl
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example associates the specified route table with the subnet for
 #' # the specified route table association.
-#' \dontrun{svc$replace_route_table_association(
+#' svc$replace_route_table_association(
 #'   AssociationId = "rtbassoc-781d0d1a",
 #'   RouteTableId = "rtb-22574640"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -27117,6 +27369,7 @@ ec2_report_instance_status <- function(Description = NULL, DryRun = NULL, EndTim
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example creates a Spot fleet request with two launch specifications
 #' # that differ only by subnet. The Spot fleet launches the instances in the
 #' # specified subnet with the lowest price. If the instances are launched in
@@ -27124,7 +27377,7 @@ ec2_report_instance_status <- function(Description = NULL, DryRun = NULL, EndTim
 #' # instances are launched in a nondefault VPC, they do not receive a public
 #' # IP address by default. Note that you can't specify different subnets
 #' # from the same Availability Zone in a Spot fleet request.
-#' \dontrun{svc$request_spot_fleet(
+#' svc$request_spot_fleet(
 #'   SpotFleetRequestConfig = list(
 #'     IamFleetRole = "arn:aws:iam::123456789012:role/my-spot-fleet-role",
 #'     LaunchSpecifications = list(
@@ -27146,7 +27399,7 @@ ec2_report_instance_status <- function(Description = NULL, DryRun = NULL, EndTim
 #'     SpotPrice = "0.04",
 #'     TargetCapacity = 2L
 #'   )
-#' )}
+#' )
 #' 
 #' # This example creates a Spot fleet request with two launch specifications
 #' # that differ only by Availability Zone. The Spot fleet launches the
@@ -27155,7 +27408,7 @@ ec2_report_instance_status <- function(Description = NULL, DryRun = NULL, EndTim
 #' # instances in the default subnet of the Availability Zone. If your
 #' # account supports EC2-Classic, Amazon EC2 launches the instances in
 #' # EC2-Classic in the Availability Zone.
-#' \dontrun{svc$request_spot_fleet(
+#' svc$request_spot_fleet(
 #'   SpotFleetRequestConfig = list(
 #'     IamFleetRole = "arn:aws:iam::123456789012:role/my-spot-fleet-role",
 #'     LaunchSpecifications = list(
@@ -27179,12 +27432,12 @@ ec2_report_instance_status <- function(Description = NULL, DryRun = NULL, EndTim
 #'     SpotPrice = "0.04",
 #'     TargetCapacity = 2L
 #'   )
-#' )}
+#' )
 #' 
 #' # This example assigns public addresses to instances launched in a
 #' # nondefault VPC. Note that when you specify a network interface, you must
 #' # include the subnet ID and security group ID using the network interface.
-#' \dontrun{svc$request_spot_fleet(
+#' svc$request_spot_fleet(
 #'   SpotFleetRequestConfig = list(
 #'     IamFleetRole = "arn:aws:iam::123456789012:role/my-spot-fleet-role",
 #'     LaunchSpecifications = list(
@@ -27210,13 +27463,13 @@ ec2_report_instance_status <- function(Description = NULL, DryRun = NULL, EndTim
 #'     SpotPrice = "0.04",
 #'     TargetCapacity = 2L
 #'   )
-#' )}
+#' )
 #' 
 #' # This example creates a Spot fleet request that launches 30 instances
 #' # using the diversified allocation strategy. The launch specifications
 #' # differ by instance type. The Spot fleet distributes the instances across
 #' # the launch specifications such that there are 10 instances of each type.
-#' \dontrun{svc$request_spot_fleet(
+#' svc$request_spot_fleet(
 #'   SpotFleetRequestConfig = list(
 #'     AllocationStrategy = "diversified",
 #'     IamFleetRole = "arn:aws:iam::123456789012:role/my-spot-fleet-role",
@@ -27240,7 +27493,8 @@ ec2_report_instance_status <- function(Description = NULL, DryRun = NULL, EndTim
 #'     SpotPrice = "0.70",
 #'     TargetCapacity = 30L
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -27441,13 +27695,14 @@ ec2_request_spot_fleet <- function(DryRun = NULL, SpotFleetRequestConfig) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example creates a one-time Spot Instance request for five instances
 #' # in the specified Availability Zone. If your account supports EC2-VPC
 #' # only, Amazon EC2 launches the instances in the default subnet of the
 #' # specified Availability Zone. If your account supports EC2-Classic,
 #' # Amazon EC2 launches the instances in EC2-Classic in the specified
 #' # Availability Zone.
-#' \dontrun{svc$request_spot_instances(
+#' svc$request_spot_instances(
 #'   InstanceCount = 5L,
 #'   LaunchSpecification = list(
 #'     IamInstanceProfile = list(
@@ -27465,13 +27720,13 @@ ec2_request_spot_fleet <- function(DryRun = NULL, SpotFleetRequestConfig) {
 #'   ),
 #'   SpotPrice = "0.03",
 #'   Type = "one-time"
-#' )}
+#' )
 #' 
 #' # This example command creates a one-time Spot Instance request for five
 #' # instances in the specified subnet. Amazon EC2 launches the instances in
 #' # the specified subnet. If the VPC is a nondefault VPC, the instances do
 #' # not receive a public IP address by default.
-#' \dontrun{svc$request_spot_instances(
+#' svc$request_spot_instances(
 #'   InstanceCount = 5L,
 #'   LaunchSpecification = list(
 #'     IamInstanceProfile = list(
@@ -27486,7 +27741,8 @@ ec2_request_spot_fleet <- function(DryRun = NULL, SpotFleetRequestConfig) {
 #'   ),
 #'   SpotPrice = "0.050",
 #'   Type = "one-time"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -27627,12 +27883,14 @@ ec2_reset_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attribute
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example resets the launchPermission attribute for the specified
 #' # AMI. By default, AMIs are private.
-#' \dontrun{svc$reset_image_attribute(
+#' svc$reset_image_attribute(
 #'   Attribute = "launchPermission",
 #'   ImageId = "ami-5731123e"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -27691,12 +27949,14 @@ ec2_reset_image_attribute <- function(Attribute, ImageId, DryRun = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example resets the sourceDestCheck attribute for the specified
 #' # instance.
-#' \dontrun{svc$reset_instance_attribute(
+#' svc$reset_instance_attribute(
 #'   Attribute = "sourceDestCheck",
 #'   InstanceId = "i-1234567890abcdef0"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -27792,13 +28052,15 @@ ec2_reset_network_interface_attribute <- function(DryRun = NULL, NetworkInterfac
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example resets the create volume permissions for snapshot
 #' # `snap-1234567890abcdef0`. If the command succeeds, no output is
 #' # returned.
-#' \dontrun{svc$reset_snapshot_attribute(
+#' svc$reset_snapshot_attribute(
 #'   Attribute = "createVolumePermission",
 #'   SnapshotId = "snap-1234567890abcdef0"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -27846,11 +28108,13 @@ ec2_reset_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example restores the specified Elastic IP address to the
 #' # EC2-Classic platform.
-#' \dontrun{svc$restore_address_to_classic(
+#' svc$restore_address_to_classic(
 #'   PublicIp = "198.51.100.0"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -28590,9 +28854,10 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example launches an instance using the specified AMI, instance
 #' # type, security group, subnet, block device mapping, and tags.
-#' \dontrun{svc$run_instances(
+#' svc$run_instances(
 #'   BlockDeviceMappings = list(
 #'     list(
 #'       DeviceName = "/dev/sdh",
@@ -28621,7 +28886,8 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #'       )
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -28753,8 +29019,9 @@ ec2_run_instances <- function(BlockDeviceMappings = NULL, ImageId = NULL, Instan
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example launches the specified Scheduled Instance in a VPC.
-#' \dontrun{svc$run_scheduled_instances(
+#' svc$run_scheduled_instances(
 #'   InstanceCount = 1L,
 #'   LaunchSpecification = list(
 #'     IamInstanceProfile = list(
@@ -28775,10 +29042,10 @@ ec2_run_instances <- function(BlockDeviceMappings = NULL, ImageId = NULL, Instan
 #'     )
 #'   ),
 #'   ScheduledInstanceId = "sci-1234-1234-1234-1234-123456789012"
-#' )}
+#' )
 #' 
 #' # This example launches the specified Scheduled Instance in EC2-Classic.
-#' \dontrun{svc$run_scheduled_instances(
+#' svc$run_scheduled_instances(
 #'   InstanceCount = 1L,
 #'   LaunchSpecification = list(
 #'     IamInstanceProfile = list(
@@ -28795,7 +29062,8 @@ ec2_run_instances <- function(BlockDeviceMappings = NULL, ImageId = NULL, Instan
 #'     )
 #'   ),
 #'   ScheduledInstanceId = "sci-1234-1234-1234-1234-123456789012"
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -29155,12 +29423,14 @@ ec2_send_diagnostic_interrupt <- function(InstanceId, DryRun = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example starts the specified EC2 instance.
-#' \dontrun{svc$start_instances(
+#' svc$start_instances(
 #'   InstanceIds = list(
 #'     "i-1234567890abcdef0"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -29324,12 +29594,14 @@ ec2_start_vpc_endpoint_service_private_dns_verification <- function(DryRun = NUL
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example stops the specified EC2 instance.
-#' \dontrun{svc$stop_instances(
+#' svc$stop_instances(
 #'   InstanceIds = list(
 #'     "i-1234567890abcdef0"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -29456,12 +29728,14 @@ ec2_terminate_client_vpn_connections <- function(ClientVpnEndpointId, Connection
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example terminates the specified EC2 instance.
-#' \dontrun{svc$terminate_instances(
+#' svc$terminate_instances(
 #'   InstanceIds = list(
 #'     "i-1234567890abcdef0"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -29549,14 +29823,16 @@ ec2_unassign_ipv_6_addresses <- function(Ipv6Addresses, NetworkInterfaceId) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example unassigns the specified private IP address from the
 #' # specified network interface.
-#' \dontrun{svc$unassign_private_ip_addresses(
+#' svc$unassign_private_ip_addresses(
 #'   NetworkInterfaceId = "eni-e5aa89a3",
 #'   PrivateIpAddresses = list(
 #'     "10.0.0.82"
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -29696,9 +29972,10 @@ ec2_unmonitor_instances <- function(InstanceIds, DryRun = NULL) {
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example updates the description for the specified security group
 #' # rule.
-#' \dontrun{svc$update_security_group_rule_descriptions_egress(
+#' svc$update_security_group_rule_descriptions_egress(
 #'   GroupId = "sg-123abc12",
 #'   IpPermissions = list(
 #'     list(
@@ -29713,7 +29990,8 @@ ec2_unmonitor_instances <- function(InstanceIds, DryRun = NULL) {
 #'       ToPort = 80L
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -29807,9 +30085,10 @@ ec2_update_security_group_rule_descriptions_egress <- function(DryRun = NULL, Gr
 #' ```
 #'
 #' @examples
+#' \dontrun{
 #' # This example updates the description for the specified security group
 #' # rule.
-#' \dontrun{svc$update_security_group_rule_descriptions_ingress(
+#' svc$update_security_group_rule_descriptions_ingress(
 #'   GroupId = "sg-123abc12",
 #'   IpPermissions = list(
 #'     list(
@@ -29824,7 +30103,8 @@ ec2_update_security_group_rule_descriptions_egress <- function(DryRun = NULL, Gr
 #'       ToPort = 22L
 #'     )
 #'   )
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'

@@ -52,10 +52,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- appstream()
+#' \dontrun{
+#' svc <- appstream()
 #' svc$associate_fleet(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

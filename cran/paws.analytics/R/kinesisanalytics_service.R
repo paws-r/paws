@@ -38,10 +38,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- kinesisanalytics()
+#' \dontrun{
+#' svc <- kinesisanalytics()
 #' svc$add_application_cloud_watch_logging_option(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

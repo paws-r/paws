@@ -179,9 +179,11 @@ following AWS services.
 }
 
 \examples{
-\dontrun{svc <- resourcegroupstaggingapi()
+\dontrun{
+svc <- resourcegroupstaggingapi()
 svc$describe_report_creation(
   Foo = 123
-)}
+)
+}
 
 }

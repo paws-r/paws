@@ -44,10 +44,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- cloudhsm()
+#' \dontrun{
+#' svc <- cloudhsm()
 #' svc$add_tags_to_resource(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

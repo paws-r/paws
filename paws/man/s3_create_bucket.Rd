@@ -114,19 +114,21 @@ The following operations are related to \code{CreateBucket}:
 }
 
 \examples{
+\dontrun{
 # The following example creates a bucket.
-\dontrun{svc$create_bucket(
+svc$create_bucket(
   Bucket = "examplebucket"
-)}
+)
 
 # The following example creates a bucket. The request specifies an AWS
 # region where to create the bucket.
-\dontrun{svc$create_bucket(
+svc$create_bucket(
   Bucket = "examplebucket",
   CreateBucketConfiguration = list(
     LocationConstraint = "eu-west-1"
   )
-)}
+)
+}
 
 }
 \keyword{internal}

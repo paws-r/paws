@@ -96,13 +96,15 @@ of retries.
 }
 
 \examples{
+\dontrun{
 # This operation updates a Lambda function event source mapping
-\dontrun{svc$update_event_source_mapping(
+svc$update_event_source_mapping(
   BatchSize = 123L,
   Enabled = TRUE,
   FunctionName = "myFunction",
   UUID = "1234xCy789012"
-)}
+)
+}
 
 }
 \keyword{internal}

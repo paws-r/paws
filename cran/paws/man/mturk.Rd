@@ -76,9 +76,11 @@ Amazon Mechanical Turk API Reference
 }
 
 \examples{
-\dontrun{svc <- mturk()
+\dontrun{
+svc <- mturk()
 svc$accept_qualification_request(
   Foo = 123
-)}
+)
+}
 
 }

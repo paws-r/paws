@@ -49,11 +49,13 @@ service in either \code{ACTIVE} or \code{DRAINING} status, you receive an error.
 }
 
 \examples{
+\dontrun{
 # This example deletes the my-http-service service. The service must have
 # a desired count and running count of 0 before you can delete it.
-\dontrun{svc$delete_service(
+svc$delete_service(
   service = "my-http-service"
-)}
+)
+}
 
 }
 \keyword{internal}

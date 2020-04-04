@@ -51,10 +51,12 @@ NULL
 #' ```
 #'
 #' @examples
-#' \dontrun{svc <- ssooidc()
+#' \dontrun{
+#' svc <- ssooidc()
 #' svc$create_token(
 #'   Foo = 123
-#' )}
+#' )
+#' }
 #'
 #' @section Operations:
 #' \tabular{ll}{

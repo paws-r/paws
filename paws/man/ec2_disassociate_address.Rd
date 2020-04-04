@@ -39,17 +39,19 @@ once, Amazon EC2 doesn\'t return an error.
 }
 
 \examples{
+\dontrun{
 # This example disassociates an Elastic IP address from an instance in a
 # VPC.
-\dontrun{svc$disassociate_address(
+svc$disassociate_address(
   AssociationId = "eipassoc-2bebb745"
-)}
+)
 
 # This example disassociates an Elastic IP address from an instance in
 # EC2-Classic.
-\dontrun{svc$disassociate_address(
+svc$disassociate_address(
   PublicIp = "198.51.100.0"
-)}
+)
+}
 
 }
 \keyword{internal}

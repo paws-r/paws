@@ -31,10 +31,12 @@ You cannot delete an application that has a running environment.
 }
 
 \examples{
+\dontrun{
 # The following operation deletes an application named my-app:
-\dontrun{svc$delete_application(
+svc$delete_application(
   ApplicationName = "my-app"
-)}
+)
+}
 
 }
 \keyword{internal}
