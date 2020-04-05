@@ -39,6 +39,8 @@ update_endpoint_for_s3_config <- function(request) {
 
   if (!host_compatible_bucket_name(bucket_name)) return(request)
 
+  if (request$operation$name %in% c("GetBucketLocation")) return(request)
+
   request$http_request$url <-
     move_bucket_to_host(request$http_request$url, bucket_name)
 
