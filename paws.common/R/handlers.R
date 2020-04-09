@@ -154,6 +154,7 @@ validate_response <- function(request) {
 }
 
 unmarshal <- function(request) {
+  if (length(request$data) == 0) return(request)
   request <- run(request, unmarshal)
   return(request)
 }
