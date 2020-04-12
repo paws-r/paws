@@ -36,10 +36,15 @@ interface_template <- template(
 
 # Returns a function which translates an R object into a given API input/output
 # shape.
-make_interface <- function(name, shape_name, api) {
+make_interface <- function(name, shape_data, api) {
+  shape_name <- shape_data$shape
   if (is.null(shape_name)) return(make_empty_interface(name))
   shape <- make_shape(list(shape = shape_name), api)
   shape <- tag_del(shape, c("enum", "min", "max", "pattern"))
+  for (key in names(shape_data)) {
+    if (key == "shape") next
+    shape <- tag_add(shape, setNames(shape_data[[key]], key))
+  }
   interface <- render(
     interface_template,
     name = name,
@@ -54,8 +59,8 @@ make_interface_pair <- function(operation, api) {
   input_name <- glue::glue(".{service}${name}_input")
   output_name <- glue::glue(".{service}${name}_output")
 
-  input <- make_interface(input_name, operation$input$shape, api)
-  output <- make_interface(output_name, operation$output$shape, api)
+  input <- make_interface(input_name, operation$input, api)
+  output <- make_interface(output_name, operation$output, api)
 
   paste(input, output, sep = "\n\n")
 }
