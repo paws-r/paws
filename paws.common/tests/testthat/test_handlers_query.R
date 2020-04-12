@@ -701,6 +701,17 @@ test_that("unmarshal enums", {
   expect_equal(out$ListEnums, c("foo", "bar"))
 })
 
+op_output15 <- list()
+
+test_that("unmarshal empty output shape", {
+  req <- new_request(svc, op, NULL, op_output15)
+  req$http_response <- HttpResponse(
+    status_code = 200,
+    body = charToRaw("<OperationResponse xmlns=\"http://monitoring.amazonaws.com/doc/2010-08-01/\">\n  <ResponseMetadata>\n    <RequestId>123</RequestId>\n  </ResponseMetadata>\n</OperationResponse>\n")
+  )
+  expect_error(unmarshal(req), NA)
+})
+
 #-------------------------------------------------------------------------------
 
 # Unmarshal Error Tests
