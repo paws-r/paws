@@ -11,7 +11,7 @@ NULL
 
 .elb$add_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
+  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "AddTagsResult"))
   return(populate(args, shape))
 }
 
@@ -23,7 +23,7 @@ NULL
 
 .elb$apply_security_groups_to_load_balancer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "ApplySecurityGroupsToLoadBalancerResult"))
   return(populate(args, shape))
 }
 
@@ -35,7 +35,7 @@ NULL
 
 .elb$attach_load_balancer_to_subnets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "AttachLoadBalancerToSubnetsResult"))
   return(populate(args, shape))
 }
 
@@ -47,7 +47,7 @@ NULL
 
 .elb$configure_health_check_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HealthCheck = structure(list(Target = structure(logical(0), tags = list(type = "string")), Interval = structure(logical(0), tags = list(type = "integer")), Timeout = structure(logical(0), tags = list(type = "integer")), UnhealthyThreshold = structure(logical(0), tags = list(type = "integer")), HealthyThreshold = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(HealthCheck = structure(list(Target = structure(logical(0), tags = list(type = "string")), Interval = structure(logical(0), tags = list(type = "integer")), Timeout = structure(logical(0), tags = list(type = "integer")), UnhealthyThreshold = structure(logical(0), tags = list(type = "integer")), HealthyThreshold = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "ConfigureHealthCheckResult"))
   return(populate(args, shape))
 }
 
@@ -59,7 +59,7 @@ NULL
 
 .elb$create_app_cookie_stickiness_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
+  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "CreateAppCookieStickinessPolicyResult"))
   return(populate(args, shape))
 }
 
@@ -71,7 +71,7 @@ NULL
 
 .elb$create_lb_cookie_stickiness_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
+  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "CreateLBCookieStickinessPolicyResult"))
   return(populate(args, shape))
 }
 
@@ -83,7 +83,7 @@ NULL
 
 .elb$create_load_balancer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DNSName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DNSName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "CreateLoadBalancerResult"))
   return(populate(args, shape))
 }
 
@@ -95,7 +95,7 @@ NULL
 
 .elb$create_load_balancer_listeners_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
+  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "CreateLoadBalancerListenersResult"))
   return(populate(args, shape))
 }
 
@@ -107,7 +107,7 @@ NULL
 
 .elb$create_load_balancer_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
+  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "CreateLoadBalancerPolicyResult"))
   return(populate(args, shape))
 }
 
@@ -119,7 +119,7 @@ NULL
 
 .elb$delete_load_balancer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
+  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "DeleteLoadBalancerResult"))
   return(populate(args, shape))
 }
 
@@ -131,7 +131,7 @@ NULL
 
 .elb$delete_load_balancer_listeners_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
+  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "DeleteLoadBalancerListenersResult"))
   return(populate(args, shape))
 }
 
@@ -143,7 +143,7 @@ NULL
 
 .elb$delete_load_balancer_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
+  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "DeleteLoadBalancerPolicyResult"))
   return(populate(args, shape))
 }
 
@@ -155,7 +155,7 @@ NULL
 
 .elb$deregister_instances_from_load_balancer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Instances = structure(list(structure(list(InstanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Instances = structure(list(structure(list(InstanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DeregisterInstancesFromLoadBalancerResult"))
   return(populate(args, shape))
 }
 
@@ -167,7 +167,7 @@ NULL
 
 .elb$describe_account_limits_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Limits = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Max = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Limits = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Max = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeAccountLimitsResult"))
   return(populate(args, shape))
 }
 
@@ -179,7 +179,7 @@ NULL
 
 .elb$describe_instance_health_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceStates = structure(list(structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), ReasonCode = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceStates = structure(list(structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), ReasonCode = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DescribeInstanceHealthResult"))
   return(populate(args, shape))
 }
 
@@ -191,7 +191,7 @@ NULL
 
 .elb$describe_load_balancer_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LoadBalancerAttributes = structure(list(CrossZoneLoadBalancing = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AccessLog = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), S3BucketName = structure(logical(0), tags = list(type = "string")), EmitInterval = structure(logical(0), tags = list(type = "integer")), S3BucketPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ConnectionDraining = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Timeout = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ConnectionSettings = structure(list(IdleTimeout = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), AdditionalAttributes = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(LoadBalancerAttributes = structure(list(CrossZoneLoadBalancing = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AccessLog = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), S3BucketName = structure(logical(0), tags = list(type = "string")), EmitInterval = structure(logical(0), tags = list(type = "integer")), S3BucketPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ConnectionDraining = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Timeout = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ConnectionSettings = structure(list(IdleTimeout = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), AdditionalAttributes = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "DescribeLoadBalancerAttributesResult"))
   return(populate(args, shape))
 }
 
@@ -203,7 +203,7 @@ NULL
 
 .elb$describe_load_balancer_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyDescriptions = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyTypeName = structure(logical(0), tags = list(type = "string")), PolicyAttributeDescriptions = structure(list(structure(list(AttributeName = structure(logical(0), tags = list(type = "string")), AttributeValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(PolicyDescriptions = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyTypeName = structure(logical(0), tags = list(type = "string")), PolicyAttributeDescriptions = structure(list(structure(list(AttributeName = structure(logical(0), tags = list(type = "string")), AttributeValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DescribeLoadBalancerPoliciesResult"))
   return(populate(args, shape))
 }
 
@@ -215,7 +215,7 @@ NULL
 
 .elb$describe_load_balancer_policy_types_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyTypeDescriptions = structure(list(structure(list(PolicyTypeName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), PolicyAttributeTypeDescriptions = structure(list(structure(list(AttributeName = structure(logical(0), tags = list(type = "string")), AttributeType = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DefaultValue = structure(logical(0), tags = list(type = "string")), Cardinality = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(PolicyTypeDescriptions = structure(list(structure(list(PolicyTypeName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), PolicyAttributeTypeDescriptions = structure(list(structure(list(AttributeName = structure(logical(0), tags = list(type = "string")), AttributeType = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DefaultValue = structure(logical(0), tags = list(type = "string")), Cardinality = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DescribeLoadBalancerPolicyTypesResult"))
   return(populate(args, shape))
 }
 
@@ -227,7 +227,7 @@ NULL
 
 .elb$describe_load_balancers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LoadBalancerDescriptions = structure(list(structure(list(LoadBalancerName = structure(logical(0), tags = list(type = "string")), DNSName = structure(logical(0), tags = list(type = "string")), CanonicalHostedZoneName = structure(logical(0), tags = list(type = "string")), CanonicalHostedZoneNameID = structure(logical(0), tags = list(type = "string")), ListenerDescriptions = structure(list(structure(list(Listener = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), LoadBalancerPort = structure(logical(0), tags = list(type = "integer")), InstanceProtocol = structure(logical(0), tags = list(type = "string")), InstancePort = structure(logical(0), tags = list(type = "integer")), SSLCertificateId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PolicyNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Policies = structure(list(AppCookieStickinessPolicies = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), CookieName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LBCookieStickinessPolicies = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), CookieExpirationPeriod = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), OtherPolicies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), BackendServerDescriptions = structure(list(structure(list(InstancePort = structure(logical(0), tags = list(type = "integer")), PolicyNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), VPCId = structure(logical(0), tags = list(type = "string")), Instances = structure(list(structure(list(InstanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), HealthCheck = structure(list(Target = structure(logical(0), tags = list(type = "string")), Interval = structure(logical(0), tags = list(type = "integer")), Timeout = structure(logical(0), tags = list(type = "integer")), UnhealthyThreshold = structure(logical(0), tags = list(type = "integer")), HealthyThreshold = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), SourceSecurityGroup = structure(list(OwnerAlias = structure(logical(0), tags = list(type = "string")), GroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), Scheme = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(LoadBalancerDescriptions = structure(list(structure(list(LoadBalancerName = structure(logical(0), tags = list(type = "string")), DNSName = structure(logical(0), tags = list(type = "string")), CanonicalHostedZoneName = structure(logical(0), tags = list(type = "string")), CanonicalHostedZoneNameID = structure(logical(0), tags = list(type = "string")), ListenerDescriptions = structure(list(structure(list(Listener = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), LoadBalancerPort = structure(logical(0), tags = list(type = "integer")), InstanceProtocol = structure(logical(0), tags = list(type = "string")), InstancePort = structure(logical(0), tags = list(type = "integer")), SSLCertificateId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PolicyNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Policies = structure(list(AppCookieStickinessPolicies = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), CookieName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LBCookieStickinessPolicies = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), CookieExpirationPeriod = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), OtherPolicies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), BackendServerDescriptions = structure(list(structure(list(InstancePort = structure(logical(0), tags = list(type = "integer")), PolicyNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), VPCId = structure(logical(0), tags = list(type = "string")), Instances = structure(list(structure(list(InstanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), HealthCheck = structure(list(Target = structure(logical(0), tags = list(type = "string")), Interval = structure(logical(0), tags = list(type = "integer")), Timeout = structure(logical(0), tags = list(type = "integer")), UnhealthyThreshold = structure(logical(0), tags = list(type = "integer")), HealthyThreshold = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), SourceSecurityGroup = structure(list(OwnerAlias = structure(logical(0), tags = list(type = "string")), GroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), Scheme = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeLoadBalancersResult"))
   return(populate(args, shape))
 }
 
@@ -239,7 +239,7 @@ NULL
 
 .elb$describe_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TagDescriptions = structure(list(structure(list(LoadBalancerName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(TagDescriptions = structure(list(structure(list(LoadBalancerName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DescribeTagsResult"))
   return(populate(args, shape))
 }
 
@@ -251,7 +251,7 @@ NULL
 
 .elb$detach_load_balancer_from_subnets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DetachLoadBalancerFromSubnetsResult"))
   return(populate(args, shape))
 }
 
@@ -263,7 +263,7 @@ NULL
 
 .elb$disable_availability_zones_for_load_balancer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DisableAvailabilityZonesForLoadBalancerResult"))
   return(populate(args, shape))
 }
 
@@ -275,7 +275,7 @@ NULL
 
 .elb$enable_availability_zones_for_load_balancer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "EnableAvailabilityZonesForLoadBalancerResult"))
   return(populate(args, shape))
 }
 
@@ -287,7 +287,7 @@ NULL
 
 .elb$modify_load_balancer_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LoadBalancerName = structure(logical(0), tags = list(type = "string")), LoadBalancerAttributes = structure(list(CrossZoneLoadBalancing = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AccessLog = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), S3BucketName = structure(logical(0), tags = list(type = "string")), EmitInterval = structure(logical(0), tags = list(type = "integer")), S3BucketPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ConnectionDraining = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Timeout = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ConnectionSettings = structure(list(IdleTimeout = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), AdditionalAttributes = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(LoadBalancerName = structure(logical(0), tags = list(type = "string")), LoadBalancerAttributes = structure(list(CrossZoneLoadBalancing = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AccessLog = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), S3BucketName = structure(logical(0), tags = list(type = "string")), EmitInterval = structure(logical(0), tags = list(type = "integer")), S3BucketPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ConnectionDraining = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Timeout = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ConnectionSettings = structure(list(IdleTimeout = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), AdditionalAttributes = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "ModifyLoadBalancerAttributesResult"))
   return(populate(args, shape))
 }
 
@@ -299,7 +299,7 @@ NULL
 
 .elb$register_instances_with_load_balancer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Instances = structure(list(structure(list(InstanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Instances = structure(list(structure(list(InstanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "RegisterInstancesWithLoadBalancerResult"))
   return(populate(args, shape))
 }
 
@@ -311,7 +311,7 @@ NULL
 
 .elb$remove_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
+  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "RemoveTagsResult"))
   return(populate(args, shape))
 }
 
@@ -323,7 +323,7 @@ NULL
 
 .elb$set_load_balancer_listener_ssl_certificate_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
+  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "SetLoadBalancerListenerSSLCertificateResult"))
   return(populate(args, shape))
 }
 
@@ -335,7 +335,7 @@ NULL
 
 .elb$set_load_balancer_policies_for_backend_server_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
+  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "SetLoadBalancerPoliciesForBackendServerResult"))
   return(populate(args, shape))
 }
 
@@ -347,6 +347,6 @@ NULL
 
 .elb$set_load_balancer_policies_of_listener_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
+  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "SetLoadBalancerPoliciesOfListenerResult"))
   return(populate(args, shape))
 }

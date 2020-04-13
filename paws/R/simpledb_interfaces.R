@@ -61,7 +61,7 @@ NULL
 
 .simpledb$domain_metadata_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ItemCount = structure(logical(0), tags = list(type = "integer")), ItemNamesSizeBytes = structure(logical(0), tags = list(type = "long")), AttributeNameCount = structure(logical(0), tags = list(type = "integer")), AttributeNamesSizeBytes = structure(logical(0), tags = list(type = "long")), AttributeValueCount = structure(logical(0), tags = list(type = "integer")), AttributeValuesSizeBytes = structure(logical(0), tags = list(type = "long")), Timestamp = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(ItemCount = structure(logical(0), tags = list(type = "integer")), ItemNamesSizeBytes = structure(logical(0), tags = list(type = "long")), AttributeNameCount = structure(logical(0), tags = list(type = "integer")), AttributeNamesSizeBytes = structure(logical(0), tags = list(type = "long")), AttributeValueCount = structure(logical(0), tags = list(type = "integer")), AttributeValuesSizeBytes = structure(logical(0), tags = list(type = "long")), Timestamp = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure", resultWrapper = "DomainMetadataResult"))
   return(populate(args, shape))
 }
 
@@ -73,7 +73,7 @@ NULL
 
 .simpledb$get_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Attributes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), AlternateNameEncoding = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), AlternateValueEncoding = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Attribute", type = "structure"))), tags = list(locationNameList = "Attribute", type = "list", flattened = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(Attributes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), AlternateNameEncoding = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), AlternateValueEncoding = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Attribute", type = "structure"))), tags = list(locationNameList = "Attribute", type = "list", flattened = TRUE))), tags = list(type = "structure", resultWrapper = "GetAttributesResult"))
   return(populate(args, shape))
 }
 
@@ -85,7 +85,7 @@ NULL
 
 .simpledb$list_domains_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainNames = structure(list(structure(logical(0), tags = list(locationName = "DomainName", type = "string"))), tags = list(locationNameList = "DomainName", type = "list", flattened = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DomainNames = structure(list(structure(logical(0), tags = list(locationName = "DomainName", type = "string"))), tags = list(locationNameList = "DomainName", type = "list", flattened = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListDomainsResult"))
   return(populate(args, shape))
 }
 
@@ -107,6 +107,6 @@ NULL
 
 .simpledb$select_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), AlternateNameEncoding = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), AlternateNameEncoding = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), AlternateValueEncoding = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Attribute", type = "structure"))), tags = list(locationNameList = "Attribute", type = "list", flattened = TRUE))), tags = list(locationName = "Item", type = "structure"))), tags = list(locationNameList = "Item", type = "list", flattened = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Items = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), AlternateNameEncoding = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), AlternateNameEncoding = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), AlternateValueEncoding = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Attribute", type = "structure"))), tags = list(locationNameList = "Attribute", type = "list", flattened = TRUE))), tags = list(locationName = "Item", type = "structure"))), tags = list(locationNameList = "Item", type = "list", flattened = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "SelectResult"))
   return(populate(args, shape))
 }

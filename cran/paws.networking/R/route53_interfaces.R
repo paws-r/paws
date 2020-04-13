@@ -5,7 +5,7 @@ NULL
 
 .route53$associate_vpc_with_hosted_zone_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HostedZoneId = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string")), VPC = structure(list(VPCRegion = structure(logical(0), tags = list(type = "string")), VPCId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(HostedZoneId = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string")), VPC = structure(list(VPCRegion = structure(logical(0), tags = list(type = "string")), VPCId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", locationName = "AssociateVPCWithHostedZoneRequest", xmlNamespace = "https://route53.amazonaws.com/doc/2013-04-01/"))
   return(populate(args, shape))
 }
 
@@ -17,7 +17,7 @@ NULL
 
 .route53$change_resource_record_sets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HostedZoneId = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string")), ChangeBatch = structure(list(Comment = structure(logical(0), tags = list(type = "string")), Changes = structure(list(structure(list(Action = structure(logical(0), tags = list(type = "string")), ResourceRecordSet = structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), SetIdentifier = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "long")), Region = structure(logical(0), tags = list(type = "string")), GeoLocation = structure(list(ContinentCode = structure(logical(0), tags = list(type = "string")), CountryCode = structure(logical(0), tags = list(type = "string")), SubdivisionCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Failover = structure(logical(0), tags = list(type = "string")), MultiValueAnswer = structure(logical(0), tags = list(type = "boolean")), TTL = structure(logical(0), tags = list(type = "long")), ResourceRecords = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "ResourceRecord", type = "structure"))), tags = list(locationNameList = "ResourceRecord", type = "list")), AliasTarget = structure(list(HostedZoneId = structure(logical(0), tags = list(type = "string")), DNSName = structure(logical(0), tags = list(type = "string")), EvaluateTargetHealth = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), HealthCheckId = structure(logical(0), tags = list(type = "string")), TrafficPolicyInstanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "Change", type = "structure"))), tags = list(locationNameList = "Change", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(HostedZoneId = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string")), ChangeBatch = structure(list(Comment = structure(logical(0), tags = list(type = "string")), Changes = structure(list(structure(list(Action = structure(logical(0), tags = list(type = "string")), ResourceRecordSet = structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), SetIdentifier = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "long")), Region = structure(logical(0), tags = list(type = "string")), GeoLocation = structure(list(ContinentCode = structure(logical(0), tags = list(type = "string")), CountryCode = structure(logical(0), tags = list(type = "string")), SubdivisionCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Failover = structure(logical(0), tags = list(type = "string")), MultiValueAnswer = structure(logical(0), tags = list(type = "boolean")), TTL = structure(logical(0), tags = list(type = "long")), ResourceRecords = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "ResourceRecord", type = "structure"))), tags = list(locationNameList = "ResourceRecord", type = "list")), AliasTarget = structure(list(HostedZoneId = structure(logical(0), tags = list(type = "string")), DNSName = structure(logical(0), tags = list(type = "string")), EvaluateTargetHealth = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), HealthCheckId = structure(logical(0), tags = list(type = "string")), TrafficPolicyInstanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "Change", type = "structure"))), tags = list(locationNameList = "Change", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", locationName = "ChangeResourceRecordSetsRequest", xmlNamespace = "https://route53.amazonaws.com/doc/2013-04-01/"))
   return(populate(args, shape))
 }
 
@@ -29,7 +29,7 @@ NULL
 
 .route53$change_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceType = structure(logical(0), tags = list(location = "uri", locationName = "ResourceType", type = "string")), ResourceId = structure(logical(0), tags = list(location = "uri", locationName = "ResourceId", type = "string")), AddTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tag", type = "structure"))), tags = list(locationNameList = "Tag", type = "list")), RemoveTagKeys = structure(list(structure(logical(0), tags = list(locationName = "Key", type = "string"))), tags = list(locationNameList = "Key", type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(ResourceType = structure(logical(0), tags = list(location = "uri", locationName = "ResourceType", type = "string")), ResourceId = structure(logical(0), tags = list(location = "uri", locationName = "ResourceId", type = "string")), AddTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tag", type = "structure"))), tags = list(locationNameList = "Tag", type = "list")), RemoveTagKeys = structure(list(structure(logical(0), tags = list(locationName = "Key", type = "string"))), tags = list(locationNameList = "Key", type = "list"))), tags = list(type = "structure", locationName = "ChangeTagsForResourceRequest", xmlNamespace = "https://route53.amazonaws.com/doc/2013-04-01/"))
   return(populate(args, shape))
 }
 
@@ -41,7 +41,7 @@ NULL
 
 .route53$create_health_check_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CallerReference = structure(logical(0), tags = list(type = "string")), HealthCheckConfig = structure(list(IPAddress = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Type = structure(logical(0), tags = list(type = "string")), ResourcePath = structure(logical(0), tags = list(type = "string")), FullyQualifiedDomainName = structure(logical(0), tags = list(type = "string")), SearchString = structure(logical(0), tags = list(type = "string")), RequestInterval = structure(logical(0), tags = list(type = "integer")), FailureThreshold = structure(logical(0), tags = list(type = "integer")), MeasureLatency = structure(logical(0), tags = list(type = "boolean")), Inverted = structure(logical(0), tags = list(type = "boolean")), Disabled = structure(logical(0), tags = list(type = "boolean")), HealthThreshold = structure(logical(0), tags = list(type = "integer")), ChildHealthChecks = structure(list(structure(logical(0), tags = list(locationName = "ChildHealthCheck", type = "string"))), tags = list(locationNameList = "ChildHealthCheck", type = "list")), EnableSNI = structure(logical(0), tags = list(type = "boolean")), Regions = structure(list(structure(logical(0), tags = list(locationName = "Region", type = "string"))), tags = list(locationNameList = "Region", type = "list")), AlarmIdentifier = structure(list(Region = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), InsufficientDataHealthStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(CallerReference = structure(logical(0), tags = list(type = "string")), HealthCheckConfig = structure(list(IPAddress = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Type = structure(logical(0), tags = list(type = "string")), ResourcePath = structure(logical(0), tags = list(type = "string")), FullyQualifiedDomainName = structure(logical(0), tags = list(type = "string")), SearchString = structure(logical(0), tags = list(type = "string")), RequestInterval = structure(logical(0), tags = list(type = "integer")), FailureThreshold = structure(logical(0), tags = list(type = "integer")), MeasureLatency = structure(logical(0), tags = list(type = "boolean")), Inverted = structure(logical(0), tags = list(type = "boolean")), Disabled = structure(logical(0), tags = list(type = "boolean")), HealthThreshold = structure(logical(0), tags = list(type = "integer")), ChildHealthChecks = structure(list(structure(logical(0), tags = list(locationName = "ChildHealthCheck", type = "string"))), tags = list(locationNameList = "ChildHealthCheck", type = "list")), EnableSNI = structure(logical(0), tags = list(type = "boolean")), Regions = structure(list(structure(logical(0), tags = list(locationName = "Region", type = "string"))), tags = list(locationNameList = "Region", type = "list")), AlarmIdentifier = structure(list(Region = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), InsufficientDataHealthStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", locationName = "CreateHealthCheckRequest", xmlNamespace = "https://route53.amazonaws.com/doc/2013-04-01/"))
   return(populate(args, shape))
 }
 
@@ -53,7 +53,7 @@ NULL
 
 .route53$create_hosted_zone_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), VPC = structure(list(VPCRegion = structure(logical(0), tags = list(type = "string")), VPCId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CallerReference = structure(logical(0), tags = list(type = "string")), HostedZoneConfig = structure(list(Comment = structure(logical(0), tags = list(type = "string")), PrivateZone = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DelegationSetId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), VPC = structure(list(VPCRegion = structure(logical(0), tags = list(type = "string")), VPCId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CallerReference = structure(logical(0), tags = list(type = "string")), HostedZoneConfig = structure(list(Comment = structure(logical(0), tags = list(type = "string")), PrivateZone = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DelegationSetId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", locationName = "CreateHostedZoneRequest", xmlNamespace = "https://route53.amazonaws.com/doc/2013-04-01/"))
   return(populate(args, shape))
 }
 
@@ -65,7 +65,7 @@ NULL
 
 .route53$create_query_logging_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HostedZoneId = structure(logical(0), tags = list(type = "string")), CloudWatchLogsLogGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(HostedZoneId = structure(logical(0), tags = list(type = "string")), CloudWatchLogsLogGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", locationName = "CreateQueryLoggingConfigRequest", xmlNamespace = "https://route53.amazonaws.com/doc/2013-04-01/"))
   return(populate(args, shape))
 }
 
@@ -77,7 +77,7 @@ NULL
 
 .route53$create_reusable_delegation_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CallerReference = structure(logical(0), tags = list(type = "string")), HostedZoneId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(CallerReference = structure(logical(0), tags = list(type = "string")), HostedZoneId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", locationName = "CreateReusableDelegationSetRequest", xmlNamespace = "https://route53.amazonaws.com/doc/2013-04-01/"))
   return(populate(args, shape))
 }
 
@@ -89,7 +89,7 @@ NULL
 
 .route53$create_traffic_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Document = structure(logical(0), tags = list(type = "string")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Document = structure(logical(0), tags = list(type = "string")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", locationName = "CreateTrafficPolicyRequest", xmlNamespace = "https://route53.amazonaws.com/doc/2013-04-01/"))
   return(populate(args, shape))
 }
 
@@ -101,7 +101,7 @@ NULL
 
 .route53$create_traffic_policy_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HostedZoneId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), TTL = structure(logical(0), tags = list(type = "long")), TrafficPolicyId = structure(logical(0), tags = list(type = "string")), TrafficPolicyVersion = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(HostedZoneId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), TTL = structure(logical(0), tags = list(type = "long")), TrafficPolicyId = structure(logical(0), tags = list(type = "string")), TrafficPolicyVersion = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure", locationName = "CreateTrafficPolicyInstanceRequest", xmlNamespace = "https://route53.amazonaws.com/doc/2013-04-01/"))
   return(populate(args, shape))
 }
 
@@ -113,7 +113,7 @@ NULL
 
 .route53$create_traffic_policy_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string")), Document = structure(logical(0), tags = list(type = "string")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Id = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string")), Document = structure(logical(0), tags = list(type = "string")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", locationName = "CreateTrafficPolicyVersionRequest", xmlNamespace = "https://route53.amazonaws.com/doc/2013-04-01/"))
   return(populate(args, shape))
 }
 
@@ -125,7 +125,7 @@ NULL
 
 .route53$create_vpc_association_authorization_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HostedZoneId = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string")), VPC = structure(list(VPCRegion = structure(logical(0), tags = list(type = "string")), VPCId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(HostedZoneId = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string")), VPC = structure(list(VPCRegion = structure(logical(0), tags = list(type = "string")), VPCId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", locationName = "CreateVPCAssociationAuthorizationRequest", xmlNamespace = "https://route53.amazonaws.com/doc/2013-04-01/"))
   return(populate(args, shape))
 }
 
@@ -209,7 +209,7 @@ NULL
 
 .route53$delete_vpc_association_authorization_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HostedZoneId = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string")), VPC = structure(list(VPCRegion = structure(logical(0), tags = list(type = "string")), VPCId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(HostedZoneId = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string")), VPC = structure(list(VPCRegion = structure(logical(0), tags = list(type = "string")), VPCId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", locationName = "DeleteVPCAssociationAuthorizationRequest", xmlNamespace = "https://route53.amazonaws.com/doc/2013-04-01/"))
   return(populate(args, shape))
 }
 
@@ -221,7 +221,7 @@ NULL
 
 .route53$disassociate_vpc_from_hosted_zone_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HostedZoneId = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string")), VPC = structure(list(VPCRegion = structure(logical(0), tags = list(type = "string")), VPCId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(HostedZoneId = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string")), VPC = structure(list(VPCRegion = structure(logical(0), tags = list(type = "string")), VPCId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", locationName = "DisassociateVPCFromHostedZoneRequest", xmlNamespace = "https://route53.amazonaws.com/doc/2013-04-01/"))
   return(populate(args, shape))
 }
 
@@ -533,7 +533,7 @@ NULL
 
 .route53$list_tags_for_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceType = structure(logical(0), tags = list(location = "uri", locationName = "ResourceType", type = "string")), ResourceIds = structure(list(structure(logical(0), tags = list(locationName = "ResourceId", type = "string"))), tags = list(locationNameList = "ResourceId", type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(ResourceType = structure(logical(0), tags = list(location = "uri", locationName = "ResourceType", type = "string")), ResourceIds = structure(list(structure(logical(0), tags = list(locationName = "ResourceId", type = "string"))), tags = list(locationNameList = "ResourceId", type = "list"))), tags = list(type = "structure", locationName = "ListTagsForResourcesRequest", xmlNamespace = "https://route53.amazonaws.com/doc/2013-04-01/"))
   return(populate(args, shape))
 }
 
@@ -629,7 +629,7 @@ NULL
 
 .route53$update_health_check_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HealthCheckId = structure(logical(0), tags = list(location = "uri", locationName = "HealthCheckId", type = "string")), HealthCheckVersion = structure(logical(0), tags = list(type = "long")), IPAddress = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), ResourcePath = structure(logical(0), tags = list(type = "string")), FullyQualifiedDomainName = structure(logical(0), tags = list(type = "string")), SearchString = structure(logical(0), tags = list(type = "string")), FailureThreshold = structure(logical(0), tags = list(type = "integer")), Inverted = structure(logical(0), tags = list(type = "boolean")), Disabled = structure(logical(0), tags = list(type = "boolean")), HealthThreshold = structure(logical(0), tags = list(type = "integer")), ChildHealthChecks = structure(list(structure(logical(0), tags = list(locationName = "ChildHealthCheck", type = "string"))), tags = list(locationNameList = "ChildHealthCheck", type = "list")), EnableSNI = structure(logical(0), tags = list(type = "boolean")), Regions = structure(list(structure(logical(0), tags = list(locationName = "Region", type = "string"))), tags = list(locationNameList = "Region", type = "list")), AlarmIdentifier = structure(list(Region = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), InsufficientDataHealthStatus = structure(logical(0), tags = list(type = "string")), ResetElements = structure(list(structure(logical(0), tags = list(locationName = "ResettableElementName", type = "string"))), tags = list(locationNameList = "ResettableElementName", type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(HealthCheckId = structure(logical(0), tags = list(location = "uri", locationName = "HealthCheckId", type = "string")), HealthCheckVersion = structure(logical(0), tags = list(type = "long")), IPAddress = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), ResourcePath = structure(logical(0), tags = list(type = "string")), FullyQualifiedDomainName = structure(logical(0), tags = list(type = "string")), SearchString = structure(logical(0), tags = list(type = "string")), FailureThreshold = structure(logical(0), tags = list(type = "integer")), Inverted = structure(logical(0), tags = list(type = "boolean")), Disabled = structure(logical(0), tags = list(type = "boolean")), HealthThreshold = structure(logical(0), tags = list(type = "integer")), ChildHealthChecks = structure(list(structure(logical(0), tags = list(locationName = "ChildHealthCheck", type = "string"))), tags = list(locationNameList = "ChildHealthCheck", type = "list")), EnableSNI = structure(logical(0), tags = list(type = "boolean")), Regions = structure(list(structure(logical(0), tags = list(locationName = "Region", type = "string"))), tags = list(locationNameList = "Region", type = "list")), AlarmIdentifier = structure(list(Region = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), InsufficientDataHealthStatus = structure(logical(0), tags = list(type = "string")), ResetElements = structure(list(structure(logical(0), tags = list(locationName = "ResettableElementName", type = "string"))), tags = list(locationNameList = "ResettableElementName", type = "list"))), tags = list(type = "structure", locationName = "UpdateHealthCheckRequest", xmlNamespace = "https://route53.amazonaws.com/doc/2013-04-01/"))
   return(populate(args, shape))
 }
 
@@ -641,7 +641,7 @@ NULL
 
 .route53$update_hosted_zone_comment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Id = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", locationName = "UpdateHostedZoneCommentRequest", xmlNamespace = "https://route53.amazonaws.com/doc/2013-04-01/"))
   return(populate(args, shape))
 }
 
@@ -653,7 +653,7 @@ NULL
 
 .route53$update_traffic_policy_comment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string")), Version = structure(logical(0), tags = list(location = "uri", locationName = "Version", type = "integer")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Id = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string")), Version = structure(logical(0), tags = list(location = "uri", locationName = "Version", type = "integer")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", locationName = "UpdateTrafficPolicyCommentRequest", xmlNamespace = "https://route53.amazonaws.com/doc/2013-04-01/"))
   return(populate(args, shape))
 }
 
@@ -665,7 +665,7 @@ NULL
 
 .route53$update_traffic_policy_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string")), TTL = structure(logical(0), tags = list(type = "long")), TrafficPolicyId = structure(logical(0), tags = list(type = "string")), TrafficPolicyVersion = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(Id = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string")), TTL = structure(logical(0), tags = list(type = "long")), TrafficPolicyId = structure(logical(0), tags = list(type = "string")), TrafficPolicyVersion = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure", locationName = "UpdateTrafficPolicyInstanceRequest", xmlNamespace = "https://route53.amazonaws.com/doc/2013-04-01/"))
   return(populate(args, shape))
 }
 

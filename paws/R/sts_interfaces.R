@@ -11,7 +11,7 @@ NULL
 
 .sts$assume_role_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Credentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string")), SessionToken = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), AssumedRoleUser = structure(list(AssumedRoleId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PackedPolicySize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(Credentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string")), SessionToken = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), AssumedRoleUser = structure(list(AssumedRoleId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PackedPolicySize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure", resultWrapper = "AssumeRoleResult"))
   return(populate(args, shape))
 }
 
@@ -23,7 +23,7 @@ NULL
 
 .sts$assume_role_with_saml_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Credentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string")), SessionToken = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), AssumedRoleUser = structure(list(AssumedRoleId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PackedPolicySize = structure(logical(0), tags = list(type = "integer")), Subject = structure(logical(0), tags = list(type = "string")), SubjectType = structure(logical(0), tags = list(type = "string")), Issuer = structure(logical(0), tags = list(type = "string")), Audience = structure(logical(0), tags = list(type = "string")), NameQualifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Credentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string")), SessionToken = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), AssumedRoleUser = structure(list(AssumedRoleId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PackedPolicySize = structure(logical(0), tags = list(type = "integer")), Subject = structure(logical(0), tags = list(type = "string")), SubjectType = structure(logical(0), tags = list(type = "string")), Issuer = structure(logical(0), tags = list(type = "string")), Audience = structure(logical(0), tags = list(type = "string")), NameQualifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "AssumeRoleWithSAMLResult"))
   return(populate(args, shape))
 }
 
@@ -35,7 +35,7 @@ NULL
 
 .sts$assume_role_with_web_identity_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Credentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string")), SessionToken = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), SubjectFromWebIdentityToken = structure(logical(0), tags = list(type = "string")), AssumedRoleUser = structure(list(AssumedRoleId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PackedPolicySize = structure(logical(0), tags = list(type = "integer")), Provider = structure(logical(0), tags = list(type = "string")), Audience = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Credentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string")), SessionToken = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), SubjectFromWebIdentityToken = structure(logical(0), tags = list(type = "string")), AssumedRoleUser = structure(list(AssumedRoleId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PackedPolicySize = structure(logical(0), tags = list(type = "integer")), Provider = structure(logical(0), tags = list(type = "string")), Audience = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "AssumeRoleWithWebIdentityResult"))
   return(populate(args, shape))
 }
 
@@ -47,7 +47,7 @@ NULL
 
 .sts$decode_authorization_message_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DecodedMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DecodedMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DecodeAuthorizationMessageResult"))
   return(populate(args, shape))
 }
 
@@ -59,7 +59,7 @@ NULL
 
 .sts$get_access_key_info_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Account = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Account = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "GetAccessKeyInfoResult"))
   return(populate(args, shape))
 }
 
@@ -71,7 +71,7 @@ NULL
 
 .sts$get_caller_identity_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserId = structure(logical(0), tags = list(type = "string")), Account = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(UserId = structure(logical(0), tags = list(type = "string")), Account = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "GetCallerIdentityResult"))
   return(populate(args, shape))
 }
 
@@ -83,7 +83,7 @@ NULL
 
 .sts$get_federation_token_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Credentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string")), SessionToken = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), FederatedUser = structure(list(FederatedUserId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PackedPolicySize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(Credentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string")), SessionToken = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), FederatedUser = structure(list(FederatedUserId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PackedPolicySize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure", resultWrapper = "GetFederationTokenResult"))
   return(populate(args, shape))
 }
 
@@ -95,6 +95,6 @@ NULL
 
 .sts$get_session_token_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Credentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string")), SessionToken = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Credentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string")), SessionToken = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "GetSessionTokenResult"))
   return(populate(args, shape))
 }
