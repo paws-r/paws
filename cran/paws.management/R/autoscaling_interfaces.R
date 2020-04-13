@@ -21,7 +21,7 @@ NULL
 
 .autoscaling$attach_load_balancer_target_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
+  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "AttachLoadBalancerTargetGroupsResult"))
   return(populate(args, shape))
 }
 
@@ -33,7 +33,7 @@ NULL
 
 .autoscaling$attach_load_balancers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
+  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "AttachLoadBalancersResult"))
   return(populate(args, shape))
 }
 
@@ -45,7 +45,7 @@ NULL
 
 .autoscaling$batch_delete_scheduled_action_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FailedScheduledActions = structure(list(structure(list(ScheduledActionName = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(FailedScheduledActions = structure(list(structure(list(ScheduledActionName = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "BatchDeleteScheduledActionResult"))
   return(populate(args, shape))
 }
 
@@ -57,7 +57,7 @@ NULL
 
 .autoscaling$batch_put_scheduled_update_group_action_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FailedScheduledUpdateGroupActions = structure(list(structure(list(ScheduledActionName = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(FailedScheduledUpdateGroupActions = structure(list(structure(list(ScheduledActionName = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "BatchPutScheduledUpdateGroupActionResult"))
   return(populate(args, shape))
 }
 
@@ -69,7 +69,7 @@ NULL
 
 .autoscaling$complete_lifecycle_action_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
+  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "CompleteLifecycleActionResult"))
   return(populate(args, shape))
 }
 
@@ -131,7 +131,7 @@ NULL
 
 .autoscaling$delete_lifecycle_hook_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
+  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "DeleteLifecycleHookResult"))
   return(populate(args, shape))
 }
 
@@ -181,7 +181,7 @@ NULL
 
 .autoscaling$describe_account_limits_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxNumberOfAutoScalingGroups = structure(logical(0), tags = list(type = "integer")), MaxNumberOfLaunchConfigurations = structure(logical(0), tags = list(type = "integer")), NumberOfAutoScalingGroups = structure(logical(0), tags = list(type = "integer")), NumberOfLaunchConfigurations = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(MaxNumberOfAutoScalingGroups = structure(logical(0), tags = list(type = "integer")), MaxNumberOfLaunchConfigurations = structure(logical(0), tags = list(type = "integer")), NumberOfAutoScalingGroups = structure(logical(0), tags = list(type = "integer")), NumberOfLaunchConfigurations = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure", resultWrapper = "DescribeAccountLimitsResult"))
   return(populate(args, shape))
 }
 
@@ -191,7 +191,7 @@ NULL
 
 .autoscaling$describe_adjustment_types_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AdjustmentTypes = structure(list(structure(list(AdjustmentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(AdjustmentTypes = structure(list(structure(list(AdjustmentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DescribeAdjustmentTypesResult"))
   return(populate(args, shape))
 }
 
@@ -203,7 +203,7 @@ NULL
 
 .autoscaling$describe_auto_scaling_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AutoScalingGroups = structure(list(structure(list(AutoScalingGroupName = structure(logical(0), tags = list(type = "string")), AutoScalingGroupARN = structure(logical(0), tags = list(type = "string")), LaunchConfigurationName = structure(logical(0), tags = list(type = "string")), LaunchTemplate = structure(list(LaunchTemplateId = structure(logical(0), tags = list(type = "string")), LaunchTemplateName = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MixedInstancesPolicy = structure(list(LaunchTemplate = structure(list(LaunchTemplateSpecification = structure(list(LaunchTemplateId = structure(logical(0), tags = list(type = "string")), LaunchTemplateName = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Overrides = structure(list(structure(list(InstanceType = structure(logical(0), tags = list(type = "string")), WeightedCapacity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), InstancesDistribution = structure(list(OnDemandAllocationStrategy = structure(logical(0), tags = list(type = "string")), OnDemandBaseCapacity = structure(logical(0), tags = list(type = "integer")), OnDemandPercentageAboveBaseCapacity = structure(logical(0), tags = list(type = "integer")), SpotAllocationStrategy = structure(logical(0), tags = list(type = "string")), SpotInstancePools = structure(logical(0), tags = list(type = "integer")), SpotMaxPrice = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), MinSize = structure(logical(0), tags = list(type = "integer")), MaxSize = structure(logical(0), tags = list(type = "integer")), DesiredCapacity = structure(logical(0), tags = list(type = "integer")), DefaultCooldown = structure(logical(0), tags = list(type = "integer")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LoadBalancerNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TargetGroupARNs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HealthCheckType = structure(logical(0), tags = list(type = "string")), HealthCheckGracePeriod = structure(logical(0), tags = list(type = "integer")), Instances = structure(list(structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), LifecycleState = structure(logical(0), tags = list(type = "string")), HealthStatus = structure(logical(0), tags = list(type = "string")), LaunchConfigurationName = structure(logical(0), tags = list(type = "string")), LaunchTemplate = structure(list(LaunchTemplateId = structure(logical(0), tags = list(type = "string")), LaunchTemplateName = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProtectedFromScaleIn = structure(logical(0), tags = list(type = "boolean")), WeightedCapacity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), SuspendedProcesses = structure(list(structure(list(ProcessName = structure(logical(0), tags = list(type = "string")), SuspensionReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PlacementGroup = structure(logical(0), tags = list(type = "string")), VPCZoneIdentifier = structure(logical(0), tags = list(type = "string")), EnabledMetrics = structure(list(structure(list(Metric = structure(logical(0), tags = list(type = "string")), Granularity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), PropagateAtLaunch = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), TerminationPolicies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NewInstancesProtectedFromScaleIn = structure(logical(0), tags = list(type = "boolean")), ServiceLinkedRoleARN = structure(logical(0), tags = list(type = "string")), MaxInstanceLifetime = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(AutoScalingGroups = structure(list(structure(list(AutoScalingGroupName = structure(logical(0), tags = list(type = "string")), AutoScalingGroupARN = structure(logical(0), tags = list(type = "string")), LaunchConfigurationName = structure(logical(0), tags = list(type = "string")), LaunchTemplate = structure(list(LaunchTemplateId = structure(logical(0), tags = list(type = "string")), LaunchTemplateName = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MixedInstancesPolicy = structure(list(LaunchTemplate = structure(list(LaunchTemplateSpecification = structure(list(LaunchTemplateId = structure(logical(0), tags = list(type = "string")), LaunchTemplateName = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Overrides = structure(list(structure(list(InstanceType = structure(logical(0), tags = list(type = "string")), WeightedCapacity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), InstancesDistribution = structure(list(OnDemandAllocationStrategy = structure(logical(0), tags = list(type = "string")), OnDemandBaseCapacity = structure(logical(0), tags = list(type = "integer")), OnDemandPercentageAboveBaseCapacity = structure(logical(0), tags = list(type = "integer")), SpotAllocationStrategy = structure(logical(0), tags = list(type = "string")), SpotInstancePools = structure(logical(0), tags = list(type = "integer")), SpotMaxPrice = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), MinSize = structure(logical(0), tags = list(type = "integer")), MaxSize = structure(logical(0), tags = list(type = "integer")), DesiredCapacity = structure(logical(0), tags = list(type = "integer")), DefaultCooldown = structure(logical(0), tags = list(type = "integer")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LoadBalancerNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TargetGroupARNs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HealthCheckType = structure(logical(0), tags = list(type = "string")), HealthCheckGracePeriod = structure(logical(0), tags = list(type = "integer")), Instances = structure(list(structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), LifecycleState = structure(logical(0), tags = list(type = "string")), HealthStatus = structure(logical(0), tags = list(type = "string")), LaunchConfigurationName = structure(logical(0), tags = list(type = "string")), LaunchTemplate = structure(list(LaunchTemplateId = structure(logical(0), tags = list(type = "string")), LaunchTemplateName = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProtectedFromScaleIn = structure(logical(0), tags = list(type = "boolean")), WeightedCapacity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), SuspendedProcesses = structure(list(structure(list(ProcessName = structure(logical(0), tags = list(type = "string")), SuspensionReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PlacementGroup = structure(logical(0), tags = list(type = "string")), VPCZoneIdentifier = structure(logical(0), tags = list(type = "string")), EnabledMetrics = structure(list(structure(list(Metric = structure(logical(0), tags = list(type = "string")), Granularity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), PropagateAtLaunch = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), TerminationPolicies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NewInstancesProtectedFromScaleIn = structure(logical(0), tags = list(type = "boolean")), ServiceLinkedRoleARN = structure(logical(0), tags = list(type = "string")), MaxInstanceLifetime = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeAutoScalingGroupsResult"))
   return(populate(args, shape))
 }
 
@@ -215,7 +215,7 @@ NULL
 
 .autoscaling$describe_auto_scaling_instances_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AutoScalingInstances = structure(list(structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), AutoScalingGroupName = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), LifecycleState = structure(logical(0), tags = list(type = "string")), HealthStatus = structure(logical(0), tags = list(type = "string")), LaunchConfigurationName = structure(logical(0), tags = list(type = "string")), LaunchTemplate = structure(list(LaunchTemplateId = structure(logical(0), tags = list(type = "string")), LaunchTemplateName = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProtectedFromScaleIn = structure(logical(0), tags = list(type = "boolean")), WeightedCapacity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(AutoScalingInstances = structure(list(structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), AutoScalingGroupName = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), LifecycleState = structure(logical(0), tags = list(type = "string")), HealthStatus = structure(logical(0), tags = list(type = "string")), LaunchConfigurationName = structure(logical(0), tags = list(type = "string")), LaunchTemplate = structure(list(LaunchTemplateId = structure(logical(0), tags = list(type = "string")), LaunchTemplateName = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProtectedFromScaleIn = structure(logical(0), tags = list(type = "boolean")), WeightedCapacity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeAutoScalingInstancesResult"))
   return(populate(args, shape))
 }
 
@@ -225,7 +225,7 @@ NULL
 
 .autoscaling$describe_auto_scaling_notification_types_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AutoScalingNotificationTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(AutoScalingNotificationTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DescribeAutoScalingNotificationTypesResult"))
   return(populate(args, shape))
 }
 
@@ -237,7 +237,7 @@ NULL
 
 .autoscaling$describe_launch_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LaunchConfigurations = structure(list(structure(list(LaunchConfigurationName = structure(logical(0), tags = list(type = "string")), LaunchConfigurationARN = structure(logical(0), tags = list(type = "string")), ImageId = structure(logical(0), tags = list(type = "string")), KeyName = structure(logical(0), tags = list(type = "string")), SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ClassicLinkVPCId = structure(logical(0), tags = list(type = "string")), ClassicLinkVPCSecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), UserData = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), KernelId = structure(logical(0), tags = list(type = "string")), RamdiskId = structure(logical(0), tags = list(type = "string")), BlockDeviceMappings = structure(list(structure(list(VirtualName = structure(logical(0), tags = list(type = "string")), DeviceName = structure(logical(0), tags = list(type = "string")), Ebs = structure(list(SnapshotId = structure(logical(0), tags = list(type = "string")), VolumeSize = structure(logical(0), tags = list(type = "integer")), VolumeType = structure(logical(0), tags = list(type = "string")), DeleteOnTermination = structure(logical(0), tags = list(type = "boolean")), Iops = structure(logical(0), tags = list(type = "integer")), Encrypted = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), NoDevice = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), InstanceMonitoring = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), SpotPrice = structure(logical(0), tags = list(type = "string")), IamInstanceProfile = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), EbsOptimized = structure(logical(0), tags = list(type = "boolean")), AssociatePublicIpAddress = structure(logical(0), tags = list(type = "boolean")), PlacementTenancy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(LaunchConfigurations = structure(list(structure(list(LaunchConfigurationName = structure(logical(0), tags = list(type = "string")), LaunchConfigurationARN = structure(logical(0), tags = list(type = "string")), ImageId = structure(logical(0), tags = list(type = "string")), KeyName = structure(logical(0), tags = list(type = "string")), SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ClassicLinkVPCId = structure(logical(0), tags = list(type = "string")), ClassicLinkVPCSecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), UserData = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), KernelId = structure(logical(0), tags = list(type = "string")), RamdiskId = structure(logical(0), tags = list(type = "string")), BlockDeviceMappings = structure(list(structure(list(VirtualName = structure(logical(0), tags = list(type = "string")), DeviceName = structure(logical(0), tags = list(type = "string")), Ebs = structure(list(SnapshotId = structure(logical(0), tags = list(type = "string")), VolumeSize = structure(logical(0), tags = list(type = "integer")), VolumeType = structure(logical(0), tags = list(type = "string")), DeleteOnTermination = structure(logical(0), tags = list(type = "boolean")), Iops = structure(logical(0), tags = list(type = "integer")), Encrypted = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), NoDevice = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), InstanceMonitoring = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), SpotPrice = structure(logical(0), tags = list(type = "string")), IamInstanceProfile = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), EbsOptimized = structure(logical(0), tags = list(type = "boolean")), AssociatePublicIpAddress = structure(logical(0), tags = list(type = "boolean")), PlacementTenancy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeLaunchConfigurationsResult"))
   return(populate(args, shape))
 }
 
@@ -247,7 +247,7 @@ NULL
 
 .autoscaling$describe_lifecycle_hook_types_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LifecycleHookTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(LifecycleHookTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DescribeLifecycleHookTypesResult"))
   return(populate(args, shape))
 }
 
@@ -259,7 +259,7 @@ NULL
 
 .autoscaling$describe_lifecycle_hooks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LifecycleHooks = structure(list(structure(list(LifecycleHookName = structure(logical(0), tags = list(type = "string")), AutoScalingGroupName = structure(logical(0), tags = list(type = "string")), LifecycleTransition = structure(logical(0), tags = list(type = "string")), NotificationTargetARN = structure(logical(0), tags = list(type = "string")), RoleARN = structure(logical(0), tags = list(type = "string")), NotificationMetadata = structure(logical(0), tags = list(type = "string")), HeartbeatTimeout = structure(logical(0), tags = list(type = "integer")), GlobalTimeout = structure(logical(0), tags = list(type = "integer")), DefaultResult = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(LifecycleHooks = structure(list(structure(list(LifecycleHookName = structure(logical(0), tags = list(type = "string")), AutoScalingGroupName = structure(logical(0), tags = list(type = "string")), LifecycleTransition = structure(logical(0), tags = list(type = "string")), NotificationTargetARN = structure(logical(0), tags = list(type = "string")), RoleARN = structure(logical(0), tags = list(type = "string")), NotificationMetadata = structure(logical(0), tags = list(type = "string")), HeartbeatTimeout = structure(logical(0), tags = list(type = "integer")), GlobalTimeout = structure(logical(0), tags = list(type = "integer")), DefaultResult = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DescribeLifecycleHooksResult"))
   return(populate(args, shape))
 }
 
@@ -271,7 +271,7 @@ NULL
 
 .autoscaling$describe_load_balancer_target_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LoadBalancerTargetGroups = structure(list(structure(list(LoadBalancerTargetGroupARN = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(LoadBalancerTargetGroups = structure(list(structure(list(LoadBalancerTargetGroupARN = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeLoadBalancerTargetGroupsResult"))
   return(populate(args, shape))
 }
 
@@ -283,7 +283,7 @@ NULL
 
 .autoscaling$describe_load_balancers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LoadBalancers = structure(list(structure(list(LoadBalancerName = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(LoadBalancers = structure(list(structure(list(LoadBalancerName = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeLoadBalancersResult"))
   return(populate(args, shape))
 }
 
@@ -293,7 +293,7 @@ NULL
 
 .autoscaling$describe_metric_collection_types_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Metrics = structure(list(structure(list(Metric = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Granularities = structure(list(structure(list(Granularity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Metrics = structure(list(structure(list(Metric = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Granularities = structure(list(structure(list(Granularity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DescribeMetricCollectionTypesResult"))
   return(populate(args, shape))
 }
 
@@ -305,7 +305,7 @@ NULL
 
 .autoscaling$describe_notification_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NotificationConfigurations = structure(list(structure(list(AutoScalingGroupName = structure(logical(0), tags = list(type = "string")), TopicARN = structure(logical(0), tags = list(type = "string")), NotificationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(NotificationConfigurations = structure(list(structure(list(AutoScalingGroupName = structure(logical(0), tags = list(type = "string")), TopicARN = structure(logical(0), tags = list(type = "string")), NotificationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeNotificationConfigurationsResult"))
   return(populate(args, shape))
 }
 
@@ -317,7 +317,7 @@ NULL
 
 .autoscaling$describe_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScalingPolicies = structure(list(structure(list(AutoScalingGroupName = structure(logical(0), tags = list(type = "string")), PolicyName = structure(logical(0), tags = list(type = "string")), PolicyARN = structure(logical(0), tags = list(type = "string")), PolicyType = structure(logical(0), tags = list(type = "string")), AdjustmentType = structure(logical(0), tags = list(type = "string")), MinAdjustmentStep = structure(logical(0), tags = list(type = "integer", deprecated = TRUE)), MinAdjustmentMagnitude = structure(logical(0), tags = list(type = "integer")), ScalingAdjustment = structure(logical(0), tags = list(type = "integer")), Cooldown = structure(logical(0), tags = list(type = "integer")), StepAdjustments = structure(list(structure(list(MetricIntervalLowerBound = structure(logical(0), tags = list(type = "double")), MetricIntervalUpperBound = structure(logical(0), tags = list(type = "double")), ScalingAdjustment = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), MetricAggregationType = structure(logical(0), tags = list(type = "string")), EstimatedInstanceWarmup = structure(logical(0), tags = list(type = "integer")), Alarms = structure(list(structure(list(AlarmName = structure(logical(0), tags = list(type = "string")), AlarmARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TargetTrackingConfiguration = structure(list(PredefinedMetricSpecification = structure(list(PredefinedMetricType = structure(logical(0), tags = list(type = "string")), ResourceLabel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CustomizedMetricSpecification = structure(list(MetricName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Statistic = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TargetValue = structure(logical(0), tags = list(type = "double")), DisableScaleIn = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ScalingPolicies = structure(list(structure(list(AutoScalingGroupName = structure(logical(0), tags = list(type = "string")), PolicyName = structure(logical(0), tags = list(type = "string")), PolicyARN = structure(logical(0), tags = list(type = "string")), PolicyType = structure(logical(0), tags = list(type = "string")), AdjustmentType = structure(logical(0), tags = list(type = "string")), MinAdjustmentStep = structure(logical(0), tags = list(type = "integer", deprecated = TRUE)), MinAdjustmentMagnitude = structure(logical(0), tags = list(type = "integer")), ScalingAdjustment = structure(logical(0), tags = list(type = "integer")), Cooldown = structure(logical(0), tags = list(type = "integer")), StepAdjustments = structure(list(structure(list(MetricIntervalLowerBound = structure(logical(0), tags = list(type = "double")), MetricIntervalUpperBound = structure(logical(0), tags = list(type = "double")), ScalingAdjustment = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), MetricAggregationType = structure(logical(0), tags = list(type = "string")), EstimatedInstanceWarmup = structure(logical(0), tags = list(type = "integer")), Alarms = structure(list(structure(list(AlarmName = structure(logical(0), tags = list(type = "string")), AlarmARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TargetTrackingConfiguration = structure(list(PredefinedMetricSpecification = structure(list(PredefinedMetricType = structure(logical(0), tags = list(type = "string")), ResourceLabel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CustomizedMetricSpecification = structure(list(MetricName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Statistic = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TargetValue = structure(logical(0), tags = list(type = "double")), DisableScaleIn = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribePoliciesResult"))
   return(populate(args, shape))
 }
 
@@ -329,7 +329,7 @@ NULL
 
 .autoscaling$describe_scaling_activities_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Activities = structure(list(structure(list(ActivityId = structure(logical(0), tags = list(type = "string")), AutoScalingGroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Cause = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), StatusCode = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), Progress = structure(logical(0), tags = list(type = "integer")), Details = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Activities = structure(list(structure(list(ActivityId = structure(logical(0), tags = list(type = "string")), AutoScalingGroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Cause = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), StatusCode = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), Progress = structure(logical(0), tags = list(type = "integer")), Details = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeScalingActivitiesResult"))
   return(populate(args, shape))
 }
 
@@ -339,7 +339,7 @@ NULL
 
 .autoscaling$describe_scaling_process_types_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Processes = structure(list(structure(list(ProcessName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Processes = structure(list(structure(list(ProcessName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DescribeScalingProcessTypesResult"))
   return(populate(args, shape))
 }
 
@@ -351,7 +351,7 @@ NULL
 
 .autoscaling$describe_scheduled_actions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScheduledUpdateGroupActions = structure(list(structure(list(AutoScalingGroupName = structure(logical(0), tags = list(type = "string")), ScheduledActionName = structure(logical(0), tags = list(type = "string")), ScheduledActionARN = structure(logical(0), tags = list(type = "string")), Time = structure(logical(0), tags = list(type = "timestamp")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Recurrence = structure(logical(0), tags = list(type = "string")), MinSize = structure(logical(0), tags = list(type = "integer")), MaxSize = structure(logical(0), tags = list(type = "integer")), DesiredCapacity = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ScheduledUpdateGroupActions = structure(list(structure(list(AutoScalingGroupName = structure(logical(0), tags = list(type = "string")), ScheduledActionName = structure(logical(0), tags = list(type = "string")), ScheduledActionARN = structure(logical(0), tags = list(type = "string")), Time = structure(logical(0), tags = list(type = "timestamp")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Recurrence = structure(logical(0), tags = list(type = "string")), MinSize = structure(logical(0), tags = list(type = "integer")), MaxSize = structure(logical(0), tags = list(type = "integer")), DesiredCapacity = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeScheduledActionsResult"))
   return(populate(args, shape))
 }
 
@@ -363,7 +363,7 @@ NULL
 
 .autoscaling$describe_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), PropagateAtLaunch = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Tags = structure(list(structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), PropagateAtLaunch = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeTagsResult"))
   return(populate(args, shape))
 }
 
@@ -373,7 +373,7 @@ NULL
 
 .autoscaling$describe_termination_policy_types_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TerminationPolicyTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(TerminationPolicyTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DescribeTerminationPolicyTypesResult"))
   return(populate(args, shape))
 }
 
@@ -385,7 +385,7 @@ NULL
 
 .autoscaling$detach_instances_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Activities = structure(list(structure(list(ActivityId = structure(logical(0), tags = list(type = "string")), AutoScalingGroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Cause = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), StatusCode = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), Progress = structure(logical(0), tags = list(type = "integer")), Details = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Activities = structure(list(structure(list(ActivityId = structure(logical(0), tags = list(type = "string")), AutoScalingGroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Cause = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), StatusCode = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), Progress = structure(logical(0), tags = list(type = "integer")), Details = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DetachInstancesResult"))
   return(populate(args, shape))
 }
 
@@ -397,7 +397,7 @@ NULL
 
 .autoscaling$detach_load_balancer_target_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
+  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "DetachLoadBalancerTargetGroupsResult"))
   return(populate(args, shape))
 }
 
@@ -409,7 +409,7 @@ NULL
 
 .autoscaling$detach_load_balancers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
+  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "DetachLoadBalancersResult"))
   return(populate(args, shape))
 }
 
@@ -441,7 +441,7 @@ NULL
 
 .autoscaling$enter_standby_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Activities = structure(list(structure(list(ActivityId = structure(logical(0), tags = list(type = "string")), AutoScalingGroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Cause = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), StatusCode = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), Progress = structure(logical(0), tags = list(type = "integer")), Details = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Activities = structure(list(structure(list(ActivityId = structure(logical(0), tags = list(type = "string")), AutoScalingGroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Cause = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), StatusCode = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), Progress = structure(logical(0), tags = list(type = "integer")), Details = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "EnterStandbyResult"))
   return(populate(args, shape))
 }
 
@@ -463,7 +463,7 @@ NULL
 
 .autoscaling$exit_standby_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Activities = structure(list(structure(list(ActivityId = structure(logical(0), tags = list(type = "string")), AutoScalingGroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Cause = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), StatusCode = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), Progress = structure(logical(0), tags = list(type = "integer")), Details = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Activities = structure(list(structure(list(ActivityId = structure(logical(0), tags = list(type = "string")), AutoScalingGroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Cause = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), StatusCode = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), Progress = structure(logical(0), tags = list(type = "integer")), Details = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "ExitStandbyResult"))
   return(populate(args, shape))
 }
 
@@ -475,7 +475,7 @@ NULL
 
 .autoscaling$put_lifecycle_hook_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
+  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "PutLifecycleHookResult"))
   return(populate(args, shape))
 }
 
@@ -497,7 +497,7 @@ NULL
 
 .autoscaling$put_scaling_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyARN = structure(logical(0), tags = list(type = "string")), Alarms = structure(list(structure(list(AlarmName = structure(logical(0), tags = list(type = "string")), AlarmARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(PolicyARN = structure(logical(0), tags = list(type = "string")), Alarms = structure(list(structure(list(AlarmName = structure(logical(0), tags = list(type = "string")), AlarmARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "PutScalingPolicyResult"))
   return(populate(args, shape))
 }
 
@@ -519,7 +519,7 @@ NULL
 
 .autoscaling$record_lifecycle_action_heartbeat_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
+  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "RecordLifecycleActionHeartbeatResult"))
   return(populate(args, shape))
 }
 
@@ -561,7 +561,7 @@ NULL
 
 .autoscaling$set_instance_protection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
+  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "SetInstanceProtectionResult"))
   return(populate(args, shape))
 }
 
@@ -583,7 +583,7 @@ NULL
 
 .autoscaling$terminate_instance_in_auto_scaling_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Activity = structure(list(ActivityId = structure(logical(0), tags = list(type = "string")), AutoScalingGroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Cause = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), StatusCode = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), Progress = structure(logical(0), tags = list(type = "integer")), Details = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Activity = structure(list(ActivityId = structure(logical(0), tags = list(type = "string")), AutoScalingGroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Cause = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), StatusCode = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), Progress = structure(logical(0), tags = list(type = "integer")), Details = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "TerminateInstanceInAutoScalingGroupResult"))
   return(populate(args, shape))
 }
 

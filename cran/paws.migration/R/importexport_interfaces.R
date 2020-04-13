@@ -11,7 +11,7 @@ NULL
 
 .importexport$cancel_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Success = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(Success = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure", resultWrapper = "CancelJobResult"))
   return(populate(args, shape))
 }
 
@@ -23,7 +23,7 @@ NULL
 
 .importexport$create_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string")), JobType = structure(logical(0), tags = list(type = "string")), Signature = structure(logical(0), tags = list(type = "string")), SignatureFileContents = structure(logical(0), tags = list(type = "string")), WarningMessage = structure(logical(0), tags = list(type = "string")), ArtifactList = structure(list(structure(list(Description = structure(logical(0), tags = list(type = "string")), URL = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string")), JobType = structure(logical(0), tags = list(type = "string")), Signature = structure(logical(0), tags = list(type = "string")), SignatureFileContents = structure(logical(0), tags = list(type = "string")), WarningMessage = structure(logical(0), tags = list(type = "string")), ArtifactList = structure(list(structure(list(Description = structure(logical(0), tags = list(type = "string")), URL = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "CreateJobResult"))
   return(populate(args, shape))
 }
 
@@ -35,7 +35,7 @@ NULL
 
 .importexport$get_shipping_label_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ShippingLabelURL = structure(logical(0), tags = list(type = "string")), Warning = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ShippingLabelURL = structure(logical(0), tags = list(type = "string")), Warning = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "GetShippingLabelResult"))
   return(populate(args, shape))
 }
 
@@ -47,7 +47,7 @@ NULL
 
 .importexport$get_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string")), JobType = structure(logical(0), tags = list(type = "string")), LocationCode = structure(logical(0), tags = list(type = "string")), LocationMessage = structure(logical(0), tags = list(type = "string")), ProgressCode = structure(logical(0), tags = list(type = "string")), ProgressMessage = structure(logical(0), tags = list(type = "string")), Carrier = structure(logical(0), tags = list(type = "string")), TrackingNumber = structure(logical(0), tags = list(type = "string")), LogBucket = structure(logical(0), tags = list(type = "string")), LogKey = structure(logical(0), tags = list(type = "string")), ErrorCount = structure(logical(0), tags = list(type = "integer")), Signature = structure(logical(0), tags = list(type = "string")), SignatureFileContents = structure(logical(0), tags = list(type = "string")), CurrentManifest = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), ArtifactList = structure(list(structure(list(Description = structure(logical(0), tags = list(type = "string")), URL = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string")), JobType = structure(logical(0), tags = list(type = "string")), LocationCode = structure(logical(0), tags = list(type = "string")), LocationMessage = structure(logical(0), tags = list(type = "string")), ProgressCode = structure(logical(0), tags = list(type = "string")), ProgressMessage = structure(logical(0), tags = list(type = "string")), Carrier = structure(logical(0), tags = list(type = "string")), TrackingNumber = structure(logical(0), tags = list(type = "string")), LogBucket = structure(logical(0), tags = list(type = "string")), LogKey = structure(logical(0), tags = list(type = "string")), ErrorCount = structure(logical(0), tags = list(type = "integer")), Signature = structure(logical(0), tags = list(type = "string")), SignatureFileContents = structure(logical(0), tags = list(type = "string")), CurrentManifest = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), ArtifactList = structure(list(structure(list(Description = structure(logical(0), tags = list(type = "string")), URL = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "GetStatusResult"))
   return(populate(args, shape))
 }
 
@@ -59,7 +59,7 @@ NULL
 
 .importexport$list_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Jobs = structure(list(structure(list(JobId = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), IsCanceled = structure(logical(0), tags = list(type = "boolean")), JobType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IsTruncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(Jobs = structure(list(structure(list(JobId = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), IsCanceled = structure(logical(0), tags = list(type = "boolean")), JobType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IsTruncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure", resultWrapper = "ListJobsResult"))
   return(populate(args, shape))
 }
 
@@ -71,6 +71,6 @@ NULL
 
 .importexport$update_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Success = structure(logical(0), tags = list(type = "boolean")), WarningMessage = structure(logical(0), tags = list(type = "string")), ArtifactList = structure(list(structure(list(Description = structure(logical(0), tags = list(type = "string")), URL = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Success = structure(logical(0), tags = list(type = "boolean")), WarningMessage = structure(logical(0), tags = list(type = "string")), ArtifactList = structure(list(structure(list(Description = structure(logical(0), tags = list(type = "string")), URL = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "UpdateJobResult"))
   return(populate(args, shape))
 }

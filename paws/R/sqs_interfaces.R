@@ -31,7 +31,7 @@ NULL
 
 .sqs$change_message_visibility_batch_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Successful = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "ChangeMessageVisibilityBatchResultEntry", type = "structure"))), tags = list(locationNameList = "ChangeMessageVisibilityBatchResultEntry", type = "list", flattened = TRUE)), Failed = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), SenderFault = structure(logical(0), tags = list(type = "boolean")), Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "BatchResultErrorEntry", type = "structure"))), tags = list(locationNameList = "BatchResultErrorEntry", type = "list", flattened = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(Successful = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "ChangeMessageVisibilityBatchResultEntry", type = "structure"))), tags = list(locationNameList = "ChangeMessageVisibilityBatchResultEntry", type = "list", flattened = TRUE)), Failed = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), SenderFault = structure(logical(0), tags = list(type = "boolean")), Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "BatchResultErrorEntry", type = "structure"))), tags = list(locationNameList = "BatchResultErrorEntry", type = "list", flattened = TRUE))), tags = list(type = "structure", resultWrapper = "ChangeMessageVisibilityBatchResult"))
   return(populate(args, shape))
 }
 
@@ -43,7 +43,7 @@ NULL
 
 .sqs$create_queue_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "CreateQueueResult"))
   return(populate(args, shape))
 }
 
@@ -65,7 +65,7 @@ NULL
 
 .sqs$delete_message_batch_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Successful = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "DeleteMessageBatchResultEntry", type = "structure"))), tags = list(locationNameList = "DeleteMessageBatchResultEntry", type = "list", flattened = TRUE)), Failed = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), SenderFault = structure(logical(0), tags = list(type = "boolean")), Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "BatchResultErrorEntry", type = "structure"))), tags = list(locationNameList = "BatchResultErrorEntry", type = "list", flattened = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(Successful = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "DeleteMessageBatchResultEntry", type = "structure"))), tags = list(locationNameList = "DeleteMessageBatchResultEntry", type = "list", flattened = TRUE)), Failed = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), SenderFault = structure(logical(0), tags = list(type = "boolean")), Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "BatchResultErrorEntry", type = "structure"))), tags = list(locationNameList = "BatchResultErrorEntry", type = "list", flattened = TRUE))), tags = list(type = "structure", resultWrapper = "DeleteMessageBatchResult"))
   return(populate(args, shape))
 }
 
@@ -87,7 +87,7 @@ NULL
 
 .sqs$get_queue_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Attributes = structure(list(structure(logical(0), tags = list(locationName = "Value", type = "string"))), tags = list(locationNameKey = "Name", locationNameValue = "Value", type = "map", flattened = TRUE, locationName = "Attribute"))), tags = list(type = "structure"))
+  shape <- structure(list(Attributes = structure(list(structure(logical(0), tags = list(locationName = "Value", type = "string"))), tags = list(locationNameKey = "Name", locationNameValue = "Value", type = "map", flattened = TRUE, locationName = "Attribute"))), tags = list(type = "structure", resultWrapper = "GetQueueAttributesResult"))
   return(populate(args, shape))
 }
 
@@ -99,7 +99,7 @@ NULL
 
 .sqs$get_queue_url_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "GetQueueUrlResult"))
   return(populate(args, shape))
 }
 
@@ -111,7 +111,7 @@ NULL
 
 .sqs$list_dead_letter_source_queues_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(queueUrls = structure(list(structure(logical(0), tags = list(locationName = "QueueUrl", type = "string"))), tags = list(locationNameList = "QueueUrl", type = "list", flattened = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(queueUrls = structure(list(structure(logical(0), tags = list(locationName = "QueueUrl", type = "string"))), tags = list(locationNameList = "QueueUrl", type = "list", flattened = TRUE))), tags = list(type = "structure", resultWrapper = "ListDeadLetterSourceQueuesResult"))
   return(populate(args, shape))
 }
 
@@ -123,7 +123,7 @@ NULL
 
 .sqs$list_queue_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(locationName = "Value", type = "string"))), tags = list(locationNameKey = "Key", locationNameValue = "Value", type = "map", flattened = TRUE, locationName = "Tag"))), tags = list(type = "structure"))
+  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(locationName = "Value", type = "string"))), tags = list(locationNameKey = "Key", locationNameValue = "Value", type = "map", flattened = TRUE, locationName = "Tag"))), tags = list(type = "structure", resultWrapper = "ListQueueTagsResult"))
   return(populate(args, shape))
 }
 
@@ -135,7 +135,7 @@ NULL
 
 .sqs$list_queues_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrls = structure(list(structure(logical(0), tags = list(locationName = "QueueUrl", type = "string"))), tags = list(locationNameList = "QueueUrl", type = "list", flattened = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(QueueUrls = structure(list(structure(logical(0), tags = list(locationName = "QueueUrl", type = "string"))), tags = list(locationNameList = "QueueUrl", type = "list", flattened = TRUE))), tags = list(type = "structure", resultWrapper = "ListQueuesResult"))
   return(populate(args, shape))
 }
 
@@ -157,7 +157,7 @@ NULL
 
 .sqs$receive_message_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Messages = structure(list(structure(list(MessageId = structure(logical(0), tags = list(type = "string")), ReceiptHandle = structure(logical(0), tags = list(type = "string")), MD5OfBody = structure(logical(0), tags = list(type = "string")), Body = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(locationName = "Value", type = "string"))), tags = list(locationNameKey = "Name", locationNameValue = "Value", type = "map", flattened = TRUE, locationName = "Attribute")), MD5OfMessageAttributes = structure(logical(0), tags = list(type = "string")), MessageAttributes = structure(list(structure(list(StringValue = structure(logical(0), tags = list(type = "string")), BinaryValue = structure(logical(0), tags = list(type = "blob")), StringListValues = structure(list(structure(logical(0), tags = list(locationName = "StringListValue", type = "string"))), tags = list(locationNameList = "StringListValue", flattened = TRUE, locationName = "StringListValue", type = "list")), BinaryListValues = structure(list(structure(logical(0), tags = list(locationName = "BinaryListValue", type = "blob"))), tags = list(locationNameList = "BinaryListValue", flattened = TRUE, locationName = "BinaryListValue", type = "list")), DataType = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Value", type = "structure"))), tags = list(locationNameKey = "Name", locationNameValue = "Value", locationName = "MessageAttribute", type = "map", flattened = TRUE))), tags = list(locationName = "Message", type = "structure"))), tags = list(locationNameList = "Message", type = "list", flattened = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(Messages = structure(list(structure(list(MessageId = structure(logical(0), tags = list(type = "string")), ReceiptHandle = structure(logical(0), tags = list(type = "string")), MD5OfBody = structure(logical(0), tags = list(type = "string")), Body = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(locationName = "Value", type = "string"))), tags = list(locationNameKey = "Name", locationNameValue = "Value", type = "map", flattened = TRUE, locationName = "Attribute")), MD5OfMessageAttributes = structure(logical(0), tags = list(type = "string")), MessageAttributes = structure(list(structure(list(StringValue = structure(logical(0), tags = list(type = "string")), BinaryValue = structure(logical(0), tags = list(type = "blob")), StringListValues = structure(list(structure(logical(0), tags = list(locationName = "StringListValue", type = "string"))), tags = list(locationNameList = "StringListValue", flattened = TRUE, locationName = "StringListValue", type = "list")), BinaryListValues = structure(list(structure(logical(0), tags = list(locationName = "BinaryListValue", type = "blob"))), tags = list(locationNameList = "BinaryListValue", flattened = TRUE, locationName = "BinaryListValue", type = "list")), DataType = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Value", type = "structure"))), tags = list(locationNameKey = "Name", locationNameValue = "Value", locationName = "MessageAttribute", type = "map", flattened = TRUE))), tags = list(locationName = "Message", type = "structure"))), tags = list(locationNameList = "Message", type = "list", flattened = TRUE))), tags = list(type = "structure", resultWrapper = "ReceiveMessageResult"))
   return(populate(args, shape))
 }
 
@@ -179,7 +179,7 @@ NULL
 
 .sqs$send_message_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MD5OfMessageBody = structure(logical(0), tags = list(type = "string")), MD5OfMessageAttributes = structure(logical(0), tags = list(type = "string")), MD5OfMessageSystemAttributes = structure(logical(0), tags = list(type = "string")), MessageId = structure(logical(0), tags = list(type = "string")), SequenceNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(MD5OfMessageBody = structure(logical(0), tags = list(type = "string")), MD5OfMessageAttributes = structure(logical(0), tags = list(type = "string")), MD5OfMessageSystemAttributes = structure(logical(0), tags = list(type = "string")), MessageId = structure(logical(0), tags = list(type = "string")), SequenceNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "SendMessageResult"))
   return(populate(args, shape))
 }
 
@@ -191,7 +191,7 @@ NULL
 
 .sqs$send_message_batch_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Successful = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), MessageId = structure(logical(0), tags = list(type = "string")), MD5OfMessageBody = structure(logical(0), tags = list(type = "string")), MD5OfMessageAttributes = structure(logical(0), tags = list(type = "string")), MD5OfMessageSystemAttributes = structure(logical(0), tags = list(type = "string")), SequenceNumber = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "SendMessageBatchResultEntry", type = "structure"))), tags = list(locationNameList = "SendMessageBatchResultEntry", type = "list", flattened = TRUE)), Failed = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), SenderFault = structure(logical(0), tags = list(type = "boolean")), Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "BatchResultErrorEntry", type = "structure"))), tags = list(locationNameList = "BatchResultErrorEntry", type = "list", flattened = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(Successful = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), MessageId = structure(logical(0), tags = list(type = "string")), MD5OfMessageBody = structure(logical(0), tags = list(type = "string")), MD5OfMessageAttributes = structure(logical(0), tags = list(type = "string")), MD5OfMessageSystemAttributes = structure(logical(0), tags = list(type = "string")), SequenceNumber = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "SendMessageBatchResultEntry", type = "structure"))), tags = list(locationNameList = "SendMessageBatchResultEntry", type = "list", flattened = TRUE)), Failed = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), SenderFault = structure(logical(0), tags = list(type = "boolean")), Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "BatchResultErrorEntry", type = "structure"))), tags = list(locationNameList = "BatchResultErrorEntry", type = "list", flattened = TRUE))), tags = list(type = "structure", resultWrapper = "SendMessageBatchResult"))
   return(populate(args, shape))
 }
 
