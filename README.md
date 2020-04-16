@@ -123,6 +123,10 @@ There are also examples for [EC2](examples/ec2.R), [S3](examples/s3.R),
 [AWS Athena](https://aws.amazon.com/athena/) serverless interactive query
 service, which allows you to query files stored in S3 using SQL or
 [`dplyr`](https://dplyr.tidyverse.org/).
+* [`redshiftTools`](https://github.com/RedOakStrategic/redshiftTools) is
+a collection of tools for working with the
+[Amazon Redshift](https://aws.amazon.com/redshift/) data warehouse service,
+such as performing bulk uploads. 
 
 ## Credits
 
