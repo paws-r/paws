@@ -145,6 +145,6 @@ query_parse_map <- function(values, value, prefix, tag, is_ec2 = FALSE) {
 
 query_parse_scalar <- function(values, value, prefix, tag, is_ec2 = FALSE) {
   if (!is_valid(value)) return(values)
-  values[prefix] <- convert_type(value)
+  values[prefix] <- convert_type(value, timestamp_format = "iso8601")
   return(values)
 }

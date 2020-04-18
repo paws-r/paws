@@ -1,17 +1,16 @@
 # Convert an R value to a value acceptable by the AWS API.
-convert_type <- function(value) {
+convert_type <- function(value, timestamp_format) {
   t <- tag_get(value, "type")
-  fn <- switch(
+  string <- switch(
     t,
-    blob = convert_blob,
-    boolean = convert_boolean,
-    float = as.character,
-    integer = as.character,
-    string = as.character,
-    timestamp = convert_timestamp,
-    as.character
+    blob = convert_blob(value),
+    boolean = convert_boolean(value),
+    float = as.character(value),
+    integer = as.character(value),
+    string = as.character(value),
+    timestamp = convert_timestamp(value, timestamp_format),
+    as.character(value)
   )
-  string <- fn(value)
   return(string)
 }
 
@@ -33,15 +32,12 @@ convert_boolean <- function(boolean) {
 }
 
 # Convert an R datetime to a string.
-convert_timestamp <- function(timestamp, format = NULL) {
-  if (is.null(format)) {
-    format <- tag_get(timestamp, "timestampFormat")
-  }
-  format_string <- timestamp_format(format)
-  if (format_string != "") {
-    string <- format(timestamp, format = format_string)
-  } else {
+convert_timestamp <- function(timestamp, timestamp_format) {
+  if (timestamp_format == "unix") {
     string <- as.character(as.numeric(timestamp))
+  } else {
+    format_string <- get_timestamp_format(timestamp_format)
+    string <- format(timestamp, format = format_string)
   }
   return(string)
 }
@@ -63,13 +59,12 @@ raw_to_base64 <- function(value) {
 }
 
 # Return a strptime format string for a given timestamp format.
-timestamp_format <- function(name) {
+get_timestamp_format <- function(name) {
   format_string <- switch(
     name,
     iso8601 = "%Y-%m-%dT%H:%M:%SZ",
-    rfc822 = "%a, %d %b %Y %H:%M:%S %Z",
-    unix = "%Y-%m-%dT%H:%M:%SZ",
-    ""
+    rfc822 = "%a, %d %b %Y %H:%M:%S %Z"
   )
+  if (is.null(format_string)) stop("invalid timestamp format")
   return(format_string)
 }

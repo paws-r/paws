@@ -469,7 +469,7 @@ test_that("timestamp value", {
   op_input18 <- function(TimeArg) {
     args <- list(TimeArg = TimeArg)
     interface <- Structure(
-      TimeArg = Scalar(type = "timestamp", .tags = list(timestampFormat = "unix"))
+      TimeArg = Scalar(type = "timestamp")
     )
     return(populate(args, interface))
   }
@@ -492,7 +492,7 @@ test_that("timestamp value in header", {
   op_input19 <- function(TimeArgInHeader) {
     args <- list(TimeArgInHeader = TimeArgInHeader)
     interface <- Structure(
-      TimeArgInHeader = Scalar(type = "timestamp", .tags = list(location = "header", locationName = "x-amz-timearg", timestampFormat = "rfc822"))
+      TimeArgInHeader = Scalar(type = "timestamp", .tags = list(location = "header", locationName = "x-amz-timearg"))
     )
     return(populate(args, interface))
   }
@@ -515,7 +515,7 @@ test_that("timestamp value in JSON body", {
   op_input20 <- function(TimeArg) {
     args <- list(TimeArg = TimeArg)
     interface <- Structure(
-      TimeArg = Scalar(type = "timestamp", .tags = list(locationName = "timestamp_location", timestampFormat = "unix"))
+      TimeArg = Scalar(type = "timestamp", .tags = list(locationName = "timestamp_location"))
     )
     return(populate(args, interface))
   }

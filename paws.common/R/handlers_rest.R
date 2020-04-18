@@ -60,18 +60,18 @@ rest_build_header_map <- function(header, values) {
   prefix <- tag_get(values, "locationName")
   for (key in names(values)) {
     value <- values[[key]]
-    header[[paste0(prefix, key)]] <- convert_type(value)
+    header[[paste0(prefix, key)]] <- convert_type(value, timestamp_format = "unix")
   }
   return(header)
 }
 
 rest_build_header <- function(header, value, name) {
-  header[[name]] <- convert_type(value)
+  header[[name]] <- convert_type(value, timestamp_format = "rfc822")
   return(header)
 }
 
 rest_build_uri <- function(uri, value, name) {
-  str <- convert_type(value)
+  str <- convert_type(value, timestamp_format = "unix")
   uri$path <- sub(sprintf("{%s}", name), str, uri$path, fixed = TRUE)
   uri$path <- sub(sprintf("{%s+}", name), str, uri$path, fixed = TRUE)
   uri$raw_path <- sub(sprintf("{%s}", name), escape_path(str, TRUE), uri$raw_path, fixed = TRUE)
@@ -88,7 +88,7 @@ rest_build_query_string <- function(query, field, name) {
       query[[key]] <- field[[key]]
     }
   } else {
-    query[[name]] <- convert_type(field)
+    query[[name]] <- convert_type(field, timestamp_format = "iso8601")
   }
   return(query)
 }
