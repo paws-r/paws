@@ -152,7 +152,7 @@ test_that("build blob argument", {
 op_input8 <- function(TimeArg) {
   args <- list(TimeArg = TimeArg)
   interface <- Structure(
-    TimeArg = Scalar(type = "timestamp", .tags = list(timestampFormat = "iso8601"))
+    TimeArg = Scalar(type = "timestamp")
   )
   return(populate(args, interface))
 }

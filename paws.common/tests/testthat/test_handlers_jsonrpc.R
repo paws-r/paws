@@ -37,7 +37,7 @@ test_that("build scalar members", {
 op_input2 <- function(TimeArg) {
   args <- list(TimeArg = TimeArg)
   interface <- Structure(
-    TimeArg = Scalar(type = "timestamp", .tags = list(timestampFormat = "unix"))
+    TimeArg = Scalar(type = "timestamp")
   )
   return(populate(args, interface))
 }
@@ -509,9 +509,9 @@ test_that("unmarshal blobs", {
 })
 
 op_output3 <- Structure(
-  TimeMember = Scalar(type = "timestamp", .tags = list(timestampFormat = "unix")),
+  TimeMember = Scalar(type = "timestamp"),
   StructMember = Structure(
-    Foo = Scalar(type = "timestamp", .tags = list(locationName = "foo", timestampFormat = "unix"))
+    Foo = Scalar(type = "timestamp", .tags = list(locationName = "foo"))
   )
 )
 
