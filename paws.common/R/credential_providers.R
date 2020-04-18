@@ -40,13 +40,13 @@ os_env_provider <- function() {
 }
 
 # Retrieve credentials stored in credentials file.
-credentials_file_provider <- function() {
+credentials_file_provider <- function(profile = "") {
 
   credentials_path <- file.path(get_aws_path(), "credentials")
 
   if (!file.exists(credentials_path)) return(NULL)
 
-  aws_profile <- get_profile_name()
+  aws_profile <- get_profile_name(profile)
 
   credentials <- ini::read.ini(credentials_path)
 
