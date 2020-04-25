@@ -1,3 +1,14 @@
+# paws.common 0.3.1
+
+* Read in session tokens from shared credential files.
+* Fix handling of dates when used as arguments to CloudWatch and other APIs.
+  Previously the operation would submit the date in an inappropriate format.
+* Fix handling of profiles when specified for a specific service, e.g.
+  `paws::svc(config = list(credentials = list(profile = "my-profile")))`.
+  Previously the profile was not used to get credentials.
+* Fix handling of operations that return nothing -- return an empty object
+  rather than failing.
+
 # paws.common 0.3.0
 
 * Add HTTP status codes to the error response when an operation fails, along
