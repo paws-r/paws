@@ -1,3 +1,8 @@
+# paws 0.1.8
+
+* Fix a small number of operations that require additional metadata sent to AWS,
+  for example S3 operation `select_object_content`.
+
 # paws 0.1.7
 
 * Add HTTP status codes to the error response when an operation fails, along
