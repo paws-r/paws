@@ -1,6 +1,6 @@
 Package: paws
 Title: Amazon Web Services Software Development Kit
-Version: 0.1.7
+Version: 0.1.8
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
@@ -18,17 +18,17 @@ Description: Interface to Amazon Web Services <https://aws.amazon.com>,
     functions-as-a-service.
 License: Apache License (>= 2.0)
 Imports: 
-    paws.compute (>= 0.1.7),
-    paws.storage (>= 0.1.7),
-    paws.database (>= 0.1.7),
-    paws.networking (>= 0.1.7),
-    paws.management (>= 0.1.7),
-    paws.machine.learning (>= 0.1.7),
-    paws.analytics (>= 0.1.7),
-    paws.security.identity (>= 0.1.7),
-    paws.application.integration (>= 0.1.7),
-    paws.cost.management (>= 0.1.7),
-    paws.customer.engagement (>= 0.1.7)
+    paws.compute (>= 0.1.8),
+    paws.storage (>= 0.1.8),
+    paws.database (>= 0.1.8),
+    paws.networking (>= 0.1.8),
+    paws.management (>= 0.1.8),
+    paws.machine.learning (>= 0.1.8),
+    paws.analytics (>= 0.1.8),
+    paws.security.identity (>= 0.1.8),
+    paws.application.integration (>= 0.1.8),
+    paws.cost.management (>= 0.1.8),
+    paws.customer.engagement (>= 0.1.8)
 Suggests: 
     testthat
 Encoding: UTF-8
