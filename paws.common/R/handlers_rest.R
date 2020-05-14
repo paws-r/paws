@@ -137,7 +137,7 @@ rest_unmarshal <- function(request) {
     if (payload_type == "blob") {
       payload <- request$http_response$body
     } else {
-      payload <- rawToChar(request$http_response$body)
+      payload <- raw_to_utf8(request$http_response$body)
     }
     values[[payload_name]] <- payload
     request$data <- values

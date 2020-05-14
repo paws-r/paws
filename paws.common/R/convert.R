@@ -51,11 +51,19 @@ base64_to_utf8 <- function(value) {
   return(intToUtf8(base64enc::base64decode(value)))
 }
 
-# Convert a string to a base64-encoded value.
+# Convert a raw-encoded string to a base64-encoded value.
 # e.g. "foo" (raw: 66 6f 6f) -> "Zm9v".
 raw_to_base64 <- function(value) {
   if (length(value) == 0) return(character(0))
   return(base64enc::base64encode(value))
+}
+
+# Convert a raw-encoded string to a character variable.
+raw_to_utf8 <- function(value) {
+  if (length(value) == 0) return(character(0))
+  result <- rawToChar(value)
+  Encoding(result) <- "UTF-8"
+  return(result)
 }
 
 # Return a strptime format string for a given timestamp format.
