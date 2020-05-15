@@ -92,7 +92,7 @@ container_credentials_provider <- function() {
   if (is.null(credentials_response)) return(NULL)
 
   credentials_response_body <-
-    jsonlite::fromJSON(rawToChar(credentials_response$body))
+    jsonlite::fromJSON(raw_to_utf8(credentials_response$body))
 
   access_key_id <- credentials_response_body$AccessKeyId
   secret_access_key <- credentials_response_body$SecretAccessKey
@@ -125,10 +125,10 @@ iam_credentials_provider <- function() {
   credentials_url <- file.path("iam/security-credentials", iam_role)
 
   credentials_response <- get_instance_metadata(credentials_url)
-  
+
   if (is.null(credentials_response)) return(NULL)
 
-  credentials_response_body <- jsonlite::fromJSON(rawToChar(credentials_response$body))
+  credentials_response_body <- jsonlite::fromJSON(raw_to_utf8(credentials_response$body))
 
   access_key_id <- credentials_response_body$AccessKeyId
   secret_access_key <- credentials_response_body$SecretAccessKey

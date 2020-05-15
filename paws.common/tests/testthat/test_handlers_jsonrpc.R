@@ -663,6 +663,22 @@ test_that("unmarshal nested structure with incomplete output shape", {
   expect_equal(out$Items[[1]]$Foo$L[[2]], list(M = list(FooBar = list(N = "2"))))
 })
 
+test_that("unmarshal UTF-8 text", {
+  op_output9 <- Structure(
+    TranslatedText = Scalar(type = "string"),
+    SourceLanguageCode = Scalar(type = "string"),
+    TargetLanguageCode = Scalar(type = "string")
+  )
+  req <- new_request(svc, op, NULL, op_output9)
+  req$http_response <- HttpResponse(
+    status_code = 200,
+    body = charToRaw('{\"SourceLanguageCode\":\"en\",\"TargetLanguageCode\":\"es\",\"TranslatedText\":\"Me voy a casa mañana.\"}')
+  )
+  req <- unmarshal(req)
+  out <- req$data
+  expect_equal(out$TranslatedText, "Me voy a casa mañana.")
+})
+
 test_that("unmarshal error with message in 'Message'", {
   req <- new_request(svc, op, NULL, NULL)
   req$http_response <- HttpResponse(

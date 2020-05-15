@@ -17,6 +17,11 @@ test_that("raw_to_base64", {
   expect_false(grepl("\n", actual))
 })
 
+test_that("raw_to_utf", {
+  string <- "Me voy a casa mañana."
+  expect_equal(raw_to_utf8(charToRaw(string)), string)
+})
+
 test_that("convert_type", {
   value <- as.POSIXct("2010-01-01", tz = "UTC")
   value <- tag_add(value, tags = list(type = "timestamp"))

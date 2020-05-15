@@ -160,7 +160,7 @@ get_iam_role <- function() {
 
   if (is.null(iam_role_response)) return(NULL)
 
-  iam_role_name <- rawToChar(iam_role_response$body)
+  iam_role_name <- raw_to_utf8(iam_role_response$body)
 
   return(iam_role_name)
 }
