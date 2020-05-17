@@ -1,10 +1,14 @@
+#' @include util.R
+#' @include xmlutil.R
+NULL
+
 # Decode all messages in a HTTP response body using the format specfied in
 # https://docs.aws.amazon.com/AmazonS3/latest/API/RESTSelectObjectAppendix.html
 stream_decode <- function(data) {
   return(stream_decode_messages(data))
 }
 
-# Decode a series of variable-length messages and return them as one string.
+# Decode a series of variable-length messages and return them as a list.
 stream_decode_messages <- function(messages) {
   result <- list()
   offset <- 1
