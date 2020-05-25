@@ -20,11 +20,11 @@ stream_decode_messages <- function(messages) {
     if (event_type == "Records") {
       records <- paste0(records, message$payload)
     } else if (event_type %in% c("Stats", "Progress")) {
-      result[[event_type]] <- xml_to_list(message$payload)[[1]]
+      result[[event_type]] <- list(Details = xml_to_list(message$payload)[[1]])
     }
     offset <- offset + message_length
   }
-  result[["Records"]] <- records
+  result[["Records"]] <- list(Payload = records)
   return(result)
 }
 
