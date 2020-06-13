@@ -35,6 +35,9 @@ svc <- paws::svc(
 )
 ```
 
+In this example, `paws::svc` is a placeholder for an AWS service. Use a
+specific service instead, for example, `paws::s3`.
+
 If you have a session token from temporary security credentials, you
 can add that to creds as `session_token`.
 
@@ -119,6 +122,9 @@ svc <- paws::svc(
 )
 ```
 
+In this example, `paws::svc` is a placeholder; use a specific service instead,
+such as `paws::s3`.
+
 ### Setting Region with R Environment Variable
 
 Use R to set the region with the following command:
@@ -187,6 +193,9 @@ svc <- paws::svc(
     )
 )
 ```
+
+In this example, `paws::svc` is a placeholder; use a specific service instead,
+such as `paws::s3`.
 
 ### Setting Profile with R Environment Variable
 
