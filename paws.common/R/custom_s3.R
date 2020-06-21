@@ -1,4 +1,5 @@
 #' @include service.R
+#' @include stream.R
 NULL
 
 ################################################################################
@@ -84,6 +85,16 @@ content_md5 <- function(request) {
 
 ################################################################################
 
+s3_unmarshal_select_object_content <- function(request) {
+  if (request$operation$name != "SelectObjectContent") return(request)
+  payload <- stream_decode(request$http_response$body)
+  request$data <- populate(list(Payload = payload), request$data)
+  request$http_response$body <- raw()
+  return(request)
+}
+
+################################################################################
+
 s3_unmarshal_get_bucket_location <- function(request) {
   if (request$operation$name != "GetBucketLocation") return(request)
   response <- decode_xml(request$http_response$body)
@@ -138,6 +149,8 @@ customizations$s3 <- function(handlers) {
                                        populate_location_constraint)
   handlers$build <- handlers_add_back(handlers$build,
                                       content_md5)
+  handlers$unmarshal <- handlers_add_front(handlers$unmarshal,
+                                           s3_unmarshal_select_object_content)
   handlers$unmarshal <- handlers_add_back(handlers$unmarshal,
                                           s3_unmarshal_get_bucket_location)
   handlers$unmarshal_error <- handlers_set(s3_unmarshal_error)

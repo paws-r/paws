@@ -157,6 +157,7 @@ xml_build_scalar <- function(params) {
 
 # Unmarshal `data` provided as a list into the shape in `interface`.
 xml_unmarshal <- function(data, interface, result_name = NULL) {
+  if (is.null(data)) return(interface)
   root <- data[[1]]
   if (!is.null(result_name) && result_name %in% names(root)) {
     root <- root[[result_name]]
