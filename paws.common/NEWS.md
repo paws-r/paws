@@ -1,3 +1,10 @@
+# paws.common 0.3.2
+
+* Support the S3 operation SelectObjectContent in `s3$select_object_content`.
+  This operation allows you to query a data file in S3 using SQL.
+* Correctly decode Unicode strings in API responses received from AWS, such as
+  `"Me voy a casa mañana."`.
+
 # paws.common 0.3.1
 
 * Read in session tokens from shared credential files.
