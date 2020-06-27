@@ -44,11 +44,10 @@ convert_timestamp <- function(timestamp, timestamp_format) {
 
 #-------------------------------------------------------------------------------
 
-# Convert a base64-encoded value to a string.
-# e.g. "Zm9v" -> "foo".
-base64_to_utf8 <- function(value) {
+# Convert a base64-encoded value to a raw vector.
+base64_to_raw <- function(value) {
   if (length(value) == 0) return(character(0))
-  return(intToUtf8(base64enc::base64decode(value)))
+  return(base64enc::base64decode(value))
 }
 
 # Convert a raw-encoded string to a base64-encoded value.

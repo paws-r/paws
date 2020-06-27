@@ -193,7 +193,7 @@ rest_unmarshal_status_code <- function(status_code) {
 rest_unmarshal_header <- function(value, type) {
   convert <- switch(
     type,
-    blob = base64_to_utf8,
+    blob = base64_to_raw,
     boolean = as.logical,
     double = as.numeric,
     integer = as.integer,

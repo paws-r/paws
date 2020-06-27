@@ -266,7 +266,7 @@ test_that("unmarshal blob", {
   )
   req <- unmarshal(req)
   out <- req$data
-  expect_equal(out$Blob, "value")
+  expect_equal(rawToChar(out$Blob), "value")
 })
 
 op_output3 <- Structure(

@@ -504,8 +504,8 @@ test_that("unmarshal blobs", {
   )
   req <- unmarshal(req)
   out <- req$data
-  expect_equal(out$BlobMember, "hi!")
-  expect_equal(out$StructMember$Foo, "there!")
+  expect_equal(rawToChar(out$BlobMember), "hi!")
+  expect_equal(rawToChar(out$StructMember$Foo), "there!")
 })
 
 op_output3 <- Structure(

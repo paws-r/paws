@@ -239,7 +239,7 @@ json_parse_scalar <- function(node, interface) {
   }
   convert <- switch(
     t,
-    blob = base64_to_utf8,
+    blob = base64_to_raw,
     boolean = as.logical,
     double = as.numeric,
     float = as.numeric,
