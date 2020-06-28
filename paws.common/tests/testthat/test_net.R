@@ -10,3 +10,14 @@ test_that("issue", {
   expect_error(body <- jsonlite::fromJSON(rawToChar(resp$body)), NA)
   expect_equal(body$slideshow$title, "Sample Slide Show")
 })
+
+test_that("don't decompress the body when already decompressed", {
+  req <- HttpRequest(
+    method = "GET",
+    url = parse_url("https://httpbin.org/gzip")
+  )
+  expect_error(resp <- issue(req), NA)
+  expect_equal(resp$status_code, 200)
+  expect_error(body <- jsonlite::fromJSON(rawToChar(resp$body)), NA)
+  expect_equal(body$gzipped, TRUE)
+})

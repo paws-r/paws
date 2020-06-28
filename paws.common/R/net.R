@@ -107,5 +107,47 @@ issue <- function(http_request) {
     body = httr::content(r, as = "raw")
   )
 
+  # Decode gzipped response bodies that are not automatically decompressed
+  # by httr/curl.
+  if (is_compressed(response)) {
+    response <- decompress(response)
+  }
+
   return(response)
 }
+
+# Return whether an HTTP response body is (still) compressed by checking
+# whether the body has a valid ZLIB header.
+# See http://www.faqs.org/rfcs/rfc1950.html.
+is_compressed <- function(http_response) {
+  content_encoding <- http_response$header[["Content-Encoding"]]
+
+  if (is.null(content_encoding)) {
+    return(FALSE)
+  }
+
+  if (content_encoding == "gzip") {
+    bits_to_int <- function(x) sum(as.integer(x) * 2^(1:length(x)-1))
+    cmf <- http_response$body[1]
+    flg <- http_response$body[2]
+    compression_method <- bits_to_int(rawToBits(cmf)[1:4])
+    deflate <- 8
+    valid_zlib_header <- (as.integer(cmf) * 256 + as.integer(flg)) %% 31 == 0
+    if (compression_method == deflate && valid_zlib_header) {
+      return(TRUE)
+    }
+  }
+
+  return(FALSE)
+}
+
+# Return an HTTP response with the body decompressed.
+decompress <- function(http_response) {
+  body <- tryCatch(
+    memDecompress(http_response$body, type = "gz", asChar = FALSE),
+    error = function(e) http_response$body
+  )
+  http_response$body <- body
+  return(http_response)
+}
+
