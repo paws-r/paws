@@ -651,8 +651,8 @@ test_that("unmarshal blob member", {
   req <- unmarshal_meta(req)
   req <- unmarshal(req)
   out <- req$data
-  expect_equal(out$BlobMember, "hi!")
-  expect_equal(out$StructMember$Foo, "there!")
+  expect_equal(rawToChar(out$BlobMember), "hi!")
+  expect_equal(rawToChar(out$StructMember$Foo), "there!")
 })
 
 test_that("unmarshal timestamp member", {

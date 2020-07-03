@@ -282,7 +282,7 @@ xml_parse_scalar <- function(node, interface) {
   t <- tag_get(interface, "type")
   convert <- switch(
     t,
-    blob = base64_to_utf8,
+    blob = base64_to_raw,
     boolean = as.logical,
     double = as.numeric,
     float = as.numeric,
