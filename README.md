@@ -120,13 +120,16 @@ There are also examples for [EC2](examples/ec2.R), [S3](examples/s3.R),
 ## Related packages
 
 * [`noctua`](https://dyfanjones.github.io/noctua/) is an interface to the
-[AWS Athena](https://aws.amazon.com/athena/) serverless interactive query
+[Athena](https://aws.amazon.com/athena/) serverless interactive query
 service, which allows you to query files stored in S3 using SQL or
 [`dplyr`](https://dplyr.tidyverse.org/).
 * [`redshiftTools`](https://github.com/RedOakStrategic/redshiftTools) is
 a collection of tools for working with the
-[Amazon Redshift](https://aws.amazon.com/redshift/) data warehouse service,
-such as performing bulk uploads. 
+[Redshift](https://aws.amazon.com/redshift/) data warehouse service,
+such as performing bulk uploads.
+* [`R6sagemaker`](https://github.com/DyfanJones/sagemaker-r-sdk) is an
+interface to the [SageMaker](https://aws.amazon.com/sagemaker/) machine
+learning service, designed to work like the Python SageMaker SDK.
 
 ## Credits
 
